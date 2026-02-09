@@ -187,6 +187,48 @@ export const PROFISSOES: Profissao[] = [
             },
         ],
     },
+    {
+        id: 'operacao-lastro',
+        nome: 'Operação de Lastro',
+        nivel: 'tecnico',
+        area: 'Manutenção e Operação',
+        blocos: [
+            {
+                nome: 'Bloco I - Estabilidade',
+                topicos: ['Estabilidade de embarcações', 'Sistemas de lastro', 'Hidrostática naval', 'Flutuabilidade e trim'],
+            },
+            {
+                nome: 'Bloco II - Manobra',
+                topicos: ['Manobra de navios', 'Equipamentos de convés', 'Navegação básica', 'Cartas náuticas e GPS'],
+            },
+            {
+                nome: 'Bloco III - Segurança Marítima',
+                topicos: ['SOLAS', 'ISM Code', 'MARPOL', 'Sobrevivência no mar'],
+            },
+        ],
+    },
+
+    // ===== INSPEÇÃO =====
+    {
+        id: 'inspecao-equipamentos',
+        nome: 'Inspeção de Equipamentos e Instalações',
+        nivel: 'tecnico',
+        area: 'Inspeção e Química',
+        blocos: [
+            {
+                nome: 'Bloco I - Física e Química',
+                topicos: ['Eletroquímica', 'Desenho técnico', 'Metrologia', 'Sistema Internacional', 'Estática e Dinâmica'],
+            },
+            {
+                nome: 'Bloco II - Materiais',
+                topicos: ['Aço Carbono', 'Diagrama de equilíbrio', 'Ensaios não destrutivos', 'Hidrostática', 'Eletricidade básica'],
+            },
+            {
+                nome: 'Bloco III - Processos',
+                topicos: ['Transferência de calor', 'Soldagem', 'Processos de fabricação', 'Corrosão', 'Hidrocarbonetos'],
+            },
+        ],
+    },
 
     // ===== PROJETOS, CONSTRUÇÃO E MONTAGEM =====
     {
@@ -246,6 +288,26 @@ export const PROFISSOES: Profissao[] = [
             {
                 nome: 'Bloco III - Planejamento',
                 topicos: ['Planejamento de obras', 'Rigging', 'Normas ASME/API'],
+            },
+        ],
+    },
+    {
+        id: 'instrumentacao-projetos',
+        nome: 'Técnico Instrumentação (Projetos)',
+        nivel: 'tecnico',
+        area: 'Projetos, Construção e Montagem',
+        blocos: [
+            {
+                nome: 'Bloco I - Detalhamento',
+                topicos: ['Projetos de instrumentação', 'P&ID', 'Listas de instrumentos', 'Simbologia ISA'],
+            },
+            {
+                nome: 'Bloco II - Montagem',
+                topicos: ['Montagem de CLP/SDCD', 'Tubing e cabeamento', 'Calibração em campo', 'Instalação de equipamentos'],
+            },
+            {
+                nome: 'Bloco III - Comissionamento',
+                topicos: ['Comissionamento de malhas', 'FAT e SAT', 'Normas de instrumentação', 'Segurança em instrumentação'],
             },
         ],
     },

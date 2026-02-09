@@ -51,6 +51,15 @@ export const DISTRIBUICAO_ESPECIFICA: Record<string, DistribuicaoEspecifica> = {
             { nome: 'Segurança de Processo e Equipamentos', quantidade: 10 },
         ],
     },
+    // Operação de Lastro
+    'operacao-lastro': {
+        profissaoId: 'operacao-lastro',
+        blocos: [
+            { nome: 'Estabilidade e Sistemas de Lastro', quantidade: 15 },
+            { nome: 'Manobra e Navegação', quantidade: 15 },
+            { nome: 'Segurança Marítima (SOLAS/MARPOL)', quantidade: 10 },
+        ],
+    },
     // Manutenção Elétrica
     'manutencao-eletrica': {
         profissaoId: 'manutencao-eletrica',
@@ -67,6 +76,33 @@ export const DISTRIBUICAO_ESPECIFICA: Record<string, DistribuicaoEspecifica> = {
             { nome: 'Metrologia e Elementos de Máquinas', quantidade: 15 },
             { nome: 'Equipamentos Rotativos e Hidráulica', quantidade: 15 },
             { nome: 'Manutenção Preditiva e Gestão', quantidade: 10 },
+        ],
+    },
+    // Manutenção Instrumentação
+    'manutencao-instrumentacao': {
+        profissaoId: 'manutencao-instrumentacao',
+        blocos: [
+            { nome: 'Instrumentação e Medição', quantidade: 15 },
+            { nome: 'CLPs, SDCDs e Redes Industriais', quantidade: 15 },
+            { nome: 'Sistemas de Controle e Segurança', quantidade: 10 },
+        ],
+    },
+    // Manutenção Caldeiraria
+    'manutencao-caldeiraria': {
+        profissaoId: 'manutencao-caldeiraria',
+        blocos: [
+            { nome: 'Tecnologia Mecânica e Soldagem', quantidade: 15 },
+            { nome: 'Metalurgia e Tratamentos Térmicos', quantidade: 15 },
+            { nome: 'Desenho Técnico e Qualidade', quantidade: 10 },
+        ],
+    },
+    // Enfermagem do Trabalho
+    'enfermagem-trabalho': {
+        profissaoId: 'enfermagem-trabalho',
+        blocos: [
+            { nome: 'Urgências e Epidemiologia', quantidade: 15 },
+            { nome: 'NRs, PCMSO e Toxicologia', quantidade: 15 },
+            { nome: 'Enfermagem Clínica e Biossegurança', quantidade: 10 },
         ],
     },
     // Segurança do Trabalho
@@ -103,6 +139,51 @@ export const DISTRIBUICAO_ESPECIFICA: Record<string, DistribuicaoEspecifica> = {
             { nome: 'Administração e Logística', quantidade: 15 },
             { nome: 'Lei 13.303 e RLCP', quantidade: 15 },
             { nome: 'Contabilidade e Tributos', quantidade: 10 },
+        ],
+    },
+    // Inspeção de Equipamentos e Instalações
+    'inspecao-equipamentos': {
+        profissaoId: 'inspecao-equipamentos',
+        blocos: [
+            { nome: 'Física, Química e Metrologia', quantidade: 15 },
+            { nome: 'Materiais e Ensaios Não Destrutivos', quantidade: 15 },
+            { nome: 'Soldagem e Corrosão', quantidade: 10 },
+        ],
+    },
+    // Edificações
+    'edificacoes': {
+        profissaoId: 'edificacoes',
+        blocos: [
+            { nome: 'Materiais e Estruturas', quantidade: 15 },
+            { nome: 'Instalações e Orçamento', quantidade: 15 },
+            { nome: 'AutoCAD e Segurança (NR 18)', quantidade: 10 },
+        ],
+    },
+    // Elétrica (Projetos)
+    'eletrica-projetos': {
+        profissaoId: 'eletrica-projetos',
+        blocos: [
+            { nome: 'Projetos e Subestações', quantidade: 15 },
+            { nome: 'Proteção e Automação', quantidade: 15 },
+            { nome: 'Fiscalização e Normas NBR', quantidade: 10 },
+        ],
+    },
+    // Mecânica (Projetos)
+    'mecanica-projetos': {
+        profissaoId: 'mecanica-projetos',
+        blocos: [
+            { nome: 'Montagem e Tubulações', quantidade: 15 },
+            { nome: 'Soldagem e Ensaios', quantidade: 15 },
+            { nome: 'Rigging e Normas ASME/API', quantidade: 10 },
+        ],
+    },
+    // Instrumentação (Projetos)
+    'instrumentacao-projetos': {
+        profissaoId: 'instrumentacao-projetos',
+        blocos: [
+            { nome: 'Projetos e P&ID', quantidade: 15 },
+            { nome: 'Montagem e Calibração', quantidade: 15 },
+            { nome: 'Comissionamento e FAT/SAT', quantidade: 10 },
         ],
     },
 };
