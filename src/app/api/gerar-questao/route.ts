@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   try {
-    const { materia, dificuldade, assunto, contexto } = await request.json();
+    const { materia, dificuldade, assunto, contexto, questoesAnteriores } = await request.json();
 
     // Prompt reformulado para garantir consistência
     const promptBase = `Você é um especialista em criar questões de concurso no estilo CESGRANRIO para a Petrobras.
@@ -37,7 +37,22 @@ Retorne APENAS um JSON válido:
   "explicacao": "explicação que demonstra o cálculo/raciocínio que resulta EXATAMENTE no valor de alternativas[correta]",
   "assunto": "${assunto || 'Geral'}",
   "dificuldade": "Fácil|Média|Difícil"
-}`;
+}
+
+REGRAS DE FORMATAÇÃO HTML (CRÍTICO):
+- Use tags HTML para destaque visual: <b>negrito</b>, <u>sublinhado</u>, <i>itálico</i>.
+- NÃO use Markdown (como **negrito** ou _itálico_).
+- REGRA ABSOLUTA SOBRE SUBLINHADO: Quando a questão pedir "o termo sublinhado" ou "a expressão sublinhada", a tag <u> DEVE envolver APENAS a palavra ou expressão curta que é o alvo da questão, NUNCA a frase inteira.
+  - CORRETO: "Os procedimentos devem ser <u>revistos periodicamente</u> para garantir a eficácia."
+  - ERRADO: "<u>Os procedimentos devem ser revistos periodicamente para garantir a eficácia.</u>"
+- O trecho sublinhado deve corresponder exatamente ao que as alternativas substituem.
+${questoesAnteriores && questoesAnteriores.length > 0 ? `
+DIVERSIDADE OBRIGATÓRIA:
+- Já foram geradas ${questoesAnteriores.length} questões neste simulado. Você DEVE criar uma questão COMPLETAMENTE DIFERENTE.
+- NÃO repita o mesmo tipo de problema, cenário, ou estrutura.
+- Use um ASSUNTO/TÓPICO diferente dos já abordados.
+- Questões anteriores (resumo): ${questoesAnteriores.join(' | ')}
+` : ''}`;
 
     console.log(`[Sonnet] Gerando questão de ${materia} (${dificuldade || 'auto'}) para ${contexto?.cargo || 'Geral'}`);
 

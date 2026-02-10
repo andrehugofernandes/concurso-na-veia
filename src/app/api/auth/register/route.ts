@@ -58,7 +58,8 @@ export async function POST(request: NextRequest) {
                     nivel,
                     cargo,
                     plan: plan || 'free',
-                }
+                },
+                emailRedirectTo: `${request.nextUrl.origin}/auth/callback`,
             }
         })
 

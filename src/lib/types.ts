@@ -1,5 +1,6 @@
 export interface Usuario {
   nome: string;
+  role?: 'user' | 'admin';
   xp: number;
   nivel: string; // Nível do jogador (Gamificação)
   nivelConcurso?: 'medio' | 'superior'; // Nível do concurso

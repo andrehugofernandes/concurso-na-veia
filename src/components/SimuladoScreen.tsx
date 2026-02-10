@@ -133,9 +133,10 @@ export default function SimuladoScreen({
                     </div>
 
                     {/* Question Text */}
-                    <div className="text-lg text-white mb-8 leading-relaxed">
-                        {questao.enunciado}
-                    </div>
+                    <div
+                        className="text-lg text-white mb-8 leading-relaxed"
+                        dangerouslySetInnerHTML={{ __html: questao.enunciado }}
+                    />
 
                     {/* Alternatives */}
                     <div className="space-y-3">
@@ -153,7 +154,10 @@ export default function SimuladoScreen({
                                     }`}>
                                     {getAlternativaLetra(index)}
                                 </span>
-                                <span className="flex-1">{alternativa}</span>
+                                <span
+                                    className="flex-1"
+                                    dangerouslySetInnerHTML={{ __html: alternativa }}
+                                />
                                 {mostrarResultado && index === questao.correta && (
                                     <svg className="w-6 h-6 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -178,7 +182,10 @@ export default function SimuladoScreen({
                             </svg>
                             Explicação
                         </h3>
-                        <p className="text-gray-300 leading-relaxed">{questao.explicacao}</p>
+                        <p
+                            className="text-gray-300 leading-relaxed"
+                            dangerouslySetInnerHTML={{ __html: questao.explicacao }}
+                        />
                     </div>
                 )}
 

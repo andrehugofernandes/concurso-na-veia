@@ -8,6 +8,7 @@ import HomeScreen from '@/components/HomeScreen';
 import LoadingScreen from '@/components/LoadingScreen';
 import SimuladoScreen from '@/components/SimuladoScreen';
 import ResultadoScreen from '@/components/ResultadoScreen';
+import { CONTEUDO_MATERIAS } from '@/data/conteudo';
 
 const usuarioInicial: Usuario = {
     nome: '',
@@ -48,12 +49,14 @@ export default function SimuladoPage() {
         if (dadosSalvos) {
             setUsuario(dadosSalvos);
         }
+    }, []);
 
-        // Auto-start se vier parâmetros na URL
-        if (tipoUrl && !simuladoAtual && tela === 'home') {
+    // Auto-start se vier parâmetros na URL e usuário estiver carregado
+    useEffect(() => {
+        if (usuario.nome && tipoUrl && !simuladoAtual && tela === 'home') {
             iniciarSimulado(tipoUrl, qtdUrl ? parseInt(qtdUrl) : 5);
         }
-    }, [tipoUrl, qtdUrl]);
+    }, [tipoUrl, qtdUrl, usuario.nome]);
 
     // Salvar dados
     useEffect(() => {
@@ -93,7 +96,7 @@ export default function SimuladoPage() {
         }
     }, [tempoEsgotado]);
 
-    const gerarQuestaoIA = async (materia: string, dificuldade?: string, assunto?: string): Promise<Questao> => {
+    const gerarQuestaoIA = async (materia: string, dificuldade?: string, assunto?: string, questoesAnteriores?: string[]): Promise<Questao> => {
         const cargoContexto = usuario.cargo;
 
         // Usar endpoint Gemini
@@ -106,6 +109,7 @@ export default function SimuladoPage() {
                 materia,
                 dificuldade,
                 assunto,
+                questoesAnteriores,
                 contexto: {
                     cargo: cargoContexto || 'Geral',
                     nivel: usuario.nivelConcurso || 'medio'
@@ -122,27 +126,66 @@ export default function SimuladoPage() {
 
     const gerarQuestoes = async (tipo: string, quantidade: number): Promise<Questao[]> => {
         const questoes: Questao[] = [];
-        let materiasEscolhidas: string[] = [];
+        let distribuicao: { materia: string, qtd: number, assunto?: string }[] = [];
 
-        if (tipo === 'completo') {
-            materiasEscolhidas = ['Língua Portuguesa', 'Matemática', 'Conhecimentos Específicos'];
+        // Lógica de distribuição baseada no tipo
+        if (tipo === 'maratona') {
+            const isSuperior = usuario.nivelConcurso === 'superior';
+            if (isSuperior) {
+                // Maratona Superior: 20 Port, 15 Mat, 15 Ing, 50 Esp (=100)
+                distribuicao = [
+                    { materia: 'Língua Portuguesa', qtd: 20 },
+                    { materia: 'Matemática', qtd: 15 },
+                    { materia: 'Língua Inglesa', qtd: 15 },
+                    { materia: 'Conhecimentos Específicos', qtd: 50 },
+                ];
+            } else {
+                // Maratona Médio: 20 Port, 20 Mat, 60 Esp (=100)
+                distribuicao = [
+                    { materia: 'Língua Portuguesa', qtd: 20 },
+                    { materia: 'Matemática', qtd: 20 },
+                    { materia: 'Conhecimentos Específicos', qtd: 60 },
+                ];
+            }
+        } else if (tipo === 'intensivo') {
+            // Intensivo: 20 questões
+            if (assuntoUrl === 'Língua Portuguesa') {
+                distribuicao = [{ materia: 'Língua Portuguesa', qtd: quantidade }];
+            } else if (assuntoUrl === 'Matemática') {
+                distribuicao = [{ materia: 'Matemática', qtd: quantidade }];
+            } else if (assuntoUrl) {
+                // Tópico específico: descobre a matéria ou define como Específica
+                const materiaFound = CONTEUDO_MATERIAS.find(m => m.topicos.some(t => t.titulo === assuntoUrl));
+                const materiaNome = materiaFound ? materiaFound.nome : 'Conhecimentos Específicos';
+                distribuicao = [{ materia: materiaNome, qtd: quantidade, assunto: assuntoUrl }];
+            } else {
+                // Intensivo Misto (sem tópico definido)
+                const qtdPort = Math.ceil(quantidade * 0.3); // 30%
+                const qtdMat = Math.ceil(quantidade * 0.3);  // 30%
+                const qtdEsp = quantidade - qtdPort - qtdMat; // Resto (40%)
+                distribuicao = [
+                    { materia: 'Língua Portuguesa', qtd: qtdPort },
+                    { materia: 'Matemática', qtd: qtdMat },
+                    { materia: 'Conhecimentos Específicos', qtd: qtdEsp },
+                ];
+            }
         } else {
-            materiasEscolhidas = [tipo];
+            // Simulado Rápido ou Padrão (tipo = id da matéria)
+            const materiaObj = CONTEUDO_MATERIAS.find(m => m.id === tipo);
+            const nomeMateria = materiaObj ? materiaObj.nome : (tipo === 'especificas' ? 'Conhecimentos Específicos' : tipo);
+            distribuicao = [{ materia: nomeMateria, qtd: quantidade, assunto: assuntoUrl || undefined }];
         }
 
-        const questoesPorMateria = Math.ceil(quantidade / materiasEscolhidas.length);
-
-        for (const materia of materiasEscolhidas) {
-            // Break early if we have enough questions
-            if (questoes.length >= quantidade) break;
-
-            for (let i = 0; i < questoesPorMateria; i++) {
+        // Loop de geração
+        for (const item of distribuicao) {
+            for (let i = 0; i < item.qtd; i++) {
+                // Break early if global quantity reached (safety)
                 if (questoes.length >= quantidade) break;
 
                 try {
                     let dificuldade = dificuldadeUrl || undefined;
 
-                    // If not specified in URL, auto-adjust based on performance logic
+                    // Ajuste automático de dificuldade se não especificado
                     if (!dificuldade) {
                         const taxaAcerto = usuario.questoesCertas / (usuario.questoesCertas + usuario.questoesErradas || 1);
                         if (taxaAcerto > 0.8) dificuldade = 'Difícil';
@@ -150,10 +193,22 @@ export default function SimuladoPage() {
                         else if (taxaAcerto < 0.5) dificuldade = 'Fácil';
                     }
 
-                    const questao = await gerarQuestaoIA(materia, dificuldade, assuntoUrl || undefined);
+                    const questoesAnteriores = questoes.map(q => q.enunciado.substring(0, 80));
+
+                    // Delay para não sobrecarregar a API
+                    if (questoes.length > 0) await new Promise(r => setTimeout(r, 100));
+
+                    const questao = await gerarQuestaoIA(item.materia, dificuldade, item.assunto, questoesAnteriores);
                     questoes.push(questao);
                 } catch (error) {
-                    console.error(`Erro ao gerar questão ${i + 1}:`, error);
+                    console.error(`Erro ao gerar questão ${i + 1} de ${item.materia}:`, error);
+                    // Retentativa simples
+                    try {
+                        const questao = await gerarQuestaoIA(item.materia, 'Média', item.assunto, []);
+                        questoes.push(questao);
+                    } catch (retryError) {
+                        console.error('Falha na retentativa:', retryError);
+                    }
                 }
             }
         }

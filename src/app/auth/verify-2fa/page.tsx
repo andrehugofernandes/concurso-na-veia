@@ -12,6 +12,11 @@ export default function Verify2FAPage() {
     const router = useRouter();
     const supabase = createClient();
 
+    useEffect(() => {
+        // Autofocus first input on mount
+        inputRefs.current[0]?.focus();
+    }, []);
+
     const handleChange = (index: number, value: string) => {
         if (!/^\d*$/.test(value)) return;
 
