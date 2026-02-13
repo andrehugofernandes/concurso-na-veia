@@ -2,95 +2,270 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  --primary: #0037C1;
-  --primary-hover: #002D9C;
-  --angle: 0deg;
-}
-
+/* Suporte à animação de borda com conic-gradient (inspirado no imune-mais) */
 @property --angle {
   syntax: '<angle>';
-  initial-value: 0deg;
   inherits: false;
+  initial-value: 0deg;
 }
 
-.dark {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
-  --primary: #0037C1;
-  --primary-hover: #0045F0;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --primary-rgb: 0 55 193;
+    --primary-hover-rgb: 0 42 145;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --shadow: 215 28% 15%;
+    --radius: 0.5rem;
+    --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-display: 'Sora', 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --card: 222.2 47% 11.2%;
+    --card-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary-rgb: 0 55 193;
+    --primary-hover-rgb: 0 42 145;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    /* font-family: var(--font-sans);  -- Using project default logic */
+    line-height: 1.5;
+  }
+
+  code {
+    font-family: 'Fira Code', 'Monaco', 'Courier New', monospace;
+    font-size: 0.875em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    /* font-family: var(--font-display); -- Using project default logic */
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  a {
+    color: hsl(var(--primary));
+    text-decoration: none;
+    transition: color 0.2s ease-out;
+  }
+
+  a:hover {
+    color: hsl(var(--primary) / 0.8);
+  }
+
+  input,
+  textarea,
+  select {
+    background-color: #ffffff;
+    border-color: hsl(var(--border));
+    color: hsl(var(--foreground));
+  }
+
+  .dark input,
+  .dark textarea,
+  .dark select {
+    background-color: hsl(var(--input));
+    border-color: hsl(var(--border));
+    color: hsl(var(--foreground));
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 3px hsl(var(--ring) / 0.1);
+  }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
+@layer components {
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .truncate-line {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+
+  .truncate-lines {
+    @apply line-clamp-2;
+  }
+
+  .focus-ring {
+    @apply outline-none ring-2 ring-offset-2 ring-primary;
+  }
+
+  .transition-smooth {
+    @apply transition-all duration-200 ease-out;
+  }
 }
 
 @layer utilities {
-  .gradient-bg {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  }
 
-  .card-hover {
-    transition: all 0.3s ease;
-  }
-
-  .card-hover:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  }
-
-  .progress-bar {
-    transition: width 0.5s ease;
-  }
-
-  .neon-text {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #667eea;
-  }
-
-  .ai-glow {
-    box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
-  }
-
-  .loading-dots::after {
-    content: '';
-    animation: dots 1.5s infinite;
-  }
-
-  @keyframes dots {
-    0%, 20% { content: '.'; }
-    40% { content: '..'; }
-    60%, 100% { content: '...'; }
-  }
-
-  /* Blob Animation for Landing Page */
-  @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
+  /* Animação de rotação para bordas com conic-gradient */
+  @keyframes border-spin {
+    from {
+      --angle: 0deg;
     }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
+
+    to {
+      --angle: 360deg;
     }
   }
 
-  .animate-blob {
-    animation: blob 7s infinite;
+  .animate-border-spin {
+    animation: border-spin 4s linear infinite;
   }
 
-  .animation-delay-2000 {
-    animation-delay: 2s;
+  /* Remover barra de rolagem completamente */
+  .scrollbar-hide,
+  .scrollbar-none {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
   }
 
-  .animation-delay-4000 {
-    animation-delay: 4s;
+  .scrollbar-hide::-webkit-scrollbar,
+  .scrollbar-none::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+
+  /* Remover barra de rolagem da sidebar especificamente */
+  aside {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  aside::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+
+  aside *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+
+  /* Ponto de cor do seletor de tema (sem @apply para evitar avisos do IDE) */
+  .dot-theme {
+    display: inline-block;
+    border-radius: 9999px;
+    border-width: 2px;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /* Mapear atributos para cores fixas (não herdam skin vigente) */
+  [data-theme-color="#FF8500"].dot-theme {
+    background-color: #FF8500 !important;
+    border-color: #FF8500 !important;
+  }
+
+  [data-theme-color="#0037C1"].dot-theme {
+    background-color: #0037C1 !important;
+    border-color: #0037C1 !important;
+  }
+
+  [data-theme-color="#008C32"].dot-theme {
+    background-color: #008C32 !important;
+    border-color: #008C32 !important;
+  }
+
+  [data-theme-color="#00DD4F"].dot-theme {
+    background-color: #00DD4F !important;
+    border-color: #00DD4F !important;
+  }
+
+  [data-theme-color="#FDC300"].dot-theme {
+    background-color: #FDC300 !important;
+    border-color: #FDC300 !important;
+  }
+
+  [data-theme-color="#00BDFF"].dot-theme {
+    background-color: #00BDFF !important;
+    border-color: #00BDFF !important;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }

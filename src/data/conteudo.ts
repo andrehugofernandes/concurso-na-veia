@@ -23,7 +23,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         icone: '📝',
         cor: 'from-blue-500 to-cyan-500',
         topicos: [
-            { id: 'interpretacao', titulo: 'Interpretação de Texto', descricao: 'Compreensão de textos de gêneros variados', duracao: '8 min', ordem: 1 },
+            { id: 'interpretacao', titulo: 'Interpretação de Texto', descricao: 'Compreensão de textos de gêneros variados', duracao: '25 min', ordem: 1 },
             { id: 'tipos-textuais', titulo: 'Tipos Textuais', descricao: 'Narração, descrição e dissertação', duracao: '6 min', ordem: 2 },
             { id: 'coesao-coerencia', titulo: 'Coesão e Coerência', descricao: 'Elementos de ligação e organização textual', duracao: '6 min', ordem: 3 },
             { id: 'classes-palavras', titulo: 'Classes de Palavras', descricao: 'Substantivos, adjetivos, verbos, conjunções, preposições, pronomes, advérbios', duracao: '10 min', ordem: 4 },

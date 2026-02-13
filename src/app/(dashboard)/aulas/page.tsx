@@ -6,6 +6,7 @@ import { CONTEUDO_MATERIAS, MateriaConteudo } from '@/data/conteudo';
 import { CARGOS } from '@/data/cargos';
 import { carregarUsuario } from '@/lib/utils';
 import { getProfissaoById } from '@/lib/profissoes-edital';
+import { AnimatedBorder } from '@/components/ui/animated-border';
 
 // Mapeamento de IDs do registro para IDs do profissoes-edital
 const CARGO_ID_MAP: Record<string, string> = {
@@ -112,60 +113,81 @@ export default function AulasPage() {
     }
 
     return (
-        <div className="container mx-auto px-6 py-8">
+        <div className="p-2 md:p-4">
             {/* Page Header */}
-            <div className="mb-8">
-                <h1 className="text-4xl md:text-5xl font-bold text-white">
-                    📚 Aulas por Matéria
-                </h1>
-                <p className="text-gray-400 text-lg mt-2">
-                    {cargoNome ? `Conteúdo para: ${cargoNome}` : 'Escolha uma matéria para estudar'}
-                </p>
+            <div className="mb-12 flex items-start gap-4">
+                <div className="text-4xl md:text-5xl flex-shrink-0 mt-1">
+                    📚
+                </div>
+                <div>
+                    <h1 className="text-4xl md:text-5xl font-black text-foreground uppercase tracking-tight">
+                        Aulas por Matéria
+                    </h1>
+                    <p className="text-muted-foreground text-lg mt-2 font-medium">
+                        {cargoNome ? `Conteúdo para: ${cargoNome}` : 'Escolha uma matéria para estudar'}
+                    </p>
+                </div>
             </div>
 
             {/* Matérias Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {materiasVisiveis.map((materia) => (
-                    <Link
+                    <div
                         key={materia.id}
-                        href={`/aulas/${materia.id}`}
-                        className="group relative bg-slate-800/50 backdrop-blur-lg rounded-2xl p-6 border border-slate-700/50 hover:border-slate-600 transition-all duration-300 hover:transform hover:-translate-y-2"
+                        className="group relative flex flex-col bg-slate-50/50 dark:bg-card backdrop-blur-lg rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/10 overflow-hidden"
                     >
-                        {/* Gradient overlay on hover */}
-                        <div className={`absolute inset-0 bg-gradient-to-br ${materia.cor} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity`} />
+                        <AnimatedBorder borderRadius="rounded-3xl" />
 
-                        <div className="relative z-10">
-                            {/* Icon */}
-                            <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-r ${materia.cor} text-4xl mb-4`}>
-                                {materia.icone}
+                        {/* Header Section */}
+                        <div className="p-8 pb-4">
+                            <div className="flex items-start justify-between mb-6">
+                                <div className={`flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${materia.cor} text-3xl shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform`}>
+                                    {materia.icone}
+                                </div>
+                                <span className="px-3 py-1 rounded-full bg-zinc-100/80 dark:bg-zinc-800/50 text-primary text-xs font-bold border border-zinc-200 dark:border-zinc-700">
+                                    {materia.topicos.length} Tópicos
+                                </span>
                             </div>
 
-                            {/* Title */}
-                            <h2 className="text-xl font-bold text-white mb-2 group-hover:text-yellow-400 transition">
+                            <h2 className="text-3xl font-black text-foreground tracking-tight group-hover:text-primary transition-colors uppercase">
                                 {materia.nome}
                             </h2>
-
-                            {/* Description */}
-                            <p className="text-gray-400 text-sm mb-4">
+                            <p className="text-muted-foreground text-sm mt-2 line-clamp-2">
                                 {materia.descricao}
                             </p>
-
-                            {/* Stats */}
-                            <div className="flex items-center gap-4 text-sm">
-                                <span className="text-gray-500">
-                                    📖 {materia.topicos.length} tópicos
-                                </span>
-                                <span className="text-gray-500">
-                                    ⏱️ {materia.topicos.reduce((acc, t) => acc + parseInt(t.duracao), 0)} min
-                                </span>
-                            </div>
-
-                            {/* Arrow indicator */}
-                            <div className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-600 group-hover:text-yellow-400 group-hover:translate-x-2 transition-all">
-                                →
-                            </div>
                         </div>
-                    </Link>
+
+                        {/* List of Topics (Pricing Style) */}
+                        <div className="flex-1 px-8 py-4 space-y-3">
+                            {materia.topicos.slice(0, 7).map((topico, idx) => (
+                                <div key={topico.id} className="flex items-center gap-3 text-sm text-muted-foreground group/item">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500/40 group-hover/item:bg-blue-500 transition-colors" />
+                                    <span className="truncate group-hover/item:text-foreground transition-colors">
+                                        {topico.titulo}
+                                    </span>
+                                </div>
+                            ))}
+                            {materia.topicos.length > 7 && (
+                                <div className="text-xs text-primary/60 font-medium pl-4.5">
+                                    + {materia.topicos.length - 7} outros tópicos...
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Bottom Action */}
+                        <div className="p-8 pt-4">
+                            <Link
+                                href={`/aulas/${materia.id}`}
+                                className={`flex items-center justify-center w-full py-4 rounded-xl font-bold bg-gradient-to-r ${materia.cor} text-white shadow-lg hover:shadow-xl hover:opacity-90 transition-all active:scale-[0.98] group/btn`}
+                            >
+                                Começar Agora
+                                <span className="ml-2 group-hover/btn:translate-x-1 transition-transform">→</span>
+                            </Link>
+                        </div>
+
+                        {/* Decoration */}
+                        <div className={`absolute -right-12 -bottom-12 w-48 h-48 bg-gradient-to-br ${materia.cor} opacity-[0.03] group-hover:opacity-[0.08] rounded-full transition-opacity`} />
+                    </div>
                 ))}
             </div>
         </div>

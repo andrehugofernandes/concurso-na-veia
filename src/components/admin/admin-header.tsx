@@ -1,24 +1,10 @@
 'use client';
 
+import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
-import {
-  Bell,
-  Search,
-  User,
-  ChevronDown,
-  Settings,
-  LogOut,
-  Sun,
-  Moon,
-  Menu
-} from 'lucide-react';
-
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-// Adapting to existing theme provider if available, or using a simple mock for now
-// import { useTheme } from '@/components/providers/theme-provider'; 
-// import { useAuth } from '@/hooks/useAuth';
-
+import { LuMenu, LuSun, LuMoon, LuBell, LuUser, LuSettings, LuLogOut, LuSearch, LuCheck, LuPalette, LuZap } from 'react-icons/lu';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,143 +13,385 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import React, { useState, useEffect, createContext, useContext } from 'react';
+// import { logoutAction } from '@/app/actions/auth'; // Removed 
+// import { getDashboardTitleForHeader } from '@/app/admin/settings/actions'; // Removed
+import { availableThemes } from '@/lib/themes';
+import { createClient } from '@/lib/supabase/client';
 
-interface HeaderProps {
-  userName?: string;
-  userEmail?: string;
-  onMenuToggle?: () => void;
-  isSidebarCollapsed?: boolean;
+function hexToRgbTriplet(hex: string): string {
+  const clean = hex.trim().replace('#', '');
+  if (clean.length !== 6) return '59 130 246';
+  const r = Number.parseInt(clean.slice(0, 2), 16);
+  const g = Number.parseInt(clean.slice(2, 4), 16);
+  const b = Number.parseInt(clean.slice(4, 6), 16);
+  if (Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b)) return '59 130 246';
+  return `${r} ${g} ${b}`;
 }
 
-export function AdminHeader({ userName = 'Admin', userEmail = 'admin@petrobras.com', onMenuToggle }: HeaderProps) {
-  // Mocking auth and theme for initial integration
-  const [theme, setTheme] = useState('dark');
-  const notificationCount = 3;
+interface AdminHeaderProps {
+  onMenuToggle: () => void;
+  isSidebarCollapsed?: boolean;
+  userName?: string;
+  userEmail?: string;
+  userRole?: string;
+}
+
+export function AdminHeader({ onMenuToggle, isSidebarCollapsed, userName, userEmail, userRole }: AdminHeaderProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [themeColor, setThemeColor] = useState('blue');
+  const [notificationCount] = useState(0);
+  const [dashboardTitle, setDashboardTitle] = useState<string | null>(null);
+  const supabase = createClient();
+
+  // Evitar hydration mismatch - só renderiza elementos dinâmicos após montar
+  useEffect(() => {
+    setMounted(true);
+    // Detectar tema atual
+    const isDark = document.documentElement.classList.contains('dark');
+    setTheme(isDark ? 'dark' : 'light');
+    // Carregar cor do tema
+    const savedColor = localStorage.getItem('app-theme-color');
+    if (savedColor && availableThemes[savedColor]) {
+      setThemeColor(savedColor);
+    }
+  }, []);
+
+  // Aplicar CSS variables quando a cor do tema mudar
+  useEffect(() => {
+    if (mounted && typeof document !== 'undefined') {
+      const root = document.documentElement;
+      const colors = availableThemes[themeColor] || availableThemes['blue'];
+      root.style.setProperty('--primary', colors.primary);
+      root.style.setProperty('--primary-hover', colors.primaryHover);
+      root.style.setProperty('--primary-rgb', hexToRgbTriplet(colors.primary));
+      root.style.setProperty('--primary-hover-rgb', hexToRgbTriplet(colors.primaryHover));
+      localStorage.setItem('app-theme-color', themeColor);
+    }
+  }, [themeColor, mounted]);
 
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-    document.documentElement.classList.toggle('dark');
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+    localStorage.setItem('app-theme-mode', newTheme);
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push('/login');
+  };
+
+  // Função para extrair iniciais do nome
+  const getUserInitials = (name: string) => {
+    const names = name.trim().split(' ').filter(Boolean);
+    if (names.length === 0) return 'U';
+    if (names.length === 1) return names[0].charAt(0).toUpperCase();
+    const firstName = names[0];
+    const lastName = names[names.length - 1];
+    return (firstName.charAt(0) + lastName.charAt(0)).toUpperCase();
+  };
+
+  // Função para extrair o nome da página atual
+  const getCurrentPageName = () => {
+    const path = (pathname || '').split('/').filter(Boolean);
+    if (path.length === 0 || (path[0] === 'dashboard' && path.length === 1)) {
+      return '';
+    }
+
+    // Pegar o último segmento significativo
+    const lastSegment = path[path.length - 1];
+
+    // Se for 'aulas', apenas retornar 'Aulas'
+    if (lastSegment.toLowerCase() === 'aulas') return 'Aulas';
+
+    // Capitalizar primeira letra
+    return lastSegment.charAt(0).toUpperCase() + lastSegment.slice(1);
+  };
+
+  const [currentUser, setCurrentUser] = useState<{
+    fullName?: string | null;
+    email?: string | null;
+    username?: string | null;
+    avatarUrl?: string | null;
+  } | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        // Tentar obter perfil se existir tabela profiles, senão usar metadata
+        try {
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('nome')
+            .eq('id', user.id)
+            .single();
+
+          setCurrentUser({
+            fullName: profile?.nome || user.user_metadata?.full_name || 'Usuário',
+            email: user.email,
+            username: user.user_metadata?.username,
+            avatarUrl: user.user_metadata?.avatar_url
+          });
+        } catch {
+          // Fallback sem profiles
+          setCurrentUser({
+            fullName: user.user_metadata?.full_name || 'Usuário',
+            email: user.email,
+          });
+        }
+      }
+    })();
+  }, []);
+
+  const displayName = currentUser?.fullName || currentUser?.username || 'Usuário';
+  const displayEmail = currentUser?.email || '—';
+  const avatarUrl = currentUser?.avatarUrl || null;
+  const avatarInitials = getUserInitials(displayName);
+
+  // Função para processar o título do dashboard
+  const getDisplayTitle = () => {
+    const title = dashboardTitle || getCurrentPageName();
+    // Em mobile, remover "Dashboard | " se existir
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      return title.replace(/^Dashboard\s*\|\s*/i, '');
+    }
+    return title;
   };
 
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-sm z-10 border-b border-gray-200 dark:border-gray-700 h-16">
-      <div className="px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
-
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" size="icon" onClick={onMenuToggle} className="lg:hidden">
-            <Menu className="h-6 w-6" />
-          </Button>
-
-          {/* Área de pesquisa */}
-          <div className="hidden md:block max-w-md w-64 lg:w-96">
-            <div className="relative">
-              <label htmlFor="dashboard-search" className="sr-only">Buscar no sistema</label>
-              <Input
-                id="dashboard-search"
-                type="search"
-                placeholder="Buscar..."
-                className="pl-10 pr-4 rounded-full bg-gray-50 dark:bg-gray-700 border-none focus-visible:ring-[#0037C1]"
-                aria-label="Buscar no sistema"
-              />
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
-            </div>
-          </div>
+    <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-3 md:px-6 py-3 md:py-4 sticky top-0 z-10">
+      <div className="flex items-center justify-between gap-2">
+        {/* Left: Menu Toggle + Title */}
+        <div className="flex items-center space-x-2 md:space-x-4 flex-1 min-w-0">
+          <button
+            onClick={onMenuToggle}
+            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0"
+            aria-label={isSidebarCollapsed ? 'Expandir menu' : 'Colapsar menu'}
+          >
+            <LuMenu className="h-5 w-5" />
+          </button>
+          <h1 className="text-sm md:text-xl font-semibold text-gray-900 dark:text-white truncate">
+            {mounted ? getDisplayTitle() : getCurrentPageName()}
+          </h1>
         </div>
 
-        {/* Área direita com notificações e avatar */}
-        <div className="flex items-center space-x-2 sm:space-x-4">
-          {/* Botão de tema */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-full"
-            onClick={toggleTheme}
-            aria-label={theme === 'dark' ? 'Alternar para tema claro' : 'Alternar para tema escuro'}
-          >
-            {theme === 'dark' ? (
-              <Sun className="h-5 w-5 text-gray-400" />
-            ) : (
-              <Moon className="h-5 w-5 text-gray-600" />
-            )}
-          </Button>
-
-          {/* Notificações */}
-          <div className="relative">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full relative focus:ring-2 focus:ring-[#0037C1] focus:outline-none"
-              aria-label="Notificações"
+        {/* Right: Actions */}
+        <div className="flex items-center space-x-2 md:space-x-4 flex-shrink-0">
+          {/* Seja Pro CTA - Desktop only, hide for admins */}
+          {userRole !== 'ADMIN' && userRole !== 'SYSADMIN' && (
+            <Link
+              href="/seja-pro"
+              className="hidden md:flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black text-[11px] font-black rounded-full transition-all shadow-sm hover:shadow-yellow-500/20 active:scale-95 border border-yellow-200/50"
             >
-              <Bell className="h-5 w-5 text-gray-600 dark:text-gray-300" />
-              {notificationCount > 0 && (
-                <span
-                  className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full"
-                  aria-label={`${notificationCount} notificações não lidas`}
-                >
-                  {notificationCount}
-                </span>
-              )}
-            </Button>
-          </div>
+              <LuZap className="h-3.5 w-3.5 fill-black" />
+              <span className="tracking-tight">SEJA PRO</span>
+            </Link>
+          )}
 
-          {/* Menu do usuário */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                className="flex items-center space-x-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full py-2 px-2 sm:px-4 focus:ring-2 focus:ring-[#0037C1] focus:outline-none"
-                aria-label="Menu do usuário"
-              >
-                <div className="h-8 w-8 rounded-full bg-[#0037C1] flex items-center justify-center text-white" aria-hidden="true">
-                  <span className="font-medium">{userName.charAt(0)}</span>
+          {/* Search Button - Desktop only */}
+          <button className="hidden md:flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300" aria-label="Buscar">
+            <LuSearch className="h-5 w-5" />
+          </button>
+
+          {/* Theme Toggle - Desktop only */}
+          {mounted && (
+            <button
+              onClick={toggleTheme}
+              className="hidden md:flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300"
+              aria-label={theme === 'dark' ? 'Alternar para tema claro' : 'Alternar para tema escuro'}
+            >
+              {theme === 'dark' ? (
+                <LuSun className="h-5 w-5" />
+              ) : (
+                <LuMoon className="h-5 w-5" />
+              )}
+            </button>
+          )}
+
+          {/* Theme Color Picker - Desktop only */}
+          {mounted && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="hidden md:flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors" aria-label="Escolher tema de cor">
+                  <div className="w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-[var(--primary)]" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg">
+                <DropdownMenuLabel>Escolher Tema</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                {Object.entries(availableThemes).map(([key, t]) => (
+                  <DropdownMenuItem
+                    key={key}
+                    onClick={() => setThemeColor(key)}
+                    className="flex items-center justify-between cursor-pointer"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded-full" data-theme-color={t.primary} style={{ backgroundColor: t.primary }} />
+                      <span>{t.name}</span>
+                    </div>
+                    {themeColor === key && <LuCheck className="h-4 w-4 text-green-600" />}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
+
+          {/* Notifications - Desktop only */}
+          {mounted ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="hidden md:flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300" aria-label="Notificações">
+                  <LuBell className="h-5 w-5" />
+                  {notificationCount > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                      {notificationCount > 9 ? '9+' : notificationCount}
+                    </span>
+                  )}
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-80 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg">
+                <DropdownMenuLabel>Notificações</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <div className="p-4 text-center text-gray-500 dark:text-gray-400 text-sm">
+                  Nenhuma notificação
                 </div>
-                <div className="hidden lg:flex flex-col items-start">
-                  <span className="text-sm font-medium">{userName}</span>
-                  <span className="text-xs text-gray-500 max-w-[120px] truncate">{userEmail}</span>
-                </div>
-                <ChevronDown className="h-4 w-4 text-gray-500 hidden lg:inline" aria-hidden="true" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuLabel>
-                <div className="flex flex-col">
-                  <span>{userName}</span>
-                  <span className="text-xs text-gray-500 dark:text-gray-400 truncate">{userEmail}</span>
-                </div>
-              </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem asChild>
-                <Link href="/admin/perfil" className="flex items-center cursor-pointer">
-                  <User className="mr-2 h-4 w-4" />
-                  <span>Meu perfil</span>
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/admin/settings" className="flex items-center cursor-pointer">
-                  <Settings className="mr-2 h-4 w-4" />
-                  <span>Configurações</span>
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300 cursor-pointer">
-                <LogOut className="mr-2 h-4 w-4" />
-                <span>Sair</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <button className="hidden md:flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300" aria-label="Notificações">
+              <LuBell className="h-5 w-5" />
+            </button>
+          )}
+
+          {/* Separator - Desktop only */}
+          <div className="hidden md:block h-8 w-px bg-gray-300 dark:bg-gray-600" />
+
+          {/* Avatar Menu */}
+          {mounted ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="relative h-10 w-10 md:h-12 md:w-12 rounded-full p-0 flex-shrink-0">
+                  <div className="relative rounded-full border-2 md:border-4 border-[var(--primary)]">
+                    <Avatar className="h-8 w-8 md:h-10 md:w-10">
+                      <AvatarImage src={avatarUrl || undefined} alt={displayName} />
+                      <AvatarFallback className="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold text-xs md:text-sm">
+                        {avatarInitials}
+                      </AvatarFallback>
+                    </Avatar>
+                    <span className="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 h-2.5 w-2.5 md:h-3.5 md:w-3.5 rounded-full bg-emerald-500 border-2 border-white dark:border-gray-800 z-20 shadow-sm" />
+                  </div>
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg">
+                <DropdownMenuLabel>
+                  <div className="flex flex-col items-center p-2.5 pb-3 bg-gray-100 dark:bg-gray-600 rounded-md">
+                    <span className="text-sm font-medium leading-snug mb-1">{displayName}</span>
+                    <span className="text-xs leading-snug text-gray-600 dark:text-gray-300 truncate">
+                      {displayEmail}
+                    </span>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link href="/dashboard/settings" className="flex items-center cursor-pointer">
+                    <LuSettings className="mr-2 h-4 w-4" />
+                    Configurações
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                {/* Mobile-only items */}
+                <DropdownMenuItem className="md:hidden" onClick={() => document.querySelector('[aria-label="Buscar"]')?.parentElement?.click()}>
+                  <LuSearch className="mr-2 h-4 w-4" />
+                  Buscar
+                </DropdownMenuItem>
+                {mounted && (
+                  <DropdownMenuItem className="md:hidden" onClick={toggleTheme}>
+                    {theme === 'dark' ? (
+                      <><LuSun className="mr-2 h-4 w-4" />Tema Claro</>
+                    ) : (
+                      <><LuMoon className="mr-2 h-4 w-4" />Tema Escuro</>
+                    )}
+                  </DropdownMenuItem>
+                )}
+                {mounted && (
+                  <div className="md:hidden">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <button className="w-full flex items-center px-2 py-1.5 text-sm cursor-pointer hover:bg-accent rounded-sm">
+                          <LuPalette className="mr-2 h-4 w-4" />
+                          Cores do Tema
+                        </button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent side="right" className="w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg">
+                        <DropdownMenuLabel>Escolher Tema</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        {Object.entries(availableThemes).map(([key, t]) => (
+                          <DropdownMenuItem
+                            key={key}
+                            onClick={() => setThemeColor(key)}
+                            className="flex items-center justify-between cursor-pointer"
+                          >
+                            <div className="flex items-center gap-2">
+                              <div
+                                className="w-4 h-4 rounded-full"
+                                data-theme-color={t.primary}
+                                style={{ backgroundColor: t.primary }}
+                              />
+                              <span>{t.name}</span>
+                            </div>
+                            {themeColor === key && <LuCheck className="h-4 w-4 text-green-600" />}
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
+                )}
+                <DropdownMenuItem className="md:hidden">
+                  <LuBell className="mr-2 h-4 w-4" />
+                  Notificações
+                </DropdownMenuItem>
+                <DropdownMenuSeparator className="md:hidden" />
+                <DropdownMenuItem
+                  onClick={handleLogout}
+                  className="text-red-600 cursor-pointer focus:text-red-600"
+                >
+                  <LuLogOut className="mr-2 h-4 w-4" />
+                  Sair
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <div className="relative h-10 w-10 md:h-12 md:w-12 rounded-full p-0 flex-shrink-0">
+              <div className="rounded-full border-2 md:border-4 border-gray-300">
+                <Avatar className="h-8 w-8 md:h-10 md:w-10">
+                  <AvatarFallback className="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold text-xs md:text-sm">
+                    {avatarInitials}
+                  </AvatarFallback>
+                </Avatar>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </header>
   );
 }
+// Adding missing NotificationCountProvider
+const NotificationCountContext = createContext<{ count: number }>({ count: 0 });
 
-const NotificationContext = createContext<{ count: number; setCount: React.Dispatch<React.SetStateAction<number>> }>({ count: 0, setCount: () => { } });
-
-export function NotificationCountProvider({ children }: { children: React.ReactNode }) {
-  const [count, setCount] = useState(3);
-  return <NotificationContext.Provider value={{ count, setCount }}>{children}</NotificationContext.Provider>;
+export function NotificationCountProvider({ children }: { children: ReactNode }) {
+  const [count] = useState(0);
+  return (
+    <NotificationCountContext.Provider value={{ count }}>
+      {children}
+    </NotificationCountContext.Provider>
+  );
 }
 
-export const useNotificationCount = () => useContext(NotificationContext);
+export function useNotificationCount() {
+  return useContext(NotificationCountContext);
+}

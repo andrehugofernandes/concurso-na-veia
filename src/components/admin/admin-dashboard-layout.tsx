@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-// import { useAuth } from '@/hooks/useAuth'; 
+import { useAuth } from '@/hooks/useAuth';
 
 // Importando os novos componentes administrativos
 import { AdminSidebar } from '@/components/admin/admin-sidebar';
@@ -15,10 +15,7 @@ interface AdminDashboardLayoutProps {
 }
 
 export function AdminDashboardLayout({ children }: AdminDashboardLayoutProps) {
-  // Mock auth for layout integration
-  const isLoading = false;
-  const isAuthenticated = true;
-  const user = { name: 'Admin User', email: 'admin@petrobras.com', role: 'ADMIN' };
+  const { user, isLoading, isAuthenticated } = useAuth();
 
   const [userName, setUserName] = useState('Admin User');
   const [userEmail, setUserEmail] = useState('admin@petrobras.com');
@@ -140,20 +137,20 @@ export function AdminDashboardLayout({ children }: AdminDashboardLayoutProps) {
     <NotificationCountProvider>
       <div ref={swipeRef} className="flex w-full h-screen bg-gray-100 dark:bg-gray-900 overflow-hidden">
         {/* Sidebar */}
-        <div className={`fixed inset-y-0 left-0 z-50 transition-width duration-300 ${isSidebarCollapsed ? 'w=[70px]' : 'w-[250px]'}`}>
+        <div className={`fixed inset-y-0 left-0 z-50 transition-width duration-300 ${isSidebarCollapsed ? 'w-[80px]' : 'w-[256px]'}`}>
           <AdminSidebar
             isCollapsed={isSidebarCollapsed || isMobile}
             onToggle={toggleSidebar}
             userName={userName}
             userEmail={userEmail}
-            userRole={userRole}
+            userRole={user?.role}
           />
         </div>
 
 
         {/* Conteúdo principal */}
         <div
-          className={`flex flex-col flex-1 h-full transition-all duration-300 ease-in-out ${isMobile ? 'ml-0' : (isSidebarCollapsed ? 'ml-[70px]' : 'ml-[250px]')
+          className={`flex flex-col flex-1 h-full transition-all duration-300 ease-in-out ${isMobile ? 'ml-0' : (isSidebarCollapsed ? 'ml-[80px]' : 'ml-[256px]')
             }`}
         >
           {/* Header */}

@@ -96,29 +96,34 @@ export default function MateriaPage({ params }: PageProps) {
     }
 
     return (
-        <div className="container mx-auto px-6 py-8">
+        <div className="p-2 md:p-4">
+            {/* Back Link */}
+            <Link href="/aulas" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition mb-6 group">
+                <span className="group-hover:-translate-x-1 transition-transform">←</span> Voltar às Matérias
+            </Link>
+
             {/* Page Header */}
             <div className="flex items-center gap-4 mb-6">
                 <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-r ${materia.cor} text-4xl`}>
                     {materia.icone}
                 </div>
                 <div>
-                    <h1 className="text-4xl md:text-5xl font-bold text-white">
+                    <h1 className="text-4xl md:text-5xl font-bold text-foreground">
                         {materia.nome}
                     </h1>
-                    <p className="text-gray-400 mt-1">
+                    <p className="text-muted-foreground mt-1">
                         {materia.descricao}
                     </p>
                 </div>
             </div>
 
             {/* Progress overview */}
-            <div className="mb-8 bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-                <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-400 text-sm">Progresso geral</span>
-                    <span className="text-yellow-400 font-bold">0/{materia.topicos.length} concluídos</span>
+            <div className="mb-8 bg-card rounded-xl p-6 border border-border shadow-lg">
+                <div className="flex items-center justify-between mb-3">
+                    <span className="text-muted-foreground text-sm font-bold uppercase tracking-wider">Progresso geral</span>
+                    <span className="text-yellow-500 font-bold">0/{materia.topicos.length} concluídos</span>
                 </div>
-                <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div className="h-3 bg-muted rounded-full overflow-hidden border border-border">
                     <div className="h-full bg-gradient-to-r from-yellow-400 to-orange-500 w-0 transition-all" />
                 </div>
             </div>
@@ -129,30 +134,29 @@ export default function MateriaPage({ params }: PageProps) {
                     <Link
                         key={topico.id}
                         href={`/aulas/${materiaId}/${topico.id}`}
-                        className="group flex items-center gap-4 bg-slate-800/50 backdrop-blur-lg rounded-xl p-5 border border-slate-700/50 hover:border-yellow-500/50 transition-all"
+                        className="group flex items-center gap-4 bg-card backdrop-blur-lg rounded-xl p-5 border border-border shadow-lg hover:border-yellow-500/50 transition-all active:scale-[0.98]"
                     >
                         {/* Order number */}
-                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold group-hover:bg-yellow-500 group-hover:text-slate-900 transition">
+                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground font-bold group-hover:bg-yellow-500 group-hover:text-slate-900 transition">
                             {index + 1}
                         </div>
 
-                        {/* Content */}
-                        <div className="flex-grow">
-                            <h3 className="text-lg font-semibold text-white group-hover:text-yellow-400 transition">
+                        <div className="flex-grow min-w-0">
+                            <h3 className="text-lg font-bold text-foreground group-hover:text-yellow-600 dark:group-hover:text-yellow-500 transition truncate">
                                 {topico.titulo}
                             </h3>
-                            <p className="text-gray-400 text-sm">
+                            <p className="text-muted-foreground text-sm truncate">
                                 {topico.descricao}
                             </p>
                         </div>
 
                         {/* Duration */}
-                        <div className="flex-shrink-0 text-gray-500 text-sm flex items-center gap-1">
+                        <div className="flex-shrink-0 text-muted-foreground text-xs font-bold bg-muted px-2 py-1 rounded flex items-center gap-1">
                             ⏱️ {topico.duracao}
                         </div>
 
                         {/* Status indicator */}
-                        <div className="flex-shrink-0 w-6 h-6 rounded-full border-2 border-slate-600 group-hover:border-yellow-500 transition" />
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full border-2 border-border group-hover:border-yellow-500 transition bg-background shadow-inner" />
 
                         {/* Arrow */}
                         <div className="flex-shrink-0 text-gray-600 group-hover:text-yellow-400 group-hover:translate-x-1 transition-all">

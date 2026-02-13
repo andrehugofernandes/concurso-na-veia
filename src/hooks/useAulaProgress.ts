@@ -75,24 +75,29 @@ export function useAulaProgress(materiaId: string, topicoId: string): UseAulaPro
             const { data: { user } } = await supabase.auth.getUser();
             if (!user) return;
 
+            // Ensure progress doesn't regress
+            const newProgress = Math.max(progress, Math.min(Math.round(percent), 100));
+
+            if (newProgress === progress) return;
+
             const { error: upsertError } = await supabase
                 .from('aulas_progress')
                 .upsert({
                     user_id: user.id,
                     materia_id: materiaId,
                     topico_id: topicoId,
-                    progress_percent: Math.min(Math.round(percent), 100),
+                    progress_percent: newProgress,
                     completed: false
                 }, {
                     onConflict: 'user_id,materia_id,topico_id'
                 });
 
             if (upsertError) throw upsertError;
-            setProgress(percent);
+            setProgress(newProgress);
         } catch (err) {
             console.error('Error updating progress:', JSON.stringify(err, null, 2));
         }
-    }, [materiaId, topicoId, completed, supabase]);
+    }, [materiaId, topicoId, completed, supabase, progress]);
 
     // Marcar aula como concluída e ganhar XP
     const completeAula = useCallback(async (): Promise<{ success: boolean; xp_awarded: number }> => {

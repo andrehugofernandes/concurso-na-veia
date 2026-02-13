@@ -25,6 +25,9 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
+source/
+temp_new_reference/
+temp_reference_repo/
 
 # vercel
 .vercel

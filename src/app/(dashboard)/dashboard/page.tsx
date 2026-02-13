@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { CONTEUDO_MATERIAS } from '@/data/conteudo';
 import { PROFISSOES } from '@/lib/profissoes-edital';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, Legend } from 'recharts';
+import { progressService, LessonProgress } from '@/lib/services/progress';
 
 interface UserData {
     nome: string;
@@ -81,6 +83,8 @@ const CARGOS_NOMES: Record<string, string> = {
 export default function DashboardPage() {
     const [user, setUser] = useState<UserData | null>(null);
     const [loading, setLoading] = useState(true);
+    const [progressData, setProgressData] = useState<LessonProgress[]>([]);
+    const [stats, setStats] = useState({ completed: 0, inProgress: 0, total: 0 });
 
     // Config Modal State
     const [configModal, setConfigModal] = useState<{ open: boolean, tipo?: string, nome?: string, cor?: string, qtd?: number }>({ open: false });
@@ -102,7 +106,34 @@ export default function DashboardPage() {
                 setLoading(false);
             }
         };
+
+        const loadProgress = async () => {
+            const data = await progressService.getProgress();
+            setProgressData(data);
+
+            // Calculate stats
+            // For now, let's assume total lessons based on CONTEUDO_MATERIAS flat list of topics
+            // This is an estimation. A real implementation would count actual unique lessons.
+            let totalLessons = 0;
+            CONTEUDO_MATERIAS.forEach(m => totalLessons += m.topicos.length);
+
+            // Count unique lessons completed
+            const uniqueCompletedMatches = new Set(data.filter(p => p.completed).map(p => p.lessonId));
+            const completedCount = uniqueCompletedMatches.size;
+
+            // In progress (started but not fully completed - though our current logic marks completed per module)
+            // Let's count "In Progress" as lessons with some data but not all modules done?
+            // For simplicity, let's just use what we have.
+
+            setStats({
+                completed: completedCount,
+                inProgress: data.length - completedCount, // Rough approx
+                total: totalLessons > 0 ? totalLessons : 10 // Fallback
+            });
+        };
+
         loadUser();
+        loadProgress();
     }, []);
 
     const taxaAcerto = user
@@ -113,8 +144,8 @@ export default function DashboardPage() {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-yellow-400" />
+            <div className="min-h-screen bg-background flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary" />
             </div>
         );
     }
@@ -169,21 +200,21 @@ export default function DashboardPage() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-950 p-6 md:p-8">
-            <header className="flex justify-between items-center mb-8">
+        <div className="p-2 md:p-4">
+            <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-white mb-1">Olá, {userData.nome.split(' ')[0]}! 👋</h1>
-                    <p className="text-gray-400">Pronto para superar seus limites hoje?</p>
+                    <h1 className="text-3xl font-bold text-foreground mb-1">Olá, {userData.nome.split(' ')[0]}! 👋</h1>
+                    <p className="text-muted-foreground">Pronto para superar seus limites hoje?</p>
                 </div>
                 {userData.plan === 'free' && (
                     <div className="flex items-center gap-4">
                         <div className="flex flex-col items-end">
-                            <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Teste Grátis</span>
-                            <div className="flex items-center gap-1.5 bg-slate-800/50 px-2 py-1 rounded-lg border border-slate-700">
-                                <span className={`text-lg font-black ${userData.diasRestantesTrial && userData.diasRestantesTrial <= 3 ? 'text-red-500 animate-pulse' : 'text-yellow-400'}`}>
+                            <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">Teste Grátis</span>
+                            <div className="flex items-center gap-1.5 bg-card px-2 py-1 rounded-lg border border-border shadow-sm">
+                                <span className={`text-lg font-black ${userData.diasRestantesTrial && userData.diasRestantesTrial <= 3 ? 'text-red-500 animate-pulse' : 'text-yellow-500 font-bold'}`}>
                                     {userData.diasRestantesTrial}
                                 </span>
-                                <span className="text-xs text-gray-300 font-bold">dias restantes</span>
+                                <span className="text-xs text-muted-foreground font-bold">dias restantes</span>
                             </div>
                         </div>
                         <Link href="/pricing" className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-slate-900 font-bold rounded-lg hover:shadow-lg hover:shadow-orange-500/20 transition-all text-sm animate-bounce">
@@ -194,17 +225,17 @@ export default function DashboardPage() {
             </header>
 
             {/* Tabs */}
-            <div className="flex gap-4 mb-8 border-b border-slate-800">
+            <div className="flex gap-4 mb-8 border-b border-border">
                 <button
                     onClick={() => setActiveTab('overview')}
-                    className={`pb-4 px-2 text-sm font-bold transition-all relative ${activeTab === 'overview' ? 'text-yellow-500' : 'text-gray-400 hover:text-white'}`}
+                    className={`pb-4 px-2 text-sm font-bold transition-all relative ${activeTab === 'overview' ? 'text-yellow-500' : 'text-muted-foreground hover:text-foreground'}`}
                 >
                     Visão Geral
                     {activeTab === 'overview' && <div className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-500 rounded-t-full"></div>}
                 </button>
                 <button
                     onClick={() => setActiveTab('ranking')}
-                    className={`pb-4 px-2 text-sm font-bold transition-all relative ${activeTab === 'ranking' ? 'text-yellow-500' : 'text-gray-400 hover:text-white'}`}
+                    className={`pb-4 px-2 text-sm font-bold transition-all relative ${activeTab === 'ranking' ? 'text-yellow-500' : 'text-muted-foreground hover:text-foreground'}`}
                 >
                     Ranking
                     {activeTab === 'ranking' && <div className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-500 rounded-t-full"></div>}
@@ -216,52 +247,143 @@ export default function DashboardPage() {
                     <>
                         {/* Stats Row */}
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-                            <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex items-center gap-4">
-                                <div className="p-3 bg-blue-500/20 rounded-lg text-blue-400 text-2xl">⚡</div>
+                            <div className="bg-card p-4 rounded-xl border border-border flex items-center gap-4 shadow-lg">
+                                <div className="p-3 bg-blue-500/20 rounded-lg text-blue-500 text-2xl">⚡</div>
                                 <div>
-                                    <p className="text-gray-400 text-xs uppercase font-bold">Sequência</p>
-                                    <p className="text-2xl font-bold text-white">{userData.sequencia_atual} dias</p>
+                                    <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider">Sequência</p>
+                                    <p className="text-2xl font-black text-foreground">{userData.sequencia_atual} dias</p>
                                 </div>
                             </div>
-                            <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex items-center gap-4">
-                                <div className="p-3 bg-purple-500/20 rounded-lg text-purple-400 text-2xl">🎯</div>
+                            <div className="bg-card p-4 rounded-xl border border-border flex items-center gap-4 shadow-lg">
+                                <div className="p-3 bg-purple-500/20 rounded-lg text-purple-500 text-2xl">🎯</div>
                                 <div>
-                                    <p className="text-gray-400 text-xs uppercase font-bold">Precisão</p>
-                                    <p className="text-2xl font-bold text-white">{taxaAcerto}%</p>
+                                    <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider">Precisão</p>
+                                    <p className="text-2xl font-black text-foreground">{taxaAcerto}%</p>
                                 </div>
                             </div>
-                            <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex items-center gap-4">
-                                <div className="p-3 bg-green-500/20 rounded-lg text-green-400 text-2xl">📝</div>
+                            <div className="bg-card p-4 rounded-xl border border-border flex items-center gap-4 shadow-lg">
+                                <div className="p-3 bg-green-500/20 rounded-lg text-green-500 text-2xl">📝</div>
                                 <div>
-                                    <p className="text-gray-400 text-xs uppercase font-bold">Questões</p>
-                                    <p className="text-2xl font-bold text-white">{userData.questoes_geradas}</p>
+                                    <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider">Questões</p>
+                                    <p className="text-2xl font-black text-foreground">{userData.questoes_geradas}</p>
                                 </div>
                             </div>
-                            <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex items-center gap-4">
-                                <div className="p-3 bg-yellow-500/20 rounded-lg text-yellow-400 text-2xl">🏆</div>
+                            <div className="bg-card p-4 rounded-xl border border-border flex items-center gap-4 shadow-lg">
+                                <div className="p-3 bg-yellow-500/20 rounded-lg text-yellow-500 text-2xl">🏆</div>
                                 <div>
-                                    <p className="text-gray-400 text-xs uppercase font-bold">Nível</p>
-                                    <p className="text-2xl font-bold text-white">{userData.nivel_jogador}</p>
+                                    <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider">Nível</p>
+                                    <p className="text-2xl font-black text-foreground">{userData.nivel_jogador}</p>
                                 </div>
                             </div>
                         </div>
 
+                        {/* SECTION 0: My Progress */}
+                        {stats.total > 0 && (
+                            <section className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                                {/* Chart Card */}
+                                <div className="bg-card rounded-2xl border border-border p-6 shadow-sm flex flex-col">
+                                    <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+                                        <span className="text-xl">📊</span> Meu Progresso Geral
+                                    </h3>
+                                    <div className="flex-1 min-h-[200px] relative">
+                                        <ResponsiveContainer width="100%" height="100%">
+                                            <PieChart>
+                                                <Pie
+                                                    data={[
+                                                        { name: 'Concluído', value: stats.completed },
+                                                        { name: 'Restante', value: stats.total - stats.completed }
+                                                    ]}
+                                                    cx="50%"
+                                                    cy="50%"
+                                                    innerRadius={60}
+                                                    outerRadius={80}
+                                                    paddingAngle={5}
+                                                    dataKey="value"
+                                                    stroke="none"
+                                                >
+                                                    <Cell key="cell-0" fill="#22c55e" />
+                                                    <Cell key="cell-1" fill="#334155" opacity={0.3} />
+                                                </Pie>
+                                                <RechartsTooltip
+                                                    contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155', color: '#f8fafc' }}
+                                                    itemStyle={{ color: '#f8fafc' }}
+                                                />
+                                                <Legend verticalAlign="bottom" height={36} />
+                                            </PieChart>
+                                        </ResponsiveContainer>
+                                        {/* Center Text */}
+                                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                            <div className="text-center">
+                                                <span className="text-3xl font-bold text-foreground">{Math.round((stats.completed / (stats.total || 1)) * 100)}%</span>
+                                                <p className="text-xs text-muted-foreground uppercase font-bold">Concluído</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Recent Activity / Continue Watching */}
+                                <div className="md:col-span-2 bg-gradient-to-br from-indigo-900/20 to-blue-900/20 rounded-2xl border border-indigo-500/20 p-6 shadow-sm flex flex-col justify-center">
+                                    <div className="flex justify-between items-start mb-4">
+                                        <div>
+                                            <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
+                                                <span className="animate-pulse">▶️</span> Continue de onde parou
+                                            </h3>
+                                            <p className="text-muted-foreground text-sm mt-1">Você estava estudando <strong>Interpretação de Texto</strong>.</p>
+                                        </div>
+                                        <Link href="/aulas/interpretacao-texto" className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg transition text-sm shadow-lg shadow-indigo-500/20">
+                                            Retomar Aula
+                                        </Link>
+                                    </div>
+                                    <div className="bg-background/50 rounded-xl p-4 border border-border/50">
+                                        {(() => {
+                                            // Find interpretacao-texto progress
+                                            const p = progressData.find(i => i.lessonId === 'interpretacao-texto');
+                                            const mod1 = progressData.find(i => i.lessonId === 'interpretacao-texto' && i.moduleId === 'modulo-1');
+                                            const mod2 = progressData.find(i => i.lessonId === 'interpretacao-texto' && i.moduleId === 'modulo-2');
+
+                                            let percent = 0;
+                                            let moduleName = 'Introdução';
+
+                                            if (mod2?.completed) { percent = 100; moduleName = 'Concluído'; }
+                                            else if (mod1?.completed) { percent = 50; moduleName = 'Módulo 2: Prática'; }
+                                            else if (p) { percent = 10; moduleName = 'Módulo 1: Fundamentos'; }
+
+                                            return (
+                                                <>
+                                                    <div className="flex justify-between text-sm mb-2 font-bold text-muted-foreground">
+                                                        <span>{moduleName}</span>
+                                                        <span>{percent}% Concluído</span>
+                                                    </div>
+                                                    <div className="h-3 bg-muted rounded-full overflow-hidden">
+                                                        <div
+                                                            className="h-full bg-indigo-500 rounded-full shadow-[0_0_10px_rgba(99,102,241,0.5)] transition-all duration-1000"
+                                                            style={{ width: `${percent}%` }}
+                                                        ></div>
+                                                    </div>
+                                                </>
+                                            );
+                                        })()}
+                                    </div>
+                                </div>
+                            </section>
+                        )}
+
                         {/* SECTION 1: Aulas (Moved to Top) */}
-                        <section className="mb-8 p-6 bg-blue-900/5 rounded-3xl border border-blue-500/10">
-                            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                <span className="p-2 bg-blue-500/20 rounded-lg text-blue-400 text-xl">📚</span>
+                        <section className="mb-8 p-6 bg-blue-500/5 rounded-3xl border border-blue-500/10">
+                            <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
+                                <span className="p-2 bg-blue-500/20 rounded-lg text-blue-500 text-xl">📚</span>
                                 Conteúdo Teórico e Aulas
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <Link
                                     href="/aulas"
-                                    className="group bg-slate-900/60 backdrop-blur-lg rounded-xl p-6 border border-slate-700/60 hover:border-blue-500/50 transition-all hover:transform hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/10"
+                                    className="group bg-card backdrop-blur-lg rounded-xl p-6 border border-border shadow-lg hover:border-blue-500/50 transition-all hover:transform hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10"
                                 >
                                     <div className="flex items-center gap-4">
                                         <div className="text-5xl">📖</div>
                                         <div>
-                                            <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Conteúdo Teórico</h3>
-                                            <p className="text-gray-400 text-sm mt-1">Aulas completas organizadas por edital, com acompanhamento de progresso.</p>
+                                            <h3 className="text-xl font-bold text-foreground group-hover:text-blue-500 transition-colors">Conteúdo Teórico</h3>
+                                            <p className="text-muted-foreground text-sm mt-1">Aulas completas organizadas por edital, com acompanhamento de progresso.</p>
                                         </div>
                                     </div>
                                     <div className="mt-4 flex items-center gap-2 text-blue-400 font-semibold group-hover:text-blue-300 transition text-sm uppercase tracking-wide">
@@ -272,12 +394,12 @@ export default function DashboardPage() {
                                     </div>
                                 </Link>
 
-                                <div className="bg-slate-900/30 backdrop-blur-lg rounded-xl p-6 border border-slate-800/50 opacity-70">
+                                <div className="bg-muted/30 backdrop-blur-lg rounded-xl p-6 border border-border opacity-70">
                                     <div className="flex items-center gap-4">
                                         <div className="text-5xl opacity-50">🎯</div>
                                         <div>
-                                            <h3 className="text-xl font-bold text-gray-500">Plano de Estudos</h3>
-                                            <p className="text-gray-600 text-sm mt-1">Cronograma personalizado baseado no seu tempo disponível.</p>
+                                            <h3 className="text-xl font-bold text-muted-foreground">Plano de Estudos</h3>
+                                            <p className="text-muted-foreground text-sm mt-1">Cronograma personalizado baseado no seu tempo disponível.</p>
                                         </div>
                                     </div>
                                     <div className="mt-4">
@@ -288,16 +410,16 @@ export default function DashboardPage() {
                         </section>
 
                         {/* SECTION 2: Simulados Rápidos */}
-                        <section className="mb-8 p-6 bg-slate-900/30 rounded-3xl border border-slate-800">
-                            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                <span className="p-2 bg-green-500/20 rounded-lg text-green-400 text-xl">⚡</span>
+                        <section className="mb-8 p-6 bg-muted/20 rounded-3xl border border-border">
+                            <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
+                                <span className="p-2 bg-green-500/20 rounded-lg text-green-500 text-xl">⚡</span>
                                 Simulados Rápidos
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 {/* Português Card */}
                                 <button
                                     onClick={() => handleSimuladoClick('portugues', 'Língua Portuguesa', 'blue')}
-                                    className="bg-slate-800/50 backdrop-blur-lg rounded-xl overflow-hidden border border-slate-700/50 hover:border-blue-500/50 transition-all group text-left flex flex-col h-full"
+                                    className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border shadow-lg hover:border-blue-500/50 transition-all group text-left flex flex-col h-full"
                                 >
                                     <div className="h-2 bg-gradient-to-r from-blue-500 to-cyan-500 shrink-0"></div>
                                     <div className="p-6 flex flex-col h-full justify-between gap-4">
@@ -306,8 +428,8 @@ export default function DashboardPage() {
                                             <h3 className="text-2xl font-black uppercase leading-tight bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">LÍNGUA PORTUGUESA</h3>
                                         </div>
                                         <div className="flex justify-between items-end gap-4 mt-auto">
-                                            <p className="text-gray-400 text-sm leading-snug">Gramática, interpretação de texto e redação oficial.</p>
-                                            <span className="text-xs bg-slate-700 text-gray-300 px-3 py-1 rounded shrink-0 font-medium">5 min</span>
+                                            <p className="text-muted-foreground text-sm leading-snug">Gramática, interpretação de texto e redação oficial.</p>
+                                            <span className="text-xs bg-muted text-muted-foreground px-3 py-1 rounded shrink-0 font-bold">5 min</span>
                                         </div>
                                     </div>
                                 </button>
@@ -315,7 +437,7 @@ export default function DashboardPage() {
                                 {/* Matemática Card */}
                                 <button
                                     onClick={() => handleSimuladoClick('matematica', 'Matemática', 'purple')}
-                                    className="bg-slate-800/50 backdrop-blur-lg rounded-xl overflow-hidden border border-slate-700/50 hover:border-purple-500/50 transition-all group text-left flex flex-col h-full"
+                                    className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border shadow-lg hover:border-purple-500/50 transition-all group text-left flex flex-col h-full"
                                 >
                                     <div className="h-2 bg-gradient-to-r from-purple-500 to-pink-500 shrink-0"></div>
                                     <div className="p-6 flex flex-col h-full justify-between gap-4">
@@ -324,8 +446,8 @@ export default function DashboardPage() {
                                             <h3 className="text-2xl font-black uppercase leading-tight bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">MATEMÁTICA</h3>
                                         </div>
                                         <div className="flex justify-between items-end gap-4 mt-auto">
-                                            <p className="text-gray-400 text-sm leading-snug">Raciocínio lógico, álgebra e geometria aplicada.</p>
-                                            <span className="text-xs bg-slate-700 text-gray-300 px-3 py-1 rounded shrink-0 font-medium">5 min</span>
+                                            <p className="text-muted-foreground text-sm leading-snug">Raciocínio lógico, álgebra e geometria aplicada.</p>
+                                            <span className="text-xs bg-muted text-muted-foreground px-3 py-1 rounded shrink-0 font-bold">5 min</span>
                                         </div>
                                     </div>
                                 </button>
@@ -333,7 +455,7 @@ export default function DashboardPage() {
                                 {/* Específicos Card */}
                                 <button
                                     onClick={() => handleSimuladoClick('especificas', 'Conhecimentos Específicos', 'green')}
-                                    className="bg-slate-800/50 backdrop-blur-lg rounded-xl overflow-hidden border border-slate-700/50 hover:border-green-500/50 transition-all group text-left flex flex-col h-full"
+                                    className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border shadow-lg hover:border-green-500/50 transition-all group text-left flex flex-col h-full"
                                 >
                                     <div className="h-2 bg-gradient-to-r from-green-500 to-emerald-500 shrink-0"></div>
                                     <div className="p-6 flex flex-col h-full justify-between gap-4">
@@ -342,8 +464,8 @@ export default function DashboardPage() {
                                             <h3 className="text-2xl font-black uppercase leading-tight bg-gradient-to-r from-green-400 to-yellow-400 bg-clip-text text-transparent">ESPECÍFICOS</h3>
                                         </div>
                                         <div className="flex justify-between items-end gap-4 mt-auto">
-                                            <p className="text-gray-400 text-sm leading-snug">Questões focadas no seu cargo: {CARGOS_NOMES[userData.cargo] || 'Selecione no perfil'}</p>
-                                            <span className="text-xs bg-slate-700 text-gray-300 px-3 py-1 rounded shrink-0 font-medium">5 min</span>
+                                            <p className="text-muted-foreground text-sm leading-snug">Questões focadas no seu cargo: {CARGOS_NOMES[userData.cargo] || 'Selecione no perfil'}</p>
+                                            <span className="text-xs bg-muted text-muted-foreground px-3 py-1 rounded shrink-0 font-bold">5 min</span>
                                         </div>
                                     </div>
                                 </button>
@@ -351,15 +473,15 @@ export default function DashboardPage() {
                         </section>
 
                         {/* SECTION 3: Intensive Simulados */}
-                        <section className="mb-8 p-6 bg-purple-900/10 rounded-3xl border border-purple-500/10">
-                            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                <span className="p-2 bg-purple-500/20 rounded-lg text-purple-400 text-xl">🔥</span>
+                        <section className="mb-8 p-6 bg-purple-500/5 rounded-3xl border border-purple-500/10">
+                            <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
+                                <span className="p-2 bg-purple-500/20 rounded-lg text-purple-500 text-xl">🔥</span>
                                 Treino Intensivo de Aceleração
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {userData.plan === 'free' ? (
                                     <>
-                                        <div className="bg-slate-800/50 backdrop-blur-lg rounded-xl overflow-hidden border border-slate-700/50 relative group">
+                                        <div className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border shadow-lg relative group">
                                             <div className="absolute inset-0 z-10 bg-black/80 backdrop-blur-[2px] flex flex-col items-center justify-center p-4 text-center transition-opacity">
                                                 <div className="text-5xl mb-3">🔒</div>
                                                 <h3 className="text-xl font-bold text-white mb-1">Simulado Específico</h3>
@@ -383,7 +505,7 @@ export default function DashboardPage() {
                                             </div>
                                         </div>
 
-                                        <div className="bg-slate-800/50 backdrop-blur-lg rounded-xl overflow-hidden border border-slate-700/50 relative group">
+                                        <div className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border shadow-lg relative group">
                                             <div className="absolute inset-0 z-10 bg-black/80 backdrop-blur-[2px] flex flex-col items-center justify-center p-4 text-center transition-opacity">
                                                 <div className="text-5xl mb-3">👑</div>
                                                 <h3 className="text-xl font-bold text-white mb-1">Maratona 100</h3>
@@ -411,7 +533,7 @@ export default function DashboardPage() {
                                     <>
                                         <button
                                             onClick={() => setConfigModal({ open: true, tipo: 'intensivo', nome: 'Treino Intensivo focalizado', cor: 'purple', qtd: 20 })}
-                                            className="bg-slate-800/50 backdrop-blur-lg rounded-xl overflow-hidden border-2 border-purple-500/50 hover:border-purple-400 transition-all group text-left w-full shadow-lg shadow-purple-900/10"
+                                            className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border hover:border-purple-500/50 transition-all group text-left w-full shadow-lg"
                                         >
                                             <div className="bg-gradient-to-r from-purple-600 to-purple-800 p-6 text-white group-hover:from-purple-500 group-hover:to-purple-700 transition-all relative overflow-hidden">
                                                 <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl transform translate-x-10 -translate-y-10">🎯</div>
@@ -435,7 +557,7 @@ export default function DashboardPage() {
 
                                         <button
                                             onClick={() => setConfigModal({ open: true, tipo: 'maratona', nome: 'Maratona Petrobras', cor: 'yellow', qtd: 100 })}
-                                            className="bg-slate-800/50 backdrop-blur-lg rounded-xl overflow-hidden border-2 border-yellow-500/50 hover:border-yellow-400 transition-all group text-left w-full shadow-lg shadow-yellow-900/10"
+                                            className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border hover:border-yellow-500/50 transition-all group text-left w-full shadow-lg"
                                         >
                                             <div className="bg-gradient-to-r from-yellow-600 to-orange-600 p-6 text-white group-hover:from-yellow-500 group-hover:to-orange-500 transition-all relative overflow-hidden">
                                                 <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl transform translate-x-10 -translate-y-10">🔥</div>
@@ -471,17 +593,17 @@ export default function DashboardPage() {
                                     if (e.target === e.currentTarget) setConfigModal({ open: false });
                                 }}
                             >
-                                <div className="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-md shadow-2xl animate-in fade-in zoom-in duration-200">
-                                    <div className={`p-6 bg-gradient-to-r ${configModal.cor === 'blue' ? 'from-blue-900/50 to-cyan-900/50' :
-                                        configModal.cor === 'purple' ? 'from-purple-900/50 to-pink-900/50' :
-                                            configModal.cor === 'green' ? 'from-green-900/50 to-emerald-900/50' :
-                                                configModal.cor === 'yellow' ? 'from-yellow-900/50 to-orange-900/50' :
-                                                    'from-slate-800 to-slate-900'
-                                        } rounded-t-2xl border-b border-slate-700 flex justify-between items-center`}>
-                                        <h3 className="text-xl font-bold text-white">{configModal.nome}</h3>
+                                <div className="bg-card border border-border rounded-2xl w-full max-w-md shadow-2xl animate-in fade-in zoom-in duration-200">
+                                    <div className={`p-6 bg-gradient-to-r ${configModal.cor === 'blue' ? 'from-blue-500/20 to-cyan-500/20' :
+                                        configModal.cor === 'purple' ? 'from-purple-500/20 to-pink-500/20' :
+                                            configModal.cor === 'green' ? 'from-green-500/20 to-emerald-500/20' :
+                                                configModal.cor === 'yellow' ? 'from-yellow-500/20 to-orange-500/20' :
+                                                    'from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900'
+                                        } rounded-t-2xl border-b border-border flex justify-between items-center`}>
+                                        <h3 className="text-xl font-bold text-foreground">{configModal.nome}</h3>
                                         <button
                                             onClick={() => setConfigModal({ open: false })}
-                                            className="p-2 hover:bg-white/10 rounded-full transition-colors text-white"
+                                            className="p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-colors text-foreground"
                                         >
                                             ✕
                                         </button>
@@ -497,8 +619,8 @@ export default function DashboardPage() {
                                                         key={dif}
                                                         onClick={() => setSelection({ ...selection, dificuldade: dif })}
                                                         className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${selection.dificuldade === dif
-                                                            ? 'bg-yellow-500 text-slate-900 shadow-lg shadow-yellow-500/20'
-                                                            : 'bg-slate-800 text-gray-400 hover:bg-slate-700 hover:text-white'
+                                                            ? 'bg-yellow-500 text-slate-900 shadow-md shadow-yellow-500/20'
+                                                            : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground'
                                                             }`}
                                                     >
                                                         {dif}
@@ -508,9 +630,9 @@ export default function DashboardPage() {
                                         </div>
 
                                         <div>
-                                            <label className="block text-gray-400 text-sm mb-2">Assunto Específico (Opcional)</label>
+                                            <label className="block text-muted-foreground text-sm mb-2">Assunto Específico (Opcional)</label>
                                             <select
-                                                className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-yellow-500 appearance-none"
+                                                className="w-full bg-card border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-yellow-500 appearance-none shadow-sm"
                                                 value={selection.assunto}
                                                 onChange={(e) => setSelection({ ...selection, assunto: e.target.value })}
                                             >
@@ -562,10 +684,10 @@ export default function DashboardPage() {
                                                 })()}
                                             </select>
                                             {configModal.tipo === 'intensivo' && (
-                                                <p className="text-xs text-gray-500 mt-1">Escolha uma matéria completa ou um tópico específico para treinar.</p>
+                                                <p className="text-xs text-muted-foreground mt-1">Escolha uma matéria completa ou um tópico específico para treinar.</p>
                                             )}
                                             {configModal.tipo === 'maratona' && (
-                                                <p className="text-xs text-gray-500 mt-1">O simulado seguirá a distribuição exata do edital para seu nível.</p>
+                                                <p className="text-xs text-muted-foreground mt-1">O simulado seguirá a distribuição exata do edital para seu nível.</p>
                                             )}
                                         </div>
 
@@ -591,9 +713,9 @@ export default function DashboardPage() {
 
                         {/* Upgrade Banner for Free Users */}
                         {userData.plan === 'free' && (
-                            <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 backdrop-blur-lg rounded-2xl p-8 border border-yellow-500/20 text-center">
-                                <h3 className="text-2xl font-bold text-white mb-2">🚀 Desbloqueie todo o potencial!</h3>
-                                <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+                            <div className="bg-yellow-500/5 backdrop-blur-lg rounded-2xl p-8 border border-yellow-500/20 text-center shadow-lg">
+                                <h3 className="text-2xl font-bold text-foreground mb-2">🚀 Desbloqueie todo o potencial!</h3>
+                                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
                                     Assinantes PRO têm acesso ilimitado a Simulados Intensivos, Maratonas Oficiais, Ranking geral e análises detalhadas de desempenho.
                                 </p>
                                 <Link
@@ -646,19 +768,19 @@ function RankingTable({ userCargo }: { userCargo: string }) {
     }, [filter, userCargo]);
 
     return (
-        <div className="bg-slate-800/50 backdrop-blur-lg rounded-2xl border border-slate-700/50 overflow-hidden">
-            <div className="p-6 border-b border-slate-700 flex justify-between items-center">
-                <h2 className="text-2xl font-bold text-white">🏆 Melhores Jogadores</h2>
-                <div className="flex bg-slate-700 rounded-lg p-1">
+        <div className="bg-card backdrop-blur-lg rounded-2xl border border-border overflow-hidden shadow-lg">
+            <div className="p-6 border-b border-border flex justify-between items-center">
+                <h2 className="text-2xl font-bold text-foreground">🏆 Melhores Jogadores</h2>
+                <div className="flex bg-muted rounded-lg p-1">
                     <button
                         onClick={() => setFilter('geral')}
-                        className={`px-4 py-2 rounded-md text-sm font-bold transition ${filter === 'geral' ? 'bg-slate-600 text-white shadow' : 'text-gray-400 hover:text-white'}`}
+                        className={`px-4 py-2 rounded-md text-sm font-bold transition ${filter === 'geral' ? 'bg-card text-foreground shadow' : 'text-muted-foreground hover:text-foreground'}`}
                     >
                         Geral
                     </button>
                     <button
                         onClick={() => setFilter('cargo')}
-                        className={`px-4 py-2 rounded-md text-sm font-bold transition ${filter === 'cargo' ? 'bg-slate-600 text-white shadow' : 'text-gray-400 hover:text-white'}`}
+                        className={`px-4 py-2 rounded-md text-sm font-bold transition ${filter === 'cargo' ? 'bg-card text-foreground shadow' : 'text-muted-foreground hover:text-foreground'}`}
                     >
                         Meu Cargo
                     </button>
@@ -666,54 +788,56 @@ function RankingTable({ userCargo }: { userCargo: string }) {
             </div>
 
             {loading ? (
-                <div className="p-12 text-center text-gray-400">Carregando ranking...</div>
+                <div className="p-12 text-center text-muted-foreground">Carregando ranking...</div>
             ) : (
-                <table className="w-full text-left">
-                    <thead className="bg-slate-900/50 text-gray-400 text-sm uppercase">
-                        <tr>
-                            <th className="px-6 py-4">Pos</th>
-                            <th className="px-6 py-4">Usuário</th>
-                            <th className="px-6 py-4 text-center">Nível</th>
-                            <th className="px-6 py-4 text-right">XP</th>
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-700">
-                        {ranking.map((player) => (
-                            <tr key={player.posicao} className="hover:bg-slate-700/30 transition">
-                                <td className="px-6 py-4">
-                                    <span className={`font-bold ${player.posicao === 1 ? 'text-yellow-400 text-xl' :
-                                        player.posicao === 2 ? 'text-gray-300 text-lg' :
-                                            player.posicao === 3 ? 'text-orange-400 text-lg' :
-                                                'text-gray-500'
-                                        }`}>
-                                        #{player.posicao}
-                                    </span>
-                                </td>
-                                <td className="px-6 py-4 flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center overflow-hidden">
-                                        {player.avatar_url ? (
-                                            <img src={player.avatar_url} alt="" className="w-full h-full object-cover" />
-                                        ) : (
-                                            <span className="text-white font-bold">{player.nome.charAt(0)}</span>
-                                        )}
-                                    </div>
-                                    <div>
-                                        <p className="text-white font-semibold">{player.nome}</p>
-                                        <p className="text-xs text-gray-500">{CARGOS_NOMES[player.cargo] || player.cargo}</p>
-                                    </div>
-                                </td>
-                                <td className="px-6 py-4 text-center">
-                                    <span className="px-3 py-1 rounded-full text-xs bg-slate-700 text-gray-300 border border-slate-600">
-                                        {player.nivel || 'Novato'}
-                                    </span>
-                                </td>
-                                <td className="px-6 py-4 text-right font-mono font-bold text-purple-400">
-                                    {player.xp.toLocaleString()} XP
-                                </td>
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left">
+                        <thead className="bg-muted text-muted-foreground text-sm uppercase">
+                            <tr>
+                                <th className="px-6 py-4">Pos</th>
+                                <th className="px-6 py-4">Usuário</th>
+                                <th className="px-6 py-4 text-center">Nível</th>
+                                <th className="px-6 py-4 text-right">XP</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody className="divide-y divide-border">
+                            {ranking.map((player) => (
+                                <tr key={player.posicao} className="hover:bg-muted/50 transition">
+                                    <td className="px-6 py-4">
+                                        <span className={`font-black ${player.posicao === 1 ? 'text-yellow-500 text-xl' :
+                                            player.posicao === 2 ? 'text-slate-400 text-lg' :
+                                                player.posicao === 3 ? 'text-orange-500 text-lg' :
+                                                    'text-muted-foreground'
+                                            }`}>
+                                            #{player.posicao}
+                                        </span>
+                                    </td>
+                                    <td className="px-6 py-4 flex items-center gap-3">
+                                        <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center overflow-hidden border border-border">
+                                            {player.avatar_url ? (
+                                                <img src={player.avatar_url} alt="" className="w-full h-full object-cover" />
+                                            ) : (
+                                                <span className="text-foreground font-bold">{player.nome.charAt(0)}</span>
+                                            )}
+                                        </div>
+                                        <div className="min-w-0">
+                                            <p className="text-foreground font-bold truncate">{player.nome}</p>
+                                            <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-tight truncate">{CARGOS_NOMES[player.cargo] || player.cargo}</p>
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4 text-center">
+                                        <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-muted text-muted-foreground border border-border">
+                                            {player.nivel || 'Novato'}
+                                        </span>
+                                    </td>
+                                    <td className="px-6 py-4 text-right font-mono font-bold text-yellow-600 dark:text-yellow-400">
+                                        {player.xp.toLocaleString()} XP
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             )}
         </div>
     );

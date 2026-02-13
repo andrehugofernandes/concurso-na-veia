@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Usuario, Questao, Simulado } from '@/lib/types';
 import { calcularNivel, salvarUsuario, carregarUsuario } from '@/lib/utils';
-import HomeScreen from '@/components/HomeScreen';
 import LoadingScreen from '@/components/LoadingScreen';
 import SimuladoScreen from '@/components/SimuladoScreen';
 import ResultadoScreen from '@/components/ResultadoScreen';
+import SimuladoHome from '@/components/simulados/SimuladoHome';
 import { CONTEUDO_MATERIAS } from '@/data/conteudo';
 
 const usuarioInicial: Usuario = {
@@ -23,7 +23,7 @@ const usuarioInicial: Usuario = {
     questoesGeradas: 0,
 };
 
-export default function SimuladoPage() {
+export default function SimuladoEspecificoPage() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const tipoUrl = searchParams.get('tipo');
@@ -45,10 +45,29 @@ export default function SimuladoPage() {
 
     // Carregar dados
     useEffect(() => {
-        const dadosSalvos = carregarUsuario();
-        if (dadosSalvos) {
-            setUsuario(dadosSalvos);
-        }
+        const loadUserData = async () => {
+            try {
+                const response = await fetch('/api/auth/me');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.user) {
+                        setUsuario(data.user);
+                        salvarUsuario(data.user);
+                        return;
+                    }
+                }
+            } catch (error) {
+                console.error('Erro ao carregar usuário da API:', error);
+            }
+
+            // Fallback for localStorage
+            const dadosSalvos = carregarUsuario();
+            if (dadosSalvos) {
+                setUsuario(dadosSalvos);
+            }
+        };
+
+        loadUserData();
     }, []);
 
     // Auto-start se vier parâmetros na URL e usuário estiver carregado
@@ -124,7 +143,7 @@ export default function SimuladoPage() {
         return await response.json();
     };
 
-    const gerarQuestoes = async (tipo: string, quantidade: number): Promise<Questao[]> => {
+    const gerarQuestoes = async (tipo: string, quantidade: number, dificuldadeManual?: string, assuntoManual?: string): Promise<Questao[]> => {
         const questoes: Questao[] = [];
         let distribuicao: { materia: string, qtd: number, assunto?: string }[] = [];
 
@@ -173,7 +192,7 @@ export default function SimuladoPage() {
             // Simulado Rápido ou Padrão (tipo = id da matéria)
             const materiaObj = CONTEUDO_MATERIAS.find(m => m.id === tipo);
             const nomeMateria = materiaObj ? materiaObj.nome : (tipo === 'especificas' ? 'Conhecimentos Específicos' : tipo);
-            distribuicao = [{ materia: nomeMateria, qtd: quantidade, assunto: assuntoUrl || undefined }];
+            distribuicao = [{ materia: nomeMateria, qtd: quantidade, assunto: assuntoManual || assuntoUrl || undefined }];
         }
 
         // Loop de geração
@@ -183,7 +202,7 @@ export default function SimuladoPage() {
                 if (questoes.length >= quantidade) break;
 
                 try {
-                    let dificuldade = dificuldadeUrl || undefined;
+                    let dificuldade = dificuldadeManual || dificuldadeUrl || undefined;
 
                     // Ajuste automático de dificuldade se não especificado
                     if (!dificuldade) {
@@ -216,7 +235,7 @@ export default function SimuladoPage() {
         return questoes;
     };
 
-    const iniciarSimulado = async (tipo: string, quantidade: number = 5) => {
+    const iniciarSimulado = async (tipo: string, quantidade: number = 5, dificuldade?: string, assunto?: string) => {
         setGerandoQuestoes(true);
         setTela('gerando');
 
@@ -224,7 +243,7 @@ export default function SimuladoPage() {
             // Free Tier Check
             if (usuario.plan === 'free') {
                 const hoje = new Date().toISOString().split('T')[0];
-                const tentativasHoje = usuario.historico.filter(h =>
+                const tentativasHoje = (usuario.historico || []).filter(h =>
                     h.data.startsWith(hoje) && h.tipo === tipo
                 ).length;
 
@@ -233,7 +252,7 @@ export default function SimuladoPage() {
                 }
             }
 
-            const questoes = await gerarQuestoes(tipo, quantidade);
+            const questoes = await gerarQuestoes(tipo, quantidade, dificuldade, assunto);
 
             if (questoes.length === 0) {
                 throw new Error('Nenhuma questão foi gerada. Verifique sua conexão ou tente novamente.');
@@ -364,7 +383,7 @@ export default function SimuladoPage() {
         if (percentual >= 90) bonusXP += 100;
         else if (percentual >= 80) bonusXP += 50;
 
-        const novoHistorico = [...usuario.historico, {
+        const novoHistorico = [...(usuario.historico || []), {
             data: new Date().toISOString(),
             tipo: simuladoAtual.tipo,
             acertos: totalAcertos,
@@ -406,11 +425,11 @@ export default function SimuladoPage() {
 
     if (tela === 'home') {
         return (
-            <HomeScreen
+            <SimuladoHome
                 usuario={usuario}
-                setUsuario={setUsuario}
                 iniciarSimulado={iniciarSimulado}
                 gerandoQuestoes={gerandoQuestoes}
+                tipoPagina="especifico"
             />
         );
     }

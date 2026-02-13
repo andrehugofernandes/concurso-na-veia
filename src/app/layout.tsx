@@ -1,17 +1,27 @@
 import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
+import { Poppins, Bebas_Neue } from 'next/font/google'
 import './globals.css'
+import { ThemeProvider } from "@/components/providers/theme-provider"
+import { ThemeProvider as SkinProvider } from "@/lib/contexts/theme-context"
 
 const poppins = Poppins({
   weight: ['300', '400', '600', '700', '800'],
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-poppins',
+})
+
+const bebasNeue = Bebas_Neue({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-bebas',
 })
 
 export const metadata: Metadata = {
-  title: 'Petrobras Quest AI - Sistema de Estudos com IA',
-  description: 'Questões ilimitadas geradas por IA no estilo CESGRANRIO para o concurso da Petrobras 2026',
-  keywords: 'petrobras, concurso, cesgranrio, questões, ia, simulado',
+  title: 'A Vaga eh Minha - Domine seu Futuro',
+  description: 'Sistema avançado de estudos com IA para concursos públicos. A vaga eh sua no avagaemia.ai.',
+  keywords: 'avagaemia, a vaga eh minha, concurso, ia, simulado, aulas interativas',
 }
 
 export default function RootLayout({
@@ -20,8 +30,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR">
-      <body className={poppins.className} suppressHydrationWarning>{children}</body>
+    <html lang="pt-BR" suppressHydrationWarning>
+      <body className={`${poppins.variable} ${bebasNeue.variable} font-sans`} suppressHydrationWarning>
+        <SkinProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </SkinProvider>
+      </body>
     </html>
   )
 }

@@ -2,10 +2,17 @@
 
 import { use, useState, useCallback, useEffect } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { getMateriaById, getTopicoById, getNextTopico, getPrevTopico } from '@/data/conteudo';
 import { notFound } from 'next/navigation';
 import ReadingProgress from '@/components/ReadingProgress';
 import { useAulaProgress } from '@/hooks/useAulaProgress';
+
+// Dynamic import para evitar hydration mismatch dos componentes Radix UI (Dialog, Accordion, Tabs)
+const AulaInterpretacaoTexto = dynamic(
+    () => import('@/components/aulas/AulaInterpretacaoTexto'),
+    { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
+);
 
 interface PageProps {
     params: Promise<{ materia: string; topico: string }>;
@@ -248,36 +255,43 @@ export default function TopicoPage({ params }: PageProps) {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <div className="min-h-screen bg-background">
             {/* Reading Progress Bar */}
             <ReadingProgress onComplete={handleReadingComplete} threshold={80} />
 
             {/* Navigation Header */}
-            <header className="sticky top-1 z-40 container mx-auto px-6 py-4">
-                <div className="bg-slate-800/80 backdrop-blur-lg rounded-xl p-4 border border-slate-700/50">
+            <header className="sticky top-1 z-40 container mx-auto px-6 py-4 max-w-6xl">
+                <div className="bg-card/90 dark:bg-slate-800/90 backdrop-blur-md rounded-xl p-3 border border-border dark:border-slate-700/50 shadow-sm">
                     <div className="flex items-center justify-between">
-                        <Link
-                            href={`/aulas/${materiaId}`}
-                            className="text-gray-400 hover:text-white transition flex items-center gap-2"
-                        >
-                            ← {materia.nome}
-                        </Link>
+                        <div className="flex items-center gap-3 text-sm">
+                            <Link
+                                href={`/aulas/${materiaId}`}
+                                className="px-3 py-1.5 rounded-lg bg-secondary/80 dark:bg-slate-700 text-secondary-foreground dark:text-slate-200 hover:bg-secondary transition flex items-center gap-2 font-medium border border-border/50"
+                            >
+                                <span className="text-lg leading-none">←</span> {materia.nome}
+                            </Link>
+                            <span className="text-muted-foreground/40 font-light text-xl">/</span>
+                            <span className="text-foreground font-semibold truncate max-w-[150px] md:max-w-none">
+                                {topico.titulo}
+                            </span>
+                        </div>
 
                         <div className="flex items-center gap-2">
                             {prevTopico && (
                                 <Link
                                     href={`/aulas/${materiaId}/${prevTopico.id}`}
-                                    className="px-3 py-1 rounded-lg bg-slate-700 text-gray-300 hover:bg-slate-600 transition text-sm"
+                                    className="px-3 py-1.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-xs"
+                                    title={prevTopico.titulo}
                                 >
-                                    ← Anterior
+                                    Anterior
                                 </Link>
                             )}
                             {nextTopico && (
                                 <Link
                                     href={`/aulas/${materiaId}/${nextTopico.id}`}
-                                    className="px-3 py-1 rounded-lg bg-yellow-500 text-slate-900 hover:bg-yellow-400 transition text-sm font-semibold"
+                                    className="px-4 py-1.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-xs"
                                 >
-                                    Próximo →
+                                    Próximo<span className="hidden md:inline">: {nextTopico.titulo}</span> <span className="text-lg leading-none">→</span>
                                 </Link>
                             )}
                         </div>
@@ -286,7 +300,7 @@ export default function TopicoPage({ params }: PageProps) {
             </header>
 
             {/* Main Content */}
-            <main className="container mx-auto px-6 py-8 max-w-4xl">
+            <main className="container mx-auto px-6 py-8 max-w-6xl">
                 {/* Title */}
                 <div className="mb-8">
                     <div className="flex items-center gap-3 mb-4">
@@ -295,17 +309,29 @@ export default function TopicoPage({ params }: PageProps) {
                         </span>
                         <span className="text-gray-500">⏱️ {topico.duracao}</span>
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold text-white">
+                    {/* Título Principal com Contraste Corrigido */}
+                    <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
                         {topico.titulo}
                     </h1>
-                    <p className="text-gray-400 mt-2 text-lg">
+                    <p className="text-muted-foreground mt-2 text-lg leading-relaxed max-w-2xl">
                         {topico.descricao}
                     </p>
                 </div>
 
+                <div className="h-px w-full bg-border/50 my-12" />
+
                 {/* Article Content */}
                 <article className="prose prose-invert prose-lg max-w-none">
-                    {conteudo ? (
+                    {materiaId === 'portugues' && topicoId === 'interpretacao' ? (
+                        <AulaInterpretacaoTexto
+                            onComplete={handleCompleteAula}
+                            isCompleted={isCompleted}
+                            loading={loading}
+                            xpGanho={xpGanho}
+                            currentProgress={progress}
+                            onUpdateProgress={updateProgress}
+                        />
+                    ) : conteudo ? (
                         conteudo.secoes.map((secao, index) => (
                             <section key={index} className="mb-12">
                                 <h2 className="text-2xl font-bold text-yellow-400 mb-4 flex items-center gap-2">
@@ -334,58 +360,58 @@ export default function TopicoPage({ params }: PageProps) {
                     )}
                 </article>
 
-                {/* Completion CTA */}
-                <div className="mt-12 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-8 border border-yellow-500/30 text-center">
-                    <h3 className="text-2xl font-bold text-white mb-2">
-                        {isCompleted ? '✅ Aula Concluída!' : '📖 Termine a leitura'}
-                    </h3>
-                    <p className="text-gray-400 mb-4">
-                        {isCompleted
-                            ? `Parabéns! Você ganhou +${xpGanho || 50} XP`
-                            : 'Role até o final para marcar esta aula como concluída e ganhar XP'
-                        }
-                    </p>
-                    <button
-                        onClick={handleCompleteAula}
-                        disabled={isCompleted || loading}
-                        className={`px-6 py-3 rounded-xl font-bold transition ${isCompleted
-                            ? 'bg-green-600 text-white cursor-not-allowed'
-                            : loading
-                                ? 'bg-gray-600 text-gray-400 cursor-wait'
-                                : 'bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 hover:shadow-lg hover:shadow-orange-500/25'
-                            }`}
-                    >
-                        {isCompleted ? '🏆 +50 XP Conquistados!' : loading ? 'Carregando...' : 'Marcar como Concluída'}
-                    </button>
-                </div>
-
-                {/* Navigation Footer */}
-                <div className="mt-8 flex justify-between">
-                    {prevTopico ? (
-                        <Link
-                            href={`/aulas/${materiaId}/${prevTopico.id}`}
-                            className="flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-800 text-gray-300 hover:bg-slate-700 transition"
+                {/* Completion CTA — only for generic lessons (interpretacao has its own) */}
+                {!(materiaId === 'portugues' && topicoId === 'interpretacao') && (
+                    <div className="mt-12 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-8 border border-yellow-500/30 text-center">
+                        <h3 className="text-2xl font-bold text-white mb-2">
+                            {isCompleted ? '✅ Aula Concluída!' : '📖 Termine a leitura'}
+                        </h3>
+                        <p className="text-gray-400 mb-4">
+                            {isCompleted
+                                ? `Parabéns! Você ganhou +${xpGanho || 50} XP`
+                                : 'Role até o final para marcar esta aula como concluída e ganhar XP'
+                            }
+                        </p>
+                        <button
+                            onClick={handleCompleteAula}
+                            disabled={isCompleted || loading}
+                            className={`px-6 py-3 rounded-xl font-bold transition ${isCompleted
+                                ? 'bg-green-600 text-white cursor-not-allowed'
+                                : loading
+                                    ? 'bg-gray-600 text-gray-400 cursor-wait'
+                                    : 'bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 hover:shadow-lg hover:shadow-orange-500/25'
+                                }`}
                         >
-                            <span>←</span>
-                            <div className="text-left">
-                                <div className="text-xs text-gray-500">Anterior</div>
-                                <div className="font-semibold">{prevTopico.titulo}</div>
-                            </div>
-                        </Link>
-                    ) : <div />}
+                            {isCompleted ? '🏆 +50 XP Conquistados!' : loading ? 'Carregando...' : 'Marcar como Concluída'}
+                        </button>
+                    </div>
+                )}
 
-                    {nextTopico && (
-                        <Link
-                            href={`/aulas/${materiaId}/${nextTopico.id}`}
-                            className="flex items-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500 text-slate-900 hover:shadow-lg transition"
-                        >
-                            <div className="text-right">
-                                <div className="text-xs text-slate-700">Próximo</div>
-                                <div className="font-bold">{nextTopico.titulo}</div>
-                            </div>
-                            <span>→</span>
-                        </Link>
-                    )}
+                {/* Navigation Footer (Duplicado do Header) */}
+                <div className="mt-16 pt-8 border-t border-border">
+                    <div className="bg-card/90 dark:bg-slate-800/90 backdrop-blur-md rounded-xl p-4 border border-border dark:border-slate-700/50 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+                        <span className="text-muted-foreground font-medium text-sm">Próximo passo:</span>
+
+                        <div className="flex items-center gap-2 w-full md:w-auto justify-end">
+                            {prevTopico && (
+                                <Link
+                                    href={`/aulas/${materiaId}/${prevTopico.id}`}
+                                    className="px-4 py-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-sm"
+                                    title={prevTopico.titulo}
+                                >
+                                    Anterior
+                                </Link>
+                            )}
+                            {nextTopico && (
+                                <Link
+                                    href={`/aulas/${materiaId}/${nextTopico.id}`}
+                                    className="px-6 py-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-sm"
+                                >
+                                    Próximo<span className="hidden md:inline">: {nextTopico.titulo}</span> <span className="text-lg leading-none">→</span>
+                                </Link>
+                            )}
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
