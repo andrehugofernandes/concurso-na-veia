@@ -37,14 +37,54 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  // Helper para converter hex para HSL (valores separados por espaço para o Tailwind)
+  const hexToHsl = (hex: string): string => {
+    // Remover o # se existir
+    hex = hex.replace(/^#/, '');
+
+    // Converter para RGB
+    const bigint = parseInt(hex, 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+
+    // Converter para HSL
+    const rNorm = r / 255;
+    const gNorm = g / 255;
+    const bNorm = b / 255;
+
+    const max = Math.max(rNorm, gNorm, bNorm);
+    const min = Math.min(rNorm, gNorm, bNorm);
+    let h = 0, s = 0, l = (max + min) / 2;
+
+    if (max !== min) {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case rNorm: h = (gNorm - bNorm) / d + (gNorm < bNorm ? 6 : 0); break;
+        case gNorm: h = (bNorm - rNorm) / d + 2; break;
+        case bNorm: h = (rNorm - gNorm) / d + 4; break;
+      }
+      h /= 6;
+    }
+
+    // Retornar no formato que o Tailwind espera (ex: "222.2 47.4% 11.2%")
+    return `${(h * 360).toFixed(1)} ${(s * 100).toFixed(1)}% ${(l * 100).toFixed(1)}%`;
+  };
+
   // Aplicar CSS variables quando o tema de cor mudar
   useEffect(() => {
     if (typeof document !== 'undefined') {
       const root = document.documentElement;
       const colors = availableThemes[currentTheme] || availableThemes[defaultTheme];
 
-      root.style.setProperty('--primary', colors.primary);
-      root.style.setProperty('--primary-hover', colors.primaryHover);
+      // Converter hex para HSL para funcionar com a opacidade do Tailwind (bg-primary/10)
+      const primaryHsl = hexToHsl(colors.primary);
+      const primaryHoverHsl = hexToHsl(colors.primaryHover);
+
+      root.style.setProperty('--primary', primaryHsl);
+      root.style.setProperty('--primary-hover', primaryHoverHsl);
+      root.style.setProperty('--primary-rgb', colors.primary); // Mantendo compatibilidade se necessário
 
       if (mounted) {
         localStorage.setItem('app-theme-color', currentTheme);

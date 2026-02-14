@@ -104,7 +104,7 @@ export default function MateriaPage({ params }: PageProps) {
 
             {/* Page Header */}
             <div className="flex items-center gap-4 mb-6">
-                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-r ${materia.cor} text-4xl`}>
+                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-primary/10 text-primary text-4xl`}>
                     {materia.icone}
                 </div>
                 <div>
@@ -121,10 +121,10 @@ export default function MateriaPage({ params }: PageProps) {
             <div className="mb-8 bg-card rounded-xl p-6 border border-border shadow-lg">
                 <div className="flex items-center justify-between mb-3">
                     <span className="text-muted-foreground text-sm font-bold uppercase tracking-wider">Progresso geral</span>
-                    <span className="text-yellow-500 font-bold">0/{materia.topicos.length} concluídos</span>
+                    <span className="text-primary font-bold">0/{materia.topicos.length} concluídos</span>
                 </div>
                 <div className="h-3 bg-muted rounded-full overflow-hidden border border-border">
-                    <div className="h-full bg-gradient-to-r from-yellow-400 to-orange-500 w-0 transition-all" />
+                    <div className="h-full bg-primary w-0 transition-all" />
                 </div>
             </div>
 
@@ -134,15 +134,15 @@ export default function MateriaPage({ params }: PageProps) {
                     <Link
                         key={topico.id}
                         href={`/aulas/${materiaId}/${topico.id}`}
-                        className="group flex items-center gap-4 bg-card backdrop-blur-lg rounded-xl p-5 border border-border shadow-lg hover:border-yellow-500/50 transition-all active:scale-[0.98]"
+                        className="group flex items-center gap-4 bg-card backdrop-blur-lg rounded-xl p-5 border border-border shadow-lg hover:border-primary/50 transition-all active:scale-[0.98]"
                     >
                         {/* Order number */}
-                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground font-bold group-hover:bg-yellow-500 group-hover:text-slate-900 transition">
+                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground font-bold group-hover:bg-primary group-hover:text-primary-foreground transition">
                             {index + 1}
                         </div>
 
                         <div className="flex-grow min-w-0">
-                            <h3 className="text-lg font-bold text-foreground group-hover:text-yellow-600 dark:group-hover:text-yellow-500 transition truncate">
+                            <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition truncate">
                                 {topico.titulo}
                             </h3>
                             <p className="text-muted-foreground text-sm truncate">
@@ -156,10 +156,10 @@ export default function MateriaPage({ params }: PageProps) {
                         </div>
 
                         {/* Status indicator */}
-                        <div className="flex-shrink-0 w-6 h-6 rounded-full border-2 border-border group-hover:border-yellow-500 transition bg-background shadow-inner" />
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full border-2 border-border group-hover:border-primary transition bg-background shadow-inner" />
 
                         {/* Arrow */}
-                        <div className="flex-shrink-0 text-gray-600 group-hover:text-yellow-400 group-hover:translate-x-1 transition-all">
+                        <div className="flex-shrink-0 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all">
                             →
                         </div>
                     </Link>
