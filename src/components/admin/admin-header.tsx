@@ -17,15 +17,45 @@ import {
 // import { getDashboardTitleForHeader } from '@/app/admin/settings/actions'; // Removed
 import { availableThemes } from '@/lib/themes';
 import { createClient } from '@/lib/supabase/client';
+import { useUserProfile } from '@/hooks/useUserProfile';
 
 function hexToRgbTriplet(hex: string): string {
   const clean = hex.trim().replace('#', '');
-  if (clean.length !== 6) return '59 130 246';
+  if (clean.length !== 6) return '59 130 246'; // Default blue
   const r = Number.parseInt(clean.slice(0, 2), 16);
   const g = Number.parseInt(clean.slice(2, 4), 16);
   const b = Number.parseInt(clean.slice(4, 6), 16);
   if (Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b)) return '59 130 246';
   return `${r} ${g} ${b}`;
+}
+
+function hexToHsl(hex: string): string {
+  const clean = hex.trim().replace('#', '');
+  if (clean.length !== 6) return '0 0% 0%';
+
+  const r = Number.parseInt(clean.slice(0, 2), 16) / 255;
+  const g = Number.parseInt(clean.slice(2, 4), 16) / 255;
+  const b = Number.parseInt(clean.slice(4, 6), 16) / 255;
+
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h = 0, s = 0, l = (max + min) / 2;
+
+  if (max !== min) {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+    h /= 6;
+  }
+
+  // Convert to degrees and percentage
+  // Tailwind with hsl() expects just values or comma/space separated. 
+  // Shadcn usually uses space separated: 222.2 47.4% 11.2%
+  return `${(h * 360).toFixed(1)} ${(s * 100).toFixed(1)}% ${(l * 100).toFixed(1)}%`;
 }
 
 interface AdminHeaderProps {
@@ -64,10 +94,19 @@ export function AdminHeader({ onMenuToggle, isSidebarCollapsed, userName, userEm
     if (mounted && typeof document !== 'undefined') {
       const root = document.documentElement;
       const colors = availableThemes[themeColor] || availableThemes['blue'];
-      root.style.setProperty('--primary', colors.primary);
-      root.style.setProperty('--primary-hover', colors.primaryHover);
+
+      const primaryHsl = hexToHsl(colors.primary);
+      const primaryHoverHsl = hexToHsl(colors.primaryHover);
+
+      // Update HSL variables
+      root.style.setProperty('--primary', primaryHsl);
+      root.style.setProperty('--primary-hover', primaryHoverHsl);
+      root.style.setProperty('--ring', primaryHsl); // Sync ring with primary
+
+      // Update RGB variables
       root.style.setProperty('--primary-rgb', hexToRgbTriplet(colors.primary));
       root.style.setProperty('--primary-hover-rgb', hexToRgbTriplet(colors.primaryHover));
+
       localStorage.setItem('app-theme-color', themeColor);
     }
   }, [themeColor, mounted]);
@@ -111,45 +150,12 @@ export function AdminHeader({ onMenuToggle, isSidebarCollapsed, userName, userEm
     return lastSegment.charAt(0).toUpperCase() + lastSegment.slice(1);
   };
 
-  const [currentUser, setCurrentUser] = useState<{
-    fullName?: string | null;
-    email?: string | null;
-    username?: string | null;
-    avatarUrl?: string | null;
-  } | null>(null);
+  const { profile } = useUserProfile();
 
-  useEffect(() => {
-    (async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        // Tentar obter perfil se existir tabela profiles, senão usar metadata
-        try {
-          const { data: profile } = await supabase
-            .from('profiles')
-            .select('nome')
-            .eq('id', user.id)
-            .single();
-
-          setCurrentUser({
-            fullName: profile?.nome || user.user_metadata?.full_name || 'Usuário',
-            email: user.email,
-            username: user.user_metadata?.username,
-            avatarUrl: user.user_metadata?.avatar_url
-          });
-        } catch {
-          // Fallback sem profiles
-          setCurrentUser({
-            fullName: user.user_metadata?.full_name || 'Usuário',
-            email: user.email,
-          });
-        }
-      }
-    })();
-  }, []);
-
-  const displayName = currentUser?.fullName || currentUser?.username || 'Usuário';
-  const displayEmail = currentUser?.email || '—';
-  const avatarUrl = currentUser?.avatarUrl || null;
+  // Use profile data from context
+  const displayName = profile?.full_name || 'Usuário';
+  const username = profile?.username || '';
+  const avatarUrl = profile?.avatar_url || null;
   const avatarInitials = getUserInitials(displayName);
 
   // Função para processar o título do dashboard
@@ -217,7 +223,7 @@ export function AdminHeader({ onMenuToggle, isSidebarCollapsed, userName, userEm
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className="hidden md:flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors" aria-label="Escolher tema de cor">
-                  <div className="w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-[var(--primary)]" />
+                  <div className="w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-primary" />
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg">
@@ -275,10 +281,10 @@ export function AdminHeader({ onMenuToggle, isSidebarCollapsed, userName, userEm
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className="relative h-10 w-10 md:h-12 md:w-12 rounded-full p-0 flex-shrink-0">
-                  <div className="relative rounded-full border-2 md:border-4 border-[var(--primary)]">
+                  <div className="relative rounded-full border-2 md:border-4 border-primary">
                     <Avatar className="h-8 w-8 md:h-10 md:w-10">
                       <AvatarImage src={avatarUrl || undefined} alt={displayName} />
-                      <AvatarFallback className="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold text-xs md:text-sm">
+                      <AvatarFallback className="bg-primary text-primary-foreground font-semibold text-xs md:text-sm">
                         {avatarInitials}
                       </AvatarFallback>
                     </Avatar>
@@ -290,16 +296,18 @@ export function AdminHeader({ onMenuToggle, isSidebarCollapsed, userName, userEm
                 <DropdownMenuLabel>
                   <div className="flex flex-col items-center p-2.5 pb-3 bg-gray-100 dark:bg-gray-600 rounded-md">
                     <span className="text-sm font-medium leading-snug mb-1">{displayName}</span>
-                    <span className="text-xs leading-snug text-gray-600 dark:text-gray-300 truncate">
-                      {displayEmail}
-                    </span>
+                    {username && (
+                      <span className="text-xs leading-snug text-gray-500 dark:text-gray-400 font-normal">
+                        @{username}
+                      </span>
+                    )}
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href="/dashboard/settings" className="flex items-center cursor-pointer">
-                    <LuSettings className="mr-2 h-4 w-4" />
-                    Configurações
+                  <Link href="/profile" className="flex items-center cursor-pointer">
+                    <LuUser className="mr-2 h-4 w-4" />
+                    Perfil
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />

@@ -54,7 +54,7 @@ interface QuizQuestion {
     explicacao: string;
 }
 
-const QUIZ_DIAGNOSTICO: QuizQuestion[] = [
+const QUIZ_DIAGNOSTICO_POOL: QuizQuestion[] = [
     {
         id: 1,
         pergunta: 'Quando uma questão pede "segundo o texto", ela pede informações:',
@@ -91,9 +91,93 @@ const QUIZ_DIAGNOSTICO: QuizQuestion[] = [
         correta: 'C',
         explicacao: 'Inferir = deduzir. A banca pede que você identifique algo que não está explícito, mas que pode ser concluído a partir das informações do texto.',
     },
+    {
+        id: 4,
+        pergunta: 'Qual técnica de leitura consiste em "passar o olho" rapidamente para ter uma visão geral?',
+        opcoes: [
+            { label: 'A', valor: 'Scanning' },
+            { label: 'B', valor: 'Skimming' },
+            { label: 'C', valor: 'Close Reading' },
+            { label: 'D', valor: 'Leitura Crítica' },
+        ],
+        correta: 'B',
+        explicacao: 'Skimming é a leitura rápida para captar a ideia geral (gist) do texto sem se prender aos detalhes.',
+    },
+    {
+        id: 5,
+        pergunta: 'Para encontrar um dado específico (ex: uma data ou nome) rapidamente, qual técnica usamos?',
+        opcoes: [
+            { label: 'A', valor: 'Skimming' },
+            { label: 'B', valor: 'Scanning' },
+            { label: 'C', valor: 'Releitura' },
+            { label: 'D', valor: 'Resumo' },
+        ],
+        correta: 'B',
+        explicacao: 'Scanning (escanear) é a busca por informações específicas, como números, datas ou palavras-chave, sem ler o texto todo linearmente.',
+    },
+    {
+        id: 6,
+        pergunta: 'Qual é a ordem recomendada do método S-S-R?',
+        opcoes: [
+            { label: 'A', valor: 'Scanning → Skimming → Releitura' },
+            { label: 'B', valor: 'Skimming → Scanning → Releitura' },
+            { label: 'C', valor: 'Releitura → Skimming → Scanning' },
+            { label: 'D', valor: 'Scanning → Releitura → Skimming' },
+        ],
+        correta: 'B',
+        explicacao: 'A ordem lógica é: Visão Geral (Skimming) → Busca de Detalhes (Scanning) → Compreensão Profunda (Releitura).',
+    },
+    {
+        id: 7,
+        pergunta: 'Segundo a aula, interpretar um texto é comparável a ser um:',
+        opcoes: [
+            { label: 'A', valor: 'Escritor criativo' },
+            { label: 'B', valor: 'Detetive que busca pistas' },
+            { label: 'C', valor: 'Crítico de cinema' },
+            { label: 'D', valor: 'Juiz imparcial' },
+        ],
+        correta: 'B',
+        explicacao: 'A metáfora do detetive ilustra que devemos buscar evidências no texto para sustentar nossas conclusões, sem inventar fatos.',
+    },
+    {
+        id: 8,
+        pergunta: 'A "Releitura Crítica" serve principalmente para:',
+        opcoes: [
+            { label: 'A', valor: 'Decorar o texto' },
+            { label: 'B', valor: 'Entender a intenção e o tom do autor' },
+            { label: 'C', valor: 'Contar o número de parágrafos' },
+            { label: 'D', valor: 'Copiar o texto' },
+        ],
+        correta: 'B',
+        explicacao: 'A releitura permite uma análise mais profunda, questionando "por que" o autor escreveu aquilo e qual sua intenção (ironia, crítica, etc).',
+    },
+    {
+        id: 9,
+        pergunta: 'O que significa "Informação Implícita"?',
+        opcoes: [
+            { label: 'A', valor: 'Algo escrito claramente' },
+            { label: 'B', valor: 'Uma mentira do autor' },
+            { label: 'C', valor: 'Algo sugerido mas não escrito' },
+            { label: 'D', valor: 'Um erro gramatical' },
+        ],
+        correta: 'C',
+        explicacao: 'Implícito é aquilo que está subentendido, nas entrelinhas. Não está escrito, mas pode ser logicamente deduzido.',
+    },
+    {
+        id: 10,
+        pergunta: 'Na técnica de Skimming, o que devemos observar?',
+        opcoes: [
+            { label: 'A', valor: 'Cada palavra individualmente' },
+            { label: 'B', valor: 'Apenas as figuras' },
+            { label: 'C', valor: 'Título, subtítulos e primeiros parágrafos' },
+            { label: 'D', valor: 'O número de páginas' },
+        ],
+        correta: 'C',
+        explicacao: 'No Skimming, focamos nos elementos de destaque (títulos, negritos, início e fim) para captar a estrutura e o tema rapidamente.',
+    },
 ];
 
-const QUIZ_PRATICO: QuizQuestion[] = [
+const QUIZ_PRATICO_POOL: QuizQuestion[] = [
     {
         id: 1,
         pergunta: 'Em um texto sobre exploração de petróleo no pré-sal, o autor afirma: "A tecnologia permitiu alcançar profundidades antes inimagináveis." Qual a ideia implícita?',
@@ -154,7 +238,73 @@ const QUIZ_PRATICO: QuizQuestion[] = [
         correta: 'B',
         explicacao: 'Metáfora: comparação implícita entre petróleo e ouro, atribuindo ao petróleo o valor do ouro. Não usa "como" ou "tal qual".',
     },
+    {
+        id: 6,
+        pergunta: 'Qual a diferença entre um Fato e uma Opinião?',
+        opcoes: [
+            { label: 'A', valor: 'Nenhuma, são sinônimos.' },
+            { label: 'B', valor: 'Fato é verificável; Opinião é um julgamento pessoal.' },
+            { label: 'C', valor: 'Fato é sempre falso; Opinião é sempre verdadeira.' },
+            { label: 'D', valor: 'Opinião vale mais que fato em provas.' },
+        ],
+        correta: 'B',
+        explicacao: 'Fatos podem ser comprovados (ex: água ferve a 100°C). Opiniões envolvem valores subjetivos (ex: o Rio é bonito).',
+    },
+    {
+        id: 7,
+        pergunta: 'Qual destas frases contém uma opinião e não um fato?',
+        opcoes: [
+            { label: 'A', valor: 'O Brasil é o maior país da América do Sul.' },
+            { label: 'B', valor: 'A Petrobras foi fundada em 1953.' },
+            { label: 'C', valor: 'O Rio de Janeiro é a cidade mais bonita do mundo.' },
+            { label: 'D', valor: 'A água ferve a 100°C ao nível do mar.' },
+        ],
+        correta: 'C',
+        explicacao: 'Beleza é um conceito subjetivo, portanto, trata-se de uma opinião.',
+    },
+    {
+        id: 8,
+        pergunta: 'O que é "Extrapolação" na interpretação de texto?',
+        opcoes: [
+            { label: 'A', valor: 'Resumir o texto corretamente' },
+            { label: 'B', valor: 'Deduzir algo que vai além do que o texto permite' },
+            { label: 'C', valor: 'Traduzir o texto' },
+            { label: 'D', valor: 'Identificar o título' },
+        ],
+        correta: 'B',
+        explicacao: 'Extrapolar é "viajar na maionese": concluir coisas que o texto não dá suporte. É um erro comum.',
+    },
+    {
+        id: 9,
+        pergunta: 'Se o texto diz: "João saiu correndo ao ouvir o trovão", deduzir que "João é covarde" é:',
+        opcoes: [
+            { label: 'A', valor: 'Uma inferência válida' },
+            { label: 'B', valor: 'Uma extrapolação (julgamento de valor)' },
+            { label: 'C', valor: 'Uma paráfrase' },
+            { label: 'D', valor: 'Uma redundância' },
+        ],
+        correta: 'B',
+        explicacao: 'Podemos inferir que ele tem medo ou pressa, mas chamá-lo de "covarde" é um julgamento pessoal (opinião/extrapolação) que o texto não sustenta.',
+    },
+    {
+        id: 10,
+        pergunta: 'Onde costuma estar a Ideia Central de um parágrafo?',
+        opcoes: [
+            { label: 'A', valor: 'Apenas nas notas de rodapé' },
+            { label: 'B', valor: 'Geralmente na primeira ou última frase (tópico frasal)' },
+            { label: 'C', valor: 'Sempre no meio exato' },
+            { label: 'D', valor: 'Ela nunca está explícita' },
+        ],
+        correta: 'B',
+        explicacao: 'A ideia central geralmente é introduzida no início do parágrafo ou concluída no final. Fique atento a essas posições.',
+    },
 ];
+
+// Helper to shuffle and pick N questions
+function getRandomQuestions(pool: QuizQuestion[], count: number): QuizQuestion[] {
+    const shuffled = [...pool].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+}
 
 // ── Sub-components ──────────────────────────────────────────────────────
 
@@ -567,13 +717,13 @@ function QuizInterativo({
             )}
 
             <div className="space-y-6 mt-4">
-                {questoes.map((q) => {
+                {questoes.map((q, index) => {
                     const respondida = verificados[q.id];
                     const acertou = respostas[q.id] === q.correta;
                     return (
                         <div key={q.id} className="border border-border/50 rounded-lg p-4 bg-muted/20">
                             <p className="text-foreground font-medium mb-3">
-                                <span className="text-yellow-600 dark:text-yellow-500 mr-2">{q.id}.</span>
+                                <span className="text-yellow-600 dark:text-yellow-500 mr-2">{index + 1}.</span>
                                 {q.pergunta}
                             </p>
                             <div className="space-y-2">
@@ -741,6 +891,8 @@ export default function AulaInterpretacaoTexto({
 }: AulaInterpretacaoTextoProps) {
     const [activeTab, setActiveTab] = useState<string>('modulo-1');
     const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const [quizDiagnosticoQuestions, setQuizDiagnosticoQuestions] = useState<QuizQuestion[]>([]);
+    const [quizPraticoQuestions, setQuizPraticoQuestions] = useState<QuizQuestion[]>([]);
 
     // Determine if a module is unlocked
     const isModuleUnlocked = useCallback((moduleIndex: number) => {
@@ -748,6 +900,13 @@ export default function AulaInterpretacaoTexto({
         const prevModuleId = MODULE_DEFS[moduleIndex - 1]?.id;
         return prevModuleId ? completedModules.has(prevModuleId) : false;
     }, [completedModules]);
+
+    // Randomize questions on mount
+    useEffect(() => {
+        // Select 5 random questions for specific quizzes, or all if pool is smaller
+        setQuizDiagnosticoQuestions(getRandomQuestions(QUIZ_DIAGNOSTICO_POOL, 5));
+        setQuizPraticoQuestions(getRandomQuestions(QUIZ_PRATICO_POOL, 5));
+    }, []);
 
     // Load initial progress from DB
     useEffect(() => {
@@ -795,6 +954,12 @@ export default function AulaInterpretacaoTexto({
         // Navigate to next module or complete the lesson
         const isLastModule = moduleIndex === MODULE_DEFS.length - 1;
         if (isLastModule) {
+            // Mark lesson as theoretically complete in localStorage for the subject page
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('petrobras-quest-progress-portugues-interpretacao', 'true');
+                // Dispatch storage event to update other components immediately
+                window.dispatchEvent(new Event('storage'));
+            }
             onComplete();
         } else {
             setActiveTab(MODULE_DEFS[moduleIndex + 1].id);
@@ -817,9 +982,37 @@ export default function AulaInterpretacaoTexto({
         }, 100);
     }, []);
 
+    // Check local storage for completion (Visual Badge)
+    const [showCompletionBadge, setShowCompletionBadge] = useState(false);
+
+    useEffect(() => {
+        // Check for specific key or the generic service key convention if needed
+        const key = 'petrobras-quest-progress-portugues-interpretacao';
+        // Also check if passed via props or other logic, but priority to the manual demo key
+        const isLocalCompleted = localStorage.getItem(key) === 'true';
+
+        if (isLocalCompleted || isCompleted) {
+            setShowCompletionBadge(true);
+        }
+    }, [isCompleted]);
+
     return (
-        <div className="space-y-12">
+        <div className="space-y-12 animate-in fade-in duration-500">
             <ProgressIndicator />
+
+            {/* Completion Badge */}
+            {showCompletionBadge && (
+                <div className="bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-xl p-4 flex items-center gap-4 shadow-sm mb-6 animate-in slide-in-from-top-4 duration-700">
+                    <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-green-500/30">
+                        <LuCheck size={24} strokeWidth={3} />
+                    </div>
+                    <div>
+                        <h3 className="text-green-800 dark:text-green-300 font-bold text-lg">Aula Concluída!</h3>
+                        <p className="text-green-700 dark:text-green-400 text-sm">Parabéns! Você finalizou 100% desta aula.</p>
+                    </div>
+                </div>
+            )}
+
             {/* ─── 1. HERO SECTION ─── */}
             <HeroSection onStart={scrollToContent} />
 
@@ -1006,7 +1199,7 @@ export default function AulaInterpretacaoTexto({
                     {/* ─── QUIZ DIAGNÓSTICO (FINAL DO MÓDULO 1) ─── */}
                     <section id="quiz-diagnostico" className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
                         <QuizInterativo
-                            questoes={QUIZ_DIAGNOSTICO}
+                            questoes={quizDiagnosticoQuestions}
                             titulo="Quiz Diagnóstico — Desbloqueie o Módulo 2!"
                             icone="🔒"
                             onComplete={handleModule1Complete}
@@ -1251,7 +1444,7 @@ export default function AulaInterpretacaoTexto({
                                     Bateria de Exercícios
                                 </h2>
                                 <QuizInterativo
-                                    questoes={QUIZ_PRATICO}
+                                    questoes={quizPraticoQuestions}
                                     titulo="Quiz Prático — Teste seus conhecimentos!"
                                     icone="🎯"
                                     onComplete={handleModule2Complete}

@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   description: 'Gerenciamento de conteúdo WordPress migrado para Next.js',
 };
 
+import { UserProvider } from '@/contexts/UserContext';
+
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  return <AdminDashboardLayout>{children}</AdminDashboardLayout>;
+  return (
+    <UserProvider>
+      <AdminDashboardLayout>{children}</AdminDashboardLayout>
+    </UserProvider>
+  );
 }

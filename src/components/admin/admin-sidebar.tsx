@@ -147,7 +147,7 @@ export function AdminSidebar({ isCollapsed, userRole }: AdminSidebarProps) {
             {/* Ícone/Logo */}
             <div
               className={cn(
-                'rounded-md flex items-center justify-center bg-[var(--primary,#0037C1)]',
+                'rounded-md flex items-center justify-center bg-primary',
                 'w-10 h-10 md:w-10 md:h-10 shadow-sm flex-shrink-0'
               )}
             >
@@ -161,7 +161,7 @@ export function AdminSidebar({ isCollapsed, userRole }: AdminSidebarProps) {
                 <div className="flex items-baseline whitespace-nowrap">
                   <span
                     className={cn(
-                      'font-bebas text-[32px] uppercase  text-[var(--primary,#0037C1)]'
+                      'font-bebas text-[32px] uppercase  text-primary'
                     )}
                   >
                     A VAGA
@@ -187,7 +187,7 @@ export function AdminSidebar({ isCollapsed, userRole }: AdminSidebarProps) {
             className={cn(
               'flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4',
               pathname === '/dashboard'
-                ? 'bg-[var(--primary,#0037C1)] text-white'
+                ? 'bg-primary text-primary-foreground'
                 : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700',
               isCollapsed && 'justify-center px-2'
             )}
@@ -231,7 +231,7 @@ export function AdminSidebar({ isCollapsed, userRole }: AdminSidebarProps) {
                       className={cn(
                         'flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group',
                         isActive
-                          ? 'bg-[var(--primary,#0037C1)] text-white'
+                          ? 'bg-primary text-primary-foreground'
                           : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700',
                         isCollapsed && 'justify-center px-2'
                       )}

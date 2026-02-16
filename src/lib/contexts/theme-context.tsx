@@ -86,6 +86,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       root.style.setProperty('--primary-hover', primaryHoverHsl);
       root.style.setProperty('--primary-rgb', colors.primary); // Mantendo compatibilidade se necessário
 
+      // Calcular contraste para o texto sobre a cor primária
+      const isLight = isLightColor(colors.primary);
+      // Se a cor primária for clara, o texto deve ser escuro (valores do --foreground padrão dark mode: 222.2 47.4% 11.2%)
+      // Se for escura, o texto deve ser claro (valores do --foreground padrão light mode: 210 40% 98%)
+      const foregroundHsl = isLight ? '222.2 47.4% 11.2%' : '210 40% 98%';
+      root.style.setProperty('--primary-foreground', foregroundHsl);
+
       if (mounted) {
         localStorage.setItem('app-theme-color', currentTheme);
       }

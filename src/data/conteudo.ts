@@ -1,3 +1,5 @@
+export type PlanType = 'Bronze' | 'Prata' | 'Ouro';
+
 export interface Topico {
     id: string;
     titulo: string;
@@ -12,6 +14,7 @@ export interface MateriaConteudo {
     descricao: string;
     icone: string;
     cor: string;
+    requiredPlan: PlanType;
     topicos: Topico[];
 }
 
@@ -22,6 +25,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         descricao: 'Gramática e interpretação de texto conforme Edital Petrobras 2023.2',
         icone: '📝',
         cor: 'from-blue-500 to-cyan-500',
+        requiredPlan: 'Bronze',
         topicos: [
             { id: 'interpretacao', titulo: 'Interpretação de Texto', descricao: 'Compreensão de textos de gêneros variados', duracao: '25 min', ordem: 1 },
             { id: 'tipos-textuais', titulo: 'Tipos Textuais', descricao: 'Narração, descrição e dissertação', duracao: '6 min', ordem: 2 },
@@ -42,6 +46,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         descricao: 'Raciocínio lógico-quantitativo conforme Edital Petrobras 2023.2',
         icone: '🔢',
         cor: 'from-purple-500 to-pink-500',
+        requiredPlan: 'Bronze',
         topicos: [
             { id: 'conjuntos', titulo: 'Teoria dos Conjuntos', descricao: 'Operações, diagramas de Venn e conjuntos numéricos', duracao: '7 min', ordem: 1 },
             { id: 'razao-proporcao', titulo: 'Razão e Proporção', descricao: 'Grandezas proporcionais e regra de três', duracao: '8 min', ordem: 2 },
@@ -70,6 +75,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         descricao: 'Conceitos de mecânica, termodinâmica e eletricidade para técnicos',
         icone: '⚡',
         cor: 'from-yellow-500 to-orange-500',
+        requiredPlan: 'Prata',
         topicos: [
             { id: 'cinematica', titulo: 'Cinemática', descricao: 'MRU, MRUV e movimento circular', duracao: '10 min', ordem: 1 },
             { id: 'dinamica', titulo: 'Dinâmica', descricao: 'Leis de Newton e aplicações', duracao: '10 min', ordem: 2 },
@@ -85,6 +91,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         descricao: 'Química geral, orgânica e inorgânica para técnicos de operação',
         icone: '🧪',
         cor: 'from-green-500 to-emerald-500',
+        requiredPlan: 'Prata',
         topicos: [
             { id: 'atomos', titulo: 'Estrutura Atômica', descricao: 'Modelos atômicos e distribuição eletrônica', duracao: '8 min', ordem: 1 },
             { id: 'tabela-periodica', titulo: 'Tabela Periódica', descricao: 'Propriedades periódicas e famílias', duracao: '7 min', ordem: 2 },
@@ -102,6 +109,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         descricao: 'Interpretação de textos técnicos em inglês',
         icone: '🇺🇸',
         cor: 'from-red-500 to-pink-500',
+        requiredPlan: 'Ouro',
         topicos: [
             { id: 'reading-strategies', titulo: 'Reading Strategies', descricao: 'Técnicas de leitura e skimming', duracao: '6 min', ordem: 1 },
             { id: 'verb-tenses', titulo: 'Verb Tenses', descricao: 'Tempos verbais em inglês', duracao: '8 min', ordem: 2 },
