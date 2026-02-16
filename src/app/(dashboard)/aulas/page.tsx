@@ -24,6 +24,33 @@ export default function AulasPage() {
     const [materiasVisiveis, setMateriasVisiveis] = useState<MateriaConteudo[]>([]);
     const [cargoNome, setCargoNome] = useState<string>('');
     const [loading, setLoading] = useState(true);
+    const [completedTopics, setCompletedTopics] = useState<Record<string, boolean>>({});
+
+    useEffect(() => {
+        // Load completion status from localStorage
+        const loadCompletionStatus = () => {
+            const status: Record<string, boolean> = {};
+            // Iterate through all potential topics content to check storage
+            // This is a simple approach; for a larger app, we might store a single JSON object
+            CONTEUDO_MATERIAS.forEach(materia => {
+                materia.topicos.forEach(topico => {
+                    const key = `${topico.id}-completed`;
+                    if (localStorage.getItem(key) === 'true') {
+                        status[key] = true;
+                    }
+                });
+            });
+
+            // Also check specific topics if needed, but the loop covers most
+            if (localStorage.getItem('concordancia-completed') === 'true') {
+                status['concordancia-completed'] = true;
+            }
+
+            setCompletedTopics(status);
+        };
+
+        loadCompletionStatus();
+    }, []);
 
     useEffect(() => {
         const loadUserAndFilter = async () => {
@@ -70,6 +97,7 @@ export default function AulasPage() {
                             descricao: `Conteúdo técnico para ${profissao.nome}`,
                             icone: '📋',
                             cor: 'from-orange-500 to-red-500',
+                            requiredPlan: 'Bronze',
                             topicos: profissao.blocos.flatMap((bloco, idx) =>
                                 bloco.topicos.map((topico, tidx) => ({
                                     id: `${bloco.nome.toLowerCase().replace(/\s+/g, '-')}-${tidx}`,
@@ -132,7 +160,8 @@ export default function AulasPage() {
             {/* Matérias Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {materiasVisiveis.map((materia) => (
-                    <div
+                    <Link
+                        href={`/aulas/${materia.id}`}
                         key={materia.id}
                         className="group relative flex flex-col bg-slate-50/50 dark:bg-card backdrop-blur-lg rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/10 overflow-hidden"
                     >
@@ -159,14 +188,25 @@ export default function AulasPage() {
 
                         {/* List of Topics (Pricing Style) */}
                         <div className="flex-1 px-8 py-4 space-y-3">
-                            {materia.topicos.slice(0, 7).map((topico, idx) => (
-                                <div key={topico.id} className="flex items-center gap-3 text-sm text-muted-foreground group/item">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500/40 group-hover/item:bg-blue-500 transition-colors" />
-                                    <span className="truncate group-hover/item:text-foreground transition-colors">
-                                        {topico.titulo}
-                                    </span>
-                                </div>
-                            ))}
+                            {materia.topicos.slice(0, 7).map((topico, idx) => {
+                                const isCompleted = completedTopics[`${topico.id}-completed`];
+                                return (
+                                    <div key={topico.id} className="flex items-center gap-3 text-sm text-muted-foreground group/item">
+                                        <div className={`w-1.5 h-1.5 rounded-full transition-colors ${isCompleted ? 'bg-green-500' : 'bg-blue-500/40 group-hover/item:bg-blue-500'}`} />
+                                        <span className={`truncate transition-colors flex-1 ${isCompleted ? 'text-green-600 dark:text-green-400 font-medium' : 'group-hover/item:text-foreground'}`}>
+                                            {topico.titulo}
+                                        </span>
+                                        <span className="text-[10px] text-muted-foreground/60 font-bold opacity-0 group-hover/item:opacity-100 transition-opacity">
+                                            {topico.duracao}
+                                        </span>
+                                        {isCompleted && (
+                                            <span className="text-green-500 text-xs font-bold px-1.5 py-0.5 bg-green-500/10 rounded-full">
+                                                ✓
+                                            </span>
+                                        )}
+                                    </div>
+                                );
+                            })}
                             {materia.topicos.length > 7 && (
                                 <div className="text-xs text-primary/60 font-medium pl-4.5">
                                     + {materia.topicos.length - 7} outros tópicos...
@@ -174,20 +214,11 @@ export default function AulasPage() {
                             )}
                         </div>
 
-                        {/* Bottom Action */}
-                        <div className="p-8 pt-4">
-                            <Link
-                                href={`/aulas/${materia.id}`}
-                                className={`flex items-center justify-center w-full py-4 rounded-xl font-bold bg-gradient-to-r ${materia.cor} text-white shadow-lg hover:shadow-xl hover:opacity-90 transition-all active:scale-[0.98] group/btn`}
-                            >
-                                Começar Agora
-                                <span className="ml-2 group-hover/btn:translate-x-1 transition-transform">→</span>
-                            </Link>
-                        </div>
+
 
                         {/* Decoration */}
                         <div className={`absolute -right-12 -bottom-12 w-48 h-48 bg-gradient-to-br ${materia.cor} opacity-[0.03] group-hover:opacity-[0.08] rounded-full transition-opacity`} />
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>
