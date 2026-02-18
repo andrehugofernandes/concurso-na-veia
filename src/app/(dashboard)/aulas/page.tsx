@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { CONTEUDO_MATERIAS, MateriaConteudo } from '@/data/conteudo';
 import { CARGOS } from '@/data/cargos';
+import { useAllAulasProgress } from '@/hooks/useAulaProgress';
 import { carregarUsuario } from '@/lib/utils';
 import { getProfissaoById } from '@/lib/profissoes-edital';
 import { AnimatedBorder } from '@/components/ui/animated-border';
@@ -24,33 +25,7 @@ export default function AulasPage() {
     const [materiasVisiveis, setMateriasVisiveis] = useState<MateriaConteudo[]>([]);
     const [cargoNome, setCargoNome] = useState<string>('');
     const [loading, setLoading] = useState(true);
-    const [completedTopics, setCompletedTopics] = useState<Record<string, boolean>>({});
-
-    useEffect(() => {
-        // Load completion status from localStorage
-        const loadCompletionStatus = () => {
-            const status: Record<string, boolean> = {};
-            // Iterate through all potential topics content to check storage
-            // This is a simple approach; for a larger app, we might store a single JSON object
-            CONTEUDO_MATERIAS.forEach(materia => {
-                materia.topicos.forEach(topico => {
-                    const key = `${topico.id}-completed`;
-                    if (localStorage.getItem(key) === 'true') {
-                        status[key] = true;
-                    }
-                });
-            });
-
-            // Also check specific topics if needed, but the loop covers most
-            if (localStorage.getItem('concordancia-completed') === 'true') {
-                status['concordancia-completed'] = true;
-            }
-
-            setCompletedTopics(status);
-        };
-
-        loadCompletionStatus();
-    }, []);
+    const { progressData, loading: progressLoading, getProgress } = useAllAulasProgress();
 
     useEffect(() => {
         const loadUserAndFilter = async () => {
@@ -132,7 +107,7 @@ export default function AulasPage() {
         loadUserAndFilter();
     }, []);
 
-    if (loading) {
+    if (loading || progressLoading) {
         return (
             <div className="flex items-center justify-center py-20">
                 <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-yellow-400" />
@@ -189,7 +164,8 @@ export default function AulasPage() {
                         {/* List of Topics (Pricing Style) */}
                         <div className="flex-1 px-8 py-4 space-y-3">
                             {materia.topicos.slice(0, 7).map((topico, idx) => {
-                                const isCompleted = completedTopics[`${topico.id}-completed`];
+                                const prog = getProgress(materia.id, topico.id);
+                                const isCompleted = prog?.completed;
                                 return (
                                     <div key={topico.id} className="flex items-center gap-3 text-sm text-muted-foreground group/item">
                                         <div className={`w-1.5 h-1.5 rounded-full transition-colors ${isCompleted ? 'bg-green-500' : 'bg-blue-500/40 group-hover/item:bg-blue-500'}`} />

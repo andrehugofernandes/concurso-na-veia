@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { CONTEUDO_MATERIAS } from '@/data/conteudo';
 import { PROFISSOES } from '@/lib/profissoes-edital';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, Legend } from 'recharts';
-import { progressService, LessonProgress } from '@/lib/services/progress';
+import { useAllAulasProgress } from '@/hooks/useAulaProgress';
 
 interface UserData {
     nome: string;
@@ -82,9 +82,11 @@ const CARGOS_NOMES: Record<string, string> = {
 
 export default function DashboardPage() {
     const [user, setUser] = useState<UserData | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [progressData, setProgressData] = useState<LessonProgress[]>([]);
+    const [loadingUser, setLoadingUser] = useState(true);
     const [stats, setStats] = useState({ completed: 0, inProgress: 0, total: 0 });
+
+    const { progressData: allContentProgress, loading: loadingProgress } = useAllAulasProgress();
+    const loading = loadingUser || loadingProgress;
 
     // Config Modal State
     const [configModal, setConfigModal] = useState<{ open: boolean, tipo?: string, nome?: string, cor?: string, qtd?: number }>({ open: false });
@@ -103,38 +105,30 @@ export default function DashboardPage() {
             } catch (error) {
                 console.error('Error loading user:', error);
             } finally {
-                setLoading(false);
+                setLoadingUser(false);
             }
         };
 
-        const loadProgress = async () => {
-            const data = await progressService.getProgress();
-            setProgressData(data);
+        loadUser();
+    }, []);
 
+    useEffect(() => {
+        if (!loadingProgress) {
             // Calculate stats
-            // For now, let's assume total lessons based on CONTEUDO_MATERIAS flat list of topics
-            // This is an estimation. A real implementation would count actual unique lessons.
             let totalLessons = 0;
             CONTEUDO_MATERIAS.forEach(m => totalLessons += m.topicos.length);
 
-            // Count unique lessons completed
-            const uniqueCompletedMatches = new Set(data.filter(p => p.completed).map(p => p.lessonId));
-            const completedCount = uniqueCompletedMatches.size;
-
-            // In progress (started but not fully completed - though our current logic marks completed per module)
-            // Let's count "In Progress" as lessons with some data but not all modules done?
-            // For simplicity, let's just use what we have.
+            // Calculate directly instead of using unstable dependency function
+            const completedCount = Object.values(allContentProgress).filter(p => p.completed).length;
+            const inProgressCount = Object.keys(allContentProgress).length - completedCount;
 
             setStats({
                 completed: completedCount,
-                inProgress: data.length - completedCount, // Rough approx
-                total: totalLessons > 0 ? totalLessons : 10 // Fallback
+                inProgress: inProgressCount,
+                total: totalLessons > 0 ? totalLessons : 10
             });
-        };
-
-        loadUser();
-        loadProgress();
-    }, []);
+        }
+    }, [loadingProgress, allContentProgress]);
 
     const taxaAcerto = user
         ? user.questoes_certas + user.questoes_erradas > 0
@@ -336,17 +330,33 @@ export default function DashboardPage() {
                                     </div>
                                     <div className="bg-background/50 rounded-xl p-4 border border-border/50">
                                         {(() => {
-                                            // Find interpretacao-texto progress
-                                            const p = progressData.find(i => i.lessonId === 'interpretacao-texto');
-                                            const mod1 = progressData.find(i => i.lessonId === 'interpretacao-texto' && i.moduleId === 'modulo-1');
-                                            const mod2 = progressData.find(i => i.lessonId === 'interpretacao-texto' && i.moduleId === 'modulo-2');
+                                            // Find interpretacao-texto progress (Now mapped to portugues/interpretacao)
+                                            // Note: In CONTEUDO_MATERIAS, Interpretacao ID is 'interpretacao', Materia ID is 'portugues'
+                                            const progress = allContentProgress['portugues/interpretacao'];
 
-                                            let percent = 0;
-                                            let moduleName = 'Introdução';
+                                            // For specific module tracking we would need granular checks, but useAllAulasProgress 
+                                            // currently returns aggregated per topic in its map logic?
+                                            // Wait, useAllAulasProgress maps key = `${item.materia_id}/${item.topico_id}` 
+                                            // and value is just { progress_percent, completed ... }. 
+                                            // It doesn't seem to store PER MODULE data in the map, OR the query returns multiple rows?
+                                            // The hook code:
+                                            // progressMap[key] = { ...item }
+                                            // If multiple modules exist for same topic, they overwrite each other in the map!
+                                            // This is a limitation of the current hook if we want module-level detail here.
+                                            // However, for the dashboard summary, we just need the % or "Concluído".
 
-                                            if (mod2?.completed) { percent = 100; moduleName = 'Concluído'; }
-                                            else if (mod1?.completed) { percent = 50; moduleName = 'Módulo 2: Prática'; }
-                                            else if (p) { percent = 10; moduleName = 'Módulo 1: Fundamentos'; }
+                                            let percent = progress?.progress_percent || 0;
+                                            let moduleName = 'Continuar Estudando';
+
+                                            if (progress?.completed) {
+                                                percent = 100;
+                                                moduleName = 'Aula Concluída';
+                                            } else if (percent > 0) {
+                                                moduleName = 'Em andamento';
+                                            } else {
+                                                percent = 0;
+                                                moduleName = 'Não iniciado';
+                                            }
 
                                             return (
                                                 <>

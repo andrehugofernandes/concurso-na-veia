@@ -3,10 +3,12 @@
 import { use, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { getMateriaById, MateriaConteudo } from '@/data/conteudo';
+import { useAllAulasProgress } from '@/hooks/useAulaProgress';
 import { notFound } from 'next/navigation';
 import { carregarUsuario, carregarUsuarioAsync } from '@/lib/utils';
 import { Usuario } from '@/lib/types';
 import { getProfissaoById } from '@/lib/profissoes-edital';
+import AulaPontuacao from '@/components/aulas/AulaPontuacao';
 
 // Mapeamento de IDs do registro para IDs do profissoes-edital
 const CARGO_ID_MAP: Record<string, string> = {
@@ -49,8 +51,6 @@ export default function MateriaPage({ params }: PageProps) {
 
             if (materiaEncontrada) {
                 setMateria(materiaEncontrada);
-                setLoading(false);
-                return;
             }
 
             // 2. Se for conhecimentos-especificos, criar dinamicamente
@@ -98,38 +98,9 @@ export default function MateriaPage({ params }: PageProps) {
         loadMateriaData();
     }, [materiaId]);
 
-    // Load completion status from localStorage
-    useEffect(() => {
-        if (!materia) return;
+    const { getProgress, loading: progressLoading } = useAllAulasProgress();
 
-        const checkProgress = () => {
-            const progress: Record<string, boolean> = {};
-            materia.topicos.forEach(topico => {
-                const key = `petrobras-quest-progress-${materia.id}-${topico.id}`;
-                const isCompleted = localStorage.getItem(key) === 'true';
-                if (isCompleted) {
-                    progress[topico.id] = true;
-                }
-            });
-            setCompletedTopics(progress);
-        };
-
-        // Initial check
-        checkProgress();
-
-        // Listen for storage events (changes in other tabs)
-        window.addEventListener('storage', checkProgress);
-
-        // Listen for focus events (when user comes back to this tab)
-        window.addEventListener('focus', checkProgress);
-
-        return () => {
-            window.removeEventListener('storage', checkProgress);
-            window.removeEventListener('focus', checkProgress);
-        };
-    }, [materia]);
-
-    if (loading) {
+    if (loading || progressLoading) {
         return (
             <div className="flex items-center justify-center py-20">
                 <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-yellow-400" />
@@ -141,7 +112,7 @@ export default function MateriaPage({ params }: PageProps) {
         notFound();
     }
 
-    const completedCount = Object.keys(completedTopics).length;
+    const completedCount = materia.topicos.filter(t => getProgress(materia.id, t.id)?.completed).length;
     const totalCount = materia.topicos.length;
     const progressPercentage = totalCount > 0 ? (completedCount / totalCount) * 100 : 0;
 
@@ -214,7 +185,8 @@ export default function MateriaPage({ params }: PageProps) {
             {/* Tópicos List */}
             <div className="space-y-4">
                 {materia.topicos.map((topico, index) => {
-                    const isCompleted = completedTopics[topico.id];
+                    const prog = getProgress(materia.id, topico.id);
+                    const isCompleted = prog?.completed;
                     return (
                         <Link
                             key={topico.id}
@@ -227,7 +199,7 @@ export default function MateriaPage({ params }: PageProps) {
                             </div>
 
                             <div className="flex-grow min-w-0">
-                                <h3 className={`text-lg font-bold transition truncate ${isCompleted ? 'text-green-600 dark:text-green-500' : 'text-foreground group-hover:text-primary'}`}>
+                                <h3 className={`text-lg font-bold transition truncate ${isCompleted ? 'text-green-600 dark:text-green-400 font-medium' : 'text-foreground group-hover:text-primary'}`}>
                                     {topico.titulo}
                                 </h3>
                                 <p className="text-muted-foreground text-sm truncate">

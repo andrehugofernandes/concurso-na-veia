@@ -9,10 +9,15 @@ import {
 } from '@/components/ui/accordion';
 import {
     Tabs,
-    TabsList,
-    TabsTrigger,
     TabsContent
 } from '@/components/ui/tabs';
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from '@/components/ui/carousel';
 
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -55,7 +60,8 @@ import {
     QuizQuestion,
     getRandomQuestions,
     ProgressIndicator,
-    AulaProps
+    AulaProps,
+    StickyModuleNav
 } from './shared';
 
 import { progressService } from '@/lib/services/progress';
@@ -334,7 +340,7 @@ export default function AulaInterpretacaoTexto({
     if (loading) return null;
 
     return (
-        <div className="space-y-12 pb-20">
+        <div className="space-y-6 pb-20">
             <ProgressIndicator />
 
             {showCompletionBadge && (
@@ -344,7 +350,7 @@ export default function AulaInterpretacaoTexto({
                     </div>
                     <div>
                         <h3 className="text-green-800 dark:text-green-300 font-bold text-lg">Aula Concluída!</h3>
-                        <p className="text-green-700 dark:text-green-400 text-sm">Parabéns! Você finalizou 100% desta aula enriquecida e atualizada.</p>
+                        <p className="text-green-700 dark:text-green-400 text-sm">Parabéns! Você dominou as técnicas de Interpretação de Texto.</p>
                     </div>
                 </div>
             )}
@@ -353,31 +359,12 @@ export default function AulaInterpretacaoTexto({
                 const idx = MODULE_DEFS.findIndex(m => m.id === val);
                 if (isModuleUnlocked(idx)) setActiveTab(val);
             }} className="w-full space-y-8">
-                <div className="sticky top-20 z-30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 py-4 -mx-6 px-6 border-b border-border/40">
-                    <TabsList className="w-full h-auto p-1 bg-muted/30 rounded-2xl grid grid-cols-3 gap-2">
-                        {MODULE_DEFS.map((module, index) => {
-                            const isUnlocked = isModuleUnlocked(index);
-                            const isCompletedModule = completedModules.has(module.id);
-                            return (
-                                <TabsTrigger
-                                    key={module.id}
-                                    value={module.id}
-                                    disabled={!isUnlocked}
-                                    className="relative py-3 px-2 md:px-4 rounded-xl transition-all data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/50 disabled:opacity-50 disabled:cursor-not-allowed group h-full flex flex-col items-center justify-center text-center gap-1"
-                                >
-                                    <div className="flex items-center gap-1 md:gap-2 text-[10px] md:text-xs font-bold uppercase tracking-wider text-muted-foreground group-data-[state=active]:text-primary">
-                                        {module.label}
-                                        {isCompletedModule && <span className="text-green-500 text-lg">✓</span>}
-                                        {!isUnlocked && <span className="text-muted-foreground/60">🔒</span>}
-                                    </div>
-                                    <span className="font-semibold text-xs md:text-sm text-foreground/90 group-data-[state=active]:text-foreground line-clamp-1">
-                                        {module.titulo}
-                                    </span>
-                                </TabsTrigger>
-                            );
-                        })}
-                    </TabsList>
-                </div>
+                <StickyModuleNav
+                    modules={Array.from(MODULE_DEFS)}
+                    activeTab={activeTab}
+                    completedModules={completedModules}
+                    isModuleUnlocked={isModuleUnlocked}
+                />
 
                 {/* ─── MÓDULO 1: FUNDAMENTOS ─── */}
                 <Activity mode={activeTab === 'modulo-1' ? 'visible' : 'hidden'}>
@@ -432,46 +419,91 @@ export default function AulaInterpretacaoTexto({
                             </h2>
                             <p className="text-muted-foreground text-lg">Identificar o tipo de texto é o primeiro passo para não errar a interpretação central.</p>
 
-                            <Accordion type="single" collapsible className="w-full">
-                                <AccordionItem value="item-1" className="border-b border-border/50">
-                                    <AccordionTrigger className="text-lg font-bold hover:text-primary transition-colors py-6">
-                                        <div className="flex items-center gap-3">
-                                            <LuLayers className="text-indigo-500" />
-                                            Dissertativo-Argumentativo
-                                        </div>
-                                    </AccordionTrigger>
-                                    <AccordionContent className="text-muted-foreground pb-6 space-y-4">
-                                        <p>O mais comum em provas da Petrobras. Expõe um assunto e defende uma opinião (tese).</p>
-                                        <div className="p-4 bg-muted/50 rounded-lg border-l-4 border-indigo-500">
-                                            <p className="italic font-serif">"A exploração do petróleo é vital, embora a transição energética seja urgente. Portanto, o Brasil deve..."</p>
-                                        </div>
-                                    </AccordionContent>
-                                </AccordionItem>
+                            <div className="w-full">
+                                <Carousel opts={{ loop: true, align: 'start' }} className="w-full">
+                                    <CarouselContent className="-ml-4 pb-4">
+                                        <CarouselItem className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                                            <FlipCard
+                                                categoria="Tipologia Textual"
+                                                frente={
+                                                    <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
+                                                        <div className="w-16 h-16 rounded-2xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                                            <LuLayers size={32} />
+                                                        </div>
+                                                        <h3 className="text-xl font-bold">Dissertativo-Argumentativo</h3>
+                                                        <p className="text-sm text-muted-foreground">O queridinho da Cesgranrio</p>
+                                                    </div>
+                                                }
+                                                verso={
+                                                    <div className="space-y-4">
+                                                        <p><strong>Definição:</strong> Expõe um assunto e defende uma opinião (tese) com argumentos.</p>
+                                                        <div className="p-3 bg-background/50 rounded-lg border border-indigo-500/20 text-xs italic">
+                                                            "A exploração do petróleo é vital, embora a transição energética seja urgente. Portanto, o Brasil deve..."
+                                                        </div>
+                                                    </div>
+                                                }
+                                            />
+                                        </CarouselItem>
 
-                                <AccordionItem value="item-2" className="border-b border-border/50">
-                                    <AccordionTrigger className="text-lg font-bold hover:text-primary transition-colors py-6">
-                                        <div className="flex items-center gap-3">
-                                            <LuBookOpen className="text-emerald-500" />
-                                            Narrativo e Descritivo
-                                        </div>
-                                    </AccordionTrigger>
-                                    <AccordionContent className="text-muted-foreground pb-6 space-y-4">
-                                        <p><strong>Narrativo:</strong> Foca em ações no tempo (personagens, enredo). <br /> <strong>Descritivo:</strong> Foca em características (pintura com palavras).</p>
-                                    </AccordionContent>
-                                </AccordionItem>
+                                        <CarouselItem className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                                            <FlipCard
+                                                categoria="Tipologia Textual"
+                                                frente={
+                                                    <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
+                                                        <div className="w-16 h-16 rounded-2xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                                                            <LuBookOpen size={32} />
+                                                        </div>
+                                                        <h3 className="text-xl font-bold">Narrativo e Descritivo</h3>
+                                                        <p className="text-sm text-muted-foreground">O que conta e o que pinta</p>
+                                                    </div>
+                                                }
+                                                verso={
+                                                    <div className="space-y-4">
+                                                        <div>
+                                                            <strong className="text-emerald-400">Narrativo:</strong>
+                                                            <p className="text-sm">Foca em ações no tempo (personagens, enredo, evolução temporal).</p>
+                                                        </div>
+                                                        <div className="border-t border-white/10 pt-2">
+                                                            <strong className="text-emerald-400">Descritivo:</strong>
+                                                            <p className="text-sm">Foca em características (pintura com palavras, adjetivação, cena estática).</p>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            />
+                                        </CarouselItem>
 
-                                <AccordionItem value="item-3" className="border-b border-border/50">
-                                    <AccordionTrigger className="text-lg font-bold hover:text-primary transition-colors py-6">
-                                        <div className="flex items-center gap-3">
-                                            <LuFileText className="text-orange-500" />
-                                            Injuntivo (Instrucional)
-                                        </div>
-                                    </AccordionTrigger>
-                                    <AccordionContent className="text-muted-foreground pb-6">
-                                        <p>Visa orientar o comportamento do leitor. Comum em editais, regulamentos e manuais técnicos de segurança no trabalho.</p>
-                                    </AccordionContent>
-                                </AccordionItem>
-                            </Accordion>
+                                        <CarouselItem className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                                            <FlipCard
+                                                categoria="Tipologia Textual"
+                                                frente={
+                                                    <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
+                                                        <div className="w-16 h-16 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
+                                                            <LuFileText size={32} />
+                                                        </div>
+                                                        <h3 className="text-xl font-bold">Injuntivo (Instrucional)</h3>
+                                                        <p className="text-sm text-muted-foreground">O que manda fazer</p>
+                                                    </div>
+                                                }
+                                                verso={
+                                                    <div className="space-y-4">
+                                                        <p><strong>Definição:</strong> Visa orientar o comportamento do leitor. Imperativo e verbos de comando.</p>
+                                                        <ul className="list-disc pl-4 text-sm space-y-1">
+                                                            <li>Manuais técnicos</li>
+                                                            <li>Receitas</li>
+                                                            <li>Editais</li>
+                                                            <li>Normas de Segurança (SMS)</li>
+                                                        </ul>
+                                                    </div>
+                                                }
+                                            />
+                                        </CarouselItem>
+                                    </CarouselContent>
+                                    <div className="flex justify-center gap-2 mt-4">
+                                        <CarouselPrevious className="static translate-y-0 h-10 w-10 border-slate-700 text-slate-400" />
+                                        <CarouselNext className="static translate-y-0 h-10 w-10 border-slate-700 text-slate-400" />
+                                    </div>
+                                </Carousel>
+                            </div>
                         </section>
 
                         {/* SEÇÃO 3: MULTIMÍDIA */}
@@ -546,9 +578,12 @@ export default function AulaInterpretacaoTexto({
                             </h2>
                             <p className="text-muted-foreground">Veja como o sentido se mantém mas a sintaxe se altera:</p>
                             <CardCarousel titulo="Exemplos de Reescrita" cards={[
-                                { icone: '💡', titulo: 'Conjunção Coordenada', descricao: 'Choveu muito, MAS fomos trabalhar. (Ênfase no trabalho)', corFundo: 'bg-red-500/10' },
-                                { icone: '🧠', titulo: 'Conjunção Subordinada', descricao: 'EMBORA tenha chovido muito, fomos trabalhar. (Ênfase na chuva/detalhe)', corFundo: 'bg-emerald-500/10' },
-                                { icone: '🔍', titulo: 'Causa vs Explicação', descricao: 'Faltei PORQUE estava doente (Causa). Venha, PORQUE eu mandei (Explicação).', corFundo: 'bg-blue-500/10' }
+                                { icone: '⚖️', titulo: 'Conjunção Coordenada', descricao: <div className="pb-4">Choveu muito, <b>MAS</b> fomos trabalhar. (Relação de oposição com ênfase no trabalho)</div>, corFundo: 'bg-red-500/10' },
+                                { icone: '🧠', titulo: 'Conjunção Subordinada', descricao: <div className="pb-4"><b>EMBORA</b> tenha chovido muito, fomos trabalhar. (Concessão: ênfase no fato de chover, mantendo o sentido)</div>, corFundo: 'bg-emerald-500/10' },
+                                { icone: '🔍', titulo: 'Causa vs Explicação', descricao: <div className="pb-4">Faltei <b>PORQUE</b> estava doente (Causa real). Venha, <b>PORQUE</b> eu mandei (Explicação/Ordem).</div>, corFundo: 'bg-blue-500/10' },
+                                { icone: '📈', titulo: 'Conectivo Consecutivo', descricao: <div className="pb-4">Choveu tanto <b>QUE</b> a rua alagou. (Troque por: <i>de tal sorte que</i>, <i>de modo que</i>)</div>, corFundo: 'bg-purple-500/10' },
+                                { icone: '⏳', titulo: 'Conectivo Condicional', descricao: <div className="pb-4"><b>CASO</b> chova, não irei. (Troque por: <i>desde que</i> + subjuntivo, <i>contanto que</i>)</div>, corFundo: 'bg-orange-500/10' },
+                                { icone: '🎯', titulo: 'Conectivo Finalidade', descricao: <div className="pb-4">Estudo <b>PARA QUE</b> passe. (Troque por: <i>a fim de que</i>, <i>com o intuito de</i>)</div>, corFundo: 'bg-yellow-500/10' }
                             ]} />
                         </section>
 
@@ -641,6 +676,8 @@ export default function AulaInterpretacaoTexto({
                     </div>
                 </Activity>
             </Tabs>
+
+
         </div>
     );
 }

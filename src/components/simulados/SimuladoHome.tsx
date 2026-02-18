@@ -155,21 +155,7 @@ export default function SimuladoHome({ usuario, iniciarSimulado, gerandoQuestoes
                             )}
                         </div>
 
-                        {/* Bottom Action */}
-                        <div className="p-8 pt-4">
-                            <button
-                                onClick={() => handleOpenModal(materia)}
-                                disabled={gerandoQuestoes}
-                                className={cn(
-                                    "flex items-center justify-center w-full py-4 rounded-xl font-black uppercase text-xs tracking-widest text-white shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:opacity-90 transition-all active:scale-[0.98] group/btn",
-                                    materia.cor,
-                                    gerandoQuestoes && "opacity-50 cursor-not-allowed"
-                                )}
-                            >
-                                {gerandoQuestoes ? 'Gerando...' : 'Configurar Simulado'}
-                                <span className="ml-2 group-hover/btn:translate-x-1 transition-transform">→</span>
-                            </button>
-                        </div>
+
 
                         {/* Decoration */}
                         <div className={cn(

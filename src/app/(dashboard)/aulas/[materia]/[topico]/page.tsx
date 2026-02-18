@@ -7,10 +7,36 @@ import { getMateriaById, getTopicoById, getNextTopico, getPrevTopico } from '@/d
 import { notFound } from 'next/navigation';
 import ReadingProgress from '@/components/ReadingProgress';
 import { useAulaProgress } from '@/hooks/useAulaProgress';
+import { AulaProps } from '@/components/aulas/shared';
 
 // Dynamic import para evitar hydration mismatch dos componentes Radix UI (Dialog, Accordion, Tabs)
 const AulaInterpretacaoTexto = dynamic(
     () => import('@/components/aulas/AulaInterpretacaoTexto'),
+    { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
+);
+
+const AulaConcordancia = dynamic(
+    () => import('@/components/aulas/AulaConcordancia'),
+    { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
+);
+
+const AulaReescritaFrases = dynamic(
+    () => import('@/components/aulas/AulaReescritaFrases'),
+    { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
+);
+
+const AulaCoesaoCoerencia = dynamic<AulaProps>(
+    () => import('@/components/aulas/AulaCoesaoCoerencia'),
+    { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
+);
+
+const AulaCrase = dynamic<AulaProps>(
+    () => import('@/components/aulas/AulaCrase'),
+    { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
+);
+
+const AulaPontuacao = dynamic<AulaProps>(
+    () => import('@/components/aulas/AulaPontuacao'),
     { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
 );
 
@@ -254,6 +280,8 @@ export default function TopicoPage({ params }: PageProps) {
         }
     };
 
+
+
     return (
         <div className="min-h-screen bg-background">
             {/* Reading Progress Bar */}
@@ -301,29 +329,76 @@ export default function TopicoPage({ params }: PageProps) {
 
             {/* Main Content */}
             <main className="container mx-auto px-6 py-8 max-w-6xl">
-                {/* Title */}
-                <div className="mb-8">
-                    <div className="flex items-center gap-3 mb-4">
-                        <span className={`px-3 py-1 rounded-full text-sm bg-gradient-to-r ${materia.cor} text-white`}>
-                            {materia.nome}
-                        </span>
-                        <span className="text-gray-500">⏱️ {topico.duracao}</span>
-                    </div>
-                    {/* Título Principal com Contraste Corrigido */}
-                    <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                        {topico.titulo}
-                    </h1>
-                    <p className="text-muted-foreground mt-2 text-lg leading-relaxed max-w-2xl">
-                        {topico.descricao}
-                    </p>
-                </div>
+                {/* Title - Ocultado para Aulas Premium que já possuem cabeçalho próprio */}
+                {![''].includes(topicoId) && (
+                    <>
+                        <div className="mb-4">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className={`px-3 py-1 rounded-full text-sm bg-gradient-to-r ${materia.cor} text-white`}>
+                                    {materia.nome}
+                                </span>
+                                <span className="text-gray-500">⏱️ {topico.duracao}</span>
+                            </div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                                {topico.titulo}
+                            </h1>
+                            <p className="text-muted-foreground mt-2 text-lg leading-relaxed max-w-2xl">
+                                {topico.descricao}
+                            </p>
+                        </div>
+                    </>
+                )}
 
-                <div className="h-px w-full bg-border/50 my-12" />
-
+                {/* Article Content */}
                 {/* Article Content */}
                 <article className="prose prose-invert prose-lg max-w-none">
                     {materiaId === 'portugues' && topicoId === 'interpretacao' ? (
                         <AulaInterpretacaoTexto
+                            onComplete={handleCompleteAula}
+                            isCompleted={isCompleted}
+                            loading={loading}
+                            xpGanho={xpGanho}
+                            currentProgress={progress}
+                            onUpdateProgress={updateProgress}
+                        />
+                    ) : materiaId === 'portugues' && topicoId === 'concordancia' ? (
+                        <AulaConcordancia
+                            onComplete={handleCompleteAula}
+                            isCompleted={isCompleted}
+                            loading={loading}
+                            xpGanho={xpGanho}
+                            currentProgress={progress}
+                            onUpdateProgress={updateProgress}
+                        />
+                    ) : materiaId === 'portugues' && topicoId === 'reescritura' ? (
+                        <AulaReescritaFrases
+                            onComplete={handleCompleteAula}
+                            isCompleted={isCompleted}
+                            loading={loading}
+                            xpGanho={xpGanho}
+                            currentProgress={progress}
+                            onUpdateProgress={updateProgress}
+                        />
+                    ) : materiaId === 'portugues' && topicoId === 'coesao-coerencia' ? (
+                        <AulaCoesaoCoerencia
+                            onComplete={handleCompleteAula}
+                            isCompleted={isCompleted}
+                            loading={loading}
+                            xpGanho={xpGanho}
+                            currentProgress={progress}
+                            onUpdateProgress={updateProgress}
+                        />
+                    ) : materiaId === 'portugues' && topicoId === 'crase' ? (
+                        <AulaCrase
+                            onComplete={handleCompleteAula}
+                            isCompleted={isCompleted}
+                            loading={loading}
+                            xpGanho={xpGanho}
+                            currentProgress={progress}
+                            onUpdateProgress={updateProgress}
+                        />
+                    ) : materiaId === 'portugues' && topicoId === 'pontuacao' ? (
+                        <AulaPontuacao
                             onComplete={handleCompleteAula}
                             isCompleted={isCompleted}
                             loading={loading}
@@ -363,10 +438,10 @@ export default function TopicoPage({ params }: PageProps) {
                 {/* Completion CTA — only for generic lessons (interpretacao has its own) */}
                 {!(materiaId === 'portugues' && topicoId === 'interpretacao') && (
                     <div className="mt-12 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-8 border border-yellow-500/30 text-center">
-                        <h3 className="text-2xl font-bold text-white mb-2">
+                        <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
                             {isCompleted ? '✅ Aula Concluída!' : '📖 Termine a leitura'}
                         </h3>
-                        <p className="text-gray-400 mb-4">
+                        <p className="text-slate-600 dark:text-gray-400 mb-4">
                             {isCompleted
                                 ? `Parabéns! Você ganhou +${xpGanho || 50} XP`
                                 : 'Role até o final para marcar esta aula como concluída e ganhar XP'
