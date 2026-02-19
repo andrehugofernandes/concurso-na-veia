@@ -469,7 +469,7 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 > - Container da aula (`<main>`): `container mx-auto px-6 py-8 max-w-6xl` (redução de ~15% vs full-width)
 > - Dentro de cada `TabsContent`: `space-y-16`
 > - Cada seção de conteúdo: envolver em `bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm`
-> - Títulos: `text-3xl md:text-4xl` com badge `w-12 h-12` numerado
+> - Títulos: `text-3xl md:text-4xl` com badge `w-14 h-14` numerado
 > - Fontes Gerais: Corpo: `text-base md:text-lg`. Callouts: `text-lg`. Sub-labels: `text-base`.
 > - Banner de Módulo: gradiente full-width com título `text-4xl md:text-5xl`
 
@@ -589,7 +589,7 @@ export default function AulaTemplate({ onComplete, currentProgress, onUpdateProg
             {/* BADGE DE CONCLUSÃO (APARECE QUANDO O USUÁRIO TERMINA TUDO) */}
             {showCompletionBadge && (
                 <div className="bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-xl p-4 flex items-center gap-4 shadow-sm mb-6 animate-in slide-in-from-top-4 duration-700">
-                    <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-green-500/30">
+                    <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-green-500/30">
                         <LuCheck size={24} strokeWidth={3} />
                     </div>
                     <div>

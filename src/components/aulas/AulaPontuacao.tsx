@@ -283,7 +283,7 @@ export default function AulaPontuacao() {
                                 }
                                 verso={
                                     <div className="p-8 flex flex-col items-center justify-center text-center h-full space-y-4 bg-red-50 dark:bg-red-900/20">
-                                        <LuXCircle className="w-12 h-12 text-red-500" />
+                                        <LuXCircle className="w-14 h-14 text-red-500" />
                                         <h4 className="font-bold text-red-700 dark:text-red-400 text-xl">ERRADO!</h4>
                                         <p className="text-sm">Você sentiu vontade de colocar a vírgula por causa do tamanho do sujeito, mas **NÃO SE SEPARA SUJEITO DO VERBO**.</p>
                                     </div>
@@ -603,7 +603,7 @@ export default function AulaPontuacao() {
                         />
 
                         <h2 className="text-3xl font-bold mb-8 mt-6 flex items-center gap-3">
-                            <span className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg flex items-center justify-center text-xl font-bold">VS</span>
+                            <span className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg flex items-center justify-center text-xl font-bold">VS</span>
                             Proibições vs. Obrigações
                         </h2>
 

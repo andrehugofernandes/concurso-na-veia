@@ -67,7 +67,7 @@ export function ImpressosSection() {
           {/* Content Left */}
           <div className="space-y-6">
             <div className="flex items-start space-x-3">
-              <div className="w-12 h-12 bg-imune-orange rounded-xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-imune-orange rounded-xl flex items-center justify-center">
                 <FileText className="h-6 w-6 text-white" />
               </div>
               <div>
@@ -96,9 +96,9 @@ export function ImpressosSection() {
                         <p className="text-sm opacity-60">{material.description}</p>
                       </div>
                     </div>
-                    <a 
-                      href={material.pdfUrl} 
-                      target="_blank" 
+                    <a
+                      href={material.pdfUrl}
+                      target="_blank"
                       rel="noopener noreferrer"
                       title={`Baixar ${material.title}`}
                     >

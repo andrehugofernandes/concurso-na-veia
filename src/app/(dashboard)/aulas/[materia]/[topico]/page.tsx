@@ -41,6 +41,11 @@ const AulaPontuacao = dynamic<AulaProps>(
     { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
 );
 
+const AulaRegencia = dynamic<AulaProps>(
+    () => import('@/components/aulas/AulaRegencia'),
+    { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
+);
+
 interface PageProps {
     params: Promise<{ materia: string; topico: string }>;
 }
@@ -403,6 +408,15 @@ export default function TopicoPage({ params }: PageProps) {
                         />
                     ) : materiaId === 'portugues' && topicoId === 'pontuacao' ? (
                         <AulaPontuacao
+                            onComplete={handleCompleteAula}
+                            isCompleted={isCompleted}
+                            loading={loading}
+                            xpGanho={xpGanho}
+                            currentProgress={progress}
+                            onUpdateProgress={updateProgress}
+                        />
+                    ) : materiaId === 'portugues' && topicoId === 'regencia' ? (
+                        <AulaRegencia
                             onComplete={handleCompleteAula}
                             isCompleted={isCompleted}
                             loading={loading}

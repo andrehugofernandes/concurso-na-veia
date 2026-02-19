@@ -217,7 +217,7 @@ export function BibliotecaSection() {
           {/* Content Left */}
           <div className="space-y-6">
             <div className="flex items-start space-x-3">
-              <div className="w-12 h-12 bg-imune-green rounded-xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-imune-green rounded-xl flex items-center justify-center">
                 <Book className="h-6 w-6 text-white" />
               </div>
               <div>

@@ -40,6 +40,11 @@ Use como referência principal a **Gramática Normativa da Língua Portuguesa de
 **Princípios de retenção:**
 - Espaçamento, Interleaving, Retrieval Practice, Elaboração, Exemplificação concreta.
 - **REGRA DE OURO:** Toda explicação teórica DEVE ser validada por um exemplo em frase (Antes/Depois, Certo/Errado ou Aplicação Real). NUNCA gere teoria pura sem exemplificação textual. Isso é inegociável para a clareza do aluno.
+- **HIERARQUIA CIENTÍFICA (Obrigatório):** A "Ciência" (Norma Culta, Tabelas de Transitividade, Regras Formais de Bechara/Cunha) DEVE preceder o "Floreio" (Storytelling, Macetes, Industrialização). O aluno deve primeiro entender a regra técnica pura para só depois vê-la aplicada no contexto da Petrobras.
+- **ESTRUTURA DE INÍCIO (Inviolável):** 
+    1. PROIBIDO o uso de "Hero Sections" (seções com títulos gigantes, imagens de fundo e botões de chamada/scroll).
+    2. A aula DEVE começar diretamente com o componente `ModuleBanner` do Eixo 1.
+    3. O Banner deve ter uma descrição científica/acadêmica (ex: "Estudo sistemático das relações de dependência...") e cores vibrantes (Indigo/Violet/Emerald) para transmitir autoridade acadêmica premium.
 - **BRANDING:** O nome do sistema/SaaS é **"A Vaga É Minha"**. NUNCA use "Petrobras Quest" em títulos de PDF ou componentes de marca.
 - **USB/PDF EXPORT:** Para garantir qualidade na exportação de resumos: 
     1. Forneça entre 3 a 5 imagens explicativas no `ModuleSummaryCarouselNew`.
@@ -196,7 +201,12 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 4. **VISUAL FIRST:** Todo conceito deve ter um ÍCONE e uma COR semântica.
 5. **CONTEXTO PETROBRAS:** Use exemplos relacionados a plataformas, refino, segurança, ética corporativa.
 
-**3. CARROSSEL DE IMAGENS (Para sequências visuais)**
+**3. 🚫 PROIBIÇÃO CRÍTICA: HERO SECTION**
+- **PROIBIDO**: Não use seções de "Hero" (com botões de 'Começar Agora', 'Matricule-se', ou ton de panfleto).
+- **PADRÃO EXIGIDO**: Toda aula DEVE começar obrigatoriamente com `<StickyModuleNav />` seguido de `<ModuleBanner />` do Eixo 1.
+- **TONALIDADE**: O início deve ser Acadêmico, Científico e Vibrante (Cores: Violet/Indigo). "Ciência antes do floreio".
+
+**4. CARROSSEL DE IMAGENS (Para sequências visuais)**
 - Usar quando tiver 3+ imagens sequenciais
 - Navegação com setas e dots
 - Auto-play opcional
@@ -321,7 +331,9 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 ```html
 <QuizInterativo
   questoes={...}
-  titulo="Quiz de Fixação"
+<QuizInterativo
+  questoes={...}
+  titulo="Quiz de Fixação - [TEMA DA AULA]"
   icone="📝"
   numero={5} // OBRIGATÓRIO: Número do módulo
 />
@@ -467,7 +479,7 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 > - Container da aula (`<main>`): `container mx-auto px-6 py-8 max-w-6xl` (redução de ~15% vs full-width)
 > - Dentro de cada `TabsContent`: `space-y-16`
 > - Cada seção de conteúdo: envolver em `bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm`
-> - Títulos: `text-3xl md:text-4xl` com badge `w-12 h-12` numerado
+> - Títulos: `text-3xl md:text-4xl` com badge `w-14 h-14` numerado
 > - Fontes Gerais: Corpo: `text-base md:text-lg`. Callouts: `text-lg`. Sub-labels: `text-base`.
 > - Banner de Módulo: gradiente full-width com título `text-4xl md:text-5xl`
 
@@ -587,7 +599,7 @@ export default function AulaTemplate({ onComplete, currentProgress, onUpdateProg
             {/* BADGE DE CONCLUSÃO (APARECE QUANDO O USUÁRIO TERMINA TUDO) */}
             {showCompletionBadge && (
                 <div className="bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-xl p-4 flex items-center gap-4 shadow-sm mb-6 animate-in slide-in-from-top-4 duration-700">
-                    <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-green-500/30">
+                    <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-green-500/30">
                         <LuCheck size={24} strokeWidth={3} />
                     </div>
                     <div>

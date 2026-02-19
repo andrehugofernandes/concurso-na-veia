@@ -48,7 +48,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   useEffect(() => {
     loadNotifications();
     loadNotificationCount();
-    
+
     const interval = setInterval(loadNotificationCount, 30000);
     return () => clearInterval(interval);
   }, []);
@@ -100,13 +100,13 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
   const isActive = (route: string) => pathname === route;
   const displayName = user?.full_name || user?.name || user?.username || 'Usuário';
-  
+
   // Função para extrair iniciais (primeira + última letra do nome)
   const getUserInitials = (name: string) => {
     const names = name.trim().split(' ').filter(Boolean);
     if (names.length === 0) return 'U';
     if (names.length === 1) return names[0].charAt(0).toUpperCase();
-    
+
     const firstName = names[0];
     const lastName = names[names.length - 1];
     return (firstName.charAt(0) + lastName.charAt(0)).toUpperCase();
@@ -205,7 +205,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                   <div
                     className={cn(
                       "rounded-lg flex items-center justify-center bg-[var(--primary)]",
-                      sidebarCollapsed ? "w-12 h-12 py-1 px-1" : "w-12 h-12"
+                      sidebarCollapsed ? "w-14 h-14 py-1 px-1" : "w-14 h-14"
                     )}
                   >
                     <span className={cn("text-white font-bold", sidebarCollapsed ? "text-sm" : "text-base")}>I+</span>
@@ -325,10 +325,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                   {/* Notificações com dropdown */}
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button 
-                        variant="ghost" 
-                        size="icon" 
-                        aria-label="Notificações" 
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        aria-label="Notificações"
                         className="relative text-gray-600 dark:text-gray-300"
                         onClick={loadNotifications}
                       >

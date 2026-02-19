@@ -20,7 +20,7 @@ export function ImunePlaySection() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
-  
+
   // Buscar vídeos do backend
   useEffect(() => {
     const fetchVideos = async () => {
@@ -34,14 +34,14 @@ export function ImunePlaySection() {
         setLoading(false);
       }
     };
-    
+
     fetchVideos();
   }, []);
 
   const handlePlayVideo = async (video: Video) => {
     console.log('[ImunePlay] Iniciando reprodução do vídeo:', video.title, 'ID:', video.id);
     setOpenVideo(video);
-    
+
     try {
       // Registrar visualização
       console.log('[ImunePlay] Enviando requisição para registrar visualização...');
@@ -49,10 +49,10 @@ export function ImunePlaySection() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
       });
-      
+
       const data = await response.json();
       console.log('[ImunePlay] Resposta do servidor:', response.status, data);
-      
+
       if (response.ok) {
         console.log('[ImunePlay] ✓ Visualização registrada com sucesso para:', video.title);
       } else {
@@ -117,7 +117,7 @@ export function ImunePlaySection() {
                         <div className="relative w-24 h-16 bg-gray-900 rounded-lg overflow-hidden flex-shrink-0 group/thumb">
                           {/* Thumbnail */}
                           {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img 
+                          <img
                             src={`/api/public/files/${video.id}/thumbnail`}
                             alt={video.title}
                             className="absolute inset-0 w-full h-full object-cover"
@@ -125,7 +125,7 @@ export function ImunePlaySection() {
                               e.currentTarget.style.display = 'none';
                             }}
                           />
-                          
+
                           {/* Vídeo preview (hover) */}
                           <video
                             src={video.videoUrl}
@@ -160,11 +160,11 @@ export function ImunePlaySection() {
               ))
             )}
           </div>
-          
+
           {/* Content Right */}
           <div className="order-1 lg:order-2 space-y-6">
             <div className="flex items-start space-x-3">
-              <div className="w-12 h-12 bg-imune-light-green rounded-xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-imune-light-green rounded-xl flex items-center justify-center">
                 <Play className="h-6 w-6 text-white" />
               </div>
               <div>

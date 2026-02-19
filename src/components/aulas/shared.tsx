@@ -182,7 +182,7 @@ export function CardCarousel({
             <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
                     {numeroBadge !== undefined && (
-                        <span className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-lg font-bold text-emerald-700 dark:text-emerald-400 shrink-0">
+                        <span className="w-14 h-14 rounded-full bg-emerald-500/20 flex items-center justify-center text-lg font-bold text-emerald-700 dark:text-emerald-400 shrink-0">
                             {numeroBadge}
                         </span>
                     )}
@@ -208,7 +208,7 @@ export function CardCarousel({
                                 <div className="flex items-start gap-5 mb-6">
                                     <div
                                         className={cn(
-                                            "w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0 transition-all duration-500 group-hover/card:scale-110 group-hover/card:rotate-3 shadow-lg shadow-black/5",
+                                            "w-14 h-14 rounded-xl flex items-center justify-center text-2xl shrink-0 transition-all duration-500 group-hover/card:scale-110 group-hover/card:rotate-3 shadow-lg shadow-black/5",
                                             card.corFundo || "bg-primary/10"
                                         )}
                                     >
@@ -377,7 +377,7 @@ export function MusicPlayer({ audioUrl, title, artist }: { audioUrl: string; tit
             <div className="bg-card/80 backdrop-blur-xl border border-border rounded-2xl p-4 shadow-2xl w-64 md:w-72">
                 <audio ref={audioRef} src={audioUrl} loop />
                 <div className="flex items-center gap-4">
-                    <div className={`w-12 h-12 rounded-lg bg-indigo-600 flex items-center justify-center shadow-lg transition-all ${isPlaying ? 'scale-105 shadow-indigo-500/20' : ''}`}>
+                    <div className={`w-14 h-14 rounded-lg bg-indigo-600 flex items-center justify-center shadow-lg transition-all ${isPlaying ? 'scale-105 shadow-indigo-500/20' : ''}`}>
                         <LuBookOpen className="text-white" size={24} />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -552,7 +552,7 @@ export function QuizInterativo({
         <div className="bg-card rounded-xl border border-border p-6 my-8 shadow-lg">
             {numero ? (
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
-                    <span className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400 shrink-0">
+                    <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-3xl font-bold text-indigo-700 dark:text-indigo-400 shrink-0">
                         {numero}
                     </span>
                     {titulo}
@@ -828,7 +828,7 @@ export function ModuleSummaryCarousel({
                     {imagens.map((img, index) => (
                         <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
                             <div className="aspect-[4/5] rounded-xl border-2 border-dashed border-muted-foreground/30 bg-card/50 flex flex-col items-center justify-center p-6 gap-4 text-center hover:border-indigo-500/50 transition-colors group">
-                                <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center group-hover:bg-indigo-100 dark:group-hover:bg-indigo-900/30 transition-colors">
+                                <div className="w-14 h-14 rounded-lg bg-muted flex items-center justify-center group-hover:bg-indigo-100 dark:group-hover:bg-indigo-900/30 transition-colors">
                                     {img.tipo === 'Infográfico' && <LuFileText className="w-6 h-6 text-muted-foreground group-hover:text-indigo-500" />}
                                     {img.tipo !== 'Infográfico' && <LuImage className="w-6 h-6 text-muted-foreground group-hover:text-indigo-500" />}
                                 </div>

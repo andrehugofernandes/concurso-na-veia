@@ -152,7 +152,7 @@ export default function SejaProPage() {
                         <div className="p-8 pb-4">
                             <div className="flex items-center gap-4 mb-6">
                                 <div className={cn(
-                                    "flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br text-2xl shadow-lg",
+                                    "flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br text-2xl shadow-lg",
                                     plano.cor
                                 )}>
                                     {plano.icone}

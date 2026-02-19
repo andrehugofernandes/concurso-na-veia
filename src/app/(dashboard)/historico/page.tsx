@@ -109,7 +109,7 @@ export default function HistoricoPage() {
                                 >
                                     <div className="flex justify-between items-center flex-wrap gap-4">
                                         <div className="flex items-center gap-4">
-                                            <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold
+                                            <div className={`w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold
                                                 ${item.percentual >= 80 ? 'bg-green-500/20 text-green-400' :
                                                     item.percentual >= 50 ? 'bg-yellow-500/20 text-yellow-400' :
                                                         'bg-red-500/20 text-red-400'}`

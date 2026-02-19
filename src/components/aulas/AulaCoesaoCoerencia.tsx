@@ -271,7 +271,7 @@ export default function AulaCoesaoCoerencia({
                 {showCompletionBadge && (
                     <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-6 flex items-center justify-between animate-in fade-in slide-in-from-top-4">
                         <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg shadow-emerald-500/30">
+                            <div className="w-14 h-14 bg-emerald-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg shadow-emerald-500/30">
                                 <LuCheck />
                             </div>
                             <div>

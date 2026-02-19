@@ -22,31 +22,31 @@ export default function AuthLayout({
       {/* Lado esquerdo - Formulário */}
       <div className="w-full md:w-1/2 bg-white dark:bg-gray-900 p-8 md:p-12 flex flex-col justify-center">
         <div className="max-w-md mx-auto w-full">
-          
-            {/* Logo */}
-            <div className="flex items-start">
+
+          {/* Logo */}
+          <div className="flex items-start">
             <h1
               className="font-black mb-2 text-4xl sm:text-5xl md:text-6xl tracking-tight
               bg-gradient-to-br from-orange-500 to-yellow-500 bg-clip-text text-transparent
               py-2 leading-relaxed drop-shadow-sm"
             >
               <span className="text-5xl sm:text-6xl md:text-8xl">IMUNE+</span> JABOATÃO
-            </h1>              
-            </div>
-     
-          
+            </h1>
+          </div>
+
+
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
             {title}
           </h2>
-          
+
           {subtitle && (
             <p className="text-gray-600 dark:text-gray-400 mb-8">{subtitle}</p>
           )}
-          
+
           {children}
         </div>
       </div>
-      
+
       {/* Lado direito - Imagem */}
       <div className="hidden md:block md:w-1/2 bg-green-500 relative">
         {imagePlaceholder && (
@@ -65,19 +65,19 @@ export default function AuthLayout({
               <div className="bg-white bg-opacity-90 p-4 rounded-lg shadow-lg">
                 <div className="flex items-center space-x-4">
                   <div className="flex-shrink-0">
-                    <Image 
-                      src="/images/zegotinha.gif" 
+                    <Image
+                      src="/images/zegotinha.gif"
                       alt="Logo IMUNE+ Jaboatão"
                       width={48}
                       height={48}
-                      className="w-12 h-12"
+                      className="w-14 h-14"
                     />
                   </div>
                   <Link href="/" className="block">
-                  <div>
-                    <h3 className="font-bold text-gray-900">IMUNE+ JABOATÃO</h3>
-                    <p className="text-sm text-gray-600">Portal de Informações</p>
-                  </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900">IMUNE+ JABOATÃO</h3>
+                      <p className="text-sm text-gray-600">Portal de Informações</p>
+                    </div>
                   </Link>
                 </div>
               </div>

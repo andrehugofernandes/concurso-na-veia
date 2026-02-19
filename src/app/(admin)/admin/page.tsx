@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 export default function AdminPage() {
   const router = useRouter();
-  
+
   useEffect(() => {
     // Redirecionar para o dashboard administrativo
     router.push('/admin/dashboard');
@@ -16,7 +16,7 @@ export default function AdminPage() {
       <div className="text-center">
         <h1 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">Redirecionando...</h1>
         <div className="mt-4">
-          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+          <div className="w-14 h-14 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
         </div>
       </div>
     </div>

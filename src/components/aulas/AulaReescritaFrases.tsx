@@ -344,7 +344,7 @@ export default function AulaReescritaFrases({ onUpdateProgress, onComplete, isCo
 
                 {showCompletionBadge && (
                     <div className="bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-xl p-4 flex items-center gap-4 shadow-sm mb-6 animate-in slide-in-from-top-4 duration-700">
-                        <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-green-500/30">
+                        <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-green-500/30">
                             <LuCheck size={24} strokeWidth={3} />
                         </div>
                         <div>
@@ -382,7 +382,7 @@ export default function AulaReescritaFrases({ onUpdateProgress, onComplete, isCo
 
                             <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                    <span className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-lg font-bold text-blue-700 dark:text-blue-400">1</span>
+                                    <span className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center text-lg font-bold text-blue-700 dark:text-blue-400">1</span>
                                     O Binômio de Ouro: Semântica + Gramática
                                 </h2>
                                 <p className="text-lg text-muted-foreground leading-relaxed">
@@ -446,7 +446,7 @@ export default function AulaReescritaFrases({ onUpdateProgress, onComplete, isCo
 
                             <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
                                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                    <span className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-lg font-bold text-blue-700 dark:text-blue-400">3</span>
+                                    <span className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center text-lg font-bold text-blue-700 dark:text-blue-400">3</span>
                                     Resumo do Módulo 1
                                 </h2>
 
@@ -558,7 +558,7 @@ export default function AulaReescritaFrases({ onUpdateProgress, onComplete, isCo
 
                             <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                    <span className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-lg font-bold text-purple-700 dark:text-purple-400">1</span>
+                                    <span className="w-14 h-14 rounded-full bg-purple-500/20 flex items-center justify-center text-lg font-bold text-purple-700 dark:text-purple-400">1</span>
                                     Técnicas de Transformação Oracional
                                 </h2>
                                 <p className="text-lg text-muted-foreground leading-relaxed">
@@ -654,7 +654,7 @@ export default function AulaReescritaFrases({ onUpdateProgress, onComplete, isCo
 
                             <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                    <span className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-lg font-bold text-purple-700 dark:text-purple-400">2</span>
+                                    <span className="w-14 h-14 rounded-full bg-purple-500/20 flex items-center justify-center text-lg font-bold text-purple-700 dark:text-purple-400">2</span>
                                     Substituição de Conectivos Críticos
                                 </h2>
                                 <AlertBox tipo="warning" titulo="O Caso 'Caso' vs 'Se'">
@@ -668,7 +668,7 @@ export default function AulaReescritaFrases({ onUpdateProgress, onComplete, isCo
 
                             <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
                                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                    <span className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-lg font-bold text-purple-700 dark:text-purple-400">3</span>
+                                    <span className="w-14 h-14 rounded-full bg-purple-500/20 flex items-center justify-center text-lg font-bold text-purple-700 dark:text-purple-400">3</span>
                                     Resumo do Módulo 2
                                 </h2>
 
@@ -778,7 +778,7 @@ export default function AulaReescritaFrases({ onUpdateProgress, onComplete, isCo
 
                             <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                    <span className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center text-lg font-bold text-red-700 dark:text-red-400">1</span>
+                                    <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-lg font-bold text-red-700 dark:text-red-400">1</span>
                                     As "Armadilhas de Reescrita" (Checklist)
                                 </h2>
                                 <div className="space-y-4">
@@ -801,7 +801,7 @@ export default function AulaReescritaFrases({ onUpdateProgress, onComplete, isCo
 
                             <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                    <span className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-lg font-bold text-emerald-700 dark:text-emerald-400">2</span>
+                                    <span className="w-14 h-14 rounded-full bg-emerald-500/20 flex items-center justify-center text-lg font-bold text-emerald-700 dark:text-emerald-400">2</span>
                                     Laboratório de Reescrita Cesgranrio
                                 </h2>
                                 <p className="text-lg text-muted-foreground leading-relaxed">
@@ -824,7 +824,7 @@ export default function AulaReescritaFrases({ onUpdateProgress, onComplete, isCo
 
                             <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                    <span className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400">3</span>
+                                    <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400">3</span>
                                     Laboratório de Reescrita: Certo vs. Errado
                                 </h2>
                                 {shuffledChallenges.length > 0 && (
@@ -871,7 +871,7 @@ export default function AulaReescritaFrases({ onUpdateProgress, onComplete, isCo
 
                             <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
                                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                    <span className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center text-lg font-bold text-red-700 dark:text-red-400">4</span>
+                                    <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-lg font-bold text-red-700 dark:text-red-400">4</span>
                                     Resumo do Módulo 3
                                 </h2>
 

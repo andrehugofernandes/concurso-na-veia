@@ -78,7 +78,7 @@ export default function TwoFactorVerifyForm({ tempToken }: TwoFactorVerifyFormPr
     try {
       // Garantir que o código seja uma string de 6 dígitos
       const codeValue = Array.isArray(code) ? code.join('') : code;
-      
+
       const response = await fetch('/api/auth/verify-2fa', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -131,7 +131,7 @@ export default function TwoFactorVerifyForm({ tempToken }: TwoFactorVerifyFormPr
                   id={`otp-verify-${index}`}
                   aria-label={`Dígito ${index + 1} do código 2FA`}
                   aria-labelledby="otp-verify-label"
-                  className="w-12 h-12 text-xl font-bold text-center border-2 border-gray-200 rounded-lg 
+                  className="w-14 h-14 text-xl font-bold text-center border-2 border-gray-200 rounded-lg 
                            hover:border-[#00DD4F] hover:shadow-md transition-all duration-300 
                            focus:border-[#008C32] focus:ring-2 focus:ring-[#008C32]/20 focus:shadow-xl focus:outline-none
                            bg-gray-50 text-gray-800

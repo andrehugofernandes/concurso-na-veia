@@ -191,7 +191,7 @@ export default function LandingPage() {
                   whileHover={{ y: -10 }}
                   className="bg-zinc-900 rounded-3xl p-8 border border-white/5 hover:border-yellow-500/30 transition-all cursor-default"
                 >
-                  <div className={`w-12 h-12 bg-${feature.color}-500/10 rounded-xl flex items-center justify-center text-2xl mb-6`}>{feature.icon}</div>
+                  <div className={`w-14 h-14 bg-${feature.color}-500/10 rounded-xl flex items-center justify-center text-2xl mb-6`}>{feature.icon}</div>
                   <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
                   <p className="text-gray-400">{feature.desc}</p>
                 </motion.div>
@@ -258,14 +258,14 @@ export default function LandingPage() {
 
               <ul className="space-y-6 mb-10">
                 <li className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-2xl">🙋‍♂️</div>
+                  <div className="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center text-2xl">🙋‍♂️</div>
                   <div>
                     <h4 className="text-lg font-bold text-white">Levante a Mão</h4>
                     <p className="text-gray-400">Interrompa a aula a qualquer momento para tirar dúvidas via voz ou texto.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-2xl">🧠</div>
+                  <div className="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center text-2xl">🧠</div>
                   <div>
                     <h4 className="text-lg font-bold text-white">Explicações Dinâmicas</h4>
                     <p className="text-gray-400">A IA adapta a explicação ao seu nível de conhecimento em tempo real.</p>

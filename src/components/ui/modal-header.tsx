@@ -34,7 +34,7 @@ export function ModalHeader({
       <DialogTitle className="sr-only">{title}</DialogTitle>
 
       {/* Badge com Ícone */}
-      <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-white/20">
+      <div className="flex items-center justify-center w-14 h-14 rounded-lg bg-white/20">
         <div className="text-white text-xl">{icon}</div>
       </div>
 

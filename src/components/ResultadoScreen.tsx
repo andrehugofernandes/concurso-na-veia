@@ -109,7 +109,7 @@ export default function ResultadoScreen({
                             {/* XP Earned Box */}
                             <div className="bg-zinc-50 dark:bg-zinc-900/50 rounded-[24px] p-5 border border-zinc-200 dark:border-white/5 flex items-center justify-between gap-4 shadow-inner">
                                 <div className="flex items-center gap-4 text-left">
-                                    <div className="w-12 h-12 rounded-xl bg-yellow-400/20 flex items-center justify-center text-2xl animate-pulse">
+                                    <div className="w-14 h-14 rounded-xl bg-yellow-400/20 flex items-center justify-center text-2xl animate-pulse">
                                         ⭐
                                     </div>
                                     <div>

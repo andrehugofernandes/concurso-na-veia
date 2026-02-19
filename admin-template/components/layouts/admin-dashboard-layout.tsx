@@ -136,7 +136,7 @@ export function AdminDashboardLayout({ children }: AdminDashboardLayoutProps) {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-14 h-14 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -150,47 +150,46 @@ export function AdminDashboardLayout({ children }: AdminDashboardLayoutProps) {
     <ThemeProvider>
       <NotificationCountProvider>
         <div ref={swipeRef} className="flex w-full h-screen bg-gray-100 dark:bg-gray-900 overflow-hidden">
-        {/* Sidebar */}
-        <AdminSidebar 
-          isCollapsed={isSidebarCollapsed || isMobile}
-          onToggle={toggleSidebar}
-          userName={userName}
-          userEmail={userEmail}
-          userRole={userRole}
-        />
+          {/* Sidebar */}
+          <AdminSidebar
+            isCollapsed={isSidebarCollapsed || isMobile}
+            onToggle={toggleSidebar}
+            userName={userName}
+            userEmail={userEmail}
+            userRole={userRole}
+          />
 
-        {/* Conteúdo principal */}
-        <div 
-          className={`flex flex-col flex-1 transition-all duration-300 ease-in-out ${
-            isMobile ? 'ml-0' : (isSidebarCollapsed ? 'ml-[70px]' : 'ml-[250px]')
-          }`}
-        >
-          {/* Header */}
-          {(() => {
-            if (process.env.NODE_ENV !== 'production') {
-              console.log('[AdminDashboardLayout] Passing props to AdminHeader:', { userName, userEmail, userRole, isSidebarCollapsed });
-            }
-            return (
-              <AdminHeader 
-                userName={userName}
-                userEmail={userEmail}
-                onMenuToggle={toggleSidebar}
-                isSidebarCollapsed={isSidebarCollapsed}
-              />
-            );
-          })()}
+          {/* Conteúdo principal */}
+          <div
+            className={`flex flex-col flex-1 transition-all duration-300 ease-in-out ${isMobile ? 'ml-0' : (isSidebarCollapsed ? 'ml-[70px]' : 'ml-[250px]')
+              }`}
+          >
+            {/* Header */}
+            {(() => {
+              if (process.env.NODE_ENV !== 'production') {
+                console.log('[AdminDashboardLayout] Passing props to AdminHeader:', { userName, userEmail, userRole, isSidebarCollapsed });
+              }
+              return (
+                <AdminHeader
+                  userName={userName}
+                  userEmail={userEmail}
+                  onMenuToggle={toggleSidebar}
+                  isSidebarCollapsed={isSidebarCollapsed}
+                />
+              );
+            })()}
 
-          {/* Conteúdo da página */}
-          <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
-            <div className="container mx-auto">
-              {children}
-            </div>
-          </main>
+            {/* Conteúdo da página */}
+            <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+              <div className="container mx-auto">
+                {children}
+              </div>
+            </main>
+          </div>
         </div>
-      </div>
-          {/* Componente de navegação inferior para mobile */}
-          <MobileBottomNav />
-        </NotificationCountProvider>
-      </ThemeProvider>
-    );
+        {/* Componente de navegação inferior para mobile */}
+        <MobileBottomNav />
+      </NotificationCountProvider>
+    </ThemeProvider>
+  );
 }

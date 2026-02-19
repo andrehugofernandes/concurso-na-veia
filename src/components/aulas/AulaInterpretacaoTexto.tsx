@@ -346,7 +346,7 @@ export default function AulaInterpretacaoTexto({
 
                 {showCompletionBadge && (
                     <div className="bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-xl p-4 flex items-center gap-4 shadow-sm mb-6 animate-in slide-in-from-top-4 duration-700">
-                        <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-green-500/30">
+                        <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-green-500/30">
                             <LuCheck size={24} strokeWidth={3} />
                         </div>
                         <div>
@@ -766,7 +766,7 @@ export default function AulaInterpretacaoTexto({
                         {/* SEÇÃO 3: QUIZ M2 */}
                         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
                             <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-                                <span className="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-lg font-bold text-yellow-700 dark:text-yellow-400">3</span>
+                                <span className="w-14 h-14 rounded-full bg-yellow-500/20 flex items-center justify-center text-lg font-bold text-yellow-700 dark:text-yellow-400">3</span>
                                 Quiz de Fixação - Mecanismos de Coesão
                             </h2>
                             <QuizInterativo questoes={quizM2} titulo="Quiz de Fixação - Mecanismos de Coesão" icone="🎯" onComplete={(score) => handleModuleProgress('modulo-2', 1, score)} />
@@ -785,7 +785,7 @@ export default function AulaInterpretacaoTexto({
                         {/* SEÇÃO 1: ARMADILHAS (REINICIA) */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center text-lg font-bold text-red-700 dark:text-red-400">1</span>
+                                <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-lg font-bold text-red-700 dark:text-red-400">1</span>
                                 As "Três Portas do Erro" na Interpretação
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -810,7 +810,7 @@ export default function AulaInterpretacaoTexto({
                         {/* SEÇÃO 2: DESAFIO PRÁTICO */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400">2</span>
+                                <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400">2</span>
                                 Desafio Prático: Laboratório de Gabarito
                             </h2>
                             {shuffledChallenges.length > 0 && (
@@ -924,7 +924,7 @@ export default function AulaInterpretacaoTexto({
                         {/* SEÇÃO 3: SIMULADO FINAL */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-lg font-bold text-yellow-700 dark:text-yellow-400">3</span>
+                                <span className="w-14 h-14 rounded-full bg-yellow-500/20 flex items-center justify-center text-lg font-bold text-yellow-700 dark:text-yellow-400">3</span>
                                 Simulado Final: Quiz de Fixação - Estratégias de Elite
                             </h2>
                             <QuizInterativo questoes={quizFinal} titulo="Quiz de Fixação - Estratégias de Elite" icone="🏆" onComplete={(score) => handleModuleProgress('modulo-3', 2, score)} />

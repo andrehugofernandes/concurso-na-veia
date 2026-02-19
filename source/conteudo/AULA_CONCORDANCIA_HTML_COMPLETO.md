@@ -12,7 +12,7 @@
 >    - M2: `from-emerald-600 via-teal-600 to-cyan-700`
 >    - M3: `from-violet-600 via-purple-600 to-indigo-700`
 > 4. **Cards de Conteúdo:** `bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm`.
-> 5. **Numeração de Seções:** Badge circular colorida com número (`w-12 h-12`).
+> 5. **Numeração de Seções:** Badge circular colorida com número (`w-14 h-14`).
 > 6. **Interatividade:** Timeline, FlipCards, CompareSide, QuizInterativo.
 
 ## 📄 COMPONENTE REACT: AULA_CONCORDANCIA.TSX
