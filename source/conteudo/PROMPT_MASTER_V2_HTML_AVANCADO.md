@@ -38,7 +38,13 @@ Use como referência principal a **Gramática Normativa da Língua Portuguesa de
 5. **Andragogia** (ensino autodirigido para adultos)
 
 **Princípios de retenção:**
-- Espaçamento, Interleaving, Retrieval Practice, Elaboração, Exemplificação concreta
+- Espaçamento, Interleaving, Retrieval Practice, Elaboração, Exemplificação concreta.
+- **REGRA DE OURO:** Toda explicação teórica DEVE ser validada por um exemplo em frase (Antes/Depois, Certo/Errado ou Aplicação Real). NUNCA gere teoria pura sem exemplificação textual. Isso é inegociável para a clareza do aluno.
+- **BRANDING:** O nome do sistema/SaaS é **"A Vaga É Minha"**. NUNCA use "Petrobras Quest" em títulos de PDF ou componentes de marca.
+- **USB/PDF EXPORT:** Para garantir qualidade na exportação de resumos: 
+    1. Forneça entre 3 a 5 imagens explicativas no `ModuleSummaryCarouselNew`.
+    2. Informe `tituloAula`, `materia`, `profissao` e `moduloNome` nas props do componente.
+    3. O sistema manterá o **aspect ratio original** das imagens. Prefira imagens horizontais (16:9) para PDFs mais elegantes.
 
 ---
 
@@ -75,9 +81,10 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
     *   **Multimídia:** Preveja 1 vídeo explicativo (placeholder interativo) a cada 2 módulos.
 
 3.  **FIM CONSOLIDADO (Retenção):**
-    *   **Resumo Visual:** Carrossel recapitulando os 3 pontos-chave da aula.
+    *   **Resumo Visual:** Carrossel recapitulando os 3 pontos-chave da aula. Garanta de 3 a 5 imagens explicativas para permitir download em PDF. Use o componente `ModuleSummaryCarouselNew` com as props de contexto (`tituloAula`, `materia`, etc.) preenchidas. O título do PDF será **"A VAGA É MINHA"**.
     *   **Música de Fixação:** Player de música obrigatório para ancoragem emocional.
     *   **Próximos Passos:** Botões claros de ação (Simulado ou Próxima Aula).
+    *   **Acessibilidade:** O template `AulaTemplate` já inclui controles de tamanho de fonte no header; garanta que seu conteúdo se adapte bem a aumentos de fonte.
 
 ---
 
@@ -184,7 +191,7 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 
 **⚠️ LEI DO ENRIQUECIMENTO OSTENSIVO:**
 1. **ENCAPSULAMENTO TOTAL:** NADA fica solto na página. Todo conteúdo (texto, exemplo, dica) deve estar dentro de um `<div className="bg-card ...">` ou similar.
-2. **INDEXAÇÃO VISUAL:** Use números (1, 2, 3...) ou letras (A, B, C...) em destaque para guiar a leitura.
+2. **INDEXAÇÃO VISUAL:** Use números (1, 2, 3...) em destaque para guiar a leitura.
 3. **NADA DE TEXTO RASO:** Proibido usar apenas `<li>` ou `<p>` soltos.
 4. **VISUAL FIRST:** Todo conceito deve ter um ÍCONE e uma COR semântica.
 5. **CONTEXTO PETROBRAS:** Use exemplos relacionados a plataformas, refino, segurança, ética corporativa.

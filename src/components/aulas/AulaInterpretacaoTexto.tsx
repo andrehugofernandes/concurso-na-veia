@@ -340,35 +340,35 @@ export default function AulaInterpretacaoTexto({
     if (loading) return null;
 
     return (
-        <div className="space-y-6 pb-20">
-            <ProgressIndicator />
+        <div className="pb-20 animate-in fade-in duration-500">
+            <div className="max-w-7xl mx-auto space-y-12 pt-12 px-6">
+                <ProgressIndicator />
 
-            {showCompletionBadge && (
-                <div className="bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-xl p-4 flex items-center gap-4 shadow-sm mb-6 animate-in slide-in-from-top-4 duration-700">
-                    <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-green-500/30">
-                        <LuCheck size={24} strokeWidth={3} />
+                {showCompletionBadge && (
+                    <div className="bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-xl p-4 flex items-center gap-4 shadow-sm mb-6 animate-in slide-in-from-top-4 duration-700">
+                        <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-green-500/30">
+                            <LuCheck size={24} strokeWidth={3} />
+                        </div>
+                        <div>
+                            <h3 className="text-green-800 dark:text-green-300 font-bold text-lg">Aula Concluída!</h3>
+                            <p className="text-green-700 dark:text-green-400 text-sm">Parabéns! Você dominou as técnicas de Interpretação de Texto.</p>
+                        </div>
                     </div>
-                    <div>
-                        <h3 className="text-green-800 dark:text-green-300 font-bold text-lg">Aula Concluída!</h3>
-                        <p className="text-green-700 dark:text-green-400 text-sm">Parabéns! Você dominou as técnicas de Interpretação de Texto.</p>
-                    </div>
-                </div>
-            )}
+                )}
 
-            <Tabs value={activeTab} onValueChange={(val) => {
-                const idx = MODULE_DEFS.findIndex(m => m.id === val);
-                if (isModuleUnlocked(idx)) setActiveTab(val);
-            }} className="w-full space-y-8">
-                <StickyModuleNav
-                    modules={Array.from(MODULE_DEFS)}
-                    activeTab={activeTab}
-                    completedModules={completedModules}
-                    isModuleUnlocked={isModuleUnlocked}
-                />
+                <Tabs value={activeTab} onValueChange={(val) => {
+                    const idx = MODULE_DEFS.findIndex(m => m.id === val);
+                    if (isModuleUnlocked(idx)) setActiveTab(val);
+                }} className="w-full space-y-8">
+                    <StickyModuleNav
+                        modules={Array.from(MODULE_DEFS)}
+                        activeTab={activeTab}
+                        completedModules={completedModules}
+                        isModuleUnlocked={isModuleUnlocked}
+                    />
 
-                {/* ─── MÓDULO 1: FUNDAMENTOS ─── */}
-                <Activity mode={activeTab === 'modulo-1' ? 'visible' : 'hidden'}>
-                    <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    {/* ─── MÓDULO 1: FUNDAMENTOS ─── */}
+                    <TabsContent value="modulo-1" className="space-y-12 max-w-7xl mx-auto px-6 mt-12">
                         <ModuleBanner
                             numero={1}
                             titulo="Fundamentos e Cognição"
@@ -377,9 +377,9 @@ export default function AulaInterpretacaoTexto({
                         />
 
                         {/* SEÇÃO 1: BECHARA DETALHADO */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-lg font-bold text-yellow-700 dark:text-yellow-400">1</span>
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                <span className="w-14 h-14 rounded-2xl bg-yellow-500/10 flex items-center justify-center text-3xl font-black text-yellow-700 border border-yellow-500/20 shadow-inner">1</span>
                                 Visão de Bechara: O Texto como Unidade de Sentido
                             </h2>
                             <div className="space-y-8">
@@ -412,9 +412,9 @@ export default function AulaInterpretacaoTexto({
                         </section>
 
                         {/* SEÇÃO 2: TIPOLOGIA TEXTUAL (NOVO) */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-lg font-bold text-blue-700 dark:text-blue-400">2</span>
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                <span className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center text-3xl font-black text-blue-700 border border-blue-500/20 shadow-inner">2</span>
                                 Tipologia Textual: Como o Texto se Organiza
                             </h2>
                             <p className="text-muted-foreground text-lg">Identificar o tipo de texto é o primeiro passo para não errar a interpretação central.</p>
@@ -507,9 +507,9 @@ export default function AulaInterpretacaoTexto({
                         </section>
 
                         {/* SEÇÃO 3: MULTIMÍDIA */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400">3</span>
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                <span className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl font-black text-indigo-700 border border-indigo-500/20 shadow-inner">3</span>
                                 Resumo e Multimedia
                             </h2>
                             <LessonTabs tabs={[
@@ -519,19 +519,17 @@ export default function AulaInterpretacaoTexto({
                         </section>
 
                         {/* SEÇÃO 4: QUIZ M1 */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-lg font-bold text-yellow-700 dark:text-yellow-400">4</span>
-                                Quiz de Fixação - Fundamentos e Cognição
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                <span className="w-14 h-14 rounded-2xl bg-yellow-500/10 flex items-center justify-center text-3xl font-black text-yellow-700 border border-yellow-500/20 shadow-inner">4</span>
+                                Quiz de Fixação
                             </h2>
                             <QuizInterativo questoes={quizM1} titulo="Quiz de Fixação - Fundamentos e Cognição" icone="🎯" onComplete={(score) => handleModuleProgress('modulo-1', 0, score)} />
                         </section>
-                    </div>
-                </Activity>
+                    </TabsContent>
 
-                {/* ─── MÓDULO 2: COESÃO ─── */}
-                <Activity mode={activeTab === 'modulo-2' ? 'visible' : 'hidden'}>
-                    <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    {/* ─── MÓDULO 2: COESÃO ─── */}
+                    <TabsContent value="modulo-2" className="space-y-12 max-w-7xl mx-auto px-6 mt-12">
                         <ModuleBanner
                             numero={2}
                             titulo="Mecanismos de Coesão"
@@ -540,41 +538,72 @@ export default function AulaInterpretacaoTexto({
                         />
 
                         {/* SEÇÃO 1: OS CONECTIVOS (REINICIA) */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-lg font-bold text-yellow-700 dark:text-yellow-400">1</span>
-                                Os Conectivos: O Mapa das Relações Lógicas
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                <span className="w-14 h-14 rounded-2xl bg-yellow-500/10 flex items-center justify-center text-3xl font-black text-yellow-700 border border-yellow-500/20 shadow-inner">1</span>
+                                Os Conectivos: Mapa Lógico
                             </h2>
                             <div className="space-y-6">
                                 <AlertBox tipo="info" titulo="O Pulo do Gato"><p>Trocar um "Mas" por um "Embora" muda a estrutura gramatical mas mantém a ideia de oposição. A banca ama isso!</p></AlertBox>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    {[
-                                        { label: 'Oposição', list: ['Mas', 'Porém', 'Contudo', 'Todavia', 'Entretanto'], color: 'text-red-500' },
-                                        { label: 'Causa/Explicação', list: ['Porque', 'Já que', 'Pois', 'Visto que', 'Porquanto'], color: 'text-blue-500' },
-                                        { label: 'Concessão', list: ['Embora', 'Ainda que', 'Apesar de', 'Conquanto'], color: 'text-emerald-500' },
-                                        { label: 'Conclusão', list: ['Logo', 'Portanto', 'Assim', 'Por conseguinte'], color: 'text-indigo-500' },
-                                        { label: 'Condição', list: ['Se', 'Caso', 'Contanto que', 'Desde que'], color: 'text-orange-500' },
-                                        { label: 'Finalidade', list: ['Para que', 'A fim de que', 'Com o intuito de'], color: 'text-purple-500' }
-                                    ].map((item, idx) => (
-                                        <div key={idx} className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
-                                            <h4 className={`font-bold mb-3 flex items-center gap-2 ${item.color}`}>
-                                                <LuLink /> {item.label}
-                                            </h4>
-                                            <ul className="grid grid-cols-1 gap-1">
-                                                {item.list.map((c, i) => <li key={i} className="text-sm text-muted-foreground font-medium">• {c}</li>)}
-                                            </ul>
-                                        </div>
-                                    ))}
+                                    <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
+                                        <h4 className="font-bold mb-3 flex items-center gap-2 text-red-500">
+                                            <LuLink /> Oposição
+                                        </h4>
+                                        <ul className="grid grid-cols-1 gap-1">
+                                            {['Mas', 'Porém', 'Contudo', 'Todavia', 'Entretanto'].map((c, i) => <li key={i} className="text-sm text-muted-foreground font-medium">• {c}</li>)}
+                                        </ul>
+                                    </div>
+                                    <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
+                                        <h4 className="font-bold mb-3 flex items-center gap-2 text-blue-500">
+                                            <LuLink /> Causa/Explicação
+                                        </h4>
+                                        <ul className="grid grid-cols-1 gap-1">
+                                            {['Porque', 'Já que', 'Pois', 'Visto que', 'Porquanto'].map((c, i) => <li key={i} className="text-sm text-muted-foreground font-medium">• {c}</li>)}
+                                        </ul>
+                                    </div>
+                                    <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
+                                        <h4 className="font-bold mb-3 flex items-center gap-2 text-emerald-500">
+                                            <LuLink /> Concessão
+                                        </h4>
+                                        <ul className="grid grid-cols-1 gap-1">
+                                            {['Embora', 'Ainda que', 'Apesar de', 'Conquanto'].map((c, i) => <li key={i} className="text-sm text-muted-foreground font-medium">• {c}</li>)}
+                                        </ul>
+                                    </div>
+                                    <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
+                                        <h4 className="font-bold mb-3 flex items-center gap-2 text-indigo-500">
+                                            <LuLink /> Conclusão
+                                        </h4>
+                                        <ul className="grid grid-cols-1 gap-1">
+                                            {['Logo', 'Portanto', 'Assim', 'Por conseguinte'].map((c, i) => <li key={i} className="text-sm text-muted-foreground font-medium">• {c}</li>)}
+                                        </ul>
+                                    </div>
+                                    <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
+                                        <h4 className="font-bold mb-3 flex items-center gap-2 text-orange-500">
+                                            <LuLink /> Condição
+                                        </h4>
+                                        <ul className="grid grid-cols-1 gap-1">
+                                            {['Se', 'Caso', 'Contanto que', 'Desde que'].map((c, i) => <li key={i} className="text-sm text-muted-foreground font-medium">• {c}</li>)}
+                                        </ul>
+                                    </div>
+                                    <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
+                                        <h4 className="font-bold mb-3 flex items-center gap-2 text-purple-500">
+                                            <LuLink /> Finalidade
+                                        </h4>
+                                        <ul className="grid grid-cols-1 gap-1">
+                                            {['Para que', 'A fim de que', 'Com o intuito de'].map((c, i) => <li key={i} className="text-sm text-muted-foreground font-medium">• {c}</li>)}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </section>
 
                         {/* SEÇÃO 2: EXEMPLOS PRÁTICOS */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-lg font-bold text-emerald-700 dark:text-emerald-400">2</span>
-                                Substituição de Conectivos na Prática
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                <span className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-3xl font-black text-emerald-700 border border-emerald-500/20 shadow-inner">2</span>
+                                Substituição na Prática
                             </h2>
                             <p className="text-muted-foreground">Veja como o sentido se mantém mas a sintaxe se altera:</p>
                             <CardCarousel titulo="Exemplos de Reescrita" cards={[
@@ -588,19 +617,17 @@ export default function AulaInterpretacaoTexto({
                         </section>
 
                         {/* SEÇÃO 3: QUIZ M2 */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
                                 <span className="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-lg font-bold text-yellow-700 dark:text-yellow-400">3</span>
                                 Quiz de Fixação - Mecanismos de Coesão
                             </h2>
                             <QuizInterativo questoes={quizM2} titulo="Quiz de Fixação - Mecanismos de Coesão" icone="🎯" onComplete={(score) => handleModuleProgress('modulo-2', 1, score)} />
                         </section>
-                    </div>
-                </Activity>
+                    </TabsContent>
 
-                {/* ─── MÓDULO 3: ESTRATÉGIAS ─── */}
-                <Activity mode={activeTab === 'modulo-3' ? 'visible' : 'hidden'}>
-                    <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    {/* ─── MÓDULO 3: ESTRATÉGIAS ─── */}
+                    <TabsContent value="modulo-3" className="space-y-12 max-w-7xl mx-auto px-6 mt-12">
                         <ModuleBanner
                             numero={3}
                             titulo="Estratégias de Elite"
@@ -673,11 +700,11 @@ export default function AulaInterpretacaoTexto({
                             </h2>
                             <QuizInterativo questoes={quizFinal} titulo="Quiz de Fixação - Estratégias de Elite" icone="🏆" onComplete={(score) => handleModuleProgress('modulo-3', 2, score)} />
                         </section>
-                    </div>
-                </Activity>
-            </Tabs>
+                    </TabsContent>
+                </Tabs>
 
 
+            </div>
         </div>
     );
 }

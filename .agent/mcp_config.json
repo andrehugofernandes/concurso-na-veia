@@ -15,10 +15,13 @@
                 "shadcn@latest",
                 "mcp"
             ]
+        },
+        "playwright_local": {
+            "command": "node",
+            "args": [
+                "c:/Workspace/petrobras-quest/playwright-mcp/dist/index.js"
+            ]
         }
-        //other mcp servers
     }
 }
-
 // setup mcp server in  ~/.gemini\antigravity\mcp_config.json
-

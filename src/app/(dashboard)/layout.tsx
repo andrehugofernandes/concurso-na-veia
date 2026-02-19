@@ -10,11 +10,14 @@ export const metadata: Metadata = {
 };
 
 import { UserProvider } from '@/contexts/UserContext';
+import { UIProvider } from '@/contexts/UIContext';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <UserProvider>
-      <AdminDashboardLayout>{children}</AdminDashboardLayout>
+      <UIProvider>
+        <AdminDashboardLayout>{children}</AdminDashboardLayout>
+      </UIProvider>
     </UserProvider>
   );
 }

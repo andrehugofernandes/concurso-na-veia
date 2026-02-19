@@ -21,9 +21,11 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import { Play } from 'lucide-react';
-import { LuPlay, LuImage, LuFileText, LuLock, LuTrophy, LuBookOpen, LuVolume2, LuHeart, LuShuffle, LuSkipBack, LuPause, LuSkipForward, LuRepeat, LuArrowRight, LuArrowLeft, LuCheck, LuClock } from 'react-icons/lu';
+import { Play, X } from 'lucide-react';
+import { jsPDF } from 'jspdf';
+import { LuPlay, LuImage, LuFileText, LuLock, LuTrophy, LuBookOpen, LuVolume2, LuHeart, LuShuffle, LuSkipBack, LuPause, LuSkipForward, LuRepeat, LuArrowRight, LuArrowLeft, LuCheck, LuClock, LuDownload } from 'react-icons/lu';
 import { cn } from "@/lib/utils";
+import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Slider } from '@/components/ui/slider';
 
@@ -52,6 +54,10 @@ export function getRandomQuestions(pool: QuizQuestion[], count: number): QuizQue
 
 // ── Sub-components ──────────────────────────────────────────────────────
 
+/**
+ * Caixa de alerta para informações críticas.
+ * MANDATÓRIO: Sempre inclua um exemplo prático com frases se houver explicação teórica.
+ */
 export function AlertBox({
     tipo,
     titulo,
@@ -155,6 +161,7 @@ export interface CarouselCard {
     icone: React.ReactNode;
     titulo: string;
     descricao: React.ReactNode;
+    exemplo?: string;
     corFundo?: string; // tailwind bg class for icon wrapper, e.g. "bg-blue-100 dark:bg-blue-900/30"
 }
 
@@ -170,7 +177,7 @@ export function CardCarousel({
     cards: CarouselCard[];
 }) {
     return (
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+        <section className="bg-muted/5 rounded-2xl border border-border/50 p-6 md:p-8 space-y-6">
             {/* Header */}
             <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
@@ -197,28 +204,44 @@ export function CardCarousel({
                             key={index}
                             className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3"
                         >
-                            <div className="bg-background p-6 rounded-xl border border-border shadow-sm space-y-3 h-full flex flex-col">
-                                <div
-                                    className={`w-10 h-10 rounded-lg flex items-center justify-center text-xl shrink-0 ${card.corFundo || 'bg-primary/10'
-                                        }`}
-                                >
-                                    {card.icone}
+                            <div className="bg-card p-6 md:p-8 rounded-2xl border border-border shadow-md h-full flex flex-col group/card hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500">
+                                <div className="flex items-start gap-5 mb-6">
+                                    <div
+                                        className={cn(
+                                            "w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0 transition-all duration-500 group-hover/card:scale-110 group-hover/card:rotate-3 shadow-lg shadow-black/5",
+                                            card.corFundo || "bg-primary/10"
+                                        )}
+                                    >
+                                        {card.icone}
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="font-bold text-foreground text-lg md:text-xl leading-tight block truncate md:whitespace-normal">{card.titulo}</h3>
+                                    </div>
                                 </div>
-                                <h3 className="font-bold text-foreground">{card.titulo}</h3>
-                                <div className="text-sm text-muted-foreground flex-1">
+                                <div className="text-base text-muted-foreground mb-6 leading-relaxed">
                                     {card.descricao}
                                 </div>
+                                {card.exemplo && (
+                                    <div className="mt-auto pt-6 border-t border-border/50">
+                                        <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-primary mb-3">Exemplo Prático</p>
+                                        <div className="p-5 bg-muted/40 rounded-xl border border-primary/10 relative overflow-hidden">
+                                            <div className="absolute left-0 top-0 w-1 h-full bg-primary/30" />
+                                            <p className="text-sm italic text-foreground leading-relaxed">"{card.exemplo}"</p>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <div className="flex items-center justify-between mt-4">
-                    <span className="text-xs text-muted-foreground">
-                        {cards.length} cards — deslize para ver todos
+                <div className="flex items-center justify-between mt-8 pt-4 border-t border-border/40">
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/60 flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
+                        {cards.length} tópicos disponíveis
                     </span>
                     <div className="flex gap-2">
-                        <CarouselPrevious className="static translate-y-0 h-9 w-9" />
-                        <CarouselNext className="static translate-y-0 h-9 w-9" />
+                        <CarouselPrevious className="static translate-y-0 h-10 w-10 rounded-xl hover:bg-primary/5 hover:text-primary transition-colors border-border/60" />
+                        <CarouselNext className="static translate-y-0 h-10 w-10 rounded-xl hover:bg-primary/5 hover:text-primary transition-colors border-border/60" />
                     </div>
                 </div>
             </Carousel>
@@ -235,9 +258,14 @@ export interface ContentSlide {
     titulo: string;
     icone: string;
     conteudo: React.ReactNode;
+    exemplo?: string;
     corDestaque?: string;
 }
 
+/**
+ * Acordeão de conteúdo interativo.
+ * MANDATÓRIO: Cada slide DEVE conter um exemplo prático (Antes/Depois ou Certo/Errado) em frases.
+ */
 export function ContentAccordion({
     titulo,
     icone,
@@ -291,19 +319,31 @@ export function ContentAccordion({
                                     key={index}
                                     className="pl-4 basis-full md:basis-1/2 lg:basis-1/2"
                                 >
-                                    <div className="bg-card rounded-xl border border-border p-5 md:p-6 shadow-sm h-full flex flex-col space-y-3">
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-xl">{slide.icone}</span>
-                                            <h4 className="font-bold text-foreground text-sm">
-                                                {slide.titulo}
-                                            </h4>
-                                            <span className="ml-auto text-xs text-muted-foreground">
-                                                {index + 1}/{slides.length}
-                                            </span>
+                                    <div className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-lg h-full flex flex-col space-y-6 group/slide hover:border-primary/40 transition-all duration-500">
+                                        <div className="flex items-start gap-5">
+                                            <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl shrink-0 group-hover/slide:scale-110 group-hover/slide:-rotate-3 transition-all duration-500 shadow-inner">
+                                                {slide.icone}
+                                            </div>
+                                            <div className="flex-1 min-w-0">
+                                                <div className="flex items-center">
+                                                    <h4 className="font-bold text-foreground text-xl md:text-2xl leading-tight tracking-tight">
+                                                        {slide.titulo}
+                                                    </h4>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="text-sm text-muted-foreground leading-relaxed flex-1 space-y-2">
+                                        <div className="text-base text-muted-foreground leading-relaxed flex-1 space-y-4 font-medium">
                                             {slide.conteudo}
                                         </div>
+                                        {slide.exemplo && (
+                                            <div className="pt-8 border-t border-border/50">
+                                                <p className="text-[12px] uppercase tracking-[0.2em] font-black text-primary mb-3">Aplicação Real</p>
+                                                <div className="p-5 bg-primary/5 rounded-xl border border-primary/20 relative overflow-hidden group-hover/slide:bg-primary/10 transition-colors">
+                                                    <div className="absolute left-0 top-0 w-1 h-full bg-primary" />
+                                                    <p className="text-base italic text-foreground leading-relaxed font-semibold">"{slide.exemplo}"</p>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </CarouselItem>
                             ))}
@@ -975,7 +1015,7 @@ export function MusicPlayerCard({
 // ── LessonTabs (Generic Resource Container) ──────────────────────────────
 // Fallback for React 19 Activity (Offscreen) API
 // Since unstable_Activity is not exported in the current build, we use a CSS-based fallback
-const Activity = ({ mode, children }: { mode: 'visible' | 'hidden'; children: React.ReactNode }) => {
+export const Activity = ({ mode, children }: { mode: 'visible' | 'hidden'; children: React.ReactNode }) => {
     return (
         <div style={{ display: mode === 'hidden' ? 'none' : 'contents' }}>
             {children}
@@ -1056,11 +1096,26 @@ export function LessonTabs({
 }
 
 // ── ModuleSummaryCarousel (Nano Banana Placeholders) ──────────────────────
+/**
+ * Carrossel de Resumo Visual do Módulo.
+ * Além das imagens, este componente oferece exportação para PDF (Cards de Estudo).
+ * MANDATÓRIO: Use de 3 a 5 imagens explicativas por módulo.
+ */
 export function ModuleSummaryCarouselNew({
     images,
+    tituloAula,
+    materia,
+    profissao,
+    moduloNome,
 }: {
-    images: { title: string; type: string; placeholderColor: string }[];
+    images: { title: string; type: string; placeholderColor: string; imageUrl?: string }[];
+    tituloAula?: string;
+    materia?: string;
+    profissao?: string;
+    moduloNome?: string;
 }) {
+    const [selectedImage, setSelectedImage] = useState<{ url: string; title: string; type: string } | null>(null);
+
     return (
         <section className="w-full max-w-5xl mx-auto my-16 space-y-6">
             <div className="flex items-center gap-3 mb-6 px-4">
@@ -1069,38 +1124,221 @@ export function ModuleSummaryCarouselNew({
                 </div>
                 <div>
                     <h3 className="text-xl font-bold text-foreground">Resumo Visual do Módulo</h3>
-                    <p className="text-sm text-muted-foreground">Material de apoio (Nano Imagen)</p>
+                    <p className="text-sm text-muted-foreground">Material de apoio visual e esquematizado</p>
+                </div>
+                <div className="ml-auto">
+                    <Button
+                        onClick={async () => {
+                            const pdf = new jsPDF('p', 'mm', 'a4');
+                            const margin = 20;
+                            const pageWidth = pdf.internal.pageSize.getWidth();
+                            const pageHeight = pdf.internal.pageSize.getHeight();
+
+
+
+                            for (let i = 0; i < images.length; i++) {
+                                const imgData = images[i];
+                                if (!imgData.imageUrl) continue;
+
+                                if (i > 0) pdf.addPage();
+
+                                // 1. Cabeçalho Minimalista por página
+                                pdf.setFillColor(248, 250, 252);
+                                pdf.rect(0, 0, pageWidth, 35, 'F');
+
+                                pdf.setFontSize(22);
+                                pdf.setTextColor(15, 23, 42);
+                                pdf.setFont('helvetica', 'bold');
+                                pdf.text('A VAGA É MINHA', margin, 18);
+
+                                pdf.setFontSize(10);
+                                pdf.setFont('helvetica', 'normal');
+                                pdf.setTextColor(100, 116, 139);
+                                const metadataList = [
+                                    materia && `Matéria: ${materia}`,
+                                    tituloAula && `Aula: ${tituloAula}`,
+                                    profissao && `Profissão: ${profissao}`,
+                                    moduloNome && `Módulo: ${moduloNome}`
+                                ].filter(Boolean).join('  •  ');
+                                pdf.text(metadataList, margin, 27);
+
+                                pdf.setDrawColor(226, 232, 240);
+                                pdf.line(margin, 30, pageWidth - margin, 30);
+
+                                try {
+                                    const img = new Image();
+                                    img.src = imgData.imageUrl;
+                                    await new Promise((resolve) => {
+                                        img.onload = resolve;
+                                        img.onerror = resolve;
+                                    });
+
+                                    const originalWidth = img.naturalWidth || img.width;
+                                    const originalHeight = img.naturalHeight || img.height;
+                                    const aspectRatio = originalWidth / originalHeight;
+
+                                    const boxWidth = pageWidth - (margin * 2);
+                                    const boxHeight = pageHeight - 80;
+
+                                    let displayWidth = boxWidth;
+                                    let displayHeight = displayWidth / aspectRatio;
+
+                                    if (displayHeight > boxHeight) {
+                                        displayHeight = boxHeight;
+                                        displayWidth = displayHeight * aspectRatio;
+                                    }
+
+                                    const xOffset = (pageWidth - displayWidth) / 2;
+                                    const yOffset = 45 + (boxHeight - displayHeight) / 2;
+
+                                    // Título da Imagem
+                                    pdf.setFontSize(11);
+                                    pdf.setTextColor(79, 70, 229);
+                                    pdf.setFont('helvetica', 'bold');
+                                    pdf.text(`${imgData.type.toUpperCase()}: ${imgData.title}`, pageWidth / 2, yOffset - 8, { align: 'center' });
+
+                                    // Adicionar imagem
+                                    pdf.addImage(img, 'PNG', xOffset, yOffset, displayWidth, displayHeight);
+
+                                    // Guia de Corte
+                                    pdf.setDrawColor(203, 213, 225);
+                                    (pdf as any).setLineDash([1, 2], 0);
+                                    const guideSize = 10;
+                                    const gx = xOffset - 10;
+                                    const gy = yOffset - 15;
+                                    const gw = displayWidth + 20;
+                                    const gh = displayHeight + 25;
+
+                                    pdf.line(gx, gy, gx + guideSize, gy); pdf.line(gx, gy, gx, gy + guideSize);
+                                    pdf.line(gx + gw, gy, gx + gw - guideSize, gy); pdf.line(gx + gw, gy, gx + gw, gy + guideSize);
+                                    pdf.line(gx, gy + gh, gx + guideSize, gy + gh); pdf.line(gx, gy + gh, gx, gy + gh - guideSize);
+                                    pdf.line(gx + gw, gy + gh, gx + gw - guideSize, gy + gh); pdf.line(gx + gw, gy + gh, gx + gw, gy + gh - guideSize);
+
+                                    // Aviso Margem
+                                    pdf.setFontSize(8);
+                                    pdf.setTextColor(148, 163, 184);
+                                    pdf.setFont('helvetica', 'italic');
+                                    pdf.text('↑ Margem Segura para Encadernação / Furos (Esquerda) ↑', 8, pageHeight / 2, { angle: 90 });
+
+                                } catch (e) {
+                                    console.error('PDF error:', e);
+                                }
+                            }
+
+                            const fileName = `StudyCards_${tituloAula || 'Aula'}_${moduloNome || 'Modulo'}.pdf`.replace(/\s+/g, '_');
+                            pdf.save(fileName);
+                        }}
+                        variant="outline"
+                        size="sm"
+                        className="flex items-center justify-center gap-2 bg-indigo-500/10 border-indigo-500/20 hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 font-bold rounded-xl group transition-all active:scale-95 py-2.5 px-5 shadow-sm h-auto"
+                    >
+                        <LuDownload className="w-4 h-4 group-hover:translate-y-0.5 transition-transform shrink-0" />
+                        <span className="whitespace-nowrap">Exportar Resumo (PDF)</span>
+                    </Button>
                 </div>
             </div>
 
-            <Carousel className="w-full" opts={{ align: 'start', loop: true }}>
-                <CarouselContent className="-ml-4">
-                    {images.map((img, index) => (
-                        <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                            <div className={`aspect-[3/4] rounded-xl ${img.placeholderColor} border-2 border-dashed border-black/5 dark:border-white/10 flex flex-col items-center justify-center p-8 text-center shadow-sm hover:shadow-lg transition-all gap-4 group cursor-pointer relative overflow-hidden`}>
-                                <div className="absolute inset-0 bg-white/40 dark:bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+            {images && images.length > 0 && (
+                <Carousel className="w-full group" opts={{ align: 'start', loop: true }}>
+                    <CarouselContent className="-ml-4">
+                        {images.map((img, index) => (
+                            <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                                <div
+                                    onClick={() => img.imageUrl && setSelectedImage({ url: img.imageUrl, title: img.title, type: img.type })}
+                                    className={`aspect-[3/4] rounded-xl ${img.placeholderColor} border border-border/50 flex flex-col items-center justify-center p-0 text-center shadow-sm hover:shadow-xl transition-all group/card cursor-pointer relative overflow-hidden`}
+                                >
 
-                                <div className="w-16 h-16 rounded-full bg-background/80 backdrop-blur flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm z-10 border border-border/50">
-                                    <LuImage className="w-8 h-8 text-foreground/60" />
-                                </div>
+                                    {img.imageUrl ? (
+                                        <div className="absolute inset-0 w-full h-full">
+                                            <img
+                                                src={img.imageUrl}
+                                                alt={img.title}
+                                                className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <div className="absolute inset-0 bg-white/40 dark:bg-black/20 opacity-0 group-hover/card:opacity-100 transition-opacity" />
+                                            <div className="w-16 h-16 rounded-full bg-background/80 backdrop-blur flex items-center justify-center group-hover/card:scale-110 transition-transform shadow-sm z-10 border border-border/50">
+                                                <LuImage className="w-8 h-8 text-foreground/60" />
+                                            </div>
+                                        </>
+                                    )}
 
-                                <div className="z-10 relative">
-                                    <span className="text-[10px] font-bold uppercase tracking-widest opacity-60 bg-background/50 px-2 py-1 rounded-full">{img.type}</span>
-                                    <h4 className="text-lg font-bold mt-3 leading-tight text-foreground/90">{img.title}</h4>
-                                </div>
+                                    <div className="z-10 relative mt-auto p-6 w-full text-left">
+                                        <span className={cn(
+                                            "text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full mb-2 inline-block",
+                                            img.imageUrl ? "bg-white/20 text-white backdrop-blur-md" : "bg-background/50 text-foreground/60"
+                                        )}>
+                                            {img.type}
+                                        </span>
+                                        <h4 className={cn(
+                                            "text-lg font-bold leading-tight",
+                                            img.imageUrl ? "text-white" : "text-foreground/90"
+                                        )}>
+                                            {img.title}
+                                        </h4>
+                                    </div>
 
-                                <div className="absolute bottom-4 left-0 w-full text-center z-10">
-                                    <p className="text-[10px] opacity-40 uppercase tracking-wider">Placeholder</p>
+                                    {!img.imageUrl && (
+                                        <div className="absolute bottom-4 left-0 w-full text-center z-10">
+                                            <p className="text-[10px] opacity-40 uppercase tracking-wider">Placeholder</p>
+                                        </div>
+                                    )}
                                 </div>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="-left-12 opacity-0 group-hover:opacity-100 transition-opacity hidden md:flex" />
+                    <CarouselNext className="-right-12 opacity-0 group-hover:opacity-100 transition-opacity hidden md:flex" />
+                </Carousel>
+            )}
+
+            {/* Lightbox / Popup da Imagem */}
+            <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
+                <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-black/95 border-0 overflow-hidden flex flex-col items-center justify-center">
+                    {/* Botão de Fechar CTA - Posicionamento Fixo Superior Direito */}
+                    <button
+                        onClick={() => setSelectedImage(null)}
+                        className="absolute top-4 right-4 z-[60] flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-md border border-white/20 transition-all active:scale-95 group"
+                    >
+                        <span className="text-sm font-bold uppercase tracking-wider">Fechar</span>
+                        <X className="w-5 h-5 group-hover:rotate-90 transition-transform" />
+                    </button>
+
+                    {/* Skin Overlay Decorativa */}
+                    <div className="absolute inset-0 z-0 pointer-events-none opacity-20 bg-[radial-gradient(circle_at_center,var(--primary)_0%,transparent_70%)]" />
+
+                    {selectedImage && (
+                        <>
+                            <DialogHeader className="absolute top-0 left-0 right-0 z-50 p-6 bg-gradient-to-b from-black/80 via-black/40 to-transparent">
+                                <div className="flex flex-col">
+                                    <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--primary)] mb-1 filter brightness-150">
+                                        {selectedImage.type}
+                                    </span>
+                                    <DialogTitle className="text-white text-xl md:text-3xl font-bold tracking-tight">
+                                        {selectedImage.title}
+                                    </DialogTitle>
+                                </div>
+                            </DialogHeader>
+
+                            <div className="w-full h-full flex items-center justify-center p-4 md:p-12 overflow-auto custom-scrollbar z-10 relative">
+                                <img
+                                    src={selectedImage.url}
+                                    alt={selectedImage.title}
+                                    className="max-w-full max-h-full object-contain shadow-[0_0_50px_rgba(0,0,0,0.5)] rounded-md animate-in zoom-in-95 duration-500 ring-1 ring-white/10"
+                                />
                             </div>
-                        </CarouselItem>
-                    ))}
-                </CarouselContent>
-                <div className="flex justify-center gap-2 mt-6">
-                    <CarouselPrevious className="static translate-y-0" />
-                    <CarouselNext className="static translate-y-0" />
-                </div>
-            </Carousel>
+
+                            {/* Dica no rodapé */}
+                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-black/40 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/5 pointer-events-none whitespace-nowrap">
+                                <span className="text-[10px] font-medium text-white/40 uppercase tracking-[0.2em]">Esc para fechar</span>
+                            </div>
+                        </>
+                    )}
+                </DialogContent>
+            </Dialog>
         </section>
     );
 }
@@ -1167,6 +1405,10 @@ export function TabbedContent({
 
 // ── AulaTemplate ─────────────────────────────────────────────────────────
 
+/**
+ * Template base para as aulas.
+ * Inclui controle de acessibilidade (tamanho da fonte) e estrutura padrão.
+ */
 export function AulaTemplate({
     children,
     titulo,
@@ -1182,28 +1424,71 @@ export function AulaTemplate({
     materiaId: string;
     aulaId: string;
 }) {
+    const [fontSize, setFontSize] = useState<'sm' | 'md' | 'lg'>('md');
+
+    const fontSizeClasses = {
+        sm: 'lesson-font-sm text-sm md:text-base',
+        md: 'lesson-font-md text-base md:text-lg',
+        lg: 'lesson-font-lg text-lg md:text-xl',
+    };
+
     return (
-        <div className="container max-w-4xl mx-auto py-8 px-4 space-y-8 pb-32">
-            {/* Header */}
-            <div className="mb-12 text-center md:text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-4">
-                    <LuClock size={14} />
-                    <span>{tempoEstimado} de leitura</span>
+        <div className={cn("container max-w-7xl mx-auto py-8 px-4 space-y-8 pb-32", fontSizeClasses[fontSize])}>
+            {/* Header com Controles */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+                <div className="text-center md:text-left">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-4">
+                        <LuClock size={14} />
+                        <span>{tempoEstimado} de leitura</span>
+                    </div>
+                    <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">
+                        {titulo}
+                    </h1>
+                    <p className="text-lg text-muted-foreground max-w-2xl">
+                        {subtitulo}
+                    </p>
                 </div>
-                <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">
-                    {titulo}
-                </h1>
-                <p className="text-lg text-muted-foreground max-w-2xl">
-                    {subtitulo}
-                </p>
+
+                {/* Controles de Acessibilidade */}
+                <div className="flex items-center gap-3 bg-muted/30 p-2 rounded-2xl border border-border/50 backdrop-blur shadow-sm">
+                    <span className="text-[10px] uppercase font-bold text-muted-foreground px-2">Fonte</span>
+                    <div className="flex gap-1">
+                        {(['sm', 'md', 'lg'] as const).map((size) => (
+                            <button
+                                key={size}
+                                onClick={() => setFontSize(size)}
+                                className={cn(
+                                    "w-10 h-10 rounded-xl flex items-center justify-center font-bold transition-all active:scale-90",
+                                    fontSize === size
+                                        ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
+                                        : "bg-background/50 text-muted-foreground hover:bg-background hover:text-foreground"
+                                )}
+                            >
+                                {size === 'sm' ? 'A-' : size === 'md' ? 'A' : 'A+'}
+                            </button>
+                        ))}
+                    </div>
+                </div>
             </div>
 
             <ProgressIndicator />
 
-            {/* Content */}
+            {/* Content - O children herda o tamanho da fonte através do context/classes */}
             <main className="space-y-12">
                 {children}
             </main>
+
+            <style jsx global>{`
+                .lesson-font-sm p, .lesson-font-sm li { font-size: 0.875rem; line-height: 1.5rem; }
+                .lesson-font-md p, .lesson-font-md li { font-size: 1.125rem; line-height: 1.875rem; }
+                .lesson-font-lg p, .lesson-font-lg li { font-size: 1.375rem; line-height: 2.25rem; }
+                
+                /* Ajustes para cards e outros componentes que usam classes específicas */
+                .lesson-font-md .text-sm { font-size: 1rem; }
+                .lesson-font-md .text-base { font-size: 1.125rem; }
+                .lesson-font-lg .text-sm { font-size: 1.125rem; }
+                .lesson-font-lg .text-base { font-size: 1.375rem; }
+            `}</style>
         </div>
     );
 }
@@ -1259,3 +1544,4 @@ export function StickyModuleNav({
         </div>
     );
 }
+

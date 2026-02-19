@@ -38,7 +38,14 @@ Use como referência principal a **Gramática Normativa da Língua Portuguesa de
 5. **Andragogia** (ensino autodirigido para adultos)
 
 **Princípios de retenção:**
-- Espaçamento, Interleaving, Retrieval Practice, Elaboração, Exemplificação concreta
+- Espaçamento, Interleaving, Retrieval Practice, Elaboração, Exemplificação concreta.
+- **REGRA DE OURO:** Toda explicação teórica DEVE ser validada por um exemplo em frase (Antes/Depois, Certo/Errado ou Aplicação Real). NUNCA gere teoria pura sem exemplificação textual. Isso é inegociável para a clareza do aluno.
+- **BRANDING:** O nome do sistema/SaaS é **"A Vaga É Minha"**. NUNCA use "Petrobras Quest" em títulos de PDF ou componentes de marca.
+- **PDF EXPORT:** Para garantir qualidade na exportação USB/PDF de resumos:
+    1. Forneça entre 3 a 5 imagens explicativas no `ModuleSummaryCarouselNew`.
+    2. Garante que as imagens tenham títulos claros e descrições técnicas.
+    3. O sistema usa o título da aula, matéria e profissão para gerar o cabeçalho do PDF. Informe esses dados corretamente nas props.
+    4. Mantenha o foco na clareza visual para que o PDF impresso seja um excelente guia de bolso.
 
 ---
 
@@ -567,6 +574,9 @@ Passo 4: Confirmação
 
 **Conteúdo:**
 - **[PONTO DE IMAGEM 7]**: Card de resumo (formato 1080x1080 quadrado para compartilhar)
+- **REGRA DE OURO PARA PDF:** Use o componente `ModuleSummaryCarouselNew` com as props `tituloAula`, `materia`, `profissao` e `moduloNome` preenchidas.
+- **MARCA:** Título do PDF deve ser sempre **"A VAGA É MINHA"**.
+- **QUALIDADE VISUAL:** Forneça entre 3 a 5 imagens explicativas por módulo. O sistema preservará o aspect ratio original das imagens no PDF. Use imagens horizontais (16:9 ou 4:3) para melhor aproveitamento da página A4.
 
 **Posicionamento:**
 ```

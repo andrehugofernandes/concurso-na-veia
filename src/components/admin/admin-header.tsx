@@ -18,6 +18,8 @@ import {
 import { availableThemes } from '@/lib/themes';
 import { createClient } from '@/lib/supabase/client';
 import { useUserProfile } from '@/hooks/useUserProfile';
+import { useUI } from '@/contexts/UIContext';
+import { CONTEUDO_MATERIAS } from '@/data/conteudo';
 
 function hexToRgbTriplet(hex: string): string {
   const clean = hex.trim().replace('#', '');
@@ -133,24 +135,67 @@ export function AdminHeader({ onMenuToggle, isSidebarCollapsed, userName, userEm
     return (firstName.charAt(0) + lastName.charAt(0)).toUpperCase();
   };
 
-  // Função para extrair o nome da página atual
+  // Mapeamento de slugs para títulos (Rotas estáticas ou globais)
+  const TITLE_MAP: Record<string, string> = {
+    'dashboard': 'Dashboard',
+    'aulas': 'Aulas',
+    'simulados': 'Simulados',
+    'simulado-rapido': 'Simulados Rápidos',
+    'simulado-especifico': 'Simulados Específicos',
+    'maratona-100': 'Maratona 100',
+    'historico': 'Histórico',
+    'rankings': 'Rankings',
+    'perfil': 'Perfil',
+    'configuracoes': 'Configurações',
+    'profile': 'Perfil',
+    'settings': 'Configurações',
+    'admin': 'Administração',
+    'users': 'Usuários',
+    'posts': 'Postagens',
+    'media': 'Mídia',
+    'comments': 'Comentários',
+    'seja-pro': 'Seja Pro',
+    'tickets': 'Suporte'
+  };
+
+  // Função para extrair o nome da página atual de forma dinâmica
   const getCurrentPageName = () => {
-    const path = (pathname || '').split('/').filter(Boolean);
-    if (path.length === 0 || (path[0] === 'dashboard' && path.length === 1)) {
-      return '';
+    const segments = (pathname || '').split('/').filter(Boolean);
+    if (segments.length === 0) return 'Dashboard';
+
+    // 1. Verificar se estamos em uma rota de AULAS para busca dinâmica no conteudo.ts
+    // Formato esperado: /aulas/[materia]/[topico] ou /aulas/[materia]
+    if (segments[0] === 'aulas' && segments.length > 1) {
+      const materiaSlug = segments[1];
+      const topicoSlug = segments[2];
+
+      const materia = CONTEUDO_MATERIAS.find(m => m.id === materiaSlug);
+      if (materia) {
+        // Se houver tópico, retorna o título do tópico
+        if (topicoSlug) {
+          const topico = materia.topicos.find(t => t.id === topicoSlug);
+          if (topico) return topico.titulo;
+        }
+        // Se não houver tópico ou não encontrado, retorna o nome da matéria
+        return materia.nome;
+      }
     }
 
-    // Pegar o último segmento significativo
-    const lastSegment = path[path.length - 1];
+    // 2. Tentar encontrar o último segmento no mapa estático
+    const lastSegment = segments[segments.length - 1].toLowerCase();
+    if (TITLE_MAP[lastSegment]) {
+      return TITLE_MAP[lastSegment];
+    }
 
-    // Se for 'aulas', apenas retornar 'Aulas'
-    if (lastSegment.toLowerCase() === 'aulas') return 'Aulas';
-
-    // Capitalizar primeira letra
-    return lastSegment.charAt(0).toUpperCase() + lastSegment.slice(1);
+    // 3. Fallback: Capitalizar primeira letra e substituir hífens
+    return lastSegment
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   };
 
   const { profile } = useUserProfile();
+  const { pageTitle } = useUI();
 
   // Use profile data from context
   const displayName = profile?.full_name || 'Usuário';
@@ -160,7 +205,12 @@ export function AdminHeader({ onMenuToggle, isSidebarCollapsed, userName, userEm
 
   // Função para processar o título do dashboard
   const getDisplayTitle = () => {
+    // 1. Prioridade máxima: Título vindo do Contexto (definido explicitamente pela página)
+    if (pageTitle) return pageTitle;
+
+    // 2. Fallback: Título vindo do dashboardTitle (se existir) ou mapeamento de URL
     const title = dashboardTitle || getCurrentPageName();
+
     // Em mobile, remover "Dashboard | " se existir
     if (typeof window !== 'undefined' && window.innerWidth < 768) {
       return title.replace(/^Dashboard\s*\|\s*/i, '');
@@ -220,7 +270,7 @@ export function AdminHeader({ onMenuToggle, isSidebarCollapsed, userName, userEm
 
           {/* Theme Color Picker - Desktop only */}
           {mounted && (
-            <DropdownMenu>
+            <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
                 <button className="hidden md:flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors" aria-label="Escolher tema de cor">
                   <div className="w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-primary" />
@@ -248,7 +298,7 @@ export function AdminHeader({ onMenuToggle, isSidebarCollapsed, userName, userEm
 
           {/* Notifications - Desktop only */}
           {mounted ? (
-            <DropdownMenu>
+            <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
                 <button className="hidden md:flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300" aria-label="Notificações">
                   <LuBell className="h-5 w-5" />
@@ -278,7 +328,7 @@ export function AdminHeader({ onMenuToggle, isSidebarCollapsed, userName, userEm
 
           {/* Avatar Menu */}
           {mounted ? (
-            <DropdownMenu>
+            <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
                 <button className="relative h-10 w-10 md:h-12 md:w-12 rounded-full p-0 flex-shrink-0">
                   <div className="relative rounded-full border-2 md:border-4 border-primary">
@@ -327,7 +377,7 @@ export function AdminHeader({ onMenuToggle, isSidebarCollapsed, userName, userEm
                 )}
                 {mounted && (
                   <div className="md:hidden">
-                    <DropdownMenu>
+                    <DropdownMenu modal={false}>
                       <DropdownMenuTrigger asChild>
                         <button className="w-full flex items-center px-2 py-1.5 text-sm cursor-pointer hover:bg-accent rounded-sm">
                           <LuPalette className="mr-2 h-4 w-4" />

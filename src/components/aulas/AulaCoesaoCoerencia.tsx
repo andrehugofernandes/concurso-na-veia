@@ -14,7 +14,8 @@ import {
     ModuleSummaryCarouselNew,
     AulaProps,
     ProgressIndicator,
-    StickyModuleNav
+    StickyModuleNav,
+    Activity
 } from './shared';
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
@@ -163,14 +164,6 @@ const QUIZ_PRATICO_POOL = [
 
 // --- COMPONENTES AUXILIARES ---
 
-const Activity = ({ mode, children }: { mode: 'visible' | 'hidden'; children: React.ReactNode }) => {
-    return (
-        <div style={{ display: mode === 'hidden' ? 'none' : 'contents' }}>
-            {children}
-        </div>
-    );
-};
-
 const CONCEPT_EXAMPLES = [
     { frente: "Coesão", verso: "É a ligação física e gramatical entre as palavras e frases (o 'tecido' do texto)." },
     { frente: "Coerência", verso: "É a harmonia lógica de ideias (o 'sentido' do texto)." },
@@ -181,30 +174,30 @@ const CONCEPT_EXAMPLES = [
 const CONECTIVOS_CARDS = [
     {
         titulo: "Adversativos",
-        tipo: "Oposição",
         descricao: "Mas, porém, contudo, todavia, entretanto, no entanto.",
-        cor: "bg-red-500",
+        exemplo: "Estudou muito para a prova, mas não conseguiu a aprovação.",
+        corFundo: "bg-red-500/10",
         icone: "⚔️"
     },
     {
         titulo: "Conclusivos",
-        tipo: "Fechamento",
         descricao: "Portanto, logo, então, por isso, assim, por conseguinte.",
-        cor: "bg-indigo-500",
+        exemplo: "O projeto foi aprovado, portanto daremos início às obras amanhã.",
+        corFundo: "bg-indigo-500/10",
         icone: "🏁"
     },
     {
         titulo: "Concessivos",
-        tipo: "Ressalva",
         descricao: "Embora, ainda que, mesmo que, conquanto, apesar de.",
-        cor: "bg-amber-500",
+        exemplo: "Embora o petróleo seja finito, ele ainda é a base da nossa matriz.",
+        corFundo: "bg-amber-500/10",
         icone: "⚖️"
     },
     {
         titulo: "Explicativos",
-        tipo: "Justificativa",
         descricao: "Pois, porque, que, porquanto.",
-        cor: "bg-emerald-500",
+        exemplo: "A operação foi interrompida, pois houve um alerta de segurança.",
+        corFundo: "bg-emerald-500/10",
         icone: "💡"
     }
 ];
@@ -270,333 +263,365 @@ export default function AulaCoesaoCoerencia({
     const [shuffledChallenges] = useState(() => [...CHALLENGES].sort(() => Math.random() - 0.5));
 
     return (
-        <div className="space-y-6 pb-20">
-            {/* STICKY HEADER - BREAKOUT FULL WIDTH */}
-            {/* Progress Bar */}
-            <ProgressIndicator />
-
-            {showCompletionBadge && (
-                <div className="bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-xl p-4 flex items-center gap-4 shadow-sm mb-6 animate-in slide-in-from-top-4 duration-700">
-                    <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-green-500/30">
-                        <LuCheck size={24} strokeWidth={3} />
+        <div className="pb-20 animate-in fade-in duration-500">
+            <div className="max-w-7xl mx-auto space-y-12 pt-12 px-6">
+                <ProgressIndicator />
+                {showCompletionBadge && (
+                    <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-6 flex items-center justify-between animate-in fade-in slide-in-from-top-4">
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg shadow-emerald-500/30">
+                                <LuCheck />
+                            </div>
+                            <div>
+                                <h3 className="font-bold text-lg text-emerald-700 dark:text-emerald-400">Aula Concluída!</h3>
+                                <p className="text-emerald-600/80 dark:text-emerald-500/80">Você dominou a Coesão e Coerência.</p>
+                            </div>
+                        </div>
+                        <Button className="bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/20" onClick={onComplete}>
+                            Finalizar Aula
+                        </Button>
                     </div>
-                    <div>
-                        <h3 className="text-green-800 dark:text-green-300 font-bold text-lg">Aula Concluída!</h3>
-                        <p className="text-green-700 dark:text-green-400 text-sm">Parabéns! Você dominou os mecanismos de Coesão e Coerência.</p>
-                    </div>
-                </div>
-            )}
-            {/* Header Block (Title) - Removed to use Page Layout Title */}
+                )}
+            </div>
 
-            {/* Navigation Tabs */}
-            <Tabs value={activeTab} onValueChange={(val) => {
-                const idx = MODULE_DEFS.findIndex(m => m.id === val);
-                if (isModuleUnlocked(idx)) setActiveTab(val);
-            }} className="w-full space-y-8">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full mt-12">
                 <StickyModuleNav
-                    modules={Array.from(MODULE_DEFS)}
                     activeTab={activeTab}
+                    modules={MODULE_DEFS}
                     completedModules={completedModules}
                     isModuleUnlocked={isModuleUnlocked}
                 />
-                {/* --- MÓDULO 1: COESÃO --- */}
-                <Activity mode={activeTab === 'modulo-1' ? 'visible' : 'hidden'}>
-                    <div className={`space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500 ${activeTab !== 'modulo-1' ? 'hidden' : ''}`}>
-                        <ModuleBanner
-                            numero={1}
-                            titulo="Coesão Textual"
-                            descricao="A coesão é a conexão gramatical e lexical entre as partes de um texto. É como a argamassa que une os tijolos de uma parede."
-                            gradiente="bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700"
-                        />
 
-                        {/* 1.1 Coesão Referencial */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400 font-mono">1</span>
-                                Coesão Referencial
-                            </h2>
-                            <p className="text-muted-foreground leading-relaxed">
-                                Ocorre quando um termo retoma ou antecipa outro termo dentro do texto, evitando repetições desnecessárias.
-                            </p>
-
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="p-6 bg-muted/30 rounded-xl border border-border/50">
-                                    <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
-                                        <LuAnchor className="text-indigo-500" /> Anáfora
-                                    </h3>
-                                    <p className="text-sm mb-4">Retoma algo que já foi dito.</p>
-                                    <div className="bg-background p-3 rounded-lg border border-border text-xs italic">
-                                        "O <strong>relatório</strong> ficou pronto. <strong>Ele</strong> será enviado amanhã."
-                                    </div>
-                                </div>
-                                <div className="p-6 bg-muted/30 rounded-xl border border-border/50">
-                                    <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
-                                        <LuCompass className="text-purple-500" /> Catáfora
-                                    </h3>
-                                    <p className="text-sm mb-4">Antecipa o que será dito a seguir.</p>
-                                    <div className="bg-background p-3 rounded-lg border border-border text-xs italic">
-                                        "Eu só quero <strong>isto</strong>: sua total <strong>atenção</strong>."
-                                    </div>
-                                </div>
-                            </div>
-
-                            <ContentAccordion
-                                titulo="Mecanismos de Substituição"
-                                icone="🔄"
-                                corIndicador="bg-indigo-500"
-                                slides={[
-                                    {
-                                        titulo: "Sinonímia e Hiperonímia",
-                                        icone: "🎓",
-                                        conteudo: (
-                                            <div className="space-y-4">
-                                                <p>Substituir uma palavra por outra de sentido igual (sinônimo) ou mais amplo (hiperônimo).</p>
-                                                <ul className="list-disc list-inside text-sm space-y-2">
-                                                    <li><strong>Sinônimo:</strong> "Comprei um <strong>automóvel</strong>. O <strong>carro</strong> é novo."</li>
-                                                    <li><strong>Hiperônimo:</strong> "Ele gosta de <strong>rosas</strong>. Essas <strong>flores</strong> são lindas."</li>
-                                                </ul>
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        titulo: "Elipse (Omissão)",
-                                        icone: "👻",
-                                        conteudo: (
-                                            <p>A omissão de um termo que fica subentendido. <br className="mb-2" /> Ex: "Eles chegaram tarde, [eles] estavam cansados."</p>
-                                        )
-                                    }
-                                ]}
-                            />
-                        </section>
-
-                        {/* 1.2 Coesão Sequencial */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-lg font-bold text-purple-700 dark:text-purple-400 font-mono">2</span>
-                                Coesão Sequencial
-                            </h2>
-                            <p className="text-muted-foreground">
-                                Trata-se do uso de <strong>conectivos</strong> (conjunções, advérbios) para criar relações lógicas entre as orações e parágrafos.
-                            </p>
-
-                            <CardCarousel
-                                titulo="Conectivos Essenciais"
-                                subtitulo="Os operadores argumentativos que guiam o sentido do texto."
-                                numeroBadge={2}
-                                cards={CONECTIVOS_CARDS}
-                            />
-                        </section>
-
-                        {/* 1.3 Resumo Módulo 1 */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400">3</span>
-                                Resumo do Módulo 1
-                            </h2>
-                            <LessonTabs
-                                tabs={[
-                                    {
-                                        id: 'resumo',
-                                        label: 'Resumo Visual',
-                                        icon: LuBookOpen,
-                                        content: (
-                                            <ModuleSummaryCarouselNew
-                                                images={[
-                                                    { title: 'Mapa Mental: Coesão Referencial', type: 'Mapa Mental', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
-                                                    { title: 'Fluxograma: Conectivos de Oposição', type: 'Diagrama', placeholderColor: 'bg-rose-100 dark:bg-rose-900/30' },
-                                                    { title: 'Infográfico: Princípios da Coerência', type: 'Infográfico', placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30' },
-                                                    { title: 'Card: Anáfora vs Catáfora', type: 'Card', placeholderColor: 'bg-blue-100 dark:bg-blue-900/30' },
-                                                    { title: 'Diagrama: Substituição Lexical', type: 'Diagrama', placeholderColor: 'bg-purple-100 dark:bg-purple-900/30' },
-                                                ]}
-                                            />
-                                        ),
-                                    },
-                                    {
-                                        id: 'video',
-                                        label: 'Vídeo Aula',
-                                        icon: LuPlay,
-                                        content: (
-                                            <div className="aspect-video rounded-xl overflow-hidden border border-border bg-muted flex items-center justify-center group cursor-pointer relative">
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
-                                                <div className="relative z-20 flex flex-col items-center gap-4">
-                                                    <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                                                        <LuPlay className="text-white w-8 h-8 ml-1" />
-                                                    </div>
-                                                    <p className="text-white font-bold text-lg">Assistir: Engenharia da Coesão</p>
-                                                </div>
-                                            </div>
-                                        ),
-                                    },
-                                    {
-                                        id: 'audio',
-                                        label: 'Áudio Resumo',
-                                        icon: LuVolume2,
-                                        content: (
-                                            <div className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl border border-indigo-500/20">
-                                                <div className="w-full max-w-md">
-                                                    <MusicPlayerCard
-                                                        audioUrl="#"
-                                                        titulo="Conectando as Ideias"
-                                                        artista="Prof. Coesivo"
-                                                    />
-                                                </div>
-                                            </div>
-                                        ),
-                                    },
-                                ]}
-                            />
-                        </section>
-
-                        {/* QUIZ Módulo 1 */}
-                        <section id="quiz-modulo-1" className="mt-16">
-                            <QuizInterativo
-                                questoes={quizCoesaoQuestions}
-                                titulo="Quiz de Fixação: Coesão Textual"
-                                icone="💬"
-                                numero={4}
-                                onComplete={handleModule1Complete}
-                            />
-                        </section>
-                    </div>
-                </Activity>
-
-                {/* --- MÓDULO 2: COERÊNCIA --- */}
-                <Activity mode={activeTab === 'modulo-2' ? 'visible' : 'hidden'}>
-                    <div className={`space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500 ${activeTab !== 'modulo-2' ? 'hidden' : ''}`}>
-                        <ModuleBanner
-                            numero={2}
-                            titulo="Coerência Lógica"
-                            descricao="A coerência é a unidade de sentido do texto. Ela garante que a mensagem seja compreensível e não contraditória."
-                            gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
-                        />
-
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-lg font-bold text-emerald-700 dark:text-emerald-400 shrink-0">1</span>
-                                Os Três Pilares da Coerência
-                            </h2>
-
-                            <div className="grid md:grid-cols-3 gap-6">
-                                <div className="p-6 bg-muted/20 border border-border rounded-xl space-y-4">
-                                    <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center text-xl">🚫</div>
-                                    <h3 className="font-bold">Não-Contradição</h3>
-                                    <p className="text-xs text-muted-foreground">Ideias não podem se anular mutuamente no mesmo contexto.</p>
-                                </div>
-                                <div className="p-6 bg-muted/20 border border-border rounded-xl space-y-4">
-                                    <div className="w-10 h-10 bg-teal-500/10 rounded-lg flex items-center justify-center text-xl">📈</div>
-                                    <h3 className="font-bold">Progressão</h3>
-                                    <p className="text-xs text-muted-foreground">O texto deve trazer informações novas conforme avança.</p>
-                                </div>
-                                <div className="p-6 bg-muted/20 border border-border rounded-xl space-y-4">
-                                    <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center text-xl">🎯</div>
-                                    <h3 className="font-bold">Relevância</h3>
-                                    <p className="text-xs text-muted-foreground">Todas as partes devem contribuir para o tema central.</p>
-                                </div>
-                            </div>
-
-                            <AlertBox tipo="info" titulo="Coesão vs Coerência">
-                                Um texto pode ser <strong>coesivo</strong> (bem ligado gramaticalmente) mas <strong>incoerente</strong> (sem sentido lógico). <br />
-                                Ex: "Fui à praia porque estava nevando, logo aproveitei e comprei um foguete." (Há conectivos, mas a lógica é inexistente).
-                            </AlertBox>
-                        </section>
-
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Conceitos Fundamentais</h2>
-                            <FlipCard
+                <main className="max-w-7xl mx-auto px-6 mt-12">
+                    <Activity mode={activeTab === 'modulo-1' ? 'visible' : 'hidden'}>
+                        <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                            <ModuleBanner
                                 numero={1}
-                                frente={currentExample.frente}
-                                verso={currentExample.verso}
+                                titulo="Coesão Textual"
+                                descricao="Aprenda a conectar ideias e frases para criar um tecido textual fluido e lógico."
+                                gradiente="bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700"
                             />
-                            <div className="text-center">
-                                <button
-                                    onClick={() => {
-                                        const random = Math.floor(Math.random() * CONCEPT_EXAMPLES.length);
-                                        setCurrentExample(CONCEPT_EXAMPLES[random]);
-                                    }}
-                                    className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium hover:bg-emerald-200 transition-colors"
-                                >
-                                    <LuShuffle className="w-3 h-3" /> Ver outro conceito
-                                </button>
-                            </div>
-                        </section>
 
-                        {/* QUIZ Módulo 2 */}
-                        <section id="quiz-modulo-2" className="mt-16">
-                            <QuizInterativo
-                                questoes={quizCoerenciaQuestions}
-                                titulo="Quiz de Coerência Lógica"
-                                icone="🧠"
-                                numero={2}
-                                onComplete={handleModule2Complete}
-                            />
-                        </section>
-                    </div>
-                </Activity>
+                            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
+                                <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                    <span className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl font-black text-primary border border-primary/20 shadow-inner">1</span>
+                                    Coesão Referencial
+                                </h2>
 
-                {/* --- MÓDULO 3: PRÁTICA --- */}
-                <Activity mode={activeTab === 'modulo-3' ? 'visible' : 'hidden'}>
-                    <div className={`space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500 ${activeTab !== 'modulo-3' ? 'hidden' : ''}`}>
-                        <ModuleBanner
-                            numero={3}
-                            titulo="Prática e Análise"
-                            descricao="Agora vamos analisar textos reais e aplicar as estratégias de prova da Cesgranrio."
-                            gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
-                        />
-
-                        {/* Desafio Prático */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center text-lg font-bold text-red-700 dark:text-red-400">1</span>
-                                Desafio: Identifique a Incoerência
-                            </h2>
-
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                                <div className="space-y-3">
-                                    <h4 className="font-bold text-red-500 flex items-center gap-2">❌ Frase com Problema</h4>
-                                    <div className="p-6 bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-800/30 rounded-2xl">
-                                        <p className="text-lg font-medium italic">"{shuffledChallenges[challengeIndex].wrong}"</p>
+                                {/* Definição Pedagógica de Coesão Referencial */}
+                                <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8 space-y-4">
+                                    <div className="flex items-center gap-3 text-primary">
+                                        <LuBookOpen className="w-6 h-6" />
+                                        <h4 className="font-bold text-lg uppercase tracking-wider"> O Tecido do Texto</h4>
                                     </div>
+                                    <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                                        A <strong className="text-foreground">Coesão Referencial</strong> funciona como fios que amarram o texto. É o processo pelo qual um termo substitui ou se refere a outro, evitando repetições cansativas e mantendo a fluidez da leitura.
+                                    </p>
                                 </div>
-                                <div className="space-y-3">
-                                    <h4 className="font-bold text-emerald-500 flex items-center gap-2">✅ Versão Corrigida</h4>
-                                    <div className="p-6 bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-800/30 rounded-2xl">
-                                        <p className="text-lg font-bold mb-3">"{shuffledChallenges[challengeIndex].correct}"</p>
-                                        <div className="p-3 bg-white/60 dark:bg-black/20 rounded-lg text-sm text-emerald-800 dark:text-emerald-300">
-                                            <strong>Por quê?</strong> {shuffledChallenges[challengeIndex].explanation}
+
+                                {/* Subseção A */}
+                                <div className="space-y-8">
+                                    <h3 className="text-2xl md:text-3xl font-black text-foreground flex items-center gap-4">
+                                        <span className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-lg font-black text-indigo-600 border border-indigo-500/10 shrink-0">A</span>
+                                        Tipos de Referência
+                                    </h3>
+                                    <div className="grid md:grid-cols-2 gap-8">
+                                        <div className="p-8 bg-background rounded-3xl border border-border/50 shadow-md group hover:border-primary/40 hover:shadow-xl transition-all duration-500">
+                                            <div className="flex items-start gap-5 mb-6">
+                                                <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center transition-transform group-hover:scale-110 shadow-inner shrink-0">
+                                                    <LuAnchor size={32} className="text-indigo-500" />
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-black text-2xl md:text-3xl tracking-tight">Anáfora</h4>
+                                                    <p className="text-base text-muted-foreground font-semibold mt-1">Retoma o passado</p>
+                                                </div>
+                                            </div>
+                                            <p className="text-lg text-muted-foreground font-medium mb-8 leading-relaxed">Refere-se a um termo que já foi mencionado anteriormente no discurso.</p>
+                                            <div className="bg-muted/50 p-6 rounded-2xl border border-primary/10 italic font-bold text-lg text-foreground relative overflow-hidden">
+                                                <div className="absolute left-0 top-0 w-1 h-full bg-indigo-500/50" />
+                                                "O <span className="text-indigo-600 dark:text-indigo-400">relatório</span> ficou pronto. <span className="text-indigo-600 dark:text-indigo-400">Ele</span> será enviado amanhã."
+                                            </div>
+                                        </div>
+                                        <div className="p-8 bg-background rounded-3xl border border-border/50 shadow-md group hover:border-primary/40 hover:shadow-xl transition-all duration-500">
+                                            <div className="flex items-start gap-5 mb-6">
+                                                <div className="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center transition-transform group-hover:scale-110 shadow-inner shrink-0">
+                                                    <LuCompass size={32} className="text-purple-500" />
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-black text-2xl md:text-3xl tracking-tight">Catáfora</h4>
+                                                    <p className="text-base text-muted-foreground font-semibold mt-1">Antecipa o futuro</p>
+                                                </div>
+                                            </div>
+                                            <p className="text-lg text-muted-foreground font-medium mb-8 leading-relaxed">Aponta para um termo que ainda será explicitado no texto.</p>
+                                            <div className="bg-muted/50 p-6 rounded-2xl border border-primary/10 italic font-bold text-lg text-foreground relative overflow-hidden">
+                                                <div className="absolute left-0 top-0 w-1 h-full bg-purple-500/50" />
+                                                "Eu só quero <span className="text-purple-600 dark:text-purple-400">isto</span>: sua total <span className="text-purple-600 dark:text-purple-400">atenção</span>."
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="flex justify-center pt-4">
-                                <button
-                                    onClick={() => setChallengeIndex((prev) => (prev + 1) % shuffledChallenges.length)}
-                                    className="px-6 py-2 bg-primary text-primary-foreground rounded-full font-bold hover:opacity-90 transition-all flex items-center gap-2"
-                                >
-                                    <LuZap className="w-4 h-4" /> Próximo Desafio
-                                </button>
-                            </div>
-                        </section>
+                                {/* Subseção B */}
+                                <div className="space-y-8">
+                                    <h3 className="text-2xl md:text-3xl font-black text-foreground flex items-center gap-4">
+                                        <span className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-lg font-black text-indigo-600 border border-indigo-500/10 shrink-0">B</span>
+                                        Mecanismos de Substituição
+                                    </h3>
+                                    <ContentAccordion
+                                        titulo="Técnicas de Coesão Lexical"
+                                        icone="🔄"
+                                        corIndicador="bg-indigo-500"
+                                        slides={[
+                                            {
+                                                titulo: "Sinonímia e Hiperonímia",
+                                                icone: "🎓",
+                                                conteudo: (
+                                                    <div className="space-y-4">
+                                                        <p>Substituir uma palavra por outra de sentido equivalente (sinônimo) ou mais genérico (hiperônimo).</p>
+                                                        <ul className="grid md:grid-cols-2 gap-4 mt-4">
+                                                            <li className="bg-muted/50 p-4 rounded-xl border border-border/50">
+                                                                <strong className="text-primary block mb-1">Sinônimo:</strong>
+                                                                "Comprei um <strong>veículo</strong>. O <strong>carro</strong> é novo."
+                                                            </li>
+                                                            <li className="bg-muted/50 p-4 rounded-xl border border-border/50">
+                                                                <strong className="text-primary block mb-1">Hiperônimo:</strong>
+                                                                "Ele ama <strong>rosas</strong>. Essas <strong>flores</strong> são lindas."
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                ),
+                                                exemplo: "O funcionário solicitou o documento. O colaborador precisava da folha para anexar ao processo."
+                                            },
+                                            {
+                                                titulo: "Nominalização",
+                                                icone: "📝",
+                                                conteudo: (
+                                                    <div className="space-y-4">
+                                                        <p>Recurso mestre de Bechara para evitar a repetição de verbos. Transformamos um verbo em um substantivo cognato para retomar a ação.</p>
+                                                        <div className="bg-primary/5 p-4 rounded-xl border border-primary/20">
+                                                            <p className="text-sm">"O governo decidiu <strong>investir</strong> em tecnologia. Esse <strong>investimento</strong> trará retornos imediatos."</p>
+                                                        </div>
+                                                    </div>
+                                                ),
+                                                exemplo: "As sondas perfuraram o pré-sal. A perfuração foi concluída com sucesso."
+                                            },
+                                            {
+                                                titulo: "Palavras-Sumário",
+                                                icone: "📦",
+                                                conteudo: (
+                                                    <div className="space-y-4">
+                                                        <p>Uso de nomes genéricos (fato, cenário, processo, ideia) para "empacotar" e retomar declarações inteiras ditas anteriormente.</p>
+                                                        <div className="bg-muted/50 p-4 rounded-xl border border-border/50">
+                                                            <span className="text-xs uppercase font-bold text-muted-foreground">O que Bechara ensina:</span>
+                                                            <p className="italic mt-1">Nomes de sentido vago que servem para resumir enunciados longos e organizar o pensamento.</p>
+                                                        </div>
+                                                    </div>
+                                                ),
+                                                exemplo: "Houve cortes de custos e reestruturação interna. Esse cenário preocupava os acionistas."
+                                            },
+                                            {
+                                                titulo: "Elipse (Omissão)",
+                                                icone: "👻",
+                                                conteudo: (
+                                                    <p className="text-base text-muted-foreground font-medium italic">"A omissão estratégica de um termo que pode ser recuperado facilmente pelo contexto gramatical ou situacional, evitando a redundância."</p>
+                                                ),
+                                                exemplo: "Eles chegaram tarde à refinaria; (eles) estavam exaustos da longa viagem."
+                                            }
+                                        ]}
+                                    />
+                                </div>
+                            </section>
 
-                        {/* QUIZ FINAL */}
-                        <section id="quiz-final" className="mt-16">
-                            <QuizInterativo
-                                questoes={quizPraticoQuestions}
-                                titulo="Simulado Final"
-                                icone="🏆"
-                                numero={3}
-                                onComplete={(score) => {
-                                    if (score >= 70) {
-                                        localStorage.setItem('coesao-completed', 'true');
-                                    }
-                                }}
+                            {/* 1.2 Coesão Sequencial */}
+                            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
+                                <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                    <span className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl font-black text-primary border border-primary/20 shadow-inner">2</span>
+                                    Coesão Sequencial
+                                </h2>
+                                <p className="text-xl md:text-2xl text-muted-foreground font-medium italic border-l-4 border-primary/30 pl-8 py-3 max-w-4xl">
+                                    Refere-se à organização lógica e temporal do texto através do uso preciso de conectivos.
+                                </p>
+
+                                <div className="space-y-8">
+                                    <h3 className="text-2xl md:text-3xl font-black text-foreground flex items-center gap-4">
+                                        <span className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center text-lg font-black text-emerald-600 border border-emerald-500/10 shrink-0">A</span>
+                                        Conectivos de Alto Impacto
+                                    </h3>
+
+                                    {/* Definição Pedagógica */}
+                                    <div className="bg-emerald-500/5 border border-emerald-500/10 rounded-3xl p-8 space-y-4">
+                                        <div className="flex items-center gap-3 text-emerald-600 dark:text-emerald-400">
+                                            <LuBookOpen className="w-6 h-6" />
+                                            <h4 className="font-bold text-lg uppercase tracking-wider">O que são?</h4>
+                                        </div>
+                                        <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                                            Os <strong className="text-foreground">Operadores Argumentativos</strong> são as "placas de sinalização" do seu texto. Eles não apenas ligam orações, mas indicam a força e a direção da sua argumentação, preparando o leitor para o que virá em seguida (uma oposição, uma conclusão ou um reforço).
+                                        </p>
+                                    </div>
+
+                                    <CardCarousel
+                                        titulo="Operadores Argumentativos"
+                                        subtitulo="As ferramentas fundamentais para construir a lógica do seu texto."
+                                        cards={CONECTIVOS_CARDS}
+                                    />
+                                </div>
+                            </section>
+
+                            {/* QUIZ Módulo 1 */}
+                            <section id="quiz-modulo-1" className="pt-8">
+                                <QuizInterativo
+                                    questoes={quizCoesaoQuestions}
+                                    titulo="Desafio: Coesão Textual"
+                                    icone="💬"
+                                    numero={1}
+                                    onComplete={handleModule1Complete}
+                                />
+                            </section>
+                        </div >
+                    </Activity >
+
+                    {/* --- MÓDULO 2: COERÊNCIA --- */}
+                    < Activity mode={activeTab === 'modulo-2' ? 'visible' : 'hidden'
+                    }>
+                        <div className={`space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500 ${activeTab !== 'modulo-2' ? 'hidden' : ''}`}>
+                            <ModuleBanner
+                                numero={2}
+                                titulo="Coerência Lógica"
+                                descricao="A coerência garante que a mensagem do texto faça sentido como um todo, respeitando a lógica e o contexto."
+                                gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
                             />
-                        </section>
-                    </div>
-                </Activity>
+
+                            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
+                                <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                    <span className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-3xl font-black text-emerald-600 border border-emerald-500/20 shadow-inner">1</span>
+                                    Os Pilares do Sentido
+                                </h2>
+
+                                {/* Definição Pedagógica de Coerência */}
+                                <div className="bg-emerald-500/5 border border-emerald-500/10 rounded-3xl p-8 space-y-4">
+                                    <div className="flex items-center gap-3 text-emerald-600 dark:text-emerald-400">
+                                        <LuBookOpen className="w-6 h-6" />
+                                        <h4 className="font-bold text-lg uppercase tracking-wider">A essência da Coerência</h4>
+                                    </div>
+                                    <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                                        A <strong className="text-foreground">Coerência</strong> é a harmonia lógica entre as ideias. Se a coesão é o "tecido" do texto, a coerência é o "sentido" que ele faz na cabeça do leitor. Para que um texto seja coerente, ele deve evitar contradições e manter o foco no objetivo central.
+                                    </p>
+                                </div>
+
+                                <div className="grid md:grid-cols-3 gap-6">
+                                    <div className="p-10 bg-muted/30 border border-border/50 rounded-3xl space-y-6 group hover:border-emerald-500/40 hover:shadow-xl transition-all duration-500">
+                                        <div className="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform shadow-inner shrink-0">🚫</div>
+                                        <h3 className="font-black text-2xl tracking-tight">Não-Contradição</h3>
+                                        <p className="text-lg text-muted-foreground font-medium leading-relaxed">As ideias apresentadas devem coexistir harmonicamente sem se anularem.</p>
+                                    </div>
+                                    <div className="p-10 bg-muted/30 border border-border/50 rounded-3xl space-y-6 group hover:border-teal-500/40 hover:shadow-xl transition-all duration-500">
+                                        <div className="w-14 h-14 bg-teal-500/10 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform shadow-inner shrink-0">📈</div>
+                                        <h3 className="font-black text-2xl tracking-tight">Progressão</h3>
+                                        <p className="text-lg text-muted-foreground font-medium leading-relaxed">Cada novo parágrafo deve acrescentar informações relevantes ao tema.</p>
+                                    </div>
+                                    <div className="p-10 bg-muted/30 border border-border/50 rounded-3xl space-y-6 group hover:border-cyan-500/40 hover:shadow-xl transition-all duration-500">
+                                        <div className="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform shadow-inner shrink-0">🎯</div>
+                                        <h3 className="font-black text-2xl tracking-tight">Relevância</h3>
+                                        <p className="text-lg text-muted-foreground font-medium leading-relaxed">O texto deve manter o foco no objetivo central da comunicação.</p>
+                                    </div>
+                                </div>
+
+                                <AlertBox tipo="info" titulo="Importante: Forma vs Sentido">
+                                    <div className="font-bold text-lg leading-relaxed">
+                                        Lembre-se: Coesão é a moldura; Coerência é a pintura. Um texto pode ser gramaticalmente perfeito e logicamente vazio.
+                                        <div className="mt-4 p-5 bg-background/50 rounded-2xl border border-border/50 italic text-base">
+                                            "O dia amanheceu azul porque as formigas cantavam ópera na lua." (Coesivo, mas incoerente).
+                                        </div>
+                                    </div>
+                                </AlertBox>
+                            </section>
+
+                            <section id="quiz-modulo-2" className="pt-8">
+                                <QuizInterativo
+                                    questoes={quizCoerenciaQuestions}
+                                    titulo="Desafio: Coerência Lógica"
+                                    icone="🧠"
+                                    numero={2}
+                                    onComplete={handleModule2Complete}
+                                />
+                            </section>
+                        </div>
+                    </Activity >
+
+                    {/* --- MÓDULO 3: PRÁTICA --- */}
+                    < Activity mode={activeTab === 'modulo-3' ? 'visible' : 'hidden'}>
+                        <div className={`space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500 ${activeTab !== 'modulo-3' ? 'hidden' : ''}`}>
+                            <ModuleBanner
+                                numero={3}
+                                titulo="Laboratório de Texto"
+                                descricao="Aplicação prática dos conceitos em questões reais de concurso Cesgranrio."
+                                gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
+                            />
+
+                            {/* Desafio Prático */}
+                            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
+                                <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                    <span className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl font-black text-primary border border-primary/20 shadow-inner">1</span>
+                                    Diagnóstico Lógico
+                                </h2>
+
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                                    <div className="space-y-6">
+                                        <h4 className="font-black text-2xl text-red-500 flex items-center gap-4">
+                                            <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center shadow-sm shrink-0">❌</div>
+                                            Cenário Incoerente
+                                        </h4>
+                                        <div className="p-10 bg-red-500/5 border border-red-500/20 rounded-3xl relative overflow-hidden group min-h-[160px] flex items-center">
+                                            <div className="absolute left-0 top-0 w-2 h-full bg-red-500/40" />
+                                            <p className="text-2xl font-black italic text-foreground tracking-tight leading-snug group-hover:scale-[1.02] transition-transform">"{shuffledChallenges[challengeIndex].wrong}"</p>
+                                        </div>
+                                    </div>
+                                    <div className="space-y-6">
+                                        <h4 className="font-black text-2xl text-emerald-500 flex items-center gap-4">
+                                            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center shadow-sm shrink-0">✅</div>
+                                            Solução Técnica
+                                        </h4>
+                                        <div className="p-10 bg-emerald-500/5 border border-emerald-500/20 rounded-3xl relative overflow-hidden group">
+                                            <div className="absolute left-0 top-0 w-2 h-full bg-emerald-500/40" />
+                                            <p className="text-2xl font-black text-foreground tracking-tight mb-8 leading-snug group-hover:scale-[1.02] transition-transform">"{shuffledChallenges[challengeIndex].correct}"</p>
+                                            <div className="p-4 bg-background/80 dark:bg-black/60 rounded-2xl text-lg font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-500/10 shadow-xl">
+                                                <span className="text-emerald-500 block mb-2 uppercase text-xs tracking-widest font-black">Por que está correto?</span>
+                                                {shuffledChallenges[challengeIndex].explanation}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="flex justify-center pt-8">
+                                    <button
+                                        onClick={() => setChallengeIndex((prev) => (prev + 1) % shuffledChallenges.length)}
+                                        className="px-10 py-5 bg-primary text-primary-foreground rounded-3xl font-black hover:scale-105 transition-all flex items-center gap-4 shadow-2xl shadow-primary/30 text-xl group"
+                                    >
+                                        <LuZap className="w-6 h-6 fill-current group-hover:animate-pulse" />
+                                        Próximo Caso Clínico
+                                    </button>
+                                </div>
+                            </section>
+
+                            {/* QUIZ FINAL */}
+                            <section id="quiz-final" className="pt-8">
+                                <QuizInterativo
+                                    questoes={quizPraticoQuestions}
+                                    titulo="Simulado Técnico Petrobras"
+                                    icone="🏆"
+                                    numero={3}
+                                    onComplete={(score) => {
+                                        if (score >= 70) {
+                                            localStorage.setItem('coesao-completed', 'true');
+                                            onComplete?.();
+                                        }
+                                    }}
+                                />
+                            </section>
+                        </div>
+                    </Activity >
+                </main>
             </Tabs>
-
-
         </div>
     );
 }

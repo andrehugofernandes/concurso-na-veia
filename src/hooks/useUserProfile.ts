@@ -17,6 +17,7 @@ interface UserProfile {
     avatar_url?: string;
     plan?: string;
     xp?: number;
+    cargo?: string;    // 'cargo'
 }
 
 export function useUserProfile() {
@@ -53,7 +54,7 @@ export function useUserProfile() {
                 username: profileData?.username || user.user_metadata?.username || '',
                 full_name: profileData?.nome || user.user_metadata?.full_name || user.user_metadata?.nome || '',
                 role: user.user_metadata?.role || 'USER', // Role usually from metadata or specific table, not 'cargo'
-                job_title: profileData?.cargo || user.user_metadata?.cargo || '',
+                cargo: profileData?.cargo || user.user_metadata?.cargo || '',
                 nivel: profileData?.nivel || user.user_metadata?.nivel || '',
                 plan: profileData?.plan || user.user_metadata?.plan || 'free',
                 xp: profileData?.xp || 0,
@@ -85,7 +86,7 @@ export function useUserProfile() {
 
             const updates: any = {};
             if (data.full_name) updates.nome = data.full_name;
-            if (data.job_title) updates.cargo = data.job_title;
+            if (data.cargo) updates.cargo = data.cargo;
             if (data.nivel) updates.nivel = data.nivel; // Assuming 'nivel' column exists
 
             // Update 'profiles' table
@@ -100,7 +101,7 @@ export function useUserProfile() {
             const metadataUpdates: any = {};
             if (data.full_name) metadataUpdates.full_name = data.full_name;
             if (data.full_name) metadataUpdates.nome = data.full_name;
-            if (data.job_title) metadataUpdates.cargo = data.job_title;
+            if (data.cargo) metadataUpdates.cargo = data.cargo;
             if (data.nivel) metadataUpdates.nivel = data.nivel;
 
             await supabase.auth.updateUser({

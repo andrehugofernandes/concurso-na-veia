@@ -9,6 +9,7 @@ import { carregarUsuario, carregarUsuarioAsync } from '@/lib/utils';
 import { Usuario } from '@/lib/types';
 import { getProfissaoById } from '@/lib/profissoes-edital';
 import AulaPontuacao from '@/components/aulas/AulaPontuacao';
+import { useSetPageTitle } from '@/contexts/UIContext';
 
 // Mapeamento de IDs do registro para IDs do profissoes-edital
 const CARGO_ID_MAP: Record<string, string> = {
@@ -99,6 +100,9 @@ export default function MateriaPage({ params }: PageProps) {
     }, [materiaId]);
 
     const { getProgress, loading: progressLoading } = useAllAulasProgress();
+
+    // Definir título da página no cabeçalho
+    useSetPageTitle(materia?.nome || '');
 
     if (loading || progressLoading) {
         return (

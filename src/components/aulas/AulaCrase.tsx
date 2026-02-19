@@ -891,7 +891,7 @@ export default function AulaCrase({
 
             {/* SEÇÃO FINAL: CONCLUSÃO MANUAL */}
 
-        </div >
+        </div>
     );
 }
 

@@ -187,7 +187,7 @@ export function AdminSidebar({ isCollapsed, userRole }: AdminSidebarProps) {
             className={cn(
               'flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4',
               pathname === '/dashboard'
-                ? 'bg-primary text-primary-foreground'
+                ? 'bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90'
                 : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700',
               isCollapsed && 'justify-center px-2'
             )}
@@ -231,7 +231,7 @@ export function AdminSidebar({ isCollapsed, userRole }: AdminSidebarProps) {
                       className={cn(
                         'flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group',
                         isActive
-                          ? 'bg-primary text-primary-foreground'
+                          ? 'bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90'
                           : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700',
                         isCollapsed && 'justify-center px-2'
                       )}

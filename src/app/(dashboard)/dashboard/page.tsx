@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { CONTEUDO_MATERIAS } from '@/data/conteudo';
-import { PROFISSOES } from '@/lib/profissoes-edital';
+import { PROFISSOES, getProfissaoById } from '@/lib/profissoes-edital';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, Legend } from 'recharts';
 import { useAllAulasProgress } from '@/hooks/useAulaProgress';
+import { useSetPageTitle } from '@/contexts/UIContext';
+import { CARGO_ID_MAP } from '@/lib/cargos-map';
 
 interface UserData {
     nome: string;
@@ -26,67 +29,17 @@ interface UserData {
     simuladosHoje?: number;
 }
 
-// Mapeamento de cargo do usuário para ID da profissão no edital
-const CARGO_ID_MAP: Record<string, string> = {
-    'administracao': 'suprimento-adm',
-    'seguranca': 'seguranca-trabalho',
-    'logistica': 'logistica-transportes',
-    'quimica': 'quimica-petroleo',
-    'manutencao-mecanica': 'manutencao-mecanica',
-    'manutencao-eletrica': 'manutencao-eletrica',
-    'manutencao-instrumentacao': 'manutencao-instrumentacao',
-    'operacao': 'operacao',
-    'enfermagem-trabalho': 'enfermagem-trabalho',
-    'seguranca-trabalho': 'seguranca-trabalho',
-    'manutencao-caldeiraria': 'manutencao-caldeiraria',
-    'operacao-lastro': 'operacao-lastro',
-    'inspecao-equipamentos': 'inspecao-equipamentos',
-    'edificacoes': 'edificacoes',
-    'eletrica-projetos': 'eletrica-projetos',
-    'mecanica-projetos': 'mecanica-projetos',
-    'instrumentacao-projetos': 'instrumentacao-projetos',
-    'logistica-transportes': 'logistica-transportes',
-    'quimica-petroleo': 'quimica-petroleo',
-    'suprimento-adm': 'suprimento-adm',
-};
-
-const CARGOS_NOMES: Record<string, string> = {
-    // Nível Técnico - Saúde e Segurança
-    'enfermagem-trabalho': 'Enfermagem do Trabalho',
-    'seguranca-trabalho': 'Segurança do Trabalho',
-    // Nível Técnico - Manutenção e Operação
-    'manutencao-caldeiraria': 'Manutenção - Caldeiraria',
-    'manutencao-eletrica': 'Manutenção - Elétrica',
-    'manutencao-mecanica': 'Manutenção - Mecânica',
-    'operacao': 'Técnico de Operação',
-    'manutencao-instrumentacao': 'Manutenção - Instrumentação',
-    // Nível Técnico - Projetos, Construção e Montagem
-    'edificacoes': 'Técnico em Edificações',
-    'eletrica-projetos': 'Técnico Elétrica (Projetos)',
-    'mecanica-projetos': 'Técnico Mecânica (Projetos)',
-    // Nível Técnico - Logística, Suprimento e Química
-    'logistica-transportes': 'Logística de Transportes',
-    'quimica-petroleo': 'Química de Petróleo',
-    'suprimento-adm': 'Suprimento (Administração)',
-    // Nível Superior - Engenharias
-    'eng-petroleo': 'Engenheiro de Petróleo',
-    'eng-mecanico': 'Engenheiro Mecânico',
-    'eng-eletrico': 'Engenheiro Elétrico',
-    'eng-civil': 'Engenheiro Civil',
-    // Nível Superior - Outros
-    'analista-sistemas': 'Analista de Sistemas',
-    'analista-admin': 'Analista de Administração',
-    'geologo': 'Geólogo',
-    'economista': 'Economista',
-};
-
 export default function DashboardPage() {
+    const router = useRouter();
     const [user, setUser] = useState<UserData | null>(null);
     const [loadingUser, setLoadingUser] = useState(true);
     const [stats, setStats] = useState({ completed: 0, inProgress: 0, total: 0 });
 
     const { progressData: allContentProgress, loading: loadingProgress } = useAllAulasProgress();
     const loading = loadingUser || loadingProgress;
+
+    // Definir título da página no cabeçalho
+    useSetPageTitle('Dashboard');
 
     // Config Modal State
     const [configModal, setConfigModal] = useState<{ open: boolean, tipo?: string, nome?: string, cor?: string, qtd?: number }>({ open: false });
@@ -474,11 +427,35 @@ export default function DashboardPage() {
                                             <h3 className="text-2xl font-black uppercase leading-tight bg-gradient-to-r from-green-400 to-yellow-400 bg-clip-text text-transparent">ESPECÍFICOS</h3>
                                         </div>
                                         <div className="flex justify-between items-end gap-4 mt-auto">
-                                            <p className="text-muted-foreground text-sm leading-snug">Questões focadas no seu cargo: {CARGOS_NOMES[userData.cargo] || 'Selecione no perfil'}</p>
+                                            <p className="text-muted-foreground text-sm leading-snug">Questões focadas no seu cargo: {(() => {
+                                                const cargoId = CARGO_ID_MAP[userData.cargo] || userData.cargo;
+                                                const profissao = getProfissaoById(cargoId);
+                                                return profissao?.nome || 'Selecione no perfil';
+                                            })()}</p>
                                             <span className="text-xs bg-muted text-muted-foreground px-3 py-1 rounded shrink-0 font-bold">5 min</span>
                                         </div>
                                     </div>
                                 </button>
+
+                                {/* Inglês Card - Apenas Nível Superior */}
+                                {userData.nivel === 'superior' && (
+                                    <button
+                                        onClick={() => handleSimuladoClick('ingles', 'Língua Inglesa', 'red')}
+                                        className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border shadow-lg hover:border-red-500/50 transition-all group text-left flex flex-col h-full"
+                                    >
+                                        <div className="h-2 bg-gradient-to-r from-red-500 to-rose-500 shrink-0"></div>
+                                        <div className="p-6 flex flex-col h-full justify-between gap-4">
+                                            <div className="flex items-center gap-4">
+                                                <div className="p-3 bg-red-500/20 rounded-lg text-red-400 text-3xl group-hover:scale-110 transition-transform shrink-0">🇺🇸</div>
+                                                <h3 className="text-2xl font-black uppercase leading-tight bg-gradient-to-r from-red-400 to-rose-500 bg-clip-text text-transparent">INGLÊS</h3>
+                                            </div>
+                                            <div className="flex justify-between items-end gap-4 mt-auto">
+                                                <p className="text-muted-foreground text-sm leading-snug">Compreensão de texto e gramática aplicada.</p>
+                                                <span className="text-xs bg-muted text-muted-foreground px-3 py-1 rounded shrink-0 font-bold">5 min</span>
+                                            </div>
+                                        </div>
+                                    </button>
+                                )}
                             </div>
                         </section>
 
@@ -579,7 +556,7 @@ export default function DashboardPage() {
                                                         <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold">Port</span>
                                                         <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold">Mat</span>
                                                         <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold">Esp</span>
-                                                        {userData.nivelConcurso === 'superior' && <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold">Ing</span>}
+                                                        {userData.nivel === 'superior' && <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold">Ing</span>}
                                                     </div>
                                                 </div>
                                             </div>
@@ -608,7 +585,8 @@ export default function DashboardPage() {
                                         configModal.cor === 'purple' ? 'from-purple-500/20 to-pink-500/20' :
                                             configModal.cor === 'green' ? 'from-green-500/20 to-emerald-500/20' :
                                                 configModal.cor === 'yellow' ? 'from-yellow-500/20 to-orange-500/20' :
-                                                    'from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900'
+                                                    configModal.cor === 'red' ? 'from-red-500/20 to-rose-500/20' :
+                                                        'from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900'
                                         } rounded-t-2xl border-b border-border flex justify-between items-center`}>
                                         <h3 className="text-xl font-bold text-foreground">{configModal.nome}</h3>
                                         <button
@@ -685,6 +663,13 @@ export default function DashboardPage() {
                                                     else if (configModal.tipo === 'maratona') {
                                                         return <option value="">Estrutura fixa do Edital (Port + Mat + Esp)</option>;
                                                     }
+                                                    // Handle 'ingles'
+                                                    else if (configModal.tipo === 'ingles') {
+                                                        const materia = CONTEUDO_MATERIAS.find(m => m.id === 'ingles');
+                                                        if (materia) {
+                                                            topics = materia.topicos.map(t => t.titulo);
+                                                        }
+                                                    }
 
                                                     return topics.map((topic, index) => (
                                                         <option key={index} value={topic}>
@@ -704,13 +689,23 @@ export default function DashboardPage() {
                                         {/* Start Button */}
                                         <button
                                             onClick={() => {
-                                                const query = new URLSearchParams({
-                                                    tipo: configModal.tipo || '',
+                                                if (!configModal.tipo) return;
+
+                                                const queryParams = new URLSearchParams({
+                                                    tipo: configModal.tipo,
+                                                    qtd: configModal.qtd?.toString() || '10',
                                                     dificuldade: selection.dificuldade,
-                                                    assunto: selection.assunto,
-                                                    qtd: String(configModal.qtd || 5)
-                                                }).toString();
-                                                window.location.href = `/simulado?${query}`;
+                                                    assunto: selection.assunto
+                                                });
+
+                                                if (configModal.tipo === 'maratona') {
+                                                    router.push(`/maratona-100?${queryParams.toString()}`);
+                                                } else if (configModal.tipo === 'especificas') {
+                                                    router.push(`/simulado-especifico?${queryParams.toString()}`);
+                                                } else {
+                                                    // Português, Matemática e Inglês vão para o simulado rápido
+                                                    router.push(`/simulado-rapido?${queryParams.toString()}`);
+                                                }
                                             }}
                                             className="w-full py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all text-lg"
                                         >
@@ -832,7 +827,12 @@ function RankingTable({ userCargo }: { userCargo: string }) {
                                         </div>
                                         <div className="min-w-0">
                                             <p className="text-foreground font-bold truncate">{player.nome}</p>
-                                            <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-tight truncate">{CARGOS_NOMES[player.cargo] || player.cargo}</p>
+                                            <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-tight truncate">
+                                                {(() => {
+                                                    const profissao = getProfissaoById(player.cargo);
+                                                    return profissao?.nome || player.cargo;
+                                                })()}
+                                            </p>
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 text-center">

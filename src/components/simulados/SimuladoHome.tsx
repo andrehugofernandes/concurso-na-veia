@@ -57,6 +57,21 @@ export default function SimuladoHome({ usuario, iniciarSimulado, gerandoQuestoes
                 topicos: profissao.blocos?.flatMap(b => b.topicos.map(t => ({ titulo: t }))) || []
             });
         }
+
+        if (profissao?.nivel === 'superior') {
+            materiasVisiveis.push({
+                id: 'ingles',
+                nome: 'Língua Inglesa',
+                descricao: 'Compreensão de texto e gramática aplicada',
+                icone: '🇺🇸',
+                cor: 'from-red-600 to-rose-600',
+                topicos: [
+                    { titulo: 'Compreensão de Texto' },
+                    { titulo: 'Gramática' },
+                    { titulo: 'Vocabulário' }
+                ]
+            });
+        }
     } else if (tipoPagina === 'especifico') {
         // Mock de simulados específicos ou conteúdo do cargo
         if (profissao && profissao.blocos) {

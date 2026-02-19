@@ -8,6 +8,7 @@ import { notFound } from 'next/navigation';
 import ReadingProgress from '@/components/ReadingProgress';
 import { useAulaProgress } from '@/hooks/useAulaProgress';
 import { AulaProps } from '@/components/aulas/shared';
+import { useSetPageTitle } from '@/contexts/UIContext';
 
 // Dynamic import para evitar hydration mismatch dos componentes Radix UI (Dialog, Accordion, Tabs)
 const AulaInterpretacaoTexto = dynamic(
@@ -250,6 +251,9 @@ export default function TopicoPage({ params }: PageProps) {
     const nextTopico = getNextTopico(materiaId, topicoId);
     const prevTopico = getPrevTopico(materiaId, topicoId);
 
+    // Definir título da página no cabeçalho
+    useSetPageTitle(topico?.titulo || '');
+
     // Hook de persistência de progresso
     const { progress, completed, loading, updateProgress, completeAula } = useAulaProgress(materiaId, topicoId);
     const [isCompleted, setIsCompleted] = useState(false);
@@ -370,7 +374,7 @@ export default function TopicoPage({ params }: PageProps) {
                             currentProgress={progress}
                             onUpdateProgress={updateProgress}
                         />
-                    ) : materiaId === 'portugues' && topicoId === 'reescritura' ? (
+                    ) : materiaId === 'portugues' && topicoId === 'reescrita-frases' ? (
                         <AulaReescritaFrases
                             onComplete={handleCompleteAula}
                             isCompleted={isCompleted}

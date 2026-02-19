@@ -1,18 +1,6 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-
-// Fallback for React 19 Activity (Offscreen) API
-// Since unstable_Activity is not exported in the current build, we use a CSS-based fallback
-// to ensure state is preserved (component stays mounted) but hidden.
-const Activity = ({ mode, children }: { mode: 'visible' | 'hidden'; children: React.ReactNode }) => {
-    return (
-        <div style={{ display: mode === 'hidden' ? 'none' : 'contents' }}>
-            {children}
-        </div>
-    );
-};
-
 import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import {
@@ -28,9 +16,10 @@ import {
     MusicPlayerCard,
     ProgressIndicator,
     QuizQuestion,
-    getRandomQuestions,
-    SummaryTabs,
-    StickyModuleNav
+    // SummaryTabs, // Removed in favor of ModuleSummaryCarouselNew
+    StickyModuleNav,
+    ModuleSummaryCarouselNew,
+    Activity
 } from './shared';
 import { useAulaProgress } from '@/hooks/useAulaProgress';
 import {
@@ -49,7 +38,11 @@ import {
     LuCheck,
     LuX,
     LuLockOpen as LuUnlock,
-    LuLock
+    LuLock,
+    LuBan,
+    LuGitMerge,
+    LuPause,
+    LuEye
 } from 'react-icons/lu';
 
 // ── DEFINIÇÃO DOS MÓDULOS ──
@@ -220,7 +213,7 @@ export default function AulaPontuacao() {
 
     return (
         <div className="pb-20 animate-in fade-in duration-500">
-            <div className="max-w-6xl mx-auto space-y-12 pt-12 px-6">
+            <div className="max-w-7xl mx-auto space-y-12 pt-12 px-6">
                 <ProgressIndicator />
 
                 {/* BADGE DE CONCLUSÃO */}
@@ -252,7 +245,7 @@ export default function AulaPontuacao() {
                 />
 
                 {/* === MÓDULO 1: SINTAXE E FUNDAMENTOS === */}
-                <TabsContent value="modulo-1" className="space-y-12 max-w-6xl mx-auto px-6 mt-12">
+                <TabsContent value="modulo-1" className="space-y-12 max-w-7xl mx-auto px-6 mt-12">
                     <ModuleBanner
                         numero={1}
                         titulo="Sintaxe e Fundamentos"
@@ -260,41 +253,8 @@ export default function AulaPontuacao() {
                         gradiente="bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-600"
                     />
 
-                    {/* Visão Geral */}
-                    <SummaryTabs
-                        numero={1}
-                        titulo="Visão Geral"
-                        videoId="dQw4w9WgXcQ"
-                        videoDuration="05:30"
-                        visualContent={
-                            <div className="text-center space-y-6">
-                                <h4 className="text-2xl font-bold text-indigo-700 dark:text-indigo-300">O Mapa da Mina</h4>
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
-                                    <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800">
-                                        <div className="flex items-center gap-2 font-bold text-indigo-700 dark:text-indigo-400 mb-2">
-                                            <LuCheck className="text-green-500" /> A Ordem Direta
-                                        </div>
-                                        <p className="text-sm text-muted-foreground">O coração da pontuação: Sujeito + Verbo + Complemento.</p>
-                                    </div>
-                                    <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800">
-                                        <div className="flex items-center gap-2 font-bold text-indigo-700 dark:text-indigo-400 mb-2">
-                                            <LuCheck className="text-green-500" /> O Mito do Respiro
-                                        </div>
-                                        <p className="text-sm text-muted-foreground">Por que você erra ao pontuar como se estivesse falando.</p>
-                                    </div>
-                                    <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800">
-                                        <div className="flex items-center gap-2 font-bold text-indigo-700 dark:text-indigo-400 mb-2">
-                                            <LuCheck className="text-green-500" /> Identificação
-                                        </div>
-                                        <p className="text-sm text-muted-foreground">Como encontrar o sujeito em frases complexas da Cesgranrio.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    />
-
-                    {/* NOVO: DIAGNÓSTICO PROVOCATIVO COM FLIP CARDS */}
-                    <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+                    {/* 1.1 DESAFIO INICIAL */}
+                    <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
                         <SectionTitle
                             numero="1.1"
                             titulo="Desafio Inicial: Vírgula ou Pausa?"
@@ -303,7 +263,7 @@ export default function AulaPontuacao() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="space-y-6">
-                                <p className="text-lg text-muted-foreground leading-relaxed">
+                                <p className="text-lg text-foreground leading-relaxed">
                                     Muitas vezes, a nossa fala nos engana. O cérebro pede uma pausa onde a gramática **proíbe** terminantemente uma vírgula.
                                 </p>
                                 <AlertBox tipo="warning" titulo="O Grande Perigo">
@@ -330,8 +290,8 @@ export default function AulaPontuacao() {
                         </div>
                     </section>
 
-                    {/* A ORDEM SAGRADA - AGORA COM CONTENT ACCORDION E SLIDES RICOS */}
-                    <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+                    {/* 1.2 A ORDEM SAGRADA */}
+                    <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
                         <SectionTitle
                             numero="1.2"
                             titulo="A Ordem Sagrada: S-V-C"
@@ -417,8 +377,8 @@ export default function AulaPontuacao() {
                         />
                     </section>
 
-                    {/* QUANDO A ORDEM É QUEBRADA - CARD CAROUSEL */}
-                    <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+                    {/* 1.3 QUANDO A ORDEM É QUEBRADA */}
+                    <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
                         <SectionTitle
                             numero="1.3"
                             titulo="Quando a Ordem Muda"
@@ -476,8 +436,8 @@ export default function AulaPontuacao() {
                         />
                     </section>
 
-                    {/* MITOS VS VERDADES - FLIP CARD GRID */}
-                    <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+                    {/* 1.4 MITOS VS VERDADES */}
+                    <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
                         <SectionTitle
                             numero="1.4"
                             titulo="Mito vs. Verdade"
@@ -530,6 +490,32 @@ export default function AulaPontuacao() {
                         </div>
                     </section>
 
+                    {/* RESUMO MÓDULO 1 */}
+                    <div className="mt-12 mb-12">
+                        <ModuleSummaryCarouselNew
+                            items={[
+                                {
+                                    title: "A Ordem Direta",
+                                    description: "Sujeito + Verbo + Complemento. Essa é a base.",
+                                    icon: <LuCheckCircle />,
+                                    color: "text-indigo-500"
+                                },
+                                {
+                                    title: "Mito do Respiro",
+                                    description: "A vírgula gramatical não obedece sua respiração.",
+                                    icon: <LuBan />,
+                                    color: "text-red-500"
+                                },
+                                {
+                                    title: "Identificação",
+                                    description: "Ache o sujeito antes de pensar em vírgula!",
+                                    icon: <LuBrain />,
+                                    color: "text-blue-500"
+                                }
+                            ]}
+                        />
+                    </div>
+
                     {/* QUIZ MÓDULO 1 */}
                     <section className="mt-8">
                         <QuizInterativo
@@ -544,7 +530,7 @@ export default function AulaPontuacao() {
 
 
                 {/* === MÓDULO 2: A VÍRGULA === */}
-                <TabsContent value="modulo-2" className="space-y-12 max-w-6xl mx-auto px-6 mt-12">
+                <TabsContent value="modulo-2" className="space-y-12 max-w-7xl mx-auto px-6 mt-12">
                     <ModuleBanner
                         numero={2}
                         titulo="A Vírgula (O Chefão)"
@@ -552,7 +538,7 @@ export default function AulaPontuacao() {
                         gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-600"
                     />
 
-                    <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+                    <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
                         <SectionTitle
                             numero="2.1"
                             titulo="Regras Fundamentais"
@@ -656,6 +642,32 @@ export default function AulaPontuacao() {
                         />
                     </section>
 
+                    {/* RESUMO MÓDULO 2 */}
+                    <div className="mt-12 mb-12">
+                        <ModuleSummaryCarouselNew
+                            items={[
+                                {
+                                    title: "Proibições",
+                                    description: "S-V e V-C nunca aceitam vírgula.",
+                                    icon: <LuBan />,
+                                    color: "text-red-500"
+                                },
+                                {
+                                    title: "Aposto",
+                                    description: "Explicação extra sempre vem isolada.",
+                                    icon: <LuQuote />,
+                                    color: "text-purple-500"
+                                },
+                                {
+                                    title: "Conjunções",
+                                    description: "A vírgula prepara o terreno para a oposição.",
+                                    icon: <LuGitMerge />,
+                                    color: "text-green-500"
+                                }
+                            ]}
+                        />
+                    </div>
+
                     <section className="mt-8">
                         <QuizInterativo
                             questoes={QUIZ_MODULO_2}
@@ -668,7 +680,7 @@ export default function AulaPontuacao() {
                 </TabsContent>
 
                 {/* === MÓDULO 3: AVANÇADO E CONCLUSÃO === */}
-                <TabsContent value="modulo-3" className="space-y-12 max-w-6xl mx-auto px-6 mt-12">
+                <TabsContent value="modulo-3" className="space-y-12 max-w-7xl mx-auto px-6 mt-12">
                     <ModuleBanner
                         numero={3}
                         titulo="Pontuação Avançada"
@@ -676,7 +688,7 @@ export default function AulaPontuacao() {
                         gradiente="bg-gradient-to-br from-purple-600 via-pink-600 to-rose-600"
                     />
 
-                    <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+                    <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
                         <SectionTitle
                             numero="3.1"
                             titulo="Sinais Avançados"
@@ -734,7 +746,7 @@ export default function AulaPontuacao() {
                         />
                     </section>
 
-                    <section className="bg-card rounded-2xl border border-border p-8 shadow-sm">
+                    <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm">
                         <MusicPlayerCard
                             audioUrl="#"
                             titulo="Rap da Pontuação"
@@ -749,6 +761,32 @@ E o Vocativo ? Tem que chamar!
     `}
                         />
                     </section>
+
+                    {/* RESUMO MÓDULO 3 */}
+                    <div className="mt-12 mb-12">
+                        <ModuleSummaryCarouselNew
+                            items={[
+                                {
+                                    title: "Dois Pontos",
+                                    description: "Abre a porta para enumerações ou citações.",
+                                    icon: <LuList />,
+                                    color: "text-orange-500"
+                                },
+                                {
+                                    title: "Ponto e Vírgula",
+                                    description: "A pausa maior para organizar listas complexas.",
+                                    icon: <LuPause />,
+                                    color: "text-blue-500"
+                                },
+                                {
+                                    title: "Domínio",
+                                    description: "Saber usar = Clareza absoluta.",
+                                    icon: <LuEye />,
+                                    color: "text-cyan-500"
+                                }
+                            ]}
+                        />
+                    </div>
 
                     <section className="mt-8">
                         <QuizInterativo
@@ -767,9 +805,4 @@ E o Vocativo ? Tem que chamar!
 
         </div>
     );
-}
-
-// Ícone auxiliar
-function LuBan(props: any) {
-    return <LuXCircle {...props} />
 }

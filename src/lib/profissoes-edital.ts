@@ -47,7 +47,7 @@ export const PROFISSOES: Profissao[] = [
     // ===== SAÚDE E SEGURANÇA =====
     {
         id: 'enfermagem-trabalho',
-        nome: 'Enfermagem do Trabalho',
+        nome: 'Técnico de Enfermagem do Trabalho',
         nivel: 'tecnico',
         area: 'Saúde e Segurança',
         blocos: [
@@ -67,7 +67,7 @@ export const PROFISSOES: Profissao[] = [
     },
     {
         id: 'seguranca-trabalho',
-        nome: 'Segurança do Trabalho',
+        nome: 'Técnico de Segurança do Trabalho',
         nivel: 'tecnico',
         area: 'Saúde e Segurança',
         blocos: [
@@ -89,7 +89,7 @@ export const PROFISSOES: Profissao[] = [
     // ===== MANUTENÇÃO E OPERAÇÃO =====
     {
         id: 'manutencao-caldeiraria',
-        nome: 'Manutenção - Caldeiraria',
+        nome: 'Técnico de Manutenção - Caldeiraria',
         nivel: 'tecnico',
         area: 'Manutenção e Operação',
         blocos: [
@@ -109,7 +109,7 @@ export const PROFISSOES: Profissao[] = [
     },
     {
         id: 'manutencao-eletrica',
-        nome: 'Manutenção - Elétrica',
+        nome: 'Técnico de Manutenção - Elétrica',
         nivel: 'tecnico',
         area: 'Manutenção e Operação',
         blocos: [
@@ -129,7 +129,7 @@ export const PROFISSOES: Profissao[] = [
     },
     {
         id: 'manutencao-mecanica',
-        nome: 'Manutenção - Mecânica',
+        nome: 'Técnico de Manutenção - Mecânica',
         nivel: 'tecnico',
         area: 'Manutenção e Operação',
         blocos: [
@@ -149,7 +149,7 @@ export const PROFISSOES: Profissao[] = [
     },
     {
         id: 'manutencao-instrumentacao',
-        nome: 'Manutenção - Instrumentação',
+        nome: 'Técnico de Manutenção - Instrumentação',
         nivel: 'tecnico',
         area: 'Manutenção e Operação',
         blocos: [
@@ -189,7 +189,7 @@ export const PROFISSOES: Profissao[] = [
     },
     {
         id: 'operacao-lastro',
-        nome: 'Operação de Lastro',
+        nome: 'Técnico de Operação de Lastro',
         nivel: 'tecnico',
         area: 'Manutenção e Operação',
         blocos: [
@@ -211,7 +211,7 @@ export const PROFISSOES: Profissao[] = [
     // ===== INSPEÇÃO =====
     {
         id: 'inspecao-equipamentos',
-        nome: 'Inspeção de Equipamentos e Instalações',
+        nome: 'Técnico de Inspeção de Equipamentos e Instalações',
         nivel: 'tecnico',
         area: 'Inspeção e Química',
         blocos: [
@@ -253,7 +253,7 @@ export const PROFISSOES: Profissao[] = [
     },
     {
         id: 'eletrica-projetos',
-        nome: 'Técnico Elétrica (Projetos)',
+        nome: 'Técnico de Projetos, Construção e Montagem - Elétrica',
         nivel: 'tecnico',
         area: 'Projetos, Construção e Montagem',
         blocos: [
@@ -273,7 +273,7 @@ export const PROFISSOES: Profissao[] = [
     },
     {
         id: 'mecanica-projetos',
-        nome: 'Técnico Mecânica (Projetos)',
+        nome: 'Técnico de Projetos, Construção e Montagem - Mecânica',
         nivel: 'tecnico',
         area: 'Projetos, Construção e Montagem',
         blocos: [
@@ -293,7 +293,7 @@ export const PROFISSOES: Profissao[] = [
     },
     {
         id: 'instrumentacao-projetos',
-        nome: 'Técnico Instrumentação (Projetos)',
+        nome: 'Técnico de Projetos, Construção e Montagem - Instrumentação',
         nivel: 'tecnico',
         area: 'Projetos, Construção e Montagem',
         blocos: [
@@ -315,7 +315,7 @@ export const PROFISSOES: Profissao[] = [
     // ===== LOGÍSTICA, SUPRIMENTO E QUÍMICA =====
     {
         id: 'logistica-transportes',
-        nome: 'Logística de Transportes',
+        nome: 'Técnico de Logística de Transportes',
         nivel: 'tecnico',
         area: 'Logística, Suprimento e Química',
         blocos: [
@@ -335,7 +335,7 @@ export const PROFISSOES: Profissao[] = [
     },
     {
         id: 'quimica-petroleo',
-        nome: 'Química de Petróleo',
+        nome: 'Técnico de Química de Petróleo',
         nivel: 'tecnico',
         area: 'Logística, Suprimento e Química',
         blocos: [
@@ -355,7 +355,7 @@ export const PROFISSOES: Profissao[] = [
     },
     {
         id: 'suprimento-adm',
-        nome: 'Suprimento (Administração)',
+        nome: 'Técnico de Suprimento de Bens e Serviços - Administração',
         nivel: 'tecnico',
         area: 'Logística, Suprimento e Química',
         blocos: [
@@ -370,6 +370,252 @@ export const PROFISSOES: Profissao[] = [
             {
                 nome: 'Bloco III - Tributos',
                 topicos: ['Contabilidade básica', 'Direito tributário', 'Administração tributária'],
+            },
+        ],
+    },
+
+    // ===== NÍVEL SUPERIOR - ENGENHARIAS =====
+    {
+        id: 'eng-petroleo',
+        nome: 'Engenharia de Petróleo',
+        nivel: 'superior',
+        area: 'Engenharia',
+        blocos: [
+            {
+                nome: 'Bloco I - Engenharia de Poço',
+                topicos: ['Perfuração', 'Fluidos de perfuração', 'Cimentação', 'Completação'],
+            },
+            {
+                nome: 'Bloco II - Engenharia de Reservatórios',
+                topicos: ['Propriedades da rocha e fluidos', 'Escoamento em meios porosos', 'Recuperação secundária'],
+            },
+            {
+                nome: 'Bloco III - Elevação e Escoamento',
+                topicos: ['Métodos de elevação artificial', 'Garantia de escoamento', 'Processamento primário'],
+            },
+        ],
+    },
+    {
+        id: 'eng-mecanica',
+        nome: 'Engenharia Mecânica',
+        nivel: 'superior',
+        area: 'Engenharia',
+        blocos: [
+            {
+                nome: 'Bloco I - Termofluidos',
+                topicos: ['Termodinâmica aplicada', 'Mecânica dos fluidos', 'Transmissão de calor', 'Máquinas de fluxo'],
+            },
+            {
+                nome: 'Bloco II - Projeto Mecânico',
+                topicos: ['Resistência dos materiais', 'Elementos de máquinas', 'Vibrações mecânicas', 'Seleção de materiais'],
+            },
+            {
+                nome: 'Bloco III - Fabricação e Gestão',
+                topicos: ['Processos de fabricação', 'Metrologia', 'Manutenção industrial', 'Gestão de projetos'],
+            },
+        ],
+    },
+    {
+        id: 'eng-eletrica',
+        nome: 'Engenharia Elétrica',
+        nivel: 'superior',
+        area: 'Engenharia',
+        blocos: [
+            {
+                nome: 'Bloco I - Sistemas de Potência',
+                topicos: ['Geração, transmissão e distribuição', 'Análise de sistemas de potência', 'Proteção de sistemas'],
+            },
+            {
+                nome: 'Bloco II - Máquinas e Acionamentos',
+                topicos: ['Transformadores', 'Máquinas rotativas', 'Eletrônica de potência', 'Acionamentos elétricos'],
+            },
+            {
+                nome: 'Bloco III - Eletrônica e Controle',
+                topicos: ['Circuitos elétricos', 'Eletrônica analógica e digital', 'Sistemas de controle', 'Instrumentação'],
+            },
+        ],
+    },
+    {
+        id: 'eng-civil',
+        nome: 'Engenharia Civil',
+        nivel: 'superior',
+        area: 'Engenharia',
+        blocos: [
+            {
+                nome: 'Bloco I - Estruturas e Geotecnia',
+                topicos: ['Análise estrutural', 'Concreto armado e protendido', 'Mecânica dos solos', 'Fundações'],
+            },
+            {
+                nome: 'Bloco II - Construção Civil',
+                topicos: ['Tecnologia das construções', 'Materiais de construção', 'Planejamento e controle de obras'],
+            },
+            {
+                nome: 'Bloco III - Hidráulica e Saneamento',
+                topicos: ['Mecânica dos fluidos', 'Hidráulica aplicada', 'Saneamento básico', 'Instalações prediais'],
+            },
+        ],
+    },
+    {
+        id: 'eng-seguranca',
+        nome: 'Engenharia de Segurança',
+        nivel: 'superior',
+        area: 'Engenharia',
+        blocos: [
+            {
+                nome: 'Bloco I - Higiene e Medicina',
+                topicos: ['Higiene ocupacional', 'Doenças ocupacionais', 'Toxicologia', 'Ergonomia'],
+            },
+            {
+                nome: 'Bloco II - Gerenciamento de Riscos',
+                topicos: ['Análise de riscos (APR, HAZOP)', 'Gerenciamento de riscos (PGR)', 'Prevenção e controle de perdas'],
+            },
+            {
+                nome: 'Bloco III - Legislação e Incêndio',
+                topicos: ['Normas Regulamentadoras (NRs)', 'Legislação previdenciária', 'Proteção contra incêndio e explosões'],
+            },
+        ],
+    },
+
+    // ===== NÍVEL SUPERIOR - ADMINISTRAÇÃO E ECONOMIA =====
+    {
+        id: 'administracao',
+        nome: 'Administração',
+        nivel: 'superior',
+        area: 'Gestão e Negócios',
+        blocos: [
+            {
+                nome: 'Bloco I - Gestão Estratégica',
+                topicos: ['Planejamento estratégico', 'Gestão de processos', 'Gestão de projetos (PMBOK)', 'Governança corporativa'],
+            },
+            {
+                nome: 'Bloco II - Gestão de Pessoas e Marketing',
+                topicos: ['Comportamento organizacional', 'Gestão de RH', 'Marketing estratégico', 'Pesquisa de mercado'],
+            },
+            {
+                nome: 'Bloco III - Logística e Finanças',
+                topicos: ['Gestão da cadeia de suprimentos', 'Administração de materiais', 'Administração financeira', 'Orçamento'],
+            },
+        ],
+    },
+    {
+        id: 'economia',
+        nome: 'Economia',
+        nivel: 'superior',
+        area: 'Gestão e Negócios',
+        blocos: [
+            {
+                nome: 'Bloco I - Microeconomia',
+                topicos: ['Teoria do consumidor e da firma', 'Estruturas de mercado', 'Equilíbrio geral', 'Teoria dos jogos'],
+            },
+            {
+                nome: 'Bloco II - Macroeconomia',
+                topicos: ['Contabilidade nacional', 'Teoria monetária', 'Políticas fiscal e cambial', 'Crescimento econômico'],
+            },
+            {
+                nome: 'Bloco III - Métodos Quantitativos',
+                topicos: ['Estatística econômica', 'Econometria', 'Matemática financeira', 'Análise de projetos'],
+            },
+        ],
+    },
+
+    // ===== NÍVEL SUPERIOR - TI E GEOCIÊNCIAS =====
+    {
+        id: 'analista-sistemas-eng-software',
+        nome: 'Analista de Sistemas - Engenharia de Software',
+        nivel: 'superior',
+        area: 'Tecnologia da Informação',
+        blocos: [
+            {
+                nome: 'Bloco I - Desenvolvimento',
+                topicos: ['Lógica de programação', 'Estruturas de dados', 'Padrões de projeto', 'Linguagens (Java, Python, C#)'],
+            },
+            {
+                nome: 'Bloco II - Engenharia de Software',
+                topicos: ['Ciclo de vida de software', 'Metodologias ágeis (Scrum, Kanban)', 'DevOps', 'Testes de software'],
+            },
+            {
+                nome: 'Bloco III - Arquitetura e BD',
+                topicos: ['Arquitetura de sistemas', 'Microserviços', 'Banco de dados (SQL e NoSQL)', 'Segurança da informação'],
+            },
+        ],
+    },
+    {
+        id: 'analista-sistemas-infra',
+        nome: 'Analista de Sistemas - Infraestrutura',
+        nivel: 'superior',
+        area: 'Tecnologia da Informação',
+        blocos: [
+            {
+                nome: 'Bloco I - Redes e Comunicação',
+                topicos: ['Protocolos TCP/IP', 'Roteamento e switching', 'Redes sem fio', 'Segurança de redes'],
+            },
+            {
+                nome: 'Bloco II - Sistemas Operacionais',
+                topicos: ['Windows Server', 'Linux (Red Hat/Debian)', 'Virtualização', 'Contêineres (Docker, K8s)'],
+            },
+            {
+                nome: 'Bloco III - Gestão e Nuvem',
+                topicos: ['Computação em nuvem (AWS/Azure)', 'Gestão de serviços (ITIL)', 'Monitoramento', 'Backup e recuperação'],
+            },
+        ],
+    },
+    {
+        id: 'analista-sistemas-processos',
+        nome: 'Analista de Sistemas - Processos de Negócio',
+        nivel: 'superior',
+        area: 'Tecnologia da Informação',
+        blocos: [
+            {
+                nome: 'Bloco I - Modelagem de Processos',
+                topicos: ['BPMN', 'Engenharia de requisitos', 'Análise de negócios', 'Gestão de processos (BPM)'],
+            },
+            {
+                nome: 'Bloco II - Gestão de Projetos e Serviços',
+                topicos: ['PMBOK', 'Scrum', 'ITIL 4', 'COBIT 2019'],
+            },
+            {
+                nome: 'Bloco III - Dados e Inovação',
+                topicos: ['Ciência de dados', 'Transformação digital', 'Design Thinking', 'Arquitetura corporativa'],
+            },
+        ],
+    },
+    {
+        id: 'geologia',
+        nome: 'Geologia',
+        nivel: 'superior',
+        area: 'Geociências',
+        blocos: [
+            {
+                nome: 'Bloco I - Geologia Geral',
+                topicos: ['Mineralogia e Petrologia', 'Geologia estrutural', 'Sedimentologia', 'Estratigrafia'],
+            },
+            {
+                nome: 'Bloco II - Geologia do Petróleo',
+                topicos: ['Sistemas petrolíferos', 'Geoquímica orgânica', 'Geofísica de exploração', 'Avaliação de formações'],
+            },
+            {
+                nome: 'Bloco III - Mapeamento e Recursos',
+                topicos: ['Geotecnologias', 'Sensoriamento remoto', 'Hidrogeologia', 'Geologia ambiental'],
+            },
+        ],
+    },
+    {
+        id: 'geofisica',
+        nome: 'Geofísica',
+        nivel: 'superior',
+        area: 'Geociências',
+        blocos: [
+            {
+                nome: 'Bloco I - Métodos Potenciais',
+                topicos: ['Gravimetria', 'Magnetometria', 'Eletromagnetismo', 'Processamento de dados'],
+            },
+            {
+                nome: 'Bloco II - Métodos Sísmicos',
+                topicos: ['Aquisição sísmica', 'Processamento sísmico', 'Interpretação sísmica', 'Sismologia'],
+            },
+            {
+                nome: 'Bloco III - Física da Terra',
+                topicos: ['Física da Terra sólida', 'Propriedades físicas das rochas', 'Perfilagem de poços'],
             },
         ],
     },
