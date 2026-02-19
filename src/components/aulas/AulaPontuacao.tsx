@@ -19,7 +19,9 @@ import {
     // SummaryTabs, // Removed in favor of ModuleSummaryCarouselNew
     StickyModuleNav,
     ModuleSummaryCarouselNew,
-    Activity
+    Activity,
+    LessonTabs,
+    VideoModal
 } from './shared';
 import { useAulaProgress } from '@/hooks/useAulaProgress';
 import {
@@ -491,30 +493,85 @@ export default function AulaPontuacao() {
                     </section>
 
                     {/* RESUMO MÓDULO 1 */}
-                    <div className="mt-12 mb-12">
-                        <ModuleSummaryCarouselNew
-                            items={[
+                    <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                        <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                            <span className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl font-black text-indigo-700 border border-indigo-500/20 shadow-inner">3</span>
+                            Resumo e Multimedia
+                        </h2>
+                        <LessonTabs
+                            tabs={[
                                 {
-                                    title: "A Ordem Direta",
-                                    description: "Sujeito + Verbo + Complemento. Essa é a base.",
-                                    icon: <LuCheckCircle />,
-                                    color: "text-indigo-500"
+                                    id: 'video',
+                                    label: 'Vídeo Aula',
+                                    icon: LuPlayCircle,
+                                    content: (
+                                        <div className="w-full flex flex-col items-center py-6">
+                                            <div className="w-full max-w-3xl">
+                                                <VideoModal
+                                                    videoId="dQw4w9WgXcQ"
+                                                    title="Sintaxe e Fundação"
+                                                    duration="10:00"
+                                                    thumbnail="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop"
+                                                />
+                                            </div>
+                                        </div>
+                                    )
                                 },
                                 {
-                                    title: "Mito do Respiro",
-                                    description: "A vírgula gramatical não obedece sua respiração.",
-                                    icon: <LuBan />,
-                                    color: "text-red-500"
+                                    id: 'resumo',
+                                    label: 'Resumo Visual',
+                                    icon: LuBookOpen,
+                                    content: (
+                                        <ModuleSummaryCarouselNew
+                                            images={[
+                                                { title: 'A Ordem Direta (S-V-C)', type: 'Mapa Mental', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
+                                                { title: 'Mito do Respiro', type: 'Alerta', placeholderColor: 'bg-red-100 dark:bg-red-900/30' },
+                                                { title: 'O Bloco Atômico', type: 'Esquema', placeholderColor: 'bg-blue-100 dark:bg-blue-900/30' },
+                                            ]}
+                                        />
+                                    )
                                 },
                                 {
-                                    title: "Identificação",
-                                    description: "Ache o sujeito antes de pensar em vírgula!",
-                                    icon: <LuBrain />,
-                                    color: "text-blue-500"
+                                    id: 'visual',
+                                    label: 'Macete Visual',
+                                    icon: LuBrain,
+                                    content: (
+                                        <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
+                                            <h3 className="text-xl font-bold text-foreground mb-4">A Muralha do Sujeito</h3>
+                                            <div className="text-7xl my-8 animate-bounce">🏰 🛡️ ❌</div>
+                                            <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                "O sujeito pode ser um trem, pode ser um caminhão. Mas separar do verbo? A resposta é NÃO!"
+                                            </p>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    id: 'audio',
+                                    label: 'Áudio Resumo',
+                                    icon: LuMusic,
+                                    content: (
+                                        <div className="w-full flex justify-center py-4">
+                                            <div className="w-full max-w-md">
+                                                <MusicPlayerCard
+                                                    audioUrl="#"
+                                                    titulo="Sintaxe de Ouro"
+                                                    artista="Gramática Beat"
+                                                    capaUrl="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop"
+                                                    lyrics={`(Verso)
+                                                    S é quem faz, V é a ponte.
+                                                    O C é o rio, bebendo da fonte.
+                                                    
+                                                    (Refrão)
+                                                    Não bota a vírgula, não quebra a corrente.
+                                                    S-V-C é o bloco da gente!`}
+                                                />
+                                            </div>
+                                        </div>
+                                    )
                                 }
                             ]}
                         />
-                    </div>
+                    </section>
 
                     {/* QUIZ MÓDULO 1 */}
                     <section className="mt-8">
@@ -643,30 +700,86 @@ export default function AulaPontuacao() {
                     </section>
 
                     {/* RESUMO MÓDULO 2 */}
-                    <div className="mt-12 mb-12">
-                        <ModuleSummaryCarouselNew
-                            items={[
+                    <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                        <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                            <span className="w-14 h-14 rounded-2xl bg-orange-500/10 flex items-center justify-center text-3xl font-black text-orange-700 border border-orange-500/20 shadow-inner">3</span>
+                            Resumo e Multimedia
+                        </h2>
+                        <LessonTabs
+                            tabs={[
                                 {
-                                    title: "Proibições",
-                                    description: "S-V e V-C nunca aceitam vírgula.",
-                                    icon: <LuBan />,
-                                    color: "text-red-500"
+                                    id: 'video',
+                                    label: 'Vídeo Aula',
+                                    icon: LuPlayCircle,
+                                    content: (
+                                        <div className="w-full flex flex-col items-center py-6">
+                                            <div className="w-full max-w-3xl">
+                                                <VideoModal
+                                                    videoId="eIhp3SAnb3Q"
+                                                    title="A Vírgula: O Chefão"
+                                                    duration="14:20"
+                                                    thumbnail="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1000&auto=format&fit=crop"
+                                                />
+                                            </div>
+                                        </div>
+                                    )
                                 },
                                 {
-                                    title: "Aposto",
-                                    description: "Explicação extra sempre vem isolada.",
-                                    icon: <LuQuote />,
-                                    color: "text-purple-500"
+                                    id: 'resumo',
+                                    label: 'Resumo Visual',
+                                    icon: LuBookOpen,
+                                    content: (
+                                        <ModuleSummaryCarouselNew
+                                            images={[
+                                                { title: 'Aposto vs Vocativo', type: 'Diferença', placeholderColor: 'bg-purple-100 dark:bg-purple-900/30' },
+                                                { title: 'Obrigações e Proibições', type: 'Tabela', placeholderColor: 'bg-orange-100 dark:bg-orange-900/30' },
+                                                { title: 'Conjunções Adversativas', type: 'Checklist', placeholderColor: 'bg-green-100 dark:bg-green-900/30' },
+                                            ]}
+                                        />
+                                    )
                                 },
                                 {
-                                    title: "Conjunções",
-                                    description: "A vírgula prepara o terreno para a oposição.",
-                                    icon: <LuGitMerge />,
-                                    color: "text-green-500"
+                                    id: 'visual',
+                                    label: 'Macete Visual',
+                                    icon: LuPenTool,
+                                    content: (
+                                        <div className="text-center p-8 bg-gradient-to-br from-orange-500/5 to-amber-500/5 rounded-2xl border border-orange-500/10">
+                                            <h3 className="text-xl font-bold text-foreground mb-4">O Abraço do Aposto</h3>
+                                            <div className="text-7xl my-8 animate-pulse">🤗 💬 🤗</div>
+                                            <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                "O aposto explicativo é um carinhoso: ele vem entre vírgulas, explicando com jeitinho o que veio antes."
+                                            </p>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    id: 'audio',
+                                    label: 'Áudio Resumo',
+                                    icon: LuMusic,
+                                    content: (
+                                        <div className="w-full flex justify-center py-4">
+                                            <div className="w-full max-w-md">
+                                                <MusicPlayerCard
+                                                    audioUrl="#"
+                                                    titulo="Grito do Vocativo"
+                                                    artista="Língua Solta"
+                                                    capaUrl="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1000&auto=format&fit=crop"
+                                                    lyrics={`(Grito)
+                                                    EI, VOCÊ! (Vírgula!)
+                                                    JOÃO! (Vírgula!)
+                                                    
+                                                    (Canto)
+                                                    Chamou alguém? Bota a vírgula lá.
+                                                    Explicou algo? Tem que isolar.
+                                                    Mas se for o Verbo... Deixa ele passar!`}
+                                                />
+                                            </div>
+                                        </div>
+                                    )
                                 }
                             ]}
                         />
-                    </div>
+                    </section>
 
                     <section className="mt-8">
                         <QuizInterativo
@@ -746,47 +859,86 @@ export default function AulaPontuacao() {
                         />
                     </section>
 
-                    <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm">
-                        <MusicPlayerCard
-                            audioUrl="#"
-                            titulo="Rap da Pontuação"
-                            artista="Professor Antigravity"
-                            capaUrl="/api/placeholder/400/320"
-                            lyrics={`
-    (Refrão)
-Sujeito e Verbo não se pode separar
-Se você botar a vírgula, a banca vai zerar!
-Mas se for Aposto, pode isolar
-E o Vocativo ? Tem que chamar!
-    `}
-                        />
-                    </section>
-
                     {/* RESUMO MÓDULO 3 */}
-                    <div className="mt-12 mb-12">
-                        <ModuleSummaryCarouselNew
-                            items={[
+                    <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                        <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                            <span className="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center text-3xl font-black text-purple-700 border border-purple-500/20 shadow-inner">3</span>
+                            Resumo e Multimedia
+                        </h2>
+                        <LessonTabs
+                            tabs={[
                                 {
-                                    title: "Dois Pontos",
-                                    description: "Abre a porta para enumerações ou citações.",
-                                    icon: <LuList />,
-                                    color: "text-orange-500"
+                                    id: 'video',
+                                    label: 'Vídeo Aula',
+                                    icon: LuPlayCircle,
+                                    content: (
+                                        <div className="w-full flex flex-col items-center py-6">
+                                            <div className="w-full max-w-3xl">
+                                                <VideoModal
+                                                    videoId="dQw4w9WgXcQ"
+                                                    title="Pontuação Avançada"
+                                                    duration="11:15"
+                                                    thumbnail="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=1000&auto=format&fit=crop"
+                                                />
+                                            </div>
+                                        </div>
+                                    )
                                 },
                                 {
-                                    title: "Ponto e Vírgula",
-                                    description: "A pausa maior para organizar listas complexas.",
-                                    icon: <LuPause />,
-                                    color: "text-blue-500"
+                                    id: 'resumo',
+                                    label: 'Resumo Visual',
+                                    icon: LuBookOpen,
+                                    content: (
+                                        <ModuleSummaryCarouselNew
+                                            images={[
+                                                { title: 'Os Dois Pontos (:)', type: 'Guia', placeholderColor: 'bg-purple-100 dark:bg-purple-900/30' },
+                                                { title: 'Ponto e Vírgula (;)', type: 'Mapa Mental', placeholderColor: 'bg-pink-100 dark:bg-pink-900/30' },
+                                                { title: 'Enumerações Complexas', type: 'Infográfico', placeholderColor: 'bg-rose-100 dark:bg-rose-900/30' },
+                                            ]}
+                                        />
+                                    )
                                 },
                                 {
-                                    title: "Domínio",
-                                    description: "Saber usar = Clareza absoluta.",
-                                    icon: <LuEye />,
-                                    color: "text-cyan-500"
+                                    id: 'visual',
+                                    label: 'Macete Visual',
+                                    icon: LuPause,
+                                    content: (
+                                        <div className="text-center p-8 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-2xl border border-purple-500/10">
+                                            <h3 className="text-xl font-bold text-foreground mb-4">O Semáforo da Gramática</h3>
+                                            <div className="text-7xl my-8 animate-spin-slow">🚦 🛑 🟢</div>
+                                            <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                "Vírgula é atenção. Ponto e vírgula é parada técnica. Ponto final é o destino! Não confunda um pit-stop com o fim da corrida."
+                                            </p>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    id: 'audio',
+                                    label: 'Áudio Resumo',
+                                    icon: LuMusic,
+                                    content: (
+                                        <div className="w-full flex justify-center py-4">
+                                            <div className="w-full max-w-md">
+                                                <MusicPlayerCard
+                                                    audioUrl="#"
+                                                    titulo="Vibe Avançada"
+                                                    artista="Elite Team"
+                                                    capaUrl="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=1000&auto=format&fit=crop"
+                                                    lyrics={`(Verso)
+                                                    Dois pontos abrem a cena.
+                                                    Ponto e vírgula resolve o problema.
+                                                    
+                                                    (Ponte)
+                                                    Se a frase é longa, se tem vírgula demais.
+                                                    Bota o ponto e vírgula, e respira em paz!`}
+                                                />
+                                            </div>
+                                        </div>
+                                    )
                                 }
                             ]}
                         />
-                    </div>
+                    </section>
 
                     <section className="mt-8">
                         <QuizInterativo

@@ -43,7 +43,7 @@ import {
     MusicPlayerCard,
     StickyModuleNav
 } from './shared';
-import { LuImage, LuPlay, LuBookOpen, LuVolume2, LuShuffle, LuCheck } from 'react-icons/lu';
+import { LuImage, LuPlay, LuBookOpen, LuVolume2, LuShuffle, LuCheck, LuCirclePlay as LuPlayCircle, LuBrain, LuMusic } from 'react-icons/lu';
 
 // ── QUIZ POOLS (EXPANDED TO 15 QUESTIONS PER MODULE) ────────────────────
 
@@ -2177,95 +2177,88 @@ export default function AulaConcordancia({
                         </section>
 
 
-                        {/* ─── 6. RESUMO DO MÓDULO 1 ─── */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400">6</span>
-                                Resumo do Módulo 1
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                <span className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl font-black text-indigo-700 border border-indigo-500/20 shadow-inner">6</span>
+                                Resumo e Multimedia
                             </h2>
 
                             <LessonTabs
-                                tabs={
-                                    [
-                                        {
-                                            id: 'video',
-                                            label: 'Vídeo Aula',
-                                            icon: LuPlay,
-                                            content: (
-                                                <div className="w-full flex flex-col items-center py-6">
-                                                    <div className="w-full max-w-3xl">
-                                                        <VideoModal
-                                                            videoId="9-n3Y_2n2sM"
-                                                            title="Concordância Verbal: O Guia Definitivo"
-                                                            duration="12:30"
-                                                            thumbnail="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1074&auto=format&fit=crop"
-                                                        />
-                                                    </div>
+                                tabs={[
+                                    {
+                                        id: 'video',
+                                        label: 'Vídeo Aula',
+                                        icon: LuPlayCircle,
+                                        content: (
+                                            <div className="w-full flex flex-col items-center py-6">
+                                                <div className="w-full max-w-3xl">
+                                                    <VideoModal
+                                                        videoId="9-n3Y_2n2sM"
+                                                        title="Concordância Verbal: O Guia Definitivo"
+                                                        duration="12:30"
+                                                        thumbnail="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1074&auto=format&fit=crop"
+                                                    />
                                                 </div>
-                                            )
-                                        },
-                                        {
-                                            id: 'resumo',
-                                            label: 'Resumo Visual',
-                                            icon: LuBookOpen,
-                                            content: (
-                                                <ModuleSummaryCarouselNew
-                                                    images={[
-                                                        { title: 'Mapa Mental: Sujeito Composto', type: 'Mapa Mental', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
-                                                        { title: 'Fluxograma: Partícula SE', type: 'Diagrama', placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30' },
-                                                        { title: 'Infográfico: Verbos Impessoais', type: 'Infográfico', placeholderColor: 'bg-amber-100 dark:bg-amber-900/30' },
-                                                        { title: 'Card Resumo: VTD vs VTI', type: 'Card', placeholderColor: 'bg-purple-100 dark:bg-purple-900/30' },
-                                                    ]}
-                                                />
-                                            )
-                                        },
-                                        {
-                                            id: 'visual',
-                                            label: 'Macete Visual',
-                                            icon: LuImage,
-                                            content: (
-                                                <div className="text-center p-4">
-                                                    <h3 className="text-lg font-bold text-foreground mb-2">A Barreira da Preposição</h3>
-                                                    <div className="text-5xl my-4">🚧 🐑 🚧</div>
-                                                    <p className="text-muted-foreground">"Precisa-se <span className="text-red-500 font-bold">DE</span> funcionários."</p>
-                                                    <p className="text-sm mt-2 text-muted-foreground">O sujeito (funcionários) está isolado pela preposição (DE). O verbo não vê o plural!</p>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'resumo',
+                                        label: 'Resumo Visual',
+                                        icon: LuBookOpen,
+                                        content: (
+                                            <ModuleSummaryCarouselNew
+                                                images={[
+                                                    { title: 'Mapa Mental: Sujeito Composto', type: 'Mapa Mental', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
+                                                    { title: 'Fluxograma: Partícula SE', type: 'Diagrama', placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30' },
+                                                    { title: 'Infográfico: Verbos Impessoais', type: 'Infográfico', placeholderColor: 'bg-amber-100 dark:bg-amber-900/30' },
+                                                    { title: 'Card Resumo: VTD vs VTI', type: 'Card', placeholderColor: 'bg-purple-100 dark:bg-purple-900/30' },
+                                                ]}
+                                            />
+                                        )
+                                    },
+                                    {
+                                        id: 'visual',
+                                        label: 'Macete Visual',
+                                        icon: LuBrain,
+                                        content: (
+                                            <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
+                                                <h3 className="text-xl font-bold text-foreground mb-4">A Barreira da Preposição</h3>
+                                                <div className="text-7xl my-8 animate-bounce">🚧 🐑 🚧</div>
+                                                <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                    "Precisa-se <span className="text-red-500 font-bold">DE</span> funcionários." – O sujeito está isolado pela preposição (DE). O verbo não vê o plural!
+                                                </p>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'audio',
+                                        label: 'Áudio Resumo',
+                                        icon: LuMusic,
+                                        content: (
+                                            <div className="w-full flex justify-center py-4">
+                                                <div className="w-full max-w-md">
+                                                    <MusicPlayerCard
+                                                        audioUrl="#"
+                                                        titulo="Resumo: Módulo 1"
+                                                        artista="Prof. André"
+                                                        capaUrl="https://images.unsplash.com/photo-1514525253440-b393452086ec?q=80&w=1000&auto=format&fit=crop"
+                                                        lyrics={`(Verso 1)
+                                                O verbo procura o sujeito, pra ver com quem vai concordar.
+                                                Se o sujeito tá no plural, o verbo não pode errar!
+                                                
+                                                (Refrão)
+                                                É a concordância, concordância verbal
+                                                Harmonia na frase, isso é fundamental!
+                                                Se tem partícula SE, presta atenção
+                                                Pode ser passiva ou indeterminação!
+                                                `}
+                                                    />
                                                 </div>
-                                            )
-                                        },
-                                        {
-                                            id: 'audio',
-                                            label: 'Áudio Resumo',
-                                            icon: LuVolume2,
-                                            content: (
-                                                <div className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl border border-indigo-500/20">
-                                                    <div className="w-full max-w-md">
-                                                        <MusicPlayerCard
-                                                            audioUrl="#"
-                                                            titulo="Resumo em Áudio: Módulo 1"
-                                                            artista="Prof. André"
-                                                            capaUrl="https://images.unsplash.com/photo-1514525253440-b393452086ec?q=80&w=1000&auto=format&fit=crop"
-                                                            lyrics={`(Verso 1)
-                                                    O verbo procura o sujeito, pra ver com quem vai concordar.
-                                                    Se o sujeito tá no plural, o verbo não pode errar!
-                                                    
-                                                    (Refrão)
-                                                    É a concordância, concordância verbal
-                                                    Harmonia na frase, isso é fundamental!
-                                                    Se tem partícula SE, presta atenção
-                                                    Pode ser passiva ou indeterminação!
-                                                    
-                                                    (Ponte)
-                                                    Havendo sentido de existir, o verbo não vai flexionar
-                                                    Fica no singular, paradinho no lugar!
-                                                    `}
-                                                        />
-                                                    </div>
-                                                    <p className="mt-4 text-sm text-muted-foreground text-center">Acompanhe a letra e memorize as regras cantando!</p>
-                                                </div>
-                                            )
-                                        }
-                                    ]}
-                                className="border-0 shadow-none p-0 max-w-none bg-transparent mb-0"
+                                            </div>
+                                        )
+                                    }
+                                ]}
                             />
                         </section>
 
@@ -2548,31 +2541,24 @@ export default function AulaConcordancia({
                             </div>
                         </section>
 
-                        {/* RECURSOS DO MÓDULO 2 (Tabs) */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-lg font-bold text-emerald-700 dark:text-emerald-400 shrink-0">
-                                    4
-                                </span>
-                                Resumo do Módulo 2
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                <span className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-3xl font-black text-emerald-700 border border-emerald-500/20 shadow-inner">4</span>
+                                Resumo e Multimedia
                             </h2>
-                            <p className="text-muted-foreground text-sm ml-0 md:ml-[60px] -mt-6 mb-8">
-                                Materiais de apoio e revisão
-                            </p>
 
                             <LessonTabs
-                                className="!border-0 !shadow-none !p-0 !bg-transparent !mb-0"
                                 tabs={[
                                     {
                                         id: 'video',
-                                        label: 'Vídeo Resumo',
-                                        icon: LuPlay,
+                                        label: 'Vídeo Aula',
+                                        icon: LuPlayCircle,
                                         content: (
                                             <div className="w-full flex flex-col items-center py-6">
                                                 <div className="w-full max-w-3xl">
                                                     <VideoModal
                                                         videoId="dQw4w9WgXcQ"
-                                                        title="Resumo: Concordância Nominal"
+                                                        title="Concordância Nominal"
                                                         duration="5:30"
                                                         thumbnail="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?q=80&w=1000&auto=format&fit=crop"
                                                     />
@@ -2581,7 +2567,7 @@ export default function AulaConcordancia({
                                         )
                                     },
                                     {
-                                        id: 'carrossel',
+                                        id: 'resumo',
                                         label: 'Resumo Visual',
                                         icon: LuBookOpen,
                                         content: (
@@ -2596,21 +2582,46 @@ export default function AulaConcordancia({
                                         )
                                     },
                                     {
-                                        id: 'macete',
+                                        id: 'visual',
                                         label: 'Macete Visual',
-                                        icon: LuImage,
+                                        icon: LuBrain,
                                         content: (
-                                            <div className="text-center p-4">
-                                                <h3 className="text-lg font-bold text-foreground mb-2">Regra de Ouro (5s)</h3>
-                                                <div className="p-4 bg-emerald-50 dark:bg-emerald-900/10 rounded-lg border border-emerald-100 dark:border-emerald-800/30 max-w-md mx-auto">
+                                            <div className="text-center p-8 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-2xl border border-emerald-500/10">
+                                                <h3 className="text-xl font-bold text-foreground mb-4">Regra de Ouro (5s)</h3>
+                                                <div className="p-4 bg-emerald-50 dark:bg-emerald-900/10 rounded-lg border border-emerald-100 dark:border-emerald-800/30 max-w-md mx-auto mb-6">
                                                     <p className="text-xl font-bold text-center mb-2">SUBSTANTIVO = ÍMÃ 🧲</p>
-                                                    <p className="text-sm text-muted-foreground text-center">
-                                                        Tudo ao redor (adjetivo, artigo, numeral) deve concordar com o ímã.
+                                                    <p className="text-sm text-muted-foreground text-center leading-relaxed">
+                                                        Tudo ao redor (adjetivo, artigo, numeral) deve concordar com o ímã em gênero e número!
                                                     </p>
                                                 </div>
-                                                <div className="mt-4 text-sm space-y-1">
+                                                <div className="text-sm space-y-1 inline-block text-left">
                                                     <p>✅ "As <strong>duas</strong> casas <strong>velhas</strong>."</p>
                                                     <p>❌ "As duas casas velho."</p>
+                                                </div>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'audio',
+                                        label: 'Áudio Resumo',
+                                        icon: LuMusic,
+                                        content: (
+                                            <div className="w-full flex justify-center py-4">
+                                                <div className="w-full max-w-md">
+                                                    <MusicPlayerCard
+                                                        audioUrl="#"
+                                                        titulo="Magnetismo Nominal"
+                                                        artista="Prof. André"
+                                                        capaUrl="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000&auto=format&fit=crop"
+                                                        lyrics={`(Verso 1)
+                                                O substantivo é o ímã, ele manda no lugar.
+                                                O adjetivo é a sombra, ele tem que acompanhar!
+                                                
+                                                (Refrão)
+                                                Muda o gênero, muda o número, o determinante vai atrás.
+                                                Se é "casa velha", é "casas velhas", a harmonia satisfaz!
+                                                `}
+                                                    />
                                                 </div>
                                             </div>
                                         )
@@ -2859,6 +2870,89 @@ export default function AulaConcordancia({
                                     </div>
                                 </div>
                             )}
+                        </section>
+
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                <span className="w-14 h-14 rounded-2xl bg-violet-500/10 flex items-center justify-center text-3xl font-black text-violet-700 border border-violet-500/20 shadow-inner">3</span>
+                                Resumo e Multimedia
+                            </h2>
+
+                            <LessonTabs
+                                tabs={[
+                                    {
+                                        id: 'video',
+                                        label: 'Vídeo Aula',
+                                        icon: LuPlayCircle,
+                                        content: (
+                                            <div className="w-full flex flex-col items-center py-6">
+                                                <div className="w-full max-w-3xl">
+                                                    <VideoModal
+                                                        videoId="9-n3Y_2n2sM"
+                                                        title="Estratégias de Prova: Concordância"
+                                                        duration="08:45"
+                                                        thumbnail="https://images.unsplash.com/photo-1434030216411-0bb7c3f3dfad?q=80&w=1000&auto=format&fit=crop"
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'resumo',
+                                        label: 'Resumo Visual',
+                                        icon: LuBookOpen,
+                                        content: (
+                                            <ModuleSummaryCarouselNew
+                                                images={[
+                                                    { title: 'Checklist: Passo a Passo', type: 'Infográfico', placeholderColor: 'bg-violet-100 dark:bg-violet-900/30' },
+                                                    { title: 'Tabela: Casogram (Verbal vs Nominal)', type: 'Tabela', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
+                                                    { title: 'Card: Principais Pegadinhas', type: 'Card', placeholderColor: 'bg-red-100 dark:bg-red-900/30' },
+                                                    { title: 'Mapa: Decisão Rápida', type: 'Mapa Mental', placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30' },
+                                                ]}
+                                            />
+                                        )
+                                    },
+                                    {
+                                        id: 'visual',
+                                        label: 'Macete Visual',
+                                        icon: LuBrain,
+                                        content: (
+                                            <div className="text-center p-8 bg-gradient-to-br from-violet-500/5 to-purple-500/5 rounded-2xl border border-violet-500/10">
+                                                <h3 className="text-xl font-bold text-foreground mb-4">O Radar da Concordância</h3>
+                                                <div className="text-7xl my-8 animate-pulse">📡 🎯 🛰️</div>
+                                                <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                    "Ignore a sujeira, ligue os pontos! Ache o verbo, ache o sujeito, grife o SE e pronto!"
+                                                </p>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'audio',
+                                        label: 'Áudio Resumo',
+                                        icon: LuMusic,
+                                        content: (
+                                            <div className="w-full flex justify-center py-4">
+                                                <div className="w-full max-w-md">
+                                                    <MusicPlayerCard
+                                                        audioUrl="#"
+                                                        titulo="Estratégia Final"
+                                                        artista="Prof. André"
+                                                        capaUrl="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=1000&auto=format&fit=crop"
+                                                        lyrics={`(Verso 1)
+                                                O relógio não para, a prova vai começar.
+                                                Respire fundo, o método vai te guiar!
+                                                
+                                                (Refrão)
+                                                Ache o verbo, pergunte quem é.
+                                                Cuidado com a distância e a partícula SE!
+                                                `}
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+                                ]}
+                            />
                         </section>
 
                         {/* QUIZ MODULE 3 */}

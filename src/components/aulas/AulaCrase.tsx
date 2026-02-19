@@ -39,7 +39,10 @@ import {
     LuGlobe,
     LuRuler,
     LuArrowRight,
-    LuAnchor
+    LuAnchor,
+    LuCirclePlay as LuPlayCircle,
+    LuBrain,
+    LuMusic
 } from 'react-icons/lu';
 
 import {
@@ -51,9 +54,10 @@ import {
     TimelineItem,
     ComparisonSide,
     ModuleBanner,
-    SummaryTabs,
+    // SummaryTabs, // Removido em favor do ModuleSummaryCarouselNew
     NanoImagePlaceholder,
     ModuleSummaryCarousel,
+    ModuleSummaryCarouselNew,
     MusicPlayerCard,
     LessonTabs,
     QuizInterativo,
@@ -564,58 +568,106 @@ export default function AulaCrase({
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400">3</span>
+                                <span className="w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center text-lg font-bold text-rose-700 dark:text-rose-400">3</span>
                                 Resumo do Módulo 1
                             </h2>
+
                             <LessonTabs
                                 tabs={[
-                                    {
-                                        id: 'resumo',
-                                        label: 'Resumo Visual',
-                                        icon: LuBookOpen,
-                                        content: (
-                                            <ModuleSummaryCarousel
-                                                imagens={[
-                                                    { titulo: 'A + A = À', tipo: 'Infográfico', descricaoPrompt: 'Fusão da preposição A com o artigo A resultando em crase.' },
-                                                    { titulo: 'Regra de Ouro', tipo: 'Card', descricaoPrompt: 'Esquema visual da troca por masculino virando AO.' },
-                                                    { titulo: 'Tabela de Preposições', tipo: 'Diagrama', descricaoPrompt: 'Lista das principais preposições que exigem a.' },
-                                                ]}
-                                            />
-                                        ),
-                                    },
                                     {
                                         id: 'video',
                                         label: 'Vídeo Aula',
                                         icon: LuPlay,
                                         content: (
-                                            <div className="aspect-video rounded-xl overflow-hidden border border-border bg-muted flex items-center justify-center group cursor-pointer relative">
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
-                                                <div className="relative z-20 flex flex-col items-center gap-4">
-                                                    <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                                                        <LuPlay className="text-white w-8 h-8 ml-1" />
-                                                    </div>
-                                                    <p className="text-white font-bold text-lg">Assistir: Desvendando a Crase</p>
+                                            <div className="w-full flex flex-col items-center py-6">
+                                                <div className="w-full max-w-3xl">
+                                                    <VideoModal
+                                                        videoId="placeholder"
+                                                        title="Crase sem Segredos: A Regra de Ouro"
+                                                        duration="12:30"
+                                                        thumbnail="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1073&auto=format&fit=crop"
+                                                    />
                                                 </div>
                                             </div>
-                                        ),
+                                        )
+                                    },
+                                    {
+                                        id: 'resumo',
+                                        label: 'Resumo Visual',
+                                        icon: LuBookOpen,
+                                        content: (
+                                            <ModuleSummaryCarouselNew
+                                                tituloAula="Crase"
+                                                materia="Português"
+                                                profissao="Concurso Petrobras"
+                                                moduloNome="Conceitos Gerais"
+                                                images={[
+                                                    { title: 'Mapa Mental: A + A = À', type: 'Mapa Mental', placeholderColor: 'bg-rose-900/10' },
+                                                    { title: 'Fluxograma: Troca por Masculino', type: 'Diagrama', placeholderColor: 'bg-blue-900/10' },
+                                                    { title: 'Infográfico: Regenta e Regido', type: 'Infográfico', placeholderColor: 'bg-indigo-900/10' },
+                                                    { title: 'Card Resumo: Acento Grave', type: 'Card', placeholderColor: 'bg-amber-900/10' },
+                                                ]}
+                                            />
+                                        )
+                                    },
+                                    {
+                                        id: 'visual',
+                                        label: 'Macete Visual',
+                                        icon: LuImage,
+                                        content: (
+                                            <div className="text-center p-8 space-y-6">
+                                                <h3 className="text-xl font-bold text-foreground">O Macete do "AO"</h3>
+                                                <div className="text-6xl my-6 animate-pulse">🚻 ➡️ 🚻</div>
+                                                <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto">
+                                                    "A crase é o espelho do masculino. Se ao trocar a dama pelo cavalheiro o 'A' vira 'AO', o brilho da crase aparece!"
+                                                </p>
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 text-left">
+                                                    <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
+                                                        <h4 className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mb-2">Deu "AO"?</h4>
+                                                        <p className="text-xs text-muted-foreground italic">Fui <strong>ao</strong> clubinho.</p>
+                                                        <p className="text-[10px] mt-2 font-medium text-emerald-700 dark:text-emerald-300">ENTÃO: Fui <strong>à</strong> festinha. ✅</p>
+                                                    </div>
+                                                    <div className="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl">
+                                                        <h4 className="text-sm font-bold text-rose-600 dark:text-rose-400 mb-2">Deu "O"?</h4>
+                                                        <p className="text-xs text-muted-foreground italic">Vi <strong>o</strong> clubinho.</p>
+                                                        <p className="text-[10px] mt-2 font-medium text-rose-700 dark:text-rose-300">ENTÃO: Vi <strong>a</strong> festinha. ❌</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
                                     },
                                     {
                                         id: 'audio',
                                         label: 'Áudio Resumo',
                                         icon: LuVolume2,
                                         content: (
-                                            <div className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl border border-indigo-500/20">
+                                            <div className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-rose-500/10 to-orange-500/10 rounded-xl border border-rose-500/20">
                                                 <div className="w-full max-w-md">
                                                     <MusicPlayerCard
-                                                        audioUrl="#"
-                                                        titulo="Rap da Crase"
-                                                        artista="Prof. Ritmo"
+                                                        audioUrl="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a7343b.mp3"
+                                                        titulo="O Rap da Crase"
+                                                        artista="Prof. Antigravity"
+                                                        capaUrl="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000&auto=format&fit=crop"
+                                                        lyrics={`
+                                                        (Refrão)
+                                                        É o A preposição com o A do artigo
+                                                        Se os dois se encontram, o acento é amigo!
+                                                        No masculino é 'AO', no feminino é craseado
+                                                        Se liga no macete, não fica parado!
+                                                        
+                                                        (Verso)
+                                                        Quem vai a e volta da, crase há!
+                                                        Quem vai a e volta de, crase pra que?
+                                                        Se o verbo é regente e pede o sinal
+                                                        Coloca o acento e brilha no final!
+                                                        `}
                                                     />
                                                 </div>
                                             </div>
-                                        ),
-                                    },
+                                        )
+                                    }
                                 ]}
+                                className="border-0 shadow-none p-0 max-w-none bg-transparent mb-0"
                             />
                         </section>
 
@@ -734,6 +786,91 @@ export default function AulaCrase({
                                             </div>
                                         ),
                                         corFundo: "bg-amber-100 dark:bg-amber-900/30"
+                                    }
+                                ]}
+                            />
+                        </section>
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
+                                <span className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center text-lg font-bold text-amber-700 dark:text-amber-400">3</span>
+                                Resumo do Módulo 2
+                            </h2>
+
+                            <LessonTabs
+                                tabs={[
+                                    {
+                                        id: 'video',
+                                        label: 'Vídeo Aula',
+                                        icon: LuPlayCircle,
+                                        content: (
+                                            <div className="w-full flex flex-col items-center py-6">
+                                                <div className="w-full max-w-3xl">
+                                                    <VideoModal
+                                                        videoId="placeholder"
+                                                        title="Crase Proibida e Facultativa"
+                                                        duration="09:15"
+                                                        thumbnail="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1074&auto=format&fit=crop"
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'resumo',
+                                        label: 'Resumo Visual',
+                                        icon: LuBookOpen,
+                                        content: (
+                                            <ModuleSummaryCarouselNew
+                                                tituloAula="Crase"
+                                                materia="Português"
+                                                profissao="Concurso Petrobras"
+                                                moduloNome="Proibições e Facultativos"
+                                                images={[
+                                                    { title: 'Mapa Mental: Os Proibidos', type: 'Mapa Mental', placeholderColor: 'bg-red-900/10' },
+                                                    { title: 'Diagrama: Casos Facultativos', type: 'Diagrama', placeholderColor: 'bg-green-900/10' },
+                                                    { title: 'Infográfico: Pronomes que Rejeitam', type: 'Infográfico', placeholderColor: 'bg-amber-900/10' },
+                                                    { title: 'Card Resumo: Dica da Senhora', type: 'Card', placeholderColor: 'bg-blue-900/10' },
+                                                ]}
+                                            />
+                                        )
+                                    },
+                                    {
+                                        id: 'macete',
+                                        label: 'Macete',
+                                        icon: LuBrain,
+                                        content: (
+                                            <div className="text-center p-8 bg-gradient-to-br from-red-500/5 to-amber-500/5 rounded-2xl border border-red-500/10">
+                                                <h3 className="text-xl font-bold text-foreground mb-4">O Quadrado Proibido</h3>
+                                                <div className="text-6xl my-8 animate-bounce">🚫 🏃 🚫</div>
+                                                <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                    "Crase antes de verbo é erro soberbo! Antes de masculino, é desatino!"
+                                                </p>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'audio',
+                                        label: 'Áudio Resumo',
+                                        icon: LuMusic,
+                                        content: (
+                                            <div className="w-full flex justify-center py-4">
+                                                <div className="w-full max-w-md">
+                                                    <MusicPlayerCard
+                                                        audioUrl="#"
+                                                        titulo="As Proibições da Crase"
+                                                        artista="Prof. André"
+                                                        capaUrl="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1074&auto=format&fit=crop"
+                                                        lyrics={`
+                                                            (Refrão)
+                                                            Antes de homem, nunca vai sinal
+                                                            Antes de verbo, é erro fatal
+                                                            Se a palavra repete, deixe pra lá
+                                                            Crase proibida não pode brilhar!
+                                                            `}
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
                                     }
                                 ]}
                             />
@@ -875,6 +1012,92 @@ export default function AulaCrase({
                                 </div>
                             </div>
                         </div>
+
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
+                                <span className="w-12 h-12 rounded-full bg-violet-500/20 flex items-center justify-center text-lg font-bold text-violet-700 dark:text-violet-400">3</span>
+                                Resumo do Módulo 3
+                            </h2>
+
+                            <LessonTabs
+                                tabs={[
+                                    {
+                                        id: 'video',
+                                        label: 'Vídeo Aula',
+                                        icon: LuPlayCircle,
+                                        content: (
+                                            <div className="w-full flex flex-col items-center py-6">
+                                                <div className="w-full max-w-3xl">
+                                                    <VideoModal
+                                                        videoId="placeholder"
+                                                        title="Casos Especiais: Dona Crase em Detalhes"
+                                                        duration="11:45"
+                                                        thumbnail="https://images.unsplash.com/photo-1544640808-32ca72ac7f37?q=80&w=1074&auto=format&fit=crop"
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'resumo',
+                                        label: 'Resumo Visual',
+                                        icon: LuBookOpen,
+                                        content: (
+                                            <ModuleSummaryCarouselNew
+                                                tituloAula="Crase"
+                                                materia="Português"
+                                                profissao="Concurso Petrobras"
+                                                moduloNome="Casos Especiais"
+                                                images={[
+                                                    { title: 'Mapa Mental: Casa e Terra', type: 'Mapa Mental', placeholderColor: 'bg-violet-900/10' },
+                                                    { title: 'Infográfico: Horas Exatas', type: 'Infográfico', placeholderColor: 'bg-indigo-900/10' },
+                                                    { title: 'Diagrama: Àquele e Àquilo', type: 'Diagrama', placeholderColor: 'bg-purple-900/10' },
+                                                    { title: 'Card Resumo: Distância Específica', type: 'Card', placeholderColor: 'bg-blue-900/10' },
+                                                ]}
+                                            />
+                                        )
+                                    },
+                                    {
+                                        id: 'macete',
+                                        label: 'Macete',
+                                        icon: LuBrain,
+                                        content: (
+                                            <div className="text-center p-8 bg-gradient-to-br from-violet-500/5 to-purple-500/5 rounded-2xl border border-violet-500/10">
+                                                <h3 className="text-xl font-bold text-foreground mb-4">O Macete do Lugar</h3>
+                                                <div className="text-6xl my-8 animate-pulse">🌍 ✈️ 🌍</div>
+                                                <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                    "Vou A, Volto DA: Crase HÁ! Vou A, Volto DE: Crase PRA QUÊ?"
+                                                </p>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'audio',
+                                        label: 'Áudio Resumo',
+                                        icon: LuMusic,
+                                        content: (
+                                            <div className="w-full flex justify-center py-4">
+                                                <div className="w-full max-w-md">
+                                                    <MusicPlayerCard
+                                                        audioUrl="#"
+                                                        titulo="Casos Especiais da Crase"
+                                                        artista="Prof. André"
+                                                        capaUrl="https://images.unsplash.com/photo-1544640808-32ca72ac7f37?q=80&w=1074&auto=format&fit=crop"
+                                                        lyrics={`
+                                                            (Refrão)
+                                                            Vou a, volto de, pra quê crasear?
+                                                            Vou a, volto da, a crase está lá!
+                                                            Nas horas exatas, o acento é certeiro
+                                                            Domine o detalhe e ganhe o mundo inteiro!
+                                                            `}
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+                                ]}
+                            />
+                        </section>
 
                         <QuizInterativo
                             titulo="Desafio Final: Casos Especiais"

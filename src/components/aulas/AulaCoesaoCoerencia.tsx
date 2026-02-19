@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { LuBookOpen, LuVideo, LuZap, LuChevronRight, LuVolume2, LuPlay, LuImage, LuShuffle, LuPenTool, LuMessageSquare, LuLink, LuTarget, LuFileText, LuBox, LuAnchor, LuCompass, LuActivity, LuCheck } from 'react-icons/lu';
+import { LuBookOpen, LuVideo, LuZap, LuChevronRight, LuVolume2, LuPlay, LuImage, LuShuffle, LuPenTool, LuMessageSquare, LuLink, LuTarget, LuFileText, LuBox, LuAnchor, LuCompass, LuActivity, LuCheck, LuCirclePlay as LuPlayCircle, LuBrain, LuMusic } from 'react-icons/lu';
 import {
     ModuleBanner,
     ContentAccordion,
@@ -10,12 +10,14 @@ import {
     FlipCard,
     CardCarousel,
     AlertBox,
-    MusicPlayerCard,
+    VideoModal,
     ModuleSummaryCarouselNew,
     AulaProps,
     ProgressIndicator,
     StickyModuleNav,
-    Activity
+    Activity,
+    SummaryTabs,
+    MusicPlayerCard,
 } from './shared';
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
@@ -467,22 +469,119 @@ export default function AulaCoesaoCoerencia({
                                 </div>
                             </section>
 
+                            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                                <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                    <span className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl font-black text-indigo-700 border border-indigo-500/20 shadow-inner">3</span>
+                                    Resumo e Multimedia
+                                </h2>
+
+                                <LessonTabs
+                                    tabs={[
+                                        {
+                                            id: 'video',
+                                            label: 'Vídeo Aula',
+                                            icon: LuPlayCircle,
+                                            content: (
+                                                <div className="w-full flex flex-col items-center py-6">
+                                                    <div className="w-full max-w-3xl">
+                                                        <VideoModal
+                                                            videoId="placeholder"
+                                                            title="Coesão Textual: O Guia Definitivo"
+                                                            duration="08:45"
+                                                            thumbnail="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1073&auto=format&fit=crop"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            )
+                                        },
+                                        {
+                                            id: 'resumo',
+                                            label: 'Resumo Visual',
+                                            icon: LuBookOpen,
+                                            content: (
+                                                <ModuleSummaryCarouselNew
+                                                    tituloAula="Coesão e Coerência"
+                                                    materia="Português"
+                                                    profissao="Concurso Petrobras"
+                                                    moduloNome="Coesão Textual"
+                                                    images={[
+                                                        { title: 'Mapa Mental: Coesão Referencial', type: 'Mapa Mental', placeholderColor: 'bg-indigo-900/10' },
+                                                        { title: 'Infográfico: Conectivos de Oposição', type: 'Infográfico', placeholderColor: 'bg-emerald-900/10' },
+                                                        { title: 'Diagrama: Fluxo de Catáfora', type: 'Diagrama', placeholderColor: 'bg-amber-900/10' },
+                                                        { title: 'Card Resumo: Dica Cesgranrio', type: 'Card', placeholderColor: 'bg-purple-900/10' },
+                                                    ]}
+                                                />
+                                            )
+                                        },
+                                        {
+                                            id: 'visual',
+                                            label: 'Macete Visual',
+                                            icon: LuBrain,
+                                            content: (
+                                                <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
+                                                    <h3 className="text-xl font-bold text-foreground mb-4">A Regra da Agulha</h3>
+                                                    <div className="text-7xl my-8 animate-pulse">🪡 🧵 🪡</div>
+                                                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                        "A Coesão é a costura. Se o fio (conectivo) arrebenta, os pedaços (frases) se soltam e o sentido cai!"
+                                                    </p>
+                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                                                        <div className="p-4 bg-indigo-500/5 border border-indigo-500/20 rounded-xl">
+                                                            <h4 className="text-sm font-bold text-indigo-600 dark:text-indigo-400 mb-2">Anáfora (Retrovisor)</h4>
+                                                            <p className="text-xs text-muted-foreground italic">"Comprei o <u>livro</u>. <strong>Ele</strong> é bom."</p>
+                                                            <p className="text-[10px] mt-2 font-medium">O pronome olha para trás, para o que já foi dito.</p>
+                                                        </div>
+                                                        <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
+                                                            <h4 className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mb-2">Catáfora (Farol)</h4>
+                                                            <p className="text-xs text-muted-foreground italic">"Só quero <strong>isto</strong>: <u>sucesso</u>."</p>
+                                                            <p className="text-[10px] mt-2 font-medium">O pronome aponta para frente, para o que virá.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )
+                                        },
+                                        {
+                                            id: 'audio',
+                                            label: 'Áudio Resumo',
+                                            icon: LuMusic,
+                                            content: (
+                                                <div className="w-full flex justify-center py-4">
+                                                    <div className="w-full max-w-md">
+                                                        <MusicPlayerCard
+                                                            audioUrl="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a7343b.mp3"
+                                                            titulo="O Tecido do Texto"
+                                                            artista="Prof. Antigravity"
+                                                            capaUrl="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1000&auto=format&fit=crop"
+                                                            lyrics={`
+                                                            (Refrão)
+                                                            É coesão, são os fios da meada
+                                                            Se o texto é tecido, a palavra é a amarrada
+                                                            Retoma o que foi dito, antecipa a jornada
+                                                            Sem nó no sentido, a vitória é cravada!
+                                                            `}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            )
+                                        }
+                                    ]}
+                                />
+                            </section>
+
                             {/* QUIZ Módulo 1 */}
                             <section id="quiz-modulo-1" className="pt-8">
                                 <QuizInterativo
                                     questoes={quizCoesaoQuestions}
                                     titulo="Desafio: Coesão Textual"
                                     icone="💬"
-                                    numero={1}
+                                    numero={5}
                                     onComplete={handleModule1Complete}
                                 />
                             </section>
-                        </div >
-                    </Activity >
+                        </div>
+                    </Activity>
 
                     {/* --- MÓDULO 2: COERÊNCIA --- */}
-                    < Activity mode={activeTab === 'modulo-2' ? 'visible' : 'hidden'
-                    }>
+                    <Activity mode={activeTab === 'modulo-2' ? 'visible' : 'hidden'}>
                         <div className={`space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500 ${activeTab !== 'modulo-2' ? 'hidden' : ''}`}>
                             <ModuleBanner
                                 numero={2}
@@ -494,7 +593,7 @@ export default function AulaCoesaoCoerencia({
                             <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
                                 <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
                                     <span className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-3xl font-black text-emerald-600 border border-emerald-500/20 shadow-inner">1</span>
-                                    Os Pilares do Sentido
+                                    Fundamentos Pedagógicos
                                 </h2>
 
                                 {/* Definição Pedagógica de Coerência */}
@@ -503,37 +602,192 @@ export default function AulaCoesaoCoerencia({
                                         <LuBookOpen className="w-6 h-6" />
                                         <h4 className="font-bold text-lg uppercase tracking-wider">A essência da Coerência</h4>
                                     </div>
-                                    <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                                        A <strong className="text-foreground">Coerência</strong> é a harmonia lógica entre as ideias. Se a coesão é o "tecido" do texto, a coerência é o "sentido" que ele faz na cabeça do leitor. Para que um texto seja coerente, ele deve evitar contradições e manter o foco no objetivo central.
+                                    <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-medium capitalize-first">
+                                        Segundo <strong className="text-foreground">Bechara</strong>, a coerência é o plano do conteúdo do texto. Ela não reside apenas nas palavras, mas na interação entre o texto e o conhecimento de mundo do leitor. É o que permite que a comunicação cumpra seu propósito informativo ou persuasivo.
                                     </p>
                                 </div>
 
-                                <div className="grid md:grid-cols-3 gap-6">
-                                    <div className="p-10 bg-muted/30 border border-border/50 rounded-3xl space-y-6 group hover:border-emerald-500/40 hover:shadow-xl transition-all duration-500">
-                                        <div className="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform shadow-inner shrink-0">🚫</div>
-                                        <h3 className="font-black text-2xl tracking-tight">Não-Contradição</h3>
-                                        <p className="text-lg text-muted-foreground font-medium leading-relaxed">As ideias apresentadas devem coexistir harmonicamente sem se anularem.</p>
-                                    </div>
-                                    <div className="p-10 bg-muted/30 border border-border/50 rounded-3xl space-y-6 group hover:border-teal-500/40 hover:shadow-xl transition-all duration-500">
-                                        <div className="w-14 h-14 bg-teal-500/10 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform shadow-inner shrink-0">📈</div>
-                                        <h3 className="font-black text-2xl tracking-tight">Progressão</h3>
-                                        <p className="text-lg text-muted-foreground font-medium leading-relaxed">Cada novo parágrafo deve acrescentar informações relevantes ao tema.</p>
-                                    </div>
-                                    <div className="p-10 bg-muted/30 border border-border/50 rounded-3xl space-y-6 group hover:border-cyan-500/40 hover:shadow-xl transition-all duration-500">
-                                        <div className="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform shadow-inner shrink-0">🎯</div>
-                                        <h3 className="font-black text-2xl tracking-tight">Relevância</h3>
-                                        <p className="text-lg text-muted-foreground font-medium leading-relaxed">O texto deve manter o foco no objetivo central da comunicação.</p>
-                                    </div>
-                                </div>
+                                <ContentAccordion
+                                    titulo="Os Pilares da Coerência"
+                                    icone="⚖️"
+                                    corIndicador="bg-emerald-500"
+                                    defaultOpen={true}
+                                    slides={[
+                                        {
+                                            titulo: "Não-Contradição",
+                                            icone: "1️⃣",
+                                            conteudo: (
+                                                <div className="space-y-6">
+                                                    <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+                                                        <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
+                                                            <span className="w-6 h-6 rounded bg-red-500/10 text-red-600 flex items-center justify-center text-xs">A</span>
+                                                            Consistência Lógica
+                                                        </h4>
+                                                        <p className="text-muted-foreground leading-relaxed">
+                                                            Um texto coerente exige que as ideias apresentadas não se anulem. A introdução de uma informação que nega o que foi dito anteriormente rompe o pacto de sentido com o leitor.
+                                                        </p>
+                                                    </div>
+                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                        <div className="bg-red-500/5 border border-red-500/20 rounded-xl p-4">
+                                                            <p className="text-xs font-black text-red-600 mb-1 uppercase tracking-tighter">Incoerente:</p>
+                                                            <p className="text-sm italic">"A plataforma é totalmente automatizada, mas depende de operação manual constante."</p>
+                                                        </div>
+                                                        <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-4">
+                                                            <p className="text-xs font-black text-emerald-600 mb-1 uppercase tracking-tighter">Coerente:</p>
+                                                            <p className="text-sm italic">"Embora seja altamente automatizada, a plataforma exige supervisão técnica pontual."</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )
+                                        },
+                                        {
+                                            titulo: "Continuidade e Progressão",
+                                            icone: "2️⃣",
+                                            conteudo: (
+                                                <div className="space-y-6">
+                                                    <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+                                                        <h4 className="font-bold text-lg mb-2 flex items-center gap-2 text-primary">
+                                                            <span className="w-6 h-6 rounded bg-primary/10 text-primary flex items-center justify-center text-xs">B</span>
+                                                            O Equilíbrio do Novo
+                                                        </h4>
+                                                        <p className="text-muted-foreground leading-relaxed">
+                                                            A **Continuidade** garante que o tema seja mantido (retomando o que já foi dito), enquanto a **Progressão** exige que o texto ande para frente, trazendo sempre informações novas (novidade temática).
+                                                        </p>
+                                                    </div>
+                                                    <AlertBox tipo="info" titulo="Definição Técnica">
+                                                        <p className="text-sm">Um texto que apenas repete o que já disse é redundante; um que só traz novidades sem conexão é confuso. A coerência mora no equilíbrio.</p>
+                                                    </AlertBox>
+                                                    <div className="bg-muted/50 p-4 rounded-xl italic text-sm">
+                                                        "O pré-sal é uma reserva gigante. Essa área (Continuidade) possui petróleo leve (Progressão)."
+                                                    </div>
+                                                </div>
+                                            )
+                                        },
+                                        {
+                                            titulo: "Relevância e Relação",
+                                            icone: "3️⃣",
+                                            conteudo: (
+                                                <div className="space-y-6">
+                                                    <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+                                                        <h4 className="font-bold text-lg mb-2 flex items-center gap-2 text-cyan-600">
+                                                            <span className="w-6 h-6 rounded bg-cyan-500/10 text-cyan-600 flex items-center justify-center text-xs">C</span>
+                                                            Contexto e Propósito
+                                                        </h4>
+                                                        <p className="text-muted-foreground leading-relaxed">
+                                                            As informações de um texto devem ser relevantes para o objetivo da comunicação. Se o foco é segurança no trabalho, divagações sobre o clima de férias rompem a unidade temática.
+                                                        </p>
+                                                    </div>
+                                                    <div className="p-4 bg-cyan-500/5 border border-cyan-500/20 rounded-xl">
+                                                        <p className="font-bold text-xs text-cyan-700 mb-1">Aplicação Prática:</p>
+                                                        <p className="text-sm italic">"Em relatórios técnicos da Petrobras, a precisão terminológica é o fator de maior relevância para evitar erros de interpretação operacional."</p>
+                                                    </div>
+                                                </div>
+                                            )
+                                        }
+                                    ]}
+                                />
 
-                                <AlertBox tipo="info" titulo="Importante: Forma vs Sentido">
+                                <AlertBox tipo="warning" titulo="Dica para Redação">
                                     <div className="font-bold text-lg leading-relaxed">
-                                        Lembre-se: Coesão é a moldura; Coerência é a pintura. Um texto pode ser gramaticalmente perfeito e logicamente vazio.
-                                        <div className="mt-4 p-5 bg-background/50 rounded-2xl border border-border/50 italic text-base">
-                                            "O dia amanheceu azul porque as formigas cantavam ópera na lua." (Coesivo, mas incoerente).
-                                        </div>
+                                        A falta de coerência gera o chamado "texto Frankenstein": partes que até fazem sentido isoladas, mas não formam um corpo lógico unido.
                                     </div>
                                 </AlertBox>
+                            </section>
+
+                            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                                <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                    <span className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-3xl font-black text-emerald-700 border border-emerald-500/20 shadow-inner">2</span>
+                                    Resumo e Multimedia
+                                </h2>
+
+                                <LessonTabs
+                                    tabs={[
+                                        {
+                                            id: 'video',
+                                            label: 'Vídeo Aula',
+                                            icon: LuPlayCircle,
+                                            content: (
+                                                <div className="w-full flex flex-col items-center py-6">
+                                                    <div className="w-full max-w-3xl">
+                                                        <VideoModal
+                                                            videoId="placeholder"
+                                                            title="Coerência Lógica: A Arte do Sentido"
+                                                            duration="07:20"
+                                                            thumbnail="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1074&auto=format&fit=crop"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            )
+                                        },
+                                        {
+                                            id: 'resumo',
+                                            label: 'Resumo Visual',
+                                            icon: LuBookOpen,
+                                            content: (
+                                                <ModuleSummaryCarouselNew
+                                                    tituloAula="Coesão e Coerência"
+                                                    materia="Português"
+                                                    profissao="Concurso Petrobras"
+                                                    moduloNome="Coerência Lógica"
+                                                    images={[
+                                                        { title: 'Mapa Mental: Pilares da Coerência', type: 'Mapa Mental', placeholderColor: 'bg-emerald-900/10' },
+                                                        { title: 'Diagrama: Tese vs Antítese', type: 'Diagrama', placeholderColor: 'bg-blue-900/10' },
+                                                        { title: 'Infográfico: Progressão Temática', type: 'Infográfico', placeholderColor: 'bg-indigo-900/10' },
+                                                        { title: 'Card Resumo: Bechara Explica', type: 'Card', placeholderColor: 'bg-cyan-900/10' },
+                                                    ]}
+                                                />
+                                            )
+                                        },
+                                        {
+                                            id: 'visual',
+                                            label: 'Macete Visual',
+                                            icon: LuBrain,
+                                            content: (
+                                                <div className="text-center p-8 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-2xl border border-emerald-500/10">
+                                                    <h3 className="text-xl font-bold text-foreground mb-4">O Fio de Ariadne</h3>
+                                                    <div className="text-7xl my-8 animate-bounce">🧶 🏛️ 🧶</div>
+                                                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                        "Um texto coerente é um labirinto com saída segura."
+                                                    </p>
+                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                                                        <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
+                                                            <h4 className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mb-2">Lógica Interna</h4>
+                                                            <p className="text-xs text-muted-foreground italic">As ideias não se batem; elas se somam para criar um todo.</p>
+                                                        </div>
+                                                        <div className="p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">
+                                                            <h4 className="text-sm font-bold text-amber-600 dark:text-amber-400 mb-2">Conhecimento de Mundo</h4>
+                                                            <p className="text-xs text-muted-foreground italic">O texto faz sentido dentro do contexto em que foi escrito.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )
+                                        },
+                                        {
+                                            id: 'audio',
+                                            label: 'Áudio Resumo',
+                                            icon: LuMusic,
+                                            content: (
+                                                <div className="w-full flex justify-center py-4">
+                                                    <div className="w-full max-w-md">
+                                                        <MusicPlayerCard
+                                                            audioUrl="https://cdn.pixabay.com/audio/2022/02/22/audio_9e3d964f4b.mp3"
+                                                            titulo="A Lógica do Sentido"
+                                                            artista="Prof. Antigravity"
+                                                            capaUrl="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000&auto=format&fit=crop"
+                                                            lyrics={`
+                                                            (Refrão)
+                                                            Não basta ligar, tem que fazer sentido
+                                                            O texto coerente nunca é perdido
+                                                            Lógica pura, sem contradição
+                                                            É o mestre Bechara dando a direção!
+                                                            `}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            )
+                                        }
+                                    ]}
+                                />
                             </section>
 
                             <section id="quiz-modulo-2" className="pt-8">
@@ -541,15 +795,15 @@ export default function AulaCoesaoCoerencia({
                                     questoes={quizCoerenciaQuestions}
                                     titulo="Desafio: Coerência Lógica"
                                     icone="🧠"
-                                    numero={2}
+                                    numero={4}
                                     onComplete={handleModule2Complete}
                                 />
                             </section>
                         </div>
-                    </Activity >
+                    </Activity>
 
                     {/* --- MÓDULO 3: PRÁTICA --- */}
-                    < Activity mode={activeTab === 'modulo-3' ? 'visible' : 'hidden'}>
+                    <Activity mode={activeTab === 'modulo-3' ? 'visible' : 'hidden'}>
                         <div className={`space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500 ${activeTab !== 'modulo-3' ? 'hidden' : ''}`}>
                             <ModuleBanner
                                 numero={3}
@@ -603,6 +857,92 @@ export default function AulaCoesaoCoerencia({
                                 </div>
                             </section>
 
+                            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                                <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                    <span className="w-14 h-14 rounded-2xl bg-violet-500/10 flex items-center justify-center text-3xl font-black text-violet-700 border border-violet-500/20 shadow-inner">2</span>
+                                    Resumo e Multimedia
+                                </h2>
+
+                                <LessonTabs
+                                    tabs={[
+                                        {
+                                            id: 'video',
+                                            label: 'Vídeo Aula',
+                                            icon: LuPlayCircle,
+                                            content: (
+                                                <div className="w-full flex flex-col items-center py-6">
+                                                    <div className="w-full max-w-3xl">
+                                                        <VideoModal
+                                                            videoId="placeholder"
+                                                            title="Prática de Coesão e Coerência"
+                                                            duration="10:15"
+                                                            thumbnail="https://images.unsplash.com/photo-1434030216411-0bb7c3f3dfad?q=80&w=1000&auto=format&fit=crop"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            )
+                                        },
+                                        {
+                                            id: 'resumo',
+                                            label: 'Resumo Visual',
+                                            icon: LuBookOpen,
+                                            content: (
+                                                <ModuleSummaryCarouselNew
+                                                    tituloAula="Coesão e Coerência"
+                                                    materia="Português"
+                                                    profissao="Concurso Petrobras"
+                                                    moduloNome="Prática e Análise"
+                                                    images={[
+                                                        { title: 'Checklist: Revisão de Texto', type: 'Infográfico', placeholderColor: 'bg-violet-900/10' },
+                                                        { title: 'Tabela: Erros Frequentes', type: 'Tabela', placeholderColor: 'bg-red-900/10' },
+                                                        { title: 'Mapa: Decisão de Conectivos', type: 'Mapa Mental', placeholderColor: 'bg-indigo-900/10' },
+                                                        { title: 'Card: Macetes Finais', type: 'Card', placeholderColor: 'bg-purple-900/10' },
+                                                    ]}
+                                                />
+                                            )
+                                        },
+                                        {
+                                            id: 'visual',
+                                            label: 'Macete Visual',
+                                            icon: LuBrain,
+                                            content: (
+                                                <div className="text-center p-8 bg-gradient-to-br from-violet-500/5 to-purple-500/5 rounded-2xl border border-violet-500/10">
+                                                    <h3 className="text-xl font-bold text-foreground mb-4">O Filtro do Sentido</h3>
+                                                    <div className="text-7xl my-8 animate-pulse">🔍 📝 🧪</div>
+                                                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                        "Antes de marcar a opção, pergunte: as frases se unem? As ideias se somam? O texto caminha?"
+                                                    </p>
+                                                </div>
+                                            )
+                                        },
+                                        {
+                                            id: 'audio',
+                                            label: 'Áudio Resumo',
+                                            icon: LuMusic,
+                                            content: (
+                                                <div className="w-full flex justify-center py-4">
+                                                    <div className="w-full max-w-md">
+                                                        <MusicPlayerCard
+                                                            audioUrl="#"
+                                                            titulo="Laboratório de Texto"
+                                                            artista="Prof. André"
+                                                            capaUrl="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop"
+                                                            lyrics={`
+                                                            (Refrão)
+                                                            Analise a frase com olho clínico
+                                                            O erro de coesão é quase químico
+                                                            Mistura conectivo, perde a reação
+                                                            Siga o mestre e não erre a questão!
+                                                            `}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            )
+                                        }
+                                    ]}
+                                />
+                            </section>
+
                             {/* QUIZ FINAL */}
                             <section id="quiz-final" className="pt-8">
                                 <QuizInterativo
@@ -621,7 +961,7 @@ export default function AulaCoesaoCoerencia({
                         </div>
                     </Activity >
                 </main>
-            </Tabs>
-        </div>
+            </Tabs >
+        </div >
     );
 }

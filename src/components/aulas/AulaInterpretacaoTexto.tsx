@@ -52,7 +52,7 @@ import {
     ModuleBanner,
     SummaryTabs,
     NanoImagePlaceholder,
-    ModuleSummaryCarousel,
+    ModuleSummaryCarouselNew,
     MusicPlayerCard,
     LessonTabs,
     QuizInterativo,
@@ -512,10 +512,76 @@ export default function AulaInterpretacaoTexto({
                                 <span className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl font-black text-indigo-700 border border-indigo-500/20 shadow-inner">3</span>
                                 Resumo e Multimedia
                             </h2>
-                            <LessonTabs tabs={[
-                                { id: 'video', label: 'Vídeo Aula', icon: LuPlay, content: <VideoModal videoId="dQw4w9WgXcQ" title="Bechara e a Lógica Textual" duration="15:00" thumbnail={null} /> },
-                                { id: 'audio', label: 'Música do Módulo', icon: LuVolume2, content: <MusicPlayerCard audioUrl="#" titulo="Ritmo da Leitura" artista="Bechara Club" lyrics="No texto eu busco a marca, \n Na linha eu vejo o fato, \n Mas é na entrelinha \n Que eu firmo o meu contrato!" /> }
-                            ]} />
+                            <LessonTabs
+                                tabs={[
+                                    {
+                                        id: 'video',
+                                        label: 'Vídeo Aula',
+                                        icon: LuPlay,
+                                        content: (
+                                            <div className="w-full flex flex-col items-center py-6">
+                                                <div className="w-full max-w-3xl">
+                                                    <VideoModal
+                                                        videoId="dQw4w9WgXcQ"
+                                                        title="Bechara e a Lógica Textual"
+                                                        duration="15:00"
+                                                        thumbnail="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000&auto=format&fit=crop"
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'resumo',
+                                        label: 'Resumo Visual',
+                                        icon: LuBookOpen,
+                                        content: (
+                                            <ModuleSummaryCarouselNew
+                                                images={[
+                                                    { title: 'Diferença: Compreensão vs Interpretação', type: 'Infográfico', placeholderColor: 'bg-blue-100 dark:bg-blue-900/30' },
+                                                    { title: 'Tipos Textuais: O Mapa', type: 'Mapa Mental', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
+                                                    { title: 'Checklist: Leitura Atenta', type: 'Lista', placeholderColor: 'bg-purple-100 dark:bg-purple-900/30' },
+                                                ]}
+                                            />
+                                        )
+                                    },
+                                    {
+                                        id: 'visual',
+                                        label: 'Macete Visual',
+                                        icon: LuImage,
+                                        content: (
+                                            <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
+                                                <h3 className="text-xl font-bold text-foreground mb-4">O Ímã da Verdade Textual</h3>
+                                                <div className="text-7xl my-8 animate-bounce">🧲 ✨ 📖</div>
+                                                <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                    "Compreensão é o que tá lá (Análise). Interpretação é pra onde vai (Síntese). Não inventa, não viaja, fica no texto!"
+                                                </p>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'audio',
+                                        label: 'Áudio Resumo',
+                                        icon: LuVolume2,
+                                        content: (
+                                            <div className="w-full flex justify-center py-4">
+                                                <div className="w-full max-w-md">
+                                                    <MusicPlayerCard
+                                                        audioUrl="#"
+                                                        titulo="Ritmo da Leitura"
+                                                        artista="Bechara Club"
+                                                        capaUrl="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000&auto=format&fit=crop"
+                                                        lyrics={`No texto eu busco a marca,
+                                                        Na linha eu vejo o fato,
+                                                        Mas é na entrelinha
+                                                        Que eu firmo o meu contrato!`}
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+                                ]}
+                            />
                         </section>
 
                         {/* SEÇÃO 4: QUIZ M1 */}
@@ -616,6 +682,87 @@ export default function AulaInterpretacaoTexto({
                             ]} />
                         </section>
 
+                        {/* RESUMO MÓDULO 2 */}
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                <span className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl font-black text-indigo-700 border border-indigo-500/20 shadow-inner">3</span>
+                                Resumo e Multimedia
+                            </h2>
+                            <LessonTabs
+                                tabs={[
+                                    {
+                                        id: 'video',
+                                        label: 'Vídeo Aula',
+                                        icon: LuPlay,
+                                        content: (
+                                            <div className="w-full flex flex-col items-center py-6">
+                                                <div className="w-full max-w-3xl">
+                                                    <VideoModal
+                                                        videoId="7tU9PzSkaU0"
+                                                        title="Conectivos: A Dobradiça do Texto"
+                                                        duration="12:30"
+                                                        thumbnail="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1000&auto=format&fit=crop"
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'resumo',
+                                        label: 'Resumo Visual',
+                                        icon: LuBookOpen,
+                                        content: (
+                                            <ModuleSummaryCarouselNew
+                                                images={[
+                                                    { title: 'Tabela: Conectivos de Oposição', type: 'Tabela', placeholderColor: 'bg-red-100 dark:bg-red-900/30' },
+                                                    { title: 'Mapa: Conectivos Causais', type: 'Mapa Mental', placeholderColor: 'bg-blue-100 dark:bg-blue-900/30' },
+                                                    { title: 'Card: Concessivas vs Adversativas', type: 'Diferença', placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30' },
+                                                ]}
+                                            />
+                                        )
+                                    },
+                                    {
+                                        id: 'visual',
+                                        label: 'Macete Visual',
+                                        icon: LuImage,
+                                        content: (
+                                            <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
+                                                <h3 className="text-xl font-bold text-foreground mb-4">A Regra dos 2 Tempos</h3>
+                                                <div className="text-7xl my-8 animate-pulse">⏳ ⚖️ 🔗</div>
+                                                <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                    "Ache o conectivo, identifique o sentido! Mas, Porém, Contudo... No entanto, Entrega a Oposição!"
+                                                </p>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'audio',
+                                        label: 'Áudio Resumo',
+                                        icon: LuVolume2,
+                                        content: (
+                                            <div className="w-full flex justify-center py-4">
+                                                <div className="w-full max-w-md">
+                                                    <MusicPlayerCard
+                                                        audioUrl="#"
+                                                        titulo="Dobradiça do Texto"
+                                                        artista="Conector Band"
+                                                        capaUrl="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000&auto=format&fit=crop"
+                                                        lyrics={`(Verso 1)
+                                                        O texto é um prédio, as colunas vão subir.
+                                                        Sem o conector, o prédio vai cair!
+                                                        
+                                                        (Refrão)
+                                                        Mas, porém, contudo... as pedras do caminho.
+                                                        Logo e portanto... o final do pergaminho!`}
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+                                ]}
+                            />
+                        </section>
+
                         {/* SEÇÃO 3: QUIZ M2 */}
                         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
                             <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
@@ -690,6 +837,88 @@ export default function AulaInterpretacaoTexto({
                                     </div>
                                 </div>
                             )}
+                        </section>
+
+                        {/* RESUMO MÓDULO 3 */}
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                <span className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl font-black text-indigo-700 border border-indigo-500/20 shadow-inner">3</span>
+                                Resumo e Multimedia
+                            </h2>
+                            <LessonTabs
+                                tabs={[
+                                    {
+                                        id: 'video',
+                                        label: 'Vídeo Aula',
+                                        icon: LuPlay,
+                                        content: (
+                                            <div className="w-full flex flex-col items-center py-6">
+                                                <div className="w-full max-w-3xl">
+                                                    <VideoModal
+                                                        videoId="B9v8iK4R50U"
+                                                        title="Estratégias para Cesgranrio"
+                                                        duration="18:45"
+                                                        thumbnail="https://images.unsplash.com/photo-1454165833767-027ffea9e77b?q=80&w=1000&auto=format&fit=crop"
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'resumo',
+                                        label: 'Resumo Visual',
+                                        icon: LuBookOpen,
+                                        content: (
+                                            <ModuleSummaryCarouselNew
+                                                images={[
+                                                    { title: 'Checklist: As 3 Portas do Erro', type: 'Infográfico', placeholderColor: 'bg-red-100 dark:bg-red-900/30' },
+                                                    { title: 'Passo a Passo: Mapeamento de Texto', type: 'Guia', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
+                                                    { title: 'Tabela: Pegadinhas de Comando', type: 'Tabela', placeholderColor: 'bg-orange-100 dark:bg-orange-900/30' },
+                                                ]}
+                                            />
+                                        )
+                                    },
+                                    {
+                                        id: 'visual',
+                                        label: 'Macete Visual',
+                                        icon: LuImage,
+                                        content: (
+                                            <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
+                                                <h3 className="text-xl font-bold text-foreground mb-4">O Filtro do Gabarito</h3>
+                                                <div className="text-7xl my-8 animate-spin-slow">💎 🛡️ 🎯</div>
+                                                <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                    "Nem mais (Extrapolação), nem menos (Redução), nem o oposto (Contradição). Fique na Verdaaaaaade do Texto!"
+                                                </p>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'audio',
+                                        label: 'Áudio Resumo',
+                                        icon: LuVolume2,
+                                        content: (
+                                            <div className="w-full flex justify-center py-4">
+                                                <div className="w-full max-w-md">
+                                                    <MusicPlayerCard
+                                                        audioUrl="#"
+                                                        titulo="O Filtro Final"
+                                                        artista="Elite Team"
+                                                        capaUrl="https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=1000&auto=format&fit=crop"
+                                                        lyrics={`(Refrão)
+                                                        Cuidado com a porta, não deixe entrar!
+                                                        O erro lá fora quer te derrubar.
+                                                        
+                                                        (Ponte)
+                                                        Extrapolou? Perdeu a questão.
+                                                        Reduziu? Caiu no chão.
+                                                        Contradisse? Sem perdão!`}
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+                                ]}
+                            />
                         </section>
 
                         {/* SEÇÃO 3: SIMULADO FINAL */}
