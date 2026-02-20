@@ -39,10 +39,10 @@ export interface ModuleDef {
 
 export interface QuizQuestion {
     id: number;
-    pergunta: string;
+    pergunta: string | React.ReactNode;
     opcoes: { label: string; valor: string }[];
     correta: string;
-    explicacao: string;
+    explicacao: string | React.ReactNode;
 }
 
 // ── Helpers ─────────────────────────────────────────────────────────────
@@ -170,11 +170,13 @@ export function CardCarousel({
     subtitulo,
     numeroBadge,
     cards,
+    itemsPerView = 3,
 }: {
     titulo: string;
     subtitulo?: string;
     numeroBadge?: number;
     cards: CarouselCard[];
+    itemsPerView?: 1 | 2 | 3;
 }) {
     return (
         <section className="bg-muted/5 rounded-2xl border border-border/50 p-6 md:p-8 space-y-6">
@@ -202,7 +204,7 @@ export function CardCarousel({
                     {cards.map((card, index) => (
                         <CarouselItem
                             key={index}
-                            className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3"
+                            className={cn("pl-4", itemsPerView === 1 ? "basis-full" : itemsPerView === 2 ? "basis-full sm:basis-1/2" : "basis-full sm:basis-1/2 lg:basis-1/3")}
                         >
                             <div className="bg-card p-6 md:p-8 rounded-2xl border border-border shadow-md h-full flex flex-col group/card hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500">
                                 <div className="flex items-start gap-5 mb-6">
@@ -272,12 +274,14 @@ export function ContentAccordion({
     corIndicador = 'bg-emerald-500',
     slides,
     defaultOpen = false,
+    slidesPerView,
 }: {
     titulo: string;
     icone?: React.ReactNode;
     corIndicador?: string;
     slides: ContentSlide[];
     defaultOpen?: boolean;
+    slidesPerView?: 1 | 2;
 }) {
     const [isOpen, setIsOpen] = useState(defaultOpen);
 
@@ -317,7 +321,7 @@ export function ContentAccordion({
                             {slides.map((slide, index) => (
                                 <CarouselItem
                                     key={index}
-                                    className="pl-4 basis-full md:basis-1/2 lg:basis-1/2"
+                                    className={`pl-4 basis-full ${slidesPerView === 1 ? '' : slides.length > 1 ? 'md:basis-1/2 lg:basis-1/2' : ''}`}
                                 >
                                     <div className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-lg h-full flex flex-col space-y-6 group/slide hover:border-primary/40 transition-all duration-500">
                                         <div className="flex items-start gap-5">
@@ -461,46 +465,39 @@ export function FlipCard({
             >
                 {/* ── FRENTE ── */}
                 <div
-                    className="absolute inset-0 w-full h-full backface-hidden bg-card border-2 border-border rounded-2xl p-6 flex flex-col justify-between"
+                    className="absolute inset-0 w-full h-full backface-hidden bg-card border-2 border-border rounded-2xl p-5 flex flex-col justify-between"
                     style={{ backfaceVisibility: 'hidden' }}
                 >
-                    <div>
-                        <div className="flex items-center justify-between mb-4">
-                            {numero && (
+                    <div className="flex flex-col flex-1 h-full min-h-0">
+                        {numero && (
+                            <div className="mb-3">
                                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wide">
                                     Questão {numero}
                                 </span>
-                            )}
-                            <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
-                                <span className="text-lg">👆</span> Clique para virar
-                            </span>
-                        </div>
-                        <div className="text-foreground text-base leading-relaxed overflow-y-auto max-h-[220px] pr-2 custom-scrollbar">
+                            </div>
+                        )}
+                        <div className="text-foreground text-base leading-relaxed overflow-y-auto flex-1 pr-2 custom-scrollbar">
                             {frente}
                         </div>
                     </div>
-                    <div className="mt-4 pt-4 border-t border-border flex justify-between items-center text-xs text-muted-foreground">
-                        <span>{categoria}</span>
-                        <span>Petrobras • CESGRANRIO</span>
+                    <div className="mt-3 pt-3 border-t border-border flex justify-between items-center text-[10px] md:text-xs text-muted-foreground shrink-0">
+                        <span className="truncate pr-2">{categoria}</span>
+                        <span className="shrink-0">Petrobras • CESGRANRIO</span>
                     </div>
                 </div>
 
                 {/* ── VERSO ── */}
                 <div
-                    className={`absolute inset-0 w-full h-full backface-hidden bg-indigo-900/10 border-2 border-indigo-500/30 rounded-2xl p-6 flex flex-col`}
+                    className={`absolute inset-0 w-full h-full backface-hidden bg-indigo-900/10 border-2 border-indigo-500/30 rounded-2xl p-5 flex flex-col`}
                     style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
                 >
-                    <div className="flex items-center gap-2 mb-4 text-emerald-600 dark:text-emerald-400 font-bold border-b border-emerald-500/20 pb-3">
+                    <div className="flex items-center gap-2 mb-3 text-emerald-600 dark:text-emerald-400 font-bold border-b border-emerald-500/20 pb-2 shrink-0">
                         <LuCheck className="text-xl" />
                         <span>Resposta Comentada</span>
                     </div>
 
-                    <div className="text-foreground text-sm leading-relaxed overflow-y-auto flex-1 pr-2 custom-scrollbar">
+                    <div className="text-foreground text-sm leading-relaxed overflow-y-auto flex-1 pr-2 pb-1 custom-scrollbar">
                         {verso}
-                    </div>
-
-                    <div className="mt-4 pt-3 border-t border-indigo-500/10 text-center">
-                        <span className="text-xs text-indigo-500 font-medium">Clique para voltar à pergunta</span>
                     </div>
                 </div>
             </div>
@@ -1562,15 +1559,15 @@ export function StickyModuleNav({
         // 🔒 CRITICAL: DO NOT CHANGE THESE STYLES. 
         // The specific combination of w-screen and negative margin is required for full-width breakout.
         // Changing this WILL break the layout and cause horizontal scrolling. verified-locked-by-user.
-        <div className="sticky top-[70px] z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-y border-border/50 shadow-sm py-4 mb-4 w-screen ml-[calc(50%-50vw)]">
-            <div className={`${modules.length > 3 ? 'max-w-7xl' : 'max-w-6xl'} mx-auto px-6`}>
-                <TabsList className={`grid w-full h-auto p-2 bg-muted/30 border border-border/20 rounded-2xl gap-2 shadow-inner grid-cols-1 md:grid-cols-${modules.length}`}>
+        <div className="sticky top-[70px] z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-y border-border/50 shadow-sm py-4 mb-4 w-screen ml-[calc(50%-50vw)] overflow-hidden">
+            <div className="w-full px-4 overflow-x-auto hide-scrollbar pb-2 -mb-2">
+                <TabsList className="flex w-max min-w-full h-auto p-2 bg-muted/30 border border-border/20 rounded-2xl gap-2 shadow-inner justify-start xl:justify-center mx-auto">
                     {modules.map((mod, index) => (
                         <TabsTrigger
                             key={mod.id}
                             value={mod.id}
                             disabled={!isModuleUnlocked(index)}
-                            className="py-4 px-4 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border disabled:opacity-40 disabled:cursor-not-allowed group"
+                            className="shrink-0 min-w-[220px] py-4 px-6 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border disabled:opacity-40 disabled:cursor-not-allowed group"
                         >
                             <div className="flex flex-col items-center gap-2">
                                 <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/70 group-data-[state=active]:text-primary/70 font-display">
@@ -1598,3 +1595,35 @@ export function StickyModuleNav({
     );
 }
 
+export function ModuleSectionHeader({
+    index,
+    title,
+    variant = 'indigo',
+    className
+}: {
+    index: number | string;
+    title: string;
+    variant?: 'indigo' | 'violet' | 'emerald' | 'amber' | 'rose' | 'blue';
+    className?: string;
+}) {
+    const variants = {
+        indigo: 'bg-indigo-500/20 text-indigo-700 dark:text-indigo-400',
+        violet: 'bg-violet-500/20 text-violet-700 dark:text-violet-400',
+        emerald: 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-400',
+        amber: 'bg-amber-500/20 text-amber-700 dark:text-amber-400',
+        rose: 'bg-rose-500/20 text-rose-700 dark:text-rose-400',
+        blue: 'bg-blue-500/20 text-blue-700 dark:text-blue-400',
+    };
+
+    return (
+        <h2 className={cn("text-3xl md:text-4xl font-bold flex items-center gap-3", className)}>
+            <span className={cn(
+                "w-14 h-14 rounded-full flex items-center justify-center text-3xl font-bold shrink-0",
+                variants[variant]
+            )}>
+                {index}
+            </span>
+            {title}
+        </h2>
+    );
+}
