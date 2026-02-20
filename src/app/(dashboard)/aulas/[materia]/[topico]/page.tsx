@@ -51,6 +51,11 @@ const AulaSintaxe = dynamic<AulaProps>(
     { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
 );
 
+const AulaClassesPalavras = dynamic<AulaProps>(
+    () => import('@/components/aulas/AulaClassesPalavras'),
+    { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
+);
+
 interface PageProps {
     params: Promise<{ materia: string; topico: string }>;
 }
@@ -431,6 +436,15 @@ export default function TopicoPage({ params }: PageProps) {
                         />
                     ) : materiaId === 'portugues' && topicoId === 'sintaxe' ? (
                         <AulaSintaxe
+                            onComplete={handleCompleteAula}
+                            isCompleted={isCompleted}
+                            loading={loading}
+                            xpGanho={xpGanho}
+                            currentProgress={progress}
+                            onUpdateProgress={updateProgress}
+                        />
+                    ) : materiaId === 'portugues' && topicoId === 'classes-palavras' ? (
+                        <AulaClassesPalavras
                             onComplete={handleCompleteAula}
                             isCompleted={isCompleted}
                             loading={loading}

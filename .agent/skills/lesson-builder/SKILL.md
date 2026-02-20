@@ -61,6 +61,14 @@ Use como referência principal a **Gramática Normativa da Língua Portuguesa de
 - Use linguagem direta, ativa e encorajadora.
 - Fale com o aluno ("Você vai perceber...", "Anote isso...").
 
+**3. COERÊNCIA PEDAGÓGICA (REGRA DE OURO DOS QUIZZES):**
+- **REGRA:** NUNCA cobre em um Simulado (QuizInterativo) conceitos, termos ou estratégias (ex: "Leitura Vertical", "Skimming") que não foram EXPLICITAMENTE ensinados no texto da aula correspondente.
+- **MOTIVO:** O quiz serve para retenção e fixação do que acabou de ser lido. Testar conhecimento prévio do aluno gera frustração. Se a resposta certa de uma questão exige um conceito específico, este conceito DEVE ter sido ensinado ao longo do conteúdo da aula.
+
+**4. DESTAQUES VISUAIS OBRIGATÓRIOS NOS ENUNCIADOS (SINTAXE/GRAMÁTICA):**
+- **REGRA:** SEMPRE que a pergunta do quiz pedir para o aluno avaliar/identificar um termo específico da oração ("a expressão destacada atua como..."), esse termo DEVE ESTAR VISIVELMENTE DESTACADO entre **asteriscos duplos** (negrito) ou 'aspas simples' no próprio enunciado da questão. (Ex: "A **Petrobras** é a maior...")
+- **MOTIVO:** Evita que o aluno tenha que adivinhar qual o termo em avaliação quando a oração for transcrita sem o devido negrito ou sinalização.
+
 ---
 
 ## 🎯 ESTRUTURA DA AULA COM PADRÕES HTML

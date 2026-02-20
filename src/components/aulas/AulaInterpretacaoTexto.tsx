@@ -782,10 +782,67 @@ export default function AulaInterpretacaoTexto({
                             gradiente="bg-gradient-to-br from-purple-700 to-indigo-900"
                         />
 
-                        {/* SEÇÃO 1: ARMADILHAS (REINICIA) */}
+                        {/* SEÇÃO 1: VARREDURA E MÉTODOS DE LEITURA */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-lg font-bold text-red-700 dark:text-red-400">1</span>
+                                <span className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center text-lg font-bold text-blue-700 dark:text-blue-400">1</span>
+                                A Varredura Estratégica
+                            </h2>
+                            <p className="text-muted-foreground text-lg mb-6">
+                                Na prova, o tempo é seu maior inimigo. Técnicas de varredura ajudam a mapear o texto antes de mergulhar em seus detalhes, preparando o cérebro para buscar a resposta correta no lugar certo.
+                            </p>
+                            <ContentAccordion
+                                titulo="Métodos Ágeis de Leitura"
+                                icone={<LuBookOpen className="text-blue-500" />}
+                                corIndicador="bg-blue-500"
+                                slides={[
+                                    {
+                                        titulo: "Leitura Vertical",
+                                        icone: "↕️",
+                                        conteudo: (
+                                            <div className="space-y-4">
+                                                <p className="text-sm text-foreground">A <strong>Leitura Vertical</strong> serve para identificar palavras-chave e a estrutura principal (a "espinha dorsal") do argumento sem ler todas as palavras da linha.</p>
+                                                <div className="bg-blue-500/10 p-4 border border-blue-500/20 rounded-xl">
+                                                    <p className="font-bold text-sm text-blue-800 dark:text-blue-300">💡 Como fazer:</p>
+                                                    <p className="text-sm text-blue-900/80 dark:text-blue-300 mt-2">Passe o olho rapidamente do topo até a base do texto, focando no centro da mancha de texto, pescando substantivos e verbos fortes.</p>
+                                                </div>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        titulo: "Skimming",
+                                        icone: "🏄",
+                                        conteudo: (
+                                            <div className="space-y-4">
+                                                <p className="text-sm text-foreground">O <strong>Skimming</strong> ("deslizar" sobre o texto) visa captar a <strong>ideia principal</strong> ou o tema central rapidamente.</p>
+                                                <div className="bg-indigo-500/10 p-4 border border-indigo-500/20 rounded-xl">
+                                                    <p className="font-bold text-sm text-indigo-800 dark:text-indigo-300">💡 Como fazer:</p>
+                                                    <p className="text-sm text-indigo-900/80 dark:text-indigo-300 mt-2">Leia apenas o título, subtítulos, o primeiro parágrafo e a primeira linha de cada parágrafo subsequente.</p>
+                                                </div>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        titulo: "Scanning",
+                                        icone: "🔍",
+                                        conteudo: (
+                                            <div className="space-y-4">
+                                                <p className="text-sm text-foreground">O <strong>Scanning</strong> ("escanear" o texto) serve para encontrar uma <strong>informação específica</strong> previamente solicitada pela questão (uma data, um nome, um valor).</p>
+                                                <div className="bg-emerald-500/10 p-4 border border-emerald-500/20 rounded-xl">
+                                                    <p className="font-bold text-sm text-emerald-800 dark:text-emerald-300">💡 Como fazer:</p>
+                                                    <p className="text-sm text-emerald-900/80 dark:text-emerald-300 mt-2">Não leia para entender. Aja como um radar procurando aquele termo exato no meio das palavras.</p>
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+                                ]}
+                            />
+                        </section>
+
+                        {/* SEÇÃO 2: ARMADILHAS */}
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
+                                <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-lg font-bold text-red-700 dark:text-red-400">2</span>
                                 As "Três Portas do Erro" na Interpretação
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -807,10 +864,10 @@ export default function AulaInterpretacaoTexto({
                             </div>
                         </section>
 
-                        {/* SEÇÃO 2: DESAFIO PRÁTICO */}
+                        {/* SEÇÃO 3: DESAFIO PRÁTICO */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400">2</span>
+                                <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400">3</span>
                                 Desafio Prático: Laboratório de Gabarito
                             </h2>
                             {shuffledChallenges.length > 0 && (
@@ -839,10 +896,10 @@ export default function AulaInterpretacaoTexto({
                             )}
                         </section>
 
-                        {/* RESUMO MÓDULO 3 */}
+                        {/* SEÇÃO 4: RESUMO MÓDULO 3 */}
                         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
                             <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-                                <span className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl font-black text-indigo-700 border border-indigo-500/20 shadow-inner">3</span>
+                                <span className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl font-black text-indigo-700 border border-indigo-500/20 shadow-inner">4</span>
                                 Resumo e Multimedia
                             </h2>
                             <LessonTabs
@@ -921,10 +978,10 @@ export default function AulaInterpretacaoTexto({
                             />
                         </section>
 
-                        {/* SEÇÃO 3: SIMULADO FINAL */}
+                        {/* SEÇÃO 5: SIMULADO FINAL */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-14 h-14 rounded-full bg-yellow-500/20 flex items-center justify-center text-lg font-bold text-yellow-700 dark:text-yellow-400">3</span>
+                                <span className="w-14 h-14 rounded-full bg-yellow-500/20 flex items-center justify-center text-lg font-bold text-yellow-700 dark:text-yellow-400">5</span>
                                 Simulado Final: Quiz de Fixação - Estratégias de Elite
                             </h2>
                             <QuizInterativo questoes={quizFinal} titulo="Quiz de Fixação - Estratégias de Elite" icone="🏆" onComplete={(score) => handleModuleProgress('modulo-3', 2, score)} />

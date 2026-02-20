@@ -481,7 +481,7 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 > - Container da aula (`<main>`): `container mx-auto px-6 py-8 max-w-6xl` (redução de ~15% vs full-width)
 > - Dentro de cada `TabsContent`: `space-y-16`
 > - Cada seção de conteúdo: envolver em `bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm`
-> - Títulos: `text-3xl md:text-4xl` com badge `w-14 h-14` numerado (`text-3xl font-bold`)
+> - Títulos de Seção: Use SEMPRE o componente `<ModuleSectionHeader index={N} title="Título" variant="..." />`. O componente já encapsula a formatação `text-3xl md:text-4xl` e o badge numerado `w-14 h-14`.
 > - Fontes Gerais: Corpo: `text-base md:text-lg`. Callouts: `text-lg`. Sub-labels: `text-base`.
 > - Banner de Módulo: gradiente full-width com título `text-4xl md:text-5xl`
 
@@ -498,8 +498,16 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 > [!IMPORTANT]
 > **Regras de Numeração e Estrutura (CRÍTICO):**
 > - **Numeração Reiniciada:** A numeração dos cards de conteúdo (1, 2, 3...) DEVE reiniciar em CADA módulo. O primeiro card do Módulo 2 DEVE ser o número 1, e NÃO a continuação do Módulo 1.
-> - **Resumo Numerado:** O componente de Resumo DEVE seguir o padrão da Aula de Concordância: envolver um `<LessonTabs />` dentro de uma `<section>` com estilo de card (`bg-card ...`) e badge numérico na cor **Violet** (ex: `bg-violet-500/10 text-violet-700`).
-- **Quiz Numerado:** O Quiz Final de cada módulo DEVE ter um título com o mesmo peso visual e badge numérico dos outros cards (ex: "4. Quiz de Fixação"). Use a prop `numero={X}` no componente `QuizInterativo`.
+> - **Cabeçalho de Card:** Para o título principal de cada card, use:
+> ```tsx
+> <ModuleSectionHeader 
+>     index={N} 
+>     title="Título do Card" 
+>     variant="emerald" // Use a cor do módulo
+> />
+> ```
+> - **Resumo Numerado e Multimídia:** O componente de Resumo DEVE utilizar obrigatoriamente o componente `<CardCarousel />` para agrupar conteúdo multimídia (Vídeo, Áudio, Macetes) e esquemas visuais essenciais (Tabelas, Mapas Mentais). Envolva-o em uma `<section>` padrão. A prop `titulo` deve seguir o padrão "Resumo Completo — [Tema]", e a prop `subtitulo` deve ser "Revisão Multimídia e Esquemas Visuais".
+> - **Quiz Numerado:** O Quiz Final de cada módulo DEVE ter um título com o mesmo peso visual e badge numérico dos outros cards. Use a prop `numero={X}` no componente `QuizInterativo`.
 > - **Card de Conclusão Manual (NOVO):** Ao final do ÚLTIMO módulo, adicione SEMPRE um card visualmente distinto ("Termine a leitura") que permita ao usuário marcar manualmente a conclusão, garantindo a sensação de "dever cumprido" e o trigger do XP.
 
 ```tsx
