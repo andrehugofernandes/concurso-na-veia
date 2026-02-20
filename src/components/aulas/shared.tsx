@@ -182,7 +182,7 @@ export function CardCarousel({
             <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
                     {numeroBadge !== undefined && (
-                        <span className="w-14 h-14 rounded-full bg-emerald-500/20 flex items-center justify-center text-lg font-bold text-emerald-700 dark:text-emerald-400 shrink-0">
+                        <span className="w-14 h-14 rounded-full bg-emerald-500/20 flex items-center justify-center text-3xl font-bold text-emerald-700 dark:text-emerald-400 shrink-0">
                             {numeroBadge}
                         </span>
                     )}
@@ -733,17 +733,61 @@ export function SummaryTabs({
     videoId,
     videoDuration,
     visualContent,
+    variant = 'violet' // Default to violet as per Concordância Resumo
 }: {
     titulo: string;
     numero: number;
     videoId?: string;
     videoDuration?: string;
     visualContent: React.ReactNode;
+    variant?: 'indigo' | 'violet' | 'emerald' | 'amber' | 'rose';
 }) {
+    const variantClasses = {
+        indigo: {
+            badge: 'bg-indigo-500/20 text-indigo-700 dark:text-indigo-400 border-indigo-500/20',
+            tabActive: 'data-[state=active]:bg-indigo-500',
+            emptyBorder: 'border-indigo-300',
+            emptyBg: 'bg-indigo-50/50',
+            iconBg: 'bg-indigo-100',
+            iconText: 'text-indigo-500'
+        },
+        violet: {
+            badge: 'bg-violet-500/20 text-violet-700 dark:text-violet-400 border-violet-500/20',
+            tabActive: 'data-[state=active]:bg-violet-500',
+            emptyBorder: 'border-violet-300',
+            emptyBg: 'bg-violet-50/50',
+            iconBg: 'bg-violet-100',
+            iconText: 'text-violet-500'
+        },
+        emerald: {
+            badge: 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border-emerald-500/20',
+            tabActive: 'data-[state=active]:bg-emerald-500',
+            emptyBorder: 'border-emerald-300',
+            emptyBg: 'bg-emerald-50/50',
+            iconBg: 'bg-emerald-100',
+            iconText: 'text-emerald-500'
+        },
+        amber: {
+            badge: 'bg-amber-500/20 text-amber-700 dark:text-amber-400 border-amber-500/20',
+            tabActive: 'data-[state=active]:bg-amber-500',
+            emptyBorder: 'border-amber-300',
+            emptyBg: 'bg-amber-50/50',
+            iconBg: 'bg-amber-100',
+            iconText: 'text-amber-500'
+        },
+        rose: {
+            badge: 'bg-rose-500/20 text-rose-700 dark:text-rose-400 border-rose-500/20',
+            tabActive: 'data-[state=active]:bg-rose-500',
+            emptyBorder: 'border-rose-300',
+            emptyBg: 'bg-rose-50/50',
+            iconBg: 'bg-rose-100',
+            iconText: 'text-rose-500'
+        }
+    }[variant];
     return (
         <section className="bg-card rounded-2xl border border-border p-6 shadow-sm">
             <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <span className="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400">
+                <span className={`w-14 h-14 rounded-full ${variantClasses.badge} flex items-center justify-center text-3xl font-bold shrink-0 border shadow-inner`}>
                     {numero}
                 </span>
                 {titulo}
@@ -754,10 +798,10 @@ export function SummaryTabs({
 
             <Tabs defaultValue="video" className="w-full">
                 <TabsList className="grid w-full grid-cols-2 mb-6">
-                    <TabsTrigger value="video" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white">
+                    <TabsTrigger value="video" className={`data-[state=active]:bg-indigo-500 data-[state=active]:text-white`}>
                         🎥 Resumo em Vídeo
                     </TabsTrigger>
-                    <TabsTrigger value="visual" className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white">
+                    <TabsTrigger value="visual" className={`data-[state=active]:bg-violet-500 data-[state=active]:text-white`}>
                         🧠 Macete Visual
                     </TabsTrigger>
                 </TabsList>
@@ -776,13 +820,13 @@ export function SummaryTabs({
                             />
                         </div>
                     ) : (
-                        <div className="aspect-video w-full rounded-xl border border-dashed border-indigo-300 bg-indigo-50/50 flex flex-col items-center justify-center text-center p-6 gap-3">
-                            <div className="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center">
-                                <LuPlay className="w-8 h-8 text-indigo-500 ml-1" />
+                        <div className={`aspect-video w-full rounded-xl border border-dashed ${variantClasses.emptyBorder} ${variantClasses.emptyBg} flex flex-col items-center justify-center text-center p-6 gap-3`}>
+                            <div className={`w-16 h-16 rounded-full ${variantClasses.iconBg} flex items-center justify-center`}>
+                                <LuPlay className={`w-8 h-8 ${variantClasses.iconText} ml-1`} />
                             </div>
                             <div>
-                                <h4 className="font-bold text-indigo-900 dark:text-indigo-300">Vídeo em Produção</h4>
-                                <p className="text-sm text-muted-foreground">Em breve: "Concordância Verbal: O Guia Definitivo" ({videoDuration || '10:00'})</p>
+                                <h4 className={`font-bold ${variantClasses.iconText} dark:text-opacity-80`}>Vídeo em Produção</h4>
+                                <p className="text-sm text-muted-foreground">Em breve: "{titulo}: O Guia Definitivo" ({videoDuration || '10:00'})</p>
                             </div>
                         </div>
                     )}
@@ -1035,20 +1079,29 @@ export function LessonTabs({
     tabs,
     defaultTab,
     className,
+    variant = 'indigo'
 }: {
     title?: string;
     tabs: LessonTabItem[];
     defaultTab?: string;
     className?: string;
+    variant?: 'indigo' | 'violet' | 'emerald' | 'amber' | 'rose';
 }) {
+    const variantClasses = {
+        indigo: 'bg-indigo-500/10 border-indigo-500/20 text-indigo-600 dark:text-indigo-400',
+        violet: 'bg-violet-500/10 border-violet-500/20 text-violet-600 dark:text-violet-400',
+        emerald: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-600 dark:text-emerald-400',
+        amber: 'bg-amber-500/10 border-amber-500/20 text-amber-600 dark:text-amber-400',
+        rose: 'bg-rose-500/10 border-rose-500/20 text-rose-600 dark:text-rose-400'
+    }[variant];
     const [activeTab, setActiveTab] = useState(defaultTab || tabs[0]?.id);
 
     return (
         <div className={cn("w-full max-w-5xl mx-auto mb-16 bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm", className)}>
             {title && (
                 <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-indigo-500/10 rounded-lg border border-indigo-500/20">
-                        <LuBookOpen className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+                    <div className={`p-2 rounded-lg border ${variantClasses}`}>
+                        <LuBookOpen className="w-6 h-6" />
                     </div>
                     <div>
                         <h3 className="text-xl font-bold text-foreground">{title}</h3>
@@ -1510,7 +1563,7 @@ export function StickyModuleNav({
         // The specific combination of w-screen and negative margin is required for full-width breakout.
         // Changing this WILL break the layout and cause horizontal scrolling. verified-locked-by-user.
         <div className="sticky top-[70px] z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-y border-border/50 shadow-sm py-4 mb-4 w-screen ml-[calc(50%-50vw)]">
-            <div className="max-w-6xl mx-auto px-6">
+            <div className={`${modules.length > 3 ? 'max-w-7xl' : 'max-w-6xl'} mx-auto px-6`}>
                 <TabsList className={`grid w-full h-auto p-2 bg-muted/30 border border-border/20 rounded-2xl gap-2 shadow-inner grid-cols-1 md:grid-cols-${modules.length}`}>
                     {modules.map((mod, index) => (
                         <TabsTrigger

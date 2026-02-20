@@ -266,7 +266,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                         type="text"
                         placeholder="Buscar..."
                         value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
                         className="w-64"
                         ref={searchInputRef}
                         onBlur={() => { if (!searchTerm) setSearchVisible(false); }}

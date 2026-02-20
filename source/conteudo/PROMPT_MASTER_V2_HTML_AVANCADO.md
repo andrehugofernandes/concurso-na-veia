@@ -42,9 +42,7 @@ Use como referência principal a **Gramática Normativa da Língua Portuguesa de
 - **REGRA DE OURO:** Toda explicação teórica DEVE ser validada por um exemplo em frase (Antes/Depois, Certo/Errado ou Aplicação Real). NUNCA gere teoria pura sem exemplificação textual. Isso é inegociável para a clareza do aluno.
 - **HIERARQUIA CIENTÍFICA (Obrigatório):** A "Ciência" (Norma Culta, Tabelas de Transitividade, Regras Formais de Bechara/Cunha) DEVE preceder o "Floreio" (Storytelling, Macetes, Industrialização). O aluno deve primeiro entender a regra técnica pura para só depois vê-la aplicada no contexto da Petrobras.
 - **ESTRUTURA DE INÍCIO (Inviolável):** 
-    1. PROIBIDO o uso de "Hero Sections" (seções com títulos gigantes, imagens de fundo e botões de chamada/scroll).
-    2. A aula DEVE começar diretamente com o componente `ModuleBanner` do Eixo 1.
-    3. O Banner deve ter uma descrição científica/acadêmica (ex: "Estudo sistemático das relações de dependência...") e cores vibrantes (Indigo/Violet/Emerald) para transmitir autoridade acadêmica premium.
+    3. O Banner deve ter uma descrição científica/acadêmica (ex: "Estudo sistemático das relações de dependência...") e cores vibrantes que sigam a progressão pedagógica: **Emerald** (Início/Base), **Blue/Indigo** (Prática/Complexidade) e **Violet** (Síntese/Resumo).
 - **BRANDING:** O nome do sistema/SaaS é **"A Vaga É Minha"**. NUNCA use "Petrobras Quest" em títulos de PDF ou componentes de marca.
 - **USB/PDF EXPORT:** Para garantir qualidade na exportação de resumos: 
     1. Forneça entre 3 a 5 imagens explicativas no `ModuleSummaryCarouselNew`.
@@ -201,10 +199,14 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 4. **VISUAL FIRST:** Todo conceito deve ter um ÍCONE e uma COR semântica.
 5. **CONTEXTO PETROBRAS:** Use exemplos relacionados a plataformas, refino, segurança, ética corporativa.
 
-**3. 🚫 PROIBIÇÃO CRÍTICA: HERO SECTION**
+**3. 🚫 PROIBIÇÃO CRÍTICA: HERO SECTION E PALETAS GENÉRICAS**
 - **PROIBIDO**: Não use seções de "Hero" (com botões de 'Começar Agora', 'Matricule-se', ou ton de panfleto).
-- **PADRÃO EXIGIDO**: Toda aula DEVE começar obrigatoriamente com `<StickyModuleNav />` seguido de `<ModuleBanner />` do Eixo 1.
-- **TONALIDADE**: O início deve ser Acadêmico, Científico e Vibrante (Cores: Violet/Indigo). "Ciência antes do floreio".
+- **PALETAS A EVITAR**: Evite a combinação "Indigo-600, Emerald-500, Slate-900" em menus ou tabs de resumo.
+- **PADRÃO EXIGIDO**: Toda aula DEVE começar obrigatoriamente com `<StickyModuleNav />` seguido de `<ModuleBanner />` do Módulo 1.
+- **TONALIDADE**: O início deve ser Acadêmico, Científico e Vibrante. Use a progressão:
+    - **Módulos Base:** Verdes/Esmeralda (`emerald-600`)
+    - **Módulos de Prática:** Azuis/Índigo (`blue-600` ou `indigo-600`)
+    - **Módulo de Síntese/Resumo:** Violetas/Púrpuras (`violet-600`)
 
 **4. CARROSSEL DE IMAGENS (Para sequências visuais)**
 - Usar quando tiver 3+ imagens sequenciais
@@ -479,7 +481,7 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 > - Container da aula (`<main>`): `container mx-auto px-6 py-8 max-w-6xl` (redução de ~15% vs full-width)
 > - Dentro de cada `TabsContent`: `space-y-16`
 > - Cada seção de conteúdo: envolver em `bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm`
-> - Títulos: `text-3xl md:text-4xl` com badge `w-14 h-14` numerado
+> - Títulos: `text-3xl md:text-4xl` com badge `w-14 h-14` numerado (`text-3xl font-bold`)
 > - Fontes Gerais: Corpo: `text-base md:text-lg`. Callouts: `text-lg`. Sub-labels: `text-base`.
 > - Banner de Módulo: gradiente full-width com título `text-4xl md:text-5xl`
 
@@ -496,8 +498,8 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 > [!IMPORTANT]
 > **Regras de Numeração e Estrutura (CRÍTICO):**
 > - **Numeração Reiniciada:** A numeração dos cards de conteúdo (1, 2, 3...) DEVE reiniciar em CADA módulo. O primeiro card do Módulo 2 DEVE ser o número 1, e NÃO a continuação do Módulo 1.
-> - **Resumo Numerado:** O componente de Resumo (Tabs com Vídeo/Música/Mapas) DEVE estar dentro de uma `<section>` com estilo de card (`bg-card ...`) e POSSUIR BADGE NUMÉRICO no título (ex: se for o 3º item do módulo, deve ter o badge "3").
-> - **Quiz Numerado:** O Quiz Final de cada módulo DEVE ter um título com o mesmo peso visual e badge numérico dos outros cards (ex: "4. Quiz de Fixação"). Use a prop `numero={X}` no componente `QuizInterativo`.
+> - **Resumo Numerado:** O componente de Resumo DEVE seguir o padrão da Aula de Concordância: envolver um `<LessonTabs />` dentro de uma `<section>` com estilo de card (`bg-card ...`) e badge numérico na cor **Violet** (ex: `bg-violet-500/10 text-violet-700`).
+- **Quiz Numerado:** O Quiz Final de cada módulo DEVE ter um título com o mesmo peso visual e badge numérico dos outros cards (ex: "4. Quiz de Fixação"). Use a prop `numero={X}` no componente `QuizInterativo`.
 > - **Card de Conclusão Manual (NOVO):** Ao final do ÚLTIMO módulo, adicione SEMPRE um card visualmente distinto ("Termine a leitura") que permita ao usuário marcar manualmente a conclusão, garantindo a sensação de "dever cumprido" e o trigger do XP.
 
 ```tsx
@@ -596,6 +598,7 @@ export default function AulaTemplate({ onComplete, currentProgress, onUpdateProg
         <div className="space-y-12 pb-20 animate-in fade-in duration-500">
             <ProgressIndicator scrollProgress={0} /> {/* Integrar com hook de scroll real */}
 
+
             {/* BADGE DE CONCLUSÃO (APARECE QUANDO O USUÁRIO TERMINA TUDO) */}
             {showCompletionBadge && (
                 <div className="bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-xl p-4 flex items-center gap-4 shadow-sm mb-6 animate-in slide-in-from-top-4 duration-700">
@@ -667,7 +670,7 @@ export default function AulaTemplate({ onComplete, currentProgress, onUpdateProg
             </Tabs>
                     <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                         <h2 className="text-2xl font-bold flex items-center gap-3">
-                            <span className="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-sm font-bold">1</span>
+                            <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-3xl font-bold text-indigo-700 dark:text-indigo-400 shrink-0">1</span>
                             Conceito Interativo
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

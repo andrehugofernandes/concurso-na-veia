@@ -23,7 +23,9 @@
     ],
     "paths": {
       "@/*": [
-        "./src/*"
+        "./src/*",
+        "./admin-template/*",
+        "./*"
       ]
     },
     "target": "ES2017"
@@ -36,7 +38,6 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules",
-    "admin-template"
+    "node_modules"
   ]
 }
