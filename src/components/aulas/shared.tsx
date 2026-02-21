@@ -513,11 +513,13 @@ export function FlipCard({
     verso,
     numero,
     categoria = "Português",
+    hideFooter = false,
 }: {
     frente: React.ReactNode;
     verso: React.ReactNode;
     numero?: number;
     categoria?: string;
+    hideFooter?: boolean;
 }) {
     const [isFlipped, setIsFlipped] = useState(false);
 
@@ -543,14 +545,16 @@ export function FlipCard({
                                 </span>
                             </div>
                         )}
-                        <div className="text-foreground text-base leading-relaxed overflow-y-auto flex-1 pr-2 custom-scrollbar">
+                        <div className="text-foreground text-base leading-relaxed overflow-y-auto flex-1 pr-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                             {frente}
                         </div>
                     </div>
-                    <div className="mt-4 pt-4 border-t border-border/40 flex justify-between items-center text-[10px] md:text-xs text-muted-foreground/60 shrink-0">
-                        <span className="truncate pr-2">{categoria}</span>
-                        <span className="shrink-0 font-medium">Petrobras • CESGRANRIO</span>
-                    </div>
+                    {!hideFooter && (
+                        <div className="mt-4 pt-4 border-t border-border/40 flex justify-between items-center text-[10px] md:text-xs text-muted-foreground/60 shrink-0">
+                            <span className="truncate pr-2">{categoria}</span>
+                            <span className="shrink-0 font-medium">Petrobras • CESGRANRIO</span>
+                        </div>
+                    )}
                 </div>
 
                 {/* ── VERSO ── */}
@@ -563,7 +567,7 @@ export function FlipCard({
                         <span>Resposta Comentada</span>
                     </div>
 
-                    <div className="text-foreground text-sm leading-relaxed overflow-y-auto flex-1 pr-2 pb-1 custom-scrollbar">
+                    <div className="text-foreground text-sm leading-relaxed overflow-y-auto flex-1 pr-1 pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                         {verso}
                     </div>
                 </div>
@@ -605,7 +609,7 @@ export function QuizInterativo({
         if (totalVerificadas === questoes.length && !completed) {
             const acertos = questoes.filter((q) => verificados[q.id] && respostas[q.id] === q.correta).length;
             const aproveitamento = (acertos / questoes.length) * 100;
-            if (aproveitamento >= 70) {
+            if (aproveitamento >= 60) {
                 setCompleted(true);
                 if (onComplete) onComplete(Math.round(aproveitamento));
             }

@@ -33,7 +33,8 @@ import {
     LuVideo,
     LuHeadphones,
     LuImage,
-    LuArrowDown
+    LuArrowDown,
+    LuMessageCircle
 } from 'react-icons/lu';
 
 // ── Definição dos 5 Módulos ──
@@ -283,6 +284,18 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
         setQMod3(getRandomQuestions(QUIZ_MOD3_POOL, 6)); // mínimo 6
         setQMod4(getRandomQuestions(QUIZ_MOD4_POOL, 6)); // mínimo 6
         setQLab(getRandomQuestions(QUIZ_LABORATORIO_POOL, 20)); // Lab Final com 20
+
+        const savedProgress = localStorage.getItem('aula_classes_palavras_progress');
+        if (savedProgress) {
+            try {
+                const parsed = JSON.parse(savedProgress);
+                if (parsed.completedModules && Array.isArray(parsed.completedModules)) {
+                    setCompletedModules(new Set(parsed.completedModules));
+                }
+            } catch (error) {
+                console.error("Erro ao carregar progresso:", error);
+            }
+        }
     }, []);
 
     useEffect(() => {
@@ -294,7 +307,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
     }, [completedModules, onUpdateProgress]);
 
     const handleModuleComplete = (moduleId: string, score: number) => {
-        if (score >= 70) {
+        if (score >= 60) {
             const newSet = new Set(completedModules).add(moduleId);
             setCompletedModules(newSet);
             localStorage.setItem('aula_classes_palavras_progress', JSON.stringify({ completedModules: Array.from(newSet) }));
@@ -426,18 +439,20 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                                 },
                                 {
                                     titulo: '5. Voz', icone: '🗣️', conteudo: (
-                                        <div className="space-y-4">
-                                            <p className="text-muted-foreground"><strong>Conceito:</strong> A <strong>Voz Verbal</strong> indica a relação entre o sujeito e a ação verbal: se ele pratica, sofre ou as duas coisas simultaneamente.</p>
-                                            <div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20 text-sm space-y-3">
-                                                <p><strong>Voz Ativa:</strong> O sujeito age. &quot;O técnico <strong>consertou</strong> a válvula.&quot;</p>
-                                                <p><strong>Voz Passiva:</strong> O sujeito sofre a ação. &quot;A válvula <strong>foi consertada</strong>.&quot;</p>
-                                                <div className="bg-amber-500/20 p-3 rounded-lg border border-amber-500/30">
-                                                    <strong className="text-amber-700 dark:text-amber-400">🚨 Passiva Sintética (A queridinha da Cesgranrio):</strong>
-                                                    <p className="mt-1">VTD + pronome SE. Exemplo: &quot;<strong>Vendem-se</strong> casas&quot; (= Casas são vendidas).</p>
-                                                    <p className="mt-1 text-red-500">❌ O erro clássico é escrever &quot;Vende-se casas&quot; ignorando a concordância com o alvo.</p>
-                                                </div>
-                                                <p><strong>Voz Reflexiva:</strong> O sujeito age e sofre. &quot;O técnico <strong>cortou-se</strong>.&quot;</p>
-                                            </div>
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                A <strong>Voz Verbal</strong> indica a relação entre o sujeito e a ação verbal: se ele pratica (agente), sofre (paciente) ou as duas coisas simultaneamente.
+                                            </p>
+                                            <CardCarousel titulo="As 5 Vozes Verbais" itemsPerView={2} cards={[
+                                                { icone: <LuZap className="text-amber-500" />, titulo: "ATIVA", descricao: "\"O técnico consertou a válvula.\" (O sujeito pratica a ação)" },
+                                                { icone: <LuShield className="text-amber-500" />, titulo: "PASSIVA ANALÍTICA", descricao: "\"A válvula foi consertada pelo técnico.\" (Ser + Particípio)" },
+                                                { icone: <LuShield className="text-amber-500" />, titulo: "PASSIVA SINTÉTICA", descricao: "\"Consertaram-se as válvulas.\" (Verbo + pronome SE)" },
+                                                { icone: <LuActivity className="text-amber-500" />, titulo: "REFLEXIVA", descricao: "\"O trabalhador cortou-se.\" (Pratica e sofre a ação)" },
+                                                { icone: <LuActivity className="text-amber-500" />, titulo: "REFLEXIVA RECÍPROCA", descricao: "\"Os engenheiros cumprimentaram-se.\" (Ação mútua)" }
+                                            ]} />
+                                            <AlertBox tipo="danger" titulo="A Queridinha da Cesgranrio: Passiva Sintética">
+                                                Atenção ao pronome "SE" apassivador! Em "Vendem-se casas", "casas" é o sujeito passivo. Por isso, o verbo deve OBRIGATORIAMENTE ir para o plural acompanhando o alvo da ação. Jamais escreva "Vende-se casas".
+                                            </AlertBox>
                                         </div>
                                     )
                                 }
@@ -454,6 +469,9 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={4} title="Verbos Impessoais — Pegadinha Máxima" variant="indigo" />
+                            <p className="text-base text-muted-foreground leading-relaxed text-justify">
+                                Existem verbos que <strong>não possuem sujeito</strong>. Como não há ninguém para "mandar" neles, eles assumem uma forma congelada na 3ª pessoa do singular. O domínio dessas regras é fundamental para gabaritar questões de Concordância Verbal, pois a banca frequentemente tenta enganar o candidato colocando um "falso sujeito" no plural logo após esses verbos.
+                            </p>
                             <AlertBox tipo="danger" titulo="🚨 Cai em TODA prova Cesgranrio!">
                                 Os verbos HAVER (sentido de existir) e FAZER (tempo decorrido) são IMPESSOAIS: ficam SEMPRE na 3ª pessoa do singular, independentemente do contexto.
                             </AlertBox>
@@ -735,7 +753,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={2} title="Pronomes Pessoais — Retos e Oblíquos" variant="blue" />
-                            <ContentAccordion titulo="Tabela Completa dos Pessoais" icone={<LuNavigation />} corIndicador="bg-blue-500" defaultOpen={true} slides={[
+                            <ContentAccordion mode="stacked" slidesPerView={1} titulo="Tabela Completa dos Pessoais" icone={<LuNavigation />} corIndicador="bg-blue-500" defaultOpen={true} slides={[
                                 {
                                     titulo: 'Retos (Sujeito) vs Oblíquos (Complemento)', icone: '1️⃣', conteudo: (
                                         <div className="space-y-4">
@@ -790,9 +808,87 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={5} title="A Posição do Adjetivo Muda o Sentido" variant="blue" />
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <FlipCard frente={<span className="font-bold text-center">Adjetivo POSPOSTO<br /><span className="text-sm font-normal text-muted-foreground">(depois do substantivo)</span></span>} verso={<div className="text-center text-sm"><p className="font-bold text-blue-400 mb-2">Valor Objetivo / Denotativo</p><p>&quot;Ele é um homem <strong>grande</strong>.&quot;</p><p className="text-muted-foreground italic mt-1">(alto, forte fisicamente)</p></div>} />
-                                <FlipCard frente={<span className="font-bold text-center">Adjetivo ANTEPOSTO<br /><span className="text-sm font-normal text-muted-foreground">(antes do substantivo)</span></span>} verso={<div className="text-center text-sm"><p className="font-bold text-indigo-400 mb-2">Valor Subjetivo / Conotativo</p><p>&quot;Ele é um <strong>grande</strong> homem.&quot;</p><p className="text-muted-foreground italic mt-1">(notável, importante)</p></div>} />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <FlipCard
+                                    hideFooter={true}
+                                    frente={
+                                        <div className="flex flex-col h-full justify-between py-2">
+                                            <div className="space-y-4">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="p-3 bg-blue-500/10 rounded-xl border border-blue-500/20">
+                                                        <LuTag className="text-2xl text-blue-500" />
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="font-black text-xl tracking-tight leading-none uppercase">Adjetivo POSPOSTO</h4>
+                                                        <p className="text-xs text-muted-foreground uppercase tracking-widest mt-1">Depois do Substantivo</p>
+                                                    </div>
+                                                </div>
+                                                <p className="text-sm text-foreground/80 leading-relaxed">
+                                                    Geralmente, quando o adjetivo vem após o substantivo, ele mantém o seu sentido original, literal e objetivo (<strong>sentido denotativo</strong>), descrevendo uma característica física ou real do ser.
+                                                </p>
+                                                <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/10 text-[11px] text-blue-600 dark:text-blue-400/80 italic">
+                                                    📍 Nota: Essa é a posição natural do adjetivo na Língua Portuguesa.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    verso={
+                                        <div className="space-y-6">
+                                            <div className="bg-emerald-500/5 p-4 rounded-xl border border-emerald-500/20 italic text-center text-sm space-y-3">
+                                                <p className="font-bold text-blue-600 dark:text-blue-400 uppercase text-[10px] tracking-wider mb-2 not-italic">Valor Objetivo / Real</p>
+                                                <p>&quot;Ele é um homem <strong>grande</strong>.&quot;</p>
+                                                <div className="w-8 border-t border-emerald-500/30 mx-auto" />
+                                                <p className="text-muted-foreground text-[13px]">(Significa alguém fisicamente alto ou corpulento)</p>
+                                            </div>
+                                            <div className="pt-2 border-t border-border/40">
+                                                <p className="text-[11px] leading-tight text-muted-foreground">
+                                                    <strong className="text-blue-600 dark:text-blue-400 uppercase text-[10px] mr-1">Outro Exemplo:</strong>
+                                                    &quot;Um funcionário alto&quot; (tem estatura física elevada).
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                />
+                                <FlipCard
+                                    hideFooter={true}
+                                    frente={
+                                        <div className="flex flex-col h-full justify-between py-2">
+                                            <div className="space-y-4">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="p-3 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
+                                                        <LuZap className="text-2xl text-indigo-500" />
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="font-black text-xl tracking-tight leading-none uppercase">Adjetivo ANTEPOSTO</h4>
+                                                        <p className="text-xs text-muted-foreground uppercase tracking-widest mt-1">Antes do Substantivo</p>
+                                                    </div>
+                                                </div>
+                                                <p className="text-sm text-foreground/80 leading-relaxed">
+                                                    Ao deslocar o adjetivo para antes do substantivo, frequentemente alteramos o seu sentido para algo mais figurado, emotivo ou subjetivo (<strong>sentido conotativo</strong>).
+                                                </p>
+                                                <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/10 text-[11px] text-indigo-600 dark:text-indigo-400/80 italic">
+                                                    📍 Nota: Essa inversão estilística é um alvo clássico de bancas em questões de reescrita.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    verso={
+                                        <div className="space-y-6">
+                                            <div className="bg-indigo-500/5 p-4 rounded-xl border border-indigo-500/20 italic text-center text-sm space-y-3">
+                                                <p className="font-bold text-indigo-600 dark:text-indigo-400 uppercase text-[10px] tracking-wider mb-2 not-italic">Valor Subjetivo / Figurado</p>
+                                                <p>&quot;Ele é um <strong>grande</strong> homem.&quot;</p>
+                                                <div className="w-8 border-t border-indigo-500/30 mx-auto" />
+                                                <p className="text-muted-foreground text-[13px]">(Significa alguém notável, importante ou bondoso, independente da altura)</p>
+                                            </div>
+                                            <div className="pt-2 border-t border-border/40">
+                                                <p className="text-[11px] leading-tight text-muted-foreground">
+                                                    <strong className="text-indigo-600 dark:text-indigo-400 uppercase text-[10px] mr-1">Outro Exemplo:</strong>
+                                                    &quot;Um alto funcionário&quot; (tem cargo ou hierarquia elevada, pode ser baixo fisicamente).
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                />
                             </div>
                             <AlertBox tipo="success" titulo="Dica para a Prova">
                                 Quando a Cesgranrio pedir &quot;reescreva mantendo o sentido&quot;, observe se o adjetivo mudou de posição. Se mudou, o sentido pode ter sido alterado — e a alternativa estará ERRADA.
@@ -801,7 +897,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={6} title="Locução Adjetiva e Concordância Nominal" variant="blue" />
-                            <ContentAccordion titulo="Detalhes Cruciais do Adjetivo" icone={<LuTag />} corIndicador="bg-indigo-500" defaultOpen={true} slides={[
+                            <ContentAccordion mode="stacked" slidesPerView={1} titulo="Detalhes Cruciais do Adjetivo" icone={<LuTag />} corIndicador="bg-indigo-500" defaultOpen={true} slides={[
                                 {
                                     titulo: 'Locução Adjetiva (de + substantivo)', icone: '1️⃣', conteudo: (
                                         <div className="space-y-3">
@@ -912,30 +1008,84 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={2} title="Conjunções Coordenativas" variant="amber" />
-                            <ContentAccordion titulo="Os 5 Tipos Coordenativos" icone={<LuLink2 />} corIndicador="bg-amber-500" defaultOpen={true} slides={[
+                            <ContentAccordion mode="stacked" slidesPerView={1} titulo="Os 5 Tipos Coordenativos — Visão Completa" icone={<LuLink2 />} corIndicador="bg-amber-500" defaultOpen={true} slides={[
                                 {
-                                    titulo: 'Aditivas, Adversativas e Alternativas', icone: '1️⃣', conteudo: (
-                                        <div className="space-y-4">
-                                            <div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20 text-sm space-y-2">
-                                                <p><strong className="text-amber-700 dark:text-amber-400">Aditivas (e, nem, não só...mas também):</strong> somam ideias.</p>
-                                                <p className="italic">&quot;Estudou <strong>e</strong> passou.&quot;</p>
-                                                <p><strong className="text-amber-700 dark:text-amber-400">Adversativas (mas, porém, contudo, todavia):</strong> ideias opostas.</p>
-                                                <p className="italic">&quot;Estudou, <strong>mas</strong> não passou.&quot;</p>
-                                                <p><strong className="text-amber-700 dark:text-amber-400">Alternativas (ou, ou...ou, ora...ora):</strong> alternância.</p>
-                                                <p className="italic">&quot;<strong>Ou</strong> estuda, <strong>ou</strong> trabalha.&quot;</p>
+                                    titulo: '1. Aditivas (Soma e Sequência)', icone: '➕', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-muted-foreground italic">Ideia de adição, soma ou sucessão de fatos.</p>
+                                            <CardCarousel titulo="Exemplos por Conectivo" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 />, titulo: "E", descricao: "A Petrobras investe em tecnologia E colhe resultados." },
+                                                { icone: <LuLink2 />, titulo: "NEM", descricao: "Não assinou o contrato NEM o termo de posse." },
+                                                { icone: <LuLink2 />, titulo: "NÃO SÓ... MAS TAMBÉM", descricao: "O técnico não só consertou a peça MAS TAMBÉM testou o sistema." },
+                                                { icone: <LuLink2 />, titulo: "BEM COMO", descricao: "Revisamos o edital BEM COMO os anexos técnicos." },
+                                                { icone: <LuLink2 />, titulo: "NÃO APENAS... COMO", descricao: "Não apenas estudou COMO praticou muitos exercícios." }
+                                            ]} />
+                                            <AlertBox tipo="info" titulo="Obs: O 'E' com valor adversativo">
+                                                Cuidado! A Cesgranrio adora frase como: &quot;Estudou muito E não passou&quot;. Aqui o <strong>&quot;E&quot;</strong> equivale a <strong>&quot;MAS&quot;</strong> (Adversativa).
+                                            </AlertBox>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '2. Adversativas (Oposição e Contraste)', icone: '🔄', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-muted-foreground italic">Ideia de contraste, oposição ou compensação.</p>
+                                            <CardCarousel titulo="Exemplos por Conectivo" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "MAS", descricao: "A prova estava difícil, MAS a equipe estava pronta." },
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "PORÉM", descricao: "Chegamos cedo à refinaria; PORÉM, o acesso estava restrito." },
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "CONTUDO", descricao: "Houve greve nacional; CONTUDO, a produção não parou." },
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "TODAVIA", descricao: "O projeto é caro; TODAVIA, ele economiza no longo prazo." },
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "ENTRETANTO", descricao: "O óleo subiu; ENTRETANTO, o dólar caiu no mesmo dia." },
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "NO ENTANTO", descricao: "O sinal tocou; NO ENTANTO, os técnicos continuaram a inspeção." }
+                                            ]} />
+                                            <div className="bg-orange-500/10 p-4 rounded-xl border border-orange-500/20 text-sm">
+                                                <p><strong>💡 Dica de Pontuação:</strong> Com exceção do MAS, as outras podem ser deslocadas no texto: &quot;O óleo subiu; o dólar, <strong>entretanto</strong>, caiu.&quot;</p>
                                             </div>
                                         </div>
                                     )
                                 },
                                 {
-                                    titulo: 'Conclusivas e Explicativas', icone: '2️⃣', conteudo: (
-                                        <div className="space-y-4">
-                                            <div className="bg-orange-500/10 p-4 rounded-xl border border-orange-500/20 text-sm space-y-2">
-                                                <p><strong className="text-orange-700 dark:text-orange-400">Conclusivas (logo, portanto, pois [após o verbo]):</strong> conclusão.</p>
-                                                <p className="italic">&quot;Estudou muito; <strong>logo</strong>, passou.&quot;</p>
-                                                <p><strong className="text-orange-700 dark:text-orange-400">Explicativas (pois [antes do verbo], porque, que):</strong> justificativa.</p>
-                                                <p className="italic">&quot;Leve o guarda-chuva, <strong>pois</strong> vai chover.&quot;</p>
-                                            </div>
+                                    titulo: '3. Alternativas (Escolha e Exclusão)', icone: '⚖️', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-muted-foreground italic">Ideia de exclusão, alternativa ou alternância.</p>
+                                            <CardCarousel titulo="Exemplos por Conectivo" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-yellow-500" />, titulo: "OU", descricao: "Aceite o cargo OU peça exoneração." },
+                                                { icone: <LuLink2 className="text-yellow-500" />, titulo: "OU... OU", descricao: "OU estudamos agora, OU perderemos a vaga." },
+                                                { icone: <LuLink2 className="text-yellow-500" />, titulo: "ORA... ORA", descricao: "ORA chove no litoral, ORA faz sol no planalto." },
+                                                { icone: <LuLink2 className="text-yellow-500" />, titulo: "QUER... QUER", descricao: "QUER aceite, QUER não, a regra mudou." },
+                                                { icone: <LuLink2 className="text-yellow-500" />, titulo: "SEJA... SEJA", descricao: "SEJA no Rio, SEJA em Santos, o trabalho continua." }
+                                            ]} />
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '4. Conclusivas (Dedução)', icone: '🏁', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-muted-foreground italic">Ideia de conclusão ou consequência lógica.</p>
+                                            <CardCarousel titulo="Exemplos por Conectivo" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-indigo-500" />, titulo: "LOGO", descricao: "O navio atracou; LOGO, a carga será liberada." },
+                                                { icone: <LuLink2 className="text-indigo-500" />, titulo: "PORTANTO", descricao: "Conhecemos os riscos; PORTANTO, usaremos EPIs." },
+                                                { icone: <LuLink2 className="text-indigo-500" />, titulo: "POR ISSO", descricao: "O equipamento falhou; POR ISSO, chamamos o suporte." },
+                                                { icone: <LuLink2 className="text-indigo-500" />, titulo: "ASSIM", descricao: "A regra é nova; ASSIM, precisamos de treinamento." },
+                                                { icone: <LuLink2 className="text-indigo-500" />, titulo: "POR CONSEGUINTE", descricao: "O contrato venceu; POR CONSEGUINTE, o serviço parou." },
+                                                { icone: <LuLink2 className="text-indigo-500" />, titulo: "POIS (Posposto)", descricao: "O óleo vazou; a limpeza é, POIS, urgente." }
+                                            ]} />
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '5. Explicativas (Justificativa)', icone: '🎓', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-muted-foreground italic">Justificam ou explicam o que se disse anteriormente.</p>
+                                            <CardCarousel titulo="Exemplos por Conectivo" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-rose-500" />, titulo: "QUE", descricao: "Vá logo, QUE o navio já vai partir." },
+                                                { icone: <LuLink2 className="text-rose-500" />, titulo: "PORQUE", descricao: "Não se atrase, PORQUE a troca de turno é chata." },
+                                                { icone: <LuLink2 className="text-rose-500" />, titulo: "POIS (Anteposto)", descricao: "Não grite, POIS estamos em reunião técnica." },
+                                                { icone: <LuLink2 className="text-rose-500" />, titulo: "PORQUANTO", descricao: "Ele foi promovido, PORQUANTO é muito dedicado." }
+                                            ]} />
+                                            <AlertBox tipo="warning" titulo="Dica para a vida">
+                                                A oração anterior às explicativas costuma vir com verbo no <strong>Imperativo</strong> (ordem/conselho).
+                                            </AlertBox>
                                         </div>
                                     )
                                 }
@@ -944,9 +1094,130 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={3} title="Causal × Explicativa — A Armadilha Clássica" variant="amber" />
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <FlipCard frente={<span className="font-bold text-center">CAUSAL<br /><span className="text-sm font-normal text-muted-foreground">(motivo REAL do fato)</span></span>} verso={<div className="text-sm text-center"><p>&quot;O poço secou <strong>porque</strong> choveu pouco.&quot;</p><p className="text-muted-foreground italic mt-2">A chuva fraca é a CAUSA real do poço ter secado.</p></div>} />
-                                <FlipCard frente={<span className="font-bold text-center">EXPLICATIVA<br /><span className="text-sm font-normal text-muted-foreground">(justificativa da FALA)</span></span>} verso={<div className="text-sm text-center"><p>&quot;Leve o guarda-chuva, <strong>porque</strong> vai chover.&quot;</p><p className="text-muted-foreground italic mt-2">Não é a causa de levar; é a justificativa da sugestão do emissor.</p></div>} />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <FlipCard
+                                    hideFooter={true}
+                                    frente={
+                                        <div className="flex flex-col h-full justify-between py-2">
+                                            <div className="space-y-4">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="p-3 bg-amber-500/10 rounded-xl border border-amber-500/20">
+                                                        <LuZap className="text-2xl text-amber-500" />
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="font-black text-xl tracking-tight leading-none uppercase">Causal</h4>
+                                                        <p className="text-xs text-muted-foreground uppercase tracking-widest mt-1">Vínculo de Realidade</p>
+                                                    </div>
+                                                </div>
+                                                <p className="text-sm text-foreground/80 leading-relaxed">
+                                                    Explica a <strong>causa física ou lógica</strong> de um fato que aconteceu na oração principal. O fato é o resultado direto dessa causa.
+                                                </p>
+                                                <div className="p-3 bg-amber-500/5 rounded-lg border border-amber-500/10 text-[11px] text-amber-600 dark:text-amber-400/80 italic">
+                                                    📍 Nota: Representa um evento que ocorreu ANTES do fato principal na linha do tempo.
+                                                </div>
+                                            </div>
+                                            <div className="bg-muted/30 p-4 rounded-xl border border-border/50">
+                                                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-2">Principais Conectivos</p>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {['porque', 'visto que', 'já que', 'como'].map(c => (
+                                                        <span key={c} className="px-2 py-0.5 bg-amber-500/5 border border-amber-500/10 rounded text-xs font-medium text-amber-700 dark:text-amber-400">{c}</span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    verso={
+                                        <div className="space-y-6">
+                                            <div className="bg-emerald-500/5 p-4 rounded-xl border border-emerald-500/20 italic text-center">
+                                                <p className="text-base font-medium">&quot;O poço secou <strong>porque</strong> choveu pouco.&quot;</p>
+                                            </div>
+                                            <div className="space-y-4">
+                                                <div className="flex gap-3">
+                                                    <div className="w-1.5 h-auto bg-amber-500 rounded-full" />
+                                                    <p className="text-sm text-muted-foreground">
+                                                        <strong className="text-foreground block mb-1">Análise do Nexo</strong>
+                                                        A chuva fraca é a causa real e palpável do esgotamento da água. Há um vínculo de natureza física entre os fatos.
+                                                    </p>
+                                                </div>
+                                                <div className="flex gap-3">
+                                                    <div className="w-1.5 h-auto bg-blue-500 rounded-full" />
+                                                    <p className="text-sm text-muted-foreground">
+                                                        <strong className="text-foreground block mb-1">O Teste do 'Como'</strong>
+                                                        Toda causal pode ser iniciada pelo &quot;Como&quot;: <em>&quot;Como choveu pouco, o poço secou.&quot;</em> — Se funcionar, é causa!
+                                                    </p>
+                                                </div>
+                                                <div className="pt-2 border-t border-border/40">
+                                                    <p className="text-[11px] leading-tight text-muted-foreground">
+                                                        <strong className="text-amber-600 dark:text-amber-400 uppercase text-[10px] mr-1">Dica Cesgranrio:</strong>
+                                                        A oração causal pode ser deslocada para o início da frase sem mudar o sentido. O foco é sempre o MOTIVO.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                />
+
+                                <FlipCard
+                                    hideFooter={true}
+                                    frente={
+                                        <div className="flex flex-col h-full justify-between py-2">
+                                            <div className="space-y-4">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="p-3 bg-rose-500/10 rounded-xl border border-rose-500/20">
+                                                        <LuMessageCircle className="text-2xl text-rose-500" />
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="font-black text-xl tracking-tight leading-none uppercase">Explicativa</h4>
+                                                        <p className="text-xs text-muted-foreground uppercase tracking-widest mt-1">Justificativa da Fala</p>
+                                                    </div>
+                                                </div>
+                                                <p className="text-sm text-foreground/80 leading-relaxed">
+                                                    Justifica uma <strong>ordem, pedido ou suposição</strong>. Não há causa física; o conectivo apenas explica o motivo de eu ter dito o que disse.
+                                                </p>
+                                                <div className="p-3 bg-rose-500/5 rounded-lg border border-rose-500/10 text-[11px] text-rose-600 dark:text-rose-400/80 italic">
+                                                    📍 Nota: Frequentemente precedida de vírgula, isolando a justificativa do comando.
+                                                </div>
+                                            </div>
+                                            <div className="bg-muted/30 p-4 rounded-xl border border-border/50">
+                                                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-2">Principais Conectivos</p>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {['pois', 'porque', 'que', 'porquanto'].map(c => (
+                                                        <span key={c} className="px-2 py-0.5 bg-rose-500/5 border border-rose-500/10 rounded text-xs font-medium text-rose-700 dark:text-rose-400">{c}</span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    verso={
+                                        <div className="space-y-6">
+                                            <div className="bg-indigo-500/5 p-4 rounded-xl border border-indigo-500/20 italic text-center">
+                                                <p className="text-base font-medium">&quot;Leve o guarda-chuva, <strong>porque</strong> vai chover.&quot;</p>
+                                            </div>
+                                            <div className="space-y-4">
+                                                <div className="flex gap-3">
+                                                    <div className="w-1.5 h-auto bg-rose-500 rounded-full" />
+                                                    <p className="text-sm text-muted-foreground">
+                                                        <strong className="text-foreground block mb-1">Análise do Nexo</strong>
+                                                        A oração principal traz um comando (&quot;Leve...&quot;). A conjunção explica por que o falante deu esse conselho.
+                                                    </p>
+                                                </div>
+                                                <div className="flex gap-3">
+                                                    <div className="w-1.5 h-auto bg-emerald-500 rounded-full" />
+                                                    <p className="text-sm text-muted-foreground">
+                                                        <strong className="text-foreground block mb-1">Gatilho do Imperativo</strong>
+                                                        Se houver verbo no <strong>Imperativo</strong> (ordem) ou <strong>Futuro</strong> (tentativa de prever) antes do conectivo, a chance de ser explicativa é de 99%.
+                                                    </p>
+                                                </div>
+                                                <div className="pt-2 border-t border-border/40">
+                                                    <p className="text-[11px] leading-tight text-muted-foreground">
+                                                        <strong className="text-rose-600 dark:text-rose-400 uppercase text-[10px] mr-1">Dica de Ouro:</strong>
+                                                        Nas explicativas, a conjunção &quot;Pois&quot; vem obrigatoriamente ANTES do verbo da oração que ela introduz.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                />
                             </div>
                             <AlertBox tipo="success" titulo="Macete de Ouro">
                                 Se antes do &quot;porque/pois&quot; houver um verbo no IMPERATIVO ou uma sugestão, é EXPLICATIVA. Se for um fato real seguido de motivo, é CAUSAL.
@@ -954,13 +1225,195 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-                            <ModuleSectionHeader index={4} title="Subordinativas (9 tipos)" variant="amber" />
-                            <CardCarousel titulo="Conjunções Subordinativas" subtitulo="As 5 mais cobradas pela Cesgranrio" itemsPerView={1} cards={[
-                                { icone: <LuLink2 className="text-amber-500" />, titulo: "Causais", descricao: (<div className="text-sm space-y-1"><p>porque, visto que, já que, como (= porque)</p><p className="italic">&quot;<strong>Como</strong> choveu, adiamos.&quot;</p></div>) },
-                                { icone: <LuLink2 className="text-orange-500" />, titulo: "Concessivas", descricao: (<div className="text-sm space-y-1"><p>embora, conquanto, ainda que, mesmo que</p><p className="italic">&quot;<strong>Embora</strong> cansados, prosseguiram.&quot;</p></div>) },
-                                { icone: <LuLink2 className="text-yellow-600" />, titulo: "Condicionais", descricao: (<div className="text-sm space-y-1"><p>se, caso, contanto que, desde que</p><p className="italic">&quot;<strong>Se</strong> estudar, passará.&quot;</p></div>) },
-                                { icone: <LuLink2 className="text-rose-500" />, titulo: "Consecutivas", descricao: (<div className="text-sm space-y-1"><p>que (precedido de tão/tanto/tal/tamanho)</p><p className="italic">&quot;Estudou <strong>tanto que</strong> passou.&quot;</p></div>) },
-                                { icone: <LuLink2 className="text-indigo-500" />, titulo: "Integrantes", descricao: (<div className="text-sm space-y-1"><p>que, se (introduzem oração substantiva)</p><p className="italic">&quot;Espero <strong>que</strong> você passe.&quot;</p></div>) }
+                            <ModuleSectionHeader index={4} title="Subordinativas (10 tipos)" variant="amber" />
+                            <ContentAccordion mode="stacked" slidesPerView={1} titulo="A Família das Subordinativas (9 Adverbiais + 1 Integrante)" icone={<LuLink2 />} corIndicador="bg-amber-500" defaultOpen={true} slides={[
+                                {
+                                    titulo: '1. Causais', icone: '⚡', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Introduzem a oração que é a <strong>causa</strong>, o fato gerador da oração principal. A causa sempre acontece primeiro na linha do tempo.
+                                            </p>
+                                            <CardCarousel titulo="Principais Causais" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-amber-500" />, titulo: "PORQUE / COMO", descricao: "\"Como choveu muito, a obra foi adiada.\" (Como = Porque)" },
+                                                { icone: <LuLink2 className="text-amber-500" />, titulo: "VISTO QUE", descricao: "\"A prova foi anulada, visto que houve vazamento.\"" },
+                                                { icone: <LuLink2 className="text-amber-500" />, titulo: "JÁ QUE", descricao: "\"Já que você estudou, fará uma ótima prova.\"" },
+                                                { icone: <LuLink2 className="text-amber-500" />, titulo: "UMA VEZ QUE", descricao: "\"Uma vez que o edital saiu, as aulas dobraram.\"" }
+                                            ]} />
+                                            <AlertBox tipo="warning" titulo="O Teste do 'COMO'">
+                                                Lembre-se: O &quot;como&quot; só é causal se puder ser trocado por &quot;porque&quot; e vier no INÍCIO da frase principal.
+                                            </AlertBox>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '2. Concessivas', icone: '🛡️', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                O grande 'furo de bloqueio'. Introduz um fato contrário, que <strong>não tem força</strong> para impedir a ação principal de acontecer.
+                                            </p>
+                                            <CardCarousel titulo="Principais Concessivas" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "EMBORA", descricao: "\"A equipe prosseguiu, embora estivesse exausta.\"" },
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "CONQUANTO", descricao: "\"Conquanto chovesse, o navio partiu.\"" },
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "AINDA QUE / MESMO QUE", descricao: "\"Ainda que seja difícil, nós passaremos.\"" },
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "SE BEM QUE / POSTO QUE", descricao: "\"Posto que não concordasse, assinou o termo.\"" }
+                                            ]} />
+                                            <AlertBox tipo="info" titulo="Modo Verbal Obrigatório">
+                                                📍 Dica Cesgranrio: O verbo da oração concessiva fica normalmente no modo <strong>subjuntivo</strong> (estivesse, chova, venha).
+                                            </AlertBox>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '3. Condicionais', icone: '⚖️', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Estabelecem uma hipótese ou condição necessária para que o fato da oração principal se realize.
+                                            </p>
+                                            <CardCarousel titulo="Principais Condicionais" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-yellow-600" />, titulo: "SE", descricao: "\"O alarme soará se a pressão exceder o limite.\"" },
+                                                { icone: <LuLink2 className="text-yellow-600" />, titulo: "CASO", descricao: "\"Caso chova, o evento será indoor.\"" },
+                                                { icone: <LuLink2 className="text-yellow-600" />, titulo: "CONTANTO QUE", descricao: "\"Trabalharemos, contanto que paguem extra.\"" },
+                                                { icone: <LuLink2 className="text-yellow-600" />, titulo: "DESDE QUE", descricao: "\"Você pode sair, desde que termine o relatório.\"" }
+                                            ]} />
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '4. Consecutivas', icone: '🎳', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Apresentam a <strong>consequência</strong> ou o efeito do fato expresso na oração principal. É o inverso da Causal.
+                                            </p>
+                                            <CardCarousel titulo="Principais Consecutivas" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-rose-500" />, titulo: "TÃO... QUE", descricao: "\"O poço era tão profundo que exigiu novas brocas.\"" },
+                                                { icone: <LuLink2 className="text-rose-500" />, titulo: "TAL... QUE", descricao: "\"Tal foi o susto que ele desmaiou.\"" },
+                                                { icone: <LuLink2 className="text-rose-500" />, titulo: "TAMANHO... QUE", descricao: "\"Tamanho foi o rombo que a empresa faliu.\"" },
+                                                { icone: <LuLink2 className="text-rose-500" />, titulo: "DE SORTE QUE", descricao: "\"Estudou muito, de sorte que foi aprovado.\"" }
+                                            ]} />
+                                            <AlertBox tipo="success" titulo="A Equação da Consecutiva">
+                                                Sempre teremos uma palavra intensificadora na oração principal (TÃO, TAL, TANTO, TAMANHO) e o consequente &quot;QUE&quot; na subordinada.
+                                            </AlertBox>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '5. Comparativas', icone: '🪞', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Estabelecem uma analogia ou comparação de igualdade, superioridade ou inferioridade. Muitas vezes o verbo da segunda oração fica escondido (elíptico).
+                                            </p>
+                                            <CardCarousel titulo="Principais Comparativas" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-indigo-500" />, titulo: "COMO / QUAL", descricao: "\"Ele é ágil como um lince.\"" },
+                                                { icone: <LuLink2 className="text-indigo-500" />, titulo: "TAL QUAL", descricao: "\"O filho é teimoso tal qual o pai.\"" },
+                                                { icone: <LuLink2 className="text-indigo-500" />, titulo: "MAIS QUE / MENOS QUE", descricao: "\"O novo sistema processa dados mais rápido do que o antigo.\"" },
+                                                { icone: <LuLink2 className="text-indigo-500" />, titulo: "TANTO QUANTO", descricao: "\"Ela estudou tanto quanto o irmão.\"" }
+                                            ]} />
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '6. Conformativas', icone: '📏', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Indicam acordo, conformidade com a ideia expressa na oração principal.
+                                            </p>
+                                            <CardCarousel titulo="Principais Conformativas" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-blue-500" />, titulo: "CONFORME", descricao: "\"Agiremos conforme manda o figurino.\"" },
+                                                { icone: <LuLink2 className="text-blue-500" />, titulo: "SEGUNDO", descricao: "\"Segundo o edital, a prova é amanhã.\"" },
+                                                { icone: <LuLink2 className="text-blue-500" />, titulo: "CONSOANTE", descricao: "\"O equipamento foi instalado consoante o manual.\"" },
+                                                { icone: <LuLink2 className="text-blue-500" />, titulo: "COMO", descricao: "\"Fiz o relatório como o chefe pediu.\"" }
+                                            ]} />
+                                            <AlertBox tipo="info" titulo="Cuidado com a Polissemia do 'COMO'">
+                                                O &quot;COMO&quot; pode ser Causal (&quot;Como choveu...&quot;), Comparativo (&quot;Forte como um touro&quot;) ou Conformativo (&quot;Fez como ensinou o mestre&quot;).
+                                            </AlertBox>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '7. Finais', icone: '🎯', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Exprimem o objetivo, o propósito ou a finalidade de algo. Respondem à pergunta &quot;Para quê?&quot;.
+                                            </p>
+                                            <CardCarousel titulo="Principais Finais" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-sky-500" />, titulo: "PARA QUE", descricao: "\"Explicou tudo devagar para que todos entendessem.\"" },
+                                                { icone: <LuLink2 className="text-sky-500" />, titulo: "A FIM DE QUE", descricao: "\"Eles realizaram um novo teste a fim de que eliminassem o erro.\"" },
+                                                { icone: <LuLink2 className="text-sky-500" />, titulo: "QUE (= PARA QUE)", descricao: "\"Fez sinal que nos calássemos.\"" },
+                                                { icone: <LuLink2 className="text-sky-500" />, titulo: "PARA", descricao: "\"Estudamos muito para passar na prova.\"" }
+                                            ]} />
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '8. Proporcionais', icone: '📈', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Indicam fatos que aumentam ou diminuem em relação de proporcionalidade com outro evento. Acontecem de forma simultânea.
+                                            </p>
+                                            <CardCarousel titulo="Principais Proporcionais" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-teal-500" />, titulo: "À MEDIDA QUE", descricao: "\"À medida que se desce o poço, a temperatura aumenta.\"" },
+                                                { icone: <LuLink2 className="text-teal-500" />, titulo: "À PROPORÇÃO QUE", descricao: "\"O som fica abafado à proporção que mergulhamos.\"" },
+                                                { icone: <LuLink2 className="text-teal-500" />, titulo: "AO PASSO QUE", descricao: "\"O lucro sobe ao passo que as dívidas caem.\"" },
+                                                { icone: <LuLink2 className="text-teal-500" />, titulo: "QUANTO MAIS/MENOS", descricao: "\"Quanto mais estuda, menos erra.\"" }
+                                            ]} />
+                                            <AlertBox tipo="danger" titulo="O Erro Fatal: 'À medida em que'">
+                                                🚫 Nunca escreva &quot;À medida EM que&quot; ou &quot;Na medida QUE&quot;. O correto são duas expressões diferentes: &quot;À medida que&quot; (proporção) ou &quot;Na medida em que&quot; (causa = visto que).
+                                            </AlertBox>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '9. Temporais', icone: '⏰', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Referem-se à localização no tempo (simultaneidade, anterioridade ou posterioridade).
+                                            </p>
+                                            <CardCarousel titulo="Principais Temporais" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-cyan-500" />, titulo: "QUANDO / ENQUANTO", descricao: "\"O reator desativou quando cortaram a energia.\"" },
+                                                { icone: <LuLink2 className="text-cyan-500" />, titulo: "LOGO QUE / ASSIM QUE", descricao: "\"Avisem-me assim que o navio chegar.\"" },
+                                                { icone: <LuLink2 className="text-cyan-500" />, titulo: "DESDE QUE", descricao: "\"Nunca mais riu desde que o incidente ocorreu.\"" },
+                                                { icone: <LuLink2 className="text-cyan-500" />, titulo: "SEMPRE QUE", descricao: "\"Ele visita a plataforma sempre que viaja.\"" }
+                                            ]} />
+                                            <AlertBox tipo="warning" titulo="Polissemia do 'DESDE QUE'">
+                                                Pode ser Condicional (&quot;Passará, desde que estude&quot;) ou Temporal (&quot;Mudou muito desde que assumiu o cargo&quot;). O contexto decide!
+                                            </AlertBox>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '10. Cláusula Integrante', icone: '🔗', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Diferente das outras 9, a conjunção integrante <strong>não traz ideia de advérbio</strong>. Ela apenas liga verbos a orações inteiras que funcionam como substantivo.
+                                            </p>
+                                            <CardCarousel titulo="As Duas Integrantes" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-violet-500" />, titulo: "QUE", descricao: "\"Os técnicos afirmaram QUE o vazamento foi contido.\"" },
+                                                { icone: <LuLink2 className="text-violet-500" />, titulo: "SE", descricao: "\"Não sei SE ele vem hoje.\"" }
+                                            ]} />
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div className="bg-violet-500/10 p-5 rounded-2xl border border-violet-500/20 shadow-sm">
+                                                    <h5 className="font-bold text-violet-700 dark:text-violet-400 mb-2 flex items-center gap-2">
+                                                        <span>🧠 O Macete do &quot;ISSO&quot;</span>
+                                                    </h5>
+                                                    <p className="text-sm text-foreground/80 leading-relaxed">
+                                                        O macete definitivo é substituir a oração iniciada pela conjunção integrante pela palavra <strong>&quot;ISSO&quot;</strong>.
+                                                    </p>
+                                                    <div className="mt-3 p-3 bg-card rounded-xl border border-border italic text-sm text-muted-foreground text-center">
+                                                        &quot;Afirmaram <strong>que vazou</strong>.&quot;<br />↓<br />&quot;Afirmaram <strong>ISSO</strong>.&quot;
+                                                    </div>
+                                                </div>
+                                                <div className="bg-amber-500/10 p-5 rounded-2xl border border-amber-500/20 shadow-sm">
+                                                    <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2 flex items-center gap-2">
+                                                        <span>🚨 Mas Cuidado!</span>
+                                                    </h5>
+                                                    <p className="text-sm text-foreground/80 leading-relaxed">
+                                                        Se tentar usar &quot;ISSO&quot; na Causal (Ex: &quot;O teste parou ISSO&quot; em vez de &quot;porque choveu&quot;), não fará sentido lógico. Isso comprova que a conjunção era Adverbial.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                }
                             ]} />
                         </section>
 
@@ -974,38 +1427,52 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={6} title="Essenciais, Acidentais e Contrações" variant="amber" />
-                            <ContentAccordion titulo="O Mundo das Preposições" icone={<LuLink2 />} corIndicador="bg-orange-500" defaultOpen={true} slides={[
+                            <ContentAccordion mode="stacked" slidesPerView={1} titulo="O Mundo das Preposições — Guia Completo" icone={<LuLink2 />} corIndicador="bg-orange-500" defaultOpen={true} slides={[
                                 {
-                                    titulo: 'Preposições Essenciais', icone: '1️⃣', conteudo: (
-                                        <div className="space-y-3">
-                                            <p className="text-muted-foreground">São as palavras que SEMPRE funcionam como preposição:</p>
+                                    titulo: '1. Preposições Essenciais', icone: '💎', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-muted-foreground italic">São palavras que nasceram para ser preposições e nunca mudam de classe.</p>
+                                            <CardCarousel titulo="As Essenciais em Prática" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "A / PARA", descricao: "Indica destino ou direção: 'Fomos A Macaé' ou 'Para a sede'." },
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "DE / EM", descricao: "Indica origem ou lugar: 'Vim DE Santos' ou 'Estou EM trânsito'." },
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "COM / SEM", descricao: "Indica companhia ou ausência: 'Saiu COM a equipe' ou 'SEM o EPI'." },
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "SOB / SOBRE", descricao: "Indica posição: 'SOB a mesa' (embaixo) ou 'SOBRE a mesa' (em cima)." },
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "CONTRA / PERANTE", descricao: "Indica oposição ou presença: 'Lutou CONTRA o tempo' ou 'PERANTE o juiz'." },
+                                                { icone: <LuLink2 className="text-orange-500" />, titulo: "ATÉ / APÓS", descricao: "Indica limite ou tempo: 'Trabalhou ATÉ tarde' ou 'APÓS o expediente'." }
+                                            ]} />
                                             <div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20 text-sm">
-                                                <p className="font-bold">a, ante, após, até, com, contra, de, desde, em, entre, para, per, perante, por, sem, sob, sobre, trás</p>
-                                                <p className="text-muted-foreground italic mt-2">Macete: &quot;A ANTE APÓS ATÉ COM...&quot; — decore como uma lista rítmica.</p>
+                                                <p><strong>🎵 Rimo-decoração:</strong> A, ante, após, até, com, contra, de, desde, em, entre, para, per, perante, por, sem, sob, sobre, trás.</p>
                                             </div>
                                         </div>
                                     )
                                 },
                                 {
-                                    titulo: 'Combinação e Contração', icone: '2️⃣', conteudo: (
-                                        <div className="space-y-3">
-                                            <p className="text-muted-foreground"><strong>Combinação</strong> (sem perda de sons): a + o = <strong>ao</strong>. <strong>Contração</strong> (com perda): de + o = <strong>do</strong>, em + a = <strong>na</strong>, a + a = <strong>à</strong> (crase).</p>
-                                            <div className="bg-orange-500/10 p-4 rounded-xl border border-orange-500/20 text-sm space-y-1">
-                                                <p>de + o = <strong>do</strong> | de + a = <strong>da</strong> | em + o = <strong>no</strong> | em + a = <strong>na</strong></p>
-                                                <p>a + aquele = <strong>àquele</strong> | per + o = <strong>pelo</strong> | de + este = <strong>deste</strong></p>
-                                            </div>
+                                    titulo: '2. Combinação e Contração', icone: '🧩', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-muted-foreground italic">A união da preposição com outras palavras (artigos, pronomes).</p>
+                                            <CardCarousel titulo="Formação de Palavras" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-emerald-500" />, titulo: "COMBINAÇÃO (Sem perda)", descricao: "A + O = AO | A + ONDE = AONDE. Não há alteração fonética." },
+                                                { icone: <LuLink2 className="text-rose-500" />, titulo: "CONTRAÇÃO (Com perda)", descricao: "DE + O = DO | EM + A = NA. Há fusão e perda de letras." },
+                                                { icone: <LuLink2 className="text-blue-500" />, titulo: "CRASE", descricao: "A (prep) + A (artigo) = À. É a contração máxima da língua." },
+                                                { icone: <LuLink2 className="text-amber-500" />, titulo: "PRONOMES", descricao: "DE + ESTE = DESTE | EM + AQUELE = NAQUELE. Muito comum na escrita." }
+                                            ]} />
                                         </div>
                                     )
                                 },
                                 {
-                                    titulo: 'Relações Semânticas das Preposições', icone: '3️⃣', conteudo: (
-                                        <div className="space-y-3">
-                                            <p className="text-muted-foreground">A mesma preposição pode expressar diferentes relações conforme o contexto:</p>
-                                            <div className="bg-yellow-500/10 p-4 rounded-xl border border-yellow-500/20 text-sm space-y-1">
-                                                <p><strong>Lugar:</strong> &quot;Foi <strong>a</strong> Macaé.&quot; | <strong>Tempo:</strong> &quot;Saiu <strong>às</strong> 8h.&quot;</p>
-                                                <p><strong>Modo:</strong> &quot;Pintou <strong>a</strong> óleo.&quot; | <strong>Causa:</strong> &quot;Morreu <strong>de</strong> fome.&quot;</p>
-                                                <p><strong>Posse:</strong> &quot;Carro <strong>de</strong> João.&quot; | <strong>Instrumento:</strong> &quot;Cortou <strong>com</strong> faca.&quot;</p>
-                                            </div>
+                                    titulo: '3. Relações Semânticas (Sentidos)', icone: '🧠', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-muted-foreground italic">A preposição não tem sentido sozinha, ela ganha vida no contexto.</p>
+                                            <CardCarousel titulo="Diferentes Significados" itemsPerView={2} cards={[
+                                                { icone: <LuLink2 className="text-blue-500" />, titulo: "LUGAR", descricao: "Passeamos PELO jardim da refinaria." },
+                                                { icone: <LuLink2 className="text-blue-500" />, titulo: "TEMPO", descricao: "A reunião será ÀS dez horas." },
+                                                { icone: <LuLink2 className="text-blue-500" />, titulo: "MODO", descricao: "Fizeram o teste COM cuidado." },
+                                                { icone: <LuLink2 className="text-blue-500" />, titulo: "CAUSA", descricao: "Tremia DE frio durante o turno." },
+                                                { icone: <LuLink2 className="text-blue-500" />, titulo: "INSTRUMENTO", descricao: "Cortou a chapa COM o maçarico." },
+                                                { icone: <LuLink2 className="text-blue-500" />, titulo: "COMPANHIA", descricao: "Viajou COM os técnicos da plataforma." },
+                                                { icone: <LuLink2 className="text-blue-500" />, titulo: "POSSE", descricao: "Esta é a sala DO engenheiro." },
+                                                { icone: <LuLink2 className="text-blue-500" />, titulo: "MATÉRIA", descricao: "Copos DE vidro são proibidos na área." }
+                                            ]} />
                                         </div>
                                     )
                                 }
@@ -1096,30 +1563,138 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={2} title="Classificações do Advérbio" variant="rose" />
-                            <ContentAccordion titulo="Os 7 Tipos de Advérbio" icone={<LuActivity />} corIndicador="bg-rose-500" defaultOpen={true} slides={[
+                            <p className="text-base text-muted-foreground leading-relaxed text-justify">
+                                Os advérbios organizam-se em categorias baseadas na <strong>circunstância</strong> que expressam. Essa classificação é idêntica à das conjunções, focando nas nuances de tempo, modo, causa e lugar. A correta identificação dessa circunstância é essencial para responder questões de interpretação e substituição de palavras.
+                            </p>
+                            <ContentAccordion mode="stacked" slidesPerView={1} titulo="Os Tipos de Advérbio e Onde/Aonde" icone={<LuActivity />} corIndicador="bg-rose-500" defaultOpen={true} slides={[
                                 {
-                                    titulo: 'Lugar, Tempo e Modo', icone: '1️⃣', conteudo: (
-                                        <div className="space-y-4">
-                                            <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20 text-sm space-y-2">
-                                                <p><strong className="text-rose-700 dark:text-rose-400">Lugar:</strong> aqui, ali, lá, perto, longe, dentro, fora, onde</p>
-                                                <p className="italic">&quot;A plataforma fica <strong>longe</strong>.&quot;</p>
-                                                <p><strong className="text-rose-700 dark:text-rose-400">Tempo:</strong> hoje, ontem, agora, sempre, nunca, cedo, tarde, já</p>
-                                                <p className="italic">&quot;O turno começa <strong>cedo</strong>.&quot;</p>
-                                                <p><strong className="text-rose-700 dark:text-rose-400">Modo:</strong> bem, mal, assim, depressa, e a maioria dos terminados em <strong>-mente</strong></p>
-                                                <p className="italic">&quot;O técnico trabalhou <strong>rapidamente</strong>.&quot;</p>
-                                            </div>
+                                    titulo: '1. Lugar', icone: '📍', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Indica a posição espacial onde a ação ocorre, modificando frequentemente verbos de movimento ou estado.
+                                            </p>
+                                            <CardCarousel titulo="Principais Advérbios de Lugar" itemsPerView={2} cards={[
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "AQUI / ALI / LÁ", descricao: "\"A ferramenta está aqui; a broca, lá.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "DENTRO / FORA", descricao: "\"A perfuração ocorre dentro da plataforma.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "PERTO / LONGE", descricao: "\"O reservatório fica longe da costa.\"" }
+                                            ]} />
                                         </div>
                                     )
                                 },
                                 {
-                                    titulo: 'Intensidade, Negação, Afirmação e Dúvida', icone: '2️⃣', conteudo: (
-                                        <div className="space-y-3">
-                                            <div className="bg-pink-500/10 p-4 rounded-xl border border-pink-500/20 text-sm space-y-2">
-                                                <p><strong className="text-pink-700 dark:text-pink-400">Intensidade:</strong> muito, pouco, bastante, demais, mais, menos, tão</p>
-                                                <p><strong className="text-pink-700 dark:text-pink-400">Negação:</strong> não, nunca, jamais, nem</p>
-                                                <p><strong className="text-pink-700 dark:text-pink-400">Afirmação:</strong> sim, certamente, realmente</p>
-                                                <p><strong className="text-pink-700 dark:text-pink-400">Dúvida:</strong> talvez, quiçá, possivelmente</p>
-                                            </div>
+                                    titulo: '2. Tempo', icone: '⏳', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Situa a ação verbal no tempo (passado, presente ou futuro). Essencial para a coesão temporal do texto.
+                                            </p>
+                                            <CardCarousel titulo="Principais Advérbios de Tempo" itemsPerView={2} cards={[
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "HOJE / ONTEM / AMANHÃ", descricao: "\"A inspeção ocorreu ontem de manhã.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "AGORA / JÁ", descricao: "\"Desliguem os motores agora!\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "SEMPRE / NUNCA / JAMAIS", descricao: "\"O EPI deve ser usado sempre.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "CEDO / TARDE", descricao: "\"O turno da noite começa cedo e termina tarde.\"" }
+                                            ]} />
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '3. Modo', icone: '⚙️', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Descreve a maneira como a ação é executada. Quase todos os advérbios terminados em <em>-mente</em> pertencem a este grupo.
+                                            </p>
+                                            <CardCarousel titulo="Principais Advérbios de Modo" itemsPerView={2} cards={[
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "BEM / MAL", descricao: "\"O sistema operou bem durante o teste.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "ASSIM", descricao: "\"Se agirmos assim, evitaremos acidentes.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "TERMINADOS EM -MENTE", descricao: "\"A válvula fechou rapidamente.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "DEPRESSA / DEVAGAR", descricao: "\"O vazamento se espalhou depressa.\"" }
+                                            ]} />
+                                            <AlertBox tipo="info" titulo="O Sufixo -mente">
+                                                📍 Nota: Quando vários advérbios em "-mente" aparecem juntos, o sufixo costuma ir apenas no último por uma questão de estilo. Ex: "Trabalhou dura e arduamente".
+                                            </AlertBox>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '4. Intensidade', icone: '📈', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Altera o grau da ação, do adjetivo ou de outro advérbio. É o tipo que mais se confunde com pronomes porque eles têm a mesma forma visual.
+                                            </p>
+                                            <CardCarousel titulo="Principais Advérbios de Intensidade" itemsPerView={2} cards={[
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "MUITO / POUCO", descricao: "\"O equipamento vibrou muito.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "BASTANTE / ASSAZ", descricao: "\"A temperatura estava bastante elevada.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "DEMAIS", descricao: "\"Ele exige proteção demais para a área.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "MAIS / MENOS / TÃO", descricao: "\"Precisamos de uma broca mais forte.\"" }
+                                            ]} />
+                                            <AlertBox tipo="danger" titulo="Advérbio x Pronome">
+                                                Lembre-se: O advérbio NÃO VARIA. Se a palavra pluralizar para concordar com um nome ("Muitos carros"), ela é um pronome indefinido, e não advérbio.
+                                            </AlertBox>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '5. Negação', icone: '🚫', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Nega a ação verbal. Costuma atuar como palavra atrativa para os pronomes oblíquos (fator de próclise na sintaxe).
+                                            </p>
+                                            <CardCarousel titulo="Principais Advérbios de Negação" itemsPerView={2} cards={[
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "NÃO / NEM", descricao: "\"O inspetor não liberou a área.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "NUNCA / JAMAIS", descricao: "\"Jamais opere o painel sem luvas!\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "TAMPOUCO", descricao: "\"Não leu o manual, tampouco as normas.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "NADA / ABSOLUTAMENTE", descricao: "\"Absolutamente errado o que ele fez.\"" }
+                                            ]} />
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '6. Afirmação', icone: '✅', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Reforça de maneira positiva a veracidade da ação verbal, eliminando dúvidas do interlocutor.
+                                            </p>
+                                            <CardCarousel titulo="Principais Advérbios de Afirmação" itemsPerView={2} cards={[
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "SIM", descricao: "\"Nós fomos sim os responsáveis pelo sucesso.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "CERTAMENTE / DECERTO", descricao: "\"Certamente enviaremos o relatório.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "REALMENTE", descricao: "\"O novo tubo realmente suporta a pressão.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "INDUBITAVELMENTE", descricao: "\"Ela é indubitavelmente a melhor técnica.\"" }
+                                            ]} />
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '7. Dúvida', icone: '🤔', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Indica incerteza ou hesitação na ocorrência da ação verbal. Pode forçar o uso de verbos no Modo Subjuntivo (hipótese).
+                                            </p>
+                                            <CardCarousel titulo="Principais Advérbios de Dúvida" itemsPerView={2} cards={[
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "TALVEZ", descricao: "\"Talvez o embarque atrase devido ao tempo.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "QUIÇÁ", descricao: "\"Venceremos hoje ou, quiçá, nesta semana.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "POSSIVELMENTE", descricao: "\"Essa foi, possivelmente, a maior falha técnica.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "PROVAVELMENTE", descricao: "\"Provavelmente chegaremos na cota certa.\"" }
+                                            ]} />
+                                            <AlertBox tipo="info" titulo="Impacto Verbal">
+                                                O uso da palavra "talvez" obriga o verbo ir para o subjuntivo. Não se diz "talvez ele vem", mas sim "talvez ele venha".
+                                            </AlertBox>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '8. Onde vs Aonde', icone: '🎯', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Embora sejam advérbios de lugar, o uso de "Onde" e "Aonde" obedece a uma regra de regência estrita e é um dos erros gramaticais mais explorados por bancas examinadoras.
+                                            </p>
+                                            <CardCarousel titulo="Regra de Ouro" itemsPerView={2} cards={[
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "ONDE (Lugar Fixo)", descricao: "\"Onde você está?\" / \"A plataforma onde trabalho.\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "AONDE (Movimento)", descricao: "\"Aonde você vai?\" / \"Aonde essa tubulação nos leva?\"" },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "PREPOSIÇÃO 'A'", descricao: "A-ONDE é apenas 'Onde' somado à preposição 'A' (exigida por Ir, Chegar)." },
+                                                { icone: <LuActivity className="text-rose-500" />, titulo: "DE ONDE (Origem)", descricao: "\"De onde você veio?\" (Verbos que pedem 'de')" }
+                                            ]} />
+                                            <AlertBox tipo="danger" titulo="Macete Infalível">
+                                                Troque por "Para onde". Se couber na frase ("Para onde você vai?"), o correto é usar "Aonde". Se não couber, use "Onde".
+                                            </AlertBox>
                                         </div>
                                     )
                                 }
@@ -1128,6 +1703,9 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={3} title="As Palavras Camaleão — Meio, Bastante, Certo, Menos" variant="rose" />
+                            <p className="text-base text-muted-foreground leading-relaxed text-justify">
+                                Existem palavras na língua portuguesa que se comportam como verdadeiros camaleões: elas <strong>mudam de classe gramatical</strong> (e consequentemente, de regra de flexão) dependendo unicamente de com quem estão "andando" na frase. Se acompanharem um substantivo, variam. Se acompanharem um adjetivo ou verbo, travam na forma singular.
+                            </p>
                             <AlertBox tipo="danger" titulo="🚨 Pegadinha Número 1 da Cesgranrio!">
                                 &quot;Meio&quot;, &quot;bastante&quot; e &quot;certo&quot; mudam de classe conforme o contexto. Advérbio = invariável. Adjetivo/Pronome/Numeral = variável. E &quot;menos&quot; NUNCA varia (&quot;menas&quot; NÃO existe).
                             </AlertBox>
@@ -1149,9 +1727,93 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={5} title="O Artigo como 'Rei Midas' e a Regra do Proibido/Necessário" variant="rose" />
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <FlipCard frente={<span className="font-bold text-center">Derivação Imprópria<br /><span className="text-sm font-normal text-muted-foreground">(Artigo transforma classe)</span></span>} verso={<div className="text-sm text-center space-y-2"><p><strong>O cantar</strong> → verbo virou subst.</p><p><strong>O azul</strong> → adjetivo virou subst.</p><p><strong>Um não</strong> → advérbio virou subst.</p></div>} />
-                                <FlipCard frente={<span className="font-bold text-center">É Proibido/Necessário<br /><span className="text-sm font-normal text-muted-foreground">(COM ou SEM artigo?)</span></span>} verso={<div className="text-sm text-center space-y-2"><p>✅ &quot;É <strong>proibido</strong> entrada.&quot; (sem artigo = invariável)</p><p>✅ &quot;É <strong>proibida</strong> a entrada.&quot; (com artigo = concorda)</p><p className="text-muted-foreground italic">A presença do artigo muda tudo!</p></div>} />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <FlipCard
+                                    hideFooter={true}
+                                    frente={
+                                        <div className="flex flex-col h-full justify-between py-2">
+                                            <div className="space-y-4">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="p-3 bg-pink-500/10 rounded-xl border border-pink-500/20">
+                                                        <LuActivity className="text-2xl text-pink-500" />
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="font-black text-xl tracking-tight leading-none uppercase">Derivação Imprópria</h4>
+                                                        <p className="text-xs text-muted-foreground uppercase tracking-widest mt-1">O Artigo Transforma Classes</p>
+                                                    </div>
+                                                </div>
+                                                <p className="text-sm text-foreground/80 leading-relaxed">
+                                                    Qualquer palavra antecedida por um artigo converte-se instantaneamente em um <strong>substantivo</strong>, mesmo que originalmente pertença a outra classe.
+                                                </p>
+                                                <div className="p-3 bg-pink-500/5 rounded-lg border border-pink-500/10 text-[11px] text-pink-600 dark:text-pink-400/80 italic">
+                                                    📍 Nota: Essa mutação é o que chamamos na morfologia de "Substantivação".
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    verso={
+                                        <div className="space-y-6">
+                                            <div className="bg-emerald-500/5 p-4 rounded-xl border border-emerald-500/20 italic text-center text-sm space-y-3">
+                                                <p>&quot;O <strong>cantar</strong> dos pássaros...&quot; <br />(verbo → substantivo)</p>
+                                                <div className="w-8 border-t border-emerald-500/30 mx-auto" />
+                                                <p>&quot;Preferiu o <strong>azul</strong> escuro.&quot; <br />(adjetivo → substantivo)</p>
+                                                <div className="w-8 border-t border-emerald-500/30 mx-auto" />
+                                                <p>&quot;Recebeu um <strong>não</strong> rotundo.&quot; <br />(advérbio → substantivo)</p>
+                                            </div>
+                                            <div className="pt-2 border-t border-border/40">
+                                                <p className="text-[11px] leading-tight text-muted-foreground">
+                                                    <strong className="text-pink-600 dark:text-pink-400 uppercase text-[10px] mr-1">Dica Cesgranrio:</strong>
+                                                    A banca adora sublinhar uma palavra que tradicionalmente é de outra classe e perguntar sua função na frase. Olhe sempre o que vem antes!
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                />
+                                <FlipCard
+                                    hideFooter={true}
+                                    frente={
+                                        <div className="flex flex-col h-full justify-between py-2">
+                                            <div className="space-y-4">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="p-3 bg-fuchsia-500/10 rounded-xl border border-fuchsia-500/20">
+                                                        <LuShield className="text-2xl text-fuchsia-500" />
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="font-black text-xl tracking-tight leading-none uppercase">Regra de Concordância</h4>
+                                                        <p className="text-xs text-muted-foreground uppercase tracking-widest mt-1">É Proibido / É Necessário</p>
+                                                    </div>
+                                                </div>
+                                                <p className="text-sm text-foreground/80 leading-relaxed">
+                                                    Construções como &quot;é proibido&quot;, &quot;é necessário&quot;, &quot;é bom&quot;, <strong>só concordam</strong> com o substantivo feminino se ele estiver antecedido por <strong>artigo</strong>.
+                                                </p>
+                                                <div className="p-3 bg-fuchsia-500/5 rounded-lg border border-fuchsia-500/10 text-[11px] text-fuchsia-600 dark:text-fuchsia-400/80 italic">
+                                                    📍 Nota: Se não houver o artigo "a", a expressão permanece invariável (no masculino).
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    verso={
+                                        <div className="space-y-6">
+                                            <div className="space-y-4">
+                                                <div className="bg-red-500/5 p-4 rounded-xl border border-red-500/20 text-sm">
+                                                    <p className="flex items-center gap-2"><LuCheck className="text-emerald-500" /> &quot;É <strong>proibido</strong> entrada.&quot;</p>
+                                                    <p className="text-xs text-muted-foreground mt-1 ml-6">O substantivo &quot;entrada&quot; está genérico (sem o artigo 'a'). Logo, <em>proibido</em> não varia.</p>
+                                                </div>
+                                                <div className="w-0.5 h-4 bg-border mx-auto" />
+                                                <div className="bg-emerald-500/5 p-4 rounded-xl border border-emerald-500/20 text-sm">
+                                                    <p className="flex items-center gap-2"><LuCheck className="text-emerald-500" /> &quot;É <strong>proibida a</strong> entrada.&quot;</p>
+                                                    <p className="text-xs text-muted-foreground mt-1 ml-6">O artigo 'a' determinou o substantivo, puxando a concordância: <em>proibida</em>.</p>
+                                                </div>
+                                            </div>
+                                            <div className="pt-2 border-t border-border/40">
+                                                <p className="text-[11px] leading-tight text-muted-foreground">
+                                                    <strong className="text-fuchsia-600 dark:text-fuchsia-400 uppercase text-[10px] mr-1">Dica de Ouro:</strong>
+                                                    A presença do artigo (ou pronome) é o fator determinante (o 'botão de liga/desliga') da concordância nestes casos.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                />
                             </div>
                         </section>
 
@@ -1239,28 +1901,70 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={2} title="Classificações e Armadilhas" variant="violet" />
-                            <ContentAccordion titulo="Os 4 Tipos de Numeral" icone={<LuHash />} corIndicador="bg-violet-500" defaultOpen={true} slides={[
+                            <ContentAccordion mode="stacked" slidesPerView={1} titulo="Os 4 Tipos de Numeral" icone={<LuHash />} corIndicador="bg-violet-500" defaultOpen={true} slides={[
                                 {
-                                    titulo: 'Cardinal, Ordinal, Multiplicativo e Fracionário', icone: '1️⃣', conteudo: (
-                                        <div className="space-y-4">
-                                            <div className="bg-violet-500/10 p-5 rounded-xl border border-violet-500/20 text-sm space-y-2">
-                                                <p><strong className="text-violet-700 dark:text-violet-400">Cardinal:</strong> quantidade exata → um, dois, três, cem, mil</p>
-                                                <p><strong className="text-violet-700 dark:text-violet-400">Ordinal:</strong> posição/ordem → primeiro, segundo, trigésimo</p>
-                                                <p><strong className="text-violet-700 dark:text-violet-400">Multiplicativo:</strong> multiplicação → dobro, triplo, quádruplo</p>
-                                                <p><strong className="text-violet-700 dark:text-violet-400">Fracionário:</strong> divisão → meio, terço, quinto, décimo</p>
-                                            </div>
+                                    titulo: '1. Cardinal', icone: '1️⃣', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Indica a <strong>quantidade exata</strong> absoluta de seres ou coisas. É a forma mais básica do numeral.
+                                            </p>
+                                            <CardCarousel titulo="Na Prática" itemsPerView={2} cards={[
+                                                { icone: <LuHash className="text-violet-500" />, titulo: "UM, DOIS, TRÊS...", descricao: "\"Dois engenheiros assinaram o projeto.\"" },
+                                                { icone: <LuHash className="text-violet-500" />, titulo: "CEM, MIL, MILHÃO...", descricao: "\"A perfuração alcançou mil metros.\"" },
+                                                { icone: <LuHash className="text-violet-500" />, titulo: "AMBOS / AMBAS", descricao: "\"Ambas as bombas falharam.\" (Numeral dual, equivalente a 'os dois'/'as duas')" },
+                                                { icone: <LuHash className="text-violet-500" />, titulo: "ZERO", descricao: "\"Houve zero acidentes este mês.\"" }
+                                            ]} />
+                                            <AlertBox tipo="warning" titulo="O Numeral Dual e a Concordância">
+                                                Atenção para "ambos/ambas". Por ser um numeral, ele varia normalmente ("ambos os tubos / ambas as válvulas"). A palavra subsequente geralmente exige artigo.
+                                            </AlertBox>
                                         </div>
                                     )
                                 },
                                 {
-                                    titulo: 'Ambos/Ambas e Meio/Meia como Numeral', icone: '2️⃣', conteudo: (
-                                        <div className="space-y-3">
-                                            <div className="bg-purple-500/10 p-4 rounded-xl border border-purple-500/20 text-sm space-y-2">
-                                                <p>✅ &quot;<strong>Ambos</strong> os candidatos passaram.&quot; (numeral dual = os dois → VARIA)</p>
-                                                <p>✅ &quot;<strong>Ambas</strong> as plataformas operam.&quot;</p>
-                                                <p>✅ &quot;Comprei <strong>meia</strong> dúzia.&quot; (numeral fracionário = metade → VARIA)</p>
-                                                <p className="text-muted-foreground italic">Não confunda: &quot;Ela estava meio cansada&quot; (advérbio = invariável)</p>
-                                            </div>
+                                    titulo: '2. Ordinal', icone: '🥇', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Indica a <strong>ordem</strong> ou <strong>posição</strong> que o ser ocupa em uma série ou sequência.
+                                            </p>
+                                            <CardCarousel titulo="Na Prática" itemsPerView={2} cards={[
+                                                { icone: <LuHash className="text-violet-500" />, titulo: "PRIMEIRO, SEGUNDO...", descricao: "\"Esta é a primeira plataforma pre-sal.\"" },
+                                                { icone: <LuHash className="text-violet-500" />, titulo: "DÉCIMO, MILÉSIMO...", descricao: "\"Ele foi o décimo colocado no concurso.\"" },
+                                                { icone: <LuHash className="text-violet-500" />, titulo: "ÚLTIMO / PENÚLTIMO", descricao: "\"Acessei a última versão do laudo.\"" }
+                                            ]} />
+                                            <AlertBox tipo="info" titulo="Numeral ou Adjetivo?">
+                                                Assim como as outras classes que orbitam o substantivo, numerais ordinais ajudam a diferenciá-lo. "O primeiro candidato" é diferente do "segundo candidato".
+                                            </AlertBox>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '3. Multiplicativo', icone: '✖️', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Expressa <strong>multiplicação</strong> das quantidades, indicando que um valor foi dobrado, triplicado, etc.
+                                            </p>
+                                            <CardCarousel titulo="Na Prática" itemsPerView={2} cards={[
+                                                { icone: <LuHash className="text-violet-500" />, titulo: "DOBRO / DUPLO", descricao: "\"O risco no local é duplo.\"" },
+                                                { icone: <LuHash className="text-violet-500" />, titulo: "TRIPLO / QUÁDRUPLO", descricao: "\"Tivemos um aumento triplo na produção.\"" },
+                                                { icone: <LuHash className="text-violet-500" />, titulo: "CÊNTUPLO", descricao: "\"A recompensa será cêntupla.\"" }
+                                            ]} />
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '4. Fracionário', icone: '➗', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                Indica a <strong>divisão</strong>, uma parte de um todo, proporções ou frações.
+                                            </p>
+                                            <CardCarousel titulo="Na Prática" itemsPerView={2} cards={[
+                                                { icone: <LuHash className="text-violet-500" />, titulo: "MEIO / METADE", descricao: "\"Vazou meia tonelada de óleo.\"" },
+                                                { icone: <LuHash className="text-violet-500" />, titulo: "TERÇO / QUINTO", descricao: "\"Apenas um terço da equipe compareceu.\"" },
+                                                { icone: <LuHash className="text-violet-500" />, titulo: "DÉCIMO / CENTÉSIMO", descricao: "\"A chance é de um centésimo.\"" }
+                                            ]} />
+                                            <AlertBox tipo="danger" titulo="A Pegadinha do Meio/Meia">
+                                                Se houver ideia de fracionário (metade), é numeral e flexiona: "Comi meia pizza" (metade da pizza). Se for intensificador de adjetivo, é Advérbio e não flexiona: "Ela estava meio gripada" (um pouco gripada).
+                                            </AlertBox>
                                         </div>
                                     )
                                 }
@@ -1269,20 +1973,70 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                         {/* ── INTERJEIÇÃO ── */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-                            <ModuleSectionHeader index={3} title="A Interjeição — Conceito Científico" variant="violet" />
-                            <p className="text-lg text-muted-foreground text-justify leading-relaxed">
-                                A <strong>Interjeição</strong> é a classe de palavra <strong>invariável</strong> que expressa <strong>emoções</strong> ou <strong>reações</strong> súbitas do falante. Sempre acompanhada de ponto de exclamação (!). Na Cesgranrio, aparece raramente, mas quando surge costuma testar a <strong>pontuação</strong> associada e o reconhecimento de <strong>Locuções Interjetivas</strong>.
+                            <ModuleSectionHeader index={3} title="A Interjeição — Emoções e Pontuação" variant="violet" />
+                            <p className="text-base text-muted-foreground leading-relaxed text-justify">
+                                A <strong>Interjeição</strong> é a classe de palavra <strong>invariável</strong> que expressa <strong>emoções</strong> ou <strong>reações</strong> súbitas do falante. Na Cesgranrio, o foco cai quase exclusivamente em interpretação textual (o tom da mensagem) e na <strong>pontuação</strong> associada às repetições.
                             </p>
-                            <CardCarousel titulo="Interjeições por Emoção" subtitulo="A mesma interjeição pode mudar de emoção pelo contexto" cards={[
-                                { icone: <LuZap className="text-green-500" />, titulo: "Alegria / Alívio", descricao: (<div className="text-sm"><p>Ah! / Ufa! / Eba! / Viva!</p><p className="italic mt-1">&quot;<strong>Ufa!</strong> A prova acabou!&quot;</p></div>) },
-                                { icone: <LuZap className="text-red-500" />, titulo: "Dor / Espanto", descricao: (<div className="text-sm"><p>Ai! / Ui! / Puxa! / Nossa!</p><p className="italic mt-1">&quot;<strong>Nossa!</strong> Que questão difícil!&quot;</p></div>) },
-                                { icone: <LuZap className="text-amber-500" />, titulo: "Locuções Interjetivas", descricao: (<div className="text-sm"><p>Meu Deus! / Valha-me Deus! / Que horror!</p><p className="text-muted-foreground italic mt-1">Duas ou mais palavras com valor de interjeição.</p></div>) }
+
+                            <ContentAccordion mode="stacked" slidesPerView={1} titulo="Como Expressar e Pontuar a Emoção" icone={<LuZap />} corIndicador="bg-violet-500" defaultOpen={true} slides={[
+                                {
+                                    titulo: '1. Regras de Ouro', icone: '🎯', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                A interjeição é uma &quot;palavra-frase&quot;. Sozinhas, conseguem transmitir uma mensagem completa de emoção. A pontuação é a chave!
+                                            </p>
+                                            <CardCarousel titulo="Na Prática" itemsPerView={2} cards={[
+                                                { icone: <LuZap className="text-violet-500" />, titulo: "ISOLADA", descricao: "\"Silêncio! Estamos iniciando o teste.\"" },
+                                                { icone: <LuZap className="text-violet-500" />, titulo: "COM VÍRGULA", descricao: "\"Ah, agora entendi como a bomba funciona.\"" },
+                                                { icone: <LuZap className="text-violet-500" />, titulo: "REPETIÇÃO", descricao: "\"Ui, ui, ui! Esse vazamento é perigoso.\"" },
+                                                { icone: <LuZap className="text-violet-500" />, titulo: "NO MEIO", descricao: "\"Essa ferramenta é, puxa, muito pesada!\"" }
+                                            ]} />
+                                            <AlertBox tipo="warning" titulo="A Regra da Exclamação">
+                                                A interjeição pode vir seguida de exclamação (!), vírgula (,) ou reticências (...). Se vier seguida de vírgula, a exclamação obrigatoriamente vai para o final da oração principal.
+                                            </AlertBox>
+                                        </div>
+                                    )
+                                },
+                                {
+                                    titulo: '2. O Mapa das Emoções', icone: '🎭', conteudo: (
+                                        <div className="space-y-6">
+                                            <p className="text-sm text-foreground/80 leading-relaxed italic">
+                                                A mesma interjeição pode assumir sentimentos completamente diferentes dependendo do tom de voz e do contexto.
+                                            </p>
+                                            <CardCarousel titulo="Tipos de Emoção Mapeados" itemsPerView={2} cards={[
+                                                { icone: <LuZap className="text-green-500" />, titulo: "ALEGRIA / ALÍVIO", descricao: "\"Ah! / Ufa! / Oba!\" → \"Ufa! O projeto foi entregue!\"" },
+                                                { icone: <LuZap className="text-red-500" />, titulo: "DOR / ESPANTO", descricao: "\"Ai! / Ui! / Puxa!\" → \"Nossa! A pressão subiu rápido!\"" },
+                                                { icone: <LuZap className="text-amber-500" />, titulo: "ADVERTÊNCIA", descricao: "\"Cuidado! / Alerta!\" → \"Cuidado! Piso molhado!\"" },
+                                                { icone: <LuZap className="text-blue-500" />, titulo: "APELO / SILÊNCIO", descricao: "\"Psiu! / Shh!\" → \"Psiu! O alarme desarmou.\"" }
+                                            ]} />
+                                            <AlertBox tipo="info" titulo="O Camaleão do 'Ah!'">
+                                                O &quot;Ah!&quot; serve para quase tudo: alegria, lamento, compreensão. O contexto é o rei soberano!
+                                            </AlertBox>
+                                        </div>
+                                    )
+                                }
                             ]} />
+                        </section>
+
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+                            <ModuleSectionHeader index={4} title="As Locuções Interjetivas" variant="violet" />
+                            <p className="text-base text-muted-foreground leading-relaxed text-justify">
+                                As locuções ocorrem quando <strong>duas ou mais palavras juntas</strong> assumem o exato papel e valor de uma única interjeição. São muito comuns na linguagem cotidiana.
+                            </p>
+                            <CardCarousel titulo="Locuções Mais Cobradas" itemsPerView={2} cards={[
+                                { icone: <LuZap className="text-violet-500" />, titulo: "SURPRESA", descricao: "\"Meu Deus! / Virgem Maria! / Santo Deus!\"" },
+                                { icone: <LuZap className="text-violet-500" />, titulo: "LAMENTO", descricao: "\"Que pena! / Puxa vida! / Ai de mim!\"" },
+                                { icone: <LuZap className="text-violet-500" />, titulo: "ALERTA", descricao: "\"Muito bem! / Alto lá!\"" },
+                                { icone: <LuZap className="text-violet-500" />, titulo: "CONCORDÂNCIA", descricao: "\"Sem dúvida! / Com certeza! / Está bem!\"" }
+                            ]} />
+                            <AlertBox tipo="danger" titulo="Não Confunda com Frase Exclamativa">
+                                Para ser locução interjetiva, exprime emoção rápida, mas <strong>não possui verbo</strong> (Ex: &quot;Que maravilha!&quot;). Se tiver verbo (&quot;Que coisa linda você fez!&quot;), torna-se já uma oração exclamativa ou frase completa.
+                            </AlertBox>
                         </section>
 
                         {/* ── LABORATÓRIO FINAL ── */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-                            <ModuleSectionHeader index={4} title="Quadro-Resumo — As 10 Classes Gramaticais" variant="violet" />
+                            <ModuleSectionHeader index={5} title="Quadro-Resumo — As 10 Classes Gramaticais" variant="violet" />
                             <AlertBox tipo="info" titulo="Hora de consolidar tudo!">
                                 Antes do simulado final, relembre as 10 classes. Use este resumo como revisão rápida antes da prova.
                             </AlertBox>

@@ -6,6 +6,9 @@ description: Guia completo para criação de aulas EAD com HTML avançado, compo
 
 Esta skill fornece um template mestre e diretrizes para criar aulas EAD de alta qualidade, focadas no concurso da Petrobras.
 
+> [!IMPORTANT]
+> **LEIA PRIMEIRO:** Antes de criar qualquer aula, leia obrigatoriamente o arquivo [`MODELO_CRIACAO_AULA_CLASSES_GRAMATICAIS.md`](file:///c:/Workspace/petrobras-quest/.agent/skills/lesson-builder/MODELO_CRIACAO_AULA_CLASSES_GRAMATICAIS.md) na mesma pasta. Ele contém o blueprint definitivo e atualizado, com TODAS as regras de componentes, conteúdo e design refinadas ao longo de múltiplas iterações na aula de Classes Gramaticais. O modelo tem precedência sobre qualquer instrução genérica neste SKILL.md.
+
 ## 🎓 PROMPT MASTER V2.0 - GERAÇÃO DE AULAS EAD COM HTML AVANÇADO
 
 Use este prompt como TEMPLATE para gerar qualquer aula com elementos HTML interativos e modernos.
