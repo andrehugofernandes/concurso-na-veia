@@ -31,6 +31,11 @@ export default function AulasPage() {
 
     return (
         <div className="p-2 md:p-4">
+            {/* Back Link */}
+            <Link href="/dashboard" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition mb-6 group">
+                <span className="group-hover:-translate-x-1 transition-transform">←</span> Voltar ao Dashboard
+            </Link>
+
             {/* Page Header */}
             <div className="mb-12 flex items-start gap-4">
                 <div className="text-4xl md:text-5xl flex-shrink-0 mt-1">

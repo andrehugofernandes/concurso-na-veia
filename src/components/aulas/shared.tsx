@@ -13,6 +13,12 @@ import {
     CollapsibleContent,
     CollapsibleTrigger,
 } from '@/components/ui/collapsible';
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from '@/components/ui/accordion';
 import { LuChevronDown } from 'react-icons/lu';
 import {
     Dialog,
@@ -197,7 +203,7 @@ export function CardCarousel({
 
             {/* Carousel */}
             <Carousel
-                className="w-full"
+                className="w-full px-1 pt-1"
                 opts={{ loop: true, align: 'start' }}
             >
                 <CarouselContent className="-ml-4 py-4">
@@ -217,7 +223,7 @@ export function CardCarousel({
                                         {card.icone}
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <h3 className="font-bold text-foreground text-lg md:text-xl leading-tight block truncate md:whitespace-normal">{card.titulo}</h3>
+                                        <h3 className="font-bold text-foreground text-lg md:text-xl leading-tight">{card.titulo}</h3>
                                     </div>
                                 </div>
                                 <div className="text-base text-muted-foreground mb-6 leading-relaxed">
@@ -275,6 +281,7 @@ export function ContentAccordion({
     slides,
     defaultOpen = false,
     slidesPerView,
+    mode = 'carousel',
 }: {
     titulo: string;
     icone?: React.ReactNode;
@@ -282,8 +289,113 @@ export function ContentAccordion({
     slides: ContentSlide[];
     defaultOpen?: boolean;
     slidesPerView?: 1 | 2;
+    mode?: 'carousel' | 'stacked';
 }) {
     const [isOpen, setIsOpen] = useState(defaultOpen);
+
+    const content = mode === 'carousel' ? (
+        <div className="bg-muted/20 rounded-xl border border-border/50 p-4 md:p-6">
+            <Carousel
+                className="w-full"
+                opts={{ loop: true, align: 'start' }}
+            >
+                <CarouselContent className="-ml-4">
+                    {slides.map((slide, index) => (
+                        <CarouselItem
+                            key={index}
+                            className={`pl-4 basis-full ${slidesPerView === 1 ? '' : slides.length > 1 ? 'md:basis-1/2 lg:basis-1/2' : ''}`}
+                        >
+                            <div className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-lg h-full flex flex-col space-y-6 group/slide hover:border-primary/40 transition-all duration-500">
+                                <div className="flex items-start gap-5">
+                                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl shrink-0 group-hover/slide:scale-110 group-hover/slide:-rotate-3 transition-all duration-500 shadow-inner">
+                                        {slide.icone}
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex items-center">
+                                            <h4 className="font-bold text-foreground text-xl md:text-2xl leading-tight tracking-tight">
+                                                {slide.titulo}
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="text-base text-muted-foreground leading-relaxed flex-1 space-y-4 font-medium">
+                                    {slide.conteudo}
+                                </div>
+                                {slide.exemplo && (
+                                    <div className="pt-8 border-t border-border/50">
+                                        <p className="text-[12px] uppercase tracking-[0.2em] font-black text-primary mb-3">Aplicação Real</p>
+                                        <div className="p-5 bg-primary/5 rounded-xl border border-primary/20 relative overflow-hidden group-hover/slide:bg-primary/10 transition-colors">
+                                            <div className="absolute left-0 top-0 w-1 h-full bg-primary" />
+                                            <p className="text-base italic text-foreground leading-relaxed font-semibold">"{slide.exemplo}"</p>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+                <div className="flex items-center justify-between mt-8 pt-4 border-t border-border/40">
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/60 flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
+                        {slides.length} tópicos disponíveis
+                    </span>
+                    <div className="flex gap-2">
+                        <CarouselPrevious className="static translate-y-0 h-10 w-10 rounded-xl hover:bg-primary/5 hover:text-primary transition-colors border-border/60" />
+                        <CarouselNext className="static translate-y-0 h-10 w-10 rounded-xl hover:bg-primary/5 hover:text-primary transition-colors border-border/60" />
+                    </div>
+                </div>
+            </Carousel>
+        </div>
+    ) : (
+        <div className="bg-muted/20 rounded-xl border border-border/50 p-4 md:p-6">
+            <Accordion type="single" collapsible className="space-y-4">
+                {slides.map((slide, index) => (
+                    <AccordionItem key={index} value={`item-${index}`} className="border-none shadow-none">
+                        <AccordionTrigger className="w-full flex items-center justify-between gap-3 px-5 py-3 rounded-xl border border-border bg-card hover:bg-muted/40 transition-all duration-200 text-left hover:no-underline shadow-sm group [&[data-state=open]]:bg-primary/5 [&[data-state=open]]:border-primary/20 [&[data-state=open]]:rounded-b-none">
+                            <div className="flex items-center gap-3">
+                                <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-lg shrink-0 group-hover:scale-110 transition-transform">
+                                    {slide.icone}
+                                </span>
+                                <span className="font-bold text-base text-foreground">{slide.titulo}</span>
+                            </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="p-0 border border-t-0 border-border rounded-b-xl overflow-hidden animate-in slide-in-from-top-2">
+                            <div className="p-6 md:p-8 space-y-6 bg-card flex flex-col group/slide transition-all duration-500">
+                                <div className="flex items-start gap-5">
+                                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl shrink-0 group-hover/slide:scale-110 group-hover/slide:-rotate-3 transition-all duration-500 shadow-inner">
+                                        {slide.icone}
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex items-center">
+                                            <h4 className="font-bold text-foreground text-xl md:text-2xl leading-tight tracking-tight">
+                                                {slide.titulo}
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="text-base text-muted-foreground leading-relaxed flex-1 space-y-4 font-medium">
+                                    {slide.conteudo}
+                                </div>
+                                {slide.exemplo && (
+                                    <div className="pt-8 border-t border-border/50">
+                                        <p className="text-[12px] uppercase tracking-[0.2em] font-black text-primary mb-3">Aplicação Real</p>
+                                        <div className="p-5 bg-primary/5 rounded-xl border border-primary/20 relative overflow-hidden group-hover/slide:bg-primary/10 transition-colors">
+                                            <div className="absolute left-0 top-0 w-1 h-full bg-primary" />
+                                            <p className="text-base italic text-foreground leading-relaxed font-semibold">"{slide.exemplo}"</p>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </AccordionContent>
+                    </AccordionItem>
+                ))}
+            </Accordion>
+        </div>
+    );
+
+    if (mode === 'stacked') {
+        return content;
+    }
 
     return (
         <Collapsible open={isOpen} onOpenChange={setIsOpen}>
@@ -312,52 +424,7 @@ export function ContentAccordion({
                 </button>
             </CollapsibleTrigger>
             <CollapsibleContent className="mt-3 animate-in slide-in-from-top-2 duration-300">
-                <div className="bg-muted/20 rounded-xl border border-border/50 p-4 md:p-6">
-                    <Carousel
-                        className="w-full"
-                        opts={{ loop: true, align: 'start' }}
-                    >
-                        <CarouselContent className="-ml-4">
-                            {slides.map((slide, index) => (
-                                <CarouselItem
-                                    key={index}
-                                    className={`pl-4 basis-full ${slidesPerView === 1 ? '' : slides.length > 1 ? 'md:basis-1/2 lg:basis-1/2' : ''}`}
-                                >
-                                    <div className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-lg h-full flex flex-col space-y-6 group/slide hover:border-primary/40 transition-all duration-500">
-                                        <div className="flex items-start gap-5">
-                                            <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl shrink-0 group-hover/slide:scale-110 group-hover/slide:-rotate-3 transition-all duration-500 shadow-inner">
-                                                {slide.icone}
-                                            </div>
-                                            <div className="flex-1 min-w-0">
-                                                <div className="flex items-center">
-                                                    <h4 className="font-bold text-foreground text-xl md:text-2xl leading-tight tracking-tight">
-                                                        {slide.titulo}
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="text-base text-muted-foreground leading-relaxed flex-1 space-y-4 font-medium">
-                                            {slide.conteudo}
-                                        </div>
-                                        {slide.exemplo && (
-                                            <div className="pt-8 border-t border-border/50">
-                                                <p className="text-[12px] uppercase tracking-[0.2em] font-black text-primary mb-3">Aplicação Real</p>
-                                                <div className="p-5 bg-primary/5 rounded-xl border border-primary/20 relative overflow-hidden group-hover/slide:bg-primary/10 transition-colors">
-                                                    <div className="absolute left-0 top-0 w-1 h-full bg-primary" />
-                                                    <p className="text-base italic text-foreground leading-relaxed font-semibold">"{slide.exemplo}"</p>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-                        <div className="flex items-center justify-end gap-2 mt-3">
-                            <CarouselPrevious className="static translate-y-0 h-8 w-8" />
-                            <CarouselNext className="static translate-y-0 h-8 w-8" />
-                        </div>
-                    </Carousel>
-                </div>
+                {content}
             </CollapsibleContent>
         </Collapsible>
     );
@@ -480,15 +547,15 @@ export function FlipCard({
                             {frente}
                         </div>
                     </div>
-                    <div className="mt-3 pt-3 border-t border-border flex justify-between items-center text-[10px] md:text-xs text-muted-foreground shrink-0">
+                    <div className="mt-4 pt-4 border-t border-border/40 flex justify-between items-center text-[10px] md:text-xs text-muted-foreground/60 shrink-0">
                         <span className="truncate pr-2">{categoria}</span>
-                        <span className="shrink-0">Petrobras • CESGRANRIO</span>
+                        <span className="shrink-0 font-medium">Petrobras • CESGRANRIO</span>
                     </div>
                 </div>
 
                 {/* ── VERSO ── */}
                 <div
-                    className={`absolute inset-0 w-full h-full backface-hidden bg-indigo-900/10 border-2 border-indigo-500/30 rounded-2xl p-5 flex flex-col`}
+                    className={`absolute inset-0 w-full h-full backface-hidden bg-indigo-500/[0.03] dark:bg-indigo-900/10 border-2 border-indigo-500/20 dark:border-indigo-500/30 rounded-2xl p-6 md:p-8 flex flex-col`}
                     style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
                 >
                     <div className="flex items-center gap-2 mb-3 text-emerald-600 dark:text-emerald-400 font-bold border-b border-emerald-500/20 pb-2 shrink-0">
@@ -1082,22 +1149,25 @@ export function LessonTabs({
     tabs: LessonTabItem[];
     defaultTab?: string;
     className?: string;
-    variant?: 'indigo' | 'violet' | 'emerald' | 'amber' | 'rose';
+    variant?: 'indigo' | 'violet' | 'emerald' | 'amber' | 'rose' | 'blue' | 'cyan';
 }) {
-    const variantClasses = {
+    const variantClasses: Record<string, string> = {
         indigo: 'bg-indigo-500/10 border-indigo-500/20 text-indigo-600 dark:text-indigo-400',
         violet: 'bg-violet-500/10 border-violet-500/20 text-violet-600 dark:text-violet-400',
         emerald: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-600 dark:text-emerald-400',
         amber: 'bg-amber-500/10 border-amber-500/20 text-amber-600 dark:text-amber-400',
-        rose: 'bg-rose-500/10 border-rose-500/20 text-rose-600 dark:text-rose-400'
-    }[variant];
+        rose: 'bg-rose-500/10 border-rose-500/20 text-rose-600 dark:text-rose-400',
+        blue: 'bg-blue-500/10 border-blue-500/20 text-blue-600 dark:text-blue-400',
+        cyan: 'bg-cyan-500/10 border-cyan-500/20 text-cyan-600 dark:text-cyan-400'
+    };
+    const selectedClass = variant ? variantClasses[variant] : variantClasses.indigo;
     const [activeTab, setActiveTab] = useState(defaultTab || tabs[0]?.id);
 
     return (
         <div className={cn("w-full max-w-5xl mx-auto mb-16 bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm", className)}>
             {title && (
                 <div className="flex items-center gap-3 mb-6">
-                    <div className={`p-2 rounded-lg border ${variantClasses}`}>
+                    <div className={`p-2 rounded-lg border ${selectedClass}`}>
                         <LuBookOpen className="w-6 h-6" />
                     </div>
                     <div>
@@ -1559,29 +1629,29 @@ export function StickyModuleNav({
         // 🔒 CRITICAL: DO NOT CHANGE THESE STYLES. 
         // The specific combination of w-screen and negative margin is required for full-width breakout.
         // Changing this WILL break the layout and cause horizontal scrolling. verified-locked-by-user.
-        <div className="sticky top-[70px] z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-y border-border/50 shadow-sm py-4 mb-4 w-screen ml-[calc(50%-50vw)] overflow-hidden">
-            <div className="w-full px-4 overflow-x-auto hide-scrollbar pb-2 -mb-2">
-                <TabsList className="flex w-max min-w-full h-auto p-2 bg-muted/30 border border-border/20 rounded-2xl gap-2 shadow-inner justify-start xl:justify-center mx-auto">
+        <div className="sticky top-[60px] z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-y border-border/50 shadow-md py-4 w-screen ml-[calc(50%-50vw)] overflow-hidden">
+            <div className="w-full px-4 overflow-x-auto hide-scrollbar">
+                <TabsList className="flex w-max min-w-full h-auto p-1.5 bg-muted/20 border border-border/10 rounded-3xl gap-3 shadow-inner justify-start xl:justify-center mx-auto">
                     {modules.map((mod, index) => (
                         <TabsTrigger
                             key={mod.id}
                             value={mod.id}
                             disabled={!isModuleUnlocked(index)}
-                            className="shrink-0 min-w-[220px] py-4 px-6 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border disabled:opacity-40 disabled:cursor-not-allowed group"
+                            className="shrink-0 py-2.5 px-6 rounded-2xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group"
                         >
-                            <div className="flex flex-col items-center gap-2">
-                                <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/70 group-data-[state=active]:text-primary/70 font-display">
+                            <div className="flex flex-col items-center md:items-start gap-0.5">
+                                <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/50 group-data-[state=active]:text-primary/60 font-display">
                                     {mod.label}
                                 </span>
-                                <span className="font-bold text-base md:text-lg flex items-center gap-2">
+                                <span className="font-bold text-sm md:text-base flex items-center gap-2">
                                     {mod.titulo}
                                     {completedModules.has(mod.id) && (
-                                        <span className="text-green-500 bg-green-100 dark:bg-green-900/30 rounded-full p-0.5">
+                                        <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20">
                                             <LuCheck size={14} />
                                         </span>
                                     )}
                                     {!isModuleUnlocked(index) && (
-                                        <span className="text-muted-foreground">
+                                        <span className="text-muted-foreground/40">
                                             <LuLock size={14} />
                                         </span>
                                     )}
@@ -1603,7 +1673,7 @@ export function ModuleSectionHeader({
 }: {
     index: number | string;
     title: string;
-    variant?: 'indigo' | 'violet' | 'emerald' | 'amber' | 'rose' | 'blue';
+    variant?: 'indigo' | 'violet' | 'emerald' | 'amber' | 'rose' | 'blue' | 'cyan';
     className?: string;
 }) {
     const variants = {
@@ -1613,10 +1683,11 @@ export function ModuleSectionHeader({
         amber: 'bg-amber-500/20 text-amber-700 dark:text-amber-400',
         rose: 'bg-rose-500/20 text-rose-700 dark:text-rose-400',
         blue: 'bg-blue-500/20 text-blue-700 dark:text-blue-400',
+        cyan: 'bg-cyan-500/20 text-cyan-700 dark:text-cyan-400',
     };
 
     return (
-        <h2 className={cn("text-3xl md:text-4xl font-bold flex items-center gap-3", className)}>
+        <h2 className={cn("text-3xl md:text-4xl font-bold flex items-center gap-4", className)}>
             <span className={cn(
                 "w-14 h-14 rounded-full flex items-center justify-center text-3xl font-bold shrink-0",
                 variants[variant]

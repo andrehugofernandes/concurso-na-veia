@@ -46,6 +46,152 @@ const MODULE_DEFS = [
 ] as const;
 
 // ══════════════════════════════════════════════════════════════════════════
+// VETORES ESTÁTICOS DE CONJUGAÇÃO (Para otimizar e limpar o JSX)
+// ══════════════════════════════════════════════════════════════════════════
+
+const renderConj = (p1: string, p2: string, p3: string, p4: string, p5: string, p6: string, prefixo: string = '') => {
+    const w = prefixo ? 'w-16' : 'w-10';
+    return (
+        <div className="text-base space-y-2 font-mono">
+            <p className="flex gap-2"><span className={`text-muted-foreground ${w} text-right`}>{prefixo ? `(${prefixo}) ` : ''}eu</span> <span className="font-semibold text-foreground text-left">{p1}</span></p>
+            <p className="flex gap-2"><span className={`text-muted-foreground ${w} text-right`}>{prefixo ? `(${prefixo}) ` : ''}tu</span> <span className="font-semibold text-foreground text-left">{p2}</span></p>
+            <p className="flex gap-2"><span className={`text-muted-foreground ${w} text-right`}>{prefixo ? `(${prefixo}) ` : ''}ele</span> <span className="font-semibold text-foreground text-left">{p3}</span></p>
+            <p className="flex gap-2"><span className={`text-muted-foreground ${w} text-right`}>{prefixo ? `(${prefixo}) ` : ''}nós</span> <span className="font-semibold text-foreground text-left">{p4}</span></p>
+            <p className="flex gap-2"><span className={`text-muted-foreground ${w} text-right`}>{prefixo ? `(${prefixo}) ` : ''}vós</span> <span className="font-semibold text-foreground text-left">{p5}</span></p>
+            <p className="flex gap-2"><span className={`text-muted-foreground ${w} text-right`}>{prefixo ? `(${prefixo}) ` : ''}eles</span> <span className="font-semibold text-foreground text-left">{p6}</span></p>
+        </div>
+    );
+};
+
+const criarCard = (icone: React.ReactNode, titulo: string, conj: React.ReactNode, tipo: 'reg' | 'irreg' = 'reg') => ({
+    icone,
+    titulo: <span className="flex items-center gap-2">{titulo} {tipo === 'irreg' && <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-500/10 text-red-500 font-semibold uppercase tracking-wide border border-red-500/20">Irregular</span>}</span> as any,
+    descricao: conj,
+    corFundo: tipo === 'irreg' ? 'bg-red-500/5 dark:bg-red-500/10' : undefined
+});
+
+const i1 = <span className="font-black text-base text-blue-500">-ar</span>;
+const i2 = <span className="font-black text-base text-emerald-500">-er</span>;
+const i3 = <span className="font-black text-base text-rose-500">-ir</span>;
+const iIr = <span className="font-black text-base text-amber-500">✦</span>;
+
+const CONJ_SLIDES = [
+    {
+        titulo: '1. Presente do Indicativo', icone: '🕒', conteudo: (
+            <CardCarousel titulo="" itemsPerView={3} cards={[
+                criarCard(i1, "Estudar", renderConj("estudo", "estudas", "estuda", "estudamos", "estudais", "estudam")),
+                criarCard(i2, "Vender", renderConj("vendo", "vendes", "vende", "vendemos", "vendeis", "vendem")),
+                criarCard(i3, "Partir", renderConj("parto", "partes", "parte", "partimos", "partis", "partem")),
+                criarCard(iIr, "Ser", renderConj("sou", "és", "é", "somos", "sois", "são"), "irreg"),
+                criarCard(iIr, "Ir", renderConj("vou", "vais", "vai", "vamos", "ides", "vão"), "irreg"),
+                criarCard(iIr, "Vir", renderConj("venho", "vens", "vem", "vimos", "vindes", "vêm"), "irreg"),
+                criarCard(iIr, "Pôr", renderConj("ponho", "pões", "põe", "pomos", "pondes", "põem"), "irreg"),
+            ]} />
+        )
+    },
+    {
+        titulo: '2. Pretérito Perfeito do Indicativo', icone: '✅', conteudo: (
+            <CardCarousel titulo="" itemsPerView={3} cards={[
+                criarCard(i1, "Estudar", renderConj("estudei", "estudaste", "estudou", "estudamos", "estudastes", "estudaram")),
+                criarCard(i2, "Vender", renderConj("vendi", "vendeste", "vendeu", "vendemos", "vendestes", "venderam")),
+                criarCard(i3, "Partir", renderConj("parti", "partiste", "partiu", "partimos", "partistes", "partiram")),
+                criarCard(iIr, "Ser/Ir", renderConj("fui", "foste", "foi", "fomos", "fostes", "foram"), "irreg"),
+                criarCard(iIr, "Vir", renderConj("vim", "vieste", "veio", "viemos", "viestes", "vieram"), "irreg"),
+                criarCard(iIr, "Pôr", renderConj("pus", "puseste", "pôs", "pusemos", "pusestes", "puseram"), "irreg"),
+                criarCard(iIr, "Ver", renderConj("vi", "viste", "viu", "vimos", "vistes", "viram"), "irreg"),
+            ]} />
+        )
+    },
+    {
+        titulo: '3. Pretérito Imperfeito do Indicativo', icone: '🎞️', conteudo: (
+            <CardCarousel titulo="" itemsPerView={3} cards={[
+                criarCard(i1, "Estudar", renderConj("estudava", "estudavas", "estudava", "estudávamos", "estudáveis", "estudavam")),
+                criarCard(i2, "Vender", renderConj("vendia", "vendias", "vendia", "vendíamos", "vendíeis", "vendiam")),
+                criarCard(i3, "Partir", renderConj("partia", "partias", "partia", "partíamos", "partíeis", "partiam")),
+                criarCard(iIr, "Ser", renderConj("era", "eras", "era", "éramos", "éreis", "eram"), "irreg"),
+                criarCard(iIr, "Vir", renderConj("vinha", "vinhas", "vinha", "vínhamos", "vínheis", "vinham"), "irreg"),
+                criarCard(iIr, "Pôr", renderConj("punha", "punhas", "punha", "púnhamos", "púnheis", "punham"), "irreg"),
+            ]} />
+        )
+    },
+    {
+        titulo: '4. Pretérito Mais-Que-Perfeito do Ind.', icone: '🏛️', conteudo: (
+            <CardCarousel titulo="" itemsPerView={3} cards={[
+                criarCard(i1, "Estudar", renderConj("estudara", "estudaras", "estudara", "estudáramos", "estudáreis", "estudaram")),
+                criarCard(i2, "Vender", renderConj("vendera", "venderas", "vendera", "vendêramos", "vendêreis", "venderam")),
+                criarCard(i3, "Partir", renderConj("partira", "partiras", "partira", "partíramos", "partíreis", "partiram")),
+                criarCard(iIr, "Ser/Ir", renderConj("fora", "foras", "fora", "fôramos", "fôreis", "foram"), "irreg"),
+                criarCard(iIr, "Vir", renderConj("viera", "vieras", "viera", "viéramos", "viéreis", "vieram"), "irreg"),
+                criarCard(iIr, "Pôr", renderConj("pusera", "puseras", "pusera", "puséramos", "puséreis", "puseram"), "irreg"),
+            ]} />
+        )
+    },
+    {
+        titulo: '5. Futuro do Presente do Indicativo', icone: '🚀', conteudo: (
+            <CardCarousel titulo="" itemsPerView={3} cards={[
+                criarCard(i1, "Estudar", renderConj("estudarei", "estudarás", "estudará", "estudaremos", "estudareis", "estudarão")),
+                criarCard(i2, "Vender", renderConj("venderei", "venderás", "venderá", "venderemos", "vendereis", "venderão")),
+                criarCard(i3, "Partir", renderConj("partirei", "partirás", "partirá", "partiremos", "partireis", "partirão")),
+                criarCard(iIr, "Ser", renderConj("serei", "serás", "será", "seremos", "sereis", "serão"), "irreg"),
+                criarCard(iIr, "Vir", renderConj("virei", "virás", "virá", "viremos", "vireis", "virão"), "irreg"),
+                criarCard(iIr, "Pôr", renderConj("porei", "porás", "porá", "poremos", "poreis", "porão"), "irreg"),
+            ]} />
+        )
+    },
+    {
+        titulo: '6. Futuro do Pretérito do Indicativo', icone: '🤔', conteudo: (
+            <CardCarousel titulo="" itemsPerView={3} cards={[
+                criarCard(i1, "Estudar", renderConj("estudaria", "estudarias", "estudaria", "estudaríamos", "estudaríeis", "estudariam")),
+                criarCard(i2, "Vender", renderConj("venderia", "venderias", "venderia", "venderíamos", "venderíeis", "venderiam")),
+                criarCard(i3, "Partir", renderConj("partiria", "partirias", "partiria", "partiríamos", "partiríeis", "partiriam")),
+                criarCard(iIr, "Ser", renderConj("seria", "serias", "seria", "seríamos", "seríeis", "seriam"), "irreg"),
+                criarCard(iIr, "Vir", renderConj("viria", "virias", "viria", "viríamos", "viríeis", "viriam"), "irreg"),
+                criarCard(iIr, "Pôr", renderConj("poria", "porias", "poria", "poríamos", "poríeis", "poriam"), "irreg"),
+            ]} />
+        )
+    },
+    {
+        titulo: '7. Presente do Subjuntivo', icone: '💭', conteudo: (
+            <CardCarousel titulo="" itemsPerView={3} cards={[
+                criarCard(i1, "Estudar", renderConj("estude", "estudes", "estude", "estudemos", "estudeis", "estudem", "que")),
+                criarCard(i2, "Vender", renderConj("venda", "vendas", "venda", "vendamos", "vendais", "vendam", "que")),
+                criarCard(i3, "Partir", renderConj("parta", "partas", "parta", "partamos", "partais", "partam", "que")),
+                criarCard(iIr, "Ser", renderConj("seja", "sejas", "seja", "sejamos", "sejais", "sejam", "que"), "irreg"),
+                criarCard(iIr, "Vir", renderConj("venha", "venhas", "venha", "venhamos", "venhais", "venham", "que"), "irreg"),
+                criarCard(iIr, "Pôr", renderConj("ponha", "ponhas", "ponha", "ponhamos", "ponhais", "ponham", "que"), "irreg"),
+                criarCard(iIr, "Ver", renderConj("veja", "vejas", "veja", "vejamos", "vejais", "vejam", "que"), "irreg"),
+            ]} />
+        )
+    },
+    {
+        titulo: '8. Pretérito Imperfeito do Subjuntivo', icone: '🔮', conteudo: (
+            <CardCarousel titulo="" itemsPerView={3} cards={[
+                criarCard(i1, "Estudar", renderConj("estudasse", "estudasses", "estudasse", "estudássemos", "estudásseis", "estudassem", "se")),
+                criarCard(i2, "Vender", renderConj("vendesse", "vendesses", "vendesse", "vendêssemos", "vendêsseis", "vendessem", "se")),
+                criarCard(i3, "Partir", renderConj("partisse", "partisses", "partisse", "partíssemos", "partísseis", "partissem", "se")),
+                criarCard(iIr, "Ser / Ir", renderConj("fosse", "fosses", "fosse", "fôssemos", "fôsseis", "fossem", "se"), "irreg"),
+                criarCard(iIr, "Vir", renderConj("viesse", "viesses", "viesse", "viéssemos", "viésseis", "viessem", "se"), "irreg"),
+                criarCard(iIr, "Pôr", renderConj("pusesse", "pusesses", "pusesse", "puséssemos", "pusésseis", "pusessem", "se"), "irreg"),
+                criarCard(iIr, "Ver", renderConj("visse", "visses", "visse", "víssemos", "vísseis", "vissem", "se"), "irreg"),
+            ]} />
+        )
+    },
+    {
+        titulo: '9. Futuro do Subjuntivo', icone: '🎯', conteudo: (
+            <CardCarousel titulo="" itemsPerView={3} cards={[
+                criarCard(i1, "Estudar", renderConj("estudar", "estudares", "estudar", "estudarmos", "estudardes", "estudarem", "quando")),
+                criarCard(i2, "Vender", renderConj("vender", "venderes", "vender", "vendermos", "venderdes", "venderem", "quando")),
+                criarCard(i3, "Partir", renderConj("partir", "partires", "partir", "partirmos", "partirdes", "partirem", "quando")),
+                criarCard(iIr, "Ser / Ir", renderConj("for", "fores", "for", "formos", "fordes", "forem", "quando"), "irreg"),
+                criarCard(iIr, "Vir", renderConj("vier", "vieres", "vier", "viermos", "vierdes", "vierem", "quando"), "irreg"),
+                criarCard(iIr, "Pôr", renderConj("puser", "puseres", "puser", "pusermos", "puserdes", "puserem", "quando"), "irreg"),
+                criarCard(iIr, "Ver", renderConj("vir", "vires", "vir", "virmos", "virdes", "virem", "quando"), "irreg"),
+            ]} />
+        )
+    }
+];
+
+// ══════════════════════════════════════════════════════════════════════════
 // QUIZ POOLS
 // ══════════════════════════════════════════════════════════════════════════
 
@@ -57,7 +203,9 @@ const QUIZ_MOD1_POOL: QuizQuestion[] = [
     { id: 105, pergunta: "Qual alternativa contém um substantivo ABSTRATO?", opcoes: [{ label: 'A', valor: "A plataforma resistiu ao temporal." }, { label: 'B', valor: "A extração de petróleo bateu recorde." }, { label: 'C', valor: "O vento soprou forte na base." }, { label: 'D', valor: "A sereia é um ser mitológico." }], correta: 'B', explicacao: "'Extração' indica uma ação (ato de extrair) e depende de um agente. Substantivos que indicam ação, estado, qualidade ou sentimento dependente de um ser são ABSTRATOS." },
     { id: 106, pergunta: "Na voz passiva sintética '**Vendem-se** casas', o sujeito da oração é:", opcoes: [{ label: 'A', valor: "Indeterminado" }, { label: 'B', valor: "O pronome 'se'" }, { label: 'C', valor: "'casas' (sujeito paciente)" }, { label: 'D', valor: "Oculto (alguém vende)" }], correta: 'C', explicacao: "Com VTD + SE, temos Pronome Apassivador. 'Casas' é o sujeito paciente (casas são vendidas), por isso o verbo vai ao plural." },
     { id: 107, pergunta: "Assinale a opção com flexão CORRETA do plural:", opcoes: [{ label: 'A', valor: "Os cidadãos votaram cedo." }, { label: 'B', valor: "Os alemãos chegaram ontem." }, { label: 'C', valor: "Trouxeram muitos limãos." }, { label: 'D', valor: "Os capitães comandaram a missão." }], correta: 'D', explicacao: "Capitão → Capitães (oxítona em -ão faz plural em -ães). Cidadão → Cidadãos. Alemão → Alemães. Limão → Limões." },
-    { id: 108, pergunta: "Em 'O operador **chegava** sempre cedo', o tempo verbal indica:", opcoes: [{ label: 'A', valor: "Ação concluída no passado" }, { label: 'B', valor: "Ação habitual ou inacabada no passado" }, { label: 'C', valor: "Ação futura condicionada" }, { label: 'D', valor: "Ação no presente contínuo" }], correta: 'B', explicacao: "Pretérito Imperfeito ('chegava') indica ação habitual, repetida ou inacabada no passado. Compare: 'chegou' (perfeito, ação pontual) vs 'chegava' (imperfeito, ação habitual)." }
+    { id: 108, pergunta: "Em 'O operador **chegava** sempre cedo', o tempo verbal indica:", opcoes: [{ label: 'A', valor: "Ação concluída no passado" }, { label: 'B', valor: "Ação habitual ou inacabada no passado" }, { label: 'C', valor: "Ação futura condicionada" }, { label: 'D', valor: "Ação no presente contínuo" }], correta: 'B', explicacao: "Pretérito Imperfeito ('chegava') indica ação habitual, repetida ou inacabada no passado. Compare: 'chegou' (perfeito, ação pontual) vs 'chegava' (imperfeito, ação habitual)." },
+    { id: 109, pergunta: "Assinale a alternativa que apresenta a flexão correta do verbo VER no Futuro do Subjuntivo:", opcoes: [{ label: 'A', valor: "Quando eu ver" }, { label: 'B', valor: "Quando eu vir" }, { label: 'C', valor: "Quando eu vi" }, { label: 'D', valor: "Quando eu vesse" }], correta: 'B', explicacao: "O Futuro do Subjuntivo do verbo VER é 'quando eu vir, tu vires, ele vir'. 'Quando eu ver' está incorreto." },
+    { id: 110, pergunta: "Na frase 'Se ele ________ mais esforço, ________ aprovado', quais formas completam corretamente os espaços, sendo verbo PÔR e SER?", opcoes: [{ label: 'A', valor: "pusesse / seria" }, { label: 'B', valor: "posse / era" }, { label: 'C', valor: "puzesse / seria" }, { label: 'D', valor: "por / seria" }], correta: 'A', explicacao: "Pretérito Imperfeito do Subjuntivo de PÔR é 'pusesse' (com S). O Futuro do Pretérito do verbo SER é 'seria'." }
 ];
 
 const QUIZ_MOD2_POOL: QuizQuestion[] = [
@@ -167,8 +315,8 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
     }, [completedModules]);
 
     return (
-        <div className="space-y-12 pb-20 animate-in fade-in duration-500">
-            <main className="container mx-auto px-6 py-8 max-w-6xl space-y-16">
+        <div className="space-y-8 pb-20 animate-in fade-in duration-500">
+            <main className="container mx-auto px-6 py-4 max-w-6xl space-y-10">
 
                 {showCompletionBadge && (
                     <div className="bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-xl p-6 flex items-center gap-4 shadow-sm animate-in slide-in-from-top-4 duration-700">
@@ -197,12 +345,12 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                     {/* ══════════════════════════════════════════════
                         MÓDULO 1: VERBO & SUBSTANTIVO
                     ══════════════════════════════════════════════ */}
-                    <TabsContent value="modulo-1" className="space-y-16 mt-8">
-                        <ModuleBanner numero={1} titulo="Verbo & Substantivo" descricao="O motor da oração e o material que nomeia o mundo. As duas classes mais fundamentais da língua." gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700" />
+                    <TabsContent value="modulo-1" className="space-y-16 mt-6">
+                        <ModuleBanner numero={1} titulo="Verbo & Substantivo" descricao="As duas classes fundamentais da língua: o motor da frase e o nome de tudo que existe." gradiente="bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700" />
 
                         {/* ── VERBO ── */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
-                            <ModuleSectionHeader index={1} title="O Verbo — Conceito Científico" variant="emerald" />
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+                            <ModuleSectionHeader index={1} title="O Verbo — Conceito Científico" variant="indigo" />
                             <p className="text-lg text-muted-foreground text-justify leading-relaxed">
                                 O <strong>Verbo</strong> é a classe de palavra que exprime <strong>ação</strong> (correr, perfurar), <strong>estado</strong> (ser, estar, permanecer) ou <strong>fenômeno da natureza</strong> (chover, anoitecer). É a única classe que se flexiona em <strong>cinco categorias</strong>: pessoa, número, tempo, modo e voz. Por isso, é considerado o núcleo do predicado e o motor dinâmico de qualquer oração.
                             </p>
@@ -211,9 +359,12 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             </AlertBox>
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
-                            <ModuleSectionHeader index={2} title="Flexões do Verbo" variant="emerald" />
-                            <ContentAccordion titulo="As 5 Flexões Verbais" icone={<LuZap />} corIndicador="bg-emerald-500" defaultOpen={true} slidesPerView={1} slides={[
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+                            <ModuleSectionHeader index={2} title="Flexões Verbais" variant="indigo" />
+                            <p className="text-base text-muted-foreground leading-relaxed text-justify">
+                                Para entender como o verbo funciona nas questões da Cesgranrio, é essencial dominar suas <strong>cinco dimensões de variação</strong>. Cada uma dessas flexões altera a terminação do verbo (desinência) para situar a mensagem no tempo, definir a atitude do falante ou identificar os envolvidos no discurso. Explore abaixo cada categoria:
+                            </p>
+                            <ContentAccordion mode="stacked" titulo="As 5 Flexões Verbais" icone={<LuZap />} corIndicador="bg-emerald-500" defaultOpen={true} slidesPerView={1} slides={[
                                 {
                                     titulo: '1. Pessoa', icone: '👤', conteudo: (
                                         <div className="space-y-4">
@@ -293,8 +444,16 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             ]} />
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
-                            <ModuleSectionHeader index={3} title="Verbos Impessoais — Pegadinha Máxima" variant="emerald" />
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+                            <ModuleSectionHeader index={3} title="Conjugação Verbal — Modos e Tempos" variant="indigo" />
+                            <p className="text-base text-muted-foreground leading-relaxed text-justify">
+                                O domínio da <strong>Conjugação Verbal</strong> é a base para a Correção Gramatical. A <strong>CESGRANRIO</strong> testa frequentemente o reconhecimento do tempo e do modo nas orações. Abaixo, destacamos a conjugação dos tempos mais incidentes em três verbos-modelo regulares: <strong>Estudar</strong> (1ª conj.), <strong>Vender</strong> (2ª conj.) e <strong>Partir</strong> (3ª conj.).
+                            </p>
+                            <ContentAccordion mode="stacked" titulo="Tempos Verbais Principais" icone={<LuBookOpen />} corIndicador="bg-blue-500" defaultOpen={false} slidesPerView={1} slides={CONJ_SLIDES} />
+                        </section>
+
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+                            <ModuleSectionHeader index={4} title="Verbos Impessoais — Pegadinha Máxima" variant="indigo" />
                             <AlertBox tipo="danger" titulo="🚨 Cai em TODA prova Cesgranrio!">
                                 Os verbos HAVER (sentido de existir) e FAZER (tempo decorrido) são IMPESSOAIS: ficam SEMPRE na 3ª pessoa do singular, independentemente do contexto.
                             </AlertBox>
@@ -306,8 +465,8 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             ]} />
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
-                            <ModuleSectionHeader index={4} title="Macete de Resolução — Verbo" variant="emerald" />
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+                            <ModuleSectionHeader index={5} title="Macete de Resolução — Verbo" variant="indigo" />
                             <TimelineItem passo={1} titulo="Ache o verbo" descricao="Grife o verbo principal da oração." />
                             <TimelineItem passo={2} titulo="Pergunte 'Quem?'" descricao="A resposta é o sujeito. Ele manda na concordância." />
                             <TimelineItem passo={3} titulo="Tem 'SE'?" descricao="Analise: VTD + SE = Passiva (verbo concorda com paciente). VTI + SE = Indeterminação (singular)." />
@@ -315,8 +474,8 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* ── SUBSTANTIVO ── */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
-                            <ModuleSectionHeader index={5} title="O Substantivo — Conceito Científico" variant="emerald" />
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+                            <ModuleSectionHeader index={6} title="O Substantivo — Conceito Científico" variant="indigo" />
                             <p className="text-lg text-muted-foreground text-justify leading-relaxed">
                                 O <strong>Substantivo</strong> é a classe de palavra que <strong>nomeia</strong> seres, objetos, lugares, sentimentos, ações e qualidades. Segundo Bechara, é a palavra que designa os seres em geral, reais ou imaginários. É o núcleo de praticamente todos os termos da oração (sujeito, objeto direto, objeto indireto, complemento nominal).
                             </p>
@@ -325,9 +484,12 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             </AlertBox>
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
-                            <ModuleSectionHeader index={6} title="Classificações do Substantivo" variant="emerald" />
-                            <ContentAccordion titulo="Os 4 Pares de Classificação" icone={<LuTag />} corIndicador="bg-teal-500" defaultOpen={true} slidesPerView={1} slides={[
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+                            <ModuleSectionHeader index={7} title="Classificações dos Substantivos" variant="indigo" />
+                            <p className="text-base text-muted-foreground leading-relaxed text-justify">
+                                Os substantivos não são todos iguais. Eles são organizados em <strong>quatro pares de oposição</strong> que ajudam a definir a natureza do ser ou objeto nomeado. Dominar essas classificações é fundamental para entender tópicos avançados como a concordância nominal e a regência. Veja como eles se dividem:
+                            </p>
+                            <ContentAccordion mode="stacked" titulo="Os 4 Pares de Classificação" icone={<LuTag />} corIndicador="bg-teal-500" defaultOpen={true} slidesPerView={1} slides={[
                                 {
                                     titulo: 'Concreto vs Abstrato', icone: '1️⃣', conteudo: (
                                         <div className="space-y-4">
@@ -376,8 +538,8 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             ]} />
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
-                            <ModuleSectionHeader index={7} title="Derivação Imprópria — O Artigo como 'Rei Midas'" variant="emerald" />
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+                            <ModuleSectionHeader index={8} title="A Derivação Imprópria — O 'Efeito Rei Midas'" variant="indigo" />
                             <p className="text-lg text-muted-foreground text-justify leading-relaxed mb-4">
                                 Se você colocar um <strong>artigo</strong> antes de QUALQUER palavra, ela vira Substantivo. Isso se chama <strong>Derivação Imprópria</strong> (substantivação).
                             </p>
@@ -388,9 +550,9 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                                 <FlipCard
                                     frente={
                                         <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                                            <span className="font-bold text-2xl md:text-3xl text-emerald-600 dark:text-emerald-400">Verbo</span>
-                                            <LuArrowDown className="w-10 h-10 text-muted-foreground animate-bounce" />
-                                            <span className="font-bold text-2xl md:text-3xl">Substantivo</span>
+                                            <span className="font-bold text-3xl md:text-4xl bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent drop-shadow-sm">Verbo</span>
+                                            <LuArrowDown className="w-10 h-10 text-muted-foreground/40 animate-bounce" />
+                                            <span className="font-bold text-2xl md:text-3xl tracking-tight text-foreground/90">Substantivo</span>
                                         </div>
                                     }
                                     verso={
@@ -415,9 +577,9 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                                 <FlipCard
                                     frente={
                                         <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                                            <span className="font-bold text-2xl md:text-3xl text-emerald-600 dark:text-emerald-400">Advérbio</span>
-                                            <LuArrowDown className="w-10 h-10 text-muted-foreground animate-bounce" />
-                                            <span className="font-bold text-2xl md:text-3xl">Substantivo</span>
+                                            <span className="font-bold text-3xl md:text-4xl bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent drop-shadow-sm">Advérbio</span>
+                                            <LuArrowDown className="w-10 h-10 text-muted-foreground/40 animate-bounce" />
+                                            <span className="font-bold text-2xl md:text-3xl tracking-tight text-foreground/90">Substantivo</span>
                                         </div>
                                     }
                                     verso={
@@ -442,9 +604,9 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                                 <FlipCard
                                     frente={
                                         <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                                            <span className="font-bold text-2xl md:text-3xl text-emerald-600 dark:text-emerald-400">Adjetivo</span>
-                                            <LuArrowDown className="w-10 h-10 text-muted-foreground animate-bounce" />
-                                            <span className="font-bold text-2xl md:text-3xl">Substantivo</span>
+                                            <span className="font-bold text-3xl md:text-4xl bg-gradient-to-r from-purple-600 to-indigo-500 bg-clip-text text-transparent drop-shadow-sm">Adjetivo</span>
+                                            <LuArrowDown className="w-10 h-10 text-muted-foreground/40 animate-bounce" />
+                                            <span className="font-bold text-2xl md:text-3xl tracking-tight text-foreground/90">Substantivo</span>
                                         </div>
                                     }
                                     verso={
@@ -470,65 +632,80 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* Resumo + Quiz */}
-                        <section className="space-y-8">
-                            <CardCarousel
-                                titulo="Resumo Completo — Verbo & Substantivo"
-                                subtitulo="Revisão Multimídia e Esquemas Visuais"
-                                cards={[
+                        <section className="space-y-16">
+                            <LessonTabs
+                                variant="indigo"
+                                title="Resumo: Verbo & Substantivo"
+                                tabs={[
                                     {
-                                        icone: <LuVideo className="text-pink-500" />,
-                                        titulo: "1️⃣ Vídeo Resumo",
-                                        descricao: (
-                                            <div className="space-y-4">
-                                                <p className="text-sm text-muted-foreground">Assista à revisão em vídeo com os conceitos chaves de Verbos e Substantivos.</p>
+                                        id: 'video',
+                                        label: 'Vídeo Resumo',
+                                        icon: LuVideo,
+                                        content: (
+                                            <div className="max-w-4xl mx-auto w-full px-4 text-center space-y-6">
+                                                <div className="space-y-2">
+                                                    <h4 className="text-2xl font-bold">Revisão Estratégica</h4>
+                                                    <p className="text-muted-foreground">Assista à revisão em vídeo com os conceitos chaves de Verbos e Substantivos.</p>
+                                                </div>
                                                 <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: Verbos e Substantivos" duration="15 min" thumbnail="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" />
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuHeadphones className="text-purple-500" />,
-                                        titulo: "2️⃣ Áudio Revisão",
-                                        descricao: (
-                                            <div className="space-y-4">
-                                                <p className="text-sm text-muted-foreground">Ouça o resumo sempre que não puder ver a tela.</p>
-                                                <audio src="#" controls className="w-full mt-4" />
+                                        id: 'audio',
+                                        label: 'Áudio Revisão',
+                                        icon: LuHeadphones,
+                                        content: (
+                                            <div className="max-w-2xl mx-auto w-full px-6 py-12 text-center space-y-8">
+                                                <div className="space-y-3">
+                                                    <h4 className="text-2xl font-bold">Podcast do Aprovado</h4>
+                                                    <p className="text-muted-foreground">Ouça o resumo sempre que não puder ver a tela. Ideal para deslocamentos.</p>
+                                                </div>
+                                                <div className="bg-muted/50 p-8 rounded-3xl border border-border/50 shadow-inner">
+                                                    <audio src="#" controls className="w-full" />
+                                                </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuZap className="text-yellow-500" />,
-                                        titulo: "3️⃣ Macete do Aprovado",
-                                        descricao: (
-                                            <div className="text-sm space-y-2">
-                                                <p className="font-bold text-yellow-600 dark:text-yellow-400">Verbo Impessoal (Verbos existir vs haver):</p>
-                                                <p>Substituiu 'haver' por 'existir'? Lembre-se: 'Haver' fica no singular, 'Existir' vai para o plural!</p>
+                                        id: 'visual',
+                                        label: 'Mapa Mental',
+                                        icon: LuImage,
+                                        content: (
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+                                                <div className="aspect-[4/3] w-full bg-emerald-500/5 dark:bg-emerald-500/10 rounded-3xl flex flex-col items-center justify-center border-2 border-emerald-500/20 p-8 group hover:border-emerald-500/40 transition-all">
+                                                    <div className="w-16 h-16 rounded-2xl bg-emerald-500/20 flex items-center justify-center mb-6">
+                                                        <LuZap className="w-8 h-8 text-emerald-600" />
+                                                    </div>
+                                                    <h5 className="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-2">Flexões Verbais</h5>
+                                                    <p className="text-sm text-muted-foreground text-center">Esquema visual dos 5 tipos de flexões fundamentais para a prova.</p>
+                                                </div>
+                                                <div className="aspect-[4/3] w-full bg-teal-500/5 dark:bg-teal-500/10 rounded-3xl flex flex-col items-center justify-center border-2 border-teal-500/20 p-8 group hover:border-teal-500/40 transition-all">
+                                                    <div className="w-16 h-16 rounded-2xl bg-teal-500/20 flex items-center justify-center mb-6">
+                                                        <LuTag className="w-8 h-8 text-teal-600" />
+                                                    </div>
+                                                    <h5 className="text-xl font-bold text-teal-700 dark:text-teal-400 mb-2">Substantivos</h5>
+                                                    <p className="text-sm text-muted-foreground text-center">Classificações entre Concreto e Abstrato e suas implicações sintáticas.</p>
+                                                </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuImage className="text-emerald-500" />,
-                                        titulo: "4️⃣ Flexões Verbais",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center border border-emerald-200 dark:border-emerald-800">
-                                                <span className="text-emerald-700 dark:text-emerald-400 font-bold text-center px-4">Flexões Verbais (5 tipos)</span>
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        icone: <LuImage className="text-teal-500" />,
-                                        titulo: "5️⃣ Classificações",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-teal-100 dark:bg-teal-900/30 rounded-lg flex items-center justify-center border border-teal-200 dark:border-teal-800">
-                                                <span className="text-teal-700 dark:text-teal-400 font-bold text-center px-4">Substantivos (Concreto vs Abstrato)</span>
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        icone: <LuImage className="text-sky-500" />,
-                                        titulo: "6️⃣ Derivação Imprópria",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-sky-100 dark:bg-sky-900/30 rounded-lg flex items-center justify-center border border-sky-200 dark:border-sky-800">
-                                                <span className="text-sky-700 dark:text-sky-400 font-bold text-center px-4">O Efeito Rei Midas (Artigo)</span>
+                                        id: 'macete',
+                                        label: 'Macete',
+                                        icon: LuZap,
+                                        content: (
+                                            <div className="max-w-3xl mx-auto p-12 text-center space-y-8 bg-gradient-to-br from-yellow-500/5 to-amber-500/5 rounded-[40px] border border-yellow-500/20">
+                                                <div className="w-20 h-20 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto ring-8 ring-yellow-500/10">
+                                                    <LuZap className="w-10 h-10 text-yellow-600" />
+                                                </div>
+                                                <div className="space-y-4">
+                                                    <h4 className="text-2xl font-bold text-yellow-700 dark:text-yellow-400">Verbo Impessoal (Haver vs Existir)</h4>
+                                                    <p className="text-lg leading-relaxed text-muted-foreground">
+                                                        Substituiu <strong>'haver'</strong> por <strong>'existir'</strong>? Lembre-se: <br />
+                                                        <span className="text-foreground font-bold font-mono px-2 py-1 bg-background rounded-lg border border-border shadow-sm mt-3 inline-block">'Haver' fica no SINGULAR | 'Existir' vai para o PLURAL!</span>
+                                                    </p>
+                                                </div>
                                             </div>
                                         )
                                     }
@@ -542,11 +719,11 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                     {/* ══════════════════════════════════════════════
                         MÓDULO 2: PRONOME & ADJETIVO
                     ══════════════════════════════════════════════ */}
-                    <TabsContent value="modulo-2" className="space-y-16 mt-8">
+                    <TabsContent value="modulo-2" className="space-y-16 mt-6">
                         <ModuleBanner numero={2} titulo="Pronome & Adjetivo" descricao="O substituto que garante a coesão e o qualificador que define a concordância nominal." gradiente="bg-gradient-to-br from-blue-600 via-indigo-600 to-sky-700" />
 
                         {/* ── PRONOME ── */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={1} title="O Pronome — Conceito Científico" variant="blue" />
                             <p className="text-lg text-muted-foreground text-justify leading-relaxed">
                                 O <strong>Pronome</strong> é a classe de palavra que <strong>substitui</strong> ou <strong>acompanha</strong> o substantivo, indicando as pessoas do discurso. Diferentemente do substantivo, ele não nomeia: apenas aponta, retoma ou refere-se a algo já mencionado. É fundamental para a <strong>coesão textual</strong>, pois evita a repetição de termos.
@@ -556,7 +733,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             </AlertBox>
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={2} title="Pronomes Pessoais — Retos e Oblíquos" variant="blue" />
                             <ContentAccordion titulo="Tabela Completa dos Pessoais" icone={<LuNavigation />} corIndicador="bg-blue-500" defaultOpen={true} slides={[
                                 {
@@ -594,7 +771,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             ]} />
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={3} title="Pronomes Demonstrativos e Relativos" variant="blue" />
                             <CardCarousel titulo="Os Grandes Astros dos Pronomes" subtitulo="Top 3 tipos mais cobrados na Cesgranrio" cards={[
                                 { icone: <LuNavigation className="text-blue-500" />, titulo: "Demonstrativos", descricao: (<div className="space-y-2 text-sm"><p><strong>ESTE/ESTA:</strong> perto do emissor (aqui, presente, futuro).</p><p><strong>ESSE/ESSA:</strong> perto do receptor (aí, passado próximo).</p><p><strong>AQUELE/AQUELA:</strong> longe de ambos (lá, passado remoto).</p><p className="text-muted-foreground italic mt-2">No texto: ESTE = o que vou dizer. ESSE = o que já disse.</p></div>) },
@@ -604,14 +781,14 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* ── ADJETIVO ── */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={4} title="O Adjetivo — Conceito Científico" variant="blue" />
                             <p className="text-lg text-muted-foreground text-justify leading-relaxed">
                                 O <strong>Adjetivo</strong> é a classe de palavra que <strong>qualifica</strong> ou <strong>caracteriza</strong> o substantivo, atribuindo-lhe propriedades, estados ou modos de ser. É classe <strong>variável</strong> (concorda em gênero e número com o substantivo). Segundo Bechara, o adjetivo exprime qualidade inerente ou transitória do ser.
                             </p>
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={5} title="A Posição do Adjetivo Muda o Sentido" variant="blue" />
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <FlipCard frente={<span className="font-bold text-center">Adjetivo POSPOSTO<br /><span className="text-sm font-normal text-muted-foreground">(depois do substantivo)</span></span>} verso={<div className="text-center text-sm"><p className="font-bold text-blue-400 mb-2">Valor Objetivo / Denotativo</p><p>&quot;Ele é um homem <strong>grande</strong>.&quot;</p><p className="text-muted-foreground italic mt-1">(alto, forte fisicamente)</p></div>} />
@@ -622,7 +799,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             </AlertBox>
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={6} title="Locução Adjetiva e Concordância Nominal" variant="blue" />
                             <ContentAccordion titulo="Detalhes Cruciais do Adjetivo" icone={<LuTag />} corIndicador="bg-indigo-500" defaultOpen={true} slides={[
                                 {
@@ -652,65 +829,63 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* Resumo + Quiz */}
-                        <section className="space-y-8">
-                            <CardCarousel
-                                titulo="Resumo Completo — Pronome & Adjetivo"
-                                subtitulo="Revisão Multimídia e Esquemas Visuais"
-                                cards={[
+                        <section className="space-y-16">
+                            <LessonTabs
+                                variant="blue"
+                                title="Resumo: Pronome & Adjetivo"
+                                tabs={[
                                     {
-                                        icone: <LuVideo className="text-pink-500" />,
-                                        titulo: "1️⃣ Vídeo Resumo",
-                                        descricao: (
-                                            <div className="space-y-4">
-                                                <p className="text-sm text-muted-foreground">Assista à revisão em vídeo sobre Pronomes e Adjetivos.</p>
+                                        id: 'video', label: 'Vídeo Resumo', icon: LuVideo,
+                                        content: (
+                                            <div className="max-w-4xl mx-auto w-full px-4 text-center space-y-6">
+                                                <div className="space-y-2">
+                                                    <h4 className="text-2xl font-bold">Revisão Estratégica</h4>
+                                                    <p className="text-muted-foreground">Assista à revisão em vídeo sobre Pronomes e Adjetivos.</p>
+                                                </div>
                                                 <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: Pronomes e Adjetivos" duration="15 min" thumbnail="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" />
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuHeadphones className="text-purple-500" />,
-                                        titulo: "2️⃣ Áudio Revisão",
-                                        descricao: (
-                                            <div className="space-y-4">
-                                                <p className="text-sm text-muted-foreground">Ouça o resumo sempre que não puder ver a tela.</p>
-                                                <audio src="#" controls className="w-full mt-4" />
+                                        id: 'audio', label: 'Áudio Revisão', icon: LuHeadphones,
+                                        content: (
+                                            <div className="max-w-2xl mx-auto w-full px-6 py-12 text-center space-y-8">
+                                                <div className="space-y-3">
+                                                    <h4 className="text-2xl font-bold">Podcast do Aprovado</h4>
+                                                    <p className="text-muted-foreground">Revisão em áudio dos pontos críticos para a prova.</p>
+                                                </div>
+                                                <div className="bg-muted/50 p-8 rounded-3xl border border-border/50">
+                                                    <audio src="#" controls className="w-full" />
+                                                </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuZap className="text-yellow-500" />,
-                                        titulo: "3️⃣ Macete do Aprovado",
-                                        descricao: (
-                                            <div className="text-sm space-y-2">
-                                                <p className="font-bold text-yellow-600 dark:text-yellow-400">Pronomes Relativos:</p>
-                                                <p>'Cujo' NUNCA tem artigo depois. 'Onde' SOMENTE para lugar físico. Na dúvida de próclise/ênclise, palavra negativa puxa o pronome!</p>
+                                        id: 'visual', label: 'Tabela Pessoais', icon: LuImage,
+                                        content: (
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+                                                <div className="aspect-[4/3] w-full bg-blue-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-blue-500/20 p-8">
+                                                    <h5 className="text-xl font-bold text-blue-700 dark:text-blue-400 mb-2">Pessoais</h5>
+                                                    <p className="text-sm text-muted-foreground text-center">Retos (Sujeito) vs Oblíquos (Objeto). A base da sintaxe de pronomes.</p>
+                                                </div>
+                                                <div className="aspect-[4/3] w-full bg-indigo-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-indigo-500/20 p-8">
+                                                    <h5 className="text-xl font-bold text-indigo-700 dark:text-indigo-400 mb-2">Adjetivos</h5>
+                                                    <p className="text-sm text-muted-foreground text-center">Mudança de sentido conforme a posição em relação ao substantivo.</p>
+                                                </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuImage className="text-blue-500" />,
-                                        titulo: "4️⃣ Pronomes Pessoais",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center border border-blue-200 dark:border-blue-800">
-                                                <span className="text-blue-700 dark:text-blue-400 font-bold text-center px-4">Tabela de Pronomes Retos e Oblíquos</span>
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        icone: <LuImage className="text-indigo-500" />,
-                                        titulo: "5️⃣ Posição do Adjetivo",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center border border-indigo-200 dark:border-indigo-800">
-                                                <span className="text-indigo-700 dark:text-indigo-400 font-bold text-center px-4">Antes (Subjetivo) vs Depois (Objetivo)</span>
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        icone: <LuImage className="text-sky-500" />,
-                                        titulo: "6️⃣ Concordância",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-sky-100 dark:bg-sky-900/30 rounded-lg flex items-center justify-center border border-sky-200 dark:border-sky-800">
-                                                <span className="text-sky-700 dark:text-sky-400 font-bold text-center px-4">Anexo vs Em Anexo</span>
+                                        id: 'macete', label: 'Macete', icon: LuZap,
+                                        content: (
+                                            <div className="max-w-3xl mx-auto p-12 text-center space-y-8 bg-blue-500/5 rounded-[40px] border border-blue-500/20">
+                                                <div className="w-20 h-20 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                                    <LuZap className="w-10 h-10 text-blue-600" />
+                                                </div>
+                                                <h4 className="text-2xl font-bold text-blue-700">Regra de Ouro: Próclise</h4>
+                                                <p className="text-lg text-muted-foreground italic">
+                                                    &quot;Palavras negativas, advérbios e pronomes relativos são imãs de próclise: eles puxam o pronome para antes do verbo!&quot;
+                                                </p>
                                             </div>
                                         )
                                     }
@@ -724,18 +899,18 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                     {/* ══════════════════════════════════════════════
                         MÓDULO 3: CONJUNÇÃO & PREPOSIÇÃO
                     ══════════════════════════════════════════════ */}
-                    <TabsContent value="modulo-3" className="space-y-16 mt-8">
+                    <TabsContent value="modulo-3" className="space-y-16 mt-6">
                         <ModuleBanner numero={3} titulo="Conjunção & Preposição" descricao="Os conectivos que unem orações e os elos que subordinam termos. Bases de coesão e regência." gradiente="bg-gradient-to-br from-amber-600 via-orange-600 to-yellow-700" />
 
                         {/* ── CONJUNÇÃO ── */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={1} title="A Conjunção — Conceito Científico" variant="amber" />
                             <p className="text-lg text-muted-foreground text-justify leading-relaxed">
                                 A <strong>Conjunção</strong> é a classe de palavra <strong>invariável</strong> que <strong>liga orações</strong> ou termos de mesma função sintática. Sem conjunções, o texto viraria um amontoado de frases soltas. Elas são o verdadeiro &quot;cimento&quot; da coesão textual — e por isso a Cesgranrio as cobra intensamente em questões de reescrita e coesão.
                             </p>
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={2} title="Conjunções Coordenativas" variant="amber" />
                             <ContentAccordion titulo="Os 5 Tipos Coordenativos" icone={<LuLink2 />} corIndicador="bg-amber-500" defaultOpen={true} slides={[
                                 {
@@ -767,7 +942,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             ]} />
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={3} title="Causal × Explicativa — A Armadilha Clássica" variant="amber" />
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <FlipCard frente={<span className="font-bold text-center">CAUSAL<br /><span className="text-sm font-normal text-muted-foreground">(motivo REAL do fato)</span></span>} verso={<div className="text-sm text-center"><p>&quot;O poço secou <strong>porque</strong> choveu pouco.&quot;</p><p className="text-muted-foreground italic mt-2">A chuva fraca é a CAUSA real do poço ter secado.</p></div>} />
@@ -778,7 +953,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             </AlertBox>
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={4} title="Subordinativas (9 tipos)" variant="amber" />
                             <CardCarousel titulo="Conjunções Subordinativas" subtitulo="As 5 mais cobradas pela Cesgranrio" itemsPerView={1} cards={[
                                 { icone: <LuLink2 className="text-amber-500" />, titulo: "Causais", descricao: (<div className="text-sm space-y-1"><p>porque, visto que, já que, como (= porque)</p><p className="italic">&quot;<strong>Como</strong> choveu, adiamos.&quot;</p></div>) },
@@ -790,14 +965,14 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* ── PREPOSIÇÃO ── */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={5} title="A Preposição — Conceito Científico" variant="amber" />
                             <p className="text-lg text-muted-foreground text-justify leading-relaxed">
                                 A <strong>Preposição</strong> é a classe de palavra <strong>invariável</strong> que <strong>liga dois termos</strong>, estabelecendo entre eles uma relação de <strong>subordinação</strong> (o segundo termo completa o sentido do primeiro). É essencial na Regência verbal e nominal e na formação da <strong>crase</strong> (a + a = à).
                             </p>
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={6} title="Essenciais, Acidentais e Contrações" variant="amber" />
                             <ContentAccordion titulo="O Mundo das Preposições" icone={<LuLink2 />} corIndicador="bg-orange-500" defaultOpen={true} slides={[
                                 {
@@ -838,65 +1013,63 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* Resumo + Quiz */}
-                        <section className="space-y-8">
-                            <CardCarousel
-                                titulo="Resumo Completo — Conjunção & Preposição"
-                                subtitulo="Revisão Multimídia e Esquemas Visuais"
-                                cards={[
+                        <section className="space-y-16">
+                            <LessonTabs
+                                variant="amber"
+                                title="Resumo: Conjunção & Preposição"
+                                tabs={[
                                     {
-                                        icone: <LuVideo className="text-pink-500" />,
-                                        titulo: "1️⃣ Vídeo Resumo",
-                                        descricao: (
-                                            <div className="space-y-4">
-                                                <p className="text-sm text-muted-foreground">Assista à revisão em vídeo sobre Conjunções e Preposições.</p>
+                                        id: 'video', label: 'Vídeo Resumo', icon: LuVideo,
+                                        content: (
+                                            <div className="max-w-4xl mx-auto w-full px-4 text-center space-y-6">
+                                                <div className="space-y-2">
+                                                    <h4 className="text-2xl font-bold">Revisão Estratégica</h4>
+                                                    <p className="text-muted-foreground">Assista à revisão em vídeo sobre Conjunções e Preposições.</p>
+                                                </div>
                                                 <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: Conjunções e Preposições" duration="15 min" thumbnail="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" />
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuHeadphones className="text-purple-500" />,
-                                        titulo: "2️⃣ Áudio Revisão",
-                                        descricao: (
-                                            <div className="space-y-4">
-                                                <p className="text-sm text-muted-foreground">Ouça o resumo sempre que não puder ver a tela.</p>
-                                                <audio src="#" controls className="w-full mt-4" />
+                                        id: 'audio', label: 'Áudio Revisão', icon: LuHeadphones,
+                                        content: (
+                                            <div className="max-w-2xl mx-auto w-full px-6 py-12 text-center space-y-8">
+                                                <div className="space-y-3">
+                                                    <h4 className="text-2xl font-bold">Podcast do Aprovado</h4>
+                                                    <p className="text-muted-foreground">Ouça o resumo sempre que não puder ver a tela. Ideal para deslocamentos.</p>
+                                                </div>
+                                                <div className="bg-muted/50 p-8 rounded-3xl border border-border/50">
+                                                    <audio src="#" controls className="w-full" />
+                                                </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuZap className="text-yellow-500" />,
-                                        titulo: "3️⃣ Macete do Aprovado",
-                                        descricao: (
-                                            <div className="text-sm space-y-2">
-                                                <p className="font-bold text-yellow-600 dark:text-yellow-400">Causal vs Explicativa:</p>
-                                                <p>Olhe antes do 'porque/pois'. Tem verbo no Imperativo? É Explicativa! Se não tiver e for fato consumado, é Causal.</p>
+                                        id: 'visual', label: 'Mapa Mental', icon: LuImage,
+                                        content: (
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+                                                <div className="aspect-[4/3] w-full bg-amber-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-amber-500/20 p-8 transition-all hover:bg-amber-500/10">
+                                                    <h5 className="text-xl font-bold text-amber-700 dark:text-amber-400 mb-2">Conjunções</h5>
+                                                    <p className="text-sm text-muted-foreground text-center">Os 5 tipos coordenativos e os 9 subordinativos em um só lugar.</p>
+                                                </div>
+                                                <div className="aspect-[4/3] w-full bg-orange-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-orange-500/20 p-8 transition-all hover:bg-orange-500/10">
+                                                    <h5 className="text-xl font-bold text-orange-700 dark:text-orange-400 mb-2">Preposições</h5>
+                                                    <p className="text-sm text-muted-foreground text-center">Tabela de contrações (de+o, em+a) e relações semânticas.</p>
+                                                </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuImage className="text-amber-500" />,
-                                        titulo: "4️⃣ Conjunções Coordenativas",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-amber-100 dark:bg-amber-900/30 rounded-lg flex items-center justify-center border border-amber-200 dark:border-amber-800">
-                                                <span className="text-amber-700 dark:text-amber-400 font-bold text-center px-4">Os 5 Tipos Coordenativos</span>
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        icone: <LuImage className="text-orange-500" />,
-                                        titulo: "5️⃣ Causal vs Explicativa",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center border border-orange-200 dark:border-orange-800">
-                                                <span className="text-orange-700 dark:text-orange-400 font-bold text-center px-4">Diagrama de Verificação Contextual</span>
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        icone: <LuImage className="text-yellow-600" />,
-                                        titulo: "6️⃣ Preposições Essenciais",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-yellow-100 dark:bg-yellow-900/30 rounded-lg flex items-center justify-center border border-yellow-200 dark:border-yellow-800">
-                                                <span className="text-yellow-700 dark:text-yellow-400 font-bold text-center px-4">Lista das 18 Puras (+ Contrações)</span>
+                                        id: 'macete', label: 'Macete', icon: LuZap,
+                                        content: (
+                                            <div className="max-w-3xl mx-auto p-12 text-center space-y-8 bg-amber-500/5 rounded-[40px] border border-amber-500/20">
+                                                <div className="w-20 h-20 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                                    <LuZap className="w-10 h-10 text-amber-600" />
+                                                </div>
+                                                <h4 className="text-2xl font-bold text-amber-700">Causal vs Explicativa</h4>
+                                                <p className="text-lg text-muted-foreground">
+                                                    &quot;Verbo no <strong>Imperativo</strong> antes do 'que/porque'? É <strong>Explicativa</strong>! Se for um fato já ocorrido motivando outro, é <strong>Causal</strong>.&quot;
+                                                </p>
                                             </div>
                                         )
                                     }
@@ -910,18 +1083,18 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                     {/* ══════════════════════════════════════════════
                         MÓDULO 4: ADVÉRBIO & ARTIGO
                     ══════════════════════════════════════════════ */}
-                    <TabsContent value="modulo-4" className="space-y-16 mt-8">
+                    <TabsContent value="modulo-4" className="space-y-16 mt-6">
                         <ModuleBanner numero={4} titulo="Advérbio & Artigo" descricao="O modificador invariável que a Cesgranrio adora testar e o pequeno determinante que transforma classes." gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-fuchsia-700" />
 
                         {/* ── ADVÉRBIO ── */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={1} title="O Advérbio — Conceito Científico" variant="rose" />
                             <p className="text-lg text-muted-foreground text-justify leading-relaxed">
                                 O <strong>Advérbio</strong> é a classe de palavra <strong>invariável</strong> que modifica o <strong>verbo</strong> (trabalha <em>bem</em>), o <strong>adjetivo</strong> (<em>muito</em> bom) ou outro <strong>advérbio</strong> (<em>muito</em> bem). Ele nunca modifica substantivo (se modificar, será adjetivo). Sua principal armadilha na Cesgranrio: certas palavras mudam de classe dependendo do contexto (meio, bastante, certo).
                             </p>
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={2} title="Classificações do Advérbio" variant="rose" />
                             <ContentAccordion titulo="Os 7 Tipos de Advérbio" icone={<LuActivity />} corIndicador="bg-rose-500" defaultOpen={true} slides={[
                                 {
@@ -953,7 +1126,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             ]} />
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={3} title="As Palavras Camaleão — Meio, Bastante, Certo, Menos" variant="rose" />
                             <AlertBox tipo="danger" titulo="🚨 Pegadinha Número 1 da Cesgranrio!">
                                 &quot;Meio&quot;, &quot;bastante&quot; e &quot;certo&quot; mudam de classe conforme o contexto. Advérbio = invariável. Adjetivo/Pronome/Numeral = variável. E &quot;menos&quot; NUNCA varia (&quot;menas&quot; NÃO existe).
@@ -967,14 +1140,14 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* ── ARTIGO ── */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={4} title="O Artigo — Conceito Científico" variant="rose" />
                             <p className="text-lg text-muted-foreground text-justify leading-relaxed">
                                 O <strong>Artigo</strong> é a classe de palavra <strong>variável</strong> que antecede o substantivo para <strong>determiná-lo</strong> (artigo definido: o, a, os, as) ou <strong>indeterminá-lo</strong> (artigo indefinido: um, uma, uns, umas). É uma classe pequena em quantidade, mas gigante em impacto: ele define a substantivação e influencia a concordância.
                             </p>
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={5} title="O Artigo como 'Rei Midas' e a Regra do Proibido/Necessário" variant="rose" />
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <FlipCard frente={<span className="font-bold text-center">Derivação Imprópria<br /><span className="text-sm font-normal text-muted-foreground">(Artigo transforma classe)</span></span>} verso={<div className="text-sm text-center space-y-2"><p><strong>O cantar</strong> → verbo virou subst.</p><p><strong>O azul</strong> → adjetivo virou subst.</p><p><strong>Um não</strong> → advérbio virou subst.</p></div>} />
@@ -983,65 +1156,63 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* Resumo + Quiz */}
-                        <section className="space-y-8">
-                            <CardCarousel
-                                titulo="Resumo Completo — Advérbio & Artigo"
-                                subtitulo="Revisão Multimídia e Esquemas Visuais"
-                                cards={[
+                        <section className="space-y-16">
+                            <LessonTabs
+                                variant="rose"
+                                title="Resumo: Advérbio & Artigo"
+                                tabs={[
                                     {
-                                        icone: <LuVideo className="text-pink-500" />,
-                                        titulo: "1️⃣ Vídeo Resumo",
-                                        descricao: (
-                                            <div className="space-y-4">
-                                                <p className="text-sm text-muted-foreground">Assista à revisão em vídeo sobre Advérbios e Artigos.</p>
+                                        id: 'video', label: 'Vídeo Resumo', icon: LuVideo,
+                                        content: (
+                                            <div className="max-w-4xl mx-auto w-full px-4 text-center space-y-6">
+                                                <div className="space-y-2">
+                                                    <h4 className="text-2xl font-bold">Revisão Estratégica</h4>
+                                                    <p className="text-muted-foreground">Assista à revisão em vídeo sobre Advérbios e Artigos.</p>
+                                                </div>
                                                 <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: Advérbios e Artigos" duration="15 min" thumbnail="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" />
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuHeadphones className="text-purple-500" />,
-                                        titulo: "2️⃣ Áudio Revisão",
-                                        descricao: (
-                                            <div className="space-y-4">
-                                                <p className="text-sm text-muted-foreground">Ouça o resumo sempre que não puder ver a tela.</p>
-                                                <audio src="#" controls className="w-full mt-4" />
+                                        id: 'audio', label: 'Áudio Revisão', icon: LuHeadphones,
+                                        content: (
+                                            <div className="max-w-2xl mx-auto w-full px-6 py-12 text-center space-y-8">
+                                                <div className="space-y-3">
+                                                    <h4 className="text-2xl font-bold">Podcast do Aprovado</h4>
+                                                    <p className="text-muted-foreground">Ouça o resumo sempre que não puder ver a tela. Ideal para deslocamentos.</p>
+                                                </div>
+                                                <div className="bg-muted/50 p-8 rounded-3xl border border-border/50">
+                                                    <audio src="#" controls className="w-full" />
+                                                </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuZap className="text-yellow-500" />,
-                                        titulo: "3️⃣ Macete do Aprovado",
-                                        descricao: (
-                                            <div className="text-sm space-y-2">
-                                                <p className="font-bold text-yellow-600 dark:text-yellow-400">Palavras 'Camaleão':</p>
-                                                <p>Meio / Bastante. Troque meio por (um pouco/metade). Se foi 'um pouco', é invariável! Lembre: 'Menas' não existe e Alertas não pega 's'!</p>
+                                        id: 'visual', label: 'Mapa Mental', icon: LuImage,
+                                        content: (
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+                                                <div className="aspect-[4/3] w-full bg-rose-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-rose-500/20 p-8 transition-all hover:bg-rose-500/10">
+                                                    <h5 className="text-xl font-bold text-rose-700 dark:text-rose-400 mb-2">Advérbios</h5>
+                                                    <p className="text-sm text-muted-foreground text-center">Classificações: Lugar, Tempo, Modo, Intensidade e Negação.</p>
+                                                </div>
+                                                <div className="aspect-[4/3] w-full bg-pink-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-pink-500/20 p-8 transition-all hover:bg-pink-500/10">
+                                                    <h5 className="text-xl font-bold text-pink-700 dark:text-pink-400 mb-2">Artigos</h5>
+                                                    <p className="text-sm text-muted-foreground text-center">Substantivação e a regra do Proibido/Necessário com artigo.</p>
+                                                </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuImage className="text-rose-500" />,
-                                        titulo: "4️⃣ Tipos de Advérbio",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-rose-100 dark:bg-rose-900/30 rounded-lg flex items-center justify-center border border-rose-200 dark:border-rose-800">
-                                                <span className="text-rose-700 dark:text-rose-400 font-bold text-center px-4">Mapa Mental: Lugar, Tempo, Modo, Intensidade</span>
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        icone: <LuImage className="text-pink-500" />,
-                                        titulo: "5️⃣ Palavras Perigosas",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-pink-100 dark:bg-pink-900/30 rounded-lg flex items-center justify-center border border-pink-200 dark:border-pink-800">
-                                                <span className="text-pink-700 dark:text-pink-400 font-bold text-center px-4">Meio, Bastante e Menos</span>
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        icone: <LuImage className="text-fuchsia-500" />,
-                                        titulo: "6️⃣ Artigo Rei Midas",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-fuchsia-100 dark:bg-fuchsia-900/30 rounded-lg flex items-center justify-center border border-fuchsia-200 dark:border-fuchsia-800">
-                                                <span className="text-fuchsia-700 dark:text-fuchsia-400 font-bold text-center px-4">É Proibido vs É Proibida a</span>
+                                        id: 'macete', label: 'Macete', icon: LuZap,
+                                        content: (
+                                            <div className="max-w-3xl mx-auto p-12 text-center space-y-8 bg-rose-500/5 rounded-[40px] border border-rose-500/20">
+                                                <div className="w-20 h-20 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                                    <LuZap className="w-10 h-10 text-rose-600" />
+                                                </div>
+                                                <h4 className="text-2xl font-bold text-rose-700">O Teste do 'Muito'</h4>
+                                                <p className="text-lg text-muted-foreground">
+                                                    &quot;Na dúvida se uma palavra é Advérbio ou Adjetivo, troque por 'muito'. Se ficar invariável, é <strong>Advérbio</strong>. Se virar 'muitos/muitas', é <strong>Adjetivo/Pronome</strong>!&quot;
+                                                </p>
                                             </div>
                                         )
                                     }
@@ -1055,18 +1226,18 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                     {/* ══════════════════════════════════════════════
                         MÓDULO 5: NUMERAL, INTERJEIÇÃO & LABORATÓRIO
                     ══════════════════════════════════════════════ */}
-                    <TabsContent value="modulo-5" className="space-y-16 mt-8">
+                    <TabsContent value="modulo-5" className="space-y-16 mt-6">
                         <ModuleBanner numero={5} titulo="Numeral, Interjeição & Laboratório Final" descricao="As duas classes de menor frequência na prova e o simulado integrador de todas as 10 classes gramaticais." gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700" />
 
                         {/* ── NUMERAL ── */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={1} title="O Numeral — Conceito Científico" variant="violet" />
                             <p className="text-lg text-muted-foreground text-justify leading-relaxed">
                                 O <strong>Numeral</strong> é a classe de palavra que indica <strong>quantidade</strong>, <strong>ordem</strong>, <strong>multiplicação</strong> ou <strong>fração</strong> dos seres. Diferente do que parece, em provas da Cesgranrio ele aparece disfarçado em questões de concordância (&quot;ambos&quot;, &quot;meio/meia&quot;) e não como cálculo matemático.
                             </p>
                         </section>
 
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={2} title="Classificações e Armadilhas" variant="violet" />
                             <ContentAccordion titulo="Os 4 Tipos de Numeral" icone={<LuHash />} corIndicador="bg-violet-500" defaultOpen={true} slides={[
                                 {
@@ -1097,7 +1268,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* ── INTERJEIÇÃO ── */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={3} title="A Interjeição — Conceito Científico" variant="violet" />
                             <p className="text-lg text-muted-foreground text-justify leading-relaxed">
                                 A <strong>Interjeição</strong> é a classe de palavra <strong>invariável</strong> que expressa <strong>emoções</strong> ou <strong>reações</strong> súbitas do falante. Sempre acompanhada de ponto de exclamação (!). Na Cesgranrio, aparece raramente, mas quando surge costuma testar a <strong>pontuação</strong> associada e o reconhecimento de <strong>Locuções Interjetivas</strong>.
@@ -1110,7 +1281,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* ── LABORATÓRIO FINAL ── */}
-                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
                             <ModuleSectionHeader index={4} title="Quadro-Resumo — As 10 Classes Gramaticais" variant="violet" />
                             <AlertBox tipo="info" titulo="Hora de consolidar tudo!">
                                 Antes do simulado final, relembre as 10 classes. Use este resumo como revisão rápida antes da prova.
@@ -1137,65 +1308,63 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* Resumo Visual + Simulado Final */}
-                        <section className="space-y-8">
-                            <CardCarousel
-                                titulo="Resumo Completo — 10 Classes Clássicas"
-                                subtitulo="Revisão Multimídia e Esquemas Visuais"
-                                cards={[
+                        <section className="space-y-16">
+                            <LessonTabs
+                                variant="violet"
+                                title="Resumo: 10 Classes Clássicas"
+                                tabs={[
                                     {
-                                        icone: <LuVideo className="text-pink-500" />,
-                                        titulo: "1️⃣ Vídeo Resumo",
-                                        descricao: (
-                                            <div className="space-y-4">
-                                                <p className="text-sm text-muted-foreground">Assista à revisão em vídeo de todas as classes avaliadas.</p>
+                                        id: 'video', label: 'Vídeo Resumo', icon: LuVideo,
+                                        content: (
+                                            <div className="max-w-4xl mx-auto w-full px-4 text-center space-y-6">
+                                                <div className="space-y-2">
+                                                    <h4 className="text-2xl font-bold">Revisão Integrada</h4>
+                                                    <p className="text-muted-foreground">Assista à revisão em vídeo de todas as classes gramaticais.</p>
+                                                </div>
                                                 <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: 10 Classes de Palavras" duration="15 min" thumbnail="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" />
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuHeadphones className="text-purple-500" />,
-                                        titulo: "2️⃣ Áudio Revisão",
-                                        descricao: (
-                                            <div className="space-y-4">
-                                                <p className="text-sm text-muted-foreground">Ouça o resumo sempre que não puder ver a tela.</p>
-                                                <audio src="#" controls className="w-full mt-4" />
+                                        id: 'audio', label: 'Áudio Revisão', icon: LuHeadphones,
+                                        content: (
+                                            <div className="max-w-2xl mx-auto w-full px-6 py-12 text-center space-y-8">
+                                                <div className="space-y-3">
+                                                    <h4 className="text-2xl font-bold">Podcast do Aprovado</h4>
+                                                    <p className="text-muted-foreground">Revisão completa das 10 classes para ouvir onde quiser.</p>
+                                                </div>
+                                                <div className="bg-muted/50 p-8 rounded-3xl border border-border/50">
+                                                    <audio src="#" controls className="w-full" />
+                                                </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuZap className="text-yellow-500" />,
-                                        titulo: "3️⃣ Macete do Aprovado",
-                                        descricao: (
-                                            <div className="text-sm space-y-2">
-                                                <p className="font-bold text-yellow-600 dark:text-yellow-400">Variável vs Invariável:</p>
-                                                <p>As INVARIÁVEIS formam CIA P: Conjunção, Interjeição, Advérbio, Preposição. Todo o resto varia (se flexiona)! Entenda CIA P e ganhe minutos preciosos na prova.</p>
+                                        id: 'visual', label: 'Mapa Mental', icon: LuImage,
+                                        content: (
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+                                                <div className="aspect-[4/3] w-full bg-violet-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-violet-500/20 p-8 transition-all hover:bg-violet-500/10">
+                                                    <h5 className="text-xl font-bold text-violet-700 dark:text-violet-400 mb-2">As 10 Classes</h5>
+                                                    <p className="text-sm text-muted-foreground text-center">Esquema visual completo de todas as categorias morfológicas.</p>
+                                                </div>
+                                                <div className="aspect-[4/3] w-full bg-indigo-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-indigo-500/20 p-8 transition-all hover:bg-indigo-500/10">
+                                                    <h5 className="text-xl font-bold text-indigo-700 dark:text-indigo-400 mb-2">Relacionamentos</h5>
+                                                    <p className="text-sm text-muted-foreground text-center">Como cada classe se relaciona entre si (ex: Advérbio modifica Verbo).</p>
+                                                </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        icone: <LuImage className="text-violet-500" />,
-                                        titulo: "4️⃣ Numerais e Interjeições",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-violet-100 dark:bg-violet-900/30 rounded-lg flex items-center justify-center border border-violet-200 dark:border-violet-800">
-                                                <span className="text-violet-700 dark:text-violet-400 font-bold text-center px-4">Os 4 Tipos Mates e Locuções de Emoção</span>
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        icone: <LuImage className="text-purple-500" />,
-                                        titulo: "5️⃣ Relacionamentos Tópicos",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center border border-purple-200 dark:border-purple-800">
-                                                <span className="text-purple-700 dark:text-purple-400 font-bold text-center px-4">Mapa das 10 Classes Completas</span>
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        icone: <LuImage className="text-indigo-500" />,
-                                        titulo: "6️⃣ Armadilhas Cesgranrio",
-                                        descricao: (
-                                            <div className="aspect-[16/9] w-full bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center border border-indigo-200 dark:border-indigo-800">
-                                                <span className="text-indigo-700 dark:text-indigo-400 font-bold text-center px-4">Top 5 erros mais comuns</span>
+                                        id: 'macete', label: 'Macete', icon: LuZap,
+                                        content: (
+                                            <div className="max-w-3xl mx-auto p-12 text-center space-y-8 bg-violet-500/5 rounded-[40px] border border-violet-500/20">
+                                                <div className="w-20 h-20 bg-violet-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                                    <LuZap className="w-10 h-10 text-violet-600" />
+                                                </div>
+                                                <h4 className="text-2xl font-bold text-violet-700">O Macete Final: CIA P</h4>
+                                                <p className="text-lg text-muted-foreground">
+                                                    &quot;As classes <strong>INVARIÁVEIS</strong> são a <strong>CIA P</strong>: <strong>C</strong>onjunção, <strong>I</strong>nterjeição, <strong>A</strong>dvérbio e <strong>P</strong>reposição. Todo o resto varia!&quot;
+                                                </p>
                                             </div>
                                         )
                                     }
