@@ -672,10 +672,10 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                                         content: (
                                             <ModuleSummaryCarouselNew
                                                 images={[
-                                                    { title: 'Mapa Mental: Flexões Verbais', type: 'Mapa Mental', imageUrl: '/mapa_mental_flexoes_verbais_1771813248545.png', placeholderColor: 'bg-emerald-100' },
-                                                    { title: 'Tabela: Modos e Tempos', type: 'Tabela', imageUrl: '/tabela_modos_tempos_1771813271456.png', placeholderColor: 'bg-teal-100' },
-                                                    { title: 'Infográfico: Substantivos', type: 'Infográfico', imageUrl: '/infografico_substantivos_1771813298248.png', placeholderColor: 'bg-amber-100' },
-                                                    { title: 'Card Resumo: Concreto vs Abstrato', type: 'Card', imageUrl: '/card_concreto_abstrato_1771813315566.png', placeholderColor: 'bg-indigo-100' },
+                                                    { title: 'Mapa Mental: Flexões Verbais', type: 'Mapa Mental', imageUrl: '/assets/images/portugues/classes-palavras/modulo-1/mapa-mental-flexoes-verbais.png', placeholderColor: 'bg-emerald-100' },
+                                                    { title: 'Tabela: Modos e Tempos', type: 'Tabela', imageUrl: '/assets/images/portugues/classes-palavras/modulo-1/tabela-modos-tempos.png', placeholderColor: 'bg-teal-100' },
+                                                    { title: 'Infográfico: Substantivos', type: 'Infográfico', imageUrl: '/assets/images/portugues/classes-palavras/modulo-1/infografico-substantivos.png', placeholderColor: 'bg-amber-100' },
+                                                    { title: 'Card Resumo: Concreto vs Abstrato', type: 'Card', imageUrl: '/assets/images/portugues/classes-palavras/modulo-1/card-concreto-abstrato.png', placeholderColor: 'bg-indigo-100' },
                                                 ]}
                                             />
                                         )
@@ -934,7 +934,7 @@ Haver no singular, existir no plural
                                         content: (
                                             <ModuleSummaryCarouselNew
                                                 images={[
-                                                    { title: 'Mapa Mental: Pronomes Pessoais', type: 'Mapa Mental', imageUrl: '/mapa_mental_pronomes_pessoais_1771813346804.png', placeholderColor: 'bg-blue-100' },
+                                                    { title: 'Mapa Mental: Pronomes Pessoais', type: 'Mapa Mental', imageUrl: '/assets/images/portugues/classes-palavras/modulo-2/mapa-mental-pronomes-pessoais.png', placeholderColor: 'bg-blue-100' },
                                                     { title: 'Tabela: Retos vs Oblíquos', type: 'Tabela', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
                                                     { title: 'Infográfico: Colocação Pronominal', type: 'Infográfico', placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30' },
                                                     { title: 'Card Resumo: Adjetivos — Posição e Sentido', type: 'Card', placeholderColor: 'bg-amber-100 dark:bg-amber-900/30' },
