@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 // to ensure state is preserved (component stays mounted) but hidden.
 const Activity = ({ mode, children }: { mode: 'visible' | 'hidden'; children: React.ReactNode }) => {
     return (
-        <div style={{ display: mode === 'hidden' ? 'none' : 'contents' }}>
+        <div style={{ display: mode === 'hidden' ? 'none' : 'contents' }} className={mode === 'hidden' ? 'hidden' : ''}>
             {children}
         </div>
     );
@@ -55,10 +55,11 @@ const QUIZ_VERBAL_POOL: QuizQuestion[] = [
             { label: "A", valor: "Fazem cinco anos que não o vejo." },
             { label: "B", valor: "Houveram muitos problemas na obra." },
             { label: "C", valor: "Deve haver muitas pessoas interessadas." },
-            { label: "D", valor: "Aluga-se quartos para estudantes." }
+            { label: "D", valor: "Aluga-se quartos para estudantes." },
+            { label: "E", valor: "Tratam-se de questões complexas." }
         ],
         correta: "C",
-        explicacao: "O verbo 'haver' (sentido de existir) é impessoal e transmite a impessoalidade para o auxiliar 'deve'. Logo, 'Deve haver' fica no singular."
+        explicacao: "O verbo 'haver' (sentido de existir) é impessoal e transmite a impessoalidade para o auxiliar 'deve'. Logo, 'Deve haver' fica no singular. Opção E está errada pois 'tratar-se de' é impessoal (VTI+SE).",
     },
     {
         id: 2,
@@ -887,6 +888,467 @@ const QUIZ_PRATICO_POOL: QuizQuestion[] = [
     },
 ];
 
+const QUIZ_APROFUNDAMENTO_POOL: QuizQuestion[] = [
+    {
+        id: 401,
+        pergunta: "Em 'Fui eu quem ... o projeto', qual a forma correta?",
+        opcoes: [
+            { label: 'A', valor: "aprovou" },
+            { label: 'B', valor: "aprovei" },
+            { label: 'C', valor: "aprovamos" },
+            { label: 'D', valor: "A e B estão corretas" },
+            { label: 'E', valor: "aprovasses" },
+        ],
+        correta: 'D',
+        explicacao: "Com o pronome 'QUEM', o verbo pode concordar com o antecedente ('eu' -> 'aprovei') ou ficar na 3ª pessoa do singular ('aprovou'). Ambas corretas.",
+    },
+    {
+        id: 402,
+        pergunta: "Qual o erro na frase: 'Prometeu-se medidas urgentes'?",
+        opcoes: [
+            { label: 'A', valor: "Uso incorreto da próclise." },
+            { label: 'B', valor: "Falta de concordância com o sujeito paciente 'medidas'." },
+            { label: 'C', valor: "O verbo deveria estar no subjuntivo." },
+            { label: 'D', valor: "Não há erro." },
+            { label: 'E', valor: "O 'SE' é índice de indeterminação do sujeito." },
+        ],
+        correta: 'B',
+        explicacao: "VTD (Prometer) + SE = Passiva Sintética. O sujeito é 'medidas urgentes', por isso o verbo deve ser 'Prometeram-se'. 'SE' aqui é partícula apassivadora.",
+    },
+    {
+        id: 403,
+        pergunta: "Concordância com porcentagem: '1% dos funcionários ...'",
+        opcoes: [
+            { label: 'A', valor: "faltou" },
+            { label: 'B', valor: "faltaram" },
+            { label: 'C', valor: "Ambas podem estar corretas dependendo do contexto" },
+            { label: 'D', valor: "Nenhuma das anteriores" },
+            { label: 'E', valor: "Os verbo deve concordar apenas com o número '1'" },
+        ],
+        correta: 'C',
+        explicacao: "Em porcentagem seguida de substantivo, o verbo pode concordar com o número ('1%' -> 'faltou') ou com o substantivo ('funcionários' -> 'faltaram').",
+    },
+    {
+        id: 404,
+        pergunta: "Assinale a alternativa em que a concordância verbal está correta:",
+        opcoes: [
+            { label: 'A', valor: "Fazem dez anos que não vejo meu primo." },
+            { label: 'B', valor: "Houveram muitos incidentes na refinaria." },
+            { label: 'C', valor: "Deveria haver mais investimentos em segurança." },
+            { label: 'D', valor: "Aluga-se casas e apartamentos naquela rua." },
+            { label: 'E', valor: "Estão havendo sérios problemas." },
+        ],
+        correta: 'C',
+        explicacao: "O verbo 'haver' (sentido de existir) é impessoal e transmite a impessoalidade para o auxiliar 'deve'. Logo, 'Deveria haver' fica no singular. 'Aluga-se casas' está errado (voz passiva sintética).",
+    },
+    {
+        id: 405,
+        pergunta: "Qual a concordância correta para: 'Mais de um operário ... se no acidente'?",
+        opcoes: [
+            { label: 'A', valor: "feriu" },
+            { label: 'B', valor: "feriram" },
+            { label: 'C', valor: "ferira" },
+            { label: 'D', valor: "A e B estão corretas" },
+            { label: 'E', valor: "ferissem" },
+        ],
+        correta: 'A',
+        explicacao: "Com a expressão 'mais de um', o verbo concorda com o numeral 'um'. Exceção apenas para reciprocidade ('abraçaram-se').",
+    },
+    {
+        id: 406,
+        pergunta: "Sobre a partícula 'SE' em 'Trabalha-se muito aqui', é correto afirmar:",
+        opcoes: [
+            { label: 'A', valor: "É partícula apassivadora." },
+            { label: 'B', valor: "É índice de indeterminação do sujeito." },
+            { label: 'C', valor: "O sujeito é 'muito'." },
+            { label: 'D', valor: "O verbo deveria estar no plural se fosse 'muitos'." },
+            { label: 'E', valor: "É um pronome reflexivo." },
+        ],
+        correta: 'B',
+        explicacao: "O verbo 'trabalhar' é intransitivo. Verbo Intransitivo + SE = Índice de Indeterminação do Sujeito. O sujeito é indeterminado e o verbo fica no singular.",
+    },
+    {
+        id: 407,
+        pergunta: "Assinale a frase com erro de concordância nominal:",
+        opcoes: [
+            { label: 'A', valor: "Ela estava meio cansada hoje." },
+            { label: 'B', valor: "Envio anexas as fotos da obra." },
+            { label: 'C', valor: "É proibida a entrada de estranhos." },
+            { label: 'D', valor: "Haviam menas pessoas do que esperávamos." },
+            { label: 'E', valor: "São necessárias medidas urgentes." },
+        ],
+        correta: 'D',
+        explicacao: "'Menas' não existe na língua portuguesa. Além disso, 'havia' no sentido de existir é invariável. Opção E está correta.",
+    },
+    {
+        id: 408,
+        pergunta: "Assinale a alternativa correta quanto à concordância verbal:",
+        opcoes: [
+            { label: 'A', valor: "Fomos nós que aprovou o orçamento." },
+            { label: 'B', valor: "Fomos nós quem aprovamos o orçamento." },
+            { label: 'C', valor: "Houvemos por bem aceitar a proposta." },
+            { label: 'D', valor: "B e C estão corretas." },
+            { label: 'E', valor: "A e B estão corretas." },
+        ],
+        correta: 'D',
+        explicacao: "Com 'quem', o verbo pode concordar com o antecedente ('nós aprovamos'). 'Houver por bem' é expressão idiomática que admite concordância normal. Opção A está errada porque com 'que' o verbo concorda obrigatoriamente com o antecedente.",
+    },
+    {
+        id: 409,
+        pergunta: "Qual a concordância correta para a frase: 'Cerca de cem pessoas ... o evento'?",
+        opcoes: [
+            { label: 'A', valor: "presenciou" },
+            { label: 'B', valor: "presenciaram" },
+            { label: 'C', valor: "A e B estão corretas" },
+            { label: 'D', valor: "Nenhuma das anteriores" },
+            { label: 'E', valor: "presenciará" },
+        ],
+        correta: 'B',
+        explicacao: "Com expressões aproximativas ('cerca de', 'perto de'), o verbo concorda com o numeral (cem = plural).",
+    },
+    {
+        id: 410,
+        pergunta: "Complete corretamente: '______-se de soluções práticas.'",
+        opcoes: [
+            { label: 'A', valor: "Necessitam" },
+            { label: 'B', valor: "Necessita" },
+            { label: 'C', valor: "Precisam" },
+            { label: 'D', valor: "Dependem" },
+            { label: 'E', valor: "Buscam-se" },
+        ],
+        correta: 'B',
+        explicacao: "'Necessitar' é VTI (pede preposição 'de'). VTI + SE = Índice de Indeterminação do Sujeito. Verbo sempre no singular.",
+    },
+    {
+        id: 411,
+        pergunta: "Assinale a frase gramaticalmente correta:",
+        opcoes: [
+            { label: 'A', valor: "Os Lusíadas é uma obra épica." },
+            { label: 'B', valor: "Os Lusíadas são uma obra épica." },
+            { label: 'C', valor: "Ambas estão corretas." },
+            { label: 'D', valor: "Nenhuma está correta." },
+            { label: 'E', valor: "O verbo deve estar obrigatoriamente no plural." },
+        ],
+        correta: 'C',
+        explicacao: "Nomes de obras no plural admitem singular (pela ideia de 'a obra') ou plural (pelo artigo).",
+    },
+    {
+        id: 412,
+        pergunta: "Concordância com o verbo 'SER': 'Hoje ... dia 20 de outubro.'",
+        opcoes: [
+            { label: 'A', valor: "é" },
+            { label: 'B', valor: "são" },
+            { label: 'C', valor: "Ambas estão corretas" },
+            { label: 'D', valor: "fazem" },
+            { label: 'E', valor: "bateu" },
+        ],
+        correta: 'C',
+        explicacao: "Em datas, o verbo ser concorda com a palavra implícita 'dia' (singular) ou com o número (plural).",
+    },
+    {
+        id: 413,
+        pergunta: "Qual a forma correta: 'Um e outro técnico ... a falha'?",
+        opcoes: [
+            { label: 'A', valor: "viu" },
+            { label: 'B', valor: "viram" },
+            { label: 'C', valor: "Ambas estão corretas" },
+            { label: 'D', valor: "veeram" },
+            { label: 'E', valor: "vêem" },
+        ],
+        correta: 'C',
+        explicacao: "Com a expressão 'um e outro', o substantivo fica no singular, mas o verbo pode ficar no singular ou plural (preferência moderna pelo plural).",
+    },
+    {
+        id: 414,
+        pergunta: "Sobre a frase 'Somos nós que pagamos o jantar', é correto:",
+        opcoes: [
+            { label: 'A', valor: "O verbo concorda com o antecedente 'nós'." },
+            { label: 'B', valor: "O verbo deveria estar no singular." },
+            { label: 'C', valor: "Com 'que', a concordância é facultativa." },
+            { label: 'D', valor: "As opções A e C estão corretas." },
+            { label: 'E', valor: "O verbo concorda obrigatoriamente com 'que'." },
+        ],
+        correta: 'A',
+        explicacao: "Com o pronome relativo 'QUE', o verbo concorda obrigatoriamente com o antecedente.",
+    },
+    {
+        id: 415,
+        pergunta: "Assinale a alternativa correta:",
+        opcoes: [
+            { label: 'A', valor: "Batam duas horas o relógio da torre." },
+            { label: 'B', valor: "Bateu duas horas o relógio da torre." },
+            { label: 'C', valor: "Soou dez badaladas." },
+            { label: 'D', valor: "Deu três horas agora mesmo." },
+            { label: 'E', valor: "Bateram-se as duas horas." },
+        ],
+        correta: 'B',
+        explicacao: "Se o sujeito do verbo bater/soar/dar (horas) for o instrumento ('o relógio'), o verbo concorda com ele no singular.",
+    }
+];
+
+const QUIZ_FINAL_POOL: QuizQuestion[] = [
+    {
+        id: 501,
+        pergunta: "Questão de Elite: 'Mais de um operário ... se.'",
+        opcoes: [
+            { label: 'A', valor: "feriu" },
+            { label: 'B', valor: "feriram" },
+            { label: 'C', valor: "feriram-se (se houver reciprocidade)" },
+            { label: 'D', valor: "A e C estão corretas" },
+            { label: 'E', valor: "ferissem-se" },
+        ],
+        correta: 'D',
+        explicacao: "Com 'mais de um', a regra geral é singular. Porém, se houver ideia de reciprocidade ou o número for repetido, vai para o plural.",
+    },
+    {
+        id: 502,
+        pergunta: "Na Petrobras, o rigor técnico exige: 'Faltam ... 5 minutos para o teste'.",
+        opcoes: [
+            { label: 'A', valor: "apenas" },
+            { label: 'B', valor: "apenas uns" },
+            { label: 'C', valor: "ainda" },
+            { label: 'D', valor: "Todas exigem concordância plural" },
+            { label: 'E', valor: "pousa" },
+        ],
+        correta: 'D',
+        explicacao: "O verbo faltar concorda com o tempo que falta. 'Faltam 5 minutos'.",
+    },
+    {
+        id: 503,
+        pergunta: "Assinale a alternativa com concordância verbal CORRETA:",
+        opcoes: [
+            { label: 'A', valor: "Haviam muitos riscos na operação." },
+            { label: 'B', valor: "Fazem duas semanas que o navio partiu." },
+            { label: 'C', valor: "Devem haver soluções imediatas." },
+            { label: 'D', valor: "Trata-se de novas diretrizes de segurança." },
+            { label: 'E', valor: "A e C estão corretas (incorretas)." },
+        ],
+        correta: 'D',
+        explicacao: "Verbos haver e fazer em sentidos impessoais ficam no singular. 'Trata-se' (VTI + SE) é impessoal.",
+    },
+    {
+        id: 504,
+        pergunta: "Selecione a opção correta quanto à concordância nominal:",
+        opcoes: [
+            { label: 'A', valor: "Cerveja é boa para o verão." },
+            { label: 'B', valor: "A cerveja é bom para o verão." },
+            { label: 'C', valor: "Cerveja é bom para o verão." },
+            { label: 'D', valor: "B e C estão corretas." },
+            { label: 'E', valor: "Nenhuma das anteriores." },
+        ],
+        correta: 'C',
+        explicacao: "Sujeito abstrato ou genérico sem artigo pede adjetivo no masculino singular.",
+    },
+    {
+        id: 505,
+        pergunta: "Qual a concordância adequada para: 'A maioria dos investidores ... o projeto'?",
+        opcoes: [
+            { label: 'A', valor: "aprovou" },
+            { label: 'B', valor: "aprovaram" },
+            { label: 'C', valor: "Ambas estão corretas" },
+            { label: 'D', valor: "n.d.a" },
+            { label: 'E', valor: "aprovassem" },
+        ],
+        correta: 'C',
+        explicacao: "Sujeito partitivo + especificador plural admite concordância com o núcleo ou com o especificador.",
+    },
+    {
+        id: 506,
+        pergunta: "Assinale a frase gramaticalmente correta:",
+        opcoes: [
+            { label: 'A', valor: "Fomos nós que fez a proposta." },
+            { label: 'B', valor: "Fui eu que fizemos a proposta." },
+            { label: 'C', valor: "Fomos nós quem fez a proposta." },
+            { label: 'D', valor: "Fui eu quem fizemos a proposta." },
+            { label: 'E', valor: "Nós fomos que fizemos." },
+        ],
+        correta: 'C',
+        explicacao: "Com o pronome 'quem', o verbo pode ficar na 3ª do singular (concordando com 'quem') ou concordar com o antecedente.",
+    },
+    {
+        id: 507,
+        pergunta: "Marque a alternativa que apresenta erro de concordância:",
+        opcoes: [
+            { label: 'A', valor: "Seguem anexas as cópias." },
+            { label: 'B', valor: "As faturas seguem em anexo." },
+            { label: 'C', valor: "É proibido entrada de menores." },
+            { label: 'D', valor: "Houveram muitos comentários sobre a aula." },
+            { label: 'E', valor: "Alugam-se apartamentos." },
+        ],
+        correta: 'D',
+        explicacao: "Haver no sentido de 'ocorrer/existir' é impessoal, fica no singular. O correto é 'Houve muitos comentários'.",
+    },
+    {
+        id: 508,
+        pergunta: "Identifique a frase correta quanto à concordância:",
+        opcoes: [
+            { label: 'A', valor: "Três mil reais é muito pelo serviço." },
+            { label: 'B', valor: "Três mil reais são muito pelo serviço." },
+            { label: 'C', valor: "Hoje é 15 de janeiro." },
+            { label: 'D', valor: "A e C estão corretas." },
+            { label: 'E', valor: "As faturas seguem anexa." },
+        ],
+        correta: 'D',
+        explicacao: "Expressões de preço/valor (é muito, é pouco) ficam no singular. Datas admitem ambas as formas (é 15 ou são 15).",
+    },
+    {
+        id: 509,
+        pergunta: "Qual das frases a seguir está perfeitamente correta?",
+        opcoes: [
+            { label: 'A', valor: "Devem fazer três meses que ele saiu." },
+            { label: 'B', valor: "Vai fazer três meses que ele saiu." },
+            { label: 'C', valor: "Fazem três meses que ele saiu." },
+            { label: 'D', valor: "Estão fazendo três meses que ele saiu." },
+            { label: 'E', valor: "Houveram três meses de espera." },
+        ],
+        correta: 'B',
+        explicacao: "O verbo fazer indicando tempo é impessoal e essa característica se transmite ao seu auxiliar em locuções verbais. 'Houveram' também está errado.",
+    },
+    {
+        id: 510,
+        pergunta: "Concordância com 'SE': 'Vendem-se apartamentos de luxo.' Está correta?",
+        opcoes: [
+            { label: 'A', valor: "Sim, pois é voz passiva sintética." },
+            { label: 'B', valor: "Não, o correto é 'Vende-se'." },
+            { label: 'C', valor: "Depende se o proprietário está presente." },
+            { label: 'D', valor: "Sim, pois é índice de indeterminação do sujeito." },
+            { label: 'E', valor: "O 'SE' é um pronome reflexivo." },
+        ],
+        correta: 'A',
+        explicacao: "VTD (vender) + SE = Partícula Apassivadora. O verbo concorda com o sujeito 'apartamentos'.",
+    },
+    {
+        id: 511,
+        pergunta: "Assinale a alternativa incorreta:",
+        opcoes: [
+            { label: 'A', valor: "Vossa Excelência agiu com rapidez." },
+            { label: 'B', valor: "Sua Excelência agiu com rapidez." },
+            { label: 'C', valor: "Vossa Excelência agistes com rapidez." },
+            { label: 'D', valor: "A e B estão corretas." },
+            { label: 'E', valor: "A e C estão corretas." },
+        ],
+        correta: 'C',
+        explicacao: "Pronomes de tratamento exigem sempre verbo na 3ª pessoa do singular ou plural. 'Agistes' é 2ª pessoa (vós).",
+    },
+    {
+        id: 512,
+        pergunta: "Qual a forma correta para: 'Mais de um carro ... no engarrafamento'?",
+        opcoes: [
+            { label: 'A', valor: "bateu" },
+            { label: 'B', valor: "bateram" },
+            { label: 'C', valor: "batissem" },
+            { label: 'D', valor: "batera" },
+            { label: 'E', valor: "bates" },
+        ],
+        correta: 'A',
+        explicacao: "Com a expressão 'mais de um', a concordância é feita com o numeral um (singular).",
+    },
+    {
+        id: 513,
+        pergunta: "Marque a alternativa correta:",
+        opcoes: [
+            { label: 'A', valor: "Minas Gerais produz muito minério." },
+            { label: 'B', valor: "Os Estados Unidos lideram a pesquisa." },
+            { label: 'C', valor: "Ambas estão corretas." },
+            { label: 'D', valor: "Nenhuma está correta." },
+            { label: 'E', valor: "Minas Gerais produzem muito minério." },
+        ],
+        correta: 'C',
+        explicacao: "Nomes de lugar pluralizados concordam dependendo do artigo. Sem artigo (Minas) = singular. Com artigo (Os EUA) = plural. Ambas as frases do enunciado respeitam isso.",
+    },
+    {
+        id: 514,
+        pergunta: "(Cesgranrio) Assinale a opção que apresenta erro de concordância verbal:",
+        opcoes: [
+            { label: 'A', valor: "Deve haver muitos interessados na vaga." },
+            { label: 'B', valor: "Aconteceu fatos estranhos na obra." },
+            { label: 'C', valor: "Faz anos que não temos tal lucro." },
+            { label: 'D', valor: "Trabalha-se muito naquele setor." },
+            { label: 'E', valor: "Estão havendo muitas dúvidas." },
+        ],
+        correta: 'B',
+        explicacao: "O verbo acontecer é pessoal e deve concordar com o sujeito 'fatos estranhos'. O correto é 'Aconteceram'. 'Haver' em E também é impessoal.",
+    },
+    {
+        id: 515,
+        pergunta: "Qual a concordância de 'anexo' em: 'Envio ... as propostas'?",
+        opcoes: [
+            { label: 'A', valor: "anexo" },
+            { label: 'B', valor: "anexos" },
+            { label: 'C', valor: "anexas" },
+            { label: 'D', valor: "em anexo" },
+            { label: 'E', valor: "conexo" },
+        ],
+        correta: 'C',
+        explicacao: "Anexo é adjetivo e concorda com o substantivo 'propostas' (fem plural).",
+    },
+    {
+        id: 516,
+        pergunta: "Sobre 'obrigado', escolha a alternativa correta:",
+        opcoes: [
+            { label: 'A', valor: "Mulher diz: Muito obrigado." },
+            { label: 'B', valor: "Mulher diz: Muito obrigada." },
+            { label: 'C', valor: "Homem diz: Muito obrigada." },
+            { label: 'D', valor: "Ambos dizem a mesma forma." },
+            { label: 'E', valor: "É um advérbio invariável." },
+        ],
+        correta: 'B',
+        explicacao: "O termo concorda com o gênero da pessoa que fala.",
+    },
+    {
+        id: 517,
+        pergunta: "Complete corretamente: 'Precisa-se de técnicos' / 'Contratam-se técnicos'. Por que a diferença?",
+        opcoes: [
+            { label: 'A', valor: "Não há diferença, a primeira está errada." },
+            { label: 'B', valor: "A primeira tem SE como IIS; a segunda tem SE como PA." },
+            { label: 'C', valor: "A primeira é voz passiva; a segunda é ativa." },
+            { label: 'D', valor: "É apenas uma preferência regional." },
+            { label: 'E', valor: "Ambas possuem sujeito indeterminado." },
+        ],
+        correta: 'B',
+        explicacao: "Precisar (VTI) + SE = IIS (singular). Contratar (VTD) + SE = PA (concorda com o sujeito).",
+    },
+    {
+        id: 518,
+        pergunta: "Assinale a alternativa incorreta quanto à concordância verbal:",
+        opcoes: [
+            { label: 'A', valor: "Dar-se-ão os prêmios aos vencedores." },
+            { label: 'B', valor: "Fomos nós quem pagou a dívida." },
+            { label: 'C', valor: "Fomos nós que pagou a dívida." },
+            { label: 'D', valor: "Haviam bastantes dúvidas na aula." },
+            { label: 'E', valor: "C e D estão incorretas." },
+        ],
+        correta: 'C',
+        explicacao: "Com o relativo 'que', o verbo concorda obrigatoriamente com o antecedente 'nós'. D também está errada ('Havia'). Mas C é o foco aqui.",
+    },
+    {
+        id: 519,
+        pergunta: "Concordância com 'SER': 'O problema ... as mentiras.'",
+        opcoes: [
+            { label: 'A', valor: "é" },
+            { label: 'B', valor: "são" },
+            { label: 'C', valor: "Ambas estão corretas" },
+            { label: 'D', valor: "foram" },
+            { label: 'E', valor: "fomos" },
+        ],
+        correta: 'B',
+        explicacao: "Nas definições onde o predicativo é plural, o verbo ser tende a concordar com o plural.",
+    },
+    {
+        id: 520,
+        pergunta: "Para fechar: '10% do lucro ... para os funcionários.'",
+        opcoes: [
+            { label: 'A', valor: "vai" },
+            { label: 'B', valor: "vão" },
+            { label: 'C', valor: "Ambas estão corretas" },
+            { label: 'D', valor: "nenhuma está correta" },
+            { label: 'E', valor: "irão" },
+        ],
+        correta: 'C',
+        explicacao: "Com porcentagem e especificador, o verbo concorda com o numeral (10 = plural) ou com o especificador (lucro = singular).",
+    }
+];
+
 type ChallengeQuestion = {
     id: number;
     wrong: string;
@@ -1183,20 +1645,23 @@ export default function AulaConcordancia({
         { id: 'modulo-1', label: 'Módulo 1', titulo: 'Concordância Verbal' },
         { id: 'modulo-2', label: 'Módulo 2', titulo: 'Concordância Nominal' },
         { id: 'modulo-3', label: 'Módulo 3', titulo: 'Prática e Simulados' },
+        { id: 'modulo-4', label: 'Módulo 4', titulo: 'Casos de Elite' },
+        { id: 'modulo-5', label: 'Módulo 5', titulo: 'Laboratório Cesgranrio' },
     ] as const;
 
-    // Initial state logic based on localStorage (Client-side only) to prevent flickering, 
-    // real init happens in useEffect
     const [activeTab, setActiveTab] = useState('modulo-1');
-    const [activeModuleIndex, setActiveModuleIndex] = useState(0);
-    const [currentExample, setCurrentExample] = useState(CONCEPT_EXAMPLES[0]);
     const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
-    const [quizVerbalQuestions, setQuizVerbalQuestions] = useState<QuizQuestion[]>([]);
-    const [quizNominalQuestions, setQuizNominalQuestions] = useState<QuizQuestion[]>([]);
-    const [quizPraticoQuestions, setQuizPraticoQuestions] = useState<QuizQuestion[]>([]);
     const [challengeIndex, setChallengeIndex] = useState(0);
-    const [shuffledChallenges, setShuffledChallenges] = useState<ChallengeQuestion[]>([]);
+    const [currentExample, setCurrentExample] = useState(CONCEPT_EXAMPLES[0]);
     const [showCompletionBadge, setShowCompletionBadge] = useState(false);
+
+    // Randomize questions states
+    const [quizVerbalQuestions] = useState(() => getRandomQuestions(QUIZ_VERBAL_POOL, 10));
+    const [quizNominalQuestions] = useState(() => getRandomQuestions(QUIZ_NOMINAL_POOL, 10));
+    const [quizPraticoQuestions] = useState(() => getRandomQuestions(QUIZ_PRATICO_POOL, 10));
+    const [quizAprofundamentoQuestions] = useState(() => getRandomQuestions(QUIZ_APROFUNDAMENTO_POOL, 10));
+    const [quizFinalQuestions] = useState(() => getRandomQuestions(QUIZ_FINAL_POOL, 10));
+    const [shuffledChallenges] = useState(() => [...CHALLENGE_POOL].sort(() => 0.5 - Math.random()).slice(0, 10));
 
     // Load progress
     useEffect(() => {
@@ -1204,75 +1669,40 @@ export default function AulaConcordancia({
         if (saved) {
             try {
                 const parsed = JSON.parse(saved);
-                const restoredSet = new Set(parsed.completedModules || []);
-                setCompletedModules(restoredSet as Set<string>);
+                setCompletedModules(new Set(parsed.completedModules || []));
+            } catch (e) { console.error(e); }
+        }
+        if (currentProgress >= 100 || isCompleted) setShowCompletionBadge(true);
+    }, [currentProgress, isCompleted]);
 
-                // Auto-navigation to next module
-                if (restoredSet.has('modulo-1') && !restoredSet.has('modulo-2')) setActiveTab('modulo-2');
-                if (restoredSet.has('modulo-2') && !restoredSet.has('modulo-3')) setActiveTab('modulo-3');
-            } catch (e) {
-                console.error("Failed to parse progress", e);
+    const handleModuleComplete = (moduleId: string, score: number) => {
+        if (score >= 70) {
+            const newSet = new Set(completedModules).add(moduleId);
+            setCompletedModules(newSet);
+
+            const percent = Math.round((newSet.size / MODULE_DEFS.length) * 100);
+            localStorage.setItem('aula_concordancia_progress', JSON.stringify({
+                completedModules: Array.from(newSet),
+                lastUpdated: new Date().toISOString()
+            }));
+
+            if (onUpdateProgress) onUpdateProgress(percent);
+
+            const index = MODULE_DEFS.findIndex(m => m.id === moduleId);
+            if (index < MODULE_DEFS.length - 1) {
+                setTimeout(() => {
+                    setActiveTab(MODULE_DEFS[index + 1].id);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 1500);
+            } else {
+                setShowCompletionBadge(true);
+                onComplete?.();
             }
         }
-
-        if (currentProgress >= 100 || isCompleted) setShowCompletionBadge(true);
-
-        // Randomize questions once on mount
-        setQuizVerbalQuestions(getRandomQuestions(QUIZ_VERBAL_POOL, 5));
-        setQuizNominalQuestions(getRandomQuestions(QUIZ_NOMINAL_POOL, 5));
-        setQuizPraticoQuestions(getRandomQuestions(QUIZ_PRATICO_POOL, 5));
-        setShuffledChallenges([...CHALLENGE_POOL].sort(() => 0.5 - Math.random()).slice(0, 10));
-    }, []);
-
-    // Save progress helper
-    const saveProgress = (newSet: Set<string>) => {
-        const remaining = MODULE_DEFS.length - newSet.size;
-        const percent = Math.round((newSet.size / MODULE_DEFS.length) * 100);
-
-        localStorage.setItem('aula_concordancia_progress', JSON.stringify({
-            completedModules: Array.from(newSet),
-            lastUpdated: new Date().toISOString()
-        }));
-
-        if (onUpdateProgress) onUpdateProgress(percent);
-    };
-
-    const handleModule1Complete = (score: number) => {
-        if (score >= 70) {
-            const newSet = new Set(completedModules);
-            newSet.add('modulo-1');
-            setCompletedModules(newSet);
-            saveProgress(newSet);
-            setTimeout(() => {
-                setActiveTab('modulo-2');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 1500);
-        }
-    };
-
-    const handleModule2Complete = (score: number) => {
-        if (score >= 70) {
-            const newSet = new Set(completedModules);
-            newSet.add('modulo-2');
-            setCompletedModules(newSet);
-            saveProgress(newSet);
-            setTimeout(() => {
-                setActiveTab('modulo-3');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 1500);
-        }
-    };
-
-    const handleModule3Complete = (score: number) => {
-        const newSet = new Set(completedModules);
-        newSet.add('modulo-3');
-        setCompletedModules(newSet);
-        saveProgress(newSet);
-        setShowCompletionBadge(true);
-        if (onComplete) onComplete();
     };
 
     const isModuleUnlocked = (index: number) => {
+        if (isCompleted) return true;
         if (index === 0) return true;
         return completedModules.has(MODULE_DEFS[index - 1].id);
     };
@@ -2267,10 +2697,30 @@ export default function AulaConcordancia({
                                             content: (
                                                 <ModuleSummaryCarouselNew
                                                     images={[
-                                                        { title: 'Mapa Mental: Sujeito Composto', type: 'Mapa Mental', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
-                                                        { title: 'Fluxograma: Partícula SE', type: 'Diagrama', placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30' },
-                                                        { title: 'Infográfico: Verbos Impessoais', type: 'Infográfico', placeholderColor: 'bg-amber-100 dark:bg-amber-900/30' },
-                                                        { title: 'Card Resumo: VTD vs VTI', type: 'Card', placeholderColor: 'bg-purple-100 dark:bg-purple-900/30' },
+                                                        {
+                                                            title: 'Mapa Mental: Sujeito Composto',
+                                                            type: 'Mapa Mental',
+                                                            imageUrl: '/assets/images/portugues/concordancia/mapa_mental_sujeito_composto.png',
+                                                            placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30'
+                                                        },
+                                                        {
+                                                            title: 'Fluxograma: Partícula SE',
+                                                            type: 'Diagrama',
+                                                            imageUrl: '/assets/images/portugues/concordancia/fluxograma_particula_se.png',
+                                                            placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30'
+                                                        },
+                                                        {
+                                                            title: 'Infográfico: Verbos Impessoais',
+                                                            type: 'Infográfico',
+                                                            imageUrl: '/assets/images/portugues/concordancia/infografico_verbos_impessoais.png',
+                                                            placeholderColor: 'bg-amber-100 dark:bg-amber-900/30'
+                                                        },
+                                                        {
+                                                            title: 'Card Resumo: VTD vs VTI',
+                                                            type: 'Card',
+                                                            imageUrl: '/assets/images/portugues/concordancia/card_resumo_vtd_vti.png',
+                                                            placeholderColor: 'bg-purple-100 dark:bg-purple-900/30'
+                                                        },
                                                     ]}
                                                 />
                                             )
@@ -2326,8 +2776,8 @@ export default function AulaConcordancia({
                                     questoes={quizVerbalQuestions}
                                     titulo="Quiz de Fixação - Concordância Verbal"
                                     icone="📝"
-                                    numero={7}
-                                    onComplete={handleModule1Complete}
+                                    numero={10}
+                                    onComplete={(score) => handleModuleComplete('modulo-1', score)}
                                 />
                                 {!completedModules.has('modulo-1') && (
                                     <div className="mt-8 p-4 bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200 rounded-lg text-center border border-yellow-200 dark:border-yellow-800/50">
@@ -2632,10 +3082,30 @@ export default function AulaConcordancia({
                                         content: (
                                             <ModuleSummaryCarouselNew
                                                 images={[
-                                                    { title: 'Card: Palavras Proibidas', type: 'Card', placeholderColor: 'bg-rose-100 dark:bg-rose-900/30' },
-                                                    { title: 'Diagrama: Regra do Ímã', type: 'Diagrama', placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30' },
-                                                    { title: 'Infográfico: Plural dos Compostos', type: 'Infográfico', placeholderColor: 'bg-blue-100 dark:bg-blue-900/30' },
-                                                    { title: 'Mapa Mental: Anexo/Incluso', type: 'Mapa Mental', placeholderColor: 'bg-yellow-100 dark:bg-yellow-900/30' },
+                                                    {
+                                                        title: 'Card: Proibido / Necessário',
+                                                        type: 'Card',
+                                                        imageUrl: '/assets/images/portugues/concordancia/card_proibido_necessario.png',
+                                                        placeholderColor: 'bg-rose-100 dark:bg-rose-900/30'
+                                                    },
+                                                    {
+                                                        title: 'Mapa Mental: Anexo / Incluso',
+                                                        type: 'Mapa Mental',
+                                                        imageUrl: '/assets/images/portugues/concordancia/mapa_mental_anexo_incluso.png',
+                                                        placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30'
+                                                    },
+                                                    {
+                                                        title: 'Infográfico: Meio / Bastante',
+                                                        type: 'Infográfico',
+                                                        imageUrl: '/assets/images/portugues/concordancia/infografico_meio_bastante.png',
+                                                        placeholderColor: 'bg-blue-100 dark:bg-blue-900/30'
+                                                    },
+                                                    {
+                                                        title: 'Fluxograma: Cores da Concordância',
+                                                        type: 'Fluxograma',
+                                                        imageUrl: '/assets/images/portugues/concordancia/fluxograma_cores_concordancia.png',
+                                                        placeholderColor: 'bg-yellow-100 dark:bg-yellow-900/30'
+                                                    },
                                                 ]}
                                             />
                                         )
@@ -2695,8 +3165,8 @@ export default function AulaConcordancia({
                                 questoes={quizNominalQuestions}
                                 titulo="Quiz de Fixação - Concordância Nominal"
                                 icone="🧠"
-                                numero={5}
-                                onComplete={handleModule2Complete}
+                                numero={10}
+                                onComplete={(score) => handleModuleComplete('modulo-2', score)}
                             />
                             {!completedModules.has('modulo-2') && (
                                 <div className="mt-8 p-4 bg-emerald-100 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-200 rounded-lg text-center border border-emerald-200 dark:border-emerald-800/50">
@@ -2963,10 +3433,30 @@ export default function AulaConcordancia({
                                         content: (
                                             <ModuleSummaryCarouselNew
                                                 images={[
-                                                    { title: 'Checklist: Passo a Passo', type: 'Infográfico', placeholderColor: 'bg-violet-100 dark:bg-violet-900/30' },
-                                                    { title: 'Tabela: Casogram (Verbal vs Nominal)', type: 'Tabela', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
-                                                    { title: 'Card: Principais Pegadinhas', type: 'Card', placeholderColor: 'bg-red-100 dark:bg-red-900/30' },
-                                                    { title: 'Mapa: Decisão Rápida', type: 'Mapa Mental', placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30' },
+                                                    {
+                                                        title: 'Checklist: Passo a Passo',
+                                                        type: 'Checklist',
+                                                        imageUrl: '/assets/images/portugues/concordancia/checklist_passo_passo_pratica.png',
+                                                        placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30'
+                                                    },
+                                                    {
+                                                        title: 'Tabela: Verbos Problemáticos',
+                                                        type: 'Tabela',
+                                                        imageUrl: '/assets/images/portugues/concordancia/tabela_verbos_problematicos.png',
+                                                        placeholderColor: 'bg-amber-100 dark:bg-amber-900/30'
+                                                    },
+                                                    {
+                                                        title: 'Card: Cuidado com a Distância',
+                                                        type: 'Card',
+                                                        imageUrl: '/assets/images/portugues/concordancia/card_cuidado_distancia.png',
+                                                        placeholderColor: 'bg-rose-100 dark:bg-rose-900/30'
+                                                    },
+                                                    {
+                                                        title: 'Mapa: Checklist de Revisão',
+                                                        type: 'Mapa Mental',
+                                                        imageUrl: '/assets/images/portugues/concordancia/mapa_checklist_revisao.png',
+                                                        placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30'
+                                                    },
                                                 ]}
                                             />
                                         )
@@ -3020,23 +3510,240 @@ export default function AulaConcordancia({
                                 questoes={quizPraticoQuestions}
                                 titulo="Simulado Final - Estilo Banca"
                                 icone="🏆"
-                                numero={3}
-                                onComplete={(score) => {
-                                    if (score >= 70) {
-                                        localStorage.setItem('concordancia-completed', 'true');
-                                        // Optional: Trigger a confetti or toast here if available in context
-                                    }
-                                }}
+                                numero={10}
+                                onComplete={(score) => handleModuleComplete('modulo-3', score)}
                             />
                         </section>
                     </div>
                 </Activity>
+
+
+                {/* MODULE 4: CASOS DE ELITE */}
+                <Activity mode={activeTab === 'modulo-4' ? 'visible' : 'hidden'}>
+                    <div className={`space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500 ${activeTab !== 'modulo-4' ? 'hidden' : ''}`}>
+                        <ModuleBanner
+                            numero={4}
+                            titulo="Casos de Elite"
+                            descricao="Aprofundamento em tópicos complexos: porcentagens, frações, pronomes relativos e expressões partitivas que definem a aprovação."
+                            gradiente="bg-gradient-to-br from-amber-600 via-orange-600 to-red-700"
+                        />
+
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
+                                <span className="w-14 h-14 rounded-full bg-amber-500/20 flex items-center justify-center text-3xl font-bold text-amber-700 dark:text-amber-400">1</span>
+                                Porcentagens e Frações
+                            </h2>
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className="p-6 bg-amber-500/5 rounded-xl border border-amber-500/10">
+                                    <h4 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Porcentagem</h4>
+                                    <p className="text-sm text-muted-foreground mb-4">O verbo concorda com o numeral ou com o substantivo que o segue.</p>
+                                    <ul className="space-y-2 text-sm">
+                                        <li className="text-green-600">✅ "1% do <strong>pessoal</strong> faltou."</li>
+                                        <li className="text-green-600">✅ "30% da <strong>obra</strong> foi concluída."</li>
+                                        <li className="text-green-600">✅ "30% dos <strong>técnicos</strong> faltaram."</li>
+                                    </ul>
+                                </div>
+                                <div className="p-6 bg-orange-500/5 rounded-xl border border-orange-500/10">
+                                    <h4 className="font-bold text-orange-700 dark:text-orange-400 mb-2">Frações</h4>
+                                    <p className="text-sm text-muted-foreground mb-4">O verbo concorda com o <strong>numerador</strong> da fração.</p>
+                                    <ul className="space-y-2 text-sm">
+                                        <li className="text-green-600">✅ "<strong>Um</strong> terço dos poços parou."</li>
+                                        <li className="text-green-600">✅ "<strong>Dois</strong> terços da equipe saíram."</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
+                                <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-3xl font-bold text-red-700 dark:text-red-400">2</span>
+                                Pronomes Relativos: QUE e QUEM
+                            </h2>
+                            <div className="space-y-4">
+                                <div className="p-6 bg-red-500/5 rounded-xl border border-red-500/10">
+                                    <p className="font-bold mb-2">Sujeito é o relativo "QUE":</p>
+                                    <p className="text-sm mb-4">O verbo concorda com o <strong>antecedente</strong> do "QUE".</p>
+                                    <p className="text-green-600 font-medium">✅ "Fomos <strong>nós</strong> que fizemos o teste."</p>
+                                </div>
+                                <div className="p-6 bg-rose-500/5 rounded-xl border border-rose-500/10">
+                                    <p className="font-bold mb-2">Sujeito é o relativo "QUEM":</p>
+                                    <p className="text-sm mb-4">O verbo pode ficar na <strong>3ª pessoa do singular</strong> ou concordar com o <strong>antecedente</strong>.</p>
+                                    <ul className="space-y-2 text-sm">
+                                        <li className="text-green-600">✅ "Fomos nós quem <strong>fez</strong>." (singular - mais comum em prova)</li>
+                                        <li className="text-green-600">✅ "Fomos nós quem <strong>fizemos</strong>." (concorda com 'nós')</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                <span className="w-14 h-14 rounded-full bg-amber-500/10 flex items-center justify-center text-3xl font-black text-amber-700 border border-amber-500/20 shadow-inner">3</span>
+                                Resumo e Multimedia
+                            </h2>
+
+                            <LessonTabs
+                                tabs={[
+                                    {
+                                        id: 'resumo',
+                                        label: 'Resumo Visual',
+                                        icon: LuBookOpen,
+                                        content: (
+                                            <ModuleSummaryCarouselNew
+                                                images={[
+                                                    {
+                                                        title: 'Infográfico: Porcentagens',
+                                                        type: 'Infográfico',
+                                                        imageUrl: '/assets/images/portugues/concordancia/infografico_porcentagens.png',
+                                                        placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30'
+                                                    },
+                                                    {
+                                                        title: 'Mapa: Frações e Partitivos',
+                                                        type: 'Mapa Mental',
+                                                        imageUrl: '/assets/images/portugues/concordancia/mapa_fra_partitivos.png',
+                                                        placeholderColor: 'bg-violet-100 dark:bg-violet-900/30'
+                                                    },
+                                                    {
+                                                        title: 'Diagrama: Pronomes Relativos',
+                                                        type: 'Diagrama',
+                                                        imageUrl: '/assets/images/portugues/concordancia/diagrama_pronomes_relativos.png',
+                                                        placeholderColor: 'bg-rose-100 dark:bg-rose-900/30'
+                                                    },
+                                                    {
+                                                        title: 'Card: Chute Técnico',
+                                                        type: 'Card',
+                                                        imageUrl: '/assets/images/portugues/concordancia/card_chute_tecnico.png',
+                                                        placeholderColor: 'bg-amber-100 dark:bg-amber-900/30'
+                                                    },
+                                                ]}
+                                            />
+                                        )
+                                    }
+                                ]}
+                            />
+                        </section>
+
+                        <section id="quiz-modulo-4" className="mt-16">
+                            <QuizInterativo
+                                questoes={quizAprofundamentoQuestions}
+                                titulo="Desafio de Elite - Casos Complexos"
+                                icone="🔥"
+                                numero={10}
+                                onComplete={(score) => handleModuleComplete('modulo-4', score)}
+                            />
+                        </section>
+                    </div>
+                </Activity>
+
+                {/* MODULE 5: LABORATÓRIO CESGRANRIO */}
+                <Activity mode={activeTab === 'modulo-5' ? 'visible' : 'hidden'}>
+                    <div className={`space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500 ${activeTab !== 'modulo-5' ? 'hidden' : ''}`}>
+                        <ModuleBanner
+                            numero={5}
+                            titulo="Laboratório Cesgranrio"
+                            descricao="Simulado final com questões de alto nível e revisão dos pontos críticos para garantir sua vaga na Petrobras."
+                            gradiente="bg-gradient-to-br from-slate-700 via-slate-800 to-black"
+                        />
+
+                        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm text-center">
+                            <h2 className="text-4xl font-black text-foreground mb-6">Missão Cumprida?</h2>
+                            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
+                                Você percorreu toda a gramática de concordância. Agora, o desafio final testará sua atenção aos detalhes mais sórdidos das bancas.
+                            </p>
+                            <div className="flex flex-wrap justify-center gap-4">
+                                <div className="p-4 bg-primary/10 rounded-2xl border border-primary/20 min-w-[150px]">
+                                    <p className="text-3xl font-bold text-primary">10</p>
+                                    <p className="text-xs uppercase tracking-widest font-bold opacity-70">Questões</p>
+                                </div>
+                                <div className="p-4 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 min-w-[150px]">
+                                    <p className="text-3xl font-bold text-emerald-600">85%</p>
+                                    <p className="text-xs uppercase tracking-widest font-bold opacity-70">Meta Elite</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                <span className="w-14 h-14 rounded-full bg-slate-500/10 flex items-center justify-center text-3xl font-black text-slate-700 border border-slate-500/20 shadow-inner">2</span>
+                                Resumo Final e Revisão
+                            </h2>
+
+                            <LessonTabs
+                                tabs={[
+                                    {
+                                        id: 'resumo',
+                                        label: 'Resumo Visual',
+                                        icon: LuBookOpen,
+                                        content: (
+                                            <ModuleSummaryCarouselNew
+                                                images={[
+                                                    {
+                                                        title: 'Infográfico: Raio-X Cesgranrio',
+                                                        type: 'Infográfico',
+                                                        imageUrl: '/assets/images/portugues/concordancia/infografico_raio_x_cesgranrio.png',
+                                                        placeholderColor: 'bg-slate-100 dark:bg-slate-900/30'
+                                                    },
+                                                    {
+                                                        title: 'Tabela: Frequência de Temas',
+                                                        type: 'Tabela',
+                                                        imageUrl: '/assets/images/portugues/concordancia/tabela_frequencia_temas.png',
+                                                        placeholderColor: 'bg-blue-100 dark:bg-blue-900/30'
+                                                    },
+                                                    {
+                                                        title: 'Mapa: Revisão 360º',
+                                                        type: 'Mapa Mental',
+                                                        imageUrl: '/assets/images/portugues/concordancia/mapa_mental_revisao_360.png',
+                                                        placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30'
+                                                    },
+                                                    {
+                                                        title: 'Card: Flashcard Final',
+                                                        type: 'Card',
+                                                        imageUrl: '/assets/images/portugues/concordancia/card_flashcard_final_elite.png',
+                                                        placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30'
+                                                    },
+                                                ]}
+                                            />
+                                        )
+                                    }
+                                ]}
+                            />
+                        </section>
+
+                        <section id="quiz-modulo-5" className="mt-16">
+                            <QuizInterativo
+                                questoes={quizFinalQuestions}
+                                titulo="Grande Simulado Final - Petrobras Quest"
+                                icone="🏆"
+                                numero={10}
+                                onComplete={(score) => handleModuleComplete('modulo-5', score)}
+                            />
+                        </section>
+
+                        {completedModules.has('modulo-5') && (
+                            <div className="mt-16 p-12 bg-gradient-to-br from-indigo-600 to-purple-700 rounded-[2rem] text-white text-center shadow-2xl relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl" />
+                                <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full -ml-32 -mb-32 blur-3xl" />
+
+                                <div className="relative z-10 space-y-6">
+                                    <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center text-5xl mx-auto backdrop-blur-sm border border-white/30 animate-bounce">
+                                        🎓
+                                    </div>
+                                    <h3 className="text-4xl font-black italic tracking-tighter">CERTIFICADO DE ELITE</h3>
+                                    <p className="text-xl opacity-90 max-w-xl mx-auto">
+                                        Parabéns! Você dominou a Concordância Verbal e Nominal. Seu radar contra pegadinhas está calibrado para a Petrobras.
+                                    </p>
+                                    <button
+                                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                                        className="px-10 py-4 bg-white text-indigo-600 rounded-full font-black text-lg hover:bg-neutral-100 transition-all shadow-xl active:scale-95"
+                                    >
+                                        REVISAR TUDO
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </Activity>
             </Tabs>
-
-
-
-            {/* SEÇÃO FINAL: CONCLUSÃO MANUAL */}
-
         </div>
     );
 }

@@ -192,6 +192,7 @@ export default function AulaRegencia({ onUpdateProgress, onComplete, isCompleted
     };
 
     const isModuleUnlocked = (index: number) => {
+        if (isCompleted) return true;
         if (index === 0) return true;
         return completedModules.has(MODULE_DEFS[index - 1].id);
     };

@@ -56,6 +56,16 @@ const AulaClassesPalavras = dynamic<AulaProps>(
     { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
 );
 
+const AulaTiposTextuais = dynamic<AulaProps>(
+    () => import('@/components/aulas/AulaTiposTextuais'),
+    { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
+);
+
+const AulaOrtografia = dynamic<AulaProps>(
+    () => import('@/components/aulas/AulaOrtografia'),
+    { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
+);
+
 interface PageProps {
     params: Promise<{ materia: string; topico: string }>;
 }
@@ -445,6 +455,24 @@ export default function TopicoPage({ params }: PageProps) {
                         />
                     ) : materiaId === 'portugues' && topicoId === 'classes-palavras' ? (
                         <AulaClassesPalavras
+                            onComplete={handleCompleteAula}
+                            isCompleted={isCompleted}
+                            loading={loading}
+                            xpGanho={xpGanho}
+                            currentProgress={progress}
+                            onUpdateProgress={updateProgress}
+                        />
+                    ) : materiaId === 'portugues' && topicoId === 'tipos-textuais' ? (
+                        <AulaTiposTextuais
+                            onComplete={handleCompleteAula}
+                            isCompleted={isCompleted}
+                            loading={loading}
+                            xpGanho={xpGanho}
+                            currentProgress={progress}
+                            onUpdateProgress={updateProgress}
+                        />
+                    ) : materiaId === 'portugues' && topicoId === 'ortografia' ? (
+                        <AulaOrtografia
                             onComplete={handleCompleteAula}
                             isCompleted={isCompleted}
                             loading={loading}

@@ -31,14 +31,22 @@ import {
     ModuleBanner,
     CardCarousel,
     StickyModuleNav,
-    ModuleSectionHeader,  // 🔴 OBRIGATÓRIO para cabeçalhos de seção
+    ModuleSectionHeader,          // 🔴 OBRIGATÓRIO para cabeçalhos de seção
     ContentAccordion,
-    LessonTabs,           // 🔴 OBRIGATÓRIO para resumos de módulo
+    LessonTabs,                   // 🔴 OBRIGATÓRIO para card "Resumo e Multimídia"
+    ModuleSummaryCarouselNew,     // 🔴 OBRIGATÓRIO para aba "Resumo Visual"
+    MusicPlayerCard,              // 🔴 OBRIGATÓRIO para aba "Áudio Resumo"
     AulaProps,
     VideoModal
 } from './shared';
-// Ícones Lucide (use conforme necessário)
-import { LuCheck, LuBookOpen, LuZap, LuVideo, LuHeadphones, LuImage /* ... */ } from 'react-icons/lu';
+// Ícones Lucide — estes são os ícones padrão das 4 abas
+import {
+    LuPlayCircle,   // Aba "Vídeo Aula"
+    LuBookOpen,     // Aba "Resumo Visual"
+    LuBrain,        // Aba "Macete Visual"
+    LuMusic,        // Aba "Áudio Resumo"
+    LuCheck, LuZap, LuImage /* ...demais ícones conforme necessário */
+} from 'react-icons/lu';
 ```
 
 ---
@@ -152,74 +160,221 @@ Cada conceito é encapsulado em um card:
 ```tsx
 <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
     <ModuleSectionHeader index={1} title="Título da Seção" variant="indigo" />
-    {/* Conteúdo da seção */}
+    
+    <AlertBox tipo="info" titulo="Conceituação">
+        Textos introdutórios que conceituem **plenamente** o módulo devem ser inseridos logo após o título, antes de listar regras ou tabelas pesadas.
+    </AlertBox>
+
+    {/* Conteúdo específico da seção */}
 </section>
 ```
 
 > [!IMPORTANT]
+> - **`AlertBox` Introdutório:** É altamente recomendado (e muitas vezes obrigatório) conceituar todo o assunto usando um `AlertBox` (ou parágrafo bem definido) logo após o `ModuleSectionHeader`, antes de apresentar regras avulsas ou o `ContentAccordion`.
 > - **`ModuleSectionHeader`** é OBRIGATÓRIO para o título de toda seção. NUNCA use `<h2>` com badge manual.
 > - **Numeração REINICIA** em cada módulo (1, 2, 3... e não continua do módulo anterior).
 > - `variant` deve corresponder à cor do módulo (emerald, blue, indigo, violet, etc.).
 > - Espaçamento entre seções: `space-y-16` no `TabsContent`.
 > - Padding interno: `p-8 md:p-12`.
 
-### Passo 3: Resumo com `LessonTabs`
+### Passo 3: Card "Resumo e Multimídia" com `LessonTabs`
 
-**OBRIGATÓRIO ao final de cada módulo, ANTES do Quiz.** Substitui o antigo `CardCarousel` de resumo.
+**OBRIGATÓRIO ao final de cada módulo, ANTES do Quiz.** Este é o card que encapsula as 4 abas de multimídia.
+
+#### Estrutura do Container
+
+O card "Resumo e Multimídia" fica encapsulado em uma `<section>` com `ModuleSectionHeader` numerado sequencialmente:
 
 ```tsx
-<section className="space-y-16">
+<section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+    <ModuleSectionHeader index={N} title="Resumo e Multimídia" variant="indigo" />
+
     <LessonTabs
-        variant="indigo"       // Cor do módulo
-        title="Resumo: [Tema do Módulo]"
+        tabs={[
+            // ... 4 abas obrigatórias (detalhadas abaixo)
+        ]}
+    />
+</section>
+```
+
+> [!IMPORTANT]
+> - **OBRIGATÓRIO:** Use `<ModuleSectionHeader />` — NUNCA `<h2>` manual com badge.
+> - **Enumeração sequencial:** O `index` do card Resumo é o próximo número após a última seção de conteúdo do módulo. Ex: se o módulo tem seções 1, 2, 3 de conteúdo, o Resumo é `index={4}`.
+> - **A cor `variant`** deve corresponder à cor do módulo (emerald, blue, indigo, violet, amber, rose, etc.).
+
+#### As 4 Abas Obrigatórias (Blueprint Exato)
+
+##### Aba 1: Vídeo Aula (`LuPlayCircle`)
+
+```tsx
+{
+    id: 'video',
+    label: 'Vídeo Aula',
+    icon: LuPlayCircle,       // 🔴 SEMPRE LuPlayCircle (não LuVideo)
+    content: (
+        <div className="w-full flex flex-col items-center py-6">
+            <div className="w-full max-w-3xl">
+                <VideoModal
+                    videoId="ID_DO_VIDEO_YOUTUBE"
+                    title="Título Descritivo da Aula"
+                    duration="12:30"
+                    thumbnail="https://images.unsplash.com/photo-XXXXX"
+                />
+            </div>
+        </div>
+    )
+}
+```
+
+##### Aba 2: Resumo Visual (`LuBookOpen` + `ModuleSummaryCarouselNew`)
+
+```tsx
+{
+    id: 'resumo',
+    label: 'Resumo Visual',
+    icon: LuBookOpen,
+    content: (
+        <ModuleSummaryCarouselNew
+            images={[
+                { title: 'Mapa Mental: Tema X',        type: 'Mapa Mental',  placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
+                { title: 'Fluxograma: Tema Y',          type: 'Diagrama',     placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30' },
+                { title: 'Infográfico: Tema Z',          type: 'Infográfico',  placeholderColor: 'bg-amber-100 dark:bg-amber-900/30' },
+                { title: 'Card Resumo: Tema W',          type: 'Card',         placeholderColor: 'bg-purple-100 dark:bg-purple-900/30' },
+            ]}
+        />
+    )
+}
+```
+
+> [!IMPORTANT]
+> - Use `ModuleSummaryCarouselNew` — NUNCA um `CardCarousel` ou grid manual.
+> - Mínimo de **4 slides** por módulo.
+> - `placeholderColor` deve usar as cores temáticas do módulo (ex: `indigo`, `emerald`, `amber`).
+> - Os `type` devem variar entre: `'Mapa Mental'`, `'Diagrama'`, `'Infográfico'`, `'Card'`, `'Tabela'`.
+
+##### Aba 3: Macete Visual (`LuBrain`)
+
+```tsx
+{
+    id: 'visual',
+    label: 'Macete Visual',
+    icon: LuBrain,             // 🔴 SEMPRE LuBrain (não LuImage ou LuZap)
+    content: (
+        <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
+            <h3 className="text-xl font-bold text-foreground mb-4">Nome do Macete</h3>
+            <div className="text-7xl my-8 animate-bounce">🚧 🐑 🚧</div>
+            <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                Frase mnemônica impactante que ajude o aluno a memorizar a regra principal.
+            </p>
+        </div>
+    )
+}
+```
+
+> [!IMPORTANT]
+> - Use emojis grandes (`text-7xl`) com animação (`animate-bounce` ou `animate-pulse`).
+> - A frase deve ser curta, impactante e relacionada à regra principal do módulo.
+> - Fundo gradiente sutil com a cor temática do módulo.
+
+##### Aba 4: Áudio Resumo (`LuMusic` + `MusicPlayerCard`)
+
+```tsx
+{
+    id: 'audio',
+    label: 'Áudio Resumo',
+    icon: LuMusic,             // 🔴 SEMPRE LuMusic (não LuHeadphones)
+    content: (
+        <div className="w-full flex justify-center py-4">
+            <div className="w-full max-w-md">
+                <MusicPlayerCard
+                    audioUrl="#"
+                    titulo="Título da Música/Resumo"
+                    artista="Prof. André"
+                    capaUrl="https://images.unsplash.com/photo-XXXXX"
+                    lyrics={`(Verso 1)
+Frase que resume a regra de forma cantável e ritmada.
+Use rimas para facilitar a memorização.
+
+(Refrão)
+Resumo cantado da regra principal,
+Repetitivo e impactante, isso é fundamental!
+                    `}
+                />
+            </div>
+        </div>
+    )
+}
+```
+
+> [!IMPORTANT]
+> - Use `MusicPlayerCard` (estilo Spotify) — NUNCA `<audio>` nativo.
+> - A prop `lyrics` é **OBRIGATÓRIA** e deve conter uma letra cantável e ritmada.
+> - `capaUrl` deve ser uma imagem Unsplash relevante ao tema.
+> - `artista` deve ser sempre `"Prof. André"`.
+
+---
+
+#### Exemplo Completo (Padrão Concordância)
+
+```tsx
+<section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+    <ModuleSectionHeader index={6} title="Resumo e Multimídia" variant="indigo" />
+
+    <LessonTabs
         tabs={[
             {
-                id: 'video',
-                label: 'Vídeo Resumo',
-                icon: LuVideo,
+                id: 'video', label: 'Vídeo Aula', icon: LuPlayCircle,
                 content: (
-                    <div className="max-w-4xl mx-auto w-full px-4 text-center space-y-6">
-                        <div className="space-y-2">
-                            <h4 className="text-2xl font-bold">Revisão Estratégica</h4>
-                            <p className="text-muted-foreground">Assista à revisão em vídeo.</p>
-                        </div>
-                        <VideoModal videoId="ID" title="Título" duration="15 min" thumbnail="URL" />
-                    </div>
-                )
-            },
-            {
-                id: 'audio',
-                label: 'Áudio Revisão',
-                icon: LuHeadphones,
-                content: (
-                    <div className="max-w-2xl mx-auto w-full px-6 py-12 text-center space-y-8">
-                        <div className="space-y-3">
-                            <h4 className="text-2xl font-bold">Podcast do Aprovado</h4>
-                            <p className="text-muted-foreground">Ouça o resumo sempre que não puder ver a tela.</p>
-                        </div>
-                        <div className="bg-muted/50 p-8 rounded-3xl border border-border/50 shadow-inner">
-                            <audio src="#" controls className="w-full" />
+                    <div className="w-full flex flex-col items-center py-6">
+                        <div className="w-full max-w-3xl">
+                            <VideoModal videoId="9-n3Y_2n2sM" title="Concordância Verbal: O Guia Definitivo" duration="12:30" thumbnail="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1074&auto=format&fit=crop" />
                         </div>
                     </div>
                 )
             },
             {
-                id: 'visual',
-                label: 'Mapa Mental',
-                icon: LuImage,
+                id: 'resumo', label: 'Resumo Visual', icon: LuBookOpen,
                 content: (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
-                        {/* Placeholders visuais com aspect-[4/3] */}
+                    <ModuleSummaryCarouselNew
+                        images={[
+                            { title: 'Mapa Mental: Sujeito Composto', type: 'Mapa Mental', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
+                            { title: 'Fluxograma: Partícula SE', type: 'Diagrama', placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30' },
+                            { title: 'Infográfico: Verbos Impessoais', type: 'Infográfico', placeholderColor: 'bg-amber-100 dark:bg-amber-900/30' },
+                            { title: 'Card Resumo: VTD vs VTI', type: 'Card', placeholderColor: 'bg-purple-100 dark:bg-purple-900/30' },
+                        ]}
+                    />
+                )
+            },
+            {
+                id: 'visual', label: 'Macete Visual', icon: LuBrain,
+                content: (
+                    <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
+                        <h3 className="text-xl font-bold text-foreground mb-4">A Barreira da Preposição</h3>
+                        <div className="text-7xl my-8 animate-bounce">🚧 🐑 🚧</div>
+                        <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                            "Precisa-se <span className="text-red-500 font-bold">DE</span> funcionários." – O sujeito está isolado pela preposição (DE). O verbo não vê o plural!
+                        </p>
                     </div>
                 )
             },
             {
-                id: 'macete',
-                label: 'Macete',
-                icon: LuZap,
+                id: 'audio', label: 'Áudio Resumo', icon: LuMusic,
                 content: (
-                    <div className="max-w-3xl mx-auto p-12 text-center space-y-8 bg-gradient-to-br from-yellow-500/5 to-amber-500/5 rounded-[40px] border border-yellow-500/20">
-                        {/* Macete visual com ícone grande + texto destaque */}
+                    <div className="w-full flex justify-center py-4">
+                        <div className="w-full max-w-md">
+                            <MusicPlayerCard audioUrl="#" titulo="Resumo: Módulo 1" artista="Prof. André" capaUrl="https://images.unsplash.com/photo-1514525253440-b393452086ec?q=80&w=1000&auto=format&fit=crop"
+                                lyrics={`(Verso 1)
+O verbo procura o sujeito, pra ver com quem vai concordar.
+Se o sujeito tá no plural, o verbo não pode errar!
+
+(Refrão)
+É a concordância, concordância verbal
+Harmonia na frase, isso é fundamental!
+Se tem partícula SE, presta atenção
+Pode ser passiva ou indeterminação!
+                            `}
+                            />
+                        </div>
                     </div>
                 )
             }
@@ -227,11 +382,6 @@ Cada conceito é encapsulado em um card:
     />
 </section>
 ```
-
-> [!IMPORTANT]
-> - As 4 abas são **OBRIGATÓRIAS**: Vídeo, Áudio, Mapa Mental, Macete.
-> - A aba `macete` tem fundo temático com `rounded-[40px]` e ícone grande centralizado.
-> - No último módulo, use `variant="violet"` para o resumo final.
 
 ### Passo 4: Quiz Interativo
 
@@ -288,9 +438,9 @@ const QUIZ_MOD1_POOL: QuizQuestion[] = [
 
 ## 🧩 COMPONENTES DE CONTEÚDO E QUANDO USAR
 
-### `ContentAccordion` — Para Conteúdo Denso
+### `ContentAccordion` — Para Conteúdo Denso e Estruturado
 
-**Quando:** Explicar regras, flexões verbais, classificações com mais de 2 parágrafos.
+**Quando:** Explicar regras, flexões verbais, classificações mais densas.
 
 ```tsx
 <ContentAccordion 
@@ -305,14 +455,34 @@ const QUIZ_MOD1_POOL: QuizQuestion[] = [
             titulo: '1. Pessoa', 
             icone: '👤', 
             conteudo: (
-                <div className="space-y-4">
-                    <p className="text-muted-foreground">
-                        <strong>Conceito:</strong> Explicação clara e direta.
-                    </p>
-                    <div className="bg-emerald-500/10 p-5 rounded-xl border border-emerald-500/20 text-sm space-y-2">
-                        {/* Exemplos práticos com frases */}
-                    </div>
-                </div>
+                <CardCarousel 
+                    titulo="" 
+                    itemsPerView={2}
+                    cards={[
+                        {
+                            icone: <LuBookOpen />,
+                            titulo: 'Conceituação',
+                            descricao: 'A pessoa verbal indica quem fala, com quem se fala ou de quem se fala.'
+                        },
+                        {
+                            icone: <LuCheck className="text-emerald-500" />,
+                            titulo: 'Exemplificação',
+                            descricao: (
+                                <div className="space-y-2 text-sm mt-2">
+                                    <p>1ª Pessoa: <strong>Eu</strong> estudo (quem fala).</p>
+                                    <p>2ª Pessoa: <strong>Tu</strong> estudas (com quem se fala).</p>
+                                </div>
+                            ),
+                            corFundo: 'bg-emerald-500/10'
+                        },
+                        {
+                            icone: <LuZap className="text-amber-500" />,
+                            titulo: 'Dicas / Exceções',
+                            descricao: 'Lembre-se: O tratamento "Você" conjuga-se na 3ª pessoa do singular, embora se refira à 2ª pessoa do discurso.',
+                            corFundo: 'bg-amber-500/10'
+                        }
+                    ]} 
+                />
             )
         },
         // ... mais slides
@@ -322,7 +492,8 @@ const QUIZ_MOD1_POOL: QuizQuestion[] = [
 
 > [!IMPORTANT]
 > - Use `mode="stacked"` para conteúdo que precisa ser lido sequencialmente (regras, classificações).
-> - Cada slide DEVE ter exemplo prático em frase. Teoria pura é PROIBIDO.
+> - **CardCarousel Interno OBRIGATÓRIO:** O conteúdo interno de cada slide (item do acordeão) DEVE utilizar um `CardCarousel` para destrinchar as nuances do assunto (Conceituação, Exemplificação, Dicas, Exceções). Isso evita blocos de texto maciços e melhora a absorção.
+> - **Limite de Visibilidade:** Defina obrigatoriamente `itemsPerView={2}` nos carrosséis internos para não amassar o layout (jamais use 3 ou mais em locais embutidos).
 > - `corIndicador` deve seguir a cor temática do módulo.
 
 ### `CardCarousel` — Para Listas de Regras/Casos
@@ -352,6 +523,7 @@ const QUIZ_MOD1_POOL: QuizQuestion[] = [
 
 > [!IMPORTANT]
 > - `descricao` pode ser `string` ou `ReactNode` (JSX rico).
+> - **Itens Visíveis:** Prefira o uso de `itemsPerView={1}` ou `itemsPerView={2}` no máximo, garantindo legibilidade nos cards, especialmente se contiverem muito texto.
 > - Use `itemsPerView={2}` ou `itemsPerView={3}` para controlar quantos cards visíveis.
 > - Dentro do carousel, use ícones Lucide com cor semântica (emerald = positivo, rose = negativo, etc.).
 
@@ -497,7 +669,9 @@ Antes de considerar a aula pronta, verifique:
 - [ ] `StickyModuleNav` no topo (duas linhas, espaçoso)
 - [ ] `ModuleBanner` em cada `TabsContent`
 - [ ] `ModuleSectionHeader` em toda seção (numeração reiniciada por módulo)
-- [ ] `LessonTabs` (4 abas: Vídeo, Áudio, Mapa, Macete) antes do Quiz em cada módulo
+- [ ] Card "Resumo e Multimídia" com `LessonTabs` (4 abas: Vídeo Aula, Resumo Visual, Macete Visual, Áudio Resumo) antes do Quiz em cada módulo
+- [ ] Aba Resumo Visual usa `ModuleSummaryCarouselNew` com mínimo 4 slides
+- [ ] Aba Áudio Resumo usa `MusicPlayerCard` com `lyrics` obrigatórias
 - [ ] `QuizInterativo` com `numero={N}` ao final de cada módulo
 - [ ] Badge de conclusão no topo (condicional)
 
@@ -571,7 +745,9 @@ const CONJ_SLIDES = [
 | Abreviaturas (VTD, OD, etc.) | Confunde aluno iniciante | Escreva por extenso |
 | Quiz sobre conceito não ensinado | Frustra o aluno | Coerência pedagógica total |
 | Numeral continuando entre módulos | Confusão de referência | Numeração reinicia em cada módulo |
-| `CardCarousel` nos resumos | Substituído por sistema de abas | `LessonTabs` com 4 abas |
+| `CardCarousel` nos resumos | Substituído por sistema de abas | `LessonTabs` com `ModuleSummaryCarouselNew` + `MusicPlayerCard` |
+| `<audio>` nativo | Substituído por player Spotify-style | `MusicPlayerCard` com `lyrics` |
+| `LuVideo` / `LuHeadphones` nos tabs | Ícones errados | Use `LuPlayCircle`, `LuBookOpen`, `LuBrain`, `LuMusic` |
 | Layout compacto no sticky nav | Prejudica legibilidade | 2 linhas, `py-3`, fontes grandes |
 | Cores claras sem `dark:` | Invisível no modo claro | Variar com `dark:text-gray-300` etc. |
 | Nome "Petrobras Quest" em branding | Descontinuado | Use **"A Vaga É Minha"** |
@@ -583,7 +759,7 @@ const CONJ_SLIDES = [
 ### Componentes
 
 1. **`ModuleSectionHeader`** — Criado e padronizado. Substitui todo `<h2>` manual com badge numérico. Props: `index`, `title`, `variant`.
-2. **`LessonTabs`** — Criado para substituir `CardCarousel` nos resumos. Sistema de 4 abas (Vídeo, Áudio, Mapa Mental, Macete) com variante de cor.
+2. **`LessonTabs`** — Card "Resumo e Multimídia" com 4 abas: Vídeo Aula (`LuPlayCircle` + `VideoModal`), Resumo Visual (`LuBookOpen` + `ModuleSummaryCarouselNew`), Macete Visual (`LuBrain` + conteúdo animado), Áudio Resumo (`LuMusic` + `MusicPlayerCard` com letras).
 3. **`ContentAccordion mode="stacked"`** — Modo empilhado adicionado para conteúdo sequencial (flexões verbais, classificações).
 4. **`StickyModuleNav`** — Restaurado para duas linhas com altura generosa. NUNCA compactar.
 5. **`FlipCard`** — Tons de cinza suavizados no modo light (~50% mais leve).

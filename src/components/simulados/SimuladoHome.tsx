@@ -58,7 +58,9 @@ export default function SimuladoHome({ usuario, iniciarSimulado, gerandoQuestoes
             });
         }
 
-        if (profissao?.nivel === 'superior') {
+        const isSuperior = usuario?.nivelConcurso === 'superior' || (!usuario?.nivelConcurso && profissao?.nivel === 'superior');
+
+        if (isSuperior) {
             materiasVisiveis.push({
                 id: 'ingles',
                 nome: 'Língua Inglesa',

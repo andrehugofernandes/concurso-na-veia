@@ -18,6 +18,7 @@ import {
     Activity,
     SummaryTabs,
     MusicPlayerCard,
+    QuizQuestion
 } from './shared';
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
@@ -164,6 +165,72 @@ const QUIZ_PRATICO_POOL = [
     }
 ];
 
+const QUIZ_APROFUNDAMENTO_POOL: QuizQuestion[] = [
+    {
+        id: 401,
+        pergunta: "Na frase 'Eles preferem o presencial; nós, o remoto.', ocorre qual tipo de mecanismo coesivo?",
+        opcoes: [
+            { label: 'A', valor: "Catáfora pronominal" },
+            { label: 'B', valor: "Zêugma (elipse de um termo já mencionado)" },
+            { label: 'C', valor: "Sinonímia perfeita" },
+            { label: 'D', valor: "Hiperonímia" },
+        ],
+        correta: 'B',
+        explicacao: "A vírgula após 'nós' indica a omissão do verbo 'preferimos', que já apareceu anteriormente na frase. Isso é um Zêugma.",
+    },
+    {
+        id: 402,
+        pergunta: "Qual o valor semântico do conectivo 'CONQUANTO'?",
+        opcoes: [
+            { label: 'A', valor: "Causa" },
+            { label: 'B', valor: "Consequência" },
+            { label: 'C', valor: "Concessão (oposição leve que não anula a principal)" },
+            { label: 'D', valor: "Conclusão" },
+        ],
+        correta: 'C',
+        explicacao: "'Conquanto' é uma conjunção subordinativa concessiva, equivalente a 'embora' ou 'ainda que'.",
+    },
+    {
+        id: 403,
+        pergunta: "O que caracteriza a coesão por 'Nominalização'?",
+        opcoes: [
+            { label: 'A', valor: "O uso de adjetivos explicativos." },
+            { label: 'B', valor: "A transformação de um processo verbal em um nome (substantivo)." },
+            { label: 'C', valor: "A repetição de nomes próprios." },
+            { label: 'D', valor: "O uso de cognomes." },
+        ],
+        correta: 'B',
+        explicacao: "Nominalização é quando usamos um substantivo para retomar uma ação verbal anterior. Ex: 'O navio atracou. A atracação foi rápida.'",
+    }
+];
+
+const QUIZ_FINAL_POOL: QuizQuestion[] = [
+    {
+        id: 501,
+        pergunta: "Questão Cesgranrio: Em um texto, a coerência pode ser prejudicada se houver contradição entre:",
+        opcoes: [
+            { label: 'A', valor: "O título e a imagem apenas." },
+            { label: 'B', valor: "O que é dito e o conhecimento de mundo do leitor (incoerência externa)." },
+            { label: 'C', valor: "O uso de próclise e ênclise." },
+            { label: 'D', valor: "A fonte do texto e a data de publicação." },
+        ],
+        correta: 'B',
+        explicacao: "A coerência externa depende da relação lógica entre as informações do texto e a realidade compartilhada.",
+    },
+    {
+        id: 502,
+        pergunta: "Na frase 'As equipes de segurança da Petrobras já iniciaram o protocolo. O procedimento é padrão.', o termo 'O procedimento' retoma a ideia anterior através de:",
+        opcoes: [
+            { label: 'A', valor: "Substituição por Hiperônimo" },
+            { label: 'B', valor: "Nome Genérico / Palavra-Sumário" },
+            { label: 'C', valor: "Anáfora pronominal" },
+            { label: 'D', valor: "Catáfora textual" },
+        ],
+        correta: 'B',
+        explicacao: "A palavra 'procedimento' funciona como uma palavra-sumário que 'resume' a ação anterior (iniciar o protocolo).",
+    }
+];
+
 // --- COMPONENTES AUXILIARES ---
 
 const CONCEPT_EXAMPLES = [
@@ -208,6 +275,8 @@ const MODULE_DEFS = [
     { id: 'modulo-1', label: 'Módulo 1', titulo: 'Coesão Textual' },
     { id: 'modulo-2', label: 'Módulo 2', titulo: 'Coerência Lógica' },
     { id: 'modulo-3', label: 'Módulo 3', titulo: 'Prática e Análise' },
+    { id: 'modulo-4', label: 'Módulo 4', titulo: 'Aprofundamento' },
+    { id: 'modulo-5', label: 'Módulo 5', titulo: 'Laboratório Final' },
 ];
 
 export default function AulaCoesaoCoerencia({
@@ -221,25 +290,36 @@ export default function AulaCoesaoCoerencia({
     const [activeTab, setActiveTab] = useState('modulo-1');
     const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
     const [challengeIndex, setChallengeIndex] = useState(0);
-    const [currentExample, setCurrentExample] = useState(CONCEPT_EXAMPLES[0]);
     const [showCompletionBadge, setShowCompletionBadge] = useState(false);
 
-    // Progress logic
+    // Load progress
     useEffect(() => {
+        const saved = localStorage.getItem('aula_coesao_progress');
+        if (saved) {
+            const parsed = JSON.parse(saved);
+            if (parsed.completedModules) setCompletedModules(new Set(parsed.completedModules));
+        }
         if (currentProgress >= 100 || isLessonCompleted) setShowCompletionBadge(true);
     }, [currentProgress, isLessonCompleted]);
-    const progress = useMemo(() => {
-        return (completedModules.size / MODULE_DEFS.length) * 100;
-    }, [completedModules]);
 
-    const handleModule1Complete = (score: number) => {
-        if (score >= 70) setCompletedModules(prev => new Set(prev).add('modulo-1'));
-    };
-    const handleModule2Complete = (score: number) => {
-        if (score >= 70) setCompletedModules(prev => new Set(prev).add('modulo-2'));
+    const handleModuleComplete = (moduleId: string, score: number) => {
+        if (score >= 70) {
+            const newSet = new Set(completedModules).add(moduleId);
+            setCompletedModules(newSet);
+            localStorage.setItem('aula_coesao_progress', JSON.stringify({ completedModules: Array.from(newSet) }));
+
+            const index = MODULE_DEFS.findIndex(m => m.id === moduleId);
+            if (index < MODULE_DEFS.length - 1) {
+                setActiveTab(MODULE_DEFS[index + 1].id);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                onComplete?.();
+            }
+        }
     };
 
     const isModuleUnlocked = (index: number) => {
+        if (isLessonCompleted) return true;
         if (index === 0) return true;
         return completedModules.has(MODULE_DEFS[index - 1].id);
     };
@@ -248,6 +328,8 @@ export default function AulaCoesaoCoerencia({
     const [quizCoesaoQuestions] = useState(() => [...QUIZ_COESAO_POOL].sort(() => Math.random() - 0.5).slice(0, 4));
     const [quizCoerenciaQuestions] = useState(() => [...QUIZ_COERENCIA_POOL].sort(() => Math.random() - 0.5).slice(0, 4));
     const [quizPraticoQuestions] = useState(() => [...QUIZ_PRATICO_POOL].sort(() => Math.random() - 0.5).slice(0, 4));
+    const [quizAprofundamentoQuestions] = useState(() => [...QUIZ_APROFUNDAMENTO_POOL].sort(() => Math.random() - 0.5).slice(0, 4));
+    const [quizFinalQuestions] = useState(() => [...QUIZ_FINAL_POOL].sort(() => Math.random() - 0.5).slice(0, 4));
 
     const CHALLENGES = [
         {
@@ -306,7 +388,7 @@ export default function AulaCoesaoCoerencia({
 
                             <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
                                 <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-                                    <span className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl font-black text-primary border border-primary/20 shadow-inner">1</span>
+                                    <span className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-3xl font-black text-primary border border-primary/20 shadow-inner">1</span>
                                     Coesão Referencial
                                 </h2>
 
@@ -437,7 +519,7 @@ export default function AulaCoesaoCoerencia({
                             {/* 1.2 Coesão Sequencial */}
                             <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
                                 <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-                                    <span className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl font-black text-primary border border-primary/20 shadow-inner">2</span>
+                                    <span className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-3xl font-black text-primary border border-primary/20 shadow-inner">2</span>
                                     Coesão Sequencial
                                 </h2>
                                 <p className="text-xl md:text-2xl text-muted-foreground font-medium italic border-l-4 border-primary/30 pl-8 py-3 max-w-4xl">
@@ -471,7 +553,7 @@ export default function AulaCoesaoCoerencia({
 
                             <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
                                 <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-                                    <span className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl font-black text-indigo-700 border border-indigo-500/20 shadow-inner">3</span>
+                                    <span className="w-14 h-14 rounded-full bg-indigo-500/10 flex items-center justify-center text-3xl font-black text-indigo-700 border border-indigo-500/20 shadow-inner">3</span>
                                     Resumo e Multimedia
                                 </h2>
 
@@ -571,10 +653,10 @@ export default function AulaCoesaoCoerencia({
                             <section id="quiz-modulo-1" className="pt-8">
                                 <QuizInterativo
                                     questoes={quizCoesaoQuestions}
-                                    titulo="Desafio: Coesão Textual"
+                                    titulo="Quizz: Coesão Textual"
                                     icone="💬"
-                                    numero={5}
-                                    onComplete={handleModule1Complete}
+                                    numero={4}
+                                    onComplete={(score) => handleModuleComplete('modulo-1', score)}
                                 />
                             </section>
                         </div>
@@ -696,7 +778,7 @@ export default function AulaCoesaoCoerencia({
 
                             <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
                                 <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-                                    <span className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-3xl font-black text-emerald-700 border border-emerald-500/20 shadow-inner">2</span>
+                                    <span className="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center text-3xl font-black text-emerald-700 border border-emerald-500/20 shadow-inner">2</span>
                                     Resumo e Multimedia
                                 </h2>
 
@@ -796,7 +878,7 @@ export default function AulaCoesaoCoerencia({
                                     titulo="Desafio: Coerência Lógica"
                                     icone="🧠"
                                     numero={4}
-                                    onComplete={handleModule2Complete}
+                                    onComplete={(score) => handleModuleComplete('modulo-2', score)}
                                 />
                             </section>
                         </div>
@@ -859,7 +941,7 @@ export default function AulaCoesaoCoerencia({
 
                             <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
                                 <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-                                    <span className="w-14 h-14 rounded-2xl bg-violet-500/10 flex items-center justify-center text-3xl font-black text-violet-700 border border-violet-500/20 shadow-inner">2</span>
+                                    <span className="w-14 h-14 rounded-full bg-violet-500/10 flex items-center justify-center text-3xl font-black text-violet-700 border border-violet-500/20 shadow-inner">2</span>
                                     Resumo e Multimedia
                                 </h2>
 
@@ -943,25 +1025,149 @@ export default function AulaCoesaoCoerencia({
                                 />
                             </section>
 
-                            {/* QUIZ FINAL */}
-                            <section id="quiz-final" className="pt-8">
+                            {/* QUIZ FINAL Módulo 3 */}
+                            <section id="quiz-final-m3" className="pt-8">
                                 <QuizInterativo
                                     questoes={quizPraticoQuestions}
-                                    titulo="Simulado Técnico Petrobras"
+                                    titulo="Simulado Técnico"
                                     icone="🏆"
                                     numero={3}
-                                    onComplete={(score) => {
-                                        if (score >= 70) {
-                                            localStorage.setItem('coesao-completed', 'true');
-                                            onComplete?.();
-                                        }
-                                    }}
+                                    onComplete={(score) => handleModuleComplete('modulo-3', score)}
                                 />
                             </section>
                         </div>
                     </Activity >
+
+                    {/* --- MÓDULO 4: APROFUNDAMENTO --- */}
+                    <Activity mode={activeTab === 'modulo-4' ? 'visible' : 'hidden'}>
+                        <div className={`space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500 ${activeTab !== 'modulo-4' ? 'hidden' : ''}`}>
+                            <ModuleBanner
+                                numero={4}
+                                titulo="Mecanismos de Elite"
+                                descricao="Diferenças sutis entre elipse e zêugma e o poder argumentativo dos conectivos concessivos."
+                                gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
+                            />
+
+                            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
+                                <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                    <span className="w-14 h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center text-3xl font-black text-amber-600 border border-amber-500/20 shadow-inner">1</span>
+                                    O Poder da Concessão
+                                </h2>
+
+                                <ContentAccordion
+                                    titulo="Concessão vs Oposição"
+                                    icone="⚖️"
+                                    corIndicador="bg-amber-500"
+                                    defaultOpen={true}
+                                    slides={[
+                                        {
+                                            titulo: "Embora vs Mas",
+                                            icone: "1️⃣",
+                                            conteudo: (
+                                                <div className="space-y-4">
+                                                    <p className="text-muted-foreground">A **Oposição** (Mas, Porém) derruba o argumento anterior. A **Concessão** (Embora, Conquanto) admite um obstáculo que não é forte o suficiente para impedir a ação principal.</p>
+                                                    <div className="bg-muted/50 p-4 rounded-xl italic">
+                                                        "<strong>Embora</strong> o duto estivesse velho, ele suportou a pressão." (A pressão foi suportada, apesar do duto).
+                                                    </div>
+                                                </div>
+                                            )
+                                        },
+                                        {
+                                            titulo: "Conquanto e Posto que",
+                                            icone: "2️⃣",
+                                            conteudo: (
+                                                <div className="space-y-4">
+                                                    <p className="text-muted-foreground">Termos adorados pela Cesgranrio pela sua formalidade. Ambos pedem o verbo no modo **Subjuntivo**.</p>
+                                                    <AlertBox tipo="warning" titulo="Aviso Grammático">Cuidado! Algumas pessoas usam 'posto que' como causa, mas na norma culta é concessivo.</AlertBox>
+                                                </div>
+                                            )
+                                        }
+                                    ]}
+                                />
+                            </section>
+
+                            <QuizInterativo
+                                questoes={quizAprofundamentoQuestions}
+                                titulo="Desafio de Elite"
+                                icone="🎖️"
+                                numero={2}
+                                onComplete={(score) => handleModuleComplete('modulo-4', score)}
+                            />
+                        </div>
+                    </Activity>
+
+                    {/* --- MÓDULO 5: LABORATÓRIO FINAL --- */}
+                    <Activity mode={activeTab === 'modulo-5' ? 'visible' : 'hidden'}>
+                        <div className={`space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500 ${activeTab !== 'modulo-5' ? 'hidden' : ''}`}>
+                            <ModuleBanner
+                                numero={5}
+                                titulo="Laboratório Final"
+                                descricao="Sintetize tudo e prepare-se para gabaritar a prova da Cesgranrio."
+                                gradiente="bg-gradient-to-br from-slate-600 via-slate-700 to-slate-800"
+                            />
+
+                            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
+                                <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
+                                    <span className="w-14 h-14 rounded-2xl bg-slate-500/10 flex items-center justify-center text-3xl font-black text-slate-600 border border-slate-500/20 shadow-inner">1</span>
+                                    Sua Bússola de Revisão
+                                </h2>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div className="p-6 bg-background rounded-2xl border border-border shadow-sm">
+                                        <LuCheck className="text-emerald-500 mb-4" size={32} />
+                                        <h4 className="font-bold mb-2">Check de Coesão</h4>
+                                        <p className="text-sm text-muted-foreground">Troque o 'mas' por 'porém' ou 'entretanto' para validar o sentido.</p>
+                                    </div>
+                                    <div className="p-6 bg-background rounded-2xl border border-border shadow-sm">
+                                        <LuCheck className="text-emerald-500 mb-4" size={32} />
+                                        <h4 className="font-bold mb-2">Check de Coerência</h4>
+                                        <p className="text-sm text-muted-foreground">Existe contradição entre os parágrafos?</p>
+                                    </div>
+                                    <div className="p-6 bg-background rounded-2xl border border-border shadow-sm">
+                                        <LuCheck className="text-emerald-500 mb-4" size={32} />
+                                        <h4 className="font-bold mb-2">Check de Referência</h4>
+                                        <p className="text-sm text-muted-foreground">Os pronomes apontam para o lugar certo?</p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <QuizInterativo
+                                questoes={quizFinalQuestions}
+                                titulo="Simulado de Gabarito"
+                                icone="🏆"
+                                numero={2}
+                                onComplete={(score) => handleModuleComplete('modulo-5', score)}
+                            />
+
+                            {/* CARD DE CONCLUSÃO MANUAL */}
+                            <section className="mt-12 mb-8">
+                                <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/10 dark:to-teal-900/5 border border-emerald-100 dark:border-emerald-800/30 rounded-2xl p-10 text-center space-y-6 shadow-sm max-w-4xl mx-auto">
+                                    <div className="space-y-3">
+                                        <h3 className="text-2xl font-bold flex items-center justify-center gap-3 text-foreground">
+                                            <LuBookOpen className="text-emerald-500 text-3xl" /> Missão Cumprida
+                                        </h3>
+                                        <p className="text-muted-foreground text-lg">
+                                            Você concluiu todos os módulos de Coesão e Coerência!
+                                        </p>
+                                    </div>
+
+                                    <Button
+                                        size="lg"
+                                        onClick={() => {
+                                            setShowCompletionBadge(true);
+                                            onComplete?.();
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                        }}
+                                        className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white border-0 font-bold text-lg px-10 py-8 rounded-full shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/30 hover:scale-105 active:scale-95 transition-all"
+                                    >
+                                        Marcar como Concluída
+                                    </Button>
+                                </div>
+                            </section>
+                        </div>
+                    </Activity>
                 </main>
-            </Tabs >
-        </div >
+            </Tabs>
+        </div>
     );
 }

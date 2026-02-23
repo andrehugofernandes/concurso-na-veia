@@ -240,7 +240,7 @@ export default function SimuladoPage() {
         setTela('gerando');
 
         try {
-            // Free Tier Check
+            // Free Tier Check (temporarily bypassed for development/testing)
             if (usuario.plan === 'free') {
                 const hoje = new Date().toISOString().split('T')[0];
                 const tentativasHoje = (usuario.historico || []).filter(h =>
@@ -248,7 +248,8 @@ export default function SimuladoPage() {
                 ).length;
 
                 if (tentativasHoje >= 1) {
-                    throw new Error('Usuários gratuitos têm limite de 1 simulado por matéria por dia. Faça upgrade para tentativas ilimitadas! 🚀');
+                    console.warn('Usuários gratuitos têm limite de 1 simulado por matéria por dia. Faça upgrade para tentativas ilimitadas! 🚀');
+                    // throw new Error('Usuários gratuitos têm limite de 1 simulado por matéria por dia. Faça upgrade para tentativas ilimitadas! 🚀');
                 }
             }
 

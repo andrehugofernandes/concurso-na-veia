@@ -36,8 +36,8 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'regencia', titulo: 'Regência Verbal e Nominal', descricao: 'Uso correto das preposições', duracao: '35 min', ordem: 7 },
             { id: 'sintaxe', titulo: 'Sintaxe', descricao: 'Análise sintática e estrutura das orações', duracao: '45 min', ordem: 8 },
             { id: 'classes-palavras', titulo: 'Classes de Palavras', descricao: 'As 10 classes gramaticais: Verbo, Substantivo, Pronome, Adjetivo, Conjunção, Preposição, Advérbio, Artigo, Numeral e Interjeição', duracao: '60 min', ordem: 9 },
-            { id: 'tipos-textuais', titulo: 'Tipos Textuais', descricao: 'Narração, descrição e dissertação', duracao: '30 min', ordem: 10 },
-            { id: 'ortografia', titulo: 'Ortografia e Acentuação', descricao: 'Regras do novo acordo ortográfico', duracao: '30 min', ordem: 11 },
+            { id: 'tipos-textuais', titulo: 'Tipos Textuais', descricao: 'Aprenda Tipologia: Narração, Descrição, Injunção e Dissertação', duracao: '50 min', ordem: 10 },
+            { id: 'ortografia', titulo: 'Ortografia e Acentuação', descricao: 'Hífen, Expressões Problemáticas, Novo Acordo e Acentuação', duracao: '50 min', ordem: 11 },
         ]
     },
     {

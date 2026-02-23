@@ -1,28 +1,28 @@
-# 🎨 PROMPTS PARA GERAÇÃO DE IMAGENS
+# 🎨 PROMPTS PARA GERAÇÃO DE IMAGENS - PADRÃO "A VAGA É MINHA"
 
-Use estes templates para gerar imagens educacionais com **Nano Imagen**, **DALL-E**, **Midjourney** ou similar.
+Use estes templates para gerar imagens educacionais com **Nano Imagen**, **DALL-E**, **Midjourney** ou similar. O estilo segue o padrão **Modern Light Premium**.
 
 ---
 
-## 📋 TEMPLATE GENÉRICO
+## 📋 TEMPLATE GENÉRICO (MODERN LIGHT)
 
 ```
 [Copie e adapte este template]
 
 TIPO DE IMAGEM: [Infográfico / Ilustração / Diagrama / Mapa Mental / Card]
+TEMA DE COR (SKIN): [Emerald / Indigo / Rose / Amber / Slate]
 
 DESCRIÇÃO:
-Crie um(a) [tipo] educacional moderno e profissional sobre [conceito específico] para um curso EAD de português preparatório para concursos.
+Crie um(a) [tipo] educacional premium e profissional sobre [conceito específico] para o sistema EAD "A Vaga é Minha".
 
-ESTILO VISUAL:
-- Estilo: Flat design minimalista e colorido
-- Paleta de cores: 
-  * Primária: Roxo (#667eea)
-  * Secundária: Roxo profundo (#764ba2)
-  * Destaque: Laranja suave (#f6ad55)
-  * Fundo: Branco ou gradiente roxo suave
-- Tipografia: Sans-serif moderna, clean, legível (tipo Poppins ou Inter)
-- Mood: Profissional mas acessível, convidativo, educacional
+ESTILO VISUAL (MODERN LIGHT THEME):
+- Fundo: Branco (#ffffff) ou Azul Glacial ultra-leve (#f8faff) com padrão sutil de rede geométrica ao fundo.
+- Cabeçalho (Header): Faixa superior sólida ocupando 10% da altura. 
+  * Cor: [Cor da Skin escolhida - ex: Indigo #4f46e5]
+  * Texto: TÍTULO EM BRANCO, Fonte Inter Bold, centralizado.
+- Elementos: Cards brancos com cantos arredondados (16px), borda fina de 1px (#e2e8f0) e sombra "drop shadow" muito sutil.
+- Tipografia: Sans-serif premium (Inter, Roboto ou Poppins). Títulos em Bold, corpo em Regular.
+- Conectores/Setas: Linhas curvas finas e elegantes.
 
 ELEMENTOS OBRIGATÓRIOS:
 - [Liste todos elementos visuais]
@@ -35,16 +35,18 @@ LAYOUT:
 - Orientação: [Horizontal / Vertical / Quadrado]
 - Composição: [Centralizada / Grid / Assimétrica]
 
+RODAPÉ (OBRIGATÓRIO):
+- Faixa branca limpa na base da imagem.
+- Texto no canto inferior direito: "Gerada por IA via nosso SAAS A VAGA É MINHA" (Fonte Small, Cinza #94a3b8).
+
 CONTEXTO DE USO:
-Esta imagem será usada em uma aula EAD sobre [tópico] para candidatos ao concurso Petrobras estudando Língua Portuguesa.
+Esta imagem será usada em uma aula EAD de alto impacto para candidatos ao concurso Petrobras 2026.
 
 EVITE:
-- Textos muito pequenos (mínimo 24pt para legibilidade)
-- Excesso de informação visual
-- Cores muito escuras ou muito vibrantes
-- Elementos infantis ou clipart genérico
-- Stock photos de banco de imagens
-- Mais de 3 cores principais
+- Tema Dark ou fundos pretos/roxos escuros.
+- Textos excessivos ou ilegíveis.
+- Cores neon ou gradients agressivos no corpo da imagem.
+- Elementos infantis ou clipart genérico.
 
 REFERÊNCIA DE ESTILO:
 Design educacional moderno inspirado em: Duolingo, Khan Academy, Coursera
@@ -61,52 +63,31 @@ QUALIDADE:
 ### 1️⃣ INFOGRÁFICO - REGRAS GRAMATICAIS
 
 ```
-TIPO: Infográfico educacional
+TIPO: Infográfico educacional (Modern Light)
+SKIN: [Escolha: Emerald/Indigo/Rose/Amber]
 
 DESCRIÇÃO:
-Crie um infográfico vertical mostrando as 5 principais regras de [TÓPICO GRAMATICAL] em português.
+Crie um infográfico vertical mostrando as regras de [TÓPICO] com estilo limpo e profissional.
 
 ESTILO VISUAL:
-- Flat design clean
-- Paleta: Gradiente roxo (#667eea → #764ba2) no fundo, cards brancos com sombra suave
-- Tipografia: Títulos em Poppins Bold, corpo em Poppins Regular
-- Ícones: Estilo line icons minimalistas
+- Header: Faixa na cor da SKIN com título "[NOME DO TÓPICO] - Regras Essenciais" em branco.
+- Fundo: Branco puro com padrão "dot grid" sutil.
+- Cards: Retângulos brancos com bordas suaves e ícones coloridos.
 
 ELEMENTOS OBRIGATÓRIOS:
-- Título no topo: "[NOME DO TÓPICO] - 5 Regras Essenciais"
-- 5 cards empilhados verticalmente, cada um contendo:
-  * Número grande destacado (1, 2, 3, 4, 5)
-  * Nome da regra em negrito (máx 8 palavras)
-  * Ícone ilustrativo relacionado
-  * Exemplo curto em itálico
-  * Símbolo de check (✓) ou X para certo/errado
-- Rodapé: Logo pequeno "Petrobras Quest"
+- 5 seções numeradas, cada uma com:
+  * Ícone minimalista relacionado à regra.
+  * Texto da regra em Inter SemiBold (Cinza escuro #1e293b).
+  * Exemplo curto em itálico com checkmark verde (✓).
+- Rodapé: "Gerada por IA via nosso SAAS A VAGA É MINHA" no canto inferior direito.
 
 LAYOUT:
-- Formato: Vertical (1080x1920px) - ideal para mobile
-- Composição: Cards empilhados com espaçamento uniforme de 40px
-- Margem: 80px nas laterais
+- Formato: Vertical (1080x1920px).
+- Composição: Hierarquia clara de cima para baixo.
 
-EXEMPLO ESPECÍFICO - CONCORDÂNCIA VERBAL:
-
-Card 1:
-Número: 1
-Regra: "Sujeito simples concorda em número"
-Ícone: Pessoa única
-Exemplo: "O técnico trabalha na plataforma" ✓
-
-Card 2:
-Número: 2
-Regra: "Sujeito composto vai para o plural"
-Ícone: Grupo de pessoas
-Exemplo: "João e Maria trabalham" ✓
-
-[Continue para 5 cards]
-
-EVITE:
-- Texto menor que 32px
-- Mais de 15 palavras por card
-- Cores não complementares
+EXEMPLO ESPECÍFICO - CONCORDÂNCIA VERBAL (SKIN: EMERALD):
+- Header: Verde Esmeralda (#10b981).
+- Card 1: "Sujeito simples concorda em número". Ex: "O técnico trabalha" ✓.
 ```
 
 **Resultado esperado**: Infográfico compartilhável, educativo e visualmente atraente.
@@ -116,38 +97,27 @@ EVITE:
 ### 2️⃣ MAPA MENTAL - CONCEITOS INTERLIGADOS
 
 ```
-TIPO: Mapa Mental
+TIPO: Mapa Mental (Modern Light)
+SKIN: [Indigo / Emerald / Rose / Amber]
 
 DESCRIÇÃO:
-Crie um mapa mental colorido mostrando a hierarquia de conceitos sobre [TÓPICO].
+Crie um mapa mental limpo com hierarquia centralizada sobre [TÓPICO].
 
 ESTILO VISUAL:
-- Estilo: Diagrama radial moderno
-- Cores: Cada ramificação principal tem uma cor (roxo, laranja, verde, azul)
-- Conexões: Linhas curvas orgânicas
-- Nós: Círculos ou retângulos arredondados
+- Header: Faixa no topo com cor da SKIN e título "MAPA MENTAL: [TÓPICO]" em branco.
+- Fundo: Azul glacial ultra-leve (#f1f5f9) com conexões neurais sutis desenhadas ao fundo.
+- Centro: Círculo com borda dupla na cor da SKIN, ícone centralizado e texto "CONCEITO CHAVE".
+- Ramificações: Linhas curvas e suaves conectando a caixas de texto flutuantes.
 
 ELEMENTOS OBRIGATÓRIOS:
-- Centro: Conceito principal em círculo grande (150px diâmetro)
-  * Texto: "[TÓPICO PRINCIPAL]"
-  * Cor de fundo: Gradiente roxo
-  * Ícone central relacionado
-  
-- Ramificações de 1º nível (4-6 ramos):
-  * Círculos médios (100px diâmetro)
-  * Conectados ao centro por linhas grossas (8px)
-  * Cada um com cor diferente
-  
-- Ramificações de 2º nível (2-4 por ramo principal):
-  * Retângulos pequenos (80x40px)
-  * Conectados por linhas finas (4px)
-  * Mesma cor do ramo pai, tom mais claro
+- Nós de 1º Nível: Boxes brancos com bordas coloridas (na cor da skin).
+- Sub-pontos: Texto limpo com pequenos ícones lineares.
+- Rodapé: "Gerada por IA via nosso SAAS A VAGA É MINHA".
 
 LAYOUT:
-- Formato: Quadrado (1200x1200px)
-- Composição: Radial centralizada
-- Espaçamento: Mínimo 60px entre elementos
-
+- Formato: Paisagem (1920x1080px).
+- Centralizado e equilibrado.
+```
 EXEMPLO ESPECÍFICO - INTERPRETAÇÃO DE TEXTO:
 
 Centro: "INTERPRETAÇÃO DE TEXTO"
@@ -185,15 +155,17 @@ EVITE:
 ### 3️⃣ DIAGRAMA - PROCESSO PASSO A PASSO
 
 ```
-TIPO: Diagrama de Fluxo
+TIPO: Fluxograma de Processo (Modern Light)
+SKIN: [Indigo / Amber]
 
 DESCRIÇÃO:
-Crie um diagrama de fluxo mostrando o processo passo a passo de [TÉCNICA/MÉTODO].
+Crie um diagrama de fluxo mostrando o passo a passo de [MÉTODO/TÉCNICA].
 
 ESTILO VISUAL:
-- Estilo: Fluxograma moderno com ícones
-- Cores: Gradiente de roxo claro → roxo escuro ao longo do fluxo
-- Setas: Grossas, arredondadas, com gradiente
+- Header: Faixa na cor da SKIN com título "[NOME DO MÉTODO] - Passo a Passo".
+- Fundo: Branco com padrão geométrico "blueprint" sutil.
+- Boxes: Retângulos brancos numerados com ícones à esquerda.
+- Conectores: Setas grossas e arredondadas com gradiente suave da SKIN.
 
 ELEMENTOS OBRIGATÓRIOS:
 - Caixas de processo (5-7 passos):
@@ -213,6 +185,9 @@ LAYOUT:
 - Composição: Em Z ou em S para fluxo visual
 - Espaçamento: 60px entre caixas
 
+RODAPÉ:
+- Texto: "Gerada por IA via nosso SAAS A VAGA É MINHA".
+```
 EXEMPLO ESPECÍFICO - TÉCNICA DOS 3 PASSES:
 
 Passo 1:
@@ -244,89 +219,51 @@ EVITE:
 
 ---
 
-### 4️⃣ CARD DE RESUMO - COMPARTILHÁVEL
+### 4️⃣ CARD DE RESUMO - COMPARTILHÁVEL (STUDY CARD)
 
 ```
-TIPO: Card de Resumo
+TIPO: Card de Resumo Premium
+SKIN: [Rose / Indigo / Emerald]
 
 DESCRIÇÃO:
-Crie um card visual tipo "cheat sheet" resumindo os pontos principais de [TÓPICO].
+Crie um card de resumo "cheat sheet" sobre [TÓPICO] optimizado para redes sociais.
 
 ESTILO VISUAL:
-- Estilo: Card moderno estilo Instagram post educativo
-- Cores: Fundo gradiente roxo, elementos em branco/laranja
-- Layout: Grid organizado e hierárquico
+- Header: Cabeçalho imponente com a cor da SKIN, ícone grande e o título "[TÓPICO]".
+- Corpo: Grid limpo com 3 seções destacadas:
+  1. ✅ O QUE PODE (Cor da skin suave)
+  2. ❌ O QUE NÃO PODE (Rosa leve)
+  3. 🧠 MACETE MESTRE (Branco com borda dourada)
+- Tipografia: Inter ExtraBold para destacar pontos chaves.
 
-ELEMENTOS OBRIGATÓRIOS:
-- Header (topo):
-  * Logo "Petrobras Quest" pequeno no canto
-  * Título grande: "[TÓPICO] - Resumo Rápido"
-  * Ícone temático grande
-  
-- Corpo (meio):
-  * 3-5 seções com ícones:
-    - Cada seção com título em negrito
-    - 2-3 bullet points por seção
-    - Ícone relacionado ao lado
-  
-- Footer (rodapé):
-  * Frase motivacional curta
-  * Call to action: "Salve para revisar!"
+RODAPÉ:
+- Texto: "Gerada por IA via nosso SAAS A VAGA É MINHA".
+```
 
-LAYOUT:
-- Formato: Quadrado (1080x1080px) - ideal para Instagram
-- Composição: Grid 12 colunas
-- Margem: 60px em todos os lados
-- Espaçamento entre seções: 40px
-
-EXEMPLO ESPECÍFICO - CRASE:
-
-Header:
-Logo canto superior direito
-Título: "CRASE - Guia Rápido"
-Ícone: Acento grave (`) grande e estilizado
-
-Seção 1: ✅ QUANDO USAR
-• Feminino + Preposição "a"
-• Horas específicas (às 15h)
-• Locuções femininas (à medida que)
-
-Seção 2: ❌ QUANDO NÃO USAR
-• Antes de masculino
-• Antes de verbo
-• Entre palavras repetidas
-
-Seção 3: 💡 MACETE
-• Substitua por "AO" masculino
-• Se funcionar, usa crase!
-
-Footer:
-"Domine a crase e ganhe pontos na prova!"
-"📌 Salve para não esquecer!"
-
-EVITE:
-- Mais de 80 palavras no total
-- Fontes menores que 28px
-- Mais de 3 cores principais
+EXEMPLO ESPECÍFICO - CRASE (SKIN: ROSE):
+- Header: Rosa Profundo (#e11d48).
+- Seção 1: Feminino + Preposição / Horas.
+- Seção 2: Masculino / Verbo / Repetidas.
+- Macete: Substitua por "AO".
 ```
 
 **Resultado esperado**: Card atrativo e compartilhável em redes sociais.
 
 ---
 
-### 5️⃣ ILUSTRAÇÃO CONCEITUAL - METÁFORA VISUAL
+### 5️⃣ ILUSTRAÇÃO CONCEITUAL (METÁFORA)
 
 ```
-TIPO: Ilustração Conceitual
+TIPO: Ilustração 2D Flat Premium
+SKIN: [Indigo / Emerald]
 
 DESCRIÇÃO:
-Crie uma ilustração que represente visualmente a metáfora de [CONCEITO].
+Crie uma cena ilustrada limpa representando a metáfora de [CONCEITO].
 
 ESTILO VISUAL:
-- Estilo: Flat illustration 2.5D (levemente isométrico)
-- Cores: Paleta harmônica com roxo, laranja, verde suave
-- Personagens: Simplificados, sem rostos detalhados
-- Elementos: Geométricos e limpos
+- Personagens: Traços modernos, sem rostos, estilo corporativo moderno.
+- Paleta: Fundo branco/glacial, tons da SKIN para roupas e elementos chave.
+- Ambiente: Minimalista, focado na ação educacional.
 
 ELEMENTOS OBRIGATÓRIOS:
 - Personagem central representando o estudante
@@ -339,6 +276,9 @@ LAYOUT:
 - Composição: Regra dos terços
 - Profundidade: 2-3 camadas de elementos
 
+RODAPÉ:
+- Texto: "Gerada por IA via nosso SAAS A VAGA É MINHA".
+```
 EXEMPLO ESPECÍFICO - "LER É COMO SER DETETIVE":
 
 Cena:
@@ -371,55 +311,44 @@ EVITE:
 
 ---
 
-## 🎨 PALETA DE CORES PADRÃO:
+## 🎨 SISTEMA DE SKINS (PALETA DE CORES):
 
 ```css
-/* Cores principais */
---primary: #667eea;      /* Roxo azulado vibrante */
---secondary: #764ba2;    /* Roxo profundo */
---accent: #f6ad55;       /* Laranja suave */
+/* Use estas cores para o Header e elementos de destaque */
 
-/* Cores de feedback */
---success: #48bb78;      /* Verde sucesso */
---warning: #ed8936;      /* Laranja atenção */
---error: #f56565;        /* Vermelho erro */
---info: #4299e1;         /* Azul informação */
+--skin-emerald: #10b981;  /* Verde Sucesso */
+--skin-indigo:  #4f46e5;  /* Azul Inteligente */
+--skin-rose:    #e11d48;  /* Rosa Atenção */
+--skin-amber:   #f59e0b;  /* Amarelo Energia */
+--skin-slate:   #334155;  /* Cinza Foco */
 
-/* Cores neutras */
---white: #ffffff;
---gray-50: #f7fafc;
---gray-100: #edf2f7;
---gray-600: #718096;
---gray-900: #1a202c;
+/* Cores Neutras (Fundo e Texto) */
+--bg-light:      #ffffff;
+--bg-glacial:    #f8faff;
+--text-main:     #1e293b;
+--text-muted:    #94a3b8;
+--border-light:  #e2e8f0;
 ```
 
 ---
 
-## ✅ CHECKLIST DE QUALIDADE DE IMAGEM:
+## ✅ CHECKLIST DE QUALIDADE (A VAGA É MINHA):
 
-Antes de aprovar qualquer imagem, verifique:
-
-- [ ] Resolução adequada (mín 1080px)
-- [ ] Texto legível (mín 24pt)
-- [ ] Cores da paleta oficial
-- [ ] Máximo 3 cores principais
-- [ ] Espaçamento generoso (white space)
-- [ ] Hierarquia visual clara
-- [ ] Ícones consistentes
-- [ ] Alinhamento preciso
-- [ ] Sem elementos genéricos de stock
-- [ ] Estilo educacional profissional
+- [ ] A imagem possui o **Header Colorido** com a Skin correta?
+- [ ] O fundo é **Claro** (Branco ou Azul Glacial)? (NADA DE DARK THEME)
+- [ ] O rodapé contém o texto **"Gerada por IA via nosso SAAS A VAGA É MINHA"**?
+- [ ] O contraste do texto no header (Branco sobre Cor) é legível?
+- [ ] Os ícones são minimalistas e modernos?
+- [ ] Há "espaço de respiro" suficiente entre os elementos?
 
 ---
 
 ## 💡 DICAS PRO:
 
-1. **Consistência**: Use o mesmo estilo em todas as imagens de uma aula
-2. **Acessibilidade**: Contraste mínimo 4.5:1 para texto
-3. **Mobile-first**: Teste visualização em tela pequena
-4. **Exportação**: PNG para infográficos, JPG para ilustrações
-5. **Compressão**: Use TinyPNG antes de fazer upload
+1. **Branding**: O nome correto do sistema é **A VAGA É MINHA**. Use sempre este nome no rodapé.
+2. **Skins**: Alterne a skin de acordo com o sentimento da aula (ex: Emerald para Sucesso, Rose para Alertas).
+3. **Simplicidade**: "Menos é mais". Foque em diagramas limpos que facilitem a memorização visual.
 
 ---
 
-**SALVE ESTE ARQUIVO** e use como referência sempre que precisar gerar imagens para as aulas!
+**ESTE GUIA É A REFERÊNCIA OFICIAL PARA TODAS AS IMAGENS DO SAAS A VAGA É MINHA.**

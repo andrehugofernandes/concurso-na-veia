@@ -330,6 +330,7 @@ export default function AulaReescritaFrases({ onUpdateProgress, onComplete, isCo
     };
 
     const isModuleUnlocked = (index: number) => {
+        if (isCompleted) return true;
         if (index === 0) return true;
         return completedModules.has(MODULE_DEFS[index - 1].id);
     };
@@ -871,7 +872,7 @@ export default function AulaReescritaFrases({ onUpdateProgress, onComplete, isCo
 
                             <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
                                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                    <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-lg font-bold text-red-700 dark:text-red-400">4</span>
+                                    <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-3xl font-bold text-red-700 dark:text-red-400">4</span>
                                     Resumo do Módulo 3
                                 </h2>
 

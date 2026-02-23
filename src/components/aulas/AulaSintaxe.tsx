@@ -535,9 +535,10 @@ interface AulaSintaxeProps {
     onComplete: () => void;
     currentProgress: number;
     onUpdateProgress: (percent: number) => Promise<void>;
+    isCompleted?: boolean;
 }
 
-export default function AulaSintaxe({ onComplete, currentProgress, onUpdateProgress }: AulaSintaxeProps) {
+export default function AulaSintaxe({ onComplete, currentProgress, onUpdateProgress, isCompleted }: AulaSintaxeProps) {
     const [activeTab, setActiveTab] = useState('modulo-1');
     const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
     const [showCompletionBadge, setShowCompletionBadge] = useState(false);
@@ -583,10 +584,11 @@ export default function AulaSintaxe({ onComplete, currentProgress, onUpdateProgr
     };
 
     const isModuleUnlocked = useCallback((moduleIndex: number) => {
+        if (isCompleted) return true;
         if (moduleIndex === 0) return true;
         const prevModuleId = MODULE_DEFS[moduleIndex - 1]?.id;
         return prevModuleId ? completedModules.has(prevModuleId) : false;
-    }, [completedModules]);
+    }, [completedModules, isCompleted]);
 
     return (
         <div className="space-y-12 pb-20 animate-in fade-in duration-500">

@@ -16,6 +16,8 @@ import {
     ModuleSectionHeader,
     ContentAccordion,
     LessonTabs,
+    ModuleSummaryCarouselNew,
+    MusicPlayerCard,
     AulaProps,
     VideoModal
 } from './shared';
@@ -30,9 +32,9 @@ import {
     LuHash,
     LuShield,
     LuShuffle,
-    LuVideo,
-    LuHeadphones,
-    LuImage,
+    LuCirclePlay as LuPlayCircle,
+    LuBrain,
+    LuMusic,
     LuArrowDown,
     LuMessageCircle
 } from 'react-icons/lu';
@@ -197,77 +199,77 @@ const CONJ_SLIDES = [
 // ══════════════════════════════════════════════════════════════════════════
 
 const QUIZ_MOD1_POOL: QuizQuestion[] = [
-    { id: 101, pergunta: "Em 'A broca **perfurou** o solo com sucesso', o verbo destacado está no:", opcoes: [{ label: 'A', valor: "Pretérito Imperfeito do Indicativo" }, { label: 'B', valor: "Pretérito Perfeito do Indicativo" }, { label: 'C', valor: "Futuro do Pretérito" }, { label: 'D', valor: "Presente do Indicativo" }], correta: 'B', explicacao: "A ação está totalmente concluída no passado (perfurou = fato acabado). Logo, é Pretérito Perfeito do Indicativo." },
+    { id: 101, pergunta: "Em 'A broca **perfurou** o solo com sucesso', o verbo destacado está no:", opcoes: [{ label: 'A', valor: "Pretérito Imperfeito do Indicativo" }, { label: 'B', valor: "Pretérito Perfeito do Indicativo" }, { label: 'C', valor: "Futuro do Pretérito" }, { label: 'D', valor: "Presente do Indicativo" }, { label: 'E', valor: "Futuro do Presente" }], correta: 'B', explicacao: "A ação está totalmente concluída no passado (perfurou = fato acabado). Logo, é Pretérito Perfeito do Indicativo." },
     { id: 102, pergunta: "Assinale a alternativa em que o verbo é IMPESSOAL e deve ficar no singular:", opcoes: [{ label: 'A', valor: "Existiam muitos candidatos na fila." }, { label: 'B', valor: "Havia muitos candidatos na fila." }, { label: 'C', valor: "Apareceram problemas na tubulação." }, { label: 'D', valor: "Faltam recursos para o projeto." }], correta: 'B', explicacao: "HAVER no sentido de existir é impessoal: fica SEMPRE na 3ª pessoa do singular. 'Existir', por outro lado, é pessoal e vai ao plural." },
-    { id: 103, pergunta: "Na frase '**Deve haver** vagas no concurso', a forma verbal está:", opcoes: [{ label: 'A', valor: "Errada — deveria ser 'Devem haver'" }, { label: 'B', valor: "Correta — o auxiliar acompanha a impessoalidade de haver" }, { label: 'C', valor: "Errada — deveria ser 'Devem existir'" }, { label: 'D', valor: "Correta — mas somente no registro informal" }], correta: 'B', explicacao: "Quando HAVER (impessoal) tem auxiliar, o auxiliar também fica no singular: 'Deve haver', 'Pode haver', 'Vai haver'." },
-    { id: 104, pergunta: "Em 'O **amanhecer** na plataforma é surpreendente', a palavra destacada é originalmente um:", opcoes: [{ label: 'A', valor: "Substantivo concreto" }, { label: 'B', valor: "Verbo que sofreu derivação imprópria (substantivação)" }, { label: 'C', valor: "Adjetivo substantivado" }, { label: 'D', valor: "Advérbio de tempo" }], correta: 'B', explicacao: "O artigo 'O' antes de 'amanhecer' transforma o verbo em substantivo. Isso se chama Derivação Imprópria." },
-    { id: 105, pergunta: "Qual alternativa contém um substantivo ABSTRATO?", opcoes: [{ label: 'A', valor: "A plataforma resistiu ao temporal." }, { label: 'B', valor: "A extração de petróleo bateu recorde." }, { label: 'C', valor: "O vento soprou forte na base." }, { label: 'D', valor: "A sereia é um ser mitológico." }], correta: 'B', explicacao: "'Extração' indica uma ação (ato de extrair) e depende de um agente. Substantivos que indicam ação, estado, qualidade ou sentimento dependente de um ser são ABSTRATOS." },
-    { id: 106, pergunta: "Na voz passiva sintética '**Vendem-se** casas', o sujeito da oração é:", opcoes: [{ label: 'A', valor: "Indeterminado" }, { label: 'B', valor: "O pronome 'se'" }, { label: 'C', valor: "'casas' (sujeito paciente)" }, { label: 'D', valor: "Oculto (alguém vende)" }], correta: 'C', explicacao: "Com VTD + SE, temos Pronome Apassivador. 'Casas' é o sujeito paciente (casas são vendidas), por isso o verbo vai ao plural." },
-    { id: 107, pergunta: "Assinale a opção com flexão CORRETA do plural:", opcoes: [{ label: 'A', valor: "Os cidadãos votaram cedo." }, { label: 'B', valor: "Os alemãos chegaram ontem." }, { label: 'C', valor: "Trouxeram muitos limãos." }, { label: 'D', valor: "Os capitães comandaram a missão." }], correta: 'D', explicacao: "Capitão → Capitães (oxítona em -ão faz plural em -ães). Cidadão → Cidadãos. Alemão → Alemães. Limão → Limões." },
-    { id: 108, pergunta: "Em 'O operador **chegava** sempre cedo', o tempo verbal indica:", opcoes: [{ label: 'A', valor: "Ação concluída no passado" }, { label: 'B', valor: "Ação habitual ou inacabada no passado" }, { label: 'C', valor: "Ação futura condicionada" }, { label: 'D', valor: "Ação no presente contínuo" }], correta: 'B', explicacao: "Pretérito Imperfeito ('chegava') indica ação habitual, repetida ou inacabada no passado. Compare: 'chegou' (perfeito, ação pontual) vs 'chegava' (imperfeito, ação habitual)." },
-    { id: 109, pergunta: "Assinale a alternativa que apresenta a flexão correta do verbo VER no Futuro do Subjuntivo:", opcoes: [{ label: 'A', valor: "Quando eu ver" }, { label: 'B', valor: "Quando eu vir" }, { label: 'C', valor: "Quando eu vi" }, { label: 'D', valor: "Quando eu vesse" }], correta: 'B', explicacao: "O Futuro do Subjuntivo do verbo VER é 'quando eu vir, tu vires, ele vir'. 'Quando eu ver' está incorreto." },
-    { id: 110, pergunta: "Na frase 'Se ele ________ mais esforço, ________ aprovado', quais formas completam corretamente os espaços, sendo verbo PÔR e SER?", opcoes: [{ label: 'A', valor: "pusesse / seria" }, { label: 'B', valor: "posse / era" }, { label: 'C', valor: "puzesse / seria" }, { label: 'D', valor: "por / seria" }], correta: 'A', explicacao: "Pretérito Imperfeito do Subjuntivo de PÔR é 'pusesse' (com S). O Futuro do Pretérito do verbo SER é 'seria'." }
+    { id: 103, pergunta: "Na frase '**Deve haver** vagas no concurso', a forma verbal está:", opcoes: [{ label: 'A', valor: "Errada — deveria ser 'Devem haver'" }, { label: 'B', valor: "Correta — o auxiliar acompanha a impessoalidade de haver" }, { label: 'C', valor: "Errada — deveria ser 'Devem existir'" }, { label: 'D', valor: "Correta — mas somente no registro informal" }, { label: 'E', valor: "Errada — pois o verbo principal deve ir para o plural" }], correta: 'B', explicacao: "Quando HAVER (impessoal) tem auxiliar, o auxiliar também fica no singular: 'Deve haver', 'Pode haver', 'Vai haver'." },
+    { id: 104, pergunta: "Em 'O **amanhecer** na plataforma é surpreendente', a palavra destacada é originalmente um:", opcoes: [{ label: 'A', valor: "Substantivo concreto" }, { label: 'B', valor: "Verbo que sofreu derivação imprópria (substantivação)" }, { label: 'C', valor: "Adjetivo substantivado" }, { label: 'D', valor: "Advérbio de tempo" }, { label: 'E', valor: "Preposição" }], correta: 'B', explicacao: "O artigo 'O' antes de 'amanhecer' transforma o verbo em substantivo. Isso se chama Derivação Imprópria." },
+    { id: 105, pergunta: "Qual alternativa contém um substantivo ABSTRATO?", opcoes: [{ label: 'A', valor: "A plataforma resistiu ao temporal." }, { label: 'B', valor: "A extração de petróleo bateu recorde." }, { label: 'C', valor: "O vento soprou forte na base." }, { label: 'D', valor: "A sereia é um ser mitológico." }, { label: 'E', valor: "A frota chegou ao porto." }], correta: 'B', explicacao: "'Extração' indica uma ação (ato de extrair) e depende de um agente. Substantivos que indicam ação, estado, qualidade ou sentimento dependente de um ser são ABSTRATOS." },
+    { id: 106, pergunta: "Na voz passiva sintética '**Vendem-se** casas', o sujeito da oração é:", opcoes: [{ label: 'A', valor: "Indeterminado" }, { label: 'B', valor: "O pronome 'se'" }, { label: 'C', valor: "'casas' (sujeito paciente)" }, { label: 'D', valor: "Oculto (alguém vende)" }, { label: 'E', valor: "Inexistente" }], correta: 'C', explicacao: "Com VTD + SE, temos Pronome Apassivador. 'Casas' é o sujeito paciente (casas são vendidas), por isso o verbo vai ao plural." },
+    { id: 107, pergunta: "Assinale a opção com flexão CORRETA do plural:", opcoes: [{ label: 'A', valor: "Os cidadãos votaram cedo." }, { label: 'B', valor: "Os alemãos chegaram ontem." }, { label: 'C', valor: "Trouxeram muitos limãos." }, { label: 'D', valor: "Os capitães comandaram a missão." }, { label: 'E', valor: "Os pãos estavam quentes." }], correta: 'D', explicacao: "Capitão → Capitães (oxítona em -ão faz plural em -ães). Cidadão → Cidadãos. Alemão → Alemães. Limão → Limões." },
+    { id: 108, pergunta: "Em 'O operador **chegava** sempre cedo', o tempo verbal indica:", opcoes: [{ label: 'A', valor: "Ação concluída no passado" }, { label: 'B', valor: "Ação habitual ou inacabada no passado" }, { label: 'C', valor: "Ação futura condicionada" }, { label: 'D', valor: "Ação no presente contínuo" }, { label: 'E', valor: "Desejo ou hipótese" }], correta: 'B', explicacao: "Pretérito Imperfeito ('chegava') indica ação habitual, repetida ou inacabada no passado. Compare: 'chegou' (perfeito, ação pontual) vs 'chegava' (imperfeito, ação habitual)." },
+    { id: 109, pergunta: "Assinale a alternativa que apresenta a flexão correta do verbo VER no Futuro do Subjuntivo:", opcoes: [{ label: 'A', valor: "Quando eu ver" }, { label: 'B', valor: "Quando eu vir" }, { label: 'C', valor: "Quando eu vi" }, { label: 'D', valor: "Quando eu vesse" }, { label: 'E', valor: "Quando eu vejo" }], correta: 'B', explicacao: "O Futuro do Subjuntivo do verbo VER é 'quando eu vir, tu vires, ele vir'. 'Quando eu ver' está incorreto." },
+    { id: 110, pergunta: "Na frase 'Se ele ________ mais esforço, ________ aprovado', quais formas completam corretamente os espaços, sendo verbo PÔR e SER?", opcoes: [{ label: 'A', valor: "pusesse / seria" }, { label: 'B', valor: "posse / era" }, { label: 'C', valor: "puzesse / seria" }, { label: 'D', valor: "por / seria" }, { label: 'E', valor: "pusesse / fôra" }], correta: 'A', explicacao: "Pretérito Imperfeito do Subjuntivo de PÔR é 'pusesse' (com S). O Futuro do Pretérito do verbo SER é 'seria'." }
 ];
 
 const QUIZ_MOD2_POOL: QuizQuestion[] = [
-    { id: 201, pergunta: "Na frase 'Aquela refinaria é mais antiga que **esta**', os pronomes destacados são:", opcoes: [{ label: 'A', valor: "Possessivos" }, { label: 'B', valor: "Relativos" }, { label: 'C', valor: "Demonstrativos" }, { label: 'D', valor: "Indefinidos" }], correta: 'C', explicacao: "'Aquela' e 'esta' situam os elementos no espaço e no discurso. São pronomes demonstrativos." },
-    { id: 202, pergunta: "Em 'O relatório **que** você entregou foi aprovado', a palavra 'que' é:", opcoes: [{ label: 'A', valor: "Conjunção integrante" }, { label: 'B', valor: "Pronome relativo (retoma 'relatório')" }, { label: 'C', valor: "Preposição" }, { label: 'D', valor: "Advérbio de modo" }], correta: 'B', explicacao: "'Que' retoma o antecedente 'relatório' e introduz uma Oração Adjetiva. Logo, é pronome relativo (= o qual)." },
-    { id: 203, pergunta: "Assinale a frase em que o adjetivo muda de sentido conforme a posição:", opcoes: [{ label: 'A', valor: "Ele é um excelente engenheiro." }, { label: 'B', valor: "O **grande** líder vs O líder **grande**" }, { label: 'C', valor: "Mesa suja / Computador sujo" }, { label: 'D', valor: "Relatório complexo e detalhado" }], correta: 'B', explicacao: "'Grande líder' = notável (valor subjetivo). 'Líder grande' = alto, corpulento (valor objetivo). A posição do adjetivo altera o significado." },
-    { id: 204, pergunta: "Em 'A Petrobras exige **alta** performance', o termo destacado é:", opcoes: [{ label: 'A', valor: "Substantivo" }, { label: 'B', valor: "Adjetivo (qualifica 'performance')" }, { label: 'C', valor: "Advérbio de intensidade" }, { label: 'D', valor: "Pronome demonstrativo" }], correta: 'B', explicacao: "'Alta' qualifica o substantivo 'performance', atribuindo-lhe uma característica. Logo, é adjetivo." },
-    { id: 205, pergunta: "Qual pronome é OBLÍQUO ÁTONO e funciona como Objeto Direto?", opcoes: [{ label: 'A', valor: "Eu" }, { label: 'B', valor: "Lhe" }, { label: 'C', valor: "O / A" }, { label: 'D', valor: "Nós" }], correta: 'C', explicacao: "'O' e 'A' são oblíquos átonos que funcionam como Objeto Direto. 'Lhe' funciona como Objeto Indireto. 'Eu' e 'Nós' são retos (sujeito)." },
-    { id: 206, pergunta: "'De pedra' em 'coração **de pedra**' equivale a qual adjetivo?", opcoes: [{ label: 'A', valor: "Pedregoso" }, { label: 'B', valor: "Pétreo" }, { label: 'C', valor: "Pedreiro" }, { label: 'D', valor: "Pedrento" }], correta: 'B', explicacao: "'De pedra' é uma Locução Adjetiva. Seu adjetivo correspondente é 'pétreo'. Exemplo: coração pétreo = coração de pedra." },
-    { id: 207, pergunta: "Em 'Ela **mesma** resolveu o problema', a palavra 'mesma' é:", opcoes: [{ label: 'A', valor: "Advérbio (invariável)" }, { label: 'B', valor: "Pronome demonstrativo de reforço (variável)" }, { label: 'C', valor: "Adjetivo qualificativo" }, { label: 'D', valor: "Conjunção" }], correta: 'B', explicacao: "'Mesmo/mesma' como reforço é pronome e VARIA em gênero: 'Ela mesma', 'Ele mesmo', 'Elas mesmas'. Nunca 'Ela mesmo'." },
+    { id: 201, pergunta: "Na frase 'Aquela refinaria é mais antiga que **esta**', os pronomes destacados são:", opcoes: [{ label: 'A', valor: "Possessivos" }, { label: 'B', valor: "Relativos" }, { label: 'C', valor: "Demonstrativos" }, { label: 'D', valor: "Indefinidos" }, { label: 'E', valor: "Interrogativos" }], correta: 'C', explicacao: "'Aquela' e 'esta' situam os elementos no espaço e no discurso. São pronomes demonstrativos." },
+    { id: 202, pergunta: "Em 'O relatório **que** você entregou foi aprovado', a palavra 'que' é:", opcoes: [{ label: 'A', valor: "Conjunção integrante" }, { label: 'B', valor: "Pronome relativo (retoma 'relatório')" }, { label: 'C', valor: "Preposição" }, { label: 'D', valor: "Advérbio de modo" }, { label: 'E', valor: "Conjunção coordenativa" }], correta: 'B', explicacao: "'Que' retoma o antecedente 'relatório' e introduz uma Oração Adjetiva. Logo, é pronome relativo (= o qual)." },
+    { id: 203, pergunta: "Assinale a frase em que o adjetivo muda de sentido conforme a posição:", opcoes: [{ label: 'A', valor: "Ele é um excelente engenheiro." }, { label: 'B', valor: "O **grande** líder vs O líder **grande**" }, { label: 'C', valor: "Mesa suja / Computador sujo" }, { label: 'D', valor: "Relatório complexo e detalhado" }, { label: 'E', valor: "A Petrobras é uma empresa estatal" }], correta: 'B', explicacao: "'Grande líder' = notável (valor subjetivo). 'Líder grande' = alto, corpulento (valor objetivo). A posição do adjetivo altera o significado." },
+    { id: 204, pergunta: "Em 'A Petrobras exige **alta** performance', o termo destacado é:", opcoes: [{ label: 'A', valor: "Substantivo" }, { label: 'B', valor: "Adjetivo (qualifica 'performance')" }, { label: 'C', valor: "Advérbio de intensidade" }, { label: 'D', valor: "Pronome demonstrativo" }, { label: 'E', valor: "Verbo" }], correta: 'B', explicacao: "'Alta' qualifica o substantivo 'performance', atribuindo-lhe uma característica. Logo, é adjetivo." },
+    { id: 205, pergunta: "Qual pronome é OBLÍQUO ÁTONO e funciona como Objeto Direto?", opcoes: [{ label: 'A', valor: "Eu" }, { label: 'B', valor: "Lhe" }, { label: 'C', valor: "O / A" }, { label: 'D', valor: "Nós" }, { label: 'E', valor: "Mim" }], correta: 'C', explicacao: "'O' e 'A' são oblíquos átonos que funcionam como Objeto Direto. 'Lhe' funciona como Objeto Indireto. 'Eu' e 'Nós' são retos (sujeito)." },
+    { id: 206, pergunta: "'De pedra' em 'coração **de pedra**' equivale a qual adjetivo?", opcoes: [{ label: 'A', valor: "Pedregoso" }, { label: 'B', valor: "Pétreo" }, { label: 'C', valor: "Pedreiro" }, { label: 'D', valor: "Pedrento" }, { label: 'E', valor: "Pedrado" }], correta: 'B', explicacao: "'De pedra' é uma Locução Adjetiva. Seu adjetivo correspondente é 'pétreo'. Exemplo: coração pétreo = coração de pedra." },
+    { id: 207, pergunta: "Em 'Ela **mesma** resolveu o problema', a palavra 'mesma' é:", opcoes: [{ label: 'A', valor: "Advérbio (invariável)" }, { label: 'B', valor: "Pronome demonstrativo de reforço (variável)" }, { label: 'C', valor: "Adjetivo qualificativo" }, { label: 'D', valor: "Conjunção" }, { label: 'E', valor: "Preposição" }], correta: 'B', explicacao: "'Mesmo/mesma' como reforço é pronome e VARIA em gênero: 'Ela mesma', 'Ele mesmo', 'Elas mesmas'. Nunca 'Ela mesmo'." },
     { id: 208, pergunta: "Na frase 'Seguem **anexas** as cópias', a concordância está:", opcoes: [{ label: 'A', valor: "Errada — deveria ser 'anexo'" }, { label: 'B', valor: "Correta — 'anexo' é adjetivo e concorda com 'cópias'" }, { label: 'C', valor: "Errada — deveria ser 'em anexo'" }, { label: 'D', valor: "Correta — mas somente no plural" }], correta: 'B', explicacao: "'Anexo' é adjetivo e CONCORDA com o substantivo: 'anexas as cópias' (feminino plural). Já 'em anexo' é locução e NÃO varia." }
 ];
 
 const QUIZ_MOD3_POOL: QuizQuestion[] = [
-    { id: 301, pergunta: "Em 'O poço secou **porque** choveu pouco', a conjunção é:", opcoes: [{ label: 'A', valor: "Explicativa" }, { label: 'B', valor: "Causal" }, { label: 'C', valor: "Concessiva" }, { label: 'D', valor: "Condicional" }], correta: 'B', explicacao: "'Porque' introduz a CAUSA de o poço ter secado. A oração subordinada explica o motivo do fato principal. Causal ≠ Explicativa." },
-    { id: 302, pergunta: "Assinale a conjunção CONCESSIVA:", opcoes: [{ label: 'A', valor: "Se estudar, passará." }, { label: 'B', valor: "Choveu, mas fomos trabalhar." }, { label: 'C', valor: "**Embora** estivéssemos exaustos, finalizamos o turno." }, { label: 'D', valor: "Estudou tanto **que** passou." }], correta: 'C', explicacao: "'Embora' é conjunção subordinativa concessiva: expressa um obstáculo que NÃO impede a ação principal." },
-    { id: 303, pergunta: "Na frase 'Fique calado, **que** a reunião vai começar', o 'que' tem valor de:", opcoes: [{ label: 'A', valor: "Pronome relativo" }, { label: 'B', valor: "Conjunção coordenativa explicativa" }, { label: 'C', valor: "Conjunção subordinativa causal" }, { label: 'D', valor: "Preposição" }], correta: 'B', explicacao: "Após verbo no imperativo ('Fique'), o 'que' equivale a 'pois/porque', justificando a ordem dada. É conjunção explicativa." },
-    { id: 304, pergunta: "Em 'O operador foi **a** Macaé verificar a plataforma', o 'a' é:", opcoes: [{ label: 'A', valor: "Artigo definido" }, { label: 'B', valor: "Preposição indicando destino/lugar" }, { label: 'C', valor: "Pronome oblíquo" }, { label: 'D', valor: "Conjunção" }], correta: 'B', explicacao: "A preposição 'a' liga o verbo 'ir' ao destino 'Macaé', indicando lugar/direção." },
-    { id: 305, pergunta: "Na locução '**Por causa de**', encontramos:", opcoes: [{ label: 'A', valor: "Locução adverbial" }, { label: 'B', valor: "Locução prepositiva" }, { label: 'C', valor: "Locução conjuntiva" }, { label: 'D', valor: "Duas preposições isoladas" }], correta: 'B', explicacao: "Grupos de palavras que terminam em preposição (de, com, a) e equivalem a uma preposição simples são Locuções Prepositivas." },
-    { id: 306, pergunta: "Qual é a diferença entre conjunção CAUSAL e EXPLICATIVA?", opcoes: [{ label: 'A', valor: "Não há diferença" }, { label: 'B', valor: "Causal traz o motivo real; Explicativa justifica a fala do emissor" }, { label: 'C', valor: "Causal é coordenativa; Explicativa é subordinativa" }, { label: 'D', valor: "Causal usa 'porque'; Explicativa usa 'pois'" }], correta: 'B', explicacao: "CAUSAL: 'Não fui porque choveu' (motivo real). EXPLICATIVA: 'Leve o guarda-chuva, porque vai chover' (justificativa da ordem/sugestão)." },
-    { id: 307, pergunta: "Em 'Agiram **conforme** a regra ditava', a conjunção expressa:", opcoes: [{ label: 'A', valor: "Condição" }, { label: 'B', valor: "Conformidade" }, { label: 'C', valor: "Causa" }, { label: 'D', valor: "Concessão" }], correta: 'B', explicacao: "'Conforme' estabelece concordância de ações (conformativa): a ação foi feita da maneira que a regra ditava." },
+    { id: 301, pergunta: "Em 'O poço secou **porque** choveu pouco', a conjunção é:", opcoes: [{ label: 'A', valor: "Explicativa" }, { label: 'B', valor: "Causal" }, { label: 'C', valor: "Concessiva" }, { label: 'D', valor: "Condicional" }, { label: 'E', valor: "Conformativa" }], correta: 'B', explicacao: "'Porque' introduz a CAUSA de o poço ter secado. A oração subordinada explica o motivo do fato principal. Causal ≠ Explicativa." },
+    { id: 302, pergunta: "Assinale a conjunção CONCESSIVA:", opcoes: [{ label: 'A', valor: "Se estudar, passará." }, { label: 'B', valor: "Choveu, mas fomos trabalhar." }, { label: 'C', valor: "**Embora** estivéssemos exaustos, finalizamos o turno." }, { label: 'D', valor: "Estudou tanto **que** passou." }, { label: 'E', valor: "Conforme o esperado, fomos bem" }], correta: 'C', explicacao: "'Embora' é conjunção subordinativa concessiva: expressa um obstáculo que NÃO impede a ação principal." },
+    { id: 303, pergunta: "Na frase 'Fique calado, **que** a reunião vai começar', o 'que' tem valor de:", opcoes: [{ label: 'A', valor: "Pronome relativo" }, { label: 'B', valor: "Conjunção coordenativa explicativa" }, { label: 'C', valor: "Conjunção subordinativa causal" }, { label: 'D', valor: "Preposição" }, { label: 'E', valor: "Conjunção integrante" }], correta: 'B', explicacao: "Após verbo no imperativo ('Fique'), o 'que' equivale a 'pois/porque', justificando a ordem dada. É conjunção explicativa." },
+    { id: 304, pergunta: "Em 'O operador foi **a** Macaé verificar a plataforma', o 'a' é:", opcoes: [{ label: 'A', valor: "Artigo definido" }, { label: 'B', valor: "Preposição indicando destino/lugar" }, { label: 'C', valor: "Pronome oblíquo" }, { label: 'D', valor: "Conjunção" }, { label: 'E', valor: "Pronome demonstrativo" }], correta: 'B', explicacao: "A preposição 'a' liga o verbo 'ir' ao destino 'Macaé', indicando lugar/direção." },
+    { id: 305, pergunta: "Na locução '**Por causa de**', encontramos:", opcoes: [{ label: 'A', valor: "Locução adverbial" }, { label: 'B', valor: "Locução prepositiva" }, { label: 'C', valor: "Locução conjuntiva" }, { label: 'D', valor: "Duas preposições isoladas" }, { label: 'E', valor: "Advérbio de intensidade" }], correta: 'B', explicacao: "Grupos de palavras que terminam em preposição (de, com, a) e equivalem a uma preposição simples são Locuções Prepositivas." },
+    { id: 306, pergunta: "Qual é a diferença entre conjunção CAUSAL e EXPLICATIVA?", opcoes: [{ label: 'A', valor: "Não há diferença" }, { label: 'B', valor: "Causal traz o motivo real; Explicativa justifica a fala do emissor" }, { label: 'C', valor: "Causal é coordenativa; Explicativa é subordinativa" }, { label: 'D', valor: "Causal usa 'porque'; Explicativa usa 'pois'" }, { label: 'E', valor: "Explicativa indica tempo; Causal indica modo" }], correta: 'B', explicacao: "CAUSAL: 'Não fui porque choveu' (motivo real). EXPLICATIVA: 'Leve o guarda-chuva, porque vai chover' (justificativa da ordem/sugestão)." },
+    { id: 307, pergunta: "Em 'Agiram **conforme** a regra ditava', a conjunção expressa:", opcoes: [{ label: 'A', valor: "Condição" }, { label: 'B', valor: "Conformidade" }, { label: 'C', valor: "Causa" }, { label: 'D', valor: "Concessão" }, { label: 'E', valor: "Tempo" }], correta: 'B', explicacao: "'Conforme' estabelece concordância de ações (conformativa): a ação foi feita da maneira que a regra ditava." },
     { id: 308, pergunta: "A contração 'do' (de + o) aparece em qual alternativa?", opcoes: [{ label: 'A', valor: "Gosto **do** café da manhã." }, { label: 'B', valor: "Ele foi **ao** mercado." }, { label: 'C', valor: "Falou **com** o gerente." }, { label: 'D', valor: "Viajou **para** Santos." }], correta: 'A', explicacao: "'Do' é a contração da preposição 'de' + artigo 'o'. Em 'ao' temos 'a + o' (combinação). 'Com' e 'para' são preposições simples." }
 ];
 
 const QUIZ_MOD4_POOL: QuizQuestion[] = [
     { id: 401, pergunta: "Em 'Ele trabalha **muito** bem', as palavras destacadas são, respectivamente:", opcoes: [{ label: 'A', valor: "Advérbio de intensidade e Advérbio de modo" }, { label: 'B', valor: "Advérbio de tempo e Advérbio de modo" }, { label: 'C', valor: "Adjetivo e Advérbio" }, { label: 'D', valor: "Pronome e Advérbio" }], correta: 'A', explicacao: "'Muito' intensifica o advérbio 'bem' (intensidade). 'Bem' indica a maneira como ele trabalha (modo). Advérbio modifica advérbio!" },
-    { id: 402, pergunta: "Marque a alternativa onde '**meio**' atue como ADVÉRBIO:", opcoes: [{ label: 'A', valor: "Comprei **meio** litro de óleo." }, { label: 'B', valor: "Ela estava **meio** cansada do plantão." }, { label: 'C', valor: "Encontramos o **meio** do caminho." }, { label: 'D', valor: "Cortou a maçã no **meio**." }], correta: 'B', explicacao: "Como advérbio de intensidade (= um pouco), 'meio' é INVARIÁVEL. Em 'meio litro', atua como numeral fracionário." },
-    { id: 403, pergunta: "'Estudo **bastante** todos os dias' vs 'Comprei **bastantes** livros'. A classificação é:", opcoes: [{ label: 'A', valor: "Advérbio (invariável) e Pronome Indefinido (variável)" }, { label: 'B', valor: "Pronome e Adjetivo" }, { label: 'C', valor: "Adjetivo e Advérbio" }, { label: 'D', valor: "Preposição e Pronome" }], correta: 'A', explicacao: "Modifica verbo (estudo muito) = advérbio INVARIÁVEL. Acompanha substantivo (muitos livros) = pronome adjetivo VARIÁVEL." },
-    { id: 404, pergunta: "Em 'É proibido entrada', a concordância está:", opcoes: [{ label: 'A', valor: "Errada — deveria ser 'É proibida entrada'" }, { label: 'B', valor: "Correta — sem artigo, a expressão fica invariável" }, { label: 'C', valor: "Errada — deveria ser 'São proibidas entradas'" }, { label: 'D', valor: "Correta — mas somente no registro coloquial" }], correta: 'B', explicacao: "SEM artigo: 'É proibido/necessário/bom' fica invariável. COM artigo: 'É proibida A entrada' (concorda com o substantivo feminino)." },
-    { id: 405, pergunta: "O artigo transforma qualquer palavra em substantivo. Isso se chama:", opcoes: [{ label: 'A', valor: "Derivação prefixal" }, { label: 'B', valor: "Derivação imprópria (substantivação)" }, { label: 'C', valor: "Composição por justaposição" }, { label: 'D', valor: "Derivação sufixal" }], correta: 'B', explicacao: "O artigo é o 'Rei Midas': 'O cantar' (verbo→substantivo), 'O azul' (adjetivo→substantivo), 'Um não' (advérbio→substantivo)." },
-    { id: 406, pergunta: "Em 'Os guardas estão **alerta**', a palavra 'alerta' é:", opcoes: [{ label: 'A', valor: "Adjetivo (varia em número)" }, { label: 'B', valor: "Advérbio (invariável)" }, { label: 'C', valor: "Substantivo" }, { label: 'D', valor: "Pronome" }], correta: 'B', explicacao: "'Alerta' é advérbio e NUNCA varia. 'Os guardas estão alerta' (correto). 'Os guardas estão alertas' (ERRADO)." }
+    { id: 402, pergunta: "Marque a alternativa onde '**meio**' atue como ADVÉRBIO:", opcoes: [{ label: 'A', valor: "Comprei **meio** litro de óleo." }, { label: 'B', valor: "Ela estava **meio** cansada do plantão." }, { label: 'C', valor: "Encontramos o **meio** do caminho." }, { label: 'D', valor: "Cortou a maçã no **meio**." }, { label: 'E', valor: "Meio mundo estava lá." }], correta: 'B', explicacao: "Como advérbio de intensidade (= um pouco), 'meio' é INVARIÁVEL. Em 'meio litro', atua como numeral fracionário." },
+    { id: 403, pergunta: "'Estudo **bastante** todos os dias' vs 'Comprei **bastantes** livros'. A classificação é:", opcoes: [{ label: 'A', valor: "Advérbio (invariável) e Pronome Indefinido (variável)" }, { label: 'B', valor: "Pronome e Adjetivo" }, { label: 'C', valor: "Adjetivo e Advérbio" }, { label: 'D', valor: "Preposição e Pronome" }, { label: 'E', valor: "Conjunção e Adjetivo" }], correta: 'A', explicacao: "Modifica verbo (estudo muito) = advérbio INVARIÁVEL. Acompanha substantivo (muitos livros) = pronome adjetivo VARIÁVEL." },
+    { id: 404, pergunta: "Em 'É proibido entrada', a concordância está:", opcoes: [{ label: 'A', valor: "Errada — deveria ser 'É proibida entrada'" }, { label: 'B', valor: "Correta — sem artigo, a expressão fica invariável" }, { label: 'C', valor: "Errada — deveria ser 'São proibidas entradas'" }, { label: 'D', valor: "Correta — mas somente no registro coloquial" }, { label: 'E', valor: "Errada — pois entrada é substantivo" }], correta: 'B', explicacao: "SEM artigo: 'É proibido/necessário/bom' fica invariável. COM artigo: 'É proibida A entrada' (concorda com o substantivo feminino)." },
+    { id: 405, pergunta: "O artigo transforma qualquer palavra em substantivo. Isso se chama:", opcoes: [{ label: 'A', valor: "Derivação prefixal" }, { label: 'B', valor: "Derivação imprópria (substantivação)" }, { label: 'C', valor: "Composição por justaposição" }, { label: 'D', valor: "Derivação sufixal" }, { label: 'E', valor: "Aglutinação" }], correta: 'B', explicacao: "O artigo é o 'Rei Midas': 'O cantar' (verbo→substantivo), 'O azul' (adjetivo→substantivo), 'Um não' (advérbio→substantivo)." },
+    { id: 406, pergunta: "Em 'Os guardas estão **alerta**', a palavra 'alerta' é:", opcoes: [{ label: 'A', valor: "Adjetivo (varia em número)" }, { label: 'B', valor: "Advérbio (invariável)" }, { label: 'C', valor: "Substantivo" }, { label: 'D', valor: "Pronome" }, { label: 'E', valor: "Preposição" }], correta: 'B', explicacao: "'Alerta' é advérbio e NUNCA varia. 'Os guardas estão alerta' (correto). 'Os guardas estão alertas' (ERRADO)." }
 ];
 
 const QUIZ_LABORATORIO_POOL: QuizQuestion[] = [
-    { id: 501, pergunta: "Assinale a alternativa em que ocorreu substantivação de um verbo:", opcoes: [{ label: 'A', valor: "**O amanhecer** na plataforma é surpreendente." }, { label: 'B', valor: "Os trabalhadores cantavam felizes." }, { label: 'C', valor: "Precisamos comprar novos equipamentos." }, { label: 'D', valor: "Eles vão construir uma nova sede." }], correta: 'A', explicacao: "O artigo 'O' antes de 'amanhecer' transforma o verbo em substantivo (derivação imprópria)." },
-    { id: 502, pergunta: "Em 'Iremos **embora** amanhã', a palavra destacada é:", opcoes: [{ label: 'A', valor: "Conjunção concessiva" }, { label: 'B', valor: "Advérbio de negação" }, { label: 'C', valor: "Advérbio de lugar/afastamento" }, { label: 'D', valor: "Preposição" }], correta: 'C', explicacao: "'Embora' originalmente vem de 'em boa hora'. Como advérbio, indica afastamento. Como conjunção (Embora chova...), indica concessão." },
-    { id: 503, pergunta: "Ela não é **nenhuma** especialista. A palavra destacada é:", opcoes: [{ label: 'A', valor: "Pronome indefinido" }, { label: 'B', valor: "Numeral" }, { label: 'C', valor: "Adjetivo" }, { label: 'D', valor: "Pronome interrogativo" }], correta: 'A', explicacao: "'Nenhuma' refere-se a 'especialista' de forma vaga/negativa, sendo pronome indefinido adjetivo." },
-    { id: 504, pergunta: "Qual das frases tem o adjetivo mudando de sentido pela posição?", opcoes: [{ label: 'A', valor: "Ele é um excelente engenheiro." }, { label: 'B', valor: "O **grande** líder / O líder **grande**" }, { label: 'C', valor: "Mesa suja / Computador sujo" }, { label: 'D', valor: "Relatório complexo" }], correta: 'B', explicacao: "'Grande líder' = notável. 'Líder grande' = alto/corpulento. A posição muda o significado." },
-    { id: 505, pergunta: "'**Porque** choveu, o poço secou' vs 'Leve guarda-chuva, **porque** vai chover'. São, respectivamente:", opcoes: [{ label: 'A', valor: "Causal e Explicativa" }, { label: 'B', valor: "Explicativa e Causal" }, { label: 'C', valor: "Ambas causais" }, { label: 'D', valor: "Ambas explicativas" }], correta: 'A', explicacao: "1ª: motivo real do fato = CAUSAL. 2ª: justificativa da sugestão = EXPLICATIVA." },
-    { id: 506, pergunta: "Em 'Seguem **em anexo** as cópias', 'em anexo' é:", opcoes: [{ label: 'A', valor: "Adjetivo (varia)" }, { label: 'B', valor: "Locução adverbial (invariável)" }, { label: 'C', valor: "Preposição" }, { label: 'D', valor: "Locução adjetiva" }], correta: 'B', explicacao: "'Em anexo' é locução e NÃO varia. Diferente de 'anexo' (adjetivo) que concorda: 'Seguem anexas as cópias'." },
-    { id: 507, pergunta: "Na frase 'Fui eu **que fiz**', o verbo concorda com:", opcoes: [{ label: 'A', valor: "O pronome relativo 'que'" }, { label: 'B', valor: "O antecedente 'eu'" }, { label: 'C', valor: "O predicativo" }, { label: 'D', valor: "É invariável" }], correta: 'B', explicacao: "Com pronome relativo QUE, o verbo concorda com o antecedente. 'Fui eu que FIZ' / 'Fomos nós que FIZEMOS'." },
-    { id: 508, pergunta: "'**Dois terços** dos técnicos **foram** aprovados'. O verbo concordou com:", opcoes: [{ label: 'A', valor: "A fração" }, { label: 'B', valor: "O especificador 'dos técnicos'" }, { label: 'C', valor: "O sujeito oculto" }, { label: 'D', valor: "O predicativo 'aprovados'" }], correta: 'B', explicacao: "Com fração + especificador, o verbo concorda com o especificador: 'dos técnicos' (plural) → 'foram'." },
-    { id: 509, pergunta: "A palavra '**menos**' é:", opcoes: [{ label: 'A', valor: "Adjetivo variável (menos/menas)" }, { label: 'B', valor: "Advérbio invariável (nunca 'menas')" }, { label: 'C', valor: "Pronome indefinido" }, { label: 'D', valor: "Numeral" }], correta: 'B', explicacao: "'MENOS' é advérbio e NUNCA varia. A forma 'menas' NÃO EXISTE na norma culta." },
-    { id: 510, pergunta: "Em 'O candidato fez uma prova **ruim**', o termo destacado é:", opcoes: [{ label: 'A', valor: "Substantivo" }, { label: 'B', valor: "Termo acessório" }, { label: 'C', valor: "Adjetivo" }, { label: 'D', valor: "Advérbio" }], correta: 'C', explicacao: "'Ruim' qualifica a prova (substantivo). Termos que qualificam nomes são Adjetivos." },
-    { id: 511, pergunta: "**Ambos** os candidatos foram aprovados. 'Ambos' é:", opcoes: [{ label: 'A', valor: "Pronome indefinido" }, { label: 'B', valor: "Numeral dual" }, { label: 'C', valor: "Adjetivo" }, { label: 'D', valor: "Advérbio" }], correta: 'B', explicacao: "'Ambos/ambas' é numeral dual (indica 'os dois'). Sempre concorda em gênero: ambos (masc.) / ambas (fem.)." },
-    { id: 512, pergunta: "**Ufa!** Que calor! A interjeição expressa:", opcoes: [{ label: 'A', valor: "Dor" }, { label: 'B', valor: "Alívio" }, { label: 'C', valor: "Admiração" }, { label: 'D', valor: "Desejo" }], correta: 'B', explicacao: "'Ufa!' é interjeição de alívio. O sentido depende do contexto, mas o uso mais comum de 'Ufa' é expressar alívio por algo ter terminado." },
-    { id: 513, pergunta: "Na frase 'Ele cantava **muito** bem', os termos destacados são, respectivamente:", opcoes: [{ label: 'A', valor: "Pronome indefinido / advérbio" }, { label: 'B', valor: "Advérbio de intensidade / advérbio de modo" }, { label: 'C', valor: "Adjetivo / pronome" }, { label: 'D', valor: "Advérbio / adjetivo" }], correta: 'B', explicacao: "'Muito' intensifica o advérbio 'bem' (modo de cantar). Ambos são invariáveis." },
-    { id: 514, pergunta: "Classifique o 'A' nesta frase: '**A** plataforma foi inspecionada passo **a** passo.'", opcoes: [{ label: 'A', valor: "Artigo / Artigo" }, { label: 'B', valor: "Preposição / Artigo" }, { label: 'C', valor: "Artigo / Preposição" }, { label: 'D', valor: "Preposição / Preposição" }], correta: 'C', explicacao: "O primeiro 'A' acompanha 'plataforma' (Artigo definido). O segundo liga palavras repetidas (Preposição)." },
-    { id: 515, pergunta: "Em 'Eles **se** cumprimentaram antes da reunião', a voz verbal é:", opcoes: [{ label: 'A', valor: "Ativa" }, { label: 'B', valor: "Passiva Analítica" }, { label: 'C', valor: "Passiva Sintética" }, { label: 'D', valor: "Reflexiva Recíproca" }], correta: 'D', explicacao: "A ação é trocada simultaneamente entre os membros do sujeito: um cumprimenta o outro e é cumprimentado por ele." },
-    { id: 516, pergunta: "Assinale onde ocorreu derivação imprópria (substantivação):", opcoes: [{ label: 'A', valor: "O técnico chegou." }, { label: 'B', valor: "Tinha um andar bonito." }, { label: 'C', valor: "Uma linda casa foi alugada." }, { label: 'D', valor: "Falaram sobre as melhorias." }], correta: 'B', explicacao: "'Andar', originalmente verbo, é transformado em substantivo pelo artigo 'um'." },
-    { id: 517, pergunta: "Qual frase tem verbo IMPESSOAL e concorda corretamente no plural?", opcoes: [{ label: 'A', valor: "Haviam muitas chances de aprovação." }, { label: 'B', valor: "Fazem dez anos da descoberta do pré-sal." }, { label: 'C', valor: "Pode haver sérios riscos no mar." }, { label: 'D', valor: "Devem fazer dias frios por aqui." }], correta: 'C', explicacao: "HAVER = Existir é impessoal (singular). Se tem auxiliar, ele acompanha o singular. Portanto, 'Pode haver' é correto; as outras estão erradas ('Havia', 'Faz', 'Deve fazer')." },
-    { id: 518, pergunta: "'O **que**' pode ser, dependendo do contexto:", opcoes: [{ label: 'A', valor: "Uma conjunção coordenativa apenas." }, { label: 'B', valor: "Um verbo ou um advérbio." }, { label: 'C', valor: "Um preposição ou um adjetivo." }, { label: 'D', valor: "Um pronome relativo ou conjunção integrante." }], correta: 'D', explicacao: "A palavra 'que' frequentemente atua como pronome relativo (o qual/a qual) ou conjunção subordinativa integrante (que as coisas melhorem)." },
-    { id: 519, pergunta: "Sobre 'Onde' e 'Aonde', marque a opção CORRETA:", opcoes: [{ label: 'A', valor: "Onde você vai?" }, { label: 'B', valor: "Aonde você está?" }, { label: 'C', valor: "O documento mostra aonde fica o tesouro." }, { label: 'D', valor: "Aonde nos leva esta tubulação?" }], correta: 'D', explicacao: "'Aonde' indica movimento (Para onde). O verbo 'levar' pede destino ('leva a'). As demais pedem estado/lugar fixo, portanto deveriam usar 'onde'." },
-    { id: 520, pergunta: "Em 'Fique quieto, **que** a palestra já começou', o 'que' equivale a:", opcoes: [{ label: 'A', valor: "Conjunção Causal" }, { label: 'B', valor: "Conjunção Explicativa (pois)" }, { label: 'C', valor: "Pronome Relativo" }, { label: 'D', valor: "Preposição" }], correta: 'B', explicacao: "Após verbo no imperativo ('Fique quieto'), o 'que' inicia oração coordenada explicativa, justificando a ordem." }
+    { id: 501, pergunta: "Assinale a alternativa em que ocorreu substantivação de um verbo:", opcoes: [{ label: 'A', valor: "**O amanhecer** na plataforma é surpreendente." }, { label: 'B', valor: "Os trabalhadores cantavam felizes." }, { label: 'C', valor: "Precisamos comprar novos equipamentos." }, { label: 'D', valor: "Eles vão construir uma nova sede." }, { label: 'E', valor: "A plataforma é muito segura." }], correta: 'A', explicacao: "O artigo 'O' antes de 'amanhecer' transforma o verbo em substantivo (derivação imprópria)." },
+    { id: 502, pergunta: "Em 'Iremos **embora** amanhã', a palavra destacada é:", opcoes: [{ label: 'A', valor: "Conjunção concessiva" }, { label: 'B', valor: "Advérbio de negação" }, { label: 'C', valor: "Advérbio de lugar/afastamento" }, { label: 'D', valor: "Preposição" }, { label: 'E', valor: "Substantivo" }], correta: 'C', explicacao: "'Embora' originalmente vem de 'em boa hora'. Como advérbio, indica afastamento. Como conjunção (Embora chova...), indica concessão." },
+    { id: 503, pergunta: "Ela não é **nenhuma** especialista. A palavra destacada é:", opcoes: [{ label: 'A', valor: "Pronome indefinido" }, { label: 'B', valor: "Numeral" }, { label: 'C', valor: "Adjetivo" }, { label: 'D', valor: "Pronome interrogativo" }, { label: 'E', valor: "Conjunção" }], correta: 'A', explicacao: "'Nenhuma' refere-se a 'especialista' de forma vaga/negativa, sendo pronome indefinido adjetivo." },
+    { id: 504, pergunta: "Qual das frases tem o adjetivo mudando de sentido pela posição?", opcoes: [{ label: 'A', valor: "Ele é um excelente engenheiro." }, { label: 'B', valor: "O **grande** líder / O líder **grande**" }, { label: 'C', valor: "Mesa suja / Computador sujo" }, { label: 'D', valor: "Relatório complexo" }, { label: 'E', valor: "Funcionário novo" }], correta: 'B', explicacao: "'Grande líder' = notável. 'Líder grande' = alto/corpulento. A posição muda o significado." },
+    { id: 505, pergunta: "'**Porque** choveu, o poço secou' vs 'Leve guarda-chuva, **porque** vai chover'. São, respectivamente:", opcoes: [{ label: 'A', valor: "Causal e Explicativa" }, { label: 'B', valor: "Explicativa e Causal" }, { label: 'C', valor: "Ambas causais" }, { label: 'D', valor: "Ambas explicativas" }, { label: 'E', valor: "Causal e Temporais" }], correta: 'A', explicacao: "1ª: motivo real do fato = CAUSAL. 2ª: justificativa da sugestão = EXPLICATIVA." },
+    { id: 506, pergunta: "Em 'Seguem **em anexo** as cópias', 'em anexo' é:", opcoes: [{ label: 'A', valor: "Adjetivo (varia)" }, { label: 'B', valor: "Locução adverbial (invariável)" }, { label: 'C', valor: "Preposição" }, { label: 'D', valor: "Locução adjetiva" }, { label: 'E', valor: "Conjunção" }], correta: 'B', explicacao: "'Em anexo' é locução e NÃO varia. Diferente de 'anexo' (adjetivo) que concorda: 'Seguem anexas as cópias'." },
+    { id: 507, pergunta: "Na frase 'Fui eu **que fiz**', o verbo concorda com:", opcoes: [{ label: 'A', valor: "O pronome relativo 'que'" }, { label: 'B', valor: "O antecedente 'eu'" }, { label: 'C', valor: "O predicativo" }, { label: 'D', valor: "É invariável" }, { label: 'E', valor: "Com o objeto direto" }], correta: 'B', explicacao: "Com pronome relativo QUE, o verbo concorda com o antecedente. 'Fui eu que FIZ' / 'Fomos nós que FIZEMOS'." },
+    { id: 508, pergunta: "'**Dois terços** dos técnicos **foram** aprovados'. O verbo concordou com:", opcoes: [{ label: 'A', valor: "A fração" }, { label: 'B', valor: "O especificador 'dos técnicos'" }, { label: 'C', valor: "O sujeito oculto" }, { label: 'D', valor: "O predicativo 'aprovados'" }, { label: 'E', valor: "Com o artigo" }], correta: 'B', explicacao: "Com fração + especificador, o verbo concorda com o especificador: 'dos técnicos' (plural) → 'foram'." },
+    { id: 509, pergunta: "A palavra '**menos**' é:", opcoes: [{ label: 'A', valor: "Adjetivo variável (menos/menas)" }, { label: 'B', valor: "Advérbio invariável (nunca 'menas')" }, { label: 'C', valor: "Pronome indefinido" }, { label: 'D', valor: "Numeral" }, { label: 'E', valor: "Conjunção" }], correta: 'B', explicacao: "'MENOS' é advérbio e NUNCA varia. A forma 'menas' NÃO EXISTE na norma culta." },
+    { id: 510, pergunta: "Em 'O candidato fez uma prova **ruim**', o termo destacado é:", opcoes: [{ label: 'A', valor: "Substantivo" }, { label: 'B', valor: "Termo acessório" }, { label: 'C', valor: "Adjetivo" }, { label: 'D', valor: "Advérbio" }, { label: 'E', valor: "Preposição" }], correta: 'C', explicacao: "'Ruim' qualifica a prova (substantivo). Termos que qualificam nomes são Adjetivos." },
+    { id: 511, pergunta: "**Ambos** os candidatos foram aprovados. 'Ambos' é:", opcoes: [{ label: 'A', valor: "Pronome indefinido" }, { label: 'B', valor: "Numeral dual" }, { label: 'C', valor: "Adjetivo" }, { label: 'D', valor: "Advérbio" }, { label: 'E', valor: "Artigo" }], correta: 'B', explicacao: "'Ambos/ambas' é numeral dual (indica 'os dois'). Sempre concorda em gênero: ambos (masc.) / ambas (fem.)." },
+    { id: 512, pergunta: "**Ufa!** Que calor! A interjeição expressa:", opcoes: [{ label: 'A', valor: "Dor" }, { label: 'B', valor: "Alívio" }, { label: 'C', valor: "Admiração" }, { label: 'D', valor: "Desejo" }, { label: 'E', valor: "Aversão" }], correta: 'B', explicacao: "'Ufa!' é interjeição de alívio. O sentido depende do contexto, mas o uso mais comum de 'Ufa' é expressar alívio por algo ter terminado." },
+    { id: 513, pergunta: "Na frase 'Ele cantava **muito** bem', os termos destacados são, respectivamente:", opcoes: [{ label: 'A', valor: "Pronome indefinido / advérbio" }, { label: 'B', valor: "Advérbio de intensidade / advérbio de modo" }, { label: 'C', valor: "Adjetivo / pronome" }, { label: 'D', valor: "Advérbio / adjetivo" }, { label: 'E', valor: "Verbo / substantivo" }], correta: 'B', explicacao: "'Muito' intensifica o advérbio 'bem' (modo de cantar). Ambos são invariáveis." },
+    { id: 514, pergunta: "Classifique o 'A' nesta frase: '**A** plataforma foi inspecionada passo **a** passo.'", opcoes: [{ label: 'A', valor: "Artigo / Artigo" }, { label: 'B', valor: "Preposição / Artigo" }, { label: 'C', valor: "Artigo / Preposição" }, { label: 'D', valor: "Preposição / Preposição" }, { label: 'E', valor: "Pronome / Verbo" }], correta: 'C', explicacao: "O primeiro 'A' acompanha 'plataforma' (Artigo definido). O segundo liga palavras repetidas (Preposição)." },
+    { id: 515, pergunta: "Em 'Eles **se** cumprimentaram antes da reunião', a voz verbal é:", opcoes: [{ label: 'A', valor: "Ativa" }, { label: 'B', valor: "Passiva Analítica" }, { label: 'C', valor: "Passiva Sintética" }, { label: 'D', valor: "Reflexiva Recíproca" }, { label: 'E', valor: "Voz Média" }], correta: 'D', explicacao: "A ação é trocada simultaneamente entre os membros do sujeito: um cumprimenta o outro e é cumprimentado por ele." },
+    { id: 516, pergunta: "Assinale onde ocorreu derivação imprópria (substantivação):", opcoes: [{ label: 'A', valor: "O técnico chegou." }, { label: 'B', valor: "Tinha um andar bonito." }, { label: 'C', valor: "Uma linda casa foi alugada." }, { label: 'D', valor: "Falaram sobre as melhorias." }, { label: 'E', valor: "O dia está belo." }], correta: 'B', explicacao: "'Andar', originalmente verbo, é transformado em substantivo pelo artigo 'um'." },
+    { id: 517, pergunta: "Qual frase tem verbo IMPESSOAL e concorda corretamente no plural?", opcoes: [{ label: 'A', valor: "Haviam muitas chances de aprovação." }, { label: 'B', valor: "Fazem dez anos da descoberta do pré-sal." }, { label: 'C', valor: "Pode haver sérios riscos no mar." }, { label: 'D', valor: "Devem fazer dias frios por aqui." }, { label: 'E', valor: "Vão haver novos concursos." }], correta: 'C', explicacao: "HAVER = Existir é impessoal (singular). Se tem auxiliar, ele acompanha o singular. Portanto, 'Pode haver' é correto; as outras estão erradas ('Havia', 'Faz', 'Deve fazer')." },
+    { id: 518, pergunta: "'O **que**' pode ser, dependendo do contexto:", opcoes: [{ label: 'A', valor: "Uma conjunção coordenativa apenas." }, { label: 'B', valor: "Um verbo ou um advérbio." }, { label: 'C', valor: "Um preposição ou um adjetivo." }, { label: 'D', valor: "Um pronome relativo ou conjunção integrante." }, { label: 'E', valor: "Apenas um artigo." }], correta: 'D', explicacao: "A palavra 'que' frequentemente atua como pronome relativo (o qual/a qual) ou conjunção subordinativa integrante (que as coisas melhorem)." },
+    { id: 519, pergunta: "Sobre 'Onde' e 'Aonde', marque a opção CORRETA:", opcoes: [{ label: 'A', valor: "Onde você vai?" }, { label: 'B', valor: "Aonde você está?" }, { label: 'C', valor: "O documento mostra aonde fica o tesouro." }, { label: 'D', valor: "Aonde nos leva esta tubulação?" }, { label: 'E', valor: "Onde nos leva este caminho?" }], correta: 'D', explicacao: "'Aonde' indica movimento (Para onde). O verbo 'levar' pede destino ('leva a'). As demais pedem estado/lugar fixo, portanto deveriam usar 'onde'." },
+    { id: 520, pergunta: "Em 'Fique quieto, **que** a palestra já começou', o 'que' equivale a:", opcoes: [{ label: 'A', valor: "Conjunção Causal" }, { label: 'B', valor: "Conjunção Explicativa (pois)" }, { label: 'C', valor: "Pronome Relativo" }, { label: 'D', valor: "Preposição" }, { label: 'E', valor: "Advérbio" }], correta: 'B', explicacao: "Após verbo no imperativo ('Fique quieto'), o 'que' inicia oração coordenada explicativa, justificando a ordem." }
 ];
 
 // ══════════════════════════════════════════════════════════════════════════
 // COMPONENTE PRINCIPAL
 // ══════════════════════════════════════════════════════════════════════════
 
-export default function AulaClassesPalavras({ onComplete, currentProgress, onUpdateProgress }: AulaProps) {
+export default function AulaClassesPalavras({ onComplete, currentProgress, onUpdateProgress, isCompleted }: AulaProps) {
     const [activeTab, setActiveTab] = useState('modulo-1');
     const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
     const [showCompletionBadge, setShowCompletionBadge] = useState(false);
@@ -322,10 +324,11 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
     };
 
     const isModuleUnlocked = useCallback((moduleIndex: number) => {
+        if (isCompleted) return true;
         if (moduleIndex === 0) return true;
         const prevModuleId = MODULE_DEFS[moduleIndex - 1]?.id;
         return prevModuleId ? completedModules.has(prevModuleId) : false;
-    }, [completedModules]);
+    }, [completedModules, isCompleted]);
 
     return (
         <div className="space-y-8 pb-20 animate-in fade-in duration-500">
@@ -359,7 +362,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         MÓDULO 1: VERBO & SUBSTANTIVO
                     ══════════════════════════════════════════════ */}
                     <TabsContent value="modulo-1" className="space-y-16 mt-6">
-                        <ModuleBanner numero={1} titulo="Verbo & Substantivo" descricao="As duas classes fundamentais da língua: o motor da frase e o nome de tudo que existe." gradiente="bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700" />
+                        <ModuleBanner numero={1} titulo="Verbo & Substantivo" descricao="As duas classes fundamentais da língua: o motor da frase e o nome de tudo que existe." gradiente="bg-gradient-to-br from-blue-700 via-indigo-600 to-cyan-600" />
 
                         {/* ── VERBO ── */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -622,7 +625,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                                 <FlipCard
                                     frente={
                                         <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                                            <span className="font-bold text-3xl md:text-4xl bg-gradient-to-r from-purple-600 to-indigo-500 bg-clip-text text-transparent drop-shadow-sm">Adjetivo</span>
+                                            <span className="font-bold text-3xl md:text-4xl bg-gradient-to-r from-cyan-600 to-blue-500 bg-clip-text text-transparent drop-shadow-sm">Adjetivo</span>
                                             <LuArrowDown className="w-10 h-10 text-muted-foreground/40 animate-bounce" />
                                             <span className="font-bold text-2xl md:text-3xl tracking-tight text-foreground/90">Substantivo</span>
                                         </div>
@@ -650,79 +653,66 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* Resumo + Quiz */}
-                        <section className="space-y-16">
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <ModuleSectionHeader index={9} title="Resumo e Multimídia" variant="indigo" />
                             <LessonTabs
-                                variant="indigo"
-                                title="Resumo: Verbo & Substantivo"
                                 tabs={[
                                     {
-                                        id: 'video',
-                                        label: 'Vídeo Resumo',
-                                        icon: LuVideo,
+                                        id: 'video', label: 'Vídeo Aula', icon: LuPlayCircle,
                                         content: (
-                                            <div className="max-w-4xl mx-auto w-full px-4 text-center space-y-6">
-                                                <div className="space-y-2">
-                                                    <h4 className="text-2xl font-bold">Revisão Estratégica</h4>
-                                                    <p className="text-muted-foreground">Assista à revisão em vídeo com os conceitos chaves de Verbos e Substantivos.</p>
-                                                </div>
-                                                <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: Verbos e Substantivos" duration="15 min" thumbnail="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" />
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        id: 'audio',
-                                        label: 'Áudio Revisão',
-                                        icon: LuHeadphones,
-                                        content: (
-                                            <div className="max-w-2xl mx-auto w-full px-6 py-12 text-center space-y-8">
-                                                <div className="space-y-3">
-                                                    <h4 className="text-2xl font-bold">Podcast do Aprovado</h4>
-                                                    <p className="text-muted-foreground">Ouça o resumo sempre que não puder ver a tela. Ideal para deslocamentos.</p>
-                                                </div>
-                                                <div className="bg-muted/50 p-8 rounded-3xl border border-border/50 shadow-inner">
-                                                    <audio src="#" controls className="w-full" />
+                                            <div className="w-full flex flex-col items-center py-6">
+                                                <div className="w-full max-w-3xl">
+                                                    <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: Verbos e Substantivos" duration="15:00" thumbnail="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1074&auto=format&fit=crop" />
                                                 </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        id: 'visual',
-                                        label: 'Mapa Mental',
-                                        icon: LuImage,
+                                        id: 'resumo', label: 'Resumo Visual', icon: LuBookOpen,
                                         content: (
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
-                                                <div className="aspect-[4/3] w-full bg-emerald-500/5 dark:bg-emerald-500/10 rounded-3xl flex flex-col items-center justify-center border-2 border-emerald-500/20 p-8 group hover:border-emerald-500/40 transition-all">
-                                                    <div className="w-16 h-16 rounded-2xl bg-emerald-500/20 flex items-center justify-center mb-6">
-                                                        <LuZap className="w-8 h-8 text-emerald-600" />
-                                                    </div>
-                                                    <h5 className="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-2">Flexões Verbais</h5>
-                                                    <p className="text-sm text-muted-foreground text-center">Esquema visual dos 5 tipos de flexões fundamentais para a prova.</p>
-                                                </div>
-                                                <div className="aspect-[4/3] w-full bg-teal-500/5 dark:bg-teal-500/10 rounded-3xl flex flex-col items-center justify-center border-2 border-teal-500/20 p-8 group hover:border-teal-500/40 transition-all">
-                                                    <div className="w-16 h-16 rounded-2xl bg-teal-500/20 flex items-center justify-center mb-6">
-                                                        <LuTag className="w-8 h-8 text-teal-600" />
-                                                    </div>
-                                                    <h5 className="text-xl font-bold text-teal-700 dark:text-teal-400 mb-2">Substantivos</h5>
-                                                    <p className="text-sm text-muted-foreground text-center">Classificações entre Concreto e Abstrato e suas implicações sintáticas.</p>
-                                                </div>
+                                            <ModuleSummaryCarouselNew
+                                                images={[
+                                                    { title: 'Mapa Mental: Flexões Verbais', type: 'Mapa Mental', imageUrl: '/mapa_mental_flexoes_verbais_1771813248545.png', placeholderColor: 'bg-emerald-100' },
+                                                    { title: 'Tabela: Modos e Tempos', type: 'Tabela', imageUrl: '/tabela_modos_tempos_1771813271456.png', placeholderColor: 'bg-teal-100' },
+                                                    { title: 'Infográfico: Substantivos', type: 'Infográfico', imageUrl: '/infografico_substantivos_1771813298248.png', placeholderColor: 'bg-amber-100' },
+                                                    { title: 'Card Resumo: Concreto vs Abstrato', type: 'Card', imageUrl: '/card_concreto_abstrato_1771813315566.png', placeholderColor: 'bg-indigo-100' },
+                                                ]}
+                                            />
+                                        )
+                                    },
+                                    {
+                                        id: 'visual', label: 'Macete Visual', icon: LuBrain,
+                                        content: (
+                                            <div className="text-center p-8 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-2xl border border-emerald-500/10">
+                                                <h3 className="text-xl font-bold text-foreground mb-4">Haver vs Existir</h3>
+                                                <div className="text-7xl my-8 animate-bounce">👤 ↔️ 👥</div>
+                                                <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                    "'Haver' fica no SINGULAR | 'Existir' vai para o PLURAL! Substituiu 'haver' por 'existir'? Flexione!"
+                                                </p>
                                             </div>
                                         )
                                     },
                                     {
-                                        id: 'macete',
-                                        label: 'Macete',
-                                        icon: LuZap,
+                                        id: 'audio', label: 'Áudio Resumo', icon: LuMusic,
                                         content: (
-                                            <div className="max-w-3xl mx-auto p-12 text-center space-y-8 bg-gradient-to-br from-yellow-500/5 to-amber-500/5 rounded-[40px] border border-yellow-500/20">
-                                                <div className="w-20 h-20 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto ring-8 ring-yellow-500/10">
-                                                    <LuZap className="w-10 h-10 text-yellow-600" />
-                                                </div>
-                                                <div className="space-y-4">
-                                                    <h4 className="text-2xl font-bold text-yellow-700 dark:text-yellow-400">Verbo Impessoal (Haver vs Existir)</h4>
-                                                    <p className="text-lg leading-relaxed text-muted-foreground">
-                                                        Substituiu <strong>'haver'</strong> por <strong>'existir'</strong>? Lembre-se: <br />
-                                                        <span className="text-foreground font-bold font-mono px-2 py-1 bg-background rounded-lg border border-border shadow-sm mt-3 inline-block">'Haver' fica no SINGULAR | 'Existir' vai para o PLURAL!</span>
-                                                    </p>
+                                            <div className="w-full flex justify-center py-4">
+                                                <div className="w-full max-w-md">
+                                                    <MusicPlayerCard
+                                                        audioUrl="#"
+                                                        titulo="Funk do Verbo e Substantivo"
+                                                        artista="Prof. André"
+                                                        capaUrl="https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=1000&auto=format&fit=crop"
+                                                        lyrics={`(Verso 1)
+Verbo flexiona em tempo, modo e pessoa
+Substantivo dá nome a tudo que se sonha
+Concreto pega, abstrato pensa
+É a base da língua, a força imensa!
+
+(Refrão)
+Haver no singular, existir no plural
+É a regra de ouro, parceiro, é fundamental!
+                                                        `}
+                                                    />
                                                 </div>
                                             </div>
                                         )
@@ -731,7 +721,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             />
                         </section>
                         <section className="mt-16">
-                            <QuizInterativo questoes={qMod1} titulo="Quiz — Verbo & Substantivo" icone="📝" numero={8} onComplete={(score) => handleModuleComplete('modulo-1', score)} />
+                            <QuizInterativo questoes={qMod1} titulo="Quiz — Verbo & Substantivo" icone="📝" numero={10} onComplete={(score) => handleModuleComplete('modulo-1', score)} />
                         </section>
                     </TabsContent>
                     {/* ══════════════════════════════════════════════
@@ -925,63 +915,67 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* Resumo + Quiz */}
-                        <section className="space-y-16">
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <ModuleSectionHeader index={7} title="Resumo e Multimídia" variant="blue" />
                             <LessonTabs
-                                variant="blue"
-                                title="Resumo: Pronome & Adjetivo"
                                 tabs={[
                                     {
-                                        id: 'video', label: 'Vídeo Resumo', icon: LuVideo,
+                                        id: 'video', label: 'Vídeo Aula', icon: LuPlayCircle,
                                         content: (
-                                            <div className="max-w-4xl mx-auto w-full px-4 text-center space-y-6">
-                                                <div className="space-y-2">
-                                                    <h4 className="text-2xl font-bold">Revisão Estratégica</h4>
-                                                    <p className="text-muted-foreground">Assista à revisão em vídeo sobre Pronomes e Adjetivos.</p>
-                                                </div>
-                                                <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: Pronomes e Adjetivos" duration="15 min" thumbnail="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" />
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        id: 'audio', label: 'Áudio Revisão', icon: LuHeadphones,
-                                        content: (
-                                            <div className="max-w-2xl mx-auto w-full px-6 py-12 text-center space-y-8">
-                                                <div className="space-y-3">
-                                                    <h4 className="text-2xl font-bold">Podcast do Aprovado</h4>
-                                                    <p className="text-muted-foreground">Revisão em áudio dos pontos críticos para a prova.</p>
-                                                </div>
-                                                <div className="bg-muted/50 p-8 rounded-3xl border border-border/50">
-                                                    <audio src="#" controls className="w-full" />
+                                            <div className="w-full flex flex-col items-center py-6">
+                                                <div className="w-full max-w-3xl">
+                                                    <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: Pronomes e Adjetivos" duration="15:00" thumbnail="https://images.unsplash.com/photo-1434030216411-0bb7c3f3dfad?q=80&w=1000&auto=format&fit=crop" />
                                                 </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        id: 'visual', label: 'Tabela Pessoais', icon: LuImage,
+                                        id: 'resumo', label: 'Resumo Visual', icon: LuBookOpen,
                                         content: (
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
-                                                <div className="aspect-[4/3] w-full bg-blue-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-blue-500/20 p-8">
-                                                    <h5 className="text-xl font-bold text-blue-700 dark:text-blue-400 mb-2">Pessoais</h5>
-                                                    <p className="text-sm text-muted-foreground text-center">Retos (Sujeito) vs Oblíquos (Objeto). A base da sintaxe de pronomes.</p>
-                                                </div>
-                                                <div className="aspect-[4/3] w-full bg-indigo-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-indigo-500/20 p-8">
-                                                    <h5 className="text-xl font-bold text-indigo-700 dark:text-indigo-400 mb-2">Adjetivos</h5>
-                                                    <p className="text-sm text-muted-foreground text-center">Mudança de sentido conforme a posição em relação ao substantivo.</p>
-                                                </div>
-                                            </div>
+                                            <ModuleSummaryCarouselNew
+                                                images={[
+                                                    { title: 'Mapa Mental: Pronomes Pessoais', type: 'Mapa Mental', imageUrl: '/mapa_mental_pronomes_pessoais_1771813346804.png', placeholderColor: 'bg-blue-100' },
+                                                    { title: 'Tabela: Retos vs Oblíquos', type: 'Tabela', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
+                                                    { title: 'Infográfico: Colocação Pronominal', type: 'Infográfico', placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30' },
+                                                    { title: 'Card Resumo: Adjetivos — Posição e Sentido', type: 'Card', placeholderColor: 'bg-amber-100 dark:bg-amber-900/30' },
+                                                ]}
+                                            />
                                         )
                                     },
                                     {
-                                        id: 'macete', label: 'Macete', icon: LuZap,
+                                        id: 'visual', label: 'Macete Visual', icon: LuBrain,
                                         content: (
-                                            <div className="max-w-3xl mx-auto p-12 text-center space-y-8 bg-blue-500/5 rounded-[40px] border border-blue-500/20">
-                                                <div className="w-20 h-20 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                                                    <LuZap className="w-10 h-10 text-blue-600" />
-                                                </div>
-                                                <h4 className="text-2xl font-bold text-blue-700">Regra de Ouro: Próclise</h4>
-                                                <p className="text-lg text-muted-foreground italic">
-                                                    &quot;Palavras negativas, advérbios e pronomes relativos são imãs de próclise: eles puxam o pronome para antes do verbo!&quot;
+                                            <div className="text-center p-8 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-2xl border border-blue-500/10">
+                                                <h3 className="text-xl font-bold text-foreground mb-4">Regra de Ouro: Próclise</h3>
+                                                <div className="text-7xl my-8 animate-bounce">🧲 ⬅️ 💬</div>
+                                                <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                    "Palavras negativas, advérbios e pronomes relativos são ímãs de próclise: puxam o pronome para ANTES do verbo!"
                                                 </p>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'audio', label: 'Áudio Resumo', icon: LuMusic,
+                                        content: (
+                                            <div className="w-full flex justify-center py-4">
+                                                <div className="w-full max-w-md">
+                                                    <MusicPlayerCard
+                                                        audioUrl="#"
+                                                        titulo="Samba do Pronome"
+                                                        artista="Prof. André"
+                                                        capaUrl="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1000&auto=format&fit=crop"
+                                                        lyrics={`(Verso 1)
+Pronome pessoal, reto ou oblíquo
+Antes do verbo com negação, é próclise, amigo!
+Adjetivo muda de acordo com o lugar
+Antes do nome: sentido figurado pra brilhar!
+
+(Refrão)
+É próclise, é ênclise, é mesóclise
+Na Cesgranrio não tem bobice!
+                                                        `}
+                                                    />
+                                                </div>
                                             </div>
                                         )
                                     }
@@ -989,14 +983,14 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             />
                         </section>
                         <section className="mt-16">
-                            <QuizInterativo questoes={qMod2} titulo="Quiz — Pronome & Adjetivo" icone="⚡" numero={7} onComplete={(score) => handleModuleComplete('modulo-2', score)} />
+                            <QuizInterativo questoes={qMod2} titulo="Quiz — Pronome & Adjetivo" icone="⚡" numero={8} onComplete={(score) => handleModuleComplete('modulo-2', score)} />
                         </section>
                     </TabsContent>
                     {/* ══════════════════════════════════════════════
                         MÓDULO 3: CONJUNÇÃO & PREPOSIÇÃO
                     ══════════════════════════════════════════════ */}
                     <TabsContent value="modulo-3" className="space-y-16 mt-6">
-                        <ModuleBanner numero={3} titulo="Conjunção & Preposição" descricao="Os conectivos que unem orações e os elos que subordinam termos. Bases de coesão e regência." gradiente="bg-gradient-to-br from-amber-600 via-orange-600 to-yellow-700" />
+                        <ModuleBanner numero={3} titulo="Conjunção & Preposição" descricao="Os conectivos que unem orações e os elos que subordinam termos. Bases de coesão e regência." gradiente="bg-gradient-to-br from-blue-800 via-cyan-700 to-teal-500" />
 
                         {/* ── CONJUNÇÃO ── */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1480,63 +1474,67 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* Resumo + Quiz */}
-                        <section className="space-y-16">
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <ModuleSectionHeader index={7} title="Resumo e Multimídia" variant="amber" />
                             <LessonTabs
-                                variant="amber"
-                                title="Resumo: Conjunção & Preposição"
                                 tabs={[
                                     {
-                                        id: 'video', label: 'Vídeo Resumo', icon: LuVideo,
+                                        id: 'video', label: 'Vídeo Aula', icon: LuPlayCircle,
                                         content: (
-                                            <div className="max-w-4xl mx-auto w-full px-4 text-center space-y-6">
-                                                <div className="space-y-2">
-                                                    <h4 className="text-2xl font-bold">Revisão Estratégica</h4>
-                                                    <p className="text-muted-foreground">Assista à revisão em vídeo sobre Conjunções e Preposições.</p>
-                                                </div>
-                                                <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: Conjunções e Preposições" duration="15 min" thumbnail="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" />
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        id: 'audio', label: 'Áudio Revisão', icon: LuHeadphones,
-                                        content: (
-                                            <div className="max-w-2xl mx-auto w-full px-6 py-12 text-center space-y-8">
-                                                <div className="space-y-3">
-                                                    <h4 className="text-2xl font-bold">Podcast do Aprovado</h4>
-                                                    <p className="text-muted-foreground">Ouça o resumo sempre que não puder ver a tela. Ideal para deslocamentos.</p>
-                                                </div>
-                                                <div className="bg-muted/50 p-8 rounded-3xl border border-border/50">
-                                                    <audio src="#" controls className="w-full" />
+                                            <div className="w-full flex flex-col items-center py-6">
+                                                <div className="w-full max-w-3xl">
+                                                    <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: Conjunções e Preposições" duration="15:00" thumbnail="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=1000&auto=format&fit=crop" />
                                                 </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        id: 'visual', label: 'Mapa Mental', icon: LuImage,
+                                        id: 'resumo', label: 'Resumo Visual', icon: LuBookOpen,
                                         content: (
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
-                                                <div className="aspect-[4/3] w-full bg-amber-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-amber-500/20 p-8 transition-all hover:bg-amber-500/10">
-                                                    <h5 className="text-xl font-bold text-amber-700 dark:text-amber-400 mb-2">Conjunções</h5>
-                                                    <p className="text-sm text-muted-foreground text-center">Os 5 tipos coordenativos e os 9 subordinativos em um só lugar.</p>
-                                                </div>
-                                                <div className="aspect-[4/3] w-full bg-orange-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-orange-500/20 p-8 transition-all hover:bg-orange-500/10">
-                                                    <h5 className="text-xl font-bold text-orange-700 dark:text-orange-400 mb-2">Preposições</h5>
-                                                    <p className="text-sm text-muted-foreground text-center">Tabela de contrações (de+o, em+a) e relações semânticas.</p>
-                                                </div>
-                                            </div>
+                                            <ModuleSummaryCarouselNew
+                                                images={[
+                                                    { title: 'Mapa Mental: Conjunções Coordenativas', type: 'Mapa Mental', placeholderColor: 'bg-amber-100 dark:bg-amber-900/30' },
+                                                    { title: 'Tabela: Subordinativas', type: 'Tabela', placeholderColor: 'bg-orange-100 dark:bg-orange-900/30' },
+                                                    { title: 'Infográfico: Preposições', type: 'Infográfico', placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30' },
+                                                    { title: 'Card Resumo: Contrações', type: 'Card', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
+                                                ]}
+                                            />
                                         )
                                     },
                                     {
-                                        id: 'macete', label: 'Macete', icon: LuZap,
+                                        id: 'visual', label: 'Macete Visual', icon: LuBrain,
                                         content: (
-                                            <div className="max-w-3xl mx-auto p-12 text-center space-y-8 bg-amber-500/5 rounded-[40px] border border-amber-500/20">
-                                                <div className="w-20 h-20 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                                                    <LuZap className="w-10 h-10 text-amber-600" />
-                                                </div>
-                                                <h4 className="text-2xl font-bold text-amber-700">Causal vs Explicativa</h4>
-                                                <p className="text-lg text-muted-foreground">
-                                                    &quot;Verbo no <strong>Imperativo</strong> antes do 'que/porque'? É <strong>Explicativa</strong>! Se for um fato já ocorrido motivando outro, é <strong>Causal</strong>.&quot;
+                                            <div className="text-center p-8 bg-gradient-to-br from-amber-500/5 to-orange-500/5 rounded-2xl border border-amber-500/10">
+                                                <h3 className="text-xl font-bold text-foreground mb-4">Causal vs Explicativa</h3>
+                                                <div className="text-7xl my-8 animate-bounce">⚖️ 💡 ❗</div>
+                                                <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                    "Verbo no <span className="text-amber-600 font-bold">Imperativo</span> antes do 'que/porque'? É <span className="text-amber-600 font-bold">Explicativa</span>! Fato já ocorrido motivando outro? É <span className="text-amber-600 font-bold">Causal</span>!"
                                                 </p>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'audio', label: 'Áudio Resumo', icon: LuMusic,
+                                        content: (
+                                            <div className="w-full flex justify-center py-4">
+                                                <div className="w-full max-w-md">
+                                                    <MusicPlayerCard
+                                                        audioUrl="#"
+                                                        titulo="Rap da Conjunção"
+                                                        artista="Prof. André"
+                                                        capaUrl="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop"
+                                                        lyrics={`(Verso 1)
+Conjunção coordena, subordina também
+Aditiva soma, adversativa faz o revés
+Preposição liga termos, cria relação
+De, em, por, para — elos de coesão!
+
+(Refrão)
+Causal ou explicativa, presta atenção
+Imperativo antes? Explicação!
+                                                        `}
+                                                    />
+                                                </div>
                                             </div>
                                         )
                                     }
@@ -1544,7 +1542,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             />
                         </section>
                         <section className="mt-16">
-                            <QuizInterativo questoes={qMod3} titulo="Quiz — Conjunção & Preposição" icone="🔗" numero={7} onComplete={(score) => handleModuleComplete('modulo-3', score)} />
+                            <QuizInterativo questoes={qMod3} titulo="Quiz — Conjunção & Preposição" icone="🔗" numero={8} onComplete={(score) => handleModuleComplete('modulo-3', score)} />
                         </section>
                     </TabsContent>
                     {/* ══════════════════════════════════════════════
@@ -1818,63 +1816,67 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* Resumo + Quiz */}
-                        <section className="space-y-16">
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <ModuleSectionHeader index={6} title="Resumo e Multimídia" variant="rose" />
                             <LessonTabs
-                                variant="rose"
-                                title="Resumo: Advérbio & Artigo"
                                 tabs={[
                                     {
-                                        id: 'video', label: 'Vídeo Resumo', icon: LuVideo,
+                                        id: 'video', label: 'Vídeo Aula', icon: LuPlayCircle,
                                         content: (
-                                            <div className="max-w-4xl mx-auto w-full px-4 text-center space-y-6">
-                                                <div className="space-y-2">
-                                                    <h4 className="text-2xl font-bold">Revisão Estratégica</h4>
-                                                    <p className="text-muted-foreground">Assista à revisão em vídeo sobre Advérbios e Artigos.</p>
-                                                </div>
-                                                <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: Advérbios e Artigos" duration="15 min" thumbnail="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" />
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        id: 'audio', label: 'Áudio Revisão', icon: LuHeadphones,
-                                        content: (
-                                            <div className="max-w-2xl mx-auto w-full px-6 py-12 text-center space-y-8">
-                                                <div className="space-y-3">
-                                                    <h4 className="text-2xl font-bold">Podcast do Aprovado</h4>
-                                                    <p className="text-muted-foreground">Ouça o resumo sempre que não puder ver a tela. Ideal para deslocamentos.</p>
-                                                </div>
-                                                <div className="bg-muted/50 p-8 rounded-3xl border border-border/50">
-                                                    <audio src="#" controls className="w-full" />
+                                            <div className="w-full flex flex-col items-center py-6">
+                                                <div className="w-full max-w-3xl">
+                                                    <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: Advérbios e Artigos" duration="15:00" thumbnail="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1000&auto=format&fit=crop" />
                                                 </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        id: 'visual', label: 'Mapa Mental', icon: LuImage,
+                                        id: 'resumo', label: 'Resumo Visual', icon: LuBookOpen,
                                         content: (
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
-                                                <div className="aspect-[4/3] w-full bg-rose-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-rose-500/20 p-8 transition-all hover:bg-rose-500/10">
-                                                    <h5 className="text-xl font-bold text-rose-700 dark:text-rose-400 mb-2">Advérbios</h5>
-                                                    <p className="text-sm text-muted-foreground text-center">Classificações: Lugar, Tempo, Modo, Intensidade e Negação.</p>
-                                                </div>
-                                                <div className="aspect-[4/3] w-full bg-pink-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-pink-500/20 p-8 transition-all hover:bg-pink-500/10">
-                                                    <h5 className="text-xl font-bold text-pink-700 dark:text-pink-400 mb-2">Artigos</h5>
-                                                    <p className="text-sm text-muted-foreground text-center">Substantivação e a regra do Proibido/Necessário com artigo.</p>
-                                                </div>
-                                            </div>
+                                            <ModuleSummaryCarouselNew
+                                                images={[
+                                                    { title: 'Mapa Mental: Classificação dos Advérbios', type: 'Mapa Mental', placeholderColor: 'bg-rose-100 dark:bg-rose-900/30' },
+                                                    { title: 'Tabela: Advérbio vs Adjetivo', type: 'Tabela', placeholderColor: 'bg-pink-100 dark:bg-pink-900/30' },
+                                                    { title: 'Infográfico: Artigos Definidos e Indefinidos', type: 'Infográfico', placeholderColor: 'bg-amber-100 dark:bg-amber-900/30' },
+                                                    { title: 'Card Resumo: Substantivação', type: 'Card', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
+                                                ]}
+                                            />
                                         )
                                     },
                                     {
-                                        id: 'macete', label: 'Macete', icon: LuZap,
+                                        id: 'visual', label: 'Macete Visual', icon: LuBrain,
                                         content: (
-                                            <div className="max-w-3xl mx-auto p-12 text-center space-y-8 bg-rose-500/5 rounded-[40px] border border-rose-500/20">
-                                                <div className="w-20 h-20 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                                                    <LuZap className="w-10 h-10 text-rose-600" />
-                                                </div>
-                                                <h4 className="text-2xl font-bold text-rose-700">O Teste do 'Muito'</h4>
-                                                <p className="text-lg text-muted-foreground">
-                                                    &quot;Na dúvida se uma palavra é Advérbio ou Adjetivo, troque por 'muito'. Se ficar invariável, é <strong>Advérbio</strong>. Se virar 'muitos/muitas', é <strong>Adjetivo/Pronome</strong>!&quot;
+                                            <div className="text-center p-8 bg-gradient-to-br from-rose-500/5 to-pink-500/5 rounded-2xl border border-rose-500/10">
+                                                <h3 className="text-xl font-bold text-foreground mb-4">O Teste do 'Muito'</h3>
+                                                <div className="text-7xl my-8 animate-bounce">🧐 ❓ 🎯</div>
+                                                <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                    "Troque por 'muito'. Se ficar <span className="text-rose-600 font-bold">invariável</span>, é Advérbio. Se virar 'muitos/muitas', é <span className="text-rose-600 font-bold">Adjetivo/Pronome</span>!"
                                                 </p>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'audio', label: 'Áudio Resumo', icon: LuMusic,
+                                        content: (
+                                            <div className="w-full flex justify-center py-4">
+                                                <div className="w-full max-w-md">
+                                                    <MusicPlayerCard
+                                                        audioUrl="#"
+                                                        titulo="Pagode do Advérbio"
+                                                        artista="Prof. André"
+                                                        capaUrl="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1000&auto=format&fit=crop"
+                                                        lyrics={`(Verso 1)
+Advérbio modifica verbo, adjetivo e a si
+Invariável na forma, nunca muda aqui
+Artigo determina, define ou generaliza
+Com ele o verbo vira nome — substantiviza!
+
+(Refrão)
+Teste do muito, parceiro, vai lá!
+Se não flexiona, advérbio vai ficar!
+                                                        `}
+                                                    />
+                                                </div>
                                             </div>
                                         )
                                     }
@@ -1882,26 +1884,26 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             />
                         </section>
                         <section className="mt-16">
-                            <QuizInterativo questoes={qMod4} titulo="Quiz — Advérbio & Artigo" icone="🎯" numero={6} onComplete={(score) => handleModuleComplete('modulo-4', score)} />
+                            <QuizInterativo questoes={qMod4} titulo="Quiz — Advérbio & Artigo" icone="🎯" numero={7} onComplete={(score) => handleModuleComplete('modulo-4', score)} />
                         </section>
                     </TabsContent>
                     {/* ══════════════════════════════════════════════
                         MÓDULO 5: NUMERAL, INTERJEIÇÃO & LABORATÓRIO
                     ══════════════════════════════════════════════ */}
                     <TabsContent value="modulo-5" className="space-y-16 mt-6">
-                        <ModuleBanner numero={5} titulo="Numeral, Interjeição & Laboratório Final" descricao="As duas classes de menor frequência na prova e o simulado integrador de todas as 10 classes gramaticais." gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700" />
+                        <ModuleBanner numero={5} titulo="Numeral, Interjeição & Laboratório Final" descricao="As duas classes de menor frequência na prova e o simulado integrador de todas as 10 classes gramaticais." gradiente="bg-gradient-to-br from-emerald-600 via-teal-700 to-cyan-800" />
 
                         {/* ── NUMERAL ── */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-                            <ModuleSectionHeader index={1} title="O Numeral — Conceito Científico" variant="violet" />
+                            <ModuleSectionHeader index={1} title="O Numeral — Conceito Científico" variant="emerald" />
                             <p className="text-lg text-muted-foreground text-justify leading-relaxed">
                                 O <strong>Numeral</strong> é a classe de palavra que indica <strong>quantidade</strong>, <strong>ordem</strong>, <strong>multiplicação</strong> ou <strong>fração</strong> dos seres. Diferente do que parece, em provas da Cesgranrio ele aparece disfarçado em questões de concordância (&quot;ambos&quot;, &quot;meio/meia&quot;) e não como cálculo matemático.
                             </p>
                         </section>
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-                            <ModuleSectionHeader index={2} title="Classificações e Armadilhas" variant="violet" />
-                            <ContentAccordion mode="stacked" slidesPerView={1} titulo="Os 4 Tipos de Numeral" icone={<LuHash />} corIndicador="bg-violet-500" defaultOpen={true} slides={[
+                            <ModuleSectionHeader index={2} title="Classificações e Armadilhas" variant="emerald" />
+                            <ContentAccordion mode="stacked" slidesPerView={1} titulo="Os 4 Tipos de Numeral" icone={<LuHash />} corIndicador="bg-emerald-500" defaultOpen={true} slides={[
                                 {
                                     titulo: '1. Cardinal', icone: '1️⃣', conteudo: (
                                         <div className="space-y-6">
@@ -1973,12 +1975,12 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                         {/* ── INTERJEIÇÃO ── */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-                            <ModuleSectionHeader index={3} title="A Interjeição — Emoções e Pontuação" variant="violet" />
+                            <ModuleSectionHeader index={3} title="A Interjeição — Emoções e Pontuação" variant="emerald" />
                             <p className="text-base text-muted-foreground leading-relaxed text-justify">
                                 A <strong>Interjeição</strong> é a classe de palavra <strong>invariável</strong> que expressa <strong>emoções</strong> ou <strong>reações</strong> súbitas do falante. Na Cesgranrio, o foco cai quase exclusivamente em interpretação textual (o tom da mensagem) e na <strong>pontuação</strong> associada às repetições.
                             </p>
 
-                            <ContentAccordion mode="stacked" slidesPerView={1} titulo="Como Expressar e Pontuar a Emoção" icone={<LuZap />} corIndicador="bg-violet-500" defaultOpen={true} slides={[
+                            <ContentAccordion mode="stacked" slidesPerView={1} titulo="Como Expressar e Pontuar a Emoção" icone={<LuZap />} corIndicador="bg-emerald-500" defaultOpen={true} slides={[
                                 {
                                     titulo: '1. Regras de Ouro', icone: '🎯', conteudo: (
                                         <div className="space-y-6">
@@ -2019,7 +2021,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-                            <ModuleSectionHeader index={4} title="As Locuções Interjetivas" variant="violet" />
+                            <ModuleSectionHeader index={4} title="As Locuções Interjetivas" variant="emerald" />
                             <p className="text-base text-muted-foreground leading-relaxed text-justify">
                                 As locuções ocorrem quando <strong>duas ou mais palavras juntas</strong> assumem o exato papel e valor de uma única interjeição. São muito comuns na linguagem cotidiana.
                             </p>
@@ -2036,7 +2038,7 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                         {/* ── LABORATÓRIO FINAL ── */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-                            <ModuleSectionHeader index={5} title="Quadro-Resumo — As 10 Classes Gramaticais" variant="violet" />
+                            <ModuleSectionHeader index={5} title="Quadro-Resumo — As 10 Classes Gramaticais" variant="emerald" />
                             <AlertBox tipo="info" titulo="Hora de consolidar tudo!">
                                 Antes do simulado final, relembre as 10 classes. Use este resumo como revisão rápida antes da prova.
                             </AlertBox>
@@ -2062,63 +2064,67 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                         </section>
 
                         {/* Resumo Visual + Simulado Final */}
-                        <section className="space-y-16">
+                        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+                            <ModuleSectionHeader index={6} title="Resumo e Multimídia" variant="emerald" />
                             <LessonTabs
-                                variant="violet"
-                                title="Resumo: 10 Classes Clássicas"
                                 tabs={[
                                     {
-                                        id: 'video', label: 'Vídeo Resumo', icon: LuVideo,
+                                        id: 'video', label: 'Vídeo Aula', icon: LuPlayCircle,
                                         content: (
-                                            <div className="max-w-4xl mx-auto w-full px-4 text-center space-y-6">
-                                                <div className="space-y-2">
-                                                    <h4 className="text-2xl font-bold">Revisão Integrada</h4>
-                                                    <p className="text-muted-foreground">Assista à revisão em vídeo de todas as classes gramaticais.</p>
-                                                </div>
-                                                <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: 10 Classes de Palavras" duration="15 min" thumbnail="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" />
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        id: 'audio', label: 'Áudio Revisão', icon: LuHeadphones,
-                                        content: (
-                                            <div className="max-w-2xl mx-auto w-full px-6 py-12 text-center space-y-8">
-                                                <div className="space-y-3">
-                                                    <h4 className="text-2xl font-bold">Podcast do Aprovado</h4>
-                                                    <p className="text-muted-foreground">Revisão completa das 10 classes para ouvir onde quiser.</p>
-                                                </div>
-                                                <div className="bg-muted/50 p-8 rounded-3xl border border-border/50">
-                                                    <audio src="#" controls className="w-full" />
+                                            <div className="w-full flex flex-col items-center py-6">
+                                                <div className="w-full max-w-3xl">
+                                                    <VideoModal videoId="dQw4w9WgXcQ" title="Resumo: 10 Classes de Palavras" duration="15:00" thumbnail="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1000&auto=format&fit=crop" />
                                                 </div>
                                             </div>
                                         )
                                     },
                                     {
-                                        id: 'visual', label: 'Mapa Mental', icon: LuImage,
+                                        id: 'resumo', label: 'Resumo Visual', icon: LuBookOpen,
                                         content: (
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
-                                                <div className="aspect-[4/3] w-full bg-violet-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-violet-500/20 p-8 transition-all hover:bg-violet-500/10">
-                                                    <h5 className="text-xl font-bold text-violet-700 dark:text-violet-400 mb-2">As 10 Classes</h5>
-                                                    <p className="text-sm text-muted-foreground text-center">Esquema visual completo de todas as categorias morfológicas.</p>
-                                                </div>
-                                                <div className="aspect-[4/3] w-full bg-indigo-500/5 rounded-3xl flex flex-col items-center justify-center border-2 border-indigo-500/20 p-8 transition-all hover:bg-indigo-500/10">
-                                                    <h5 className="text-xl font-bold text-indigo-700 dark:text-indigo-400 mb-2">Relacionamentos</h5>
-                                                    <p className="text-sm text-muted-foreground text-center">Como cada classe se relaciona entre si (ex: Advérbio modifica Verbo).</p>
-                                                </div>
-                                            </div>
+                                            <ModuleSummaryCarouselNew
+                                                images={[
+                                                    { title: 'Mapa Mental: As 10 Classes', type: 'Mapa Mental', placeholderColor: 'bg-violet-100 dark:bg-violet-900/30' },
+                                                    { title: 'Tabela: Variáveis vs Invariáveis', type: 'Tabela', placeholderColor: 'bg-indigo-100 dark:bg-indigo-900/30' },
+                                                    { title: 'Infográfico: Relacionamentos', type: 'Infográfico', placeholderColor: 'bg-emerald-100 dark:bg-emerald-900/30' },
+                                                    { title: 'Card Resumo: CIA P (Invariáveis)', type: 'Card', placeholderColor: 'bg-amber-100 dark:bg-amber-900/30' },
+                                                ]}
+                                            />
                                         )
                                     },
                                     {
-                                        id: 'macete', label: 'Macete', icon: LuZap,
+                                        id: 'visual', label: 'Macete Visual', icon: LuBrain,
                                         content: (
-                                            <div className="max-w-3xl mx-auto p-12 text-center space-y-8 bg-violet-500/5 rounded-[40px] border border-violet-500/20">
-                                                <div className="w-20 h-20 bg-violet-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                                                    <LuZap className="w-10 h-10 text-violet-600" />
-                                                </div>
-                                                <h4 className="text-2xl font-bold text-violet-700">O Macete Final: CIA P</h4>
-                                                <p className="text-lg text-muted-foreground">
-                                                    &quot;As classes <strong>INVARIÁVEIS</strong> são a <strong>CIA P</strong>: <strong>C</strong>onjunção, <strong>I</strong>nterjeição, <strong>A</strong>dvérbio e <strong>P</strong>reposição. Todo o resto varia!&quot;
+                                            <div className="text-center p-8 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-2xl border border-emerald-500/10">
+                                                <h3 className="text-xl font-bold text-foreground mb-4">O Macete Final: CIA P</h3>
+                                                <div className="text-7xl my-8 animate-bounce">🕵️‍♂️ 🏷️ 🔒</div>
+                                                <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                                                    "As classes <span className="text-emerald-600 font-bold">INVARIÁVEIS</span> são a <span className="text-emerald-600 font-bold">CIA P</span>: <strong>C</strong>onjunção, <strong>I</strong>nterjeição, <strong>A</strong>dvérbio e <strong>P</strong>reposição. Todo o resto varia!"
                                                 </p>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'audio', label: 'Áudio Resumo', icon: LuMusic,
+                                        content: (
+                                            <div className="w-full flex justify-center py-4">
+                                                <div className="w-full max-w-md">
+                                                    <MusicPlayerCard
+                                                        audioUrl="#"
+                                                        titulo="Hino das 10 Classes"
+                                                        artista="Prof. André"
+                                                        capaUrl="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?q=80&w=1000&auto=format&fit=crop"
+                                                        lyrics={`(Verso 1)
+São dez classes gramaticais, decore já
+Verbo, substantivo, pronome lá está
+Adjetivo, advérbio, artigo e mais
+Conjunção, preposição, numeral — demais!
+
+(Refrão)
+CIA P não varia, lembra dessa lição
+Conjunção, Interjeição, Advérbio e Preposição!
+                                                        `}
+                                                    />
+                                                </div>
                                             </div>
                                         )
                                     }
@@ -2126,14 +2132,14 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
                             />
                         </section>
                         <section className="mt-16">
-                            <QuizInterativo questoes={qLab} titulo="Simulado Final — Todas as 10 Classes" icone="🏆" numero={5} onComplete={(score) => handleModuleComplete('modulo-5', score)} />
+                            <QuizInterativo questoes={qLab} titulo="Simulado Final — Todas as 10 Classes" icone="🏆" numero={10} onComplete={(score) => handleModuleComplete('modulo-5', score)} />
                         </section>
 
                         {/* Botão de Conclusão */}
                         <section className="flex justify-center pt-8 pb-12">
                             <Button
                                 size="lg"
-                                className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-12 py-6 rounded-2xl text-lg font-bold shadow-xl shadow-violet-500/20 hover:shadow-2xl hover:shadow-violet-500/30 transition-all duration-300 hover:scale-105"
+                                className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-12 py-6 rounded-2xl text-lg font-bold shadow-xl shadow-emerald-500/20 hover:shadow-2xl hover:shadow-emerald-500/30 transition-all duration-300 hover:scale-105"
                                 onClick={onComplete}
                                 disabled={completedModules.size < MODULE_DEFS.length}
                             >
@@ -2144,6 +2150,6 @@ export default function AulaClassesPalavras({ onComplete, currentProgress, onUpd
 
                 </Tabs>
             </main>
-        </div>
+        </div >
     );
 }

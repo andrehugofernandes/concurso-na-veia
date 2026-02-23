@@ -442,6 +442,7 @@ export default function AulaCrase({
     };
 
     const isModuleUnlocked = (index: number) => {
+        if (isCompleted) return true;
         if (index === 0) return true;
         return completedModules.has(MODULE_DEFS[index - 1].id);
     };
@@ -488,7 +489,7 @@ export default function AulaCrase({
                         {/* SEÇÃO 1: O QUE É CRASE */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-14 h-14 rounded-full bg-pink-500/20 flex items-center justify-center text-lg font-bold text-pink-700 dark:text-pink-400">1</span>
+                                <span className="w-14 h-14 rounded-full bg-pink-500/20 flex items-center justify-center text-3xl font-bold text-pink-700 dark:text-pink-400">1</span>
                                 Crase não é acento!
                             </h2>
                             <div className="prose dark:prose-invert max-w-none text-muted-foreground leading-relaxed">
@@ -518,7 +519,7 @@ export default function AulaCrase({
                         {/* SEÇÃO 2: REGRA DE OURO */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400">2</span>
+                                <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-3xl font-bold text-indigo-700 dark:text-indigo-400">2</span>
                                 Regra de Ouro: A Troca Mágica
                             </h2>
                             <p className="text-muted-foreground text-lg">
@@ -567,8 +568,8 @@ export default function AulaCrase({
 
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-14 h-14 rounded-full bg-rose-500/20 flex items-center justify-center text-lg font-bold text-rose-700 dark:text-rose-400">3</span>
+                            <h2 className="text-3xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
+                                <span className="w-14 h-14 rounded-full bg-rose-500/20 flex items-center justify-center text-3xl font-bold text-rose-700 dark:text-rose-400">3</span>
                                 Resumo do Módulo 1
                             </h2>
 
@@ -694,7 +695,7 @@ export default function AulaCrase({
                         {/* SEÇÃO 1: OS PROIBIDOS */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-lg font-bold text-red-700 dark:text-red-400">1</span>
+                                <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-3xl font-bold text-red-700 dark:text-red-400">1</span>
                                 Mapa das Proibições
                             </h2>
                             <p className="text-muted-foreground text-lg">Nunca use crase nestes casos. É erro fatal!</p>
@@ -734,7 +735,7 @@ export default function AulaCrase({
                         {/* SEÇÃO 2: OS FACULTATIVOS */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-14 h-14 rounded-full bg-green-500/20 flex items-center justify-center text-lg font-bold text-green-700 dark:text-green-400">2</span>
+                                <span className="w-14 h-14 rounded-full bg-green-500/20 flex items-center justify-center text-3xl font-bold text-green-700 dark:text-green-400">2</span>
                                 Casos Facultativos (Opcionais)
                             </h2>
                             <p className="text-muted-foreground text-lg">Aqui você escolhe. Tanto faz colocar ou não, a gramática aceita ambos.</p>
@@ -792,7 +793,7 @@ export default function AulaCrase({
                         </section>
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-14 h-14 rounded-full bg-amber-500/20 flex items-center justify-center text-lg font-bold text-amber-700 dark:text-amber-400">3</span>
+                                <span className="w-14 h-14 rounded-full bg-amber-500/20 flex items-center justify-center text-3xl font-bold text-amber-700 dark:text-amber-400">3</span>
                                 Resumo do Módulo 2
                             </h2>
 
@@ -879,7 +880,7 @@ export default function AulaCrase({
                         <QuizInterativo
                             titulo="Quiz de Fixação: Proibições"
                             icone="🛡️"
-                            numero={3}
+                            numero={4}
                             questoes={quizM2}
                             onComplete={(score) => handleModuleProgress('modulo-2', 1, score)}
                         />
@@ -899,7 +900,7 @@ export default function AulaCrase({
                         {/* SEÇÃO 1: LUGARES E HORAS */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-14 h-14 rounded-full bg-violet-500/20 flex items-center justify-center text-lg font-bold text-violet-700 dark:text-violet-400">1</span>
+                                <span className="w-14 h-14 rounded-full bg-violet-500/20 flex items-center justify-center text-3xl font-bold text-violet-700 dark:text-violet-400">1</span>
                                 Lugares e Horas
                             </h2>
 
@@ -938,7 +939,7 @@ export default function AulaCrase({
                         {/* SEÇÃO 2: CASA, TERRA E DISTÂNCIA */}
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-14 h-14 rounded-full bg-violet-500/20 flex items-center justify-center text-lg font-bold text-violet-700 dark:text-violet-400">2</span>
+                                <span className="w-14 h-14 rounded-full bg-violet-500/20 flex items-center justify-center text-3xl font-bold text-violet-700 dark:text-violet-400">2</span>
                                 Caso Especial: Casa, Terra e Distância
                             </h2>
                             <p className="text-muted-foreground">Regra geral: Se não estiver especificado, <strong>não tem crase</strong>. Se especificar, <strong>tem crase</strong>.</p>
@@ -997,8 +998,7 @@ export default function AulaCrase({
 
                         {/* CARDS COMPARATIVOS FINAIS */}
                         <div className="bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900 rounded-2xl p-8 text-white relative overflow-hidden">
-                            <div className="absolute top-6 left-6 w-14 h-14 rounded-full bg-white/20 flex items-center justify-center text-lg font-bold text-white">3</div>
-                            <h2 className="text-2xl font-bold mb-6 text-center">Resumo Final: Crase com Pronomes Demonstrativos</h2>
+                              <h2 className="text-2xl font-bold mb-6 text-center">Resumo Final: Crase com Pronomes Demonstrativos</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center items-center justify-items-center">
                                 <div>
                                     <div className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2">A + AQUELE</div>
@@ -1015,7 +1015,7 @@ export default function AulaCrase({
 
                         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                                <span className="w-14 h-14 rounded-full bg-violet-500/20 flex items-center justify-center text-lg font-bold text-violet-700 dark:text-violet-400">3</span>
+                                <span className="w-14 h-14 rounded-full bg-violet-500/20 flex items-center justify-center text-3xl font-bold text-violet-700 dark:text-violet-400">3</span>
                                 Resumo do Módulo 3
                             </h2>
 

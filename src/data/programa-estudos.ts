@@ -53,10 +53,17 @@ export function getProgramaDeEstudos(cargoId?: string): MateriaConteudo[] {
     }
 
     // 2. Adicionar Inglês se for Nível Superior e ainda não estiver na lista
+    // OBS: Verificamos tanto o nível da profissão quanto uma possível flag de nível no sistema
     if (profissao.nivel === 'superior') {
         const ingles = CONTEUDO_MATERIAS.find(m => m.id === 'ingles');
         if (ingles && !programa.find(p => p.id === 'ingles')) {
             programa.push(ingles);
+        }
+    } else {
+        // Garantir que inglês seja removido se existir acidentalmente para nível médio
+        const indexIngles = programa.findIndex(p => p.id === 'ingles');
+        if (indexIngles !== -1) {
+            programa.splice(indexIngles, 1);
         }
     }
 

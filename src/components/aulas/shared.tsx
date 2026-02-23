@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
     Carousel,
     CarouselContent,
@@ -29,7 +31,7 @@ import {
 } from '@/components/ui/dialog';
 import { Play, X } from 'lucide-react';
 import { jsPDF } from 'jspdf';
-import { LuPlay, LuImage, LuFileText, LuLock, LuTrophy, LuBookOpen, LuVolume2, LuHeart, LuShuffle, LuSkipBack, LuPause, LuSkipForward, LuRepeat, LuArrowRight, LuArrowLeft, LuCheck, LuClock, LuDownload } from 'react-icons/lu';
+import { LuPlay, LuImage, LuFileText, LuLock, LuTrophy, LuBookOpen, LuVolume2, LuHeart, LuShuffle, LuSkipBack, LuPause, LuSkipForward, LuRepeat, LuArrowRight, LuArrowLeft, LuCheck, LuClock, LuDownload, LuHouse } from 'react-icons/lu';
 import { cn } from "@/lib/utils";
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -1621,14 +1623,19 @@ export interface StickyModuleNavProps {
     activeTab: string;
     completedModules: Set<string>;
     isModuleUnlocked: (index: number) => boolean;
+    homeHref?: string;
 }
 
 export function StickyModuleNav({
     modules,
     activeTab,
     completedModules,
-    isModuleUnlocked
+    isModuleUnlocked,
+    homeHref
 }: StickyModuleNavProps) {
+    const pathname = usePathname();
+    // Derive /aulas/[materia] from current path /aulas/[materia]/[topico]
+    const resolvedHref = homeHref ?? pathname.split('/').slice(0, 3).join('/');
     return (
         // 🔒 CRITICAL: DO NOT CHANGE THESE STYLES. 
         // The specific combination of w-screen and negative margin is required for full-width breakout.
@@ -1636,6 +1643,13 @@ export function StickyModuleNav({
         <div className="sticky top-[60px] z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-y border-border/50 shadow-md py-4 w-screen ml-[calc(50%-50vw)] overflow-hidden">
             <div className="w-full px-4 overflow-x-auto hide-scrollbar">
                 <TabsList className="flex w-max min-w-full h-auto p-1.5 bg-muted/20 border border-border/10 rounded-3xl gap-3 shadow-inner justify-start xl:justify-center mx-auto">
+                    <Link
+                        href={resolvedHref}
+                        className="shrink-0 w-10 h-10 rounded-xl bg-muted/30 border border-border/20 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200 hover:scale-105 hover:shadow-md"
+                        title="Voltar às Aulas"
+                    >
+                        <LuHouse size={18} />
+                    </Link>
                     {modules.map((mod, index) => (
                         <TabsTrigger
                             key={mod.id}

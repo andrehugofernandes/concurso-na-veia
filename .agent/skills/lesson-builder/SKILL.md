@@ -9,9 +9,20 @@ Esta skill fornece um template mestre e diretrizes para criar aulas EAD de alta 
 > [!IMPORTANT]
 > **LEIA PRIMEIRO:** Antes de criar qualquer aula, leia obrigatoriamente o arquivo [`MODELO_CRIACAO_AULA_CLASSES_GRAMATICAIS.md`](file:///c:/Workspace/petrobras-quest/.agent/skills/lesson-builder/MODELO_CRIACAO_AULA_CLASSES_GRAMATICAIS.md) na mesma pasta. Ele contém o blueprint definitivo e atualizado, com TODAS as regras de componentes, conteúdo e design refinadas ao longo de múltiplas iterações na aula de Classes Gramaticais. O modelo tem precedência sobre qualquer instrução genérica neste SKILL.md.
 
-## 🎓 PROMPT MASTER V2.0 - GERAÇÃO DE AULAS EAD COM HTML AVANÇADO
+## 🎓 PROMPT MASTER V2.1 - GERAÇÃO DE AULAS EAD PREMIUM
 
 Use este prompt como TEMPLATE para gerar qualquer aula com elementos HTML interativos e modernos.
+
+> [!IMPORTANT]
+> **ATUALIZAÇÃO 2026/02:** Este prompt agora incorpora o sistema de **Skins Dinâmicas** e o padrão de **Imagens Modern Light** geradas via Nano Banana. Toda aula deve obrigatoriamente seguir a estrutura de **5 Módulos**. Se uma aula existente tiver apenas 3, o gerador deve criar os 2 módulos faltantes (Módulos 4 e 5) para normalização do currículo.
+>
+> **AULAS MAPEADAS (PENDENTES DE EXPANSÃO - 3 MÓDULOS):**
+> - `AulaRegencia.tsx`
+> - `AulaReescritaFrases.tsx`
+> - `AulaPontuacao.tsx`
+> - `AulaCoesaoCoerencia.tsx`
+> - `AulaConcordancia.tsx`
+> - `AulaCrase.tsx`
 
 ---
 
@@ -23,7 +34,7 @@ Use este prompt como TEMPLATE para gerar qualquer aula com elementos HTML intera
 
 ---
 
-## 🚀 PROMPT MASTER V2.0 (COPIE DAQUI):
+## 🚀 PROMPT MASTER V2.1 (COPIE DAQUI):
 
 ```markdown
 Você é um designer instrucional especialista em educação a distância (EAD) e professor de Língua Portuguesa com doutorado em Linguística. Sua missão é criar uma aula completa, engajante e pedagogicamente eficaz sobre o tema:
@@ -31,10 +42,22 @@ Você é um designer instrucional especialista em educação a distância (EAD) 
 **TEMA DA AULA**: [INSERIR TEMA]
 **SUBTÓPICO**: [INSERIR SUBTÓPICO]
 **PÚBLICO-ALVO**: Candidatos ao concurso Petrobras 2026 (nível médio)
+**ESTRUTURA OBRIGATÓRIA**: 5 Módulos Pedagógicos (Expanda se a entrada tiver menos).
 **DURAÇÃO**: [INSERIR TEMPO - ex: "45 minutos"]
 **CONTEXTO**: Esta aula faz parte de um curso preparatório para o concurso da Petrobras, banca CESGRANRIO.
 
 ---
+
+## 🎨 DESIGN SYSTEM & IMAGES (NANO BANANA)
+
+**1. PADRÃO VISUAL (MODERN LIGHT THEME):**
+- Consulte o arquivo `source/PROMPTS_IMAGENS_NANO_IMAGEN.md` para as diretrizes de imagem.
+- **NADA DE DARK THEME**: As cores devem ser claras, vibrantes e profissionais.
+- **HEADER DINÂMICO**: As imagens devem prever cabeçalhos coloridos de acordo com a **SKIN** do módulo (Emerald, Indigo, Rose, Amber, Slate).
+- **RODAPÉ OBRIGATÓRIO**: Toda imagem gerada via prompt deve exibir no rodapé: `"Gerada por IA via nosso SAAS A VAGA É MINHA"`.
+
+**2. INTEGRAÇÃO DE IMAGENS NA AULA:**
+- Ao gerar o código da aula, cada seção que solicitar uma imagem (`ModuleSummaryCarouselNew` ou `VideoModal`) deve vir acompanhada do **Prompt Técnico** para o Nano Banana, formatado conforme o novo padrão "Light".
 
 ## 📖 FUNDAMENTAÇÃO PEDAGÓGICA
 
@@ -99,17 +122,22 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 
 ---
 
-#### 📦 COMPONENTES VISUAIS PADRÃO:
+#### 📦 COMPONENTES VISUAIS E REGRAS DE EXPANSÃO:
+
+**0. REGRA DOS 5 MÓDULOS (EXPANSÃO OBRIGATÓRIA):**
+- Toda aula deve ter exatamente **5 Módulos**.
+- Se estiver corrigindo ou expandindo uma aula que tenha apenas 3 módulos:
+  * Preserve os módulos 1, 2 e 3 originais.
+  * Crie o **Módulo 4 (Aprofundamento)** e o **Módulo 5 (Laboratório de Questões/Revisão Final)** do zero, garantindo a progressão pedagógica.
 
 **1. HERO SECTION (Abertura)**
 - Layout: Full-width com background gradiente
 - Elementos: Título grande, subtítulo, ícone animado, botão CTA
 - Posição: Topo da página
 
-**⚠️ REGRA DE CONTRASTE (CRÍTICO):**
-- NUNCA use cores claras (ex: `gray-300`, `muted`) diretamente em Modo Claro.
-- SEMPRE use a variante `dark:` para cores claras (ex: `text-muted-foreground dark:text-gray-300`).
-- Em Modo Claro, priorize cores sólidas e legíveis, sempre derivando do `primary` com opacidade quando necessário.
+**⚠️ REGRA DE CONTRASTE E BRANDING:**
+- **Branding**: O nome do sistema é **"A VAGA É MINHA"**. Nunca use "Petrobras Quest" em marcas visuais.
+- **Contraste**: Use `bg-card` e `text-foreground`. Para cores claras, use `dark:text-gray-300`.
 
 **2. CONTENT ACCORDION (OBRIGATÓRIO PARA CONTEÚDO DENSO)**
 - **SUBSTITUI**: Listas longas, textos corridos ou acordeões simples.
