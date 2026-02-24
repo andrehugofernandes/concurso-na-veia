@@ -2048,13 +2048,13 @@ export function StickyModuleNav({
     <div
       ref={navRef}
       className={cn(
-        "sticky z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-hidden transition-all duration-300",
+        "sticky z-40 bg-background/95 md:-mt-16 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-hidden transition-all duration-300",
         /* Full viewport width breakout safe for sticky positioning */
         "w-screen ml-[calc(50%-50vw)]",
         /* Dynamic top pinning */
         isStickyNavPinned && !isTemporaryHeaderVisible
           ? "top-0"
-          : "top-[64px] md:top-[80px]",
+          : "top-16 md:top-20",
         /* Border and padding based on pin state */
         isStickyNavPinned
           ? "border-b border-border/50 shadow-md py-3"

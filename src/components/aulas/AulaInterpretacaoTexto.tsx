@@ -633,7 +633,7 @@ export default function AulaInterpretacaoTexto({
 
   return (
     <div className="pb-20 animate-in fade-in duration-500">
-      <div className="w-full space-y-4 pt-0">
+      <div className="w-full pt-0">
         <ProgressIndicator />
 
         {showCompletionBadge && (
@@ -658,7 +658,7 @@ export default function AulaInterpretacaoTexto({
             const idx = MODULE_DEFS.findIndex((m) => m.id === val);
             if (isModuleUnlocked(idx)) setActiveTab(val);
           }}
-          className="w-full space-y-8"
+          className="w-full"
         >
           <StickyModuleNav
             modules={Array.from(MODULE_DEFS)}
@@ -670,7 +670,7 @@ export default function AulaInterpretacaoTexto({
           {/* ─── MÓDULO 1: FUNDAMENTOS ─── */}
           <TabsContent
             value="modulo-1"
-            className="space-y-12 max-w-7xl mx-auto px-6 mt-12"
+            className="space-y-12 max-w-7xl mx-auto px-6 mt-8"
           >
             <ModuleBanner
               numero={1}

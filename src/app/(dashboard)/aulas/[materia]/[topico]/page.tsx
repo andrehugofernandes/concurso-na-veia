@@ -400,7 +400,7 @@ export default function TopicoPage({ params }: PageProps) {
       <main className="w-full py-0">
         {/* Title - Ocultado para Aulas Premium que já possuem cabeçalho próprio */}
         {![""].includes(topicoId) && (
-          <div className="max-w-6xl mx-auto px-6 pt-8 pb-4">
+          <div className="max-w-6xl mx-auto px-6 pt-8 pb-0">
             <div className="flex items-center justify-between gap-3 mb-4">
               <span
                 className={`px-3 py-1 rounded-full text-sm bg-gradient-to-r ${materia.cor} text-white`}

@@ -722,8 +722,8 @@ export default function AulaSintaxe({
   );
 
   return (
-    <div className="space-y-4 pb-20 animate-in fade-in duration-500">
-      <main className="w-full space-y-4 pt-0">
+    <div className="pb-20 animate-in fade-in duration-500">
+      <main className="w-full pt-0">
         {showCompletionBadge && (
           <div className="max-w-6xl mx-auto px-6">
             <div className="bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-xl p-6 flex items-center gap-4 shadow-sm animate-in slide-in-from-top-4 duration-700">
@@ -748,7 +748,7 @@ export default function AulaSintaxe({
             const idx = MODULE_DEFS.findIndex((m) => m.id === val);
             if (isModuleUnlocked(idx)) setActiveTab(val);
           }}
-          className="w-full space-y-4"
+          className="w-full"
         >
           <StickyModuleNav
             activeTab={activeTab}
@@ -760,7 +760,7 @@ export default function AulaSintaxe({
           {/* ── MÓDULO 1: TERMOS ESSENCIAIS ───────────────────────── */}
           <TabsContent
             value="modulo-1"
-            className="space-y-16 max-w-6xl mx-auto px-6"
+            className="space-y-16 max-w-6xl mx-auto px-6 mt-8"
           >
             <ModuleBanner
               numero={1}
