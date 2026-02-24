@@ -722,7 +722,7 @@ export default function AulaSintaxe({
   );
 
   return (
-    <div className="pb-20 animate-in fade-in duration-500">
+    <div className="pb-40 animate-in fade-in duration-500">
       <main className="w-full pt-0">
         {showCompletionBadge && (
           <div className="max-w-6xl mx-auto px-6">

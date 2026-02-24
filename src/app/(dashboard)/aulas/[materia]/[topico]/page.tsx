@@ -397,7 +397,7 @@ export default function TopicoPage({ params }: PageProps) {
       </header>
 
       {/* Main Content */}
-      <main className="w-full py-0">
+      <main className="w-full pb-32">
         {/* Title - Ocultado para Aulas Premium que já possuem cabeçalho próprio */}
         {![""].includes(topicoId) && (
           <div className="max-w-6xl mx-auto px-6 pt-8 pb-0">

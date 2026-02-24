@@ -632,7 +632,7 @@ export default function AulaInterpretacaoTexto({
   if (loading) return null;
 
   return (
-    <div className="pb-20 animate-in fade-in duration-500">
+    <div className="pb-40 animate-in fade-in duration-500">
       <div className="w-full pt-0">
         <ProgressIndicator />
 

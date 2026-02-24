@@ -634,7 +634,14 @@ export function ProgressIndicator() {
   }, []);
 
   return (
-    <div className="fixed bottom-10 left-1/2 -translate-x-1/2 w-full max-w-md z-[110] px-6 pointer-events-none flex justify-center ml-8 md:ml-10 lg:ml-32 transition-all duration-300">
+    <div
+      className={cn(
+        "fixed bottom-10 left-1/2 -translate-x-1/2 w-full max-w-6xl z-[110] px-6 flex justify-center ml-8 md:ml-10 lg:ml-32 transition-all duration-500 ease-in-out",
+        progress > 0
+          ? "opacity-100 translate-y-0 pointer-events-auto"
+          : "opacity-0 translate-y-10 pointer-events-none",
+      )}
+    >
       <div className="w-full bg-background/90 backdrop-blur-xl shadow-2xl border border-border/50 p-2.5 rounded-full pointer-events-auto flex items-center gap-3">
         <div className="flex-1 h-2.5 bg-muted rounded-full overflow-hidden relative">
           <div
