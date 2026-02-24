@@ -634,7 +634,7 @@ export function ProgressIndicator() {
   }, []);
 
   return (
-    <div className="fixed bottom-10 left-1/2 -translate-x-1/2 w-full max-w-md z-[110] px-6 pointer-events-none flex justify-center">
+    <div className="fixed bottom-10 left-1/2 -translate-x-1/2 w-full max-w-md z-[110] px-6 pointer-events-none flex justify-center ml-8 md:ml-10 lg:ml-32 transition-all duration-300">
       <div className="w-full bg-background/90 backdrop-blur-xl shadow-2xl border border-border/50 p-2.5 rounded-full pointer-events-auto flex items-center gap-3">
         <div className="flex-1 h-2.5 bg-muted rounded-full overflow-hidden relative">
           <div
