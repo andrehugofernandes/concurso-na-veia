@@ -336,7 +336,7 @@ EVITE:
 
 - [ ] A imagem possui o **Header Colorido** com a Skin correta?
 - [ ] O fundo é **Claro** (Branco ou Azul Glacial)? (NADA DE DARK THEME)
-- [ ] O rodapé contém o texto **"Gerada por IA via nosso SAAS A VAGA É MINHA"**?
+- [ ] O rodapé contém o texto **"Gerada por IA via A VAGA É MINHA"**?
 - [ ] O contraste do texto no header (Branco sobre Cor) é legível?
 - [ ] Os ícones são minimalistas e modernos?
 - [ ] Há "espaço de respiro" suficiente entre os elementos?

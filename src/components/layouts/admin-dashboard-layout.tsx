@@ -1,10 +1,15 @@
-'use client';
+"use client";
 
-import { useState, useEffect, type ReactNode } from 'react';
-import { AdminSidebar } from '@/components/admin/admin-sidebar';
-import { AdminHeader } from '@/components/admin/admin-header';
-import { MobileBottomNav } from '@/components/admin/mobile-bottom-nav';
-import { cn } from '@/lib/utils';
+import { useState, useEffect, type ReactNode } from "react";
+import { AdminSidebar } from "@/components/admin/admin-sidebar";
+import {
+  AdminHeader,
+  NotificationCountProvider,
+} from "@/components/admin/admin-header";
+import { MobileBottomNav } from "@/components/admin/mobile-bottom-nav";
+import { cn } from "@/lib/utils";
+import { HeaderStateProvider } from "@/contexts/HeaderStateContext";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
 interface AdminDashboardLayoutProps {
   children: ReactNode;
@@ -44,38 +49,54 @@ export function AdminDashboardLayout({ children }: AdminDashboardLayoutProps) {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [isMobile]);
 
   const toggleSidebar = () => {
     const next = !isSidebarCollapsed;
     setIsSidebarCollapsed(next);
     // Não salva mais no localStorage - estado é baseado apenas no dispositivo
-    console.log('[Sidebar Debug] Toggle sidebar:', next ? 'colapsada' : 'expandida');
+    console.log(
+      "[Sidebar Debug] Toggle sidebar:",
+      next ? "colapsada" : "expandida",
+    );
   };
 
   return (
-    <div className="min-h-screen bg-slate-50/50 dark:bg-background" suppressHydrationWarning>
-      {/* Sidebar - fixed position */}
-      <AdminSidebar isCollapsed={isSidebarCollapsed} />
+    <HeaderStateProvider>
+      <NotificationCountProvider>
+        <div
+          className="min-h-screen bg-slate-50/50 dark:bg-background"
+          suppressHydrationWarning
+        >
+          {/* Sidebar - fixed position */}
+          <AdminSidebar isCollapsed={isSidebarCollapsed} />
 
-      {/* Main Content - margin left to account for sidebar */}
-      <div className={cn(
-        'transition-all duration-300',
-        isSidebarCollapsed ? 'ml-16 md:ml-20' : 'ml-64'
-      )}>
-        {/* Header */}
-        <AdminHeader onMenuToggle={toggleSidebar} isSidebarCollapsed={isSidebarCollapsed} />
+          {/* Main Content - margin left to account for sidebar */}
+          <div
+            className={cn(
+              "transition-all duration-300",
+              isSidebarCollapsed ? "ml-16 md:ml-20" : "ml-64",
+            )}
+          >
+            {/* Header */}
+            <AdminHeader
+              onMenuToggle={toggleSidebar}
+              isSidebarCollapsed={isSidebarCollapsed}
+            />
 
-        {/* Page Content - espaçamento balanceado */}
-        <main className="py-6 px-4 pb-20 sm:pb-6 md:p-8 relative z-0">
-          {children}
-        </main>
-      </div>
+            {/* Page Content - espaçamento balanceado */}
+            <main className="py-6 px-4 pb-20 sm:pb-6 md:p-8 relative z-0">
+              {children}
+            </main>
+            <ScrollToTop />
+          </div>
 
-      {/* Mobile Bottom Navigation */}
-      <MobileBottomNav />
-    </div>
+          {/* Mobile Bottom Navigation */}
+          <MobileBottomNav />
+        </div>
+      </NotificationCountProvider>
+    </HeaderStateProvider>
   );
 }

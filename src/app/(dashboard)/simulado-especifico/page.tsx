@@ -1,468 +1,545 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Usuario, Questao, Simulado } from '@/lib/types';
-import { calcularNivel, salvarUsuario, carregarUsuario } from '@/lib/utils';
-import LoadingScreen from '@/components/LoadingScreen';
-import SimuladoScreen from '@/components/SimuladoScreen';
-import ResultadoScreen from '@/components/ResultadoScreen';
-import SimuladoHome from '@/components/simulados/SimuladoHome';
-import { CONTEUDO_MATERIAS } from '@/data/conteudo';
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Usuario, Questao, Simulado } from "@/lib/types";
+import { calcularNivel, salvarUsuario, carregarUsuario } from "@/lib/utils";
+import LoadingScreen from "@/components/LoadingScreen";
+import SimuladoScreen from "@/components/SimuladoScreen";
+import ResultadoScreen from "@/components/ResultadoScreen";
+import SimuladoHome from "@/components/simulados/SimuladoHome";
+import { CONTEUDO_MATERIAS } from "@/data/conteudo";
 
 const usuarioInicial: Usuario = {
-    nome: '',
-    xp: 0,
-    nivel: 'Estagiário',
-    questoesCertas: 0,
-    questoesErradas: 0,
-    sequenciaAtual: 0,
-    maiorSequencia: 0,
-    conquistas: [],
-    historico: [],
-    questoesGeradas: 0,
+  nome: "",
+  xp: 0,
+  nivel: "Estagiário",
+  questoesCertas: 0,
+  questoesErradas: 0,
+  sequenciaAtual: 0,
+  maiorSequencia: 0,
+  conquistas: [],
+  historico: [],
+  questoesGeradas: 0,
 };
 
 export default function SimuladoEspecificoPage() {
-    const router = useRouter();
-    const searchParams = useSearchParams();
-    const tipoUrl = searchParams.get('tipo');
-    const qtdUrl = searchParams.get('qtd');
-    const dificuldadeUrl = searchParams.get('dificuldade');
-    const assuntoUrl = searchParams.get('assunto');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const tipoUrl = searchParams.get("tipo");
+  const qtdUrl = searchParams.get("qtd");
+  const dificuldadeUrl = searchParams.get("dificuldade");
+  const assuntoUrl = searchParams.get("assunto");
 
-    const [tela, setTela] = useState<'home' | 'gerando' | 'simulado' | 'resultado'>('home');
-    const [usuario, setUsuario] = useState<Usuario>(usuarioInicial);
-    const [simuladoAtual, setSimuladoAtual] = useState<Simulado | null>(null);
-    const [questaoAtual, setQuestaoAtual] = useState(0);
-    const [respostaSelecionada, setRespostaSelecionada] = useState<number | null>(null);
-    const [mostrarResultado, setMostrarResultado] = useState(false);
-    const [cronometro, setCronometro] = useState(0);
-    const [cronometroAtivo, setCronometroAtivo] = useState(false);
-    const [gerandoQuestoes, setGerandoQuestoes] = useState(false);
-    const [tempoLimite, setTempoLimite] = useState<number | null>(null); // em segundos
-    const [tempoEsgotado, setTempoEsgotado] = useState(false);
+  const [tela, setTela] = useState<
+    "home" | "gerando" | "simulado" | "resultado"
+  >("home");
+  const [usuario, setUsuario] = useState<Usuario>(usuarioInicial);
+  const [simuladoAtual, setSimuladoAtual] = useState<Simulado | null>(null);
+  const [questaoAtual, setQuestaoAtual] = useState(0);
+  const [respostaSelecionada, setRespostaSelecionada] = useState<number | null>(
+    null,
+  );
+  const [mostrarResultado, setMostrarResultado] = useState(false);
+  const [cronometro, setCronometro] = useState(0);
+  const [cronometroAtivo, setCronometroAtivo] = useState(false);
+  const [gerandoQuestoes, setGerandoQuestoes] = useState(false);
+  const [tempoLimite, setTempoLimite] = useState<number | null>(null); // em segundos
+  const [tempoEsgotado, setTempoEsgotado] = useState(false);
 
-    // Carregar dados
-    useEffect(() => {
-        const loadUserData = async () => {
-            try {
-                const response = await fetch('/api/auth/me');
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.user) {
-                        setUsuario(data.user);
-                        salvarUsuario(data.user);
-                        return;
-                    }
-                }
-            } catch (error) {
-                console.error('Erro ao carregar usuário da API:', error);
-            }
-
-            // Fallback for localStorage
-            const dadosSalvos = carregarUsuario();
-            if (dadosSalvos) {
-                setUsuario(dadosSalvos);
-            }
-        };
-
-        loadUserData();
-    }, []);
-
-    // Auto-start se vier parâmetros na URL e usuário estiver carregado
-    useEffect(() => {
-        if (usuario.nome && tipoUrl && !simuladoAtual && tela === 'home') {
-            iniciarSimulado(tipoUrl, qtdUrl ? parseInt(qtdUrl) : 5);
+  // Carregar dados
+  useEffect(() => {
+    const loadUserData = async () => {
+      try {
+        const response = await fetch("/api/auth/me");
+        if (response.ok) {
+          const data = await response.json();
+          if (data.user) {
+            setUsuario(data.user);
+            salvarUsuario(data.user);
+            return;
+          }
         }
-    }, [tipoUrl, qtdUrl, usuario.nome]);
+      } catch (error) {
+        console.error("Erro ao carregar usuário da API:", error);
+      }
 
-    // Salvar dados
-    useEffect(() => {
-        if (usuario.nome) {
-            salvarUsuario(usuario);
-        }
-    }, [usuario]);
-
-    // Cronômetro (progressivo ou regressivo)
-    useEffect(() => {
-        let intervalo: NodeJS.Timeout;
-        if (cronometroAtivo) {
-            intervalo = setInterval(() => {
-                if (tempoLimite) {
-                    // Timer regressivo
-                    setCronometro(prev => {
-                        if (prev <= 1) {
-                            setCronometroAtivo(false);
-                            setTempoEsgotado(true);
-                            return 0;
-                        }
-                        return prev - 1;
-                    });
-                } else {
-                    // Timer progressivo
-                    setCronometro(prev => prev + 1);
-                }
-            }, 1000);
-        }
-        return () => clearInterval(intervalo);
-    }, [cronometroAtivo, tempoLimite]);
-
-    // Efeito para encerrar prova quando tempo esgota
-    useEffect(() => {
-        if (tempoEsgotado && simuladoAtual && tela === 'simulado') {
-            finalizarSimulado();
-        }
-    }, [tempoEsgotado]);
-
-    const gerarQuestaoIA = async (materia: string, dificuldade?: string, assunto?: string, questoesAnteriores?: string[]): Promise<Questao> => {
-        const cargoContexto = usuario.cargo;
-
-        // Usar endpoint Gemini
-        const response = await fetch('/api/gerar-questao', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                materia,
-                dificuldade,
-                assunto,
-                questoesAnteriores,
-                contexto: {
-                    cargo: cargoContexto || 'Geral',
-                    nivel: usuario.nivelConcurso || 'medio'
-                }
-            }),
-        });
-
-        if (!response.ok) {
-            throw new Error('Erro ao gerar questão');
-        }
-
-        return await response.json();
+      // Fallback for localStorage
+      const dadosSalvos = carregarUsuario();
+      if (dadosSalvos) {
+        setUsuario(dadosSalvos);
+      }
     };
 
-    const gerarQuestoes = async (tipo: string, quantidade: number, dificuldadeManual?: string, assuntoManual?: string): Promise<Questao[]> => {
-        const questoes: Questao[] = [];
-        let distribuicao: { materia: string, qtd: number, assunto?: string }[] = [];
+    loadUserData();
+  }, []);
 
-        // Lógica de distribuição baseada no tipo
-        if (tipo === 'maratona') {
-            const isSuperior = usuario.nivelConcurso === 'superior';
-            if (isSuperior) {
-                // Maratona Superior: 20 Port, 15 Mat, 15 Ing, 50 Esp (=100)
-                distribuicao = [
-                    { materia: 'Língua Portuguesa', qtd: 20 },
-                    { materia: 'Matemática', qtd: 15 },
-                    { materia: 'Língua Inglesa', qtd: 15 },
-                    { materia: 'Conhecimentos Específicos', qtd: 50 },
-                ];
-            } else {
-                // Maratona Médio: 20 Port, 20 Mat, 60 Esp (=100)
-                distribuicao = [
-                    { materia: 'Língua Portuguesa', qtd: 20 },
-                    { materia: 'Matemática', qtd: 20 },
-                    { materia: 'Conhecimentos Específicos', qtd: 60 },
-                ];
+  // Auto-start se vier parâmetros na URL e usuário estiver carregado
+  useEffect(() => {
+    if (usuario.nome && tipoUrl && !simuladoAtual && tela === "home") {
+      iniciarSimulado(tipoUrl, qtdUrl ? parseInt(qtdUrl) : 5);
+    }
+  }, [tipoUrl, qtdUrl, usuario.nome]);
+
+  // Salvar dados
+  useEffect(() => {
+    if (usuario.nome) {
+      salvarUsuario(usuario);
+    }
+  }, [usuario]);
+
+  // Cronômetro (progressivo ou regressivo)
+  useEffect(() => {
+    let intervalo: NodeJS.Timeout;
+    if (cronometroAtivo) {
+      intervalo = setInterval(() => {
+        if (tempoLimite) {
+          // Timer regressivo
+          setCronometro((prev) => {
+            if (prev <= 1) {
+              setCronometroAtivo(false);
+              setTempoEsgotado(true);
+              return 0;
             }
-        } else if (tipo === 'intensivo') {
-            // Intensivo: 20 questões
-            if (assuntoUrl === 'Língua Portuguesa') {
-                distribuicao = [{ materia: 'Língua Portuguesa', qtd: quantidade }];
-            } else if (assuntoUrl === 'Matemática') {
-                distribuicao = [{ materia: 'Matemática', qtd: quantidade }];
-            } else if (assuntoUrl) {
-                // Tópico específico: descobre a matéria ou define como Específica
-                const materiaFound = CONTEUDO_MATERIAS.find(m => m.topicos.some(t => t.titulo === assuntoUrl));
-                const materiaNome = materiaFound ? materiaFound.nome : 'Conhecimentos Específicos';
-                distribuicao = [{ materia: materiaNome, qtd: quantidade, assunto: assuntoUrl }];
-            } else {
-                // Intensivo Misto (sem tópico definido)
-                const qtdPort = Math.ceil(quantidade * 0.3); // 30%
-                const qtdMat = Math.ceil(quantidade * 0.3);  // 30%
-                const qtdEsp = quantidade - qtdPort - qtdMat; // Resto (40%)
-                distribuicao = [
-                    { materia: 'Língua Portuguesa', qtd: qtdPort },
-                    { materia: 'Matemática', qtd: qtdMat },
-                    { materia: 'Conhecimentos Específicos', qtd: qtdEsp },
-                ];
-            }
+            return prev - 1;
+          });
         } else {
-            // Simulado Rápido ou Padrão (tipo = id da matéria)
-            const materiaObj = CONTEUDO_MATERIAS.find(m => m.id === tipo);
-            const nomeMateria = materiaObj ? materiaObj.nome : (tipo === 'especificas' ? 'Conhecimentos Específicos' : tipo);
-            distribuicao = [{ materia: nomeMateria, qtd: quantidade, assunto: assuntoManual || assuntoUrl || undefined }];
+          // Timer progressivo
+          setCronometro((prev) => prev + 1);
         }
+      }, 1000);
+    }
+    return () => clearInterval(intervalo);
+  }, [cronometroAtivo, tempoLimite]);
 
-        // Loop de geração
-        for (const item of distribuicao) {
-            for (let i = 0; i < item.qtd; i++) {
-                // Break early if global quantity reached (safety)
-                if (questoes.length >= quantidade) break;
+  // Efeito para encerrar prova quando tempo esgota
+  useEffect(() => {
+    if (tempoEsgotado && simuladoAtual && tela === "simulado") {
+      finalizarSimulado();
+    }
+  }, [tempoEsgotado]);
 
-                try {
-                    let dificuldade = dificuldadeManual || dificuldadeUrl || undefined;
+  const gerarQuestaoIA = async (
+    materia: string,
+    dificuldade?: string,
+    assunto?: string,
+    questoesAnteriores?: string[],
+  ): Promise<Questao> => {
+    const cargoContexto = usuario.cargo;
 
-                    // Ajuste automático de dificuldade se não especificado
-                    if (!dificuldade) {
-                        const taxaAcerto = usuario.questoesCertas / (usuario.questoesCertas + usuario.questoesErradas || 1);
-                        if (taxaAcerto > 0.8) dificuldade = 'Difícil';
-                        else if (taxaAcerto > 0.6) dificuldade = 'Média';
-                        else if (taxaAcerto < 0.5) dificuldade = 'Fácil';
-                    }
+    // Usar endpoint Gemini
+    const response = await fetch("/api/gerar-questao", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        materia,
+        dificuldade,
+        assunto,
+        questoesAnteriores,
+        contexto: {
+          cargo: cargoContexto || "Geral",
+          nivel: usuario.nivelConcurso || "medio",
+        },
+      }),
+    });
 
-                    const questoesAnteriores = questoes.map(q => q.enunciado.substring(0, 80));
+    if (!response.ok) {
+      throw new Error("Erro ao gerar questão");
+    }
 
-                    // Delay para não sobrecarregar a API
-                    if (questoes.length > 0) await new Promise(r => setTimeout(r, 100));
+    return await response.json();
+  };
 
-                    const questao = await gerarQuestaoIA(item.materia, dificuldade, item.assunto, questoesAnteriores);
-                    questoes.push(questao);
-                } catch (error) {
-                    console.error(`Erro ao gerar questão ${i + 1} de ${item.materia}:`, error);
-                    // Retentativa simples
-                    try {
-                        const questao = await gerarQuestaoIA(item.materia, 'Média', item.assunto, []);
-                        questoes.push(questao);
-                    } catch (retryError) {
-                        console.error('Falha na retentativa:', retryError);
-                    }
-                }
-            }
-        }
+  const gerarQuestoes = async (
+    tipo: string,
+    quantidade: number,
+    dificuldadeManual?: string,
+    assuntoManual?: string,
+  ): Promise<Questao[]> => {
+    const questoes: Questao[] = [];
+    let distribuicao: { materia: string; qtd: number; assunto?: string }[] = [];
 
-        return questoes;
-    };
+    // Lógica de distribuição baseada no tipo
+    if (tipo === "maratona") {
+      const isSuperior = usuario.nivelConcurso === "superior";
+      if (isSuperior) {
+        // Maratona Superior: 20 Port, 15 Mat, 15 Ing, 50 Esp (=100)
+        distribuicao = [
+          { materia: "Língua Portuguesa", qtd: 20 },
+          { materia: "Matemática", qtd: 15 },
+          { materia: "Língua Inglesa", qtd: 15 },
+          { materia: "Conhecimentos Específicos", qtd: 50 },
+        ];
+      } else {
+        // Maratona Médio: 20 Port, 20 Mat, 60 Esp (=100)
+        distribuicao = [
+          { materia: "Língua Portuguesa", qtd: 20 },
+          { materia: "Matemática", qtd: 20 },
+          { materia: "Conhecimentos Específicos", qtd: 60 },
+        ];
+      }
+    } else if (tipo === "intensivo") {
+      // Intensivo: 20 questões
+      if (assuntoUrl === "Língua Portuguesa") {
+        distribuicao = [{ materia: "Língua Portuguesa", qtd: quantidade }];
+      } else if (assuntoUrl === "Matemática") {
+        distribuicao = [{ materia: "Matemática", qtd: quantidade }];
+      } else if (assuntoUrl) {
+        // Tópico específico: descobre a matéria ou define como Específica
+        const materiaFound = CONTEUDO_MATERIAS.find((m) =>
+          m.topicos.some((t) => t.titulo === assuntoUrl),
+        );
+        const materiaNome = materiaFound
+          ? materiaFound.nome
+          : "Conhecimentos Específicos";
+        distribuicao = [
+          { materia: materiaNome, qtd: quantidade, assunto: assuntoUrl },
+        ];
+      } else {
+        // Intensivo Misto (sem tópico definido)
+        const qtdPort = Math.ceil(quantidade * 0.3); // 30%
+        const qtdMat = Math.ceil(quantidade * 0.3); // 30%
+        const qtdEsp = quantidade - qtdPort - qtdMat; // Resto (40%)
+        distribuicao = [
+          { materia: "Língua Portuguesa", qtd: qtdPort },
+          { materia: "Matemática", qtd: qtdMat },
+          { materia: "Conhecimentos Específicos", qtd: qtdEsp },
+        ];
+      }
+    } else {
+      // Simulado Rápido ou Padrão (tipo = id da matéria)
+      const materiaObj = CONTEUDO_MATERIAS.find((m) => m.id === tipo);
+      const nomeMateria = materiaObj
+        ? materiaObj.nome
+        : tipo === "especificas"
+          ? "Conhecimentos Específicos"
+          : tipo;
+      distribuicao = [
+        {
+          materia: nomeMateria,
+          qtd: quantidade,
+          assunto: assuntoManual || assuntoUrl || undefined,
+        },
+      ];
+    }
 
-    const iniciarSimulado = async (tipo: string, quantidade: number = 5, dificuldade?: string, assunto?: string) => {
-        setGerandoQuestoes(true);
-        setTela('gerando');
+    // Loop de geração
+    for (const item of distribuicao) {
+      for (let i = 0; i < item.qtd; i++) {
+        // Break early if global quantity reached (safety)
+        if (questoes.length >= quantidade) break;
 
         try {
-            // Free Tier Check
-            if (usuario.plan === 'free') {
-                const hoje = new Date().toISOString().split('T')[0];
-                const tentativasHoje = (usuario.historico || []).filter(h =>
-                    h.data.startsWith(hoje) && h.tipo === tipo
-                ).length;
+          let dificuldade = dificuldadeManual || dificuldadeUrl || undefined;
 
-                if (tentativasHoje >= 1) {
-                    throw new Error('Usuários gratuitos têm limite de 1 simulado por matéria por dia. Faça upgrade para tentativas ilimitadas! 🚀');
-                }
-            }
+          // Ajuste automático de dificuldade se não especificado
+          if (!dificuldade) {
+            const taxaAcerto =
+              usuario.questoesCertas /
+              (usuario.questoesCertas + usuario.questoesErradas || 1);
+            if (taxaAcerto > 0.8) dificuldade = "Difícil";
+            else if (taxaAcerto > 0.6) dificuldade = "Média";
+            else if (taxaAcerto < 0.5) dificuldade = "Fácil";
+          }
 
-            const questoes = await gerarQuestoes(tipo, quantidade, dificuldade, assunto);
+          const questoesAnteriores = questoes.map((q) =>
+            q.enunciado.substring(0, 80),
+          );
 
-            if (questoes.length === 0) {
-                throw new Error('Nenhuma questão foi gerada. Verifique sua conexão ou tente novamente.');
-            }
+          // Delay para não sobrecarregar a API
+          if (questoes.length > 0) await new Promise((r) => setTimeout(r, 100));
 
-            setSimuladoAtual({
-                tipo,
-                questoes,
-                respostas: new Array(questoes.length).fill(null),
-                iniciado: Date.now()
-            });
-
-            setUsuario(prev => ({
-                ...prev,
-                questoesGeradas: prev.questoesGeradas + questoes.length
-            }));
-
-            setQuestaoAtual(0);
-            setRespostaSelecionada(null);
-            setMostrarResultado(false);
-            setTempoEsgotado(false);
-
-            // Configurar timer: 4 horas para simulados de 60+ questões
-            if (quantidade >= 60) {
-                setTempoLimite(4 * 60 * 60); // 4 horas em segundos
-                setCronometro(4 * 60 * 60); // Iniciar do tempo máximo
-            } else {
-                setTempoLimite(null);
-                setCronometro(0); // Timer progressivo
-            }
-
-            setCronometroAtivo(true);
-            setGerandoQuestoes(false);
-            setTela('simulado');
-        } catch (error: any) {
-            console.error('Erro ao iniciar simulado:', error);
-            setGerandoQuestoes(false);
-            setTela('home');
-            alert(`⚠️ Limite Atingido: ${error.message}`);
+          const questao = await gerarQuestaoIA(
+            item.materia,
+            dificuldade,
+            item.assunto,
+            questoesAnteriores,
+          );
+          questoes.push(questao);
+        } catch (error) {
+          console.error(
+            `Erro ao gerar questão ${i + 1} de ${item.materia}:`,
+            error,
+          );
+          // Retentativa simples
+          try {
+            const questao = await gerarQuestaoIA(
+              item.materia,
+              "Média",
+              item.assunto,
+              [],
+            );
+            questoes.push(questao);
+          } catch (retryError) {
+            console.error("Falha na retentativa:", retryError);
+          }
         }
-    };
-
-    const responderQuestao = (indiceResposta: number) => {
-        if (mostrarResultado) return;
-        setRespostaSelecionada(indiceResposta);
-    };
-
-    const confirmarResposta = () => {
-        if (respostaSelecionada === null || !simuladoAtual) return;
-
-        const questao = simuladoAtual.questoes[questaoAtual];
-        const acertou = respostaSelecionada === questao.correta;
-
-        const novasRespostas = [...simuladoAtual.respostas];
-        novasRespostas[questaoAtual] = {
-            selecionada: respostaSelecionada,
-            correta: acertou
-        };
-
-        setSimuladoAtual({
-            ...simuladoAtual,
-            respostas: novasRespostas
-        });
-
-        let novoXP = usuario.xp;
-        let novaSequencia = usuario.sequenciaAtual;
-        let novasConquistas = [...usuario.conquistas];
-
-        if (acertou) {
-            novoXP += 10;
-            novaSequencia += 1;
-
-            if (novaSequencia === 10 && !novasConquistas.includes('combo10')) {
-                novoXP += 50;
-                novasConquistas.push('combo10');
-                setTimeout(() => alert('🎉 COMBO! +50 XP por 10 acertos seguidos!'), 500);
-            }
-
-            setUsuario({
-                ...usuario,
-                xp: novoXP,
-                questoesCertas: usuario.questoesCertas + 1,
-                sequenciaAtual: novaSequencia,
-                maiorSequencia: Math.max(novaSequencia, usuario.maiorSequencia),
-                nivel: calcularNivel(novoXP),
-                conquistas: novasConquistas
-            });
-        } else {
-            if (novaSequencia > 0) {
-                novoXP = Math.max(0, novoXP - 20);
-            }
-            novaSequencia = 0;
-
-            setUsuario({
-                ...usuario,
-                xp: novoXP,
-                questoesErradas: usuario.questoesErradas + 1,
-                sequenciaAtual: 0,
-                nivel: calcularNivel(novoXP)
-            });
-        }
-
-        setMostrarResultado(true);
-    };
-
-    const proximaQuestao = () => {
-        if (!simuladoAtual) return;
-
-        if (questaoAtual < simuladoAtual.questoes.length - 1) {
-            setQuestaoAtual(questaoAtual + 1);
-            setRespostaSelecionada(null);
-            setMostrarResultado(false);
-        } else {
-            finalizarSimulado();
-        }
-    };
-
-    const finalizarSimulado = () => {
-        if (!simuladoAtual) return;
-
-        setCronometroAtivo(false);
-
-        const totalAcertos = simuladoAtual.respostas.filter(r => r && r.correta).length;
-        const totalQuestoes = simuladoAtual.questoes.length;
-        const percentual = Math.round((totalAcertos / totalQuestoes) * 100);
-
-        let bonusXP = 200;
-        if (percentual >= 90) bonusXP += 100;
-        else if (percentual >= 80) bonusXP += 50;
-
-        const novoHistorico = [...(usuario.historico || []), {
-            data: new Date().toISOString(),
-            tipo: simuladoAtual.tipo,
-            acertos: totalAcertos,
-            total: totalQuestoes,
-            percentual,
-            tempo: cronometro
-        }];
-
-        setUsuario({
-            ...usuario,
-            xp: usuario.xp + bonusXP,
-            historico: novoHistorico,
-        });
-
-        setTela('resultado');
-    };
-
-    const voltarHome = () => {
-        // Se veio do dashboard, volta pro dashboard
-        if (tipoUrl) {
-            router.push('/dashboard');
-        } else {
-            setTela('home');
-            setSimuladoAtual(null);
-            setQuestaoAtual(0);
-            setCronometro(0);
-            setCronometroAtivo(false);
-        }
-    };
-
-    if (tela === 'gerando') {
-        return <LoadingScreen />;
+      }
     }
 
-    // Se tem parâmetros de URL e está na home, mostra loading enquanto inicia
-    if (tipoUrl && tela === 'home') {
-        return <LoadingScreen />;
-    }
+    return questoes;
+  };
 
-    if (tela === 'home') {
-        return (
-            <SimuladoHome
-                usuario={usuario}
-                iniciarSimulado={iniciarSimulado}
-                gerandoQuestoes={gerandoQuestoes}
-                tipoPagina="especifico"
-            />
+  const iniciarSimulado = async (
+    tipo: string,
+    quantidade: number = 5,
+    dificuldade?: string,
+    assunto?: string,
+  ) => {
+    setGerandoQuestoes(true);
+    setTela("gerando");
+
+    try {
+      // Verificação de segurança: Inglês é apenas para nível superior
+      const isSuperior = usuario.nivelConcurso === "superior";
+      if (tipo === "ingles" && !isSuperior) {
+        throw new Error(
+          "A matéria de Língua Inglesa é exclusiva para candidatos de Nível Superior.",
         );
-    }
+      }
 
-    if (tela === 'simulado' && simuladoAtual) {
-        return (
-            <SimuladoScreen
-                simulado={simuladoAtual}
-                questaoAtual={questaoAtual}
-                respostaSelecionada={respostaSelecionada}
-                mostrarResultado={mostrarResultado}
-                cronometro={cronometro}
-                tempoLimite={tempoLimite}
-                usuario={usuario}
-                responderQuestao={responderQuestao}
-                confirmarResposta={confirmarResposta}
-                proximaQuestao={proximaQuestao}
-                voltarHome={voltarHome}
-            />
+      // Free Tier Check
+      if (usuario.plan === "free") {
+        const hoje = new Date().toISOString().split("T")[0];
+        const tentativasHoje = (usuario.historico || []).filter(
+          (h) => h.data.startsWith(hoje) && h.tipo === tipo,
+        ).length;
+
+        if (tentativasHoje >= 1) {
+          throw new Error(
+            "Usuários gratuitos têm limite de 1 simulado por matéria por dia. Faça upgrade para tentativas ilimitadas! 🚀",
+          );
+        }
+      }
+
+      const questoes = await gerarQuestoes(
+        tipo,
+        quantidade,
+        dificuldade,
+        assunto,
+      );
+
+      if (questoes.length === 0) {
+        throw new Error(
+          "Nenhuma questão foi gerada. Verifique sua conexão ou tente novamente.",
         );
-    }
+      }
 
-    if (tela === 'resultado' && simuladoAtual) {
-        return (
-            <ResultadoScreen
-                simulado={simuladoAtual}
-                cronometro={cronometro}
-                usuario={usuario}
-                voltarHome={() => router.push('/dashboard')}
-                iniciarSimulado={iniciarSimulado}
-            />
+      setSimuladoAtual({
+        tipo,
+        questoes,
+        respostas: new Array(questoes.length).fill(null),
+        iniciado: Date.now(),
+      });
+
+      setUsuario((prev) => ({
+        ...prev,
+        questoesGeradas: prev.questoesGeradas + questoes.length,
+      }));
+
+      setQuestaoAtual(0);
+      setRespostaSelecionada(null);
+      setMostrarResultado(false);
+      setTempoEsgotado(false);
+
+      // Configurar timer: 4 horas para simulados de 60+ questões
+      if (quantidade >= 60) {
+        setTempoLimite(4 * 60 * 60); // 4 horas em segundos
+        setCronometro(4 * 60 * 60); // Iniciar do tempo máximo
+      } else {
+        setTempoLimite(null);
+        setCronometro(0); // Timer progressivo
+      }
+
+      setCronometroAtivo(true);
+      setGerandoQuestoes(false);
+      setTela("simulado");
+    } catch (error: any) {
+      console.error("Erro ao iniciar simulado:", error);
+      setGerandoQuestoes(false);
+      setTela("home");
+      alert(`⚠️ Limite Atingido: ${error.message}`);
+    }
+  };
+
+  const responderQuestao = (indiceResposta: number) => {
+    if (mostrarResultado) return;
+    setRespostaSelecionada(indiceResposta);
+  };
+
+  const confirmarResposta = () => {
+    if (respostaSelecionada === null || !simuladoAtual) return;
+
+    const questao = simuladoAtual.questoes[questaoAtual];
+    const acertou = respostaSelecionada === questao.correta;
+
+    const novasRespostas = [...simuladoAtual.respostas];
+    novasRespostas[questaoAtual] = {
+      selecionada: respostaSelecionada,
+      correta: acertou,
+    };
+
+    setSimuladoAtual({
+      ...simuladoAtual,
+      respostas: novasRespostas,
+    });
+
+    let novoXP = usuario.xp;
+    let novaSequencia = usuario.sequenciaAtual;
+    let novasConquistas = [...usuario.conquistas];
+
+    if (acertou) {
+      novoXP += 10;
+      novaSequencia += 1;
+
+      if (novaSequencia === 10 && !novasConquistas.includes("combo10")) {
+        novoXP += 50;
+        novasConquistas.push("combo10");
+        setTimeout(
+          () => alert("🎉 COMBO! +50 XP por 10 acertos seguidos!"),
+          500,
         );
+      }
+
+      setUsuario({
+        ...usuario,
+        xp: novoXP,
+        questoesCertas: usuario.questoesCertas + 1,
+        sequenciaAtual: novaSequencia,
+        maiorSequencia: Math.max(novaSequencia, usuario.maiorSequencia),
+        nivel: calcularNivel(novoXP),
+        conquistas: novasConquistas,
+      });
+    } else {
+      if (novaSequencia > 0) {
+        novoXP = Math.max(0, novoXP - 20);
+      }
+      novaSequencia = 0;
+
+      setUsuario({
+        ...usuario,
+        xp: novoXP,
+        questoesErradas: usuario.questoesErradas + 1,
+        sequenciaAtual: 0,
+        nivel: calcularNivel(novoXP),
+      });
     }
 
-    return null;
+    setMostrarResultado(true);
+  };
+
+  const proximaQuestao = () => {
+    if (!simuladoAtual) return;
+
+    if (questaoAtual < simuladoAtual.questoes.length - 1) {
+      setQuestaoAtual(questaoAtual + 1);
+      setRespostaSelecionada(null);
+      setMostrarResultado(false);
+    } else {
+      finalizarSimulado();
+    }
+  };
+
+  const finalizarSimulado = () => {
+    if (!simuladoAtual) return;
+
+    setCronometroAtivo(false);
+
+    const totalAcertos = simuladoAtual.respostas.filter(
+      (r) => r && r.correta,
+    ).length;
+    const totalQuestoes = simuladoAtual.questoes.length;
+    const percentual = Math.round((totalAcertos / totalQuestoes) * 100);
+
+    let bonusXP = 200;
+    if (percentual >= 90) bonusXP += 100;
+    else if (percentual >= 80) bonusXP += 50;
+
+    const novoHistorico = [
+      ...(usuario.historico || []),
+      {
+        data: new Date().toISOString(),
+        tipo: simuladoAtual.tipo,
+        acertos: totalAcertos,
+        total: totalQuestoes,
+        percentual,
+        tempo: cronometro,
+      },
+    ];
+
+    setUsuario({
+      ...usuario,
+      xp: usuario.xp + bonusXP,
+      historico: novoHistorico,
+    });
+
+    setTela("resultado");
+  };
+
+  const voltarHome = () => {
+    // Se veio do dashboard, volta pro dashboard
+    if (tipoUrl) {
+      router.push("/dashboard");
+    } else {
+      setTela("home");
+      setSimuladoAtual(null);
+      setQuestaoAtual(0);
+      setCronometro(0);
+      setCronometroAtivo(false);
+    }
+  };
+
+  if (tela === "gerando") {
+    return <LoadingScreen />;
+  }
+
+  // Se tem parâmetros de URL e está na home, mostra loading enquanto inicia
+  if (tipoUrl && tela === "home") {
+    return <LoadingScreen />;
+  }
+
+  if (tela === "home") {
+    return (
+      <SimuladoHome
+        usuario={usuario}
+        iniciarSimulado={iniciarSimulado}
+        gerandoQuestoes={gerandoQuestoes}
+        tipoPagina="especifico"
+      />
+    );
+  }
+
+  if (tela === "simulado" && simuladoAtual) {
+    return (
+      <SimuladoScreen
+        simulado={simuladoAtual}
+        questaoAtual={questaoAtual}
+        respostaSelecionada={respostaSelecionada}
+        mostrarResultado={mostrarResultado}
+        cronometro={cronometro}
+        tempoLimite={tempoLimite}
+        usuario={usuario}
+        responderQuestao={responderQuestao}
+        confirmarResposta={confirmarResposta}
+        proximaQuestao={proximaQuestao}
+        voltarHome={voltarHome}
+      />
+    );
+  }
+
+  if (tela === "resultado" && simuladoAtual) {
+    return (
+      <ResultadoScreen
+        simulado={simuladoAtual}
+        cronometro={cronometro}
+        usuario={usuario}
+        voltarHome={() => router.push("/dashboard")}
+        iniciarSimulado={iniciarSimulado}
+      />
+    );
+  }
+
+  return null;
 }
