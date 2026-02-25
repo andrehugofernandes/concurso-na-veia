@@ -243,18 +243,18 @@ export function AdminSidebar({ isCollapsed, userRole }: AdminSidebarProps) {
                 <div className="flex items-baseline whitespace-nowrap">
                   <span
                     className={cn(
-                      "font-bebas text-[32px] uppercase  text-primary",
+                      "font-bebas text-[32.5px] uppercase  text-primary",
                     )}
                   >
                     A VAGA
                   </span>
-                  <span className="font-bebas text-[32px] uppercase text-foreground tracking-[0.05em] ml-[0.30em]">
+                  <span className="font-bebas text-[33px] uppercase text-foreground tracking-[0.05em] ml-[0.20em]">
                     É MINHA
                   </span>
                 </div>
                 {/* Subtítulo Justificado - 3 Words */}
-                <span className="text-[9px]  font-bold tracking-[0.34em] uppercase text-gray-500 dark:text-gray-400 leading-none -mt-2 whitespace-nowrap">
-                  SIMULANDO CONCURSOS
+                <span className="text-[8px]  font-bold tracking-[0.34em] uppercase text-gray-500 dark:text-gray-400 leading-none -mt-2 whitespace-nowrap">
+                  SIMULADOR DE CONCURSOS
                 </span>
               </div>
             )}

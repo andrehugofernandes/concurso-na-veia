@@ -63,6 +63,7 @@ import {
   AulaProps,
   StickyModuleNav,
   ModuleSectionHeader,
+  AulaTemplate,
 } from "./shared";
 
 import { progressService } from "@/lib/services/progress";
@@ -542,6 +543,14 @@ export default function AulaInterpretacaoTexto({
   xpGanho = 50,
   currentProgress,
   onUpdateProgress,
+  titulo,
+  descricao,
+  duracao,
+  materiaNome,
+  materiaCor,
+  materiaId,
+  prevTopico,
+  nextTopico,
 }: AulaProps) {
   const MODULE_DEFS = [
     { id: "modulo-1", label: "Módulo 1", titulo: "Fundamentos e Cognição" },
@@ -563,7 +572,6 @@ export default function AulaInterpretacaoTexto({
   const [quizFinal, setQuizFinal] = useState<QuizQuestion[]>([]);
   const [shuffledChallenges, setShuffledChallenges] = useState<Challenge[]>([]);
   const [challengeIndex, setChallengeIndex] = useState(0);
-  const [showCompletionBadge, setShowCompletionBadge] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("aula_interpretacao_progress");
@@ -584,8 +592,6 @@ export default function AulaInterpretacaoTexto({
     setQuizM5(getRandomQuestions(QUIZ_M5_POOL, 4));
     setQuizFinal(getRandomQuestions(QUIZ_FINAL_POOL, 4));
     setShuffledChallenges([...CHALLENGE_POOL].sort(() => 0.5 - Math.random()));
-
-    if (currentProgress >= 100 || isCompleted) setShowCompletionBadge(true);
   }, [isCompleted]);
 
   const saveProgress = (newSet: Set<string>) => {
@@ -617,7 +623,6 @@ export default function AulaInterpretacaoTexto({
           window.scrollTo({ top: 0, behavior: "smooth" });
         }, 1500);
       } else {
-        setShowCompletionBadge(true);
         if (onComplete) onComplete();
       }
     }
@@ -632,893 +637,848 @@ export default function AulaInterpretacaoTexto({
   if (loading) return null;
 
   return (
-    <div className="pb-40 animate-in fade-in duration-500">
-      <div className="w-full pt-0">
-        <ProgressIndicator />
+    <AulaTemplate
+      activeTab={activeTab}
+      setActiveTab={(val) => {
+        const idx = MODULE_DEFS.findIndex((m) => m.id === val);
+        if (isModuleUnlocked(idx)) setActiveTab(val);
+      }}
+      modules={MODULE_DEFS}
+      completedModules={completedModules}
+      isModuleUnlocked={isModuleUnlocked}
+      titulo={titulo}
+      descricao={descricao}
+      duracao={duracao}
+      materiaNome={materiaNome}
+      materiaCor={materiaCor}
+      materiaId={materiaId}
+      isCompleted={isCompleted}
+      prevTopico={prevTopico}
+      nextTopico={nextTopico}
+      currentProgress={currentProgress}
+      onComplete={onComplete}
+      loading={loading}
+      xpGanho={xpGanho}
+    >
+      {/* ─── MÓDULO 1: FUNDAMENTOS ─── */}
+      <TabsContent value="modulo-1" className="space-y-[50px]">
+        <ModuleBanner
+          numero={1}
+          titulo="Fundamentos e Cognição"
+          descricao="A base teórica de Bechara e as tipologias essenciais para a Petrobras."
+          gradiente="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700"
+        />
 
-        {showCompletionBadge && (
-          <div className="bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-xl p-4 flex items-center gap-4 shadow-sm mb-6 animate-in slide-in-from-top-4 duration-700">
-            <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-green-500/30">
-              <LuCheck size={24} strokeWidth={3} />
-            </div>
-            <div>
-              <h3 className="text-green-800 dark:text-green-300 font-bold text-lg">
-                Aula Concluída!
-              </h3>
-              <p className="text-green-700 dark:text-green-400 text-sm">
-                Parabéns! Você dominou as técnicas de Interpretação de Texto.
+        {/* SEÇÃO 1: BECHARA DETALHADO */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="Visão de Bechara: O Texto como Unidade de Sentido"
+            variant="amber"
+          />
+          <div className="space-y-8">
+            <div className="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/30 rounded-xl p-6 md:p-8">
+              <p className="text-muted-foreground text-lg leading-relaxed italic">
+                "O texto não é uma soma de frases, mas um todo coerente."
               </p>
+              <p className="text-foreground mt-4 font-medium">
+                — Evanildo Bechara
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <div className="flex items-center gap-2 text-indigo-600 font-bold uppercase text-sm tracking-widest px-4 py-1 bg-indigo-50 rounded-full w-fit">
+                  <LuTarget /> Análise (Compreensão)
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  É o micro-nível. Você foca nos dados, no vocabulário e na
+                  sintaxe. A pergunta de prova será: "O texto afirma...",
+                  "Segundo o autor...". Aqui não há espaço para deduções.
+                </p>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-center gap-2 text-purple-600 font-bold uppercase text-sm tracking-widest px-4 py-1 bg-purple-50 rounded-full w-fit">
+                  <LuTrophy /> Síntese (Interpretação)
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  É o macro-nível. Você conecta as partes para entender a
+                  intenção por trás das palavras. A pergunta será: "Infere-se
+                  que...", "Conclui-se que...". É o diálogo com o implícito.
+                </p>
+              </div>
             </div>
           </div>
-        )}
+        </section>
 
-        <Tabs
-          value={activeTab}
-          onValueChange={(val) => {
-            const idx = MODULE_DEFS.findIndex((m) => m.id === val);
-            if (isModuleUnlocked(idx)) setActiveTab(val);
-          }}
-          className="w-full"
-        >
-          <StickyModuleNav
-            modules={Array.from(MODULE_DEFS)}
-            activeTab={activeTab}
-            completedModules={completedModules}
-            isModuleUnlocked={isModuleUnlocked}
+        {/* SEÇÃO 2: TIPOLOGIA TEXTUAL */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={2}
+            title="Tipologia Textual: Como o Texto se Organiza"
+            variant="blue"
           />
+          <p className="text-muted-foreground text-lg">
+            Identificar o tipo de texto é o primeiro passo para não errar a
+            interpretação central.
+          </p>
 
-          {/* ─── MÓDULO 1: FUNDAMENTOS ─── */}
-          <TabsContent
-            value="modulo-1"
-            className="space-y-12 max-w-7xl mx-auto px-6 mt-8"
-          >
-            <ModuleBanner
-              numero={1}
-              titulo="Fundamentos e Cognição"
-              descricao="A base teórica de Bechara e as tipologias essenciais para a Petrobras."
-              gradiente="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700"
-            />
-
-            {/* SEÇÃO 1: BECHARA DETALHADO */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={1}
-                title="Visão de Bechara: O Texto como Unidade de Sentido"
-                variant="amber"
-              />
-              <div className="space-y-8">
-                <div className="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/30 rounded-xl p-6 md:p-8">
-                  <p className="text-muted-foreground text-lg leading-relaxed italic">
-                    "O texto não é uma soma de frases, mas um todo coerente."
-                  </p>
-                  <p className="text-foreground mt-4 font-medium">
-                    — Evanildo Bechara
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2 text-indigo-600 font-bold uppercase text-sm tracking-widest px-4 py-1 bg-indigo-50 rounded-full w-fit">
-                      <LuTarget /> Análise (Compreensão)
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed">
-                      É o micro-nível. Você foca nos dados, no vocabulário e na
-                      sintaxe. A pergunta de prova será: "O texto afirma...",
-                      "Segundo o autor...". Aqui não há espaço para deduções.
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2 text-purple-600 font-bold uppercase text-sm tracking-widest px-4 py-1 bg-purple-50 rounded-full w-fit">
-                      <LuTrophy /> Síntese (Interpretação)
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed">
-                      É o macro-nível. Você conecta as partes para entender a
-                      intenção por trás das palavras. A pergunta será:
-                      "Infere-se que...", "Conclui-se que...". É o diálogo com o
-                      implícito.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* SEÇÃO 2: TIPOLOGIA TEXTUAL */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={2}
-                title="Tipologia Textual: Como o Texto se Organiza"
-                variant="blue"
-              />
-              <p className="text-muted-foreground text-lg">
-                Identificar o tipo de texto é o primeiro passo para não errar a
-                interpretação central.
-              </p>
-
-              <div className="w-full">
-                <Carousel
-                  opts={{ loop: true, align: "start" }}
-                  className="w-full"
-                >
-                  <CarouselContent className="-ml-4 pb-4">
-                    <CarouselItem className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <FlipCard
-                        categoria="Tipologia Textual"
-                        frente={
-                          <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
-                            <div className="w-16 h-16 rounded-2xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-                              <LuLayers size={32} />
-                            </div>
-                            <h3 className="text-xl font-bold">
-                              Dissertativo-Argumentativo
-                            </h3>
-                            <p className="text-sm text-muted-foreground">
-                              O queridinho da Cesgranrio
-                            </p>
-                          </div>
-                        }
-                        verso={
-                          <div className="space-y-4">
-                            <p>
-                              <strong>Definição:</strong> Expõe um assunto e
-                              defende uma opinião (tese) com argumentos.
-                            </p>
-                            <div className="p-3 bg-background/50 rounded-lg border border-indigo-500/20 text-xs italic">
-                              "A exploração do petróleo é vital, embora a
-                              transição energética seja urgente. Portanto, o
-                              Brasil deve..."
-                            </div>
-                          </div>
-                        }
-                      />
-                    </CarouselItem>
-
-                    <CarouselItem className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <FlipCard
-                        categoria="Tipologia Textual"
-                        frente={
-                          <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
-                            <div className="w-16 h-16 rounded-2xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
-                              <LuBookOpen size={32} />
-                            </div>
-                            <h3 className="text-xl font-bold">
-                              Narrativo e Descritivo
-                            </h3>
-                            <p className="text-sm text-muted-foreground">
-                              O que conta e o que pinta
-                            </p>
-                          </div>
-                        }
-                        verso={
-                          <div className="space-y-4">
-                            <div>
-                              <strong className="text-emerald-400">
-                                Narrativo:
-                              </strong>
-                              <p className="text-sm">
-                                Foca em ações no tempo (personagens, enredo,
-                                evolução temporal).
-                              </p>
-                            </div>
-                            <div className="border-t border-white/10 pt-2">
-                              <strong className="text-emerald-400">
-                                Descritivo:
-                              </strong>
-                              <p className="text-sm">
-                                Foca em características (pintura com palavras,
-                                adjetivação, cena estática).
-                              </p>
-                            </div>
-                          </div>
-                        }
-                      />
-                    </CarouselItem>
-
-                    <CarouselItem className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <FlipCard
-                        categoria="Tipologia Textual"
-                        frente={
-                          <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
-                            <div className="w-16 h-16 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
-                              <LuFileText size={32} />
-                            </div>
-                            <h3 className="text-xl font-bold">
-                              Injuntivo (Instrucional)
-                            </h3>
-                            <p className="text-sm text-muted-foreground">
-                              O que manda fazer
-                            </p>
-                          </div>
-                        }
-                        verso={
-                          <div className="space-y-4">
-                            <p>
-                              <strong>Definição:</strong> Visa orientar o
-                              comportamento do leitor. Imperativo e verbos de
-                              comando.
-                            </p>
-                            <ul className="list-disc pl-4 text-sm space-y-1">
-                              <li>Manuais técnicos</li>
-                              <li>Receitas</li>
-                              <li>Editais</li>
-                              <li>Normas de Segurança (SMS)</li>
-                            </ul>
-                          </div>
-                        }
-                      />
-                    </CarouselItem>
-                  </CarouselContent>
-                  <div className="flex justify-center gap-2 mt-4">
-                    <CarouselPrevious className="static translate-y-0 h-10 w-10 border-slate-700 text-slate-400" />
-                    <CarouselNext className="static translate-y-0 h-10 w-10 border-slate-700 text-slate-400" />
-                  </div>
-                </Carousel>
-              </div>
-            </section>
-
-            {/* SEÇÃO 4: QUIZ M1 */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={3}
-                title="Quiz de Fixação"
-                variant="rose"
-              />
-              <QuizInterativo
-                questoes={quizM1}
-                titulo="Quiz de Fixação - Fundamentos e Cognição"
-                icone="🎯"
-                onComplete={(score) =>
-                  handleModuleProgress("modulo-1", 0, score)
-                }
-              />
-            </section>
-          </TabsContent>
-
-          {/* ─── MÓDULO 2: COESÃO ─── */}
-          <TabsContent
-            value="modulo-2"
-            className="space-y-12 max-w-7xl mx-auto px-6 mt-12"
-          >
-            <ModuleBanner
-              numero={2}
-              titulo="Mecanismos de Coesão"
-              descricao="As ferramentas que dão liga ao texto e os conectores lógicos da Cesgranrio."
-              gradiente="bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-800"
-            />
-
-            {/* SEÇÃO 1: OS CONECTIVOS */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={1}
-                title="Os Conectivos: Mapa Lógico"
-                variant="amber"
-              />
-              <div className="space-y-6">
-                <AlertBox tipo="info" titulo="O Pulo do Gato">
-                  <p>
-                    Trocar um "Mas" por um "Embora" muda a estrutura gramatical
-                    mas mantém a ideia de oposição. A banca ama isso!
-                  </p>
-                </AlertBox>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
-                    <h4 className="font-bold mb-3 flex items-center gap-2 text-red-500">
-                      <LuLink /> Oposição
-                    </h4>
-                    <ul className="grid grid-cols-1 gap-1">
-                      {["Mas", "Porém", "Contudo", "Todavia", "Entretanto"].map(
-                        (c, i) => (
-                          <li
-                            key={i}
-                            className="text-sm text-muted-foreground font-medium"
-                          >
-                            • {c}
-                          </li>
-                        ),
-                      )}
-                    </ul>
-                  </div>
-                  <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
-                    <h4 className="font-bold mb-3 flex items-center gap-2 text-blue-500">
-                      <LuLink /> Causa/Explicação
-                    </h4>
-                    <ul className="grid grid-cols-1 gap-1">
-                      {[
-                        "Porque",
-                        "Já que",
-                        "Pois",
-                        "Visto que",
-                        "Porquanto",
-                      ].map((c, i) => (
-                        <li
-                          key={i}
-                          className="text-sm text-muted-foreground font-medium"
-                        >
-                          • {c}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
-                    <h4 className="font-bold mb-3 flex items-center gap-2 text-emerald-500">
-                      <LuLink /> Concessão
-                    </h4>
-                    <ul className="grid grid-cols-1 gap-1">
-                      {["Embora", "Ainda que", "Apesar de", "Conquanto"].map(
-                        (c, i) => (
-                          <li
-                            key={i}
-                            className="text-sm text-muted-foreground font-medium"
-                          >
-                            • {c}
-                          </li>
-                        ),
-                      )}
-                    </ul>
-                  </div>
-                  <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
-                    <h4 className="font-bold mb-3 flex items-center gap-2 text-indigo-500">
-                      <LuLink /> Conclusão
-                    </h4>
-                    <ul className="grid grid-cols-1 gap-1">
-                      {["Logo", "Portanto", "Assim", "Por conseguinte"].map(
-                        (c, i) => (
-                          <li
-                            key={i}
-                            className="text-sm text-muted-foreground font-medium"
-                          >
-                            • {c}
-                          </li>
-                        ),
-                      )}
-                    </ul>
-                  </div>
-                  <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
-                    <h4 className="font-bold mb-3 flex items-center gap-2 text-orange-500">
-                      <LuLink /> Condição
-                    </h4>
-                    <ul className="grid grid-cols-1 gap-1">
-                      {["Se", "Caso", "Contanto que", "Desde que"].map(
-                        (c, i) => (
-                          <li
-                            key={i}
-                            className="text-sm text-muted-foreground font-medium"
-                          >
-                            • {c}
-                          </li>
-                        ),
-                      )}
-                    </ul>
-                  </div>
-                  <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
-                    <h4 className="font-bold mb-3 flex items-center gap-2 text-purple-500">
-                      <LuLink /> Finalidade
-                    </h4>
-                    <ul className="grid grid-cols-1 gap-1">
-                      {["Para que", "A fim de que", "Com o intuito de"].map(
-                        (c, i) => (
-                          <li
-                            key={i}
-                            className="text-sm text-muted-foreground font-medium"
-                          >
-                            • {c}
-                          </li>
-                        ),
-                      )}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* SEÇÃO 2: EXEMPLOS PRÁTICOS */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={2}
-                title="Substituição na Prática"
-                variant="emerald"
-              />
-              <p className="text-muted-foreground">
-                Veja como o sentido se mantém mas a sintaxe se altera:
-              </p>
-              <CardCarousel
-                titulo="Exemplos de Reescrita"
-                cards={[
-                  {
-                    icone: "⚖️",
-                    titulo: "Conjunção Coordenada",
-                    descricao: (
-                      <div className="pb-4">
-                        Choveu muito, <b>MAS</b> fomos trabalhar. (Relação de
-                        oposição com ênfase no trabalho)
-                      </div>
-                    ),
-                    corFundo: "bg-red-500/10",
-                  },
-                  {
-                    icone: "🧠",
-                    titulo: "Conjunção Subordinada",
-                    descricao: (
-                      <div className="pb-4">
-                        <b>EMBORA</b> tenha chovido muito, fomos trabalhar.
-                        (Concessão: ênfase no fato de chover, mantendo o
-                        sentido)
-                      </div>
-                    ),
-                    corFundo: "bg-emerald-500/10",
-                  },
-                  {
-                    icone: "🔍",
-                    titulo: "Causa vs Explicação",
-                    descricao: (
-                      <div className="pb-4">
-                        Faltei <b>PORQUE</b> estava doente (Causa real). Venha,{" "}
-                        <b>PORQUE</b> eu mandei (Explicação/Ordem).
-                      </div>
-                    ),
-                    corFundo: "bg-blue-500/10",
-                  },
-                  {
-                    icone: "📈",
-                    titulo: "Conectivo Consecutivo",
-                    descricao: (
-                      <div className="pb-4">
-                        Choveu tanto <b>QUE</b> a rua alagou. (Troque por:{" "}
-                        <i>de tal sorte que</i>, <i>de modo que</i>)
-                      </div>
-                    ),
-                    corFundo: "bg-purple-500/10",
-                  },
-                  {
-                    icone: "⏳",
-                    titulo: "Conectivo Condicional",
-                    descricao: (
-                      <div className="pb-4">
-                        <b>CASO</b> chova, não irei. (Troque por:{" "}
-                        <i>desde que</i> + subjuntivo, <i>contanto que</i>)
-                      </div>
-                    ),
-                    corFundo: "bg-orange-500/10",
-                  },
-                  {
-                    icone: "🎯",
-                    titulo: "Conectivo Finalidade",
-                    descricao: (
-                      <div className="pb-4">
-                        Estudo <b>PARA QUE</b> passe. (Troque por:{" "}
-                        <i>a fim de que</i>, <i>com o intuito de</i>)
-                      </div>
-                    ),
-                    corFundo: "bg-yellow-500/10",
-                  },
-                ]}
-              />
-            </section>
-
-            {/* SEÇÃO 3: MULTIMÍDIA */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={3}
-                title="Resumo e Multimídia"
-                variant="indigo"
-              />
-              <LessonTabs
-                tabs={[
-                  {
-                    id: "video",
-                    label: "Vídeo Aula",
-                    icon: LuPlay,
-                    content: (
-                      <div className="w-full flex flex-col items-center py-6">
-                        <div className="w-full max-w-3xl">
-                          <VideoModal
-                            videoId="7tU9PzSkaU0"
-                            title="Conectivos: A Dobradiça do Texto"
-                            duration="12:30"
-                            thumbnail="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1000&auto=format&fit=crop"
-                          />
+          <div className="w-full">
+            <Carousel opts={{ loop: true, align: "start" }} className="w-full">
+              <CarouselContent className="-ml-4 pb-4">
+                <CarouselItem className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                  <FlipCard
+                    categoria="Tipologia Textual"
+                    frente={
+                      <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
+                        <div className="w-16 h-16 rounded-2xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                          <LuLayers size={32} />
                         </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    id: "resumo",
-                    label: "Resumo Visual",
-                    icon: LuBookOpen,
-                    content: (
-                      <ModuleSummaryCarouselNew
-                        images={[
-                          {
-                            imageUrl:
-                              "/images/mapa-mental/inter_m2_conectivos.png",
-                            title: "Tabela: Conectivos de Oposição",
-                            type: "Tabela",
-                            placeholderColor: "bg-red-100 dark:bg-red-900/30",
-                          },
-                          {
-                            imageUrl:
-                              "/images/mapa-mental/inter_m2_causais.png",
-                            title: "Mapa: Conectivos Causais",
-                            type: "Mapa Mental",
-                            placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
-                          },
-                          {
-                            imageUrl:
-                              "/images/mapa-mental/inter_m2_concessivas.png",
-                            title: "Concessivas vs Adversativas",
-                            type: "Diferença",
-                            placeholderColor:
-                              "bg-emerald-100 dark:bg-emerald-900/30",
-                          },
-                        ]}
-                      />
-                    ),
-                  },
-                  {
-                    id: "visual",
-                    label: "Macete Visual",
-                    icon: LuImage,
-                    content: (
-                      <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
-                        <h3 className="text-xl font-bold text-foreground mb-4">
-                          A Regra dos 2 Tempos
+                        <h3 className="text-xl font-bold">
+                          Dissertativo-Argumentativo
                         </h3>
-                        <div className="text-7xl my-8 animate-pulse">
-                          ⏳ ⚖️ 🔗
-                        </div>
-                        <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
-                          "Ache o conectivo, identifique o sentido! Mas, Porém,
-                          Contudo... No entanto, Entrega a Oposição!"
+                        <p className="text-sm text-muted-foreground">
+                          O queridinho da Cesgranrio
                         </p>
                       </div>
+                    }
+                    verso={
+                      <div className="space-y-4">
+                        <p>
+                          <strong>Definição:</strong> Expõe um assunto e defende
+                          uma opinião (tese) com argumentos.
+                        </p>
+                        <div className="p-3 bg-background/50 rounded-lg border border-indigo-500/20 text-xs italic">
+                          "A exploração do petróleo é vital, embora a transição
+                          energética seja urgente. Portanto, o Brasil deve..."
+                        </div>
+                      </div>
+                    }
+                  />
+                </CarouselItem>
+
+                <CarouselItem className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                  <FlipCard
+                    categoria="Tipologia Textual"
+                    frente={
+                      <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
+                        <div className="w-16 h-16 rounded-2xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                          <LuBookOpen size={32} />
+                        </div>
+                        <h3 className="text-xl font-bold">
+                          Narrativo e Descritivo
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          O que conta e o que pinta
+                        </p>
+                      </div>
+                    }
+                    verso={
+                      <div className="space-y-4">
+                        <div>
+                          <strong className="text-emerald-400">
+                            Narrativo:
+                          </strong>
+                          <p className="text-sm">
+                            Foca em ações no tempo (personagens, enredo,
+                            evolução temporal).
+                          </p>
+                        </div>
+                        <div className="border-t border-white/10 pt-2">
+                          <strong className="text-emerald-400">
+                            Descritivo:
+                          </strong>
+                          <p className="text-sm">
+                            Foca em características (pintura com palavras,
+                            adjetivação, cena estática).
+                          </p>
+                        </div>
+                      </div>
+                    }
+                  />
+                </CarouselItem>
+
+                <CarouselItem className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                  <FlipCard
+                    categoria="Tipologia Textual"
+                    frente={
+                      <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
+                        <div className="w-16 h-16 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
+                          <LuFileText size={32} />
+                        </div>
+                        <h3 className="text-xl font-bold">
+                          Injuntivo (Instrucional)
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          O que manda fazer
+                        </p>
+                      </div>
+                    }
+                    verso={
+                      <div className="space-y-4">
+                        <p>
+                          <strong>Definição:</strong> Visa orientar o
+                          comportamento do leitor. Imperativo e verbos de
+                          comando.
+                        </p>
+                        <ul className="list-disc pl-4 text-sm space-y-1">
+                          <li>Manuais técnicos</li>
+                          <li>Receitas</li>
+                          <li>Editais</li>
+                          <li>Normas de Segurança (SMS)</li>
+                        </ul>
+                      </div>
+                    }
+                  />
+                </CarouselItem>
+              </CarouselContent>
+              <div className="flex justify-center gap-2 mt-4">
+                <CarouselPrevious className="static translate-y-0 h-10 w-10 border-slate-700 text-slate-400" />
+                <CarouselNext className="static translate-y-0 h-10 w-10 border-slate-700 text-slate-400" />
+              </div>
+            </Carousel>
+          </div>
+        </section>
+
+        {/* SEÇÃO 4: QUIZ M1 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={3}
+            title="Quiz de Fixação"
+            variant="rose"
+          />
+          <QuizInterativo
+            questoes={quizM1}
+            titulo="Quiz de Fixação - Fundamentos e Cognição"
+            icone="🎯"
+            onComplete={(score) => handleModuleProgress("modulo-1", 0, score)}
+          />
+        </section>
+      </TabsContent>
+
+      {/* ─── MÓDULO 2: COESÃO ─── */}
+      <TabsContent value="modulo-2" className="space-y-[50px]">
+        <ModuleBanner
+          numero={2}
+          titulo="Mecanismos de Coesão"
+          descricao="As ferramentas que dão liga ao texto e os conectores lógicos da Cesgranrio."
+          gradiente="bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-800"
+        />
+
+        {/* SEÇÃO 1: OS CONECTIVOS */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="Os Conectivos: Mapa Lógico"
+            variant="amber"
+          />
+          <div className="space-y-6">
+            <AlertBox tipo="info" titulo="O Pulo do Gato">
+              <p>
+                Trocar um "Mas" por um "Embora" muda a estrutura gramatical mas
+                mantém a ideia de oposição. A banca ama isso!
+              </p>
+            </AlertBox>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
+                <h4 className="font-bold mb-3 flex items-center gap-2 text-red-500">
+                  <LuLink /> Oposição
+                </h4>
+                <ul className="grid grid-cols-1 gap-1">
+                  {["Mas", "Porém", "Contudo", "Todavia", "Entretanto"].map(
+                    (c, i) => (
+                      <li
+                        key={i}
+                        className="text-sm text-muted-foreground font-medium"
+                      >
+                        • {c}
+                      </li>
                     ),
-                  },
-                  {
-                    id: "audio",
-                    label: "Áudio Resumo",
-                    icon: LuVolume2,
-                    content: (
-                      <div className="w-full flex justify-center py-4">
-                        <div className="w-full max-w-md">
-                          <MusicPlayerCard
-                            audioUrl="#"
-                            titulo="Dobradiça do Texto"
-                            artista="Conector Band"
-                            capaUrl="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000&auto=format&fit=crop"
-                            lyrics={`(Verso 1)
+                  )}
+                </ul>
+              </div>
+              <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
+                <h4 className="font-bold mb-3 flex items-center gap-2 text-blue-500">
+                  <LuLink /> Causa/Explicação
+                </h4>
+                <ul className="grid grid-cols-1 gap-1">
+                  {["Porque", "Já que", "Pois", "Visto que", "Porquanto"].map(
+                    (c, i) => (
+                      <li
+                        key={i}
+                        className="text-sm text-muted-foreground font-medium"
+                      >
+                        • {c}
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </div>
+              <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
+                <h4 className="font-bold mb-3 flex items-center gap-2 text-emerald-500">
+                  <LuLink /> Concessão
+                </h4>
+                <ul className="grid grid-cols-1 gap-1">
+                  {["Embora", "Ainda que", "Apesar de", "Conquanto"].map(
+                    (c, i) => (
+                      <li
+                        key={i}
+                        className="text-sm text-muted-foreground font-medium"
+                      >
+                        • {c}
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </div>
+              <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
+                <h4 className="font-bold mb-3 flex items-center gap-2 text-indigo-500">
+                  <LuLink /> Conclusão
+                </h4>
+                <ul className="grid grid-cols-1 gap-1">
+                  {["Logo", "Portanto", "Assim", "Por conseguinte"].map(
+                    (c, i) => (
+                      <li
+                        key={i}
+                        className="text-sm text-muted-foreground font-medium"
+                      >
+                        • {c}
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </div>
+              <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
+                <h4 className="font-bold mb-3 flex items-center gap-2 text-orange-500">
+                  <LuLink /> Condição
+                </h4>
+                <ul className="grid grid-cols-1 gap-1">
+                  {["Se", "Caso", "Contanto que", "Desde que"].map((c, i) => (
+                    <li
+                      key={i}
+                      className="text-sm text-muted-foreground font-medium"
+                    >
+                      • {c}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
+                <h4 className="font-bold mb-3 flex items-center gap-2 text-purple-500">
+                  <LuLink /> Finalidade
+                </h4>
+                <ul className="grid grid-cols-1 gap-1">
+                  {["Para que", "A fim de que", "Com o intuito de"].map(
+                    (c, i) => (
+                      <li
+                        key={i}
+                        className="text-sm text-muted-foreground font-medium"
+                      >
+                        • {c}
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SEÇÃO 2: EXEMPLOS PRÁTICOS */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={2}
+            title="Substituição na Prática"
+            variant="emerald"
+          />
+          <p className="text-muted-foreground">
+            Veja como o sentido se mantém mas a sintaxe se altera:
+          </p>
+          <CardCarousel
+            titulo="Exemplos de Reescrita"
+            cards={[
+              {
+                icone: "⚖️",
+                titulo: "Conjunção Coordenada",
+                descricao: (
+                  <div className="pb-4">
+                    Choveu muito, <b>MAS</b> fomos trabalhar. (Relação de
+                    oposição com ênfase no trabalho)
+                  </div>
+                ),
+                corFundo: "bg-red-500/10",
+              },
+              {
+                icone: "🧠",
+                titulo: "Conjunção Subordinada",
+                descricao: (
+                  <div className="pb-4">
+                    <b>EMBORA</b> tenha chovido muito, fomos trabalhar.
+                    (Concessão: ênfase no fato de chover, mantendo o sentido)
+                  </div>
+                ),
+                corFundo: "bg-emerald-500/10",
+              },
+              {
+                icone: "🔍",
+                titulo: "Causa vs Explicação",
+                descricao: (
+                  <div className="pb-4">
+                    Faltei <b>PORQUE</b> estava doente (Causa real). Venha,{" "}
+                    <b>PORQUE</b> eu mandei (Explicação/Ordem).
+                  </div>
+                ),
+                corFundo: "bg-blue-500/10",
+              },
+              {
+                icone: "📈",
+                titulo: "Conectivo Consecutivo",
+                descricao: (
+                  <div className="pb-4">
+                    Choveu tanto <b>QUE</b> a rua alagou. (Troque por:{" "}
+                    <i>de tal sorte que</i>, <i>de modo que</i>)
+                  </div>
+                ),
+                corFundo: "bg-purple-500/10",
+              },
+              {
+                icone: "⏳",
+                titulo: "Conectivo Condicional",
+                descricao: (
+                  <div className="pb-4">
+                    <b>CASO</b> chova, não irei. (Troque por: <i>desde que</i> +
+                    subjuntivo, <i>contanto que</i>)
+                  </div>
+                ),
+                corFundo: "bg-orange-500/10",
+              },
+              {
+                icone: "🎯",
+                titulo: "Conectivo Finalidade",
+                descricao: (
+                  <div className="pb-4">
+                    Estudo <b>PARA QUE</b> passe. (Troque por:{" "}
+                    <i>a fim de que</i>, <i>com o intuito de</i>)
+                  </div>
+                ),
+                corFundo: "bg-yellow-500/10",
+              },
+            ]}
+          />
+        </section>
+
+        {/* SEÇÃO 3: MULTIMÍDIA */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={3}
+            title="Resumo e Multimídia"
+            variant="indigo"
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "video",
+                label: "Vídeo Aula",
+                icon: LuPlay,
+                content: (
+                  <div className="w-full flex flex-col items-center py-6">
+                    <div className="w-full max-w-3xl">
+                      <VideoModal
+                        videoId="7tU9PzSkaU0"
+                        title="Conectivos: A Dobradiça do Texto"
+                        duration="12:30"
+                        thumbnail="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1000&auto=format&fit=crop"
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon: LuBookOpen,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    images={[
+                      {
+                        imageUrl: "/images/mapa-mental/inter_m2_conectivos.png",
+                        title: "Tabela: Conectivos de Oposição",
+                        type: "Tabela",
+                        placeholderColor: "bg-red-100 dark:bg-red-900/30",
+                      },
+                      {
+                        imageUrl: "/images/mapa-mental/inter_m2_causais.png",
+                        title: "Mapa: Conectivos Causais",
+                        type: "Mapa Mental",
+                        placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
+                      },
+                      {
+                        imageUrl:
+                          "/images/mapa-mental/inter_m2_concessivas.png",
+                        title: "Concessivas vs Adversativas",
+                        type: "Diferença",
+                        placeholderColor:
+                          "bg-emerald-100 dark:bg-emerald-900/30",
+                      },
+                    ]}
+                  />
+                ),
+              },
+              {
+                id: "visual",
+                label: "Macete Visual",
+                icon: LuImage,
+                content: (
+                  <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
+                    <h3 className="text-xl font-bold text-foreground mb-4">
+                      A Regra dos 2 Tempos
+                    </h3>
+                    <div className="text-7xl my-8 animate-pulse">⏳ ⚖️ 🔗</div>
+                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                      "Ache o conectivo, identifique o sentido! Mas, Porém,
+                      Contudo... No entanto, Entrega a Oposição!"
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                id: "audio",
+                label: "Áudio Resumo",
+                icon: LuVolume2,
+                content: (
+                  <div className="w-full flex justify-center py-4">
+                    <div className="w-full max-w-md">
+                      <MusicPlayerCard
+                        audioUrl="#"
+                        titulo="Dobradiça do Texto"
+                        artista="Conector Band"
+                        capaUrl="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000&auto=format&fit=crop"
+                        lyrics={`(Verso 1)
                                                         O texto é um prédio, as colunas vão subir.
                                                         Sem o conector, o prédio vai cair!
                                                         
                                                         (Refrão)
                                                         Mas, porém, contudo... as pedras do caminho.
                                                         Logo e portanto... o final do pergaminho!`}
-                          />
-                        </div>
-                      </div>
-                    ),
-                  },
-                ]}
-              />
-            </section>
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
 
-            {/* SEÇÃO 4: QUIZ M2 */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={4}
-                title="Quiz de Fixação - Mecanismos de Coesão"
-                variant="rose"
-              />
-              <QuizInterativo
-                questoes={quizM2}
-                titulo="Quiz de Fixação - Mecanismos de Coesão"
-                icone="🎯"
-                onComplete={(score) =>
-                  handleModuleProgress("modulo-2", 1, score)
-                }
-              />
-            </section>
-          </TabsContent>
+        {/* SEÇÃO 4: QUIZ M2 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={4}
+            title="Quiz de Fixação - Mecanismos de Coesão"
+            variant="rose"
+          />
+          <QuizInterativo
+            questoes={quizM2}
+            titulo="Quiz de Fixação - Mecanismos de Coesão"
+            icone="🎯"
+            onComplete={(score) => handleModuleProgress("modulo-2", 1, score)}
+          />
+        </section>
+      </TabsContent>
 
-          {/* ─── MÓDULO 3: ESTRATÉGIAS ─── */}
-          <TabsContent
-            value="modulo-3"
-            className="space-y-12 max-w-7xl mx-auto px-6 mt-12"
-          >
-            <ModuleBanner
-              numero={3}
-              titulo="Estratégias de Elite"
-              descricao="As 3 grades armadilhas e técnicas de varredura Cesgranrio."
-              gradiente="bg-gradient-to-br from-purple-700 to-indigo-900"
-            />
+      {/* ─── MÓDULO 3: ESTRATÉGIAS ─── */}
+      <TabsContent value="modulo-3" className="space-y-[50px]">
+        <ModuleBanner
+          numero={3}
+          titulo="Estratégias de Elite"
+          descricao="As 3 grades armadilhas e técnicas de varredura Cesgranrio."
+          gradiente="bg-gradient-to-br from-purple-700 to-indigo-900"
+        />
 
-            {/* SEÇÃO 1: VARREDURA E MÉTODOS DE LEITURA */}
-            <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                <span className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center text-3xl font-bold text-blue-700 dark:text-blue-400">
-                  1
-                </span>
-                A Varredura Estratégica
-              </h2>
-              <p className="text-muted-foreground text-lg mb-6">
-                Na prova, o tempo é seu maior inimigo. Técnicas de varredura
-                ajudam a mapear o texto antes de mergulhar em seus detalhes,
-                preparando o cérebro para buscar a resposta correta no lugar
-                certo.
+        {/* SEÇÃO 1: VARREDURA E MÉTODOS DE LEITURA */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
+            <span className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center text-3xl font-bold text-blue-700 dark:text-blue-400">
+              1
+            </span>
+            A Varredura Estratégica
+          </h2>
+          <p className="text-muted-foreground text-lg mb-6">
+            Na prova, o tempo é seu maior inimigo. Técnicas de varredura ajudam
+            a mapear o texto antes de mergulhar em seus detalhes, preparando o
+            cérebro para buscar a resposta correta no lugar certo.
+          </p>
+          <ContentAccordion
+            titulo="Métodos Ágeis de Leitura"
+            icone={<LuBookOpen className="text-blue-500" />}
+            corIndicador="bg-blue-500"
+            slides={[
+              {
+                titulo: "Leitura Vertical",
+                icone: "↕️",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-sm text-foreground">
+                      A <strong>Leitura Vertical</strong> serve para identificar
+                      palavras-chave e a estrutura principal (a "espinha
+                      dorsal") do argumento sem ler todas as palavras da linha.
+                    </p>
+                    <div className="bg-blue-500/10 p-4 border border-blue-500/20 rounded-xl">
+                      <p className="font-bold text-sm text-blue-800 dark:text-blue-300">
+                        💡 Como fazer:
+                      </p>
+                      <p className="text-sm text-blue-900/80 dark:text-blue-300 mt-2">
+                        Passe o olho rapidamente do topo até a base do texto,
+                        focando no centro da mancha de texto, pescando
+                        substantivos e verbos fortes.
+                      </p>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Skimming",
+                icone: "🏄",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-sm text-foreground">
+                      O <strong>Skimming</strong> ("deslizar" sobre o texto)
+                      visa captar a <strong>ideia principal</strong> ou o tema
+                      central rapidamente.
+                    </p>
+                    <div className="bg-indigo-500/10 p-4 border border-indigo-500/20 rounded-xl">
+                      <p className="font-bold text-sm text-indigo-800 dark:text-indigo-300">
+                        💡 Como fazer:
+                      </p>
+                      <p className="text-sm text-indigo-900/80 dark:text-indigo-300 mt-2">
+                        Leia apenas o título, subtítulos, o primeiro parágrafo e
+                        a primeira linha de cada parágrafo subsequente.
+                      </p>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Scanning",
+                icone: "🔍",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-sm text-foreground">
+                      O <strong>Scanning</strong> ("escanear" o texto) serve
+                      para encontrar uma <strong>informação específica</strong>{" "}
+                      previamente solicitada pela questão (uma data, um nome, um
+                      valor).
+                    </p>
+                    <div className="bg-emerald-500/10 p-4 border border-emerald-500/20 rounded-xl">
+                      <p className="font-bold text-sm text-emerald-800 dark:text-emerald-300">
+                        💡 Como fazer:
+                      </p>
+                      <p className="text-sm text-emerald-900/80 dark:text-emerald-300 mt-2">
+                        Não leia para entender. Aja como um radar procurando
+                        aquele termo exato no meio das palavras.
+                      </p>
+                    </div>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        {/* SEÇÃO 2: ARMADILHAS */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
+            <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-3xl font-bold text-red-700 dark:text-red-400">
+              2
+            </span>
+            As "Três Portas do Erro" na Interpretação
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 bg-red-500/5 border border-red-500/20 rounded-2xl relative overflow-hidden group">
+              <div className="absolute top-4 right-4 text-red-500/20 group-hover:scale-125 transition-transform duration-500">
+                <LuTriangleAlert size={48} />
+              </div>
+              <h4 className="text-xl font-bold text-red-600 mb-3">
+                Extrapolação
+              </h4>
+              <p className="text-sm text-red-900/70 dark:text-red-300">
+                Quando você traz o "que sabe de casa" para a prova. Se o texto
+                não disse, é falso!
               </p>
-              <ContentAccordion
-                titulo="Métodos Ágeis de Leitura"
-                icone={<LuBookOpen className="text-blue-500" />}
-                corIndicador="bg-blue-500"
-                slides={[
-                  {
-                    titulo: "Leitura Vertical",
-                    icone: "↕️",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-foreground">
-                          A <strong>Leitura Vertical</strong> serve para
-                          identificar palavras-chave e a estrutura principal (a
-                          "espinha dorsal") do argumento sem ler todas as
-                          palavras da linha.
-                        </p>
-                        <div className="bg-blue-500/10 p-4 border border-blue-500/20 rounded-xl">
-                          <p className="font-bold text-sm text-blue-800 dark:text-blue-300">
-                            💡 Como fazer:
-                          </p>
-                          <p className="text-sm text-blue-900/80 dark:text-blue-300 mt-2">
-                            Passe o olho rapidamente do topo até a base do
-                            texto, focando no centro da mancha de texto,
-                            pescando substantivos e verbos fortes.
-                          </p>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Skimming",
-                    icone: "🏄",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-foreground">
-                          O <strong>Skimming</strong> ("deslizar" sobre o texto)
-                          visa captar a <strong>ideia principal</strong> ou o
-                          tema central rapidamente.
-                        </p>
-                        <div className="bg-indigo-500/10 p-4 border border-indigo-500/20 rounded-xl">
-                          <p className="font-bold text-sm text-indigo-800 dark:text-indigo-300">
-                            💡 Como fazer:
-                          </p>
-                          <p className="text-sm text-indigo-900/80 dark:text-indigo-300 mt-2">
-                            Leia apenas o título, subtítulos, o primeiro
-                            parágrafo e a primeira linha de cada parágrafo
-                            subsequente.
-                          </p>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Scanning",
-                    icone: "🔍",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-foreground">
-                          O <strong>Scanning</strong> ("escanear" o texto) serve
-                          para encontrar uma{" "}
-                          <strong>informação específica</strong> previamente
-                          solicitada pela questão (uma data, um nome, um valor).
-                        </p>
-                        <div className="bg-emerald-500/10 p-4 border border-emerald-500/20 rounded-xl">
-                          <p className="font-bold text-sm text-emerald-800 dark:text-emerald-300">
-                            💡 Como fazer:
-                          </p>
-                          <p className="text-sm text-emerald-900/80 dark:text-emerald-300 mt-2">
-                            Não leia para entender. Aja como um radar procurando
-                            aquele termo exato no meio das palavras.
-                          </p>
-                        </div>
-                      </div>
-                    ),
-                  },
-                ]}
-              />
-            </section>
+            </div>
+            <div className="p-6 bg-orange-500/5 border border-orange-500/20 rounded-2xl relative overflow-hidden group">
+              <div className="absolute top-4 right-4 text-orange-500/20 group-hover:scale-125 transition-transform duration-500">
+                <LuPause size={48} />
+              </div>
+              <h4 className="text-xl font-bold text-orange-600 mb-3">
+                Redução
+              </h4>
+              <p className="text-sm text-orange-900/70 dark:text-orange-300">
+                O texto diz algo amplo, e a alternativa foca em apenas um
+                detalhe como se fosse o todo.
+              </p>
+            </div>
+            <div className="p-6 bg-rose-500/5 border border-rose-500/20 rounded-2xl relative overflow-hidden group">
+              <div className="absolute top-4 right-4 text-rose-500/20 group-hover:scale-125 transition-transform duration-500">
+                <LuSkipBack size={48} />
+              </div>
+              <h4 className="text-xl font-bold text-rose-600 mb-3">
+                Contradição
+              </h4>
+              <p className="text-sm text-rose-900/70 dark:text-rose-300">
+                A alternativa afirma o oposto do que o autor defendeu ou sugeriu
+                nas entrelinhas.
+              </p>
+            </div>
+          </div>
+        </section>
 
-            {/* SEÇÃO 2: ARMADILHAS */}
-            <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-3xl font-bold text-red-700 dark:text-red-400">
-                  2
-                </span>
-                As "Três Portas do Erro" na Interpretação
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="p-6 bg-red-500/5 border border-red-500/20 rounded-2xl relative overflow-hidden group">
-                  <div className="absolute top-4 right-4 text-red-500/20 group-hover:scale-125 transition-transform duration-500">
-                    <LuTriangleAlert size={48} />
-                  </div>
-                  <h4 className="text-xl font-bold text-red-600 mb-3">
-                    Extrapolação
+        {/* SEÇÃO 3: DESAFIO PRÁTICO */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
+            <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-3xl font-bold text-indigo-700 dark:text-indigo-400">
+              3
+            </span>
+            Desafio Prático: Laboratório de Gabarito
+          </h2>
+          {shuffledChallenges.length > 0 && (
+            <div className="space-y-8">
+              <div
+                className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8"
+                key={`challenge-${challengeIndex}`}
+              >
+                <div className="space-y-3">
+                  <h4 className="font-bold text-red-500 flex items-center gap-2">
+                    ❌ Onde a maioria erra:
                   </h4>
-                  <p className="text-sm text-red-900/70 dark:text-red-300">
-                    Quando você traz o "que sabe de casa" para a prova. Se o
-                    texto não disse, é falso!
-                  </p>
+                  <div className="h-full min-h-[180px] p-6 bg-gradient-to-br from-red-50 to-rose-50 border border-red-100 rounded-2xl flex items-center justify-center dark:from-red-900/10 dark:to-rose-900/10">
+                    <p className="line-through text-lg text-red-800/70 font-medium decoration-red-500/50">
+                      "{shuffledChallenges[challengeIndex].wrong}"
+                    </p>
+                  </div>
                 </div>
-                <div className="p-6 bg-orange-500/5 border border-orange-500/20 rounded-2xl relative overflow-hidden group">
-                  <div className="absolute top-4 right-4 text-orange-500/20 group-hover:scale-125 transition-transform duration-500">
-                    <LuPause size={48} />
-                  </div>
-                  <h4 className="text-xl font-bold text-orange-600 mb-3">
-                    Redução
+                <div className="space-y-3">
+                  <h4 className="font-bold text-emerald-500 flex items-center gap-2">
+                    ✅ Como você vai acertar:
                   </h4>
-                  <p className="text-sm text-orange-900/70 dark:text-orange-300">
-                    O texto diz algo amplo, e a alternativa foca em apenas um
-                    detalhe como se fosse o todo.
-                  </p>
-                </div>
-                <div className="p-6 bg-rose-500/5 border border-rose-500/20 rounded-2xl relative overflow-hidden group">
-                  <div className="absolute top-4 right-4 text-rose-500/20 group-hover:scale-125 transition-transform duration-500">
-                    <LuSkipBack size={48} />
+                  <div className="h-full min-h-[180px] p-6 bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100 rounded-2xl flex flex-col justify-center dark:from-emerald-900/10 dark:to-teal-900/10">
+                    <p className="text-lg font-bold text-emerald-800 mb-4 text-center">
+                      "{shuffledChallenges[challengeIndex].correct}"
+                    </p>
+                    <div className="p-4 bg-white/60 rounded-xl border border-emerald-100/50 backdrop-blur-sm flex items-start gap-3 dark:bg-black/20">
+                      <span className="text-lg">💡</span>{" "}
+                      <p className="text-sm font-medium leading-relaxed text-emerald-700">
+                        {shuffledChallenges[challengeIndex].explanation}
+                      </p>
+                    </div>
                   </div>
-                  <h4 className="text-xl font-bold text-rose-600 mb-3">
-                    Contradição
-                  </h4>
-                  <p className="text-sm text-rose-900/70 dark:text-rose-300">
-                    A alternativa afirma o oposto do que o autor defendeu ou
-                    sugeriu nas entrelinhas.
-                  </p>
                 </div>
               </div>
-            </section>
+              <div className="flex justify-center gap-4">
+                <Button
+                  variant="outline"
+                  onClick={() =>
+                    setChallengeIndex(
+                      (prev) => (prev + 1) % shuffledChallenges.length,
+                    )
+                  }
+                  className="rounded-full px-8 py-6 font-bold text-lg shadow-xl shadow-indigo-500/20 hover:scale-105 active:scale-95 transition-all"
+                >
+                  🔄 Próximo Desafio
+                </Button>
+              </div>
+            </div>
+          )}
+        </section>
 
-            {/* SEÇÃO 3: DESAFIO PRÁTICO */}
-            <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-                <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-3xl font-bold text-indigo-700 dark:text-indigo-400">
-                  3
-                </span>
-                Desafio Prático: Laboratório de Gabarito
-              </h2>
-              {shuffledChallenges.length > 0 && (
-                <div className="space-y-8">
-                  <div
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8"
-                    key={`challenge-${challengeIndex}`}
-                  >
-                    <div className="space-y-3">
-                      <h4 className="font-bold text-red-500 flex items-center gap-2">
-                        ❌ Onde a maioria erra:
-                      </h4>
-                      <div className="h-full min-h-[180px] p-6 bg-gradient-to-br from-red-50 to-rose-50 border border-red-100 rounded-2xl flex items-center justify-center dark:from-red-900/10 dark:to-rose-900/10">
-                        <p className="line-through text-lg text-red-800/70 font-medium decoration-red-500/50">
-                          "{shuffledChallenges[challengeIndex].wrong}"
-                        </p>
-                      </div>
-                    </div>
-                    <div className="space-y-3">
-                      <h4 className="font-bold text-emerald-500 flex items-center gap-2">
-                        ✅ Como você vai acertar:
-                      </h4>
-                      <div className="h-full min-h-[180px] p-6 bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100 rounded-2xl flex flex-col justify-center dark:from-emerald-900/10 dark:to-teal-900/10">
-                        <p className="text-lg font-bold text-emerald-800 mb-4 text-center">
-                          "{shuffledChallenges[challengeIndex].correct}"
-                        </p>
-                        <div className="p-4 bg-white/60 rounded-xl border border-emerald-100/50 backdrop-blur-sm flex items-start gap-3 dark:bg-black/20">
-                          <span className="text-lg">💡</span>{" "}
-                          <p className="text-sm font-medium leading-relaxed text-emerald-700">
-                            {shuffledChallenges[challengeIndex].explanation}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex justify-center gap-4">
-                    <Button
-                      variant="outline"
-                      onClick={() =>
-                        setChallengeIndex(
-                          (prev) => (prev + 1) % shuffledChallenges.length,
-                        )
-                      }
-                      className="rounded-full px-8 py-6 font-bold text-lg shadow-xl shadow-indigo-500/20 hover:scale-105 active:scale-95 transition-all"
-                    >
-                      🔄 Próximo Desafio
-                    </Button>
-                  </div>
-                </div>
-              )}
-            </section>
-
-            {/* SEÇÃO 3: RESUMO E MULTIMÍDIA */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={3}
-                title="Resumo e Multimídia"
-                variant="indigo"
-              />
-              <LessonTabs
-                tabs={[
-                  {
-                    id: "video",
-                    label: "Vídeo Aula",
-                    icon: LuPlay,
-                    content: (
-                      <div className="w-full flex flex-col items-center py-6">
-                        <div className="w-full max-w-3xl">
-                          <VideoModal
-                            videoId="B9v8iK4R50U"
-                            title="Estratégias para Cesgranrio"
-                            duration="18:45"
-                            thumbnail="https://images.unsplash.com/photo-1454165833767-027ffea9e77b?q=80&w=1000&auto=format&fit=crop"
-                          />
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    id: "resumo",
-                    label: "Resumo Visual",
-                    icon: LuBookOpen,
-                    content: (
-                      <ModuleSummaryCarouselNew
-                        images={[
-                          {
-                            imageUrl: "/images/mapa-mental/inter_m3_rota.png",
-                            title: "A Rota da Varredura",
-                            type: "Guia",
-                            placeholderColor:
-                              "bg-indigo-100 dark:bg-indigo-900/30",
-                          },
-                          {
-                            imageUrl: "/images/mapa-mental/inter_m3_cone.png",
-                            title: "O Cone do Contexto",
-                            type: "Infográfico",
-                            placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
-                          },
-                          {
-                            imageUrl:
-                              "/images/mapa-mental/inter_m3_extrapolacao.png",
-                            title: "Extrapolação vs Redução",
-                            type: "Comparação",
-                            placeholderColor: "bg-red-100 dark:bg-red-900/30",
-                          },
-                        ]}
+        {/* SEÇÃO 3: RESUMO E MULTIMÍDIA */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={3}
+            title="Resumo e Multimídia"
+            variant="indigo"
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "video",
+                label: "Vídeo Aula",
+                icon: LuPlay,
+                content: (
+                  <div className="w-full flex flex-col items-center py-6">
+                    <div className="w-full max-w-3xl">
+                      <VideoModal
+                        videoId="B9v8iK4R50U"
+                        title="Estratégias para Cesgranrio"
+                        duration="18:45"
+                        thumbnail="https://images.unsplash.com/photo-1454165833767-027ffea9e77b?q=80&w=1000&auto=format&fit=crop"
                       />
-                    ),
-                  },
-                  {
-                    id: "visual",
-                    label: "Macete Visual",
-                    icon: LuImage,
-                    content: (
-                      <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
-                        <h3 className="text-xl font-bold text-foreground mb-4">
-                          O Filtro do Gabarito
-                        </h3>
-                        <div className="text-7xl my-8 animate-spin-slow">
-                          💎 🛡️ 🎯
-                        </div>
-                        <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
-                          "Nem mais (Extrapolação), nem menos (Redução), nem o
-                          oposto (Contradição). Fique na Verdaaaaaade do Texto!"
-                        </p>
-                      </div>
-                    ),
-                  },
-                  {
-                    id: "audio",
-                    label: "Áudio Resumo",
-                    icon: LuVolume2,
-                    content: (
-                      <div className="w-full flex justify-center py-4">
-                        <div className="w-full max-w-md">
-                          <MusicPlayerCard
-                            audioUrl="#"
-                            titulo="O Filtro Final"
-                            artista="Elite Team"
-                            capaUrl="https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=1000&auto=format&fit=crop"
-                            lyrics={`(Refrão)
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon: LuBookOpen,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    images={[
+                      {
+                        imageUrl: "/images/mapa-mental/inter_m3_rota.png",
+                        title: "A Rota da Varredura",
+                        type: "Guia",
+                        placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
+                      },
+                      {
+                        imageUrl: "/images/mapa-mental/inter_m3_cone.png",
+                        title: "O Cone do Contexto",
+                        type: "Infográfico",
+                        placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
+                      },
+                      {
+                        imageUrl:
+                          "/images/mapa-mental/inter_m3_extrapolacao.png",
+                        title: "Extrapolação vs Redução",
+                        type: "Comparação",
+                        placeholderColor: "bg-red-100 dark:bg-red-900/30",
+                      },
+                    ]}
+                  />
+                ),
+              },
+              {
+                id: "visual",
+                label: "Macete Visual",
+                icon: LuImage,
+                content: (
+                  <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
+                    <h3 className="text-xl font-bold text-foreground mb-4">
+                      O Filtro do Gabarito
+                    </h3>
+                    <div className="text-7xl my-8 animate-spin-slow">
+                      💎 🛡️ 🎯
+                    </div>
+                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                      "Nem mais (Extrapolação), nem menos (Redução), nem o
+                      oposto (Contradição). Fique na Verdaaaaaade do Texto!"
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                id: "audio",
+                label: "Áudio Resumo",
+                icon: LuVolume2,
+                content: (
+                  <div className="w-full flex justify-center py-4">
+                    <div className="w-full max-w-md">
+                      <MusicPlayerCard
+                        audioUrl="#"
+                        titulo="O Filtro Final"
+                        artista="Elite Team"
+                        capaUrl="https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=1000&auto=format&fit=crop"
+                        lyrics={`(Refrão)
                                                         Cuidado com a porta, não deixe entrar!
                                                         O erro lá fora quer te derrubar.
                                                         
@@ -1526,488 +1486,464 @@ export default function AulaInterpretacaoTexto({
                                                         Extrapolou? Perdeu a questão.
                                                         Reduziu? Caiu no chão.
                                                         Contradisse? Sem perdão!`}
-                          />
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        {/* SEÇÃO 4: SIMULADO FINAL M3 */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader
+            index={4}
+            title="Quiz de Fixação - Estratégias de Elite"
+            variant="amber"
+          />
+          <QuizInterativo
+            questoes={quizM3}
+            titulo="Quiz de Fixação - Estratégias de Elite"
+            icone="🏆"
+            onComplete={(score) => handleModuleProgress("modulo-3", 2, score)}
+          />
+        </section>
+      </TabsContent>
+
+      {/* ─── MÓDULO 4: COERÊNCIA E PROGRESSÃO ─── */}
+      <TabsContent value="modulo-4" className="space-y-[50px]">
+        <ModuleBanner
+          numero={4}
+          titulo="Coerência e Progressão"
+          descricao="A fluidez do texto corporativo: amarração de ideias e progressão temática."
+          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+        />
+
+        {/* SEÇÃO 1: COERÊNCIA GLOBAL ACELERADA */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="Os 3 Policiamentos da Leitura"
+            variant="emerald"
+          />
+          <p className="text-muted-foreground text-lg mb-6">
+            Um texto bem desenvolvido na prova discursiva e avaliado nas
+            questões de reescritura precisa atender a 3 leis universais da
+            coerência:
+          </p>
+          <div className="space-y-6">
+            <ContentAccordion
+              titulo="1. Princípio da Não Contradição"
+              icone={<LuScale className="text-emerald-500" />}
+              corIndicador="bg-emerald-500"
+              slides={[
+                {
+                  titulo: "Conceito e Lógica Interna",
+                  icone: "⚖️",
+                  conteudo: (
+                    <div className="grid grid-cols-1 gap-6">
+                      <div className="space-y-4">
+                        <h4 className="font-bold text-emerald-700 dark:text-emerald-400">
+                          O que é?
+                        </h4>
+                        <p className="text-muted-foreground leading-relaxed">
+                          A coerência de um texto depende da harmonia entre suas
+                          partes. Um texto não pode afirmar um fato no início e
+                          negá-lo ou apresentar uma conclusão que o invalide
+                          posteriormente. Bancas como FGV e Cesgranrio exploram
+                          isso em questões de substituição de conectivos.
+                        </p>
+                      </div>
+                      <div className="bg-emerald-500/5 p-5 rounded-xl border border-emerald-500/10">
+                        <h4 className="font-bold text-emerald-800 dark:text-emerald-300 mb-2">
+                          Exemplificação na Reescritura:
+                        </h4>
+                        <div className="space-y-2 text-sm italic">
+                          <p className="text-red-600 dark:text-red-400 line-through">
+                            Errado: "A Petrobras aumentou a produção;{" "}
+                            <b>porém</b>, os números subiram." (Contradição:
+                            'porém' indica oposição onde deveria haver
+                            conclusão/causa).
+                          </p>
+                          <p className="text-emerald-600 dark:text-emerald-400">
+                            Correto: "A Petrobras aumentou a produção;{" "}
+                            <b>por conseguinte</b>, os números subiram."
+                          </p>
                         </div>
                       </div>
-                    ),
-                  },
-                ]}
-              />
-            </section>
-
-            {/* SEÇÃO 4: SIMULADO FINAL M3 */}
-            <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-              <ModuleSectionHeader
-                index={4}
-                title="Quiz de Fixação - Estratégias de Elite"
-                variant="amber"
-              />
-              <QuizInterativo
-                questoes={quizM3}
-                titulo="Quiz de Fixação - Estratégias de Elite"
-                icone="🏆"
-                onComplete={(score) =>
-                  handleModuleProgress("modulo-3", 2, score)
-                }
-              />
-            </section>
-          </TabsContent>
-
-          {/* ─── MÓDULO 4: COERÊNCIA E PROGRESSÃO ─── */}
-          <TabsContent
-            value="modulo-4"
-            className="space-y-12 max-w-7xl mx-auto px-6 mt-12"
-          >
-            <ModuleBanner
-              numero={4}
-              titulo="Coerência e Progressão"
-              descricao="A fluidez do texto corporativo: amarração de ideias e progressão temática."
-              gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+                      <div className="bg-amber-500/5 p-4 rounded-xl border border-amber-500/10">
+                        <p className="text-amber-800 dark:text-amber-300 text-sm">
+                          <span className="font-bold">⚠️ Atenção:</span> A
+                          contradição muitas vezes é sutil, escondida em
+                          adjetivos ou advérbios que alteram a carga semântica
+                          da frase anterior.
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
             />
 
-            {/* SEÇÃO 1: COERÊNCIA GLOBAL ACELERADA */}
-            <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={1}
-                title="Os 3 Policiamentos da Leitura"
-                variant="emerald"
-              />
-              <p className="text-muted-foreground text-lg mb-6">
-                Um texto bem desenvolvido na prova discursiva e avaliado nas
-                questões de reescritura precisa atender a 3 leis universais da
-                coerência:
-              </p>
-              <div className="space-y-6">
-                <ContentAccordion
-                  titulo="1. Princípio da Não Contradição"
-                  icone={<LuScale className="text-emerald-500" />}
-                  corIndicador="bg-emerald-500"
-                  slides={[
-                    {
-                      titulo: "Conceito e Lógica Interna",
-                      icone: "⚖️",
-                      conteudo: (
-                        <div className="grid grid-cols-1 gap-6">
-                          <div className="space-y-4">
-                            <h4 className="font-bold text-emerald-700 dark:text-emerald-400">
-                              O que é?
-                            </h4>
-                            <p className="text-muted-foreground leading-relaxed">
-                              A coerência de um texto depende da harmonia entre
-                              suas partes. Um texto não pode afirmar um fato no
-                              início e negá-lo ou apresentar uma conclusão que o
-                              invalide posteriormente. Bancas como FGV e
-                              Cesgranrio exploram isso em questões de
-                              substituição de conectivos.
-                            </p>
-                          </div>
-                          <div className="bg-emerald-500/5 p-5 rounded-xl border border-emerald-500/10">
-                            <h4 className="font-bold text-emerald-800 dark:text-emerald-300 mb-2">
-                              Exemplificação na Reescritura:
-                            </h4>
-                            <div className="space-y-2 text-sm italic">
-                              <p className="text-red-600 dark:text-red-400 line-through">
-                                Errado: "A Petrobras aumentou a produção;{" "}
-                                <b>porém</b>, os números subiram." (Contradição:
-                                'porém' indica oposição onde deveria haver
-                                conclusão/causa).
-                              </p>
-                              <p className="text-emerald-600 dark:text-emerald-400">
-                                Correto: "A Petrobras aumentou a produção;{" "}
-                                <b>por conseguinte</b>, os números subiram."
-                              </p>
-                            </div>
-                          </div>
-                          <div className="bg-amber-500/5 p-4 rounded-xl border border-amber-500/10">
-                            <p className="text-amber-800 dark:text-amber-300 text-sm">
-                              <span className="font-bold">⚠️ Atenção:</span> A
-                              contradição muitas vezes é sutil, escondida em
-                              adjetivos ou advérbios que alteram a carga
-                              semântica da frase anterior.
-                            </p>
-                          </div>
-                        </div>
-                      ),
-                    },
-                  ]}
-                />
-
-                <ContentAccordion
-                  titulo="2. Progressão e Continuidade Temática"
-                  icone={<LuTrendingUp className="text-blue-500" />}
-                  corIndicador="bg-blue-500"
-                  slides={[
-                    {
-                      titulo: "Encadeamento 'Dado-Novo'",
-                      icone: "📈",
-                      conteudo: (
-                        <div className="grid grid-cols-1 gap-6">
-                          <div className="space-y-4">
-                            <h4 className="font-bold text-blue-700 dark:text-blue-400">
-                              Conceituação:
-                            </h4>
-                            <p className="text-muted-foreground leading-relaxed">
-                              Todo texto de elite deve avançar. A continuidade
-                              garante que o assunto seja mantido (Coesão
-                              Referencial), enquanto a progressão garante que
-                              informações novas sejam adicionadas. Se um texto
-                              apenas repete o que já foi dito, ele sofre de
-                              "paralisia temática".
-                            </p>
-                          </div>
-                          <div className="bg-blue-500/5 p-5 rounded-xl border border-blue-500/10">
-                            <h4 className="font-bold text-blue-800 dark:text-blue-300 mb-2">
-                              Dica de Elite:
-                            </h4>
-                            <p className="text-sm">
-                              Mapeie os parágrafos buscando o "fio da meada".
-                              Cada parágrafo deve ser uma ponte para o próximo,
-                              nunca uma ilha isolada.
-                            </p>
-                          </div>
-                          <div className="space-y-2">
-                            <h4 className="font-bold">Exceção / Ruptura:</h4>
-                            <p className="text-muted-foreground text-sm">
-                              A interrupção brusca da progressão só é aceitável
-                              em textos literários para causar choque. Em textos
-                              técnicos e dissertativos (padrão Petrobras), a
-                              ruptura é erro grave de coerência.
-                            </p>
-                          </div>
-                        </div>
-                      ),
-                    },
-                  ]}
-                />
-
-                <ContentAccordion
-                  titulo="3. Coerência Externa (Mundo Real)"
-                  icone={<LuGlobe className="text-purple-500" />}
-                  corIndicador="bg-purple-500"
-                  slides={[
-                    {
-                      titulo: "Verossimilhança e Realidade",
-                      icone: "🌍",
-                      conteudo: (
-                        <div className="grid grid-cols-1 gap-6">
-                          <div className="space-y-4">
-                            <h4 className="font-bold text-purple-700 dark:text-purple-400">
-                              O Filtro da Verdade:
-                            </h4>
-                            <p className="text-muted-foreground leading-relaxed">
-                              O texto deve respeitar as leis do mundo real e do
-                              conhecimento compartilhado. Bancas costumam
-                              colocar distratores (alternativas erradas) que,
-                              embora sintaticamente corretos, afirmam absurdos
-                              lógicos ou científicos não amparados pelo texto
-                              base.
-                            </p>
-                          </div>
-                          <div className="bg-purple-500/10 p-4 rounded-xl border border-purple-500/20 italic text-sm">
-                            "O conhecimento de mundo do candidato não deve
-                            substituir o texto, mas deve servir como um alerta
-                            para detectar incoerências externas grosseiras."
-                          </div>
-                          <div className="space-y-2">
-                            <h4 className="font-bold">Exemplificação:</h4>
-                            <p className="text-muted-foreground text-sm">
-                              Se o texto discute "combustíveis fósseis" e uma
-                              alternativa afirma que eles são "fontes
-                              inesgotáveis de energia limpa", há uma quebra de
-                              coerência externa com o conhecimento técnico
-                              exigido para o cargo.
-                            </p>
-                          </div>
-                        </div>
-                      ),
-                    },
-                  ]}
-                />
-              </div>
-            </section>
-
-            {/* SEÇÃO 2: REESCRITURA */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={2}
-                title="Anatomia da Reescritura"
-                variant="cyan"
-              />
-              <p className="text-muted-foreground">
-                Analise as armadilhas clássicas em que bancas tentam te
-                derrubar:
-              </p>
-              <CardCarousel
-                titulo="Armadilhas Comuns"
-                cards={[
-                  {
-                    icone: "🪤",
-                    titulo: "Troca de Voz Verbal",
-                    descricao: (
-                      <div className="pb-4">
-                        "A empresa produziu petróleo" = "O petróleo foi
-                        produzido pela empresa". A banca erra o{" "}
-                        <b>tempo verbal</b> ("foi" em vez de "será").
+            <ContentAccordion
+              titulo="2. Progressão e Continuidade Temática"
+              icone={<LuTrendingUp className="text-blue-500" />}
+              corIndicador="bg-blue-500"
+              slides={[
+                {
+                  titulo: "Encadeamento 'Dado-Novo'",
+                  icone: "📈",
+                  conteudo: (
+                    <div className="grid grid-cols-1 gap-6">
+                      <div className="space-y-4">
+                        <h4 className="font-bold text-blue-700 dark:text-blue-400">
+                          Conceituação:
+                        </h4>
+                        <p className="text-muted-foreground leading-relaxed">
+                          Todo texto de elite deve avançar. A continuidade
+                          garante que o assunto seja mantido (Coesão
+                          Referencial), enquanto a progressão garante que
+                          informações novas sejam adicionadas. Se um texto
+                          apenas repete o que já foi dito, ele sofre de
+                          "paralisia temática".
+                        </p>
                       </div>
-                    ),
-                    corFundo: "bg-indigo-500/10",
-                  },
-                  {
-                    icone: "🔀",
-                    titulo: "Inversão de Sintaxe",
-                    descricao: (
-                      <div className="pb-4">
-                        Ao mover um advérbio para o início da frase, a banca
-                        pode alterar o sentido se esquecer a vírgula (Ex:
-                        "Somente ele veio" vs "Ele veio, somente").
+                      <div className="bg-blue-500/5 p-5 rounded-xl border border-blue-500/10">
+                        <h4 className="font-bold text-blue-800 dark:text-blue-300 mb-2">
+                          Dica de Elite:
+                        </h4>
+                        <p className="text-sm">
+                          Mapeie os parágrafos buscando o "fio da meada". Cada
+                          parágrafo deve ser uma ponte para o próximo, nunca uma
+                          ilha isolada.
+                        </p>
                       </div>
-                    ),
-                    corFundo: "bg-rose-500/10",
-                  },
-                  {
-                    icone: "🧲",
-                    titulo: "Erro de Regência do Relativo",
-                    descricao: (
-                      <div className="pb-4">
-                        "O projeto <b>que</b> a Petrobras investiu" → Falso! O
-                        verbo investir exige "em". O correto é "<b>em que</b> a
-                        Petrobras investiu".
+                      <div className="space-y-2">
+                        <h4 className="font-bold">Exceção / Ruptura:</h4>
+                        <p className="text-muted-foreground text-sm">
+                          A interrupção brusca da progressão só é aceitável em
+                          textos literários para causar choque. Em textos
+                          técnicos e dissertativos (padrão Petrobras), a ruptura
+                          é erro grave de coerência.
+                        </p>
                       </div>
-                    ),
-                    corFundo: "bg-blue-500/10",
-                  },
-                ]}
-              />
-            </section>
-
-            {/* SEÇÃO 3: RESUMO E MULTIMÍDIA */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={3}
-                title="Resumo e Multimídia"
-                variant="cyan"
-              />
-              <LessonTabs
-                tabs={[
-                  {
-                    id: "video",
-                    label: "Vídeo Aula",
-                    icon: LuPlay,
-                    content: (
-                      <div className="w-full flex flex-col items-center py-6">
-                        <div className="w-full max-w-3xl">
-                          <VideoModal
-                            videoId="B9v8iK4R50U"
-                            title="Coerência e Progressão Temática"
-                            duration="15:20"
-                            thumbnail="https://images.unsplash.com/photo-1454165833767-027ffea9e77b?q=80&w=1000&auto=format&fit=crop"
-                          />
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    id: "resumo",
-                    label: "Resumo Visual",
-                    icon: LuBookOpen,
-                    content: (
-                      <ModuleSummaryCarouselNew
-                        images={[
-                          {
-                            imageUrl:
-                              "/images/mapa-mental/inter_m4_mapeamento.png",
-                            title: "A Progressão Temática",
-                            type: "Infográfico",
-                            placeholderColor:
-                              "bg-emerald-100 dark:bg-emerald-900/30",
-                          },
-                          {
-                            imageUrl:
-                              "/images/mapa-mental/inter_m4_reescritura.png",
-                            title: "A Balança da Reescritura",
-                            type: "Guia",
-                            placeholderColor: "bg-cyan-100 dark:bg-cyan-900/30",
-                          },
-                          {
-                            imageUrl: "/images/mapa-mental/inter_m4_elipse.png",
-                            title: "A Arte da Elipse",
-                            type: "Esquema",
-                            placeholderColor:
-                              "bg-indigo-100 dark:bg-indigo-900/30",
-                          },
-                        ]}
-                      />
-                    ),
-                  },
-                ]}
-              />
-            </section>
-
-            {/* SEÇÃO 4: QUIZ FIXAÇÃO M4 */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={4}
-                title="Quiz - Coerência e Progressão"
-                variant="amber"
-              />
-              <QuizInterativo
-                questoes={quizM4}
-                titulo="Quiz - Coerência e Progressão"
-                icone="🎯"
-                onComplete={(score) =>
-                  handleModuleProgress("modulo-4", 3, score)
-                }
-              />
-            </section>
-          </TabsContent>
-
-          {/* ─── MÓDULO 5: MARATONA DO GABARITO ─── */}
-          <TabsContent
-            value="modulo-5"
-            className="space-y-12 max-w-7xl mx-auto px-6 mt-12"
-          >
-            <ModuleBanner
-              numero={5}
-              titulo="Maratona do Gabarito"
-              descricao="Revisão final, simulado e consolidação total do seu domínio textual."
-              gradiente="bg-gradient-to-br from-orange-600 via-rose-600 to-red-700"
+                    </div>
+                  ),
+                },
+              ]}
             />
 
-            {/* SEÇÃO 1: A BÚSSOLA FINAL */}
-            <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={1}
-                title="Os Comandos Perigosos"
-                variant="rose"
-              />
-              <p className="text-muted-foreground text-lg mb-6">
-                Fique atento aos "comandos de morte" (expressões no enunciado
-                que mudam completamente o que se procura).
-              </p>
-              <CardCarousel
-                itemsPerView={2}
-                titulo="Comandos e Seus Significados"
-                cards={[
-                  {
-                    icone: "🔍",
-                    titulo: "Infere-se que...",
-                    descricao: (
-                      <div className="pb-4">
-                        Não está escrito. Você vai precisar deduzir uma verdade
-                        inquestionável a partir de uma pista do texto.
+            <ContentAccordion
+              titulo="3. Coerência Externa (Mundo Real)"
+              icone={<LuGlobe className="text-purple-500" />}
+              corIndicador="bg-purple-500"
+              slides={[
+                {
+                  titulo: "Verossimilhança e Realidade",
+                  icone: "🌍",
+                  conteudo: (
+                    <div className="grid grid-cols-1 gap-6">
+                      <div className="space-y-4">
+                        <h4 className="font-bold text-purple-700 dark:text-purple-400">
+                          O Filtro da Verdade:
+                        </h4>
+                        <p className="text-muted-foreground leading-relaxed">
+                          O texto deve respeitar as leis do mundo real e do
+                          conhecimento compartilhado. Bancas costumam colocar
+                          distratores (alternativas erradas) que, embora
+                          sintaticamente corretos, afirmam absurdos lógicos ou
+                          científicos não amparados pelo texto base.
+                        </p>
                       </div>
-                    ),
-                    corFundo: "bg-amber-500/10",
-                  },
-                  {
-                    icone: "📝",
-                    titulo: "O texto tem o propósito de...",
-                    descricao: (
-                      <div className="pb-4">
-                        Busca pela Tese/Intenção principal do autor. Cuidado com
-                        alternativas que resumem só *um* parágrafo.
+                      <div className="bg-purple-500/10 p-4 rounded-xl border border-purple-500/20 italic text-sm">
+                        "O conhecimento de mundo do candidato não deve
+                        substituir o texto, mas deve servir como um alerta para
+                        detectar incoerências externas grosseiras."
                       </div>
-                    ),
-                    corFundo: "bg-emerald-500/10",
-                  },
-                  {
-                    icone: "🚫",
-                    titulo: "Exceto / Qual não condiz",
-                    descricao: (
-                      <div className="pb-4">
-                        Atenção máxima! A banca quer o Erro (Extrapolação,
-                        Contradição ou Redução). Marque com Tinta Vermelha
-                        Mental na prova!
+                      <div className="space-y-2">
+                        <h4 className="font-bold">Exemplificação:</h4>
+                        <p className="text-muted-foreground text-sm">
+                          Se o texto discute "combustíveis fósseis" e uma
+                          alternativa afirma que eles são "fontes inesgotáveis
+                          de energia limpa", há uma quebra de coerência externa
+                          com o conhecimento técnico exigido para o cargo.
+                        </p>
                       </div>
-                    ),
-                    corFundo: "bg-rose-500/10",
-                  },
-                ]}
-              />
-            </section>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </div>
+        </section>
 
-            {/* SEÇÃO 2: RESUMO E MULTIMÍDIA */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={2}
-                title="Resumo e Multimídia"
-                variant="amber"
-              />
-              <LessonTabs
-                tabs={[
-                  {
-                    id: "video",
-                    label: "Vídeo Aula",
-                    icon: LuPlay,
-                    content: (
-                      <div className="w-full flex flex-col items-center py-6">
-                        <div className="w-full max-w-3xl">
-                          <VideoModal
-                            videoId="B9v8iK4R50U"
-                            title="Bússola Final e Pegadinhas"
-                            duration="22:15"
-                            thumbnail="https://images.unsplash.com/photo-1454165833767-027ffea9e77b?q=80&w=1000&auto=format&fit=crop"
-                          />
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    id: "resumo",
-                    label: "Resumo Visual",
-                    icon: LuBookOpen,
-                    content: (
-                      <ModuleSummaryCarouselNew
-                        images={[
-                          {
-                            imageUrl:
-                              "/images/mapa-mental/inter_m5_comandos.png",
-                            title: "Comandos Perigosos",
-                            type: "Guia",
-                            placeholderColor: "bg-rose-100 dark:bg-rose-900/30",
-                          },
-                          {
-                            imageUrl: "/images/mapa-mental/inter_m5_tese.png",
-                            title: "Tese vs Argumento",
-                            type: "Infográfico",
-                            placeholderColor:
-                              "bg-amber-100 dark:bg-amber-900/30",
-                          },
-                          {
-                            imageUrl:
-                              "/images/mapa-mental/inter_m5_inferencia.png",
-                            title: "A Fina Arte de Inferir",
-                            type: "Dica Prática",
-                            placeholderColor:
-                              "bg-orange-100 dark:bg-orange-900/30",
-                          },
-                        ]}
+        {/* SEÇÃO 2: REESCRITURA */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={2}
+            title="Anatomia da Reescritura"
+            variant="cyan"
+          />
+          <p className="text-muted-foreground">
+            Analise as armadilhas clássicas em que bancas tentam te derrubar:
+          </p>
+          <CardCarousel
+            titulo="Armadilhas Comuns"
+            cards={[
+              {
+                icone: "🪤",
+                titulo: "Troca de Voz Verbal",
+                descricao: (
+                  <div className="pb-4">
+                    "A empresa produziu petróleo" = "O petróleo foi produzido
+                    pela empresa". A banca erra o <b>tempo verbal</b> ("foi" em
+                    vez de "será").
+                  </div>
+                ),
+                corFundo: "bg-indigo-500/10",
+              },
+              {
+                icone: "🔀",
+                titulo: "Inversão de Sintaxe",
+                descricao: (
+                  <div className="pb-4">
+                    Ao mover um advérbio para o início da frase, a banca pode
+                    alterar o sentido se esquecer a vírgula (Ex: "Somente ele
+                    veio" vs "Ele veio, somente").
+                  </div>
+                ),
+                corFundo: "bg-rose-500/10",
+              },
+              {
+                icone: "🧲",
+                titulo: "Erro de Regência do Relativo",
+                descricao: (
+                  <div className="pb-4">
+                    "O projeto <b>que</b> a Petrobras investiu" → Falso! O verbo
+                    investir exige "em". O correto é "<b>em que</b> a Petrobras
+                    investiu".
+                  </div>
+                ),
+                corFundo: "bg-blue-500/10",
+              },
+            ]}
+          />
+        </section>
+
+        {/* SEÇÃO 3: RESUMO E MULTIMÍDIA */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={3}
+            title="Resumo e Multimídia"
+            variant="cyan"
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "video",
+                label: "Vídeo Aula",
+                icon: LuPlay,
+                content: (
+                  <div className="w-full flex flex-col items-center py-6">
+                    <div className="w-full max-w-3xl">
+                      <VideoModal
+                        videoId="B9v8iK4R50U"
+                        title="Coerência e Progressão Temática"
+                        duration="15:20"
+                        thumbnail="https://images.unsplash.com/photo-1454165833767-027ffea9e77b?q=80&w=1000&auto=format&fit=crop"
                       />
-                    ),
-                  },
-                ]}
-              />
-            </section>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon: LuBookOpen,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    images={[
+                      {
+                        imageUrl: "/images/mapa-mental/inter_m4_mapeamento.png",
+                        title: "A Progressão Temática",
+                        type: "Infográfico",
+                        placeholderColor:
+                          "bg-emerald-100 dark:bg-emerald-900/30",
+                      },
+                      {
+                        imageUrl:
+                          "/images/mapa-mental/inter_m4_reescritura.png",
+                        title: "A Balança da Reescritura",
+                        type: "Guia",
+                        placeholderColor: "bg-cyan-100 dark:bg-cyan-900/30",
+                      },
+                      {
+                        imageUrl: "/images/mapa-mental/inter_m4_elipse.png",
+                        title: "A Arte da Elipse",
+                        type: "Esquema",
+                        placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
+                      },
+                    ]}
+                  />
+                ),
+              },
+            ]}
+          />
+        </section>
 
-            {/* SEÇÃO 3: SIMULADO DEBATIDO M5 */}
-            <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-              <ModuleSectionHeader
-                index={3}
-                title="Simulado Final: Maratona Cesgranrio"
-                variant="rose"
-              />
-              <QuizInterativo
-                questoes={quizM5}
-                titulo="Simulado Final: Interpretação Total"
-                icone="🏆"
-                onComplete={(score) =>
-                  handleModuleProgress("modulo-5", 4, score)
-                }
-              />
-            </section>
-          </TabsContent>
-        </Tabs>
-      </div>
-    </div>
+        {/* SEÇÃO 4: QUIZ FIXAÇÃO M4 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={4}
+            title="Quiz - Coerência e Progressão"
+            variant="amber"
+          />
+          <QuizInterativo
+            questoes={quizM4}
+            titulo="Quiz - Coerência e Progressão"
+            icone="🎯"
+            onComplete={(score) => handleModuleProgress("modulo-4", 3, score)}
+          />
+        </section>
+      </TabsContent>
+
+      {/* ─── MÓDULO 5: MARATONA DO GABARITO ─── */}
+      <TabsContent value="modulo-5" className="space-y-[50px]">
+        <ModuleBanner
+          numero={5}
+          titulo="Maratona do Gabarito"
+          descricao="Revisão final, simulado e consolidação total do seu domínio textual."
+          gradiente="bg-gradient-to-br from-orange-600 via-rose-600 to-red-700"
+        />
+
+        {/* SEÇÃO 1: A BÚSSOLA FINAL */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="Os Comandos Perigosos"
+            variant="rose"
+          />
+          <p className="text-muted-foreground text-lg mb-6">
+            Fique atento aos "comandos de morte" (expressões no enunciado que
+            mudam completamente o que se procura).
+          </p>
+          <CardCarousel
+            itemsPerView={2}
+            titulo="Comandos e Seus Significados"
+            cards={[
+              {
+                icone: "🔍",
+                titulo: "Infere-se que...",
+                descricao: (
+                  <div className="pb-4">
+                    Não está escrito. Você vai precisar deduzir uma verdade
+                    inquestionável a partir de uma pista do texto.
+                  </div>
+                ),
+                corFundo: "bg-amber-500/10",
+              },
+              {
+                icone: "📝",
+                titulo: "O texto tem o propósito de...",
+                descricao: (
+                  <div className="pb-4">
+                    Busca pela Tese/Intenção principal do autor. Cuidado com
+                    alternativas que resumem só *um* parágrafo.
+                  </div>
+                ),
+                corFundo: "bg-emerald-500/10",
+              },
+              {
+                icone: "🚫",
+                titulo: "Exceto / Qual não condiz",
+                descricao: (
+                  <div className="pb-4">
+                    Atenção máxima! A banca quer o Erro (Extrapolação,
+                    Contradição ou Redução). Marque com Tinta Vermelha Mental na
+                    prova!
+                  </div>
+                ),
+                corFundo: "bg-rose-500/10",
+              },
+            ]}
+          />
+        </section>
+
+        {/* SEÇÃO 2: RESUMO E MULTIMÍDIA */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={2}
+            title="Resumo e Multimídia"
+            variant="amber"
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "video",
+                label: "Vídeo Aula",
+                icon: LuPlay,
+                content: (
+                  <div className="w-full flex flex-col items-center py-6">
+                    <div className="w-full max-w-3xl">
+                      <VideoModal
+                        videoId="B9v8iK4R50U"
+                        title="Bússola Final e Pegadinhas"
+                        duration="22:15"
+                        thumbnail="https://images.unsplash.com/photo-1454165833767-027ffea9e77b?q=80&w=1000&auto=format&fit=crop"
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon: LuBookOpen,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    images={[
+                      {
+                        imageUrl: "/images/mapa-mental/inter_m5_comandos.png",
+                        title: "Comandos Perigosos",
+                        type: "Guia",
+                        placeholderColor: "bg-rose-100 dark:bg-rose-900/30",
+                      },
+                      {
+                        imageUrl: "/images/mapa-mental/inter_m5_tese.png",
+                        title: "Tese vs Argumento",
+                        type: "Infográfico",
+                        placeholderColor: "bg-amber-100 dark:bg-amber-900/30",
+                      },
+                      {
+                        imageUrl: "/images/mapa-mental/inter_m5_inferencia.png",
+                        title: "A Fina Arte de Inferir",
+                        type: "Dica Prática",
+                        placeholderColor: "bg-orange-100 dark:bg-orange-900/30",
+                      },
+                    ]}
+                  />
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        {/* SEÇÃO 3: SIMULADO DEBATIDO M5 */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader
+            index={3}
+            title="Simulado Final: Maratona Cesgranrio"
+            variant="rose"
+          />
+          <QuizInterativo
+            questoes={quizM5}
+            titulo="Simulado Final: Interpretação Total"
+            icone="🏆"
+            onComplete={(score) => handleModuleProgress("modulo-5", 4, score)}
+          />
+        </section>
+      </TabsContent>
+    </AulaTemplate>
   );
 }

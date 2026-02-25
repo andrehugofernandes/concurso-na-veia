@@ -65,6 +65,24 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Slider } from "@/components/ui/slider";
 
+export interface AulaProps {
+  onComplete: () => void;
+  isCompleted: boolean;
+  loading: boolean;
+  xpGanho?: number;
+  currentProgress?: number;
+  onUpdateProgress?: (progress: number) => void;
+  // Novos metadados para o template consolidado
+  titulo: string;
+  descricao: string;
+  duracao: string;
+  materiaNome: string;
+  materiaCor: string;
+  materiaId: string;
+  prevTopico?: { id: string; titulo: string } | null;
+  nextTopico?: { id: string; titulo: string } | null;
+}
+
 // ── Types ───────────────────────────────────────────────────────────────
 
 export interface ModuleDef {
@@ -601,10 +619,15 @@ export function MusicPlayer({
   );
 }
 
-export function ProgressIndicator() {
+export function ProgressIndicator({ percent }: { percent?: number }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    if (percent !== undefined) {
+      setProgress(percent);
+      return;
+    }
+
     const updateProgress = () => {
       const scroll = window.scrollY;
       const height = document.documentElement.scrollHeight - window.innerHeight;
@@ -620,7 +643,6 @@ export function ProgressIndicator() {
     window.addEventListener("scroll", updateProgress, { passive: true });
     window.addEventListener("resize", updateProgress, { passive: true });
 
-    // Add an observer to catch document height changes (e.g. dynamic imports or hot reloading)
     const resizeObserver = new ResizeObserver(() => {
       updateProgress();
     });
@@ -631,7 +653,7 @@ export function ProgressIndicator() {
       window.removeEventListener("resize", updateProgress);
       resizeObserver.disconnect();
     };
-  }, []);
+  }, [percent]);
 
   return (
     <div
@@ -1825,17 +1847,6 @@ export function ModuleSummaryCarouselNew({
   );
 }
 
-// ── Shared Lesson Props ─────────────────────────────────────────────────
-
-export interface AulaProps {
-  onComplete: () => void;
-  isCompleted: boolean;
-  loading: boolean;
-  xpGanho: number;
-  currentProgress: number;
-  onUpdateProgress: (percent: number) => Promise<void>;
-}
-
 // ── SectionTitle ─────────────────────────────────────────────────────────
 
 export function SectionTitle({
@@ -1892,108 +1903,236 @@ export function TabbedContent({
 // ── AulaTemplate ─────────────────────────────────────────────────────────
 
 /**
- * Template base para as aulas.
- * Inclui controle de acessibilidade (tamanho da fonte) e estrutura padrão.
+ * Componente de Layout padronizado para todas as aulas.
+ * Garante um gap fixo de 50px entre os blocos do cabeçalho:
+ * NavHeader -> TitleSection -> TabsNav -> Content (Banner)
  */
 export function AulaTemplate({
+  activeTab,
+  setActiveTab,
+  modules,
+  completedModules,
+  isModuleUnlocked,
   titulo,
-  subtitulo,
-  tempoEstimado,
+  descricao,
+  duracao,
+  materiaNome,
+  materiaCor,
+  materiaId,
+  isCompleted,
+  prevTopico,
+  nextTopico,
+  currentProgress,
+  onComplete,
+  loading,
+  xpGanho = 50,
   children,
 }: {
+  activeTab: string;
+  setActiveTab: (val: string) => void;
+  modules: ModuleDef[];
+  completedModules: Set<string>;
+  isModuleUnlocked: (index: number) => boolean;
   titulo: string;
-  subtitulo: string;
-  tempoEstimado: string;
+  descricao: string;
+  duracao: string;
+  materiaNome: string;
+  materiaCor: string;
+  materiaId: string;
+  isCompleted: boolean;
+  prevTopico?: { id: string; titulo: string } | null;
+  nextTopico?: { id: string; titulo: string } | null;
+  currentProgress?: number;
+  onComplete?: () => void;
+  loading?: boolean;
+  xpGanho?: number;
   children: React.ReactNode;
 }) {
-  const [fontSize, setFontSize] = useState<"sm" | "md" | "lg">("md");
-
-  const fontSizeClasses = {
-    sm: "lesson-font-sm",
-    md: "lesson-font-md",
-    lg: "lesson-font-lg",
-  };
-
-  return (
-    <div
-      className={cn(
-        "container max-w-7xl mx-auto py-8 px-2 md:px-4 space-y-8 pb-32",
-        fontSizeClasses[fontSize],
-      )}
-    >
-      {/* Header com Controles */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
-        <div className="text-center md:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-4">
-            <LuClock size={14} />
-            <span>{tempoEstimado} de leitura</span>
-          </div>
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">
+  const NavHeader = () => (
+    <div className="bg-card/90 dark:bg-slate-800/90 backdrop-blur-md rounded-xl p-3 border border-border dark:border-slate-700/50 shadow-sm">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3 text-sm">
+          <Link
+            href={`/aulas/${materiaId}`}
+            className="px-3 py-1.5 rounded-lg bg-secondary/80 dark:bg-slate-700 text-secondary-foreground dark:text-slate-200 hover:bg-secondary transition flex items-center gap-2 font-medium border border-border/50"
+          >
+            <span className="text-lg leading-none">←</span> {materiaNome}
+          </Link>
+          <span className="text-muted-foreground/40 font-light text-xl">/</span>
+          <span className="text-foreground font-semibold truncate max-w-[150px] md:max-w-none">
             {titulo}
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl">{subtitulo}</p>
+          </span>
         </div>
 
-        {/* Controles de Acessibilidade */}
-        <div className="flex items-center gap-3 bg-muted/30 p-2 rounded-2xl border border-border/50 backdrop-blur shadow-sm">
-          <span className="text-[10px] uppercase font-bold text-muted-foreground px-2">
-            Fonte
-          </span>
-          <div className="flex gap-1">
-            {(["sm", "md", "lg"] as const).map((size) => (
-              <button
-                key={size}
-                onClick={() => setFontSize(size)}
-                className={cn(
-                  "w-10 h-10 rounded-xl flex items-center justify-center font-bold transition-all active:scale-90",
-                  fontSize === size
-                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                    : "bg-background/50 text-muted-foreground hover:bg-background hover:text-foreground",
+        <div className="flex items-center gap-2">
+          {prevTopico && (
+            <Link
+              href={`/aulas/${materiaId}/${prevTopico.id}`}
+              className="px-3 py-1.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-xs"
+              title={prevTopico.titulo}
+            >
+              Anterior
+            </Link>
+          )}
+          {nextTopico && (
+            <Link
+              href={`/aulas/${materiaId}/${nextTopico.id}`}
+              className="px-4 py-1.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-xs"
+            >
+              Próximo
+              <span className="hidden md:inline">
+                : {nextTopico.titulo}
+              </span>{" "}
+              <span className="text-lg leading-none">→</span>
+            </Link>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-background pb-20 relative">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col">
+          {/* 1. Barra de Progresso */}
+          <div className="h-1.5 w-full">
+            <ProgressIndicator percent={currentProgress} />
+          </div>
+
+          {/* 2. Navigation Header (Breadcrumb + Nav) */}
+          <div className="mt-[60px]">
+            <NavHeader />
+          </div>
+
+          <div className="mt-12 flex flex-col space-y-12">
+            <div className="flex flex-col md:flex-row justify-between items-start gap-6">
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <h1 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight">
+                    {titulo}
+                  </h1>
+                  {isCompleted && (
+                    <span className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-green-600 to-emerald-500 text-white uppercase tracking-wider shadow-md h-fit self-center mt-1 md:mt-2 animate-in fade-in zoom-in duration-500">
+                      <LuCheck className="w-3.5 h-3.5 stroke-[3]" />
+                      Aula Concluída
+                    </span>
+                  )}
+                </div>
+                <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">
+                  {descricao}
+                </p>
+              </div>
+
+              <div className="flex flex-col items-end gap-3 shrink-0">
+                <span
+                  className={cn(
+                    "px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider shadow-sm bg-gradient-to-r",
+                    materiaCor,
+                  )}
+                >
+                  {materiaNome}
+                </span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-muted/30 rounded-2xl border border-border/50 text-muted-foreground text-sm font-medium w-fit">
+                  <LuClock className="w-4 h-4 text-primary" />
+                  {duracao}
+                </div>
+              </div>
+            </div>
+
+            {/* 4. Tabs Navigation + Content */}
+            <Tabs
+              value={activeTab}
+              onValueChange={setActiveTab}
+              className="w-full"
+            >
+              <StickyModuleNav
+                modules={modules}
+                activeTab={activeTab}
+                completedModules={completedModules}
+                isModuleUnlocked={isModuleUnlocked}
+              />
+
+              <main className="mt-[50px] space-y-[50px]">{children}</main>
+
+              {/* 5. Seção de Conclusão (Banner ou CTA) */}
+              <div className="mt-20">
+                {isCompleted ? (
+                  /* Banner de Aula Concluída */
+                  <div className="bg-emerald-500/10 dark:bg-emerald-950/20 border border-emerald-500/20 dark:border-emerald-500/10 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                    <div className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-emerald-500/30 shrink-0">
+                      <LuCheck size={40} strokeWidth={3} />
+                    </div>
+                    <div className="text-center md:text-left space-y-2">
+                      <h3 className="text-2xl md:text-3xl font-black text-emerald-600 dark:text-emerald-400">
+                        Aula de {titulo} Concluída!
+                      </h3>
+                      <p className="text-lg text-emerald-700/80 dark:text-emerald-300/60 font-medium">
+                        Parabéns! Você dominou este conteúdo e garantiu seu
+                        progresso. Continue na trilha do sucesso!
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  /* CTA de Conclusão */
+                  <div className="bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-pink-500/5 rounded-2xl p-8 md:p-12 border border-border/50 text-center space-y-8 animate-in fade-in duration-1000">
+                    <div className="space-y-4">
+                      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold uppercase tracking-wider border border-primary/20">
+                        <LuTrophy className="w-4 h-4" />
+                        Recompensa de Finalização
+                      </div>
+                      <h2 className="text-3xl md:text-4xl font-black text-foreground">
+                        Pronto para Finalizar?
+                      </h2>
+                      <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+                        Ao marcar esta aula como concluída, você desbloqueia seu
+                        progresso oficial e ganha um bônus imediato de
+                        experiência.
+                      </p>
+                    </div>
+
+                    <div className="flex flex-col items-center gap-6">
+                      <div className="flex items-center gap-8 py-4 px-8 bg-background/50 backdrop-blur-sm rounded-2xl border border-border/50 shadow-inner">
+                        <div className="text-center">
+                          <div className="text-2xl font-black text-primary">
+                            +{xpGanho} XP
+                          </div>
+                          <div className="text-xs text-muted-foreground font-bold uppercase tracking-tighter">
+                            Bônus Total
+                          </div>
+                        </div>
+                        <div className="w-px h-10 bg-border/50" />
+                        <div className="text-center">
+                          <div className="text-2xl font-black text-emerald-500">
+                            100%
+                          </div>
+                          <div className="text-xs text-muted-foreground font-bold uppercase tracking-tighter">
+                            Progresso
+                          </div>
+                        </div>
+                      </div>
+
+                      <Button
+                        size="lg"
+                        onClick={onComplete}
+                        disabled={loading}
+                        className="h-16 px-12 text-xl font-black rounded-2xl shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/40 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
+                      >
+                        {loading ? "Processando..." : "MARCAR COMO CONCLUÍDA"}
+                      </Button>
+                    </div>
+                  </div>
                 )}
-              >
-                {size === "sm" ? "A-" : size === "md" ? "A" : "A+"}
-              </button>
-            ))}
+              </div>
+
+              {/* 6. Navegação Inferior */}
+              <div className="mt-[100px] pt-12 border-t border-border/50 pb-12">
+                <NavHeader />
+              </div>
+            </Tabs>
           </div>
         </div>
       </div>
-
-      <ProgressIndicator />
-
-      {/* Content - O children herda o tamanho da fonte através do context/classes */}
-      <main className="space-y-12">{children}</main>
-
-      <style jsx global>{`
-        .lesson-font-sm p,
-        .lesson-font-sm li {
-          font-size: 0.875rem;
-          line-height: 1.5rem;
-        }
-        .lesson-font-md p,
-        .lesson-font-md li {
-          font-size: 1.125rem;
-          line-height: 1.875rem;
-        }
-        .lesson-font-lg p,
-        .lesson-font-lg li {
-          font-size: 1.375rem;
-          line-height: 2.25rem;
-        }
-
-        /* Ajustes para cards e outros componentes que usam classes específicas */
-        .lesson-font-md .text-sm {
-          font-size: 1rem;
-        }
-        .lesson-font-md .text-base {
-          font-size: 1.125rem;
-        }
-        .lesson-font-lg .text-sm {
-          font-size: 1.125rem;
-        }
-        .lesson-font-lg .text-base {
-          font-size: 1.375rem;
-        }
-      `}</style>
     </div>
   );
 }
@@ -2055,7 +2194,7 @@ export function StickyModuleNav({
     <div
       ref={navRef}
       className={cn(
-        "sticky z-40 bg-background/95 md:-mt-16 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-hidden transition-all duration-300",
+        "sticky z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-hidden transition-all duration-300",
         /* Full viewport width breakout safe for sticky positioning */
         "w-screen ml-[calc(50%-50vw)]",
         /* Dynamic top pinning */
@@ -2064,8 +2203,8 @@ export function StickyModuleNav({
           : "top-16 md:top-20",
         /* Border and padding based on pin state */
         isStickyNavPinned
-          ? "border-b border-border/50 shadow-md py-3"
-          : "border-y border-border/50 shadow-sm py-4",
+          ? "border-b border-border/50 shadow-md py-2"
+          : "border-y border-border/50 shadow-sm py-3",
       )}
     >
       <div className="w-full px-4 md:px-8 overflow-x-auto scrollbar-hide relative">
@@ -2137,13 +2276,13 @@ export function StickyModuleNav({
               key={mod.id}
               value={mod.id}
               disabled={!isModuleUnlocked(index)}
-              className="shrink-0 py-2.5 px-6 rounded-2xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group"
+              className="shrink-0 py-2 px-4 md:px-5 rounded-2xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group"
             >
               <div className="flex flex-col items-center md:items-start gap-0.5">
                 <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/50 group-data-[state=active]:text-primary/60 font-display">
                   {mod.label}
                 </span>
-                <span className="font-bold text-sm md:text-base flex items-center gap-2">
+                <span className="font-bold text-[11px] md:text-[13px] flex items-center gap-2">
                   {mod.titulo}
                   {completedModules.has(mod.id) && (
                     <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20">

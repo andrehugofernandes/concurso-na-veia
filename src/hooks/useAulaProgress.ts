@@ -29,13 +29,15 @@ export function useAulaProgress(materiaId: string, topicoId: string): UseAulaPro
 
     // Carregar progresso inicial
     useEffect(() => {
+        let isMounted = true;
+
         const loadProgress = async () => {
             try {
-                setLoading(true);
+                if (isMounted) setLoading(true);
                 const { data: { user } } = await supabase.auth.getUser();
 
-                if (!user) {
-                    setLoading(false);
+                if (!user || !isMounted) {
+                    if (isMounted) setLoading(false);
                     return;
                 }
 
@@ -48,23 +50,36 @@ export function useAulaProgress(materiaId: string, topicoId: string): UseAulaPro
                     .single();
 
                 if (fetchError && fetchError.code !== 'PGRST116') {
-                    // PGRST116 = not found, which is ok for new topics
                     throw fetchError;
                 }
 
-                if (data) {
+                if (data && isMounted) {
                     setProgress(data.progress_percent);
                     setCompleted(data.completed);
                 }
-            } catch (err) {
-                console.error('Error loading progress:', JSON.stringify(err, null, 2));
-                setError('Erro ao carregar progresso');
+            } catch (err: any) {
+                // Silently ignore abort errors as they are usually component unmounts or re-renders
+                const isAbortError = 
+                    err?.name === 'AbortError' || 
+                    err?.message?.toLowerCase().includes('aborted') ||
+                    err?.code === '20' || // DOMException.ABORT_ERR
+                    err?.hint?.toLowerCase().includes('aborted');
+
+                if (isAbortError) return;
+                
+                if (isMounted) {
+                    // Standard Errors don't stringify well, so we log them clearly
+                    const errorMsg = err?.message || (typeof err === 'string' ? err : 'Unknown error');
+                    console.error('Error loading progress:', errorMsg, err);
+                    setError('Erro ao carregar progresso');
+                }
             } finally {
-                setLoading(false);
+                if (isMounted) setLoading(false);
             }
         };
 
         loadProgress();
+        return () => { isMounted = false; };
     }, [materiaId, topicoId, supabase]);
 
     // Atualizar progresso (debounced no componente que usa)

@@ -13,6 +13,7 @@ import { notFound } from "next/navigation";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 import { AulaProps } from "@/components/aulas/shared";
 import { useSetPageTitle } from "@/contexts/UIContext";
+import { LuClock, LuCheck } from "react-icons/lu";
 
 // Dynamic import para evitar hydration mismatch dos componentes Radix UI (Dialog, Accordion, Tabs)
 const AulaInterpretacaoTexto = dynamic(
@@ -350,76 +351,8 @@ export default function TopicoPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation Header */}
-      <header className="container mx-auto px-6 py-4 max-w-6xl">
-        <div className="bg-card/90 dark:bg-slate-800/90 backdrop-blur-md rounded-xl p-3 border border-border dark:border-slate-700/50 shadow-sm">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3 text-sm">
-              <Link
-                href={`/aulas/${materiaId}`}
-                className="px-3 py-1.5 rounded-lg bg-secondary/80 dark:bg-slate-700 text-secondary-foreground dark:text-slate-200 hover:bg-secondary transition flex items-center gap-2 font-medium border border-border/50"
-              >
-                <span className="text-lg leading-none">←</span> {materia.nome}
-              </Link>
-              <span className="text-muted-foreground/40 font-light text-xl">
-                /
-              </span>
-              <span className="text-foreground font-semibold truncate max-w-[150px] md:max-w-none">
-                {topico.titulo}
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2">
-              {prevTopico && (
-                <Link
-                  href={`/aulas/${materiaId}/${prevTopico.id}`}
-                  className="px-3 py-1.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-xs"
-                  title={prevTopico.titulo}
-                >
-                  Anterior
-                </Link>
-              )}
-              {nextTopico && (
-                <Link
-                  href={`/aulas/${materiaId}/${nextTopico.id}`}
-                  className="px-4 py-1.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-xs"
-                >
-                  Próximo
-                  <span className="hidden md:inline">
-                    : {nextTopico.titulo}
-                  </span>{" "}
-                  <span className="text-lg leading-none">→</span>
-                </Link>
-              )}
-            </div>
-          </div>
-        </div>
-      </header>
-
       {/* Main Content */}
-      <main className="w-full pb-32">
-        {/* Title - Ocultado para Aulas Premium que já possuem cabeçalho próprio */}
-        {![""].includes(topicoId) && (
-          <div className="max-w-6xl mx-auto px-6 pt-8 pb-0">
-            <div className="flex items-center justify-between gap-3 mb-4">
-              <span
-                className={`px-3 py-1 rounded-full text-sm bg-gradient-to-r ${materia.cor} text-white`}
-              >
-                {materia.nome}
-              </span>
-              <span className="text-gray-500 text-sm">⏱️ {topico.duracao}</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-2">
-              {topico.titulo}
-            </h1>
-            <p className="text-muted-foreground mt-2 text-lg leading-relaxed max-w-2xl">
-              {topico.descricao}
-            </p>
-          </div>
-        )}
-
-        {/* Global Progress Indicator handled inside each lesson via AulaTemplate */}
-
+      <main className="w-full">
         {/* Article Content */}
         <article className="w-full">
           {materiaId === "portugues" && topicoId === "interpretacao" ? (
@@ -430,6 +363,14 @@ export default function TopicoPage({ params }: PageProps) {
               xpGanho={xpGanho}
               currentProgress={progress}
               onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
             />
           ) : materiaId === "portugues" && topicoId === "concordancia" ? (
             <AulaConcordancia
@@ -439,6 +380,14 @@ export default function TopicoPage({ params }: PageProps) {
               xpGanho={xpGanho}
               currentProgress={progress}
               onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
             />
           ) : materiaId === "portugues" && topicoId === "reescrita-frases" ? (
             <AulaReescritaFrases
@@ -448,6 +397,14 @@ export default function TopicoPage({ params }: PageProps) {
               xpGanho={xpGanho}
               currentProgress={progress}
               onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
             />
           ) : materiaId === "portugues" && topicoId === "coesao-coerencia" ? (
             <AulaCoesaoCoerencia
@@ -457,6 +414,14 @@ export default function TopicoPage({ params }: PageProps) {
               xpGanho={xpGanho}
               currentProgress={progress}
               onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
             />
           ) : materiaId === "portugues" && topicoId === "crase" ? (
             <AulaCrase
@@ -466,6 +431,14 @@ export default function TopicoPage({ params }: PageProps) {
               xpGanho={xpGanho}
               currentProgress={progress}
               onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
             />
           ) : materiaId === "portugues" && topicoId === "pontuacao" ? (
             <AulaPontuacao
@@ -475,6 +448,14 @@ export default function TopicoPage({ params }: PageProps) {
               xpGanho={xpGanho}
               currentProgress={progress}
               onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
             />
           ) : materiaId === "portugues" && topicoId === "regencia" ? (
             <AulaRegencia
@@ -484,6 +465,14 @@ export default function TopicoPage({ params }: PageProps) {
               xpGanho={xpGanho}
               currentProgress={progress}
               onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
             />
           ) : materiaId === "portugues" && topicoId === "sintaxe" ? (
             <AulaSintaxe
@@ -493,6 +482,14 @@ export default function TopicoPage({ params }: PageProps) {
               xpGanho={xpGanho}
               currentProgress={progress}
               onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
             />
           ) : materiaId === "portugues" && topicoId === "classes-palavras" ? (
             <AulaClassesPalavras
@@ -502,6 +499,14 @@ export default function TopicoPage({ params }: PageProps) {
               xpGanho={xpGanho}
               currentProgress={progress}
               onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
             />
           ) : materiaId === "portugues" && topicoId === "tipos-textuais" ? (
             <AulaTiposTextuais
@@ -511,6 +516,14 @@ export default function TopicoPage({ params }: PageProps) {
               xpGanho={xpGanho}
               currentProgress={progress}
               onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
             />
           ) : materiaId === "portugues" && topicoId === "ortografia" ? (
             <AulaOrtografia
@@ -520,10 +533,21 @@ export default function TopicoPage({ params }: PageProps) {
               xpGanho={xpGanho}
               currentProgress={progress}
               onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
             />
           ) : conteudo ? (
             conteudo.secoes.map((secao, index) => (
-              <section key={index} className="mb-12">
+              <section
+                key={index}
+                className="mb-12 max-w-7xl mx-auto px-6 pt-12"
+              >
                 <h2 className="text-2xl font-bold text-yellow-400 mb-4 flex items-center gap-2">
                   <span className="w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center text-sm">
                     {index + 1}
@@ -543,7 +567,7 @@ export default function TopicoPage({ params }: PageProps) {
               </section>
             ))
           ) : (
-            <div className="max-w-6xl mx-auto px-6 py-8">
+            <div className="max-w-7xl mx-auto px-6 py-8">
               <div className="bg-slate-800/50 rounded-xl p-8 border border-slate-700/50 text-center">
                 <span className="text-6xl mb-4 block">🚧</span>
                 <h2 className="text-2xl font-bold text-white mb-2">
@@ -558,73 +582,51 @@ export default function TopicoPage({ params }: PageProps) {
           )}
         </article>
 
-        {/* Completion CTA — only for generic lessons (interpretacao has its own) */}
-        {!(materiaId === "portugues" && topicoId === "interpretacao") && (
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="mt-12 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-8 border border-yellow-500/30 text-center">
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
-                {isCompleted ? "✅ Aula Concluída!" : "📖 Termine a leitura"}
-              </h3>
-              <p className="text-slate-600 dark:text-gray-400 mb-4">
-                {isCompleted
-                  ? `Parabéns! Você ganhou +${xpGanho || 50} XP`
-                  : "Role até o final para marcar esta aula como concluída e ganhar XP"}
-              </p>
-              <button
-                onClick={handleCompleteAula}
-                disabled={isCompleted || loading}
-                className={`px-6 py-3 rounded-xl font-bold transition ${
-                  isCompleted
-                    ? "bg-green-600 text-white cursor-not-allowed"
+        {/* Completion CTA — only for generic lessons */}
+        {conteudo &&
+          ![
+            "interpretacao",
+            "concordancia",
+            "reescrita-frases",
+            "coesao-coerencia",
+            "crase",
+            "pontuacao",
+            "regencia",
+            "sintaxe",
+            "classes-palavras",
+            "tipos-textuais",
+            "ortografia",
+          ].includes(topicoId) && (
+            <div className="max-w-7xl mx-auto px-6 pb-32">
+              <div className="mt-12 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-8 border border-yellow-500/30 text-center">
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                  {isCompleted ? "✅ Aula Concluída!" : "📖 Termine a leitura"}
+                </h3>
+                <p className="text-slate-600 dark:text-gray-400 mb-4">
+                  {isCompleted
+                    ? `Parabéns! Você ganhou +${xpGanho || 50} XP`
+                    : "Role até o final para marcar esta aula como concluída e ganhar XP"}
+                </p>
+                <button
+                  onClick={handleCompleteAula}
+                  disabled={isCompleted || loading}
+                  className={`px-6 py-3 rounded-xl font-bold transition ${
+                    isCompleted
+                      ? "bg-green-600 text-white cursor-not-allowed"
+                      : loading
+                        ? "bg-gray-600 text-gray-400 cursor-wait"
+                        : "bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 hover:shadow-lg hover:shadow-orange-500/25"
+                  }`}
+                >
+                  {isCompleted
+                    ? "🏆 +50 XP Conquistados!"
                     : loading
-                      ? "bg-gray-600 text-gray-400 cursor-wait"
-                      : "bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 hover:shadow-lg hover:shadow-orange-500/25"
-                }`}
-              >
-                {isCompleted
-                  ? "🏆 +50 XP Conquistados!"
-                  : loading
-                    ? "Carregando..."
-                    : "Marcar como Concluída"}
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Navigation Footer (Duplicado do Header) */}
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="mt-16 pt-8 border-t border-border">
-            <div className="bg-card/90 dark:bg-slate-800/90 backdrop-blur-md rounded-xl p-4 border border-border dark:border-slate-700/50 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
-              <span className="text-muted-foreground font-medium text-sm">
-                Próximo passo:
-              </span>
-
-              <div className="flex items-center gap-2 w-full md:w-auto justify-end">
-                {prevTopico && (
-                  <Link
-                    href={`/aulas/${materiaId}/${prevTopico.id}`}
-                    className="px-4 py-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-sm"
-                    title={prevTopico.titulo}
-                  >
-                    Anterior
-                  </Link>
-                )}
-                {nextTopico && (
-                  <Link
-                    href={`/aulas/${materiaId}/${nextTopico.id}`}
-                    className="px-6 py-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-sm"
-                  >
-                    Próximo
-                    <span className="hidden md:inline">
-                      : {nextTopico.titulo}
-                    </span>{" "}
-                    <span className="text-lg leading-none">→</span>
-                  </Link>
-                )}
+                      ? "Carregando..."
+                      : "Marcar como Concluída"}
+                </button>
               </div>
             </div>
-          </div>
-        </div>
+          )}
       </main>
     </div>
   );
