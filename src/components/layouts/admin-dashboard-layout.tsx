@@ -69,6 +69,15 @@ export function AdminDashboardLayout({ children }: AdminDashboardLayoutProps) {
         <div
           className="min-h-screen bg-slate-50/50 dark:bg-background"
           suppressHydrationWarning
+          style={
+            {
+              "--sidebar-width": isSidebarCollapsed
+                ? isMobile
+                  ? "0px"
+                  : "80px"
+                : "256px",
+            } as React.CSSProperties
+          }
         >
           {/* Sidebar - fixed position */}
           <AdminSidebar isCollapsed={isSidebarCollapsed} />

@@ -688,6 +688,11 @@ export default function AulaOrtografia({
   loading,
   prevTopico,
   nextTopico,
+  currentProgress,
+  onUpdateProgress,
+  materiaCor,
+  materiaNome,
+  materiaId,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
   const [completedModules, setCompletedModules] = useState<Set<string>>(
@@ -720,19 +725,37 @@ export default function AulaOrtografia({
         20,
       ),
     );
-
-    const saved = localStorage.getItem("aula_ortografia_progress");
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (parsed.completedModules) {
-          setCompletedModules(new Set(parsed.completedModules));
-        }
-      } catch (e) {
-        console.error("Erro ao ler progresso", e);
-      }
-    }
   }, []);
+
+  // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
+
+  useEffect(() => {
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
+      }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
+
+  useEffect(() => {
+    const total = MODULE_DEFS.length;
+    const done = completedModules.size;
+    const percent = Math.round((done / total) * 100);
+  }, [completedModules]);
 
   const isModuleUnlocked = useCallback(
     (moduleIndex: number) => {
@@ -748,12 +771,14 @@ export default function AulaOrtografia({
     if (score >= 60) {
       const newSet = new Set(completedModules).add(moduleId);
       setCompletedModules(newSet);
-      localStorage.setItem(
-        "aula_ortografia_progress",
-        JSON.stringify({
-          completedModules: Array.from(newSet),
-        }),
-      );
+
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
+
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
 
       const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
       if (index < MODULE_DEFS.length - 1) {
@@ -774,14 +799,17 @@ export default function AulaOrtografia({
       titulo="Ortografia e Acentuação"
       descricao="Domine grafia, fonética e as novas regras de acentuação para gabaritar."
       duracao="45 min"
-      materiaNome="Português"
-      materiaCor="cyan"
-      materiaId="portugues"
+      materiaNome={materiaNome}
+      materiaCor={materiaCor}
+      materiaId={materiaId}
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
       onComplete={onComplete}
       loading={loading}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
     >
       {/* MÓDULO 1: ACENTUAÇÃO GRÁFICA */}
       {/* =======================================================

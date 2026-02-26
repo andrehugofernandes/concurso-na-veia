@@ -90,10 +90,10 @@ export function useAulaProgress(materiaId: string, topicoId: string): UseAulaPro
             const { data: { user } } = await supabase.auth.getUser();
             if (!user) return;
 
-            // Ensure progress doesn't regress
-            const newProgress = Math.max(progress, Math.min(Math.round(percent), 100));
+            // Progress follows UI logic accurately
+            const newProgress = Math.min(Math.round(percent), 100);
 
-            if (newProgress === progress) return;
+            if (newProgress === progress && percent !== 0) return;
 
             const { error: upsertError } = await supabase
                 .from('aulas_progress')

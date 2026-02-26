@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useParams } from "next/navigation";
 import { useHeaderState } from "@/contexts/HeaderStateContext";
@@ -631,7 +632,7 @@ export function ProgressIndicator({ percent }: { percent?: number }) {
     const updateProgress = () => {
       const scroll = window.scrollY;
       const height = document.documentElement.scrollHeight - window.innerHeight;
-      if (height <= 0) {
+      if (height <= 50) {
         setProgress(0);
         return;
       }
@@ -656,26 +657,44 @@ export function ProgressIndicator({ percent }: { percent?: number }) {
   }, [percent]);
 
   return (
-    <div
-      className={cn(
-        "fixed bottom-10 left-1/2 -translate-x-1/2 w-full max-w-6xl z-[110] px-6 flex justify-center ml-8 md:ml-10 lg:ml-32 transition-all duration-500 ease-in-out",
-        progress > 0
-          ? "opacity-100 translate-y-0 pointer-events-auto"
-          : "opacity-0 translate-y-10 pointer-events-none",
+    <AnimatePresence>
+      {progress > 0 && (
+        <motion.div
+          id="progress-indicator-container"
+          key="progress-indicator"
+          className="fixed bottom-10 left-0 right-0 flex justify-center z-[110] px-6 pl-[var(--sidebar-width)] transition-[padding] duration-300"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          <div className="w-full max-w-4xl bg-background/80 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-2xl border border-border/60 dark:border-border/50 p-2 rounded-full pointer-events-auto flex items-center gap-3 relative group">
+            {/* Tooltip Dinâmico (Framer Motion) */}
+            <motion.div
+              className="absolute -top-10 bg-primary text-primary-foreground px-3 py-1.5 rounded-xl text-xs font-black shadow-lg shadow-primary/20 flex flex-col items-center"
+              initial={false}
+              animate={{ left: `${progress}%` }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              style={{ x: "-50%" }}
+            >
+              <span className="whitespace-nowrap">{Math.round(progress)}%</span>
+              {/* Seta do Tooltip */}
+              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-primary rotate-45" />
+            </motion.div>
+
+            <div className="flex-1 h-3 bg-muted/50 rounded-full overflow-hidden relative">
+              <motion.div
+                className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full shadow-[0_0_15px_rgba(168,85,247,0.3)] w-full"
+                initial={false}
+                animate={{ scaleX: progress / 100 }}
+                style={{ originX: 0 }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
+              />
+            </div>
+          </div>
+        </motion.div>
       )}
-    >
-      <div className="w-full bg-background/90 backdrop-blur-xl shadow-2xl border border-border/50 p-2.5 rounded-full pointer-events-auto flex items-center gap-3">
-        <div className="flex-1 h-2.5 bg-muted rounded-full overflow-hidden relative">
-          <div
-            className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full transition-all duration-150 ease-out shadow-[0_0_10px_rgba(168,85,247,0.4)]"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-        <div className="px-2 text-xs font-bold text-muted-foreground min-w-[4ch] text-right">
-          {Math.round(progress)}%
-        </div>
-      </div>
-    </div>
+    </AnimatePresence>
   );
 }
 
@@ -1964,28 +1983,51 @@ export function AulaTemplate({
           </span>
         </div>
 
-        <div className="flex items-center gap-2">
-          {prevTopico && (
-            <Link
-              href={`/aulas/${materiaId}/${prevTopico.id}`}
-              className="px-3 py-1.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-xs"
-              title={prevTopico.titulo}
-            >
-              Anterior
-            </Link>
-          )}
-          {nextTopico && (
-            <Link
-              href={`/aulas/${materiaId}/${nextTopico.id}`}
-              className="px-4 py-1.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-xs"
-            >
-              Próximo
-              <span className="hidden md:inline">
-                : {nextTopico.titulo}
-              </span>{" "}
-              <span className="text-lg leading-none">→</span>
-            </Link>
-          )}
+        <div className="flex items-center gap-4">
+          {/* Mastery Progress Badge */}
+          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-lg border border-primary/20">
+            <div className="flex flex-col items-end">
+              <span className="text-[10px] uppercase tracking-tighter font-bold text-primary/70 leading-none">
+                Conclusão
+              </span>
+              <span className="text-sm font-black text-primary leading-tight">
+                {currentProgress || 0}%
+              </span>
+            </div>
+            <div className="w-10 h-10 rounded-full border-2 border-primary/20 flex items-center justify-center relative overflow-hidden bg-background">
+              <div
+                className="absolute inset-0 bg-primary/10 transition-all duration-1000"
+                style={{
+                  clipPath: `inset(${100 - (currentProgress || 0)}% 0 0 0)`,
+                }}
+              />
+              <LuTrophy className="w-5 h-5 text-primary relative z-10" />
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {prevTopico && (
+              <Link
+                href={`/aulas/${materiaId}/${prevTopico.id}`}
+                className="px-3 py-1.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-xs"
+                title={prevTopico.titulo}
+              >
+                Anterior
+              </Link>
+            )}
+            {nextTopico && (
+              <Link
+                href={`/aulas/${materiaId}/${nextTopico.id}`}
+                className="px-4 py-1.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-xs"
+              >
+                Próximo
+                <span className="hidden md:inline">
+                  : {nextTopico.titulo}
+                </span>{" "}
+                <span className="text-lg leading-none">→</span>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -1995,9 +2037,9 @@ export function AulaTemplate({
     <div className="min-h-screen bg-background pb-20 relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col">
-          {/* 1. Barra de Progresso */}
+          {/* 1. Barra de Progresso de Leitura (Scroll) */}
           <div className="h-1.5 w-full">
-            <ProgressIndicator percent={currentProgress} />
+            <ProgressIndicator />
           </div>
 
           {/* 2. Navigation Header (Breadcrumb + Nav) */}
@@ -2027,8 +2069,10 @@ export function AulaTemplate({
               <div className="flex flex-col items-end gap-3 shrink-0">
                 <span
                   className={cn(
-                    "px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider shadow-sm bg-gradient-to-r",
-                    materiaCor,
+                    "px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider shadow-sm",
+                    materiaCor.startsWith("bg-")
+                      ? materiaCor
+                      : `bg-gradient-to-r from-${materiaCor}-600 to-${materiaCor}-400`,
                   )}
                 >
                   {materiaNome}

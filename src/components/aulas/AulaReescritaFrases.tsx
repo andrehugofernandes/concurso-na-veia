@@ -356,28 +356,6 @@ export default function AulaReescritaFrases({
     setQuizM2(getRandomQuestions(QUIZ_M2_POOL, 4));
     setQuizFinal(getRandomQuestions(QUIZ_FINAL_POOL, 4));
     setShuffledChallenges([...CHALLENGE_POOL].sort(() => 0.5 - Math.random()));
-
-    // Carregar progresso salvo do DB
-    const loadSavedProgress = async () => {
-      const allProgress = await progressService.getProgress("reescritura");
-      const completed = allProgress
-        .filter((p) => p.completed)
-        .map((p) => p.moduleId);
-      if (completed.length > 0) {
-        setCompletedModules(new Set(completed));
-        // Auto skip to last unlocked
-        const unlockedIndices = completed.map((id) =>
-          MODULE_DEFS.findIndex((m) => m.id === id),
-        );
-        const maxIdx = Math.max(...unlockedIndices, -1);
-        if (maxIdx < MODULE_DEFS.length - 1) {
-          setActiveTab(MODULE_DEFS[maxIdx + 1].id);
-        } else {
-          setActiveTab(MODULE_DEFS[maxIdx].id);
-        }
-      }
-    };
-    loadSavedProgress();
   }, []);
 
   useEffect(() => {
@@ -385,33 +363,50 @@ export default function AulaReescritaFrases({
       setShowCompletionBadge(true);
   }, [currentProgress, isCompleted]);
 
-  const handleModuleProgress = (
-    moduleId: string,
-    index: number,
-    score: number,
-  ) => {
-    const newCompleted = new Set(completedModules);
-    newCompleted.add(moduleId);
-    setCompletedModules(newCompleted);
+  // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
 
-    const progressPercent = Math.min((index + 1) * PROGRESS_PER_MODULE, 100);
+  useEffect(() => {
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
+      }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
 
-    progressService.saveProgress({
-      lessonId: "reescritura",
-      moduleId: moduleId,
-      score: score,
-      completed: true,
-      readPercentage: progressPercent,
-    });
+  const handleModuleComplete = (moduleId: string, score: number) => {
+    if (score >= 70) {
+      const newCompleted = new Set(completedModules);
+      newCompleted.add(moduleId);
+      setCompletedModules(newCompleted);
 
-    if (onUpdateProgress) onUpdateProgress(progressPercent);
+      const progressPercent = Math.round(
+        (newCompleted.size / MODULE_DEFS.length) * 100,
+      );
 
-    // Auto navegação para o próximo módulo
-    if (index < MODULE_DEFS.length - 1) {
-      setTimeout(() => setActiveTab(MODULE_DEFS[index + 1].id), 1500);
-    } else {
-      setShowCompletionBadge(true);
-      if (onComplete) onComplete();
+      if (onUpdateProgress) onUpdateProgress(progressPercent);
+
+      // Auto navegação para o próximo módulo
+      const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
+      if (index < MODULE_DEFS.length - 1) {
+        setTimeout(() => setActiveTab(MODULE_DEFS[index + 1].id), 1500);
+      } else {
+        setShowCompletionBadge(true);
+        if (onComplete) onComplete();
+      }
     }
   };
 
@@ -442,7 +437,9 @@ export default function AulaReescritaFrases({
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
-      currentProgress={currentProgress}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
       onComplete={onComplete}
       loading={loading}
       xpGanho={xpGanho}
@@ -708,7 +705,7 @@ export default function AulaReescritaFrases({
             titulo="Quiz de Fixação - Fundamentos"
             icone="🎯"
             numero={4}
-            onComplete={(score) => handleModuleProgress("modulo-1", 0, score)}
+            onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
       </TabsContent>
@@ -1029,7 +1026,7 @@ export default function AulaReescritaFrases({
             titulo="Quiz de Fixação - Técnicas"
             icone="🎯"
             numero={4}
-            onComplete={(score) => handleModuleProgress("modulo-2", 1, score)}
+            onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
       </TabsContent>
@@ -1277,7 +1274,7 @@ export default function AulaReescritaFrases({
             titulo="Simulado de Finalização - Reescrita"
             icone="🏆"
             numero={5}
-            onComplete={(score) => handleModuleProgress("modulo-3", 2, score)}
+            onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>
       </TabsContent>

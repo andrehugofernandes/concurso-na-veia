@@ -1727,6 +1727,11 @@ export default function AulaClassesPalavras({
   loading,
   prevTopico,
   nextTopico,
+  currentProgress,
+  onUpdateProgress,
+  materiaCor,
+  materiaNome,
+  materiaId,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
   const [completedModules, setCompletedModules] = useState<Set<string>>(
@@ -1741,26 +1746,36 @@ export default function AulaClassesPalavras({
   const [qLab, setQLab] = useState<QuizQuestion[]>([]);
 
   useEffect(() => {
-    setQMod1(getRandomQuestions(QUIZ_MOD1_POOL, 6)); // mínimo 6
-    setQMod2(getRandomQuestions(QUIZ_MOD2_POOL, 6)); // mínimo 6
-    setQMod3(getRandomQuestions(QUIZ_MOD3_POOL, 6)); // mínimo 6
-    setQMod4(getRandomQuestions(QUIZ_MOD4_POOL, 6)); // mínimo 6
-    setQLab(getRandomQuestions(QUIZ_LABORATORIO_POOL, 20)); // Lab Final com 20
-
-    const savedProgress = localStorage.getItem(
-      "aula_classes_palavras_progress",
-    );
-    if (savedProgress) {
-      try {
-        const parsed = JSON.parse(savedProgress);
-        if (parsed.completedModules && Array.isArray(parsed.completedModules)) {
-          setCompletedModules(new Set(parsed.completedModules));
-        }
-      } catch (error) {
-        console.error("Erro ao carregar progresso:", error);
-      }
-    }
+    setQMod1(getRandomQuestions(QUIZ_MOD1_POOL, 6));
+    setQMod2(getRandomQuestions(QUIZ_MOD2_POOL, 6));
+    setQMod3(getRandomQuestions(QUIZ_MOD3_POOL, 6));
+    setQMod4(getRandomQuestions(QUIZ_MOD4_POOL, 6));
+    setQLab(getRandomQuestions(QUIZ_LABORATORIO_POOL, 20));
   }, []);
+
+  // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
+
+  useEffect(() => {
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
+      }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
 
   useEffect(() => {
     const total = MODULE_DEFS.length;
@@ -1773,10 +1788,15 @@ export default function AulaClassesPalavras({
     if (score >= 60) {
       const newSet = new Set(completedModules).add(moduleId);
       setCompletedModules(newSet);
-      localStorage.setItem(
-        "aula_classes_palavras_progress",
-        JSON.stringify({ completedModules: Array.from(newSet) }),
-      );
+
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
+
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
+
       const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
       if (index < MODULE_DEFS.length - 1) {
         setActiveTab(MODULE_DEFS[index + 1].id);
@@ -1807,14 +1827,17 @@ export default function AulaClassesPalavras({
       titulo="Classes de Palavras"
       descricao="Domine as 10 categorias morfológicas: classes variáveis e invariáveis para a Cesgranrio."
       duracao="60 min"
-      materiaNome="Português"
-      materiaCor="indigo"
-      materiaId="portugues"
+      materiaNome={materiaNome}
+      materiaCor={materiaCor}
+      materiaId={materiaId}
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
       onComplete={onComplete}
       loading={loading}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
     >
       {/* ══════════════════════════════════════════════
                     MÓDULO 1: VERBO & SUBSTANTIVO

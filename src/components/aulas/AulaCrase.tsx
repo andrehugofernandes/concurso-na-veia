@@ -63,8 +63,6 @@ import {
   ComparisonSide,
 } from "./shared";
 
-import { progressService } from "@/lib/services/progress";
-
 // ── Fallback for React 19 Activity ───────────────────────────────────────
 // ── Constants & Data ────────────────────────────────────────────────────
 
@@ -469,54 +467,60 @@ export default function AulaCrase({
     CRASE_CONCEPT_EXAMPLES[0],
   );
 
+  // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
+
   useEffect(() => {
-    const saved = localStorage.getItem("aula_crase_progress");
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        const restoredSet = new Set(parsed.completedModules || []);
-        setCompletedModules(restoredSet as Set<string>);
-      } catch (e) {
-        console.error("Failed to restore", e);
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
       }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
     }
 
-    setQuizM1(getRandomQuestions(QUIZ_M1_POOL, 4));
-    setQuizM2(getRandomQuestions(QUIZ_M2_POOL, 4));
-    setQuizFinal(getRandomQuestions(QUIZ_FINAL_POOL, 4));
-    setShuffledChallenges([...CHALLENGE_POOL].sort(() => 0.5 - Math.random()));
-  }, [isCompleted]);
+    if (!loading) {
+      setQuizM1(getRandomQuestions(QUIZ_M1_POOL, 4));
+      setQuizM2(getRandomQuestions(QUIZ_M2_POOL, 4));
+      setQuizFinal(getRandomQuestions(QUIZ_FINAL_POOL, 4));
+      setShuffledChallenges(
+        [...CHALLENGE_POOL].sort(() => 0.5 - Math.random()),
+      );
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
 
-  const saveProgress = (newSet: Set<string>) => {
-    const percent = Math.round((newSet.size / MODULE_DEFS.length) * 100);
-    localStorage.setItem(
-      "aula_crase_progress",
-      JSON.stringify({
-        completedModules: Array.from(newSet),
-        lastUpdated: new Date().toISOString(),
-      }),
-    );
-    if (onUpdateProgress) onUpdateProgress(percent);
-  };
-
-  const handleModuleProgress = (
-    moduleId: string,
-    index: number,
-    score: number,
-  ) => {
+  const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
-      const newSet = new Set(completedModules);
-      newSet.add(moduleId);
+      const newSet = new Set(completedModules).add(moduleId);
       setCompletedModules(newSet);
-      saveProgress(newSet);
 
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
+
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
+
+      const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
       if (index < MODULE_DEFS.length - 1) {
         setTimeout(() => {
           setActiveTab(MODULE_DEFS[index + 1].id);
           window.scrollTo({ top: 0, behavior: "smooth" });
         }, 1500);
       } else {
-        if (onComplete) onComplete();
+        onComplete?.();
       }
     }
   };
@@ -545,7 +549,9 @@ export default function AulaCrase({
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
-      currentProgress={currentProgress}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
       onComplete={onComplete}
       loading={loading}
       xpGanho={xpGanho}
@@ -810,7 +816,7 @@ export default function AulaCrase({
             icone="🧠"
             numero={4}
             questoes={quizM1}
-            onComplete={(score) => handleModuleProgress("modulo-1", 0, score)}
+            onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
       </TabsContent>
@@ -1088,7 +1094,7 @@ export default function AulaCrase({
             icone="🛡️"
             numero={4}
             questoes={quizM2}
-            onComplete={(score) => handleModuleProgress("modulo-2", 1, score)}
+            onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
       </TabsContent>
@@ -1398,7 +1404,7 @@ export default function AulaCrase({
             icone="🏆"
             numero={4}
             questoes={quizFinal}
-            onComplete={(score) => handleModuleProgress("modulo-3", 2, score)}
+            onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>
       </TabsContent>

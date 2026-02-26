@@ -385,27 +385,42 @@ export default function AulaCoesaoCoerencia({
   );
   const [challengeIndex, setChallengeIndex] = useState(0);
 
-  // Load progress
+  // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
+
   useEffect(() => {
-    const saved = localStorage.getItem("aula_coesao_progress");
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      if (parsed.completedModules)
-        setCompletedModules(new Set(parsed.completedModules));
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
+      }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
     }
-    if ((currentProgress ?? 0) >= 100 || isLessonCompleted) {
-      // Nothing to do here for now
-    }
-  }, [currentProgress, isLessonCompleted]);
+  }, [currentProgress, hasSyncedInitial, loading]);
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
       const newSet = new Set(completedModules).add(moduleId);
       setCompletedModules(newSet);
-      localStorage.setItem(
-        "aula_coesao_progress",
-        JSON.stringify({ completedModules: Array.from(newSet) }),
-      );
+
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
+
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
 
       const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
       if (index < MODULE_DEFS.length - 1) {
@@ -475,7 +490,9 @@ export default function AulaCoesaoCoerencia({
       isCompleted={isLessonCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
-      currentProgress={currentProgress}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
     >
       <Activity mode={activeTab === "modulo-1" ? "visible" : "hidden"}>
         <div className="space-y-[50px] animate-in fade-in slide-in-from-bottom-4 duration-500">

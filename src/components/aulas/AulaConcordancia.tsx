@@ -2056,34 +2056,42 @@ export default function AulaConcordancia({
     [...CHALLENGE_POOL].sort(() => 0.5 - Math.random()).slice(0, 10),
   );
 
-  // Load progress
+  // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
+
   useEffect(() => {
-    const saved = localStorage.getItem("aula_concordancia_progress");
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        setCompletedModules(new Set(parsed.completedModules || []));
-      } catch (e) {
-        console.error(e);
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
       }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
     }
-  }, [currentProgress, isCompleted]);
+  }, [currentProgress, hasSyncedInitial, loading]);
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
       const newSet = new Set(completedModules).add(moduleId);
       setCompletedModules(newSet);
 
-      const percent = Math.round((newSet.size / MODULE_DEFS.length) * 100);
-      localStorage.setItem(
-        "aula_concordancia_progress",
-        JSON.stringify({
-          completedModules: Array.from(newSet),
-          lastUpdated: new Date().toISOString(),
-        }),
-      );
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
 
-      if (onUpdateProgress) onUpdateProgress?.(percent);
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
 
       const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
       if (index < MODULE_DEFS.length - 1) {
@@ -2119,7 +2127,9 @@ export default function AulaConcordancia({
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
-      currentProgress={currentProgress}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
     >
       {/* EIXO 1: CONCORDÂNCIA VERBAL */}
       <TabsContent value="modulo-1" className="space-y-[50px]">

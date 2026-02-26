@@ -24,7 +24,6 @@ import {
   AulaTemplate,
   getRandomQuestions,
 } from "./shared";
-import { useAulaProgress } from "@/hooks/useAulaProgress";
 import {
   LuTriangleAlert as LuAlertTriangle,
   LuCircleCheck as LuCheckCircle,
@@ -194,38 +193,29 @@ export default function AulaPontuacao({
     new Set(),
   );
 
-  // Carrega progresso local e do banco
-  useEffect(() => {
-    const localSaved = localStorage.getItem("aula_progress_pontuacao");
-    if (localSaved) {
-      const parsed = JSON.parse(localSaved);
-      const done = new Set<string>(parsed.completedModules || []);
-      setCompletedModules(done);
+  // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
 
-      // Se já tiver completado via DB, marca tudo
-      if (isCompleted) {
-        const allModules = new Set(MODULE_DEFS.map((m) => m.id));
-        setCompletedModules(allModules);
-      } else {
-        // Navega para o próximo módulo disponível
-        const lastDoneIndex = MODULE_DEFS.findIndex((m) => done.has(m.id));
-        if (lastDoneIndex >= 0 && lastDoneIndex < MODULE_DEFS.length - 1) {
-          setActiveTab(MODULE_DEFS[lastDoneIndex + 1].id);
-        }
-      }
-    } else if (isCompleted) {
-      // Fallback se limpar cache mas vier completado do DB
-      const allModules = new Set(MODULE_DEFS.map((m) => m.id));
-      setCompletedModules(allModules);
-    }
-  }, [isCompleted]);
-  // Atualizar progresso global para o parent (page.tsx)
   useEffect(() => {
-    const total = MODULE_DEFS.length;
-    const done = completedModules.size;
-    const percent = Math.round((done / total) * 100);
-    if (onUpdateProgress) onUpdateProgress(percent);
-  }, [completedModules, onUpdateProgress]);
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
+      }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
 
   const isModuleUnlocked = useCallback(
     (moduleIndex: number) => {
@@ -237,35 +227,30 @@ export default function AulaPontuacao({
     [completedModules, isCompleted],
   );
 
-  const handleModuleComplete = async (moduleId: string, score: number) => {
+  const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
       const newSet = new Set(completedModules).add(moduleId);
       setCompletedModules(newSet);
-      localStorage.setItem(
-        "aula_progress_pontuacao",
-        JSON.stringify({ completedModules: Array.from(newSet) }),
-      );
+
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
+
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
 
       const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
 
       // Se for o último módulo, finaliza aula
       if (index === MODULE_DEFS.length - 1) {
-        await handleFinalComplete();
+        onComplete?.();
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         // Avança para o próximo
         setActiveTab(MODULE_DEFS[index + 1].id);
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
-    } else {
-      // Opcional: Toast de erro
-      alert("Você precisa de 70% de acerto para avançar!");
-    }
-  };
-
-  const handleFinalComplete = async () => {
-    if (!isCompleted && onComplete) {
-      await onComplete();
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -285,7 +270,9 @@ export default function AulaPontuacao({
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
-      currentProgress={currentProgress}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
       onComplete={onComplete}
       loading={loading}
       xpGanho={xpGanho}

@@ -787,19 +787,31 @@ export default function AulaTiposTextuais({
         20,
       ),
     );
-
-    const saved = localStorage.getItem("aula_tipostextuais_progress");
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (parsed.completedModules) {
-          setCompletedModules(new Set(parsed.completedModules));
-        }
-      } catch (e) {
-        console.error("Erro ao ler progresso", e);
-      }
-    }
   }, []);
+
+  // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
+
+  useEffect(() => {
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
+      }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
 
   const isModuleUnlocked = useCallback(
     (moduleIndex: number) => {
@@ -815,12 +827,14 @@ export default function AulaTiposTextuais({
     if (score >= 60) {
       const newSet = new Set(completedModules).add(moduleId);
       setCompletedModules(newSet);
-      localStorage.setItem(
-        "aula_tipostextuais_progress",
-        JSON.stringify({
-          completedModules: Array.from(newSet),
-        }),
-      );
+
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
+
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
 
       const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
       if (index < MODULE_DEFS.length - 1) {
@@ -848,7 +862,9 @@ export default function AulaTiposTextuais({
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
-      currentProgress={currentProgress}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
     >
       {/* ─── MÓDULO 1 ─── */}
       <TabsContent value="modulo-1" className="space-y-[50px]">

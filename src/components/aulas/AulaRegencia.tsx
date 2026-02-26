@@ -181,51 +181,54 @@ export default function AulaRegencia({
     setQuizM1(getRandomQuestions(QUIZ_M1_POOL, 2));
     setQuizM2(getRandomQuestions(QUIZ_M2_POOL, 1));
     setQuizFinal(getRandomQuestions(QUIZ_FINAL_POOL, 1));
-
-    // Carregar progresso inicial
-    const loadInitial = async () => {
-      const allProgress = await progressService.getProgress("regencia");
-      const done = allProgress
-        .filter((p) => p.completed)
-        .map((p) => p.moduleId);
-      setCompletedModules(new Set(done));
-
-      if (done.length > 0) {
-        const lastIdx = MODULE_DEFS.findIndex(
-          (m) => m.id === done[done.length - 1],
-        );
-        if (lastIdx < MODULE_DEFS.length - 1)
-          setActiveTab(MODULE_DEFS[lastIdx + 1].id);
-      }
-    };
-    loadInitial();
   }, []);
 
-  const handleModuleProgress = (
-    moduleId: string,
-    index: number,
-    score: number,
-  ) => {
-    const newCompleted = new Set(completedModules);
-    newCompleted.add(moduleId);
-    setCompletedModules(newCompleted);
+  // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
 
-    const progressPercent = Math.min((index + 1) * PROGRESS_PER_MODULE, 100);
+  useEffect(() => {
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
+      }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
 
-    progressService.saveProgress({
-      lessonId: "regencia",
-      moduleId: moduleId,
-      score: score,
-      completed: true,
-      readPercentage: progressPercent,
-    });
+  const handleModuleComplete = (moduleId: string, score: number) => {
+    if (score >= 70) {
+      const newSet = new Set(completedModules).add(moduleId);
+      setCompletedModules(newSet);
 
-    if (onUpdateProgress) onUpdateProgress(progressPercent);
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
 
-    if (index < MODULE_DEFS.length - 1) {
-      setTimeout(() => setActiveTab(MODULE_DEFS[index + 1].id), 1500);
-    } else {
-      if (onComplete) onComplete();
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
+
+      const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
+      if (index < MODULE_DEFS.length - 1) {
+        setTimeout(() => {
+          setActiveTab(MODULE_DEFS[index + 1].id);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 1500);
+      } else {
+        if (onComplete) onComplete();
+      }
     }
   };
 
@@ -251,7 +254,9 @@ export default function AulaRegencia({
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
-      currentProgress={currentProgress}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
       onComplete={onComplete}
       loading={loading}
       xpGanho={xpGanho}
@@ -683,7 +688,7 @@ export default function AulaRegencia({
             titulo="Quiz de Fixação - Regência Nominal"
             icone="🎯"
             questoes={quizM1}
-            onComplete={(score) => handleModuleProgress("modulo-1", 0, score)}
+            onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
       </TabsContent>
@@ -789,7 +794,7 @@ export default function AulaRegencia({
             titulo="Quiz de Fixação - Regência Verbal"
             icone="📝"
             questoes={quizM2}
-            onComplete={(score) => handleModuleProgress("modulo-2", 1, score)}
+            onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
       </TabsContent>
@@ -964,7 +969,7 @@ export default function AulaRegencia({
             titulo="Quiz de Fixação - Regência Verbal"
             icone="🏆"
             questoes={quizFinal}
-            onComplete={(score) => handleModuleProgress("modulo-3", 2, score)}
+            onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>
       </TabsContent>
