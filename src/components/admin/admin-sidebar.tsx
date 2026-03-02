@@ -31,6 +31,7 @@ import { cn } from "@/lib/utils";
 
 interface AdminSidebarProps {
   isCollapsed: boolean;
+  isHidden?: boolean;
   userRole?: string;
   onToggle?: () => void;
   userName?: string;
@@ -169,7 +170,11 @@ const ALL_MENU_SECTIONS: MenuSection[] = [
   },
 ];
 
-export function AdminSidebar({ isCollapsed, userRole }: AdminSidebarProps) {
+export function AdminSidebar({
+  isCollapsed,
+  isHidden,
+  userRole,
+}: AdminSidebarProps) {
   const pathname = usePathname();
 
   const isAdmin = userRole === "ADMIN" || userRole === "SYSADMIN";
@@ -205,6 +210,7 @@ export function AdminSidebar({ isCollapsed, userRole }: AdminSidebarProps) {
         "fixed top-0 left-0 z-40 h-screen bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-all duration-300 overflow-hidden",
         "scrollbar-hide scrollbar-none",
         isCollapsed ? "w-16 md:w-20" : "w-64",
+        isHidden && "-left-20",
       )}
     >
       <div className="flex flex-col h-full overflow-hidden scrollbar-hide scrollbar-none">

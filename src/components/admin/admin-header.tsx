@@ -341,7 +341,7 @@ export function AdminHeader({
             {mounted && (
               <button
                 onClick={toggleTheme}
-                className="hidden md:flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300"
+                className="flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300"
                 aria-label={theme === "dark" ? "Tema Claro" : "Tema Escuro"}
               >
                 {theme === "dark" ? (
@@ -356,7 +356,7 @@ export function AdminHeader({
             {mounted && (
               <DropdownMenu modal={false}>
                 <DropdownMenuTrigger asChild>
-                  <button className="hidden md:flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors">
+                  <button className="flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors">
                     <div className="w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-primary" />
                   </button>
                 </DropdownMenuTrigger>
