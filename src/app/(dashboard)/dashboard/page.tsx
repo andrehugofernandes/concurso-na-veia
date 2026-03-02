@@ -379,7 +379,7 @@ export default function DashboardPage() {
                       </p>
                     </div>
                     <Link
-                      href="/aulas/interpretacao-texto"
+                      href="/aulas/portugues/interpretacao-texto"
                       className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg transition text-sm shadow-lg shadow-indigo-500/20"
                     >
                       Retomar Aula
@@ -390,7 +390,7 @@ export default function DashboardPage() {
                       // Find interpretacao-texto progress (Now mapped to portugues/interpretacao)
                       // Note: In CONTEUDO_MATERIAS, Interpretacao ID is 'interpretacao', Materia ID is 'portugues'
                       const progress =
-                        allContentProgress["portugues/interpretacao"];
+                        allContentProgress["portugues/interpretacao-texto"];
 
                       // For specific module tracking we would need granular checks, but useAllAulasProgress
                       // currently returns aggregated per topic in its map logic?

@@ -769,6 +769,17 @@ export default function AulaInterpretacaoTexto({
             ]}
           />
         </section>
+        {/* SEÇÃO 3: QUIZ M1 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <QuizInterativo
+            questoes={quizM1}
+            titulo="Quiz de Fixação - Fundamentos e Cognição"
+            icone="🎯"
+            numero={3}
+            variant="indigo"
+            onComplete={(score) => handleModuleComplete("modulo-1", score)}
+          />
+        </section>
       </TabsContent>
 
       {/* ─── MÓDULO 2: COESÃO ─── */}

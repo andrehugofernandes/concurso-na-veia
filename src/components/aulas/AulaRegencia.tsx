@@ -51,9 +51,11 @@ import { progressService } from "@/lib/services/progress";
 
 const MODULE_DEFS = [
   { id: "modulo-1", label: "Módulo 1", titulo: "Regência Nominal" },
-  { id: "modulo-2", label: "Módulo 2", titulo: "Regência Verbal" },
-  { id: "modulo-3", label: "Módulo 3", titulo: "Casos Particulares" },
-];
+  { id: "modulo-2", label: "Módulo 2", titulo: "Regência Verbal I" },
+  { id: "modulo-3", label: "Módulo 3", titulo: "Regência Verbal II" },
+  { id: "modulo-4", label: "Módulo 4", titulo: "Regência e Relativos" },
+  { id: "modulo-5", label: "Módulo 5", titulo: "Laboratório de Elite" },
+] as const;
 
 const PROGRESS_PER_MODULE = Math.floor(100 / MODULE_DEFS.length);
 
@@ -72,7 +74,6 @@ const Activity = ({
 };
 
 // ── Questões do Módulo 1 (Nominal) ────────────────────────────────────────
-
 const QUIZ_M1_POOL: QuizQuestion[] = [
   {
     id: 101,
@@ -98,18 +99,47 @@ const QUIZ_M1_POOL: QuizQuestion[] = [
       { label: "D", valor: "Útil" },
     ],
     correta: "C",
-    explicacao:
-      "'Passível' rege a preposição 'de' (ex: Passível de punição). Acessível a, Atento a/em, Útil a/para.",
+    explicacao: "'Passível' rege a preposição 'de' (ex: Passível de punição).",
   },
 ];
 
-// ── Questões do Módulo 2 (Verbal Geral) ───────────────────────────────────
-
+// ── Questões do Módulo 2 (Verbal I: Assistir, Visar, Aspirar...) ────────────────
 const QUIZ_M2_POOL: QuizQuestion[] = [
   {
     id: 201,
     pergunta:
-      "O verbo 'Preferir' possui uma regência específica muito cobrada. Identifique a alternativa correta:",
+      "Com o sentido de 'pretender, objetivar', qual o padrão de regência do verbo visar?",
+    opcoes: [
+      { label: "A", valor: "Visar o êxito (Transitivo Direto)." },
+      { label: "B", valor: "Visar ao êxito (Transitivo Indireto)." },
+      { label: "C", valor: "Visar pelo êxito (Regência com 'por')." },
+      { label: "D", valor: "Visar com o êxito (Regência com 'com')." },
+    ],
+    correta: "B",
+    explicacao:
+      "Como VTI (Verbo Transitivo Indireto), com o sentido de 'objetivar', o verbo 'visar' exige a preposição 'A'.",
+  },
+  {
+    id: 202,
+    pergunta: "Em qual frase o verbo 'Assistir' significa prestar socorro?",
+    opcoes: [
+      { label: "A", valor: "Assistimos ao jogo no estádio." },
+      { label: "B", valor: "O médico assistiu o ferido na ambulância." },
+      { label: "C", valor: "Eles assistem em Brasília atualmente." },
+      { label: "D", valor: "Assiste ao cidadão o direito de defesa." },
+    ],
+    correta: "B",
+    explicacao:
+      "Como VTD (Verbo Transitivo Direto), 'assistir' significa ajudar ou socorrer.",
+  },
+];
+
+// ── Questões do Módulo 3 (Verbal II: Esquecer, Pagar, Preferir...) ────────────────
+const QUIZ_M3_POOL: QuizQuestion[] = [
+  {
+    id: 301,
+    pergunta:
+      "Sobre o verbo 'Preferir', assinale a única estrutura aceita pela norma culta:",
     opcoes: [
       { label: "A", valor: "Prefiro mais o turno da manhã do que o da noite." },
       { label: "B", valor: "Prefiro o turno da manhã antes que o da noite." },
@@ -121,37 +151,61 @@ const QUIZ_M2_POOL: QuizQuestion[] = [
     ],
     correta: "C",
     explicacao:
-      "O verbo 'Preferir' rege a estrutura 'preferir algo A outra coisa'. É erro usar 'do que', 'mais' ou 'mil vezes'.",
-  },
-];
-
-// ── Questões do Módulo 3 (Cesgranrio) ─────────────────────────────────────
-
-const QUIZ_FINAL_POOL: QuizQuestion[] = [
-  {
-    id: 301,
-    pergunta:
-      "Segundo a norma culta e a banca Cesgranrio, em qual frase o verbo 'ASSISTIR' está corretamente empregado com sentido de 'ver'?",
-    opcoes: [
-      {
-        label: "A",
-        valor: "Todos assistiram o treinamento de combate a incêndio.",
-      },
-      {
-        label: "B",
-        valor: "Todos assistiram ao treinamento de combate a incêndio.",
-      },
-      { label: "C", valor: "O médico assistiu ao paciente com dedicação." },
-      { label: "D", valor: "Essa lei assiste o direito de todos." },
-    ],
-    correta: "B",
-    explicacao:
-      "Com sentido de 'presenciar/ver', o verbo ASSISTIR é Transitivo Indireto e exige a preposição 'A'.",
+      "O Verbo Transitivo Direto e Indireto 'Preferir' rege a forma 'Preferir algo a outra coisa'.",
   },
   {
     id: 302,
     pergunta:
-      "A regência do verbo 'IMPLICAR' com sentido de 'acarretar, resultar em' foi corretamente empregada em:",
+      "Qual a regência correta dos verbos 'Esquecer' e 'Lembrar' quando pronominais (esquecer-se / lembrar-se)?",
+    opcoes: [
+      { label: "A", valor: "Esqueci-me o documento." },
+      { label: "B", valor: "Lembrei o compromisso." },
+      { label: "C", valor: "Esqueci-me do documento." },
+      { label: "D", valor: "Lembrei-me o compromisso." },
+    ],
+    correta: "C",
+    explicacao:
+      "Quando acompanhados de pronome reflexivo, os verbos 'esquecer' e 'lembrar' exigem a preposição DE.",
+  },
+];
+
+// ── Questões do Módulo 4 (Regência e Pronome Relativo) ───────────────────
+const QUIZ_M4_POOL: QuizQuestion[] = [
+  {
+    id: 401,
+    pergunta:
+      "Em qual alternativa o pronome relativo respeita a regência do verbo na oração subordinada?",
+    opcoes: [
+      { label: "A", valor: "O cargo que aspiros é muito concorrido." },
+      { label: "B", valor: "O cargo a que aspiro é muito concorrido." },
+      { label: "C", valor: "As normas onde obedecemos são rígidas." },
+      { label: "D", valor: "O filme que assistimos foi ótimo." },
+    ],
+    correta: "B",
+    explicacao:
+      "O verbo 'aspirar' (desejar) exige a preposição 'A', que deve ser anteposta ao pronome relativo 'que'.",
+  },
+  {
+    id: 402,
+    pergunta: "Complete corretamente: 'Este é o projeto ___ confio'.",
+    opcoes: [
+      { label: "A", valor: "que" },
+      { label: "B", valor: "o qual" },
+      { label: "C", valor: "em que" },
+      { label: "D", valor: "a que" },
+    ],
+    correta: "C",
+    explicacao:
+      "Quem confia, confia EM algo. Por isso, a preposição 'em' deve ser usada antes do pronome relativo.",
+  },
+];
+
+// ── Questões do Módulo 5 (Cesgranrio / Simulado Final) ────────────────────
+const QUIZ_FINAL_POOL: QuizQuestion[] = [
+  {
+    id: 501,
+    pergunta:
+      "A regência do verbo 'IMPLICAR' com sentido de 'acarretar' foi corretamente empregada em:",
     opcoes: [
       { label: "A", valor: "O erro implicará em punição severa." },
       { label: "B", valor: "A mudança implicará novos custos operacionais." },
@@ -163,20 +217,21 @@ const QUIZ_FINAL_POOL: QuizQuestion[] = [
     ],
     correta: "B",
     explicacao:
-      "No sentido de 'acarretar/ter como consequência', o verbo IMPLICAR é Transitivo Direto (não exige preposição). A forma 'implicar em' é um erro comum.",
+      "No sentido de 'acarretar', IMPLICAR é Verbo Transitivo Direto (sem preposição).",
   },
   {
-    id: 303,
-    pergunta: "Qual opção abaixo apresenta erro de regência?",
+    id: 502,
+    pergunta:
+      "Assinale a alternativa que apresenta erro de regência verbal segundo a norma gramática:",
     opcoes: [
-      { label: "A", valor: "Aspiro a uma vaga na Petrobras." },
-      { label: "B", valor: "O presidente visava ao crescimento da empresa." },
-      { label: "C", valor: "Prefiro mais a plataforma do que o escritório." },
-      { label: "D", valor: "Aspirou o ar poluído do ambiente." },
+      { label: "A", valor: "Informamos os candidatos da data da prova." },
+      { label: "B", valor: "Informamos aos candidatos a data da prova." },
+      { label: "C", valor: "Esqueci dos meus livros." },
+      { label: "D", valor: "Lembrei o nome do novo supervisor." },
     ],
     correta: "C",
     explicacao:
-      "O verbo 'preferir' rege a forma 'Preferir algo a outra coisa'. É errado o uso de 'mais... do que'. 'Aspirar' e 'Visar' estão corretos em suas duplas regências.",
+      "Sem o pronome (esqueci-me), o verbo 'esquecer' deve ser direto (Esqueci os meus livros). 'Esqueci dos' é uma mistura incorreta.",
   },
 ];
 
@@ -206,12 +261,16 @@ export default function AulaRegencia({
   // Pools de questões sorteados
   const [quizM1, setQuizM1] = useState<QuizQuestion[]>([]);
   const [quizM2, setQuizM2] = useState<QuizQuestion[]>([]);
+  const [quizM3, setQuizM3] = useState<QuizQuestion[]>([]);
+  const [quizM4, setQuizM4] = useState<QuizQuestion[]>([]);
   const [quizFinal, setQuizFinal] = useState<QuizQuestion[]>([]);
 
   useEffect(() => {
-    setQuizM1(getRandomQuestions(QUIZ_M1_POOL, 2));
-    setQuizM2(getRandomQuestions(QUIZ_M2_POOL, 1));
-    setQuizFinal(getRandomQuestions(QUIZ_FINAL_POOL, 1));
+    setQuizM1(getRandomQuestions(QUIZ_M1_POOL, 8));
+    setQuizM2(getRandomQuestions(QUIZ_M2_POOL, 8));
+    setQuizM3(getRandomQuestions(QUIZ_M3_POOL, 8));
+    setQuizM4(getRandomQuestions(QUIZ_M4_POOL, 8));
+    setQuizFinal(getRandomQuestions(QUIZ_FINAL_POOL, 8));
   }, []);
 
   // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
@@ -860,165 +919,116 @@ export default function AulaRegencia({
         </div>
       </TabsContent>
 
-      {/* MÓDULO 3: CESGRANRIO (CAMPO MINADO) */}
+      {/* MÓDULO 3: VERBAL II */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
         <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <ModuleBanner
             numero={3}
-            titulo="Análise de Casos Específicos"
-            descricao="Estudo aprofundado de verbos com múltiplos padrões de regência e suas respectivas implicações semânticas."
+            titulo="Regência Verbal II: Verbos de Alta Complexidade"
+            descricao="Estudo de verbos com particularidades de regência: Preferir, Esquecer, Lembrar, Pagar e Informar."
             gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
           />
 
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
             <ModuleSectionHeader
               index={1}
-              title="Polissemia de Regência"
-              description="Estudo dos verbos que alteram seu sentido conforme a preposição utilizada."
+              title="A Regência do Verbo Preferir"
+              description="Um dos casos mais explorados pela banca Cesgranrio devido ao erro comum no uso cotidiano."
               variant="violet"
             />
-            <div className="prose prose-slate dark:prose-invert max-w-none">
-              <p className="text-lg leading-relaxed">
-                Certos verbos apresentam alteração de sentido conforme o padrão
-                de regência aplicado. A escolha da transitividade (direta ou
-                indireta) altera o campo semântico do enunciado, exigindo
-                precisão na seleção prepositiva.
-              </p>
-            </div>
 
-            <CardCarousel
-              titulo="Padrões de Verbos Polissêmicos"
-              subtitulo="Análise técnica dos sentidos normativos e distinções sintáticas."
-              cards={[
-                {
-                  icone: <LuTarget className="text-slate-500" />,
-                  titulo: "Assistir",
-                  descricao: (
-                    <div className="text-xs space-y-3 font-mono">
-                      <p>
-                        • **VTI (prep. A):** Presenciar, ver. <br />
-                        <span className="text-slate-400">
-                          Ex: "Assistir ao treinamento."
-                        </span>
-                      </p>
-                      <p>
-                        • **VTD (sem prep.):** Socorrer, ajudar. <br />
-                        <span className="text-slate-400">
-                          Ex: "Assistir o acidentado."
-                        </span>
-                      </p>
-                      <p>
-                        • **VI (prep. EM):** Residir. <br />
-                        <span className="text-slate-400">
-                          Ex: "Assistir em unidade remota."
-                        </span>
-                      </p>
-                    </div>
-                  ),
-                },
-                {
-                  icone: <LuTarget className="text-slate-500" />,
-                  titulo: "Aspirar",
-                  descricao: (
-                    <div className="text-xs space-y-3 font-mono">
-                      <p>
-                        • **VTD (sem prep.):** Sorver, cheirar. <br />
-                        <span className="text-slate-400">
-                          Ex: "Aspirar o ar condicionado."
-                        </span>
-                      </p>
-                      <p>
-                        • **VTI (prep. A):** Desejar, pretender. <br />
-                        <span className="text-slate-400">
-                          Ex: "Aspirar ao cargo de gestão."
-                        </span>
-                      </p>
-                    </div>
-                  ),
-                },
-                {
-                  icone: <LuTarget className="text-slate-500" />,
-                  titulo: "Visar",
-                  descricao: (
-                    <div className="text-xs space-y-3 font-mono">
-                      <p>
-                        • **VTD (sem prep.):** Rubricar ou mirar. <br />
-                        <span className="text-slate-400">
-                          Ex: "Visar o atestado técnico."
-                        </span>
-                      </p>
-                      <p>
-                        • **VTI (prep. A):** Objetivar. <br />
-                        <span className="text-slate-400">
-                          Ex: "Visar à máxima eficiência."
-                        </span>
-                      </p>
-                    </div>
-                  ),
-                },
-              ]}
-            />
+            <div className="space-y-8">
+              <div className="bg-muted/30 p-6 rounded-2xl border border-border">
+                <p className="text-slate-600 dark:text-slate-400 mb-6">
+                  O verbo **Preferir** é **Transitivo Direto e Indireto**. Ele
+                  exige dois complementos e seu segundo termo deve ser regido
+                  pela preposição **A**.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-red-500/10 p-5 rounded-xl border border-red-500/20 text-red-700 dark:text-red-400 font-mono text-sm flex items-center gap-3">
+                    <span className="text-xl">❌</span>
+                    <span>
+                      Prefiro café <strong>do que</strong> chá.
+                    </span>
+                  </div>
+                  <div className="bg-emerald-500/10 p-5 rounded-xl border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 font-mono text-sm flex items-center gap-3">
+                    <span className="text-xl">✅</span>
+                    <span>
+                      Prefiro café <strong>a</strong> chá.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
 
-          <section className="bg-slate-50 dark:bg-slate-900/20 border border-slate-200 dark:border-slate-800 p-8 md:p-12 rounded-3xl space-y-8">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={2}
-              title="Consolidação Normativa"
-              description="Quadro sinóptico e notas de atenção para os casos mais complexos de regência verbal."
+              title="Esquecer, Lembrar e Informar"
+              description="A influência do pronome na alteração da regência verbal."
               variant="violet"
             />
-            <LessonTabs
-              tabs={[
+
+            <ContentAccordion
+              titulo="Verbos Pronominais vs. Não Pronominais"
+              corIndicador="bg-violet-500"
+              defaultOpen={true}
+              slides={[
                 {
-                  id: "resumo",
-                  label: "Quadro Sinótico",
-                  icon: LuBookOpen,
-                  content: (
-                    <div className="space-y-6">
-                      <p className="text-sm italic text-slate-500">
-                        Representação visual das principais regências abordadas.
-                      </p>
-                      <ModuleSummaryCarouselNew
-                        tituloAula="Sintaxe de Regência"
-                        materia="Gramática Normativa"
-                        profissao="Nível Superior/Técnico"
-                        moduloNome="Casos Específicos"
-                        images={[
-                          {
-                            title: "Quadro: Verbos Polissêmicos",
-                            type: "Tabela",
-                            placeholderColor: "bg-slate-900/10",
-                          },
-                          {
-                            title: "Hierarquia Sintática",
-                            type: "Infográfico",
-                            placeholderColor: "bg-slate-900/10",
-                          },
-                          {
-                            title: "Guia de Regência Nominal",
-                            type: "Mapa Mental",
-                            placeholderColor: "bg-slate-900/10",
-                          },
-                        ]}
-                      />
+                  titulo: "Esquecer e Lembrar",
+                  icone: "1️⃣",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+                        <p className="leading-relaxed">
+                          Se o verbo estiver **sozinho** (não pronominal), é
+                          **Transitivo Direto** (sem preposição). Se estiver
+                          **com pronome** (pronominal), é **Transitivo
+                          Indireto** (com preposição **DE**).
+                        </p>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-muted/30 p-4 rounded-xl">
+                          <p className="text-xs font-bold mb-1">
+                            Sem Pronome (Direto):
+                          </p>
+                          <p className="italic text-sm">
+                            "Esqueci <strong>o</strong> livro."
+                          </p>
+                        </div>
+                        <div className="bg-muted/30 p-4 rounded-xl">
+                          <p className="text-xs font-bold mb-1">
+                            Com Pronome (Indireto):
+                          </p>
+                          <p className="italic text-sm">
+                            "Esqueci-me <strong>do</strong> livro."
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   ),
                 },
                 {
-                  id: "visual",
-                  label: "Nota de Atenção",
-                  icon: LuZap,
-                  content: (
-                    <div className="p-8 text-center space-y-6">
-                      <div className="text-7xl opacity-20">📖</div>
-                      <h3 className="text-2xl font-bold">
-                        Observação Gramatical
-                      </h3>
-                      <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
-                        "A regência não é um conjunto isolado de decoreba, mas a
-                        alma da clareza textual. Errar a regência é alterar o
-                        que se diz, não apenas como se diz."
+                  titulo: "Informar e Avisar",
+                  icone: "2️⃣",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        Estes verbos admitem duas construções corretas, mas
+                        **nunca** as duas preposições ao mesmo tempo:
                       </p>
+                      <ul className="space-y-2 text-sm">
+                        <li className="flex items-center gap-2">
+                          ✅ "Informar <strong>alguém de</strong> algo"
+                        </li>
+                        <li className="flex items-center gap-2">
+                          ✅ "Informar <strong>algo a</strong> alguém"
+                        </li>
+                        <li className="flex items-center gap-2 text-red-500">
+                          ❌ "Informar <strong>a alguém de</strong> algo"
+                        </li>
+                      </ul>
                     </div>
                   ),
                 },
@@ -1028,12 +1038,195 @@ export default function AulaRegencia({
 
           <QuizInterativo
             numero={3}
-            titulo="Quiz de Fixação - Regência Verbal"
-            icone="🏆"
-            questoes={quizFinal}
+            titulo="Quiz de Fixação - Regência Verbal II"
+            icone="📝"
+            questoes={quizM3}
             variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
+        </div>
+      </TabsContent>
+
+      {/* MÓDULO 4: REGÊNCIA E PRONOME RELATIVO */}
+      <TabsContent value="modulo-4" className="space-y-[50px]">
+        <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <ModuleBanner
+            numero={4}
+            titulo="Regência e o Pronome Relativo"
+            descricao="O desafio supremo das provas da Cesgranrio: o deslocamento da preposição para antes do relativo."
+            gradiente="bg-gradient-to-br from-amber-600 via-orange-600 to-amber-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
+            <ModuleSectionHeader
+              index={1}
+              title="A Anteposição da Preposição"
+              description="Como identificar quando o pronome relativo deve ser 'preposicionado'."
+              variant="amber"
+            />
+
+            <div className="space-y-8">
+              <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+                Nas questões de nível médio da Petrobras, a banca adora cobrar
+                se você sabe colocar a preposição exigida pelo verbo **antes**
+                do pronome relativo (*que, qual, quem, onde*).
+              </p>
+
+              <div className="bg-amber-500/5 p-6 rounded-2xl border border-amber-500/20 italic">
+                <p>"Este é o cargo **a que** aspiro."</p>
+                <p className="text-xs mt-2 text-muted-foreground">
+                  (Quem aspira, aspira **A**. A preposição 'pula' para antes do
+                  'que').
+                </p>
+              </div>
+
+              <CardCarousel
+                titulo="Casos Práticos com Relativos"
+                subtitulo="Veja como os verbos projetam suas preposições."
+                cards={[
+                  {
+                    icone: <LuTarget className="text-amber-500" />,
+                    titulo: "Assistir (Ver)",
+                    descricao:
+                      "O filme **a que** assistimos era bom. (Assistir **A**)",
+                  },
+                  {
+                    icone: <LuTarget className="text-amber-500" />,
+                    titulo: "Gostar",
+                    descricao:
+                      "A música **de que** gosto tocou. (Gostar **DE**)",
+                  },
+                  {
+                    icone: <LuTarget className="text-amber-500" />,
+                    titulo: "Confiar",
+                    descricao:
+                      "A pessoa **em quem** confio saiu. (Confiar **EM**)",
+                  },
+                  {
+                    icone: <LuTarget className="text-amber-500" />,
+                    titulo: "Obedecer",
+                    descricao:
+                      "As leis **a que** obedecemos são claras. (Obedecer **A**)",
+                  },
+                ]}
+              />
+            </div>
+          </section>
+
+          <QuizInterativo
+            numero={2}
+            titulo="Quiz de Fixação - Regência e Relativos"
+            icone="🎯"
+            questoes={quizM4}
+            variant="amber"
+            onComplete={(score) => handleModuleComplete("modulo-4", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* MÓDULO 5: LABORATÓRIO DE ELITE */}
+      <TabsContent value="modulo-5" className="space-y-[50px]">
+        <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <ModuleBanner
+            numero={5}
+            titulo="Laboratório de Elite: Simulado Final"
+            descricao="Desafios reais da banca Cesgranrio para consolidação definitiva da regência."
+            gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
+            <ModuleSectionHeader
+              index={1}
+              title="Resumo Geral da Regência"
+              description="Recursos finais para revisão rápida antes da prova."
+              variant="rose"
+            />
+
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo",
+                  label: "Mapa Mental",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      tituloAula="Regência Total"
+                      materia="Português"
+                      profissao="Técnico Petrobras"
+                      moduloNome="Consolidação"
+                      images={[
+                        {
+                          title: "Resumo: Regência Nominal",
+                          type: "Esquema",
+                          placeholderColor: "bg-rose-900/10",
+                        },
+                        {
+                          title: "Resumo: Regência Verbal",
+                          type: "Tabela",
+                          placeholderColor: "bg-rose-900/10",
+                        },
+                        {
+                          title: "Cuidado: Pronomes Relativos",
+                          type: "Dica",
+                          placeholderColor: "bg-rose-900/10",
+                        },
+                      ]}
+                    />
+                  ),
+                },
+                {
+                  id: "audio",
+                  label: "Fixação Musical",
+                  icon: LuMusic,
+                  content: (
+                    <MusicPlayerCard
+                      audioUrl="#"
+                      titulo="A Balada da Regência"
+                      artista="Profa. Gramática"
+                      capaUrl="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1170&auto=format&fit=crop"
+                      lyrics={`Prefiro o estudo ao descanso...\nAspirando à vaga que eu tanto quis...\nObedecendo às regras pra ser feliz!`}
+                    />
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            numero={2}
+            titulo="Desafio Final Cesgranrio"
+            icone="🏆"
+            questoes={quizFinal}
+            variant="rose"
+            onComplete={(score) => handleModuleComplete("modulo-5", score)}
+          />
+
+          {/* CARD DE CONCLUSÃO MANUAL */}
+          <section className="mt-12 mb-8">
+            <div className="bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-900/10 dark:to-rose-900/5 border border-rose-100 dark:border-rose-800/30 rounded-2xl p-10 text-center space-y-6 shadow-sm max-w-4xl mx-auto">
+              <div className="space-y-3">
+                <h3 className="text-2xl font-bold flex items-center justify-center gap-3 text-foreground">
+                  <LuBookOpen className="text-rose-500 text-3xl" /> Termine a
+                  leitura
+                </h3>
+                <p className="text-muted-foreground text-lg">
+                  Marque esta aula como concluída para registrar seu progresso e
+                  ganhar XP.
+                </p>
+              </div>
+
+              <Button
+                size="lg"
+                onClick={() => {
+                  if (onComplete) onComplete();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white border-0 font-bold text-lg px-10 py-8 rounded-full shadow-xl shadow-rose-500/20 hover:shadow-rose-500/30 hover:scale-105 active:scale-95 transition-all"
+              >
+                Marcar como Concluída
+              </Button>
+            </div>
+          </section>
         </div>
       </TabsContent>
     </AulaTemplate>

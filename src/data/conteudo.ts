@@ -27,7 +27,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         cor: 'from-blue-500 to-cyan-500',
         requiredPlan: 'Bronze',
         topicos: [
-            { id: 'interpretacao', titulo: 'Interpretação de Texto', descricao: 'Compreensão de textos de gêneros variados', duracao: '55 min', ordem: 1 },
+            { id: 'interpretacao-texto', titulo: 'Interpretação de Texto', descricao: 'Compreensão de textos de gêneros variados', duracao: '55 min', ordem: 1 },
             { id: 'coesao-coerencia', titulo: 'Coesão e Coerência', descricao: 'Aprenda a conectar ideias de forma lógica', duracao: '45 min', ordem: 2 },
             { id: 'reescrita-frases', titulo: 'Reescrita de Frases', descricao: 'Técnicas para reescrever mantendo o sentido', duracao: '60 min', ordem: 3 },
             { id: 'crase', titulo: 'Crase', descricao: 'Quando usar e não usar a crase', duracao: '45 min', ordem: 4 },

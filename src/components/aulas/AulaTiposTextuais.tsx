@@ -44,7 +44,8 @@ const MODULE_DEFS = [
   { id: "modulo-2", label: "Módulo 2", titulo: "Dissertativo" },
   { id: "modulo-3", label: "Módulo 3", titulo: "Injuntivo & Dialogal" },
   { id: "modulo-4", label: "Módulo 4", titulo: "Gêneros vs. Tipos" },
-  { id: "modulo-5", label: "Módulo 5", titulo: "Laboratório & Revisão" },
+  { id: "modulo-5", label: "Módulo 5", titulo: "Laboratório Técnico" },
+  { id: "modulo-6", label: "Módulo 6", titulo: "Simulado Final" },
 ] as const;
 
 // ============================================================================
@@ -769,14 +770,16 @@ export default function AulaTiposTextuais({
   const [qMod2, setQMod2] = useState<QuizQuestion[]>([]);
   const [qMod3, setQMod3] = useState<QuizQuestion[]>([]);
   const [qMod4, setQMod4] = useState<QuizQuestion[]>([]);
-  const [qLab, setQLab] = useState<QuizQuestion[]>([]);
+  const [qMod5, setQMod5] = useState<QuizQuestion[]>([]);
+  const [qMod6, setQMod6] = useState<QuizQuestion[]>([]);
 
   useEffect(() => {
     setQMod1(getRandomQuestions(QUIZ_MOD1_POOL, 6));
     setQMod2(getRandomQuestions(QUIZ_MOD2_POOL, 6));
     setQMod3(getRandomQuestions(QUIZ_MOD3_POOL, 6));
     setQMod4(getRandomQuestions(QUIZ_MOD4_POOL, 6));
-    setQLab(
+    setQMod5(getRandomQuestions(QUIZ_MOD5_POOL, 10));
+    setQMod6(
       getRandomQuestions(
         [
           ...QUIZ_MOD1_POOL,
@@ -2104,25 +2107,57 @@ Imperativo manda, é a tipologia em ação!
 
         <section className="mt-16">
           <QuizInterativo
-            questoes={qLab}
-            titulo="Simulado Final — Tipologia (Cesgranrio)"
-            icone="🏆"
-            numero={3}
+            questoes={qMod5}
+            titulo="Quiz — Laboratório Técnico"
+            icone="🎯"
+            numero={5}
             variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
         </section>
+      </TabsContent>
 
-        {/* Botão de Conclusão */}
+      {/* ─── MÓDULO 6: SIMULADO FINAL ─── */}
+      <TabsContent
+        value="modulo-6"
+        className="space-y-16 mt-6 focus-visible:outline-none"
+      >
+        <ModuleBanner
+          numero={6}
+          titulo="Simulado Final"
+          descricao="O desafio supremo: todas as tipologias integradas e aplicadas ao contexto da Petrobras."
+          gradiente="bg-gradient-to-br from-cyan-600 via-teal-600 to-cyan-700"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+          <QuizInterativo
+            questoes={qMod6}
+            titulo="Simulado Final — Tipologia (Cesgranrio)"
+            icone="🏆"
+            numero={1}
+            variant="cyan"
+            onComplete={(score) => handleModuleComplete("modulo-6", score)}
+          />
+        </section>
+
+        {/* Botão de Conclusão Final */}
         <section className="flex justify-center pt-8 pb-12">
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-12 py-6 rounded-2xl text-lg font-bold shadow-xl shadow-violet-500/20 hover:shadow-2xl hover:shadow-violet-500/30 transition-all duration-300 hover:scale-105"
-            onClick={onComplete}
-            disabled={completedModules.size < MODULE_DEFS.length}
-          >
-            <LuCheck className="mr-2" /> Concluir Aula de Tipos Textuais
-          </Button>
+          <div className="bg-gradient-to-r from-cyan-50 to-teal-50 dark:from-cyan-900/10 dark:to-teal-900/5 border border-cyan-100 dark:border-cyan-800/30 rounded-2xl p-10 text-center space-y-6 shadow-sm max-w-4xl mx-auto w-full">
+            <h3 className="text-2xl font-bold text-foreground">
+              Aula Finalizada!
+            </h3>
+            <p className="text-muted-foreground">
+              Você completou todos os módulos de Tipologia Textual. Está pronto
+              para gabaritar!
+            </p>
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-cyan-600 to-teal-600 text-white px-12 py-8 rounded-full text-xl font-bold shadow-xl shadow-cyan-500/20 hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 active:scale-95"
+              onClick={onComplete}
+            >
+              <LuCheck className="mr-2" /> Concluir Aula de Tipos Textuais
+            </Button>
+          </div>
         </section>
       </TabsContent>
     </AulaTemplate>

@@ -117,7 +117,7 @@ const CONTEUDO_AULAS: Record<
   >
 > = {
   portugues: {
-    interpretacao: {
+    "interpretacao-texto": {
       titulo: "Interpretação de Texto",
       secoes: [
         {
@@ -355,7 +355,7 @@ export default function TopicoPage({ params }: PageProps) {
       <main className="w-full">
         {/* Article Content */}
         <article className="w-full">
-          {materiaId === "portugues" && topicoId === "interpretacao" ? (
+          {materiaId === "portugues" && topicoId === "interpretacao-texto" ? (
             <AulaInterpretacaoTexto
               onComplete={handleCompleteAula}
               isCompleted={isCompleted}
@@ -585,7 +585,7 @@ export default function TopicoPage({ params }: PageProps) {
         {/* Completion CTA — only for generic lessons */}
         {conteudo &&
           ![
-            "interpretacao",
+            "interpretacao-texto",
             "concordancia",
             "reescrita-frases",
             "coesao-coerencia",

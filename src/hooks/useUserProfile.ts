@@ -33,7 +33,9 @@ export function useUserProfile() {
             const { data: { user }, error: authError } = await supabase.auth.getUser();
 
             if (authError || !user) {
-                throw new Error('Usuário não autenticado');
+                setProfile(null);
+                setLoading(false);
+                return;
             }
 
             // Fetch profile data from 'profiles' table

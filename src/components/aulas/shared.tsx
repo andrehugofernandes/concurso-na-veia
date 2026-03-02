@@ -472,18 +472,6 @@ export function ContentAccordion({
               </AccordionTrigger>
               <AccordionContent className="p-0 border border-t-0 border-border rounded-b-xl overflow-hidden animate-in slide-in-from-top-2">
                 <div className="p-6 md:p-8 space-y-6 bg-card flex flex-col group/slide transition-all duration-500">
-                  <div className="flex items-start gap-5">
-                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl shrink-0 group-hover/slide:scale-110 group-hover/slide:-rotate-3 transition-all duration-500 shadow-inner">
-                      {slide.icone}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center">
-                        <h4 className="font-bold text-foreground text-xl md:text-2xl leading-tight tracking-tight">
-                          {slide.titulo}
-                        </h4>
-                      </div>
-                    </div>
-                  </div>
                   <div className="text-base text-muted-foreground leading-relaxed flex-1 space-y-4 font-medium">
                     {slide.conteudo}
                   </div>
@@ -834,7 +822,7 @@ export function QuizInterativo({
 
   return (
     <div className="bg-card rounded-xl border border-border p-6 my-8 shadow-lg">
-      {numero ? (
+      {numero !== undefined && numero !== 0 ? (
         <ModuleSectionHeader
           index={numero}
           title={titulo}
@@ -1051,15 +1039,22 @@ export function ModuleBanner({
   titulo,
   descricao,
   gradiente,
+  variant = "indigo",
 }: {
   numero: number;
   titulo: string;
   descricao: string;
-  gradiente: string;
+  gradiente?: string;
+  variant?: ModuleSkinVariant;
 }) {
+  const finalGradient =
+    gradiente ||
+    MODULE_SKIN_COLORS.find((c) => c.variant === variant)?.gradiente ||
+    MODULE_SKIN_COLORS[0].gradiente;
+
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl ${gradiente} p-10 md:p-14 text-white text-center shadow-xl`}
+      className={`relative overflow-hidden rounded-2xl ${finalGradient} p-10 md:p-14 text-white text-center shadow-xl`}
     >
       {/* Decorative elements */}
       <div className="absolute -top-16 -right-16 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
@@ -1071,7 +1066,7 @@ export function ModuleBanner({
         <h2 className="text-3xl md:text-4xl font-extrabold mt-2 leading-tight">
           {titulo}
         </h2>
-        <p className="text-white/80 mt-4 max-w-xl mx-auto text-lg">
+        <p className="text-white/80 mt-4 max-w-4xl mx-auto text-lg leading-relaxed font-medium">
           {descricao}
         </p>
       </div>
@@ -2105,7 +2100,7 @@ export function AulaTemplate({
                     </span>
                   )}
                 </div>
-                <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">
+                <p className="text-muted-foreground text-lg leading-relaxed max-w-5xl">
                   {descricao}
                 </p>
               </div>

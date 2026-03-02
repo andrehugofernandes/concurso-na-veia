@@ -51,123 +51,141 @@ import {
 
 // ── DEFINIÇÃO DOS MÓDULOS ──
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", titulo: "Sintaxe e Fundamentos" },
-  { id: "modulo-2", label: "Módulo 2", titulo: "A Vírgula (O Chefão)" },
-  { id: "modulo-3", label: "Módulo 3", titulo: "Pontuação Avançada" },
+  { id: "modulo-1", label: "Módulo 1", titulo: "Fundamentos e Proibições" },
+  { id: "modulo-2", label: "Módulo 2", titulo: "Vírgula: Termos da Oração" },
+  {
+    id: "modulo-3",
+    label: "Módulo 3",
+    titulo: "Vírgula: Orações e Conjunções",
+  },
+  { id: "modulo-4", label: "Módulo 4", titulo: "Pontuação Avançada" },
+  { id: "modulo-5", label: "Módulo 5", titulo: "Laboratório de Gabarito" },
 ] as const;
 
 // ── DADOS DO QUIZ POR MÓDULO ──
-const QUIZ_MODULO_1: QuizQuestion[] = [
+const QUIZ_M1_POOL: QuizQuestion[] = [
   {
     id: 101,
     pergunta:
-      "Na frase 'Os engenheiros da plataforma chegaram.', qual é a relação entre 'Os engenheiros' e 'chegaram'?",
+      "É permitido separar o Sujeito do Verbo por vírgula na ordem direta?",
     opcoes: [
-      { label: "A", valor: "Sujeito e Verbo (Nunca separar por vírgula)" },
-      { label: "B", valor: "Verbo e Objeto (Pode separar)" },
-      { label: "C", valor: "Vocativo e Verbo" },
-      { label: "D", valor: "Aposto e Verbo" },
-      { label: "E", valor: "Nenhuma das anteriores" },
-    ],
-    correta: "A",
-    explicacao:
-      "Esta é a ordem direta (S-V-C). Jamais se separa o Sujeito do Verbo com vírgula!",
-  },
-];
-
-const QUIZ_MODULO_2: QuizQuestion[] = [
-  {
-    id: 1,
-    pergunta:
-      "Assinale a alternativa em que a virgula foi empregada corretamente, de acordo com a norma-padrão.",
-    opcoes: [
-      {
-        label: "A",
-        valor: "O diretor, da empresa, convocou todos para a reunião.",
-      },
-      {
-        label: "B",
-        valor: "Os funcionários que chegaram cedo, receberam bônus.",
-      },
-      {
-        label: "C",
-        valor: "A Petrobras, gigante do petróleo, investe em renováveis.",
-      },
-      {
-        label: "D",
-        valor: "O gerente informou, aos empregados as novas metas.",
-      },
-      {
-        label: "E",
-        valor: "A plataforma P-70, opera na Bacia de Santos desde 2020.",
-      },
-    ],
-    correta: "C",
-    explicacao:
-      "Correto! 'Gigante do petróleo' é um aposto explicativo e deve vir isolado por vírgulas.",
-  },
-  {
-    id: 2,
-    pergunta: "Em qual das frases abaixo a vírgula é PROIBIDA?",
-    opcoes: [
-      { label: "A", valor: "João, venha aqui." },
-      { label: "B", valor: "O técnico de segurança, alertou sobre o risco." },
-      { label: "C", valor: "No Rio de Janeiro, a sede foi inaugurada." },
-      { label: "D", valor: "Comprei equipamentos, ferramentas e EPIs." },
-      { label: "E", valor: "A refinaria, que fica em Cubatão, é antiga." },
+      { label: "A", valor: "Sempre, para dar ênfase." },
+      { label: "B", valor: "Nunca, é erro gramatical grave." },
+      { label: "C", valor: "Apenas se o sujeito for longo." },
+      { label: "D", valor: "Somente em textos literários." },
     ],
     correta: "B",
     explicacao:
-      "Proibido separar sujeito (O técnico de segurança) do predicado (alertou...) com vírgula.",
+      "Jamais se separa sujeito de verbo ou verbo de complemento na ordem direta com vírgulas.",
   },
   {
-    id: 4,
-    pergunta:
-      "Analise: 'A produção de óleo aumentou, mas o lucro caiu.' A vírgula antes do 'mas' é:",
+    id: 102,
+    pergunta: "Na frase 'Estudamos, muito hoje.', a vírgula está:",
     opcoes: [
-      { label: "A", valor: "Proibida." },
-      { label: "B", valor: "Facultativa." },
-      { label: "C", valor: "Obrigatória (Adversativa)." },
-      { label: "D", valor: "Erro de digitação." },
-      { label: "E", valor: "Uso poético." },
+      { label: "A", valor: "Correta, pois isola o advérbio." },
+      {
+        label: "B",
+        valor: "Incorreta, pois separa o verbo de seu adjunto adverbial curto.",
+      },
+      { label: "C", valor: "Obrigatória." },
+      { label: "D", valor: "Facultativa." },
     ],
-    correta: "C",
+    correta: "B",
     explicacao:
-      "Antes das conjunções adversativas (mas, porém, contudo...), o uso da vírgula é OBRIGATÓRIO.",
+      "Não se deve separar o verbo de seus complementos ou adjuntos imediatos com uma única vírgula.",
   },
 ];
 
-const QUIZ_MODULO_3: QuizQuestion[] = [
+const QUIZ_M2_POOL: QuizQuestion[] = [
   {
-    id: 3,
-    pergunta: "Sobre o uso do Ponto e Vírgula (;), assinale a correta:",
+    id: 201,
+    pergunta: "Qual a função da vírgula na frase: 'João, traga o relatório.'?",
     opcoes: [
-      { label: "A", valor: "Serve para encerrar frases exclamativas." },
-      { label: "B", valor: "Deve ser usado antes da conjunção 'e' sempre." },
-      {
-        label: "C",
-        valor: "Separa itens de uma enumeração ou orações coordenadas longas.",
-      },
-      { label: "D", valor: "Substitui os dois pontos em citações." },
-      { label: "E", valor: "Nunca pode ser usado em leis." },
+      { label: "A", valor: "Isolar um Aposto." },
+      { label: "B", valor: "Isolar um Vocativo (Chamamento)." },
+      { label: "C", valor: "Separar itens de uma lista." },
+      { label: "D", valor: "Indicar elipse do verbo." },
     ],
-    correta: "C",
-    explicacao:
-      "O ponto e vírgula é clássico em enumerações e para separar orações que já possuem vírgulas internas.",
+    correta: "B",
+    explicacao: "O vocativo (chamamento) deve SEMPRE ser isolado por vírgula.",
   },
   {
-    id: 5,
-    pergunta: "Qual frase exige DOIS PONTOS (:) segundo a norma culta?",
+    id: 202,
+    pergunta: "Identifique a frase com Aposto corretamente pontuado:",
     opcoes: [
-      { label: "A", valor: "O engenheiro disse que o projeto está pronto." },
-      { label: "B", valor: "Comprei: canetas e lápis." },
-      { label: "C", valor: "A regra é clara: segurança em primeiro lugar." },
-      { label: "D", valor: "Gostaria de saber: quem fez isso?" },
-      { label: "E", valor: "A plataforma: P-50." },
+      {
+        label: "A",
+        valor: "O Rio de Janeiro cidade maravilhosa, recebe turistas.",
+      },
+      {
+        label: "B",
+        valor: "O Rio de Janeiro, cidade maravilhosa recebe turistas.",
+      },
+      {
+        label: "C",
+        valor: "O Rio de Janeiro, cidade maravilhosa, recebe turistas.",
+      },
+      {
+        label: "D",
+        valor: "O Rio de Janeiro cidade maravilhosa recebe, turistas.",
+      },
+    ],
+    correta: "C",
+    explicacao: "O aposto explicativo deve vir entre vírgulas.",
+  },
+];
+
+const QUIZ_M3_POOL: QuizQuestion[] = [
+  {
+    id: 301,
+    pergunta: "A vírgula antes da conjunção 'MAS' é:",
+    opcoes: [
+      { label: "A", valor: "Facultativa." },
+      { label: "B", valor: "Proibida." },
+      { label: "C", valor: "Obrigatória (Adversativa)." },
+      { label: "D", valor: "Depende do contexto." },
     ],
     correta: "C",
     explicacao:
-      "Os dois pontos introduzem uma síntese/aposto: 'segurança em primeiro lugar'.",
+      "Conjunções adversativas (mas, porém, contudo...) exigem vírgula antes.",
+  },
+];
+
+const QUIZ_M4_POOL: QuizQuestion[] = [
+  {
+    id: 401,
+    pergunta:
+      "Para que servem os DOIS-PONTOS (:) na frase: 'Só desejo uma coisa: paz.'?",
+    opcoes: [
+      { label: "A", valor: "Indicar uma pausa longa." },
+      {
+        label: "B",
+        valor: "Introduzir um esclarecimento ou aposto enumerativo.",
+      },
+      { label: "C", valor: "Substituir o ponto final." },
+      { label: "D", valor: "Marcar uma pergunta." },
+    ],
+    correta: "B",
+    explicacao: "Os dois-pontos introduzem explicações, enumerações ou falas.",
+  },
+];
+
+const QUIZ_FINAL_POOL: QuizQuestion[] = [
+  {
+    id: 501,
+    pergunta: "Assinale a alternativa com pontuação IMPECÁVEL:",
+    opcoes: [
+      { label: "A", valor: "Os alunos, que estudam, passam." },
+      { label: "B", valor: "Os alunos que estudam passam." },
+      { label: "C", valor: "Ontem à noite, fomos ao cinema." },
+      {
+        label: "D",
+        valor: "Todas as acima podem estar corretas dependendo da intenção.",
+      },
+    ],
+    correta: "D",
+    explicacao:
+      "A pontuação pode mudar o sentido (Adjetiva Explicativa vs Restritiva) ou ser facultativa (Adjunto Adverbial curto).",
   },
 ];
 
@@ -190,6 +208,11 @@ export default function AulaPontuacao({
   // Use the props instead of internal useAulaProgress if possible,
   // but keep logical state for local progress if needed.
   // Actually, AulaProps usually comes from the parent (page.tsx).
+  const [quizM1, setQuizM1] = useState<QuizQuestion[]>([]);
+  const [quizM2, setQuizM2] = useState<QuizQuestion[]>([]);
+  const [quizM3, setQuizM3] = useState<QuizQuestion[]>([]);
+  const [quizM4, setQuizM4] = useState<QuizQuestion[]>([]);
+  const [quizFinal, setQuizFinal] = useState<QuizQuestion[]>([]);
   const [activeTab, setActiveTab] = useState("modulo-1");
   const [completedModules, setCompletedModules] = useState<Set<string>>(
     new Set(),
@@ -218,6 +241,16 @@ export default function AulaPontuacao({
       setHasSyncedInitial(true);
     }
   }, [currentProgress, hasSyncedInitial, loading]);
+
+  useEffect(() => {
+    if (!loading) {
+      setQuizM1(getRandomQuestions(QUIZ_M1_POOL, 8));
+      setQuizM2(getRandomQuestions(QUIZ_M2_POOL, 8));
+      setQuizM3(getRandomQuestions(QUIZ_M3_POOL, 8));
+      setQuizM4(getRandomQuestions(QUIZ_M4_POOL, 8));
+      setQuizFinal(getRandomQuestions(QUIZ_FINAL_POOL, 8));
+    }
+  }, [loading]);
 
   const isModuleUnlocked = useCallback((moduleIndex: number) => {
     return true; // DESBLOQUEADO TEMPORARIAMENTE PARA TESTES
@@ -691,7 +724,7 @@ export default function AulaPontuacao({
         {/* QUIZ MÓDULO 1 */}
         <section className="mt-8">
           <QuizInterativo
-            questoes={QUIZ_MODULO_1}
+            questoes={quizM1}
             titulo="Quiz de Fixação: Fundamentos"
             numero={6}
             variant="indigo"
@@ -701,592 +734,237 @@ export default function AulaPontuacao({
         </section>
       </TabsContent>
 
-      {/* === MÓDULO 2: A VÍRGULA === */}
+      {/* ─── MÓDULO 2: TERMOS DA ORAÇÃO ─── */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
-        <ModuleBanner
-          numero={2}
-          titulo="A Vírgula (O Chefão)"
-          descricao="Proibições Absolutas e Obrigações Inegociáveis."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
-        />
-
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={1}
-            title="Regras Fundamentais"
-            description="Entenda a essência do uso da vírgula antes de mergulhar nas regras."
-            variant="emerald"
-            className="mb-8"
-          />
-          <CardCarousel
-            cards={[
-              {
-                icone: <LuBrain className="text-emerald-500" />,
-                titulo: "Conceituação",
-                descricao: (
-                  <p className="text-sm">
-                    A vírgula é o sinal que marca <strong>pausas breves</strong>{" "}
-                    e indica a <strong>reorganização da frase</strong>. Ela não
-                    serve apenas para respirar, mas para governar a lógica
-                    sintática.
-                  </p>
-                ),
-              },
-              {
-                icone: <LuPenTool className="text-blue-500" />,
-                titulo: "Exemplos Práticos",
-                descricao: (
-                  <div className="space-y-2 text-sm">
-                    <p>
-                      • <em>"João, venha cá."</em> (Chamamento)
-                    </p>
-                    <p>
-                      • <em>"Comprei pregos, martelo e cola."</em> (Lista)
-                    </p>
-                  </div>
-                ),
-              },
-              {
-                icone: <LuLightbulb className="text-amber-500" />,
-                titulo: "Dicas de Ouro",
-                descricao: (
-                  <p className="text-sm italic">
-                    "Se o termo mudou de lugar ou se a explicação entrou no
-                    meio, a vírgula deve aparecer para isolar o intruso."
-                  </p>
-                ),
-              },
-              {
-                icone: <LuAlertTriangle className="text-rose-500" />,
-                titulo: "Exceções",
-                descricao: (
-                  <p className="text-sm">
-                    Em orações aditivas (com "e") onde os sujeitos são
-                    diferentes, a vírgula é <strong>facultativa</strong> mas
-                    recomendada: <em>"O sol saiu, e a chuva parou."</em>
-                  </p>
-                ),
-              },
-            ]}
+        <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <ModuleBanner
+            numero={2}
+            titulo="Vírgula: Termos da Oração"
+            descricao="Aprenda a isolar Vocativos, Apostos e separar Enumerações corretamente."
+            gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
           />
 
-          <ModuleSectionHeader
-            index={2}
-            title="Proibições vs. Obrigações"
-            variant="emerald"
-            className="mb-8 mt-6"
-          />
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              variant="emerald"
+              index={1}
+              title="Vocativo e Aposto"
+              description="Dois termos que quase sempre exigem a proteção das vírgulas."
+            />
 
-          <ContentAccordion
-            titulo="⛔ Proibições"
-            icone={<LuBan />}
-            corIndicador="bg-red-500"
-            defaultOpen={true}
-            slides={[
-              {
-                titulo: "Sujeito e Verbo",
-                icone: "🚫",
-                conteudo: (
-                  <div className="space-y-4">
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      O <strong>Sujeito</strong> e o <strong>Verbo</strong>{" "}
-                      formam um elo inquebrantável. Não importa o tamanho do
-                      sujeito: jamais coloque uma vírgula entre eles.
-                    </p>
-                    <div className="p-4 bg-red-500/5 rounded-xl border border-red-500/20">
-                      <p className="text-sm line-through text-red-500">
-                        ❌ "O plano de expansão das refinarias, foi aprovado."
-                      </p>
-                    </div>
-                    <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
-                      <p className="text-sm font-bold text-green-600 dark:text-green-400">
-                        ✅ "O plano de expansão das refinarias foi aprovado."
-                      </p>
-                    </div>
-                    <AlertBox tipo="warning" titulo="Dica de Ouro">
-                      A Cesgranrio adora sujeitos longos para forçar o candidato
-                      a "respirar" com vírgula. Não caia nessa!
-                    </AlertBox>
-                  </div>
-                ),
-              },
-              {
-                titulo: "Verbo e Objeto",
-                icone: "⛔",
-                conteudo: (
-                  <div className="space-y-4">
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      O <strong>Verbo</strong> e seu{" "}
-                      <strong>Complemento</strong> (Objeto Direto ou Indireto)
-                      também não podem ser separados por vírgula.
-                    </p>
-                    <div className="p-4 bg-red-500/5 rounded-xl border border-red-500/20">
-                      <p className="text-sm line-through text-red-500">
-                        ❌ "O gerente pediu, relatórios detalhados."
-                      </p>
-                    </div>
-                    <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
-                      <p className="text-sm font-bold text-green-600 dark:text-green-400">
-                        ✅ "O gerente pediu relatórios detalhados."
-                      </p>
-                    </div>
-                    <AlertBox tipo="info" titulo="Lembre-se">
-                      O complemento (objeto) é a extensão natural do verbo.
-                      Separá-los é como cortar uma ponte ao meio.
-                    </AlertBox>
-                  </div>
-                ),
-              },
-              {
-                titulo: "Nome e Adjunto Adnominal",
-                icone: "🔗",
-                conteudo: (
-                  <div className="space-y-4">
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      <strong>Adjuntos adnominais</strong> e{" "}
-                      <strong>complementos nominais</strong> são termos que se
-                      grudam ao nome. Não se separam com vírgula.
-                    </p>
-                    <div className="p-4 bg-red-500/5 rounded-xl border border-red-500/20">
-                      <p className="text-sm line-through text-red-500">
-                        ❌ "O amor, materno é incondicional."
-                      </p>
-                    </div>
-                    <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
-                      <p className="text-sm font-bold text-green-600 dark:text-green-400">
-                        ✅ "O amor materno é incondicional."
-                      </p>
-                    </div>
-                    <p className="text-xs text-muted-foreground italic">
-                      Exceção: Se houver um <strong>aposto explicativo</strong>{" "}
-                      entre vírgulas, aí sim se isola. Ex: "O amor, sentimento
-                      nobre, move o mundo."
-                    </p>
-                  </div>
-                ),
-              },
-            ]}
-          />
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="p-6 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl">
+                <h4 className="font-bold text-emerald-700 mb-2">
+                  Vocativo (Chamamento)
+                </h4>
+                <p className="text-sm opacity-80 mb-4">
+                  É a palavra usada para chamar alguém. Sempre isolada!
+                </p>
+                <p className="text-xs font-mono bg-white/50 p-2 rounded">
+                  Ex: Maria, traga o café.
+                </p>
+              </div>
+              <div className="p-6 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl">
+                <h4 className="font-bold text-emerald-700 mb-2">
+                  Aposto Explicativo
+                </h4>
+                <p className="text-sm opacity-80 mb-4">
+                  Explica um termo anterior. Sempre entre vírgulas.
+                </p>
+                <p className="text-xs font-mono bg-white/50 p-2 rounded">
+                  Ex: Pelé, o rei do futebol, partiu.
+                </p>
+              </div>
+            </div>
+          </section>
 
-          <ContentAccordion
-            titulo="✅ Obrigações"
-            icone={<LuCheckCircle />}
-            corIndicador="bg-green-500"
-            defaultOpen={false}
-            slides={[
-              {
-                titulo: "Aposto Explicativo",
-                icone: "💬",
-                conteudo: (
-                  <div className="space-y-4">
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      O <strong>aposto explicativo</strong> é uma informação
-                      extra que esclarece o termo anterior. Ele deve vir sempre
-                      isolado por vírgulas.
-                    </p>
-                    <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
-                      <p className="text-sm font-bold text-green-600 dark:text-green-400">
-                        ✅ "A Petrobras,{" "}
-                        <strong>maior empresa do Brasil</strong>, investe em
-                        renováveis."
-                      </p>
-                    </div>
-                    <AlertBox tipo="info" titulo="Macete">
-                      Se você retirar o aposto e a frase continuar fazendo
-                      sentido, as vírgulas estão corretas.
-                    </AlertBox>
-                  </div>
-                ),
-              },
-              {
-                titulo: "Vocativo",
-                icone: "📢",
-                conteudo: (
-                  <div className="space-y-4">
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      O <strong>vocativo</strong> é o chamamento direto a
-                      alguém. Ele deve ser sempre isolado por vírgula,
-                      independentemente de onde apareça na frase.
-                    </p>
-                    <div className="grid gap-3">
-                      <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
-                        <p className="text-sm text-green-600 dark:text-green-400">
-                          ✅ "<strong>João</strong>, venha cá."
-                        </p>
-                      </div>
-                      <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
-                        <p className="text-sm text-green-600 dark:text-green-400">
-                          ✅ "Venha cá, <strong>João</strong>."
-                        </p>
-                      </div>
-                      <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
-                        <p className="text-sm text-green-600 dark:text-green-400">
-                          ✅ "Venha, <strong>João</strong>, até aqui."
-                        </p>
-                      </div>
-                    </div>
-                    <p className="text-xs text-muted-foreground italic">
-                      Note que o vocativo pode vir no início, no meio ou no fim
-                      da frase.
-                    </p>
-                  </div>
-                ),
-              },
-              {
-                titulo: "Conjunções Adversativas",
-                icone: "⚡",
-                conteudo: (
-                  <div className="space-y-4">
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      Antes das conjunções <strong>adversativas</strong> (mas,
-                      porém, contudo, todavia, entretanto, no entanto), a
-                      vírgula é <strong>obrigatória</strong>.
-                    </p>
-                    <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
-                      <p className="text-sm font-bold text-green-600 dark:text-green-400">
-                        ✅ "Houve lucro, <strong>contudo</strong> a dívida
-                        aumentou."
-                      </p>
-                    </div>
-                    <div className="p-4 bg-red-500/5 rounded-xl border border-red-500/20">
-                      <p className="text-sm line-through text-red-500">
-                        ❌ "Estudei muito porém não passei."
-                      </p>
-                    </div>
-                    <AlertBox tipo="warning" titulo="Cuidado">
-                      A conjunção "e" é aditiva e normalmente NÃO leva vírgula,
-                      a não ser que os sujeitos sejam diferentes.
-                    </AlertBox>
-                  </div>
-                ),
-              },
-              {
-                titulo: "Adjunto Adverbial Deslocado",
-                icone: "📍",
-                conteudo: (
-                  <div className="space-y-4">
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      Quando uma expressão de <strong>tempo</strong>,{" "}
-                      <strong>lugar</strong> ou <strong>modo</strong> é
-                      deslocada para o início da frase, a vírgula marca esse
-                      deslocamento.
-                    </p>
-                    <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
-                      <p className="text-sm font-bold text-green-600 dark:text-green-400">
-                        ✅ "Naquela manhã, tudo mudou na refinaria."
-                      </p>
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      Ordem direta (sem vírgula): "Tudo mudou na refinaria
-                      naquela manhã."
-                    </p>
-                    <AlertBox tipo="info" titulo="Exceção">
-                      Se o adjunto deslocado for curto (1-2 palavras), a vírgula
-                      é facultativa: "Ontem fui ao trabalho." ou "Ontem, fui ao
-                      trabalho."
-                    </AlertBox>
-                  </div>
-                ),
-              },
-            ]}
-          />
-        </section>
-
-        {/* RESUMO MÓDULO 2 */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={3}
-            title="Resumo e Multimídia"
-            variant="emerald"
-            className="mb-8"
-          />
-          <LessonTabs
-            tabs={[
-              {
-                id: "video",
-                label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
-                  <div className="w-full flex flex-col items-center py-6">
-                    <div className="w-full max-w-3xl">
-                      <VideoModal
-                        videoId="eIhp3SAnb3Q"
-                        title="A Vírgula: O Chefão"
-                        duration="14:20"
-                        thumbnail="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1000&auto=format&fit=crop"
-                      />
-                    </div>
-                  </div>
-                ),
-              },
-              {
-                id: "resumo",
-                label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
-                  <ModuleSummaryCarouselNew
-                    images={[
-                      {
-                        title: "Aposto vs Vocativo",
-                        type: "Diferença",
-                        placeholderColor: "bg-purple-100 dark:bg-purple-900/30",
-                      },
-                      {
-                        title: "Obrigações e Proibições",
-                        type: "Tabela",
-                        placeholderColor: "bg-orange-100 dark:bg-orange-900/30",
-                      },
-                      {
-                        title: "Conjunções Adversativas",
-                        type: "Checklist",
-                        placeholderColor: "bg-green-100 dark:bg-green-900/30",
-                      },
-                    ]}
-                  />
-                ),
-              },
-              {
-                id: "visual",
-                label: "Macete Visual",
-                icon: LuPenTool,
-                content: (
-                  <div className="text-center p-8 bg-gradient-to-br from-orange-500/5 to-amber-500/5 rounded-2xl border border-orange-500/10">
-                    <h3 className="text-xl font-bold text-foreground mb-4">
-                      O Abraço do Aposto
-                    </h3>
-                    <div className="text-7xl my-8 animate-pulse">🤗 💬 🤗</div>
-                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
-                      "O aposto explicativo é um carinhoso: ele vem entre
-                      vírgulas, explicando com jeitinho o que veio antes."
-                    </p>
-                  </div>
-                ),
-              },
-              {
-                id: "audio",
-                label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
-                  <div className="w-full flex justify-center py-4">
-                    <div className="w-full max-w-md">
-                      <MusicPlayerCard
-                        audioUrl="#"
-                        titulo="Grito do Vocativo"
-                        artista="Língua Solta"
-                        capaUrl="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1000&auto=format&fit=crop"
-                        lyrics="(Grito) EI, VOCÊ! (Vírgula!) JOÃO! (Vírgula!) (Canto) Chamou alguém? Bota a vírgula lá. Explicou algo? Tem que isolar. Mas se for o Verbo... Deixa ele passar!"
-                      />
-                    </div>
-                  </div>
-                ),
-              },
-            ]}
-          />
-        </section>
-
-        <section className="mt-8">
           <QuizInterativo
-            questoes={QUIZ_MODULO_2}
-            titulo="Quiz de Fixação: Vírgula"
-            numero={4}
+            titulo="Quiz - Termos da Oração"
+            icone="📝"
+            numero={2}
+            questoes={quizM2}
             variant="emerald"
-            icone="✍️"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
-        </section>
+        </div>
       </TabsContent>
 
-      {/* === MÓDULO 3: PONTUAÇÃO AVANÇADA === */}
+      {/* ─── MÓDULO 3: ORAÇÕES E CONJUNÇÕES ─── */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
-        <ModuleBanner
-          numero={3}
-          titulo="Pontuação Avançada"
-          descricao="Dois pontos, Ponto e Vírgula e a Maestria Final."
-          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
-        />
-
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={1}
-            title="Sinais Avançados: Dois Pontos (:)"
-            description="Os dois pontos anunciam algo sucessivo: uma enumeração, uma citação, ou uma síntese."
-            variant="violet"
-            className="mb-8"
+        <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <ModuleBanner
+            numero={3}
+            titulo="Vírgula: Orações e Conjunções"
+            descricao="Domine a pontuação em orações adjetivas e antes das conjunções."
+            gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
           />
-          <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2">
-            <h3 className="text-2xl font-bold flex items-center gap-3">
-              <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 p-2 rounded-lg">
-                <LuList />
-              </span>
-              A Janela da Explicação
-            </h3>
-            <p className="text-lg text-muted-foreground">
-              Os dois pontos anunciam algo sucessivo: uma enumeração, uma
-              citação, ou uma síntese.
-            </p>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-purple-50 dark:bg-purple-900/10 p-6 rounded-xl border border-purple-100 dark:border-purple-800">
-                <strong className="block text-purple-700 dark:text-purple-300 mb-2">
-                  Enumeração
-                </strong>
-                <p className="text-sm">"Comprei: caneta, lápis e borracha."</p>
-              </div>
-              <div className="bg-purple-50 dark:bg-purple-900/10 p-6 rounded-xl border border-purple-100 dark:border-purple-800">
-                <strong className="block text-purple-700 dark:text-purple-300 mb-2">
-                  Citação
-                </strong>
-                <p className="text-sm">"Ele disse: 'Estou pronto'."</p>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={2}
-            title="Sinais Avançados: Ponto e Vírgula (;)"
-            description="Intermediário entre a vírgula e o ponto. Use para listas ou orações complexas."
-            variant="violet"
-            className="mb-8"
-          />
-          <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2">
-            <h3 className="text-2xl font-bold flex items-center gap-3">
-              <span className="bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 p-2 rounded-lg">
-                <LuClock />
-              </span>
-              A Pausa Maior
-            </h3>
-            <p className="text-lg text-muted-foreground">
-              Intermediário entre a vírgula e o ponto. Use para listas (leis) ou
-              para separar orações que JÁ TÊM vírgulas internas.
-            </p>
-            <div className="bg-yellow-50 dark:bg-yellow-900/10 border-l-4 border-yellow-500 p-6 rounded-r-xl">
-              <strong className="block text-yellow-800 dark:text-yellow-200 mb-2">
-                Exemplo Clássico:
-              </strong>
-              <p className="italic text-lg">
-                "Uns trabalham muito, e ganham pouco; outros trabalham pouco, e
-                ganham muito."
-              </p>
-              <p className="text-xs mt-3 text-muted-foreground">
-                Note que o ponto e vírgula separa os dois grandes blocos, pois
-                já existem vírgulas internas.
-              </p>
-            </div>
-          </div>
-        </section>
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              variant="violet"
+              index={1}
+              title="O 'Mas' e o 'Que'"
+              description="Regras fundamentais para as conjunções que mais caem em prova."
+            />
 
-        {/* RESUMO MÓDULO 3 */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={3}
-            title="Resumo e Multimídia"
-            variant="violet"
-            className="mb-8"
-          />
-          <LessonTabs
-            tabs={[
-              {
-                id: "video",
-                label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
-                  <div className="w-full flex flex-col items-center py-6">
-                    <div className="w-full max-w-3xl">
-                      <VideoModal
-                        videoId="dQw4w9WgXcQ"
-                        title="Pontuação Avançada"
-                        duration="11:15"
-                        thumbnail="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=1000&auto=format&fit=crop"
-                      />
-                    </div>
-                  </div>
-                ),
-              },
-              {
-                id: "resumo",
-                label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
-                  <ModuleSummaryCarouselNew
-                    images={[
-                      {
-                        title: "Os Dois Pontos (:)",
-                        type: "Guia",
-                        placeholderColor: "bg-purple-100 dark:bg-purple-900/30",
-                      },
-                      {
-                        title: "Ponto e Vírgula (;)",
-                        type: "Mapa Mental",
-                        placeholderColor: "bg-pink-100 dark:bg-pink-900/30",
-                      },
-                      {
-                        title: "Enumerações Complexas",
-                        type: "Infográfico",
-                        placeholderColor: "bg-rose-100 dark:bg-rose-900/30",
-                      },
-                    ]}
-                  />
-                ),
-              },
-              {
-                id: "visual",
-                label: "Macete Visual",
-                icon: LuPause,
-                content: (
-                  <div className="text-center p-8 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-2xl border border-purple-500/10">
-                    <h3 className="text-xl font-bold text-foreground mb-4">
-                      O Semáforo da Gramática
-                    </h3>
-                    <div className="text-7xl my-8 animate-spin-slow">
-                      🚦 🛑 🟢
-                    </div>
-                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
-                      "Vírgula é atenção. Ponto e vírgula é parada técnica.
-                      Ponto final é o destino! Não confunda um pit-stop com o
-                      fim da corrida."
-                    </p>
-                  </div>
-                ),
-              },
-              {
-                id: "audio",
-                label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
-                  <div className="w-full flex justify-center py-4">
-                    <div className="w-full max-w-md">
-                      <MusicPlayerCard
-                        audioUrl="#"
-                        titulo="Vibe Avançada"
-                        artista="Elite Team"
-                        capaUrl="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=1000&auto=format&fit=crop"
-                        lyrics={`(Verso)
-                                                    Dois pontos abrem a cena.
-                                                    Ponto e vírgula resolve o problema.
-                                                    
-                                                    (Ponte)
-                                                    Se a frase é longa, se tem vírgula demais.
-                                                    Bota o ponto e vírgula, e respira em paz!`}
-                      />
-                    </div>
-                  </div>
-                ),
-              },
-            ]}
-          />
-        </section>
+            <ContentAccordion
+              titulo="Regras de Ouro"
+              corIndicador="bg-violet-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Conjunções Adversativas",
+                  icone: "⚖️",
+                  conteudo:
+                    "Mas, porém, contudo, todavia... Essas conjunções exigem vírgula ANTES.",
+                },
+                {
+                  titulo: "Orações Adjetivas",
+                  icone: "🔍",
+                  conteudo:
+                    "Com vírgula = Explicativa (todos). Sem vírgula = Restritiva (alguns).",
+                },
+              ]}
+            />
+          </section>
 
-        <section className="mt-8">
           <QuizInterativo
-            questoes={QUIZ_MODULO_3}
-            titulo="Quiz Final: Mestria"
-            numero={4}
+            titulo="Quiz - Orações"
+            icone="🎯"
+            numero={3}
+            questoes={quizM3}
             variant="violet"
-            icone="🏆"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
-        </section>
+        </div>
+      </TabsContent>
+
+      {/* ─── MÓDULO 4: PONTUAÇÃO AVANÇADA ─── */}
+      <TabsContent value="modulo-4" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <ModuleBanner
+            numero={4}
+            titulo="Pontuação Avançada"
+            descricao="Além da vírgula: Dois-pontos, Ponto e vírgula e Travessões."
+            gradiente="bg-gradient-to-br from-amber-600 via-orange-600 to-amber-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-10">
+            <ModuleSectionHeader
+              variant="amber"
+              index={1}
+              title="Mais que uma Pausa"
+              description="Quando usar sinais de pontuação para organizar o pensamento complexo."
+            />
+            <CardCarousel
+              cards={[
+                {
+                  icone: <LuList className="text-xl text-amber-500" />,
+                  titulo: "Dois-pontos (:)",
+                  descricao:
+                    "Usados para introduzir explicações, enumerações ou citações.",
+                },
+                {
+                  icone: <LuGitMerge className="text-xl text-orange-500" />,
+                  titulo: "Ponto e Vírgula (;)",
+                  descricao:
+                    "Intermediário entre o ponto e a vírgula. Clássico em enumerações longas.",
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            titulo="Quiz - Sinais Avançados"
+            icone="🧪"
+            numero={4}
+            questoes={quizM4}
+            variant="amber"
+            onComplete={(score) => handleModuleComplete("modulo-4", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ─── MÓDULO 5: SIMULADO FINAL ─── */}
+      <TabsContent value="modulo-5" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <ModuleBanner
+            numero={5}
+            titulo="Laboratório de Gabarito"
+            descricao="Desafio final de pontuação com questões integradas."
+            gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-10 shadow-sm text-center space-y-8">
+            <ModuleSectionHeader
+              variant="rose"
+              index={1}
+              title="Revisão Multimídia"
+              description="Consolide seu conhecimento para a prova."
+            />
+
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo",
+                  label: "Mapa Mental",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          title: "Vírgula: Proibições",
+                          type: "Esquema",
+                          placeholderColor: "bg-rose-900/10",
+                        },
+                        {
+                          title: "Sinais de Pontuação",
+                          type: "Infográfico",
+                          placeholderColor: "bg-rose-900/10",
+                        },
+                      ]}
+                    />
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            titulo="Simulado Final: Pontuação"
+            icone="🏆"
+            numero={5}
+            questoes={quizFinal}
+            variant="rose"
+            onComplete={(score) => handleModuleComplete("modulo-5", score)}
+          />
+
+          {/* CARD DE CONCLUSÃO MANUAL */}
+          <section className="mt-12 mb-8">
+            <div className="bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-900/10 dark:to-rose-900/5 border border-rose-100 dark:border-rose-800/30 rounded-2xl p-10 text-center space-y-6 shadow-sm max-w-4xl mx-auto">
+              <div className="space-y-3">
+                <h3 className="text-2xl font-bold flex items-center justify-center gap-3 text-foreground">
+                  <LuBookOpen className="text-rose-500 text-3xl" /> Conclusão da
+                  Aula
+                </h3>
+                <p className="text-muted-foreground text-lg">
+                  Parabéns! Você completou todos os módulos de Pontuação.
+                </p>
+              </div>
+
+              <Button
+                size="lg"
+                onClick={() => {
+                  if (onComplete) onComplete();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white border-0 font-bold text-lg px-10 py-8 rounded-full shadow-xl shadow-rose-500/20 transition-all hover:scale-105"
+              >
+                Concluir Aula de Pontuação
+              </Button>
+            </div>
+          </section>
+        </div>
       </TabsContent>
     </AulaTemplate>
   );

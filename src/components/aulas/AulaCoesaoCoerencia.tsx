@@ -1201,7 +1201,7 @@ export default function AulaCoesaoCoerencia({
               questoes={quizCoerenciaQuestions}
               titulo="Desafio: Coerência Lógica"
               icone="🧠"
-              numero={4}
+              numero={3}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -1291,7 +1291,7 @@ export default function AulaCoesaoCoerencia({
 
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={3}
+              index={2}
               title="Resumo e Multimídia"
               description="Materiais de apoio para consolidar os conceitos práticos."
               variant="violet"
@@ -1404,7 +1404,7 @@ export default function AulaCoesaoCoerencia({
               questoes={quizPraticoQuestions}
               titulo="Simulado Técnico"
               icone="🏆"
-              numero={4}
+              numero={3}
               variant="violet"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />

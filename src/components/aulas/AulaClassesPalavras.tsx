@@ -49,7 +49,8 @@ const MODULE_DEFS = [
   { id: "modulo-2", label: "Módulo 2", titulo: "Pronome & Adjetivo" },
   { id: "modulo-3", label: "Módulo 3", titulo: "Conjunção & Preposição" },
   { id: "modulo-4", label: "Módulo 4", titulo: "Advérbio & Artigo" },
-  { id: "modulo-5", label: "Módulo 5", titulo: "Numeral, Interjeição & Lab" },
+  { id: "modulo-5", label: "Módulo 5", titulo: "Numeral & Interjeição" },
+  { id: "modulo-6", label: "Módulo 6", titulo: "Simulado Final" },
 ] as const;
 
 // ══════════════════════════════════════════════════════════════════════════
@@ -1743,14 +1744,16 @@ export default function AulaClassesPalavras({
   const [qMod2, setQMod2] = useState<QuizQuestion[]>([]);
   const [qMod3, setQMod3] = useState<QuizQuestion[]>([]);
   const [qMod4, setQMod4] = useState<QuizQuestion[]>([]);
-  const [qLab, setQLab] = useState<QuizQuestion[]>([]);
+  const [qMod5, setQMod5] = useState<QuizQuestion[]>([]);
+  const [qMod6, setQMod6] = useState<QuizQuestion[]>([]);
 
   useEffect(() => {
     setQMod1(getRandomQuestions(QUIZ_MOD1_POOL, 6));
     setQMod2(getRandomQuestions(QUIZ_MOD2_POOL, 6));
     setQMod3(getRandomQuestions(QUIZ_MOD3_POOL, 6));
     setQMod4(getRandomQuestions(QUIZ_MOD4_POOL, 6));
-    setQLab(getRandomQuestions(QUIZ_LABORATORIO_POOL, 20));
+    setQMod5(getRandomQuestions(QUIZ_LABORATORIO_POOL.slice(0, 10), 8));
+    setQMod6(getRandomQuestions(QUIZ_LABORATORIO_POOL, 20));
   }, []);
 
   // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
@@ -5282,8 +5285,8 @@ Se não flexiona, advérbio vai ficar!
       <TabsContent value="modulo-5" className="space-y-16 mt-12">
         <ModuleBanner
           numero={5}
-          titulo="Numeral, Interjeição & Laboratório Final"
-          descricao="As duas classes de menor frequência na prova e o simulado integrador de todas as 10 classes gramaticais."
+          titulo="Numeral & Interjeição"
+          descricao="Domine as últimas classes gramaticais antes do desafio final de revisão."
           gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
         />
 
@@ -5822,15 +5825,66 @@ Conjunção, Interjeição, Advérbio e Preposição!
             ]}
           />
         </section>
+
         <section className="mt-16">
           <QuizInterativo
-            questoes={qLab}
-            titulo="Simulado Final — Todas as 10 Classes"
-            icone="🏆"
-            numero={7}
+            questoes={qMod5}
+            titulo="Quiz — Numeral & Interjeição"
+            icone="🧠"
+            numero={11}
             variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
+        </section>
+      </TabsContent>
+
+      {/* ══════════════════════════════════════════════
+                        MÓDULO 6: SIMULADO FINAL
+                    ══════════════════════════════════════════════ */}
+      <TabsContent value="modulo-6" className="space-y-16 mt-12">
+        <ModuleBanner
+          numero={6}
+          titulo="Simulado Final de Ouro"
+          descricao="O desafio definitivo: todas as 10 classes integradas no padrão Cesgranrio."
+          gradiente="bg-gradient-to-br from-cyan-600 via-teal-600 to-cyan-700"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+          <QuizInterativo
+            questoes={qMod6}
+            titulo="Simulado Final — Todas as 10 Classes"
+            icone="🏆"
+            numero={7}
+            variant="cyan"
+            onComplete={(score) => handleModuleComplete("modulo-6", score)}
+          />
+        </section>
+
+        {/* CARD DE CONCLUSÃO MANUAL */}
+        <section className="mt-12 mb-8">
+          <div className="bg-gradient-to-r from-cyan-50 to-teal-50 dark:from-cyan-900/10 dark:to-teal-900/5 border border-cyan-100 dark:border-cyan-800/30 rounded-2xl p-10 text-center space-y-6 shadow-sm max-w-4xl mx-auto">
+            <div className="space-y-3">
+              <h3 className="text-2xl font-bold flex items-center justify-center gap-3 text-foreground">
+                <LuBookOpen className="text-cyan-500 text-3xl" /> Conclusão da
+                Aula
+              </h3>
+              <p className="text-muted-foreground text-lg">
+                Parabéns! Você dominou as 10 classes de palavras. Clique abaixo
+                para finalizar com chave de ouro.
+              </p>
+            </div>
+
+            <Button
+              size="lg"
+              onClick={() => {
+                if (onComplete) onComplete();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white border-0 font-bold text-lg px-10 py-8 rounded-full shadow-xl shadow-cyan-500/20 hover:shadow-cyan-500/30 hover:scale-105 active:scale-95 transition-all"
+            >
+              Concluir Aula de Morfologia
+            </Button>
+          </div>
         </section>
       </TabsContent>
     </AulaTemplate>

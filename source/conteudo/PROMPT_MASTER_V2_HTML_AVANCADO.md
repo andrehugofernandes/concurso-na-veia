@@ -15,7 +15,7 @@ Use este prompt como TEMPLATE para gerar qualquer aula com elementos HTML intera
 
 ## 🚀 PROMPT MASTER V2.0 (COPIE DAQUI):
 
-```
+````
 Você é um designer instrucional especialista em educação a distância (EAD) e professor de Língua Portuguesa com doutorado em Linguística. Sua missão é criar uma aula completa, engajante e pedagogicamente eficaz sobre o tema:
 
 **TEMA DA AULA**: [INSERIR TEMA]
@@ -41,10 +41,10 @@ Use como referência principal a **Gramática Normativa da Língua Portuguesa de
 - Espaçamento, Interleaving, Retrieval Practice, Elaboração, Exemplificação concreta.
 - **REGRA DE OURO:** Toda explicação teórica DEVE ser validada por um exemplo em frase (Antes/Depois, Certo/Errado ou Aplicação Real). NUNCA gere teoria pura sem exemplificação textual. Isso é inegociável para a clareza do aluno.
 - **HIERARQUIA CIENTÍFICA (Obrigatório):** A "Ciência" (Norma Culta, Tabelas de Transitividade, Regras Formais de Bechara/Cunha) DEVE preceder o "Floreio" (Storytelling, Macetes, Industrialização). O aluno deve primeiro entender a regra técnica pura para só depois vê-la aplicada no contexto da Petrobras.
-- **ESTRUTURA DE INÍCIO (Inviolável):** 
+- **ESTRUTURA DE INÍCIO (Inviolável):**
     3. O Banner deve ter uma descrição científica/acadêmica (ex: "Estudo sistemático das relações de dependência...") e cores vibrantes que sigam a progressão pedagógica: **Emerald** (Início/Base), **Blue/Indigo** (Prática/Complexidade) e **Violet** (Síntese/Resumo).
 - **BRANDING:** O nome do sistema/SaaS é **"A Vaga É Minha"**. NUNCA use "Petrobras Quest" em títulos de PDF ou componentes de marca.
-- **USB/PDF EXPORT:** Para garantir qualidade na exportação de resumos: 
+- **USB/PDF EXPORT:** Para garantir qualidade na exportação de resumos:
     1. Forneça entre 3 a 5 imagens explicativas no `ModuleSummaryCarouselNew`.
     2. Informe `tituloAula`, `materia`, `profissao` e `moduloNome` nas props do componente.
     3. O sistema manterá o **aspect ratio original** das imagens. Prefira imagens horizontais (16:9) para PDFs mais elegantes.
@@ -81,6 +81,11 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 2.  **DESENVOLVIMENTO OSTENSIVO (Conteúdo Denso):**
     *   **Regra de Ouro:** NUNCA usar apenas texto corrido. Use `ContentAccordion` para TUDO.
     *   **Granularidade:** Quebre tópicos em slides (Conceito → Exemplo → Exceção → Dica da Banca).
+    *   **ESTRUTURA INTERNA DO MÓDULO (Padrão 4-Steps):** Todo módulo de conteúdo DEVE ser dividido em 4 seções claras usando `<ModuleSectionHeader />` indexados de 1 a 4:
+        1. **Conceituação:** Definição técnica e formal (Bechara/Cunha).
+        2. **Exemplificação:** Laboratório prático com frases comparativas (Certo/Errado ou Antes/Depois).
+        3. **Dicas de Ouro:** Macetes, checklists de prova e gatilhos mentais.
+        4. **Exceções/Casos Especiais:** O "pulo do gato" ou detalhes que a banca Cesgranrio ama cobrar.
     *   **Multimídia:** Preveja 1 vídeo explicativo (placeholder interativo) a cada 2 módulos.
 
 3.  **FIM CONSOLIDADO (Retenção):**
@@ -131,7 +136,7 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
               [EXPLICAÇÃO CLARA E DIRETA - Mínimo 3 linhas]
             </p>
           </div>
-          
+
           {/* CARD DE EXEMPLO */}
           <div className="bg-muted/30 rounded-xl border border-border/50 p-4">
             <p className="font-bold text-sm text-foreground mb-2">💡 Exemplo Prático:</p>
@@ -163,36 +168,43 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
     },
   ]}
 />
-```
+````
 
 **3. CARD CAROUSEL (PARA LISTAS DE REGRAS/CASOS - MUITO IMPORTANTE)**
+
 - **USAR**: Para apresentar múltiplos casos (ex: Casos Facultativos, Exceções) de forma horizontal e visual.
 - **VANTAGEM**: Menos scroll vertical que o Accordion.
 - **ESTRUTURA**: Carrossel de cards com ícone, título e descrição rica.
 - **ÍCONES**: Use `icone` como ReactNode (ex: `<LuBuilding />`).
+
 ```tsx
 <CardCarousel
-    titulo="[Título da Seção - ex: Casos Facultativos]"
-    subtitulo="[Subtítulo explicativo]"
-    cards={[
-        {
-            icone: <LuUser className="text-xl text-indigo-500" />,
-            titulo: "[Caso 1]",
-            descricao: (
-                <div className="space-y-2">
-                    <p className="text-sm font-medium text-muted-foreground">[Explicação]</p>
-                    <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-2">
-                        <p className="text-xs text-emerald-700 dark:text-emerald-400 font-bold">✅ Correto: [Exemplo]</p>
-                    </div>
-                </div>
-            )
-        },
-        // ... mais cards
-    ]}
+  titulo="[Título da Seção - ex: Casos Facultativos]"
+  subtitulo="[Subtítulo explicativo]"
+  cards={[
+    {
+      icone: <LuUser className="text-xl text-indigo-500" />,
+      titulo: "[Caso 1]",
+      descricao: (
+        <div className="space-y-2">
+          <p className="text-sm font-medium text-muted-foreground">
+            [Explicação]
+          </p>
+          <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-2">
+            <p className="text-xs text-emerald-700 dark:text-emerald-400 font-bold">
+              ✅ Correto: [Exemplo]
+            </p>
+          </div>
+        </div>
+      ),
+    },
+    // ... mais cards
+  ]}
 />
 ```
 
 **⚠️ LEI DO ENRIQUECIMENTO OSTENSIVO:**
+
 1. **ENCAPSULAMENTO TOTAL:** NADA fica solto na página. Todo conteúdo (texto, exemplo, dica) deve estar dentro de um `<div className="bg-card ...">` ou similar.
 2. **INDEXAÇÃO VISUAL:** Use números (1, 2, 3...) em destaque para guiar a leitura.
 3. **NADA DE TEXTO RASO:** Proibido usar apenas `<li>` ou `<p>` soltos.
@@ -200,27 +212,39 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 5. **CONTEXTO PETROBRAS:** Use exemplos relacionados a plataformas, refino, segurança, ética corporativa.
 
 **3. 🚫 PROIBIÇÃO CRÍTICA: HERO SECTION E PALETAS GENÉRICAS**
+
 - **PROIBIDO**: Não use seções de "Hero" (com botões de 'Começar Agora', 'Matricule-se', ou ton de panfleto).
 - **PALETAS A EVITAR**: Evite a combinação "Indigo-600, Emerald-500, Slate-900" em menus ou tabs de resumo.
 - **PADRÃO EXIGIDO**: Toda aula DEVE começar obrigatoriamente com `<StickyModuleNav />` seguido de `<ModuleBanner />` do Módulo 1.
-- **TONALIDADE**: O início deve ser Acadêmico, Científico e Vibrante. Use a progressão:
-    - **Módulos Base:** Verdes/Esmeralda (`emerald-600`)
-    - **Módulos de Prática:** Azuis/Índigo (`blue-600` ou `indigo-600`)
-    - **Módulo de Síntese/Resumo:** Violetas/Púrpuras (`violet-600`)
+- **TONALIDADE (Mapeamento Obrigatório 1:1):** Para garantir o mesmo design premium em todas as aulas, você DEVE seguir exatamente a variante de cor baseada no número do módulo (1 a 6). Utilize essa variante nos componentes `<ModuleSectionHeader>` e `<QuizInterativo>` (prop `variant`). O componente `<ModuleBanner>` deduzirá a cor automaticamente caso a prop `variant` seja passada de forma correspondente.
+  - **Módulo 1:** `variant="indigo"`
+  - **Módulo 2:** `variant="emerald"`
+  - **Módulo 3:** `variant="violet"`
+  - **Módulo 4:** `variant="amber"`
+  - **Módulo 5:** `variant="rose"`
+  - **Módulo 6:** `variant="cyan"` (Para aulas que possuam Laboratório/Revisão Integrada no Módulo 6)
+
+**4. ACORDEON-CARROSSEL (Padrão de UI)**
+
+- **PROIBIDO:** Usar múltiplos slides num único acordeon exibidos num grid "espremido".
+- **USAR:** O Padrão `AcordeonCarrossel` — quando o conteúdo for denso, ou quando couber dividir por categorias (Ex: Proibições vs. Obrigações, Regras x Exceções).
+- Consiste em usar 2 ou mais `<ContentAccordion>` independentes na mesma seção, cada qual contendo sua lista de `slides` rica (Conceituação, Exemplo Certo/Errado, Dica, Exceção). O primeiro acordeon deve usar `defaultOpen={true}` e os demais `defaultOpen={false}`.
 
 **4. CARROSSEL DE IMAGENS (Para sequências visuais)**
+
 - Usar quando tiver 3+ imagens sequenciais
 - Navegação com setas e dots
 - Auto-play opcional
+
 ```html
 <div class="carousel">
   <div class="carousel-track">
     <div class="carousel-slide">
-      <img src="[IMAGEM 1]" alt="[descrição]">
+      <img src="[IMAGEM 1]" alt="[descrição]" />
       <p class="carousel-caption">[Legenda 1]</p>
     </div>
     <div class="carousel-slide">
-      <img src="[IMAGEM 2]" alt="[descrição]">
+      <img src="[IMAGEM 2]" alt="[descrição]" />
       <p class="carousel-caption">[Legenda 2]</p>
     </div>
   </div>
@@ -234,33 +258,31 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 ```
 
 **4. TABS (Para organizar conteúdo relacionado)**
+
 - Usar para: Exemplos vs Contraexemplos, Teoria vs Prática
 - Alterna entre visualizações sem scroll
+
 ```html
 <div class="tabs-container">
   <div class="tabs-header">
     <button class="tab-button active" data-tab="exemplos">
       ✅ Exemplos Corretos
     </button>
-    <button class="tab-button" data-tab="erros">
-      ❌ Erros Comuns
-    </button>
+    <button class="tab-button" data-tab="erros">❌ Erros Comuns</button>
   </div>
   <div class="tabs-content">
-    <div class="tab-panel active" id="exemplos">
-      [Conteúdo de exemplos]
-    </div>
-    <div class="tab-panel" id="erros">
-      [Conteúdo de erros]
-    </div>
+    <div class="tab-panel active" id="exemplos">[Conteúdo de exemplos]</div>
+    <div class="tab-panel" id="erros">[Conteúdo de erros]</div>
   </div>
 </div>
 ```
 
 **5. CARDS INTERATIVOS (Para questões e exercícios)**
+
 - Cards flip (viram ao clicar)
 - Frente: Pergunta | Verso: Resposta
 - **REQUISITO OBRIGATÓRIO:** Ao usar este componente para conceitos, fornecer MÍNIMO DE 5 EXEMPLOS VARIADOS (Array com seleção aleatória).
+
 ```html
 <div class="card-grid">
   <div class="flip-card">
@@ -279,8 +301,10 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 ```
 
 **6. TIMELINE (Para sequência de passos)**
+
 - Visualização linear de processos
 - Conectores visuais entre etapas
+
 ```html
 <div class="timeline">
   <div class="timeline-item">
@@ -302,12 +326,14 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 ```
 
 **7. MODAL DE VÍDEO (Para vídeos explicativos)**
+
 - Thumbnail clicável que abre vídeo
 - Player integrado com controles
+
 ```html
 <div class="video-container">
   <div class="video-thumbnail" onclick="openVideoModal('video1')">
-    <img src="[THUMBNAIL]" alt="Play video">
+    <img src="[THUMBNAIL]" alt="Play video" />
     <div class="play-button">
       <i class="fas fa-play"></i>
     </div>
@@ -320,16 +346,18 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
   <div class="modal-content">
     <span class="close-modal">&times;</span>
     <video controls>
-      <source src="[VIDEO_URL]" type="video/mp4">
+      <source src="[VIDEO_URL]" type="video/mp4" />
     </video>
   </div>
 </div>
 ```
 
 **8. QUIZ INTERATIVO (Para avaliação)**
+
 - Cards de perguntas e respostas com feedback imediato
 - **ESTILO OBRIGATÓRIO**: Deve possuir título com numeração em destaque (bolha numérica) para manter consistência visual com os módulos de lição (Ex: "5. Quiz de Fixação").
 - Use a prop `numero={X}` no componente React para renderizar o número grande.
+
 ```html
 <QuizInterativo
   questoes={...}
@@ -352,8 +380,10 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 ```
 
 **8. PROGRESS BAR (Para gamificação)**
+
 - Barra de progresso da aula
 - Sempre visível no topo
+
 ```html
 <div class="progress-container sticky-top">
   <div class="progress-bar" style="width: 0%" id="progressBar">
@@ -363,7 +393,9 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 ```
 
 **9. ALERT BOXES (Para dicas e avisos)**
+
 - 4 tipos: Dica, Atenção, Erro Comum, Macete
+
 ```html
 <!-- DICA -->
 <div class="alert alert-info">
@@ -403,40 +435,40 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 ```
 
 **10. COMPARAÇÃO LADO A LADO**
+
 - Split-screen para antes/depois, certo/errado
+
 ```html
 <div class="comparison-container">
   <div class="comparison-side incorrect">
     <div class="comparison-header">❌ Incorreto</div>
-    <div class="comparison-content">
-      [Exemplo errado]
-    </div>
+    <div class="comparison-content">[Exemplo errado]</div>
   </div>
   <div class="comparison-divider">
     <span>VS</span>
   </div>
   <div class="comparison-side correct">
     <div class="comparison-header">✅ Correto</div>
-    <div class="comparison-content">
-      [Exemplo correto]
-    </div>
+    <div class="comparison-content">[Exemplo correto]</div>
   </div>
 </div>
 ```
 
 **11. QUIZ INTERATIVO**
+
 - Múltipla escolha com feedback imediato
+
 ```html
 <div class="quiz-container">
   <div class="quiz-question">
     <p class="question-text">[Pergunta]</p>
     <div class="quiz-options">
       <label class="quiz-option">
-        <input type="radio" name="q1" value="a">
+        <input type="radio" name="q1" value="a" />
         <span class="option-label">A) [Alternativa A]</span>
       </label>
       <label class="quiz-option">
-        <input type="radio" name="q1" value="b">
+        <input type="radio" name="q1" value="b" />
         <span class="option-label">B) [Alternativa B]</span>
       </label>
       <!-- Mais opções -->
@@ -451,7 +483,7 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 </div>
 ```
 
-```
+````
 
 **12. MUSIC PLAYER COM LYRICS (Para fixação musical)**
 - Player de áudio com capa, controles e letra da música ao lado.
@@ -466,17 +498,18 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
     (Verso 1)
     A letra da música vai aqui...
     Cada linha quebrada...
-    
+
     (Refrão)
     Para o aluno cantar junto!
     `}
 />
-```
+````
 
 **13. ESTRUTURA MODULAR ESCALÁVEL COM TABS, LOCKING E LAYOUT ENAP**
 
 > [!IMPORTANT]
 > **Regras de Espaçamento Obrigatórias (Inspiração ENAP):**
+>
 > - Container principal: `space-y-12`
 > - Container da aula (`<main>`): `container mx-auto px-6 py-8 max-w-6xl` (redução de ~15% vs full-width)
 > - Dentro de cada `TabsContent`: `space-y-16`
@@ -487,6 +520,7 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 
 > [!IMPORTANT]
 > **Regras de Locking Modular:**
+>
 > - Usar `MODULE_DEFS` array para definir módulos. NUNCA hardcodar condições como `currentProgress < 50`.
 > - Usar `completedModules: Set<string>` para rastrear quais módulos foram concluídos.
 > - `isModuleUnlocked(index)`: Módulo 0 = sempre. Módulo N = só se N-1 está em `completedModules`.
@@ -497,15 +531,18 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 >
 > [!IMPORTANT]
 > **Regras de Numeração e Estrutura (CRÍTICO):**
+>
 > - **Numeração Reiniciada:** A numeração dos cards de conteúdo (1, 2, 3...) DEVE reiniciar em CADA módulo. O primeiro card do Módulo 2 DEVE ser o número 1, e NÃO a continuação do Módulo 1.
 > - **Cabeçalho de Card:** Para o título principal de cada card, use:
+>
 > ```tsx
-> <ModuleSectionHeader 
->     index={N} 
->     title="Título do Card" 
->     variant="emerald" // Use a cor do módulo
+> <ModuleSectionHeader
+>   index={N}
+>   title="Título do Card"
+>   variant="emerald" // Use a cor do módulo
 > />
 > ```
+>
 > - **Resumo Numerado e Multimídia:** O componente de Resumo DEVE utilizar obrigatoriamente o componente `<CardCarousel />` para agrupar conteúdo multimídia (Vídeo, Áudio, Macetes) e esquemas visuais essenciais (Tabelas, Mapas Mentais). Envolva-o em uma `<section>` padrão. A prop `titulo` deve seguir o padrão "Resumo Completo — [Tema]", e a prop `subtitulo` deve ser "Revisão Multimídia e Esquemas Visuais".
 > - **Quiz Numerado:** O Quiz Final de cada módulo DEVE ter um título com o mesmo peso visual e badge numérico dos outros cards. Use a prop `numero={X}` no componente `QuizInterativo`.
 > - **Card de Conclusão Manual (NOVO):** Ao final do ÚLTIMO módulo, adicione SEMPRE um card visualmente distinto ("Termine a leitura") que permita ao usuário marcar manualmente a conclusão, garantindo a sensação de "dever cumprido" e o trigger do XP.
@@ -513,17 +550,17 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 ```tsx
 import { useState, useEffect, useCallback } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-    QuizQuestion, 
-    getRandomQuestions, 
-    AlertBox, 
-    VideoModal, 
-    ImageCarousel, 
-    ProgressIndicator, 
-    FlipCard, 
-    QuizInterativo, 
-    TimelineItem, 
-    ComparisonSide, 
+import {
+    QuizQuestion,
+    getRandomQuestions,
+    AlertBox,
+    VideoModal,
+    ImageCarousel,
+    ProgressIndicator,
+    FlipCard,
+    QuizInterativo,
+    TimelineItem,
+    ComparisonSide,
     ModuleBanner,
     MusicPlayerCard,
     CardCarousel,
@@ -572,7 +609,7 @@ export default function AulaTemplate({ onComplete, currentProgress, onUpdateProg
             const parsed = JSON.parse(saved);
             const done = new Set<string>(parsed.completedModules || []);
             setCompletedModules(done);
-            
+
             // Navega para o próximo módulo
             const lastDoneIndex = MODULE_DEFS.findIndex(m => done.has(m.id));
             if (lastDoneIndex >= 0 && lastDoneIndex < MODULE_DEFS.length - 1) {
@@ -588,7 +625,7 @@ export default function AulaTemplate({ onComplete, currentProgress, onUpdateProg
             const newSet = new Set(completedModules).add(moduleId);
             setCompletedModules(newSet);
             localStorage.setItem('aula_progress_[ID]', JSON.stringify({ completedModules: Array.from(newSet) }));
-            
+
             const index = MODULE_DEFS.findIndex(m => m.id === moduleId);
             if (index < MODULE_DEFS.length - 1) {
                 setActiveTab(MODULE_DEFS[index + 1].id);
@@ -597,7 +634,7 @@ export default function AulaTemplate({ onComplete, currentProgress, onUpdateProg
                 onComplete();
             }
         } else {
-            alert("Você precisa de 70% de acerto para avançar!"); 
+            alert("Você precisa de 70% de acerto para avançar!");
             // Ou use um Toast/Dialog mais elegante
         }
     };
@@ -624,9 +661,9 @@ export default function AulaTemplate({ onComplete, currentProgress, onUpdateProg
                 const idx = MODULE_DEFS.findIndex(m => m.id === val);
                 if (isModuleUnlocked(idx)) setActiveTab(val);
             }} className="w-full">
-                
-                <StickyModuleNav 
-                    modules={Array.from(MODULE_DEFS)} 
+
+                <StickyModuleNav
+                    modules={Array.from(MODULE_DEFS)}
                     activeTab={activeTab}
                     completedModules={completedModules}
                     isModuleUnlocked={isModuleUnlocked}
@@ -634,8 +671,8 @@ export default function AulaTemplate({ onComplete, currentProgress, onUpdateProg
 
                 {/* === MÓDULO 1 === */}
                 <TabsContent value="modulo-1" className="space-y-16">
-                    <ModuleBanner 
-                        numero={1} 
+                    <ModuleBanner
+                        numero={1}
                         titulo="Teoria e Fundamentos"
                         descricao="Descrição do Módulo 1"
                         gradiente="bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-700"
@@ -648,7 +685,7 @@ export default function AulaTemplate({ onComplete, currentProgress, onUpdateProg
                 {/* ÚLTIMO MÓDULO */}
                 <Activity mode={activeTab === 'modulo-X' ? 'visible' : 'hidden'}>
                      {/* ... CONTEÚDO FINAL ... */}
-                     
+
                      {/* CARD DE CONCLUSÃO MANUAL (Item final obrigatório) */}
                      <section className="mt-12 mb-8">
                         <div className="bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-900/10 dark:to-orange-900/5 border border-orange-100 dark:border-orange-800/30 rounded-2xl p-10 text-center space-y-6 shadow-sm max-w-4xl mx-auto">
@@ -660,8 +697,8 @@ export default function AulaTemplate({ onComplete, currentProgress, onUpdateProg
                                     Role até o final para marcar esta aula como concluída e ganhar XP
                                 </p>
                             </div>
-                            
-                            <Button 
+
+                            <Button
                                 size="lg"
                                 onClick={() => {
                                     setShowCompletionBadge(true);
@@ -686,9 +723,9 @@ export default function AulaTemplate({ onComplete, currentProgress, onUpdateProg
                                 <p className="text-lg text-muted-foreground">Explicação teórica aqui.</p>
                                 <AlertBox type="info">Dica importante sobre o tema.</AlertBox>
                             </div>
-                            <FlipCard 
-                                frente={<div className="p-6 text-center">Pergunta?</div>} 
-                                verso={<div className="p-6 text-center bg-blue-50 dark:bg-blue-900/10">Resposta!</div>} 
+                            <FlipCard
+                                frente={<div className="p-6 text-center">Pergunta?</div>}
+                                verso={<div className="p-6 text-center bg-blue-50 dark:bg-blue-900/10">Resposta!</div>}
                             />
                         </div>
                     {/* Exemplo de CardCarousel para listas */}
@@ -721,11 +758,11 @@ export default function AulaTemplate({ onComplete, currentProgress, onUpdateProg
 
                     {/* Quiz Final do Módulo */}
                     <section className="mt-16">
-                        <QuizInterativo 
-                            questoes={quizQuestions} 
-                            titulo="Quiz de Fixação" 
+                        <QuizInterativo
+                            questoes={quizQuestions}
+                            titulo="Quiz de Fixação"
                             numero={4} /* OBRIGATÓRIO: Sequencial ao conteúdo */
-                            onComplete={(score) => handleModuleComplete('modulo-1', score)} 
+                            onComplete={(score) => handleModuleComplete('modulo-1', score)}
                         />
                     </section>
 
@@ -740,8 +777,8 @@ export default function AulaTemplate({ onComplete, currentProgress, onUpdateProg
                                     Role até o final para marcar esta aula como concluída e ganhar XP
                                 </p>
                             </div>
-                            
-                            <Button 
+
+                            <Button
                                 size="lg"
                                 onClick={() => {
                                     setShowCompletionBadge(true);
@@ -777,7 +814,6 @@ const QUIZ_POOL: QuizQuestion[] = [
 ];
 ```
 
-
 ---
 
 ## 🎯 ESTRUTURA DA AULA (COM ELEMENTOS HTML INDICADOS)
@@ -785,17 +821,20 @@ const QUIZ_POOL: QuizQuestion[] = [
 ### 1. ABERTURA IMPACTANTE (2-3 minutos)
 
 **USAR:**
+
 - ✅ HERO SECTION (abertura visual)
 - ✅ CARD com história/situação-problema
 - ✅ PROGRESS BAR inicializado
 
 **Conteúdo:**
+
 - Hook inicial com situação-problema real
 - Pergunta provocativa
 - Preview dos benefícios
 - **[PONTO DE IMAGEM 1]**: Ícone/ilustração principal do tópico (SVG ou PNG transparente, 400x400px)
 
 **Posicionamento:**
+
 ```
 [HERO SECTION com background gradiente]
   ↓
@@ -809,15 +848,18 @@ const QUIZ_POOL: QuizQuestion[] = [
 ### 2. ATIVAÇÃO DO CONHECIMENTO PRÉVIO (3-5 minutos)
 
 **USAR:**
+
 - ✅ QUIZ INTERATIVO (diagnóstico)
 - ✅ ALERT BOX tipo "info" (reflexão)
 
 **Conteúdo:**
+
 - Quiz de diagnóstico (3-5 perguntas)
 - Reflexão guiada
 - Conexão com conhecimentos anteriores
 
 **Posicionamento:**
+
 ```
 [QUIZ INTERATIVO centralizado]
   ↓
@@ -833,17 +875,20 @@ const QUIZ_POOL: QuizQuestion[] = [
 #### **Módulo 3.1 - O Conceito Central (Concept Presentation)**
 
 **USAR:**
+
 - ✅ BANNER DE CONCEITO (Ícone + Título + Subtítulo)
 - ✅ DUPLO CARD (Metáfora vs Regra Técnica)
 - ✅ FLIP CARD de Exemplo (Pergunta vs Resposta)
 
 **Conteúdo:**
+
 - **Conceito Visual (O Ímã):** Substantivo como centro gravitacional.
 - **Metáfora:** Analogia do dia-a-dia (ex: Trem e vagões, Sol e planetas).
 - **Regra Técnica:** Definição formal (Bechara).
 - **Exemplo Interativo:** FlipCard com "Como completar?" (OBS: Criar array com 5+ exemplos aleatórios).
 
 **Posicionamento (Grid 2 colunas):**
+
 ```
 [CABEÇALHO: Ícone + "O Conceito Central"]
   ↓
@@ -861,20 +906,23 @@ const QUIZ_POOL: QuizQuestion[] = [
 #### **Módulo 3.2 - Regras e Aplicações**
 
 **USAR:**
+
 - ✅ ACORDEÃO (uma seção por regra)
 - ✅ CARROSSEL DE IMAGENS (infográficos das regras)
 - ✅ TABS (Exemplos vs Contraexemplos)
 - ✅ ALERT BOXES (dicas e erros comuns)
 
 **Conteúdo:**
+
 - Liste todas as regras numeradas
 - Para cada regra:
-  * Explicação simples
-  * Exemplo contextualizado (indústria: refino, plataforma, produção)
-  * Contraexemplo (erro comum)
-  * **[PONTO DE IMAGEM 2-5]**: Infográfico por regra (formato 1920x1080 horizontal)
+  - Explicação simples
+  - Exemplo contextualizado (indústria: refino, plataforma, produção)
+  - Contraexemplo (erro comum)
+  - **[PONTO DE IMAGEM 2-5]**: Infográfico por regra (formato 1920x1080 horizontal)
 
 **Posicionamento:**
+
 ```
 [ACORDEÃO com 5 regras]
   Regra 1 (expandida por padrão)
@@ -886,7 +934,7 @@ const QUIZ_POOL: QuizQuestion[] = [
     [ALERT BOX tipo "warning" com pegadinha]
     ↓
     [IMAGEM infográfico centralizada]
-  
+
   Regra 2 (collapsed)
   Regra 3 (collapsed)
   ...
@@ -897,14 +945,17 @@ const QUIZ_POOL: QuizQuestion[] = [
 #### **Módulo 3.3 - Mapa Mental**
 
 **USAR:**
+
 - ✅ IMAGEM RESPONSIVA full-width
 - ✅ ZOOM ON CLICK (modal para ver detalhes)
 
 **Conteúdo:**
+
 - Mapa mental visual
 - **[PONTO DE IMAGEM 6]**: Mapa mental completo (formato 1920x1080 ou quadrado 2000x2000)
 
 **Posicionamento:**
+
 ```
 [Título "Visão Geral do Tópico"]
   ↓
@@ -922,16 +973,19 @@ const QUIZ_POOL: QuizQuestion[] = [
 #### **Módulo 4.1 - Questões Comentadas CESGRANRIO**
 
 **USAR:**
+
 - ✅ CARDS FLIP (questões que viram)
 - ✅ TIMELINE (passo a passo da resolução)
 - ✅ TABS (3 níveis: Fácil | Média | Difícil)
 
 **Conteúdo:**
+
 - 3-4 questões reais da banca
 - Análise passo a passo
 - **[PONTO DE VÍDEO 2]**: Resolução comentada 2-3min (embed ou MP4)
 
 **Posicionamento:**
+
 ```
 [TABS: Fácil | Média | Difícil]
   ↓ Em cada tab:
@@ -949,11 +1003,13 @@ const QUIZ_POOL: QuizQuestion[] = [
 #### **Módulo 4.2 - Exercício Guiado**
 
 **USAR:**
+
 - ✅ WIZARD/STEPPER (passos numerados)
 - ✅ INPUTS INTERATIVOS (aluno preenche)
 - ✅ FEEDBACK DINÂMICO
 
 **Posicionamento:**
+
 ```
 [STEPPER: Passo 1 → 2 → 3 → 4]
   ↓
@@ -980,11 +1036,13 @@ Passo 4: Confirmação
 #### **Módulo 5.1 - Bateria de Exercícios**
 
 **USAR:**
+
 - ✅ QUIZ PROGRESSIVO (10 questões)
 - ✅ PROGRESS BAR (mostra quantas fez)
 - ✅ BADGES (conquistas)
 
 **Posicionamento:**
+
 ```
 [PROGRESS BAR: X/10 questões]
   ↓
@@ -1000,10 +1058,12 @@ Passo 4: Confirmação
 #### **Módulo 5.2 - Desafio Extra**
 
 **USAR:**
+
 - ✅ CARD destacado com borda dourada
 - ✅ TIMER (opcional)
 
 **Posicionamento:**
+
 ```
 [CARD premium com borda animada]
   "🏆 DESAFIO MESTRE"
@@ -1019,14 +1079,17 @@ Passo 4: Confirmação
 #### **Módulo 6.1 - Resumo Visual**
 
 **USAR:**
+
 - ✅ CARROSSEL de cards (resumo em slides)
 - ✅ CHECKLIST interativa
 - ✅ BOTÃO de download/compartilhar
 
 **Conteúdo:**
+
 - **[PONTO DE IMAGEM 7]**: Card de resumo (formato 1080x1080 quadrado para compartilhar)
 
 **Posicionamento:**
+
 ```
 [CARROSSEL com 5 slides de resumo]
   Slide 1: Conceito principal
@@ -1044,10 +1107,12 @@ Passo 4: Confirmação
 #### **Módulo 6.2 - Macetes e Dicas**
 
 **USAR:**
+
 - ✅ ACORDEÃO (macetes)
 - ✅ ALERT BOXES tipo "success"
 
 **Posicionamento:**
+
 ```
 [ACORDEÃO com 3-5 macetes]
   Macete 1: Acrônimo
@@ -1062,17 +1127,20 @@ Passo 4: Confirmação
 ### 7. ENCERRAMENTO MOTIVACIONAL (2 minutos)
 
 **USAR:**
+
 - ✅ HERO SECTION (conquista visual)
 - ✅ MUSIC PLAYER CARD (Com letras sincronizadas - OBRIGATÓRIO)
 - ✅ CTA BUTTONS (Próxima Fase)
 
 **Conteúdo:**
+
 - Recapitulação emocional
 - Paródia ou música de fixação
 - **[PONTO DE MÚSICA]**: Paródia sobre o tema (ex: "O Verbo não para")
 - Letra da música visível para acompanhar
 
 **Posicionamento:**
+
 ```
 [HERO SECTION: "Módulo Concluído!"]
   ↓
@@ -1257,7 +1325,7 @@ Inclua este CSS inline ou em <style> no HTML:
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background: var(--primary);
   color: white;
 }
@@ -1273,7 +1341,7 @@ Inclua este CSS inline ou em <style> no HTML:
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background: var(--bg-card);
   color: var(--text-main);
   transform: rotateY(180deg);
@@ -1350,11 +1418,11 @@ Inclua este CSS inline ou em <style> no HTML:
   .hero-title {
     font-size: 2rem;
   }
-  
+
   .comparison-container {
     flex-direction: column;
   }
-  
+
   .sidebar {
     display: none;
   }
@@ -1368,6 +1436,7 @@ Inclua este CSS inline ou em <style> no HTML:
 A aula está completa quando tiver:
 
 **Elementos Visuais:**
+
 - [ ] Hero Section de abertura
 - [ ] Progress Bar funcionando
 - [ ] Acordeão com regras (mín 3 itens)
@@ -1384,6 +1453,7 @@ A aula está completa quando tiver:
 - [ ] Botões CTA destacados
 
 **Funcionalidades:**
+
 - [ ] JavaScript para acordeões
 - [ ] JavaScript para tabs
 - [ ] JavaScript para carrossel
@@ -1393,6 +1463,7 @@ A aula está completa quando tiver:
 - [ ] Animações suaves (transitions)
 
 **Acessibilidade:**
+
 - [ ] Alt text em todas as imagens
 - [ ] Contraste adequado (mín 4.5:1)
 - [ ] Navegação por teclado possível
@@ -1410,7 +1481,6 @@ Gere a aula contendo:
    - CSS inline ou em <style>
    - JavaScript inline ou em <script>
    - Todos os componentes indicados acima
-   
 2. **LISTA DE RECURSOS VISUAIS**:
    - [IMAGEM 1]: Descrição + especificações
    - [IMAGEM 2-7]: Idem
@@ -1482,7 +1552,8 @@ Gere a aula contendo:
 ---
 
 AGORA GERE A AULA COMPLETA SEGUINDO TODAS ESTAS DIRETRIZES COM OS ELEMENTOS HTML ESPECIFICADOS!
-```
+
+````
 
 ---
 
@@ -1631,7 +1702,7 @@ function QuizInterativo({
         </div>
     );
 }
-```
+````
 
 ---
 

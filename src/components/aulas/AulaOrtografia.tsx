@@ -867,7 +867,7 @@ export default function AulaOrtografia({
               },
               {
                 titulo: "2. Tritongo",
-                icone: "👥👥",
+                icone: "�",
                 conteudo: (
                   <div className="p-4 bg-muted/50 rounded-xl border border-border flex items-center gap-4">
                     <div className="p-3 bg-amber-500/20 text-amber-600 rounded-lg">
@@ -1007,7 +1007,7 @@ Ditongo é junto, hiato é separação!
             questoes={qMod1}
             titulo="Quiz — Encontros Vocálicos"
             icone="🎯"
-            numero={2}
+            numero={3}
             variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
@@ -1319,7 +1319,8 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             questoes={qMod1}
             titulo="Quiz — Regras da Acentuação"
             icone="🎓"
-            numero={1}
+            numero={3}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </section>
@@ -1580,7 +1581,8 @@ Mas na prova a banca te espera!
             questoes={qMod3}
             titulo="Quiz — O Novo Acordo"
             icone="✅"
-            numero={3}
+            variant="violet"
+            numero={4}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </section>
@@ -1885,6 +1887,7 @@ Iguais se repelem, diferentes se amam
             titulo="Quiz — O Desafio do Hífen"
             icone="➖"
             numero={4}
+            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </section>
@@ -2119,7 +2122,8 @@ Por que separado? Porque eu estudei!
             questoes={qMod5}
             titulo="Quiz — Expressões Problemáticas"
             icone="🧐"
-            numero={5}
+            variant="rose"
+            numero={4}
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
         </section>
@@ -2136,7 +2140,7 @@ Por que separado? Porque eu estudei!
           numero={6}
           titulo="Laboratório & Revisão Integrada"
           descricao="Treinamento intensivo nível Cesgranrio para a prova da Petrobras."
-          gradiente="bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700"
+          gradiente="bg-gradient-to-br from-cyan-600 via-teal-600 to-cyan-700"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -2194,7 +2198,8 @@ Por que separado? Porque eu estudei!
             questoes={qMod6}
             titulo="Simulador Final — A Vaga é Minha"
             icone="🏆"
-            numero={6}
+            numero={0}
+            variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
         </section>

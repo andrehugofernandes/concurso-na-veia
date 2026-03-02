@@ -25,6 +25,8 @@ import {
   LuPlay,
   LuImage,
   LuVolume2,
+  LuTimer,
+  LuArrowLeft,
 } from "react-icons/lu";
 
 import {
@@ -63,7 +65,9 @@ interface Challenge {
 const MODULE_DEFS = [
   { id: "modulo-1", label: "Módulo 1", titulo: "Fundamentos" },
   { id: "modulo-2", label: "Módulo 2", titulo: "Técnicas" },
-  { id: "modulo-3", label: "Módulo 3", titulo: "Prática Elite" },
+  { id: "modulo-3", label: "Módulo 3", titulo: "Pontuação e Sentido" },
+  { id: "modulo-4", label: "Módulo 4", titulo: "Armadilhas Avançadas" },
+  { id: "modulo-5", label: "Módulo 5", titulo: "Laboratório de Gabarito" },
 ];
 
 const PROGRESS_PER_MODULE = Math.floor(100 / MODULE_DEFS.length);
@@ -214,6 +218,207 @@ const QUIZ_M2_POOL: QuizQuestion[] = [
   },
 ];
 
+const QUIZ_M3_POOL: QuizQuestion[] = [
+  {
+    id: 301,
+    pergunta:
+      "Na frase 'Os alunos, que estudaram muito, passaram', as vírgulas indicam que:",
+    opcoes: [
+      { label: "A", valor: "Apenas alguns alunos passaram (restritiva)." },
+      {
+        label: "B",
+        valor:
+          "Todos os alunos estudaram muito e todos passaram (explicativa).",
+      },
+      { label: "C", valor: "A frase é agramatical." },
+      { label: "D", valor: "As vírgulas são facultativas." },
+    ],
+    correta: "B",
+    explicacao:
+      "Com vírgulas, a oração é explicativa: TODOS os alunos estudaram. Sem vírgulas, seria restritiva: apenas os que estudaram passaram.",
+  },
+  {
+    id: 302,
+    pergunta:
+      "A reescrita 'A empresa investiu bastante; todavia, os resultados não vieram' pode ser substituída por:",
+    opcoes: [
+      {
+        label: "A",
+        valor:
+          "Embora a empresa tenha investido bastante, os resultados não vieram.",
+      },
+      {
+        label: "B",
+        valor: "A empresa investiu bastante porque os resultados não vieram.",
+      },
+      {
+        label: "C",
+        valor:
+          "A empresa investiu bastante, portanto os resultados não vieram.",
+      },
+      {
+        label: "D",
+        valor: "A empresa investiu bastante caso os resultados não viessem.",
+      },
+    ],
+    correta: "A",
+    explicacao:
+      "'Todavia' é adversativo. 'Embora' é concessivo. Ambos expressam oposição entre as ideias, mas com estruturas diferentes (coordenada vs. subordinada).",
+  },
+  {
+    id: 303,
+    pergunta:
+      "Ao retirar os dois-pontos de 'A empresa trouxe novidades: investimentos em gás e solar', qual reescrita é válida?",
+    opcoes: [
+      {
+        label: "A",
+        valor: "A empresa trouxe novidades como investimentos em gás e solar.",
+      },
+      {
+        label: "B",
+        valor: "A empresa trouxe novidades, investimentos em gás e solar.",
+      },
+      {
+        label: "C",
+        valor: "A empresa trouxe novidades apesar de gás e solar.",
+      },
+      {
+        label: "D",
+        valor: "A empresa trouxe novidades, portanto gás e solar.",
+      },
+    ],
+    correta: "A",
+    explicacao:
+      "Os dois-pontos introduzem uma enumeração ou explicação. 'Como' no sentido de 'tais como' mantém o valor enumerativo.",
+  },
+  {
+    id: 304,
+    pergunta:
+      "A inserção de vírgula antes de 'e' em 'O engenheiro analisou o projeto e a supervisora aprovou' é:",
+    opcoes: [
+      { label: "A", valor: "Obrigatória, pois muda o sujeito." },
+      { label: "B", valor: "Proibida, pois o 'e' nunca admite vírgula." },
+      {
+        label: "C",
+        valor: "Facultativa, pois o sentido se mantém em ambos os casos.",
+      },
+      { label: "D", valor: "Obrigatória apenas em textos formais." },
+    ],
+    correta: "A",
+    explicacao:
+      "Quando o sujeito muda depois do 'e' (sujeitos diferentes), a vírgula é obrigatória para separar as orações coordenadas com sujeitos distintos.",
+  },
+];
+
+const QUIZ_M4_POOL: QuizQuestion[] = [
+  {
+    id: 401,
+    pergunta:
+      "Na frase 'Ele não fez nada', a reescrita 'Ele fez algo' é considerada:",
+    opcoes: [
+      {
+        label: "A",
+        valor: "Correta, pois as duplas negativas se anulam.",
+      },
+      {
+        label: "B",
+        valor:
+          "Incorreta, pois 'não fez nada' em português é negação reforçada, não anulação.",
+      },
+      {
+        label: "C",
+        valor: "Correta apenas no registro informal.",
+      },
+      {
+        label: "D",
+        valor: "Depende do contexto e da banca.",
+      },
+    ],
+    correta: "B",
+    explicacao:
+      "Em português, dupla negação REFORÇA (diferente do inglês). 'Não fez nada' = não fez absolutamente nada. Reescrever como 'fez algo' inverte o sentido.",
+  },
+  {
+    id: 402,
+    pergunta:
+      "A passagem de 'Os operários devem usar EPIs' para 'É obrigatório o uso de EPIs pelos operários' é:",
+    opcoes: [
+      {
+        label: "A",
+        valor:
+          "Válida: mantém o sentido de obrigatoriedade e a correção gramatical.",
+      },
+      {
+        label: "B",
+        valor: "Inválida: mudou de recomendação para obrigação.",
+      },
+      {
+        label: "C",
+        valor: "Inválida: a voz passiva não se aplica.",
+      },
+      {
+        label: "D",
+        valor: "Válida apenas se 'devem' significar obrigação.",
+      },
+    ],
+    correta: "A",
+    explicacao:
+      "O verbo 'dever' no contexto de normas técnicas indica obrigatoriedade. A nominalização ('o uso') mantém o sentido de dever.",
+  },
+  {
+    id: 403,
+    pergunta: "Ao trocar 'porque' por 'porquanto', a regra gramatical é:",
+    opcoes: [
+      {
+        label: "A",
+        valor: "São sinônimos perfeitos, basta substituir.",
+      },
+      {
+        label: "B",
+        valor:
+          "'Porquanto' é formal e causal/explicativo como 'porque', mas exige atenção ao registro.",
+      },
+      {
+        label: "C",
+        valor: "'Porquanto' é concessivo, não pode substituir 'porque'.",
+      },
+      {
+        label: "D",
+        valor: "'Porquanto' é condicional.",
+      },
+    ],
+    correta: "B",
+    explicacao:
+      "'Porquanto' é uma conjunção causal/explicativa formal equivalente a 'porque', 'visto que'. A substituição é válida com adequação de registro.",
+  },
+  {
+    id: 404,
+    pergunta:
+      "Qual das reescritas é uma paráfrase válida de 'Caso haja atraso, comunique imediatamente'?",
+    opcoes: [
+      {
+        label: "A",
+        valor: "Se houver atraso, comunique imediatamente.",
+      },
+      {
+        label: "B",
+        valor: "Quando houver atraso, comunique imediatamente.",
+      },
+      {
+        label: "C",
+        valor: "Embora haja atraso, comunique imediatamente.",
+      },
+      {
+        label: "D",
+        valor: "Ainda que haja atraso, comunique imediatamente.",
+      },
+    ],
+    correta: "A",
+    explicacao:
+      "'Caso' e 'Se' são ambos condicionais. B muda para temporal, C e D mudam para concessão — todos alteram o sentido original.",
+  },
+];
+
 const QUIZ_FINAL_POOL: QuizQuestion[] = [
   {
     id: 301,
@@ -347,6 +552,8 @@ export default function AulaReescritaFrases({
   );
   const [quizM1, setQuizM1] = useState<QuizQuestion[]>([]);
   const [quizM2, setQuizM2] = useState<QuizQuestion[]>([]);
+  const [quizM3, setQuizM3] = useState<QuizQuestion[]>([]);
+  const [quizM4, setQuizM4] = useState<QuizQuestion[]>([]);
   const [quizFinal, setQuizFinal] = useState<QuizQuestion[]>([]);
   const [shuffledChallenges, setShuffledChallenges] = useState<Challenge[]>([]);
   const [challengeIndex, setChallengeIndex] = useState(0);
@@ -354,9 +561,11 @@ export default function AulaReescritaFrases({
 
   // Inicialização
   useEffect(() => {
-    setQuizM1(getRandomQuestions(QUIZ_M1_POOL, 4));
-    setQuizM2(getRandomQuestions(QUIZ_M2_POOL, 4));
-    setQuizFinal(getRandomQuestions(QUIZ_FINAL_POOL, 4));
+    setQuizM1(getRandomQuestions(QUIZ_M1_POOL, 8));
+    setQuizM2(getRandomQuestions(QUIZ_M2_POOL, 8));
+    setQuizM3(getRandomQuestions(QUIZ_M3_POOL, 8));
+    setQuizM4(getRandomQuestions(QUIZ_M4_POOL, 8));
+    setQuizFinal(getRandomQuestions(QUIZ_FINAL_POOL, 8));
     setShuffledChallenges([...CHALLENGE_POOL].sort(() => 0.5 - Math.random()));
   }, []);
 
@@ -1037,21 +1246,358 @@ export default function AulaReescritaFrases({
         </div>
       </TabsContent>
 
-      {/* Módulo 3: Prática Elite */}
+      {/* Módulo 3: Pontuação e Sentido */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
-        <div className="space-y-16 animate-in fade-in duration-500">
+        <div className="space-y-10 animate-in fade-in duration-500">
           <ModuleBanner
             numero={3}
-            titulo="Prática de Elite e Desafios"
+            titulo="Pontuação e Sentido na Reescritura"
+            descricao="Como a presença ou ausência de uma vírgula pode invalidar completamente uma reescrita."
+            gradiente="bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Vírgula que Muda Tudo"
+              variant="violet"
+              className="mb-8"
+            />
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              O examinador adora testar seu conhecimento sobre orações
+              adjetivas. A vírgula determina se você está falando de{" "}
+              <strong>todos</strong> ou apenas de <strong>alguns</strong>.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              <AlertBox tipo="warning" titulo="Explicativa (COM vírgula)">
+                <p className="text-sm mb-2">
+                  Refere-se à totalidade. Generaliza.
+                </p>
+                <div className="p-3 bg-muted rounded-lg font-mono text-xs text-foreground italic">
+                  "Os servidores, que fizeram curso, foram promovidos."
+                </div>
+                <p className="text-xs mt-2 font-bold text-center text-violet-600 dark:text-violet-400">
+                  (Diz que TODOS os servidores fizeram curso e TODOS foram
+                  promovidos)
+                </p>
+              </AlertBox>
+
+              <AlertBox tipo="info" titulo="Restritiva (SEM vírgula)">
+                <p className="text-sm mb-2">Limita o grupo. Especifica.</p>
+                <div className="p-3 bg-muted rounded-lg font-mono text-xs text-foreground italic">
+                  "Os servidores que fizeram curso foram promovidos."
+                </div>
+                <p className="text-xs mt-2 font-bold text-center text-blue-600 dark:text-blue-400">
+                  (Diz que APENAS os que fizeram curso foram promovidos)
+                </p>
+              </AlertBox>
+            </div>
+
+            <p className="text-sm text-center mt-4 text-rose-500 font-bold bg-rose-500/10 p-3 rounded-lg border border-rose-500/20">
+              CUIDADO: Tirar a vírgula de uma explicativa e transformar em
+              restritiva MUDA COMPLETAMENTE O SENTIDO. É erro fatal em
+              reescritura.
+            </p>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={2}
+              title="Resumo do Módulo 3"
+              variant="violet"
+              className="mb-8"
+            />
+
+            <LessonTabs
+              tabs={[
+                {
+                  id: "video",
+                  label: "Vídeo Aula",
+                  icon: LuPlay,
+                  content: (
+                    <div className="w-full flex flex-col items-center py-6">
+                      <div className="w-full max-w-3xl">
+                        <VideoModal
+                          videoId="dQw4w9WgXcQ"
+                          title="Mágica das Vírgulas na Reescrita"
+                          duration="06:20"
+                          thumbnail="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1170&auto=format&fit=crop"
+                        />
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  id: "resumo",
+                  label: "Resumo Visual",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      tituloAula="Reescrita de Frases"
+                      materia="Português"
+                      profissao="Concurso Petrobras"
+                      moduloNome="Pontuação e Sentido"
+                      images={[
+                        {
+                          title: "Meme: A Vírgula Assassina",
+                          type: "Meme",
+                          placeholderColor: "bg-violet-100",
+                          imageUrl: "/images/placeholders/virgula_meme.png",
+                        },
+                        {
+                          title: "Esquema: Pontuação e Sentido",
+                          type: "Tabela",
+                          placeholderColor: "bg-violet-900/10",
+                        },
+                      ]}
+                    />
+                  ),
+                },
+                {
+                  id: "macete",
+                  label: "Macete Visual",
+                  icon: LuImage,
+                  content: (
+                    <div className="text-center p-6 space-y-4">
+                      <h3 className="text-xl font-bold text-foreground mb-2">
+                        O Pulo do Gato: Vírgulas
+                      </h3>
+                      <div className="text-6xl my-6">🧬 ♒ 🧬</div>
+                      <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto">
+                        "Com vírgula = Generaliza (Explicativa).
+                        <br />
+                        Sem vírgula = Especifica (Restritiva)."
+                      </p>
+                      <div className="p-4 bg-violet-500/5 border border-violet-500/20 rounded-xl mt-4">
+                        <p className="text-sm font-bold text-violet-700 dark:text-violet-400">
+                          Trocar uma pela outra MUDA O SENTIDO, mas mantém a
+                          correção gramatical.
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  id: "audio",
+                  label: "Áudio Resumo",
+                  icon: LuVolume2,
+                  content: (
+                    <div className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-violet-500/10 to-purple-500/10 rounded-xl border border-violet-500/20">
+                      <div className="w-full max-w-md">
+                        <MusicPlayerCard
+                          audioUrl="#"
+                          titulo="Pílula de Pontuação"
+                          artista="Prof. Antigravity"
+                        />
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM3}
+            titulo="Quiz de Fixação - Pontuação"
+            icone="🎯"
+            numero={3}
+            variant="violet"
+            onComplete={(score) => handleModuleComplete("modulo-3", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* Módulo 4: Armadilhas Avançadas */}
+      <TabsContent value="modulo-4" className="space-y-[50px]">
+        <div className="space-y-10 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={4}
+            titulo="Armadilhas Avançadas e Dupla Negação"
+            descricao="Negações cruzadas, modalizações sutis e substituições lexicais avançadas."
+            gradiente="bg-gradient-to-br from-amber-600 via-orange-600 to-red-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Falsa Lógica da Dupla Negação"
+              variant="amber"
+              className="mb-8"
+            />
+
+            <div className="flex flex-col md:flex-row gap-6 items-center bg-amber-500/5 p-6 rounded-xl border border-amber-500/20">
+              <div className="text-6xl">🧮</div>
+              <div>
+                <p className="text-lg font-medium text-foreground mb-2">
+                  Na Matemática: (-) com (-) = (+)
+                </p>
+                <p className="text-lg font-bold text-rose-600 dark:text-rose-400 bg-rose-500/10 p-2 rounded inline-block">
+                  No Português: Negação + Negação = NEGAÇÃO REFORÇADA!
+                </p>
+                <p className="text-sm text-muted-foreground mt-4">
+                  "Não vi ninguém" manterá o sentido negativo. Não tente
+                  reescrever para "Vi alguém" achando que está corrigindo a
+                  frase.
+                </p>
+              </div>
+            </div>
+
+            <ModuleSectionHeader
+              index={2}
+              title="Vocabulário e Registro"
+              variant="amber"
+              className="mt-8 mb-6"
+            />
+
+            <CardCarousel
+              cards={[
+                {
+                  icone: "🎩",
+                  titulo: "Informal para Formal",
+                  descricao:
+                    "A reescrita frequentemente eleva o tom da frase (ex: Pensa-se -> Tem-se em mente).",
+                  corFundo: "bg-blue-500/10",
+                },
+                {
+                  icone: "⚖️",
+                  titulo: "Nomes Substantivos",
+                  descricao:
+                    "Ação (Verbo) virando Sujeito/Objeto (Nome). 'O agir precipitado gerou crise'.",
+                  corFundo: "bg-emerald-500/10",
+                },
+              ]}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={3}
+              title="Resumo do Módulo 4"
+              variant="amber"
+              className="mb-8"
+            />
+
+            <LessonTabs
+              tabs={[
+                {
+                  id: "video",
+                  label: "Vídeo Aula",
+                  icon: LuPlay,
+                  content: (
+                    <div className="w-full flex flex-col items-center py-6">
+                      <div className="w-full max-w-3xl">
+                        <VideoModal
+                          videoId="dQw4w9WgXcQ"
+                          title="Armadilhas de Sentido na Reescrita"
+                          duration="07:45"
+                          thumbnail="https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=1171&auto=format&fit=crop"
+                        />
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  id: "resumo",
+                  label: "Resumo Visual",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      tituloAula="Reescrita de Frases"
+                      materia="Português"
+                      profissao="Concurso Petrobras"
+                      moduloNome="Armadilhas Avançadas"
+                      images={[
+                        {
+                          title: "Quadro Comparativo: Formalidade",
+                          type: "Tabela",
+                          placeholderColor: "bg-amber-100",
+                          imageUrl:
+                            "/images/placeholders/formalidade_tabela.png",
+                        },
+                        {
+                          title: "Mapa Mental: Armadilhas",
+                          type: "Mapa Mental",
+                          placeholderColor: "bg-amber-900/10",
+                        },
+                      ]}
+                    />
+                  ),
+                },
+                {
+                  id: "macete",
+                  label: "Macete Visual",
+                  icon: LuImage,
+                  content: (
+                    <div className="text-center p-6 space-y-4">
+                      <h3 className="text-xl font-bold text-foreground mb-2">
+                        Checklist do Olhar Clínico
+                      </h3>
+                      <div className="text-6xl my-6">🕵️‍♂️ 🔍 🕵️‍♂️</div>
+                      <ul className="text-sm text-left space-y-2 max-w-md mx-auto">
+                        <li className="flex items-center gap-2">
+                          <LuCheck className="text-amber-500" /> Sublinhe o
+                          verbo principal.
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <LuCheck className="text-amber-500" /> Circule o
+                          conectivo (embora, caso, se).
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <LuCheck className="text-amber-500" /> Verifique se a
+                          negação foi mantida.
+                        </li>
+                      </ul>
+                    </div>
+                  ),
+                },
+                {
+                  id: "audio",
+                  label: "Áudio Resumo",
+                  icon: LuVolume2,
+                  content: (
+                    <div className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-amber-500/10 to-orange-500/10 rounded-xl border border-amber-500/20">
+                      <div className="w-full max-w-md">
+                        <MusicPlayerCard
+                          audioUrl="#"
+                          titulo="Pílula de Armadilhas"
+                          artista="Prof. Antigravity"
+                        />
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM4}
+            titulo="Quiz de Fixação - Armadilhas"
+            icone="🎯"
+            numero={4}
+            variant="amber"
+            onComplete={(score) => handleModuleComplete("modulo-4", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* Módulo 5: Laboratório de Gabarito */}
+      <TabsContent value="modulo-5" className="space-y-[50px]">
+        <div className="space-y-16 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={5}
+            titulo="Laboratório de Gabarito: Missão Final"
             descricao="Treine com armadilhas reais da Cesgranrio e realize o simulado final para dominar a reescritura."
-            gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
+            gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-red-700"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title={'As "Armadilhas de Reescrita" (Checklist)'}
-              variant="violet"
+              variant="rose"
               className="mb-8"
             />
             <div className="space-y-4">
@@ -1093,7 +1639,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Laboratório de Reescrita"
               description="Identifique cascas de banana e aplique a técnica Certo vs. Errado."
-              variant="violet"
+              variant="rose"
               className="mb-8"
             />
             <div className="space-y-8">
@@ -1195,8 +1741,8 @@ export default function AulaReescritaFrases({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={3}
-              title="Resumo do Módulo 3"
-              variant="violet"
+              title="Resumo do Módulo 5"
+              variant="rose"
               className="mb-8"
             />
 
@@ -1289,9 +1835,81 @@ export default function AulaReescritaFrases({
             titulo="Simulado de Finalização - Reescrita"
             icone="🏆"
             numero={4}
-            variant="violet"
-            onComplete={(score) => handleModuleComplete("modulo-3", score)}
+            variant="rose"
+            onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
+
+          {showCompletionBadge && isCompleted && (
+            <div className="mt-12 p-8 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-2xl flex flex-col items-center justify-center space-y-6 animate-in zoom-in duration-500 shadow-lg shadow-emerald-500/5">
+              <div className="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center relative">
+                <div className="absolute inset-0 bg-emerald-500/20 rounded-full animate-ping opacity-50"></div>
+                <LuTrophy className="w-10 h-10 text-emerald-500 drop-shadow-lg" />
+              </div>
+
+              <div className="text-center space-y-2">
+                <h3 className="text-2xl font-black text-foreground">
+                  Missão Cumprida!
+                </h3>
+                <p className="text-muted-foreground max-w-md mx-auto">
+                  Você dominou as técnicas de Reescritura de Frases
+                  (Cesgranrio). Seu entendimento sobre preservação de sentido e
+                  correção gramatical está pronto para o combate.
+                </p>
+              </div>
+
+              <div className="flex gap-4 p-4 bg-background/50 rounded-xl border border-border/50">
+                <div className="flex items-center gap-2">
+                  <LuTimer className="text-emerald-500" />
+                  <span className="text-sm font-bold text-foreground">
+                    {duracao || "1h 30m"}
+                  </span>
+                </div>
+                <div className="w-px bg-border"></div>
+                <div className="flex items-center gap-2">
+                  <LuTarget className="text-emerald-500" />
+                  <span className="text-sm font-bold text-foreground">
+                    100% Retenção
+                  </span>
+                </div>
+                <div className="w-px bg-border"></div>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-black text-emerald-600 dark:text-emerald-400">
+                    +{xpGanho || 250} XP
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                {prevTopico && (
+                  <Link href={`/aulas/${materiaId}/${prevTopico}`}>
+                    <Button
+                      variant="outline"
+                      className="rounded-full shadow-sm hover:scale-105 active:scale-95 transition-all text-muted-foreground font-medium border-border"
+                    >
+                      <LuArrowLeft className="mr-2" />
+                      Anterior
+                    </Button>
+                  </Link>
+                )}
+
+                {nextTopico ? (
+                  <Link href={`/aulas/${materiaId}/${nextTopico}`}>
+                    <Button className="rounded-full px-8 py-5 shadow-lg shadow-emerald-500/20 hover:scale-105 active:scale-95 transition-all font-bold text-white bg-emerald-500 hover:bg-emerald-600 border border-emerald-400">
+                      Próxima Aula
+                      <LuArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                  </Link>
+                ) : (
+                  <Link href={`/aulas/${materiaId}`}>
+                    <Button className="rounded-full shadow-lg shadow-emerald-500/20 hover:scale-105 active:scale-95 transition-all bg-emerald-500 hover:bg-emerald-600 text-white font-bold border border-emerald-400">
+                      Voltar para Módulo Base
+                      <LuArrowRight className="ml-2" />
+                    </Button>
+                  </Link>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </TabsContent>
     </AulaTemplate>
