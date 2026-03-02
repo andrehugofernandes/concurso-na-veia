@@ -68,10 +68,11 @@ export default function LandingPage() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-black/90 backdrop-blur-md border-b border-white/10 py-4" : "bg-transparent py-4 md:py-6"}`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <PetrobrasLogo className="w-40 h-auto" />
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <PetrobrasLogo className="w-32 md:w-40 h-auto" />
           </Link>
 
+          {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-8">
             {["Recursos", "Planos"].map((item, index) => (
               <motion.a
@@ -83,16 +84,25 @@ export default function LandingPage() {
                 {item}
               </motion.a>
             ))}
+          </div>
+
+          {/* Auth Actions */}
+          <div className="flex items-center gap-4 md:gap-8">
             <Link
               href="/login"
               className="text-sm font-medium text-white hover:text-yellow-400 transition"
             >
               Entrar
             </Link>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden sm:block"
+            >
               <Link
                 href="/register"
-                className="bg-white text-black px-5 py-2 rounded-full text-sm font-semibold hover:bg-gray-200 transition"
+                className="bg-white text-black px-4 md:px-5 py-2 rounded-full text-sm font-semibold hover:bg-gray-200 transition whitespace-nowrap"
               >
                 Criar Conta
               </Link>

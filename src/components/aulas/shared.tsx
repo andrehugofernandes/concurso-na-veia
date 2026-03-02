@@ -1054,19 +1054,19 @@ export function ModuleBanner({
 
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl ${finalGradient} p-10 md:p-14 text-white text-center shadow-xl`}
+      className={`relative overflow-hidden rounded-2xl ${finalGradient} p-5 md:p-14 text-white text-center shadow-xl`}
     >
       {/* Decorative elements */}
       <div className="absolute -top-16 -right-16 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
       <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
       <div className="relative z-10">
-        <span className="inline-block text-sm uppercase tracking-[0.2em] font-bold bg-white/20 px-4 py-1.5 rounded-full mb-4">
+        <span className="inline-block text-xs md:text-sm uppercase tracking-[0.2em] font-bold bg-white/20 px-3 md:px-4 py-1.5 rounded-full mb-3 md:mb-4">
           Módulo {numero}
         </span>
-        <h2 className="text-3xl md:text-4xl font-extrabold mt-2 leading-tight">
+        <h2 className="text-xl md:text-4xl font-extrabold mt-2 leading-tight">
           {titulo}
         </h2>
-        <p className="text-white/80 mt-4 max-w-4xl mx-auto text-lg leading-relaxed font-medium">
+        <p className="text-white/80 mt-3 md:mt-4 max-w-4xl mx-auto text-sm md:text-lg leading-relaxed font-medium">
           {descricao}
         </p>
       </div>
@@ -2008,65 +2008,58 @@ export function AulaTemplate({
 }) {
   const NavHeader = () => (
     <div className="bg-card/90 dark:bg-slate-800/90 backdrop-blur-md rounded-xl p-3 border border-border dark:border-slate-700/50 shadow-sm">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3 text-sm">
+      <div className="grid grid-cols-[1fr,auto] md:flex md:items-center justify-between gap-3 w-full">
+        {/* Coluna 1: Breadcrumb / Matéria */}
+        <div className="flex items-center text-sm min-w-0">
           <Link
             href={`/aulas/${materiaId}`}
-            className="px-3 py-1.5 rounded-lg bg-secondary/80 dark:bg-slate-700 text-secondary-foreground dark:text-slate-200 hover:bg-secondary transition flex items-center gap-2 font-medium border border-border/50"
+            className="px-3 py-2 rounded-lg bg-secondary/80 dark:bg-slate-700 text-secondary-foreground dark:text-slate-200 hover:bg-secondary transition flex items-center gap-2 font-medium border border-border/50 shrink-0 text-left leading-tight"
           >
-            <span className="text-lg leading-none">←</span> {materiaNome}
+            <span className="text-lg leading-none shrink-0">←</span>
+            <span className="flex flex-col md:flex-row md:gap-1">
+              {materiaNome.includes(" ") ? (
+                <>
+                  <span>{materiaNome.split(" ")[0]}</span>
+                  <span className="md:inline">
+                    {materiaNome.split(" ").slice(1).join(" ")}
+                  </span>
+                </>
+              ) : (
+                <span>{materiaNome}</span>
+              )}
+            </span>
           </Link>
-          <span className="text-muted-foreground/40 font-light text-xl">/</span>
-          <span className="text-foreground font-semibold truncate max-w-[150px] md:max-w-none">
+          <span className="hidden md:inline text-muted-foreground/40 font-light text-xl mx-3">
+            /
+          </span>
+          <span className="hidden md:inline text-foreground font-semibold truncate max-w-none">
             {titulo}
           </span>
         </div>
 
-        <div className="flex items-center gap-4">
-          {/* Mastery Progress Badge */}
-          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-lg border border-primary/20">
-            <div className="flex flex-col items-end">
-              <span className="text-[10px] uppercase tracking-tighter font-bold text-primary/70 leading-none">
-                Conclusão
-              </span>
-              <span className="text-sm font-black text-primary leading-tight">
-                {currentProgress || 0}%
-              </span>
-            </div>
-            <div className="w-10 h-10 rounded-full border-2 border-primary/20 flex items-center justify-center relative overflow-hidden bg-background">
-              <div
-                className="absolute inset-0 bg-primary/10 transition-all duration-1000"
-                style={{
-                  clipPath: `inset(${100 - (currentProgress || 0)}% 0 0 0)`,
-                }}
-              />
-              <LuTrophy className="w-5 h-5 text-primary relative z-10" />
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            {prevTopico && (
-              <Link
-                href={`/aulas/${materiaId}/${prevTopico.id}`}
-                className="px-3 py-1.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-xs"
-                title={prevTopico.titulo}
-              >
-                Anterior
-              </Link>
-            )}
-            {nextTopico && (
-              <Link
-                href={`/aulas/${materiaId}/${nextTopico.id}`}
-                className="px-4 py-1.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center gap-2 shadow-sm border border-border/50 text-xs"
-              >
-                Próximo
-                <span className="hidden md:inline">
-                  : {nextTopico.titulo}
-                </span>{" "}
-                <span className="text-lg leading-none">→</span>
-              </Link>
-            )}
-          </div>
+        {/* Coluna 2: Botões de Navegação (Empilhados no mobile) */}
+        <div className="flex flex-col md:flex-row items-stretch md:items-center gap-2 shrink-0">
+          {prevTopico && (
+            <Link
+              href={`/aulas/${materiaId}/${prevTopico.id}`}
+              className="px-3 py-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center justify-center gap-2 shadow-sm border border-border/50 text-[10px] md:text-xs min-w-[80px]"
+              title={prevTopico.titulo}
+            >
+              Anterior
+            </Link>
+          )}
+          {nextTopico && (
+            <Link
+              href={`/aulas/${materiaId}/${nextTopico.id}`}
+              className="px-3 py-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center justify-center gap-2 shadow-sm border border-border/50 text-[10px] md:text-xs min-w-[80px]"
+            >
+              Próximo
+              <span className="hidden md:inline">
+                : {nextTopico.titulo}
+              </span>{" "}
+              <span className="text-lg leading-none shrink-0">→</span>
+            </Link>
+          )}
         </div>
       </div>
     </div>
@@ -2074,7 +2067,7 @@ export function AulaTemplate({
 
   return (
     <div className="min-h-screen bg-background pb-20 relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-[10px] md:px-6">
         <div className="flex flex-col">
           {/* 1. Barra de Progresso de Leitura (Scroll) */}
           <div className="h-1.5 w-full">
@@ -2082,25 +2075,25 @@ export function AulaTemplate({
           </div>
 
           {/* 2. Navigation Header (Breadcrumb + Nav) */}
-          <div className="mt-[60px]">
+          <div className="mt-4 md:mt-[60px]">
             <NavHeader />
           </div>
 
-          <div className="mt-12 flex flex-col space-y-12">
-            <div className="flex flex-col md:flex-row justify-between items-start gap-6">
-              <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-3 flex-wrap">
-                  <h1 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight">
+          <div className="mt-6 md:mt-12 flex flex-col space-y-6 md:space-y-12">
+            <div className="flex flex-col md:flex-row justify-between items-start gap-4 md:gap-6">
+              <div className="flex flex-col gap-2 md:gap-3">
+                <div className="flex items-center gap-2 md:gap-3 flex-wrap">
+                  <h1 className="text-xl md:text-5xl font-bold text-foreground tracking-tight">
                     {titulo}
                   </h1>
                   {isCompleted && (
-                    <span className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-green-600 to-emerald-500 text-white uppercase tracking-wider shadow-md h-fit self-center mt-1 md:mt-2 animate-in fade-in zoom-in duration-500">
-                      <LuCheck className="w-3.5 h-3.5 stroke-[3]" />
-                      Aula Concluída
+                    <span className="flex items-center gap-1.5 px-2 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-bold bg-gradient-to-r from-green-600 to-emerald-500 text-white uppercase tracking-wider shadow-md h-fit self-center mt-1 md:mt-2 animate-in fade-in zoom-in duration-500">
+                      <LuCheck className="w-3 h-3 md:w-3.5 md:h-3.5 stroke-[3]" />
+                      Concluída
                     </span>
                   )}
                 </div>
-                <p className="text-muted-foreground text-lg leading-relaxed max-w-5xl">
+                <p className="text-muted-foreground text-sm md:text-lg leading-relaxed max-w-5xl">
                   {descricao}
                 </p>
               </div>
@@ -2116,7 +2109,7 @@ export function AulaTemplate({
                 >
                   {materiaNome}
                 </span>
-                <div className="flex items-center gap-2 px-4 py-2 bg-muted/30 rounded-2xl border border-border/50 text-muted-foreground text-sm font-medium w-fit">
+                <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-muted/30 rounded-2xl border border-border/50 text-muted-foreground text-sm font-medium w-fit">
                   <LuClock className="w-4 h-4 text-primary" />
                   {duracao}
                 </div>
@@ -2136,41 +2129,51 @@ export function AulaTemplate({
                 isModuleUnlocked={isModuleUnlocked}
               />
 
-              <main className="mt-[50px] space-y-[50px]">{children}</main>
+              <main className="mt-6 md:mt-[50px] space-y-6 md:space-y-[50px]">
+                {children}
+              </main>
 
               {/* 5. Seção de Conclusão (Banner ou CTA) */}
-              <div className="mt-20">
+              <div className="mt-10 md:mt-20">
                 {isCompleted ? (
                   /* Banner de Aula Concluída */
-                  <div className="bg-emerald-500/10 dark:bg-emerald-950/20 border border-emerald-500/20 dark:border-emerald-500/10 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-1000">
-                    <div className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-emerald-500/30 shrink-0">
-                      <LuCheck size={40} strokeWidth={3} />
+                  <div className="bg-emerald-500/10 dark:bg-emerald-950/20 border border-emerald-500/20 dark:border-emerald-500/10 rounded-xl md:rounded-2xl p-5 md:p-10 flex flex-col md:flex-row items-center gap-4 md:gap-6 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                    <div className="w-14 h-14 md:w-20 md:h-20 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-emerald-500/30 shrink-0">
+                      <LuCheck
+                        size={28}
+                        className="md:hidden"
+                        strokeWidth={3}
+                      />
+                      <LuCheck
+                        size={40}
+                        className="hidden md:block"
+                        strokeWidth={3}
+                      />
                     </div>
-                    <div className="text-center md:text-left space-y-2">
-                      <h3 className="text-2xl md:text-3xl font-black text-emerald-600 dark:text-emerald-400">
-                        Aula de {titulo} Concluída!
+                    <div className="text-center md:text-left space-y-1 md:space-y-2">
+                      <h3 className="text-lg md:text-3xl font-black text-emerald-600 dark:text-emerald-400">
+                        Aula Concluída!
                       </h3>
-                      <p className="text-lg text-emerald-700/80 dark:text-emerald-300/60 font-medium">
-                        Parabéns! Você dominou este conteúdo e garantiu seu
-                        progresso. Continue na trilha do sucesso!
+                      <p className="text-sm md:text-lg text-emerald-700/80 dark:text-emerald-300/60 font-medium">
+                        Parabéns! Você dominou este conteúdo. Continue na trilha
+                        do sucesso!
                       </p>
                     </div>
                   </div>
                 ) : (
                   /* CTA de Conclusão */
-                  <div className="bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-pink-500/5 rounded-2xl p-8 md:p-12 border border-border/50 text-center space-y-8 animate-in fade-in duration-1000">
-                    <div className="space-y-4">
-                      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold uppercase tracking-wider border border-primary/20">
-                        <LuTrophy className="w-4 h-4" />
-                        Recompensa de Finalização
+                  <div className="bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-pink-500/5 rounded-xl md:rounded-2xl p-5 md:p-12 border border-border/50 text-center space-y-5 md:space-y-8 animate-in fade-in duration-1000">
+                    <div className="space-y-3 md:space-y-4">
+                      <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs md:text-sm font-bold uppercase tracking-wider border border-primary/20">
+                        <LuTrophy className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                        Recompensa
                       </div>
-                      <h2 className="text-3xl md:text-4xl font-black text-foreground">
+                      <h2 className="text-xl md:text-4xl font-black text-foreground">
                         Pronto para Finalizar?
                       </h2>
-                      <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-                        Ao marcar esta aula como concluída, você desbloqueia seu
-                        progresso oficial e ganha um bônus imediato de
-                        experiência.
+                      <p className="text-muted-foreground text-sm md:text-lg max-w-2xl mx-auto leading-relaxed">
+                        Conclua esta aula para desbloquear seu progresso e
+                        ganhar bônus de XP.
                       </p>
                     </div>
 
@@ -2277,111 +2280,119 @@ export function StickyModuleNav({
     <div
       ref={navRef}
       className={cn(
-        "sticky z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-hidden transition-all duration-300",
-        /* Full viewport width breakout safe for sticky positioning */
-        "w-screen ml-[calc(50%-50vw)]",
+        "sticky z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-hidden transition-all duration-300 border-b border-border/50",
         /* Dynamic top pinning */
         isStickyNavPinned && !isTemporaryHeaderVisible
-          ? "top-0"
-          : "top-16 md:top-20",
-        /* Border and padding based on pin state */
-        isStickyNavPinned
-          ? "border-b border-border/50 shadow-md py-2"
-          : "border-y border-border/50 shadow-sm py-3",
+          ? "top-0 shadow-md py-2"
+          : "top-16 md:top-20 shadow-sm py-3",
+        /* Full viewport width breakout safe for sticky positioning */
+        "w-screen ml-[calc(50%-50vw)]",
       )}
     >
-      <div className="w-full px-4 md:px-8 overflow-x-auto scrollbar-hide relative">
-        <TabsList className="flex w-max min-w-full h-auto p-1.5 bg-muted/20 border border-border/10 rounded-3xl gap-3 shadow-inner justify-start xl:justify-center mx-auto transition-all duration-300">
-          {/* Toggle Button for Header (Apenas visível quando pinned) */}
-          <div
-            className={cn(
-              "shrink-0 flex items-center transition-all duration-300 overflow-hidden",
-              isStickyNavPinned
-                ? "w-12 opacity-100"
-                : "w-0 opacity-0 px-0 mx-0 border-none",
-            )}
-          >
-            <TooltipProvider>
-              <Tooltip delayDuration={0}>
-                <TooltipTrigger asChild>
-                  <button
-                    onClick={() =>
-                      setIsTemporaryHeaderVisible(!isTemporaryHeaderVisible)
-                    }
-                    className="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-muted text-foreground transition-colors group border border-border/50 shadow-sm bg-background flex-shrink-0"
-                  >
-                    <LuMenu
-                      className={cn(
-                        "w-5 h-5 text-muted-foreground group-hover:text-foreground transition-all duration-300",
-                        isTemporaryHeaderVisible ? "rotate-90" : "rotate-0",
-                      )}
-                    />
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent
-                  side="bottom"
-                  className="bg-slate-900 border-none text-white font-medium text-xs"
+      <div className="relative w-full px-2 md:px-8">
+        {/* Scroll Indicators (Mobile Only) */}
+        <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none md:hidden" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none md:hidden" />
+
+        <div className="overflow-x-auto scrollbar-hide">
+          <TabsList className="flex w-max min-w-full h-auto p-1.5 bg-muted/20 border border-border/10 rounded-3xl gap-2 md:gap-3 shadow-inner justify-start xl:justify-center mx-auto transition-all duration-300">
+            {/* Toggle Button for Header (Apenas visível quando pinned) */}
+            <AnimatePresence>
+              {isStickyNavPinned && (
+                <motion.div
+                  initial={{ width: 0, opacity: 0 }}
+                  animate={{ width: "auto", opacity: 1 }}
+                  exit={{ width: 0, opacity: 0 }}
+                  className="shrink-0 flex items-center pr-1"
                 >
-                  {isTemporaryHeaderVisible
-                    ? "Ocultar cabeçalho"
-                    : "Mostrar cabeçalho"}
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </div>
+                  <TooltipProvider>
+                    <Tooltip delayDuration={0}>
+                      <TooltipTrigger asChild>
+                        <button
+                          onClick={() =>
+                            setIsTemporaryHeaderVisible(
+                              !isTemporaryHeaderVisible,
+                            )
+                          }
+                          className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl hover:bg-muted text-foreground transition-colors group border border-border/50 shadow-sm bg-background shrink-0"
+                        >
+                          <LuMenu
+                            className={cn(
+                              "w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-foreground transition-all duration-300",
+                              isTemporaryHeaderVisible
+                                ? "rotate-90"
+                                : "rotate-0",
+                            )}
+                          />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent
+                        side="bottom"
+                        className="bg-slate-900 border-none text-white font-medium text-xs"
+                      >
+                        {isTemporaryHeaderVisible
+                          ? "Ocultar cabeçalho"
+                          : "Mostrar cabeçalho"}
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
-          {/* Botão Home/Voltar (se passado via prop, sempre visível) */}
-          {homeHref && (
-            <div className="shrink-0 flex items-center transition-all duration-300">
-              <TooltipProvider>
-                <Tooltip delayDuration={0}>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={homeHref}
-                      className="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-muted text-foreground transition-colors border border-border/50 shadow-sm bg-background group flex-shrink-0"
+            {/* Botão Home/Voltar (se passado via prop, sempre visível) */}
+            {homeHref && (
+              <div className="shrink-0 flex items-center pr-1">
+                <TooltipProvider>
+                  <Tooltip delayDuration={0}>
+                    <TooltipTrigger asChild>
+                      <Link
+                        href={homeHref}
+                        className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl hover:bg-muted text-foreground transition-colors border border-border/50 shadow-sm bg-background group shrink-0"
+                      >
+                        <LuHouse className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent
+                      side="bottom"
+                      className="bg-slate-900 border-none text-white font-medium text-xs"
                     >
-                      <LuHouse className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="bottom"
-                    className="bg-slate-900 border-none text-white font-medium text-xs"
-                  >
-                    Voltar às Aulas
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
-          )}
-
-          {modules.map((mod, index) => (
-            <TabsTrigger
-              key={mod.id}
-              value={mod.id}
-              disabled={!isModuleUnlocked(index)}
-              className="shrink-0 py-2 px-4 md:px-5 rounded-2xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group"
-            >
-              <div className="flex flex-col items-center md:items-start gap-0.5">
-                <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/50 group-data-[state=active]:text-primary/60 font-display">
-                  {mod.label}
-                </span>
-                <span className="font-bold text-[11px] md:text-[13px] flex items-center gap-2">
-                  {mod.titulo}
-                  {completedModules.has(mod.id) && (
-                    <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20">
-                      <LuCheck size={14} />
-                    </span>
-                  )}
-                  {!isModuleUnlocked(index) && (
-                    <span className="text-muted-foreground/40">
-                      <LuLock size={14} />
-                    </span>
-                  )}
-                </span>
+                      Voltar às Aulas
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </div>
-            </TabsTrigger>
-          ))}
-        </TabsList>
+            )}
+
+            {modules.map((mod, index) => (
+              <TabsTrigger
+                key={mod.id}
+                value={mod.id}
+                disabled={!isModuleUnlocked(index)}
+                className="shrink-0 py-2 px-4 md:px-5 rounded-2xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group"
+              >
+                <div className="flex flex-col items-center md:items-start gap-0.5">
+                  <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/50 group-data-[state=active]:text-primary/60 font-display">
+                    {mod.label}
+                  </span>
+                  <span className="font-bold text-[11px] md:text-[13px] flex items-center gap-2">
+                    {mod.titulo}
+                    {completedModules.has(mod.id) && (
+                      <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20">
+                        <LuCheck size={14} />
+                      </span>
+                    )}
+                    {!isModuleUnlocked(index) && (
+                      <span className="text-muted-foreground/40">
+                        <LuLock size={14} />
+                      </span>
+                    )}
+                  </span>
+                </div>
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </div>
       </div>
     </div>
   );
@@ -2472,7 +2483,7 @@ export function ModuleSectionHeader({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 shadow-lg transition-all hover:shadow-xl group",
+        "relative overflow-hidden rounded-xl md:rounded-2xl p-4 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 shadow-lg transition-all hover:shadow-xl group",
         bgVariants[variant as keyof typeof bgVariants],
         className,
       )}
@@ -2485,11 +2496,11 @@ export function ModuleSectionHeader({
 
       {/* Conteúdo */}
       <div className="relative space-y-1">
-        <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+        <h2 className="text-lg md:text-3xl font-extrabold text-white tracking-tight">
           {title}
         </h2>
         {description && (
-          <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-4xl font-medium">
+          <p className="text-white/80 text-xs md:text-base leading-relaxed max-w-4xl font-medium">
             {description}
           </p>
         )}
