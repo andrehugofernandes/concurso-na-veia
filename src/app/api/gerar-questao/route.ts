@@ -5,56 +5,48 @@ export async function POST(request: NextRequest) {
   try {
     const { materia, dificuldade, assunto, contexto, questoesAnteriores } = await request.json();
 
-    // Prompt reformulado para garantir consistência
+    // Prompt reformulado para garantir consistência absoluta
     const promptBase = `Você é um especialista em criar questões de concurso no estilo CESGRANRIO para a Petrobras.
 
 TAREFA: Criar UMA questão de ${materia} ${assunto ? `(Assunto Específico: ${assunto})` : ''} para concurso Petrobras ${contexto?.nivel ? `nível ${contexto.nivel}` : ''} ${contexto?.cargo ? `(Cargo: ${contexto.cargo})` : ''}
 ${dificuldade ? `Dificuldade: ${dificuldade}` : ''}
 
 REGRAS OBRIGATÓRIAS:
-1. Estilo CESGRANRIO: enunciado CURTO (2-3 linhas), objetivo, direto
-2. Contexto Industrial: Use cenários de óleo e gás (plataformas, refinarias, dutos)
-3. 5 alternativas plausíveis
+1. Estilo CESGRANRIO: enunciado CURTO (2-3 linhas), objetivo, direto.
+2. Contexto Industrial: Use cenários de óleo e gás (plataformas, refinarias, dutos).
+3. 5 alternativas plausíveis e próximas entre si.
 
-⚠️ REGRA CRÍTICA DE CONSISTÊNCIA:
-- A alternativa CORRETA deve ser a que está no índice informado no campo "correta"
-- A explicação DEVE demonstrar o cálculo/raciocínio que leva EXATAMENTE ao valor da alternativa correta
-- VERIFIQUE: se sua explicação calcula "42.000", a alternativa[correta] DEVE ser "42.000"
-- NUNCA coloque um valor calculado que não exista como alternativa
+⚠️ REGRA CRÍTICA DE CONSISTÊNCIA MATEMÁTICA:
+- Primeiro, defina o problema e REALIZE O CÁLCULO PASSO A PASSO.
+- A alternativa marcada como CORRETA (através do campo "correta") deve ser EXATAMENTE o resultado do cálculo final.
+- A explicação DEVE demonstrar o cálculo/raciocínio que leva EXATAMENTE ao valor da alternativa correta.
+- Se você calculou "32.400", então UMA das alternativas DEVE ser "32.400" e o campo "correta" deve apontar para ela.
+- JAMAIS marque uma alternativa como correta se o valor for diferente do demonstrado na explicação.
 
-PROCESSO OBRIGATÓRIO:
-1. Primeiro, defina o problema e CALCULE a resposta correta
-2. Depois, crie 4 alternativas incorretas (distratores plausíveis)
-3. Coloque a resposta correta em uma posição aleatória (0, 1, 2, 3 ou 4)
-4. Informe o índice correto no campo "correta"
-5. Escreva a explicação que leva EXATAMENTE ao valor da alternativa correta
+PROCESSO DE AUTO-VERIFICAÇÃO:
+1. Calcule o valor final.
+2. Crie as alternativas, garantindo que o valor calculado esteja presente.
+3. Verifique: "O valor em alternativas[correta] é IGUAL ao valor final da explicação?" Se não for, corrija antes de enviar.
 
 Retorne APENAS um JSON válido:
 {
   "enunciado": "texto da questão",
-  "alternativas": ["alternativa A", "alternativa B", "alternativa C", "alternativa D", "alternativa E"],
+  "alternativas": ["valor A", "valor B", "valor C", "valor D", "valor E"],
   "correta": <índice 0-4 da alternativa correta>,
-  "explicacao": "explicação que demonstra o cálculo/raciocínio que resulta EXATAMENTE no valor de alternativas[correta]",
+  "explicacao": "Explicação passo a passo demonstrando como chegar ao resultado exato de alternativas[correta]",
   "assunto": "${assunto || 'Geral'}",
   "dificuldade": "Fácil|Média|Difícil"
 }
 
-REGRAS DE FORMATAÇÃO HTML (CRÍTICO):
+REGRAS DE FORMATAÇÃO HTML:
 - Use tags HTML para destaque visual: <b>negrito</b>, <u>sublinhado</u>, <i>itálico</i>.
-- NÃO use Markdown (como **negrito** ou _itálico_).
-- REGRA ABSOLUTA SOBRE SUBLINHADO: Quando a questão pedir "o termo sublinhado" ou "a expressão sublinhada", a tag <u> DEVE envolver APENAS a palavra ou expressão curta que é o alvo da questão, NUNCA a frase inteira.
-  - CORRETO: "Os procedimentos devem ser <u>revistos periodicamente</u> para garantir a eficácia."
-  - ERRADO: "<u>Os procedimentos devem ser revistos periodicamente para garantir a eficácia.</u>"
-- O trecho sublinhado deve corresponder exatamente ao que as alternativas substituem.
+- NÃO use Markdown.
 ${questoesAnteriores && questoesAnteriores.length > 0 ? `
-DIVERSIDADE OBRIGATÓRIA:
-- Já foram geradas ${questoesAnteriores.length} questões neste simulado. Você DEVE criar uma questão COMPLETAMENTE DIFERENTE.
-- NÃO repita o mesmo tipo de problema, cenário, ou estrutura.
-- Use um ASSUNTO/TÓPICO diferente dos já abordados.
-- Questões anteriores (resumo): ${questoesAnteriores.join(' | ')}
+DIVERSIDADE:
+- Evite temas similares a: ${questoesAnteriores.join(' | ')}
 ` : ''}`;
 
-    console.log(`[Sonnet] Gerando questão de ${materia} (${dificuldade || 'auto'}) para ${contexto?.cargo || 'Geral'}`);
+    console.log(`[Claude] Gerando questão de ${materia} (${dificuldade || 'auto'})`);
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -64,13 +56,11 @@ DIVERSIDADE OBRIGATÓRIA:
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-opus-4-20250514',
-        max_tokens: 2000,
-        system: `Você é um gerador de questões de concurso PRECISO e CONSISTENTE. 
-REGRA ABSOLUTA: O valor calculado na explicação DEVE ser IDÊNTICO ao valor da alternativa marcada como correta.
-Se você calcular 235.6 m³, a alternativa correta DEVE conter "235.6 m³" ou aproximação muito próxima.
-NUNCA gere questões onde o cálculo da explicação não bate com a alternativa correta.
-Faça os cálculos matemáticos com cuidado antes de definir as alternativas.`,
+        model: 'claude-3-5-sonnet-20241022',
+        max_tokens: 1500,
+        system: `Você é um gerador de questões de concurso INFALÍVEL em lógica e matemática. 
+SUA PRIORIDADE MÁXIMA É A CONSISTÊNCIA: O valor final da sua 'explicacao' DEVE ser rigorosamente igual ao valor presente na alternativas[correta].
+Antes de gerar o JSON, faça as contas duas vezes mentalmente.`,
         messages: [
           {
             role: 'user',

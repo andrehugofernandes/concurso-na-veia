@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/accordion";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   AlertBox,
   VideoModal,
@@ -52,6 +53,7 @@ import {
   MusicPlayerCard,
   StickyModuleNav,
   AulaTemplate,
+  ModuleSectionHeader,
 } from "./shared";
 import {
   LuImage,
@@ -2105,10 +2107,8 @@ export default function AulaConcordancia({
     }
   };
 
-  const isModuleUnlocked = (index: number) => {
-    if (isCompleted) return true;
-    if (index === 0) return true;
-    return completedModules.has(MODULE_DEFS[index - 1].id);
+  const isModuleUnlocked = (_index: number) => {
+    return true; // TEMPORÁRIO: Desbloqueado para revisão
   };
 
   return (
@@ -2137,19 +2137,17 @@ export default function AulaConcordancia({
           numero={1}
           titulo="Concordância Verbal"
           descricao="Estudo sistemático das normas que regem a harmonia entre o verbo e o seu sujeito, fundamentado na gramática normativa de Bechara para garantir a precisão do texto técnico."
-          gradiente="bg-gradient-to-br from-indigo-500 via-violet-600 to-indigo-800"
+          gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
         />
         <div className="space-y-[50px]">
           {/* FUNDAMENTAÇÃO TEÓRICA - CIÊNCIA ANTES DO FLOREIO */}
           <section className="bg-white dark:bg-slate-950 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 md:p-12 shadow-sm">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800">
-                <LuBookOpen size={32} />
-              </div>
-              <h2 className="text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">
-                Fundamentos da Concordância Verbal
-              </h2>
-            </div>
+            <ModuleSectionHeader
+              index="📚"
+              title="Fundamentos da Concordância Verbal"
+              variant="indigo"
+              className="mb-8"
+            />
 
             <div className="space-y-10">
               <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-400 max-w-4xl">
@@ -2212,12 +2210,12 @@ export default function AulaConcordancia({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-3xl font-bold text-indigo-700 dark:text-indigo-400">
-                1
-              </span>
-              A Lógica da Concordância (O Contrato Verbal)
-            </h2>
+            <ModuleSectionHeader
+              index={1}
+              title="A Lógica da Concordância (O Contrato Verbal)"
+              variant="indigo"
+              className="mb-8"
+            />
 
             <div className="space-y-6">
               <ContentAccordion
@@ -2335,12 +2333,12 @@ export default function AulaConcordancia({
 
           {/* ─── 2. REVISÃO DE TRANSITIVIDADE (PRÉ-REQUISITO) ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-yellow-500/20 flex items-center justify-center text-3xl font-bold text-yellow-700 dark:text-yellow-400">
-                2
-              </span>
-              Revisão Relâmpago: Transitividade Verbal
-            </h2>
+            <ModuleSectionHeader
+              index={2}
+              title="Revisão Relâmpago: Transitividade Verbal"
+              variant="indigo"
+              className="mb-8"
+            />
             <p className="text-muted-foreground">
               Para entender a concordância com a partícula{" "}
               <strong className="text-foreground">SE</strong> (o maior pesadelo
@@ -2958,12 +2956,12 @@ export default function AulaConcordancia({
 
           {/* ─── 3. CASOS DE SUJEITO COMPOSTO ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-yellow-500/20 flex items-center justify-center text-3xl font-bold text-yellow-700 dark:text-yellow-400">
-                3
-              </span>
-              Sujeito Composto
-            </h2>
+            <ModuleSectionHeader
+              index={3}
+              title="Sujeito Composto"
+              variant="indigo"
+              className="mb-8"
+            />
             <p className="text-muted-foreground">
               Quando o sujeito tem{" "}
               <strong className="text-foreground">dois ou mais núcleos</strong>,
@@ -3197,12 +3195,12 @@ export default function AulaConcordancia({
 
           {/* ─── 4. VERBOS IMPESSOAIS (HAVER/FAZER) ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-3xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-yellow-500/20 flex items-center justify-center text-3xl font-bold text-yellow-700 dark:text-yellow-400">
-                4
-              </span>
-              O "Calcanhar de Aquiles": Verbos Impessoais
-            </h2>
+            <ModuleSectionHeader
+              index={4}
+              title='O "Calcanhar de Aquiles": Verbos Impessoais'
+              variant="indigo"
+              className="mb-8"
+            />
 
             <AlertBox tipo="danger" titulo="🚫 ERRO MORTAL Nº 1">
               Nunca, jamais escreva "Houveram problemas" ou "Fazem dois anos".
@@ -3536,12 +3534,12 @@ export default function AulaConcordancia({
 
           {/* ─── 5. A PARTÍCULA 'SE' ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-yellow-500/20 flex items-center justify-center text-3xl font-bold text-yellow-700 dark:text-yellow-400">
-                5
-              </span>
-              O Pesadelo: Part&iacute;cula &quot;SE&quot;
-            </h2>
+            <ModuleSectionHeader
+              index={5}
+              title='O Pesadelo: Part&iacute;cula "SE"'
+              variant="indigo"
+              className="mb-8"
+            />
             <p className="text-muted-foreground">
               Aqui &eacute; onde a transitividade (M&oacute;dulo 2) salva sua
               vida. Existem{" "}
@@ -3821,12 +3819,12 @@ export default function AulaConcordancia({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-              <span className="w-14 h-14 rounded-full bg-indigo-500/10 flex items-center justify-center text-3xl font-black text-indigo-700 border border-indigo-500/20 shadow-inner">
-                6
-              </span>
-              Resumo e Multimedia
-            </h2>
+            <ModuleSectionHeader
+              index={6}
+              title="Resumo e Multimídia"
+              variant="indigo"
+              className="mb-8"
+            />
 
             <LessonTabs
               tabs={[
@@ -3947,7 +3945,8 @@ export default function AulaConcordancia({
               questoes={quizVerbalQuestions}
               titulo="Quiz de Fixação - Concordância Verbal"
               icone="📝"
-              numero={10}
+              numero={7}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
             {!completedModules.has("modulo-1") && (
@@ -3965,17 +3964,17 @@ export default function AulaConcordancia({
           numero={2}
           titulo="Concordância Nominal"
           descricao="Consiste na adaptação das palavras determinantes (artigos, adjetivos, pronomes adjetivos e numerais) ao gênero e número da palavra determinada (o substantivo), garantindo a coesão da frase."
-          gradiente="bg-gradient-to-br from-indigo-500 via-indigo-600 to-indigo-700"
+          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
         />
         <div className="space-y-[50px]">
           {/* ─── 1. REGRA GERAL & LOGICA (CONCEPT PRESENTATION) ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-emerald-500/20 flex items-center justify-center text-3xl font-bold text-emerald-700 dark:text-emerald-400 shrink-0">
-                1
-              </span>
-              O Conceito Central
-            </h2>
+            <ModuleSectionHeader
+              index={1}
+              title="O Conceito Central"
+              variant="emerald"
+              className="mb-2"
+            />
             <p className="text-muted-foreground text-sm ml-0 md:ml-[60px] -mt-6 mb-8">
               Entenda a lógica por trás da regra
             </p>
@@ -4057,21 +4056,25 @@ export default function AulaConcordancia({
           </section>
 
           {/* ─── 2. CASOS ESPECIAIS: PALAVRAS PERIGOSAS (CARROSSEL) ─── */}
-          <CardCarousel
-            titulo="Palavras Perigosas (Decore Agora!)"
-            subtitulo="Baseado nas palavras mais cobradas pela CESGRANRIO em provas de 2020 a 2024 (Petrobras, Transpetro, Banco do Brasil)."
-            numeroBadge={2}
-            cards={PALAVRAS_PERIGOSAS_CARDS}
-          />
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={2}
+              title="Palavras Perigosas (Decore Agora!)"
+              description="Baseado nas palavras mais cobradas pela CESGRANRIO em provas de 2020 a 2024 (Petrobras, Transpetro, Banco do Brasil)."
+              variant="emerald"
+              className="mb-8"
+            />
+            <CardCarousel cards={PALAVRAS_PERIGOSAS_CARDS} />
+          </section>
 
           {/* ─── 3. INTERATIVO: CERTO OU ERRADO? ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-emerald-500/20 flex items-center justify-center text-lg font-bold text-emerald-700 dark:text-emerald-400">
-                3
-              </span>
-              Palavras Invari&aacute;veis e Arm&aacute;veis
-            </h2>
+            <ModuleSectionHeader
+              index={3}
+              title="Palavras Invari&aacute;veis e Arm&aacute;veis"
+              variant="emerald"
+              className="mb-6"
+            />
             <p className="text-muted-foreground">
               Existem palavras que{" "}
               <strong className="text-foreground">nunca mudam</strong>{" "}
@@ -4378,12 +4381,12 @@ export default function AulaConcordancia({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-              <span className="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center text-3xl font-black text-emerald-700 border border-emerald-500/20 shadow-inner">
-                4
-              </span>
-              Resumo e Multimedia
-            </h2>
+            <ModuleSectionHeader
+              index={4}
+              title="Resumo e Multimídia"
+              variant="emerald"
+              className="mb-8"
+            />
 
             <LessonTabs
               tabs={[
@@ -4509,6 +4512,7 @@ export default function AulaConcordancia({
               titulo="Quiz de Fixação - Concordância Nominal"
               icone="🧠"
               numero={10}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
             {!completedModules.has("modulo-2") && (
@@ -4531,12 +4535,12 @@ export default function AulaConcordancia({
         <div className="space-y-[50px]">
           {/* ─── 1. ESTRATÉGIA DE GUERRA ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-violet-500/20 flex items-center justify-center text-3xl font-bold text-violet-700 dark:text-violet-400">
-                1
-              </span>
-              O Algoritmo da Aprova&ccedil;&atilde;o
-            </h2>
+            <ModuleSectionHeader
+              index={1}
+              title="O Algoritmo da Aprovação"
+              variant="violet"
+              className="mb-6"
+            />
             <p className="text-muted-foreground">
               Siga este m&eacute;todo em{" "}
               <strong className="text-foreground">
@@ -4781,12 +4785,12 @@ export default function AulaConcordancia({
 
           {/* ─── 2. DESAFIO DINÂMICO ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-3xl font-bold text-red-700 dark:text-red-400">
-                2
-              </span>
-              Desafio Prático: Identifique o Erro
-            </h2>
+            <ModuleSectionHeader
+              index={2}
+              title="Desafio Prático: Identifique o Erro"
+              variant="violet"
+              className="mb-8"
+            />
 
             {shuffledChallenges.length > 0 && (
               <div className="space-y-8">
@@ -4849,7 +4853,14 @@ export default function AulaConcordancia({
                         (prev) => (prev + 1) % shuffledChallenges.length,
                       )
                     }
-                    className="px-8 py-3 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white rounded-full text-base font-bold shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all flex items-center justify-center gap-2 active:scale-95 transform hover:-translate-y-0.5"
+                    className={cn(
+                      "px-8 py-3 text-white rounded-full text-base font-bold shadow-lg transition-all flex items-center justify-center gap-2 active:scale-95 transform hover:-translate-y-0.5",
+                      materiaCor.includes("blue")
+                        ? "bg-gradient-to-r from-blue-600 to-cyan-600 shadow-blue-500/20 hover:shadow-blue-500/40"
+                        : materiaCor.includes("emerald")
+                          ? "bg-gradient-to-r from-emerald-600 to-green-600 shadow-emerald-500/20 hover:shadow-emerald-500/40"
+                          : "bg-gradient-to-r from-indigo-600 to-violet-600 shadow-indigo-500/20 hover:shadow-indigo-500/40",
+                    )}
                   >
                     🔄 Gerar Novo Desafio
                   </button>
@@ -4859,12 +4870,12 @@ export default function AulaConcordancia({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-              <span className="w-14 h-14 rounded-full bg-violet-500/10 flex items-center justify-center text-3xl font-black text-violet-700 border border-violet-500/20 shadow-inner">
-                3
-              </span>
-              Resumo e Multimedia
-            </h2>
+            <ModuleSectionHeader
+              index={3}
+              title="Resumo e Multimídia"
+              variant="violet"
+              className="mb-8"
+            />
 
             <LessonTabs
               tabs={[
@@ -4980,7 +4991,8 @@ export default function AulaConcordancia({
               questoes={quizPraticoQuestions}
               titulo="Simulado Final - Estilo Banca"
               icone="🏆"
-              numero={10}
+              numero={4}
+              variant="violet"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -4993,16 +5005,16 @@ export default function AulaConcordancia({
           numero={4}
           titulo="Casos de Elite"
           descricao="Aprofundamento em tópicos complexos: porcentagens, frações, pronomes relativos e expressões partitivas que definem a aprovação."
-          gradiente="bg-gradient-to-br from-amber-600 via-orange-600 to-red-700"
+          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-amber-500/20 flex items-center justify-center text-3xl font-bold text-amber-700 dark:text-amber-400">
-                1
-              </span>
-              Porcentagens e Frações
-            </h2>
+            <ModuleSectionHeader
+              index={1}
+              title="Porcentagens e Frações"
+              variant="amber"
+              className="mb-8"
+            />
             <div className="grid md:grid-cols-2 gap-6">
               <div className="p-6 bg-amber-500/5 rounded-xl border border-amber-500/10">
                 <h4 className="font-bold text-amber-700 dark:text-amber-400 mb-2">
@@ -5044,12 +5056,12 @@ export default function AulaConcordancia({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-3xl font-bold text-red-700 dark:text-red-400">
-                2
-              </span>
-              Pronomes Relativos: QUE e QUEM
-            </h2>
+            <ModuleSectionHeader
+              index={2}
+              title="Pronomes Relativos: QUE e QUEM"
+              variant="amber"
+              className="mb-8"
+            />
             <div className="space-y-4">
               <div className="p-6 bg-red-500/5 rounded-xl border border-red-500/10">
                 <p className="font-bold mb-2">Sujeito é o relativo "QUE":</p>
@@ -5081,12 +5093,12 @@ export default function AulaConcordancia({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-              <span className="w-14 h-14 rounded-full bg-amber-500/10 flex items-center justify-center text-3xl font-black text-amber-700 border border-amber-500/20 shadow-inner">
-                3
-              </span>
-              Resumo e Multimedia
-            </h2>
+            <ModuleSectionHeader
+              index={3}
+              title="Resumo e Multimídia"
+              variant="amber"
+              className="mb-8"
+            />
 
             <LessonTabs
               tabs={[
@@ -5141,6 +5153,7 @@ export default function AulaConcordancia({
               titulo="Desafio de Elite - Casos Complexos"
               icone="🔥"
               numero={10}
+              variant="amber"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -5153,13 +5166,16 @@ export default function AulaConcordancia({
           numero={5}
           titulo="Laboratório Cesgranrio"
           descricao="Simulado final com questões de alto nível e revisão dos pontos críticos para garantir sua vaga na Petrobras."
-          gradiente="bg-gradient-to-br from-slate-700 via-slate-800 to-black"
+          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm text-center">
-            <h2 className="text-4xl font-black text-foreground mb-6">
-              Missão Cumprida?
-            </h2>
+            <ModuleSectionHeader
+              index="🎯"
+              title="Missão Cumprida?"
+              variant="rose"
+              className="mb-8"
+            />
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
               Você percorreu toda a gramática de concordância. Agora, o desafio
               final testará sua atenção aos detalhes mais sórdidos das bancas.
@@ -5181,12 +5197,12 @@ export default function AulaConcordancia({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-              <span className="w-14 h-14 rounded-full bg-slate-500/10 flex items-center justify-center text-3xl font-black text-slate-700 border border-slate-500/20 shadow-inner">
-                2
-              </span>
-              Resumo Final e Revisão
-            </h2>
+            <ModuleSectionHeader
+              index={2}
+              title="Resumo Final e Revisão"
+              variant="rose"
+              className="mb-8"
+            />
 
             <LessonTabs
               tabs={[
@@ -5241,6 +5257,7 @@ export default function AulaConcordancia({
               titulo="Grande Simulado Final - Petrobras Quest"
               icone="🏆"
               numero={10}
+              variant="rose"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>

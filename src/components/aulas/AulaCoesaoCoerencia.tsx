@@ -42,7 +42,9 @@ import {
   MusicPlayerCard,
   QuizQuestion,
   AulaTemplate,
+  ModuleSectionHeader,
 } from "./shared";
+import { cn } from "@/lib/utils";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
@@ -432,10 +434,11 @@ export default function AulaCoesaoCoerencia({
     }
   };
 
-  const isModuleUnlocked = (index: number) => {
-    if (isLessonCompleted) return true;
-    if (index === 0) return true;
-    return completedModules.has(MODULE_DEFS[index - 1].id);
+  const isModuleUnlocked = (_index: number) => {
+    return true; // TODO: Restaurar lógica de desbloqueio após testes
+    // if (isLessonCompleted) return true;
+    // if (index === 0) return true;
+    // return completedModules.has(MODULE_DEFS[index - 1].id);
   };
 
   // Shuffled questions/challenges
@@ -500,16 +503,16 @@ export default function AulaCoesaoCoerencia({
             numero={1}
             titulo="Coesão Textual"
             descricao="Aprenda a conectar ideias e frases para criar um tecido textual fluido e lógico."
-            gradiente="bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700"
+            gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
           />
 
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
-            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-              <span className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-3xl font-black text-primary border border-primary/20 shadow-inner">
-                1
-              </span>
-              Coesão Referencial
-            </h2>
+            <ModuleSectionHeader
+              index={1}
+              title="Coesão Referencial"
+              description="Entenda como os termos se conectam para manter a unidade do texto."
+              variant="indigo"
+            />
 
             {/* Definição Pedagógica de Coesão Referencial */}
             <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8 space-y-4">
@@ -711,12 +714,12 @@ export default function AulaCoesaoCoerencia({
 
           {/* 1.2 Coesão Sequencial */}
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
-            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-              <span className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-3xl font-black text-primary border border-primary/20 shadow-inner">
-                2
-              </span>
-              Coesão Sequencial
-            </h2>
+            <ModuleSectionHeader
+              index={2}
+              title="Coesão Sequencial"
+              description="O uso de conectivos para estabelecer relações lógicas entre as partes do texto."
+              variant="indigo"
+            />
             <p className="text-xl md:text-2xl text-muted-foreground font-medium italic border-l-4 border-primary/30 pl-8 py-3 max-w-4xl">
               Refere-se à organização lógica e temporal do texto através do uso
               preciso de conectivos.
@@ -750,21 +753,17 @@ export default function AulaCoesaoCoerencia({
                 </p>
               </div>
 
-              <CardCarousel
-                titulo="Operadores Argumentativos"
-                subtitulo="As ferramentas fundamentais para construir a lógica do seu texto."
-                cards={CONECTIVOS_CARDS}
-              />
+              <CardCarousel cards={CONECTIVOS_CARDS} />
             </div>
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-              <span className="w-14 h-14 rounded-full bg-indigo-500/10 flex items-center justify-center text-3xl font-black text-indigo-700 border border-indigo-500/20 shadow-inner">
-                3
-              </span>
-              Resumo e Multimedia
-            </h2>
+            <ModuleSectionHeader
+              index={3}
+              title="Resumo e Multimídia"
+              description="Consolide o aprendizado com vídeos, resumos visuais e áudio."
+              variant="indigo"
+            />
 
             <LessonTabs
               tabs={[
@@ -900,6 +899,7 @@ export default function AulaCoesaoCoerencia({
               titulo="Quizz: Coesão Textual"
               icone="💬"
               numero={4}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -919,12 +919,12 @@ export default function AulaCoesaoCoerencia({
           />
 
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
-            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-              <span className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-3xl font-black text-emerald-600 border border-emerald-500/20 shadow-inner">
-                1
-              </span>
-              Fundamentos Pedagógicos
-            </h2>
+            <ModuleSectionHeader
+              index={1}
+              title="Fundamentos Pedagógicos"
+              description="A base teórica para compreender a lógica interna do texto."
+              variant="emerald"
+            />
 
             {/* Definição Pedagógica de Coerência */}
             <div className="bg-emerald-500/5 border border-emerald-500/10 rounded-3xl p-8 space-y-4">
@@ -1069,12 +1069,12 @@ export default function AulaCoesaoCoerencia({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-              <span className="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center text-3xl font-black text-emerald-700 border border-emerald-500/20 shadow-inner">
-                2
-              </span>
-              Resumo e Multimedia
-            </h2>
+            <ModuleSectionHeader
+              index={2}
+              title="Resumo e Multimídia"
+              description="Fixe os conceitos de coerência com ferramentas visuais e auditivas."
+              variant="emerald"
+            />
 
             <LessonTabs
               tabs={[
@@ -1202,6 +1202,7 @@ export default function AulaCoesaoCoerencia({
               titulo="Desafio: Coerência Lógica"
               icone="🧠"
               numero={4}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -1222,12 +1223,12 @@ export default function AulaCoesaoCoerencia({
 
           {/* Desafio Prático */}
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
-            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-              <span className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl font-black text-primary border border-primary/20 shadow-inner">
-                1
-              </span>
-              Diagnóstico Lógico
-            </h2>
+            <ModuleSectionHeader
+              index={1}
+              title="Diagnóstico Lógico"
+              description="Identifique incoerências e pratique a correção textual."
+              variant="violet"
+            />
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
               <div className="space-y-6">
@@ -1273,7 +1274,14 @@ export default function AulaCoesaoCoerencia({
                     (prev) => (prev + 1) % shuffledChallenges.length,
                   )
                 }
-                className="px-10 py-5 bg-primary text-primary-foreground rounded-3xl font-black hover:scale-105 transition-all flex items-center gap-4 shadow-2xl shadow-primary/30 text-xl group"
+                className={cn(
+                  "px-10 py-5 text-primary-foreground rounded-3xl font-black hover:scale-105 transition-all flex items-center gap-4 shadow-2xl text-xl group",
+                  materiaCor.includes("blue")
+                    ? "bg-blue-600 shadow-blue-500/30"
+                    : materiaCor.includes("emerald")
+                      ? "bg-emerald-600 shadow-emerald-500/30"
+                      : "bg-indigo-600 shadow-indigo-500/30",
+                )}
               >
                 <LuZap className="w-6 h-6 fill-current group-hover:animate-pulse" />
                 Próximo Caso Clínico
@@ -1282,12 +1290,12 @@ export default function AulaCoesaoCoerencia({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-              <span className="w-14 h-14 rounded-full bg-violet-500/10 flex items-center justify-center text-3xl font-black text-violet-700 border border-violet-500/20 shadow-inner">
-                2
-              </span>
-              Resumo e Multimedia
-            </h2>
+            <ModuleSectionHeader
+              index={3}
+              title="Resumo e Multimídia"
+              description="Materiais de apoio para consolidar os conceitos práticos."
+              variant="violet"
+            />
 
             <LessonTabs
               tabs={[
@@ -1396,7 +1404,8 @@ export default function AulaCoesaoCoerencia({
               questoes={quizPraticoQuestions}
               titulo="Simulado Técnico"
               icone="🏆"
-              numero={3}
+              numero={4}
+              variant="violet"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -1416,12 +1425,12 @@ export default function AulaCoesaoCoerencia({
           />
 
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
-            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-              <span className="w-14 h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center text-3xl font-black text-amber-600 border border-amber-500/20 shadow-inner">
-                1
-              </span>
-              O Poder da Concessão
-            </h2>
+            <ModuleSectionHeader
+              index={1}
+              title="O Poder da Concessão"
+              description="Domine os conectivos concessivos e de oposição para fortalecer sua argumentação."
+              variant="amber"
+            />
 
             <ContentAccordion
               titulo="Concessão vs Oposição"
@@ -1473,6 +1482,7 @@ export default function AulaCoesaoCoerencia({
             titulo="Desafio de Elite"
             icone="🎖️"
             numero={2}
+            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </div>
@@ -1487,16 +1497,16 @@ export default function AulaCoesaoCoerencia({
             numero={5}
             titulo="Laboratório Final"
             descricao="Sintetize tudo e prepare-se para gabaritar a prova da Cesgranrio."
-            gradiente="bg-gradient-to-br from-slate-600 via-slate-700 to-slate-800"
+            gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
           />
 
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
-            <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-              <span className="w-14 h-14 rounded-2xl bg-slate-500/10 flex items-center justify-center text-3xl font-black text-slate-600 border border-slate-500/20 shadow-inner">
-                1
-              </span>
-              Sua Bússola de Revisão
-            </h2>
+            <ModuleSectionHeader
+              index={1}
+              title="Sua Bússola de Revisão"
+              description="Guia rápido para garantir coesão e coerência na hora da prova."
+              variant="rose"
+            />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="p-6 bg-background rounded-2xl border border-border shadow-sm">
@@ -1529,6 +1539,7 @@ export default function AulaCoesaoCoerencia({
             titulo="Simulado de Gabarito"
             icone="🏆"
             numero={2}
+            variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
 

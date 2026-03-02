@@ -78,12 +78,12 @@ const QUIZ_M1_POOL: QuizQuestion[] = [
     ],
     correta: "A",
     explicacao:
-      'Crase é a contração da preposição "a" exigida pelo termo regente com o artigo "a" (ou pronomes demonstrativos) do termo regido.',
+      'Crase é a contração da preposição "a" exigida pelo termo regente with o artigo "a" (ou pronomes demonstrativos) do termo regido.',
   },
   {
     id: 2,
     pergunta:
-      'Qual a "Regra de Ouro" para identificar a crase diante de palavras femininas?',
+      'Qual a "Regra de Ouro" for identificar a crase diante de palavras femininas?',
     opcoes: [
       {
         label: "A",
@@ -132,8 +132,8 @@ const QUIZ_M2_POOL: QuizQuestion[] = [
     opcoes: [
       { label: "A", valor: "Palavras femininas" },
       { label: "B", valor: "Verbos" },
-      { label: "C", valor: "Horas" },
-      { label: "D", valor: "Locuções adverbiais" },
+      { label: "D", valor: "Horas" },
+      { label: "C", valor: "Locuções adverbiais" },
     ],
     correta: "B",
     explicacao:
@@ -250,7 +250,7 @@ const QUIZ_FINAL_POOL: QuizQuestion[] = [
     ],
     correta: "B",
     explicacao:
-      'A crase pode ocorrer com os pronomes demonstrativos Aquele(s), Aquela(s), Aquilo. Se o verbo pede "A" e a palavra seguinte começa com "A", funde-se: Àquele.',
+      'A crase pode ocorrer com os pronomes demonstrativos Aquele(s), Aquela(s), Aquilo. Se o verbo pede "A" e a palavra seguinte começa with "A", funde-se: Àquele.',
   },
 ];
 
@@ -525,10 +525,8 @@ export default function AulaCrase({
     }
   };
 
-  const isModuleUnlocked = (index: number) => {
-    if (isCompleted) return true;
-    if (index === 0) return true;
-    return completedModules.has(MODULE_DEFS[index - 1].id);
+  const isModuleUnlocked = (_index: number) => {
+    return true; // TEMPORÁRIO: Desbloqueado para revisão
   };
 
   if (loading) return null;
@@ -563,17 +561,17 @@ export default function AulaCrase({
             numero={1}
             titulo="Conceito e Regra Geral"
             descricao="A matemática da língua: Preposição A + Artigo A = À."
-            gradiente="bg-gradient-to-br from-pink-600 via-rose-600 to-red-700"
+            gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
           />
 
           {/* SEÇÃO 1: O QUE É CRASE */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-pink-500/20 flex items-center justify-center text-3xl font-bold text-pink-700 dark:text-pink-400">
-                1
-              </span>
-              Crase não é acento!
-            </h2>
+            <ModuleSectionHeader
+              variant="indigo"
+              index={1}
+              title="Crase não é acento!"
+              description="Muita gente confunde, mas Crase é o nome do fenômeno de fusão de duas vogais iguais."
+            />
             <div className="prose dark:prose-invert max-w-none text-muted-foreground leading-relaxed">
               <p>
                 Muita gente confunde, mas <strong>Crase</strong> é o nome do
@@ -618,16 +616,12 @@ export default function AulaCrase({
 
           {/* SEÇÃO 2: REGRA DE OURO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-3xl font-bold text-indigo-700 dark:text-indigo-400">
-                2
-              </span>
-              Regra de Ouro: A Troca Mágica
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              Na dúvida se tem crase antes de uma palavra feminina, troque-a por
-              uma masculina correspondente.
-            </p>
+            <ModuleSectionHeader
+              variant="indigo"
+              index={2}
+              title="Regra de Ouro: A Troca Mágica"
+              description="Na dúvida se tem crase antes de uma palavra feminina, troque-a por uma masculina correspondente."
+            />
 
             <FlipCard
               frente={currentExample.frente}
@@ -671,12 +665,12 @@ export default function AulaCrase({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <h2 className="text-3xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-rose-500/20 flex items-center justify-center text-3xl font-bold text-rose-700 dark:text-rose-400">
-                3
-              </span>
-              Resumo do Módulo 1
-            </h2>
+            <ModuleSectionHeader
+              variant="indigo"
+              index={3}
+              title="Resumo do Módulo 1"
+              description="Revise os conceitos principais e assista à vídeo-aula."
+            />
 
             <LessonTabs
               tabs={[
@@ -816,6 +810,7 @@ export default function AulaCrase({
             icone="🧠"
             numero={4}
             questoes={quizM1}
+            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
@@ -828,20 +823,17 @@ export default function AulaCrase({
             numero={2}
             titulo="Proibições e Casos Facultativos"
             descricao="Onde a crase é proibida e onde você escolhe usar."
-            gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-600"
+            gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
           />
 
           {/* SEÇÃO 1: OS PROIBIDOS */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-3xl font-bold text-red-700 dark:text-red-400">
-                1
-              </span>
-              Mapa das Proibições
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              Nunca use crase nestes casos. É erro fatal!
-            </p>
+            <ModuleSectionHeader
+              variant="emerald"
+              index={1}
+              title="Mapa das Proibições"
+              description="Nunca use crase nestes casos. É erro fatal!"
+            />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-900 p-6 rounded-xl flex items-start gap-4">
@@ -892,20 +884,14 @@ export default function AulaCrase({
 
           {/* SEÇÃO 2: OS FACULTATIVOS */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-green-500/20 flex items-center justify-center text-3xl font-bold text-green-700 dark:text-green-400">
-                2
-              </span>
-              Casos Facultativos (Opcionais)
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              Aqui você escolhe. Tanto faz colocar ou não, a gramática aceita
-              ambos.
-            </p>
-
+            <ModuleSectionHeader
+              variant="emerald"
+              index={2}
+              title="Casos Facultativos (Opcionais)"
+              description="Aqui você escolhe. Tanto faz colocar ou não, a gramática aceita ambos."
+              className="mb-8"
+            />
             <CardCarousel
-              titulo="Casos Facultativos"
-              subtitulo="Situações onde você escolhe se usa ou não a crase."
               cards={[
                 {
                   icone: <LuUser className="text-xl text-blue-500" />,
@@ -981,12 +967,12 @@ export default function AulaCrase({
             />
           </section>
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-amber-500/20 flex items-center justify-center text-3xl font-bold text-amber-700 dark:text-amber-400">
-                3
-              </span>
-              Resumo do Módulo 2
-            </h2>
+            <ModuleSectionHeader
+              variant="emerald"
+              index={3}
+              title="Resumo do Módulo 2"
+              description="Sintetize as proibições e os casos opcionais."
+            />
 
             <LessonTabs
               tabs={[
@@ -1094,6 +1080,7 @@ export default function AulaCrase({
             icone="🛡️"
             numero={4}
             questoes={quizM2}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
@@ -1111,12 +1098,12 @@ export default function AulaCrase({
 
           {/* SEÇÃO 1: LUGARES E HORAS */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-violet-500/20 flex items-center justify-center text-3xl font-bold text-violet-700 dark:text-violet-400">
-                1
-              </span>
-              Lugares e Horas
-            </h2>
+            <ModuleSectionHeader
+              variant="violet"
+              index={1}
+              title="Lugares e Horas"
+              description="O famoso macete do 'Volto DA' e as regras para horários exatos."
+            />
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="space-y-4">
@@ -1146,7 +1133,7 @@ export default function AulaCrase({
 
               <div className="space-y-4">
                 <h3 className="text-xl font-bold flex items-center gap-2">
-                  <span className="text-lg">Clock</span> Horas
+                  <LuClock className="text-violet-500" /> Horas
                 </h3>
                 <p className="text-muted-foreground">
                   Horas exatas (relógio) sempre levam crase.
@@ -1168,21 +1155,15 @@ export default function AulaCrase({
 
           {/* SEÇÃO 2: CASA, TERRA E DISTÂNCIA */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-violet-500/20 flex items-center justify-center text-3xl font-bold text-violet-700 dark:text-violet-400">
-                2
-              </span>
-              Caso Especial: Casa, Terra e Distância
-            </h2>
-            <p className="text-muted-foreground">
-              Regra geral: Se não estiver especificado,{" "}
-              <strong>não tem crase</strong>. Se especificar,{" "}
-              <strong>tem crase</strong>.
-            </p>
+            <ModuleSectionHeader
+              variant="violet"
+              index={2}
+              title="Caso Especial: Casa, Terra e Distância"
+              description="Se não estiver especificado, não tem crase. Se especificar, tem crase."
+              className="mb-8"
+            />
 
             <CardCarousel
-              titulo="Casos Especiais"
-              subtitulo="Detalhes que fazem a diferença em provas."
               cards={[
                 {
                   icone: <LuBuilding className="text-xl text-indigo-500" />,
@@ -1265,9 +1246,12 @@ export default function AulaCrase({
 
           {/* CARDS COMPARATIVOS FINAIS */}
           <div className="bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900 rounded-2xl p-8 text-white relative overflow-hidden">
-            <h2 className="text-2xl font-bold mb-6 text-center">
-              Resumo Final: Crase com Pronomes Demonstrativos
-            </h2>
+            <ModuleSectionHeader
+              index={3}
+              title="Resumo Final: Crase com Pronomes Demonstrativos"
+              variant="violet"
+              className="mb-8"
+            />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center items-center justify-items-center">
               <div>
                 <div className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2">
@@ -1291,12 +1275,12 @@ export default function AulaCrase({
           </div>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-violet-500/20 flex items-center justify-center text-3xl font-bold text-violet-700 dark:text-violet-400">
-                3
-              </span>
-              Resumo do Módulo 3
-            </h2>
+            <ModuleSectionHeader
+              variant="violet"
+              index={4}
+              title="Resumo do Módulo 3"
+              description="Encerramento dos casos especiais e prática final."
+            />
 
             <LessonTabs
               tabs={[
@@ -1402,8 +1386,9 @@ export default function AulaCrase({
           <QuizInterativo
             titulo="Desafio Final: Casos Especiais"
             icone="🏆"
-            numero={4}
+            numero={5}
             questoes={quizFinal}
+            variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>
@@ -1411,6 +1396,3 @@ export default function AulaCrase({
     </AulaTemplate>
   );
 }
-
-// ── Shared Components Exports ─────────────────────────────────────────────
-// (Assuming shared.tsx exports are used directly)

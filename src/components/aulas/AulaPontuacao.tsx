@@ -1,10 +1,10 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { useState, useEffect, useCallback } from "react";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import {
-  SectionTitle,
   FlipCard,
   ContentAccordion,
   CardCarousel,
@@ -23,6 +23,7 @@ import {
   AulaProps,
   AulaTemplate,
   getRandomQuestions,
+  ModuleSectionHeader,
 } from "./shared";
 import {
   LuTriangleAlert as LuAlertTriangle,
@@ -45,6 +46,7 @@ import {
   LuGitMerge,
   LuPause,
   LuEye,
+  LuLightbulb,
 } from "react-icons/lu";
 
 // ── DEFINIÇÃO DOS MÓDULOS ──
@@ -217,15 +219,9 @@ export default function AulaPontuacao({
     }
   }, [currentProgress, hasSyncedInitial, loading]);
 
-  const isModuleUnlocked = useCallback(
-    (moduleIndex: number) => {
-      if (isCompleted) return true; // Se a aula está completa, tudo desbloqueado
-      if (moduleIndex === 0) return true;
-      const prevModuleId = MODULE_DEFS[moduleIndex - 1]?.id;
-      return prevModuleId ? completedModules.has(prevModuleId) : false;
-    },
-    [completedModules, isCompleted],
-  );
+  const isModuleUnlocked = useCallback((moduleIndex: number) => {
+    return true; // DESBLOQUEADO TEMPORARIAMENTE PARA TESTES
+  }, []);
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
@@ -283,15 +279,17 @@ export default function AulaPontuacao({
           numero={1}
           titulo="Sintaxe e Fundamentos"
           descricao="A base de tudo: por que a vírgula não é um respiro?"
-          gradiente="bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-600"
+          gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
         />
 
         {/* 1.1 DESAFIO INICIAL */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <SectionTitle
-            numero="1.1"
-            titulo="Desafio Inicial: Vírgula ou Pausa?"
-            subtitulo="Clique nos cards para testar seu instinto gramatical."
+          <ModuleSectionHeader
+            index={1}
+            title="Desafio Inicial: Vírgula ou Pausa?"
+            description="Clique nos cards para testar seu instinto gramatical."
+            variant="indigo"
+            className="mb-8"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -338,16 +336,18 @@ export default function AulaPontuacao({
 
         {/* 1.2 A ORDEM SAGRADA */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <SectionTitle
-            numero="1.2"
-            titulo="A Ordem Sagrada: S-V-C"
-            subtitulo="O pilar mestre da sintaxe portuguesa."
+          <ModuleSectionHeader
+            index={2}
+            title="A Ordem Sagrada: S-V-C"
+            description="O pilar mestre da sintaxe portuguesa."
+            variant="indigo"
+            className="mb-8"
           />
 
           <ContentAccordion
             titulo="Dominando os Elementos Essenciais"
             icone={<LuBrain />}
-            corIndicador="bg-indigo-500"
+            corIndicador="bg-blue-500"
             defaultOpen={true}
             slides={[
               {
@@ -452,10 +452,12 @@ export default function AulaPontuacao({
 
         {/* 1.3 QUANDO A ORDEM É QUEBRADA */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <SectionTitle
-            numero="1.3"
-            titulo="Quando a Ordem Muda"
-            subtitulo="Entenda a Ordem Inversa e onde as vírgulas começam a nascer."
+          <ModuleSectionHeader
+            index={3}
+            title="Quando a Ordem Muda"
+            description="Entenda a Ordem Inversa e onde as vírgulas começam a nascer."
+            variant="indigo"
+            className="mb-8"
           />
 
           <p className="text-lg text-muted-foreground leading-relaxed italic border-l-4 border-indigo-500 pl-6 py-2 bg-indigo-500/5 rounded-r-xl">
@@ -531,10 +533,12 @@ export default function AulaPontuacao({
 
         {/* 1.4 MITOS VS VERDADES */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <SectionTitle
-            numero="1.4"
-            titulo="Mito vs. Verdade"
-            subtitulo="Extermine os vícios que te fazem errar na prova."
+          <ModuleSectionHeader
+            index={4}
+            title="Mito vs. Verdade"
+            description="Extermine os vícios que te fazem errar na prova."
+            variant="indigo"
+            className="mb-8"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -594,12 +598,12 @@ export default function AulaPontuacao({
 
         {/* RESUMO MÓDULO 1 */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-            <span className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl font-black text-indigo-700 border border-indigo-500/20 shadow-inner">
-              3
-            </span>
-            Resumo e Multimedia
-          </h2>
+          <ModuleSectionHeader
+            index={5}
+            title="Resumo e Multimídia"
+            variant="indigo"
+            className="mb-8"
+          />
           <LessonTabs
             tabs={[
               {
@@ -689,7 +693,8 @@ export default function AulaPontuacao({
           <QuizInterativo
             questoes={QUIZ_MODULO_1}
             titulo="Quiz de Fixação: Fundamentos"
-            numero={1}
+            numero={6}
+            variant="indigo"
             icone="🧠"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
@@ -702,122 +707,284 @@ export default function AulaPontuacao({
           numero={2}
           titulo="A Vírgula (O Chefão)"
           descricao="Proibições Absolutas e Obrigações Inegociáveis."
-          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-600"
+          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
         />
 
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <SectionTitle
-            numero="2.1"
-            titulo="Regras Fundamentais"
-            subtitulo="Entenda quando a vírgula é proibida e quando é obrigatória."
+          <ModuleSectionHeader
+            index={1}
+            title="Regras Fundamentais"
+            description="Entenda a essência do uso da vírgula antes de mergulhar nas regras."
+            variant="emerald"
+            className="mb-8"
           />
-
-          <h2 className="text-3xl font-bold mb-8 mt-6 flex items-center gap-3">
-            <span className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg flex items-center justify-center text-xl font-bold">
-              VS
-            </span>
-            Proibições vs. Obrigações
-          </h2>
-
-          <ContentAccordion
-            titulo="Guia Definitivo da Vírgula"
-            icone={<LuPenTool />}
-            corIndicador="bg-orange-500"
-            defaultOpen={true}
-            slides={[
+          <CardCarousel
+            cards={[
               {
-                titulo: "⛔ PROIBIÇÕES",
-                icone: "🛑",
-                conteudo: (
-                  <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-red-600 dark:text-red-400 flex items-center gap-2">
-                      <LuBan className="w-6 h-6" /> Onde NÃO usar
-                    </h3>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="bg-muted/40 p-5 rounded-xl border border-border">
-                        <strong className="block mb-2 text-foreground text-lg">
-                          Entre Sujeito e Verbo
-                        </strong>
-                        <div className="space-y-2">
-                          <div className="flex items-start gap-2 text-red-600 dark:text-red-400 text-sm">
-                            <LuX className="mt-0.5" /> "A Petrobras, anunciou
-                            lucro."
-                          </div>
-                          <div className="flex items-start gap-2 text-green-600 dark:text-green-400 text-sm">
-                            <LuCheck className="mt-0.5" /> "A Petrobras anunciou
-                            lucro."
-                          </div>
-                        </div>
-                      </div>
-                      <div className="bg-muted/40 p-5 rounded-xl border border-border">
-                        <strong className="block mb-2 text-foreground text-lg">
-                          Entre Verbo e Objeto
-                        </strong>
-                        <div className="space-y-2">
-                          <div className="flex items-start gap-2 text-red-600 dark:text-red-400 text-sm">
-                            <LuX className="mt-0.5" /> "O gerente pediu,
-                            relatórios."
-                          </div>
-                          <div className="flex items-start gap-2 text-green-600 dark:text-green-400 text-sm">
-                            <LuCheck className="mt-0.5" /> "O gerente pediu
-                            relatórios."
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                icone: <LuBrain className="text-emerald-500" />,
+                titulo: "Conceituação",
+                descricao: (
+                  <p className="text-sm">
+                    A vírgula é o sinal que marca <strong>pausas breves</strong>{" "}
+                    e indica a <strong>reorganização da frase</strong>. Ela não
+                    serve apenas para respirar, mas para governar a lógica
+                    sintática.
+                  </p>
+                ),
+              },
+              {
+                icone: <LuPenTool className="text-blue-500" />,
+                titulo: "Exemplos Práticos",
+                descricao: (
+                  <div className="space-y-2 text-sm">
+                    <p>
+                      • <em>"João, venha cá."</em> (Chamamento)
+                    </p>
+                    <p>
+                      • <em>"Comprei pregos, martelo e cola."</em> (Lista)
+                    </p>
                   </div>
                 ),
               },
               {
-                titulo: "✅ OBRIGAÇÕES",
-                icone: "📝",
+                icone: <LuLightbulb className="text-amber-500" />,
+                titulo: "Dicas de Ouro",
+                descricao: (
+                  <p className="text-sm italic">
+                    "Se o termo mudou de lugar ou se a explicação entrou no
+                    meio, a vírgula deve aparecer para isolar o intruso."
+                  </p>
+                ),
+              },
+              {
+                icone: <LuAlertTriangle className="text-rose-500" />,
+                titulo: "Exceções",
+                descricao: (
+                  <p className="text-sm">
+                    Em orações aditivas (com "e") onde os sujeitos são
+                    diferentes, a vírgula é <strong>facultativa</strong> mas
+                    recomendada: <em>"O sol saiu, e a chuva parou."</em>
+                  </p>
+                ),
+              },
+            ]}
+          />
+
+          <ModuleSectionHeader
+            index={2}
+            title="Proibições vs. Obrigações"
+            variant="emerald"
+            className="mb-8 mt-6"
+          />
+
+          <ContentAccordion
+            titulo="⛔ Proibições"
+            icone={<LuBan />}
+            corIndicador="bg-red-500"
+            defaultOpen={true}
+            slides={[
+              {
+                titulo: "Sujeito e Verbo",
+                icone: "🚫",
                 conteudo: (
-                  <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-green-600 dark:text-green-400 flex items-center gap-2">
-                      <LuCheckCircle className="w-6 h-6" /> Onde é OBRIGATÓRIO
-                    </h3>
-                    <CardCarousel
-                      titulo=""
-                      subtitulo=""
-                      cards={[
-                        {
-                          icone: <LuQuote className="text-purple-500" />,
-                          titulo: "Aposto Explicativo",
-                          descricao: (
-                            <>
-                              Explica o termo anterior. Sempre isolado!
-                              <p className="text-xs mt-2 italic text-muted-foreground">
-                                "Maria, <strong>gerente de RH</strong>, chegou."
-                              </p>
-                            </>
-                          ),
-                        },
-                        {
-                          icone: <LuAlertCircle className="text-orange-500" />,
-                          titulo: "Vocativo",
-                          descricao: (
-                            <>
-                              Chamamento. Sempre com vírgula!
-                              <p className="text-xs mt-2 italic text-muted-foreground">
-                                "<strong>João</strong>, venha cá."
-                              </p>
-                            </>
-                          ),
-                        },
-                        {
-                          icone: <LuBrain className="text-pink-500" />,
-                          titulo: "Conjunções Adversativas",
-                          descricao: (
-                            <>
-                              Antes de 'mas', 'porém', 'contudo'.
-                              <p className="text-xs mt-2 italic text-muted-foreground">
-                                "Estudei, <strong>mas</strong> não passei."
-                              </p>
-                            </>
-                          ),
-                        },
-                      ]}
-                    />
+                  <div className="space-y-4">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      O <strong>Sujeito</strong> e o <strong>Verbo</strong>{" "}
+                      formam um elo inquebrantável. Não importa o tamanho do
+                      sujeito: jamais coloque uma vírgula entre eles.
+                    </p>
+                    <div className="p-4 bg-red-500/5 rounded-xl border border-red-500/20">
+                      <p className="text-sm line-through text-red-500">
+                        ❌ "O plano de expansão das refinarias, foi aprovado."
+                      </p>
+                    </div>
+                    <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
+                      <p className="text-sm font-bold text-green-600 dark:text-green-400">
+                        ✅ "O plano de expansão das refinarias foi aprovado."
+                      </p>
+                    </div>
+                    <AlertBox tipo="warning" titulo="Dica de Ouro">
+                      A Cesgranrio adora sujeitos longos para forçar o candidato
+                      a "respirar" com vírgula. Não caia nessa!
+                    </AlertBox>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Verbo e Objeto",
+                icone: "⛔",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      O <strong>Verbo</strong> e seu{" "}
+                      <strong>Complemento</strong> (Objeto Direto ou Indireto)
+                      também não podem ser separados por vírgula.
+                    </p>
+                    <div className="p-4 bg-red-500/5 rounded-xl border border-red-500/20">
+                      <p className="text-sm line-through text-red-500">
+                        ❌ "O gerente pediu, relatórios detalhados."
+                      </p>
+                    </div>
+                    <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
+                      <p className="text-sm font-bold text-green-600 dark:text-green-400">
+                        ✅ "O gerente pediu relatórios detalhados."
+                      </p>
+                    </div>
+                    <AlertBox tipo="info" titulo="Lembre-se">
+                      O complemento (objeto) é a extensão natural do verbo.
+                      Separá-los é como cortar uma ponte ao meio.
+                    </AlertBox>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Nome e Adjunto Adnominal",
+                icone: "🔗",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      <strong>Adjuntos adnominais</strong> e{" "}
+                      <strong>complementos nominais</strong> são termos que se
+                      grudam ao nome. Não se separam com vírgula.
+                    </p>
+                    <div className="p-4 bg-red-500/5 rounded-xl border border-red-500/20">
+                      <p className="text-sm line-through text-red-500">
+                        ❌ "O amor, materno é incondicional."
+                      </p>
+                    </div>
+                    <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
+                      <p className="text-sm font-bold text-green-600 dark:text-green-400">
+                        ✅ "O amor materno é incondicional."
+                      </p>
+                    </div>
+                    <p className="text-xs text-muted-foreground italic">
+                      Exceção: Se houver um <strong>aposto explicativo</strong>{" "}
+                      entre vírgulas, aí sim se isola. Ex: "O amor, sentimento
+                      nobre, move o mundo."
+                    </p>
+                  </div>
+                ),
+              },
+            ]}
+          />
+
+          <ContentAccordion
+            titulo="✅ Obrigações"
+            icone={<LuCheckCircle />}
+            corIndicador="bg-green-500"
+            defaultOpen={false}
+            slides={[
+              {
+                titulo: "Aposto Explicativo",
+                icone: "💬",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      O <strong>aposto explicativo</strong> é uma informação
+                      extra que esclarece o termo anterior. Ele deve vir sempre
+                      isolado por vírgulas.
+                    </p>
+                    <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
+                      <p className="text-sm font-bold text-green-600 dark:text-green-400">
+                        ✅ "A Petrobras,{" "}
+                        <strong>maior empresa do Brasil</strong>, investe em
+                        renováveis."
+                      </p>
+                    </div>
+                    <AlertBox tipo="info" titulo="Macete">
+                      Se você retirar o aposto e a frase continuar fazendo
+                      sentido, as vírgulas estão corretas.
+                    </AlertBox>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Vocativo",
+                icone: "📢",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      O <strong>vocativo</strong> é o chamamento direto a
+                      alguém. Ele deve ser sempre isolado por vírgula,
+                      independentemente de onde apareça na frase.
+                    </p>
+                    <div className="grid gap-3">
+                      <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
+                        <p className="text-sm text-green-600 dark:text-green-400">
+                          ✅ "<strong>João</strong>, venha cá."
+                        </p>
+                      </div>
+                      <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
+                        <p className="text-sm text-green-600 dark:text-green-400">
+                          ✅ "Venha cá, <strong>João</strong>."
+                        </p>
+                      </div>
+                      <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
+                        <p className="text-sm text-green-600 dark:text-green-400">
+                          ✅ "Venha, <strong>João</strong>, até aqui."
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-xs text-muted-foreground italic">
+                      Note que o vocativo pode vir no início, no meio ou no fim
+                      da frase.
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Conjunções Adversativas",
+                icone: "⚡",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Antes das conjunções <strong>adversativas</strong> (mas,
+                      porém, contudo, todavia, entretanto, no entanto), a
+                      vírgula é <strong>obrigatória</strong>.
+                    </p>
+                    <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
+                      <p className="text-sm font-bold text-green-600 dark:text-green-400">
+                        ✅ "Houve lucro, <strong>contudo</strong> a dívida
+                        aumentou."
+                      </p>
+                    </div>
+                    <div className="p-4 bg-red-500/5 rounded-xl border border-red-500/20">
+                      <p className="text-sm line-through text-red-500">
+                        ❌ "Estudei muito porém não passei."
+                      </p>
+                    </div>
+                    <AlertBox tipo="warning" titulo="Cuidado">
+                      A conjunção "e" é aditiva e normalmente NÃO leva vírgula,
+                      a não ser que os sujeitos sejam diferentes.
+                    </AlertBox>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Adjunto Adverbial Deslocado",
+                icone: "📍",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Quando uma expressão de <strong>tempo</strong>,{" "}
+                      <strong>lugar</strong> ou <strong>modo</strong> é
+                      deslocada para o início da frase, a vírgula marca esse
+                      deslocamento.
+                    </p>
+                    <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
+                      <p className="text-sm font-bold text-green-600 dark:text-green-400">
+                        ✅ "Naquela manhã, tudo mudou na refinaria."
+                      </p>
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      Ordem direta (sem vírgula): "Tudo mudou na refinaria
+                      naquela manhã."
+                    </p>
+                    <AlertBox tipo="info" titulo="Exceção">
+                      Se o adjunto deslocado for curto (1-2 palavras), a vírgula
+                      é facultativa: "Ontem fui ao trabalho." ou "Ontem, fui ao
+                      trabalho."
+                    </AlertBox>
                   </div>
                 ),
               },
@@ -827,12 +994,12 @@ export default function AulaPontuacao({
 
         {/* RESUMO MÓDULO 2 */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-            <span className="w-14 h-14 rounded-2xl bg-orange-500/10 flex items-center justify-center text-3xl font-black text-orange-700 border border-orange-500/20 shadow-inner">
-              3
-            </span>
-            Resumo e Multimedia
-          </h2>
+          <ModuleSectionHeader
+            index={3}
+            title="Resumo e Multimídia"
+            variant="emerald"
+            className="mb-8"
+          />
           <LessonTabs
             tabs={[
               {
@@ -921,7 +1088,8 @@ export default function AulaPontuacao({
           <QuizInterativo
             questoes={QUIZ_MODULO_2}
             titulo="Quiz de Fixação: Vírgula"
-            numero={2}
+            numero={4}
+            variant="emerald"
             icone="✍️"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
@@ -934,96 +1102,88 @@ export default function AulaPontuacao({
           numero={3}
           titulo="Pontuação Avançada"
           descricao="Dois pontos, Ponto e Vírgula e a Maestria Final."
-          gradiente="bg-gradient-to-br from-purple-600 via-pink-600 to-rose-600"
+          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
         />
 
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <SectionTitle
-            numero="3.1"
-            titulo="Sinais Avançados"
-            subtitulo="Dominando o Ponto e Vírgula e os Dois Pontos."
+          <ModuleSectionHeader
+            index={1}
+            title="Sinais Avançados: Dois Pontos (:)"
+            description="Os dois pontos anunciam algo sucessivo: uma enumeração, uma citação, ou uma síntese."
+            variant="violet"
+            className="mb-8"
           />
+          <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2">
+            <h3 className="text-2xl font-bold flex items-center gap-3">
+              <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 p-2 rounded-lg">
+                <LuList />
+              </span>
+              A Janela da Explicação
+            </h3>
+            <p className="text-lg text-muted-foreground">
+              Os dois pontos anunciam algo sucessivo: uma enumeração, uma
+              citação, ou uma síntese.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-purple-50 dark:bg-purple-900/10 p-6 rounded-xl border border-purple-100 dark:border-purple-800">
+                <strong className="block text-purple-700 dark:text-purple-300 mb-2">
+                  Enumeração
+                </strong>
+                <p className="text-sm">"Comprei: caneta, lápis e borracha."</p>
+              </div>
+              <div className="bg-purple-50 dark:bg-purple-900/10 p-6 rounded-xl border border-purple-100 dark:border-purple-800">
+                <strong className="block text-purple-700 dark:text-purple-300 mb-2">
+                  Citação
+                </strong>
+                <p className="text-sm">"Ele disse: 'Estou pronto'."</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-          <TabbedContent
-            tabs={[
-              {
-                id: "doispontos",
-                label: "Dois Pontos (:)",
-                content: (
-                  <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2">
-                    <h3 className="text-2xl font-bold flex items-center gap-3">
-                      <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 p-2 rounded-lg">
-                        <LuList />
-                      </span>
-                      A Janela da Explicação
-                    </h3>
-                    <p className="text-lg text-muted-foreground">
-                      Os dois pontos anunciam algo sucessivo: uma enumeração,
-                      uma citação, ou uma síntese.
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="bg-purple-50 dark:bg-purple-900/10 p-6 rounded-xl border border-purple-100 dark:border-purple-800">
-                        <strong className="block text-purple-700 dark:text-purple-300 mb-2">
-                          Enumeração
-                        </strong>
-                        <p className="text-sm">
-                          "Comprei: caneta, lápis e borracha."
-                        </p>
-                      </div>
-                      <div className="bg-purple-50 dark:bg-purple-900/10 p-6 rounded-xl border border-purple-100 dark:border-purple-800">
-                        <strong className="block text-purple-700 dark:text-purple-300 mb-2">
-                          Citação
-                        </strong>
-                        <p className="text-sm">"Ele disse: 'Estou pronto'."</p>
-                      </div>
-                    </div>
-                  </div>
-                ),
-              },
-              {
-                id: "pontovirgula",
-                label: "Ponto e Vírgula (;)",
-                content: (
-                  <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2">
-                    <h3 className="text-2xl font-bold flex items-center gap-3">
-                      <span className="bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 p-2 rounded-lg">
-                        <LuClock />
-                      </span>
-                      A Pausa Maior
-                    </h3>
-                    <p className="text-lg text-muted-foreground">
-                      Intermediário entre a vírgula e o ponto. Use para listas
-                      (leis) ou para separar orações que JÁ TÊM vírgulas
-                      internas.
-                    </p>
-                    <div className="bg-yellow-50 dark:bg-yellow-900/10 border-l-4 border-yellow-500 p-6 rounded-r-xl">
-                      <strong className="block text-yellow-800 dark:text-yellow-200 mb-2">
-                        Exemplo Clássico:
-                      </strong>
-                      <p className="italic text-lg">
-                        "Uns trabalham muito, e ganham pouco; outros trabalham
-                        pouco, e ganham muito."
-                      </p>
-                      <p className="text-xs mt-3 text-muted-foreground">
-                        Note que o ponto e vírgula separa os dois grandes
-                        blocos, pois já existem vírgulas internas.
-                      </p>
-                    </div>
-                  </div>
-                ),
-              },
-            ]}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={2}
+            title="Sinais Avançados: Ponto e Vírgula (;)"
+            description="Intermediário entre a vírgula e o ponto. Use para listas ou orações complexas."
+            variant="violet"
+            className="mb-8"
           />
+          <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2">
+            <h3 className="text-2xl font-bold flex items-center gap-3">
+              <span className="bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 p-2 rounded-lg">
+                <LuClock />
+              </span>
+              A Pausa Maior
+            </h3>
+            <p className="text-lg text-muted-foreground">
+              Intermediário entre a vírgula e o ponto. Use para listas (leis) ou
+              para separar orações que JÁ TÊM vírgulas internas.
+            </p>
+            <div className="bg-yellow-50 dark:bg-yellow-900/10 border-l-4 border-yellow-500 p-6 rounded-r-xl">
+              <strong className="block text-yellow-800 dark:text-yellow-200 mb-2">
+                Exemplo Clássico:
+              </strong>
+              <p className="italic text-lg">
+                "Uns trabalham muito, e ganham pouco; outros trabalham pouco, e
+                ganham muito."
+              </p>
+              <p className="text-xs mt-3 text-muted-foreground">
+                Note que o ponto e vírgula separa os dois grandes blocos, pois
+                já existem vírgulas internas.
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* RESUMO MÓDULO 3 */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4 flex items-center gap-4 tracking-tighter">
-            <span className="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center text-3xl font-black text-purple-700 border border-purple-500/20 shadow-inner">
-              3
-            </span>
-            Resumo e Multimedia
-          </h2>
+          <ModuleSectionHeader
+            index={3}
+            title="Resumo e Multimídia"
+            variant="violet"
+            className="mb-8"
+          />
           <LessonTabs
             tabs={[
               {
@@ -1121,7 +1281,8 @@ export default function AulaPontuacao({
           <QuizInterativo
             questoes={QUIZ_MODULO_3}
             titulo="Quiz Final: Mestria"
-            numero={3}
+            numero={4}
+            variant="violet"
             icone="🏆"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />

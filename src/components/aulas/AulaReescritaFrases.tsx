@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import {
   Accordion,
@@ -43,6 +44,7 @@ import {
   AulaProps,
   StickyModuleNav,
   AulaTemplate,
+  ModuleSectionHeader,
 } from "./shared";
 
 import { LuLightbulb } from "react-icons/lu";
@@ -410,10 +412,8 @@ export default function AulaReescritaFrases({
     }
   };
 
-  const isModuleUnlocked = (index: number) => {
-    if (isCompleted) return true;
-    if (index === 0) return true;
-    return completedModules.has(MODULE_DEFS[index - 1].id);
+  const isModuleUnlocked = (_index: number) => {
+    return true; // TEMPORÁRIO: Desbloqueado para revisão
   };
 
   const currentChallenge = shuffledChallenges[challengeIndex];
@@ -450,16 +450,16 @@ export default function AulaReescritaFrases({
             numero={1}
             titulo="Fundamentos da Reescritura"
             descricao="Entenda como manter o sentido original e a correção gramatical — a base das questões Cesgranrio."
-            gradiente="bg-gradient-to-br from-blue-600 to-indigo-700"
+            gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center text-lg font-bold text-blue-700 dark:text-blue-400">
-                1
-              </span>
-              O Binômio de Ouro: Semântica + Gramática
-            </h2>
+            <ModuleSectionHeader
+              index={1}
+              title="O Binômio de Ouro: Semântica + Gramática"
+              variant="indigo"
+              className="mb-8"
+            />
             <p className="text-lg text-muted-foreground leading-relaxed">
               Para a Cesgranrio, uma reescrita só é considerada válida se ela
               for <strong>fiel ao que o autor disse</strong> e respeitar
@@ -528,10 +528,14 @@ export default function AulaReescritaFrases({
             </div>
           </section>
 
+          <ModuleSectionHeader
+            index={2}
+            title="Tipos de Substituição de Palavras"
+            description="Cuidado com sinônimos que dependem do contexto."
+            variant="indigo"
+            className="mb-8"
+          />
           <CardCarousel
-            titulo="Tipos de Substituição de Palavras"
-            subtitulo="Cuidado com sinônimos que dependem do contexto."
-            numeroBadge={2}
             cards={[
               {
                 icone: "🔄",
@@ -558,12 +562,12 @@ export default function AulaReescritaFrases({
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center text-lg font-bold text-blue-700 dark:text-blue-400">
-                3
-              </span>
-              Resumo do Módulo 1
-            </h2>
+            <ModuleSectionHeader
+              index={3}
+              title="Resumo do Módulo 1"
+              variant="indigo"
+              className="mb-8"
+            />
 
             <LessonTabs
               tabs={[
@@ -705,6 +709,7 @@ export default function AulaReescritaFrases({
             titulo="Quiz de Fixação - Fundamentos"
             icone="🎯"
             numero={4}
+            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
@@ -716,16 +721,16 @@ export default function AulaReescritaFrases({
             numero={2}
             titulo="Técnicas de Engenharia de Frases"
             descricao="Aprenda as ferramentas para desmontar e reconstruir qualquer frase mantendo a correção total."
-            gradiente="bg-gradient-to-br from-purple-600 to-indigo-700"
+            gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-purple-500/20 flex items-center justify-center text-lg font-bold text-purple-700 dark:text-purple-400">
-                2
-              </span>
-              Ferramentas de Substituição
-            </h2>
+            <ModuleSectionHeader
+              index={2}
+              title="Ferramentas de Substituição"
+              variant="emerald"
+              className="mb-8"
+            />
             <p className="text-lg text-muted-foreground leading-relaxed">
               Dominar a engenharia das frases permite que você identifique
               reescritas corretas que parecem "estranhas" mas são
@@ -860,12 +865,12 @@ export default function AulaReescritaFrases({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-purple-500/20 flex items-center justify-center text-lg font-bold text-purple-700 dark:text-purple-400">
-                2
-              </span>
-              Substituição de Conectivos Críticos
-            </h2>
+            <ModuleSectionHeader
+              index={2}
+              title="Substituição de Conectivos Críticos"
+              variant="emerald"
+              className="mb-8"
+            />
             <AlertBox tipo="warning" titulo="O Caso 'Caso' vs 'Se'">
               A troca de <strong>Se</strong> por <strong>Caso</strong> exige
               mudança no modo verbal. Errar essa troca é fatal na Cesgranrio:
@@ -888,12 +893,12 @@ export default function AulaReescritaFrases({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-purple-500/20 flex items-center justify-center text-lg font-bold text-purple-700 dark:text-purple-400">
-                3
-              </span>
-              Resumo do Módulo 2
-            </h2>
+            <ModuleSectionHeader
+              index={3}
+              title="Resumo do Módulo 2"
+              variant="emerald"
+              className="mb-8"
+            />
 
             <LessonTabs
               tabs={[
@@ -1026,6 +1031,7 @@ export default function AulaReescritaFrases({
             titulo="Quiz de Fixação - Técnicas"
             icone="🎯"
             numero={4}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
@@ -1038,16 +1044,16 @@ export default function AulaReescritaFrases({
             numero={3}
             titulo="Prática de Elite e Desafios"
             descricao="Treine com armadilhas reais da Cesgranrio e realize o simulado final para dominar a reescritura."
-            gradiente="bg-gradient-to-br from-red-600 to-orange-700"
+            gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-lg font-bold text-red-700 dark:text-red-400">
-                1
-              </span>
-              As "Armadilhas de Reescrita" (Checklist)
-            </h2>
+            <ModuleSectionHeader
+              index={1}
+              title={'As "Armadilhas de Reescrita" (Checklist)'}
+              variant="violet"
+              className="mb-8"
+            />
             <div className="space-y-4">
               <div className="p-4 bg-slate-500/5 rounded-xl border-l-4 border-slate-500 flex items-start gap-4">
                 <LuTriangleAlert
@@ -1082,108 +1088,117 @@ export default function AulaReescritaFrases({
             </div>
           </section>
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-emerald-500/20 flex items-center justify-center text-lg font-bold text-emerald-700 dark:text-emerald-400">
-                2
-              </span>
-              Laboratório de Reescrita Cesgranrio
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Neste laboratório, vamos focar em{" "}
-              <strong>cascas de banana</strong>. O objetivo é identificar o
-              detalhe que invalida a reescrita. Use os FlipCards para ver a
-              análise técnica.
-            </p>
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-12">
+            <ModuleSectionHeader
+              index={2}
+              title="Laboratório de Reescrita"
+              description="Identifique cascas de banana e aplique a técnica Certo vs. Errado."
+              variant="violet"
+              className="mb-8"
+            />
+            <div className="space-y-8">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Neste laboratório, vamos focar em{" "}
+                <strong>cascas de banana</strong>. O objetivo é identificar o
+                detalhe que invalida a reescrita. Use os FlipCards para ver a
+                análise técnica.
+              </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FlipCard
-                categoria="Vozes Verbais"
-                frente="Ativa: 'A Petrobras investirá em energia limpa.'"
-                verso="Passiva: 'Em energia limpa será investido pela Petrobras.' (INVÁLIDA: O objeto 'em energia limpa' é indireto, não vira sujeito. Correto: 'Haverá investimento em energia limpa...')"
-              />
-              <FlipCard
-                categoria="Conectivos"
-                frente="Original: 'Ficou em casa, visto que estava chovendo.'"
-                verso="Reescrita: 'Ficou em casa, conquanto estivesse chovendo.' (INVÁLIDA: Visto que é CAUSA, Conquanto é CONCESSÃO. O sentido mudou 180 graus!)"
-              />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FlipCard
+                  categoria="Vozes Verbais"
+                  frente="Ativa: 'A Petrobras investirá em energia limpa.'"
+                  verso="Passiva: 'Em energia limpa será investido pela Petrobras.' (INVÁLIDA: O objeto 'em energia limpa' é indireto, não vira sujeito.)"
+                />
+                <FlipCard
+                  categoria="Conectivos"
+                  frente="Original: 'Ficou em casa, visto que estava chovendo.'"
+                  verso="Reescrita: 'Ficou em casa, conquanto estivesse chovendo.' (INVÁLIDA: Visto que é CAUSA, Conquanto é CONCESSÃO.)"
+                />
+              </div>
+
+              <hr className="border-border/50" />
+
+              <div className="space-y-6">
+                <h4 className="font-bold text-center text-xl">
+                  Desafio Certo vs. Errado
+                </h4>
+                {shuffledChallenges.length > 0 && (
+                  <div className="space-y-8">
+                    <FlipCard
+                      categoria="Reescritura de Frases"
+                      numero={challengeIndex + 1}
+                      frente={
+                        <div className="space-y-4">
+                          <div>
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground block mb-1">
+                              Frase Original:
+                            </span>
+                            <p className="italic text-foreground">
+                              "{currentChallenge.original}"
+                            </p>
+                          </div>
+                          <div className="p-4 bg-primary/5 rounded-xl border border-primary/20">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-primary block mb-1">
+                              Reescrita Proposta:
+                            </span>
+                            <p className="font-bold text-foreground">
+                              "{currentChallenge.reescrita}"
+                            </p>
+                          </div>
+                          <p className="text-xs text-muted-foreground text-center mt-2">
+                            A reescrita acima está correta?
+                          </p>
+                        </div>
+                      }
+                      verso={
+                        <div className="space-y-4">
+                          <div
+                            className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-black uppercase tracking-tighter shadow-lg ${currentChallenge.status === "correto" ? "bg-emerald-500 text-white" : "bg-red-500 text-white"}`}
+                          >
+                            {currentChallenge.status === "correto"
+                              ? "✅ GABARITO: CORRETO"
+                              : "❌ GABARITO: ERRADO"}
+                          </div>
+                          <div className="p-4 bg-background/50 rounded-xl border border-border/50 text-sm leading-relaxed italic">
+                            {currentChallenge.explicacao}
+                          </div>
+                        </div>
+                      }
+                    />
+                    <div className="flex justify-center gap-4">
+                      <Button
+                        variant="outline"
+                        onClick={() =>
+                          setChallengeIndex(
+                            (prev) => (prev + 1) % shuffledChallenges.length,
+                          )
+                        }
+                        className={cn(
+                          "rounded-full px-8 py-6 font-bold text-lg shadow-xl hover:scale-105 active:scale-95 transition-all text-foreground",
+                          materiaCor.includes("blue")
+                            ? "shadow-blue-500/40 border-blue-500/50"
+                            : materiaCor.includes("emerald")
+                              ? "shadow-emerald-500/40 border-emerald-500/50"
+                              : "shadow-indigo-500/40 border-indigo-500/50",
+                        )}
+                      >
+                        <LuShuffle className="mr-2" /> Próximo Desafio
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </section>
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-lg font-bold text-indigo-700 dark:text-indigo-400">
-                3
-              </span>
-              Laboratório de Reescrita: Certo vs. Errado
-            </h2>
-            {shuffledChallenges.length > 0 && (
-              <div className="space-y-8">
-                <FlipCard
-                  categoria="Reescritura de Frases"
-                  numero={challengeIndex + 1}
-                  frente={
-                    <div className="space-y-4">
-                      <div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground block mb-1">
-                          Frase Original:
-                        </span>
-                        <p className="italic text-foreground">
-                          "{currentChallenge.original}"
-                        </p>
-                      </div>
-                      <div className="p-4 bg-primary/5 rounded-xl border border-primary/20">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-primary block mb-1">
-                          Reescrita Proposta:
-                        </span>
-                        <p className="font-bold text-foreground">
-                          "{currentChallenge.reescrita}"
-                        </p>
-                      </div>
-                      <p className="text-xs text-muted-foreground text-center mt-2">
-                        A reescrita acima está correta?
-                      </p>
-                    </div>
-                  }
-                  verso={
-                    <div className="space-y-4">
-                      <div
-                        className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-black uppercase tracking-tighter shadow-lg ${currentChallenge.status === "correto" ? "bg-emerald-500 text-white" : "bg-red-500 text-white"}`}
-                      >
-                        {currentChallenge.status === "correto"
-                          ? "✅ GABARITO: CORRETO"
-                          : "❌ GABARITO: ERRADO"}
-                      </div>
-                      <div className="p-4 bg-background/50 rounded-xl border border-border/50 text-sm leading-relaxed italic">
-                        {currentChallenge.explicacao}
-                      </div>
-                    </div>
-                  }
-                />
-                <div className="flex justify-center gap-4">
-                  <Button
-                    variant="outline"
-                    onClick={() =>
-                      setChallengeIndex(
-                        (prev) => (prev + 1) % shuffledChallenges.length,
-                      )
-                    }
-                    className="rounded-full px-8 py-6 font-bold text-lg shadow-xl shadow-indigo-500/20 hover:scale-105 active:scale-95 transition-all"
-                  >
-                    <LuShuffle className="mr-2" /> Próximo Desafio
-                  </Button>
-                </div>
-              </div>
-            )}
-          </section>
-
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-3xl font-bold text-red-700 dark:text-red-400">
-                4
-              </span>
-              Resumo do Módulo 3
-            </h2>
+            <ModuleSectionHeader
+              index={3}
+              title="Resumo do Módulo 3"
+              variant="violet"
+              className="mb-8"
+            />
 
             <LessonTabs
               tabs={[
@@ -1273,7 +1288,8 @@ export default function AulaReescritaFrases({
             questoes={quizFinal}
             titulo="Simulado de Finalização - Reescrita"
             icone="🏆"
-            numero={5}
+            numero={4}
+            variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>

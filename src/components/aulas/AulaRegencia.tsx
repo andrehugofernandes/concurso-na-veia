@@ -39,6 +39,7 @@ import {
   QuizQuestion,
   getRandomQuestions,
   ProgressIndicator,
+  ModuleSectionHeader,
   AulaProps,
   StickyModuleNav,
   AulaTemplate,
@@ -147,6 +148,36 @@ const QUIZ_FINAL_POOL: QuizQuestion[] = [
     explicacao:
       "Com sentido de 'presenciar/ver', o verbo ASSISTIR é Transitivo Indireto e exige a preposição 'A'.",
   },
+  {
+    id: 302,
+    pergunta:
+      "A regência do verbo 'IMPLICAR' com sentido de 'acarretar, resultar em' foi corretamente empregada em:",
+    opcoes: [
+      { label: "A", valor: "O erro implicará em punição severa." },
+      { label: "B", valor: "A mudança implicará novos custos operacionais." },
+      { label: "C", valor: "O atraso implicou na demissão do funcionário." },
+      {
+        label: "D",
+        valor: "Mudar as regras implica aos trabalhadores novos deveres.",
+      },
+    ],
+    correta: "B",
+    explicacao:
+      "No sentido de 'acarretar/ter como consequência', o verbo IMPLICAR é Transitivo Direto (não exige preposição). A forma 'implicar em' é um erro comum.",
+  },
+  {
+    id: 303,
+    pergunta: "Qual opção abaixo apresenta erro de regência?",
+    opcoes: [
+      { label: "A", valor: "Aspiro a uma vaga na Petrobras." },
+      { label: "B", valor: "O presidente visava ao crescimento da empresa." },
+      { label: "C", valor: "Prefiro mais a plataforma do que o escritório." },
+      { label: "D", valor: "Aspirou o ar poluído do ambiente." },
+    ],
+    correta: "C",
+    explicacao:
+      "O verbo 'preferir' rege a forma 'Preferir algo a outra coisa'. É errado o uso de 'mais... do que'. 'Aspirar' e 'Visar' estão corretos em suas duplas regências.",
+  },
 ];
 
 // ── Componente Principal ──────────────────────────────────────────────────
@@ -232,10 +263,8 @@ export default function AulaRegencia({
     }
   };
 
-  const isModuleUnlocked = (index: number) => {
-    if (isCompleted) return true;
-    if (index === 0) return true;
-    return completedModules.has(MODULE_DEFS[index - 1].id);
+  const isModuleUnlocked = (_index: number) => {
+    return true; // TEMPORÁRIO: Desbloqueado para revisão
   };
 
   return (
@@ -268,19 +297,17 @@ export default function AulaRegencia({
             numero={1}
             titulo="Sintaxe da Regência Nominal"
             descricao="Estudo sistemático das relações de subordinação entre nomes (substantivos, adjetivos e advérbios) e seus respectivos complementos, fundamentado na gramática de Bechara."
-            gradiente="bg-gradient-to-br from-violet-900 via-indigo-950 to-black"
+            gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
           />
 
           {/* FUNDAMENTAÇÃO TEÓRICA - CIÊNCIA ANTES DO FLOREIO */}
           <section className="bg-white dark:bg-slate-950 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 md:p-12 shadow-sm">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800">
-                <LuBookOpen size={32} />
-              </div>
-              <h2 className="text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">
-                Fundamentos da Sintaxe de Regência
-              </h2>
-            </div>
+            <ModuleSectionHeader
+              index={1}
+              title="Fundamentos da Sintaxe de Regência"
+              description="Entenda o elo de subordinação entre termos regentes e regidos na estrutura da frase."
+              variant="indigo"
+            />
 
             <div className="space-y-10">
               <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-400 max-w-4xl">
@@ -451,17 +478,19 @@ export default function AulaRegencia({
           </section>
 
           {/* STORYTELLING CONTEXTUALIZADO */}
-          <section className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 md:p-12 rounded-3xl shadow-sm relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-5 font-black text-9xl text-slate-900">
-              RE
+          <section className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 md:p-12 rounded-3xl shadow-sm space-y-8">
+            <div className="inline-block px-4 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold uppercase tracking-widest w-fit">
+              Engenharia da Linguagem
             </div>
-            <div className="max-w-3xl space-y-6 relative z-10">
-              <div className="inline-block px-4 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold uppercase tracking-widest">
-                Engenharia da Linguagem
-              </div>
-              <h2 className="text-3xl font-bold">
-                A Precisão Semântica na Operação
-              </h2>
+
+            <ModuleSectionHeader
+              index={2}
+              title="A Precisão Semântica na Operação"
+              description="Como a regência correta evita ambiguidades críticas em protocolos operacionais."
+              variant="indigo"
+            />
+
+            <div className="space-y-8">
               <p className="text-lg text-slate-600 dark:text-slate-400 italic leading-relaxed">
                 "A teoria gramatical traduz-se em segurança operacional.
                 Considere o verbo **Assistir**. Na norma culta, 'assistir ao
@@ -469,139 +498,135 @@ export default function AulaRegencia({
                 técnico' (direto) significa prestar auxílio. Uma ambiguidade
                 nesta regência pode comprometer protocolos de emergência."
               </p>
+
+              <ContentAccordion
+                titulo="A Força de Atração Nominal"
+                corIndicador="bg-indigo-500"
+                defaultOpen={true}
+                slides={[
+                  {
+                    titulo: "Conceito do Ímã",
+                    icone: "1️⃣",
+                    conteudo: (
+                      <div className="space-y-4 text-slate-700 dark:text-slate-300">
+                        <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+                          <h3 className="font-bold text-lg mb-4">
+                            Morfossintaxe da Regência Nominal
+                          </h3>
+                          <p className="leading-relaxed">
+                            A regência nominal estuda o comportamento dos
+                            substantivos, adjetivos e advérbios que exigem um
+                            complemento (Complemento Nominal). Essa relação é
+                            **sempre mediada por uma preposição**.
+                          </p>
+                          <ul className="mt-4 space-y-2 text-sm">
+                            <li>
+                              • **Exigência Normativa:** Diferente de alguns
+                              verbos, os nomes nunca se ligam diretamente ao seu
+                              regido.
+                            </li>
+                            <li>
+                              • **Preposições Frequentes:** *A, de, em, para,
+                              com, por*.
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-indigo-500/5 rounded-xl border border-indigo-500/20 p-4">
+                          <p className="font-bold text-sm mb-2                       text-indigo-600 dark:text-indigo-400">
+                            Exemplo da Norma Culta:
+                          </p>
+                          <p className="italic">
+                            "A sua atitude foi **passível** (Regente) **de**
+                            (Preposição) **crítica** (Regido)."
+                          </p>
+                        </div>
+                      </div>
+                    ),
+                  },
+                  {
+                    titulo: "Nomes de Alta Frequência",
+                    icone: "2️⃣",
+                    conteudo: (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-4 bg-card rounded-xl border border-border">
+                          <h4 className="font-bold text-indigo-500 mb-2">
+                            Favorável a
+                          </h4>
+                          <p className="text-sm">
+                            "Sou <strong>favorável às</strong> mudanças."
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card rounded-xl border border-border">
+                          <h4 className="font-bold text-indigo-500 mb-2">
+                            Passível de
+                          </h4>
+                          <p className="text-sm">
+                            "O erro é <strong>passível de</strong> multa."
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card rounded-xl border border-border">
+                          <h4 className="font-bold text-indigo-500 mb-2">
+                            Aliado a
+                          </h4>
+                          <p className="text-sm">
+                            "O esforço está <strong>aliado à</strong> técnica."
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card rounded-xl border border-border">
+                          <h4 className="font-bold text-indigo-500 mb-2">
+                            Referente a
+                          </h4>
+                          <p className="text-sm">
+                            "Dados <strong>referentes ao</strong> lucro."
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card rounded-xl border border-border">
+                          <h4 className="font-bold text-indigo-500 mb-2">
+                            Apto a/para
+                          </h4>
+                          <p className="text-sm">
+                            "Ele está <strong>apto ao</strong> serviço."
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card rounded-xl border border-border">
+                          <h4 className="font-bold text-indigo-500 mb-2">
+                            Atento a/em
+                          </h4>
+                          <p className="text-sm">
+                            "Fique <strong>atento aos</strong> sinais."
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card rounded-xl border border-border">
+                          <h4 className="font-bold text-indigo-500 mb-2">
+                            Útil a/para
+                          </h4>
+                          <p className="text-sm">
+                            "O curso será <strong>útil para</strong> você."
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card rounded-xl border border-border">
+                          <h4 className="font-bold text-indigo-500 mb-2">
+                            Ansioso por/para
+                          </h4>
+                          <p className="text-sm">
+                            "Estou <strong>ansioso pelo</strong> resultado."
+                          </p>
+                        </div>
+                      </div>
+                    ),
+                  },
+                ]}
+              />
             </div>
           </section>
 
-          <ContentAccordion
-            titulo="A Força de Atração Nominal"
-            icone={
-              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-500 text-white text-sm font-black mr-2">
-                2
-              </span>
-            }
-            corIndicador="bg-indigo-500"
-            defaultOpen={true}
-            slides={[
-              {
-                titulo: "Conceito do Ímã",
-                icone: "1️⃣",
-                conteudo: (
-                  <div className="space-y-4 text-slate-700 dark:text-slate-300">
-                    <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
-                      <h3 className="font-bold text-lg mb-4">
-                        Morfossintaxe da Regência Nominal
-                      </h3>
-                      <p className="leading-relaxed">
-                        A regência nominal estuda o comportamento dos
-                        substantivos, adjetivos e advérbios que exigem um
-                        complemento (Complemento Nominal). Essa relação é
-                        **sempre mediada por uma preposição**.
-                      </p>
-                      <ul className="mt-4 space-y-2 text-sm">
-                        <li>
-                          • **Exigência Normativa:** Diferente de alguns verbos,
-                          os nomes nunca se ligam diretamente ao seu regido.
-                        </li>
-                        <li>
-                          • **Preposições Frequentes:** *A, de, em, para, com,
-                          por*.
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="bg-indigo-500/5 rounded-xl border border-indigo-500/20 p-4">
-                      <p className="font-bold text-sm mb-2                       text-indigo-600 dark:text-indigo-400">
-                        Exemplo da Norma Culta:
-                      </p>
-                      <p className="italic">
-                        "A sua atitude foi **passível** (Regente) **de**
-                        (Preposição) **crítica** (Regido)."
-                      </p>
-                    </div>
-                  </div>
-                ),
-              },
-              {
-                titulo: "Nomes de Alta Frequência",
-                icone: "2️⃣",
-                conteudo: (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="p-4 bg-card rounded-xl border border-border">
-                      <h4 className="font-bold text-indigo-500 mb-2">
-                        Favorável a
-                      </h4>
-                      <p className="text-sm">
-                        "Sou <strong>favorável às</strong> mudanças."
-                      </p>
-                    </div>
-                    <div className="p-4 bg-card rounded-xl border border-border">
-                      <h4 className="font-bold text-indigo-500 mb-2">
-                        Passível de
-                      </h4>
-                      <p className="text-sm">
-                        "O erro é <strong>passível de</strong> multa."
-                      </p>
-                    </div>
-                    <div className="p-4 bg-card rounded-xl border border-border">
-                      <h4 className="font-bold text-indigo-500 mb-2">
-                        Aliado a
-                      </h4>
-                      <p className="text-sm">
-                        "O esforço está <strong>aliado à</strong> técnica."
-                      </p>
-                    </div>
-                    <div className="p-4 bg-card rounded-xl border border-border">
-                      <h4 className="font-bold text-indigo-500 mb-2">
-                        Referente a
-                      </h4>
-                      <p className="text-sm">
-                        "Dados <strong>referentes ao</strong> lucro."
-                      </p>
-                    </div>
-                    <div className="p-4 bg-card rounded-xl border border-border">
-                      <h4 className="font-bold text-indigo-500 mb-2">
-                        Apto a/para
-                      </h4>
-                      <p className="text-sm">
-                        "Ele está <strong>apto ao</strong> serviço."
-                      </p>
-                    </div>
-                    <div className="p-4 bg-card rounded-xl border border-border">
-                      <h4 className="font-bold text-indigo-500 mb-2">
-                        Atento a/em
-                      </h4>
-                      <p className="text-sm">
-                        "Fique <strong>atento aos</strong> sinais."
-                      </p>
-                    </div>
-                    <div className="p-4 bg-card rounded-xl border border-border">
-                      <h4 className="font-bold text-indigo-500 mb-2">
-                        Útil a/para
-                      </h4>
-                      <p className="text-sm">
-                        "O curso será <strong>útil para</strong> você."
-                      </p>
-                    </div>
-                    <div className="p-4 bg-card rounded-xl border border-border">
-                      <h4 className="font-bold text-indigo-500 mb-2">
-                        Ansioso por/para
-                      </h4>
-                      <p className="text-sm">
-                        "Estou <strong>ansioso pelo</strong> resultado."
-                      </p>
-                    </div>
-                  </div>
-                ),
-              },
-            ]}
-          />
-
           <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-14 h-14 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xl font-black">
-                3
-              </div>
-              <h2 className="text-3xl font-bold">Resumo Estratégico</h2>
-            </div>
+            <ModuleSectionHeader
+              index={3}
+              title="Resumo Estratégico"
+              description="Recursos visuais e auditivos para fixar os padrões de regência nominal."
+              variant="indigo"
+            />
             <LessonTabs
               tabs={[
                 {
@@ -688,6 +713,7 @@ export default function AulaRegencia({
             titulo="Quiz de Fixação - Regência Nominal"
             icone="🎯"
             questoes={quizM1}
+            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
@@ -700,100 +726,135 @@ export default function AulaRegencia({
             numero={2}
             titulo="Sintaxe da Regência Verbal"
             descricao="Análise da transitividade verbal e da seleção de argumentos preposicionados ou diretos."
-            gradiente="bg-gradient-to-br from-indigo-900 via-violet-950 to-black"
+            gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
           />
 
-          <ContentAccordion
-            titulo="Teoria da Transitividade e Regência"
-            icone="📖"
-            corIndicador="bg-slate-500"
-            slides={[
-              {
-                titulo: "Conceitos de Transitividade",
-                icone: "1️⃣",
-                conteudo: (
-                  <div className="space-y-4">
-                    <div className="prose prose-sm dark:prose-invert max-w-none mb-6">
-                      <p>
-                        A Regência Verbal estuda a relação que se estabelece
-                        entre os verbos (**termos regentes**) e seus
-                        complementos (**termos regidos**). A transitividade é a
-                        base para entendermos se a regência é direta ou
-                        indireta.
-                      </p>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="p-6 bg-card rounded-xl border border-border border-l-4 border-l-slate-500">
-                        <h4 className="font-extrabold text-lg mb-2 text-slate-600">
-                          Conexão Direta (VTD)
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          O verbo exige complemento sem auxílio de preposição
-                          obrigatória. O termo regido é o **Objeto Direto**.
-                        </p>
-                        <p className="mt-2 text-xs font-mono">
-                          Ex: Encontramos (VTD) os dados (OD).
-                        </p>
-                      </div>
-                      <div className="p-6 bg-card rounded-xl border border-border border-l-4 border-l-slate-400">
-                        <h4 className="font-extrabold text-lg mb-2 text-slate-500">
-                          Conexão Indireta (VTI)
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          O verbo exige o uso de preposição para ligar-se ao
-                          complemento (**Objeto Indireto**).
-                        </p>
-                        <p className="mt-2 text-xs font-mono">
-                          Ex: Precisamos (VTI) de (Preposição) dados (OI).
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ),
-              },
-              {
-                titulo: "A Regência do Verbo 'Preferir'",
-                icone: "2️⃣",
-                conteudo: (
-                  <div className="space-y-4 bg-muted/30 p-6 rounded-2xl border border-border">
-                    <h3 className="font-bold text-lg">Padrão Normativo</h3>
-                    <p className="text-slate-600 dark:text-slate-400">
-                      Do ponto de vista normativo, o verbo **Preferir** é
-                      transitivo direto e indireto. Exige dois complementos: um
-                      sem preposição e outro regido pela preposição **A**.
+          <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
+            <ModuleSectionHeader
+              index={1}
+              title="Teoria da Transitividade e Regência"
+              description="Domine a relação entre o verbo e seus complementos através da análise da transitividade."
+              variant="emerald"
+            />
+
+            <div className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
+                  <h4 className="font-bold text-lg text-emerald-600 mb-3 flex items-center gap-2">
+                    📖 Conceituação
+                  </h4>
+                  <p className="text-muted-foreground text-sm xl:text-base">
+                    A Regência Verbal estuda a ligação estrutural entre os
+                    verbos (termos regentes) e seus complementos (termos
+                    regidos). A transitividade determina se essa conexão exige
+                    ou não uma preposição.
+                  </p>
+                </div>
+
+                <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
+                  <h4 className="font-bold text-lg text-emerald-600 mb-3 flex items-center gap-2">
+                    🎯 Exemplificação
+                  </h4>
+                  <div className="space-y-3 font-mono text-sm">
+                    <p>
+                      <strong className="text-emerald-500">
+                        VTD (Ligação Direta):
+                      </strong>
+                      <br /> &quot;Nós avaliamos o risco.&quot;
                     </p>
-                    <div className="bg-red-500/10 p-4 rounded-xl text-red-700 dark:text-red-400 font-mono text-sm">
-                      ❌ Prefiro café do que chá.
-                    </div>
-                    <div className="bg-emerald-500/10 p-4 rounded-xl text-emerald-700 dark:text-emerald-400 font-mono text-sm">
-                      ✅ Preferir algo **A** outra coisa.
-                    </div>
+                    <p>
+                      <strong className="text-emerald-500">
+                        VTI (Ligação Indireta):
+                      </strong>
+                      <br /> &quot;Nós precisamos de suporte.&quot;
+                    </p>
                   </div>
-                ),
-              },
-            ]}
-          />
+                </div>
 
-          <AlertBox
-            tipo="warning"
-            titulo="Observação Técnica: Analogia da Válvula"
-          >
-            <div className="flex items-center gap-3">
-              <LuZap className="text-yellow-500" size={24} />
-              <p className="font-bold">Nota Explicativa:</p>
+                <div className="bg-yellow-500/5 p-6 rounded-2xl border border-yellow-500/20">
+                  <h4 className="font-bold text-lg text-yellow-600 mb-3 flex items-center gap-2">
+                    💡 Dicas
+                  </h4>
+                  <p className="text-muted-foreground text-sm">
+                    A preposição funciona como um adaptador de tomada: verbos
+                    indiretos não "encaixam" nos substantivos sem ela. Descubra
+                    a transitividade sempre fazendo perguntas ao verbo (O QUÊ?
+                    vs DE QUÊ?).
+                  </p>
+                </div>
+
+                <div className="bg-red-500/5 p-6 rounded-2xl border border-red-500/20">
+                  <h4 className="font-bold text-lg text-red-600 mb-3 flex items-center gap-2">
+                    ⚠️ Exceções
+                  </h4>
+                  <p className="text-muted-foreground text-sm">
+                    A transitividade não é fixa e absoluta! O mesmo verbo (como
+                    Aspirar) pode ser Direto ou Indireto caso mude seu sentido
+                    semântico. Analise o contexto da frase antes de cravar a
+                    regência.
+                  </p>
+                </div>
+              </div>
             </div>
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-              Para fins didáticos, pode-se comparar o fluxo gramatical a um
-              sistema hidráulico: Se o fluxo é contínuo, a regência é direta. Se
-              requer um conector (preposição), a regência é indireta.
-            </p>
-          </AlertBox>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
+            <ModuleSectionHeader
+              index={2}
+              title="A Regência do Verbo Preferir"
+              description="Um dos casos particulares mais explorados pela banca Cesgranrio em provas."
+              variant="emerald"
+            />
+
+            <div className="space-y-8">
+              <div className="bg-muted/30 p-6 rounded-2xl border border-border">
+                <h3 className="font-bold text-lg mb-4">Padrão Normativo</h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-6">
+                  Do ponto de vista normativo, o verbo **Preferir** é transitivo
+                  direto e indireto. Exige dois complementos (o preferido e o
+                  preterido) e seu segundo termo deve ser regido pela preposição
+                  **A**.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-red-500/10 p-5 rounded-xl border border-red-500/20 text-red-700 dark:text-red-400 font-mono text-sm flex items-center gap-3">
+                    <span className="text-xl">❌</span>
+                    <span>
+                      Prefiro café <strong>do que</strong> chá.
+                    </span>
+                  </div>
+                  <div className="bg-emerald-500/10 p-5 rounded-xl border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 font-mono text-sm flex items-center gap-3">
+                    <span className="text-xl">✅</span>
+                    <span>
+                      Preferir algo <strong>A</strong> outra coisa.
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <AlertBox
+                tipo="warning"
+                titulo="Observação Técnica: Analogia da Válvula"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="text-yellow-500 text-2xl">⚡</div>
+                  <p className="font-bold">Nota Explicativa:</p>
+                </div>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+                  Para fins didáticos, pode-se comparar o fluxo gramatical a um
+                  sistema hidráulico: Se o fluxo é contínuo, a regência é
+                  direta. Se requer um conector articulado (preposição), a
+                  regência passa a ser percebida como indireta.
+                </p>
+              </AlertBox>
+            </div>
+          </section>
 
           <QuizInterativo
             numero={3}
             titulo="Quiz de Fixação - Regência Verbal"
             icone="📝"
             questoes={quizM2}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
@@ -806,22 +867,23 @@ export default function AulaRegencia({
             numero={3}
             titulo="Análise de Casos Específicos"
             descricao="Estudo aprofundado de verbos com múltiplos padrões de regência e suas respectivas implicações semânticas."
-            gradiente="bg-gradient-to-br from-violet-900 via-indigo-950 to-black"
+            gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
           />
 
-          <div className="space-y-8">
-            <div className="bg-slate-50 dark:bg-slate-900/40 rounded-xl border border-slate-200 dark:border-slate-800 p-8">
-              <h3 className="font-bold text-2xl mb-4 text-slate-900 dark:text-slate-100">
-                Polissemia de Regência
-              </h3>
-              <div className="prose prose-slate dark:prose-invert max-w-none">
-                <p className="text-lg leading-relaxed">
-                  Certos verbos apresentam alteração de sentido conforme o
-                  padrão de regência aplicado. A escolha da transitividade
-                  (direta ou indireta) altera o campo semântico do enunciado,
-                  exigindo precisão na seleção prepositiva.
-                </p>
-              </div>
+          <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-10">
+            <ModuleSectionHeader
+              index={1}
+              title="Polissemia de Regência"
+              description="Estudo dos verbos que alteram seu sentido conforme a preposição utilizada."
+              variant="violet"
+            />
+            <div className="prose prose-slate dark:prose-invert max-w-none">
+              <p className="text-lg leading-relaxed">
+                Certos verbos apresentam alteração de sentido conforme o padrão
+                de regência aplicado. A escolha da transitividade (direta ou
+                indireta) altera o campo semântico do enunciado, exigindo
+                precisão na seleção prepositiva.
+              </p>
             </div>
 
             <CardCarousel
@@ -896,15 +958,15 @@ export default function AulaRegencia({
                 },
               ]}
             />
-          </div>
+          </section>
 
           <section className="bg-slate-50 dark:bg-slate-900/20 border border-slate-200 dark:border-slate-800 p-8 md:p-12 rounded-3xl space-y-8">
-            <div className="flex items-center gap-4">
-              <div className="p-3 rounded-lg bg-slate-800 text-white">
-                <LuCheck size={24} />
-              </div>
-              <h2 className="text-3xl font-black">Consolidação Normativa</h2>
-            </div>
+            <ModuleSectionHeader
+              index={2}
+              title="Consolidação Normativa"
+              description="Quadro sinóptico e notas de atenção para os casos mais complexos de regência verbal."
+              variant="violet"
+            />
             <LessonTabs
               tabs={[
                 {
@@ -969,6 +1031,7 @@ export default function AulaRegencia({
             titulo="Quiz de Fixação - Regência Verbal"
             icone="🏆"
             questoes={quizFinal}
+            variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   QuizQuestion,
   getRandomQuestions,
@@ -39,6 +40,9 @@ import {
   LuMusic,
   LuCirclePlay as LuPlayCircle,
   LuBrain,
+  LuMessageCircle,
+  LuList,
+  LuClock,
 } from "react-icons/lu";
 
 // ── CONFIGURAÇÃO DE MÓDULOS ──────────────────────────────────────────────
@@ -721,15 +725,9 @@ export default function AulaSintaxe({
     }
   };
 
-  const isModuleUnlocked = useCallback(
-    (moduleIndex: number) => {
-      if (isCompleted) return true;
-      if (moduleIndex === 0) return true;
-      const prevModuleId = MODULE_DEFS[moduleIndex - 1]?.id;
-      return prevModuleId ? completedModules.has(prevModuleId) : false;
-    },
-    [completedModules, isCompleted],
-  );
+  const isModuleUnlocked = useCallback((_moduleIndex: number) => {
+    return true; // TEMPORÁRIO: Desbloqueado para revisão
+  }, []);
 
   return (
     <AulaTemplate
@@ -757,7 +755,7 @@ export default function AulaSintaxe({
           numero={1}
           titulo="O Esqueleto da Oração"
           descricao="Dominando o Sujeito e o Predicado sob a ótica da Cesgranrio. O ponto de partida de toda análise sintática."
-          gradiente="bg-gradient-to-r from-indigo-600 to-blue-500"
+          gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
         />
         <div className="space-y-[50px]">
           {/* 1. Fundamentação Científica */}
@@ -765,6 +763,7 @@ export default function AulaSintaxe({
             <ModuleSectionHeader
               index={1}
               title="Anatomia da Oração"
+              description="Aprenda a identificar a estrutura básica da oração: o sujeito e o predicado."
               variant="indigo"
             />
 
@@ -869,7 +868,8 @@ export default function AulaSintaxe({
             <ModuleSectionHeader
               index={2}
               title="Tipologia do Sujeito"
-              variant="blue"
+              description="Explore os diferentes tipos de sujeito e como a Cesgranrio cobra a identificação do termo principal."
+              variant="indigo"
             />
             <p className="text-muted-foreground">
               O mapa completo para nunca mais errar a identificação do termo
@@ -1201,7 +1201,8 @@ export default function AulaSintaxe({
             <ModuleSectionHeader
               index={3}
               title="Tipos de Predicado"
-              variant="emerald"
+              description="Diferencie predicado verbal, nominal e verbo-nominal através do núcleo da declaração."
+              variant="indigo"
             />
             <p className="text-muted-foreground">
               A classificação do predicado depende da natureza do seu núcleo: se
@@ -1491,8 +1492,9 @@ export default function AulaSintaxe({
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
               index={4}
-              title="Resumo e Multimedia"
-              variant="violet"
+              title="Resumo e Multimídia"
+              description="Consolide os termos essenciais com vídeos, resumos e áudio explicativo."
+              variant="indigo"
             />
 
             <LessonTabs
@@ -1589,6 +1591,7 @@ export default function AulaSintaxe({
             titulo="Quiz de Fixação: Sujeito e Predicado"
             icone="🧠"
             questoes={getRandomQuestions(QUIZ_ESSENCIAIS_POOL, 8)}
+            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
@@ -1600,17 +1603,17 @@ export default function AulaSintaxe({
           numero={2}
           titulo="O Recheio da Oração"
           descricao="Complementos verbais, nominais e o agente da passiva. Entenda como os verbos e nomes exigem seus parceiros de sentido."
-          gradiente="bg-gradient-to-r from-emerald-600 to-teal-500"
+          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
         />
         <div className="space-y-[50px]">
           {/* 1. Objetos Verbais */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-emerald-500/20 flex items-center justify-center text-3xl font-bold text-emerald-700 dark:text-emerald-400 shrink-0">
-                1
-              </span>
-              Os Objetos: Direto e Indireto
-            </h2>
+            <ModuleSectionHeader
+              index={1}
+              title="Os Objetos: Direto e Indireto"
+              description="O objeto é o paciente ou alvo da ação verbal. Domine a transitividade."
+              variant="emerald"
+            />
             <p className="text-muted-foreground italic">
               "O objeto é o paciente ou alvo da ação verbal."
             </p>
@@ -1705,12 +1708,12 @@ export default function AulaSintaxe({
 
           {/* 2. Complemento Nominal vs Adjunto Adnominal */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8 mt-12">
-            <h2 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-3xl font-bold text-indigo-700 dark:text-indigo-400 shrink-0">
-                2
-              </span>
-              Complemento Nominal vs Adjunto Adnominal
-            </h2>
+            <ModuleSectionHeader
+              index={2}
+              title="Complemento Nominal vs Adjunto Adnominal"
+              description="Entenda as diferenças sutis entre o alvo da ação e o agente/possuidor."
+              variant="emerald"
+            />
             <p className="text-muted-foreground italic">
               "Parecem irmãos gêmeos, pois ambos vêm encabeçados por preposição
               (quase sempre 'de'), mas suas essências são opostas."
@@ -1829,12 +1832,12 @@ export default function AulaSintaxe({
 
           {/* 3. Agente da Passiva */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8 mt-12">
-            <h2 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center text-3xl font-bold text-blue-700 dark:text-blue-400 shrink-0">
-                3
-              </span>
-              Agente da Passiva
-            </h2>
+            <ModuleSectionHeader
+              index={3}
+              title="Agente da Passiva"
+              description="Identifique quem pratica a ação na voz passiva, o termo fundamental da estrutura passiva."
+              variant="emerald"
+            />
             <p className="text-muted-foreground italic">
               "Mesmo na voz passiva, alguém precisa sujar as mãos."
             </p>
@@ -1875,7 +1878,7 @@ export default function AulaSintaxe({
             <ModuleSectionHeader
               index={4}
               title="Resumo e Multimedia"
-              variant="violet"
+              variant="emerald"
             />
 
             <LessonTabs
@@ -1969,9 +1972,10 @@ export default function AulaSintaxe({
           {/* 5. Quiz Módulo 2 */}
           <QuizInterativo
             numero={5}
-            titulo="Quiz: Termos Integrantes"
-            icone="🧪"
-            questoes={getRandomQuestions(QUIZ_INTEGRANTES_POOL, 6)}
+            titulo="Quiz de Fixação: Termos Integrantes"
+            icone="🧩"
+            questoes={getRandomQuestions(QUIZ_INTEGRANTES_POOL, 8)}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
@@ -1983,17 +1987,17 @@ export default function AulaSintaxe({
           numero={3}
           titulo="O Acabamento da Oração"
           descricao="Adjuntos adverbiais, adnominais, aposto e vocativo. Termos que trazem circunstância e precisão ao texto."
-          gradiente="bg-gradient-to-r from-amber-600 to-orange-500"
+          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
         />
         <div className="space-y-[50px]">
           {/* 1. Adjunto Adverbial */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-amber-500/20 flex items-center justify-center text-3xl font-bold text-amber-700 dark:text-amber-400 shrink-0">
-                1
-              </span>
-              Adjunto Adverbial
-            </h2>
+            <ModuleSectionHeader
+              index={1}
+              title="Adjunto Adverbial"
+              description="O fofoqueiro da oração: entenda como os adjuntos trazem circunstâncias de tempo, lugar, modo e muito mais."
+              variant="violet"
+            />
             <p className="text-muted-foreground italic">
               "O fofoqueiro da oração: conta quando, onde, como e por que."
             </p>
@@ -2144,12 +2148,12 @@ export default function AulaSintaxe({
 
           {/* 2. Adjunto Adnominal */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8 mt-12">
-            <h2 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-emerald-500/20 flex items-center justify-center text-3xl font-bold text-emerald-700 dark:text-emerald-400 shrink-0">
-                2
-              </span>
-              Adjunto Adnominal
-            </h2>
+            <ModuleSectionHeader
+              index={2}
+              title="Adjunto Adnominal"
+              description="O maquiador do substantivo: aprenda a identificar os termos que qualificam e determinam os nomes."
+              variant="violet"
+            />
             <p className="text-muted-foreground italic">
               "O maquiador do substantivo: qualifica, especifica e determina."
             </p>
@@ -2219,139 +2223,107 @@ export default function AulaSintaxe({
             </div>
           </section>
 
-          {/* 3. Aposto */}
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8 mt-12">
-            <h2 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-violet-500/20 flex items-center justify-center text-3xl font-bold text-violet-700 dark:text-violet-400 shrink-0">
-                3
-              </span>
-              Aposto
-            </h2>
-            <p className="text-muted-foreground italic">
-              "A legenda da frase: explica, resume ou enumera outro termo."
-            </p>
-
-            <div className="bg-violet-500/5 p-6 rounded-xl border border-violet-500/30">
-              <p className="text-sm text-foreground mb-4">
-                O Aposto é a explicação "embutida" numa oração. Ele detalha ou
-                esclarece o termo anterior e, por natureza estilística,
-                frequenta as questões de pontuação.
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 mt-12">
+            <ModuleSectionHeader
+              index={2}
+              title="Aposto e Vocativo"
+              description="A legenda e o megafone da oração: domine as explicações e os chamamentos."
+              variant="violet"
+            />
+            {/* --- APOSTO --- */}
+            <div className="space-y-6">
+              <h3 className="text-xl font-bold flex items-center gap-3">
+                <span className="bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 p-2 rounded-lg">
+                  <LuFileText />
+                </span>
+                Aposto
+              </h3>
+              <p className="text-muted-foreground italic">
+                "A legenda da frase: explica, resume ou enumera outro termo."
               </p>
-
-              <Tabs defaultValue="explicativo" className="w-full">
-                <TabsList className="grid w-full grid-cols-3 mb-6">
-                  <TabsTrigger value="explicativo">Explicativo</TabsTrigger>
-                  <TabsTrigger value="enumerativo">Enumerativo</TabsTrigger>
-                  <TabsTrigger value="resumitivo">Resumitivo</TabsTrigger>
-                </TabsList>
-
-                <TabsContent value="explicativo" className="space-y-4">
-                  <div className="p-4 bg-muted/30 rounded-lg border border-border">
-                    <p className="text-sm font-medium mb-2">
-                      Explicativo: Isola-se por vírgulas, travessões ou
-                      parênteses.
-                    </p>
-                    <p className="italic text-muted-foreground">
+              <div className="bg-violet-500/5 p-6 rounded-xl border border-violet-500/30">
+                <p className="text-sm text-foreground mb-4">
+                  O Aposto é a explicação "embutida" numa oração. Ele detalha ou
+                  esclarece o termo anterior.
+                </p>
+                <Tabs defaultValue="explicativo" className="w-full">
+                  <TabsList className="grid w-full grid-cols-3 mb-6">
+                    <TabsTrigger value="explicativo">Explicativo</TabsTrigger>
+                    <TabsTrigger value="enumerativo">Enumerativo</TabsTrigger>
+                    <TabsTrigger value="resumitivo">Resumitivo</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="explicativo" className="space-y-4">
+                    <div className="p-4 bg-muted/30 rounded-lg border border-border text-sm italic">
                       "Rio de Janeiro, <b>capital do petróleo</b>, sedia a
                       empresa."
-                    </p>
-                    <p className="italic text-muted-foreground mt-2">
-                      "A Petrobras — <b>maior empresa do Brasil</b> — abriu
-                      concurso."
-                    </p>
-                  </div>
-                </TabsContent>
-
-                <TabsContent value="enumerativo" className="space-y-4">
-                  <div className="p-4 bg-muted/30 rounded-lg border border-border">
-                    <p className="text-sm font-medium mb-2">
-                      Enumerativo: Geralmente introduzido por dois-pontos.
-                    </p>
-                    <p className="italic text-muted-foreground">
+                    </div>
+                  </TabsContent>
+                  <TabsContent value="enumerativo" className="space-y-4">
+                    <div className="p-4 bg-muted/30 rounded-lg border border-border text-sm italic">
                       "O poço precisa de duas coisas:{" "}
                       <b>tecnologia e segurança</b>."
-                    </p>
-                  </div>
-                </TabsContent>
-
-                <TabsContent value="resumitivo" className="space-y-4">
-                  <div className="p-4 bg-muted/30 rounded-lg border border-border">
-                    <p className="text-sm font-medium mb-2">
-                      Resumitivo: Um pronome que amarra uma lista falada antes.
-                    </p>
-                    <p className="italic text-muted-foreground">
-                      "Engenheiros, técnicos e gestores, <b>todos</b> aplaudiram
-                      o projeto."
-                    </p>
-                  </div>
-                </TabsContent>
-              </Tabs>
+                    </div>
+                  </TabsContent>
+                  <TabsContent value="resumitivo" className="space-y-4">
+                    <div className="p-4 bg-muted/30 rounded-lg border border-border text-sm italic">
+                      "Engenheiros, técnicos e gestores, <b>todos</b>{" "}
+                      aplaudiram."
+                    </div>
+                  </TabsContent>
+                </Tabs>
+              </div>
             </div>
-          </section>
 
-          {/* 4. Vocativo */}
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8 mt-12">
-            <h2 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-pink-500/20 flex items-center justify-center text-3xl font-bold text-pink-700 dark:text-pink-400 shrink-0">
-                4
-              </span>
-              Vocativo
-            </h2>
-            <p className="text-muted-foreground italic">
-              "O megafone da oração: serve EXCLUSIVAMENTE para chamar."
-            </p>
+            <hr className="border-border" />
 
-            <div className="bg-pink-500/5 p-6 rounded-xl border border-pink-500/30">
-              <p className="text-sm text-foreground mb-4">
-                É um termo independente: não faz parte nem do sujeito, nem do
-                predicado. Como é um "chamamento", ele **OBRIGATORIAMENTE exige
-                vírgula** para ser separado do resto da oração.
+            {/* --- VOCATIVO --- */}
+            <div className="space-y-6">
+              <h3 className="text-xl font-bold flex items-center gap-3">
+                <span className="bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 p-2 rounded-lg">
+                  <LuMessageCircle />
+                </span>
+                Vocativo
+              </h3>
+              <p className="text-muted-foreground italic">
+                "O megafone da oração: serve EXCLUSIVAMENTE para chamar."
               </p>
-              <div className="space-y-4">
-                <div>
-                  <p className="text-sm font-bold text-foreground">
-                    Exemplos práticos:
-                  </p>
-                  <ul className="list-disc list-inside space-y-2 text-sm text-foreground italic mt-2">
+              <div className="bg-pink-500/5 p-6 rounded-xl border border-pink-500/30">
+                <p className="text-sm text-foreground mb-4">
+                  É um termo independente: não faz parte nem do sujeito, nem do
+                  predicado. **OBRIGATORIAMENTE exige vírgula**.
+                </p>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <ul className="list-disc list-inside space-y-2 text-sm text-foreground italic">
                     <li>
-                      "<b>Turma</b>, a inspeção vai começar." (
-                      <span className="text-muted-foreground">Início</span>)
+                      "<b>Turma</b>, a inspeção vai começar."
                     </li>
                     <li>
-                      "Não esqueçam os EPIs, <b>técnicos</b>, a plataforma é
-                      perigosa." (
-                      <span className="text-muted-foreground">Meio</span>)
+                      "Não esqueçam os EPIs, <b>técnicos</b>."
                     </li>
                     <li>
-                      "Venha assinar o contrato, <b>senhora</b>." (
-                      <span className="text-muted-foreground">Fim</span>)
+                      "Venha assinar o contrato, <b>senhora</b>."
                     </li>
                   </ul>
-                </div>
-                <div className="bg-pink-500/10 p-4 rounded-lg mt-4 border border-pink-500/20">
-                  <p className="text-sm font-bold text-pink-800 dark:text-pink-300 mb-2">
-                    🚨 Armadilha Frequente
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    A banca ADORA confundir Vocativo com Sujeito. Veja a
-                    diferença que a pontuação faz:
-                    <br />
-                    <br />
-                    1) <i>"O gerente aprovou o projeto."</i> (O gerente ={" "}
-                    <b>Sujeito</b>)<br />
-                    2) <i>"Gerente, aprove o projeto."</i> (Gerente ={" "}
-                    <b>Vocativo</b>, o sujeito é você/implícito)
-                  </p>
+                  <div className="bg-pink-500/10 p-4 rounded-lg border border-pink-500/20 text-xs">
+                    <p className="font-bold text-pink-800 dark:text-pink-300 mb-1">
+                      🚨 Armadilha Frequente
+                    </p>
+                    <p className="text-muted-foreground">
+                      1) <i>"O gerente aprovou o projeto."</i> (Sujeito)
+                      <br />
+                      2) <i>"Gerente, aprove o projeto."</i> (Vocativo)
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* 5. Resumo e Multimedia */}
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
-              index={5}
-              title="Resumo e Multimedia"
+              index={3}
+              title="Resumo e Multimídia"
+              description="Revise os termos acessórios e consolide sua percepção das circunstâncias textuais."
               variant="violet"
             />
 
@@ -2443,10 +2415,11 @@ export default function AulaSintaxe({
           </section>
 
           <QuizInterativo
-            numero={6}
-            titulo="Quiz: Termos Acessórios"
-            icone="🎯"
-            questoes={getRandomQuestions(QUIZ_ACESSORIOS_POOL, 6)}
+            numero={4}
+            titulo="Quiz de Fixação: Termos Acessórios e Vocativo"
+            icone="🔍"
+            questoes={getRandomQuestions(QUIZ_ACESSORIOS_POOL, 8)}
+            variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>
@@ -2458,16 +2431,16 @@ export default function AulaSintaxe({
           numero={4}
           titulo="Laboratório de Análise Sintática"
           descricao="Desafios reais da Cesgranrio. Aplicação prática de tudo o que vimos sobre a estrutura da oração."
-          gradiente="bg-gradient-to-r from-red-600 to-rose-500"
+          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-rose-500/20 flex items-center justify-center text-3xl font-bold text-rose-700 dark:text-rose-400 shrink-0">
-                1
-              </span>
-              Desafio de Alto Nível
-            </h2>
+            <ModuleSectionHeader
+              index={1}
+              title="Desafio de Alto Nível"
+              description="Enfrente as questões mais complexas da Cesgranrio e aprenda a não cair em pegadinhas."
+              variant="amber"
+            />
             <AlertBox tipo="warning" titulo="O 'Pulo do Gato' da Cesgranrio">
               A banca costuma inverter a ordem das palavras (Ordem Indireta)
               para esconder o sujeito. Sempre procure o verbo primeiro e
@@ -2522,12 +2495,12 @@ export default function AulaSintaxe({
 
           {/* 2. Laboratório de Dissecação */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8 mt-12">
-            <h2 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-              <span className="w-14 h-14 rounded-full bg-rose-500/20 flex items-center justify-center text-3xl font-bold text-rose-700 dark:text-rose-400 shrink-0">
-                2
-              </span>
-              Dissecando a Oração
-            </h2>
+            <ModuleSectionHeader
+              index={2}
+              title="Dissecando a Oração"
+              description="Aplique o método passo a passo para destrinchar frases densas e complexas."
+              variant="amber"
+            />
             <p className="text-muted-foreground italic">
               "O método passo a passo para destrinchar frases gigantes."
             </p>
@@ -2537,125 +2510,204 @@ export default function AulaSintaxe({
               audacioso."
             </div>
 
+            {/* ACORDEON 1: Fase 1 */}
             <ContentAccordion
-              titulo="Guia Passo a Passo"
-              icone={<LuSearch className="text-rose-500" />}
+              titulo="🔍 Fase 1: A Base da Oração"
+              icone={<LuSearch className="w-6 h-6" />}
+              corIndicador="bg-amber-500"
+              defaultOpen={true}
               slides={[
                 {
-                  titulo: "Passo 1: O coração (Ache o Verbo)",
+                  titulo: "Passo 1: O Coração (Ache o Verbo)",
                   icone: "1️⃣",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-foreground">
-                        A análise sempre começa pelo verbo, o pilar de qualquer
-                        oração.
+                      {/* 1. CONCEITUAÇÃO */}
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        A análise sintática <strong>NUNCA</strong> começa pelo
+                        começo da frase. Ela sempre começa pelo{" "}
+                        <strong>verbo</strong>, que é o pilar de qualquer oração
+                        e dita as regras de concordância e regência.
                       </p>
-                      <div className="bg-blue-500/10 p-4 border border-blue-500/20 rounded-lg text-sm text-foreground font-mono">
-                        Sempre os experientes engenheiros{" "}
-                        <span className="bg-blue-500/30 font-bold px-1 rounded-lg dark:text-blue-100">
-                          confiaram
-                        </span>{" "}
-                        no sucesso do projeto audacioso.
+
+                      {/* 2. EXEMPLO */}
+                      <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
+                        <p className="text-sm font-bold text-foreground mb-2">
+                          Frase em Análise:
+                        </p>
+                        <p className="text-sm font-mono text-amber-700 dark:text-amber-400">
+                          Sempre os experientes engenheiros{" "}
+                          <span className="bg-amber-500/20 px-1 py-0.5 rounded">
+                            confiaram
+                          </span>{" "}
+                          no sucesso do projeto audacioso.
+                        </p>
                       </div>
-                      <p className="text-sm text-muted-foreground">
-                        O verbo é "confiar". Quem confia, confia em algo ou
-                        alguém, logo ele é um{" "}
-                        <b>Verbo Transitivo Indireto (VTI)</b>.
+
+                      {/* 3. DICA */}
+                      <AlertBox tipo="info" titulo="Macete">
+                        O verbo é "confiar". Pela regência, quem confia, confia{" "}
+                        <strong>em</strong> algo ou alguém. Logo, ele é um{" "}
+                        <strong>Verbo Transitivo Indireto (VTI)</strong> e vai
+                        exigir uma preposição logo à frente!
+                      </AlertBox>
+
+                      {/* 4. EXCEÇÃO */}
+                      <p className="text-xs text-muted-foreground italic mt-2">
+                        Exceção: Em frases nominais (sem verbo), como "Que belo
+                        dia!", não fazemos análise sintática da mesma forma,
+                        pois não há oração estruturada.
                       </p>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Passo 2: O dono do verbo (Ache o Sujeito)",
+                  titulo: "Passo 2: O Dono do Verbo (Ache o Sujeito)",
                   icone: "2️⃣",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-foreground">
-                        Faça a pergunta mágica ("Quem confia?") para encontrar o
-                        sujeito da oração.
+                      {/* 1. CONCEITUAÇÃO */}
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Faça a <strong>pergunta mágica</strong> ("Quem confia?"
+                        ou "O que confia?") ANTES DO VERBO para encontrar o
+                        sujeito da oração, independente de onde ele estiver
+                        escondido.
                       </p>
-                      <div className="bg-indigo-500/10 p-4 border border-indigo-500/20 rounded-lg text-sm text-foreground font-mono">
-                        Sempre{" "}
-                        <span className="bg-indigo-500/30 font-bold px-1 rounded-lg dark:text-indigo-100">
-                          os experientes engenheiros
-                        </span>{" "}
-                        confiaram no sucesso do projeto audacioso.
+
+                      {/* 2. EXEMPLO */}
+                      <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
+                        <p className="text-sm font-bold text-foreground mb-2">
+                          Pergunta: "Quem confiaram?"
+                        </p>
+                        <p className="text-sm font-mono text-amber-700 dark:text-amber-400">
+                          Sempre{" "}
+                          <span className="bg-amber-500/20 px-1 py-0.5 rounded">
+                            os experientes engenheiros
+                          </span>{" "}
+                          confiaram...
+                        </p>
                       </div>
-                      <p className="text-sm text-muted-foreground">
-                        Resposta da pergunta: "Os experientes engenheiros". O
-                        núcleo central dessa expressão é apenas "engenheiros"
-                        (Sujeito Simples e Direto).
-                      </p>
+
+                      {/* 3. DICA */}
+                      <AlertBox tipo="warning" titulo="Dica de Ouro">
+                        A banca sempre coloca adjetivos no meio para te
+                        confundir. A resposta foi "Os experientes engenheiros".
+                        Qual a palavra mais central que não pode ser apagada? "
+                        <strong>engenheiros</strong>". Esse é o núcleo do{" "}
+                        <strong>Sujeito Simples e Direto</strong>!
+                      </AlertBox>
                     </div>
                   ),
                 },
+              ]}
+            />
+
+            {/* ACORDEON 2: Fase 2 */}
+            <ContentAccordion
+              titulo="🧩 Fase 2: Expansão de Sentido"
+              icone={<LuLayers className="w-6 h-6" />}
+              corIndicador="bg-orange-500"
+              defaultOpen={false}
+              slides={[
                 {
-                  titulo:
-                    "Passo 3: A ponte para o sentido (Ache os Complementos)",
+                  titulo: "Passo 3: A ponte para o sentido (Complementos)",
                   icone: "3️⃣",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-foreground">
-                        Como o verbo é VTI, precisamos encontrar seu alvo, o
-                        Objeto Indireto encabeçado pela preposição (em + o =
+                      {/* 1. CONCEITUAÇÃO */}
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Como o verbo "confiar" é VTI, precisamos encontrar seu
+                        alvo: o <strong>Objeto Indireto</strong>, que sempre
+                        será encabeçado por sua preposição exigida (em + o =
                         no).
                       </p>
-                      <div className="bg-emerald-500/10 p-4 border border-emerald-500/20 rounded-lg text-sm text-foreground font-mono">
-                        Sempre os experientes engenheiros confiaram{" "}
-                        <span className="bg-emerald-500/30 font-bold px-1 rounded-lg dark:text-emerald-100">
-                          no sucesso
-                        </span>{" "}
-                        do projeto audacioso.
+
+                      {/* 2. EXEMPLO */}
+                      <div className="p-4 bg-orange-500/5 rounded-xl border border-orange-500/20">
+                        <p className="text-sm font-mono text-orange-700 dark:text-orange-400">
+                          ... confiaram{" "}
+                          <span className="bg-orange-500/20 px-1 py-0.5 rounded">
+                            no sucesso
+                          </span>{" "}
+                          do projeto audacioso.
+                        </p>
                       </div>
-                      <p className="text-sm text-muted-foreground">
-                        O que completou o sentido do verbo transitar? "No
-                        sucesso". Este é o nosso <b>Objeto Indireto</b>.
-                      </p>
+
+                      {/* 3. DICA */}
+                      <AlertBox tipo="info" titulo="Macete">
+                        O que completou o sentido do verbo transitar? A
+                        expressão "No sucesso". Este é o{" "}
+                        <strong>Objeto Indireto</strong> raiz da oração. Não
+                        inclua os anexos ainda ("do projeto audacioso").
+                      </AlertBox>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Passo 4: As joias de pendurar (Ache os Adjuntos)",
+                  titulo: "Passo 4: As joias de pendurar (Adjuntos e CN)",
                   icone: "4️⃣",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-foreground">
-                        Por fim, acharemos as circunstâncias e os
-                        caracterizadores, os chamados termos acessórios e as
-                        preposições que completam substantivos.
+                      {/* 1. CONCEITUAÇÃO */}
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Restaram apenas as palavras que orbitam os núcleos
+                        acompanhando, caracterizando ou indicando circunstâncias
+                        extras (os acessórios e complementos menores).
                       </p>
-                      <div className="bg-slate-100 dark:bg-slate-800 p-4 border border-slate-300 dark:border-slate-700 rounded-lg text-sm text-foreground font-mono">
-                        <span className="text-amber-600 dark:text-amber-400 font-bold">
-                          Sempre
-                        </span>{" "}
-                        <span className="text-pink-600 dark:text-pink-400 font-bold">
-                          os experientes
-                        </span>{" "}
-                        engenheiros confiaram no sucesso{" "}
-                        <span className="text-cyan-600 dark:text-cyan-400 font-bold">
-                          do projeto audacioso
-                        </span>
-                        .
+
+                      {/* 2. EXEMPLO */}
+                      <div className="p-4 bg-orange-500/5 rounded-xl border border-orange-500/20">
+                        <p className="text-sm font-mono text-foreground mb-3 leading-relaxed">
+                          <span className="text-rose-500 font-bold">
+                            Sempre
+                          </span>{" "}
+                          <span className="text-teal-500 font-bold">
+                            os experientes
+                          </span>{" "}
+                          engenheiros confiaram no sucesso{" "}
+                          <span className="text-indigo-500 font-bold">
+                            do projeto audacioso
+                          </span>
+                          .
+                        </p>
+                        <ul className="list-inside space-y-2 text-sm text-muted-foreground mt-4">
+                          <li>
+                            🔴 <strong className="text-rose-500">Sempre</strong>
+                            : Adjunto Adverbial de Tempo (deslocado para o
+                            início).
+                          </li>
+                          <li>
+                            🟢{" "}
+                            <strong className="text-teal-500">
+                              Os experientes
+                            </strong>
+                            : Adjuntos Adnominais que vestem o sujeito
+                            "engenheiros".
+                          </li>
+                          <li>
+                            🔵{" "}
+                            <strong className="text-indigo-500">
+                              Do projeto
+                            </strong>
+                            : Complemento Nominal (o projeto sofre a ação de ter
+                            sucesso).
+                          </li>
+                          <li>
+                            🔵{" "}
+                            <strong className="text-indigo-500">
+                              Audacioso
+                            </strong>
+                            : Adjunto Adnominal de "projeto".
+                          </li>
+                        </ul>
                       </div>
-                      <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground mt-4">
-                        <li>
-                          <b>Sempre</b>: Adjunto Adverbial de Tempo
-                          (circunstância que afeta o verbo confiar).
-                        </li>
-                        <li>
-                          <b>Os, experientes</b>: Adjuntos Adnominais que
-                          orbitam o núcleo do sujeito "engenheiros".
-                        </li>
-                        <li>
-                          <b>Do projeto</b>: Complemento Nominal! Ele completa o
-                          sentido do nome abstrato "sucesso" (passivo: o projeto
-                          sofre a ação de ter sucesso).
-                        </li>
-                        <li>
-                          <b>Audacioso</b>: Adjunto Adnominal que caracteriza o
-                          núcleo do complemento "projeto".
-                        </li>
-                      </ul>
+
+                      {/* 3. DICA */}
+                      <AlertBox tipo="success" titulo="Conclusão">
+                        Aplicando esses 4 passos, nenhuma frase da banca
+                        Cesgranrio conseguirá embaralhar a sua cabeça, por maior
+                        que ela seja!
+                      </AlertBox>
                     </div>
                   ),
                 },
@@ -2667,8 +2719,9 @@ export default function AulaSintaxe({
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
               index={3}
-              title="Resumo e Multimedia"
-              variant="violet"
+              title="Resumo e Multimídia"
+              description="Consolidação final do Laboratório de Análise Sintática."
+              variant="amber"
             />
 
             <LessonTabs
@@ -2745,6 +2798,7 @@ export default function AulaSintaxe({
             titulo="Quiz: Laboratório Final"
             icone="🔬"
             questoes={getRandomQuestions(QUIZ_LABORATORIO_POOL, 5)}
+            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </div>
@@ -2755,18 +2809,76 @@ export default function AulaSintaxe({
           numero={5}
           titulo="Síntese Estratégica"
           descricao="Resumo visual, mapas mentais e ferramentas de fixação rápida para não esquecer mais."
-          gradiente="bg-gradient-to-r from-violet-600 to-purple-500"
+          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
               index={1}
-              title="Resumo e Multimedia"
-              variant="violet"
+              title="Resumo e Multimídia"
+              description="Visão panorâmica de toda a Sintaxe da Oração."
+              variant="rose"
             />
 
+            <div className="bg-rose-500/5 border border-rose-500/20 p-6 rounded-xl">
+              <h3 className="text-lg font-bold text-rose-800 dark:text-rose-300 mb-3 flex items-center gap-2">
+                <LuInfo className="w-5 h-5" /> Como Extrair o Máximo da Síntese
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                Este espaço de síntese não é apenas uma revisão passiva, mas sim
+                uma{" "}
+                <strong>ferramenta estratégica de fixação intermodal</strong>. A
+                neurociência nos ensina que o cérebro retém mais informação
+                quando ela é processada de múltiplas formas. Portanto,
+                recomendamos o seguinte roteiro de estudo:
+              </p>
+              <ul className="space-y-3 text-sm text-foreground">
+                <li className="flex items-start gap-3">
+                  <span className="bg-rose-500/20 text-rose-600 dark:text-rose-400 p-1.5 rounded-md mt-0.5">
+                    <LuPlayCircle className="w-4 h-4" />
+                  </span>
+                  <div>
+                    <strong>1. Vídeo Aula:</strong> Assista de forma focada para
+                    resgatar a intuição e a lógica do professor por trás dos
+                    conceitos sintáticos, validando seu entendimento global.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="bg-rose-500/20 text-rose-600 dark:text-rose-400 p-1.5 rounded-md mt-0.5">
+                    <LuBookOpen className="w-4 h-4" />
+                  </span>
+                  <div>
+                    <strong>2. Resumo Visual (Mapas):</strong> Ideal para
+                    consultas rápidas na véspera da prova. O design visual
+                    segmenta Termos Essenciais, Integrantes e Acessórios em
+                    "caixas" no seu cérebro.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="bg-rose-500/20 text-rose-600 dark:text-rose-400 p-1.5 rounded-md mt-0.5">
+                    <LuBrain className="w-4 h-4" />
+                  </span>
+                  <div>
+                    <strong>3. Macete Visual:</strong> A sacada genial ou atalho
+                    ("bizu") definitivo. Ele ancora a regra complexa a uma
+                    estrutura simbólica simples de memorizar.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="bg-rose-500/20 text-rose-600 dark:text-rose-400 p-1.5 rounded-md mt-0.5">
+                    <LuMusic className="w-4 h-4" />
+                  </span>
+                  <div>
+                    <strong>4. Áudio Resumo:</strong> Use nos chamados "tempos
+                    mortos" (trânsito, academia, tarefas manuais) para repetição
+                    espaçada e internalização do ritmo do conhecimento abordado.
+                  </div>
+                </li>
+              </ul>
+            </div>
+
             <LessonTabs
-              variant="violet"
+              variant="rose"
               tabs={[
                 {
                   id: "video",

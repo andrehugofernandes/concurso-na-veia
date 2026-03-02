@@ -1807,15 +1807,9 @@ export default function AulaClassesPalavras({
     }
   };
 
-  const isModuleUnlocked = useCallback(
-    (moduleIndex: number) => {
-      if (isCompleted) return true;
-      if (moduleIndex === 0) return true;
-      const prevModuleId = MODULE_DEFS[moduleIndex - 1]?.id;
-      return prevModuleId ? completedModules.has(prevModuleId) : false;
-    },
-    [completedModules, isCompleted],
-  );
+  const isModuleUnlocked = useCallback((_moduleIndex: number) => {
+    return true; // TEMPORÁRIO: Desbloqueado para revisão
+  }, []);
 
   return (
     <AulaTemplate
@@ -1847,7 +1841,7 @@ export default function AulaClassesPalavras({
           numero={1}
           titulo="Verbo & Substantivo"
           descricao="As bases fundamentais da morfologia."
-          gradiente="bg-gradient-to-br from-blue-700 via-indigo-600 to-cyan-600"
+          gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
         />
 
         {/* ── VERBO ── */}
@@ -2664,6 +2658,7 @@ Haver no singular, existir no plural
             titulo="Quiz — Verbo & Substantivo"
             icone="📝"
             numero={10}
+            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </section>
@@ -2676,7 +2671,7 @@ Haver no singular, existir no plural
           numero={2}
           titulo="Pronome & Adjetivo"
           descricao="O substituto que garante a coesão e o qualificador que define a concordância nominal."
-          gradiente="bg-gradient-to-br from-blue-600 via-indigo-600 to-sky-700"
+          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
         />
 
         {/* ── PRONOME ── */}
@@ -2684,7 +2679,7 @@ Haver no singular, existir no plural
           <ModuleSectionHeader
             index={1}
             title="O Pronome — Conceito Científico"
-            variant="blue"
+            variant="emerald"
           />
           <p className="text-lg text-muted-foreground text-justify leading-relaxed">
             O <strong>Pronome</strong> é a classe de palavra que{" "}
@@ -2710,7 +2705,7 @@ Haver no singular, existir no plural
           <ModuleSectionHeader
             index={2}
             title="Pronomes Pessoais — Retos e Oblíquos"
-            variant="blue"
+            variant="emerald"
           />
           <ContentAccordion
             mode="stacked"
@@ -2806,7 +2801,7 @@ Haver no singular, existir no plural
           <ModuleSectionHeader
             index={3}
             title="Pronomes Demonstrativos e Relativos"
-            variant="blue"
+            variant="emerald"
           />
           <CardCarousel
             titulo="Os Grandes Astros dos Pronomes"
@@ -2880,7 +2875,7 @@ Haver no singular, existir no plural
           <ModuleSectionHeader
             index={4}
             title="O Adjetivo — Conceito Científico"
-            variant="blue"
+            variant="emerald"
           />
           <p className="text-lg text-muted-foreground text-justify leading-relaxed">
             O <strong>Adjetivo</strong> é a classe de palavra que{" "}
@@ -2896,7 +2891,7 @@ Haver no singular, existir no plural
           <ModuleSectionHeader
             index={5}
             title="A Posição do Adjetivo Muda o Sentido"
-            variant="blue"
+            variant="emerald"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FlipCard
@@ -3026,7 +3021,7 @@ Haver no singular, existir no plural
           <ModuleSectionHeader
             index={6}
             title="Locução Adjetiva e Concordância Nominal"
-            variant="blue"
+            variant="emerald"
           />
           <ContentAccordion
             mode="stacked"
@@ -3095,7 +3090,7 @@ Haver no singular, existir no plural
           <ModuleSectionHeader
             index={7}
             title="Resumo e Multimídia"
-            variant="blue"
+            variant="emerald"
           />
           <LessonTabs
             tabs={[
@@ -3203,6 +3198,7 @@ Na Cesgranrio não tem bobice!
             titulo="Quiz — Pronome & Adjetivo"
             icone="⚡"
             numero={8}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </section>
@@ -3215,7 +3211,7 @@ Na Cesgranrio não tem bobice!
           numero={3}
           titulo="Conjunção & Preposição"
           descricao="Os conectivos que unem orações e os elos que subordinam termos. Bases de coesão e regência."
-          gradiente="bg-gradient-to-br from-blue-800 via-cyan-700 to-teal-500"
+          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
         />
 
         {/* ── CONJUNÇÃO ── */}
@@ -3223,7 +3219,7 @@ Na Cesgranrio não tem bobice!
           <ModuleSectionHeader
             index={1}
             title="A Conjunção — Conceito Científico"
-            variant="amber"
+            variant="violet"
           />
           <p className="text-lg text-muted-foreground text-justify leading-relaxed">
             A <strong>Conjunção</strong> é a classe de palavra{" "}
@@ -3239,7 +3235,7 @@ Na Cesgranrio não tem bobice!
           <ModuleSectionHeader
             index={2}
             title="Conjunções Coordenativas"
-            variant="amber"
+            variant="violet"
           />
           <ContentAccordion
             mode="stacked"
@@ -3516,7 +3512,7 @@ Na Cesgranrio não tem bobice!
           <ModuleSectionHeader
             index={3}
             title="Causal × Explicativa — A Armadilha Clássica"
-            variant="amber"
+            variant="violet"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FlipCard
@@ -3711,7 +3707,7 @@ Na Cesgranrio não tem bobice!
           <ModuleSectionHeader
             index={4}
             title="Subordinativas (10 tipos)"
-            variant="amber"
+            variant="violet"
           />
           <ContentAccordion
             mode="stacked"
@@ -4196,7 +4192,7 @@ Na Cesgranrio não tem bobice!
           <ModuleSectionHeader
             index={5}
             title="A Preposição — Conceito Científico"
-            variant="amber"
+            variant="violet"
           />
           <p className="text-lg text-muted-foreground text-justify leading-relaxed">
             A <strong>Preposição</strong> é a classe de palavra{" "}
@@ -4212,7 +4208,7 @@ Na Cesgranrio não tem bobice!
           <ModuleSectionHeader
             index={6}
             title="Essenciais, Acidentais e Contrações"
-            variant="amber"
+            variant="violet"
           />
           <ContentAccordion
             mode="stacked"
@@ -4392,7 +4388,7 @@ Na Cesgranrio não tem bobice!
           <ModuleSectionHeader
             index={7}
             title="Resumo e Multimídia"
-            variant="amber"
+            variant="violet"
           />
           <LessonTabs
             tabs={[
@@ -4507,6 +4503,7 @@ Imperativo antes? Explicação!
             titulo="Quiz — Conjunção & Preposição"
             icone="🔗"
             numero={8}
+            variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </section>
@@ -4519,7 +4516,7 @@ Imperativo antes? Explicação!
           numero={4}
           titulo="Advérbio & Artigo"
           descricao="O modificador invariável que a Cesgranrio adora testar e o pequeno determinante que transforma classes."
-          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-fuchsia-700"
+          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
         />
 
         {/* ── ADVÉRBIO ── */}
@@ -4527,7 +4524,7 @@ Imperativo antes? Explicação!
           <ModuleSectionHeader
             index={1}
             title="O Advérbio — Conceito Científico"
-            variant="rose"
+            variant="amber"
           />
           <p className="text-lg text-muted-foreground text-justify leading-relaxed">
             O <strong>Advérbio</strong> é a classe de palavra{" "}
@@ -4544,7 +4541,7 @@ Imperativo antes? Explicação!
           <ModuleSectionHeader
             index={2}
             title="Classificações do Advérbio"
-            variant="rose"
+            variant="amber"
           />
           <p className="text-base text-muted-foreground leading-relaxed text-justify">
             Os advérbios organizam-se em categorias baseadas na{" "}
@@ -4906,7 +4903,7 @@ Imperativo antes? Explicação!
           <ModuleSectionHeader
             index={3}
             title="As Palavras Camaleão — Meio, Bastante, Certo, Menos"
-            variant="rose"
+            variant="amber"
           />
           <p className="text-base text-muted-foreground leading-relaxed text-justify">
             Existem palavras na língua portuguesa que se comportam como
@@ -5003,7 +5000,7 @@ Imperativo antes? Explicação!
           <ModuleSectionHeader
             index={4}
             title="O Artigo — Conceito Científico"
-            variant="rose"
+            variant="amber"
           />
           <p className="text-lg text-muted-foreground text-justify leading-relaxed">
             O <strong>Artigo</strong> é a classe de palavra{" "}
@@ -5019,7 +5016,7 @@ Imperativo antes? Explicação!
           <ModuleSectionHeader
             index={5}
             title="O Artigo como 'Rei Midas' e a Regra do Proibido/Necessário"
-            variant="rose"
+            variant="amber"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FlipCard
@@ -5162,7 +5159,7 @@ Imperativo antes? Explicação!
           <ModuleSectionHeader
             index={6}
             title="Resumo e Multimídia"
-            variant="rose"
+            variant="amber"
           />
           <LessonTabs
             tabs={[
@@ -5273,7 +5270,8 @@ Se não flexiona, advérbio vai ficar!
             questoes={qMod4}
             titulo="Quiz — Advérbio & Artigo"
             icone="🎯"
-            numero={7}
+            numero={10}
+            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </section>
@@ -5286,7 +5284,7 @@ Se não flexiona, advérbio vai ficar!
           numero={5}
           titulo="Numeral, Interjeição & Laboratório Final"
           descricao="As duas classes de menor frequência na prova e o simulado integrador de todas as 10 classes gramaticais."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-700 to-cyan-800"
+          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
         />
 
         {/* ── NUMERAL ── */}
@@ -5294,7 +5292,7 @@ Se não flexiona, advérbio vai ficar!
           <ModuleSectionHeader
             index={1}
             title="O Numeral — Conceito Científico"
-            variant="emerald"
+            variant="rose"
           />
           <p className="text-lg text-muted-foreground text-justify leading-relaxed">
             O <strong>Numeral</strong> é a classe de palavra que indica{" "}
@@ -5310,7 +5308,7 @@ Se não flexiona, advérbio vai ficar!
           <ModuleSectionHeader
             index={2}
             title="Classificações e Armadilhas"
-            variant="emerald"
+            variant="rose"
           />
           <ContentAccordion
             mode="stacked"
@@ -5487,7 +5485,7 @@ Se não flexiona, advérbio vai ficar!
           <ModuleSectionHeader
             index={3}
             title="A Interjeição — Emoções e Pontuação"
-            variant="emerald"
+            variant="rose"
           />
           <p className="text-base text-muted-foreground leading-relaxed text-justify">
             A <strong>Interjeição</strong> é a classe de palavra{" "}
@@ -5605,7 +5603,7 @@ Se não flexiona, advérbio vai ficar!
           <ModuleSectionHeader
             index={4}
             title="As Locuções Interjetivas"
-            variant="emerald"
+            variant="rose"
           />
           <p className="text-base text-muted-foreground leading-relaxed text-justify">
             As locuções ocorrem quando{" "}
@@ -5652,7 +5650,7 @@ Se não flexiona, advérbio vai ficar!
           <ModuleSectionHeader
             index={5}
             title="Quadro-Resumo — As 10 Classes Gramaticais"
-            variant="emerald"
+            variant="rose"
           />
           <AlertBox tipo="info" titulo="Hora de consolidar tudo!">
             Antes do simulado final, relembre as 10 classes. Use este resumo
@@ -5717,7 +5715,7 @@ Se não flexiona, advérbio vai ficar!
           <ModuleSectionHeader
             index={6}
             title="Resumo e Multimídia"
-            variant="emerald"
+            variant="rose"
           />
           <LessonTabs
             tabs={[
@@ -5829,7 +5827,8 @@ Conjunção, Interjeição, Advérbio e Preposição!
             questoes={qLab}
             titulo="Simulado Final — Todas as 10 Classes"
             icone="🏆"
-            numero={10}
+            numero={7}
+            variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
         </section>

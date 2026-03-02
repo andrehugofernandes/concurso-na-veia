@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { useState, useEffect, useRef } from "react";
 import {
   Accordion,
@@ -628,10 +629,8 @@ export default function AulaInterpretacaoTexto({
     }
   };
 
-  const isModuleUnlocked = (index: number) => {
-    if (isCompleted) return true;
-    if (index === 0) return true;
-    return completedModules.has(MODULE_DEFS[index - 1].id);
+  const isModuleUnlocked = (_index: number) => {
+    return true; // TEMPORÁRIO: Desbloqueado para revisão
   };
 
   if (loading) return null;
@@ -668,7 +667,7 @@ export default function AulaInterpretacaoTexto({
           numero={1}
           titulo="Fundamentos e Cognição"
           descricao="A base teórica de Bechara e as tipologias essenciais para a Petrobras."
-          gradiente="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700"
+          gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
         />
 
         {/* SEÇÃO 1: BECHARA DETALHADO */}
@@ -676,7 +675,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={1}
             title="Visão de Bechara: O Texto como Unidade de Sentido"
-            variant="amber"
+            variant="indigo"
           />
           <div className="space-y-8">
             <div className="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/30 rounded-xl p-6 md:p-8">
@@ -713,147 +712,61 @@ export default function AulaInterpretacaoTexto({
           </div>
         </section>
 
-        {/* SEÇÃO 2: TIPOLOGIA TEXTUAL */}
+        {/* ESTA SEÇÃO FOI SUBSTITUÍDA INTEGRALMENTE PELA MATRIZ NO ACORDEON */}
+
+        {/* SEÇÃO 2: TIPOLOGIAS E GÊNEROS (ACORDEON DETALHADO) */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={2}
-            title="Tipologia Textual: Como o Texto se Organiza"
-            variant="blue"
+            title="A Matriz de Tipos e Gêneros"
+            variant="indigo"
           />
-          <p className="text-muted-foreground text-lg">
-            Identificar o tipo de texto é o primeiro passo para não errar a
-            interpretação central.
-          </p>
-
-          <div className="w-full">
-            <Carousel opts={{ loop: true, align: "start" }} className="w-full">
-              <CarouselContent className="-ml-4 pb-4">
-                <CarouselItem className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                  <FlipCard
-                    categoria="Tipologia Textual"
-                    frente={
-                      <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
-                        <div className="w-16 h-16 rounded-2xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-                          <LuLayers size={32} />
-                        </div>
-                        <h3 className="text-xl font-bold">
-                          Dissertativo-Argumentativo
-                        </h3>
-                        <p className="text-sm text-muted-foreground">
-                          O queridinho da Cesgranrio
-                        </p>
-                      </div>
-                    }
-                    verso={
-                      <div className="space-y-4">
-                        <p>
-                          <strong>Definição:</strong> Expõe um assunto e defende
-                          uma opinião (tese) com argumentos.
-                        </p>
-                        <div className="p-3 bg-background/50 rounded-lg border border-indigo-500/20 text-xs italic">
-                          "A exploração do petróleo é vital, embora a transição
-                          energética seja urgente. Portanto, o Brasil deve..."
-                        </div>
-                      </div>
-                    }
-                  />
-                </CarouselItem>
-
-                <CarouselItem className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                  <FlipCard
-                    categoria="Tipologia Textual"
-                    frente={
-                      <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
-                        <div className="w-16 h-16 rounded-2xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
-                          <LuBookOpen size={32} />
-                        </div>
-                        <h3 className="text-xl font-bold">
-                          Narrativo e Descritivo
-                        </h3>
-                        <p className="text-sm text-muted-foreground">
-                          O que conta e o que pinta
-                        </p>
-                      </div>
-                    }
-                    verso={
-                      <div className="space-y-4">
-                        <div>
-                          <strong className="text-emerald-400">
-                            Narrativo:
-                          </strong>
-                          <p className="text-sm">
-                            Foca em ações no tempo (personagens, enredo,
-                            evolução temporal).
-                          </p>
-                        </div>
-                        <div className="border-t border-white/10 pt-2">
-                          <strong className="text-emerald-400">
-                            Descritivo:
-                          </strong>
-                          <p className="text-sm">
-                            Foca em características (pintura com palavras,
-                            adjetivação, cena estática).
-                          </p>
-                        </div>
-                      </div>
-                    }
-                  />
-                </CarouselItem>
-
-                <CarouselItem className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                  <FlipCard
-                    categoria="Tipologia Textual"
-                    frente={
-                      <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
-                        <div className="w-16 h-16 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
-                          <LuFileText size={32} />
-                        </div>
-                        <h3 className="text-xl font-bold">
-                          Injuntivo (Instrucional)
-                        </h3>
-                        <p className="text-sm text-muted-foreground">
-                          O que manda fazer
-                        </p>
-                      </div>
-                    }
-                    verso={
-                      <div className="space-y-4">
-                        <p>
-                          <strong>Definição:</strong> Visa orientar o
-                          comportamento do leitor. Imperativo e verbos de
-                          comando.
-                        </p>
-                        <ul className="list-disc pl-4 text-sm space-y-1">
-                          <li>Manuais técnicos</li>
-                          <li>Receitas</li>
-                          <li>Editais</li>
-                          <li>Normas de Segurança (SMS)</li>
-                        </ul>
-                      </div>
-                    }
-                  />
-                </CarouselItem>
-              </CarouselContent>
-              <div className="flex justify-center gap-2 mt-4">
-                <CarouselPrevious className="static translate-y-0 h-10 w-10 border-slate-700 text-slate-400" />
-                <CarouselNext className="static translate-y-0 h-10 w-10 border-slate-700 text-slate-400" />
-              </div>
-            </Carousel>
-          </div>
-        </section>
-
-        {/* SEÇÃO 4: QUIZ M1 */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={3}
-            title="Quiz de Fixação"
-            variant="rose"
-          />
-          <QuizInterativo
-            questoes={quizM1}
-            titulo="Quiz de Fixação - Fundamentos e Cognição"
-            icone="🎯"
-            onComplete={(score) => handleModuleComplete("modulo-1", score)}
+          <ContentAccordion
+            mode="stacked"
+            titulo="Tipologia vs Gênero"
+            icone={<LuBookOpen />}
+            corIndicador="bg-blue-500"
+            defaultOpen={true}
+            slides={[
+              {
+                titulo: "1. Tipologia Textual (A Estrutura)",
+                icone: "🏗️",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground">
+                      É o "esqueleto" do texto. Natureza linguística. São
+                      poucos: Narrativo, Descritivo, Dissertativo, Injuntivo,
+                      Expositivo.
+                    </p>
+                    <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20">
+                      <p className="text-sm font-semibold text-blue-700 dark:text-blue-300">
+                        Exemplo: Um texto predominantemente INJUNTIVO (usa
+                        verbos no imperativo para dar ordens/conselhos).
+                      </p>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                titulo: "2. Gênero Textual (A Função Social)",
+                icone: "🤝",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground">
+                      É o uso real na sociedade. Tem objetivo comunicativo. São
+                      infinitos: Bula de remédio, manual de instrução,
+                      reportagem, ofício, e-mail.
+                    </p>
+                    <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20">
+                      <p className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">
+                        A Bula de Remédio (Gênero) usa a tipologia Injuntiva
+                        (Tipo) para cumprir sua função.
+                      </p>
+                    </div>
+                  </div>
+                ),
+              },
+            ]}
           />
         </section>
       </TabsContent>
@@ -864,7 +777,7 @@ export default function AulaInterpretacaoTexto({
           numero={2}
           titulo="Mecanismos de Coesão"
           descricao="As ferramentas que dão liga ao texto e os conectores lógicos da Cesgranrio."
-          gradiente="bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-800"
+          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
         />
 
         {/* SEÇÃO 1: OS CONECTIVOS */}
@@ -872,7 +785,8 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={1}
             title="Os Conectivos: Mapa Lógico"
-            variant="amber"
+            description="Entenda o papel dos conectores na coesão textual e os sentidos que eles carregam."
+            variant="emerald"
           />
           <div className="space-y-6">
             <AlertBox tipo="info" titulo="O Pulo do Gato">
@@ -992,13 +906,13 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={2}
             title="Substituição na Prática"
+            description="Veja como o sentido se mantém mas a sintaxe se altera ao trocar conectivos."
             variant="emerald"
           />
           <p className="text-muted-foreground">
             Veja como o sentido se mantém mas a sintaxe se altera:
           </p>
           <CardCarousel
-            titulo="Exemplos de Reescrita"
             cards={[
               {
                 icone: "⚖️",
@@ -1075,7 +989,8 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={3}
             title="Resumo e Multimídia"
-            variant="indigo"
+            description="Consolide seu conhecimento com vídeos, resumos visuais e áudios."
+            variant="emerald"
           />
           <LessonTabs
             tabs={[
@@ -1174,15 +1089,12 @@ export default function AulaInterpretacaoTexto({
 
         {/* SEÇÃO 4: QUIZ M2 */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={4}
-            title="Quiz de Fixação - Mecanismos de Coesão"
-            variant="rose"
-          />
           <QuizInterativo
             questoes={quizM2}
             titulo="Quiz de Fixação - Mecanismos de Coesão"
             icone="🎯"
+            numero={4}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </section>
@@ -1194,22 +1106,17 @@ export default function AulaInterpretacaoTexto({
           numero={3}
           titulo="Estratégias de Elite"
           descricao="As 3 grades armadilhas e técnicas de varredura Cesgranrio."
-          gradiente="bg-gradient-to-br from-purple-700 to-indigo-900"
+          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
         />
 
         {/* SEÇÃO 1: VARREDURA E MÉTODOS DE LEITURA */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-            <span className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center text-3xl font-bold text-blue-700 dark:text-blue-400">
-              1
-            </span>
-            A Varredura Estratégica
-          </h2>
-          <p className="text-muted-foreground text-lg mb-6">
-            Na prova, o tempo é seu maior inimigo. Técnicas de varredura ajudam
-            a mapear o texto antes de mergulhar em seus detalhes, preparando o
-            cérebro para buscar a resposta correta no lugar certo.
-          </p>
+          <ModuleSectionHeader
+            index={1}
+            title="A Varredura Estratégica"
+            description="Técnicas de mapeamento rápido para encontrar a resposta certa no lugar certo."
+            variant="violet"
+          />
           <ContentAccordion
             titulo="Métodos Ágeis de Leitura"
             icone={<LuBookOpen className="text-blue-500" />}
@@ -1289,12 +1196,12 @@ export default function AulaInterpretacaoTexto({
 
         {/* SEÇÃO 2: ARMADILHAS */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-            <span className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-3xl font-bold text-red-700 dark:text-red-400">
-              2
-            </span>
-            As "Três Portas do Erro" na Interpretação
-          </h2>
+          <ModuleSectionHeader
+            index={2}
+            title="As 'Três Portas do Erro' na Interpretação"
+            description="Extrapolação, Redução e Contradição: aprenda a identificar os distratores."
+            variant="violet"
+          />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 bg-red-500/5 border border-red-500/20 rounded-2xl relative overflow-hidden group">
               <div className="absolute top-4 right-4 text-red-500/20 group-hover:scale-125 transition-transform duration-500">
@@ -1337,12 +1244,12 @@ export default function AulaInterpretacaoTexto({
 
         {/* SEÇÃO 3: DESAFIO PRÁTICO */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
-            <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-3xl font-bold text-indigo-700 dark:text-indigo-400">
-              3
-            </span>
-            Desafio Prático: Laboratório de Gabarito
-          </h2>
+          <ModuleSectionHeader
+            index={3}
+            title="Desafio Prático: Laboratório de Gabarito"
+            description="Coloque suas habilidades à prova com exemplos de certo vs errado."
+            variant="violet"
+          />
           {shuffledChallenges.length > 0 && (
             <div className="space-y-8">
               <div
@@ -1384,7 +1291,14 @@ export default function AulaInterpretacaoTexto({
                       (prev) => (prev + 1) % shuffledChallenges.length,
                     )
                   }
-                  className="rounded-full px-8 py-6 font-bold text-lg shadow-xl shadow-indigo-500/20 hover:scale-105 active:scale-95 transition-all"
+                  className={cn(
+                    "rounded-full px-8 py-6 font-bold text-lg shadow-xl hover:scale-105 active:scale-95 transition-all text-foreground",
+                    materiaCor.includes("blue")
+                      ? "shadow-blue-500/40 border-blue-500/50"
+                      : materiaCor.includes("emerald")
+                        ? "shadow-emerald-500/40 border-emerald-500/50"
+                        : "shadow-indigo-500/40 border-indigo-500/50",
+                  )}
                 >
                   🔄 Próximo Desafio
                 </Button>
@@ -1398,7 +1312,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={3}
             title="Resumo e Multimídia"
-            variant="indigo"
+            variant="violet"
           />
           <LessonTabs
             tabs={[
@@ -1499,15 +1413,12 @@ export default function AulaInterpretacaoTexto({
 
         {/* SEÇÃO 4: SIMULADO FINAL M3 */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader
-            index={4}
-            title="Quiz de Fixação - Estratégias de Elite"
-            variant="amber"
-          />
           <QuizInterativo
             questoes={quizM3}
             titulo="Quiz de Fixação - Estratégias de Elite"
             icone="🏆"
+            numero={4}
+            variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </section>
@@ -1519,7 +1430,7 @@ export default function AulaInterpretacaoTexto({
           numero={4}
           titulo="Coerência e Progressão"
           descricao="A fluidez do texto corporativo: amarração de ideias e progressão temática."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
         />
 
         {/* SEÇÃO 1: COERÊNCIA GLOBAL ACELERADA */}
@@ -1527,7 +1438,8 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={1}
             title="Os 3 Policiamentos da Leitura"
-            variant="emerald"
+            description="As leis universais da coerência: Não Contradição, Progressão e Coerência Externa."
+            variant="amber"
           />
           <p className="text-muted-foreground text-lg mb-6">
             Um texto bem desenvolvido na prova discursiva e avaliado nas
@@ -1685,13 +1597,13 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={2}
             title="Anatomia da Reescritura"
-            variant="cyan"
+            description="Analise as armadilhas clássicas em que bancas tentam te derrubar ao reescrever frases."
+            variant="amber"
           />
           <p className="text-muted-foreground">
             Analise as armadilhas clássicas em que bancas tentam te derrubar:
           </p>
           <CardCarousel
-            titulo="Armadilhas Comuns"
             cards={[
               {
                 icone: "🪤",
@@ -1738,7 +1650,8 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={3}
             title="Resumo e Multimídia"
-            variant="cyan"
+            description="Revise a progressão temática e as técnicas de reescritura."
+            variant="amber"
           />
           <LessonTabs
             tabs={[
@@ -1796,15 +1709,12 @@ export default function AulaInterpretacaoTexto({
 
         {/* SEÇÃO 4: QUIZ FIXAÇÃO M4 */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={4}
-            title="Quiz - Coerência e Progressão"
-            variant="amber"
-          />
           <QuizInterativo
             questoes={quizM4}
             titulo="Quiz - Coerência e Progressão"
             icone="🎯"
+            numero={4}
+            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </section>
@@ -1816,7 +1726,7 @@ export default function AulaInterpretacaoTexto({
           numero={5}
           titulo="Maratona do Gabarito"
           descricao="Revisão final, simulado e consolidação total do seu domínio textual."
-          gradiente="bg-gradient-to-br from-orange-600 via-rose-600 to-red-700"
+          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
         />
 
         {/* SEÇÃO 1: A BÚSSOLA FINAL */}
@@ -1824,15 +1734,11 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={1}
             title="Os Comandos Perigosos"
+            description="Fique atento aos enunciados que podem mudar completamente o que se procura."
             variant="rose"
           />
-          <p className="text-muted-foreground text-lg mb-6">
-            Fique atento aos "comandos de morte" (expressões no enunciado que
-            mudam completamente o que se procura).
-          </p>
           <CardCarousel
             itemsPerView={2}
-            titulo="Comandos e Seus Significados"
             cards={[
               {
                 icone: "🔍",
@@ -1877,7 +1783,8 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={2}
             title="Resumo e Multimídia"
-            variant="amber"
+            description="Revisão final dos comandos de prova e técnicas de inferência."
+            variant="rose"
           />
           <LessonTabs
             tabs={[
@@ -1933,15 +1840,12 @@ export default function AulaInterpretacaoTexto({
 
         {/* SEÇÃO 3: SIMULADO DEBATIDO M5 */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader
-            index={3}
-            title="Simulado Final: Maratona Cesgranrio"
-            variant="rose"
-          />
           <QuizInterativo
             questoes={quizM5}
-            titulo="Simulado Final: Interpretação Total"
+            titulo="Simulado Final: Maratona Cesgranrio"
             icone="🏆"
+            numero={3}
+            variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
         </section>

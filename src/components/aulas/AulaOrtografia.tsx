@@ -757,15 +757,9 @@ export default function AulaOrtografia({
     const percent = Math.round((done / total) * 100);
   }, [completedModules]);
 
-  const isModuleUnlocked = useCallback(
-    (moduleIndex: number) => {
-      if (isCompleted) return true;
-      if (moduleIndex === 0) return true;
-      const prevModuleId = MODULE_DEFS[moduleIndex - 1]?.id;
-      return prevModuleId ? completedModules.has(prevModuleId) : false;
-    },
-    [completedModules, isCompleted],
-  );
+  const isModuleUnlocked = useCallback((_moduleIndex: number) => {
+    return true; // TEMPORÁRIO: Desbloqueado para revisão
+  }, []);
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
@@ -823,14 +817,15 @@ export default function AulaOrtografia({
           numero={1}
           titulo="Encontros Vocálicos e Sílabas"
           descricao="A base da fonética: entenda ditongos, tritongos, hiatos e como separar as sílabas corretamente."
-          gradiente="bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700"
+          gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
             title="Encontros Vocálicos"
-            variant="blue"
+            description="A fundação da fonética: compreenda a união e a separação de sons vocálicos nas palavras."
+            variant="indigo"
           />
 
           <AlertBox tipo="info" titulo="O que são?">
@@ -908,7 +903,7 @@ export default function AulaOrtografia({
           <ModuleSectionHeader
             index={2}
             title="Resumo e Multimídia"
-            variant="blue"
+            variant="indigo"
           />
           <LessonTabs
             tabs={[
@@ -1012,7 +1007,8 @@ Ditongo é junto, hiato é separação!
             questoes={qMod1}
             titulo="Quiz — Encontros Vocálicos"
             icone="🎯"
-            numero={1}
+            numero={2}
+            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </section>
@@ -1036,6 +1032,7 @@ Ditongo é junto, hiato é separação!
           <ModuleSectionHeader
             index={1}
             title="Classificação da Sílaba Tônica"
+            description="Aprenda a identificar o coração sonoro das palavras para aplicar as regras de acento."
             variant="emerald"
           />
 
@@ -1216,6 +1213,7 @@ Ditongo é junto, hiato é separação!
           <ModuleSectionHeader
             index={2}
             title="Resumo e Multimídia"
+            description="Ferramentas práticas para memorizar as 4 regras de ouro da acentuação."
             variant="emerald"
           />
           <LessonTabs
@@ -1337,14 +1335,15 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           numero={3}
           titulo="O Novo Acordo"
           descricao="Aprenda o que caiu, o que mudou e o que a Cesgranrio mais cobra sobre a Nova Ortografia."
-          gradiente="bg-gradient-to-br from-blue-600 via-indigo-600 to-sky-700"
+          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
             title="As Três Grandes Baixas"
-            variant="blue"
+            description="Foco total no que mudou: ditongos abertos, tremas e as novas regras de hiato."
+            variant="violet"
           />
 
           <AlertBox tipo="warning" titulo="O Alvo da Banca">
@@ -1425,7 +1424,8 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           <ModuleSectionHeader
             index={2}
             title="O Hiato Revoltado"
-            variant="blue"
+            description="Desvende a pegadinha suprema dos hiatos após ditongos em todas as suas nuances."
+            variant="violet"
           />
 
           <div className="flex flex-col md:flex-row gap-8 items-center">
@@ -1473,7 +1473,8 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           <ModuleSectionHeader
             index={3}
             title="Resumo e Multimídia"
-            variant="blue"
+            description="Recursos visuais e auditivos para fixar a base fonética e ortográfica."
+            variant="violet"
           />
           <LessonTabs
             tabs={[
@@ -1596,14 +1597,14 @@ Mas na prova a banca te espera!
           numero={4}
           titulo="O Temido Uso do Hífen"
           descricao="Compreenda a lógica magnética dos prefixos para nunca mais errar uso de hífen."
-          gradiente="bg-gradient-to-br from-indigo-600 via-purple-600 to-fuchsia-700"
+          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
             title="A Lei Magnética dos Opostos"
-            variant="indigo"
+            variant="amber"
           />
 
           <AlertBox tipo="info" titulo="O Princípio Magnético do Hífen">
@@ -1711,7 +1712,8 @@ Mas na prova a banca te espera!
           <ModuleSectionHeader
             index={2}
             title="A Regra da Dobradinha (R e S)"
-            variant="indigo"
+            description="Entenda o fenômeno da duplicação consonantal após prefixos terminados em vogal."
+            variant="amber"
           />
 
           <AlertBox tipo="info" titulo="O R e o S multiplicam-se">
@@ -1775,7 +1777,8 @@ Mas na prova a banca te espera!
           <ModuleSectionHeader
             index={3}
             title="Resumo e Multimídia"
-            variant="indigo"
+            description="Vídeos e mapas mentais para consolidar a mecânica do hífen."
+            variant="amber"
           />
           <LessonTabs
             tabs={[
@@ -1895,16 +1898,17 @@ Iguais se repelem, diferentes se amam
       >
         <ModuleBanner
           numero={5}
-          titulo="Expressões Problemáticas"
-          descricao="Os Quatro Porquês, Mal/Mau, Onde/Aonde e as pegadinhas semânticas."
-          gradiente="bg-gradient-to-br from-yellow-500 via-amber-500 to-orange-600"
+          titulo="Problemas Frequentes"
+          descricao="Os maiores tropeços da língua testados exaustivamente em provas."
+          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
-            title="O Sumiço dos Porquês"
-            variant="amber"
+            title="Sessão de Terapia Ortográfica"
+            description="Aprenda a aplicar cada um dos quatro tipos de porquê com precisão absoluta."
+            variant="rose"
           />
 
           <AlertBox tipo="info" titulo="A Natureza dos Quatro Porquês">
@@ -1967,7 +1971,8 @@ Iguais se repelem, diferentes se amam
           <ModuleSectionHeader
             index={2}
             title="Opostos Que Confundem"
-            variant="amber"
+            description="Diferencie mal/mau e onde/aonde através da lógica gramatical simples."
+            variant="rose"
           />
           <CardCarousel
             itemsPerView={2}
@@ -2009,7 +2014,8 @@ Iguais se repelem, diferentes se amam
           <ModuleSectionHeader
             index={3}
             title="Resumo e Multimídia"
-            variant="amber"
+            description="Macetes mnemônicos para nunca mais confundir os porquês, mal/mau e onde/aonde."
+            variant="rose"
           />
           <LessonTabs
             tabs={[
@@ -2130,14 +2136,15 @@ Por que separado? Porque eu estudei!
           numero={6}
           titulo="Laboratório & Revisão Integrada"
           descricao="Treinamento intensivo nível Cesgranrio para a prova da Petrobras."
-          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-700"
+          gradiente="bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
             title="Revisão Final (Mind Map)"
-            variant="violet"
+            description="Um panorama completo de toda a ortografia e acentuação em um fluxo lógico."
+            variant="cyan"
           />
 
           <div className="flex flex-col gap-6 w-full max-w-3xl mx-auto">
@@ -2180,7 +2187,8 @@ Por que separado? Porque eu estudei!
           <ModuleSectionHeader
             index={2}
             title="Simulado Padrão Cesgranrio"
-            variant="violet"
+            description="Teste seus conhecimentos com questões reais focadas na banca Petrobras."
+            variant="cyan"
           />
           <QuizInterativo
             questoes={qMod6}

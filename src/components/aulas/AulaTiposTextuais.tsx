@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   LuCheck,
   LuCirclePlay as LuPlayCircle,
@@ -813,15 +814,9 @@ export default function AulaTiposTextuais({
     }
   }, [currentProgress, hasSyncedInitial, loading]);
 
-  const isModuleUnlocked = useCallback(
-    (moduleIndex: number) => {
-      if (isCompleted) return true;
-      if (moduleIndex === 0) return true;
-      const prevModuleId = MODULE_DEFS[moduleIndex - 1]?.id;
-      return prevModuleId ? completedModules.has(prevModuleId) : false;
-    },
-    [completedModules, isCompleted],
-  );
+  const isModuleUnlocked = useCallback((_moduleIndex: number) => {
+    return true; // TEMPORÁRIO: Desbloqueado para revisão
+  }, []);
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
@@ -872,14 +867,15 @@ export default function AulaTiposTextuais({
           numero={1}
           titulo="Narrativo & Descritivo"
           descricao="Estudo sistemático da evolução temporal (ação) contraposta à observação espacial (fotografia)."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
             title="A Dinâmica da Narração"
-            variant="emerald"
+            description="Entenda como a sucessão de fatos no tempo cria o enredo e a progressão narrativa."
+            variant="indigo"
           />
 
           <ContentAccordion
@@ -1010,7 +1006,8 @@ export default function AulaTiposTextuais({
           <ModuleSectionHeader
             index={2}
             title="O Quadro Estático: Descrição"
-            variant="emerald"
+            description="Capture o ambiente e os personagens através de detalhes sensoriais e adjetivação precisa."
+            variant="indigo"
           />
 
           <AlertBox tipo="info" titulo="O Conceito Central">
@@ -1082,7 +1079,8 @@ export default function AulaTiposTextuais({
           <ModuleSectionHeader
             index={3}
             title="Resumo e Multimídia"
-            variant="emerald"
+            description="Recursos visuais e auditivos para fixar os conceitos de narração e descrição."
+            variant="indigo"
           />
           <LessonTabs
             tabs={[
@@ -1188,7 +1186,8 @@ A tipologia você vai entender!
             questoes={qMod1}
             titulo="Quiz — Narrativo e Descritivo"
             icone="📝"
-            numero={5}
+            numero={4}
+            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </section>
@@ -1202,14 +1201,15 @@ A tipologia você vai entender!
           numero={2}
           titulo="Dissertativo"
           descricao="A arte de expor a realidade e usar argumentos lógicos para convencer o leitor."
-          gradiente="bg-gradient-to-br from-blue-600 via-indigo-600 to-sky-700"
+          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
             title="Expor vs. Argumentar"
-            variant="blue"
+            description="Diferencie a neutralidade da informação da força persuasiva da defesa de uma ideia."
+            variant="emerald"
           />
 
           <AlertBox tipo="warning" titulo="O Ponto de Virada">
@@ -1281,7 +1281,8 @@ A tipologia você vai entender!
           <ModuleSectionHeader
             index={2}
             title="A Estrutura do Texto Argumentativo"
-            variant="blue"
+            description="Do embrião da tese à solidez da conclusão: o esqueleto da persuasão."
+            variant="emerald"
           />
 
           <ContentAccordion
@@ -1376,7 +1377,8 @@ A tipologia você vai entender!
           <ModuleSectionHeader
             index={3}
             title="Resumo e Multimídia"
-            variant="blue"
+            description="Consolide as estratégias de argumentação e exposição com ferramentas multimídia."
+            variant="emerald"
           />
           <LessonTabs
             tabs={[
@@ -1481,9 +1483,10 @@ Se tem julgamento, é argumentação!
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod2}
-            titulo="Quiz — Dissertação"
-            icone="🎓"
-            numero={3}
+            titulo="Quiz — Expor x Argumentar"
+            icone="⚖️"
+            numero={4}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </section>
@@ -1500,14 +1503,15 @@ Se tem julgamento, é argumentação!
           numero={3}
           titulo="Injuntivo & Dialogal"
           descricao="A técnica das instruções, manuais, procedimentos normativos industriais e do diálogo."
-          gradiente="bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700"
+          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
             title="Tipo Injuntivo (Instrucional)"
-            variant="indigo"
+            description="O comando para a ação: como os textos ditam normas, procedimentos e instruções."
+            variant="violet"
           />
 
           <AlertBox
@@ -1521,8 +1525,6 @@ Se tem julgamento, é argumentação!
           </AlertBox>
 
           <CardCarousel
-            titulo="Características da Injunção"
-            subtitulo="O texto que altera comportamentos"
             cards={[
               {
                 icone: <LuTriangleAlert className="text-indigo-500" />,
@@ -1569,7 +1571,8 @@ Se tem julgamento, é argumentação!
           <ModuleSectionHeader
             index={2}
             title="Tipo Dialogal (Conversacional)"
-            variant="indigo"
+            description="A interação em turnos: a estrutura das falas, entrevistas e diálogos textuais."
+            variant="violet"
           />
 
           <ContentAccordion
@@ -1612,7 +1615,8 @@ Se tem julgamento, é argumentação!
           <ModuleSectionHeader
             index={3}
             title="Resumo e Multimídia"
-            variant="indigo"
+            description="Vídeos e alertas sobre o uso de manuais e diálogos em ambientes operacionais."
+            variant="violet"
           />
           <LessonTabs
             tabs={[
@@ -1722,7 +1726,8 @@ Imperativo na prova, injunção aflora!
             questoes={qMod3}
             titulo="Quiz — Injunção"
             icone="📋"
-            numero={3}
+            numero={4}
+            variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </section>
@@ -1739,13 +1744,14 @@ Imperativo na prova, injunção aflora!
           numero={4}
           titulo="Gêneros vs. Tipos"
           descricao="A armadilha clássica da CESGRANRIO: diferenciar a base estrutural (tipo) do uso social (gênero)."
-          gradiente="bg-gradient-to-br from-yellow-500 via-amber-600 to-orange-700"
+          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
             title="A Grande Confusão"
+            description="Aprenda a não confundir o gênero social com a base tipológica do texto."
             variant="amber"
           />
 
@@ -1775,6 +1781,7 @@ Imperativo na prova, injunção aflora!
           <ModuleSectionHeader
             index={2}
             title="A Sobreposição (Hibridismo)"
+            description="Identifique como diferentes tipos textuais se fundem para formar gêneros complexos."
             variant="amber"
           />
 
@@ -1825,6 +1832,7 @@ Imperativo na prova, injunção aflora!
           <ModuleSectionHeader
             index={3}
             title="Resumo e Multimídia"
+            description="Ferramentas para mapear gêneros e tipos em questões da Cesgranrio."
             variant="amber"
           />
           <LessonTabs
@@ -1932,7 +1940,8 @@ Gênero e tipo, essa é a lição!
             questoes={qMod4}
             titulo="Quiz — Diferenciando"
             icone="🔍"
-            numero={3}
+            numero={4}
+            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </section>
@@ -1949,14 +1958,15 @@ Gênero e tipo, essa é a lição!
           numero={5}
           titulo="Laboratório CESGRANRIO"
           descricao="Revisão geral e simulado final cruzando todos os tipos textuais operacionais."
-          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-700"
+          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
             title="Revisão Final Turbo"
-            variant="violet"
+            description="O último checklist para garantir o acerto em qualquer questão de tipologia."
+            variant="rose"
           />
 
           <div className="space-y-6">
@@ -1988,7 +1998,8 @@ Gênero e tipo, essa é a lição!
           <ModuleSectionHeader
             index={2}
             title="Resumo e Multimídia"
-            variant="violet"
+            description="Consolidação geral de todas as tipologias estudadas nesta unidade."
+            variant="rose"
           />
           <LessonTabs
             tabs={[
@@ -2096,7 +2107,8 @@ Imperativo manda, é a tipologia em ação!
             questoes={qLab}
             titulo="Simulado Final — Tipologia (Cesgranrio)"
             icone="🏆"
-            numero={5}
+            numero={3}
+            variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
         </section>

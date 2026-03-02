@@ -21,34 +21,35 @@ export async function POST(request: NextRequest) {
 INSTRUÇÕES CRÍTICAS:
 1. Crie UMA questão de ${materia} para concurso Petrobras ${contexto?.nivel ? `nível ${contexto.nivel}` : ''} ${contexto?.cargo ? `(Cargo: ${contexto.cargo})` : ''}
 2. Dificuldade: ${dificuldade || 'Média'}
-3. Estilo CESGRANRIO: enunciado CURTO (2-3 linhas), objetivo, direto
-4. 5 alternativas plausíveis e próximas
-5. EVITE textos longos ou complexos desnecessários
-6. Contexto Industrial: Sempre que possível, use cenários reais da indústria de óleo e gás
+3. Estilo CESGRANRIO: enunciado CURTO (2-3 linhas), objetivo, direto.
+4. 5 alternativas plausíveis e próximas entre si.
 
-Retorne APENAS um JSON válido (sem markdown, sem explicações extras):
+⚠️ REGRA ABSOLUTA DE CONSISTÊNCIA MATEMÁTICA:
+- Primeiro, defina o problema e REALIZE O CÁLCULO PASSO A PASSO.
+- A alternativa marcada como CORRETA (índice 0-4) deve ser EXATAMENTE o resultado do seu cálculo.
+- A explicação DEVE demonstrar o rastro do cálculo que leva ao valor da alternativa correta.
+- SE VOCÊ calcular "32.400", então "32.400" TEM que estar nas alternativas e ser a correta.
+- JAMAIS retorne uma questão onde o cálculo não bate com a alternativa.
+
+PROCESSO DE AUTO-VERIFICAÇÃO:
+1. Calcule o valor. 2. Crie as opções. 3. Verifique se a opção correta = valor calculado.
+
+Retorne APENAS um JSON válido:
 {
   "enunciado": "texto da questão",
   "alternativas": ["opção A", "opção B", "opção C", "opção D", "opção E"],
   "correta": 0,
-  "explicacao": "explicação pedagógica detalhada",
-  "assunto": "nome do assunto específico abordado",
+  "explicacao": "Explicação detalhada com o passo a passo matemático exato",
+  "assunto": "assunto específico",
   "dificuldade": "Fácil|Média|Difícil"
 }
 
-REGRAS DE FORMATAÇÃO HTML (CRÍTICO):
+REGRAS DE FORMATAÇÃO HTML:
 - Use tags HTML para destaque visual: <b>negrito</b>, <u>sublinhado</u>, <i>itálico</i>.
-- NÃO use Markdown (como **negrito** ou _itálico_).
-- REGRA ABSOLUTA SOBRE SUBLINHADO: Quando a questão pedir "o termo sublinhado" ou "a expressão sublinhada", a tag <u> DEVE envolver APENAS a palavra ou expressão curta que é o alvo da questão, NUNCA a frase inteira.
-  - CORRETO: "Os procedimentos devem ser <u>revistos periodicamente</u> para garantir a eficácia."
-  - ERRADO: "<u>Os procedimentos devem ser revistos periodicamente para garantir a eficácia.</u>"
-- O trecho sublinhado deve corresponder exatamente ao que as alternativas substituem.
+- NÃO use Markdown.
 ${questoesAnteriores && questoesAnteriores.length > 0 ? `
-DIVERSIDADE OBRIGATÓRIA:
-- Já foram geradas ${questoesAnteriores.length} questões neste simulado. Você DEVE criar uma questão COMPLETAMENTE DIFERENTE.
-- NÃO repita o mesmo tipo de problema, cenário, ou estrutura.
-- Use um ASSUNTO/TÓPICO diferente dos já abordados.
-- Questões anteriores (resumo): ${questoesAnteriores.join(' | ')}
+DIVERSIDADE:
+- Evite temas similares a: ${questoesAnteriores.join(' | ')}
 ` : ''}`;
 
         console.log(`[Gemini] Gerando questão de ${materia} (${dificuldade || 'auto'}) para ${contexto?.cargo || 'Geral'}`);

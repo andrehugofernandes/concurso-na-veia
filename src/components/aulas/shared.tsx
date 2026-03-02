@@ -266,7 +266,7 @@ export function CardCarousel({
   cards,
   itemsPerView = 3,
 }: {
-  titulo: string;
+  titulo?: string;
   subtitulo?: string;
   numeroBadge?: number;
   cards: CarouselCard[];
@@ -776,12 +776,22 @@ export function QuizInterativo({
   titulo,
   icone,
   numero,
+  variant = "indigo",
   onComplete,
 }: {
   questoes: QuizQuestion[];
   titulo: string;
   icone: string;
   numero?: number;
+  variant?:
+    | "indigo"
+    | "violet"
+    | "emerald"
+    | "amber"
+    | "rose"
+    | "blue"
+    | "cyan"
+    | "slate";
   onComplete?: (score: number) => void;
 }) {
   const [respostas, setRespostas] = useState<Record<number, string>>({});
@@ -825,12 +835,13 @@ export function QuizInterativo({
   return (
     <div className="bg-card rounded-xl border border-border p-6 my-8 shadow-lg">
       {numero ? (
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
-          <span className="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center text-3xl font-bold text-indigo-700 dark:text-indigo-400 shrink-0">
-            {numero}
-          </span>
-          {titulo}
-        </h2>
+        <ModuleSectionHeader
+          index={numero}
+          title={titulo}
+          description="Teste seus conhecimentos para consolidar o aprendizado."
+          variant={variant}
+          className="mb-8"
+        />
       ) : (
         <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
           <span>{icone}</span> {titulo}
@@ -1001,6 +1012,39 @@ export function ComparisonSide({
     </div>
   );
 }
+
+// ── Module Skin Colors ──────────────────────────────────────────────────
+// Sistema de cores padrão para os módulos. Cada posição de módulo (1-5)
+// tem uma cor fixa que deve ser usada por TODOS os cards daquele módulo.
+// Usar: MODULE_SKIN_COLORS[moduleIndex] para obter variant e gradiente.
+export const MODULE_SKIN_COLORS = [
+  {
+    variant: "indigo" as const,
+    gradiente: "bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700",
+  },
+  {
+    variant: "emerald" as const,
+    gradiente: "bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700",
+  },
+  {
+    variant: "violet" as const,
+    gradiente: "bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700",
+  },
+  {
+    variant: "amber" as const,
+    gradiente: "bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700",
+  },
+  {
+    variant: "rose" as const,
+    gradiente: "bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700",
+  },
+  {
+    variant: "cyan" as const,
+    gradiente: "bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700",
+  },
+];
+
+export type ModuleSkinVariant = (typeof MODULE_SKIN_COLORS)[number]["variant"];
 
 export function ModuleBanner({
   numero,
@@ -2348,14 +2392,12 @@ export function StickyModuleNav({
   );
 }
 
-export function ModuleSectionHeader({
+export function SectionBadge({
   index,
-  title,
   variant = "indigo",
   className,
 }: {
   index: number | string;
-  title: string;
   variant?:
     | "indigo"
     | "violet"
@@ -2363,35 +2405,100 @@ export function ModuleSectionHeader({
     | "amber"
     | "rose"
     | "blue"
-    | "cyan";
+    | "cyan"
+    | "slate";
   className?: string;
 }) {
-  const variants = {
-    indigo: "bg-indigo-500/20 text-indigo-700 dark:text-indigo-400",
-    violet: "bg-violet-500/20 text-violet-700 dark:text-violet-400",
-    emerald: "bg-emerald-500/20 text-emerald-700 dark:text-emerald-400",
-    amber: "bg-amber-500/20 text-amber-700 dark:text-amber-400",
-    rose: "bg-rose-500/20 text-rose-700 dark:text-rose-400",
-    blue: "bg-blue-500/20 text-blue-700 dark:text-blue-400",
-    cyan: "bg-cyan-500/20 text-cyan-700 dark:text-cyan-400",
+  const badgeVariants = {
+    indigo: "bg-white/20 text-white",
+    violet: "bg-white/20 text-white",
+    emerald: "bg-white/20 text-white",
+    amber: "bg-white/20 text-white",
+    rose: "bg-white/20 text-white",
+    blue: "bg-white/20 text-white",
+    cyan: "bg-white/20 text-white",
+    slate: "bg-white/20 text-white",
   };
 
   return (
-    <h2
+    <div
       className={cn(
-        "text-3xl md:text-4xl font-bold flex items-center gap-4",
+        "relative shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-3xl font-black shadow-inner-white backdrop-blur-sm",
+        badgeVariants[variant as keyof typeof badgeVariants],
         className,
       )}
     >
-      <span
-        className={cn(
-          "w-14 h-14 rounded-full flex items-center justify-center text-3xl font-bold shrink-0",
-          variants[variant],
+      {index}
+    </div>
+  );
+}
+
+export function ModuleSectionHeader({
+  index,
+  title,
+  description,
+  variant = "indigo",
+  className,
+}: {
+  index: number | string;
+  title: string;
+  description?: string;
+  variant?:
+    | "indigo"
+    | "violet"
+    | "emerald"
+    | "amber"
+    | "rose"
+    | "blue"
+    | "cyan"
+    | "slate";
+  className?: string;
+}) {
+  const bgVariants = {
+    indigo: "bg-[#0037C1]", // var(--primary) padrão
+    violet: "bg-violet-600",
+    emerald: "bg-emerald-600",
+    amber: "bg-amber-600",
+    rose: "bg-rose-600",
+    blue: "bg-blue-600",
+    cyan: "bg-cyan-600",
+  };
+
+  const badgeVariants = {
+    indigo: "bg-white/20 text-white",
+    violet: "bg-white/20 text-white",
+    emerald: "bg-white/20 text-white",
+    amber: "bg-white/20 text-white",
+    rose: "bg-white/20 text-white",
+    blue: "bg-white/20 text-white",
+    cyan: "bg-white/20 text-white",
+  };
+
+  return (
+    <div
+      className={cn(
+        "relative overflow-hidden rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 shadow-lg transition-all hover:shadow-xl group",
+        bgVariants[variant as keyof typeof bgVariants],
+        className,
+      )}
+    >
+      {/* Decoração de Fundo */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/5 rounded-full -ml-16 -mb-16 blur-2xl" />
+
+      <SectionBadge index={index} variant={variant} />
+
+      {/* Conteúdo */}
+      <div className="relative space-y-1">
+        <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+          {title}
+        </h2>
+        {description && (
+          <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-4xl font-medium">
+            {description}
+          </p>
         )}
-      >
-        {index}
-      </span>
-      {title}
-    </h2>
+      </div>
+    </div>
   );
 }
