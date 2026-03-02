@@ -36,7 +36,7 @@ const bottomNavItems: BottomNavItem[] = [
   },
   {
     id: "simulado-especifico",
-    label: "Simulados",
+    label: "Provas",
     href: "/simulado-especifico",
     icon: LuFileQuestion,
   },
