@@ -1588,7 +1588,7 @@ export default function AulaSintaxe({
           {/* 5. Quiz de Fixação */}
           <QuizInterativo
             numero={5}
-            titulo="Quiz de Fixação: Sujeito e Predicado"
+            titulo="Sujeito e Predicado"
             icone="🧠"
             questoes={getRandomQuestions(QUIZ_ESSENCIAIS_POOL, 8)}
             variant="indigo"
@@ -1972,7 +1972,7 @@ export default function AulaSintaxe({
           {/* 5. Quiz Módulo 2 */}
           <QuizInterativo
             numero={5}
-            titulo="Quiz de Fixação: Termos Integrantes"
+            titulo="Termos Integrantes"
             icone="🧩"
             questoes={getRandomQuestions(QUIZ_INTEGRANTES_POOL, 8)}
             variant="emerald"
@@ -2416,7 +2416,7 @@ export default function AulaSintaxe({
 
           <QuizInterativo
             numero={4}
-            titulo="Quiz de Fixação: Termos Acessórios e Vocativo"
+            titulo="Termos Acessórios e Vocativo"
             icone="🔍"
             questoes={getRandomQuestions(QUIZ_ACESSORIOS_POOL, 8)}
             variant="violet"
@@ -2795,7 +2795,7 @@ export default function AulaSintaxe({
           {/* 4. Quiz Módulo 4 */}
           <QuizInterativo
             numero={4}
-            titulo="Quiz: Laboratório Final"
+            titulo="Laboratório Final"
             icone="🔬"
             questoes={getRandomQuestions(QUIZ_LABORATORIO_POOL, 5)}
             variant="amber"

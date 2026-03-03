@@ -949,7 +949,7 @@ export default function AulaCrase({
           </section>
 
           <QuizInterativo
-            titulo="Quiz de Fixação: Conceitos"
+            titulo="Conceitos"
             icone="🧠"
             numero={6}
             questoes={quizM1}
@@ -1133,7 +1133,7 @@ export default function AulaCrase({
           </section>
 
           <QuizInterativo
-            titulo="Quiz - Módulo de Proibições"
+            titulo="Proibições"
             icone="🚫"
             numero={5}
             questoes={quizM2}
@@ -1319,7 +1319,7 @@ export default function AulaCrase({
           </section>
 
           <QuizInterativo
-            titulo="Quiz - Casos Facultativos"
+            titulo="Facultativos"
             icone="📝"
             numero={5}
             questoes={quizM3}
@@ -1499,7 +1499,7 @@ export default function AulaCrase({
           </section>
 
           <QuizInterativo
-            titulo="Quiz - Casos Especiais"
+            titulo="Especiais"
             icone="🎯"
             numero={5}
             questoes={quizM4}
@@ -1514,7 +1514,7 @@ export default function AulaCrase({
         <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <ModuleBanner
             numero={5}
-            titulo="Simulado Final: Rumo ao Gabarito"
+            titulo="Domínio do Acento Grave"
             descricao="Consolidação total com desafios do nível da Petrobras."
             gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
           />
@@ -1530,7 +1530,7 @@ export default function AulaCrase({
             <p className="text-lg text-muted-foreground leading-relaxed">
               Você percorreu o caminho completo: desde a fusão básica (A+A),
               passando pelas barreiras intransponíveis (Proibições), pelos
-              caminhos de escolha (Facultativos) e pelas armadilhas ocultas
+              caminhos de escolha (Facultativos), e pelas armadilhas ocultas
               (Casos Especiais). Agora, o objetivo é um só:{" "}
               <strong>automação</strong>. Você deve olhar para a frase e o sinal
               de crase deve "brilhar" ou "apagar" instantaneamente em sua mente.
@@ -1702,7 +1702,7 @@ export default function AulaCrase({
                   content: (
                     <MusicPlayerCard
                       audioUrl="#"
-                      titulo="Consolidação da Crase"
+                      titulo="Fundamentos da Crase"
                       artista="Prof. Antigravity"
                       capaUrl="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1170&auto=format&fit=crop"
                       lyrics={`O acento grave não é brincadeira...\nCom ele você vai pela vida inteira...\nBasta saber se o 'A' é dobrado...\nE o seu sucesso está garantido e selado!\n\nProibido no macho, no verbo e no plural isolado.\nFacultativo na dona, na minha e no até lado a lado.\nNo 'qual' e no 'aquele' o segredo é o regente.\nCrase na hora e no 'à moda' do oriente!`}

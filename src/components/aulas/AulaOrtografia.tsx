@@ -1002,10 +1002,11 @@ Ditongo é junto, hiato é separação!
               },
             ]}
           />
-
+        </section>
+        <section className="mt-12">
           <QuizInterativo
             questoes={qMod1}
-            titulo="Quiz — Encontros Vocálicos"
+            titulo="Encontros Vocálicos"
             icone="🎯"
             numero={3}
             variant="indigo"
@@ -1314,14 +1315,14 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           />
         </section>
 
-        <section className="mt-16">
+        <section className="mt-12">
           <QuizInterativo
-            questoes={qMod1}
-            titulo="Quiz — Regras da Acentuação"
-            icone="🎓"
-            numero={3}
-            variant="emerald"
-            onComplete={(score) => handleModuleComplete("modulo-1", score)}
+            questoes={qMod2}
+            titulo="Fundamentos da Acentuação"
+            icone="⚡"
+            numero={4}
+            variant="violet"
+            onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </section>
       </TabsContent>
@@ -1881,12 +1882,12 @@ Iguais se repelem, diferentes se amam
           />
         </section>
 
-        <section className="mt-16">
+        <section className="mt-12">
           <QuizInterativo
             questoes={qMod4}
-            titulo="Quiz — O Desafio do Hífen"
-            icone="➖"
-            numero={4}
+            titulo="Hífen sem Mistério"
+            icone="⛓️"
+            numero={3}
             variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
@@ -2117,10 +2118,11 @@ Por que separado? Porque eu estudei!
               },
             ]}
           />
-
+        </section>
+        <section className="mt-12">
           <QuizInterativo
             questoes={qMod5}
-            titulo="Quiz — Expressões Problemáticas"
+            titulo="Expressões Problemáticas"
             icone="🧐"
             variant="rose"
             numero={4}
@@ -2187,10 +2189,10 @@ Por que separado? Porque eu estudei!
           </AlertBox>
         </section>
 
-        <section className="mt-8">
+        <section className="mt-12">
           <QuizInterativo
             questoes={qMod6}
-            titulo="Simulador Final — A Vaga é Minha"
+            titulo="A Vaga é Minha"
             icone="🏆"
             numero={2}
             variant="cyan"

@@ -189,10 +189,10 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="p-2 md:p-4">
-      <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-foreground mb-1">
+    <div className="p-4 md:p-8 space-y-8">
+      <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div className="animate-in fade-in slide-in-from-left duration-500">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-1">
             Olá, {userData.nome.split(" ")[0]}! 👋
           </h1>
           <p className="text-muted-foreground">
@@ -200,25 +200,25 @@ export default function DashboardPage() {
           </p>
         </div>
         {userData.plan === "free" && (
-          <div className="flex items-center gap-4">
-            <div className="flex flex-col items-end">
-              <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">
-                Teste Grátis
+          <div className="flex flex-col xs:flex-row items-start xs:items-center gap-3 xs:gap-4 w-full md:w-auto">
+            <div className="flex flex-col items-start xs:items-end">
+              <span className="text-[9px] text-muted-foreground font-bold uppercase tracking-wider mb-0.5">
+                Período de Teste
               </span>
               <div className="flex items-center gap-1.5 bg-card px-2 py-1 rounded-lg border border-border shadow-sm">
                 <span
-                  className={`text-lg font-black ${userData.diasRestantesTrial && userData.diasRestantesTrial <= 3 ? "text-red-500 animate-pulse" : "text-yellow-500 font-bold"}`}
+                  className={`text-lg font-black ${userData.diasRestantesTrial && userData.diasRestantesTrial <= 3 ? "text-red-500 animate-pulse" : "text-yellow-500"}`}
                 >
                   {userData.diasRestantesTrial}
                 </span>
-                <span className="text-xs text-muted-foreground font-bold">
+                <span className="text-[10px] text-muted-foreground font-bold">
                   dias restantes
                 </span>
               </div>
             </div>
             <Link
               href="/pricing"
-              className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-slate-900 font-bold rounded-lg hover:shadow-lg hover:shadow-orange-500/20 transition-all text-sm animate-bounce"
+              className="w-full xs:w-auto text-center px-4 py-2.5 bg-gradient-to-r from-yellow-500 to-orange-500 text-slate-900 font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/20 transition-all text-xs uppercase tracking-wider"
             >
               Seja PRO 👑
             </Link>
@@ -227,23 +227,23 @@ export default function DashboardPage() {
       </header>
 
       {/* Tabs */}
-      <div className="flex gap-4 mb-8 border-b border-border">
+      <div className="flex gap-6 mb-8 border-b border-border overflow-x-auto scrollbar-none">
         <button
           onClick={() => setActiveTab("overview")}
-          className={`pb-4 px-2 text-sm font-bold transition-all relative ${activeTab === "overview" ? "text-yellow-500" : "text-muted-foreground hover:text-foreground"}`}
+          className={`pb-4 px-1 text-sm font-bold transition-all relative whitespace-nowrap ${activeTab === "overview" ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
         >
           Visão Geral
           {activeTab === "overview" && (
-            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-500 rounded-t-full"></div>
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-primary rounded-t-full animate-in fade-in zoom-in duration-300"></div>
           )}
         </button>
         <button
           onClick={() => setActiveTab("ranking")}
-          className={`pb-4 px-2 text-sm font-bold transition-all relative ${activeTab === "ranking" ? "text-yellow-500" : "text-muted-foreground hover:text-foreground"}`}
+          className={`pb-4 px-1 text-sm font-bold transition-all relative whitespace-nowrap ${activeTab === "ranking" ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
         >
           Ranking
           {activeTab === "ranking" && (
-            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-500 rounded-t-full"></div>
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-primary rounded-t-full animate-in fade-in zoom-in duration-300"></div>
           )}
         </button>
       </div>
@@ -252,55 +252,55 @@ export default function DashboardPage() {
         {activeTab === "overview" ? (
           <>
             {/* Stats Row */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-              <div className="bg-card p-4 rounded-xl border border-border flex items-center gap-4 shadow-lg">
-                <div className="p-3 bg-blue-500/20 rounded-lg text-blue-500 text-2xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8">
+              <div className="bg-card p-3 md:p-4 rounded-xl border border-border flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-4 shadow-sm hover:shadow-md transition-shadow">
+                <div className="p-2 sm:p-3 bg-blue-500/10 rounded-lg text-blue-500 text-xl sm:text-2xl">
                   ⚡
                 </div>
-                <div>
-                  <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider">
+                <div className="text-center sm:text-left">
+                  <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
                     Sequência
                   </p>
-                  <p className="text-2xl font-black text-foreground">
+                  <p className="text-lg sm:text-2xl font-black text-foreground">
                     {userData.sequencia_atual} dias
                   </p>
                 </div>
               </div>
-              <div className="bg-card p-4 rounded-xl border border-border flex items-center gap-4 shadow-lg">
-                <div className="p-3 bg-purple-500/20 rounded-lg text-purple-500 text-2xl">
+              <div className="bg-card p-3 md:p-4 rounded-xl border border-border flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-4 shadow-sm hover:shadow-md transition-shadow">
+                <div className="p-2 sm:p-3 bg-purple-500/10 rounded-lg text-purple-500 text-xl sm:text-2xl">
                   🎯
                 </div>
-                <div>
-                  <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider">
+                <div className="text-center sm:text-left">
+                  <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
                     Precisão
                   </p>
-                  <p className="text-2xl font-black text-foreground">
+                  <p className="text-lg sm:text-2xl font-black text-foreground">
                     {taxaAcerto}%
                   </p>
                 </div>
               </div>
-              <div className="bg-card p-4 rounded-xl border border-border flex items-center gap-4 shadow-lg">
-                <div className="p-3 bg-green-500/20 rounded-lg text-green-500 text-2xl">
+              <div className="bg-card p-3 md:p-4 rounded-xl border border-border flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-4 shadow-sm hover:shadow-md transition-shadow">
+                <div className="p-2 sm:p-3 bg-green-500/10 rounded-lg text-green-500 text-xl sm:text-2xl">
                   📝
                 </div>
-                <div>
-                  <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider">
+                <div className="text-center sm:text-left">
+                  <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
                     Questões
                   </p>
-                  <p className="text-2xl font-black text-foreground">
+                  <p className="text-lg sm:text-2xl font-black text-foreground">
                     {userData.questoes_geradas}
                   </p>
                 </div>
               </div>
-              <div className="bg-card p-4 rounded-xl border border-border flex items-center gap-4 shadow-lg">
-                <div className="p-3 bg-yellow-500/20 rounded-lg text-yellow-500 text-2xl">
+              <div className="bg-card p-3 md:p-4 rounded-xl border border-border flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-4 shadow-sm hover:shadow-md transition-shadow">
+                <div className="p-2 sm:p-3 bg-yellow-500/10 rounded-lg text-yellow-500 text-xl sm:text-2xl">
                   🏆
                 </div>
-                <div>
-                  <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider">
+                <div className="text-center sm:text-left">
+                  <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
                     Nível
                   </p>
-                  <p className="text-2xl font-black text-foreground">
+                  <p className="text-lg sm:text-2xl font-black text-foreground">
                     {userData.nivel_jogador}
                   </p>
                 </div>
@@ -367,7 +367,7 @@ export default function DashboardPage() {
 
                 {/* Recent Activity / Continue Watching */}
                 <div className="md:col-span-2 bg-gradient-to-br from-indigo-900/20 to-blue-900/20 rounded-2xl border border-indigo-500/20 p-6 shadow-sm flex flex-col justify-center">
-                  <div className="flex justify-between items-start mb-4">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
                     <div>
                       <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
                         <span className="animate-pulse">▶️</span> Continue de
@@ -375,12 +375,15 @@ export default function DashboardPage() {
                       </h3>
                       <p className="text-muted-foreground text-sm mt-1">
                         Você estava estudando{" "}
-                        <strong>Interpretação de Texto</strong>.
+                        <strong className="block sm:inline mt-1 sm:mt-0">
+                          Interpretação de Texto
+                        </strong>
+                        .
                       </p>
                     </div>
                     <Link
                       href="/aulas/portugues/interpretacao-texto"
-                      className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg transition text-sm shadow-lg shadow-indigo-500/20"
+                      className="w-full sm:w-auto text-center px-4 py-2.5 sm:py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg transition text-sm shadow-lg shadow-indigo-500/20"
                     >
                       Retomar Aula
                     </Link>
@@ -502,14 +505,14 @@ export default function DashboardPage() {
             </section>
 
             {/* SECTION 2: Simulados Rápidos */}
-            <section className="mb-8 p-6 bg-muted/20 rounded-3xl border border-border">
-              <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
-                <span className="p-2 bg-green-500/20 rounded-lg text-green-500 text-xl">
+            <section className="mb-8 p-4 sm:p-6 bg-muted/20 rounded-2xl sm:rounded-3xl border border-border">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+                <span className="p-2 bg-green-500/20 rounded-lg text-green-500 text-lg sm:text-xl">
                   ⚡
                 </span>
                 Simulados Rápidos
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {/* Português Card */}
                 <button
                   onClick={() =>
@@ -519,23 +522,23 @@ export default function DashboardPage() {
                       "blue",
                     )
                   }
-                  className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border shadow-lg hover:border-blue-500/50 transition-all group text-left flex flex-col h-full"
+                  className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:border-primary/50 transition-all group text-left flex flex-col h-full active:scale-[0.98]"
                 >
-                  <div className="h-2 bg-gradient-to-r from-blue-500 to-cyan-500 shrink-0"></div>
-                  <div className="p-6 flex flex-col h-full justify-between gap-4">
+                  <div className="h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 shrink-0"></div>
+                  <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-4">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 bg-blue-500/20 rounded-lg text-blue-400 text-3xl group-hover:scale-110 transition-transform shrink-0">
+                      <div className="p-2.5 sm:p-3 bg-blue-500/10 rounded-lg text-blue-500 text-2xl sm:text-3xl group-hover:scale-110 transition-transform shrink-0">
                         📝
                       </div>
-                      <h3 className="text-2xl font-black uppercase leading-tight bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+                      <h3 className="text-lg sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300 bg-clip-text text-transparent">
                         LÍNGUA PORTUGUESA
                       </h3>
                     </div>
-                    <div className="flex justify-between items-end gap-4 mt-auto">
-                      <p className="text-muted-foreground text-sm leading-snug">
+                    <div className="flex justify-between items-end gap-3 mt-auto">
+                      <p className="text-muted-foreground text-xs sm:text-sm leading-snug line-clamp-2">
                         Gramática, interpretação de texto e redação oficial.
                       </p>
-                      <span className="text-xs bg-muted text-muted-foreground px-3 py-1 rounded shrink-0 font-bold">
+                      <span className="text-[10px] bg-muted text-muted-foreground px-2 py-0.5 rounded shrink-0 font-bold">
                         5 min
                       </span>
                     </div>
@@ -547,23 +550,23 @@ export default function DashboardPage() {
                   onClick={() =>
                     handleSimuladoClick("matematica", "Matemática", "purple")
                   }
-                  className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border shadow-lg hover:border-purple-500/50 transition-all group text-left flex flex-col h-full"
+                  className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:border-primary/50 transition-all group text-left flex flex-col h-full active:scale-[0.98]"
                 >
-                  <div className="h-2 bg-gradient-to-r from-purple-500 to-pink-500 shrink-0"></div>
-                  <div className="p-6 flex flex-col h-full justify-between gap-4">
+                  <div className="h-1.5 bg-gradient-to-r from-purple-500 to-pink-500 shrink-0"></div>
+                  <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-4">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 bg-purple-500/20 rounded-lg text-purple-400 text-3xl group-hover:scale-110 transition-transform shrink-0">
+                      <div className="p-2.5 sm:p-3 bg-purple-500/10 rounded-lg text-purple-500 text-2xl sm:text-3xl group-hover:scale-110 transition-transform shrink-0">
                         🔢
                       </div>
-                      <h3 className="text-2xl font-black uppercase leading-tight bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+                      <h3 className="text-lg sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-purple-600 to-pink-500 dark:from-purple-400 dark:to-pink-500 bg-clip-text text-transparent">
                         MATEMÁTICA
                       </h3>
                     </div>
-                    <div className="flex justify-between items-end gap-4 mt-auto">
-                      <p className="text-muted-foreground text-sm leading-snug">
+                    <div className="flex justify-between items-end gap-3 mt-auto">
+                      <p className="text-muted-foreground text-xs sm:text-sm leading-snug line-clamp-2">
                         Raciocínio lógico, álgebra e geometria aplicada.
                       </p>
-                      <span className="text-xs bg-muted text-muted-foreground px-3 py-1 rounded shrink-0 font-bold">
+                      <span className="text-[10px] bg-muted text-muted-foreground px-2 py-0.5 rounded shrink-0 font-bold">
                         5 min
                       </span>
                     </div>
@@ -579,20 +582,20 @@ export default function DashboardPage() {
                       "green",
                     )
                   }
-                  className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border shadow-lg hover:border-green-500/50 transition-all group text-left flex flex-col h-full"
+                  className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:border-primary/50 transition-all group text-left flex flex-col h-full active:scale-[0.98]"
                 >
-                  <div className="h-2 bg-gradient-to-r from-green-500 to-emerald-500 shrink-0"></div>
-                  <div className="p-6 flex flex-col h-full justify-between gap-4">
+                  <div className="h-1.5 bg-gradient-to-r from-green-500 to-emerald-500 shrink-0"></div>
+                  <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-4">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 bg-green-500/20 rounded-lg text-green-400 text-3xl group-hover:scale-110 transition-transform shrink-0">
+                      <div className="p-2.5 sm:p-3 bg-green-500/10 rounded-lg text-green-500 text-2xl sm:text-3xl group-hover:scale-110 transition-transform shrink-0">
                         🏭
                       </div>
-                      <h3 className="text-2xl font-black uppercase leading-tight bg-gradient-to-r from-green-400 to-yellow-400 bg-clip-text text-transparent">
+                      <h3 className="text-lg sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-green-600 to-yellow-500 dark:from-green-400 dark:to-yellow-400 bg-clip-text text-transparent">
                         ESPECÍFICOS
                       </h3>
                     </div>
-                    <div className="flex justify-between items-end gap-4 mt-auto">
-                      <p className="text-muted-foreground text-sm leading-snug">
+                    <div className="flex justify-between items-end gap-3 mt-auto">
+                      <p className="text-muted-foreground text-xs sm:text-sm leading-snug line-clamp-2">
                         Questões focadas no seu cargo:{" "}
                         {(() => {
                           const cargoId =
@@ -601,7 +604,7 @@ export default function DashboardPage() {
                           return profissao?.nome || "Selecione no perfil";
                         })()}
                       </p>
-                      <span className="text-xs bg-muted text-muted-foreground px-3 py-1 rounded shrink-0 font-bold">
+                      <span className="text-[10px] bg-muted text-muted-foreground px-2 py-0.5 rounded shrink-0 font-bold">
                         5 min
                       </span>
                     </div>
@@ -618,28 +621,28 @@ export default function DashboardPage() {
                     onClick={() =>
                       handleSimuladoClick("ingles", "Língua Inglesa", "red")
                     }
-                    className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border shadow-lg hover:border-red-500/50 transition-all group text-left flex flex-col h-full relative"
+                    className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:border-primary/50 transition-all group text-left flex flex-col h-full relative active:scale-[0.98]"
                   >
-                    <div className="h-2 bg-gradient-to-r from-red-500 to-rose-500 shrink-0"></div>
-                    <div className="p-6 flex flex-col h-full justify-between gap-4">
+                    <div className="h-1.5 bg-gradient-to-r from-red-500 to-rose-500 shrink-0"></div>
+                    <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-4">
                       <div className="flex items-center gap-4">
-                        <div className="p-3 bg-red-500/20 rounded-lg text-red-400 text-3xl group-hover:scale-110 transition-transform shrink-0 relative">
+                        <div className="p-2.5 sm:p-3 bg-red-500/10 rounded-lg text-red-500 text-2xl sm:text-3xl group-hover:scale-110 transition-transform shrink-0 relative">
                           🇺🇸
-                          <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-white dark:bg-zinc-900 border-2 border-red-500 flex items-center justify-center shadow-lg">
-                            <span className="text-[8px] font-black text-red-600">
+                          <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-white dark:bg-zinc-900 border border-red-500 flex items-center justify-center shadow-md">
+                            <span className="text-[7px] font-black text-red-600">
                               US
                             </span>
                           </div>
                         </div>
-                        <h3 className="text-2xl font-black uppercase leading-tight bg-gradient-to-r from-red-400 to-rose-500 bg-clip-text text-transparent">
+                        <h3 className="text-lg sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-red-600 to-rose-500 dark:from-red-400 dark:to-rose-500 bg-clip-text text-transparent">
                           INGLÊS
                         </h3>
                       </div>
-                      <div className="flex justify-between items-end gap-4 mt-auto">
-                        <p className="text-muted-foreground text-sm leading-snug">
+                      <div className="flex justify-between items-end gap-3 mt-auto">
+                        <p className="text-muted-foreground text-xs sm:text-sm leading-snug">
                           Compreensão de texto e gramática aplicada.
                         </p>
-                        <span className="text-xs bg-muted text-muted-foreground px-3 py-1 rounded shrink-0 font-bold uppercase tracking-widest">
+                        <span className="text-[9px] bg-muted text-muted-foreground px-2 py-0.5 rounded shrink-0 font-bold uppercase tracking-tight">
                           Superior
                         </span>
                       </div>
@@ -1045,18 +1048,18 @@ export default function DashboardPage() {
 
             {/* Upgrade Banner for Free Users */}
             {userData.plan === "free" && (
-              <div className="bg-yellow-500/5 backdrop-blur-lg rounded-2xl p-8 border border-yellow-500/20 text-center shadow-lg">
-                <h3 className="text-2xl font-bold text-foreground mb-2">
+              <div className="bg-gradient-to-br from-yellow-500/5 to-orange-500/5 backdrop-blur-lg rounded-2xl p-6 sm:p-10 border border-yellow-500/10 text-center shadow-sm">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3">
                   🚀 Desbloqueie todo o potencial!
                 </h3>
-                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                <p className="text-sm sm:text-base text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
                   Assinantes PRO têm acesso ilimitado a Simulados Intensivos,
-                  Maratonas Oficiais, Ranking geral e análises detalhadas de
-                  desempenho.
+                  Maratonas Oficiais, Ranking completo e análises de desempenho
+                  personalizadas.
                 </p>
                 <Link
                   href="/pricing"
-                  className="px-8 py-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all inline-block transform hover:scale-105"
+                  className="px-8 py-3.5 bg-gradient-to-r from-yellow-500 to-orange-600 text-slate-900 font-bold rounded-xl hover:shadow-xl hover:shadow-orange-500/30 transition-all inline-block transform hover:scale-105 active:scale-95 text-sm uppercase tracking-widest"
                 >
                   Ver Planos e Preços
                 </Link>
@@ -1106,21 +1109,21 @@ function RankingTable({ userCargo }: { userCargo: string }) {
   }, [filter, userCargo]);
 
   return (
-    <div className="bg-card backdrop-blur-lg rounded-2xl border border-border overflow-hidden shadow-lg">
-      <div className="p-6 border-b border-border flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-foreground">
-          🏆 Melhores Jogadores
+    <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm">
+      <div className="p-5 sm:p-6 border-b border-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h2 className="text-xl sm:text-2xl font-bold text-foreground flex items-center gap-2">
+          🏆 Ranking <span className="hidden sm:inline">de Jogadores</span>
         </h2>
-        <div className="flex bg-muted rounded-lg p-1">
+        <div className="flex bg-muted rounded-full p-1 w-full sm:w-auto">
           <button
             onClick={() => setFilter("geral")}
-            className={`px-4 py-2 rounded-md text-sm font-bold transition ${filter === "geral" ? "bg-card text-foreground shadow" : "text-muted-foreground hover:text-foreground"}`}
+            className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-full text-xs font-bold transition-all ${filter === "geral" ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
           >
             Geral
           </button>
           <button
             onClick={() => setFilter("cargo")}
-            className={`px-4 py-2 rounded-md text-sm font-bold transition ${filter === "cargo" ? "bg-card text-foreground shadow" : "text-muted-foreground hover:text-foreground"}`}
+            className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-full text-xs font-bold transition-all ${filter === "cargo" ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
           >
             Meu Cargo
           </button>
@@ -1134,12 +1137,14 @@ function RankingTable({ userCargo }: { userCargo: string }) {
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full text-left">
-            <thead className="bg-muted text-muted-foreground text-sm uppercase">
+            <thead className="bg-muted/50 text-muted-foreground text-[10px] uppercase tracking-widest font-bold">
               <tr>
-                <th className="px-6 py-4">Pos</th>
-                <th className="px-6 py-4">Usuário</th>
-                <th className="px-6 py-4 text-center">Nível</th>
-                <th className="px-6 py-4 text-right">XP</th>
+                <th className="px-4 sm:px-6 py-3">Pos</th>
+                <th className="px-4 sm:px-6 py-3">Usuário</th>
+                <th className="hidden xs:table-cell px-4 sm:px-6 py-3 text-center">
+                  Nível
+                </th>
+                <th className="px-4 sm:px-6 py-3 text-right">XP</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">

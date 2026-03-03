@@ -1187,7 +1187,7 @@ A tipologia você vai entender!
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod1}
-            titulo="Quiz — Narrativo e Descritivo"
+            titulo="Narrativo e Descritivo"
             icone="📝"
             numero={4}
             variant="indigo"
@@ -1486,7 +1486,7 @@ Se tem julgamento, é argumentação!
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod2}
-            titulo="Quiz — Expor x Argumentar"
+            titulo="Expositivo e Injuntivo"
             icone="⚖️"
             numero={4}
             variant="emerald"
@@ -2108,7 +2108,7 @@ Imperativo manda, é a tipologia em ação!
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod5}
-            titulo="Quiz — Laboratório Técnico"
+            titulo="Laboratório Técnico"
             icone="🎯"
             numero={5}
             variant="rose"
@@ -2132,7 +2132,7 @@ Imperativo manda, é a tipologia em ação!
         <section className="mt-8">
           <QuizInterativo
             questoes={qMod6}
-            titulo="Simulado Final — Tipologia (Cesgranrio)"
+            titulo="Tipologia (Cesgranrio)"
             icone="🏆"
             numero={1}
             variant="cyan"

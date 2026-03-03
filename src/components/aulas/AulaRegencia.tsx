@@ -769,7 +769,7 @@ export default function AulaRegencia({
 
           <QuizInterativo
             numero={4}
-            titulo="Quiz de Fixação - Regência Nominal"
+            titulo="Regência Nominal"
             icone="🎯"
             questoes={quizM1}
             variant="indigo"
@@ -910,7 +910,7 @@ export default function AulaRegencia({
 
           <QuizInterativo
             numero={3}
-            titulo="Quiz de Fixação - Regência Verbal"
+            titulo="Cuidado com a Escrita"
             icone="📝"
             questoes={quizM2}
             variant="emerald"
@@ -1038,7 +1038,7 @@ export default function AulaRegencia({
 
           <QuizInterativo
             numero={3}
-            titulo="Quiz de Fixação - Regência Verbal II"
+            titulo="Regência Verbal (Essenciais)"
             icone="📝"
             questoes={quizM3}
             variant="violet"
@@ -1181,7 +1181,7 @@ export default function AulaRegencia({
                   content: (
                     <MusicPlayerCard
                       audioUrl="#"
-                      titulo="A Balada da Regência"
+                      titulo="Gabaritando Regência"
                       artista="Profa. Gramática"
                       capaUrl="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1170&auto=format&fit=crop"
                       lyrics={`Prefiro o estudo ao descanso...\nAspirando à vaga que eu tanto quis...\nObedecendo às regras pra ser feliz!`}

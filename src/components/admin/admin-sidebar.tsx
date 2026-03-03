@@ -32,6 +32,8 @@ import { cn } from "@/lib/utils";
 interface AdminSidebarProps {
   isCollapsed: boolean;
   isHidden?: boolean;
+  isOverlayOpen?: boolean;
+  onNavigate?: () => void;
   userRole?: string;
   onToggle?: () => void;
   userName?: string;
@@ -173,6 +175,8 @@ const ALL_MENU_SECTIONS: MenuSection[] = [
 export function AdminSidebar({
   isCollapsed,
   isHidden,
+  isOverlayOpen,
+  onNavigate,
   userRole,
 }: AdminSidebarProps) {
   const pathname = usePathname();
@@ -207,10 +211,13 @@ export function AdminSidebar({
     // Largura da Sidebar
     <aside
       className={cn(
-        "fixed top-0 left-0 z-40 h-screen bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-all duration-300 overflow-hidden",
+        "fixed top-0 left-0 h-screen bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-all duration-300 overflow-hidden",
         "scrollbar-hide scrollbar-none",
-        isCollapsed ? "w-16 md:w-20" : "w-64",
-        isHidden && "-left-20",
+        // Overlay mode: z-50 (acima do backdrop z-40), expandida com sombra
+        isOverlayOpen
+          ? "w-64 z-50 shadow-2xl"
+          : cn("z-40", isCollapsed ? "w-14 md:w-20" : "w-64"),
+        isHidden && "-translate-x-full",
       )}
     >
       <div className="flex flex-col h-full overflow-hidden scrollbar-hide scrollbar-none">
@@ -218,13 +225,15 @@ export function AdminSidebar({
         <div
           className={cn(
             "flex items-center border-b border-gray-200 dark:border-gray-700 h-16 md:h-20 flex-shrink-0",
-            isCollapsed ? "justify-center px-2" : "justify-start px-4",
+            isCollapsed && !isOverlayOpen
+              ? "justify-center px-2"
+              : "justify-start px-4",
           )}
         >
           <div
             className={cn(
               "flex items-center",
-              isCollapsed ? "justify-center" : "space-x-3",
+              isCollapsed && !isOverlayOpen ? "justify-center" : "space-x-3",
             )}
           >
             {/* Ícone/Logo */}
@@ -237,14 +246,16 @@ export function AdminSidebar({
               <span
                 className={cn(
                   "text-white font-bold",
-                  isCollapsed ? "text-base md:text-lg" : "text-xl",
+                  isCollapsed && !isOverlayOpen
+                    ? "text-base md:text-lg"
+                    : "text-xl",
                 )}
               >
                 AV
               </span>
             </div>
             {/* Título - só quando expandido */}
-            {!isCollapsed && (
+            {(!isCollapsed || isOverlayOpen) && (
               <div className="flex flex-col pt-1 min-w-0">
                 <div className="flex items-baseline whitespace-nowrap">
                   <span
@@ -272,27 +283,28 @@ export function AdminSidebar({
           {/* Dashboard - item solo no topo */}
           <Link
             href="/dashboard"
+            onClick={onNavigate}
             className={cn(
               "flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4",
               pathname === "/dashboard"
                 ? "bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90"
                 : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700",
-              isCollapsed && "justify-center px-2",
+              isCollapsed && !isOverlayOpen && "justify-center px-2",
             )}
-            title={isCollapsed ? "Dashboard" : undefined}
+            title={isCollapsed && !isOverlayOpen ? "Dashboard" : undefined}
           >
             <div
               className={cn(
                 "flex items-center justify-center",
-                isCollapsed ? "w-8 h-8" : "w-5 h-5",
+                isCollapsed && !isOverlayOpen ? "w-7 h-7" : "w-4 h-4",
               )}
             >
-              <LuLayoutDashboard size={22} className="flex-shrink-0" />
+              <LuLayoutDashboard size={18} className="flex-shrink-0" />
             </div>
-            {!isCollapsed && (
+            {(!isCollapsed || isOverlayOpen) && (
               <span className="ml-3 whitespace-nowrap">Dashboard</span>
             )}
-            {isCollapsed && (
+            {isCollapsed && !isOverlayOpen && (
               <div className="absolute left-full ml-2 px-2 py-1 bg-gray-900 text-white text-sm rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 shadow-lg">
                 Dashboard
               </div>
@@ -302,14 +314,14 @@ export function AdminSidebar({
           {/* Seções do menu */}
           {menuSections.map((section, sectionIndex) => (
             <div key={section.title} className={cn(sectionIndex > 0 && "mt-4")}>
-              {/* Título da seção - só quando expandido */}
-              {!isCollapsed && (
+              {/* Título da seção - visível quando expandido ou overlay */}
+              {(!isCollapsed || isOverlayOpen) && (
                 <h3 className="px-3 mb-1 text-[10px] font-bold text-gray-500/80 dark:text-gray-400/80 uppercase tracking-widest">
                   {section.title}
                 </h3>
               )}
-              {/* Separador quando colapsado */}
-              {isCollapsed && sectionIndex > 0 && (
+              {/* Separador quando colapsado (e não em overlay) */}
+              {isCollapsed && !isOverlayOpen && sectionIndex > 0 && (
                 <div className="mx-2 mb-1 border-t border-gray-200 dark:border-gray-700" />
               )}
 
@@ -325,24 +337,27 @@ export function AdminSidebar({
                     <Link
                       key={item.id}
                       href={item.href}
+                      onClick={onNavigate}
                       className={cn(
                         "flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group",
                         isActive
                           ? "bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90"
                           : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700",
-                        isCollapsed && "justify-center px-2",
+                        isCollapsed && !isOverlayOpen && "justify-center px-2",
                       )}
-                      title={isCollapsed ? item.label : undefined}
+                      title={
+                        isCollapsed && !isOverlayOpen ? item.label : undefined
+                      }
                     >
                       <div
                         className={cn(
                           "flex items-center justify-center",
-                          isCollapsed ? "w-8 h-8" : "w-5 h-5",
+                          isCollapsed && !isOverlayOpen ? "w-7 h-7" : "w-4 h-4",
                         )}
                       >
-                        <Icon size={22} className="flex-shrink-0" />
+                        <Icon size={18} className="flex-shrink-0" />
                       </div>
-                      {!isCollapsed && (
+                      {(!isCollapsed || isOverlayOpen) && (
                         <>
                           <span className="ml-3 whitespace-nowrap">
                             {item.label}
@@ -354,14 +369,14 @@ export function AdminSidebar({
                           )}
                         </>
                       )}
-                      {/* Badge quando colapsado */}
-                      {isCollapsed && item.badge && (
+                      {/* Badge quando colapsado (e não em overlay) */}
+                      {isCollapsed && !isOverlayOpen && item.badge && (
                         <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                           {item.badge}
                         </span>
                       )}
-                      {/* Tooltip quando colapsado */}
-                      {isCollapsed && (
+                      {/* Tooltip quando colapsado (e não em overlay) */}
+                      {isCollapsed && !isOverlayOpen && (
                         <div className="absolute left-full ml-2 px-2 py-1 bg-gray-900 text-white text-sm rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 shadow-lg">
                           {item.label}
                         </div>

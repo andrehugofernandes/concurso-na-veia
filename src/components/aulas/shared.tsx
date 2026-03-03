@@ -771,10 +771,11 @@ export function QuizInterativo({
   numero,
   variant = "indigo",
   onComplete,
+  descricao = "Teste seus conhecimentos para consolidar o aprendizado.",
 }: {
   questoes: QuizQuestion[];
   titulo: string;
-  icone: string;
+  icone?: string;
   numero?: number;
   variant?:
     | "indigo"
@@ -786,17 +787,20 @@ export function QuizInterativo({
     | "cyan"
     | "slate";
   onComplete?: (score: number) => void;
+  descricao?: string;
 }) {
   const [respostas, setRespostas] = useState<Record<number, string>>({});
   const [verificados, setVerificados] = useState<Record<number, boolean>>({});
   const [completed, setCompleted] = useState(false);
 
-  // Normaliza o título para seguir o padrão "QUIZ: [Título]"
-  const cleanTitulo = titulo
-    .replace(/^(Quiz|QUIZ)[:\s—-]*/i, "")
-    .replace(/^(de\s+Fixação|de\s+fixação)[:\s—-]*/i, "")
-    .trim();
-  const displayTitle = `QUIZ: ${cleanTitulo}`;
+  // 📝 IMPERATIVO: Padronização de Títulos de QUIZ
+  // Todo Quiz deve seguir a notação: QUIZ: [Título-do-Módulo]
+  // O prefixo 'Quiz de Fixação:' ou similares deve ser removido.
+  const cleanTitle = titulo
+    .replace(/^Quiz\s*(de\s*Fixação)?\s*[:\-]?\s*/i, "")
+    .replace(/^Simulado\s*(Final)?\s*[:\-]?\s*/i, "");
+
+  const displayTitle = `QUIZ: ${cleanTitle}`;
 
   const selecionar = (qId: number, label: string) => {
     if (verificados[qId]) return;
@@ -838,7 +842,7 @@ export function QuizInterativo({
         <ModuleSectionHeader
           index={numero}
           title={displayTitle}
-          description="Teste seus conhecimentos para consolidar o aprendizado."
+          description={descricao}
           variant={variant}
           className="mb-8"
         />
@@ -2547,7 +2551,7 @@ export function ModuleSectionHeader({
             {title}
           </h2>
           {description && (
-            <p className="text-white/80 text-base leading-relaxed max-w-4xl font-medium">
+            <p className="text-white/80 text-base leading-relaxed max-w-4xl font-medium text-justify tracking-tight">
               {description}
             </p>
           )}

@@ -91,6 +91,7 @@ function hexToHsl(hex: string): string {
 interface AdminHeaderProps {
   onMenuToggle: () => void;
   isSidebarCollapsed?: boolean;
+  isMobileSidebarOpen?: boolean;
   userName?: string;
   userEmail?: string;
   userRole?: string;
@@ -99,6 +100,7 @@ interface AdminHeaderProps {
 export function AdminHeader({
   onMenuToggle,
   isSidebarCollapsed,
+  isMobileSidebarOpen,
   userName,
   userEmail,
   userRole,
@@ -297,19 +299,21 @@ export function AdminHeader({
 
           {/* Right: Actions */}
           <div className="flex items-center space-x-2 md:space-x-4 flex-shrink-0">
-            {/* Seja Pro CTA */}
-            {userRole !== "ADMIN" && userRole !== "SYSADMIN" && (
-              <Link
-                href="/seja-pro"
-                className="hidden md:flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black text-[11px] font-black rounded-full transition-all shadow-sm hover:shadow-yellow-500/20 active:scale-95 border border-yellow-200/50"
-              >
-                <LuZap className="h-3.5 w-3.5 fill-black" />
-                <span className="tracking-tight">SEJA PRO</span>
-              </Link>
-            )}
+            {/* Seja Pro CTA - esconde quando sidebar overlay aberta */}
+            {!isMobileSidebarOpen &&
+              userRole !== "ADMIN" &&
+              userRole !== "SYSADMIN" && (
+                <Link
+                  href="/seja-pro"
+                  className="hidden md:flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black text-[11px] font-black rounded-full transition-all shadow-sm hover:shadow-yellow-500/20 active:scale-95 border border-yellow-200/50"
+                >
+                  <LuZap className="h-3.5 w-3.5 fill-black" />
+                  <span className="tracking-tight">SEJA PRO</span>
+                </Link>
+              )}
 
-            {/* Notifications */}
-            {mounted && (
+            {/* Notifications - esconde quando sidebar overlay aberta */}
+            {mounted && !isMobileSidebarOpen && (
               <DropdownMenu modal={false}>
                 <DropdownMenuTrigger asChild>
                   <button
@@ -337,8 +341,8 @@ export function AdminHeader({
               </DropdownMenu>
             )}
 
-            {/* Theme Toggle */}
-            {mounted && (
+            {/* Theme Toggle - esconde quando sidebar overlay aberta */}
+            {mounted && !isMobileSidebarOpen && (
               <button
                 onClick={toggleTheme}
                 className="flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300"
@@ -352,8 +356,8 @@ export function AdminHeader({
               </button>
             )}
 
-            {/* Color Picker */}
-            {mounted && (
+            {/* Color Picker - esconde quando sidebar overlay aberta */}
+            {mounted && !isMobileSidebarOpen && (
               <DropdownMenu modal={false}>
                 <DropdownMenuTrigger asChild>
                   <button className="flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors">

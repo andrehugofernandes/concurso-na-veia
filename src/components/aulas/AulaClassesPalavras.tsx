@@ -2658,7 +2658,7 @@ Haver no singular, existir no plural
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod1}
-            titulo="Quiz — Verbo & Substantivo"
+            titulo="Verbo & Substantivo"
             icone="📝"
             numero={10}
             variant="indigo"
@@ -3198,10 +3198,10 @@ Na Cesgranrio não tem bobice!
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod2}
-            titulo="Quiz — Pronome & Adjetivo"
-            icone="⚡"
-            numero={8}
-            variant="emerald"
+            titulo="Pronome & Adjetivo"
+            icone="🎯"
+            numero={6}
+            variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </section>
@@ -4503,10 +4503,10 @@ Imperativo antes? Explicação!
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod3}
-            titulo="Quiz — Conjunção & Preposição"
+            titulo="Conjunção & Preposição"
             icone="🔗"
-            numero={8}
-            variant="violet"
+            numero={2}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </section>
@@ -5271,9 +5271,9 @@ Se não flexiona, advérbio vai ficar!
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod4}
-            titulo="Quiz — Advérbio & Artigo"
-            icone="🎯"
-            numero={10}
+            titulo="Advérbio & Artigo"
+            icone="🏷️"
+            numero={3}
             variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
@@ -5829,9 +5829,9 @@ Conjunção, Interjeição, Advérbio e Preposição!
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod5}
-            titulo="Quiz — Numeral & Interjeição"
-            icone="🧠"
-            numero={11}
+            titulo="Numeral & Interjeição"
+            icone="🔢"
+            numero={4}
             variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
@@ -5849,10 +5849,10 @@ Conjunção, Interjeição, Advérbio e Preposição!
           gradiente="bg-gradient-to-br from-cyan-600 via-teal-600 to-cyan-700"
         />
 
-        <section className="mt-8">
+        <section className="mt-12">
           <QuizInterativo
             questoes={qMod6}
-            titulo="Simulado Final — Todas as 10 Classes"
+            titulo="Todas as 10 Classes"
             icone="🏆"
             numero={7}
             variant="cyan"

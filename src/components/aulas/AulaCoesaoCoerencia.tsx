@@ -896,7 +896,7 @@ export default function AulaCoesaoCoerencia({
           <section id="quiz-modulo-1" className="pt-8">
             <QuizInterativo
               questoes={quizCoesaoQuestions}
-              titulo="Quizz: Coesão Textual"
+              titulo="Coesão Textual"
               icone="💬"
               numero={4}
               variant="indigo"
@@ -944,7 +944,7 @@ export default function AulaCoesaoCoerencia({
             </div>
 
             <ContentAccordion
-              titulo="Os Pilares da Coerência"
+              titulo="Domínio da Coerência"
               icone="⚖️"
               corIndicador="bg-emerald-500"
               defaultOpen={true}
@@ -1479,7 +1479,7 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizAprofundamentoQuestions}
-            titulo="Desafio de Elite"
+            titulo="Aprofundamento"
             icone="🎖️"
             numero={2}
             variant="amber"
@@ -1536,7 +1536,7 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizFinalQuestions}
-            titulo="Simulado de Gabarito"
+            titulo="Simulado Final"
             icone="🏆"
             numero={2}
             variant="rose"

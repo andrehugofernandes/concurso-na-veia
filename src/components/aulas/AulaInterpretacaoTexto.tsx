@@ -770,16 +770,14 @@ export default function AulaInterpretacaoTexto({
           />
         </section>
         {/* SEÇÃO 3: QUIZ M1 */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <QuizInterativo
-            questoes={quizM1}
-            titulo="Quiz de Fixação - Fundamentos e Cognição"
-            icone="🎯"
-            numero={3}
-            variant="indigo"
-            onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          />
-        </section>
+        <QuizInterativo
+          questoes={quizM1}
+          titulo="Compreensão vs Interpretação"
+          icone="📝"
+          numero={3}
+          variant="blue"
+          onComplete={(score) => handleModuleComplete("modulo-1", score)}
+        />
       </TabsContent>
 
       {/* ─── MÓDULO 2: COESÃO ─── */}
@@ -1099,16 +1097,14 @@ export default function AulaInterpretacaoTexto({
         </section>
 
         {/* SEÇÃO 4: QUIZ M2 */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <QuizInterativo
-            questoes={quizM2}
-            titulo="Quiz de Fixação - Mecanismos de Coesão"
-            icone="🎯"
-            numero={4}
-            variant="emerald"
-            onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          />
-        </section>
+        <QuizInterativo
+          questoes={quizM2}
+          titulo="Mecanismos de Coesão"
+          icone="🎯"
+          numero={4}
+          variant="emerald"
+          onComplete={(score) => handleModuleComplete("modulo-2", score)}
+        />
       </TabsContent>
 
       {/* ─── MÓDULO 3: ESTRATÉGIAS ─── */}
@@ -1423,16 +1419,14 @@ export default function AulaInterpretacaoTexto({
         </section>
 
         {/* SEÇÃO 4: SIMULADO FINAL M3 */}
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <QuizInterativo
-            questoes={quizM3}
-            titulo="Quiz de Fixação - Estratégias de Elite"
-            icone="🏆"
-            numero={4}
-            variant="violet"
-            onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          />
-        </section>
+        <QuizInterativo
+          questoes={quizM3}
+          titulo="Estratégias de Elite"
+          icone="🏆"
+          numero={4}
+          variant="violet"
+          onComplete={(score) => handleModuleComplete("modulo-3", score)}
+        />
       </TabsContent>
 
       {/* ─── MÓDULO 4: COERÊNCIA E PROGRESSÃO ─── */}
@@ -1719,16 +1713,14 @@ export default function AulaInterpretacaoTexto({
         </section>
 
         {/* SEÇÃO 4: QUIZ FIXAÇÃO M4 */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <QuizInterativo
-            questoes={quizM4}
-            titulo="Quiz - Coerência e Progressão"
-            icone="🎯"
-            numero={4}
-            variant="amber"
-            onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          />
-        </section>
+        <QuizInterativo
+          questoes={quizM4}
+          titulo="Coerência e Progressão"
+          icone="🎯"
+          numero={4}
+          variant="amber"
+          onComplete={(score) => handleModuleComplete("modulo-4", score)}
+        />
       </TabsContent>
 
       {/* ─── MÓDULO 5: MARATONA DO GABARITO ─── */}
@@ -1850,16 +1842,14 @@ export default function AulaInterpretacaoTexto({
         </section>
 
         {/* SEÇÃO 3: SIMULADO DEBATIDO M5 */}
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <QuizInterativo
-            questoes={quizM5}
-            titulo="Simulado Final: Maratona Cesgranrio"
-            icone="🏆"
-            numero={3}
-            variant="rose"
-            onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          />
-        </section>
+        <QuizInterativo
+          questoes={quizM5}
+          titulo="Simulado Final"
+          icone="🏆"
+          numero={3}
+          variant="rose"
+          onComplete={(score) => handleModuleComplete("modulo-5", score)}
+        />
       </TabsContent>
     </AulaTemplate>
   );
