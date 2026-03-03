@@ -265,15 +265,23 @@ export function CardCarousel({
   numeroBadge,
   cards,
   itemsPerView = 3,
+  nested = false,
 }: {
   titulo?: string;
   subtitulo?: string;
   numeroBadge?: number;
   cards: CarouselCard[];
   itemsPerView?: 1 | 2 | 3;
+  nested?: boolean;
 }) {
   return (
-    <section className="bg-muted/5 rounded-2xl border border-border/50 p-6 md:p-8 space-y-6">
+    <section
+      className={
+        nested
+          ? "space-y-4 pt-2"
+          : "bg-muted/5 rounded-2xl border border-border/50 p-6 md:p-8 space-y-6"
+      }
+    >
       {/* Header */}
       <div>
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
@@ -296,12 +304,12 @@ export function CardCarousel({
         className="w-full px-1 pt-1"
         opts={{ loop: true, align: "start" }}
       >
-        <CarouselContent className="-ml-4 py-4">
+        <CarouselContent className={cn("py-4", nested ? "-ml-2" : "-ml-4")}>
           {cards.map((card, index) => (
             <CarouselItem
               key={index}
               className={cn(
-                "pl-4",
+                nested ? "pl-2" : "pl-4",
                 itemsPerView === 1
                   ? "basis-full"
                   : itemsPerView === 2
@@ -309,7 +317,12 @@ export function CardCarousel({
                     : "basis-full sm:basis-1/2 lg:basis-1/3",
               )}
             >
-              <div className="bg-card p-6 md:p-8 rounded-2xl border border-border shadow-md h-full flex flex-col group/card hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500">
+              <div
+                className={cn(
+                  "bg-card rounded-2xl border border-border flex flex-col group/card hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 h-full",
+                  nested ? "p-4 md:p-6 shadow-sm" : "p-6 md:p-8 shadow-md",
+                )}
+              >
                 <div className="flex items-start gap-5 mb-6">
                   <div
                     className={cn(
