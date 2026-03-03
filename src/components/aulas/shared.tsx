@@ -792,7 +792,10 @@ export function QuizInterativo({
   const [completed, setCompleted] = useState(false);
 
   // Normaliza o título para seguir o padrão "QUIZ: [Título]"
-  const cleanTitulo = titulo.replace(/^(Quiz|QUIZ)[:\s—-]*/, "").trim();
+  const cleanTitulo = titulo
+    .replace(/^(Quiz|QUIZ)[:\s—-]*/i, "")
+    .replace(/^(de\s+Fixação|de\s+fixação)[:\s—-]*/i, "")
+    .trim();
   const displayTitle = `QUIZ: ${cleanTitulo}`;
 
   const selecionar = (qId: number, label: string) => {
