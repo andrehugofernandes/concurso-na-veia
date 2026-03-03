@@ -759,6 +759,11 @@ export function FlipCard({
   );
 }
 
+/**
+ * UI/UX IMPERATIVO:
+ * Todo componente de Quiz DEVE seguir a notação: [BADGE NUMERADO] QUIZ: [Título-do-Módulo]
+ * Este componente já automatiza essa formatação globalmente.
+ */
 export function QuizInterativo({
   questoes,
   titulo,
@@ -785,6 +790,10 @@ export function QuizInterativo({
   const [respostas, setRespostas] = useState<Record<number, string>>({});
   const [verificados, setVerificados] = useState<Record<number, boolean>>({});
   const [completed, setCompleted] = useState(false);
+
+  // Normaliza o título para seguir o padrão "QUIZ: [Título]"
+  const cleanTitulo = titulo.replace(/^(Quiz|QUIZ)[:\s—-]*/, "").trim();
+  const displayTitle = `QUIZ: ${cleanTitulo}`;
 
   const selecionar = (qId: number, label: string) => {
     if (verificados[qId]) return;
@@ -825,14 +834,14 @@ export function QuizInterativo({
       {numero !== undefined && numero !== 0 ? (
         <ModuleSectionHeader
           index={numero}
-          title={titulo}
+          title={displayTitle}
           description="Teste seus conhecimentos para consolidar o aprendizado."
           variant={variant}
           className="mb-8"
         />
       ) : (
         <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-          <span>{icone}</span> {titulo}
+          <span>{icone}</span> {displayTitle}
         </h3>
       )}
       {totalVerificadas > 0 && (
