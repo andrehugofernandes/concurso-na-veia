@@ -2187,18 +2187,12 @@ Por que separado? Porque eu estudei!
           </AlertBox>
         </section>
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={2}
-            title="Simulado Padrão Cesgranrio"
-            description="Teste seus conhecimentos com questões reais focadas na banca Petrobras."
-            variant="cyan"
-          />
+        <section className="mt-8">
           <QuizInterativo
             questoes={qMod6}
             titulo="Simulador Final — A Vaga é Minha"
             icone="🏆"
-            numero={0}
+            numero={2}
             variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />

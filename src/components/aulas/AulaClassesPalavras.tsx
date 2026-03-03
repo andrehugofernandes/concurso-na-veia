@@ -5849,7 +5849,7 @@ Conjunção, Interjeição, Advérbio e Preposição!
           gradiente="bg-gradient-to-br from-cyan-600 via-teal-600 to-cyan-700"
         />
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+        <section className="mt-8">
           <QuizInterativo
             questoes={qMod6}
             titulo="Simulado Final — Todas as 10 Classes"
