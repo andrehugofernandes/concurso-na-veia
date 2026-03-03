@@ -398,7 +398,7 @@ export function ContentAccordion({
 
   const content =
     mode === "carousel" ? (
-      <div className="bg-muted/20 rounded-xl border border-border/50 p-4 md:p-6">
+      <div className="w-full md:bg-muted/20 md:rounded-xl md:border md:border-border/50 md:p-6">
         <Carousel className="w-full" opts={{ loop: true, align: "start" }}>
           <CarouselContent className="-ml-4">
             {slides.map((slide, index) => (
@@ -406,7 +406,7 @@ export function ContentAccordion({
                 key={index}
                 className={`pl-4 basis-full ${slidesPerView === 1 ? "" : slides.length > 1 ? "md:basis-1/2 lg:basis-1/2" : ""}`}
               >
-                <div className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-lg h-full flex flex-col space-y-6 group/slide hover:border-primary/40 transition-all duration-500">
+                <div className="bg-card rounded-2xl border border-border p-5 md:p-8 shadow-sm h-full flex flex-col space-y-5 md:space-y-6 group/slide hover:border-primary/40 transition-all duration-500">
                   <div className="flex items-start gap-5">
                     <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl shrink-0 group-hover/slide:scale-110 group-hover/slide:-rotate-3 transition-all duration-500 shadow-inner">
                       {slide.icone}
@@ -452,8 +452,8 @@ export function ContentAccordion({
         </Carousel>
       </div>
     ) : (
-      <div className="bg-muted/20 rounded-xl border border-border/50 p-4 md:p-6">
-        <Accordion type="single" collapsible className="space-y-4">
+      <div className="w-full md:bg-muted/20 md:rounded-xl md:border md:border-border/50 md:p-6">
+        <Accordion type="single" collapsible className="space-y-4 md:space-y-3">
           {slides.map((slide, index) => (
             <AccordionItem
               key={index}
@@ -471,7 +471,7 @@ export function ContentAccordion({
                 </div>
               </AccordionTrigger>
               <AccordionContent className="p-0 border border-t-0 border-border rounded-b-xl overflow-hidden animate-in slide-in-from-top-2">
-                <div className="p-6 md:p-8 space-y-6 bg-card flex flex-col group/slide transition-all duration-500">
+                <div className="p-4 md:p-8 space-y-6 bg-card flex flex-col group/slide transition-all duration-500">
                   <div className="text-base text-muted-foreground leading-relaxed flex-1 space-y-4 font-medium">
                     {slide.conteudo}
                   </div>
@@ -2045,6 +2045,7 @@ export function AulaTemplate({
               className="px-3 py-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center justify-center gap-2 shadow-sm border border-border/50 text-[10px] md:text-xs min-w-[80px]"
               title={prevTopico.titulo}
             >
+              <span className="text-lg leading-none shrink-0">←</span>
               Anterior
             </Link>
           )}
@@ -2080,14 +2081,23 @@ export function AulaTemplate({
           </div>
 
           <div className="mt-6 md:mt-12 flex flex-col space-y-6 md:space-y-12">
-            <div className="flex flex-col md:flex-row justify-between items-start gap-4 md:gap-6">
-              <div className="flex flex-col gap-2 md:gap-3">
+            <div className="flex flex-col md:flex-row justify-between items-start gap-5 md:gap-6">
+              <div className="flex flex-col gap-2 md:gap-3 w-full">
+                {/* Eyebrow - Categoria da Matéria */}
+                {materiaNome && (
+                  <div className="flex items-center gap-2 mb-1 md:mb-2">
+                    <span className="px-2.5 py-1 rounded-md text-[10px] md:text-xs font-bold text-blue-700 dark:text-blue-400 bg-blue-500/10 border border-blue-500/20 uppercase tracking-widest w-fit shadow-sm">
+                      {materiaNome}
+                    </span>
+                  </div>
+                )}
+
                 <div className="flex items-center gap-2 md:gap-3 flex-wrap">
                   <h1 className="text-xl md:text-5xl font-bold text-foreground tracking-tight">
                     {titulo}
                   </h1>
                   {isCompleted && (
-                    <span className="flex items-center gap-1.5 px-2 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-bold bg-gradient-to-r from-green-600 to-emerald-500 text-white uppercase tracking-wider shadow-md h-fit self-center mt-1 md:mt-2 animate-in fade-in zoom-in duration-500">
+                    <span className="flex items-center gap-1.5 px-2 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-bold bg-gradient-to-r from-green-600 to-emerald-500 text-white uppercase tracking-wider shadow-md h-fit self-center md:mt-2 animate-in fade-in zoom-in duration-500">
                       <LuCheck className="w-3 h-3 md:w-3.5 md:h-3.5 stroke-[3]" />
                       Concluída
                     </span>
@@ -2098,18 +2108,9 @@ export function AulaTemplate({
                 </p>
               </div>
 
-              <div className="flex flex-col items-end gap-3 shrink-0">
-                <span
-                  className={cn(
-                    "px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider shadow-sm",
-                    materiaCor.startsWith("bg-")
-                      ? materiaCor
-                      : `bg-gradient-to-r from-${materiaCor}-600 to-${materiaCor}-400`,
-                  )}
-                >
-                  {materiaNome}
-                </span>
-                <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-muted/30 rounded-2xl border border-border/50 text-muted-foreground text-sm font-medium w-fit">
+              {/* Duração na visualização Desktop */}
+              <div className="hidden md:flex flex-col items-end gap-3 shrink-0">
+                <div className="flex items-center gap-2 px-4 py-2 bg-muted/30 rounded-2xl border border-border/50 text-muted-foreground text-sm font-medium w-fit">
                   <LuClock className="w-4 h-4 text-primary" />
                   {duracao}
                 </div>
@@ -2340,9 +2341,16 @@ export function StickyModuleNav({
               )}
             </AnimatePresence>
 
-            {/* Botão Home/Voltar (se passado via prop, sempre visível) */}
+            {/* Botão Home/Voltar (Escondido no mobile se não estiver pinned, sempre bloco/flex no desktop) */}
             {homeHref && (
-              <div className="shrink-0 flex items-center pr-1">
+              <div
+                className={cn(
+                  "shrink-0 pr-1 transition-opacity duration-300",
+                  isStickyNavPinned
+                    ? "flex items-center opacity-100"
+                    : "hidden md:flex items-center opacity-100",
+                )}
+              >
                 <TooltipProvider>
                   <Tooltip delayDuration={0}>
                     <TooltipTrigger asChild>
@@ -2483,27 +2491,55 @@ export function ModuleSectionHeader({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-xl md:rounded-2xl p-4 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 shadow-lg transition-all hover:shadow-xl group",
+        "relative overflow-hidden rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-8 flex flex-row items-center gap-4 md:gap-6 shadow-lg transition-all hover:shadow-xl group",
         bgVariants[variant as keyof typeof bgVariants],
         className,
       )}
     >
       {/* Decoração de Fundo */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/5 rounded-full -ml-16 -mb-16 blur-2xl" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/5 rounded-full -ml-16 -mb-16 blur-2xl pointer-events-none" />
 
-      <SectionBadge index={index} variant={variant} />
+      {/* =========================================
+          LAYOUT MOBILE (CSS Grid)
+          ========================================= */}
+      <div className="grid md:hidden grid-cols-[auto_1fr] gap-x-4 gap-y-3 w-full">
+        {/* Row 1, Col 1 */}
+        <SectionBadge
+          index={index}
+          variant={variant}
+          className="row-start-1 col-start-1 self-start"
+        />
 
-      {/* Conteúdo */}
-      <div className="relative space-y-1">
-        <h2 className="text-lg md:text-3xl font-extrabold text-white tracking-tight">
+        {/* Row 1, Col 2 */}
+        <h2 className="row-start-1 col-start-2 self-start pt-1 text-2xl leading-tight font-extrabold text-white tracking-tight">
           {title}
         </h2>
+
+        {/* Row 2, Spans Col 1 and 2 */}
         {description && (
-          <p className="text-white/80 text-xs md:text-base leading-relaxed max-w-4xl font-medium">
+          <p className="row-start-2 col-start-1 col-span-2 w-full text-white/80 text-[13px] leading-snug font-medium text-justify tracking-tight">
             {description}
           </p>
         )}
+      </div>
+
+      {/* =========================================
+          LAYOUT DESKTOP (Flexbox Clássico)
+          ========================================= */}
+      <div className="hidden md:flex flex-row items-center gap-6 w-full relative z-10">
+        <SectionBadge index={index} variant={variant} />
+
+        <div className="relative space-y-2 flex-1 min-w-0">
+          <h2 className="text-3xl leading-tight font-extrabold text-white tracking-tight">
+            {title}
+          </h2>
+          {description && (
+            <p className="text-white/80 text-base leading-relaxed max-w-4xl font-medium">
+              {description}
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

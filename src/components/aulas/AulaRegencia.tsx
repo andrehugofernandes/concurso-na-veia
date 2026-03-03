@@ -568,7 +568,7 @@ export default function AulaRegencia({
                     icone: "1️⃣",
                     conteudo: (
                       <div className="space-y-4 text-slate-700 dark:text-slate-300">
-                        <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+                        <div className="md:bg-card md:rounded-xl md:border md:border-border md:p-6 md:shadow-sm">
                           <h3 className="font-bold text-lg mb-4">
                             Morfossintaxe da Regência Nominal
                           </h3>
@@ -590,8 +590,8 @@ export default function AulaRegencia({
                             </li>
                           </ul>
                         </div>
-                        <div className="bg-indigo-500/5 rounded-xl border border-indigo-500/20 p-4">
-                          <p className="font-bold text-sm mb-2                       text-indigo-600 dark:text-indigo-400">
+                        <div className="bg-indigo-500/5 rounded-xl border border-indigo-500/10 p-4">
+                          <p className="font-bold text-sm mb-2 text-indigo-600 dark:text-indigo-400">
                             Exemplo da Norma Culta:
                           </p>
                           <p className="italic">
@@ -606,8 +606,8 @@ export default function AulaRegencia({
                     titulo: "Nomes de Alta Frequência",
                     icone: "2️⃣",
                     conteudo: (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="p-4 bg-card rounded-xl border border-border">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                        <div className="p-3 md:p-4 bg-muted/20 rounded-xl border border-border/50">
                           <h4 className="font-bold text-indigo-500 mb-2">
                             Favorável a
                           </h4>
@@ -615,7 +615,7 @@ export default function AulaRegencia({
                             "Sou <strong>favorável às</strong> mudanças."
                           </p>
                         </div>
-                        <div className="p-4 bg-card rounded-xl border border-border">
+                        <div className="p-3 md:p-4 bg-muted/20 rounded-xl border border-border/50">
                           <h4 className="font-bold text-indigo-500 mb-2">
                             Passível de
                           </h4>
@@ -623,7 +623,7 @@ export default function AulaRegencia({
                             "O erro é <strong>passível de</strong> multa."
                           </p>
                         </div>
-                        <div className="p-4 bg-card rounded-xl border border-border">
+                        <div className="p-3 md:p-4 bg-muted/20 rounded-xl border border-border/50">
                           <h4 className="font-bold text-indigo-500 mb-2">
                             Aliado a
                           </h4>
@@ -631,7 +631,7 @@ export default function AulaRegencia({
                             "O esforço está <strong>aliado à</strong> técnica."
                           </p>
                         </div>
-                        <div className="p-4 bg-card rounded-xl border border-border">
+                        <div className="p-3 md:p-4 bg-muted/20 rounded-xl border border-border/50">
                           <h4 className="font-bold text-indigo-500 mb-2">
                             Referente a
                           </h4>
@@ -639,7 +639,7 @@ export default function AulaRegencia({
                             "Dados <strong>referentes ao</strong> lucro."
                           </p>
                         </div>
-                        <div className="p-4 bg-card rounded-xl border border-border">
+                        <div className="p-3 md:p-4 bg-muted/20 rounded-xl border border-border/50">
                           <h4 className="font-bold text-indigo-500 mb-2">
                             Apto a/para
                           </h4>
@@ -647,7 +647,7 @@ export default function AulaRegencia({
                             "Ele está <strong>apto ao</strong> serviço."
                           </p>
                         </div>
-                        <div className="p-4 bg-card rounded-xl border border-border">
+                        <div className="p-3 md:p-4 bg-muted/20 rounded-xl border border-border/50">
                           <h4 className="font-bold text-indigo-500 mb-2">
                             Atento a/em
                           </h4>
@@ -655,7 +655,7 @@ export default function AulaRegencia({
                             "Fique <strong>atento aos</strong> sinais."
                           </p>
                         </div>
-                        <div className="p-4 bg-card rounded-xl border border-border">
+                        <div className="p-3 md:p-4 bg-muted/20 rounded-xl border border-border/50">
                           <h4 className="font-bold text-indigo-500 mb-2">
                             Útil a/para
                           </h4>
@@ -663,7 +663,7 @@ export default function AulaRegencia({
                             "O curso será <strong>útil para</strong> você."
                           </p>
                         </div>
-                        <div className="p-4 bg-card rounded-xl border border-border">
+                        <div className="p-3 md:p-4 bg-muted/20 rounded-xl border border-border/50">
                           <h4 className="font-bold text-indigo-500 mb-2">
                             Ansioso por/para
                           </h4>
@@ -980,7 +980,7 @@ export default function AulaRegencia({
                   icone: "1️⃣",
                   conteudo: (
                     <div className="space-y-4">
-                      <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+                      <div className="md:bg-card md:rounded-xl md:border md:border-border md:p-6 md:shadow-sm">
                         <p className="leading-relaxed">
                           Se o verbo estiver **sozinho** (não pronominal), é
                           **Transitivo Direto** (sem preposição). Se estiver
@@ -988,17 +988,17 @@ export default function AulaRegencia({
                           Indireto** (com preposição **DE**).
                         </p>
                       </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="bg-muted/30 p-4 rounded-xl">
-                          <p className="text-xs font-bold mb-1">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                        <div className="bg-muted/20 p-4 border border-border/50 rounded-xl">
+                          <p className="text-xs font-bold mb-1 text-slate-500">
                             Sem Pronome (Direto):
                           </p>
                           <p className="italic text-sm">
                             "Esqueci <strong>o</strong> livro."
                           </p>
                         </div>
-                        <div className="bg-muted/30 p-4 rounded-xl">
-                          <p className="text-xs font-bold mb-1">
+                        <div className="bg-violet-500/5 p-4 border border-violet-500/20 rounded-xl">
+                          <p className="text-xs font-bold mb-1 text-violet-600 dark:text-violet-400">
                             Com Pronome (Indireto):
                           </p>
                           <p className="italic text-sm">
