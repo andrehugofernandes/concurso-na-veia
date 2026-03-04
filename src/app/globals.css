@@ -4,7 +4,7 @@
 
 /* Suporte à animação de borda com conic-gradient (inspirado no imune-mais) */
 @property --angle {
-  syntax: '<angle>';
+  syntax: "<angle>";
   inherits: false;
   initial-value: 0deg;
 }
@@ -35,8 +35,12 @@
     --accent-foreground: 222.2 47.4% 11.2%;
     --shadow: 215 28% 15%;
     --radius: 0.5rem;
-    --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    --font-display: 'Sora', 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-sans:
+      "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-display:
+      "Sora", "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
@@ -92,7 +96,7 @@
   }
 
   code {
-    font-family: 'Fira Code', 'Monaco', 'Courier New', monospace;
+    font-family: "Fira Code", "Monaco", "Courier New", monospace;
     font-size: 0.875em;
   }
 
@@ -169,7 +173,6 @@
 }
 
 @layer utilities {
-
   /* Animação de rotação para bordas com conic-gradient */
   @keyframes border-spin {
     from {
@@ -231,33 +234,33 @@
 
   /* Mapear atributos para cores fixas (não herdam skin vigente) */
   [data-theme-color="#FF8500"].dot-theme {
-    background-color: #FF8500 !important;
-    border-color: #FF8500 !important;
+    background-color: #ff8500 !important;
+    border-color: #ff8500 !important;
   }
 
   [data-theme-color="#0037C1"].dot-theme {
-    background-color: #0037C1 !important;
-    border-color: #0037C1 !important;
+    background-color: #0037c1 !important;
+    border-color: #0037c1 !important;
   }
 
   [data-theme-color="#008C32"].dot-theme {
-    background-color: #008C32 !important;
-    border-color: #008C32 !important;
+    background-color: #008c32 !important;
+    border-color: #008c32 !important;
   }
 
   [data-theme-color="#00DD4F"].dot-theme {
-    background-color: #00DD4F !important;
-    border-color: #00DD4F !important;
+    background-color: #00dd4f !important;
+    border-color: #00dd4f !important;
   }
 
   [data-theme-color="#FDC300"].dot-theme {
-    background-color: #FDC300 !important;
-    border-color: #FDC300 !important;
+    background-color: #fdc300 !important;
+    border-color: #fdc300 !important;
   }
 
   [data-theme-color="#00BDFF"].dot-theme {
-    background-color: #00BDFF !important;
-    border-color: #00BDFF !important;
+    background-color: #00bdff !important;
+    border-color: #00bdff !important;
   }
 }
 

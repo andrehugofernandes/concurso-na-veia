@@ -1,152 +1,180 @@
-'use client';
+"use client";
 
-import { useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { createClient } from '@/lib/supabase/client';
+import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
+
+import AuthLayout from "@/components/auth/AuthLayout";
+import { OtpTutorialContent } from "@/components/auth/OtpTutorialContent";
 
 export default function Verify2FAPage() {
-    const [otp, setOtp] = useState(['', '', '', '', '', '']);
-    const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
-    const router = useRouter();
-    const supabase = createClient();
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const router = useRouter();
+  const supabase = createClient();
 
-    useEffect(() => {
-        // Autofocus first input on mount
-        inputRefs.current[0]?.focus();
-    }, []);
+  useEffect(() => {
+    inputRefs.current[0]?.focus();
+  }, []);
 
-    const handleChange = (index: number, value: string) => {
-        if (!/^\d*$/.test(value)) return;
+  // ... (manter lógica de handleChange, handleKeyDown, handlePaste, handleVerify)
+  const handleChange = (index: number, value: string) => {
+    if (!/^\d*$/.test(value)) return;
+    const newOtp = [...otp];
+    if (value.length > 1) {
+      const pastedData = value.slice(0, 6).split("");
+      for (let i = 0; i < 6; i++) {
+        newOtp[i] = pastedData[i] || "";
+      }
+      setOtp(newOtp);
+      inputRefs.current[5]?.focus();
+    } else {
+      newOtp[index] = value;
+      setOtp(newOtp);
+      if (value && index < 5) {
+        inputRefs.current[index + 1]?.focus();
+      }
+    }
+  };
 
-        const newOtp = [...otp];
-        // Handle paste or single char
-        if (value.length > 1) {
-            const pastedData = value.slice(0, 6).split('');
-            for (let i = 0; i < 6; i++) {
-                newOtp[i] = pastedData[i] || '';
-            }
-            setOtp(newOtp);
-            inputRefs.current[5]?.focus();
-        } else {
-            newOtp[index] = value;
-            setOtp(newOtp);
+  const handleKeyDown = (
+    index: number,
+    e: React.KeyboardEvent<HTMLInputElement>,
+  ) => {
+    if (e.key === "Backspace" && !otp[index] && index > 0) {
+      inputRefs.current[index - 1]?.focus();
+    }
+  };
 
-            // Move to next input
-            if (value && index < 5) {
-                inputRefs.current[index + 1]?.focus();
-            }
-        }
-    };
+  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const pastedData = e.clipboardData
+      .getData("text")
+      .slice(0, 6)
+      .replace(/\D/g, "")
+      .split("");
+    const newOtp = [...otp];
+    pastedData.forEach((char, index) => {
+      if (index < 6) newOtp[index] = char;
+    });
+    setOtp(newOtp);
+    inputRefs.current[Math.min(pastedData.length, 5)]?.focus();
+  };
 
-    const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Backspace' && !otp[index] && index > 0) {
-            inputRefs.current[index - 1]?.focus();
-        }
-    };
+  const handleVerify = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    const code = otp.join("");
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user) {
+        router.push("/login");
+        return;
+      }
+      const { data: factors, error: factorsError } =
+        await supabase.auth.mfa.listFactors();
+      if (factorsError) throw factorsError;
+      const totpFactor = factors.totp.find((f) => f.status === "verified");
+      if (!totpFactor) {
+        setError("Nenhum fator 2FA encontrado.");
+        return;
+      }
+      const { data, error } = await supabase.auth.mfa.challengeAndVerify({
+        factorId: totpFactor.id,
+        code,
+      });
+      if (error) throw error;
+      router.push("/dashboard");
+    } catch (err: any) {
+      console.error(err);
+      setError("Código incorreto ou expirado.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
-        e.preventDefault();
-        const pastedData = e.clipboardData.getData('text').slice(0, 6).replace(/\D/g, '').split('');
-        const newOtp = [...otp];
-        pastedData.forEach((char, index) => {
-            if (index < 6) newOtp[index] = char;
-        });
-        setOtp(newOtp);
-        inputRefs.current[Math.min(pastedData.length, 5)]?.focus();
-    };
-
-    const handleVerify = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setLoading(true);
-        setError('');
-        const code = otp.join('');
-
-        try {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (!user) {
-                router.push('/login');
-                return;
-            }
-
-            const { data: factors, error: factorsError } = await supabase.auth.mfa.listFactors();
-            if (factorsError) throw factorsError;
-
-            const totpFactor = factors.totp.find(f => f.status === 'verified');
-            if (!totpFactor) {
-                setError('Nenhum fator 2FA encontrado.');
-                return;
-            }
-
-            const { data, error } = await supabase.auth.mfa.challengeAndVerify({
-                factorId: totpFactor.id,
-                code,
-            });
-
-            if (error) throw error;
-
-            router.push('/dashboard');
-        } catch (err: any) {
-            console.error(err);
-            setError('Código incorreto ou expirado.');
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    return (
-        <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
-            <div className="bg-slate-800/50 backdrop-blur-lg rounded-2xl p-8 border border-slate-700/50 shadow-2xl w-full max-w-md">
-                <div className="text-center mb-6">
-                    <span className="text-4xl block mb-2">🔒</span>
-                    <h1 className="text-2xl font-bold text-white">Verificação em Duas Etapas</h1>
-                    <p className="text-gray-400 mt-2">
-                        Digite o código de 6 dígitos do seu aplicativo autenticador.
-                    </p>
-                </div>
-
-                {error && (
-                    <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6 text-center">
-                        <p className="text-red-400 text-sm">{error}</p>
-                    </div>
-                )}
-
-                <form onSubmit={handleVerify} className="space-y-6">
-                    <div className="flex justify-center gap-2">
-                        {otp.map((digit, index) => (
-                            <input
-                                key={index}
-                                ref={el => { inputRefs.current[index] = el }}
-                                type="text"
-                                value={digit}
-                                onChange={(e) => handleChange(index, e.target.value)}
-                                onKeyDown={(e) => handleKeyDown(index, e)}
-                                onPaste={handlePaste}
-                                maxLength={6}
-                                className="w-12 h-14 bg-slate-700/50 border border-slate-600 rounded-lg text-white text-center text-2xl font-bold focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 transition"
-                            />
-                        ))}
-                    </div>
-
-                    <button
-                        type="submit"
-                        disabled={otp.join('').length !== 6 || loading}
-                        className="w-full py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                        {loading ? 'Verificando...' : 'Confirmar'}
-                    </button>
-                </form>
-
-                <div className="mt-6 text-center">
-                    <button
-                        onClick={() => router.push('/login')}
-                        className="text-gray-400 hover:text-white text-sm"
-                    >
-                        Voltar para Login
-                    </button>
-                </div>
+  return (
+    <AuthLayout
+      otpMode="verify"
+      showHelp
+      rightContent={<OtpTutorialContent mode="verify" />}
+    >
+      <div className="w-full max-w-md mx-auto">
+        <div className="bg-white/80 dark:bg-slate-900/40 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-gray-200 dark:border-white/10 shadow-2xl">
+          <div className="text-center mb-6 md:mb-8">
+            <div className="inline-flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-2xl bg-amber-500/10 mb-3 md:mb-4 ring-1 ring-amber-500/20">
+              <span className="text-2xl md:text-3xl">🔒</span>
             </div>
+            <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+              Verificação OTP
+            </h1>
+            <p className="text-foreground/50 mt-1 md:mt-2 text-xs md:text-sm leading-relaxed">
+              Digite o código de 6 dígitos gerado pelo seu aplicativo
+              autenticador.
+            </p>
+          </div>
+
+          {error && (
+            <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 mb-4 md:mb-6 text-center animate-shake">
+              <p className="text-red-500 text-sm font-medium">{error}</p>
+            </div>
+          )}
+
+          <form onSubmit={handleVerify} className="space-y-6 md:space-y-8">
+            <div className="flex justify-center gap-2">
+              {otp.map((digit, index) => (
+                <input
+                  key={index}
+                  ref={(el) => {
+                    inputRefs.current[index] = el;
+                  }}
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  value={digit}
+                  onChange={(e) => handleChange(index, e.target.value)}
+                  onKeyDown={(e) => handleKeyDown(index, e)}
+                  onPaste={handlePaste}
+                  maxLength={1}
+                  className="w-12 h-16 bg-white dark:bg-slate-800/50 border border-gray-200 dark:border-slate-700 rounded-xl text-foreground text-center text-3xl font-bebas transition-all focus:outline-none focus:ring-2"
+                  style={
+                    {
+                      borderColor: digit ? "var(--primary-hex)" : undefined,
+                      "--tw-ring-color": "var(--primary-hex)",
+                    } as React.CSSProperties
+                  }
+                />
+              ))}
+            </div>
+
+            <button
+              type="submit"
+              disabled={otp.join("").length !== 6 || loading}
+              className="w-full py-4 text-white font-bebas text-2xl uppercase tracking-wider rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98] shadow-lg"
+              style={{
+                backgroundColor: "var(--primary-hex)",
+                boxShadow: "0 10px 15px -3px rgba(var(--primary-rgb), 0.3)",
+              }}
+            >
+              {loading ? "Processando..." : "Confirmar Acesso"}
+            </button>
+          </form>
+
+          <div className="mt-8 text-center">
+            <button
+              onClick={() => router.push("/login")}
+              className="text-foreground/40 hover:text-primary text-sm font-medium transition-colors"
+            >
+              ← Voltar para a tela de login
+            </button>
+          </div>
         </div>
-    );
+      </div>
+    </AuthLayout>
+  );
 }
