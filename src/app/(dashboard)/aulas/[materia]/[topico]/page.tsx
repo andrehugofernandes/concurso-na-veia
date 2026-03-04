@@ -104,6 +104,14 @@ const AulaOrtografia = dynamic<AulaProps>(
   },
 );
 
+const AulaConjuntos = dynamic<AulaProps>(
+  () => import("@/components/aulas/AulaConjuntos"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
 interface PageProps {
   params: Promise<{ materia: string; topico: string }>;
 }
@@ -542,6 +550,23 @@ export default function TopicoPage({ params }: PageProps) {
               prevTopico={prevTopico}
               nextTopico={nextTopico}
             />
+          ) : materiaId === "matematica" && topicoId === "conjuntos" ? (
+            <AulaConjuntos
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
           ) : conteudo ? (
             conteudo.secoes.map((secao, index) => (
               <section
@@ -596,6 +621,7 @@ export default function TopicoPage({ params }: PageProps) {
             "classes-palavras",
             "tipos-textuais",
             "ortografia",
+            "conjuntos",
           ].includes(topicoId) && (
             <div className="max-w-7xl mx-auto px-6 pb-32">
               <div className="mt-12 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-8 border border-yellow-500/30 text-center">
