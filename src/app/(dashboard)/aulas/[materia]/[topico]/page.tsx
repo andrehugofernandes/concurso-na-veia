@@ -120,6 +120,30 @@ const AulaRazaoProporcao = dynamic<AulaProps>(
   },
 );
 
+const AulaPorcentagem = dynamic<AulaProps>(
+  () => import("@/components/aulas/matematica/AulaPorcentagem"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaEquacoes1Grau = dynamic<AulaProps>(
+  () => import("@/components/aulas/matematica/AulaEquacoes1Grau"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaEquacoes2Grau = dynamic<AulaProps>(
+  () => import("@/components/aulas/matematica/AulaEquacoes2Grau"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
 interface PageProps {
   params: Promise<{ materia: string; topico: string }>;
 }
@@ -577,6 +601,57 @@ export default function TopicoPage({ params }: PageProps) {
             />
           ) : materiaId === "matematica" && topicoId === "razao-proporcao" ? (
             <AulaRazaoProporcao
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "matematica" && topicoId === "porcentagem" ? (
+            <AulaPorcentagem
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "matematica" && topicoId === "equacoes-1grau" ? (
+            <AulaEquacoes1Grau
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "matematica" && topicoId === "equacoes-2grau" ? (
+            <AulaEquacoes2Grau
               onComplete={handleCompleteAula}
               isCompleted={isCompleted}
               loading={loading}

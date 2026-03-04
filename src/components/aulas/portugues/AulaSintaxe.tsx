@@ -26,7 +26,7 @@ import {
   ModuleSummaryCarouselNew,
   AulaProps,
   AulaTemplate,
-} from "./shared";
+} from "../shared";
 import {
   LuCheck,
   LuBookOpen,

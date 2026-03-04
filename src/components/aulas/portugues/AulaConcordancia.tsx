@@ -54,7 +54,7 @@ import {
   StickyModuleNav,
   AulaTemplate,
   ModuleSectionHeader,
-} from "./shared";
+} from "../shared";
 import {
   LuImage,
   LuPlay,

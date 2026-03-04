@@ -43,7 +43,7 @@ import {
   AulaProps,
   StickyModuleNav,
   AulaTemplate,
-} from "./shared";
+} from "../shared";
 
 import { progressService } from "@/lib/services/progress";
 

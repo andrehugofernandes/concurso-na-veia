@@ -38,7 +38,7 @@ import {
   AulaTemplate,
   SectionTitle,
   TabbedContent,
-} from "./shared";
+} from "../shared";
 
 const MODULE_DEFS = [
   {

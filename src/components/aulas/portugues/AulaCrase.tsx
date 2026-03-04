@@ -61,7 +61,7 @@ import {
   TabbedContent,
   SectionTitle,
   ComparisonSide,
-} from "./shared";
+} from "../shared";
 
 // ── Fallback for React 19 Activity ───────────────────────────────────────
 // ── Constants & Data ────────────────────────────────────────────────────

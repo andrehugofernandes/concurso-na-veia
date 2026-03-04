@@ -47,7 +47,7 @@ import {
   StickyModuleNav,
   AulaTemplate,
   ModuleSectionHeader,
-} from "./shared";
+} from "../shared";
 
 import { LuLightbulb } from "react-icons/lu";
 import { progressService } from "@/lib/services/progress";

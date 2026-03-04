@@ -43,7 +43,7 @@ import {
   QuizQuestion,
   AulaTemplate,
   ModuleSectionHeader,
-} from "./shared";
+} from "../shared";
 import { cn } from "@/lib/utils";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";

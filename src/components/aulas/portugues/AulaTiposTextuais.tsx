@@ -37,7 +37,7 @@ import {
   AulaProps,
   VideoModal,
   AulaTemplate,
-} from "./shared";
+} from "../shared";
 
 const MODULE_DEFS = [
   { id: "modulo-1", label: "Módulo 1", titulo: "Narrativo & Descritivo" },

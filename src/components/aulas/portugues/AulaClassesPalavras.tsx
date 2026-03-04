@@ -24,7 +24,7 @@ import {
   AulaTemplate,
   SectionTitle,
   TabbedContent,
-} from "./shared";
+} from "../shared";
 import {
   LuCheck,
   LuBookOpen,

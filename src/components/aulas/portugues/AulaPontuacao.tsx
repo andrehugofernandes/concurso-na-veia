@@ -24,7 +24,7 @@ import {
   AulaTemplate,
   getRandomQuestions,
   ModuleSectionHeader,
-} from "./shared";
+} from "../shared";
 import {
   LuTriangleAlert as LuAlertTriangle,
   LuCircleCheck as LuCheckCircle,

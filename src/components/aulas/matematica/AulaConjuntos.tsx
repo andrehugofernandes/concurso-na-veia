@@ -16,7 +16,7 @@ import {
   MusicPlayerCard,
   AulaTemplate,
   ModuleSectionHeader,
-} from "./shared";
+} from "../shared";
 import { LuBookOpen, LuMusic } from "react-icons/lu";
 
 // ── QUIZ POOLS (Matemática: Conjuntos) ──────────────────────────────────────
