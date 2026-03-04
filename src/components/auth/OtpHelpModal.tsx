@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { OtpTutorialContent } from "./OtpTutorialContent";
+import { X } from "lucide-react";
 
 interface OtpHelpModalProps {
   mode: "setup" | "verify";
@@ -10,119 +11,84 @@ interface OtpHelpModalProps {
 }
 
 export function OtpHelpModal({ mode, isOpen, onClose }: OtpHelpModalProps) {
+  const [angle, setAngle] = useState(0);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const interval = setInterval(() => {
+      setAngle((a) => (a + 1) % 360);
+    }, 20);
+    return () => clearInterval(interval);
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
     <>
       {/* Overlay */}
       <div
-        className="fixed inset-0 z-50 bg-black/80 animate-in fade-in-0 duration-200"
+        className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm animate-in fade-in-0 duration-300"
         onClick={onClose}
       />
 
-      {/* Modal */}
-      <div className="fixed inset-x-4 top-[10%] bottom-[10%] z-50 animate-in slide-in-from-bottom-4 fade-in-0 duration-300">
-        <div className="relative h-full flex flex-col rounded-2xl overflow-hidden">
-          {/* Animated border - dark mode only */}
-          <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 dark:opacity-100 pointer-events-none z-0">
-            <div
-              className="absolute inset-0 animate-border-spin rounded-2xl"
-              style={{
-                background: `conic-gradient(
-                  from var(--angle),
-                  transparent 0%,
-                  transparent 70%,
-                  #f59e0b 85%,
-                  #f97316 90%,
-                  #f59e0b 95%,
-                  transparent 100%
-                )`,
-                padding: "2px",
-                WebkitMask:
-                  "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                WebkitMaskComposite: "xor",
-                mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                maskComposite: "exclude",
-              }}
-            />
-          </div>
-
-          {/* Glow effect */}
-          <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 dark:opacity-40 pointer-events-none blur-sm z-0">
-            <div
-              className="absolute inset-0 animate-border-spin rounded-2xl"
-              style={{
-                background: `conic-gradient(
-                  from var(--angle),
-                  transparent 0%,
-                  transparent 75%,
-                  #f59e0b 85%,
-                  #f97316 90%,
-                  #f59e0b 95%,
-                  transparent 100%
-                )`,
-                padding: "2px",
-                WebkitMask:
-                  "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                WebkitMaskComposite: "xor",
-                mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                maskComposite: "exclude",
-              }}
-            />
-          </div>
-
-          {/* Background */}
-          <div className="absolute inset-[1px] rounded-2xl bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 z-[1]" />
-
-          {/* Content */}
+      {/* Modal Container */}
+      <div
+        className="fixed top-4 right-4 bottom-4 w-3/4 md:inset-x-0 md:mx-auto md:w-full md:max-w-lg md:top-[8%] md:bottom-[8%] z-50 animate-in slide-in-from-right-8 md:slide-in-from-bottom-8 fade-in-0 duration-500 ease-out"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="relative h-full flex flex-col rounded-md overflow-hidden shadow-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-slate-950">
+          {/* Content Wrapper */}
           <div className="relative z-10 flex flex-col h-full">
             {/* Header */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-slate-700/50">
-              <div className="flex items-center gap-2">
-                <span className="text-lg">🔐</span>
-                <h2 className="text-base font-bold text-gray-900 dark:text-white">
-                  {mode === "setup"
-                    ? "Como Configurar o Autenticador"
-                    : "Como Usar o Autenticador"}
+            <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-black/5 dark:border-white/5">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-black/5 dark:bg-white/5 flex items-center justify-center border border-black/10 dark:border-white/10">
+                  <span className="text-lg">🔐</span>
+                </div>
+                <h2 className="font-bebas text-lg text-foreground tracking-wide">
+                  Ajuda do Autenticador
                 </h2>
               </div>
               <button
+                type="button"
                 onClick={onClose}
-                className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"
+                className="w-8 h-8 flex items-center justify-center rounded-lg bg-black/5 dark:bg-white/5 text-foreground/40 hover:text-foreground hover:bg-black/10 dark:hover:bg-white/10 transition-all border border-black/5 dark:border-white/5"
+                aria-label="Fechar modal"
               >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <X size={18} strokeWidth={2.5} />
               </button>
             </div>
 
-            {/* Tutorial Content */}
-            <div className="flex-1 overflow-y-auto bg-slate-950/50 dark:bg-transparent">
+            {/* Scrollable Tutorial Area */}
+            <div className="flex-1 overflow-y-auto custom-scrollbar">
               <OtpTutorialContent mode={mode} />
             </div>
 
-            {/* Footer */}
-            <div className="px-5 py-4 border-t border-gray-200 dark:border-slate-700/50">
+            {/* Footer Action */}
+            <div className="px-8 pb-8 pt-4">
               <button
                 onClick={onClose}
-                className="w-full py-3 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all text-sm"
+                className="w-full py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 font-bebas text-xl uppercase tracking-wider rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_20px_-5px_rgba(245,158,11,0.3)]"
               >
-                Entendi, vou digitar o código
+                Entendi, prosseguir
               </button>
             </div>
           </div>
         </div>
       </div>
+
+      <style jsx global>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 10px;
+        }
+      `}</style>
     </>
   );
 }

@@ -6,12 +6,15 @@ import { createClient } from "@/lib/supabase/client";
 
 import AuthLayout from "@/components/auth/AuthLayout";
 import { OtpTutorialContent } from "@/components/auth/OtpTutorialContent";
+import { useTheme } from "@/lib/contexts/theme-context";
 
 export default function Verify2FAPage() {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   const router = useRouter();
   const supabase = createClient();
 
@@ -105,13 +108,29 @@ export default function Verify2FAPage() {
       rightContent={<OtpTutorialContent mode="verify" />}
     >
       <div className="w-full max-w-md mx-auto">
-        <div className="bg-white/80 dark:bg-slate-900/40 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-gray-200 dark:border-white/10 shadow-2xl">
+        <div
+          className="rounded-3xl p-6 md:p-10 border shadow-xl transition-all duration-300"
+          style={{
+            backgroundColor: isDark ? "rgba(15, 23, 42, 0.6)" : "#ffffff",
+            borderColor: isDark
+              ? "rgba(255, 255, 255, 0.08)"
+              : "rgba(0, 0, 0, 0.05)",
+          }}
+        >
           <div className="text-center mb-6 md:mb-8">
-            <div className="inline-flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-2xl bg-amber-500/10 mb-3 md:mb-4 ring-1 ring-amber-500/20">
+            <div
+              className="inline-flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-2xl mb-3 md:mb-4 ring-1"
+              style={{
+                backgroundColor: isDark
+                  ? "rgba(var(--primary-rgb), 0.1)"
+                  : "rgba(var(--primary-rgb), 0.05)",
+                borderColor: "rgba(var(--primary-rgb), 0.2)",
+              }}
+            >
               <span className="text-2xl md:text-3xl">🔒</span>
             </div>
-            <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-              Verificação OTP
+            <h1 className="font-bebas text-3xl md:text-4xl font-bold text-foreground">
+              Verificação em 2 Fatores
             </h1>
             <p className="text-foreground/50 mt-1 md:mt-2 text-xs md:text-sm leading-relaxed">
               Digite o código de 6 dígitos gerado pelo seu aplicativo
@@ -141,10 +160,17 @@ export default function Verify2FAPage() {
                   onKeyDown={(e) => handleKeyDown(index, e)}
                   onPaste={handlePaste}
                   maxLength={1}
-                  className="w-12 h-16 bg-white dark:bg-slate-800/50 border border-gray-200 dark:border-slate-700 rounded-xl text-foreground text-center text-3xl font-bebas transition-all focus:outline-none focus:ring-2"
+                  className="w-12 h-16 rounded-xl text-foreground text-center text-3xl font-bebas transition-all focus:outline-none focus:ring-2 border"
                   style={
                     {
-                      borderColor: digit ? "var(--primary-hex)" : undefined,
+                      backgroundColor: isDark
+                        ? "rgba(30, 41, 59, 0.5)"
+                        : "#ffffff",
+                      borderColor: digit
+                        ? "var(--primary-hex)"
+                        : isDark
+                          ? "rgba(51, 65, 85, 1)"
+                          : "rgba(209, 213, 219, 1)",
                       "--tw-ring-color": "var(--primary-hex)",
                     } as React.CSSProperties
                   }

@@ -1,9 +1,10 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, useEffect } from "react";
 import { HeroSlideshow } from "./HeroSlideshow";
 import { OtpHelpModal } from "./OtpHelpModal";
 import { DynamicIsland } from "@/components/ui/dynamic-island";
+import { Menu } from "lucide-react";
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -19,11 +20,32 @@ export default function AuthLayout({
   showHelp = false,
 }: AuthLayoutProps) {
   const [helpOpen, setHelpOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
+  // Observe the dark class on <html> to reliably detect theme changes
+  useEffect(() => {
+    const html = document.documentElement;
+    setIsDark(html.classList.contains("dark"));
+
+    const observer = new MutationObserver(() => {
+      setIsDark(html.classList.contains("dark"));
+    });
+    observer.observe(html, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="relative min-h-screen flex flex-col md:flex-row">
-      {/* ── Header: Transparent, overlaying content ── */}
-      <header className="fixed top-0 left-0 right-0 flex items-center justify-between px-4 md:px-8 py-3 z-50 backdrop-blur-sm bg-white/80 dark:bg-slate-900/95 shadow-sm dark:shadow-none dark:border-b dark:border-white/[0.08]">
+      {/* ── Header: uses observed isDark for reliable bg ── */}
+      <header
+        className="fixed top-0 left-0 right-0 flex items-center justify-between px-4 md:px-8 py-3 z-50 backdrop-blur-sm shadow-sm"
+        style={{
+          backgroundColor: isDark
+            ? "rgba(15, 23, 42, 0.95)"
+            : "rgba(255, 255, 255, 0.80)",
+          borderBottom: isDark ? "1px solid rgba(255,255,255,0.08)" : "none",
+        }}
+      >
         {/* Logo */}
         <div className="flex items-center gap-3">
           {/* Logo Icon */}
@@ -31,7 +53,7 @@ export default function AuthLayout({
             className="flex h-14 w-14 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-lg shadow-lg shadow-black/5"
             style={{ backgroundColor: "var(--primary-hex)" }}
           >
-            <span className="font-bebas text-2xl md:text-4xl font-bold text-white">
+            <span className="font-bebas drop-shadow-md shadow-black/5 text-2xl md:text-5xl font-bold text-white">
               AV
             </span>
           </div>
@@ -42,46 +64,42 @@ export default function AuthLayout({
               <span style={{ color: "var(--primary-hex)" }}>A VAGA</span>
               <span className="text-foreground">É MINHA</span>
             </h1>
-            <span className="font-sans text-[7px] md:text-[13px] font-bold uppercase tracking-[0.3em] text-foreground/40 md:mt-1 -mt-0.5">
+            <span className="font-sans text-[7px] md:text-[13px] font-bold uppercase tracking-[0.2em] text-foreground/40 md:mt-1 -mt-0.5">
               Simulador de Concursos
             </span>
           </div>
         </div>
 
-        {/* Center: DynamicIsland (Mobile ONLY) */}
-        <div className="md:hidden">
-          <DynamicIsland position="static" />
-        </div>
+        {/* Right side: DynamicIsland and Help Toggle grouped together */}
+        <div className="flex items-center gap-2 md:gap-4">
+          <DynamicIsland position="static" className="self-start mt-1" />
 
-        {/* Right: Help Toggle */}
-        <div className="flex items-center">
+          {/* Help Toggle (Mobile Only) */}
           {showHelp && (
             <button
               onClick={() => setHelpOpen(true)}
-              className="relative w-9 h-9 flex items-center justify-center rounded-xl transition-all duration-200 hover:scale-105 border"
+              className="md:hidden relative w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-200 hover:scale-105 border box-border shadow-sm"
               style={{
-                backgroundColor: "rgba(var(--primary-rgb, 255, 255, 255), 0.1)",
-                borderColor: "rgba(var(--primary-rgb, 255, 255, 255), 0.2)",
-                color: "var(--primary-hex)",
+                backgroundColor: isDark
+                  ? "rgba(255, 255, 255, 0.05)"
+                  : "rgba(255, 255, 255, 0.95)",
+                borderColor: isDark
+                  ? "rgba(255, 255, 255, 0.1)"
+                  : "rgba(0, 0, 0, 0.1)",
               }}
               aria-label="Ajuda sobre autenticação"
             >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
+              <Menu
+                className={isDark ? "text-white" : "text-[#525d6e]"}
+                size={22}
+                strokeWidth={2.5}
+              />
+
               <span
                 className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full animate-ping opacity-75"
-                style={{ backgroundColor: "var(--primary-hex)" }}
+                style={{
+                  backgroundColor: "var(--primary-hex)",
+                }}
               />
               <span
                 className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full"
@@ -93,13 +111,11 @@ export default function AuthLayout({
       </header>
 
       {/* ── Left Column: Form ── */}
-      <div className="w-full md:w-1/2 min-h-screen flex flex-col justify-center px-4 py-8 md:px-12 md:py-16 bg-slate-50 dark:bg-slate-950">
-        <div className="w-full max-w-md mx-auto pt-24 md:pt-0">{children}</div>
-      </div>
-
-      {/* ── DynamicIsland: Desktop ── */}
-      <div className="hidden md:flex fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40">
-        <DynamicIsland position="static" />
+      <div
+        className="w-full md:w-1/2 min-h-screen flex flex-col justify-center px-4 py-8 md:px-12 md:py-16"
+        style={{ backgroundColor: isDark ? "#020617" : "#f8fafc" }}
+      >
+        <div className="w-full max-w-md mx-auto pt-32 md:pt-0">{children}</div>
       </div>
 
       {/* ── Right Column: Image or Tutorial — Responsive to skin ── */}
