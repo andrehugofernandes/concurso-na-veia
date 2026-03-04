@@ -6,7 +6,6 @@ import {
   AlertBox,
   QuizInterativo,
   ModuleBanner,
-  QuizQuestion,
   getRandomQuestions,
   AulaProps,
   CardCarousel,
@@ -14,289 +13,16 @@ import {
   AulaTemplate,
   ModuleSectionHeader,
 } from "../shared";
+import {
+  QUIZ_M1_AFIM,
+  QUIZ_M2_QUADRATICA,
+  QUIZ_M3_GRAFICOS,
+  QUIZ_M4_APLICACOES,
+  QUIZ_M5_FINAL,
+} from "./data/funcoes-afim-quadratica-quizzes";
 
-// ── QUIZ POOLS (Matemática: Funções Afim e Quadrática) ──────────────────
-
-const QUIZ_AFIM_POOL: QuizQuestion[] = [
-  {
-    id: 101,
-    pergunta:
-      "Na função f(x) = 3x + 7, o coeficiente angular e o linear são, respectivamente:",
-    opcoes: [
-      { label: "A", valor: "7 e 3" },
-      { label: "B", valor: "3 e 7" },
-      { label: "C", valor: "3 e 0" },
-      { label: "D", valor: "7 e 0" },
-      { label: "E", valor: "0 e 7" },
-    ],
-    correta: "B",
-    explicacao: "f(x) = ax + b. a=3 (angular), b=7 (linear).",
-  },
-  {
-    id: 102,
-    pergunta: "A raiz (zero) da função f(x) = 2x - 10 é:",
-    opcoes: [
-      { label: "A", valor: "x = 2" },
-      { label: "B", valor: "x = -5" },
-      { label: "C", valor: "x = 5" },
-      { label: "D", valor: "x = 10" },
-      { label: "E", valor: "x = -10" },
-    ],
-    correta: "C",
-    explicacao: "2x - 10 = 0 → x = 5.",
-  },
-  {
-    id: 103,
-    pergunta: "Se a > 0 em f(x) = ax + b, a função é:",
-    opcoes: [
-      { label: "A", valor: "Decrescente" },
-      { label: "B", valor: "Constante" },
-      { label: "C", valor: "Crescente" },
-      { label: "D", valor: "Periódica" },
-      { label: "E", valor: "Indefinida" },
-    ],
-    correta: "C",
-    explicacao: "a > 0 → função crescente.",
-  },
-  {
-    id: 104,
-    pergunta:
-      "O custo de produção de uma refinaria é C(x) = 5000 + 15x. Para 1000 barris, o custo é:",
-    opcoes: [
-      { label: "A", valor: "R$ 15.000" },
-      { label: "B", valor: "R$ 16.000" },
-      { label: "C", valor: "R$ 20.000" },
-      { label: "D", valor: "R$ 25.000" },
-      { label: "E", valor: "R$ 5.000" },
-    ],
-    correta: "C",
-    explicacao: "C(1000) = 5000 + 15×1000 = 5000 + 15000 = 20000.",
-  },
-  {
-    id: 105,
-    pergunta: "O gráfico de f(x) = -2x + 6 intercepta o eixo y no ponto:",
-    opcoes: [
-      { label: "A", valor: "(0, 6)" },
-      { label: "B", valor: "(6, 0)" },
-      { label: "C", valor: "(3, 0)" },
-      { label: "D", valor: "(0, -2)" },
-      { label: "E", valor: "(0, 3)" },
-    ],
-    correta: "A",
-    explicacao: "f(0) = -2(0) + 6 = 6. Ponto (0, 6).",
-  },
-  {
-    id: 106,
-    pergunta: "Duas funções afins são paralelas quando:",
-    opcoes: [
-      { label: "A", valor: "Têm o mesmo coeficiente linear" },
-      { label: "B", valor: "Têm coeficientes angulares opostos" },
-      { label: "C", valor: "Têm o mesmo coeficiente angular" },
-      { label: "D", valor: "São iguais" },
-      { label: "E", valor: "Têm raízes iguais" },
-    ],
-    correta: "C",
-    explicacao: "Retas paralelas: mesmo coeficiente angular (a₁ = a₂).",
-  },
-];
-
-const QUIZ_QUADRATICA_POOL: QuizQuestion[] = [
-  {
-    id: 201,
-    pergunta: "O vértice da parábola f(x) = x² - 4x + 3 é:",
-    opcoes: [
-      { label: "A", valor: "(2, -1)" },
-      { label: "B", valor: "(2, 1)" },
-      { label: "C", valor: "(-2, -1)" },
-      { label: "D", valor: "(4, 3)" },
-      { label: "E", valor: "(1, 0)" },
-    ],
-    correta: "A",
-    explicacao: "xᵥ = -(-4)/(2×1) = 2. yᵥ = 4-8+3 = -1. V=(2,-1).",
-  },
-  {
-    id: 202,
-    pergunta: "O lucro L(x) = -x² + 10x - 16 é máximo quando x vale:",
-    opcoes: [
-      { label: "A", valor: "3" },
-      { label: "B", valor: "4" },
-      { label: "C", valor: "5" },
-      { label: "D", valor: "8" },
-      { label: "E", valor: "10" },
-    ],
-    correta: "C",
-    explicacao: "xᵥ = -10/(2×(-1)) = 5.",
-  },
-  {
-    id: 203,
-    pergunta: "f(x) = 2x² - 8x tem raízes:",
-    opcoes: [
-      { label: "A", valor: "0 e 4" },
-      { label: "B", valor: "2 e 4" },
-      { label: "C", valor: "0 e 2" },
-      { label: "D", valor: "-4 e 0" },
-      { label: "E", valor: "0 e 8" },
-    ],
-    correta: "A",
-    explicacao: "2x(x-4)=0 → x=0 ou x=4.",
-  },
-  {
-    id: 204,
-    pergunta: "Se a < 0, o vértice de f(x) = ax² + bx + c é ponto de:",
-    opcoes: [
-      { label: "A", valor: "Mínimo" },
-      { label: "B", valor: "Máximo" },
-      { label: "C", valor: "Inflexão" },
-      { label: "D", valor: "Interseção" },
-      { label: "E", valor: "Nenhum" },
-    ],
-    correta: "B",
-    explicacao:
-      "a < 0 → parábola com concavidade para baixo → vértice é ponto de máximo.",
-  },
-  {
-    id: 205,
-    pergunta: "Qual o valor de f(x) = x² para x = -3?",
-    opcoes: [
-      { label: "A", valor: "-9" },
-      { label: "B", valor: "9" },
-      { label: "C", valor: "-6" },
-      { label: "D", valor: "6" },
-      { label: "E", valor: "0" },
-    ],
-    correta: "B",
-    explicacao: "(-3)² = 9.",
-  },
-];
-
-const QUIZ_GRAFICO_POOL: QuizQuestion[] = [
-  {
-    id: 301,
-    pergunta: "A imagem (Im) de f(x) = x² - 4x + 7 é:",
-    opcoes: [
-      { label: "A", valor: "Im = [3, +∞)" },
-      { label: "B", valor: "Im = (-∞, 3]" },
-      { label: "C", valor: "Im = [7, +∞)" },
-      { label: "D", valor: "Im = ℝ" },
-      { label: "E", valor: "Im = [0, +∞)" },
-    ],
-    correta: "A",
-    explicacao: "a>0, yᵥ = -(16-28)/4 = 12/4 = 3. Im = [3, +∞).",
-  },
-  {
-    id: 302,
-    pergunta: "O sinal de f(x) = x² - 9 é negativo para:",
-    opcoes: [
-      { label: "A", valor: "x < -3 ou x > 3" },
-      { label: "B", valor: "-3 < x < 3" },
-      { label: "C", valor: "x > 0" },
-      { label: "D", valor: "x < 0" },
-      { label: "E", valor: "Sempre positivo" },
-    ],
-    correta: "B",
-    explicacao: "Raízes: x=±3. Como a>0, f(x)<0 entre as raízes: -3<x<3.",
-  },
-  {
-    id: 303,
-    pergunta: "O gráfico de f(x) = (x-2)² é uma parábola com vértice em:",
-    opcoes: [
-      { label: "A", valor: "(0, 4)" },
-      { label: "B", valor: "(2, 0)" },
-      { label: "C", valor: "(-2, 0)" },
-      { label: "D", valor: "(0, 2)" },
-      { label: "E", valor: "(2, 4)" },
-    ],
-    correta: "B",
-    explicacao: "f(x) = (x-2)² → vértice em (2, 0).",
-  },
-];
-
-const QUIZ_APLICACOES_POOL: QuizQuestion[] = [
-  {
-    id: 401,
-    pergunta:
-      "A receita de vendas é R(x)=50x e o custo é C(x)=2x²+10x. O lucro L(x)=R-C é máximo quando x vale:",
-    opcoes: [
-      { label: "A", valor: "5" },
-      { label: "B", valor: "10" },
-      { label: "C", valor: "15" },
-      { label: "D", valor: "20" },
-      { label: "E", valor: "25" },
-    ],
-    correta: "B",
-    explicacao: "L(x)=50x-2x²-10x = -2x²+40x. xᵥ=-40/(2×(-2))=10.",
-  },
-  {
-    id: 402,
-    pergunta: "Um projétil sobe segundo h(t)=-5t²+20t. Qual a altura máxima?",
-    opcoes: [
-      { label: "A", valor: "10 m" },
-      { label: "B", valor: "15 m" },
-      { label: "C", valor: "20 m" },
-      { label: "D", valor: "25 m" },
-      { label: "E", valor: "40 m" },
-    ],
-    correta: "C",
-    explicacao: "tᵥ=2. h(2)=-5(4)+20(2)=-20+40=20 m.",
-  },
-  {
-    id: 403,
-    pergunta:
-      "O break-even (receita = custo) ocorre nas raízes de L(x)=0. Se L(x)=-x²+8x-12, os pontos de equilíbrio são:",
-    opcoes: [
-      { label: "A", valor: "x=2 e x=6" },
-      { label: "B", valor: "x=3 e x=4" },
-      { label: "C", valor: "x=1 e x=12" },
-      { label: "D", valor: "x=4 e x=8" },
-      { label: "E", valor: "x=6 e x=8" },
-    ],
-    correta: "A",
-    explicacao: "x²-8x+12=0. Δ=64-48=16. x=(8±4)/2 → x=2 e x=6.",
-  },
-];
-
-const QUIZ_FINAL_POOL: QuizQuestion[] = [
-  {
-    id: 501,
-    pergunta:
-      "Uma função do tipo f(x) = ax + b tem gráfico que passa por (1,5) e (3,11). Os valores de a e b são:",
-    opcoes: [
-      { label: "A", valor: "a=3, b=2" },
-      { label: "B", valor: "a=2, b=3" },
-      { label: "C", valor: "a=5, b=0" },
-      { label: "D", valor: "a=4, b=1" },
-      { label: "E", valor: "a=6, b=-1" },
-    ],
-    correta: "A",
-    explicacao: "a=(11-5)/(3-1)=3. b=5-3(1)=2.",
-  },
-  {
-    id: 502,
-    pergunta: "f(x) = x²-6x+k não possui raízes reais quando k é:",
-    opcoes: [
-      { label: "A", valor: "k < 9" },
-      { label: "B", valor: "k = 9" },
-      { label: "C", valor: "k > 9" },
-      { label: "D", valor: "k > 0" },
-      { label: "E", valor: "k < 0" },
-    ],
-    correta: "C",
-    explicacao: "Δ<0: 36-4k<0 → k>9.",
-  },
-  {
-    id: 503,
-    pergunta: "A função f(x)=|x-3| tem gráfico em forma de:",
-    opcoes: [
-      { label: "A", valor: "Parábola" },
-      { label: "B", valor: "Reta" },
-      { label: "C", valor: "V (módulo)" },
-      { label: "D", valor: "Hipérbole" },
-      { label: "E", valor: "Circunferência" },
-    ],
-    correta: "C",
-    explicacao: "Função modular tem gráfico em V com vértice em (3,0).",
-  },
-];
+// Quizzes importados de ./data/funcoes-afim-quadratica-quizzes.ts
+// (37 questões premium estilo CESGRANRIO)
 
 // ── COMPONENT ───────────────────────────────────────────────────────────
 
@@ -321,17 +47,15 @@ export default function AulaFuncoesAfimQuadratica({
     new Set(),
   );
 
-  const [quizAfim] = useState(() => getRandomQuestions(QUIZ_AFIM_POOL, 6));
+  const [quizAfim] = useState(() => getRandomQuestions(QUIZ_M1_AFIM, 6));
   const [quizQuadratica] = useState(() =>
-    getRandomQuestions(QUIZ_QUADRATICA_POOL, 5),
+    getRandomQuestions(QUIZ_M2_QUADRATICA, 6),
   );
-  const [quizGrafico] = useState(() =>
-    getRandomQuestions(QUIZ_GRAFICO_POOL, 3),
-  );
+  const [quizGrafico] = useState(() => getRandomQuestions(QUIZ_M3_GRAFICOS, 6));
   const [quizAplicacoes] = useState(() =>
-    getRandomQuestions(QUIZ_APLICACOES_POOL, 3),
+    getRandomQuestions(QUIZ_M4_APLICACOES, 5),
   );
-  const [quizFinal] = useState(() => getRandomQuestions(QUIZ_FINAL_POOL, 3));
+  const [quizFinal] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 5));
 
   const isModuleUnlocked = (_index: number) => true;
 
@@ -429,14 +153,93 @@ export default function AulaFuncoesAfimQuadratica({
                           <p className="font-bold text-blue-700 dark:text-blue-400">
                             a = coeficiente angular
                           </p>
-                          <p className="text-sm">Define a inclinação da reta</p>
+                          <p className="text-sm">
+                            Define a <strong>inclinação</strong> da reta. Se a{" "}
+                            {">"} 0, a função é <em>crescente</em>; se a {"<"}{" "}
+                            0, é <em>decrescente</em>.
+                          </p>
                         </div>
                         <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
                           <p className="font-bold text-cyan-700 dark:text-cyan-400">
                             b = coeficiente linear
                           </p>
                           <p className="text-sm">
-                            Onde a reta intercepta o eixo y
+                            Onde a reta cruza o eixo y. É o valor de f(0).
+                          </p>
+                        </div>
+                      </div>
+                      <AlertBox tipo="info" titulo="Contexto Petrobras">
+                        Na operação de uma refinaria, funções afins modelam
+                        custos operacionais: C(x) = <strong>custo fixo</strong>{" "}
+                        + <strong>custo variável × produção</strong>. Exemplo:
+                        C(x) = 5.000 + 15x, onde R$ 5.000 é o custo fixo e R$ 15
+                        por barril.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Raiz e Interceptos",
+                  icone: "🎯",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        A <strong>raiz</strong> (ou zero) da função é o valor de
+                        x que faz f(x) = 0. Graficamente, é onde a reta{" "}
+                        <strong>cruza o eixo x</strong>.
+                      </p>
+                      <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
+                        <p className="font-mono font-bold text-center">
+                          ax + b = 0 → x = -b/a
+                        </p>
+                      </div>
+                      <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
+                        <p className="font-bold text-amber-700 dark:text-amber-400">
+                          📝 Exemplo Resolvido
+                        </p>
+                        <p className="mt-1">
+                          f(x) = 3x - 6. Raiz: 3x - 6 = 0 → 3x = 6 →{" "}
+                          <strong>x = 2</strong>.
+                        </p>
+                        <p className="text-sm mt-1">
+                          A reta cruza o eixo x no ponto (2, 0) e o eixo y em
+                          (0, -6).
+                        </p>
+                      </div>
+                      <AlertBox tipo="warning" titulo="⚠️ Pegadinha CESGRANRIO">
+                        Cuidado para não confundir a raiz (onde cruza x) com o
+                        coeficiente linear (onde cruza y). A banca costuma
+                        trocar esses valores nas alternativas!
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Retas Paralelas e Perpendiculares",
+                  icone: "↗️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="p-4 bg-green-500/10 rounded-xl border border-green-500/20">
+                          <p className="font-bold text-green-700 dark:text-green-400">
+                            Paralelas
+                          </p>
+                          <p className="text-sm">
+                            Mesmo coeficiente angular: a₁ = a₂
+                          </p>
+                          <p className="text-xs mt-1 font-mono">
+                            y = 2x + 1 ∥ y = 2x - 3
+                          </p>
+                        </div>
+                        <div className="p-4 bg-red-500/10 rounded-xl border border-red-500/20">
+                          <p className="font-bold text-red-700 dark:text-red-400">
+                            Perpendiculares
+                          </p>
+                          <p className="text-sm">
+                            Produto dos coeficientes = -1: a₁ × a₂ = -1
+                          </p>
+                          <p className="text-xs mt-1 font-mono">
+                            y = 2x + 1 ⊥ y = -½x + 3
                           </p>
                         </div>
                       </div>
@@ -474,9 +277,143 @@ export default function AulaFuncoesAfimQuadratica({
               variant="emerald"
               className="mb-6"
             />
-            <AlertBox tipo="info" titulo="Fórmulas do Vértice">
-              xᵥ = -b/(2a) | yᵥ = -Δ/(4a)
-            </AlertBox>
+            <ContentAccordion
+              titulo="A Parábola: Forma, Vértice e Concavidade"
+              icone="📐"
+              corIndicador="bg-emerald-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Forma Geral e Coeficientes",
+                  icone: "🔑",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="p-5 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-center space-y-2">
+                        <p className="text-lg font-bold font-mono">
+                          f(x) = ax² + bx + c
+                        </p>
+                        <p className="text-sm">onde a ≠ 0</p>
+                      </div>
+                      <div className="grid md:grid-cols-3 gap-3">
+                        <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-center">
+                          <p className="font-bold">a</p>
+                          <p className="text-xs">
+                            Define concavidade e abertura
+                          </p>
+                        </div>
+                        <div className="p-3 bg-teal-500/10 rounded-xl border border-teal-500/20 text-center">
+                          <p className="font-bold">b</p>
+                          <p className="text-xs">
+                            Influencia posição do vértice
+                          </p>
+                        </div>
+                        <div className="p-3 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-center">
+                          <p className="font-bold">c</p>
+                          <p className="text-xs">
+                            Onde cruza o eixo y (f(0) = c)
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Vértice da Parábola",
+                  icone: "📍",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="p-5 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-center space-y-1">
+                        <p className="font-bold font-mono">x_v = -b / (2a)</p>
+                        <p className="font-bold font-mono">
+                          y_v = -Δ / (4a) ou f(x_v)
+                        </p>
+                      </div>
+                      <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
+                        <p className="font-bold text-amber-700 dark:text-amber-400">
+                          📝 Exemplo Resolvido
+                        </p>
+                        <p className="mt-1">
+                          f(x) = x² - 4x + 3. a=1, b=-4, c=3.
+                        </p>
+                        <p className="mt-1">
+                          x_v = -(-4)/(2×1) = <strong>2</strong>
+                        </p>
+                        <p>
+                          y_v = f(2) = 4 - 8 + 3 = <strong>-1</strong>
+                        </p>
+                        <p className="mt-1">
+                          Vértice: <strong>(2, -1)</strong> — ponto de{" "}
+                          <em>mínimo</em> (a {">"} 0).
+                        </p>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="p-4 bg-green-500/10 rounded-xl border border-green-500/20 text-center">
+                          <p className="font-bold text-green-700 dark:text-green-400">
+                            a {">"} 0 → MÍNIMO
+                          </p>
+                          <p className="text-sm mt-1">
+                            Concavidade para cima (∪)
+                          </p>
+                        </div>
+                        <div className="p-4 bg-red-500/10 rounded-xl border border-red-500/20 text-center">
+                          <p className="font-bold text-red-700 dark:text-red-400">
+                            a {"<"} 0 → MÁXIMO
+                          </p>
+                          <p className="text-sm mt-1">
+                            Concavidade para baixo (∩)
+                          </p>
+                        </div>
+                      </div>
+                      <AlertBox tipo="warning" titulo="⚠️ Pegadinha CESGRANRIO">
+                        A banca adora perguntar &quot;qual o valor MÁXIMO/MÍNIMO
+                        de f(x)?&quot; — a resposta é <strong>y_v</strong>, NÃO
+                        x_v! x_v é QUANDO ocorre o máximo/mínimo; y_v é O VALOR
+                        máximo/mínimo.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Raízes e Discriminante",
+                  icone: "📊",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        As raízes são encontradas por Bhaskara:{" "}
+                        <strong>Δ = b² - 4ac</strong>
+                      </p>
+                      <CardCarousel
+                        cards={[
+                          {
+                            titulo: "Δ > 0",
+                            descricao:
+                              "2 raízes reais distintas — parábola cruza o eixo x em 2 pontos",
+                            icone: "✌️",
+                          },
+                          {
+                            titulo: "Δ = 0",
+                            descricao:
+                              "1 raiz dupla — parábola tangencia o eixo x (vértice toca)",
+                            icone: "1️⃣",
+                          },
+                          {
+                            titulo: "Δ < 0",
+                            descricao:
+                              "0 raízes reais — parábola não toca o eixo x",
+                            icone: "❌",
+                          },
+                        ]}
+                      />
+                      <AlertBox tipo="info" titulo="Contexto Petrobras">
+                        Funções quadráticas modelam custos, receitas e lucros.
+                        Na prova, problemas de otimização (lucro máximo, custo
+                        mínimo) sempre usam o vértice da parábola.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
           </section>
           <section id="quiz-modulo-2" className="mt-16">
             <QuizInterativo
@@ -549,10 +486,94 @@ export default function AulaFuncoesAfimQuadratica({
               variant="violet"
               className="mb-6"
             />
-            <AlertBox tipo="success" titulo="Fórmula do Lucro">
-              L(x) = R(x) - C(x). O ponto de equilíbrio (break-even) é quando
-              L(x) = 0.
-            </AlertBox>
+            <ContentAccordion
+              titulo="Modelagem com Funções"
+              icone="🏭"
+              corIndicador="bg-violet-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Lucro, Receita e Custo",
+                  icone: "💰",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="p-5 bg-violet-500/10 rounded-xl border border-violet-500/20 text-center space-y-1">
+                        <p className="font-bold font-mono">
+                          L(x) = R(x) - C(x)
+                        </p>
+                        <p className="text-sm">Lucro = Receita - Custo</p>
+                      </div>
+                      <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
+                        <p className="font-bold text-amber-700 dark:text-amber-400">
+                          📝 Exemplo Resolvido
+                        </p>
+                        <p className="mt-1">
+                          R(x) = 50x (receita) e C(x) = 2x² + 10x (custo).
+                        </p>
+                        <p>
+                          L(x) = 50x - 2x² - 10x = <strong>-2x² + 40x</strong>
+                        </p>
+                        <p>
+                          Lucro máximo: x_v = -40/(2×(-2)) ={" "}
+                          <strong>10 unidades</strong>
+                        </p>
+                        <p>
+                          L(10) = -200 + 400 = <strong>R$ 200</strong>
+                        </p>
+                      </div>
+                      <AlertBox
+                        tipo="success"
+                        titulo="Break-even (Ponto de Equilíbrio)"
+                      >
+                        É quando L(x) = 0 (lucro zero). São as raízes da função
+                        lucro. <strong>Entre as raízes</strong>, há lucro
+                        positivo.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Problemas de Máximo e Mínimo",
+                  icone: "🎯",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        Na CESGRANRIO, problemas de otimização pedem: &quot;qual
+                        a produção que maximiza o lucro?&quot; ou &quot;qual a
+                        quantidade que minimiza o custo?&quot;. A resposta é{" "}
+                        <strong>sempre o vértice</strong>.
+                      </p>
+                      <CardCarousel
+                        cards={[
+                          {
+                            titulo: "Passo 1",
+                            descricao:
+                              "Monte a função (lucro, custo, área, etc.)",
+                            icone: "📝",
+                          },
+                          {
+                            titulo: "Passo 2",
+                            descricao: "Identifique a, b e c na forma ax²+bx+c",
+                            icone: "🔍",
+                          },
+                          {
+                            titulo: "Passo 3",
+                            descricao:
+                              "x_v = -b/2a (quando ocorre) e y_v = f(x_v) (o valor)",
+                            icone: "📍",
+                          },
+                          {
+                            titulo: "Passo 4",
+                            descricao: "Verifique: a<0 → máximo; a>0 → mínimo",
+                            icone: "✅",
+                          },
+                        ]}
+                      />
+                    </div>
+                  ),
+                },
+              ]}
+            />
           </section>
           <section id="quiz-modulo-4" className="mt-16">
             <QuizInterativo

@@ -6,293 +6,22 @@ import {
   AlertBox,
   QuizInterativo,
   ModuleBanner,
-  QuizQuestion,
   getRandomQuestions,
   AulaProps,
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
 } from "../shared";
+import {
+  QUIZ_M1_POTENCIACAO,
+  QUIZ_M2_GRAFICO,
+  QUIZ_M3_EQUACOES,
+  QUIZ_M4_APLICACOES,
+  QUIZ_M5_FINAL,
+} from "./data/funcoes-exponenciais-quizzes";
 
-// ── QUIZ POOLS (Matemática: Funções Exponenciais) ────────────────────────
-
-const QUIZ_CONCEITO_POOL: QuizQuestion[] = [
-  {
-    id: 101,
-    pergunta: "A função f(x) = 2ˣ é classificada como:",
-    opcoes: [
-      { label: "A", valor: "Logarítmica" },
-      { label: "B", valor: "Exponencial crescente" },
-      { label: "C", valor: "Exponencial decrescente" },
-      { label: "D", valor: "Quadrática" },
-      { label: "E", valor: "Linear" },
-    ],
-    correta: "B",
-    explicacao: "Base 2 > 1 → crescente.",
-  },
-  {
-    id: 102,
-    pergunta: "Qual o valor de 3⁰?",
-    opcoes: [
-      { label: "A", valor: "0" },
-      { label: "B", valor: "1" },
-      { label: "C", valor: "3" },
-      { label: "D", valor: "-1" },
-      { label: "E", valor: "Indefinido" },
-    ],
-    correta: "B",
-    explicacao: "Todo número (≠0) elevado a zero vale 1.",
-  },
-  {
-    id: 103,
-    pergunta: "Simplifique: 2³ × 2⁴ =",
-    opcoes: [
-      { label: "A", valor: "2⁷" },
-      { label: "B", valor: "2¹²" },
-      { label: "C", valor: "4⁷" },
-      { label: "D", valor: "2¹" },
-      { label: "E", valor: "4¹²" },
-    ],
-    correta: "A",
-    explicacao: "Mesma base: soma os expoentes. 2³⁺⁴ = 2⁷.",
-  },
-  {
-    id: 104,
-    pergunta: "Se f(x) = (1/2)ˣ, a função é:",
-    opcoes: [
-      { label: "A", valor: "Crescente" },
-      { label: "B", valor: "Constante" },
-      { label: "C", valor: "Decrescente" },
-      { label: "D", valor: "Periódica" },
-      { label: "E", valor: "Indefinida" },
-    ],
-    correta: "C",
-    explicacao: "Base 0 < 1/2 < 1 → decrescente.",
-  },
-  {
-    id: 105,
-    pergunta: "O valor de 5⁻² é:",
-    opcoes: [
-      { label: "A", valor: "-25" },
-      { label: "B", valor: "-10" },
-      { label: "C", valor: "1/25" },
-      { label: "D", valor: "1/10" },
-      { label: "E", valor: "25" },
-    ],
-    correta: "C",
-    explicacao: "a⁻ⁿ = 1/aⁿ. 5⁻² = 1/25.",
-  },
-  {
-    id: 106,
-    pergunta: "Simplifique (2³)² =",
-    opcoes: [
-      { label: "A", valor: "2⁵" },
-      { label: "B", valor: "2⁶" },
-      { label: "C", valor: "2⁹" },
-      { label: "D", valor: "4⁶" },
-      { label: "E", valor: "2¹" },
-    ],
-    correta: "B",
-    explicacao: "Potência de potência: multiplica os expoentes. (2³)² = 2⁶.",
-  },
-];
-
-const QUIZ_EQUACOES_POOL: QuizQuestion[] = [
-  {
-    id: 201,
-    pergunta: "Resolva: 2ˣ = 32",
-    opcoes: [
-      { label: "A", valor: "x = 4" },
-      { label: "B", valor: "x = 5" },
-      { label: "C", valor: "x = 6" },
-      { label: "D", valor: "x = 16" },
-      { label: "E", valor: "x = 3" },
-    ],
-    correta: "B",
-    explicacao: "32 = 2⁵. Logo x = 5.",
-  },
-  {
-    id: 202,
-    pergunta: "Resolva: 3ˣ = 81",
-    opcoes: [
-      { label: "A", valor: "x = 3" },
-      { label: "B", valor: "x = 4" },
-      { label: "C", valor: "x = 27" },
-      { label: "D", valor: "x = 9" },
-      { label: "E", valor: "x = 5" },
-    ],
-    correta: "B",
-    explicacao: "81 = 3⁴. Logo x = 4.",
-  },
-  {
-    id: 203,
-    pergunta: "Se 4ˣ = 64, então x vale:",
-    opcoes: [
-      { label: "A", valor: "2" },
-      { label: "B", valor: "3" },
-      { label: "C", valor: "4" },
-      { label: "D", valor: "16" },
-      { label: "E", valor: "8" },
-    ],
-    correta: "B",
-    explicacao: "64 = 4³. Logo x = 3.",
-  },
-  {
-    id: 204,
-    pergunta: "Resolva: 5ˣ⁺¹ = 125",
-    opcoes: [
-      { label: "A", valor: "x = 1" },
-      { label: "B", valor: "x = 2" },
-      { label: "C", valor: "x = 3" },
-      { label: "D", valor: "x = 4" },
-      { label: "E", valor: "x = 5" },
-    ],
-    correta: "B",
-    explicacao: "125=5³. x+1=3 → x=2.",
-  },
-  {
-    id: 205,
-    pergunta: "Se 9ˣ = 27, qual é x?",
-    opcoes: [
-      { label: "A", valor: "3/2" },
-      { label: "B", valor: "2/3" },
-      { label: "C", valor: "3" },
-      { label: "D", valor: "1" },
-      { label: "E", valor: "2" },
-    ],
-    correta: "A",
-    explicacao: "9=3², 27=3³. (3²)ˣ=3³ → 2x=3 → x=3/2.",
-  },
-];
-
-const QUIZ_APLICACOES_POOL: QuizQuestion[] = [
-  {
-    id: 301,
-    pergunta:
-      "Uma bactéria dobra a cada hora. Começando com 100, após 5h teremos:",
-    opcoes: [
-      { label: "A", valor: "500" },
-      { label: "B", valor: "1600" },
-      { label: "C", valor: "3200" },
-      { label: "D", valor: "6400" },
-      { label: "E", valor: "10000" },
-    ],
-    correta: "C",
-    explicacao: "P(t)=100×2ᵗ. P(5)=100×32=3200.",
-  },
-  {
-    id: 302,
-    pergunta:
-      "Um elemento radioativo decai pela lei N(t)=N₀×(1/2)ᵗ (t em horas). Após 3 horas, resta:",
-    opcoes: [
-      { label: "A", valor: "1/3 de N₀" },
-      { label: "B", valor: "1/6 de N₀" },
-      { label: "C", valor: "1/8 de N₀" },
-      { label: "D", valor: "1/4 de N₀" },
-      { label: "E", valor: "1/2 de N₀" },
-    ],
-    correta: "C",
-    explicacao: "(1/2)³ = 1/8.",
-  },
-  {
-    id: 303,
-    pergunta: "R$ 1000 aplicados a 10% a.m. em juros compostos. Após 2 meses:",
-    opcoes: [
-      { label: "A", valor: "R$ 1.100" },
-      { label: "B", valor: "R$ 1.200" },
-      { label: "C", valor: "R$ 1.210" },
-      { label: "D", valor: "R$ 1.220" },
-      { label: "E", valor: "R$ 1.300" },
-    ],
-    correta: "C",
-    explicacao: "M=1000×(1,10)²=1000×1,21=1210.",
-  },
-];
-
-const QUIZ_INEQUACOES_POOL: QuizQuestion[] = [
-  {
-    id: 401,
-    pergunta: "Na inequação 2ˣ > 16, a solução é:",
-    opcoes: [
-      { label: "A", valor: "x > 4" },
-      { label: "B", valor: "x < 4" },
-      { label: "C", valor: "x > 8" },
-      { label: "D", valor: "x > 2" },
-      { label: "E", valor: "x < 2" },
-    ],
-    correta: "A",
-    explicacao: "16=2⁴. Base>1: mantém sentido. x>4.",
-  },
-  {
-    id: 402,
-    pergunta: "Na inequação (1/3)ˣ < 9, a solução é:",
-    opcoes: [
-      { label: "A", valor: "x > -2" },
-      { label: "B", valor: "x < -2" },
-      { label: "C", valor: "x > 2" },
-      { label: "D", valor: "x < 2" },
-      { label: "E", valor: "x > 0" },
-    ],
-    correta: "A",
-    explicacao: "9=(1/3)⁻². Base 0<b<1: inverte. x>-2.",
-  },
-  {
-    id: 403,
-    pergunta: "Se 3ˣ ≤ 27, então:",
-    opcoes: [
-      { label: "A", valor: "x ≤ 3" },
-      { label: "B", valor: "x ≥ 3" },
-      { label: "C", valor: "x ≤ 9" },
-      { label: "D", valor: "x ≥ 9" },
-      { label: "E", valor: "x ≤ 27" },
-    ],
-    correta: "A",
-    explicacao: "27=3³. Base>1: mantém sentido. x≤3.",
-  },
-];
-
-const QUIZ_FINAL_POOL: QuizQuestion[] = [
-  {
-    id: 501,
-    pergunta:
-      "Em um reservatório, a concentração de cloro decai 20% a cada hora. A função modelo é:",
-    opcoes: [
-      { label: "A", valor: "C(t)=C₀×(0,8)ᵗ" },
-      { label: "B", valor: "C(t)=C₀×(1,2)ᵗ" },
-      { label: "C", valor: "C(t)=C₀×(0,2)ᵗ" },
-      { label: "D", valor: "C(t)=C₀-0,2t" },
-      { label: "E", valor: "C(t)=C₀×(0,02)ᵗ" },
-    ],
-    correta: "A",
-    explicacao: "Decai 20% → mantém 80% → fator 0,8 por período.",
-  },
-  {
-    id: 502,
-    pergunta: "Compare: 2¹⁰ e 10³. O maior é:",
-    opcoes: [
-      { label: "A", valor: "São iguais" },
-      { label: "B", valor: "2¹⁰" },
-      { label: "C", valor: "10³" },
-      { label: "D", valor: "Incomparáveis" },
-      { label: "E", valor: "Depende do contexto" },
-    ],
-    correta: "B",
-    explicacao: "2¹⁰ = 1024 e 10³ = 1000. Logo 2¹⁰ > 10³.",
-  },
-  {
-    id: 503,
-    pergunta: "O gráfico de f(x)=aˣ (a>1) SEMPRE passa pelo ponto:",
-    opcoes: [
-      { label: "A", valor: "(1, 0)" },
-      { label: "B", valor: "(0, 1)" },
-      { label: "C", valor: "(0, 0)" },
-      { label: "D", valor: "(1, a)" },
-      { label: "E", valor: "(a, 1)" },
-    ],
-    correta: "B",
-    explicacao: "f(0) = a⁰ = 1. Sempre passa por (0,1).",
-  },
-];
+// Quizzes importados de ./data/funcoes-exponenciais-quizzes.ts
+// (36 questões premium estilo CESGRANRIO)
 
 // ── COMPONENT ───────────────────────────────────────────────────────────
 
@@ -317,18 +46,18 @@ export default function AulaFuncoesExponenciais({
     new Set(),
   );
   const [quizConceito] = useState(() =>
-    getRandomQuestions(QUIZ_CONCEITO_POOL, 6),
+    getRandomQuestions(QUIZ_M1_POTENCIACAO, 6),
   );
   const [quizEquacoes] = useState(() =>
-    getRandomQuestions(QUIZ_EQUACOES_POOL, 5),
+    getRandomQuestions(QUIZ_M3_EQUACOES, 6),
   );
   const [quizAplicacoes] = useState(() =>
-    getRandomQuestions(QUIZ_APLICACOES_POOL, 3),
+    getRandomQuestions(QUIZ_M4_APLICACOES, 5),
   );
   const [quizInequacoes] = useState(() =>
-    getRandomQuestions(QUIZ_INEQUACOES_POOL, 3),
+    getRandomQuestions(QUIZ_M2_GRAFICO, 5),
   );
-  const [quizFinal] = useState(() => getRandomQuestions(QUIZ_FINAL_POOL, 3));
+  const [quizFinal] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 5));
   const isModuleUnlocked = (_index: number) => true;
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
