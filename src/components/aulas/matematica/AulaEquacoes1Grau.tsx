@@ -6,7 +6,6 @@ import {
   AlertBox,
   QuizInterativo,
   ModuleBanner,
-  QuizQuestion,
   getRandomQuestions,
   AulaProps,
   CardCarousel,
@@ -14,351 +13,16 @@ import {
   AulaTemplate,
   ModuleSectionHeader,
 } from "../shared";
+import {
+  QUIZ_M1_CONCEITOS,
+  QUIZ_M2_FRACOES,
+  QUIZ_M3_PROBLEMAS,
+  QUIZ_M4_INEQUACOES,
+  QUIZ_M5_FINAL,
+} from "./data/equacoes-1grau-quizzes";
 
-// ── QUIZ POOLS (Matemática: Equações de 1º Grau) ────────────────────────
-
-const QUIZ_CONCEITO_POOL: QuizQuestion[] = [
-  {
-    id: 101,
-    pergunta:
-      "Uma equação do 1º grau possui a forma geral ax + b = 0, com a ≠ 0. A solução é:",
-    opcoes: [
-      { label: "A", valor: "x = b/a" },
-      { label: "B", valor: "x = -b/a" },
-      { label: "C", valor: "x = a/b" },
-      { label: "D", valor: "x = -a/b" },
-      { label: "E", valor: "x = ab" },
-    ],
-    correta: "B",
-    explicacao: "ax + b = 0 → ax = -b → x = -b/a.",
-  },
-  {
-    id: 102,
-    pergunta: "Resolva: 3x - 15 = 0",
-    opcoes: [
-      { label: "A", valor: "x = 3" },
-      { label: "B", valor: "x = 5" },
-      { label: "C", valor: "x = -5" },
-      { label: "D", valor: "x = 15" },
-      { label: "E", valor: "x = -3" },
-    ],
-    correta: "B",
-    explicacao: "3x = 15 → x = 15/3 = 5.",
-  },
-  {
-    id: 103,
-    pergunta: "Qual o valor de x em: 2x + 8 = 20?",
-    opcoes: [
-      { label: "A", valor: "x = 4" },
-      { label: "B", valor: "x = 6" },
-      { label: "C", valor: "x = 8" },
-      { label: "D", valor: "x = 10" },
-      { label: "E", valor: "x = 14" },
-    ],
-    correta: "B",
-    explicacao: "2x = 20 - 8 = 12 → x = 6.",
-  },
-  {
-    id: 104,
-    pergunta: "Resolva: 5x - 3 = 2x + 9",
-    opcoes: [
-      { label: "A", valor: "x = 2" },
-      { label: "B", valor: "x = 3" },
-      { label: "C", valor: "x = 4" },
-      { label: "D", valor: "x = 6" },
-      { label: "E", valor: "x = 12" },
-    ],
-    correta: "C",
-    explicacao: "5x - 2x = 9 + 3 → 3x = 12 → x = 4.",
-  },
-  {
-    id: 105,
-    pergunta: "Se -4x + 16 = 0, então x vale:",
-    opcoes: [
-      { label: "A", valor: "4" },
-      { label: "B", valor: "-4" },
-      { label: "C", valor: "16" },
-      { label: "D", valor: "-16" },
-      { label: "E", valor: "0" },
-    ],
-    correta: "A",
-    explicacao: "-4x = -16 → x = -16/-4 = 4.",
-  },
-  {
-    id: 106,
-    pergunta: "Resolva: x/3 = 7",
-    opcoes: [
-      { label: "A", valor: "x = 7/3" },
-      { label: "B", valor: "x = 10" },
-      { label: "C", valor: "x = 21" },
-      { label: "D", valor: "x = 3" },
-      { label: "E", valor: "x = 14" },
-    ],
-    correta: "C",
-    explicacao: "x = 7 × 3 = 21.",
-  },
-];
-
-const QUIZ_PROBLEMAS_POOL: QuizQuestion[] = [
-  {
-    id: 201,
-    pergunta:
-      "O triplo de um número diminuído de 7 é igual a 23. Qual é esse número?",
-    opcoes: [
-      { label: "A", valor: "8" },
-      { label: "B", valor: "10" },
-      { label: "C", valor: "12" },
-      { label: "D", valor: "15" },
-      { label: "E", valor: "20" },
-    ],
-    correta: "B",
-    explicacao: "3x - 7 = 23 → 3x = 30 → x = 10.",
-  },
-  {
-    id: 202,
-    pergunta: "A soma de dois números consecutivos é 49. O menor deles é:",
-    opcoes: [
-      { label: "A", valor: "23" },
-      { label: "B", valor: "24" },
-      { label: "C", valor: "25" },
-      { label: "D", valor: "26" },
-      { label: "E", valor: "22" },
-    ],
-    correta: "B",
-    explicacao: "x + (x+1) = 49 → 2x = 48 → x = 24.",
-  },
-  {
-    id: 203,
-    pergunta:
-      "Em uma equipe Petrobras, a idade do supervisor é o dobro da idade do estagiário mais 5 anos. Se o supervisor tem 45 anos, qual a idade do estagiário?",
-    opcoes: [
-      { label: "A", valor: "18" },
-      { label: "B", valor: "20" },
-      { label: "C", valor: "22" },
-      { label: "D", valor: "25" },
-      { label: "E", valor: "30" },
-    ],
-    correta: "B",
-    explicacao: "2x + 5 = 45 → 2x = 40 → x = 20.",
-  },
-  {
-    id: 204,
-    pergunta:
-      "Um tanque perde 3 litros por hora. Se iniciou com 120 litros, em quantas horas estará com 75 litros?",
-    opcoes: [
-      { label: "A", valor: "10" },
-      { label: "B", valor: "12" },
-      { label: "C", valor: "15" },
-      { label: "D", valor: "18" },
-      { label: "E", valor: "20" },
-    ],
-    correta: "C",
-    explicacao: "120 - 3t = 75 → 3t = 45 → t = 15 horas.",
-  },
-  {
-    id: 205,
-    pergunta:
-      "Um técnico e um engenheiro juntos recebem R$ 12.000. Se o engenheiro recebe R$ 2.000 a mais, qual o salário do técnico?",
-    opcoes: [
-      { label: "A", valor: "R$ 4.000" },
-      { label: "B", valor: "R$ 5.000" },
-      { label: "C", valor: "R$ 6.000" },
-      { label: "D", valor: "R$ 7.000" },
-      { label: "E", valor: "R$ 8.000" },
-    ],
-    correta: "B",
-    explicacao: "x + (x + 2000) = 12000 → 2x = 10000 → x = 5000.",
-  },
-];
-
-const QUIZ_FRACOESEPAREN_POOL: QuizQuestion[] = [
-  {
-    id: 301,
-    pergunta: "Resolva: 2(x + 3) = 16",
-    opcoes: [
-      { label: "A", valor: "x = 4" },
-      { label: "B", valor: "x = 5" },
-      { label: "C", valor: "x = 6" },
-      { label: "D", valor: "x = 7" },
-      { label: "E", valor: "x = 8" },
-    ],
-    correta: "B",
-    explicacao: "2x + 6 = 16 → 2x = 10 → x = 5.",
-  },
-  {
-    id: 302,
-    pergunta: "Resolva: (x + 5)/2 = 8",
-    opcoes: [
-      { label: "A", valor: "x = 11" },
-      { label: "B", valor: "x = 13" },
-      { label: "C", valor: "x = 16" },
-      { label: "D", valor: "x = 21" },
-      { label: "E", valor: "x = 3" },
-    ],
-    correta: "A",
-    explicacao: "x + 5 = 16 → x = 11.",
-  },
-  {
-    id: 303,
-    pergunta: "Resolva: 3(2x - 1) - 2(x + 4) = 7",
-    opcoes: [
-      { label: "A", valor: "x = 3" },
-      { label: "B", valor: "x = 4" },
-      { label: "C", valor: "x = 5" },
-      { label: "D", valor: "x = 2" },
-      { label: "E", valor: "x = 6" },
-    ],
-    correta: "B",
-    explicacao:
-      "6x - 3 - 2x - 8 = 7 → 4x - 11 = 7 → 4x = 18 → x = 4,5. Ops, vamos recalcular: 4x = 18 → x = 4,5. Na verdade x = 4,5 não aparece. Recalculando com cuidado: 3(2x-1) = 6x-3; 2(x+4)=2x+8; 6x-3-2x-8=7; 4x-11=7; 4x=18; x=4,5. Como 4,5 não está, a questão precisa ajuste. Considere x = 4 como melhor aproximação inteira.",
-  },
-  {
-    id: 304,
-    pergunta: "Resolva: x/2 + x/3 = 10",
-    opcoes: [
-      { label: "A", valor: "x = 10" },
-      { label: "B", valor: "x = 12" },
-      { label: "C", valor: "x = 15" },
-      { label: "D", valor: "x = 20" },
-      { label: "E", valor: "x = 6" },
-    ],
-    correta: "B",
-    explicacao:
-      "MMC de 2 e 3 = 6. 3x/6 + 2x/6 = 10 → 5x/6 = 10 → 5x = 60 → x = 12.",
-  },
-  {
-    id: 305,
-    pergunta: "Resolva: 4(x - 2) = 3(x + 1)",
-    opcoes: [
-      { label: "A", valor: "x = 7" },
-      { label: "B", valor: "x = 9" },
-      { label: "C", valor: "x = 11" },
-      { label: "D", valor: "x = 5" },
-      { label: "E", valor: "x = 3" },
-    ],
-    correta: "C",
-    explicacao: "4x - 8 = 3x + 3 → 4x - 3x = 3 + 8 → x = 11.",
-  },
-];
-
-const QUIZ_SISTEMAS_POOL: QuizQuestion[] = [
-  {
-    id: 401,
-    pergunta: "Resolva o sistema: x + y = 10 e x - y = 4. Qual o valor de x?",
-    opcoes: [
-      { label: "A", valor: "5" },
-      { label: "B", valor: "6" },
-      { label: "C", valor: "7" },
-      { label: "D", valor: "8" },
-      { label: "E", valor: "3" },
-    ],
-    correta: "C",
-    explicacao: "Somando: 2x = 14 → x = 7.",
-  },
-  {
-    id: 402,
-    pergunta: "No sistema: 2x + 3y = 16 e x + y = 6, qual o valor de y?",
-    opcoes: [
-      { label: "A", valor: "2" },
-      { label: "B", valor: "3" },
-      { label: "C", valor: "4" },
-      { label: "D", valor: "5" },
-      { label: "E", valor: "6" },
-    ],
-    correta: "C",
-    explicacao:
-      "Da 2ª: x = 6 - y. Substituindo: 2(6-y) + 3y = 16 → 12 - 2y + 3y = 16 → y = 4.",
-  },
-  {
-    id: 403,
-    pergunta: "Um sistema que não possui solução é classificado como:",
-    opcoes: [
-      { label: "A", valor: "SPD - Sistema Possível Determinado" },
-      { label: "B", valor: "SPI - Sistema Possível Indeterminado" },
-      { label: "C", valor: "SI - Sistema Impossível" },
-      { label: "D", valor: "Indeterminado" },
-      { label: "E", valor: "Homogêneo" },
-    ],
-    correta: "C",
-    explicacao:
-      "SI = Sistema Impossível: as retas são paralelas, nunca se cruzam.",
-  },
-  {
-    id: 404,
-    pergunta:
-      "Dois operadores juntos carregam 50 kg. O primeiro carrega 10 kg a mais que o segundo. Quanto carrega o segundo?",
-    opcoes: [
-      { label: "A", valor: "15 kg" },
-      { label: "B", valor: "20 kg" },
-      { label: "C", valor: "25 kg" },
-      { label: "D", valor: "30 kg" },
-      { label: "E", valor: "10 kg" },
-    ],
-    correta: "B",
-    explicacao: "x + (x + 10) = 50 → 2x = 40 → x = 20 kg.",
-  },
-];
-
-const QUIZ_FINAL_POOL: QuizQuestion[] = [
-  {
-    id: 501,
-    pergunta:
-      "Uma bomba A enche um tanque em 6 horas e uma bomba B em 3 horas. Juntas, em quanto tempo enchem o tanque?",
-    opcoes: [
-      { label: "A", valor: "1 hora" },
-      { label: "B", valor: "1,5 horas" },
-      { label: "C", valor: "2 horas" },
-      { label: "D", valor: "2,5 horas" },
-      { label: "E", valor: "3 horas" },
-    ],
-    correta: "C",
-    explicacao:
-      "Taxa A = 1/6 por hora, B = 1/3 por hora. Juntas: 1/6 + 1/3 = 1/6 + 2/6 = 3/6 = 1/2 por hora. Tempo = 2 horas.",
-  },
-  {
-    id: 502,
-    pergunta:
-      "Um engenheiro percebeu que a temperatura de um forno sobe 8°C por minuto. Se a temperatura inicial era 120°C, em quantos minutos atingirá 280°C?",
-    opcoes: [
-      { label: "A", valor: "15" },
-      { label: "B", valor: "18" },
-      { label: "C", valor: "20" },
-      { label: "D", valor: "22" },
-      { label: "E", valor: "25" },
-    ],
-    correta: "C",
-    explicacao: "120 + 8t = 280 → 8t = 160 → t = 20 minutos.",
-  },
-  {
-    id: 503,
-    pergunta:
-      "Um lote de peças custa R$ 350 por unidade mais R$ 1.500 de frete fixo. Para gastar exatamente R$ 5.000 no total, quantas peças posso comprar?",
-    opcoes: [
-      { label: "A", valor: "8" },
-      { label: "B", valor: "10" },
-      { label: "C", valor: "12" },
-      { label: "D", valor: "14" },
-      { label: "E", valor: "15" },
-    ],
-    correta: "B",
-    explicacao: "350x + 1500 = 5000 → 350x = 3500 → x = 10.",
-  },
-  {
-    id: 504,
-    pergunta:
-      "A soma de três números consecutivos PARES é 78. Qual o maior deles?",
-    opcoes: [
-      { label: "A", valor: "24" },
-      { label: "B", valor: "26" },
-      { label: "C", valor: "28" },
-      { label: "D", valor: "30" },
-      { label: "E", valor: "32" },
-    ],
-    correta: "C",
-    explicacao:
-      "x + (x+2) + (x+4) = 78 → 3x + 6 = 78 → 3x = 72 → x = 24. Maior: 24+4 = 28.",
-  },
-];
+// Quizzes importados de ./data/equacoes-1grau-quizzes.ts
+// (36 questões premium estilo CESGRANRIO)
 
 // ── COMPONENT ───────────────────────────────────────────────────────────
 
@@ -384,18 +48,16 @@ export default function AulaEquacoes1Grau({
   );
 
   const [quizConceito] = useState(() =>
-    getRandomQuestions(QUIZ_CONCEITO_POOL, 6),
+    getRandomQuestions(QUIZ_M1_CONCEITOS, 6),
   );
   const [quizProblemas] = useState(() =>
-    getRandomQuestions(QUIZ_PROBLEMAS_POOL, 5),
+    getRandomQuestions(QUIZ_M3_PROBLEMAS, 6),
   );
-  const [quizFracoes] = useState(() =>
-    getRandomQuestions(QUIZ_FRACOESEPAREN_POOL, 5),
-  );
+  const [quizFracoes] = useState(() => getRandomQuestions(QUIZ_M2_FRACOES, 6));
   const [quizSistemas] = useState(() =>
-    getRandomQuestions(QUIZ_SISTEMAS_POOL, 4),
+    getRandomQuestions(QUIZ_M4_INEQUACOES, 5),
   );
-  const [quizFinal] = useState(() => getRandomQuestions(QUIZ_FINAL_POOL, 4));
+  const [quizFinal] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 5));
 
   const isModuleUnlocked = (_index: number) => true;
 
