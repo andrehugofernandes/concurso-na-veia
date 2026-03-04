@@ -17,7 +17,7 @@ import { LuClock, LuCheck } from "react-icons/lu";
 
 // Dynamic import para evitar hydration mismatch dos componentes Radix UI (Dialog, Accordion, Tabs)
 const AulaInterpretacaoTexto = dynamic(
-  () => import("@/components/aulas/AulaInterpretacaoTexto"),
+  () => import("@/components/aulas/portugues/AulaInterpretacaoTexto"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
@@ -25,7 +25,7 @@ const AulaInterpretacaoTexto = dynamic(
 );
 
 const AulaConcordancia = dynamic(
-  () => import("@/components/aulas/AulaConcordancia"),
+  () => import("@/components/aulas/portugues/AulaConcordancia"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
@@ -33,7 +33,7 @@ const AulaConcordancia = dynamic(
 );
 
 const AulaReescritaFrases = dynamic(
-  () => import("@/components/aulas/AulaReescritaFrases"),
+  () => import("@/components/aulas/portugues/AulaReescritaFrases"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
@@ -41,7 +41,7 @@ const AulaReescritaFrases = dynamic(
 );
 
 const AulaCoesaoCoerencia = dynamic<AulaProps>(
-  () => import("@/components/aulas/AulaCoesaoCoerencia"),
+  () => import("@/components/aulas/portugues/AulaCoesaoCoerencia"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
@@ -49,7 +49,7 @@ const AulaCoesaoCoerencia = dynamic<AulaProps>(
 );
 
 const AulaCrase = dynamic<AulaProps>(
-  () => import("@/components/aulas/AulaCrase"),
+  () => import("@/components/aulas/portugues/AulaCrase"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
@@ -57,7 +57,7 @@ const AulaCrase = dynamic<AulaProps>(
 );
 
 const AulaPontuacao = dynamic<AulaProps>(
-  () => import("@/components/aulas/AulaPontuacao"),
+  () => import("@/components/aulas/portugues/AulaPontuacao"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
@@ -65,7 +65,7 @@ const AulaPontuacao = dynamic<AulaProps>(
 );
 
 const AulaRegencia = dynamic<AulaProps>(
-  () => import("@/components/aulas/AulaRegencia"),
+  () => import("@/components/aulas/portugues/AulaRegencia"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
@@ -73,7 +73,7 @@ const AulaRegencia = dynamic<AulaProps>(
 );
 
 const AulaSintaxe = dynamic<AulaProps>(
-  () => import("@/components/aulas/AulaSintaxe"),
+  () => import("@/components/aulas/portugues/AulaSintaxe"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
@@ -81,7 +81,7 @@ const AulaSintaxe = dynamic<AulaProps>(
 );
 
 const AulaClassesPalavras = dynamic<AulaProps>(
-  () => import("@/components/aulas/AulaClassesPalavras"),
+  () => import("@/components/aulas/portugues/AulaClassesPalavras"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
@@ -89,7 +89,7 @@ const AulaClassesPalavras = dynamic<AulaProps>(
 );
 
 const AulaTiposTextuais = dynamic<AulaProps>(
-  () => import("@/components/aulas/AulaTiposTextuais"),
+  () => import("@/components/aulas/portugues/AulaTiposTextuais"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
@@ -97,7 +97,7 @@ const AulaTiposTextuais = dynamic<AulaProps>(
 );
 
 const AulaOrtografia = dynamic<AulaProps>(
-  () => import("@/components/aulas/AulaOrtografia"),
+  () => import("@/components/aulas/portugues/AulaOrtografia"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
@@ -105,7 +105,15 @@ const AulaOrtografia = dynamic<AulaProps>(
 );
 
 const AulaConjuntos = dynamic<AulaProps>(
-  () => import("@/components/aulas/AulaConjuntos"),
+  () => import("@/components/aulas/matematica/AulaConjuntos"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaRazaoProporcao = dynamic<AulaProps>(
+  () => import("@/components/aulas/matematica/AulaRazaoProporcao"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
@@ -552,6 +560,23 @@ export default function TopicoPage({ params }: PageProps) {
             />
           ) : materiaId === "matematica" && topicoId === "conjuntos" ? (
             <AulaConjuntos
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "matematica" && topicoId === "razao-proporcao" ? (
+            <AulaRazaoProporcao
               onComplete={handleCompleteAula}
               isCompleted={isCompleted}
               loading={loading}
