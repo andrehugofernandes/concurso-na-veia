@@ -144,6 +144,22 @@ const AulaEquacoes2Grau = dynamic<AulaProps>(
   },
 );
 
+const AulaFuncoesAfimQuadratica = dynamic<AulaProps>(
+  () => import("@/components/aulas/matematica/AulaFuncoesAfimQuadratica"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaFuncoesExponenciais = dynamic<AulaProps>(
+  () => import("@/components/aulas/matematica/AulaFuncoesExponenciais"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
 interface PageProps {
   params: Promise<{ materia: string; topico: string }>;
 }
@@ -652,6 +668,42 @@ export default function TopicoPage({ params }: PageProps) {
             />
           ) : materiaId === "matematica" && topicoId === "equacoes-2grau" ? (
             <AulaEquacoes2Grau
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "matematica" &&
+            topicoId === "funcoes-afim-quadratica" ? (
+            <AulaFuncoesAfimQuadratica
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "matematica" &&
+            topicoId === "funcoes-exponenciais" ? (
+            <AulaFuncoesExponenciais
               onComplete={handleCompleteAula}
               isCompleted={isCompleted}
               loading={loading}
