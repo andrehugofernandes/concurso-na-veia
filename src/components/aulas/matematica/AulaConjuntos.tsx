@@ -18,10 +18,18 @@ import {
   ModuleSectionHeader,
 } from "../shared";
 import { LuBookOpen, LuMusic } from "react-icons/lu";
+import {
+  QUIZ_M1_CONCEITOS,
+  QUIZ_M2_OPERACOES,
+  QUIZ_M3_NUMERICOS,
+  QUIZ_M4_VENN,
+  QUIZ_M5_FINAL,
+} from "./data/conjuntos-quizzes";
 
-// ── QUIZ POOLS (Matemática: Conjuntos) ──────────────────────────────────────
+// Quizzes agora importados de ./data/conjuntos-quizzes.ts
+// (35 questões premium estilo CESGRANRIO)
 
-const QUIZ_FUNDAMENTOS_POOL: QuizQuestion[] = [
+const _QUIZ_POOLS_IMPORTED = [
   {
     id: 101,
     pergunta: "Em Matemática, um 'conjunto' é fundamentalmente definido como:",
@@ -523,16 +531,16 @@ export default function AulaConjuntos({
   );
 
   const [quizFundamentos] = useState(() =>
-    getRandomQuestions(QUIZ_FUNDAMENTOS_POOL, 6),
+    getRandomQuestions(QUIZ_M1_CONCEITOS, 6),
   );
   const [quizOperacoes] = useState(() =>
-    getRandomQuestions(QUIZ_OPERACOES_POOL, 6),
+    getRandomQuestions(QUIZ_M2_OPERACOES, 6),
   );
-  const [quizVenn] = useState(() => getRandomQuestions(QUIZ_VENN_POOL, 6));
+  const [quizVenn] = useState(() => getRandomQuestions(QUIZ_M4_VENN, 6));
   const [quizNumericos] = useState(() =>
-    getRandomQuestions(QUIZ_NUMERICOS_POOL, 6),
+    getRandomQuestions(QUIZ_M3_NUMERICOS, 6),
   );
-  const [quizFinal] = useState(() => getRandomQuestions(QUIZ_FINAL_POOL, 6));
+  const [quizFinal] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 6));
 
   const isModuleUnlocked = (index: number) => {
     return true; // DESBLOQUEADO PARA REVISÃO DO USUÁRIO
