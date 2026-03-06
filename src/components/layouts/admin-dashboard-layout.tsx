@@ -132,7 +132,8 @@ function DashboardShell({
   const { isStickyNavPinned } = useHeaderState();
 
   // Sidebar esconde completamente apenas dentro de aulas com nav sticky no mobile
-  const shouldHideSidebar = isMobile && isInsideLesson && isStickyNavPinned;
+  const shouldHideSidebar =
+    isMobile && isInsideLesson && isStickyNavPinned && !isMobileSidebarOpen;
 
   return (
     <div

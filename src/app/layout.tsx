@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Khand } from "next/font/google";
+import { Poppins, Khand, Orbitron } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ThemeProvider as SkinProvider } from "@/lib/contexts/theme-context";
@@ -18,6 +18,13 @@ const khand = Khand({
   variable: "--font-khand",
 });
 
+const orbitron = Orbitron({
+  weight: ["400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-orbitron",
+});
+
 export const metadata: Metadata = {
   title: "A Vaga eh Minha - Domine seu Futuro",
   description:
@@ -34,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body
-        className={`${poppins.variable} ${khand.variable} font-sans overflow-x-clip`}
+        className={`${poppins.variable} ${khand.variable} ${orbitron.variable} font-sans overflow-x-clip`}
         suppressHydrationWarning
       >
         <SkinProvider>

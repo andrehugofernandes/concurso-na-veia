@@ -215,7 +215,7 @@ export function AdminSidebar({
         "scrollbar-hide scrollbar-none",
         // Overlay mode: z-50 (acima do backdrop z-40), expandida com sombra
         isOverlayOpen
-          ? "w-72 z-50 shadow-2xl"
+          ? "w-72 z-[60] shadow-2xl"
           : cn("z-40", isCollapsed ? "w-14 md:w-20" : "w-64"),
         isHidden && "-translate-x-full",
       )}
@@ -272,13 +272,13 @@ export function AdminSidebar({
               )}
             >
               <div className="flex flex-col justify-center leading-none">
-                <h1 className="font-bebas font-bold text-[24px] md:text-[28px] tracking-tight leading-[1.1] flex items-baseline gap-1">
+                <h1 className="font-bebas font-bold text-[36px] md:text-[28px] tracking-tight leading-[1.1] flex items-baseline gap-1">
                   <span style={{ color: "var(--primary-hex, var(--primary))" }}>
                     A VAGA
                   </span>
                   <span className="text-foreground">É MINHA</span>
                 </h1>
-                <span className="font-sans text-[8px] md:text-[8.3px] font-bold uppercase tracking-[0.2em] text-foreground/40 md:mt-1 -mt-0.5">
+                <span className="font-sans text-[10.8px] md:text-[8.3px] font-bold uppercase tracking-[0.2em] text-foreground/40 md:mt-1 -mt-0.5">
                   Simulador de Concursos
                 </span>
               </div>

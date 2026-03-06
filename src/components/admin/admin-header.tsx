@@ -269,167 +269,166 @@ export function AdminHeader({
   return (
     <header
       className={cn(
-        "bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-3 md:px-6 h-16 md:h-20 flex items-center sticky top-0 z-50 transition-all duration-500 ease-in-out",
-        isStickyNavPinned && !isTemporaryHeaderVisible
-          ? "-translate-y-full opacity-0 pointer-events-none shadow-none border-none"
-          : "translate-y-0 opacity-100 pointer-events-auto",
+        "h-16 border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md flex items-center sticky top-0 z-50 transition-all duration-300",
+        isStickyNavPinned &&
+          !isTemporaryHeaderVisible &&
+          "-translate-y-full opacity-0 pointer-events-none",
       )}
     >
-      <Activity
-        mode={
-          isStickyNavPinned && !isTemporaryHeaderVisible ? "hidden" : "visible"
-        }
+      <div
+        className={cn(
+          "h-full w-full px-4 md:px-8 flex items-center justify-between gap-2 transition-opacity duration-300",
+          isStickyNavPinned && !isTemporaryHeaderVisible
+            ? "opacity-0 pointer-events-none"
+            : "opacity-100",
+        )}
       >
-        <div className="w-full flex items-center justify-between gap-2">
-          {/* Left: Menu Toggle + Title */}
-          <div className="flex items-center space-x-2 md:space-x-4 flex-1 min-w-0">
-            <button
-              onClick={onMenuToggle}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0"
-              aria-label={
-                isSidebarCollapsed ? "Expandir menu" : "Colapsar menu"
-              }
-            >
-              <LuMenu className="h-5 w-5" />
-            </button>
-            <h1 className="text-sm md:text-xl font-semibold text-gray-900 dark:text-white truncate">
-              {mounted ? getDisplayTitle() : getCurrentPageName()}
-            </h1>
-          </div>
-
-          {/* Right: Actions */}
-          <div className="flex items-center space-x-2 md:space-x-4 flex-shrink-0">
-            {/* Seja Pro CTA - esconde quando sidebar overlay aberta */}
-            {!isMobileSidebarOpen &&
-              userRole !== "ADMIN" &&
-              userRole !== "SYSADMIN" && (
-                <Link
-                  href="/seja-pro"
-                  className="hidden md:flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black text-[11px] font-black rounded-full transition-all shadow-sm hover:shadow-yellow-500/20 active:scale-95 border border-yellow-200/50"
-                >
-                  <LuZap className="h-3.5 w-3.5 fill-black" />
-                  <span className="tracking-tight">SEJA PRO</span>
-                </Link>
-              )}
-
-            {/* Notifications - esconde quando sidebar overlay aberta */}
-            {mounted && !isMobileSidebarOpen && (
-              <DropdownMenu modal={false}>
-                <DropdownMenuTrigger asChild>
-                  <button
-                    className="flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300"
-                    aria-label="Notificações"
-                  >
-                    <LuBell className="h-5 w-5" />
-                    {notificationCount > 0 && (
-                      <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                        {notificationCount > 9 ? "9+" : notificationCount}
-                      </span>
-                    )}
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align="end"
-                  className="w-80 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg"
-                >
-                  <DropdownMenuLabel>Notificações</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <div className="p-4 text-center text-gray-500 dark:text-gray-400 text-sm">
-                    Nenhuma notificação
-                  </div>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            )}
-
-            {/* Theme Toggle - esconde quando sidebar overlay aberta */}
-            {mounted && !isMobileSidebarOpen && (
-              <button
-                onClick={toggleTheme}
-                className="flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300"
-                aria-label={theme === "dark" ? "Tema Claro" : "Tema Escuro"}
-              >
-                {theme === "dark" ? (
-                  <LuSun className="h-5 w-5" />
-                ) : (
-                  <LuMoon className="h-5 w-5" />
-                )}
-              </button>
-            )}
-
-            {/* Color Picker - esconde quando sidebar overlay aberta */}
-            {mounted && !isMobileSidebarOpen && (
-              <DropdownMenu modal={false}>
-                <DropdownMenuTrigger asChild>
-                  <button className="flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors">
-                    <div className="w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-primary" />
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48">
-                  <DropdownMenuLabel>Cores do Tema</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  {Object.entries(availableThemes).map(([key, t]) => (
-                    <DropdownMenuItem
-                      key={key}
-                      onClick={() => setThemeColor(key)}
-                      className="flex items-center justify-between cursor-pointer"
-                    >
-                      <div className="flex items-center gap-2">
-                        <div
-                          className="w-4 h-4 rounded-full"
-                          style={{ backgroundColor: t.primary }}
-                        />
-                        <span>{t.name}</span>
-                      </div>
-                      {themeColor === key && (
-                        <LuCheck className="h-4 w-4 text-green-600" />
-                      )}
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            )}
-
-            {/* Avatar */}
-            {mounted && (
-              <DropdownMenu modal={false}>
-                <DropdownMenuTrigger asChild>
-                  <button className="relative h-10 w-10 rounded-full border-2 border-primary">
-                    <Avatar className="h-full w-full">
-                      <AvatarImage src={avatarUrl || undefined} />
-                      <AvatarFallback className="bg-primary text-primary-foreground">
-                        {avatarInitials}
-                      </AvatarFallback>
-                    </Avatar>
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
-                  <DropdownMenuLabel>
-                    <div className="flex flex-col">
-                      <span className="text-sm font-bold">{displayName}</span>
-                      <span className="text-xs text-muted-foreground">
-                        @{username}
-                      </span>
-                    </div>
-                  </DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem asChild>
-                    <Link href="/profile" className="flex items-center">
-                      <LuUser className="mr-2 h-4 w-4" /> Perfil
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    onClick={handleLogout}
-                    className="text-red-600"
-                  >
-                    <LuLogOut className="mr-2 h-4 w-4" /> Sair
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            )}
-          </div>
+        {/* Left: Menu Toggle + Title */}
+        <div className="flex items-center space-x-2 md:space-x-4 flex-1 min-w-0">
+          <button
+            onClick={onMenuToggle}
+            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0"
+            aria-label={isSidebarCollapsed ? "Expandir menu" : "Colapsar menu"}
+          >
+            <LuMenu className="h-5 w-5" />
+          </button>
+          <h1 className="text-sm md:text-xl font-semibold text-gray-900 dark:text-white truncate">
+            {mounted ? getDisplayTitle() : getCurrentPageName()}
+          </h1>
         </div>
-      </Activity>
+
+        {/* Right: Actions */}
+        <div className="flex items-center space-x-2 md:space-x-4 flex-shrink-0">
+          {/* Seja Pro CTA - esconde quando sidebar overlay aberta */}
+          {!isMobileSidebarOpen &&
+            userRole !== "ADMIN" &&
+            userRole !== "SYSADMIN" && (
+              <Link
+                href="/seja-pro"
+                className="hidden md:flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black text-[11px] font-black rounded-full transition-all shadow-sm hover:shadow-yellow-500/20 active:scale-95 border border-yellow-200/50"
+              >
+                <LuZap className="h-3.5 w-3.5 fill-black" />
+                <span className="tracking-tight">SEJA PRO</span>
+              </Link>
+            )}
+
+          {/* Notifications - esconde quando sidebar overlay aberta */}
+          {mounted && !isMobileSidebarOpen && (
+            <DropdownMenu modal={false}>
+              <DropdownMenuTrigger asChild>
+                <button
+                  className="flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300"
+                  aria-label="Notificações"
+                >
+                  <LuBell className="h-5 w-5" />
+                  {notificationCount > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                      {notificationCount > 9 ? "9+" : notificationCount}
+                    </span>
+                  )}
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="end"
+                className="w-80 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg"
+              >
+                <DropdownMenuLabel>Notificações</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <div className="p-4 text-center text-gray-500 dark:text-gray-400 text-sm">
+                  Nenhuma notificação
+                </div>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
+
+          {/* Theme Toggle - esconde quando sidebar overlay aberta */}
+          {mounted && !isMobileSidebarOpen && (
+            <button
+              onClick={toggleTheme}
+              className="flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300"
+              aria-label={theme === "dark" ? "Tema Claro" : "Tema Escuro"}
+            >
+              {theme === "dark" ? (
+                <LuSun className="h-5 w-5" />
+              ) : (
+                <LuMoon className="h-5 w-5" />
+              )}
+            </button>
+          )}
+
+          {/* Color Picker - esconde quando sidebar overlay aberta */}
+          {mounted && !isMobileSidebarOpen && (
+            <DropdownMenu modal={false}>
+              <DropdownMenuTrigger asChild>
+                <button className="flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors">
+                  <div className="w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-primary" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuLabel>Cores do Tema</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                {Object.entries(availableThemes).map(([key, t]) => (
+                  <DropdownMenuItem
+                    key={key}
+                    onClick={() => setThemeColor(key)}
+                    className="flex items-center justify-between cursor-pointer"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div
+                        className="w-4 h-4 rounded-full"
+                        style={{ backgroundColor: t.primary }}
+                      />
+                      <span>{t.name}</span>
+                    </div>
+                    {themeColor === key && (
+                      <LuCheck className="h-4 w-4 text-green-600" />
+                    )}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
+
+          {/* Avatar */}
+          {mounted && (
+            <DropdownMenu modal={false}>
+              <DropdownMenuTrigger asChild>
+                <button className="relative h-10 w-10 rounded-full border-2 border-primary">
+                  <Avatar className="h-full w-full">
+                    <AvatarImage src={avatarUrl || undefined} />
+                    <AvatarFallback className="bg-primary text-primary-foreground">
+                      {avatarInitials}
+                    </AvatarFallback>
+                  </Avatar>
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-bold">{displayName}</span>
+                    <span className="text-xs text-muted-foreground">
+                      @{username}
+                    </span>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link href="/profile" className="flex items-center">
+                    <LuUser className="mr-2 h-4 w-4" /> Perfil
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={handleLogout}
+                  className="text-red-600"
+                >
+                  <LuLogOut className="mr-2 h-4 w-4" /> Sair
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
+        </div>
+      </div>
     </header>
   );
 }

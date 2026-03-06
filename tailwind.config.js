@@ -27,6 +27,7 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
         bebas: ['var(--font-khand)', 'sans-serif'],
+        orbitron: ['var(--font-orbitron)', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',
