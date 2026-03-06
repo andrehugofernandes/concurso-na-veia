@@ -189,7 +189,7 @@ function DashboardShell({
         />
 
         {/* Page Content */}
-        <main className="py-4 px-2 sm:py-6 sm:px-4 md:p-8 pb-20 sm:pb-6 relative z-0">
+        <main className="py-4 px-2 sm:py-6 sm:px-4 md:p-8 pb-20 sm:pb-6 relative w-full">
           {children}
         </main>
         <ScrollToTop />

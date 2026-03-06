@@ -663,7 +663,7 @@ export function ProgressIndicator({ percent }: { percent?: number }) {
         <motion.div
           id="progress-indicator-container"
           key="progress-indicator"
-          className="fixed bottom-10 left-0 right-0 flex justify-center z-[110] px-6 pl-[var(--sidebar-width)] transition-[padding] duration-300"
+          className="fixed bottom-10 mb-[60px] md:mb-0 left-0 right-0 flex justify-center z-[110] px-6 pl-[var(--sidebar-width)] transition-[padding] duration-300"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
@@ -2400,7 +2400,6 @@ export function StickyModuleNav({
                 <TabsTrigger
                   key={mod.id}
                   value={mod.id}
-                  disabled={!isModuleUnlocked(index)}
                   className={cn(
                     "flex-1 py-1.5 px-2 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
                     !isVisible && "hidden",
@@ -2447,154 +2446,155 @@ export function StickyModuleNav({
 
         {/* ── DESKTOP LAYOUT (≥ md) — one row (atual) ── */}
         <div className="hidden md:flex items-center justify-center gap-2 px-4 py-3">
-        {/* Left arrow */}
-        <div className={cn("shrink-0", isCarouselMode ? "flex" : "hidden")}>
-          <button
-            onClick={slideLeft}
-            disabled={!canGoLeft}
-            aria-label="Módulos anteriores"
-            className={cn(
-              "w-9 h-9 flex items-center justify-center rounded-2xl border border-border/50 bg-background transition-all duration-200",
-              canGoLeft
-                ? "text-foreground/80 hover:bg-muted shadow-sm cursor-pointer"
-                : "text-transparent border-transparent bg-transparent cursor-default pointer-events-none",
-            )}
-          >
-            <LuChevronLeft className="w-4 h-4" />
-          </button>
-        </div>
+          {/* Left arrow */}
+          <div className={cn("shrink-0", isCarouselMode ? "flex" : "hidden")}>
+            <button
+              onClick={slideLeft}
+              disabled={!canGoLeft}
+              aria-label="Módulos anteriores"
+              className={cn(
+                "w-9 h-9 flex items-center justify-center rounded-2xl border border-border/50 bg-background transition-all duration-200",
+                canGoLeft
+                  ? "text-foreground/80 hover:bg-muted shadow-sm cursor-pointer"
+                  : "text-transparent border-transparent bg-transparent cursor-default pointer-events-none",
+              )}
+            >
+              <LuChevronLeft className="w-4 h-4" />
+            </button>
+          </div>
 
-        <TabsList className="flex h-auto p-1.5 bg-muted/20 border border-border/10 rounded-3xl gap-1.5 md:gap-2 shadow-inner transition-all duration-300">
-          {/* Toggle Button for Header (só quando pinned) */}
-          <AnimatePresence>
-            {isStickyNavPinned && (
-              <motion.div
-                initial={{ width: 0, opacity: 0 }}
-                animate={{ width: "auto", opacity: 1 }}
-                exit={{ width: 0, opacity: 0 }}
-                className="shrink-0 flex items-center pr-1"
+          <TabsList className="flex h-auto p-1.5 bg-muted/20 border border-border/10 rounded-3xl gap-1.5 md:gap-2 shadow-inner transition-all duration-300">
+            {/* Toggle Button for Header (só quando pinned) */}
+            <AnimatePresence>
+              {isStickyNavPinned && (
+                <motion.div
+                  initial={{ width: 0, opacity: 0 }}
+                  animate={{ width: "auto", opacity: 1 }}
+                  exit={{ width: 0, opacity: 0 }}
+                  className="shrink-0 flex items-center pr-1"
+                >
+                  <TooltipProvider>
+                    <Tooltip delayDuration={0}>
+                      <TooltipTrigger asChild>
+                        <button
+                          onClick={toggleHeader}
+                          className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl hover:bg-muted text-foreground transition-colors group border border-border/50 shadow-sm bg-background shrink-0"
+                        >
+                          <LuMenu
+                            className={cn(
+                              "w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-foreground transition-all duration-300",
+                              isTemporaryHeaderVisible
+                                ? "rotate-90"
+                                : "rotate-0",
+                            )}
+                          />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent
+                        side="bottom"
+                        className="bg-slate-900 border-none text-white font-medium text-xs"
+                      >
+                        {isTemporaryHeaderVisible
+                          ? "Ocultar cabeçalho"
+                          : "Mostrar cabeçalho"}
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Botão Home/Voltar */}
+            {homeHref && (
+              <div
+                className={cn(
+                  "shrink-0 pr-1 transition-opacity duration-300",
+                  isStickyNavPinned
+                    ? "flex items-center opacity-100"
+                    : "hidden md:flex items-center opacity-100",
+                )}
               >
                 <TooltipProvider>
                   <Tooltip delayDuration={0}>
                     <TooltipTrigger asChild>
-                      <button
-                        onClick={toggleHeader}
-                        className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl hover:bg-muted text-foreground transition-colors group border border-border/50 shadow-sm bg-background shrink-0"
+                      <Link
+                        href={homeHref}
+                        className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl hover:bg-muted text-foreground transition-colors border border-border/50 shadow-sm bg-background group shrink-0"
                       >
-                        <LuMenu
-                          className={cn(
-                            "w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-foreground transition-all duration-300",
-                            isTemporaryHeaderVisible ? "rotate-90" : "rotate-0",
-                          )}
-                        />
-                      </button>
+                        <LuHouse className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                      </Link>
                     </TooltipTrigger>
                     <TooltipContent
                       side="bottom"
                       className="bg-slate-900 border-none text-white font-medium text-xs"
                     >
-                      {isTemporaryHeaderVisible
-                        ? "Ocultar cabeçalho"
-                        : "Mostrar cabeçalho"}
+                      Voltar às Aulas
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
-              </motion.div>
+              </div>
             )}
-          </AnimatePresence>
 
-          {/* Botão Home/Voltar */}
-          {homeHref && (
-            <div
+            {/* Module tabs */}
+            {modules.map((mod, index) => {
+              const isVisible =
+                !isCarouselMode ||
+                (index >= effectiveStart && index < effectiveStart + PAGE_SIZE);
+              return (
+                <TabsTrigger
+                  key={mod.id}
+                  value={mod.id}
+                  className={cn(
+                    "shrink-0 py-2 px-4 md:px-5 rounded-2xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group",
+                    !isVisible && "hidden",
+                  )}
+                >
+                  <div className="flex flex-col items-center md:items-start gap-0.5">
+                    <span
+                      className={cn(
+                        "text-[10px] uppercase tracking-widest font-bold font-display opacity-50 group-data-[state=active]:opacity-100 transition-opacity duration-200",
+                        MODULE_LABEL_COLORS[index % MODULE_LABEL_COLORS.length],
+                      )}
+                    >
+                      {mod.label}
+                    </span>
+                    <span className="font-bold text-[10px] md:text-[13px] flex items-center gap-2">
+                      {mod.titulo}
+                      {completedModules.has(mod.id) && (
+                        <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20">
+                          <LuCheck size={14} />
+                        </span>
+                      )}
+                      {!isModuleUnlocked(index) && (
+                        <span className="text-muted-foreground/40">
+                          <LuLock size={14} />
+                        </span>
+                      )}
+                    </span>
+                  </div>
+                </TabsTrigger>
+              );
+            })}
+          </TabsList>
+
+          {/* Right arrow */}
+          <div className={cn("shrink-0", isCarouselMode ? "flex" : "hidden")}>
+            <button
+              onClick={slideRight}
+              disabled={!canGoRight}
+              aria-label="Próximos módulos"
               className={cn(
-                "shrink-0 pr-1 transition-opacity duration-300",
-                isStickyNavPinned
-                  ? "flex items-center opacity-100"
-                  : "hidden md:flex items-center opacity-100",
+                "w-9 h-9 flex items-center justify-center rounded-2xl border border-border/50 bg-background transition-all duration-200",
+                canGoRight
+                  ? "text-foreground/80 hover:bg-muted shadow-sm cursor-pointer"
+                  : "text-transparent border-transparent bg-transparent cursor-default pointer-events-none",
               )}
             >
-              <TooltipProvider>
-                <Tooltip delayDuration={0}>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={homeHref}
-                      className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl hover:bg-muted text-foreground transition-colors border border-border/50 shadow-sm bg-background group shrink-0"
-                    >
-                      <LuHouse className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="bottom"
-                    className="bg-slate-900 border-none text-white font-medium text-xs"
-                  >
-                    Voltar às Aulas
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
-          )}
-
-          {/* Module tabs */}
-          {modules.map((mod, index) => {
-            const isVisible =
-              !isCarouselMode ||
-              (index >= effectiveStart && index < effectiveStart + PAGE_SIZE);
-            return (
-              <TabsTrigger
-                key={mod.id}
-                value={mod.id}
-                disabled={!isModuleUnlocked(index)}
-                className={cn(
-                  "shrink-0 py-2 px-4 md:px-5 rounded-2xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group",
-                  !isVisible && "hidden",
-                )}
-              >
-                <div className="flex flex-col items-center md:items-start gap-0.5">
-                  <span
-                    className={cn(
-                      "text-[10px] uppercase tracking-widest font-bold font-display opacity-50 group-data-[state=active]:opacity-100 transition-opacity duration-200",
-                      MODULE_LABEL_COLORS[index % MODULE_LABEL_COLORS.length],
-                    )}
-                  >
-                    {mod.label}
-                  </span>
-                  <span className="font-bold text-[10px] md:text-[13px] flex items-center gap-2">
-                    {mod.titulo}
-                    {completedModules.has(mod.id) && (
-                      <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20">
-                        <LuCheck size={14} />
-                      </span>
-                    )}
-                    {!isModuleUnlocked(index) && (
-                      <span className="text-muted-foreground/40">
-                        <LuLock size={14} />
-                      </span>
-                    )}
-                  </span>
-                </div>
-              </TabsTrigger>
-            );
-          })}
-        </TabsList>
-
-        {/* Right arrow */}
-        <div className={cn("shrink-0", isCarouselMode ? "flex" : "hidden")}>
-          <button
-            onClick={slideRight}
-            disabled={!canGoRight}
-            aria-label="Próximos módulos"
-            className={cn(
-              "w-9 h-9 flex items-center justify-center rounded-2xl border border-border/50 bg-background transition-all duration-200",
-              canGoRight
-                ? "text-foreground/80 hover:bg-muted shadow-sm cursor-pointer"
-                : "text-transparent border-transparent bg-transparent cursor-default pointer-events-none",
-            )}
-          >
-            <LuChevronRight className="w-4 h-4" />
-          </button>
+              <LuChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
-    </div>
 
       {/* ── Home + Toggle mobile row — 50% abaixo da barra ──
           Não pinned: ambos juntos e centralizados (justify-center gap-3).
@@ -2607,7 +2607,10 @@ export function StickyModuleNav({
           isStickyNavPinned ? "justify-between" : "justify-center gap-3",
         )}
       >
-        <motion.div layout transition={{ type: "spring", stiffness: 380, damping: 30 }}>
+        <motion.div
+          layout
+          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+        >
           {homeHref && (
             <Link
               href={homeHref}
@@ -2623,7 +2626,9 @@ export function StickyModuleNav({
           layout
           transition={{ type: "spring", stiffness: 380, damping: 30 }}
           onClick={toggleHeader}
-          aria-label={isTemporaryHeaderVisible ? "Ocultar cabeçalho" : "Mostrar cabeçalho"}
+          aria-label={
+            isTemporaryHeaderVisible ? "Ocultar cabeçalho" : "Mostrar cabeçalho"
+          }
           className="w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0"
         >
           <LuMenu
