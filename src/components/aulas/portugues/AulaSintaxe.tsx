@@ -1521,6 +1521,9 @@ export default function AulaSintaxe({
                   icon: LuBookOpen,
                   content: (
                     <ModuleSummaryCarouselNew
+                      moduloNome="Termos Essenciais"
+                      tituloAula="Análise Sintática"
+                      materia="Língua Portuguesa"
                       images={[
                         {
                           title: "Tipos de Sujeito",
@@ -1905,6 +1908,9 @@ export default function AulaSintaxe({
                   icon: LuBookOpen,
                   content: (
                     <ModuleSummaryCarouselNew
+                      moduloNome="Termos Integrantes"
+                      tituloAula="Análise Sintática"
+                      materia="Língua Portuguesa"
                       images={[
                         {
                           title: "VTD vs VTI (Objetos)",
@@ -2351,6 +2357,9 @@ export default function AulaSintaxe({
                   icon: LuBookOpen,
                   content: (
                     <ModuleSummaryCarouselNew
+                      moduloNome="Termos Acessórios"
+                      tituloAula="Análise Sintática"
+                      materia="Língua Portuguesa"
                       images={[
                         {
                           title: "Tipos de Adjunto Adverbial",
@@ -2748,6 +2757,9 @@ export default function AulaSintaxe({
                   icon: LuBookOpen,
                   content: (
                     <ModuleSummaryCarouselNew
+                      moduloNome="Laboratório"
+                      tituloAula="Análise Sintática"
+                      materia="Língua Portuguesa"
                       images={[
                         {
                           title: "Inversão: Ordem Indireta",
@@ -2902,6 +2914,9 @@ export default function AulaSintaxe({
                   icon: LuBookOpen,
                   content: (
                     <ModuleSummaryCarouselNew
+                      moduloNome="Síntese Final"
+                      tituloAula="Análise Sintática"
+                      materia="Língua Portuguesa"
                       images={[
                         {
                           title: "Mapa Mental: Termos Essenciais",

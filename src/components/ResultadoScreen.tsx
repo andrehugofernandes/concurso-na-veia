@@ -156,7 +156,7 @@ export default function ResultadoScreen({
             {/* Question Review Summary */}
             <div className="bg-white dark:bg-card/50 backdrop-blur-lg rounded-[32px] p-6 border border-zinc-200 dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.08)] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl pointer-events-none" />
-                <h3 className="text-lg font-black uppercase tracking-tight text-foreground mb-4 flex items-center justify-between relative z-10 font-bebas text-2xl">
+                <h3 className="font-bold uppercase tracking-tight text-foreground mb-4 flex items-center justify-between relative z-10 font-bebas text-2xl">
                     <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-xl shadow-inner">
                             📊

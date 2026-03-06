@@ -841,7 +841,7 @@ export default function AulaCrase({
                   content: (
                     <ModuleSummaryCarouselNew
                       tituloAula="Crase"
-                      materia="Português"
+                      materia="Língua Portuguesa"
                       profissao="Concurso Petrobras"
                       moduloNome="Conceitos Gerais"
                       images={[
@@ -1669,6 +1669,9 @@ export default function AulaCrase({
                   icon: LuBookOpen,
                   content: (
                     <ModuleSummaryCarouselNew
+                      moduloNome="Simulado Final"
+                      tituloAula="Crase"
+                      materia="Língua Portuguesa"
                       images={[
                         {
                           title: "Crase: O Mapa do Tesouro",

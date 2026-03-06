@@ -131,35 +131,96 @@ export default function AulaEquacoes1Grau({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
-              title="Equação do 1º Grau"
-              description="ax + b = 0"
+              title="A Mecânica das Equações"
+              description="Dominando a balança matemática: o que você faz de um lado, faz do outro."
               variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
-              titulo="Conceito e Resolução"
+              titulo="Princípios Fundamentais"
               icone="⚖️"
               corIndicador="bg-indigo-500"
               defaultOpen={true}
               slides={[
                 {
-                  titulo: "O que é?",
+                  titulo: "O que é uma Equação?",
                   icone: "💡",
                   conteudo: (
                     <div className="space-y-4">
-                      <p>
+                      <p className="text-sm sm:text-base">
                         Uma <strong>equação do 1º grau</strong> é uma igualdade
-                        com uma incógnita de expoente 1.
+                        que contém pelo menos uma letra (incógnita) com expoente
+                        invisível igual a 1 (como{" "}
+                        <code className="bg-indigo-500/10 px-1 rounded">x</code>
+                        , não{" "}
+                        <code className="bg-indigo-500/10 px-1 rounded">
+                          x²
+                        </code>
+                        ).
                       </p>
-                      <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-center">
-                        <p className="text-lg font-mono font-bold">
-                          ax + b = 0 → x = -b/a
+                      <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-center shadow-inner">
+                        <p className="text-lg font-mono font-bold text-indigo-800 dark:text-indigo-300">
+                          ax + b = 0
+                        </p>
+                        <p className="text-xs mt-1">
+                          Onde "x" é a incógnita e "a" e "b" são números reais
+                          (a ≠ 0).
                         </p>
                       </div>
-                      <AlertBox tipo="info" titulo="Princípio da Balança">
-                        O que fizer de um lado, faça do outro! Assim a igualdade
-                        se mantém.
+                      <AlertBox tipo="info" titulo="O Princípio da Balança">
+                        O sinal de <strong className="text-xl">=</strong> é o
+                        pino central de uma balança de pratos. Para ela não
+                        pender (não quebrar a igualdade), tudo o que você fizer
+                        de um lado (somar, subtrair, multiplicar ou dividir),{" "}
+                        <strong>
+                          TEM QUE fazer exatamente igual do outro lado
+                        </strong>
+                        . Na prática, usamos o "passa pro outro lado invertendo
+                        a operação".
                       </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Isolando o 'X' (Passo a Passo)",
+                  icone: "🎯",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        O objetivo único em qualquer equação é deixar o{" "}
+                        <strong>x sozinho e positivo</strong> de um lado da
+                        igualdade.
+                      </p>
+                      <div className="bg-card p-4 rounded-xl border border-border">
+                        <p className="font-bold text-sm mb-2">
+                          A Ordem de Libertação do X:
+                        </p>
+                        <ul className="text-sm space-y-2 list-none pl-0">
+                          <li>
+                            <strong>1º Passo:</strong> Quem está somando ou
+                            subtraindo passa para o outro lado invertendo (se
+                            era +, vira -; se era -, vira +).
+                          </li>
+                          <li>
+                            <strong>2º Passo:</strong> Quem está multiplicando
+                            passa dividindo (MANTENDO O SINAL). Quem está
+                            dividindo passa multiplicando.
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="p-3 bg-indigo-500/10 rounded-lg text-sm text-center">
+                        <p className="font-mono font-bold">2x - 8 = 10</p>
+                        <p className="font-mono mt-1">
+                          2x = 10 + 8 (o -8 passou +)
+                        </p>
+                        <p className="font-mono mt-1">2x = 18</p>
+                        <p className="font-mono mt-1">
+                          x = 18 / 2 (o 2 multiplicando passou dividindo)
+                        </p>
+                        <p className="font-mono font-bold mt-1 text-indigo-700 dark:text-indigo-300">
+                          x = 9
+                        </p>
+                      </div>
                     </div>
                   ),
                 },
@@ -191,14 +252,92 @@ export default function AulaEquacoes1Grau({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
-              title="Técnica de Montagem"
+              title="Traduzindo Problemas"
+              description="Como transformar textos de bancas em equações matemáticas."
               variant="emerald"
               className="mb-6"
             />
-            <AlertBox tipo="success" titulo="Passo a Passo">
-              1. Identifique a incógnita (x). 2. Traduza o texto em expressão.
-              3. Monte a equação. 4. Resolva isolando x.
-            </AlertBox>
+            <ContentAccordion
+              titulo="O Dicionário Matemático"
+              icone="📖"
+              corIndicador="bg-emerald-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Lendo a Prova da CESGRANRIO",
+                  icone: "🔍",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        O maior desafio de provas de concurso não é a conta, é{" "}
+                        <strong>montar a conta</strong>. Veja o vocabulário base
+                        que você precisa decorar:
+                      </p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                        <div className="p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
+                          <p className="font-bold">Em Português → Matemática</p>
+                          <ul className="mt-2 space-y-1">
+                            <li>
+                              Um número desconhecido → <strong>x</strong>
+                            </li>
+                            <li>
+                              O dobro do número → <strong>2x</strong>
+                            </li>
+                            <li>
+                              A metade do número → <strong>x/2</strong>
+                            </li>
+                            <li>
+                              O sucessor do número → <strong>x + 1</strong>
+                            </li>
+                            <li>
+                              Excede o número em dois → <strong>x + 2</strong>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
+                          <p className="font-bold">Em Português → Operadores</p>
+                          <ul className="mt-2 space-y-1">
+                            <li>
+                              É igual a, equivale a, resulta em →{" "}
+                              <strong>=</strong>
+                            </li>
+                            <li>
+                              Aumentado, somado, mais → <strong>+</strong>
+                            </li>
+                            <li>
+                              Diminuído, subtraído, diferença →{" "}
+                              <strong>-</strong>
+                            </li>
+                            <li>
+                              De, do, da (fração de algo) →{" "}
+                              <strong>× (multiplicação)</strong>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <AlertBox
+                        tipo="success"
+                        titulo="Passo a Passo de Resolução Segura"
+                      >
+                        1. <strong>Quem é o X?</strong> Defina clamente (Ex: x =
+                        salário do técnico).
+                        <br />
+                        2. <strong>Traduza pedaço por pedaço</strong> da
+                        esquerda para a direita.
+                        <br />
+                        3. <strong>Encontre a igualdade (=)</strong> no texto (a
+                        pista de onde abalança se equilibra).
+                        <br />
+                        4. <strong>Resolva isolando x</strong> e, depois,
+                        VERIFIQUE se o valor de x responde à pergunta final da
+                        questão (CESGRANRIO adora pedir o valor de 2x ao invés
+                        de x só para enganar!).
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
           </section>
           <section id="quiz-modulo-2" className="mt-16">
             <QuizInterativo
@@ -225,30 +364,82 @@ export default function AulaEquacoes1Grau({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
-              title="Eliminando Denominadores"
+              title="Resolvendo o Caos"
+              description="Quando a equação vem cheia de armadilhas matemáticas."
               variant="amber"
               className="mb-6"
             />
             <ContentAccordion
-              titulo="MMC e Distributiva"
+              titulo="Limpando a Equação"
               icone="🔧"
               corIndicador="bg-amber-500"
               defaultOpen={true}
               slides={[
                 {
-                  titulo: "MMC nos Denominadores",
+                  titulo: "Parênteses e o 'Chuveirinho'",
+                  icone: "🚿",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        O número que está colado no parênteses multiplica TODOS
+                        os itens dentro dele (Propriedade Distributiva).
+                      </p>
+                      <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20 shadow-inner">
+                        <p className="font-mono text-sm">3(x + 4) = 30</p>
+                        <p className="font-mono text-sm">3x + 12 = 30</p>
+                      </div>
+                      <AlertBox
+                        tipo="warning"
+                        titulo="O Veneno da CESGRANRIO: O Sinal de Menos"
+                      >
+                        Se houver um sinal de menos antes do parênteses,{" "}
+                        <strong>ELE TROCA O SINAL DE TODOS LÁ DENTRO</strong>.
+                        <br />
+                        Ex: -(2x - 5) vira -2x + 5.
+                        <br />
+                        Muitos candidatos esquecem de trocar o sinal do segundo
+                        número!
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "O Truque do MMC para Frações",
                   icone: "🔢",
                   conteudo: (
-                    <div className="space-y-3">
-                      <p>
-                        Se a equação tem frações,{" "}
-                        <strong>multiplique tudo pelo MMC</strong> dos
-                        denominadores para eliminá-los.
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        Equações com frações dão dor de cabeça. O segredo é
+                        ELIMINAR os denominadores (números de baixo) logo no
+                        primeiro passo.
                       </p>
-                      <AlertBox tipo="warning" titulo="Atenção">
-                        Ao distribuir sinal negativo antes de parênteses, TROQUE
-                        TODOS os sinais internos!
-                      </AlertBox>
+                      <ol className="list-decimal pl-5 space-y-2 text-sm">
+                        <li>
+                          Calcule o <strong>MMC</strong> de todos os
+                          denominadores da equação inteira.
+                        </li>
+                        <li>Multiplique a equação INTEIRA por esse MMC.</li>
+                        <li>
+                          Faça: MMC ÷ pelo número de baixo × pelo número de
+                          cima.
+                        </li>
+                      </ol>
+                      <div className="bg-card p-4 rounded-xl border border-border">
+                        <p className="font-bold text-sm mb-2">
+                          Exemplo Rápido:
+                        </p>
+                        <p className="font-mono text-sm">(x/2) + (x/3) = 5</p>
+                        <p className="text-xs text-muted-foreground mt-1 mb-2">
+                          MMC de 2 e 3 é 6. Multiplica tudo por 6:
+                        </p>
+                        <p className="font-mono text-sm text-amber-600 dark:text-amber-400">
+                          3x + 2x = 30
+                        </p>
+                        <p className="font-mono text-sm">5x = 30 → x = 6</p>
+                      </div>
+                      <p className="text-xs italic">
+                        Magicamente, não há mais frações!
+                      </p>
                     </div>
                   ),
                 },
@@ -280,29 +471,78 @@ export default function AulaEquacoes1Grau({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
-              title="Métodos de Resolução"
+              title="2 Equações, 2 Incógnitas"
+              description="Quando você tem x e y no mesmo problema."
               variant="violet"
               className="mb-6"
             />
-            <CardCarousel
-              cards={[
+            <ContentAccordion
+              titulo="A Arte da Substituição e Adição"
+              icone="⚔️"
+              corIndicador="bg-violet-500"
+              defaultOpen={true}
+              slides={[
                 {
-                  titulo: "Substituição",
-                  descricao:
-                    "Isole uma variável em uma equação e substitua na outra.",
+                  titulo: "Método da Substituição",
                   icone: "🔄",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        Ideal quando uma das letras (x ou y){" "}
+                        <strong>está sozinha</strong> (sem número na frente ou
+                        apenas multiplicada por 1).
+                      </p>
+                      <ul className="list-disc pl-5 space-y-2 text-sm mb-3">
+                        <li>
+                          <strong>1º:</strong> Pegue a equação mais fácil e
+                          isole uma letra (ex: x = 10 - y).
+                        </li>
+                        <li>
+                          <strong>2º:</strong> Pegue a OUTRA equação e troque a
+                          letra pelo valor isolado no passo 1.
+                        </li>
+                        <li>
+                          <strong>3º:</strong> Resolva para achar a primeira
+                          variável. Depois volte para achar a segunda.
+                        </li>
+                      </ul>
+                      <AlertBox tipo="info" titulo="Tática de Prova">
+                        A CESGRANRIO frequentemente monta problemas do tipo:
+                        "João comprou 3 cadeiras e 2 mesas (3c + 2m = X)". Se
+                        você usar substituição, vá devagar e use parênteses na
+                        hora de substituir!
+                      </AlertBox>
+                    </div>
+                  ),
                 },
                 {
-                  titulo: "Adição / Eliminação",
-                  descricao:
-                    "Some ou subtraia as equações para eliminar uma variável.",
+                  titulo: "Método da Adição (Eliminação)",
                   icone: "➕",
-                },
-                {
-                  titulo: "Classificação",
-                  descricao:
-                    "SPD (uma solução), SPI (infinitas) ou SI (nenhuma).",
-                  icone: "📋",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        O método <strong>mais rápido</strong> para quem tem
+                        prática. Consiste em somar as duas equações (como numa
+                        conta de padaria) para que uma variável "suma".
+                      </p>
+                      <div className="bg-violet-500/10 p-4 rounded-xl border border-violet-500/20 text-center shadow-inner">
+                        <p className="font-mono text-sm">2x + y = 10</p>
+                        <p className="font-mono text-sm">3x - y = 15</p>
+                        <hr className="border-violet-500/30 my-2" />
+                        <p className="font-mono text-sm font-bold text-violet-800 dark:text-violet-300">
+                          5x = 25 → x = 5
+                        </p>
+                      </div>
+                      <p className="text-sm mt-3">
+                        <em>Mas e se as letras não sumirem sozinhas?</em>
+                        <br />
+                        Você deve <strong>multiplicar</strong> a linha inteira
+                        de uma das equações por um número que você escolher, de
+                        modo que force uma letra a ficar oposta (+2y e -2y, por
+                        exemplo).
+                      </p>
+                    </div>
+                  ),
                 },
               ]}
             />

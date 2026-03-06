@@ -930,6 +930,9 @@ export default function AulaOrtografia({
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="Encontros Vocálicos"
+                    tituloAula="Ortografia e Acentuação"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Mapa Mental: Ditongo vs Hiato",
@@ -1242,6 +1245,9 @@ Ditongo é junto, hiato é separação!
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="Fundamentos da Acentuação"
+                    tituloAula="Ortografia e Acentuação"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Mapa Mental: Oxítonas vs Paroxítonas",
@@ -1503,6 +1509,9 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="O Novo Acordo"
+                    tituloAula="Ortografia e Acentuação"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Mapa Mental: Trema e Acento Diferencial",
@@ -1808,6 +1817,9 @@ Mas na prova a banca te espera!
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="O Temido Uso do Hífen"
+                    tituloAula="Ortografia e Acentuação"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Mapa Mental: Regras do Hífen",
@@ -2046,6 +2058,9 @@ Iguais se repelem, diferentes se amam
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="Problemas Frequentes"
+                    tituloAula="Ortografia e Acentuação"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Mapa Mental: Por que / Porque",

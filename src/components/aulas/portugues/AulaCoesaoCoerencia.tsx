@@ -791,7 +791,7 @@ export default function AulaCoesaoCoerencia({
                   content: (
                     <ModuleSummaryCarouselNew
                       tituloAula="Coesão e Coerência"
-                      materia="Português"
+                      materia="Língua Portuguesa"
                       profissao="Concurso Petrobras"
                       moduloNome="Coesão Textual"
                       images={[
@@ -1102,7 +1102,7 @@ export default function AulaCoesaoCoerencia({
                   content: (
                     <ModuleSummaryCarouselNew
                       tituloAula="Coesão e Coerência"
-                      materia="Português"
+                      materia="Língua Portuguesa"
                       profissao="Concurso Petrobras"
                       moduloNome="Coerência Lógica"
                       images={[
@@ -1323,7 +1323,7 @@ export default function AulaCoesaoCoerencia({
                   content: (
                     <ModuleSummaryCarouselNew
                       tituloAula="Coesão e Coerência"
-                      materia="Português"
+                      materia="Língua Portuguesa"
                       profissao="Concurso Petrobras"
                       moduloNome="Prática e Análise"
                       images={[

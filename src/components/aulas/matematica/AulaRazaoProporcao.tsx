@@ -21,7 +21,7 @@ import {
   QUIZ_M2_PROPORCAO,
   QUIZ_M3_REGRA3,
   QUIZ_M4_DIVISAO,
-  QUIZ_M5_FINAL,
+  QUIZ_M10_SIMULADO_FINAL,
 } from "./data/razao-proporcao-quizzes";
 
 // Quizzes importados de ./data/razao-proporcao-quizzes.ts
@@ -56,7 +56,9 @@ export default function AulaRazaoProporcao({
   );
   const [quizRegra3S] = useState(() => getRandomQuestions(QUIZ_M3_REGRA3, 6));
   const [quizRegra3C] = useState(() => getRandomQuestions(QUIZ_M4_DIVISAO, 5));
-  const [quizFinal] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 5));
+  const [quizFinal] = useState(() =>
+    getRandomQuestions(QUIZ_M10_SIMULADO_FINAL, 5),
+  );
 
   const isModuleUnlocked = (index: number) => {
     return true; // DESBLOQUEADO PARA REVISÃO DO USUÁRIO
@@ -132,32 +134,105 @@ export default function AulaRazaoProporcao({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
-              title="O que é Razão?"
-              description="Simplificando comparações entre duas grandezas."
+              title="O que é Razão e Proporção?"
+              description="Simplificando comparações entre duas grandezas operacionais."
               variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
-              titulo="Definição e Aplicações"
+              titulo="Conceitos Fundamentais"
               icone="⚖️"
               corIndicador="bg-indigo-500"
               defaultOpen={true}
               slides={[
                 {
-                  titulo: "O Conceito",
+                  titulo: "Razão: A Comparação",
                   icone: "💡",
                   conteudo: (
                     <div className="space-y-4">
-                      <p>
-                        Uma <strong>razão</strong> é a comparação entre dois
-                        números através de uma divisão. Representamos como{" "}
-                        <em>a/b</em> ou <em>a:b</em>.
+                      <p className="text-sm sm:text-base">
+                        Uma <strong>razão</strong> é a comparação geométrica
+                        entre dois números, feita através de uma divisão. Lemos
+                        "a está para b" e representamos como <em>a/b</em> ou{" "}
+                        <em>a:b</em>, onde <strong>b ≠ 0</strong>.
                       </p>
-                      <AlertBox tipo="info" titulo="Uso prático">
-                        Na Petrobras, razões são usadas para densidade de
-                        fluidos, escalas de plantas industriais e proporção de
-                        componentes em misturas químicas.
+                      <div className="bg-indigo-500/10 p-4 rounded-xl border border-indigo-500/20">
+                        <ul className="list-disc pl-5 mt-2 space-y-2 text-sm">
+                          <li>
+                            O número de cima (a) é o{" "}
+                            <strong>antecedente</strong>.
+                          </li>
+                          <li>
+                            O número de baixo (b) é o{" "}
+                            <strong>consequente</strong>.
+                          </li>
+                        </ul>
+                      </div>
+                      <AlertBox tipo="info" titulo="Uso Prático na Petrobras">
+                        Razões são essenciais no dia a dia: a{" "}
+                        <strong>densidade</strong> (Massa/Volume), a escala de
+                        um projeto na refinaria (Desenho/Real), e o rendimento
+                        de um motor (Energia Útil / Energia Total).
                       </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Proporção: A Igualdade",
+                  icone: "🔗",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm sm:text-base">
+                        Enquanto a razão compara dois números, a{" "}
+                        <strong>proporção</strong> afirma que duas (ou mais)
+                        razões são iguais: <strong>a/b = c/d</strong>. Le-se: "a
+                        está para b <em>assim como</em> c está para d".
+                      </p>
+                      <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-center shadow-inner">
+                        <p className="font-bold text-indigo-800 dark:text-indigo-300">
+                          Propriedade Fundamental: a × d = b × c
+                        </p>
+                        <p className="text-xs mt-1">
+                          "O produto dos extremos é igual ao produto dos meios"
+                          (Multiplicar em X).
+                        </p>
+                      </div>
+                      <div className="bg-card p-4 rounded-xl border border-border">
+                        <p className="font-bold text-sm mb-2">
+                          Constante de Proporcionalidade (K)
+                        </p>
+                        <p className="text-sm">
+                          Se várias grandezas são proporcionais (A/x = B/y =
+                          C/z), dizemos que todas elas são iguais a uma mesma
+                          constante <strong>K</strong>. Esse conceito resolve
+                          90% das questões de divisão proporcional da
+                          CESGRANRIO.
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Escalas (Atenção Máxima!)",
+                  icone: "🗺️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm sm:text-base">
+                        Escala é uma razão específica:{" "}
+                        <strong>Tamanho no Desenho / Tamanho Real</strong>.
+                      </p>
+                      <AlertBox
+                        tipo="warning"
+                        titulo="Pegadinha Clássica da CESGRANRIO"
+                      >
+                        Você SÓ PODE aplicar a escala se as duas medidas
+                        estiverem na <strong>MESMA UNIDADE</strong> (ambas em cm
+                        ou ambas em km). Nunca divida cm por km diretamente!
+                      </AlertBox>
+                      <p className="text-sm italic">
+                        Exemplo: Se a escala é 1:200, significa que 1cm no mapa
+                        representa 200cm na vida real (ou seja, 2 metros reais).
+                      </p>
                     </div>
                   ),
                 },
@@ -191,21 +266,83 @@ export default function AulaRazaoProporcao({
             <ModuleSectionHeader
               index={1}
               title="Direta vs Inversa"
+              description="Grandezas: Quem anda junto e quem anda separado."
               variant="emerald"
               className="mb-6"
             />
-            <CardCarousel
-              cards={[
+            <ContentAccordion
+              titulo="Tipos de Grandezas"
+              icone="⚖️"
+              corIndicador="bg-emerald-500"
+              defaultOpen={true}
+              slides={[
                 {
-                  titulo: "Diretamente Proporcional",
-                  descricao: "Se uma dobra, a outra dobra. Ex: Área e Tinta.",
+                  titulo: "Grandezas Diretamente Proporcionais (GDP)",
                   icone: "📈",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm sm:text-base">
+                        Duas grandezas são DIRETAmente proporcionais quando:{" "}
+                        <strong>se uma aumenta, a outra aumenta</strong> na
+                        mesmíssima proporção. Se uma dobra, a outra dobra.
+                      </p>
+                      <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
+                        <p className="font-bold text-sm mb-1">
+                          A Regra da Divisão:
+                        </p>
+                        <p className="text-sm">
+                          A razão (divisão) entre duas GDP é sempre constante:{" "}
+                          <strong>A / B = K</strong>.
+                        </p>
+                      </div>
+                      <div className="bg-card p-3 rounded-lg border border-border">
+                        <p className="text-sm font-bold">
+                          🛠️ Exemplo Petrobras:
+                        </p>
+                        <p className="text-sm">
+                          <strong>
+                            Tempo de bomba ligada vs Volume de óleo transferido.
+                          </strong>{" "}
+                          Mais tempo ligada = Mais volume transferido. Dobrou o
+                          tempo? Dobrou o volume.
+                        </p>
+                      </div>
+                    </div>
+                  ),
                 },
                 {
-                  titulo: "Inversamente Proporcional",
-                  descricao:
-                    "Se uma dobra, a outra cai pela metade. Ex: Velocidade e Tempo.",
+                  titulo: "Grandezas Inversamente Proporcionais (GIP)",
                   icone: "📉",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm sm:text-base">
+                        São INVERSAmente proporcionais quando:{" "}
+                        <strong>se uma aumenta, a outra DIMINUI</strong> na
+                        mesma proporção. Se uma dobra, a outra cai pela metade.
+                      </p>
+                      <div className="p-4 bg-red-500/10 rounded-xl border border-red-500/20">
+                        <p className="font-bold text-sm mb-1">
+                          A Regra da Multiplicação:
+                        </p>
+                        <p className="text-sm">
+                          O produto (multiplicação) entre duas GIP é sempre
+                          constante: <strong>A × B = K</strong>.
+                        </p>
+                      </div>
+                      <div className="bg-card p-3 rounded-lg border border-border">
+                        <p className="text-sm font-bold">
+                          🛠️ Exemplo Petrobras:
+                        </p>
+                        <p className="text-sm">
+                          <strong>
+                            Vazão do encanamento vs Tempo para encher o tanque.
+                          </strong>{" "}
+                          Maior a vazão = Menor o tempo necessário. Dobrou a
+                          vazão? O tempo cai pela metade.
+                        </p>
+                      </div>
+                    </div>
+                  ),
                 },
               ]}
             />
@@ -235,15 +372,93 @@ export default function AulaRazaoProporcao({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
-              title="A Matemática do Dia a Dia"
+              title="O Método Definitivo"
+              description="Esqueça a confusão. Siga um processo metódico."
               variant="amber"
               className="mb-6"
             />
-            <AlertBox tipo="warning" titulo="Dica de Ouro">
-              Antes de multiplicar cruzado, verifique SEMPRE se as grandezas são
-              diretas ou inversas. Se forem inversas, você deve inverter uma das
-              razões!
-            </AlertBox>
+            <ContentAccordion
+              titulo="Passo a Passo (Regra de 3 Simples)"
+              icone="🎯"
+              corIndicador="bg-amber-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "O Método de 3 Passos",
+                  icone: "✅",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        Para resolver qualquer Regra de 3 Simples (que tem
+                        apenas <strong>duas</strong> grandezas diferentes), siga
+                        isso:
+                      </p>
+                      <ol className="list-decimal pl-5 space-y-3 text-sm">
+                        <li>
+                          <strong>Montar as Colunas:</strong> Escreva as
+                          grandezas (ex: "Trabalhadores", "Dias") lado a lado.
+                          Coloque os números do problema abaixo de cada uma.
+                        </li>
+                        <li>
+                          <strong>Análise (A Pergunta Crucial):</strong> Compare
+                          as colunas e pergunte:{" "}
+                          <em>
+                            "Se eu aumentar isso, a outra grandeza aumenta ou
+                            diminui?"
+                          </em>
+                        </li>
+                        <li>
+                          <strong>Resolver:</strong>
+                          <br />- Se forem Diretas (↑↑): Multiplique cruzado (em
+                          X).
+                          <br />- Se forem Inversas (↑↓): Multiplique reto (em
+                          linha).
+                        </li>
+                      </ol>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exemplo Detalhado",
+                  icone: "🛠️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        <em>
+                          "Uma bomba preenche um tanque em 6 horas com vazão de
+                          20 L/min. Quanto tempo levaria se a vazão fosse de 30
+                          L/min?"
+                        </em>
+                      </p>
+                      <div className="grid grid-cols-2 text-center text-sm font-bold border border-border rounded-lg overflow-hidden">
+                        <div className="bg-card p-2 border-b border-r border-border">
+                          Vazão (L/min)
+                        </div>
+                        <div className="bg-card p-2 border-b border-border">
+                          Tempo (Horas)
+                        </div>
+                        <div className="p-2 border-r border-border">20</div>
+                        <div className="p-2">6</div>
+                        <div className="p-2 border-r border-border text-amber-600">
+                          30 ↑
+                        </div>
+                        <div className="p-2 text-blue-600">x ↓</div>
+                      </div>
+                      <p className="text-sm">
+                        <strong>Análise:</strong> Aumentei a vazão. O tempo
+                        necessário vai diminuir. São Inversas!
+                      </p>
+                      <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20 text-center shadow-inner">
+                        <p className="text-sm font-bold font-mono text-amber-800 dark:text-amber-300">
+                          Multiplica reto: 30 × x = 20 × 6<br />
+                          30x = 120 → x = 4 horas
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
           </section>
           <section id="quiz-modulo-3" className="mt-16">
             <QuizInterativo
@@ -267,30 +482,93 @@ export default function AulaRazaoProporcao({
           gradiente="bg-gradient-to-br from-purple-600 via-fuchsia-600 to-pink-700"
         />
         <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
-              title="Resumo Visual"
+              title="O Método das Flechas"
+              description="Quando você tem 3 ou mais variáveis (ex: Tratores, Horas/Dia, Metros Perfurados)."
               variant="violet"
-              className="mb-8"
+              className="mb-6"
             />
-            <LessonTabs
-              tabs={[
+            <ContentAccordion
+              titulo="Resolvendo a Composta"
+              icone="🎯"
+              corIndicador="bg-violet-500"
+              defaultOpen={true}
+              slides={[
                 {
-                  id: "resumo",
-                  label: "Tabela de Variáveis",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Método das Flechas",
-                          type: "Diagrama",
-                          placeholderColor:
-                            "bg-fuchsia-100 dark:bg-fuchsia-900/30",
-                        },
-                      ]}
-                    />
+                  titulo: "O Segredo da Coluna do X",
+                  icone: "🔑",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        O processo começa igual, montando as colunas. Mas a
+                        análise agora tem regras restritas:
+                      </p>
+                      <ol className="list-decimal pl-5 space-y-3 text-sm">
+                        <li>
+                          Identifique a coluna da incógnita (x) e{" "}
+                          <strong>coloque uma seta nela</strong> (sempre para
+                          baixo ↓).
+                        </li>
+                        <li>
+                          Compare TODAS as outras colunas{" "}
+                          <strong>SEMPRE contra a coluna do X</strong>. Ignore
+                          as outras colunas temporariamente.
+                        </li>
+                        <li>
+                          Se a relação for Direta, coloque a seta na mesma
+                          direção da do X (↓). Se for Inversa, seta contrária
+                          (↑).
+                        </li>
+                        <li>
+                          Monte a equação: Deixe a fração do X isolada. Do outro
+                          lado da igualdade, multiplique todas as outras
+                          frações.
+                          <br />
+                          <strong className="text-rose-600 dark:text-rose-400">
+                            Atenção:
+                          </strong>{" "}
+                          Frações com a seta contrária ao X devem ser{" "}
+                          <strong>INVERTIDAS</strong> antes de multiplicar!
+                        </li>
+                      </ol>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "A Macete Final: 'Faz / Sobra'",
+                  icone: "🧙‍♂️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        Em questões clássicas da CESGRANRIO (Máquinas fazendo um
+                        Trabalho), você pode pular a análise das flechas usando
+                        o macete CAUSA x EFEITO.
+                      </p>
+                      <div className="p-4 bg-fuchsia-500/10 rounded-xl border border-fuchsia-500/20 shadow-inner overflow-x-auto">
+                        <p className="text-center font-bold text-sm mb-2 text-fuchsia-800 dark:text-fuchsia-300">
+                          ( CAUSAS 1 ) / ( EFEITO 1 ) = ( CAUSAS 2 ) / ( EFEITO
+                          2 )
+                        </p>
+                      </div>
+                      <div className="bg-card p-3 rounded-lg border border-border text-sm">
+                        <p>
+                          - <strong>Causas:</strong> Quem e O que (ex: Máquinas,
+                          Operários, Horas/Dia, Dias, Eficiência).
+                        </p>
+                        <p>
+                          - <strong>Efeito:</strong> O Produto Final / O
+                          Problema (ex: Metros Perfurados, Tanques Cheios,
+                          Cadeiras Produzidas).
+                        </p>
+                        <p className="mt-2 text-muted-foreground italic">
+                          Basta colocar tudo que é causa em cima
+                          (multiplicando), e o efeito em baixo. Não precisa
+                          analisar direção nenhuma, é só plugar e calcular.
+                        </p>
+                      </div>
+                    </div>
                   ),
                 },
               ]}

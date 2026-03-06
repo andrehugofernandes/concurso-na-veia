@@ -1,541 +1,47 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { useState, useEffect, useRef } from "react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { useState, useEffect } from "react";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  LuCheck,
-  LuBookOpen,
-  LuPlay,
-  LuPause,
-  LuVolume2,
-  LuImage,
-  LuFileText,
-  LuSkipBack,
-  LuSkipForward,
-  LuRepeat,
-  LuShuffle,
-  LuHeart,
-  LuTrophy,
-  LuTarget,
-  LuLayers,
-  LuLink,
-  LuTriangleAlert,
-  LuScale,
-  LuTrendingUp,
-  LuGlobe,
-} from "react-icons/lu";
-
-import {
   AlertBox,
-  VideoModal,
-  ImageCarousel,
-  CardCarousel,
   ContentAccordion,
-  TimelineItem,
-  ComparisonSide,
   ModuleBanner,
-  SummaryTabs,
-  NanoImagePlaceholder,
-  ModuleSummaryCarouselNew,
-  MusicPlayerCard,
-  LessonTabs,
   QuizInterativo,
   FlipCard,
-  QuizQuestion,
-  getRandomQuestions,
-  ProgressIndicator,
   AulaProps,
-  StickyModuleNav,
   ModuleSectionHeader,
   AulaTemplate,
+  getRandomQuestions,
+  LessonTabs,
+  ModuleSummaryCarouselNew,
+  VideoModal,
+  MusicPlayerCard,
 } from "../shared";
 
-import { progressService } from "@/lib/services/progress";
+import {
+  LuBookOpen,
+  LuTarget,
+  LuTrophy,
+  LuTriangleAlert,
+  LuSearch,
+  LuLink,
+  LuEye,
+  LuCpu,
+  LuCirclePlay as LuPlayCircle,
+  LuMusic,
+  LuBrain,
+  LuDna,
+  LuCheck,
+} from "react-icons/lu";
 
-// ── Fallback for React 19 Activity ───────────────────────────────────────
-const Activity = ({
-  mode,
-  children,
-}: {
-  mode: "visible" | "hidden";
-  children: React.ReactNode;
-}) => {
-  return (
-    <div style={{ display: mode === "hidden" ? "none" : "contents" }}>
-      {children}
-    </div>
-  );
-};
-
-// ── Constants & Data ────────────────────────────────────────────────────
-
-const QUIZ_M1_POOL: QuizQuestion[] = [
-  {
-    id: 1,
-    pergunta:
-      "Segundo a visão de Bechara, qual a diferença fundamental entre compreensão e interpretação?",
-    opcoes: [
-      { label: "A", valor: "São sinônimos perfeitos" },
-      {
-        label: "B",
-        valor:
-          "Compreensão foca no que está escrito; Interpretação no que se conclui",
-      },
-      {
-        label: "C",
-        valor: "Interpretação foca na gramática; Compreensão no sentido",
-      },
-      { label: "D", valor: "Compreensão é para textos literários apenas" },
-      {
-        label: "E",
-        valor:
-          "Interpretação foca no que está escrito; Compreensão no que se conclui",
-      },
-    ],
-    correta: "B",
-    explicacao:
-      "Bechara distingue: Compreensão (Análise do que está explícito) vs. Interpretação (Síntese do que se deduz). Opção E inverte os conceitos.",
-  },
-  {
-    id: 2,
-    pergunta:
-      "Um texto que apresenta argumentos para convencer o leitor sobre um ponto de vista é tipificado como:",
-    opcoes: [
-      { label: "A", valor: "Narrativo" },
-      { label: "B", valor: "Descritivo" },
-      { label: "C", valor: "Dissertativo-Argumentativo" },
-      { label: "D", valor: "Injuntivo" },
-      { label: "E", valor: "Lírico" },
-    ],
-    correta: "C",
-    explicacao:
-      "O texto dissertativo-argumentativo busca defender uma tese através de argumentos lógicos. O lírico foca em sentimentos, não em tese.",
-  },
-  {
-    id: 3,
-    pergunta:
-      'Ao ler "A Petrobras investe em energias limpas", a afirmação é um dado de:',
-    opcoes: [
-      { label: "A", valor: "Interpretação" },
-      { label: "B", valor: "Compreensão" },
-      { label: "C", valor: "Extrapolação" },
-      { label: "D", valor: "Opinião" },
-      { label: "E", valor: "Contradição" },
-    ],
-    correta: "B",
-    explicacao:
-      "É um dado explícito no texto (compreensão). A interpretação exige conclusões fora das linhas literais.",
-  },
-  {
-    id: 4,
-    pergunta: "Qual a principal característica do texto INJUNTIVO?",
-    opcoes: [
-      { label: "A", valor: "Contar uma história" },
-      { label: "B", valor: "Descrever uma cena" },
-      { label: "C", valor: "Instruir ou dar ordens (ex: manual)" },
-      { label: "D", valor: "Expor dados científicos" },
-      { label: "E", valor: "Defender um ponto de vista" },
-    ],
-    correta: "C",
-    explicacao:
-      "Manuais, receitas e editais são textos injuntivos ou instrucionais. Eles guiam o comportamento do leitor.",
-  },
-];
-
-const QUIZ_M2_POOL: QuizQuestion[] = [
-  {
-    id: 1,
-    pergunta:
-      "Qual o papel fundamental das conjunções (conectivos) na interpretação de texto?",
-    opcoes: [
-      { label: "A", valor: "Apenas enfeitar o texto" },
-      {
-        label: "B",
-        valor: "Estabelecer relações lógico-semânticas entre as ideias",
-      },
-      { label: "C", valor: "Substituir os substantivos para evitar repetição" },
-      { label: "D", valor: "Indicar apenas o início de novos parágrafos" },
-      { label: "E", valor: "Corrigir erros de ortografia" },
-    ],
-    correta: "B",
-    explicacao:
-      'Os conectivos são as "dobradiças" do texto, indicando oposição, causa, conclusão, etc.',
-  },
-  {
-    id: 2,
-    pergunta:
-      'Na frase "Trabalhou muito, ENTRETANTO não foi promovido", o sentido do conectivo é:',
-    opcoes: [
-      { label: "A", valor: "Adição" },
-      { label: "B", valor: "Causa" },
-      { label: "C", valor: "Oposição (Adversidade)" },
-      { label: "D", valor: "Conclusão" },
-      { label: "E", valor: "Explicação" },
-    ],
-    correta: "C",
-    explicacao:
-      '"Entretanto" é uma conjunção adversativa, indicando que o resultado foi contrário ao esperado.',
-  },
-  {
-    id: 3,
-    pergunta: "Qual conectivo abaixo indica uma CONDIÇÃO?",
-    opcoes: [
-      { label: "A", valor: "Porque" },
-      { label: "B", valor: "Caso" },
-      { label: "C", valor: "Portanto" },
-      { label: "D", valor: "Embora" },
-      { label: "E", valor: "Enquanto" },
-    ],
-    correta: "B",
-    explicacao: '"Caso você estude, passará" — indica uma condição necessária.',
-  },
-  {
-    id: 4,
-    pergunta: 'O conectivo "PORQUANTO" geralmente introduz uma:',
-    opcoes: [
-      { label: "A", valor: "Consequência" },
-      { label: "B", valor: "Explicação ou Causa" },
-      { label: "C", valor: "Finalidade" },
-      { label: "D", valor: "Concessão" },
-      { label: "E", valor: "Tempo" },
-    ],
-    correta: "B",
-    explicacao:
-      '"Porquanto" equivale a "porque" ou "visto que", sendo explicativo ou causal. Não confundir com conformativo.',
-  },
-];
-
-const QUIZ_M3_POOL: QuizQuestion[] = [
-  {
-    id: 1,
-    pergunta:
-      "Qual técnica de leitura é recomendada para captar a IDEIA GERAL e o tema central do texto rapidamente?",
-    opcoes: [
-      { label: "A", valor: "Scanning" },
-      { label: "B", valor: "Leitura Vertical" },
-      { label: "C", valor: "Skimming" },
-      { label: "D", valor: "Leitura Minuciosa" },
-      { label: "E", valor: "Memorização" },
-    ],
-    correta: "C",
-    explicacao:
-      'O Skimming consiste em "deslizar" sobre o texto para captar o sentido global e o tema principal.',
-  },
-  {
-    id: 2,
-    pergunta: "O erro de interpretação chamado EXTRAPOLAÇÃO ocorre quando:",
-    opcoes: [
-      { label: "A", valor: "O leitor foca em apenas um detalhe do texto." },
-      {
-        label: "B",
-        valor:
-          "O leitor afirma algo que não está no texto, usando conhecimentos externos.",
-      },
-      { label: "C", valor: "O leitor nega o que o autor defendeu." },
-      { label: "D", valor: "O leitor resume o texto corretamente." },
-      { label: "E", valor: "O leitor confunde o autor com o narrador." },
-    ],
-    correta: "B",
-    explicacao:
-      "Extrapolar é ir além dos limites do texto, inserindo ideias que o autor não mencionou.",
-  },
-  {
-    id: 3,
-    pergunta:
-      "Para encontrar uma DATA ou um NOME específico no texto sem ler tudo, utilizamos o:",
-    opcoes: [
-      { label: "A", valor: "Skimming" },
-      { label: "B", valor: "Scanning" },
-      { label: "C", valor: "Filtro de Bechara" },
-      { label: "D", valor: "Método Indutivo" },
-      { label: "E", valor: "Diagramação" },
-    ],
-    correta: "B",
-    explicacao:
-      "O Scanning é uma varredura em busca de informações pontuais e específicas.",
-  },
-  {
-    id: 4,
-    pergunta:
-      "Focar em um detalhe pequeno do texto e ignorar o contexto geral é um erro de:",
-    opcoes: [
-      { label: "A", valor: "Redução" },
-      { label: "B", valor: "Contradição" },
-      { label: "C", valor: "Extrapolação" },
-      { label: "D", valor: "Síntese" },
-      { label: "E", valor: "Elipse" },
-    ],
-    correta: "A",
-    explicacao:
-      "A Redução ocorre quando o leitor toma uma parte do texto como se fosse o todo.",
-  },
-];
-
-const QUIZ_M4_POOL: QuizQuestion[] = [
-  {
-    id: 1,
-    pergunta:
-      "A progressão temática de um texto de interpretação ideal na FGV e Cesgranrio garante que:",
-    opcoes: [
-      { label: "A", valor: "As frases sejam curtas" },
-      {
-        label: "B",
-        valor: "Informações velhas e novas se conectem sem quebra lógica",
-      },
-      { label: "C", valor: "Haja vocabulário complexo" },
-      { label: "D", valor: "O texto não apresente exemplos" },
-      { label: "E", valor: "O título seja chamativo" },
-    ],
-    correta: "B",
-    explicacao:
-      "A progressão textual perfeita articula o que já foi dito (dado) com informações inéditas (novo).",
-  },
-  {
-    id: 2,
-    pergunta: "O que caracteriza a Coerência Externa?",
-    opcoes: [
-      {
-        label: "A",
-        valor: "A conexão entre os parágrafos com conectivos adequados",
-      },
-      { label: "B", valor: "A ausência de contradições internas" },
-      {
-        label: "C",
-        valor: "O respeito à realidade dos fatos e conhecimento de mundo",
-      },
-      { label: "D", valor: "A presença de sinônimos consistentes" },
-      { label: "E", valor: "O uso de aspas em citações" },
-    ],
-    correta: "C",
-    explicacao:
-      "Coerência externa diz respeito à verossimilhança do texto e como ele se adeque à realidade do mundo.",
-  },
-  {
-    id: 3,
-    pergunta: "Qual o papel da elipse na economia do texto corporativo?",
-    opcoes: [
-      { label: "A", valor: "Repetir a ideia principal três vezes." },
-      {
-        label: "B",
-        valor: "Omirtir termos que podem ser recuperados pelo contexto.",
-      },
-      { label: "C", valor: "Evitar o uso de conectivos coordenativos." },
-      { label: "D", valor: "Alongar as frases para dar formalidade." },
-      { label: "E", valor: "Inserir comentários do autor." },
-    ],
-    correta: "B",
-    explicacao:
-      "A elipse elimina elementos gramaticais subentendidos, deixando o texto profissional mais direto.",
-  },
-  {
-    id: 4,
-    pergunta:
-      "Numa questão de reescritura, ao alterar um pronome relativo, o que deve ser priorizado?",
-    opcoes: [
-      { label: "A", valor: "A manutenção do número de palavras" },
-      { label: "B", valor: "A regência e o sentido original" },
-      { label: "C", valor: "A mudança de tempo verbal" },
-      { label: "D", valor: "A troca para a voz passiva" },
-      { label: "E", valor: "O uso de gírias técnicas" },
-    ],
-    correta: "B",
-    explicacao:
-      "Na reescritura de pronomes relativos, a regência atrelada a ele e a semântica são os focos principais.",
-  },
-];
-
-const QUIZ_M5_POOL: QuizQuestion[] = [
-  {
-    id: 1,
-    pergunta: "Qual a principal diferença entre Tese e Argumento?",
-    opcoes: [
-      { label: "A", valor: "A tese é um fato; argumento é opinião" },
-      {
-        label: "B",
-        valor:
-          "Tese é o ponto de vista central; o argumento é a prova que o sustenta",
-      },
-      { label: "C", valor: "Ambos são sinônimos perfeitos" },
-      { label: "D", valor: "A tese finaliza o texto; o argumento o inicia" },
-      { label: "E", valor: "Argumento é o título; tese é o resumo" },
-    ],
-    correta: "B",
-    explicacao:
-      'A Tese é o "o quê" eu defendo; os argumentos são os "porquês".',
-  },
-  {
-    id: 2,
-    pergunta:
-      "Dentre as tipologias textuais, um Relatório corporativo se baseia predominantemente em:",
-    opcoes: [
-      { label: "A", valor: "Narrativa" },
-      { label: "B", valor: "Dissertação Argumentativa e Injunção" },
-      { label: "C", valor: "Exposição (Informativa)" },
-      { label: "D", valor: "Poesia" },
-      { label: "E", valor: "Dramaturgia" },
-    ],
-    correta: "C",
-    explicacao:
-      "Documentos técnicos e relatórios têm caráter predominantemente expositivo/informativo.",
-  },
-  {
-    id: 3,
-    pergunta: "Quando uma questão pede para inferir algo, ela espera que você:",
-    opcoes: [
-      { label: "A", valor: "Copie um trecho literal" },
-      {
-        label: "B",
-        valor:
-          "Deduza uma informação não declarada, baseada nas pistas lógicas do texto",
-      },
-      { label: "C", valor: "Expresse sua opinião pessoal sobre a leitura" },
-      { label: "D", valor: "Marque a opção que extrapola o texto" },
-      { label: "E", valor: "Ignore as entrelinhas" },
-    ],
-    correta: "B",
-    explicacao:
-      "A inferência é uma dedução logicamente possível com base no que está escrito.",
-  },
-  {
-    id: 4,
-    pergunta:
-      'Se o comando da banca disser "No fragmento... a expressão destacada remete a:", a banca está testando:',
-    opcoes: [
-      { label: "A", valor: "Ortografia" },
-      { label: "B", valor: "Coesão referencial (Anafórica ou Catafórica)" },
-      { label: "C", valor: "Coerência externa" },
-      { label: "D", valor: "Estruturação silábica" },
-      { label: "E", valor: "Acentuação gráfica" },
-    ],
-    correta: "B",
-    explicacao:
-      "Retomadas textuais referem-se aos mecanismos anafóricos e catafóricos de coesão.",
-  },
-];
-
-const QUIZ_FINAL_POOL: QuizQuestion[] = [
-  {
-    id: 1,
-    pergunta: "O erro de EXTRAPOLAÇÃO ocorre quando o candidato:",
-    opcoes: [
-      { label: "A", valor: "Entende menos do que o texto disse" },
-      { label: "B", valor: "Traz ideias externas que não estão no texto" },
-      { label: "C", valor: "Diz exatamente o oposto do texto" },
-      { label: "D", valor: "Resume corretamente o tema" },
-      { label: "E", valor: "Identifica o autor corretamente" },
-    ],
-    correta: "B",
-    explicacao:
-      "Extrapolar é ir além dos limites do texto, usando conhecimento de mundo onde a banca pediu fidelidade textual.",
-  },
-  {
-    id: 2,
-    pergunta: "A REDUÇÃO é um erro de interpretação que consiste em:",
-    opcoes: [
-      { label: "A", valor: "Escrever nomes em letras minúsculas" },
-      {
-        label: "B",
-        valor: "Dar atenção apenas a um aspecto, ignorando o contexto geral",
-      },
-      { label: "C", valor: "Aumentar a letra do texto" },
-      { label: "D", valor: "Trocar o título do texto" },
-      { label: "E", valor: "Omitir a conclusão" },
-    ],
-    correta: "B",
-    explicacao:
-      "Reduzir é focar em um detalhe e tratá-lo como se fosse a verdade total do texto.",
-  },
-  {
-    id: 3,
-    pergunta:
-      'Em questões da Cesgranrio, ao encontrar "CONTRADIZ o texto", o candidato deve buscar:',
-    opcoes: [
-      { label: "A", valor: "Uma afirmação idêntica" },
-      { label: "B", valor: "Uma afirmação que nega o que foi dito no texto" },
-      { label: "C", valor: "Uma afirmação que explica o texto" },
-      { label: "D", valor: "Um sinônimo" },
-      { label: "E", valor: "Uma paráfrase" },
-    ],
-    correta: "B",
-    explicacao:
-      "Contradição é a negação direta de uma informação presente na base textual.",
-  },
-  {
-    id: 4,
-    pergunta: 'A estratégia de "Leitura Vertical" serve para:',
-    opcoes: [
-      { label: "A", valor: "Ler de cima para baixo sem parar" },
-      {
-        label: "B",
-        valor: "Identificar palavras-chave e a estrutura do argumento",
-      },
-      { label: "C", valor: "Contar quantas linhas o texto tem" },
-      { label: "D", valor: "Ler apenas o primeiro parágrafo" },
-      { label: "E", valor: "Traduzir o texto mentalmente" },
-    ],
-    correta: "B",
-    explicacao:
-      'Serve para mapear a "espinha dorsal" do texto antes da leitura minuciosa.',
-  },
-];
-
-interface Challenge {
-  wrong: string;
-  correct: string;
-  explanation: string;
-}
-
-const CHALLENGE_POOL: Challenge[] = [
-  {
-    wrong:
-      "O autor afirma que o pré-sal é a única solução para a crise energética.",
-    correct:
-      "O autor aponta o pré-sal como uma das alternativas viáveis, citando desafios técnicos.",
-    explanation:
-      "Cuidado com o erro de EXTRAPOLAÇÃO. Evite termos absolutos como 'única' se o texto for ponderado.",
-  },
-  {
-    wrong: "O texto critica duramente a Petrobras pela falta de investimentos.",
-    correct:
-      "O texto analisa a oscilação dos investimentos frente ao cenário global de petróleo.",
-    explanation:
-      "Evite converter uma análise técnica em uma CRÍTICA pessoal. Mantenha a objetividade do texto.",
-  },
-  {
-    wrong:
-      "Para o autor, a transição energética é impossível no cenário atual.",
-    correct:
-      "O autor discute os gargalos logísticos que atrasam a transição energética.",
-    explanation:
-      "Erro de CONTRADIÇÃO: Discutir dificuldades não é o mesmo que afirmar impossibilidade.",
-  },
-  {
-    wrong: "A energia solar é apresentada como o tema central do artigo.",
-    correct:
-      "A energia solar é citada como um exemplo de diversificação da matriz brasileira.",
-    explanation:
-      "Erro de REDUÇÃO: Não confunda um exemplo usado no parágrafo com o tema principal do texto.",
-  },
-];
-
-// ── Main Component ──────────────────────────────────────────────────────
+// Data
+import {
+  QUIZ_M1_POOL,
+  QUIZ_M2_POOL,
+  QUIZ_M3_POOL,
+  QUIZ_M4_POOL,
+  QUIZ_FINAL_POOL,
+} from "./data/interpretacao-texto-quizzes";
 
 export default function AulaInterpretacaoTexto({
   onComplete,
@@ -554,38 +60,37 @@ export default function AulaInterpretacaoTexto({
   nextTopico,
 }: AulaProps) {
   const MODULE_DEFS = [
-    { id: "modulo-1", label: "Módulo 1", titulo: "Fundamentos e Cognição" },
-    { id: "modulo-2", label: "Módulo 2", titulo: "Mecanismos de Coesão" },
-    { id: "modulo-3", label: "Módulo 3", titulo: "Estratégias de Elite" },
-    { id: "modulo-4", label: "Módulo 4", titulo: "Coerência e Progressão" },
-    { id: "modulo-5", label: "Módulo 5", titulo: "Maratona do Gabarito" },
+    { id: "modulo-1", label: "Módulo 1", titulo: "A Diferença Letal" },
+    { id: "modulo-2", label: "Módulo 2", titulo: "O Tópico Frasal" },
+    { id: "modulo-3", label: "Módulo 3", titulo: "Leitura Estratégica" },
+    { id: "modulo-4", label: "Módulo 4", titulo: "A Matriz Operacional" },
+    { id: "modulo-5", label: "Módulo 5", titulo: "Engenharia da Coesão" },
+    { id: "modulo-6", label: "Módulo 6", titulo: "Pistas e Entrelinhas" },
+    { id: "modulo-7", label: "Módulo 7", titulo: "As Ameaças Triplas" },
+    { id: "modulo-8", label: "Módulo 8", titulo: "A Lógica CESGRANRIO" },
+    { id: "modulo-9", label: "Módulo 9", titulo: "Checklist Tático" },
+    { id: "modulo-10", label: "Módulo 10", titulo: "Arena de Elite" },
   ];
 
   const [activeTab, setActiveTab] = useState("modulo-1");
   const [completedModules, setCompletedModules] = useState<Set<string>>(
     new Set(),
   );
-  const [quizM1, setQuizM1] = useState<QuizQuestion[]>([]);
-  const [quizM2, setQuizM2] = useState<QuizQuestion[]>([]);
-  const [quizM3, setQuizM3] = useState<QuizQuestion[]>([]);
-  const [quizM4, setQuizM4] = useState<QuizQuestion[]>([]);
-  const [quizM5, setQuizM5] = useState<QuizQuestion[]>([]);
-  const [quizFinal, setQuizFinal] = useState<QuizQuestion[]>([]);
-  const [shuffledChallenges, setShuffledChallenges] = useState<Challenge[]>([]);
-  const [challengeIndex, setChallengeIndex] = useState(0);
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
+
+  const [quizM1, setQuizM1] = useState(QUIZ_M1_POOL);
+  const [quizM4, setQuizM4] = useState(QUIZ_M2_POOL);
+  const [quizM6, setQuizM6] = useState(QUIZ_M3_POOL);
+  const [quizM7, setQuizM7] = useState(QUIZ_M4_POOL);
+  const [quizFinal, setQuizFinal] = useState(QUIZ_FINAL_POOL);
 
   useEffect(() => {
     setQuizM1(getRandomQuestions(QUIZ_M1_POOL, 4));
-    setQuizM2(getRandomQuestions(QUIZ_M2_POOL, 4));
-    setQuizM3(getRandomQuestions(QUIZ_M3_POOL, 4));
-    setQuizM4(getRandomQuestions(QUIZ_M4_POOL, 4));
-    setQuizM5(getRandomQuestions(QUIZ_M5_POOL, 4));
-    setQuizFinal(getRandomQuestions(QUIZ_FINAL_POOL, 4));
-    setShuffledChallenges([...CHALLENGE_POOL].sort(() => 0.5 - Math.random()));
+    setQuizM4(getRandomQuestions(QUIZ_M2_POOL, 4));
+    setQuizM6(getRandomQuestions(QUIZ_M3_POOL, 4));
+    setQuizM7(getRandomQuestions(QUIZ_M4_POOL, 4));
+    setQuizFinal(getRandomQuestions(QUIZ_FINAL_POOL, 10));
   }, [isCompleted]);
-
-  // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
-  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
 
   useEffect(() => {
     if (
@@ -606,9 +111,9 @@ export default function AulaInterpretacaoTexto({
     } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
       setHasSyncedInitial(true);
     }
-  }, [currentProgress, hasSyncedInitial, loading]);
+  }, [currentProgress, hasSyncedInitial, loading, MODULE_DEFS.length]);
 
-  const handleModuleComplete = (moduleId: string, score: number) => {
+  const handleModuleComplete = (moduleId: string, score: number = 100) => {
     if (score >= 70) {
       const newSet = new Set(completedModules);
       newSet.add(moduleId);
@@ -629,11 +134,84 @@ export default function AulaInterpretacaoTexto({
     }
   };
 
-  const isModuleUnlocked = (_index: number) => {
-    return true; // TEMPORÁRIO: Desbloqueado para revisão
+  const isModuleUnlocked = (index: number) => {
+    if (index === 0) return true;
+    return true; // Liberado para estudo contínuo
   };
 
   if (loading) return null;
+
+  // Componente de Laboratório de Análise de Texto (Interno para esta aula)
+  const TextAnalysisLab = ({
+    index,
+    titulo = "Laboratório de Aplicação Prática",
+    subtitulo = "Veja a técnica em ação no texto base.",
+    texto,
+    legenda,
+  }: {
+    index: number;
+    titulo?: string;
+    subtitulo?: string;
+    texto: React.ReactNode;
+    legenda: { cor: string; label: string }[];
+  }) => (
+    <section className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 md:p-12 shadow-2xl relative overflow-hidden group my-12">
+      {/* Background Decorativo */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32 transition-all group-hover:bg-primary/10" />
+
+      <div className="relative space-y-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-200 dark:border-slate-800">
+          <div className="flex gap-4 md:gap-6">
+            <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary text-2xl md:text-3xl font-black shrink-0 shadow-inner">
+              {index}
+            </div>
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider">
+                <LuCpu className="w-3 h-3" /> Laboratório Tático
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
+                {titulo}
+              </h3>
+              <p className="text-slate-500 dark:text-slate-400 text-lg">
+                {subtitulo}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {legenda.map((item, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm"
+              >
+                <div className={`w-3 h-3 rounded-full ${item.cor}`} />
+                <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                  {item.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-white/50 dark:bg-slate-900/50 rounded-2xl p-6 md:p-10 border border-slate-200 dark:border-slate-800/50 backdrop-blur-sm">
+          <blockquote className="text-xl md:text-2xl leading-relaxed font-serif text-slate-800 dark:text-slate-200">
+            {texto}
+          </blockquote>
+        </div>
+
+        <div className="flex items-center gap-4 p-4 rounded-xl bg-primary/5 border border-primary/10">
+          <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
+            <LuBrain className="w-5 h-5" />
+          </div>
+          <p className="text-sm text-slate-500 dark:text-slate-400 italic">
+            "O marca-texto acima simula o 'olhar clínico' que você deve ter
+            durante a prova. Note como as informações mudam de valor dependendo
+            da sua intenção de leitura."
+          </p>
+        </div>
+      </div>
+    </section>
+  );
 
   return (
     <AulaTemplate
@@ -654,114 +232,113 @@ export default function AulaInterpretacaoTexto({
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
-      currentProgress={Math.round(
-        (completedModules.size / MODULE_DEFS.length) * 100,
-      )}
       onComplete={onComplete}
       loading={loading}
       xpGanho={xpGanho}
     >
-      {/* ─── MÓDULO 1: FUNDAMENTOS ─── */}
-      <TabsContent value="modulo-1" className="space-y-[50px]">
+      {/* ─── MÓDULO 1: A DIFERENÇA LETAL ─── */}
+      <TabsContent value="modulo-1" className="space-y-[40px]">
         <ModuleBanner
           numero={1}
-          titulo="Fundamentos e Cognição"
-          descricao="A base teórica de Bechara e as tipologias essenciais para a Petrobras."
-          gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
+          titulo="A Diferença Letal"
+          descricao="Compreensão vs. Interpretação. A fronteira exata entre o que o texto diz e o que você deduz."
+          gradiente="bg-gradient-to-br from-blue-600 via-sky-600 to-cyan-500"
         />
 
-        {/* SEÇÃO 1: BECHARA DETALHADO */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={1}
-            title="Visão de Bechara: O Texto como Unidade de Sentido"
-            variant="indigo"
+            title="A Armadilha do Óbvio"
+            variant="blue"
           />
-          <div className="space-y-8">
-            <div className="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/30 rounded-xl p-6 md:p-8">
-              <p className="text-muted-foreground text-lg leading-relaxed italic">
-                "O texto não é uma soma de frases, mas um todo coerente."
-              </p>
-              <p className="text-foreground mt-4 font-medium">
-                — Evanildo Bechara
-              </p>
-            </div>
+          <p className="text-muted-foreground leading-relaxed text-lg">
+            Em provas da CESGRANRIO focadas no meio industrial, o erro número 1
+            é confundir a decodificação da informação (Compreensão) com a
+            conexão de ideias implícitas (Interpretação).
+          </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 text-indigo-600 font-bold uppercase text-sm tracking-widest px-4 py-1 bg-indigo-50 rounded-full w-fit">
-                  <LuTarget /> Análise (Compreensão)
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  É o micro-nível. Você foca nos dados, no vocabulário e na
-                  sintaxe. A pergunta de prova será: "O texto afirma...",
-                  "Segundo o autor...". Aqui não há espaço para deduções.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 text-purple-600 font-bold uppercase text-sm tracking-widest px-4 py-1 bg-purple-50 rounded-full w-fit">
-                  <LuTrophy /> Síntese (Interpretação)
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  É o macro-nível. Você conecta as partes para entender a
-                  intenção por trás das palavras. A pergunta será: "Infere-se
-                  que...", "Conclui-se que...". É o diálogo com o implícito.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ESTA SEÇÃO FOI SUBSTITUÍDA INTEGRALMENTE PELA MATRIZ NO ACORDEON */}
-
-        {/* SEÇÃO 2: TIPOLOGIAS E GÊNEROS (ACORDEON DETALHADO) */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={2}
-            title="A Matriz de Tipos e Gêneros"
-            variant="indigo"
-          />
           <ContentAccordion
             mode="stacked"
-            titulo="Tipologia vs Gênero"
-            icone={<LuBookOpen />}
+            titulo="O Crivo da Verdade: Compreensão vs Interpretação"
+            icone={<LuBrain />}
             corIndicador="bg-blue-500"
             defaultOpen={true}
             slides={[
               {
-                titulo: "1. Tipologia Textual (A Estrutura)",
-                icone: "🏗️",
+                titulo: "1. Conceituação: A Fronteira do Texto",
+                icone: "📚",
                 conteudo: (
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
-                      É o "esqueleto" do texto. Natureza linguística. São
-                      poucos: Narrativo, Descritivo, Dissertativo, Injuntivo,
-                      Expositivo.
+                      <strong>Compreensão:</strong> É o exame do que está
+                      escrito <em>literalmente</em>. Você é um tradutor. A banca
+                      usa comandos como: "Segundo o texto", "O autor afirma",
+                      "Consta na linha X".
                     </p>
-                    <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20">
-                      <p className="text-sm font-semibold text-blue-700 dark:text-blue-300">
-                        Exemplo: Um texto predominantemente INJUNTIVO (usa
-                        verbos no imperativo para dar ordens/conselhos).
-                      </p>
-                    </div>
+                    <p className="text-muted-foreground">
+                      <strong>Interpretação:</strong> É o exame do que o texto
+                      <em>sugere</em> através de pistas. Você é um detetive. A
+                      banca usa comandos como: "Infere-se", "Depreende-se", "O
+                      texto sugere".
+                    </p>
                   </div>
                 ),
               },
               {
-                titulo: "2. Gênero Textual (A Função Social)",
-                icone: "🤝",
+                titulo: "2. Exemplificação Petrobras (Na Prática)",
+                icone: "⛽",
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-muted-foreground">
-                      É o uso real na sociedade. Tem objetivo comunicativo. São
-                      infinitos: Bula de remédio, manual de instrução,
-                      reportagem, ofício, e-mail.
-                    </p>
-                    <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20">
-                      <p className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">
-                        A Bula de Remédio (Gênero) usa a tipologia Injuntiva
-                        (Tipo) para cumprir sua função.
+                    <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-xl border-l-4 border-primary">
+                      <p className="text-sm italic">
+                        "A Petrobras planeja investir US$ 102 bilhões entre 2024
+                        e 2028."
                       </p>
+                    </div>
+                    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+                      <li>
+                        <strong>Compreensão:</strong> O investimento previsto é
+                        de 102 bilhões de dólares. (Está escrito!)
+                      </li>
+                      <li>
+                        <strong>Interpretação:</strong> A companhia demonstra
+                        uma visão de longo prazo e fôlego financeiro para o
+                        próximo quinquênio. (É a conclusão lógica das pistas.)
+                      </li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "3. Dicas: O Pulo do Gato",
+                icone: "💡",
+                conteudo: (
+                  <div className="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl">
+                    <p className="text-sm text-blue-800 dark:text-blue-300">
+                      <strong>Filtro de Fidelidade:</strong> Se a questão for de
+                      compreensão, mas a alternativa for uma dedução (mesmo que
+                      verdadeira), ela está <strong>ERRADA</strong>. Se for de
+                      interpretação e a frase estiver literal, desconfie: a
+                      banca quer o sentido figurado ou a implicação.
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "4. Exceções: O Perigo da Extrapolação",
+                icone: "⚠️",
+                conteudo: (
+                  <div className="space-y-3">
+                    <p className="text-sm text-muted-foreground">
+                      A exceção mais comum é a <strong>Extrapolação</strong>.
+                      Ocorre quando você traz o que "sabe de fora" para dentro
+                      do texto.
+                    </p>
+                    <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-xs">
+                      <strong>Cuidado:</strong> Se o texto falar que "o preço do
+                      barril subiu", você não pode inferir que "a gasolina vai
+                      subir amanhã" se o texto não mencionar a paridade de
+                      preços ou repasse ao consumidor.
                     </div>
                   </div>
                 ),
@@ -769,431 +346,556 @@ export default function AulaInterpretacaoTexto({
             ]}
           />
         </section>
-        {/* SEÇÃO 3: QUIZ M1 */}
+
+        {/* APLICAÇÃO PRÁTICA: MARCA-TEXTO MÓDULO 1 */}
+        <TextAnalysisLab
+          index={1}
+          titulo="Laboratório: Compreensão vs. Interpretação"
+          subtitulo="Veja como separar o que é dado literal do que é dedução lógica no texto base."
+          legenda={[
+            {
+              cor: "bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.5)]",
+              label: "Dado Literal (Compreensão)",
+            },
+            {
+              cor: "bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)]",
+              label: "Pista para Dedução (Interpretação)",
+            },
+          ]}
+          texto={
+            <>
+              "A transição energética da Petrobras não é apenas um compromisso
+              ambiental, mas uma{" "}
+              <span className="bg-emerald-400/20 text-emerald-900 dark:text-emerald-100 border-b border-emerald-400/50 px-1 rounded-sm">
+                necessidade estratégica de sobrevivência
+              </span>{" "}
+              mercadológica. Embora o petróleo ainda seja a espinha dorsal
+              financeira da companhia, o{" "}
+              <span className="bg-blue-400/20 text-blue-900 dark:text-blue-100 border-b border-blue-400/50 px-1 rounded-sm">
+                investimento em fontes renováveis saltou 15%
+              </span>{" "}
+              no último biênio.{" "}
+              <span className="bg-emerald-400/20 text-emerald-900 dark:text-emerald-100 border-b border-emerald-400/50 px-1 rounded-sm">
+                Provavelmente, essa mudança acelerará as parcerias
+              </span>{" "}
+              com hubs tecnológicos internacionais..."
+            </>
+          }
+        />
+
+        {/* Resumo e Multimídia Módulo 1 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
+          <ModuleSectionHeader
+            index={2}
+            title="Resumo e Multimídia"
+            description="Consolide seu entendimento sobre a diferença entre Compreensão e Interpretação."
+            variant="blue"
+          />
+
+          <LessonTabs
+            variant="blue"
+            tabs={[
+              {
+                id: "video",
+                label: "Vídeo Aula",
+                icon: LuPlayCircle,
+                content: (
+                  <div className="w-full flex flex-col items-center py-6">
+                    <div className="w-full max-w-3xl">
+                      <VideoModal
+                        videoId="dQw4w9WgXcQ"
+                        title="Compreensão vs Interpretação"
+                        duration="06:45"
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon: LuBookOpen,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    images={[
+                      {
+                        title: "Diferença: Compreensão vs Interpretação",
+                        type: "Infográfico",
+                        placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
+                        imageUrl: "/temp-img.png", // PROMPT: Infográfico clean com background de vidro fosco (glassmorphism). Lado Esquerdo, Azul: Lupa focando num papel detalhado. Lado Direito, Verde (Emerald): Cérebro conectando engrenagens deduzindo algo invisível. Design premium, tipografia sans-serif elegante, esquema de cores corporativo da Petrobras, zero tons de roxo ou rosa.
+                      },
+                      {
+                        title: "Comandos da Banca (Verbos)",
+                        type: "Tabela",
+                        placeholderColor: "bg-sky-100 dark:bg-sky-900/30",
+                      },
+                    ]}
+                    moduloNome="A Diferença Letal"
+                    tituloAula="Interpretação de Texto"
+                    materia="Língua Portuguesa"
+                  />
+                ),
+              },
+              {
+                id: "macete",
+                label: "Macete Visual",
+                icon: LuBrain,
+                content: (
+                  <div className="text-center p-8 bg-gradient-to-br from-blue-500/5 to-sky-500/5 rounded-2xl border border-blue-500/10">
+                    <h3 className="text-xl font-bold text-foreground mb-4">
+                      O Filtro do Texto
+                    </h3>
+                    <div className="text-7xl my-8">🔍 ➡ 🧠</div>
+                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                      "Se está <b>escrito</b>, eu compreendo. Se está{" "}
+                      <b>nas entrelinhas</b>, eu interpreto. Não deixe o que
+                      você sabe sobre o mundo contaminar o que o autor
+                      escreveu!"
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                id: "audio",
+                label: "Áudio Resumo",
+                icon: LuMusic,
+                content: (
+                  <div className="w-full flex justify-center py-4">
+                    <div className="w-full max-w-md">
+                      <MusicPlayerCard
+                        audioUrl="#"
+                        titulo="Resumo: O Óbvio vs O Implícito"
+                        artista="Prof. Antigravity"
+                        capaUrl="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000&auto=format&fit=crop"
+                        lyrics={`(Refrão)\nO que o texto diz, é compreensão...\nO que ele sugere, é interpretação!\nNão viaja longe, fica na base...\nAnalisa o verbo em cada frase.`}
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
         <QuizInterativo
           questoes={quizM1}
-          titulo="Compreensão vs Interpretação"
+          titulo="Fixação Inicial"
           icone="📝"
-          numero={3}
+          numero={1}
           variant="blue"
           onComplete={(score) => handleModuleComplete("modulo-1", score)}
         />
       </TabsContent>
 
-      {/* ─── MÓDULO 2: COESÃO ─── */}
-      <TabsContent value="modulo-2" className="space-y-[50px]">
+      {/* ─── MÓDULO 2: O TÓPICO FRASAL ─── */}
+      <TabsContent value="modulo-2" className="space-y-[40px]">
         <ModuleBanner
           numero={2}
-          titulo="Mecanismos de Coesão"
-          descricao="As ferramentas que dão liga ao texto e os conectores lógicos da Cesgranrio."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+          titulo="A Arte de Buscar Sentido"
+          descricao="Dominando o Tópico Frasal e a estrutura vertebral dos parágrafos em relatórios e textos de base."
+          gradiente="bg-gradient-to-br from-teal-600 via-emerald-600 to-cyan-500"
         />
 
-        {/* SEÇÃO 1: OS CONECTIVOS */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={1}
-            title="Os Conectivos: Mapa Lógico"
-            description="Entenda o papel dos conectores na coesão textual e os sentidos que eles carregam."
-            variant="emerald"
-          />
-          <div className="space-y-6">
-            <AlertBox tipo="info" titulo="O Pulo do Gato">
-              <p>
-                Trocar um "Mas" por um "Embora" muda a estrutura gramatical mas
-                mantém a ideia de oposição. A banca ama isso!
-              </p>
-            </AlertBox>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
-                <h4 className="font-bold mb-3 flex items-center gap-2 text-red-500">
-                  <LuLink /> Oposição
-                </h4>
-                <ul className="grid grid-cols-1 gap-1">
-                  {["Mas", "Porém", "Contudo", "Todavia", "Entretanto"].map(
-                    (c, i) => (
-                      <li
-                        key={i}
-                        className="text-sm text-muted-foreground font-medium"
-                      >
-                        • {c}
-                      </li>
-                    ),
-                  )}
-                </ul>
-              </div>
-              <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
-                <h4 className="font-bold mb-3 flex items-center gap-2 text-blue-500">
-                  <LuLink /> Causa/Explicação
-                </h4>
-                <ul className="grid grid-cols-1 gap-1">
-                  {["Porque", "Já que", "Pois", "Visto que", "Porquanto"].map(
-                    (c, i) => (
-                      <li
-                        key={i}
-                        className="text-sm text-muted-foreground font-medium"
-                      >
-                        • {c}
-                      </li>
-                    ),
-                  )}
-                </ul>
-              </div>
-              <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
-                <h4 className="font-bold mb-3 flex items-center gap-2 text-emerald-500">
-                  <LuLink /> Concessão
-                </h4>
-                <ul className="grid grid-cols-1 gap-1">
-                  {["Embora", "Ainda que", "Apesar de", "Conquanto"].map(
-                    (c, i) => (
-                      <li
-                        key={i}
-                        className="text-sm text-muted-foreground font-medium"
-                      >
-                        • {c}
-                      </li>
-                    ),
-                  )}
-                </ul>
-              </div>
-              <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
-                <h4 className="font-bold mb-3 flex items-center gap-2 text-indigo-500">
-                  <LuLink /> Conclusão
-                </h4>
-                <ul className="grid grid-cols-1 gap-1">
-                  {["Logo", "Portanto", "Assim", "Por conseguinte"].map(
-                    (c, i) => (
-                      <li
-                        key={i}
-                        className="text-sm text-muted-foreground font-medium"
-                      >
-                        • {c}
-                      </li>
-                    ),
-                  )}
-                </ul>
-              </div>
-              <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
-                <h4 className="font-bold mb-3 flex items-center gap-2 text-orange-500">
-                  <LuLink /> Condição
-                </h4>
-                <ul className="grid grid-cols-1 gap-1">
-                  {["Se", "Caso", "Contanto que", "Desde que"].map((c, i) => (
-                    <li
-                      key={i}
-                      className="text-sm text-muted-foreground font-medium"
-                    >
-                      • {c}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="p-6 border border-border/50 rounded-2xl bg-muted/20 hover:bg-muted/40 transition-all">
-                <h4 className="font-bold mb-3 flex items-center gap-2 text-purple-500">
-                  <LuLink /> Finalidade
-                </h4>
-                <ul className="grid grid-cols-1 gap-1">
-                  {["Para que", "A fim de que", "Com o intuito de"].map(
-                    (c, i) => (
-                      <li
-                        key={i}
-                        className="text-sm text-muted-foreground font-medium"
-                      >
-                        • {c}
-                      </li>
-                    ),
-                  )}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SEÇÃO 2: EXEMPLOS PRÁTICOS */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={2}
-            title="Substituição na Prática"
-            description="Veja como o sentido se mantém mas a sintaxe se altera ao trocar conectivos."
+            title="A Espinha Dorsal do Parágrafo"
             variant="emerald"
           />
-          <p className="text-muted-foreground">
-            Veja como o sentido se mantém mas a sintaxe se altera:
+
+          <p className="text-muted-foreground leading-relaxed text-lg">
+            Um parágrafo bem montado (o que a Cesgranrio sempre escolhe) gira ao
+            redor de uma única ideia central expressa muitas vezes em uma só
+            sentença: o <strong>Tópico Frasal</strong>.
           </p>
-          <CardCarousel
-            cards={[
-              {
-                icone: "⚖️",
-                titulo: "Conjunção Coordenada",
-                descricao: (
-                  <div className="pb-4">
-                    Choveu muito, <b>MAS</b> fomos trabalhar. (Relação de
-                    oposição com ênfase no trabalho)
-                  </div>
-                ),
-                corFundo: "bg-red-500/10",
-              },
-              {
-                icone: "🧠",
-                titulo: "Conjunção Subordinada",
-                descricao: (
-                  <div className="pb-4">
-                    <b>EMBORA</b> tenha chovido muito, fomos trabalhar.
-                    (Concessão: ênfase no fato de chover, mantendo o sentido)
-                  </div>
-                ),
-                corFundo: "bg-emerald-500/10",
-              },
-              {
-                icone: "🔍",
-                titulo: "Causa vs Explicação",
-                descricao: (
-                  <div className="pb-4">
-                    Faltei <b>PORQUE</b> estava doente (Causa real). Venha,{" "}
-                    <b>PORQUE</b> eu mandei (Explicação/Ordem).
-                  </div>
-                ),
-                corFundo: "bg-blue-500/10",
-              },
-              {
-                icone: "📈",
-                titulo: "Conectivo Consecutivo",
-                descricao: (
-                  <div className="pb-4">
-                    Choveu tanto <b>QUE</b> a rua alagou. (Troque por:{" "}
-                    <i>de tal sorte que</i>, <i>de modo que</i>)
-                  </div>
-                ),
-                corFundo: "bg-purple-500/10",
-              },
-              {
-                icone: "⏳",
-                titulo: "Conectivo Condicional",
-                descricao: (
-                  <div className="pb-4">
-                    <b>CASO</b> chova, não irei. (Troque por: <i>desde que</i> +
-                    subjuntivo, <i>contanto que</i>)
-                  </div>
-                ),
-                corFundo: "bg-orange-500/10",
-              },
-              {
-                icone: "🎯",
-                titulo: "Conectivo Finalidade",
-                descricao: (
-                  <div className="pb-4">
-                    Estudo <b>PARA QUE</b> passe. (Troque por:{" "}
-                    <i>a fim de que</i>, <i>com o intuito de</i>)
-                  </div>
-                ),
-                corFundo: "bg-yellow-500/10",
-              },
-            ]}
-          />
-        </section>
 
-        {/* SEÇÃO 3: MULTIMÍDIA */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={3}
-            title="Resumo e Multimídia"
-            description="Consolide seu conhecimento com vídeos, resumos visuais e áudios."
-            variant="emerald"
-          />
-          <LessonTabs
-            tabs={[
-              {
-                id: "video",
-                label: "Vídeo Aula",
-                icon: LuPlay,
-                content: (
-                  <div className="w-full flex flex-col items-center py-6">
-                    <div className="w-full max-w-3xl">
-                      <VideoModal
-                        videoId="7tU9PzSkaU0"
-                        title="Conectivos: A Dobradiça do Texto"
-                        duration="12:30"
-                        thumbnail="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1000&auto=format&fit=crop"
-                      />
-                    </div>
-                  </div>
-                ),
-              },
-              {
-                id: "resumo",
-                label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
-                  <ModuleSummaryCarouselNew
-                    images={[
-                      {
-                        imageUrl: "/images/mapa-mental/inter_m2_conectivos.png",
-                        title: "Tabela: Conectivos de Oposição",
-                        type: "Tabela",
-                        placeholderColor: "bg-red-100 dark:bg-red-900/30",
-                      },
-                      {
-                        imageUrl: "/images/mapa-mental/inter_m2_causais.png",
-                        title: "Mapa: Conectivos Causais",
-                        type: "Mapa Mental",
-                        placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
-                      },
-                      {
-                        imageUrl:
-                          "/images/mapa-mental/inter_m2_concessivas.png",
-                        title: "Concessivas vs Adversativas",
-                        type: "Diferença",
-                        placeholderColor:
-                          "bg-emerald-100 dark:bg-emerald-900/30",
-                      },
-                    ]}
-                  />
-                ),
-              },
-              {
-                id: "visual",
-                label: "Macete Visual",
-                icon: LuImage,
-                content: (
-                  <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
-                    <h3 className="text-xl font-bold text-foreground mb-4">
-                      A Regra dos 2 Tempos
-                    </h3>
-                    <div className="text-7xl my-8 animate-pulse">⏳ ⚖️ 🔗</div>
-                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
-                      "Ache o conectivo, identifique o sentido! Mas, Porém,
-                      Contudo... No entanto, Entrega a Oposição!"
-                    </p>
-                  </div>
-                ),
-              },
-              {
-                id: "audio",
-                label: "Áudio Resumo",
-                icon: LuVolume2,
-                content: (
-                  <div className="w-full flex justify-center py-4">
-                    <div className="w-full max-w-md">
-                      <MusicPlayerCard
-                        audioUrl="#"
-                        titulo="Dobradiça do Texto"
-                        artista="Conector Band"
-                        capaUrl="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000&auto=format&fit=crop"
-                        lyrics={`(Verso 1)
-                                                        O texto é um prédio, as colunas vão subir.
-                                                        Sem o conector, o prédio vai cair!
-                                                        
-                                                        (Refrão)
-                                                        Mas, porém, contudo... as pedras do caminho.
-                                                        Logo e portanto... o final do pergaminho!`}
-                      />
-                    </div>
-                  </div>
-                ),
-              },
-            ]}
-          />
-        </section>
-
-        {/* SEÇÃO 4: QUIZ M2 */}
-        <QuizInterativo
-          questoes={quizM2}
-          titulo="Mecanismos de Coesão"
-          icone="🎯"
-          numero={4}
-          variant="emerald"
-          onComplete={(score) => handleModuleComplete("modulo-2", score)}
-        />
-      </TabsContent>
-
-      {/* ─── MÓDULO 3: ESTRATÉGIAS ─── */}
-      <TabsContent value="modulo-3" className="space-y-[50px]">
-        <ModuleBanner
-          numero={3}
-          titulo="Estratégias de Elite"
-          descricao="As 3 grades armadilhas e técnicas de varredura Cesgranrio."
-          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
-        />
-
-        {/* SEÇÃO 1: VARREDURA E MÉTODOS DE LEITURA */}
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={1}
-            title="A Varredura Estratégica"
-            description="Técnicas de mapeamento rápido para encontrar a resposta certa no lugar certo."
-            variant="violet"
-          />
           <ContentAccordion
-            titulo="Métodos Ágeis de Leitura"
-            icone={<LuBookOpen className="text-blue-500" />}
-            corIndicador="bg-blue-500"
+            mode="stacked"
+            titulo="A Arquitetura do Parágrafo Mestre"
+            icone={<LuBookOpen />}
+            corIndicador="bg-teal-500"
+            defaultOpen={true}
             slides={[
               {
-                titulo: "Leitura Vertical",
-                icone: "↕️",
+                titulo: "1. Conceituação: O Que é o Tópico Frasal?",
+                icone: "🎯",
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-sm text-foreground">
-                      A <strong>Leitura Vertical</strong> serve para identificar
-                      palavras-chave e a estrutura principal (a "espinha
-                      dorsal") do argumento sem ler todas as palavras da linha.
+                    <p className="text-muted-foreground">
+                      É a frase que resume a ideia central de um parágrafo. Em
+                      textos técnicos (relatórios, editais, manuais), ela
+                      funciona como a <strong>espinha dorsal</strong> de onde
+                      partem todas as outras informações secundárias.
                     </p>
-                    <div className="bg-blue-500/10 p-4 border border-blue-500/20 rounded-xl">
-                      <p className="font-bold text-sm text-blue-800 dark:text-blue-300">
-                        💡 Como fazer:
+                    <p className="text-muted-foreground italic">
+                      "Pense nele como o título de um micro-capítulo dentro do
+                      seu texto."
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "2. Exemplificação (Padrão Petrobras)",
+                icone: "🏢",
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-teal-50 dark:bg-teal-900/20 rounded-xl border-l-4 border-teal-500 text-sm">
+                      <p className="mb-2">
+                        <strong>Exemplo A:</strong> "A fiscalização rigorosa nos
+                        dutos de escoamento reduziu em 40% as perdas
+                        operacionais." (Tópico Frasal explícito no início).
                       </p>
-                      <p className="text-sm text-blue-900/80 dark:text-blue-300 mt-2">
-                        Passe o olho rapidamente do topo até a base do texto,
-                        focando no centro da mancha de texto, pescando
-                        substantivos e verbos fortes.
+                      <p>
+                        <strong>Exemplo B:</strong> "Embora o cenário externo
+                        seja volátil, a resiliência da produção no pré-sal
+                        garante os dividendos." (Tópico Frasal misto com
+                        concessão).
                       </p>
                     </div>
                   </div>
                 ),
               },
               {
-                titulo: "Skimming",
-                icone: "🏄",
-                conteudo: (
-                  <div className="space-y-4">
-                    <p className="text-sm text-foreground">
-                      O <strong>Skimming</strong> ("deslizar" sobre o texto)
-                      visa captar a <strong>ideia principal</strong> ou o tema
-                      central rapidamente.
-                    </p>
-                    <div className="bg-indigo-500/10 p-4 border border-indigo-500/20 rounded-xl">
-                      <p className="font-bold text-sm text-indigo-800 dark:text-indigo-300">
-                        💡 Como fazer:
-                      </p>
-                      <p className="text-sm text-indigo-900/80 dark:text-indigo-300 mt-2">
-                        Leia apenas o título, subtítulos, o primeiro parágrafo e
-                        a primeira linha de cada parágrafo subsequente.
-                      </p>
-                    </div>
-                  </div>
-                ),
-              },
-              {
-                titulo: "Scanning",
+                titulo: "3. Dicas: Onde ele se esconde?",
                 icone: "🔍",
                 conteudo: (
-                  <div className="space-y-4">
-                    <p className="text-sm text-foreground">
-                      O <strong>Scanning</strong> ("escanear" o texto) serve
-                      para encontrar uma <strong>informação específica</strong>{" "}
-                      previamente solicitada pela questão (uma data, um nome, um
-                      valor).
+                  <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground">
+                      Em 90% das questões CESGRANRIO, o tópico frasal está na
+                      <strong>primeira frase</strong> do parágrafo.
                     </p>
-                    <div className="bg-emerald-500/10 p-4 border border-emerald-500/20 rounded-xl">
-                      <p className="font-bold text-sm text-emerald-800 dark:text-emerald-300">
-                        💡 Como fazer:
+                    <div className="p-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded text-[11px] font-bold text-amber-700 dark:text-amber-400">
+                      MACETE: Se não achar no início, procure por conclusões no
+                      final iniciadas por "Dessa forma", "Logo" ou "Em suma".
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                titulo: "4. Exceções: O Parágrafo Implícito",
+                icone: "🕵️",
+                conteudo: (
+                  <div className="space-y-3">
+                    <p className="text-sm text-muted-foreground">
+                      Existem parágrafos chamados de "narrativos" ou "por soma"
+                      onde a ideia central não está em uma única frase, mas na
+                      <strong>soma de todos os detalhes</strong>.
+                    </p>
+                    <p className="text-xs text-muted-foreground border-t pt-2">
+                      <strong>Cuidado:</strong> Nestes casos, a pergunta da
+                      banca será sobre "A ideia principal do segundo parágrafo",
+                      exigindo que você sintetize o conjunto da obra em vez de
+                      achar uma frase pronta.
+                    </p>
+                  </div>
+                ),
+              },
+            ]}
+          />
+
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() => handleModuleComplete("modulo-2", 100)}
+              className="px-8 py-3 bg-teal-600 text-white font-bold rounded-lg hover:bg-teal-700 transition"
+            >
+              Marcar Módulo como Concluído
+            </button>
+          </div>
+        </section>
+
+        {/* Resumo e Multimídia Módulo 2 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
+          <ModuleSectionHeader
+            index={2}
+            title="Resumo e Multimídia"
+            description="Visualize a espinha dorsal do parágrafo técnico."
+            variant="emerald"
+          />
+
+          <LessonTabs
+            variant="emerald"
+            tabs={[
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon: LuBookOpen,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    images={[
+                      {
+                        title: "Espinha Dorsal do Texto",
+                        type: "Infográfico",
+                        placeholderColor:
+                          "bg-emerald-100 dark:bg-emerald-900/30",
+                        imageUrl: "/temp-img.png", // PROMPT: Infográfico estilo Apple, fundo dark. Destaque para o primeiro período de um parágrafo (Tópico Frasal). Setas elegantes apontando para o desenvolvimento. Paleta esmeralda e ciano.
+                      },
+                    ]}
+                    moduloNome="A Arte de Buscar Sentido"
+                    tituloAula="Interpretação de Texto"
+                    materia="Língua Portuguesa"
+                  />
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        {/* APLICAÇÃO PRÁTICA: MARCA-TEXTO MÓDULO 2 */}
+        <TextAnalysisLab
+          index={2}
+          titulo="Laboratório: O Tópico Frasal"
+          subtitulo="Identificando a espinha dorsal do parágrafo técnico."
+          legenda={[
+            {
+              cor: "bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)]",
+              label: "Tópico Frasal (Ideia Central)",
+            },
+            {
+              cor: "bg-slate-300 dark:bg-slate-700",
+              label: "Desenvolvimento (Detalhes)",
+            },
+          ]}
+          texto={
+            <>
+              <span className="bg-emerald-400/20 text-emerald-900 dark:text-emerald-100 border-b border-emerald-400/50 px-1 rounded-sm">
+                A transição energética da Petrobras não é apenas um compromisso
+                ambiental, mas uma necessidade estratégica de sobrevivência
+                mercadológica.
+              </span>{" "}
+              <span className="opacity-50">
+                Embora o petróleo ainda seja a espinha dorsal financeira da
+                companhia, o investimento em fontes renováveis saltou 15% no
+                último biênio...
+              </span>
+            </>
+          }
+        />
+      </TabsContent>
+
+      {/* ─── MÓDULO 3: LEITURA ESTRATÉGICA ─── */}
+      <TabsContent value="modulo-3" className="space-y-[40px]">
+        <ModuleBanner
+          numero={3}
+          titulo="Leitura Estratégica"
+          descricao=" Scanning e Skimming. Métodos avançados para vencer os textos densos e técnicos."
+          gradiente="bg-gradient-to-br from-amber-600 via-orange-500 to-yellow-500"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-6">
+          <ModuleSectionHeader
+            index={3}
+            title="Armas de Agilidade: Vencendo o Relógio"
+            variant="amber"
+          />
+          <p className="text-muted-foreground leading-relaxed">
+            As provas da CESGRANRIO para o bloco de Petrobras contêm manuais e
+            artigos longos. Ler de cabo a rabo na primeira vez consome tempo
+            extremo.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6 mt-6">
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 text-center h-full">
+                  <LuEye className="w-12 h-12 text-amber-500 mb-4" />
+                  <h3 className="text-xl font-bold text-foreground">
+                    Skimming (Conceituação)
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    A varredura para entender o "espírito" do texto.
+                  </p>
+                </div>
+              }
+              verso={
+                <div className="flex flex-col justify-center p-6 h-full space-y-4">
+                  <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-white/10 pb-2">
+                    <LuEye /> <span>Visão de Águia (Skimming)</span>
+                  </div>
+                  <p className="text-xs leading-relaxed text-muted-foreground">
+                    <strong>Conceito:</strong> Leitura rápida dos Tópicos
+                    Frasais, títulos e introdução para captar o tema.
+                  </p>
+                  <p className="text-xs leading-relaxed text-muted-foreground">
+                    <strong>Exemplo:</strong> Ler apenas o primeiro parágrafo
+                    sobre "Refino de Biocombustíveis" para saber se o texto é
+                    favorável ou crítico.
+                  </p>
+                  <div className="p-2 bg-amber-500/10 rounded-lg text-[10px] text-amber-600 dark:text-amber-400">
+                    <strong>Dica:</strong> Serve para responder questões de "A
+                    ideia central é..." ou "O texto trata de...".
+                  </div>
+                </div>
+              }
+            />
+
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 text-center h-full">
+                  <LuSearch className="w-12 h-12 text-orange-500 mb-4" />
+                  <h3 className="text-xl font-bold text-foreground">
+                    Scanning (Conceituação)
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    O raio-x para encontrar dados matemáticos e técnicos.
+                  </p>
+                </div>
+              }
+              verso={
+                <div className="flex flex-col justify-center p-6 h-full space-y-4">
+                  <div className="flex items-center gap-2 text-orange-500 font-bold border-b border-white/10 pb-2">
+                    <LuSearch /> <span>Busca de Precisão (Scanning)</span>
+                  </div>
+                  <p className="text-xs leading-relaxed text-muted-foreground">
+                    <strong>Conceito:</strong> Localização rápida de números,
+                    datas, nomes próprios ou termos grifados.
+                  </p>
+                  <p className="text-xs leading-relaxed text-muted-foreground">
+                    <strong>Exemplo:</strong> Ir direto no gráfico ou texto para
+                    achar "1998" ou "R$ 50 bi" mencionado no enunciado.
+                  </p>
+                  <div className="p-2 bg-orange-500/10 rounded-lg text-[10px] text-orange-600 dark:text-orange-400">
+                    <strong>Exceção:</strong> Cuidado quando a banca usa
+                    "Porquanto" ou "Embora" perto do dado, mudando sua lógica.
+                  </div>
+                </div>
+              }
+            />
+          </div>
+
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() => handleModuleComplete("modulo-3", 100)}
+              className="px-8 py-3 bg-amber-600 text-white font-bold rounded-lg hover:bg-amber-700 transition"
+            >
+              Marcar Módulo como Concluído
+            </button>
+          </div>
+        </section>
+
+        {/* APLICAÇÃO PRÁTICA: MARCA-TEXTO MÓDULO 3 */}
+        <TextAnalysisLab
+          index={3}
+          titulo="Laboratório: Leitura Estratégica"
+          subtitulo="Praticando o Scanning para localizar dados técnicos em segundos."
+          legenda={[
+            {
+              cor: "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.5)]",
+              label: "Dado Técnico (Foco do Scanning)",
+            },
+          ]}
+          texto={
+            <>
+              "A Petrobras planeja investir{" "}
+              <span className="bg-amber-400/20 text-amber-900 dark:text-amber-100 border-b border-amber-400/50 px-1 rounded-sm">
+                US$ 102 bilhões
+              </span>{" "}
+              entre{" "}
+              <span className="bg-amber-400/20 text-amber-900 dark:text-amber-100 border-b border-amber-400/50 px-1 rounded-sm">
+                2024 e 2028
+              </span>
+              . Desse total,{" "}
+              <span className="bg-amber-400/20 text-amber-900 dark:text-amber-100 border-b border-amber-400/50 px-1 rounded-sm">
+                US$ 11,5 bilhões
+              </span>{" "}
+              serão destinados a projetos de baixo carbono..."
+            </>
+          }
+        />
+      </TabsContent>
+
+      {/* ─── MÓDULO 4: A MATRIZ OPERACIONAL ─── */}
+      <TabsContent value="modulo-4" className="space-y-[40px]">
+        <ModuleBanner
+          numero={4}
+          titulo="A Matriz Operacional"
+          descricao="Tipologias e Gêneros. Entendendo o caráter funcional dos textos das questões CESGRANRIO."
+          gradiente="bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-500"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-6">
+          <ModuleSectionHeader
+            index={4}
+            title="A Natureza dos Textos (Tipologia)"
+            variant="indigo"
+          />
+
+          <ContentAccordion
+            mode="stacked"
+            titulo="A Estrutura Genética do Texto"
+            icone={<LuDna />}
+            corIndicador="bg-indigo-500"
+            defaultOpen={true}
+            slides={[
+              {
+                titulo: "1. Conceituação: Tipologia vs Gênero",
+                icone: "📚",
+                conteudo: (
+                  <div className="space-y-4 text-xs">
+                    <p className="text-muted-foreground">
+                      <strong>Tipologia (DNA):</strong> É a natureza linguística
+                      do texto (Narrar, Descrever, Argumentar, Expor, Injunção).
+                    </p>
+                    <p className="text-muted-foreground">
+                      <strong>Gênero (Vestimenta):</strong> É a função social e
+                      o formato (Relatório, Edital, E-mail, Notícia).
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "2. Exemplificação (Mundo Petrobras)",
+                icone: "🏭",
+                conteudo: (
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg border border-indigo-200 dark:border-indigo-800">
+                      <p className="font-bold text-[10px] text-indigo-700 dark:text-indigo-400 mb-1">
+                        Manual Técnico (POP)
                       </p>
-                      <p className="text-sm text-emerald-900/80 dark:text-emerald-300 mt-2">
-                        Não leia para entender. Aja como um radar procurando
-                        aquele termo exato no meio das palavras.
+                      <p className="text-[9px] text-muted-foreground italic">
+                        Tipologia: Injuntiva (Instrui e ordena procedimentos).
                       </p>
                     </div>
+                    <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                      <p className="font-bold text-[10px] text-blue-700 dark:text-blue-400 mb-1">
+                        Relatório de Incidente
+                      </p>
+                      <p className="text-[9px] text-muted-foreground italic">
+                        Tipologia: Narrativo (Relata fatos no tempo).
+                      </p>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                titulo: "3. Dicas: O Verbo é a Chave",
+                icone: "💡",
+                conteudo: (
+                  <div className="p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl text-xs">
+                    <p className="text-amber-800 dark:text-amber-300">
+                      Para matar a questão: <strong>Injuntivo</strong> usa
+                      imperativo (Faça, Aperte). <strong>Dissertativo</strong>{" "}
+                      usa verbos de opinião (Acredita-se, Torna-se necessário).{" "}
+                      <strong>Narrativo</strong> usa pretérito (Aconteceu,
+                      Relatou-se).
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "4. Exceções: O Texto Híbrido",
+                icone: "🌓",
+                conteudo: (
+                  <div className="space-y-2">
+                    <p className="text-[11px] text-muted-foreground">
+                      Um texto quase nunca é 100% puro. Um edital pode ter
+                      partes **expositivas** (apresentação) e partes
+                      **injuntivas** (regras).
+                    </p>
+                    <p className="text-[10px] text-muted-foreground font-bold border-t pt-2">
+                      CESGRANRIO: Ela sempre pergunta qual o tipo **dominante**
+                      ou a finalidade **principal**. Não se apegue a um único
+                      parágrafo.
+                    </p>
                   </div>
                 ),
               },
@@ -1201,140 +903,29 @@ export default function AulaInterpretacaoTexto({
           />
         </section>
 
-        {/* SEÇÃO 2: ARMADILHAS */}
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+        {/* Resumo e Multimídia Módulo 4 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
           <ModuleSectionHeader
             index={2}
-            title="As 'Três Portas do Erro' na Interpretação"
-            description="Extrapolação, Redução e Contradição: aprenda a identificar os distratores."
-            variant="violet"
-          />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 bg-red-500/5 border border-red-500/20 rounded-2xl relative overflow-hidden group">
-              <div className="absolute top-4 right-4 text-red-500/20 group-hover:scale-125 transition-transform duration-500">
-                <LuTriangleAlert size={48} />
-              </div>
-              <h4 className="text-xl font-bold text-red-600 mb-3">
-                Extrapolação
-              </h4>
-              <p className="text-sm text-red-900/70 dark:text-red-300">
-                Quando você traz o "que sabe de casa" para a prova. Se o texto
-                não disse, é falso!
-              </p>
-            </div>
-            <div className="p-6 bg-orange-500/5 border border-orange-500/20 rounded-2xl relative overflow-hidden group">
-              <div className="absolute top-4 right-4 text-orange-500/20 group-hover:scale-125 transition-transform duration-500">
-                <LuPause size={48} />
-              </div>
-              <h4 className="text-xl font-bold text-orange-600 mb-3">
-                Redução
-              </h4>
-              <p className="text-sm text-orange-900/70 dark:text-orange-300">
-                O texto diz algo amplo, e a alternativa foca em apenas um
-                detalhe como se fosse o todo.
-              </p>
-            </div>
-            <div className="p-6 bg-rose-500/5 border border-rose-500/20 rounded-2xl relative overflow-hidden group">
-              <div className="absolute top-4 right-4 text-rose-500/20 group-hover:scale-125 transition-transform duration-500">
-                <LuSkipBack size={48} />
-              </div>
-              <h4 className="text-xl font-bold text-rose-600 mb-3">
-                Contradição
-              </h4>
-              <p className="text-sm text-rose-900/70 dark:text-rose-300">
-                A alternativa afirma o oposto do que o autor defendeu ou sugeriu
-                nas entrelinhas.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* SEÇÃO 3: DESAFIO PRÁTICO */}
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={3}
-            title="Desafio Prático: Laboratório de Gabarito"
-            description="Coloque suas habilidades à prova com exemplos de certo vs errado."
-            variant="violet"
-          />
-          {shuffledChallenges.length > 0 && (
-            <div className="space-y-8">
-              <div
-                className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8"
-                key={`challenge-${challengeIndex}`}
-              >
-                <div className="space-y-3">
-                  <h4 className="font-bold text-red-500 flex items-center gap-2">
-                    ❌ Onde a maioria erra:
-                  </h4>
-                  <div className="h-full min-h-[180px] p-6 bg-gradient-to-br from-red-50 to-rose-50 border border-red-100 rounded-2xl flex items-center justify-center dark:from-red-900/10 dark:to-rose-900/10">
-                    <p className="line-through text-lg text-red-800/70 font-medium decoration-red-500/50">
-                      "{shuffledChallenges[challengeIndex].wrong}"
-                    </p>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <h4 className="font-bold text-emerald-500 flex items-center gap-2">
-                    ✅ Como você vai acertar:
-                  </h4>
-                  <div className="h-full min-h-[180px] p-6 bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100 rounded-2xl flex flex-col justify-center dark:from-emerald-900/10 dark:to-teal-900/10">
-                    <p className="text-lg font-bold text-emerald-800 mb-4 text-center">
-                      "{shuffledChallenges[challengeIndex].correct}"
-                    </p>
-                    <div className="p-4 bg-white/60 rounded-xl border border-emerald-100/50 backdrop-blur-sm flex items-start gap-3 dark:bg-black/20">
-                      <span className="text-lg">💡</span>{" "}
-                      <p className="text-sm font-medium leading-relaxed text-emerald-700">
-                        {shuffledChallenges[challengeIndex].explanation}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center gap-4">
-                <Button
-                  variant="outline"
-                  onClick={() =>
-                    setChallengeIndex(
-                      (prev) => (prev + 1) % shuffledChallenges.length,
-                    )
-                  }
-                  className={cn(
-                    "rounded-full px-8 py-6 font-bold text-lg shadow-xl hover:scale-105 active:scale-95 transition-all text-foreground",
-                    materiaCor.includes("blue")
-                      ? "shadow-blue-500/40 border-blue-500/50"
-                      : materiaCor.includes("emerald")
-                        ? "shadow-emerald-500/40 border-emerald-500/50"
-                        : "shadow-indigo-500/40 border-indigo-500/50",
-                  )}
-                >
-                  🔄 Próximo Desafio
-                </Button>
-              </div>
-            </div>
-          )}
-        </section>
-
-        {/* SEÇÃO 3: RESUMO E MULTIMÍDIA */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={3}
             title="Resumo e Multimídia"
-            variant="violet"
+            description="Visualize as tipologias e gêneros dominantes nas provas da estatal."
+            variant="indigo"
           />
+
           <LessonTabs
+            variant="indigo"
             tabs={[
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlay,
+                icon: LuPlayCircle,
                 content: (
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
-                        videoId="B9v8iK4R50U"
-                        title="Estratégias para Cesgranrio"
-                        duration="18:45"
-                        thumbnail="https://images.unsplash.com/photo-1454165833767-027ffea9e77b?q=80&w=1000&auto=format&fit=crop"
+                        videoId="dQw4w9WgXcQ"
+                        title="Tipologias e Gêneros Funcionais"
+                        duration="08:20"
                       />
                     </div>
                   </div>
@@ -1348,43 +939,37 @@ export default function AulaInterpretacaoTexto({
                   <ModuleSummaryCarouselNew
                     images={[
                       {
-                        imageUrl: "/images/mapa-mental/inter_m3_rota.png",
-                        title: "A Rota da Varredura",
-                        type: "Guia",
+                        title: "Matriz Tipológica Industrial",
+                        type: "Diagrama",
                         placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
+                        imageUrl: "/temp-img.png", // PROMPT: Diagrama corporativo limpo. Título central: Matriz Tipológica. Cinco ramificações com ícones industriais: Engrenagem (Injuntivo - Manuais), Fotografia Estática (Descritivo - Inventários), Gráfico de Tendência (Dissertativo - Análises), Livro/Timeline (Narrativo - Relatório Operacional de Incidente), Painel de Aviso (Expositivo - Boletins de Segurança). Cores: Tons de azul ardósia e teal.
                       },
                       {
-                        imageUrl: "/images/mapa-mental/inter_m3_cone.png",
-                        title: "O Cone do Contexto",
-                        type: "Infográfico",
+                        title: "Gêneros: Relatório vs Edital",
+                        type: "Comparação",
                         placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
                       },
-                      {
-                        imageUrl:
-                          "/images/mapa-mental/inter_m3_extrapolacao.png",
-                        title: "Extrapolação vs Redução",
-                        type: "Comparação",
-                        placeholderColor: "bg-red-100 dark:bg-red-900/30",
-                      },
                     ]}
+                    moduloNome="A Matriz Operacional"
+                    tituloAula="Interpretação de Texto"
+                    materia="Língua Portuguesa"
                   />
                 ),
               },
               {
-                id: "visual",
+                id: "macete",
                 label: "Macete Visual",
-                icon: LuImage,
+                icon: LuBrain,
                 content: (
-                  <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
+                  <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-blue-500/5 rounded-2xl border border-indigo-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
-                      O Filtro do Gabarito
+                      DNA do Texto
                     </h3>
-                    <div className="text-7xl my-8 animate-spin-slow">
-                      💎 🛡️ 🎯
-                    </div>
+                    <div className="text-7xl my-8">🧬 📜</div>
                     <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
-                      "Nem mais (Extrapolação), nem menos (Redução), nem o
-                      oposto (Contradição). Fique na Verdaaaaaade do Texto!"
+                      "Injuntivo <b>manda</b> (imperativo), Narrativo{" "}
+                      <b>conta</b> (tempo), Descritivo <b>pinta</b> (estado) e
+                      Dissertativo <b>argumenta</b> (opinião)!"
                     </p>
                   </div>
                 ),
@@ -1392,23 +977,16 @@ export default function AulaInterpretacaoTexto({
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuVolume2,
+                icon: LuMusic,
                 content: (
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
                         audioUrl="#"
-                        titulo="O Filtro Final"
-                        artista="Elite Team"
-                        capaUrl="https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=1000&auto=format&fit=crop"
-                        lyrics={`(Refrão)
-                                                        Cuidado com a porta, não deixe entrar!
-                                                        O erro lá fora quer te derrubar.
-                                                        
-                                                        (Ponte)
-                                                        Extrapolou? Perdeu a questão.
-                                                        Reduziu? Caiu no chão.
-                                                        Contradisse? Sem perdão!`}
+                        titulo="Resumo: Tipologias e Gêneros"
+                        artista="Prof. Antigravity"
+                        capaUrl="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop"
+                        lyrics={`(Verso)\nSe tem verbo no imperativo, é injuntivo com certeza...\nSe relata um acidente, é narrativa a natureza.\nO edital é expositivo, o manual te orienta...\nE a tipografia certa é a arma que te sustenta!`}
                       />
                     </div>
                   </div>
@@ -1418,396 +996,165 @@ export default function AulaInterpretacaoTexto({
           />
         </section>
 
-        {/* SEÇÃO 4: SIMULADO FINAL M3 */}
-        <QuizInterativo
-          questoes={quizM3}
-          titulo="Estratégias de Elite"
-          icone="🏆"
-          numero={4}
-          variant="violet"
-          onComplete={(score) => handleModuleComplete("modulo-3", score)}
-        />
-      </TabsContent>
-
-      {/* ─── MÓDULO 4: COERÊNCIA E PROGRESSÃO ─── */}
-      <TabsContent value="modulo-4" className="space-y-[50px]">
-        <ModuleBanner
-          numero={4}
-          titulo="Coerência e Progressão"
-          descricao="A fluidez do texto corporativo: amarração de ideias e progressão temática."
-          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
-        />
-
-        {/* SEÇÃO 1: COERÊNCIA GLOBAL ACELERADA */}
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={1}
-            title="Os 3 Policiamentos da Leitura"
-            description="As leis universais da coerência: Não Contradição, Progressão e Coerência Externa."
-            variant="amber"
-          />
-          <p className="text-muted-foreground text-lg mb-6">
-            Um texto bem desenvolvido na prova discursiva e avaliado nas
-            questões de reescritura precisa atender a 3 leis universais da
-            coerência:
-          </p>
-          <div className="space-y-6">
-            <ContentAccordion
-              titulo="1. Princípio da Não Contradição"
-              icone={<LuScale className="text-emerald-500" />}
-              corIndicador="bg-emerald-500"
-              slides={[
-                {
-                  titulo: "Conceito e Lógica Interna",
-                  icone: "⚖️",
-                  conteudo: (
-                    <div className="grid grid-cols-1 gap-6">
-                      <div className="space-y-4">
-                        <h4 className="font-bold text-emerald-700 dark:text-emerald-400">
-                          O que é?
-                        </h4>
-                        <p className="text-muted-foreground leading-relaxed">
-                          A coerência de um texto depende da harmonia entre suas
-                          partes. Um texto não pode afirmar um fato no início e
-                          negá-lo ou apresentar uma conclusão que o invalide
-                          posteriormente. Bancas como FGV e Cesgranrio exploram
-                          isso em questões de substituição de conectivos.
-                        </p>
-                      </div>
-                      <div className="bg-emerald-500/5 p-5 rounded-xl border border-emerald-500/10">
-                        <h4 className="font-bold text-emerald-800 dark:text-emerald-300 mb-2">
-                          Exemplificação na Reescritura:
-                        </h4>
-                        <div className="space-y-2 text-sm italic">
-                          <p className="text-red-600 dark:text-red-400 line-through">
-                            Errado: "A Petrobras aumentou a produção;{" "}
-                            <b>porém</b>, os números subiram." (Contradição:
-                            'porém' indica oposição onde deveria haver
-                            conclusão/causa).
-                          </p>
-                          <p className="text-emerald-600 dark:text-emerald-400">
-                            Correto: "A Petrobras aumentou a produção;{" "}
-                            <b>por conseguinte</b>, os números subiram."
-                          </p>
-                        </div>
-                      </div>
-                      <div className="bg-amber-500/5 p-4 rounded-xl border border-amber-500/10">
-                        <p className="text-amber-800 dark:text-amber-300 text-sm">
-                          <span className="font-bold">⚠️ Atenção:</span> A
-                          contradição muitas vezes é sutil, escondida em
-                          adjetivos ou advérbios que alteram a carga semântica
-                          da frase anterior.
-                        </p>
-                      </div>
-                    </div>
-                  ),
-                },
-              ]}
-            />
-
-            <ContentAccordion
-              titulo="2. Progressão e Continuidade Temática"
-              icone={<LuTrendingUp className="text-blue-500" />}
-              corIndicador="bg-blue-500"
-              slides={[
-                {
-                  titulo: "Encadeamento 'Dado-Novo'",
-                  icone: "📈",
-                  conteudo: (
-                    <div className="grid grid-cols-1 gap-6">
-                      <div className="space-y-4">
-                        <h4 className="font-bold text-blue-700 dark:text-blue-400">
-                          Conceituação:
-                        </h4>
-                        <p className="text-muted-foreground leading-relaxed">
-                          Todo texto de elite deve avançar. A continuidade
-                          garante que o assunto seja mantido (Coesão
-                          Referencial), enquanto a progressão garante que
-                          informações novas sejam adicionadas. Se um texto
-                          apenas repete o que já foi dito, ele sofre de
-                          "paralisia temática".
-                        </p>
-                      </div>
-                      <div className="bg-blue-500/5 p-5 rounded-xl border border-blue-500/10">
-                        <h4 className="font-bold text-blue-800 dark:text-blue-300 mb-2">
-                          Dica de Elite:
-                        </h4>
-                        <p className="text-sm">
-                          Mapeie os parágrafos buscando o "fio da meada". Cada
-                          parágrafo deve ser uma ponte para o próximo, nunca uma
-                          ilha isolada.
-                        </p>
-                      </div>
-                      <div className="space-y-2">
-                        <h4 className="font-bold">Exceção / Ruptura:</h4>
-                        <p className="text-muted-foreground text-sm">
-                          A interrupção brusca da progressão só é aceitável em
-                          textos literários para causar choque. Em textos
-                          técnicos e dissertativos (padrão Petrobras), a ruptura
-                          é erro grave de coerência.
-                        </p>
-                      </div>
-                    </div>
-                  ),
-                },
-              ]}
-            />
-
-            <ContentAccordion
-              titulo="3. Coerência Externa (Mundo Real)"
-              icone={<LuGlobe className="text-purple-500" />}
-              corIndicador="bg-purple-500"
-              slides={[
-                {
-                  titulo: "Verossimilhança e Realidade",
-                  icone: "🌍",
-                  conteudo: (
-                    <div className="grid grid-cols-1 gap-6">
-                      <div className="space-y-4">
-                        <h4 className="font-bold text-purple-700 dark:text-purple-400">
-                          O Filtro da Verdade:
-                        </h4>
-                        <p className="text-muted-foreground leading-relaxed">
-                          O texto deve respeitar as leis do mundo real e do
-                          conhecimento compartilhado. Bancas costumam colocar
-                          distratores (alternativas erradas) que, embora
-                          sintaticamente corretos, afirmam absurdos lógicos ou
-                          científicos não amparados pelo texto base.
-                        </p>
-                      </div>
-                      <div className="bg-purple-500/10 p-4 rounded-xl border border-purple-500/20 italic text-sm">
-                        "O conhecimento de mundo do candidato não deve
-                        substituir o texto, mas deve servir como um alerta para
-                        detectar incoerências externas grosseiras."
-                      </div>
-                      <div className="space-y-2">
-                        <h4 className="font-bold">Exemplificação:</h4>
-                        <p className="text-muted-foreground text-sm">
-                          Se o texto discute "combustíveis fósseis" e uma
-                          alternativa afirma que eles são "fontes inesgotáveis
-                          de energia limpa", há uma quebra de coerência externa
-                          com o conhecimento técnico exigido para o cargo.
-                        </p>
-                      </div>
-                    </div>
-                  ),
-                },
-              ]}
-            />
-          </div>
-        </section>
-
-        {/* SEÇÃO 2: REESCRITURA */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={2}
-            title="Anatomia da Reescritura"
-            description="Analise as armadilhas clássicas em que bancas tentam te derrubar ao reescrever frases."
-            variant="amber"
-          />
-          <p className="text-muted-foreground">
-            Analise as armadilhas clássicas em que bancas tentam te derrubar:
-          </p>
-          <CardCarousel
-            cards={[
-              {
-                icone: "🪤",
-                titulo: "Troca de Voz Verbal",
-                descricao: (
-                  <div className="pb-4">
-                    "A empresa produziu petróleo" = "O petróleo foi produzido
-                    pela empresa". A banca erra o <b>tempo verbal</b> ("foi" em
-                    vez de "será").
-                  </div>
-                ),
-                corFundo: "bg-indigo-500/10",
-              },
-              {
-                icone: "🔀",
-                titulo: "Inversão de Sintaxe",
-                descricao: (
-                  <div className="pb-4">
-                    Ao mover um advérbio para o início da frase, a banca pode
-                    alterar o sentido se esquecer a vírgula (Ex: "Somente ele
-                    veio" vs "Ele veio, somente").
-                  </div>
-                ),
-                corFundo: "bg-rose-500/10",
-              },
-              {
-                icone: "🧲",
-                titulo: "Erro de Regência do Relativo",
-                descricao: (
-                  <div className="pb-4">
-                    "O projeto <b>que</b> a Petrobras investiu" → Falso! O verbo
-                    investir exige "em". O correto é "<b>em que</b> a Petrobras
-                    investiu".
-                  </div>
-                ),
-                corFundo: "bg-blue-500/10",
-              },
-            ]}
-          />
-        </section>
-
-        {/* SEÇÃO 3: RESUMO E MULTIMÍDIA */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={3}
-            title="Resumo e Multimídia"
-            description="Revise a progressão temática e as técnicas de reescritura."
-            variant="amber"
-          />
-          <LessonTabs
-            tabs={[
-              {
-                id: "video",
-                label: "Vídeo Aula",
-                icon: LuPlay,
-                content: (
-                  <div className="w-full flex flex-col items-center py-6">
-                    <div className="w-full max-w-3xl">
-                      <VideoModal
-                        videoId="B9v8iK4R50U"
-                        title="Coerência e Progressão Temática"
-                        duration="15:20"
-                        thumbnail="https://images.unsplash.com/photo-1454165833767-027ffea9e77b?q=80&w=1000&auto=format&fit=crop"
-                      />
-                    </div>
-                  </div>
-                ),
-              },
-              {
-                id: "resumo",
-                label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
-                  <ModuleSummaryCarouselNew
-                    images={[
-                      {
-                        imageUrl: "/images/mapa-mental/inter_m4_mapeamento.png",
-                        title: "A Progressão Temática",
-                        type: "Infográfico",
-                        placeholderColor:
-                          "bg-emerald-100 dark:bg-emerald-900/30",
-                      },
-                      {
-                        imageUrl:
-                          "/images/mapa-mental/inter_m4_reescritura.png",
-                        title: "A Balança da Reescritura",
-                        type: "Guia",
-                        placeholderColor: "bg-cyan-100 dark:bg-cyan-900/30",
-                      },
-                      {
-                        imageUrl: "/images/mapa-mental/inter_m4_elipse.png",
-                        title: "A Arte da Elipse",
-                        type: "Esquema",
-                        placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
-                      },
-                    ]}
-                  />
-                ),
-              },
-            ]}
-          />
-        </section>
-
-        {/* SEÇÃO 4: QUIZ FIXAÇÃO M4 */}
         <QuizInterativo
           questoes={quizM4}
-          titulo="Coerência e Progressão"
-          icone="🎯"
+          titulo="Desafio de Tipologias e Armadilhas"
+          icone="🔥"
           numero={4}
-          variant="amber"
+          variant="indigo"
           onComplete={(score) => handleModuleComplete("modulo-4", score)}
+        />
+
+        {/* APLICAÇÃO PRÁTICA: MARCA-TEXTO MÓDULO 4 */}
+        <TextAnalysisLab
+          index={4}
+          titulo="Laboratório: A Matriz Operacional"
+          subtitulo="Identificando marcas de tipologia injuntiva (instrução) em manuais."
+          legenda={[
+            {
+              cor: "bg-indigo-400 shadow-[0_0_10px_rgba(129,140,248,0.5)]",
+              label: "Verbo de Ação (Injuntivo)",
+            },
+          ]}
+          texto={
+            <>
+              "Para garantir a segurança,{" "}
+              <span className="bg-indigo-400/20 text-indigo-900 dark:text-indigo-100 border-b border-indigo-400/50 px-1 rounded-sm">
+                inspecione
+              </span>{" "}
+              periodicamente as válvulas de pressão e{" "}
+              <span className="bg-indigo-400/20 text-indigo-900 dark:text-indigo-100 border-b border-indigo-400/50 px-1 rounded-sm">
+                registre
+              </span>{" "}
+              qualquer anomalia no log operacional."
+            </>
+          }
         />
       </TabsContent>
 
-      {/* ─── MÓDULO 5: MARATONA DO GABARITO ─── */}
-      <TabsContent value="modulo-5" className="space-y-[50px]">
+      {/* ─── MÓDULO 5: ENGENHARIA DA COESÃO ─── */}
+      <TabsContent value="modulo-5" className="space-y-[40px]">
         <ModuleBanner
           numero={5}
-          titulo="Maratona do Gabarito"
-          descricao="Revisão final, simulado e consolidação total do seu domínio textual."
-          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
+          titulo="A Engenharia da Coesão"
+          descricao="Os conectivos que formam as pontes entre ideias. A CESGRANRIO ama perguntar a equivalência semântica deles."
+          gradiente="bg-gradient-to-br from-emerald-600 via-green-500 to-teal-500"
         />
 
-        {/* SEÇÃO 1: A BÚSSOLA FINAL */}
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-6">
           <ModuleSectionHeader
-            index={1}
-            title="Os Comandos Perigosos"
-            description="Fique atento aos enunciados que podem mudar completamente o que se procura."
-            variant="rose"
+            index={5}
+            title="As Ferramentas de Articulação"
+            variant="emerald"
           />
-          <CardCarousel
-            itemsPerView={2}
-            cards={[
+          <p className="text-muted-foreground leading-relaxed">
+            O sentido lógico do texto é amarrado por conjunções e pronomes
+            vitais. Conhecer a intenção principal deles o salva da temida
+            "Contradição".
+          </p>
+
+          <ContentAccordion
+            mode="stacked"
+            titulo="A Engenharia dos Conectivos"
+            icone={<LuLink />}
+            corIndicador="bg-emerald-500"
+            defaultOpen={true}
+            slides={[
               {
-                icone: "🔍",
-                titulo: "Infere-se que...",
-                descricao: (
-                  <div className="pb-4">
-                    Não está escrito. Você vai precisar deduzir uma verdade
-                    inquestionável a partir de uma pista do texto.
+                titulo: "1. Conceituação: O Que é Coesão?",
+                icone: "🔗",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground">
+                      <strong>Sequencial (Conectivos):</strong> É o uso de
+                      conjunções para estabelecer relações lógicas (causa,
+                      oposição, conclusão).
+                    </p>
+                    <p className="text-muted-foreground">
+                      <strong>Referencial (Pronomes):</strong> Uso de termos que
+                      evitam repetições, apontando para o que já foi dito ou o
+                      que virá.
+                    </p>
                   </div>
                 ),
-                corFundo: "bg-amber-500/10",
               },
               {
-                icone: "📝",
-                titulo: "O texto tem o propósito de...",
-                descricao: (
-                  <div className="pb-4">
-                    Busca pela Tese/Intenção principal do autor. Cuidado com
-                    alternativas que resumem só *um* parágrafo.
+                titulo: "2. Exemplificação: O Jogo das Trocas",
+                icone: "⚖️",
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl border-l-4 border-emerald-500 text-xs">
+                      <p className="font-bold mb-1">Cenário Petrobras:</p>
+                      <p className="italic mb-2">
+                        "A produção subiu, <strong>mas</strong> o custo de
+                        extração também." (Oposição direta).
+                      </p>
+                      <p className="italic">
+                        "<strong>Embora</strong> a produção tenha subido, o
+                        custo alto preocupa." (Concessão - exige mudança no
+                        verbo 'tenha subido').
+                      </p>
+                    </div>
                   </div>
                 ),
-                corFundo: "bg-emerald-500/10",
               },
               {
-                icone: "🚫",
-                titulo: "Exceto / Qual não condiz",
-                descricao: (
-                  <div className="pb-4">
-                    Atenção máxima! A banca quer o Erro (Extrapolação,
-                    Contradição ou Redução). Marque com Tinta Vermelha Mental na
-                    prova!
+                titulo: "3. Dicas: Conquanto vs Porquanto",
+                icone: "💡",
+                conteudo: (
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                      <h5 className="font-bold text-blue-700 dark:text-blue-400 text-xs mb-1">
+                        C<strong>O</strong>NQUANTO
+                      </h5>
+                      <p className="text-[10px] text-muted-foreground">
+                        = Emb<strong>O</strong>ra (Concessiva). Inicia uma
+                        oposição "fraca".
+                      </p>
+                    </div>
+                    <div className="p-3 bg-teal-50 dark:bg-teal-900/20 rounded-lg border border-teal-200 dark:border-teal-800">
+                      <h5 className="font-bold text-teal-700 dark:text-teal-400 text-xs mb-1">
+                        P<strong>O</strong>RQUANTO
+                      </h5>
+                      <p className="text-[10px] text-muted-foreground">
+                        = P<strong>O</strong>RQUE (Causal). Inicia uma
+                        explicação/causa.
+                      </p>
+                    </div>
                   </div>
                 ),
-                corFundo: "bg-rose-500/10",
+              },
+              {
+                titulo: "4. Exceções: O 'E' com valor de 'Mas'",
+                icone: "⚠️",
+                conteudo: (
+                  <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded-xl text-xs">
+                    <p className="text-muted-foreground">
+                      <strong>Cuidado:</strong> A conjunção "E" pode ser
+                      adversativa se expressar contraste.
+                    </p>
+                    <p className="italic font-bold mt-2">
+                      "O técnico leu o manual <strong>e</strong> não entendeu."
+                      (= Mas não entendeu).
+                    </p>
+                  </div>
+                ),
               },
             ]}
           />
         </section>
 
-        {/* SEÇÃO 2: RESUMO E MULTIMÍDIA */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
           <ModuleSectionHeader
             index={2}
             title="Resumo e Multimídia"
-            description="Revisão final dos comandos de prova e técnicas de inferência."
-            variant="rose"
+            description="Visualize as pontes lógicas (conectivos) que estruturam o texto."
+            variant="emerald"
           />
+
           <LessonTabs
+            variant="emerald"
             tabs={[
-              {
-                id: "video",
-                label: "Vídeo Aula",
-                icon: LuPlay,
-                content: (
-                  <div className="w-full flex flex-col items-center py-6">
-                    <div className="w-full max-w-3xl">
-                      <VideoModal
-                        videoId="B9v8iK4R50U"
-                        title="Bússola Final e Pegadinhas"
-                        duration="22:15"
-                        thumbnail="https://images.unsplash.com/photo-1454165833767-027ffea9e77b?q=80&w=1000&auto=format&fit=crop"
-                      />
-                    </div>
-                  </div>
-                ),
-              },
               {
                 id: "resumo",
                 label: "Resumo Visual",
@@ -1816,22 +1163,713 @@ export default function AulaInterpretacaoTexto({
                   <ModuleSummaryCarouselNew
                     images={[
                       {
-                        imageUrl: "/images/mapa-mental/inter_m5_comandos.png",
-                        title: "Comandos Perigosos",
-                        type: "Guia",
-                        placeholderColor: "bg-rose-100 dark:bg-rose-900/30",
+                        title: "Mapa de Conectivos CESGRANRIO",
+                        type: "Mapa Mental",
+                        placeholderColor:
+                          "bg-emerald-100 dark:bg-emerald-900/30",
+                        imageUrl: "/temp-img.png", // PROMPT: Mapa mental premium com estilo de fluxograma industrial. Centro: Conectivos Lógicos. Ramificações: Oposição (Mas, Porém), Adição (E, Além disso), Concessão (Embora, Conquanto), Causa (Porquanto, Já que). Design limpo, vidro fosco, cores Petrobras (Verde/Azul).
                       },
                       {
-                        imageUrl: "/images/mapa-mental/inter_m5_tese.png",
-                        title: "Tese vs Argumento",
+                        title: "Equivalência: Porque vs Porquanto",
+                        type: "Card Técnico",
+                        placeholderColor: "bg-teal-100 dark:bg-teal-900/30",
+                        imageUrl: "/temp-img.png", // PROMPT: Card técnico estilo Apple. Título central: Porque = Porquanto. Explicação visual de causa/explicação. Fundo com gradiente suave teal e verde. Ícone de engrenagem e lupa. Premium UI.
+                      },
+                    ]}
+                    moduloNome="Engenharia da Coesão"
+                    tituloAula="Interpretação de Texto"
+                    materia="Língua Portuguesa"
+                  />
+                ),
+              },
+              {
+                id: "audio",
+                label: "Áudio Resumo",
+                icon: LuMusic,
+                content: (
+                  <div className="w-full flex justify-center py-4">
+                    <div className="w-full max-w-md">
+                      <MusicPlayerCard
+                        audioUrl="#"
+                        titulo="Resumo: Conectivos de Elite"
+                        artista="Prof. Antigravity"
+                        capaUrl="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000&auto=format&fit=crop"
+                        lyrics={`(Verso)\nPorquanto é causa, não confunda com o resto...\nConquanto é embora, o sentido é oposto ao manifesto.\nO conectivo é a ponte, o cimento da oração...\nErrou a conjunção, errou a interpretação!`}
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        {/* APLICAÇÃO PRÁTICA: MARCA-TEXTO MÓDULO 5 */}
+        <TextAnalysisLab
+          index={5}
+          titulo="Laboratório: Engenharia da Coesão"
+          subtitulo="Mapeando os conectivos que sustentam o sentido lógico do texto."
+          legenda={[
+            {
+              cor: "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.5)]",
+              label: "Conectivo de Oposição/Concessão",
+            },
+            {
+              cor: "bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.5)]",
+              label: "Elemento de Referência",
+            },
+          ]}
+          texto={
+            <>
+              "A transição energética da Petrobras não é apenas um compromisso
+              ambiental, mas uma necessidade estratégica de sobrevivência
+              mercadológica.{" "}
+              <span className="bg-amber-400/20 text-amber-900 dark:text-amber-100 border-b border-amber-400/50 px-1 rounded-sm">
+                Embora
+              </span>{" "}
+              o petróleo ainda seja a espinha dorsal financeira da{" "}
+              <span className="bg-blue-400/20 text-blue-900 dark:text-blue-100 border-b border-blue-400/50 px-1 rounded-sm">
+                companhia
+              </span>
+              , o investimento em fontes renováveis saltou 15% no último biênio.
+              Provavelmente,{" "}
+              <span className="bg-blue-400/20 text-blue-900 dark:text-blue-100 border-b border-blue-400/50 px-1 rounded-sm">
+                essa mudança
+              </span>{" "}
+              acelerará as parcerias..."
+            </>
+          }
+        />
+      </TabsContent>
+
+      {/* ─── MÓDULO 6: PISTAS E ENTRELINHAS ─── */}
+      <TabsContent value="modulo-6" className="space-y-[40px]">
+        <ModuleBanner
+          numero={6}
+          titulo="Pistas e Entrelinhas"
+          descricao="A anatomia avançada de pressupostos e subentendidos lógicos exigida nas deduções."
+          gradiente="bg-gradient-to-br from-sky-600 via-cyan-600 to-teal-500"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={6}
+            title="Lógica das Marcas (Verbos e Advérbios)"
+            variant="cyan"
+          />
+
+          <ContentAccordion
+            mode="stacked"
+            titulo="A Anatomia das Entrelinhas"
+            icone={<LuTarget />}
+            corIndicador="bg-sky-500"
+            defaultOpen={true}
+            slides={[
+              {
+                titulo: "1. Conceituação: Pistas e Marcas",
+                icone: "🔍",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground">
+                      <strong>Pressuposto:</strong> É a ideia "oculta" que o
+                      autor dá como certa através de palavras-chave (ex:
+                      <em>parou de</em>, <em>ainda</em>). No pressuposto, a
+                      verdade da frase principal depende da verdade da oculta.
+                    </p>
+                    <p className="text-muted-foreground">
+                      <strong>Subentendido:</strong> É a insinuação que depende
+                      do contexto e da malícia do leitor. Não há marca
+                      gramatical obrigatória. É a "batata quente" que o autor
+                      joga para o leitor concluir sozinho.
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "2. Exemplificação: Modalizadores",
+                icone: "💬",
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-sky-50 dark:bg-sky-900/20 rounded-xl border-l-4 border-sky-500 text-xs">
+                      <p className="italic mb-2">
+                        "<strong>Infelizmente</strong>, o cronograma sofreu
+                        atrasos." (O autor julga o fato como negativo pela marca
+                        subjetiva).
+                      </p>
+                      <p className="italic">
+                        "O técnico <strong>ainda</strong> não reparou o duto."
+                        (= Pressupõe-se que ele deveria ter reparado ou que já
+                        era esperado antes).
+                      </p>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                titulo: "3. Dicas: O Detective de Advérbios",
+                icone: "💡",
+                conteudo: (
+                  <div className="p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl text-xs">
+                    <p className="text-blue-800 dark:text-blue-300">
+                      <strong>Cace os 'mente':</strong> Advérbios como
+                      "surpreendentemente", "estratégicamente" ou "meramente"
+                      são portas de entrada para questões de interpretação. Eles
+                      revelam a <strong>intenção</strong> do autor escondida sob
+                      o fato.
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "4. Exceções: O Texto Técnico 'Frio'",
+                icone: "📄",
+                conteudo: (
+                  <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground">
+                      Em manuais técnicos puramente descritivos (ex:
+                      Procedimentos de Operação Padrão - POP), a modalização é
+                      minimizada para evitar dupla interpretação.
+                    </p>
+                    <p className="text-xs text-muted-foreground border-t pt-2">
+                      <strong>Cuidado:</strong> Se a banca pedir para achar
+                      "juízo de valor" em um POP, a resposta provavelmente
+                      apontará para a <strong>ausência</strong> de marcas ou
+                      para verbos no imperativo (injuntivos).
+                    </p>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        {/* Resumo e Multimídia Módulo 6 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
+          <ModuleSectionHeader
+            index={2}
+            title="Resumo e Multimídia"
+            description="Aprenda a ler o que não foi dito, mas foi marcado no texto."
+            variant="cyan"
+          />
+
+          <LessonTabs
+            variant="cyan"
+            tabs={[
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon: LuBookOpen,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    images={[
+                      {
+                        title: "As Marcas da Intencionalidade",
                         type: "Infográfico",
-                        placeholderColor: "bg-amber-100 dark:bg-amber-900/30",
+                        placeholderColor: "bg-cyan-100 dark:bg-cyan-900/30",
+                        imageUrl: "/temp-img.png", // PROMPT: Infográfico dark mode premium. Título: Marcas de Opinião. Destaque para advérbios 'Infelizmente', 'Obviamente'. Elementos de interface de usuário (UI) futurista, neon azul ciano, zero roxo. Estilo Apple.
                       },
+                    ]}
+                    moduloNome="Pistas e Entrelinhas"
+                    tituloAula="Interpretação de Texto"
+                    materia="Língua Portuguesa"
+                  />
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        <QuizInterativo
+          questoes={quizM6}
+          titulo="Detectando Pressuposições"
+          icone="🕵️"
+          numero={6}
+          variant="cyan"
+          onComplete={(score: number) =>
+            handleModuleComplete("modulo-6", score)
+          }
+        />
+
+        {/* APLICAÇÃO PRÁTICA: MARCA-TEXTO MÓDULO 6 */}
+        <TextAnalysisLab
+          index={6}
+          titulo="Laboratório: Pistas e Entrelinhas"
+          subtitulo="Detectando juízos de valor e graus de certeza do autor."
+          legenda={[
+            {
+              cor: "bg-violet-400 shadow-[0_0_10px_rgba(167,139,250,0.5)]",
+              label: "Modalizador (Grau de Certeza)",
+            },
+            {
+              cor: "bg-rose-400 shadow-[0_0_10px_rgba(251,113,133,0.5)]",
+              label: "Juízo de Valor (Opinião Implícita)",
+            },
+          ]}
+          texto={
+            <>
+              "A transição energética da Petrobras não é{" "}
+              <span className="bg-rose-400/20 text-rose-900 dark:text-rose-100 border-b border-rose-400/50 px-1 rounded-sm">
+                apenas
+              </span>{" "}
+              um compromisso ambiental, mas uma necessidade estratégica de
+              sobrevivência mercadológica. [...]
+              <span className="bg-violet-400/20 text-violet-900 dark:text-violet-100 border-b border-violet-400/50 px-1 rounded-sm">
+                Provavelmente
+              </span>
+              , essa mudança acelerará as parcerias com hubs tecnológicos
+              internacionais..."
+            </>
+          }
+        />
+      </TabsContent>
+
+      {/* ─── MÓDULO 7: AS AMEAÇAS TRIPLAS ─── */}
+      <TabsContent value="modulo-7" className="space-y-[40px]">
+        <ModuleBanner
+          numero={7}
+          titulo="As Ameaças Triplas"
+          descricao="Redução, Extrapolação e Contradição. Os pecados capitais do aluno na alternativa C."
+          gradiente="bg-gradient-to-br from-red-600 via-rose-500 to-orange-500"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-6">
+          <ModuleSectionHeader
+            index={7}
+            title="A Trindade Letal"
+            variant="rose"
+          />
+
+          <ContentAccordion
+            mode="stacked"
+            titulo="Os Erros Clássicos de Opção"
+            icone={<LuTriangleAlert />}
+            corIndicador="bg-rose-500"
+            defaultOpen={true}
+            slides={[
+              {
+                titulo: "1. Conceituação: Extrapolação vs Redução",
+                icone: "⚖️",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground">
+                      <strong>Extrapolação:</strong> Quando você vai além do
+                      limite lógico do texto, trazendo informações externas (seu
+                      conhecimento prévio).
+                    </p>
+                    <p className="text-muted-foreground">
+                      <strong>Redução:</strong> Quando você foca em um detalhe
+                      periférico e ignora que ele não é o tema central.
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "2. Exemplificação: O Perigo dos Absolutos",
+                icone: "🚨",
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-rose-50 dark:bg-rose-900/20 rounded-xl border-l-4 border-rose-500 text-xs">
+                      <p className="italic mb-2 text-rose-800 dark:text-rose-400 font-bold">
+                        Banca: "O texto afirma que a Petrobras é a única empresa
+                        com tecnologia X."
+                      </p>
+                      <p className="text-muted-foreground italic text-[11px]">
+                        No texto diz: "A Petrobras é referência nacional na
+                        tecnologia X". Notou? De 'referência' para 'única' há
+                        uma **Extrapolação** fatal.
+                      </p>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                titulo: "3. Dicas: Gatilhos de Erro",
+                icone: "💡",
+                conteudo: (
+                  <div className="p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl text-xs">
+                    <p className="text-blue-800 dark:text-blue-300">
+                      <strong>Sinal Vermelho:</strong> Palavras como "Apenas",
+                      "Sempre", "Nunca", "Exclusivamente" ou "Principalmente"
+                      costumam indicar opções de extrapolação ou redução. Use o
+                      filtro do "Tudo ou Nada".
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "4. Exceções: Quando o 'Sempre' é Verdade",
+                icone: "🔍",
+                conteudo: (
+                  <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground">
+                      Só aceite um termo absoluto se o texto for categórico.
+                    </p>
+                    <p className="text-xs text-muted-foreground border-t pt-2">
+                      <strong>Exemplo:</strong> "O uso de EPI é obrigatório em
+                      toda a área industrial." Nesse caso, o 'Sempre' ou
+                      'Obrigatório' está correto porque o texto-base assim o
+                      definiu.
+                    </p>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        {/* Resumo e Multimídia Módulo 7 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
+          <ModuleSectionHeader
+            index={2}
+            title="Resumo e Multimídia"
+            description="Evite os pecados capitais que anulam sua nota."
+            variant="rose"
+          />
+
+          <LessonTabs
+            variant="rose"
+            tabs={[
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon: LuBookOpen,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    images={[
                       {
-                        imageUrl: "/images/mapa-mental/inter_m5_inferencia.png",
-                        title: "A Fina Arte de Inferir",
-                        type: "Dica Prática",
-                        placeholderColor: "bg-orange-100 dark:bg-orange-900/30",
+                        title: "Radar de Erros: Extrapolação vs Redução",
+                        type: "Diagrama",
+                        placeholderColor: "bg-rose-100 dark:bg-rose-900/30",
+                        imageUrl: "/temp-img.png", // PROMPT: Diagrama de radar estilo monitoramento industrial. Três zonas críticas: Extrapolação (Fogo), Redução (Gelo), Contradição (Explosão). Design premium, tons de vermelho técnico, fundo escuro.
+                      },
+                    ]}
+                    moduloNome="As Ameaças Triplas"
+                    tituloAula="Interpretação de Texto"
+                    materia="Língua Portuguesa"
+                  />
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        <QuizInterativo
+          questoes={quizM7}
+          titulo="Julgando os Pecados"
+          icone="⚖️"
+          numero={7}
+          variant="rose"
+          onComplete={(score) => handleModuleComplete("modulo-7", score)}
+        />
+
+        {/* APLICAÇÃO PRÁTICA: MARCA-TEXTO MÓDULO 7 */}
+        <TextAnalysisLab
+          index={7}
+          titulo="Laboratório: As Ameaças Triplas"
+          subtitulo="Identificando extrapolações e reduções que tornam a opção incorreta."
+          legenda={[
+            {
+              cor: "bg-red-400 shadow-[0_0_10px_rgba(248,113,113,0.5)]",
+              label: "Extrapolação (Informação Além do Texto)",
+            },
+            {
+              cor: "bg-orange-400 shadow-[0_0_10px_rgba(251,146,60,0.5)]",
+              label: "Redução (Foco em Detalhe Pequeno)",
+            },
+          ]}
+          texto={
+            <>
+              "O aumento na produção de biocombustíveis reflete a nova política
+              verde." [...]{" "}
+              <span className="bg-red-400/20 text-red-900 dark:text-red-100 border-b border-red-400/50 px-1 rounded-sm">
+                A Petrobras abandonou de vez o petróleo
+              </span>{" "}
+              (Extrapolação).{" "}
+              <span className="bg-orange-400/20 text-orange-900 dark:text-orange-100 border-b border-orange-400/50 px-1 rounded-sm">
+                Houve um aumento
+              </span>{" "}
+              (Redução - ignora o motivo verde).
+            </>
+          }
+        />
+      </TabsContent>
+
+      {/* ─── MÓDULO 8: A LÓGICA CESGRANRIO ─── */}
+      <TabsContent value="modulo-8" className="space-y-[40px]">
+        <ModuleBanner
+          numero={8}
+          titulo="A Lógica CESGRANRIO"
+          descricao="Diretrizes específicas de como esta banca lida com textos do ecossistema de Óleo & Gás."
+          gradiente="bg-gradient-to-br from-blue-700 via-slate-600 to-sky-600"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-6">
+          <ContentAccordion
+            mode="stacked"
+            titulo="O Perfil da Banca"
+            icone={<LuCheck />}
+            corIndicador="bg-blue-500"
+            defaultOpen={true}
+            slides={[
+              {
+                titulo: "1. Conceituação: A Honestidade da Prova",
+                icone: "🤝",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground">
+                      Diferente da FGV ou Cebraspe, a{" "}
+                      <strong>CESGRANRIO</strong>
+                      costuma ser uma banca "honesta". Ela foca em semântica
+                      (sentido) e gramática funcional aplicada ao texto, sem
+                      tentar trapacear o aluno com questões subjetivas demais.
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "2. Exemplificação: O Foco em Substituição",
+                icone: "🔄",
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border-l-4 border-blue-500 text-xs">
+                      <p className="font-bold mb-1">Questão Clássica:</p>
+                      <p className="italic mb-2">
+                        "O termo 'X' pode ser substituído, sem alteração de
+                        sentido, por..."
+                      </p>
+                      <p className="text-muted-foreground">
+                        Ela testa se você conhece sinônimos técnicos e se
+                        entende como o contexto molda o significado da palavra.
+                      </p>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                titulo: "3. Dicas: O Texto é Sagrado",
+                icone: "💡",
+                conteudo: (
+                  <div className="p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl text-xs">
+                    <p className="text-blue-800 dark:text-blue-300">
+                      <strong>Dica de Ouro:</strong> Nunca responda com base no
+                      que você <em>acha</em> sobre o assunto no mundo real. A
+                      CESGRANRIO quer o que o <strong>autor</strong> disse nos
+                      limites daquelas linhas. Use o "Filtro de Fidelidade".
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "4. Exceções: Gramática Direta",
+                icone: "📝",
+                conteudo: (
+                  <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground">
+                      Nem tudo é interpretação "pura".
+                    </p>
+                    <p className="text-xs text-muted-foreground border-t pt-2">
+                      <strong>Aviso:</strong> Algumas questões de interpretação
+                      são, na verdade, disfarces para testar **Concordância** ou
+                      **Regência**. Se a troca de uma palavra exigir mudar o
+                      restante da frase, a banca pode considerar a opção errada.
+                    </p>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        {/* Resumo e Multimídia Módulo 8 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
+          <ModuleSectionHeader
+            index={2}
+            title="Resumo e Multimídia"
+            description="Consolide a lógica por trás das questões Cesgranrio."
+            variant="blue"
+          />
+
+          <LessonTabs
+            variant="blue"
+            tabs={[
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon: LuBookOpen,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    images={[
+                      {
+                        title: "Equivalência e Coesão",
+                        type: "Tabela",
+                        placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
+                      },
+                    ]}
+                    moduloNome="A Lógica CESGRANRIO"
+                    tituloAula="Interpretação de Texto"
+                    materia="Língua Portuguesa"
+                  />
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        {/* APLICAÇÃO PRÁTICA: MARCA-TEXTO MÓDULO 8 */}
+        <TextAnalysisLab
+          index={8}
+          titulo="Laboratório: Lógica CESGRANRIO"
+          subtitulo="Mapeando sinônimos técnicos e substituições contextuais."
+          legenda={[
+            {
+              cor: "bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.5)]",
+              label: "Termo Original",
+            },
+            {
+              cor: "bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,0.5)]",
+              label: "Substituição Sugerida",
+            },
+          ]}
+          texto={
+            <>
+              "A operação foi{" "}
+              <span className="bg-blue-400/20 text-blue-900 dark:text-blue-100 border-b border-blue-400/50 px-1 rounded-sm">
+                interrompida
+              </span>{" "}
+              por tempo indeterminado." No contexto, o termo poderia ser trocado
+              por{" "}
+              <span className="bg-sky-400/20 text-sky-900 dark:text-sky-100 border-b border-sky-400/50 px-1 rounded-sm">
+                suspensa
+              </span>{" "}
+              sem prejuízo ao sentido original.
+            </>
+          }
+        />
+      </TabsContent>
+
+      {/* ─── MÓDULO 9: CHECKLIST TÁTICO ─── */}
+      <TabsContent value="modulo-9" className="space-y-[40px]">
+        <ModuleBanner
+          numero={9}
+          titulo="Checklist Tático"
+          descricao="O roteiro de ação rápido em provas de português técnico da estatal."
+          gradiente="bg-gradient-to-br from-emerald-700 via-cyan-700 to-blue-700"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-6">
+          <ModuleSectionHeader
+            index={9}
+            title="Rotina de Ataque à Prova"
+            variant="emerald"
+          />
+
+          <ContentAccordion
+            mode="stacked"
+            titulo="Manual de Execução"
+            icone={<LuCheck />}
+            corIndicador="bg-emerald-500"
+            defaultOpen={true}
+            slides={[
+              {
+                titulo: "1. Conceituação: O Ciclo de Ataque",
+                icone: "🔄",
+                conteudo: (
+                  <div className="space-y-2 text-xs">
+                    <p className="text-muted-foreground">
+                      <strong>Passo 1:</strong> Enunciado (Identifique o que
+                      pedem).
+                    </p>
+                    <p className="text-muted-foreground">
+                      <strong>Passo 2:</strong> Fragmento (Vá direto ao ponto
+                      citado).
+                    </p>
+                    <p className="text-muted-foreground">
+                      <strong>Passo 3:</strong> Eliminação (Corte as
+                      extrapolações).
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "2. Exemplificação: O Filtro CESGRANRIO",
+                icone: "🧪",
+                conteudo: (
+                  <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl border-l-4 border-emerald-500 text-[10px]">
+                    <p className="font-bold mb-1">Ação em Campo:</p>
+                    <p className="italic">
+                      "A alternativa que diz 'A Petrobras foca em
+                      biocombustíveis' é tentadora, mas o texto fala de
+                      'exploração em águas profundas'. Elimine por
+                      **Contradição** ou **Extrapolação**."
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "3. Dicas: Gerenciamento de Energia",
+                icone: "⚡",
+                conteudo: (
+                  <div className="p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl text-xs">
+                    <p className="text-blue-800 dark:text-blue-300 font-bold">
+                      Não leia o texto como romance!
+                    </p>
+                    <p className="text-muted-foreground mt-1">
+                      Leia o enunciado primeiro. Muitas vezes a questão de
+                      gramática pode ser resolvida sem ler o texto inteiro,
+                      salvando fôlego para as questões de inferência densa.
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "4. Exceções: O Texto de Opinião Crítica",
+                icone: "📢",
+                conteudo: (
+                  <div className="space-y-2">
+                    <p className="text-xs text-muted-foreground">
+                      Quando o texto é um editorial ou artigo de opinião, a
+                      regra do Scanning pode falhar.
+                    </p>
+                    <p className="text-[10px] text-muted-foreground border-t pt-2">
+                      <strong>Por quê?</strong> Porque o autor espalha a tese
+                      dele por todo o texto. Nesses casos, a leitura integral e
+                      o **Skimming** (buscar o foco central) são obrigatórios.
+                    </p>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        {/* Resumo e Multimídia Módulo 9 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
+          <ModuleSectionHeader
+            index={2}
+            title="Resumo e Multimídia"
+            description="O seu roteiro final para o dia da prova."
+            variant="emerald"
+          />
+
+          <LessonTabs
+            variant="emerald"
+            tabs={[
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon: LuBookOpen,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    moduloNome="Checklist Tático"
+                    tituloAula="Interpretação de Texto"
+                    materia="Língua Portuguesa"
+                    images={[
+                      {
+                        title: "Checklist de Ataque",
+                        type: "Infográfico Tático",
+                        placeholderColor:
+                          "bg-emerald-100 dark:bg-emerald-900/30",
+                        imageUrl: "/temp-img.png", // PROMPT: Infográfico tático de checklist. Lista de itens com 'checks' verdes. Estilo futurista, HUD industrial. Texto legível 'Checklist de Ataque'. Premium dark mode aesthetics.
                       },
                     ]}
                   />
@@ -1841,14 +1879,53 @@ export default function AulaInterpretacaoTexto({
           />
         </section>
 
-        {/* SEÇÃO 3: SIMULADO DEBATIDO M5 */}
+        {/* APLICAÇÃO PRÁTICA: MARCA-TEXTO MÓDULO 9 */}
+        <TextAnalysisLab
+          index={9}
+          titulo="Laboratório: Checklist Tático"
+          subtitulo="O fluxo de ataque: do enunciado à eliminação de alternativas."
+          legenda={[
+            {
+              cor: "bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)]",
+              label: "Foco no Enunciado (Passo 1)",
+            },
+            {
+              cor: "bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]",
+              label: "Localização no Texto (Passo 2)",
+            },
+          ]}
+          texto={
+            <>
+              "De acordo com a linha 12..." (Passo 1:{" "}
+              <span className="bg-emerald-400/20 text-emerald-900 dark:text-emerald-100 border-b border-emerald-400/50 px-1 rounded-sm">
+                Limite a busca
+              </span>
+              ). No texto: "A refinaria opera em 90%..." (Passo 2:{" "}
+              <span className="bg-cyan-400/20 text-cyan-900 dark:text-cyan-100 border-b border-cyan-400/50 px-1 rounded-sm">
+                Confronte o dado
+              </span>
+              ).
+            </>
+          }
+        />
+      </TabsContent>
+
+      {/* ─── MÓDULO 10: ARENA DE ELITE ─── */}
+      <TabsContent value="modulo-10" className="space-y-[40px]">
+        <ModuleBanner
+          numero={10}
+          titulo="Arena de Elite"
+          descricao="10 questões randômicas extraídas de nosso gigantesco repósitorio de dados textuais orientados ao concurso Petrobras 2025."
+          gradiente="bg-gradient-to-br from-amber-700 via-yellow-600 to-orange-500"
+        />
+
         <QuizInterativo
-          questoes={quizM5}
-          titulo="Simulado Final"
-          icone="🏆"
-          numero={3}
-          variant="rose"
-          onComplete={(score) => handleModuleComplete("modulo-5", score)}
+          questoes={quizFinal}
+          titulo="O Exame Final de Interpretação Mestra"
+          icone="👑"
+          numero={10}
+          variant="indigo"
+          onComplete={(score) => handleModuleComplete("modulo-10", score)}
         />
       </TabsContent>
     </AulaTemplate>

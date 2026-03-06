@@ -215,7 +215,7 @@ export function AdminSidebar({
         "scrollbar-hide scrollbar-none",
         // Overlay mode: z-50 (acima do backdrop z-40), expandida com sombra
         isOverlayOpen
-          ? "w-64 z-50 shadow-2xl"
+          ? "w-72 z-50 shadow-2xl"
           : cn("z-40", isCollapsed ? "w-14 md:w-20" : "w-64"),
         isHidden && "-translate-x-full",
       )}
@@ -233,48 +233,56 @@ export function AdminSidebar({
           <div
             className={cn(
               "flex items-center",
-              isCollapsed && !isOverlayOpen ? "justify-center" : "space-x-3",
+              isCollapsed && !isOverlayOpen ? "justify-center" : "gap-3",
             )}
           >
             {/* Ícone/Logo */}
             <div
               className={cn(
-                "rounded-md flex items-center justify-center bg-primary",
-                "w-10 h-10 md:w-10 md:h-10 shadow-sm flex-shrink-0",
+                "rounded-lg shadow-lg flex items-center justify-center flex-shrink-0 shadow-black/5",
+                isCollapsed && !isOverlayOpen
+                  ? "w-10 h-10 md:w-12 md:h-12 bg-primary"
+                  : "w-10 h-10 md:w-12 md:h-12",
               )}
+              style={
+                !isCollapsed || isOverlayOpen
+                  ? { backgroundColor: "var(--primary-hex, var(--primary))" }
+                  : undefined
+              }
             >
               <span
                 className={cn(
-                  "text-white font-bold",
+                  "font-bebas font-bold text-white drop-shadow-md",
                   isCollapsed && !isOverlayOpen
-                    ? "text-base md:text-lg"
-                    : "text-xl",
+                    ? "text-lg md:text-xl"
+                    : "text-2xl md:text-3xl",
                 )}
               >
                 AV
               </span>
             </div>
-            {/* Título - só quando expandido */}
-            {(!isCollapsed || isOverlayOpen) && (
-              <div className="flex flex-col pt-1 min-w-0">
-                <div className="flex items-baseline whitespace-nowrap">
-                  <span
-                    className={cn(
-                      "font-bebas text-[32.5px] uppercase  text-primary",
-                    )}
-                  >
+
+            {/* Título — width/opacity animation garante expansão/contração limpa */}
+            <div
+              className={cn(
+                "transition-all duration-300 overflow-hidden whitespace-nowrap",
+                !isCollapsed || isOverlayOpen
+                  ? "w-auto opacity-100 max-w-[260px]"
+                  : "w-0 opacity-0 pointer-events-none",
+              )}
+            >
+              <div className="flex flex-col justify-center leading-none">
+                <h1 className="font-bebas font-bold text-[24px] md:text-[28px] tracking-tight leading-[1.1] flex items-baseline gap-1">
+                  <span style={{ color: "var(--primary-hex, var(--primary))" }}>
                     A VAGA
                   </span>
-                  <span className="font-bebas text-[33px] uppercase text-foreground tracking-[0.05em] ml-[0.20em]">
-                    É MINHA
-                  </span>
-                </div>
-                {/* Subtítulo Justificado - 3 Words */}
-                <span className="text-[8px]  font-bold tracking-[0.34em] uppercase text-gray-500 dark:text-gray-400 leading-none -mt-2 whitespace-nowrap">
-                  SIMULADOR DE CONCURSOS
+                  <span className="text-foreground">É MINHA</span>
+                </h1>
+                <span className="font-sans text-[8px] md:text-[8.3px] font-bold uppercase tracking-[0.2em] text-foreground/40 md:mt-1 -mt-0.5">
+                  Simulador de Concursos
                 </span>
               </div>
-            )}
+            </div>
           </div>
         </div>
 

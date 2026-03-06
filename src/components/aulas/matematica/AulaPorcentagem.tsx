@@ -19,6 +19,11 @@ import {
   QUIZ_M3_VARIACAO,
   QUIZ_M4_APLICACOES,
   QUIZ_M5_FINAL,
+  QUIZ_M6_COMPOSTA,
+  QUIZ_M7_CALCULO_REVERSO,
+  QUIZ_M8_REGRA_TRES,
+  QUIZ_M9_FINANCEIRO,
+  QUIZ_M10_SIMULADO,
 } from "./data/porcentagem-quizzes";
 
 // ── COMPONENT ───────────────────────────────────────────────────────────
@@ -49,6 +54,13 @@ export default function AulaPorcentagem({
   const [quizM3] = useState(() => getRandomQuestions(QUIZ_M3_VARIACAO, 6));
   const [quizM4] = useState(() => getRandomQuestions(QUIZ_M4_APLICACOES, 5));
   const [quizM5] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 5));
+  const [quizM6] = useState(() => getRandomQuestions(QUIZ_M6_COMPOSTA, 6));
+  const [quizM7] = useState(() =>
+    getRandomQuestions(QUIZ_M7_CALCULO_REVERSO, 6),
+  );
+  const [quizM8] = useState(() => getRandomQuestions(QUIZ_M8_REGRA_TRES, 6));
+  const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_FINANCEIRO, 5));
+  const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO, 6));
 
   const isModuleUnlocked = (_index: number) => true;
 
@@ -65,15 +77,20 @@ export default function AulaPorcentagem({
         "modulo-3",
         "modulo-4",
         "modulo-5",
+        "modulo-6",
+        "modulo-7",
+        "modulo-8",
+        "modulo-9",
+        "modulo-10",
       ].findIndex((m) => m === moduleId);
-      onUpdateProgress?.(Math.round(((idx + 1) / 5) * 100));
-      if (idx < 4) setTimeout(() => setActiveTab(`modulo-${idx + 2}`), 1500);
+      onUpdateProgress?.(Math.round(((idx + 1) / 10) * 100));
+      if (idx < 9) setTimeout(() => setActiveTab(`modulo-${idx + 2}`), 1500);
     }
   };
 
   useEffect(() => {
     if (currentProgress && currentProgress > 0) {
-      const count = Math.floor((currentProgress / 100) * 5);
+      const count = Math.floor((currentProgress / 100) * 10);
       const s = new Set<string>();
       for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
       setCompletedModules(s);
@@ -81,11 +98,16 @@ export default function AulaPorcentagem({
   }, [currentProgress]);
 
   const MODULE_DEFS = [
-    { id: "modulo-1", label: "Módulo 1", titulo: "Conceitos Básicos" },
+    { id: "modulo-1", label: "Módulo 1", titulo: "Fundamentos" },
     { id: "modulo-2", label: "Módulo 2", titulo: "Aumentos e Descontos" },
-    { id: "modulo-3", label: "Módulo 3", titulo: "Variação Percentual" },
-    { id: "modulo-4", label: "Módulo 4", titulo: "Aplicações Práticas" },
-    { id: "modulo-5", label: "Módulo 5", titulo: "Desafio Final" },
+    { id: "modulo-3", label: "Módulo 3", titulo: "Variação %" },
+    { id: "modulo-4", label: "Módulo 4", titulo: "Aplicações" },
+    { id: "modulo-5", label: "Módulo 5", titulo: "Desafio" },
+    { id: "modulo-6", label: "Módulo 6", titulo: "% Composta" },
+    { id: "modulo-7", label: "Módulo 7", titulo: "Cálculo Reverso" },
+    { id: "modulo-8", label: "Módulo 8", titulo: "Regra de Três" },
+    { id: "modulo-9", label: "Módulo 9", titulo: "Financeiro" },
+    { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Final" },
   ];
 
   return (
@@ -120,7 +142,6 @@ export default function AulaPorcentagem({
           gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
         />
         <div className="space-y-[50px]">
-          {/* Seção 1: Definição e Conversões */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
@@ -141,10 +162,10 @@ export default function AulaPorcentagem({
                   conteudo: (
                     <div className="space-y-4">
                       <p>
-                        <strong>Porcentagem</strong> (ou percentagem) significa
-                        literalmente <em>&quot;por cento&quot;</em> — uma razão
-                        cujo denominador é sempre 100. É a forma mais usada no
-                        mundo real para expressar proporções.
+                        <strong>Porcentagem</strong> significa literalmente{" "}
+                        <em>&quot;por cento&quot;</em> — uma razão cujo
+                        denominador é sempre 100. É a forma mais usada no mundo
+                        real para expressar proporções.
                       </p>
                       <div className="p-5 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-center">
                         <p className="text-lg font-bold font-mono mb-2">
@@ -158,8 +179,7 @@ export default function AulaPorcentagem({
                         Na Petrobras, porcentagem aparece em{" "}
                         <strong>tudo</strong>: eficiência de equipamentos (92%),
                         pureza de combustíveis (99,5%), taxas de rendimento
-                        financeiro (CDI + 2%), dentre outros indicadores
-                        operacionais.
+                        financeiro (CDI + 2%).
                       </p>
                     </div>
                   ),
@@ -193,9 +213,8 @@ export default function AulaPorcentagem({
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
-                        A banca adora confundir 0,035 com 35% (ao invés do
-                        correto 3,5%). Sempre conte as casas decimais: mover a
-                        vírgula 2 casas para a direita!
+                        A banca adora confundir 0,035 com 35%. Sempre conte as
+                        casas decimais: mover a vírgula 2 casas para a direita!
                       </AlertBox>
                     </div>
                   ),
@@ -256,7 +275,6 @@ export default function AulaPorcentagem({
             />
           </section>
 
-          {/* Seção 2: Os 3 Problemas Fundamentais */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={2}
@@ -287,97 +305,8 @@ export default function AulaPorcentagem({
                 },
               ]}
             />
-            <ContentAccordion
-              titulo="Exemplos Resolvidos"
-              icone="✏️"
-              corIndicador="bg-emerald-500"
-              slides={[
-                {
-                  titulo: "Exemplo 1 (Tipo 1 – Fácil)",
-                  icone: "📝",
-                  conteudo: (
-                    <div className="space-y-3">
-                      <div className="p-4 bg-muted rounded-xl">
-                        <p className="font-bold">
-                          Em uma refinaria, 35% dos 8.000 litros de um tanque
-                          são de diesel. Qual o volume de diesel?
-                        </p>
-                      </div>
-                      <div className="space-y-1 text-sm">
-                        <p>
-                          <strong>Passo 1:</strong> Converter % em decimal → 35%
-                          = 0,35
-                        </p>
-                        <p>
-                          <strong>Passo 2:</strong> Multiplicar → 8.000 × 0,35 ={" "}
-                          <strong>2.800 litros</strong>
-                        </p>
-                      </div>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Exemplo 2 (Tipo 2 – Médio)",
-                  icone: "📝",
-                  conteudo: (
-                    <div className="space-y-3">
-                      <div className="p-4 bg-muted rounded-xl">
-                        <p className="font-bold">
-                          60 barris representam 40% da produção diária. Qual a
-                          produção total?
-                        </p>
-                      </div>
-                      <div className="space-y-1 text-sm">
-                        <p>
-                          <strong>Passo 1:</strong> Montar a equação → Total ×
-                          0,40 = 60
-                        </p>
-                        <p>
-                          <strong>Passo 2:</strong> Isolar → Total = 60 ÷ 0,40 ={" "}
-                          <strong>150 barris</strong>
-                        </p>
-                        <p>
-                          <strong>Verificação:</strong> 150 × 0,40 = 60 ✓
-                        </p>
-                      </div>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Exemplo 3 (Tipo 3 – Difícil)",
-                  icone: "📝",
-                  conteudo: (
-                    <div className="space-y-3">
-                      <div className="p-4 bg-muted rounded-xl">
-                        <p className="font-bold">
-                          Uma plataforma produziu 15.000 barris em fevereiro
-                          contra 12.000 em janeiro. A produção de fevereiro
-                          representa quantos % da de janeiro?
-                        </p>
-                      </div>
-                      <div className="space-y-1 text-sm">
-                        <p>
-                          <strong>Passo 1:</strong> Calcular a razão → 15.000 /
-                          12.000 = 1,25
-                        </p>
-                        <p>
-                          <strong>Passo 2:</strong> Converter → 1,25 × 100 ={" "}
-                          <strong>125%</strong>
-                        </p>
-                        <p className="text-amber-600 dark:text-amber-400 font-bold">
-                          ⚠️ Atenção: 125% é &quot;representa quantos %
-                          de&quot;. O AUMENTO foi de 25% (125% - 100%). A
-                          CESGRANRIO explora essa diferença!
-                        </p>
-                      </div>
-                    </div>
-                  ),
-                },
-              ]}
-            />
           </section>
 
-          {/* Quiz Módulo 1 */}
           <section id="quiz-modulo-1" className="mt-16">
             <QuizInterativo
               questoes={quizM1}
@@ -445,12 +374,6 @@ export default function AulaPorcentagem({
                           </p>
                         </div>
                       </div>
-                      <p className="text-sm">
-                        O fator multiplicador transforma qualquer cálculo de %
-                        em uma <strong>única multiplicação</strong>. Em vez de
-                        calcular o aumento e somar, basta multiplicar
-                        diretamente pelo fator.
-                      </p>
                     </div>
                   ),
                 },
@@ -478,10 +401,6 @@ export default function AulaPorcentagem({
                           <strong>NÃO!</strong> 1,50 × 0,50 = 0,75 → queda de
                           25%!
                         </p>
-                        <p className="text-sm mt-2">
-                          Se custava R$ 200: → R$ 300 (após +50%) →{" "}
-                          <strong>R$ 150</strong> (após -50%)
-                        </p>
                       </div>
                     </div>
                   ),
@@ -491,10 +410,6 @@ export default function AulaPorcentagem({
                   icone: "↩️",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="font-bold">
-                        Para &quot;desfazer&quot; uma variação e voltar ao valor
-                        original:
-                      </p>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
                           <p className="font-bold text-sm mb-1">
@@ -516,88 +431,6 @@ export default function AulaPorcentagem({
                             Aum. 25% → Desc. 25/125×100 = <strong>20%</strong>
                           </p>
                         </div>
-                      </div>
-                      <AlertBox
-                        tipo="info"
-                        titulo="Por que a CESGRANRIO adora isso?"
-                      >
-                        Porque confunde o candidato que acha que +20% e -20% se
-                        anulam. Nunca se anulam! (exceto +25% e -20%, ou +100% e
-                        -50%, etc.)
-                      </AlertBox>
-                    </div>
-                  ),
-                },
-              ]}
-            />
-          </section>
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
-              title="Exemplos Resolvidos"
-              variant="indigo"
-              className="mb-6"
-            />
-            <ContentAccordion
-              titulo="Passo a Passo"
-              icone="✏️"
-              corIndicador="bg-indigo-500"
-              slides={[
-                {
-                  titulo: "Exemplo 1: Reajuste salarial composto",
-                  icone: "📝",
-                  conteudo: (
-                    <div className="space-y-3">
-                      <div className="p-4 bg-muted rounded-xl">
-                        <p className="font-bold">
-                          Um salário de R$ 4.000 teve reajuste de 8% seguido de
-                          5%. Qual o salário final e o reajuste total?
-                        </p>
-                      </div>
-                      <div className="space-y-1 text-sm">
-                        <p>
-                          <strong>Passo 1:</strong> Fator 1 = 1,08 | Fator 2 =
-                          1,05
-                        </p>
-                        <p>
-                          <strong>Passo 2:</strong> Fator total = 1,08 × 1,05 =
-                          1,134
-                        </p>
-                        <p>
-                          <strong>Passo 3:</strong> Salário = 4.000 × 1,134 ={" "}
-                          <strong>R$ 4.536</strong>
-                        </p>
-                        <p>
-                          <strong>Reajuste total:</strong> 13,4% (não 13%!)
-                        </p>
-                      </div>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Exemplo 2: Descontos sucessivos",
-                  icone: "📝",
-                  conteudo: (
-                    <div className="space-y-3">
-                      <div className="p-4 bg-muted rounded-xl">
-                        <p className="font-bold">
-                          Uma peça de R$ 500 recebeu desconto de 10% e depois
-                          mais 20%. Qual o preço final e o desconto equivalente?
-                        </p>
-                      </div>
-                      <div className="space-y-1 text-sm">
-                        <p>
-                          <strong>Passo 1:</strong> Fator = 0,90 × 0,80 = 0,72
-                        </p>
-                        <p>
-                          <strong>Passo 2:</strong> Preço = 500 × 0,72 ={" "}
-                          <strong>R$ 360</strong>
-                        </p>
-                        <p>
-                          <strong>Desconto equivalente:</strong> 1 - 0,72 = 0,28
-                          = <strong>28%</strong> (não 30%!)
-                        </p>
                       </div>
                     </div>
                   ),
@@ -656,10 +489,9 @@ export default function AulaPorcentagem({
                         </p>
                       </div>
                       <AlertBox tipo="warning" titulo="Regra de Ouro">
-                        O denominador é SEMPRE o valor INICIAL (anterior, de
-                        referência). Usar o valor final no denominador é o erro
-                        #1 em provas da CESGRANRIO e gera uma alternativa errada
-                        que estará lá esperando você!
+                        O denominador é SEMPRE o valor INICIAL. Usar o valor
+                        final no denominador é o erro #1 em provas da
+                        CESGRANRIO!
                       </AlertBox>
                     </div>
                   ),
@@ -669,10 +501,6 @@ export default function AulaPorcentagem({
                   icone: "⚖️",
                   conteudo: (
                     <div className="space-y-4">
-                      <p>
-                        A CESGRANRIO distingue dois conceitos que candidatos
-                        confundem:
-                      </p>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
                           <p className="font-bold text-blue-700 dark:text-blue-400">
@@ -697,43 +525,6 @@ export default function AulaPorcentagem({
                             De 5% para 2% = queda de <strong>60%</strong> (3/5)
                           </p>
                         </div>
-                      </div>
-                      <AlertBox tipo="info" titulo="Questão certa na prova">
-                        A distinção entre &quot;pontos percentuais&quot; e
-                        &quot;variação percentual&quot; aparece em quase toda
-                        prova CESGRANRIO. Eles adoram perguntar: &quot;a taxa
-                        caiu X pontos percentuais, o que equivale a uma redução
-                        relativa de Y%&quot;.
-                      </AlertBox>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Exemplo Resolvido",
-                  icone: "📝",
-                  conteudo: (
-                    <div className="space-y-3">
-                      <div className="p-4 bg-muted rounded-xl">
-                        <p className="font-bold">
-                          O preço do gás subiu de R$ 50 para R$ 65. Qual a
-                          variação percentual? E se depois voltar a R$ 50, a
-                          queda é de mesma porcentagem?
-                        </p>
-                      </div>
-                      <div className="space-y-1 text-sm">
-                        <p>
-                          <strong>Subida:</strong> (65-50)/50 × 100 ={" "}
-                          <strong>30%</strong>
-                        </p>
-                        <p>
-                          <strong>Volta:</strong> (65-50)/65 × 100 ={" "}
-                          <strong>23,1%</strong>
-                        </p>
-                        <p className="text-amber-600 dark:text-amber-400 font-bold mt-2">
-                          ⚠️ A subida é 30%, mas a volta é só 23,1%! O
-                          denominador mudou (de 50 para 65). Isso prova que
-                          variações não são simétricas.
-                        </p>
                       </div>
                     </div>
                   ),
@@ -793,8 +584,7 @@ export default function AulaPorcentagem({
                       <div className="p-4 bg-muted rounded-xl text-sm space-y-1">
                         <p className="font-bold">
                           Problema: O orçamento de R$ 2 milhões sofreu corte de
-                          15%. Do restante, 30% vai para peças. Quanto vai para
-                          peças?
+                          15%. Do restante, 30% vai para peças.
                         </p>
                         <p>
                           <strong>Etapa 1:</strong> 2.000.000 × 0,85 = R$
@@ -805,10 +595,6 @@ export default function AulaPorcentagem({
                           <strong>R$ 510.000</strong>
                         </p>
                       </div>
-                      <AlertBox tipo="info" titulo="Atalho">
-                        Pode calcular direto: 2.000.000 × 0,85 × 0,30 = R$
-                        510.000. Os fatores se multiplicam!
-                      </AlertBox>
                     </div>
                   ),
                 },
@@ -817,10 +603,6 @@ export default function AulaPorcentagem({
                   icone: "⚖️",
                   conteudo: (
                     <div className="space-y-3">
-                      <p>
-                        Misturar componentes com percentuais diferentes é{" "}
-                        <strong>média ponderada</strong>:
-                      </p>
                       <div className="p-4 bg-muted rounded-xl text-sm space-y-1">
                         <p className="font-bold">
                           70% de componente A (R$ 20/L) + 30% de componente B
@@ -876,13 +658,13 @@ export default function AulaPorcentagem({
       </TabsContent>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          MÓDULO 5 — DESAFIO FINAL
+          MÓDULO 5 — DESAFIO (QUESTÕES INTEGRADORAS)
       ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
         <ModuleBanner
           numero={5}
-          titulo="Desafio Final: Porcentagem Avançada"
-          descricao="Questões integradoras combinando tudo o que você aprendeu."
+          titulo="Desafio: Porcentagem Avançada"
+          descricao="Questões integradoras combinando tudo o que você aprendeu nos módulos anteriores."
           gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
         />
         <div className="space-y-[50px]">
@@ -930,15 +712,496 @@ export default function AulaPorcentagem({
           <section id="quiz-modulo-5" className="mt-16">
             <QuizInterativo
               questoes={quizM5}
-              titulo="Desafio Final - Porcentagem"
+              titulo="Desafio - Porcentagem Avançada"
               icone="🏆"
               numero={5}
               variant="rose"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
+        </div>
+      </TabsContent>
 
-          {completedModules.has("modulo-5") && (
+      {/* ═══════════════════════════════════════════════════════════════════
+          MÓDULO 6 — PORCENTAGEM COMPOSTA
+      ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-6" className="space-y-[50px]">
+        <ModuleBanner
+          numero={6}
+          titulo="Porcentagem Composta"
+          descricao="Juros compostos, meia-vida e depreciação: quando o juro incide sobre o juro."
+          gradiente="bg-gradient-to-br from-sky-600 via-blue-600 to-indigo-700"
+        />
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="Juros Compostos vs. Simples"
+              description="A diferença que vale bilhões nos mercados financeiros."
+              variant="cyan"
+              className="mb-6"
+            />
+            <ContentAccordion
+              titulo="Fórmula e Aplicações"
+              icone="💹"
+              corIndicador="bg-sky-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "A Fórmula dos Juros Compostos",
+                  icone: "🔑",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="p-5 bg-sky-500/10 rounded-xl border border-sky-500/20 text-center">
+                          <p className="font-bold text-sky-700 dark:text-sky-400 mb-1">
+                            Juros SIMPLES
+                          </p>
+                          <p className="font-mono text-lg font-bold">
+                            M = C × (1 + i × n)
+                          </p>
+                          <p className="text-sm mt-2 opacity-80">
+                            Juro constante por período
+                          </p>
+                        </div>
+                        <div className="p-5 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-center">
+                          <p className="font-bold text-indigo-700 dark:text-indigo-400 mb-1">
+                            Juros COMPOSTOS
+                          </p>
+                          <p className="font-mono text-lg font-bold">
+                            M = C × (1 + i)ⁿ
+                          </p>
+                          <p className="text-sm mt-2 opacity-80">
+                            Juro incide sobre juro
+                          </p>
+                        </div>
+                      </div>
+                      <AlertBox tipo="info" titulo="Onde aparece na prova">
+                        A CESGRANRIO usa juros compostos em questões de
+                        investimento, financiamento, depreciação composta e
+                        crescimento populacional. Domine o cálculo de (1+i)ⁿ
+                        para n = 2 e 3.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Meia-Vida e Depreciação",
+                  icone: "⚡",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-muted rounded-xl text-sm space-y-2">
+                        <p className="font-bold">
+                          Meia-vida: perda de 50% a cada período
+                        </p>
+                        <p>
+                          Fator por período: 0,50. Após n períodos: C × (0,5)ⁿ
+                        </p>
+                        <p>
+                          Exemplo: 800g com meia-vida de 10 anos → após 30
+                          anos: 800 × (0,5)³ = 800 × 0,125 = <strong>100g</strong>
+                        </p>
+                      </div>
+                      <div className="p-4 bg-muted rounded-xl text-sm space-y-2">
+                        <p className="font-bold">
+                          Depreciação composta: perda de d% ao ano
+                        </p>
+                        <p>
+                          Fator por período: (1 − d/100). Após n anos: V₀ × (1
+                          − d/100)ⁿ
+                        </p>
+                        <p>
+                          Exemplo: R$ 100.000 a 20%/ano → após 2 anos: 100.000
+                          × 0,80² = 100.000 × 0,64 = <strong>R$ 64.000</strong>
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section id="quiz-modulo-6" className="mt-16">
+            <QuizInterativo
+              questoes={quizM6}
+              titulo="Quiz - Porcentagem Composta"
+              icone="💹"
+              numero={6}
+              variant="cyan"
+              onComplete={(score) => handleModuleComplete("modulo-6", score)}
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          MÓDULO 7 — CÁLCULO REVERSO
+      ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-7" className="space-y-[50px]">
+        <ModuleBanner
+          numero={7}
+          titulo="Cálculo Reverso"
+          descricao="Encontre o valor original: trabalhe de trás para frente usando a divisão pelo fator."
+          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-600"
+        />
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="Encontrando o Valor Original"
+              description="A regra é simples: divida pelo fator, não some/subtraia a porcentagem."
+              variant="amber"
+              className="mb-6"
+            />
+            <ContentAccordion
+              titulo="A Técnica do Fator Reverso"
+              icone="↩️"
+              corIndicador="bg-orange-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Princípio do Cálculo Reverso",
+                  icone: "🔑",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="p-5 bg-orange-500/10 rounded-xl border border-orange-500/20">
+                        <p className="font-bold mb-3">
+                          Se o preço FINAL é conhecido e o % aplicado é
+                          conhecido, o preço ORIGINAL é:
+                        </p>
+                        <p className="font-mono text-lg text-center">
+                          Original = Final ÷ Fator
+                        </p>
+                        <div className="grid md:grid-cols-2 gap-3 mt-3 text-sm">
+                          <div className="p-3 bg-background rounded-lg">
+                            <p className="font-bold">Após desconto de 20%:</p>
+                            <p>Fator = 0,80</p>
+                            <p>Original = Final ÷ 0,80</p>
+                          </div>
+                          <div className="p-3 bg-background rounded-lg">
+                            <p className="font-bold">Após aumento de 25%:</p>
+                            <p>Fator = 1,25</p>
+                            <p>Original = Final ÷ 1,25</p>
+                          </div>
+                        </div>
+                      </div>
+                      <AlertBox tipo="warning" titulo="Erro Fatal">
+                        Para encontrar o original após desconto de 20%, NÃO
+                        some 20% ao preço final! Ex: Final = R$ 1.600 (após
+                        -20%). Original ≠ 1.600 + 320 = 1.920. Original =
+                        1.600 ÷ 0,80 = R$ 2.000.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exemplos Resolvidos",
+                  icone: "📝",
+                  conteudo: (
+                    <div className="space-y-3">
+                      <div className="p-4 bg-muted rounded-xl text-sm space-y-2">
+                        <p className="font-bold">
+                          Após 2 descontos (10% e 20%), produto custou R$ 360.
+                          Qual o original?
+                        </p>
+                        <p>Fator total: 0,90 × 0,80 = 0,72</p>
+                        <p>
+                          Original = 360 ÷ 0,72 = <strong>R$ 500</strong>
+                        </p>
+                        <p>Verificação: 500 × 0,72 = 360 ✓</p>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section id="quiz-modulo-7" className="mt-16">
+            <QuizInterativo
+              questoes={quizM7}
+              titulo="Quiz - Cálculo Reverso"
+              icone="↩️"
+              numero={7}
+              variant="amber"
+              onComplete={(score) => handleModuleComplete("modulo-7", score)}
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          MÓDULO 8 — REGRA DE TRÊS COM PORCENTAGEM
+      ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-8" className="space-y-[50px]">
+        <ModuleBanner
+          numero={8}
+          titulo="Regra de Três com Porcentagem"
+          descricao="Proporcionalidade direta e inversa aplicada a contextos percentuais e industriais."
+          gradiente="bg-gradient-to-br from-teal-600 via-emerald-600 to-green-700"
+        />
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="Direta vs. Inversa"
+              description="Identifique o tipo de proporção antes de montar a regra de três."
+              variant="emerald"
+              className="mb-6"
+            />
+            <ContentAccordion
+              titulo="Tipos de Proporção"
+              icone="⚖️"
+              corIndicador="bg-teal-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Proporção Direta",
+                  icone: "📈",
+                  conteudo: (
+                    <div className="space-y-3">
+                      <p>
+                        <strong>Direta:</strong> quando uma grandeza aumenta, a
+                        outra também aumenta na mesma proporção.
+                      </p>
+                      <div className="p-4 bg-teal-500/10 rounded-xl border border-teal-500/20 text-sm">
+                        <p className="font-bold">
+                          Mais bombas → mais vazão | Mais funcionários → mais
+                          produção
+                        </p>
+                        <p className="font-mono mt-2">
+                          A₁/B₁ = A₂/B₂ (produto cruzado)
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Proporção Inversa",
+                  icone: "📉",
+                  conteudo: (
+                    <div className="space-y-3">
+                      <p>
+                        <strong>Inversa:</strong> quando uma grandeza aumenta, a
+                        outra diminui.
+                      </p>
+                      <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-sm">
+                        <p className="font-bold">
+                          Mais técnicos → menos dias | Mais velocidade → menos
+                          tempo
+                        </p>
+                        <p className="font-mono mt-2">A₁ × B₁ = A₂ × B₂</p>
+                        <p className="mt-2">
+                          Ex: 12 técnicos × 30 dias = 18 técnicos × x → x = 20
+                          dias
+                        </p>
+                      </div>
+                      <AlertBox tipo="info" titulo="Como identificar">
+                        Se o enunciado diz &quot;mais X, menos Y&quot; →
+                        inversa. Se &quot;mais X, mais Y&quot; → direta. A
+                        CESGRANRIO sempre dá pistas no texto.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section id="quiz-modulo-8" className="mt-16">
+            <QuizInterativo
+              questoes={quizM8}
+              titulo="Quiz - Regra de Três"
+              icone="⚖️"
+              numero={8}
+              variant="emerald"
+              onComplete={(score) => handleModuleComplete("modulo-8", score)}
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          MÓDULO 9 — APLICAÇÕES FINANCEIRAS
+      ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-9" className="space-y-[50px]">
+        <ModuleBanner
+          numero={9}
+          titulo="Aplicações Financeiras"
+          descricao="Salário líquido, IR, INSS, impostos embutidos e descontos comerciais."
+          gradiente="bg-gradient-to-br from-purple-600 via-violet-600 to-fuchsia-700"
+        />
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="Descontos em Cadeia"
+              description="INSS → IR → líquido: encadeamento de descontos sobre o salário."
+              variant="violet"
+              className="mb-6"
+            />
+            <ContentAccordion
+              titulo="Estrutura de Remuneração"
+              icone="💰"
+              corIndicador="bg-purple-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Salário Bruto → Líquido",
+                  icone: "💵",
+                  conteudo: (
+                    <div className="space-y-3">
+                      <div className="p-4 bg-purple-500/10 rounded-xl border border-purple-500/20 text-sm space-y-2">
+                        <p className="font-bold">
+                          Exemplo: Bruto = R$ 5.000 | INSS 11% | IR 7,5%
+                        </p>
+                        <p>INSS: 5.000 × 0,11 = R$ 550</p>
+                        <p>IR: 5.000 × 0,075 = R$ 375</p>
+                        <p>
+                          Líquido: 5.000 - 550 - 375 ={" "}
+                          <strong>R$ 4.075</strong>
+                        </p>
+                        <p className="opacity-70">
+                          Fator direto: 5.000 × (1 - 0,11 - 0,075) = 5.000 ×
+                          0,815 = R$ 4.075
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Imposto Incluso vs. Por Fora",
+                  icone: "🧾",
+                  conteudo: (
+                    <div className="space-y-3">
+                      <div className="grid md:grid-cols-2 gap-4 text-sm">
+                        <div className="p-4 bg-red-500/10 rounded-xl border border-red-500/20">
+                          <p className="font-bold text-red-700 dark:text-red-400">
+                            Imposto INCLUSO (por dentro)
+                          </p>
+                          <p className="mt-1">
+                            Preço final JÁ contém o imposto
+                          </p>
+                          <p className="font-mono mt-2">
+                            Valor sem imposto = Preço ÷ (1 + alíquota)
+                          </p>
+                          <p className="mt-1">
+                            Ex: R$ 800 com 12% → 800 ÷ 1,12 ≈ R$ 714,29
+                          </p>
+                        </div>
+                        <div className="p-4 bg-green-500/10 rounded-xl border border-green-500/20">
+                          <p className="font-bold text-green-700 dark:text-green-400">
+                            Imposto POR FORA
+                          </p>
+                          <p className="mt-1">Imposto é adicionado ao preço</p>
+                          <p className="font-mono mt-2">
+                            Preço final = Base × (1 + alíquota)
+                          </p>
+                          <p className="mt-1">
+                            Ex: R$ 714 + 12% → 714 × 1,12 ≈ R$ 800
+                          </p>
+                        </div>
+                      </div>
+                      <AlertBox tipo="warning" titulo="Pegadinha frequente">
+                        ICMS no Brasil é calculado &quot;por dentro&quot;
+                        (incluso). A CESGRANRIO testa se você sabe que 800 com
+                        12% incluso não dá 800 × 0,88 = 704. O correto é 800 ÷
+                        1,12 ≈ 714,29.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section id="quiz-modulo-9" className="mt-16">
+            <QuizInterativo
+              questoes={quizM9}
+              titulo="Quiz - Aplicações Financeiras"
+              icone="💰"
+              numero={9}
+              variant="violet"
+              onComplete={(score) => handleModuleComplete("modulo-9", score)}
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          MÓDULO 10 — SIMULADO FINAL CESGRANRIO
+      ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-10" className="space-y-[50px]">
+        <ModuleBanner
+          numero={10}
+          titulo="Simulado Final CESGRANRIO"
+          descricao="Questões integradoras de alto nível — o padrão exato do concurso Petrobras."
+          gradiente="bg-gradient-to-br from-slate-700 via-gray-700 to-zinc-800"
+        />
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="Mapa Mental Final"
+              description="Tudo que cai em prova, em um único resumo."
+              variant="indigo"
+              className="mb-6"
+            />
+            <CardCarousel
+              cards={[
+                {
+                  titulo: "Conversões",
+                  descricao:
+                    "% → decimal (÷100) | decimal → % (×100) | fração → % (×100)",
+                  icone: "🔄",
+                },
+                {
+                  titulo: "3 Tipos de Problema",
+                  descricao:
+                    "Calcular valor (×) | Descobrir base (÷) | Descobrir taxa (÷ e ×100)",
+                  icone: "📊",
+                },
+                {
+                  titulo: "Fator Multiplicador",
+                  descricao:
+                    "+p% → ×(1+p/100) | -p% → ×(1-p/100) | Sucessivos: MULTIPLIQUE fatores",
+                  icone: "✖️",
+                },
+                {
+                  titulo: "Variação %",
+                  descricao:
+                    "(Vf−Vi)/Vi×100 | Denominador = INICIAL | p.p. ≠ variação relativa",
+                  icone: "📐",
+                },
+                {
+                  titulo: "Juros Compostos",
+                  descricao:
+                    "M = C×(1+i)ⁿ | Depreciação: ×(1-d)ⁿ | Meia-vida: ×(0,5)ⁿ",
+                  icone: "💹",
+                },
+                {
+                  titulo: "Cálculo Reverso",
+                  descricao:
+                    "Original = Final ÷ Fator | Nunca some % ao preço final para achar o original",
+                  icone: "↩️",
+                },
+              ]}
+            />
+          </section>
+
+          <section id="quiz-modulo-10" className="mt-16">
+            <QuizInterativo
+              questoes={quizM10}
+              titulo="Simulado Final - Porcentagem CESGRANRIO"
+              icone="🏆"
+              numero={10}
+              variant="indigo"
+              onComplete={(score) => handleModuleComplete("modulo-10", score)}
+            />
+          </section>
+
+          {completedModules.has("modulo-10") && (
             <div className="mt-16 p-12 bg-gradient-to-br from-emerald-600 to-teal-700 rounded-[2rem] text-white text-center shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl" />
               <div className="relative z-10 space-y-6">
@@ -949,8 +1212,9 @@ export default function AulaPorcentagem({
                   PORCENTAGEM DOMINADA!
                 </h3>
                 <p className="text-xl opacity-90 max-w-xl mx-auto">
-                  Porcentagem é o tema mais cobrado pela CESGRANRIO. Com essas
-                  técnicas, você está preparado para qualquer questão!
+                  Porcentagem é o tema mais cobrado pela CESGRANRIO. Com os 10
+                  módulos concluídos, você está preparado para qualquer questão
+                  do concurso Petrobras!
                 </p>
               </div>
             </div>

@@ -2575,6 +2575,9 @@ export default function AulaClassesPalavras({
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="Verbo & Substantivo"
+                    tituloAula="Classes de Palavras"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Mapa Mental: Flexões Verbais",
@@ -3120,6 +3123,9 @@ Haver no singular, existir no plural
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="Pronome & Adjetivo"
+                    tituloAula="Classes de Palavras"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Mapa Mental: Pronomes Pessoais",
@@ -4418,6 +4424,9 @@ Na Cesgranrio não tem bobice!
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="Conjunção & Preposição"
+                    tituloAula="Classes de Palavras"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Mapa Mental: Conjunções Coordenativas",
@@ -5189,6 +5198,9 @@ Imperativo antes? Explicação!
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="Advérbio & Artigo"
+                    tituloAula="Classes de Palavras"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Mapa Mental: Classificação dos Advérbios",
@@ -5745,6 +5757,9 @@ Se não flexiona, advérbio vai ficar!
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="Numeral & Interjeição"
+                    tituloAula="Classes de Palavras"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Mapa Mental: As 10 Classes",

@@ -21,6 +21,12 @@ O padrão **AcordeonCarrossel** resolve o problema de conteúdo denso que precis
 >
 > Um slide com apenas 1 frase ou sem exemplos concretos é considerado **incompleto** e viola este padrão.
 
+> [!TIP]
+> **FLIP CARDS NO CARROSSEL:** O Acordeon-Carrossel suporta e encoraja o uso do componente `FlipCard` dentro do `conteudo` dos seus slides para criar memorização ativa (Flashcards).
+>
+> - Se o conteúdo da categoria for extenso/denso: Exiba **1 FlipCard** por vez (ou 1 tópico tradicional por vez) ajustando `slidesPerView={1}`.
+> - Se for conteúdo rápido e enxuto: Exiba **até 2 FlipCards** por vez ajustando `slidesPerView={2}`.
+
 ---
 
 ## 🏗️ Estrutura do Padrão
@@ -40,12 +46,18 @@ ModuleSectionHeader (título da seção)
     └── Slide 4: Tópico com conteúdo rico
 ```
 
-**Cada slide do acordeon deve conter:**
+**Cada slide do acordeon deve conter uma das estruturas:**
+
+**A) Estrutura Teórica Padrão**:
 
 1. **Conceituação** — Explicação clara do tópico
 2. **Exemplos** — Certo/Errado com destaque visual
 3. **Dicas** — AlertBox com macetes ou observações
 4. **Exceções** — Quando aplicável, em texto sutil
+
+**B) Estrutura de Flashcard (Usando FlipCard)**:
+O conteúdo do slide é um ou mais componentes `<FlipCard>`.
+Caso existam múltiplos `<FlipCard>` sequenciais, agrupe-os em um layout responsivo (`grid` ou `flex`), mas cuidado para não exceder limites de visualização. Se couber, exiba de 1 a 2 por vez no carrossel.
 
 ---
 
@@ -168,8 +180,8 @@ ModuleSectionHeader (título da seção)
 | **Acordeon 2+**            | `defaultOpen={false}` — fechado por padrão                                                                  |
 | **`corIndicador`**         | Usar cor semântica: `bg-red-500` para proibições, `bg-green-500` para obrigações, `bg-blue-500` para neutro |
 | **Ícone do acordeon**      | LucideIcon semântico (ex: `LuBan`, `LuCheckCircle`, `LuShield`)                                             |
-| **Slides internos**        | Cada slide = 1 tópico. Navegação sequencial (1 por vez)                                                     |
-| **Conteúdo de cada slide** | Padrão: Conceituação + Exemplos (certo/errado) + Dica/AlertBox + Exceção (se aplicável)                     |
+| **Slides internos**        | Cada slide = 1 ou no máximo 2 tópicos/flips. Navegação sequencial via carrossel (`slidesPerView`)           |
+| **Conteúdo de cada slide** | Padrão Clássico: Conceituação + Exemplos (certo/errado) + Dica/AlertBox<br/>Padrão Flashcard: `FlipCard`    |
 
 ---
 

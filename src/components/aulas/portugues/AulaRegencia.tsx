@@ -708,7 +708,7 @@ export default function AulaRegencia({
                   content: (
                     <ModuleSummaryCarouselNew
                       tituloAula="Regência"
-                      materia="Português"
+                      materia="Língua Portuguesa"
                       profissao="Concurso Petrobras"
                       moduloNome="Regência Nominal"
                       images={[
@@ -1150,10 +1150,10 @@ export default function AulaRegencia({
                   icon: LuBookOpen,
                   content: (
                     <ModuleSummaryCarouselNew
+                      moduloNome="Simulado Final Cesgranrio"
                       tituloAula="Regência Total"
-                      materia="Português"
+                      materia="Língua Portuguesa"
                       profissao="Técnico Petrobras"
-                      moduloNome="Consolidação"
                       images={[
                         {
                           title: "Resumo: Regência Nominal",

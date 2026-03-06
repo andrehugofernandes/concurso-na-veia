@@ -29,7 +29,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { LuChevronDown } from "react-icons/lu";
+import { LuChevronDown, LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import {
   Dialog,
   DialogContent,
@@ -1652,6 +1652,124 @@ export function ModuleSummaryCarouselNew({
     type: string;
   } | null>(null);
 
+  const handleExportPDF = async () => {
+    const pdf = new jsPDF("p", "mm", "a4");
+    const margin = 20;
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+
+    for (let i = 0; i < images.length; i++) {
+      const imgData = images[i];
+      if (!imgData.imageUrl) continue;
+
+      if (i > 0) pdf.addPage();
+
+      // 1. Cabeçalho Minimalista por página
+      pdf.setFillColor(248, 250, 252);
+      pdf.rect(0, 0, pageWidth, 35, "F");
+
+      pdf.setFontSize(22);
+      pdf.setTextColor(15, 23, 42);
+      pdf.setFont("helvetica", "bold");
+      pdf.text("A VAGA É MINHA", margin, 18);
+
+      pdf.setFontSize(10);
+      pdf.setFont("helvetica", "normal");
+      pdf.setTextColor(100, 116, 139);
+      const metadataList = [
+        materia && `Matéria: ${materia}`,
+        tituloAula && `Aula: ${tituloAula}`,
+        profissao && `Profissão: ${profissao}`,
+        moduloNome && `Módulo: ${moduloNome}`,
+      ]
+        .filter(Boolean)
+        .join("  •  ");
+      pdf.text(metadataList, margin, 27);
+
+      pdf.setDrawColor(226, 232, 240);
+      pdf.line(margin, 30, pageWidth - margin, 30);
+
+      try {
+        const img = new Image();
+        img.src = imgData.imageUrl;
+        await new Promise((resolve) => {
+          img.onload = resolve;
+          img.onerror = resolve;
+        });
+
+        const originalWidth = img.naturalWidth || img.width;
+        const originalHeight = img.naturalHeight || img.height;
+        const aspectRatio = originalWidth / originalHeight;
+
+        const boxWidth = pageWidth - margin * 2;
+        const boxHeight = pageHeight - 80;
+
+        let displayWidth = boxWidth;
+        let displayHeight = displayWidth / aspectRatio;
+
+        if (displayHeight > boxHeight) {
+          displayHeight = boxHeight;
+          displayWidth = displayHeight * aspectRatio;
+        }
+
+        const xOffset = (pageWidth - displayWidth) / 2;
+        const yOffset = 45 + (boxHeight - displayHeight) / 2;
+
+        // Título da Imagem
+        pdf.setFontSize(11);
+        pdf.setTextColor(79, 70, 229);
+        pdf.setFont("helvetica", "bold");
+        pdf.text(
+          `${imgData.type.toUpperCase()}: ${imgData.title}`,
+          pageWidth / 2,
+          yOffset - 8,
+          { align: "center" },
+        );
+
+        // Adicionar imagem
+        pdf.addImage(img, "PNG", xOffset, yOffset, displayWidth, displayHeight);
+
+        // Guia de Corte
+        pdf.setDrawColor(203, 213, 225);
+        (pdf as any).setLineDash([1, 2], 0);
+        const guideSize = 10;
+        const gx = xOffset - 10;
+        const gy = yOffset - 15;
+        const gw = displayWidth + 20;
+        const gh = displayHeight + 25;
+
+        pdf.line(gx, gy, gx + guideSize, gy);
+        pdf.line(gx, gy, gx, gy + guideSize);
+        pdf.line(gx + gw, gy, gx + gw - guideSize, gy);
+        pdf.line(gx + gw, gy, gx + gw, gy + guideSize);
+        pdf.line(gx, gy + gh, gx + guideSize, gy + gh);
+        pdf.line(gx, gy + gh, gx, gy + gh - guideSize);
+        pdf.line(gx + gw, gy + gh, gx + gw - guideSize, gy + gh);
+        pdf.line(gx + gw, gy + gh, gx + gw, gy + gh - guideSize);
+
+        // Aviso Margem
+        pdf.setFontSize(8);
+        pdf.setTextColor(148, 163, 184);
+        pdf.setFont("helvetica", "italic");
+        pdf.text(
+          "↑ Margem Segura para Encadernação / Furos (Esquerda) ↑",
+          8,
+          pageHeight / 2,
+          { angle: 90 },
+        );
+      } catch (e) {
+        console.error("PDF error:", e);
+      }
+    }
+
+    const fileName =
+      `StudyCards_${tituloAula || "Aula"}_${moduloNome || "Modulo"}.pdf`.replace(
+        /\s+/g,
+        "_",
+      );
+    pdf.save(fileName);
+  };
+
   return (
     <section className="w-full max-w-5xl mx-auto my-16 space-y-6">
       <div className="flex items-center gap-3 mb-6 px-4">
@@ -1666,146 +1784,12 @@ export function ModuleSummaryCarouselNew({
             Material de apoio visual e esquematizado
           </p>
         </div>
-        <div className="ml-auto">
-          <Button
-            onClick={async () => {
-              const pdf = new jsPDF("p", "mm", "a4");
-              const margin = 20;
-              const pageWidth = pdf.internal.pageSize.getWidth();
-              const pageHeight = pdf.internal.pageSize.getHeight();
-
-              for (let i = 0; i < images.length; i++) {
-                const imgData = images[i];
-                if (!imgData.imageUrl) continue;
-
-                if (i > 0) pdf.addPage();
-
-                // 1. Cabeçalho Minimalista por página
-                pdf.setFillColor(248, 250, 252);
-                pdf.rect(0, 0, pageWidth, 35, "F");
-
-                pdf.setFontSize(22);
-                pdf.setTextColor(15, 23, 42);
-                pdf.setFont("helvetica", "bold");
-                pdf.text("A VAGA É MINHA", margin, 18);
-
-                pdf.setFontSize(10);
-                pdf.setFont("helvetica", "normal");
-                pdf.setTextColor(100, 116, 139);
-                const metadataList = [
-                  materia && `Matéria: ${materia}`,
-                  tituloAula && `Aula: ${tituloAula}`,
-                  profissao && `Profissão: ${profissao}`,
-                  moduloNome && `Módulo: ${moduloNome}`,
-                ]
-                  .filter(Boolean)
-                  .join("  •  ");
-                pdf.text(metadataList, margin, 27);
-
-                pdf.setDrawColor(226, 232, 240);
-                pdf.line(margin, 30, pageWidth - margin, 30);
-
-                try {
-                  const img = new Image();
-                  img.src = imgData.imageUrl;
-                  await new Promise((resolve) => {
-                    img.onload = resolve;
-                    img.onerror = resolve;
-                  });
-
-                  const originalWidth = img.naturalWidth || img.width;
-                  const originalHeight = img.naturalHeight || img.height;
-                  const aspectRatio = originalWidth / originalHeight;
-
-                  const boxWidth = pageWidth - margin * 2;
-                  const boxHeight = pageHeight - 80;
-
-                  let displayWidth = boxWidth;
-                  let displayHeight = displayWidth / aspectRatio;
-
-                  if (displayHeight > boxHeight) {
-                    displayHeight = boxHeight;
-                    displayWidth = displayHeight * aspectRatio;
-                  }
-
-                  const xOffset = (pageWidth - displayWidth) / 2;
-                  const yOffset = 45 + (boxHeight - displayHeight) / 2;
-
-                  // Título da Imagem
-                  pdf.setFontSize(11);
-                  pdf.setTextColor(79, 70, 229);
-                  pdf.setFont("helvetica", "bold");
-                  pdf.text(
-                    `${imgData.type.toUpperCase()}: ${imgData.title}`,
-                    pageWidth / 2,
-                    yOffset - 8,
-                    { align: "center" },
-                  );
-
-                  // Adicionar imagem
-                  pdf.addImage(
-                    img,
-                    "PNG",
-                    xOffset,
-                    yOffset,
-                    displayWidth,
-                    displayHeight,
-                  );
-
-                  // Guia de Corte
-                  pdf.setDrawColor(203, 213, 225);
-                  (pdf as any).setLineDash([1, 2], 0);
-                  const guideSize = 10;
-                  const gx = xOffset - 10;
-                  const gy = yOffset - 15;
-                  const gw = displayWidth + 20;
-                  const gh = displayHeight + 25;
-
-                  pdf.line(gx, gy, gx + guideSize, gy);
-                  pdf.line(gx, gy, gx, gy + guideSize);
-                  pdf.line(gx + gw, gy, gx + gw - guideSize, gy);
-                  pdf.line(gx + gw, gy, gx + gw, gy + guideSize);
-                  pdf.line(gx, gy + gh, gx + guideSize, gy + gh);
-                  pdf.line(gx, gy + gh, gx, gy + gh - guideSize);
-                  pdf.line(gx + gw, gy + gh, gx + gw - guideSize, gy + gh);
-                  pdf.line(gx + gw, gy + gh, gx + gw, gy + gh - guideSize);
-
-                  // Aviso Margem
-                  pdf.setFontSize(8);
-                  pdf.setTextColor(148, 163, 184);
-                  pdf.setFont("helvetica", "italic");
-                  pdf.text(
-                    "↑ Margem Segura para Encadernação / Furos (Esquerda) ↑",
-                    8,
-                    pageHeight / 2,
-                    { angle: 90 },
-                  );
-                } catch (e) {
-                  console.error("PDF error:", e);
-                }
-              }
-
-              const fileName =
-                `StudyCards_${tituloAula || "Aula"}_${moduloNome || "Modulo"}.pdf`.replace(
-                  /\s+/g,
-                  "_",
-                );
-              pdf.save(fileName);
-            }}
-            variant="outline"
-            size="sm"
-            className="flex items-center justify-center gap-2 bg-indigo-500/10 border-indigo-500/20 hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 font-bold rounded-xl group transition-all active:scale-95 py-2.5 px-5 shadow-sm h-auto"
-          >
-            <LuDownload className="w-4 h-4 group-hover:translate-y-0.5 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">Exportar Resumo (PDF)</span>
-          </Button>
-        </div>
       </div>
 
       {images && images.length > 0 && (
         <Carousel
           className="w-full group"
-          opts={{ align: "start", loop: true }}
+          opts={{ align: "start", loop: true, watchDrag: true }}
         >
           <CarouselContent className="-ml-4">
             {images.map((img, index) => (
@@ -1878,6 +1862,19 @@ export function ModuleSummaryCarouselNew({
           <CarouselNext className="-right-12 opacity-0 group-hover:opacity-100 transition-opacity hidden md:flex" />
         </Carousel>
       )}
+
+      {/* Botão exportar PDF — centralizado abaixo das imagens */}
+      <div className="flex justify-center px-4">
+        <Button
+          onClick={handleExportPDF}
+          variant="outline"
+          size="sm"
+          className="flex items-center justify-center gap-2 bg-indigo-500/10 border-indigo-500/20 hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 font-bold rounded-xl group transition-all active:scale-95 py-2.5 px-5 shadow-sm h-auto"
+        >
+          <LuDownload className="w-4 h-4 group-hover:translate-y-0.5 transition-transform shrink-0" />
+          <span className="whitespace-nowrap">Exportar Resumo (PDF)</span>
+        </Button>
+      </div>
 
       {/* Lightbox / Popup da Imagem */}
       <Dialog
@@ -2096,7 +2093,7 @@ export function AulaTemplate({
   );
 
   return (
-    <div className="min-h-screen bg-background pb-20 relative">
+    <div className="min-h-screen bg-background pb-20 relative overflow-x-clip">
       <div className="max-w-7xl mx-auto px-[10px] md:px-6">
         <div className="flex flex-col">
           {/* 1. Barra de Progresso de Leitura (Scroll) */}
@@ -2276,7 +2273,59 @@ export function StickyModuleNav({
   const materiaId = params?.materia as string;
   const homeHref = materiaId ? `/aulas/${materiaId}` : undefined;
 
+  // Text color for the "MÓDULO N" label — mirrors the MODULE_SKIN_COLORS banner palette
+  const MODULE_LABEL_COLORS = [
+    "text-indigo-400",
+    "text-emerald-400",
+    "text-violet-400",
+    "text-amber-400",
+    "text-rose-400",
+    "text-cyan-400",
+  ] as const;
+
   const navRef = useRef<HTMLDivElement>(null);
+  const [carouselStart, setCarouselStart] = useState(0);
+
+  // Responsive PAGE_SIZE: 2 on mobile, 6 on desktop
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check, { passive: true });
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const PAGE_SIZE = isMobile ? 2 : 6;
+  const isCarouselMode = modules.length > PAGE_SIZE;
+
+  // Clamp carouselStart when PAGE_SIZE changes (mobile ↔ desktop switch)
+  const effectiveStart = Math.min(
+    carouselStart,
+    Math.max(0, modules.length - PAGE_SIZE),
+  );
+
+  const canGoLeft = isCarouselMode && effectiveStart > 0;
+  const canGoRight =
+    isCarouselMode && effectiveStart + PAGE_SIZE < modules.length;
+
+  const slideLeft = () => setCarouselStart((s) => Math.max(0, s - 1));
+  const slideRight = () =>
+    setCarouselStart((s) => Math.min(modules.length - PAGE_SIZE, s + 1));
+
+  const toggleHeader = () =>
+    setIsTemporaryHeaderVisible(!isTemporaryHeaderVisible);
+
+  // Keep the active tab always inside the visible window
+  useEffect(() => {
+    if (!isCarouselMode) return;
+    const idx = modules.findIndex((m) => m.id === activeTab);
+    if (idx === -1) return;
+    setCarouselStart((s) => {
+      if (idx < s) return idx;
+      if (idx >= s + PAGE_SIZE) return idx - PAGE_SIZE + 1;
+      return s;
+    });
+  }, [activeTab, isCarouselMode, modules, PAGE_SIZE]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -2284,12 +2333,11 @@ export function StickyModuleNav({
       const rect = navRef.current.getBoundingClientRect();
       const headerHeight = window.innerWidth >= 768 ? 80 : 64;
 
-      // Pin when the top of the nav reaches the bottom of the header
       if (rect.top <= headerHeight + 5) {
         setIsStickyNavPinned(true);
       } else {
         setIsStickyNavPinned(false);
-        setIsTemporaryHeaderVisible(false); // Reset temporary toggle when unpinning
+        setIsTemporaryHeaderVisible(false);
       }
     };
 
@@ -2304,115 +2352,213 @@ export function StickyModuleNav({
   }, [setIsStickyNavPinned, setIsTemporaryHeaderVisible]);
 
   return (
-    // 🔒 CRITICAL: DO NOT CHANGE THESE STYLES.
-    // The specific combination of w-screen and negative margin is required for full-width breakout.
-    // Changing this WILL break the layout and cause horizontal scrolling. verified-locked-by-user.
+    // 🔒 CRITICAL: w-screen + ml-[calc(50%-50vw)] required for full-width breakout.
+    // overflow-x-clip (not overflow-hidden) allows absolute children to overflow vertically
+    // (for the floating Home/Toggle buttons) without causing horizontal scroll.
     <div
       ref={navRef}
       className={cn(
-        "sticky z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-hidden transition-all duration-300 border-b border-border/50",
-        /* Dynamic top pinning */
+        "sticky z-40 overflow-x-clip transition-all duration-300",
         isStickyNavPinned && !isTemporaryHeaderVisible
-          ? "top-0 shadow-md py-2"
-          : "top-16 md:top-20 shadow-sm py-3",
-        /* Full viewport width breakout safe for sticky positioning */
+          ? "top-0"
+          : "top-16 md:top-20",
         "w-screen ml-[calc(50%-50vw)]",
       )}
     >
-      <div className="relative w-full px-2 md:px-8">
-        {/* Scroll Indicators (Mobile Only) */}
-        <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none md:hidden" />
-        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none md:hidden" />
+      {/* Inner nav bar — background, blur, border live here */}
+      <div
+        className={cn(
+          "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/50 transition-all duration-300",
+          isStickyNavPinned && !isTemporaryHeaderVisible
+            ? "shadow-md py-2"
+            : "shadow-sm py-3",
+        )}
+      >
+        {/* ── MOBILE: apenas module tabs + setas (altura original) ── */}
+        <div className="md:hidden flex items-center gap-2 px-3">
+          {/* Seta esquerda */}
+          <button
+            onClick={slideLeft}
+            disabled={!canGoLeft}
+            aria-label="Módulos anteriores"
+            className={cn(
+              "w-8 h-8 shrink-0 flex items-center justify-center rounded-xl border transition-all duration-200",
+              canGoLeft
+                ? "border-border/50 bg-background text-foreground/80 shadow-sm"
+                : "border-transparent bg-transparent text-transparent pointer-events-none",
+            )}
+          >
+            <LuChevronLeft className="w-4 h-4" />
+          </button>
 
-        <div className="overflow-x-auto scrollbar-hide">
-          <TabsList className="flex w-max min-w-full h-auto p-1.5 bg-muted/20 border border-border/10 rounded-3xl gap-2 md:gap-3 shadow-inner justify-start xl:justify-center mx-auto transition-all duration-300">
-            {/* Toggle Button for Header (Apenas visível quando pinned) */}
-            <AnimatePresence>
-              {isStickyNavPinned && (
-                <motion.div
-                  initial={{ width: 0, opacity: 0 }}
-                  animate={{ width: "auto", opacity: 1 }}
-                  exit={{ width: 0, opacity: 0 }}
-                  className="shrink-0 flex items-center pr-1"
+          {/* TabsList mobile — só as TabsTriggers */}
+          <TabsList className="flex flex-1 h-auto p-1 bg-muted/20 border border-border/10 rounded-2xl gap-1 shadow-inner min-w-0">
+            {modules.map((mod, index) => {
+              const isVisible =
+                index >= effectiveStart && index < effectiveStart + PAGE_SIZE;
+              return (
+                <TabsTrigger
+                  key={mod.id}
+                  value={mod.id}
+                  disabled={!isModuleUnlocked(index)}
+                  className={cn(
+                    "flex-1 py-1.5 px-2 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
+                    !isVisible && "hidden",
+                  )}
                 >
-                  <TooltipProvider>
-                    <Tooltip delayDuration={0}>
-                      <TooltipTrigger asChild>
-                        <button
-                          onClick={() =>
-                            setIsTemporaryHeaderVisible(
-                              !isTemporaryHeaderVisible,
-                            )
-                          }
-                          className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl hover:bg-muted text-foreground transition-colors group border border-border/50 shadow-sm bg-background shrink-0"
-                        >
-                          <LuMenu
-                            className={cn(
-                              "w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-foreground transition-all duration-300",
-                              isTemporaryHeaderVisible
-                                ? "rotate-90"
-                                : "rotate-0",
-                            )}
-                          />
-                        </button>
-                      </TooltipTrigger>
-                      <TooltipContent
-                        side="bottom"
-                        className="bg-slate-900 border-none text-white font-medium text-xs"
-                      >
-                        {isTemporaryHeaderVisible
-                          ? "Ocultar cabeçalho"
-                          : "Mostrar cabeçalho"}
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                  <div className="flex flex-col items-center gap-0.5 min-w-0 w-full">
+                    <span
+                      className={cn(
+                        "text-[9px] uppercase tracking-widest font-bold opacity-50 group-data-[state=active]:opacity-100 transition-opacity duration-200 truncate w-full text-center",
+                        MODULE_LABEL_COLORS[index % MODULE_LABEL_COLORS.length],
+                      )}
+                    >
+                      {mod.label}
+                    </span>
+                    <span className="font-bold text-[10px] truncate w-full text-center flex items-center justify-center gap-1">
+                      {mod.titulo}
+                      {completedModules.has(mod.id) && (
+                        <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20 shrink-0">
+                          <LuCheck size={10} />
+                        </span>
+                      )}
+                    </span>
+                  </div>
+                </TabsTrigger>
+              );
+            })}
+          </TabsList>
 
-            {/* Botão Home/Voltar (Escondido no mobile se não estiver pinned, sempre bloco/flex no desktop) */}
-            {homeHref && (
-              <div
-                className={cn(
-                  "shrink-0 pr-1 transition-opacity duration-300",
-                  isStickyNavPinned
-                    ? "flex items-center opacity-100"
-                    : "hidden md:flex items-center opacity-100",
-                )}
+          {/* Seta direita */}
+          <button
+            onClick={slideRight}
+            disabled={!canGoRight}
+            aria-label="Próximos módulos"
+            className={cn(
+              "w-8 h-8 shrink-0 flex items-center justify-center rounded-xl border transition-all duration-200",
+              canGoRight
+                ? "border-border/50 bg-background text-foreground/80 shadow-sm"
+                : "border-transparent bg-transparent text-transparent pointer-events-none",
+            )}
+          >
+            <LuChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* ── DESKTOP LAYOUT (≥ md) — one row (atual) ── */}
+        <div className="hidden md:flex items-center justify-center gap-2 px-4 py-3">
+        {/* Left arrow */}
+        <div className={cn("shrink-0", isCarouselMode ? "flex" : "hidden")}>
+          <button
+            onClick={slideLeft}
+            disabled={!canGoLeft}
+            aria-label="Módulos anteriores"
+            className={cn(
+              "w-9 h-9 flex items-center justify-center rounded-2xl border border-border/50 bg-background transition-all duration-200",
+              canGoLeft
+                ? "text-foreground/80 hover:bg-muted shadow-sm cursor-pointer"
+                : "text-transparent border-transparent bg-transparent cursor-default pointer-events-none",
+            )}
+          >
+            <LuChevronLeft className="w-4 h-4" />
+          </button>
+        </div>
+
+        <TabsList className="flex h-auto p-1.5 bg-muted/20 border border-border/10 rounded-3xl gap-1.5 md:gap-2 shadow-inner transition-all duration-300">
+          {/* Toggle Button for Header (só quando pinned) */}
+          <AnimatePresence>
+            {isStickyNavPinned && (
+              <motion.div
+                initial={{ width: 0, opacity: 0 }}
+                animate={{ width: "auto", opacity: 1 }}
+                exit={{ width: 0, opacity: 0 }}
+                className="shrink-0 flex items-center pr-1"
               >
                 <TooltipProvider>
                   <Tooltip delayDuration={0}>
                     <TooltipTrigger asChild>
-                      <Link
-                        href={homeHref}
-                        className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl hover:bg-muted text-foreground transition-colors border border-border/50 shadow-sm bg-background group shrink-0"
+                      <button
+                        onClick={toggleHeader}
+                        className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl hover:bg-muted text-foreground transition-colors group border border-border/50 shadow-sm bg-background shrink-0"
                       >
-                        <LuHouse className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
-                      </Link>
+                        <LuMenu
+                          className={cn(
+                            "w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-foreground transition-all duration-300",
+                            isTemporaryHeaderVisible ? "rotate-90" : "rotate-0",
+                          )}
+                        />
+                      </button>
                     </TooltipTrigger>
                     <TooltipContent
                       side="bottom"
                       className="bg-slate-900 border-none text-white font-medium text-xs"
                     >
-                      Voltar às Aulas
+                      {isTemporaryHeaderVisible
+                        ? "Ocultar cabeçalho"
+                        : "Mostrar cabeçalho"}
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
-              </div>
+              </motion.div>
             )}
+          </AnimatePresence>
 
-            {modules.map((mod, index) => (
+          {/* Botão Home/Voltar */}
+          {homeHref && (
+            <div
+              className={cn(
+                "shrink-0 pr-1 transition-opacity duration-300",
+                isStickyNavPinned
+                  ? "flex items-center opacity-100"
+                  : "hidden md:flex items-center opacity-100",
+              )}
+            >
+              <TooltipProvider>
+                <Tooltip delayDuration={0}>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href={homeHref}
+                      className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl hover:bg-muted text-foreground transition-colors border border-border/50 shadow-sm bg-background group shrink-0"
+                    >
+                      <LuHouse className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent
+                    side="bottom"
+                    className="bg-slate-900 border-none text-white font-medium text-xs"
+                  >
+                    Voltar às Aulas
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+          )}
+
+          {/* Module tabs */}
+          {modules.map((mod, index) => {
+            const isVisible =
+              !isCarouselMode ||
+              (index >= effectiveStart && index < effectiveStart + PAGE_SIZE);
+            return (
               <TabsTrigger
                 key={mod.id}
                 value={mod.id}
                 disabled={!isModuleUnlocked(index)}
-                className="shrink-0 py-2 px-4 md:px-5 rounded-2xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group"
+                className={cn(
+                  "shrink-0 py-2 px-4 md:px-5 rounded-2xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group",
+                  !isVisible && "hidden",
+                )}
               >
                 <div className="flex flex-col items-center md:items-start gap-0.5">
-                  <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/50 group-data-[state=active]:text-primary/60 font-display">
+                  <span
+                    className={cn(
+                      "text-[10px] uppercase tracking-widest font-bold font-display opacity-50 group-data-[state=active]:opacity-100 transition-opacity duration-200",
+                      MODULE_LABEL_COLORS[index % MODULE_LABEL_COLORS.length],
+                    )}
+                  >
                     {mod.label}
                   </span>
-                  <span className="font-bold text-[11px] md:text-[13px] flex items-center gap-2">
+                  <span className="font-bold text-[10px] md:text-[13px] flex items-center gap-2">
                     {mod.titulo}
                     {completedModules.has(mod.id) && (
                       <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20">
@@ -2427,10 +2573,67 @@ export function StickyModuleNav({
                   </span>
                 </div>
               </TabsTrigger>
-            ))}
-          </TabsList>
+            );
+          })}
+        </TabsList>
+
+        {/* Right arrow */}
+        <div className={cn("shrink-0", isCarouselMode ? "flex" : "hidden")}>
+          <button
+            onClick={slideRight}
+            disabled={!canGoRight}
+            aria-label="Próximos módulos"
+            className={cn(
+              "w-9 h-9 flex items-center justify-center rounded-2xl border border-border/50 bg-background transition-all duration-200",
+              canGoRight
+                ? "text-foreground/80 hover:bg-muted shadow-sm cursor-pointer"
+                : "text-transparent border-transparent bg-transparent cursor-default pointer-events-none",
+            )}
+          >
+            <LuChevronRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
+    </div>
+
+      {/* ── Home + Toggle mobile row — 50% abaixo da barra ──
+          Não pinned: ambos juntos e centralizados (justify-center gap-3).
+          Pinned: Home desliza para esquerda, Toggle para direita (justify-between). */}
+      <motion.div
+        layout
+        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+        className={cn(
+          "md:hidden flex items-center px-3 -mt-5",
+          isStickyNavPinned ? "justify-between" : "justify-center gap-3",
+        )}
+      >
+        <motion.div layout transition={{ type: "spring", stiffness: 380, damping: 30 }}>
+          {homeHref && (
+            <Link
+              href={homeHref}
+              aria-label="Voltar às Aulas"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <LuHouse className="w-4 h-4" />
+            </Link>
+          )}
+        </motion.div>
+
+        <motion.button
+          layout
+          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+          onClick={toggleHeader}
+          aria-label={isTemporaryHeaderVisible ? "Ocultar cabeçalho" : "Mostrar cabeçalho"}
+          className="w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0"
+        >
+          <LuMenu
+            className={cn(
+              "w-4 h-4 transition-transform duration-300",
+              isTemporaryHeaderVisible ? "rotate-90" : "rotate-0",
+            )}
+          />
+        </motion.button>
+      </motion.div>
     </div>
   );
 }

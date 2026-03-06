@@ -3851,6 +3851,9 @@ export default function AulaConcordancia({
                   icon: LuBookOpen,
                   content: (
                     <ModuleSummaryCarouselNew
+                      moduloNome="Concordância Verbal"
+                      tituloAula="Concordância"
+                      materia="Língua Portuguesa"
                       images={[
                         {
                           title: "Mapa Mental: Sujeito Composto",
@@ -4413,6 +4416,9 @@ export default function AulaConcordancia({
                   icon: LuBookOpen,
                   content: (
                     <ModuleSummaryCarouselNew
+                      moduloNome="Concordância Nominal"
+                      tituloAula="Concordância"
+                      materia="Língua Portuguesa"
                       images={[
                         {
                           title: "Card: Proibido / Necessário",
@@ -4902,6 +4908,9 @@ export default function AulaConcordancia({
                   icon: LuBookOpen,
                   content: (
                     <ModuleSummaryCarouselNew
+                      moduloNome="Prática e Simulados"
+                      tituloAula="Concordância"
+                      materia="Língua Portuguesa"
                       images={[
                         {
                           title: "Checklist: Passo a Passo",
@@ -5108,6 +5117,9 @@ export default function AulaConcordancia({
                   icon: LuBookOpen,
                   content: (
                     <ModuleSummaryCarouselNew
+                      moduloNome="Casos de Elite"
+                      tituloAula="Concordância"
+                      materia="Língua Portuguesa"
                       images={[
                         {
                           title: "Infográfico: Porcentagens",
@@ -5212,6 +5224,9 @@ export default function AulaConcordancia({
                   icon: LuBookOpen,
                   content: (
                     <ModuleSummaryCarouselNew
+                      moduloNome="Laboratório Cesgranrio"
+                      tituloAula="Concordância"
+                      materia="Língua Portuguesa"
                       images={[
                         {
                           title: "Infográfico: Raio-X Cesgranrio",

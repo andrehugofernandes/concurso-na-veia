@@ -26,7 +26,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
-        bebas: ['var(--font-bebas)', 'cursive'],
+        bebas: ['var(--font-khand)', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',

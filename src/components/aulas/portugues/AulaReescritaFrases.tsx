@@ -804,7 +804,7 @@ export default function AulaReescritaFrases({
                   content: (
                     <ModuleSummaryCarouselNew
                       tituloAula="Reescrita de Frases"
-                      materia="Português"
+                      materia="Língua Portuguesa"
                       profissao="Concurso Petrobras"
                       moduloNome="Fundamentos"
                       images={[
@@ -1135,7 +1135,7 @@ export default function AulaReescritaFrases({
                   content: (
                     <ModuleSummaryCarouselNew
                       tituloAula="Reescrita de Frases"
-                      materia="Português"
+                      materia="Língua Portuguesa"
                       profissao="Concurso Petrobras"
                       moduloNome="Técnicas e Transformações"
                       images={[
@@ -1335,7 +1335,7 @@ export default function AulaReescritaFrases({
                   content: (
                     <ModuleSummaryCarouselNew
                       tituloAula="Reescrita de Frases"
-                      materia="Português"
+                      materia="Língua Portuguesa"
                       profissao="Concurso Petrobras"
                       moduloNome="Pontuação e Sentido"
                       images={[
@@ -1505,7 +1505,7 @@ export default function AulaReescritaFrases({
                   content: (
                     <ModuleSummaryCarouselNew
                       tituloAula="Reescrita de Frases"
-                      materia="Português"
+                      materia="Língua Portuguesa"
                       profissao="Concurso Petrobras"
                       moduloNome="Armadilhas Avançadas"
                       images={[
@@ -1772,7 +1772,7 @@ export default function AulaReescritaFrases({
                   content: (
                     <ModuleSummaryCarouselNew
                       tituloAula="Reescrita de Frases"
-                      materia="Português"
+                      materia="Língua Portuguesa"
                       profissao="Concurso Petrobras"
                       moduloNome="Prática Elite"
                       images={[

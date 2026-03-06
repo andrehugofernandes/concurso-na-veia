@@ -662,6 +662,9 @@ export default function AulaPontuacao({
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="Sintaxe e Fundamentos"
+                    tituloAula="Pontuação"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "A Ordem Direta (S-V-C)",
@@ -911,6 +914,9 @@ export default function AulaPontuacao({
                   icon: LuBookOpen,
                   content: (
                     <ModuleSummaryCarouselNew
+                      moduloNome="Laboratório de Gabarito"
+                      tituloAula="Pontuação"
+                      materia="Língua Portuguesa"
                       images={[
                         {
                           title: "Vírgula: Proibições",

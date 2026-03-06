@@ -1110,6 +1110,9 @@ export default function AulaTiposTextuais({
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="Narrativo e Descritivo"
+                    tituloAula="Tipologia Textual"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Mapa Mental: Narração vs Descrição",
@@ -1408,6 +1411,9 @@ A tipologia você vai entender!
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="Dissertativo"
+                    tituloAula="Tipologia Textual"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Mapa Mental: Expositivo vs Argumentativo",
@@ -1646,6 +1652,9 @@ Se tem julgamento, é argumentação!
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="Injuntivo e Dialogal"
+                    tituloAula="Tipologia Textual"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Mapa Mental: Injuntivo",
@@ -1863,6 +1872,9 @@ Imperativo na prova, injunção aflora!
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="Gêneros vs. Tipos"
+                    tituloAula="Tipologia Textual"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Mapa Mental: Gênero vs Tipo",
@@ -2029,6 +2041,9 @@ Gênero e tipo, essa é a lição!
                 icon: LuBookOpen,
                 content: (
                   <ModuleSummaryCarouselNew
+                    moduloNome="Laboratório CESGRANRIO"
+                    tituloAula="Tipologia Textual"
+                    materia="Língua Portuguesa"
                     images={[
                       {
                         title: "Quadro Mestre: 5 Tipos",

@@ -45,7 +45,7 @@ export function OtpHelpModal({ mode, isOpen, onClose }: OtpHelpModalProps) {
                 <div className="w-8 h-8 rounded-lg bg-black/5 dark:bg-white/5 flex items-center justify-center border border-black/10 dark:border-white/10">
                   <span className="text-lg">🔐</span>
                 </div>
-                <h2 className="font-bebas text-lg text-foreground tracking-wide">
+                <h2 className="font-bebas font-bold text-lg text-foreground tracking-wide">
                   Ajuda do Autenticador
                 </h2>
               </div>
@@ -68,7 +68,7 @@ export function OtpHelpModal({ mode, isOpen, onClose }: OtpHelpModalProps) {
             <div className="px-8 pb-8 pt-4">
               <button
                 onClick={onClose}
-                className="w-full py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 font-bebas text-xl uppercase tracking-wider rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_20px_-5px_rgba(245,158,11,0.3)]"
+                className="w-full py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 font-bebas font-bold text-xl uppercase tracking-wider rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_20px_-5px_rgba(245,158,11,0.3)]"
               >
                 Entendi, prosseguir
               </button>

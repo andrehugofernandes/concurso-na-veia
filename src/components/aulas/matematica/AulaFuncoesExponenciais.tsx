@@ -187,14 +187,109 @@ export default function AulaFuncoesExponenciais({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
-              title="Método de Resolução"
+              title="A Arte de Igualar Bases"
+              description="O único jeito de baixar o 'x' do andar de cima."
               variant="emerald"
               className="mb-6"
             />
-            <AlertBox tipo="success" titulo="Passo a Passo">
-              1. Escreva ambos os lados com a MESMA BASE. 2. Iguale os
-              expoentes. 3. Resolva a equação resultante.
-            </AlertBox>
+            <ContentAccordion
+              titulo="Método de Resolução"
+              icone="⚖️"
+              corIndicador="bg-emerald-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "O Objetivo: Bases Iguais",
+                  icone: "🎯",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        Você não pode multiplicar ou dividir um número
+                        &quot;normal&quot; por um que está no expoente. A regra
+                        de ouro é:{" "}
+                        <strong>
+                          fatorar os números grandes até que os dois lados da
+                          igualdade tenham a MESMA base
+                        </strong>
+                        .
+                      </p>
+                      <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-center shadow-inner">
+                        <p className="font-mono mb-2">
+                          Se: <strong className="text-xl">aˣ = aʸ</strong>
+                        </p>
+                        <p className="font-mono">
+                          Então:{" "}
+                          <strong className="text-xl text-emerald-800 dark:text-emerald-300">
+                            x = y
+                          </strong>
+                        </p>
+                      </div>
+                      <p className="text-xs text-muted-foreground text-center italic">
+                        Corta as bases e resolve apenas os expoentes!
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Passo a Passo (CESGRANRIO)",
+                  icone: "📝",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="bg-card p-4 rounded-xl border border-border text-sm">
+                        <p className="font-bold mb-2 text-emerald-700 dark:text-emerald-400">
+                          Exemplo Prático: 4ˣ = 8
+                        </p>
+                        <ul className="space-y-3">
+                          <li>
+                            <span className="font-bold">
+                              1. Fatore os números grandes:
+                            </span>
+                            <br />
+                            O 4 é 2². O 8 é 2³.
+                            <br />
+                            Fica:{" "}
+                            <code className="bg-muted px-1 rounded">
+                              (2²)ˣ = 2³
+                            </code>
+                          </li>
+                          <li>
+                            <span className="font-bold">
+                              2. Use as Regras de Potência (potência de potência
+                              multiplica):
+                            </span>
+                            <br />
+                            Fica:{" "}
+                            <code className="bg-muted px-1 rounded">
+                              2²ˣ = 2³
+                            </code>
+                          </li>
+                          <li>
+                            <span className="font-bold">
+                              3. Bases iguais? Corte-as e desça os expoentes!
+                            </span>
+                            <br />
+                            <code className="bg-emerald-500/20 font-bold px-2 py-1 rounded">
+                              2x = 3
+                            </code>{" "}
+                            →{" "}
+                            <strong className="text-emerald-600 dark:text-emerald-400">
+                              x = 1,5
+                            </strong>
+                          </li>
+                        </ul>
+                      </div>
+                      <AlertBox tipo="warning" titulo="Quando envolver Frações">
+                        Se a base for fração (ex: 1/4),{" "}
+                        <strong>inverta a fração</strong> e mude o sinal do
+                        expoente! Ex: (1/4) = 4⁻¹. Outra coisa: CESGRANRIO gosta
+                        de colocar raízes nas equações. Lembre-se que √3 é o
+                        mesmo que 3 elevado a 1/2.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
           </section>
           <section id="quiz-modulo-2" className="mt-16">
             <QuizInterativo
@@ -220,13 +315,82 @@ export default function AulaFuncoesExponenciais({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
-              title="Modelos Exponenciais"
+              title="A Matemática do Tempo"
+              description="Quando o 'x' é a quantidade de dias, meses ou anos."
               variant="amber"
               className="mb-6"
             />
-            <AlertBox tipo="info" titulo="Modelo Geral">
-              N(t) = N₀ × (1 ± taxa)ᵗ. Crescimento: +. Decaimento: -.
-            </AlertBox>
+            <ContentAccordion
+              titulo="O Modelo Exponencial"
+              icone="📈"
+              corIndicador="bg-amber-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "A Fórmula Geral",
+                  icone: "🔬",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        Quase todo problema de aplicação de função exponencial
+                        segue esta lógica fundamental:
+                      </p>
+                      <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-center space-y-2">
+                        <p className="text-xl font-mono font-bold text-amber-800 dark:text-amber-300">
+                          N(t) = N₀ × a^t
+                        </p>
+                        <p className="text-xs">
+                          <strong>N(t)</strong> = Quantidade Final
+                          <br />
+                          <strong>N₀</strong> = Quantidade Inicial (no tempo
+                          zero)
+                          <br />
+                          <strong>a</strong> = Fator de Crescimento/Decaimento
+                          <br />
+                          <strong>t</strong> = Tempo percorrido
+                        </p>
+                      </div>
+                      <AlertBox tipo="info" titulo="Dica Ouro">
+                        Na CESGRANRIO, N₀ é onde o gráfico cruza o eixo Y. Se
+                        disser que "uma população dobrou em 3 anos", significa
+                        que N(3) = 2 × N₀.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Juros e Crescimento Previsível",
+                  icone: "💰",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">
+                        Se a taxa de aumento é, digamos, de 20% ao ano, o{" "}
+                        <strong>fator de crescimento (a)</strong> é 1,20 (ou
+                        seja, 100% + 20% convertido pra decimal).
+                        <br />A equação vira:{" "}
+                        <code className="bg-muted px-1 rounded">
+                          N(t) = N₀ × (1,20)ᵗ
+                        </code>
+                        .
+                      </p>
+                      <ul className="text-sm list-disc pl-5 space-y-2 bg-card border border-border p-4 rounded-lg">
+                        <li>
+                          <strong>Cresce 50% ao período:</strong> Fator é 1,50.
+                          A curva acelera para cima.
+                        </li>
+                        <li>
+                          <strong>
+                            Cai pela metade (Meia-vida de radioatividade):
+                          </strong>{" "}
+                          Fator é 1/2. A curva desliza pra zero, mas{" "}
+                          <em>nunca chega a ser negativa</em>.
+                        </li>
+                      </ul>
+                    </div>
+                  ),
+                },
+              ]}
+            />
           </section>
           <section id="quiz-modulo-3" className="mt-16">
             <QuizInterativo
@@ -252,14 +416,75 @@ export default function AulaFuncoesExponenciais({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
-              title="Regra do Sentido"
+              title="O Sinal do Desespero"
+              description="Uma única regra que decide toda a questão."
               variant="violet"
               className="mb-6"
             />
-            <AlertBox tipo="warning" titulo="Atenção!">
-              Base &gt; 1: mantém o sentido da desigualdade. Base entre 0 e 1:
-              INVERTE o sentido!
-            </AlertBox>
+            <ContentAccordion
+              titulo="O Sentido da Desigualdade"
+              icone="🔄"
+              corIndicador="bg-violet-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Base Maior que 1. Exemplo: 2, 3, 5...",
+                  icone: "🚀",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-center">
+                        <p className="font-bold text-green-700 dark:text-green-400">
+                          Mantém o sinal!
+                        </p>
+                        <p className="font-mono text-sm mt-2">2ˣ &gt; 2⁵</p>
+                        <p className="font-mono font-bold mt-1 text-green-800 dark:text-green-300">
+                          x &gt; 5
+                        </p>
+                      </div>
+                      <p className="text-sm">
+                        É lógico: Se a base é maior que 1, a função é crescente.
+                        Quanto maior o expoente, maior o resultado. Então se 2ˣ
+                        deve ser maior que 2⁵, é obrigação que x seja maior que
+                        5.
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo:
+                    "Base Entre 0 e 1 (Fração Própria). Exemplo: 1/2, 0.3...",
+                  icone: "⚠️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-center">
+                        <p className="font-bold text-red-700 dark:text-red-400">
+                          INVERTE o sinal!
+                        </p>
+                        <p className="font-mono text-sm mt-2">(½)ˣ &gt; (½)³</p>
+                        <p className="font-mono font-bold mt-1 text-red-800 dark:text-red-300">
+                          x &lt; 3
+                        </p>
+                      </div>
+                      <p className="text-sm">
+                        Se eu tenho meio bolo (1/2), elevar ele ao quadrado dá
+                        1/4 do bolo (menor). Elevar ao cubo dá 1/8 (menor
+                        ainda).
+                        <br />
+                        Ou seja: Para o resultado ser MAIOR, o expoente tem que
+                        ser MENOR! A função é <em>decrescente</em>.
+                      </p>
+                      <AlertBox tipo="warning" titulo="O Veneno Clássico">
+                        Cuidado quando você tentar resolver igualando bases na
+                        forma invertida! Se você transformou (1/2) em 2⁻¹, o
+                        sinal negativo já corrige tudo automaticamente na hora
+                        de resolver, então não precisa inverter a desigualdade
+                        DE NOVO. Escolha UM dos caminhos para não errar!
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
           </section>
           <section id="quiz-modulo-4" className="mt-16">
             <QuizInterativo

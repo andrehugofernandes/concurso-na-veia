@@ -261,7 +261,7 @@ export default function Setup2FAPage() {
                   onKeyDown={(e) => handleKeyDown(index, e)}
                   onPaste={handlePaste}
                   maxLength={1}
-                  className="w-10 h-14 md:w-12 md:h-16 rounded-xl text-foreground text-center text-2xl md:text-3xl font-bebas transition-all focus:outline-none focus:ring-2 border"
+                  className="w-10 h-14 md:w-12 md:h-16 rounded-xl text-foreground text-center text-2xl md:text-3xl font-bebas font-bold transition-all focus:outline-none focus:ring-2 border"
                   style={
                     {
                       backgroundColor: isDark
@@ -282,7 +282,7 @@ export default function Setup2FAPage() {
             <button
               onClick={verifyAndActivate}
               disabled={otp.join("").length !== 6}
-              className="w-full py-4 text-white font-bebas text-2xl uppercase tracking-wider rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98] shadow-lg"
+              className="w-full py-4 text-white font-bebas font-bold text-2xl uppercase tracking-wider rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98] shadow-lg"
               style={{
                 backgroundColor: "var(--primary-hex)",
                 boxShadow: "0 10px 15px -3px rgba(var(--primary-rgb), 0.3)",
