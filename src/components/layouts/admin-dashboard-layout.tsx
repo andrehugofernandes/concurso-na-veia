@@ -137,12 +137,12 @@ function DashboardShell({
 
   return (
     <div
-      className="min-h-screen bg-slate-50/50 dark:bg-background"
+      className="min-h-screen bg-white dark:bg-background"
       suppressHydrationWarning
       style={
         {
           "--sidebar-width": shouldHideSidebar
-            ? "0px"
+            ? "24px" // px-6 equivalente → centraliza barra de progresso pixel-perfect (170px = 340÷2)
             : isSidebarCollapsed
               ? isMobile
                 ? "56px"
@@ -189,7 +189,7 @@ function DashboardShell({
         />
 
         {/* Page Content */}
-        <main className="py-4 px-2 sm:py-6 sm:px-4 md:p-8 pb-20 sm:pb-6 relative w-full">
+        <main className="py-4 px-2 sm:py-6 sm:px-4 md:p-0 pb-20 sm:pb-6 relative w-full">
           {children}
         </main>
         <ScrollToTop />
