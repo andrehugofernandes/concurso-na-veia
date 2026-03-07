@@ -6,40 +6,44 @@ import { cn } from "@/lib/utils";
 
 export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const [side, setSide] = useState<"left" | "right">("right");
 
   useEffect(() => {
     const toggleVisibility = () => {
-      // Show button when page is scrolled down 300px
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      setIsVisible(window.scrollY > 300);
+    };
+
+    const handleSideChange = (e: Event) => {
+      setSide((e as CustomEvent<{ side: "left" | "right" }>).detail.side);
     };
 
     window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll-to-top-side", handleSideChange);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+      window.removeEventListener("scroll-to-top-side", handleSideChange);
+    };
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <button
       onClick={scrollToTop}
       className={cn(
-        "fixed bottom-[82px] md:bottom-8 right-8 z-[100] p-4 rounded-full bg-primary text-primary-foreground shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 group",
+        "fixed bottom-[106px] md:bottom-8 z-[100] p-2.5 md:p-4 rounded-full bg-primary text-primary-foreground shadow-2xl transition-all duration-500 hover:scale-110 active:scale-95 group",
+        side === "right"
+          ? "right-4 md:right-8 left-auto"
+          : "left-4 md:left-8 right-auto",
         isVisible
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-10 pointer-events-none",
       )}
       aria-label="Voltar ao topo"
     >
-      <LuArrowUp className="w-6 h-6 transition-transform group-hover:-translate-y-1" />
+      <LuArrowUp className="w-4 h-4 md:w-6 md:h-6 transition-transform group-hover:-translate-y-1" />
       <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping -z-10 group-hover:block hidden" />
     </button>
   );

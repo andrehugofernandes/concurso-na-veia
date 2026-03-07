@@ -60,6 +60,9 @@ import {
   LuDownload,
   LuHouse,
   LuMenu,
+  LuSearch,
+  LuShieldAlert,
+  LuBrain,
 } from "react-icons/lu";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -629,6 +632,18 @@ export function MusicPlayer({
 
 export function ProgressIndicator({ percent }: { percent?: number }) {
   const [progress, setProgress] = useState(0);
+  const prevProgressRef = useRef(0);
+
+  useEffect(() => {
+    const prev = prevProgressRef.current;
+    // Dispara evento quando cruza 50% em qualquer direção
+    if (prev < 50 && progress >= 50) {
+      window.dispatchEvent(new CustomEvent("scroll-to-top-side", { detail: { side: "left" } }));
+    } else if (prev >= 50 && progress < 50) {
+      window.dispatchEvent(new CustomEvent("scroll-to-top-side", { detail: { side: "right" } }));
+    }
+    prevProgressRef.current = progress;
+  }, [progress]);
 
   useEffect(() => {
     if (percent !== undefined) {
@@ -669,7 +684,7 @@ export function ProgressIndicator({ percent }: { percent?: number }) {
         <motion.div
           id="progress-indicator-container"
           key="progress-indicator"
-          className="fixed bottom-10 mb-[60px] md:mb-0 left-0 right-0 flex justify-center z-[110] px-6 pl-[var(--sidebar-width)] transition-[padding] duration-300"
+          className="fixed bottom-[64px] md:bottom-10 left-0 right-0 flex justify-center z-[45] md:z-[110] px-6 pl-[var(--sidebar-width)] transition-[padding] duration-300"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
@@ -709,51 +724,79 @@ export function FlipCard({
   frente,
   verso,
   numero,
-  categoria = "Português",
+  categoria = "Língua Portuguesa",
   hideFooter = false,
+  variant,
 }: {
   frente: React.ReactNode;
   verso: React.ReactNode;
   numero?: number;
   categoria?: string;
   hideFooter?: boolean;
+  variant?: string;
 }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
     <div
-      className="group w-full perspective-1000 cursor-pointer h-[350px]"
+      className="group w-full h-[350px] [perspective:1200px] cursor-pointer"
       onClick={() => setIsFlipped(!isFlipped)}
     >
-      <div
-        className={`relative w-full h-full duration-700 transition-all preserve-3d shadow-xl rounded-2xl`}
-        style={{
-          transformStyle: "preserve-3d",
-          transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
+      <motion.div
+        className="relative w-full h-full"
+        initial={false}
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
         }}
+        style={{ transformStyle: "preserve-3d" }}
       >
         {/* ── FRENTE ── */}
         <div
-          className="absolute inset-0 w-full h-full backface-hidden bg-card border-2 border-border rounded-2xl p-5 flex flex-col justify-between"
-          style={{ backfaceVisibility: "hidden" }}
+          className={cn(
+            "absolute inset-0 w-full h-full [backface-visibility:hidden]",
+            "bg-zinc-50 dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-800",
+            "rounded-3xl p-6 flex flex-col justify-between overflow-hidden",
+            "group-hover:border-primary/50 transition-colors duration-300 shadow-xl",
+            "before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary/5 before:to-transparent before:opacity-0 group-hover:before:opacity-100 before:transition-opacity",
+          )}
         >
-          <div className="flex flex-col flex-1 h-full min-h-0">
-            {numero && (
-              <div className="mb-3">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wide">
-                  Questão {numero}
-                </span>
-              </div>
+          {/* Badge de Topo */}
+          <div className="relative z-10 flex justify-between items-start">
+            {numero ? (
+              <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20">
+                Ponto de Controle #{numero}
+              </span>
+            ) : (
+              <span className="px-3 py-1 rounded-full bg-muted text-muted-foreground text-[10px] font-bold uppercase tracking-widest border border-border/50">
+                Conceito Chave
+              </span>
             )}
-            <div className="text-foreground text-base leading-relaxed overflow-y-auto flex-1 pr-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-              {frente}
+            <div className="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center border border-primary/10 group-hover:rotate-12 transition-transform">
+              <LuSearch className="text-primary" />
             </div>
           </div>
+
+          {/* Conteúdo Central */}
+          <div className="relative z-10 flex-1 flex flex-col justify-center py-6">
+            <div className="text-lg md:text-xl font-bold text-zinc-800 dark:text-zinc-100 leading-tight">
+              {frente}
+            </div>
+            <div className="mt-4 flex items-center gap-2 text-zinc-400 dark:text-zinc-500 text-xs italic">
+              <span className="w-4 h-px bg-current opacity-30" />
+              Clique para revelar o dossiê
+            </div>
+          </div>
+
+          {/* Rodapé Tático */}
           {!hideFooter && (
-            <div className="mt-4 pt-4 border-t border-border/40 flex justify-between items-center text-[10px] md:text-xs text-muted-foreground/60 shrink-0">
+            <div className="relative z-10 pt-4 border-t border-zinc-200/50 dark:border-zinc-800/50 flex justify-between items-center text-[10px] uppercase tracking-wider font-semibold text-zinc-500">
               <span className="truncate pr-2">{categoria}</span>
-              <span className="shrink-0 font-medium">
-                Petrobras • CESGRANRIO
+              <span className="shrink-0 flex items-center gap-1 text-primary">
+                <LuShieldAlert className="w-3 h-3" />
+                Dossiê Técnico
               </span>
             </div>
           )}
@@ -761,19 +804,56 @@ export function FlipCard({
 
         {/* ── VERSO ── */}
         <div
-          className={`absolute inset-0 w-full h-full backface-hidden bg-indigo-500/[0.03] dark:bg-indigo-900/10 border-2 border-indigo-500/20 dark:border-indigo-500/30 rounded-2xl p-6 md:p-8 flex flex-col`}
-          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+          className={cn(
+            "absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)]",
+            "bg-white dark:bg-[#0a0a0a] border-2 border-primary/30",
+            "rounded-3xl p-6 md:p-8 flex flex-col shadow-2xl",
+            "backdrop-blur-xl",
+            "before:absolute before:inset-0 before:bg-primary/5 before:opacity-10 before:dark:opacity-50",
+            variant === "dark" && "bg-zinc-950 text-white border-zinc-800",
+          )}
         >
-          <div className="flex items-center gap-2 mb-3 text-emerald-600 dark:text-emerald-400 font-bold border-b border-emerald-500/20 pb-2 shrink-0">
-            <LuCheck className="text-xl" />
-            <span>Resposta Comentada</span>
+          <div
+            className={cn(
+              "relative z-10 flex items-center gap-3 mb-5 font-black border-b pb-3 shrink-0 uppercase tracking-tighter text-sm",
+              variant === "dark"
+                ? "text-white border-white/10"
+                : "text-primary border-primary/20",
+            )}
+          >
+            <div
+              className={cn(
+                "p-1.5 rounded",
+                variant === "dark" ? "bg-white/10" : "bg-primary/10",
+              )}
+            >
+              <LuCheck className="text-xl" />
+            </div>
+            <span>Explicação de Elite</span>
           </div>
 
-          <div className="text-foreground text-sm leading-relaxed overflow-y-auto flex-1 pr-1 pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div
+            className={cn(
+              "relative z-10 text-sm leading-relaxed overflow-y-auto flex-1 pr-1 custom-scrollbar text-justify font-medium",
+              variant === "dark"
+                ? "text-zinc-300"
+                : "text-zinc-700 dark:text-zinc-300",
+            )}
+          >
             {verso}
           </div>
+
+          <div
+            className={cn(
+              "relative z-10 mt-4 flex justify-between items-center text-[9px] font-bold uppercase tracking-widest",
+              variant === "dark" ? "text-white/40" : "text-primary/60",
+            )}
+          >
+            <span>© Petrobras Quest System</span>
+            <span>Ref: 2026-B.P.O</span>
+          </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -1033,6 +1113,113 @@ export function ComparisonSide({
         ))}
       </ul>
     </div>
+  );
+}
+
+export function Comparison({
+  title,
+  left,
+  right,
+}: {
+  title: string;
+  left: {
+    title: string;
+    content: string;
+    description: string;
+    variant: "success" | "danger" | "info" | "warning";
+  };
+  right: {
+    title: string;
+    content: string;
+    description: string;
+    variant: "success" | "danger" | "info" | "warning";
+  };
+}) {
+  const getColors = (variant: string) => {
+    switch (variant) {
+      case "success":
+        return "bg-green-500/5 border-green-500/20 text-green-600 dark:text-green-400";
+      case "danger":
+        return "bg-red-500/5 border-red-500/20 text-red-600 dark:text-red-400";
+      case "warning":
+        return "bg-yellow-500/5 border-yellow-500/20 text-yellow-600 dark:text-yellow-400";
+      case "info":
+        return "bg-blue-500/5 border-blue-500/20 text-blue-600 dark:text-blue-400";
+      default:
+        return "bg-muted/50 border-border";
+    }
+  };
+
+  return (
+    <div className="space-y-4">
+      <h4 className="text-sm font-bold uppercase tracking-widest text-muted-foreground/60 px-1">
+        {title}
+      </h4>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[left, right].map((side, i) => (
+          <div
+            key={i}
+            className={cn(
+              "p-5 rounded-2xl border flex flex-col gap-3 h-full",
+              getColors(side.variant),
+            )}
+          >
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-sm uppercase tracking-wide">
+                {side.title}
+              </span>
+              <div
+                className={cn(
+                  "p-1 rounded-full",
+                  side.variant === "success"
+                    ? "bg-green-500/10"
+                    : side.variant === "danger"
+                      ? "bg-red-500/10"
+                      : "bg-primary/10",
+                )}
+              >
+                {side.variant === "success" ? (
+                  <LuCheck className="w-4 h-4" />
+                ) : side.variant === "danger" ? (
+                  <LuShieldAlert className="w-4 h-4" />
+                ) : (
+                  <LuInfo className="w-4 h-4" />
+                )}
+              </div>
+            </div>
+            <div className="bg-background/40 backdrop-blur-sm p-4 rounded-xl border border-current/10 flex-1">
+              <p className="text-foreground font-medium italic">
+                "{side.content}"
+              </p>
+            </div>
+            <p className="text-xs opacity-80 leading-relaxed italic mt-1">
+              {side.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function LuInfo(props: any) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 16v-4" />
+      <path d="M12 8h.01" />
+    </svg>
   );
 }
 
@@ -1546,7 +1733,8 @@ export function LessonTabs({
     | "amber"
     | "rose"
     | "blue"
-    | "cyan";
+    | "cyan"
+    | "slate";
 }) {
   const variantClasses: Record<string, string> = {
     indigo:
@@ -2028,7 +2216,7 @@ export function AulaTemplate({
 }: {
   activeTab: string;
   setActiveTab: (val: string) => void;
-  modules: ModuleDef[];
+  modules: readonly ModuleDef[];
   completedModules: Set<string>;
   isModuleUnlocked: (index: number) => boolean;
   titulo: string;
@@ -2264,7 +2452,7 @@ export function AulaTemplate({
   );
 }
 export interface StickyModuleNavProps {
-  modules: ModuleDef[];
+  modules: readonly ModuleDef[];
   activeTab: string;
   completedModules: Set<string>;
   isModuleUnlocked: (index: number) => boolean;
@@ -2727,6 +2915,7 @@ export function ModuleSectionHeader({
     rose: "bg-rose-600",
     blue: "bg-blue-600",
     cyan: "bg-cyan-600",
+    slate: "bg-slate-600",
   };
 
   const badgeVariants = {
@@ -2737,6 +2926,7 @@ export function ModuleSectionHeader({
     rose: "bg-white/20 text-white",
     blue: "bg-white/20 text-white",
     cyan: "bg-white/20 text-white",
+    slate: "bg-white/20 text-white",
   };
 
   return (
@@ -2793,5 +2983,113 @@ export function ModuleSectionHeader({
         </div>
       </div>
     </div>
+  );
+}
+
+/**
+ * COMPONENTE IMPERATIVO DE CONSOLIDAÇÃO (Dossiê Premium)
+ * Padroniza as 4 abas obrigatórias antes do Quiz.
+ */
+export function ModuleConsolidation({
+  index,
+  variant,
+  video,
+  resumoVisual,
+  maceteVisual,
+  audio,
+}: {
+  index: number;
+  variant:
+    | "indigo"
+    | "violet"
+    | "emerald"
+    | "amber"
+    | "rose"
+    | "blue"
+    | "cyan"
+    | "slate";
+  video: {
+    videoId: string;
+    title: string;
+    duration: string;
+    thumbnail?: string;
+  };
+  resumoVisual: {
+    moduloNome: string;
+    tituloAula: string;
+    materia: string;
+    images: {
+      title: string;
+      type: string;
+      placeholderColor: string;
+      imageUrl?: string;
+    }[];
+  };
+  maceteVisual: { title: string; content: React.ReactNode };
+  audio: {
+    audioUrl: string;
+    titulo: string;
+    artista: string;
+    capaUrl?: string;
+    lyrics?: string;
+  };
+}) {
+  return (
+    <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
+      <ModuleSectionHeader
+        index={index}
+        title="Consolidação e Resumo"
+        variant={variant}
+        description="Fixação rápida de conteúdo antes do desafio final."
+      />
+      <LessonTabs
+        variant={variant}
+        tabs={[
+          {
+            id: "video",
+            label: "Vídeo Aula",
+            icon: LuPlay,
+            content: (
+              <div className="w-full flex flex-col items-center py-6">
+                <div className="w-full max-w-3xl">
+                  <VideoModal {...video} />
+                </div>
+              </div>
+            ),
+          },
+          {
+            id: "resumo",
+            label: "Resumo Visual",
+            icon: LuBookOpen,
+            content: <ModuleSummaryCarouselNew {...resumoVisual} />,
+          },
+          {
+            id: "visual",
+            label: "Macete Visual",
+            icon: LuImage,
+            content: (
+              <div className="text-center p-8 space-y-6">
+                <h3 className="text-xl font-bold text-foreground">
+                  {maceteVisual.title}
+                </h3>
+                {maceteVisual.content}
+              </div>
+            ),
+          },
+          {
+            id: "audio",
+            label: "Áudio Resumo",
+            icon: LuVolume2,
+            content: (
+              <div className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl border border-indigo-500/20">
+                <div className="w-full max-w-md">
+                  <MusicPlayerCard {...audio} />
+                </div>
+              </div>
+            ),
+          },
+        ]}
+      />
+    </section>
   );
 }

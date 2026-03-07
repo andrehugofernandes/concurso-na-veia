@@ -47,7 +47,7 @@ export function MobileBottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 md:hidden h-16 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-around px-2 z-50">
+    <nav className="fixed bottom-0 left-0 right-0 md:hidden h-16 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-around px-2 z-[50]">
       {bottomNavItems.map((item) => {
         const Icon = item.icon;
         const isActive =
@@ -58,7 +58,7 @@ export function MobileBottomNav() {
             <Link
               key={item.id}
               href={item.href}
-              className="flex flex-col items-center gap-0.5 -mt-5"
+              className="flex flex-col items-center gap-0.5 -mt-[52px]"
             >
               <div
                 className={cn(
