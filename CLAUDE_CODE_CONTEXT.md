@@ -35,7 +35,7 @@ Seguimos rigorosamente o **Purple Ban** (Proibição do Roxo/Violeta):
 - **Glassmorphism:** `bg-muted/30 backdrop-blur-md` e bordas com `border-white/5` ou `border-border/20`.
 - **Componentes Chave:**
   - `ContentAccordion`: Para agrupar teoria densa. **(OBRIGATÓRIO: Sempre construir usando o padrão da skill `@[.agent/skills/acordeon-carrossel]`)**
-  - `FlipCard`: Ricos em conteúdo no verso (mini-aulas).
+  - `FlipCard`: Ricos em conteúdo no verso (mini-aulas). **Padrão Premium (Skin-Aware):** Ícones do sistema (`primary`), categoria no rodapé e estrutura densa. Frente: Ícone + Título + Pergunta; Verso: Ícone Check + Título Resposta + Explicação Densa + Dica de Elite em destaque.
   - `CardCarousel`: Para roadmaps de estudo.
   - `StickyModuleNav`: Novo menu em carrossel (ajustado para suportar até 15 módulos).
 
@@ -114,6 +114,18 @@ Seguir a ordem cronológica do `src/data/conteudo.ts`. Aulas marcadas com ✓ at
 | 13    | Análise Combinatória     | `AulaAnaliseCombinatoriaou.tsx` | CRIAR DO ZERO                                  |
 | 14    | Probabilidade            | `AulaProbabilidade.tsx`         | ✓ 10 mod, 1913 lin — **FEITO**                 |
 | 15–19 | Trigonometria…Financeira | —                               | CRIAR DO ZERO                                  |
+
+## 7. Fila de Upgrade (Língua Portuguesa - 10 Módulos)
+
+| Ordem | Tópico                 | Arquivo                      | Status                                     |
+| ----- | ---------------------- | ---------------------------- | ------------------------------------------ |
+| 1     | Interpretação de Texto | `AulaInterpretacaoTexto.tsx` | 10 mod, enrichment in progress — **ATUAL** |
+| 2     | Reescritura de Frases  | `AulaReescritaFrases.tsx`    | 10 mod, quizzes generated — **PRÓXIMO**    |
+| 3     | Coesão e Coerência     | `AulaCoesaoCoerencia.tsx`    | 10 mod — aguarda                           |
+| 4     | Concordância           | `AulaConcordancia.tsx`       | 10 mod — aguarda                           |
+| 5     | Regência               | `AulaRegencia.tsx`           | 10 mod — aguarda                           |
+
+---
 
 **Após Matemática:**
 

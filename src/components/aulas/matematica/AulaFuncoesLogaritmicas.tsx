@@ -173,12 +173,12 @@ export default function AulaFuncoesLogaritmicas({
               slides={[
                 {
                   titulo: "A DefiniÃ§Ã£o Sagrada",
-                  icone:<LuBrain />,
-                  conteudo:(
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        O Logaritmo Ã© apenas uma pergunta exposta num papel. Ele
-                        te questiona de forma direta: &quot;Bota fÃ© de que
+                        O Logaritmo Ã© apenas uma pergunta exposta num papel.
+                        Ele te questiona de forma direta: &quot;Bota fÃ© de que
                         nÃºmero eu coloquei em cima dessa Base aÃ­ debaixo, pra
                         ela virar esse grandÃ£o do lado?&quot;
                       </p>
@@ -197,8 +197,8 @@ export default function AulaFuncoesLogaritmicas({
                 },
                 {
                   titulo: "Base Oculta (Base 10)",
-                  icone:<LuBookOpen />,
-                  conteudo:(
+                  icone: <LuBookOpen />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
                         Quando alguÃ©m esconde a base que fica flutuando
@@ -208,9 +208,9 @@ export default function AulaFuncoesLogaritmicas({
                       <AlertBox tipo="info" titulo="DecibÃ©is e Richter">
                         Nas engenharias quÃ­micas ou na geologia que move a
                         Petrobras. Terremoto forÃ§a 5 e Terremoto forÃ§a 6 na
-                        escala Richter... A diferenÃ§a nÃ£o Ã© 1x, a explosÃ£o Ã© 10
-                        vezes pior. E um 7 Ã© 100 vezes pior que o 5. Tudo Ã© base
-                        10.
+                        escala Richter... A diferenÃ§a nÃ£o Ã© 1x, a explosÃ£o
+                        Ã© 10 vezes pior. E um 7 Ã© 100 vezes pior que o 5. Tudo
+                        Ã© base 10.
                       </AlertBox>
                     </div>
                   ),
@@ -252,8 +252,8 @@ export default function AulaFuncoesLogaritmicas({
               slides={[
                 {
                   titulo: "O Tombo do Logaritmo",
-                  icone:<LuSigma />,
-                  conteudo:(
+                  icone: <LuSigma />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
                         O caso do cara que tem log(bâ¿) na sua mira. O Expoente{" "}
@@ -269,8 +269,8 @@ export default function AulaFuncoesLogaritmicas({
                 },
                 {
                   titulo: "MudanÃ§a de Base",
-                  icone:<LuRepeat />,
-                  conteudo:(
+                  icone: <LuRepeat />,
+                  conteudo: (
                     <div className="space-y-4">
                       <AlertBox
                         tipo="warning"
@@ -282,9 +282,9 @@ export default function AulaFuncoesLogaritmicas({
                           &quot;Use os dados na base 10: log 2 = 0,3 e log 3 =
                           0,48&quot;
                         </em>
-                        . E aÃ­ no problema ele atira um <code>logâ‚ƒ 2</code> em
-                        vocÃª. A mÃ¡gica da mudanÃ§a te deixa estraÃ§alhar tudo e
-                        trocar para log de 10 dividindo o{" "}
+                        . E aÃ­ no problema ele atira um <code>logâ‚ƒ 2</code>{" "}
+                        em vocÃª. A mÃ¡gica da mudanÃ§a te deixa estraÃ§alhar
+                        tudo e trocar para log de 10 dividindo o{" "}
                         <strong>interior original pelo antigo da base</strong>.{" "}
                         <code>logâ‚â‚€ 2 / logâ‚â‚€ 3</code>.
                       </AlertBox>
@@ -328,16 +328,16 @@ export default function AulaFuncoesLogaritmicas({
               slides={[
                 {
                   titulo: "MecÃ¢nica do Coice (A Ãšnica Forma Legal de Matar)",
-                  icone:<LuTarget />,
-                  conteudo:(
+                  icone: <LuTarget />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Imagina resolver <code>logâ‚‚(x+8) = 4</code>. O desespero
-                        da escuridÃ£o... Mas espere: Pegue a base inferior ali de
-                        fininho (2), leve para o outro lado correndo, e chute a
-                        cara do 4 fazendo ele engolir e se transformar em
-                        potÃªncia de cara. Quando isso acontece... o Log
-                        desapareceu, meu amigo.
+                        Imagina resolver <code>logâ‚‚(x+8) = 4</code>. O
+                        desespero da escuridÃ£o... Mas espere: Pegue a base
+                        inferior ali de fininho (2), leve para o outro lado
+                        correndo, e chute a cara do 4 fazendo ele engolir e se
+                        transformar em potÃªncia de cara. Quando isso
+                        acontece... o Log desapareceu, meu amigo.
                       </p>
                       <div className="bg-amber-500/10 p-4 border border-amber-500/20 text-center rounded-xl font-mono text-amber-800 dark:text-amber-200">
                         <p>x + 8 = 2â´</p>
@@ -383,18 +383,18 @@ export default function AulaFuncoesLogaritmicas({
               slides={[
                 {
                   titulo: "O Pior Risco da CESGRANRIO",
-                  icone:<LuTrophy />,
-                  conteudo:(
+                  icone: <LuTrophy />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Terminou a equaÃ§Ã£o de Bhaskara para a equaÃ§Ã£o de log e
-                        achou -2 e 8? NÃ£o corra pra marcar a letra B com as
+                        Terminou a equaÃ§Ã£o de Bhaskara para a equaÃ§Ã£o de log
+                        e achou -2 e 8? NÃ£o corra pra marcar a letra B com as
                         respostas. <strong>TESTE</strong> elas dentro do log lÃ¡
                         da pergunta inicial.
                       </p>
-                      <AlertBox tipo="error" titulo="Proibido por Lei">
-                        Se houver na equaÃ§Ã£o <code>log(x-5)</code>, e vocÃª usar
-                        seu x = -2... Estourou a fÃ¡brica e terÃ­amos{" "}
+                      <AlertBox tipo="danger" titulo="Proibido por Lei">
+                        Se houver na equaÃ§Ã£o <code>log(x-5)</code>, e vocÃª
+                        usar seu x = -2... Estourou a fÃ¡brica e terÃ­amos{" "}
                         <code>log(-7)</code>. Ã‰ impossÃ­vel e nulo. Raiz nÃ£o
                         contada no Gabarito!!
                       </AlertBox>
@@ -435,8 +435,8 @@ export default function AulaFuncoesLogaritmicas({
                 A Arte CategÃ³rica Finalizada
               </h3>
               <p className="text-center text-muted-foreground max-w-sm">
-                Com esse simulado destruÃ­do vocÃª acabou de blindar seu cÃ©rebro
-                de logaritmos.
+                Com esse simulado destruÃ­do vocÃª acabou de blindar seu
+                cÃ©rebro de logaritmos.
               </p>
             </div>
           ) : (
@@ -456,16 +456,3 @@ export default function AulaFuncoesLogaritmicas({
     </AulaTemplate>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

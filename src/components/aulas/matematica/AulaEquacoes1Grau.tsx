@@ -24,9 +24,9 @@ import {
   LuPlay,
   LuMusic,
   LuTrophy,
-  LuCheckCircle,
+  LuCircleCheck,
   LuArrowRight,
-  LuXCircle,
+  LuCircleX,
 } from "react-icons/lu";
 
 import {
@@ -196,8 +196,8 @@ export default function AulaEquacoes1Grau({
               slides={[
                 {
                   titulo: "O Princípio da Balança",
-                  icone:<LuBookOpen />,
-                  conteudo:(
+                  icone: <LuBookOpen />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
                         Para ela não pender (não quebrar a igualdade), tudo o
@@ -234,8 +234,8 @@ export default function AulaEquacoes1Grau({
                 },
                 {
                   titulo: "Sinal x Operação (Pegadinha)",
-                  icone:<LuLightbulb />,
-                  conteudo:(
+                  icone: <LuLightbulb />,
+                  conteudo: (
                     <AlertBox
                       tipo="warning"
                       titulo="O Veneno da Operação Inversa"
@@ -289,8 +289,8 @@ export default function AulaEquacoes1Grau({
               slides={[
                 {
                   titulo: "O Dicionário Operacional",
-                  icone:<LuBookOpen />,
-                  conteudo:(
+                  icone: <LuBookOpen />,
+                  conteudo: (
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20">
@@ -375,8 +375,8 @@ export default function AulaEquacoes1Grau({
               slides={[
                 {
                   titulo: "O Aniquilador de Denominador (MMC)",
-                  icone:<LuTarget />,
-                  conteudo:(
+                  icone: <LuTarget />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
                         Se a equação tem denominadores de um lado, do outro,
@@ -450,8 +450,8 @@ export default function AulaEquacoes1Grau({
               slides={[
                 {
                   titulo: "Método da Adição (Caça-Jato)",
-                  icone:<LuTrophy />,
-                  conteudo:(
+                  icone: <LuTrophy />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
                         É o método veloz. Você empilha as equações e as "soma",
@@ -480,8 +480,8 @@ export default function AulaEquacoes1Grau({
                 },
                 {
                   titulo: "Substituição (Tático Lento)",
-                  icone:<LuBrain />,
-                  conteudo:(
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
                         É útil quando tem uma letra perfeitamente isolada. Ex:
@@ -545,15 +545,3 @@ export default function AulaEquacoes1Grau({
     </AulaTemplate>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-

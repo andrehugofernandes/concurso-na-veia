@@ -138,7 +138,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "1. Experimento Aleatório",
                 icone: "🎲",
-                conteudo:(
+                conteudo: (
                   <div className="space-y-6">
                     <div className="space-y-2">
                       <h5 className="text-indigo-400 font-bold text-xs uppercase tracking-widest">
@@ -184,7 +184,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "2. Espaço Amostral (S)",
                 icone: "🌌",
-                conteudo:(
+                conteudo: (
                   <div className="space-y-6">
                     <div className="space-y-2">
                       <h5 className="text-indigo-400 font-bold text-xs uppercase tracking-widest">
@@ -219,7 +219,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "3. O Evento (E)",
                 icone: "🎯",
-                conteudo:(
+                conteudo: (
                   <div className="space-y-6">
                     <div className="space-y-2">
                       <h5 className="text-indigo-400 font-bold text-xs uppercase tracking-widest">
@@ -264,7 +264,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "Eventos Independentes",
                 icone: "⚖️",
-                conteudo:(
+                conteudo: (
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/70 leading-relaxed">
                       Dois eventos são independentes quando a ocorrência de um{" "}
@@ -289,7 +289,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "Complementar",
                 icone: "🌓",
-                conteudo:(
+                conteudo: (
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/70 leading-relaxed">
                       O evento complementar (A') é o "não A". É tudo o que falta
@@ -370,7 +370,9 @@ export default function AulaProbabilidade({
                   ),
                 },
                 {
-                  icone: Target,
+                  icone: (
+                    <Target className="w-12 h-12 text-blue-500 opacity-50" />
+                  ),
                   title: "Nível 1: Laplace",
                   descricao: (
                     <FlipCard
@@ -549,7 +551,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "A Escala Digital",
                 icone: "⚖️",
-                conteudo:(
+                conteudo: (
                   <div className="space-y-6">
                     <p className="text-sm text-slate-300">
                       A probabilidade é um percentual disfarçado de fração. Ela
@@ -577,7 +579,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "Case: Falha em Válvulas",
                 icone: "🔧",
-                conteudo:(
+                conteudo: (
                   <div className="space-y-4">
                     <h5 className="text-blue-400 font-bold text-xs uppercase">
                       Cenário Petrobras (Simulado Cesgranrio)
@@ -741,7 +743,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "Eventos Disjuntos",
                 icone: "🚫",
-                conteudo:(
+                conteudo: (
                   <div className="space-y-4">
                     <p className="text-sm text-slate-300">
                       Quando a interseção é <strong>Vazia (Zero)</strong>.
@@ -760,7 +762,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "A União Tripla (A ∪ B ∪ C)",
                 icone: "�",
-                conteudo:(
+                conteudo: (
                   <div className="space-y-4">
                     <p className="text-sm text-slate-300">
                       O "Cão de Guarda" das provas de Engenharia. A fórmula
@@ -786,7 +788,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "O Macete de Venn",
                 icone: "�",
-                conteudo:(
+                conteudo: (
                   <div className="space-y-4">
                     <div className="grid grid-cols-2 gap-4 text-center">
                       <div className="p-3 bg-blue-500/5 border border-blue-500/10 rounded-xl">
@@ -939,7 +941,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "A Árvore de Eventos",
                 icone: "🌳",
-                conteudo:(
+                conteudo: (
                   <div className="space-y-4">
                     <p className="text-sm text-slate-300">
                       Ideal para eventos <strong>Sucessivos</strong>.
@@ -968,7 +970,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "Inversão de Bayes",
                 icone: "🧬",
-                conteudo:(
+                conteudo: (
                   <div className="space-y-4">
                     <p className="text-sm text-slate-300">
                       O "Raciocínio Forense": Você já viu o efeito e quer saber
@@ -1109,7 +1111,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "Quando usar?",
                 icone: "🏗️",
-                conteudo:(
+                conteudo: (
                   <div className="space-y-4">
                     <p className="text-sm text-foreground/70 leading-relaxed">
                       Sempre que tivermos{" "}
@@ -1130,7 +1132,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "Por que a Combinação?",
                 icone: "🔢",
-                conteudo:(
+                conteudo: (
                   <div className="space-y-4">
                     <p className="text-sm text-slate-300">
                       O <strong>C(n,k)</strong> serve para contabilizar todas as
@@ -2055,15 +2057,3 @@ const probabilidadeQuestions: QuizQuestion[] = [
       "Os primos até 50 são: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47. Total = 15. Probabilidade = 15/50 ou 30%.",
   },
 ];
-
-
-
-
-
-
-
-
-
-
-
-

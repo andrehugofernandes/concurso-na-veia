@@ -43,16 +43,21 @@ Criar `src/components/aulas/[materia]/data/[topico]-quizzes.ts`
 - **Animações**: Use `framer-motion` para transições de módulo.
 - **Ícones**: Use `react-icons/lu` (Lucide) para consistência.
 
-### Padrão de FlipCard Premium:
+### Padrão de FlipCard Premium (Skin-Aware):
 
-Todo `FlipCard` deve ser rico em conteúdo e design, evitando textos planos.
+Todo `FlipCard` deve ser rico em conteúdo e design, utilizando o sistema de skins (`primary`).
 
-| Lado       | Elementos Obrigatórios                                 | Estrutura Sugerida                                                                                                                                                                                                                                                                                           |
-| :--------- | :----------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Frente** | Ícone + Título + Pergunta/Conceito Chave               | `<div className="flex flex-col items-center justify-center h-full gap-4">` <br/> `<Icon className="w-12 h-12 text-primary opacity-50" />` <br/> `<h6 className="text-xl font-bold uppercase tracking-tight">Título</h6>` <br/> `<p className="text-sm text-center">Conceito ou Pergunta</p>` <br/> `</div>`  |
-| **Verso**  | Ícone de Check + Título de Resposta + Explicação Densa | `<div className="space-y-4">` <br/> `<div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-white/10 pb-2">` <br/> `<LuCheck /> <span>Explicação Master</span>` <br/> `</div>` <br/> `<p className="text-sm leading-relaxed">Conteúdo detalhado com exemplos</p>` <br/> `</div>` |
+**Regras de Cores:**
 
-**Regra de Ouro**: O Verso deve ser uma "mini-aula". Se o candidato virar o card e ler apenas uma linha, o card faliu em sua missão pedagógica.
+- **Frente:** Deve respeitar o modo `light` (fundo claro/zinc-50) e `dark` (fundo escuro/zinc-900).
+- **Verso:** Deve ser **sempre escuro** (`bg-[#0a0a0a]`) para garantir o contraste "Dossiê de Elite" e destacar os elementos `text-primary`, independente do modo do sistema.
+
+| Lado       | Elementos Obrigatórios                                 | Estrutura Sugerida (Sem cores hardcoded!)                                                                                                                                                                                                                                                                         |
+| :--------- | :----------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Frente** | Ícone + Título + Pergunta/Conceito Chave               | `<div className="flex flex-col items-center justify-center h-full gap-4 text-center">` <br/> `<Icon className="w-12 h-12 text-primary opacity-50" />` <br/> `<h6 className="text-xl font-bold uppercase tracking-tight">Título</h6>` <br/> `<p className="font-medium">Pergunta ou Provocação</p>` <br/> `</div>` |
+| **Verso**  | Ícone de Check + Título de Resposta + Explicação Densa | `<div className="space-y-4">` <br/> `<p className="text-sm leading-relaxed text-zinc-100">Conteúdo denso com **negritos** estratégicos.</p>` <br/> `<div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">**Dica de Elite:** Macete tático...</div>` <br/> `</div>`         |
+
+**Regra de Ouro**: O Verso deve ser uma "mini-aula" com visual de dossiê técnico.
 
 ## PASSO 3: Criar/reescrever o componente da aula
 
