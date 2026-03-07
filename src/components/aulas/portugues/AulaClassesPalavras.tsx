@@ -45,12 +45,12 @@ import {
 
 // ── Definição dos 5 Módulos ──
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", titulo: "Verbo & Substantivo" },
-  { id: "modulo-2", label: "Módulo 2", titulo: "Pronome & Adjetivo" },
-  { id: "modulo-3", label: "Módulo 3", titulo: "Conjunção & Preposição" },
-  { id: "modulo-4", label: "Módulo 4", titulo: "Advérbio & Artigo" },
-  { id: "modulo-5", label: "Módulo 5", titulo: "Numeral & Interjeição" },
-  { id: "modulo-6", label: "Módulo 6", titulo: "Simulado Final" },
+  { id: "modulo-1", label: "Módulo 1", title: "Verbo & Substantivo" },
+  { id: "modulo-2", label: "Módulo 2", title: "Pronome & Adjetivo" },
+  { id: "modulo-3", label: "Módulo 3", title: "Conjunção & Preposição" },
+  { id: "modulo-4", label: "Módulo 4", title: "Advérbio & Artigo" },
+  { id: "modulo-5", label: "Módulo 5", title: "Numeral & Interjeição" },
+  { id: "modulo-6", label: "Módulo 6", title: "Simulado Final" },
 ] as const;
 
 // ══════════════════════════════════════════════════════════════════════════
@@ -139,7 +139,7 @@ const CONJ_SLIDES = [
   {
     titulo: "1. Presente do Indicativo",
     icone: "🕒",
-    conteudo: (
+    conteudo:(
       <CardCarousel
         titulo=""
         itemsPerView={3}
@@ -211,7 +211,7 @@ const CONJ_SLIDES = [
   {
     titulo: "2. Pretérito Perfeito do Indicativo",
     icone: "✅",
-    conteudo: (
+    conteudo:(
       <CardCarousel
         titulo=""
         itemsPerView={3}
@@ -290,7 +290,7 @@ const CONJ_SLIDES = [
   {
     titulo: "3. Pretérito Imperfeito do Indicativo",
     icone: "🎞️",
-    conteudo: (
+    conteudo:(
       <CardCarousel
         titulo=""
         itemsPerView={3}
@@ -370,7 +370,7 @@ const CONJ_SLIDES = [
   {
     titulo: "4. Pretérito Mais-Que-Perfeito do Ind.",
     icone: "🏛️",
-    conteudo: (
+    conteudo:(
       <CardCarousel
         titulo=""
         itemsPerView={3}
@@ -450,7 +450,7 @@ const CONJ_SLIDES = [
   {
     titulo: "5. Futuro do Presente do Indicativo",
     icone: "🚀",
-    conteudo: (
+    conteudo:(
       <CardCarousel
         titulo=""
         itemsPerView={3}
@@ -516,7 +516,7 @@ const CONJ_SLIDES = [
   {
     titulo: "6. Futuro do Pretérito do Indicativo",
     icone: "🤔",
-    conteudo: (
+    conteudo:(
       <CardCarousel
         titulo=""
         itemsPerView={3}
@@ -603,7 +603,7 @@ const CONJ_SLIDES = [
   {
     titulo: "7. Presente do Subjuntivo",
     icone: "💭",
-    conteudo: (
+    conteudo:(
       <CardCarousel
         titulo=""
         itemsPerView={3}
@@ -710,7 +710,7 @@ const CONJ_SLIDES = [
   {
     titulo: "8. Pretérito Imperfeito do Subjuntivo",
     icone: "🔮",
-    conteudo: (
+    conteudo:(
       <CardCarousel
         titulo=""
         itemsPerView={3}
@@ -817,7 +817,7 @@ const CONJ_SLIDES = [
   {
     titulo: "9. Futuro do Subjuntivo",
     icone: "🎯",
-    conteudo: (
+    conteudo:(
       <CardCarousel
         titulo=""
         itemsPerView={3}
@@ -1895,7 +1895,7 @@ export default function AulaClassesPalavras({
               {
                 titulo: "1. Pessoa",
                 icone: "👤",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       <strong>Conceito:</strong> A flexão de{" "}
@@ -1926,7 +1926,7 @@ export default function AulaClassesPalavras({
               {
                 titulo: "2. Número",
                 icone: "🔢",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       <strong>Conceito:</strong> A flexão de{" "}
@@ -1951,7 +1951,7 @@ export default function AulaClassesPalavras({
               {
                 titulo: "3. Tempo",
                 icone: "⏳",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       <strong>Conceito:</strong> O <strong>Tempo</strong> verbal
@@ -1998,7 +1998,7 @@ export default function AulaClassesPalavras({
               {
                 titulo: "4. Modo",
                 icone: "🎭",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       <strong>Conceito:</strong> O <strong>Modo</strong> indica
@@ -2026,7 +2026,7 @@ export default function AulaClassesPalavras({
               {
                 titulo: "5. Voz",
                 icone: "🗣️",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       A <strong>Voz Verbal</strong> indica a relação entre o
@@ -2039,31 +2039,31 @@ export default function AulaClassesPalavras({
                       cards={[
                         {
                           icone: <LuZap className="text-amber-500" />,
-                          titulo: "ATIVA",
+                          title: "ATIVA",
                           descricao:
                             '"O técnico consertou a válvula." (O sujeito pratica a ação)',
                         },
                         {
                           icone: <LuShield className="text-amber-500" />,
-                          titulo: "PASSIVA ANALÍTICA",
+                          title: "PASSIVA ANALÍTICA",
                           descricao:
                             '"A válvula foi consertada pelo técnico." (Ser + Particípio)',
                         },
                         {
                           icone: <LuShield className="text-amber-500" />,
-                          titulo: "PASSIVA SINTÉTICA",
+                          title: "PASSIVA SINTÉTICA",
                           descricao:
                             '"Consertaram-se as válvulas." (Verbo + pronome SE)',
                         },
                         {
                           icone: <LuActivity className="text-amber-500" />,
-                          titulo: "REFLEXIVA",
+                          title: "REFLEXIVA",
                           descricao:
                             '"O trabalhador cortou-se." (Pratica e sofre a ação)',
                         },
                         {
                           icone: <LuActivity className="text-amber-500" />,
-                          titulo: "REFLEXIVA RECÍPROCA",
+                          title: "REFLEXIVA RECÍPROCA",
                           descricao:
                             '"Os engenheiros cumprimentaram-se." (Ação mútua)',
                         },
@@ -2136,7 +2136,7 @@ export default function AulaClassesPalavras({
             cards={[
               {
                 icone: <LuShield className="text-emerald-500" />,
-                titulo: "HAVER = Existir",
+                title: "HAVER = Existir",
                 descricao: (
                   <div className="space-y-2 text-sm">
                     <p>
@@ -2152,7 +2152,7 @@ export default function AulaClassesPalavras({
               },
               {
                 icone: <LuShield className="text-blue-500" />,
-                titulo: "FAZER = Tempo",
+                title: "FAZER = Tempo",
                 descricao: (
                   <div className="space-y-2 text-sm">
                     <p>
@@ -2167,7 +2167,7 @@ export default function AulaClassesPalavras({
               },
               {
                 icone: <LuShield className="text-indigo-500" />,
-                titulo: "Auxiliar + HAVER",
+                title: "Auxiliar + HAVER",
                 descricao: (
                   <div className="space-y-2 text-sm">
                     <p>
@@ -2182,7 +2182,7 @@ export default function AulaClassesPalavras({
               },
               {
                 icone: <LuShield className="text-rose-500" />,
-                titulo: "EXISTIR ≠ HAVER",
+                title: "EXISTIR ≠ HAVER",
                 descricao: (
                   <div className="space-y-2 text-sm">
                     <p>
@@ -2277,7 +2277,7 @@ export default function AulaClassesPalavras({
               {
                 titulo: "Concreto vs Abstrato",
                 icone: "1️⃣",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       <strong>Concreto:</strong> designa seres reais ou
@@ -2292,13 +2292,13 @@ export default function AulaClassesPalavras({
                       cards={[
                         {
                           icone: <LuTag />,
-                          titulo: "Substantivo Concreto",
+                          title: "Substantivo Concreto",
                           descricao:
                             "Plataforma (objeto), Macaé (lugar), Sereia (ser imaginário), Vento (fenômeno natural). Todos têm existência autônoma.",
                         },
                         {
                           icone: <LuTag />,
-                          titulo: "Substantivo Abstrato",
+                          title: "Substantivo Abstrato",
                           descricao:
                             "Extração (ação de extrair), Rapidez (qualidade), Felicidade (sentimento), Saudade (estado). Só existem em um ser.",
                         },
@@ -2310,7 +2310,7 @@ export default function AulaClassesPalavras({
               {
                 titulo: "Próprio vs Comum",
                 icone: "2️⃣",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       <strong>Próprio:</strong> particulariza e individualiza um
@@ -2339,7 +2339,7 @@ export default function AulaClassesPalavras({
               {
                 titulo: "Simples vs Composto",
                 icone: "3️⃣",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       <strong>Simples:</strong> formado por apenas um radical ou
@@ -2361,7 +2361,7 @@ export default function AulaClassesPalavras({
               {
                 titulo: "Primitivo vs Derivado",
                 icone: "4️⃣",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       <strong>Primitivo:</strong> é a palavra original, que não
@@ -2555,8 +2555,8 @@ export default function AulaClassesPalavras({
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -2572,8 +2572,8 @@ export default function AulaClassesPalavras({
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="Verbo & Substantivo"
                     tituloAula="Classes de Palavras"
@@ -2614,8 +2614,8 @@ export default function AulaClassesPalavras({
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-2xl border border-emerald-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       Haver vs Existir
@@ -2631,8 +2631,8 @@ export default function AulaClassesPalavras({
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -2724,7 +2724,7 @@ Haver no singular, existir no plural
               {
                 titulo: "Retos (Sujeito) vs Oblíquos (Complemento)",
                 icone: "1️⃣",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       Os <strong>Retos</strong> funcionam como sujeito. Os{" "}
@@ -2773,7 +2773,7 @@ Haver no singular, existir no plural
               {
                 titulo: "Colocação Pronominal (Próclise, Ênclise, Mesóclise)",
                 icone: "2️⃣",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-3">
                     <p className="text-muted-foreground">
                       <strong>Próclise</strong> (antes): palavras negativas,
@@ -2815,7 +2815,7 @@ Haver no singular, existir no plural
             cards={[
               {
                 icone: <LuNavigation className="text-blue-500" />,
-                titulo: "Demonstrativos",
+                title: "Demonstrativos",
                 descricao: (
                   <div className="space-y-2 text-sm">
                     <p>
@@ -2838,7 +2838,7 @@ Haver no singular, existir no plural
               },
               {
                 icone: <LuNavigation className="text-indigo-500" />,
-                titulo: "Relativos",
+                title: "Relativos",
                 descricao: (
                   <div className="space-y-2 text-sm">
                     <p>Iniciam Oração Adjetiva e retomam um antecedente.</p>
@@ -2857,7 +2857,7 @@ Haver no singular, existir no plural
               },
               {
                 icone: <LuNavigation className="text-rose-500" />,
-                titulo: "Indefinidos",
+                title: "Indefinidos",
                 descricao: (
                   <div className="space-y-2 text-sm">
                     <p>
@@ -3040,7 +3040,7 @@ Haver no singular, existir no plural
               {
                 titulo: "Locução Adjetiva (de + substantivo)",
                 icone: "1️⃣",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-3">
                     <p className="text-muted-foreground">
                       Uma Locução Adjetiva é formada por preposição +
@@ -3064,7 +3064,7 @@ Haver no singular, existir no plural
               {
                 titulo: "Palavras Perigosas na Concordância Nominal",
                 icone: "2️⃣",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-3">
                     <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20 text-sm space-y-2">
                       <p>
@@ -3103,8 +3103,8 @@ Haver no singular, existir no plural
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -3120,8 +3120,8 @@ Haver no singular, existir no plural
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="Pronome & Adjetivo"
                     tituloAula="Classes de Palavras"
@@ -3157,8 +3157,8 @@ Haver no singular, existir no plural
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-2xl border border-blue-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       Regra de Ouro: Próclise
@@ -3174,8 +3174,8 @@ Haver no singular, existir no plural
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -3257,7 +3257,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "1. Aditivas (Soma e Sequência)",
                 icone: "➕",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-muted-foreground italic">
                       Ideia de adição, soma ou sucessão de fatos.
@@ -3268,31 +3268,31 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 />,
-                          titulo: "E",
+                          title: "E",
                           descricao:
                             "A Petrobras investe em tecnologia E colhe resultados.",
                         },
                         {
                           icone: <LuLink2 />,
-                          titulo: "NEM",
+                          title: "NEM",
                           descricao:
                             "Não assinou o contrato NEM o termo de posse.",
                         },
                         {
                           icone: <LuLink2 />,
-                          titulo: "NÃO SÓ... MAS TAMBÉM",
+                          title: "NÃO SÓ... MAS TAMBÉM",
                           descricao:
                             "O técnico não só consertou a peça MAS TAMBÉM testou o sistema.",
                         },
                         {
                           icone: <LuLink2 />,
-                          titulo: "BEM COMO",
+                          title: "BEM COMO",
                           descricao:
                             "Revisamos o edital BEM COMO os anexos técnicos.",
                         },
                         {
                           icone: <LuLink2 />,
-                          titulo: "NÃO APENAS... COMO",
+                          title: "NÃO APENAS... COMO",
                           descricao:
                             "Não apenas estudou COMO praticou muitos exercícios.",
                         },
@@ -3313,7 +3313,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "2. Adversativas (Oposição e Contraste)",
                 icone: "🔄",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-muted-foreground italic">
                       Ideia de contraste, oposição ou compensação.
@@ -3324,37 +3324,37 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "MAS",
+                          title: "MAS",
                           descricao:
                             "A prova estava difícil, MAS a equipe estava pronta.",
                         },
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "PORÉM",
+                          title: "PORÉM",
                           descricao:
                             "Chegamos cedo à refinaria; PORÉM, o acesso estava restrito.",
                         },
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "CONTUDO",
+                          title: "CONTUDO",
                           descricao:
                             "Houve greve nacional; CONTUDO, a produção não parou.",
                         },
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "TODAVIA",
+                          title: "TODAVIA",
                           descricao:
                             "O projeto é caro; TODAVIA, ele economiza no longo prazo.",
                         },
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "ENTRETANTO",
+                          title: "ENTRETANTO",
                           descricao:
                             "O óleo subiu; ENTRETANTO, o dólar caiu no mesmo dia.",
                         },
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "NO ENTANTO",
+                          title: "NO ENTANTO",
                           descricao:
                             "O sinal tocou; NO ENTANTO, os técnicos continuaram a inspeção.",
                         },
@@ -3374,7 +3374,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "3. Alternativas (Escolha e Exclusão)",
                 icone: "⚖️",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-muted-foreground italic">
                       Ideia de exclusão, alternativa ou alternância.
@@ -3385,29 +3385,29 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-yellow-500" />,
-                          titulo: "OU",
+                          title: "OU",
                           descricao: "Aceite o cargo OU peça exoneração.",
                         },
                         {
                           icone: <LuLink2 className="text-yellow-500" />,
-                          titulo: "OU... OU",
+                          title: "OU... OU",
                           descricao:
                             "OU estudamos agora, OU perderemos a vaga.",
                         },
                         {
                           icone: <LuLink2 className="text-yellow-500" />,
-                          titulo: "ORA... ORA",
+                          title: "ORA... ORA",
                           descricao:
                             "ORA chove no litoral, ORA faz sol no planalto.",
                         },
                         {
                           icone: <LuLink2 className="text-yellow-500" />,
-                          titulo: "QUER... QUER",
+                          title: "QUER... QUER",
                           descricao: "QUER aceite, QUER não, a regra mudou.",
                         },
                         {
                           icone: <LuLink2 className="text-yellow-500" />,
-                          titulo: "SEJA... SEJA",
+                          title: "SEJA... SEJA",
                           descricao:
                             "SEJA no Rio, SEJA em Santos, o trabalho continua.",
                         },
@@ -3419,7 +3419,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "4. Conclusivas (Dedução)",
                 icone: "🏁",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-muted-foreground italic">
                       Ideia de conclusão ou consequência lógica.
@@ -3430,37 +3430,37 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-indigo-500" />,
-                          titulo: "LOGO",
+                          title: "LOGO",
                           descricao:
                             "O navio atracou; LOGO, a carga será liberada.",
                         },
                         {
                           icone: <LuLink2 className="text-indigo-500" />,
-                          titulo: "PORTANTO",
+                          title: "PORTANTO",
                           descricao:
                             "Conhecemos os riscos; PORTANTO, usaremos EPIs.",
                         },
                         {
                           icone: <LuLink2 className="text-indigo-500" />,
-                          titulo: "POR ISSO",
+                          title: "POR ISSO",
                           descricao:
                             "O equipamento falhou; POR ISSO, chamamos o suporte.",
                         },
                         {
                           icone: <LuLink2 className="text-indigo-500" />,
-                          titulo: "ASSIM",
+                          title: "ASSIM",
                           descricao:
                             "A regra é nova; ASSIM, precisamos de treinamento.",
                         },
                         {
                           icone: <LuLink2 className="text-indigo-500" />,
-                          titulo: "POR CONSEGUINTE",
+                          title: "POR CONSEGUINTE",
                           descricao:
                             "O contrato venceu; POR CONSEGUINTE, o serviço parou.",
                         },
                         {
                           icone: <LuLink2 className="text-indigo-500" />,
-                          titulo: "POIS (Posposto)",
+                          title: "POIS (Posposto)",
                           descricao:
                             "O óleo vazou; a limpeza é, POIS, urgente.",
                         },
@@ -3472,7 +3472,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "5. Explicativas (Justificativa)",
                 icone: "🎓",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-muted-foreground italic">
                       Justificam ou explicam o que se disse anteriormente.
@@ -3483,24 +3483,24 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-rose-500" />,
-                          titulo: "QUE",
+                          title: "QUE",
                           descricao: "Vá logo, QUE o navio já vai partir.",
                         },
                         {
                           icone: <LuLink2 className="text-rose-500" />,
-                          titulo: "PORQUE",
+                          title: "PORQUE",
                           descricao:
                             "Não se atrase, PORQUE a troca de turno é chata.",
                         },
                         {
                           icone: <LuLink2 className="text-rose-500" />,
-                          titulo: "POIS (Anteposto)",
+                          title: "POIS (Anteposto)",
                           descricao:
                             "Não grite, POIS estamos em reunião técnica.",
                         },
                         {
                           icone: <LuLink2 className="text-rose-500" />,
-                          titulo: "PORQUANTO",
+                          title: "PORQUANTO",
                           descricao:
                             "Ele foi promovido, PORQUANTO é muito dedicado.",
                         },
@@ -3729,7 +3729,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "1. Causais",
                 icone: "⚡",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Introduzem a oração que é a <strong>causa</strong>, o fato
@@ -3742,25 +3742,25 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-amber-500" />,
-                          titulo: "PORQUE / COMO",
+                          title: "PORQUE / COMO",
                           descricao:
                             '"Como choveu muito, a obra foi adiada." (Como = Porque)',
                         },
                         {
                           icone: <LuLink2 className="text-amber-500" />,
-                          titulo: "VISTO QUE",
+                          title: "VISTO QUE",
                           descricao:
                             '"A prova foi anulada, visto que houve vazamento."',
                         },
                         {
                           icone: <LuLink2 className="text-amber-500" />,
-                          titulo: "JÁ QUE",
+                          title: "JÁ QUE",
                           descricao:
                             '"Já que você estudou, fará uma ótima prova."',
                         },
                         {
                           icone: <LuLink2 className="text-amber-500" />,
-                          titulo: "UMA VEZ QUE",
+                          title: "UMA VEZ QUE",
                           descricao:
                             '"Uma vez que o edital saiu, as aulas dobraram."',
                         },
@@ -3777,7 +3777,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "2. Concessivas",
                 icone: "🛡️",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       O grande 'furo de bloqueio'. Introduz um fato contrário,
@@ -3790,24 +3790,24 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "EMBORA",
+                          title: "EMBORA",
                           descricao:
                             '"A equipe prosseguiu, embora estivesse exausta."',
                         },
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "CONQUANTO",
+                          title: "CONQUANTO",
                           descricao: '"Conquanto chovesse, o navio partiu."',
                         },
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "AINDA QUE / MESMO QUE",
+                          title: "AINDA QUE / MESMO QUE",
                           descricao:
                             '"Ainda que seja difícil, nós passaremos."',
                         },
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "SE BEM QUE / POSTO QUE",
+                          title: "SE BEM QUE / POSTO QUE",
                           descricao:
                             '"Posto que não concordasse, assinou o termo."',
                         },
@@ -3824,7 +3824,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "3. Condicionais",
                 icone: "⚖️",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Estabelecem uma hipótese ou condição necessária para que o
@@ -3836,24 +3836,24 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-yellow-600" />,
-                          titulo: "SE",
+                          title: "SE",
                           descricao:
                             '"O alarme soará se a pressão exceder o limite."',
                         },
                         {
                           icone: <LuLink2 className="text-yellow-600" />,
-                          titulo: "CASO",
+                          title: "CASO",
                           descricao: '"Caso chova, o evento será indoor."',
                         },
                         {
                           icone: <LuLink2 className="text-yellow-600" />,
-                          titulo: "CONTANTO QUE",
+                          title: "CONTANTO QUE",
                           descricao:
                             '"Trabalharemos, contanto que paguem extra."',
                         },
                         {
                           icone: <LuLink2 className="text-yellow-600" />,
-                          titulo: "DESDE QUE",
+                          title: "DESDE QUE",
                           descricao:
                             '"Você pode sair, desde que termine o relatório."',
                         },
@@ -3865,7 +3865,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "4. Consecutivas",
                 icone: "🎳",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Apresentam a <strong>consequência</strong> ou o efeito do
@@ -3877,24 +3877,24 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-rose-500" />,
-                          titulo: "TÃO... QUE",
+                          title: "TÃO... QUE",
                           descricao:
                             '"O poço era tão profundo que exigiu novas brocas."',
                         },
                         {
                           icone: <LuLink2 className="text-rose-500" />,
-                          titulo: "TAL... QUE",
+                          title: "TAL... QUE",
                           descricao: '"Tal foi o susto que ele desmaiou."',
                         },
                         {
                           icone: <LuLink2 className="text-rose-500" />,
-                          titulo: "TAMANHO... QUE",
+                          title: "TAMANHO... QUE",
                           descricao:
                             '"Tamanho foi o rombo que a empresa faliu."',
                         },
                         {
                           icone: <LuLink2 className="text-rose-500" />,
-                          titulo: "DE SORTE QUE",
+                          title: "DE SORTE QUE",
                           descricao:
                             '"Estudou muito, de sorte que foi aprovado."',
                         },
@@ -3911,7 +3911,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "5. Comparativas",
                 icone: "🪞",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Estabelecem uma analogia ou comparação de igualdade,
@@ -3924,23 +3924,23 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-indigo-500" />,
-                          titulo: "COMO / QUAL",
+                          title: "COMO / QUAL",
                           descricao: '"Ele é ágil como um lince."',
                         },
                         {
                           icone: <LuLink2 className="text-indigo-500" />,
-                          titulo: "TAL QUAL",
+                          title: "TAL QUAL",
                           descricao: '"O filho é teimoso tal qual o pai."',
                         },
                         {
                           icone: <LuLink2 className="text-indigo-500" />,
-                          titulo: "MAIS QUE / MENOS QUE",
+                          title: "MAIS QUE / MENOS QUE",
                           descricao:
                             '"O novo sistema processa dados mais rápido do que o antigo."',
                         },
                         {
                           icone: <LuLink2 className="text-indigo-500" />,
-                          titulo: "TANTO QUANTO",
+                          title: "TANTO QUANTO",
                           descricao: '"Ela estudou tanto quanto o irmão."',
                         },
                       ]}
@@ -3951,7 +3951,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "6. Conformativas",
                 icone: "📏",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Indicam acordo, conformidade com a ideia expressa na
@@ -3963,23 +3963,23 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-blue-500" />,
-                          titulo: "CONFORME",
+                          title: "CONFORME",
                           descricao: '"Agiremos conforme manda o figurino."',
                         },
                         {
                           icone: <LuLink2 className="text-blue-500" />,
-                          titulo: "SEGUNDO",
+                          title: "SEGUNDO",
                           descricao: '"Segundo o edital, a prova é amanhã."',
                         },
                         {
                           icone: <LuLink2 className="text-blue-500" />,
-                          titulo: "CONSOANTE",
+                          title: "CONSOANTE",
                           descricao:
                             '"O equipamento foi instalado consoante o manual."',
                         },
                         {
                           icone: <LuLink2 className="text-blue-500" />,
-                          titulo: "COMO",
+                          title: "COMO",
                           descricao: '"Fiz o relatório como o chefe pediu."',
                         },
                       ]}
@@ -3999,7 +3999,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "7. Finais",
                 icone: "🎯",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Exprimem o objetivo, o propósito ou a finalidade de algo.
@@ -4011,24 +4011,24 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-sky-500" />,
-                          titulo: "PARA QUE",
+                          title: "PARA QUE",
                           descricao:
                             '"Explicou tudo devagar para que todos entendessem."',
                         },
                         {
                           icone: <LuLink2 className="text-sky-500" />,
-                          titulo: "A FIM DE QUE",
+                          title: "A FIM DE QUE",
                           descricao:
                             '"Eles realizaram um novo teste a fim de que eliminassem o erro."',
                         },
                         {
                           icone: <LuLink2 className="text-sky-500" />,
-                          titulo: "QUE (= PARA QUE)",
+                          title: "QUE (= PARA QUE)",
                           descricao: '"Fez sinal que nos calássemos."',
                         },
                         {
                           icone: <LuLink2 className="text-sky-500" />,
-                          titulo: "PARA",
+                          title: "PARA",
                           descricao: '"Estudamos muito para passar na prova."',
                         },
                       ]}
@@ -4039,7 +4039,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "8. Proporcionais",
                 icone: "📈",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Indicam fatos que aumentam ou diminuem em relação de
@@ -4052,25 +4052,25 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-teal-500" />,
-                          titulo: "À MEDIDA QUE",
+                          title: "À MEDIDA QUE",
                           descricao:
                             '"À medida que se desce o poço, a temperatura aumenta."',
                         },
                         {
                           icone: <LuLink2 className="text-teal-500" />,
-                          titulo: "À PROPORÇÃO QUE",
+                          title: "À PROPORÇÃO QUE",
                           descricao:
                             '"O som fica abafado à proporção que mergulhamos."',
                         },
                         {
                           icone: <LuLink2 className="text-teal-500" />,
-                          titulo: "AO PASSO QUE",
+                          title: "AO PASSO QUE",
                           descricao:
                             '"O lucro sobe ao passo que as dívidas caem."',
                         },
                         {
                           icone: <LuLink2 className="text-teal-500" />,
-                          titulo: "QUANTO MAIS/MENOS",
+                          title: "QUANTO MAIS/MENOS",
                           descricao: '"Quanto mais estuda, menos erra."',
                         },
                       ]}
@@ -4090,7 +4090,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "9. Temporais",
                 icone: "⏰",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Referem-se à localização no tempo (simultaneidade,
@@ -4102,24 +4102,24 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-cyan-500" />,
-                          titulo: "QUANDO / ENQUANTO",
+                          title: "QUANDO / ENQUANTO",
                           descricao:
                             '"O reator desativou quando cortaram a energia."',
                         },
                         {
                           icone: <LuLink2 className="text-cyan-500" />,
-                          titulo: "LOGO QUE / ASSIM QUE",
+                          title: "LOGO QUE / ASSIM QUE",
                           descricao: '"Avisem-me assim que o navio chegar."',
                         },
                         {
                           icone: <LuLink2 className="text-cyan-500" />,
-                          titulo: "DESDE QUE",
+                          title: "DESDE QUE",
                           descricao:
                             '"Nunca mais riu desde que o incidente ocorreu."',
                         },
                         {
                           icone: <LuLink2 className="text-cyan-500" />,
-                          titulo: "SEMPRE QUE",
+                          title: "SEMPRE QUE",
                           descricao:
                             '"Ele visita a plataforma sempre que viaja."',
                         },
@@ -4136,7 +4136,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "10. Cláusula Integrante",
                 icone: "🔗",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Diferente das outras 9, a conjunção integrante{" "}
@@ -4150,13 +4150,13 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-violet-500" />,
-                          titulo: "QUE",
+                          title: "QUE",
                           descricao:
                             '"Os técnicos afirmaram QUE o vazamento foi contido."',
                         },
                         {
                           icone: <LuLink2 className="text-violet-500" />,
-                          titulo: "SE",
+                          title: "SE",
                           descricao: '"Não sei SE ele vem hoje."',
                         },
                       ]}
@@ -4230,7 +4230,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "1. Preposições Essenciais",
                 icone: "💎",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-muted-foreground italic">
                       São palavras que nasceram para ser preposições e nunca
@@ -4242,37 +4242,37 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "A / PARA",
+                          title: "A / PARA",
                           descricao:
                             "Indica destino ou direção: 'Fomos A Macaé' ou 'Para a sede'.",
                         },
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "DE / EM",
+                          title: "DE / EM",
                           descricao:
                             "Indica origem ou lugar: 'Vim DE Santos' ou 'Estou EM trânsito'.",
                         },
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "COM / SEM",
+                          title: "COM / SEM",
                           descricao:
                             "Indica companhia ou ausência: 'Saiu COM a equipe' ou 'SEM o EPI'.",
                         },
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "SOB / SOBRE",
+                          title: "SOB / SOBRE",
                           descricao:
                             "Indica posição: 'SOB a mesa' (embaixo) ou 'SOBRE a mesa' (em cima).",
                         },
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "CONTRA / PERANTE",
+                          title: "CONTRA / PERANTE",
                           descricao:
                             "Indica oposição ou presença: 'Lutou CONTRA o tempo' ou 'PERANTE o juiz'.",
                         },
                         {
                           icone: <LuLink2 className="text-orange-500" />,
-                          titulo: "ATÉ / APÓS",
+                          title: "ATÉ / APÓS",
                           descricao:
                             "Indica limite ou tempo: 'Trabalhou ATÉ tarde' ou 'APÓS o expediente'.",
                         },
@@ -4291,7 +4291,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "2. Combinação e Contração",
                 icone: "🧩",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-muted-foreground italic">
                       A união da preposição com outras palavras (artigos,
@@ -4303,25 +4303,25 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-emerald-500" />,
-                          titulo: "COMBINAÇÃO (Sem perda)",
+                          title: "COMBINAÇÃO (Sem perda)",
                           descricao:
                             "A + O = AO | A + ONDE = AONDE. Não há alteração fonética.",
                         },
                         {
                           icone: <LuLink2 className="text-rose-500" />,
-                          titulo: "CONTRAÇÃO (Com perda)",
+                          title: "CONTRAÇÃO (Com perda)",
                           descricao:
                             "DE + O = DO | EM + A = NA. Há fusão e perda de letras.",
                         },
                         {
                           icone: <LuLink2 className="text-blue-500" />,
-                          titulo: "CRASE",
+                          title: "CRASE",
                           descricao:
                             "A (prep) + A (artigo) = À. É a contração máxima da língua.",
                         },
                         {
                           icone: <LuLink2 className="text-amber-500" />,
-                          titulo: "PRONOMES",
+                          title: "PRONOMES",
                           descricao:
                             "DE + ESTE = DESTE | EM + AQUELE = NAQUELE. Muito comum na escrita.",
                         },
@@ -4333,7 +4333,7 @@ Na Cesgranrio não tem bobice!
               {
                 titulo: "3. Relações Semânticas (Sentidos)",
                 icone: "🧠",
-                conteudo: (
+                content: (
                   <div className="space-y-6">
                     <p className="text-muted-foreground italic">
                       A preposição não tem sentido sozinha, ela ganha vida no
@@ -4345,42 +4345,42 @@ Na Cesgranrio não tem bobice!
                       cards={[
                         {
                           icone: <LuLink2 className="text-blue-500" />,
-                          titulo: "LUGAR",
+                          title: "LUGAR",
                           descricao: "Passeamos PELO jardim da refinaria.",
                         },
                         {
                           icone: <LuLink2 className="text-blue-500" />,
-                          titulo: "TEMPO",
+                          title: "TEMPO",
                           descricao: "A reunião será ÀS dez horas.",
                         },
                         {
                           icone: <LuLink2 className="text-blue-500" />,
-                          titulo: "MODO",
+                          title: "MODO",
                           descricao: "Fizeram o teste COM cuidado.",
                         },
                         {
                           icone: <LuLink2 className="text-blue-500" />,
-                          titulo: "CAUSA",
+                          title: "CAUSA",
                           descricao: "Tremia DE frio durante o turno.",
                         },
                         {
                           icone: <LuLink2 className="text-blue-500" />,
-                          titulo: "INSTRUMENTO",
+                          title: "INSTRUMENTO",
                           descricao: "Cortou a chapa COM o maçarico.",
                         },
                         {
                           icone: <LuLink2 className="text-blue-500" />,
-                          titulo: "COMPANHIA",
+                          title: "COMPANHIA",
                           descricao: "Viajou COM os técnicos da plataforma.",
                         },
                         {
                           icone: <LuLink2 className="text-blue-500" />,
-                          titulo: "POSSE",
+                          title: "POSSE",
                           descricao: "Esta é a sala DO engenheiro.",
                         },
                         {
                           icone: <LuLink2 className="text-blue-500" />,
-                          titulo: "MATÉRIA",
+                          title: "MATÉRIA",
                           descricao: "Copos DE vidro são proibidos na área.",
                         },
                       ]}
@@ -4404,8 +4404,8 @@ Na Cesgranrio não tem bobice!
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -4421,8 +4421,8 @@ Na Cesgranrio não tem bobice!
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="Conjunção & Preposição"
                     tituloAula="Classes de Palavras"
@@ -4456,8 +4456,8 @@ Na Cesgranrio não tem bobice!
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-amber-500/5 to-orange-500/5 rounded-2xl border border-amber-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       Causal vs Explicativa
@@ -4482,8 +4482,8 @@ Na Cesgranrio não tem bobice!
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -4573,7 +4573,7 @@ Imperativo antes? Explicação!
               {
                 titulo: "1. Lugar",
                 icone: "📍",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Indica a posição espacial onde a ação ocorre, modificando
@@ -4585,18 +4585,18 @@ Imperativo antes? Explicação!
                       cards={[
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "AQUI / ALI / LÁ",
+                          title: "AQUI / ALI / LÁ",
                           descricao: '"A ferramenta está aqui; a broca, lá."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "DENTRO / FORA",
+                          title: "DENTRO / FORA",
                           descricao:
                             '"A perfuração ocorre dentro da plataforma."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "PERTO / LONGE",
+                          title: "PERTO / LONGE",
                           descricao: '"O reservatório fica longe da costa."',
                         },
                       ]}
@@ -4607,7 +4607,7 @@ Imperativo antes? Explicação!
               {
                 titulo: "2. Tempo",
                 icone: "⏳",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Situa a ação verbal no tempo (passado, presente ou
@@ -4619,22 +4619,22 @@ Imperativo antes? Explicação!
                       cards={[
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "HOJE / ONTEM / AMANHÃ",
+                          title: "HOJE / ONTEM / AMANHÃ",
                           descricao: '"A inspeção ocorreu ontem de manhã."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "AGORA / JÁ",
+                          title: "AGORA / JÁ",
                           descricao: '"Desliguem os motores agora!"',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "SEMPRE / NUNCA / JAMAIS",
+                          title: "SEMPRE / NUNCA / JAMAIS",
                           descricao: '"O EPI deve ser usado sempre."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "CEDO / TARDE",
+                          title: "CEDO / TARDE",
                           descricao:
                             '"O turno da noite começa cedo e termina tarde."',
                         },
@@ -4646,7 +4646,7 @@ Imperativo antes? Explicação!
               {
                 titulo: "3. Modo",
                 icone: "⚙️",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Descreve a maneira como a ação é executada. Quase todos os
@@ -4659,23 +4659,23 @@ Imperativo antes? Explicação!
                       cards={[
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "BEM / MAL",
+                          title: "BEM / MAL",
                           descricao: '"O sistema operou bem durante o teste."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "ASSIM",
+                          title: "ASSIM",
                           descricao:
                             '"Se agirmos assim, evitaremos acidentes."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "TERMINADOS EM -MENTE",
+                          title: "TERMINADOS EM -MENTE",
                           descricao: '"A válvula fechou rapidamente."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "DEPRESSA / DEVAGAR",
+                          title: "DEPRESSA / DEVAGAR",
                           descricao: '"O vazamento se espalhou depressa."',
                         },
                       ]}
@@ -4691,7 +4691,7 @@ Imperativo antes? Explicação!
               {
                 titulo: "4. Intensidade",
                 icone: "📈",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Altera o grau da ação, do adjetivo ou de outro advérbio. É
@@ -4704,22 +4704,22 @@ Imperativo antes? Explicação!
                       cards={[
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "MUITO / POUCO",
+                          title: "MUITO / POUCO",
                           descricao: '"O equipamento vibrou muito."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "BASTANTE / ASSAZ",
+                          title: "BASTANTE / ASSAZ",
                           descricao: '"A temperatura estava bastante elevada."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "DEMAIS",
+                          title: "DEMAIS",
                           descricao: '"Ele exige proteção demais para a área."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "MAIS / MENOS / TÃO",
+                          title: "MAIS / MENOS / TÃO",
                           descricao: '"Precisamos de uma broca mais forte."',
                         },
                       ]}
@@ -4735,7 +4735,7 @@ Imperativo antes? Explicação!
               {
                 titulo: "5. Negação",
                 icone: "🚫",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Nega a ação verbal. Costuma atuar como palavra atrativa
@@ -4747,22 +4747,22 @@ Imperativo antes? Explicação!
                       cards={[
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "NÃO / NEM",
+                          title: "NÃO / NEM",
                           descricao: '"O inspetor não liberou a área."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "NUNCA / JAMAIS",
+                          title: "NUNCA / JAMAIS",
                           descricao: '"Jamais opere o painel sem luvas!"',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "TAMPOUCO",
+                          title: "TAMPOUCO",
                           descricao: '"Não leu o manual, tampouco as normas."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "NADA / ABSOLUTAMENTE",
+                          title: "NADA / ABSOLUTAMENTE",
                           descricao: '"Absolutamente errado o que ele fez."',
                         },
                       ]}
@@ -4773,7 +4773,7 @@ Imperativo antes? Explicação!
               {
                 titulo: "6. Afirmação",
                 icone: "✅",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Reforça de maneira positiva a veracidade da ação verbal,
@@ -4785,24 +4785,24 @@ Imperativo antes? Explicação!
                       cards={[
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "SIM",
+                          title: "SIM",
                           descricao:
                             '"Nós fomos sim os responsáveis pelo sucesso."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "CERTAMENTE / DECERTO",
+                          title: "CERTAMENTE / DECERTO",
                           descricao: '"Certamente enviaremos o relatório."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "REALMENTE",
+                          title: "REALMENTE",
                           descricao:
                             '"O novo tubo realmente suporta a pressão."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "INDUBITAVELMENTE",
+                          title: "INDUBITAVELMENTE",
                           descricao:
                             '"Ela é indubitavelmente a melhor técnica."',
                         },
@@ -4814,7 +4814,7 @@ Imperativo antes? Explicação!
               {
                 titulo: "7. Dúvida",
                 icone: "🤔",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Indica incerteza ou hesitação na ocorrência da ação
@@ -4827,25 +4827,25 @@ Imperativo antes? Explicação!
                       cards={[
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "TALVEZ",
+                          title: "TALVEZ",
                           descricao:
                             '"Talvez o embarque atrase devido ao tempo."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "QUIÇÁ",
+                          title: "QUIÇÁ",
                           descricao:
                             '"Venceremos hoje ou, quiçá, nesta semana."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "POSSIVELMENTE",
+                          title: "POSSIVELMENTE",
                           descricao:
                             '"Essa foi, possivelmente, a maior falha técnica."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "PROVAVELMENTE",
+                          title: "PROVAVELMENTE",
                           descricao:
                             '"Provavelmente chegaremos na cota certa."',
                         },
@@ -4862,7 +4862,7 @@ Imperativo antes? Explicação!
               {
                 titulo: "8. Onde vs Aonde",
                 icone: "🎯",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Embora sejam advérbios de lugar, o uso de "Onde" e "Aonde"
@@ -4875,25 +4875,25 @@ Imperativo antes? Explicação!
                       cards={[
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "ONDE (Lugar Fixo)",
+                          title: "ONDE (Lugar Fixo)",
                           descricao:
                             '"Onde você está?" / "A plataforma onde trabalho."',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "AONDE (Movimento)",
+                          title: "AONDE (Movimento)",
                           descricao:
                             '"Aonde você vai?" / "Aonde essa tubulação nos leva?"',
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "PREPOSIÇÃO 'A'",
+                          title: "PREPOSIÇÃO 'A'",
                           descricao:
                             "A-ONDE é apenas 'Onde' somado à preposição 'A' (exigida por Ir, Chegar).",
                         },
                         {
                           icone: <LuActivity className="text-rose-500" />,
-                          titulo: "DE ONDE (Origem)",
+                          title: "DE ONDE (Origem)",
                           descricao:
                             "\"De onde você veio?\" (Verbos que pedem 'de')",
                         },
@@ -4937,7 +4937,7 @@ Imperativo antes? Explicação!
             cards={[
               {
                 icone: <LuShield className="text-rose-500" />,
-                titulo: "MEIO",
+                title: "MEIO",
                 descricao: (
                   <div className="text-sm space-y-2">
                     <p>
@@ -4956,7 +4956,7 @@ Imperativo antes? Explicação!
               },
               {
                 icone: <LuShield className="text-pink-500" />,
-                titulo: "BASTANTE",
+                title: "BASTANTE",
                 descricao: (
                   <div className="text-sm space-y-2">
                     <p>
@@ -4972,7 +4972,7 @@ Imperativo antes? Explicação!
               },
               {
                 icone: <LuShield className="text-fuchsia-500" />,
-                titulo: "MENOS",
+                title: "MENOS",
                 descricao: (
                   <div className="text-sm space-y-2">
                     <p>
@@ -4990,7 +4990,7 @@ Imperativo antes? Explicação!
               },
               {
                 icone: <LuShield className="text-indigo-500" />,
-                titulo: "ALERTA",
+                title: "ALERTA",
                 descricao: (
                   <div className="text-sm space-y-2">
                     <p>
@@ -5178,8 +5178,8 @@ Imperativo antes? Explicação!
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -5195,8 +5195,8 @@ Imperativo antes? Explicação!
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="Advérbio & Artigo"
                     tituloAula="Classes de Palavras"
@@ -5229,8 +5229,8 @@ Imperativo antes? Explicação!
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-rose-500/5 to-pink-500/5 rounded-2xl border border-rose-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       O Teste do 'Muito'
@@ -5253,8 +5253,8 @@ Imperativo antes? Explicação!
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -5336,7 +5336,7 @@ Se não flexiona, advérbio vai ficar!
               {
                 titulo: "1. Cardinal",
                 icone: "1️⃣",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Indica a <strong>quantidade exata</strong> absoluta de
@@ -5348,23 +5348,23 @@ Se não flexiona, advérbio vai ficar!
                       cards={[
                         {
                           icone: <LuHash className="text-violet-500" />,
-                          titulo: "UM, DOIS, TRÊS...",
+                          title: "UM, DOIS, TRÊS...",
                           descricao: '"Dois engenheiros assinaram o projeto."',
                         },
                         {
                           icone: <LuHash className="text-violet-500" />,
-                          titulo: "CEM, MIL, MILHÃO...",
+                          title: "CEM, MIL, MILHÃO...",
                           descricao: '"A perfuração alcançou mil metros."',
                         },
                         {
                           icone: <LuHash className="text-violet-500" />,
-                          titulo: "AMBOS / AMBAS",
+                          title: "AMBOS / AMBAS",
                           descricao:
                             "\"Ambas as bombas falharam.\" (Numeral dual, equivalente a 'os dois'/'as duas')",
                         },
                         {
                           icone: <LuHash className="text-violet-500" />,
-                          titulo: "ZERO",
+                          title: "ZERO",
                           descricao: '"Houve zero acidentes este mês."',
                         },
                       ]}
@@ -5383,7 +5383,7 @@ Se não flexiona, advérbio vai ficar!
               {
                 titulo: "2. Ordinal",
                 icone: "🥇",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Indica a <strong>ordem</strong> ou{" "}
@@ -5396,17 +5396,17 @@ Se não flexiona, advérbio vai ficar!
                       cards={[
                         {
                           icone: <LuHash className="text-violet-500" />,
-                          titulo: "PRIMEIRO, SEGUNDO...",
+                          title: "PRIMEIRO, SEGUNDO...",
                           descricao: '"Esta é a primeira plataforma pre-sal."',
                         },
                         {
                           icone: <LuHash className="text-violet-500" />,
-                          titulo: "DÉCIMO, MILÉSIMO...",
+                          title: "DÉCIMO, MILÉSIMO...",
                           descricao: '"Ele foi o décimo colocado no concurso."',
                         },
                         {
                           icone: <LuHash className="text-violet-500" />,
-                          titulo: "ÚLTIMO / PENÚLTIMO",
+                          title: "ÚLTIMO / PENÚLTIMO",
                           descricao: '"Acessei a última versão do laudo."',
                         },
                       ]}
@@ -5422,7 +5422,7 @@ Se não flexiona, advérbio vai ficar!
               {
                 titulo: "3. Multiplicativo",
                 icone: "✖️",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Expressa <strong>multiplicação</strong> das quantidades,
@@ -5434,17 +5434,17 @@ Se não flexiona, advérbio vai ficar!
                       cards={[
                         {
                           icone: <LuHash className="text-violet-500" />,
-                          titulo: "DOBRO / DUPLO",
+                          title: "DOBRO / DUPLO",
                           descricao: '"O risco no local é duplo."',
                         },
                         {
                           icone: <LuHash className="text-violet-500" />,
-                          titulo: "TRIPLO / QUÁDRUPLO",
+                          title: "TRIPLO / QUÁDRUPLO",
                           descricao: '"Tivemos um aumento triplo na produção."',
                         },
                         {
                           icone: <LuHash className="text-violet-500" />,
-                          titulo: "CÊNTUPLO",
+                          title: "CÊNTUPLO",
                           descricao: '"A recompensa será cêntupla."',
                         },
                       ]}
@@ -5455,7 +5455,7 @@ Se não flexiona, advérbio vai ficar!
               {
                 titulo: "4. Fracionário",
                 icone: "➗",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       Indica a <strong>divisão</strong>, uma parte de um todo,
@@ -5467,17 +5467,17 @@ Se não flexiona, advérbio vai ficar!
                       cards={[
                         {
                           icone: <LuHash className="text-violet-500" />,
-                          titulo: "MEIO / METADE",
+                          title: "MEIO / METADE",
                           descricao: '"Vazou meia tonelada de óleo."',
                         },
                         {
                           icone: <LuHash className="text-violet-500" />,
-                          titulo: "TERÇO / QUINTO",
+                          title: "TERÇO / QUINTO",
                           descricao: '"Apenas um terço da equipe compareceu."',
                         },
                         {
                           icone: <LuHash className="text-violet-500" />,
-                          titulo: "DÉCIMO / CENTÉSIMO",
+                          title: "DÉCIMO / CENTÉSIMO",
                           descricao: '"A chance é de um centésimo."',
                         },
                       ]}
@@ -5521,7 +5521,7 @@ Se não flexiona, advérbio vai ficar!
               {
                 titulo: "1. Regras de Ouro",
                 icone: "🎯",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       A interjeição é uma &quot;palavra-frase&quot;. Sozinhas,
@@ -5534,23 +5534,23 @@ Se não flexiona, advérbio vai ficar!
                       cards={[
                         {
                           icone: <LuZap className="text-violet-500" />,
-                          titulo: "ISOLADA",
+                          title: "ISOLADA",
                           descricao: '"Silêncio! Estamos iniciando o teste."',
                         },
                         {
                           icone: <LuZap className="text-violet-500" />,
-                          titulo: "COM VÍRGULA",
+                          title: "COM VÍRGULA",
                           descricao:
                             '"Ah, agora entendi como a bomba funciona."',
                         },
                         {
                           icone: <LuZap className="text-violet-500" />,
-                          titulo: "REPETIÇÃO",
+                          title: "REPETIÇÃO",
                           descricao: '"Ui, ui, ui! Esse vazamento é perigoso."',
                         },
                         {
                           icone: <LuZap className="text-violet-500" />,
-                          titulo: "NO MEIO",
+                          title: "NO MEIO",
                           descricao: '"Essa ferramenta é, puxa, muito pesada!"',
                         },
                       ]}
@@ -5567,7 +5567,7 @@ Se não flexiona, advérbio vai ficar!
               {
                 titulo: "2. O Mapa das Emoções",
                 icone: "🎭",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/80 leading-relaxed italic">
                       A mesma interjeição pode assumir sentimentos completamente
@@ -5579,25 +5579,25 @@ Se não flexiona, advérbio vai ficar!
                       cards={[
                         {
                           icone: <LuZap className="text-green-500" />,
-                          titulo: "ALEGRIA / ALÍVIO",
+                          title: "ALEGRIA / ALÍVIO",
                           descricao:
                             '"Ah! / Ufa! / Oba!" → "Ufa! O projeto foi entregue!"',
                         },
                         {
                           icone: <LuZap className="text-red-500" />,
-                          titulo: "DOR / ESPANTO",
+                          title: "DOR / ESPANTO",
                           descricao:
                             '"Ai! / Ui! / Puxa!" → "Nossa! A pressão subiu rápido!"',
                         },
                         {
                           icone: <LuZap className="text-amber-500" />,
-                          titulo: "ADVERTÊNCIA",
+                          title: "ADVERTÊNCIA",
                           descricao:
                             '"Cuidado! / Alerta!" → "Cuidado! Piso molhado!"',
                         },
                         {
                           icone: <LuZap className="text-blue-500" />,
-                          titulo: "APELO / SILÊNCIO",
+                          title: "APELO / SILÊNCIO",
                           descricao:
                             '"Psiu! / Shh!" → "Psiu! O alarme desarmou."',
                         },
@@ -5632,22 +5632,22 @@ Se não flexiona, advérbio vai ficar!
             cards={[
               {
                 icone: <LuZap className="text-violet-500" />,
-                titulo: "SURPRESA",
+                title: "SURPRESA",
                 descricao: '"Meu Deus! / Virgem Maria! / Santo Deus!"',
               },
               {
                 icone: <LuZap className="text-violet-500" />,
-                titulo: "LAMENTO",
+                title: "LAMENTO",
                 descricao: '"Que pena! / Puxa vida! / Ai de mim!"',
               },
               {
                 icone: <LuZap className="text-violet-500" />,
-                titulo: "ALERTA",
+                title: "ALERTA",
                 descricao: '"Muito bem! / Alto lá!"',
               },
               {
                 icone: <LuZap className="text-violet-500" />,
-                titulo: "CONCORDÂNCIA",
+                title: "CONCORDÂNCIA",
                 descricao: '"Sem dúvida! / Com certeza! / Está bem!"',
               },
             ]}
@@ -5737,8 +5737,8 @@ Se não flexiona, advérbio vai ficar!
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -5754,8 +5754,8 @@ Se não flexiona, advérbio vai ficar!
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="Numeral & Interjeição"
                     tituloAula="Classes de Palavras"
@@ -5789,8 +5789,8 @@ Se não flexiona, advérbio vai ficar!
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-2xl border border-emerald-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       O Macete Final: CIA P
@@ -5813,8 +5813,8 @@ Se não flexiona, advérbio vai ficar!
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -5905,3 +5905,15 @@ Conjunção, Interjeição, Advérbio e Preposição!
     </AulaTemplate>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+

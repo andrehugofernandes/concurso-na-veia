@@ -124,16 +124,16 @@ export default function AulaConjuntos({
   }, [currentProgress]);
 
   const MODULE_DEFS = [
-    { id: "modulo-1", label: "Módulo 1", titulo: "Fundamentos" },
-    { id: "modulo-2", label: "Módulo 2", titulo: "Operações" },
-    { id: "modulo-3", label: "Módulo 3", titulo: "Diagramas de Venn" },
-    { id: "modulo-4", label: "Módulo 4", titulo: "Conj. Numéricos" },
-    { id: "modulo-5", label: "Módulo 5", titulo: "Subconjuntos" },
-    { id: "modulo-6", label: "Módulo 6", titulo: "Inclusão-Exclusão" },
-    { id: "modulo-7", label: "Módulo 7", titulo: "ℕ, ℤ, ℚ" },
-    { id: "modulo-8", label: "Módulo 8", titulo: "Irracionais e ℝ" },
-    { id: "modulo-9", label: "Módulo 9", titulo: "De Morgan" },
-    { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Final" },
+    { id: "modulo-1", label: "Módulo 1", title: "Fundamentos" },
+    { id: "modulo-2", label: "Módulo 2", title: "Operações" },
+    { id: "modulo-3", label: "Módulo 3", title: "Diagramas de Venn" },
+    { id: "modulo-4", label: "Módulo 4", title: "Conj. Numéricos" },
+    { id: "modulo-5", label: "Módulo 5", title: "Subconjuntos" },
+    { id: "modulo-6", label: "Módulo 6", title: "Inclusão-Exclusão" },
+    { id: "modulo-7", label: "Módulo 7", title: "ℕ, ℤ, ℚ" },
+    { id: "modulo-8", label: "Módulo 8", title: "Irracionais e ℝ" },
+    { id: "modulo-9", label: "Módulo 9", title: "De Morgan" },
+    { id: "modulo-10", label: "Módulo 10", title: "Simulado Final" },
   ];
 
   return (
@@ -184,7 +184,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Definição Intuitiva",
                   icone: "📐",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p>
                         Na Matemática, <strong>conjunto</strong> é um conceito
@@ -228,7 +228,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "1. Por Extensão",
                   icone: "📋",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm">
                         É a forma explícita de descrever. Todos os elementos são{" "}
@@ -251,7 +251,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "2. Por Compreensão",
                   icone: "⚙️",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm">
                         A forma algorítmica. O conjunto é definido por uma{" "}
@@ -273,7 +273,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "3. Diagrama de Venn",
                   icone: "⭕",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm">
                         A representação visual através de curvas fechadas planas
@@ -301,7 +301,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "O Pertence",
                   icone: "📌",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm">
                         A relação de pertinência é a cola que liga
@@ -358,7 +358,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "O que é o Vazio?",
                   icone: "🔢",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm">
                         O conjunto vazio é aquele que{" "}
@@ -406,7 +406,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "O que é Cardinalidade?",
                   icone: "📏",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm">
                         A <strong>Cardinalidade</strong> não é nada além do{" "}
@@ -432,7 +432,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "1. Unitário",
                   icone: "1️⃣",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm">
                         Ocorre quando a cardinalidade é exata:{" "}
@@ -451,7 +451,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "2. Vazio ou Nulo",
                   icone: "0️⃣",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm">
                         Ocorre quando a cardinalidade é nula:{" "}
@@ -468,7 +468,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "3. Finito",
                   icone: "📊",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm">
                         Acontece quando conseguimos terminar a contagem em algum
@@ -485,7 +485,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "4. Infinito",
                   icone: "♾️",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm">
                         Ocorre quando o número de elementos não possui fim. A
@@ -519,7 +519,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Subconjuntos (⊂)",
                   icone: "📦",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-3">
                       <p>
                         A ⊂ B: <strong>todo</strong> elemento de A também
@@ -546,7 +546,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Conjunto Potência P(A)",
                   icone: "⚡",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-3">
                       <p>P(A) = conjunto de TODOS os subconjuntos de A.</p>
                       <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
@@ -574,8 +574,8 @@ export default function AulaConjuntos({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       images={[
                         {
@@ -607,8 +607,8 @@ export default function AulaConjuntos({
                 {
                   id: "audio",
                   label: "Áudio Resumo",
-                  icon: LuMusic,
-                  content: (
+                  icon:LuMusic,
+                  content:(
                     <div className="w-full flex justify-center py-4">
                       <div className="w-full max-w-md">
                         <MusicPlayerCard
@@ -663,7 +663,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "União (A ∪ B)",
                   icone: "➕",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm sm:text-base">
                         A <strong>união</strong> de dois conjuntos A e B forma
@@ -704,7 +704,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Conceito",
                   icone: "🔍",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p>
                         A <strong>interseção</strong> contém apenas os elementos
@@ -735,7 +735,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Diferença (A − B)",
                   icone: "➖",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm sm:text-base">
                         A diferença entre dois conjuntos significa pegar o
@@ -770,7 +770,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Complementar (Aᶜ ou C_U^A)",
                   icone: "🔄",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm sm:text-base">
                         O complementar de A é um caso especial de diferença!
@@ -813,8 +813,8 @@ export default function AulaConjuntos({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       images={[
                         {
@@ -865,7 +865,7 @@ export default function AulaConjuntos({
           numero={3}
           titulo="Diagramas de Venn e Cardinalidade"
           descricao="A ferramenta visual mais poderosa para conjuntos. Domine a fórmula da cardinalidade."
-          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
+          gradiente="bg-gradient-to-br from-blue-600 via-blue-600 to-indigo-700"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -873,19 +873,19 @@ export default function AulaConjuntos({
               index={1}
               title="Diagramas de Venn"
               description="Transforme problemas complexos em simples."
-              variant="violet"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
               titulo="Desenhando Diagramas de Venn"
               icone="⭕"
-              corIndicador="bg-violet-500"
+              corIndicador="bg-blue-500"
               defaultOpen={true}
               slides={[
                 {
                   titulo: "O que é e Por Que Usar?",
                   icone: "💡",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm sm:text-base">
                         Os Diagramas de Venn representam conjuntos usando curvas
@@ -895,8 +895,8 @@ export default function AulaConjuntos({
                         resolver problemas de contagem que envolvem grupos com
                         elementos em comum.
                       </p>
-                      <div className="bg-violet-500/10 p-4 rounded-xl border border-violet-500/20">
-                        <p className="font-bold text-violet-800 dark:text-violet-300">
+                      <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20">
+                        <p className="font-bold text-blue-800 dark:text-blue-300">
                           A Estrutura Visual:
                         </p>
                         <ul className="list-disc pl-5 mt-2 space-y-1 text-sm">
@@ -928,7 +928,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Regra de Ouro da CESGRANRIO",
                   icone: "🏆",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm sm:text-base">
                         Em provas de concurso, a principal armadilha é somar os
@@ -967,19 +967,19 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={2}
               title="Fórmula da Cardinalidade"
-              variant="violet"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
               titulo="Teorema da Inclusão-Exclusão"
               icone="📊"
-              corIndicador="bg-purple-500"
+              corIndicador="bg-blue-500"
               defaultOpen={true}
               slides={[
                 {
                   titulo: "A Fórmula para 2 Conjuntos",
                   icone: "2️⃣",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm sm:text-base">
                         Quando você soma o total do conjunto A com o total do
@@ -989,8 +989,8 @@ export default function AulaConjuntos({
                         <strong>subtrair essa interseção uma vez</strong> para
                         achar o total real da união.
                       </p>
-                      <div className="p-4 bg-purple-500/10 rounded-xl border border-purple-500/20 text-center shadow-inner">
-                        <p className="text-lg font-bold font-mono text-purple-800 dark:text-purple-300">
+                      <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 text-center shadow-inner">
+                        <p className="text-lg font-bold font-mono text-blue-800 dark:text-blue-300">
                           n(A ∪ B) = n(A) + n(B) − n(A ∩ B)
                         </p>
                       </div>
@@ -1024,7 +1024,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "O Desafio dos 3 Conjuntos",
                   icone: "3️⃣",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm">
                         Com três conjuntos (A, B e C), a soma direta cria
@@ -1057,7 +1057,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={3}
               title="Resumo e Multimídia"
-              variant="violet"
+              variant="blue"
               className="mb-8"
             />
             <LessonTabs
@@ -1065,8 +1065,8 @@ export default function AulaConjuntos({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       images={[
                         {
@@ -1074,14 +1074,14 @@ export default function AulaConjuntos({
                           type: "Diagrama",
                           imageUrl: "/conjuntos_venn_2.png",
                           placeholderColor:
-                            "bg-violet-100 dark:bg-violet-900/30",
+                            "bg-blue-100 dark:bg-blue-900/30",
                         },
                         {
                           title: "Venn: 3 Conjuntos",
                           type: "Diagrama",
                           imageUrl: "/conjuntos_venn_3.png",
                           placeholderColor:
-                            "bg-purple-100 dark:bg-purple-900/30",
+                            "bg-blue-100 dark:bg-blue-900/30",
                         },
                         {
                           title: "Regra De Dentro para Fora",
@@ -1106,7 +1106,7 @@ export default function AulaConjuntos({
               titulo="Quiz - Diagramas de Venn"
               icone="🧠"
               numero={3}
-              variant="violet"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -1132,31 +1132,31 @@ export default function AulaConjuntos({
             <CardCarousel
               cards={[
                 {
-                  titulo: "ℕ — Números Naturais",
+                  title: "ℕ — Números Naturais",
                   descricao:
                     "{0, 1, 2, 3, ...}. Usados em contagem. Quando utilizamos ℕ* (com asterisco), excluímos o zero.",
                   icone: "🌱",
                 },
                 {
-                  titulo: "ℤ — Números Inteiros",
+                  title: "ℤ — Números Inteiros",
                   descricao:
                     "{..., -2, -1, 0, 1, 2, ...}. Expande os Naturais adicionando os números negativos.",
                   icone: "❄️",
                 },
                 {
-                  titulo: "ℚ — Números Racionais",
+                  title: "ℚ — Números Racionais",
                   descricao:
                     "Qualquer número que pode virar fração (p/q, com q≠0). Inclui: Inteiros, Decimais Exatos (0,5) e Dízimas Periódicas (0,333...).",
                   icone: "🔢",
                 },
                 {
-                  titulo: "𝕀 — Números Irracionais",
+                  title: "𝕀 — Números Irracionais",
                   descricao:
                     "Dízimas não-periódicas infinites. Não viram fração. Exemplos de peso: √2, √3, e as constantes π e o número de Euler 'e'.",
                   icone: "♾️",
                 },
                 {
-                  titulo: "ℝ — Números Reais",
+                  title: "ℝ — Números Reais",
                   descricao:
                     "A união dos Racionais com os Irracionais (ℝ = ℚ ∪ 𝕀). Forma toda a reta numérica sem buracos.",
                   icone: "📏",
@@ -1188,7 +1188,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Notação Moderna de Intervalos",
                   icone: "📚",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm">
                         Os intervalos no conjunto dos Números Reais usam
@@ -1263,8 +1263,8 @@ export default function AulaConjuntos({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       images={[
                         {
@@ -1309,7 +1309,7 @@ export default function AulaConjuntos({
           numero={5}
           titulo="Laboratório CESGRANRIO"
           descricao="Simulado final e certificado de conclusão. A vaga é sua!"
-          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
+          gradiente="bg-gradient-to-br from-rose-600 via-rose-600 to-rose-700"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm text-center">
@@ -1350,8 +1350,8 @@ export default function AulaConjuntos({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       images={[
                         {
@@ -1364,7 +1364,7 @@ export default function AulaConjuntos({
                           title: "Fórmulas Essenciais",
                           type: "Tabela",
                           imageUrl: "/conjuntos_simbolos_tabela.png",
-                          placeholderColor: "bg-pink-100 dark:bg-pink-900/30",
+                          placeholderColor: "bg-rose-100 dark:bg-rose-900/30",
                         },
                         {
                           title: "Campo Minado (Pegadinhas)",
@@ -1422,7 +1422,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "O Problema da Dupla Contagem",
                   icone: "🔢",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         Se somarmos <strong>|A| + |B|</strong>, quem está em{" "}
@@ -1451,7 +1451,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Encontrando a Interseção",
                   icone: "🎯",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         A fórmula pode ser invertida para{" "}
@@ -1488,7 +1488,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Encontrando 'Nenhum'",
                   icone: "0️⃣",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         Muitas questões pedem quem{" "}
@@ -1531,7 +1531,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "A Fórmula Completa",
                   icone: "📐",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
                         <p className="font-mono text-sm font-bold text-emerald-400 leading-relaxed">
@@ -1564,7 +1564,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Exemplo: 3 Certificações NR",
                   icone: "🏭",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         <strong>Enunciado:</strong> Numa plataforma P-55, 400
@@ -1615,7 +1615,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Caso 1: Conjuntos Disjuntos",
                   icone: "○○",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         Se <strong>A ∩ B = ∅</strong> (disjuntos), a fórmula
@@ -1640,7 +1640,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Caso 2: A ⊂ B (Subconjunto)",
                   icone: "⊂",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         Se <strong>A ⊂ B</strong>, então{" "}
@@ -1684,7 +1684,7 @@ export default function AulaConjuntos({
           numero={7}
           titulo="ℕ, ℤ, ℚ em Profundidade"
           descricao="Os três primeiros degraus da hierarquia dos números reais — com contexto industrial Petrobras e as pegadinhas favoritas da CESGRANRIO."
-          gradiente="bg-gradient-to-br from-indigo-500 via-blue-600 to-violet-700"
+          gradiente="bg-gradient-to-br from-indigo-500 via-blue-600 to-blue-700"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1704,7 +1704,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Definição e o Zero",
                   icone: "📌",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         <strong>ℕ = {"{0, 1, 2, 3, 4, ...}"}</strong> — Na
@@ -1764,7 +1764,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Quando precisamos dos Inteiros",
                   icone: "🌡️",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         <strong>ℤ</strong> estende ℕ incluindo os negativos:{" "}
@@ -1838,7 +1838,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "ℕ ⊂ ℤ: Todo Natural é Inteiro",
                   icone: "⊂",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         Todo número natural é também inteiro (ℕ ⊂ ℤ), mas nem
@@ -1879,7 +1879,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Definição Formal e Exemplos",
                   icone: "📐",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         <strong>ℚ</strong> = todos os números que podem ser
@@ -1923,7 +1923,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Dízimas Periódicas → Fração",
                   icone: "🔄",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         Toda dízima periódica é racional. Fórmula de conversão
@@ -1992,7 +1992,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Definição e Exemplos Industriais",
                   icone: "📡",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         Um número é <strong>irracional</strong> quando{" "}
@@ -2061,7 +2061,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "ℝ é a Reunião Completa",
                   icone: "🌊",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         O conjunto dos Reais é <strong>ℝ = ℚ ∪ (ℝ∖ℚ)</strong> —
@@ -2095,7 +2095,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Afirmações Verdadeiras e Falsas",
                   icone: "✅❌",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-3">
                       <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
                         <p className="text-xs text-emerald-400">
@@ -2145,7 +2145,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Quadrado Perfeito vs. Não Perfeito",
                   icone: "🔲",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         <strong>√n é racional</strong> somente quando n é um{" "}
@@ -2219,7 +2219,7 @@ export default function AulaConjuntos({
           numero={9}
           titulo="Leis de De Morgan"
           descricao="As duas leis que transformam complementares de operações — imprescindíveis para simplificar expressões e resolver questões avançadas da CESGRANRIO."
-          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
+          gradiente="bg-gradient-to-br from-blue-600 via-blue-600 to-indigo-700"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -2233,23 +2233,23 @@ export default function AulaConjuntos({
             <ContentAccordion
               titulo="(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ"
               icone="🔁"
-              corIndicador="bg-violet-500"
+              corIndicador="bg-blue-500"
               defaultOpen={true}
               slides={[
                 {
                   titulo: "Enunciado e Regra Mnemônica",
                   icone: "📋",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
-                      <div className="p-4 bg-violet-500/10 rounded-xl border border-violet-500/20 text-center">
-                        <p className="font-mono text-lg font-bold text-violet-400">
+                      <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 text-center">
+                        <p className="font-mono text-lg font-bold text-blue-400">
                           (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ
                         </p>
                       </div>
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         O complementar da <strong>união</strong> é a interseção
                         dos complementares. Para memorizar:{" "}
-                        <strong className="text-violet-400">
+                        <strong className="text-blue-400">
                           &quot;Complementar entra, troca o operador e distribui
                           o apóstrofe&quot;
                         </strong>
@@ -2277,7 +2277,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Verificação Numérica",
                   icone: "🔢",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         Verificação com U = {"{1,...,10}"}, A = {"{1,2,3,4,5}"},
@@ -2287,7 +2287,7 @@ export default function AulaConjuntos({
                         <p className="text-indigo-400">
                           A ∪ B = {"{1,2,3,4,5,6,7}"}
                         </p>
-                        <p className="text-violet-400">
+                        <p className="text-blue-400">
                           (A ∪ B)ᶜ = {"{8,9,10}"}
                         </p>
                         <p className="text-muted-foreground">─────</p>
@@ -2321,7 +2321,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Enunciado e Aplicação Industrial",
                   icone: "🏭",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-center">
                         <p className="font-mono text-lg font-bold text-emerald-400">
@@ -2368,7 +2368,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "(Aᶜ ∩ Bᶜ)ᶜ = ?",
                   icone: "🧮",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         Expressões com duas aplicações de De Morgan são cobradas
@@ -2378,7 +2378,7 @@ export default function AulaConjuntos({
                         <p className="text-indigo-400">
                           // Simplificar (Aᶜ ∩ Bᶜ)ᶜ
                         </p>
-                        <p className="text-violet-400">
+                        <p className="text-blue-400">
                           Passo 1: Aᶜ ∩ Bᶜ = (A ∪ B)ᶜ &nbsp; [1ª Lei]
                         </p>
                         <p className="text-emerald-400">
@@ -2400,19 +2400,19 @@ export default function AulaConjuntos({
                 {
                   titulo: "Tabela Resumo de De Morgan",
                   icone: "📊",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <div className="overflow-hidden rounded-xl border border-border/20">
                         <table className="w-full text-xs">
                           <thead>
-                            <tr className="bg-violet-500/20">
-                              <th className="p-3 text-left text-violet-400 font-bold">
+                            <tr className="bg-blue-500/20">
+                              <th className="p-3 text-left text-blue-400 font-bold">
                                 Expressão Original
                               </th>
-                              <th className="p-3 text-left text-violet-400 font-bold">
+                              <th className="p-3 text-left text-blue-400 font-bold">
                                 Equivalente
                               </th>
-                              <th className="p-3 text-left text-violet-400 font-bold">
+                              <th className="p-3 text-left text-blue-400 font-bold">
                                 Lei
                               </th>
                             </tr>
@@ -2501,7 +2501,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Operações Fundamentais",
                   icone: "⚙️",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-3">
                       <div className="overflow-hidden rounded-xl border border-border/20">
                         <table className="w-full text-xs">
@@ -2549,7 +2549,7 @@ export default function AulaConjuntos({
                             </tr>
                             <tr className="border-t border-border/10">
                               <td className="p-3">Conj. das Partes</td>
-                              <td className="p-3 font-mono text-violet-400">
+                              <td className="p-3 font-mono text-blue-400">
                                 P(A)
                               </td>
                               <td className="p-3">2ⁿ subconjuntos (n = |A|)</td>
@@ -2563,7 +2563,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Fórmulas de Cardinalidade",
                   icone: "🔢",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-3">
                       <div className="p-3 bg-indigo-500/10 rounded-xl border border-indigo-500/20 font-mono text-xs">
                         <p className="text-indigo-400 font-bold mb-2">
@@ -2585,8 +2585,8 @@ export default function AulaConjuntos({
                           |A∩B∩C|
                         </p>
                       </div>
-                      <div className="p-3 bg-violet-500/10 rounded-xl border border-violet-500/20 font-mono text-xs">
-                        <p className="text-violet-400 font-bold mb-2">
+                      <div className="p-3 bg-blue-500/10 rounded-xl border border-blue-500/20 font-mono text-xs">
+                        <p className="text-blue-400 font-bold mb-2">
                           De Morgan:
                         </p>
                         <p className="text-muted-foreground">
@@ -2616,7 +2616,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "1️⃣ Identificação e Nomeação",
                   icone: "🔤",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         Leia o enunciado e extraia o{" "}
@@ -2640,7 +2640,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "2️⃣ Diagrama 'De Dentro para Fora'",
                   icone: "⭕",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         A regra de ouro: sempre comece preenchendo a{" "}
@@ -2665,7 +2665,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "3️⃣ Determinando a Interseção",
                   icone: "∩",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         Se o enunciado der o total (|A∪B|) e os individuais (|A|
@@ -2688,7 +2688,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "4️⃣ Inclusão-Exclusão Direta",
                   icone: "➕",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         Calcule o valor de quem pertence a{" "}
@@ -2712,7 +2712,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "5️⃣ Valide com De Morgan",
                   icone: "🔁",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         Antes de fazer as contas, veja se a questão não pede o{" "}
@@ -2739,7 +2739,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Armadilha 1: √4 não é irracional",
                   icone: "🎯",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground">
                         √4 = 2 (inteiro, portanto racional). Só √n com n
@@ -2761,7 +2761,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Armadilha 2: A Tripla Interseção",
                   icone: "⭕",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground">
                         Na fórmula de 3 conjuntos, |A∩B∩C| é SOMADO de volta
@@ -2778,7 +2778,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Armadilha 3: {0} ≠ ∅",
                   icone: "0️⃣",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground">
                         {"{0}"} tem 1 elemento (o zero). ∅ = {"{}"} tem 0
@@ -2796,7 +2796,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Armadilha 4: Q ⊄ Z (é o contrário)",
                   icone: "🔢",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         ℤ ⊂ ℚ — os inteiros estão dentro dos racionais, não o
@@ -2813,7 +2813,7 @@ export default function AulaConjuntos({
                 {
                   titulo: "Armadilha 5: O termo 'Apenas'",
                   icone: "🎯",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-sm text-muted-foreground italic">
                         Diferencie 'Candidatos que falam inglês' (|I|) de
@@ -2863,3 +2863,15 @@ export default function AulaConjuntos({
     </AulaTemplate>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+

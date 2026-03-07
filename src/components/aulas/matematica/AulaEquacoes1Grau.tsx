@@ -12,7 +12,23 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
+  FlipCard,
+  ModuleSummaryCarouselNew,
 } from "../shared";
+
+import {
+  LuBookOpen,
+  LuLightbulb,
+  LuTarget,
+  LuBrain,
+  LuPlay,
+  LuMusic,
+  LuTrophy,
+  LuCheckCircle,
+  LuArrowRight,
+  LuXCircle,
+} from "react-icons/lu";
+
 import {
   QUIZ_M1_CONCEITOS,
   QUIZ_M2_FRACOES,
@@ -21,10 +37,13 @@ import {
   QUIZ_M5_FINAL,
 } from "./data/equacoes-1grau-quizzes";
 
-// Quizzes importados de ./data/equacoes-1grau-quizzes.ts
-// (36 questões premium estilo CESGRANRIO)
-
-// ── COMPONENT ───────────────────────────────────────────────────────────
+const MODULE_DEFS = [
+  { id: "modulo-1", label: "Módulo 1", title: "Conceitos Fundamentais" },
+  { id: "modulo-2", label: "Módulo 2", title: "Problemas do Cotidiano" },
+  { id: "modulo-3", label: "Módulo 3", title: "Ameaças em Frações" },
+  { id: "modulo-4", label: "Módulo 4", title: "Sistemas Lineares" },
+  { id: "modulo-5", label: "Módulo 5", title: "Desafio Final" },
+] as const;
 
 export default function AulaEquacoes1Grau({
   onComplete,
@@ -47,62 +66,88 @@ export default function AulaEquacoes1Grau({
     new Set(),
   );
 
-  const [quizConceito] = useState(() =>
-    getRandomQuestions(QUIZ_M1_CONCEITOS, 6),
-  );
-  const [quizProblemas] = useState(() =>
-    getRandomQuestions(QUIZ_M3_PROBLEMAS, 6),
-  );
-  const [quizFracoes] = useState(() => getRandomQuestions(QUIZ_M2_FRACOES, 6));
-  const [quizSistemas] = useState(() =>
-    getRandomQuestions(QUIZ_M4_INEQUACOES, 5),
-  );
-  const [quizFinal] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 5));
+  const [quizM1, setQuizM1] = useState<typeof QUIZ_M1_CONCEITOS>([]);
+  const [quizM2, setQuizM2] = useState<typeof QUIZ_M3_PROBLEMAS>([]); // Note: Problemas is M2 visually
+  const [quizM3, setQuizM3] = useState<typeof QUIZ_M2_FRACOES>([]); // Frações is M3 visually
+  const [quizM4, setQuizM4] = useState<typeof QUIZ_M4_INEQUACOES>([]);
+  const [quizFinal, setQuizFinal] = useState<typeof QUIZ_M5_FINAL>([]);
 
-  const isModuleUnlocked = (_index: number) => true;
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
+  const [showCompletionBadge, setShowCompletionBadge] = useState(false);
+
+  useEffect(() => {
+    if (isCompleted) setShowCompletionBadge(true);
+  }, [isCompleted]);
+
+  useEffect(() => {
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
+      }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
+
+  useEffect(() => {
+    if (!loading) {
+      setQuizM1(getRandomQuestions(QUIZ_M1_CONCEITOS, 4));
+      setQuizM2(getRandomQuestions(QUIZ_M3_PROBLEMAS, 4));
+      setQuizM3(getRandomQuestions(QUIZ_M2_FRACOES, 4));
+      setQuizM4(getRandomQuestions(QUIZ_M4_INEQUACOES, 4));
+      setQuizFinal(getRandomQuestions(QUIZ_M5_FINAL, 5));
+    }
+  }, [loading]);
 
   const handleModuleComplete = (moduleId: string, score: number) => {
-    if (score >= 60) {
-      setCompletedModules((prev) => {
-        const n = new Set(prev);
-        n.add(moduleId);
-        return n;
-      });
-      const idx = [
-        "modulo-1",
-        "modulo-2",
-        "modulo-3",
-        "modulo-4",
-        "modulo-5",
-      ].findIndex((m) => m === moduleId);
-      const pct = Math.round(((idx + 1) / 5) * 100);
-      onUpdateProgress?.(pct);
-      if (idx < 4) setTimeout(() => setActiveTab(`modulo-${idx + 2}`), 1500);
+    if (score >= 70) {
+      const newSet = new Set(completedModules).add(moduleId);
+      setCompletedModules(newSet);
+
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
+
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
+
+      const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
+
+      if (index === MODULE_DEFS.length - 1) {
+        setShowCompletionBadge(true);
+        onComplete?.();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        setTimeout(() => setActiveTab(MODULE_DEFS[index + 1].id), 1500);
+      }
     }
   };
 
-  useEffect(() => {
-    if (currentProgress && currentProgress > 0) {
-      const count = Math.floor((currentProgress / 100) * 5);
-      const s = new Set<string>();
-      for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
-      setCompletedModules(s);
-    }
-  }, [currentProgress]);
-
-  const MODULE_DEFS = [
-    { id: "modulo-1", label: "Módulo 1", titulo: "Conceitos" },
-    { id: "modulo-2", label: "Módulo 2", titulo: "Problemas" },
-    { id: "modulo-3", label: "Módulo 3", titulo: "Frações e Parênteses" },
-    { id: "modulo-4", label: "Módulo 4", titulo: "Sistemas Lineares" },
-    { id: "modulo-5", label: "Módulo 5", titulo: "Desafio Final" },
-  ];
+  const isModuleUnlocked = (index: number) => {
+    if (isCompleted || index === 0) return true;
+    return completedModules.has(MODULE_DEFS[index - 1].id);
+  };
 
   return (
     <AulaTemplate
       activeTab={activeTab}
-      setActiveTab={setActiveTab}
-      modules={MODULE_DEFS}
+      setActiveTab={(val) => {
+        const idx = MODULE_DEFS.findIndex((m) => m.id === val);
+        if (isModuleUnlocked(idx)) setActiveTab(val);
+      }}
+      modules={Array.from(MODULE_DEFS)}
       completedModules={completedModules}
       isModuleUnlocked={isModuleUnlocked}
       titulo={titulo}
@@ -114,432 +159,335 @@ export default function AulaEquacoes1Grau({
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
-      currentProgress={currentProgress}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
       onComplete={onComplete}
       loading={loading}
       xpGanho={xpGanho}
     >
       {/* ═══ MÓDULO 1 ═══ */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
-        <ModuleBanner
-          numero={1}
-          titulo="Fundamentos de Equações"
-          descricao="A base: isolar a incógnita e resolver."
-          gradiente="bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-700"
-        />
-        <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={1}
+            titulo="Fundamentos de Equações"
+            descricao="A base: isolar a incógnita e resolver a balança invisível."
+            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Mecânica das Equações"
               description="Dominando a balança matemática: o que você faz de um lado, faz do outro."
-              variant="indigo"
-              className="mb-6"
+              variant="blue"
             />
+
+            <p className="text-muted-foreground leading-relaxed text-lg">
+              Uma <strong>equação do 1º grau</strong> é uma igualdade que contém
+              pelo menos uma letra (incógnita) com expoente invisível igual a 1.
+              Na matemática do seu dia a dia (e da Cesgranrio), o sinal de{" "}
+              <strong className="text-xl px-1">=</strong> é o pino central de
+              uma balança de pratos de laboratório.
+            </p>
+
             <ContentAccordion
-              titulo="Princípios Fundamentais"
-              icone="⚖️"
-              corIndicador="bg-indigo-500"
-              defaultOpen={true}
               slides={[
                 {
-                  titulo: "O que é uma Equação?",
-                  icone: "💡",
-                  conteudo: (
+                  titulo: "O Princípio da Balança",
+                  icone:<LuBookOpen />,
+                  conteudo:(
                     <div className="space-y-4">
-                      <p className="text-sm sm:text-base">
-                        Uma <strong>equação do 1º grau</strong> é uma igualdade
-                        que contém pelo menos uma letra (incógnita) com expoente
-                        invisível igual a 1 (como{" "}
-                        <code className="bg-indigo-500/10 px-1 rounded">x</code>
-                        , não{" "}
-                        <code className="bg-indigo-500/10 px-1 rounded">
-                          x²
-                        </code>
-                        ).
-                      </p>
-                      <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-center shadow-inner">
-                        <p className="text-lg font-mono font-bold text-indigo-800 dark:text-indigo-300">
-                          ax + b = 0
-                        </p>
-                        <p className="text-xs mt-1">
-                          Onde "x" é a incógnita e "a" e "b" são números reais
-                          (a ≠ 0).
-                        </p>
-                      </div>
-                      <AlertBox tipo="info" titulo="O Princípio da Balança">
-                        O sinal de <strong className="text-xl">=</strong> é o
-                        pino central de uma balança de pratos. Para ela não
-                        pender (não quebrar a igualdade), tudo o que você fizer
-                        de um lado (somar, subtrair, multiplicar ou dividir),{" "}
+                      <p className="text-muted-foreground leading-relaxed">
+                        Para ela não pender (não quebrar a igualdade), tudo o
+                        que você fizer de um lado{" "}
                         <strong>
                           TEM QUE fazer exatamente igual do outro lado
                         </strong>
-                        . Na prática, usamos o "passa pro outro lado invertendo
-                        a operação".
-                      </AlertBox>
+                        . Na prática, usamos o atalho mental: "passa pro outro
+                        lado invertendo a operação".
+                      </p>
+                      <div className="bg-muted p-4 rounded-xl border border-border text-center">
+                        <p className="text-xl font-mono font-black text-blue-600">
+                          2x - 8 = 10
+                        </p>
+                        <div className="space-y-2 mt-4 text-sm font-medium">
+                          <p>
+                            1º: 2x = 10{" "}
+                            <strong className="text-blue-500">+ 8</strong>{" "}
+                            <em>(O -8 inverteu operação para SOMA)</em>
+                          </p>
+                          <p>2º: 2x = 18</p>
+                          <p>
+                            3º: x = 18{" "}
+                            <strong className="text-blue-500">/ 2</strong>{" "}
+                            <em>(O 2 inverteu operação para DIVISÃO)</em>
+                          </p>
+                          <p className="text-lg font-bold text-foreground mt-2">
+                            x = 9
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Isolando o 'X' (Passo a Passo)",
-                  icone: "🎯",
-                  conteudo: (
-                    <div className="space-y-4">
+                  titulo: "Sinal x Operação (Pegadinha)",
+                  icone:<LuLightbulb />,
+                  conteudo:(
+                    <AlertBox
+                      tipo="warning"
+                      titulo="O Veneno da Operação Inversa"
+                    >
                       <p className="text-sm">
-                        O objetivo único em qualquer equação é deixar o{" "}
-                        <strong>x sozinho e positivo</strong> de um lado da
-                        igualdade.
+                        Muitos pensam "Inverte o Sinal".{" "}
+                        <strong>ERRADO!</strong> Inverte-se a{" "}
+                        <strong>operação</strong>! Se for <code>-3x = 15</code>,
+                        o <code>-3</code> está multiplicando. Ele passa para o
+                        outro lado DIVIDINDO{" "}
+                        <strong>junto com o sinal negativo dele</strong>. O
+                        correto é <code>x = 15 / (-3)</code>, que dá{" "}
+                        <code>-5</code>.
                       </p>
-                      <div className="bg-card p-4 rounded-xl border border-border">
-                        <p className="font-bold text-sm mb-2">
-                          A Ordem de Libertação do X:
-                        </p>
-                        <ul className="text-sm space-y-2 list-none pl-0">
-                          <li>
-                            <strong>1º Passo:</strong> Quem está somando ou
-                            subtraindo passa para o outro lado invertendo (se
-                            era +, vira -; se era -, vira +).
-                          </li>
-                          <li>
-                            <strong>2º Passo:</strong> Quem está multiplicando
-                            passa dividindo (MANTENDO O SINAL). Quem está
-                            dividindo passa multiplicando.
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="p-3 bg-indigo-500/10 rounded-lg text-sm text-center">
-                        <p className="font-mono font-bold">2x - 8 = 10</p>
-                        <p className="font-mono mt-1">
-                          2x = 10 + 8 (o -8 passou +)
-                        </p>
-                        <p className="font-mono mt-1">2x = 18</p>
-                        <p className="font-mono mt-1">
-                          x = 18 / 2 (o 2 multiplicando passou dividindo)
-                        </p>
-                        <p className="font-mono font-bold mt-1 text-indigo-700 dark:text-indigo-300">
-                          x = 9
-                        </p>
-                      </div>
-                    </div>
+                    </AlertBox>
                   ),
                 },
               ]}
             />
           </section>
-          <section id="quiz-modulo-1" className="mt-16">
-            <QuizInterativo
-              questoes={quizConceito}
-              titulo="Quiz - Conceitos Básicos"
-              icone="🧠"
-              numero={1}
-              variant="indigo"
-              onComplete={(score) => handleModuleComplete("modulo-1", score)}
-            />
-          </section>
+
+          <QuizInterativo
+            questoes={quizM1}
+            titulo="Fixação - Módulo 1"
+            numero={1}
+            variant="blue"
+            icone="🧠"
+            onComplete={(score) => handleModuleComplete("modulo-1", score)}
+          />
         </div>
       </TabsContent>
 
       {/* ═══ MÓDULO 2 ═══ */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
-        <ModuleBanner
-          numero={2}
-          titulo="Problemas do Cotidiano"
-          descricao="Transforme texto em equação."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
-        />
-        <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={2}
+            titulo="Problemas do Cotidiano"
+            descricao="A habilidade mais valiosa: Transforme texto em equação."
+            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Traduzindo Problemas"
-              description="Como transformar textos de bancas em equações matemáticas."
+              description="O dicionário que traduz o Português Jurídico da Banca para a Matemática."
               variant="emerald"
-              className="mb-6"
             />
             <ContentAccordion
-              titulo="O Dicionário Matemático"
-              icone="📖"
-              corIndicador="bg-emerald-500"
-              defaultOpen={true}
               slides={[
                 {
-                  titulo: "Lendo a Prova da CESGRANRIO",
-                  icone: "🔍",
-                  conteudo: (
+                  titulo: "O Dicionário Operacional",
+                  icone:<LuBookOpen />,
+                  conteudo:(
                     <div className="space-y-4">
-                      <p className="text-sm">
-                        O maior desafio de provas de concurso não é a conta, é{" "}
-                        <strong>montar a conta</strong>. Veja o vocabulário base
-                        que você precisa decorar:
-                      </p>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                        <div className="p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
-                          <p className="font-bold">Em Português → Matemática</p>
-                          <ul className="mt-2 space-y-1">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20">
+                          <h4 className="font-bold text-emerald-700 mb-2">
+                            Traduções Fixas
+                          </h4>
+                          <ul className="space-y-2 text-sm text-foreground">
                             <li>
-                              Um número desconhecido → <strong>x</strong>
+                              Um número = <strong>x</strong>
                             </li>
                             <li>
-                              O dobro do número → <strong>2x</strong>
+                              O dobro = <strong>2x</strong>
                             </li>
                             <li>
-                              A metade do número → <strong>x/2</strong>
+                              A metade = <strong>x/2</strong>
                             </li>
                             <li>
-                              O sucessor do número → <strong>x + 1</strong>
+                              O sucessor = <strong>x + 1</strong>
                             </li>
                             <li>
-                              Excede o número em dois → <strong>x + 2</strong>
+                              A diferença = <strong>Subtração (-)</strong>
+                            </li>
+                            <li>
+                              Quociente = <strong>Divisão (/)</strong>
                             </li>
                           </ul>
                         </div>
-                        <div className="p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
-                          <p className="font-bold">Em Português → Operadores</p>
-                          <ul className="mt-2 space-y-1">
+                        <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20">
+                          <h4 className="font-bold text-emerald-700 mb-2">
+                            Protocolo de Batalha
+                          </h4>
+                          <ol className="space-y-2 text-sm text-foreground list-decimal ml-4 font-medium">
+                            <li>Leia tudo uma vez respirando fundo.</li>
+                            <li>Declare quem é "X".</li>
                             <li>
-                              É igual a, equivale a, resulta em →{" "}
-                              <strong>=</strong>
+                              Ache o verbo "É" / "Ficou" / "Resulta". Ali fica o{" "}
+                              <strong>"="</strong>.
                             </li>
                             <li>
-                              Aumentado, somado, mais → <strong>+</strong>
+                              Escreva a equação lendo pedacinho por pedacinho.
                             </li>
-                            <li>
-                              Diminuído, subtraído, diferença →{" "}
-                              <strong>-</strong>
-                            </li>
-                            <li>
-                              De, do, da (fração de algo) →{" "}
-                              <strong>× (multiplicação)</strong>
-                            </li>
-                          </ul>
+                          </ol>
                         </div>
                       </div>
-                      <AlertBox
-                        tipo="success"
-                        titulo="Passo a Passo de Resolução Segura"
-                      >
-                        1. <strong>Quem é o X?</strong> Defina clamente (Ex: x =
-                        salário do técnico).
-                        <br />
-                        2. <strong>Traduza pedaço por pedaço</strong> da
-                        esquerda para a direita.
-                        <br />
-                        3. <strong>Encontre a igualdade (=)</strong> no texto (a
-                        pista de onde abalança se equilibra).
-                        <br />
-                        4. <strong>Resolva isolando x</strong> e, depois,
-                        VERIFIQUE se o valor de x responde à pergunta final da
-                        questão (CESGRANRIO adora pedir o valor de 2x ao invés
-                        de x só para enganar!).
-                      </AlertBox>
                     </div>
                   ),
                 },
               ]}
             />
           </section>
-          <section id="quiz-modulo-2" className="mt-16">
-            <QuizInterativo
-              questoes={quizProblemas}
-              titulo="Quiz - Problemas"
-              icone="🧠"
-              numero={2}
-              variant="emerald"
-              onComplete={(score) => handleModuleComplete("modulo-2", score)}
-            />
-          </section>
+
+          <QuizInterativo
+            questoes={quizM2}
+            titulo="Fixação - Módulo 2"
+            numero={2}
+            variant="emerald"
+            icone="🎯"
+            onComplete={(score) => handleModuleComplete("modulo-2", score)}
+          />
         </div>
       </TabsContent>
 
       {/* ═══ MÓDULO 3 ═══ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
-        <ModuleBanner
-          numero={3}
-          titulo="Frações e Parênteses"
-          descricao="MMC e distributiva para equações mais complexas."
-          gradiente="bg-gradient-to-br from-amber-600 via-orange-600 to-red-700"
-        />
-        <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={3}
+            titulo="Ameaças em Frações"
+            descricao="Como destruir frações através do MMC em um único golpe."
+            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="Resolvendo o Caos"
-              description="Quando a equação vem cheia de armadilhas matemáticas."
+              title="Limpando Frações Rápidamente"
+              description="Frações atraem o erro. Seu dever cívico é eliminá-las."
               variant="amber"
-              className="mb-6"
             />
+
             <ContentAccordion
-              titulo="Limpando a Equação"
-              icone="🔧"
-              corIndicador="bg-amber-500"
-              defaultOpen={true}
               slides={[
                 {
-                  titulo: "Parênteses e o 'Chuveirinho'",
-                  icone: "🚿",
-                  conteudo: (
+                  titulo: "O Aniquilador de Denominador (MMC)",
+                  icone:<LuTarget />,
+                  conteudo:(
                     <div className="space-y-4">
-                      <p className="text-sm">
-                        O número que está colado no parênteses multiplica TODOS
-                        os itens dentro dele (Propriedade Distributiva).
+                      <p className="text-muted-foreground leading-relaxed">
+                        Se a equação tem denominadores de um lado, do outro,
+                        perdidos... O truque sujo (e maravilhoso) é calcular o
+                        MMC de todos os números de baixo e{" "}
+                        <strong>
+                          multiplicar TODOS os elementos de cima por esse MMC
+                        </strong>
+                        .
                       </p>
-                      <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20 shadow-inner">
-                        <p className="font-mono text-sm">3(x + 4) = 30</p>
-                        <p className="font-mono text-sm">3x + 12 = 30</p>
-                      </div>
-                      <AlertBox
-                        tipo="warning"
-                        titulo="O Veneno da CESGRANRIO: O Sinal de Menos"
-                      >
-                        Se houver um sinal de menos antes do parênteses,{" "}
-                        <strong>ELE TROCA O SINAL DE TODOS LÁ DENTRO</strong>.
-                        <br />
-                        Ex: -(2x - 5) vira -2x + 5.
-                        <br />
-                        Muitos candidatos esquecem de trocar o sinal do segundo
-                        número!
-                      </AlertBox>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "O Truque do MMC para Frações",
-                  icone: "🔢",
-                  conteudo: (
-                    <div className="space-y-4">
-                      <p className="text-sm">
-                        Equações com frações dão dor de cabeça. O segredo é
-                        ELIMINAR os denominadores (números de baixo) logo no
-                        primeiro passo.
-                      </p>
-                      <ol className="list-decimal pl-5 space-y-2 text-sm">
-                        <li>
-                          Calcule o <strong>MMC</strong> de todos os
-                          denominadores da equação inteira.
-                        </li>
-                        <li>Multiplique a equação INTEIRA por esse MMC.</li>
-                        <li>
-                          Faça: MMC ÷ pelo número de baixo × pelo número de
-                          cima.
-                        </li>
-                      </ol>
-                      <div className="bg-card p-4 rounded-xl border border-border">
-                        <p className="font-bold text-sm mb-2">
-                          Exemplo Rápido:
+
+                      <div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20 font-mono text-sm space-y-3">
+                        <p>
+                          <strong>A Equação Suja:</strong> (x/2) + (x/3) = 5
                         </p>
-                        <p className="font-mono text-sm">(x/2) + (x/3) = 5</p>
-                        <p className="text-xs text-muted-foreground mt-1 mb-2">
-                          MMC de 2 e 3 é 6. Multiplica tudo por 6:
+                        <hr className="border-amber-500/30" />
+                        <p>
+                          1. MMC de 2 e 3 é{" "}
+                          <strong className="text-amber-600">6</strong>.
                         </p>
-                        <p className="font-mono text-sm text-amber-600 dark:text-amber-400">
+                        <p>2. Multiplica a galera inteira por 6:</p>
+                        <p className="text-center font-bold text-lg my-2">
+                          6(x/2) + 6(x/3) = 6(5)
+                        </p>
+                        <p>3. Simplifica cortando (6/2=3, 6/3=2):</p>
+                        <p className="text-center font-bold text-lg my-2 text-amber-700">
                           3x + 2x = 30
                         </p>
-                        <p className="font-mono text-sm">5x = 30 → x = 6</p>
+                        <p className="text-center">
+                          5x = 30 → <strong>x = 6</strong>
+                        </p>
                       </div>
-                      <p className="text-xs italic">
-                        Magicamente, não há mais frações!
-                      </p>
                     </div>
                   ),
                 },
               ]}
             />
           </section>
-          <section id="quiz-modulo-3" className="mt-16">
-            <QuizInterativo
-              questoes={quizFracoes}
-              titulo="Quiz - Frações e Parênteses"
-              icone="🧠"
-              numero={3}
-              variant="amber"
-              onComplete={(score) => handleModuleComplete("modulo-3", score)}
-            />
-          </section>
+
+          <QuizInterativo
+            questoes={quizM3}
+            titulo="Fixação - Módulo 3"
+            numero={3}
+            variant="amber"
+            icone="🎯"
+            onComplete={(score) => handleModuleComplete("modulo-3", score)}
+          />
         </div>
       </TabsContent>
 
       {/* ═══ MÓDULO 4 ═══ */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
-        <ModuleBanner
-          numero={4}
-          titulo="Sistemas Lineares 2×2"
-          descricao="Duas equações, duas incógnitas."
-          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
-        />
-        <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+        {/* Usando Cyan ao invés de Purple/Violet para respeitar o Purple Ban */}
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={4}
+            titulo="Sistemas Lineares (2x2)"
+            descricao="Duas equações, duas incógnitas. Dois métodos de ataque."
+            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="2 Equações, 2 Incógnitas"
-              description="Quando você tem x e y no mesmo problema."
-              variant="violet"
-              className="mb-6"
+              title="Dominando X e Y"
+              description="Quando você tem duas balas para dois alvos."
+              variant="cyan"
             />
+
             <ContentAccordion
-              titulo="A Arte da Substituição e Adição"
-              icone="⚔️"
-              corIndicador="bg-violet-500"
-              defaultOpen={true}
               slides={[
                 {
-                  titulo: "Método da Substituição",
-                  icone: "🔄",
-                  conteudo: (
+                  titulo: "Método da Adição (Caça-Jato)",
+                  icone:<LuTrophy />,
+                  conteudo:(
                     <div className="space-y-4">
-                      <p className="text-sm">
-                        Ideal quando uma das letras (x ou y){" "}
-                        <strong>está sozinha</strong> (sem número na frente ou
-                        apenas multiplicada por 1).
+                      <p className="text-muted-foreground leading-relaxed">
+                        É o método veloz. Você empilha as equações e as "soma",
+                        torcendo para que um dos valores fique neutro (ex: +2y e
+                        -2y se anulam ali mesmo). Se não anular,{" "}
+                        <strong>
+                          multiplique a linha inteira de cima ou de baixo
+                        </strong>{" "}
+                        por um número que você escolhe à força, até que eles se
+                        anulem.
                       </p>
-                      <ul className="list-disc pl-5 space-y-2 text-sm mb-3">
-                        <li>
-                          <strong>1º:</strong> Pegue a equação mais fácil e
-                          isole uma letra (ex: x = 10 - y).
-                        </li>
-                        <li>
-                          <strong>2º:</strong> Pegue a OUTRA equação e troque a
-                          letra pelo valor isolado no passo 1.
-                        </li>
-                        <li>
-                          <strong>3º:</strong> Resolva para achar a primeira
-                          variável. Depois volte para achar a segunda.
-                        </li>
-                      </ul>
-                      <AlertBox tipo="info" titulo="Tática de Prova">
-                        A CESGRANRIO frequentemente monta problemas do tipo:
-                        "João comprou 3 cadeiras e 2 mesas (3c + 2m = X)". Se
-                        você usar substituição, vá devagar e use parênteses na
-                        hora de substituir!
-                      </AlertBox>
+                      <div className="bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/20 flex justify-center text-center">
+                        <div className="font-mono text-sm inline-block text-left relative">
+                          <p> 2x + y = 10</p>
+                          <p>
+                            {" "}
+                            3x - <strong className="text-red-500">y</strong> =
+                            15
+                          </p>
+                          <div className="h-px w-full bg-cyan-500/50 my-2" />
+                          <p> 5x + 0 = 25 → x = 5</p>
+                        </div>
+                      </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Método da Adição (Eliminação)",
-                  icone: "➕",
-                  conteudo: (
+                  titulo: "Substituição (Tático Lento)",
+                  icone:<LuBrain />,
+                  conteudo:(
                     <div className="space-y-4">
-                      <p className="text-sm">
-                        O método <strong>mais rápido</strong> para quem tem
-                        prática. Consiste em somar as duas equações (como numa
-                        conta de padaria) para que uma variável "suma".
-                      </p>
-                      <div className="bg-violet-500/10 p-4 rounded-xl border border-violet-500/20 text-center shadow-inner">
-                        <p className="font-mono text-sm">2x + y = 10</p>
-                        <p className="font-mono text-sm">3x - y = 15</p>
-                        <hr className="border-violet-500/30 my-2" />
-                        <p className="font-mono text-sm font-bold text-violet-800 dark:text-violet-300">
-                          5x = 25 → x = 5
-                        </p>
-                      </div>
-                      <p className="text-sm mt-3">
-                        <em>Mas e se as letras não sumirem sozinhas?</em>
-                        <br />
-                        Você deve <strong>multiplicar</strong> a linha inteira
-                        de uma das equações por um número que você escolher, de
-                        modo que force uma letra a ficar oposta (+2y e -2y, por
-                        exemplo).
+                      <p className="text-muted-foreground leading-relaxed">
+                        É útil quando tem uma letra perfeitamente isolada. Ex:
+                        "A idade de João é a de Maria mais cinco (J = M + 5)".
+                        Neste caso, vá na segunda equação e onde tiver J, você
+                        desce um parênteses e insere (M + 5) lá dentro.
                       </p>
                     </div>
                   ),
@@ -547,57 +495,65 @@ export default function AulaEquacoes1Grau({
               ]}
             />
           </section>
-          <section id="quiz-modulo-4" className="mt-16">
-            <QuizInterativo
-              questoes={quizSistemas}
-              titulo="Quiz - Sistemas Lineares"
-              icone="🔥"
-              numero={4}
-              variant="violet"
-              onComplete={(score) => handleModuleComplete("modulo-4", score)}
-            />
-          </section>
+
+          <QuizInterativo
+            questoes={quizM4}
+            titulo="Fixação - Módulo 4"
+            numero={4}
+            variant="cyan"
+            icone="🎯"
+            onComplete={(score) => handleModuleComplete("modulo-4", score)}
+          />
         </div>
       </TabsContent>
 
       {/* ═══ MÓDULO 5 ═══ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
-        <ModuleBanner
-          numero={5}
-          titulo="Desafio Final"
-          descricao="Reúna tudo o que aprendeu em problemas desafiadores."
-          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
-        />
-        <div className="space-y-[50px]">
-          <section id="quiz-modulo-5" className="mt-16">
-            <QuizInterativo
-              questoes={quizFinal}
-              titulo="Desafio Final - Equações de 1º Grau"
-              icone="🏆"
-              numero={5}
-              variant="rose"
-              onComplete={(score) => handleModuleComplete("modulo-5", score)}
-            />
-          </section>
-          {completedModules.has("modulo-5") && (
-            <div className="mt-16 p-12 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[2rem] text-white text-center shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl" />
-              <div className="relative z-10 space-y-6">
-                <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center text-5xl mx-auto backdrop-blur-sm border border-white/30 animate-bounce">
-                  ⚖️
-                </div>
-                <h3 className="text-4xl font-black italic tracking-tighter">
-                  EQUAÇÕES DOMINADAS!
-                </h3>
-                <p className="text-xl opacity-90 max-w-xl mx-auto">
-                  A base de tudo: resolver equações é a ferramenta mais poderosa
-                  da Matemática.
-                </p>
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={5}
+            titulo="Desafio Supremo"
+            descricao="Reúna tudo o que aprendeu em problemas brutais e avançados de equações e frações."
+            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+          />
+
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
               </div>
+              <h3 className="text-2xl font-black">Mestre das Equações!</h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                Balanças calibradas. Sinais dominados. Você acabou de adquirir a
+                base mais crítica do núcleo duro da Matemática Cesgranrio.
+              </p>
             </div>
+          ) : (
+            <section id="quiz-modulo-5" className="mt-8">
+              <QuizInterativo
+                questoes={quizFinal}
+                titulo="Simulado Elite - Equações"
+                icone="🏆"
+                numero={5}
+                variant="slate"
+                onComplete={(score) => handleModuleComplete("modulo-5", score)}
+              />
+            </section>
           )}
         </div>
       </TabsContent>
     </AulaTemplate>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+

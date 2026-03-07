@@ -1646,7 +1646,7 @@ const CHALLENGE_POOL: ChallengeQuestion[] = [
 const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
   {
     icone: "📎",
-    titulo: "Anexo / Incluso",
+    title: "Anexo / Incluso",
     corFundo: "bg-blue-100 dark:bg-blue-900/30",
     descricao: (
       <>
@@ -1670,7 +1670,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
   },
   {
     icone: "⚖️",
-    titulo: "Bastante",
+    title: "Bastante",
     corFundo: "bg-orange-100 dark:bg-orange-900/30",
     descricao: (
       <>
@@ -1701,7 +1701,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
   },
   {
     icone: "½",
-    titulo: "Meio",
+    title: "Meio",
     corFundo: "bg-amber-100 dark:bg-amber-900/30",
     descricao: (
       <>
@@ -1736,7 +1736,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
   },
   {
     icone: "🚫",
-    titulo: "Menos",
+    title: "Menos",
     corFundo: "bg-red-100 dark:bg-red-900/30",
     descricao: (
       <>
@@ -1765,7 +1765,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
   },
   {
     icone: "⛔",
-    titulo: "É Proibido / É Bom / É Necessário",
+    title: "É Proibido / É Bom / É Necessário",
     corFundo: "bg-rose-100 dark:bg-rose-900/30",
     descricao: (
       <>
@@ -1800,7 +1800,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
   },
   {
     icone: "🙏",
-    titulo: "Obrigado(a)",
+    title: "Obrigado(a)",
     corFundo: "bg-pink-100 dark:bg-pink-900/30",
     descricao: (
       <>
@@ -1827,7 +1827,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
   },
   {
     icone: "👆",
-    titulo: "Mesmo / Próprio",
+    title: "Mesmo / Próprio",
     corFundo: "bg-violet-100 dark:bg-violet-900/30",
     descricao: (
       <>
@@ -1855,7 +1855,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
   },
   {
     icone: "🤝",
-    titulo: "Quite",
+    title: "Quite",
     corFundo: "bg-teal-100 dark:bg-teal-900/30",
     descricao: (
       <>
@@ -1879,7 +1879,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
   },
   {
     icone: "🚨",
-    titulo: "Alerta",
+    title: "Alerta",
     corFundo: "bg-yellow-100 dark:bg-yellow-900/30",
     descricao: (
       <>
@@ -1906,7 +1906,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
   },
   {
     icone: "⚖️",
-    titulo: "Haja Vista",
+    title: "Haja Vista",
     corFundo: "bg-sky-100 dark:bg-sky-900/30",
     descricao: (
       <>
@@ -1934,7 +1934,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
   },
   {
     icone: "🔗",
-    titulo: "Adjetivos Compostos",
+    title: "Adjetivos Compostos",
     corFundo: "bg-indigo-100 dark:bg-indigo-900/30",
     descricao: (
       <>
@@ -1970,7 +1970,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
   },
   {
     icone: "🎨",
-    titulo: "Cores Invariáveis",
+    title: "Cores Invariáveis",
     corFundo: "bg-fuchsia-100 dark:bg-fuchsia-900/30",
     descricao: (
       <>
@@ -2024,11 +2024,11 @@ export default function AulaConcordancia({
 }: AulaProps) {
   // State Logic
   const MODULE_DEFS = [
-    { id: "modulo-1", label: "Módulo 1", titulo: "Concordância Verbal" },
-    { id: "modulo-2", label: "Módulo 2", titulo: "Concordância Nominal" },
-    { id: "modulo-3", label: "Módulo 3", titulo: "Prática e Simulados" },
-    { id: "modulo-4", label: "Módulo 4", titulo: "Casos de Elite" },
-    { id: "modulo-5", label: "Módulo 5", titulo: "Laboratório Cesgranrio" },
+    { id: "modulo-1", label: "Módulo 1", title: "Concordância Verbal" },
+    { id: "modulo-2", label: "Módulo 2", title: "Concordância Nominal" },
+    { id: "modulo-3", label: "Módulo 3", title: "Prática e Simulados" },
+    { id: "modulo-4", label: "Módulo 4", title: "Casos de Elite" },
+    { id: "modulo-5", label: "Módulo 5", title: "Laboratório Cesgranrio" },
   ] as const;
 
   const [activeTab, setActiveTab] = useState("modulo-1");
@@ -2227,7 +2227,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "O Fundamento",
                     icone: "📜",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <div className="bg-card rounded-xl border border-border p-4 shadow-sm mb-3">
                           <p className="font-bold text-lg text-foreground mb-2">
@@ -2256,7 +2256,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Quem é o Chefe?",
                     icone: "👔",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Identificando o Núcleo do Sujeito
@@ -2295,7 +2295,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "A Armadilha da Ordem Inversa",
                     icone: "🔄",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Quando o Sujeito se Esconde
@@ -2359,7 +2359,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Conceito",
                     icone: "📖",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           O VTD exige um{" "}
@@ -2402,7 +2402,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Exemplos Petrobras",
                     icone: "🛢️",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Contexto do dia a dia na empresa:
@@ -2439,7 +2439,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Relação com o SE",
                     icone: "🔗",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <div className="bg-indigo-500/10 p-3 rounded-lg border border-indigo-500/20">
                           <p className="font-bold text-indigo-700 dark:text-indigo-400">
@@ -2476,7 +2476,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Macete de Prova",
                     icone: "🎯",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <div className="bg-yellow-500/10 p-3 rounded-lg border border-yellow-500/20 mb-2">
                           <p className="font-bold text-yellow-700 dark:text-yellow-400">
@@ -2519,7 +2519,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Conceito",
                     icone: "📖",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           O VTI exige um{" "}
@@ -2564,7 +2564,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Exemplos Petrobras",
                     icone: "🛢️",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           No contexto profissional:
@@ -2606,7 +2606,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Relação com o SE",
                     icone: "🔗",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <div className="bg-orange-500/10 p-3 rounded-lg border border-orange-500/20">
                           <p className="font-bold text-orange-700 dark:text-orange-400">
@@ -2646,7 +2646,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Pegadinha CESGRANRIO",
                     icone: "⚠️",
-                    conteudo: (
+                    content: (
                       <>
                         <div className="bg-yellow-500/10 p-3 rounded-lg border border-yellow-500/20 mb-2">
                           <p className="font-bold text-yellow-700 dark:text-yellow-400">
@@ -2696,7 +2696,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Conceito",
                     icone: "📖",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           O VI tem{" "}
@@ -2729,7 +2729,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Exemplos e Cuidados",
                     icone: "🛢️",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <ul className="space-y-2">
                           <li className="text-green-600">
@@ -2767,7 +2767,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Diferença para VTD/VTI",
                     icone: "⚖️",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Quadro comparativo rápido:
@@ -2819,7 +2819,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Conceito",
                     icone: "📖",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           O VL não expressa ação — ele{" "}
@@ -2863,7 +2863,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Na Concordância",
                     icone: "🔗",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           O VL{" "}
@@ -2909,7 +2909,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Macete de Prova",
                     icone: "🎯",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Quando o VL importa em provas:
@@ -2980,7 +2980,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Regra Geral",
                     icone: "\u{1F4CF}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <div className="bg-indigo-500/10 p-3 rounded-lg border border-indigo-500/20">
                           <p className="font-bold text-indigo-700 dark:text-indigo-400 text-center">
@@ -3011,7 +3011,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Sinônimos e Gradação",
                     icone: "🔄",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           Quando os núcleos são{" "}
@@ -3042,7 +3042,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Exerc\u00edcio R\u00e1pido",
                     icone: "\u270F\uFE0F",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Complete mentalmente:
@@ -3084,7 +3084,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Regra",
                     icone: "\u{1F4CF}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <div className="bg-purple-500/10 p-3 rounded-lg border border-purple-500/20">
                           <p className="font-bold text-purple-700 dark:text-purple-400 text-center">
@@ -3133,7 +3133,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Com OU",
                     icone: "\u{1F538}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Depende do sentido:
@@ -3165,7 +3165,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Com NEM",
                     icone: "\u{1F539}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           NEM = E + N&Atilde;O. Verbo vai ao{" "}
@@ -3217,7 +3217,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "A Regra de Ouro",
                     icone: "\u{1F4D6}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           No sentido de{" "}
@@ -3261,7 +3261,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Contamina\u00e7\u00e3o do Auxiliar",
                     icone: "\u2623\uFE0F",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <div className="bg-orange-500/10 p-3 rounded-lg border border-orange-500/20">
                           <p className="font-bold text-orange-700 dark:text-orange-400">
@@ -3308,7 +3308,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Quando HAVER \u00e9 pessoal",
                     icone: "\u{1F513}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           Em outros sentidos, HAVER{" "}
@@ -3354,7 +3354,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Regra",
                     icone: "\u{1F4D6}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           Indicando{" "}
@@ -3394,7 +3394,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "FAZER pessoal",
                     icone: "\u{1F513}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           Em outros sentidos, FAZER{" "}
@@ -3430,7 +3430,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "A Diferen\u00e7a Fatal",
                     icone: "\u26A0\uFE0F",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           <strong className="text-foreground">
@@ -3484,7 +3484,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Tamb\u00e9m pessoais",
                     icone: "\u{1F4CB}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Outros verbos que concordam:
@@ -3559,7 +3559,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "O Conceito",
                     icone: "\u{1F4D6}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <div className="bg-indigo-500/10 p-3 rounded-lg border border-indigo-500/20">
                           <p className="font-bold text-indigo-700 dark:text-indigo-400 text-center">
@@ -3596,7 +3596,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "O Macete da Passiva",
                     icone: "\u{1F4A1}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <div className="bg-yellow-500/10 p-3 rounded-lg border border-yellow-500/20">
                           <p className="font-bold text-yellow-700 dark:text-yellow-400">
@@ -3638,7 +3638,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Pegadinhas CESGRANRIO",
                     icone: "\u{1F3AF}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Armadilhas comuns na prova:
@@ -3684,7 +3684,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "O Conceito",
                     icone: "\u{1F4D6}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <div className="bg-orange-500/10 p-3 rounded-lg border border-orange-500/20">
                           <p className="font-bold text-orange-700 dark:text-orange-400 text-center">
@@ -3721,7 +3721,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "A Diferen\u00e7a Chave",
                     icone: "\u{1F511}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Resumo visual:
@@ -3771,7 +3771,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Estrat\u00e9gia de Prova",
                     icone: "\u{1F3AF}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Passo a passo para a quest&atilde;o:
@@ -3831,8 +3831,8 @@ export default function AulaConcordancia({
                 {
                   id: "video",
                   label: "Vídeo Aula",
-                  icon: LuPlayCircle,
-                  content: (
+                  icon:LuPlayCircle,
+                  content:(
                     <div className="w-full flex flex-col items-center py-6">
                       <div className="w-full max-w-3xl">
                         <VideoModal
@@ -3848,8 +3848,8 @@ export default function AulaConcordancia({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       moduloNome="Concordância Verbal"
                       tituloAula="Concordância"
@@ -3893,8 +3893,8 @@ export default function AulaConcordancia({
                 {
                   id: "visual",
                   label: "Macete Visual",
-                  icon: LuBrain,
-                  content: (
+                  icon:LuBrain,
+                  content:(
                     <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
                       <h3 className="text-xl font-bold text-foreground mb-4">
                         A Barreira da Preposição
@@ -3914,8 +3914,8 @@ export default function AulaConcordancia({
                 {
                   id: "audio",
                   label: "Áudio Resumo",
-                  icon: LuMusic,
-                  content: (
+                  icon:LuMusic,
+                  content:(
                     <div className="w-full flex justify-center py-4">
                       <div className="w-full max-w-md">
                         <MusicPlayerCard
@@ -4096,7 +4096,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "MENOS",
                     icone: "\u{1F534}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <div className="bg-red-500/10 p-3 rounded-lg border border-red-500/20">
                           <p className="font-bold text-red-700 dark:text-red-400 text-center">
@@ -4128,7 +4128,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "ALERTA e PSEUDO",
                     icone: "\u{1F6A8}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           <strong className="text-foreground">ALERTA</strong>{" "}
@@ -4168,7 +4168,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "MEIO: adv. ou adj.",
                     icone: "\u{1F50D}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Depende da fun&ccedil;&atilde;o:
@@ -4221,7 +4221,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "OBRIGADO/A",
                     icone: "\u{1F64F}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           Concorda com{" "}
@@ -4248,7 +4248,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "MESMO / PR&Oacute;PRIO / ANEXO / INCLUSO",
                     icone: "\u{1F4CE}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p>
                           S&atilde;o{" "}
@@ -4295,7 +4295,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Regra",
                     icone: "\u{1F4CF}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Depende do DETERMINANTE:
@@ -4340,7 +4340,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Macete Visual",
                     icone: "\u{1F9E0}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Viu o ARTIGO? Concordou!
@@ -4396,8 +4396,8 @@ export default function AulaConcordancia({
                 {
                   id: "video",
                   label: "Vídeo Aula",
-                  icon: LuPlayCircle,
-                  content: (
+                  icon:LuPlayCircle,
+                  content:(
                     <div className="w-full flex flex-col items-center py-6">
                       <div className="w-full max-w-3xl">
                         <VideoModal
@@ -4413,8 +4413,8 @@ export default function AulaConcordancia({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       moduloNome="Concordância Nominal"
                       tituloAula="Concordância"
@@ -4457,8 +4457,8 @@ export default function AulaConcordancia({
                 {
                   id: "visual",
                   label: "Macete Visual",
-                  icon: LuBrain,
-                  content: (
+                  icon:LuBrain,
+                  content:(
                     <div className="text-center p-8 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-2xl border border-emerald-500/10">
                       <h3 className="text-xl font-bold text-foreground mb-4">
                         Regra de Ouro (5s)
@@ -4485,8 +4485,8 @@ export default function AulaConcordancia({
                 {
                   id: "audio",
                   label: "Áudio Resumo",
-                  icon: LuMusic,
-                  content: (
+                  icon:LuMusic,
+                  content:(
                     <div className="w-full flex justify-center py-4">
                       <div className="w-full max-w-md">
                         <MusicPlayerCard
@@ -4565,7 +4565,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Passos 1 e 2",
                     icone: "\u{1F50E}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <div className="space-y-3">
                           <div className="bg-violet-500/10 p-3 rounded-lg border border-violet-500/20">
@@ -4595,7 +4595,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Passos 3 e 4",
                     icone: "\u{26A0}\u{FE0F}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <div className="space-y-3">
                           <div className="bg-orange-500/10 p-3 rounded-lg border border-orange-500/20">
@@ -4639,7 +4639,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Checklist R\u00e1pido",
                     icone: "\u{2705}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Antes de marcar a quest&atilde;o, verifique:
@@ -4681,7 +4681,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Top 5 Armadilhas",
                     icone: "\u{1F6A8}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <div className="space-y-2 text-sm">
                           <div className="flex gap-2">
@@ -4743,7 +4743,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "No Dia da Prova",
                     icone: "\u{1F4DD}",
-                    conteudo: (
+                    conteudo:(
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Estrat&eacute;gias finais:
@@ -4888,8 +4888,8 @@ export default function AulaConcordancia({
                 {
                   id: "video",
                   label: "Vídeo Aula",
-                  icon: LuPlayCircle,
-                  content: (
+                  icon:LuPlayCircle,
+                  content:(
                     <div className="w-full flex flex-col items-center py-6">
                       <div className="w-full max-w-3xl">
                         <VideoModal
@@ -4905,8 +4905,8 @@ export default function AulaConcordancia({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       moduloNome="Prática e Simulados"
                       tituloAula="Concordância"
@@ -4949,8 +4949,8 @@ export default function AulaConcordancia({
                 {
                   id: "visual",
                   label: "Macete Visual",
-                  icon: LuBrain,
-                  content: (
+                  icon:LuBrain,
+                  content:(
                     <div className="text-center p-8 bg-gradient-to-br from-violet-500/5 to-purple-500/5 rounded-2xl border border-violet-500/10">
                       <h3 className="text-xl font-bold text-foreground mb-4">
                         O Radar da Concordância
@@ -4968,8 +4968,8 @@ export default function AulaConcordancia({
                 {
                   id: "audio",
                   label: "Áudio Resumo",
-                  icon: LuMusic,
-                  content: (
+                  icon:LuMusic,
+                  content:(
                     <div className="w-full flex justify-center py-4">
                       <div className="w-full max-w-md">
                         <MusicPlayerCard
@@ -5114,8 +5114,8 @@ export default function AulaConcordancia({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       moduloNome="Casos de Elite"
                       tituloAula="Concordância"
@@ -5221,8 +5221,8 @@ export default function AulaConcordancia({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       moduloNome="Laboratório Cesgranrio"
                       tituloAula="Concordância"
@@ -5301,3 +5301,15 @@ export default function AulaConcordancia({
     </AulaTemplate>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+

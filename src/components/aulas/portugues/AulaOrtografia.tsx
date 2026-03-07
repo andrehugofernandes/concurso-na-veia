@@ -44,13 +44,13 @@ const MODULE_DEFS = [
   {
     id: "modulo-1",
     label: "Módulo 1",
-    titulo: "Encontros Vocálicos e Sílabas",
+    title: "Encontros Vocálicos e Sílabas",
   },
-  { id: "modulo-2", label: "Módulo 2", titulo: "Fundamentos da Acentuação" },
-  { id: "modulo-3", label: "Módulo 3", titulo: "O Novo Acordo" },
-  { id: "modulo-4", label: "Módulo 4", titulo: "O Temido Uso do Hífen" },
-  { id: "modulo-5", label: "Módulo 5", titulo: "Expressões Problemáticas" },
-  { id: "modulo-6", label: "Módulo 6", titulo: "Laboratório & Revisão" },
+  { id: "modulo-2", label: "Módulo 2", title: "Fundamentos da Acentuação" },
+  { id: "modulo-3", label: "Módulo 3", title: "O Novo Acordo" },
+  { id: "modulo-4", label: "Módulo 4", title: "O Temido Uso do Hífen" },
+  { id: "modulo-5", label: "Módulo 5", title: "Expressões Problemáticas" },
+  { id: "modulo-6", label: "Módulo 6", title: "Laboratório & Revisão" },
 ] as const;
 
 // ============================================================================
@@ -843,20 +843,20 @@ export default function AulaOrtografia({
               {
                 titulo: "1. Ditongo",
                 icone: "👥",
-                conteudo: (
+                conteudo:(
                   <CardCarousel
                     titulo=""
                     itemsPerView={2}
                     cards={[
                       {
                         icone: <LuZap />,
-                        titulo: "Conceito",
+                        title: "Conceito",
                         descricao:
                           "Vogal + Semivogal (ou vice-versa) na mesma sílaba. Ex: PAI, CAI-XA.",
                       },
                       {
                         icone: <LuCheck className="text-emerald-500" />,
-                        titulo: "Crescente vs Decrescente",
+                        title: "Crescente vs Decrescente",
                         descricao:
                           "Crescente: SV + V (Ex: Gló-ria). Decrescente: V + SV (Ex: Le-ite).",
                         corFundo: "bg-emerald-500/10",
@@ -868,7 +868,7 @@ export default function AulaOrtografia({
               {
                 titulo: "2. Tritongo",
                 icone: "�",
-                conteudo: (
+                conteudo:(
                   <div className="p-4 bg-muted/50 rounded-xl border border-border flex items-center gap-4">
                     <div className="p-3 bg-amber-500/20 text-amber-600 rounded-lg">
                       <LuZap size={24} />
@@ -885,7 +885,7 @@ export default function AulaOrtografia({
               {
                 titulo: "3. Hiato",
                 icone: "↔️",
-                conteudo: (
+                conteudo:(
                   <AlertBox tipo="warning" titulo="Não se engane!">
                     No hiato, as vogais estão juntas na palavra, mas pertencem a
                     sílabas DIFERENTES.
@@ -910,8 +910,8 @@ export default function AulaOrtografia({
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -927,8 +927,8 @@ export default function AulaOrtografia({
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="Encontros Vocálicos"
                     tituloAula="Ortografia e Acentuação"
@@ -962,8 +962,8 @@ export default function AulaOrtografia({
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-2xl border border-blue-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       O Segredo da Sílaba
@@ -979,8 +979,8 @@ export default function AulaOrtografia({
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -1066,20 +1066,20 @@ Ditongo é junto, hiato é separação!
               {
                 titulo: "1. Proparoxítonas (A Regra Imbatível)",
                 icone: "👑",
-                conteudo: (
+                conteudo:(
                   <CardCarousel
                     titulo=""
                     itemsPerView={2}
                     cards={[
                       {
                         icone: <LuBookOpen />,
-                        titulo: "Conceito",
+                        title: "Conceito",
                         descricao:
                           "Sílaba forte na antepenúltima. Esta é a regra mais fácil de todas, pois não possui exceções.",
                       },
                       {
                         icone: <LuZap className="text-emerald-500" />,
-                        titulo: "A Regra",
+                        title: "A Regra",
                         descricao: (
                           <div className="text-center font-bold text-emerald-700 dark:text-emerald-400 mt-2">
                             TODAS SÃO ACENTUADAS
@@ -1089,7 +1089,7 @@ Ditongo é junto, hiato é separação!
                       },
                       {
                         icone: <LuCheck className="text-blue-500" />,
-                        titulo: "Exemplos",
+                        title: "Exemplos",
                         descricao:
                           "MÁ-gi-co, RÚ-sti-co, ÍN-te-rim, PÉS-si-mo, Ár-vo-re.",
                         corFundo: "bg-blue-500/10",
@@ -1101,27 +1101,27 @@ Ditongo é junto, hiato é separação!
               {
                 titulo: "2. Paroxítonas (A Regra Longa)",
                 icone: "📜",
-                conteudo: (
+                conteudo:(
                   <CardCarousel
                     titulo=""
                     itemsPerView={2}
                     cards={[
                       {
                         icone: <LuBookOpen />,
-                        titulo: "Conceito",
+                        title: "Conceito",
                         descricao:
                           "Sílaba forte na penúltima. A maioria das palavras em português são paroxítonas. Por isso, a regra geral é NÃO acentuar, exceto terminações específicas.",
                       },
                       {
                         icone: <LuTriangleAlert className="text-amber-500" />,
-                        titulo: "A Regra Clássica",
+                        title: "A Regra Clássica",
                         descricao:
                           "Recebem acento as terminadas em L, N, R, X, PS (TúneL, PóleN, RevólveR, DúreX, FórcePS) e I(s), U(s), UM(uns), Ã(s), ÃO(s).",
                         corFundo: "bg-amber-500/10",
                       },
                       {
                         icone: <LuZap className="text-emerald-500" />,
-                        titulo: "A Regra de Ouro (Ditongos)",
+                        title: "A Regra de Ouro (Ditongos)",
                         descricao: (
                           <div className="text-center font-bold text-emerald-700 dark:text-emerald-400 mt-2">
                             TODAS as terminadas em DITONGO ORAL ganham acento
@@ -1131,7 +1131,7 @@ Ditongo é junto, hiato é separação!
                       },
                       {
                         icone: <LuCheck className="text-blue-500" />,
-                        titulo: "Exemplos (Ditongos)",
+                        title: "Exemplos (Ditongos)",
                         descricao: "Históri-A, Águ-A, Cárie-S, Vácu-O.",
                         corFundo: "bg-blue-500/10",
                       },
@@ -1142,26 +1142,26 @@ Ditongo é junto, hiato é separação!
               {
                 titulo: "3. Oxítonas & Monossílabos Tônicos",
                 icone: "🔚",
-                conteudo: (
+                conteudo:(
                   <CardCarousel
                     titulo=""
                     itemsPerView={2}
                     cards={[
                       {
                         icone: <LuBookOpen />,
-                        titulo: "Conceito: Oxítonas",
+                        title: "Conceito: Oxítonas",
                         descricao:
                           "A última sílaba é a forte. Acentuam-se em A, E, O e a nasal EM/ENS.",
                       },
                       {
                         icone: <LuCheck className="text-emerald-500" />,
-                        titulo: "Exemplos: Oxítonas",
+                        title: "Exemplos: Oxítonas",
                         descricao: "CafÉ, PaletÓ, ArmazÉM, ParabÉNS.",
                         corFundo: "bg-emerald-500/10",
                       },
                       {
                         icone: <LuZap className="text-amber-500" />,
-                        titulo: "Monossílabos Tônicos",
+                        title: "Monossílabos Tônicos",
                         descricao:
                           "Acentuam-se as mesmas das oxítonas, EXCETO a terminação EM/ENS. Ex: MÁ(s), PÉ(s), PÓ(s).",
                         corFundo: "bg-amber-500/10",
@@ -1173,34 +1173,34 @@ Ditongo é junto, hiato é separação!
               {
                 titulo: "4. A Regra do Hiato",
                 icone: "🪓",
-                conteudo: (
+                conteudo:(
                   <CardCarousel
                     titulo=""
                     itemsPerView={2}
                     cards={[
                       {
                         icone: <LuBookOpen />,
-                        titulo: "Conceituação",
+                        title: "Conceituação",
                         descricao:
                           'O hiato ocorre quando duas vogais ficam em sílabas vizinhas na divisão silábica. Sempre acentue as vogais "I" e "U" dos hiatos se forem tônicas (fortes) e ficarem SOZINHAS na sílaba (ou acompanhadas de "S").',
                       },
                       {
                         icone: <LuTriangleAlert className="text-amber-500" />,
-                        titulo: "Exceções Clássicas",
+                        title: "Exceções Clássicas",
                         descricao:
                           'Não recebem acento se forem seguidas de "NH", e nem se formarem um ditongo decrescente na sílaba anterior (Nova Regra).',
                         corFundo: "bg-amber-500/10",
                       },
                       {
                         icone: <LuCheck className="text-emerald-500" />,
-                        titulo: "Exemplos COM Acento",
+                        title: "Exemplos COM Acento",
                         descricao:
                           "Sa-ú-de (sozinha), E-go-ís-ta (com S), Ba-ú.",
                         corFundo: "bg-emerald-500/10",
                       },
                       {
                         icone: <LuShield className="text-red-500" />,
-                        titulo: "Exemplos SEM Acento",
+                        title: "Exemplos SEM Acento",
                         descricao:
                           "Ra-i-nha (tem NH logo depois), Ju-iz (acompanhada por Z e não S).",
                         corFundo: "bg-red-500/10",
@@ -1225,8 +1225,8 @@ Ditongo é junto, hiato é separação!
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -1242,8 +1242,8 @@ Ditongo é junto, hiato é separação!
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="Fundamentos da Acentuação"
                     tituloAula="Ortografia e Acentuação"
@@ -1277,8 +1277,8 @@ Ditongo é junto, hiato é separação!
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-2xl border border-emerald-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       Rouxinol sem H
@@ -1294,8 +1294,8 @@ Ditongo é junto, hiato é separação!
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -1489,8 +1489,8 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -1506,8 +1506,8 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="O Novo Acordo"
                     tituloAula="Ortografia e Acentuação"
@@ -1541,8 +1541,8 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-2xl border border-blue-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       Os Sobreviventes do Acordo
@@ -1558,8 +1558,8 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -1797,8 +1797,8 @@ Mas na prova a banca te espera!
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -1814,8 +1814,8 @@ Mas na prova a banca te espera!
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="O Temido Uso do Hífen"
                     tituloAula="Ortografia e Acentuação"
@@ -1849,8 +1849,8 @@ Mas na prova a banca te espera!
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       O Ímã da Concordância
@@ -1866,8 +1866,8 @@ Mas na prova a banca te espera!
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -1995,7 +1995,7 @@ Iguais se repelem, diferentes se amam
             titulo="Principais Confusões"
             cards={[
               {
-                titulo: "MAU vs MAL",
+                title: "MAU vs MAL",
                 descricao: (
                   <div className="space-y-4 text-sm text-center mt-4">
                     <p>
@@ -2009,7 +2009,7 @@ Iguais se repelem, diferentes se amam
                 icone: <LuShield />,
               },
               {
-                titulo: "ONDE vs AONDE",
+                title: "ONDE vs AONDE",
                 descricao: (
                   <div className="space-y-4 text-sm text-center mt-4">
                     <p>
@@ -2038,8 +2038,8 @@ Iguais se repelem, diferentes se amam
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -2055,8 +2055,8 @@ Iguais se repelem, diferentes se amam
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="Problemas Frequentes"
                     tituloAula="Ortografia e Acentuação"
@@ -2090,8 +2090,8 @@ Iguais se repelem, diferentes se amam
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-amber-500/5 to-orange-500/5 rounded-2xl border border-amber-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       Mal do Bem
@@ -2107,8 +2107,8 @@ Iguais se repelem, diferentes se amam
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -2220,3 +2220,15 @@ Por que separado? Porque eu estudei!
 }
 
 // EOF
+
+
+
+
+
+
+
+
+
+
+
+

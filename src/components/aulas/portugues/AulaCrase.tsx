@@ -473,11 +473,11 @@ export default function AulaCrase({
   onUpdateProgress,
 }: AulaProps) {
   const MODULE_DEFS = [
-    { id: "modulo-1", label: "Módulo 1", titulo: "Regra Geral" },
-    { id: "modulo-2", label: "Módulo 2", titulo: "Proibições" },
-    { id: "modulo-3", label: "Módulo 3", titulo: "Facultativos" },
-    { id: "modulo-4", label: "Módulo 4", titulo: "Casos Especiais" },
-    { id: "modulo-5", label: "Módulo 5", titulo: "Simulado Final" },
+    { id: "modulo-1", label: "Módulo 1", title: "Regra Geral" },
+    { id: "modulo-2", label: "Módulo 2", title: "Proibições" },
+    { id: "modulo-3", label: "Módulo 3", title: "Facultativos" },
+    { id: "modulo-4", label: "Módulo 4", title: "Casos Especiais" },
+    { id: "modulo-5", label: "Módulo 5", title: "Simulado Final" },
   ] as const;
 
   const [activeTab, setActiveTab] = useState("modulo-1");
@@ -820,8 +820,8 @@ export default function AulaCrase({
                 {
                   id: "video",
                   label: "Vídeo Aula",
-                  icon: LuPlay,
-                  content: (
+                  icon:LuPlay,
+                  content:(
                     <div className="w-full flex flex-col items-center py-6">
                       <div className="w-full max-w-3xl">
                         <VideoModal
@@ -837,8 +837,8 @@ export default function AulaCrase({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       tituloAula="Crase"
                       materia="Língua Portuguesa"
@@ -872,8 +872,8 @@ export default function AulaCrase({
                 {
                   id: "visual",
                   label: "Macete Visual",
-                  icon: LuImage,
-                  content: (
+                  icon:LuImage,
+                  content:(
                     <div className="text-center p-8 space-y-6">
                       <h3 className="text-xl font-bold text-foreground">
                         O Macete do "AO"
@@ -916,8 +916,8 @@ export default function AulaCrase({
                 {
                   id: "audio",
                   label: "Áudio Resumo",
-                  icon: LuVolume2,
-                  content: (
+                  icon:LuVolume2,
+                  content:(
                     <div className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-rose-500/10 to-orange-500/10 rounded-xl border border-rose-500/20">
                       <div className="w-full max-w-md">
                         <MusicPlayerCard
@@ -1369,19 +1369,19 @@ export default function AulaCrase({
               cards={[
                 {
                   icone: <LuBuilding className="text-xl text-teal-600" />,
-                  titulo: "Palavra CASA",
+                  title: "Palavra CASA",
                   descricao:
                     "LAR próprio = sem crase (Fui a casa). Casa ESPECIFICADA = com crase (Fui à casa da vovó).",
                 },
                 {
                   icone: <LuAnchor className="text-xl text-blue-600" />,
-                  titulo: "Palavra TERRA",
+                  title: "Palavra TERRA",
                   descricao:
                     "Oposto de mar/bordo = sem crase (Os marinheiros desceram a terra). Planeta ou especificada = com crase (Voltamos à Terra).",
                 },
                 {
                   icone: <LuRuler className="text-xl text-purple-600" />,
-                  titulo: "Palavra DISTÂNCIA",
+                  title: "Palavra DISTÂNCIA",
                   descricao:
                     "Distância indefinida = sem crase (Ficou a distância). Distância EXATA = com crase (Ficou à distância de 20 metros).",
                 },
@@ -1666,8 +1666,8 @@ export default function AulaCrase({
                 {
                   id: "resumo",
                   label: "Mapa Mental",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       moduloNome="Simulado Final"
                       tituloAula="Crase"
@@ -1701,8 +1701,8 @@ export default function AulaCrase({
                 {
                   id: "audio",
                   label: "Áudio Resumo",
-                  icon: LuMusic,
-                  content: (
+                  icon:LuMusic,
+                  content:(
                     <MusicPlayerCard
                       audioUrl="#"
                       titulo="Fundamentos da Crase"
@@ -1756,3 +1756,15 @@ export default function AulaCrase({
     </AulaTemplate>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+

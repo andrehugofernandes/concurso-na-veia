@@ -57,16 +57,16 @@ export default function AulaProbabilidade({
   const completedModules = new Set<string>([]);
 
   const MODULE_DEFS = [
-    { id: "modulo-1", label: "Módulo 1", titulo: "Fundamentos" },
-    { id: "modulo-2", label: "Módulo 2", titulo: "Lei de Laplace" },
-    { id: "modulo-3", label: "Módulo 3", titulo: "União e Interseção" },
-    { id: "modulo-4", label: "Módulo 4", titulo: "Probabilidades Sucessivas" },
-    { id: "modulo-5", label: "Módulo 5", titulo: "Probabilidade Binomial" },
-    { id: "modulo-6", label: "Módulo 6", titulo: "Poisson e Normal" },
-    { id: "modulo-7", label: "Módulo 7", titulo: "Técnicas de Resolução" },
-    { id: "modulo-8", label: "Módulo 8", titulo: "Glossário do Mestre" },
-    { id: "modulo-9", label: "Módulo 9", titulo: "Engenharia de Riscos" },
-    { id: "modulo-10", label: "Módulo 10", titulo: "Desafio Final" },
+    { id: "modulo-1", label: "Módulo 1", title: "Fundamentos" },
+    { id: "modulo-2", label: "Módulo 2", title: "Lei de Laplace" },
+    { id: "modulo-3", label: "Módulo 3", title: "União e Interseção" },
+    { id: "modulo-4", label: "Módulo 4", title: "Probabilidades Sucessivas" },
+    { id: "modulo-5", label: "Módulo 5", title: "Probabilidade Binomial" },
+    { id: "modulo-6", label: "Módulo 6", title: "Poisson e Normal" },
+    { id: "modulo-7", label: "Módulo 7", title: "Técnicas de Resolução" },
+    { id: "modulo-8", label: "Módulo 8", title: "Glossário do Mestre" },
+    { id: "modulo-9", label: "Módulo 9", title: "Engenharia de Riscos" },
+    { id: "modulo-10", label: "Módulo 10", title: "Desafio Final" },
   ];
 
   return (
@@ -138,7 +138,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "1. Experimento Aleatório",
                 icone: "🎲",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <div className="space-y-2">
                       <h5 className="text-indigo-400 font-bold text-xs uppercase tracking-widest">
@@ -184,7 +184,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "2. Espaço Amostral (S)",
                 icone: "🌌",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <div className="space-y-2">
                       <h5 className="text-indigo-400 font-bold text-xs uppercase tracking-widest">
@@ -219,7 +219,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "3. O Evento (E)",
                 icone: "🎯",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <div className="space-y-2">
                       <h5 className="text-indigo-400 font-bold text-xs uppercase tracking-widest">
@@ -264,7 +264,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "Eventos Independentes",
                 icone: "⚖️",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/70 leading-relaxed">
                       Dois eventos são independentes quando a ocorrência de um{" "}
@@ -289,7 +289,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "Complementar",
                 icone: "🌓",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/70 leading-relaxed">
                       O evento complementar (A') é o "não A". É tudo o que falta
@@ -325,7 +325,7 @@ export default function AulaProbabilidade({
               cards={[
                 {
                   icone: <LuBookOpen />,
-                  titulo: "Nível 0: Base",
+                  title: "Nível 0: Base",
                   descricao: (
                     <FlipCard
                       frente={
@@ -370,8 +370,8 @@ export default function AulaProbabilidade({
                   ),
                 },
                 {
-                  icone: <Target />,
-                  titulo: "Nível 1: Laplace",
+                  icone: Target,
+                  title: "Nível 1: Laplace",
                   descricao: (
                     <FlipCard
                       frente={
@@ -410,7 +410,7 @@ export default function AulaProbabilidade({
                 },
                 {
                   icone: <LuFileSearch />,
-                  titulo: "Nível 2: Bayes",
+                  title: "Nível 2: Bayes",
                   descricao: (
                     <FlipCard
                       frente={
@@ -450,7 +450,7 @@ export default function AulaProbabilidade({
                 },
                 {
                   icone: <LuZap />,
-                  titulo: "Nível 3: Binomial",
+                  title: "Nível 3: Binomial",
                   descricao: (
                     <FlipCard
                       frente={
@@ -549,7 +549,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "A Escala Digital",
                 icone: "⚖️",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-6">
                     <p className="text-sm text-slate-300">
                       A probabilidade é um percentual disfarçado de fração. Ela
@@ -577,7 +577,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "Case: Falha em Válvulas",
                 icone: "🔧",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <h5 className="text-blue-400 font-bold text-xs uppercase">
                       Cenário Petrobras (Simulado Cesgranrio)
@@ -741,7 +741,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "Eventos Disjuntos",
                 icone: "🚫",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-sm text-slate-300">
                       Quando a interseção é <strong>Vazia (Zero)</strong>.
@@ -760,7 +760,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "A União Tripla (A ∪ B ∪ C)",
                 icone: "�",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-sm text-slate-300">
                       O "Cão de Guarda" das provas de Engenharia. A fórmula
@@ -786,7 +786,7 @@ export default function AulaProbabilidade({
               {
                 titulo: "O Macete de Venn",
                 icone: "�",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <div className="grid grid-cols-2 gap-4 text-center">
                       <div className="p-3 bg-blue-500/5 border border-blue-500/10 rounded-xl">
@@ -899,7 +899,9 @@ export default function AulaProbabilidade({
                 <h6 className="text-[10px] text-emerald-400 font-black uppercase tracking-widest bg-emerald-500/10 px-3 py-1 rounded-full">
                   Notação de Bayes
                 </h6>
-                <span className="text-7xl font-serif text-white italic">P(A|B)</span>
+                <span className="text-7xl font-serif text-white italic">
+                  P(A|B)
+                </span>
                 <div className="h-px w-20 bg-white/10" />
                 <p className="text-slate-500 text-[10px] text-center italic max-w-[120px]">
                   "Chance de A ocorrer, sabendo que B já é fato."
@@ -910,16 +912,20 @@ export default function AulaProbabilidade({
                   Redução do Espaço Amostral
                 </h5>
                 <p className="text-slate-400 leading-relaxed">
-                  Esqueça o universo total <strong>S</strong>. Em P(A|B), o seu novo mundo é apenas <strong>B</strong>. Você só conta os elementos de A que estão dentro desse novo território.
+                  Esqueça o universo total <strong>S</strong>. Em P(A|B), o seu
+                  novo mundo é apenas <strong>B</strong>. Você só conta os
+                  elementos de A que estão dentro desse novo território.
                 </p>
                 <div className="p-6 bg-emerald-500/5 rounded-2xl border border-emerald-500/20 shadow-inner">
-                   <p className="text-white font-mono text-xl flex items-center gap-3">
-                      P(A|B) = 
-                      <span className="flex flex-col items-center">
-                        <span className="border-b border-white/20 pb-1">P(A ∩ B)</span>
-                        <span className="pt-1 text-emerald-400">P(B)</span>
+                  <p className="text-white font-mono text-xl flex items-center gap-3">
+                    P(A|B) =
+                    <span className="flex flex-col items-center">
+                      <span className="border-b border-white/20 pb-1">
+                        P(A ∩ B)
                       </span>
-                   </p>
+                      <span className="pt-1 text-emerald-400">P(B)</span>
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>
@@ -933,25 +939,27 @@ export default function AulaProbabilidade({
               {
                 titulo: "A Árvore de Eventos",
                 icone: "🌳",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-sm text-slate-300">
-                      Ideal para eventos <strong>Sucessivos</strong>. Multiplique as chances ao longo dos galhos e some os resultados finais.
+                      Ideal para eventos <strong>Sucessivos</strong>.
+                      Multiplique as chances ao longo dos galhos e some os
+                      resultados finais.
                     </p>
                     <div className="p-5 bg-slate-800 dark:bg-slate-900 border border-border/20 dark:border-white/5 rounded-2xl flex flex-col gap-2 font-mono text-[11px]">
-                       <div className="flex items-center gap-2 text-emerald-400">
-                          <span>[Início]</span>
-                          <span className="text-slate-600">--0.7--{`>`}</span>
-                          <span>[OK]</span>
-                       </div>
-                       <div className="flex items-center gap-2 text-rose-400">
-                          <span>[Início]</span>
-                          <span className="text-slate-600">--0.3--{`>`}</span>
-                          <span>[Falha]</span>
-                       </div>
+                      <div className="flex items-center gap-2 text-emerald-400">
+                        <span>[Início]</span>
+                        <span className="text-slate-600">--0.7--{`>`}</span>
+                        <span>[OK]</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-rose-400">
+                        <span>[Início]</span>
+                        <span className="text-slate-600">--0.3--{`>`}</span>
+                        <span>[Falha]</span>
+                      </div>
                     </div>
                     <AlertBox tipo="info" titulo="Macete da Árvore">
-                      Galho horizontal = Multiplica. <br/>
+                      Galho horizontal = Multiplica. <br />
                       Final de galhos distintos = Soma.
                     </AlertBox>
                   </div>
@@ -960,17 +968,24 @@ export default function AulaProbabilidade({
               {
                 titulo: "Inversão de Bayes",
                 icone: "🧬",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-sm text-slate-300">
-                      O "Raciocínio Forense": Você já viu o efeito e quer saber qual foi a causa mais provável.
+                      O "Raciocínio Forense": Você já viu o efeito e quer saber
+                      qual foi a causa mais provável.
                     </p>
                     <div className="bg-slate-950 p-6 rounded-2xl border border-white/10 text-center">
-                       <p className="text-[10px] text-emerald-500 uppercase font-black mb-3">Fórmula Master</p>
-                       <p className="text-white font-mono text-xs">P(C|E) = [P(E|C)·P(C)] / P(E Total)</p>
+                      <p className="text-[10px] text-emerald-500 uppercase font-black mb-3">
+                        Fórmula Master
+                      </p>
+                      <p className="text-white font-mono text-xs">
+                        P(C|E) = [P(E|C)·P(C)] / P(E Total)
+                      </p>
                     </div>
                     <AlertBox tipo="warning" titulo="Exemplo Petrobras">
-                      Se uma sonda detecta gás (Efeito), qual a chance de realmente haver gás (Causa) considerando a precisão do equipamento?
+                      Se uma sonda detecta gás (Efeito), qual a chance de
+                      realmente haver gás (Causa) considerando a precisão do
+                      equipamento?
                     </AlertBox>
                   </div>
                 ),
@@ -986,16 +1001,18 @@ export default function AulaProbabilidade({
             questoes={[
               {
                 id: 401,
-                pergunta: "Uma máquina tem duas bombas independentes. A chance da bomba 1 falhar é 10%. Se a bomba 1 falhou, a chance da bomba 2 falhar (devido ao estresse) sobe para 30%. Qual a probabilidade de AMBAS falharem?",
+                pergunta:
+                  "Uma máquina tem duas bombas independentes. A chance da bomba 1 falhar é 10%. Se a bomba 1 falhou, a chance da bomba 2 falhar (devido ao estresse) sobe para 30%. Qual a probabilidade de AMBAS falharem?",
                 opcoes: [
                   { label: "A", valor: "3%" },
                   { label: "B", valor: "1%" },
                   { label: "C", valor: "30%" },
-                  { label: "D", valor: "40%" }
+                  { label: "D", valor: "40%" },
                 ],
                 correta: "3%",
-                explicacao: "P(B1 ∩ B2) = P(B1) * P(B2 | B1). Logo, 0,10 * 0,30 = 0,03 ou 3%. Como um evento influenciou o outro, multiplicamos a chance inicial pela condicional."
-              }
+                explicacao:
+                  "P(B1 ∩ B2) = P(B1) * P(B2 | B1). Logo, 0,10 * 0,30 = 0,03 ou 3%. Como um evento influenciou o outro, multiplicamos a chance inicial pela condicional.",
+              },
             ]}
           />
         </section>
@@ -1021,8 +1038,8 @@ export default function AulaProbabilidade({
 
           <div className="space-y-10 text-slate-700 dark:text-slate-300">
             <div className="flex flex-col md:flex-row gap-8 items-start">
-              <div className="shrink-0 w-16 h-16 bg-purple-600/10 rounded-2xl flex items-center justify-center">
-                <LuZap className="w-8 h-8 text-purple-600" />
+              <div className="shrink-0 w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center">
+                <LuZap className="w-8 h-8 text-blue-600" />
               </div>
               <div className="space-y-4">
                 <h5 className="text-xl font-bold">
@@ -1092,13 +1109,17 @@ export default function AulaProbabilidade({
               {
                 titulo: "Quando usar?",
                 icone: "🏗️",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-sm text-foreground/70 leading-relaxed">
-                      Sempre que tivermos <strong>Retiradas com Reposição</strong> ou processos onde a chance de sucesso é constante.
+                      Sempre que tivermos{" "}
+                      <strong>Retiradas com Reposição</strong> ou processos onde
+                      a chance de sucesso é constante.
                     </p>
                     <AlertBox tipo="info" titulo="Cenário de Lote">
-                      Se uma máquina produz 5% de peças defeituosas, qual a chance de em 10 peças escolhidas ao acaso, EXATAMENTE 2 serem ruins?
+                      Se uma máquina produz 5% de peças defeituosas, qual a
+                      chance de em 10 peças escolhidas ao acaso, EXATAMENTE 2
+                      serem ruins?
                     </AlertBox>
                     <p className="text-[10px] italic text-slate-500">
                       Aqui n=10, k=2, p=0.05 e q=0.95.
@@ -1109,15 +1130,17 @@ export default function AulaProbabilidade({
               {
                 titulo: "Por que a Combinação?",
                 icone: "🔢",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-sm text-slate-300">
-                      O <strong>C(n,k)</strong> serve para contabilizar todas as ordens possíveis onde os sucessos podem aparecer.
+                      O <strong>C(n,k)</strong> serve para contabilizar todas as
+                      ordens possíveis onde os sucessos podem aparecer.
                     </p>
                     <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-                       <p className="text-xs italic text-emerald-200">
-                          "Não importa se a falha ocorreu na primeira ou na última peça; importa que ocorreram k falhas."
-                       </p>
+                      <p className="text-xs italic text-emerald-200">
+                        "Não importa se a falha ocorreu na primeira ou na última
+                        peça; importa que ocorreram k falhas."
+                      </p>
                     </div>
                   </div>
                 ),
@@ -1133,16 +1156,18 @@ export default function AulaProbabilidade({
             questoes={[
               {
                 id: 501,
-                pergunta: "Em uma perfuração, a chance de encontrar rocha rígida é de 20%. Se perfurarmos 3 poços independentes, qual a probabilidade de encontrarmos rocha em EXATAMENTE 1 deles?",
+                pergunta:
+                  "Em uma perfuração, a chance de encontrar rocha rígida é de 20%. Se perfurarmos 3 poços independentes, qual a probabilidade de encontrarmos rocha em EXATAMENTE 1 deles?",
                 opcoes: [
                   { label: "A", valor: "48%" },
                   { label: "B", valor: "38,4%" },
                   { label: "C", valor: "20%" },
-                  { label: "D", valor: "12,8%" }
+                  { label: "D", valor: "12,8%" },
                 ],
                 correta: "38,4%",
-                explicacao: "n=3, k=1, p=0,2, q=0,8. \nP(1) = C(3,1) * 0,2^1 * 0,8^2 = 3 * 0,2 * 0,64 = 0,384 ou 38,4%."
-              }
+                explicacao:
+                  "n=3, k=1, p=0,2, q=0,8. \nP(1) = C(3,1) * 0,2^1 * 0,8^2 = 3 * 0,2 * 0,64 = 0,384 ou 38,4%.",
+              },
             ]}
           />
         </section>
@@ -1172,15 +1197,19 @@ export default function AulaProbabilidade({
                 <LuZap className="w-8 h-8 text-cyan-400" />
               </div>
               <div className="space-y-4">
-                 <h4 className="text-2xl font-black text-white italic tracking-tight">Poisson: O Raro no Tempo</h4>
-                 <p className="text-slate-400 text-sm leading-relaxed">
-                   Calcula ocorrências em um intervalo contínuo (tempo/espaço). <br/>
-                   Ex: "Chance de ocorrer 3 vazamentos em um mês".
-                 </p>
+                <h4 className="text-2xl font-black text-white italic tracking-tight">
+                  Poisson: O Raro no Tempo
+                </h4>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Calcula ocorrências em um intervalo contínuo (tempo/espaço).{" "}
+                  <br />
+                  Ex: "Chance de ocorrer 3 vazamentos em um mês".
+                </p>
               </div>
               <div className="bg-black/60 p-8 rounded-[2rem] font-mono text-center border border-border/20 dark:border-white/5">
                 <p className="text-cyan-400 text-2xl mb-4 italic">
-                  P(k) = (e<sup className="text-cyan-600">-λ</sup> · λ<sup>k</sup>) / k!
+                  P(k) = (e<sup className="text-cyan-600">-λ</sup> · λ
+                  <sup>k</sup>) / k!
                 </p>
                 <div className="h-px w-full bg-white/5 mb-4" />
                 <p className="text-[10px] text-slate-500 uppercase tracking-widest font-black">
@@ -1194,27 +1223,34 @@ export default function AulaProbabilidade({
                 <LuTrendingUp className="w-8 h-8 text-indigo-400" />
               </div>
               <div className="space-y-4">
-                 <h4 className="text-2xl font-black text-white italic tracking-tight">Normal: O Padrão Universal</h4>
-                 <p className="text-slate-400 text-sm leading-relaxed">
-                   A "Curva de Sino". Rege fenômenos onde a maioria dos valores está perto da média.
-                 </p>
+                <h4 className="text-2xl font-black text-white italic tracking-tight">
+                  Normal: O Padrão Universal
+                </h4>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  A "Curva de Sino". Rege fenômenos onde a maioria dos valores
+                  está perto da média.
+                </p>
               </div>
               <div className="relative h-32 bg-indigo-500/5 rounded-[2rem] border border-border/20 dark:border-white/5 overflow-hidden flex items-end justify-center px-4">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.1)_0%,transparent_70%)]" />
-                  <div className="w-full h-full border-b-2 border-indigo-500 flex items-center justify-center">
-                     <span className="text-[10px] text-indigo-300 font-black uppercase tracking-widest opacity-30">Distribuição Gaussiana</span>
-                  </div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.1)_0%,transparent_70%)]" />
+                <div className="w-full h-full border-b-2 border-indigo-500 flex items-center justify-center">
+                  <span className="text-[10px] text-indigo-300 font-black uppercase tracking-widest opacity-30">
+                    Distribuição Gaussiana
+                  </span>
+                </div>
               </div>
               <p className="text-[10px] text-slate-500 text-center italic">
-                Z = (x - μ) / σ <br/>
+                Z = (x - μ) / σ <br />
                 "Quantos desvios padrões estamos longe da média?"
               </p>
             </div>
           </div>
 
           <AlertBox tipo="info" titulo="Comparativo: Binomial vs Poisson">
-            Use <strong>Binomial</strong> quando tiver tentativas (n) e sucesso (p). <br/>
-            Use <strong>Poisson</strong> quando a questão te der apenas uma TAXA MÉDIA (λ) em relação ao tempo.
+            Use <strong>Binomial</strong> quando tiver tentativas (n) e sucesso
+            (p). <br />
+            Use <strong>Poisson</strong> quando a questão te der apenas uma TAXA
+            MÉDIA (λ) em relação ao tempo.
           </AlertBox>
 
           <QuizInterativo
@@ -1225,16 +1261,18 @@ export default function AulaProbabilidade({
             questoes={[
               {
                 id: 601,
-                pergunta: "Se em um terminal atracam em média 2 navios por dia (λ=2), qual a probabilidade de amanhã NÃO atracar nenhum navio?",
+                pergunta:
+                  "Se em um terminal atracam em média 2 navios por dia (λ=2), qual a probabilidade de amanhã NÃO atracar nenhum navio?",
                 opcoes: [
                   { label: "A", valor: "e^-2" },
                   { label: "B", valor: "2e^-2" },
                   { label: "C", valor: "1/e" },
-                  { label: "D", valor: "0" }
+                  { label: "D", valor: "0" },
                 ],
                 correta: "e^-2",
-                explicacao: "Na fórmula de Poisson, para k=0: P(0) = (e^-λ * λ^0) / 0! = e^-λ. Como λ=2, o resultado é e^-2."
-              }
+                explicacao:
+                  "Na fórmula de Poisson, para k=0: P(0) = (e^-λ * λ^0) / 0! = e^-λ. Como λ=2, o resultado é e^-2.",
+              },
             ]}
           />
         </section>
@@ -1259,36 +1297,66 @@ export default function AulaProbabilidade({
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-             {[
-               { t: "1. Filtro Narrativo", d: "Ignore a história e extraia apenas os conjuntos e as interseções.", i: <LuFileText/> },
-               { t: "2. O Espaço Revisitado", d: "Sempre valide se o denominador mudou (Condicional).", i: <LuSearch/> },
-               { t: "3. Sanidade Final", d: "Confira se a soma das partes totaliza 100%.", i: <LuCheck/> }
-             ].map((item, i) => (
-               <div key={i} className="p-8 bg-slate-800 dark:bg-slate-900 rounded-[2.5rem] border border-border/20 dark:border-white/5 space-y-4 hover:bg-slate-700/80 transition-all duration-300">
-                  <div className="text-emerald-500 text-2xl mb-4">{item.i}</div>
-                  <h5 className="font-bold text-white uppercase italic text-sm">{item.t}</h5>
-                  <p className="text-slate-400 text-xs leading-relaxed">{item.d}</p>
-               </div>
-             ))}
+            {[
+              {
+                t: "1. Filtro Narrativo",
+                d: "Ignore a história e extraia apenas os conjuntos e as interseções.",
+                i: <LuFileText />,
+              },
+              {
+                t: "2. O Espaço Revisitado",
+                d: "Sempre valide se o denominador mudou (Condicional).",
+                i: <LuSearch />,
+              },
+              {
+                t: "3. Sanidade Final",
+                d: "Confira se a soma das partes totaliza 100%.",
+                i: <LuCheck />,
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-8 bg-slate-800 dark:bg-slate-900 rounded-[2.5rem] border border-border/20 dark:border-white/5 space-y-4 hover:bg-slate-700/80 transition-all duration-300"
+              >
+                <div className="text-emerald-500 text-2xl mb-4">{item.i}</div>
+                <h5 className="font-bold text-white uppercase italic text-sm">
+                  {item.t}
+                </h5>
+                <p className="text-slate-400 text-xs leading-relaxed">
+                  {item.d}
+                </p>
+              </div>
+            ))}
           </div>
 
           <div className="p-8 md:p-12 bg-emerald-500/5 rounded-[3rem] border border-emerald-500/10 space-y-8">
-             <div className="flex items-center gap-6 border-b border-emerald-500/20 pb-6">
-                <LuZap className="w-10 h-10 text-emerald-500" />
-                <h4 className="text-2xl font-black text-slate-800 dark:text-white italic">Case: O Petroleiro Fantasma</h4>
-             </div>
-             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic">
-               "Um petroleiro tem probabilidade 0,8 de atracar com sucesso se o mar estiver calmo, e 0,3 se estiver revolto. A chance de o mar estar calmo amanhã é de 70%. Qual a chance de sucesso na atracação?"
-             </p>
-             <div className="flex flex-col md:flex-row gap-6">
-                <div className="flex-1 p-6 bg-white/50 dark:bg-slate-950/50 rounded-2xl border border-emerald-500/20">
-                   <p className="text-[10px] text-emerald-600 uppercase font-black mb-2">Aplicação da Probabilidade Total</p>
-                   <p className="text-xs font-mono">P = (0.8 * 0.7) + (0.3 * 0.3) = 0.56 + 0.09 = 0.65 (65%)</p>
-                </div>
-                <AlertBox tipo="warning" titulo="Erro Fatal">
-                  Nunca faça a média aritmética das probabilidades (0,8+0,3)/2. Você DEVE ponderar pela chance de ocorrência de cada cenário (Calmo vs Revolto).
-                </AlertBox>
-             </div>
+            <div className="flex items-center gap-6 border-b border-emerald-500/20 pb-6">
+              <LuZap className="w-10 h-10 text-emerald-500" />
+              <h4 className="text-2xl font-black text-slate-800 dark:text-white italic">
+                Case: O Petroleiro Fantasma
+              </h4>
+            </div>
+            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic">
+              "Um petroleiro tem probabilidade 0,8 de atracar com sucesso se o
+              mar estiver calmo, e 0,3 se estiver revolto. A chance de o mar
+              estar calmo amanhã é de 70%. Qual a chance de sucesso na
+              atracação?"
+            </p>
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="flex-1 p-6 bg-white/50 dark:bg-slate-950/50 rounded-2xl border border-emerald-500/20">
+                <p className="text-[10px] text-emerald-600 uppercase font-black mb-2">
+                  Aplicação da Probabilidade Total
+                </p>
+                <p className="text-xs font-mono">
+                  P = (0.8 * 0.7) + (0.3 * 0.3) = 0.56 + 0.09 = 0.65 (65%)
+                </p>
+              </div>
+              <AlertBox tipo="warning" titulo="Erro Fatal">
+                Nunca faça a média aritmética das probabilidades (0,8+0,3)/2.
+                Você DEVE ponderar pela chance de ocorrência de cada cenário
+                (Calmo vs Revolto).
+              </AlertBox>
+            </div>
           </div>
         </section>
       </TabsContent>
@@ -1303,21 +1371,46 @@ export default function AulaProbabilidade({
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { t: "Amostragem", d: "Seleção da parte pelo todo. Muda o espaço amostral se não houver reposição." },
-                { t: "Axiomas de Kolmogorov", d: "As 3 leis fundantes da probabilidade moderna." },
-                { t: "Disjuntos", d: "Eventos que não se tocam. Interseção nula." },
-                { t: "Esperança", d: "Média ponderada dos resultados possíveis." },
-                { t: "Estocástico", d: "Termo chique para processos que envolvem aleatoriedade no tempo." },
-                { t: "Pulo do Gato", d: "Sempre que ler 'pelo menos um', pense em Complementar." }
-              ].map((term, i) => (
-                <div key={i} className="p-6 bg-slate-50 dark:bg-slate-900/40 rounded-3xl border border-border group hover:bg-brand-primary/5 transition-colors">
-                   <h6 className="font-black text-brand-primary text-[10px] uppercase mb-2 tracking-widest">{term.t}</h6>
-                   <p className="text-xs text-muted-foreground/70 italic opacity-80">{term.d}</p>
-                </div>
-              ))}
-           </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                t: "Amostragem",
+                d: "Seleção da parte pelo todo. Muda o espaço amostral se não houver reposição.",
+              },
+              {
+                t: "Axiomas de Kolmogorov",
+                d: "As 3 leis fundantes da probabilidade moderna.",
+              },
+              {
+                t: "Disjuntos",
+                d: "Eventos que não se tocam. Interseção nula.",
+              },
+              {
+                t: "Esperança",
+                d: "Média ponderada dos resultados possíveis.",
+              },
+              {
+                t: "Estocástico",
+                d: "Termo chique para processos que envolvem aleatoriedade no tempo.",
+              },
+              {
+                t: "Pulo do Gato",
+                d: "Sempre que ler 'pelo menos um', pense em Complementar.",
+              },
+            ].map((term, i) => (
+              <div
+                key={i}
+                className="p-6 bg-slate-50 dark:bg-slate-900/40 rounded-3xl border border-border group hover:bg-brand-primary/5 transition-colors"
+              >
+                <h6 className="font-black text-brand-primary text-[10px] uppercase mb-2 tracking-widest">
+                  {term.t}
+                </h6>
+                <p className="text-xs text-muted-foreground/70 italic opacity-80">
+                  {term.d}
+                </p>
+              </div>
+            ))}
+          </div>
         </section>
       </TabsContent>
 
@@ -1340,29 +1433,37 @@ export default function AulaProbabilidade({
                 variant="rose"
               />
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                Em sistemas 1oo2 (um de dois), o sistema falha apenas se AMBOS os sensores falharem. <br/>
-                <span className="font-mono text-rose-500 font-bold">P(Falha Total) = P(F1) * P(F2)</span>.
+                Em sistemas 1oo2 (um de dois), o sistema falha apenas se AMBOS
+                os sensores falharem. <br />
+                <span className="font-mono text-rose-500 font-bold">
+                  P(Falha Total) = P(F1) * P(F2)
+                </span>
+                .
               </p>
               <AlertBox tipo="info" titulo="Cenário de Votação">
-                 No sistema 2oo3 (Dois de Três), o sistema desarma se 2 ou 3 sensores alertarem. Isso evita "trip" falso de um sensor maluco.
+                No sistema 2oo3 (Dois de Três), o sistema desarma se 2 ou 3
+                sensores alertarem. Isso evita "trip" falso de um sensor maluco.
               </AlertBox>
             </div>
             <div className="w-full lg:w-[400px] h-[300px] bg-slate-800 dark:bg-slate-900 rounded-[3rem] p-10 flex flex-col justify-center border border-border/20 dark:border-white/5 relative overflow-hidden group">
-               <div className="absolute inset-0 bg-rose-500/10 opacity-0 group-hover:opacity-100 transition-opacity blur-2xl" />
-               <h6 className="text-[10px] font-black text-rose-500 uppercase tracking-widest mb-4">Calculando Risco de Shutdown</h6>
-               <p className="text-white text-xs leading-relaxed italic mb-6">
-                 "Se cada sensor tem 5% de falha, qual a chance de um sistema 1oo2 falhar e um 1oo3 falhar?"
-               </p>
-               <div className="space-y-3 font-mono">
-                  <div className="flex justify-between text-[11px] border-b border-border/30 dark:border-white/10 pb-2">
-                     <span className="text-slate-500">1oo2:</span>
-                     <span className="text-emerald-400">0.25% (0.05²)</span>
-                  </div>
-                  <div className="flex justify-between text-[11px]">
-                     <span className="text-slate-500">1oo3:</span>
-                     <span className="text-emerald-400">0.0125% (0.05³)</span>
-                  </div>
-               </div>
+              <div className="absolute inset-0 bg-rose-500/10 opacity-0 group-hover:opacity-100 transition-opacity blur-2xl" />
+              <h6 className="text-[10px] font-black text-rose-500 uppercase tracking-widest mb-4">
+                Calculando Risco de Shutdown
+              </h6>
+              <p className="text-white text-xs leading-relaxed italic mb-6">
+                "Se cada sensor tem 5% de falha, qual a chance de um sistema
+                1oo2 falhar e um 1oo3 falhar?"
+              </p>
+              <div className="space-y-3 font-mono">
+                <div className="flex justify-between text-[11px] border-b border-border/30 dark:border-white/10 pb-2">
+                  <span className="text-slate-500">1oo2:</span>
+                  <span className="text-emerald-400">0.25% (0.05²)</span>
+                </div>
+                <div className="flex justify-between text-[11px]">
+                  <span className="text-slate-500">1oo3:</span>
+                  <span className="text-emerald-400">0.0125% (0.05³)</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -1374,16 +1475,18 @@ export default function AulaProbabilidade({
             questoes={[
               {
                 id: 901,
-                pergunta: "Em um sistema de emergência com 3 sensores em paralelo (redundância 1oo3), onde cada um tem 10% de chance de falhar, qual a probabilidade do sistema INTEIRO falhar?",
+                pergunta:
+                  "Em um sistema de emergência com 3 sensores em paralelo (redundância 1oo3), onde cada um tem 10% de chance de falhar, qual a probabilidade do sistema INTEIRO falhar?",
                 opcoes: [
                   { label: "A", valor: "30%" },
                   { label: "B", valor: "1%" },
                   { label: "C", valor: "0,1%" },
-                  { label: "D", valor: "0,01%" }
+                  { label: "D", valor: "0,01%" },
                 ],
                 correta: "0,1%",
-                explicacao: "Para o sistema 1oo3 falhar, os TRÊS devem falhar simultaneamente. P = 0,1 * 0,1 * 0,1 = 0,001 (0,1%)."
-              }
+                explicacao:
+                  "Para o sistema 1oo3 falhar, os TRÊS devem falhar simultaneamente. P = 0,1 * 0,1 * 0,1 = 0,001 (0,1%).",
+              },
             ]}
           />
         </section>
@@ -1405,54 +1508,95 @@ export default function AulaProbabilidade({
         <div className="bg-slate-950 rounded-[4rem] p-12 mt-20 border border-border/20 dark:border-white/5 shadow-[0_0_100px_rgba(16,185,129,0.1)] overflow-hidden relative">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/5 blur-[120px] rounded-full -mt-48 -mr-48" />
           <div className="relative z-10">
-             <h4 className="text-4xl font-black text-white mb-2 italic tracking-tighter">O Arsenal da Aprovação</h4>
-             <p className="text-slate-500 text-sm mb-12">Todas as ferramentas que você precisa para destruir qualquer questão da banca.</p>
-             
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-               {[
-                 { n: "União", f: "P(A∪B) = P(A)+P(B) - P(A∩B)", d: "O segredo do 'OU'. Não esqueça a interseção!" },
-                 { n: "Independência", f: "P(A∩B) = P(A) · P(B)", d: "Quando um evento não dá spoiler do outro." },
-                 { n: "Condicional", f: "P(A|B) = P(A∩B) / P(B)", d: "O mundo mudou: seu denominador diminuiu." },
-                 { n: "Binomial", f: "P(k) = C(n,k) · pᵏ · qⁿ⁻ᵏ", d: "Repetições independentes (Lotes/Moedas)." },
-                 { n: "Poisson", f: "P(k) = (e⁻λ · λᵏ) / k!", d: "Tempo contínuo e taxas médias." },
-                 { n: "Bayes", f: "P(C|E) = [P(E|C)·P(C)] / P(E)", d: "Inversão de causa e efeito. Raciocínio Forense." },
-               ].map((item, i) => (
-                 <div key={i} className="group p-8 bg-white/[0.02] rounded-[2.5rem] border border-border/20 dark:border-white/5 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.04]">
-                    <div className="flex items-center justify-between mb-6">
-                       <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-emerald-400 transition-colors">{item.n}</span>
-                       <div className="w-2 h-2 rounded-full bg-slate-800 group-hover:bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)] transition-all" />
-                    </div>
-                    <code className="block text-white font-mono text-sm lg:text-base mb-4 break-all opacity-80 group-hover:opacity-100">{item.f}</code>
-                    <p className="text-xs text-muted-foreground/70 italic leading-relaxed group-hover:text-slate-300">{item.d}</p>
-                 </div>
-               ))}
-             </div>
+            <h4 className="text-4xl font-black text-white mb-2 italic tracking-tighter">
+              O Arsenal da Aprovação
+            </h4>
+            <p className="text-slate-500 text-sm mb-12">
+              Todas as ferramentas que você precisa para destruir qualquer
+              questão da banca.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  n: "União",
+                  f: "P(A∪B) = P(A)+P(B) - P(A∩B)",
+                  d: "O segredo do 'OU'. Não esqueça a interseção!",
+                },
+                {
+                  n: "Independência",
+                  f: "P(A∩B) = P(A) · P(B)",
+                  d: "Quando um evento não dá spoiler do outro.",
+                },
+                {
+                  n: "Condicional",
+                  f: "P(A|B) = P(A∩B) / P(B)",
+                  d: "O mundo mudou: seu denominador diminuiu.",
+                },
+                {
+                  n: "Binomial",
+                  f: "P(k) = C(n,k) · pᵏ · qⁿ⁻ᵏ",
+                  d: "Repetições independentes (Lotes/Moedas).",
+                },
+                {
+                  n: "Poisson",
+                  f: "P(k) = (e⁻λ · λᵏ) / k!",
+                  d: "Tempo contínuo e taxas médias.",
+                },
+                {
+                  n: "Bayes",
+                  f: "P(C|E) = [P(E|C)·P(C)] / P(E)",
+                  d: "Inversão de causa e efeito. Raciocínio Forense.",
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="group p-8 bg-white/[0.02] rounded-[2.5rem] border border-border/20 dark:border-white/5 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.04]"
+                >
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-emerald-400 transition-colors">
+                      {item.n}
+                    </span>
+                    <div className="w-2 h-2 rounded-full bg-slate-800 group-hover:bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)] transition-all" />
+                  </div>
+                  <code className="block text-white font-mono text-sm lg:text-base mb-4 break-all opacity-80 group-hover:opacity-100">
+                    {item.f}
+                  </code>
+                  <p className="text-xs text-muted-foreground/70 italic leading-relaxed group-hover:text-slate-300">
+                    {item.d}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
         <div className="relative group overflow-hidden p-12 rounded-[4rem] bg-gradient-to-br from-emerald-600 to-indigo-950 text-white flex flex-col items-center text-center gap-8 mt-12 shadow-2xl">
-           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
-           <LuTrophy className="w-24 h-24 mb-2 animate-bounce opacity-40 group-hover:opacity-100 transition-all duration-1000" />
-           <div className="space-y-4 relative z-10">
-              <h3 className="text-5xl font-black italic tracking-tighter">O ACASO TRABALHA PARA VOCÊ!</h3>
-              <p className="max-w-xl mx-auto text-emerald-100/70 text-lg leading-relaxed">
-                Você acaba de dominar um dos pilares mais pesados do concurso. A probabilidade agora não é uma dúvida, é uma ferramenta de cálculo.
-              </p>
-           </div>
-           
-           <div className="flex flex-col sm:flex-row gap-6 mt-6 relative z-10 w-full justify-center">
-              <button 
-                onClick={onComplete}
-                className="px-10 py-5 bg-white text-emerald-900 font-black rounded-3xl hover:scale-105 hover:bg-emerald-50 transition-all shadow-xl flex items-center justify-center gap-3 active:scale-95"
-              >
-                <LuCheck className="w-6 h-6" /> FINALIZAR MISSÃO
-              </button>
-           </div>
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
+          <LuTrophy className="w-24 h-24 mb-2 animate-bounce opacity-40 group-hover:opacity-100 transition-all duration-1000" />
+          <div className="space-y-4 relative z-10">
+            <h3 className="text-5xl font-black italic tracking-tighter">
+              O ACASO TRABALHA PARA VOCÊ!
+            </h3>
+            <p className="max-w-xl mx-auto text-emerald-100/70 text-lg leading-relaxed">
+              Você acaba de dominar um dos pilares mais pesados do concurso. A
+              probabilidade agora não é uma dúvida, é uma ferramenta de cálculo.
+            </p>
+          </div>
 
-           <div className="mt-8 pt-8 border-t border-white/10 w-full flex justify-between items-center text-[10px] uppercase font-black tracking-widest text-emerald-300/40">
-              <span>Status: Especialista em Probabilidade</span>
-              <span>XP Restante: 0</span>
-           </div>
+          <div className="flex flex-col sm:flex-row gap-6 mt-6 relative z-10 w-full justify-center">
+            <button
+              onClick={onComplete}
+              className="px-10 py-5 bg-white text-emerald-900 font-black rounded-3xl hover:scale-105 hover:bg-emerald-50 transition-all shadow-xl flex items-center justify-center gap-3 active:scale-95"
+            >
+              <LuCheck className="w-6 h-6" /> FINALIZAR MISSÃO
+            </button>
+          </div>
+
+          <div className="mt-8 pt-8 border-t border-white/10 w-full flex justify-between items-center text-[10px] uppercase font-black tracking-widest text-emerald-300/40">
+            <span>Status: Especialista em Probabilidade</span>
+            <span>XP Restante: 0</span>
+          </div>
         </div>
       </TabsContent>
     </AulaTemplate>
@@ -1911,3 +2055,15 @@ const probabilidadeQuestions: QuizQuestion[] = [
       "Os primos até 50 são: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47. Total = 15. Probabilidade = 15/50 ou 30%.",
   },
 ];
+
+
+
+
+
+
+
+
+
+
+
+

@@ -168,6 +168,30 @@ const AulaProbabilidade = dynamic<AulaProps>(
   },
 );
 
+const AulaFuncoesLogaritmicas = dynamic<AulaProps>(
+  () => import("@/components/aulas/matematica/AulaFuncoesLogaritmicas"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaProgressoesPa = dynamic<AulaProps>(
+  () => import("@/components/aulas/matematica/AulaProgressoesPa"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaProgressoesPg = dynamic<AulaProps>(
+  () => import("@/components/aulas/matematica/AulaProgressoesPg"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
 interface PageProps {
   params: Promise<{ materia: string; topico: string }>;
 }
@@ -727,6 +751,58 @@ export default function TopicoPage({ params }: PageProps) {
               prevTopico={prevTopico}
               nextTopico={nextTopico}
             />
+          ) : materiaId === "matematica" &&
+            topicoId === "funcoes-logaritmicas" ? (
+            <AulaFuncoesLogaritmicas
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "matematica" && topicoId === "progressoes-pa" ? (
+            <AulaProgressoesPa
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "matematica" && topicoId === "progressoes-pg" ? (
+            <AulaProgressoesPg
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
           ) : materiaId === "matematica" && topicoId === "probabilidade" ? (
             <AulaProbabilidade
               onComplete={handleCompleteAula}
@@ -799,6 +875,16 @@ export default function TopicoPage({ params }: PageProps) {
             "tipos-textuais",
             "ortografia",
             "conjuntos",
+            "razao-proporcao",
+            "porcentagem",
+            "equacoes-1grau",
+            "equacoes-2grau",
+            "funcoes-afim-quadratica",
+            "funcoes-exponenciais",
+            "funcoes-logaritmicas",
+            "progressoes-pa",
+            "progressoes-pg",
+            "probabilidade",
           ].includes(topicoId) && (
             <div className="max-w-7xl mx-auto px-6 pb-32">
               <div className="mt-12 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-8 border border-yellow-500/30 text-center">

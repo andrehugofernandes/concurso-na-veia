@@ -47,11 +47,11 @@ import {
 
 // ── CONFIGURAÇÃO DE MÓDULOS ──────────────────────────────────────────────
 const MODULE_DEFS: ModuleDef[] = [
-  { id: "modulo-1", label: "Módulo 1", titulo: "Termos Essenciais" },
-  { id: "modulo-2", label: "Módulo 2", titulo: "Termos Integrantes" },
-  { id: "modulo-3", label: "Módulo 3", titulo: "Termos Acessórios" },
-  { id: "modulo-4", label: "Módulo 4", titulo: "Lab. Cesgranrio" },
-  { id: "modulo-5", label: "Módulo 5", titulo: "Síntese" },
+  { id: "modulo-1", label: "Módulo 1", title: "Termos Essenciais" },
+  { id: "modulo-2", label: "Módulo 2", title: "Termos Integrantes" },
+  { id: "modulo-3", label: "Módulo 3", title: "Termos Acessórios" },
+  { id: "modulo-4", label: "Módulo 4", title: "Lab. Cesgranrio" },
+  { id: "modulo-5", label: "Módulo 5", title: "Síntese" },
 ];
 
 // ── POOL DE QUESTÕES (MÓDULO 4: LABORATÓRIO) ────────────────────────────
@@ -885,7 +885,7 @@ export default function AulaSintaxe({
                   {
                     titulo: "Sujeito Simples e Composto",
                     icone: "🎯",
-                    conteudo: (
+                    conteudo:(
                       <div className="space-y-6">
                         <p className="text-base text-muted-foreground leading-relaxed">
                           A classificação entre sujeito simples e composto se
@@ -963,7 +963,7 @@ export default function AulaSintaxe({
                   {
                     titulo: "Sujeito Inexistente (Impessoal)",
                     icone: "🚫",
-                    conteudo: (
+                    conteudo:(
                       <div className="space-y-6">
                         <p className="text-base text-muted-foreground leading-relaxed">
                           A oração sem sujeito ocorre com os{" "}
@@ -1041,7 +1041,7 @@ export default function AulaSintaxe({
                   {
                     titulo: "Sujeito Oculto (Desinencial)",
                     icone: "👻",
-                    conteudo: (
+                    conteudo:(
                       <div className="space-y-6">
                         <p className="text-base text-muted-foreground leading-relaxed">
                           O sujeito oculto (ou desinencial/elíptico) é aquele
@@ -1125,7 +1125,7 @@ export default function AulaSintaxe({
                   {
                     titulo: "Sujeito Indeterminado",
                     icone: "🕵️",
-                    conteudo: (
+                    conteudo:(
                       <div className="space-y-6">
                         <p className="text-base text-muted-foreground leading-relaxed">
                           Decorre de uma estratégia sintática ou textual: existe
@@ -1218,7 +1218,7 @@ export default function AulaSintaxe({
                   {
                     titulo: "Predicado Verbal",
                     icone: "⚡",
-                    conteudo: (
+                    conteudo:(
                       <div className="space-y-6">
                         <p className="text-base text-muted-foreground leading-relaxed">
                           O grande protagonista deste tipo de predicado é a{" "}
@@ -1296,7 +1296,7 @@ export default function AulaSintaxe({
                     titulo:
                       "Predicado Nominal (O Reino do Predicativo do Sujeito)",
                     icone: "🎯",
-                    conteudo: (
+                    conteudo:(
                       <div className="space-y-6">
                         <p className="text-base text-muted-foreground leading-relaxed">
                           Aqui o protagonista não é a ação, mas o{" "}
@@ -1412,7 +1412,7 @@ export default function AulaSintaxe({
                   {
                     titulo: "Predicado Verbo-Nominal",
                     icone: "🎭",
-                    conteudo: (
+                    conteudo:(
                       <div className="space-y-6">
                         <p className="text-base text-muted-foreground leading-relaxed">
                           O tipo "híbrido". Informa, <b>ao mesmo tempo</b>, uma{" "}
@@ -1502,8 +1502,8 @@ export default function AulaSintaxe({
                 {
                   id: "video",
                   label: "Vídeo Aula",
-                  icon: LuPlayCircle,
-                  content: (
+                  icon:LuPlayCircle,
+                  content:(
                     <div className="w-full flex flex-col items-center py-6">
                       <div className="w-full max-w-3xl">
                         <VideoModal
@@ -1518,8 +1518,8 @@ export default function AulaSintaxe({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       moduloNome="Termos Essenciais"
                       tituloAula="Análise Sintática"
@@ -1549,8 +1549,8 @@ export default function AulaSintaxe({
                 {
                   id: "visual",
                   label: "Macete Visual",
-                  icon: LuBrain,
-                  content: (
+                  icon:LuBrain,
+                  content:(
                     <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
                       <h3 className="text-xl font-bold text-foreground mb-4">
                         A Pergunta ao Verbo
@@ -1569,8 +1569,8 @@ export default function AulaSintaxe({
                 {
                   id: "audio",
                   label: "Áudio Resumo",
-                  icon: LuMusic,
-                  content: (
+                  icon:LuMusic,
+                  content:(
                     <div className="w-full flex justify-center py-4">
                       <div className="w-full max-w-md">
                         <MusicPlayerCard
@@ -1889,8 +1889,8 @@ export default function AulaSintaxe({
                 {
                   id: "video",
                   label: "Vídeo Aula",
-                  icon: LuPlayCircle,
-                  content: (
+                  icon:LuPlayCircle,
+                  content:(
                     <div className="w-full flex flex-col items-center py-6">
                       <div className="w-full max-w-3xl">
                         <VideoModal
@@ -1905,8 +1905,8 @@ export default function AulaSintaxe({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       moduloNome="Termos Integrantes"
                       tituloAula="Análise Sintática"
@@ -1936,8 +1936,8 @@ export default function AulaSintaxe({
                 {
                   id: "visual",
                   label: "Macete Visual",
-                  icon: LuBrain,
-                  content: (
+                  icon:LuBrain,
+                  content:(
                     <div className="text-center p-8 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-2xl border border-emerald-500/10">
                       <h3 className="text-xl font-bold text-foreground mb-4">
                         A Vítima do Nome
@@ -1956,8 +1956,8 @@ export default function AulaSintaxe({
                 {
                   id: "audio",
                   label: "Áudio Resumo",
-                  icon: LuMusic,
-                  content: (
+                  icon:LuMusic,
+                  content:(
                     <div className="w-full flex justify-center py-4">
                       <div className="w-full max-w-md">
                         <MusicPlayerCard
@@ -2338,8 +2338,8 @@ export default function AulaSintaxe({
                 {
                   id: "video",
                   label: "Vídeo Aula",
-                  icon: LuPlayCircle,
-                  content: (
+                  icon:LuPlayCircle,
+                  content:(
                     <div className="w-full flex flex-col items-center py-6">
                       <div className="w-full max-w-3xl">
                         <VideoModal
@@ -2354,8 +2354,8 @@ export default function AulaSintaxe({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       moduloNome="Termos Acessórios"
                       tituloAula="Análise Sintática"
@@ -2384,8 +2384,8 @@ export default function AulaSintaxe({
                 {
                   id: "visual",
                   label: "Macete Visual",
-                  icon: LuBrain,
-                  content: (
+                  icon:LuBrain,
+                  content:(
                     <div className="text-center p-8 bg-gradient-to-br from-amber-500/5 to-orange-500/5 rounded-2xl border border-amber-500/10">
                       <h3 className="text-xl font-bold text-foreground mb-4">
                         O Megafone do Vocativo
@@ -2404,8 +2404,8 @@ export default function AulaSintaxe({
                 {
                   id: "audio",
                   label: "Áudio Resumo",
-                  icon: LuMusic,
-                  content: (
+                  icon:LuMusic,
+                  content:(
                     <div className="w-full flex justify-center py-4">
                       <div className="w-full max-w-md">
                         <MusicPlayerCard
@@ -2529,7 +2529,7 @@ export default function AulaSintaxe({
                 {
                   titulo: "Passo 1: O Coração (Ache o Verbo)",
                   icone: "1️⃣",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       {/* 1. CONCEITUAÇÃO */}
                       <p className="text-sm text-muted-foreground leading-relaxed">
@@ -2573,7 +2573,7 @@ export default function AulaSintaxe({
                 {
                   titulo: "Passo 2: O Dono do Verbo (Ache o Sujeito)",
                   icone: "2️⃣",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       {/* 1. CONCEITUAÇÃO */}
                       <p className="text-sm text-muted-foreground leading-relaxed">
@@ -2621,7 +2621,7 @@ export default function AulaSintaxe({
                 {
                   titulo: "Passo 3: A ponte para o sentido (Complementos)",
                   icone: "3️⃣",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       {/* 1. CONCEITUAÇÃO */}
                       <p className="text-sm text-muted-foreground leading-relaxed">
@@ -2655,7 +2655,7 @@ export default function AulaSintaxe({
                 {
                   titulo: "Passo 4: As joias de pendurar (Adjuntos e CN)",
                   icone: "4️⃣",
-                  conteudo: (
+                  conteudo:(
                     <div className="space-y-4">
                       {/* 1. CONCEITUAÇÃO */}
                       <p className="text-sm text-muted-foreground leading-relaxed">
@@ -2738,8 +2738,8 @@ export default function AulaSintaxe({
                 {
                   id: "video",
                   label: "Vídeo Aula",
-                  icon: LuPlayCircle,
-                  content: (
+                  icon:LuPlayCircle,
+                  content:(
                     <div className="w-full flex flex-col items-center py-6">
                       <div className="w-full max-w-3xl">
                         <VideoModal
@@ -2754,8 +2754,8 @@ export default function AulaSintaxe({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       moduloNome="Laboratório"
                       tituloAula="Análise Sintática"
@@ -2785,8 +2785,8 @@ export default function AulaSintaxe({
                 {
                   id: "audio",
                   label: "Áudio Resumo",
-                  icon: LuMusic,
-                  content: (
+                  icon:LuMusic,
+                  content:(
                     <div className="w-full flex justify-center py-4">
                       <div className="w-full max-w-md">
                         <MusicPlayerCard
@@ -2895,8 +2895,8 @@ export default function AulaSintaxe({
                 {
                   id: "video",
                   label: "Vídeo Aula",
-                  icon: LuPlayCircle,
-                  content: (
+                  icon:LuPlayCircle,
+                  content:(
                     <div className="w-full flex flex-col items-center py-6">
                       <div className="w-full max-w-3xl">
                         <VideoModal
@@ -2911,8 +2911,8 @@ export default function AulaSintaxe({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon: LuBookOpen,
-                  content: (
+                  icon:LuBookOpen,
+                  content:(
                     <ModuleSummaryCarouselNew
                       moduloNome="Síntese Final"
                       tituloAula="Análise Sintática"
@@ -2942,8 +2942,8 @@ export default function AulaSintaxe({
                 {
                   id: "visual",
                   label: "Macete Visual",
-                  icon: LuBrain,
-                  content: (
+                  icon:LuBrain,
+                  content:(
                     <div className="text-center p-8 bg-gradient-to-br from-violet-500/5 to-purple-500/5 rounded-2xl border border-violet-500/10">
                       <h3 className="text-xl font-bold text-foreground mb-4">
                         O Esqueleto Sintático
@@ -2961,8 +2961,8 @@ export default function AulaSintaxe({
                 {
                   id: "audio",
                   label: "Áudio Resumo",
-                  icon: LuMusic,
-                  content: (
+                  icon:LuMusic,
+                  content:(
                     <div className="w-full flex justify-center py-4">
                       <div className="w-full max-w-md">
                         <MusicPlayerCard
@@ -2983,3 +2983,15 @@ export default function AulaSintaxe({
     </AulaTemplate>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+

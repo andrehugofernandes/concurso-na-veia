@@ -64,7 +64,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Slider } from "@/components/ui/slider";
+import { Slider } from "../ui/slider";
 
 export interface AulaProps {
   onComplete: () => void;
@@ -89,7 +89,8 @@ export interface AulaProps {
 export interface ModuleDef {
   id: string;
   label: string;
-  titulo: string;
+  titulo?: string;
+  title?: string; // Alias
 }
 
 export interface QuizQuestion {
@@ -252,8 +253,10 @@ export function ImageCarousel({
 // palavras perigosas, etc. Responsivo: 1 card mobile, 2 tablet, 3 desktop.
 
 export interface CarouselCard {
-  icone: React.ReactNode;
-  titulo: string;
+  icone?: React.ReactNode;
+  icon?: React.ReactNode; // Alias
+  titulo?: string;
+  title?: string; // Alias
   descricao: React.ReactNode;
   exemplo?: string;
   corFundo?: string; // tailwind bg class for icon wrapper, e.g. "bg-blue-100 dark:bg-blue-900/30"
@@ -330,16 +333,16 @@ export function CardCarousel({
                       card.corFundo || "bg-primary/10",
                     )}
                   >
-                    {card.icone}
+                    {card.icone || card.icon}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-foreground text-lg md:text-xl leading-tight">
-                      {card.titulo}
-                    </h3>
+                    <h4 className="font-bold text-foreground text-lg mb-1 leading-tight">
+                      {card.titulo || card.title}
+                    </h4>
+                    <div className="text-sm text-muted-foreground leading-relaxed">
+                      {card.descricao}
+                    </div>
                   </div>
-                </div>
-                <div className="text-base text-muted-foreground mb-6 leading-relaxed">
-                  {card.descricao}
                 </div>
                 {card.exemplo && (
                   <div className="mt-auto pt-6 border-t border-border/50">
@@ -379,9 +382,12 @@ export function CardCarousel({
 // Cada slide contém JSX denso (conceito, exemplos, exceções, macetes).
 
 export interface ContentSlide {
-  titulo: string;
-  icone: string;
-  conteudo: React.ReactNode;
+  titulo?: string;
+  title?: string; // Alias
+  icone?: string | React.ReactNode;
+  icon?: string | React.ReactNode; // Alias
+  conteudo?: React.ReactNode;
+  content?: React.ReactNode; // Alias
   exemplo?: string;
   corDestaque?: string;
 }
@@ -399,7 +405,7 @@ export function ContentAccordion({
   slidesPerView,
   mode = "carousel",
 }: {
-  titulo: string;
+  titulo?: string;
   icone?: React.ReactNode;
   corIndicador?: string;
   slides: ContentSlide[];
@@ -422,18 +428,18 @@ export function ContentAccordion({
                 <div className="bg-card rounded-2xl border border-border p-5 md:p-8 shadow-sm h-full flex flex-col space-y-5 md:space-y-6 group/slide hover:border-primary/40 transition-all duration-500">
                   <div className="flex items-start gap-5">
                     <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl shrink-0 group-hover/slide:scale-110 group-hover/slide:-rotate-3 transition-all duration-500 shadow-inner">
-                      {slide.icone}
+                      {slide.icone || slide.icon}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center">
                         <h4 className="font-bold text-foreground text-xl md:text-2xl leading-tight tracking-tight">
-                          {slide.titulo}
+                          {slide.titulo || slide.title}
                         </h4>
                       </div>
                     </div>
                   </div>
                   <div className="text-base text-muted-foreground leading-relaxed flex-1 space-y-4 font-medium">
-                    {slide.conteudo}
+                    {slide.conteudo || slide.content}
                   </div>
                   {slide.exemplo && (
                     <div className="pt-8 border-t border-border/50">
@@ -1516,8 +1522,10 @@ export const Activity = ({
 export interface LessonTabItem {
   id: string;
   label: string;
-  icon: React.ElementType;
-  content: React.ReactNode;
+  icon?: React.ElementType;
+  icone?: React.ElementType; // Alias
+  content?: React.ReactNode;
+  conteudo?: React.ReactNode; // Alias
 }
 
 export function LessonTabs({
@@ -1582,18 +1590,19 @@ export function LessonTabs({
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <div className="flex justify-center mb-8">
           <TabsList className="flex w-full h-auto p-1 bg-muted/50 rounded-xl overflow-x-auto md:overflow-visible justify-start md:justify-center">
-            {tabs.map((tab) => (
-              <TabsTrigger
-                key={tab.id}
-                value={tab.id}
-                className="flex flex-col md:flex-row items-center justify-center gap-2 py-3 rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-sm transition-all"
-              >
-                <tab.icon className="w-4 h-4" />
-                <span className="text-xs md:text-sm font-medium">
-                  {tab.label}
-                </span>
-              </TabsTrigger>
-            ))}
+            {tabs.map((tab) => {
+              const Icon = tab.icon || tab.icone || LuBookOpen;
+              return (
+                <TabsTrigger
+                  key={tab.id}
+                  value={tab.id}
+                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl transition-all data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm group/tab"
+                >
+                  <Icon className="w-4 h-4 transition-transform group-hover/tab:scale-110" />
+                  <span className="font-semibold text-sm">{tab.label}</span>
+                </TabsTrigger>
+              );
+            })}
           </TabsList>
         </div>
 
@@ -1613,7 +1622,7 @@ export function LessonTabs({
               // doesn't automatically apply display:none (though it usually does).
               // Redundant for safety.
             >
-              {tab.content}
+              {tab.content || tab.conteudo}
             </div>
           </Activity>
         ))}
@@ -1960,7 +1969,12 @@ export function SectionTitle({
 export function TabbedContent({
   tabs,
 }: {
-  tabs: { id: string; label: string; content: React.ReactNode }[];
+  tabs: {
+    id: string;
+    label: string;
+    content: React.ReactNode;
+    conteudo?: React.ReactNode;
+  }[];
 }) {
   return (
     <Tabs defaultValue={tabs[0].id} className="w-full">
@@ -1975,9 +1989,9 @@ export function TabbedContent({
         <TabsContent
           key={tab.id}
           value={tab.id}
-          className="animate-in fade-in slide-in-from-bottom-2 duration-300"
+          className="mt-0 focus-visible:outline-none"
         >
-          {tab.content}
+          {tab.content || tab.conteudo}
         </TabsContent>
       ))}
     </Tabs>
@@ -2415,7 +2429,7 @@ export function StickyModuleNav({
                       {mod.label}
                     </span>
                     <span className="font-bold text-[10px] truncate w-full text-center flex items-center justify-center gap-1">
-                      {mod.titulo}
+                      {mod.titulo || mod.title}
                       {completedModules.has(mod.id) && (
                         <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20 shrink-0">
                           <LuCheck size={10} />
@@ -2559,7 +2573,7 @@ export function StickyModuleNav({
                       {mod.label}
                     </span>
                     <span className="font-bold text-[10px] md:text-[13px] flex items-center gap-2">
-                      {mod.titulo}
+                      {mod.titulo || mod.title}
                       {completedModules.has(mod.id) && (
                         <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20">
                           <LuCheck size={14} />

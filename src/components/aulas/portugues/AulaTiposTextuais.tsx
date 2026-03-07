@@ -40,12 +40,12 @@ import {
 } from "../shared";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", titulo: "Narrativo & Descritivo" },
-  { id: "modulo-2", label: "Módulo 2", titulo: "Dissertativo" },
-  { id: "modulo-3", label: "Módulo 3", titulo: "Injuntivo & Dialogal" },
-  { id: "modulo-4", label: "Módulo 4", titulo: "Gêneros vs. Tipos" },
-  { id: "modulo-5", label: "Módulo 5", titulo: "Laboratório Técnico" },
-  { id: "modulo-6", label: "Módulo 6", titulo: "Simulado Final" },
+  { id: "modulo-1", label: "Módulo 1", title: "Narrativo & Descritivo" },
+  { id: "modulo-2", label: "Módulo 2", title: "Dissertativo" },
+  { id: "modulo-3", label: "Módulo 3", title: "Injuntivo & Dialogal" },
+  { id: "modulo-4", label: "Módulo 4", title: "Gêneros vs. Tipos" },
+  { id: "modulo-5", label: "Módulo 5", title: "Laboratório Técnico" },
+  { id: "modulo-6", label: "Módulo 6", title: "Simulado Final" },
 ] as const;
 
 // ============================================================================
@@ -892,7 +892,7 @@ export default function AulaTiposTextuais({
               {
                 titulo: "1. O que é Narrar?",
                 icone: "📖",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       <strong>Conceito:</strong> Narrar é relatar uma sucessão
@@ -922,7 +922,7 @@ export default function AulaTiposTextuais({
               {
                 titulo: "2. Foco Narrativo",
                 icone: "👀",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       <strong>Conceito:</strong> É a perspectiva de quem conta a
@@ -962,7 +962,7 @@ export default function AulaTiposTextuais({
               {
                 titulo: "3. Tipos de Discurso",
                 icone: "💬",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       Como o narrador reproduz a fala ou pensamento da
@@ -1090,8 +1090,8 @@ export default function AulaTiposTextuais({
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -1107,8 +1107,8 @@ export default function AulaTiposTextuais({
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="Narrativo e Descritivo"
                     tituloAula="Tipologia Textual"
@@ -1137,8 +1137,8 @@ export default function AulaTiposTextuais({
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-2xl border border-emerald-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       A Prova do Vídeo
@@ -1159,8 +1159,8 @@ export default function AulaTiposTextuais({
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -1302,7 +1302,7 @@ A tipologia você vai entender!
               {
                 titulo: "1. A Tese (Introdução)",
                 icone: "🎯",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       <strong>Conceito:</strong> É a ideia central, o
@@ -1334,7 +1334,7 @@ A tipologia você vai entender!
               {
                 titulo: "2. Os Argumentos (Desenvolvimento)",
                 icone: "⚖️",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       São as provas utilizadas para validar a tese. A CESGRANRIO
@@ -1364,7 +1364,7 @@ A tipologia você vai entender!
               {
                 titulo: "3. Conclusão",
                 icone: "🏁",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       Não se adiciona teoria nova. O autor retoma a tese
@@ -1391,8 +1391,8 @@ A tipologia você vai entender!
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -1408,8 +1408,8 @@ A tipologia você vai entender!
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="Dissertativo"
                     tituloAula="Tipologia Textual"
@@ -1438,8 +1438,8 @@ A tipologia você vai entender!
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-2xl border border-blue-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       A Busca pela Culpa
@@ -1461,8 +1461,8 @@ A tipologia você vai entender!
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -1537,7 +1537,7 @@ Se tem julgamento, é argumentação!
             cards={[
               {
                 icone: <LuTriangleAlert className="text-indigo-500" />,
-                titulo: "Objetivo Final",
+                title: "Objetivo Final",
                 descricao: (
                   <div className="space-y-2 text-sm">
                     <p>
@@ -1549,7 +1549,7 @@ Se tem julgamento, é argumentação!
               },
               {
                 icone: <LuCheck className="text-indigo-500" />,
-                titulo: "A Marca do Imperativo",
+                title: "A Marca do Imperativo",
                 descricao: (
                   <div className="space-y-2 text-sm">
                     <p>
@@ -1562,7 +1562,7 @@ Se tem julgamento, é argumentação!
               },
               {
                 icone: <LuBookOpen className="text-indigo-500" />,
-                titulo: "Gêneros Associados",
+                title: "Gêneros Associados",
                 descricao: (
                   <div className="space-y-2 text-sm">
                     <p>
@@ -1595,7 +1595,7 @@ Se tem julgamento, é argumentação!
               {
                 titulo: "A Dança da Comunicação Direta",
                 icone: "🗨️",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       O tipo <strong>dialogal</strong> baseia-se na troca
@@ -1632,8 +1632,8 @@ Se tem julgamento, é argumentação!
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -1649,8 +1649,8 @@ Se tem julgamento, é argumentação!
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="Injuntivo e Dialogal"
                     tituloAula="Tipologia Textual"
@@ -1679,8 +1679,8 @@ Se tem julgamento, é argumentação!
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-blue-500/5 rounded-2xl border border-indigo-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       Identificando o Imperativo
@@ -1705,8 +1705,8 @@ Se tem julgamento, é argumentação!
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -1808,7 +1808,7 @@ Imperativo na prova, injunção aflora!
               {
                 titulo: "Crônica (Gênero)",
                 icone: "☕",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       Normalmente, uma crônica parte de um fato do cotidiano
@@ -1823,7 +1823,7 @@ Imperativo na prova, injunção aflora!
               {
                 titulo: "Relatório Técnico (Gênero)",
                 icone: "📊",
-                conteudo: (
+                conteudo:(
                   <div className="space-y-4">
                     <p className="text-muted-foreground">
                       Muito usado na Petrobras. Tem como base o{" "}
@@ -1852,8 +1852,8 @@ Imperativo na prova, injunção aflora!
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -1869,8 +1869,8 @@ Imperativo na prova, injunção aflora!
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="Gêneros vs. Tipos"
                     tituloAula="Tipologia Textual"
@@ -1899,8 +1899,8 @@ Imperativo na prova, injunção aflora!
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-amber-500/5 to-orange-500/5 rounded-2xl border border-amber-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       O Guarda-Chuva
@@ -1922,8 +1922,8 @@ Imperativo na prova, injunção aflora!
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -2021,8 +2021,8 @@ Gênero e tipo, essa é a lição!
               {
                 id: "video",
                 label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
+                icon:LuPlayCircle,
+                content:(
                   <div className="w-full flex flex-col items-center py-6">
                     <div className="w-full max-w-3xl">
                       <VideoModal
@@ -2038,8 +2038,8 @@ Gênero e tipo, essa é a lição!
               {
                 id: "resumo",
                 label: "Resumo Visual",
-                icon: LuBookOpen,
-                content: (
+                icon:LuBookOpen,
+                content:(
                   <ModuleSummaryCarouselNew
                     moduloNome="Laboratório CESGRANRIO"
                     tituloAula="Tipologia Textual"
@@ -2068,8 +2068,8 @@ Gênero e tipo, essa é a lição!
               {
                 id: "visual",
                 label: "Macete Visual",
-                icon: LuBrain,
-                content: (
+                icon:LuBrain,
+                content:(
                   <div className="text-center p-8 bg-gradient-to-br from-violet-500/5 to-fuchsia-500/5 rounded-2xl border border-violet-500/10">
                     <h3 className="text-xl font-bold text-foreground mb-4">
                       Hora do Show
@@ -2092,8 +2092,8 @@ Gênero e tipo, essa é a lição!
               {
                 id: "audio",
                 label: "Áudio Resumo",
-                icon: LuMusic,
-                content: (
+                icon:LuMusic,
+                content:(
                   <div className="w-full flex justify-center py-4">
                     <div className="w-full max-w-md">
                       <MusicPlayerCard
@@ -2178,3 +2178,15 @@ Imperativo manda, é a tipologia em ação!
     </AulaTemplate>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
