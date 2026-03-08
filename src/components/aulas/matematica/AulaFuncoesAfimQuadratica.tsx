@@ -11,6 +11,8 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
+  FunctionGraph,
+  type FunctionPlot,
 } from "../shared";
 
 import {
@@ -274,6 +276,38 @@ export default function AulaFuncoesAfimQuadratica({
                 },
               ]}
             />
+
+            <FunctionGraph
+              title="Funções Afins: Variação da Inclinação"
+              functions={[
+                {
+                  id: "linear1",
+                  label: "f(x) = x",
+                  color: "#3b82f6",
+                  fn: (x) => x,
+                  strokeWidth: 2,
+                },
+                {
+                  id: "linear2",
+                  label: "f(x) = 2x",
+                  color: "#ef4444",
+                  fn: (x) => 2 * x,
+                  strokeWidth: 2,
+                },
+                {
+                  id: "linear3",
+                  label: "f(x) = x/2",
+                  color: "#10b981",
+                  fn: (x) => x / 2,
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={-5}
+              xMax={5}
+              yMin={-5}
+              yMax={10}
+              points={250}
+            />
           </section>
 
           <QuizInterativo
@@ -364,6 +398,31 @@ export default function AulaFuncoesAfimQuadratica({
                   ),
                 },
               ]}
+            />
+
+            <FunctionGraph
+              title="Parábolas: Concavidade e Simetria"
+              functions={[
+                {
+                  id: "parabola1",
+                  label: "f(x) = x²",
+                  color: "#3b82f6",
+                  fn: (x) => x * x,
+                  strokeWidth: 2,
+                },
+                {
+                  id: "parabola2",
+                  label: "f(x) = -x²",
+                  color: "#ef4444",
+                  fn: (x) => -(x * x),
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={-5}
+              xMax={5}
+              yMin={-25}
+              yMax={25}
+              points={250}
             />
           </section>
 
@@ -580,6 +639,38 @@ export default function AulaFuncoesAfimQuadratica({
                 },
               ]}
             />
+
+            <FunctionGraph
+              title="Comparação: Funções Afim vs Quadrática"
+              functions={[
+                {
+                  id: "afim",
+                  label: "f(x) = x",
+                  color: "#3b82f6",
+                  fn: (x) => x,
+                  strokeWidth: 2,
+                },
+                {
+                  id: "quadratica",
+                  label: "f(x) = x²",
+                  color: "#ef4444",
+                  fn: (x) => x * x,
+                  strokeWidth: 2,
+                },
+                {
+                  id: "afimOffset",
+                  label: "f(x) = 2x + 1",
+                  color: "#10b981",
+                  fn: (x) => 2 * x + 1,
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={-4}
+              xMax={4}
+              yMin={-5}
+              yMax={16}
+              points={250}
+            />
           </section>
 
           <QuizInterativo
@@ -716,6 +807,31 @@ export default function AulaFuncoesAfimQuadratica({
                   ),
                 },
               ]}
+            />
+
+            <FunctionGraph
+              title="Interseção de Reta e Parábola"
+              functions={[
+                {
+                  id: "reta",
+                  label: "f(x) = x + 1",
+                  color: "#3b82f6",
+                  fn: (x) => x + 1,
+                  strokeWidth: 2,
+                },
+                {
+                  id: "parabola",
+                  label: "f(x) = x² - 2",
+                  color: "#ef4444",
+                  fn: (x) => x * x - 2,
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={-3}
+              xMax={3}
+              yMin={-3}
+              yMax={7}
+              points={250}
             />
           </section>
 

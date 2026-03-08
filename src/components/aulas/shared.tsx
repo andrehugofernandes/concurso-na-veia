@@ -2573,16 +2573,16 @@ export function StickyModuleNav({
         isStickyNavPinned && !isTemporaryHeaderVisible
           ? "top-0"
           : "top-16 md:top-20",
-        "w-full",
+        "w-full px-6 md:px-8",
       )}
     >
       {/* Inner nav bar — background, blur, border live here */}
       <div
         className={cn(
-          "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/50 transition-all duration-300",
+          "mx-auto max-w-7xl bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border border-border/80 rounded-full transition-all duration-300 px-2 md:px-4",
           isStickyNavPinned && !isTemporaryHeaderVisible
-            ? "shadow-md py-2"
-            : "shadow-sm py-3",
+            ? "shadow-[0_15px_35px_rgba(0,0,0,0.06)] py-1.5"
+            : "shadow-[0_10px_25px_rgba(0,0,0,0.04)] py-2.5",
         )}
       >
         {/* ── MOBILE: apenas module tabs + setas (altura original) ── */}
@@ -2593,7 +2593,7 @@ export function StickyModuleNav({
             disabled={!canGoLeft}
             aria-label="Módulos anteriores"
             className={cn(
-              "w-10 h-10 shrink-0 flex items-center justify-center rounded-xl border transition-all duration-200",
+              "w-8 h-8 shrink-0 flex items-center justify-center rounded-xl border transition-all duration-200",
               canGoLeft
                 ? "border-border/50 bg-background text-foreground/80 shadow-sm"
                 : "border-transparent bg-transparent text-transparent pointer-events-none",
@@ -2603,7 +2603,7 @@ export function StickyModuleNav({
           </button>
 
           {/* TabsList mobile — só as TabsTriggers */}
-          <TabsList className="flex flex-1 h-auto p-1 bg-muted/20 border border-border/10 rounded-2xl gap-1 shadow-inner min-w-0">
+          <TabsList className="flex flex-1 h-auto p-1.5 bg-muted/20 border border-border/10 rounded-2xl gap-2 shadow-inner min-w-0">
             {modules.map((mod, index) => {
               const isVisible =
                 index >= effectiveStart && index < effectiveStart + PAGE_SIZE;
@@ -2612,7 +2612,7 @@ export function StickyModuleNav({
                   key={mod.id}
                   value={mod.id}
                   className={cn(
-                    "flex-1 py-1.5 px-3 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
+                    "flex-1 py-1.5 px-4 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
                     !isVisible && "hidden",
                   )}
                 >
@@ -2645,7 +2645,7 @@ export function StickyModuleNav({
             disabled={!canGoRight}
             aria-label="Próximos módulos"
             className={cn(
-              "w-10 h-10 shrink-0 flex items-center justify-center rounded-xl border transition-all duration-200",
+              "w-8 h-8 shrink-0 flex items-center justify-center rounded-xl border transition-all duration-200",
               canGoRight
                 ? "border-border/50 bg-background text-foreground/80 shadow-sm"
                 : "border-transparent bg-transparent text-transparent pointer-events-none",
