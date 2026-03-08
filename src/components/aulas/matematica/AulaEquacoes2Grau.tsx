@@ -13,6 +13,8 @@ import {
   AulaTemplate,
   ModuleSectionHeader,
   ModuleSummaryCarouselNew,
+  FunctionGraph,
+  type FunctionPlot,
 } from "../shared";
 
 import {
@@ -305,6 +307,38 @@ export default function AulaEquacoes2Grau({
             />
           </section>
 
+          <FunctionGraph
+            title="Parábolas: Posição e Forma"
+            functions={[
+              {
+                id: "func1",
+                label: "y = x²",
+                color: "#3b82f6",
+                fn: (x) => x * x,
+                strokeWidth: 2,
+              },
+              {
+                id: "func2",
+                label: "y = x² - 2",
+                color: "#ef4444",
+                fn: (x) => x * x - 2,
+                strokeWidth: 2,
+              },
+              {
+                id: "func3",
+                label: "y = (x-1)²",
+                color: "#10b981",
+                fn: (x) => (x - 1) * (x - 1),
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-4}
+            xMax={4}
+            yMin={-3}
+            yMax={15}
+            points={250}
+          />
+
           <QuizInterativo
             questoes={quizM1}
             titulo="Fixação - Módulo 1"
@@ -391,6 +425,31 @@ export default function AulaEquacoes2Grau({
             />
           </section>
 
+          <FunctionGraph
+            title="Visualizando as Raízes Reais"
+            functions={[
+              {
+                id: "func1",
+                label: "y = x² - 4",
+                color: "#3b82f6",
+                fn: (x) => x * x - 4,
+                strokeWidth: 2,
+              },
+              {
+                id: "func2",
+                label: "y = x² - 2x - 3",
+                color: "#ef4444",
+                fn: (x) => x * x - 2 * x - 3,
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-3}
+            xMax={5}
+            yMin={-5}
+            yMax={10}
+            points={250}
+          />
+
           <QuizInterativo
             questoes={quizM2}
             titulo="Fixação - Módulo 2"
@@ -464,6 +523,31 @@ export default function AulaEquacoes2Grau({
               ]}
             />
           </section>
+
+          <FunctionGraph
+            title="Vértice e Eixo de Simetria"
+            functions={[
+              {
+                id: "func1",
+                label: "y = -(x-1)² + 4",
+                color: "#3b82f6",
+                fn: (x) => -((x - 1) * (x - 1)) + 4,
+                strokeWidth: 2,
+              },
+              {
+                id: "func2",
+                label: "y = x²",
+                color: "#ef4444",
+                fn: (x) => x * x,
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-3}
+            xMax={4}
+            yMin={-2}
+            yMax={5}
+            points={250}
+          />
 
           <QuizInterativo
             questoes={quizM3}
@@ -594,6 +678,31 @@ export default function AulaEquacoes2Grau({
               variant="violet"
             />
           </section>
+
+          <FunctionGraph
+            title="Análise Completa de Parábolas"
+            functions={[
+              {
+                id: "func1",
+                label: "y = x² - 6x + 5",
+                color: "#3b82f6",
+                fn: (x) => x * x - 6 * x + 5,
+                strokeWidth: 2,
+              },
+              {
+                id: "func2",
+                label: "y = -x² + 4",
+                color: "#ef4444",
+                fn: (x) => -(x * x) + 4,
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-2}
+            xMax={6}
+            yMin={-3}
+            yMax={5}
+            points={250}
+          />
 
           <QuizInterativo
             questoes={quizM5}

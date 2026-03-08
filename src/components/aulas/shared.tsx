@@ -2571,18 +2571,17 @@ export function StickyModuleNav({
       className={cn(
         "sticky z-40 overflow-x-clip transition-all duration-300",
         isStickyNavPinned && !isTemporaryHeaderVisible
-          ? "top-0"
-          : "top-16 md:top-20",
-        "w-full px-6 md:px-8",
+          ? "top-0 w-full px-0"
+          : "top-16 md:top-20 w-full px-6 md:px-8",
       )}
     >
       {/* Inner nav bar — background, blur, border live here */}
       <div
         className={cn(
-          "mx-auto max-w-7xl bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border border-border/80 rounded-full transition-all duration-300 px-2 md:px-4",
+          "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-500",
           isStickyNavPinned && !isTemporaryHeaderVisible
-            ? "shadow-[0_15px_35px_rgba(0,0,0,0.06)] py-1.5"
-            : "shadow-[0_10px_25px_rgba(0,0,0,0.04)] py-2.5",
+            ? "w-full rounded-none border-b border-border/50 shadow-md py-1.5 px-3 md:px-6"
+            : "mx-auto max-w-7xl rounded-full border border-border/80 shadow-[0_15px_35px_rgba(0,0,0,0.06)] py-2.5 px-2 md:px-4",
         )}
       >
         {/* ── MOBILE: apenas module tabs + setas (altura original) ── */}
