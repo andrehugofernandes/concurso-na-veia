@@ -1,56 +1,64 @@
-# 🎓 AULA COMPLETA - REESCRITA DE FRASES (HTML V2.0)
-> **⏱️ Tempo de Estudo Estimado: 45 min**
+# 🎓 AULA COMPLETA - REESCRITA DE FRASES (PREMIUM v2.0)
+
+> **⏱️ Tempo de Estudo Estimado: 90 min**
+> **🎯 Foco: Padrão CESGRANRIO / Petrobras**
 
 ---
 
 ## 🎨 PADRÕES DE INTERFACE (UI/UX)
+
 > [!IMPORTANT]
-> **Padrões de Layout:**
-> 1. **Container principal:** `space-y-12`.
-> 2. **Container da aula (`<main>`):** `container mx-auto px-6 py-8 max-w-6xl`.
-> 3. **Cada TabsContent:** `space-y-16`.
-> 4. **Seções de conteúdo:** Card `bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm`.
-> 5. **Fontes Gerais:** Corpo: `text-base md:text-lg`.
-> 6. **Banners de Módulo:** Gradientes variando do `primary`.
-> 7. **Lógica Modular:** 3 Módulos com desbloqueio via quiz (70% de acerto).
+> **Diferenciais Visuais:**
+>
+> 1. **Transformação de Voz:** Use `ComparisonSide` para mostrar Ativa vs Passiva.
+> 2. **Dossiê de Discurso:** `ContentAccordion` para Discurso Direto vs Indireto.
+> 3. **Protocolo C.E.D.E.:** Em todos os módulos para garantir densidade e aplicação prática.
 
 ---
 
-## 📚 ESTRUTURA PEDAGÓGICA (CONTEÚDO)
+## 📄 COMPONENTE REACT: AULA_REESCRITA_FRASES.TSX
 
-### Módulo 1: Fundamentos da Reescritura
-- **Teoria:** O que a Cesgranrio cobra? (Manutenção do Sentido Original + Correção Gramatical).
-- **Semântica:** Sinônimos vs. Contexto.
-- **Vantagem Competitiva:** Identificando mudanças sutis que alteram o sentido.
+### MODULE_DEFS (10 Módulos)
 
-### Módulo 2: Técnicas e Transformações
-- **Vozes Verbais:** Transposição de Ativa para Passiva (e vice-versa).
-- **Discurso:** Direto para Indireto.
-- **Substituição de Conectivos:** Mantendo o valor lógico (Causal, Concessivo, Adversativo).
-- **Nominalização:** Transformação de orações em substantivos.
-
-### Módulo 3: Prática de Elite
-- **Armadilhas da Cesgranrio:** Inversão de termos, omissão de complementos, alteração de tempos verbais.
-- **Desafio Prático:** Laboratório de Reescrita (Certo vs. Errado com Comentários).
-- **Quiz Final:** Simulado de Prova.
+1. **Módulo 1:** A Arte da Paráfrase (Sentido vs Gramática)
+2. **Módulo 2:** Sinonímia e Campo Semântico (Troca de Palavras)
+3. **Módulo 3:** Vozes Verbais (A Travessia Ativa/Passiva)
+4. **Módulo 4:** O Discurso sob Controle (Direto/Indireto)
+5. **Módulo 5:** Nominalização e Verbalização (Troca de Classes)
+6. **Módulo 6:** Equivalência Conjutiva (Condição e Causa)
+7. **Módulo 7:** O Duelo Concessivo/Adversativo (Embora vs Mas)
+8. **Módulo 8:** Pontuação e Reestruturação (Sintaxe e Sentido)
+9. **Módulo 9:** Laboratório CESGRANRIO (Padrões de Elite)
+10. **Módulo 10:** Arena de Elite (Simulado Final)
 
 ---
 
-## 🛠️ COMPONENTES OBRIGATÓRIOS
+## 📚 ESTRUTURA DOS MÓDULOS (DETALHE TÉCNICO)
 
-1. **ModuleBanner:** No início de cada aba.
-2. **AlertBox:** Para "Pulo do Gato" e "Cuidado!".
-3. **CardCarousel:** Para listar tipos de transformações.
-4. **ContentAccordion:** Para detalhar técnicas de reescrita.
-5. **FlipCard:** Para o Laboratório de Gabarito (Desafio Prático).
-6. **QuizInterativo:** Com pools de 4 questões por módulo.
+### Módulo 1: A Arte da Paráfrase
+
+- **C:** O que é reescrever sem perder o sentido.
+- **E:** "O duto quebrou" -> "Houve ruptura no duto".
+- **D:** Paráfrase = Dizer o mesmo com outras palavras.
+- **E:** Cuidado com a extrapolação (adicionar ideias novas).
+
+### Módulo 3: Vozes Verbais
+
+- **Foco:** A inversão do sujeito e objeto mantendo o tempo verbal.
+- **Componente:** `ComparisonSide`.
+- **Regra:** Verbo SER (auxiliar) deve estar no mesmo tempo do verbo principal da ativa.
+
+### Módulo 7: Embora vs Mas
+
+- **Foco:** A grande questão da banca.
+- **Dica:** Ao trocar, o verbo costuma mudar de "Estudou" (Indicativo) para "Estudasse" (Subjuntivo).
 
 ---
 
-## 📝 ESCOPO TÉCNICO (CÓDIGO)
+## 🎯 CHECKLIST DE ENTREGA - COMPONENTE .TSX
 
-O componente deve seguir a estrutura de `AulaInterpretacaoTexto.tsx`, utilizando os hooks de progresso e as definições modulares padrão do sistema.
-- **Materia:** 'portugues'
-- **Topico:** 'reescritura'
-- **Pool de Questões:** Mínimo de 12 questões (4 por quiz).
-- **Pool de Desafios:** Mínimo de 4 desafios no Laboratório.
+- [ ] Importar pools de `reescrita-frases-quizzes.ts`.
+- [ ] Implementar 10 módulos com `ModuleBanner` e gradientes Premium.
+- [ ] Aplicar `ContentAccordion` com slides C.E.D.E.
+- [ ] Integrar `ComparisonSide` para Vozes e Discursos.
+- [ ] Garantir que o `QuizInterativo` chame o pool correto de cada módulo.

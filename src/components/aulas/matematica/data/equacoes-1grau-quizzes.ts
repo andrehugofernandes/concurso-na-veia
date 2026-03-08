@@ -48,3 +48,28 @@ export const QUIZ_M5_FINAL: QuizQuestion[] = [
   { id: 504, pergunta: "Para que valor de k a equação 2x + k = 3x - 5 tem solução x = 7?", opcoes: [{ label: "A", valor: "k = 2" }, { label: "B", valor: "k = 7" }, { label: "C", valor: "k = 9" }, { label: "D", valor: "k = 12" }, { label: "E", valor: "k = 16" }], correta: "C", explicacao: "Substituindo x=7: 14 + k = 21 - 5 → 14 + k = 16 → k = 2. ATENÇÃO: verificar: 2(7)+2 = 16, 3(7)-5 = 16 ✓. k=2." },
   { id: 505, pergunta: "Dois trens partem ao mesmo tempo de cidades distantes 600 km, em sentidos contrários, a 80 km/h e 120 km/h. Se encontrarão após:", opcoes: [{ label: "A", valor: "2h" }, { label: "B", valor: "2,5h" }, { label: "C", valor: "3h" }, { label: "D", valor: "3,5h" }, { label: "E", valor: "4h" }], correta: "C", explicacao: "Velocidade de aproximação: 80+120 = 200 km/h. Tempo: 600/200 = 3h. Em movimento de encontro, somam-se as velocidades." },
 ];
+// ═══ MÓDULO 6 — SISTEMAS 3X3 ═══
+export const QUIZ_M6_SISTEMAS_AVANCADOS: QuizQuestion[] = [
+  { id: 601, pergunta: "Em um sistema 3x3 com solução única, os três planos se interceptam em:", opcoes: [{ label: "A", valor: "Uma reta" }, { label: "B", valor: "Um ponto" }, { label: "C", valor: "Um plano" }, { label: "D", valor: "Nenhum lugar" }, { label: "E", valor: "Infinitos pontos" }], correta: "B", explicacao: "Um sistema 3x3 com solução única representa o cruzamento de três planos em um único ponto no espaço." },
+  { id: 602, pergunta: "Ao resolver um sistema e encontrar 0 = 5, o sistema é classificado como:", opcoes: [{ label: "A", valor: "SPD (Possível e Determinado)" }, { label: "B", valor: "SPI (Possível e Indeterminado)" }, { label: "C", valor: "SI (Impossível)" }, { label: "D", valor: "Equação de 2º Grau" }, { label: "E", valor: "Nulo" }], correta: "C", explicacao: "Um absurdo matemático (0 = 5) indica que não há valores que satisfaçam as equações simultaneamente, logo o sistema é Impossível (SI)." },
+];
+
+// ═══ MÓDULO 7 — VERIFICAÇÃO ═══
+export const QUIZ_M7_VERIFICACAO: QuizQuestion[] = [
+  { id: 701, pergunta: "Verificar uma solução consiste em:", opcoes: [{ label: "A", valor: "Resolver a equação novamente" }, { label: "B", valor: "Substituir o valor na equação original" }, { label: "C", valor: "Trocar o sinal do x" }, { label: "D", valor: "Multiplicar por zero" }, { label: "E", valor: "Ignorar o resultado" }], correta: "B", explicacao: "A verificação (ou prova real) é feita substituindo o valor encontrado na equação original para checar se a igualdade se mantém." },
+];
+
+// ═══ MÓDULO 8 — PEGADINHAS ═══
+export const QUIZ_M8_PEGADINHAS: QuizQuestion[] = [
+  { id: 801, pergunta: "Qual o erro comum ao resolver -x > 5?", opcoes: [{ label: "A", valor: "Esquecer de somar 5" }, { label: "B", valor: "Não inverter o sinal da desigualdade" }, { label: "C", valor: "Mudar o valor numérico" }, { label: "D", valor: "Dividir por 2" }, { label: "E", valor: "Trocar x por y" }], correta: "B", explicacao: "Ao multiplicar ou dividir por -1, o sinal de '>' deve obrigatoriamente inverter para '<'. Resultado: x < -5." },
+];
+
+// ═══ MÓDULO 9 — PETROBRAS ESPECÍFICO ═══
+export const QUIZ_M9_PETROBRASESPECIFICO: QuizQuestion[] = [
+  { id: 901, pergunta: "Um problema Petrobras de 'mistura de óleos' geralmente resulta em:", opcoes: [{ label: "A", valor: "Uma equação de 2º grau" }, { label: "B", valor: "Um sistema de equações de 1º grau" }, { label: "C", valor: "Um logaritmo" }, { label: "D", valor: "Uma matriz 4x4" }, { label: "E", valor: "Uma integral" }], correta: "B", explicacao: "Problemas de misturas, onde você tem quantidades e concentrações diferentes, caem invariavelmente em sistemas lineares de 1º grau." },
+];
+
+// ═══ MÓDULO 10 — SIMULADO MESTRE ═══
+export const QUIZ_M10_SIMULADO_MESTRE: QuizQuestion[] = [
+  { id: 1001, pergunta: "Se 3x + 2y = 12 e x - y = 4, o valor de x é:", opcoes: [{ label: "A", valor: "2" }, { label: "B", valor: "3" }, { label: "C", valor: "4" }, { label: "D", valor: "5" }, { label: "E", valor: "0" }], correta: "C", explicacao: "Da segunda: y = x - 4. Na primeira: 3x + 2(x-4) = 12 → 5x = 20 → x = 4. Logo, y = 0. Verificação: 4-0=4 ✓." },
+];

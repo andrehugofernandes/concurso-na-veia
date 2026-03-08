@@ -30,14 +30,24 @@ import {
   QUIZ_M3_EQUACOES,
   QUIZ_M4_APLICACOES,
   QUIZ_M5_FINAL,
+  QUIZ_M6_LOGARITMO_E,
+  QUIZ_M7_TRANSFORMACOES,
+  QUIZ_M8_SISTEMAS,
+  QUIZ_M9_PETROBRASESPECIFICO,
+  QUIZ_M10_SIMULADO_MESTRE,
 } from "./data/funcoes-exponenciais-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "MÃ³dulo 1", title: "PotenciaÃ§Ã£o Base" },
-  { id: "modulo-2", label: "MÃ³dulo 2", title: "EquaÃ§Ãµes Exponenciais" },
-  { id: "modulo-3", label: "MÃ³dulo 3", title: "AplicaÃ§Ãµes Industriais" },
-  { id: "modulo-4", label: "MÃ³dulo 4", title: "InequaÃ§Ãµes" },
-  { id: "modulo-5", label: "MÃ³dulo 5", title: "Desafio Final" },
+  { id: "modulo-1", label: "Módulo 1", title: "Potenciação e Bases" },
+  { id: "modulo-2", label: "Módulo 2", title: "Gráficos e Comportamento" },
+  { id: "modulo-3", label: "Módulo 3", title: "Equações Exponenciais" },
+  { id: "modulo-4", label: "Módulo 4", title: "Crescimento e Decaimento" },
+  { id: "modulo-5", label: "Módulo 5", title: "Desafio Parcial" },
+  { id: "modulo-6", label: "Módulo 6", title: "Número e e Logaritmo" },
+  { id: "modulo-7", label: "Módulo 7", title: "Transformações" },
+  { id: "modulo-8", label: "Módulo 8", title: "Sistemas Exponenciais" },
+  { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
 export default function AulaFuncoesExponenciais({
@@ -61,19 +71,34 @@ export default function AulaFuncoesExponenciais({
     new Set(),
   );
 
-  const [quizConceito] = useState(() =>
+  const [quizM1] = useState(() =>
     getRandomQuestions(QUIZ_M1_POTENCIACAO, 4),
   );
-  const [quizEquacoes] = useState(() =>
-    getRandomQuestions(QUIZ_M3_EQUACOES, 4),
-  );
-  const [quizAplicacoes] = useState(() =>
-    getRandomQuestions(QUIZ_M4_APLICACOES, 4),
-  );
-  const [quizInequacoes] = useState(() =>
+  const [quizM2] = useState(() =>
     getRandomQuestions(QUIZ_M2_GRAFICO, 4),
   );
-  const [quizFinal] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 5));
+  const [quizM3] = useState(() =>
+    getRandomQuestions(QUIZ_M3_EQUACOES, 4),
+  );
+  const [quizM4] = useState(() =>
+    getRandomQuestions(QUIZ_M4_APLICACOES, 4),
+  );
+  const [quizM5] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 4));
+  const [quizM6] = useState(() =>
+    getRandomQuestions(QUIZ_M6_LOGARITMO_E, 4),
+  );
+  const [quizM7] = useState(() =>
+    getRandomQuestions(QUIZ_M7_TRANSFORMACOES, 4),
+  );
+  const [quizM8] = useState(() =>
+    getRandomQuestions(QUIZ_M8_SISTEMAS, 4),
+  );
+  const [quizM9] = useState(() =>
+    getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 4),
+  );
+  const [quizM10] = useState(() =>
+    getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 5),
+  );
 
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
   const [showCompletionBadge, setShowCompletionBadge] = useState(false);
@@ -230,7 +255,7 @@ export default function AulaFuncoesExponenciais({
           </section>
 
           <QuizInterativo
-            questoes={quizConceito}
+            questoes={quizM1}
             titulo="FixaÃ§Ã£o - PotenciaÃ§Ã£o"
             numero={1}
             variant="blue"
@@ -309,7 +334,7 @@ export default function AulaFuncoesExponenciais({
           </section>
 
           <QuizInterativo
-            questoes={quizEquacoes}
+            questoes={quizM3}
             titulo="FixaÃ§Ã£o - EquaÃ§Ãµes"
             numero={2}
             variant="emerald"
@@ -367,7 +392,7 @@ export default function AulaFuncoesExponenciais({
           </section>
 
           <QuizInterativo
-            questoes={quizAplicacoes}
+            questoes={quizM4}
             titulo="FixaÃ§Ã£o - AplicaÃ§Ãµes"
             numero={3}
             variant="amber"
@@ -441,7 +466,7 @@ export default function AulaFuncoesExponenciais({
           </section>
 
           <QuizInterativo
-            questoes={quizInequacoes}
+            questoes={quizM2}
             titulo="FixaÃ§Ã£o - InequaÃ§Ãµes"
             numero={4}
             variant="cyan"
@@ -475,12 +500,126 @@ export default function AulaFuncoesExponenciais({
           ) : (
             <section id="quiz-modulo-5" className="mt-8">
               <QuizInterativo
-                questoes={quizFinal}
+                questoes={quizM5}
                 titulo="Simulado Elite - Exponenciais"
                 icone="ðŸ†"
                 numero={5}
                 variant="slate"
                 onComplete={(score) => handleModuleComplete("modulo-5", score)}
+              />
+            </section>
+          )}
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 6 ═══ */}
+      <TabsContent value="modulo-6" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={6}
+            titulo="Número e e Logaritmo Natural"
+            descricao="A base mais importante do cálculo: Euler e seus mistérios."
+            gradiente="bg-gradient-to-br from-purple-600 to-pink-700"
+          />
+          <QuizInterativo
+            questoes={quizM6}
+            titulo="Fixação - Módulo 6"
+            numero={6}
+            variant="violet"
+            icone="📊"
+            onComplete={(score) => handleModuleComplete("modulo-6", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 7 ═══ */}
+      <TabsContent value="modulo-7" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={7}
+            titulo="Transformações e Deslocamentos"
+            descricao="Manipulando gráficos: translações, ampliações e reflexões."
+            gradiente="bg-gradient-to-br from-cyan-600 to-blue-700"
+          />
+          <QuizInterativo
+            questoes={quizM7}
+            titulo="Fixação - Módulo 7"
+            numero={7}
+            variant="cyan"
+            icone="📈"
+            onComplete={(score) => handleModuleComplete("modulo-7", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 8 ═══ */}
+      <TabsContent value="modulo-8" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={8}
+            titulo="Sistemas Exponenciais"
+            descricao="Combinando múltiplas bases e resolvendo problemas complexos."
+            gradiente="bg-gradient-to-br from-orange-600 to-red-700"
+          />
+          <QuizInterativo
+            questoes={quizM8}
+            titulo="Fixação - Módulo 8"
+            numero={8}
+            variant="amber"
+            icone="🔗"
+            onComplete={(score) => handleModuleComplete("modulo-8", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 9 ═══ */}
+      <TabsContent value="modulo-9" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={9}
+            titulo="Aplicações Petrobras"
+            descricao="Decaimento radioativo, depreciação e otimização em operações."
+            gradiente="bg-gradient-to-br from-amber-600 to-yellow-700"
+          />
+          <QuizInterativo
+            questoes={quizM9}
+            titulo="Fixação - Módulo 9"
+            numero={9}
+            variant="amber"
+            icone="⚙️"
+            onComplete={(score) => handleModuleComplete("modulo-9", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 10 ═══ */}
+      <TabsContent value="modulo-10" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={10}
+            titulo="Simulado Mestre"
+            descricao="Teste seu domínio completo de funções exponenciais."
+            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+          />
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-black">Mestre das Exponenciais!</h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                Você dominou completamente as Funções Exponenciais. Crescimento, decaimento, transformações e aplicações práticas — tudo sob controle!
+              </p>
+            </div>
+          ) : (
+            <section id="quiz-modulo-10" className="mt-8">
+              <QuizInterativo
+                questoes={quizM10}
+                titulo="Simulado Mestre - Exponenciais"
+                icone="🏆"
+                numero={10}
+                variant="slate"
+                onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>
           )}

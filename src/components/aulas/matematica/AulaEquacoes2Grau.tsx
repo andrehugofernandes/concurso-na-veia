@@ -29,14 +29,24 @@ import {
   QUIZ_M3_AVANCADAS,
   QUIZ_M4_PROBLEMAS,
   QUIZ_M5_FINAL,
+  QUIZ_M6_SOMA_PRODUTO,
+  QUIZ_M7_GRAFICOS,
+  QUIZ_M8_REVERSA,
+  QUIZ_M9_PETROBRASESPECIFICO,
+  QUIZ_M10_SIMULADO_MESTRE,
 } from "./data/equacoes-2grau-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", title: "Bhaskara e Discriminante" },
-  { id: "modulo-2", label: "Módulo 2", title: "Soma e Produto (Atalhos)" },
-  { id: "modulo-3", label: "Módulo 3", title: "Problemas Práticos" },
-  { id: "modulo-4", label: "Módulo 4", title: "Gráficos e Otimização" },
-  { id: "modulo-5", label: "Módulo 5", title: "Desafio Final" },
+  { id: "modulo-1", label: "Módulo 1", title: "Conceitos Fundamentais" },
+  { id: "modulo-2", label: "Módulo 2", title: "Fórmula de Bhaskara" },
+  { id: "modulo-3", label: "Módulo 3", title: "Equações Avançadas" },
+  { id: "modulo-4", label: "Módulo 4", title: "Problemas Contextualizados" },
+  { id: "modulo-5", label: "Módulo 5", title: "Desafio Parcial" },
+  { id: "modulo-6", label: "Módulo 6", title: "Soma e Produto (Atalhos)" },
+  { id: "modulo-7", label: "Módulo 7", title: "Gráficos e Parábolas" },
+  { id: "modulo-8", label: "Módulo 8", title: "Resolução Reversa" },
+  { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
 export default function AulaEquacoes2Grau({
@@ -61,10 +71,15 @@ export default function AulaEquacoes2Grau({
   );
 
   const [quizM1, setQuizM1] = useState<typeof QUIZ_M1_CONCEITOS>([]);
-  const [quizM2, setQuizM2] = useState<typeof QUIZ_M2_BHASKARA>([]); // Map this to M2 quiz conceptually
-  const [quizM3, setQuizM3] = useState<typeof QUIZ_M3_AVANCADAS>([]); // Problemas
-  const [quizM4, setQuizM4] = useState<typeof QUIZ_M4_PROBLEMAS>([]); // Parabola
-  const [quizFinal, setQuizFinal] = useState<typeof QUIZ_M5_FINAL>([]);
+  const [quizM2, setQuizM2] = useState<typeof QUIZ_M2_BHASKARA>([]);
+  const [quizM3, setQuizM3] = useState<typeof QUIZ_M3_AVANCADAS>([]);
+  const [quizM4, setQuizM4] = useState<typeof QUIZ_M4_PROBLEMAS>([]);
+  const [quizM5, setQuizM5] = useState<typeof QUIZ_M5_FINAL>([]);
+  const [quizM6, setQuizM6] = useState<typeof QUIZ_M6_SOMA_PRODUTO>([]);
+  const [quizM7, setQuizM7] = useState<typeof QUIZ_M7_GRAFICOS>([]);
+  const [quizM8, setQuizM8] = useState<typeof QUIZ_M8_REVERSA>([]);
+  const [quizM9, setQuizM9] = useState<typeof QUIZ_M9_PETROBRASESPECIFICO>([]);
+  const [quizM10, setQuizM10] = useState<typeof QUIZ_M10_SIMULADO_MESTRE>([]);
 
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
   const [showCompletionBadge, setShowCompletionBadge] = useState(false);
@@ -100,7 +115,12 @@ export default function AulaEquacoes2Grau({
       setQuizM2(getRandomQuestions(QUIZ_M2_BHASKARA, 4));
       setQuizM3(getRandomQuestions(QUIZ_M3_AVANCADAS, 4));
       setQuizM4(getRandomQuestions(QUIZ_M4_PROBLEMAS, 4));
-      setQuizFinal(getRandomQuestions(QUIZ_M5_FINAL, 5));
+      setQuizM5(getRandomQuestions(QUIZ_M5_FINAL, 4));
+      setQuizM6(getRandomQuestions(QUIZ_M6_SOMA_PRODUTO, 4));
+      setQuizM7(getRandomQuestions(QUIZ_M7_GRAFICOS, 4));
+      setQuizM8(getRandomQuestions(QUIZ_M8_REVERSA, 4));
+      setQuizM9(getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 4));
+      setQuizM10(getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 5));
     }
   }, [loading]);
 
@@ -561,8 +581,246 @@ export default function AulaEquacoes2Grau({
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={5}
-            titulo="Desafio Supremo"
-            descricao="Reúna tudo o que aprendeu em problemas brutais de equações polinomiais de grau 2."
+            titulo="Desafio Parcial"
+            descricao="Consolidando os conhecimentos dos primeiros 4 módulos."
+            gradiente="bg-gradient-to-br from-indigo-600 to-purple-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Revisão Estratégica"
+              description="Antes de avançar para técnicas mais sofisticadas, teste seu domínio."
+              variant="violet"
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM5}
+            titulo="Fixação - Módulo 5"
+            numero={5}
+            variant="violet"
+            icone="📊"
+            onComplete={(score) => handleModuleComplete("modulo-5", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 6 ═══ */}
+      <TabsContent value="modulo-6" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={6}
+            titulo="Soma e Produto"
+            descricao="Os atalhos dos ninjas: descubra raízes sem Bhaskara."
+            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Relações de Vieta"
+              description="Soma e produto das raízes."
+              variant="emerald"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "A Relação Mágica",
+                  icone: <LuLightbulb />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed">
+                        Para a equação ax² + bx + c = 0:
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="border border-emerald-500/30 bg-emerald-500/10 p-4 rounded-lg text-center">
+                          <div className="text-emerald-700 font-black mb-1">
+                            SOMA DAS RAÍZES
+                          </div>
+                          <p className="font-mono text-lg">S = -b/a</p>
+                        </div>
+                        <div className="border border-emerald-500/30 bg-emerald-500/10 p-4 rounded-lg text-center">
+                          <div className="text-emerald-700 font-black mb-1">
+                            PRODUTO DAS RAÍZES
+                          </div>
+                          <p className="font-mono text-lg">P = c/a</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM6}
+            titulo="Fixação - Módulo 6"
+            numero={6}
+            variant="emerald"
+            icone="🎯"
+            onComplete={(score) => handleModuleComplete("modulo-6", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 7 ═══ */}
+      <TabsContent value="modulo-7" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={7}
+            titulo="Gráficos e Parábolas"
+            descricao="Visualizando raízes, vértices e o comportamento das parábolas."
+            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="O Ápice da Parábola"
+              description="Encontrando máximos e mínimos."
+              variant="cyan"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Vértice e Eixo de Simetria",
+                  icone: <LuTarget />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed">
+                        O vértice é o ponto extremo da parábola. Sua coordenada x é:
+                      </p>
+                      <div className="bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/20 text-center">
+                        <p className="font-mono text-lg font-bold text-cyan-700">
+                          x_v = -b / 2a
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM7}
+            titulo="Fixação - Módulo 7"
+            numero={7}
+            variant="cyan"
+            icone="📈"
+            onComplete={(score) => handleModuleComplete("modulo-7", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 8 ═══ */}
+      <TabsContent value="modulo-8" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={8}
+            titulo="Resolução Reversa"
+            descricao="Do resultado para a equação: encontre coeficientes e parâmetros."
+            gradiente="bg-gradient-to-br from-rose-600 to-pink-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Pensamento Inverso"
+              description="Quando a banca dá as raízes, ache a equação."
+              variant="rose"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Montando a Equação",
+                  icone: <LuTarget />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed">
+                        Se as raízes são r₁ e r₂, a equação é:
+                      </p>
+                      <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20 text-center">
+                        <p className="font-mono text-lg font-bold text-rose-700">
+                          x² - (r₁+r₂)x + r₁r₂ = 0
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM8}
+            titulo="Fixação - Módulo 8"
+            numero={8}
+            variant="rose"
+            icone="🔄"
+            onComplete={(score) => handleModuleComplete("modulo-8", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 9 ═══ */}
+      <TabsContent value="modulo-9" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={9}
+            titulo="Aplicações Petrobras"
+            descricao="Problemas reais de otimização em operações de petróleo e gás."
+            gradiente="bg-gradient-to-br from-yellow-600 to-orange-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Contexto Industrial"
+              description="Equações que resolvem problemas verdadeiros."
+              variant="amber"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Otimização em Operações",
+                  icone: <LuTarget />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed">
+                        Problemas de rendimento máximo, custo mínimo e pressão ótima são modelados por funções quadráticas. O vértice da parábola é sempre a solução.
+                      </p>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM9}
+            titulo="Fixação - Módulo 9"
+            numero={9}
+            variant="amber"
+            icone="⚙️"
+            onComplete={(score) => handleModuleComplete("modulo-9", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 10 ═══ */}
+      <TabsContent value="modulo-10" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={10}
+            titulo="Simulado Mestre"
+            descricao="Teste seu domínio absoluto sobre Equações do 2º Grau."
             gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
           />
 
@@ -571,22 +829,20 @@ export default function AulaEquacoes2Grau({
               <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
                 <LuTrophy className="w-12 h-12 text-emerald-500" />
               </div>
-              <h3 className="text-2xl font-black">Ápice Parabólico!</h3>
+              <h3 className="text-2xl font-black">Mestre Parabólico!</h3>
               <p className="text-center text-muted-foreground max-w-sm">
-                Raízes descobertas. Vértices conquistados. Você tem poder
-                absoluto sobre as Equações Quadráticas e o arsenal inteiro está
-                à sua disposição.
+                Você dominou completamente as Equações Quadráticas. Raízes, gráficos, vértices e aplicações práticas — tudo sob controle!
               </p>
             </div>
           ) : (
-            <section id="quiz-modulo-5" className="mt-8">
+            <section id="quiz-modulo-10" className="mt-8">
               <QuizInterativo
-                questoes={quizFinal}
-                titulo="Simulado Elite - Equações 2º Grau"
+                questoes={quizM10}
+                titulo="Simulado Mestre - Equações 2º Grau"
                 icone="🏆"
-                numero={5}
+                numero={10}
                 variant="slate"
-                onComplete={(score) => handleModuleComplete("modulo-5", score)}
+                onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>
           )}

@@ -11,7 +11,6 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
-  CardCarousel,
 } from "../shared";
 
 import {
@@ -30,14 +29,24 @@ import {
   QUIZ_M3_EQUACOES,
   QUIZ_M4_GRAFICOS,
   QUIZ_M5_FINAL,
+  QUIZ_M6_FUNCOES_LOG,
+  QUIZ_M7_SISTEMAS_INEQUACOES,
+  QUIZ_M8_REVERSA,
+  QUIZ_M9_PETROBRASESPECIFICO,
+  QUIZ_M10_SIMULADO_MESTRE,
 } from "./data/funcoes-logaritmicas-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "MÃ³dulo 1", title: "Conceito LogarÃ­tmico" },
-  { id: "modulo-2", label: "MÃ³dulo 2", title: "Propriedades Fundamentais" },
-  { id: "modulo-3", label: "MÃ³dulo 3", title: "EquaÃ§Ãµes Letradas" },
-  { id: "modulo-4", label: "MÃ³dulo 4", title: "C.E. e Visual GrÃ¡fico" },
-  { id: "modulo-5", label: "MÃ³dulo 5", title: "Desafio Industrial" },
+  { id: "modulo-1", label: "Módulo 1", title: "Conceito Logarítmico" },
+  { id: "modulo-2", label: "Módulo 2", title: "Propriedades Fundamentais" },
+  { id: "modulo-3", label: "Módulo 3", title: "Equações Letradas" },
+  { id: "modulo-4", label: "Módulo 4", title: "C.E. e Visual Gráfico" },
+  { id: "modulo-5", label: "Módulo 5", title: "Desafio Industrial" },
+  { id: "modulo-6", label: "Módulo 6", title: "Funções Logarítmicas" },
+  { id: "modulo-7", label: "Módulo 7", title: "Sistemas & Inequações" },
+  { id: "modulo-8", label: "Módulo 8", title: "Resolução Reversa" },
+  { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
 export default function AulaFuncoesLogaritmicas({
@@ -66,6 +75,11 @@ export default function AulaFuncoesLogaritmicas({
   const [quizM3] = useState(() => getRandomQuestions(QUIZ_M3_EQUACOES, 4));
   const [quizM4] = useState(() => getRandomQuestions(QUIZ_M4_GRAFICOS, 4));
   const [quizM5] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 5));
+  const [quizM6] = useState(() => getRandomQuestions(QUIZ_M6_FUNCOES_LOG, 5));
+  const [quizM7] = useState(() => getRandomQuestions(QUIZ_M7_SISTEMAS_INEQUACOES, 5));
+  const [quizM8] = useState(() => getRandomQuestions(QUIZ_M8_REVERSA, 5));
+  const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 5));
+  const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 5));
 
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
   const [showCompletionBadge, setShowCompletionBadge] = useState(false);
@@ -448,6 +462,275 @@ export default function AulaFuncoesLogaritmicas({
                 numero={5}
                 variant="slate"
                 onComplete={(score) => handleModuleComplete("modulo-5", score)}
+              />
+            </section>
+          )}
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 6 ••• */}
+      <TabsContent value="modulo-6" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={6}
+            titulo="Funções Logarítmicas"
+            descricao="Transformações, composições e o domínio das curvas que subem com cuidado."
+            gradiente="bg-gradient-to-br from-violet-600 to-purple-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Forma Padrão das Funções Log"
+              description="Como as funções logarítmicas se comportam quando transformadas."
+              variant="violet"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Função Logarítmica Padrão",
+                  icone: <LuTrendingUp />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        A função logarítmica f(x) = log_a(x) possui características especiais: sempre passa pelo ponto (1, 0), cresce lentamente, e tem domínio {"x > 0"}. Quando {"a > 1"}, a função é crescente; quando {"0 < a < 1"}, ela é decrescente.
+                      </p>
+                      <AlertBox tipo="info" titulo="Assíntota Vertical">
+                        A reta x = 0 (eixo y) é uma assíntota vertical da função. A função nunca toca esse eixo, apenas se aproxima infinitamente.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Transformações de Função",
+                  icone: <LuRepeat />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Deslocar, esticar ou refletir uma função logarítmica segue as mesmas regras das funções em geral:
+                      </p>
+                      <div className="text-sm space-y-2">
+                        <p>• f(x + c): desloca c unidades para a esquerda</p>
+                        <p>• f(x) + c: desloca c unidades para cima</p>
+                        <p>• k·f(x): estica verticalmente por fator k</p>
+                        <p>• f(k·x): comprime horizontalmente por fator k</p>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM6}
+            titulo="Fixação - Funções Logarítmicas"
+            numero={6}
+            variant="violet"
+            icone="📊"
+            onComplete={(score) => handleModuleComplete("modulo-6", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 7 ••• */}
+      <TabsContent value="modulo-7" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={7}
+            titulo="Sistemas e Inequações"
+            descricao="Quando múltiplas equações logarítmicas se encontram numa mesma arena."
+            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Sistemas de Equações Logarítmicas"
+              description="A combinação tática de restrições logarítmicas simultâneas."
+              variant="amber"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Resolvendo Sistemas",
+                  icone: <LuTarget />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Quando duas ou mais equações logarítmicas devem ser satisfeitas simultaneamente, você combina propriedades de logaritmos com técnicas algébricas. A chave é sempre verificar as condições de existência para cada solução proposta.
+                      </p>
+                      <AlertBox tipo="warning" titulo="Dupla Verificação">
+                        Em sistemas, verifique que cada solução satisfaz <strong>todas</strong> as equações e que nenhuma cond de existência foi violada.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Inequações Logarítmicas",
+                  icone: <LuBrain />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Ao resolver inequações com logaritmos, cuidado com a monotonia da função. Se {"0 < base < 1"}, o sinal da inequação inverte quando você "remove" o log! Sempre considere o domínio (logaritmando {">"} 0 e base {">"} 0, base {"≠"} 1).
+                      </p>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM7}
+            titulo="Fixação - Sistemas & Inequações"
+            numero={7}
+            variant="amber"
+            icone="🔗"
+            onComplete={(score) => handleModuleComplete("modulo-7", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 8 ••• */}
+      <TabsContent value="modulo-8" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={8}
+            titulo="Resolução Reversa"
+            descricao="Desconstruir problemas complexos até seus componentes logarítmicos primitivos."
+            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Decomposição de Problemas"
+              description="Inverta a lógica: comece pelo resultado e trabalhe para trás até o argumento."
+              variant="cyan"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Técnica de Reversão",
+                  icone: <LuRepeat />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Em problemas reversos, você recebe uma expressão complexa e precisa identificar que ela é um logaritmo disfarçado. Por exemplo: "Qual expoente x satisfaz 2ˣ = 5?" é na verdade x = log₂(5).
+                      </p>
+                      <AlertBox tipo="info" titulo="Pensamento Inverso">
+                        Logaritmos e exponenciais são funções inversas. Se você tem dificuldade em uma forma, tente converter para a outra.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM8}
+            titulo="Fixação - Resolução Reversa"
+            numero={8}
+            variant="cyan"
+            icone="🔄"
+            onComplete={(score) => handleModuleComplete("modulo-8", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 9 ••• */}
+      <TabsContent value="modulo-9" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={9}
+            titulo="Aplicações Petrobras"
+            descricao="Onde os logaritmos vivem na indústria de petróleo e gás natural."
+            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Logaritmos no Mundo Real"
+              description="A matemática por trás das operações de exploração e produção."
+              variant="emerald"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "pH e Acidez em Refinarias",
+                  icone: <LuTarget />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        O pH usa a escala logarítmica base 10 para medir a concentração de íons hidrogênio. Um aumento de 1 unidade de pH significa uma redução de 10 vezes na acidez. Isso é crítico em processos de refino de petróleo.
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Decaimento Radioativo e Corrosão",
+                  icone: <LuTrendingUp />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        A degradação de materiais em dutos submetidos à corrosão segue uma lei exponencial, modelada por funções logarítmicas. Engenheiros usam logs para prever a vida útil de equipamentos de subsea.
+                      </p>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM9}
+            titulo="Fixação - Aplicações Petrobras"
+            numero={9}
+            variant="emerald"
+            icone="🛢️"
+            onComplete={(score) => handleModuleComplete("modulo-9", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 10 ••• */}
+      <TabsContent value="modulo-10" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={10}
+            titulo="Simulado Mestre"
+            descricao="O teste final combinando todo o conhecimento de logaritmos. Prepare-se para a prova real."
+            gradiente="bg-gradient-to-br from-rose-600 to-red-700"
+          />
+
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-black">
+                Logaritmos Completamente Dominados
+              </h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                Você conquistou a maestria em funções logarítmicas. Está pronto para qualquer desafio que vier!
+              </p>
+            </div>
+          ) : (
+            <section id="quiz-modulo-10" className="mt-8">
+              <QuizInterativo
+                questoes={quizM10}
+                titulo="Simulado Mestre - Domínio Logarítmico Completo"
+                icone="🏆"
+                numero={10}
+                variant="rose"
+                onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>
           )}

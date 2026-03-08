@@ -269,7 +269,7 @@ export function AdminHeader({
   return (
     <header
       className={cn(
-        "h-16 border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md flex items-center sticky top-0 z-50 transition-all duration-300",
+        "h-16 md:h-20 border-b border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md flex items-center sticky top-0 z-50 transition-all duration-300",
         isStickyNavPinned &&
           !isTemporaryHeaderVisible &&
           "-translate-y-full opacity-0 pointer-events-none",

@@ -1,50 +1,74 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 import {
-  FlipCard,
-  ContentAccordion,
-  CardCarousel,
-  QuizInterativo,
-  ModuleBanner,
-  AlertBox,
-  AulaProps,
-  AulaTemplate,
-  getRandomQuestions,
-  ModuleSectionHeader,
-  ModuleSummaryCarouselNew,
-} from "../shared";
-
-import {
-  LuBookOpen,
-  LuTarget,
-  LuTrophy,
-  LuTriangleAlert,
-  LuBrain,
-  LuLightbulb,
   LuCheck,
+  LuCirclePlay as LuPlayCircle,
+  LuBrain,
+  LuMusic,
+  LuZap,
+  LuBookOpen,
+  LuShield,
+  LuMessageCircle,
+  LuTriangleAlert,
+  LuArrowRight,
+  LuEye,
+  LuFileText,
+  LuTarget,
+  LuLightbulb,
+  LuTrophy,
+  LuCircleCheck,
   LuCircleX,
+  LuLayers,
 } from "react-icons/lu";
+import {
+  QuizQuestion,
+  getRandomQuestions,
+  AlertBox,
+  FlipCard,
+  QuizInterativo,
+  TimelineItem,
+  ModuleBanner,
+  CardCarousel,
+  StickyModuleNav,
+  ModuleSectionHeader,
+  ContentAccordion,
+  LessonTabs,
+  ModuleSummaryCarouselNew,
+  MusicPlayerCard,
+  ProgressIndicator,
+  AulaProps,
+  VideoModal,
+  AulaTemplate,
+  Comparison,
+} from "../shared";
 
 import {
   QUIZ_M1_PONTUACAO,
   QUIZ_M2_PONTUACAO,
   QUIZ_M3_PONTUACAO,
   QUIZ_M4_PONTUACAO,
+  QUIZ_M5_PONTUACAO,
+  QUIZ_M6_PONTUACAO,
+  QUIZ_M7_PONTUACAO,
+  QUIZ_M8_PONTUACAO,
+  QUIZ_M9_PONTUACAO,
   QUIZ_FINAL_PONTUACAO,
 } from "./data/pontuacao-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "MÃ³dulo 1", title: "Fundamentos e ProibiÃ§Ãµes" },
-  { id: "modulo-2", label: "MÃ³dulo 2", title: "VÃ­rgula: Termos da OraÃ§Ã£o" },
-  {
-    id: "modulo-3",
-    label: "MÃ³dulo 3",
-    title: "VÃ­rgula: OraÃ§Ãµes e ConjunÃ§Ãµes",
-  },
-  { id: "modulo-4", label: "MÃ³dulo 4", title: "PontuaÃ§Ã£o AvanÃ§ada" },
-  { id: "modulo-5", label: "MÃ³dulo 5", title: "LaboratÃ³rio de Gabarito" },
+  { id: "modulo-1", label: "Módulo 1", title: "Visão Geral e Funções" },
+  { id: "modulo-2", label: "Módulo 2", title: "Vírgula: Proibições Fatais" },
+  { id: "modulo-3", label: "Módulo 3", title: "Vírgula: Termos Essenciais" },
+  { id: "modulo-4", label: "Módulo 4", title: "Vírgula: Aposto e Vocativo" },
+  { id: "modulo-5", label: "Módulo 5", title: "Vírgula: Adjuntos Deslocados" },
+  { id: "modulo-6", label: "Módulo 6", title: "Vírgula: Orações Coordenadas" },
+  { id: "modulo-7", label: "Módulo 7", title: "Vírgula: Orações Subordinadas" },
+  { id: "modulo-8", label: "Módulo 8", title: "Ponto e Ponto e Vírgula" },
+  { id: "modulo-9", label: "Módulo 9", title: "Sinais Complementares" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Final" },
 ] as const;
 
 export default function AulaPontuacao({
@@ -63,82 +87,60 @@ export default function AulaPontuacao({
   currentProgress,
   onUpdateProgress,
 }: AulaProps) {
-  const [quizM1, setQuizM1] = useState<typeof QUIZ_M1_PONTUACAO>([]);
-  const [quizM2, setQuizM2] = useState<typeof QUIZ_M2_PONTUACAO>([]);
-  const [quizM3, setQuizM3] = useState<typeof QUIZ_M3_PONTUACAO>([]);
-  const [quizM4, setQuizM4] = useState<typeof QUIZ_M4_PONTUACAO>([]);
-  const [quizFinal, setQuizFinal] = useState<typeof QUIZ_FINAL_PONTUACAO>([]);
   const [activeTab, setActiveTab] = useState("modulo-1");
   const [completedModules, setCompletedModules] = useState<Set<string>>(
     new Set(),
   );
-
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
   const [showCompletionBadge, setShowCompletionBadge] = useState(false);
 
-  useEffect(() => {
-    if (isCompleted) setShowCompletionBadge(true);
-  }, [isCompleted]);
+  const totalModulos = MODULE_DEFS.length;
 
   useEffect(() => {
     if (
+      currentProgress &&
+      currentProgress > 0 &&
       !hasSyncedInitial &&
-      !loading &&
-      currentProgress !== undefined &&
-      currentProgress > 0
+      !loading
     ) {
-      const doneCount = Math.floor(
-        (currentProgress / 100) * MODULE_DEFS.length,
-      );
-      const newDone = new Set<string>();
-      for (let i = 0; i < doneCount; i++) {
-        newDone.add(MODULE_DEFS[i].id);
+      const count = Math.floor((currentProgress / 100) * totalModulos);
+      const s = new Set<string>();
+      for (let i = 0; i < count; i++) {
+        s.add(MODULE_DEFS[i].id);
       }
-      setCompletedModules(newDone);
-      setHasSyncedInitial(true);
-    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setCompletedModules(s);
+      if (count < totalModulos) {
+        setActiveTab(MODULE_DEFS[count].id);
+      } else {
+        setActiveTab(MODULE_DEFS[totalModulos - 1].id);
+      }
       setHasSyncedInitial(true);
     }
-  }, [currentProgress, hasSyncedInitial, loading]);
-
-  useEffect(() => {
-    if (!loading) {
-      setQuizM1(getRandomQuestions(QUIZ_M1_PONTUACAO, 4));
-      setQuizM2(getRandomQuestions(QUIZ_M2_PONTUACAO, 4));
-      setQuizM3(getRandomQuestions(QUIZ_M3_PONTUACAO, 4));
-      setQuizM4(getRandomQuestions(QUIZ_M4_PONTUACAO, 4));
-      setQuizFinal(getRandomQuestions(QUIZ_FINAL_PONTUACAO, 10));
-    }
-  }, [loading]);
+  }, [currentProgress, hasSyncedInitial, loading, totalModulos]);
 
   const handleModuleComplete = (moduleId: string, score: number) => {
-    if (score >= 70) {
-      const newSet = new Set(completedModules).add(moduleId);
-      setCompletedModules(newSet);
+    if (score >= 60) {
+      setCompletedModules((prev) => {
+        const n = new Set(prev);
+        n.add(moduleId);
+        return n;
+      });
 
-      const total = MODULE_DEFS.length;
-      const done = newSet.size;
-      const percent = Math.round((done / total) * 100);
+      const idx = MODULE_DEFS.findIndex((m) => m.id === moduleId);
+      onUpdateProgress?.(Math.round(((idx + 1) / totalModulos) * 100));
 
-      if (onUpdateProgress) {
-        onUpdateProgress(percent);
-      }
-
-      const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
-
-      if (index === MODULE_DEFS.length - 1) {
-        setShowCompletionBadge(true);
-        onComplete?.();
-        window.scrollTo({ top: 0, behavior: "smooth" });
+      if (idx < totalModulos - 1) {
+        setTimeout(() => setActiveTab(MODULE_DEFS[idx + 1].id), 1500);
       } else {
-        setTimeout(() => setActiveTab(MODULE_DEFS[index + 1].id), 1500);
+        setShowCompletionBadge(true);
+        if (onComplete) onComplete();
       }
     }
   };
 
   const isModuleUnlocked = (index: number) => {
-    if (isCompleted || index === 0) return true;
-    return completedModules.has(MODULE_DEFS[index - 1].id);
+    if (index === 0) return true;
+    return completedModules.has(MODULE_DEFS[index - 1].id) || isCompleted;
   };
 
   return (
@@ -148,7 +150,7 @@ export default function AulaPontuacao({
         const idx = MODULE_DEFS.findIndex((m) => m.id === val);
         if (isModuleUnlocked(idx)) setActiveTab(val);
       }}
-      modules={Array.from(MODULE_DEFS)}
+      modules={MODULE_DEFS}
       completedModules={completedModules}
       isModuleUnlocked={isModuleUnlocked}
       titulo={titulo}
@@ -160,325 +162,409 @@ export default function AulaPontuacao({
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
-      currentProgress={Math.round(
-        (completedModules.size / MODULE_DEFS.length) * 100,
-      )}
+      currentProgress={Math.round((completedModules.size / totalModulos) * 100)}
       onComplete={onComplete}
       loading={loading}
       xpGanho={xpGanho}
     >
-      {/* === MÃ“DULO 1 === */}
+      {/* Módulo 1: Visão Geral */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={1}
-            titulo="Sintaxe e Fundamentos"
-            descricao="A base de tudo: por que a vÃ­rgula nÃ£o Ã© um respiro?"
-            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+            titulo="Visão Geral e Funções"
+            descricao="Pontuar não é apenas pausar para respirar; é garantir a clareza e a coesão do texto técnico."
+            gradiente="bg-gradient-to-br from-blue-700 to-indigo-900"
           />
-
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="Desafio Inicial: VÃ­rgula ou Pausa?"
+              title="As Finalidades da Pontuação"
               variant="blue"
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-6">
-                <p className="text-lg text-foreground leading-relaxed">
-                  Muitas vezes, a nossa fala nos engana. O cÃ©rebro pede uma
-                  pausa onde a gramÃ¡tica <strong>proÃ­be</strong> terminantemente
-                  uma vÃ­rgula.
-                </p>
-                <AlertBox tipo="warning" titulo="O Grande Perigo">
-                  <p className="text-sm">
-                    Na prova da Petrobras, a banca adora colocar sujeitos longos
-                    enormes e, em seguida, uma vÃ­rgula maldosa logo antes do
-                    verbo. Apenas para forÃ§ar vocÃª a querer "respirar".
-                  </p>
-                </AlertBox>
-              </div>
-
-              <FlipCard
-                frente={
-                  <div className="p-8 flex flex-col items-center justify-center text-center h-full space-y-4">
-                    <div className="w-16 h-16 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center text-2xl font-black">
-                      ?
-                    </div>
-                    <p className="font-bold text-lg">
-                      "Os novos funcionÃ¡rios da plataforma P-70, chegaram hoje."
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      Esta frase estÃ¡ correta?
-                    </p>
-                  </div>
-                }
-                verso={
-                  <div className="p-8 flex flex-col items-center justify-center text-center h-full space-y-4 bg-red-500/5">
-                    <LuCircleX className="w-14 h-14 text-red-500" />
-                    <h4 className="font-bold text-red-600 text-xl">ERRADO!</h4>
-                    <p className="text-sm">
-                      VocÃª sentiu vontade de colocar a vÃ­rgula por causa do
-                      tamanho do sujeito, mas{" "}
-                      <strong>NÃƒO SE SEPARA SUJEITO DO VERBO</strong>.
-                    </p>
-                  </div>
-                }
-              />
-            </div>
-          </section>
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={2}
-              title="A Ordem Sagrada: S-V-C"
-              variant="blue"
-            />
-            <ContentAccordion
-              slides={[
+            <CardCarousel
+              cards={[
                 {
-                  titulo: "A Regra de Ouro (SVC)",
-                  icone:<LuBookOpen />,
-                  conteudo:(
-                    <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed">
-                        Em PortuguÃªs, a Ordem Direta Ã©{" "}
-                        <strong>Sujeito + Verbo + Complemento</strong>. Entre
-                        essas peÃ§as, a vÃ­rgula funciona como uma guilhotina que
-                        decapita o sentido da frase. Essa separaÃ§Ã£o Ã© crime
-                        gramatical gravÃ­ssimo.
-                      </p>
-                    </div>
-                  ),
+                  icone: "🔍",
+                  title: "Clareza",
+                  descricao:
+                    "Garantir que o leitor entenda exatamente onde termina uma ideia e começa outra.",
                 },
                 {
-                  titulo: "Mitos Comuns",
-                  icone:<LuLightbulb />,
-                  conteudo:(
-                    <CardCarousel
-                      cards={[
-                        {
-                          icone: "ðŸ—£ï¸",
-                          title: "O Mito do Respiro",
-                          descricao:
-                            "Falso: 'VÃ­rgula marca onde eu respiro.' Milhares de pausas na fala nÃ£o levam vÃ­rgula na escrita.",
-                        },
-                        {
-                          icone: "ðŸ“",
-                          title: "O Mito do Tamanho",
-                          descricao:
-                            "Falso: 'Sujeito muito longo pede vÃ­rgula'. O sujeito pode ser um parÃ¡grafo inteiro. Sem vÃ­rgula nele!",
-                        },
-                        {
-                          icone: "âž•",
-                          title: "O Mito do 'E'",
-                          descricao:
-                            "Falso: 'Antes de conjunÃ§Ã£o E nunca vai vÃ­rgula'. Pode ir se tiver sujeitos diferentes ou polissÃ­ndeto.",
-                        },
-                      ]}
-                    />
-                  ),
+                  icone: "🤝",
+                  title: "Coesão",
+                  descricao:
+                    "Sinalizar os limites das estruturas sintáticas e seus nexos lógicos.",
+                },
+                {
+                  icone: "🎭",
+                  title: "Sentido",
+                  descricao:
+                    "Alterar a ênfase e o significado conforme o posicionamento dos sinais.",
                 },
               ]}
             />
           </section>
-
           <QuizInterativo
-            questoes={quizM1}
-            titulo="FixaÃ§Ã£o - MÃ³dulo 1"
+            questoes={QUIZ_M1_PONTUACAO}
+            titulo="Fixação - Módulo 1"
+            icone="🎯"
             numero={1}
             variant="blue"
-            icone="ðŸ§ "
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
       </TabsContent>
 
-      {/* === MÃ“DULO 2 === */}
+      {/* Módulo 2: Proibições Fatais */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={2}
-            titulo="VÃ­rgula: Termos da OraÃ§Ã£o"
-            descricao="Aprenda a isolar Vocativos, Apostos e separar EnumeraÃ§Ãµes corretamente."
-            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+            titulo="Vírgula: Proibições Fatais"
+            descricao="O que NUNCA fazer se você quiser ser aprovado. Erros que zeram questões de gramática."
+            gradiente="bg-gradient-to-br from-red-700 to-orange-800"
           />
-
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
-              title="Vocativo e Aposto"
-              variant="emerald"
+              index={2}
+              title="Scanner de Erros Fatais"
+              variant="rose"
             />
-            <ContentAccordion
-              slides={[
-                {
-                  titulo: "Vocativo (Chamamento)",
-                  icone:<LuTarget />,
-                  conteudo:(
-                    <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed">
-                        Ã‰ o termo que invoca ou chama alguÃ©m. Ele nÃ£o participa
-                        da estrutura base S-V-C. Ele Ã© um satÃ©lite.{" "}
-                        <strong>Sempre precisa estar isolado.</strong>
-                      </p>
-                      <div className="p-4 bg-muted/50 rounded-xl font-medium">
-                        "Doutor, traga o laudo mÃ©dico." <br />
-                        "Traga o laudo mÃ©dico, Doutor." <br />
-                        "Traga, Doutor, o laudo mÃ©dico."
-                      </div>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Aposto Explicativo",
-                  icone:<LuBookOpen />,
-                  conteudo:(
-                    <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed">
-                        Termo de natureza nominal que explica ou detalha outro
-                        nome. Como ele Ã© uma "gordura" explicativa extra no
-                        texto, ele obrigatoriamente vem ladeado por vÃ­rgulas.
-                      </p>
-                      <div className="p-4 bg-muted/50 rounded-xl font-medium">
-                        "O navio sonda, gigante de aÃ§o, operarÃ¡ no prÃ©-sal."
-                      </div>
-                    </div>
-                  ),
-                },
-              ]}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <AlertBox tipo="danger" titulo="Não Separe o Sujeito">
+                Nunca coloque vírgula isolando o sujeito de seu verbo.
+                <br /> ❌ "A Petrobras, produz gás."
+              </AlertBox>
+              <AlertBox tipo="danger" titulo="Não Separe o Objeto">
+                Nunca coloque vírgula isolando o verbo de seus objetos (Direto
+                ou Indireto).
+                <br /> ❌ "Compramos, os equipamentos."
+              </AlertBox>
+            </div>
+            <Comparison
+              title="A Regra de Ouro"
+              left={{
+                title: "Pecado Capital (❌)",
+                content: "O gerente de planta, autorizou o embarque.",
+                description: "Vírgula separando sujeito do verbo.",
+                variant: "danger",
+              }}
+              right={{
+                title: "Norma Culta (✅)",
+                content: "O gerente de planta autorizou o embarque.",
+                description: "Sujeito e verbo unidos sem interrupção.",
+                variant: "success",
+              }}
             />
           </section>
-
           <QuizInterativo
-            questoes={quizM2}
-            titulo="FixaÃ§Ã£o - MÃ³dulo 2"
+            questoes={QUIZ_M2_PONTUACAO}
+            titulo="Fixação - Módulo 2"
+            icone="🎯"
             numero={2}
-            variant="emerald"
-            icone="ðŸŽ¯"
+            variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
       </TabsContent>
 
-      {/* === MÃ“DULO 3 === */}
+      {/* Módulo 3: Termos Essenciais */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={3}
-            titulo="VÃ­rgula: OraÃ§Ãµes e ConjunÃ§Ãµes"
-            descricao="A arte de separar oraÃ§Ãµes coordenadas e entender quando o 'MAS' e o 'E' aceitam vÃ­rgula."
-            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+            titulo="Vírgula: Termos Essenciais"
+            descricao="Enumerações, repetições e a organização básica da frase."
+            gradiente="bg-gradient-to-br from-blue-600 to-cyan-800"
           />
-
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
-              title="Sintaxe do PerÃ­odo Composto"
-              variant="amber"
+              index={3}
+              title="Listas e Repetições"
+              variant="blue"
             />
             <ContentAccordion
               slides={[
                 {
-                  titulo: "A VÃ­rgula Antes do 'E'",
-                  icone:<LuTriangleAlert />,
-                  conteudo:(
+                  titulo: "Enumeração",
+                  icone: <LuLayers />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed">
-                        A regra geral Ã© nÃ£o colocar vÃ­rgula antes do "e". As{" "}
-                        <strong>trÃªs exceÃ§Ãµes vitais</strong> aprovadas pela
-                        GramÃ¡tica sÃ£o:
+                      <p className="text-sm text-muted-foreground">
+                        Usada para separar elementos de mesma função sintática
+                        sem conjunção entre eles.
                       </p>
-                      <ol className="list-decimal ml-6 space-y-2 text-foreground font-medium">
-                        <li>
-                          <strong>Sujeitos Diferentes:</strong> "O tÃ©cnico
-                          aprovou, e a gerÃªncia assinou."
-                        </li>
-                        <li>
-                          <strong>PolissÃ­ndeto:</strong> RepetiÃ§Ã£o estilÃ­stica
-                          da conjunÃ§Ã£o. "...e pulou, e riu, e chorou."
-                        </li>
-                        <li>
-                          <strong>Valor Adversativo:</strong> O "e" agindo como
-                          falso "mas". "Trabalhou muito, e nÃ£o obteve a
-                          promoÃ§Ã£o."
-                        </li>
-                      </ol>
+                      <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl italic">
+                        "O setor adquiriu brocas, compressores, bombas e
+                        geradores."
+                      </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "A regra do MAS",
-                  icone:<LuCheck />,
-                  conteudo:(
-                    <AlertBox tipo="info" titulo="ObrigatÃ³ria e InegociÃ¡vel">
-                      <p className="text-sm">
-                        Toda conjunÃ§Ã£o coordenativa adversativa (mas, porÃ©m,
-                        contudo, todavia) atrai vÃ­rgula para antes de si.
+                  titulo: "Omissão de Verbo (Zêugma)",
+                  icone: <LuZap />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm text-muted-foreground">
+                        A vírgula substitui um verbo já mencionado
+                        anteriormente.
                       </p>
-                    </AlertBox>
+                      <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl italic">
+                        "João prefere o mar; Pedro, a terra."
+                        <br />{" "}
+                        <span className="text-xs opacity-60">
+                          (A vírgula substitui "prefere")
+                        </span>
+                      </div>
+                    </div>
                   ),
                 },
               ]}
             />
           </section>
-
           <QuizInterativo
-            questoes={quizM3}
-            titulo="FixaÃ§Ã£o - MÃ³dulo 3"
+            questoes={QUIZ_M3_PONTUACAO}
+            titulo="Fixação - Módulo 3"
+            icone="🎯"
             numero={3}
-            variant="amber"
-            icone="ðŸŽ¯"
+            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>
       </TabsContent>
 
-      {/* === MÃ“DULO 4 === */}
+      {/* Módulo 4: Aposto e Vocativo */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={4}
-            titulo="PontuaÃ§Ã£o AvanÃ§ada"
-            descricao="Dois-pontos, TravessÃµes, Ponto e VÃ­rgula e a sutil arte de controlar o ritmo literÃ¡rio do texto."
-            gradiente="bg-gradient-to-br from-red-600 to-red-800"
+            titulo="Vírgula: Aposto e Vocativo"
+            descricao="Isole quem você chama e explique o que você cita."
+            gradiente="bg-gradient-to-br from-cyan-600 to-teal-800"
           />
-
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
-              title="AlÃ©m da VÃ­rgula"
-              variant="rose"
+              index={4}
+              title="Chamamento e Explicação"
+              variant="cyan"
+            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <FlipCard
+                frente={<div className="font-bold">VOCATIVO</div>}
+                verso={
+                  <div className="space-y-3 text-xs">
+                    <p>
+                      <strong>Conceito:</strong> Chamamento direto.
+                    </p>
+                    <p>
+                      <strong>Regra:</strong> Sempre isolado por vírgula.
+                    </p>
+                    <p>✅ "Senhores, a reunião começou."</p>
+                  </div>
+                }
+              />
+              <FlipCard
+                frente={<div className="font-bold">APOSTO</div>}
+                verso={
+                  <div className="space-y-3 text-xs">
+                    <p>
+                      <strong>Conceito:</strong> Explicação de um termo.
+                    </p>
+                    <p>
+                      <strong>Regra:</strong> Vem entre vírgulas.
+                    </p>
+                    <p>✅ "Mário, o engenheiro-chefe, aprovou."</p>
+                  </div>
+                }
+              />
+            </div>
+          </section>
+          <QuizInterativo
+            questoes={QUIZ_M4_PONTUACAO}
+            titulo="Fixação - Módulo 4"
+            icone="🎯"
+            numero={4}
+            variant="cyan"
+            onComplete={(score) => handleModuleComplete("modulo-4", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* Módulo 5: Adjuntos Deslocados */}
+      <TabsContent value="modulo-5" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={5}
+            titulo="Vírgula: Adjuntos Deslocados"
+            descricao="Quando o advérbio sai do seu lugar original e exige o sinal."
+            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+          />
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={5}
+              title="A Regra do Comprimento"
+              variant="emerald"
+            />
+            <AlertBox tipo="warning" titulo="O Pulo do Gato (Cesgranrio)">
+              A banca avalia se o adjunto é **Longo** (obrigatória) ou **Curto**
+              (facultativa).
+            </AlertBox>
+            <div className="p-6 bg-emerald-500/5 border border-emerald-500/20 rounded-2xl space-y-4">
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="space-y-1">
+                  <span className="text-xs font-bold text-muted-foreground uppercase">
+                    Curto (Facultativa)
+                  </span>
+                  <p className="font-medium">
+                    "Hoje, choveu." ou "Hoje choveu."
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <span className="text-xs font-bold text-muted-foreground uppercase">
+                    Longo (Obrigatória)
+                  </span>
+                  <p className="font-medium">
+                    "Durante o treinamento de segurança, todos anotaram."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <QuizInterativo
+            questoes={QUIZ_M5_PONTUACAO}
+            titulo="Fixação - Módulo 5"
+            icone="🎯"
+            numero={5}
+            variant="emerald"
+            onComplete={(score) => handleModuleComplete("modulo-5", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* Módulo 6: Orações Coordenadas */}
+      <TabsContent value="modulo-6" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={6}
+            titulo="Vírgula: Orações Coordenadas"
+            descricao="O fetiche da Cesgranrio: vírgulas antes de MAS, PORÉM e o polêmico E."
+            gradiente="bg-gradient-to-br from-teal-700 to-cyan-900"
+          />
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={6}
+              title="A Conjunção 'E'"
+              variant="cyan"
+            />
+            <p className="text-muted-foreground text-sm">
+              Geralmente o 'E' não pede vírgula, mas em 3 situações ele é seu
+              melhor amigo:
+            </p>
+            <CardCarousel
+              cards={[
+                {
+                  icone: "👥",
+                  title: "Sujeitos Diferentes",
+                  descricao: "O diretor falou, e o povo aplaudiu.",
+                },
+                {
+                  icone: "🔄",
+                  title: "Polissíndeto",
+                  descricao: "E chora, e grita, e sofre.",
+                },
+                {
+                  icone: "⚡",
+                  title: "Valor Adversativo",
+                  descricao: "Trabalhou muito, e não recebeu nada. (E = Mas)",
+                },
+              ]}
+            />
+          </section>
+          <QuizInterativo
+            questoes={QUIZ_M6_PONTUACAO}
+            titulo="Fixação - Módulo 6"
+            icone="🎯"
+            numero={6}
+            variant="cyan"
+            onComplete={(score) => handleModuleComplete("modulo-6", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* Módulo 7: Orações Subordinadas */}
+      <TabsContent value="modulo-7" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={7}
+            titulo="Vírgula: Orações Subordinadas"
+            descricao="A diferença vital entre explicar para todos ou restringir para alguns."
+            gradiente="bg-gradient-to-br from-amber-600 to-orange-800"
+          />
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={7}
+              title="Explicativa vs Restritiva"
+              variant="amber"
+            />
+            <Comparison
+              title="Impacto Semântico"
+              left={{
+                title: "Explicativa (Com Vírgula)",
+                content: "Os técnicos, que usam EPI, estão seguros.",
+                description:
+                  "TODOS os técnicos usam EPI e todos estão seguros.",
+                variant: "success",
+              }}
+              right={{
+                title: "Restritiva (Sem Vírgula)",
+                content: "Os técnicos que usam EPI estão seguros.",
+                description:
+                  "APENAS a parte dos técnicos que usa EPI é que está segura.",
+                variant: "info",
+              }}
+            />
+          </section>
+          <QuizInterativo
+            questoes={QUIZ_M7_PONTUACAO}
+            titulo="Fixação - Módulo 7"
+            icone="🎯"
+            numero={7}
+            variant="amber"
+            onComplete={(score) => handleModuleComplete("modulo-7", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* Módulo 8: Ponto e Ponto e Vírgula */}
+      <TabsContent value="modulo-8" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={8}
+            titulo="Ponto e Ponto e Vírgula"
+            descricao="Organização de listas e períodos extensos que já possuem vírgulas internas."
+            gradiente="bg-gradient-to-br from-orange-700 to-red-900"
+          />
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={8}
+              title="O ponto-e-vírgula"
+              variant="amber"
             />
             <ContentAccordion
               slides={[
                 {
-                  titulo: "Dois-Pontos (:)",
-                  icone:<LuLightbulb />,
-                  conteudo:(
-                    <p className="text-muted-foreground leading-relaxed">
-                      Dois-pontos agem como um garÃ§om. Eles apresentam algo: uma
-                      explicaÃ§Ã£o que confirma o que foi dito, uma listagem ou
-                      ainda uma citaÃ§Ã£o intertextual.
-                    </p>
-                  ),
-                },
-                {
-                  titulo: "Ponto e VÃ­rgula (;)",
-                  icone:<LuBrain />,
-                  conteudo:(
+                  titulo: "Hierarquia de Pausas",
+                  icone: <LuBookOpen />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed">
-                        O ponto e vÃ­rgula tem como grande objetivo afastar as
-                        oraÃ§Ãµes mais do que a vÃ­rgula afasta, mas nÃ£o encerrar a
-                        unidade de sentido como faz o ponto final.
+                      <p className="text-sm text-muted-foreground">
+                        O ponto-e-vírgula é uma pausa mais longa que a vírgula e
+                        mais curta que o ponto final.
                       </p>
-                      <AlertBox tipo="warning" titulo="Uso PrimÃ¡rio">
-                        <p className="text-sm">
-                          Lista de itens extensos (como leis e diretrizes), ou
-                          em oraÃ§Ãµes coordenadas jÃ¡ muito divididas por vÃ­rgulas
-                          menores no interior de suas frases originais.
-                        </p>
+                      <AlertBox tipo="info" titulo="Quando Usar?">
+                        Em listas complexas para separar subitens.
                       </AlertBox>
                     </div>
                   ),
@@ -486,80 +572,82 @@ export default function AulaPontuacao({
               ]}
             />
           </section>
-
           <QuizInterativo
-            questoes={quizM4}
-            titulo="FixaÃ§Ã£o - MÃ³dulo 4"
-            numero={4}
-            variant="rose"
-            icone="ðŸŽ¯"
-            onComplete={(score) => handleModuleComplete("modulo-4", score)}
+            questoes={QUIZ_M8_PONTUACAO}
+            titulo="Fixação - Módulo 8"
+            icone="🎯"
+            numero={8}
+            variant="amber"
+            onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
         </div>
       </TabsContent>
 
-      {/* === MÃ“DULO 5 === */}
-      <TabsContent value="modulo-5" className="space-y-[50px]">
+      {/* Módulo 9: Sinais Complementares */}
+      <TabsContent value="modulo-9" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
-            numero={5}
-            titulo="LaboratÃ³rio de Gabarito"
-            descricao="O Simulado que crava esse tema no seu subconsciente. 10 questÃµes inÃ©ditas completas."
-            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+            numero={9}
+            titulo="Sinais Complementares"
+            descricao="Dois-pontos, Travessões e Parênteses: a estética da explicação."
+            gradiente="bg-gradient-to-br from-red-800 to-black"
           />
-
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={5}
-              title="Resumo Visual Final"
-              variant="slate"
+              index={9}
+              title="Além da Vírgula"
+              variant="rose"
             />
-            <ModuleSummaryCarouselNew
-              tituloAula="PontuaÃ§Ã£o"
-              materia="LÃ­ngua Portuguesa"
-              profissao="TÃ©cnico de OperaÃ§Ã£o"
-              moduloNome="Premium"
-              images={[
-                {
-                  title: "Mapa Mental: Os nÃ£o-separÃ¡veis",
-                  type: "Mapa Mental",
-                  placeholderColor: "bg-slate-500",
-                  imageUrl:
-                    "/images/mapa-mental/coesao_referencial_1771465579878.png",
-                },
-                {
-                  title: "InfogrÃ¡fico: Regras da OraÃ§Ã£o Subordinada",
-                  type: "InfogrÃ¡fico",
-                  placeholderColor: "bg-blue-500",
-                  imageUrl:
-                    "/images/mapa-mental/anafora_catafora_1771466182917.png",
-                },
-              ]}
-            />
+            <div className="grid gap-4 md:grid-cols-2">
+              <FlipCard
+                frente="Dois-Pontos (:)"
+                verso="Indica citação, enumeração ou uma explicação que resume o anterior."
+              />
+              <FlipCard
+                frente="Travessão (—)"
+                verso="Usado para isolar falas ou para dar ênfase a explicações intercaladas."
+              />
+            </div>
           </section>
+          <QuizInterativo
+            questoes={QUIZ_M9_PONTUACAO}
+            titulo="Fixação - Módulo 9"
+            icone="🎯"
+            numero={9}
+            variant="rose"
+            onComplete={(score) => handleModuleComplete("modulo-9", score)}
+          />
+        </div>
+      </TabsContent>
 
+      {/* Módulo 10: Simulado Final */}
+      <TabsContent value="modulo-10" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={10}
+            titulo="Simulado Final"
+            descricao="Teste seu domínio perante uma bateria definitiva focada em Pontuação Global Cesgranrio."
+            gradiente="bg-gradient-to-br from-indigo-900 to-black"
+          />
           {showCompletionBadge ? (
             <div className="flex flex-col items-center gap-6 py-10">
               <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
                 <LuTrophy className="w-12 h-12 text-emerald-500" />
               </div>
-              <h3 className="text-2xl font-black">
-                ParabÃ©ns! PontuaÃ§Ã£o Afiada!
-              </h3>
+              <h3 className="text-2xl font-black">Mestre em Pontuação!</h3>
               <p className="text-center text-muted-foreground max-w-sm">
-                Agora vocÃª escreve e decifra textos com o poder de um maestro
-                sintÃ¡tico. Letras sÃ£o notas. A pontuaÃ§Ã£o Ã© o compasso musical do
-                seu sucesso em provas da Cesgranrio!
+                Seu texto agora é blindado contra erros e ambiguidade. Pronto
+                para o cargo!
               </p>
             </div>
           ) : (
             <QuizInterativo
-              questoes={quizFinal}
-              titulo="Simulado de Ouro"
-              numero={5}
-              variant="slate"
-              icone="ðŸ†"
-              onComplete={(score) => handleModuleComplete("modulo-5", score)}
+              questoes={QUIZ_FINAL_PONTUACAO}
+              titulo="Simulado de Conclusão"
+              icone="🏆"
+              numero={10}
+              variant="indigo"
+              onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           )}
         </div>
@@ -567,15 +655,3 @@ export default function AulaPontuacao({
     </AulaTemplate>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-

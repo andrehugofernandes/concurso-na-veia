@@ -58,6 +58,7 @@ import {
   AulaProps,
   VideoModal,
   AulaTemplate,
+  ModuleConsolidation,
   TabbedContent,
   SectionTitle,
   ComparisonSide,
@@ -807,146 +808,101 @@ export default function AulaCrase({
             </AlertBox>
           </section>
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              variant="indigo"
-              index={5}
-              title="Resumo do Módulo 1"
-              description="Revise os conceitos principais e assista à vídeo-aula."
-            />
-
-            <LessonTabs
-              tabs={[
+          <ModuleConsolidation
+            index={5}
+            variant="indigo"
+            video={{
+              videoId: "placeholder",
+              title: "Crase sem Segredos: A Regra de Ouro",
+              duration: "12:30",
+              thumbnail:
+                "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1073&auto=format&fit=crop",
+            }}
+            resumoVisual={{
+              moduloNome: "Conceitos Gerais",
+              tituloAula: "Crase",
+              materia: "Língua Portuguesa",
+              images: [
                 {
-                  id: "video",
-                  label: "Vídeo Aula",
-                  icon:LuPlay,
-                  content:(
-                    <div className="w-full flex flex-col items-center py-6">
-                      <div className="w-full max-w-3xl">
-                        <VideoModal
-                          videoId="placeholder"
-                          title="Crase sem Segredos: A Regra de Ouro"
-                          duration="12:30"
-                          thumbnail="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1073&auto=format&fit=crop"
-                        />
-                      </div>
-                    </div>
-                  ),
+                  title: "Mapa Mental: A + A = À",
+                  type: "Mapa Mental",
+                  placeholderColor: "bg-rose-900/10",
                 },
                 {
-                  id: "resumo",
-                  label: "Resumo Visual",
-                  icon:LuBookOpen,
-                  content:(
-                    <ModuleSummaryCarouselNew
-                      tituloAula="Crase"
-                      materia="Língua Portuguesa"
-                      profissao="Concurso Petrobras"
-                      moduloNome="Conceitos Gerais"
-                      images={[
-                        {
-                          title: "Mapa Mental: A + A = À",
-                          type: "Mapa Mental",
-                          placeholderColor: "bg-rose-900/10",
-                        },
-                        {
-                          title: "Fluxograma: Troca por Masculino",
-                          type: "Diagrama",
-                          placeholderColor: "bg-blue-900/10",
-                        },
-                        {
-                          title: "Infográfico: Regenta e Regido",
-                          type: "Infográfico",
-                          placeholderColor: "bg-indigo-900/10",
-                        },
-                        {
-                          title: "Card Resumo: Acento Grave",
-                          type: "Card",
-                          placeholderColor: "bg-amber-900/10",
-                        },
-                      ]}
-                    />
-                  ),
+                  title: "Fluxograma: Troca por Masculino",
+                  type: "Diagrama",
+                  placeholderColor: "bg-blue-900/10",
                 },
                 {
-                  id: "visual",
-                  label: "Macete Visual",
-                  icon:LuImage,
-                  content:(
-                    <div className="text-center p-8 space-y-6">
-                      <h3 className="text-xl font-bold text-foreground">
-                        O Macete do "AO"
-                      </h3>
-                      <div className="text-6xl my-6 animate-pulse">
-                        🚻 ➡️ 🚻
-                      </div>
-                      <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto">
-                        "A crase é o espelho do masculino. Se ao trocar a dama
-                        pelo cavalheiro o 'A' vira 'AO', o brilho da crase
-                        aparece!"
+                  title: "Infográfico: Regenta e Regido",
+                  type: "Infográfico",
+                  placeholderColor: "bg-indigo-900/10",
+                },
+                {
+                  title: "Card Resumo: Acento Grave",
+                  type: "Card",
+                  placeholderColor: "bg-amber-900/10",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "O Macete do 'AO'",
+              content: (
+                <>
+                  <div className="text-6xl my-6 animate-pulse">🚻 ➡️ 🚻</div>
+                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto">
+                    "A crase é o espelho do masculino. Se ao trocar a dama pelo
+                    cavalheiro o 'A' vira 'AO', o brilho da crase aparece!"
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                    <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
+                      <h4 className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mb-2">
+                        Deu "AO"?
+                      </h4>
+                      <p className="text-xs text-muted-foreground italic">
+                        Fui <strong>ao</strong> clubinho.
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 text-left">
-                        <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-                          <h4 className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mb-2">
-                            Deu "AO"?
-                          </h4>
-                          <p className="text-xs text-muted-foreground italic">
-                            Fui <strong>ao</strong> clubinho.
-                          </p>
-                          <p className="text-[10px] mt-2 font-medium text-emerald-700 dark:text-emerald-300">
-                            ENTÃO: Fui <strong>à</strong> festinha. ✅
-                          </p>
-                        </div>
-                        <div className="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl">
-                          <h4 className="text-sm font-bold text-rose-600 dark:text-rose-400 mb-2">
-                            Deu "O"?
-                          </h4>
-                          <p className="text-xs text-muted-foreground italic">
-                            Vi <strong>o</strong> clubinho.
-                          </p>
-                          <p className="text-[10px] mt-2 font-medium text-rose-700 dark:text-rose-300">
-                            ENTÃO: Vi <strong>a</strong> festinha. ❌
-                          </p>
-                        </div>
-                      </div>
+                      <p className="text-[10px] mt-2 font-medium text-emerald-700 dark:text-emerald-300">
+                        ENTÃO: Fui <strong>à</strong> festinha. ✅
+                      </p>
                     </div>
-                  ),
-                },
-                {
-                  id: "audio",
-                  label: "Áudio Resumo",
-                  icon:LuVolume2,
-                  content:(
-                    <div className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-rose-500/10 to-orange-500/10 rounded-xl border border-rose-500/20">
-                      <div className="w-full max-w-md">
-                        <MusicPlayerCard
-                          audioUrl="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a7343b.mp3"
-                          titulo="O Rap da Crase"
-                          artista="Prof. Antigravity"
-                          capaUrl="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000&auto=format&fit=crop"
-                          lyrics={`
-                                                        (Refrão)
-                                                        É o A preposição com o A do artigo
-                                                        Se os dois se encontram, o acento é amigo!
-                                                        No masculino é 'AO', no feminino é craseado
-                                                        Se liga no macete, não fica parado!
-                                                        
-                                                        (Verso)
-                                                        Quem vai a e volta da, crase há!
-                                                        Quem vai a e volta de, crase pra que?
-                                                        Se o verbo é regente e pede o sinal
-                                                        Coloca o acento e brilha no final!
-                                                        `}
-                        />
-                      </div>
+                    <div className="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl">
+                      <h4 className="text-sm font-bold text-rose-600 dark:text-rose-400 mb-2">
+                        Deu "O"?
+                      </h4>
+                      <p className="text-xs text-muted-foreground italic">
+                        Vi <strong>o</strong> clubinho.
+                      </p>
+                      <p className="text-[10px] mt-2 font-medium text-rose-700 dark:text-rose-300">
+                        ENTÃO: Vi <strong>a</strong> festinha. ❌
+                      </p>
                     </div>
-                  ),
-                },
-              ]}
-              className="border-0 shadow-none p-0 max-w-none bg-transparent mb-0"
-            />
-          </section>
+                  </div>
+                </>
+              ),
+            }}
+            audio={{
+              audioUrl:
+                "https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a7343b.mp3",
+              titulo: "O Rap da Crase",
+              artista: "Prof. Antigravity",
+              capaUrl:
+                "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
+              lyrics: `
+(Refrão)
+É o A preposição com o A do artigo
+Se os dois se encontram, o acento é amigo!
+No masculino é 'AO', no feminino é craseado
+Se liga no macete, não fica parado!
+
+(Verso)
+Quem vai a e volta da, crase há!
+Quem vai a e volta de, crase pra que?
+Se o verbo é regente e pede o sinal
+Coloca o acento e brilha no final!
+            `,
+            }}
+          />
 
           <QuizInterativo
             titulo="Conceitos"
@@ -1132,10 +1088,59 @@ export default function AulaCrase({
             </AlertBox>
           </section>
 
+          <ModuleConsolidation
+            index={5}
+            variant="emerald"
+            video={{
+              videoId: "placeholder",
+              title: "As Proibições da Crase: Onde o Acento Morre",
+              duration: "10:45",
+              thumbnail:
+                "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1000&auto=format&fit=crop",
+            }}
+            resumoVisual={{
+              moduloNome: "Proibições",
+              tituloAula: "Crase",
+              materia: "Língua Portuguesa",
+              images: [
+                {
+                  title: "Mapa: Quando o Acento é Erro",
+                  type: "Mapa Mental",
+                  placeholderColor: "bg-red-900/10",
+                },
+                {
+                  title: "Tabela: Verbos e Masculinos",
+                  type: "Tabela",
+                  placeholderColor: "bg-orange-900/10",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "O Macete do 'V-M-P'",
+              content: (
+                <>
+                  <div className="text-6xl my-6">🚫 🙅‍♂️ 🚫</div>
+                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto">
+                    "Antes de <strong>V</strong>erbo, <strong>M</strong>asculino
+                    e <strong>P</strong>lural isolado, crase é pecado!"
+                  </p>
+                </>
+              ),
+            }}
+            audio={{
+              audioUrl:
+                "https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a7343b.mp3",
+              titulo: "Podcast: As Barreiras da Crase",
+              artista: "Prof. Antigravity",
+              capaUrl:
+                "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
+            }}
+          />
+
           <QuizInterativo
             titulo="Proibições"
             icone="🚫"
-            numero={5}
+            numero={6}
             questoes={quizM2}
             variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
@@ -1318,10 +1323,54 @@ export default function AulaCrase({
             </div>
           </section>
 
+          <ModuleConsolidation
+            index={5}
+            variant="violet"
+            video={{
+              videoId: "placeholder",
+              title: "Crase Facultativa: O Poder de Escolha",
+              duration: "08:15",
+              thumbnail:
+                "https://images.unsplash.com/photo-1454165833267-028cc21e78e2?q=80&w=1000&auto=format&fit=crop",
+            }}
+            resumoVisual={{
+              moduloNome: "Facultativos",
+              tituloAula: "Crase",
+              materia: "Língua Portuguesa",
+              images: [
+                {
+                  title: "Trio Facultativo: S.M.A",
+                  type: "Esquema",
+                  placeholderColor: "bg-violet-900/10",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "O Macete do 'S.M.A'",
+              content: (
+                <div className="space-y-4">
+                  <div className="text-6xl my-6">🙋‍♀️ 👩 🏁</div>
+                  <p className="text-muted-foreground">
+                    <strong>S</strong>ua (possessivo) / <strong>M</strong>aria
+                    (nome próprio) / <strong>A</strong>té.
+                  </p>
+                </div>
+              ),
+            }}
+            audio={{
+              audioUrl:
+                "https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a7343b.mp3",
+              titulo: "Áudio: Quando a Crase é Opcional",
+              artista: "Prof. Antigravity",
+              capaUrl:
+                "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
+            }}
+          />
+
           <QuizInterativo
             titulo="Facultativos"
             icone="📝"
-            numero={5}
+            numero={6}
             questoes={quizM3}
             variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -1498,10 +1547,52 @@ export default function AulaCrase({
             </AlertBox>
           </section>
 
+          <ModuleConsolidation
+            index={5}
+            variant="amber"
+            video={{
+              videoId: "placeholder",
+              title: "Casos Especiais: As Pegadinhas de Luxo",
+              duration: "15:20",
+              thumbnail:
+                "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1170&auto=format&fit=crop",
+            }}
+            resumoVisual={{
+              moduloNome: "Casos Especiais",
+              tituloAula: "Crase",
+              materia: "Língua Portuguesa",
+              images: [
+                {
+                  title: "A Trindade: Casa, Terra e Distância",
+                  type: "Diagrama",
+                  placeholderColor: "bg-amber-900/10",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "Especifique para Crasear",
+              content: (
+                <p className="text-muted-foreground">
+                  Se a palavra estiver <strong>"nua"</strong> (solta), nada de
+                  crase. Se estiver <strong>"vestida"</strong> (especificada),
+                  coloque o acento!
+                </p>
+              ),
+            }}
+            audio={{
+              audioUrl:
+                "https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a7343b.mp3",
+              titulo: "Casos Delicados",
+              artista: "Prof. Antigravity",
+              capaUrl:
+                "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
+            }}
+          />
+
           <QuizInterativo
             titulo="Especiais"
             icone="🎯"
-            numero={5}
+            numero={6}
             questoes={quizM4}
             variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
@@ -1653,68 +1744,70 @@ export default function AulaCrase({
           </section>
 
           {/* REVISÃO MULTIMÍDIA */}
-          <section className="bg-card rounded-2xl border border-border p-10 shadow-sm text-center space-y-8">
-            <ModuleSectionHeader
-              variant="rose"
-              index={5}
-              title="Recursos Finais de Revisão"
-              description="Mapas mentais e áudios para consolidar antes do simulado."
-            />
-
-            <LessonTabs
-              tabs={[
+          <ModuleConsolidation
+            index={5}
+            variant="rose"
+            video={{
+              videoId: "placeholder",
+              title: "Simulado Final: Revisão Geral",
+              duration: "20:00",
+              thumbnail:
+                "https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?q=80&w=1000&auto=format&fit=crop",
+            }}
+            maceteVisual={{
+              title: "Checklist de 3 Segundos",
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 bg-muted rounded-lg text-center">
+                    1. Quem rege?
+                  </div>
+                  <div className="p-4 bg-muted rounded-lg text-center">
+                    2. Quem segue?
+                  </div>
+                  <div className="p-4 bg-muted rounded-lg text-center">
+                    3. Macete do AO?
+                  </div>
+                </div>
+              ),
+            }}
+            resumoVisual={{
+              moduloNome: "Simulado Final",
+              tituloAula: "Crase",
+              materia: "Língua Portuguesa",
+              images: [
                 {
-                  id: "resumo",
-                  label: "Mapa Mental",
-                  icon:LuBookOpen,
-                  content:(
-                    <ModuleSummaryCarouselNew
-                      moduloNome="Simulado Final"
-                      tituloAula="Crase"
-                      materia="Língua Portuguesa"
-                      images={[
-                        {
-                          title: "Crase: O Mapa do Tesouro",
-                          type: "Esquema",
-                          placeholderColor: "bg-rose-900/10",
-                          imageUrl:
-                            "https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?q=80&w=1000&auto=format&fit=crop",
-                        },
-                        {
-                          title: "Resumo: Proibições",
-                          type: "Tabela",
-                          placeholderColor: "bg-orange-900/10",
-                          imageUrl:
-                            "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1000&auto=format&fit=crop",
-                        },
-                        {
-                          title: "Resumo: Facultativos",
-                          type: "Dica",
-                          placeholderColor: "bg-indigo-900/10",
-                          imageUrl:
-                            "https://images.unsplash.com/photo-1454165833267-028cc21e78e2?q=80&w=1000&auto=format&fit=crop",
-                        },
-                      ]}
-                    />
-                  ),
+                  title: "Crase: O Mapa do Tesouro",
+                  type: "Esquema",
+                  placeholderColor: "bg-rose-900/10",
+                  imageUrl:
+                    "https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?q=80&w=1000&auto=format&fit=crop",
                 },
                 {
-                  id: "audio",
-                  label: "Áudio Resumo",
-                  icon:LuMusic,
-                  content:(
-                    <MusicPlayerCard
-                      audioUrl="#"
-                      titulo="Fundamentos da Crase"
-                      artista="Prof. Antigravity"
-                      capaUrl="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1170&auto=format&fit=crop"
-                      lyrics={`O acento grave não é brincadeira...\nCom ele você vai pela vida inteira...\nBasta saber se o 'A' é dobrado...\nE o seu sucesso está garantido e selado!\n\nProibido no macho, no verbo e no plural isolado.\nFacultativo na dona, na minha e no até lado a lado.\nNo 'qual' e no 'aquele' o segredo é o regente.\nCrase na hora e no 'à moda' do oriente!`}
-                    />
-                  ),
+                  title: "Resumo: Proibições",
+                  type: "Tabela",
+                  placeholderColor: "bg-orange-900/10",
+                  imageUrl:
+                    "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1000&auto=format&fit=crop",
                 },
-              ]}
-            />
-          </section>
+                {
+                  title: "Resumo: Facultativos",
+                  type: "Dica",
+                  placeholderColor: "bg-indigo-900/10",
+                  imageUrl:
+                    "https://images.unsplash.com/photo-1454165833267-028cc21e78e2?q=80&w=1000&auto=format&fit=crop",
+                },
+              ],
+            }}
+            audio={{
+              audioUrl:
+                "https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a7343b.mp3",
+              titulo: "Fundamentos da Crase",
+              artista: "Prof. Antigravity",
+              capaUrl:
+                "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1170&auto=format&fit=crop",
+              lyrics: `O acento grave não é brincadeira...\nCom ele você vai pela vida inteira...\nBasta saber se o 'A' é dobrado...\nE o seu sucesso está garantido e selado!\n\nProibido no macho, no verbo e no plural isolado.\nFacultativo na dona, na minha e no até lado a lado.\nNo 'qual' e no 'aquele' o segredo é o regente.\nCrase na hora e no 'à moda' do oriente!`,
+            }}
+          />
 
           <QuizInterativo
             titulo="Simulado Final: Crase"
@@ -1756,15 +1849,3 @@ export default function AulaCrase({
     </AulaTemplate>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
