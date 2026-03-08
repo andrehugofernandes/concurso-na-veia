@@ -13,6 +13,8 @@ import {
   AulaTemplate,
   ModuleSectionHeader,
   CardCarousel,
+  FunctionGraph,
+  type FunctionPlot,
 } from "../shared";
 
 import {
@@ -254,6 +256,38 @@ export default function AulaFuncoesExponenciais({
             />
           </section>
 
+          <FunctionGraph
+            title="Funções Exponenciais com Diferentes Bases"
+            functions={[
+              {
+                id: "func-2x",
+                label: "2^x",
+                color: "#3b82f6",
+                fn: (x) => Math.pow(2, x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-ex",
+                label: "e^x",
+                color: "#10b981",
+                fn: (x) => Math.exp(x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-10x",
+                label: "10^x",
+                color: "#ef4444",
+                fn: (x) => Math.pow(10, x),
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-3}
+            xMax={3}
+            yMin={-1}
+            yMax={15}
+            points={250}
+          />
+
           <QuizInterativo
             questoes={quizM1}
             titulo="FixaÃ§Ã£o - PotenciaÃ§Ã£o"
@@ -332,6 +366,31 @@ export default function AulaFuncoesExponenciais({
               ]}
             />
           </section>
+
+          <FunctionGraph
+            title="Crescimento e Decaimento Exponencial"
+            functions={[
+              {
+                id: "func-ex",
+                label: "e^x",
+                color: "#3b82f6",
+                fn: (x) => Math.exp(x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-e-x",
+                label: "e^(-x)",
+                color: "#ef4444",
+                fn: (x) => Math.exp(-x),
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-5}
+            xMax={3}
+            yMin={-1}
+            yMax={8}
+            points={250}
+          />
 
           <QuizInterativo
             questoes={quizM3}
@@ -541,6 +600,74 @@ export default function AulaFuncoesExponenciais({
             descricao="Manipulando gráficos: translações, ampliações e reflexões."
             gradiente="bg-gradient-to-br from-cyan-600 to-blue-700"
           />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Transformações de Funções"
+              description="Veja como as operações algébricas alteram o gráfico."
+              variant="cyan"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Tipos de Transformações",
+                  icone:<LuZap />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        As transformações aplicadas a f(x) = e^x incluem:
+                      </p>
+                      <div className="space-y-3">
+                        <div className="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20">
+                          <p className="font-mono text-sm font-bold text-cyan-700">c*f(x)</p>
+                          <p className="text-xs text-muted-foreground mt-1">Multiplicação por constante (ampliação vertical)</p>
+                        </div>
+                        <div className="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20">
+                          <p className="font-mono text-sm font-bold text-cyan-700">f(x - h)</p>
+                          <p className="text-xs text-muted-foreground mt-1">Deslocamento horizontal para direita</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <FunctionGraph
+            title="Transformações de Funções Exponenciais"
+            functions={[
+              {
+                id: "func-ex",
+                label: "e^x",
+                color: "#3b82f6",
+                fn: (x) => Math.exp(x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-2ex",
+                label: "2*e^x",
+                color: "#ef4444",
+                fn: (x) => 2 * Math.exp(x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-e-x1",
+                label: "e^(x-1)",
+                color: "#10b981",
+                fn: (x) => Math.exp(x - 1),
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-2}
+            xMax={4}
+            yMin={-1}
+            yMax={20}
+            points={250}
+          />
+
           <QuizInterativo
             questoes={quizM7}
             titulo="Fixação - Módulo 7"

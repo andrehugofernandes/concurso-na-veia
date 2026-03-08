@@ -2506,7 +2506,7 @@ export function StickyModuleNav({
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const PAGE_SIZE = isMobile ? 2 : 10;
+  const PAGE_SIZE = isMobile ? 2 : 6;
   const isCarouselMode = modules.length > PAGE_SIZE;
 
   // Clamp carouselStart when PAGE_SIZE changes (mobile ↔ desktop switch)
@@ -2573,7 +2573,7 @@ export function StickyModuleNav({
         isStickyNavPinned && !isTemporaryHeaderVisible
           ? "top-0"
           : "top-16 md:top-20",
-        "w-screen ml-[calc(50%-50vw)]",
+        "w-full",
       )}
     >
       {/* Inner nav bar — background, blur, border live here */}
@@ -2586,14 +2586,14 @@ export function StickyModuleNav({
         )}
       >
         {/* ── MOBILE: apenas module tabs + setas (altura original) ── */}
-        <div className="md:hidden flex items-center gap-2 px-3">
+        <div className="md:hidden flex items-center gap-3 px-4">
           {/* Seta esquerda */}
           <button
             onClick={slideLeft}
             disabled={!canGoLeft}
             aria-label="Módulos anteriores"
             className={cn(
-              "w-8 h-8 shrink-0 flex items-center justify-center rounded-xl border transition-all duration-200",
+              "w-10 h-10 shrink-0 flex items-center justify-center rounded-xl border transition-all duration-200",
               canGoLeft
                 ? "border-border/50 bg-background text-foreground/80 shadow-sm"
                 : "border-transparent bg-transparent text-transparent pointer-events-none",
@@ -2612,7 +2612,7 @@ export function StickyModuleNav({
                   key={mod.id}
                   value={mod.id}
                   className={cn(
-                    "flex-1 py-1.5 px-2 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
+                    "flex-1 py-1.5 px-3 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
                     !isVisible && "hidden",
                   )}
                 >
@@ -2645,7 +2645,7 @@ export function StickyModuleNav({
             disabled={!canGoRight}
             aria-label="Próximos módulos"
             className={cn(
-              "w-8 h-8 shrink-0 flex items-center justify-center rounded-xl border transition-all duration-200",
+              "w-10 h-10 shrink-0 flex items-center justify-center rounded-xl border transition-all duration-200",
               canGoRight
                 ? "border-border/50 bg-background text-foreground/80 shadow-sm"
                 : "border-transparent bg-transparent text-transparent pointer-events-none",

@@ -249,3 +249,9 @@ git commit -m "feat([materia]): implementa/enriquece aula [topico] - padrão pre
 - ❌ Questões sem contextualização industrial
 - ❌ Usar `respostaCorreta` — use `correta`
 - ❌ Usar `title`/`icon` em MODULE_DEFS — use `label`/`titulo`
+
+---
+
+> [!IMPORTANT]
+> **COMPORTAMENTO DO CARROSSEL (StickyModuleNav)**
+> No desktop, o carrossel de abas é ativado quando o número de módulos excede **6**. Se uma aula possuir 10 ou mais módulos, **NÃO** altere o `PAGE_SIZE` para um valor alto (ex: 10) no `shared.tsx`. Isso desativa as setas de navegação e quebra a estética do menu centrado. Mantenha o padrão de exibição parcial para preservar a funcionalidade de "scroll" lateral e o alinhamento visual premium.
