@@ -1,39 +1,59 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import {
   BookOpen,
-  AlertTriangle,
-  Lightbulb,
   Target,
-  Award,
 } from "lucide-react";
 import {
   ContentAccordion,
   QuizInterativo,
-  QuizQuestion,
   AulaTemplate,
   FlipCard,
   AlertBox,
   ModuleBanner,
   ModuleSectionHeader,
   CardCarousel,
+  getRandomQuestions,
+  AulaProps,
 } from "../shared";
 import {
   LuShuffle,
-  LuLibrary,
   LuLightbulb,
   LuShieldCheck,
   LuBookOpen,
   LuTrophy,
-  LuDivide,
   LuZap,
   LuFileSearch,
-  LuTriangle,
   LuCheck,
   LuTrendingUp,
   LuSearch,
   LuFileText,
 } from "react-icons/lu";
 import { TabsContent } from "@/components/ui/tabs";
+import {
+  QUIZ_M1_FUNDAMENTOS,
+  QUIZ_M2_LAPLACE,
+  QUIZ_M3_UNIAO_INTERSECAO,
+  QUIZ_M4_CONDICIONAL,
+  QUIZ_M5_BINOMIAL,
+  QUIZ_M6_COMPLEMENTAR,
+  QUIZ_M7_GEOMETRICA,
+  QUIZ_M8_INDEPENDENCIA,
+  QUIZ_M9_PETROBRASESPECIFICO,
+  QUIZ_M10_SIMULADO_MESTRE,
+} from "./data/probabilidade-quizzes";
+
+const MODULE_DEFS = [
+  { id: "modulo-1", label: "Módulo 1", title: "Fundamentos" },
+  { id: "modulo-2", label: "Módulo 2", title: "Lei de Laplace" },
+  { id: "modulo-3", label: "Módulo 3", title: "União e Interseção" },
+  { id: "modulo-4", label: "Módulo 4", title: "Probabilidade Condicional" },
+  { id: "modulo-5", label: "Módulo 5", title: "Probabilidade Binomial" },
+  { id: "modulo-6", label: "Módulo 6", title: "Complementar" },
+  { id: "modulo-7", label: "Módulo 7", title: "Probabilidade Geométrica" },
+  { id: "modulo-8", label: "Módulo 8", title: "Independência" },
+  { id: "modulo-9", label: "Módulo 9", title: "Engenharia de Riscos" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+] as const;
 
 export default function AulaProbabilidade({
   onComplete,
@@ -50,32 +70,91 @@ export default function AulaProbabilidade({
   materiaId,
   prevTopico,
   nextTopico,
-}: any) {
-  // OBS: Substituindo any progressivamente e fazendo dummy mock temporario de abas para o Template não quebrar.
-  // Como AulaTemplate exige controle de Tabs, injetamos mocks (similares à aula de exp)
-  const [activeTab, setActiveTab] = React.useState("modulo-1");
-  const completedModules = new Set<string>([]);
+}: AulaProps) {
+  const [activeTab, setActiveTab] = useState("modulo-1");
+  const [completedModules, setCompletedModules] = useState<Set<string>>(
+    new Set(),
+  );
 
-  const MODULE_DEFS = [
-    { id: "modulo-1", label: "Módulo 1", title: "Fundamentos" },
-    { id: "modulo-2", label: "Módulo 2", title: "Lei de Laplace" },
-    { id: "modulo-3", label: "Módulo 3", title: "União e Interseção" },
-    { id: "modulo-4", label: "Módulo 4", title: "Probabilidades Sucessivas" },
-    { id: "modulo-5", label: "Módulo 5", title: "Probabilidade Binomial" },
-    { id: "modulo-6", label: "Módulo 6", title: "Poisson e Normal" },
-    { id: "modulo-7", label: "Módulo 7", title: "Técnicas de Resolução" },
-    { id: "modulo-8", label: "Módulo 8", title: "Glossário do Mestre" },
-    { id: "modulo-9", label: "Módulo 9", title: "Engenharia de Riscos" },
-    { id: "modulo-10", label: "Módulo 10", title: "Desafio Final" },
-  ];
+  const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_FUNDAMENTOS, 4));
+  const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_LAPLACE, 4));
+  const [quizM3] = useState(() => getRandomQuestions(QUIZ_M3_UNIAO_INTERSECAO, 4));
+  const [quizM4] = useState(() => getRandomQuestions(QUIZ_M4_CONDICIONAL, 5));
+  const [quizM5] = useState(() => getRandomQuestions(QUIZ_M5_BINOMIAL, 5));
+  const [quizM6] = useState(() => getRandomQuestions(QUIZ_M6_COMPLEMENTAR, 5));
+  const [quizM7] = useState(() => getRandomQuestions(QUIZ_M7_GEOMETRICA, 5));
+  const [quizM8] = useState(() => getRandomQuestions(QUIZ_M8_INDEPENDENCIA, 5));
+  const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 5));
+  const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 5));
+
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
+  const [showCompletionBadge, setShowCompletionBadge] = useState(false);
+
+  useEffect(() => {
+    if (isCompleted) setShowCompletionBadge(true);
+  }, [isCompleted]);
+
+  useEffect(() => {
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
+      }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
+
+  const handleModuleComplete = (moduleId: string, score: number) => {
+    if (score >= 70) {
+      const newSet = new Set(completedModules).add(moduleId);
+      setCompletedModules(newSet);
+
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
+
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
+
+      const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
+
+      if (index === MODULE_DEFS.length - 1) {
+        setShowCompletionBadge(true);
+        onComplete?.();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        setTimeout(() => setActiveTab(MODULE_DEFS[index + 1].id), 1500);
+      }
+    }
+  };
+
+  const isModuleUnlocked = (index: number) => {
+    if (isCompleted || index === 0) return true;
+    return completedModules.has(MODULE_DEFS[index - 1].id);
+  };
 
   return (
     <AulaTemplate
       activeTab={activeTab}
-      setActiveTab={setActiveTab}
-      modules={MODULE_DEFS}
+      setActiveTab={(val) => {
+        const idx = MODULE_DEFS.findIndex((m) => m.id === val);
+        if (isModuleUnlocked(idx)) setActiveTab(val);
+      }}
+      modules={Array.from(MODULE_DEFS)}
       completedModules={completedModules}
-      isModuleUnlocked={() => true}
+      isModuleUnlocked={isModuleUnlocked}
       titulo={titulo || "Probabilidade"}
       descricao={
         descricao ||
@@ -491,6 +570,15 @@ export default function AulaProbabilidade({
               ]}
             />
           </div>
+
+          <QuizInterativo
+            titulo="Check-point: Fundamentos"
+            icone="🎲"
+            numero={1.1}
+            descricao="Teste seus conhecimentos sobre experimentos aleatórios, espaço amostral e eventos."
+            questoes={quizM1}
+            onComplete={(score) => handleModuleComplete("modulo-1", score)}
+          />
         </section>
       </TabsContent>
 
@@ -653,22 +741,8 @@ export default function AulaProbabilidade({
             icone="⚡"
             numero={2.1}
             descricao="Aplicação direta da Lei de Laplace em contextos técnicos."
-            questoes={[
-              {
-                id: 201,
-                pergunta:
-                  "Em uma urna com 5 bolas azuis e 3 vermelhas, sorteamos duas bolas SEM reposição. Qual a probabilidade de ambas serem azuis?",
-                opcoes: [
-                  { label: "A", valor: "5/14" },
-                  { label: "B", valor: "25/64" },
-                  { label: "C", valor: "5/8" },
-                  { label: "D", valor: "15/56" },
-                ],
-                correta: "5/14",
-                explicacao:
-                  "Primeira azul: 5/8. Como é SEM reposição, restam 7 bolas no total e 4 azuis. Segunda azul: 4/7. P = (5/8) * (4/7) = 20/56 = 5/14. O segredo da Cesgranrio é mudar o n(S) no meio da questão!",
-              },
-            ]}
+            questoes={quizM2}
+            onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </section>
       </TabsContent>
@@ -761,7 +835,7 @@ export default function AulaProbabilidade({
               },
               {
                 titulo: "A União Tripla (A ∪ B ∪ C)",
-                icone: "�",
+                icone: "🔺",
                 conteudo: (
                   <div className="space-y-4">
                     <p className="text-sm text-slate-300">
@@ -787,7 +861,7 @@ export default function AulaProbabilidade({
               },
               {
                 titulo: "O Macete de Venn",
-                icone: "�",
+                icone: "🔵",
                 conteudo: (
                   <div className="space-y-4">
                     <div className="grid grid-cols-2 gap-4 text-center">
@@ -856,22 +930,8 @@ export default function AulaProbabilidade({
             icone="🔥"
             numero={3.1}
             descricao="Teste seu raciocínio lógico em sobreposição de eventos."
-            questoes={[
-              {
-                id: 301,
-                pergunta:
-                  "Em um grupo de 100 técnicos da Petrobras, 60 conhecem o protocolo A, 50 conhecem o protocolo B e 20 conhecem ambos. Escolhendo um ao acaso, qual a chance de ele conhecer APENAS o protocolo A?",
-                opcoes: [
-                  { label: "A", valor: "60%" },
-                  { label: "B", valor: "40%" },
-                  { label: "C", valor: "20%" },
-                  { label: "D", valor: "30%" },
-                ],
-                correta: "40%",
-                explicacao:
-                  "Para saber quem conhece APENAS o A, pegamos o total de A (60) e subtraímos quem conhece ambos (20). 60 - 20 = 40. Resposta: 40%.",
-              },
-            ]}
+            questoes={quizM3}
+            onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </section>
       </TabsContent>
@@ -1000,22 +1060,8 @@ export default function AulaProbabilidade({
             icone="⚡"
             numero={4.1}
             descricao="Desafio técnico em inspeção e Bayes."
-            questoes={[
-              {
-                id: 401,
-                pergunta:
-                  "Uma máquina tem duas bombas independentes. A chance da bomba 1 falhar é 10%. Se a bomba 1 falhou, a chance da bomba 2 falhar (devido ao estresse) sobe para 30%. Qual a probabilidade de AMBAS falharem?",
-                opcoes: [
-                  { label: "A", valor: "3%" },
-                  { label: "B", valor: "1%" },
-                  { label: "C", valor: "30%" },
-                  { label: "D", valor: "40%" },
-                ],
-                correta: "3%",
-                explicacao:
-                  "P(B1 ∩ B2) = P(B1) * P(B2 | B1). Logo, 0,10 * 0,30 = 0,03 ou 3%. Como um evento influenciou o outro, multiplicamos a chance inicial pela condicional.",
-              },
-            ]}
+            questoes={quizM4}
+            onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </section>
       </TabsContent>
@@ -1155,22 +1201,8 @@ export default function AulaProbabilidade({
             icone="🎯"
             numero={5.1}
             descricao="Teste sua precisão em eventos repetitivos."
-            questoes={[
-              {
-                id: 501,
-                pergunta:
-                  "Em uma perfuração, a chance de encontrar rocha rígida é de 20%. Se perfurarmos 3 poços independentes, qual a probabilidade de encontrarmos rocha em EXATAMENTE 1 deles?",
-                opcoes: [
-                  { label: "A", valor: "48%" },
-                  { label: "B", valor: "38,4%" },
-                  { label: "C", valor: "20%" },
-                  { label: "D", valor: "12,8%" },
-                ],
-                correta: "38,4%",
-                explicacao:
-                  "n=3, k=1, p=0,2, q=0,8. \nP(1) = C(3,1) * 0,2^1 * 0,8^2 = 3 * 0,2 * 0,64 = 0,384 ou 38,4%.",
-              },
-            ]}
+            questoes={quizM5}
+            onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
         </section>
       </TabsContent>
@@ -1256,26 +1288,12 @@ export default function AulaProbabilidade({
           </AlertBox>
 
           <QuizInterativo
-            titulo="Check-point: Poisson & Normal"
+            titulo="Check-point: Probabilidade Complementar"
             icone="🧠"
             numero={6.1}
-            descricao="Desafio técnico em fluxos e médias."
-            questoes={[
-              {
-                id: 601,
-                pergunta:
-                  "Se em um terminal atracam em média 2 navios por dia (λ=2), qual a probabilidade de amanhã NÃO atracar nenhum navio?",
-                opcoes: [
-                  { label: "A", valor: "e^-2" },
-                  { label: "B", valor: "2e^-2" },
-                  { label: "C", valor: "1/e" },
-                  { label: "D", valor: "0" },
-                ],
-                correta: "e^-2",
-                explicacao:
-                  "Na fórmula de Poisson, para k=0: P(0) = (e^-λ * λ^0) / 0! = e^-λ. Como λ=2, o resultado é e^-2.",
-              },
-            ]}
+            descricao="Domine a técnica do complementar e eventos mutuamente exclusivos."
+            questoes={quizM6}
+            onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
         </section>
       </TabsContent>
@@ -1360,6 +1378,15 @@ export default function AulaProbabilidade({
               </AlertBox>
             </div>
           </div>
+
+          <QuizInterativo
+            titulo="Check-point: Probabilidade Geométrica"
+            icone="📐"
+            numero={7.1}
+            descricao="Aplique probabilidade em contextos de comprimento, área e tempo."
+            questoes={quizM7}
+            onComplete={(score) => handleModuleComplete("modulo-7", score)}
+          />
         </section>
       </TabsContent>
 
@@ -1413,6 +1440,15 @@ export default function AulaProbabilidade({
               </div>
             ))}
           </div>
+
+          <QuizInterativo
+            titulo="Check-point: Independência e Dependência"
+            icone="🔗"
+            numero={8.1}
+            descricao="Diferencie eventos independentes e dependentes e aplique a regra do produto."
+            questoes={quizM8}
+            onComplete={(score) => handleModuleComplete("modulo-8", score)}
+          />
         </section>
       </TabsContent>
 
@@ -1470,39 +1506,43 @@ export default function AulaProbabilidade({
           </div>
 
           <QuizInterativo
-            titulo="Simulação de Risco"
+            titulo="Simulação de Risco Petrobras"
             icone="🚨"
             numero={9.1}
-            descricao="Aplique a lógica redundante em cenários de plataforma."
-            questoes={[
-              {
-                id: 901,
-                pergunta:
-                  "Em um sistema de emergência com 3 sensores em paralelo (redundância 1oo3), onde cada um tem 10% de chance de falhar, qual a probabilidade do sistema INTEIRO falhar?",
-                opcoes: [
-                  { label: "A", valor: "30%" },
-                  { label: "B", valor: "1%" },
-                  { label: "C", valor: "0,1%" },
-                  { label: "D", valor: "0,01%" },
-                ],
-                correta: "0,1%",
-                explicacao:
-                  "Para o sistema 1oo3 falhar, os TRÊS devem falhar simultaneamente. P = 0,1 * 0,1 * 0,1 = 0,001 (0,1%).",
-              },
-            ]}
+            descricao="Aplique probabilidade em cenários reais de plataforma e controle de qualidade."
+            questoes={quizM9}
+            onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
         </section>
       </TabsContent>
 
       <TabsContent value="modulo-10" className="space-y-[50px]">
-        {/* MÓDULO 10: Desafio Final */}
+        {/* MÓDULO 10: Simulado Mestre */}
+        <ModuleBanner
+          numero={10}
+          titulo="Simulado Mestre: O Cerco Cesgranrio"
+          descricao="Nível de dificuldade: Elevado. Combine todos os tópicos em questões de alto nível."
+          gradiente="bg-gradient-to-br from-emerald-600 via-teal-700 to-indigo-900"
+        />
+
+        {showCompletionBadge && (
+          <div className="flex items-center gap-4 p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
+            <LuTrophy className="w-10 h-10 text-emerald-400 shrink-0" />
+            <div>
+              <p className="font-black text-emerald-400 text-lg">Especialista em Probabilidade!</p>
+              <p className="text-sm text-muted-foreground">Você completou todos os módulos. XP máximo conquistado!</p>
+            </div>
+          </div>
+        )}
+
         <section className="space-y-6">
           <QuizInterativo
             titulo="Simulado Final: O Cerco Cesgranrio"
             icone="🏆"
             numero={10}
             descricao="Nível de dificuldade: Elevado. Este simulado cobre desde fundamentos até Bayes e Binomial em contextos técnicos da Petrobras."
-            questoes={probabilidadeQuestions}
+            questoes={quizM10}
+            onComplete={(score) => handleModuleComplete("modulo-10", score)}
           />
         </section>
 
@@ -1604,456 +1644,3 @@ export default function AulaProbabilidade({
     </AulaTemplate>
   );
 }
-
-// ------------------------------------------------------------------
-// BANCO DE QUESTÕES (Estilo CESGRANRIO)
-// ------------------------------------------------------------------
-
-const probabilidadeQuestions: QuizQuestion[] = [
-  {
-    id: 1,
-    pergunta:
-      "Em uma agência bancária, 40% dos clientes são do setor comercial e 35% são do setor de serviços. Sabe-se que 15% dos clientes possuem investimentos em ambos os setores. Qual a probabilidade de um cliente escolhido ao acaso pertencer ao setor comercial OU ao de serviços?",
-    opcoes: [
-      { label: "A", valor: "60%" },
-      { label: "B", valor: "55%" },
-      { label: "C", valor: "75%" },
-      { label: "D", valor: "50%" },
-      { label: "E", valor: "65%" },
-    ],
-    correta: "60%",
-    explicacao:
-      "Esta questão exige a aplicação da Regra da Adição para eventos não mutuamente exclusivos. A fórmula é P(A ∪ B) = P(A) + P(B) - P(A ∩ B). Substituindo os valores: 40% (Comercial) + 35% (Serviços) - 15% (Ambos) = 60%. A subtração da interseção é vital para não contar as mesmas pessoas duas vezes. É o 'padrão ouro' da Cesgranrio para confundir candidatos apressados.",
-  },
-  {
-    id: 2,
-    pergunta:
-      "Um técnico de manutenção da Petrobras inspeciona 4 válvulas de segurança independentes. A probabilidade de uma única válvula apresentar falha é de 0,1. Qual a probabilidade de PELO MENOS UMA válvula falhar durante a inspeção?",
-    opcoes: [
-      { label: "A", valor: "0,3439" },
-      { label: "B", valor: "0,6561" },
-      { label: "C", valor: "0,1" },
-      { label: "D", valor: "0,4" },
-      { label: "E", valor: "0,9999" },
-    ],
-    correta: "0,3439",
-    explicacao:
-      "Questões com a expressão 'Pelo menos um' são melhor resolvidas pelo Evento Complementar: P(Pelo menos um) = 1 - P(Nenhum). No nosso caso, a probabilidade de uma válvula NÃO falhar é 0,9. Como as válvulas são independentes, a probabilidade de as 4 NÃO falharem é 0,9 * 0,9 * 0,9 * 0,9 = 0,6561. Assim, a probabilidade de pelo menos uma falha é 1 - 0,6561 = 0,3439 (34,39%).",
-  },
-  {
-    id: 3,
-    pergunta:
-      "Em uma urna com 10 bolas (6 verdes e 4 amarelas), retiram-se duas bolas sequencialmente SEM REPOSIÇÃO. Qual a probabilidade de a segunda bola ser amarela, dado que a primeira foi verde?",
-    opcoes: [
-      { label: "A", valor: "4/9" },
-      { label: "B", valor: "4/10" },
-      { label: "C", valor: "3/9" },
-      { label: "D", valor: "1/2" },
-      { label: "E", valor: "2/5" },
-    ],
-    correta: "4/9",
-    explicacao:
-      "Este é um exercício clássico de Probabilidade Condicional. A informação 'a primeira foi verde' altera o Espaço Amostral. Se retiramos uma bola verde de uma urna de 10, restam agora apenas 9 bolas no total. Dessas 9, as 4 amarelas originais ainda estão lá. Portanto, a chance de a segunda ser amarela é de 4 em 9 (4/9). Note que o denominador diminuiu!",
-  },
-  {
-    id: 4,
-    pergunta:
-      "A probabilidade de um atirador acertar o alvo é 1/3 em cada tentativa. Se ele realizar 5 disparos independentes, qual a probabilidade de ele acertar o alvo EXATAMENTE 2 vezes?",
-    opcoes: [
-      { label: "A", valor: "80/243" },
-      { label: "B", valor: "40/243" },
-      { label: "C", valor: "20/243" },
-      { label: "D", valor: "10/243" },
-      { label: "E", valor: "1/243" },
-    ],
-    correta: "80/243",
-    explicacao:
-      "Aplicamos a Distribuição Binomial. Fórmula: P(X=k) = C(n,k) * p^k * q^(n-k). Aqui: n=5, k=2, p=1/3 e q=2/3. Calculando: C(5,2) = 10. Assim, P(X=2) = 10 * (1/3)^2 * (2/3)^3 = 10 * (1/9) * (8/27) = 80/243. O segredo é não esquecer o coeficiente de combinação C(5,2).",
-  },
-  {
-    id: 5,
-    pergunta:
-      "Dois eventos A e B são tais que P(A) = 0,3, P(B) = 0,4 e sabe-se que eles são INDEPENDENTES. Qual o valor da probabilidade da União P(A ∪ B)?",
-    opcoes: [
-      { label: "A", valor: "0,7" },
-      { label: "B", valor: "0,58" },
-      { label: "C", valor: "0,12" },
-      { label: "D", valor: "0,42" },
-      { label: "E", valor: "0,72" },
-    ],
-    correta: "0,58",
-    explicacao:
-      "A independência garante que P(A ∩ B) = P(A) * P(B). Portanto, P(A ∩ B) = 0,3 * 0,4 = 0,12. Agora usamos a regra da união: P(A ∪ B) = P(A) + P(B) - P(A ∩ B) = 0,3 + 0,4 - 0,12 = 0,58. Cuidado para não apenas somar 0,3 + 0,4 e marcar 0,7 (alternativa A), que seria o caso se fossem excludentes.",
-  },
-  {
-    id: 6,
-    pergunta:
-      "Um teste rápido para uma doença na refinaria é 90% eficaz para detectar a doença em quem a possui, mas dá 5% de 'falsos positivos' em quem é saudável. Sabe-se que 1% da população da refinaria possui a doença. Se um funcionário testou POSITIVO, qual a chance aproximada de ele realmente ter a doença?",
-    opcoes: [
-      { label: "A", valor: "15%" },
-      { label: "B", valor: "90%" },
-      { label: "C", valor: "50%" },
-      { label: "D", valor: "5%" },
-      { label: "E", valor: "25%" },
-    ],
-    correta: "15%",
-    explicacao:
-      "Use Bayes! P(D|P) = [P(P|D)*P(D)] / P(P Total). \n1) Numerador: 0,90 * 0,01 = 0,009. \n2) Denominador (Testes Positivos): [0,90 * 0,01 (doentes)] + [0,05 * 0,99 (saudáveis)] = 0,009 + 0,0495 = 0,0585. \n3) Bayes: 0,009 / 0,0585 ≈ 0,153 (15%). Intuitivamente, embora o teste pareça bom, como a doença é rara, a maioria dos positivos são falsos!",
-  },
-  {
-    id: 7,
-    pergunta:
-      "De um grupo de 10 engenheiros e 5 técnicos, deve-se formar uma comissão de 3 pessoas. Qual a probabilidade de a comissão ser formada exclusivamente por engenheiros?",
-    opcoes: [
-      { label: "A", valor: "24/91" },
-      { label: "B", valor: "10/15" },
-      { label: "C", valor: "1/5" },
-      { label: "D", valor: "2/3" },
-      { label: "E", valor: "12/91" },
-    ],
-    correta: "24/91",
-    explicacao:
-      "Calculamos n(S) (Combinação de 15 pessoas tomadas 3 a 3) e n(A) (Combinação de 10 engenheiros tomados 3 a 3). \nn(S) = C(15,3) = (15*14*13)/(3*2*1) = 455. \nn(A) = C(10,3) = (10*9*8)/(3*2*1) = 120. \nP(A) = 120 / 455 = 24/91. É um problema de Laplace misturado com Análise Combinatória.",
-  },
-  {
-    id: 8,
-    pergunta:
-      "Uma máquina produz peças com 5% de defeito. Um lote é aceito se em 3 peças testadas NENHUMA for defeituosa. Qual a chance do lote ser aceito?",
-    opcoes: [
-      { label: "A", valor: "85,7%" },
-      { label: "B", valor: "95,0%" },
-      { label: "C", valor: "15,0%" },
-      { label: "D", valor: "80,0%" },
-      { label: "E", valor: "99,0%" },
-    ],
-    correta: "85,7%",
-    explicacao:
-      "Cada peça tem 95% (0,95) de chance de ser boa. Como as escolhas são independentes, para que as três sejam boas, multiplicamos: 0,95 * 0,95 * 0,95 = 0,857375, ou aproximadamente 85,7%. Perceba que, mesmo com pouca falha (5%), a chance de pegar 3 boas seguidas começa a cair.",
-  },
-  {
-    id: 9,
-    pergunta:
-      "A negação lógica de um evento A em probabilidade é seu complementar. Se a probabilidade de chover amanhã é 2/7, qual a chance de NÃO chover?",
-    opcoes: [
-      { label: "A", valor: "5/7" },
-      { label: "B", valor: "1/7" },
-      { label: "C", valor: "7/2" },
-      { label: "D", valor: "0" },
-      { label: "E", valor: "2/7" },
-    ],
-    correta: "5/7",
-    explicacao:
-      "A soma das probabilidades de eventos complementares é sempre 1. Logo, P(A') = 1 - 2/7 = 5/7. Praticamente uma questão 'bônus' se você souber o conceito básico de complementaridade.",
-  },
-  {
-    id: 10,
-    pergunta:
-      "Lançando-se uma moeda honesta 4 vezes, qual a probabilidade de obtermos CARA nas duas primeiras e COROA nas duas últimas?",
-    opcoes: [
-      { label: "A", valor: "1/16" },
-      { label: "B", valor: "1/4" },
-      { label: "C", valor: "1/2" },
-      { label: "D", valor: "6/16" },
-      { label: "E", valor: "4/16" },
-    ],
-    correta: "1/16",
-    explicacao:
-      "Cuidado! Aqui a ORDEM está definida. Não é uma binomial genérica. Queremos especificamente (C, C, K, K). Como os lançamentos são independentes, basta multiplicar: 1/2 * 1/2 * 1/2 * 1/2 = 1/16. Se a questão pedisse 'exatamente duas caras', o resultado seria C(4,2)/16 = 6/16.",
-  },
-  {
-    id: 11,
-    pergunta:
-      "Em um terminal, 70% dos navios são petroleiros e 30% são gaseiros. Sabe-se que 10% dos petroleiros e 5% dos gaseiros têm problemas de atracação. Se um navio foi escolhido e apresenta problemas de atracação, qual a probabilidade de ele ser um gaseiro?",
-    opcoes: [
-      { label: "A", valor: "15/85" },
-      { label: "B", valor: "30/100" },
-      { label: "C", valor: "5/100" },
-      { label: "D", valor: "1/5" },
-      { label: "E", valor: "10/17" },
-    ],
-    correta: "15/85",
-    explicacao:
-      "Bayes novamente. P(G|Prob) = [P(Prob|G)*P(G)] / P(Prob Total). \n1) Numerador: 0,05 * 0,30 = 0,015. \n2) Denominador: (0,10*0,70) + (0,05*0,30) = 0,070 + 0,015 = 0,085. \n3) Cálculo: 0,015 / 0,085 = 15/85 (ou 3/17). Sempre organize a árvore de probabilidades para não se perder nestas questões.",
-  },
-  {
-    id: 12,
-    pergunta:
-      "Dois dados são jogados. Qual a probabilidade de a soma dos pontos ser igual a 7?",
-    opcoes: [
-      { label: "A", valor: "1/6" },
-      { label: "B", valor: "1/12" },
-      { label: "C", valor: "5/36" },
-      { label: "D", valor: "1/4" },
-      { label: "E", valor: "7/36" },
-    ],
-    correta: "1/6",
-    explicacao:
-      "O espaço amostral n(S) = 36. Os casos favoráveis para soma 7 são: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1). Total de 6 casos. P = 6/36 = 1/6.",
-  },
-  {
-    id: 13,
-    pergunta: "Se P(A) = 0,7, qual o maior valor possível para P(A ∩ B)?",
-    opcoes: [
-      { label: "A", valor: "0,3" },
-      { label: "B", valor: "0,7" },
-      { label: "C", valor: "1" },
-      { label: "D", valor: "Depende de P(B)" },
-      { label: "E", valor: "0" },
-    ],
-    correta: "Depende de P(B)",
-    explicacao:
-      "A interseção de A e B não pode ser maior do que a probabilidade do menor evento. Como P(A)=0,7, se P(B)=0,2, o máximo será 0,2. Se P(B)=0,9, o máximo será 0,7. Portanto, a resposta correta é que depende do valor de B, mas o teto sempre será 0,7 neste caso.",
-  },
-  {
-    id: 14,
-    pergunta:
-      "Em um sorteio de números de 1 a 100, qual a chance de sair um número múltiplo de 10 OU múltiplo de 25?",
-    opcoes: [
-      { label: "A", valor: "14%" },
-      { label: "B", valor: "10%" },
-      { label: "C", valor: "4%" },
-      { label: "D", valor: "12%" },
-      { label: "E", valor: "15%" },
-    ],
-    correta: "12%",
-    explicacao:
-      "1) Múltiplos de 10 (10 a 100): 10 números. \n2) Múltiplos de 25 (25, 50, 75, 100): 4 números. \n3) Interseção (10 e 25): MMC(10,25) = 50. Logo, 50 e 100 (2 números). \n4) União: 10 + 4 - 2 = 12. P = 12/100 = 12%.",
-  },
-  {
-    id: 15,
-    pergunta:
-      "Qual a probabilidade de, em uma família com 3 filhos, todos serem do mesmo sexo?",
-    opcoes: [
-      { label: "A", valor: "1/4" },
-      { label: "B", valor: "1/8" },
-      { label: "C", valor: "1/2" },
-      { label: "D", valor: "1/3" },
-      { label: "E", valor: "3/8" },
-    ],
-    correta: "1/4",
-    explicacao:
-      "O espaço amostral tem 2^3 = 8 possibilidades. Os casos favoráveis são (H,H,H) e (M,M,M). Total = 2. P = 2/8 = 1/4 (25%). Muitas pessoas esquecem de contar o caso das meninas e marcam 1/8.",
-  },
-  {
-    id: 16,
-    pergunta:
-      "Uma empresa tem 60% de funcionários homens e 40% mulheres. Sabe-se que 10% dos homens e 5% das mulheres são fumantes. Escolhendo-se um funcionário ao acaso e sabendo que ele é FUMANTE, qual a probabilidade de ser mulher?",
-    opcoes: [
-      { label: "A", valor: "25%" },
-      { label: "B", valor: "33%" },
-      { label: "C", valor: "40%" },
-      { label: "D", valor: "20%" },
-      { label: "E", valor: "50%" },
-    ],
-    correta: "25%",
-    explicacao:
-      "Probabilidade Total de fumantes: (0,6 * 0,1) + (0,4 * 0,05) = 0,06 + 0,02 = 0,08. Probabilidade de ser mulher e fumante: 0,02. P(Mulher|Fumante) = 0,02 / 0,08 = 1/4 = 25%.",
-  },
-  {
-    id: 17,
-    pergunta:
-      "Em uma urna há 5 bolas azuis e 3 vermelhas. Sorteamos duas bolas SEM reposição. Qual a probabilidade de ambas serem azuis?",
-    opcoes: [
-      { label: "A", valor: "5/14" },
-      { label: "B", valor: "25/64" },
-      { label: "C", valor: "5/8" },
-      { label: "D", valor: "1/2" },
-      { label: "E", valor: "15/56" },
-    ],
-    correta: "5/14",
-    explicacao:
-      "Primeira azul: 5/8. Segunda azul (restam 4 azuis e 7 no total): 4/7. P = 5/8 * 4/7 = 20/56 = 5/14.",
-  },
-  {
-    id: 18,
-    pergunta:
-      "Se a média de acidentes em um trecho de rodovia é de 2 por dia, qual a probabilidade de não ocorrer nenhum acidente amanhã, usando a distribuição de Poisson?",
-    opcoes: [
-      { label: "A", valor: "e^-2" },
-      { label: "B", valor: "2e^-2" },
-      { label: "C", valor: "1/2" },
-      { label: "D", valor: "e^2" },
-      { label: "E", valor: "0" },
-    ],
-    correta: "e^-2",
-    explicacao:
-      "Fórmula de Poisson: P(k) = (e^-λ * λ^k) / k!. Para k=0 e λ=2: P(0) = (e^-2 * 2^0) / 0! = e^-2. Como e ≈ 2,718, isso dá aproximadamente 13,5%.",
-  },
-  {
-    id: 19,
-    pergunta:
-      "Em um lote de 100 peças, 5 são defeituosas. Se retirarmos 2 peças AO ACASO com REPOSIÇÃO, qual a probabilidade de ambas serem defeituosas?",
-    opcoes: [
-      { label: "A", valor: "1/400" },
-      { label: "B", valor: "1/380" },
-      { label: "C", valor: "5/100" },
-      { label: "D", valor: "1/20" },
-      { label: "E", valor: "1/10" },
-    ],
-    correta: "1/400",
-    explicacao:
-      "Como há reposição, a probabilidade não muda. 5/100 * 5/100 = 1/20 * 1/20 = 1/400. Se fosse SEM reposição, seria 5/100 * 4/99.",
-  },
-  {
-    id: 20,
-    pergunta:
-      "A probabilidade de um aluno ser aprovado em um concurso é 0,2. Se ele prestar 4 concursos diferentes e independentes, qual a chance de ser aprovado em PELO MENOS UM?",
-    opcoes: [
-      { label: "A", valor: "59,04%" },
-      { label: "B", valor: "80,00%" },
-      { label: "C", valor: "20,00%" },
-      { label: "D", valor: "40,96%" },
-      { label: "E", valor: "10,24%" },
-    ],
-    correta: "59,04%",
-    explicacao:
-      "P(Pelo menos um) = 1 - P(Nenhum). A chance de reprovar em um é 0,8. Em 4 concursos: 0,8^4 = 0,4096. Logo, P(Pelo menos uma aprovação) = 1 - 0,4096 = 0,5904 = 59,04%.",
-  },
-  {
-    id: 21,
-    pergunta:
-      "Em um processo industrial, a probabilidade de uma peça ser defeituosa é 0,02. As peças são acondicionadas em caixas de 500 unidades. Qual a probabilidade de uma caixa conter EXATAMENTE 10 peças defeituosas, usando a aproximação de Poisson?",
-    opcoes: [
-      { label: "A", valor: "(e^{-10} · 10^{10}) / 10!" },
-      { label: "B", valor: "e^{-10}" },
-      { label: "C", valor: "0,02" },
-      { label: "D", valor: "1/10" },
-      { label: "E", valor: "0,10" },
-    ],
-    correta: "(e^{-10} · 10^{10}) / 10!",
-    explicacao:
-      "λ = n * p = 500 * 0,02 = 10. A fórmula de Poisson é P(k) = (e^{-λ} * λ^k) / k!. Substituindo, temos o resultado da alternativa A.",
-  },
-  {
-    id: 22,
-    pergunta:
-      "Se P(A|B) = 0,4, P(A) = 0,3 e P(B) = 0,5, qual o valor de P(B|A)?",
-    opcoes: [
-      { label: "A", valor: "2/3" },
-      { label: "B", valor: "0,2" },
-      { label: "C", valor: "0,6" },
-      { label: "D", valor: "0,15" },
-      { label: "E", valor: "0,5" },
-    ],
-    correta: "2/3",
-    explicacao:
-      "Usamos a definição de Bayes: P(B|A) = [P(A|B)*P(B)] / P(A). P(B|A) = [0,4 * 0,5] / 0,3 = 0,2 / 0,3 = 2/3.",
-  },
-  {
-    id: 23,
-    pergunta:
-      "Três máquinas A, B e C produzem respectivamente 40%, 30% e 30% de um lote. As taxas de defeito são 2%, 3% e 4%. Uma peça é sorteada e é DEFEITUOSA. Qual a chance de ser da máquina A?",
-    opcoes: [
-      { label: "A", valor: "8/29" },
-      { label: "B", valor: "40%" },
-      { label: "C", valor: "2%" },
-      { label: "D", valor: "9/29" },
-      { label: "E", valor: "12/29" },
-    ],
-    correta: "8/29",
-    explicacao:
-      "Prob. Total de defeito: (0,4*0,02) + (0,3*0,03) + (0,3*0,04) = 0,008 + 0,009 + 0,012 = 0,029. P(A|Def) = 0,008 / 0,029 = 8/29.",
-  },
-  {
-    id: 24,
-    pergunta:
-      "Lançando um dado honesto 10 vezes, qual a média (esperança) de vezes que sairá o número 6?",
-    opcoes: [
-      { label: "A", valor: "10/6" },
-      { label: "B", valor: "6" },
-      { label: "C", valor: "1/6" },
-      { label: "D", valor: "5" },
-      { label: "E", valor: "1" },
-    ],
-    correta: "10/6",
-    explicacao:
-      "Na distribuição Binomial, a média é E[X] = n * p. Aqui n=10 e p=1/6. Logo, E[X] = 10/6 ou 1,666...",
-  },
-  {
-    id: 25,
-    pergunta:
-      "A probabilidade de um poço ser produtivo é 1/4. Se uma empresa perfura poços até encontrar o primeiro produtivo, qual a chance de gastar EXATAMENTE 3 perfurações?",
-    opcoes: [
-      { label: "A", valor: "9/64" },
-      { label: "B", valor: "1/4" },
-      { label: "C", valor: "3/4" },
-      { label: "D", valor: "1/64" },
-      { label: "E", valor: "27/64" },
-    ],
-    correta: "9/64",
-    explicacao:
-      "Este é um caso de Distribuição Geométrica: (Falha) * (Falha) * (Sucesso). P = (3/4) * (3/4) * (1/4) = 9/64.",
-  },
-  {
-    id: 26,
-    pergunta:
-      "Em um grupo de 100 pessoas, 80 gostam de café e 40 gostam de chá. Qual a probabilidade MÍNIMA de uma pessoa gostar de ambos?",
-    opcoes: [
-      { label: "A", valor: "20%" },
-      { label: "B", valor: "40%" },
-      { label: "C", valor: "0%" },
-      { label: "D", valor: "60%" },
-      { label: "E", valor: "10%" },
-    ],
-    correta: "20%",
-    explicacao:
-      "Como a união P(A∪B) não pode exceder 100%, temos: 80 + 40 - P(A∩B) <= 100. Logo, 120 - P(A∩B) <= 100 -> P(A∩B) >= 20. A interseção mínima é 20%.",
-  },
-  {
-    id: 27,
-    pergunta:
-      "A probabilidade de um navio chegar com atraso é 0,2. Se chegarem 5 navios, qual a probabilidade de pelo menos um chegar com atraso?",
-    opcoes: [
-      { label: "A", valor: "0,67232" },
-      { label: "B", valor: "0,32768" },
-      { label: "C", valor: "0,2" },
-      { label: "D", valor: "1" },
-      { label: "E", valor: "0,8" },
-    ],
-    correta: "0,67232",
-    explicacao: "1 - P(Nenhum atraso) = 1 - (0,8^5) = 1 - 0,32768 = 0,67232.",
-  },
-  {
-    id: 28,
-    pergunta: "Um evento X tem probabilidade 1. Como ele é classificado?",
-    opcoes: [
-      { label: "A", valor: "Evento Certo" },
-      { label: "B", valor: "Evento Impossível" },
-      { label: "C", valor: "Espaço Amostral" },
-      { label: "D", valor: "Evento Aleatório" },
-      { label: "E", valor: "Universo" },
-    ],
-    correta: "Evento Certo",
-    explicacao:
-      "Probabilidade 1 significa que o evento ocorrerá com 100% de certeza. No vocabulário técnico, é o Evento Certo.",
-  },
-  {
-    id: 29,
-    pergunta: "Se A e B são mutuamente excludentes, qual o valor de P(A ∩ B)?",
-    opcoes: [
-      { label: "A", valor: "0" },
-      { label: "B", valor: "P(A)*P(B)" },
-      { label: "C", valor: "1" },
-      { label: "D", valor: "P(A)+P(B)" },
-      { label: "E", valor: "0,5" },
-    ],
-    correta: "0",
-    explicacao:
-      "Pela definição, eventos mutuamente excludentes não podem ocorrer ao mesmo tempo, logo sua interseção é nula.",
-  },
-  {
-    id: 30,
-    pergunta:
-      "Em um sorteio de 1 a 50, qual a probabilidade de sair um número PRIMO?",
-    opcoes: [
-      { label: "A", valor: "15/50" },
-      { label: "B", valor: "10/50" },
-      { label: "C", valor: "25/50" },
-      { label: "D", valor: "12/50" },
-      { label: "E", valor: "1/2" },
-    ],
-    correta: "15/50",
-    explicacao:
-      "Os primos até 50 são: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47. Total = 15. Probabilidade = 15/50 ou 30%.",
-  },
-];

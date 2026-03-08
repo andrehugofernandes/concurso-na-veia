@@ -2563,16 +2563,19 @@ export function StickyModuleNav({
   }, [setIsStickyNavPinned, setIsTemporaryHeaderVisible]);
 
   return (
-    // 🔒 CRITICAL: w-screen + ml-[calc(50%-50vw)] required for full-width breakout.
-    // overflow-x-clip (not overflow-hidden) allows absolute children to overflow vertically
-    // (for the floating Home/Toggle buttons) without causing horizontal scroll.
     <div
       ref={navRef}
       className={cn(
-        "sticky z-40 overflow-x-clip transition-all duration-300",
-        isStickyNavPinned && !isTemporaryHeaderVisible
-          ? "top-0 w-screen ml-[calc(50%-50vw)] px-0"
-          : "top-16 md:top-20 w-full px-0",
+        "sticky z-[50] overflow-x-clip transition-all duration-300",
+        // Posição dinâmica: top-0 se sem header, top-16/20 se com header
+        isStickyNavPinned
+          ? isTemporaryHeaderVisible
+            ? "top-16 md:top-20"
+            : "top-0"
+          : "top-0",
+        // 🔒 Breakout: alinhado com a área de conteúdo (Viewport - Sidebar)
+        // Largura total respeitando a sidebar
+        "w-[calc(100vw-var(--sidebar-width,0px))] ml-[calc(-1*((100vw-var(--sidebar-width,0px))-100%)/2)]",
       )}
     >
       {/* Inner nav bar — background, blur, border live here */}
@@ -2580,8 +2583,8 @@ export function StickyModuleNav({
         className={cn(
           "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/50 transition-all duration-300",
           isStickyNavPinned && !isTemporaryHeaderVisible
-            ? "shadow-md py-2 w-screen ml-[calc(50%-50vw)]"
-            : "shadow-sm py-3 w-full",
+            ? "shadow-md py-1 border-t border-border/40 border-b-2" // Altura mínima para alinhar com logo
+            : "shadow-sm py-4 border-t-0",
         )}
       >
         {/* Inner Content Wrapper — Centraliza as abas */}
@@ -2604,7 +2607,7 @@ export function StickyModuleNav({
             </button>
 
             {/* TabsList mobile — só as TabsTriggers */}
-            <TabsList className="flex flex-1 h-auto p-1.5 bg-muted/20 border border-border/10 rounded-2xl gap-2 shadow-inner min-w-0">
+            <TabsList className="flex flex-1 h-auto p-1 bg-muted/20 border border-border/10 rounded-2xl gap-1 shadow-inner min-w-0">
               {modules.map((mod, index) => {
                 const isVisible =
                   index >= effectiveStart && index < effectiveStart + PAGE_SIZE;
@@ -2613,7 +2616,7 @@ export function StickyModuleNav({
                     key={mod.id}
                     value={mod.id}
                     className={cn(
-                      "flex-1 py-1.5 px-4 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
+                      "flex-1 py-1.5 px-2 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
                       !isVisible && "hidden",
                     )}
                   >
@@ -2677,26 +2680,26 @@ export function StickyModuleNav({
               </button>
             </div>
 
-            <TabsList className="flex h-auto p-1.5 bg-muted/20 border border-border/10 rounded-3xl gap-1.5 md:gap-2 shadow-inner transition-all duration-300">
+            <TabsList className="flex h-auto p-1 bg-muted/20 border border-border/10 rounded-2xl gap-1 md:gap-1.5 shadow-inner">
               {/* Toggle Button for Header (só quando pinned) */}
               <AnimatePresence>
                 {isStickyNavPinned && (
                   <motion.div
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: "auto", opacity: 1 }}
-                    exit={{ width: 0, opacity: 0 }}
-                    className="shrink-0 flex items-center pr-1"
+                    initial={{ width: 0, opacity: 0, marginRight: 0 }}
+                    animate={{ width: "auto", opacity: 1, marginRight: 8 }}
+                    exit={{ width: 0, opacity: 0, marginRight: 0 }}
+                    className="overflow-hidden"
                   >
                     <TooltipProvider>
                       <Tooltip delayDuration={0}>
                         <TooltipTrigger asChild>
                           <button
                             onClick={toggleHeader}
-                            className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl hover:bg-muted text-foreground transition-colors group border border-border/50 shadow-sm bg-background shrink-0"
+                            className="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-full border border-border/50 bg-background shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0"
                           >
                             <LuMenu
                               className={cn(
-                                "w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-foreground transition-all duration-300",
+                                "w-4 h-4 md:w-5 md:h-5 transition-all duration-300",
                                 isTemporaryHeaderVisible
                                   ? "rotate-90"
                                   : "rotate-0",
@@ -2733,9 +2736,9 @@ export function StickyModuleNav({
                       <TooltipTrigger asChild>
                         <Link
                           href={homeHref}
-                          className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl hover:bg-muted text-foreground transition-colors border border-border/50 shadow-sm bg-background group shrink-0"
+                          className="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-full border border-border/50 bg-background shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0"
                         >
-                          <LuHouse className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                          <LuHouse className="w-4 h-4 md:w-5 md:h-5" />
                         </Link>
                       </TooltipTrigger>
                       <TooltipContent
@@ -2821,7 +2824,8 @@ export function StickyModuleNav({
         layout
         transition={{ type: "spring", stiffness: 380, damping: 30 }}
         className={cn(
-          "md:hidden flex items-center px-3 -mt-5",
+          "md:hidden flex items-center px-3 transition-all duration-300",
+          isStickyNavPinned && isTemporaryHeaderVisible ? "mt-2" : "-mt-5",
           isStickyNavPinned ? "justify-between" : "justify-center gap-3",
         )}
       >
