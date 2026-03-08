@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useParams } from "next/navigation";
 import { useHeaderState } from "@/contexts/HeaderStateContext";
+export { FunctionGraph, type FunctionPlot } from "./shared/FunctionGraph";
 import {
   Carousel,
   CarouselContent,
@@ -638,9 +639,13 @@ export function ProgressIndicator({ percent }: { percent?: number }) {
     const prev = prevProgressRef.current;
     // Dispara evento quando cruza 50% em qualquer direção
     if (prev < 50 && progress >= 50) {
-      window.dispatchEvent(new CustomEvent("scroll-to-top-side", { detail: { side: "left" } }));
+      window.dispatchEvent(
+        new CustomEvent("scroll-to-top-side", { detail: { side: "left" } }),
+      );
     } else if (prev >= 50 && progress < 50) {
-      window.dispatchEvent(new CustomEvent("scroll-to-top-side", { detail: { side: "right" } }));
+      window.dispatchEvent(
+        new CustomEvent("scroll-to-top-side", { detail: { side: "right" } }),
+      );
     }
     prevProgressRef.current = progress;
   }, [progress]);
@@ -2483,12 +2488,16 @@ export function StickyModuleNav({
     "text-amber-400",
     "text-rose-400",
     "text-cyan-400",
+    "text-orange-400",
+    "text-teal-400",
+    "text-pink-400",
+    "text-blue-400",
   ] as const;
 
   const navRef = useRef<HTMLDivElement>(null);
   const [carouselStart, setCarouselStart] = useState(0);
 
-  // Responsive PAGE_SIZE: 2 on mobile, 6 on desktop
+  // Responsive PAGE_SIZE: 2 on mobile, 10 on desktop (adjusted for word classes lesson)
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -2497,7 +2506,7 @@ export function StickyModuleNav({
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const PAGE_SIZE = isMobile ? 2 : 6;
+  const PAGE_SIZE = isMobile ? 2 : 10;
   const isCarouselMode = modules.length > PAGE_SIZE;
 
   // Clamp carouselStart when PAGE_SIZE changes (mobile ↔ desktop switch)

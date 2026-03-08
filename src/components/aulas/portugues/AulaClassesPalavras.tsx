@@ -276,14 +276,16 @@ export default function AulaClassesPalavras({
   useEffect(() => {
     setQMod1(getRandomQuestions(QUIZ_M1_SUBSTANTIVO, 6));
     setQMod2(getRandomQuestions(QUIZ_M2_ADJETIVO_ARTIGO, 6));
-    setQMod3(getRandomQuestions(QUIZ_M3_VERBO_I, 6));
-    setQMod4(getRandomQuestions(QUIZ_M4_VERBO_II, 6));
-    setQMod5(getRandomQuestions(QUIZ_M5_PRONOME_I, 6));
-    setQMod6(getRandomQuestions(QUIZ_M6_PRONOME_II, 6));
-    setQMod7(getRandomQuestions(QUIZ_M7_ADVERBIO, 6));
-    setQMod8(getRandomQuestions(QUIZ_M8_PREPOSICAO_NUMERAL, 6));
-    setQMod9(getRandomQuestions(QUIZ_M9_CONJUNCAO, 6));
-    setQMod10(getRandomQuestions(QUIZ_M10_FINAL_CLASSES, 20));
+    setQMod3(getRandomQuestions(QUIZ_M2_ADJETIVO_ARTIGO, 6));
+    setQMod4(
+      getRandomQuestions([...QUIZ_M5_PRONOME_I, ...QUIZ_M6_PRONOME_II], 6),
+    );
+    setQMod5(getRandomQuestions([...QUIZ_M3_VERBO_I, ...QUIZ_M4_VERBO_II], 6));
+    setQMod6(getRandomQuestions(QUIZ_M7_ADVERBIO, 6));
+    setQMod7(getRandomQuestions(QUIZ_M8_PREPOSICAO_NUMERAL, 6));
+    setQMod8(getRandomQuestions(QUIZ_M9_CONJUNCAO, 6));
+    setQMod9(getRandomQuestions(QUIZ_M10_FINAL_CLASSES, 6));
+    setQMod10(getRandomQuestions(QUIZ_M8_PREPOSICAO_NUMERAL, 6));
   }, []);
 
   const handleModuleComplete = (moduleId: string, score: number) => {
@@ -411,12 +413,19 @@ export default function AulaClassesPalavras({
                 icon: LuBrain,
                 content: (
                   <ModuleSummaryCarouselNew
-                    items={[
+                    tituloAula="Gramática de Elite"
+                    materia="Português"
+                    moduloNome="M1: Substantivo"
+                    images={[
                       {
                         title: "Substantivo",
-                        description: "O nome de tudo.",
-                        icon: <LuTag />,
-                        color: "blue",
+                        type: "Mapa Mental",
+                        placeholderColor: "#3b82f6",
+                      },
+                      {
+                        title: "Efeito Rei Midas",
+                        type: "Macete",
+                        placeholderColor: "#60a5fa",
                       },
                     ]}
                   />
@@ -517,7 +526,7 @@ export default function AulaClassesPalavras({
 
         <section className="mt-16">
           <QuizInterativo
-            questoes={QUIZ_M1_SUBSTANTIVO}
+            questoes={qMod1}
             titulo="Substantivo: O Nomeador"
             icone="🎯"
             numero={1}
@@ -624,9 +633,41 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
+        {/* Resumo + Multimídia M2 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={3}
+            title="Resumo e Multimídia"
+            variant="emerald"
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "visual",
+                label: "Mapa Mental",
+                icon: LuBrain,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    tituloAula="Gramática de Elite"
+                    materia="Português"
+                    moduloNome="M2: Adjetivo"
+                    images={[
+                      {
+                        title: "Adjetivo",
+                        type: "Qualificador",
+                        placeholderColor: "#10b981",
+                      },
+                    ]}
+                  />
+                ),
+              },
+            ]}
+          />
+        </section>
+
         <section className="mt-16">
           <QuizInterativo
-            questoes={QUIZ_M2_ADJETIVO_ARTIGO}
+            questoes={qMod2}
             titulo="Adjetivo: O Qualificador"
             icone="✨"
             numero={2}
@@ -714,9 +755,41 @@ export default function AulaClassesPalavras({
           </div>
         </section>
 
+        {/* Resumo + Multimídia M3 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={3}
+            title="Resumo e Multimídia"
+            variant="amber"
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "visual",
+                label: "Determinantes",
+                icon: LuBrain,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    tituloAula="Gramática de Elite"
+                    materia="Português"
+                    moduloNome="M3: Artigo"
+                    images={[
+                      {
+                        title: "Artigo",
+                        type: "Determinante",
+                        placeholderColor: "#f59e0b",
+                      },
+                    ]}
+                  />
+                ),
+              },
+            ]}
+          />
+        </section>
+
         <section className="mt-16">
           <QuizInterativo
-            questoes={QUIZ_M2_ADJETIVO_ARTIGO}
+            questoes={qMod3}
             titulo="Artigo: O Determinante"
             icone="🏷️"
             numero={3}
@@ -824,9 +897,41 @@ export default function AulaClassesPalavras({
           </div>
         </section>
 
+        {/* Resumo + Multimídia M4 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={3}
+            title="Resumo e Multimídia"
+            variant="violet"
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "visual",
+                label: "Coesão",
+                icon: LuBrain,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    tituloAula="Gramática de Elite"
+                    materia="Português"
+                    moduloNome="M4: Pronome"
+                    images={[
+                      {
+                        title: "Pronome",
+                        type: "Substituto",
+                        placeholderColor: "#8b5cf6",
+                      },
+                    ]}
+                  />
+                ),
+              },
+            ]}
+          />
+        </section>
+
         <section className="mt-16">
           <QuizInterativo
-            questoes={[...QUIZ_M5_PRONOME_I, ...QUIZ_M6_PRONOME_II]}
+            questoes={qMod4}
             titulo="Pronome: O Substituto"
             icone="👤"
             numero={4}
@@ -948,7 +1053,7 @@ export default function AulaClassesPalavras({
 
         <section className="mt-16">
           <QuizInterativo
-            questoes={[...QUIZ_M3_VERBO_I, ...QUIZ_M4_VERBO_II]}
+            questoes={qMod5}
             titulo="Verbo: O Motor da Oração"
             icone="⚡"
             numero={5}
@@ -1059,7 +1164,7 @@ export default function AulaClassesPalavras({
 
         <section className="mt-16">
           <QuizInterativo
-            questoes={QUIZ_M7_ADVERBIO}
+            questoes={qMod6}
             titulo="Advérbio: A Circunstância"
             icone="🏃"
             numero={6}
@@ -1101,9 +1206,41 @@ export default function AulaClassesPalavras({
           </div>
         </section>
 
+        {/* Resumo + Multimídia M7 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={2}
+            title="Resumo e Multimídia"
+            variant="slate"
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "visual",
+                label: "Conectores",
+                icon: LuBrain,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    tituloAula="Gramática de Elite"
+                    materia="Português"
+                    moduloNome="M7: Preposição"
+                    images={[
+                      {
+                        title: "Preposição",
+                        type: "Elo de Ligação",
+                        placeholderColor: "#64748b",
+                      },
+                    ]}
+                  />
+                ),
+              },
+            ]}
+          />
+        </section>
+
         <section className="mt-16">
           <QuizInterativo
-            questoes={QUIZ_M8_PREPOSICAO_NUMERAL}
+            questoes={qMod7}
             titulo="Preposição: O Elo"
             icone="🔗"
             numero={7}
@@ -1176,7 +1313,7 @@ export default function AulaClassesPalavras({
 
         <section className="mt-16">
           <QuizInterativo
-            questoes={QUIZ_M9_CONJUNCAO}
+            questoes={qMod8}
             titulo="Conjunção: A Engrenagem"
             icone="⚙️"
             numero={8}
@@ -1223,9 +1360,41 @@ export default function AulaClassesPalavras({
           </div>
         </section>
 
+        {/* Resumo + Multimídia M9 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={2}
+            title="Resumo e Multimídia"
+            variant="rose"
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "visual",
+                label: "Emoção",
+                icon: LuBrain,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    tituloAula="Gramática de Elite"
+                    materia="Português"
+                    moduloNome="M9: Interjeição"
+                    images={[
+                      {
+                        title: "Interjeição",
+                        type: "Expressão",
+                        placeholderColor: "#ec4899",
+                      },
+                    ]}
+                  />
+                ),
+              },
+            ]}
+          />
+        </section>
+
         <section className="mt-16">
           <QuizInterativo
-            questoes={QUIZ_M10_FINAL_CLASSES}
+            questoes={qMod9}
             titulo="Interjeição: A Emoção"
             icone="⚡"
             numero={9}
@@ -1266,9 +1435,41 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
+        {/* Resumo + Multimídia M10 */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={2}
+            title="Resumo e Multimídia"
+            variant="emerald"
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "visual",
+                label: "Atalho Numeral",
+                icon: LuBrain,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    tituloAula="Gramática de Elite"
+                    materia="Português"
+                    moduloNome="M10: Numeral"
+                    images={[
+                      {
+                        title: "Numeral",
+                        type: "Quantificação",
+                        placeholderColor: "#10b981",
+                      },
+                    ]}
+                  />
+                ),
+              },
+            ]}
+          />
+        </section>
+
         <section className="mt-16">
           <QuizInterativo
-            questoes={QUIZ_M8_PREPOSICAO_NUMERAL}
+            questoes={qMod10}
             titulo="Numeral: A Quantidade"
             icone="🔢"
             numero={10}

@@ -11,6 +11,8 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
+  FunctionGraph,
+  type FunctionPlot,
 } from "../shared";
 
 import {
@@ -233,6 +235,40 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+            <FunctionGraph
+              title="Funções Logarítmicas com Diferentes Bases"
+              functions={[
+                {
+                  id: "log10",
+                  fn: (x) => Math.log10(x),
+                  color: "#3b82f6",
+                  label: "log₁₀(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "log2",
+                  fn: (x) => Math.log2(x),
+                  color: "#ef4444",
+                  label: "log₂(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "ln",
+                  fn: (x) => Math.log(x),
+                  color: "#10b981",
+                  label: "ln(x)",
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={0.1}
+              xMax={10}
+              yMin={-3}
+              yMax={3.5}
+              points={300}
+            />
+          </section>
+
           <QuizInterativo
             questoes={quizM1}
             titulo="FixaÃ§Ã£o - Conceitos"
@@ -419,6 +455,33 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+            <FunctionGraph
+              title="Visualizando Domínios: Logaritmo Natural"
+              functions={[
+                {
+                  id: "ln_x",
+                  fn: (x) => (x > 0 ? Math.log(x) : null),
+                  color: "#3b82f6",
+                  label: "ln(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "ln_shifted",
+                  fn: (x) => (x > 2 ? Math.log(x - 2) : null),
+                  color: "#ef4444",
+                  label: "ln(x-2)",
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={-1}
+              xMax={10}
+              yMin={-3}
+              yMax={3}
+              points={300}
+            />
+          </section>
+
           <QuizInterativo
             questoes={quizM4}
             titulo="FixaÃ§Ã£o - ExistÃªncia"
@@ -523,6 +586,40 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+            <FunctionGraph
+              title="Transformações de Funções Logarítmicas"
+              functions={[
+                {
+                  id: "ln_x",
+                  fn: (x) => (x > 0 ? Math.log(x) : null),
+                  color: "#3b82f6",
+                  label: "ln(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "ln_2x",
+                  fn: (x) => (x > 0 ? 2 * Math.log(x) : null),
+                  color: "#ef4444",
+                  label: "2·ln(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "ln_x_plus_1",
+                  fn: (x) => (x > 0 ? Math.log(x) + 1 : null),
+                  color: "#10b981",
+                  label: "ln(x)+1",
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={0.1}
+              xMax={10}
+              yMin={-5}
+              yMax={5}
+              points={300}
+            />
+          </section>
+
           <QuizInterativo
             questoes={quizM6}
             titulo="Fixação - Funções Logarítmicas"
@@ -580,6 +677,33 @@ export default function AulaFuncoesLogaritmicas({
                   ),
                 },
               ]}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+            <FunctionGraph
+              title="Visualizando Inequações Logarítmicas"
+              functions={[
+                {
+                  id: "ln_x",
+                  fn: (x) => (x > 0 ? Math.log(x) : null),
+                  color: "#3b82f6",
+                  label: "ln(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "y_equals_2",
+                  fn: (x) => 2,
+                  color: "#f59e0b",
+                  label: "y = 2",
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={0.1}
+              xMax={150}
+              yMin={-1}
+              yMax={3}
+              points={300}
             />
           </section>
 
