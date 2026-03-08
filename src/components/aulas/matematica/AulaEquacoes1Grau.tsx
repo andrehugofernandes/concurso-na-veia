@@ -14,6 +14,8 @@ import {
   ModuleSectionHeader,
   FlipCard,
   ModuleSummaryCarouselNew,
+  FunctionGraph,
+  type FunctionPlot,
 } from "../shared";
 
 import {
@@ -378,6 +380,38 @@ export default function AulaEquacoes1Grau({
             </div>
           </section>
 
+          <FunctionGraph
+            title="Funções Afins: Gráficos de Retas"
+            functions={[
+              {
+                id: "func1",
+                label: "2x",
+                color: "#3b82f6",
+                fn: (x) => 2 * x,
+                strokeWidth: 2,
+              },
+              {
+                id: "func2",
+                label: "x + 3",
+                color: "#ef4444",
+                fn: (x) => x + 3,
+                strokeWidth: 2,
+              },
+              {
+                id: "func3",
+                label: "-x + 2",
+                color: "#10b981",
+                fn: (x) => -x + 2,
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-5}
+            xMax={5}
+            yMin={-5}
+            yMax={10}
+            points={250}
+          />
+
           <QuizInterativo
             questoes={quizM1}
             titulo="Fixação - Módulo 1"
@@ -636,6 +670,31 @@ export default function AulaEquacoes1Grau({
               ]}
             />
           </section>
+
+          <FunctionGraph
+            title="Interpretação Gráfica: Resolvendo Equações"
+            functions={[
+              {
+                id: "func1",
+                label: "x + 2",
+                color: "#3b82f6",
+                fn: (x) => x + 2,
+                strokeWidth: 2,
+              },
+              {
+                id: "func2",
+                label: "3",
+                color: "#ef4444",
+                fn: (x) => 3,
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-3}
+            xMax={5}
+            yMin={-1}
+            yMax={6}
+            points={250}
+          />
 
           <QuizInterativo
             questoes={quizM2}
@@ -1002,6 +1061,31 @@ export default function AulaEquacoes1Grau({
               </p>
             </AlertBox>
           </section>
+
+          <FunctionGraph
+            title="Interseção de Retas"
+            functions={[
+              {
+                id: "func1",
+                label: "2x - 4",
+                color: "#3b82f6",
+                fn: (x) => 2 * x - 4,
+                strokeWidth: 2,
+              },
+              {
+                id: "func2",
+                label: "x + 1",
+                color: "#ef4444",
+                fn: (x) => x + 1,
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-3}
+            xMax={6}
+            yMin={-5}
+            yMax={8}
+            points={250}
+          />
 
           <QuizInterativo
             questoes={quizM5}
@@ -1699,6 +1783,31 @@ export default function AulaEquacoes1Grau({
               ]}
             />
           </section>
+
+          <FunctionGraph
+            title="Modelagem Linear: Funções Afim em Negócios"
+            functions={[
+              {
+                id: "func1",
+                label: "50 + 10x",
+                color: "#3b82f6",
+                fn: (x) => 50 + 10 * x,
+                strokeWidth: 2,
+              },
+              {
+                id: "func2",
+                label: "100 + 5x",
+                color: "#ef4444",
+                fn: (x) => 100 + 5 * x,
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={0}
+            xMax={10}
+            yMin={40}
+            yMax={200}
+            points={250}
+          />
 
           <QuizInterativo
             questoes={quizM9}
