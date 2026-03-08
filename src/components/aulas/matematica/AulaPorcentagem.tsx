@@ -14,6 +14,8 @@ import {
   FlipCard,
   LessonTabs,
   ModuleSummaryCarouselNew,
+  FunctionGraph,
+  type FunctionPlot,
 } from "../shared";
 import {
   LuBookOpen,
@@ -1191,6 +1193,86 @@ export default function AulaPorcentagem({
             />
           </section>
 
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={2}
+              title="Visualização: Juros Simples"
+              description="Observe o crescimento linear do montante ao longo do tempo para diferentes taxas."
+              variant="indigo"
+            />
+            <FunctionGraph
+              title="Juros Simples: M(t) = C·(1 + i·t)"
+              functions={[
+                {
+                  id: "js-5",
+                  label: "i=5%, C=1000",
+                  color: "#3b82f6",
+                  fn: (x: number) => 1000 * (1 + 0.05 * x),
+                  strokeWidth: 2,
+                },
+                {
+                  id: "js-10",
+                  label: "i=10%, C=1000",
+                  color: "#ef4444",
+                  fn: (x: number) => 1000 * (1 + 0.10 * x),
+                  strokeWidth: 2,
+                },
+                {
+                  id: "js-15",
+                  label: "i=15%, C=1000",
+                  color: "#10b981",
+                  fn: (x: number) => 1000 * (1 + 0.15 * x),
+                  strokeWidth: 2,
+                },
+              ] satisfies FunctionPlot[]}
+              xMin={0}
+              xMax={20}
+              yMin={0}
+              yMax={5000}
+              points={100}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={3}
+              title="Visualização: Juros Compostos"
+              description="Observe o crescimento exponencial do montante ao longo do tempo para diferentes taxas."
+              variant="indigo"
+            />
+            <FunctionGraph
+              title="Juros Compostos: M(t) = C·(1 + i)^t"
+              functions={[
+                {
+                  id: "jc-5",
+                  label: "i=5%, C=1000",
+                  color: "#3b82f6",
+                  fn: (x: number) => 1000 * Math.pow(1.05, x),
+                  strokeWidth: 2,
+                },
+                {
+                  id: "jc-10",
+                  label: "i=10%, C=1000",
+                  color: "#ef4444",
+                  fn: (x: number) => 1000 * Math.pow(1.10, x),
+                  strokeWidth: 2,
+                },
+                {
+                  id: "jc-15",
+                  label: "i=15%, C=1000",
+                  color: "#10b981",
+                  fn: (x: number) => 1000 * Math.pow(1.15, x),
+                  strokeWidth: 2,
+                },
+              ] satisfies FunctionPlot[]}
+              xMin={0}
+              xMax={20}
+              yMin={0}
+              yMax={20000}
+              points={100}
+            />
+          </section>
+
           <section id="quiz-modulo-6">
             <QuizInterativo
               questoes={quizM6}
@@ -1757,6 +1839,39 @@ export default function AulaPorcentagem({
                   ),
                 },
               ]}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={2}
+              title="Visualização: Juros Simples vs. Compostos"
+              description="Compare o crescimento linear e exponencial com a mesma taxa de 10% ao período."
+              variant="emerald"
+            />
+            <FunctionGraph
+              title="Comparação: Juros Simples vs. Compostos"
+              functions={[
+                {
+                  id: "cmp-simples",
+                  label: "Simples i=10%",
+                  color: "#3b82f6",
+                  fn: (x: number) => 1000 * (1 + 0.10 * x),
+                  strokeWidth: 2,
+                },
+                {
+                  id: "cmp-compostos",
+                  label: "Compostos i=10%",
+                  color: "#ef4444",
+                  fn: (x: number) => 1000 * Math.pow(1.10, x),
+                  strokeWidth: 2,
+                },
+              ] satisfies FunctionPlot[]}
+              xMin={0}
+              xMax={20}
+              yMin={0}
+              yMax={7000}
+              points={100}
             />
           </section>
 

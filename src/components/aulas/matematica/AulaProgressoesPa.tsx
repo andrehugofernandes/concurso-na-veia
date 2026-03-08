@@ -12,6 +12,8 @@ import {
   FlipCard,
   AulaTemplate,
   ModuleSectionHeader,
+  FunctionGraph,
+  type FunctionPlot,
 } from "../shared";
 import {
   QUIZ_M1_CONCEITO_PA,
@@ -279,6 +281,38 @@ export default function AulaProgressoesPa({
             </div>
           </section>
 
+          <FunctionGraph
+            title="Progressão Aritmética: Crescimento Linear"
+            functions={[
+              {
+                id: "pa-r3",
+                label: "a_n = 1 + 3(n-1), r=3",
+                color: "#3b82f6",
+                fn: (x: number) => 1 + 3 * (x - 1),
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+              {
+                id: "pa-r5",
+                label: "a_n = 2 + 5(n-1), r=5",
+                color: "#ef4444",
+                fn: (x: number) => 2 + 5 * (x - 1),
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+              {
+                id: "pa-rm2",
+                label: "a_n = 20 - 2(n-1), r=-2",
+                color: "#10b981",
+                fn: (x: number) => 20 - 2 * (x - 1),
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+            ]}
+            xMin={0}
+            xMax={10}
+            yMin={-10}
+            yMax={50}
+            points={10}
+          />
+
           <section id="quiz-modulo-1" className="mt-16">
             <QuizInterativo
               questoes={quizConceito}
@@ -434,6 +468,31 @@ export default function AulaProgressoesPa({
               />
             </div>
           </section>
+
+          <FunctionGraph
+            title="Fórmula do Termo Geral: a_n = a₁ + (n-1)·r"
+            functions={[
+              {
+                id: "tg-a5-r4",
+                label: "a₁=5, r=4",
+                color: "#3b82f6",
+                fn: (x: number) => 5 + 4 * (x - 1),
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+              {
+                id: "tg-a10-r2",
+                label: "a₁=10, r=2",
+                color: "#ef4444",
+                fn: (x: number) => 10 + 2 * (x - 1),
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+            ]}
+            xMin={0}
+            xMax={10}
+            yMin={0}
+            yMax={50}
+            points={10}
+          />
 
           <section id="quiz-modulo-2" className="mt-16">
             <QuizInterativo
@@ -867,6 +926,31 @@ export default function AulaProgressoesPa({
               ]}
             />
           </section>
+
+          <FunctionGraph
+            title="PA como Função Linear: a_n = rn + (a₁ - r)"
+            functions={[
+              {
+                id: "lin-3n2",
+                label: "f(n) = 3n + 2",
+                color: "#3b82f6",
+                fn: (x: number) => 3 * x + 2,
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+              {
+                id: "lin-neg-n20",
+                label: "f(n) = -n + 20",
+                color: "#ef4444",
+                fn: (x: number) => -x + 20,
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+            ]}
+            xMin={0}
+            xMax={15}
+            yMin={-5}
+            yMax={50}
+            points={15}
+          />
 
           <section id="quiz-modulo-6" className="mt-16">
             <QuizInterativo

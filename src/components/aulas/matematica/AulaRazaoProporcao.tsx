@@ -15,6 +15,8 @@ import {
   ModuleSummaryCarouselNew,
   AulaTemplate,
   ModuleSectionHeader,
+  FunctionGraph,
+  type FunctionPlot,
 } from "../shared";
 
 import {
@@ -744,6 +746,40 @@ export default function AulaRazaoProporcao({
             />
           </section>
 
+          {/* ─── GRÁFICO — Comparação Direta vs. Inversa ─── */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={3}
+              title="Visualização Gráfica: Direta vs. Inversa"
+              description="Observe como as duas relações se comportam no mesmo domínio."
+              variant="amber"
+            />
+            <FunctionGraph
+              title="Comparação: Proporção Direta vs. Inversa"
+              functions={[
+                {
+                  id: "direta",
+                  label: "Direta: y = 6x",
+                  color: "#3b82f6",
+                  fn: (x: number) => 6 * x,
+                  strokeWidth: 2,
+                } as FunctionPlot,
+                {
+                  id: "inversa",
+                  label: "Inversa: y = 36/x",
+                  color: "#ef4444",
+                  fn: (x: number) => x > 0 ? 36 / x : null,
+                  strokeWidth: 2,
+                } as FunctionPlot,
+              ]}
+              xMin={0.5}
+              xMax={10}
+              yMin={-5}
+              yMax={60}
+              points={200}
+            />
+          </section>
+
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-3">
             <QuizInterativo
@@ -1082,10 +1118,51 @@ export default function AulaRazaoProporcao({
             />
           </section>
 
-          {/* ─── FLIPCARDS — Casos Clássicos ─── */}
+          {/* ─── GRÁFICO — Proporcionalidade Direta ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={2}
+              title="Visualização: Proporcionalidade Direta"
+              description="Diferentes constantes k geram retas com inclinações distintas — todas passando pela origem."
+              variant="cyan"
+            />
+            <FunctionGraph
+              title="Proporcionalidade Direta: y = kx"
+              functions={[
+                {
+                  id: "k2",
+                  label: "y = 2x",
+                  color: "#3b82f6",
+                  fn: (x: number) => 2 * x,
+                  strokeWidth: 2,
+                } as FunctionPlot,
+                {
+                  id: "k05",
+                  label: "y = 0.5x",
+                  color: "#ef4444",
+                  fn: (x: number) => 0.5 * x,
+                  strokeWidth: 2,
+                } as FunctionPlot,
+                {
+                  id: "k4",
+                  label: "y = 4x",
+                  color: "#10b981",
+                  fn: (x: number) => 4 * x,
+                  strokeWidth: 2,
+                } as FunctionPlot,
+              ]}
+              xMin={0}
+              xMax={10}
+              yMin={0}
+              yMax={40}
+              points={100}
+            />
+          </section>
+
+          {/* ─── FLIPCARDS — Casos Clássicos ─── */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={3}
               title="Casos Clássicos da CESGRANRIO"
               description="Flashcards com as relações mais cobradas em prova."
               variant="cyan"
@@ -1130,6 +1207,40 @@ export default function AulaRazaoProporcao({
                 }
               />
             </div>
+          </section>
+
+          {/* ─── GRÁFICO — Proporcionalidade Inversa ─── */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={4}
+              title="Visualização: Proporcionalidade Inversa"
+              description="Hipérboles: quanto maior x, menor y — o produto x·y permanece constante."
+              variant="cyan"
+            />
+            <FunctionGraph
+              title="Proporcionalidade Inversa: y = k/x"
+              functions={[
+                {
+                  id: "k12",
+                  label: "y = 12/x",
+                  color: "#3b82f6",
+                  fn: (x: number) => x > 0 ? 12 / x : null,
+                  strokeWidth: 2,
+                } as FunctionPlot,
+                {
+                  id: "k6",
+                  label: "y = 6/x",
+                  color: "#ef4444",
+                  fn: (x: number) => x > 0 ? 6 / x : null,
+                  strokeWidth: 2,
+                } as FunctionPlot,
+              ]}
+              xMin={0.5}
+              xMax={10}
+              yMin={-1}
+              yMax={25}
+              points={200}
+            />
           </section>
 
           {/* ─── QUIZ ─── */}

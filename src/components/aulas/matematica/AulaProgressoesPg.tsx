@@ -12,6 +12,7 @@ import {
   FlipCard,
   AulaTemplate,
   ModuleSectionHeader,
+  FunctionGraph,
 } from "../shared";
 import {
   QUIZ_M1_CONCEITO_PG,
@@ -267,6 +268,31 @@ export default function AulaProgressoesPg({
             </div>
           </section>
 
+          <FunctionGraph
+            title="Crescimento Geométrico vs. Crescimento Linear"
+            functions={[
+              {
+                id: "pg-razao-2",
+                label: "a_n = 2^n",
+                color: "#3b82f6",
+                fn: (x) => Math.pow(2, x),
+                strokeWidth: 2,
+              },
+              {
+                id: "pa-comparacao",
+                label: "a_n = 2n (PA)",
+                color: "#ef4444",
+                fn: (x) => 2 * x,
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={0}
+            xMax={8}
+            yMin={-5}
+            yMax={260}
+            points={150}
+          />
+
           <section id="quiz-modulo-1" className="mt-16">
             <QuizInterativo
               questoes={quizConceito}
@@ -363,6 +389,38 @@ export default function AulaProgressoesPg({
               ]}
             />
           </section>
+
+          <FunctionGraph
+            title="Termo Geral: a_n = a₁ · q^(n-1)"
+            functions={[
+              {
+                id: "tg-q2-a1-1",
+                label: "a_n = 2^(n-1)",
+                color: "#3b82f6",
+                fn: (x) => Math.pow(2, x - 1),
+                strokeWidth: 2,
+              },
+              {
+                id: "tg-q3-a1-1",
+                label: "a_n = 3^(n-1)",
+                color: "#ef4444",
+                fn: (x) => Math.pow(3, x - 1),
+                strokeWidth: 2,
+              },
+              {
+                id: "tg-q05-a1-32",
+                label: "a_n = 32·(1/2)^(n-1)",
+                color: "#10b981",
+                fn: (x) => 32 * Math.pow(0.5, x - 1),
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={0}
+            xMax={8}
+            yMin={-5}
+            yMax={260}
+            points={150}
+          />
 
           <section id="quiz-modulo-2" className="mt-16">
             <QuizInterativo
@@ -766,6 +824,38 @@ export default function AulaProgressoesPg({
               ]}
             />
           </section>
+
+          <FunctionGraph
+            title="Juros Compostos: M(t) = C·(1+i)^t"
+            functions={[
+              {
+                id: "juros-5pct",
+                label: "i=5% a.a. (C=1000)",
+                color: "#3b82f6",
+                fn: (x) => 1000 * Math.pow(1.05, x),
+                strokeWidth: 2,
+              },
+              {
+                id: "juros-10pct",
+                label: "i=10% a.a. (C=1000)",
+                color: "#ef4444",
+                fn: (x) => 1000 * Math.pow(1.10, x),
+                strokeWidth: 2,
+              },
+              {
+                id: "juros-15pct",
+                label: "i=15% a.a. (C=1000)",
+                color: "#10b981",
+                fn: (x) => 1000 * Math.pow(1.15, x),
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={0}
+            xMax={20}
+            yMin={0}
+            yMax={20000}
+            points={150}
+          />
 
           <section id="quiz-modulo-7" className="mt-16">
             <QuizInterativo
