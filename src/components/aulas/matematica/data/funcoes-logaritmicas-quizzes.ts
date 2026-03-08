@@ -1,6 +1,6 @@
-import { Questao } from "../../shared";
+import { QuizQuestion } from "../../shared";
 
-export const QUIZ_M1_CONCEITOS: Questao[] = [
+export const QUIZ_M1_CONCEITOS: QuizQuestion[] = [
   {
     id: 801,
     pergunta: "Em um laboratório da refinaria, a fórmula para calcular o pH de uma solução é dada por pH = -log[H+]. Se a concentração de íons hidrogênio [H+] aumentar em 10 vezes, o que acontece com o valor do pH?",
@@ -68,7 +68,7 @@ export const QUIZ_M1_CONCEITOS: Questao[] = [
   }
 ];
 
-export const QUIZ_M2_PROPRIEDADES: Questao[] = [
+export const QUIZ_M2_PROPRIEDADES: QuizQuestion[] = [
   {
     id: 806,
     pergunta: "Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?",
@@ -136,7 +136,7 @@ export const QUIZ_M2_PROPRIEDADES: Questao[] = [
   }
 ];
 
-export const QUIZ_M3_EQUACOES: Questao[] = [
+export const QUIZ_M3_EQUACOES: QuizQuestion[] = [
   {
     id: 811,
     pergunta: "A resolução da equação logarítmica log₃(x) + log₃(x - 8) = 2 tem como conjunto verdade:",
@@ -204,7 +204,7 @@ export const QUIZ_M3_EQUACOES: Questao[] = [
   }
 ];
 
-export const QUIZ_M4_GRAFICOS: Questao[] = [
+export const QUIZ_M4_GRAFICOS: QuizQuestion[] = [
   {
     id: 816,
     pergunta: "A função y = log_{1/2}(x), por ter base fracionária entre 0 e 1, tem qual característica principal em seu gráfico?",
@@ -272,7 +272,7 @@ export const QUIZ_M4_GRAFICOS: Questao[] = [
   }
 ];
 
-export const QUIZ_M5_FINAL: Questao[] = [
+export const QUIZ_M5_FINAL: QuizQuestion[] = [
   {
     id: 821,
     pergunta: "[DESAFIO CESGRANRIO SIMULADO] A intensidade do som (N) percebida pelo ouvido, em decibéis, usa N = 10 × log₁₀ (I / I₀). Uma máquina industrial emite 80 dB. Se um técnico comprar um abafador que reduz a intensidade I (energia por metro quadrado) para 1% do original, quantos decibéis o técnico vai ouvir?",
@@ -340,7 +340,7 @@ export const QUIZ_M5_FINAL: Questao[] = [
   }
 ];
 
-export const QUIZ_M6_FUNCOES_LOG: Questao[] = [
+export const QUIZ_M6_FUNCOES_LOG: QuizQuestion[] = [
   {
     id: 601,
     pergunta: "A transformação de funções logarítmicas do tipo f(x) = log_b(x - c) + d resulta em qual efeito geométrico?",
@@ -408,7 +408,7 @@ export const QUIZ_M6_FUNCOES_LOG: Questao[] = [
   }
 ];
 
-export const QUIZ_M7_SISTEMAS_INEQUACOES: Questao[] = [
+export const QUIZ_M7_SISTEMAS_INEQUACOES: QuizQuestion[] = [
   {
     id: 701,
     pergunta: "Ao resolver um sistema de inequações logarítmicas { log₂(x) > 3; log₂(x) < 5 }, qual é o intervalo-solução?",
@@ -476,7 +476,7 @@ export const QUIZ_M7_SISTEMAS_INEQUACOES: Questao[] = [
   }
 ];
 
-export const QUIZ_M8_REVERSA: Questao[] = [
+export const QUIZ_M8_REVERSA: QuizQuestion[] = [
   {
     id: 801,
     pergunta: "[RESOLUÇÃO REVERSA] Um engenheiro observa que após aplicar uma certa transformação logarítmica, obtém f(x) = 3×log₂(x-1) + 7. Qual era a função-pai ANTES de todas essas transformações?",
@@ -544,7 +544,7 @@ export const QUIZ_M8_REVERSA: Questao[] = [
   }
 ];
 
-export const QUIZ_M9_PETROBRASESPECIFICO: Questao[] = [
+export const QUIZ_M9_PETROBRASESPECIFICO: QuizQuestion[] = [
   {
     id: 901,
     pergunta: "[PETROBRAS ESPECÍFICO] Na indústria do petróleo, a escala de pH (acidez) dos óleos crus é determinada por pH = -log[H+]. Um óleo com [H+] = 10⁻⁶ mol/L tem qual pH aproximado?",
@@ -612,7 +612,7 @@ export const QUIZ_M9_PETROBRASESPECIFICO: Questao[] = [
   }
 ];
 
-export const QUIZ_M10_SIMULADO_MESTRE: Questao[] = [
+export const QUIZ_M10_SIMULADO_MESTRE: QuizQuestion[] = [
   {
     id: 1001,
     pergunta: "[SIMULADO MESTRE 1] Uma função logarítmica complexa é dada por f(x) = log₂(x² - 1) - 3. Qual é o seu domínio COMPLETO?",

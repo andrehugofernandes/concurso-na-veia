@@ -608,7 +608,7 @@ export default function AulaProgressoesPa({
               index={2}
               title="Sₙ é uma Parábola!"
               description="A conexão entre PA e funções quadráticas que a CESGRANRIO adora."
-              variant="orange"
+              variant="amber"
               className="mb-6"
             />
             <div className="space-y-4">

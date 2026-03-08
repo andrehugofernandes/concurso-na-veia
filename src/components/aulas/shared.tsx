@@ -2582,9 +2582,10 @@ export function StickyModuleNav({
       <div
         className={cn(
           "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/50 transition-all duration-300",
+          "h-16 md:h-20 flex items-center", // Força a altura exata da logo
           isStickyNavPinned && !isTemporaryHeaderVisible
-            ? "shadow-md py-1 border-t border-border/40 border-b-2" // Altura mínima para alinhar com logo
-            : "shadow-sm py-4 border-t-0",
+            ? "shadow-md border-t border-border/40 border-b-2"
+            : "shadow-sm border-t-0",
         )}
       >
         {/* Inner Content Wrapper — Centraliza as abas */}
