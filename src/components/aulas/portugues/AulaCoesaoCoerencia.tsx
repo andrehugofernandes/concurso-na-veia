@@ -273,6 +273,174 @@ export default function AulaCoesaoCoerencia({
             />
           </section>
 
+          {/* ── SEÇÃO EXTRA M1: Mecanismos de Coesão ─── */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={2}
+              title="Os 5 Grandes Mecanismos de Coesão"
+              variant="blue"
+            />
+            <ContentAccordion
+              mode="stacked"
+              slides={[
+                {
+                  titulo: "O que é Referência?",
+                  icone: <LuLink />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <p className="text-muted-foreground leading-relaxed">
+                        Referência é o mecanismo pelo qual um elemento do texto remete a outro — dentro do próprio texto (endofórica) ou fora dele (exofórica). Divide-se em <strong>anáfora</strong> (retoma o que já foi dito) e <strong>catáfora</strong> (antecipa o que será dito).
+                      </p>
+                      <div className="p-3 bg-blue-500/5 rounded-xl border-l-4 border-blue-500 font-mono text-sm italic">
+                        "A engenheira chegou. <span className="text-blue-600 font-bold">Ela</span> assumiu o posto." — 'ela' refere-se a 'a engenheira'.
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Como funciona a Substituição?",
+                  icone: <LuActivity />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <p className="text-muted-foreground leading-relaxed">
+                        A substituição troca um elemento por outro de valor equivalente para evitar repetição. Pode ser <strong>nominal</strong>, <strong>verbal</strong> ou <strong>oracional</strong>.
+                      </p>
+                      <div className="p-3 bg-emerald-500/5 rounded-xl border-l-4 border-emerald-500 font-mono text-sm italic">
+                        "O relatório técnico foi entregue. <span className="text-emerald-600 font-bold">O documento</span> estava impecável." — substituição nominal.
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "O que é Elipse e por que cria fluidez?",
+                  icone: <LuTarget />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <p className="text-muted-foreground leading-relaxed">
+                        A elipse é a omissão de um termo recuperável pelo contexto. Cria fluidez eliminando repetições desnecessárias. Na CESGRANRIO, a elipse verbal frequentemente é marcada pela vírgula.
+                      </p>
+                      <div className="p-3 bg-cyan-500/5 rounded-xl border-l-4 border-cyan-500 font-mono text-sm italic">
+                        "Maria aprovou a proposta; Pedro <span className="text-cyan-600 font-bold">[aprovou]</span> a minuta." — verbo elidido.
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Qual é o papel dos Conectivos?",
+                  icone: <LuZap />,
+                  conteudo: (
+                    <p className="text-muted-foreground leading-relaxed">
+                      Conjunções e conectivos estabelecem relações semântico-lógicas: <strong>adição</strong> (e, além disso), <strong>adversidade</strong> (mas, porém), <strong>causalidade</strong> (porque, visto que), <strong>concessão</strong> (embora, ainda que), <strong>finalidade</strong> (para que). São os tijolos da arquitetura argumentativa.
+                    </p>
+                  ),
+                },
+                {
+                  titulo: "Como a Coesão Lexical enriquece o texto?",
+                  icone: <LuLibrary />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <p className="text-muted-foreground leading-relaxed">
+                        A coesão lexical usa relações semânticas: <strong>sinonímia</strong> (petróleo / óleo cru), <strong>hiperonímia</strong> (combustível para petróleo, gás e etanol), <strong>hiponímia</strong> (diesel como espécie de combustível) e <strong>reiteração</strong> intencional. Em textos da Petrobras, a hiperonímia é especialmente frequente.
+                      </p>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+
+            <FlipCard
+              frente={
+                <div className="text-center space-y-3">
+                  <div className="text-4xl">🔄</div>
+                  <div className="font-bold text-lg">Anáfora vs. Catáfora</div>
+                  <div className="text-sm text-muted-foreground">
+                    Clique para ver a diferença essencial
+                  </div>
+                </div>
+              }
+              verso={
+                <div className="space-y-4 text-sm">
+                  <div className="p-3 bg-cyan-500/20 rounded-xl border border-cyan-500/30">
+                    <p className="font-bold text-cyan-300 mb-1">
+                      ANÁFORA — Retrovisor
+                    </p>
+                    <p className="text-zinc-200 italic">
+                      "A turbina falhou.{" "}
+                      <span className="text-cyan-300 font-bold">O equipamento</span>{" "}
+                      foi substituído."
+                    </p>
+                    <p className="text-zinc-400 text-xs mt-1">
+                      ← 'O equipamento' retoma 'a turbina' (passado)
+                    </p>
+                  </div>
+                  <div className="p-3 bg-blue-500/20 rounded-xl border border-blue-500/30">
+                    <p className="font-bold text-blue-300 mb-1">
+                      CATÁFORA — Farol
+                    </p>
+                    <p className="text-zinc-200 italic">
+                      "
+                      <span className="text-blue-300 font-bold">Isto</span> foi
+                      anunciado: nova perfuração no pré-sal."
+                    </p>
+                    <p className="text-zinc-400 text-xs mt-1">
+                      → 'Isto' antecipa 'nova perfuração no pré-sal' (futuro)
+                    </p>
+                  </div>
+                </div>
+              }
+              variant="dark"
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={3}
+              title="Coesão e Coerência no Contexto Petrobras"
+              variant="blue"
+            />
+            <CardCarousel
+              cards={[
+                {
+                  icone: "📄",
+                  title: "Relatórios Técnicos",
+                  descricao:
+                    "Documentos como relatórios de segurança operacional exigem coesão referencial precisa — pronomes e conectivos ambíguos podem gerar falhas na interpretação de procedimentos críticos.",
+                },
+                {
+                  icone: "📋",
+                  title: "Normas e Regulamentos",
+                  descricao:
+                    "Textos normativos usam elipse e substituição para evitar repetições do sujeito institucional, mantendo a objetividade sem comprometer a clareza das obrigações.",
+                },
+                {
+                  icone: "🗞️",
+                  title: "Comunicados Oficiais",
+                  descricao:
+                    "Comunicados ao mercado e notas à imprensa dependem de coerência temática rigorosa: cada parágrafo deve progredir logicamente sem contradizer informações anteriores.",
+                },
+                {
+                  icone: "📊",
+                  title: "Editais de Concurso",
+                  descricao:
+                    "Os próprios editais da CESGRANRIO/Petrobras exemplificam o uso correto de catáfora em artigos como: 'Os candidatos deverão observar o seguinte: [lista de regras]'.",
+                },
+                {
+                  icone: "🔬",
+                  title: "Artigos Científicos",
+                  descricao:
+                    "A coesão lexical por hiperonímia é especialmente valorizada em textos de engenharia: 'equipamentos', 'sistemas', 'dispositivos' como hiperônimos de itens específicos.",
+                },
+              ]}
+            />
+            <AlertBox tipo="info" titulo="Estratégia CESGRANRIO">
+              Questões de coesão na CESGRANRIO frequentemente apresentam um
+              trecho e pedem qual pronome ou conectivo pode ser{" "}
+              <strong>substituído sem alterar o sentido</strong>. Identifique
+              sempre a relação semântica (retomada, oposição, causa) antes de
+              escolher.
+            </AlertBox>
+          </section>
+
           <QuizInterativo
             questoes={quizM1}
             titulo="Fixação - Módulo 1"
