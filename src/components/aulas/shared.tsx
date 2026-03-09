@@ -2617,7 +2617,7 @@ export function StickyModuleNav({
                     key={mod.id}
                     value={mod.id}
                     className={cn(
-                      "flex-1 py-1.5 px-2 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
+                      "flex-1 py-1.5 px-2 rounded-lg border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
                       !isVisible && "hidden",
                     )}
                   >
@@ -2663,7 +2663,7 @@ export function StickyModuleNav({
           </div>
 
           {/* ── DESKTOP LAYOUT (≥ md) — one row (atual) ── */}
-          <div className="hidden md:flex items-center justify-center gap-2 px-4 py-1">
+          <div className="hidden md:flex items-center justify-center gap-2 px-6 py-1 max-w-7xl mx-auto">
             {/* Left arrow */}
             <div className={cn("shrink-0", isCarouselMode ? "flex" : "hidden")}>
               <button
@@ -2764,7 +2764,7 @@ export function StickyModuleNav({
                     key={mod.id}
                     value={mod.id}
                     className={cn(
-                      "shrink-0 py-2 px-4 md:px-5 rounded-2xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 disabled:opacity-40 disabled:cursor-not-allowed group",
+                      "shrink-0 py-2 px-4 md:px-5 rounded-xl border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group",
                       !isVisible && "hidden",
                     )}
                   >
