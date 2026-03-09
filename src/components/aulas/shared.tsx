@@ -2566,32 +2566,32 @@ export function StickyModuleNav({
     <div
       ref={navRef}
       className={cn(
-        "sticky z-[50] overflow-x-clip transition-all duration-300",
+        "sticky z-[50] transition-all duration-300",
         // Posição dinâmica: top-0 se sem header, top-16/20 se com header
         isStickyNavPinned
           ? isTemporaryHeaderVisible
             ? "top-16 md:top-20"
             : "top-0"
           : "top-0",
-        // 🔒 Breakout: alinhado com a área de conteúdo (Viewport - Sidebar)
-        // Largura total respeitando a sidebar
-        "w-[calc(100vw-var(--sidebar-width,0px))] ml-[calc(-1*((100vw-var(--sidebar-width,0px))-100%)/2)]",
+        // 🔒 Breakout: preenche toda a área de conteúdo (Viewport - Sidebar)
+        // Mobile: usamos margem negativa para encostar nas bordas laterais do container pai
+        // Desktop (md): mantém o cálculo de largura total subtraindo a sidebar
+        "w-[calc(100%+20px)] -ml-[10px] md:w-[calc(100vw-var(--sidebar-width,0px))] md:ml-[calc(-1*((100vw-var(--sidebar-width,0px))-100%)/2)]",
       )}
     >
       {/* Inner nav bar — background, blur, border live here */}
       <div
         className={cn(
-          "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/50 transition-all duration-300",
-          "h-16 md:h-20 flex items-center", // Força a altura exata da logo
+          "bg-background/95 dark:bg-slate-900/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-y border-border/50 transition-all duration-300",
           isStickyNavPinned && !isTemporaryHeaderVisible
-            ? "shadow-md border-t border-border/40 border-b-2"
-            : "shadow-sm border-t-0",
+            ? "shadow-md h-[64px] md:h-[80px] flex items-center border-t-border/20 border-b-2 w-full" // Altura exata pixel-perfect (64px mobile / 80px desktop)
+            : "shadow-sm py-4 border-t-0",
         )}
       >
-        {/* Inner Content Wrapper — Centraliza as abas */}
-        <div className="mx-auto max-w-7xl">
+        {/* Inner Content Wrapper — Ocupa largura total disponível */}
+        <div className="w-full">
           {/* ── MOBILE: apenas module tabs + setas (altura original) ── */}
-          <div className="md:hidden flex items-center gap-2 px-3">
+          <div className="md:hidden flex items-center gap-2 px-0 w-full">
             {/* Seta esquerda */}
             <button
               onClick={slideLeft}
@@ -2681,7 +2681,7 @@ export function StickyModuleNav({
               </button>
             </div>
 
-            <TabsList className="flex h-auto p-1 bg-muted/20 border border-border/10 rounded-2xl gap-1 md:gap-1.5 shadow-inner">
+            <TabsList className="flex h-auto p-1 bg-muted/20 border-x-0 border-t border-b border-border/10 w-full gap-1 md:gap-1.5 shadow-inner">
               {/* Toggle Button for Header (só quando pinned) */}
               <AnimatePresence>
                 {isStickyNavPinned && (
@@ -2830,6 +2830,7 @@ export function StickyModuleNav({
           isStickyNavPinned ? "justify-between" : "justify-center gap-3",
         )}
       >
+        {/* Botão Home */}
         <motion.div
           layout
           transition={{ type: "spring", stiffness: 380, damping: 30 }}
@@ -2838,13 +2839,14 @@ export function StickyModuleNav({
             <Link
               href={homeHref}
               aria-label="Voltar às Aulas"
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors"
+              className="mt-2 w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors"
             >
               <LuHouse className="w-4 h-4" />
             </Link>
           )}
         </motion.div>
 
+        {/* Botão Toggle */}
         <motion.button
           layout
           transition={{ type: "spring", stiffness: 380, damping: 30 }}
@@ -2852,7 +2854,7 @@ export function StickyModuleNav({
           aria-label={
             isTemporaryHeaderVisible ? "Ocultar cabeçalho" : "Mostrar cabeçalho"
           }
-          className="w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0"
+          className="mt-2 w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0"
         >
           <LuMenu
             className={cn(
