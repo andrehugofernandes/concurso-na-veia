@@ -2301,7 +2301,8 @@ export function AulaTemplate({
 
   return (
     <div className="min-h-screen bg-background pb-20 relative overflow-x-clip">
-      <div className="max-w-7xl mx-auto px-[10px] md:px-6">
+      {/* Container principal sem padding lateral por padrão para permitir barras full-width */}
+      <div className="max-w-7xl mx-auto px-0 md:px-6">
         <div className="flex flex-col">
           {/* 1. Barra de Progresso de Leitura (Scroll) */}
           <div className="h-1.5 w-full">
@@ -2364,7 +2365,7 @@ export function AulaTemplate({
               />
 
               <main className="mt-6 md:mt-[50px] space-y-6 md:space-y-[50px]">
-                {children}
+                <div className="px-[10px] md:px-0">{children}</div>
               </main>
 
               {/* 5. Seção de Conclusão (Banner ou CTA) */}
@@ -2567,16 +2568,15 @@ export function StickyModuleNav({
       ref={navRef}
       className={cn(
         "sticky z-[50] transition-all duration-300",
-        // Posição dinâmica: top-0 se sem header, top-16/20 se com header
+        // Posição dinâmica
         isStickyNavPinned
           ? isTemporaryHeaderVisible
             ? "top-16 md:top-20"
             : "top-0"
           : "top-0",
         // 🔒 Breakout: preenche toda a área de conteúdo (Viewport - Sidebar)
-        // Mobile: usamos margem negativa para encostar nas bordas laterais do container pai
-        // Desktop (md): mantém o cálculo de largura total subtraindo a sidebar
-        "w-[calc(100%+20px)] -ml-[10px] md:w-[calc(100vw-var(--sidebar-width,0px))] md:ml-[calc(-1*((100vw-var(--sidebar-width,0px))-100%)/2)]",
+        // No Desktop (md), subtrai a sidebar. No Mobile, usa w-full (agora livre do padding do pai).
+        "w-full md:w-[calc(100vw-var(--sidebar-width,0px))] md:ml-[calc(-1*((100vw-var(--sidebar-width,0px))-100%)/2)]",
       )}
     >
       {/* Inner nav bar — background, blur, border live here */}
