@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
+  ModuleConsolidation,
+  
   AlertBox,
   QuizInterativo,
   ModuleBanner,
@@ -16,6 +18,7 @@ import {
   ModuleSummaryCarouselNew,
   FunctionGraph,
   type FunctionPlot,
+
 } from "../shared";
 import {
   LuBookOpen,
@@ -395,6 +398,43 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-1">
+          <ModuleConsolidation
+            index={1}
+            variant="indigo"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 1",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 1",
+              tituloAula: "Porcentagem",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-indigo-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-indigo-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-indigo-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 1",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl">
+                    <p className="font-bold text-indigo-600 dark:text-indigo-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
             <QuizInterativo
               questoes={quizM1}
               titulo="Fixação — Fundamentos"
@@ -605,6 +645,43 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-2">
+          <ModuleConsolidation
+            index={2}
+            variant="emerald"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 2",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 2",
+              tituloAula: "Porcentagem",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-emerald-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-emerald-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-emerald-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 2",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
             <QuizInterativo
               questoes={quizM2}
               titulo="Fixação — Fatores Multiplicadores"
@@ -774,6 +851,43 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-3">
+          <ModuleConsolidation
+            index={3}
+            variant="cyan"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 3",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 3",
+              tituloAula: "Porcentagem",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-cyan-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-cyan-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 3",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                    <p className="font-bold text-cyan-600 dark:text-cyan-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
             <QuizInterativo
               questoes={quizM3}
               titulo="Fixação — Variação Percentual"
@@ -939,6 +1053,43 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-4">
+          <ModuleConsolidation
+            index={4}
+            variant="blue"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 4",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 4",
+              tituloAula: "Porcentagem",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-blue-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-blue-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-blue-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 4",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <p className="font-bold text-blue-600 dark:text-blue-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
             <QuizInterativo
               questoes={quizM4}
               titulo="Fixação — Aplicações Industriais"
@@ -1022,6 +1173,43 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-5">
+          <ModuleConsolidation
+            index={5}
+            variant="amber"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 5",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 5",
+              tituloAula: "Porcentagem",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-amber-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-amber-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-amber-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 5",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
+                    <p className="font-bold text-amber-600 dark:text-amber-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
             <QuizInterativo
               questoes={quizM5}
               titulo="Simulado — Nível 1"
@@ -1274,6 +1462,43 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-6">
+          <ModuleConsolidation
+            index={6}
+            variant="rose"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 6",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 6",
+              tituloAula: "Porcentagem",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-rose-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-rose-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-rose-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 6",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl">
+                    <p className="font-bold text-rose-600 dark:text-rose-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
             <QuizInterativo
               questoes={quizM6}
               titulo="Fixação — % Composta"
@@ -1504,6 +1729,43 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-7">
+          <ModuleConsolidation
+            index={7}
+            variant="indigo"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 7",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 7",
+              tituloAula: "Porcentagem",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-indigo-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-indigo-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-indigo-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 7",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl">
+                    <p className="font-bold text-indigo-600 dark:text-indigo-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
             <QuizInterativo
               questoes={quizM7}
               titulo="Fixação — Cálculo Reverso"
@@ -1656,6 +1918,43 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-8">
+          <ModuleConsolidation
+            index={8}
+            variant="emerald"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 8",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 8",
+              tituloAula: "Porcentagem",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-emerald-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-emerald-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-emerald-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 8",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
             <QuizInterativo
               questoes={quizM8}
               titulo="Fixação — Regra de Três %"
@@ -1876,6 +2175,43 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-9">
+          <ModuleConsolidation
+            index={9}
+            variant="cyan"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 9",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 9",
+              tituloAula: "Porcentagem",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-cyan-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-cyan-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 9",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                    <p className="font-bold text-cyan-600 dark:text-cyan-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
             <QuizInterativo
               questoes={quizM9}
               titulo="Fixação — Financeiro"
@@ -1972,6 +2308,43 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-10">
+          <ModuleConsolidation
+            index={10}
+            variant="blue"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 10",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 10",
+              tituloAula: "Porcentagem",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-blue-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-blue-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-blue-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 10",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <p className="font-bold text-blue-600 dark:text-blue-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
             <QuizInterativo
               questoes={quizM10}
               titulo="Simulado Elite — Porcentagem"

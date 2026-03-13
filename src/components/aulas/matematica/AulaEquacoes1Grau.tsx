@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
+  ModuleConsolidation,
+  
   AlertBox,
   QuizInterativo,
   ModuleBanner,
@@ -16,6 +18,7 @@ import {
   ModuleSummaryCarouselNew,
   FunctionGraph,
   type FunctionPlot,
+
 } from "../shared";
 
 import {
@@ -411,6 +414,43 @@ export default function AulaEquacoes1Grau({
             yMax={10}
             points={250}
           />
+          <ModuleConsolidation
+            index={1}
+            variant="indigo"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 1",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 1",
+              tituloAula: "Equações de 1º Grau",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-indigo-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-indigo-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-indigo-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 1",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl">
+                    <p className="font-bold text-indigo-600 dark:text-indigo-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
 
           <QuizInterativo
             questoes={quizM1}
@@ -695,6 +735,43 @@ export default function AulaEquacoes1Grau({
             yMax={6}
             points={250}
           />
+          <ModuleConsolidation
+            index={2}
+            variant="emerald"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 2",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 2",
+              tituloAula: "Equações de 1º Grau",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-emerald-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-emerald-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-emerald-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 2",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
 
           <QuizInterativo
             questoes={quizM2}
@@ -867,6 +944,43 @@ export default function AulaEquacoes1Grau({
               />
             </div>
           </section>
+          <ModuleConsolidation
+            index={3}
+            variant="cyan"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 3",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 3",
+              tituloAula: "Equações de 1º Grau",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-cyan-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-cyan-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 3",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                    <p className="font-bold text-cyan-600 dark:text-cyan-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
 
           <QuizInterativo
             questoes={quizM3}
@@ -1024,6 +1138,43 @@ export default function AulaEquacoes1Grau({
               ]}
             />
           </section>
+          <ModuleConsolidation
+            index={4}
+            variant="blue"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 4",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 4",
+              tituloAula: "Equações de 1º Grau",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-blue-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-blue-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-blue-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 4",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <p className="font-bold text-blue-600 dark:text-blue-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
 
           <QuizInterativo
             questoes={quizM4}
@@ -1086,6 +1237,43 @@ export default function AulaEquacoes1Grau({
             yMax={8}
             points={250}
           />
+          <ModuleConsolidation
+            index={5}
+            variant="amber"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 5",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 5",
+              tituloAula: "Equações de 1º Grau",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-amber-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-amber-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-amber-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 5",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
+                    <p className="font-bold text-amber-600 dark:text-amber-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
 
           <QuizInterativo
             questoes={quizM5}
@@ -1256,6 +1444,43 @@ export default function AulaEquacoes1Grau({
               />
             </div>
           </section>
+          <ModuleConsolidation
+            index={6}
+            variant="rose"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 6",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 6",
+              tituloAula: "Equações de 1º Grau",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-rose-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-rose-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-rose-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 6",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl">
+                    <p className="font-bold text-rose-600 dark:text-rose-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
 
           <QuizInterativo
             questoes={quizM6}
@@ -1395,6 +1620,43 @@ export default function AulaEquacoes1Grau({
               ]}
             />
           </section>
+          <ModuleConsolidation
+            index={7}
+            variant="indigo"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 7",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 7",
+              tituloAula: "Equações de 1º Grau",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-indigo-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-indigo-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-indigo-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 7",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl">
+                    <p className="font-bold text-indigo-600 dark:text-indigo-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
 
           <QuizInterativo
             questoes={quizM7}
@@ -1587,6 +1849,43 @@ export default function AulaEquacoes1Grau({
               />
             </div>
           </section>
+          <ModuleConsolidation
+            index={8}
+            variant="emerald"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 8",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 8",
+              tituloAula: "Equações de 1º Grau",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-emerald-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-emerald-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-emerald-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 8",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
 
           <QuizInterativo
             questoes={quizM8}
@@ -1808,6 +2107,43 @@ export default function AulaEquacoes1Grau({
             yMax={200}
             points={250}
           />
+          <ModuleConsolidation
+            index={9}
+            variant="cyan"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 9",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 9",
+              tituloAula: "Equações de 1º Grau",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-cyan-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-cyan-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 9",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                    <p className="font-bold text-cyan-600 dark:text-cyan-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
 
           <QuizInterativo
             questoes={quizM9}
@@ -1869,6 +2205,43 @@ export default function AulaEquacoes1Grau({
                   </ul>
                 </AlertBox>
               </section>
+          <ModuleConsolidation
+            index={10}
+            variant="blue"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Revisão do Módulo 10",
+              duration: "8:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 10",
+              tituloAula: "Equações de 1º Grau",
+              materia: "Matemática",
+              images: [
+                { title: "Conceito Principal", type: "Mapa Mental", placeholderColor: "bg-blue-500/20" },
+                { title: "Exemplos Práticos", type: "Esquema", placeholderColor: "bg-blue-500/20" },
+                { title: "Aplicações", type: "Fórmula", placeholderColor: "bg-blue-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Dica de Ouro do Módulo 10",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <p className="font-bold text-blue-600 dark:text-blue-400">Padrão Essencial</p>
+                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Rítmo do Aprendizado",
+              artista: "Prof. Musical"
+            }}
+          />
+
+
 
               <QuizInterativo
                 questoes={quizFinal}
