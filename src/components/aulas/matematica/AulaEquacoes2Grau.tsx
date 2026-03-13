@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
-  LessonTabs,
   AlertBox,
   QuizInterativo,
   ModuleBanner,
@@ -15,7 +14,6 @@ import {
   ModuleSectionHeader,
   ModuleSummaryCarouselNew,
   FunctionGraph,
-  FlipCard,
   type FunctionPlot,
 } from "../shared";
 
@@ -41,16 +39,16 @@ import {
 } from "./data/equacoes-2grau-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", titulo: "Conceitos Fundamentais" },
-  { id: "modulo-2", label: "Módulo 2", titulo: "Fórmula de Bhaskara" },
-  { id: "modulo-3", label: "Módulo 3", titulo: "Equações Avançadas" },
-  { id: "modulo-4", label: "Módulo 4", titulo: "Problemas Contextualizados" },
-  { id: "modulo-5", label: "Módulo 5", titulo: "Desafio Parcial" },
-  { id: "modulo-6", label: "Módulo 6", titulo: "Soma e Produto (Atalhos)" },
-  { id: "modulo-7", label: "Módulo 7", titulo: "Gráficos e Parábolas" },
-  { id: "modulo-8", label: "Módulo 8", titulo: "Resolução Reversa" },
-  { id: "modulo-9", label: "Módulo 9", titulo: "Aplicações Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Mestre" },
+  { id: "modulo-1", label: "Módulo 1", title: "Conceitos Fundamentais" },
+  { id: "modulo-2", label: "Módulo 2", title: "Fórmula de Bhaskara" },
+  { id: "modulo-3", label: "Módulo 3", title: "Equações Avançadas" },
+  { id: "modulo-4", label: "Módulo 4", title: "Problemas Contextualizados" },
+  { id: "modulo-5", label: "Módulo 5", title: "Desafio Parcial" },
+  { id: "modulo-6", label: "Módulo 6", title: "Soma e Produto (Atalhos)" },
+  { id: "modulo-7", label: "Módulo 7", title: "Gráficos e Parábolas" },
+  { id: "modulo-8", label: "Módulo 8", title: "Resolução Reversa" },
+  { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
 export default function AulaEquacoes2Grau({
@@ -340,84 +338,6 @@ export default function AulaEquacoes2Grau({
             yMax={15}
             points={250}
           />
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={2}
-              title="Dossiê de Memorização: Raízes Incompletas"
-              description="Perguntas rápidas para consolidar coeficientes."
-              variant="blue"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-blue-500" />
-                    <p className="font-bold text-center">C é 0 (x² - 5x = 0)</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuBookOpen className="w-6 h-6 text-emerald-500" />
-                    <p className="font-bold text-center text-sm">Fatore x</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      x(x - 5) = 0. Então as raízes são sempre 0 e o valor de -b/a. Raízes: 0 e 5.
-                    </p>
-                  </div>
-                }
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-blue-500" />
-                    <p className="font-bold text-center">B é 0 (x² - 16 = 0)</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuBookOpen className="w-6 h-6 text-emerald-500" />
-                    <p className="font-bold text-center text-sm">Passe pro outro lado</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      x² = 16. Tire a raiz dos dois lados: x = ±4. (Não esqueça do + e -).
-                    </p>
-                  </div>
-                }
-              />
-            </div>
-          </section>
-
-          <div className="space-y-8 bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm">
-            <ModuleSectionHeader
-              index={3}
-              title="Resumo do Módulo 1"
-              variant="blue"
-              className="mb-6"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo-bhaskara",
-                  label: "Diagrama do Delta",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Árvore de Decisão do Discriminante",
-                          type: "Diagrama",
-                          placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Diagrama de árvore estilo industrial dark. Nó inicial "Delta (b² - 4ac)". 3 ramos: ">0 (2 raizes)", "=0 (1 raiz)", "<0 (0 reais)".
-                        },
-                      ]}
-                      moduloNome="Módulo 1"
-                      tituloAula="Equações do 2º Grau"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </div>
 
           <QuizInterativo
             questoes={quizM1}
@@ -728,39 +648,6 @@ export default function AulaEquacoes2Grau({
               ]}
             />
           </section>
-
-          <div className="space-y-8 bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo do Módulo 4"
-              variant="cyan"
-              className="mb-6"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo-vertices",
-                  label: "Tabela dos Vértices",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Quando usar Xv vs Yv",
-                          type: "Tabela",
-                          placeholderColor: "bg-cyan-100 dark:bg-cyan-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Tabela técnica estilo industrial Petrobras: Coluna 1 "A pergunta pede" (Instante do lucro máx, Quantidade para custo min). Coluna 2 "Fórmula a usar" (Xv = -b/2a). Coluna 3 "A pergunta pede" (Qual o lucro máx, Qual a altura máx). Coluna 4 "Fórmula a usar" (Yv = -Delta/4a).
-                        },
-                      ]}
-                      moduloNome="Módulo 4"
-                      tituloAula="Equações do 2º Grau"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </div>
 
           <QuizInterativo
             questoes={quizM4}

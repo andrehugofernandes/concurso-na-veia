@@ -13,9 +13,6 @@ import {
   ModuleSectionHeader,
   FunctionGraph,
   type FunctionPlot,
-  FlipCard,
-  LessonTabs,
-  ModuleSummaryCarouselNew,
 } from "../shared";
 
 import {
@@ -42,16 +39,16 @@ import {
 } from "./data/funcoes-logaritmicas-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", titulo: "Conceito Logarítmico" },
-  { id: "modulo-2", label: "Módulo 2", titulo: "Propriedades Fundamentais" },
-  { id: "modulo-3", label: "Módulo 3", titulo: "Equações Letradas" },
-  { id: "modulo-4", label: "Módulo 4", titulo: "C.E. e Visual Gráfico" },
-  { id: "modulo-5", label: "Módulo 5", titulo: "Desafio Industrial" },
-  { id: "modulo-6", label: "Módulo 6", titulo: "Funções Logarítmicas" },
-  { id: "modulo-7", label: "Módulo 7", titulo: "Sistemas & Inequações" },
-  { id: "modulo-8", label: "Módulo 8", titulo: "Resolução Reversa" },
-  { id: "modulo-9", label: "Módulo 9", titulo: "Aplicações Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Mestre" },
+  { id: "modulo-1", label: "Módulo 1", title: "Conceito Logarítmico" },
+  { id: "modulo-2", label: "Módulo 2", title: "Propriedades Fundamentais" },
+  { id: "modulo-3", label: "Módulo 3", title: "Equações Letradas" },
+  { id: "modulo-4", label: "Módulo 4", title: "C.E. e Visual Gráfico" },
+  { id: "modulo-5", label: "Módulo 5", title: "Desafio Industrial" },
+  { id: "modulo-6", label: "Módulo 6", title: "Funções Logarítmicas" },
+  { id: "modulo-7", label: "Módulo 7", title: "Sistemas & Inequações" },
+  { id: "modulo-8", label: "Módulo 8", title: "Resolução Reversa" },
+  { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
 export default function AulaFuncoesLogaritmicas({
@@ -81,16 +78,10 @@ export default function AulaFuncoesLogaritmicas({
   const [quizM4] = useState(() => getRandomQuestions(QUIZ_M4_GRAFICOS, 4));
   const [quizM5] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 5));
   const [quizM6] = useState(() => getRandomQuestions(QUIZ_M6_FUNCOES_LOG, 5));
-  const [quizM7] = useState(() =>
-    getRandomQuestions(QUIZ_M7_SISTEMAS_INEQUACOES, 5),
-  );
+  const [quizM7] = useState(() => getRandomQuestions(QUIZ_M7_SISTEMAS_INEQUACOES, 5));
   const [quizM8] = useState(() => getRandomQuestions(QUIZ_M8_REVERSA, 5));
-  const [quizM9] = useState(() =>
-    getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 5),
-  );
-  const [quizM10] = useState(() =>
-    getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 5),
-  );
+  const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 5));
+  const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 5));
 
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
   const [showCompletionBadge, setShowCompletionBadge] = useState(false);
@@ -176,13 +167,13 @@ export default function AulaFuncoesLogaritmicas({
       loading={loading}
       xpGanho={xpGanho}
     >
-      {/* â•â•â• MÃ“DULO 1 â•â•â• */}
+      {/* ═══ MÓDULO 1 ═══ */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={1}
             titulo="O Conceito de Log"
-            descricao="Quando nÃºmeros colossais encolhem em nÃºmeros menores."
+            descricao="Quando números colossais encolhem em números menores."
             gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
           />
 
@@ -190,22 +181,22 @@ export default function AulaFuncoesLogaritmicas({
             <ModuleSectionHeader
               index={1}
               title="A Pergunta Decodificadora"
-              description="EsqueÃ§a o medo superficial de nÃ£o entender a palavra Logaritmo."
+              description="Esqueça o medo superficial de não entender a palavra Logaritmo."
               variant="blue"
             />
 
             <ContentAccordion
               slides={[
                 {
-                  titulo: "A DefiniÃ§Ã£o Sagrada",
+                  titulo: "A Definição Sagrada",
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        O Logaritmo Ã© apenas uma pergunta exposta num papel.
-                        Ele te questiona de forma direta: &quot;Bota fÃ© de que
-                        nÃºmero eu coloquei em cima dessa Base aÃ­ debaixo, pra
-                        ela virar esse grandÃ£o do lado?&quot;
+                        O Logaritmo é apenas uma pergunta exposta num papel.
+                        Ele te questiona de forma direta: &quot;Bota fé de que
+                        número eu coloquei em cima dessa Base aí debaixo, pra
+                        ela virar esse grandão do lado?&quot;
                       </p>
                       <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center shadow-inner">
                         <p className="font-mono text-xl text-blue-800 font-bold">
@@ -213,9 +204,9 @@ export default function AulaFuncoesLogaritmicas({
                         </p>
                       </div>
                       <p className="text-sm">
-                        Eis que <code>logâ‚ƒ 9 = 2</code> nÃ£o Ã© mÃ¡gica, ele
-                        simplesmente assume a forma matemÃ¡tica de{" "}
-                        <code>3Â² = 9</code>. Corta para a Exponencial.
+                        Eis que <code>logâ‚ƒ 9 = 2</code> não é mágica, ele
+                        simplesmente assume a forma matemática de{" "}
+                        <code>3² = 9</code>. Corta para a Exponencial.
                       </p>
                     </div>
                   ),
@@ -226,16 +217,16 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Quando alguÃ©m esconde a base que fica flutuando
+                        Quando alguém esconde a base que fica flutuando
                         abaixadinha e diz apenas <code>log 1000</code>,
                         subentenda que ali existe um 10 cravado.
                       </p>
-                      <AlertBox tipo="info" titulo="DecibÃ©is e Richter">
-                        Nas engenharias quÃ­micas ou na geologia que move a
-                        Petrobras. Terremoto forÃ§a 5 e Terremoto forÃ§a 6 na
-                        escala Richter... A diferenÃ§a nÃ£o Ã© 1x, a explosÃ£o
-                        Ã© 10 vezes pior. E um 7 Ã© 100 vezes pior que o 5. Tudo
-                        Ã© base 10.
+                      <AlertBox tipo="info" titulo="Decibéis e Richter">
+                        Nas engenharias químicas ou na geologia que move a
+                        Petrobras. Terremoto força 5 e Terremoto força 6 na
+                        escala Richter... A diferença não é 1x, a explosão
+                        é 10 vezes pior. E um 7 é 100 vezes pior que o 5. Tudo
+                        é base 10.
                       </AlertBox>
                     </div>
                   ),
@@ -280,7 +271,7 @@ export default function AulaFuncoesLogaritmicas({
 
           <QuizInterativo
             questoes={quizM1}
-            titulo="FixaÃ§Ã£o - Conceitos"
+            titulo="Fixação - Conceitos"
             numero={1}
             variant="blue"
             icone="ðŸ§ "
@@ -289,21 +280,21 @@ export default function AulaFuncoesLogaritmicas({
         </div>
       </TabsContent>
 
-      {/* â•â•â• MÃ“DULO 2 â•â•â• */}
+      {/* ═══ MÓDULO 2 ═══ */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={2}
             titulo="Propriedades Operamentais"
-            descricao="MultiplicaÃ§Ã£o encolhe para soma e a potÃªncia descende como o tombo."
+            descricao="Multiplicação encolhe para soma e a potência descende como o tombo."
             gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="A Vantagem AlgÃ©brica"
-              description="Manobras lÃ­citas que convertem calvÃ¡rios em passeios."
+              title="A Vantagem Algébrica"
+              description="Manobras lícitas que convertem calvários em passeios."
               variant="emerald"
             />
 
@@ -317,17 +308,17 @@ export default function AulaFuncoesLogaritmicas({
                       <p className="text-muted-foreground leading-relaxed text-sm">
                         O caso do cara que tem log(bâ¿) na sua mira. O Expoente{" "}
                         <code>n</code> que corria o risco de explodir e travar o
-                        processamento da calculadora, nÃ£o tem mais forÃ§a: ele
+                        processamento da calculadora, não tem mais força: ele
                         tomba pra frente virando um mero multiplicador.
                       </p>
                       <div className="bg-emerald-500/10 p-4 border border-emerald-500/20 text-center rounded-xl shadow-inner font-mono font-bold">
-                        log_a (bâ¿) = n Ã— log_a(b)
+                        log_a (bâ¿) = n × log_a(b)
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "MudanÃ§a de Base",
+                  titulo: "Mudança de Base",
                   icone: <LuRepeat />,
                   conteudo: (
                     <div className="space-y-4">
@@ -336,13 +327,13 @@ export default function AulaFuncoesLogaritmicas({
                         titulo="O Truque Final em Concursos"
                       >
                         Os corretores adoram te obrigar a trabalhar numa base
-                        esquisita, dizendo no cabeÃ§alho algo como{" "}
+                        esquisita, dizendo no cabeçalho algo como{" "}
                         <em>
                           &quot;Use os dados na base 10: log 2 = 0,3 e log 3 =
                           0,48&quot;
                         </em>
-                        . E aÃ­ no problema ele atira um <code>logâ‚ƒ 2</code>{" "}
-                        em vocÃª. A mÃ¡gica da mudanÃ§a te deixa estraÃ§alhar
+                        . E aí no problema ele atira um <code>logâ‚ƒ 2</code>{" "}
+                        em você. A mágica da mudança te deixa estraçalhar
                         tudo e trocar para log de 10 dividindo o{" "}
                         <strong>interior original pelo antigo da base</strong>.{" "}
                         <code>logâ‚â‚€ 2 / logâ‚â‚€ 3</code>.
@@ -354,54 +345,9 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={2}
-              title="Dossiê de Memorização: Propriedades Operatórias"
-              description="Vire os cards para revisar como o logaritmo quebra operações pesadas em simples."
-              variant="emerald"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-emerald-500" />
-                    <p className="font-bold text-center">Produto (Multiplicação)</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuBrain className="w-6 h-6 text-teal-500" />
-                    <p className="font-bold text-center text-sm">Vira Soma!</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      log(A × B) = log(A) + log(B). O logaritmo rebaixa a multiplicação para uma soma amigável.
-                    </p>
-                  </div>
-                }
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-emerald-500" />
-                    <p className="font-bold text-center">Quociente (Divisão)</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuTrendingUp className="w-6 h-6 text-emerald-500" />
-                    <p className="font-bold text-center text-sm">Vira Subtração!</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      log(A / B) = log(A) - log(B). A divisão perde sua força e cai para subtração.
-                    </p>
-                  </div>
-                }
-              />
-            </div>
-          </section>
-
           <QuizInterativo
             questoes={quizM2}
-            titulo="FixaÃ§Ã£o - Propriedades"
+            titulo="Fixação - Propriedades"
             numero={2}
             variant="emerald"
             icone="ðŸŽ¯"
@@ -410,12 +356,12 @@ export default function AulaFuncoesLogaritmicas({
         </div>
       </TabsContent>
 
-      {/* â•â•â• MÃ“DULO 3 â•â•â• */}
+      {/* ═══ MÓDULO 3 ═══ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={3}
-            titulo="EquaÃ§Ãµes Infiltradas"
+            titulo="Equações Infiltradas"
             descricao="X nas cordas e logs somando e subtraindo do lado."
             gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
           />
@@ -424,23 +370,23 @@ export default function AulaFuncoesLogaritmicas({
             <ModuleSectionHeader
               index={1}
               title="A Chuta-Chuta da Base"
-              description="Para eliminar a palavra log da equaÃ§Ã£o, a base inferior tem que se sacrificar."
+              description="Para eliminar a palavra log da equação, a base inferior tem que se sacrificar."
               variant="amber"
             />
 
             <ContentAccordion
               slides={[
                 {
-                  titulo: "MecÃ¢nica do Coice (A Ãšnica Forma Legal de Matar)",
+                  titulo: "Mecânica do Coice (A Única Forma Legal de Matar)",
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
                         Imagina resolver <code>logâ‚‚(x+8) = 4</code>. O
-                        desespero da escuridÃ£o... Mas espere: Pegue a base
+                        desespero da escuridão... Mas espere: Pegue a base
                         inferior ali de fininho (2), leve para o outro lado
                         correndo, e chute a cara do 4 fazendo ele engolir e se
-                        transformar em potÃªncia de cara. Quando isso
+                        transformar em potência de cara. Quando isso
                         acontece... o Log desapareceu, meu amigo.
                       </p>
                       <div className="bg-amber-500/10 p-4 border border-amber-500/20 text-center rounded-xl font-mono text-amber-800 dark:text-amber-200">
@@ -456,7 +402,7 @@ export default function AulaFuncoesLogaritmicas({
 
           <QuizInterativo
             questoes={quizM3}
-            titulo="FixaÃ§Ã£o - EquaÃ§Ãµes"
+            titulo="Fixação - Equações"
             numero={3}
             variant="amber"
             icone="ðŸŽ¯"
@@ -465,13 +411,13 @@ export default function AulaFuncoesLogaritmicas({
         </div>
       </TabsContent>
 
-      {/* â•â•â• MÃ“DULO 4 â•â•â• */}
+      {/* ═══ MÓDULO 4 ═══ */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={4}
-            titulo="C.E. - CondiÃ§Ãµes de ExistÃªncia"
-            descricao="Bancas sempre colocam raÃ­zes falsas que nÃ£o existem na vida real."
+            titulo="C.E. - Condições de Existência"
+            descricao="Bancas sempre colocam raízes falsas que não existem na vida real."
             gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
           />
 
@@ -479,7 +425,7 @@ export default function AulaFuncoesLogaritmicas({
             <ModuleSectionHeader
               index={1}
               title="Masmorra de Erros"
-              description="Um logaritmo negativo te levarÃ¡ a uma explosÃ£o no meio da prova."
+              description="Um logaritmo negativo te levará a uma explosão no meio da prova."
               variant="cyan"
             />
 
@@ -491,15 +437,15 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Terminou a equaÃ§Ã£o de Bhaskara para a equaÃ§Ã£o de log
-                        e achou -2 e 8? NÃ£o corra pra marcar a letra B com as
-                        respostas. <strong>TESTE</strong> elas dentro do log lÃ¡
+                        Terminou a equação de Bhaskara para a equação de log
+                        e achou -2 e 8? Não corra pra marcar a letra B com as
+                        respostas. <strong>TESTE</strong> elas dentro do log lá
                         da pergunta inicial.
                       </p>
                       <AlertBox tipo="danger" titulo="Proibido por Lei">
-                        Se houver na equaÃ§Ã£o <code>log(x-5)</code>, e vocÃª
-                        usar seu x = -2... Estourou a fÃ¡brica e terÃ­amos{" "}
-                        <code>log(-7)</code>. Ã‰ impossÃ­vel e nulo. Raiz nÃ£o
+                        Se houver na equação <code>log(x-5)</code>, e você
+                        usar seu x = -2... Estourou a fábrica e teríamos{" "}
+                        <code>log(-7)</code>. É impossível e nulo. Raiz não
                         contada no Gabarito!!
                       </AlertBox>
                     </div>
@@ -538,7 +484,7 @@ export default function AulaFuncoesLogaritmicas({
 
           <QuizInterativo
             questoes={quizM4}
-            titulo="FixaÃ§Ã£o - ExistÃªncia"
+            titulo="Fixação - Existência"
             numero={4}
             variant="cyan"
             icone="ðŸŽ¯"
@@ -547,13 +493,13 @@ export default function AulaFuncoesLogaritmicas({
         </div>
       </TabsContent>
 
-      {/* â•â•â• MÃ“DULO 5 â•â•â• */}
+      {/* ═══ MÓDULO 5 ═══ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={5}
             titulo="O Quizz de Guerra"
-            descricao="Integre todo o conhecimento nas opÃ§Ãµes letais da prova."
+            descricao="Integre todo o conhecimento nas opções letais da prova."
             gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
           />
 
@@ -563,11 +509,11 @@ export default function AulaFuncoesLogaritmicas({
                 <LuTrophy className="w-12 h-12 text-emerald-500" />
               </div>
               <h3 className="text-2xl font-black">
-                A Arte CategÃ³rica Finalizada
+                A Arte Categórica Finalizada
               </h3>
               <p className="text-center text-muted-foreground max-w-sm">
-                Com esse simulado destruÃ­do vocÃª acabou de blindar seu
-                cÃ©rebro de logaritmos.
+                Com esse simulado destruído você acabou de blindar seu
+                cérebro de logaritmos.
               </p>
             </div>
           ) : (
@@ -611,16 +557,10 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        A função logarítmica f(x) = log_a(x) possui
-                        características especiais: sempre passa pelo ponto (1,
-                        0), cresce lentamente, e tem domínio {"x > 0"}. Quando{" "}
-                        {"a > 1"}, a função é crescente; quando {"0 < a < 1"},
-                        ela é decrescente.
+                        A função logarítmica f(x) = log_a(x) possui características especiais: sempre passa pelo ponto (1, 0), cresce lentamente, e tem domínio {"x > 0"}. Quando {"a > 1"}, a função é crescente; quando {"0 < a < 1"}, ela é decrescente.
                       </p>
                       <AlertBox tipo="info" titulo="Assíntota Vertical">
-                        A reta x = 0 (eixo y) é uma assíntota vertical da
-                        função. A função nunca toca esse eixo, apenas se
-                        aproxima infinitamente.
+                        A reta x = 0 (eixo y) é uma assíntota vertical da função. A função nunca toca esse eixo, apenas se aproxima infinitamente.
                       </AlertBox>
                     </div>
                   ),
@@ -631,8 +571,7 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Deslocar, esticar ou refletir uma função logarítmica
-                        segue as mesmas regras das funções em geral:
+                        Deslocar, esticar ou refletir uma função logarítmica segue as mesmas regras das funções em geral:
                       </p>
                       <div className="text-sm space-y-2">
                         <p>• f(x + c): desloca c unidades para a esquerda</p>
@@ -678,42 +617,8 @@ export default function AulaFuncoesLogaritmicas({
               yMin={-5}
               yMax={5}
               points={300}
-              interactive={true}
             />
           </section>
-
-          <div className="space-y-8 bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo Visual: Funções e Transformações"
-              variant="violet"
-              className="mb-6"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo-logaritmos",
-                  label: "Comportamento Log",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Anatomia da Curva Logarítmica",
-                          type: "Infográfico",
-                          placeholderColor: "bg-violet-100 dark:bg-violet-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Infográfico corporativo mostrando o gráfico da função logarítmica (cruzando o eixo X em 1), com assíntota no eixo Y e crescimento suave. Indicadores de translação vertical/horizontal.
-                        },
-                      ]}
-                      moduloNome="Módulo 6"
-                      tituloAula="Funções Logarítmicas"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </div>
 
           <QuizInterativo
             questoes={quizM6}
@@ -752,16 +657,10 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Quando duas ou mais equações logarítmicas devem ser
-                        satisfeitas simultaneamente, você combina propriedades
-                        de logaritmos com técnicas algébricas. A chave é sempre
-                        verificar as condições de existência para cada solução
-                        proposta.
+                        Quando duas ou mais equações logarítmicas devem ser satisfeitas simultaneamente, você combina propriedades de logaritmos com técnicas algébricas. A chave é sempre verificar as condições de existência para cada solução proposta.
                       </p>
                       <AlertBox tipo="warning" titulo="Dupla Verificação">
-                        Em sistemas, verifique que cada solução satisfaz{" "}
-                        <strong>todas</strong> as equações e que nenhuma cond de
-                        existência foi violada.
+                        Em sistemas, verifique que cada solução satisfaz <strong>todas</strong> as equações e que nenhuma cond de existência foi violada.
                       </AlertBox>
                     </div>
                   ),
@@ -772,11 +671,7 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Ao resolver inequações com logaritmos, cuidado com a
-                        monotonia da função. Se {"0 < base < 1"}, o sinal da
-                        inequação inverte quando você "remove" o log! Sempre
-                        considere o domínio (logaritmando {">"} 0 e base {">"}{" "}
-                        0, base {"≠"} 1).
+                        Ao resolver inequações com logaritmos, cuidado com a monotonia da função. Se {"0 < base < 1"}, o sinal da inequação inverte quando você "remove" o log! Sempre considere o domínio (logaritmando {">"} 0 e base {">"} 0, base {"≠"} 1).
                       </p>
                     </div>
                   ),
@@ -805,11 +700,10 @@ export default function AulaFuncoesLogaritmicas({
                 },
               ]}
               xMin={0.1}
-              xMax={20}
+              xMax={150}
               yMin={-1}
               yMax={3}
               points={300}
-              interactive={true}
             />
           </section>
 
@@ -850,15 +744,10 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Em problemas reversos, você recebe uma expressão
-                        complexa e precisa identificar que ela é um logaritmo
-                        disfarçado. Por exemplo: "Qual expoente x satisfaz 2ˣ =
-                        5?" é na verdade x = log₂(5).
+                        Em problemas reversos, você recebe uma expressão complexa e precisa identificar que ela é um logaritmo disfarçado. Por exemplo: "Qual expoente x satisfaz 2ˣ = 5?" é na verdade x = log₂(5).
                       </p>
                       <AlertBox tipo="info" titulo="Pensamento Inverso">
-                        Logaritmos e exponenciais são funções inversas. Se você
-                        tem dificuldade em uma forma, tente converter para a
-                        outra.
+                        Logaritmos e exponenciais são funções inversas. Se você tem dificuldade em uma forma, tente converter para a outra.
                       </AlertBox>
                     </div>
                   ),
@@ -904,10 +793,7 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        O pH usa a escala logarítmica base 10 para medir a
-                        concentração de íons hidrogênio. Um aumento de 1 unidade
-                        de pH significa uma redução de 10 vezes na acidez. Isso
-                        é crítico em processos de refino de petróleo.
+                        O pH usa a escala logarítmica base 10 para medir a concentração de íons hidrogênio. Um aumento de 1 unidade de pH significa uma redução de 10 vezes na acidez. Isso é crítico em processos de refino de petróleo.
                       </p>
                     </div>
                   ),
@@ -918,10 +804,7 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        A degradação de materiais em dutos submetidos à corrosão
-                        segue uma lei exponencial, modelada por funções
-                        logarítmicas. Engenheiros usam logs para prever a vida
-                        útil de equipamentos de subsea.
+                        A degradação de materiais em dutos submetidos à corrosão segue uma lei exponencial, modelada por funções logarítmicas. Engenheiros usam logs para prever a vida útil de equipamentos de subsea.
                       </p>
                     </div>
                   ),
@@ -960,8 +843,7 @@ export default function AulaFuncoesLogaritmicas({
                 Logaritmos Completamente Dominados
               </h3>
               <p className="text-center text-muted-foreground max-w-sm">
-                Você conquistou a maestria em funções logarítmicas. Está pronto
-                para qualquer desafio que vier!
+                Você conquistou a maestria em funções logarítmicas. Está pronto para qualquer desafio que vier!
               </p>
             </div>
           ) : (

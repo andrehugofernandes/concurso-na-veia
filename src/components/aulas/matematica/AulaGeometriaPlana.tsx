@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { TabsContent } from "@/components/ui/tabs";
 import {
   AlertBox,
   QuizInterativo,
@@ -11,9 +11,6 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
-  FlipCard,
-  LessonTabs,
-  ModuleSummaryCarouselNew,
 } from "../shared";
 import {
   QUIZ_M1_POLIGONOS,
@@ -1129,100 +1126,6 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
-              title="Dossiê de Elite: Ternas Pitagóricas"
-              description="Cards de memorização rápida para você ganhar tempo valioso nas provas."
-              variant="blue"
-              className="mb-6"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center text-center space-y-2">
-                    <span className="text-4xl">🎯</span>
-                    <h3 className="font-bold text-lg">Terna (3, 4, 5)</h3>
-                    <p className="text-sm opacity-80">A mãe de todas as ternas</p>
-                  </div>
-                }
-                verso={
-                  <div className="space-y-3">
-                    <p className="font-bold text-white mb-2">3² + 4² = 5²</p>
-                    <p className="text-white/90 text-sm">
-                      É a terna mais cobrada. Verifique se os catetos são múltiplos de 3 e 4. Ex: 6 e 8 (múltiplos por 2). A hipotenusa será 10.
-                    </p>
-                    <div className="bg-white/10 p-2 rounded-lg mt-2">
-                      <p className="text-xs text-white/80 font-mono">Múltiplos: (6, 8, 10), (30, 40, 50)</p>
-                    </div>
-                  </div>
-                }
-                categoria="Alta Incidência"
-                variant="blue"
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center text-center space-y-2">
-                    <span className="text-4xl">⚔️</span>
-                    <h3 className="font-bold text-lg">Terna (5, 12, 13)</h3>
-                    <p className="text-sm opacity-80">A segunda mais frequente</p>
-                  </div>
-                }
-                verso={
-                  <div className="space-y-3">
-                    <p className="font-bold text-white mb-2">5² + 12² = 13²</p>
-                    <p className="text-white/90 text-sm">
-                      Aparece muito para testar se o candidato domina outras ternas além da 3-4-5.
-                    </p>
-                    <div className="bg-white/10 p-2 rounded-lg mt-2">
-                      <p className="text-xs text-white/80 font-mono">Múltiplos: (10, 24, 26)</p>
-                    </div>
-                  </div>
-                }
-                categoria="Essencial"
-                variant="cyan"
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center text-center space-y-2">
-                    <span className="text-4xl">⚡</span>
-                    <h3 className="font-bold text-lg">Terna (8, 15, 17)</h3>
-                    <p className="text-sm opacity-80">Terna avançada</p>
-                  </div>
-                }
-                verso={
-                  <div className="space-y-3">
-                    <p className="font-bold text-white mb-2">8² + 15² = 17²</p>
-                    <p className="text-white/90 text-sm">
-                      Cai menos, mas quando aparece, quebra quem não a conhece. A CESGRANRIO usa essa terna para ganhar tempo.
-                    </p>
-                  </div>
-                }
-                categoria="Diferencial"
-                variant="emerald"
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center text-center space-y-2">
-                    <span className="text-4xl">⚠️</span>
-                    <h3 className="font-bold text-lg">Pegadinha da Posição</h3>
-                    <p className="text-sm opacity-80">Sempre valide os lados</p>
-                  </div>
-                }
-                verso={
-                  <div className="space-y-3">
-                    <p className="font-bold text-white mb-2">A hipotenusa é sempre o maior lado!</p>
-                    <p className="text-white/90 text-[13px] leading-tight mt-1">
-                      Se a questão der os lados 3 e 5, mas disser que 5 é um CATETO, a terna (3, 4, 5) NÃO se aplica! Calcule: c² = 3² + 5².
-                    </p>
-                  </div>
-                }
-                categoria="Atenção"
-                variant="amber"
-              />
-            </div>
-          </section>
-
           <section id="quiz-modulo-7" className="mt-16">
             <QuizInterativo
               questoes={quizM7}
@@ -1476,71 +1379,6 @@ export default function AulaGeometriaPlana({
                   ),
                 },
               ]}
-            />
-          </section>
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
-              title="Revisão Interativa: Geometria Plana"
-              description="Sintetize seu conhecimento visualmente antes do simulado."
-              variant="emerald"
-              className="mb-6"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo",
-                  label: "Mapa Mental",
-                  icon: () => <span className="text-lg">🗺️</span>,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Áreas Comuns",
-                          type: "infográfico",
-                          placeholderColor: "bg-emerald-500/20",
-                        },
-                        {
-                          title: "Teorema de Pitágoras e Ternas",
-                          type: "infográfico",
-                          placeholderColor: "bg-teal-500/20",
-                        },
-                        {
-                          title: "Proporções",
-                          type: "mapa mental",
-                          placeholderColor: "bg-cyan-500/20",
-                        }
-                      ]}
-                      tituloAula="Geometria Plana"
-                      materia="Matemática"
-                      profissao="Engenharia"
-                      moduloNome="Módulo 9 - Geometria Plana"
-                    />
-                  ),
-                },
-                {
-                  id: "video",
-                  label: "Videoaula",
-                  icon: () => <span className="text-lg">▶️</span>,
-                  content: (
-                    <div className="aspect-video rounded-xl overflow-hidden border border-border/50 bg-muted flex items-center justify-center relative group">
-                      <div className="absolute inset-0 bg-green-900/10 group-hover:bg-green-900/20 transition-colors" />
-                      <div className="text-center space-y-4 relative z-10">
-                        <div className="w-16 h-16 rounded-full bg-green-500/20 text-green-500 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                          <span className="text-2xl">▶️</span>
-                        </div>
-                        <div>
-                          <p className="font-bold text-lg mb-1">Aulão de Geometria Plana</p>
-                          <p className="text-sm text-muted-foreground">Revisão focada na CESGRANRIO</p>
-                        </div>
-                      </div>
-                    </div>
-                  ),
-                },
-              ]}
-              defaultTab="resumo"
-              variant="emerald"
             />
           </section>
 

@@ -15,9 +15,6 @@ import {
   CardCarousel,
   FunctionGraph,
   type FunctionPlot,
-  FlipCard,
-  LessonTabs,
-  ModuleSummaryCarouselNew,
 } from "../shared";
 
 import {
@@ -43,16 +40,16 @@ import {
 } from "./data/funcoes-exponenciais-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", titulo: "Potenciação e Bases" },
-  { id: "modulo-2", label: "Módulo 2", titulo: "Gráficos e Comportamento" },
-  { id: "modulo-3", label: "Módulo 3", titulo: "Equações Exponenciais" },
-  { id: "modulo-4", label: "Módulo 4", titulo: "Crescimento e Decaimento" },
-  { id: "modulo-5", label: "Módulo 5", titulo: "Desafio Parcial" },
-  { id: "modulo-6", label: "Módulo 6", titulo: "Número e e Logaritmo" },
-  { id: "modulo-7", label: "Módulo 7", titulo: "Transformações" },
-  { id: "modulo-8", label: "Módulo 8", titulo: "Sistemas Exponenciais" },
-  { id: "modulo-9", label: "Módulo 9", titulo: "Aplicações Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Mestre" },
+  { id: "modulo-1", label: "Módulo 1", title: "Potenciação e Bases" },
+  { id: "modulo-2", label: "Módulo 2", title: "Gráficos e Comportamento" },
+  { id: "modulo-3", label: "Módulo 3", title: "Equações Exponenciais" },
+  { id: "modulo-4", label: "Módulo 4", title: "Crescimento e Decaimento" },
+  { id: "modulo-5", label: "Módulo 5", title: "Desafio Parcial" },
+  { id: "modulo-6", label: "Módulo 6", title: "Número e e Logaritmo" },
+  { id: "modulo-7", label: "Módulo 7", title: "Transformações" },
+  { id: "modulo-8", label: "Módulo 8", title: "Sistemas Exponenciais" },
+  { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
 export default function AulaFuncoesExponenciais({
@@ -76,16 +73,28 @@ export default function AulaFuncoesExponenciais({
     new Set(),
   );
 
-  const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_POTENCIACAO, 4));
-  const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_GRAFICO, 4));
-  const [quizM3] = useState(() => getRandomQuestions(QUIZ_M3_EQUACOES, 4));
-  const [quizM4] = useState(() => getRandomQuestions(QUIZ_M4_APLICACOES, 4));
+  const [quizM1] = useState(() =>
+    getRandomQuestions(QUIZ_M1_POTENCIACAO, 4),
+  );
+  const [quizM2] = useState(() =>
+    getRandomQuestions(QUIZ_M2_GRAFICO, 4),
+  );
+  const [quizM3] = useState(() =>
+    getRandomQuestions(QUIZ_M3_EQUACOES, 4),
+  );
+  const [quizM4] = useState(() =>
+    getRandomQuestions(QUIZ_M4_APLICACOES, 4),
+  );
   const [quizM5] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 4));
-  const [quizM6] = useState(() => getRandomQuestions(QUIZ_M6_LOGARITMO_E, 4));
+  const [quizM6] = useState(() =>
+    getRandomQuestions(QUIZ_M6_LOGARITMO_E, 4),
+  );
   const [quizM7] = useState(() =>
     getRandomQuestions(QUIZ_M7_TRANSFORMACOES, 4),
   );
-  const [quizM8] = useState(() => getRandomQuestions(QUIZ_M8_SISTEMAS, 4));
+  const [quizM8] = useState(() =>
+    getRandomQuestions(QUIZ_M8_SISTEMAS, 4),
+  );
   const [quizM9] = useState(() =>
     getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 4),
   );
@@ -177,13 +186,13 @@ export default function AulaFuncoesExponenciais({
       loading={loading}
       xpGanho={xpGanho}
     >
-      {/* â•â•â• MÃ“DULO 1 â•â•â• */}
+      {/* ═══ MÓDULO 1 ═══ */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={1}
-            titulo="PotenciaÃ§Ã£o Base"
-            descricao="Onde tudo comeÃ§a. Dominar as potÃªncias Ã© o degrau principal."
+            titulo="Potenciação Base"
+            descricao="Onde tudo começa. Dominar as potências é o degrau principal."
             gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
           />
 
@@ -191,36 +200,36 @@ export default function AulaFuncoesExponenciais({
             <ModuleSectionHeader
               index={1}
               title="Regras Ocultas"
-              description="A matemÃ¡tica trata potÃªncias com regras imutÃ¡veis."
+              description="A matemática trata potências com regras imutáveis."
               variant="blue"
             />
 
             <ContentAccordion
               slides={[
                 {
-                  titulo: "As Leis da PotÃªncia",
-                  icone: <LuZap />,
-                  conteudo: (
+                  titulo: "As Leis da Potência",
+                  icone:<LuZap />,
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        NÃ£o dependa de sorte. Dependa das propriedades
-                        matemÃ¡ticas:
+                        Não dependa de sorte. Dependa das propriedades
+                        matemáticas:
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center">
                           <p className="font-mono font-bold text-blue-700 text-lg">
-                            aáµ Ã— aâ¿ = aáµâºâ¿
+                            aáµ × aâ¿ = aáµâºâ¿
                           </p>
                           <p className="text-xs text-muted-foreground mt-1">
-                            MultiplicaÃ§Ã£o de Mesma Base = Soma os vizinhos.
+                            Multiplicação de Mesma Base = Soma os vizinhos.
                           </p>
                         </div>
                         <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center">
                           <p className="font-mono font-bold text-blue-700 text-lg">
-                            aáµ Ã· aâ¿ = aáµâ»â¿
+                            aáµ ÷ aâ¿ = aáµâ»â¿
                           </p>
                           <p className="text-xs text-muted-foreground mt-1">
-                            DivisÃ£o de Mesma Base = Subtrai o de baixo.
+                            Divisão de Mesma Base = Subtrai o de baixo.
                           </p>
                         </div>
                         <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center">
@@ -228,7 +237,7 @@ export default function AulaFuncoesExponenciais({
                             (aáµ)â¿ = aáµË£â¿
                           </p>
                           <p className="text-xs text-muted-foreground mt-1">
-                            PotÃªncia de PotÃªncia = Multiplica o intruso.
+                            Potência de Potência = Multiplica o intruso.
                           </p>
                         </div>
                         <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center">
@@ -281,7 +290,7 @@ export default function AulaFuncoesExponenciais({
 
           <QuizInterativo
             questoes={quizM1}
-            titulo="FixaÃ§Ã£o - PotenciaÃ§Ã£o"
+            titulo="Fixação - Potenciação"
             numero={1}
             variant="blue"
             icone="ðŸ§ "
@@ -290,13 +299,13 @@ export default function AulaFuncoesExponenciais({
         </div>
       </TabsContent>
 
-      {/* â•â•â• MÃ“DULO 2 â•â•â• */}
+      {/* ═══ MÓDULO 2 ═══ */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={2}
-            titulo="EquaÃ§Ãµes Exponenciais"
-            descricao="FatoraÃ§Ã£o em busca da igualdade."
+            titulo="Equações Exponenciais"
+            descricao="Fatoração em busca da igualdade."
             gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
           />
 
@@ -304,20 +313,20 @@ export default function AulaFuncoesExponenciais({
             <ModuleSectionHeader
               index={1}
               title="A Arte de Cortar as Bases"
-              description="Quando o 'x' estÃ¡ no cÃ©u, e vocÃª precisa puxÃ¡-lo pra terra."
+              description="Quando o 'x' está no céu, e você precisa puxá-lo pra terra."
               variant="emerald"
             />
 
             <ContentAccordion
               slides={[
                 {
-                  titulo: "MÃ©todo Universal",
-                  icone: <LuTarget />,
-                  conteudo: (
+                  titulo: "Método Universal",
+                  icone:<LuTarget />,
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        O objetivo final Ã© sempre chegar num formato onde nÃ£o
-                        haja dÃºvida das intenÃ§Ãµes:
+                        O objetivo final é sempre chegar num formato onde não
+                        haja dúvida das intenções:
                       </p>
                       <div className="bg-emerald-500/10 p-4 text-center rounded-xl border border-emerald-500/20">
                         <p className="font-mono text-xl font-bold text-emerald-700">
@@ -325,9 +334,9 @@ export default function AulaFuncoesExponenciais({
                         </p>
                       </div>
                       <p className="text-sm mt-2 text-muted-foreground">
-                        Se <code>4Ë£ = 8</code>, nÃ³s precisamos transformar o 4
-                        em <code>2Â²</code> e o 8 em <code>2Â³</code>. Assim
-                        teremos <code>2Â²Ë£ = 2Â³</code>. Cortam-se os nÃºmeros
+                        Se <code>4ˣ = 8</code>, nós precisamos transformar o 4
+                        em <code>2²</code> e o 8 em <code>2³</code>. Assim
+                        teremos <code>2²Ë£ = 2³</code>. Cortam-se os números
                         gigantes da base, ficamos com vida de adulto:{" "}
                         <code>2x = 3</code>.
                       </p>
@@ -335,21 +344,21 @@ export default function AulaFuncoesExponenciais({
                   ),
                 },
                 {
-                  titulo: "O Pior CenÃ¡rio (ArtifÃ­cio AlgÃ©brico)",
-                  icone: <LuBrain />,
-                  conteudo: (
+                  titulo: "O Pior Cenário (Artifício Algébrico)",
+                  icone:<LuBrain />,
+                  conteudo:(
                     <div className="space-y-4">
                       <AlertBox
                         tipo="warning"
-                        titulo="Quando nÃ£o dÃ¡ pra isolar a base numa paulada sÃ³"
+                        titulo="Quando não dá pra isolar a base numa paulada só"
                       >
-                        Se trombar com coisas no nÃ­vel{" "}
-                        <code>3Â²Ë£ + 3Ë£ - 6 = 0</code>. NÃ£o corra. Perceba
-                        que <code>3Â²Ë£</code> Ã© nada menos que{" "}
-                        <code>(3Ë£)Â²</code>. Chame de imediato <code>3Ë£</code>{" "}
-                        de uma letra qualquer (Y). E resolva usando Bhaskara ou
-                        Soma/Produto: <code>YÂ² + Y - 6 = 0</code>. ApÃ³s achar
-                        o Y, volte para a variÃ¡vel original!
+                        Se trombar com coisas no nível{" "}
+                        <code>3²ˣ + 3ˣ - 6 = 0</code>. Não corra. Perceba que{" "}
+                        <code>3²ˣ</code> é nada menos que <code>(3ˣ)²</code>.
+                        Chame de imediato <code>3Ë£</code> de uma letra qualquer
+                        (Y). E resolva usando Bhaskara ou Soma/Produto:{" "}
+                        <code>Y² + Y - 6 = 0</code>. Após achar o Y, volte para
+                        a variável original!
                       </AlertBox>
                     </div>
                   ),
@@ -376,62 +385,16 @@ export default function AulaFuncoesExponenciais({
                 strokeWidth: 2,
               },
             ]}
-            xMin={-3}
+            xMin={-5}
             xMax={3}
             yMin={-1}
-            yMax={20}
+            yMax={8}
             points={250}
-            interactive={true}
           />
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={2}
-              title="Dossiê de Memorização Visual: Estratégias Exponenciais"
-              description="Vire os cards para recordar como escapar das principais armadilhas."
-              variant="emerald"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-emerald-500" />
-                    <p className="font-bold text-center">Bases Diferentes (ex: 4 e 8)</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuZap className="w-6 h-6 text-teal-500" />
-                    <p className="font-bold text-center text-sm">Fatore para a mesma base!</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      Transforme o 4 em 2² e o 8 em 2³. Assim, você pode igualar os expoentes (2x = 3) e resolver a equação linear.
-                    </p>
-                  </div>
-                }
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-emerald-500" />
-                    <p className="font-bold text-center">Somas de Exponenciais (ex: 3²ˣ + 3ˣ)</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuBrain className="w-6 h-6 text-emerald-500" />
-                    <p className="font-bold text-center text-sm">Use Variável Auxiliar</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      Chame 3ˣ de Y. A equação vira uma quadrática: Y² + Y. Resolva para Y e depois volte para X.
-                    </p>
-                  </div>
-                }
-              />
-            </div>
-          </section>
 
           <QuizInterativo
             questoes={quizM3}
-            titulo="FixaÃ§Ã£o - EquaÃ§Ãµes"
+            titulo="Fixação - Equações"
             numero={2}
             variant="emerald"
             icone="ðŸŽ¯"
@@ -440,12 +403,12 @@ export default function AulaFuncoesExponenciais({
         </div>
       </TabsContent>
 
-      {/* â•â•â• MÃ“DULO 3 â•â•â• */}
+      {/* ═══ MÓDULO 3 ═══ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={3}
-            titulo="AplicaÃ§Ãµes de Alta Performance"
+            titulo="Aplicações de Alta Performance"
             descricao="Crescimento bacteriano e Juros Compostos modelados matematicamente."
             gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
           />
@@ -453,8 +416,8 @@ export default function AulaFuncoesExponenciais({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="ExplosÃ£o e ExtinÃ§Ã£o"
-              description="N(t) modela todo o caos da natureza ou das finanÃ§as financeiras."
+              title="Explosão e Extinção"
+              description="N(t) modela todo o caos da natureza ou das finanças financeiras."
               variant="amber"
             />
 
@@ -462,23 +425,23 @@ export default function AulaFuncoesExponenciais({
               slides={[
                 {
                   titulo: "Crescimento Absoluto",
-                  icone: <LuTrendingUp />,
-                  conteudo: (
+                  icone:<LuTrendingUp />,
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        A fÃ³rmula oficial da Banca para problemas da vida real
-                        sempre engole parÃ¢metros cruciais:
+                        A fórmula oficial da Banca para problemas da vida real
+                        sempre engole parâmetros cruciais:
                       </p>
                       <div className="bg-amber-500/10 p-4 border border-amber-500/20 text-center rounded-xl shadow-inner inline-block">
                         <p className="font-mono text-lg font-bold text-amber-800">
-                          N(t) = Nâ‚€ Ã— aáµ—
+                          N(t) = Nâ‚€ × aáµ—
                         </p>
                       </div>
                       <p className="text-sm">
-                        O <strong>Nâ‚€</strong> Ã© o valor exato daquele dado
-                        (BactÃ©rias, Dinheiro inicial e etc) no InÃ­cio (Tempo
-                        0). E o <strong>a</strong> Ã© a variaÃ§Ã£o (se o texto
-                        disser que sobe 20% todo mÃªs, ele serÃ¡ 1,20).
+                        O <strong>Nâ‚€</strong> é o valor exato daquele dado
+                        (Bactérias, Dinheiro inicial e etc) no Início (Tempo 0).
+                        E o <strong>a</strong> é a variação (se o texto disser
+                        que sobe 20% todo mês, ele será 1,20).
                       </p>
                     </div>
                   ),
@@ -487,42 +450,9 @@ export default function AulaFuncoesExponenciais({
             />
           </section>
 
-          <div className="space-y-8 bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo Visual: Aplicações Práticas"
-              variant="amber"
-              className="mb-6"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo-aplicacoes",
-                  label: "Modelagem Exponencial",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Fórmulas do Cotidiano Industrial",
-                          type: "Infográfico",
-                          placeholderColor: "bg-amber-100 dark:bg-amber-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Infográfico corporativo mostrando a fórmula N(t) = N0 * a^t dividida em componentes (Valor inicial, taxa de crescimento/decaimento, tempo). Cor laranja petrobras.
-                        },
-                      ]}
-                      moduloNome="Módulo 3"
-                      tituloAula="Funções Exponenciais"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </div>
-
           <QuizInterativo
             questoes={quizM4}
-            titulo="FixaÃ§Ã£o - AplicaÃ§Ãµes"
+            titulo="Fixação - Aplicações"
             numero={3}
             variant="amber"
             icone="ðŸŽ¯"
@@ -531,12 +461,12 @@ export default function AulaFuncoesExponenciais({
         </div>
       </TabsContent>
 
-      {/* â•â•â• MÃ“DULO 4 â•â•â• */}
+      {/* ═══ MÓDULO 4 ═══ */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={4}
-            titulo="InequaÃ§Ãµes Complexas"
+            titulo="Inequações Complexas"
             descricao="Onde uma base menor que 1 inverte todos os sinais."
             gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
           />
@@ -544,8 +474,8 @@ export default function AulaFuncoesExponenciais({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="A Regra da InversÃ£o"
-              description="Manter a direÃ§Ã£o matemÃ¡tica nÃ£o Ã© um direito incondicional."
+              title="A Regra da Inversão"
+              description="Manter a direção matemática não é um direito incondicional."
               variant="cyan"
             />
 
@@ -553,14 +483,14 @@ export default function AulaFuncoesExponenciais({
               slides={[
                 {
                   titulo: "Base (a > 1)",
-                  icone: <LuTrendingUp />,
-                  conteudo: (
+                  icone:<LuTrendingUp />,
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Se vocÃª tiver uma base maior que 1, a funÃ§Ã£o
-                        Exponencial apenas decola para o infinito. Ã‰ Crescente.
-                        Se vocÃª tiver de um lado o nÃºmero maior, quer dizer de
-                        fato que o expoente dele tambÃ©m era maior.
+                        Se você tiver uma base maior que 1, a função Exponencial
+                        apenas decola para o infinito. É Crescente. Se você
+                        tiver de um lado o número maior, quer dizer de fato que
+                        o expoente dele também era maior.
                       </p>
                       <div className="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20">
                         <code>2Ë£ &gt; 2âµ âŸ¹ x &gt; 5</code>
@@ -570,21 +500,21 @@ export default function AulaFuncoesExponenciais({
                 },
                 {
                   titulo: "Base (0 < a < 1)",
-                  icone: <LuTrendingUp />,
-                  conteudo: (
+                  icone:<LuTrendingUp />,
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Ã‰ aqui onde ocorre o desastre. Se vocÃª lidar com um
-                        valor minÃºsculo <code>(1/2)</code> ou{" "}
-                        <code>(0,3)</code>, eles diminuem a cada passo de
-                        expoente. EntÃ£o se do lado esquerdo o nÃºmero que resta
-                        Ã© maior que o do direito, a Ãºnica explicaÃ§Ã£o, Ã© que
-                        seu expoente era o menorzinho da fila.
+                        É aqui onde ocorre o desastre. Se você lidar com um
+                        valor minúsculo <code>(1/2)</code> ou <code>(0,3)</code>
+                        , eles diminuem a cada passo de expoente. Então se do
+                        lado esquerdo o número que resta é maior que o do
+                        direito, a única explicação, é que seu expoente era o
+                        menorzinho da fila.
                       </p>
                       <div className="bg-red-500/10 p-3 rounded-lg border border-red-500/20 font-bold">
                         <p>O sinal vai INVERTER.</p>
                         <code className="text-red-700">
-                          0,5Ë£ &gt; 0,5Â² âŸ¹ x &lt; 2
+                          0,5Ë£ &gt; 0,5² âŸ¹ x &lt; 2
                         </code>
                       </div>
                     </div>
@@ -596,7 +526,7 @@ export default function AulaFuncoesExponenciais({
 
           <QuizInterativo
             questoes={quizM2}
-            titulo="FixaÃ§Ã£o - InequaÃ§Ãµes"
+            titulo="Fixação - Inequações"
             numero={4}
             variant="cyan"
             icone="ðŸŽ¯"
@@ -605,13 +535,13 @@ export default function AulaFuncoesExponenciais({
         </div>
       </TabsContent>
 
-      {/* â•â•â• MÃ“DULO 5 â•â•â• */}
+      {/* ═══ MÓDULO 5 ═══ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={5}
             titulo="Desafio Final da Carga Mestre"
-            descricao="NÃ­veis exponenciais misturados em alto estresse cognitivo."
+            descricao="Níveis exponenciais misturados em alto estresse cognitivo."
             gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
           />
 
@@ -622,8 +552,8 @@ export default function AulaFuncoesExponenciais({
               </div>
               <h3 className="text-2xl font-black">Analista Certificado</h3>
               <p className="text-center text-muted-foreground max-w-sm">
-                AprovaÃ§Ãµes comeÃ§am destruindo essas falhas de InequaÃ§Ãµes da
-                base menor.
+                Aprovações começam destruindo essas falhas de Inequações da base
+                menor.
               </p>
             </div>
           ) : (
@@ -683,28 +613,20 @@ export default function AulaFuncoesExponenciais({
               slides={[
                 {
                   titulo: "Tipos de Transformações",
-                  icone: <LuZap />,
-                  conteudo: (
+                  icone:<LuZap />,
+                  conteudo:(
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
                         As transformações aplicadas a f(x) = e^x incluem:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20">
-                          <p className="font-mono text-sm font-bold text-cyan-700">
-                            c*f(x)
-                          </p>
-                          <p className="text-xs text-muted-foreground mt-1">
-                            Multiplicação por constante (ampliação vertical)
-                          </p>
+                          <p className="font-mono text-sm font-bold text-cyan-700">c*f(x)</p>
+                          <p className="text-xs text-muted-foreground mt-1">Multiplicação por constante (ampliação vertical)</p>
                         </div>
                         <div className="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20">
-                          <p className="font-mono text-sm font-bold text-cyan-700">
-                            f(x - h)
-                          </p>
-                          <p className="text-xs text-muted-foreground mt-1">
-                            Deslocamento horizontal para direita
-                          </p>
+                          <p className="font-mono text-sm font-bold text-cyan-700">f(x - h)</p>
+                          <p className="text-xs text-muted-foreground mt-1">Deslocamento horizontal para direita</p>
                         </div>
                       </div>
                     </div>
@@ -813,9 +735,7 @@ export default function AulaFuncoesExponenciais({
               </div>
               <h3 className="text-2xl font-black">Mestre das Exponenciais!</h3>
               <p className="text-center text-muted-foreground max-w-sm">
-                Você dominou completamente as Funções Exponenciais. Crescimento,
-                decaimento, transformações e aplicações práticas — tudo sob
-                controle!
+                Você dominou completamente as Funções Exponenciais. Crescimento, decaimento, transformações e aplicações práticas — tudo sob controle!
               </p>
             </div>
           ) : (
@@ -835,3 +755,17 @@ export default function AulaFuncoesExponenciais({
     </AulaTemplate>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -11,21 +11,7 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
-  FlipCard,
-  CardCarousel,
-  LessonTabs,
-  ModuleSummaryCarouselNew,
 } from "../shared";
-
-import {
-  LuBookOpen,
-  LuLightbulb,
-  LuTarget,
-  LuBrain,
-  LuTrophy,
-  LuZap,
-  LuCircleCheck,
-} from "react-icons/lu";
 import {
   QUIZ_M1_CONCEITO_SL,
   QUIZ_M2_SUBSTITUICAO,
@@ -277,101 +263,6 @@ export default function AulaSistemasLineares({
               </table>
             </div>
           </section>
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={3}
-              title="Dossiê de Memorização Visual: Classificação de Sistemas"
-              description="Adivinhe a classificação pelas razões dos coeficientes."
-              variant="indigo"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-indigo-500" />
-                    <p className="font-bold text-center">As razões (r1 e r2) são diferentes?</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuCircleCheck className="w-6 h-6 text-emerald-500" />
-                    <p className="font-bold text-center text-sm">SPD</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      (Sistema Possível e Determinado). Retas Concorrentes. Solução Única.
-                    </p>
-                  </div>
-                }
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-indigo-500" />
-                    <p className="font-bold text-center">Todas as razões são RIGOROSAMENTE iguais?</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuZap className="w-6 h-6 text-amber-500" />
-                    <p className="font-bold text-center text-sm">SPI</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      (Sistema Possível e Indeterminado). Retas Coincidentes. Infinitas soluções.
-                    </p>
-                  </div>
-                }
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-indigo-500" />
-                    <p className="font-bold text-center">Razões de X,Y iguais MAS resultado diferente?</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuBookOpen className="w-6 h-6 text-rose-500" />
-                    <p className="font-bold text-center text-sm">SI</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      (Sistema Impossível). Retas Paralelas. ZERO Soluções.
-                    </p>
-                  </div>
-                }
-              />
-            </div>
-          </section>
-
-          <div className="space-y-8 bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm">
-            <ModuleSectionHeader
-              index={4}
-              title="Resumo do Módulo 1"
-              variant="indigo"
-              className="mb-6"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo-classificacao",
-                  label: "Mapa de Classificação",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Fluxograma de Classificação (SPD, SPI, SI)",
-                          type: "Diagrama",
-                          placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Fluxograma no estilo industrial escuro da Petrobras perguntando: D=0? Se não -> SPD. Se sim -> Avaliar Dx e Dy. Tiver algum diferent de zero -> SI. Tudo zero -> SPI.
-                        },
-                      ]}
-                      moduloNome="Módulo 1"
-                      tituloAula="Sistemas Lineares"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </div>
 
           <section id="quiz-modulo-1" className="mt-16">
             <QuizInterativo

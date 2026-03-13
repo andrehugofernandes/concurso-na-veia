@@ -11,9 +11,6 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
-  FlipCard,
-  LessonTabs,
-  ModuleSummaryCarouselNew,
 } from "../shared";
 import {
   QUIZ_M1_RAZOES_TRIG,
@@ -139,113 +136,132 @@ export default function AulaTrigonometria({
               variant="indigo"
               className="mb-6"
             />
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center justify-center h-full space-y-3">
-                    <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-xl">
-                      sen
-                    </div>
-                    <h4 className="font-bold text-lg">SENO (θ)</h4>
-                    <p className="text-sm text-muted-foreground text-center">Cateto Oposto / Hipotenusa</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col justify-center h-full p-4 space-y-3 text-center">
-                    <p className="text-sm italic">"O sol bate no que está na frente (OPOSTO)."</p>
-                    <div className="bg-blue-500/10 p-3 rounded-lg border border-blue-500/20">
-                      <p className="font-mono text-center text-lg">sen θ = CO / H</p>
-                    </div>
-                    <p className="text-xs text-muted-foreground">Varia de -1 a 1. Essencial para decomposição de forças verticais.</p>
-                  </div>
-                }
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center justify-center h-full space-y-3">
-                    <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-xl">
-                      cos
-                    </div>
-                    <h4 className="font-bold text-lg">COSSENO (θ)</h4>
-                    <p className="text-sm text-muted-foreground text-center">Cateto Adjacente / Hipotenusa</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col justify-center h-full p-4 space-y-3 text-center">
-                    <p className="text-sm italic">"O que está 'CO'lado ao ângulo (ADJACENTE)."</p>
-                    <div className="bg-emerald-500/10 p-3 rounded-lg border border-emerald-500/20">
-                      <p className="font-mono text-center text-lg">cos θ = CA / H</p>
-                    </div>
-                    <p className="text-xs text-muted-foreground">Importante para decomposição de forças horizontais.</p>
-                  </div>
-                }
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center justify-center h-full space-y-3">
-                    <div className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold text-xl">
-                      tan
-                    </div>
-                    <h4 className="font-bold text-lg">TANGENTE (θ)</h4>
-                    <p className="text-sm text-muted-foreground text-center">C. Oposto / C. Adjacente</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col justify-center h-full p-4 space-y-3 text-center">
-                    <p className="text-sm italic">"A razão que não envolve a hipotenusa."</p>
-                    <div className="bg-indigo-500/10 p-3 rounded-lg border border-indigo-500/20">
-                      <p className="font-mono text-center text-lg text-indigo-400">tan θ = sen θ / cos θ</p>
-                      <p className="font-mono text-center text-sm mt-1">tan θ = CO / CA</p>
-                    </div>
-                    <p className="text-xs text-muted-foreground">Essencial para cálculos de inclinação e rampas.</p>
-                  </div>
-                }
-              />
-            </div>
-
             <ContentAccordion
-              titulo="Dicas CESGRANRIO — Mnemônicos e Razões"
-              icone="💡"
+              titulo="Definições Essenciais"
+              icone="📐"
               corIndicador="bg-indigo-500"
-              defaultOpen={false}
+              defaultOpen={true}
               slides={[
                 {
-                  titulo: "Mnemônico: SOH CAH TOA",
-                  icone: "🧠",
+                  titulo: "As Três Razões Trigonométricas",
+                  icone: "🔢",
                   conteudo: (
                     <div className="space-y-4">
-                      <p>A forma mais rápida de nunca mais esquecer as fórmulas:</p>
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        <div className="p-3 bg-blue-500/5 rounded-xl border border-blue-500/20 text-center">
-                          <p className="text-lg font-bold text-blue-500">SOH</p>
-                          <p className="text-xs text-muted-foreground">Sen = Oposto / Hip</p>
+                      <p>
+                        Em um triângulo retângulo com ângulo agudo θ, as razões
+                        trigonométricas são definidas em relação à{" "}
+                        <strong>hipotenusa</strong> (lado oposto ao ângulo reto),{" "}
+                        <strong>cateto oposto</strong> (a θ) e{" "}
+                        <strong>cateto adjacente</strong> (a θ):
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20 text-center">
+                          <p className="text-xs font-bold text-blue-500 mb-2">SENO</p>
+                          <p className="text-lg font-mono font-bold">sen θ = CO/Hip</p>
+                          <p className="text-xs text-muted-foreground mt-2">
+                            Cateto Oposto ÷ Hipotenusa
+                          </p>
                         </div>
-                        <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-center">
-                          <p className="text-lg font-bold text-emerald-500">CAH</p>
-                          <p className="text-xs text-muted-foreground">Cos = Adj / Hip</p>
+                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-center">
+                          <p className="text-xs font-bold text-emerald-500 mb-2">COSSENO</p>
+                          <p className="text-lg font-mono font-bold">cos θ = CA/Hip</p>
+                          <p className="text-xs text-muted-foreground mt-2">
+                            Cateto Adjacente ÷ Hipotenusa
+                          </p>
                         </div>
-                        <div className="p-3 bg-indigo-500/5 rounded-xl border border-indigo-500/20 text-center">
-                          <p className="text-lg font-bold text-indigo-500">TOA</p>
-                          <p className="text-xs text-muted-foreground">Tan = Oposto / Adj</p>
+                        <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20 text-center">
+                          <p className="text-xs font-bold text-cyan-500 mb-2">TANGENTE</p>
+                          <p className="text-lg font-mono font-bold">tan θ = CO/CA</p>
+                          <p className="text-xs text-muted-foreground mt-2">
+                            Cateto Oposto ÷ Cateto Adjacente
+                          </p>
+                        </div>
+                      </div>
+                      <AlertBox tipo="info" titulo="Mnemônico SOH-CAH-TOA">
+                        <strong>SOH</strong>: Seno = Oposto / Hipotenusa
+                        <br />
+                        <strong>CAH</strong>: Cosseno = Adjacente / Hipotenusa
+                        <br />
+                        <strong>TOA</strong>: Tangente = Oposto / Adjacente
+                        <br />
+                        Este mnemônico é usado mundialmente em engenharia!
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Relação entre Tangente e as outras razões",
+                  icone: "🔗",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        A tangente pode ser expressa como razão entre seno e
+                        cosseno:
+                      </p>
+                      <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4 text-center">
+                        <p className="text-xl font-mono font-bold">
+                          tan θ = sen θ / cos θ
+                        </p>
+                      </div>
+                      <p>
+                        Esta relação é crucial para simplificar expressões
+                        trigonométricas e resolver equações. Em inspeções de
+                        dutos e estruturas offshore, calcula-se frequentemente a
+                        inclinação (tangente) a partir de medidas de altura
+                        (seno) e projeção horizontal (cosseno).
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
+                          <p className="text-xs font-bold text-emerald-500 mb-2">Exemplo Industrial</p>
+                          <p className="text-sm">
+                            Duto inclinado: altura=6m, base=8m, comprimento=10m
+                          </p>
+                          <p className="text-sm mt-1">
+                            sen θ = 6/10 = 0,6 | cos θ = 8/10 = 0,8
+                          </p>
+                          <p className="text-sm mt-1 font-bold">
+                            tan θ = 6/8 = 0,75 = 0,6/0,8 ✓
+                          </p>
+                        </div>
+                        <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
+                          <p className="text-xs font-bold text-cyan-500 mb-2">Trio Pitagórico (3,4,5)</p>
+                          <p className="text-sm">Triângulo: catetos 3m e 4m, hipotenusa 5m</p>
+                          <p className="text-sm mt-1">sen θ = 3/5 | cos θ = 4/5</p>
+                          <p className="text-sm mt-1 font-bold">tan θ = 3/4</p>
                         </div>
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Razão Trigonométrica em 3D (Cargas)",
-                  icone: "🏗️",
+                  titulo: "Aplicação em Rampas e Inclinações Industriais",
+                  icone: "🏭",
                   conteudo: (
-                    <div className="space-y-3">
-                      <p>Na Petrobras, ao içar uma turbina com guindaste:</p>
-                      <ul className="list-disc list-inside text-sm space-y-1 text-muted-foreground">
-                        <li>O <strong>seno</strong> do ângulo do braço define a altura.</li>
-                        <li>O <strong>cosseno</strong> define o alcance horizontal (raio).</li>
-                        <li>A <strong>tangente</strong> é usada para calcular a folga mínima.</li>
-                      </ul>
-                      <AlertBox tipo="warning" titulo="Atenção Técnico!">
-                        A hipotenusa é sempre o maior lado do triângulo. Se seu seno ou cosseno deu maior que 1, você errou a conta!
+                    <div className="space-y-4">
+                      <p>
+                        Na Petrobras, as razões trigonométricas são usadas para
+                        calcular inclinações de rampas, dutos submarinos, cabos
+                        de içamento e ângulos de inspeção. O protocolo padrão:
+                      </p>
+                      <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4 space-y-2">
+                        <p className="text-sm font-bold text-blue-500">
+                          Passo a passo para problemas de triângulo retângulo:
+                        </p>
+                        <ol className="list-decimal list-inside space-y-1 text-sm">
+                          <li>Identifique o ângulo θ conhecido</li>
+                          <li>Identifique o dado conhecido (hipotenusa, CO ou CA)</li>
+                          <li>Identifique o que se quer calcular</li>
+                          <li>Escolha a razão que conecta o dado ao incógnito</li>
+                          <li>Monte a equação e resolva</li>
+                        </ol>
+                      </div>
+                      <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
+                        A banca frequentemente dá o ângulo com o{" "}
+                        <strong>solo</strong> em vez do ângulo com a{" "}
+                        <strong>vertical</strong>. Um cabo que faz 60° com o
+                        mastro (vertical) faz 30° com o solo — os papéis de
+                        cateto oposto e adjacente se invertem! Desenhe sempre o
+                        triângulo antes de escolher a razão.
                       </AlertBox>
                     </div>
                   ),
@@ -258,7 +274,7 @@ export default function AulaTrigonometria({
             <QuizInterativo
               questoes={quizM1}
               titulo="Quiz — Razões Trigonométricas"
-              icone="🎯"
+              icone="📐"
               numero={1}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -286,79 +302,161 @@ export default function AulaTrigonometria({
               variant="emerald"
               className="mb-6"
             />
-            <LessonTabs
-              tabs={[
+            <ContentAccordion
+              titulo="Valores Exatos — Tabela Completa"
+              icone="📊"
+              corIndicador="bg-emerald-500"
+              defaultOpen={true}
+              slides={[
                 {
-                  id: "tabela",
-                  label: "Tabela Notável",
-                  content: (
+                  titulo: "A Tabela que Cai na Prova",
+                  icone: "📋",
+                  conteudo: (
                     <div className="space-y-4">
+                      <p>
+                        Memorize estes valores — a CESGRANRIO os usa em{" "}
+                        <strong>todas as questões de trigonometria</strong>:
+                      </p>
                       <div className="overflow-x-auto">
-                        <table className="w-full border-collapse border border-border rounded-xl overflow-hidden">
+                        <table className="w-full text-sm border-collapse">
                           <thead>
                             <tr className="bg-emerald-500/10">
-                              <th className="border border-border p-3 text-left">Ângulo</th>
-                              <th className="border border-border p-3 text-center">Seno</th>
-                              <th className="border border-border p-3 text-center">Cosseno</th>
-                              <th className="border border-border p-3 text-center">Tangente</th>
+                              <th className="border border-emerald-500/20 p-3 text-left">Ângulo</th>
+                              <th className="border border-emerald-500/20 p-3 text-center">sen</th>
+                              <th className="border border-emerald-500/20 p-3 text-center">cos</th>
+                              <th className="border border-emerald-500/20 p-3 text-center">tan</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
+                              <td className="border border-border p-3 font-bold">0°</td>
+                              <td className="border border-border p-3 text-center">0</td>
+                              <td className="border border-border p-3 text-center">1</td>
+                              <td className="border border-border p-3 text-center">0</td>
+                            </tr>
+                            <tr className="bg-muted/30">
                               <td className="border border-border p-3 font-bold">30°</td>
                               <td className="border border-border p-3 text-center font-mono">1/2</td>
                               <td className="border border-border p-3 text-center font-mono">√3/2</td>
-                              <td className="border border-border p-3 text-center font-mono">√3/3</td>
+                              <td className="border border-border p-3 text-center font-mono">1/√3 = √3/3</td>
                             </tr>
-                            <tr className="bg-muted/30">
+                            <tr>
                               <td className="border border-border p-3 font-bold">45°</td>
                               <td className="border border-border p-3 text-center font-mono">√2/2</td>
                               <td className="border border-border p-3 text-center font-mono">√2/2</td>
                               <td className="border border-border p-3 text-center font-mono">1</td>
                             </tr>
-                            <tr>
+                            <tr className="bg-muted/30">
                               <td className="border border-border p-3 font-bold">60°</td>
                               <td className="border border-border p-3 text-center font-mono">√3/2</td>
                               <td className="border border-border p-3 text-center font-mono">1/2</td>
                               <td className="border border-border p-3 text-center font-mono">√3</td>
                             </tr>
+                            <tr>
+                              <td className="border border-border p-3 font-bold">90°</td>
+                              <td className="border border-border p-3 text-center">1</td>
+                              <td className="border border-border p-3 text-center">0</td>
+                              <td className="border border-border p-3 text-center">Indef.</td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
                       <AlertBox tipo="info" titulo="Macete de Memorização">
-                        A ordem do seno é 1, 2, 3 (todos sobre 2, com raiz no 2 e 3). A do cosseno é o inverso: 3, 2, 1.
+                        Para o seno: os valores seguem a sequência √0/2, √1/2,
+                        √2/2, √3/2, √4/2 para 0°, 30°, 45°, 60°, 90°. O
+                        cosseno segue o padrão inverso (√4/2, √3/2...).
+                        Simplificando: 0, 1/2, √2/2, √3/2, 1.
                       </AlertBox>
                     </div>
                   ),
                 },
                 {
-                  id: "deducao",
-                  label: "Triângulos Mestre",
-                  content: (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-sm font-bold text-emerald-500 mb-2">Triângulo 45° (Metade do Quadrado)</p>
-                        <p className="text-xs">Lados: 1, 1, √2. Seno e Cosseno são iguais!</p>
-                      </div>
-                      <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <p className="text-sm font-bold text-blue-500 mb-2">Triângulo 30°/60° (Altura do Equilátero)</p>
-                        <p className="text-xs">Lados: 1, √3, 2. Oposto ao 30° é sempre metade da hipotenusa.</p>
+                  titulo: "Dedução Geométrica — Triângulos Notáveis",
+                  icone: "📐",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        Os ângulos notáveis surgem de dois triângulos especiais:
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
+                          <p className="text-xs font-bold text-blue-500 mb-2">
+                            Triângulo 45°-45°-90° (Isósceles Retângulo)
+                          </p>
+                          <p className="text-sm">Catetos: 1 e 1 | Hipotenusa: √2</p>
+                          <p className="text-sm mt-2">
+                            sen 45° = 1/√2 = <strong>√2/2</strong>
+                          </p>
+                          <p className="text-sm">
+                            cos 45° = 1/√2 = <strong>√2/2</strong>
+                          </p>
+                          <p className="text-sm">
+                            tan 45° = 1/1 = <strong>1</strong>
+                          </p>
+                        </div>
+                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
+                          <p className="text-xs font-bold text-emerald-500 mb-2">
+                            Triângulo 30°-60°-90° (Equilátero dividido)
+                          </p>
+                          <p className="text-sm">
+                            Catetos: 1 e √3 | Hipotenusa: 2
+                          </p>
+                          <p className="text-sm mt-2">
+                            sen 30° = 1/2 | cos 30° = <strong>√3/2</strong>
+                          </p>
+                          <p className="text-sm">
+                            sen 60° = <strong>√3/2</strong> | cos 60° = 1/2
+                          </p>
+                          <p className="text-sm">
+                            tan 30° = 1/√3 | tan 60° = <strong>√3</strong>
+                          </p>
+                        </div>
                       </div>
                     </div>
                   ),
                 },
                 {
-                  id: "aplicacoes",
-                  label: "Petrobras/Offshore",
-                  content: (
+                  titulo: "Aplicações em Plataformas Offshore",
+                  icone: "⚓",
+                  conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
-                        Ângulos de 30°, 45° e 60° são padronizados em projetos de rampas e estruturas offshore.
+                      <p>
+                        Nas plataformas da Petrobras, os ângulos de 30°, 45° e
+                        60° são padronizados em projetos de rampas, cabos e
+                        estruturas por facilitar os cálculos e atender às normas
+                        de segurança. Exemplos práticos:
                       </p>
-                      <div className="p-3 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                        <p className="text-xs font-bold text-cyan-500">Rampa a 30°</p>
-                        <p className="text-sm">Altura = Comprimento × 0,5</p>
+                      <div className="space-y-3">
+                        <div className="p-3 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
+                          <p className="text-xs font-bold text-cyan-500">Rampa a 30°</p>
+                          <p className="text-sm">
+                            Comprimento 20m → Altura = 20 × sen30° = 20 × 0,5 ={" "}
+                            <strong>10m</strong>
+                          </p>
+                        </div>
+                        <div className="p-3 bg-blue-500/5 rounded-xl border border-blue-500/20">
+                          <p className="text-xs font-bold text-blue-500">Cabo a 45°</p>
+                          <p className="text-sm">
+                            Comprimento 10m → Altura = 10 × sen45° = 10 × (√2/2)
+                            = <strong>5√2 ≈ 7,07m</strong>
+                          </p>
+                        </div>
+                        <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
+                          <p className="text-xs font-bold text-emerald-500">Flare Tower a 60°</p>
+                          <p className="text-sm">
+                            Base horizontal 50m → Altura = 50 × tan60° = 50√3 ≈{" "}
+                            <strong>86,6m</strong>
+                          </p>
+                        </div>
                       </div>
+                      <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
+                        A banca frequentemente confunde <strong>sen 30° = 1/2</strong>{" "}
+                        com <strong>sen 60° = √3/2</strong>. Lembre: para ângulos
+                        complementares, seno e cosseno se trocam:{" "}
+                        <strong>sen 30° = cos 60°</strong> e{" "}
+                        <strong>sen 60° = cos 30°</strong>. Se confundir, você
+                        erra e vai para a resposta armadilha da banca.
+                      </AlertBox>
                     </div>
                   ),
                 },

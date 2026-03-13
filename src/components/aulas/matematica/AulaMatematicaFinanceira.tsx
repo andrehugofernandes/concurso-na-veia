@@ -11,21 +11,7 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
-  LessonTabs,
-  FlipCard,
-  ModuleSummaryCarouselNew,
 } from "../shared";
-import { 
-  LuTrendingUp, 
-  LuTrendingDown, 
-  LuDollarSign, 
-  LuPercent, 
-  LuCalendar, 
-  LuCalculator, 
-  LuBookOpen, 
-  LuTarget, 
-  LuLightbulb 
-} from "react-icons/lu";
 import {
   QUIZ_M1_JUROS_SIMPLES,
   QUIZ_M2_MONTANTE_SIMPLES,
@@ -164,58 +150,22 @@ export default function AulaMatematicaFinanceira({
                       <p>
                         Em juros simples, os juros incidem <strong>sempre sobre o capital inicial (C)</strong>, independentemente do tempo. O montante cresce de forma <strong>linear</strong>.
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                        <FlipCard
-                          frente={
-                            <div className="flex flex-col items-center justify-center p-4">
-                              <LuTrendingUp className="w-8 h-8 text-blue-500 mb-2" />
-                              <span className="text-xl font-bold">J = Cit</span>
-                              <span className="text-[10px] text-muted-foreground uppercase mt-1">Gire para ver</span>
-                            </div>
-                          }
-                          verso={
-                            <div className="flex flex-col items-center justify-center p-4 text-center">
-                              <p className="text-xs font-semibold text-blue-500 mb-1">Juros Simples</p>
-                              <p className="text-[10px] text-muted-foreground leading-tight">
-                                J: Juros<br/>C: Capital<br/>i: Taxa (%)<br/>t: Tempo
-                              </p>
-                            </div>
-                          }
-                        />
-                        <FlipCard
-                          frente={
-                            <div className="flex flex-col items-center justify-center p-4">
-                              <LuDollarSign className="w-8 h-8 text-emerald-500 mb-2" />
-                              <span className="text-xl font-bold">M = C + J</span>
-                              <span className="text-[10px] text-muted-foreground uppercase mt-1">Fórmula do Montante</span>
-                            </div>
-                          }
-                          verso={
-                            <div className="flex flex-col items-center justify-center p-4 text-center">
-                              <p className="text-xs font-semibold text-emerald-500 mb-1">Montante Final</p>
-                              <p className="text-[10px] text-muted-foreground leading-tight">
-                                O total acumulado após o período de juros.
-                              </p>
-                            </div>
-                          }
-                        />
-                        <FlipCard
-                          frente={
-                            <div className="flex flex-col items-center justify-center p-4">
-                              <LuCalculator className="w-8 h-8 text-cyan-500 mb-2" />
-                              <span className="text-xl font-bold">M = C(1+it)</span>
-                              <span className="text-[10px] text-muted-foreground uppercase mt-1">Forma Direta</span>
-                            </div>
-                          }
-                          verso={
-                            <div className="flex flex-col items-center justify-center p-4 text-center">
-                              <p className="text-xs font-semibold text-cyan-500 mb-1">Cálculo Direto</p>
-                              <p className="text-[10px] text-muted-foreground leading-tight">
-                                Útil quando o problema pede o montante sem calcular os juros separadamente.
-                              </p>
-                            </div>
-                          }
-                        />
+                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
+                        <p className="text-sm font-mono text-center font-bold">J = C · i · t</p>
+                        <div className="grid grid-cols-3 gap-2 text-xs text-center mt-2">
+                          <div className="bg-blue-500/10 rounded p-2">
+                            <p className="font-bold text-blue-400">C</p>
+                            <p>Capital inicial</p>
+                          </div>
+                          <div className="bg-cyan-500/10 rounded p-2">
+                            <p className="font-bold text-cyan-400">i</p>
+                            <p>Taxa por período</p>
+                          </div>
+                          <div className="bg-emerald-500/10 rounded p-2">
+                            <p className="font-bold text-emerald-400">t</p>
+                            <p>Número de períodos</p>
+                          </div>
+                        </div>
                       </div>
                       <AlertBox tipo="info" titulo="Contextualização Petrobras">
                         A Petrobras aplicou R$ 1.000.000 a 2% ao mês por 6 meses em juros simples. Os juros gerados: J = 1.000.000 × 0,02 × 6 = <strong>R$ 120.000</strong>. O montante final = R$ 1.120.000.
@@ -420,39 +370,6 @@ export default function AulaMatematicaFinanceira({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={2}
-              title="Resumo Tático: Montante Simples"
-              description="Visão rápida para tomada de decisão."
-              variant="cyan"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo-m-simples",
-                  label: "Fluxo de Caixa",
-                  icon: LuLightbulb,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "M = C(1+it)",
-                          type: "Fórmula",
-                          placeholderColor: "bg-cyan-100 dark:bg-cyan-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Ilustração técnica de um fluxograma financeiro mostrando a entrada do Capital e a saída do Montante com juros acumulados linearmente.
-                        },
-                      ]}
-                      moduloNome="Módulo 2"
-                      tituloAula="Matemática Financeira"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </section>
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
               title="Relações Inversas: Desconto Simples"
               description="Calcular o Valor Presente (PV) a partir do Valor Futuro (FV) em juros simples."
               variant="emerald"
@@ -538,33 +455,22 @@ export default function AulaMatematicaFinanceira({
                       <p>
                         O fator <strong>(1+i)^t</strong> é a chave dos juros compostos. Em provas, ele geralmente é fornecido ou calculável com dados simples.
                       </p>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                        {[
-                          { n: "(1,01)^2", v: "1,0201", desc: "1% p/ 2 meses" },
-                          { n: "(1,02)^2", v: "1,0404", desc: "2% p/ 2 meses" },
-                          { n: "(1,05)^2", v: "1,1025", desc: "5% p/ 2 meses" },
-                          { n: "(1,10)^2", v: "1,2100", desc: "10% p/ 2 meses" },
-                          { n: "(1,01)^3", v: "1,0303", desc: "1% p/ 3 meses" },
-                          { n: "(1,02)^3", v: "1,0612", desc: "2% p/ 3 meses" },
-                          { n: "(1,05)^3", v: "1,1576", desc: "5% p/ 3 meses" },
-                          { n: "(1,10)^3", v: "1,3310", desc: "10% p/ 3 meses" },
-                        ].map((item) => (
-                          <FlipCard
-                            key={item.n}
-                            frente={
-                              <div className="flex flex-col items-center justify-center p-2 text-center">
-                                <span className="text-lg font-bold text-indigo-500">{item.n}</span>
-                                <span className="text-[10px] text-muted-foreground mt-1 uppercase">Fator</span>
-                              </div>
-                            }
-                            verso={
-                              <div className="flex flex-col items-center justify-center p-2 text-center text-emerald-500">
-                                <span className="text-md font-mono font-bold">{item.v}</span>
-                                <span className="text-[10px] text-muted-foreground mt-1 leading-tight">{item.desc}</span>
-                              </div>
-                            }
-                          />
-                        ))}
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-center">
+                          <p className="text-xs font-bold text-emerald-400">(1,02)^3</p>
+                          <p className="text-lg font-bold">1,0612</p>
+                          <p className="text-xs text-muted-foreground">2% a.m. por 3 meses</p>
+                        </div>
+                        <div className="p-3 bg-blue-500/5 rounded-xl border border-blue-500/20 text-center">
+                          <p className="text-xs font-bold text-blue-400">(1,01)^12</p>
+                          <p className="text-lg font-bold">1,1268</p>
+                          <p className="text-xs text-muted-foreground">1% a.m. por 12 meses</p>
+                        </div>
+                        <div className="p-3 bg-cyan-500/5 rounded-xl border border-cyan-500/20 text-center">
+                          <p className="text-xs font-bold text-cyan-400">(1,10)^3</p>
+                          <p className="text-lg font-bold">1,331</p>
+                          <p className="text-xs text-muted-foreground">10% a.a. por 3 anos</p>
+                        </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Dica de Prova">
                         A CESGRANRIO sempre fornece os fatores necessários ou escolhe valores que resultam em números "limpos" (ex: (1,1)^2 = 1,21; (1,2)^2 = 1,44). Desconfie se seus cálculos gerarem números muito quebrados.
@@ -638,41 +544,9 @@ export default function AulaMatematicaFinanceira({
                   icone: "🔮",
                   conteudo: (
                     <div className="space-y-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                        <FlipCard
-                          frente={
-                            <div className="flex flex-col items-center justify-center p-4">
-                              <LuTrendingUp className="w-8 h-8 text-indigo-500 mb-2" />
-                              <span className="text-xl font-bold">M = C(1+i)^t</span>
-                              <span className="text-[10px] text-muted-foreground uppercase mt-1">Montante Composto</span>
-                            </div>
-                          }
-                          verso={
-                            <div className="flex flex-col items-center justify-center p-4 text-center">
-                              <p className="text-xs font-semibold text-indigo-500 mb-1">Crescimento Exponencial</p>
-                              <p className="text-[10px] text-muted-foreground leading-tight">
-                                Os juros de cada período são incorporados ao capital para o cálculo do período seguinte.
-                              </p>
-                            </div>
-                          }
-                        />
-                        <FlipCard
-                          frente={
-                            <div className="flex flex-col items-center justify-center p-4">
-                              <LuTrendingDown className="w-8 h-8 text-rose-500 mb-2" />
-                              <span className="text-xl font-bold">C = M / (1+i)^t</span>
-                              <span className="text-[10px] text-muted-foreground uppercase mt-1">Valor Presente</span>
-                            </div>
-                          }
-                          verso={
-                            <div className="flex flex-col items-center justify-center p-4 text-center">
-                              <p className="text-xs font-semibold text-rose-500 mb-1">Descapitalização</p>
-                              <p className="text-[10px] text-muted-foreground leading-tight">
-                                Traz um valor futuro para a data zero, retirando o efeito dos juros.
-                              </p>
-                            </div>
-                          }
-                        />
+                      <p>Para calcular o montante, basta aplicar a fórmula com o fator fornecido:</p>
+                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
+                        <p className="text-sm font-mono font-bold text-center">M = C · (1+i)^t</p>
                       </div>
                       <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
                         <p className="text-xs font-bold text-cyan-400 mb-2">Exemplo CESGRANRIO</p>
@@ -843,45 +717,6 @@ export default function AulaMatematicaFinanceira({
             />
           </section>
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo Estratégico: Desconto"
-              description="Diferenças fundamentais entre comercial e racional."
-              variant="emerald"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "tab-desconto-1",
-                  label: "Comparativo",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Comercial (Por Fora)",
-                          type: "Esquema",
-                          placeholderColor: "bg-rose-100 dark:bg-rose-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Diagrama de desconto comercial: incide sobre o valor NOMINAL. Flecha indicando desconto sobre o valor de face do título.
-                        },
-                        {
-                          title: "Racional (Por Dentro)",
-                          type: "Esquema",
-                          placeholderColor: "bg-emerald-100 dark:bg-emerald-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Diagrama de desconto racional: incide sobre o valor ATUAL. Flecha indicando juros simples 'descontados' do valor presente.
-                        },
-                      ]}
-                      moduloNome="Módulo 5"
-                      tituloAula="Matemática Financeira"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </section>
-
           <section id="quiz-modulo-5" className="mt-16">
             <QuizInterativo
               questoes={quizM5}
@@ -976,39 +811,6 @@ export default function AulaMatematicaFinanceira({
                         <p className="text-sm font-mono font-bold">Pagamento único = 102.000 + 144.180 = R$ 246.180</p>
                       </div>
                     </div>
-                  ),
-                },
-              ]}
-            />
-          </section>
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo Estratégico: Equivalência"
-              description="Data Focal e Transporte de Valores."
-              variant="blue"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "tab-equiv-1",
-                  label: "Data Focal",
-                  icon: LuCalendar,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Transporte no Tempo",
-                          type: "Esquema",
-                          placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Esquema mostrando uma linha do tempo com capitais sendo movidos para frente (capitalização) e para trás (desconto) até uma data focal centralizada.
-                        },
-                      ]}
-                      moduloNome="Módulo 6"
-                      tituloAula="Matemática Financeira"
-                      materia="Matemática"
-                    />
                   ),
                 },
               ]}
@@ -1138,39 +940,6 @@ export default function AulaMatematicaFinanceira({
             />
           </section>
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo Tático: Taxas"
-              description="Nominal, Efetiva e Equivalente."
-              variant="emerald"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "tab-taxas-1",
-                  label: "O Funil de Taxas",
-                  icon: LuPercent,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Nominal -> Efetiva",
-                          type: "Relação",
-                          placeholderColor: "bg-emerald-100 dark:bg-emerald-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Infográfico mostrando o processo de conversão: Taxa Nominal (divisão simples) -> Taxa Efetiva do Período -> Taxa Efetiva Acumulada (Equivalência).
-                        },
-                      ]}
-                      moduloNome="Módulo 7"
-                      tituloAula="Matemática Financeira"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </section>
-
           <section id="quiz-modulo-7" className="mt-16">
             <QuizInterativo
               questoes={quizM7}
@@ -1274,57 +1043,6 @@ export default function AulaMatematicaFinanceira({
             />
           </section>
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
-              title="Price vs. SAC: Comparação Visual"
-              description="A diferença que cai em todas as provas de alto nível."
-              variant="blue"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center justify-center p-6 text-center h-full">
-                    <LuCalculator className="w-12 h-12 text-blue-500 mb-4" />
-                    <h4 className="text-xl font-bold">Sistema PRICE</h4>
-                    <p className="text-sm text-muted-foreground mt-2">Parcelas (PMT) Constantes</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col justify-center p-6 h-full space-y-2">
-                    <p className="text-sm font-bold text-blue-500">Características:</p>
-                    <ul className="text-xs space-y-1 list-disc list-inside text-muted-foreground">
-                      <li>Parcelas iguais do início ao fim.</li>
-                      <li>Amortização cresce no tempo.</li>
-                      <li>Juros decrescem no tempo.</li>
-                      <li>Saldo devedor cai mais devagar no início.</li>
-                    </ul>
-                  </div>
-                }
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center justify-center p-6 text-center h-full">
-                    <LuTrendingDown className="w-12 h-12 text-emerald-500 mb-4" />
-                    <h4 className="text-xl font-bold">Sistema SAC</h4>
-                    <p className="text-sm text-muted-foreground mt-2">Parcelas Decrescentes</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col justify-center p-6 h-full space-y-2">
-                    <p className="text-sm font-bold text-emerald-500">Características:</p>
-                    <ul className="text-xs space-y-1 list-disc list-inside text-muted-foreground">
-                      <li>Parcelas caem em cada período.</li>
-                      <li>Amortização CONSTANTE (PV/n).</li>
-                      <li>Juros caem linearmente.</li>
-                      <li>Custo total de juros é menor que o Price.</li>
-                    </ul>
-                  </div>
-                }
-              />
-            </div>
-          </section>
-
           <section id="quiz-modulo-8" className="mt-16">
             <QuizInterativo
               questoes={quizM8}
@@ -1425,34 +1143,6 @@ export default function AulaMatematicaFinanceira({
             />
           </section>
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo Visual: Casos Petrobras"
-              description="Onde o dinheiro circula na indústria."
-              variant="cyan"
-            />
-            <ModuleSummaryCarouselNew
-              images={[
-                {
-                  title: "Investimento Offshore",
-                  type: "Cenário",
-                  placeholderColor: "bg-cyan-100 dark:bg-cyan-900/30",
-                  imageUrl: "/temp-img.png", // PROMPT: Ilustração de uma plataforma de petróleo com fluxos de caixa de investimento e retorno. Legenda "Investimento e Amortização de Longo Prazo".
-                },
-                {
-                  title: "Cadeia de Fornecedores",
-                  type: "Cenário",
-                  placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
-                  imageUrl: "/temp-img.png", // PROMPT: Diagrama mostrando a antecipação de recebíveis e descontos comerciais entre empresas e bancos.
-                },
-              ]}
-              moduloNome="Módulo 9"
-              tituloAula="Matemática Financeira"
-              materia="Matemática"
-            />
-          </section>
-
           <section id="quiz-modulo-9" className="mt-16">
             <QuizInterativo
               questoes={quizM9}
@@ -1477,40 +1167,6 @@ export default function AulaMatematicaFinanceira({
           gradiente="bg-gradient-to-br from-blue-700 via-indigo-700 to-blue-900"
         />
         <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={1}
-              title="Resumo Geral da Disciplina"
-              description="Os pilares da Matemática Financeira."
-              variant="blue"
-              className="mb-6"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "tab-simulado-1",
-                  label: "Mapa Mental",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Árvore de Decisão",
-                          type: "Esquema",
-                          placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Mapa mental completo de Matemática Financeira: do Capital inicial ao Montante, passando por Juros, Descontos, Taxas e Séries.
-                        },
-                      ]}
-                      moduloNome="Módulo 10"
-                      tituloAula="Matemática Financeira"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </section>
-          {/* O div do banner já envolve tudo abaixo */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}

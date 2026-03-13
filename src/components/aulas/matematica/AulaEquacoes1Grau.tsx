@@ -14,7 +14,6 @@ import {
   ModuleSectionHeader,
   FlipCard,
   ModuleSummaryCarouselNew,
-  LessonTabs,
   FunctionGraph,
   type FunctionPlot,
 } from "../shared";
@@ -48,16 +47,16 @@ import {
 } from "./data/equacoes-1grau-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", titulo: "Fundamentos & Balança" },
-  { id: "modulo-2", label: "Módulo 2", titulo: "Tradução de Problemas" },
-  { id: "modulo-3", label: "Módulo 3", titulo: "Equações com Frações" },
-  { id: "modulo-4", label: "Módulo 4", titulo: "Sistemas Lineares" },
-  { id: "modulo-5", label: "Módulo 5", titulo: "Simulado Parcial (M1-M4)" },
-  { id: "modulo-6", label: "Módulo 6", titulo: "Inequações de 1º Grau" },
-  { id: "modulo-7", label: "Módulo 7", titulo: "Sistemas 3x3 & Avançado" },
-  { id: "modulo-8", label: "Módulo 8", titulo: "Resolução Reversa" },
-  { id: "modulo-9", label: "Módulo 9", titulo: "Aplicações Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Mestre" },
+  { id: "modulo-1", label: "Módulo 1", title: "Fundamentos & Balança" },
+  { id: "modulo-2", label: "Módulo 2", title: "Tradução de Problemas" },
+  { id: "modulo-3", label: "Módulo 3", title: "Equações com Frações" },
+  { id: "modulo-4", label: "Módulo 4", title: "Sistemas Lineares" },
+  { id: "modulo-5", label: "Módulo 5", title: "Simulado Parcial (M1-M4)" },
+  { id: "modulo-6", label: "Módulo 6", title: "Inequações de 1º Grau" },
+  { id: "modulo-7", label: "Módulo 7", title: "Sistemas 3x3 & Avançado" },
+  { id: "modulo-8", label: "Módulo 8", title: "Resolução Reversa" },
+  { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
 export default function AulaEquacoes1Grau({
@@ -422,36 +421,20 @@ export default function AulaEquacoes1Grau({
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
 
-          <div className="space-y-8 bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo e Fixação"
-              variant="blue"
-              className="mb-6"
-            />
-            <LessonTabs
-              tabs={[
+          <div className="space-y-8 bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+            <h3 className="text-2xl font-bold">Resumo Visual</h3>
+            <ModuleSummaryCarouselNew
+              images={[
                 {
-                  id: "resumo",
-                  label: "Resumo Gráfico",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Operações Inversas - Mapa Mental",
-                          type: "Diagrama",
-                          placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Mapa mental em estilo dark premium mostrando as 4 operações básicas (+, -, ×, ÷) com setas bidirecionais indicando inversão. Centro: "Operação Inversa". Cores Petrobras (azul/verde/ciano). Estilo técnico industrial.
-                        },
-                      ]}
-                      moduloNome="Módulo 1"
-                      tituloAula="Equações de 1º Grau"
-                      materia="Matemática"
-                    />
-                  ),
+                  title: "Operações Inversas - Mapa Mental",
+                  type: "Diagrama",
+                  placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
+                  imageUrl: "/temp-img.png", // PROMPT: Mapa mental em estilo dark premium mostrando as 4 operações básicas (+, -, ×, ÷) com setas bidirecionais indicando inversão. Centro: "Operação Inversa". Cores Petrobras (azul/verde/ciano). Estilo técnico industrial.
                 },
               ]}
+              moduloNome="Módulo 1"
+              tituloAula="Equações de 1º Grau"
+              materia="Matemática"
             />
           </div>
         </div>
@@ -713,41 +696,6 @@ export default function AulaEquacoes1Grau({
             points={250}
           />
 
-          <div className="space-y-8 bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm">
-            <ModuleSectionHeader
-              index={3}
-              title="Resumo do Módulo 2"
-              variant="emerald"
-              className="mb-6"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo2",
-                  label: "Dicionário de Tradução",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Português → Matemática",
-                          type: "Tabela",
-                          placeholderColor: "bg-emerald-100 dark:bg-emerald-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Tabela técnica estilo industrial Petrobras: Coluna Esquerda "Expressões em Português" (Metade, Dobro, Diferença, etc). Coluna Direita "Matemática" (x/2, 2x, -). Fundo dark, tipografia moderna serifada.
-                        },
-                      ]}
-                      moduloNome="Módulo 2"
-                      tituloAula="Equações de 1º Grau"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </div>
-
-
-
           <QuizInterativo
             questoes={quizM2}
             titulo="Fixação - Módulo 2"
@@ -920,39 +868,6 @@ export default function AulaEquacoes1Grau({
             </div>
           </section>
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={3.1}
-              title="Resumo: O Fim das Frações"
-              description="A técnica definitiva para limpar a equação."
-              variant="amber"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo3",
-                  label: "Método do MMC",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Sumindo com as Frações",
-                          type: "Acesso",
-                          placeholderColor: "bg-amber-100 dark:bg-amber-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Diagrama dark premium mostrando uma equação com frações sendo multiplicada por um grande número (MMC) e transformando-se em uma equação linear simples. Estilo visual de "antes e depois" futurista. Cores âmbar e laranja.
-                        },
-                      ]}
-                      moduloNome="Módulo 3"
-                      tituloAula="Equações de 1º Grau"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </section>
-
           <QuizInterativo
             questoes={quizM3}
             titulo="Fixação - Módulo 3"
@@ -1110,39 +1025,6 @@ export default function AulaEquacoes1Grau({
             />
           </section>
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo de Sistemas"
-              description="Escolha sua arma: Adição ou Substituição."
-              variant="cyan"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo4",
-                  label: "Métodos de Resolução",
-                  icon: LuZap,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Adição vs Substituição",
-                          type: "Esquema",
-                          placeholderColor: "bg-cyan-100 dark:bg-cyan-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Comparativo visual dark premium. Lado A: Método da Adição (limpo, somando colunas). Lado B: Método da Substituição (seta de uma equação para outra). Quando usar cada um? Destaque para "Adição é mais rápido". Estilo engenharia Petrobras.
-                        },
-                      ]}
-                      moduloNome="Módulo 4"
-                      tituloAula="Equações de 1º Grau"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </section>
-
           <QuizInterativo
             questoes={quizM4}
             titulo="Fixação - Módulo 4"
@@ -1204,39 +1086,6 @@ export default function AulaEquacoes1Grau({
             yMax={8}
             points={250}
           />
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={5.1}
-              title="Acelerador Progressivo"
-              description="Resumo Visual M1-M4."
-              variant="indigo"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo5",
-                  label: "Grandes Temas",
-                  icon: LuTrophy,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Das Equações aos Sistemas",
-                          type: "Resumo",
-                          placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Composição visual dark premium sintetizando: 1) Balança de Equação, 2) Tradução de Problemas, 3) MMC com frações, 4) Interseção de retas (Sistemas). Estilo dashboard Executivo Petrobras.
-                        },
-                      ]}
-                      moduloNome="Módulo 5"
-                      tituloAula="Equações de 1º Grau"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </section>
 
           <QuizInterativo
             questoes={quizM5}
@@ -1408,39 +1257,6 @@ export default function AulaEquacoes1Grau({
             </div>
           </section>
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={6.1}
-              title="Resumo: O Sentido das Desigualdades"
-              description="Intervalos e inversões de sinal."
-              variant="rose"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo6",
-                  label: "Regras de Inequação",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Inversão de Sinal",
-                          type: "Acesso",
-                          placeholderColor: "bg-rose-100 dark:bg-rose-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Composição dark premium. Destaque em neon rose: "-x > 5 vira x < -5". Ícones de alerta e setas de inversão. Estilo visual de sinalização industrial de segurança.
-                        },
-                      ]}
-                      moduloNome="Módulo 6"
-                      tituloAula="Equações de 1º Grau"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </section>
-
           <QuizInterativo
             questoes={quizM6}
             titulo="Fixação - Módulo 6"
@@ -1574,39 +1390,6 @@ export default function AulaEquacoes1Grau({
                         planos são paralelos.
                       </p>
                     </AlertBox>
-                  ),
-                },
-              ]}
-            />
-          </section>
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo: Sistemas 3x3"
-              description="A arte de desmontar o sistema."
-              variant="violet"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo7",
-                  label: "Fluxo de Eliminação",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Escalonamento Simples",
-                          type: "Processo",
-                          placeholderColor: "bg-violet-100 dark:bg-violet-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Diagrama de fluxo dark premium mostrando a redução de um sistema 3x3 para 2x2 e depois para 1x1. Setas indicando a direção da resolução. Cores violeta e indigo. Estilo técnico Petrobras.
-                        },
-                      ]}
-                      moduloNome="Módulo 7"
-                      tituloAula="Equações de 1º Grau"
-                      materia="Matemática"
-                    />
                   ),
                 },
               ]}
@@ -1804,211 +1587,365 @@ export default function AulaEquacoes1Grau({
               />
             </div>
           </section>
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-              <ModuleSectionHeader
-                index={8.1}
-                title="Consolidação: A Prova Real"
-                description="O seguro morre de velho."
-                variant="emerald"
-              />
-              <LessonTabs
-                tabs={[
-                  {
-                    id: "resumo8",
-                    label: "Técnica da Substituição",
-                    icon: LuBookOpen,
-                    content: (
-                      <ModuleSummaryCarouselNew
-                        images={[
-                          {
-                            title: "A Luz Verde da Aprovação",
-                            type: "Esquema",
-                            placeholderColor: "bg-emerald-100 dark:bg-emerald-900/30",
-                            imageUrl: "/temp-img.png", // PROMPT: Ilustração dark premium de um técnico Petrobras verificando um painel. O painel mostra uma equação x=4 e um sinal de check verde. Mensagem: "Verificado: Lado A = Lado B". Estilo industrial limpo.
-                          },
-                        ]}
-                        moduloNome="Módulo 8"
-                        tituloAula="Equações de 1º Grau"
-                        materia="Matemática"
-                      />
-                    ),
-                  },
-                ]}
-              />
-            </section>
 
-            <QuizInterativo
-              questoes={quizM8}
-              titulo="Fixação - Módulo 8"
-              numero={8}
-              variant="cyan"
-              icone="🎯"
-              onComplete={(score) => handleModuleComplete("modulo-8", score)}
-            />
-          </div>
-        </TabsContent>
+          <QuizInterativo
+            questoes={quizM8}
+            titulo="Fixação - Módulo 8"
+            numero={8}
+            variant="cyan"
+            icone="🎯"
+            onComplete={(score) => handleModuleComplete("modulo-8", score)}
+          />
+        </div>
+      </TabsContent>
 
-        {/* ═══ MÓDULO 9 ═══ */}
-        <TabsContent value="modulo-9" className="space-y-[50px]">
-          <div className="space-y-12 animate-in fade-in duration-500">
-            <ModuleBanner
-              numero={9}
-              titulo="Aplicações Petrobras"
-              descricao="Onde as equações vivem: refinarias, logística e planejamento."
-              gradiente="bg-gradient-to-br from-orange-600 to-red-700"
-            />
+      {/* ═══ MÓDULO 9 ═══ */}
+      <TabsContent value="modulo-9" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={9}
+            titulo="Aplicações Petrobras & Contextos Reais"
+            descricao="Onde as equações vivem: RNEST, RPBC, caldeiras, licitações, folha de pagamento."
+            gradiente="bg-gradient-to-br from-orange-600 to-red-700"
+          />
 
-            <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={9}
-                title="Problemas Contextualizados"
-                description="A CESGRANRIO adora disfarçar equações em situações reais."
-                variant="amber"
-              />
-
-              <ContentAccordion
-                slides={[
-                  {
-                    titulo: "Conceituação: Cenários de Prova",
-                    icone: <LuBookOpen />,
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-muted-foreground">
-                          A banca raramente pede para resolver uma equação seca. Ela descreve situações onde você precisa extrair os dados e montar a igualdade.
-                        </p>
-                        <AlertBox tipo="info" titulo="Estratégia de Leitura">
-                          Identifique o total (o que fica após o sinal de =) e as partes dependentes (geralmente x, 2x, x+10).
-                        </AlertBox>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Exemplificação: Casos de Campo",
-                    icone: <LuPlay />,
-                    conteudo: (
-                      <div className="space-y-4">
-                        <div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20 text-sm">
-                          <p className="font-bold mb-2">Caso 1: Eficiência Térmica</p>
-                          <p className="text-muted-foreground italic">"Uma caldeira libera x kJ/s. Outra o triplo menos 10. Total 90."</p>
-                          <p className="font-mono mt-2 text-amber-600">x + (3x - 10) = 90 → 4x = 100 → x = 25</p>
-                        </div>
-                        <div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20 text-sm">
-                          <p className="font-bold mb-2">Caso 2: Meta de Produção</p>
-                          <p className="text-muted-foreground italic">"Unidade A produz x. Unidade B produz 500 a mais. Juntas 3000."</p>
-                          <p className="font-mono mt-2 text-amber-600">x + (x + 500) = 3000 → 2x = 2500 → x = 1250</p>
-                        </div>
-                      </div>
-                    ),
-                  },
-                ]}
-              />
-            </section>
-
-            <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-              <ModuleSectionHeader
-                index={9.1}
-                title="Resumo Visual: Petrobras"
-                variant="amber"
-              />
-              <LessonTabs
-                tabs={[
-                  {
-                    id: "resumo9",
-                    label: "Cenários de Campo",
-                    icon: LuBookOpen,
-                    content: (
-                      <ModuleSummaryCarouselNew
-                        images={[
-                          {
-                            title: "Equações na Indústria",
-                            type: "Acesso",
-                            placeholderColor: "bg-amber-100 dark:bg-amber-900/30",
-                            imageUrl: "/temp-img.png", // PROMPT: Composição dark premium. Técnico Petrobras com tablet analisando fluxo em tubulações. Equações de 1º grau sobrepostas em neon ciano. Estilo industrial moderno.
-                          },
-                        ]}
-                        moduloNome="Módulo 9"
-                        tituloAula="Equações de 1º Grau"
-                        materia="Matemática"
-                      />
-                    ),
-                  },
-                ]}
-              />
-            </section>
-
-            <QuizInterativo
-              questoes={quizM9}
-              titulo="Fixação — Módulo 9"
-              numero={9}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={9}
+              title="Problemas Contextualizados Petrobras"
+              description="A CESGRANRIO adora disfarçar equações em situações reais da empresa."
               variant="amber"
-              icone="🎯"
-              onComplete={(score) => handleModuleComplete("modulo-9", score)}
-            />
-          </div>
-        </TabsContent>
-
-        {/* ═══ MÓDULO 10 ═══ */}
-        <TabsContent value="modulo-10" className="space-y-[50px]">
-          <div className="space-y-12 animate-in fade-in duration-500">
-            <ModuleBanner
-              numero={10}
-              titulo="Simulado Mestre"
-              descricao="Desafio final unindo todos os conceitos."
-              gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
             />
 
-            {showCompletionBadge ? (
-              <div className="flex flex-col items-center gap-6 py-10 mt-10">
-                <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
-                  <LuTrophy className="w-12 h-12 text-emerald-500" />
-                </div>
-                <h3 className="text-2xl font-black">Mestre das Equações!</h3>
-                <p className="text-center text-muted-foreground max-w-sm">
-                  Você dominou equações de 1º grau e está pronto para os próximos desafios.
-                </p>
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Conceituação: Problemas Contextualizados",
+                  icone: <LuBookOpen />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground">
+                        A Petrobras não pergunta "Resolva 3x + 5 = 20". Ela diz
+                        <strong>
+                          {" "}
+                          "Uma plataforma produz x barris. Outra produz o dobro.
+                          Juntas fazem 9.000. Quantos cada uma faz?"
+                        </strong>
+                        . O contexto esconde a equação.
+                      </p>
+                      <AlertBox tipo="info" titulo="Realidade Cesgranrio">
+                        <p className="text-sm">
+                          80% das questões de equações NO CONCURSO REAL vêm
+                          assim: disfarçadas em situações do dia a dia da
+                          empresa.
+                        </p>
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exemplificação: Casos Reais",
+                  icone: <LuPlay />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="bg-orange-500/10 p-4 rounded-xl border border-orange-500/20">
+                        <p className="font-bold text-orange-700 mb-2">
+                          Caso 1: Horas de Trabalho (RNEST - Recife)
+                        </p>
+                        <p className="text-sm mb-2">
+                          Um técnico trabalhou x horas em manutenção (R$ 50/h) e
+                          (x+4) horas em inspeção (R$ 60/h). Ganhou R$ 700 no
+                          total. Quantas horas de manutenção?
+                        </p>
+                        <p className="font-mono text-xs">
+                          50x + 60(x+4) = 700 → 50x + 60x + 240 = 700 → 110x =
+                          460 → x ≈ 4,18h
+                        </p>
+                      </div>
+
+                      <div className="bg-red-500/10 p-4 rounded-xl border border-red-500/20">
+                        <p className="font-bold text-red-700 mb-2">
+                          Caso 2: Produção de Barrís (RPBC - Paulínia)
+                        </p>
+                        <p className="text-sm mb-2">
+                          Plataforma A produz 2.500 b/dia. Plataforma B produz
+                          1.5x essa quantidade. Juntas devem produzir 18.000
+                          barris. Qual deve ser o fator multiplicador x?
+                        </p>
+                        <p className="font-mono text-xs">
+                          2500x + 1.5(2500x) = 18000 → 4000x = 18000 → x = 4,5
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Dicas: Interpretação do Contexto",
+                  icone: <LuLightbulb />,
+                  conteudo: (
+                    <div className="space-y-3 text-sm">
+                      <div className="bg-orange-500/10 p-3 rounded border-l-4 border-orange-500">
+                        <p className="font-bold text-orange-700">
+                          1️⃣ Destaque as VARIÁVEIS
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          "x horas", "y barris", "z salários". Sublinha tudo.
+                        </p>
+                      </div>
+                      <div className="bg-red-500/10 p-3 rounded border-l-4 border-red-500">
+                        <p className="font-bold text-red-700">
+                          2️⃣ Encontre as RELACIONS
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          "o dobro", "3 vezes menor", "somando todos".
+                        </p>
+                      </div>
+                      <div className="bg-orange-500/10 p-3 rounded border-l-4 border-orange-500">
+                        <p className="font-bold text-orange-700">
+                          3️⃣ Procure o RESULTADO FINAL
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          "Ficou em", "Totalizou", "Somam". Ali fica o "=".
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exceções: Unidades e Escalas",
+                  icone: <LuTriangleAlert />,
+                  conteudo: (
+                    <AlertBox tipo="warning" titulo="Atenção com Unidades">
+                      <p className="text-sm mb-2">
+                        <strong>Horas e minutos:</strong> Converta para mesma
+                        unidade. 1h30min = 1,5h ou 90 minutos.
+                      </p>
+                      <p className="text-sm mb-2">
+                        <strong>Escalas de produção:</strong> 1.000 barris =
+                        1000, não 1k (a menos que o enunciado defina).
+                      </p>
+                      <p className="text-sm">
+                        <strong>Taxas:</strong> R$ 50/h é diferente de R$ 50
+                        total. Cuidado!
+                      </p>
+                    </AlertBox>
+                  ),
+                },
+              ]}
+            />
+
+            <CardCarousel
+              titulo="Casos Petrobras Clássicos"
+              cards={[
+                {
+                  titulo: "Distribuição Proporcional",
+                  descricao: (
+                    <div className="space-y-2 text-sm">
+                      <p>
+                        Orçamento de R$ 50.000 dividido entre 3 unidades em
+                        proporção 1:2:2. Quanto cada uma recebe?
+                      </p>
+                      <p className="font-mono text-xs">
+                        1x + 2x + 2x = 50000 → x = 12500
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Análise de Folha de Pagamento",
+                  descricao: (
+                    <div className="space-y-2 text-sm">
+                      <p>
+                        Técnico ganha S. Com desconto INSS de 10%, fica com R$
+                        3.600. Qual era o salário bruto?
+                      </p>
+                      <p className="font-mono text-xs">
+                        0.90S = 3600 → S = 4000
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Licitação com Descontos",
+                  descricao: (
+                    <div className="space-y-2 text-sm">
+                      <p>
+                        Fornecedor A oferece 15% de desconto. Fornecedor B
+                        oferece R$ 10.000 a menos. Se igual, qual o preço
+                        original?
+                      </p>
+                      <p className="font-mono text-xs">
+                        0.85P = P - 10000 → 0.15P = 10000 → P = 66666,67
+                      </p>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <FunctionGraph
+            title="Modelagem Linear: Funções Afim em Negócios"
+            functions={[
+              {
+                id: "func1",
+                label: "50 + 10x",
+                color: "#3b82f6",
+                fn: (x) => 50 + 10 * x,
+                strokeWidth: 2,
+              },
+              {
+                id: "func2",
+                label: "100 + 5x",
+                color: "#ef4444",
+                fn: (x) => 100 + 5 * x,
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={0}
+            xMax={10}
+            yMin={40}
+            yMax={200}
+            points={250}
+          />
+
+          <QuizInterativo
+            questoes={quizM9}
+            titulo="Fixação - Módulo 9"
+            numero={9}
+            variant="amber"
+            icone="🎯"
+            onComplete={(score) => handleModuleComplete("modulo-9", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 10 ═══ */}
+      <TabsContent value="modulo-10" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={10}
+            titulo="Simulado Mestre — Elite Masterclass"
+            descricao="Reúna TUDO: balança, sistemas, inequações, contextos. 90+ = domínio total."
+            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+          />
+
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
               </div>
-            ) : (
-              <section id="quiz-modulo-10">
-                <QuizInterativo
-                  questoes={quizFinal}
-                  titulo="Simulado Elite"
-                  numero={10}
+              <h3 className="text-2xl font-black">Mestre das Equações!</h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                Você dominou equações de 1º grau: balança, frações, sistemas,
+                inequações, contextos Petrobras. Está pronto para Equações de 2º
+                Grau, Funções e além.
+              </p>
+              <div className="flex gap-2 text-sm text-muted-foreground">
+                <LuGraduationCap className="w-4 h-4" />
+                <span>Próximo: Equações de 2º Grau</span>
+              </div>
+            </div>
+          ) : (
+            <section id="quiz-modulo-10" className="mt-8">
+              <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-8">
+                <ModuleSectionHeader
+                  index={10}
+                  title="Avaliação Final Compreensiva"
+                  description="Este simulado cobre TODOS os tópicos: M1 até M9. Mínimo 75% para aprovação."
                   variant="slate"
-                  icone="🏆"
-                  onComplete={(score) => handleModuleComplete("modulo-10", score)}
                 />
-              </section>
-            )}
 
-            <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-              <ModuleSectionHeader index={10.1} title="Checklist Final" variant="slate" />
-              <LessonTabs
-                tabs={[
-                  {
-                    id: "resumo10",
-                    label: "Mapa Mental Master",
-                    icon: LuBookOpen,
-                    content: (
-                      <ModuleSummaryCarouselNew
-                        images={[
-                          {
-                            title: "A Jornada das Equações",
-                            type: "Infográfico",
-                            placeholderColor: "bg-slate-100 dark:bg-slate-900/30",
-                            imageUrl: "/temp-img.png", // PROMPT: Infográfico estilo dark premium mostrando a progressão: Balança -> Tradução -> Frações -> Sistemas -> Inequações. Visual técnico Petrobras.
-                          },
-                        ]}
-                        moduloNome="Simulado Final"
-                        tituloAula="Equações de 1º Grau"
-                        materia="Matemática"
-                      />
-                    ),
-                  },
-                ]}
+                <AlertBox tipo="warning" titulo="Instruções Importantes">
+                  <ul className="text-sm space-y-1 list-disc list-inside">
+                    <li>
+                      Tempo estimado: 45 minutos para 8 questões diversas.
+                    </li>
+                    <li>Você pode revisar cada resposta antes de enviar.</li>
+                    <li>Ao atingir 75%+, você completa a aula. Parabéns!</li>
+                    <li>
+                      Abaixo de 75%: estude os módulos anteriores novamente.
+                    </li>
+                  </ul>
+                </AlertBox>
+              </section>
+
+              <QuizInterativo
+                questoes={quizFinal}
+                titulo="Simulado Elite - Equações de 1º Grau"
+                icone="🏆"
+                numero={10}
+                variant="slate"
+                onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>
+          )}
+
+          <div className="space-y-8 bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+            <h3 className="text-2xl font-bold">Resumo Executivo</h3>
+            <div className="space-y-4">
+              <div className="bg-slate-500/10 p-6 rounded-2xl border border-slate-500/20">
+                <h4 className="font-bold mb-3">Os 10 Pilares Dominados</h4>
+                <ol className="space-y-2 text-sm list-decimal list-inside">
+                  <li>
+                    <strong>Princípio da Balança:</strong> Operação inversa é
+                    LEI.
+                  </li>
+                  <li>
+                    <strong>Tradução Português-Matemática:</strong> Dicionário
+                    de palavras-chave memorizado.
+                  </li>
+                  <li>
+                    <strong>Frações:</strong> MMC elimina tudo em um golpe.
+                  </li>
+                  <li>
+                    <strong>Sistemas 2x2:</strong> Adição e substituição
+                    dominadas.
+                  </li>
+                  <li>
+                    <strong>Checkpoint Parcial:</strong> Você já domina 50%
+                    completo.
+                  </li>
+                  <li>
+                    <strong>Inequações:</strong> Sinal inverte ao dividir por
+                    negativo.
+                  </li>
+                  <li>
+                    <strong>Sistemas 3x3:</strong> Eliminação progressiva
+                    dominada.
+                  </li>
+                  <li>
+                    <strong>Verificação:</strong> Substitua na original para
+                    garantir.
+                  </li>
+                  <li>
+                    <strong>Contextos Petrobras:</strong> Problema textual vira
+                    equação.
+                  </li>
+                  <li>
+                    <strong>Síntese Final:</strong> Você é MESTRE em equações de
+                    1º grau!
+                  </li>
+                </ol>
+              </div>
+
+              <ModuleSummaryCarouselNew
+                images={[
+                  {
+                    title: "Mapa Completo de Equações 1º Grau",
+                    type: "Infográfico",
+                    placeholderColor: "bg-slate-100 dark:bg-slate-900/30",
+                    imageUrl: "/temp-img.png", // PROMPT: Infográfico estilo dark premium mostrando os 10 módulos em sequência progressiva. Centro: "Equações de 1º Grau". Ramos periféricos para cada módulo com ícones temáticos (balança, sistema, inequação, etc). Cores Petrobras (azul/verde/ciano). Estilo técnico industrial.
+                  },
+                ]}
+                moduloNome="Módulo 10 - Síntese"
+                tituloAula="Equações de 1º Grau"
+                materia="Matemática"
+              />
+            </div>
           </div>
-        </TabsContent>
-      </AulaTemplate>
-    );
+        </div>
+      </TabsContent>
+    </AulaTemplate>
+  );
 }

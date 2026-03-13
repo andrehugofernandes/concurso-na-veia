@@ -47,16 +47,16 @@ import {
 } from "./data/coesao-coerencia-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "MÃ³dulo 1", title: "O Tecido do Texto" },
-  { id: "modulo-2", label: "MÃ³dulo 2", title: "O Poder do Retrovisor" },
-  { id: "modulo-3", label: "MÃ³dulo 3", title: "O Farol do Sentido" },
-  { id: "modulo-4", label: "MÃ³dulo 4", title: "O SilÃªncio Eloquente" },
-  { id: "modulo-5", label: "MÃ³dulo 5", title: "SubstituiÃ§Ãµes de Elite" },
-  { id: "modulo-6", label: "MÃ³dulo 6", title: "A DanÃ§a dos Conectivos" },
-  { id: "modulo-7", label: "MÃ³dulo 7", title: "ConcessÃ£o & OposiÃ§Ã£o" },
-  { id: "modulo-8", label: "MÃ³dulo 8", title: "Arquitetura da CoerÃªncia" },
-  { id: "modulo-9", label: "MÃ³dulo 9", title: "ProgressÃ£o e RelevÃ¢ncia" },
-  { id: "modulo-10", label: "MÃ³dulo 10", title: "Arena de Elite" },
+  { id: "modulo-1", label: "Módulo 1", title: "O Tecido do Texto" },
+  { id: "modulo-2", label: "Módulo 2", title: "O Poder do Retrovisor" },
+  { id: "modulo-3", label: "Módulo 3", title: "O Farol do Sentido" },
+  { id: "modulo-4", label: "Módulo 4", title: "O Silêncio Eloquente" },
+  { id: "modulo-5", label: "Módulo 5", title: "Substituições de Elite" },
+  { id: "modulo-6", label: "Módulo 6", title: "A Dança dos Conectivos" },
+  { id: "modulo-7", label: "Módulo 7", title: "Concessão & Oposição" },
+  { id: "modulo-8", label: "Módulo 8", title: "Arquitetura da Coerência" },
+  { id: "modulo-9", label: "Módulo 9", title: "Progressão e Relevância" },
+  { id: "modulo-10", label: "Módulo 10", title: "Arena de Elite" },
 ];
 
 export default function AulaCoesaoCoerencia({
@@ -81,7 +81,7 @@ export default function AulaCoesaoCoerencia({
   );
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
 
-  // Quizzes dinÃ¢micos (seleÃ§Ã£o aleatÃ³ria do pool)
+  // Quizzes dinâmicos (seleção aleatória do pool)
   const [quizM1, setQuizM1] = useState(QUIZ_M1_POOL);
   const [quizM2, setQuizM2] = useState(QUIZ_M2_POOL);
   const [quizM3, setQuizM3] = useState(QUIZ_M3_POOL);
@@ -186,17 +186,17 @@ export default function AulaCoesaoCoerencia({
       loading={loading}
       xpGanho={xpGanho}
     >
-      {/* ââ MÃDULO 1: O TECIDO DO TEXTO âââââââââââââââââââââââââ */}
+      {/* ── MÓDULO 1: O TECIDO DO TEXTO ───────────────────────── */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
         <ModuleBanner
           numero={1}
           titulo="O Tecido do Texto"
-          descricao="Entenda a diferenÃ§a fundamental entre CoesÃ£o (forma) e CoerÃªncia (sentido) no padrÃ£o CESGRANRIO."
+          descricao="Entenda a diferença fundamental entre Coesão (forma) e Coerência (sentido) no padrão CESGRANRIO."
           gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
         />
 
         <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-5 md:p-10 shadow-sm space-y-8">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Dualidade Textual"
@@ -205,45 +205,45 @@ export default function AulaCoesaoCoerencia({
             <ContentAccordion
               slides={[
                 {
-                  titulo: "ConceituaÃ§Ã£o",
+                  titulo: "Conceituação",
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        Imagine um tecido: a <strong>CoesÃ£o</strong> sÃ£o as
-                        fibras e o modo como elas se entrelaÃ§am (gramÃ¡tica). A{" "}
-                        <strong>CoerÃªncia</strong> Ã© o padrÃ£o, a cor e a
+                        Imagine um tecido: a <strong>Coesão</strong> são as
+                        fibras e o modo como elas se entrelaçam (gramática). A{" "}
+                        <strong>Coerência</strong> é o padrão, a cor e a
                         utilidade do tecido (sentido).
                       </p>
                       <AlertBox tipo="info" titulo="O que a prova cobra?">
-                        A banca quer saber se vocÃª identifica os{" "}
+                        A banca quer saber se você identifica os{" "}
                         <strong>mecanismos</strong> que amarram o texto ou se
-                        percebe quando o sentido foge Ã  lÃ³gica.
+                        percebe quando o sentido foge à lógica.
                       </AlertBox>
                     </div>
                   ),
                 },
                 {
-                  titulo: "DiferenÃ§a TÃ©cnica",
+                  titulo: "Diferença Técnica",
                   icone: <LuScale />,
                   conteudo: (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-5 bg-blue-500/5 border border-blue-500/20 rounded-xl">
                         <h4 className="font-bold text-blue-600 mb-2">
-                          CoesÃ£o (Capa/Forma)
+                          Coesão (Capa/Forma)
                         </h4>
                         <p className="text-sm">
-                          Uso de pronomes, conjunÃ§Ãµes, sinÃ´nimos e pontuaÃ§Ã£o
+                          Uso de pronomes, conjunções, sinônimos e pontuação
                           para ligar as frases.
                         </p>
                       </div>
                       <div className="p-5 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
                         <h4 className="font-bold text-emerald-600 mb-2">
-                          CoerÃªncia (Interior/Sentido)
+                          Coerência (Interior/Sentido)
                         </h4>
                         <p className="text-sm">
-                          Unidade lÃ³gica, ausÃªncia de contradiÃ§Ã£o e relevÃ¢ncia
-                          das informaÃ§Ãµes.
+                          Unidade lógica, ausência de contradição e relevância
+                          das informações.
                         </p>
                       </div>
                     </div>
@@ -253,126 +253,94 @@ export default function AulaCoesaoCoerencia({
             />
 
             <Comparison
-              title="A ImportÃ¢ncia do Nexo"
+              title="A Importância do Nexo"
               left={{
                 title: "Texto Incoerente",
                 content:
-                  "O tÃ©cnico consertou a turbina. O navio voou para o espaÃ§o sideral.",
+                  "O técnico consertou a turbina. O navio voou para o espaço sideral.",
                 description:
-                  "As frases estÃ£o ligadas, mas o conteÃºdo Ã© ilÃ³gico (coeso mas incoerente).",
+                  "As frases estão ligadas, mas o conteúdo é ilógico (coeso mas incoerente).",
                 variant: "danger",
               }}
               right={{
                 title: "Texto Coeso e Coerente",
                 content:
-                  "O tÃ©cnico consertou a turbina. GraÃ§as a isso, a embarcaÃ§Ã£o voltou a operar.",
+                  "O técnico consertou a turbina. Graças a isso, a embarcação voltou a operar.",
                 description:
-                  "HÃ¡ nexo gramatical (GraÃ§as a isso) e lÃ³gico (operaÃ§Ã£o retomada).",
+                  "Há nexo gramatical (Graças a isso) e lógico (operação retomada).",
                 variant: "success",
               }}
             />
           </section>
 
-          {/* ââ SEÃÃO EXTRA M1: Mecanismos de CoesÃ£o âââ */}
-          <section className="bg-card rounded-2xl border border-border p-5 md:p-10 shadow-sm space-y-8">
+          {/* ── SEÇÃO EXTRA M1: Mecanismos de Coesão ─── */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={2}
-              title="Os 5 Grandes Mecanismos de CoesÃ£o"
+              title="Os 5 Grandes Mecanismos de Coesão"
               variant="blue"
             />
             <ContentAccordion
               mode="stacked"
               slides={[
                 {
-                  titulo: "O que Ã© ReferÃªncia?",
+                  titulo: "O que é Referência?",
                   icone: <LuLink />,
                   conteudo: (
                     <div className="space-y-3">
                       <p className="text-muted-foreground leading-relaxed">
-                        ReferÃªncia Ã© o mecanismo pelo qual um elemento do texto
-                        remete a outro â dentro do prÃ³prio texto (endofÃ³rica) ou
-                        fora dele (exofÃ³rica). Divide-se em{" "}
-                        <strong>anÃ¡fora</strong> (retoma o que jÃ¡ foi dito) e{" "}
-                        <strong>catÃ¡fora</strong> (antecipa o que serÃ¡ dito).
+                        Referência é o mecanismo pelo qual um elemento do texto remete a outro — dentro do próprio texto (endofórica) ou fora dele (exofórica). Divide-se em <strong>anáfora</strong> (retoma o que já foi dito) e <strong>catáfora</strong> (antecipa o que será dito).
                       </p>
                       <div className="p-3 bg-blue-500/5 rounded-xl border-l-4 border-blue-500 font-mono text-sm italic">
-                        "A engenheira chegou.{" "}
-                        <span className="text-blue-600 font-bold">Ela</span>{" "}
-                        assumiu o posto." â 'ela' refere-se a 'a engenheira'.
+                        "A engenheira chegou. <span className="text-blue-600 font-bold">Ela</span> assumiu o posto." — 'ela' refere-se a 'a engenheira'.
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Como funciona a SubstituiÃ§Ã£o?",
+                  titulo: "Como funciona a Substituição?",
                   icone: <LuActivity />,
                   conteudo: (
                     <div className="space-y-3">
                       <p className="text-muted-foreground leading-relaxed">
-                        A substituiÃ§Ã£o troca um elemento por outro de valor
-                        equivalente para evitar repetiÃ§Ã£o. Pode ser{" "}
-                        <strong>nominal</strong>, <strong>verbal</strong> ou{" "}
-                        <strong>oracional</strong>.
+                        A substituição troca um elemento por outro de valor equivalente para evitar repetição. Pode ser <strong>nominal</strong>, <strong>verbal</strong> ou <strong>oracional</strong>.
                       </p>
                       <div className="p-3 bg-emerald-500/5 rounded-xl border-l-4 border-emerald-500 font-mono text-sm italic">
-                        "O relatÃ³rio tÃ©cnico foi entregue.{" "}
-                        <span className="text-emerald-600 font-bold">
-                          O documento
-                        </span>{" "}
-                        estava impecÃ¡vel." â substituiÃ§Ã£o nominal.
+                        "O relatório técnico foi entregue. <span className="text-emerald-600 font-bold">O documento</span> estava impecável." — substituição nominal.
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "O que Ã© Elipse e por que cria fluidez?",
+                  titulo: "O que é Elipse e por que cria fluidez?",
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-3">
                       <p className="text-muted-foreground leading-relaxed">
-                        A elipse Ã© a omissÃ£o de um termo recuperÃ¡vel pelo
-                        contexto. Cria fluidez eliminando repetiÃ§Ãµes
-                        desnecessÃ¡rias. Na CESGRANRIO, a elipse verbal
-                        frequentemente Ã© marcada pela vÃ­rgula.
+                        A elipse é a omissão de um termo recuperável pelo contexto. Cria fluidez eliminando repetições desnecessárias. Na CESGRANRIO, a elipse verbal frequentemente é marcada pela vírgula.
                       </p>
                       <div className="p-3 bg-cyan-500/5 rounded-xl border-l-4 border-cyan-500 font-mono text-sm italic">
-                        "Maria aprovou a proposta; Pedro{" "}
-                        <span className="text-cyan-600 font-bold">
-                          [aprovou]
-                        </span>{" "}
-                        a minuta." â verbo elidido.
+                        "Maria aprovou a proposta; Pedro <span className="text-cyan-600 font-bold">[aprovou]</span> a minuta." — verbo elidido.
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Qual Ã© o papel dos Conectivos?",
+                  titulo: "Qual é o papel dos Conectivos?",
                   icone: <LuZap />,
                   conteudo: (
                     <p className="text-muted-foreground leading-relaxed">
-                      ConjunÃ§Ãµes e conectivos estabelecem relaÃ§Ãµes
-                      semÃ¢ntico-lÃ³gicas: <strong>adiÃ§Ã£o</strong> (e, alÃ©m
-                      disso), <strong>adversidade</strong> (mas, porÃ©m),{" "}
-                      <strong>causalidade</strong> (porque, visto que),{" "}
-                      <strong>concessÃ£o</strong> (embora, ainda que),{" "}
-                      <strong>finalidade</strong> (para que). SÃ£o os tijolos da
-                      arquitetura argumentativa.
+                      Conjunções e conectivos estabelecem relações semântico-lógicas: <strong>adição</strong> (e, além disso), <strong>adversidade</strong> (mas, porém), <strong>causalidade</strong> (porque, visto que), <strong>concessão</strong> (embora, ainda que), <strong>finalidade</strong> (para que). São os tijolos da arquitetura argumentativa.
                     </p>
                   ),
                 },
                 {
-                  titulo: "Como a CoesÃ£o Lexical enriquece o texto?",
+                  titulo: "Como a Coesão Lexical enriquece o texto?",
                   icone: <LuLibrary />,
                   conteudo: (
                     <div className="space-y-3">
                       <p className="text-muted-foreground leading-relaxed">
-                        A coesÃ£o lexical usa relaÃ§Ãµes semÃ¢nticas:{" "}
-                        <strong>sinonÃ­mia</strong> (petrÃ³leo / Ã³leo cru),{" "}
-                        <strong>hiperonÃ­mia</strong> (combustÃ­vel para petrÃ³leo,
-                        gÃ¡s e etanol), <strong>hiponÃ­mia</strong> (diesel como
-                        espÃ©cie de combustÃ­vel) e <strong>reiteraÃ§Ã£o</strong>{" "}
-                        intencional. Em textos da Petrobras, a hiperonÃ­mia Ã©
-                        especialmente frequente.
+                        A coesão lexical usa relações semânticas: <strong>sinonímia</strong> (petróleo / óleo cru), <strong>hiperonímia</strong> (combustível para petróleo, gás e etanol), <strong>hiponímia</strong> (diesel como espécie de combustível) e <strong>reiteração</strong> intencional. Em textos da Petrobras, a hiperonímia é especialmente frequente.
                       </p>
                     </div>
                   ),
@@ -381,13 +349,12 @@ export default function AulaCoesaoCoerencia({
             />
 
             <FlipCard
-              className="h-[430px] md:h-[350px]"
               frente={
                 <div className="text-center space-y-3">
-                  <div className="text-4xl">ð</div>
-                  <div className="font-bold text-lg">AnÃ¡fora vs. CatÃ¡fora</div>
+                  <div className="text-4xl">🔄</div>
+                  <div className="font-bold text-lg">Anáfora vs. Catáfora</div>
                   <div className="text-sm text-muted-foreground">
-                    Clique para ver a diferenÃ§a essencial
+                    Clique para ver a diferença essencial
                   </div>
                 </div>
               }
@@ -395,29 +362,28 @@ export default function AulaCoesaoCoerencia({
                 <div className="space-y-4 text-sm">
                   <div className="p-3 bg-cyan-500/20 rounded-xl border border-cyan-500/30">
                     <p className="font-bold text-cyan-300 mb-1">
-                      ANÃFORA â Retrovisor
+                      ANÁFORA — Retrovisor
                     </p>
                     <p className="text-zinc-200 italic">
                       "A turbina falhou.{" "}
-                      <span className="text-cyan-300 font-bold">
-                        O equipamento
-                      </span>{" "}
-                      foi substituÃ­do."
+                      <span className="text-cyan-300 font-bold">O equipamento</span>{" "}
+                      foi substituído."
                     </p>
                     <p className="text-zinc-400 text-xs mt-1">
-                      â 'O equipamento' retoma 'a turbina' (passado)
+                      ← 'O equipamento' retoma 'a turbina' (passado)
                     </p>
                   </div>
                   <div className="p-3 bg-blue-500/20 rounded-xl border border-blue-500/30">
                     <p className="font-bold text-blue-300 mb-1">
-                      CATÃFORA â Farol
+                      CATÁFORA — Farol
                     </p>
                     <p className="text-zinc-200 italic">
-                      "<span className="text-blue-300 font-bold">Isto</span> foi
-                      anunciado: nova perfuraÃ§Ã£o no prÃ©-sal."
+                      "
+                      <span className="text-blue-300 font-bold">Isto</span> foi
+                      anunciado: nova perfuração no pré-sal."
                     </p>
                     <p className="text-zinc-400 text-xs mt-1">
-                      â 'Isto' antecipa 'nova perfuraÃ§Ã£o no prÃ©-sal' (futuro)
+                      → 'Isto' antecipa 'nova perfuração no pré-sal' (futuro)
                     </p>
                   </div>
                 </div>
@@ -426,59 +392,59 @@ export default function AulaCoesaoCoerencia({
             />
           </section>
 
-          <section className="bg-card rounded-2xl border border-border p-5 md:p-10 shadow-sm space-y-8">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={3}
-              title="CoesÃ£o e CoerÃªncia no Contexto Petrobras"
+              title="Coesão e Coerência no Contexto Petrobras"
               variant="blue"
             />
             <CardCarousel
               cards={[
                 {
-                  icone: "ð",
-                  title: "RelatÃ³rios TÃ©cnicos",
+                  icone: "📄",
+                  title: "Relatórios Técnicos",
                   descricao:
-                    "Documentos como relatÃ³rios de seguranÃ§a operacional exigem coesÃ£o referencial precisa â pronomes e conectivos ambÃ­guos podem gerar falhas na interpretaÃ§Ã£o de procedimentos crÃ­ticos.",
+                    "Documentos como relatórios de segurança operacional exigem coesão referencial precisa — pronomes e conectivos ambíguos podem gerar falhas na interpretação de procedimentos críticos.",
                 },
                 {
-                  icone: "ð",
+                  icone: "📋",
                   title: "Normas e Regulamentos",
                   descricao:
-                    "Textos normativos usam elipse e substituiÃ§Ã£o para evitar repetiÃ§Ãµes do sujeito institucional, mantendo a objetividade sem comprometer a clareza das obrigaÃ§Ãµes.",
+                    "Textos normativos usam elipse e substituição para evitar repetições do sujeito institucional, mantendo a objetividade sem comprometer a clareza das obrigações.",
                 },
                 {
-                  icone: "ðï¸",
+                  icone: "🗞️",
                   title: "Comunicados Oficiais",
                   descricao:
-                    "Comunicados ao mercado e notas Ã  imprensa dependem de coerÃªncia temÃ¡tica rigorosa: cada parÃ¡grafo deve progredir logicamente sem contradizer informaÃ§Ãµes anteriores.",
+                    "Comunicados ao mercado e notas à imprensa dependem de coerência temática rigorosa: cada parágrafo deve progredir logicamente sem contradizer informações anteriores.",
                 },
                 {
-                  icone: "ð",
+                  icone: "📊",
                   title: "Editais de Concurso",
                   descricao:
-                    "Os prÃ³prios editais da CESGRANRIO/Petrobras exemplificam o uso correto de catÃ¡fora em artigos como: 'Os candidatos deverÃ£o observar o seguinte: [lista de regras]'.",
+                    "Os próprios editais da CESGRANRIO/Petrobras exemplificam o uso correto de catáfora em artigos como: 'Os candidatos deverão observar o seguinte: [lista de regras]'.",
                 },
                 {
-                  icone: "ð¬",
-                  title: "Artigos CientÃ­ficos",
+                  icone: "🔬",
+                  title: "Artigos Científicos",
                   descricao:
-                    "A coesÃ£o lexical por hiperonÃ­mia Ã© especialmente valorizada em textos de engenharia: 'equipamentos', 'sistemas', 'dispositivos' como hiperÃ´nimos de itens especÃ­ficos.",
+                    "A coesão lexical por hiperonímia é especialmente valorizada em textos de engenharia: 'equipamentos', 'sistemas', 'dispositivos' como hiperônimos de itens específicos.",
                 },
               ]}
             />
-            <AlertBox tipo="info" titulo="EstratÃ©gia CESGRANRIO">
-              QuestÃµes de coesÃ£o na CESGRANRIO frequentemente apresentam um
+            <AlertBox tipo="info" titulo="Estratégia CESGRANRIO">
+              Questões de coesão na CESGRANRIO frequentemente apresentam um
               trecho e pedem qual pronome ou conectivo pode ser{" "}
-              <strong>substituÃ­do sem alterar o sentido</strong>. Identifique
-              sempre a relaÃ§Ã£o semÃ¢ntica (retomada, oposiÃ§Ã£o, causa) antes de
+              <strong>substituído sem alterar o sentido</strong>. Identifique
+              sempre a relação semântica (retomada, oposição, causa) antes de
               escolher.
             </AlertBox>
           </section>
 
           <QuizInterativo
             questoes={quizM1}
-            titulo="FixaÃ§Ã£o - MÃ³dulo 1"
-            icone="ð¯"
+            titulo="Fixação - Módulo 1"
+            icone="🎯"
             numero={1}
             variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -486,32 +452,32 @@ export default function AulaCoesaoCoerencia({
         </div>
       </TabsContent>
 
-      {/* ââ MÃDULO 2: O PODER DO RETROVISOR ââââââââââââââââââââ */}
+      {/* ── MÓDULO 2: O PODER DO RETROVISOR ──────────────────── */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
         <ModuleBanner
           numero={2}
           titulo="O Poder do Retrovisor"
-          descricao="Domine a AnÃ¡fora: o recurso de retomar termos anteriores para evitar a repetiÃ§Ã£o cansativa."
+          descricao="Domine a Anáfora: o recurso de retomar termos anteriores para evitar a repetição cansativa."
           gradiente="bg-gradient-to-br from-cyan-700 to-teal-800"
         />
 
         <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-5 md:p-10 shadow-sm space-y-8">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={2}
-              title="ReferenciaÃ§Ã£o AnafÃ³rica"
+              title="Referenciação Anafórica"
               variant="cyan"
             />
             <ContentAccordion
               slides={[
                 {
-                  titulo: "O que Ã© AnÃ¡fora?",
+                  titulo: "O que é Anáfora?",
                   icone: <LuCompass />,
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground">
-                        AnÃ¡fora (do grego <i>ana</i> = atrÃ¡s) Ã© o fenÃ´meno em
-                        que um termo aponta para outro jÃ¡ citado. Ã o
+                        Anáfora (do grego <i>ana</i> = atrás) é o fenômeno em
+                        que um termo aponta para outro já citado. É o
                         "retrovisor" do texto.
                       </p>
                       <div className="p-4 bg-muted/50 rounded-xl border-l-4 border-cyan-500 font-medium">
@@ -519,34 +485,34 @@ export default function AulaCoesaoCoerencia({
                         <span className="text-cyan-600 font-bold underline">
                           ELA
                         </span>{" "}
-                        busca inovaÃ§Ã£o."
+                        busca inovação."
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "TÃ©cnicas de Retomada",
+                  titulo: "Técnicas de Retomada",
                   icone: <LuLibrary />,
                   conteudo: (
                     <CardCarousel
                       cards={[
                         {
-                          icone: "ð¤",
+                          icone: "👤",
                           title: "Pronominal",
                           descricao:
                             "Uso de pronomes (ele, esse, o qual). O mais comum em provas.",
                         },
                         {
-                          icone: "ð",
-                          title: "SinonÃ­mica",
+                          icone: "🔄",
+                          title: "Sinonímica",
                           descricao:
-                            "Troca por sinÃ´nimo (PetrÃ³leo -> Ouro Negro). MantÃ©m o nÃ­vel do texto.",
+                            "Troca por sinônimo (Petróleo -> Ouro Negro). Mantém o nível do texto.",
                         },
                         {
-                          icone: "ð¦",
-                          title: "EpÃ­teto",
+                          icone: "📦",
+                          title: "Epíteto",
                           descricao:
-                            "ExpressÃµes consagradas (Rio de Janeiro -> A Cidade Maravilhosa).",
+                            "Expressões consagradas (Rio de Janeiro -> A Cidade Maravilhosa).",
                         },
                       ]}
                     />
@@ -555,15 +521,15 @@ export default function AulaCoesaoCoerencia({
               ]}
             />
             <AlertBox tipo="warning" titulo="Pulo do Gato!">
-              Os demonstrativos com "SS" (Esse, Essa, Isso) sÃ£o tipicamente
-              anafÃ³ricos. Use-os para olhar para trÃ¡s!
+              Os demonstrativos com "SS" (Esse, Essa, Isso) são tipicamente
+              anafóricos. Use-os para olhar para trás!
             </AlertBox>
           </section>
 
           <QuizInterativo
             questoes={quizM2}
-            titulo="FixaÃ§Ã£o - MÃ³dulo 2"
-            icone="ð¯"
+            titulo="Fixação - Módulo 2"
+            icone="🎯"
             numero={2}
             variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
@@ -571,31 +537,31 @@ export default function AulaCoesaoCoerencia({
         </div>
       </TabsContent>
 
-      {/* ââ MÃDULO 3: O FAROL DO SENTIDO âââââââââââââââââââââââ */}
+      {/* ── MÓDULO 3: O FAROL DO SENTIDO ─────────────────────── */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
         <ModuleBanner
           numero={3}
           titulo="O Farol do Sentido"
-          descricao="A CatÃ¡fora prepara o leitor para o que virÃ¡. Aprenda a antecipar ideias com elegÃ¢ncia."
+          descricao="A Catáfora prepara o leitor para o que virá. Aprenda a antecipar ideias com elegância."
           gradiente="bg-gradient-to-br from-blue-600 to-cyan-700"
         />
 
         <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-5 md:p-10 shadow-sm space-y-8">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={3}
-              title="AntecipaÃ§Ã£o (CatÃ¡fora)"
+              title="Antecipação (Catáfora)"
               variant="blue"
             />
             <ContentAccordion
               slides={[
                 {
-                  titulo: "ConceituaÃ§Ã£o",
+                  titulo: "Conceituação",
                   icone: <LuCompass />,
                   conteudo: (
                     <p className="text-muted-foreground leading-relaxed">
-                      A <strong>CatÃ¡fora</strong> Ã© o oposto da anÃ¡fora: ela
-                      antecipa um termo que ainda serÃ¡ escrito. Gera foco e
+                      A <strong>Catáfora</strong> é o oposto da anáfora: ela
+                      antecipa um termo que ainda será escrito. Gera foco e
                       expectativa no leitor.
                     </p>
                   ),
@@ -605,7 +571,7 @@ export default function AulaCoesaoCoerencia({
                   icone: <LuLightbulb />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p>MnemÃ´nico para a prova da Petrobras:</p>
+                      <p>Mnemônico para a prova da Petrobras:</p>
                       <div className="p-6 bg-blue-500/10 rounded-2xl border border-blue-500/20 text-center italic text-xl font-bold">
                         Is
                         <span className="text-blue-600 underline text-2xl">
@@ -634,17 +600,17 @@ export default function AulaCoesaoCoerencia({
             />
             <FlipCard
               frente={
-                <div className="text-center font-bold">Exemplo ClÃ¡ssico</div>
+                <div className="text-center font-bold">Exemplo Clássico</div>
               }
               verso={
                 <div className="space-y-2">
                   <p className="text-zinc-100 italic">
-                    "Meu desejo Ã©{" "}
+                    "Meu desejo é{" "}
                     <span className="text-primary font-black">ISTO:</span> sua
-                    aprovaÃ§Ã£o."
+                    aprovação."
                   </p>
                   <p className="text-xs text-zinc-400">
-                    O 'ISTO' nÃ£o faz sentido sozinho; ele 'pede' o que vem
+                    O 'ISTO' não faz sentido sozinho; ele 'pede' o que vem
                     depois.
                   </p>
                 </div>
@@ -655,8 +621,8 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM3}
-            titulo="FixaÃ§Ã£o - MÃ³dulo 3"
-            icone="ð¯"
+            titulo="Fixação - Módulo 3"
+            icone="🎯"
             numero={3}
             variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -664,12 +630,12 @@ export default function AulaCoesaoCoerencia({
         </div>
       </TabsContent>
 
-      {/* ââ MÃDULO 4: O SILÃNCIO ELOQUENTE ââââââââââââââââââââââ */}
+      {/* ── MÓDULO 4: O SILÊNCIO ELOQUENTE ────────────────────── */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
         <ModuleBanner
           numero={4}
-          titulo="O SilÃªncio Eloquente"
-          descricao="Ãs vezes, nÃ£o dizer nada Ã© a melhor forma de conectar. Domine Elipse e ZÃªugma."
+          titulo="O Silêncio Eloquente"
+          descricao="Às vezes, não dizer nada é a melhor forma de conectar. Domine Elipse e Zêugma."
           gradiente="bg-gradient-to-br from-teal-600 to-emerald-700"
         />
 
@@ -677,7 +643,7 @@ export default function AulaCoesaoCoerencia({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={4}
-              title="CoesÃ£o por OmissÃ£o"
+              title="Coesão por Omissão"
               variant="emerald"
             />
             <ContentAccordion
@@ -688,42 +654,42 @@ export default function AulaCoesaoCoerencia({
                   conteudo: (
                     <div className="space-y-4">
                       <p>
-                        OmissÃ£o de um termo subentendido pelo contexto
+                        Omissão de um termo subentendido pelo contexto
                         (frequentemente o sujeito).
                       </p>
                       <p className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 font-mono text-sm italic">
-                        "[NÃ³s] Fizemos os testes. [NÃ³s] Passamos."
+                        "[Nós] Fizemos os testes. [Nós] Passamos."
                       </p>
                     </div>
                   ),
                 },
                 {
-                  titulo: "ZÃªugma",
+                  titulo: "Zêugma",
                   icone: <LuAnchor />,
                   conteudo: (
                     <div className="space-y-4">
                       <p>
-                        OmissÃ£o de um termo que <strong>jÃ¡ apareceu</strong> no
+                        Omissão de um termo que <strong>já apareceu</strong> no
                         texto.
                       </p>
                       <p className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 font-mono text-sm italic">
-                        "Ela gosta de cafÃ©; eu, [gosto] de chÃ¡."
+                        "Ela gosta de café; eu, [gosto] de chá."
                       </p>
                     </div>
                   ),
                 },
               ]}
             />
-            <AlertBox tipo="info" titulo="Macete da VÃ­rgula">
-              A vÃ­rgula costuma marcar o lugar do verbo omitido no ZÃªugma. Fique
-              atento a essa pontuaÃ§Ã£o na Cesgranrio!
+            <AlertBox tipo="info" titulo="Macete da Vírgula">
+              A vírgula costuma marcar o lugar do verbo omitido no Zêugma. Fique
+              atento a essa pontuação na Cesgranrio!
             </AlertBox>
           </section>
 
           <QuizInterativo
             questoes={quizM4}
-            titulo="FixaÃ§Ã£o - MÃ³dulo 4"
-            icone="ð¯"
+            titulo="Fixação - Módulo 4"
+            icone="🎯"
             numero={4}
             variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
@@ -731,12 +697,12 @@ export default function AulaCoesaoCoerencia({
         </div>
       </TabsContent>
 
-      {/* ââ MÃDULO 5: SUBSTITUIÃÃES DE ELITE âââââââââââââââââââââ */}
+      {/* ── MÓDULO 5: SUBSTITUIÇÕES DE ELITE ───────────────────── */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
         <ModuleBanner
           numero={5}
-          titulo="SubstituiÃ§Ãµes de Elite"
-          descricao="NominalizaÃ§Ã£o, HiperonÃ­mia e Palavras-SumÃ¡rio: o arsenal avanÃ§ado de coesÃ£o lexical."
+          titulo="Substituições de Elite"
+          descricao="Nominalização, Hiperonímia e Palavras-Sumário: o arsenal avançado de coesão lexical."
           gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
         />
 
@@ -744,49 +710,49 @@ export default function AulaCoesaoCoerencia({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={5}
-              title="CoesÃ£o Lexical"
+              title="Coesão Lexical"
               variant="blue"
             />
             <ContentAccordion
               slides={[
                 {
-                  titulo: "NominalizaÃ§Ã£o",
+                  titulo: "Nominalização",
                   icone: <LuActivity />,
                   conteudo: (
                     <div className="space-y-4">
                       <p>
-                        Transformar um verbo (aÃ§Ã£o) em substantivo para retomar
+                        Transformar um verbo (ação) em substantivo para retomar
                         a ideia.
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="p-4 bg-background border rounded-xl text-center">
                           <span className="text-xs text-muted-foreground block">
-                            AÃ§Ã£o
+                            Ação
                           </span>
                           <span className="font-bold">
-                            "O poÃ§o explodiu..."
+                            "O poço explodiu..."
                           </span>
                         </div>
                         <div className="p-4 bg-primary/10 border border-primary/20 rounded-xl text-center">
                           <span className="text-xs text-primary block">
                             Retomada
                           </span>
-                          <span className="font-bold">"A EXPLOSÃO..."</span>
+                          <span className="font-bold">"A EXPLOSÃO..."</span>
                         </div>
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Palavras-Suporte (RÃ³tulos)",
+                  titulo: "Palavras-Suporte (Rótulos)",
                   icone: <LuLink />,
                   conteudo: (
                     <p className="text-muted-foreground">
                       Palavras como{" "}
                       <strong>
-                        "Fato", "Evento", "CircunstÃ¢ncia", "Ideia"
+                        "Fato", "Evento", "Circunstância", "Ideia"
                       </strong>{" "}
-                      que empacotam parÃ¡grafos inteiros.
+                      que empacotam parágrafos inteiros.
                     </p>
                   ),
                 },
@@ -796,8 +762,8 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM5}
-            titulo="FixaÃ§Ã£o - MÃ³dulo 5"
-            icone="ð¯"
+            titulo="Fixação - Módulo 5"
+            icone="🎯"
             numero={5}
             variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -805,12 +771,12 @@ export default function AulaCoesaoCoerencia({
         </div>
       </TabsContent>
 
-      {/* ââ MÃDULO 6: A DANÃA DOS CONECTIVOS ââââââââââââââââââââ */}
+      {/* ── MÓDULO 6: A DANÇA DOS CONECTIVOS ──────────────────── */}
       <TabsContent value="modulo-6" className="space-y-[50px]">
         <ModuleBanner
           numero={6}
-          titulo="A DanÃ§a dos Conectivos"
-          descricao="TransiÃ§Ãµes perfeitas: aprenda a usar conjunÃ§Ãµes para dar ritmo e lÃ³gica ao seu texto."
+          titulo="A Dança dos Conectivos"
+          descricao="Transições perfeitas: aprenda a usar conjunções para dar ritmo e lógica ao seu texto."
           gradiente="bg-gradient-to-br from-orange-600 to-amber-700"
         />
 
@@ -818,18 +784,18 @@ export default function AulaCoesaoCoerencia({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={6}
-              title="CoesÃ£o Sequencial"
+              title="Coesão Sequencial"
               variant="amber"
             />
             <ContentAccordion
               slides={[
                 {
-                  titulo: "O Papel da ConjunÃ§Ã£o",
+                  titulo: "O Papel da Conjunção",
                   icone: <LuZap />,
                   conteudo: (
                     <p className="text-muted-foreground">
-                      A CoesÃ£o Sequencial cria a progressÃ£o do tempo e das
-                      ideias atravÃ©s dos conectivos. Sem eles, o texto Ã© um
+                      A Coesão Sequencial cria a progressão do tempo e das
+                      ideias através dos conectivos. Sem eles, o texto é um
                       amontoado de fatos isolados.
                     </p>
                   ),
@@ -850,21 +816,21 @@ export default function AulaCoesaoCoerencia({
                         </thead>
                         <tbody>
                           <tr className="border-b bg-muted/30">
-                            <td className="p-3 font-bold">AdiÃ§Ã£o</td>
+                            <td className="p-3 font-bold">Adição</td>
                             <td className="p-3">
-                              E, nem, bem como, nÃ£o sÃ³... mas tambÃ©m.
+                              E, nem, bem como, não só... mas também.
                             </td>
                           </tr>
                           <tr className="border-b">
                             <td className="p-3 font-bold">Causa</td>
                             <td className="p-3">
-                              Pois, porque, visto que, jÃ¡ que, porquanto.
+                              Pois, porque, visto que, já que, porquanto.
                             </td>
                           </tr>
                           <tr className="border-b bg-muted/30">
-                            <td className="p-3 font-bold">ConclusÃ£o</td>
+                            <td className="p-3 font-bold">Conclusão</td>
                             <td className="p-3">
-                              Logo, portanto, entÃ£o, por conseguinte, destarte.
+                              Logo, portanto, então, por conseguinte, destarte.
                             </td>
                           </tr>
                         </tbody>
@@ -878,8 +844,8 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM6}
-            titulo="FixaÃ§Ã£o - MÃ³dulo 6"
-            icone="ð¯"
+            titulo="Fixação - Módulo 6"
+            icone="🎯"
             numero={6}
             variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
@@ -887,12 +853,12 @@ export default function AulaCoesaoCoerencia({
         </div>
       </TabsContent>
 
-      {/* ââ MÃDULO 7: CONCESSÃO & OPOSIÃÃO âââââââââââââââââââââ */}
+      {/* ── MÓDULO 7: CONCESSÃO & OPOSIÇÃO ───────────────────── */}
       <TabsContent value="modulo-7" className="space-y-[50px]">
         <ModuleBanner
           numero={7}
-          titulo="ConcessÃ£o & OposiÃ§Ã£o"
-          descricao="O divisor de Ã¡guas da Cesgranrio: diferencie a forÃ§a do 'Mas' da resiliÃªncia do 'Embora'."
+          titulo="Concessão & Oposição"
+          descricao="O divisor de águas da Cesgranrio: diferencie a força do 'Mas' da resiliência do 'Embora'."
           gradiente="bg-gradient-to-br from-red-600 to-rose-800"
         />
 
@@ -915,7 +881,7 @@ export default function AulaCoesaoCoerencia({
                         bloqueia o anterior.
                       </p>
                       <p className="font-bold p-3 bg-red-500/5 rounded-lg border-l-4 border-red-500 italic">
-                        "Estudou muito, MAS nÃ£o passou." (Foco no fracasso)
+                        "Estudou muito, MAS não passou." (Foco no fracasso)
                       </p>
                     </div>
                   ),
@@ -926,18 +892,18 @@ export default function AulaCoesaoCoerencia({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground">
-                        O 'Embora' introduz um fato que Ã© ignorado pela oraÃ§Ã£o
+                        O 'Embora' introduz um fato que é ignorado pela oração
                         principal.
                       </p>
                       <p className="font-bold p-3 bg-emerald-500/5 rounded-lg border-l-4 border-emerald-500 italic">
-                        "EMBORA nÃ£o tenha estudado, passou." (Foco no sucesso)
+                        "EMBORA não tenha estudado, passou." (Foco no sucesso)
                       </p>
                     </div>
                   ),
                 },
               ]}
             />
-            <AlertBox tipo="danger" titulo="NÃ£o confunda!">
+            <AlertBox tipo="danger" titulo="Não confunda!">
               Trocar 'Mas' por 'Embora' exige mudar o verbo do Indicativo para o
               Subjuntivo. A banca ADORA isso!
             </AlertBox>
@@ -945,8 +911,8 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM7}
-            titulo="FixaÃ§Ã£o - MÃ³dulo 7"
-            icone="ð¯"
+            titulo="Fixação - Módulo 7"
+            icone="🎯"
             numero={7}
             variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
@@ -954,12 +920,12 @@ export default function AulaCoesaoCoerencia({
         </div>
       </TabsContent>
 
-      {/* ââ MÃDULO 8: ARQUITETURA DA COERÃNCIA âââââââââââââââââ */}
+      {/* ── MÓDULO 8: ARQUITETURA DA COERÊNCIA ───────────────── */}
       <TabsContent value="modulo-8" className="space-y-[50px]">
         <ModuleBanner
           numero={8}
-          titulo="Arquitetura da CoerÃªncia"
-          descricao="A harmonia lÃ³gica: entenda o PrincÃ­pio da NÃ£o-ContradiÃ§Ã£o e a ConsistÃªncia PragmÃ¡tica."
+          titulo="Arquitetura da Coerência"
+          descricao="A harmonia lógica: entenda o Princípio da Não-Contradição e a Consistência Pragmática."
           gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
         />
 
@@ -967,29 +933,29 @@ export default function AulaCoesaoCoerencia({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={8}
-              title="LÃ³gica Interna"
+              title="Lógica Interna"
               variant="emerald"
             />
             <ContentAccordion
               slides={[
                 {
-                  titulo: "NÃ£o-ContradiÃ§Ã£o",
+                  titulo: "Não-Contradição",
                   icone: <LuCheck />,
                   conteudo: (
                     <p className="text-muted-foreground">
-                      Um texto nÃ£o pode afirmar 'A' e logo em seguida defender
-                      'nÃ£o A' sem um motivo lÃ³gico ou ressalva explÃ­cita.
+                      Um texto não pode afirmar 'A' e logo em seguida defender
+                      'não A' sem um motivo lógico ou ressalva explícita.
                     </p>
                   ),
                 },
                 {
-                  titulo: "CoerÃªncia PragmÃ¡tica",
+                  titulo: "Coerência Pragmática",
                   icone: <LuLightbulb />,
                   conteudo: (
                     <p className="text-muted-foreground italic">
-                      "O navio de aÃ§o flutuou levemente como uma pluma sobre a
-                      lava do vulcÃ£o." - A frase pode ser coesa, mas fere o
-                      nosso conhecimento de mundo (incoerÃªncia externa).
+                      "O navio de aço flutuou levemente como uma pluma sobre a
+                      lava do vulcão." - A frase pode ser coesa, mas fere o
+                      nosso conhecimento de mundo (incoerência externa).
                     </p>
                   ),
                 },
@@ -999,8 +965,8 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM8}
-            titulo="FixaÃ§Ã£o - MÃ³dulo 8"
-            icone="ð¯"
+            titulo="Fixação - Módulo 8"
+            icone="🎯"
             numero={8}
             variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
@@ -1008,12 +974,12 @@ export default function AulaCoesaoCoerencia({
         </div>
       </TabsContent>
 
-      {/* ââ MÃDULO 9: PROGRESSÃO E RELEVÃNCIA ââââââââââââââââââ */}
+      {/* ── MÓDULO 9: PROGRESSÃO E RELEVÂNCIA ────────────────── */}
       <TabsContent value="modulo-9" className="space-y-[50px]">
         <ModuleBanner
           numero={9}
-          titulo="ProgressÃ£o e RelevÃ¢ncia"
-          descricao="Evite o texto circular: aprenda a evoluir ideias sem perder a conexÃ£o temÃ¡tica."
+          titulo="Progressão e Relevância"
+          descricao="Evite o texto circular: aprenda a evoluir ideias sem perder a conexão temática."
           gradiente="bg-gradient-to-br from-teal-600 to-cyan-800"
         />
 
@@ -1027,28 +993,28 @@ export default function AulaCoesaoCoerencia({
             <ContentAccordion
               slides={[
                 {
-                  titulo: "ProgressÃ£o",
+                  titulo: "Progressão",
                   icone: <LuActivity />,
                   conteudo: (
                     <p className="text-muted-foreground">
-                      O texto deve caminhar. Cada parÃ¡grafo deve somar uma
-                      informaÃ§Ã£o nova (rema) ao que jÃ¡ era conhecido (tema).
+                      O texto deve caminhar. Cada parágrafo deve somar uma
+                      informação nova (rema) ao que já era conhecido (tema).
                     </p>
                   ),
                 },
               ]}
             />
-            <AlertBox tipo="warning" titulo="O Erro do CÃ­rculo">
-              A <strong>Tautologia</strong> (vÃ­cio de linguagem) Ã© o inimigo da
-              progressÃ£o: falar o mesmo com outras palavras sem avanÃ§ar no
+            <AlertBox tipo="warning" titulo="O Erro do Círculo">
+              A <strong>Tautologia</strong> (vício de linguagem) é o inimigo da
+              progressão: falar o mesmo com outras palavras sem avançar no
               sentido.
             </AlertBox>
           </section>
 
           <QuizInterativo
             questoes={quizM9}
-            titulo="FixaÃ§Ã£o - MÃ³dulo 9"
-            icone="ð¯"
+            titulo="Fixação - Módulo 9"
+            icone="🎯"
             numero={9}
             variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
@@ -1056,25 +1022,25 @@ export default function AulaCoesaoCoerencia({
         </div>
       </TabsContent>
 
-      {/* ââ MÃDULO 10: ARENA DE ELITE ââââââââââââââââââââââââââ */}
+      {/* ── MÓDULO 10: ARENA DE ELITE ────────────────────────── */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
         <ModuleBanner
           numero={10}
           titulo="Arena de Elite"
-          descricao="Simulado Final: Teste seus conhecimentos em questÃµes de alto nÃ­vel da CESGRANRIO."
+          descricao="Simulado Final: Teste seus conhecimentos em questões de alto nível da CESGRANRIO."
           gradiente="bg-gradient-to-br from-slate-800 to-slate-950"
         />
 
         <div className="space-y-[50px]">
           <AlertBox tipo="warning" titulo="Dica Final">
-            Nas provas da Petrobras, a coesÃ£o referencial (AnÃ¡fora/CatÃ¡fora) Ã© o
-            tÃ³pico que mais cai. Revise bem os pronomes demonstrativos!
+            Nas provas da Petrobras, a coesão referencial (Anáfora/Catáfora) é o
+            tópico que mais cai. Revise bem os pronomes demonstrativos!
           </AlertBox>
 
           <QuizInterativo
             questoes={quizM10}
             titulo="Simulado Final"
-            icone="ð"
+            icone="🏆"
             numero={10}
             variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-10", score)}

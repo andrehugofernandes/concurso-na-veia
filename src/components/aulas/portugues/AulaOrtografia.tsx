@@ -1,112 +1,718 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 import {
-  LuBookOpen,
-  LuLayers,
-  LuZap,
-  LuInfo,
-  LuMusic,
-  LuCirclePlay as LuPlayCircle,
-  LuBrain,
   LuCheck,
+  LuCirclePlay as LuPlayCircle,
+  LuMusic,
+  LuBrain,
+  LuBookOpen,
+  LuZap,
+  LuShield,
   LuMessageCircle,
   LuTriangleAlert,
-  LuSearch,
-  LuTarget,
+  LuArrowRight,
+  LuEye,
+  LuFileText,
 } from "react-icons/lu";
 import {
   QuizQuestion,
   getRandomQuestions,
   AlertBox,
-  VideoModal,
-  QuizInterativo,
-  ModuleBanner,
-  StickyModuleNav,
-  LessonTabs,
-  MusicPlayerCard,
-  ContentAccordion,
-  ModuleDef,
-  ProgressIndicator,
-  ModuleSectionHeader,
-  ModuleSummaryCarouselNew,
-  AulaProps,
-  AulaTemplate,
   FlipCard,
+  QuizInterativo,
+  TimelineItem,
+  ModuleBanner,
   CardCarousel,
+  StickyModuleNav,
+  ModuleSectionHeader,
+  ContentAccordion,
+  LessonTabs,
+  ModuleSummaryCarouselNew,
+  MusicPlayerCard,
+  ProgressIndicator,
+  AulaProps,
+  VideoModal,
+  AulaTemplate,
+  SectionTitle,
+  TabbedContent,
 } from "../shared";
 
-import {
-  QUIZ_MOD1_POOL,
-  QUIZ_MOD2_POOL,
-  QUIZ_MOD3_POOL,
-  QUIZ_MOD4_POOL,
-  QUIZ_MOD5_POOL,
-  QUIZ_MOD6_POOL,
-  QUIZ_MOD7_POOL,
-  QUIZ_MOD8_POOL,
-  QUIZ_MOD9_POOL,
-  QUIZ_MOD10_POOL,
-} from "./data/ortografia-quizzes";
+const MODULE_DEFS = [
+  {
+    id: "modulo-1",
+    label: "Módulo 1",
+    title: "Encontros Vocálicos e Sílabas",
+  },
+  { id: "modulo-2", label: "Módulo 2", title: "Fundamentos da Acentuação" },
+  { id: "modulo-3", label: "Módulo 3", title: "O Novo Acordo" },
+  { id: "modulo-4", label: "Módulo 4", title: "O Temido Uso do Hífen" },
+  { id: "modulo-5", label: "Módulo 5", title: "Expressões Problemáticas" },
+  { id: "modulo-6", label: "Módulo 6", title: "Laboratório & Revisão" },
+] as const;
 
-const MODULE_DEFS: ModuleDef[] = [
-  { id: "modulo-1", label: "Módulo 1", title: "Encontros Vocálicos" },
-  { id: "modulo-2", label: "Módulo 2", title: "Acentuação Geral" },
-  { id: "modulo-3", label: "Módulo 3", title: "Novo Acordo" },
-  { id: "modulo-4", label: "Módulo 4", title: "Uso do Hífen" },
-  { id: "modulo-5", label: "Módulo 5", title: "Dificuldades" },
-  { id: "modulo-6", label: "Módulo 6", title: "Revisão Prática" },
-  { id: "modulo-7", label: "Módulo 7", title: "Palavras Frequentes" },
-  { id: "modulo-8", label: "Módulo 8", title: "Compostos e Hífen" },
-  { id: "modulo-9", label: "Módulo 9", title: "Linguagem Técnica" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+// ============================================================================
+// POOLS DE QUESTÕES
+// ============================================================================
+
+const QUIZ_MOD1_POOL: QuizQuestion[] = [
+  {
+    id: 1,
+    pergunta: "A palavra 'Paraguai' apresenta qual tipo de encontro vocálico?",
+    opcoes: [
+      { label: "A", valor: "Ditongo crescente" },
+      { label: "B", valor: "Ditongo decrescente" },
+      { label: "C", valor: "Tritongo (SV + V + SV)" },
+      { label: "D", valor: "Hiato" },
+    ],
+    correta: "C",
+    explicacao:
+      "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai).",
+  },
+  {
+    id: 2,
+    pergunta:
+      "Na separação silábica da palavra 'Saúde', as vogais A e U ficam em sílabas diferentes. Isso é um:",
+    opcoes: [
+      { label: "A", valor: "Ditongo oral" },
+      { label: "B", valor: "Tritongo nasal" },
+      { label: "C", valor: "Hiato" },
+      { label: "D", valor: "Digrama vocálico" },
+    ],
+    correta: "C",
+    explicacao:
+      "Hiato ocorre quando duas vogais aparecem juntas na palavra, mas ficam em sílabas separadas na pronúncia (sa-ú-de).",
+  },
+  {
+    id: 3,
+    pergunta:
+      "Em 'Pai' e 'Caixa', temos encontros vocálicos que não se separam. Eles são:",
+    opcoes: [
+      { label: "A", valor: "Hiatos tônicos" },
+      { label: "B", valor: "Ditongos decrescentes (Vogal + Semivogal)" },
+      { label: "C", valor: "Ditongos crescentes (Semivogal + Vogal)" },
+      { label: "D", valor: "Tritongos orais" },
+    ],
+    correta: "B",
+    explicacao:
+      "Ditongo decrescente começa com a vogal (mais forte) e termina com a semivogal (mais fraca).",
+  },
+  {
+    id: 4,
+    pergunta: "Qual das alternativas abaixo apresenta apenas HIATOS?",
+    opcoes: [
+      { label: "A", valor: "Poeta, Luar, Dia" },
+      { label: "B", valor: "Lei, Noite, Aula" },
+      { label: "C", valor: "Uruguai, Quais, Saguão" },
+      { label: "D", valor: "Glória, Série, Água" },
+    ],
+    correta: "A",
+    explicacao:
+      "Po-e-ta, Lu-ar, Di-a. Em todos os casos, as vogais se separam.",
+  },
+  {
+    id: 5,
+    pergunta: "A palavra 'Pão' apresenta um tipo de encontro vocálico chamado:",
+    opcoes: [
+      { label: "A", valor: "Ditongo nasal" },
+      { label: "B", valor: "Ditongo oral" },
+      { label: "C", valor: "Hiato nasal" },
+      { label: "D", valor: "Tritongo decrescente" },
+    ],
+    correta: "A",
+    explicacao:
+      "A presença do til (~) torna o som nasal, e a junção de 'a' e 'o' na mesma sílaba forma o ditongo.",
+  },
+  {
+    id: 6,
+    pergunta:
+      "Na palavra 'Espécie', o encontro final '-ie' pode ser pronunciado de duas formas, mas na separação padrão de concursos é um:",
+    opcoes: [
+      { label: "A", valor: "Ditongo crescente (SV + V)" },
+      { label: "B", valor: "Hiato obrigatório" },
+      { label: "C", valor: "Tritongo eventual" },
+      { label: "D", valor: "Ditongo nasal forte" },
+    ],
+    correta: "A",
+    explicacao:
+      "Terminações em -ea, -eo, -ia, -ie, -io são ditongos crescentes (paroxítonas terminadas em ditongo).",
+  },
 ];
+
+const QUIZ_MOD2_POOL: QuizQuestion[] = [
+  {
+    id: 101,
+    pergunta:
+      "Assinale a alternativa em que todas as palavras são acentuadas pela mesma regra:",
+    opcoes: [
+      { label: "A", valor: "História, Água, Cenário" },
+      { label: "B", valor: "Armazém, Café, Vintém" },
+      { label: "C", valor: "Médico, Pássaro, Caju" },
+      { label: "D", valor: "Aí, Baú, Jibóia" },
+    ],
+    correta: "A",
+    explicacao:
+      "História, Água e Cenário são todas paroxítonas terminadas em ditongo oral.",
+  },
+  {
+    id: 102,
+    pergunta: "Qual é a regra que justifica o acento na palavra 'Saúde'?",
+    opcoes: [
+      { label: "A", valor: "Paroxítona terminada em 'e'." },
+      { label: "B", valor: "Proparoxítona aparente." },
+      {
+        label: "C",
+        valor:
+          "Regra do hiato (vogais 'i' ou 'u' tônicas sozinhas ou com 's').",
+      },
+      {
+        label: "D",
+        valor: "Nova Ortografia que exige acento em vogais abertas.",
+      },
+    ],
+    correta: "C",
+    explicacao:
+      "A letra 'u' faz hiato com o 'a' anterior (sa-ú-de) e está sozinha na sílaba. Por isso leva acento agudo.",
+  },
+  {
+    id: 103,
+    pergunta:
+      "Segundo a norma-padrão da Língua Portuguesa, as palavras proparoxítonas devem:",
+    opcoes: [
+      {
+        label: "A",
+        valor: "Ser acentuadas apenas se terminarem em L, N, R, X ou PS.",
+      },
+      {
+        label: "B",
+        valor: "Ser acentuadas obrigatoriamente, sem exceção (regra geral).",
+      },
+      {
+        label: "C",
+        valor: "Ser isentas de acento se possuírem mais de três sílabas.",
+      },
+      { label: "D", valor: "Perderam o acento com o Novo Acordo Ortográfico." },
+    ],
+    correta: "B",
+    explicacao:
+      "A regra de ouro da acentuação: TODAS as proparoxítonas são acentuadas graficamente.",
+  },
+  {
+    id: 104,
+    pergunta: "Qual das seguintes palavras **não** leva acento e por quê?",
+    opcoes: [
+      { label: "A", valor: "Cipo (Planta / oxítona terminada em O)." },
+      { label: "B", valor: "Hifen (Paroxítona terminada em N, leva acento)." },
+      { label: "C", valor: "Caju (Oxítona terminada em U, não leva acento)." },
+      { label: "D", valor: "Vovo (Precisa de acento agudo ou circunflexo)." },
+    ],
+    correta: "C",
+    explicacao:
+      "Oxítonas terminadas em U e I (como caju, saci, tatu) não são acentuadas, a menos que formem hiato tônico.",
+  },
+  {
+    id: 105,
+    pergunta: "As palavras rubrica, pudico e avaro são, na norma-padrão:",
+    opcoes: [
+      { label: "A", valor: "Proparoxítonas." },
+      { label: "B", valor: "Paroxítonas." },
+      { label: "C", valor: "Oxítonas." },
+      { label: "D", valor: "Monossílabos admitidos por derivarem de verbos." },
+    ],
+    correta: "B",
+    explicacao:
+      "Um erro muito comum de prosódia (pronúncia). A sílaba forte dessas palavras é a penúltima: ruBRIca, puDIco, aVAro. Logo, são paroxítonas.",
+  },
+  {
+    id: 106,
+    pergunta:
+      "Os monossílabos tônicos são acentuados sempre que terminarem em:",
+    opcoes: [
+      { label: "A", valor: "Qualquer vogal." },
+      { label: "B", valor: "I, U, e consoantes O, L, R." },
+      { label: "C", valor: "A, E, O, seguidos ou não de S." },
+      { label: "D", valor: "M, N ou ditongos nasais." },
+    ],
+    correta: "C",
+    explicacao:
+      "Acentuam-se os monossílabos tônicos quando terminados em A(s), E(s), O(s). Exemplos: Pás, Pé, Pó, Nós.",
+  },
+  {
+    id: 107,
+    pergunta: "A palavra 'órfão' leva acento agudo porque é uma:",
+    opcoes: [
+      { label: "A", valor: "Proparoxítona que foge à regra do hiato." },
+      { label: "B", valor: "Paroxítona terminada em ditongo 'ão'." },
+      { label: "C", valor: "Oxítona de três sílabas terminada em til." },
+      { label: "D", valor: "Exceção à Nova Ortografia." },
+    ],
+    correta: "B",
+    explicacao:
+      "O acento agudo se justifica por ser paroxítona terminada em '-ão'. O til (~) não é considerado um acento gráfico de tonicidade na primeira sílaba, mas uma marca de nasalização da última.",
+  },
+  {
+    id: 108,
+    pergunta:
+      "No contexto da Petrobras, a palavra 'petróleo' é acentuada por que regra?",
+    opcoes: [
+      {
+        label: "A",
+        valor: "Paroxítona terminada em um ditongo crescente 'eo'.",
+      },
+      { label: "B", valor: "Oxítona seguida de vogal tônica 'o'." },
+      { label: "C", valor: "Monossílabo tônico ligado ao radical." },
+      { label: "D", valor: "Proparoxítona com acento diferencial." },
+    ],
+    correta: "A",
+    explicacao:
+      "Pe-tró-leo é uma paroxítona (sílaba tônica 'tró') terminada no ditongo oral 'eo'. Muitos autores a classificam também como 'proparoxítona aparente ou eventual'.",
+  },
+];
+
+const QUIZ_MOD3_POOL: QuizQuestion[] = [
+  {
+    id: 201,
+    pergunta:
+      "A principal alteração do Novo Acordo nos ditongos abertos (EI e OI) foi:",
+    opcoes: [
+      {
+        label: "A",
+        valor: "Foram abolidos em todas as palavras (Ideia, Heroi, Ceu).",
+      },
+      {
+        label: "B",
+        valor:
+          "Perderam o acento SOMENTE nas palavras paroxítonas (ex: ideia, jiboia).",
+      },
+      {
+        label: "C",
+        valor:
+          "Perderam o acento SOMENTE nas palavras oxítonas (ex: papéis, herói não têm mais acento).",
+      },
+      { label: "D", valor: "Passaram a receber trema." },
+    ],
+    correta: "B",
+    explicacao:
+      "Atenção CESGRANRIO: Ditongos abertos EI e OI perderam o acento NAS PAROXÍTONAS (i-dei-a, ji-boi-a, pla-tei-a). Nas oxítonas e monossílabos, continua (pa-péIS, he-rói, dói).",
+  },
+  {
+    id: 202,
+    pergunta: "Com a Nova Ortografia, o trema (¨) ainda existe?",
+    opcoes: [
+      {
+        label: "A",
+        valor: "Foi 100% abolido da Língua Portuguesa sem nenhuma exceção.",
+      },
+      {
+        label: "B",
+        valor:
+          "Existe apenas em palavras estranjeiras e seus derivados (Müller, mülleriano).",
+      },
+      {
+        label: "C",
+        valor: "Foi mantido para palavras agudas terminadas em u (agüentar).",
+      },
+      {
+        label: "D",
+        valor:
+          "Existe em textos jurídicos antes do Acordo que são revalidados.",
+      },
+    ],
+    correta: "B",
+    explicacao:
+      "O trema caiu totalmente para palavras brasileiras e aportuguesadas (aguentar, cinquenta, bilíngue). Porém, foi mantido para nomes próprios estrangeiros e derivados.",
+  },
+  {
+    id: 203,
+    pergunta:
+      "Uma regra de hiato mudou. Assinale a palavra que GRAFA corretamente (sem acento) pelo Acordo:",
+    opcoes: [
+      { label: "A", valor: "Saúde." },
+      { label: "B", valor: "Juíza." },
+      { label: "C", valor: "Feiura." },
+      { label: "D", valor: "Egoísta." },
+    ],
+    correta: "C",
+    explicacao:
+      "As vogais 'i/u' nos hiatos que vêm APOŚ DITONGO nas PAROXÍTONAS perderam o acento. Fei-u-ra, bo-cai-u-va, bai-u-ca. Note que Saúde e Juíza continuam normais porque não vêm de um ditongo imediatamente anterior.",
+  },
+  {
+    id: 204,
+    pergunta: "E sobre o hiato 'OO' e 'EE'?",
+    opcoes: [
+      { label: "A", valor: "Ganharam acento agudo (Vôo -> Vóo)." },
+      { label: "B", valor: "Não se acentuam mais (Vôo -> Voo; Lêem -> Leem)." },
+      { label: "C", valor: "Continuam com o circunflexo (Vôo, Enjôo, Dêem)." },
+      { label: "D", valor: "Foram trocados por I e U (Vou, Leim)." },
+    ],
+    correta: "B",
+    explicacao:
+      "Macete: as letras duplas perderam o chapéu! Voo, enjoo, perdoo, leem, deem, creem, veem.",
+  },
+  {
+    id: 205,
+    pergunta:
+      "Os acentos diferenciais. Qual par abaixo AINDA mantém o acento diferencial para distinguir palavras?",
+    opcoes: [
+      { label: "A", valor: "Para (verbo) x Para (preposição)." },
+      { label: "B", valor: "Pêlo (cabelo) x Pelo (por + o)." },
+      { label: "C", valor: "Pôde (pretérito) x Pode (presente)." },
+      { label: "D", valor: "Pólo (extremidade) x Polo (jogo)." },
+    ],
+    correta: "C",
+    explicacao:
+      "O acento em 'pôde' (passado de poder, 3ª pes. sing.) continua para não confundir com 'pode'. O acento diferencial também continua em: Pôr x Por, Têm x Tem (plural e singular), Vêm x Vem (plural e singular).",
+  },
+  {
+    id: 206,
+    pergunta:
+      "A palavra 'Bocaiuva' não leva acento por causa da mesma regra aplicada em qual outra palavra?",
+    opcoes: [
+      { label: "A", valor: "Jiboia (ditongo aberto nas paraxítonas)." },
+      { label: "B", valor: "Voo (hiato de mesma letra nas paroxítonas)." },
+      { label: "C", valor: "Guaíba (hiato após ditongo em oxítona)." },
+      {
+        label: "D",
+        valor:
+          "Baiuca (u/i tônico fazendo hiato após ditongo nas paroxítonas).",
+      },
+    ],
+    correta: "D",
+    explicacao:
+      "Baiuca e Bocaiuva sofrem da mesma regra: i e u precedidos de ditongo na penúltima sílaba (paroxítonas) perderam o acento.",
+  },
+];
+const QUIZ_MOD4_POOL: QuizQuestion[] = [
+  {
+    id: 301,
+    pergunta:
+      "A regra principal para uso do hífen com prefixos é a dos opostos. Assinale a alternativa correta:",
+    opcoes: [
+      {
+        label: "A",
+        valor:
+          "Vogais iguais se juntam (microondas). Vogais diferentes se separam com hífen (auto-escola).",
+      },
+      {
+        label: "B",
+        valor:
+          "Vogais iguais se separam com hífen (micro-ondas). Vogais diferentes se juntam (autoescola).",
+      },
+      {
+        label: "C",
+        valor: "Todas as vogais repetidas são aglutinadas (antiinflamatório).",
+      },
+      { label: "D", valor: "Nenhuma alternativa está correta." },
+    ],
+    correta: "B",
+    explicacao:
+      "Os opostos se atraem e os iguais se repelem. Vogais IGUAIS = separa com hífen (micro-ondas, anti-inflamatório). Vogais DIFERENTES = junta tudo (autoescola, infraestrutura).",
+  },
+  {
+    id: 302,
+    pergunta:
+      "Como se escreve o prefixo terminado em vogal quando a próxima palavra começa por 'R' ou 'S'?",
+    opcoes: [
+      { label: "A", valor: "Com hífen. Ex: mini-saia, ultra-som." },
+      {
+        label: "B",
+        valor: "Sem hífen, mas dobra-se o R ou S. Ex: minissaia, ultrassom.",
+      },
+      { label: "C", valor: "Sem hífen e sem dobrar. Ex: minisaia, ultrasom." },
+      { label: "D", valor: "Com hífen e dobra-se o R ou S. Ex: mini-ssaia." },
+    ],
+    correta: "B",
+    explicacao:
+      "Se o prefixo terminar em VOGAL e a segunda palavra começar com R/S, não tem hífen, junta-se e dobra-se a consoante. Ex: minissaia, antissocial, macrorregião.",
+  },
+  {
+    id: 303,
+    pergunta:
+      "Palavras compostas que PERDERAM a noção de composition pelo uso consagrado devem ser separadas por hífen?",
+    opcoes: [
+      {
+        label: "A",
+        valor: "Sempre, porque a história da palavra dita a regra.",
+      },
+      { label: "B", valor: "Não, perdem o hífen e aglutinam-se." },
+      { label: "C", valor: "Apenas se tiverem mais de 3 sílabas." },
+      {
+        label: "D",
+        valor: "Apenas palavras ligadas por preposição, como 'pé-de-moleque'.",
+      },
+    ],
+    correta: "B",
+    explicacao:
+      "Se a palavra já é vista como uma só (Ex: girassol, mandachuva, passatempo, pontapé, paraquedas), ela perdeu o hífen pelo Acordo Ortográfico.",
+  },
+  {
+    id: 304,
+    pergunta:
+      "Sobre as palavras ligadas por elementos de ligação (ex: prep. 'de'), marca a ERRADA segundo a nova regra:",
+    opcoes: [
+      { label: "A", valor: "Pé de moleque (sem hífen)." },
+      { label: "B", valor: "Cara de pau (sem hífen)." },
+      { label: "C", valor: "Dia a dia (sem hífen)." },
+      { label: "D", valor: "Mão-de-obra (com hífen)." },
+    ],
+    correta: "D",
+    explicacao:
+      "A regra diz: Caiu o hífen em palavras compostas com elemento de ligação (de, a, do). O correto é MÃO DE OBRA, PÉ DE MOLEQUE, DIA A DIA. Exceções clássicas são nomes de plantas/animais (bico-de-papagaio) e palavras consagradas (água-de-colônia, arco-da-velha, mais-que-perfeito, cor-de-rosa).",
+  },
+  {
+    id: 305,
+    pergunta: "A palavra 'sub-reino' usa hífen porque:",
+    opcoes: [
+      {
+        label: "A",
+        valor: "Prefixos SUB ou SOB seguidos de R mantêm o hífen.",
+      },
+      {
+        label: "B",
+        valor:
+          "Todo prefixo tem hífen obrigatoriamente quando não dobra a letra.",
+      },
+      { label: "C", valor: "Foi padronizado pela literatura." },
+      { label: "D", valor: "O hífen substituiu o acento." },
+    ],
+    correta: "A",
+    explicacao:
+      "Os prefixos SUB e SOB exigem hífen se a segunda palavra começar com R (sub-raça, sub-região) ou B (sob-base). Ah, e SUB-HUMANO também ganha o hífen se mantivermos o H, mas 'subumano' (sem H e junto) também é aceito.",
+  },
+  {
+    id: 306,
+    pergunta:
+      "Prefixos como 'ex', 'vice', 'aquém', 'além' e 'recém' seguem que regra para o hífen?",
+    opcoes: [
+      { label: "A", valor: "Sem hífen." },
+      { label: "B", valor: "Apenas com vogais oponentes." },
+      { label: "C", valor: "SEMPRE têm hífen." },
+      { label: "D", valor: "Somente com nomes próprios." },
+    ],
+    correta: "C",
+    explicacao:
+      "Famosa 'Regra do Ex e do Vice'. Com 'ex', 'vice' (no sentido de posição anterior ou substituta), 'além', 'aquém' e 'recém', o hífen é sempre obrigatório. Ex: ex-namorado, vice-presidente, recém-casado.",
+  },
+];
+
+const QUIZ_MOD5_POOL: QuizQuestion[] = [
+  {
+    id: 401,
+    pergunta:
+      "A frase: 'Não sei _____ tudo deu errado. Você concorda _____?' Os pronomes correspondentes são:",
+    opcoes: [
+      { label: "A", valor: "por que / porquê" },
+      { label: "B", valor: "por que / com o por que" },
+      { label: "C", valor: "porque / porque" },
+      { label: "D", valor: "porquê / por quê" },
+    ],
+    correta: "A",
+    explicacao:
+      "A primeira frase usa 'por que' (separado e sem acento) como equivalente a 'por qual motivo'. A segunda, no final da pergunta ('Você concorda por quê?'), é separado e COM acento pois precede ponto de interrogação.",
+  },
+  {
+    id: 402,
+    pergunta: "Marque a opção onde ONDE / AONDE estão usados corretamente:",
+    opcoes: [
+      { label: "A", valor: "Aonde você mora agora?" },
+      { label: "B", valor: "Onde vamos na sexta-feira?" },
+      { label: "C", valor: "Não sei aonde você quer chegar." },
+      { label: "D", valor: "Aonde estávamos mesmo?" },
+    ],
+    correta: "C",
+    explicacao:
+      "ONDE é lugar fixo, ideia de permanência (Onde você mora?). AONDE indica movimento/destino, equivale a 'para onde' e acompanha verbos como Ir, Chegar. (Aonde = para onde você quer chegar).",
+  },
+  {
+    id: 403,
+    pergunta:
+      "Preencha a lacuna: 'O navio estava a _____ de 5 quilômetros do cais.'",
+    opcoes: [
+      { label: "A", valor: "cerca" },
+      { label: "B", valor: "acerca" },
+      { label: "C", valor: "ha cerca" },
+      { label: "D", valor: "a cerca" },
+    ],
+    correta: "A",
+    explicacao:
+      "A expressão é 'Cerca de' (que indica aproximadamente). Ex: Estava a cerca de 5 km. Já 'Acerca de' significa 'sobre/a respeito de' (Ex: Falamos ACERCA DE política). E 'Há cerca de' indica tempo passado.",
+  },
+  {
+    id: 404,
+    pergunta:
+      "Marque a certa. 'Ele é um _____ profissional; foi muito _____ no teste.'",
+    opcoes: [
+      { label: "A", valor: "mau / mal" },
+      { label: "B", valor: "mau / mau" },
+      { label: "C", valor: "mal / mau" },
+      { label: "D", valor: "mal / mal" },
+    ],
+    correta: "A",
+    explicacao:
+      "Macete: MAU é o oposto de BOM. MAL é o oposto de BEM. Ele é um BOM profissional (então é MAU). Ele foi muito BEM no teste (então foi MAL).",
+  },
+  {
+    id: 405,
+    pergunta: "A expressão SENÃO é usada toda junta quando:",
+    opcoes: [
+      { label: "A", valor: "Puder ser substituída por 'caso não'." },
+      {
+        label: "B",
+        valor:
+          "Puder ser substituída por 'a não ser', 'do contrário', 'mas sim' ou significar um 'defeito'.",
+      },
+      { label: "C", valor: "Vem depois da palavra 'estudo'." },
+      {
+        label: "D",
+        valor: "Estiver acompanhada do pronome ELA. (só se não...)",
+      },
+    ],
+    correta: "B",
+    explicacao:
+      "Junto: Senão (a não ser, mas sim, caso contrário, defeito). Separado: Se não (condição -> caso não chova, iremos).",
+  },
+  {
+    id: 406,
+    pergunta:
+      "Em frases declarativas afirmativas (respostas justiticativas), usa-se qual tipo de por quê?",
+    opcoes: [
+      { label: "A", valor: "Por que (separado e s/ acento)" },
+      { label: "B", valor: "Porque (junto e s/ acento)" },
+      { label: "C", valor: "Porquê (junto e c/ acento)" },
+      { label: "D", valor: "Por quê (separado e c/ acento)" },
+    ],
+    correta: "B",
+    explicacao:
+      "Respostas = PORQUE (junto e sem acento), tem valor de 'pois'. Quando o 'porquê' vier acompanhado de artigo (O porquê), será um substantivo, junto COM acento.",
+  },
+];
+const QUIZ_MOD6_POOL: QuizQuestion[] = [
+  {
+    id: 501,
+    pergunta:
+      "Em relação ao Acordo Ortográfico vigente, observe as palavras: I. Pinguim; II. Voos; III. Boia. Assinale a correta:",
+    opcoes: [
+      { label: "A", valor: "Todas perderam o acento gráfico/trema." },
+      {
+        label: "B",
+        valor:
+          "Pinguim (trema), Voos (acento no hiato) e Boia (ditongo de oxítona) perderam seus sinais.",
+      },
+      { label: "C", valor: "Apenas 'Boia' perdeu o acento." },
+      { label: "D", valor: "Voos mantém o acento pois é exceção." },
+    ],
+    correta: "A",
+    explicacao:
+      "PINGUIM perdeu o trema (ü). VOOS (hiato oo) perdeu o circunflexo. E BÓIA virou BOIA porque o ditongo aberto OI em palavras paroxítonas perdeu o acento.",
+  },
+  {
+    id: 502,
+    pergunta:
+      "A palavra 'micro-ondas' tem hífen pela mesma regra que obriga o hífen em:",
+    opcoes: [
+      { label: "A", valor: "Microcomputador" },
+      { label: "B", valor: "Anti-inflamatório" },
+      { label: "C", valor: "Autossustentável" },
+      { label: "D", valor: "Inter-regional" },
+    ],
+    correta: "B",
+    explicacao:
+      "Micro-ondas tem hífen pois a vogal final do prefixo (o) é igual à inicial da segunda palavra (o). O mesmo ocorre em anti-inflamatório (i-i).",
+  },
+  {
+    id: 503,
+    pergunta: "Identifique a frase correta quanto ao uso dos porquês:",
+    opcoes: [
+      { label: "A", valor: "Não sei por que a sonda falhou." },
+      { label: "B", valor: "Ele chorou porque?" },
+      { label: "C", valor: "Eis o por que da demora." },
+      { label: "D", valor: "Porquê você não veio trabalhar?" },
+    ],
+    correta: "A",
+    explicacao:
+      "Em A, equivale a 'por qual motivo' (separado e sem acento). B: 'por quê' (interrogação). C: 'o porquê' (substantivado, tem acento). D: 'Por que' (início de pergunta, não tem acento).",
+  },
+  {
+    id: 504,
+    pergunta: "Qual dupla está 100% correta no uso de acentuação?",
+    opcoes: [
+      { label: "A", valor: "Eles pôdem vir amanhã / O vôo atrasou" },
+      { label: "B", valor: "Eles vêm cedo / Ele intervém sempre" },
+      { label: "C", valor: "Ideía brilhante / Heroi fraco" },
+      { label: "D", valor: "Pêlo do cão / Péra madura" },
+    ],
+    correta: "B",
+    explicacao:
+      "Vêm (plural de vir recebe circunflexo); Intervém (derivado de terceira pessoa do singular, recebe acento agudo, virando paroxítona terminada em 'em' oxítona). O plural seria intervêm.",
+  },
+  {
+    id: 505,
+    pergunta:
+      "A conjugação 'Eles creem' e 'Ele cre' (verbo crer) estão grafadas corretamente?",
+    opcoes: [
+      { label: "A", valor: "Sim, faltou acento apenas na plural." },
+      { label: "B", valor: "O correto é crêem e crê." },
+      { label: "C", valor: "O correto é creem e crê." },
+      { label: "D", valor: "Nenhuma das anteriores." },
+    ],
+    correta: "C",
+    explicacao:
+      "'Creem' (hiato 'ee' perdeu acento com o Novo Acordo). Já 'crê' (monossílabo tônico finalizado em E ganha circunflexo, independentemente do acordo).",
+  },
+  {
+    id: 506,
+    pergunta:
+      "Complete corretamente: 'Os técnicos agiram _____ e por isso o equipamento sofreu um _____ irreparável.'",
+    opcoes: [
+      { label: "A", valor: "mau / mau" },
+      { label: "B", valor: "mal / mal" },
+      { label: "C", valor: "mau / mal" },
+      { label: "D", valor: "mal / mal" },
+      { label: "E", valor: "mal / mau" },
+    ],
+    correta: "D",
+    explicacao:
+      "Eles agiram BEM (oposto de MAL na ação adverbial). O equipamento sofreu um BOM defeito(?) Não, oposto de BOM é MAU (adjetivo qualificando o substantivo irreparável). Logo MAL / MAU.",
+  },
+];
+
+// ============================================================================
+// COMPONENTE PRINCIPAL
+// ============================================================================
 
 export default function AulaOrtografia({
   onComplete,
   isCompleted,
   loading,
-  xpGanho = 50,
-  currentProgress,
-  onUpdateProgress,
-  titulo,
-  descricao,
-  duracao,
-  materiaNome,
-  materiaCor,
-  materiaId,
   prevTopico,
   nextTopico,
+  currentProgress,
+  onUpdateProgress,
+  materiaCor,
+  materiaNome,
+  materiaId,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
   const [completedModules, setCompletedModules] = useState<Set<string>>(
     new Set(),
   );
 
-  // Perguntas do Quiz por módulo
   const [qMod1, setQMod1] = useState<QuizQuestion[]>([]);
   const [qMod2, setQMod2] = useState<QuizQuestion[]>([]);
   const [qMod3, setQMod3] = useState<QuizQuestion[]>([]);
   const [qMod4, setQMod4] = useState<QuizQuestion[]>([]);
   const [qMod5, setQMod5] = useState<QuizQuestion[]>([]);
   const [qMod6, setQMod6] = useState<QuizQuestion[]>([]);
-  const [qMod7, setQMod7] = useState<QuizQuestion[]>([]);
-  const [qMod8, setQMod8] = useState<QuizQuestion[]>([]);
-  const [qMod9, setQMod9] = useState<QuizQuestion[]>([]);
-  const [qMod10, setQMod10] = useState<QuizQuestion[]>([]);
 
   useEffect(() => {
     setQMod1(getRandomQuestions(QUIZ_MOD1_POOL, 6));
     setQMod2(getRandomQuestions(QUIZ_MOD2_POOL, 6));
     setQMod3(getRandomQuestions(QUIZ_MOD3_POOL, 6));
     setQMod4(getRandomQuestions(QUIZ_MOD4_POOL, 6));
-    setQMod5(getRandomQuestions(QUIZ_MOD5_POOL, 10));
-    setQMod6(getRandomQuestions(QUIZ_MOD6_POOL, 8));
-    setQMod7(getRandomQuestions(QUIZ_MOD7_POOL, 8));
-    setQMod8(getRandomQuestions(QUIZ_MOD8_POOL, 8));
-    setQMod9(getRandomQuestions(QUIZ_MOD9_POOL, 8));
-    setQMod10(
+    setQMod5(getRandomQuestions(QUIZ_MOD5_POOL, 6));
+    setQMod6(
       getRandomQuestions(
         [
           ...QUIZ_MOD1_POOL,
@@ -115,2141 +721,1514 @@ export default function AulaOrtografia({
           ...QUIZ_MOD4_POOL,
           ...QUIZ_MOD5_POOL,
           ...QUIZ_MOD6_POOL,
-          ...QUIZ_MOD7_POOL,
-          ...QUIZ_MOD8_POOL,
-          ...QUIZ_MOD9_POOL,
-          ...QUIZ_MOD10_POOL,
         ],
-        15,
+        20,
       ),
     );
   }, []);
 
-  const isModuleUnlocked = useCallback(
-    (index: number) => {
-      if (index === 0) return true;
-      return completedModules.has(MODULE_DEFS[index - 1].id) || isCompleted;
-    },
-    [completedModules, isCompleted],
-  );
+  // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
 
-  const handleModuleComplete = useCallback(
-    (moduleId: string, score: number) => {
-      if (score >= 70) {
-        const newSet = new Set(completedModules).add(moduleId);
-        setCompletedModules(newSet);
-
-        const total = MODULE_DEFS.length;
-        const done = newSet.size;
-        const percent = Math.round((done / total) * 100);
-
-        if (onUpdateProgress) {
-          onUpdateProgress(percent);
-        }
-
-        const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
-        if (index < MODULE_DEFS.length - 1) {
-          setTimeout(() => setActiveTab(MODULE_DEFS[index + 1].id), 1500);
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        } else {
-          onComplete?.();
-        }
+  useEffect(() => {
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
       }
-    },
-    [completedModules, onComplete, onUpdateProgress],
-  );
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
 
+  useEffect(() => {
+    const total = MODULE_DEFS.length;
+    const done = completedModules.size;
+    const percent = Math.round((done / total) * 100);
+  }, [completedModules]);
+
+  const isModuleUnlocked = useCallback((_moduleIndex: number) => {
+    return true; // TEMPORÁRIO: Desbloqueado para revisão
+  }, []);
+
+  const handleModuleComplete = (moduleId: string, score: number) => {
+    if (score >= 60) {
+      const newSet = new Set(completedModules).add(moduleId);
+      setCompletedModules(newSet);
+
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
+
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
+
+      const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
+      if (index < MODULE_DEFS.length - 1) {
+        setActiveTab(MODULE_DEFS[index + 1].id);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        onComplete();
+      }
+    }
+  };
   return (
     <AulaTemplate
       activeTab={activeTab}
-      setActiveTab={(val) => {
-        const idx = MODULE_DEFS.findIndex((m) => m.id === val);
-        if (isModuleUnlocked(idx)) setActiveTab(val);
-      }}
-      modules={MODULE_DEFS}
+      setActiveTab={setActiveTab}
+      modules={Array.from(MODULE_DEFS)}
       completedModules={completedModules}
       isModuleUnlocked={isModuleUnlocked}
-      titulo={titulo}
-      descricao={descricao}
-      duracao={duracao}
+      titulo="Ortografia e Acentuação"
+      descricao="Domine grafia, fonética e as novas regras de acentuação para gabaritar."
+      duracao="45 min"
       materiaNome={materiaNome}
       materiaCor={materiaCor}
       materiaId={materiaId}
       isCompleted={isCompleted}
-      loading={loading}
-      xpGanho={xpGanho}
-      currentProgress={currentProgress}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
       onComplete={onComplete}
+      loading={loading}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
     >
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        {/* MÓDULO 1: ENCONTROS VOCÁLICOS */}
-        <TabsContent value="modulo-1" className="space-y-[50px]">
-          <ModuleBanner
-            numero={1}
-            titulo="Encontros Vocálicos"
-            descricao="Domine a base da fonética: Ditongos, Tritongos e Hiatos na pronúncia correta."
-            gradiente="bg-gradient-to-br from-indigo-600 via-blue-600 to-indigo-700"
+      {/* MÓDULO 1: ACENTUAÇÃO GRÁFICA */}
+      {/* =======================================================
+                        MÓDULO 1: Encontros Vocálicos e Sílabas
+                    ======================================================= */}
+      <TabsContent
+        value="modulo-1"
+        className="space-y-12 mt-12 focus-visible:outline-none"
+      >
+        <ModuleBanner
+          numero={1}
+          titulo="Encontros Vocálicos e Sílabas"
+          descricao="A base da fonética: entenda ditongos, tritongos, hiatos e como separar as sílabas corretamente."
+          gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+          <ModuleSectionHeader
+            index={1}
+            title="Encontros Vocálicos"
+            description="A fundação da fonética: compreenda a união e a separação de sons vocálicos nas palavras."
+            variant="indigo"
           />
 
-          <div className="space-y-[50px]">
-            {/* Seção 1: Conceitos Fundamentais */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={1}
-                title="Conceitos Fundamentais"
-                description="Os pilares da fonética e os tipos de encontros entre sons vocálicos."
-                variant="indigo"
-              />
+          <AlertBox tipo="info" titulo="O que são?">
+            São agrupamentos de vogais e semivogais em uma mesma palavra. É o
+            primeiro passo para entender a acentuação gráfica.
+          </AlertBox>
 
-              <ContentAccordion
-                titulo="🎯 Entendendo os Encontros Vocálicos"
-                icone={<LuTarget className="w-6 h-6" />}
-                corIndicador="bg-indigo-500"
-                defaultOpen={true}
-                slides={[
-                  {
-                    titulo: "O que são Encontros Vocálicos?",
-                    icone: "🔤",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Encontros vocálicos são a reunião de duas ou mais vogais
-                          (ou semivogais) na mesma palavra. Eles são essenciais para
-                          entender a separação de sílabas e a colocação de acentos.
-                          Na prova Cesgranrio, questões sobre encontros vocálicos
-                          aparecem frequentemente em análise silábica.
-                        </p>
-                        <AlertBox tipo="info" titulo="Definição Chave">
-                          Vogais: A, E, I, O, U | Semivogais: Y, W (ou I, U em
-                          certos contextos)
-                        </AlertBox>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Ditongo: A Dupla Inseparável",
-                    icone: "👥",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Ditongo é quando uma <strong>vogal</strong> e uma
-                          <strong>semivogal</strong> aparecem na mesma sílaba.
-                          Eles NÃO se separam na silabação.
-                        </p>
-                        <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                          <p className="text-xs font-bold text-indigo-600 mb-2">
-                            Ditongo Decrescente (V → SV):
-                          </p>
-                          <p className="text-sm">
-                            Pai (pai), Lei (lei), Caixa (cai-xa)
-                          </p>
-                        </div>
-                        <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-600 mb-2">
-                            Ditongo Crescente (SV → V):
-                          </p>
-                          <p className="text-sm">
-                            Glória (gló-ria), Série (sé-rie), Água (á-gua)
-                          </p>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Tritongo: A Trinca Rara",
-                    icone: "🎪",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Tritongo é quando <strong>semivogal + vogal + semivogal</strong>
-                          aparecem na mesma sílaba. São raros, mas a Cesgranrio adora
-                          cobrar!
-                        </p>
-                        <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
-                          <p className="text-xs font-bold text-amber-600 mb-2">
-                            Exemplos Clássicos:
-                          </p>
-                          <ul className="text-sm space-y-1">
-                            <li>Paraguai (pa-ra-guai) → SV+V+SV</li>
-                            <li>Saguão (sa-guão) → SV+V+SV</li>
-                            <li>Quais (quais) → Uma única sílaba!</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Hiato: A Separação Obrigatória",
-                    icone: "⚡",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Hiato ocorre quando <strong>duas vogais</strong> aparecem
-                          juntas, mas em sílabas <strong>diferentes</strong>. A
-                          pronúncia deixa claro a separação.
-                        </p>
-                        <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                          <p className="text-xs font-bold text-rose-600 mb-2">
-                            Exemplos com Acentuação:
-                          </p>
-                          <ul className="text-sm space-y-1">
-                            <li>Saúde (sa-ú-de) → Acentua o U</li>
-                            <li>Poesia (po-e-si-a) → Sem acento</li>
-                            <li>Criação (cri-a-ção) → Ditongo ou Hiato?</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                ]}
-              />
-            </section>
-
-            {/* Seção 2: FlipCard Grid dos Tipos */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={2}
-                title="Memorização Visual"
-                description="Cartões interativos para fixação dos tipos de encontros."
-                variant="indigo"
-              />
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center text-center space-y-3 h-full">
-                      <span className="text-5xl">🌊</span>
-                      <h4 className="font-bold text-base">Ditongo Decrescente</h4>
+          <ContentAccordion
+            mode="stacked"
+            titulo="Tipos de Encontros"
+            icone={<LuBookOpen />}
+            corIndicador="bg-blue-500"
+            defaultOpen={true}
+            slides={[
+              {
+                titulo: "1. Ditongo",
+                icone: "👥",
+                conteudo:(
+                  <CardCarousel
+                    titulo=""
+                    itemsPerView={2}
+                    cards={[
+                      {
+                        icone: <LuZap />,
+                        title: "Conceito",
+                        descricao:
+                          "Vogal + Semivogal (ou vice-versa) na mesma sílaba. Ex: PAI, CAI-XA.",
+                      },
+                      {
+                        icone: <LuCheck className="text-emerald-500" />,
+                        title: "Crescente vs Decrescente",
+                        descricao:
+                          "Crescente: SV + V (Ex: Gló-ria). Decrescente: V + SV (Ex: Le-ite).",
+                        corFundo: "bg-emerald-500/10",
+                      },
+                    ]}
+                  />
+                ),
+              },
+              {
+                titulo: "2. Tritongo",
+                icone: "�",
+                conteudo:(
+                  <div className="p-4 bg-muted/50 rounded-xl border border-border flex items-center gap-4">
+                    <div className="p-3 bg-amber-500/20 text-amber-600 rounded-lg">
+                      <LuZap size={24} />
                     </div>
-                  }
-                  verso={
-                    <div className="flex flex-col justify-center h-full space-y-3 text-center p-3">
-                      <p className="text-xs font-bold text-indigo-600">
-                        Vogal + Semivogal
-                      </p>
-                      <p className="text-sm">Pai, Lei, Caixa, Pão</p>
-                      <p className="text-[10px] text-muted-foreground">
-                        Som vai caindo
+                    <div>
+                      <p className="font-bold">SV + V + SV na mesma sílaba</p>
+                      <p className="text-sm opacity-80 italic">
+                        Exemplos: Pa-ra-guai, Sa-guão, En-xaguei.
                       </p>
                     </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center text-center space-y-3 h-full">
-                      <span className="text-5xl">📈</span>
-                      <h4 className="font-bold text-base">Ditongo Crescente</h4>
+                  </div>
+                ),
+              },
+              {
+                titulo: "3. Hiato",
+                icone: "↔️",
+                conteudo:(
+                  <AlertBox tipo="warning" titulo="Não se engane!">
+                    No hiato, as vogais estão juntas na palavra, mas pertencem a
+                    sílabas DIFERENTES.
+                    <div className="mt-2 font-mono text-sm">
+                      Ex: Sa-ú-de, Co-e-lho, Ba-ú.
                     </div>
-                  }
-                  verso={
-                    <div className="flex flex-col justify-center h-full space-y-3 text-center p-3">
-                      <p className="text-xs font-bold text-blue-600">
-                        Semivogal + Vogal
-                      </p>
-                      <p className="text-sm">Glória, Série, Água</p>
-                      <p className="text-[10px] text-muted-foreground">
-                        Som vai subindo
-                      </p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center text-center space-y-3 h-full">
-                      <span className="text-5xl">🎪</span>
-                      <h4 className="font-bold text-base">Tritongo</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="flex flex-col justify-center h-full space-y-3 text-center p-3">
-                      <p className="text-xs font-bold text-amber-600">
-                        SV + V + SV
-                      </p>
-                      <p className="text-sm">Paraguai, Saguão, Quais</p>
-                      <p className="text-[10px] text-muted-foreground">
-                        Raro, mas cai!
-                      </p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center text-center space-y-3 h-full">
-                      <span className="text-5xl">⚡</span>
-                      <h4 className="font-bold text-base">Hiato</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="flex flex-col justify-center h-full space-y-3 text-center p-3">
-                      <p className="text-xs font-bold text-rose-600">
-                        Vogal + Vogal (separadas)
-                      </p>
-                      <p className="text-sm">Saúde, Poesia, Heroísmo</p>
-                      <p className="text-[10px] text-muted-foreground">
-                        Sílabas diferentes!
-                      </p>
-                    </div>
-                  }
-                />
-              </div>
-            </section>
+                  </AlertBox>
+                ),
+              },
+            ]}
+          />
+        </section>
 
-            {/* Seção 3: Exemplos Práticos */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={3}
-                title="Exemplos Práticos"
-                description="Casos reais que aparecem em provas Cesgranrio."
-                variant="indigo"
-              />
-
-              <CardCarousel
-                cards={[
-                  {
-                    title: "Ditongo x Hiato: Dia vs. Dia",
-                    descricao:
-                      "Dia = ditongo (dia). Dia separado = di-a (hiato). Contexto define!",
-                    icone: "🔄",
-                  },
-                  {
-                    title: "Acentuação em Hiatos",
-                    descricao:
-                      "Quando I ou U é tônico em hiato: saúde, baú, criação.",
-                    icone: "✍️",
-                  },
-                  {
-                    title: "Tritongos Raríssimos",
-                    descricao:
-                      "Paraguai, Saguão, Enxaguei. Identifique SV+V+SV na mesma sílaba!",
-                    icone: "🎯",
-                  },
-                  {
-                    title: "Vogais Dobradas",
-                    descricao:
-                      "OO e EE formam HIATO agora (Voo, Leem) após Novo Acordo.",
-                    icone: "📖",
-                  },
-                ]}
-              />
-            </section>
-
-            {/* Seção 4: Pegadinha Cesgranrio */}
-            <section className="space-y-4">
-              <AlertBox tipo="warning" titulo="⚠️ Pegadinha Cesgranrio">
-                A palavra "poesia" é <strong>po-e-sia</strong> (3 vogais, 2
-                hiatos) ou <strong>po-e-si-a</strong> (4 sílabas)? Na análise
-                clássica é hiato duplo! Mas em algumas regiões dialetais pode
-                ser pronunciada com ditongo. A banca sempre cobrou como hiato.
-              </AlertBox>
-
-              <AlertBox tipo="info" titulo="💡 Dica: Como Não Errar">
-                Pronuncie a palavra LENTAMENTE sílaba por sílaba. Se a vogal
-                muda de "timbre" (som), provavelmente é hiato. Se o som é único
-                e fluido, é ditongo.
-              </AlertBox>
-            </section>
-
-            {/* Seção 5: Resumo Visual */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={4}
-                title="Resumo Visual do Módulo"
-                description="Consolidação visual dos encontros vocálicos."
-                variant="indigo"
-              />
-
-              <LessonTabs
-                tabs={[
-                  {
-                    id: "resumo",
-                    label: "Resumo Visual",
-                    icon: LuBookOpen,
-                    content: (
-                      <ModuleSummaryCarouselNew
-                        moduloNome="Módulo 1"
-                        tituloAula="Ortografia"
-                        materia="Língua Portuguesa"
-                        images={[
-                          {
-                            title: "Mapa Mental: Encontros Vocálicos",
-                            type: "Mapa Mental",
-                            placeholderColor:
-                              "bg-indigo-100 dark:bg-indigo-900/30",
-                          },
-                          {
-                            title: "Tabela Comparativa",
-                            type: "Tabela",
-                            placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
-                          },
-                        ]}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={2}
+            title="Resumo e Multimídia"
+            variant="indigo"
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "video",
+                label: "Vídeo Aula",
+                icon:LuPlayCircle,
+                content:(
+                  <div className="w-full flex flex-col items-center py-6">
+                    <div className="w-full max-w-3xl">
+                      <VideoModal
+                        videoId="dQw4w9WgXcQ"
+                        title="Encontros Vocálicos"
+                        duration="12:00"
+                        thumbnail="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1074&auto=format&fit=crop"
                       />
-                    ),
-                  },
-                ]}
-              />
-            </section>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon:LuBookOpen,
+                content:(
+                  <ModuleSummaryCarouselNew
+                    moduloNome="Encontros Vocálicos"
+                    tituloAula="Ortografia e Acentuação"
+                    materia="Língua Portuguesa"
+                    images={[
+                      {
+                        title: "Mapa Mental: Ditongo vs Hiato",
+                        type: "Mapa Mental",
+                        placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
+                      },
+                      {
+                        title: "Fluxograma: Classificação Vocálica",
+                        type: "Diagrama",
+                        placeholderColor:
+                          "bg-emerald-100 dark:bg-emerald-900/30",
+                      },
+                      {
+                        title: "Infográfico: Tritongo na Prática",
+                        type: "Infográfico",
+                        placeholderColor: "bg-amber-100 dark:bg-amber-900/30",
+                      },
+                      {
+                        title: "Card Resumo: Separação Silábica",
+                        type: "Card",
+                        placeholderColor: "bg-purple-100 dark:bg-purple-900/30",
+                      },
+                    ]}
+                  />
+                ),
+              },
+              {
+                id: "visual",
+                label: "Macete Visual",
+                icon:LuBrain,
+                content:(
+                  <div className="text-center p-8 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-2xl border border-blue-500/10">
+                    <h3 className="text-xl font-bold text-foreground mb-4">
+                      O Segredo da Sílaba
+                    </h3>
+                    <div className="text-7xl my-8 animate-bounce">🎵 👄 🎵</div>
+                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                      "Os iguais se separam (hiato), os diferentes se unem
+                      (ditongo). Semivogal é apenas apoio!"
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                id: "audio",
+                label: "Áudio Resumo",
+                icon:LuMusic,
+                content:(
+                  <div className="w-full flex justify-center py-4">
+                    <div className="w-full max-w-md">
+                      <MusicPlayerCard
+                        audioUrl="#"
+                        titulo="O Samba do Encontro"
+                        artista="Prof. André"
+                        capaUrl="https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=1000&auto=format&fit=crop"
+                        lyrics={`(Verso 1)
+Se a vogal tá sozinha, é hiato meu irmão
+Se ela traz a semivogal, é ditongo na mão
+SV + V + SV, o tritongo apareceu
+Na prova da Petrobras, quem acerta sou eu!
 
-            {/* Quiz do Módulo 1 */}
-            <QuizInterativo
-              numero={1}
-              titulo="Encontros Vocálicos"
-              icone="🎯"
-              questoes={qMod1}
-              onComplete={(score) => handleModuleComplete("modulo-1", score)}
-              variant="indigo"
-            />
-          </div>
-        </TabsContent>
-
-        {/* MÓDULO 2: ACENTUAÇÃO GERAL */}
-        <TabsContent value="modulo-2" className="space-y-[50px]">
-          <ModuleBanner
-            numero={2}
-            titulo="Acentuação Geral"
-            descricao="Domine a lógica das Oxítonas, Paroxítonas e Proparoxítonas sem decoreba."
-            gradiente="bg-gradient-to-br from-blue-600 via-indigo-600 to-indigo-700"
+(Refrão)
+Encontro vocálico, não tem confusão
+Ditongo é junto, hiato é separação!
+                                                        `}
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+            ]}
           />
-
-          <div className="space-y-[50px]">
-            {/* Seção 1: A Regra de Ouro */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={1}
-                title="A Regra de Ouro da Acentuação"
-                description="O sistema de classificação por sílaba tônica."
-                variant="indigo"
-              />
-
-              <ContentAccordion
-                titulo="🎓 Classificação Tônica"
-                icone={<LuBookOpen className="w-6 h-6" />}
-                corIndicador="bg-indigo-500"
-                defaultOpen={true}
-                slides={[
-                  {
-                    titulo: "Oxítonas (tônica na última)",
-                    icone: "🎯",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          A última sílaba é a tônica. Acentuam-se as terminadas
-                          em: <strong>A, E, O, em (ém), ens</strong>.
-                        </p>
-                        <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                          <p className="font-bold text-sm mb-2">Exemplos:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Café (caf-é) ✓</li>
-                            <li>Armazém (ar-ma-zém) ✓</li>
-                            <li>Você (vo-cê) ✓</li>
-                            <li>Também (tam-bém) ✓</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Paroxítonas (tônica na penúltima)",
-                    icone: "👑",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          A penúltima sílaba é a tônica. <strong>TODAS</strong>
-                          as paroxítonas recebem acento! Não há exceção!
-                        </p>
-                        <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="font-bold text-sm mb-2">Exemplos:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Piscina (pis-ci-na) ✓</li>
-                            <li>História (his-tó-ria) ✓</li>
-                            <li>Lápis (lá-pis) ✓</li>
-                            <li>Médico (mé-di-co) ✓</li>
-                          </ul>
-                        </div>
-                        <AlertBox tipo="warning" titulo="Regra de Ouro">
-                          Paroxítona = SEMPRE ACENTUADA. Não perca essa!
-                        </AlertBox>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Proparoxítonas (tônica antes da penúltima)",
-                    icone: "🏆",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          A antepenúltima sílaba (ou anterior) é a tônica.
-                          <strong>100% acentuadas!</strong> Sem exceção!
-                        </p>
-                        <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                          <p className="font-bold text-sm mb-2">Exemplos:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Árvore (ár-vo-re) ✓</li>
-                            <li>Pássaro (pás-sa-ro) ✓</li>
-                            <li>Magnífico (mag-ní-fi-co) ✓</li>
-                            <li>Ínfimo (ín-fi-mo) ✓</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Monossílabos Tônicos",
-                    icone: "🔤",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Palavras com uma única sílaba que é tônica.
-                          Acentuam-se os terminados em: <strong>A, E, O</strong>
-                          (seguidos ou não de S).
-                        </p>
-                        <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
-                          <p className="font-bold text-sm mb-2">Exemplos:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Pá, Pás ✓</li>
-                            <li>Pé, Pés ✓</li>
-                            <li>Pó, Pós ✓</li>
-                            <li>Já ✓ / Mas ✗</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                ]}
-              />
-            </section>
-
-            {/* Seção 2: FlipCard Grid */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={2}
-                title="Memorização Prática"
-                description="Classificação rápida de palavras por tonicidade."
-                variant="indigo"
-              />
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center text-center space-y-3 h-full">
-                      <span className="text-4xl">🎯</span>
-                      <h4 className="font-bold text-sm">Oxítona</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="flex flex-col justify-center h-full space-y-2 text-center p-3">
-                      <p className="text-xs font-bold">Última = Tônica</p>
-                      <p className="text-xs">Café, Você, Também</p>
-                      <p className="text-[10px] font-semibold text-indigo-600">
-                        Termina em A, E, O, em, ens
-                      </p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center text-center space-y-3 h-full">
-                      <span className="text-4xl">👑</span>
-                      <h4 className="font-bold text-sm">Paroxítona</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="flex flex-col justify-center h-full space-y-2 text-center p-3">
-                      <p className="text-xs font-bold">Penúltima = Tônica</p>
-                      <p className="text-xs">Lápis, História, Médico</p>
-                      <p className="text-[10px] font-semibold text-blue-600">
-                        SEMPRE ACENTUADA!
-                      </p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center text-center space-y-3 h-full">
-                      <span className="text-4xl">🏆</span>
-                      <h4 className="font-bold text-sm">Proparoxítona</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="flex flex-col justify-center h-full space-y-2 text-center p-3">
-                      <p className="text-xs font-bold">Antepenúltima = Tônica</p>
-                      <p className="text-xs">Árvore, Pássaro, Ínfimo</p>
-                      <p className="text-[10px] font-semibold text-rose-600">
-                        100% ACENTUADAS!
-                      </p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center text-center space-y-3 h-full">
-                      <span className="text-4xl">1️⃣</span>
-                      <h4 className="font-bold text-sm">Monossílabo</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="flex flex-col justify-center h-full space-y-2 text-center p-3">
-                      <p className="text-xs font-bold">Uma Sílaba Tônica</p>
-                      <p className="text-xs">Pá, Pé, Pó, Já</p>
-                      <p className="text-[10px] font-semibold text-amber-600">
-                        A, E, O (com/sem S)
-                      </p>
-                    </div>
-                  }
-                />
-              </div>
-            </section>
-
-            {/* Seção 3: Exceções Importantes */}
-            <section className="space-y-4">
-              <AlertBox tipo="warning" titulo="⚠️ Acentos Diferenciais (Preservados)">
-                Pôr (verbo) vs. Por (preposição) | Pôde (passado) vs. Pode
-                (presente) | Côa (peneira) vs. Coa | Dêmos (subj.) vs. Demos
-                (passado)
-              </AlertBox>
-
-              <AlertBox tipo="info" titulo="💡 Dica: Novo Acordo">
-                Desapareceram os acentos em "oo" e "ee": Voo, Leem, Veem.
-                Mas em ditongos abertos "ei" e "oi" nas paroxítonas: Ideia,
-                Jiboia (sem acento agora).
-              </AlertBox>
-            </section>
-
-            {/* Seção 4: Carousel com Palavras */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={3}
-                title="Comparação de Casos"
-                description="Veja palavras similares com regras diferentes."
-                variant="indigo"
-              />
-
-              <CardCarousel
-                cards={[
-                  {
-                    title: "Monosílabos vs. Oxítonas",
-                    descricao:
-                      "Pé (monossílabo) vs. Café (oxítona). Ambos terminam em E!",
-                    icone: "🔄",
-                  },
-                  {
-                    title: "Paroxítona: Regra Universal",
-                    descricao:
-                      "Independente da terminação: Lápis, Ônibus, Táxi, Bíceps.",
-                    icone: "✓",
-                  },
-                  {
-                    title: "Proparoxítona: 100%",
-                    descricao:
-                      "Não existe proparoxítona sem acento. Sempre acentuada!",
-                    icone: "👑",
-                  },
-                  {
-                    title: "Acentos Diferenciais",
-                    descricao:
-                      "Pôr vs. Por | Pôde vs. Pode. Muito cobrado!",
-                    icone: "⚡",
-                  },
-                ]}
-              />
-            </section>
-
-            {/* Quiz do Módulo 2 */}
-            <QuizInterativo
-              numero={2}
-              titulo="Acentuação Geral"
-              icone="✍️"
-              questoes={qMod2}
-              onComplete={(score) => handleModuleComplete("modulo-2", score)}
-              variant="indigo"
-            />
-          </div>
-        </TabsContent>
-
-        {/* MÓDULO 3: NOVO ACORDO ORTOGRÁFICO */}
-        <TabsContent value="modulo-3" className="space-y-[50px]">
-          <ModuleBanner
+        </section>
+        <section className="mt-12">
+          <QuizInterativo
+            questoes={qMod1}
+            titulo="Encontros Vocálicos"
+            icone="🎯"
             numero={3}
-            titulo="Novo Acordo Ortográfico"
-            descricao="O que caiu, o que ficou e o que a Cesgranrio adora cobrar."
-            gradiente="bg-gradient-to-br from-teal-600 via-emerald-600 to-teal-700"
+            variant="indigo"
+            onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
-          <div className="space-y-[50px]">
-            {/* Seção 1: Mudanças Principais */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={1}
-                title="Principais Mudanças (2009)"
-                description="O que seu português perdeu e conquistou."
-                variant="emerald"
-              />
+        </section>
+      </TabsContent>
 
-              <ContentAccordion
-                titulo="📖 Reformas do Novo Acordo"
-                icone={<LuBookOpen className="w-6 h-6" />}
-                corIndicador="bg-emerald-500"
-                defaultOpen={true}
-                slides={[
-                  {
-                    titulo: "Desaparição do Trema",
-                    icone: "💎",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          O trema (¨) foi completamente extinto, exceto em nomes
-                          próprios estrangeiros e seus derivados.
-                        </p>
-                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="font-bold text-sm mb-2">Antes → Depois:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Aüência → Auência ✗</li>
-                            <li>Qüestão → Questão ✓</li>
-                            <li>Lingüeta → Lingueta ✓</li>
-                          </ul>
-                        </div>
-                        <AlertBox tipo="info" titulo="Exceção">
-                          Müller (alemão) mantém o trema porque é nome estrangeiro!
-                        </AlertBox>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Dupla OO e EE (Sem Acento)",
-                    icone: "📝",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Palavras com as terminações "-OO" e "-EE" perderam o
-                          acento. Agora são consideradas hiatos!
-                        </p>
-                        <div className="p-4 bg-teal-500/5 rounded-xl border border-teal-500/20">
-                          <p className="font-bold text-sm mb-2">Antes → Depois:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Vôo → Voo ✓</li>
-                            <li>Crêem → Creem ✓</li>
-                            <li>Lêem → Leem ✓</li>
-                            <li>Vêem → Veem ✓</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Ditongos Abertos em Paroxítonas",
-                    icone: "📊",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Os ditongos abertos "-EI" e "-OI" nas paroxítonas
-                          perderam o acento. Oxítonas e monossílabos mantêm!
-                        </p>
-                        <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="font-bold text-sm mb-2">Antes → Depois:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Idéia → Ideia ✓</li>
-                            <li>Jibóia → Jiboia ✓</li>
-                            <li>Assembléia → Assembleia ✓</li>
-                            <li>MAS: Herói (paroxítona, MAS proparoxítona)
-                            = Heroísmo</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Hífen: Regra dos Opostos",
-                    icone: "🔗",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Se a última letra do prefixo e a primeira da palavra
-                          são iguais, usa-se hífen. Se são diferentes, não usa.
-                        </p>
-                        <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                          <p className="font-bold text-sm mb-2">Iguais (Hífen):</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Anti + inflamatório = Anti-inflamatório ✓</li>
-                            <li>Micro + onda = Micro-onda ✓</li>
-                          </ul>
-                        </div>
-                        <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
-                          <p className="font-bold text-sm mb-2">Diferentes (Junto):</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Auto + escola = Autoescola ✓</li>
-                            <li>Infra + estrutura = Infraestrutura ✓</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                ]}
-              />
-            </section>
+      {/* =======================================================
+                        MÓDULO 2: Fundamentos da Acentuação
+                    ======================================================= */}
+      <TabsContent
+        value="modulo-2"
+        className="space-y-12 mt-12 focus-visible:outline-none"
+      >
+        <ModuleBanner
+          numero={2}
+          titulo="Fundamentos da Acentuação"
+          descricao="As 4 regras de ouro para dominar oxítonas, paroxítonas, proparoxítonas e monossílabos."
+          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+        />
 
-            {/* Seção 2: FlipCard Comparativo */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={2}
-                title="Antes vs. Depois"
-                description="Visualize as mudanças lado a lado."
-                variant="emerald"
-              />
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+          <ModuleSectionHeader
+            index={1}
+            title="Classificação da Sílaba Tônica"
+            description="Aprenda a identificar o coração sonoro das palavras para aplicar as regras de acento."
+            variant="emerald"
+          />
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center text-center space-y-3 h-full">
-                      <span className="text-5xl">❌</span>
-                      <h4 className="font-bold text-sm">Não Existe Mais</h4>
+          <AlertBox tipo="info" titulo="O que é a Sílaba Tônica?">
+            É a sílaba pronunciada com maior intensidade na palavra. Dependendo
+            da posição dessa sílaba (contando sempre do final para o início),
+            aplicamos regras de acentuação diferentes.
+            <div className="bg-emerald-500/10 border border-emerald-500/20 p-3 rounded-md text-sm mt-3">
+              <strong>Oxítona:</strong> Ja-ca-<strong>RÉ</strong> (última
+              forte).
+              <br />
+              <strong>Paroxítona:</strong> <strong>LÁ</strong>-pis (penúltima
+              forte).
+              <br />
+              <strong>Proparoxítona:</strong> <strong>MÉ</strong>-di-co
+              (antepenúltima forte).
+            </div>
+          </AlertBox>
+
+          <ContentAccordion
+            mode="stacked"
+            titulo="Regra Geral de Acentuação"
+            icone={<LuBookOpen />}
+            corIndicador="bg-emerald-500"
+            defaultOpen={true}
+            slides={[
+              {
+                titulo: "1. Proparoxítonas (A Regra Imbatível)",
+                icone: "👑",
+                conteudo:(
+                  <CardCarousel
+                    titulo=""
+                    itemsPerView={2}
+                    cards={[
+                      {
+                        icone: <LuBookOpen />,
+                        title: "Conceito",
+                        descricao:
+                          "Sílaba forte na antepenúltima. Esta é a regra mais fácil de todas, pois não possui exceções.",
+                      },
+                      {
+                        icone: <LuZap className="text-emerald-500" />,
+                        title: "A Regra",
+                        descricao: (
+                          <div className="text-center font-bold text-emerald-700 dark:text-emerald-400 mt-2">
+                            TODAS SÃO ACENTUADAS
+                          </div>
+                        ),
+                        corFundo: "bg-emerald-500/10",
+                      },
+                      {
+                        icone: <LuCheck className="text-blue-500" />,
+                        title: "Exemplos",
+                        descricao:
+                          "MÁ-gi-co, RÚ-sti-co, ÍN-te-rim, PÉS-si-mo, Ár-vo-re.",
+                        corFundo: "bg-blue-500/10",
+                      },
+                    ]}
+                  />
+                ),
+              },
+              {
+                titulo: "2. Paroxítonas (A Regra Longa)",
+                icone: "📜",
+                conteudo:(
+                  <CardCarousel
+                    titulo=""
+                    itemsPerView={2}
+                    cards={[
+                      {
+                        icone: <LuBookOpen />,
+                        title: "Conceito",
+                        descricao:
+                          "Sílaba forte na penúltima. A maioria das palavras em português são paroxítonas. Por isso, a regra geral é NÃO acentuar, exceto terminações específicas.",
+                      },
+                      {
+                        icone: <LuTriangleAlert className="text-amber-500" />,
+                        title: "A Regra Clássica",
+                        descricao:
+                          "Recebem acento as terminadas em L, N, R, X, PS (TúneL, PóleN, RevólveR, DúreX, FórcePS) e I(s), U(s), UM(uns), Ã(s), ÃO(s).",
+                        corFundo: "bg-amber-500/10",
+                      },
+                      {
+                        icone: <LuZap className="text-emerald-500" />,
+                        title: "A Regra de Ouro (Ditongos)",
+                        descricao: (
+                          <div className="text-center font-bold text-emerald-700 dark:text-emerald-400 mt-2">
+                            TODAS as terminadas em DITONGO ORAL ganham acento
+                          </div>
+                        ),
+                        corFundo: "bg-emerald-500/10",
+                      },
+                      {
+                        icone: <LuCheck className="text-blue-500" />,
+                        title: "Exemplos (Ditongos)",
+                        descricao: "Históri-A, Águ-A, Cárie-S, Vácu-O.",
+                        corFundo: "bg-blue-500/10",
+                      },
+                    ]}
+                  />
+                ),
+              },
+              {
+                titulo: "3. Oxítonas & Monossílabos Tônicos",
+                icone: "🔚",
+                conteudo:(
+                  <CardCarousel
+                    titulo=""
+                    itemsPerView={2}
+                    cards={[
+                      {
+                        icone: <LuBookOpen />,
+                        title: "Conceito: Oxítonas",
+                        descricao:
+                          "A última sílaba é a forte. Acentuam-se em A, E, O e a nasal EM/ENS.",
+                      },
+                      {
+                        icone: <LuCheck className="text-emerald-500" />,
+                        title: "Exemplos: Oxítonas",
+                        descricao: "CafÉ, PaletÓ, ArmazÉM, ParabÉNS.",
+                        corFundo: "bg-emerald-500/10",
+                      },
+                      {
+                        icone: <LuZap className="text-amber-500" />,
+                        title: "Monossílabos Tônicos",
+                        descricao:
+                          "Acentuam-se as mesmas das oxítonas, EXCETO a terminação EM/ENS. Ex: MÁ(s), PÉ(s), PÓ(s).",
+                        corFundo: "bg-amber-500/10",
+                      },
+                    ]}
+                  />
+                ),
+              },
+              {
+                titulo: "4. A Regra do Hiato",
+                icone: "🪓",
+                conteudo:(
+                  <CardCarousel
+                    titulo=""
+                    itemsPerView={2}
+                    cards={[
+                      {
+                        icone: <LuBookOpen />,
+                        title: "Conceituação",
+                        descricao:
+                          'O hiato ocorre quando duas vogais ficam em sílabas vizinhas na divisão silábica. Sempre acentue as vogais "I" e "U" dos hiatos se forem tônicas (fortes) e ficarem SOZINHAS na sílaba (ou acompanhadas de "S").',
+                      },
+                      {
+                        icone: <LuTriangleAlert className="text-amber-500" />,
+                        title: "Exceções Clássicas",
+                        descricao:
+                          'Não recebem acento se forem seguidas de "NH", e nem se formarem um ditongo decrescente na sílaba anterior (Nova Regra).',
+                        corFundo: "bg-amber-500/10",
+                      },
+                      {
+                        icone: <LuCheck className="text-emerald-500" />,
+                        title: "Exemplos COM Acento",
+                        descricao:
+                          "Sa-ú-de (sozinha), E-go-ís-ta (com S), Ba-ú.",
+                        corFundo: "bg-emerald-500/10",
+                      },
+                      {
+                        icone: <LuShield className="text-red-500" />,
+                        title: "Exemplos SEM Acento",
+                        descricao:
+                          "Ra-i-nha (tem NH logo depois), Ju-iz (acompanhada por Z e não S).",
+                        corFundo: "bg-red-500/10",
+                      },
+                    ]}
+                  />
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={2}
+            title="Resumo e Multimídia"
+            description="Ferramentas práticas para memorizar as 4 regras de ouro da acentuação."
+            variant="emerald"
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "video",
+                label: "Vídeo Aula",
+                icon:LuPlayCircle,
+                content:(
+                  <div className="w-full flex flex-col items-center py-6">
+                    <div className="w-full max-w-3xl">
+                      <VideoModal
+                        videoId="dQw4w9WgXcQ"
+                        title="Guia Definitivo Acentuação"
+                        duration="10:00"
+                        thumbnail="https://images.unsplash.com/photo-1434030216411-0bb7c3f3dfad?q=80&w=1000&auto=format&fit=crop"
+                      />
                     </div>
-                  }
-                  verso={
-                    <div className="flex flex-col justify-center h-full space-y-2 text-center p-3">
-                      <ul className="text-xs space-y-1">
-                        <li>Trema (¨)</li>
-                        <li>Acento em OO, EE</li>
-                        <li>Acento em EI/OI paroxítonas</li>
-                        <li>Alguns hífens antigos</li>
-                      </ul>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center text-center space-y-3 h-full">
-                      <span className="text-5xl">✅</span>
-                      <h4 className="font-bold text-sm">Sobreviveu</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="flex flex-col justify-center h-full space-y-2 text-center p-3">
-                      <ul className="text-xs space-y-1">
-                        <li>Acentos diferenciais</li>
-                        <li>Paroxítonas (100%)</li>
-                        <li>Proparoxítonas (100%)</li>
-                        <li>Hífen em iguais</li>
-                      </ul>
-                    </div>
-                  }
-                />
-              </div>
-            </section>
+                  </div>
+                ),
+              },
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon:LuBookOpen,
+                content:(
+                  <ModuleSummaryCarouselNew
+                    moduloNome="Fundamentos da Acentuação"
+                    tituloAula="Ortografia e Acentuação"
+                    materia="Língua Portuguesa"
+                    images={[
+                      {
+                        title: "Mapa Mental: Oxítonas vs Paroxítonas",
+                        type: "Mapa Mental",
+                        placeholderColor:
+                          "bg-emerald-100 dark:bg-emerald-900/30",
+                      },
+                      {
+                        title: "Fluxograma: Regras de Acentuação",
+                        type: "Diagrama",
+                        placeholderColor: "bg-teal-100 dark:bg-teal-900/30",
+                      },
+                      {
+                        title: "Infográfico: Proparoxítonas",
+                        type: "Infográfico",
+                        placeholderColor: "bg-amber-100 dark:bg-amber-900/30",
+                      },
+                      {
+                        title: "Card Resumo: Monossílabos Tônicos",
+                        type: "Card",
+                        placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
+                      },
+                    ]}
+                  />
+                ),
+              },
+              {
+                id: "visual",
+                label: "Macete Visual",
+                icon:LuBrain,
+                content:(
+                  <div className="text-center p-8 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-2xl border border-emerald-500/10">
+                    <h3 className="text-xl font-bold text-foreground mb-4">
+                      Rouxinol sem H
+                    </h3>
+                    <div className="text-7xl my-8 animate-bounce">🐦 ✨ 🎯</div>
+                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                      As consoantes R-OU-X-I-N-O-L (+ PS, UM e ditongos)
+                      acentuam as Paroxítonas. Memorize como "ROUXINOL"!
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                id: "audio",
+                label: "Áudio Resumo",
+                icon:LuMusic,
+                content:(
+                  <div className="w-full flex justify-center py-4">
+                    <div className="w-full max-w-md">
+                      <MusicPlayerCard
+                        audioUrl="#"
+                        titulo="O Funk da Acentuação"
+                        artista="Prof. André"
+                        capaUrl="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1000&auto=format&fit=crop"
+                        lyrics={`(Verso 1)
+Oxítona com A, E, O, EM — acento nela!
+Paroxítona com essas, não leva, irmão, é a regra.
+Proparoxítona? Todas acentuadas, sem exceção!
 
-            {/* Seção 3: Pegadinhas */}
-            <section className="space-y-4">
-              <AlertBox tipo="warning" titulo="⚠️ Pegadinha Cesgranrio">
-                A banca ADORA questões de ditongos abertos em paroxítonas!
-                Ideia, Jiboia, Assembleia sem acento agora. Mas se for
-                proparoxítona (Heroísmo), volta o acento!
-              </AlertBox>
+(Refrão)
+Rouxinol sem H, é o mnemônico sagrado
+R-OU-X-I-N-O-L, deixa o concurseiro preparado!
+                                                        `}
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
 
-              <AlertBox tipo="danger" titulo="❌ Erro Comum">
-                Escrever "Crêem" ou "Lêem" com acento. Errado! São "Creem"
-                e "Leem" agora. O EE formou hiato e perdeu o acento.
-              </AlertBox>
-            </section>
+        <section className="mt-12">
+          <QuizInterativo
+            questoes={qMod2}
+            titulo="Fundamentos da Acentuação"
+            icone="⚡"
+            numero={4}
+            variant="violet"
+            onComplete={(score) => handleModuleComplete("modulo-2", score)}
+          />
+        </section>
+      </TabsContent>
+      {/* =======================================================
+                        MÓDULO 3: O Novo Acordo
+                    ======================================================= */}
+      <TabsContent
+        value="modulo-3"
+        className="space-y-12 mt-12 focus-visible:outline-none"
+      >
+        <ModuleBanner
+          numero={3}
+          titulo="O Novo Acordo"
+          descricao="Aprenda o que caiu, o que mudou e o que a Cesgranrio mais cobra sobre a Nova Ortografia."
+          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
+        />
 
-            {/* Quiz do Módulo 3 */}
-            <QuizInterativo
-              numero={3}
-              titulo="Novo Acordo Ortográfico"
-              icone="🆕"
-              questoes={qMod3}
-              onComplete={(score) => handleModuleComplete("modulo-3", score)}
-              variant="emerald"
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+          <ModuleSectionHeader
+            index={1}
+            title="As Três Grandes Baixas"
+            description="Foco total no que mudou: ditongos abertos, tremas e as novas regras de hiato."
+            variant="violet"
+          />
+
+          <AlertBox tipo="warning" titulo="O Alvo da Banca">
+            As bancas amam cobrar as palavras que **perderam** o acento no Novo
+            Acordo. A regra de ouro é: Palavras paroxítonas sofreram as maiores
+            mudanças. As oxítonas quase não foram tocadas.
+          </AlertBox>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
+                  <span className="font-bold text-xl md:text-2xl bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">
+                    Adeus, Trema (¨)
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-4">
+                  <p>Abolido totalmente em palavras em português.</p>
+                  <div className="bg-blue-500/10 p-3 rounded">
+                    <p className="line-through text-red-400">
+                      Cinqüenta, Lingüiça
+                    </p>
+                    <p className="text-green-500 font-bold">
+                      Cinquenta, Linguiça
+                    </p>
+                  </div>
+                </div>
+              }
+            />
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
+                  <span className="font-bold text-xl md:text-2xl bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">
+                    Ditongos Abertos (Paroxítonas)
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-4">
+                  <p>
+                    ÉI e ÓI perderam o acento APENAS em palavras paroxítonas.
+                  </p>
+                  <div className="bg-indigo-500/10 p-3 rounded">
+                    <p className="line-through text-red-400">Idéia, Jibóia</p>
+                    <p className="text-green-500 font-bold">Ideia, Jiboia</p>
+                  </div>
+                </div>
+              }
+            />
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
+                  <span className="font-bold text-xl md:text-2xl bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">
+                    Hiato de vogais duplas
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-4">
+                  <p>
+                    Vogais repetidas (OO, EE) não têm mais acento circunflexo.
+                  </p>
+                  <div className="bg-sky-500/10 p-3 rounded">
+                    <p className="line-through text-red-400">
+                      Vôo, Lêem, Crêem
+                    </p>
+                    <p className="text-green-500 font-bold">Voo, Leem, Creem</p>
+                  </div>
+                </div>
+              }
             />
           </div>
-        </TabsContent>
+        </section>
 
-        {/* MÓDULO 4: USO DO HÍFEN */}
-        <TabsContent value="modulo-4" className="space-y-[50px]">
-          <ModuleBanner
-            numero={4}
-            titulo="Uso do Hífen"
-            descricao="A regra dos opostos: iguais repelem, diferentes atraem."
-            gradiente="bg-gradient-to-br from-amber-600 via-orange-600 to-amber-700"
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 mt-12">
+          <ModuleSectionHeader
+            index={2}
+            title="O Hiato Revoltado"
+            description="Desvende a pegadinha suprema dos hiatos após ditongos em todas as suas nuances."
+            variant="violet"
           />
-          <div className="space-y-[50px]">
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={1}
-                title="A Regra dos Polos"
-                description="Iguais usam hífen, diferentes não."
-                variant="amber"
-              />
 
-              <ContentAccordion
-                titulo="🔗 Regras de Hífen"
-                icone={<LuBookOpen className="w-6 h-6" />}
-                corIndicador="bg-amber-500"
-                defaultOpen={true}
-                slides={[
-                  {
-                    titulo: "Prefixos com Letras Iguais",
-                    icone: "=",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Quando a última letra do prefixo é igual à primeira
-                          da palavra, usa-se HÍFEN obrigatoriamente.
-                        </p>
-                        <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
-                          <p className="font-bold text-sm mb-2">Exemplos:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Anti + inflamatório = Anti-inflamatório</li>
-                            <li>Micro + onda = Micro-onda</li>
-                            <li>Semi + irmã = Semi-irmã</li>
-                            <li>Contra + almirante = Contra-almirante</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Prefixos com Letras Diferentes",
-                    icone: "≠",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Quando são diferentes, a palavra é escrita JUNTO
-                          (sem hífen).
-                        </p>
-                        <div className="p-4 bg-orange-500/5 rounded-xl border border-orange-500/20">
-                          <p className="font-bold text-sm mb-2">Exemplos:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Auto + escola = Autoescola</li>
-                            <li>Infra + estrutura = Infraestrutura</li>
-                            <li>Inter + urbano = Interurbano</li>
-                            <li>Pré + acordo = Pré-acordo (MAS aguarde)</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Exceções Importantes",
-                    icone: "⚠️",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Alguns prefixos SEMPRE usam hífen, independente da
-                          regra dos opostos.
-                        </p>
-                        <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                          <p className="font-bold text-sm mb-2">Prefixos sempre com hífen:</p>
-                          <ul className="text-sm space-y-1">
-                            <li><strong>Pré</strong>: Pré-escolar, Pré-histórico</li>
-                            <li><strong>Pró</strong>: Pró-reitor</li>
-                            <li><strong>Pós</strong>: Pós-guerra</li>
-                            <li><strong>Vice</strong>: Vice-presidente</li>
-                            <li><strong>Co</strong>: Co-autor (MAS as vezes junto)</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Palavras Compostas (Sem Prefixo)",
-                    icone: "🚀",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Palavras compostas tradicionais usam hífen quando
-                          formam um conceito único.
-                        </p>
-                        <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                          <p className="font-bold text-sm mb-2">Exemplos:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Guarda-chuva (não é guarda + chuva separado)</li>
-                            <li>Beija-flor</li>
-                            <li>Tamanho-padrão</li>
-                            <li>Obra-prima</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                ]}
-              />
-            </section>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <AlertBox tipo="warning" titulo="⚠️ Regra de Ouro">
-                <strong>Iguais = Hífen | Diferentes = Junto</strong>. Exemplo:
-                Anti-inflamatório (A+I) vs. Autoescola (O+E).
-              </AlertBox>
-              <AlertBox tipo="info" titulo="💡 Dica">
-                Se a banca der uma palavra com prefixo desconhecido, aplique a
-                regra dos opostos. É infalível!
+          <div className="flex flex-col md:flex-row gap-8 items-center">
+            <div className="flex-1 space-y-6">
+              <h3 className="text-2xl font-bold">
+                Feiura não tem mais acento!
+              </h3>
+              <p className="text-muted-foreground text-lg text-justify">
+                Uma regra muito específica mudou: as letras <strong>I</strong> e{" "}
+                <strong>U</strong> tônicas (hiato) perderam o acento se vierem
+                logo <strong>após um ditongo</strong> em palavras{" "}
+                <strong>paroxítonas</strong>.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-xl">
+                  <LuCheck className="text-green-500 w-6 h-6 shrink-0" />
+                  <div className="space-y-1">
+                    <p className="font-semibold text-lg">Feiura</p>
+                    <p className="text-muted-foreground text-sm">
+                      Fei(ditongo)-u(hiato)-ra = O "U" vem depois de ditongo
+                      "ei". Perde o acento.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-xl">
+                  <LuCheck className="text-green-500 w-6 h-6 shrink-0" />
+                  <div className="space-y-1">
+                    <p className="font-semibold text-lg">Bocaiuva</p>
+                    <p className="text-muted-foreground text-sm">
+                      Bo-cai(ditongo)-u(hiato)-va = Sem acento.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <AlertBox tipo="warning" titulo="A Pegadinha Suprema">
+                Essa regra só vale para as PAROXÍTONAS. Se for OXÍTONA, o acento
+                continua! Exemplo: <strong>Piauí</strong> (Pi-au-í) e{" "}
+                <strong>Tuiuiú</strong> continuam acentuadas.
               </AlertBox>
             </div>
-
-            <QuizInterativo
-              numero={4}
-              titulo="Uso do Hífen"
-              icone="🔗"
-              questoes={qMod4}
-              onComplete={(score) => handleModuleComplete("modulo-4", score)}
-              variant="amber"
-            />
           </div>
-        </TabsContent>
+        </section>
 
-        {/* MÓDULO 5: DIFICULDADES ORTOGRÁFICAS */}
-        <TabsContent value="modulo-5" className="space-y-[50px]">
-          <ModuleBanner
-            numero={5}
-            titulo="Dificuldades Ortográficas Comuns"
-            descricao="Porquês, Onde vs. Aonde, Mau vs. Mal e outros traumas ortográficos."
-            gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={3}
+            title="Resumo e Multimídia"
+            description="Recursos visuais e auditivos para fixar a base fonética e ortográfica."
+            variant="violet"
           />
-          <div className="space-y-[50px]">
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={1}
-                title="Os Maiores Vilões"
-                description="Palavras que confundem até falantes nativos."
-                variant="rose"
-              />
+          <LessonTabs
+            tabs={[
+              {
+                id: "video",
+                label: "Vídeo Aula",
+                icon:LuPlayCircle,
+                content:(
+                  <div className="w-full flex flex-col items-center py-6">
+                    <div className="w-full max-w-3xl">
+                      <VideoModal
+                        videoId="dQw4w9WgXcQ"
+                        title="Guia Definitivo Acordo"
+                        duration="11:00"
+                        thumbnail="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=1000&auto=format&fit=crop"
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon:LuBookOpen,
+                content:(
+                  <ModuleSummaryCarouselNew
+                    moduloNome="O Novo Acordo"
+                    tituloAula="Ortografia e Acentuação"
+                    materia="Língua Portuguesa"
+                    images={[
+                      {
+                        title: "Mapa Mental: Trema e Acento Diferencial",
+                        type: "Mapa Mental",
+                        placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
+                      },
+                      {
+                        title: "Tabela: Acentos que Morreram vs Sobreviveram",
+                        type: "Tabela",
+                        placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
+                      },
+                      {
+                        title: "Infográfico: Mudanças do Acordo",
+                        type: "Infográfico",
+                        placeholderColor:
+                          "bg-emerald-100 dark:bg-emerald-900/30",
+                      },
+                      {
+                        title: "Card Resumo: Pôde vs Pode",
+                        type: "Card",
+                        placeholderColor: "bg-amber-100 dark:bg-amber-900/30",
+                      },
+                    ]}
+                  />
+                ),
+              },
+              {
+                id: "visual",
+                label: "Macete Visual",
+                icon:LuBrain,
+                content:(
+                  <div className="text-center p-8 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-2xl border border-blue-500/10">
+                    <h3 className="text-xl font-bold text-foreground mb-4">
+                      Os Sobreviventes do Acordo
+                    </h3>
+                    <div className="text-7xl my-8 animate-pulse">😭 ➡️ 🦸‍♂️</div>
+                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                      "Se for oxítona, o acento continua. Se for paroxítona,
+                      tchau acento! Pôde, Pôr e Têm/Vêm sobreviveram."
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                id: "audio",
+                label: "Áudio Resumo",
+                icon:LuMusic,
+                content:(
+                  <div className="w-full flex justify-center py-4">
+                    <div className="w-full max-w-md">
+                      <MusicPlayerCard
+                        audioUrl="#"
+                        titulo="Rap do Novo Acordo"
+                        artista="Prof. André"
+                        capaUrl="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1000&auto=format&fit=crop"
+                        lyrics={`(Verso 1)
+O trema morreu, descanse em paz
+Pelo, polo, pera — sem acento, é demais!
+Mas pôde e pôr, esses são guerreiros
+Têm e vêm no plural, firmes e verdadeiros!
 
-              <ContentAccordion
-                titulo="🎯 Dúvidas Frequentes"
-                icone={<LuTarget className="w-6 h-6" />}
-                corIndicador="bg-rose-500"
-                defaultOpen={true}
-                slides={[
-                  {
-                    titulo: "Os Porquês",
-                    icone: "❓",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Quatro formas diferentes que a banca ADORA cobrar!
-                        </p>
-                        <div className="p-3 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                          <p className="text-xs font-bold text-rose-600 mb-2">
-                            1. POR QUÊ (2 palavras):
-                          </p>
-                          <p className="text-xs">Pronuncia "por-ké". Usa em fim de
-                          frase: "Por quê?" (pergunta)</p>
-                        </div>
-                        <div className="p-3 bg-pink-500/5 rounded-xl border border-pink-500/20">
-                          <p className="text-xs font-bold text-pink-600 mb-2">
-                            2. PORQUE (junto):
-                          </p>
-                          <p className="text-xs">Porque é uma conjunção, usa em
-                          respostas: "Fiz porque quis"</p>
-                        </div>
-                        <div className="p-3 bg-fuchsia-500/5 rounded-xl border border-fuchsia-500/20">
-                          <p className="text-xs font-bold text-fuchsia-600 mb-2">
-                            3. POR QUE (2 palavras):
-                          </p>
-                          <p className="text-xs">Sem acento. Usa em perguntas no meio
-                          da frase: "Por que você saiu?"</p>
-                        </div>
-                        <div className="p-3 bg-violet-500/5 rounded-xl border border-violet-500/20">
-                          <p className="text-xs font-bold text-violet-600 mb-2">
-                            4. PORQUÊ (1 palavra):
-                          </p>
-                          <p className="text-xs">Substantivo. "Qual é o porquê?" = "Qual
-                          é a razão?"</p>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Onde vs. Aonde",
-                    icone: "📍",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          A diferença é semântica e muita gente erra!
-                        </p>
-                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="font-bold text-sm mb-2">ONDE (repouso):</p>
-                          <p className="text-sm">Indica localização, permanência.
-                          "Onde você mora?" = "Em qual lugar?"</p>
-                          <p className="text-[10px] text-muted-foreground mt-2">
-                            → Não indica movimento!
-                          </p>
-                        </div>
-                        <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="font-bold text-sm mb-2">AONDE (movimento):</p>
-                          <p className="text-sm">Indica movimento, destinação.
-                          "Aonde você vai?" = "Para qual lugar?"</p>
-                          <p className="text-[10px] text-muted-foreground mt-2">
-                            → Sempre com verbo de movimento (ir, vir, etc.)!
-                          </p>
-                        </div>
-                        <AlertBox tipo="warning" titulo="Dica de Ouro">
-                          Se cabe "lá" ou "ali" na resposta, é ONDE. Se cabe
-                          "para lá", é AONDE.
-                        </AlertBox>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Mau vs. Mal",
-                    icone: "😈",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Simples: MAU é adjetivo, MAL é advérbio/substantivo.
-                        </p>
-                        <div className="p-4 bg-red-500/5 rounded-xl border border-red-500/20">
-                          <p className="font-bold text-sm mb-2">MAU (adjetivo):</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Um mau professor (qualidade negativa)</li>
-                            <li>Dia mau (adjetivando "dia")</li>
-                            <li>Mau comportamento</li>
-                          </ul>
-                        </div>
-                        <div className="p-4 bg-orange-500/5 rounded-xl border border-orange-500/20">
-                          <p className="font-bold text-sm mb-2">MAL (advérbio/substantivo):</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Ele canta mal (modificando verbo = advérbio)</li>
-                            <li>Sentir mal (substantivo: malefício, doença)</li>
-                            <li>Mal-estar (substantivo composto)</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "A Mais vs. Demais",
-                    icone: "📊",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Sutileza que a banca adora!
-                        </p>
-                        <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="font-bold text-sm mb-2">A MAIS (2 palavras):</p>
-                          <p className="text-sm">Preposição A + MAIS. "Uma xícara a mais"
-                          = algo adicional</p>
-                        </div>
-                        <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                          <p className="font-bold text-sm mb-2">DEMAIS (1 palavra):</p>
-                          <p className="text-sm">Advérbio. "Você fala demais" = excessivamente</p>
-                        </div>
-                      </div>
-                    ),
-                  },
-                ]}
-              />
-            </section>
+(Refrão)
+Novo acordo, nova lei, nova era
+Mas na prova a banca te espera!
+                                                        `}
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
 
-            {/* Seção 2: FlipCard Grid com Memorização */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={2}
-                title="Memorização Visual"
-                description="Cartões interativos para fixar as diferenças."
-                variant="rose"
-              />
+        <section className="mt-16">
+          <QuizInterativo
+            questoes={qMod3}
+            titulo="Quiz — O Novo Acordo"
+            icone="✅"
+            variant="violet"
+            numero={4}
+            onComplete={(score) => handleModuleComplete("modulo-3", score)}
+          />
+        </section>
+      </TabsContent>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center text-center space-y-3 h-full">
-                      <span className="text-4xl">❓</span>
-                      <h4 className="font-bold">Por Quê?</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="flex flex-col justify-center h-full space-y-2 p-3">
-                      <p className="text-xs font-bold text-rose-600">
-                        FIM DE FRASE
-                      </p>
-                      <p className="text-[10px]">
-                        "Você saiu? Por quê?"
-                      </p>
-                      <p className="text-[9px] text-muted-foreground">
-                        Sempre com acento e separado
-                      </p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center text-center space-y-3 h-full">
-                      <span className="text-4xl">🔗</span>
-                      <h4 className="font-bold">Porque</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="flex flex-col justify-center h-full space-y-2 p-3">
-                      <p className="text-xs font-bold text-pink-600">
-                        RESPOSTA
-                      </p>
-                      <p className="text-[10px]">
-                        "Porque quis sair"
-                      </p>
-                      <p className="text-[9px] text-muted-foreground">
-                        Conjunção de causa
-                      </p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center text-center space-y-3 h-full">
-                      <span className="text-4xl">📍</span>
-                      <h4 className="font-bold">Onde</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="flex flex-col justify-center h-full space-y-2 p-3">
-                      <p className="text-xs font-bold text-emerald-600">
-                        SEM MOVIMENTO
-                      </p>
-                      <p className="text-[10px]">
-                        "Onde você mora?"
-                      </p>
-                      <p className="text-[9px] text-muted-foreground">
-                        Repouso, localização
-                      </p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center text-center space-y-3 h-full">
-                      <span className="text-4xl">🚀</span>
-                      <h4 className="font-bold">Aonde</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="flex flex-col justify-center h-full space-y-2 p-3">
-                      <p className="text-xs font-bold text-cyan-600">
-                        COM MOVIMENTO
-                      </p>
-                      <p className="text-[10px]">
-                        "Aonde você vai?"
-                      </p>
-                      <p className="text-[9px] text-muted-foreground">
-                        Verbo de movimento
-                      </p>
-                    </div>
-                  }
-                />
+      {/* =======================================================
+                        MÓDULO 4: O Temido Uso do Hífen
+                    ======================================================= */}
+      <TabsContent
+        value="modulo-4"
+        className="space-y-12 mt-12 focus-visible:outline-none"
+      >
+        <ModuleBanner
+          numero={4}
+          titulo="O Temido Uso do Hífen"
+          descricao="Compreenda a lógica magnética dos prefixos para nunca mais errar uso de hífen."
+          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+          <ModuleSectionHeader
+            index={1}
+            title="A Lei Magnética dos Opostos"
+            variant="amber"
+          />
+
+          <AlertBox tipo="info" titulo="O Princípio Magnético do Hífen">
+            O uso do hífen com prefixos é governado por uma lógica simples que
+            lembra a física dos ímãs: opostos se atraem (juntam sem hífen) e
+            iguais se repelem (separam com hífen). Entender essa lógica evita a
+            decoreba infinita de regras.
+            <div className="bg-indigo-500/10 border border-indigo-500/20 p-3 rounded-md text-sm mt-3">
+              <strong>Exemplo Prático:</strong> Em "Autoescola", o prefixo
+              termina em "O", e a palavra começa com "E" (vogais
+              opostas/diferentes). Portanto, elas <strong>se atraem</strong> e
+              perdem o hífen!
+            </div>
+          </AlertBox>
+
+          <div className="flex flex-col md:flex-row gap-8 items-center mt-6">
+            <div className="w-full md:w-1/3 flex justify-center">
+              <div className="w-48 h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full flex items-center justify-center border-4 border-indigo-500 border-dashed">
+                <div className="text-center">
+                  <p className="text-4xl font-bold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
+                    Opostos
+                  </p>
+                  <p className="text-sm text-muted-foreground font-medium mt-2">
+                    SE ATRAEM (Juntam)
+                  </p>
+                </div>
               </div>
-            </section>
-
-            {/* Seção 3: Exemplos Práticos */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={3}
-                title="Casos Reais Cesgranrio"
-                description="Questões que exploram essas dificuldades."
-                variant="rose"
-              />
-
-              <CardCarousel
-                cards={[
-                  {
-                    title: "Questão Tipo: Os Porquês",
-                    descricao:
-                      "Complete: '____ você não veio? Porque ____ chover. Qual alternativa completa corretamente?'",
-                    icone: "❓",
-                  },
-                  {
-                    title: "Questão Tipo: Onde x Aonde",
-                    descricao:
-                      "'____ você foi? Para ____ os turistas viajaram?' Identifique os erros.",
-                    icone: "📍",
-                  },
-                  {
-                    title: "Questão Tipo: Mau x Mal",
-                    descricao:
-                      "'O ____ desempenho foi uma ____ influência para o projeto.' Preencha corretamente.",
-                    icone: "😈",
-                  },
-                  {
-                    title: "Questão Tipo: A Mais x Demais",
-                    descricao:
-                      "'Você pediu uma xícara ____ . Fala ____ sobre isso.' Qual está errada?",
-                    icone: "📊",
-                  },
-                ]}
-              />
-            </section>
-
-            {/* Seção 4: Pegadinha Extra */}
-            <section className="space-y-4">
-              <AlertBox tipo="warning" titulo="⚠️ Pegadinha Premium">
-                A banca combina várias dificuldades em UMA única questão! Ex: "Por que você foi aonde? Porque tinha mau hálito..." Leia com CUIDADO cada palavra!
-              </AlertBox>
-
-              <AlertBox tipo="success" titulo="✅ Macete Ouro">
-                Quando em dúvida: releia a frase com cada opção. Aquela que "soa" melhor para um falante nativo é geralmente a correta.
-              </AlertBox>
-            </section>
-
-            <QuizInterativo
-              numero={5}
-              titulo="Dificuldades Ortográficas"
-              icone="🧐"
-              questoes={qMod5}
-              onComplete={(score) => handleModuleComplete("modulo-5", score)}
-              variant="rose"
-            />
-          </div>
-        </TabsContent>
-
-        {/* MÓDULO 6: REVISÃO PRÁTICA */}
-        <TabsContent value="modulo-6" className="space-y-[50px]">
-          <ModuleBanner
-            numero={6}
-            titulo="Revisão Prática"
-            descricao="Consolidando os conhecimentos adquiridos nos módulos anteriores."
-            gradiente="bg-gradient-to-br from-cyan-600 via-blue-500 to-blue-700"
-          />
-          <div className="space-y-[50px]">
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={1}
-                title="Teste seus Conhecimentos"
-                description="Questões que integram tudo que aprendemos."
-                variant="cyan"
-              />
-
-              <AlertBox tipo="info" titulo="💡 Como Usar Este Módulo">
-                Este é um módulo de fixação. As questões cobrem todos os tópicos
-                anteriores (Encontros, Acentuação, Novo Acordo, Hífen, Dificuldades).
-                Se errar, volte ao módulo respectivo e revise!
-              </AlertBox>
-            </section>
-
-            <QuizInterativo
-              numero={6}
-              titulo="Revisão Interativa"
-              icone="🔄"
-              questoes={qMod6}
-              onComplete={(score) => handleModuleComplete("modulo-6", score)}
-              variant="cyan"
-            />
-          </div>
-        </TabsContent>
-
-        {/* MÓDULO 7: PALAVRAS FREQUENTES EM PROVAS */}
-        <TabsContent value="modulo-7" className="space-y-[50px]">
-          <ModuleBanner
-            numero={7}
-            titulo="Palavras Frequentes em Provas Cesgranrio"
-            descricao="Ortografia de termos que sempre caem em concursos."
-            gradiente="bg-gradient-to-br from-teal-600 via-emerald-500 to-teal-700"
-          />
-          <div className="space-y-[50px]">
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={1}
-                title="Banco de Palavras Críticas"
-                description="Termos frequentemente cobrados em provas."
-                variant="teal"
-              />
-
-              <ContentAccordion
-                titulo="📚 Palavras-Chave por Categoria"
-                icone={<LuBookOpen className="w-6 h-6" />}
-                corIndicador="bg-teal-500"
-                defaultOpen={true}
-                slides={[
-                  {
-                    titulo: "Palavras com G ou J",
-                    icone: "🔤",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Muita confusão entre G e J. Aqui estão as corretas!
-                        </p>
-                        <div className="p-4 bg-teal-500/5 rounded-xl border border-teal-500/20">
-                          <p className="font-bold text-sm mb-2">Com G:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Jogo, Janela, Jangada, Laranja</li>
-                            <li>Página, Bagagem, Garagem</li>
-                            <li>Gelo, Geral, Gitano, Gigante</li>
-                            <li>Guardar, Guarda, Guia</li>
-                          </ul>
-                        </div>
-                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="font-bold text-sm mb-2">Com J:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Jogo, Jamais, Jazida, Jóia</li>
-                            <li>Majestade, Adjetivo, Projeto</li>
-                            <li>Jesuíta, Jequitibá</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Palavras com SS, SC, SÇ ou XC",
-                    icone: "✂️",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Sons "ç" ou "ss" variam de escrita!
-                        </p>
-                        <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="font-bold text-sm mb-2">Palavras Comuns:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Acesso, Assessor, Assento, Casse</li>
-                            <li>Ascensão, Fase, Análise, Síntese</li>
-                            <li>Exceção, Excelente, Excesso</li>
-                            <li>Consciência, Descender</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Palavras com Z ou S",
-                    icone: "⚡",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Sons semelhantes, ortografias diferentes!
-                        </p>
-                        <div className="p-4 bg-violet-500/5 rounded-xl border border-violet-500/20">
-                          <p className="font-bold text-sm mb-2">Com Z:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Zonzo, Zanga, Zero, Zona, Zíper</li>
-                            <li>Azar, Razão, Amazônico</li>
-                            <li>Realizar, Organizar (verbos em -izar)</li>
-                          </ul>
-                        </div>
-                        <div className="p-4 bg-pink-500/5 rounded-xl border border-pink-500/20">
-                          <p className="font-bold text-sm mb-2">Com S:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Sábado, Semana, Sino, Sise</li>
-                            <li>Represália, Análise (nomes, não verbos)</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Palavras Homófonas (Som igual, escrita diferente)",
-                    icone: "🔊",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Armadilha de ouro da banca!
-                        </p>
-                        <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                          <ul className="text-sm space-y-1">
-                            <li><strong>Cessão</strong> (ato de ceder) vs.
-                            <strong>Secção</strong> (seção, divisão)</li>
-                            <li><strong>Conserto</strong> (reparo) vs.
-                            <strong>Concerto</strong> (música)</li>
-                            <li><strong>Descrição</strong> (narração) vs.
-                            <strong>Discrição</strong> (sigilo)</li>
-                            <li><strong>Absolvição</strong> (perdão) vs.
-                            <strong>Dissolução</strong> (fim)</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                ]}
-              />
-            </section>
-
-            {/* MEMORIZAÇÃO: Flip Cards */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-6">
-              <ModuleSectionHeader
-                index={2}
-                title="Memorização Rápida"
-                description="Principais pegadinhas em formato flip card"
-                variant="teal"
-              />
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center h-full gap-2">
-                      <span className="text-3xl">🔤</span>
-                      <h4 className="font-bold text-sm">G vs J</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="space-y-2">
-                      <p className="text-xs font-bold text-primary">G:</p>
-                      <p className="text-xs">Geral, Gelo, Garagem, Página</p>
-                      <p className="text-xs font-bold text-primary mt-3">J:</p>
-                      <p className="text-xs">Jogo, Jamais, Majestade</p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center h-full gap-2">
-                      <span className="text-3xl">✂️</span>
-                      <h4 className="font-bold text-sm">SS vs SC</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="space-y-2">
-                      <p className="text-xs font-bold text-primary">SS:</p>
-                      <p className="text-xs">Acesso, Assessor, Assento</p>
-                      <p className="text-xs font-bold text-primary mt-3">SC:</p>
-                      <p className="text-xs">Ascensão, Consciência, Descendente</p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center h-full gap-2">
-                      <span className="text-3xl">⚡</span>
-                      <h4 className="font-bold text-sm">Z vs S</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="space-y-2">
-                      <p className="text-xs font-bold text-primary">Z:</p>
-                      <p className="text-xs">Azar, Razão, Organizar</p>
-                      <p className="text-xs font-bold text-primary mt-3">S:</p>
-                      <p className="text-xs">Análise, Síntese, Represália</p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center h-full gap-2">
-                      <span className="text-3xl">🔊</span>
-                      <h4 className="font-bold text-sm">Homófonas</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="space-y-2">
-                      <p className="text-xs"><strong>Cessão</strong> (ceder)</p>
-                      <p className="text-xs"><strong>Conserto</strong> (reparo)</p>
-                      <p className="text-xs"><strong>Descrição</strong> (narração)</p>
-                      <p className="text-xs"><strong>Discrição</strong> (sigilo)</p>
-                    </div>
-                  }
-                />
-              </div>
-            </section>
-
-            {/* APLICAÇÃO PRÁTICA: CardCarousel */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-6">
-              <ModuleSectionHeader
-                index={3}
-                title="Questões de Prova"
-                description="Cesgranrio real: como cobram essas palavras"
-                variant="emerald"
-              />
-              <CardCarousel
-                cards={[
-                  {
-                    titulo: "Caso 1: Acesso vs Ascensão",
-                    descricao: "Qual está correta?",
-                    conteudo: "❌ O operador teve **ascesso** ao sistema. ✅ O operador teve **acesso** ao sistema.",
-                    bgColor: "bg-red-500/10 border-red-500/20",
-                  },
-                  {
-                    titulo: "Caso 2: Organizar",
-                    descricao: "Verbos em -izar sempre com Z",
-                    conteudo: "❌ A equipe **organizou** a reunião. ✅ A equipe **organizou** a reunião. (Com Z em toda derivação)",
-                    bgColor: "bg-emerald-500/10 border-emerald-500/20",
-                  },
-                  {
-                    titulo: "Caso 3: Homófonos em contexto",
-                    descricao: "Leia bem o sentido",
-                    conteudo: "O engenheiro fez um **conserto** (reparo) na máquina. Ela tocou um **concerto** (música) no piano.",
-                    bgColor: "bg-cyan-500/10 border-cyan-500/20",
-                  },
-                  {
-                    titulo: "Caso 4: Pegadinha Cesgranrio",
-                    descricao: "Contexto 'Petrobras'",
-                    conteudo: "Na **análise** (com S!) de poços. A **síntese** (com S!) de resultados. Verbos **organizar**, **otimizar** com Z!",
-                    bgColor: "bg-orange-500/10 border-orange-500/20",
-                  },
-                ]}
-              />
-              <AlertBox tipo="warning" titulo="🎯 Pegadinha Premium">
-                Verbos em <strong>-izar</strong> SEMPRE com Z: organizar, otimizar, priorizar. Nomes em <strong>-ise</strong> com S: análise, síntese, empresa. Foco em contexto industrial!
-              </AlertBox>
-            </section>
-
-            <QuizInterativo
-              numero={7}
-              titulo="Palavras Chave"
-              icone="📚"
-              questoes={qMod7}
-              onComplete={(score) => handleModuleComplete("modulo-7", score)}
-              variant="teal"
-            />
-          </div>
-        </TabsContent>
-
-        {/* MÓDULO 8: COMPOSTOS E HÍFEN AVANÇADO */}
-        <TabsContent value="modulo-8" className="space-y-[50px]">
-          <ModuleBanner
-            numero={8}
-            titulo="Compostos e Hífen Avançado"
-            descricao="Aprofundamento nas regras de hífen em palavras compostas."
-            gradiente="bg-gradient-to-br from-indigo-600 via-purple-500 to-purple-700"
-          />
-          <div className="space-y-[50px]">
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={1}
-                title="Além da Regra dos Opostos"
-                description="Casos especiais e exceções em hífen."
-                variant="indigo"
-              />
-
-              <ContentAccordion
-                titulo="🔗 Hífen Avançado"
-                icone={<LuBookOpen className="w-6 h-6" />}
-                corIndicador="bg-indigo-500"
-                defaultOpen={true}
-                slides={[
-                  {
-                    titulo: "Palavras Compostas Tradicionais",
-                    icone: "🏠",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Compostos que têm vida própria e sempre usam hífen
-                          para manter a identidade de cada palavra.
-                        </p>
-                        <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                          <p className="font-bold text-sm mb-2">Exemplos:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Guarda-chuva (não é guarda + chuva)</li>
-                            <li>Beija-flor (não é beija + flor)</li>
-                            <li>Tamanho-padrão (mede com padrão)</li>
-                            <li>Obra-prima (obra feita com primácia)</li>
-                            <li>Pé-de-meia (poupança)</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Adjetivos Compostos",
-                    icone: "🎨",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Adjetivos compostos usam hífen para conectar os
-                          elementos que formam um conceito único.
-                        </p>
-                        <div className="p-4 bg-purple-500/5 rounded-xl border border-purple-500/20">
-                          <p className="font-bold text-sm mb-2">Exemplos:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Americano-brasileiro (pessoa de ambas origens)</li>
-                            <li>Sócio-econômico (sociologia + economia)</li>
-                            <li>Médico-científico</li>
-                            <li>Técnico-comercial</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Prefixos Sempre com Hífen",
-                    icone: "⚠️",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Alguns prefixos não seguem a regra dos opostos e
-                          SEMPRE usam hífen.
-                        </p>
-                        <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                          <p className="font-bold text-sm mb-2">Prefixos Exceção:</p>
-                          <ul className="text-sm space-y-1">
-                            <li><strong>Pré</strong>: Pré-escolar, Pré-contrato</li>
-                            <li><strong>Pós</strong>: Pós-guerra, Pós-moderno</li>
-                            <li><strong>Pró</strong>: Pró-reitor, Pró-tempore</li>
-                            <li><strong>Vice</strong>: Vice-presidente, Vice-reitor</li>
-                            <li><strong>Ex</strong>: Ex-presidente (pessoa passada)</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Sufixos e Palavras Derivadas",
-                    icone: "🌳",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Derivações com sufixos geralmente NOT usam hífen
-                          (junto), exceto em casos especiais.
-                        </p>
-                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="font-bold text-sm mb-2">Exemplos:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>Jornalismo (jornalista + -ismo) → Junto</li>
-                            <li>Modernismo → Junto</li>
-                            <li>Realismo → Junto</li>
-                            <li>MAS: Mal-estar (substantivo) → Hífen!</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                ]}
-              />
-            </section>
-
-            {/* MEMORIZAÇÃO: Flip Cards para Hífen */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-6">
-              <ModuleSectionHeader
-                index={2}
-                title="Padrões de Hífen"
-                description="Regras visuais para memorizar rapidamente"
-                variant="indigo"
-              />
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center h-full gap-2">
-                      <span className="text-3xl">🏠</span>
-                      <h4 className="font-bold text-sm">Compostos</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="space-y-2">
-                      <p className="text-xs font-bold text-primary">Com Hífen:</p>
-                      <p className="text-xs">Guarda-chuva, Beija-flor, Pé-de-meia, Obra-prima</p>
-                      <div className="p-2 bg-primary/10 rounded text-xs mt-2">Identidade própria</div>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center h-full gap-2">
-                      <span className="text-3xl">🎨</span>
-                      <h4 className="font-bold text-sm">Adjetivos</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="space-y-2">
-                      <p className="text-xs font-bold text-primary">Com Hífen:</p>
-                      <p className="text-xs">Americano-brasileiro, Médico-científico, Técnico-comercial</p>
-                      <div className="p-2 bg-primary/10 rounded text-xs mt-2">Conceito único</div>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center h-full gap-2">
-                      <span className="text-3xl">⚠️</span>
-                      <h4 className="font-bold text-sm">Prefixos</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="space-y-2">
-                      <p className="text-xs font-bold text-primary">Sempre Hífen:</p>
-                      <p className="text-xs">Pré-, Pós-, Pró-, Vice-, Ex-</p>
-                      <p className="text-xs mt-2">Pré-escolar, Pós-guerra, Ex-presidente</p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center h-full gap-2">
-                      <span className="text-3xl">🌳</span>
-                      <h4 className="font-bold text-sm">Sufixos</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="space-y-2">
-                      <p className="text-xs font-bold text-primary">Geralmente SEM:</p>
-                      <p className="text-xs">Jornalismo, Modernismo, Realismo</p>
-                      <p className="text-xs font-bold text-primary mt-2">Exceção:</p>
-                      <p className="text-xs">Mal-estar, Bem-vindo</p>
-                    </div>
-                  }
-                />
-              </div>
-            </section>
-
-            {/* APLICAÇÃO PRÁTICA: CardCarousel para Hífen */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-6">
-              <ModuleSectionHeader
-                index={3}
-                title="Questões em Contexto"
-                description="Como a banca cobra regras de hífen"
-                variant="purple"
-              />
-              <CardCarousel
-                cards={[
-                  {
-                    titulo: "Caso 1: Composto Tradicional",
-                    descricao: "Guarda-chuva vs guardachuva",
-                    conteudo: "❌ Peguei no **guardachuva** para proteger. ✅ Peguei no **guarda-chuva** para proteger. (Sempre com hífen)",
-                    bgColor: "bg-indigo-500/10 border-indigo-500/20",
-                  },
-                  {
-                    titulo: "Caso 2: Adjetivo Composto",
-                    descricao: "Americano-brasileiro vs americanobrasileiro",
-                    conteudo: "❌ Projeto **americanobrasileiro** de petróleo. ✅ Projeto **americano-brasileiro** de petróleo. (Conceito único com hífen)",
-                    bgColor: "bg-purple-500/10 border-purple-500/20",
-                  },
-                  {
-                    titulo: "Caso 3: Prefixo Ex-",
-                    descricao: "Sempre com hífen",
-                    conteudo: "❌ O **exdiretor** fez a reunião. ✅ O **ex-diretor** fez a reunião. (Ex- sempre com hífen)",
-                    bgColor: "bg-rose-500/10 border-rose-500/20",
-                  },
-                  {
-                    titulo: "Caso 4: Sufixo -ismo",
-                    descricao: "Geralmente sem hífen",
-                    conteudo: "❌ O **jornalismo-técnico** (errado). ✅ O **jornalismo técnico** (correto). (Sufixo -ismo forma palavras simples)",
-                    bgColor: "bg-emerald-500/10 border-emerald-500/20",
-                  },
-                ]}
-              />
-              <AlertBox tipo="warning" titulo="🎯 Regra de Ouro do Hífen">
-                **Vogais opostas** (a-e, a-o) levam hífen: antiácido, co-ocupante. **Vogais iguais** (a-a, e-e) levam hífen: contra-ataque, re-eleição. **Consoantes**: depende se forma composto novo.
-              </AlertBox>
-            </section>
-
-            <QuizInterativo
-              numero={8}
-              titulo="Desafio Hífens"
-              icone="✂️"
-              questoes={qMod8}
-              onComplete={(score) => handleModuleComplete("modulo-8", score)}
-              variant="indigo"
-            />
-          </div>
-        </TabsContent>
-
-        {/* MÓDULO 9: LINGUAGEM TÉCNICA - PETROBRAS */}
-        <TabsContent value="modulo-9" className="space-y-[50px]">
-          <ModuleBanner
-            numero={9}
-            titulo="Ortografia Técnica - Contexto Petrobras"
-            descricao="Terminologia e ortografia em contextos empresariais e técnicos."
-            gradiente="bg-gradient-to-br from-orange-600 via-red-500 to-orange-700"
-          />
-          <div className="space-y-[50px]">
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={1}
-                title="Terminologia Petrobras"
-                description="Vocabulário técnico e ortografia em contexto corporativo."
-                variant="orange"
-              />
-
-              <ContentAccordion
-                titulo="🏢 Linguagem Corporativa e Técnica"
-                icone={<LuBookOpen className="w-6 h-6" />}
-                corIndicador="bg-orange-500"
-                defaultOpen={true}
-                slides={[
-                  {
-                    titulo: "Termos Técnicos de Produção",
-                    icone: "⚙️",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Palavras específicas do setor de petróleo e energia.
-                        </p>
-                        <div className="p-4 bg-orange-500/5 rounded-xl border border-orange-500/20">
-                          <p className="font-bold text-sm mb-2">Vocabulário Crítico:</p>
-                          <ul className="text-sm space-y-1">
-                            <li><strong>Exploração</strong> (não "exploramento")</li>
-                            <li><strong>Produção</strong> (e seus derivados)</li>
-                            <li><strong>Otimização</strong> (não "otimação")</li>
-                            <li><strong>Simulação</strong> (e suas variações)</li>
-                            <li><strong>Processamento</strong> de dados/óleo</li>
-                            <li><strong>Compliance</strong> (palavra emprestada)</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Palavras-Chave em Relatórios",
-                    icone: "📊",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Termos que aparecem frequentemente em documentação
-                          corporativa.
-                        </p>
-                        <div className="p-4 bg-red-500/5 rounded-xl border border-red-500/20">
-                          <p className="font-bold text-sm mb-2">Documentação:</p>
-                          <ul className="text-sm space-y-1">
-                            <li><strong>Sustentabilidade</strong> (e variações)</li>
-                            <li><strong>Implementação</strong> (de projetos)</li>
-                            <li><strong>Manutenção</strong> (preventiva/corretiva)</li>
-                            <li><strong>Monitoramento</strong> (de processos)</li>
-                            <li><strong>Segurança</strong> (operacional)</li>
-                            <li><strong>Licenciamento</strong> (ambiental)</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Acrônimos e Siglas Corporativas",
-                    icone: "🔤",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Siglas são frequentes em prova. Saiba quando escrever
-                          com ou sem ponto.
-                        </p>
-                        <div className="p-4 bg-yellow-500/5 rounded-xl border border-yellow-500/20">
-                          <p className="font-bold text-sm mb-2">Exemplos:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>SR (Sem Responsabilidade) → Sem ponto (sigla)</li>
-                            <li>Prof. (Professor) → Com ponto (abreviatura)</li>
-                            <li>EIA (Estudo de Impacto Ambiental) → Sem ponto</li>
-                            <li>ICMS → Imposto (sem ponto)</li>
-                            <li>Sr. → Abreviação (com ponto)</li>
-                          </ul>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
-                    titulo: "Palavras Estrangeiras Incorporadas",
-                    icone: "🌍",
-                    conteudo: (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Termos ingleses comuns em textos técnicos da Petrobras.
-                        </p>
-                        <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                          <p className="font-bold text-sm mb-2">Incorporadas:</p>
-                          <ul className="text-sm space-y-1">
-                            <li><strong>Compliance</strong> (conformidade)</li>
-                            <li><strong>Outsourcing</strong> (terceirização)</li>
-                            <li><strong>Pipeline</strong> (duto/encanamento)</li>
-                            <li><strong>Feedback</strong> (retorno)</li>
-                            <li><strong>Benchmark</strong> (referência)</li>
-                          </ul>
-                        </div>
-                        <AlertBox tipo="warning" titulo="⚠️ Itálico em Empréstimos">
-                          Palavras estrangeiras ainda não inteiramente
-                          incorporadas devem estar em itálico: <em>Pipeline</em>,
-                          <em>Compliance</em>.
-                        </AlertBox>
-                      </div>
-                    ),
-                  },
-                ]}
-              />
-            </section>
-
-            {/* MEMORIZAÇÃO: Flip Cards para Terminologia Petrobras */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-6">
-              <ModuleSectionHeader
-                index={2}
-                title="Vocabulário Crítico"
-                description="Termos técnicos que não podem errar"
-                variant="orange"
-              />
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center h-full gap-2">
-                      <span className="text-3xl">⚙️</span>
-                      <h4 className="font-bold text-sm">Produção</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="space-y-2">
-                      <p className="text-xs font-bold text-primary">Termos Corretos:</p>
-                      <p className="text-xs"><strong>Exploração</strong> (não exploramento)</p>
-                      <p className="text-xs"><strong>Produção</strong> (não produção)</p>
-                      <p className="text-xs"><strong>Otimização</strong> (não otimação)</p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center h-full gap-2">
-                      <span className="text-3xl">📊</span>
-                      <h4 className="font-bold text-sm">Relatórios</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="space-y-2">
-                      <p className="text-xs font-bold text-primary">Palavras-Chave:</p>
-                      <p className="text-xs"><strong>Sustentabilidade</strong></p>
-                      <p className="text-xs"><strong>Implementação</strong></p>
-                      <p className="text-xs"><strong>Monitoramento</strong></p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center h-full gap-2">
-                      <span className="text-3xl">🔤</span>
-                      <h4 className="font-bold text-sm">Siglas</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="space-y-2">
-                      <p className="text-xs font-bold text-primary">Sem ponto:</p>
-                      <p className="text-xs">EIA, ICMS, SR</p>
-                      <p className="text-xs font-bold text-primary mt-2">Com ponto:</p>
-                      <p className="text-xs">Prof., Sr., Dr.</p>
-                    </div>
-                  }
-                />
-                <FlipCard
-                  frente={
-                    <div className="flex flex-col items-center justify-center h-full gap-2">
-                      <span className="text-3xl">🌍</span>
-                      <h4 className="font-bold text-sm">Inglês</h4>
-                    </div>
-                  }
-                  verso={
-                    <div className="space-y-2">
-                      <p className="text-xs font-bold text-primary">Incorporadas:</p>
-                      <p className="text-xs">Compliance, Outsourcing, Benchmark</p>
-                      <div className="p-2 bg-primary/10 rounded text-xs mt-2">Em itálico se não incorporada</div>
-                    </div>
-                  }
-                />
-              </div>
-            </section>
-
-            {/* APLICAÇÃO PRÁTICA: CardCarousel para Petrobras */}
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-6">
-              <ModuleSectionHeader
-                index={3}
-                title="Prática em Contexto Industrial"
-                description="Situações reais da Petrobras"
-                variant="red"
-              />
-              <CardCarousel
-                cards={[
-                  {
-                    titulo: "Caso 1: Exploração vs Exploramento",
-                    descricao: "Qual está correta?",
-                    conteudo: "❌ A **exploração** de petróleo. ✅ A **exploração** (não exploramento) de petróleo. (Exploração é o termo técnico correto)",
-                    bgColor: "bg-orange-500/10 border-orange-500/20",
-                  },
-                  {
-                    titulo: "Caso 2: Otimização vs Otimação",
-                    descricao: "Verbo derivado",
-                    conteudo: "❌ A **otimação** dos processos. ✅ A **otimização** dos processos. (Sempre com Z em -ização)",
-                    bgColor: "bg-red-500/10 border-red-500/20",
-                  },
-                  {
-                    titulo: "Caso 3: Sigla ou Abreviatura",
-                    descricao: "Saber a diferença",
-                    conteudo: "✅ O EIA (Estudo de Impacto Ambiental) - sem ponto. ✅ O Sr. diretor - com ponto (abreviatura de Senhor)",
-                    bgColor: "bg-yellow-500/10 border-yellow-500/20",
-                  },
-                  {
-                    titulo: "Caso 4: Empréstimo Corporativo",
-                    descricao: "Termos em inglês",
-                    conteudo: "✅ **Compliance** corporativo (já incorporada). ✅ Sistema de *pipeline* (ainda em itálico se contextual). Siga o padrão do texto!",
-                    bgColor: "bg-indigo-500/10 border-indigo-500/20",
-                  },
-                ]}
-              />
-              <AlertBox tipo="info" titulo="💡 Contexto Mestre">
-                Prova Cesgranrio valoriza **contexto técnico-industrial**. Candidato que escreve corretamente "exploração", "otimização", "implementação" demonstra conhecimento específico do setor. Muito valioso em questões de interpretação!
-              </AlertBox>
-            </section>
-
-            <QuizInterativo
-              numero={9}
-              titulo="Contexto Técnico"
-              icone="🏢"
-              questoes={qMod9}
-              onComplete={(score) => handleModuleComplete("modulo-9", score)}
-              variant="orange"
-            />
-          </div>
-        </TabsContent>
-
-        {/* MÓDULO 10: SIMULADO MESTRE */}
-        <TabsContent value="modulo-10" className="space-y-[50px]">
-          <ModuleBanner
-            numero={10}
-            titulo="Simulado Mestre de Ortografia"
-            descricao="Prova final abrangente cobrindo todos os tópicos e pegadinhas."
-            gradiente="bg-gradient-to-br from-rose-600 via-pink-500 to-rose-700"
-          />
-          <div className="space-y-[50px]">
-            <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-              <ModuleSectionHeader
-                index={1}
-                title="Prova Final Consolidada"
-                description="Integração total de todos os módulos e domínio de ortografia."
-                variant="rose"
-              />
-
-              <AlertBox tipo="info" titulo="📋 Instruções do Simulado">
-                Esta é uma prova com 15 questões selecionadas de todos os
-                módulos anteriores. Ela avalia seu domínio geral de ortografia
-                no padrão Cesgranrio. Passe com 70% para completar a aula!
-              </AlertBox>
-
-              <div className="p-6 bg-rose-500/5 rounded-2xl border border-rose-500/20 space-y-4">
-                <h4 className="font-bold text-lg">Tópicos Cobertos:</h4>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
-                  <div className="flex items-center gap-2">
-                    <LuCheck className="w-4 h-4 text-emerald-500" />
-                    <span>Encontros Vocálicos</span>
+            </div>
+            <div className="flex-1 space-y-6">
+              <h3 className="text-2xl font-bold">Vogais Diferentes = Junta!</h3>
+              <p className="text-muted-foreground text-lg text-justify">
+                Se a última letra do prefixo for uma vogal, e a letra inicial da
+                palavra seguinte for uma vogal diferente, abandone o hífen e
+                junte as duas!
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-xl">
+                  <LuCheck className="text-green-500 w-6 h-6 shrink-0" />
+                  <div className="space-y-1">
+                    <p className="font-semibold text-lg">
+                      Autoescola (e não auto-escola)
+                    </p>
+                    <p className="text-muted-foreground text-sm">
+                      O terminando, E começando. Opostos atraem.
+                    </p>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <LuCheck className="w-4 h-4 text-emerald-500" />
-                    <span>Acentuação</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <LuCheck className="w-4 h-4 text-emerald-500" />
-                    <span>Novo Acordo</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <LuCheck className="w-4 h-4 text-emerald-500" />
-                    <span>Hífen</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <LuCheck className="w-4 h-4 text-emerald-500" />
-                    <span>Dificuldades</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <LuCheck className="w-4 h-4 text-emerald-500" />
-                    <span>Palavras Frequentes</span>
+                </div>
+                <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-xl">
+                  <LuCheck className="text-green-500 w-6 h-6 shrink-0" />
+                  <div className="space-y-1">
+                    <p className="font-semibold text-lg">Infraestrutura</p>
+                    <p className="text-muted-foreground text-sm">
+                      A terminando, E começando. Opostos atraem.
+                    </p>
                   </div>
                 </div>
               </div>
-            </section>
+            </div>
+          </div>
 
-            <QuizInterativo
-              numero={10}
-              titulo="Simulado Completo"
-              icone="👑"
-              questoes={qMod10}
-              onComplete={(score) => handleModuleComplete("modulo-10", score)}
-              variant="rose"
-            />
-
-            {completedModules.has("modulo-10") && (
-              <div className="mt-16 p-12 bg-gradient-to-br from-rose-600 to-pink-700 rounded-[2rem] text-white text-center shadow-2xl animate-in fade-in zoom-in duration-500">
-                <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center text-5xl mx-auto mb-6 backdrop-blur-md border border-white/30">
-                  ✨
+          <div className="flex flex-col md:flex-row-reverse gap-8 items-center mt-12 pt-12 border-t border-border">
+            <div className="w-full md:w-1/3 flex justify-center">
+              <div className="w-48 h-48 bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-full flex items-center justify-center border-4 border-red-500 border-dashed">
+                <div className="text-center">
+                  <p className="text-4xl font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
+                    Iguais
+                  </p>
+                  <p className="text-sm text-muted-foreground font-medium mt-2">
+                    SE REPELEM (Separam)
+                  </p>
                 </div>
-                <h3 className="text-4xl font-black italic tracking-tighter mb-4">
-                  MESTRE EM ORTOGRAFIA
-                </h3>
-                <p className="text-xl opacity-90 max-w-2xl mx-auto">
-                  Você dominou completamente as regras ortográficas! Seus erros
-                  de escrita na prova Cesgranrio foram eliminados. Parabéns!
+              </div>
+            </div>
+            <div className="flex-1 space-y-6">
+              <h3 className="text-2xl font-bold">Vogais Iguais = Hífen!</h3>
+              <p className="text-muted-foreground text-lg text-justify">
+                Se a última letra do prefixo for igual à primeira letra da
+                palavra seguinte, elas brigam. Use o hífen para separá-las.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-xl border border-red-500/20">
+                  <LuTriangleAlert className="text-red-500 w-6 h-6 shrink-0" />
+                  <div className="space-y-1">
+                    <p className="font-semibold text-lg">Micro-ondas</p>
+                    <p className="text-muted-foreground text-sm">
+                      O de micro + O de ondas. Iguais separam.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-xl border border-red-500/20">
+                  <LuTriangleAlert className="text-red-500 w-6 h-6 shrink-0" />
+                  <div className="space-y-1">
+                    <p className="font-semibold text-lg">Anti-inflamatório</p>
+                    <p className="text-muted-foreground text-sm">
+                      I com I. Hífen no meio.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+          <ModuleSectionHeader
+            index={2}
+            title="A Regra da Dobradinha (R e S)"
+            description="Entenda o fenômeno da duplicação consonantal após prefixos terminados em vogal."
+            variant="amber"
+          />
+
+          <AlertBox tipo="info" titulo="O R e o S multiplicam-se">
+            Quando a primeira palavra terminar em **Vogal** e a segunda palavra
+            começar com **R** ou **S**, você não usa hífen: junta tudo e **dobra
+            a letra**.
+          </AlertBox>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div className="bg-indigo-500/5 p-6 rounded-2xl border border-indigo-500/10 shadow-sm space-y-6">
+              <h4 className="font-bold flex items-center gap-2">
+                <LuCheck className="text-emerald-500" /> Vogal + R/S = Dobra
+              </h4>
+              <div className="space-y-3 font-mono text-sm">
+                <p className="flex justify-between border-b pb-1">
+                  <span>Mini + Saia</span>{" "}
+                  <strong className="text-indigo-500">Minissaia</strong>
+                </p>
+                <p className="flex justify-between border-b pb-1">
+                  <span>Anti + Social</span>{" "}
+                  <strong className="text-indigo-500">Antissocial</strong>
+                </p>
+                <p className="flex justify-between border-b pb-1">
+                  <span>Contra + Regra</span>{" "}
+                  <strong className="text-indigo-500">Contrarregra</strong>
+                </p>
+                <p className="flex justify-between pb-1">
+                  <span>Ultra + Som</span>{" "}
+                  <strong className="text-indigo-500">Ultrassom</strong>
                 </p>
               </div>
-            )}
+            </div>
+            <div className="bg-amber-500/5 p-6 rounded-2xl border border-amber-500/10 shadow-sm space-y-6">
+              <h4 className="font-bold flex items-center gap-2">
+                <LuTriangleAlert className="text-amber-500" /> Consoante Igual =
+                Hífen
+              </h4>
+              <div className="space-y-3 font-mono text-sm">
+                <p className="flex justify-between border-b pb-1">
+                  <span>Inter + Regional</span>{" "}
+                  <strong className="text-amber-600">Inter-regional</strong>
+                </p>
+                <p className="flex justify-between border-b pb-1">
+                  <span>Super + Resistente</span>{" "}
+                  <strong className="text-amber-600">Super-resistente</strong>
+                </p>
+                <p className="flex justify-between border-b pb-1">
+                  <span>Sub + Bibliotecário</span>{" "}
+                  <strong className="text-amber-600">Sub-bibliotecário</strong>
+                </p>
+                <p className="flex justify-between pb-1">
+                  <span>Hiper + Realista</span>{" "}
+                  <strong className="text-amber-600">Hiper-realista</strong>
+                </p>
+              </div>
+            </div>
           </div>
-        </TabsContent>
-      </Tabs>
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={3}
+            title="Resumo e Multimídia"
+            description="Vídeos e mapas mentais para consolidar a mecânica do hífen."
+            variant="amber"
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "video",
+                label: "Vídeo Aula",
+                icon:LuPlayCircle,
+                content:(
+                  <div className="w-full flex flex-col items-center py-6">
+                    <div className="w-full max-w-3xl">
+                      <VideoModal
+                        videoId="dQw4w9WgXcQ"
+                        title="Tudo Sobre Hífen"
+                        duration="14:00"
+                        thumbnail="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000&auto=format&fit=crop"
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon:LuBookOpen,
+                content:(
+                  <ModuleSummaryCarouselNew
+                    moduloNome="O Temido Uso do Hífen"
+                    tituloAula="Ortografia e Acentuação"
+                    materia="Língua Portuguesa"
+                    images={[
+                      {
+                        title: "Mapa Mental: Regras do Hífen",
+                        type: "Mapa Mental",
+                        placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
+                      },
+                      {
+                        title: "Tabela: Sempre Com Hífen",
+                        type: "Tabela",
+                        placeholderColor: "bg-red-100 dark:bg-red-900/30",
+                      },
+                      {
+                        title: "Fluxograma: Iguais vs Diferentes",
+                        type: "Diagrama",
+                        placeholderColor:
+                          "bg-emerald-100 dark:bg-emerald-900/30",
+                      },
+                      {
+                        title: "Card Resumo: Exceções Perigosas",
+                        type: "Card",
+                        placeholderColor: "bg-amber-100 dark:bg-amber-900/30",
+                      },
+                    ]}
+                  />
+                ),
+              },
+              {
+                id: "visual",
+                label: "Macete Visual",
+                icon:LuBrain,
+                content:(
+                  <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
+                    <h3 className="text-xl font-bold text-foreground mb-4">
+                      O Ímã da Concordância
+                    </h3>
+                    <div className="text-7xl my-8 animate-bounce">🧲 ❌ 🧲</div>
+                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                      "Os iguais se repelem (hífen), os diferentes se amam!"
+                      Vale para quase todas as vogais e consoantes.
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                id: "audio",
+                label: "Áudio Resumo",
+                icon:LuMusic,
+                content:(
+                  <div className="w-full flex justify-center py-4">
+                    <div className="w-full max-w-md">
+                      <MusicPlayerCard
+                        audioUrl="#"
+                        titulo="Pagode do Hífen"
+                        artista="Prof. André"
+                        capaUrl="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000&auto=format&fit=crop"
+                        lyrics={`(Verso 1)
+Ex e vice, sempre com hífen, parceiro
+Pré, pró e pós, são os verdadeiros guerreiros
+Pan e circum com vogal? Hífen na veia!
+H no começo? Hífen sem meia!
+
+(Refrão)
+Iguais se repelem, diferentes se amam
+É a lei do ímã que nunca engana!
+                                                        `}
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        <section className="mt-12">
+          <QuizInterativo
+            questoes={qMod4}
+            titulo="Hífen sem Mistério"
+            icone="⛓️"
+            numero={3}
+            variant="amber"
+            onComplete={(score) => handleModuleComplete("modulo-4", score)}
+          />
+        </section>
+      </TabsContent>
+      {/* =======================================================
+                        MÓDULO 5: Expressões Problemáticas
+                    ======================================================= */}
+      <TabsContent
+        value="modulo-5"
+        className="space-y-12 mt-12 focus-visible:outline-none"
+      >
+        <ModuleBanner
+          numero={5}
+          titulo="Problemas Frequentes"
+          descricao="Os maiores tropeços da língua testados exaustivamente em provas."
+          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+          <ModuleSectionHeader
+            index={1}
+            title="Sessão de Terapia Ortográfica"
+            description="Aprenda a aplicar cada um dos quatro tipos de porquê com precisão absoluta."
+            variant="rose"
+          />
+
+          <AlertBox tipo="info" titulo="A Natureza dos Quatro Porquês">
+            Na língua portuguesa, a escrita da palavra "porque" varia de acordo
+            com o papel semântico e sintático que ela exerce na frase.
+          </AlertBox>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div className="bg-amber-500/10 p-6 rounded-2xl border-l-4 border-amber-500 space-y-4">
+              <h4 className="text-xl font-bold text-amber-600 dark:text-amber-400">
+                Por que (Separado, Sem Acento)
+              </h4>
+              <p className="text-muted-foreground text-sm">
+                Perguntas (diretas ou indiretas) ou "pelo qual".
+              </p>
+              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-xs">
+                "Não sabemos <strong>por que</strong> o sistema caiu."
+              </div>
+            </div>
+
+            <div className="bg-amber-500/10 p-6 rounded-2xl border-l-4 border-amber-500 space-y-4">
+              <h4 className="text-xl font-bold text-amber-600 dark:text-amber-400">
+                Porque (Junto, Sem Acento)
+              </h4>
+              <p className="text-muted-foreground text-sm">
+                Respostas e justificativas. Equivale a <strong>"pois"</strong>.
+              </p>
+              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-xs">
+                "Caiu <strong>porque</strong> houve pico de uso."
+              </div>
+            </div>
+
+            <div className="bg-orange-500/10 p-6 rounded-2xl border-l-4 border-orange-500 space-y-4">
+              <h4 className="text-xl font-bold text-orange-600 dark:text-orange-400">
+                Por quê (Separado, Com Acento)
+              </h4>
+              <p className="text-muted-foreground text-sm">
+                Final de frases (antes de pontuação).
+              </p>
+              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-xs">
+                "Você não veio ontem <strong>por quê</strong>?"
+              </div>
+            </div>
+
+            <div className="bg-orange-500/10 p-6 rounded-2xl border-l-4 border-orange-500 space-y-4">
+              <h4 className="text-xl font-bold text-orange-600 dark:text-orange-400">
+                Porquê (Junto, Com Acento)
+              </h4>
+              <p className="text-muted-foreground text-sm">
+                Substantivo (o motivo). Geralmente com artigo.
+              </p>
+              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-xs">
+                "Gostaria de entender <strong>o porquê</strong>."
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+          <ModuleSectionHeader
+            index={2}
+            title="Opostos Que Confundem"
+            description="Diferencie mal/mau e onde/aonde através da lógica gramatical simples."
+            variant="rose"
+          />
+          <CardCarousel
+            itemsPerView={2}
+            titulo="Principais Confusões"
+            cards={[
+              {
+                title: "MAU vs MAL",
+                descricao: (
+                  <div className="space-y-4 text-sm text-center mt-4">
+                    <p>
+                      <strong>MAU</strong> (Adjetivo) &lt;-&gt; BOM
+                    </p>
+                    <p>
+                      <strong>MAL</strong> (Advérbio) &lt;-&gt; BEM
+                    </p>
+                  </div>
+                ),
+                icone: <LuShield />,
+              },
+              {
+                title: "ONDE vs AONDE",
+                descricao: (
+                  <div className="space-y-4 text-sm text-center mt-4">
+                    <p>
+                      <strong>ONDE</strong> = Estático.
+                    </p>
+                    <p>
+                      <strong>AONDE</strong> = Movimento (Para onde).
+                    </p>
+                  </div>
+                ),
+                icone: <LuArrowRight />,
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={3}
+            title="Resumo e Multimídia"
+            description="Macetes mnemônicos para nunca mais confundir os porquês, mal/mau e onde/aonde."
+            variant="rose"
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "video",
+                label: "Vídeo Aula",
+                icon:LuPlayCircle,
+                content:(
+                  <div className="w-full flex flex-col items-center py-6">
+                    <div className="w-full max-w-3xl">
+                      <VideoModal
+                        videoId="dQw4w9WgXcQ"
+                        title="Expressões Problemáticas"
+                        duration="12:00"
+                        thumbnail="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1000&auto=format&fit=crop"
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                id: "resumo",
+                label: "Resumo Visual",
+                icon:LuBookOpen,
+                content:(
+                  <ModuleSummaryCarouselNew
+                    moduloNome="Problemas Frequentes"
+                    tituloAula="Ortografia e Acentuação"
+                    materia="Língua Portuguesa"
+                    images={[
+                      {
+                        title: "Mapa Mental: Por que / Porque",
+                        type: "Mapa Mental",
+                        placeholderColor: "bg-amber-100 dark:bg-amber-900/30",
+                      },
+                      {
+                        title: "Tabela: Mal vs Mau",
+                        type: "Tabela",
+                        placeholderColor: "bg-orange-100 dark:bg-orange-900/30",
+                      },
+                      {
+                        title: "Infográfico: Onde vs Aonde",
+                        type: "Infográfico",
+                        placeholderColor:
+                          "bg-emerald-100 dark:bg-emerald-900/30",
+                      },
+                      {
+                        title: "Card Resumo: A fim vs Afim",
+                        type: "Card",
+                        placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
+                      },
+                    ]}
+                  />
+                ),
+              },
+              {
+                id: "visual",
+                label: "Macete Visual",
+                icon:LuBrain,
+                content:(
+                  <div className="text-center p-8 bg-gradient-to-br from-amber-500/5 to-orange-500/5 rounded-2xl border border-amber-500/10">
+                    <h3 className="text-xl font-bold text-foreground mb-4">
+                      Mal do Bem
+                    </h3>
+                    <div className="text-7xl my-8 animate-bounce">😈 ↔️ 😇</div>
+                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+                      "Mal tem L como o rabo do Bem. Mau tem U como a barriga do
+                      Bom. Onde eu fico. Aonde eu vou!"
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                id: "audio",
+                label: "Áudio Resumo",
+                icon:LuMusic,
+                content:(
+                  <div className="w-full flex justify-center py-4">
+                    <div className="w-full max-w-md">
+                      <MusicPlayerCard
+                        audioUrl="#"
+                        titulo="Forró das Expressões"
+                        artista="Prof. André"
+                        capaUrl="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1000&auto=format&fit=crop"
+                        lyrics={`(Verso 1)
+Mal com L é oposto de Bem
+Mau com U é oposto de Bom, tá?
+Onde eu fico, aonde eu vou
+Na prova da Petrobras não vou errar, não!
+
+(Refrão)
+Expressão que confunde, eu já decorei
+Por que separado? Porque eu estudei!
+                                                        `}
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+        <section className="mt-12">
+          <QuizInterativo
+            questoes={qMod5}
+            titulo="Expressões Problemáticas"
+            icone="🧐"
+            variant="rose"
+            numero={4}
+            onComplete={(score) => handleModuleComplete("modulo-5", score)}
+          />
+        </section>
+      </TabsContent>
+
+      {/* =======================================================
+                        MÓDULO 6: Laboratório & Revisão Integrada
+                    ======================================================= */}
+      <TabsContent
+        value="modulo-6"
+        className="space-y-12 mt-12 focus-visible:outline-none"
+      >
+        <ModuleBanner
+          numero={6}
+          titulo="Laboratório & Revisão Integrada"
+          descricao="Treinamento intensivo nível Cesgranrio para a prova da Petrobras."
+          gradiente="bg-gradient-to-br from-cyan-600 via-teal-600 to-cyan-700"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+          <ModuleSectionHeader
+            index={1}
+            title="Revisão Final (Mind Map)"
+            description="Um panorama completo de toda a ortografia e acentuação em um fluxo lógico."
+            variant="cyan"
+          />
+
+          <div className="flex flex-col gap-6 w-full max-w-3xl mx-auto">
+            <TimelineItem
+              passo={1}
+              titulo="Encontros Vocálicos"
+              descricao="Ditongo, Tritongo e Hiato. Vogal e Semivogal."
+            />
+            <TimelineItem
+              passo={2}
+              titulo="Acentuação Base"
+              descricao="Oxítonas (A,E,O,EM), Paroxítonas (R,X,N,L,PS,DITONGO) e Proparoxítonas (Todas)."
+            />
+            <TimelineItem
+              passo={3}
+              titulo="Novo Acordo"
+              descricao="Adeus ao trema. Paroxítonas sem acento no EI/OI e no hiato após ditongo."
+            />
+            <TimelineItem
+              passo={4}
+              titulo="Hífen dos Opostos"
+              descricao="Iguais se repelem (hífen), opostos se atraem (juntam)."
+            />
+            <TimelineItem
+              passo={5}
+              titulo="Porquês e Afins"
+              descricao="Uso correto de mal/mau, onde/aonde e os porquês."
+              isLast={true}
+            />
+          </div>
+
+          <AlertBox tipo="success" titulo="Preparado(a) para a Prova!">
+            A Ortografia e a Acentuação exigem leitura atenta e não apenas
+            decoreba de regras. No simulador final abaixo, as questões misturam
+            todas as regras que aprendemos nesta jornada. Boa sorte!
+          </AlertBox>
+        </section>
+
+        <section className="mt-12">
+          <QuizInterativo
+            questoes={qMod6}
+            titulo="A Vaga é Minha"
+            icone="🏆"
+            numero={2}
+            variant="cyan"
+            onComplete={(score) => handleModuleComplete("modulo-6", score)}
+          />
+        </section>
+      </TabsContent>
     </AulaTemplate>
   );
 }
+
+// EOF
+
+
+
+
+
+
+
+
+
+
+
+

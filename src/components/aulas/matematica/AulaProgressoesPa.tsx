@@ -87,16 +87,16 @@ export default function AulaProgressoesPa({
   }, [currentProgress]);
 
   const MODULE_DEFS = [
-    { id: "modulo-1", label: "Módulo 1", titulo: "Conceitos" },
-    { id: "modulo-2", label: "Módulo 2", titulo: "Termo Geral" },
-    { id: "modulo-3", label: "Módulo 3", titulo: "Soma (Gauss)" },
-    { id: "modulo-4", label: "Módulo 4", titulo: "Propriedades" },
-    { id: "modulo-5", label: "Módulo 5", titulo: "Interpolação" },
-    { id: "modulo-6", label: "Módulo 6", titulo: "PA e Funções" },
-    { id: "modulo-7", label: "Módulo 7", titulo: "Prática Industrial" },
-    { id: "modulo-8", label: "Módulo 8", titulo: "Avançado" },
-    { id: "modulo-9", label: "Módulo 9", titulo: "Desafio CESGRANRIO" },
-    { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Final" },
+    { id: "modulo-1", label: "Módulo 1", title: "Conceitos" },
+    { id: "modulo-2", label: "Módulo 2", title: "Termo Geral" },
+    { id: "modulo-3", label: "Módulo 3", title: "Soma (Gauss)" },
+    { id: "modulo-4", label: "Módulo 4", title: "Propriedades" },
+    { id: "modulo-5", label: "Módulo 5", title: "Interpolação" },
+    { id: "modulo-6", label: "Módulo 6", title: "PA e Funções" },
+    { id: "modulo-7", label: "Módulo 7", title: "Prática Industrial" },
+    { id: "modulo-8", label: "Módulo 8", title: "Avançado" },
+    { id: "modulo-9", label: "Módulo 9", title: "Desafio CESGRANRIO" },
+    { id: "modulo-10", label: "Módulo 10", title: "Simulado Final" },
   ];
 
   return (

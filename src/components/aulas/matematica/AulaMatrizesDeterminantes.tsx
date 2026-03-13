@@ -11,19 +11,7 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
-  FlipCard,
-  CardCarousel,
-  LessonTabs,
-  ModuleSummaryCarouselNew,
 } from "../shared";
-
-import {
-  LuBookOpen,
-  LuTarget,
-  LuCircleCheck,
-  LuZap,
-  LuLayers,
-} from "react-icons/lu";
 import {
   QUIZ_M1_CONCEITO_MATRIZES,
   QUIZ_M2_TIPOS_MATRIZES,
@@ -217,7 +205,7 @@ export default function AulaMatrizesDeterminantes({
                         Duas matrizes são <strong>iguais</strong> somente se têm a mesma dimensão{" "}
                         <strong>e</strong> todos os elementos correspondentes são iguais.
                       </p>
-                      <AlertBox tipo="warning" titulo="Atenção">
+                      <AlertBox tipo="warning">
                         Uma matriz 2×3 <strong>NUNCA</strong> é igual a uma 3×2, mesmo que contenham
                         os mesmos 6 números — a dimensão muda tudo. Pegadinha #1 da CESGRANRIO.
                       </AlertBox>
@@ -328,7 +316,7 @@ export default function AulaMatrizesDeterminantes({
                       <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
                         <p className="font-mono text-sm">Simétrica: [[1,3],[3,7]] — note a₁₂=a₂₁=3</p>
                       </div>
-                      <AlertBox tipo="warning" titulo="Atenção">
+                      <AlertBox tipo="warning">
                         Matrizes de rigidez estrutural (análise de plataformas offshore) são{" "}
                         <strong>sempre simétricas</strong>. A CESGRANRIO usa essa propriedade para
                         simplificar cálculos em enunciados de engenharia.
@@ -340,69 +328,7 @@ export default function AulaMatrizesDeterminantes({
             />
           </section>
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={2}
-              title="Dossiê de Memorização Visual: Tipos de Matrizes"
-              description="Vire os cards para fixar as características dos principais tipos."
-              variant="cyan"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-cyan-500" />
-                    <p className="font-bold text-center">Matriz Identidade (I)</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuCircleCheck className="w-6 h-6 text-emerald-500" />
-                    <p className="font-bold text-center text-sm">Elemento Neutro</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      Diagonal principal=1, o resto=0. A·I = I·A = A.
-                    </p>
-                  </div>
-                }
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-cyan-500" />
-                    <p className="font-bold text-center">Matriz Simétrica</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuLayers className="w-6 h-6 text-indigo-500" />
-                    <p className="font-bold text-center text-sm">A = Aᵀ</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      Espelhada na diagonal principal. aᵢⱼ = aⱼᵢ.
-                    </p>
-                  </div>
-                }
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-cyan-500" />
-                    <p className="font-bold text-center">Matriz Diagonal</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuZap className="w-6 h-6 text-amber-500" />
-                    <p className="font-bold text-center text-sm">Zeros Fora da Diagonal</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      Fácil para calcular determinante: não tem firula, multiplica a diagonal.
-                    </p>
-                  </div>
-                }
-              />
-            </div>
-          </section>
-
-          <section id="quiz-modulo-2" className="mt-16">
+          <section id="quiz-modulo-2" className="mt-8">
             <QuizInterativo
               questoes={quizM2}
               titulo="Tipos Especiais de Matrizes"
@@ -494,7 +420,7 @@ export default function AulaMatrizesDeterminantes({
                         <li><strong>Elemento neutro</strong>: A + 0 = A ✓</li>
                         <li><strong>Inverso aditivo</strong>: A + (−A) = 0 ✓</li>
                       </ul>
-                      <AlertBox tipo="warning" titulo="Atenção">
+                      <AlertBox tipo="warning">
                         A condição &quot;colunas de A = linhas de B&quot; é para <strong>multiplicação</strong>,
                         não para soma! Para somar, a condição é <strong>mesma ordem m×n</strong>.
                         Confundir isso custa pontos na CESGRANRIO.
@@ -601,7 +527,7 @@ export default function AulaMatrizesDeterminantes({
                         <li>Elemento neutro: A·I = I·A = A ✓</li>
                         <li>Comutativa: A·B = B·A? ✗ (em geral, NÃO)</li>
                       </ul>
-                      <AlertBox tipo="warning" titulo="Atenção">
+                      <AlertBox tipo="warning">
                         Se a banca perguntar se A·B = B·A é sempre verdade, a resposta é{" "}
                         <strong>NÃO</strong>. Mesmo que A e B sejam quadradas de mesma ordem, o
                         produto em ordens diferentes geralmente dá resultados distintos.
@@ -611,51 +537,6 @@ export default function AulaMatrizesDeterminantes({
                 },
               ]}
             />
-          </section>
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={2}
-              title="A Regra de Ouro da Multiplicação"
-              description="Vire os cards para recordar a condição de existência e a dimensão final — o erro mais comum evitado."
-              variant="indigo"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-indigo-500" />
-                    <p className="font-bold text-center">Condição de Existência</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuZap className="w-6 h-6 text-emerald-500" />
-                    <p className="font-bold text-center text-sm">C(A) = L(B)</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      O número de <strong>Colunas</strong> da primeira DEVE ser igual ao número de <strong>Linhas</strong> da segunda.
-                    </p>
-                  </div>
-                }
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-indigo-500" />
-                    <p className="font-bold text-center">Matriz Resultante</p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuCircleCheck className="w-6 h-6 text-indigo-500" />
-                    <p className="font-bold text-center text-sm">Os Opostos se Atraem</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      (<strong>m</strong>×<span className="opacity-50">p</span>) · (<span className="opacity-50">p</span>×<strong>n</strong>) resulta em uma nova matriz de ordem (<strong>m</strong>×<strong>n</strong>).
-                    </p>
-                  </div>
-                }
-              />
-            </div>
           </section>
 
           <section id="quiz-modulo-4" className="mt-8">
@@ -754,7 +635,7 @@ export default function AulaMatrizesDeterminantes({
                           <p className="text-sm">Sistema impossível (SI) ou indeterminado (SII)</p>
                         </div>
                       </div>
-                      <AlertBox tipo="warning" titulo="Atenção">
+                      <AlertBox tipo="warning">
                         Não confunda <strong>transposta</strong> com <strong>inversa</strong>. Aᵀ sempre
                         existe; A⁻¹ só existe quando det≠0. Para matrizes ortogonais (como rotações),
                         coincide: Aᵀ = A⁻¹ — caso especial muito elegante.
@@ -766,40 +647,7 @@ export default function AulaMatrizesDeterminantes({
             />
           </section>
 
-          <div className="space-y-8 bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo de Transpostas e Inversas"
-              variant="blue"
-              className="mb-6"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo-inversas",
-                  label: "Mapa de Invertibilidade",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Fluxograma de Invertibilidade",
-                          type: "Mapa Mental",
-                          placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Mapa mental industrial mostrando: det(A)=0 -> Singular. det(A)!=0 -> Invertível (AX=B).
-                        },
-                      ]}
-                      moduloNome="Módulo 5"
-                      tituloAula="Matrizes e Determinantes"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </div>
-
-          <section id="quiz-modulo-5" className="mt-16">
+          <section id="quiz-modulo-5" className="mt-8">
             <QuizInterativo
               questoes={quizM5}
               titulo="Transposta e Inversa"
@@ -868,7 +716,7 @@ export default function AulaMatrizesDeterminantes({
                         <li><strong>det(k·A) = kⁿ·det(A)</strong>: escalar entra elevado à ordem n</li>
                         <li><strong>det(A·B) = det(A)·det(B)</strong>: det do produto = produto dos det</li>
                       </ul>
-                      <AlertBox tipo="warning" titulo="Atenção">
+                      <AlertBox tipo="warning">
                         Para det(2A) com n=2: det(2A) = 2²·det(A) = 4·det(A). A armadilha clássica
                         é calcular 2·det(A). Lembre: o fator k multiplica <strong>cada linha</strong>,
                         e há n linhas!
@@ -954,7 +802,7 @@ export default function AulaMatrizesDeterminantes({
                         <p className="text-rose-400">Negativos (−): ceg, afh, bdi</p>
                         <p className="mt-2 font-bold">det = (aei+bfg+cdh) − (ceg+afh+bdi)</p>
                       </div>
-                      <AlertBox tipo="warning" titulo="Atenção">
+                      <AlertBox tipo="warning">
                         Sarrus funciona <strong>SOMENTE para 3×3</strong>. Nunca aplique a matrizes 4×4
                         ou maiores — a banca examinadora adora criar armadilhas com esse erro!
                       </AlertBox>
@@ -1004,39 +852,6 @@ export default function AulaMatrizesDeterminantes({
               ]}
             />
           </section>
-
-          <div className="space-y-8 bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo Visual: Regra de Sarrus"
-              variant="cyan"
-              className="mb-6"
-            />
-            <LessonTabs
-              tabs={[
-                {
-                  id: "resumo-sarrus",
-                  label: "Diagrama de Diagonais",
-                  icon: LuBookOpen,
-                  content: (
-                    <ModuleSummaryCarouselNew
-                      images={[
-                        {
-                          title: "Lógica Multidirecional",
-                          type: "Esquema Tático",
-                          placeholderColor: "bg-cyan-100 dark:bg-cyan-900/30",
-                          imageUrl: "/temp-img.png", // PROMPT: Esquema minimalista da Regra de Sarrus 3x3. Matriz com colunas 1 e 2 repetidas à direita. 3 setas longas descendo da esquerda pra direita em tons de azul sinalizando soma (+). E 3 setas longas subindo da esquerda pra direita em tons de vermelho/rosa sinalizando subtração (-).
-                        },
-                      ]}
-                      moduloNome="Módulo 7"
-                      tituloAula="Matrizes e Determinantes"
-                      materia="Matemática"
-                    />
-                  ),
-                },
-              ]}
-            />
-          </div>
 
           <section id="quiz-modulo-7" className="mt-8">
             <QuizInterativo
@@ -1134,7 +949,7 @@ export default function AulaMatrizesDeterminantes({
                         <p>adj(A) = [[d,−b],[−c,a]]</p>
                         <p>A⁻¹ = (1/(ad−bc)) · [[d,−b],[−c,a]]</p>
                       </div>
-                      <AlertBox tipo="warning" titulo="Atenção">
+                      <AlertBox tipo="warning">
                         A Regra de Cramer usa cofatores: xᵢ = det(Aᵢ)/det(A). É elegante para sistemas
                         2×2 e 3×3, mas computacionalmente cara para sistemas grandes industriais.
                       </AlertBox>
@@ -1143,51 +958,6 @@ export default function AulaMatrizesDeterminantes({
                 },
               ]}
             />
-          </section>
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={2}
-              title="O Tabuleiro de Sinais"
-              description="Memorize a regra vital do sinal do cálculo do Cofator (Cᵢⱼ)."
-              variant="blue"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-blue-500" />
-                    <p className="font-bold text-center">Se i + j = <span className="text-emerald-500">PAR</span></p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuCircleCheck className="w-6 h-6 text-emerald-500" />
-                    <p className="font-bold text-center text-sm">Mantém o Sinal (+)</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      O cofator terá exatamente o <strong>mesmo</strong> sinal do seu menor complementar. Ex: Elementos (1,1), (2,2)
-                    </p>
-                  </div>
-                }
-              />
-              <FlipCard
-                frente={
-                  <div className="flex flex-col items-center gap-2">
-                    <LuTarget className="w-6 h-6 text-blue-500" />
-                    <p className="font-bold text-center">Se i + j = <span className="text-red-500">ÍMPAR</span></p>
-                  </div>
-                }
-                verso={
-                  <div className="flex flex-col items-center gap-3">
-                    <LuZap className="w-6 h-6 text-rose-500" />
-                    <p className="font-bold text-center text-sm">Inverte o Sinal (-)</p>
-                    <p className="text-xs text-muted-foreground text-center">
-                      O cofator inverte o resultado do menor complementar recebido. Ex: Elemento a₁₂
-                    </p>
-                  </div>
-                }
-              />
-            </div>
           </section>
 
           <section id="quiz-modulo-8" className="mt-8">
@@ -1285,7 +1055,7 @@ export default function AulaMatrizesDeterminantes({
                         <p>Elemento +1: saída do nó / −1: entrada / 0: sem conexão</p>
                         <p>Balanço: A·fluxo = produção_líquida</p>
                       </div>
-                      <AlertBox tipo="warning" titulo="Atenção">
+                      <AlertBox tipo="warning">
                         Quando det=0 na matriz do sistema de dutos, há dependência linear — um duto
                         é redundante ou o modelo é inconsistente. A equipe de engenharia precisa
                         revisar a topologia da rede. Contexto real de operação da Petrobras!
@@ -1393,7 +1163,7 @@ export default function AulaMatrizesDeterminantes({
                         <li>A transposta sempre existe; a inversa só se det≠0</li>
                         <li>Matriz 2×3 ≠ 3×2 mesmo com os mesmos números</li>
                       </ul>
-                      <AlertBox tipo="danger" titulo="Cuidado">
+                      <AlertBox tipo="danger">
                         O erro mais caro: aplicar Sarrus em matrizes 4×4. A banca dá as 6 diagonais
                         como resposta para pegar quem usa Sarrus indevidamente. Para 4×4, use Laplace
                         (cofatores)!

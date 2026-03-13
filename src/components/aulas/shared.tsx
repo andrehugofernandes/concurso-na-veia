@@ -286,7 +286,7 @@ export function CardCarousel({
       className={
         nested
           ? "space-y-4 pt-2"
-          : "bg-muted/5 rounded-2xl border border-border/50 p-4 md:p-8 space-y-6"
+          : "bg-muted/5 rounded-2xl border border-border/50 p-6 md:p-8 space-y-6"
       }
     >
       {/* Header */}
@@ -327,25 +327,26 @@ export function CardCarousel({
               <div
                 className={cn(
                   "bg-card rounded-2xl border border-border flex flex-col group/card hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 h-full",
-                  nested ? "p-4 md:p-6 shadow-sm" : "p-5 md:p-8 shadow-md",
+                  nested ? "p-4 md:p-6 shadow-sm" : "p-6 md:p-8 shadow-md",
                 )}
               >
-                <div className="flex flex-row items-center gap-3 md:gap-4 mb-4">
+                <div className="flex items-start gap-5 mb-6">
                   <div
                     className={cn(
-                      "w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-lg md:text-xl shrink-0 transition-all duration-500 group-hover/card:scale-110 group-hover/card:rotate-3 shadow-lg shadow-black/5",
+                      "w-14 h-14 rounded-xl flex items-center justify-center text-2xl shrink-0 transition-all duration-500 group-hover/card:scale-110 group-hover/card:rotate-3 shadow-lg shadow-black/5",
                       card.corFundo || "bg-primary/10",
                     )}
                   >
                     {card.icone || card.icon}
                   </div>
-                  <h4 className="flex-1 font-bold text-foreground text-base md:text-lg text-left leading-tight">
-                    {card.titulo || card.title}
-                  </h4>
-                </div>
-
-                <div className="flex-1 text-sm text-muted-foreground leading-relaxed text-justify mb-2">
-                  {card.descricao}
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-bold text-foreground text-lg mb-1 leading-tight">
+                      {card.titulo || card.title}
+                    </h4>
+                    <div className="text-sm text-muted-foreground leading-relaxed">
+                      {card.descricao}
+                    </div>
+                  </div>
                 </div>
                 {card.exemplo && (
                   <div className="mt-auto pt-6 border-t border-border/50">
@@ -731,7 +732,6 @@ export function FlipCard({
   categoria = "Língua Portuguesa",
   hideFooter = false,
   variant,
-  className,
 }: {
   frente: React.ReactNode;
   verso: React.ReactNode;
@@ -739,16 +739,12 @@ export function FlipCard({
   categoria?: string;
   hideFooter?: boolean;
   variant?: string;
-  className?: string;
 }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
     <div
-      className={cn(
-        "group w-full h-[350px] [perspective:1200px] cursor-pointer",
-        className,
-      )}
+      className="group w-full h-[350px] [perspective:1200px] cursor-pointer"
       onClick={() => setIsFlipped(!isFlipped)}
     >
       <motion.div
@@ -799,6 +795,16 @@ export function FlipCard({
             </div>
           </div>
 
+          {/* Rodapé Tático */}
+          {!hideFooter && (
+            <div className="relative z-10 pt-4 border-t border-zinc-200/50 dark:border-zinc-800/50 flex justify-between items-center text-[10px] uppercase tracking-wider font-semibold text-zinc-500">
+              <span className="truncate pr-2">{categoria}</span>
+              <span className="shrink-0 flex items-center gap-1 text-primary">
+                <LuShieldAlert className="w-3 h-3" />
+                Dossiê Técnico
+              </span>
+            </div>
+          )}
         </div>
 
         {/* ── VERSO ── */}
@@ -833,7 +839,7 @@ export function FlipCard({
 
           <div
             className={cn(
-              "relative z-10 text-sm leading-relaxed overflow-y-auto flex-1 pr-1 scrollbar-hide text-justify font-medium",
+              "relative z-10 text-sm leading-relaxed overflow-y-auto flex-1 pr-1 custom-scrollbar text-justify font-medium",
               variant === "dark"
                 ? "text-zinc-300"
                 : "text-zinc-700 dark:text-zinc-300",
@@ -842,6 +848,15 @@ export function FlipCard({
             {verso}
           </div>
 
+          <div
+            className={cn(
+              "relative z-10 mt-4 flex justify-between items-center text-[9px] font-bold uppercase tracking-widest",
+              variant === "dark" ? "text-white/40" : "text-primary/60",
+            )}
+          >
+            <span>© Petrobras Quest System</span>
+            <span>Ref: 2026-B.P.O</span>
+          </div>
         </div>
       </motion.div>
     </div>
@@ -2602,7 +2617,7 @@ export function StickyModuleNav({
                     key={mod.id}
                     value={mod.id}
                     className={cn(
-                      "flex-1 py-1.5 px-2 rounded-lg border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group min-w-0 relative overflow-visible",
+                      "flex-1 py-1.5 px-2 rounded-lg border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
                       !isVisible && "hidden",
                     )}
                   >
@@ -2617,21 +2632,15 @@ export function StickyModuleNav({
                       >
                         {mod.label}
                       </span>
-                      <span className="font-bold text-[10px] truncate w-full text-center">
+                      <span className="font-bold text-[10px] truncate w-full text-center flex items-center justify-center gap-1">
                         {mod.titulo || mod.title}
+                        {completedModules.has(mod.id) && (
+                          <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20 shrink-0">
+                            <LuCheck size={10} />
+                          </span>
+                        )}
                       </span>
                     </div>
-
-                    {/* Badge de Conclusão Mobile - Posicionado elegantemente no canto para não atrapalhar o texto */}
-                    {completedModules.has(mod.id) && (
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="absolute -top-1 -right-1 text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/30 z-10"
-                      >
-                        <LuCheck size={8} />
-                      </motion.div>
-                    )}
                   </TabsTrigger>
                 );
               })}
