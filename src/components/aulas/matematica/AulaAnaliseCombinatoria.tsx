@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
+import { LuChevronDown } from "react-icons/lu";
 import {
   AlertBox,
   QuizInterativo,
@@ -11,6 +12,7 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
+  ModuleConsolidation,
 } from "../shared";
 import {
   QUIZ_M1_PRINCIPIO_CONTAGEM,
@@ -25,7 +27,7 @@ import {
   QUIZ_M10_SIMULADO_CESGRANRIO,
 } from "./data/analise-combinatoria-quizzes";
 
-export default function AulaAnaliseCombinatoriaou({
+export default function AulaAnaliseCombinatoria({
   onComplete,
   isCompleted,
   loading,
@@ -213,6 +215,46 @@ export default function AulaAnaliseCombinatoriaou({
               ]}
             />
           </section>
+          
+          <ModuleConsolidation
+            index={1}
+            variant="indigo"
+            video={{
+              videoId: "h3S9XW1WzIk",
+              title: "Princípio Fundamental da Contagem: A Regra do Produto",
+              duration: "10:45"
+            }}
+            resumoVisual={{
+              moduloNome: "Princípio Fundamental da Contagem",
+              tituloAula: "Análise Combinatória",
+              materia: "Matemática",
+              images: [
+                { title: "Definição do PFC", type: "Mapa Mental", placeholderColor: "bg-blue-500/20" },
+                { title: "Etapas Independentes", type: "Esquema", placeholderColor: "bg-indigo-500/20" },
+                { title: "Multiplicar as Opções", type: "Fórmula", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "O Pulo do Gato: E vs OU",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400">Regra do "E" = Multiplicação</p>
+                    <p className="text-sm">Fazer etapa 1 E etapa 2 → n₁ × n₂</p>
+                  </div>
+                  <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-xl">
+                    <p className="font-bold text-orange-600 dark:text-orange-400">Regra do "OU" = Adição</p>
+                    <p className="text-sm">Fazer opção 1 OU opção 2 → n₁ + n₂</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Batida da Contagem (PFC)",
+              artista: "Prof. Rítmico"
+            }}
+          />
 
           <section id="quiz-modulo-1" className="mt-16">
             <QuizInterativo
@@ -336,6 +378,46 @@ export default function AulaAnaliseCombinatoriaou({
             />
           </section>
 
+          <ModuleConsolidation
+            index={2}
+            variant="cyan"
+            video={{
+              videoId: "iG0_F6gW2QY",
+              title: "Fatorial: A Operação das Multipicações",
+              duration: "08:20"
+            }}
+            resumoVisual={{
+              moduloNome: "Fatorial e Notação",
+              tituloAula: "Análise Combinatória",
+              materia: "Matemática",
+              images: [
+                { title: "Notação n!", type: "Fórmulário", placeholderColor: "bg-cyan-500/20" },
+                { title: "Cálculo 0!", type: "Destaque", placeholderColor: "bg-blue-500/20" },
+                { title: "Simplificação de Frações", type: "Passo a Passo", placeholderColor: "bg-teal-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "A Escada Decrescente",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm">Para simplificar, "desça" o fatorial maior até encontrar o menor:</p>
+                  <div className="flex justify-center flex-col items-center gap-2 p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl font-mono">
+                    <div className="px-4 py-1 bg-cyan-500 text-white rounded">10!</div>
+                    <LuChevronDown className="w-4 h-4" />
+                    <div className="px-4 py-1 bg-cyan-400 text-white rounded">10 × 9!</div>
+                    <LuChevronDown className="w-4 h-4" />
+                    <div className="px-4 py-1 bg-cyan-300 text-white rounded">10 × 9 × 8!</div>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+              titulo: "O Ritmo do Fatorial",
+              artista: "MC Matemática"
+            }}
+          />
+
           <section id="quiz-modulo-2" className="mt-16">
             <QuizInterativo
               questoes={quizM2}
@@ -383,7 +465,7 @@ export default function AulaAnaliseCombinatoriaou({
                         A <strong>Permutação Simples</strong> conta o número de formas de organizar <em>n</em> objetos distintos em <em>n</em> posições distintas. Cada objeto ocupa exatamente uma posição.
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center text-lg">P(n) = n!</p>
+                        <p className="font-mono text-center text-lg">P(n) = n!</p>
                         <p className="text-sm text-center text-muted-foreground mt-1">Todos os n elementos, todos os n lugares</p>
                       </div>
                       <AlertBox tipo="info" titulo="Contexto Petrobras">
@@ -462,6 +544,44 @@ export default function AulaAnaliseCombinatoriaou({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={3}
+            variant="emerald"
+            video={{
+              videoId: "h6V7j6b7M0I",
+              title: "Permutação Simples: Mudando Tudo de Lugar",
+              duration: "09:15"
+            }}
+            resumoVisual={{
+              moduloNome: "Permutação Simples",
+              tituloAula: "Análise Combinatória",
+              materia: "Matemática",
+              images: [
+                { title: "Fórmula P(n)", type: "Resumo", placeholderColor: "bg-emerald-500/20" },
+                { title: "Organização em Fila", type: "Visual", placeholderColor: "bg-teal-500/20" },
+                { title: "Anagramas Simples", type: "Exemplo", placeholderColor: "bg-green-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Ancoragem de Elementos",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm italic">"Quantos anagramas de PETRO começam com P?"</p>
+                  <div className="flex gap-2 justify-center">
+                    <div className="w-10 h-10 bg-rose-500 text-white flex items-center justify-center rounded font-bold">P</div>
+                    <div className="w-10 h-10 border border-emerald-500 flex items-center justify-center rounded font-bold text-emerald-500 animate-pulse">4!</div>
+                  </div>
+                  <p className="text-xs text-center text-muted-foreground mt-2">Fixe o elemento estático e permute apenas o restante.</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+              titulo: "Dança das Cadeiras (Permutação)",
+              artista: "Pop Logic"
+            }}
+          />
 
           <section id="quiz-modulo-3" className="mt-16">
             <QuizInterativo
@@ -567,6 +687,44 @@ export default function AulaAnaliseCombinatoriaou({
             />
           </section>
 
+          <ModuleConsolidation
+            index={4}
+            variant="indigo"
+            video={{
+              videoId: "8v2S4cI9U0k",
+              title: "Permutação com Repetição: Corrigindo Dossiês",
+              duration: "11:50"
+            }}
+            resumoVisual={{
+              moduloNome: "Permutação com Repetição",
+              tituloAula: "Análise Combinatória",
+              materia: "Matemática",
+              images: [
+                { title: "A Divisão Corretiva", type: "Infográfico", placeholderColor: "bg-indigo-500/20" },
+                { title: "Anagramas Complexos", type: "Lista", placeholderColor: "bg-blue-500/20" },
+                { title: "Elementos Idênticos", type: "Diagrama", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "O Eco das Repetições",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm">Para cada "eco" de letra repetida, um fatorial divide o total:</p>
+                  <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl font-mono text-center">
+                    <p className="text-lg">ARA<span className="text-rose-500">R</span>A</p>
+                    <div className="w-full h-px bg-foreground my-1" />
+                    <p className="text-lg">3! (As) &times; 2! (Rs)</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+              titulo: "Eco das Repetições",
+              artista: "DJ Dividir"
+            }}
+          />
+
           <section id="quiz-modulo-4" className="mt-16">
             <QuizInterativo
               questoes={quizM4}
@@ -614,7 +772,7 @@ export default function AulaAnaliseCombinatoriaou({
                         O <strong>Arranjo Simples A(n,p)</strong> conta o número de formas de selecionar e ordenar <em>p</em> elementos de um conjunto de <em>n</em> elementos distintos, sem repetição:
                       </p>
                       <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center text-lg">A(n, p) = n! / (n − p)!</p>
+                        <p className="font-mono text-center text-lg">A(n, p) = n! / (n − p)!</p>
                         <p className="text-sm font-mono text-center mt-1">= n × (n−1) × ... × (n−p+1)</p>
                         <p className="text-sm text-center text-muted-foreground mt-1">São exatamente p fatores, começando por n</p>
                       </div>
@@ -683,6 +841,47 @@ export default function AulaAnaliseCombinatoriaou({
             />
           </section>
 
+          <ModuleConsolidation
+            index={5}
+            variant="indigo"
+            video={{
+              videoId: "Z1o6Hq0J-i8",
+              title: "Arranjo Simples: Diferenciando da Combinação",
+              duration: "09:50"
+            }}
+            resumoVisual={{
+              moduloNome: "Arranjo Simples",
+              tituloAula: "Análise Combinatória",
+              materia: "Matemática",
+              images: [
+                { title: "Definição A(n,p)", type: "Fórmula", placeholderColor: "bg-indigo-500/20" },
+                { title: "A Ordem Importa?", type: "Decisão", placeholderColor: "bg-blue-500/20" },
+                { title: "Cálculo por Traços", type: "Prático", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "A Senha da Ordem",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm">Se mudar a ordem altera o resultado (ex: senha, cargo), é ARRANJO:</p>
+                  <div className="flex justify-center gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="p-2 bg-indigo-500 text-white rounded font-mono">123</div>
+                      <span className="text-[10px] uppercase">≠</span>
+                      <div className="p-2 bg-indigo-500 text-white rounded font-mono">321</div>
+                    </div>
+                    <div className="flex items-center text-indigo-500 font-bold">⇒ ARRANJO</div>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+              titulo: "Ranking da Vitória",
+              artista: "Banda Posicional"
+            }}
+          />
+
           <section id="quiz-modulo-5" className="mt-16">
             <QuizInterativo
               questoes={quizM5}
@@ -730,7 +929,7 @@ export default function AulaAnaliseCombinatoriaou({
                         A <strong>Combinação Simples C(n,p)</strong> conta o número de subconjuntos de tamanho <em>p</em> que podem ser formados de um conjunto de <em>n</em> elementos, <strong>sem repetição e sem considerar a ordem</strong>:
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center text-lg">C(n, p) = n! / [p! × (n−p)!]</p>
+                        <p className="font-mono text-center text-lg">C(n, p) = n! / [p! × (n−p)!]</p>
                         <p className="text-sm font-mono text-center mt-1">Também escrito como Cₙᵖ ou ⁿCₚ ou (ⁿₚ)</p>
                       </div>
                       <AlertBox tipo="info" titulo="Contexto Petrobras">
@@ -793,6 +992,47 @@ export default function AulaAnaliseCombinatoriaou({
             />
           </section>
 
+          <ModuleConsolidation
+            index={6}
+            variant="indigo"
+            video={{
+              videoId: "_bL1Qn6GezU",
+              title: "Combinação Simples: O Coração da Combinatória",
+              duration: "12:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Combinação Simples",
+              tituloAula: "Análise Combinatória",
+              materia: "Matemática",
+              images: [
+                { title: "Fórmula C(n,p)", type: "Teoria", placeholderColor: "bg-indigo-500/20" },
+                { title: "Grupos e Comissões", type: "Exemplo", placeholderColor: "bg-blue-500/20" },
+                { title: "Relação com Arranjo", type: "Comparação", placeholderColor: "bg-emerald-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Equipe é União",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm">Se mudar a ordem NÃO altera o grupo (ex: equipe, salada), é COMBINAÇÃO:</p>
+                  <div className="flex justify-center gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="p-2 bg-emerald-500 text-white rounded font-mono">A+B</div>
+                      <span className="text-[10px] uppercase">=</span>
+                      <div className="p-2 bg-emerald-500 text-white rounded font-mono">B+A</div>
+                    </div>
+                    <div className="flex items-center text-emerald-500 font-bold">⇒ COMBINAÇÃO</div>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+              titulo: "União sem Ordem",
+              artista: "Voz do Povo"
+            }}
+          />
+
           <section id="quiz-modulo-6" className="mt-16">
             <QuizInterativo
               questoes={quizM6}
@@ -840,7 +1080,7 @@ export default function AulaAnaliseCombinatoriaou({
                         A <strong>Combinação com Repetição CR(n,p)</strong> conta o número de formas de escolher <em>p</em> elementos de <em>n</em> tipos distintos, onde um mesmo tipo pode ser escolhido múltiplas vezes, e a ordem não importa:
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center text-lg">CR(n, p) = C(n+p−1, p)</p>
+                        <p className="font-mono text-center text-lg">CR(n, p) = C(n+p−1, p)</p>
                         <p className="text-sm text-center text-muted-foreground mt-1">Equivalente a C(n+p−1, n−1)</p>
                       </div>
                       <AlertBox tipo="info" titulo="Exemplo Prático">
@@ -935,6 +1175,43 @@ export default function AulaAnaliseCombinatoriaou({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={7}
+            variant="emerald"
+            video={{
+              videoId: "jX_l5X7V9QY",
+              title: "Combinação com Repetição: O Método Bolinha-Traço",
+              duration: "14:10"
+            }}
+            resumoVisual={{
+              moduloNome: "Combinação com Repetição",
+              tituloAula: "Análise Combinatória",
+              materia: "Matemática",
+              images: [
+                { title: "Fórmula CR(n,p)", type: "Técnico", placeholderColor: "bg-emerald-500/20" },
+                { title: "Bolinhas e Divisórias", type: "Visual", placeholderColor: "bg-teal-500/20" },
+                { title: "Equações Inteiras", type: "Resumo", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Bolinhas e Divisórias",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm">Distribuir 4 maçãs para 3 crianças (A, B, C):</p>
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl font-mono text-center tracking-widest">
+                    ● ● | ● | ● 
+                  </div>
+                  <p className="text-xs text-center text-muted-foreground mt-2">Transforme em Permutação com Repetição de Símbolos.</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+              titulo: "Sinfonia do Repeteco",
+              artista: "The Combinations"
+            }}
+          />
 
           <section id="quiz-modulo-7" className="mt-16">
             <QuizInterativo
@@ -1062,6 +1339,43 @@ export default function AulaAnaliseCombinatoriaou({
             />
           </section>
 
+          <ModuleConsolidation
+            index={8}
+            variant="indigo"
+            video={{
+              videoId: "k1V9X8Z7Y6W",
+              title: "Pascal e Binômio: As Leis da Harmonia",
+              duration: "10:00"
+            }}
+            resumoVisual={{
+              moduloNome: "Propriedades e Identidades",
+              tituloAula: "Análise Combinatória",
+              materia: "Matemática",
+              images: [
+                { title: "Triângulo de Pascal", type: "Mapa", placeholderColor: "bg-indigo-500/20" },
+                { title: "Identidades de Pascal", type: "Fórmula", placeholderColor: "bg-blue-500/20" },
+                { title: "Soma das Linhas", type: "Conceito", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "O Espelho de Pascal",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm">As extremidades são sempre 1 e o triângulo é simétrico:</p>
+                  <div className="flex justify-center font-mono text-indigo-500 text-lg">
+                    1 - 4 - 6 - 4 - 1
+                  </div>
+                  <p className="text-xs text-center text-muted-foreground">O que você escolhe, você também exclui (Simetria).</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+              titulo: "Harmonia de Pascal",
+              artista: "Sinfonia Binomial"
+            }}
+          />
+
           <section id="quiz-modulo-8" className="mt-16">
             <QuizInterativo
               questoes={quizM8}
@@ -1178,6 +1492,43 @@ export default function AulaAnaliseCombinatoriaou({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={9}
+            variant="emerald"
+            video={{
+              videoId: "p8I2-9Z9R9U",
+              title: "Aplicações Petrobras: Estratégias de Prova",
+              duration: "15:20"
+            }}
+            resumoVisual={{
+              moduloNome: "Aplicações Petrobras",
+              tituloAula: "Análise Combinatória",
+              materia: "Matemática",
+              images: [
+                { title: "Problemas de Equipes", type: "Prático", placeholderColor: "bg-emerald-500/20" },
+                { title: "Senhas e Rotas", type: "Esquema", placeholderColor: "bg-blue-500/20" },
+                { title: "Complementar vs Direto", type: "Decisão", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "O Pulo do Gato Petrobras",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm">Para questões de equipes com "pelo menos x mulheres":</p>
+                  <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl">
+                    <p className="font-bold text-rose-600">Total - Casos Proibidos</p>
+                    <p className="text-sm">É muito mais rápido que calcular todos os casos favoráveis!</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+              titulo: "Estratégia REPLAN",
+              artista: "Operação Gabarito"
+            }}
+          />
 
           <section id="quiz-modulo-9" className="mt-16">
             <QuizInterativo
@@ -1299,6 +1650,43 @@ export default function AulaAnaliseCombinatoriaou({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={10}
+            variant="indigo"
+            video={{
+              videoId: "m7X8Y9Z0W1V",
+              title: "Revision Final e Simulado: O Grande Final",
+              duration: "20:00"
+            }}
+            resumoVisual={{
+              moduloNome: "Simulado CESGRANRIO",
+              tituloAula: "Análise Combinatória",
+              materia: "Matemática",
+              images: [
+                { title: "Checklist de Fórmulas", type: "Revisão", placeholderColor: "bg-indigo-500/20" },
+                { title: "Padrões de Questões", type: "Lista", placeholderColor: "bg-blue-500/20" },
+                { title: "Gestão de Tempo", type: "Dica", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Gabaritando Combinatória",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl space-y-2">
+                    <p className="font-bold">1. A ordem importa? (Arranjo/Perm vs Comb)</p>
+                    <p className="font-bold">2. Há repetição? (PFC vs CR)</p>
+                    <p className="font-bold">3. Use o complementar para "pelo menos"!</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+              titulo: "Hino do Aprovado",
+              artista: "Mestre da Matemática"
+            }}
+          />
 
           <section id="quiz-modulo-10" className="mt-16">
             <QuizInterativo

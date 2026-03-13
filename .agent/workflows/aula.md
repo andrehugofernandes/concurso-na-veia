@@ -97,36 +97,41 @@ Criar `src/components/aulas/[materia]/Aula[Nome].tsx`
       <AlertBox tipo="info"> {/* Contexto Petrobras */} </AlertBox>
     </section>
 
+    {/* CONSOLIDAÇÃO PREMIUM (Mesa de Revisão) - OBRIGATÓRIO */}
+    <ModuleConsolidation
+      index={X}
+      variant="indigo" // ou emerald, blue, cyan
+      video={{
+        videoId: "...",
+        title: "...",
+        duration: "..."
+      }}
+      resumoVisual={{
+        moduloNome: "...",
+        tituloAula: "...",
+        materia: "...",
+        images: [
+          { title: "...", type: "...", placeholderColor: "...", imageUrl: "/temp-img.png" }
+        ]
+      }}
+      maceteVisual={{
+        title: "...",
+        content: (
+          <div className="space-y-4">
+            {/* Conteúdo do macete (JSX) */}
+          </div>
+        )
+      }}
+      audio={{
+        audioUrl: "...",
+        titulo: "...",
+        artista: "..."
+      }}
+    />
+
     {/* QUIZ */}
     <section id="quiz-modulo-X">
       <QuizInterativo questoes={quizMX} ... />
-    </section>
-
-    {/* RESUMO E MULTIMÍDIA (Mesa de Revisão) */}
-    <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-      <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
-      <LessonTabs tabs={[
-        {
-          id: "resumo",
-          label: "Resumo Visual",
-          icon: LuBookOpen,
-          content: (
-            <ModuleSummaryCarouselNew
-              images={[
-                {
-                  title: "Diagrama Técnico X",
-                  type: "Infográfico",
-                  placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
-                  imageUrl: "/temp-img.png", // PROMPT: Descrição detalhada para o Nano Banana...
-                },
-              ]}
-              moduloNome="..."
-              tituloAula="..."
-              materia="..."
-            />
-          ),
-        },
-      ]} />
     </section>
   </div>
 </TabsContent>

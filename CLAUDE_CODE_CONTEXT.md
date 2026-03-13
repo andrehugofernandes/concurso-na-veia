@@ -38,6 +38,12 @@ Seguimos rigorosamente o **Purple Ban** (Proibição do Roxo/Violeta):
   - `FlipCard`: Ricos em conteúdo no verso (mini-aulas). **Padrão Premium (Skin-Aware):** Ícones do sistema (`primary`), categoria no rodapé e estrutura densa. Frente: Ícone + Título + Pergunta; Verso: Ícone Check + Título Resposta + Explicação Densa + Dica de Elite em destaque.
   - `CardCarousel`: Para roadmaps de estudo.
   - `StickyModuleNav`: Novo menu em carrossel (ajustado para suportar até 15 módulos).
+  - `ModuleConsolidation`: **(MANDATÓRIO)** Componente de fechamento de cada módulo. Substitui a estrutura manual de abas de resumo. Contém 4 abas pré-definidas:
+    1. **Vídeo Aula**
+    2. **Resumo Virtual** (usa `ModuleSummaryCarouselNew` internamente)
+    3. **Macete Visual** (JSX livre para macetes táticos)
+    4. **Música do Módulo** (Player de áudio)
+    *   **Título:** Deve seguir o padrão: `"Resumo do Módulo ${index}"`.
 
 ## 4. Onde encontrar a "Receita"?
 

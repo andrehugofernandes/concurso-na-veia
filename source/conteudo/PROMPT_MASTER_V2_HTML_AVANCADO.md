@@ -89,9 +89,14 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
     *   **Multimídia:** Preveja 1 vídeo explicativo (placeholder interativo) a cada 2 módulos.
 
 3.  **FIM CONSOLIDADO (Retenção):**
-    *   **Resumo Visual:** Carrossel recapitulando os 3 pontos-chave da aula. Garanta de 3 a 5 imagens explicativas para permitir download em PDF. Use o componente `ModuleSummaryCarouselNew` com as props de contexto (`tituloAula`, `materia`, etc.) preenchidas. O título do PDF será **"A VAGA É MINHA"**.
-    *   **Música de Fixação:** Player de música obrigatório para ancoragem emocional.
-    *   **Próximos Passos:** Botões claros de ação (Simulado ou Próxima Aula).
+    *   **Consolidação Premium (OBRIGATÓRIO):** Use o componente `<ModuleConsolidation />` ao final de cada módulo. Ele centraliza Vídeo, Resumo, Macete e Música.
+    *   **Título:** `"Resumo do Módulo ${index}"`.
+    *   **Abas Inclusas:**
+        1. **Vídeo Aula:** Vídeo explicativo curto (videoId no YouTube).
+        2. **Resumo Virtual:** 3 a 5 imagens explicativas via `ModuleSummaryCarouselNew` (para exportação em PDF).
+        3. **Macete Visual:** Elemento JSX criativo (tabela, alerta, ícones) com o "pulo do gato".
+        4. **Música do Módulo:** Áudio para ancoragem emocional (Suno/Música autoral).
+    *   **Próximos Passos:** Botões claros de ação (Simulado ou Próxima Aula) após o quiz.
     *   **Acessibilidade:** O template `AulaTemplate` já inclui controles de tamanho de fonte no header; garanta que seu conteúdo se adapte bem a aumentos de fonte.
 
 ---
@@ -543,7 +548,7 @@ Para garantir uma experiência de aprendizado completa, toda aula DEVE seguir ri
 > />
 > ```
 >
-> - **Resumo Numerado e Multimídia:** O componente de Resumo DEVE utilizar obrigatoriamente o componente `<CardCarousel />` para agrupar conteúdo multimídia (Vídeo, Áudio, Macetes) e esquemas visuais essenciais (Tabelas, Mapas Mentais). Envolva-o em uma `<section>` padrão. A prop `titulo` deve seguir o padrão "Resumo Completo — [Tema]", e a prop `subtitulo` deve ser "Revisão Multimídia e Esquemas Visuais".
+> - **Resumo Numerado e Multimídia (ModuleConsolidation):** O componente de Consolidação DEVE ser usado obrigatoriamente para agrupar conteúdo multimídia (Vídeo, Áudio, Macetes) e esquemas visuais essenciais. Envolva-o em uma `<section>` padrão antes do quiz.
 > - **Quiz Numerado:** O Quiz Final de cada módulo DEVE ter um título com o mesmo peso visual e badge numérico dos outros cards. Use a prop `numero={X}` no componente `QuizInterativo`.
 > - **Card de Conclusão Manual (NOVO):** Ao final do ÚLTIMO módulo, adicione SEMPRE um card visualmente distinto ("Termine a leitura") que permita ao usuário marcar manualmente a conclusão, garantindo a sensação de "dever cumprido" e o trigger do XP.
 

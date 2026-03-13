@@ -3061,7 +3061,7 @@ export function ModuleConsolidation({
     <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
       <ModuleSectionHeader
         index={index}
-        title="Consolidação e Resumo"
+        title={`Resumo do Módulo ${index}`}
         variant={variant}
         description="Fixação rápida de conteúdo antes do desafio final."
       />
@@ -3082,7 +3082,7 @@ export function ModuleConsolidation({
           },
           {
             id: "resumo",
-            label: "Resumo Visual",
+            label: "Resumo Virtual",
             icon: LuBookOpen,
             content: <ModuleSummaryCarouselNew {...resumoVisual} />,
           },
@@ -3101,7 +3101,7 @@ export function ModuleConsolidation({
           },
           {
             id: "audio",
-            label: "Áudio Resumo",
+            label: "Música do Módulo",
             icon: LuVolume2,
             content: (
               <div className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl border border-indigo-500/20">
