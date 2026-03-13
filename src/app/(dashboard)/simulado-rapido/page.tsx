@@ -9,6 +9,8 @@ import SimuladoScreen from "@/components/SimuladoScreen";
 import ResultadoScreen from "@/components/ResultadoScreen";
 import SimuladoHome from "@/components/simulados/SimuladoHome";
 import { CONTEUDO_MATERIAS } from "@/data/conteudo";
+import { gerarQuestaoAction } from "@/lib/actions/questoes";
+import { getCurrentUserAction } from "@/lib/actions/auth";
 
 const usuarioInicial: Usuario = {
   nome: "",
@@ -51,23 +53,22 @@ export default function SimuladoPage() {
   useEffect(() => {
     const loadUserData = async () => {
       try {
-        const response = await fetch("/api/auth/me");
-        if (response.ok) {
-          const data = await response.json();
-          if (data.user) {
-            setUsuario(data.user);
-            salvarUsuario(data.user);
-            return;
+        const result = await getCurrentUserAction();
+        if (result.status === "success" && result.data) {
+          const user = result.data as Usuario;
+          setUsuario(user);
+          salvarUsuario(user);
+        } else {
+          // Fallback for localStorage
+          const dadosSalvos = carregarUsuario();
+          if (dadosSalvos) {
+            setUsuario(dadosSalvos);
+          } else {
+            router.push("/login");
           }
         }
       } catch (error) {
         console.error("Erro ao carregar usuário da API:", error);
-      }
-
-      // Fallback for localStorage
-      const dadosSalvos = carregarUsuario();
-      if (dadosSalvos) {
-        setUsuario(dadosSalvos);
       }
     };
 
@@ -77,9 +78,14 @@ export default function SimuladoPage() {
   // Auto-start se vier parâmetros na URL e usuário estiver carregado
   useEffect(() => {
     if (usuario.nome && tipoUrl && !simuladoAtual && tela === "home") {
-      iniciarSimulado(tipoUrl, qtdUrl ? parseInt(qtdUrl) : 5);
+      iniciarSimulado(
+        tipoUrl,
+        qtdUrl ? parseInt(qtdUrl) : 5,
+        dificuldadeUrl || undefined,
+        assuntoUrl || undefined,
+      );
     }
-  }, [tipoUrl, qtdUrl, usuario.nome]);
+  }, [tipoUrl, qtdUrl, dificuldadeUrl, assuntoUrl, usuario.nome]);
 
   // Salvar dados
   useEffect(() => {
@@ -127,29 +133,27 @@ export default function SimuladoPage() {
   ): Promise<Questao> => {
     const cargoContexto = usuario.cargo;
 
-    // Usar endpoint Gemini
-    const response = await fetch("/api/gerar-questao", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const result = await gerarQuestaoAction({
+      materia,
+      dificuldade: (dificuldade as any) || "Média",
+      assunto,
+      questoesAnteriores,
+      contexto: {
+        cargo: cargoContexto || "Geral",
+        nivel: usuario.nivelConcurso || "medio",
       },
-      body: JSON.stringify({
-        materia,
-        dificuldade,
-        assunto,
-        questoesAnteriores,
-        contexto: {
-          cargo: cargoContexto || "Geral",
-          nivel: usuario.nivelConcurso || "medio",
-        },
-      }),
     });
 
-    if (!response.ok) {
-      throw new Error("Erro ao gerar questão");
+    if (result.status === "error") {
+      console.error(`[FRONTEND] Erro na Server Action:`, result.error);
+      throw new Error(result.error || "Erro ao gerar questão");
     }
 
-    return await response.json();
+    if (!result.data) {
+      throw new Error("Não foi possível obter os dados da questão.");
+    }
+
+    return result.data;
   };
 
   const gerarQuestoes = async (
@@ -181,10 +185,20 @@ export default function SimuladoPage() {
         ];
       }
     } else if (tipo === "intensivo") {
-      // Intensivo: 20 questões
-      if (assuntoUrl === "Língua Portuguesa") {
+      // Normalização para comparação (remove acentos e deixa lowercase)
+      const normalize = (str: string) =>
+        str
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+      const normalizedAssunto = assuntoUrl ? normalize(assuntoUrl) : "";
+
+      if (
+        normalizedAssunto === "lingua portuguesa" ||
+        normalizedAssunto === "portugues"
+      ) {
         distribuicao = [{ materia: "Língua Portuguesa", qtd: quantidade }];
-      } else if (assuntoUrl === "Matemática") {
+      } else if (normalizedAssunto === "matematica") {
         distribuicao = [{ materia: "Matemática", qtd: quantidade }];
       } else if (assuntoUrl) {
         // Tópico específico: descobre a matéria ou define como Específica
@@ -227,6 +241,7 @@ export default function SimuladoPage() {
 
     // Loop de geração
     for (const item of distribuicao) {
+      console.log(`Gerando ${item.qtd} questões de ${item.materia}...`);
       for (let i = 0; i < item.qtd; i++) {
         // Break early if global quantity reached (safety)
         if (questoes.length >= quantidade) break;
@@ -242,41 +257,45 @@ export default function SimuladoPage() {
             if (taxaAcerto > 0.8) dificuldade = "Difícil";
             else if (taxaAcerto > 0.6) dificuldade = "Média";
             else if (taxaAcerto < 0.5) dificuldade = "Fácil";
+            else dificuldade = "Média";
           }
 
-          const questoesAnteriores = questoes.map((q) =>
-            q.enunciado.substring(0, 80),
+          const questoesAnterioresTitles = questoes.map((q) =>
+            typeof q.enunciado === "string" ? q.enunciado.substring(0, 80) : "",
           );
 
-          // Delay para não sobrecarregar a API
-          if (questoes.length > 0) await new Promise((r) => setTimeout(r, 100));
+          // Delay maior para evitar rate limit (500ms entre requisições)
+          if (questoes.length > 0) await new Promise((r) => setTimeout(r, 500));
 
           const questao = await gerarQuestaoIA(
             item.materia,
             dificuldade,
             item.assunto,
-            questoesAnteriores,
+            questoesAnterioresTitles,
           );
           questoes.push(questao);
+
+          // Progresso: você pode adicionar um state aqui se quiser feedback visual no componente
+          console.log(
+            ` Questão ${questoes.length}/${quantidade} gerada com sucesso (${item.materia})`,
+          );
         } catch (error) {
           console.error(
-            `Erro ao gerar questão ${i + 1} de ${item.materia}:`,
+            `Erro ao gerar questão ${questoes.length + 1} de ${item.materia}:`,
             error,
           );
-          // Retentativa simples
-          try {
-            const questao = await gerarQuestaoIA(
-              item.materia,
-              "Média",
-              item.assunto,
-              [],
-            );
-            questoes.push(questao);
-          } catch (retryError) {
-            console.error("Falha na retentativa:", retryError);
-          }
+          // Em caso de erro, esperamos um pouco mais e tentamos a próxima do loop
+          // em vez de quebrar o loop inteiro ou retornar apenas uma.
+          await new Promise((r) => setTimeout(r, 2000));
+          continue;
         }
       }
+    }
+
+    if (questoes.length === 0) {
+      throw new Error(
+        "Não foi possível gerar nenhuma questão após diversas tentativas.",
+      );
     }
 
     return questoes;

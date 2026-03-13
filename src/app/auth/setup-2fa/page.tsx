@@ -4,9 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import QRCode from "qrcode";
-import { createClient } from "@/lib/supabase/client";
 import AuthLayout from "@/components/auth/AuthLayout";
 import { OtpTutorialContent } from "@/components/auth/OtpTutorialContent";
+import { enrollMFAAction, verify2FAAction } from "@/lib/actions/auth";
 
 export default function Setup2FAPage() {
   const [loading, setLoading] = useState(true);
@@ -21,7 +21,6 @@ export default function Setup2FAPage() {
   const [factorId, setFactorId] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-  const supabase = createClient();
 
   useEffect(() => {
     // Detectar o tema real do DOM de forma resiliente
@@ -35,46 +34,16 @@ export default function Setup2FAPage() {
 
     const initSetup = async () => {
       try {
-        const {
-          data: { user },
-        } = await supabase.auth.getUser();
-        if (!user) {
-          router.push("/login");
+        const result = await enrollMFAAction();
+        if (result.status === "error" || !result.data) {
+          setError(result.error || "Erro ao iniciar configuração");
           return;
         }
 
-        // Check existing factors
-        const { data: factors } = await supabase.auth.mfa.listFactors();
-        if (!factors) return;
+        setFactorId(result.data.id);
+        setSecret(result.data.totp.secret);
 
-        const verifiedFactor = factors.totp.find(
-          (f) => f.status === "verified",
-        );
-        if (verifiedFactor) {
-          router.push("/dashboard");
-          return;
-        }
-
-        // Cleanup unverified factors to prevent "already exists" error
-        const unverifiedFactors = factors.totp.filter(
-          (f: any) => f.status === "unverified",
-        );
-        for (const factor of unverifiedFactors) {
-          await supabase.auth.mfa.unenroll({ factorId: factor.id });
-        }
-
-        // Start enrollment
-        const { data, error } = await supabase.auth.mfa.enroll({
-          factorType: "totp",
-          friendlyName: `Petrobras Quest (${new Date().toLocaleTimeString()})`,
-        });
-
-        if (error) throw error;
-
-        setFactorId(data.id);
-        setSecret(data.totp.secret);
-
-        const qrUrl = await QRCode.toDataURL(data.totp.uri);
+        const qrUrl = await QRCode.toDataURL(result.data.totp.uri);
         setQrCodeUrl(qrUrl);
       } catch (err: any) {
         console.error("Error setup 2FA:", err);
@@ -86,7 +55,7 @@ export default function Setup2FAPage() {
 
     initSetup();
     return () => observer.disconnect();
-  }, [router, supabase]);
+  }, [router]);
 
   const handleChange = (index: number, value: string) => {
     if (!/^\d*$/.test(value)) return;
@@ -134,12 +103,9 @@ export default function Setup2FAPage() {
     setError("");
     const code = otp.join("");
     try {
-      const { data, error } = await supabase.auth.mfa.challengeAndVerify({
-        factorId,
-        code,
-      });
+      const result = await verify2FAAction(code, factorId);
 
-      if (error) throw error;
+      if (result.status === "error") throw new Error(result.error);
 
       // Success! Redirect to dashboard
       router.push("/dashboard");

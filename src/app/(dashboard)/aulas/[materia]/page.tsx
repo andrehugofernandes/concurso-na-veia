@@ -5,7 +5,8 @@ import Link from "next/link";
 import { getMateriaById, MateriaConteudo } from "@/data/conteudo";
 import { useAllAulasProgress } from "@/hooks/useAulaProgress";
 import { notFound } from "next/navigation";
-import { carregarUsuario, carregarUsuarioAsync } from "@/lib/utils";
+import { carregarUsuario, cn } from "@/lib/utils";
+import { getCurrentUserAction } from "@/lib/actions/auth";
 import { Usuario } from "@/lib/types";
 import { getProfissaoById } from "@/lib/profissoes-edital";
 import AulaPontuacao from "@/components/aulas/AulaPontuacao";
@@ -34,17 +35,28 @@ export default function MateriaPage({ params }: PageProps) {
   const [completedTopics, setCompletedTopics] = useState<
     Record<string, boolean>
   >({});
+  const [usuario, setUsuario] = useState<Usuario | null>(null);
 
   // Access Control Logic - Hooks must be at top level
   const [userPlan, setUserPlan] = useState<string | null>(null);
   const [accessChecked, setAccessChecked] = useState(false);
 
   useEffect(() => {
-    carregarUsuarioAsync().then((user) => {
-      // @ts-ignore
-      setUserPlan(user?.plan || "Bronze");
+    const loadUserData = async () => {
+      const result = await getCurrentUserAction();
+      let currentUser: Usuario | null = null;
+      if (result.status === "success" && result.data) {
+        currentUser = result.data as Usuario;
+      } else {
+        // Fallback
+        const savedUser = carregarUsuario();
+        if (savedUser) currentUser = savedUser;
+      }
+      setUsuario(currentUser);
+      setUserPlan(currentUser?.plan || "Bronze");
       setAccessChecked(true);
-    });
+    };
+    loadUserData();
   }, []);
 
   useEffect(() => {
@@ -59,10 +71,7 @@ export default function MateriaPage({ params }: PageProps) {
       // 2. Se for conhecimentos-especificos, criar dinamicamente
       if (materiaId === "conhecimentos-especificos") {
         try {
-          const response = await fetch("/api/auth/me");
-          if (!response.ok) throw new Error("Falha ao carregar usuário");
-          const data = await response.json();
-          const usuario = data.user;
+          // Use the 'usuario' state which is loaded by the other useEffect
           const cargoIdOriginal = usuario?.cargo;
           const cargoId = cargoIdOriginal
             ? CARGO_ID_MAP[cargoIdOriginal] || cargoIdOriginal

@@ -1,3 +1,4 @@
+import { salvarProgressoAction, getProgressoAction } from "@/lib/actions/progresso";
 
 export interface LessonProgress {
     lessonId: string;
@@ -11,19 +12,19 @@ export interface LessonProgress {
 export const progressService = {
     saveProgress: async (data: { lessonId: string, moduleId: string, score?: number, completed?: boolean, readPercentage?: number }) => {
         try {
-            await fetch('/api/progress', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    lessonId: data.lessonId,
-                    moduleId: data.moduleId,
-                    data: {
-                        score: data.score,
-                        completed: data.completed,
-                        read_percentage: data.readPercentage
-                    }
-                })
+            const result = await salvarProgressoAction({
+                lessonId: data.lessonId,
+                moduleId: data.moduleId,
+                data: {
+                    score: data.score,
+                    completed: data.completed,
+                    read_percentage: data.readPercentage
+                }
             });
+            
+            if (result.status === 'error') {
+                console.error('Failed to save progress via action:', result.error);
+            }
         } catch (error) {
             console.error('Failed to save progress:', error);
         }
@@ -31,21 +32,14 @@ export const progressService = {
 
     getProgress: async (lessonId?: string): Promise<LessonProgress[]> => {
         try {
-            const query = lessonId ? `?lessonId=${lessonId}` : '';
-            const response = await fetch(`/api/progress${query}`);
-            if (!response.ok) {
-                let errorMsg = 'Failed to fetch progress';
-                try {
-                    const errorText = await response.text();
-                    errorMsg = `${errorMsg}: ${response.status} ${errorText}`;
-                } catch (e) {
-                    errorMsg = `${errorMsg}: ${response.status}`;
-                }
-                console.error(errorMsg);
-                throw new Error(errorMsg);
+            const result = await getProgressoAction(lessonId);
+            
+            if (result.status === 'error') {
+                console.error('Failed to fetch progress via action:', result.error);
+                throw new Error(result.error);
             }
 
-            const data = await response.json();
+            const data = result.data || [];
 
             // Map Snake Case from DB to Camel Case for Frontend
             return data.map((item: any) => ({

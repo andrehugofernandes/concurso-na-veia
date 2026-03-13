@@ -16,6 +16,8 @@ import {
 import { useAllAulasProgress } from "@/hooks/useAulaProgress";
 import { useSetPageTitle } from "@/contexts/UIContext";
 import { CARGO_ID_MAP } from "@/lib/cargos-map";
+import { getRankingAction } from "@/lib/actions/ranking";
+import { getCurrentUserAction } from "@/lib/actions/auth";
 
 interface UserData {
   nome: string;
@@ -69,10 +71,9 @@ export default function DashboardPage() {
     // Load user data from cookie/session
     const loadUser = async () => {
       try {
-        const response = await fetch("/api/auth/me");
-        if (response.ok) {
-          const data = await response.json();
-          setUser(data.user);
+        const result = await getCurrentUserAction();
+        if (result.status === "success") {
+          setUser(result.data);
         }
       } catch (error) {
         console.error("Error loading user:", error);
@@ -1083,21 +1084,15 @@ function RankingTable({ userCargo }: { userCargo: string }) {
     const fetchRanking = async () => {
       setLoading(true);
       try {
-        const res = await fetch(
-          `/api/ranking?type=${filter}&cargo=${userCargo || ""}`,
-        );
-        if (!res.ok) {
-          console.error("Failed to fetch ranking:", await res.text());
+        const result = await getRankingAction(filter, userCargo);
+
+        if (result.status === "error") {
+          console.error("Failed to fetch ranking via action:", result.error);
           setRanking([]);
           return;
         }
-        const data = await res.json();
-        if (Array.isArray(data)) {
-          setRanking(data);
-        } else {
-          console.error("Ranking data is not an array:", data);
-          setRanking([]);
-        }
+
+        setRanking(result.data || []);
       } catch (error) {
         console.error("Error fetching ranking:", error);
         setRanking([]);

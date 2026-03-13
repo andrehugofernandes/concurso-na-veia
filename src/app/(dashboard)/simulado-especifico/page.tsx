@@ -9,6 +9,9 @@ import SimuladoScreen from "@/components/SimuladoScreen";
 import ResultadoScreen from "@/components/ResultadoScreen";
 import SimuladoHome from "@/components/simulados/SimuladoHome";
 import { CONTEUDO_MATERIAS } from "@/data/conteudo";
+import { ActionResponse } from "@/lib/actions/safe-action";
+import { getCurrentUserAction } from "@/lib/actions/auth";
+import { gerarQuestaoAction } from "@/lib/actions/questoes";
 
 const usuarioInicial: Usuario = {
   nome: "",
@@ -51,23 +54,22 @@ export default function SimuladoEspecificoPage() {
   useEffect(() => {
     const loadUserData = async () => {
       try {
-        const response = await fetch("/api/auth/me");
-        if (response.ok) {
-          const data = await response.json();
-          if (data.user) {
-            setUsuario(data.user);
-            salvarUsuario(data.user);
-            return;
+        const result = await getCurrentUserAction();
+        if (result.status === "success" && result.data) {
+          const user = result.data as Usuario;
+          setUsuario(user);
+          salvarUsuario(user);
+        } else {
+          // Fallback for localStorage
+          const dadosSalvos = carregarUsuario();
+          if (dadosSalvos) {
+            setUsuario(dadosSalvos);
+          } else {
+            router.push("/login");
           }
         }
       } catch (error) {
         console.error("Erro ao carregar usuário da API:", error);
-      }
-
-      // Fallback for localStorage
-      const dadosSalvos = carregarUsuario();
-      if (dadosSalvos) {
-        setUsuario(dadosSalvos);
       }
     };
 
@@ -77,9 +79,14 @@ export default function SimuladoEspecificoPage() {
   // Auto-start se vier parâmetros na URL e usuário estiver carregado
   useEffect(() => {
     if (usuario.nome && tipoUrl && !simuladoAtual && tela === "home") {
-      iniciarSimulado(tipoUrl, qtdUrl ? parseInt(qtdUrl) : 5);
+      iniciarSimulado(
+        tipoUrl,
+        qtdUrl ? parseInt(qtdUrl) : 10,
+        dificuldadeUrl || undefined,
+        assuntoUrl || undefined,
+      );
     }
-  }, [tipoUrl, qtdUrl, usuario.nome]);
+  }, [tipoUrl, qtdUrl, dificuldadeUrl, assuntoUrl, usuario.nome]);
 
   // Salvar dados
   useEffect(() => {
@@ -127,29 +134,27 @@ export default function SimuladoEspecificoPage() {
   ): Promise<Questao> => {
     const cargoContexto = usuario.cargo;
 
-    // Usar endpoint Gemini
-    const response = await fetch("/api/gerar-questao", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const result = await gerarQuestaoAction({
+      materia,
+      dificuldade: (dificuldade as any) || "Média",
+      assunto,
+      questoesAnteriores,
+      contexto: {
+        cargo: cargoContexto || "Geral",
+        nivel: usuario.nivelConcurso || "medio",
       },
-      body: JSON.stringify({
-        materia,
-        dificuldade,
-        assunto,
-        questoesAnteriores,
-        contexto: {
-          cargo: cargoContexto || "Geral",
-          nivel: usuario.nivelConcurso || "medio",
-        },
-      }),
     });
 
-    if (!response.ok) {
-      throw new Error("Erro ao gerar questão");
+    if (result.status === "error") {
+      console.error(`[FRONTEND] Erro na Server Action:`, result.error);
+      throw new Error(result.error || "Erro ao gerar questão");
     }
 
-    return await response.json();
+    if (!result.data) {
+      throw new Error("Não foi possível obter os dados da questão.");
+    }
+
+    return result.data;
   };
 
   const gerarQuestoes = async (
@@ -162,6 +167,13 @@ export default function SimuladoEspecificoPage() {
     let distribuicao: { materia: string; qtd: number; assunto?: string }[] = [];
 
     // Lógica de distribuição baseada no tipo
+    const normalize = (str: string) =>
+      str
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+    const normalizedAssunto = assuntoUrl ? normalize(assuntoUrl) : "";
+
     if (tipo === "maratona") {
       const isSuperior = usuario.nivelConcurso === "superior";
       if (isSuperior) {

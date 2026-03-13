@@ -8,6 +8,7 @@ import { motion, useInView } from "framer-motion";
 import PetrobrasLogo from "@/components/PetrobrasLogo";
 import HeroCarousel from "@/components/HeroCarousel";
 import { fadeIn, staggerContainer, zoomIn } from "@/utils/motion";
+import { getCurrentUserAction } from "@/lib/actions/auth";
 
 const SectionWrapper = ({
   children,
@@ -43,8 +44,8 @@ export default function LandingPage() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch("/api/auth/me");
-        if (res.ok) {
+        const result = await getCurrentUserAction();
+        if (result.status === "success") {
           router.push("/dashboard");
         }
       } catch (e) {

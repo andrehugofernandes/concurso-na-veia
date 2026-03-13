@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import { Usuario } from "./types"
+import { getCurrentUserAction } from "./actions/auth"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -54,10 +55,9 @@ export async function carregarUsuarioAsync(): Promise<Usuario | null> {
 
     // Se não tiver, tenta endpoint de auth (fallback)
     try {
-      const res = await fetch('/api/auth/me');
-      if (res.ok) {
-        const data = await res.json();
-        return data.user;
+      const result = await getCurrentUserAction();
+      if (result.status === 'success') {
+        return result.data as any;
       }
     } catch (e) {
       console.error(e);

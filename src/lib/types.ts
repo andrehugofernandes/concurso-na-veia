@@ -32,9 +32,10 @@ export interface Questao {
   alternativas: string[];
   correta: number;
   explicacao: string;
-  dificuldade: 'Fácil' | 'Média' | 'Difícil';
+  dificuldade: string;
   banca: string;
   geradaPorIA?: boolean;
+  provider?: string;
 }
 
 export interface Simulado {

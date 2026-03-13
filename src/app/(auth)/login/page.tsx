@@ -8,6 +8,7 @@ import { OtpTutorialContent } from "@/components/auth/OtpTutorialContent";
 import { AnimatedInput } from "@/components/ui/animated-input";
 import { LuUser, LuLock, LuEye, LuEyeOff } from "react-icons/lu";
 import { FaFacebook, FaHome } from "react-icons/fa";
+import { loginAction, verify2FAAction } from "@/lib/actions/auth";
 
 type AuthStep = "login" | "verify-otp" | "setup-otp";
 
@@ -41,22 +42,14 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      });
+      const result = await loginAction({ username, password });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Erro ao fazer login");
+      if (result.status === "error") {
+        throw new Error(result.error);
       }
 
-      if (data.mfaRequired) {
+      if (result.data?.mfaRequired) {
         setStep("verify-otp");
-      } else if (data.mfaSetupRequired) {
-        setStep("setup-otp");
       } else {
         router.push("/dashboard");
       }
@@ -117,16 +110,19 @@ export default function LoginPage() {
     setOtpError("");
 
     try {
-      const endpoint =
-        step === "setup-otp" ? "/api/auth/2fa/enable" : "/api/auth/verify-2fa";
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code }),
-      });
-
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "Código inválido");
+      if (step === "setup-otp") {
+        // We'll handle setup-otp refactoring if needed, but verify-2fa is the main one here
+        const response = await fetch("/api/auth/2fa/enable", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code }),
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "Código inválido");
+      } else {
+        const result = await verify2FAAction(code);
+        if (result.status === "error") throw new Error(result.error);
+      }
 
       router.push("/dashboard");
     } catch (err: any) {
