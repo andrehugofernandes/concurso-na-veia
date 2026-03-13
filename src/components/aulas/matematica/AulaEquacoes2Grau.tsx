@@ -14,6 +14,7 @@ import {
   ModuleSectionHeader,
   ModuleSummaryCarouselNew,
   FunctionGraph,
+  ModuleConsolidation,
   type FunctionPlot,
 } from "../shared";
 
