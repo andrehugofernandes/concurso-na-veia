@@ -1,3 +1,4 @@
+// Last modified: 2026-03-13 - Upgraded with ModuleConsolidation (4-tab system) and C.E.D.E. pedagogy
 "use client";
 
 import { useState, useEffect } from "react";
@@ -9,12 +10,24 @@ import {
   getRandomQuestions,
   AulaProps,
   ContentAccordion,
-  FlipCard,
   AulaTemplate,
   ModuleSectionHeader,
-  FunctionGraph,
+  ModuleConsolidation,
   type FunctionPlot,
 } from "../shared";
+
+import {
+  LuBookOpen,
+  LuLightbulb,
+  LuTarget,
+  LuTrendingUp,
+  LuTrophy,
+  LuBrain,
+  LuRepeat,
+  LuSigma,
+  LuZap,
+} from "react-icons/lu";
+
 import {
   QUIZ_M1_CONCEITO_PA,
   QUIZ_M2_TERMO_GERAL,
@@ -27,6 +40,19 @@ import {
   QUIZ_M9_DESAFIO,
   QUIZ_M10_SIMULADO,
 } from "./data/progressoes-pa-quizzes";
+
+const MODULE_DEFS = [
+  { id: "modulo-1", label: "Módulo 1", title: "Conceitos Fundamentais" },
+  { id: "modulo-2", label: "Módulo 2", title: "Termo Geral" },
+  { id: "modulo-3", label: "Módulo 3", title: "Soma Finita" },
+  { id: "modulo-4", label: "Módulo 4", title: "Propriedades" },
+  { id: "modulo-5", label: "Módulo 5", title: "Interpolação" },
+  { id: "modulo-6", label: "Módulo 6", title: "PA e Funções Afim" },
+  { id: "modulo-7", label: "Módulo 7", title: "Prática Integrada" },
+  { id: "modulo-8", label: "Módulo 8", title: "Desafios Avançados" },
+  { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+] as const;
 
 export default function AulaProgressoesPa({
   onComplete,
@@ -49,61 +75,83 @@ export default function AulaProgressoesPa({
     new Set(),
   );
 
-  const [quizConceito] = useState(() => getRandomQuestions(QUIZ_M1_CONCEITO_PA, 6));
-  const [quizTermoGeral] = useState(() => getRandomQuestions(QUIZ_M2_TERMO_GERAL, 6));
-  const [quizSoma] = useState(() => getRandomQuestions(QUIZ_M3_SOMA, 6));
-  const [quizPropriedades] = useState(() => getRandomQuestions(QUIZ_M4_PROPRIEDADES, 6));
-  const [quizInterpolacao] = useState(() => getRandomQuestions(QUIZ_M5_INTERPOLACAO, 6));
-  const [quizFuncoes] = useState(() => getRandomQuestions(QUIZ_M6_PA_FUNCOES, 6));
-  const [quizPratica] = useState(() => getRandomQuestions(QUIZ_M7_PRATICA, 6));
-  const [quizAvancado] = useState(() => getRandomQuestions(QUIZ_M8_AVANCADO, 6));
-  const [quizDesafio] = useState(() => getRandomQuestions(QUIZ_M9_DESAFIO, 6));
-  const [quizSimulado] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO, 6));
+  const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_CONCEITO_PA, 4));
+  const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_TERMO_GERAL, 4));
+  const [quizM3] = useState(() => getRandomQuestions(QUIZ_M3_SOMA, 4));
+  const [quizM4] = useState(() => getRandomQuestions(QUIZ_M4_PROPRIEDADES, 4));
+  const [quizM5] = useState(() => getRandomQuestions(QUIZ_M5_INTERPOLACAO, 5));
+  const [quizM6] = useState(() => getRandomQuestions(QUIZ_M6_PA_FUNCOES, 5));
+  const [quizM7] = useState(() => getRandomQuestions(QUIZ_M7_PRATICA, 5));
+  const [quizM8] = useState(() => getRandomQuestions(QUIZ_M8_AVANCADO, 5));
+  const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_DESAFIO, 5));
+  const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO, 5));
 
-  const isModuleUnlocked = (_index: number) => true;
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
+  const [showCompletionBadge, setShowCompletionBadge] = useState(false);
+
+  useEffect(() => {
+    if (isCompleted) setShowCompletionBadge(true);
+  }, [isCompleted]);
+
+  useEffect(() => {
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
+      }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
 
   const handleModuleComplete = (moduleId: string, score: number) => {
-    if (score >= 60) {
-      setCompletedModules((prev) => {
-        const n = new Set(prev);
-        n.add(moduleId);
-        return n;
-      });
-      const modules = Array.from({ length: 10 }, (_, i) => `modulo-${i + 1}`);
-      const idx = modules.findIndex((m) => m === moduleId);
-      const pct = Math.round(((idx + 1) / 10) * 100);
-      onUpdateProgress?.(pct);
-      if (idx < 9) setTimeout(() => setActiveTab(`modulo-${idx + 2}`), 1500);
+    if (score >= 70) {
+      const newSet = new Set(completedModules).add(moduleId);
+      setCompletedModules(newSet);
+
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
+
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
+
+      const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
+
+      if (index === MODULE_DEFS.length - 1) {
+        setShowCompletionBadge(true);
+        onComplete?.();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        setTimeout(() => setActiveTab(MODULE_DEFS[index + 1].id), 1500);
+      }
     }
   };
 
-  useEffect(() => {
-    if (currentProgress && currentProgress > 0) {
-      const count = Math.floor((currentProgress / 100) * 10);
-      const s = new Set<string>();
-      for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
-      setCompletedModules(s);
-    }
-  }, [currentProgress]);
-
-  const MODULE_DEFS = [
-    { id: "modulo-1", label: "Módulo 1", title: "Conceitos" },
-    { id: "modulo-2", label: "Módulo 2", title: "Termo Geral" },
-    { id: "modulo-3", label: "Módulo 3", title: "Soma (Gauss)" },
-    { id: "modulo-4", label: "Módulo 4", title: "Propriedades" },
-    { id: "modulo-5", label: "Módulo 5", title: "Interpolação" },
-    { id: "modulo-6", label: "Módulo 6", title: "PA e Funções" },
-    { id: "modulo-7", label: "Módulo 7", title: "Prática Industrial" },
-    { id: "modulo-8", label: "Módulo 8", title: "Avançado" },
-    { id: "modulo-9", label: "Módulo 9", title: "Desafio CESGRANRIO" },
-    { id: "modulo-10", label: "Módulo 10", title: "Simulado Final" },
-  ];
+  const isModuleUnlocked = (index: number) => {
+    if (isCompleted || index === 0) return true;
+    return completedModules.has(MODULE_DEFS[index - 1].id);
+  };
 
   return (
     <AulaTemplate
       activeTab={activeTab}
-      setActiveTab={setActiveTab}
-      modules={MODULE_DEFS}
+      setActiveTab={(val) => {
+        const idx = MODULE_DEFS.findIndex((m) => m.id === val);
+        if (isModuleUnlocked(idx)) setActiveTab(val);
+      }}
+      modules={Array.from(MODULE_DEFS)}
       completedModules={completedModules}
       isModuleUnlocked={isModuleUnlocked}
       titulo={titulo}
@@ -115,109 +163,106 @@ export default function AulaProgressoesPa({
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
-      currentProgress={currentProgress}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
       onComplete={onComplete}
       loading={loading}
       xpGanho={xpGanho}
     >
-      {/* ═══════════════════════════════════════════════════════════════════ */}
-      {/* MÓDULO 1: CONCEITO E CLASSIFICAÇÃO DE PA                         */}
-      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* ═══ MÓDULO 1: CONCEITOS FUNDAMENTAIS ═══ */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
-        <ModuleBanner
-          numero={1}
-          titulo="O que é uma Progressão Aritmética?"
-          descricao="Domine o conceito de PA, identifique a razão e classifique sequências como crescente, decrescente ou constante."
-          gradiente="bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-700"
-        />
-        <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={1}
+            titulo="Conceitos Fundamentais de PA"
+            descricao="A diferença que se repete: progressão aritmética explicada."
+            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="Definição e Razão da PA"
-              description="O alicerce de tudo: entenda o padrão constante que define uma PA."
-              variant="indigo"
-              className="mb-6"
+              title="A Sequência que Soma"
+              description="Entenda a razão r e o primeiro termo a₁."
+              variant="blue"
             />
+
             <ContentAccordion
-              titulo="A Definição Formal"
-              icone="📐"
-              corIndicador="bg-indigo-500"
-              defaultOpen={true}
               slides={[
                 {
-                  titulo: "O que é uma PA?",
-                  icone: "🔢",
-                  conteudo:(
+                  titulo: "Conceituação - O que é PA?",
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <p>
-                        Uma <strong>Progressão Aritmética (PA)</strong> é uma sequência de números onde a <strong>diferença entre dois termos consecutivos é sempre constante</strong>. Essa constante é chamada de <strong>razão (r)</strong>.
+                      <p className="text-muted-foreground leading-relaxed">
+                        Uma Progressão Aritmética é uma sequência onde cada termo é obtido somando ao anterior uma constante chamada <strong>razão (r)</strong>.
                       </p>
-                      <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center">
-                          r = a<sub>n+1</sub> − a<sub>n</sub> (para todo n)
+                      <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20">
+                        <p className="font-bold text-blue-700 mb-2">PA: a₁, a₂, a₃, ...</p>
+                        <p className="text-sm">a₂ = a₁ + r</p>
+                        <p className="text-sm">a₃ = a₂ + r = a₁ + 2r</p>
+                        <p className="text-sm">aₙ = a₁ + (n-1)r</p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exemplificação - Casos Práticos",
+                  icone: <LuBookOpen />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground text-sm">Veja PAs em contextos reais:</p>
+                      <div className="space-y-2">
+                        <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
+                          <p className="font-bold text-blue-700 text-sm">Crescimento: (5, 10, 15, 20, ...)</p>
+                          <p className="text-xs">a₁ = 5, r = 5 (soma 5)</p>
+                        </div>
+                        <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
+                          <p className="font-bold text-blue-700 text-sm">Decrescimento: (100, 90, 80, 70, ...)</p>
+                          <p className="text-xs">a₁ = 100, r = -10 (soma -10)</p>
+                        </div>
+                        <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
+                          <p className="font-bold text-blue-700 text-sm">Constante: (7, 7, 7, 7, ...)</p>
+                          <p className="text-xs">a₁ = 7, r = 0 (sem mudança)</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Dicas - Reconhecendo PA",
+                  icone: <LuLightbulb />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <AlertBox tipo="info" titulo="Teste da Razão">
+                        <p className="text-sm">
+                          Subtraia dois termos consecutivos. Se o resultado é sempre o mesmo, é PA!
                         </p>
-                      </div>
-                      <AlertBox tipo="info" titulo="Contextualização Petrobras">
-                        Imagine um tanque que recebe <strong>30 litros por hora</strong>, de forma constante. As leituras de volume (500, 530, 560, 590...) formam uma PA com razão r = 30. Esse padrão linear é a base de inúmeros cálculos de produção e manutenção na indústria.
                       </AlertBox>
+                      <p className="text-sm text-muted-foreground">
+                        Sequência (3, 7, 11, 15): 7-3 = 4, 11-7 = 4, 15-11 = 4 ✓ É PA com r = 4
+                      </p>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Como encontrar a razão",
-                  icone: "🔍",
-                  conteudo:(
-                    <div className="space-y-4">
-                      <p>
-                        A razão é calculada subtraindo <strong>qualquer termo do seu sucessor</strong>:
-                      </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">Exemplo 1</p>
-                          <p className="text-sm">PA: (3, 7, 11, 15, ...)</p>
-                          <p className="text-sm">r = 7 − 3 = <strong>4</strong></p>
-                        </div>
-                        <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-500 mb-2">Exemplo 2</p>
-                          <p className="text-sm">PA: (20, 15, 10, 5, ...)</p>
-                          <p className="text-sm">r = 15 − 20 = <strong>−5</strong></p>
-                        </div>
+                  titulo: "Exceções - Casos Especiais",
+                  icone: <LuTrophy />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
+                        <p className="font-bold text-blue-700 text-sm mb-1">PA Constante: r = 0</p>
+                        <p className="text-xs">(5, 5, 5, ...) todos iguais</p>
                       </div>
-                      <AlertBox tipo="warning" titulo="Macete de Prova">
-                        Se a banca dá 4 termos e pede "verifique se é PA", calcule <strong>TODAS</strong> as diferenças consecutivas. Se uma delas diferir, <strong>não é PA</strong>. Ex: (1, 3, 5, 9) → diferenças 2, 2, 4 → NÃO é PA.
-                      </AlertBox>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Classificação da PA",
-                  icone: "📊",
-                  conteudo:(
-                    <div className="space-y-4">
-                      <p>
-                        A PA é classificada de acordo com o <strong>sinal da razão</strong>:
-                      </p>
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-center">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">r {">"} 0</p>
-                          <p className="text-sm font-bold">Crescente</p>
-                          <p className="text-xs text-muted-foreground mt-1">(2, 5, 8, 11...)</p>
-                        </div>
-                        <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20 text-center">
-                          <p className="text-xs font-bold text-rose-500 mb-2">r {"<"} 0</p>
-                          <p className="text-sm font-bold">Decrescente</p>
-                          <p className="text-xs text-muted-foreground mt-1">(20, 17, 14, 11...)</p>
-                        </div>
-                        <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20 text-center">
-                          <p className="text-xs font-bold text-amber-500 mb-2">r = 0</p>
-                          <p className="text-sm font-bold">Constante</p>
-                          <p className="text-xs text-muted-foreground mt-1">(5, 5, 5, 5...)</p>
-                        </div>
+                      <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
+                        <p className="font-bold text-blue-700 text-sm mb-1">r Negativo: r &lt; 0</p>
+                        <p className="text-xs">Sequência decrescente</p>
                       </div>
-                      <AlertBox tipo="danger" titulo="Pegadinha CESGRANRIO">
-                        A PA constante (r=0) é aquela em que <strong>todos os termos são iguais</strong>. Candidatos esquecem que (7, 7, 7, 7) é sim uma PA válida. A banca explora isso em alternativas de "nenhuma das anteriores".
-                      </AlertBox>
+                      <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
+                        <p className="font-bold text-blue-700 text-sm mb-1">a₁ = 0</p>
+                        <p className="text-xs">Começa no zero, depois soma r</p>
+                      </div>
                     </div>
                   ),
                 },
@@ -225,194 +270,157 @@ export default function AulaProgressoesPa({
             />
           </section>
 
-          {/* FlipCards - Termo Médio */}
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
-              title="Propriedade do Termo Médio"
-              description="O atalho que economiza 2 minutos na prova."
-              variant="emerald"
-              className="mb-6"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FlipCard
-                frente={
-                  <div className="text-center space-y-3">
-                    <p className="text-4xl">🎯</p>
-                    <p className="font-bold">Se (a, b, c) é PA...</p>
-                    <p className="text-sm text-muted-foreground">Qual a relação entre eles?</p>
+          <ModuleConsolidation
+            index={1}
+            variant="blue"
+            video={{
+              videoId: "gZDzgZxrvAo",
+              title: "PA: Conceitos Fundamentais",
+              duration: "9:50",
+            }}
+            resumoVisual={{
+              moduloNome: "Conceitos PA",
+              tituloAula: "Progressões Aritméticas",
+              materia: "Matemática",
+              images: [
+                {
+                  title: "PA: Adição Constante",
+                  type: "Conceito",
+                  placeholderColor: "bg-blue-500/20",
+                },
+                {
+                  title: "Razão r e Termo Geral",
+                  type: "Técnica",
+                  placeholderColor: "bg-sky-500/20",
+                },
+                {
+                  title: "Crescimento e Decaimento",
+                  type: "Aplicação",
+                  placeholderColor: "bg-cyan-500/20",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "PA: Sempre Soma!",
+              content: (
+                <div className="space-y-3 text-left">
+                  <p className="text-sm italic">
+                    "Na PA, cada termo é o anterior mais r. Simples assim!"
+                  </p>
+                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg font-mono text-xs text-center">
+                    <p>PA: (2, 5, 8, 11, ...)</p>
+                    <p className="text-xs text-muted-foreground">a₁ = 2</p>
+                    <p className="text-xs text-muted-foreground">r = 3</p>
                   </div>
-                }
-                verso={
-                  <div className="space-y-3">
-                    <p className="font-bold text-emerald-400">Termo médio = Média Aritmética</p>
-                    <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3">
-                      <p className="text-sm font-mono text-center">b = (a + c) / 2</p>
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      Se (2, b, 8) é PA → b = (2+8)/2 = <strong>5</strong>. Funciona para QUALQUER trio consecutivo em uma PA.
-                    </p>
-                  </div>
-                }
-              />
-              <FlipCard
-                frente={
-                  <div className="text-center space-y-3">
-                    <p className="text-4xl">🏭</p>
-                    <p className="font-bold">Aplicação na Refinaria</p>
-                    <p className="text-sm text-muted-foreground">Sensor de temperatura a cada hora</p>
-                  </div>
-                }
-                verso={
-                  <div className="space-y-3">
-                    <p className="font-bold text-cyan-400">Leituras: 22°C, ?, 28°C</p>
-                    <p className="text-sm">
-                      Se as leituras formam PA, a leitura intermediária é:
-                    </p>
-                    <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
-                      <p className="text-sm font-mono text-center">(22 + 28) / 2 = <strong>25°C</strong></p>
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      Usado em interpolação de dados de sensores quando há falha de leitura — contexto real de instrumentação.
-                    </p>
-                  </div>
-                }
-              />
-            </div>
-          </section>
-
-          <FunctionGraph
-            title="Progressão Aritmética: Crescimento Linear"
-            functions={[
-              {
-                id: "pa-r3",
-                label: "a_n = 1 + 3(n-1), r=3",
-                color: "#3b82f6",
-                fn: (x: number) => 1 + 3 * (x - 1),
-                strokeWidth: 2,
-              } satisfies FunctionPlot,
-              {
-                id: "pa-r5",
-                label: "a_n = 2 + 5(n-1), r=5",
-                color: "#ef4444",
-                fn: (x: number) => 2 + 5 * (x - 1),
-                strokeWidth: 2,
-              } satisfies FunctionPlot,
-              {
-                id: "pa-rm2",
-                label: "a_n = 20 - 2(n-1), r=-2",
-                color: "#10b981",
-                fn: (x: number) => 20 - 2 * (x - 1),
-                strokeWidth: 2,
-              } satisfies FunctionPlot,
-            ]}
-            xMin={0}
-            xMax={10}
-            yMin={-10}
-            yMax={50}
-            points={10}
+                </div>
+              ),
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "PA: Conceitos Fundamentais",
+              artista: "Prof. Progressões",
+            }}
           />
 
           <section id="quiz-modulo-1" className="mt-16">
             <QuizInterativo
-              questoes={quizConceito}
-              titulo="Quiz - Conceitos de PA"
-              icone="🧠"
+              questoes={quizM1}
+              titulo="Fixação - Conceitos PA"
               numero={1}
-              variant="indigo"
+              variant="blue"
+              icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
         </div>
       </TabsContent>
 
-      {/* ═══════════════════════════════════════════════════════════════════ */}
-      {/* MÓDULO 2: TERMO GERAL                                            */}
-      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* ═══ MÓDULO 2: TERMO GERAL ═══ */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
-        <ModuleBanner
-          numero={2}
-          titulo="Fórmula do Termo Geral"
-          descricao="Aprenda a encontrar QUALQUER termo da PA sem precisar listar todos os anteriores."
-          gradiente="bg-gradient-to-br from-emerald-600 via-green-600 to-teal-700"
-        />
-        <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={2}
+            titulo="Termo Geral da PA"
+            descricao="A fórmula para encontrar qualquer termo sem calcular todos."
+            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
-              title="A Fórmula Mestra: aₙ = a₁ + (n−1)·r"
-              description="A fórmula mais importante de PA. Domine-a e resolva 80% das questões."
+              index={2}
+              title="Fórmula do Termo Geral"
+              description="aₙ = a₁ + (n-1)r"
               variant="emerald"
-              className="mb-6"
             />
+
             <ContentAccordion
-              titulo="Dedução e Aplicação"
-              icone="📐"
-              corIndicador="bg-emerald-500"
-              defaultOpen={true}
               slides={[
                 {
-                  titulo: "De onde vem a fórmula?",
-                  icone: "🧮",
-                  conteudo:(
+                  titulo: "Conceituação - A Fórmula",
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <p>Observe o padrão:</p>
-                      <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-1">
-                        <p className="text-sm font-mono">a₁ = a₁</p>
-                        <p className="text-sm font-mono">a₂ = a₁ + r</p>
-                        <p className="text-sm font-mono">a₃ = a₁ + 2r</p>
-                        <p className="text-sm font-mono">a₄ = a₁ + 3r</p>
-                        <p className="text-sm font-mono">...</p>
-                        <p className="text-sm font-mono font-bold">aₙ = a₁ + (n−1)·r</p>
+                      <p className="text-muted-foreground leading-relaxed">
+                        A fórmula do termo geral permite encontrar qualquer termo sem calcular os anteriores.
+                      </p>
+                      <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20">
+                        <p className="font-mono font-bold text-center text-emerald-700">aₙ = a₁ + (n-1)r</p>
+                        <div className="mt-4 space-y-2 text-sm">
+                          <p><strong>aₙ</strong> = termo procurado</p>
+                          <p><strong>a₁</strong> = primeiro termo</p>
+                          <p><strong>r</strong> = razão</p>
+                          <p><strong>n</strong> = posição do termo</p>
+                        </div>
                       </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exemplificação - Aplicando a Fórmula",
+                  icone: <LuBookOpen />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm text-muted-foreground">Encontre o 10º termo de (3, 7, 11, ...):</p>
+                      <div className="bg-emerald-500/10 p-4 rounded border border-emerald-500/20">
+                        <p className="font-mono text-sm text-center">a₁₀ = 3 + (10-1)×4 = 3 + 36 = 39</p>
+                      </div>
+                      <AlertBox tipo="success" titulo="Vantagem">
+                        Sem a fórmula, teria que calcular: 3 → 7 → 11 → ... → 39
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Dicas - Evite Erros Comuns",
+                  icone: <LuLightbulb />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <AlertBox tipo="warning" titulo="Atenção ao Expoente!">
+                        O multiplicador de r é (n-1), NÃO n! Se procura o 5º termo, use 4r, não 5r.
+                      </AlertBox>
                       <p className="text-sm text-muted-foreground">
-                        O expoente de r é sempre <strong>(n−1)</strong>, não n! Esse é o erro mais comum em provas.
+                        Posição 1 → multiplicador 0 (a₁ = a₁ + 0×r = a₁)
                       </p>
-                      <AlertBox tipo="warning" titulo="Dica de Ouro">
-                        Para não errar: o 1º termo soma <strong>zero</strong> vezes r, o 2º soma <strong>uma</strong> vez r, o n-ésimo soma <strong>(n−1)</strong> vezes r. O "−1" existe porque o primeiro termo não precisa "andar" nenhum passo.
-                      </AlertBox>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Encontrando termos distantes",
-                  icone: "🎯",
-                  conteudo:(
-                    <div className="space-y-4">
-                      <p>
-                        A fórmula permite calcular qualquer termo <strong>sem listar</strong> todos os anteriores:
-                      </p>
-                      <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                        <p className="text-xs font-bold text-indigo-400 mb-2">Exemplo CESGRANRIO</p>
-                        <p className="text-sm mb-2">PA: (5, 9, 13, ...). Qual o 100º termo?</p>
-                        <p className="text-sm">a₁ = 5, r = 4</p>
-                        <p className="text-sm font-bold">a₁₀₀ = 5 + (100−1)·4 = 5 + 396 = <strong>401</strong></p>
+                  titulo: "Exceções - Valores Especiais de r",
+                  icone: <LuTrophy />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
+                        <p className="font-bold text-emerald-700 text-sm mb-1">r = 0: PA Constante</p>
+                        <p className="text-xs">aₙ = a₁ (todos os termos iguais)</p>
                       </div>
-                      <AlertBox tipo="info" titulo="Contextualização Industrial">
-                        Na P-66, um sistema de bombeamento registra a pressão a cada minuto. Se a leitura inicial é 120 psi e aumenta 0,5 psi/min, a fórmula do termo geral calcula a pressão em qualquer minuto futuro: a₆₀ = 120 + 59·0,5 = 149,5 psi (após 1 hora).
-                      </AlertBox>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Fórmula generalizada entre dois termos",
-                  icone: "🔗",
-                  conteudo:(
-                    <div className="space-y-4">
-                      <p>Nem sempre a questão dá a₁. Às vezes fornece a₃ e a₇. Use a versão generalizada:</p>
-                      <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center font-bold">
-                          aₙ = aₘ + (n − m) · r
-                        </p>
+                      <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
+                        <p className="font-bold text-emerald-700 text-sm mb-1">r > 0: Crescente</p>
+                        <p className="text-xs">Termos aumentam progressivamente</p>
                       </div>
-                      <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
-                        <p className="text-xs font-bold text-amber-500 mb-2">Exemplo</p>
-                        <p className="text-sm">Se a₃ = 14 e a₇ = 30, qual a razão?</p>
-                        <p className="text-sm">a₇ = a₃ + (7−3)·r → 30 = 14 + 4r → r = 4</p>
+                      <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
+                        <p className="font-bold text-emerald-700 text-sm mb-1">r &lt; 0: Decrescente</p>
+                        <p className="text-xs">Termos diminuem progressivamente</p>
                       </div>
-                      <AlertBox tipo="warning" titulo="Macete Tático">
-                        Entre aₘ e aₙ existem <strong>(n−m) intervalos</strong>, NÃO (n−m+1). Muitos candidatos erram por contar os "postes" em vez dos "espaços entre postes".
-                      </AlertBox>
                     </div>
                   ),
                 },
@@ -420,181 +428,160 @@ export default function AulaProgressoesPa({
             />
           </section>
 
-          {/* FlipCards - Variações da fórmula */}
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
-              title="Isolando Variáveis"
-              description="A CESGRANRIO pede a₁, r, n ou aₙ. Saiba isolar cada uma."
-              variant="cyan"
-              className="mb-6"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FlipCard
-                frente={
-                  <div className="text-center space-y-3">
-                    <p className="text-3xl font-mono font-bold text-emerald-400">Achar r</p>
-                    <p className="text-sm text-muted-foreground">Quando a₁ e aₙ são dados</p>
+          <ModuleConsolidation
+            index={2}
+            variant="emerald"
+            video={{
+              videoId: "2Aq7p7-VgEU",
+              title: "PA: Termo Geral Explicado",
+              duration: "11:20",
+            }}
+            resumoVisual={{
+              moduloNome: "Termo Geral PA",
+              tituloAula: "Progressões Aritméticas",
+              materia: "Matemática",
+              images: [
+                {
+                  title: "Fórmula: aₙ = a₁ + (n-1)r",
+                  type: "Conceito",
+                  placeholderColor: "bg-emerald-500/20",
+                },
+                {
+                  title: "Identifique a₁ e r",
+                  type: "Técnica",
+                  placeholderColor: "bg-teal-500/20",
+                },
+                {
+                  title: "Calcule Qualquer Termo",
+                  type: "Aplicação",
+                  placeholderColor: "bg-green-500/20",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "Termo Geral: aₙ = a₁ + (n-1)r!",
+              content: (
+                <div className="space-y-3 text-left">
+                  <p className="text-sm italic">
+                    "Nunca calcule todos os termos. Use a fórmula!"
+                  </p>
+                  <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg font-mono text-xs text-center">
+                    <p>PA: (2, 5, 8, ...)</p>
+                    <p className="text-xs text-muted-foreground">a₁ = 2, r = 3</p>
+                    <p>a₂₀ = 2 + 19×3 = 59</p>
                   </div>
-                }
-                verso={
-                  <div className="space-y-3">
-                    <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3">
-                      <p className="text-sm font-mono text-center">r = (aₙ − a₁) / (n − 1)</p>
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      Ex: a₁=3, a₁₀=30 → r = (30−3)/9 = 3
-                    </p>
-                  </div>
-                }
-              />
-              <FlipCard
-                frente={
-                  <div className="text-center space-y-3">
-                    <p className="text-3xl font-mono font-bold text-cyan-400">Achar n</p>
-                    <p className="text-sm text-muted-foreground">Quantos termos tem a PA?</p>
-                  </div>
-                }
-                verso={
-                  <div className="space-y-3">
-                    <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
-                      <p className="text-sm font-mono text-center">n = (aₙ − a₁) / r + 1</p>
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      Ex: PA (7, 12, ..., 102) → n = (102−7)/5 + 1 = 20 termos
-                    </p>
-                  </div>
-                }
-              />
-            </div>
-          </section>
-
-          <FunctionGraph
-            title="Fórmula do Termo Geral: a_n = a₁ + (n-1)·r"
-            functions={[
-              {
-                id: "tg-a5-r4",
-                label: "a₁=5, r=4",
-                color: "#3b82f6",
-                fn: (x: number) => 5 + 4 * (x - 1),
-                strokeWidth: 2,
-              } satisfies FunctionPlot,
-              {
-                id: "tg-a10-r2",
-                label: "a₁=10, r=2",
-                color: "#ef4444",
-                fn: (x: number) => 10 + 2 * (x - 1),
-                strokeWidth: 2,
-              } satisfies FunctionPlot,
-            ]}
-            xMin={0}
-            xMax={10}
-            yMin={0}
-            yMax={50}
-            points={10}
+                </div>
+              ),
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+              titulo: "PA: Termo Geral",
+              artista: "Prof. Progressões",
+            }}
           />
 
           <section id="quiz-modulo-2" className="mt-16">
             <QuizInterativo
-              questoes={quizTermoGeral}
-              titulo="Quiz - Termo Geral"
-              icone="🧮"
+              questoes={quizM2}
+              titulo="Fixação - Termo Geral"
               numero={2}
               variant="emerald"
+              icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
         </div>
       </TabsContent>
 
-      {/* ═══════════════════════════════════════════════════════════════════ */}
-      {/* MÓDULO 3: SOMA DOS TERMOS (GAUSS)                                */}
-      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* ═══ MÓDULO 3: SOMA FINITA ═══ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
-        <ModuleBanner
-          numero={3}
-          titulo="Soma dos Termos da PA"
-          descricao="A fórmula de Gauss: o método genial que soma centenas de termos em segundos."
-          gradiente="bg-gradient-to-br from-amber-600 via-orange-600 to-red-700"
-        />
-        <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={3}
+            titulo="Soma de Termos (Finita)"
+            descricao="Calcule a soma dos primeiros n termos de uma PA."
+            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
-              title="A Fórmula de Gauss"
-              description="A história do garoto que humilhou o professor e criou uma das fórmulas mais úteis da matemática."
+              index={3}
+              title="Soma dos Primeiros n Termos"
+              description="Fórmula e aplicações práticas."
               variant="amber"
-              className="mb-6"
             />
+
             <ContentAccordion
-              titulo="Soma de uma PA Finita"
-              icone="🧮"
-              corIndicador="bg-amber-500"
-              defaultOpen={true}
               slides={[
                 {
-                  titulo: "A história de Gauss",
-                  icone: "👦",
-                  conteudo:(
+                  titulo: "Conceituação - A Fórmula de Soma",
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <p>
-                        Conta a lenda que, aos 10 anos, <strong>Carl Friedrich Gauss</strong> foi desafiado pelo professor a somar os números de 1 a 100. Enquanto os colegas somavam um a um, Gauss percebeu um padrão: empareou o primeiro com o último (1+100=101), o segundo com o penúltimo (2+99=101)... formando <strong>50 pares de soma 101</strong>.
+                      <p className="text-muted-foreground leading-relaxed">
+                        A soma dos n primeiros termos é dada pela fórmula:
                       </p>
-                      <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center font-bold">
-                          S₁₀₀ = (1 + 100) × 100 / 2 = 5050
-                        </p>
+                      <div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20">
+                        <p className="font-mono font-bold text-center text-amber-700 mb-3">Sₙ = (a₁ + aₙ) × n / 2</p>
+                        <p className="text-sm mt-3">Ou alternativamente:</p>
+                        <p className="font-mono font-bold text-center text-amber-700 mt-2">Sₙ = n × [2a₁ + (n-1)r] / 2</p>
                       </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exemplificação - Soma Prática",
+                  icone: <LuBookOpen />,
+                  conteudo: (
+                    <div className="space-y-4">
                       <p className="text-sm text-muted-foreground">
-                        Essa ideia gera a fórmula universal da soma de PA.
+                        Calcule a soma dos 5 primeiros termos de (2, 5, 8, 11, 14):
+                      </p>
+                      <div className="bg-amber-500/10 p-4 rounded border border-amber-500/20">
+                        <p className="font-mono text-xs text-center">
+                          a₁ = 2, a₅ = 14, n = 5
+                          <br />
+                          S₅ = (2 + 14) × 5 / 2
+                          <br />
+                          S₅ = 16 × 5 / 2 = 40
+                        </p>
+                      </div>
+                      <p className="text-xs text-muted-foreground text-center">
+                        Verificação: 2 + 5 + 8 + 11 + 14 = 40 ✓
                       </p>
                     </div>
                   ),
                 },
                 {
-                  titulo: "As duas formas da fórmula",
-                  icone: "📐",
-                  conteudo:(
-                    <div className="space-y-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
-                          <p className="text-xs font-bold text-amber-500 mb-2">Forma 1 (quando se conhece aₙ)</p>
-                          <p className="text-sm font-mono font-bold">Sₙ = (a₁ + aₙ) · n / 2</p>
-                          <p className="text-xs text-muted-foreground mt-2">
-                            Usada quando o último termo é conhecido ou fácil de calcular.
-                          </p>
-                        </div>
-                        <div className="p-4 bg-orange-500/5 rounded-xl border border-orange-500/20">
-                          <p className="text-xs font-bold text-orange-500 mb-2">Forma 2 (quando se conhece r)</p>
-                          <p className="text-sm font-mono font-bold">Sₙ = n·a₁ + n(n−1)·r/2</p>
-                          <p className="text-xs text-muted-foreground mt-2">
-                            Usada quando o último termo não é dado diretamente.
-                          </p>
-                        </div>
-                      </div>
-                      <AlertBox tipo="warning" titulo="Qual usar na prova?">
-                        Se a questão dá a₁ e aₙ (ou é fácil calcular aₙ), use a <strong>Forma 1</strong>. Se dá a₁ e r sem mencionar aₙ, use a <strong>Forma 2</strong>. Na dúvida, calcule aₙ primeiro e use a Forma 1 — é menos propensa a erros de cálculo.
+                  titulo: "Dicas - Escolhendo a Fórmula",
+                  icone: <LuLightbulb />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <AlertBox tipo="info" titulo="Qual Usar?">
+                        Se sabe aₙ: use Sₙ = (a₁ + aₙ) × n / 2 (mais simples)
+                        <br />
+                        Se sabe r: use Sₙ = n × [2a₁ + (n-1)r] / 2
                       </AlertBox>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Aplicação industrial",
-                  icone: "🏭",
-                  conteudo:(
-                    <div className="space-y-4">
-                      <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                        <p className="text-xs font-bold text-indigo-400 mb-2">Produção acumulada na plataforma</p>
-                        <p className="text-sm mb-2">
-                          Uma plataforma offshore produz 1000 barris no 1º dia e aumenta 50 barris/dia. Produção total em 30 dias?
+                  titulo: "Exceções - Casos Especiais",
+                  icone: <LuTrophy />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <div className="bg-amber-500/10 p-3 rounded border border-amber-500/20">
+                        <p className="font-bold text-amber-700 text-sm mb-1">
+                          PA Constante (r = 0):
                         </p>
-                        <p className="text-sm">a₁=1000, r=50, n=30</p>
-                        <p className="text-sm">a₃₀ = 1000 + 29·50 = 2450</p>
-                        <p className="text-sm font-bold">S₃₀ = (1000+2450)·30/2 = <strong>51.750 barris</strong></p>
+                        <p className="text-xs">Sₙ = a₁ × n (apenas a₁ repetido n vezes)</p>
                       </div>
-                      <AlertBox tipo="info" titulo="Na vida real">
-                        Esse tipo de cálculo de produção acumulada é usado em relatórios de ANP (Agência Nacional do Petróleo) e projeções de reserva dos campos da Petrobras.
-                      </AlertBox>
+                      <div className="bg-amber-500/10 p-3 rounded border border-amber-500/20">
+                        <p className="font-bold text-amber-700 text-sm mb-1">
+                          n = 1:
+                        </p>
+                        <p className="text-xs">S₁ = a₁ (apenas o primeiro termo)</p>
+                      </div>
                     </div>
                   ),
                 },
@@ -602,145 +589,165 @@ export default function AulaProgressoesPa({
             />
           </section>
 
-          {/* Sₙ como função quadrática */}
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
-              title="Sₙ é uma Parábola!"
-              description="A conexão entre PA e funções quadráticas que a CESGRANRIO adora."
-              variant="amber"
-              className="mb-6"
-            />
-            <div className="space-y-4">
-              <p>
-                Reescrevendo Sₙ = n·a₁ + n(n−1)·r/2, temos:
-              </p>
-              <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl p-4">
-                <p className="text-sm font-mono text-center">
-                  Sₙ = (r/2)·n² + (a₁ − r/2)·n
-                </p>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Isso é um <strong>polinômio de grau 2 em n</strong>. O gráfico de Sₙ × n é uma parábola. Se r {">"} 0, a parábola abre para cima. Se r {"<"} 0, abre para baixo.
-              </p>
-              <AlertBox tipo="warning" titulo="Dica CESGRANRIO">
-                Se a banca diz "Sₙ = 3n² + 2n", você pode extrair: <strong>r = 2·A = 2·3 = 6</strong> (onde A é o coeficiente de n²). E a₁ = S₁ = 3+2 = 5. Economiza tempo enorme.
-              </AlertBox>
-            </div>
-          </section>
+          <ModuleConsolidation
+            index={3}
+            variant="amber"
+            video={{
+              videoId: "4KzE9R6zWzY",
+              title: "PA: Soma Finita",
+              duration: "10:45",
+            }}
+            resumoVisual={{
+              moduloNome: "Soma Finita PA",
+              tituloAula: "Progressões Aritméticas",
+              materia: "Matemática",
+              images: [
+                {
+                  title: "Fórmula: Sₙ = (a₁+aₙ)n/2",
+                  type: "Conceito",
+                  placeholderColor: "bg-amber-500/20",
+                },
+                {
+                  title: "Calcule aₙ Primeiro",
+                  type: "Técnica",
+                  placeholderColor: "bg-orange-500/20",
+                },
+                {
+                  title: "Aplique a Soma",
+                  type: "Aplicação",
+                  placeholderColor: "bg-yellow-500/20",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "Soma PA: (a₁+aₙ)n/2!",
+              content: (
+                <div className="space-y-3 text-left">
+                  <p className="text-sm italic">
+                    "Soma de extremos, vezes n, dividido por 2. Fácil!"
+                  </p>
+                  <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg font-mono text-xs text-center">
+                    <p>PA: (1, 3, 5, 7, 9)</p>
+                    <p className="text-xs text-muted-foreground">
+                      S₅ = (1 + 9) × 5/2
+                    </p>
+                    <p>= 50/2 = 25</p>
+                  </div>
+                </div>
+              ),
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+              titulo: "PA: Soma Finita",
+              artista: "Prof. Progressões",
+            }}
+          />
 
           <section id="quiz-modulo-3" className="mt-16">
             <QuizInterativo
-              questoes={quizSoma}
-              titulo="Quiz - Soma dos Termos"
-              icone="➕"
+              questoes={quizM3}
+              titulo="Fixação - Soma Finita"
               numero={3}
               variant="amber"
+              icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
         </div>
       </TabsContent>
 
-      {/* ═══════════════════════════════════════════════════════════════════ */}
-      {/* MÓDULO 4: PROPRIEDADES E TERMOS EQUIDISTANTES                    */}
-      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* ═══ MÓDULO 4: PROPRIEDADES ═══ */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
-        <ModuleBanner
-          numero={4}
-          titulo="Propriedades e Termos Equidistantes"
-          descricao="Os atalhos que transformam questões de 5 minutos em 30 segundos."
-          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-700"
-        />
-        <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={4}
+            titulo="Propriedades Especiais de PA"
+            descricao="Relações e padrões únicos das progressões aritméticas."
+            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
-              title="Termos Equidistantes dos Extremos"
-              description="A propriedade mais poderosa da PA para provas."
-              variant="indigo"
-              className="mb-6"
+              index={4}
+              title="Propriedades Importantes"
+              description="Termos equidistantes, meios aritméticos e simetria."
+              variant="cyan"
             />
+
             <ContentAccordion
-              titulo="A Simetria da PA"
-              icone="⚖️"
-              corIndicador="bg-indigo-500"
-              defaultOpen={true}
               slides={[
                 {
-                  titulo: "Propriedade fundamental",
-                  icone: "🔑",
-                  conteudo:(
+                  titulo: "Conceituação - Termos Equidistantes",
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <p>
-                        Em toda PA, a <strong>soma de dois termos equidistantes dos extremos é constante</strong>:
+                      <p className="text-muted-foreground leading-relaxed">
+                        Em uma PA, a soma de termos equidistantes dos extremos é constante:
                       </p>
-                      <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center font-bold">
-                          a₁ + aₙ = a₂ + aₙ₋₁ = a₃ + aₙ₋₂ = ... = constante
+                      <div className="bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/20">
+                        <p className="font-mono font-bold text-center text-cyan-700 mb-3">
+                          a₁ + aₙ = a₂ + aₙ₋₁ = a₃ + aₙ₋₂ = ... = aₖ + aₙ₊₁₋ₖ
                         </p>
-                      </div>
-                      <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-xs font-bold text-emerald-500 mb-2">Exemplo visual</p>
-                        <p className="text-sm">PA: (3, 7, 11, 15, 19)</p>
-                        <p className="text-sm">a₁+a₅ = 3+19 = <strong>22</strong></p>
-                        <p className="text-sm">a₂+a₄ = 7+15 = <strong>22</strong> ✓</p>
-                        <p className="text-sm">a₃+a₃ = 11+11 = <strong>22</strong> ✓</p>
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Soma via termo central",
-                  icone: "🎯",
-                  conteudo:(
+                  titulo: "Exemplificação - Soma de Extremos",
+                  icone: <LuBookOpen />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <p>
-                        Se a PA tem <strong>número ímpar de termos</strong>, o termo central é especial:
+                      <p className="text-sm text-muted-foreground">
+                        Na PA (2, 5, 8, 11, 14, 17, 20):
                       </p>
-                      <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center font-bold">
-                          Sₙ = n · a_central (quando n é ímpar)
+                      <div className="bg-cyan-500/10 p-4 rounded border border-cyan-500/20">
+                        <p className="font-mono text-xs text-center">
+                          a₁ + a₇ = 2 + 20 = 22
+                          <br />
+                          a₂ + a₆ = 5 + 17 = 22
+                          <br />
+                          a₃ + a₅ = 8 + 14 = 22
+                          <br />
+                          a₄ = 11 (único, no centro)
                         </p>
                       </div>
-                      <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                        <p className="text-xs font-bold text-cyan-500 mb-2">Atalho matador</p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Dicas - Meio Aritmético",
+                  icone: <LuLightbulb />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <AlertBox tipo="info" titulo="Três Termos em PA">
                         <p className="text-sm">
-                          "Uma PA de 15 termos tem soma 450. Qual o 8º termo?"
+                          Se a, b, c estão em PA, então <strong>b = (a + c) / 2</strong>
                         </p>
-                        <p className="text-sm">
-                          S₁₅ = 15 · a₈ → a₈ = 450/15 = <strong>30</strong>
-                        </p>
-                        <p className="text-xs text-muted-foreground mt-1">
-                          Resolvido em 5 segundos, sem precisar de a₁ ou r!
-                        </p>
-                      </div>
-                      <AlertBox tipo="danger" titulo="Exceção">
-                        Essa propriedade SÓ funciona com número ímpar de termos. Com número par, não existe "termo central" e a fórmula não se aplica.
                       </AlertBox>
+                      <p className="text-sm text-muted-foreground">
+                        Ex: (3, 7, 11) → 7 = (3 + 11) / 2 = 7 ✓
+                      </p>
                     </div>
                   ),
                 },
                 {
-                  titulo: "3 termos em PA (sistema simplificado)",
-                  icone: "🔧",
-                  conteudo:(
-                    <div className="space-y-4">
-                      <p>
-                        Quando a questão pede 3 termos consecutivos de uma PA, use a substituição inteligente:
-                      </p>
-                      <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center">
-                          Termos: <strong>(a−r), a, (a+r)</strong>
+                  titulo: "Exceções - Número de Termos Ímpar vs Par",
+                  icone: <LuTrophy />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <div className="bg-cyan-500/10 p-3 rounded border border-cyan-500/20">
+                        <p className="font-bold text-cyan-700 text-sm mb-1">
+                          Número Ímpar de Termos:
                         </p>
-                        <p className="text-xs text-center text-muted-foreground mt-1">Soma = 3a (a razão cancela!)</p>
+                        <p className="text-xs">Existe termo central, que é a média</p>
                       </div>
-                      <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                        <p className="text-xs font-bold text-rose-400 mb-2">Exemplo clássico</p>
-                        <p className="text-sm">"3 termos em PA somam 24 e o produto é 440."</p>
-                        <p className="text-sm">3a = 24 → a = 8</p>
-                        <p className="text-sm">(8−r)·8·(8+r) = 440 → 8(64−r²) = 440 → r² = 9 → r = 3</p>
-                        <p className="text-sm font-bold">PA: (5, 8, 11)</p>
+                      <div className="bg-cyan-500/10 p-3 rounded border border-cyan-500/20">
+                        <p className="font-bold text-cyan-700 text-sm mb-1">
+                          Número Par de Termos:
+                        </p>
+                        <p className="text-xs">
+                          Não há termo central único, mas dois centrais
+                        </p>
                       </div>
                     </div>
                   ),
@@ -749,85 +756,167 @@ export default function AulaProgressoesPa({
             />
           </section>
 
+          <ModuleConsolidation
+            index={4}
+            variant="cyan"
+            video={{
+              videoId: "9KZg0LdwAg4",
+              title: "PA: Propriedades Especiais",
+              duration: "10:15",
+            }}
+            resumoVisual={{
+              moduloNome: "Propriedades PA",
+              tituloAula: "Progressões Aritméticas",
+              materia: "Matemática",
+              images: [
+                {
+                  title: "Soma de Extremos Constante",
+                  type: "Conceito",
+                  placeholderColor: "bg-cyan-500/20",
+                },
+                {
+                  title: "Meio Aritmético: b = (a+c)/2",
+                  type: "Técnica",
+                  placeholderColor: "bg-sky-500/20",
+                },
+                {
+                  title: "Simetria da PA",
+                  type: "Aplicação",
+                  placeholderColor: "bg-blue-500/20",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "Propriedade: Soma Simétrica!",
+              content: (
+                <div className="space-y-3 text-left">
+                  <p className="text-sm italic">
+                    "Termos equidistantes: a₁+aₙ = a₂+aₙ₋₁ = etc."
+                  </p>
+                  <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg font-mono text-xs text-center">
+                    <p>PA: (1, 3, 5, 7, 9)</p>
+                    <p className="text-xs text-muted-foreground">1+9 = 10</p>
+                    <p className="text-xs text-muted-foreground">3+7 = 10</p>
+                    <p className="text-xs text-muted-foreground">5 = centro</p>
+                  </div>
+                </div>
+              ),
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+              titulo: "PA: Propriedades",
+              artista: "Prof. Progressões",
+            }}
+          />
+
           <section id="quiz-modulo-4" className="mt-16">
             <QuizInterativo
-              questoes={quizPropriedades}
-              titulo="Quiz - Propriedades da PA"
-              icone="⚖️"
+              questoes={quizM4}
+              titulo="Fixação - Propriedades"
               numero={4}
-              variant="indigo"
+              variant="cyan"
+              icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
         </div>
       </TabsContent>
 
-      {/* ═══════════════════════════════════════════════════════════════════ */}
-      {/* MÓDULO 5: INTERPOLAÇÃO ARITMÉTICA                                */}
-      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* ═══ MÓDULO 5: INTERPOLAÇÃO ═══ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
-        <ModuleBanner
-          numero={5}
-          titulo="Interpolação Aritmética"
-          descricao="Inserir meios aritméticos entre dois valores: o conceito que une PA com aplicações práticas."
-          gradiente="bg-gradient-to-br from-cyan-600 via-teal-600 to-emerald-700"
-        />
-        <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={5}
+            titulo="Interpolação Aritmética"
+            descricao="Insira termos entre dois números para formar uma PA."
+            gradiente="bg-gradient-to-br from-violet-600 to-purple-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
-              title="Meios Aritméticos"
-              description="Preencher lacunas entre dois valores mantendo padrão PA."
-              variant="cyan"
-              className="mb-6"
+              index={5}
+              title="Inserindo Termos em PA"
+              description="Encontre a razão para formar progressão completa."
+              variant="violet"
             />
+
             <ContentAccordion
-              titulo="Interpolação de Meios"
-              icone="🔗"
-              corIndicador="bg-cyan-500"
-              defaultOpen={true}
               slides={[
                 {
-                  titulo: "O que é interpolação?",
-                  icone: "📏",
-                  conteudo:(
+                  titulo: "Conceituação - Interpolação",
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <p>
-                        <strong>Interpolar k meios aritméticos</strong> entre dois valores a₁ e aₙ significa inserir k termos entre eles de modo que a sequência resultante seja uma PA.
+                      <p className="text-muted-foreground leading-relaxed">
+                        Interpolar k termos entre a e b significa inserir k números para formar uma PA com a como primeiro e b como último:
                       </p>
-                      <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center font-bold">
-                          n = k + 2 (total de termos)
+                      <div className="bg-violet-500/10 p-4 rounded-xl border border-violet-500/20">
+                        <p className="text-sm mb-2">
+                          Se interpolamos k termos, a PA terá (k+2) termos.
                         </p>
-                        <p className="text-sm font-mono text-center">
-                          r = (aₙ − a₁) / (k + 1)
+                        <p className="font-mono font-bold text-center text-violet-700">
+                          r = (b - a) / (k + 1)
                         </p>
-                      </div>
-                      <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-xs font-bold text-emerald-500 mb-2">Exemplo</p>
-                        <p className="text-sm">Interpolar 4 meios entre 3 e 23:</p>
-                        <p className="text-sm">Total: 4+2 = 6 termos. r = (23−3)/5 = 4</p>
-                        <p className="text-sm font-bold">PA: 3, 7, 11, 15, 19, 23</p>
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Aplicação na expansão Petrobras",
-                  icone: "🏭",
-                  conteudo:(
+                  titulo: "Exemplificação - Prática Interpolação",
+                  icone: <LuBookOpen />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                        <p className="text-xs font-bold text-indigo-400 mb-2">Cenário real</p>
-                        <p className="text-sm mb-2">
-                          A Petrobras planeja expandir a produção de <strong>200 para 500 barris/dia</strong> em 6 etapas iguais (progressivas). Qual o aumento por etapa?
+                      <p className="text-sm text-muted-foreground">
+                        Interpole 3 termos entre 2 e 14:
+                      </p>
+                      <div className="bg-violet-500/10 p-4 rounded border border-violet-500/20">
+                        <p className="font-mono text-xs text-center">
+                          a = 2, b = 14, k = 3
+                          <br />
+                          r = (14 - 2) / (3 + 1) = 12 / 4 = 3
+                          <br />
+                          PA: (2, 5, 8, 11, 14)
                         </p>
-                        <p className="text-sm">6 etapas = 7 pontos (termos). r = (500−200)/6 = 50 barris/etapa</p>
-                        <p className="text-sm font-bold">Cronograma: 200, 250, 300, 350, 400, 450, 500</p>
                       </div>
-                      <AlertBox tipo="info" titulo="Onde aparece na indústria">
-                        Planejamento de ramp-up de produção, escalonamento de manutenção preventiva, calibração gradual de instrumentos — todos usam interpolação aritmética.
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Dicas - Verificação",
+                  icone: <LuLightbulb />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <AlertBox tipo="info" titulo="Verifique">
+                        <p className="text-sm">
+                          Conte os termos: deve ter k+2 no total. Verifique se último é de fato b.
+                        </p>
                       </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exceções - Casos Especiais",
+                  icone: <LuTrophy />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <div className="bg-violet-500/10 p-3 rounded border border-violet-500/20">
+                        <p className="font-bold text-violet-700 text-sm mb-1">
+                          k = 0: Nenhum termo
+                        </p>
+                        <p className="text-xs">PA tem apenas 2 termos (a e b)</p>
+                      </div>
+                      <div className="bg-violet-500/10 p-3 rounded border border-violet-500/20">
+                        <p className="font-bold text-violet-700 text-sm mb-1">
+                          a = b:
+                        </p>
+                        <p className="text-xs">r = 0 (PA constante)</p>
+                      </div>
+                      <div className="bg-violet-500/10 p-3 rounded border border-violet-500/20">
+                        <p className="font-bold text-violet-700 text-sm mb-1">
+                          a &gt; b:
+                        </p>
+                        <p className="text-xs">r será negativo (decrescente)</p>
+                      </div>
                     </div>
                   ),
                 },
@@ -835,91 +924,173 @@ export default function AulaProgressoesPa({
             />
           </section>
 
+          <ModuleConsolidation
+            index={5}
+            variant="violet"
+            video={{
+              videoId: "5Rw9KzK3jqA",
+              title: "Interpolação Aritmética",
+              duration: "9:30",
+            }}
+            resumoVisual={{
+              moduloNome: "Interpolação PA",
+              tituloAula: "Progressões Aritméticas",
+              materia: "Matemática",
+              images: [
+                {
+                  title: "Fórmula: r = (b-a)/(k+1)",
+                  type: "Conceito",
+                  placeholderColor: "bg-violet-500/20",
+                },
+                {
+                  title: "Identifique a, b, k",
+                  type: "Técnica",
+                  placeholderColor: "bg-purple-500/20",
+                },
+                {
+                  title: "Construa a PA Completa",
+                  type: "Aplicação",
+                  placeholderColor: "bg-fuchsia-500/20",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "Interpolação: r = (b-a)/(k+1)!",
+              content: (
+                <div className="space-y-3 text-left">
+                  <p className="text-sm italic">
+                    "Divida a diferença pelo número de 'passos' para encontrar r."
+                  </p>
+                  <div className="p-3 bg-violet-500/10 border border-violet-500/20 rounded-lg font-mono text-xs text-center">
+                    <p>Interpole 4 entre 3 e 23</p>
+                    <p className="text-xs text-muted-foreground">
+                      r = (23-3)/(4+1) = 20/5 = 4
+                    </p>
+                    <p>(3, 7, 11, 15, 19, 23)</p>
+                  </div>
+                </div>
+              ),
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+              titulo: "Interpolação Aritmética",
+              artista: "Prof. Progressões",
+            }}
+          />
+
           <section id="quiz-modulo-5" className="mt-16">
             <QuizInterativo
-              questoes={quizInterpolacao}
-              titulo="Quiz - Interpolação"
-              icone="🔗"
+              questoes={quizM5}
+              titulo="Fixação - Interpolação"
               numero={5}
-              variant="cyan"
+              variant="violet"
+              icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
         </div>
       </TabsContent>
 
-      {/* ═══════════════════════════════════════════════════════════════════ */}
-      {/* MÓDULO 6: PA E FUNÇÕES                                           */}
-      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* ═══ MÓDULO 6: PA E FUNÇÕES AFIM ═══ */}
       <TabsContent value="modulo-6" className="space-y-[50px]">
-        <ModuleBanner
-          numero={6}
-          titulo="PA e Funções"
-          descricao="A conexão fundamental: PA é função afim, Sₙ é função quadrática."
-          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-red-700"
-        />
-        <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={6}
+            titulo="PA e Funções Afim"
+            descricao="Conexão entre progressões aritméticas e funções do 1º grau."
+            gradiente="bg-gradient-to-br from-teal-600 to-cyan-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
-              title="PA = Função Afim"
-              description="Por que o gráfico de uma PA são pontos alinhados."
-              variant="rose"
-              className="mb-6"
+              index={6}
+              title="PA Como Restrição de Função Afim"
+              description="Quando n é número natural, f(n) forma uma PA."
+              variant="teal"
             />
+
             <ContentAccordion
-              titulo="PA como Função de 1º Grau"
-              icone="📈"
-              corIndicador="bg-rose-500"
-              defaultOpen={true}
               slides={[
                 {
-                  titulo: "aₙ = rn + (a₁ − r)",
-                  icone: "📊",
-                  conteudo:(
+                  titulo: "Conceituação - PA e f(x) = ax + b",
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <p>
-                        Reescrevendo aₙ = a₁ + (n−1)r:
+                      <p className="text-muted-foreground leading-relaxed">
+                        Uma função afim f(x) = ax + b, quando restrita a n ∈ ℕ, gera uma PA:
                       </p>
-                      <div className="bg-rose-500/10 border border-rose-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center">
-                          aₙ = rn + (a₁ − r) → aₙ = <strong>A</strong>n + <strong>B</strong>
+                      <div className="bg-teal-500/10 p-4 rounded-xl border border-teal-500/20">
+                        <p className="text-sm mb-2">
+                          <strong>f(1), f(2), f(3), ... forma PA com razão a</strong>
+                        </p>
+                        <p className="font-mono text-xs text-center">
+                          f(1) = a + b = a₁
+                          <br />
+                          f(2) = 2a + b = a₂
+                          <br />
+                          f(n) = an + b = aₙ
                         </p>
                       </div>
-                      <p className="text-sm">Onde:</p>
-                      <ul className="list-disc list-inside text-sm space-y-1">
-                        <li><strong>A = r</strong> (coeficiente angular = razão)</li>
-                        <li><strong>B = a₁ − r</strong> (coeficiente linear)</li>
-                      </ul>
-                      <AlertBox tipo="warning" titulo="Macete infalível">
-                        Se a banca diz "aₙ = 3n + 2", a razão é <strong>3</strong> (coeficiente de n) e a₁ = 3(1)+2 = <strong>5</strong>. Não precisa fazer nenhuma conta extra.
-                      </AlertBox>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Sₙ como parábola (revisão ampliada)",
-                  icone: "🎢",
-                  conteudo:(
+                  titulo: "Exemplificação - Função Afim → PA",
+                  icone: <LuBookOpen />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <p>
-                        Se aₙ (termo geral) é função de 1º grau em n, então Sₙ (soma) é função de <strong>2º grau em n</strong>. Isso significa:
+                      <p className="text-sm text-muted-foreground">
+                        A função f(x) = 3x + 2 para x = 1, 2, 3, 4, ... gera:
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">PA crescente (r {">"} 0)</p>
-                          <p className="text-sm">Sₙ = parábola com concavidade para <strong>cima</strong></p>
-                          <p className="text-xs text-muted-foreground">A soma cresce cada vez mais rápido</p>
-                        </div>
-                        <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                          <p className="text-xs font-bold text-rose-500 mb-2">PA decrescente (r {"<"} 0)</p>
-                          <p className="text-sm">Sₙ = parábola com concavidade para <strong>baixo</strong></p>
-                          <p className="text-xs text-muted-foreground">A soma atinge um máximo e depois diminui</p>
-                        </div>
+                      <div className="bg-teal-500/10 p-4 rounded border border-teal-500/20">
+                        <p className="font-mono text-xs text-center">
+                          f(1) = 5
+                          <br />
+                          f(2) = 8
+                          <br />
+                          f(3) = 11
+                          <br />
+                          f(4) = 14
+                          <br />
+                          ... PA: (5, 8, 11, 14, ...) com r = 3
+                        </p>
                       </div>
-                      <AlertBox tipo="danger" titulo="Pegadinha CESGRANRIO">
-                        "Qual o valor de n que MAXIMIZA a soma Sₙ?" — Só faz sentido em PA <strong>decrescente</strong>. A soma máxima ocorre quando aₙ = 0 (último termo não-negativo). Iguale aₙ ≥ 0 e encontre n.
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Dicas - Relação Direta",
+                  icone: <LuLightbulb />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <AlertBox tipo="info" titulo="Conexão Simples">
+                        <p className="text-sm">
+                          Na função f(x) = ax + b, o coeficiente a é EXATAMENTE a razão r da PA!
+                        </p>
                       </AlertBox>
+                      <p className="text-sm text-muted-foreground">
+                        Se f(x) = 5x - 3, a PA terá r = 5 e a₁ = f(1) = 2
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exceções - Função Não-Afim",
+                  icone: <LuTrophy />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <div className="bg-teal-500/10 p-3 rounded border border-teal-500/20">
+                        <p className="font-bold text-teal-700 text-sm mb-1">
+                          f(x) = ax² + bx + c:
+                        </p>
+                        <p className="text-xs">Não gera PA (é quadrática)</p>
+                      </div>
+                      <div className="bg-teal-500/10 p-3 rounded border border-teal-500/20">
+                        <p className="font-bold text-teal-700 text-sm mb-1">
+                          f(x) = a (constante):
+                        </p>
+                        <p className="text-xs">Gera PA constante com r = 0</p>
+                      </div>
                     </div>
                   ),
                 },
@@ -927,130 +1098,156 @@ export default function AulaProgressoesPa({
             />
           </section>
 
-          <FunctionGraph
-            title="PA como Função Linear: a_n = rn + (a₁ - r)"
-            functions={[
-              {
-                id: "lin-3n2",
-                label: "f(n) = 3n + 2",
-                color: "#3b82f6",
-                fn: (x: number) => 3 * x + 2,
-                strokeWidth: 2,
-              } satisfies FunctionPlot,
-              {
-                id: "lin-neg-n20",
-                label: "f(n) = -n + 20",
-                color: "#ef4444",
-                fn: (x: number) => -x + 20,
-                strokeWidth: 2,
-              } satisfies FunctionPlot,
-            ]}
-            xMin={0}
-            xMax={15}
-            yMin={-5}
-            yMax={50}
-            points={15}
+          <ModuleConsolidation
+            index={6}
+            variant="teal"
+            video={{
+              videoId: "tZzgzUaHdCw",
+              title: "PA e Funções Afim: Conexão",
+              duration: "11:00",
+            }}
+            resumoVisual={{
+              moduloNome: "PA e Função Afim",
+              tituloAula: "Progressões Aritméticas",
+              materia: "Matemática",
+              images: [
+                {
+                  title: "f(x) = ax + b gera PA",
+                  type: "Conceito",
+                  placeholderColor: "bg-teal-500/20",
+                },
+                {
+                  title: "Razão r = a (coef. angular)",
+                  type: "Técnica",
+                  placeholderColor: "bg-cyan-500/20",
+                },
+                {
+                  title: "Primeiro termo: f(1) = a + b",
+                  type: "Aplicação",
+                  placeholderColor: "bg-blue-500/20",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "PA = f(n) com f(x)=ax+b!",
+              content: (
+                <div className="space-y-3 text-left">
+                  <p className="text-sm italic">
+                    "Função afim em naturais: PA com r = a (coef. angular)"
+                  </p>
+                  <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-lg font-mono text-xs text-center">
+                    <p>f(x) = 2x + 1</p>
+                    <p className="text-xs text-muted-foreground">
+                      f(1)=3, f(2)=5, f(3)=7, ...
+                    </p>
+                    <p>PA: (3, 5, 7, ...) com r=2</p>
+                  </div>
+                </div>
+              ),
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+              titulo: "PA e Funções Afim",
+              artista: "Prof. Progressões",
+            }}
           />
 
           <section id="quiz-modulo-6" className="mt-16">
             <QuizInterativo
-              questoes={quizFuncoes}
-              titulo="Quiz - PA e Funções"
-              icone="📈"
+              questoes={quizM6}
+              titulo="Fixação - PA e Função Afim"
               numero={6}
-              variant="rose"
+              variant="teal"
+              icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
         </div>
       </TabsContent>
 
-      {/* ═══════════════════════════════════════════════════════════════════ */}
-      {/* MÓDULO 7: PA NA PRÁTICA INDUSTRIAL                               */}
-      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* ═══ MÓDULO 7: PRÁTICA INTEGRADA ═══ */}
       <TabsContent value="modulo-7" className="space-y-[50px]">
-        <ModuleBanner
-          numero={7}
-          titulo="PA na Prática Industrial"
-          descricao="Problemas reais de produção, manutenção e operação resolvidos com PA."
-          gradiente="bg-gradient-to-br from-teal-600 via-emerald-600 to-green-700"
-        />
-        <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={7}
+            titulo="Prática Integrada"
+            descricao="Combine tudo: fórmulas, propriedades e aplicações."
+            gradiente="bg-gradient-to-br from-indigo-600 to-purple-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
-              title="Modelagem com PA"
-              description="Transformando enunciados industriais em equações de PA."
-              variant="emerald"
-              className="mb-6"
+              index={7}
+              title="Problemas Contextualizados"
+              description="PA em situações reais e complexas."
+              variant="indigo"
             />
+
             <ContentAccordion
-              titulo="Cenários Industriais"
-              icone="🏭"
-              corIndicador="bg-emerald-500"
-              defaultOpen={true}
               slides={[
                 {
-                  titulo: "Manutenção programada",
-                  icone: "🔧",
-                  conteudo:(
+                  titulo: "Conceituação - Estratégia de Resolução",
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-xs font-bold text-emerald-500 mb-2">Cenário</p>
-                        <p className="text-sm">
-                          Uma bomba centrífuga na RPBC perde 2% de eficiência por mês. Começando com 100%, após quantos meses atinge 80% (limite para intervenção)?
-                        </p>
-                      </div>
-                      <div className="space-y-2">
-                        <p className="text-sm"><strong>Modelagem:</strong> a₁ = 100, r = −2</p>
-                        <p className="text-sm">aₙ = 80 → 80 = 100 + (n−1)(−2)</p>
-                        <p className="text-sm">−20 = −2(n−1) → n−1 = 10 → n = 11</p>
-                        <p className="text-sm font-bold">A manutenção deve ser feita no 11º mês (após 10 meses de operação).</p>
-                      </div>
-                      <AlertBox tipo="info" titulo="Interpretação cuidadosa">
-                        a₁ é o <strong>estado inicial</strong> (mês 1). A 11ª leitura é após 10 intervalos. Cuidado com o "off-by-one" — erro que reprova em questões de PA industrial.
-                      </AlertBox>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Produção acumulada",
-                  icone: "📊",
-                  conteudo:(
-                    <div className="space-y-4">
-                      <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                        <p className="text-xs font-bold text-cyan-500 mb-2">Cenário</p>
-                        <p className="text-sm">
-                          Um poço produz 1000 barris no 1º dia e aumenta 50 barris/dia. Em 30 dias, qual a produção total?
-                        </p>
-                      </div>
-                      <div className="space-y-2">
-                        <p className="text-sm">a₁=1000, r=50, n=30</p>
-                        <p className="text-sm">a₃₀ = 1000 + 29·50 = 2450</p>
-                        <p className="text-sm font-bold">S₃₀ = (1000+2450)·30/2 = 51.750 barris</p>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Para resolver problemas com PA:
+                      </p>
+                      <div className="bg-indigo-500/10 p-4 rounded-xl border border-indigo-500/20">
+                        <ol className="text-sm space-y-2">
+                          <li>1. Identifique se é realmente PA (razão constante)</li>
+                          <li>2. Encontre a₁ e r</li>
+                          <li>3. Escreva aₙ usando a fórmula do termo geral</li>
+                          <li>4. Calcule o que é pedido (termo, soma, etc.)</li>
+                        </ol>
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Cronograma de treinamento NR",
-                  icone: "📋",
-                  conteudo:(
+                  titulo: "Exemplificação - Problema Clássico",
+                  icone: <LuBookOpen />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
-                        <p className="text-xs font-bold text-amber-500 mb-2">Cenário</p>
-                        <p className="text-sm">
-                          Um treinamento de NR-20 tem 8 módulos. O 1º dura 30 min, cada módulo seguinte dura 15 min a mais. Qual a duração total?
+                      <p className="text-sm text-muted-foreground">
+                        Problema: "Uma empresa produz 100 peças no 1º dia, 105 no 2º, 110 no 3º, etc. Quantas peças em 30 dias? Quantas ao total?"
+                      </p>
+                      <div className="bg-indigo-500/10 p-4 rounded border border-indigo-500/20">
+                        <p className="text-xs font-mono text-center">
+                          a₁ = 100, r = 5, n = 30
+                          <br />
+                          a₃₀ = 100 + 29×5 = 245 peças (dia 30)
+                          <br />
+                          S₃₀ = (100+245)×30/2 = 5175 peças (total)
                         </p>
                       </div>
-                      <div className="space-y-2">
-                        <p className="text-sm">a₁=30, r=15, n=8</p>
-                        <p className="text-sm">a₈ = 30+7·15 = 135</p>
-                        <p className="text-sm font-bold">S₈ = (30+135)·8/2 = 660 min = 11 horas</p>
-                      </div>
-                      <AlertBox tipo="warning" titulo="Dica de prova">
-                        A CESGRANRIO frequentemente pede a conversão min → horas no final. 660/60 = 11h. Não esqueça de converter!
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Dicas - Erros Comuns",
+                  icone: <LuLightbulb />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <AlertBox tipo="warning" titulo="Cuidado!">
+                        Não confunda "termo 30" com "durante 30 dias". Às vezes o primeiro é dia 0 ou dia 1.
                       </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exceções - PA Decrescente",
+                  icone: <LuTrophy />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <div className="bg-indigo-500/10 p-3 rounded border border-indigo-500/20">
+                        <p className="font-bold text-indigo-700 text-sm mb-1">
+                          r &lt; 0:
+                        </p>
+                        <p className="text-xs">
+                          Diminui. Cuidado: pode ficar negativa, exija a₁ &gt; (n-1)|r| se houver restrição física
+                        </p>
+                      </div>
                     </div>
                   ),
                 },
@@ -1058,77 +1255,169 @@ export default function AulaProgressoesPa({
             />
           </section>
 
+          <ModuleConsolidation
+            index={7}
+            variant="indigo"
+            video={{
+              videoId: "2xQr4vZ5M1I",
+              title: "PA: Problemas Contextualizados",
+              duration: "12:20",
+            }}
+            resumoVisual={{
+              moduloNome: "Prática Integrada",
+              tituloAula: "Progressões Aritméticas",
+              materia: "Matemática",
+              images: [
+                {
+                  title: "Identifique a₁ e r",
+                  type: "Conceito",
+                  placeholderColor: "bg-indigo-500/20",
+                },
+                {
+                  title: "Aplique Fórmulas",
+                  type: "Técnica",
+                  placeholderColor: "bg-blue-500/20",
+                },
+                {
+                  title: "Interprete Resultado",
+                  type: "Aplicação",
+                  placeholderColor: "bg-purple-500/20",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "PA em Problema: 4 Passos!",
+              content: (
+                <div className="space-y-3 text-left">
+                  <p className="text-sm italic">
+                    "Identifique → Fórmula → Calcule → Interprete"
+                  </p>
+                  <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg font-mono text-xs text-center">
+                    <p>Produza 100, 105, 110, ...</p>
+                    <p className="text-xs text-muted-foreground">PA com a₁=100, r=5</p>
+                    <p>Dia n: 100 + (n-1)×5</p>
+                  </div>
+                </div>
+              ),
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+              titulo: "PA: Prática Integrada",
+              artista: "Prof. Progressões",
+            }}
+          />
+
           <section id="quiz-modulo-7" className="mt-16">
             <QuizInterativo
-              questoes={quizPratica}
-              titulo="Quiz - PA Industrial"
-              icone="🏭"
+              questoes={quizM7}
+              titulo="Fixação - Prática Integrada"
               numero={7}
-              variant="emerald"
+              variant="indigo"
+              icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
         </div>
       </TabsContent>
 
-      {/* ═══════════════════════════════════════════════════════════════════ */}
-      {/* MÓDULO 8: TÓPICOS AVANÇADOS                                      */}
-      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* ═══ MÓDULO 8: DESAFIOS AVANÇADOS ═══ */}
       <TabsContent value="modulo-8" className="space-y-[50px]">
-        <ModuleBanner
-          numero={8}
-          titulo="Tópicos Avançados"
-          descricao="PA de 2ª ordem, PA + PG, e problemas de nível engenharia."
-          gradiente="bg-gradient-to-br from-slate-600 via-zinc-600 to-neutral-700"
-        />
-        <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={8}
+            titulo="Desafios Avançados"
+            descricao="Problemas complexos e integrações com outros conceitos."
+            gradiente="bg-gradient-to-br from-rose-600 to-red-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
-              title="PA de 2ª Ordem"
-              description="Quando a sequência não é PA, mas as diferenças SIM."
-              variant="indigo"
-              className="mb-6"
+              index={8}
+              title="Nível Avançado"
+              description="Sistemas, inequações e aplicações múltiplas."
+              variant="rose"
             />
+
             <ContentAccordion
-              titulo="Diferenças que formam PA"
-              icone="🔬"
-              corIndicador="bg-slate-500"
-              defaultOpen={true}
               slides={[
                 {
-                  titulo: "Conceito de PA de 2ª ordem",
-                  icone: "🧪",
-                  conteudo:(
+                  titulo: "Conceituação - Sistema com PA",
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <p>
-                        Uma <strong>PA de 2ª ordem</strong> é uma sequência cujas <strong>diferenças consecutivas formam uma PA</strong>.
+                      <p className="text-muted-foreground leading-relaxed">
+                        Às vezes você recebe 2+ informações simultâneas sobre uma PA e deve resolvê-las como sistema:
                       </p>
-                      <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                        <p className="text-xs font-bold text-indigo-400 mb-2">Exemplo</p>
-                        <p className="text-sm">Sequência: 1, 4, 9, 16, 25 (quadrados perfeitos)</p>
-                        <p className="text-sm">Diferenças: 3, 5, 7, 9 → PA com r = 2 ✓</p>
+                      <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20">
+                        <p className="text-sm">
+                          Ex: "a₃ = 10 e a₇ = 22. Encontre a PA."
+                          <br />
+                          a₃ = a₁ + 2r = 10
+                          <br />
+                          a₇ = a₁ + 6r = 22
+                          <br />
+                          Subtraia: 4r = 12 → r = 3, a₁ = 4
+                        </p>
                       </div>
-                      <AlertBox tipo="info" titulo="Conexão importante">
-                        A soma dos n primeiros termos de uma PA (que é Sₙ) é sempre uma PA de 2ª ordem! Os termos são os valores acumulados e as diferenças são os termos originais da PA.
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exemplificação - Inequação com PA",
+                  icone: <LuBookOpen />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm text-muted-foreground">
+                        "Qual é o primeiro termo positivo de PA (-15, -10, -5, ...)?":
+                      </p>
+                      <div className="bg-rose-500/10 p-4 rounded border border-rose-500/20">
+                        <p className="text-xs font-mono text-center">
+                          aₙ = -15 + (n-1)×5 &gt; 0
+                          <br />
+                          -15 + 5n - 5 &gt; 0
+                          <br />
+                          5n &gt; 20 → n &gt; 4
+                          <br />
+                          n = 5: a₅ = 5 (1º positivo)
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Dicas - Verificação de Resposta",
+                  icone: <LuLightbulb />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <AlertBox tipo="info" titulo="Sempre Verifique">
+                        <p className="text-sm">
+                          Substitua a₁ e r na fórmula e teste alguns termos. Confira se batem com o enunciado.
+                        </p>
                       </AlertBox>
                     </div>
                   ),
                 },
                 {
-                  titulo: "PA e PG simultâneas",
-                  icone: "🔗",
-                  conteudo:(
-                    <div className="space-y-4">
-                      <p>Se (a, b, c) é <strong>PA e PG ao mesmo tempo</strong>:</p>
-                      <div className="space-y-2">
-                        <p className="text-sm">PA: b = (a+c)/2</p>
-                        <p className="text-sm">PG: b² = a·c</p>
-                        <p className="text-sm">Substituindo: [(a+c)/2]² = ac → (a−c)² = 0 → <strong>a = b = c</strong></p>
+                  titulo: "Exceções - PA com Restrições",
+                  icone: <LuTrophy />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <div className="bg-rose-500/10 p-3 rounded border border-rose-500/20">
+                        <p className="font-bold text-rose-700 text-sm mb-1">
+                          Domínio Físico:
+                        </p>
+                        <p className="text-xs">
+                          Se PA representa quantidade, todos termos devem ser positivos
+                        </p>
                       </div>
-                      <AlertBox tipo="danger" titulo="Conclusão para a prova">
-                        A única sequência que é PA e PG ao mesmo tempo é a <strong>constante</strong> (todos os termos iguais). Se a banca perguntar, não hesite: a = b = c.
-                      </AlertBox>
+                      <div className="bg-rose-500/10 p-3 rounded border border-rose-500/20">
+                        <p className="font-bold text-rose-700 text-sm mb-1">
+                          n Inteiro:
+                        </p>
+                        <p className="text-xs">
+                          Não existe "termo 2.5". Sempre n ∈ ℕ*
+                        </p>
+                      </div>
                     </div>
                   ),
                 },
@@ -1136,170 +1425,173 @@ export default function AulaProgressoesPa({
             />
           </section>
 
-          {/* Múltiplos e soma */}
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={2}
-              title="Soma de Múltiplos"
-              description="Questão clássica que aparece em TODA prova CESGRANRIO."
-              variant="amber"
-              className="mb-6"
-            />
-            <div className="space-y-4">
-              <p>
-                "Qual a soma de todos os múltiplos de k entre A e B?" é resolvida identificando uma PA:
-              </p>
-              <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 space-y-2">
-                <p className="text-sm"><strong>1.</strong> Primeiro múltiplo ≥ A → a₁</p>
-                <p className="text-sm"><strong>2.</strong> Último múltiplo ≤ B → aₙ</p>
-                <p className="text-sm"><strong>3.</strong> Razão r = k</p>
-                <p className="text-sm"><strong>4.</strong> n = (aₙ − a₁)/k + 1</p>
-                <p className="text-sm font-bold"><strong>5.</strong> Sₙ = (a₁ + aₙ) · n / 2</p>
-              </div>
-              <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                <p className="text-xs font-bold text-indigo-400 mb-2">Exemplo</p>
-                <p className="text-sm">Soma dos múltiplos de 7 entre 1 e 200:</p>
-                <p className="text-sm">a₁=7, aₙ=196, r=7, n=(196−7)/7+1=28</p>
-                <p className="text-sm font-bold">S = (7+196)·28/2 = 2842</p>
-              </div>
-            </div>
-          </section>
+          <ModuleConsolidation
+            index={8}
+            variant="rose"
+            video={{
+              videoId: "4KzE9R6zWzY",
+              title: "PA Avançada: Desafios",
+              duration: "13:15",
+            }}
+            resumoVisual={{
+              moduloNome: "Desafios Avançados",
+              tituloAula: "Progressões Aritméticas",
+              materia: "Matemática",
+              images: [
+                {
+                  title: "Sistema com PA",
+                  type: "Conceito",
+                  placeholderColor: "bg-rose-500/20",
+                },
+                {
+                  title: "Inequações em PA",
+                  type: "Técnica",
+                  placeholderColor: "bg-red-500/20",
+                },
+                {
+                  title: "Aplicações Múltiplas",
+                  type: "Aplicação",
+                  placeholderColor: "bg-pink-500/20",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "Desafios: Sistema de Equações!",
+              content: (
+                <div className="space-y-3 text-left">
+                  <p className="text-sm italic">
+                    "2+ informações → monte 2+ equações com a₁ e r"
+                  </p>
+                  <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-lg font-mono text-xs text-center">
+                    <p>a₂ = 5 e a₅ = 14</p>
+                    <p className="text-xs text-muted-foreground">↓ sistema ↓</p>
+                    <p>a₁ + r = 5</p>
+                    <p>a₁ + 4r = 14</p>
+                  </div>
+                </div>
+              ),
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+              titulo: "Desafios Avançados em PA",
+              artista: "Prof. Progressões",
+            }}
+          />
 
           <section id="quiz-modulo-8" className="mt-16">
             <QuizInterativo
-              questoes={quizAvancado}
-              titulo="Quiz - Tópicos Avançados"
-              icone="🔬"
+              questoes={quizM8}
+              titulo="Fixação - Desafios Avançados"
               numero={8}
-              variant="indigo"
+              variant="rose"
+              icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
         </div>
       </TabsContent>
 
-      {/* ═══════════════════════════════════════════════════════════════════ */}
-      {/* MÓDULO 9: DESAFIO CESGRANRIO                                     */}
-      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* ═══ MÓDULO 9: APLICAÇÕES PETROBRAS ═══ */}
       <TabsContent value="modulo-9" className="space-y-[50px]">
-        <ModuleBanner
-          numero={9}
-          titulo="Desafio CESGRANRIO"
-          descricao="Questões de nível avançado com as armadilhas típicas da banca."
-          gradiente="bg-gradient-to-br from-red-600 via-rose-600 to-pink-700"
-        />
-        <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={9}
+            titulo="Aplicações Petrobras"
+            descricao="Cronogramas, investimentos e programação linear."
+            gradiente="bg-gradient-to-br from-orange-600 to-red-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
-              title="Armadilhas Clássicas"
-              description="Conheça os truques antes de cair neles."
-              variant="rose"
-              className="mb-6"
+              index={9}
+              title="PA na Indústria"
+              description="Cronogramas, depreciação, e programação."
+              variant="orange"
             />
+
             <ContentAccordion
-              titulo="As 5 Armadilhas da CESGRANRIO em PA"
-              icone="⚠️"
-              corIndicador="bg-rose-500"
-              defaultOpen={true}
               slides={[
                 {
-                  titulo: "Armadilha 1: O (n−1)",
-                  icone: "🪤",
-                  conteudo:(
+                  titulo: "Conceituação - Cronogramas",
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <p>
-                        O erro mais frequente: usar <strong>n</strong> em vez de <strong>(n−1)</strong> na fórmula do termo geral.
+                      <p className="text-muted-foreground leading-relaxed">
+                        Cronogramas de projetos frequentemente seguem PA:
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                          <p className="text-xs font-bold text-rose-500 mb-2">❌ ERRADO</p>
-                          <p className="text-sm font-mono">a₂₀ = a₁ + 20·r</p>
-                        </div>
-                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">✅ CORRETO</p>
-                          <p className="text-sm font-mono">a₂₀ = a₁ + 19·r</p>
-                        </div>
-                      </div>
-                      <AlertBox tipo="warning" titulo="Mnemônico">
-                        "O primeiro termo não anda." Se estou no 1º degrau de uma escada de 20 degraus, preciso subir <strong>19</strong> degraus (não 20).
-                      </AlertBox>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Armadilha 2: Termos vs Intervalos",
-                  icone: "🪤",
-                  conteudo:(
-                    <div className="space-y-4">
-                      <p>
-                        "Um oleoduto tem 10 pontos de medição igualmente espaçados entre a estação A e B. Quantos <strong>trechos</strong> existem?"
-                      </p>
-                      <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
+                      <div className="bg-orange-500/10 p-4 rounded-xl border border-orange-500/20">
                         <p className="text-sm">
-                          10 pontos = <strong>9 trechos</strong>. N pontos geram (N−1) intervalos.
+                          <strong>Exemplo</strong>: Exploração de poço fase 1, 2, 3, ...
+                          <br />
+                          Semana 1: 10 operários
+                          <br />
+                          Semana 2: 15 operários
+                          <br />
+                          Semana 3: 20 operários
+                          <br />
+                          PA: (10, 15, 20, ...) com r = 5
                         </p>
                       </div>
-                      <p className="text-sm text-muted-foreground">
-                        Analogia dos postes: 10 postes na cerca = 9 espaços entre eles. Quando a banca fala em "etapas" ou "trechos", pense em intervalos (n−1).
-                      </p>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Armadilha 3: Soma dos ímpares",
-                  icone: "🪤",
-                  conteudo:(
+                  titulo: "Exemplificação - Depreciação",
+                  icone: <LuBookOpen />,
+                  conteudo: (
                     <div className="space-y-4">
-                      <p>Identidade que <strong>cai em toda prova</strong>:</p>
-                      <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center font-bold">
-                          1 + 3 + 5 + ... + (2n−1) = n²
+                      <p className="text-muted-foreground text-sm">
+                        Equipamento com depreciação linear:
+                      </p>
+                      <div className="bg-orange-500/10 p-4 rounded border border-orange-500/20">
+                        <p className="text-sm mb-2">
+                          <strong>Valor inicial</strong>: R$ 100.000
+                          <br />
+                          <strong>Depreciação/ano</strong>: R$ 10.000
+                          <br />
+                          <strong>Ano n</strong>: 100.000 - (n-1)×10.000
+                        </p>
+                        <p className="font-mono text-xs text-center mt-2">
+                          Ano 1: 100k, Ano 2: 90k, ..., Ano 10: 10k
                         </p>
                       </div>
-                      <div className="space-y-2">
-                        <p className="text-sm">1 = 1² ✓</p>
-                        <p className="text-sm">1+3 = 4 = 2² ✓</p>
-                        <p className="text-sm">1+3+5 = 9 = 3² ✓</p>
-                        <p className="text-sm">1+3+5+7 = 16 = 4² ✓</p>
-                      </div>
-                      <AlertBox tipo="info" titulo="Na prova">
-                        Se pedir "soma dos 50 primeiros ímpares", a resposta é <strong>50² = 2500</strong>. Não perca tempo somando.
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Dicas - Programação Linear",
+                  icone: <LuLightbulb />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <AlertBox tipo="info" titulo="Otimização">
+                        <p className="text-sm">
+                          Se restrição é PA, otimize testando extremos (primeiros/últimos termos viáveis).
+                        </p>
                       </AlertBox>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Armadilha 4: Soma máxima",
-                  icone: "🪤",
-                  conteudo:(
-                    <div className="space-y-4">
-                      <p>
-                        Em PA <strong>decrescente</strong>, a soma pode atingir um máximo e depois diminuir (porque os termos ficam negativos).
-                      </p>
-                      <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                        <p className="text-xs font-bold text-rose-500 mb-2">Exemplo</p>
-                        <p className="text-sm">PA: (15, 11, 7, 3, −1, −5, ...)</p>
-                        <p className="text-sm">S₁=15, S₂=26, S₃=33, S₄=<strong>36</strong>, S₅=35, S₆=30...</p>
-                        <p className="text-sm font-bold">Soma máxima em S₄ = 36</p>
+                  titulo: "Exceções - Restrições Práticas",
+                  icone: <LuTrophy />,
+                  conteudo: (
+                    <div className="space-y-3">
+                      <div className="bg-orange-500/10 p-3 rounded border border-orange-500/20">
+                        <p className="font-bold text-orange-700 text-sm mb-1">
+                          Limite Mínimo/Máximo:
+                        </p>
+                        <p className="text-xs">
+                          PA pode não continuar indefinidamente (recursos finitos)
+                        </p>
                       </div>
-                      <AlertBox tipo="warning" titulo="Método rápido">
-                        A soma é máxima quando incluímos todos os termos ≥ 0. Encontre n tal que aₙ ≥ 0 e aₙ₊₁ {"<"} 0.
-                      </AlertBox>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Armadilha 5: PA constante",
-                  icone: "🪤",
-                  conteudo:(
-                    <div className="space-y-4">
-                      <p>
-                        (7, 7, 7, 7) é uma <strong>PA válida com r = 0</strong>. Candidatos marcam "não é PA" e perdem pontos fáceis.
-                      </p>
-                      <AlertBox tipo="danger" titulo="Memorize">
-                        Toda sequência constante é PA (r=0) E PG (q=1) ao mesmo tempo. A banca explora isso em questões de V ou F.
-                      </AlertBox>
+                      <div className="bg-orange-500/10 p-3 rounded border border-orange-500/20">
+                        <p className="font-bold text-orange-700 text-sm mb-1">
+                          Arredondamento:
+                        </p>
+                        <p className="text-xs">
+                          Valores reais são sempre inteiros (operários, peças, etc.)
+                        </p>
+                      </div>
                     </div>
                   ),
                 },
@@ -1307,88 +1599,106 @@ export default function AulaProgressoesPa({
             />
           </section>
 
+          <ModuleConsolidation
+            index={9}
+            variant="orange"
+            video={{
+              videoId: "9KZg0LdwAg4",
+              title: "PA na Petrobras: Cronogramas",
+              duration: "12:50",
+            }}
+            resumoVisual={{
+              moduloNome: "Aplicações Petrobras",
+              tituloAula: "Progressões Aritméticas",
+              materia: "Matemática",
+              images: [
+                {
+                  title: "Cronogramas: Crescimento Linear",
+                  type: "Conceito",
+                  placeholderColor: "bg-orange-500/20",
+                },
+                {
+                  title: "Depreciação de Equipamento",
+                  type: "Técnica",
+                  placeholderColor: "bg-red-500/20",
+                },
+                {
+                  title: "Otimização com PA",
+                  type: "Aplicação",
+                  placeholderColor: "bg-amber-500/20",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "Petrobras: PA em Cronogramas!",
+              content: (
+                <div className="space-y-3 text-left">
+                  <p className="text-sm italic">
+                    "Aumento/redução linear ao longo do tempo = PA"
+                  </p>
+                  <div className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg font-mono text-xs text-center">
+                    <p>Semanistas: 100, 110, 120, ...</p>
+                    <p className="text-xs text-muted-foreground">a₁=100, r=10</p>
+                    <p>Semana n: 100 + (n-1)×10</p>
+                  </div>
+                </div>
+              ),
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+              titulo: "PA na Petrobras",
+              artista: "Prof. Progressões",
+            }}
+          />
+
           <section id="quiz-modulo-9" className="mt-16">
             <QuizInterativo
-              questoes={quizDesafio}
-              titulo="Quiz - Desafio CESGRANRIO"
-              icone="🏆"
+              questoes={quizM9}
+              titulo="Fixação - Aplicações Petrobras"
               numero={9}
-              variant="rose"
+              variant="orange"
+              icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
         </div>
       </TabsContent>
 
-      {/* ═══════════════════════════════════════════════════════════════════ */}
-      {/* MÓDULO 10: SIMULADO FINAL                                        */}
-      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* ═══ MÓDULO 10: SIMULADO MESTRE ═══ */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
-        <ModuleBanner
-          numero={10}
-          titulo="Simulado Final"
-          descricao="Teste seus conhecimentos com questões de revisão completa. Aprovação ≥ 60%."
-          gradiente="bg-gradient-to-br from-amber-500 via-yellow-500 to-orange-600"
-        />
-        <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={1}
-              title="Resumo Rápido: Tudo sobre PA"
-              description="Revise as fórmulas antes do simulado."
-              variant="amber"
-              className="mb-6"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                <p className="text-xs font-bold text-indigo-400 mb-2">Termo Geral</p>
-                <p className="text-sm font-mono">aₙ = a₁ + (n−1)·r</p>
-              </div>
-              <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                <p className="text-xs font-bold text-emerald-500 mb-2">Soma (Gauss)</p>
-                <p className="text-sm font-mono">Sₙ = (a₁+aₙ)·n/2</p>
-              </div>
-              <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                <p className="text-xs font-bold text-cyan-500 mb-2">Razão</p>
-                <p className="text-sm font-mono">r = (aₙ−a₁)/(n−1)</p>
-              </div>
-              <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
-                <p className="text-xs font-bold text-amber-500 mb-2">Nº de termos</p>
-                <p className="text-sm font-mono">n = (aₙ−a₁)/r + 1</p>
-              </div>
-              <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                <p className="text-xs font-bold text-rose-500 mb-2">Equidistantes</p>
-                <p className="text-sm font-mono">a₁+aₙ = a₂+aₙ₋₁</p>
-              </div>
-              <div className="p-4 bg-violet-500/5 rounded-xl border border-violet-500/20">
-                <p className="text-xs font-bold text-violet-500 mb-2">Ímpares</p>
-                <p className="text-sm font-mono">1+3+...+(2n−1) = n²</p>
-              </div>
-            </div>
-          </section>
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={10}
+            titulo="Simulado Mestre"
+            descricao="Teste final: integre todos os conceitos de progressões aritméticas."
+            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+          />
 
-          <section id="quiz-modulo-10" className="mt-16">
-            <QuizInterativo
-              questoes={quizSimulado}
-              titulo="Simulado Final - PA"
-              icone="🏅"
-              numero={10}
-              variant="amber"
-              onComplete={(score) => handleModuleComplete("modulo-10", score)}
-            />
-          </section>
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-black">🏆 Mestre das Progressões!</h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                Você dominou progressões aritméticas! De fórmulas básicas a aplicações Petrobras,
+                você está pronto para qualquer desafio matemático.
+              </p>
+            </div>
+          ) : (
+            <section id="quiz-modulo-10" className="mt-8">
+              <QuizInterativo
+                questoes={quizM10}
+                titulo="Simulado Elite - Progressões Aritméticas"
+                icone="🏆"
+                numero={10}
+                variant="slate"
+                onComplete={(score) => handleModuleComplete("modulo-10", score)}
+              />
+            </section>
+          )}
         </div>
       </TabsContent>
     </AulaTemplate>
   );
 }
-
-
-
-
-
-
-
-
-
-
