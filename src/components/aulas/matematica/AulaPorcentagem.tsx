@@ -1031,6 +1031,34 @@ export default function AulaPorcentagem({
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
+            <ModuleSectionHeader index={5.1} title="Resumo e Multimídia" variant="rose" />
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo5",
+                  label: "Checkpoint M1-M4",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          title: "Retrospectiva de Fundamentos",
+                          type: "Resumo",
+                          placeholderColor: "bg-rose-100 dark:bg-rose-900/30",
+                          imageUrl: "/temp-img.png", // PROMPT: Composição dark premium unindo os temas: Conversões, Fatores, Variação e Aplicação Industrial. Estilo mural de conquistas com selos e fórmulas. Cores rose e ruby.
+                        },
+                      ]}
+                      moduloNome="Módulo 5"
+                      tituloAula="Porcentagem"
+                      materia="Matemática"
+                    />
+                  ),
+                },
+              ]}
+            />
+          </section>
         </div>
       </TabsContent>
 

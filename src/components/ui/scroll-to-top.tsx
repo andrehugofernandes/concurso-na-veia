@@ -33,7 +33,7 @@ export function ScrollToTop() {
     <button
       onClick={scrollToTop}
       className={cn(
-        "fixed bottom-[106px] md:bottom-8 z-[100] p-2.5 md:p-4 rounded-full bg-primary text-primary-foreground shadow-2xl transition-all duration-500 hover:scale-110 active:scale-95 group",
+        "fixed bottom-[106px] md:bottom-8 z-[100] p-2.5 md:p-4 rounded-full bg-primary text-primary-foreground shadow-2xl transition-all duration-500 hover:scale-110 active:scale-95 group cursor-pointer flex items-center justify-center",
         side === "right"
           ? "right-4 md:right-8 left-auto"
           : "left-4 md:left-8 right-auto",
@@ -43,8 +43,8 @@ export function ScrollToTop() {
       )}
       aria-label="Voltar ao topo"
     >
-      <LuArrowUp className="w-4 h-4 md:w-6 md:h-6 transition-transform group-hover:-translate-y-1" />
-      <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping -z-10 group-hover:block hidden" />
+      <LuArrowUp className="w-4 h-4 md:w-6 md:h-6 transition-transform group-hover:-translate-y-1 pointer-events-none" />
+      <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping -z-10 group-hover:block hidden pointer-events-none" />
     </button>
   );
 }

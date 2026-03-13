@@ -11,6 +11,9 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
+  FlipCard,
+  LessonTabs,
+  ModuleSummaryCarouselNew,
 } from "../shared";
 import {
   QUIZ_M1_POLIEDROS,
@@ -1039,19 +1042,49 @@ export default function AulaGeometriaEspacial({
                   icone: "🏭",
                   conteudo: (
                     <div className="space-y-4">
-                      <div className="space-y-4">
-                        <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-400 mb-2">Silo Agrícola — Cilindro + Semiesfera</p>
-                          <p className="text-sm">Cilindro: r=3 m, h=5 m → V₁ = π×9×5 = 141,3 m³</p>
-                          <p className="text-sm">Semiesfera: r=3 m → V₂ = (2/3)π×27 = 56,52 m³</p>
-                          <p className="text-sm font-bold">V_total = 141,3 + 56,52 = <span className="text-emerald-400">197,82 m³</span></p>
-                        </div>
-                        <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-400 mb-2">Tanque Capsular FPSO — Cilindro + 2 Hemisférios</p>
-                          <p className="text-sm">Cilindro: r=4 m, h=6 m → V₁ = π×16×6 = 301,44 m³</p>
-                          <p className="text-sm">Esfera completa: r=4 → V₂ = (4/3)π×64 = 268,16 m³</p>
-                          <p className="text-sm font-bold">V_total = 301,44 + 268,16 = <span className="text-emerald-400">569,6 m³</span></p>
-                        </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <FlipCard
+                          frente={
+                            <div className="flex flex-col items-center text-center space-y-2">
+                              <span className="text-4xl">🌾</span>
+                              <h3 className="font-bold text-lg">Silo Agrícola</h3>
+                              <p className="text-sm opacity-80">Cilindro + Semiesfera</p>
+                            </div>
+                          }
+                          verso={
+                            <div className="space-y-3">
+                              <p className="font-bold text-white mb-2">Exemplo</p>
+                              <p className="text-white/90 text-[13px] leading-tight mt-1">
+                                Cilindro: r=3 m, h=5 m → V₁ = π×9×5 = 141,3 m³ <br/>
+                                Semiesfera: r=3 m → V₂ = (2/3)π×27 = 56,52 m³ <br/>
+                                <strong>V_total = 141,3 + 56,52 = 197,82 m³</strong>
+                              </p>
+                            </div>
+                          }
+                          categoria="Exemplo 1"
+                          variant="blue"
+                        />
+                        <FlipCard
+                          frente={
+                            <div className="flex flex-col items-center text-center space-y-2">
+                              <span className="text-4xl">🚢</span>
+                              <h3 className="font-bold text-lg">Tanque FPSO</h3>
+                              <p className="text-sm opacity-80">Cilindro + 2 Hemisf. (Esfera)</p>
+                            </div>
+                          }
+                          verso={
+                            <div className="space-y-3">
+                              <p className="font-bold text-white mb-2">Exemplo</p>
+                              <p className="text-white/90 text-[13px] leading-tight mt-1">
+                                Cilindro: r=4 m, h=6 m → V₁ = π×16×6 = 301,44 m³ <br/>
+                                Esfera completa: r=4 → V₂ = (4/3)π×64 = 268,16 m³ <br/>
+                                <strong>V_total = 301,44 + 268,16 = 569,6 m³</strong>
+                              </p>
+                            </div>
+                          }
+                          categoria="Exemplo 2"
+                          variant="cyan"
+                        />
                       </div>
                     </div>
                   ),
@@ -1305,6 +1338,61 @@ export default function AulaGeometriaEspacial({
                 </ul>
               </AlertBox>
             </div>
+          </section>
+
+          <section className="mb-8">
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo",
+                  label: "Mapa Mental",
+                  icon: () => <span className="text-lg">🗺️</span>,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          title: "Poliedros e Prismas",
+                          type: "infográfico",
+                          placeholderColor: "bg-blue-500/20",
+                        },
+                        {
+                          title: "Corpos Redondos",
+                          type: "mapa mental",
+                          placeholderColor: "bg-cyan-500/20",
+                        },
+                        {
+                          title: "Troncos e Sólidos Compostos",
+                          type: "infográfico",
+                          placeholderColor: "bg-emerald-500/20",
+                        }
+                      ]}
+                      tituloAula="Geometria Espacial"
+                      materia="Matemática"
+                      profissao="Engenharia"
+                      moduloNome="Revisão Final"
+                    />
+                  ),
+                },
+                {
+                  id: "video",
+                  label: "Videoaula",
+                  icon: () => <span className="text-lg">▶️</span>,
+                  content: (
+                    <div className="aspect-video rounded-xl overflow-hidden border border-border/50 bg-muted flex items-center justify-center relative group">
+                      <div className="absolute inset-0 bg-blue-900/10 group-hover:bg-blue-900/20 transition-colors" />
+                      <div className="w-16 h-16 rounded-full bg-blue-600/90 text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl">
+                        <span className="text-2xl ml-1">▶</span>
+                      </div>
+                      <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-sm font-medium">
+                        Duração: 45:10
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+              defaultTab="resumo"
+              variant="blue"
+            />
           </section>
 
           <section id="quiz-modulo-10" className="mt-8">

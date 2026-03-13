@@ -11,7 +11,22 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
+  LessonTabs,
+  FlipCard,
+  ModuleSummaryCarouselNew,
 } from "../shared";
+import { 
+  LuHash, 
+  LuBox, 
+  LuShuffle, 
+  LuRepeat, 
+  LuLayers, 
+  LuUsers, 
+  LuAward, 
+  LuBookOpen, 
+  LuTarget, 
+  LuLightbulb 
+} from "react-icons/lu";
 import {
   QUIZ_M1_PRINCIPIO_CONTAGEM,
   QUIZ_M2_FATORIAL,
@@ -25,7 +40,7 @@ import {
   QUIZ_M10_SIMULADO_CESGRANRIO,
 } from "./data/analise-combinatoria-quizzes";
 
-export default function AulaAnaliseCombinatoriaou({
+export default function AulaAnaliseCombinatoria({
   onComplete,
   isCompleted,
   loading,
@@ -137,7 +152,7 @@ export default function AulaAnaliseCombinatoriaou({
               className="mb-6"
             />
             <ContentAccordion
-              titulo="O que é o PFC e quando usá-lo"
+              titulo="💡 Conceito e Como Usar"
               icone="🔢"
               corIndicador="bg-indigo-500"
               defaultOpen={true}
@@ -151,7 +166,7 @@ export default function AulaAnaliseCombinatoriaou({
                         O <strong>Princípio Fundamental da Contagem</strong> afirma: se um evento A pode ocorrer de <em>m</em> maneiras e, independentemente, um evento B de <em>n</em> maneiras, então A e B juntos podem ocorrer de <strong>m × n maneiras</strong>.
                       </p>
                       <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center">
+                        <p className="font-mono text-center">
                           Total = n₁ × n₂ × n₃ × ... × nₖ
                         </p>
                       </div>
@@ -171,25 +186,34 @@ export default function AulaAnaliseCombinatoriaou({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-500 mb-2">Exemplo: Código de Equipamento</p>
-                          <p className="text-sm">Formato: 1 letra (A–E) + 2 dígitos (0–9)</p>
-                          <p className="text-sm mt-2">Etapa 1: 5 letras</p>
-                          <p className="text-sm">Etapa 2: 10 dígitos</p>
-                          <p className="text-sm">Etapa 3: 10 dígitos</p>
-                          <p className="text-sm font-bold mt-2 text-blue-500">Total: 5 × 10 × 10 = 500</p>
+                          <p className="text-sm font-bold text-blue-500 mb-2">Exemplo: Código de Equipamento</p>
+                          <p>Formato: 1 letra (A–E) + 2 dígitos (0–9)</p>
+                          <p className="mt-2">Etapa 1: 5 letras</p>
+                          <p>Etapa 2: 10 dígitos</p>
+                          <p>Etapa 3: 10 dígitos</p>
+                          <p className="font-bold mt-2 text-blue-500">Total: 5 × 10 × 10 = 500</p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-500 mb-2">Exemplo: Rotas de Inspeção</p>
-                          <p className="text-sm">4 rotas de acesso à plataforma</p>
-                          <p className="text-sm">3 rotas de retorno à base</p>
-                          <p className="text-sm mt-2">Etapa 1 (ida): 4 opções</p>
-                          <p className="text-sm">Etapa 2 (volta): 3 opções</p>
-                          <p className="text-sm font-bold mt-2 text-cyan-500">Total: 4 × 3 = 12 viagens</p>
+                          <p className="text-sm font-bold text-cyan-500 mb-2">Exemplo: Rotas de Inspeção</p>
+                          <p>4 rotas de acesso à plataforma</p>
+                          <p>3 rotas de retorno à base</p>
+                          <p className="mt-2">Etapa 1 (ida): 4 opções</p>
+                          <p>Etapa 2 (volta): 3 opções</p>
+                          <p className="font-bold mt-2 text-cyan-500">Total: 4 × 3 = 12 viagens</p>
                         </div>
                       </div>
                     </div>
                   ),
                 },
+              ]}
+            />
+
+            <ContentAccordion
+              titulo="⚠️ Armadilhas e Limitações"
+              icone="🚫"
+              corIndicador="bg-amber-500"
+              defaultOpen={false}
+              slides={[
                 {
                   titulo: "Quando NÃO usar o PFC",
                   icone: "⚠️",
@@ -199,15 +223,48 @@ export default function AulaAnaliseCombinatoriaou({
                         O PFC exige que as etapas sejam <strong>independentes</strong>. Quando os eventos são <em>alternativos</em> (ou A ou B, não os dois), usa-se <strong>adição</strong>, não multiplicação.
                       </p>
                       <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
-                        <p className="text-sm font-bold mb-2">Multiplicação vs. Adição</p>
-                        <p className="text-sm">✅ <strong>Multiplicação</strong>: etapas sequenciais (faz A E B)</p>
-                        <p className="text-sm">✅ <strong>Adição</strong>: alternativas excludentes (faz A OU B)</p>
-                        <p className="text-sm mt-2">Ex: 3 ônibus ou 2 barcos para chegar à plataforma → 3 + 2 = 5 meios de transporte (não 3 × 2).</p>
+                        <p className="font-bold mb-2">Multiplicação vs. Adição</p>
+                        <p>✅ <strong>Multiplicação</strong>: etapas sequenciais (faz A E B)</p>
+                        <p>✅ <strong>Adição</strong>: alternativas excludentes (faz A OU B)</p>
+                        <p className="mt-2">Ex: 3 ônibus ou 2 barcos para chegar à plataforma → 3 + 2 = 5 meios de transporte (não 3 × 2).</p>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
                         A banca mistura etapas sequenciais e alternativas no mesmo enunciado. Leia com atenção as palavras <strong>"E"</strong> (multiplica) e <strong>"OU"</strong> (soma). Este é o erro mais comum no PFC.
                       </AlertBox>
                     </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={2}
+              title="Resumo Estratégico: O Poder do PFC"
+              description="Consolide a base de toda a análise combinatória."
+              variant="indigo"
+            />
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo-pfc",
+                  label: "Diagrama de Decisão",
+                  icon: LuLightbulb,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          title: "Árvore de Decisão: E vs OU",
+                          type: "Esquema",
+                          placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
+                          imageUrl: "/temp-img.png", // PROMPT: Esquema industrial: Nó central "Problema de Contagem". Seta 1 "Fases sucessivas?" -> "E (Multiplica)". Seta 2 "Opções alternativas?" -> "OU (Soma)".
+                        },
+                      ]}
+                      moduloNome="Módulo 1"
+                      tituloAula="Análise Combinatória"
+                      materia="Matemática"
+                    />
                   ),
                 },
               ]}
@@ -247,7 +304,7 @@ export default function AulaAnaliseCombinatoriaou({
               className="mb-6"
             />
             <ContentAccordion
-              titulo="Fatorial: Definição e Cálculo"
+              titulo="📐 Definição e Cálculo de Fatoriais"
               icone="❗"
               corIndicador="bg-cyan-500"
               defaultOpen={true}
@@ -261,24 +318,35 @@ export default function AulaAnaliseCombinatoriaou({
                         O <strong>fatorial de n</strong> (escrito n!) é o produto de todos os inteiros de 1 até n:
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center">n! = n × (n−1) × (n−2) × ... × 2 × 1</p>
-                        <p className="text-sm font-mono text-center mt-2">Por convenção: 0! = 1</p>
+                        <p className="font-mono text-center">n! = n × (n−1) × (n−2) × ... × 2 × 1</p>
+                        <p className="font-mono text-center mt-2">Por convenção: 0! = 1</p>
                       </div>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
                         {[
+                          { n: "0!", v: "1" },
                           { n: "1!", v: "1" },
                           { n: "2!", v: "2" },
                           { n: "3!", v: "6" },
                           { n: "4!", v: "24" },
                           { n: "5!", v: "120" },
                           { n: "6!", v: "720" },
-                          { n: "7!", v: "5040" },
-                          { n: "10!", v: "3.628.800" },
+                          { n: "7!", v: "5.040" },
                         ].map((item) => (
-                          <div key={item.n} className="p-3 bg-blue-500/5 border border-blue-500/20 rounded-lg text-center">
-                            <p className="text-xs font-bold text-blue-500">{item.n}</p>
-                            <p className="text-sm font-mono">{item.v}</p>
-                          </div>
+                          <FlipCard
+                            key={item.n}
+                            frente={
+                              <div className="flex flex-col items-center justify-center p-2">
+                                <span className="text-2xl font-black text-indigo-500">{item.n}</span>
+                                <span className="text-xs text-muted-foreground uppercase mt-1">Gire para ver</span>
+                              </div>
+                            }
+                            verso={
+                              <div className="flex flex-col items-center justify-center p-2">
+                                <span className="text-xl font-mono font-bold text-emerald-500">{item.v}</span>
+                                <span className="text-xs text-muted-foreground mt-1">Valor fixo</span>
+                              </div>
+                            }
+                          />
                         ))}
                       </div>
                     </div>
@@ -295,13 +363,13 @@ export default function AulaAnaliseCombinatoriaou({
                       <div className="space-y-3">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
                           <p className="text-sm font-bold text-emerald-500 mb-2">Exemplo 1: 10! / 8!</p>
-                          <p className="text-sm font-mono">= (10 × 9 × <span className="text-muted-foreground">8!</span>) / <span className="text-muted-foreground">8!</span></p>
-                          <p className="text-sm font-mono">= 10 × 9 = <strong>90</strong></p>
+                          <p className="font-mono">= (10 × 9 × <span className="text-muted-foreground">8!</span>) / <span className="text-muted-foreground">8!</span></p>
+                          <p className="font-mono">= 10 × 9 = <strong>90</strong></p>
                         </div>
                         <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
                           <p className="text-sm font-bold text-indigo-500 mb-2">Exemplo 2: 8! / (5! × 3!)</p>
-                          <p className="text-sm font-mono">= (8 × 7 × 6 × <span className="text-muted-foreground">5!</span>) / (<span className="text-muted-foreground">5!</span> × 6)</p>
-                          <p className="text-sm font-mono">= (8 × 7 × 6) / 6 = 8 × 7 = <strong>56</strong></p>
+                          <p className="font-mono">= (8 × 7 × 6 × <span className="text-muted-foreground">5!</span>) / (<span className="text-muted-foreground">5!</span> × 6)</p>
+                          <p className="font-mono">= (8 × 7 × 6) / 6 = 8 × 7 = <strong>56</strong></p>
                         </div>
                       </div>
                       <AlertBox tipo="info" titulo="Dica de Velocidade">
@@ -310,6 +378,15 @@ export default function AulaAnaliseCombinatoriaou({
                     </div>
                   ),
                 },
+              ]}
+            />
+
+            <ContentAccordion
+              titulo="🤔 Por que 0! = 1? (A Pegadinha da Banca)"
+              icone="⚠️"
+              corIndicador="bg-amber-500"
+              defaultOpen={false}
+              slides={[
                 {
                   titulo: "Por que 0! = 1",
                   icone: "🤔",
@@ -319,12 +396,12 @@ export default function AulaAnaliseCombinatoriaou({
                         A definição 0! = 1 não é arbitrária — ela é necessária para que as fórmulas de combinatória funcionem corretamente:
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm">C(n, 0) = n! / (0! × n!) = n! / (1 × n!) = <strong>1</strong></p>
-                        <p className="text-sm text-muted-foreground">Há exatamente 1 forma de escolher 0 elementos de um conjunto: o subconjunto vazio.</p>
+                        <p>C(n, 0) = n! / (0! × n!) = n! / (1 × n!) = <strong>1</strong></p>
+                        <p className="text-muted-foreground">Há exatamente 1 forma de escolher 0 elementos de um conjunto: o subconjunto vazio.</p>
                       </div>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm">C(n, n) = n! / (n! × 0!) = <strong>1</strong></p>
-                        <p className="text-sm text-muted-foreground">Há exatamente 1 forma de escolher todos os elementos: pegar o conjunto inteiro.</p>
+                        <p>C(n, n) = n! / (n! × 0!) = <strong>1</strong></p>
+                        <p className="text-muted-foreground">Há exatamente 1 forma de escolher todos os elementos: pegar o conjunto inteiro.</p>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
                         A banca frequentemente usa C(n,0) ou C(n,n) em cálculos. Candidatos que não sabem 0!=1 erram essas questões. <strong>Memorize: 0! = 1, ponto final.</strong>
@@ -344,6 +421,34 @@ export default function AulaAnaliseCombinatoriaou({
               numero={2}
               variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6 mt-12">
+            <ModuleSectionHeader index={2.1} title="Resumo e Multimídia" variant="cyan" />
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo-fatorial",
+                  label: "Tabela de Referência",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          title: "Tabela de Fatoriais Comuns",
+                          type: "Tabela",
+                          placeholderColor: "bg-cyan-100 dark:bg-cyan-900/30",
+                          imageUrl: "/temp-img.png", // PROMPT: Tabela dark premium de fatoriais de 0! a 6!. 0!=1, 1!=1, 2!=2, 3!=6, 4!=24, 5!=120, 6!=720. Estilo dashboard industrial com brilhos ciano.
+                        },
+                      ]}
+                      moduloNome="Módulo 2"
+                      tituloAula="Análise Combinatória"
+                      materia="Matemática"
+                    />
+                  ),
+                },
+              ]}
             />
           </section>
         </div>
@@ -369,7 +474,7 @@ export default function AulaAnaliseCombinatoriaou({
               className="mb-6"
             />
             <ContentAccordion
-              titulo="Permutação Simples: Conceito e Aplicação"
+              titulo="🔀 Conceito e Processo de Permutação"
               icone="🔀"
               corIndicador="bg-emerald-500"
               defaultOpen={true}
@@ -383,7 +488,7 @@ export default function AulaAnaliseCombinatoriaou({
                         A <strong>Permutação Simples</strong> conta o número de formas de organizar <em>n</em> objetos distintos em <em>n</em> posições distintas. Cada objeto ocupa exatamente uma posição.
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center text-lg">P(n) = n!</p>
+                        <p className="font-mono text-center text-lg">P(n) = n!</p>
                         <p className="text-sm text-center text-muted-foreground mt-1">Todos os n elementos, todos os n lugares</p>
                       </div>
                       <AlertBox tipo="info" titulo="Contexto Petrobras">
@@ -401,36 +506,45 @@ export default function AulaAnaliseCombinatoriaou({
                         Pense em <strong>preencher posições sequencialmente</strong>: a 1ª posição tem n opções, a 2ª tem n−1, a 3ª tem n−2, e assim por diante.
                       </p>
                       <div className="p-4 bg-teal-500/5 rounded-xl border border-teal-500/20">
-                        <p className="text-sm font-bold text-teal-500 mb-3">Exemplo: 4 operadores em 4 turnos</p>
+                        <p className="font-bold text-teal-500 mb-3">Exemplo: 4 operadores em 4 turnos</p>
                         <div className="flex items-center gap-2 flex-wrap">
                           <div className="px-3 py-2 bg-teal-500/10 rounded border border-teal-500/20 text-center">
-                            <p className="text-xs text-muted-foreground">Turno 1</p>
-                            <p className="text-sm font-bold">4 opções</p>
+                            <p className="text-sm text-muted-foreground">Turno 1</p>
+                            <p className="font-bold">4 opções</p>
                           </div>
                           <span className="text-muted-foreground">×</span>
                           <div className="px-3 py-2 bg-teal-500/10 rounded border border-teal-500/20 text-center">
-                            <p className="text-xs text-muted-foreground">Turno 2</p>
-                            <p className="text-sm font-bold">3 opções</p>
+                            <p className="text-sm text-muted-foreground">Turno 2</p>
+                            <p className="font-bold">3 opções</p>
                           </div>
                           <span className="text-muted-foreground">×</span>
                           <div className="px-3 py-2 bg-teal-500/10 rounded border border-teal-500/20 text-center">
-                            <p className="text-xs text-muted-foreground">Turno 3</p>
-                            <p className="text-sm font-bold">2 opções</p>
+                            <p className="text-sm text-muted-foreground">Turno 3</p>
+                            <p className="font-bold">2 opções</p>
                           </div>
                           <span className="text-muted-foreground">×</span>
                           <div className="px-3 py-2 bg-teal-500/10 rounded border border-teal-500/20 text-center">
-                            <p className="text-xs text-muted-foreground">Turno 4</p>
-                            <p className="text-sm font-bold">1 opção</p>
+                            <p className="text-sm text-muted-foreground">Turno 4</p>
+                            <p className="font-bold">1 opção</p>
                           </div>
                           <span className="text-muted-foreground">=</span>
                           <div className="px-3 py-2 bg-emerald-500/20 rounded border border-emerald-500/40 text-center">
-                            <p className="text-sm font-bold text-emerald-500">24</p>
+                            <p className="font-bold text-emerald-500">24</p>
                           </div>
                         </div>
                       </div>
                     </div>
                   ),
                 },
+              ]}
+            />
+
+            <ContentAccordion
+              titulo="⚖️ Permutação vs. Arranjo: Saiba Diferenciar"
+              icone="⚖️"
+              corIndicador="bg-blue-500"
+              defaultOpen={false}
+              slides={[
                 {
                   titulo: "Permutação vs. Arranjo",
                   icone: "⚖️",
@@ -441,21 +555,59 @@ export default function AulaAnaliseCombinatoriaou({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">Permutação P(n)</p>
-                          <p className="text-sm">n elementos → n lugares</p>
-                          <p className="text-sm font-mono mt-1">P(5) = 5! = 120</p>
-                          <p className="text-xs text-muted-foreground mt-1">5 técnicos em 5 turnos</p>
+                          <p className="text-sm font-bold text-emerald-500 mb-2">Permutação P(n)</p>
+                          <p>n elementos → n lugares</p>
+                          <p className="font-mono mt-1">P(5) = 5! = 120</p>
+                          <p className="text-sm text-muted-foreground mt-1">5 técnicos em 5 turnos</p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-500 mb-2">Arranjo A(n,p)</p>
-                          <p className="text-sm">n elementos → p lugares (p &lt; n)</p>
-                          <p className="text-sm font-mono mt-1">A(8,3) = 8×7×6 = 336</p>
-                          <p className="text-xs text-muted-foreground mt-1">8 barcos, pódio de 3</p>
+                          <p className="text-sm font-bold text-blue-500 mb-2">Arranjo A(n,p)</p>
+                          <p>n elementos → p lugares (p &lt; n)</p>
+                          <p className="font-mono mt-1">A(8,3) = 8×7×6 = 336</p>
+                          <p className="text-sm text-muted-foreground mt-1">8 barcos, pódio de 3</p>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
                         "De quantas formas o pódio pode ser preenchido com 3 finalistas de 8 equipes?" Isso é <strong>Arranjo A(8,3)</strong>, não permutação P(3) = 6 (que seria apenas a ordenação dos 3 finalistas entre si).
                       </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={2}
+              title="Permutação vs Arranjo: Quando usar cada um?"
+              description="A dúvida mais comum resolvida de forma visual."
+              variant="emerald"
+            />
+            <LessonTabs
+              tabs={[
+                {
+                  id: "comparativo-p-a",
+                  label: "Comparativo",
+                  icon: LuShuffle,
+                  content: (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-4">
+                        <h4 className="font-bold text-emerald-500">Permutação P(n)</h4>
+                        <ul className="space-y-2 text-sm list-disc list-inside text-muted-foreground">
+                          <li>Usa <strong>todos</strong> os elementos</li>
+                          <li>Nº de elementos = Nº de lugares</li>
+                          <li>Ex: Anagramas, filas completas</li>
+                        </ul>
+                      </div>
+                      <div className="space-y-4">
+                        <h4 className="font-bold text-blue-500">Arranjo A(n,p)</h4>
+                        <ul className="space-y-2 text-sm list-disc list-inside text-muted-foreground">
+                          <li>Usa apenas <strong>parte</strong> dos elementos</li>
+                          <li>Nº de elementos &gt; Nº de lugares</li>
+                          <li>Ex: Pódios, senhas parciais</li>
+                        </ul>
+                      </div>
                     </div>
                   ),
                 },
@@ -471,6 +623,34 @@ export default function AulaAnaliseCombinatoriaou({
               numero={3}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6 mt-12">
+            <ModuleSectionHeader index={3.1} title="Resumo e Multimídia" variant="emerald" />
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo-p3",
+                  label: "Visual do Fatorial",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          title: "Diagrama de Permutação",
+                          type: "Esquema",
+                          placeholderColor: "bg-emerald-100 dark:bg-emerald-900/30",
+                          imageUrl: "/temp-img.png", // PROMPT: Diagrama dark premium mostrando 3 objetos (A, B, C) e as 6 formas de organizá-los (ABC, ACB, BAC, BCA, CAB, CBA). Estilo técnico esmeralda.
+                        },
+                      ]}
+                      moduloNome="Módulo 3"
+                      tituloAula="Análise Combinatória"
+                      materia="Matemática"
+                    />
+                  ),
+                },
+              ]}
             />
           </section>
         </div>
@@ -496,7 +676,7 @@ export default function AulaAnaliseCombinatoriaou({
               className="mb-6"
             />
             <ContentAccordion
-              titulo="Permutação com Repetição: Conceito e Fórmula"
+              titulo="📪 Conceito e Anagramas"
               icone="🔁"
               corIndicador="bg-cyan-500"
               defaultOpen={true}
@@ -510,8 +690,8 @@ export default function AulaAnaliseCombinatoriaou({
                         Se temos n elementos onde alguns são idênticos, trocar elementos iguais de posição <strong>não gera um arranjo novo</strong>. Precisamos dividir pelas repetições:
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center">P(n; n₁, n₂, ..., nₖ) = n! / (n₁! × n₂! × ... × nₖ!)</p>
-                        <p className="text-sm text-center text-muted-foreground mt-1">onde n₁ + n₂ + ... + nₖ = n</p>
+                        <p className="font-mono text-center">P(n; n₁, n₂, ..., nₖ) = n! / (n₁! × n₂! × ... × nₖ!)</p>
+                        <p className="text-center text-muted-foreground mt-1">onde n₁ + n₂ + ... + nₖ = n</p>
                       </div>
                       <AlertBox tipo="info" titulo="Exemplo Industrial">
                         Sinalizadores em linha: 3 vermelhos (V,V,V) e 2 amarelos (A,A). Sem contar repetições: 5! = 120. Mas V₁V₂V₃A₁A₂ = V₂V₁V₃A₁A₂ (os vermelhos são idênticos). Dividimos: 5!/(3!×2!) = 120/12 = <strong>10 arranjos distintos</strong>.
@@ -530,20 +710,29 @@ export default function AulaAnaliseCombinatoriaou({
                       <div className="space-y-3">
                         <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
                           <p className="text-sm font-bold text-indigo-500 mb-2">PETRO (5 letras, todas distintas)</p>
-                          <p className="text-sm font-mono">P(5) = 5! = <strong>120 anagramas</strong></p>
+                          <p className="font-mono">P(5) = 5! = <strong>120 anagramas</strong></p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
                           <p className="text-sm font-bold text-blue-500 mb-2">BACIA (5 letras, A aparece 2×)</p>
-                          <p className="text-sm font-mono">P(5; 2) = 5!/2! = 120/2 = <strong>60 anagramas</strong></p>
+                          <p className="font-mono">P(5; 2) = 5!/2! = 120/2 = <strong>60 anagramas</strong></p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
                           <p className="text-sm font-bold text-cyan-500 mb-2">RADAR (5 letras, R aparece 2×, A aparece 2×)</p>
-                          <p className="text-sm font-mono">P(5; 2, 2) = 5!/(2!×2!) = 120/4 = <strong>30 anagramas</strong></p>
+                          <p className="font-mono">P(5; 2, 2) = 5!/(2!×2!) = 120/4 = <strong>30 anagramas</strong></p>
                         </div>
                       </div>
                     </div>
                   ),
                 },
+              ]}
+            />
+
+            <ContentAccordion
+              titulo="🔗 Conexão Elegante com Combinação"
+              icone="✨"
+              corIndicador="bg-emerald-500"
+              defaultOpen={false}
+              slides={[
                 {
                   titulo: "Conexão com Combinação",
                   icone: "🔗",
@@ -553,9 +742,9 @@ export default function AulaAnaliseCombinatoriaou({
                         Existe uma ligação elegante entre permutação com repetição e combinação:
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold">P(n; p, n−p) = C(n, p)</p>
-                        <p className="text-sm text-muted-foreground">Permutação de n elementos em 2 grupos (p e n−p) é igual a combinar n tomados p a p.</p>
-                        <p className="text-sm mt-2">Ex: P(5; 3, 2) = 5!/(3!×2!) = 10 = C(5,2)</p>
+                        <p className="font-bold">P(n; p, n−p) = C(n, p)</p>
+                        <p className="text-muted-foreground">Permutação de n elementos em 2 grupos (p e n−p) é igual a combinar n tomados p a p.</p>
+                        <p className="mt-2">Ex: P(5; 3, 2) = 5!/(3!×2!) = 10 = C(5,2)</p>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
                         A banca pode pedir "permutação de n objetos com k iguais" ou "combinação de n tomados k a k" — ambos dão o mesmo resultado! Reconheça as duas formas de enunciar o mesmo problema.
@@ -567,14 +756,64 @@ export default function AulaAnaliseCombinatoriaou({
             />
           </section>
 
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={2}
+              title="Resumo Visual: Repetições"
+              description="Como tratar elementos idênticos em fila."
+              variant="cyan"
+            />
+            <ModuleSummaryCarouselNew
+              images={[
+                {
+                  title: "Anagramas com Repetição",
+                  type: "Exemplo",
+                  placeholderColor: "bg-cyan-100 dark:bg-cyan-900/30",
+                  imageUrl: "/temp-img.png", // PROMPT: Ilustração de anagramas da palavra "BANANA". Destaque nas letras 'A' e 'N' repetidas e a divisão na fórmula.
+                },
+              ]}
+              moduloNome="Módulo 4"
+              tituloAula="Análise Combinatória"
+              materia="Matemática"
+            />
+          </section>
+
           <section id="quiz-modulo-4" className="mt-16">
             <QuizInterativo
               questoes={quizM4}
               titulo="Quiz — Permutação com Repetição"
               icone="🔁"
               numero={4}
-              variant="indigo"
+              variant="rose"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6 mt-12">
+            <ModuleSectionHeader index={4.1} title="Resumo e Multimídia" variant="rose" />
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo-p4",
+                  label: "Fórmula de Repetição",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          title: "Removendo Permutações Idênticas",
+                          type: "Explicação Visual",
+                          placeholderColor: "bg-rose-100 dark:bg-rose-900/30",
+                          imageUrl: "/temp-img.png", // PROMPT: Diagrama dark premium explicando a palavra ANA. 3! = 6 formas, mas metade são idênticas. Estilo infográfico rose.
+                        },
+                      ]}
+                      moduloNome="Módulo 4"
+                      tituloAula="Análise Combinatória"
+                      materia="Matemática"
+                    />
+                  ),
+                },
+              ]}
             />
           </section>
         </div>
@@ -600,7 +839,7 @@ export default function AulaAnaliseCombinatoriaou({
               className="mb-6"
             />
             <ContentAccordion
-              titulo="Arranjo Simples: Quando a Ordem Importa"
+              titulo="🏆 Definição e Cálculo de Arranjos"
               icone="🏆"
               corIndicador="bg-indigo-500"
               defaultOpen={true}
@@ -614,42 +853,13 @@ export default function AulaAnaliseCombinatoriaou({
                         O <strong>Arranjo Simples A(n,p)</strong> conta o número de formas de selecionar e ordenar <em>p</em> elementos de um conjunto de <em>n</em> elementos distintos, sem repetição:
                       </p>
                       <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center text-lg">A(n, p) = n! / (n − p)!</p>
-                        <p className="text-sm font-mono text-center mt-1">= n × (n−1) × ... × (n−p+1)</p>
-                        <p className="text-sm text-center text-muted-foreground mt-1">São exatamente p fatores, começando por n</p>
+                        <p className="font-mono text-center text-lg">A(n, p) = n! / (n − p)!</p>
+                        <p className="font-mono text-center mt-1">= n × (n−1) × ... × (n−p+1)</p>
+                        <p className="text-center text-muted-foreground mt-1">São exatamente p fatores, começando por n</p>
                       </div>
                       <AlertBox tipo="info" titulo="Contexto Petrobras">
                         De 10 técnicos, escolher e ordenar 3 para os cargos de líder, vice-líder e secretário de turno: A(10,3) = 10×9×8 = <strong>720 formas</strong>. A ordem importa porque líder ≠ vice-líder.
                       </AlertBox>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Arranjo vs. Combinação: A Diferença Crítica",
-                  icone: "⚖️",
-                  conteudo: (
-                    <div className="space-y-4">
-                      <p>
-                        A única diferença entre arranjo e combinação é se a <strong>ordem importa ou não</strong>:
-                      </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                          <p className="text-xs font-bold text-indigo-500 mb-2">ARRANJO: Ordem Importa</p>
-                          <p className="text-sm">A(5,3) = 5×4×3 = 60</p>
-                          <p className="text-xs text-muted-foreground mt-1">ABC ≠ BAC ≠ CBA</p>
-                          <p className="text-xs text-muted-foreground">Cargos, pódio, senhas ordenadas</p>
-                        </div>
-                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">COMBINAÇÃO: Ordem Não Importa</p>
-                          <p className="text-sm">C(5,3) = 10</p>
-                          <p className="text-xs text-muted-foreground mt-1">ABC = BAC = CBA</p>
-                          <p className="text-xs text-muted-foreground">Grupos, equipes, comitês</p>
-                        </div>
-                      </div>
-                      <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
-                        <p className="text-sm font-bold">Relação: A(n,p) = C(n,p) × p!</p>
-                        <p className="text-sm text-muted-foreground mt-1">Para cada combinação de p elementos, há p! maneiras de ordená-los → cada combinação gera p! arranjos.</p>
-                      </div>
                     </div>
                   ),
                 },
@@ -664,18 +874,56 @@ export default function AulaAnaliseCombinatoriaou({
                       <div className="space-y-3">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
                           <p className="text-sm font-bold text-blue-500">A(8, 3) = ?</p>
-                          <p className="text-sm font-mono mt-1">= 8 × 7 × 6 = <strong>336</strong></p>
-                          <p className="text-xs text-muted-foreground">3 fatores começando em 8</p>
+                          <p className="font-mono mt-1">= 8 × 7 × 6 = <strong>336</strong></p>
+                          <p className="text-sm text-muted-foreground">3 fatores começando em 8</p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
                           <p className="text-sm font-bold text-cyan-500">A(12, 4) = ?</p>
-                          <p className="text-sm font-mono mt-1">= 12 × 11 × 10 × 9 = <strong>11.880</strong></p>
-                          <p className="text-xs text-muted-foreground">4 fatores começando em 12</p>
+                          <p className="font-mono mt-1">= 12 × 11 × 10 × 9 = <strong>11.880</strong></p>
+                          <p className="text-sm text-muted-foreground">4 fatores começando em 12</p>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
                         "De 12 equipes, de quantas formas os 3 primeiros lugares podem ser distribuídos?" → A(12,3) = 1320. A banca testa se você usa arranjo (ordem importa) ou combinação (ordem não importa) neste contexto.
                       </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+
+            <ContentAccordion
+              titulo="⚖️ Arranjo vs. Combinação: A Diferença Crítica"
+              icone="⚖️"
+              corIndicador="bg-emerald-500"
+              defaultOpen={false}
+              slides={[
+                {
+                  titulo: "Arranjo vs. Combinação: A Diferença Crítica",
+                  icone: "⚖️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        A única diferença entre arranjo e combinação é se a <strong>ordem importa ou não</strong>:
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
+                          <p className="text-sm font-bold text-indigo-500 mb-2">ARRANJO: Ordem Importa</p>
+                          <p>A(5,3) = 5×4×3 = 60</p>
+                          <p className="text-sm text-muted-foreground mt-1">ABC ≠ BAC ≠ CBA</p>
+                          <p className="text-sm text-muted-foreground">Cargos, pódio, senhas ordenadas</p>
+                        </div>
+                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
+                          <p className="text-sm font-bold text-emerald-500 mb-2">COMBINAÇÃO: Ordem Não Importa</p>
+                          <p>C(5,3) = 10</p>
+                          <p className="text-sm text-muted-foreground mt-1">ABC = BAC = CBA</p>
+                          <p className="text-sm text-muted-foreground">Grupos, equipes, comitês</p>
+                        </div>
+                      </div>
+                      <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
+                        <p className="font-bold">Relação: A(n,p) = C(n,p) × p!</p>
+                        <p className="text-muted-foreground mt-1">Para cada combinação de p elementos, há p! maneiras de ordená-los → cada combinação gera p! arranjos.</p>
+                      </div>
                     </div>
                   ),
                 },
@@ -689,8 +937,36 @@ export default function AulaAnaliseCombinatoriaou({
               titulo="Quiz — Arranjo Simples"
               icone="🏆"
               numero={5}
-              variant="indigo"
+              variant="amber"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6 mt-12">
+            <ModuleSectionHeader index={5.1} title="Resumo e Multimídia" variant="amber" />
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo-p5",
+                  label: "Diferencial Arranjo",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          title: "Arranjo: Ordem é Posicional",
+                          type: "Contextualização",
+                          placeholderColor: "bg-amber-100 dark:bg-amber-900/30",
+                          imageUrl: "/temp-img.png", // PROMPT: Pódio industrial com 1º, 2º e 3º lugares. Estilo dark premium âmbar.
+                        },
+                      ]}
+                      moduloNome="Módulo 5"
+                      tituloAula="Análise Combinatória"
+                      materia="Matemática"
+                    />
+                  ),
+                },
+              ]}
             />
           </section>
         </div>
@@ -716,7 +992,7 @@ export default function AulaAnaliseCombinatoriaou({
               className="mb-6"
             />
             <ContentAccordion
-              titulo="Combinação Simples: O Conceito Central"
+              titulo="👥 Definição e Cálculo de Combinações"
               icone="👥"
               corIndicador="bg-blue-500"
               defaultOpen={true}
@@ -730,11 +1006,11 @@ export default function AulaAnaliseCombinatoriaou({
                         A <strong>Combinação Simples C(n,p)</strong> conta o número de subconjuntos de tamanho <em>p</em> que podem ser formados de um conjunto de <em>n</em> elementos, <strong>sem repetição e sem considerar a ordem</strong>:
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center text-lg">C(n, p) = n! / [p! × (n−p)!]</p>
+                        <p className="font-mono text-center text-lg">C(n, p) = n! / [p! × (n−p)!]</p>
                         <p className="text-sm font-mono text-center mt-1">Também escrito como Cₙᵖ ou ⁿCₚ ou (ⁿₚ)</p>
                       </div>
                       <AlertBox tipo="info" titulo="Contexto Petrobras">
-                        De 8 técnicos da REPLAN, quantas equipes de 3 podem ser formadas para inspeção? C(8,3) = (8×7×6)/(3×2×1) = 336/6 = <strong>56 equipes</strong>. A equipe {João, Maria, Pedro} é a mesma que {Pedro, João, Maria}.
+                        De 8 técnicos da REPLAN, quantas equipes de 3 podem ser formadas para inspeção? C(8,3) = (8×7×6)/(3×2×1) = 336/6 = <strong>56 equipes</strong>. A equipe {"{João, Maria, Pedro}"} é a mesma que {"{Pedro, João, Maria}"}.
                       </AlertBox>
                     </div>
                   ),
@@ -750,16 +1026,16 @@ export default function AulaAnaliseCombinatoriaou({
                       <div className="space-y-3">
                         <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
                           <p className="text-sm font-bold text-indigo-500 mb-2">C(10, 4) — use C(10,4) pois 4 &lt; 6</p>
-                          <p className="text-sm font-mono">= (10×9×8×7) / (4×3×2×1) = 5040/24 = <strong>210</strong></p>
+                          <p className="font-mono">= (10×9×8×7) / (4×3×2×1) = 5040/24 = <strong>210</strong></p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
                           <p className="text-sm font-bold text-blue-500 mb-2">C(10, 7) = C(10, 3) pela simetria</p>
-                          <p className="text-sm font-mono">= (10×9×8) / (3×2×1) = 720/6 = <strong>120</strong></p>
+                          <p className="font-mono">= (10×9×8) / (3×2×1) = 720/6 = <strong>120</strong></p>
                         </div>
                       </div>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
-                        <p className="text-sm font-bold">Atalho: C(n, 2) = n(n−1)/2</p>
-                        <p className="text-sm text-muted-foreground">Apertos de mão, diagonais de polígono — sempre C(n,2) = n(n−1)/2.</p>
+                        <p className="font-bold">Atalho: C(n, 2) = n(n−1)/2</p>
+                        <p className="text-muted-foreground">Apertos de mão, diagonais de polígono — sempre C(n,2) = n(n−1)/2.</p>
                       </div>
                     </div>
                   ),
@@ -771,16 +1047,48 @@ export default function AulaAnaliseCombinatoriaou({
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-500 mb-2">Apertos de Mão</p>
-                          <p className="text-sm">n pessoas, cada par cumprimenta uma vez:</p>
-                          <p className="text-sm font-mono mt-1">C(n, 2) = n(n−1)/2</p>
-                          <p className="text-xs text-muted-foreground mt-1">6 gerentes → C(6,2) = 15 apertos</p>
+                          <p className="text-sm font-bold text-cyan-500 mb-2">Apertos de Mão</p>
+                          <p>n pessoas, cada par cumprimenta uma vez:</p>
+                          <p className="font-mono mt-1">C(n, 2) = n(n−1)/2</p>
+                          <p className="text-sm text-muted-foreground mt-1">6 gerentes → C(6,2) = 15 apertos</p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-500 mb-2">Diagonais de Polígono</p>
-                          <p className="text-sm">n vértices, subtraindo os n lados:</p>
-                          <p className="text-sm font-mono mt-1">C(n,2) − n = n(n−3)/2</p>
-                          <p className="text-xs text-muted-foreground mt-1">Octógono → C(8,2)−8 = 28−8 = 20</p>
+                          <p className="text-sm font-bold text-blue-500 mb-2">Diagonais de Polígono</p>
+                          <p>n vértices, subtraindo os n lados:</p>
+                          <p className="font-mono mt-1">C(n,2) − n = n(n−3)/2</p>
+                          <p className="text-sm text-muted-foreground mt-1">Octógono → C(8,2)−8 = 28−8 = 20</p>
+                        </div>
+                      </div>
+                      <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
+                        "Quantos jogos em um torneio todos-contra-todos?" = C(n,2). "Com ida e volta?" = A(n,2) = n(n−1). A banca testa se você distingue partidas com e sem mandante.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+
+            <ContentAccordion
+              titulo="🎯 Problemas Clássicos: Aplicações CESGRANRIO"
+              icone="🎯"
+              corIndicador="bg-amber-500"
+              defaultOpen={false}
+              slides={[
+                {
+                  titulo: "Apertos de Mão e Torneios",
+                  icone: "🤝",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
+                          <p className="text-sm font-bold text-cyan-500 mb-2">Apertos de Mão</p>
+                          <p>n pessoas, cada par cumprimenta uma vez: <strong>C(n,2)</strong></p>
+                          <p className="font-mono mt-2">C(6,2) = 15 apertos (6 gerentes)</p>
+                        </div>
+                        <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
+                          <p className="text-sm font-bold text-blue-500 mb-2">Torneio Todos vs. Todos</p>
+                          <p>Sem mandante: <strong>C(n,2)</strong> jogos</p>
+                          <p>Com mandante (ida+volta): <strong>A(n,2)</strong> jogos</p>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
@@ -801,6 +1109,34 @@ export default function AulaAnaliseCombinatoriaou({
               numero={6}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6 mt-12">
+            <ModuleSectionHeader index={6.1} title="Resumo e Multimídia" variant="indigo" />
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo-c6",
+                  label: "Diagrama Combinatório",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          title: "Combinação: Ordem Não Importa",
+                          type: "Esquema",
+                          placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
+                          imageUrl: "/temp-img.png", // PROMPT: Diagrama técnico mostrando um conjunto de 3 bolas (RGB). Selecionar (RG) é igual a (GR). Sublinhar: "Subconjuntos". Estilo dark industrial indigo.
+                        },
+                      ]}
+                      moduloNome="Módulo 6"
+                      tituloAula="Análise Combinatória"
+                      materia="Matemática"
+                    />
+                  ),
+                },
+              ]}
             />
           </section>
         </div>
@@ -840,7 +1176,7 @@ export default function AulaAnaliseCombinatoriaou({
                         A <strong>Combinação com Repetição CR(n,p)</strong> conta o número de formas de escolher <em>p</em> elementos de <em>n</em> tipos distintos, onde um mesmo tipo pode ser escolhido múltiplas vezes, e a ordem não importa:
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center text-lg">CR(n, p) = C(n+p−1, p)</p>
+                        <p className="font-mono text-center text-lg">CR(n, p) = C(n+p−1, p)</p>
                         <p className="text-sm text-center text-muted-foreground mt-1">Equivalente a C(n+p−1, n−1)</p>
                       </div>
                       <AlertBox tipo="info" titulo="Exemplo Prático">
@@ -930,6 +1266,38 @@ export default function AulaAnaliseCombinatoriaou({
                         A banca dificilmente usa o termo "combinação com repetição" diretamente. Procure pistas no enunciado: <strong>"podendo repetir"</strong>, <strong>"com reposição"</strong>, <strong>"soluções não-negativas"</strong>. Estas são as senhas para usar CR.
                       </AlertBox>
                     </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6 mt-12">
+            <ModuleSectionHeader
+              index={7.1}
+              title="Resumo Visual: Combinatória com Repetição"
+              variant="emerald"
+            />
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo-cr7",
+                  label: "Método Bola-Traço",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          title: "Explicação: Estrelas e Barras",
+                          type: "Esquema",
+                          placeholderColor: "bg-emerald-100 dark:bg-emerald-900/30",
+                          imageUrl: "/temp-img.png", // PROMPT: Esquema matemático mostrando bolinhas divididas por barras verticais para representar soluções de equações. Estilo técnico esmeralda.
+                        },
+                      ]}
+                      moduloNome="Módulo 7"
+                      tituloAula="Análise Combinatória"
+                      materia="Matemática"
+                    />
                   ),
                 },
               ]}
@@ -1072,6 +1440,34 @@ export default function AulaAnaliseCombinatoriaou({
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6 mt-12">
+            <ModuleSectionHeader index={8.1} title="Resumo e Atalhos" variant="indigo" />
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo-p8",
+                  label: "Triângulo de Pascal",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          title: "Propriedades Rápidas",
+                          type: "Tabela",
+                          placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
+                          imageUrl: "/temp-img.png", // PROMPT: Vizualização do Triângulo de Pascal com setas indicando somas e simetria. Estilo infográfico educacional azul e índigo.
+                        },
+                      ]}
+                      moduloNome="Módulo 8"
+                      tituloAula="Análise Combinatória"
+                      materia="Matemática"
+                    />
+                  ),
+                },
+              ]}
+            />
+          </section>
         </div>
       </TabsContent>
 
@@ -1187,6 +1583,34 @@ export default function AulaAnaliseCombinatoriaou({
               numero={9}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6 mt-12">
+            <ModuleSectionHeader index={9.1} title="Contexto Petrobras" variant="emerald" />
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo-app9",
+                  label: "Cenários de Prova",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          title: "Modelagem de Problemas",
+                          type: "Fluxograma",
+                          placeholderColor: "bg-emerald-100 dark:bg-emerald-900/30",
+                          imageUrl: "/temp-img.png", // PROMPT: Fluxograma de decisão para combinatória: "Ordem importa?" -> Sim/Não -> "Surgem restrições?" -> Sim/Não. Visual tecnológico Petrobras.
+                        },
+                      ]}
+                      moduloNome="Módulo 9"
+                      tituloAula="Análise Combinatória"
+                      materia="Matemática"
+                    />
+                  ),
+                },
+              ]}
             />
           </section>
         </div>
@@ -1308,6 +1732,62 @@ export default function AulaAnaliseCombinatoriaou({
               numero={10}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6 mt-12">
+            <ModuleSectionHeader index={10.1} title="Revisão de Véspera" variant="indigo" />
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo-final",
+                  label: "Checklist de Combate",
+                  icon: LuBookOpen,
+                  content: (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <FlipCard
+                        frente={
+                          <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
+                            <LuTarget className="w-12 h-12 text-indigo-500 opacity-50" />
+                            <h6 className="text-xl font-bold uppercase tracking-tight">Decisão Rápida</h6>
+                            <p className="text-sm text-muted-foreground">O que usar em cada caso?</p>
+                          </div>
+                        }
+                        verso={
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-2">
+                              <LuUsers className="w-5 h-5 text-indigo-400 shrink-0" />
+                              <p className="text-sm font-bold text-indigo-400">Guia de Bolso</p>
+                            </div>
+                            <ul className="text-sm space-y-2 text-zinc-300">
+                              <li>• <strong>Grupos/Equipes</strong>: Combinação (C)</li>
+                              <li>• <strong>Cargos/Pódios</strong>: Arranjo (A)</li>
+                              <li>• <strong>Ordem Total</strong>: Permutação (P)</li>
+                              <li>• <strong>Repetição</strong>: CR ou PFC</li>
+                            </ul>
+                            <div className="p-3 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-xs text-indigo-300 mt-2">
+                              Dica: Se "Pelo menos 1" → use Total - Nada.
+                            </div>
+                          </div>
+                        }
+                      />
+                      <ModuleSummaryCarouselNew
+                        images={[
+                          {
+                            title: "Mapa Mental Final",
+                            type: "Mapa",
+                            placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
+                            imageUrl: "/temp-img.png", // PROMPT: Mapa mental completo de Análise Combinatória. Centralizado: Análise Combinatória. Ramos: Permutação, Arranjo, Combinação. Estilo dark premium.
+                          },
+                        ]}
+                        moduloNome="Módulo 10"
+                        tituloAula="Análise Combinatória"
+                        materia="Matemática"
+                      />
+                    </div>
+                  ),
+                },
+              ]}
             />
           </section>
         </div>

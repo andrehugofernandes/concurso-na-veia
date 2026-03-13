@@ -114,6 +114,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       const primaryHoverHsl = hexToHsl(colors.primaryHover);
       const primaryRgbValues = hexToRgbValues(colors.primary);
 
+      // Limpar valores anteriores para garantir atualização
+      root.style.removeProperty("--primary");
+      root.style.removeProperty("--primary-hex");
+      root.style.removeProperty("--primary-rgb");
+      root.style.removeProperty("--primary-hover");
+
       root.style.setProperty("--primary", primaryHsl);
       root.style.setProperty("--primary-hover", primaryHoverHsl);
       root.style.setProperty("--primary-hex", colors.primary);

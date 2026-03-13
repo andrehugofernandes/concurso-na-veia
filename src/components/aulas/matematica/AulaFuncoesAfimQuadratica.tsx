@@ -13,6 +13,10 @@ import {
   ModuleSectionHeader,
   FunctionGraph,
   type FunctionPlot,
+  FlipCard,
+  CardCarousel,
+  LessonTabs,
+  ModuleSummaryCarouselNew,
 } from "../shared";
 
 import {
@@ -37,16 +41,20 @@ import {
 } from "./data/funcoes-afim-quadratica-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", title: "A Função Afim (A Reta)" },
-  { id: "modulo-2", label: "Módulo 2", title: "A Quadrática (A Parábola)" },
-  { id: "modulo-3", label: "Módulo 3", title: "Interpretação de Gráficos" },
-  { id: "modulo-4", label: "Módulo 4", title: "Aplicações de Max e Min" },
-  { id: "modulo-5", label: "Módulo 5", title: "Comparação Afim vs Quadrática" },
-  { id: "modulo-6", label: "Módulo 6", title: "Inequações com Afim e Quadrática" },
-  { id: "modulo-7", label: "Módulo 7", title: "Sistemas e Intersecções" },
-  { id: "modulo-8", label: "Módulo 8", title: "Otimização Avançada" },
-  { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-1", label: "Módulo 1", titulo: "A Função Afim (A Reta)" },
+  { id: "modulo-2", label: "Módulo 2", titulo: "A Quadrática (A Parábola)" },
+  { id: "modulo-3", label: "Módulo 3", titulo: "Interpretação de Gráficos" },
+  { id: "modulo-4", label: "Módulo 4", titulo: "Aplicações de Max e Min" },
+  { id: "modulo-5", label: "Módulo 5", titulo: "Comparação Afim vs Quadrática" },
+  {
+    id: "modulo-6",
+    label: "Módulo 6",
+    titulo: "Inequações com Afim e Quadrática",
+  },
+  { id: "modulo-7", label: "Módulo 7", titulo: "Sistemas e Intersecções" },
+  { id: "modulo-8", label: "Módulo 8", titulo: "Otimização Avançada" },
+  { id: "modulo-9", label: "Módulo 9", titulo: "Aplicações Petrobras" },
+  { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Mestre" },
 ] as const;
 
 export default function AulaFuncoesAfimQuadratica({
@@ -206,8 +214,8 @@ export default function AulaFuncoesAfimQuadratica({
               slides={[
                 {
                   titulo: "Os Dois Coeficientes Vitais",
-                  icone:<LuTarget />,
-                  conteudo:(
+                  icone: <LuTarget />,
+                  conteudo: (
                     <div className="space-y-4">
                       <div className="bg-muted p-4 rounded-xl border border-border text-center">
                         <p className="text-xl font-mono font-black text-blue-600 mb-2">
@@ -239,8 +247,8 @@ export default function AulaFuncoesAfimQuadratica({
                 },
                 {
                   titulo: "Contexto Petrobras",
-                  icone:<LuBookOpen />,
-                  conteudo:(
+                  icone: <LuBookOpen />,
+                  conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="info" titulo="Modelagem de Custos">
                         <p className="text-sm">
@@ -258,8 +266,8 @@ export default function AulaFuncoesAfimQuadratica({
                 },
                 {
                   titulo: "A Raiz (Onde fura o chão)",
-                  icone:<LuTrendingUp />,
-                  conteudo:(
+                  icone: <LuTrendingUp />,
+                  conteudo: (
                     <div className="space-y-4 text-center">
                       <p className="text-muted-foreground text-left text-sm">
                         A raiz da função é o valor exato no eixo horizontal (x)
@@ -307,6 +315,7 @@ export default function AulaFuncoesAfimQuadratica({
               yMin={-5}
               yMax={10}
               points={250}
+              interactive={true}
             />
           </section>
 
@@ -343,8 +352,8 @@ export default function AulaFuncoesAfimQuadratica({
               slides={[
                 {
                   titulo: "Os Limites do Universo",
-                  icone:<LuBrain />,
-                  conteudo:(
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
                         A Quadrática tem formato de U ou montanha. O segredo?
@@ -379,8 +388,8 @@ export default function AulaFuncoesAfimQuadratica({
                 },
                 {
                   titulo: "O Ponto Inicial (c)",
-                  icone:<LuTarget />,
-                  conteudo:(
+                  icone: <LuTarget />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
                         O valor isolado <code>c</code> tem um papel crucial no
@@ -423,7 +432,70 @@ export default function AulaFuncoesAfimQuadratica({
               yMin={-25}
               yMax={25}
               points={250}
+              interactive={true}
             />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={2}
+              title="Dossiê de Memorização: Comportamento da Parábola"
+              description="Vire os cards para revisar como os coeficientes moldam a curva."
+              variant="emerald"
+            />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <FlipCard
+                frente={
+                  <div className="flex flex-col items-center gap-2">
+                    <LuTarget className="w-6 h-6 text-emerald-500" />
+                    <p className="font-bold text-center">O valor de &quot;a&quot;</p>
+                  </div>
+                }
+                verso={
+                  <div className="flex flex-col items-center gap-3">
+                    <LuBrain className="w-6 h-6 text-teal-500" />
+                    <p className="font-bold text-center text-sm">Concavidade</p>
+                    <p className="text-xs text-muted-foreground text-center">
+                      a &gt; 0: U (Sorridente). a &lt; 0: ∩ (Triste). Determina ponto de mínimo ou máximo.
+                    </p>
+                  </div>
+                }
+              />
+              <FlipCard
+                frente={
+                  <div className="flex flex-col items-center gap-2">
+                    <LuTarget className="w-6 h-6 text-emerald-500" />
+                    <p className="font-bold text-center">O valor de &quot;c&quot;</p>
+                  </div>
+                }
+                verso={
+                  <div className="flex flex-col items-center gap-3">
+                    <LuTrendingUp className="w-6 h-6 text-emerald-500" />
+                    <p className="font-bold text-center text-sm">Corte no Eixo Y</p>
+                    <p className="text-xs text-muted-foreground text-center">
+                      O ponto exato onde x=0. É o seu ponto de partida no gráfico (f(0) = c).
+                    </p>
+                  </div>
+                }
+              />
+              <FlipCard
+                frente={
+                  <div className="flex flex-col items-center gap-2">
+                    <LuTarget className="w-6 h-6 text-emerald-500" />
+                    <p className="font-bold text-center">O valor do Δ</p>
+                  </div>
+                }
+                verso={
+                  <div className="flex flex-col items-center gap-3">
+                    <LuTrophy className="w-6 h-6 text-emerald-500" />
+                    <p className="font-bold text-center text-sm">Raízes no Eixo X</p>
+                    <p className="text-xs text-muted-foreground text-center">
+                      Δ &gt; 0: Corta 2 vezes. Δ = 0: Corta 1 vez. Δ &lt; 0: Flutua (não corta o Eixo X).
+                    </p>
+                  </div>
+                }
+              />
+            </div>
           </section>
 
           <QuizInterativo
@@ -459,8 +531,8 @@ export default function AulaFuncoesAfimQuadratica({
               slides={[
                 {
                   titulo: "A Linha d'Água (Eixo X)",
-                  icone:<LuBookOpen />,
-                  conteudo:(
+                  icone: <LuBookOpen />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
                         Tudo que está ACIMA do Eixo X na foto é positivo{" "}
@@ -525,8 +597,8 @@ export default function AulaFuncoesAfimQuadratica({
               slides={[
                 {
                   titulo: "Erros Comuns (Pegadinha do Lucro Máx)",
-                  icone:<LuTrophy />,
-                  conteudo:(
+                  icone: <LuTrophy />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
                         Uma das táticas mais nefastas da Cesgranrio: apresentar
@@ -549,8 +621,8 @@ export default function AulaFuncoesAfimQuadratica({
                 },
                 {
                   titulo: "Receita - Custo = Lucro",
-                  icone:<LuBrain />,
-                  conteudo:(
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
                         Lembre do mantra: Ninguém fala de f(x) na petroleira.
@@ -606,18 +678,24 @@ export default function AulaFuncoesAfimQuadratica({
               slides={[
                 {
                   titulo: "A Reta (Afim) é Previsível",
-                  icone:<LuTrendingUp />,
-                  conteudo:(
+                  icone: <LuTrendingUp />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        A função afim <code>f(x) = ax + b</code> sempre cresce ou decresce no mesmo ritmo. A cada novo x, você adiciona exatamente <code>a</code> no resultado.
+                        A função afim <code>f(x) = ax + b</code> sempre cresce
+                        ou decresce no mesmo ritmo. A cada novo x, você adiciona
+                        exatamente <code>a</code> no resultado.
                       </p>
                       <div className="bg-violet-500/10 p-4 rounded-xl border border-violet-500/20">
-                        <p className="font-bold text-violet-700 mb-2">Comportamento Uniforme</p>
+                        <p className="font-bold text-violet-700 mb-2">
+                          Comportamento Uniforme
+                        </p>
                         <ul className="text-sm space-y-1 list-disc pl-5">
                           <li>Se a &gt; 0: cresce sempre</li>
                           <li>Se a &lt; 0: decresce sempre</li>
-                          <li>Taxa de variação: sempre <code>a</code></li>
+                          <li>
+                            Taxa de variação: sempre <code>a</code>
+                          </li>
                         </ul>
                       </div>
                     </div>
@@ -625,14 +703,21 @@ export default function AulaFuncoesAfimQuadratica({
                 },
                 {
                   titulo: "A Parábola (Quadrática) é Acelerada",
-                  icone:<LuBrain />,
-                  conteudo:(
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        A função quadrática <code>f(x) = ax² + bx + c</code> cresce/decresce cada vez mais rápido conforme <code>|x|</code> aumenta. Para valores grandes de x, domina totalmente a reta.
+                        A função quadrática <code>f(x) = ax² + bx + c</code>{" "}
+                        cresce/decresce cada vez mais rápido conforme{" "}
+                        <code>|x|</code> aumenta. Para valores grandes de x,
+                        domina totalmente a reta.
                       </p>
                       <AlertBox tipo="info" titulo="Dominação Quadrática">
-                        <p>Para x suficientemente grande, qualquer parábola ultrapassa qualquer reta. O termo x² é mais poderoso que 2x para |x| grande.</p>
+                        <p>
+                          Para x suficientemente grande, qualquer parábola
+                          ultrapassa qualquer reta. O termo x² é mais poderoso
+                          que 2x para |x| grande.
+                        </p>
                       </AlertBox>
                     </div>
                   ),
@@ -670,8 +755,42 @@ export default function AulaFuncoesAfimQuadratica({
               yMin={-5}
               yMax={16}
               points={250}
+              interactive={true}
             />
           </section>
+
+          <div className="space-y-8 bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm">
+            <ModuleSectionHeader
+              index={2}
+              title="Resumo Visual: Afim vs Quadrática"
+              variant="violet"
+              className="mb-6"
+            />
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo-comparacao",
+                  label: "Comparativo",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          title: "Tabela Comparativa Rápida",
+                          type: "Infográfico",
+                          placeholderColor: "bg-violet-100 dark:bg-violet-900/30",
+                          imageUrl: "/temp-img.png", // PROMPT: Infográfico corporativo comparando Afim (reta, ax+b, crescimento constante) vs Quadrática (parábola, ax2+bx+c, crescimento acelerado, vértice).
+                        },
+                      ]}
+                      moduloNome="Módulo 5"
+                      tituloAula="Funções Afim e Quadrática"
+                      materia="Matemática"
+                    />
+                  ),
+                },
+              ]}
+            />
+          </div>
 
           <QuizInterativo
             questoes={quizComparacao}
@@ -706,14 +825,18 @@ export default function AulaFuncoesAfimQuadratica({
               slides={[
                 {
                   titulo: "Raízes (Zeros) São PontosChave",
-                  icone:<LuTarget />,
-                  conteudo:(
+                  icone: <LuTarget />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        As raízes dividem o domínio em intervalos. Em cada intervalo, a função mantém o mesmo sinal (sempre positiva ou sempre negativa).
+                        As raízes dividem o domínio em intervalos. Em cada
+                        intervalo, a função mantém o mesmo sinal (sempre
+                        positiva ou sempre negativa).
                       </p>
                       <div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20">
-                        <p className="font-bold text-amber-700 mb-2">Estratégia</p>
+                        <p className="font-bold text-amber-700 mb-2">
+                          Estratégia
+                        </p>
                         <ol className="text-sm space-y-2 list-decimal pl-5">
                           <li>Encontre as raízes (f(x) = 0)</li>
                           <li>Teste um ponto em cada intervalo</li>
@@ -726,11 +849,12 @@ export default function AulaFuncoesAfimQuadratica({
                 },
                 {
                   titulo: "Inversão de Sinal em Inequações",
-                  icone:<LuLightbulb />,
-                  conteudo:(
+                  icone: <LuLightbulb />,
+                  conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="warning" titulo="Cuidado!">
-                        Ao multiplicar ou dividir uma inequação por um número negativo, o sinal de &lt;, &gt;, ≤, ≥ se inverte!
+                        Ao multiplicar ou dividir uma inequação por um número
+                        negativo, o sinal de &lt;, &gt;, ≤, ≥ se inverte!
                       </AlertBox>
                       <p className="text-sm text-muted-foreground">
                         Ex: -2x &gt; 6 → x &lt; -3 (o &gt; virou &lt;)
@@ -775,18 +899,20 @@ export default function AulaFuncoesAfimQuadratica({
               slides={[
                 {
                   titulo: "Reta vs Parábola",
-                  icone:<LuBookOpen />,
-                  conteudo:(
+                  icone: <LuBookOpen />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        Para encontrar onde y = reta cruza y = parábola, iguale as duas expressões e resolva a equação resultante.
+                        Para encontrar onde y = reta cruza y = parábola, iguale
+                        as duas expressões e resolva a equação resultante.
                       </p>
                       <div className="bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/20">
                         <p className="font-mono text-sm font-bold text-cyan-700">
-                          Se y = 2x + 1 e y = x²:<br/>
-                          x² = 2x + 1<br/>
-                          x² - 2x - 1 = 0<br/>
-                          Δ = 4 + 4 = 8 &gt; 0 → 2 soluções → 2 pontos
+                          Se y = 2x + 1 e y = x²:
+                          <br />
+                          x² = 2x + 1<br />
+                          x² - 2x - 1 = 0<br />Δ = 4 + 4 = 8 &gt; 0 → 2 soluções
+                          → 2 pontos
                         </p>
                       </div>
                     </div>
@@ -794,14 +920,18 @@ export default function AulaFuncoesAfimQuadratica({
                 },
                 {
                   titulo: "Tangência (Um Único Ponto)",
-                  icone:<LuTrophy />,
-                  conteudo:(
+                  icone: <LuTrophy />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        Quando Δ = 0, a reta toca a parábola em exatamente um ponto (tangência).
+                        Quando Δ = 0, a reta toca a parábola em exatamente um
+                        ponto (tangência).
                       </p>
                       <AlertBox tipo="success" titulo="Discriminante Decisivo">
-                        <p className="text-sm">Δ &gt; 0: 2 pontos | Δ = 0: 1 ponto (tangência) | Δ &lt; 0: sem intersecção</p>
+                        <p className="text-sm">
+                          Δ &gt; 0: 2 pontos | Δ = 0: 1 ponto (tangência) | Δ
+                          &lt; 0: sem intersecção
+                        </p>
                       </AlertBox>
                     </div>
                   ),
@@ -832,6 +962,7 @@ export default function AulaFuncoesAfimQuadratica({
               yMin={-3}
               yMax={7}
               points={250}
+              interactive={true}
             />
           </section>
 
@@ -868,27 +999,37 @@ export default function AulaFuncoesAfimQuadratica({
               slides={[
                 {
                   titulo: "Receita - Custo = Lucro",
-                  icone:<LuLightbulb />,
-                  conteudo:(
+                  icone: <LuLightbulb />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        Problemas de otimização geralmente envolvem maximizar receita ou minimizar custo. O vértice da parábola é sempre a resposta.
+                        Problemas de otimização geralmente envolvem maximizar
+                        receita ou minimizar custo. O vértice da parábola é
+                        sempre a resposta.
                       </p>
                       <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20">
-                        <p className="font-bold text-emerald-700 mb-3">Fórmulas Essenciais</p>
-                        <p className="font-mono text-sm mb-2 text-emerald-700">x_vértice = -b / 2a</p>
-                        <p className="font-mono text-sm text-emerald-700">y_vértice = f(x_vértice)</p>
+                        <p className="font-bold text-emerald-700 mb-3">
+                          Fórmulas Essenciais
+                        </p>
+                        <p className="font-mono text-sm mb-2 text-emerald-700">
+                          x_vértice = -b / 2a
+                        </p>
+                        <p className="font-mono text-sm text-emerald-700">
+                          y_vértice = f(x_vértice)
+                        </p>
                       </div>
                     </div>
                   ),
                 },
                 {
                   titulo: "Quando Usar Qual Fórmula?",
-                  icone:<LuBrain />,
-                  conteudo:(
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="info" titulo="Dica CESGRANRIO">
-                        Use x_v = -b/2a quando o problema pedir "quantidade que maximiza" ou "valor de x que minimiza". Use y_v quando pedir "máximo de y" ou "mínimo de y".
+                        Use x_v = -b/2a quando o problema pedir "quantidade que
+                        maximiza" ou "valor de x que minimiza". Use y_v quando
+                        pedir "máximo de y" ou "mínimo de y".
                       </AlertBox>
                     </div>
                   ),
@@ -930,30 +1071,44 @@ export default function AulaFuncoesAfimQuadratica({
               slides={[
                 {
                   titulo: "Problema Clássico: Custo de Produção",
-                  icone:<LuTarget />,
-                  conteudo:(
+                  icone: <LuTarget />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        Uma plataforma tem custo fixo (estrutura, operadores) + custo variável (combustível, manutenção por barril). Quantos barris produzir para minimizar custo unitário?
+                        Uma plataforma tem custo fixo (estrutura, operadores) +
+                        custo variável (combustível, manutenção por barril).
+                        Quantos barris produzir para minimizar custo unitário?
                       </p>
                       <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20">
-                        <p className="text-sm"><strong>C(x) = F + Vx</strong> (Custo total linear)</p>
-                        <p className="text-sm mt-2"><strong>Custo/barril = C(x)/x = F/x + V</strong> (Hipérbola + constante)</p>
-                        <p className="text-sm mt-2">Aumentar produção reduz F/x, minimizando custo unitário.</p>
+                        <p className="text-sm">
+                          <strong>C(x) = F + Vx</strong> (Custo total linear)
+                        </p>
+                        <p className="text-sm mt-2">
+                          <strong>Custo/barril = C(x)/x = F/x + V</strong>{" "}
+                          (Hipérbola + constante)
+                        </p>
+                        <p className="text-sm mt-2">
+                          Aumentar produção reduz F/x, minimizando custo
+                          unitário.
+                        </p>
                       </div>
                     </div>
                   ),
                 },
                 {
                   titulo: "Problema de Receita Máxima",
-                  icone:<LuTrendingUp />,
-                  conteudo:(
+                  icone: <LuTrendingUp />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        R(x) = Preço × Quantidade. Se o preço cai conforme quantidade aumenta (demanda), R(x) vira parábola.
+                        R(x) = Preço × Quantidade. Se o preço cai conforme
+                        quantidade aumenta (demanda), R(x) vira parábola.
                       </p>
                       <AlertBox tipo="success" titulo="Estratégia Empresa">
-                        <p className="text-sm">A receita máxima não ocorre no maior x possível, mas no vértice da parábola R(x).</p>
+                        <p className="text-sm">
+                          A receita máxima não ocorre no maior x possível, mas
+                          no vértice da parábola R(x).
+                        </p>
                       </AlertBox>
                     </div>
                   ),

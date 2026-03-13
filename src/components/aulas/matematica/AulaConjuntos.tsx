@@ -124,16 +124,16 @@ export default function AulaConjuntos({
   }, [currentProgress]);
 
   const MODULE_DEFS = [
-    { id: "modulo-1", label: "Módulo 1", title: "Fundamentos" },
-    { id: "modulo-2", label: "Módulo 2", title: "Operações" },
-    { id: "modulo-3", label: "Módulo 3", title: "Diagramas de Venn" },
-    { id: "modulo-4", label: "Módulo 4", title: "Conj. Numéricos" },
-    { id: "modulo-5", label: "Módulo 5", title: "Subconjuntos" },
-    { id: "modulo-6", label: "Módulo 6", title: "Inclusão-Exclusão" },
-    { id: "modulo-7", label: "Módulo 7", title: "ℕ, ℤ, ℚ" },
-    { id: "modulo-8", label: "Módulo 8", title: "Irracionais e ℝ" },
-    { id: "modulo-9", label: "Módulo 9", title: "De Morgan" },
-    { id: "modulo-10", label: "Módulo 10", title: "Simulado Final" },
+    { id: "modulo-1", label: "Módulo 1", titulo: "Fundamentos" },
+    { id: "modulo-2", label: "Módulo 2", titulo: "Operações" },
+    { id: "modulo-3", label: "Módulo 3", titulo: "Diagramas de Venn" },
+    { id: "modulo-4", label: "Módulo 4", titulo: "Conj. Numéricos" },
+    { id: "modulo-5", label: "Módulo 5", titulo: "Subconjuntos" },
+    { id: "modulo-6", label: "Módulo 6", titulo: "Inclusão-Exclusão" },
+    { id: "modulo-7", label: "Módulo 7", titulo: "ℕ, ℤ, ℚ" },
+    { id: "modulo-8", label: "Módulo 8", titulo: "Irracionais e ℝ" },
+    { id: "modulo-9", label: "Módulo 9", titulo: "De Morgan" },
+    { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Final" },
   ];
 
   return (

@@ -43,16 +43,16 @@ import {
 } from "./data/probabilidade-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", title: "Fundamentos" },
-  { id: "modulo-2", label: "Módulo 2", title: "Lei de Laplace" },
-  { id: "modulo-3", label: "Módulo 3", title: "União e Interseção" },
-  { id: "modulo-4", label: "Módulo 4", title: "Probabilidade Condicional" },
-  { id: "modulo-5", label: "Módulo 5", title: "Probabilidade Binomial" },
-  { id: "modulo-6", label: "Módulo 6", title: "Complementar" },
-  { id: "modulo-7", label: "Módulo 7", title: "Probabilidade Geométrica" },
-  { id: "modulo-8", label: "Módulo 8", title: "Independência" },
-  { id: "modulo-9", label: "Módulo 9", title: "Engenharia de Riscos" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-1", label: "Módulo 1", titulo: "Fundamentos" },
+  { id: "modulo-2", label: "Módulo 2", titulo: "Lei de Laplace" },
+  { id: "modulo-3", label: "Módulo 3", titulo: "União e Interseção" },
+  { id: "modulo-4", label: "Módulo 4", titulo: "Probabilidade Condicional" },
+  { id: "modulo-5", label: "Módulo 5", titulo: "Probabilidade Binomial" },
+  { id: "modulo-6", label: "Módulo 6", titulo: "Complementar" },
+  { id: "modulo-7", label: "Módulo 7", titulo: "Probabilidade Geométrica" },
+  { id: "modulo-8", label: "Módulo 8", titulo: "Independência" },
+  { id: "modulo-9", label: "Módulo 9", titulo: "Engenharia de Riscos" },
+  { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Mestre" },
 ] as const;
 
 export default function AulaProbabilidade({

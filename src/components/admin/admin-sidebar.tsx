@@ -246,7 +246,7 @@ export function AdminSidebar({
               )}
               style={
                 !isCollapsed || isOverlayOpen
-                  ? { backgroundColor: "var(--primary-hex, var(--primary))" }
+                  ? { backgroundColor: "hsl(var(--primary))" }
                   : undefined
               }
             >
@@ -273,7 +273,7 @@ export function AdminSidebar({
             >
               <div className="flex flex-col justify-center leading-none">
                 <h1 className="font-bebas font-bold text-[36px] md:text-[28px] tracking-tight leading-[1.1] flex items-baseline gap-1">
-                  <span style={{ color: "var(--primary-hex, var(--primary))" }}>
+                  <span style={{ color: "hsl(var(--primary))" }}>
                     A VAGA
                   </span>
                   <span className="text-foreground">É MINHA</span>

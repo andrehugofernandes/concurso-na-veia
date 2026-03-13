@@ -13,6 +13,9 @@ import {
   ModuleSectionHeader,
   FunctionGraph,
   type FunctionPlot,
+  FlipCard,
+  LessonTabs,
+  ModuleSummaryCarouselNew,
 } from "../shared";
 
 import {
@@ -39,16 +42,16 @@ import {
 } from "./data/funcoes-logaritmicas-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", title: "Conceito Logarítmico" },
-  { id: "modulo-2", label: "Módulo 2", title: "Propriedades Fundamentais" },
-  { id: "modulo-3", label: "Módulo 3", title: "Equações Letradas" },
-  { id: "modulo-4", label: "Módulo 4", title: "C.E. e Visual Gráfico" },
-  { id: "modulo-5", label: "Módulo 5", title: "Desafio Industrial" },
-  { id: "modulo-6", label: "Módulo 6", title: "Funções Logarítmicas" },
-  { id: "modulo-7", label: "Módulo 7", title: "Sistemas & Inequações" },
-  { id: "modulo-8", label: "Módulo 8", title: "Resolução Reversa" },
-  { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-1", label: "Módulo 1", titulo: "Conceito Logarítmico" },
+  { id: "modulo-2", label: "Módulo 2", titulo: "Propriedades Fundamentais" },
+  { id: "modulo-3", label: "Módulo 3", titulo: "Equações Letradas" },
+  { id: "modulo-4", label: "Módulo 4", titulo: "C.E. e Visual Gráfico" },
+  { id: "modulo-5", label: "Módulo 5", titulo: "Desafio Industrial" },
+  { id: "modulo-6", label: "Módulo 6", titulo: "Funções Logarítmicas" },
+  { id: "modulo-7", label: "Módulo 7", titulo: "Sistemas & Inequações" },
+  { id: "modulo-8", label: "Módulo 8", titulo: "Resolução Reversa" },
+  { id: "modulo-9", label: "Módulo 9", titulo: "Aplicações Petrobras" },
+  { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Mestre" },
 ] as const;
 
 export default function AulaFuncoesLogaritmicas({
@@ -78,10 +81,16 @@ export default function AulaFuncoesLogaritmicas({
   const [quizM4] = useState(() => getRandomQuestions(QUIZ_M4_GRAFICOS, 4));
   const [quizM5] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 5));
   const [quizM6] = useState(() => getRandomQuestions(QUIZ_M6_FUNCOES_LOG, 5));
-  const [quizM7] = useState(() => getRandomQuestions(QUIZ_M7_SISTEMAS_INEQUACOES, 5));
+  const [quizM7] = useState(() =>
+    getRandomQuestions(QUIZ_M7_SISTEMAS_INEQUACOES, 5),
+  );
   const [quizM8] = useState(() => getRandomQuestions(QUIZ_M8_REVERSA, 5));
-  const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 5));
-  const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 5));
+  const [quizM9] = useState(() =>
+    getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 5),
+  );
+  const [quizM10] = useState(() =>
+    getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 5),
+  );
 
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
   const [showCompletionBadge, setShowCompletionBadge] = useState(false);
@@ -345,6 +354,51 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={2}
+              title="Dossiê de Memorização: Propriedades Operatórias"
+              description="Vire os cards para revisar como o logaritmo quebra operações pesadas em simples."
+              variant="emerald"
+            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FlipCard
+                frente={
+                  <div className="flex flex-col items-center gap-2">
+                    <LuTarget className="w-6 h-6 text-emerald-500" />
+                    <p className="font-bold text-center">Produto (Multiplicação)</p>
+                  </div>
+                }
+                verso={
+                  <div className="flex flex-col items-center gap-3">
+                    <LuBrain className="w-6 h-6 text-teal-500" />
+                    <p className="font-bold text-center text-sm">Vira Soma!</p>
+                    <p className="text-xs text-muted-foreground text-center">
+                      log(A × B) = log(A) + log(B). O logaritmo rebaixa a multiplicação para uma soma amigável.
+                    </p>
+                  </div>
+                }
+              />
+              <FlipCard
+                frente={
+                  <div className="flex flex-col items-center gap-2">
+                    <LuTarget className="w-6 h-6 text-emerald-500" />
+                    <p className="font-bold text-center">Quociente (Divisão)</p>
+                  </div>
+                }
+                verso={
+                  <div className="flex flex-col items-center gap-3">
+                    <LuTrendingUp className="w-6 h-6 text-emerald-500" />
+                    <p className="font-bold text-center text-sm">Vira Subtração!</p>
+                    <p className="text-xs text-muted-foreground text-center">
+                      log(A / B) = log(A) - log(B). A divisão perde sua força e cai para subtração.
+                    </p>
+                  </div>
+                }
+              />
+            </div>
+          </section>
+
           <QuizInterativo
             questoes={quizM2}
             titulo="FixaÃ§Ã£o - Propriedades"
@@ -557,10 +611,16 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        A função logarítmica f(x) = log_a(x) possui características especiais: sempre passa pelo ponto (1, 0), cresce lentamente, e tem domínio {"x > 0"}. Quando {"a > 1"}, a função é crescente; quando {"0 < a < 1"}, ela é decrescente.
+                        A função logarítmica f(x) = log_a(x) possui
+                        características especiais: sempre passa pelo ponto (1,
+                        0), cresce lentamente, e tem domínio {"x > 0"}. Quando{" "}
+                        {"a > 1"}, a função é crescente; quando {"0 < a < 1"},
+                        ela é decrescente.
                       </p>
                       <AlertBox tipo="info" titulo="Assíntota Vertical">
-                        A reta x = 0 (eixo y) é uma assíntota vertical da função. A função nunca toca esse eixo, apenas se aproxima infinitamente.
+                        A reta x = 0 (eixo y) é uma assíntota vertical da
+                        função. A função nunca toca esse eixo, apenas se
+                        aproxima infinitamente.
                       </AlertBox>
                     </div>
                   ),
@@ -571,7 +631,8 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Deslocar, esticar ou refletir uma função logarítmica segue as mesmas regras das funções em geral:
+                        Deslocar, esticar ou refletir uma função logarítmica
+                        segue as mesmas regras das funções em geral:
                       </p>
                       <div className="text-sm space-y-2">
                         <p>• f(x + c): desloca c unidades para a esquerda</p>
@@ -617,8 +678,42 @@ export default function AulaFuncoesLogaritmicas({
               yMin={-5}
               yMax={5}
               points={300}
+              interactive={true}
             />
           </section>
+
+          <div className="space-y-8 bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm">
+            <ModuleSectionHeader
+              index={2}
+              title="Resumo Visual: Funções e Transformações"
+              variant="violet"
+              className="mb-6"
+            />
+            <LessonTabs
+              tabs={[
+                {
+                  id: "resumo-logaritmos",
+                  label: "Comportamento Log",
+                  icon: LuBookOpen,
+                  content: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          title: "Anatomia da Curva Logarítmica",
+                          type: "Infográfico",
+                          placeholderColor: "bg-violet-100 dark:bg-violet-900/30",
+                          imageUrl: "/temp-img.png", // PROMPT: Infográfico corporativo mostrando o gráfico da função logarítmica (cruzando o eixo X em 1), com assíntota no eixo Y e crescimento suave. Indicadores de translação vertical/horizontal.
+                        },
+                      ]}
+                      moduloNome="Módulo 6"
+                      tituloAula="Funções Logarítmicas"
+                      materia="Matemática"
+                    />
+                  ),
+                },
+              ]}
+            />
+          </div>
 
           <QuizInterativo
             questoes={quizM6}
@@ -657,10 +752,16 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Quando duas ou mais equações logarítmicas devem ser satisfeitas simultaneamente, você combina propriedades de logaritmos com técnicas algébricas. A chave é sempre verificar as condições de existência para cada solução proposta.
+                        Quando duas ou mais equações logarítmicas devem ser
+                        satisfeitas simultaneamente, você combina propriedades
+                        de logaritmos com técnicas algébricas. A chave é sempre
+                        verificar as condições de existência para cada solução
+                        proposta.
                       </p>
                       <AlertBox tipo="warning" titulo="Dupla Verificação">
-                        Em sistemas, verifique que cada solução satisfaz <strong>todas</strong> as equações e que nenhuma cond de existência foi violada.
+                        Em sistemas, verifique que cada solução satisfaz{" "}
+                        <strong>todas</strong> as equações e que nenhuma cond de
+                        existência foi violada.
                       </AlertBox>
                     </div>
                   ),
@@ -671,7 +772,11 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Ao resolver inequações com logaritmos, cuidado com a monotonia da função. Se {"0 < base < 1"}, o sinal da inequação inverte quando você "remove" o log! Sempre considere o domínio (logaritmando {">"} 0 e base {">"} 0, base {"≠"} 1).
+                        Ao resolver inequações com logaritmos, cuidado com a
+                        monotonia da função. Se {"0 < base < 1"}, o sinal da
+                        inequação inverte quando você "remove" o log! Sempre
+                        considere o domínio (logaritmando {">"} 0 e base {">"}{" "}
+                        0, base {"≠"} 1).
                       </p>
                     </div>
                   ),
@@ -700,10 +805,11 @@ export default function AulaFuncoesLogaritmicas({
                 },
               ]}
               xMin={0.1}
-              xMax={150}
+              xMax={20}
               yMin={-1}
               yMax={3}
               points={300}
+              interactive={true}
             />
           </section>
 
@@ -744,10 +850,15 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Em problemas reversos, você recebe uma expressão complexa e precisa identificar que ela é um logaritmo disfarçado. Por exemplo: "Qual expoente x satisfaz 2ˣ = 5?" é na verdade x = log₂(5).
+                        Em problemas reversos, você recebe uma expressão
+                        complexa e precisa identificar que ela é um logaritmo
+                        disfarçado. Por exemplo: "Qual expoente x satisfaz 2ˣ =
+                        5?" é na verdade x = log₂(5).
                       </p>
                       <AlertBox tipo="info" titulo="Pensamento Inverso">
-                        Logaritmos e exponenciais são funções inversas. Se você tem dificuldade em uma forma, tente converter para a outra.
+                        Logaritmos e exponenciais são funções inversas. Se você
+                        tem dificuldade em uma forma, tente converter para a
+                        outra.
                       </AlertBox>
                     </div>
                   ),
@@ -793,7 +904,10 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        O pH usa a escala logarítmica base 10 para medir a concentração de íons hidrogênio. Um aumento de 1 unidade de pH significa uma redução de 10 vezes na acidez. Isso é crítico em processos de refino de petróleo.
+                        O pH usa a escala logarítmica base 10 para medir a
+                        concentração de íons hidrogênio. Um aumento de 1 unidade
+                        de pH significa uma redução de 10 vezes na acidez. Isso
+                        é crítico em processos de refino de petróleo.
                       </p>
                     </div>
                   ),
@@ -804,7 +918,10 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        A degradação de materiais em dutos submetidos à corrosão segue uma lei exponencial, modelada por funções logarítmicas. Engenheiros usam logs para prever a vida útil de equipamentos de subsea.
+                        A degradação de materiais em dutos submetidos à corrosão
+                        segue uma lei exponencial, modelada por funções
+                        logarítmicas. Engenheiros usam logs para prever a vida
+                        útil de equipamentos de subsea.
                       </p>
                     </div>
                   ),
@@ -843,7 +960,8 @@ export default function AulaFuncoesLogaritmicas({
                 Logaritmos Completamente Dominados
               </h3>
               <p className="text-center text-muted-foreground max-w-sm">
-                Você conquistou a maestria em funções logarítmicas. Está pronto para qualquer desafio que vier!
+                Você conquistou a maestria em funções logarítmicas. Está pronto
+                para qualquer desafio que vier!
               </p>
             </div>
           ) : (

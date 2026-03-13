@@ -84,16 +84,16 @@ export default function AulaProgressoesPg({
   }, [currentProgress]);
 
   const MODULE_DEFS = [
-    { id: "modulo-1", label: "Módulo 1", title: "Conceitos" },
-    { id: "modulo-2", label: "Módulo 2", title: "Termo Geral" },
-    { id: "modulo-3", label: "Módulo 3", title: "Soma Finita" },
-    { id: "modulo-4", label: "Módulo 4", title: "Soma Infinita" },
-    { id: "modulo-5", label: "Módulo 5", title: "Propriedades" },
-    { id: "modulo-6", label: "Módulo 6", title: "Crescimento/Decaimento" },
-    { id: "modulo-7", label: "Módulo 7", title: "Mat. Financeira" },
-    { id: "modulo-8", label: "Módulo 8", title: "PA vs PG" },
-    { id: "modulo-9", label: "Módulo 9", title: "Desafio CESGRANRIO" },
-    { id: "modulo-10", label: "Módulo 10", title: "Simulado Final" },
+    { id: "modulo-1", label: "Módulo 1", titulo: "Conceitos" },
+    { id: "modulo-2", label: "Módulo 2", titulo: "Termo Geral" },
+    { id: "modulo-3", label: "Módulo 3", titulo: "Soma Finita" },
+    { id: "modulo-4", label: "Módulo 4", titulo: "Soma Infinita" },
+    { id: "modulo-5", label: "Módulo 5", titulo: "Propriedades" },
+    { id: "modulo-6", label: "Módulo 6", titulo: "Crescimento/Decaimento" },
+    { id: "modulo-7", label: "Módulo 7", titulo: "Mat. Financeira" },
+    { id: "modulo-8", label: "Módulo 8", titulo: "PA vs PG" },
+    { id: "modulo-9", label: "Módulo 9", titulo: "Desafio CESGRANRIO" },
+    { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Final" },
   ];
 
   return (

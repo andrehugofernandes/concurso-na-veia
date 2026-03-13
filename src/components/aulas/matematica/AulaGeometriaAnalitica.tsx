@@ -13,6 +13,9 @@ import {
   ModuleSectionHeader,
   FunctionGraph,
   type FunctionPlot,
+  FlipCard,
+  LessonTabs,
+  ModuleSummaryCarouselNew,
 } from "../shared";
 import {
   QUIZ_M1_PONTO_PLANO,
@@ -228,8 +231,9 @@ export default function AulaGeometriaAnalitica({
           </section>
           <QuizInterativo
             questoes={quizM1}
-            moduleId="modulo-1"
-            onComplete={handleModuleComplete}
+            numero={1}
+            titulo="QUIZ: O Plano Cartesiano"
+            onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
       </TabsContent>
@@ -364,8 +368,9 @@ export default function AulaGeometriaAnalitica({
 
           <QuizInterativo
             questoes={quizM2}
-            moduleId="modulo-2"
-            onComplete={handleModuleComplete}
+            numero={2}
+            titulo="QUIZ: Distância e Ponto Médio"
+            onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
       </TabsContent>
@@ -516,8 +521,9 @@ export default function AulaGeometriaAnalitica({
 
           <QuizInterativo
             questoes={quizM3}
-            moduleId="modulo-3"
-            onComplete={handleModuleComplete}
+            numero={3}
+            titulo="QUIZ: Equações da Reta"
+            onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>
       </TabsContent>
@@ -621,8 +627,9 @@ export default function AulaGeometriaAnalitica({
           </section>
           <QuizInterativo
             questoes={quizM4}
-            moduleId="modulo-4"
-            onComplete={handleModuleComplete}
+            numero={4}
+            titulo="QUIZ: Posições Relativas"
+            onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </div>
       </TabsContent>
@@ -732,8 +739,9 @@ export default function AulaGeometriaAnalitica({
           </section>
           <QuizInterativo
             questoes={quizM5}
-            moduleId="modulo-5"
-            onComplete={handleModuleComplete}
+            numero={5}
+            titulo="QUIZ: Distância Ponto-Reta"
+            onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
         </div>
       </TabsContent>
@@ -860,8 +868,9 @@ export default function AulaGeometriaAnalitica({
 
           <QuizInterativo
             questoes={quizM6}
-            moduleId="modulo-6"
-            onComplete={handleModuleComplete}
+            numero={6}
+            titulo="QUIZ: A Circunferência"
+            onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
         </div>
       </TabsContent>
@@ -997,8 +1006,9 @@ export default function AulaGeometriaAnalitica({
 
           <QuizInterativo
             questoes={quizM7}
-            moduleId="modulo-7"
-            onComplete={handleModuleComplete}
+            numero={7}
+            titulo="QUIZ: A Parábola"
+            onComplete={(score) => handleModuleComplete("modulo-7", score)}
           />
         </div>
       </TabsContent>
@@ -1099,8 +1109,9 @@ export default function AulaGeometriaAnalitica({
           </section>
           <QuizInterativo
             questoes={quizM8}
-            moduleId="modulo-8"
-            onComplete={handleModuleComplete}
+            numero={8}
+            titulo="QUIZ: Interseções e Sistemas"
+            onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
         </div>
       </TabsContent>
@@ -1120,79 +1131,69 @@ export default function AulaGeometriaAnalitica({
             <ModuleSectionHeader
               index={1}
               title="Problemas Típicos do Contexto Petrobras"
-              description="Aprenda a reconhecer e resolver cada tipo de questão contextualizada."
+              description="Aprenda a reconhecer e resolver cada tipo de questão contextualizada utilizando os Dossiês de Elite."
               variant="blue"
               className="mb-6"
             />
-            <ContentAccordion
-              titulo="Cenários Industriais"
-              icone="🛢️"
-              corIndicador="bg-blue-500"
-              defaultOpen={true}
-              slides={[
-                {
-                  titulo: "Distância entre Plataformas",
-                  icone: "🚢",
-                  conteudo: (
-                    <div className="space-y-4">
-                      <p>
-                        Questões sobre distância entre plataformas usam a <strong>fórmula da distância</strong> com coordenadas dadas no enunciado. Identifique os pontos, aplique a fórmula e procure triplos pitagóricos.
-                      </p>
-                      <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4">
-                        <p className="text-xs font-bold text-blue-400 mb-2">Exemplo típico</p>
-                        <p className="text-sm">P-54 em (10, 0) e P-58 em (0, 24). Distância direta:</p>
-                        <div className="mt-2 space-y-1 text-sm font-mono">
-                          <p>d = √[(10−0)² + (0−24)²]</p>
-                          <p>d = √[100 + 576]</p>
-                          <p>d = √676 = <strong>26 km</strong></p>
-                          <p className="text-emerald-400">(triplo 10, 24, 26 → derivado de 5, 12, 13)</p>
-                        </div>
-                      </div>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Rotas de Drones e Embarcações",
-                  icone: "✈️",
-                  conteudo: (
-                    <div className="space-y-4">
-                      <p>
-                        Rotas de inspeção são modeladas como <strong>equações da reta</strong>. O enunciado dá dois pontos (origem e destino) e pede a equação, inclinação ou ponto de cruzamento.
-                      </p>
-                      <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-xl p-4">
-                        <p className="text-xs font-bold text-cyan-400 mb-2">Estratégia</p>
-                        <div className="space-y-1 text-sm">
-                          <p>1. Calcule m = (y₂−y₁)/(x₂−x₁)</p>
-                          <p>2. Use ponto-inclinação: y−y₁ = m(x−x₁)</p>
-                          <p>3. Simplifique para y = mx + b</p>
-                        </div>
-                      </div>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Zonas de Exclusão Circulares",
-                  icone: "🚫",
-                  conteudo: (
-                    <div className="space-y-4">
-                      <p>
-                        Zonas de segurança ao redor de plataformas são <strong>regiões circulares</strong>. O enunciado dá o centro (posição da plataforma) e o raio (distância de segurança).
-                      </p>
-                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-blue-400">Para verificar se uma embarcação E(x₀, y₀) está na zona de exclusão:</p>
-                        <p className="text-sm">Calcule d(C, E) = √[(x₀−a)²+(y₀−b)²]</p>
-                        <p className="text-sm">Se d {"<"} r → <strong>dentro</strong> (zona proibida)</p>
-                        <p className="text-sm">Se d = r → <strong>na fronteira</strong></p>
-                        <p className="text-sm">Se d {">"} r → <strong>fora</strong> (seguro)</p>
-                      </div>
-                      <AlertBox tipo="info" titulo="Aplicação real CESGRANRIO">
-                        Em provas anteriores, a banca descreveu zonas de proteção ambiental, raios de influência de explosões controladas e áreas de operação de ROVs (veículos subaquáticos) usando exatamente a equação da circunferência.
-                      </AlertBox>
-                    </div>
-                  ),
-                },
-              ]}
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <FlipCard
+                frente={
+                  <div className="flex flex-col items-center text-center space-y-2">
+                    <span className="text-4xl">🚢</span>
+                    <h3 className="font-bold text-lg">Distância entre Plataformas</h3>
+                    <p className="text-sm opacity-80">Fórmula da Distância</p>
+                  </div>
+                }
+                verso={
+                  <div className="space-y-3">
+                    <h4 className="font-bold text-white mb-2">Identificação Padrão</h4>
+                    <p className="text-white/90 text-sm italic">
+                      Questões sobre distância entre plataformas usam a fórmula da distância com coordenadas dadas. **Busque triplos pitagóricos** (10, 24, 26 derivados de 5, 12, 13) para agilizar os cálculos de distância direta no plano do campo base.
+                    </p>
+                  </div>
+                }
+                variant="blue"
+                categoria="Estratégia"
+              />
+              <FlipCard
+                frente={
+                  <div className="flex flex-col items-center text-center space-y-2">
+                    <span className="text-4xl">✈️</span>
+                    <h3 className="font-bold text-lg">Rotas de Drones e Embarcações</h3>
+                    <p className="text-sm opacity-80">Interseção e Retas</p>
+                  </div>
+                }
+                verso={
+                  <div className="space-y-3">
+                    <h4 className="font-bold text-white mb-2">Cálculo da Equação</h4>
+                    <p className="text-white/90 text-sm italic">
+                      Rotas de inspeção são **equações da reta**. Passo 1: Calcule `m=(y2-y1)/(x2-x1)`. Passo 2: Use o ponto-inclinação `y-y1 = m(x-x1)`. Passo 3: Simplifique. Essencial para verificar se trajetórias se cruzam ou invadem limite.
+                    </p>
+                  </div>
+                }
+                variant="violet"
+                categoria="Macete"
+              />
+              <FlipCard
+                frente={
+                  <div className="flex flex-col items-center text-center space-y-2">
+                    <span className="text-4xl">🚫</span>
+                    <h3 className="font-bold text-lg">Zonas de Exclusão</h3>
+                    <p className="text-sm opacity-80">Circunferência</p>
+                  </div>
+                }
+                verso={
+                  <div className="space-y-3">
+                    <h4 className="font-bold text-white mb-2">Análise de Centro e Raio</h4>
+                    <p className="text-white/90 text-sm italic">
+                      Zonas de segurança são circulares com a plataforma no centro. Distância de embarcação {"d < r"} é invasão (dentro), d = r fronteira e {"d > r"} área segura (fora). Famoso alvo de pegadinhas de área de varredura.
+                    </p>
+                  </div>
+                }
+                variant="emerald"
+                categoria="Prática"
+              />
+            </div>
           </section>
 
           <FunctionGraph
@@ -1229,8 +1230,10 @@ export default function AulaGeometriaAnalitica({
 
           <QuizInterativo
             questoes={quizM9}
-            moduleId="modulo-9"
-            onComplete={handleModuleComplete}
+            numero={9}
+            titulo="QUIZ: Aplicações Petrobras"
+            variant="cyan"
+            onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
         </div>
       </TabsContent>
@@ -1246,119 +1249,104 @@ export default function AulaGeometriaAnalitica({
           gradiente="bg-gradient-to-br from-blue-800 via-blue-700 to-cyan-600"
         />
         <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-            <ModuleSectionHeader
-              index={1}
-              title="Revisão Geral — Fórmulas Essenciais"
-              description="Consolide tudo antes do simulado final."
-              variant="blue"
-              className="mb-6"
-            />
-            <ContentAccordion
-              titulo="Formulário de Geometria Analítica"
-              icone="📋"
-              corIndicador="bg-blue-500"
-              defaultOpen={true}
-              slides={[
+          <section className="bg-card rounded-2xl border border-border p-4 shadow-sm">
+            <LessonTabs
+              defaultTab="resumo"
+              tabs={[
                 {
-                  titulo: "Fórmulas Fundamentais",
-                  icone: "📐",
-                  conteudo: (
-                    <div className="space-y-4">
-                      <p className="font-bold text-blue-400">Resumo completo para a prova:</p>
-                      <div className="space-y-3">
-                        <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
-                          <p className="text-xs font-bold text-blue-400">Distância entre pontos</p>
-                          <p className="text-sm font-mono">d = √[(x₂−x₁)² + (y₂−y₁)²]</p>
-                        </div>
-                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
-                          <p className="text-xs font-bold text-cyan-400">Ponto médio</p>
-                          <p className="text-sm font-mono">M = ((x₁+x₂)/2, (y₁+y₂)/2)</p>
-                        </div>
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
-                          <p className="text-xs font-bold text-emerald-400">Coeficiente angular</p>
-                          <p className="text-sm font-mono">m = (y₂−y₁)/(x₂−x₁)</p>
-                        </div>
-                        <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
-                          <p className="text-xs font-bold text-blue-400">Equação da reta (reduzida)</p>
-                          <p className="text-sm font-mono">y = mx + b</p>
-                        </div>
-                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
-                          <p className="text-xs font-bold text-cyan-400">Perpendicularidade</p>
-                          <p className="text-sm font-mono">m₁ · m₂ = −1</p>
-                        </div>
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
-                          <p className="text-xs font-bold text-emerald-400">Distância ponto-reta</p>
-                          <p className="text-sm font-mono">d = |ax₀+by₀+c| / √(a²+b²)</p>
-                        </div>
-                        <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
-                          <p className="text-xs font-bold text-blue-400">Circunferência</p>
-                          <p className="text-sm font-mono">(x−a)²+(y−b)² = r²</p>
-                        </div>
-                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
-                          <p className="text-xs font-bold text-cyan-400">Vértice da parábola</p>
-                          <p className="text-sm font-mono">xᵥ = −b/(2a), yᵥ = −Δ/(4a)</p>
-                        </div>
+                  id: "resumo",
+                  label: "Mapa Mental: Geometria Analítica",
+                  icon: () => <span className="mr-2">🗺️</span>,
+                  content: (
+                    <div className="space-y-6 mt-6">
+                      <ModuleSummaryCarouselNew
+                        images={[
+                          {
+                            title: "Geometria Analítica",
+                            type: "mindmap",
+                            placeholderColor: "bg-blue-900/20",
+                          },
+                        ]}
+                        tituloAula="Geometria Analítica"
+                        materia="Matemática"
+                        profissao="Engenharia"
+                        moduloNome="Revisão Final"
+                      />
+                      <AlertBox tipo="info" titulo="Fórmula de Sucesso">
+                        A Geometria Analítica conecta Álgebra e Geometria. A chave para a fluidez nas resoluções da CESGRANRIO está na maestria da conversão de uma equação para um gráfico no plano Cartesiano!
+                      </AlertBox>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <FlipCard
+                          frente={
+                            <div className="flex flex-col items-center text-center space-y-2">
+                              <span className="text-4xl">📏</span>
+                              <h3 className="font-bold text-lg">O Sistema Reta-Ponto</h3>
+                              <p className="text-sm opacity-80">Conversão Básica</p>
+                            </div>
+                          }
+                          verso={
+                            <div className="space-y-3">
+                              <h4 className="font-bold text-white mb-2">Coeficientes</h4>
+                              <p className="text-white/90 text-sm italic">
+                                A tangente do ângulo é o **coeficiente angular** `m`. Retas perpendiculares sempre respeitarão `m1 * m2 = -1`. Retas paralelas terão `m1 = m2`.
+                              </p>
+                            </div>
+                          }
+                          variant="blue"
+                          categoria="Reta"
+                        />
+                        <FlipCard
+                          frente={
+                            <div className="flex flex-col items-center text-center space-y-2">
+                              <span className="text-4xl">🎯</span>
+                              <h3 className="font-bold text-lg">Equação da Circunferência</h3>
+                              <p className="text-sm opacity-80">Completando Quadrados</p>
+                            </div>
+                          }
+                          verso={
+                            <div className="space-y-3">
+                              <h4 className="font-bold text-white mb-2">Fronteiras e Raio</h4>
+                              <p className="text-white/90 text-sm italic">
+                                Lembre que `(x-a)² + (y-b)² = r²`. A banca frequentemente tenta confundir `r` pelo valor completo encontrado na conversão onde o valor seria `r²`. O raio real é sempre a **raiz** do resultado solto à direita.
+                              </p>
+                            </div>
+                          }
+                          variant="amber"
+                          categoria="Atenção"
+                        />
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Erros Mais Comuns na CESGRANRIO",
-                  icone: "⚠️",
-                  conteudo: (
-                    <div className="space-y-3">
-                      <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl">
-                        <p className="text-sm font-bold text-rose-400">❌ Erro 1</p>
-                        <p className="text-sm">Usar r em vez de r² na equação da circunferência.</p>
-                      </div>
-                      <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl">
-                        <p className="text-sm font-bold text-amber-400">❌ Erro 2</p>
-                        <p className="text-sm">Esquecer o valor absoluto na fórmula distância ponto-reta.</p>
-                      </div>
-                      <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl">
-                        <p className="text-sm font-bold text-rose-400">❌ Erro 3</p>
-                        <p className="text-sm">Confundir retas paralelas (mesmo m, b diferente) com coincidentes (mesmo m e b).</p>
-                      </div>
-                      <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl">
-                        <p className="text-sm font-bold text-amber-400">❌ Erro 4</p>
-                        <p className="text-sm">Calcular a distância ao eixo como se fosse à origem.</p>
-                      </div>
-                      <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl">
-                        <p className="text-sm font-bold text-rose-400">❌ Erro 5</p>
-                        <p className="text-sm">Achar que o vértice da parábola é um zero (raiz) da equação.</p>
-                      </div>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Estratégia de Prova em 3 Etapas",
-                  icone: "🏆",
-                  conteudo: (
-                    <div className="space-y-4">
-                      <div className="space-y-3">
-                        <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl flex gap-3">
-                          <span className="text-2xl">1️⃣</span>
-                          <div>
-                            <p className="font-bold text-blue-400">Identifique o tema</p>
-                            <p className="text-sm">Leia o enunciado e classifique: é distância? reta? circunferência? parábola? sistema?</p>
-                          </div>
-                        </div>
-                        <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl flex gap-3">
-                          <span className="text-2xl">2️⃣</span>
-                          <div>
-                            <p className="font-bold text-cyan-400">Selecione a fórmula</p>
-                            <p className="text-sm">Aplique a fórmula correta e substitua os valores — sem pular etapas.</p>
-                          </div>
-                        </div>
-                        <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex gap-3">
-                          <span className="text-2xl">3️⃣</span>
-                          <div>
-                            <p className="font-bold text-emerald-400">Confira nas alternativas</p>
-                            <p className="text-sm">Se o resultado não bate, verifique sinais, quadrados e módulos — erros pontuais são os mais frequentes.</p>
-                          </div>
-                        </div>
-                      </div>
+                  id: "carousel",
+                  label: "Cards Resumo",
+                  icon: () => <span className="mr-2">🎴</span>,
+                  content: (
+                    <div className="mt-4">
+                      <ModuleSummaryCarouselNew
+                        images={[
+                          {
+                            title: "Fórmulas do Ponto",
+                            type: "infográfico",
+                            placeholderColor: "bg-blue-500/20",
+                          },
+                          {
+                            title: "Formas da Reta",
+                            type: "infográfico",
+                            placeholderColor: "bg-cyan-500/20",
+                          },
+                          {
+                            title: "Curvas Cônicas",
+                            type: "infográfico",
+                            placeholderColor: "bg-emerald-500/20",
+                          },
+                        ]}
+                        tituloAula="Geometria Analítica"
+                        materia="Matemática"
+                        profissao="Engenharia"
+                        moduloNome="Simulado Final"
+                      />
                     </div>
                   ),
                 },
@@ -1367,8 +1355,10 @@ export default function AulaGeometriaAnalitica({
           </section>
           <QuizInterativo
             questoes={quizM10}
-            moduleId="modulo-10"
-            onComplete={handleModuleComplete}
+            numero={10}
+            titulo="QUIZ: Simulado Final"
+            variant="blue"
+            onComplete={(score) => handleModuleComplete("modulo-10", score)}
           />
         </div>
       </TabsContent>
