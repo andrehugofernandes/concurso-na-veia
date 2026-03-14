@@ -414,7 +414,7 @@ export default function AulaProgressoesPa({
                         <p className="text-xs">aₙ = a₁ (todos os termos iguais)</p>
                       </div>
                       <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
-                        <p className="font-bold text-emerald-700 text-sm mb-1">r > 0: Crescente</p>
+                        <p className="font-bold text-emerald-700 text-sm mb-1">r &gt; 0: Crescente</p>
                         <p className="text-xs">Termos aumentam progressivamente</p>
                       </div>
                       <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">

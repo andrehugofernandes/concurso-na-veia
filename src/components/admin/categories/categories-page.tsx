@@ -7,7 +7,13 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Edit3, Trash2, GripVertical, FolderTree, FolderPlus, ChevronRight, Folders, FileText, Video } from "lucide-react";
-import { categoriesService, type Category } from "@/lib/services/categories";
+import { type Category } from "@/lib/services/categories";
+import { 
+  listCategoriesAction, 
+  deleteCategoryAction, 
+  updateCategoriesHierarchyAction, 
+  getCategoryFileCountsAction 
+} from "@/lib/actions/categories";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { IconBadge } from "@/components/ui/icon-badge";
 import { CategoryBadge } from "@/components/ui/category-badge";
@@ -100,15 +106,18 @@ export const CategoriesPage = forwardRef<CategoriesPageHandle, CategoriesPagePro
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const data = await categoriesService.list();
-      setItems(data);
-      try {
-        const res = await fetch('/api/files/category-counts', { cache: 'no-store' });
-        const json = await res.json() as { counts: Record<string, number>; totalFiles: number; totalVideos: number };
+      const result = await listCategoriesAction();
+      if (result.status === 'success') {
+        setItems(result.data || []);
+      }
+      
+      const countsResult = await getCategoryFileCountsAction();
+      if (countsResult.status === 'success') {
+        const json = countsResult.data;
         setCountsMap(json.counts || {});
         setTotalFiles(json.totalFiles || 0);
         setTotalVideos(json.totalVideos || 0);
-      } catch {}
+      }
     } catch (e: unknown) {
       const errorMessage = e instanceof Error ? e.message : "Erro desconhecido";
       toast({ title: "Erro ao carregar categorias", description: errorMessage, variant: "destructive" });
@@ -206,7 +215,7 @@ export const CategoriesPage = forwardRef<CategoriesPageHandle, CategoriesPagePro
         newParents.splice(to, 0, moved);
         const updates = computeUpdatesForParent(null, newParents);
         try {
-          await categoriesService.updateHierarchy(updates);
+          await updateCategoriesHierarchyAction(updates);
           await load();
           toast({ title: "Ordem atualizada", description: "Categorias principais reordenadas." });
         } catch (e: unknown) {
@@ -235,7 +244,7 @@ export const CategoriesPage = forwardRef<CategoriesPageHandle, CategoriesPagePro
         newSiblings.splice(to, 0, moved);
         const updates = computeUpdatesForParent(parentOfActive, newSiblings);
         try {
-          await categoriesService.updateHierarchy(updates);
+          await updateCategoriesHierarchyAction(updates);
           await load();
           toast({ title: "Ordem atualizada", description: "Subcategorias reordenadas." });
         } catch (e: unknown) {
@@ -429,31 +438,13 @@ export const CategoriesPage = forwardRef<CategoriesPageHandle, CategoriesPagePro
                                   aria-label={`Excluir categoria ${p.name}`} 
                                   disabled={!canDelete}
                                   onClick={async () => {
-                                    console.log('[CategoriesPage] 🗑️ Tentando deletar categoria:', { id: p.id, name: p.name, userRole: user?.role });
-                                    if (!window.confirm(`Tem certeza que deseja excluir a categoria "${p.name}"?`)) {
-                                      console.log('[CategoriesPage] ❌ Deleção cancelada pelo usuário');
-                                      return;
-                                    }
+                                    if (!window.confirm(`Tem certeza?`)) return;
                                     try {
-                                      console.log('[CategoriesPage] 📤 Enviando DELETE para /api/categories/' + p.id);
-                                      await categoriesService.remove(p.id);
-                                      console.log('[CategoriesPage] ✅ Categoria deletada com sucesso');
-                                      toast({ 
-                                        title: 'Sucesso', 
-                                        description: 'Categoria excluída com sucesso!',
-                                        className: 'bg-green-50 border-green-200 text-green-900'
-                                      });
+                                      await deleteCategoryAction(p.id);
+                                      toast({ title: 'Sucesso', description: 'Categoria excluída' });
                                       load();
-                                    } catch (error: unknown) {
-                                      console.error('[CategoriesPage] ❌ Erro ao deletar categoria:', error);
-                                      const err = error as { response?: { data?: { message?: string } }; message?: string };
-                                      const errorMessage = err?.response?.data?.message || err?.message || 'Erro ao excluir categoria';
-                                      toast({ 
-                                        title: 'Erro', 
-                                        description: errorMessage, 
-                                        variant: 'destructive',
-                                        className: 'bg-red-50 border-red-200 text-red-900'
-                                      });
+                                    } catch (error: any) {
+                                      toast({ title: 'Erro', description: error.message, variant: 'destructive' });
                                     }
                                   }}
                                 >
@@ -530,31 +521,13 @@ export const CategoriesPage = forwardRef<CategoriesPageHandle, CategoriesPagePro
                                           aria-label={`Excluir subcategoria ${child.name}`} 
                                           disabled={!canDelete}
                                           onClick={async () => {
-                                            console.log('[CategoriesPage] 🗑️ Tentando deletar subcategoria:', { id: child.id, name: child.name, parentId: child.parentId, userRole: user?.role });
-                                            if (!window.confirm(`Tem certeza que deseja excluir a subcategoria "${child.name}"?`)) {
-                                              console.log('[CategoriesPage] ❌ Deleção cancelada pelo usuário');
-                                              return;
-                                            }
+                                            if (!window.confirm(`Tem certeza?`)) return;
                                             try {
-                                              console.log('[CategoriesPage] 📤 Enviando DELETE para /api/categories/' + child.id);
-                                              await categoriesService.remove(child.id);
-                                              console.log('[CategoriesPage] ✅ Subcategoria deletada com sucesso');
-                                              toast({ 
-                                                title: 'Sucesso', 
-                                                description: 'Subcategoria excluída com sucesso!',
-                                                className: 'bg-green-50 border-green-200 text-green-900'
-                                              });
+                                              await deleteCategoryAction(child.id);
+                                              toast({ title: 'Sucesso', description: 'Subcategoria excluída' });
                                               load();
-                                            } catch (error: unknown) {
-                                              console.error('[CategoriesPage] ❌ Erro ao deletar subcategoria:', error);
-                                              const err = error as { response?: { data?: { message?: string } }; message?: string };
-                                              const errorMessage = err?.response?.data?.message || err?.message || 'Erro ao excluir subcategoria';
-                                              toast({ 
-                                                title: 'Erro', 
-                                                description: errorMessage, 
-                                                variant: 'destructive',
-                                                className: 'bg-red-50 border-red-200 text-red-900'
-                                              });
+                                            } catch (error: any) {
+                                              toast({ title: 'Erro', description: error.message, variant: 'destructive' });
                                             }
                                           }}
                                         >

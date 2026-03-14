@@ -576,7 +576,7 @@ export default function AulaGeometriaPlana({
                     <p className="text-sm mt-2">Vale para TODO triângulo. Reto, agudo ou obtuso. A soma é invariável.</p>
                   </div>
                   <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl">
-                    <p className="font-semibold text-green-400">2️⃣ Desigualdade Triangular: a + b > c</p>
+                    <p className="font-semibold text-green-400">2️⃣ Desigualdade Triangular: a + b &gt; c</p>
                     <p className="text-sm mt-2">Todos os 3 pares de lados devem satisfazer. Se a+b=c, é colinear (não existe triângulo).</p>
                   </div>
                   <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
@@ -614,7 +614,7 @@ export default function AulaGeometriaPlana({
               <div className="space-y-4">
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-sm mb-2">Classificação por Ângulos</p>
-                  <p className="text-xs text-muted-foreground">• Acutângulo: todos ângulos < 90° | • Retângulo: um ângulo = 90° | • Obtusângulo: um ângulo > 90°</p>
+                  <p className="text-xs text-muted-foreground">• Acutângulo: todos ângulos &lt; 90° | • Retângulo: um ângulo = 90° | • Obtusângulo: um ângulo &gt; 90°</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-sm mb-2">Classificação por Lados</p>
@@ -2067,7 +2067,7 @@ export default function AulaGeometriaPlana({
                   <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
                     <p className="font-semibold text-cyan-400">🔴 Pegadinhas CESGRANRIO (erros comuns):</p>
                     <p className="text-sm mt-2">- Raio ≠ Diâmetro | - Altura ≠ Lado oblíquo | - k² em áreas (nunca k!) | - Ternas pitagóricas economizam cálculos</p>
-                    <p className="text-sm">- Desigualdade triangular: a+b > c (ESTRITA) | - Ângulo externo = soma dos remotos</p>
+                    <p className="text-sm">- Desigualdade triangular: a+b &gt; c (ESTRITA) | - Ângulo externo = soma dos remotos</p>
                   </div>
                   <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                     <p className="font-semibold text-emerald-400">⏱️ Gestão de Tempo:</p>

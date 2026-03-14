@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { defaultTheme } from '@/lib/themes';
 import { ParticleRingEffect } from '@/components/ui/particle-ring-effect';
 import { ParticleCanvas } from '@/components/ui/particle-canvas';
+import { getSiteSettingsAction } from '@/lib/actions/settings';
 
 interface AuthLayoutProps {
   title?: string;
@@ -52,14 +53,12 @@ export function AuthLayout({
 
     const loadPublicSettings = async () => {
       try {
-        const res = await fetch('/api/public/site-settings', {
-          cache: 'no-store',
-        });
-        if (!res.ok) return;
-        const data = (await res.json()) as { logoUrl?: string | null; loginParticlesStyle?: 'claude' | 'manus' };
-        if (isCancelled) return;
-        setSiteLogoUrl(data.logoUrl ?? null);
-        setLoginParticlesStyle(data.loginParticlesStyle === 'manus' ? 'manus' : 'claude');
+        const result = await getSiteSettingsAction();
+        if (result.status === 'success' && result.data) {
+          if (isCancelled) return;
+          setSiteLogoUrl(result.data.logoUrl ?? null);
+          setLoginParticlesStyle(result.data.loginParticlesStyle === 'manus' ? 'manus' : 'claude');
+        }
       } catch {
         if (!isCancelled) {
           setSiteLogoUrl(null);

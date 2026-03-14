@@ -5,6 +5,7 @@ import { Bell, Loader2 } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
+import { getNotificationPreferencesAction, updateNotificationPreferenceAction } from '@/lib/actions/notifications';
 
 interface NotificationPreferences {
   newFileUploaded: boolean;
@@ -76,13 +77,10 @@ export function NotificationPreferences() {
   const loadPreferences = async () => {
     try {
       setLoading(true);
-      const res = await fetch('/api/notifications/preferences', {
-        credentials: 'include',
-      });
+      const result = await getNotificationPreferencesAction();
       
-      if (res.ok) {
-        const data = await res.json();
-        setPreferences(data);
+      if (result.status === 'success') {
+        setPreferences(result.data);
       }
     } catch (error) {
       console.error('Erro ao carregar preferências:', error);
@@ -106,15 +104,10 @@ export function NotificationPreferences() {
 
     try {
       setSaving(true);
-      const res = await fetch('/api/notifications/preferences', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ [key]: newValue }),
-      });
+      const result = await updateNotificationPreferenceAction({ [key]: newValue });
 
-      if (!res.ok) {
-        throw new Error('Erro ao salvar');
+      if (result.status === 'error') {
+        throw new Error(result.error || 'Erro ao salvar');
       }
 
       toast({

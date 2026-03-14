@@ -228,7 +228,7 @@ export function ChartsSection() {
                 {periods.map((period) => (
                   <Button
                     key={period.key}
-                    variant={selectedPeriod === period.key ? 'default' : 'outline'}
+                    variant={selectedPeriod === period.key ? 'primary' : 'outline'}
                     size="sm"
                     onClick={() => setSelectedPeriod(period.key)}
                     className={getBtnClass(selectedPeriod === period.key)}
@@ -279,7 +279,7 @@ export function ChartsSection() {
             {/* Metric Toggle Buttons */}
             <div className="flex justify-center space-x-2 mt-4">
               <Button
-                variant={selectedMetric === 'visits' ? 'default' : 'outline'}
+                variant={selectedMetric === 'visits' ? 'primary' : 'outline'}
                 size="sm"
                 onClick={() => setSelectedMetric('visits')}
                 className={getBtnClass(selectedMetric === 'visits')}
@@ -287,7 +287,7 @@ export function ChartsSection() {
                 Visitas
               </Button>
               <Button
-                variant={selectedMetric === 'downloads' ? 'default' : 'outline'}
+                variant={selectedMetric === 'downloads' ? 'primary' : 'outline'}
                 size="sm"
                 onClick={() => setSelectedMetric('downloads')}
                 className={getBtnClass(selectedMetric === 'downloads') + ' opacity-90'}

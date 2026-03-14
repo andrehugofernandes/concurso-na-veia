@@ -1030,7 +1030,7 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        Quando algo cresce multiplicando por uma constante > 1 cada período:
+                        Quando algo cresce multiplicando por uma constante &gt; 1 cada período:
                       </p>
                       <div className="bg-teal-500/10 p-4 rounded-xl border border-teal-500/20">
                         <p className="text-sm mb-2">
@@ -1051,7 +1051,7 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground text-sm">
-                        Quando algo decresce multiplicando por constante < 1 cada período:
+                        Quando algo decresce multiplicando por constante &lt; 1 cada período:
                       </p>
                       <div className="bg-teal-500/10 p-4 rounded border border-teal-500/20">
                         <p className="text-sm mb-2">

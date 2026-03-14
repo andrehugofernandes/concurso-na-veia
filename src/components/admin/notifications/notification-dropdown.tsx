@@ -11,6 +11,7 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { NotificationItem } from './notification-item';
 import { useNotificationCount } from '../admin-header';
+import { getNotificationsAction, markNotificationAsReadAction, markAllNotificationsAsReadAction } from '@/lib/actions/notifications';
 
 interface Notification {
   id: string;
@@ -28,7 +29,7 @@ export function NotificationDropdown() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  const { count, setCount } = useNotificationCount();
+  const { notificationCount: count, setNotificationCount: setCount } = useNotificationCount();
 
   // Buscar notificações quando abrir o dropdown
   useEffect(() => {
@@ -40,13 +41,10 @@ export function NotificationDropdown() {
   const loadNotifications = async () => {
     try {
       setLoading(true);
-      const ts = Date.now();
-      const res = await fetch(`/api/notifications?limit=20&_=${ts}`, {
-        credentials: 'include',
-        cache: 'no-store',
-      });
-      const data = await res.json();
-      setNotifications(data.notifications || []);
+      const result = await getNotificationsAction(20);
+      if (result.status === 'success') {
+        setNotifications(result.data.notifications || []);
+      }
     } catch (error) {
       console.error('Erro ao carregar notificações:', error);
     } finally {
@@ -56,10 +54,7 @@ export function NotificationDropdown() {
 
   const handleMarkAsRead = async (notificationId: string) => {
     try {
-      await fetch(`/api/notifications/${notificationId}/read`, {
-        method: 'PATCH',
-        credentials: 'include',
-      });
+      await markNotificationAsReadAction(notificationId);
 
       // Atualizar localmente
       setNotifications(prev =>
@@ -77,10 +72,7 @@ export function NotificationDropdown() {
 
   const handleMarkAllAsRead = async () => {
     try {
-      await fetch('/api/notifications/read-all', {
-        method: 'POST',
-        credentials: 'include',
-      });
+      await markAllNotificationsAsReadAction();
 
       // Atualizar localmente
       setNotifications(prev =>

@@ -433,8 +433,12 @@ export function AdminHeader({
   );
 }
 
-const NotificationCountContext = createContext<{ notificationCount: number }>({
+const NotificationCountContext = createContext<{ 
+  notificationCount: number; 
+  setNotificationCount: (count: number) => void;
+}>({
   notificationCount: 0,
+  setNotificationCount: () => {},
 });
 
 export function NotificationCountProvider({
@@ -442,9 +446,9 @@ export function NotificationCountProvider({
 }: {
   children: ReactNode;
 }) {
-  const [notificationCount] = useState(0);
+  const [notificationCount, setNotificationCount] = useState(0);
   return (
-    <NotificationCountContext.Provider value={{ notificationCount }}>
+    <NotificationCountContext.Provider value={{ notificationCount, setNotificationCount }}>
       {children}
     </NotificationCountContext.Provider>
   );

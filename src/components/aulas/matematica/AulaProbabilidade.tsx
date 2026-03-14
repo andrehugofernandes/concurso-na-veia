@@ -617,7 +617,7 @@ export default function AulaProbabilidade({
                     "Se pode ocorrer em comum, subtraia a interseção"
                   </p>
                   <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg font-mono text-xs text-center">
-                    <p>Moeda: cara OU número < 5?</p>
+                    <p>Moeda: cara OU número &lt; 5?</p>
                     <p className="text-xs text-muted-foreground">
                       1/2 + 4/6 - 2/6 = ?
                     </p>
@@ -767,7 +767,7 @@ export default function AulaProbabilidade({
               ],
             }}
             maceteVisual={{
-              title: "Condicional: "Dado que"!",
+              title: 'Condicional: "Dado que"!',
               content: (
                 <div className="space-y-3 text-left">
                   <p className="text-sm italic">

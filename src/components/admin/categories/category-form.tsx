@@ -10,7 +10,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { useTheme } from "@/components/providers/theme-provider";
-import { categoriesService, type Category } from "@/lib/services/categories";
+import { type Category } from "@/lib/services/categories";
+import { listCategoriesAction, upsertCategoryAction } from "@/lib/actions/categories";
 import { useToast } from "@/hooks/use-toast";
 
 export type CategoryFormData = {
@@ -63,15 +64,13 @@ export function CategoryForm({
   useEffect(() => {
     if (!open) return;
     
-    console.log('[CategoryForm] Modal aberto, recarregando lista de categorias...');
     let ignore = false;
-    categoriesService.list().then((items) => {
-      if (!ignore) {
-        console.log('[CategoryForm] ✅ Lista de categorias carregada:', items.length, 'categorias');
-        setAllCategories(items);
+    listCategoriesAction().then((res) => {
+      if (!ignore && res.status === 'success') {
+        setAllCategories(res.data || []);
       }
     }).catch((error) => {
-      console.error('[CategoryForm] ❌ Erro ao carregar categorias:', error);
+      console.error('[CategoryForm] Error loading categories:', error);
     });
     return () => { ignore = true; };
   }, [open]);
@@ -109,40 +108,30 @@ export function CategoryForm({
     
     setSaving(true);
     try {
-      if (editData?.id) {
-        const updated = await categoriesService.update(editData.id, formData);
-        onSaved(updated);
-        const isSub = !!updated.parentId;
+      const dataToSave = {
+        ...formData,
+        id: editData?.id
+      };
+      
+      const result = await upsertCategoryAction(dataToSave);
+      
+      if (result.status === 'success') {
+        const saved = result.data;
+        onSaved(saved);
+        const isSub = !!saved.parentId;
         toast({
-          title: isSub ? "Subcategoria atualizada" : "Categoria atualizada",
-          description: updated.name,
-          variant: "default",
-          className: "z-[9999] bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+          title: isSub ? "Sucesso" : "Sucesso",
+          description: saved.name,
         });
+        onClose();
       } else {
-        const created = await categoriesService.create({
-          name: formData.name,
-          description: formData.description ?? undefined,
-          parentId: formData.parentId ?? null,
-          color: formData.color ?? "#0037C1",
-        });
-        onSaved(created as Category);
-        const isSub = !!(created as Category).parentId;
-        toast({
-          title: isSub ? "Subcategoria criada" : "Categoria criada",
-          description: (created as Category).name,
-          variant: "default",
-          className: "z-[9999] bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
-        });
+        throw new Error(result.error);
       }
-      onClose();
-    } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : "Erro desconhecido";
+    } catch (error: any) {
       toast({
-        title: "Erro ao salvar categoria",
-        description: errorMessage,
+        title: "Erro ao salvar",
+        description: error.message,
         variant: "destructive",
-        className: "z-[9999] bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800"
       });
     } finally {
       setSaving(false);
