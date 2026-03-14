@@ -11,6 +11,7 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
+  ModuleConsolidation,
 } from "../shared";
 import {
   QUIZ_M1_CONCEITO_SL,
@@ -264,6 +265,44 @@ export default function AulaSistemasLineares({
             </div>
           </section>
 
+          <ModuleConsolidation
+            index={1}
+            variant="indigo"
+            video={{
+              videoId: "r4sFqOFe8LU",
+              title: "Sistemas Lineares: Conceitos Fundamentais",
+              duration: "12:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Conceito e Classificação",
+              tituloAula: "Sistemas Lineares",
+              materia: "Matemática",
+              images: [
+                { title: "Equação Linear", type: "Definição", placeholderColor: "bg-indigo-500/20" },
+                { title: "Sistema 2×2 e 3×3", type: "Estrutura", placeholderColor: "bg-blue-500/20" },
+                { title: "SPD, SPI, SI", type: "Classificação", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Reconhecer rapidamente a classificação:</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>SPD:</strong> Determinante ≠ 0 → uma solução</li>
+                    <li><strong>SPI:</strong> Det = 0 + Equações compatíveis → infinitas soluções</li>
+                    <li><strong>SI:</strong> Det = 0 + Equações incompatíveis → sem solução</li>
+                  </ul>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Conceito de Sistemas",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-1" className="mt-16">
             <QuizInterativo
               questoes={quizM1}
@@ -405,6 +444,45 @@ export default function AulaSistemasLineares({
             />
           </section>
 
+          <ModuleConsolidation
+            index={2}
+            variant="emerald"
+            video={{
+              videoId: "Fqfh_jCEVpE",
+              title: "Método de Substituição em Sistemas Lineares",
+              duration: "11:15"
+            }}
+            resumoVisual={{
+              moduloNome: "Método de Substituição",
+              tituloAula: "Sistemas Lineares",
+              materia: "Matemática",
+              images: [
+                { title: "Isolamento da Incógnita", type: "Etapa 1", placeholderColor: "bg-emerald-500/20" },
+                { title: "Substituição na 2ª Equação", type: "Etapa 2", placeholderColor: "bg-green-500/20" },
+                { title: "Resolução Sucessiva", type: "Etapa 3", placeholderColor: "bg-teal-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">O método de substituição é mais simples quando:</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Um coeficiente é 1 ou −1 (isolamento fácil)</li>
+                    <li>Variável aparece isolada em uma equação</li>
+                    <li>Preferência: isole a variável com coeficiente menor</li>
+                  </ul>
+                  <p className="font-semibold text-sm mt-2">Passos: Isole → Substitua → Simplifique → Retorno</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+              titulo: "Batida da Substituição",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-2" className="mt-16">
             <QuizInterativo
               questoes={quizM2}
@@ -526,6 +604,46 @@ export default function AulaSistemasLineares({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={3}
+            variant="cyan"
+            video={{
+              videoId: "K0gU5VJMVzc",
+              title: "Método da Adição (Eliminação)",
+              duration: "13:45"
+            }}
+            resumoVisual={{
+              moduloNome: "Método da Adição",
+              tituloAula: "Sistemas Lineares",
+              materia: "Matemática",
+              images: [
+                { title: "Multiplicar por Constante", type: "Ajuste", placeholderColor: "bg-cyan-500/20" },
+                { title: "Somar Equações", type: "Eliminação", placeholderColor: "bg-blue-500/20" },
+                { title: "Resolver e Retorno", type: "Conclusão", placeholderColor: "bg-teal-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Estratégia de eliminação:</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Escolha qual variável eliminar (x ou y)</li>
+                    <li>Multiplique equações para igualar coeficientes (sinais opostos)</li>
+                    <li>Soma gera equação com uma incógnita</li>
+                    <li>Resolve e retorna para encontrar a outra</li>
+                  </ul>
+                  <p className="font-semibold text-sm mt-2">💡 Mais rápido quando coeficientes já são proporcionais!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+              titulo: "Ritmo da Adição",
+              artista: "Prof. Rítmico"
+            }}
+          />
 
           <section id="quiz-modulo-3" className="mt-16">
             <QuizInterativo
@@ -659,6 +777,46 @@ export default function AulaSistemasLineares({
             />
           </section>
 
+          <ModuleConsolidation
+            index={4}
+            variant="blue"
+            video={{
+              videoId: "SIeFMNJQwqE",
+              title: "Regra de Cramer para Resolver Sistemas",
+              duration: "14:20"
+            }}
+            resumoVisual={{
+              moduloNome: "Regra de Cramer",
+              tituloAula: "Sistemas Lineares",
+              materia: "Matemática",
+              images: [
+                { title: "Determinante Principal", type: "Matriz D", placeholderColor: "bg-blue-500/20" },
+                { title: "Determinantes Auxiliares", type: "Matrizes Dx, Dy", placeholderColor: "bg-indigo-500/20" },
+                { title: "Razão de Determinantes", type: "Fórmula x=Dx/D", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Fórmula de Cramer para 2×2:</p>
+                  <p className="font-mono text-sm">x = Dx/D,  y = Dy/D</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm mt-2">
+                    <li>D = determinante dos coeficientes</li>
+                    <li>Dx = substitua coluna de x pelos termos independentes</li>
+                    <li>Dy = substitua coluna de y pelos termos independentes</li>
+                  </ul>
+                  <p className="font-semibold text-sm mt-2">Se D=0 → Sistema não é SPD (revise SPI ou SI)</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+              titulo: "Cadência de Cramer",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-4" className="mt-16">
             <QuizInterativo
               questoes={quizM4}
@@ -771,6 +929,45 @@ export default function AulaSistemasLineares({
             />
           </section>
 
+          <ModuleConsolidation
+            index={5}
+            variant="amber"
+            video={{
+              videoId: "rVBKiBv0Eek",
+              title: "Identificando Sistemas Impossíveis e Indeterminados",
+              duration: "12:00"
+            }}
+            resumoVisual={{
+              moduloNome: "Impossível e Indeterminado",
+              tituloAula: "Sistemas Lineares",
+              materia: "Matemática",
+              images: [
+                { title: "Sistema Impossível (SI)", type: "Sem Solução", placeholderColor: "bg-amber-500/20" },
+                { title: "Sistema Indeterminado (SPI)", type: "∞ Soluções", placeholderColor: "bg-orange-500/20" },
+                { title: "Interpretação Geométrica", type: "Retas Paralelas", placeholderColor: "bg-yellow-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Detectar rapidamente:</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>SI:</strong> Após eliminar variável → 0=k (k≠0) → Impossível</li>
+                    <li><strong>SPI:</strong> Após eliminar variável → 0=0 (Tautologia) → Infinitas soluções</li>
+                    <li><strong>Geometria:</strong> Retas paralelas (SI) vs coincidentes (SPI)</li>
+                  </ul>
+                  <p className="font-semibold text-sm mt-2">🎯 O grande segredo: Equações precisam ser compatíveis!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+              titulo: "Alerta de Impossibilidade",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-5" className="mt-16">
             <QuizInterativo
               questoes={quizM5}
@@ -874,6 +1071,46 @@ export default function AulaSistemasLineares({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={6}
+            variant="rose"
+            video={{
+              videoId: "4A8F6DWe9b8",
+              title: "Sistemas 3×3: Substituição e Cramer",
+              duration: "15:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Três Variáveis",
+              tituloAula: "Sistemas Lineares",
+              materia: "Matemática",
+              images: [
+                { title: "Sistema 3×3 Estrutura", type: "Formato", placeholderColor: "bg-rose-500/20" },
+                { title: "Escalonamento de Linhas", type: "Triangulação", placeholderColor: "bg-pink-500/20" },
+                { title: "Determinante 3×3", type: "Regra de Sarrus", placeholderColor: "bg-red-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Dicas para 3×3:</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Escolha a equação mais simples para isolamento primeiro</li>
+                    <li>Substitua em todas as outras (reduz para 2×2)</li>
+                    <li>Resolva o sistema 2×2 resultante</li>
+                    <li>Retorne para encontrar a terceira variável</li>
+                  </ul>
+                  <p className="font-semibold text-sm mt-2">Ou use Cramer com determinante 3×3 (Regra de Sarrus)</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+              titulo: "Dança Tripla (3×3)",
+              artista: "Prof. Rítmico"
+            }}
+          />
 
           <section id="quiz-modulo-6" className="mt-16">
             <QuizInterativo
@@ -994,6 +1231,45 @@ export default function AulaSistemasLineares({
             />
           </section>
 
+          <ModuleConsolidation
+            index={7}
+            variant="indigo"
+            video={{
+              videoId: "mQ7TwB3c_4w",
+              title: "Interpretação Geométrica de Sistemas Lineares",
+              duration: "11:50"
+            }}
+            resumoVisual={{
+              moduloNome: "Interpretação Geométrica",
+              tituloAula: "Sistemas Lineares",
+              materia: "Matemática",
+              images: [
+                { title: "Retas Concorrentes", type: "SPD Visão", placeholderColor: "bg-indigo-500/20" },
+                { title: "Retas Paralelas", type: "SI Visão", placeholderColor: "bg-blue-500/20" },
+                { title: "Retas Coincidentes", type: "SPI Visão", placeholderColor: "bg-purple-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Visualizar no plano cartesiano:</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>SPD:</strong> 2 retas se cruzam em 1 ponto (solução única)</li>
+                    <li><strong>SPI:</strong> 2 retas são iguais (infinitos pontos de cruzamento)</li>
+                    <li><strong>SI:</strong> 2 retas paralelas (nenhum cruzamento)</li>
+                  </ul>
+                  <p className="font-semibold text-sm mt-2">A geometria confirma: inclinação igual = paralelas ou coincidentes!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+              titulo: "Tela Geométrica",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-7" className="mt-16">
             <QuizInterativo
               questoes={quizM7}
@@ -1105,6 +1381,46 @@ export default function AulaSistemasLineares({
             />
           </section>
 
+          <ModuleConsolidation
+            index={8}
+            variant="emerald"
+            video={{
+              videoId: "Z4jDh7iG1J0",
+              title: "Sistemas de Inequações: Solução Gráfica",
+              duration: "13:15"
+            }}
+            resumoVisual={{
+              moduloNome: "Sistemas de Inequações",
+              tituloAula: "Sistemas Lineares",
+              materia: "Matemática",
+              images: [
+                { title: "Região de Solução", type: "Interseção", placeholderColor: "bg-emerald-500/20" },
+                { title: "Semiplanos", type: "Desigualdades", placeholderColor: "bg-green-500/20" },
+                { title: "Vértices da Região", type: "Pontos Críticos", placeholderColor: "bg-teal-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Método de solução gráfica:</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Trace cada reta como se fosse equação (substitua = por ≤ ou ≥)</li>
+                    <li>Escolha um ponto teste para determinar qual lado da reta</li>
+                    <li>A solução é a interseção de todas as regiões (semiplanos)</li>
+                    <li>Vértices são encontrados resolvendo pares de equações</li>
+                  </ul>
+                  <p className="font-semibold text-sm mt-2">💡 Otimização linear: máximo/mínimo ocorre em vértices!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+              titulo: "Zona Sombreada",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-8" className="mt-16">
             <QuizInterativo
               questoes={quizM8}
@@ -1213,6 +1529,46 @@ export default function AulaSistemasLineares({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={9}
+            variant="cyan"
+            video={{
+              videoId: "tM_JEGxWnvQ",
+              title: "Sistemas Lineares em Engenharia: Fluxo em Redes",
+              duration: "14:40"
+            }}
+            resumoVisual={{
+              moduloNome: "Aplicações Petrobras",
+              tituloAula: "Sistemas Lineares",
+              materia: "Matemática",
+              images: [
+                { title: "Fluxo em Oleodutos", type: "Rede de Tubos", placeholderColor: "bg-cyan-500/20" },
+                { title: "Balanço de Massa", type: "Conservação", placeholderColor: "bg-blue-500/20" },
+                { title: "Otimização de Rotas", type: "Distribuição", placeholderColor: "bg-indigo-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Aplicações reais em Petrobras:</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>Fluxo em Redes:</strong> Quantidade de óleo em cada tubulação</li>
+                    <li><strong>Balanço de Massa:</strong> O que entra = o que sai em cada nó</li>
+                    <li><strong>Alocação de Produção:</strong> Otimizar distribuição entre campos</li>
+                    <li><strong>Bombeamento:</strong> Pressões e vazões em cada etapa</li>
+                  </ul>
+                  <p className="font-semibold text-sm mt-2">🎯 Cada nó = uma equação de conservação!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+              titulo: "Fluxo na Petrobras",
+              artista: "Prof. Rítmico"
+            }}
+          />
 
           <section id="quiz-modulo-9" className="mt-16">
             <QuizInterativo
@@ -1339,6 +1695,47 @@ export default function AulaSistemasLineares({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={10}
+            variant="blue"
+            video={{
+              videoId: "9Kxj3pDQVmk",
+              title: "Revisão Completa: Sistemas Lineares",
+              duration: "16:00"
+            }}
+            resumoVisual={{
+              moduloNome: "Simulado Mestre",
+              tituloAula: "Sistemas Lineares",
+              materia: "Matemática",
+              images: [
+                { title: "Todos os Métodos", type: "Comparação", placeholderColor: "bg-blue-500/20" },
+                { title: "Classificação Final", type: "SPD/SPI/SI", placeholderColor: "bg-indigo-500/20" },
+                { title: "Estratégia de Prova", type: "Dicas CESGRANRIO", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato - Revisão Total",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Checklist antes da prova:</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Substituição: melhor quando há coeficiente 1 ou −1</li>
+                    <li>Adição: multiplica para eliminar uma variável</li>
+                    <li>Cramer: usa determinantes (se D≠0)</li>
+                    <li>Geometria: visualiza a solução como retas</li>
+                    <li>Aplicações: reconheça fluxos e balanços</li>
+                  </ul>
+                  <p className="font-semibold text-sm mt-2">⭐ Na dúvida: use Adição! É o mais confiável e rápido!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+              titulo: "Hino de Revisão (10 Módulos)",
+              artista: "Prof. Rítmico"
+            }}
+          />
 
           <section id="quiz-modulo-10" className="mt-16">
             <QuizInterativo

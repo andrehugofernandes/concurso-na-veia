@@ -13,6 +13,7 @@ import {
   ModuleSectionHeader,
   FunctionGraph,
   type FunctionPlot,
+  ModuleConsolidation,
 } from "../shared";
 import {
   QUIZ_M1_PONTO_PLANO,
@@ -226,6 +227,42 @@ export default function AulaGeometriaAnalitica({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={1}
+            variant="indigo"
+            video={{
+              videoId: "6coNvK0rMoE",
+              title: "Geometria Analítica - O Ponto no Plano",
+              duration: "12:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Ponto no Plano Cartesiano",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Coordenadas (x, y)", type: "diagram", placeholderColor: "bg-indigo-500/20", imageUrl: "/temp-img.png" },
+                { title: "Simetria e Quadrantes", type: "diagram", placeholderColor: "bg-blue-500/20", imageUrl: "/temp-img.png" },
+                { title: "Distância d = √[(x₂-x₁)² + (y₂-y₁)²]", type: "formula", placeholderColor: "bg-purple-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Lembre dos 4 quadrantes:</p>
+                  <p>Q1: (+,+) | Q2: (-,+) | Q3: (-,-) | Q4: (+,-)</p>
+                  <p className="text-sm text-muted-foreground mt-2">Comece pelo lado direito (Q1) e siga no sentido anti-horário!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "O Ritmo do Plano Cartesiano",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <QuizInterativo
             questoes={quizM1}
             moduleId="modulo-1"
@@ -360,6 +397,41 @@ export default function AulaGeometriaAnalitica({
             yMin={-2}
             yMax={15}
             points={200}
+          />
+
+          <ModuleConsolidation
+            index={2}
+            variant="emerald"
+            video={{
+              videoId: "pFZjMKqKZEQ",
+              title: "Distância entre Pontos e Ponto Médio",
+              duration: "14:15"
+            }}
+            resumoVisual={{
+              moduloNome: "Distância e Ponto Médio",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Fórmula Distância: d = √[(Δx)² + (Δy)²]", type: "formula", placeholderColor: "bg-emerald-500/20", imageUrl: "/temp-img.png" },
+                { title: "Ponto Médio: M = ((x₁+x₂)/2, (y₁+y₂)/2)", type: "formula", placeholderColor: "bg-teal-500/20", imageUrl: "/temp-img.png" },
+                { title: "Aplicação em Mapeamento de Dutos", type: "diagram", placeholderColor: "bg-green-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Distância é o Pitagoras do Plano!</p>
+                  <p>Se A(1,1) e B(4,5): d = √[(4-1)² + (5-1)²] = √[9+16] = 5</p>
+                  <p className="text-sm text-muted-foreground mt-2">Ponto Médio é a média aritmética das coordenadas!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+              titulo: "Distância e Proporção",
+              artista: "Prof. Rítmico"
+            }}
           />
 
           <QuizInterativo
@@ -514,6 +586,41 @@ export default function AulaGeometriaAnalitica({
             points={200}
           />
 
+          <ModuleConsolidation
+            index={3}
+            variant="cyan"
+            video={{
+              videoId: "oSbX2VVjkts",
+              title: "Equação da Reta: Reduzida e Geral",
+              duration: "15:45"
+            }}
+            resumoVisual={{
+              moduloNome: "Equação da Reta",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Forma Reduzida: y = mx + n", type: "formula", placeholderColor: "bg-cyan-500/20", imageUrl: "/temp-img.png" },
+                { title: "Forma Geral: ax + by + c = 0", type: "formula", placeholderColor: "bg-sky-500/20", imageUrl: "/temp-img.png" },
+                { title: "Coeficiente Angular m = Δy/Δx", type: "diagram", placeholderColor: "bg-blue-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">y = mx + n é mais fácil que ax + by + c = 0!</p>
+                  <p>m = inclinação da reta | n = onde cruza o eixo y</p>
+                  <p className="text-sm text-muted-foreground mt-2">Dois pontos → encontre m → substitua em y = mx + n</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+              titulo: "A Reta que Melhor Encaixa",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <QuizInterativo
             questoes={quizM3}
             moduleId="modulo-3"
@@ -619,6 +726,42 @@ export default function AulaGeometriaAnalitica({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={4}
+            variant="blue"
+            video={{
+              videoId: "QJL5J6LjqFE",
+              title: "Posições Relativas entre Retas",
+              duration: "13:50"
+            }}
+            resumoVisual={{
+              moduloNome: "Posições Relativas",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Paralelas: m₁ = m₂", type: "diagram", placeholderColor: "bg-blue-500/20", imageUrl: "/temp-img.png" },
+                { title: "Perpendiculares: m₁ × m₂ = -1", type: "diagram", placeholderColor: "bg-indigo-500/20", imageUrl: "/temp-img.png" },
+                { title: "Secantes: m₁ ≠ m₂ (um ponto de interseção)", type: "diagram", placeholderColor: "bg-violet-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Paralelismo = Mesma inclinação!</p>
+                  <p>Perpendiculares = Inclinações são opostas e inversas (m₁·m₂ = -1)</p>
+                  <p className="text-sm text-muted-foreground mt-2">Dois valores de m? Nunca são paralelas → buscam o ponto de cruzamento!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+              titulo: "Retas que se Encontram",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <QuizInterativo
             questoes={quizM4}
             moduleId="modulo-4"
@@ -730,6 +873,42 @@ export default function AulaGeometriaAnalitica({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={5}
+            variant="amber"
+            video={{
+              videoId: "D4FZQBmYzFU",
+              title: "Distância de um Ponto a uma Reta",
+              duration: "14:20"
+            }}
+            resumoVisual={{
+              moduloNome: "Distância Ponto-Reta",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Fórmula: d = |ax₀ + by₀ + c| / √(a² + b²)", type: "formula", placeholderColor: "bg-amber-500/20", imageUrl: "/temp-img.png" },
+                { title: "Reta em forma: ax + by + c = 0", type: "diagram", placeholderColor: "bg-yellow-500/20", imageUrl: "/temp-img.png" },
+                { title: "Aplicação: Distância equipamento-duto", type: "diagram", placeholderColor: "bg-orange-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">A Reta DEVE estar em forma geral (ax + by + c = 0)!</p>
+                  <p>Substitua (x₀,y₀) no numerador, calcule √(a²+b²) no denominador</p>
+                  <p className="text-sm text-muted-foreground mt-2">Distância ZERO = ponto está sobre a reta!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+              titulo: "A Menor Distância",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <QuizInterativo
             questoes={quizM5}
             moduleId="modulo-5"
@@ -856,6 +1035,41 @@ export default function AulaGeometriaAnalitica({
             yMin={-6}
             yMax={6}
             points={300}
+          />
+
+          <ModuleConsolidation
+            index={6}
+            variant="rose"
+            video={{
+              videoId: "8YS-4Zj1JVo",
+              title: "Circunferência: Centro, Raio e Equação",
+              duration: "15:05"
+            }}
+            resumoVisual={{
+              moduloNome: "Circunferência",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Equação Reduzida: (x-a)² + (y-b)² = r²", type: "formula", placeholderColor: "bg-rose-500/20", imageUrl: "/temp-img.png" },
+                { title: "Centro C(a,b) e Raio r", type: "diagram", placeholderColor: "bg-pink-500/20", imageUrl: "/temp-img.png" },
+                { title: "Circunferência no Mapeamento de Campos", type: "diagram", placeholderColor: "bg-red-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">(x-a)² + (y-b)² = r² é a FORMA BONITA!</p>
+                  <p>Centro = (a, b) | Raio = r (tirando a raiz quadrada do lado direito)</p>
+                  <p className="text-sm text-muted-foreground mt-2">Se pede a equação geral, expanda: x² + y² - 2ax - 2by + (a²+b²-r²) = 0</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+              titulo: "O Círculo Perfeito",
+              artista: "Prof. Rítmico"
+            }}
           />
 
           <QuizInterativo
@@ -995,6 +1209,41 @@ export default function AulaGeometriaAnalitica({
             points={250}
           />
 
+          <ModuleConsolidation
+            index={7}
+            variant="indigo"
+            video={{
+              videoId: "F3T0xZZz9nE",
+              title: "Parábola: Vértice, Foco e Diretriz",
+              duration: "16:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Parábola",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Forma: (y-k)² = 4p(x-h) ou (x-h)² = 4p(y-k)", type: "formula", placeholderColor: "bg-indigo-500/20", imageUrl: "/temp-img.png" },
+                { title: "Vértice V(h,k), Foco F, Diretriz (reta)", type: "diagram", placeholderColor: "bg-purple-500/20", imageUrl: "/temp-img.png" },
+                { title: "Parâmetro p = distância vértice-foco", type: "diagram", placeholderColor: "bg-violet-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Parábola = Lugar geométrico de distâncias iguais!</p>
+                  <p>Todo ponto P da parábola satisfaz: distância(P,foco) = distância(P,diretriz)</p>
+                  <p className="text-sm text-muted-foreground mt-2">Se 4p &gt; 0 → abre para cima/direita | Se 4p &lt; 0 → abre para baixo/esquerda</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+              titulo: "A Trajetória Parabólica",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <QuizInterativo
             questoes={quizM7}
             moduleId="modulo-7"
@@ -1097,6 +1346,42 @@ export default function AulaGeometriaAnalitica({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={8}
+            variant="emerald"
+            video={{
+              videoId: "hCHWEFQgQPw",
+              title: "Interseções: Reta com Reta, Reta com Circunferência",
+              duration: "14:40"
+            }}
+            resumoVisual={{
+              moduloNome: "Interseções e Sistemas",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Reta ∩ Reta: Resolver sistema 2×2", type: "diagram", placeholderColor: "bg-emerald-500/20", imageUrl: "/temp-img.png" },
+                { title: "Reta ∩ Circunferência: Substituir e resolver equação", type: "diagram", placeholderColor: "bg-teal-500/20", imageUrl: "/temp-img.png" },
+                { title: "Discriminante Δ: 0, 1 ou 2 soluções", type: "formula", placeholderColor: "bg-green-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Sempre resolva sistemas algebricamente!</p>
+                  <p>Para reta ∩ circunferência: substitua a equação da reta na circunferência</p>
+                  <p className="text-sm text-muted-foreground mt-2">Δ &gt; 0 = 2 pontos | Δ = 0 = tangente (1 ponto) | Δ &lt; 0 = nenhum ponto</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+              titulo: "Encontros e Cruzamentos",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <QuizInterativo
             questoes={quizM8}
             moduleId="modulo-8"
@@ -1225,6 +1510,41 @@ export default function AulaGeometriaAnalitica({
             yMin={0}
             yMax={20}
             points={250}
+          />
+
+          <ModuleConsolidation
+            index={9}
+            variant="cyan"
+            video={{
+              videoId: "SflP4vQ0jEE",
+              title: "Geometria Analítica na Indústria Petrolífera",
+              duration: "17:00"
+            }}
+            resumoVisual={{
+              moduloNome: "Aplicações Petrobras",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Coordenadas UTM para Poços Exploratórios", type: "diagram", placeholderColor: "bg-cyan-500/20", imageUrl: "/temp-img.png" },
+                { title: "Perímetro de Concessão (Circunferências/Elipses)", type: "diagram", placeholderColor: "bg-sky-500/20", imageUrl: "/temp-img.png" },
+                { title: "Otimização de Rotas de Oleodutos", type: "diagram", placeholderColor: "bg-blue-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Poços são PONTOS no plano! Calcule distâncias entre eles.</p>
+                  <p>Campos de produção = CIRCUNFERÊNCIAS. Encontre raio máximo permitido.</p>
+                  <p className="text-sm text-muted-foreground mt-2">Dutos são RETAS. Distância ponto-reta = proximidade de obstáculos!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+              titulo: "Geometria do Petróleo",
+              artista: "Prof. Rítmico"
+            }}
           />
 
           <QuizInterativo
@@ -1365,6 +1685,42 @@ export default function AulaGeometriaAnalitica({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={10}
+            variant="blue"
+            video={{
+              videoId: "7U2Vh_7y3BE",
+              title: "Geometria Analítica - Simulado Final Completo",
+              duration: "18:45"
+            }}
+            resumoVisual={{
+              moduloNome: "Simulado Final Consolidado",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Revisão: Pontos, Retas e Distâncias", type: "diagram", placeholderColor: "bg-blue-500/20", imageUrl: "/temp-img.png" },
+                { title: "Cônicas: Circunferência, Parábola, Elipse e Hipérbola", type: "diagram", placeholderColor: "bg-indigo-500/20", imageUrl: "/temp-img.png" },
+                { title: "Estratégia de Prova CESGRANRIO", type: "diagram", placeholderColor: "bg-cyan-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Em prova: Desenhe sempre! Esboçar ajuda a eliminar alternativas.</p>
+                  <p>Fórmulas mais usadas: d=√[(Δx)²+(Δy)²], (x-a)²+(y-b)²=r², y=mx+n</p>
+                  <p className="text-sm text-muted-foreground mt-2">Sem calculadora? Use aproximações: √2≈1.4, √3≈1.7, π≈3.14</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+              titulo: "A Jornada Geométrica Completa",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <QuizInterativo
             questoes={quizM10}
             moduleId="modulo-10"

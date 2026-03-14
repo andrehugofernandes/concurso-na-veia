@@ -11,6 +11,7 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
+  ModuleConsolidation,
 } from "../shared";
 import {
   QUIZ_M1_RAZOES_TRIG,
@@ -270,6 +271,88 @@ export default function AulaTrigonometria({
             />
           </section>
 
+          <ModuleConsolidation
+            index={1}
+            variant="indigo"
+            video={{
+              videoId: "qXv_IOKSZPY",
+              title: "Razões Trigonométricas no Triângulo Retângulo",
+              duration: "12:34"
+            }}
+            resumoVisual={{
+              moduloNome: "Razões Trigonométricas",
+              tituloAula: "Trigonometria",
+              materia: "Matemática",
+              images: [{
+                title: "SOH-CAH-TOA: Seno, Cosseno, Tangente",
+                type: "diagram",
+                placeholderColor: "#4f46e5",
+                imageUrl: "/temp-img.png"
+              }]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (<div className="space-y-3">
+                <p className="font-semibold">SOH-CAH-TOA é a chave mnemônica:</p>
+                <p>• Seno = Oposto/Hipotenusa (SOH)</p>
+                <p>• Cosseno = Adjacente/Hipotenusa (CAH)</p>
+                <p>• Tangente = Oposto/Adjacente (TOA)</p>
+                <p className="text-sm italic pt-2">Lembre: em um triângulo retângulo, sempre há uma hipotenusa e dois catetos (oposto e adjacente).</p>
+              </div>)
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Razões Trigonométricas - Resumo Ritmado",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+          <section className="mt-16">
+            <ContentAccordion
+              titulo="Prática Avançada — Trigonometria Aplicada (Módulo 1)"
+              slides={[
+                {
+                  titulo: "Exercício Resolvido 1: Cálculo de Altura com Ângulo de Elevação",
+                  icone: "📏",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="font-semibold">Um observador no chão a 100m de distância de uma estrutura observa o topo desta a um ângulo de elevação de 30°. Qual é a altura da estrutura?</p>
+                      <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
+                        <p className="text-sm mb-2"><strong>Solução:</strong></p>
+                        <p className="text-sm">1. Identifique: CA = 100m (cateto adjacente), θ = 30°, CO = altura (incógnita)</p>
+                        <p className="text-sm">2. Use: tg(30°) = CO/CA</p>
+                        <p className="text-sm">3. tg(30°) = √3/3, então: √3/3 = h/100</p>
+                        <p className="text-sm">4. h = 100 · √3/3 ≈ 57,7m</p>
+                      </div>
+                      <AlertBox tipo="success">
+                        Lembre: o ângulo de elevação é sempre medido do chão para cima, formando um triângulo retângulo com o observador no solo.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exercício Resolvido 2: Inclinação de Rampa em Operações Petrobras",
+                  icone: "🛣️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="font-semibold">Uma rampa de acesso tem comprimento de 15m (hipotenusa) e forma um ângulo de 20° com o solo. Calcule a altura vertical da rampa.</p>
+                      <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
+                        <p className="text-sm mb-2"><strong>Solução:</strong></p>
+                        <p className="text-sm">1. Identifique: Hip = 15m, θ = 20°, CO = altura (incógnita)</p>
+                        <p className="text-sm">2. Use: sen(20°) = CO/Hip</p>
+                        <p className="text-sm">3. sen(20°) ≈ 0,342, então: 0,342 = h/15</p>
+                        <p className="text-sm">4. h ≈ 5,13m (altura vertical da rampa)</p>
+                      </div>
+                      <AlertBox tipo="info">
+                        Esta é uma aplicação comum em inspeções de segurança de rampas de acesso em plataformas de petróleo.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
           <section id="quiz-modulo-1" className="mt-16">
             <QuizInterativo
               questoes={quizM1}
@@ -464,6 +547,93 @@ export default function AulaTrigonometria({
             />
           </section>
 
+          <ModuleConsolidation
+            index={2}
+            variant="emerald"
+            video={{
+              videoId: "V0xjO3M0q0s",
+              title: "Ângulos Notáveis: 30°, 45°, 60°",
+              duration: "15:22"
+            }}
+            resumoVisual={{
+              moduloNome: "Ângulos Notáveis",
+              tituloAula: "Trigonometria",
+              materia: "Matemática",
+              images: [{
+                title: "Tabela: sen, cos, tg de 30°, 45°, 60°",
+                type: "diagram",
+                placeholderColor: "#10b981",
+                imageUrl: "/temp-img.png"
+              }]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (<div className="space-y-3">
+                <p className="font-semibold">Decorar em sequência numérica (√n/2):</p>
+                <p>sen: √1, √2, √3 (÷2) → 1/2, √2/2, √3/2</p>
+                <p>cos: √3, √2, √1 (÷2) → √3/2, √2/2, 1/2</p>
+                <p className="text-sm italic pt-2">Seno AUMENTA de 0° a 90°. Cosseno DIMINUI de 0° a 90°.</p>
+              </div>)
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+              titulo: "Ângulos Notáveis - Sequência √1, √2, √3",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+          <section className="mt-16">
+            <ContentAccordion
+              titulo="Prática Avançada — Ângulos Notáveis (Módulo 2)"
+              slides={[
+                {
+                  titulo: "Memória Rápida: A Tabela de Ângulos Notáveis",
+                  icone: "📋",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>A tabela de ângulos notáveis (30°, 45°, 60°) é fundamental para resolver rapidamente em provas:</p>
+                      <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
+                        <table className="w-full text-sm">
+                          <thead>
+                            <tr className="border-b border-emerald-500/30">
+                              <th className="text-left p-2">Ângulo</th>
+                              <th className="text-center p-2">30°</th>
+                              <th className="text-center p-2">45°</th>
+                              <th className="text-center p-2">60°</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr className="border-b border-emerald-500/10">
+                              <td className="font-bold p-2">sen</td>
+                              <td className="text-center p-2 font-mono">1/2</td>
+                              <td className="text-center p-2 font-mono">√2/2</td>
+                              <td className="text-center p-2 font-mono">√3/2</td>
+                            </tr>
+                            <tr className="border-b border-emerald-500/10">
+                              <td className="font-bold p-2">cos</td>
+                              <td className="text-center p-2 font-mono">√3/2</td>
+                              <td className="text-center p-2 font-mono">√2/2</td>
+                              <td className="text-center p-2 font-mono">1/2</td>
+                            </tr>
+                            <tr>
+                              <td className="font-bold p-2">tg</td>
+                              <td className="text-center p-2 font-mono">√3/3</td>
+                              <td className="text-center p-2 font-mono">1</td>
+                              <td className="text-center p-2 font-mono">√3</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <AlertBox tipo="success">
+                        Dica: Seno aumenta (1/2 → √2/2 → √3/2), Cosseno diminui (√3/2 → √2/2 → 1/2). Tangente: na ordem 1/√3, 1, √3.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
           <section id="quiz-modulo-2" className="mt-16">
             <QuizInterativo
               questoes={quizM2}
@@ -628,6 +798,68 @@ export default function AulaTrigonometria({
                         <strong>5π/6 = 150°</strong> e{" "}
                         <strong>7π/4 = 315°</strong>. Use o ângulo de referência
                         do 1º quadrante e ajuste o sinal pelo quadrante.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <ModuleConsolidation
+            index={3}
+            variant="cyan"
+            video={{
+              videoId: "0PqJ_MN0n8U",
+              title: "Circunferência Unitária e Radianos",
+              duration: "18:45"
+            }}
+            resumoVisual={{
+              moduloNome: "Círculo Trigonométrico",
+              tituloAula: "Trigonometria",
+              materia: "Matemática",
+              images: [{
+                title: "Ângulos em radianos e posição no círculo unitário",
+                type: "diagram",
+                placeholderColor: "#06b6d4",
+                imageUrl: "/temp-img.png"
+              }]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (<div className="space-y-3">
+                <p className="font-semibold">Conversão π: 180° = π rad</p>
+                <p>• π/6 = 30°, π/4 = 45°, π/3 = 60°, π/2 = 90°</p>
+                <p>• Quadrante I: 0 a π/2 (sen+ cos+)</p>
+                <p>• Quadrante II: π/2 a π (sen+ cos-)</p>
+                <p className="text-sm italic pt-2">Use ângulo de referência: sempre use distância para eixo mais próximo.</p>
+              </div>)
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+              titulo: "Círculo Unitário - Quadrantes e Sinais",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+          <section className="mt-16">
+            <ContentAccordion
+              titulo="Prática Avançada — Círculo Trigonométrico (Módulo 3)"
+              slides={[
+                {
+                  titulo: "Compreendendo Radianos vs Graus",
+                  icone: "🔄",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p><strong>Radianos</strong> medem o comprimento do arco em relação ao raio. Em um círculo unitário (raio = 1), o comprimento do arco = medida em radianos.</p>
+                      <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 space-y-2">
+                        <p className="text-sm"><strong>Conversões Essenciais:</strong></p>
+                        <p className="text-sm">π rad = 180° → 1 rad ≈ 57.3°</p>
+                        <p className="text-sm">2π rad = 360° (volta completa)</p>
+                        <p className="text-sm">π/2 rad = 90°, π/3 rad = 60°, π/4 rad = 45°</p>
+                      </div>
+                      <AlertBox tipo="info">
+                        Em cálculo e física, radianos são preferidos porque simplificam muitas fórmulas (derivadas de sen(x) é cos(x) quando x está em radianos).
                       </AlertBox>
                     </div>
                   ),
@@ -807,6 +1039,69 @@ export default function AulaTrigonometria({
             />
           </section>
 
+          <ModuleConsolidation
+            index={4}
+            variant="blue"
+            video={{
+              videoId: "xEiUPR46EIQ",
+              title: "Funções sen(x), cos(x), tg(x): Gráficos e Propriedades",
+              duration: "20:15"
+            }}
+            resumoVisual={{
+              moduloNome: "Funções Trigonométricas",
+              tituloAula: "Trigonometria",
+              materia: "Matemática",
+              images: [{
+                title: "Período 2π, Amplitude 1, Simetria em sen(x) e cos(x)",
+                type: "diagram",
+                placeholderColor: "#3b82f6",
+                imageUrl: "/temp-img.png"
+              }]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (<div className="space-y-3">
+                <p className="font-semibold">Propriedades fundamentais:</p>
+                <p>• Período de sen(x) e cos(x): 2π</p>
+                <p>• Período de tg(x): π</p>
+                <p>• Amplitude de sen(x) e cos(x): [-1, 1]</p>
+                <p>• sen(x) é ÍMPAR, cos(x) é PAR</p>
+                <p className="text-sm italic pt-2">Deslocamento: sen(x+π/2) = cos(x)</p>
+              </div>)
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+              titulo: "Funções Trigonométricas - Período e Amplitude",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+          <section className="mt-16">
+            <ContentAccordion
+              titulo="Prática Avançada — Funções Trigonométricas (Módulo 4)"
+              slides={[
+                {
+                  titulo: "Transformações em Funções Trigonométricas",
+                  icone: "📐",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p><strong>Transformações básicas:</strong> y = a·sen(bx + c) + d</p>
+                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
+                        <p className="text-sm">• <strong>a</strong>: amplitude (altura máxima - valor central)</p>
+                        <p className="text-sm">• <strong>b</strong>: afeta período (período = 2π/b)</p>
+                        <p className="text-sm">• <strong>c</strong>: deslocamento horizontal (defasagem)</p>
+                        <p className="text-sm">• <strong>d</strong>: deslocamento vertical</p>
+                      </div>
+                      <AlertBox tipo="success">
+                        Exemplo: y = 2·sen(3x - π/2) + 1 tem amplitude 2, período 2π/3, deslocamento horizontal π/6 à direita, e desloca 1 unidade para cima.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
           <section id="quiz-modulo-4" className="mt-16">
             <QuizInterativo
               questoes={quizM4}
@@ -944,6 +1239,75 @@ export default function AulaTrigonometria({
                         cos(2θ), vai errar a simplificação. Memorize as três
                         formas!
                       </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <ModuleConsolidation
+            index={5}
+            variant="amber"
+            video={{
+              videoId: "1Ixnl1bN3yg",
+              title: "Identidades Trigonométricas Fundamentais",
+              duration: "16:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Identidades Trigonométricas",
+              tituloAula: "Trigonometria",
+              materia: "Matemática",
+              images: [{
+                title: "sen²θ + cos²θ = 1, sec²θ = 1 + tg²θ, cossec²θ = 1 + cotg²θ",
+                type: "diagram",
+                placeholderColor: "#f59e0b",
+                imageUrl: "/temp-img.png"
+              }]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (<div className="space-y-3">
+                <p className="font-semibold">As 3 identidades principais:</p>
+                <p>1) sen²θ + cos²θ = 1 (Pitagórica)</p>
+                <p>2) 1 + tg²θ = sec²θ</p>
+                <p>3) 1 + cotg²θ = cossec²θ</p>
+                <p className="text-sm italic pt-2">Tip: Deduza a partir da primeira! Divida por cos² ou sen².</p>
+              </div>)
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+              titulo: "Identidades - A Pitagórica é a Mãe",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+          <section className="mt-16">
+            <ContentAccordion
+              titulo="Prática Avançada — Identidades Trigonométricas (Módulo 5)"
+              slides={[
+                {
+                  titulo: "Derivação das Identidades Pitagóricas",
+                  icone: "🧮",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p><strong>De uma identidade, derivamos todas as outras:</strong></p>
+                      <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 space-y-3">
+                        <div className="text-sm">
+                          <p className="font-bold mb-1">Identidade Fundamental:</p>
+                          <p className="font-mono">sen²θ + cos²θ = 1</p>
+                        </div>
+                        <div className="text-sm">
+                          <p className="font-bold mb-1">Divida por cos²θ:</p>
+                          <p className="font-mono">sen²θ/cos²θ + 1 = 1/cos²θ</p>
+                          <p className="font-mono">tg²θ + 1 = sec²θ</p>
+                        </div>
+                        <div className="text-sm">
+                          <p className="font-bold mb-1">Divida por sen²θ:</p>
+                          <p className="font-mono">1 + cos²θ/sen²θ = 1/sen²θ</p>
+                          <p className="font-mono">1 + cotg²θ = cossec²θ</p>
+                        </div>
+                      </div>
                     </div>
                   ),
                 },
@@ -1101,6 +1465,67 @@ export default function AulaTrigonometria({
             />
           </section>
 
+          <ModuleConsolidation
+            index={6}
+            variant="rose"
+            video={{
+              videoId: "FAp9XvJNc0I",
+              title: "Lei dos Senos: a/sen(A) = b/sen(B) = c/sen(C)",
+              duration: "14:50"
+            }}
+            resumoVisual={{
+              moduloNome: "Lei dos Senos",
+              tituloAula: "Trigonometria",
+              materia: "Matemática",
+              images: [{
+                title: "Proporção entre lados e senos dos ângulos opostos",
+                type: "diagram",
+                placeholderColor: "#f43f5e",
+                imageUrl: "/temp-img.png"
+              }]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (<div className="space-y-3">
+                <p className="font-semibold">Lei dos Senos: lado/seno oposto</p>
+                <p>a/sen(A) = b/sen(B) = c/sen(C) = 2R</p>
+                <p>Onde R é o raio da circunferência circunscrita.</p>
+                <p className="text-sm italic pt-2">Use quando: conhecer 2 ângulos + 1 lado (AAS ou ASA)</p>
+              </div>)
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+              titulo: "Lei dos Senos - Lado sobre Seno Oposto",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+          <section className="mt-16">
+            <ContentAccordion
+              titulo="Prática Avançada — Lei dos Senos (Módulo 6)"
+              slides={[
+                {
+                  titulo: "Caso AAS: Ângulo-Ângulo-Lado",
+                  icone: "🔍",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p><strong>Exemplo:</strong> Em um triângulo, A = 60°, B = 45°, e lado c = 10. Encontre lado a.</p>
+                      <div className="bg-rose-500/10 border border-rose-500/20 rounded-xl p-4 space-y-2">
+                        <p className="text-sm">1. Primeiro, encontre C: C = 180° - 60° - 45° = 75°</p>
+                        <p className="text-sm">2. Aplique Lei dos Senos: a/sen(A) = c/sen(C)</p>
+                        <p className="text-sm">3. a/sen(60°) = 10/sen(75°)</p>
+                        <p className="text-sm">4. a = 10·sen(60°)/sen(75°) = 10·(√3/2)/0,966 ≈ 8,93</p>
+                      </div>
+                      <AlertBox tipo="success">
+                        Este é o caso mais comum em testes: use Lei dos Senos quando conhecer uma medida de lado com seu ângulo oposto.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
           <section id="quiz-modulo-6" className="mt-16">
             <QuizInterativo
               questoes={quizM6}
@@ -1245,6 +1670,67 @@ export default function AulaTrigonometria({
             />
           </section>
 
+          <ModuleConsolidation
+            index={7}
+            variant="indigo"
+            video={{
+              videoId: "oXDe-QYqbWo",
+              title: "Lei dos Cossenos: a² = b² + c² - 2bc·cos(A)",
+              duration: "17:22"
+            }}
+            resumoVisual={{
+              moduloNome: "Lei dos Cossenos",
+              tituloAula: "Trigonometria",
+              materia: "Matemática",
+              images: [{
+                title: "Generalização de Pitágoras para qualquer triângulo",
+                type: "diagram",
+                placeholderColor: "#4f46e5",
+                imageUrl: "/temp-img.png"
+              }]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (<div className="space-y-3">
+                <p className="font-semibold">Lei dos Cossenos (Pitágoras Generalizada):</p>
+                <p>a² = b² + c² - 2bc·cos(A)</p>
+                <p>Use quando: 3 lados (SSS) ou 2 lados + ângulo entre (SAS)</p>
+                <p className="text-sm italic pt-2">Se cos(A) = 0 (A = 90°), vira a² = b² + c² (Pitágoras!).</p>
+              </div>)
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+              titulo: "Lei dos Cossenos - Pitágoras do Triângulo Oblíquo",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+          <section className="mt-16">
+            <ContentAccordion
+              titulo="Prática Avançada — Lei dos Cossenos (Módulo 7)"
+              slides={[
+                {
+                  titulo: "Caso SAS: Dois Lados e Ângulo Entre Eles",
+                  icone: "📐",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p><strong>Exemplo:</strong> Dois lados de um triângulo medem 5 e 7, com ângulo entre eles de 60°. Encontre o terceiro lado.</p>
+                      <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4 space-y-2">
+                        <p className="text-sm">Aplique Lei dos Cossenos: c² = 5² + 7² - 2(5)(7)cos(60°)</p>
+                        <p className="text-sm">c² = 25 + 49 - 70(1/2)</p>
+                        <p className="text-sm">c² = 74 - 35 = 39</p>
+                        <p className="text-sm">c = √39 ≈ 6,24</p>
+                      </div>
+                      <AlertBox tipo="info">
+                        Quando você conhece dois lados e o ângulo ENTRE eles, sempre use Lei dos Cossenos (SAS).
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
           <section id="quiz-modulo-7" className="mt-16">
             <QuizInterativo
               questoes={quizM7}
@@ -1381,6 +1867,68 @@ export default function AulaTrigonometria({
                         soluções no dobro do intervalo: [0°, 720°] para u = 2x.
                         Candidatos que esquecem disso encontram apenas 2 soluções
                         no lugar de 4 — perdem pontos valiosos.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <ModuleConsolidation
+            index={8}
+            variant="emerald"
+            video={{
+              videoId: "jOpTkIwmJqE",
+              title: "Equações Trigonométricas: Resolvendo sin(x)=a, cos(x)=a, tan(x)=a",
+              duration: "19:05"
+            }}
+            resumoVisual={{
+              moduloNome: "Equações Trigonométricas",
+              tituloAula: "Trigonometria",
+              materia: "Matemática",
+              images: [{
+                title: "Soluções periódicas e intervalo [0, 2π)",
+                type: "diagram",
+                placeholderColor: "#10b981",
+                imageUrl: "/temp-img.png"
+              }]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (<div className="space-y-3">
+                <p className="font-semibold">Estratégia para resolver equações trigonométricas:</p>
+                <p>1) Isole a função (sen, cos ou tg)</p>
+                <p>2) Encontre ângulos de referência</p>
+                <p>3) Aplique a periodicidade (adicione 2πk ou πk)</p>
+                <p className="text-sm italic pt-2">Lembre: Sen e Cos têm período 2π; Tangente tem período π.</p>
+              </div>)
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+              titulo: "Equações Trigonométricas - Isolar e Aplicar Periodicidade",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+          <section className="mt-16">
+            <ContentAccordion
+              titulo="Prática Avançada — Equações Trigonométricas (Módulo 8)"
+              slides={[
+                {
+                  titulo: "Resolvendo 2sin(x) - √3 = 0 no intervalo [0, 2π)",
+                  icone: "🔐",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-2">
+                        <p className="text-sm">1. Isole sin(x): sin(x) = √3/2</p>
+                        <p className="text-sm">2. Ache os ângulos: sin(x) = √3/2 quando x = π/3 ou x = 2π/3</p>
+                        <p className="text-sm">3. No intervalo [0, 2π):</p>
+                        <p className="text-sm ml-4">• Primeira volta: x = π/3 (60°) ou x = 2π/3 (120°)</p>
+                        <p className="text-sm">4. Solução geral: x = π/3 + 2πk ou x = 2π/3 + 2πk, onde k ∈ Z</p>
+                      </div>
+                      <AlertBox tipo="success">
+                        Lembre: se sin(x) = a, então x = arcsin(a) ou x = π - arcsin(a) (ambas soluções no intervalo [0, 2π)).
                       </AlertBox>
                     </div>
                   ),
@@ -1573,6 +2121,69 @@ export default function AulaTrigonometria({
             />
           </section>
 
+          <ModuleConsolidation
+            index={9}
+            variant="cyan"
+            video={{
+              videoId: "2mQ8V3vAVPs",
+              title: "Aplicações Reais: Trigonometria em Engenharia e Indústria",
+              duration: "21:40"
+            }}
+            resumoVisual={{
+              moduloNome: "Aplicações Industriais Petrobras",
+              tituloAula: "Trigonometria",
+              materia: "Matemática",
+              images: [{
+                title: "Inclinação de poços, deflexão de dutos, força resultante em estruturas",
+                type: "diagram",
+                placeholderColor: "#06b6d4",
+                imageUrl: "/temp-img.png"
+              }]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato - Contexto Petrobras",
+              content: (<div className="space-y-3">
+                <p className="font-semibold">Aplicações comuns em operações Petrobras:</p>
+                <p>• Ângulos de inclinação: poços, dutos, plataformas (sen θ = altura/hipotenusa)</p>
+                <p>• Deflexão em trajetos: alterações de direção calculadas por senos</p>
+                <p>• Força resultante: decomposição vetorial em componentes perpendiculares</p>
+                <p>• Coordenadas geográficas: latitude/longitude em navegação offshore</p>
+                <p className="text-sm italic pt-2">Tip: Desenhe sempre o triângulo ou diagrama vetorial!</p>
+              </div>)
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+              titulo: "Trigonometria na Engenharia Petrolífera",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+          <section className="mt-16">
+            <ContentAccordion
+              titulo="Prática Avançada — Aplicações Petrobras (Módulo 9)"
+              slides={[
+                {
+                  titulo: "Caso Real: Inclinação de Poço Desviado",
+                  icone: "⛽",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p><strong>Um poço desviado tem comprimento vertical de 2000m e comprimento total (ao longo do poço) de 2500m. Qual é o ângulo de desvio em relação à vertical?</strong></p>
+                      <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 space-y-2">
+                        <p className="text-sm">1. Identifique: CO (comprimento vertical) = 2000m</p>
+                        <p className="text-sm">2. Hip (comprimento total do poço) = 2500m</p>
+                        <p className="text-sm">3. Use: cos(θ) = CO/Hip = 2000/2500 = 0,8</p>
+                        <p className="text-sm">4. θ = arccos(0,8) ≈ 36,87°</p>
+                      </div>
+                      <AlertBox tipo="success">
+                        Este cálculo é essencial em engenharia de poços para verificar se o desvio está dentro dos parâmetros operacionais (geralmente 0-60° dependendo da zona).
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
           <section id="quiz-modulo-9" className="mt-16">
             <QuizInterativo
               questoes={quizM9}
@@ -1753,6 +2364,110 @@ export default function AulaTrigonometria({
             />
           </section>
 
+          <ModuleConsolidation
+            index={10}
+            variant="blue"
+            video={{
+              videoId: "lW3W5I6VLkY",
+              title: "Revisão Geral: Trigonometria da Aula 1 ao Módulo 9",
+              duration: "24:18"
+            }}
+            resumoVisual={{
+              moduloNome: "Simulado Mestre - Consolidação Final",
+              tituloAula: "Trigonometria",
+              materia: "Matemática",
+              images: [{
+                title: "Mapa Mental Completo: Todas as Razões, Identidades, Leis e Aplicações",
+                type: "diagram",
+                placeholderColor: "#3b82f6",
+                imageUrl: "/temp-img.png"
+              }]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato - Resumo Final",
+              content: (<div className="space-y-3">
+                <p className="font-semibold">9 Pilares da Trigonometria (Revise em 5 minutos!):</p>
+                <p>1. SOH-CAH-TOA (razões básicas)</p>
+                <p>2. Ângulos Notáveis: √1, √2, √3 dividido por 2</p>
+                <p>3. Círculo Unitário: quadrantes e sinais</p>
+                <p>4. Funções: período 2π (sen/cos) ou π (tg)</p>
+                <p>5. Identidade: sen²+cos²=1</p>
+                <p>6. Lei dos Senos: a/sen(A) = b/sen(B)</p>
+                <p>7. Lei dos Cossenos: a²=b²+c²-2bc·cos(A)</p>
+                <p>8. Equações: isole, resolva, aplique periodicidade</p>
+                <p>9. Aplicações Petrobras: sempre desenhe o diagrama!</p>
+              </div>)
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+              titulo: "Trigonometria - Os 9 Pilares Consolidados",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+          <section className="mt-16">
+            <ContentAccordion
+              titulo="Revisão Final e Síntese — Consolidação Total (Módulo 10)"
+              slides={[
+                {
+                  titulo: "Mapa Decisório: Qual Lei/Fórmula Usar?",
+                  icone: "🗺️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-3">
+                        <div className="text-sm">
+                          <p className="font-bold mb-1">Triângulo Retângulo:</p>
+                          <p>Você conhece um ângulo agudo e um lado? Use SOH-CAH-TOA</p>
+                        </div>
+                        <div className="text-sm">
+                          <p className="font-bold mb-1">2 ângulos + 1 lado (AAS/ASA):</p>
+                          <p>Use Lei dos Senos: a/sen(A) = b/sen(B)</p>
+                        </div>
+                        <div className="text-sm">
+                          <p className="font-bold mb-1">2 lados + ângulo entre (SAS):</p>
+                          <p>Use Lei dos Cossenos: a² = b² + c² - 2bc·cos(A)</p>
+                        </div>
+                        <div className="text-sm">
+                          <p className="font-bold mb-1">3 lados (SSS):</p>
+                          <p>Use Lei dos Cossenos para achar ângulos</p>
+                        </div>
+                        <div className="text-sm">
+                          <p className="font-bold mb-1">Equação do tipo sin(x)=a:</p>
+                          <p>Isole, ache o ângulo de referência, aplique periodicidade</p>
+                        </div>
+                      </div>
+                      <AlertBox tipo="success">
+                        Estudou? Revise este mapa no dia da prova. Ele define qual ferramenta usar em cada situação!
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Checklist de Revisão — Antes da Prova",
+                  icone: "✅",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
+                        <div className="text-sm space-y-2">
+                          <p>☐ Decorei a tabela de ângulos notáveis (30°, 45°, 60°)?</p>
+                          <p>☐ Lembro dos sinais por quadrante (ASTC)?</p>
+                          <p>☐ Sei quando usar Lei dos Senos vs Cossenos?</p>
+                          <p>☐ Entendo periodicidade de sen/cos/tg?</p>
+                          <p>☐ Consigo resolver sen²+cos²=1 aplicações?</p>
+                          <p>☐ Treino problema Petrobras: poços e dutos?</p>
+                          <p>☐ Fiz 20+ questões de fixação?</p>
+                        </div>
+                      </div>
+                      <AlertBox tipo="info">
+                        Se respondeu "não" para qualquer item, revise aquele módulo agora! Não vá para a prova com lacunas.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
           <section id="quiz-modulo-10" className="mt-16">
             <QuizInterativo
               questoes={quizM10}
@@ -1762,6 +2477,51 @@ export default function AulaTrigonometria({
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
+          </section>
+
+          <section className="mt-20 p-8 bg-gradient-to-r from-blue-500/5 to-indigo-500/5 rounded-2xl border border-blue-500/20">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-2xl font-bold mb-6 text-center">Conclusão: Trigonometria Completa</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-white/50 rounded-lg p-4">
+                  <p className="font-semibold mb-3">O que você aprendeu:</p>
+                  <ul className="text-sm space-y-2 list-disc list-inside">
+                    <li>Razões trigonométricas em triângulos</li>
+                    <li>Tabela de ângulos notáveis</li>
+                    <li>Círculo trigonométrico e radianos</li>
+                    <li>Propriedades de funções periódicas</li>
+                    <li>Identidades fundamentais</li>
+                    <li>Lei dos Senos e Lei dos Cossenos</li>
+                    <li>Resolução de equações trigonométricas</li>
+                    <li>Aplicações em engenharia Petrobras</li>
+                  </ul>
+                </div>
+                <div className="bg-white/50 rounded-lg p-4">
+                  <p className="font-semibold mb-3">Como você pode usar:</p>
+                  <ul className="text-sm space-y-2 list-disc list-inside">
+                    <li>Resolver problemas de inclinação de estruturas</li>
+                    <li>Calcular distâncias em levantamentos</li>
+                    <li>Analisar movimentos periódicos</li>
+                    <li>Aplicar em navegação offshore</li>
+                    <li>Decompor forças vetoriais</li>
+                    <li>Modelar fenômenos oscilatórios</li>
+                    <li>Resolver qualquer tipo de triângulo</li>
+                    <li>Passar em concursos (CESGRANRIO, VUNESP)</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="mt-8 p-6 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
+                <p className="text-center text-sm font-semibold mb-4">Próximos Passos Recomendados:</p>
+                <ol className="text-sm space-y-2 list-decimal list-inside">
+                  <li>Completar todos os 10 módulos do simulado</li>
+                  <li>Refazer os exercícios com ângulos diferentes</li>
+                  <li>Resolver problemas reais da Petrobras (buscar em editais)</li>
+                  <li>Praticar gráficos: esboçar sen, cos, tg com transformações</li>
+                  <li>Revisar semanalmente: use os áudios do "Pulo do Gato"</li>
+                  <li>Conectar com Análise Combinatória e Probabilidade (assuntos conexos em provas)</li>
+                </ol>
+              </div>
+            </div>
           </section>
         </div>
       </TabsContent>
