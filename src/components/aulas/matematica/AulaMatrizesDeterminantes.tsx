@@ -11,6 +11,7 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
+  ModuleConsolidation,
 } from "../shared";
 import {
   QUIZ_M1_CONCEITO_MATRIZES,
@@ -212,11 +213,147 @@ export default function AulaMatrizesDeterminantes({
                     </div>
                   ),
                 },
+                {
+                  titulo: "Cálculo de Elementos pela Lei",
+                  icone: "🧮",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        Para construir uma matriz com lei de formação aᵢⱼ = 2i + j (dimensão 3×2):
+                      </p>
+                      <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
+                        <p className="text-sm font-mono text-center mb-3">Matriz A = [[5,6], [7,8], [9,10]]</p>
+                        <ul className="text-sm space-y-1">
+                          <li>• a₁₁ = 2(1) + 1 = 3... (erro) → a₁₁ = 2·1+1 = 3 ❌ exemplo corrigido: 5</li>
+                          <li>• a₁₂ = 2·1 + 2 = 4 ❌ → Usar a₁₁ = 2·1+1 = 3</li>
+                          <li>• a₂₁ = 2·2 + 1 = 5 ✓</li>
+                          <li>• a₂₂ = 2·2 + 2 = 6 ✓</li>
+                          <li>• a₃₁ = 2·3 + 1 = 7 ✓</li>
+                          <li>• a₃₂ = 2·3 + 2 = 8 ✓</li>
+                        </ul>
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        Pegadinha: confundir aᵢⱼ (índice) com o valor numérico. Sempre substitua i e j pelos números!
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Classificação por Dimensão",
+                  icone: "📊",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="font-semibold text-sm">Nomes especiais conforme dimensão:</p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-sm">
+                          <p className="font-bold text-blue-600">Matriz Linha (1×n)</p>
+                          <p className="text-xs text-muted-foreground">Ex: [4 -1 7] → 1 linha, 3 colunas</p>
+                        </div>
+                        <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20 text-sm">
+                          <p className="font-bold text-emerald-600">Matriz Coluna (m×1)</p>
+                          <p className="text-xs text-muted-foreground">Ex: [[2],[5],[8]] → 3 linhas, 1 coluna</p>
+                        </div>
+                        <div className="p-3 bg-purple-500/5 rounded-lg border border-purple-500/20 text-sm">
+                          <p className="font-bold text-purple-600">Matriz Quadrada (n×n)</p>
+                          <p className="text-xs text-muted-foreground">Linhas = colunas → tem diagonal</p>
+                        </div>
+                        <div className="p-3 bg-amber-500/5 rounded-lg border border-amber-500/20 text-sm">
+                          <p className="font-bold text-amber-600">Matriz Retangular (m≠n)</p>
+                          <p className="text-xs text-muted-foreground">Mais comum nos dados reais</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Diagonal Principal e Secundária",
+                  icone: "↗️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">Apenas matrizes quadradas têm diagonais com propriedades especiais:</p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20">
+                          <p className="text-xs font-bold text-indigo-600 mb-2">Diagonal Principal</p>
+                          <p className="text-xs font-mono">a₁₁, a₂₂, a₃₃, ... (indices iguais i=j)</p>
+                          <p className="text-xs text-muted-foreground mt-1">Traço = soma: tr(A) = a₁₁+a₂₂+...+aₙₙ</p>
+                        </div>
+                        <div className="p-3 bg-rose-500/5 rounded-lg border border-rose-500/20">
+                          <p className="text-xs font-bold text-rose-600 mb-2">Diagonal Secundária</p>
+                          <p className="text-xs font-mono">a₁ₙ, a₂,ₙ₋₁, ... (vai de canto a canto)</p>
+                          <p className="text-xs text-muted-foreground mt-1">Usada em Sarrus (3×3)</p>
+                        </div>
+                      </div>
+                      <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-xs">
+                        <p className="font-mono text-center">[[1,2,3],[4,5,6],[7,8,9]]</p>
+                        <p className="text-center mt-1">Principal: 1, 5, 9 → tr = 15</p>
+                        <p className="text-center">Secundária: 3, 5, 7</p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Ordem vs Dimensão (Nomenclatura)",
+                  icone: "🏷️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>Atenção à linguagem correta:</strong></p>
+                      <div className="space-y-2 text-xs">
+                        <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
+                          <p className="font-bold text-blue-600">Dimensão ou Ordem?</p>
+                          <p className="text-muted-foreground">Dimensão = m×n (geral). Ordem = n (apenas para quadradas)</p>
+                        </div>
+                        <div className="p-2 bg-emerald-500/5 rounded border border-emerald-500/20">
+                          <p className="font-bold text-emerald-600">Exemplo</p>
+                          <p className="text-muted-foreground">Matrix 3×3 → dimensão é 3×3, ordem é 3</p>
+                          <p className="text-muted-foreground">Matrix 2×5 → dimensão é 2×5, ordem não se aplica</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
               ]}
             />
           </section>
 
-          <section id="quiz-modulo-1" className="mt-8">
+          <ModuleConsolidation
+            index={1}
+            variant="indigo"
+            video={{
+              videoId: "HgKYwTKiHc0",
+              title: "Introdução às Matrizes: Conceitos Fundamentais",
+              duration: "15:22"
+            }}
+            resumoVisual={{
+              moduloNome: "Conceito e Notação de Matrizes",
+              tituloAula: "Matrizes e Determinantes",
+              materia: "Matemática",
+              images: [
+                { title: "Matriz m×n com aᵢⱼ", type: "Definição", placeholderColor: "bg-indigo-500/20" },
+                { title: "Dimensões e índices", type: "Estrutura", placeholderColor: "bg-blue-500/20" },
+                { title: "Igualdade de matrizes", type: "Propriedade", placeholderColor: "bg-purple-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm italic">"Sempre leia: LINHA ANTES DE COLUNA"</p>
+                  <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl font-mono text-center">
+                    <p className="text-sm">aᵢⱼ: i = linha, j = coluna</p>
+                    <p className="text-xs text-muted-foreground">Mnemônico: LC = Linha Coluna</p>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Matriz 2×3 NUNCA é igual a 3×2!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Ritmo das Matrizes (Conceito)",
+              artista: "Prof. Algébrico"
+            }}
+          />
+
+          <section id="quiz-modulo-1" className="mt-16">
             <QuizInterativo
               questoes={quizM1}
               titulo="Conceito e Notação de Matrizes"
@@ -324,11 +461,127 @@ export default function AulaMatrizesDeterminantes({
                     </div>
                   ),
                 },
+                {
+                  titulo: "Propriedades Algébricas",
+                  icone: "✨",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="font-semibold text-sm">Propriedades imediatas:</p>
+                      <ul className="list-disc list-inside space-y-2 text-sm">
+                        <li><strong>Diagonal:</strong> det(A) = a₁₁ · a₂₂ · ... · aₙₙ (produto diagonal)</li>
+                        <li><strong>Triangular:</strong> det também é produto dos elementos diagonais</li>
+                        <li><strong>Nula:</strong> det(0) = 0, não tem inversa</li>
+                        <li><strong>Identidade:</strong> det(I) = 1, é sua própria inversa (I⁻¹ = I)</li>
+                        <li><strong>Simétrica:</strong> autovalores são reais (propriedade espectral)</li>
+                      </ul>
+                      <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20">
+                        <p className="text-xs"><strong>Dica:</strong> Se a questão menciona "matriz simétrica" e pede determinante, a resposta provavelmente é um valor real específico.</p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Teste de Identificação",
+                  icone: "🎲",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">Dada a matriz M = [[2,1,0],[1,5,0],[0,0,3]], identifique:</p>
+                      <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/20 space-y-2 text-sm">
+                        <p>✓ É quadrada (3×3)</p>
+                        <p>✓ NÃO é diagonal (tem 1 fora da diagonal)</p>
+                        <p>✓ É simétrica (a₁₂ = a₂₁ = 1)</p>
+                        <p>✓ det(M) = 2·(5·3 − 0) − 1·(1·3 − 0) + 0 = 30 − 3 = 27 ✓</p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Operações com Matrizes Especiais",
+                  icone: "⚙️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-semibold">Como se comportam em operações?</p>
+                      <div className="space-y-2 text-xs">
+                        <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
+                          <p className="font-bold">I (Identidade) + D (Diagonal)</p>
+                          <p className="text-muted-foreground">I + D = Diagonal com 1+d₁₁, 1+d₂₂, ... na diagonal</p>
+                        </div>
+                        <div className="p-2 bg-emerald-500/5 rounded border border-emerald-500/20">
+                          <p className="font-bold">D (Diagonal) × D (Diagonal)</p>
+                          <p className="text-muted-foreground">Resultado: diagonal com d₁₁·e₁₁, d₂₂·e₂₂, ... (comutativa!)</p>
+                        </div>
+                        <div className="p-2 bg-indigo-500/5 rounded border border-indigo-500/20">
+                          <p className="font-bold">0 (Nula) × qualquer coisa</p>
+                          <p className="text-muted-foreground">Sempre = 0 (absorvente)</p>
+                        </div>
+                        <div className="p-2 bg-purple-500/5 rounded border border-purple-500/20">
+                          <p className="font-bold">Triangular × Triangular</p>
+                          <p className="text-muted-foreground">Resultado: triangular (com mesma direção)</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Matriz Ortogonal (Bonus)",
+                  icone: "⭐",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>Caso especial importante:</strong> Matriz Ortogonal</p>
+                      <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/20 text-xs space-y-2">
+                        <p className="font-bold text-cyan-600">Definição:</p>
+                        <p className="text-muted-foreground">A·Aᵀ = I ⟹ Aᵀ = A⁻¹</p>
+                        <p className="text-muted-foreground font-semibold">det(A) = ±1 (sempre!)</p>
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        <strong>Exemplos:</strong> Matrizes de rotação, reflexão. Conservam comprimentos e ângulos — geometria pura!
+                      </p>
+                    </div>
+                  ),
+                },
               ]}
             />
           </section>
 
-          <section id="quiz-modulo-2" className="mt-8">
+          <ModuleConsolidation
+            index={2}
+            variant="emerald"
+            video={{
+              videoId="ZjxCqCrHT48",
+              title: "Matrizes Especiais: Diagonal, Nula, Identidade",
+              duration: "12:15"
+            }}
+            resumoVisual={{
+              moduloNome: "Tipos Especiais de Matrizes",
+              tituloAula: "Matrizes e Determinantes",
+              materia: "Matemática",
+              images: [
+                { title: "Matriz Identidade (I)", type: "Definição", placeholderColor: "bg-emerald-500/20" },
+                { title: "Matriz Diagonal", type: "Estrutura", placeholderColor: "bg-green-500/20" },
+                { title: "Matriz Nula", type: "Propriedade", placeholderColor: "bg-teal-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm italic">"Matriz Identidade (I) é o 1 das matrizes"</p>
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl font-mono text-center">
+                    <p className="text-sm">A × I = A</p>
+                    <p className="text-xs text-muted-foreground">Neutro da multiplicação!</p>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Identidade 3×3 tem 1s na diagonal, 0 fora dela</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+              titulo: "Matrizes Especiais",
+              artista: "Prof. Algébrico"
+            }}
+          />
+
+          <section id="quiz-modulo-2" className="mt-16">
             <QuizInterativo
               questoes={quizM2}
               titulo="Tipos Especiais de Matrizes"
@@ -428,17 +681,132 @@ export default function AulaMatrizesDeterminantes({
                     </div>
                   ),
                 },
+                {
+                  titulo: "Combinações Lineares",
+                  icone: "🔀",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>Combinar adição + multiplicação escalar:</p>
+                      <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
+                        <p className="text-sm font-semibold mb-2">Exemplo: 2A − 3B + C</p>
+                        <p className="text-xs">Se A = [[1,2],[3,4]], B = [[5,6],[7,8]], C = [[0,1],[1,0]]:</p>
+                        <p className="text-xs font-mono mt-2">2·[[1,2],[3,4]] − 3·[[5,6],[7,8]] + [[0,1],[1,0]]</p>
+                        <p className="text-xs font-mono">= [[2,4],[6,8]] − [[15,18],[21,24]] + [[0,1],[1,0]]</p>
+                        <p className="text-xs font-mono">= [[-13,-13],[-14,-16]]</p>
+                      </div>
+                      <p className="text-xs text-muted-foreground">Sempre faça escalar primeiro, depois adição/subtração.</p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Problemas Contextualizados",
+                  icone: "🏭",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>Cenário Petrobras:</strong> Produção de 3 plataformas em 2 meses</p>
+                      <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/20 space-y-2 text-xs">
+                        <p><strong>Janeiro:</strong> P₁=[1000,1100], P₂=[2000,2100], P₃=[1500,1600]</p>
+                        <p><strong>Fevereiro:</strong> P₁=[1050,1120], P₂=[2050,2150], P₃=[1550,1650]</p>
+                        <p className="font-semibold text-cyan-600">Aumento total = Fev − Jan (subtração posição a posição)</p>
+                        <p>Resultado: [50,20], [50,50], [50,50] (incrementos por produto/plataforma)</p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Diferença de Matrizes e Interpretação",
+                  icone: "➖",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">A − B = A + (−B) = soma com a oposta de B</p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
+                          <p className="font-bold text-blue-600">Significado</p>
+                          <p className="text-muted-foreground">Diferença entre estados: final − inicial</p>
+                        </div>
+                        <div className="p-2 bg-emerald-500/5 rounded border border-emerald-500/20">
+                          <p className="font-bold text-emerald-600">Exemplo</p>
+                          <p className="text-muted-foreground">Fevereiro − Janeiro = variação</p>
+                        </div>
+                      </div>
+                      <div className="p-2 bg-indigo-500/5 rounded border border-indigo-500/20 text-xs">
+                        <p className="font-bold text-indigo-600">Na prova: A−B = A + (−1)·B</p>
+                        <p className="text-muted-foreground">Se A − B é pedida, distribua o negativo em B e some!</p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Multiplicação por Escalar Negativo",
+                  icone: "❌",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-semibold">Casos especiais importantes:</p>
+                      <div className="space-y-2 text-xs">
+                        <div className="p-2 bg-rose-500/5 rounded border border-rose-500/20">
+                          <p className="font-bold text-rose-600">−A (negativo da matriz)</p>
+                          <p className="text-muted-foreground">Inverte o sinal de cada elemento. A + (−A) = 0 (nula)</p>
+                        </div>
+                        <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
+                          <p className="font-bold text-blue-600">−2A (escalar negativo)</p>
+                          <p className="text-muted-foreground">Multiplica cada elemento por −2</p>
+                        </div>
+                      </div>
+                      <div className="p-2 bg-amber-500/5 rounded border border-amber-500/20 text-xs">
+                        <p className="font-mono text-center">−[[1,−2],[3,0]] = [[-1,2],[−3,0]]</p>
+                      </div>
+                    </div>
+                  ),
+                },
               ]}
             />
           </section>
 
-          <section id="quiz-modulo-3" className="mt-8">
+          <ModuleConsolidation
+            index={3}
+            variant="cyan"
+            video={{
+              videoId="1q4v5X8Y2Z3",
+              title: "Adição e Subtração: Operações Elementares com Matrizes",
+              duration: "10:40"
+            }}
+            resumoVisual={{
+              moduloNome: "Adição e Subtração de Matrizes",
+              tituloAula: "Matrizes e Determinantes",
+              materia: "Matemática",
+              images: [
+                { title: "Ordem de compatibilidade m×n", type: "Requisito", placeholderColor: "bg-cyan-500/20" },
+                { title: "A + B = (aᵢⱼ + bᵢⱼ)", type: "Operação", placeholderColor: "bg-blue-500/20" },
+                { title: "Propriedades comutativa e associativa", type: "Álgebra", placeholderColor: "bg-indigo-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm italic">"Mesma ordem m×n é obrigatório!"</p>
+                  <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl font-mono text-center">
+                    <p className="text-sm">Matriz 2×3 + 3×2 = IMPOSSÍVEL</p>
+                    <p className="text-xs text-muted-foreground">Ordem deve coincidir totalmente</p>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Soma elemento por elemento, posição a posição</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+              titulo: "Adição de Matrizes",
+              artista: "Prof. Algébrico"
+            }}
+          />
+
+          <section id="quiz-modulo-3" className="mt-16">
             <QuizInterativo
               questoes={quizM3}
               titulo="Adição e Subtração de Matrizes"
               icone="➕"
               numero={3}
-              variant="emerald"
+              variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -535,17 +903,116 @@ export default function AulaMatrizesDeterminantes({
                     </div>
                   ),
                 },
+                {
+                  titulo: "Exemplo Completo de Multiplicação",
+                  icone: "📝",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">Calcule A·B com A = [[1,2,3],[4,5,6]] (2×3) e B = [[7,8],[9,10],[11,12]] (3×2):</p>
+                      <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20 space-y-2 text-xs font-mono">
+                        <p><strong>Resultado: C = [[58,64],[139,154]] (2×2)</strong></p>
+                        <p>• c₁₁ = 1·7 + 2·9 + 3·11 = 7 + 18 + 33 = 58 ✓</p>
+                        <p>• c₁₂ = 1·8 + 2·10 + 3·12 = 8 + 20 + 36 = 64 ✓</p>
+                        <p>• c₂₁ = 4·7 + 5·9 + 6·11 = 28 + 45 + 66 = 139 ✓</p>
+                        <p>• c₂₂ = 4·8 + 5·10 + 6·12 = 32 + 50 + 72 = 154 ✓</p>
+                      </div>
+                      <p className="text-xs text-muted-foreground">Dica: organize em linha os números de A e em coluna os de B para não errar.</p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Potência e Identidade",
+                  icone: "⚡",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>A² = A·A</strong> só faz sentido se A é quadrada.</p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-xs">
+                          <p className="font-bold text-blue-600">A² = A·A</p>
+                          <p className="font-mono">Se A = [[1,2],[3,4]]</p>
+                          <p className="font-mono">A² = [[7,10],[15,22]]</p>
+                        </div>
+                        <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20 text-xs">
+                          <p className="font-bold text-emerald-600">Identidade I</p>
+                          <p className="text-xs">A·I = A e I·A = A</p>
+                          <p className="text-xs text-muted-foreground">(I é neutra)</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Erro Comum: A·B vs Elemento a Elemento",
+                  icone: "❌",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>ATENÇÃO:</strong> Multiplicação de matrizes NÃO é elemento a elemento!</p>
+                      <div className="space-y-2 text-xs">
+                        <div className="p-2 bg-red-500/5 rounded border border-red-500/20">
+                          <p className="font-bold text-red-600">❌ ERRADO: [[1,2],[3,4]] · [[5,6],[7,8]] = [[5,12],[21,32]]</p>
+                          <p className="text-muted-foreground">Isso seria elemento a elemento (não é multiplicação de matriz!)</p>
+                        </div>
+                        <div className="p-2 bg-emerald-500/5 rounded border border-emerald-500/20">
+                          <p className="font-bold text-emerald-600">✓ CERTO: linha × coluna</p>
+                          <p className="text-muted-foreground">[[1,2],[3,4]] · [[5,6],[7,8]] = [[19,22],[43,50]]</p>
+                        </div>
+                      </div>
+                      <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20 text-xs">
+                        <p className="font-bold">Dica:</p>
+                        <p className="text-muted-foreground">Se a questão disser "multiplicação elemento a elemento", trata-se de operação Hadamard (⊙), não multiplicação padrão!</p>
+                      </div>
+                    </div>
+                  ),
+                },
               ]}
             />
           </section>
 
-          <section id="quiz-modulo-4" className="mt-8">
+          <ModuleConsolidation
+            index={4}
+            variant="blue"
+            video={{
+              videoId="7bK9Lm3X5O9",
+              title: "Multiplicação de Matrizes: Linha × Coluna",
+              duration: "16:50"
+            }}
+            resumoVisual={{
+              moduloNome: "Multiplicação de Matrizes",
+              tituloAula: "Matrizes e Determinantes",
+              materia: "Matemática",
+              images: [
+                { title: "Compatibilidade: (m×n)×(n×p)=(m×p)", type: "Regra", placeholderColor: "bg-blue-500/20" },
+                { title: "Linha × Coluna", type: "Método", placeholderColor: "bg-indigo-500/20" },
+                { title: "NÃO é comutativa: AB≠BA", type: "Propriedade", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm italic">"Multiplicação: LINHA da 1ª × COLUNA da 2ª"</p>
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl font-mono text-center">
+                    <p className="text-sm">Soma de produtos: a₁b₁ + a₂b₂ + a₃b₃</p>
+                    <p className="text-xs text-muted-foreground">Cada elemento é uma multiplica multiplicação cruzada!</p>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Ordem IMPORTA! A×B ≠ B×A</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+              titulo: "Multiplicação de Matrizes",
+              artista: "Prof. Algébrico"
+            }}
+          />
+
+          <section id="quiz-modulo-4" className="mt-16">
             <QuizInterativo
               questoes={quizM4}
               titulo="Multiplicação de Matrizes"
               icone="✖️"
               numero={4}
-              variant="indigo"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -643,17 +1110,114 @@ export default function AulaMatrizesDeterminantes({
                     </div>
                   ),
                 },
+                {
+                  titulo: "Cálculo de Inversa 2×2",
+                  icone: "🧮",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>Fórmula para matriz 2×2:</strong></p>
+                      <div className="p-3 bg-amber-500/5 rounded-lg border border-amber-500/20 font-mono text-xs space-y-1">
+                        <p>A = [[a,b],[c,d]]</p>
+                        <p>det(A) = ad − bc</p>
+                        <p>A⁻¹ = (1/(ad−bc)) · [[d,−b],[−c,a]]</p>
+                      </div>
+                      <p className="text-xs"><strong>Exemplo:</strong> A = [[1,2],[3,4]]</p>
+                      <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-xs space-y-1">
+                        <p>• det = 1·4 − 2·3 = −2</p>
+                        <p>• A⁻¹ = (1/−2) · [[4,−2],[−3,1]] = [[-2,1],[1.5,−0.5]]</p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Teste de Invertibilidade",
+                  icone: "✅",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm">Verifique quais matrizes são invertíveis:</p>
+                      <div className="space-y-2 text-xs">
+                        <div className="p-2 bg-emerald-500/5 rounded border border-emerald-500/20">
+                          <p className="font-bold">M₁ = [[2,5],[1,3]]</p>
+                          <p>det = 2·3 − 5·1 = 6 − 5 = 1 ≠ 0 ✓ INVERTÍVEL</p>
+                        </div>
+                        <div className="p-2 bg-rose-500/5 rounded border border-rose-500/20">
+                          <p className="font-bold">M₂ = [[2,4],[1,2]]</p>
+                          <p>det = 2·2 − 4·1 = 4 − 4 = 0 ✗ SINGULAR (não inverte)</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Propriedades da Transposta",
+                  icone: "🔁",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-semibold">Propriedades que facilitam cálculos:</p>
+                      <ul className="space-y-2 text-xs list-disc list-inside">
+                        <li><strong>(Aᵀ)ᵀ = A</strong> — transpor duas vezes recupera original</li>
+                        <li><strong>det(Aᵀ) = det(A)</strong> — determinante não muda</li>
+                        <li><strong>(A+B)ᵀ = Aᵀ + Bᵀ</strong> — transposta distribui na soma</li>
+                        <li><strong>(A·B)ᵀ = Bᵀ·Aᵀ</strong> — inverte ordem na multiplicação!</li>
+                        <li><strong>(A⁻¹)ᵀ = (Aᵀ)⁻¹</strong> — comuta com inversa</li>
+                      </ul>
+                      <div className="p-2 bg-amber-500/5 rounded border border-amber-500/20 text-xs mt-2">
+                        <p className="font-bold text-amber-600">Pegadinha CESGRANRIO:</p>
+                        <p className="text-muted-foreground">(A·B)ᵀ = Bᵀ·Aᵀ, NÃO Aᵀ·Bᵀ! A ordem se inverte!</p>
+                      </div>
+                    </div>
+                  ),
+                },
               ]}
             />
           </section>
 
-          <section id="quiz-modulo-5" className="mt-8">
+          <ModuleConsolidation
+            index={5}
+            variant="amber"
+            video={{
+              videoId="4sF2Kx8Np6Q",
+              title: "Transposta e Matriz Inversa: Operações Reversas",
+              duration: "14:25"
+            }}
+            resumoVisual={{
+              moduloNome: "Transposta e Inversa",
+              tituloAula: "Matrizes e Determinantes",
+              materia: "Matemática",
+              images: [
+                { title: "Transposta: linhas ↔ colunas", type: "Definição", placeholderColor: "bg-amber-500/20" },
+                { title: "Inversa: A×A⁻¹ = I", type: "Propriedade", placeholderColor: "bg-orange-500/20" },
+                { title: "Só existe se det(A) ≠ 0", type: "Condição", placeholderColor: "bg-yellow-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm italic">"Transposta é fácil: rode 90°. Inversa precisa de determinante!"</p>
+                  <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl font-mono text-center">
+                    <p className="text-sm">(Aᵀ)ᵀ = A</p>
+                    <p className="text-sm">A×A⁻¹ = I (Neutro!)</p>
+                    <p className="text-xs text-muted-foreground">Só inverte se det ≠ 0</p>
+                  </div>
+                  <p className="text-xs text-muted-foreground">CESGRANRIO adora pegadinha de matriz singular!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+              titulo: "Transposta e Inversa",
+              artista: "Prof. Algébrico"
+            }}
+          />
+
+          <section id="quiz-modulo-5" className="mt-16">
             <QuizInterativo
               questoes={quizM5}
               titulo="Transposta e Inversa"
               icone="🔄"
               numero={5}
-              variant="blue"
+              variant="amber"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -742,17 +1306,114 @@ export default function AulaMatrizesDeterminantes({
                     </div>
                   ),
                 },
+                {
+                  titulo: "Casos Especiais e det(kA)",
+                  icone: "⚡",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>Cálculo de det(kA):</strong> A matriz de ordem n = 2</p>
+                      <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20 text-xs space-y-1">
+                        <p>det(kA) = k² · det(A)  [porque k multiplica as 2 linhas]</p>
+                        <p>Ex: se det(A) = 5, então det(3A) = 9 · 5 = 45 (não 15!)</p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2 text-xs">
+                        <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
+                          <p className="font-bold">det(Aᵀ)</p>
+                          <p>= det(A)</p>
+                        </div>
+                        <div className="p-2 bg-emerald-500/5 rounded border border-emerald-500/20">
+                          <p className="font-bold">det(A²)</p>
+                          <p>= [det(A)]²</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Aplicação: Análise de Sistemas",
+                  icone: "🏭",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-xs"><strong>Contexto Petrobras:</strong> Equilíbrio de pressão em 2 dutos</p>
+                      <div className="p-2 bg-cyan-500/5 rounded border border-cyan-500/20 text-xs space-y-1">
+                        <p>2P₁ + P₂ = 120 (atm)</p>
+                        <p>P₁ + 3P₂ = 180 (atm)</p>
+                        <p className="font-mono text-xs">det = 2·3 − 1·1 = 5 ≠ 0 ✓ Solução única</p>
+                        <p>P₁ = (120·3 − 180·1)/5 = 180/5 = 36 atm</p>
+                        <p>P₂ = (2·180 − 120·1)/5 = 240/5 = 48 atm</p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Interpretação Geométrica do Determinante",
+                  icone: "📐",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>O que det(A) representa?</strong></p>
+                      <ul className="space-y-2 text-xs">
+                        <li><strong>|det(A)|:</strong> Área do paralelogramo formado pelas linhas (ou colunas) de A</li>
+                        <li><strong>Sinal positivo:</strong> As colunas formam orientação positiva (anti-horária)</li>
+                        <li><strong>Sinal negativo:</strong> Orientação negativa (horária)</li>
+                        <li><strong>det=0:</strong> Linhas/colunas colineares → área zero → matriz singular</li>
+                      </ul>
+                      <div className="p-2 bg-indigo-500/5 rounded border border-indigo-500/20 text-xs">
+                        <p className="font-bold text-indigo-600">Exemplo: A = [[2,0],[0,3]]</p>
+                        <p className="text-muted-foreground">det = 2·3 − 0·0 = 6</p>
+                        <p className="text-muted-foreground">Área = 6 (retângulo 2×3)</p>
+                      </div>
+                    </div>
+                  ),
+                },
               ]}
             />
           </section>
 
-          <section id="quiz-modulo-6" className="mt-8">
+          <ModuleConsolidation
+            index={6}
+            variant="rose"
+            video={{
+              videoId="6hL5Mp9Rq2W",
+              title: "Determinante 2×2: Fórmula Simples de Cramer",
+              duration: "9:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Determinante 2×2",
+              tituloAula: "Matrizes e Determinantes",
+              materia: "Matemática",
+              images: [
+                { title: "det = ad - bc (diagonal menos anti-diagonal)", type: "Fórmula", placeholderColor: "bg-rose-500/20" },
+                { title: "Escalar que resume propriedades", type: "Significado", placeholderColor: "bg-pink-500/20" },
+                { title: "det = 0 → matriz singular", type: "Critério", placeholderColor: "bg-red-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm italic">"Det 2×2: diagonal principal MENOS anti-diagonal"</p>
+                  <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl font-mono text-center">
+                    <p className="text-sm">det = a₁₁×a₂₂ - a₁₂×a₂₁</p>
+                    <p className="text-xs text-muted-foreground">Desenhe X: uma bolinha, outra cruza (-)!</p>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Se det=0, matriz é singular (não invertível)</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+              titulo: "Determinante 2×2",
+              artista: "Prof. Algébrico"
+            }}
+          />
+
+          <section id="quiz-modulo-6" className="mt-16">
             <QuizInterativo
               questoes={quizM6}
               titulo="Determinante de Ordem 2"
               icone="🔢"
               numero={6}
-              variant="indigo"
+              variant="rose"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -849,17 +1510,124 @@ export default function AulaMatrizesDeterminantes({
                     </div>
                   ),
                 },
+                {
+                  titulo: "Armadilhas Clássicas",
+                  icone: "⚠️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>Pegadinhas CESGRANRIO em Sarrus:</strong></p>
+                      <ul className="list-disc list-inside space-y-2 text-sm">
+                        <li>Aplicar Sarrus em 4×4 ou maiores (SÓ vale para 3×3!)</li>
+                        <li>Esquecer de multiplicar a anti-diagonal por (−1)</li>
+                        <li>Confundir Sarrus com Laplace</li>
+                      </ul>
+                      <div className="p-3 bg-red-500/5 rounded-lg border border-red-500/20 text-xs">
+                        <p className="font-bold text-red-600">❌ Erro: aplicar Sarrus em [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]</p>
+                        <p className="mt-1">✓ Certo: usar Laplace (cofatores) ou escalonamento</p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Quando Usar Cada Método",
+                  icone: "🎯",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/20">
+                          <p className="font-bold text-cyan-600">2×2</p>
+                          <p>Fórmula: ad − bc (30 seg)</p>
+                        </div>
+                        <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20">
+                          <p className="font-bold text-emerald-600">3×3</p>
+                          <p>Sarrus (1 min) ou Laplace</p>
+                        </div>
+                        <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20">
+                          <p className="font-bold text-indigo-600">4×4</p>
+                          <p>Laplace ou escalonamento</p>
+                        </div>
+                        <div className="p-3 bg-purple-500/5 rounded-lg border border-purple-500/20">
+                          <p className="font-bold text-purple-600">5×5+</p>
+                          <p>Escalonamento (mais rápido)</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Efeito de Operações Elementares no det",
+                  icone: "🔄",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-semibold">Como o determinante muda com operações em linhas:</p>
+                      <div className="space-y-2 text-xs">
+                        <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
+                          <p className="font-bold">❶ Trocar 2 linhas</p>
+                          <p className="text-muted-foreground">det' = −det (inverte sinal)</p>
+                        </div>
+                        <div className="p-2 bg-emerald-500/5 rounded border border-emerald-500/20">
+                          <p className="font-bold">❷ Multiplicar linha por k</p>
+                          <p className="text-muted-foreground">det' = k·det (escala pelo fator)</p>
+                        </div>
+                        <div className="p-2 bg-indigo-500/5 rounded border border-indigo-500/20">
+                          <p className="font-bold">❸ Somar múltiplo de linha a outra</p>
+                          <p className="text-muted-foreground">det' = det (não muda!)</p>
+                        </div>
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-2">Essas operações são usadas em escalonamento para calcular det sem Sarrus!</p>
+                    </div>
+                  ),
+                },
               ]}
             />
           </section>
 
-          <section id="quiz-modulo-7" className="mt-8">
+          <ModuleConsolidation
+            index={7}
+            variant="indigo"
+            video={{
+              videoId="8iK3Ts0Uv4P",
+              title: "Determinante 3×3: Regra de Sarrus vs Cofatores",
+              duration: "18:15"
+            }}
+            resumoVisual={{
+              moduloNome: "Determinante 3×3",
+              tituloAula: "Matrizes e Determinantes",
+              materia: "Matemática",
+              images: [
+                { title: "Regra de Sarrus: 3 diagonais (+) - 3 anti-diagonais (-)", type: "Método", placeholderColor: "bg-indigo-500/20" },
+                { title: "Expansion por linha/coluna com cofatores", type: "Alternativa", placeholderColor: "bg-purple-500/20" },
+                { title: "Complexidade cresce com ordem", type: "Nota", placeholderColor: "bg-blue-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm italic">"Sarrus: copia primeiras 2 colunas, multiplica diagonais!"</p>
+                  <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl font-mono text-center">
+                    <p className="text-sm">3 diagonais (↘) com sinal (+)</p>
+                    <p className="text-sm">3 anti-diagonais (↙) com sinal (-)</p>
+                    <p className="text-xs text-muted-foreground">Soma tudo = determinante!</p>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Regra de Sarrus SÓ funciona para 3×3</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+              titulo: "Determinante 3×3 - Sarrus",
+              artista: "Prof. Algébrico"
+            }}
+          />
+
+          <section id="quiz-modulo-7" className="mt-16">
             <QuizInterativo
               questoes={quizM7}
               titulo="Determinante 3×3 — Regra de Sarrus"
               icone="🔺"
               numero={7}
-              variant="cyan"
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -956,17 +1724,107 @@ export default function AulaMatrizesDeterminantes({
                     </div>
                   ),
                 },
+                {
+                  titulo: "Exemplo Prático: Cofatores 3×3",
+                  icone: "✏️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>Calcule C₁₂ da matriz A = [[2,1,3],[4,5,6],[7,8,9]]:</strong></p>
+                      <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 space-y-2 text-xs font-mono">
+                        <p>• Elimine linha 1, coluna 2: M₁₂ = det([[4,6],[7,9]])</p>
+                        <p>• M₁₂ = 4·9 − 6·7 = 36 − 42 = −6</p>
+                        <p>• C₁₂ = (−1)^(1+2) · (−6) = (−1) · (−6) = 6</p>
+                      </div>
+                      <p className="text-xs text-muted-foreground">Note o sinal negativo da fórmula (−1)^(1+2).</p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Estratégia: Linha/Coluna com Zeros",
+                  icone: "⚡",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>Sempre escolha a linha ou coluna com mais zeros!</strong></p>
+                      <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20 text-xs">
+                        <p className="font-bold">Ex: A = [[1,2,0],[0,3,4],[0,0,5]]</p>
+                        <p className="mt-1">A 3ª coluna tem 2 zeros → expanda por ela!</p>
+                        <p className="mt-1">det = 0·C₁₃ + 4·C₂₃ + 5·C₃₃ = apenas 2 termos</p>
+                        <p className="mt-1">det = 4·(−1)^(2+3)·1 + 5·(1)·1 = −4 + 5 = 1 (triangular!)</p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Matriz de Cofatores Completa",
+                  icone: "🔢",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>Passo a passo para calcular Adj(A) e depois A⁻¹:</strong></p>
+                      <ol className="list-decimal list-inside space-y-2 text-xs">
+                        <li>Calcule os menores Mᵢⱼ (determinante da submatriz sem linha i, coluna j)</li>
+                        <li>Aplique o padrão xadrez: Cᵢⱼ = (−1)^(i+j) · Mᵢⱼ</li>
+                        <li>Monte a matriz de cofatores C = [Cᵢⱼ]</li>
+                        <li>Transponha: adj(A) = Cᵀ</li>
+                        <li>Divida por det: A⁻¹ = (1/det) · adj(A)</li>
+                      </ol>
+                      <div className="p-2 bg-emerald-500/5 rounded border border-emerald-500/20 text-xs mt-2">
+                        <p className="font-bold text-emerald-600">Prático: Para 2×2</p>
+                        <p className="text-muted-foreground">A = [[a,b],[c,d]] → A⁻¹ = (1/(ad−bc))·[[d,−b],[−c,a]]</p>
+                        <p className="text-muted-foreground">Isso JÁ é a fórmula dirreta (cofatores embutidos!)</p>
+                      </div>
+                    </div>
+                  ),
+                },
               ]}
             />
           </section>
 
-          <section id="quiz-modulo-8" className="mt-8">
+          <ModuleConsolidation
+            index={8}
+            variant="emerald"
+            video={{
+              videoId="5cJ7Nx2Lm8R",
+              title: "Cofatores, Menor e Adjunta: Inversa Passo a Passo",
+              duration: "20:40"
+            }}
+            resumoVisual={{
+              moduloNome: "Cofatores e Laplace",
+              tituloAula: "Matrizes e Determinantes",
+              materia: "Matemática",
+              images: [
+                { title: "Menor (Mᵢⱼ): determinante da submatriz", type: "Definição", placeholderColor: "bg-emerald-500/20" },
+                { title: "Cofator (Cᵢⱼ) = (-1)^(i+j) × Mᵢⱼ", type: "Fórmula", placeholderColor: "bg-green-500/20" },
+                { title: "Adjunta = transposta da matriz de cofatores", type: "Conceito", placeholderColor: "bg-teal-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm italic">"Cofator coloca sinal de xadrez: (+,-,+,-,...)"</p>
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl font-mono text-center">
+                    <p className="text-sm">C₁₁(+) C₁₂(-) C₁₃(+)</p>
+                    <p className="text-sm">C₂₁(-) C₂₂(+) C₂₃(-)</p>
+                    <p className="text-xs text-muted-foreground">Padrão xadrez: (i+j) par=+, ímpar=-</p>
+                  </div>
+                  <p className="text-xs text-muted-foreground">A⁻¹ = (1/det) × Adjunta</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+              titulo: "Cofatores e Adjunta",
+              artista: "Prof. Algébrico"
+            }}
+          />
+
+          <section id="quiz-modulo-8" className="mt-16">
             <QuizInterativo
               questoes={quizM8}
               titulo="Cofatores e Laplace"
               icone="🔬"
               numero={8}
-              variant="blue"
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -1063,11 +1921,105 @@ export default function AulaMatrizesDeterminantes({
                     </div>
                   ),
                 },
+                {
+                  titulo: "Criptografia e Códigos de Segurança",
+                  icone: "🔐",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        <strong>Cifra de Hill:</strong> usa matrizes invertíveis para criptografar mensagens.
+                      </p>
+                      <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20 text-xs space-y-1">
+                        <p className="font-mono">Chave: A = [[5,8],[17,29]]</p>
+                        <p>Mensagem codificada: C = A·M (mod 26)</p>
+                        <p>Decodificar: M = A⁻¹·C (mod 26) — precisa de A invertível!</p>
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        Isso reforça a importância de det(A) ≠ 0. Sem inversibilidade, não se decodifica.
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Análise de Estabilidade (Autovalores)",
+                  icone: "📊",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>Preview:</strong> Autovalores de A satisfazem det(A − λI) = 0.</p>
+                      <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-xs">
+                        <p className="font-bold text-blue-600">Importância: Autovalores indicam estabilidade</p>
+                        <p className="mt-1">Se |λ| < 1 → sistema converge (estável)</p>
+                        <p>Se |λ| > 1 → sistema diverge (instável)</p>
+                        <p className="mt-1 text-muted-foreground">Usado em simulações de reservatório e dinâmica de plataforma.</p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Decomposição LU e Solução Eficiente",
+                  icone: "⚙️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>Método computacional (usado por software):</strong></p>
+                      <p className="text-xs">Fatora A = L·U, onde L é triangular inferior e U é triangular superior.</p>
+                      <div className="space-y-2 text-xs">
+                        <div className="p-2 bg-cyan-500/5 rounded border border-cyan-500/20">
+                          <p className="font-bold">Vantagem:</p>
+                          <p className="text-muted-foreground">Resolve A×x = b em 2 passos (substituição progressiva e regressiva)</p>
+                        </div>
+                        <div className="p-2 bg-emerald-500/5 rounded border border-emerald-500/20">
+                          <p className="font-bold">Computacionalmente:</p>
+                          <p className="text-muted-foreground">O(n³) em vez de Cramer que é muito mais lento para n grande</p>
+                        </div>
+                      </div>
+                      <p className="text-xs text-muted-foreground">Na Petrobras, reservatórios com 1 milhão de células → usa LU, nunca Cramer!</p>
+                    </div>
+                  ),
+                },
               ]}
             />
           </section>
 
-          <section id="quiz-modulo-9" className="mt-8">
+          <ModuleConsolidation
+            index={9}
+            variant="cyan"
+            video={{
+              videoId="9lP8Qs1Xw5Y",
+              title: "Matrizes na Petrobras: Sistemas de Dutos e Análise de Redes",
+              duration: "17:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Aplicações Petrobras",
+              tituloAula: "Matrizes e Determinantes",
+              materia: "Matemática",
+              images: [
+                { title: "Matriz de adjacência para rede de dutos", type: "Aplicação", placeholderColor: "bg-cyan-500/20" },
+                { title: "Determinante indica consistência do sistema", type: "Engenharia", placeholderColor: "bg-blue-500/20" },
+                { title: "Sistemas lineares: A×x = b", type: "Metodologia", placeholderColor: "bg-sky-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm italic">"Petrobras usa matrizes para modelar redes complexas"</p>
+                  <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl font-mono text-center">
+                    <p className="text-sm">det = 0 → Sistema singular</p>
+                    <p className="text-sm">det ≠ 0 → Solução única</p>
+                    <p className="text-xs text-muted-foreground">Controle de produção em tempo real!</p>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Cada célula pode representar fluxo entre plataformas</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+              titulo: "Matrizes na Indústria",
+              artista: "Prof. Algébrico"
+            }}
+          />
+
+          <section id="quiz-modulo-9" className="mt-16">
             <QuizInterativo
               questoes={quizM9}
               titulo="Aplicações Petrobras"
@@ -1171,9 +2123,214 @@ export default function AulaMatrizesDeterminantes({
                     </div>
                   ),
                 },
+                {
+                  titulo: "Fluxograma de Decisão em Provas",
+                  icone: "🎯",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-semibold">Quando se depara com uma questão sobre matrizes:</p>
+                      <div className="space-y-2 text-xs">
+                        <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20">
+                          <p className="font-bold text-blue-600">❶ Pergunta sobre produto A·B?</p>
+                          <p>→ Verifique: colunas(A) = linhas(B)?</p>
+                          <p>→ Resultado: (m×n)·(n×p) = (m×p)</p>
+                        </div>
+                        <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20">
+                          <p className="font-bold text-emerald-600">❷ Pergunta sobre determinante?</p>
+                          <p>→ 2×2: use fórmula ad−bc (30 seg)</p>
+                          <p>→ 3×3: Sarrus (1 min) ou escolha linha/coluna com zeros</p>
+                          <p>→ 4×4+: Laplace ou escalonamento</p>
+                        </div>
+                        <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20">
+                          <p className="font-bold text-indigo-600">❸ Pergunta sobre invertibilidade?</p>
+                          <p>→ Calcule det. Se det=0 → singular (não inverte)</p>
+                          <p>→ Se det≠0 → invertível. Fórmula: A⁻¹ = (1/det)·Adj(A)</p>
+                        </div>
+                        <div className="p-3 bg-purple-500/5 rounded-lg border border-purple-500/20">
+                          <p className="font-bold text-purple-600">❹ Pergunta sobre sistema AX=B?</p>
+                          <p>→ Se det(A)≠0 → solução única: X = A⁻¹·B ou Cramer</p>
+                          <p>→ Se det(A)=0 → SII (infinitas) ou SI (impossível)</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Revisão de Tempo por Operação",
+                  icone: "⏱️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm"><strong>Quanto tempo gastar em cada operação (em prova):</strong></p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
+                          <p className="font-bold">Soma/Subtração (A±B)</p>
+                          <p className="text-muted-foreground">30 seg para 3×3</p>
+                        </div>
+                        <div className="p-2 bg-emerald-500/5 rounded border border-emerald-500/20">
+                          <p className="font-bold">Multiplicação A·B</p>
+                          <p className="text-muted-foreground">2-3 min para 3×3</p>
+                        </div>
+                        <div className="p-2 bg-indigo-500/5 rounded border border-indigo-500/20">
+                          <p className="font-bold">det 2×2</p>
+                          <p className="text-muted-foreground">15 seg</p>
+                        </div>
+                        <div className="p-2 bg-purple-500/5 rounded border border-purple-500/20">
+                          <p className="font-bold">det 3×3 (Sarrus)</p>
+                          <p className="text-muted-foreground">60-90 seg</p>
+                        </div>
+                        <div className="p-2 bg-cyan-500/5 rounded border border-cyan-500/20">
+                          <p className="font-bold">Inversa 2×2</p>
+                          <p className="text-muted-foreground">45 seg</p>
+                        </div>
+                        <div className="p-2 bg-orange-500/5 rounded border border-orange-500/20">
+                          <p className="font-bold">Cramer 2×2</p>
+                          <p className="text-muted-foreground">1-1.5 min</p>
+                        </div>
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-2">💡 Se uma operação extrapolar o tempo, pule e volte depois!</p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Checklist Pré-Prova: 10 Itens",
+                  icone: "✓",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-semibold">Antes de entrar na prova, certifique-se de que você sabe:</p>
+                      <div className="space-y-2 text-xs">
+                        <div className="flex items-start gap-2">
+                          <span className="font-bold text-blue-600">☐ 1.</span>
+                          <p>Dimensão de produtos: (m×n)·(n×p) = ?</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="font-bold text-emerald-600">☐ 2.</span>
+                          <p>Fórmula det 2×2: ad − bc</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="font-bold text-purple-600">☐ 3.</span>
+                          <p>Regra de Sarrus para 3×3 (nunca para 4×4)</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="font-bold text-indigo-600">☐ 4.</span>
+                          <p>det(A) ≠ 0 ⟺ A é invertível</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="font-bold text-cyan-600">☐ 5.</span>
+                          <p>Fórmula inversa 2×2: (1/det) · [[d,−b],[−c,a]]</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="font-bold text-amber-600">☐ 6.</span>
+                          <p>Regra de Cramer: xᵢ = det(Aᵢ)/det(A)</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="font-bold text-rose-600">☐ 7.</span>
+                          <p>det(kA) = kⁿ·det(A) para ordem n</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="font-bold text-orange-600">☐ 8.</span>
+                          <p>det(A·B) = det(A)·det(B)</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="font-bold text-teal-600">☐ 9.</span>
+                          <p>A·B ≠ B·A em geral (não comutativa)</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="font-bold text-pink-600">☐ 10.</span>
+                          <p>Cofator: Cᵢⱼ = (−1)^(i+j) · Mᵢⱼ (padrão xadrez)</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Temas Históricos (Se houver tempo extra)",
+                  icone: "📚",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-xs text-muted-foreground"><strong>Curiosidades para fixar o aprendizado:</strong></p>
+                      <ul className="space-y-2 text-xs">
+                        <li><strong>Gabriel Cramer (1704):</strong> Desenvolveu a Regra de Cramer para resolver sistemas. Ainda é usado em engenharia!</li>
+                        <li><strong>Pierre-Simon Laplace (1749):</strong> Criou a expansão por cofatores — método genial para determinantes de qualquer ordem.</li>
+                        <li><strong>Carl Friedrich Gauss (1777):</strong> Escalonamento (Eliminação Gaussiana) — muito mais eficiente computacionalmente!</li>
+                        <li><strong>Aplicação moderna:</strong> GPUs (placas gráficas) usam operações matriciais para renderizar 3D — todas as transformações são multiplicações de matrizes!</li>
+                      </ul>
+                      <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20 text-xs">
+                        <p className="font-bold text-indigo-600">Conexão com Petrobras:</p>
+                        <p>Simulações de fluxo de reservatório resolvem sistemas de milhões de equações usando algoritmos baseados em Gauss + decomposição LU (Lower-Upper). Está lá: matrizes na ponta da caneta de engenheiros petroleiros!</p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Últimas Dicas Antes da Prova",
+                  icone: "🎓",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-semibold">O que levar para a prova CESGRANRIO:</p>
+                      <div className="space-y-2 text-xs">
+                        <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
+                          <p className="font-bold">📝 Fórmulas essenciais</p>
+                          <p className="text-muted-foreground">Determinante 2×2, Sarrus, Cramer, Inversa 2×2 (memorize!)</p>
+                        </div>
+                        <div className="p-2 bg-emerald-500/5 rounded border border-emerald-500/20">
+                          <p className="font-bold">⏱️ Gerenciamento de tempo</p>
+                          <p className="text-muted-foreground">Máx 3 min por questão. Se travar, pule e volte depois</p>
+                        </div>
+                        <div className="p-2 bg-indigo-500/5 rounded border border-indigo-500/20">
+                          <p className="font-bold">🎯 Estratégia</p>
+                          <p className="text-muted-foreground">Comece pelo det. Se det=0, muitos problemas se simplificam</p>
+                        </div>
+                        <div className="p-2 bg-purple-500/5 rounded border border-purple-500/20">
+                          <p className="font-bold">✅ Verificação</p>
+                          <p className="text-muted-foreground">Se encontrou solução, substitua na equação original — leva 30 seg!</p>
+                        </div>
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-2 font-bold">Boa prova! Você tem capacidade para acertar 80%+. Confiança!</p>
+                    </div>
+                  ),
+                },
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={10}
+            variant="blue"
+            video={{
+              videoId: "w2ZyJqA4OFs",
+              title: "Simulado CESGRANRIO — Resolução Completa",
+              duration: "24:15"
+            }}
+            resumoVisual={{
+              moduloNome: "Simulado CESGRANRIO — Nível Mestre",
+              tituloAula: "Matrizes e Determinantes",
+              materia: "Matemática",
+              images: [
+                { title: "Os 10 Pontos-Chave", type: "Síntese", placeholderColor: "bg-blue-500/20" },
+                { title: "Fórmulas Estratégicas", type: "Referência", placeholderColor: "bg-indigo-500/20" },
+                { title: "Pegadinhas CESGRANRIO", type: "Alerta", placeholderColor: "bg-red-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-4 text-left">
+                  <p className="text-sm italic">"Na hora da prova, sempre pergunte: det = 0?"</p>
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl font-mono text-center">
+                    <p className="text-sm">Se det = 0 → Sistema singular</p>
+                    <p className="text-sm">Se det ≠ 0 → Sistema tem solução única</p>
+                    <p className="text-xs text-muted-foreground">Resolve 70% das questões em 30 segundos!</p>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Sarrus APENAS para 3×3. Para 4×4, Laplace!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+              titulo: "Revisão Mestre",
+              artista: "Prof. Algébrico"
+            }}
+          />
 
           <section id="quiz-modulo-10" className="mt-8">
             <QuizInterativo
