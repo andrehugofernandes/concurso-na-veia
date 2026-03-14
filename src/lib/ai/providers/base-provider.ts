@@ -13,4 +13,6 @@ export interface AIProviderOptions {
 
 export interface AIProvider {
   generateQuestion(options: AIProviderOptions): Promise<Questao>;
+  generateQuestionsBatch(options: AIProviderOptions, quantity: number): Promise<Questao[]>;
 }
+

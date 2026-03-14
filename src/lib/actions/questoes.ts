@@ -83,3 +83,58 @@ export async function gerarQuestaoAction(
     return createErrorResponse(error.message || 'Erro inesperado ao gerar questão');
   }
 }
+const gerarQuestoesLoteSchema = gerarQuestaoSchema.extend({
+  quantidade: z.number().min(1).max(10).default(5),
+});
+
+/**
+ * Server Action para gerar questões em lote.
+ */
+export async function gerarQuestoesLoteAction(
+  input: z.infer<typeof gerarQuestoesLoteSchema>
+): Promise<ActionResponse<Questao[]>> {
+  try {
+    const validated = gerarQuestoesLoteSchema.parse(input);
+    const provider = getAIProvider();
+
+    console.log(`[ACTION] Gerando lote de ${validated.quantidade} questões para: ${validated.materia}`);
+
+    let lastError: any;
+    const maxRetries = 3;
+    
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      try {
+        if (attempt > 0) {
+          // Para lote, o delay precisa ser maior se bater no rate limit
+          const delay = attempt * 15000; // 15s, 30s...
+          console.log(`[ACTION] Rate limit detectado. Aguardando ${delay/1000}s para tentativa ${attempt + 1}...`);
+          await new Promise(resolve => setTimeout(resolve, delay));
+        }
+
+        const questoes = await provider.generateQuestionsBatch({
+          materia: validated.materia,
+          dificuldade: validated.dificuldade,
+          assunto: validated.assunto,
+          contexto: validated.contexto ? {
+            cargo: validated.contexto.cargo || 'Geral',
+            nivel: validated.contexto.nivel || 'médio',
+          } : undefined,
+        }, validated.quantidade);
+
+        return createSuccessResponse(questoes);
+      } catch (error: any) {
+        lastError = error;
+        const isRateLimit = error.message?.includes('429') || error.message?.toLowerCase().includes('rate limit');
+        
+        if (!isRateLimit || attempt === maxRetries) {
+          break;
+        }
+      }
+    }
+
+    throw lastError;
+  } catch (error: any) {
+    console.error('[gerarQuestoesLoteAction] Erro:', error);
+    return createErrorResponse(error.message || 'Erro ao gerar lote de questões');
+  }
+}

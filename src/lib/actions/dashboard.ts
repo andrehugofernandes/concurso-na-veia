@@ -35,6 +35,7 @@ export async function getDashboardStatsAction(): Promise<ActionResponse<any>> {
     let viewsLast30Days = 0;
     let activeCategories = 0;
     let filesLast30Days = 0;
+    let totalReports = 0;
 
     const since30Days = new Date();
     since30Days.setDate(since30Days.getDate() - 30);
@@ -62,6 +63,21 @@ export async function getDashboardStatsAction(): Promise<ActionResponse<any>> {
         });
     } catch (e) {}
 
+    try {
+        totalReports = await (db as any).simulados.count({
+            where: { concluido: true }
+        });
+    } catch (e) {
+        // Fallback se o model se chamar 'simulado' ou 'simulados' no prisma
+        try {
+            totalReports = await (db as any).simulado.count({
+                where: { concluido: true }
+            });
+        } catch (e2) {
+            console.warn('Prisma: Model simulados/simulado not found');
+        }
+    }
+
     return createSuccessResponse({
       totalUsers,
       totalFiles,
@@ -71,6 +87,7 @@ export async function getDashboardStatsAction(): Promise<ActionResponse<any>> {
       viewsLast30Days,
       activeCategories,
       filesGrowthRate: filesLast30Days,
+      totalReports,
     });
   } catch (error: any) {
     console.error('[getDashboardStatsAction] Erro:', error);

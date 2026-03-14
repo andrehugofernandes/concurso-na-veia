@@ -3,11 +3,18 @@ import { Progress } from "@/components/ui/progress";
 interface LoadingScreenProps {
   current?: number;
   total?: number;
+  timeRemaining?: number; // em segundos
 }
 
-export default function LoadingScreen({ current, total }: LoadingScreenProps) {
+export default function LoadingScreen({ current, total, timeRemaining }: LoadingScreenProps) {
   const percentage =
     total && total > 0 ? Math.round(((current || 0) / total) * 100) : 0;
+
+  const formatTime = (seconds: number) => {
+    const min = Math.floor(seconds / 60);
+    const sec = seconds % 60;
+    return `${min}:${sec.toString().padStart(2, "0")}`;
+  };
 
   return (
     <div className="min-h-screen gradient-bg flex items-center justify-center p-4">
@@ -39,9 +46,9 @@ export default function LoadingScreen({ current, total }: LoadingScreenProps) {
         </p>
 
         {total && total > 0 ? (
-          <div className="mb-8 space-y-2">
+          <div className="mb-6 space-y-2">
             <div className="flex justify-between text-sm font-bold text-purple-600 dark:text-purple-400">
-              <span>Progresso</span>
+              <span>Progresso de Geração</span>
               <span>
                 {current} de {total}
               </span>
@@ -52,6 +59,20 @@ export default function LoadingScreen({ current, total }: LoadingScreenProps) {
             </p>
           </div>
         ) : null}
+
+        {timeRemaining !== undefined && timeRemaining > 0 && (
+          <div className="mb-8 p-4 bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-500/20 rounded-xl animate-pulse">
+            <p className="text-xs text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider mb-1">
+              Respeitando Limite de Taxa
+            </p>
+            <div className="text-3xl font-black text-amber-700 dark:text-amber-300">
+              {formatTime(timeRemaining)}
+            </div>
+            <p className="text-[10px] text-amber-600/70 dark:text-amber-400/70 mt-1">
+              Aguardando janela de segurança do provedor gratuito
+            </p>
+          </div>
+        )}
 
         <div className="space-y-3 text-left bg-purple-50 dark:bg-purple-900/10 p-4 rounded-lg border border-purple-100 dark:border-purple-500/10">
           <div className="flex items-center space-x-3">

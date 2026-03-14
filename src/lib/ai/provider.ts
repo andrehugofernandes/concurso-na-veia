@@ -1,6 +1,6 @@
 import { GeminiProvider } from "./providers/gemini-provider";
 import { FreeLLMProvider } from "./providers/freellm-provider";
-import { AnthropicProvider } from "./providers/anthropic-provider";
+// import { AnthropicProvider } from "./providers/anthropic-provider";
 import { AIProvider } from "./providers/base-provider";
 
 export function getAIProvider(): AIProvider {
@@ -18,17 +18,20 @@ export function getAIProvider(): AIProvider {
       console.log(`[AI-FACTORY] Tentando inicializar FreeLLM...`);
       return new FreeLLMProvider(); 
     } catch (e) { console.error("Falha ao iniciar FreeLLM:", e); }
-  } else if (preferredProvider === "anthropic") {
+  } 
+  /* Anthropic desativado para economia
+  else if (preferredProvider === "anthropic") {
     try { 
       console.log(`[AI-FACTORY] Tentando inicializar Anthropic...`);
       return new AnthropicProvider(); 
     } catch (e) { console.error("Falha ao iniciar Anthropic:", e); }
   }
+  */
 
   // 2. Fallback por disponibilidade (Ordem: Custos mais baixos primeiro)
   console.log(`[AI-FACTORY] Usando lógica de fallback...`);
   
-  // Gemini Pro (Free Tier disponível)
+  // Gemini Pro (Free Tier)
   if (process.env.GEMINI_API_KEY) {
     try { 
       console.log(`[AI-FACTORY] Fallback: Tentando Gemini...`);
@@ -44,13 +47,6 @@ export function getAIProvider(): AIProvider {
     } catch (e) {}
   }
 
-  // Anthropic (Pago - Último recurso)
-  if (process.env.ANTHROPIC_API_KEY && !process.env.ANTHROPIC_API_KEY.startsWith("#")) {
-    try { 
-      console.log(`[AI-FACTORY] Fallback: Tentando Anthropic...`);
-      return new AnthropicProvider(); 
-    } catch (e) {}
-  }
-
-  throw new Error("Nenhum provedor de IA configurado corretamente no .env.local");
+  throw new Error("Nenhum provedor de IA (Gemini ou FreeLLM) configurado corretamente no .env.local");
 }
+

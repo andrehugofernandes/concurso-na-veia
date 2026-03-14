@@ -37,7 +37,7 @@ export function SimuladoConfigModal({
 
     const handleConfirm = () => {
         onConfirm({
-            quantidade: 5,
+            quantidade: 20,
             dificuldade,
             assunto: assunto === 'all' ? 'Todos os tópicos (Misturado)' : assunto
         });

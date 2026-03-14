@@ -11,7 +11,7 @@ import SimuladoHome from "@/components/simulados/SimuladoHome";
 import { CONTEUDO_MATERIAS } from "@/data/conteudo";
 import { ActionResponse } from "@/lib/actions/safe-action";
 import { getCurrentUserAction } from "@/lib/actions/auth";
-import { gerarQuestaoAction } from "@/lib/actions/questoes";
+import { gerarQuestaoAction, gerarQuestoesLoteAction } from "@/lib/actions/questoes";
 
 const usuarioInicial: Usuario = {
   nome: "",
@@ -51,6 +51,7 @@ export default function SimuladoEspecificoPage() {
   const [totalGeracao, setTotalGeracao] = useState(0);
   const [tempoLimite, setTempoLimite] = useState<number | null>(null); // em segundos
   const [tempoEsgotado, setTempoEsgotado] = useState(false);
+  const [contagemRegressivaIA, setContagemRegressivaIA] = useState(0);
 
   // Carregar dados
   useEffect(() => {
@@ -120,6 +121,17 @@ export default function SimuladoEspecificoPage() {
     }
     return () => clearInterval(intervalo);
   }, [cronometroAtivo, tempoLimite]);
+
+  // Cronômetro para o Rate Limit da IA
+  useEffect(() => {
+    let intervalo: NodeJS.Timeout;
+    if (contagemRegressivaIA > 0) {
+      intervalo = setInterval(() => {
+        setContagemRegressivaIA((prev) => prev - 1);
+      }, 1000);
+    }
+    return () => clearInterval(intervalo);
+  }, [contagemRegressivaIA]);
 
   // Efeito para encerrar prova quando tempo esgota
   useEffect(() => {
@@ -213,14 +225,18 @@ export default function SimuladoEspecificoPage() {
         ];
       } else {
         // Intensivo Misto (sem tópico definido)
-        const qtdPort = Math.ceil(quantidade * 0.3); // 30%
-        const qtdMat = Math.ceil(quantidade * 0.3); // 30%
-        const qtdEsp = quantidade - qtdPort - qtdMat; // Resto (40%)
+        // Intensivo Misto: 20 questões (Padrão Petrobras Técnico)
+        const qtdPort = 10;
+        const qtdMat = 10;
+        const qtdEsp = 0; // No intensivo misto sem assunto, focamos na base
         distribuicao = [
           { materia: "Língua Portuguesa", qtd: qtdPort },
           { materia: "Matemática", qtd: qtdMat },
-          { materia: "Conhecimentos Específicos", qtd: qtdEsp },
         ];
+        // Se a quantidade solicitada for maior que 20, o resto vira específica
+        if (quantidade > 20) {
+          distribuicao.push({ materia: "Conhecimentos Específicos", qtd: quantidade - 20 });
+        }
       }
     } else {
       // Simulado Rápido ou Padrão (tipo = id da matéria)
@@ -230,6 +246,8 @@ export default function SimuladoEspecificoPage() {
         : tipo === "especificas"
           ? "Conhecimentos Específicos"
           : tipo;
+
+      // Padrão Petrobras: 10 Port, 10 Mat, ou 20 do assunto se for único
       distribuicao = [
         {
           materia: nomeMateria,
@@ -239,61 +257,58 @@ export default function SimuladoEspecificoPage() {
       ];
     }
 
+
     setTotalGeracao(quantidade);
     setProgressoGeracao(0);
 
-    // Loop de geração
+    // Loop de geração em blocos de 5 (para respeitar Rate Limit e Token context)
     for (const item of distribuicao) {
-      for (let i = 0; i < item.qtd; i++) {
-        // Break early if global quantity reached (safety)
-        if (questoes.length >= quantidade) break;
+      let questoesGeradasNoItem = 0;
+      
+      while (questoesGeradasNoItem < item.qtd && questoes.length < quantidade) {
+        const restanteNoItem = item.qtd - questoesGeradasNoItem;
+        const tamanhoLote = Math.min(restanteNoItem, 5, quantidade - questoes.length);
 
         try {
           let dificuldade = dificuldadeManual || dificuldadeUrl || undefined;
 
-          // Ajuste automático de dificuldade se não especificado
           if (!dificuldade) {
-            const taxaAcerto =
-              usuario.questoesCertas /
-              (usuario.questoesCertas + usuario.questoesErradas || 1);
+            const taxaAcerto = usuario.questoesCertas / (usuario.questoesCertas + usuario.questoesErradas || 1);
             if (taxaAcerto > 0.8) dificuldade = "Difícil";
             else if (taxaAcerto > 0.6) dificuldade = "Média";
             else if (taxaAcerto < 0.5) dificuldade = "Fácil";
           }
 
-          const questoesAnteriores = questoes.map((q) =>
-            q.enunciado.substring(0, 80),
-          );
-
-          // Delay maior para evitar rate limit (1500ms entre requisições)
-          if (questoes.length > 0) await new Promise((r) => setTimeout(r, 1500));
-
-          const questao = await gerarQuestaoIA(
-            item.materia,
-            dificuldade,
-            item.assunto,
-            questoesAnteriores,
-          );
-          questoes.push(questao);
-          setProgressoGeracao(questoes.length);
-        } catch (error) {
-          console.error(
-            `Erro ao gerar questão ${i + 1} de ${item.materia}:`,
-            error,
-          );
-          // Retentativa simples
-          try {
-            const questao = await gerarQuestaoIA(
-              item.materia,
-              "Média",
-              item.assunto,
-              [],
-            );
-            questoes.push(questao);
-            setProgressoGeracao(questoes.length);
-          } catch (retryError) {
-            console.error("Falha na retentativa:", retryError);
+          // Delay mandatório de 26 segundos entre lotes para o FreeLLM
+          if (questoes.length > 0) {
+            console.log(`[FRONTEND] Aguardando 26s para o próximo lote (Rate Limit FreeLLM)...`);
+            setContagemRegressivaIA(26);
+            await new Promise((r) => setTimeout(r, 26000));
           }
+
+          const result = await gerarQuestoesLoteAction({
+            materia: item.materia,
+            dificuldade: (dificuldade as any) || "Média",
+            assunto: item.assunto,
+            quantidade: tamanhoLote,
+            contexto: {
+              cargo: usuario.cargo || "Geral",
+              nivel: usuario.nivelConcurso || "medio",
+            },
+          });
+
+          if (result.status === "success" && result.data) {
+            questoes.push(...result.data);
+            questoesGeradasNoItem += result.data.length;
+            setProgressoGeracao(questoes.length);
+          } else {
+            throw new Error(result.error || "Erro ao gerar lote");
+          }
+        } catch (error: any) {
+          console.error(`Erro no lote de ${item.materia}:`, error);
+          // Em caso de erro, espera mais um pouco e tenta o próximo item ou termina o loop
+          await new Promise((r) => setTimeout(r, 5000));
+          break; // Sai do loop deste item para evitar loop infinito de erro
         }
       }
     }
@@ -303,10 +318,11 @@ export default function SimuladoEspecificoPage() {
 
   const iniciarSimulado = async (
     tipo: string,
-    quantidade: number = 5,
+    quantidade: number = 20,
     dificuldade?: string,
     assunto?: string,
   ) => {
+    setContagemRegressivaIA(0);
     setGerandoQuestoes(true);
     setTela("gerando");
 
@@ -511,7 +527,13 @@ export default function SimuladoEspecificoPage() {
   };
 
   if (tela === "gerando") {
-    return <LoadingScreen current={progressoGeracao} total={totalGeracao} />;
+    return (
+      <LoadingScreen
+        current={progressoGeracao}
+        total={totalGeracao}
+        timeRemaining={contagemRegressivaIA}
+      />
+    );
   }
 
   // Se tem parâmetros de URL e está na home, mostra loading enquanto inicia

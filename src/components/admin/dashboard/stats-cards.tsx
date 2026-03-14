@@ -81,7 +81,7 @@ export function StatsCards() {
             totalViews: dashboardData.totalViews || 0,
             viewsLast30Days: dashboardData.viewsLast30Days || 0,
             logsToday: logsData.logsToday || 0,
-            totalReports: 8,
+            totalReports: dashboardData.totalReports || 0,
             activeCategories: Array.isArray(categoriesData) ? categoriesData.length : 0,
             filesGrowthRate: dashboardData.filesGrowthRate || 0,
           });
