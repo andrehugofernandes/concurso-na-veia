@@ -2342,6 +2342,134 @@ export default function AulaMatrizesDeterminantes({
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>
+
+          {/* BÔNUS: EXTENSÕES E TEMAS AVANÇADOS */}
+          <section className="mt-16 space-y-6 bg-gradient-to-r from-indigo-500/5 to-blue-500/5 rounded-2xl border border-indigo-500/20 p-8">
+            <div className="space-y-3">
+              <h2 className="text-2xl font-bold text-indigo-600">🚀 Próximas Fronteiras em Álgebra Linear</h2>
+              <p className="text-sm text-muted-foreground">Tópicos avançados para quem quer aprofundar além do currículo CESGRANRIO:</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20 space-y-2">
+                <p className="font-bold text-blue-600">Autovalores e Autovetores</p>
+                <p className="text-xs text-muted-foreground">Equação característica: det(A − λI) = 0. Essencial para dinâmica de sistemas</p>
+              </div>
+              <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 space-y-2">
+                <p className="font-bold text-emerald-600">Decomposição Espectral</p>
+                <p className="text-xs text-muted-foreground">Fatoração em autovalores e autovetores. Base para análise de estabilidade</p>
+              </div>
+              <div className="p-4 bg-purple-500/5 rounded-xl border border-purple-500/20 space-y-2">
+                <p className="font-bold text-purple-600">Normas e Condicionamento</p>
+                <p className="text-xs text-muted-foreground">Medidas de magnitude e sensibilidade numérica de matrizes</p>
+              </div>
+              <div className="p-4 bg-pink-500/5 rounded-xl border border-pink-500/20 space-y-2">
+                <p className="font-bold text-pink-600">Espaços Vetoriais</p>
+                <p className="text-xs text-muted-foreground">Dimensão, base, subespaço. Fundação teórica da álgebra linear</p>
+              </div>
+              <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20 space-y-2">
+                <p className="font-bold text-cyan-600">Projeções Ortogonais</p>
+                <p className="text-xs text-muted-foreground">Mínimos quadrados, regressão linear. Aplicação em engenharia</p>
+              </div>
+              <div className="p-4 bg-orange-500/5 rounded-xl border border-orange-500/20 space-y-2">
+                <p className="font-bold text-orange-600">Decomposição em Valores Singulares (SVD)</p>
+                <p className="text-xs text-muted-foreground">A = U·Σ·Vᵀ. Essencial em compressão de imagem e processamento</p>
+              </div>
+            </div>
+
+            <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/30 space-y-2">
+              <p className="font-bold text-indigo-600 text-sm">💡 Qual é o próximo passo?</p>
+              <p className="text-xs text-muted-foreground">
+                Se você domina matrizes e determinantes, está pronto para Álgebra Linear I (universidade). Os conceitos aqui são a base para análise de estabilidade em engenharia de petróleo — desde simulações de reservatório até controle automático de plataformas.
+              </p>
+              <p className="text-xs font-mono text-muted-foreground mt-3">
+                "Matrizes são a linguagem universal da engenharia moderna. Dominar-as é dominar o futuro." — Prof. Algébrico
+              </p>
+            </div>
+          </section>
+
+          {/* RESUMO VISUAL FINAL */}
+          <section className="mt-16 space-y-6">
+            <h2 className="text-2xl font-bold">📊 Mapa Mental: Matrizes e Determinantes</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-6 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-2xl border border-blue-500/30 space-y-3">
+                <p className="text-lg font-bold text-blue-600">Definição & Notação</p>
+                <ul className="space-y-1 text-xs list-disc list-inside text-muted-foreground">
+                  <li>A = (aᵢⱼ)ₘₓₙ</li>
+                  <li>Linha i, Coluna j</li>
+                  <li>Dimensão m×n</li>
+                  <li>Ordem n (quadradas)</li>
+                </ul>
+              </div>
+
+              <div className="p-6 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-2xl border border-emerald-500/30 space-y-3">
+                <p className="text-lg font-bold text-emerald-600">Operações</p>
+                <ul className="space-y-1 text-xs list-disc list-inside text-muted-foreground">
+                  <li>A + B (m×n iguais)</li>
+                  <li>k·A (escalar)</li>
+                  <li>A·B (n cols A = m rows B)</li>
+                  <li>Aᵀ (transposta)</li>
+                </ul>
+              </div>
+
+              <div className="p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl border border-purple-500/30 space-y-3">
+                <p className="text-lg font-bold text-purple-600">Determinante</p>
+                <ul className="space-y-1 text-xs list-disc list-inside text-muted-foreground">
+                  <li>2×2: ad−bc</li>
+                  <li>3×3: Sarrus</li>
+                  <li>n×n: Laplace</li>
+                  <li>det≠0 ⟹ invertível</li>
+                </ul>
+              </div>
+
+              <div className="p-6 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl border border-orange-500/30 space-y-3">
+                <p className="text-lg font-bold text-orange-600">Tipos Especiais</p>
+                <ul className="space-y-1 text-xs list-disc list-inside text-muted-foreground">
+                  <li>Identidade (I)</li>
+                  <li>Diagonal, Nula</li>
+                  <li>Simétrica (A=Aᵀ)</li>
+                  <li>Triangular</li>
+                </ul>
+              </div>
+
+              <div className="p-6 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-2xl border border-cyan-500/30 space-y-3">
+                <p className="text-lg font-bold text-cyan-600">Aplicações</p>
+                <ul className="space-y-1 text-xs list-disc list-inside text-muted-foreground">
+                  <li>Sistemas AX=B</li>
+                  <li>Cramer: xᵢ=det(Aᵢ)/det(A)</li>
+                  <li>Inversa: A⁻¹</li>
+                  <li>Transformações</li>
+                </ul>
+              </div>
+
+              <div className="p-6 bg-gradient-to-br from-indigo-500/10 to-violet-500/10 rounded-2xl border border-indigo-500/30 space-y-3">
+                <p className="text-lg font-bold text-indigo-600">Propriedades</p>
+                <ul className="space-y-1 text-xs list-disc list-inside text-muted-foreground">
+                  <li>(Aᵀ)ᵀ = A</li>
+                  <li>det(A·B) = det(A)·det(B)</li>
+                  <li>A·I = A</li>
+                  <li>A·A⁻¹ = I</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="p-6 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 rounded-2xl border border-blue-500/30 space-y-3">
+              <p className="text-center font-bold text-lg">🎓 Parabéns por Completar Matrizes e Determinantes!</p>
+              <p className="text-xs text-muted-foreground text-center">
+                Você agora domina um dos tópicos mais fundamentais da matemática aplicada. Estes conceitos são a base para:
+              </p>
+              <div className="grid grid-cols-2 gap-2 mt-3">
+                <div className="text-xs text-muted-foreground p-2 bg-white/50 rounded">📐 Geometria Analítica</div>
+                <div className="text-xs text-muted-foreground p-2 bg-white/50 rounded">📊 Análise Combinatória</div>
+                <div className="text-xs text-muted-foreground p-2 bg-white/50 rounded">⚙️ Engenharia</div>
+                <div className="text-xs text-muted-foreground p-2 bg-white/50 rounded">🔬 Física</div>
+              </div>
+              <p className="text-xs font-mono text-center text-indigo-600 mt-3">
+                Score final: Especialista em Matrizes e Determinantes ✨
+              </p>
+            </div>
+          </section>
         </div>
       </TabsContent>
     </AulaTemplate>
