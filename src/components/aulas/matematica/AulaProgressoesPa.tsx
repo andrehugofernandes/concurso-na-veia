@@ -180,7 +180,7 @@ export default function AulaProgressoesPa({
             gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
           />
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-12">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Conceitos Fundamentais de PA"
