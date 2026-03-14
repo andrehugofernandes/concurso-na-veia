@@ -15,6 +15,7 @@ import {
   type FunctionPlot,
   ModuleConsolidation,
 } from "../shared";
+import { getModuleVariant } from "@/lib/moduleColors";
 import {
   QUIZ_M1_PONTO_PLANO,
   QUIZ_M2_DISTANCIA_MEDIO,
@@ -136,7 +137,7 @@ export default function AulaGeometriaAnalitica({
               index={1}
               title="O Plano Cartesiano e os Quadrantes"
               description="O mapa de coordenadas que organiza o espaço geométrico."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             <ContentAccordion
@@ -230,7 +231,7 @@ export default function AulaGeometriaAnalitica({
 
           <ModuleConsolidation
             index={1}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             video={{
               videoId: "6coNvK0rMoE",
               title: "Geometria Analítica - O Ponto no Plano",
@@ -287,7 +288,7 @@ export default function AulaGeometriaAnalitica({
               index={1}
               title="Fórmula da Distância entre Dois Pontos"
               description="Derivada do Teorema de Pitágoras — mede o comprimento do segmento AB."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             <ContentAccordion
@@ -401,7 +402,7 @@ export default function AulaGeometriaAnalitica({
 
           <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             video={{
               videoId: "pFZjMKqKZEQ",
               title: "Distância entre Pontos e Ponto Médio",
@@ -458,7 +459,7 @@ export default function AulaGeometriaAnalitica({
               index={1}
               title="Formas da Equação da Reta"
               description="Três formas equivalentes — cada uma útil em contextos diferentes."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             <ContentAccordion
@@ -588,7 +589,7 @@ export default function AulaGeometriaAnalitica({
 
           <ModuleConsolidation
             index={3}
-            variant="cyan"
+            variant={getModuleVariant(2)}
             video={{
               videoId: "oSbX2VVjkts",
               title: "Equação da Reta: Reduzida e Geral",
@@ -645,7 +646,7 @@ export default function AulaGeometriaAnalitica({
               index={1}
               title="Classificação das Posições Relativas"
               description="Três casos possíveis para duas retas no plano."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             <ContentAccordion
@@ -729,7 +730,7 @@ export default function AulaGeometriaAnalitica({
 
           <ModuleConsolidation
             index={4}
-            variant="blue"
+            variant={getModuleVariant(1)}
             video={{
               videoId: "QJL5J6LjqFE",
               title: "Posições Relativas entre Retas",
@@ -786,7 +787,7 @@ export default function AulaGeometriaAnalitica({
               index={1}
               title="A Fórmula da Distância Ponto-Reta"
               description="Direta e eficiente — basta substituir as coordenadas do ponto na equação da reta."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             <ContentAccordion
@@ -876,7 +877,7 @@ export default function AulaGeometriaAnalitica({
 
           <ModuleConsolidation
             index={5}
-            variant="amber"
+            variant={getModuleVariant(6)}
             video={{
               videoId: "D4FZQBmYzFU",
               title: "Distância de um Ponto a uma Reta",
@@ -933,7 +934,7 @@ export default function AulaGeometriaAnalitica({
               index={1}
               title="Equação da Circunferência"
               description="Forma reduzida e geral — e como identificar centro e raio rapidamente."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1096,7 +1097,7 @@ export default function AulaGeometriaAnalitica({
               index={1}
               title="Equação, Vértice e Propriedades da Parábola"
               description="De y = ax² + bx + c ao vértice e raízes — tudo de forma sistemática."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1211,7 +1212,7 @@ export default function AulaGeometriaAnalitica({
 
           <ModuleConsolidation
             index={7}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             video={{
               videoId: "F3T0xZZz9nE",
               title: "Parábola: Vértice, Foco e Diretriz",
@@ -1268,7 +1269,7 @@ export default function AulaGeometriaAnalitica({
               index={1}
               title="Interseção de Curvas"
               description="A estratégia de substituição resolve todos os casos."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1349,7 +1350,7 @@ export default function AulaGeometriaAnalitica({
 
           <ModuleConsolidation
             index={8}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             video={{
               videoId: "hCHWEFQgQPw",
               title: "Interseções: Reta com Reta, Reta com Circunferência",
@@ -1406,7 +1407,7 @@ export default function AulaGeometriaAnalitica({
               index={1}
               title="Problemas Típicos do Contexto Petrobras"
               description="Aprenda a reconhecer e resolver cada tipo de questão contextualizada."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1514,7 +1515,7 @@ export default function AulaGeometriaAnalitica({
 
           <ModuleConsolidation
             index={9}
-            variant="cyan"
+            variant={getModuleVariant(2)}
             video={{
               videoId: "SflP4vQ0jEE",
               title: "Geometria Analítica na Indústria Petrolífera",
@@ -1571,7 +1572,7 @@ export default function AulaGeometriaAnalitica({
               index={1}
               title="Revisão Geral — Fórmulas Essenciais"
               description="Consolide tudo antes do simulado final."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1688,7 +1689,7 @@ export default function AulaGeometriaAnalitica({
 
           <ModuleConsolidation
             index={10}
-            variant="blue"
+            variant={getModuleVariant(1)}
             video={{
               videoId: "7U2Vh_7y3BE",
               title: "Geometria Analítica - Simulado Final Completo",

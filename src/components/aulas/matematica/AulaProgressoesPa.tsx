@@ -28,6 +28,8 @@ import {
   LuZap,
 } from "react-icons/lu";
 
+import { getModuleVariant } from "@/lib/moduleColors";
+
 import {
   QUIZ_M1_CONCEITO_PA,
   QUIZ_M2_TERMO_GERAL,
@@ -185,7 +187,7 @@ export default function AulaProgressoesPa({
               index={1}
               title="Conceitos Fundamentais de PA"
               description="Entenda a razão r e o primeiro termo a₁."
-              variant="blue"
+              variant={getModuleVariant(1)}
             />
 
             {/* ACORDEON 1: Conceituação */}
@@ -459,7 +461,7 @@ export default function AulaProgressoesPa({
 
           <ModuleConsolidation
             index={1}
-            variant="blue"
+            variant={getModuleVariant(1)}
             video={{
               videoId: "gZDzgZxrvAo",
               title: "PA: Conceitos Fundamentais",
@@ -514,7 +516,7 @@ export default function AulaProgressoesPa({
               questoes={quizM1}
               titulo="Fixação - Conceitos PA"
               numero={1}
-              variant="blue"
+              variant={getModuleVariant(1)}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -537,7 +539,7 @@ export default function AulaProgressoesPa({
               index={2}
               title="Fórmula do Termo Geral"
               description="aₙ = a₁ + (n-1)r"
-              variant="emerald"
+              variant={getModuleVariant(3)}
             />
 
             <ContentAccordion
@@ -617,7 +619,7 @@ export default function AulaProgressoesPa({
 
           <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             video={{
               videoId: "2Aq7p7-VgEU",
               title: "PA: Termo Geral Explicado",
@@ -672,7 +674,7 @@ export default function AulaProgressoesPa({
               questoes={quizM2}
               titulo="Fixação - Termo Geral"
               numero={2}
-              variant="emerald"
+              variant={getModuleVariant(3)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -695,7 +697,7 @@ export default function AulaProgressoesPa({
               index={3}
               title="Soma dos Primeiros n Termos"
               description="Fórmula e aplicações práticas."
-              variant="amber"
+              variant={getModuleVariant(6)}
             />
 
             <ContentAccordion
@@ -778,7 +780,7 @@ export default function AulaProgressoesPa({
 
           <ModuleConsolidation
             index={3}
-            variant="amber"
+            variant={getModuleVariant(6)}
             video={{
               videoId: "4KzE9R6zWzY",
               title: "PA: Soma Finita",
@@ -835,7 +837,7 @@ export default function AulaProgressoesPa({
               questoes={quizM3}
               titulo="Fixação - Soma Finita"
               numero={3}
-              variant="amber"
+              variant={getModuleVariant(6)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -858,7 +860,7 @@ export default function AulaProgressoesPa({
               index={4}
               title="Propriedades Importantes"
               description="Termos equidistantes, meios aritméticos e simetria."
-              variant="cyan"
+              variant={getModuleVariant(2)}
             />
 
             <ContentAccordion
@@ -945,7 +947,7 @@ export default function AulaProgressoesPa({
 
           <ModuleConsolidation
             index={4}
-            variant="cyan"
+            variant={getModuleVariant(2)}
             video={{
               videoId: "9KZg0LdwAg4",
               title: "PA: Propriedades Especiais",
@@ -1001,7 +1003,7 @@ export default function AulaProgressoesPa({
               questoes={quizM4}
               titulo="Fixação - Propriedades"
               numero={4}
-              variant="cyan"
+              variant={getModuleVariant(2)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1024,7 +1026,7 @@ export default function AulaProgressoesPa({
               index={5}
               title="Inserindo Termos em PA"
               description="Encontre a razão para formar progressão completa."
-              variant="violet"
+              variant={getModuleVariant(5)}
             />
 
             <ContentAccordion
@@ -1113,7 +1115,7 @@ export default function AulaProgressoesPa({
 
           <ModuleConsolidation
             index={5}
-            variant="violet"
+            variant={getModuleVariant(5)}
             video={{
               videoId: "5Rw9KzK3jqA",
               title: "Interpolação Aritmética",
@@ -1170,7 +1172,7 @@ export default function AulaProgressoesPa({
               questoes={quizM5}
               titulo="Fixação - Interpolação"
               numero={5}
-              variant="violet"
+              variant={getModuleVariant(5)}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1193,7 +1195,7 @@ export default function AulaProgressoesPa({
               index={6}
               title="PA Como Restrição de Função Afim"
               description="Quando n é número natural, f(n) forma uma PA."
-              variant="teal"
+              variant={getModuleVariant(4)}
             />
 
             <ContentAccordion
@@ -1287,7 +1289,7 @@ export default function AulaProgressoesPa({
 
           <ModuleConsolidation
             index={6}
-            variant="teal"
+            variant={getModuleVariant(4)}
             video={{
               videoId: "tZzgzUaHdCw",
               title: "PA e Funções Afim: Conexão",
@@ -1344,7 +1346,7 @@ export default function AulaProgressoesPa({
               questoes={quizM6}
               titulo="Fixação - PA e Função Afim"
               numero={6}
-              variant="teal"
+              variant={getModuleVariant(4)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1367,7 +1369,7 @@ export default function AulaProgressoesPa({
               index={7}
               title="Problemas Contextualizados"
               description="PA em situações reais e complexas."
-              variant="indigo"
+              variant={getModuleVariant(10)}
             />
 
             <ContentAccordion
@@ -1444,7 +1446,7 @@ export default function AulaProgressoesPa({
 
           <ModuleConsolidation
             index={7}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             video={{
               videoId: "2xQr4vZ5M1I",
               title: "PA: Problemas Contextualizados",
@@ -1499,7 +1501,7 @@ export default function AulaProgressoesPa({
               questoes={quizM7}
               titulo="Fixação - Prática Integrada"
               numero={7}
-              variant="indigo"
+              variant={getModuleVariant(10)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1522,7 +1524,7 @@ export default function AulaProgressoesPa({
               index={8}
               title="Nível Avançado"
               description="Sistemas, inequações e aplicações múltiplas."
-              variant="rose"
+              variant={getModuleVariant(9)}
             />
 
             <ContentAccordion
@@ -1614,7 +1616,7 @@ export default function AulaProgressoesPa({
 
           <ModuleConsolidation
             index={8}
-            variant="rose"
+            variant={getModuleVariant(9)}
             video={{
               videoId: "4KzE9R6zWzY",
               title: "PA Avançada: Desafios",
@@ -1670,7 +1672,7 @@ export default function AulaProgressoesPa({
               questoes={quizM8}
               titulo="Fixação - Desafios Avançados"
               numero={8}
-              variant="rose"
+              variant={getModuleVariant(9)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1693,7 +1695,7 @@ export default function AulaProgressoesPa({
               index={9}
               title="PA na Indústria"
               description="Cronogramas, depreciação, e programação."
-              variant="orange"
+              variant={getModuleVariant(7)}
             />
 
             <ContentAccordion
@@ -1788,7 +1790,7 @@ export default function AulaProgressoesPa({
 
           <ModuleConsolidation
             index={9}
-            variant="orange"
+            variant={getModuleVariant(7)}
             video={{
               videoId: "9KZg0LdwAg4",
               title: "PA na Petrobras: Cronogramas",
@@ -1843,7 +1845,7 @@ export default function AulaProgressoesPa({
               questoes={quizM9}
               titulo="Fixação - Aplicações Petrobras"
               numero={9}
-              variant="orange"
+              variant={getModuleVariant(7)}
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1879,7 +1881,7 @@ export default function AulaProgressoesPa({
                 titulo="Simulado Elite - Progressões Aritméticas"
                 icone="🏆"
                 numero={10}
-                variant="slate"
+                variant={getModuleVariant(10)}
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

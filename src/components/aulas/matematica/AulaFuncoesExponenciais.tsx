@@ -17,6 +17,7 @@ import {
   ModuleConsolidation,
   type FunctionPlot,
 } from "../shared";
+import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   LuBookOpen,
@@ -202,7 +203,7 @@ export default function AulaFuncoesExponenciais({
               index={1}
               title="Regras Ocultas"
               description="A matemática trata potências com regras imutáveis."
-              variant="blue"
+              variant={getModuleVariant(1)}
             />
 
             <ContentAccordion
@@ -354,7 +355,7 @@ export default function AulaFuncoesExponenciais({
 
           <ModuleConsolidation
             index={1}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             video={{
               videoId: "kIq5CZlg8Ik",
               title: "Potenciação Base: Regras de Expoentes Explicadas",
@@ -394,7 +395,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM1}
               titulo="Fixação - Potenciação"
               numero={1}
-              variant="blue"
+              variant={getModuleVariant(1)}
               icone="🧮"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -417,7 +418,7 @@ export default function AulaFuncoesExponenciais({
               index={1}
               title="Leitura e Interpretação de Gráficos"
               description="A forma do gráfico depende essencialmente da base escolhida."
-              variant="emerald"
+              variant={getModuleVariant(3)}
             />
 
             <ContentAccordion
@@ -538,7 +539,7 @@ export default function AulaFuncoesExponenciais({
 
           <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             video={{
               videoId: "xsW3q0DTJJ4",
               title: "Gráficos Exponenciais: Crescimento vs Decaimento",
@@ -578,7 +579,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM2}
               titulo="Fixação - Gráficos"
               numero={2}
-              variant="emerald"
+              variant={getModuleVariant(3)}
               icone="📈"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -601,7 +602,7 @@ export default function AulaFuncoesExponenciais({
               index={1}
               title="A Arte de Cortar as Bases"
               description="Quando o 'x' está no céu, e você precisa puxá-lo pra terra."
-              variant="cyan"
+              variant={getModuleVariant(2)}
             />
 
             <ContentAccordion
@@ -697,7 +698,7 @@ export default function AulaFuncoesExponenciais({
             questoes={quizM3}
             titulo="Fixação - Equações"
             numero={3}
-            variant="cyan"
+            variant={getModuleVariant(2)}
             icone="⚡"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
@@ -719,7 +720,7 @@ export default function AulaFuncoesExponenciais({
               index={1}
               title="Explosão e Extinção"
               description="N(t) modela todo o caos da natureza ou das finanças financeiras."
-              variant="blue"
+              variant={getModuleVariant(1)}
             />
 
             <ContentAccordion
@@ -813,7 +814,7 @@ export default function AulaFuncoesExponenciais({
 
           <ModuleConsolidation
             index={4}
-            variant="blue"
+            variant={getModuleVariant(1)}
             video={{
               videoId: "IJMB7qKMSME",
               title: "Crescimento e Decaimento Exponencial no Mundo Real",
@@ -854,7 +855,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM4}
               titulo="Fixação - Aplicações"
               numero={4}
-              variant="blue"
+              variant={getModuleVariant(1)}
               icone="🌍"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -877,7 +878,7 @@ export default function AulaFuncoesExponenciais({
               index={1}
               title="Revisão Estratégica"
               description="Sintetizando os conceitos dos módulos anteriores."
-              variant="amber"
+              variant={getModuleVariant(6)}
             />
 
             <ContentAccordion
@@ -977,7 +978,7 @@ export default function AulaFuncoesExponenciais({
 
           <ModuleConsolidation
             index={5}
-            variant="amber"
+            variant={getModuleVariant(6)}
             video={{
               videoId: "8ydBPLXF0sE",
               title: "Desafio Parcial: Integrando Tudo de Exponenciais",
@@ -1018,7 +1019,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM5}
               titulo="Desafio Parcial - Exponenciais"
               numero={5}
-              variant="amber"
+              variant={getModuleVariant(6)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1041,7 +1042,7 @@ export default function AulaFuncoesExponenciais({
               index={1}
               title="O Número e"
               description="Compreendendo a constante mais importante além de π."
-              variant="rose"
+              variant={getModuleVariant(9)}
             />
 
             <ContentAccordion
@@ -1136,7 +1137,7 @@ export default function AulaFuncoesExponenciais({
 
           <ModuleConsolidation
             index={6}
-            variant="rose"
+            variant={getModuleVariant(9)}
             video={{
               videoId: "W5t6yP6sZWg",
               title: "O Número e: A Constante da Natureza",
@@ -1176,7 +1177,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM6}
               titulo="Fixação - Módulo 6"
               numero={6}
-              variant="rose"
+              variant={getModuleVariant(9)}
               icone="🌌"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1199,7 +1200,7 @@ export default function AulaFuncoesExponenciais({
               index={1}
               title="Transformações de Funções"
               description="Veja como as operações algébricas alteram o gráfico."
-              variant="indigo"
+              variant={getModuleVariant(10)}
             />
 
             <ContentAccordion
@@ -1338,7 +1339,7 @@ export default function AulaFuncoesExponenciais({
 
           <ModuleConsolidation
             index={7}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             video={{
               videoId: "9w2EfgU-QjE",
               title: "Transformações de Funções Exponenciais",
@@ -1380,7 +1381,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM7}
               titulo="Fixação - Módulo 7"
               numero={7}
-              variant="indigo"
+              variant={getModuleVariant(10)}
               icone="🎨"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1403,7 +1404,7 @@ export default function AulaFuncoesExponenciais({
               index={1}
               title="Resolução de Sistemas"
               description="Quando duas ou mais exponenciais se encontram."
-              variant="emerald"
+              variant={getModuleVariant(3)}
             />
 
             <ContentAccordion
@@ -1496,7 +1497,7 @@ export default function AulaFuncoesExponenciais({
 
           <ModuleConsolidation
             index={8}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             video={{
               videoId: "vBgCJqNaK_I",
               title: "Sistemas de Equações Exponenciais Resolvidos",
@@ -1538,7 +1539,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM8}
               titulo="Fixação - Módulo 8"
               numero={8}
-              variant="emerald"
+              variant={getModuleVariant(3)}
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1561,7 +1562,7 @@ export default function AulaFuncoesExponenciais({
               index={1}
               title="Exponenciais no Contexto Industrial"
               description="Como grandes empresas usam esses modelos."
-              variant="amber"
+              variant={getModuleVariant(6)}
             />
 
             <ContentAccordion
@@ -1668,7 +1669,7 @@ export default function AulaFuncoesExponenciais({
 
           <ModuleConsolidation
             index={9}
-            variant="amber"
+            variant={getModuleVariant(6)}
             video={{
               videoId: "j0zXdqVhNFA",
               title: "Exponenciais no Contexto de Petróleo e Gás",
@@ -1710,7 +1711,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM9}
               titulo="Fixação - Módulo 9"
               numero={9}
-              variant="amber"
+              variant={getModuleVariant(6)}
               icone="🏭"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1733,7 +1734,7 @@ export default function AulaFuncoesExponenciais({
               index={1}
               title="Checklist Final"
               description="Revise todos os 9 módulos em um só lugar."
-              variant="slate"
+              variant={getModuleVariant(10)}
             />
 
             <ContentAccordion
@@ -1852,7 +1853,7 @@ export default function AulaFuncoesExponenciais({
 
           <ModuleConsolidation
             index={10}
-            variant="slate"
+            variant={getModuleVariant(10)}
             video={{
               videoId: "2N4tYGJZfr8",
               title: "Simulado Mestre: Revisão Completa de Exponenciais",
@@ -1904,7 +1905,7 @@ export default function AulaFuncoesExponenciais({
                 titulo="Simulado Mestre - Exponenciais"
                 icone="🏆"
                 numero={10}
-                variant="slate"
+                variant={getModuleVariant(10)}
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

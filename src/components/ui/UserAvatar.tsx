@@ -1,4 +1,4 @@
-import { getInitials } from '@/lib/firebase-storage';
+import { getInitials } from '@/lib/utils';
 import Image from 'next/image';
 
 interface UserAvatarProps {

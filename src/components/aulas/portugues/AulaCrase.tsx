@@ -63,6 +63,7 @@ import {
   SectionTitle,
   ComparisonSide,
 } from "../shared";
+import { getModuleVariant } from "@/lib/moduleColors";
 
 // ── Fallback for React 19 Activity ───────────────────────────────────────
 // ── Constants & Data ────────────────────────────────────────────────────
@@ -599,7 +600,7 @@ export default function AulaCrase({
           {/* SEÇÃO 1: CONCEITUAÇÃO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              variant="indigo"
+              variant={getModuleVariant(10)}
               index={1}
               title="Conceituação: O que é a Crase?"
               description="A crase não é um acento, mas sim um fenômeno fonético de fusão."
@@ -658,7 +659,7 @@ export default function AulaCrase({
           {/* SEÇÃO 2: EXEMPLIFICAÇÃO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              variant="indigo"
+              variant={getModuleVariant(10)}
               index={2}
               title="Exemplificação: Na Prática"
               description="Veja como a fusão acontece e interaja com os cards clássicos de substituição."
@@ -687,7 +688,7 @@ export default function AulaCrase({
           {/* SEÇÃO 3: DICAS */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              variant="indigo"
+              variant={getModuleVariant(10)}
               index={3}
               title="Dicas Infalíveis (Macetes)"
               description="Regra de Ouro e o Macete do Destino para nunca errar a prova."
@@ -760,7 +761,7 @@ export default function AulaCrase({
           {/* SEÇÃO 4: EXCEÇÕES */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              variant="indigo"
+              variant={getModuleVariant(10)}
               index={4}
               title="Exceções no Caso Geral"
               description="Quando a regra dos lugares recebe especificadores, a lógica muda."
@@ -810,7 +811,7 @@ export default function AulaCrase({
 
           <ModuleConsolidation
             index={5}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             video={{
               videoId: "placeholder",
               title: "Crase sem Segredos: A Regra de Ouro",
@@ -909,7 +910,7 @@ Coloca o acento e brilha no final!
             icone="🧠"
             numero={6}
             questoes={quizM1}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
@@ -928,7 +929,7 @@ Coloca o acento e brilha no final!
           {/* SEÇÃO 1: CONCEITUAÇÃO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 text-center md:text-left">
             <ModuleSectionHeader
-              variant="emerald"
+              variant={getModuleVariant(3)}
               index={1}
               title="Conceituação: O Mapa das Proibições"
               description="A crase nunca ocorre quando a palavra seguinte não admite artigo feminino ou o 'a' é apenas preposição."
@@ -945,7 +946,7 @@ Coloca o acento e brilha no final!
           {/* SEÇÃO 2: EXEMPLIFICAÇÃO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              variant="emerald"
+              variant={getModuleVariant(3)}
               index={2}
               title="Exemplificação: Situações de Proibição"
               description="Memorize as top 4 situações onde o uso do acento grave é erro fatal em provas!"
@@ -993,7 +994,7 @@ Coloca o acento e brilha no final!
           {/* SEÇÃO 3: DICAS */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 text-center md:text-left">
             <ModuleSectionHeader
-              variant="emerald"
+              variant={getModuleVariant(3)}
               index={3}
               title="Dicas de Ouro: Pegadinhas Clássicas"
               description="Cuidado com a pegadinha clássica do singular e plural na Cesgranrio."
@@ -1038,7 +1039,7 @@ Coloca o acento e brilha no final!
           {/* SEÇÃO 4: EXCEÇÕES */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 text-center md:text-left">
             <ModuleSectionHeader
-              variant="emerald"
+              variant={getModuleVariant(3)}
               index={4}
               title="Exceções: Crase Antes de Masculino?"
               description="Nas proibições totais, há um único farol de esperança para o acento grave antes do masculino."
@@ -1090,7 +1091,7 @@ Coloca o acento e brilha no final!
 
           <ModuleConsolidation
             index={5}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             video={{
               videoId: "placeholder",
               title: "As Proibições da Crase: Onde o Acento Morre",
@@ -1142,7 +1143,7 @@ Coloca o acento e brilha no final!
             icone="🚫"
             numero={6}
             questoes={quizM2}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
@@ -1161,7 +1162,7 @@ Coloca o acento e brilha no final!
           {/* SEÇÃO 1: CONCEITUAÇÃO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 text-center md:text-left">
             <ModuleSectionHeader
-              variant="violet"
+              variant={getModuleVariant(5)}
               index={1}
               title="Conceituação: O Que É Ser Facultativo?"
               description="Quando tanto a preposição quanto o artigo são opcionais na construção da frase."
@@ -1179,7 +1180,7 @@ Coloca o acento e brilha no final!
           {/* SEÇÃO 2: EXEMPLIFICAÇÃO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              variant="violet"
+              variant={getModuleVariant(5)}
               index={2}
               title="Exemplificação: O Trio Facultativo"
               description="Existem apenas três casos principais onde a crase é opcional na norma culta."
@@ -1215,7 +1216,7 @@ Coloca o acento e brilha no final!
           {/* SEÇÃO 3: DICAS */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 text-center md:text-left">
             <ModuleSectionHeader
-              variant="violet"
+              variant={getModuleVariant(5)}
               index={3}
               title="Dicas de Ouro: Possessivo Oculto"
               description="Cuidado com os pronomes possessivos femininos que não acompanham substantivos explícitos!"
@@ -1270,7 +1271,7 @@ Coloca o acento e brilha no final!
           {/* SEÇÃO 4: EXCEÇÕES */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 text-center md:text-left">
             <ModuleSectionHeader
-              variant="violet"
+              variant={getModuleVariant(5)}
               index={4}
               title="Exceções Que Caem em Prova"
               description="Quando o facultativo perde o status de opcional e vira erro fatal."
@@ -1325,7 +1326,7 @@ Coloca o acento e brilha no final!
 
           <ModuleConsolidation
             index={5}
-            variant="violet"
+            variant={getModuleVariant(5)}
             video={{
               videoId: "placeholder",
               title: "Crase Facultativa: O Poder de Escolha",
@@ -1372,7 +1373,7 @@ Coloca o acento e brilha no final!
             icone="📝"
             numero={6}
             questoes={quizM3}
-            variant="violet"
+            variant={getModuleVariant(5)}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>
@@ -1391,7 +1392,7 @@ Coloca o acento e brilha no final!
           {/* SEÇÃO 1: CONCEITUAÇÃO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 text-center md:text-left">
             <ModuleSectionHeader
-              variant="amber"
+              variant={getModuleVariant(6)}
               index={1}
               title="Conceituação: O Mundo das Exceções"
               description="Algumas palavras e expressões ignoram a regra geral e possuem suas próprias leis para a ocorrência da crase."
@@ -1409,7 +1410,7 @@ Coloca o acento e brilha no final!
           {/* SEÇÃO 2: EXEMPLIFICAÇÃO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-10">
             <ModuleSectionHeader
-              variant="amber"
+              variant={getModuleVariant(6)}
               index={2}
               title="Exemplificação: Casa, Terra e Distância"
               description="A regra de ouro aqui é a ESPECIFICAÇÃO. Sem especificador, nada de artigo (e nada de crase)."
@@ -1441,7 +1442,7 @@ Coloca o acento e brilha no final!
           {/* SEÇÃO 3: DICAS */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-10">
             <ModuleSectionHeader
-              variant="amber"
+              variant={getModuleVariant(6)}
               index={3}
               title="Dicas de Ouro: Horas e os Pronomes Especiais"
               description="Macetes rápidos para acertar questões sobre tempo e sobre pronomes iniciados em 'A'."
@@ -1493,7 +1494,7 @@ Coloca o acento e brilha no final!
           {/* SEÇÃO 4: EXCEÇÕES */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 text-center md:text-left">
             <ModuleSectionHeader
-              variant="amber"
+              variant={getModuleVariant(6)}
               index={4}
               title="Exceções Que Derrubam Candidatos"
               description="Quando a banca junta duas regras para confundir você."
@@ -1549,7 +1550,7 @@ Coloca o acento e brilha no final!
 
           <ModuleConsolidation
             index={5}
-            variant="amber"
+            variant={getModuleVariant(6)}
             video={{
               videoId: "placeholder",
               title: "Casos Especiais: As Pegadinhas de Luxo",
@@ -1594,7 +1595,7 @@ Coloca o acento e brilha no final!
             icone="🎯"
             numero={6}
             questoes={quizM4}
-            variant="amber"
+            variant={getModuleVariant(6)}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </div>

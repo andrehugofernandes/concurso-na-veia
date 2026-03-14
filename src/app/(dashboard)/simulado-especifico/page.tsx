@@ -265,9 +265,14 @@ export default function SimuladoEspecificoPage() {
     for (const item of distribuicao) {
       let questoesGeradasNoItem = 0;
       
+      let ultimoProvider: string | undefined = undefined;
+      
       while (questoesGeradasNoItem < item.qtd && questoes.length < quantidade) {
         const restanteNoItem = item.qtd - questoesGeradasNoItem;
-        const tamanhoLote = Math.min(restanteNoItem, 5, quantidade - questoes.length);
+        
+        // Se for Anthropic, podemos usar lotes maiores (10)
+        const maxBatchSize = ultimoProvider === 'anthropic' ? 10 : 5;
+        const tamanhoLote = Math.min(restanteNoItem, maxBatchSize, quantidade - questoes.length);
 
         try {
           let dificuldade = dificuldadeManual || dificuldadeUrl || undefined;
@@ -279,11 +284,15 @@ export default function SimuladoEspecificoPage() {
             else if (taxaAcerto < 0.5) dificuldade = "Fácil";
           }
 
-          // Delay mandatório de 26 segundos entre lotes para o FreeLLM
-          if (questoes.length > 0) {
+          // Delay mandatório de 26 segundos entre lotes APENAS para o FreeLLM
+          // Anthropic e Gemini (se durar mais que 1s) não precisam de delay artificial tão longo aqui
+          if (questoes.length > 0 && ultimoProvider === 'freellm') {
             console.log(`[FRONTEND] Aguardando 26s para o próximo lote (Rate Limit FreeLLM)...`);
             setContagemRegressivaIA(26);
             await new Promise((r) => setTimeout(r, 26000));
+          } else if (questoes.length > 0 && ultimoProvider === 'gemini') {
+            // Gemini basta uns 2-3 segundos para conforto
+            await new Promise((r) => setTimeout(r, 2000));
           }
 
           const result = await gerarQuestoesLoteAction({
@@ -301,6 +310,8 @@ export default function SimuladoEspecificoPage() {
             questoes.push(...result.data);
             questoesGeradasNoItem += result.data.length;
             setProgressoGeracao(questoes.length);
+            // Atualiza o provedor para ajustar o próximo lote e delay
+            ultimoProvider = result.data[0]?.provider;
           } else {
             throw new Error(result.error || "Erro ao gerar lote");
           }

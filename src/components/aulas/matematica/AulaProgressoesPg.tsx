@@ -27,6 +27,8 @@ import {
   LuZap,
 } from "react-icons/lu";
 
+import { getModuleVariant } from "@/lib/moduleColors";
+
 import {
   QUIZ_M1_CONCEITO_PG,
   QUIZ_M2_TERMO_GERAL_PG,
@@ -184,7 +186,7 @@ export default function AulaProgressoesPg({
               index={1}
               title="A Sequência que Multiplica"
               description="Entenda a razão q e o primeiro termo a₁."
-              variant="blue"
+              variant={getModuleVariant(1)}
             />
 
             <ContentAccordion
@@ -271,7 +273,7 @@ export default function AulaProgressoesPg({
 
           <ModuleConsolidation
             index={1}
-            variant="blue"
+            variant={getModuleVariant(1)}
             video={{
               videoId: "gZDzgZxrvAo",
               title: "PG: Conceitos Fundamentais",
@@ -326,7 +328,7 @@ export default function AulaProgressoesPg({
               questoes={quizM1}
               titulo="Fixação - Conceitos PG"
               numero={1}
-              variant="blue"
+              variant={getModuleVariant(1)}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -349,7 +351,7 @@ export default function AulaProgressoesPg({
               index={2}
               title="Fórmula do Termo Geral"
               description="aₙ = a₁ × q^(n-1)"
-              variant="emerald"
+              variant={getModuleVariant(3)}
             />
 
             <ContentAccordion
@@ -429,7 +431,7 @@ export default function AulaProgressoesPg({
 
           <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             video={{
               videoId: "2Aq7p7-VgEU",
               title: "PG: Termo Geral Explicado",
@@ -484,7 +486,7 @@ export default function AulaProgressoesPg({
               questoes={quizM2}
               titulo="Fixação - Termo Geral"
               numero={2}
-              variant="emerald"
+              variant={getModuleVariant(3)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -507,7 +509,7 @@ export default function AulaProgressoesPg({
               index={3}
               title="Soma dos Primeiros n Termos"
               description="Fórmula e aplicações práticas."
-              variant="amber"
+              variant={getModuleVariant(6)}
             />
 
             <ContentAccordion
@@ -595,7 +597,7 @@ export default function AulaProgressoesPg({
 
           <ModuleConsolidation
             index={3}
-            variant="amber"
+            variant={getModuleVariant(6)}
             video={{
               videoId: "4KzE9R6zWzY",
               title: "PG: Soma Finita",
@@ -652,7 +654,7 @@ export default function AulaProgressoesPg({
               questoes={quizM3}
               titulo="Fixação - Soma Finita"
               numero={3}
-              variant="amber"
+              variant={getModuleVariant(6)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -675,7 +677,7 @@ export default function AulaProgressoesPg({
               index={4}
               title="Série Geométrica Infinita"
               description="Convergência e limite da série."
-              variant="cyan"
+              variant={getModuleVariant(2)}
             />
 
             <ContentAccordion
@@ -775,7 +777,7 @@ export default function AulaProgressoesPg({
 
           <ModuleConsolidation
             index={4}
-            variant="cyan"
+            variant={getModuleVariant(2)}
             video={{
               videoId: "9KZg0LdwAg4",
               title: "PG Infinita: Série Convergente",
@@ -830,7 +832,7 @@ export default function AulaProgressoesPg({
               questoes={quizM4}
               titulo="Fixação - Soma Infinita"
               numero={4}
-              variant="cyan"
+              variant={getModuleVariant(2)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -853,7 +855,7 @@ export default function AulaProgressoesPg({
               index={5}
               title="Propriedades Importantes"
               description="Produtos, meios geométricos e simetrias."
-              variant="violet"
+              variant={getModuleVariant(5)}
             />
 
             <ContentAccordion
@@ -940,7 +942,7 @@ export default function AulaProgressoesPg({
 
           <ModuleConsolidation
             index={5}
-            variant="violet"
+            variant={getModuleVariant(5)}
             video={{
               videoId: "7Pg5MZV2XqU",
               title: "PG: Propriedades Especiais",
@@ -996,7 +998,7 @@ export default function AulaProgressoesPg({
               questoes={quizM5}
               titulo="Fixação - Propriedades"
               numero={5}
-              variant="violet"
+              variant={getModuleVariant(5)}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1019,7 +1021,7 @@ export default function AulaProgressoesPg({
               index={6}
               title="PG Aplicada a Fenômenos Naturais"
               description="Exponencial explica crescimento rápido ou decaimento lento."
-              variant="teal"
+              variant={getModuleVariant(4)}
             />
 
             <ContentAccordion
@@ -1114,7 +1116,7 @@ export default function AulaProgressoesPg({
 
           <ModuleConsolidation
             index={6}
-            variant="teal"
+            variant={getModuleVariant(4)}
             video={{
               videoId: "tZzgzUaHdCw",
               title: "Crescimento Exponencial: Aplicações",
@@ -1169,7 +1171,7 @@ export default function AulaProgressoesPg({
               questoes={quizM6}
               titulo="Fixação - Crescimento/Decaimento"
               numero={6}
-              variant="teal"
+              variant={getModuleVariant(4)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1192,7 +1194,7 @@ export default function AulaProgressoesPg({
               index={7}
               title="Finanças Modeladas por PG"
               description="Juros e prestações são progressões geométricas."
-              variant="indigo"
+              variant={getModuleVariant(10)}
             />
 
             <ContentAccordion
@@ -1289,7 +1291,7 @@ export default function AulaProgressoesPg({
 
           <ModuleConsolidation
             index={7}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             video={{
               videoId: "5Rw9KzK3jqA",
               title: "Juros Compostos: Progressão Geométrica",
@@ -1345,7 +1347,7 @@ export default function AulaProgressoesPg({
               questoes={quizM7}
               titulo="Fixação - Matemática Financeira"
               numero={7}
-              variant="indigo"
+              variant={getModuleVariant(10)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1368,7 +1370,7 @@ export default function AulaProgressoesPg({
               index={8}
               title="Duas Famílias de Sequências"
               description="Quando usar PA, quando usar PG."
-              variant="rose"
+              variant={getModuleVariant(9)}
             />
 
             <ContentAccordion
@@ -1460,7 +1462,7 @@ export default function AulaProgressoesPg({
 
           <ModuleConsolidation
             index={8}
-            variant="rose"
+            variant={getModuleVariant(9)}
             video={{
               videoId: "2xQr4vZ5M1I",
               title: "PA vs PG: Comparação Completa",
@@ -1517,7 +1519,7 @@ export default function AulaProgressoesPg({
               questoes={quizM8}
               titulo="Fixação - PA vs PG"
               numero={8}
-              variant="rose"
+              variant={getModuleVariant(9)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1540,7 +1542,7 @@ export default function AulaProgressoesPg({
               index={9}
               title="Progressões Geométricas na Indústria"
               description="Crescimento de produção, depleção de reservas."
-              variant="orange"
+              variant={getModuleVariant(7)}
             />
 
             <ContentAccordion
@@ -1639,7 +1641,7 @@ export default function AulaProgressoesPg({
 
           <ModuleConsolidation
             index={9}
-            variant="orange"
+            variant={getModuleVariant(7)}
             video={{
               videoId: "4KzE9R6zWzY",
               title: "PG na Petrobras: Produção e Reservas",
@@ -1694,7 +1696,7 @@ export default function AulaProgressoesPg({
               questoes={quizM9}
               titulo="Fixação - Aplicações Petrobras"
               numero={9}
-              variant="orange"
+              variant={getModuleVariant(7)}
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1730,7 +1732,7 @@ export default function AulaProgressoesPg({
                 titulo="Simulado Elite - Progressões Geométricas"
                 icone="🏆"
                 numero={10}
-                variant="slate"
+                variant={getModuleVariant(10)}
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

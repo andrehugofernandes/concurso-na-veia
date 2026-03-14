@@ -13,6 +13,7 @@ import {
   ModuleSectionHeader,
   ModuleConsolidation,
 } from "../shared";
+import { getModuleVariant } from "@/lib/moduleColors";
 import {
   QUIZ_M1_CONCEITO_SL,
   QUIZ_M2_SUBSTITUICAO,
@@ -134,7 +135,7 @@ export default function AulaSistemasLineares({
               index={1}
               title="O que é um Sistema Linear?"
               description="A base de tudo: equações que modelam o equilíbrio entre variáveis industriais."
-              variant="indigo"
+              variant={getModuleVariant(10)}
               className="mb-6"
             />
             <ContentAccordion
@@ -228,7 +229,7 @@ export default function AulaSistemasLineares({
               index={2}
               title="Tabela de Classificação Rápida"
               description="O atalho visual para classificar qualquer sistema em segundos na prova."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             <div className="overflow-x-auto">
@@ -267,7 +268,7 @@ export default function AulaSistemasLineares({
 
           <ModuleConsolidation
             index={1}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             video={{
               videoId: "r4sFqOFe8LU",
               title: "Sistemas Lineares: Conceitos Fundamentais",
@@ -309,7 +310,7 @@ export default function AulaSistemasLineares({
               titulo="Conceito e Classificação de Sistemas Lineares"
               icone="🧠"
               numero={1}
-              variant="indigo"
+              variant={getModuleVariant(10)}
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -332,7 +333,7 @@ export default function AulaSistemasLineares({
               index={1}
               title="Passo a Passo do Método de Substituição"
               description="Três etapas simples que resolvem qualquer sistema linear 2×2."
-              variant="emerald"
+              variant={getModuleVariant(3)}
               className="mb-6"
             />
             <ContentAccordion
@@ -408,7 +409,7 @@ export default function AulaSistemasLineares({
               index={2}
               title="Aplicação em Misturas Petrobras"
               description="O método de substituição é a ferramenta preferida em problemas de mistura industrial."
-              variant="cyan"
+              variant={getModuleVariant(2)}
               className="mb-6"
             />
             <ContentAccordion
@@ -446,7 +447,7 @@ export default function AulaSistemasLineares({
 
           <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             video={{
               videoId: "Fqfh_jCEVpE",
               title: "Método de Substituição em Sistemas Lineares",
@@ -489,7 +490,7 @@ export default function AulaSistemasLineares({
               titulo="Método de Substituição"
               icone="🔄"
               numero={2}
-              variant="emerald"
+              variant={getModuleVariant(3)}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -512,7 +513,7 @@ export default function AulaSistemasLineares({
               index={1}
               title="A Estratégia da Eliminação"
               description="Multiplique equações por escalares para que os coeficientes de uma variável se cancelem."
-              variant="amber"
+              variant={getModuleVariant(6)}
               className="mb-6"
             />
             <ContentAccordion
@@ -607,7 +608,7 @@ export default function AulaSistemasLineares({
 
           <ModuleConsolidation
             index={3}
-            variant="cyan"
+            variant={getModuleVariant(2)}
             video={{
               videoId: "K0gU5VJMVzc",
               title: "Método da Adição (Eliminação)",
@@ -651,7 +652,7 @@ export default function AulaSistemasLineares({
               titulo="Método da Adição (Eliminação)"
               icone="➕"
               numero={3}
-              variant="amber"
+              variant={getModuleVariant(6)}
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -674,7 +675,7 @@ export default function AulaSistemasLineares({
               index={1}
               title="Determinantes e a Regra de Cramer"
               description="Da definição do determinante 2×2 à fórmula completa de Cramer."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             <ContentAccordion
@@ -779,7 +780,7 @@ export default function AulaSistemasLineares({
 
           <ModuleConsolidation
             index={4}
-            variant="blue"
+            variant={getModuleVariant(1)}
             video={{
               videoId: "SIeFMNJQwqE",
               title: "Regra de Cramer para Resolver Sistemas",
@@ -823,7 +824,7 @@ export default function AulaSistemasLineares({
               titulo="Regra de Cramer e Determinantes"
               icone="📊"
               numero={4}
-              variant="blue"
+              variant={getModuleVariant(1)}
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -846,7 +847,7 @@ export default function AulaSistemasLineares({
               index={1}
               title="Identificação de SI e SPI — Método das Proporções"
               description="A técnica mais rápida para classificar sistemas degenerados em prova."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             <ContentAccordion
@@ -931,7 +932,7 @@ export default function AulaSistemasLineares({
 
           <ModuleConsolidation
             index={5}
-            variant="amber"
+            variant={getModuleVariant(6)}
             video={{
               videoId: "rVBKiBv0Eek",
               title: "Identificando Sistemas Impossíveis e Indeterminados",
@@ -997,7 +998,7 @@ export default function AulaSistemasLineares({
               index={1}
               title="Escalonamento de Sistemas 3×3"
               description="O método de Gauss aplicado a três equações e três incógnitas."
-              variant="cyan"
+              variant={getModuleVariant(2)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1118,7 +1119,7 @@ export default function AulaSistemasLineares({
               titulo="Sistemas com 3 Variáveis"
               icone="3️⃣"
               numero={6}
-              variant="cyan"
+              variant={getModuleVariant(2)}
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -1141,7 +1142,7 @@ export default function AulaSistemasLineares({
               index={1}
               title="Retas e Sistemas no Plano Cartesiano"
               description="Cada equação linear é uma reta. O sistema busca o ponto de intersecção."
-              variant="indigo"
+              variant={getModuleVariant(10)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1233,7 +1234,7 @@ export default function AulaSistemasLineares({
 
           <ModuleConsolidation
             index={7}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             video={{
               videoId: "mQ7TwB3c_4w",
               title: "Interpretação Geométrica de Sistemas Lineares",
@@ -1276,7 +1277,7 @@ export default function AulaSistemasLineares({
               titulo="Interpretação Geométrica"
               icone="📈"
               numero={7}
-              variant="indigo"
+              variant={getModuleVariant(10)}
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -1299,7 +1300,7 @@ export default function AulaSistemasLineares({
               index={1}
               title="Região Viável e Programação Linear"
               description="A intersecção de semiplanos define a região onde todas as restrições são satisfeitas."
-              variant="emerald"
+              variant={getModuleVariant(3)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1383,7 +1384,7 @@ export default function AulaSistemasLineares({
 
           <ModuleConsolidation
             index={8}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             video={{
               videoId: "Z4jDh7iG1J0",
               title: "Sistemas de Inequações: Solução Gráfica",
@@ -1427,7 +1428,7 @@ export default function AulaSistemasLineares({
               titulo="Sistemas de Inequações"
               icone="≤"
               numero={8}
-              variant="emerald"
+              variant={getModuleVariant(3)}
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -1450,7 +1451,7 @@ export default function AulaSistemasLineares({
               index={1}
               title="Modelagem de Problemas Industriais"
               description="A arte de transformar um enunciado técnico em um sistema de equações solucionável."
-              variant="amber"
+              variant={getModuleVariant(6)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1532,7 +1533,7 @@ export default function AulaSistemasLineares({
 
           <ModuleConsolidation
             index={9}
-            variant="cyan"
+            variant={getModuleVariant(2)}
             video={{
               videoId: "tM_JEGxWnvQ",
               title: "Sistemas Lineares em Engenharia: Fluxo em Redes",
@@ -1576,7 +1577,7 @@ export default function AulaSistemasLineares({
               titulo="Aplicações Petrobras"
               icone="🛢️"
               numero={9}
-              variant="amber"
+              variant={getModuleVariant(6)}
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -1599,7 +1600,7 @@ export default function AulaSistemasLineares({
               index={1}
               title="Revisão Estratégica — Os 10 Pontos-Chave"
               description="O roteiro de revisão que cobre 95% dos padrões de questão da CESGRANRIO em Sistemas Lineares."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1698,7 +1699,7 @@ export default function AulaSistemasLineares({
 
           <ModuleConsolidation
             index={10}
-            variant="blue"
+            variant={getModuleVariant(1)}
             video={{
               videoId: "9Kxj3pDQVmk",
               title: "Revisão Completa: Sistemas Lineares",
@@ -1743,7 +1744,7 @@ export default function AulaSistemasLineares({
               titulo="Simulado Final CESGRANRIO"
               icone="🏆"
               numero={10}
-              variant="blue"
+              variant={getModuleVariant(1)}
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>

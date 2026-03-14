@@ -13,6 +13,7 @@ import {
   ModuleSectionHeader,
   ModuleConsolidation,
 } from "../shared";
+import { getModuleVariant } from "@/lib/moduleColors";
 import {
   QUIZ_M1_RAZOES_TRIG,
   QUIZ_M2_ANGULOS_NOTAVEIS,
@@ -134,7 +135,7 @@ export default function AulaTrigonometria({
               index={1}
               title="Seno, Cosseno e Tangente"
               description="As três razões fundamentais que relacionam ângulos e lados no triângulo retângulo."
-              variant="indigo"
+              variant={getModuleVariant(10)}
               className="mb-6"
             />
             <ContentAccordion
@@ -273,7 +274,7 @@ export default function AulaTrigonometria({
 
           <ModuleConsolidation
             index={1}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             video={{
               videoId: "qXv_IOKSZPY",
               title: "Razões Trigonométricas no Triângulo Retângulo",
@@ -359,7 +360,7 @@ export default function AulaTrigonometria({
               titulo="Quiz — Razões Trigonométricas"
               icone="📐"
               numero={1}
-              variant="indigo"
+              variant={getModuleVariant(10)}
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -382,7 +383,7 @@ export default function AulaTrigonometria({
               index={1}
               title="Tabela dos Ângulos Notáveis"
               description="Os valores que você deve saber de cor para a prova da CESGRANRIO."
-              variant="emerald"
+              variant={getModuleVariant(3)}
               className="mb-6"
             />
             <ContentAccordion
@@ -549,7 +550,7 @@ export default function AulaTrigonometria({
 
           <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             video={{
               videoId: "V0xjO3M0q0s",
               title: "Ângulos Notáveis: 30°, 45°, 60°",
@@ -640,7 +641,7 @@ export default function AulaTrigonometria({
               titulo="Quiz — Ângulos Notáveis"
               icone="📊"
               numero={2}
-              variant="emerald"
+              variant={getModuleVariant(3)}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -663,7 +664,7 @@ export default function AulaTrigonometria({
               index={1}
               title="O Círculo Unitário e os Quatro Quadrantes"
               description="Como os sinais de seno, cosseno e tangente variam por quadrante."
-              variant="indigo"
+              variant={getModuleVariant(10)}
               className="mb-6"
             />
             <ContentAccordion
@@ -808,7 +809,7 @@ export default function AulaTrigonometria({
 
           <ModuleConsolidation
             index={3}
-            variant="cyan"
+            variant={getModuleVariant(2)}
             video={{
               videoId: "0PqJ_MN0n8U",
               title: "Circunferência Unitária e Radianos",
@@ -874,7 +875,7 @@ export default function AulaTrigonometria({
               titulo="Quiz — Círculo Trigonométrico"
               icone="⭕"
               numero={3}
-              variant="indigo"
+              variant={getModuleVariant(10)}
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -897,7 +898,7 @@ export default function AulaTrigonometria({
               index={1}
               title="Amplitude, Período e Deslocamento"
               description="Os parâmetros que controlam o comportamento de funções trigonométricas."
-              variant="emerald"
+              variant={getModuleVariant(3)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1041,7 +1042,7 @@ export default function AulaTrigonometria({
 
           <ModuleConsolidation
             index={4}
-            variant="blue"
+            variant={getModuleVariant(1)}
             video={{
               videoId: "xEiUPR46EIQ",
               title: "Funções sen(x), cos(x), tg(x): Gráficos e Propriedades",
@@ -1108,7 +1109,7 @@ export default function AulaTrigonometria({
               titulo="Quiz — Funções Trigonométricas"
               icone="📈"
               numero={4}
-              variant="emerald"
+              variant={getModuleVariant(3)}
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -1131,7 +1132,7 @@ export default function AulaTrigonometria({
               index={1}
               title="Identidades Pitagóricas e de Adição"
               description="As identidades mais cobradas pela CESGRANRIO — saiba deduzir e aplicar."
-              variant="indigo"
+              variant={getModuleVariant(10)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1248,7 +1249,7 @@ export default function AulaTrigonometria({
 
           <ModuleConsolidation
             index={5}
-            variant="amber"
+            variant={getModuleVariant(6)}
             video={{
               videoId: "1Ixnl1bN3yg",
               title: "Identidades Trigonométricas Fundamentais",
@@ -1321,7 +1322,7 @@ export default function AulaTrigonometria({
               titulo="Quiz — Identidades Trigonométricas"
               icone="🔑"
               numero={5}
-              variant="indigo"
+              variant={getModuleVariant(10)}
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -1344,7 +1345,7 @@ export default function AulaTrigonometria({
               index={1}
               title="Fórmula e Aplicações da Lei dos Senos"
               description="Quando e como usar a Lei dos Senos em problemas industriais."
-              variant="emerald"
+              variant={getModuleVariant(3)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1532,7 +1533,7 @@ export default function AulaTrigonometria({
               titulo="Quiz — Lei dos Senos"
               icone="⚖️"
               numero={6}
-              variant="emerald"
+              variant={getModuleVariant(3)}
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -1555,7 +1556,7 @@ export default function AulaTrigonometria({
               index={1}
               title="Fórmula e Casos de Aplicação"
               description="Quando a Lei dos Senos não basta — a Lei dos Cossenos entra em campo."
-              variant="indigo"
+              variant={getModuleVariant(10)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1672,7 +1673,7 @@ export default function AulaTrigonometria({
 
           <ModuleConsolidation
             index={7}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             video={{
               videoId: "oXDe-QYqbWo",
               title: "Lei dos Cossenos: a² = b² + c² - 2bc·cos(A)",
@@ -1737,7 +1738,7 @@ export default function AulaTrigonometria({
               titulo="Quiz — Lei dos Cossenos"
               icone="📐"
               numero={7}
-              variant="indigo"
+              variant={getModuleVariant(10)}
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -1760,7 +1761,7 @@ export default function AulaTrigonometria({
               index={1}
               title="Soluções no Intervalo e Solução Geral"
               description="Como encontrar todas as soluções de equações trigonométricas."
-              variant="indigo"
+              variant={getModuleVariant(10)}
               className="mb-6"
             />
             <ContentAccordion
@@ -1877,7 +1878,7 @@ export default function AulaTrigonometria({
 
           <ModuleConsolidation
             index={8}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             video={{
               videoId: "jOpTkIwmJqE",
               title: "Equações Trigonométricas: Resolvendo sin(x)=a, cos(x)=a, tan(x)=a",
@@ -1943,7 +1944,7 @@ export default function AulaTrigonometria({
               titulo="Quiz — Equações Trigonométricas"
               icone="🔐"
               numero={8}
-              variant="indigo"
+              variant={getModuleVariant(10)}
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -1966,7 +1967,7 @@ export default function AulaTrigonometria({
               index={1}
               title="Cenários Reais da Indústria de Petróleo"
               description="As situações que a CESGRANRIO recria em suas questões contextualizadas."
-              variant="emerald"
+              variant={getModuleVariant(3)}
               className="mb-6"
             />
             <ContentAccordion
@@ -2123,7 +2124,7 @@ export default function AulaTrigonometria({
 
           <ModuleConsolidation
             index={9}
-            variant="cyan"
+            variant={getModuleVariant(2)}
             video={{
               videoId: "2mQ8V3vAVPs",
               title: "Aplicações Reais: Trigonometria em Engenharia e Indústria",
@@ -2190,7 +2191,7 @@ export default function AulaTrigonometria({
               titulo="Quiz — Aplicações Industriais Petrobras"
               icone="⚙️"
               numero={9}
-              variant="emerald"
+              variant={getModuleVariant(3)}
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -2213,7 +2214,7 @@ export default function AulaTrigonometria({
               index={1}
               title="Revisão Geral — Mapa Mental da Trigonometria"
               description="Os 10 pontos críticos que a CESGRANRIO explora em questões de Trigonometria."
-              variant="indigo"
+              variant={getModuleVariant(10)}
               className="mb-6"
             />
             <ContentAccordion
@@ -2366,7 +2367,7 @@ export default function AulaTrigonometria({
 
           <ModuleConsolidation
             index={10}
-            variant="blue"
+            variant={getModuleVariant(1)}
             video={{
               videoId: "lW3W5I6VLkY",
               title: "Revisão Geral: Trigonometria da Aula 1 ao Módulo 9",
@@ -2474,7 +2475,7 @@ export default function AulaTrigonometria({
               titulo="Simulado Final — CESGRANRIO"
               icone="🏆"
               numero={10}
-              variant="indigo"
+              variant={getModuleVariant(10)}
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>

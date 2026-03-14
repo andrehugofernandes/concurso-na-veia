@@ -15,6 +15,7 @@ import {
   CardCarousel,
   Comparison,
 } from "../shared";
+import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   LuBookOpen,
@@ -200,7 +201,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={1}
               title="A Dualidade Textual"
-              variant="blue"
+              variant={getModuleVariant(1)}
             />
             <ContentAccordion
               slides={[
@@ -278,7 +279,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={2}
               title="Os 5 Grandes Mecanismos de Coesão"
-              variant="blue"
+              variant={getModuleVariant(1)}
             />
             <ContentAccordion
               mode="stacked"
@@ -396,7 +397,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={3}
               title="Coesão e Coerência no Contexto Petrobras"
-              variant="blue"
+              variant={getModuleVariant(1)}
             />
             <CardCarousel
               cards={[
@@ -446,7 +447,7 @@ export default function AulaCoesaoCoerencia({
             titulo="Fixação - Módulo 1"
             icone="🎯"
             numero={1}
-            variant="blue"
+            variant={getModuleVariant(1)}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
@@ -466,7 +467,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={2}
               title="Referenciação Anafórica"
-              variant="cyan"
+              variant={getModuleVariant(2)}
             />
             <ContentAccordion
               slides={[
@@ -531,7 +532,7 @@ export default function AulaCoesaoCoerencia({
             titulo="Fixação - Módulo 2"
             icone="🎯"
             numero={2}
-            variant="cyan"
+            variant={getModuleVariant(2)}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
@@ -551,7 +552,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={3}
               title="Antecipação (Catáfora)"
-              variant="blue"
+              variant={getModuleVariant(1)}
             />
             <ContentAccordion
               slides={[
@@ -624,7 +625,7 @@ export default function AulaCoesaoCoerencia({
             titulo="Fixação - Módulo 3"
             icone="🎯"
             numero={3}
-            variant="blue"
+            variant={getModuleVariant(1)}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>
@@ -644,7 +645,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={4}
               title="Coesão por Omissão"
-              variant="emerald"
+              variant={getModuleVariant(3)}
             />
             <ContentAccordion
               slides={[
@@ -691,7 +692,7 @@ export default function AulaCoesaoCoerencia({
             titulo="Fixação - Módulo 4"
             icone="🎯"
             numero={4}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </div>
@@ -711,7 +712,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={5}
               title="Coesão Lexical"
-              variant="blue"
+              variant={getModuleVariant(1)}
             />
             <ContentAccordion
               slides={[
@@ -765,7 +766,7 @@ export default function AulaCoesaoCoerencia({
             titulo="Fixação - Módulo 5"
             icone="🎯"
             numero={5}
-            variant="blue"
+            variant={getModuleVariant(1)}
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
         </div>
@@ -785,7 +786,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={6}
               title="Coesão Sequencial"
-              variant="amber"
+              variant={getModuleVariant(6)}
             />
             <ContentAccordion
               slides={[
@@ -847,7 +848,7 @@ export default function AulaCoesaoCoerencia({
             titulo="Fixação - Módulo 6"
             icone="🎯"
             numero={6}
-            variant="amber"
+            variant={getModuleVariant(6)}
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
         </div>
@@ -934,7 +935,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={8}
               title="Lógica Interna"
-              variant="emerald"
+              variant={getModuleVariant(3)}
             />
             <ContentAccordion
               slides={[
@@ -968,7 +969,7 @@ export default function AulaCoesaoCoerencia({
             titulo="Fixação - Módulo 8"
             icone="🎯"
             numero={8}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
         </div>
@@ -988,7 +989,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={9}
               title="O Movimento do Texto"
-              variant="emerald"
+              variant={getModuleVariant(3)}
             />
             <ContentAccordion
               slides={[
@@ -1016,7 +1017,7 @@ export default function AulaCoesaoCoerencia({
             titulo="Fixação - Módulo 9"
             icone="🎯"
             numero={9}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
         </div>
@@ -1042,7 +1043,7 @@ export default function AulaCoesaoCoerencia({
             titulo="Simulado Final"
             icone="🏆"
             numero={10}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
           />
         </div>

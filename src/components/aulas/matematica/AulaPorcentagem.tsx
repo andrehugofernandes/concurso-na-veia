@@ -20,6 +20,7 @@ import {
   type FunctionPlot,
 
 } from "../shared";
+import { getModuleVariant } from "@/lib/moduleColors";
 import {
   LuBookOpen,
   LuPercent,
@@ -169,7 +170,7 @@ export default function AulaPorcentagem({
               index={1}
               title="A Linguagem Universal dos Números"
               description="Porcentagem está em todo relatório técnico, toda proposta comercial, todo indicador Petrobras."
-              variant="emerald"
+              variant={getModuleVariant(3)}
             />
             <ContentAccordion
               slides={[
@@ -318,7 +319,7 @@ export default function AulaPorcentagem({
               index={2}
               title="Flashcards de Elite"
               description="Resposta rápida. Clique para revelar o raciocínio completo."
-              variant="emerald"
+              variant={getModuleVariant(3)}
             />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FlipCard
@@ -400,7 +401,7 @@ export default function AulaPorcentagem({
           <section id="quiz-modulo-1">
           <ModuleConsolidation
             index={1}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 1",
@@ -439,14 +440,14 @@ export default function AulaPorcentagem({
               questoes={quizM1}
               titulo="Fixação — Fundamentos"
               numero={1}
-              variant="emerald"
+              variant={getModuleVariant(3)}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant={getModuleVariant(10)} />
             <LessonTabs
               tabs={[
                 {
@@ -498,7 +499,7 @@ export default function AulaPorcentagem({
               index={1}
               title="O Fator Multiplicador"
               description="Uma única multiplicação substitui: calcular %, somar/subtrair do original."
-              variant="blue"
+              variant={getModuleVariant(1)}
             />
             <ContentAccordion
               slides={[
@@ -620,7 +621,7 @@ export default function AulaPorcentagem({
               index={2}
               title="Casos da Petrobras"
               description="Situações reais onde o fator multiplicador é indispensável."
-              variant="blue"
+              variant={getModuleVariant(1)}
             />
             <CardCarousel
               cards={[
@@ -647,7 +648,7 @@ export default function AulaPorcentagem({
           <section id="quiz-modulo-2">
           <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 2",
@@ -686,14 +687,14 @@ export default function AulaPorcentagem({
               questoes={quizM2}
               titulo="Fixação — Fatores Multiplicadores"
               numero={2}
-              variant="blue"
+              variant={getModuleVariant(1)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant={getModuleVariant(10)} />
             <LessonTabs
               tabs={[
                 {
@@ -739,7 +740,7 @@ export default function AulaPorcentagem({
               index={1}
               title="A Fórmula Inviolável"
               description="Onde 90% dos candidatos erram: confundem base inicial com base final."
-              variant="amber"
+              variant={getModuleVariant(6)}
             />
             <ContentAccordion
               slides={[
@@ -853,7 +854,7 @@ export default function AulaPorcentagem({
           <section id="quiz-modulo-3">
           <ModuleConsolidation
             index={3}
-            variant="cyan"
+            variant={getModuleVariant(2)}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 3",
@@ -892,14 +893,14 @@ export default function AulaPorcentagem({
               questoes={quizM3}
               titulo="Fixação — Variação Percentual"
               numero={3}
-              variant="amber"
+              variant={getModuleVariant(6)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant={getModuleVariant(10)} />
             <LessonTabs
               tabs={[
                 {
@@ -945,7 +946,7 @@ export default function AulaPorcentagem({
               index={1}
               title="Porcentagem no Chão de Fábrica"
               description="Como a Petrobras usa % para medir eficiência, pureza e produtividade."
-              variant="cyan"
+              variant={getModuleVariant(2)}
             />
             <ContentAccordion
               slides={[
@@ -1055,7 +1056,7 @@ export default function AulaPorcentagem({
           <section id="quiz-modulo-4">
           <ModuleConsolidation
             index={4}
-            variant="blue"
+            variant={getModuleVariant(1)}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 4",
@@ -1094,14 +1095,14 @@ export default function AulaPorcentagem({
               questoes={quizM4}
               titulo="Fixação — Aplicações Industriais"
               numero={4}
-              variant="cyan"
+              variant={getModuleVariant(2)}
               icone="🔥"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant={getModuleVariant(10)} />
             <LessonTabs
               tabs={[
                 {
@@ -1147,7 +1148,7 @@ export default function AulaPorcentagem({
               index={1}
               title="Revisão Express"
               description="Os 4 conceitos que mais aparecem nas questões do simulado."
-              variant="rose"
+              variant={getModuleVariant(9)}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
@@ -1175,7 +1176,7 @@ export default function AulaPorcentagem({
           <section id="quiz-modulo-5">
           <ModuleConsolidation
             index={5}
-            variant="amber"
+            variant={getModuleVariant(6)}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 5",
@@ -1214,7 +1215,7 @@ export default function AulaPorcentagem({
               questoes={quizM5}
               titulo="Simulado — Nível 1"
               numero={5}
-              variant="rose"
+              variant={getModuleVariant(9)}
               icone="🏆"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1239,7 +1240,7 @@ export default function AulaPorcentagem({
               index={1}
               title="O Crescimento Exponencial"
               description="O que difere juros simples de compostos e por que importa nas questões Petrobras."
-              variant="indigo"
+              variant={getModuleVariant(10)}
             />
             <ContentAccordion
               slides={[
@@ -1386,7 +1387,7 @@ export default function AulaPorcentagem({
               index={2}
               title="Visualização: Juros Simples"
               description="Observe o crescimento linear do montante ao longo do tempo para diferentes taxas."
-              variant="indigo"
+              variant={getModuleVariant(10)}
             />
             <FunctionGraph
               title="Juros Simples: M(t) = C·(1 + i·t)"
@@ -1426,7 +1427,7 @@ export default function AulaPorcentagem({
               index={3}
               title="Visualização: Juros Compostos"
               description="Observe o crescimento exponencial do montante ao longo do tempo para diferentes taxas."
-              variant="indigo"
+              variant={getModuleVariant(10)}
             />
             <FunctionGraph
               title="Juros Compostos: M(t) = C·(1 + i)^t"
@@ -1464,7 +1465,7 @@ export default function AulaPorcentagem({
           <section id="quiz-modulo-6">
           <ModuleConsolidation
             index={6}
-            variant="rose"
+            variant={getModuleVariant(9)}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 6",
@@ -1503,14 +1504,14 @@ export default function AulaPorcentagem({
               questoes={quizM6}
               titulo="Fixação — % Composta"
               numero={6}
-              variant="indigo"
+              variant={getModuleVariant(10)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant={getModuleVariant(10)} />
             <LessonTabs
               tabs={[
                 {
@@ -1562,7 +1563,7 @@ export default function AulaPorcentagem({
               index={1}
               title="Desfazendo a Manipulação"
               description="A lógica de dividir pelo fator — não subtrair a taxa do resultado."
-              variant="emerald"
+              variant={getModuleVariant(3)}
             />
             <ContentAccordion
               slides={[
@@ -1674,7 +1675,7 @@ export default function AulaPorcentagem({
               index={2}
               title="Treino Mental — Reverso"
               description="Calcule o valor original rapidamente."
-              variant="emerald"
+              variant={getModuleVariant(3)}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FlipCard
@@ -1731,7 +1732,7 @@ export default function AulaPorcentagem({
           <section id="quiz-modulo-7">
           <ModuleConsolidation
             index={7}
-            variant="indigo"
+            variant={getModuleVariant(10)}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 7",
@@ -1770,14 +1771,14 @@ export default function AulaPorcentagem({
               questoes={quizM7}
               titulo="Fixação — Cálculo Reverso"
               numero={7}
-              variant="emerald"
+              variant={getModuleVariant(3)}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant={getModuleVariant(10)} />
             <LessonTabs
               tabs={[
                 {
@@ -1823,7 +1824,7 @@ export default function AulaPorcentagem({
               index={1}
               title="Regra de Três: Quando Usar"
               description="Nem toda questão de porcentagem se resolve com fator. Saiba identificar."
-              variant="amber"
+              variant={getModuleVariant(6)}
             />
             <ContentAccordion
               slides={[
@@ -1920,7 +1921,7 @@ export default function AulaPorcentagem({
           <section id="quiz-modulo-8">
           <ModuleConsolidation
             index={8}
-            variant="emerald"
+            variant={getModuleVariant(3)}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 8",
@@ -1959,14 +1960,14 @@ export default function AulaPorcentagem({
               questoes={quizM8}
               titulo="Fixação — Regra de Três %"
               numero={8}
-              variant="amber"
+              variant={getModuleVariant(6)}
               icone="🔥"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant={getModuleVariant(10)} />
             <LessonTabs
               tabs={[
                 {
@@ -2012,7 +2013,7 @@ export default function AulaPorcentagem({
               index={1}
               title="Porcentagem no Mercado Financeiro"
               description="Os indicadores econômicos que aparecem nas questões de raciocínio quantitativo."
-              variant="emerald"
+              variant={getModuleVariant(3)}
             />
             <ContentAccordion
               slides={[
@@ -2146,7 +2147,7 @@ export default function AulaPorcentagem({
               index={2}
               title="Visualização: Juros Simples vs. Compostos"
               description="Compare o crescimento linear e exponencial com a mesma taxa de 10% ao período."
-              variant="emerald"
+              variant={getModuleVariant(3)}
             />
             <FunctionGraph
               title="Comparação: Juros Simples vs. Compostos"
@@ -2177,7 +2178,7 @@ export default function AulaPorcentagem({
           <section id="quiz-modulo-9">
           <ModuleConsolidation
             index={9}
-            variant="cyan"
+            variant={getModuleVariant(2)}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 9",
@@ -2216,14 +2217,14 @@ export default function AulaPorcentagem({
               questoes={quizM9}
               titulo="Fixação — Financeiro"
               numero={9}
-              variant="emerald"
+              variant={getModuleVariant(3)}
               icone="🔥"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant={getModuleVariant(10)} />
             <LessonTabs
               tabs={[
                 {
@@ -2276,7 +2277,7 @@ export default function AulaPorcentagem({
               index={1}
               title="Dossiê de Elite — Revisão Final"
               description="Os 10 gatilhos mentais que separam os aprovados dos eliminados."
-              variant="indigo"
+              variant={getModuleVariant(10)}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {[
@@ -2310,7 +2311,7 @@ export default function AulaPorcentagem({
           <section id="quiz-modulo-10">
           <ModuleConsolidation
             index={10}
-            variant="blue"
+            variant={getModuleVariant(1)}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 10",
@@ -2350,7 +2351,7 @@ export default function AulaPorcentagem({
               titulo="Simulado Elite — Porcentagem"
               icone="🏆"
               numero={10}
-              variant="slate"
+              variant={getModuleVariant(10)}
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>
@@ -2372,7 +2373,7 @@ export default function AulaPorcentagem({
           )}
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-4">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant={getModuleVariant(10)} />
             <LessonTabs
               tabs={[
                 {
