@@ -33,22 +33,46 @@ export async function gerarQuestaoAction(
 
     console.log(`[ACTION] Gerando questão para: ${validated.materia} (${validated.assunto || 'Geral'})`);
 
-    const questao = await provider.generateQuestion({
-      materia: validated.materia,
-      dificuldade: validated.dificuldade,
-      assunto: validated.assunto,
-      contexto: validated.contexto ? {
-        cargo: validated.contexto.cargo || 'Geral',
-        nivel: validated.contexto.nivel || 'médio',
-      } : undefined,
-      questoesAnteriores: validated.questoesAnteriores,
-    });
+    let lastError: any;
+    const maxRetries = 2;
+    
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      try {
+        if (attempt > 0) {
+          console.log(`[ACTION] Tentativa ${attempt + 1} de ${maxRetries + 1}...`);
+          // Espera exponencial: 2s, 4s...
+          await new Promise(resolve => setTimeout(resolve, Math.pow(2, attempt) * 1000));
+        }
 
-    if (!questao) {
-      return createErrorResponse('O provedor de IA não conseguiu gerar a questão.');
+        const questao = await provider.generateQuestion({
+          materia: validated.materia,
+          dificuldade: validated.dificuldade,
+          assunto: validated.assunto,
+          contexto: validated.contexto ? {
+            cargo: validated.contexto.cargo || 'Geral',
+            nivel: validated.contexto.nivel || 'médio',
+          } : undefined,
+          questoesAnteriores: validated.questoesAnteriores,
+        });
+
+        if (!questao) {
+          throw new Error('O provedor de IA não conseguiu gerar a questão.');
+        }
+
+        return createSuccessResponse(questao);
+      } catch (error: any) {
+        lastError = error;
+        const isRateLimit = error.message?.includes('429') || error.message?.toLowerCase().includes('rate limit');
+        
+        if (!isRateLimit || attempt === maxRetries) {
+          break;
+        }
+        
+        console.warn(`[ACTION] Rate limit atingido na tentativa ${attempt + 1}. Retentando...`);
+      }
     }
 
-    return createSuccessResponse(questao);
+    throw lastError;
   } catch (error: any) {
     console.error('[gerarQuestaoAction] Erro:', error);
     

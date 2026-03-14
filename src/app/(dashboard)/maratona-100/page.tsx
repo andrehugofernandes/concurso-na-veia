@@ -47,6 +47,8 @@ export default function Maratona100Page() {
   const [cronometro, setCronometro] = useState(0);
   const [cronometroAtivo, setCronometroAtivo] = useState(false);
   const [gerandoQuestoes, setGerandoQuestoes] = useState(false);
+  const [progressoGeracao, setProgressoGeracao] = useState(0);
+  const [totalGeracao, setTotalGeracao] = useState(0);
   const [tempoLimite, setTempoLimite] = useState<number | null>(null); // em segundos
   const [tempoEsgotado, setTempoEsgotado] = useState(false);
 
@@ -244,6 +246,9 @@ export default function Maratona100Page() {
       ];
     }
 
+    setTotalGeracao(quantidade);
+    setProgressoGeracao(0);
+
     // Loop de geração
     for (const item of distribuicao) {
       for (let i = 0; i < item.qtd; i++) {
@@ -267,8 +272,8 @@ export default function Maratona100Page() {
             q.enunciado.substring(0, 80),
           );
 
-          // Delay para não sobrecarregar a API
-          if (questoes.length > 0) await new Promise((r) => setTimeout(r, 100));
+          // Delay maior para evitar rate limit (1500ms entre requisições)
+          if (questoes.length > 0) await new Promise((r) => setTimeout(r, 1500));
 
           const questao = await gerarQuestaoIA(
             item.materia,
@@ -277,6 +282,7 @@ export default function Maratona100Page() {
             questoesAnteriores,
           );
           questoes.push(questao);
+          setProgressoGeracao(questoes.length);
         } catch (error) {
           console.error(
             `Erro ao gerar questão ${i + 1} de ${item.materia}:`,
@@ -291,6 +297,7 @@ export default function Maratona100Page() {
               [],
             );
             questoes.push(questao);
+            setProgressoGeracao(questoes.length);
           } catch (retryError) {
             console.error("Falha na retentativa:", retryError);
           }
@@ -511,12 +518,12 @@ export default function Maratona100Page() {
   };
 
   if (tela === "gerando") {
-    return <LoadingScreen />;
+    return <LoadingScreen current={progressoGeracao} total={totalGeracao} />;
   }
 
   // Se tem parâmetros de URL e está na home, mostra loading enquanto inicia
   if (tipoUrl && tela === "home") {
-    return <LoadingScreen />;
+    return <LoadingScreen current={progressoGeracao} total={totalGeracao} />;
   }
 
   if (tela === "home") {

@@ -5,7 +5,7 @@ import { Users, FileText, Download as DownloadIcon, CalendarDays, Eye, BarChart3
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { AnimatedBorderCard } from '@/components/ui/animated-border-card';
-import { logsService } from '@/lib/services/logs';
+import { getDashboardStatsAction, getLogsStatsAction, getCategoriesAction } from '@/lib/actions/dashboard';
 
 interface DashboardStats {
   totalUsers: number;
@@ -62,35 +62,28 @@ export function StatsCards() {
   useEffect(() => {
     const loadStats = async () => {
       try {
-        // Usar Promise.all para buscar todos os dados em paralelo (React 19 otimiza isso)
-        const [usersRes, filesRes, downloadsRes, logStats, categoriesRes] = await Promise.all([
-          fetch('/api/users/stats', { credentials: 'include' }),
-          fetch('/api/files/stats', { credentials: 'include' }),
-          fetch('/api/downloads/stats', { credentials: 'include' }),
-          logsService.getStats(),
-          fetch('/api/categories', { credentials: 'include' })
+        const [statsRes, logsRes, categoriesRes] = await Promise.all([
+          getDashboardStatsAction(),
+          getLogsStatsAction(),
+          getCategoriesAction()
         ]);
 
-        const [usersData, filesData, downloadsData, categories] = await Promise.all([
-          usersRes.ok ? usersRes.json() : { totalUsers: 0 },
-          filesRes.ok ? filesRes.json() : { totalFiles: 0, filesLast30Days: 0 },
-          downloadsRes.ok ? downloadsRes.json() : { totalDownloads: 0, downloadsLast30Days: 0, totalViews: 0, viewsLast30Days: 0 },
-          categoriesRes.ok ? categoriesRes.json() : []
-        ]);
-
-        // Usar startTransition para marcar a atualização como não-bloqueante (React 19)
         startTransition(() => {
+          const dashboardData = statsRes.status === 'success' ? statsRes.data : {};
+          const logsData = (logsRes.status === 'success' && logsRes.data) ? logsRes.data : { logsToday: 0 };
+          const categoriesData = categoriesRes.status === 'success' ? categoriesRes.data : [];
+
           setStats({
-            totalUsers: usersData.totalUsers || 0,
-            totalFiles: filesData.totalFiles || 0,
-            totalDownloads: downloadsData.totalDownloads || 0,
-            downloadsLast30Days: downloadsData.downloadsLast30Days || 0,
-            totalViews: downloadsData.totalViews || 0,
-            viewsLast30Days: downloadsData.viewsLast30Days || 0,
-            logsToday: logStats.logsToday || 0,
+            totalUsers: dashboardData.totalUsers || 0,
+            totalFiles: dashboardData.totalFiles || 0,
+            totalDownloads: dashboardData.totalDownloads || 0,
+            downloadsLast30Days: dashboardData.downloadsLast30Days || 0,
+            totalViews: dashboardData.totalViews || 0,
+            viewsLast30Days: dashboardData.viewsLast30Days || 0,
+            logsToday: logsData.logsToday || 0,
             totalReports: 8,
-            activeCategories: Array.isArray(categories) ? categories.length : 0,
-            filesGrowthRate: filesData.filesLast30Days || 0,
+            activeCategories: Array.isArray(categoriesData) ? categoriesData.length : 0,
+            filesGrowthRate: dashboardData.filesGrowthRate || 0,
           });
         });
       } catch (error) {

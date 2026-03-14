@@ -264,8 +264,9 @@ export default function SimuladoPage() {
             typeof q.enunciado === "string" ? q.enunciado.substring(0, 80) : "",
           );
 
-          // Delay maior para evitar rate limit (500ms entre requisições)
-          if (questoes.length > 0) await new Promise((r) => setTimeout(r, 500));
+          // Delay maior para evitar rate limit (1500ms entre requisições)
+          if (questoes.length > 0)
+            await new Promise((r) => setTimeout(r, 1500));
 
           const questao = await gerarQuestaoIA(
             item.materia,

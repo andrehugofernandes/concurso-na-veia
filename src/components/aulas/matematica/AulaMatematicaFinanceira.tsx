@@ -483,7 +483,7 @@ export default function AulaMatematicaFinanceira({
                   </div>
                   <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
                     <p className="font-bold text-green-700 dark:text-green-300 text-sm">Diferenças Chaves</p>
-                    <p className="text-xs mt-1">→ M - C = J | → M > C sempre (ganho positivo)</p>
+                    <p className="text-xs mt-1">→ M - C = J | → M &gt; C sempre (ganho positivo)</p>
                   </div>
                   <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-lg">
                     <p className="font-bold text-teal-700 dark:text-teal-300 text-sm">Aplicação Petrobras</p>
@@ -1866,6 +1866,594 @@ export default function AulaMatematicaFinanceira({
           </section>
         </div>
       </TabsContent>
+
+      {/* Extensões Avançadas - Tópicos Complementares */}
+      <section className="mt-24 mb-16 space-y-12 px-4 md:px-8">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <h2 className="text-3xl font-bold text-center mb-8 text-indigo-700 dark:text-indigo-300">
+            🚀 Extensões Avançadas em Matemática Financeira
+          </h2>
+
+          {/* Tópico 1: Inflação e Taxa Real */}
+          <div className="p-6 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-xl border border-amber-200 dark:border-amber-800">
+            <h3 className="text-xl font-bold text-amber-900 dark:text-amber-100 mb-4">
+              📊 Inflação e Taxa Real
+            </h3>
+            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+              <p><strong>Conceito:</strong> A taxa nominal não reflete o poder de compra real.</p>
+              <p><strong>Fórmula de Fisher:</strong> (1 + taxa nominal) = (1 + taxa real) × (1 + inflação)</p>
+              <div className="p-3 bg-white dark:bg-gray-900 rounded border-l-4 border-amber-500 mt-3">
+                <p className="font-mono text-xs">Taxa Real = [(1 + taxa nominal) / (1 + inflação)] - 1</p>
+              </div>
+              <p className="mt-3"><strong>Aplicação Petrobras:</strong> Na análise de investimentos em exploração, a taxa real reflete o retorno verdadeiro ajustado pela inflação do custo de equipamentos e mão de obra.</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">💡 Dica: Se inflação &gt; taxa nominal, taxa real é negativa (prejuízo de poder de compra).</p>
+            </div>
+          </div>
+
+          {/* Tópico 2: Análise de Viabilidade (VPL e TIR) */}
+          <div className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-xl border border-green-200 dark:border-green-800">
+            <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">
+              💰 Análise de Viabilidade (VPL e TIR)
+            </h3>
+            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+              <p><strong>VPL (Valor Presente Líquido):</strong> Soma dos fluxos descontados a uma taxa de referência.</p>
+              <div className="p-3 bg-white dark:bg-gray-900 rounded border-l-4 border-green-500 mt-3 space-y-2">
+                <p className="font-mono text-xs">VPL = Σ [FCt / (1 + i)^t] - Investimento Inicial</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Se VPL &gt; 0: projeto viável | Se VPL &lt; 0: projeto inviável</p>
+              </div>
+              <p className="mt-3"><strong>TIR (Taxa Interna de Retorno):</strong> Taxa que iguala VPL = 0.</p>
+              <div className="p-3 bg-white dark:bg-gray-900 rounded border-l-4 border-green-500 mt-3">
+                <p className="text-xs">Se TIR &gt; taxa de desconto: projeto viável</p>
+              </div>
+              <p className="mt-3"><strong>Aplicação Petrobras:</strong> Projetos de exploração são avaliados por VPL e TIR. Um poço precisa de TIR &gt; 15% a.a. para ser viável.</p>
+            </div>
+          </div>
+
+          {/* Tópico 3: Equivalência de Capitais em Múltiplas Datas */}
+          <div className="p-6 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-xl border border-blue-200 dark:border-blue-800">
+            <h3 className="text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">
+              🔄 Equivalência de Capitais em Múltiplas Datas
+            </h3>
+            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+              <p><strong>Conceito:</strong> Capitais em datas diferentes são equivalentes se descontados à mesma taxa.</p>
+              <div className="p-3 bg-white dark:bg-gray-900 rounded border-l-4 border-blue-500 mt-3">
+                <p className="font-mono text-xs">C₀ = C₁/(1+i)¹ = C₂/(1+i)² = ... = Cn/(1+i)ⁿ</p>
+              </div>
+              <p className="mt-3"><strong>Caso Prático:</strong> Financiamento de R$ 500.000 em 4 parcelas trimestrais (taxa 2% a.t.)</p>
+              <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded text-xs space-y-1 mt-3 font-mono">
+                <p>T0: Valor atual = 500.000</p>
+                <p>T1: Parcela = 500.000 × (1,02 / [1,02⁴-1]/[0,02×1,02⁴]) ≈ 128.500</p>
+                <p>T2, T3, T4: Idem</p>
+              </div>
+              <p className="mt-3"><strong>Aplicação Petrobras:</strong> Análise de múltiplas formas de pagamento de serviços de perfuração (à vista com desconto vs. parcelado).</p>
+            </div>
+          </div>
+
+          {/* Tópico 4: Depreciação Contábil vs. Financeira */}
+          <div className="p-6 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-xl border border-purple-200 dark:border-purple-800">
+            <h3 className="text-xl font-bold text-purple-900 dark:text-purple-100 mb-4">
+              📉 Depreciação Contábil vs. Financeira
+            </h3>
+            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+              <p><strong>Depreciação Linear (Contábil):</strong> Valor uniforme a cada período.</p>
+              <div className="p-3 bg-white dark:bg-gray-900 rounded border-l-4 border-purple-500 mt-3">
+                <p className="font-mono text-xs">Depreciação = (Valor Original - Valor Residual) / Anos</p>
+              </div>
+              <p className="mt-3"><strong>Depreciação Acelerada (Financeira):</strong> Maior redução nos primeiros anos (método da soma dos dígitos ou redução do saldo).</p>
+              <p className="mt-3"><strong>Caso Petrobras:</strong> Plataforma de exploração com custo R$ 50 milhões, vida útil 20 anos.</p>
+              <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded text-xs space-y-1 mt-3">
+                <p>• Linear: R$ 2,5 mi/ano (se residual = 0)</p>
+                <p>• Acelerada (soma dígitos): Ano 1 ≈ R$ 4,76 mi | Ano 20 ≈ R$ 0,24 mi</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Tópico 5: Leasing vs. Compra */}
+          <div className="p-6 bg-gradient-to-r from-red-50 to-rose-50 dark:from-red-950/30 dark:to-rose-950/30 rounded-xl border border-red-200 dark:border-red-800">
+            <h3 className="text-xl font-bold text-red-900 dark:text-red-100 mb-4">
+              🚗 Decisão: Leasing vs. Compra
+            </h3>
+            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+              <p><strong>Leasing:</strong> Aluguel com opção de compra ao final do contrato.</p>
+              <p><strong>Decisão via VPL:</strong> Compare o custo presente de ambas as alternativas.</p>
+              <div className="p-3 bg-white dark:bg-gray-900 rounded border-l-4 border-red-500 mt-3 space-y-2">
+                <p className="font-mono text-xs">VPL(Leasing) = Σ [Parcela×(1+i)^-t]</p>
+                <p className="font-mono text-xs">VPL(Compra) = Preço - Σ [Depreciação×(1+i)^-t] + Residual×(1+i)^-n</p>
+              </div>
+              <p className="mt-3"><strong>Aplicação Petrobras:</strong> Equipamentos de sondagem (bombas, compressores) podem ser alugados ou comprados. Leasing oferece flexibilidade; compra oferece propriedade e depreciação fiscal.</p>
+            </div>
+          </div>
+
+          {/* Tópico 6: Análise de Sensibilidade e Risco */}
+          <div className="p-6 bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/30 dark:to-violet-950/30 rounded-xl border border-indigo-200 dark:border-indigo-800">
+            <h3 className="text-xl font-bold text-indigo-900 dark:text-indigo-100 mb-4">
+              ⚠️ Análise de Sensibilidade e Risco
+            </h3>
+            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+              <p><strong>Sensibilidade:</strong> Variação do VPL quando um parâmetro muda.</p>
+              <div className="p-3 bg-white dark:bg-gray-900 rounded border-l-4 border-indigo-500 mt-3">
+                <p className="text-xs">Se taxa sobe 1%, VPL cai de R$ 1M para R$ 950K (sensibilidade = -50K/0,01 = -5M)</p>
+              </div>
+              <p className="mt-3"><strong>Análise de Cenários:</strong> Otimista, base, pessimista.</p>
+              <p className="mt-3"><strong>Aplicação Petrobras:</strong> Projeto de exploração sensível a preço do petróleo. Se preço ≤ USD 50/bbl, VPL pode ficar negativo.</p>
+              <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded text-xs space-y-1 mt-3">
+                <p>Cenário Otimista (USD 100/bbl): VPL = +USD 200M</p>
+                <p>Cenário Base (USD 70/bbl): VPL = +USD 50M</p>
+                <p>Cenário Pessimista (USD 40/bbl): VPL = -USD 100M</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mapa Mental Visual - Estrutura Geral */}
+      <section className="my-16 px-4 md:px-8">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-8 text-center text-slate-800 dark:text-slate-100">
+            🧠 Mapa Mental: Estrutura Completa da Matemática Financeira
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Core Concepts */}
+            <div className="p-5 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+              <h3 className="font-bold text-indigo-900 dark:text-indigo-200 mb-3">📌 Conceitos Fundamentais</h3>
+              <ul className="text-xs space-y-2 text-indigo-800 dark:text-indigo-300">
+                <li>• Capital (C) = valor inicial</li>
+                <li>• Montante (M) = C + Juros</li>
+                <li>• Taxa (i) = rentabilidade</li>
+                <li>• Tempo (t) = período</li>
+                <li>• Juros (J) = M - C</li>
+              </ul>
+            </div>
+
+            {/* Regimes */}
+            <div className="p-5 bg-green-50 dark:bg-green-950/40 border border-green-200 dark:border-green-800 rounded-lg">
+              <h3 className="font-bold text-green-900 dark:text-green-200 mb-3">⚡ Regimes de Juros</h3>
+              <ul className="text-xs space-y-2 text-green-800 dark:text-green-300">
+                <li>• <strong>Simples:</strong> J = Cit</li>
+                <li>• <strong>Composto:</strong> M = C(1+i)^t</li>
+                <li>• <strong>Contínuo:</strong> M = C·e^(it)</li>
+                <li>• <strong>Comparação:</strong> J.C &lt; J.S &lt; J.R (para t &gt; 1)</li>
+              </ul>
+            </div>
+
+            {/* Operações */}
+            <div className="p-5 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 rounded-lg">
+              <h3 className="font-bold text-blue-900 dark:text-blue-200 mb-3">🔧 Operações Financeiras</h3>
+              <ul className="text-xs space-y-2 text-blue-800 dark:text-blue-300">
+                <li>• Desconto (antecipação)</li>
+                <li>• Equivalência (múltiplas datas)</li>
+                <li>• Séries/Anuidades</li>
+                <li>• Amortização</li>
+                <li>• Conversão de taxas</li>
+              </ul>
+            </div>
+
+            {/* Taxas */}
+            <div className="p-5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-lg">
+              <h3 className="font-bold text-amber-900 dark:text-amber-200 mb-3">📈 Tipos de Taxa</h3>
+              <ul className="text-xs space-y-2 text-amber-800 dark:text-amber-300">
+                <li>• <strong>Nominal:</strong> taxa contratada</li>
+                <li>• <strong>Efetiva:</strong> taxa real</li>
+                <li>• <strong>Real:</strong> ajustada inflação</li>
+                <li>• <strong>Equivalentes:</strong> mesmo período</li>
+              </ul>
+            </div>
+
+            {/* Análise */}
+            <div className="p-5 bg-cyan-50 dark:bg-cyan-950/40 border border-cyan-200 dark:border-cyan-800 rounded-lg">
+              <h3 className="font-bold text-cyan-900 dark:text-cyan-200 mb-3">📊 Análise de Investimentos</h3>
+              <ul className="text-xs space-y-2 text-cyan-800 dark:text-cyan-300">
+                <li>• <strong>VPL:</strong> valor presente líquido</li>
+                <li>• <strong>TIR:</strong> taxa interna de retorno</li>
+                <li>• <strong>IL:</strong> índice de lucratividade</li>
+                <li>• <strong>Payback:</strong> tempo de recuperação</li>
+              </ul>
+            </div>
+
+            {/* Aplicações */}
+            <div className="p-5 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 rounded-lg">
+              <h3 className="font-bold text-rose-900 dark:text-rose-200 mb-3">🏭 Aplicações Práticas</h3>
+              <ul className="text-xs space-y-2 text-rose-800 dark:text-rose-300">
+                <li>• Financiamentos imobiliários</li>
+                <li>• Empréstimos pessoais</li>
+                <li>• Investimentos em ações/fundos</li>
+                <li>• Projetos de capital (Petrobras)</li>
+                <li>• Planos de previdência</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tabela de Comparação - Juros Simples vs Compostos */}
+      <section className="my-16 px-4 md:px-8">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6 text-center text-slate-800 dark:text-slate-100">
+            📋 Comparação: Juros Simples vs. Compostos
+          </h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs border-collapse border border-gray-300 dark:border-gray-700">
+              <thead className="bg-indigo-600 text-white">
+                <tr>
+                  <th className="border border-gray-300 dark:border-gray-700 p-3 text-left">Aspecto</th>
+                  <th className="border border-gray-300 dark:border-gray-700 p-3 text-left">Juros Simples</th>
+                  <th className="border border-gray-300 dark:border-gray-700 p-3 text-left">Juros Compostos</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-700 dark:text-gray-300">
+                <tr className="bg-gray-50 dark:bg-gray-900">
+                  <td className="border border-gray-300 dark:border-gray-700 p-3 font-semibold">Fórmula</td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-3"><code>J = Cit</code></td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-3"><code>M = C(1+i)^t</code></td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-700 p-3 font-semibold">Crescimento</td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-3">Linear (progressão aritmética)</td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-3">Exponencial (progressão geométrica)</td>
+                </tr>
+                <tr className="bg-gray-50 dark:bg-gray-900">
+                  <td className="border border-gray-300 dark:border-gray-700 p-3 font-semibold">Renda</td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-3">Depósitos à vista, operações curto prazo</td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-3">Investimentos, financiamentos, aplicações</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-700 p-3 font-semibold">Comparação (t &gt; 1)</td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-3">Rendimento MENOR</td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-3">Rendimento MAIOR</td>
+                </tr>
+                <tr className="bg-gray-50 dark:bg-gray-900">
+                  <td className="border border-gray-300 dark:border-gray-700 p-3 font-semibold">Exemplo</td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-3">C=1000, i=10% a.a., t=5a: J=500, M=1500</td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-3">C=1000, i=10% a.a., t=5a: M=1610,51</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Checklist de Competências */}
+      <section className="my-16 px-4 md:px-8">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6 text-center text-slate-800 dark:text-slate-100">
+            ✅ Checklist de Competências Desenvolvidas
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
+              <p className="font-semibold text-gray-800 dark:text-gray-100 mb-3">Módulo 1-3: Fundamentos</p>
+              <ul className="text-xs space-y-1 text-gray-700 dark:text-gray-300">
+                <li>☑ Calcular juros simples e compostos</li>
+                <li>☑ Diferenciar regimes de capitalização</li>
+                <li>☑ Resolver problemas de montante</li>
+              </ul>
+            </div>
+            <div className="p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
+              <p className="font-semibold text-gray-800 dark:text-gray-100 mb-3">Módulo 4-6: Operações Avançadas</p>
+              <ul className="text-xs space-y-1 text-gray-700 dark:text-gray-300">
+                <li>☑ Aplicar desconto simples e composto</li>
+                <li>☑ Verificar equivalência de capitais</li>
+                <li>☑ Converter taxas (nominal/efetiva)</li>
+              </ul>
+            </div>
+            <div className="p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
+              <p className="font-semibold text-gray-800 dark:text-gray-100 mb-3">Módulo 7-8: Séries e Amortização</p>
+              <ul className="text-xs space-y-1 text-gray-700 dark:text-gray-300">
+                <li>☑ Calcular valor de anuidades</li>
+                <li>☑ Montar tabela de amortização</li>
+                <li>☑ Aplicar sistemas SAC e Price</li>
+              </ul>
+            </div>
+            <div className="p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
+              <p className="font-semibold text-gray-800 dark:text-gray-100 mb-3">Módulo 9-10: Aplicações Profissionais</p>
+              <ul className="text-xs space-y-1 text-gray-700 dark:text-gray-300">
+                <li>☑ Analisar viabilidade de projetos (VPL, TIR)</li>
+                <li>☑ Resolver casos Petrobras reais</li>
+                <li>☑ Dominar prova CESGRANRIO</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Conclusão e Próximos Passos */}
+      <section className="mb-12 px-4 md:px-8 bg-gradient-to-r from-slate-50 to-gray-50 dark:from-slate-950 dark:to-gray-950 py-12 rounded-xl">
+        <div className="max-w-4xl mx-auto space-y-6">
+          <h2 className="text-3xl font-bold text-center text-slate-800 dark:text-slate-100">
+            ✨ Parabéns! Você é um Especialista em Matemática Financeira
+          </h2>
+          <p className="text-center text-gray-700 dark:text-gray-300 text-lg">
+            Ao dominar esses conceitos, você está preparado para:
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+            <div className="p-4 bg-white dark:bg-gray-900 rounded-lg border-l-4 border-indigo-500">
+              <p className="font-semibold text-indigo-700 dark:text-indigo-300">💼 Carreiras Financeiras</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Analista de investimentos, gestor de projetos, consultor financeiro</p>
+            </div>
+            <div className="p-4 bg-white dark:bg-gray-900 rounded-lg border-l-4 border-green-500">
+              <p className="font-semibold text-green-700 dark:text-green-300">🏭 Engenharia Econômica</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Avaliação de projetos, orçamentação de capital, análise de ROI</p>
+            </div>
+            <div className="p-4 bg-white dark:bg-gray-900 rounded-lg border-l-4 border-blue-500">
+              <p className="font-semibold text-blue-700 dark:text-blue-300">🛢️ Indústria de Petróleo</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Avaliação de blocos exploratórios, análise de viabilidade, gestão de carteira</p>
+            </div>
+            <div className="p-4 bg-white dark:bg-gray-900 rounded-lg border-l-4 border-amber-500">
+              <p className="font-semibold text-amber-700 dark:text-amber-300">📊 CESGRANRIO/Concursos</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Pronto para questões avançadas de banca em provas oficiais</p>
+            </div>
+          </div>
+          <div className="p-6 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg mt-8">
+            <p className="font-semibold text-blue-900 dark:text-blue-100 mb-3">📚 Próximos Passos Recomendados:</p>
+            <ul className="space-y-2 text-sm text-blue-800 dark:text-blue-200">
+              <li>✓ Revisite módulos 9 (Aplicações Petrobras) para casos reais</li>
+              <li>✓ Pratique com questões anteriores de CESGRANRIO (2015-2024)</li>
+              <li>✓ Estude derivativos e operações de hedge (tema avançado)</li>
+              <li>✓ Explore softwares: HP 12C, Excel, Python (numpy/scipy)</li>
+              <li>✓ Integre com Estatística e Probabilidade para análise de risco</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Formulário Rápido de Referência */}
+      <section className="my-16 px-4 md:px-8">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-8 text-center text-slate-800 dark:text-slate-100">
+            📐 Formulário de Referência Rápida
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Regimes de Capitalização */}
+            <div className="p-6 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/40 dark:to-blue-950/40 rounded-lg border border-indigo-200 dark:border-indigo-800">
+              <h3 className="font-bold text-indigo-900 dark:text-indigo-200 mb-4 text-lg">📊 Regimes de Capitalização</h3>
+              <div className="space-y-4 font-mono text-xs bg-white dark:bg-gray-900 p-4 rounded">
+                <div>
+                  <p className="font-bold text-gray-800 dark:text-gray-100">Juros Simples:</p>
+                  <p className="text-gray-700 dark:text-gray-300">J = C × i × t</p>
+                  <p className="text-gray-700 dark:text-gray-300">M = C × (1 + i × t)</p>
+                </div>
+                <div className="border-t border-gray-300 dark:border-gray-700 pt-3">
+                  <p className="font-bold text-gray-800 dark:text-gray-100">Juros Compostos:</p>
+                  <p className="text-gray-700 dark:text-gray-300">M = C × (1 + i)^t</p>
+                  <p className="text-gray-700 dark:text-gray-300">C = M / (1 + i)^t</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Anuidades e Séries */}
+            <div className="p-6 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/40 dark:to-emerald-950/40 rounded-lg border border-green-200 dark:border-green-800">
+              <h3 className="font-bold text-green-900 dark:text-green-200 mb-4 text-lg">📈 Anuidades (Séries)</h3>
+              <div className="space-y-4 font-mono text-xs bg-white dark:bg-gray-900 p-4 rounded">
+                <div>
+                  <p className="font-bold text-gray-800 dark:text-gray-100">Valor Presente (A):</p>
+                  <p className="text-gray-700 dark:text-gray-300">A = PMT × [(1+i)^n - 1] / [i(1+i)^n]</p>
+                </div>
+                <div className="border-t border-gray-300 dark:border-gray-700 pt-3">
+                  <p className="font-bold text-gray-800 dark:text-gray-100">Prestação (PMT):</p>
+                  <p className="text-gray-700 dark:text-gray-300">PMT = A × [i(1+i)^n] / [(1+i)^n - 1]</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Desconto */}
+            <div className="p-6 bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/40 dark:to-yellow-950/40 rounded-lg border border-amber-200 dark:border-amber-800">
+              <h3 className="font-bold text-amber-900 dark:text-amber-200 mb-4 text-lg">💸 Desconto</h3>
+              <div className="space-y-4 font-mono text-xs bg-white dark:bg-gray-900 p-4 rounded">
+                <div>
+                  <p className="font-bold text-gray-800 dark:text-gray-100">Desconto Simples:</p>
+                  <p className="text-gray-700 dark:text-gray-300">d = N × i × t</p>
+                  <p className="text-gray-700 dark:text-gray-300">A = N × (1 - i × t)</p>
+                </div>
+                <div className="border-t border-gray-300 dark:border-gray-700 pt-3">
+                  <p className="font-bold text-gray-800 dark:text-gray-100">Desconto Composto:</p>
+                  <p className="text-gray-700 dark:text-gray-300">A = N / (1 + i)^t</p>
+                </div>
+              </div>
+            </div>
+
+            {/* VPL e TIR */}
+            <div className="p-6 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950/40 dark:to-blue-950/40 rounded-lg border border-cyan-200 dark:border-cyan-800">
+              <h3 className="font-bold text-cyan-900 dark:text-cyan-200 mb-4 text-lg">💼 Análise de Investimentos</h3>
+              <div className="space-y-4 font-mono text-xs bg-white dark:bg-gray-900 p-4 rounded">
+                <div>
+                  <p className="font-bold text-gray-800 dark:text-gray-100">VPL:</p>
+                  <p className="text-gray-700 dark:text-gray-300">VPL = Σ [FC_t / (1+i)^t] - I_0</p>
+                </div>
+                <div className="border-t border-gray-300 dark:border-gray-700 pt-3">
+                  <p className="font-bold text-gray-800 dark:text-gray-100">TIR:</p>
+                  <p className="text-gray-700 dark:text-gray-300">VPL = 0 → encontre i (TIR)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Exemplos Resolvidos */}
+      <section className="my-16 px-4 md:px-8">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-8 text-center text-slate-800 dark:text-slate-100">
+            📝 Exemplo Resolvido: Investimento Real
+          </h2>
+
+          <div className="p-6 bg-white dark:bg-gray-900 border-l-4 border-indigo-500 rounded-lg">
+            <h3 className="font-bold text-lg text-indigo-900 dark:text-indigo-300 mb-4">
+              Caso: Exploração de Poço Petrolífero
+            </h3>
+            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+              <p><strong>Contexto Petrobras:</strong> Investimento inicial de R$ 2 milhões. Fluxos esperados: 800K (Y1), 900K (Y2), 1M (Y3). Taxa mínima atrativa: 15% a.a.</p>
+              <p><strong>Cálculo VPL:</strong></p>
+              <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded font-mono text-xs space-y-2 mt-3">
+                <p>VPL = -2.000.000 + 800.000/(1,15)^1 + 900.000/(1,15)^2 + 1.000.000/(1,15)^3</p>
+                <p>VPL = -2.000.000 + 695.652 + 679.653 + 657.516</p>
+                <p><strong>VPL = R$ 32.821 &gt; 0 ✓ (Projeto viável!)</strong></p>
+              </div>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-3">💡 O projeto gera valor, aprovação recomendada</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Dicas de Prova CESGRANRIO */}
+      <section className="my-16 px-4 md:px-8 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-xl py-12">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-8 text-center text-purple-900 dark:text-purple-300">
+            🎯 Dicas para Prova CESGRANRIO
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-white dark:bg-gray-900 rounded-lg">
+              <p className="font-bold text-purple-900 dark:text-purple-300 mb-2">1️⃣ Leia Cuidadosamente</p>
+              <p className="text-xs text-gray-700 dark:text-gray-300">Taxa mensal vs anual, capitalização, datas múltiplas</p>
+            </div>
+
+            <div className="p-4 bg-white dark:bg-gray-900 rounded-lg">
+              <p className="font-bold text-purple-900 dark:text-purple-300 mb-2">2️⃣ Identifique o Tipo</p>
+              <p className="text-xs text-gray-700 dark:text-gray-300">Juros, desconto, série, VPL - cada um tem fórmula</p>
+            </div>
+
+            <div className="p-4 bg-white dark:bg-gray-900 rounded-lg">
+              <p className="font-bold text-purple-900 dark:text-purple-300 mb-2">3️⃣ Converta Unidades</p>
+              <p className="text-xs text-gray-700 dark:text-gray-300">Taxa e tempo na mesma unidade</p>
+            </div>
+
+            <div className="p-4 bg-white dark:bg-gray-900 rounded-lg">
+              <p className="font-bold text-purple-900 dark:text-purple-300 mb-2">4️⃣ Use Decimais</p>
+              <p className="text-xs text-gray-700 dark:text-gray-300">Sempre 0,05 em vez de 5%</p>
+            </div>
+          </div>
+
+          <div className="mt-6 p-4 bg-amber-100 dark:bg-amber-950/40 border-l-4 border-amber-500 rounded-lg">
+            <p className="font-bold text-amber-900 dark:text-amber-300 mb-2">⚠️ Pegadinhas Comuns:</p>
+            <ul className="text-xs text-amber-800 dark:text-amber-200 space-y-1 ml-4">
+              <li>• Taxa contratada ≠ taxa efetiva</li>
+              <li>• Parcelas postecipadas vs antecipadas</li>
+              <li>• Período começa em 0 ou 1?</li>
+              <li>• Inflação pode afetar taxa real</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Resumo: O que você aprendeu */}
+      <section className="my-16 px-4 md:px-8">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-8 text-center text-slate-800 dark:text-slate-100">
+            📚 Resumo Executivo: Seu Domínio em Matemática Financeira
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div className="p-6 bg-indigo-50 dark:bg-indigo-950/30 rounded-lg border border-indigo-200 dark:border-indigo-800">
+              <p className="text-3xl font-bold text-indigo-700 dark:text-indigo-300 mb-2">10</p>
+              <p className="font-semibold text-indigo-900 dark:text-indigo-100">Módulos Completos</p>
+              <p className="text-xs text-indigo-700 dark:text-indigo-300 mt-2">Do básico ao avançado</p>
+            </div>
+
+            <div className="p-6 bg-green-50 dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800">
+              <p className="text-3xl font-bold text-green-700 dark:text-green-300 mb-2">30+</p>
+              <p className="font-semibold text-green-900 dark:text-green-100">Fórmulas Dominadas</p>
+              <p className="text-xs text-green-700 dark:text-green-300 mt-2">Juros, séries, VPL, TIR...</p>
+            </div>
+
+            <div className="p-6 bg-blue-50 dark:bg-blue-950/30 rounded-lg border border-blue-200 dark:border-blue-800">
+              <p className="text-3xl font-bold text-blue-700 dark:text-blue-300 mb-2">∞</p>
+              <p className="font-semibold text-blue-900 dark:text-blue-100">Aplicações Práticas</p>
+              <p className="text-xs text-blue-700 dark:text-blue-300 mt-2">Petrobras, financiamentos...</p>
+            </div>
+          </div>
+
+          <div className="p-6 bg-gradient-to-r from-slate-50 to-gray-50 dark:from-slate-950 dark:to-gray-950 rounded-lg border border-gray-200 dark:border-gray-800">
+            <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100 mb-4">Competências Desenvolvidas:</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-700 dark:text-gray-300">
+              <li className="flex items-start">
+                <span className="text-green-600 dark:text-green-400 mr-2">✓</span>
+                <span>Cálculo de juros (simples e compostos)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 dark:text-green-400 mr-2">✓</span>
+                <span>Conversão de taxas (nominal/efetiva)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 dark:text-green-400 mr-2">✓</span>
+                <span>Análise de desconto simples e composto</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 dark:text-green-400 mr-2">✓</span>
+                <span>Equivalência de capitais em múltiplas datas</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 dark:text-green-400 mr-2">✓</span>
+                <span>Cálculo de anuidades e séries de pagamento</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 dark:text-green-400 mr-2">✓</span>
+                <span>Amortização (SAC, Price) de empréstimos</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 dark:text-green-400 mr-2">✓</span>
+                <span>Análise de viabilidade (VPL, TIR, IL)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 dark:text-green-400 mr-2">✓</span>
+                <span>Aplicações reais em projetos Petrobras</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Conexão com Outras Disciplinas */}
+      <section className="my-16 px-4 md:px-8">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-8 text-center text-slate-800 dark:text-slate-100">
+            🔗 Conexões com Outras Disciplinas
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
+              <p className="font-bold text-gray-900 dark:text-gray-100 mb-3">📊 Estatística & Probabilidade</p>
+              <p className="text-sm text-gray-700 dark:text-gray-300">Análise de risco em investimentos, distribuição de probabilidades de retorno, simulações Monte Carlo para projeção de fluxos</p>
+            </div>
+
+            <div className="p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
+              <p className="font-bold text-gray-900 dark:text-gray-100 mb-3">📈 Contabilidade</p>
+              <p className="text-sm text-gray-700 dark:text-gray-300">Depreciação de ativos, provisão de juros, análise de fluxos de caixa, reconciliação contábil-financeira</p>
+            </div>
+
+            <div className="p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
+              <p className="font-bold text-gray-900 dark:text-gray-100 mb-3">🏗️ Engenharia Econômica</p>
+              <p className="text-sm text-gray-700 dark:text-gray-300">Avaliação de projetos, custo-benefício, análise de alternativas de investimento, payback descontado</p>
+            </div>
+
+            <div className="p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
+              <p className="font-bold text-gray-900 dark:text-gray-100 mb-3">💼 Administração</p>
+              <p className="text-sm text-gray-700 dark:text-gray-300">Gestão de tesouraria, política de dividendos, alavancagem financeira, estrutura de capital</p>
+            </div>
+
+            <div className="p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
+              <p className="font-bold text-gray-900 dark:text-gray-100 mb-3">💻 Programação</p>
+              <p className="text-sm text-gray-700 dark:text-gray-300">Implementação em Excel/VBA, Python (numpy, pandas), C# para sistemas financeiros, APIs de cálculo</p>
+            </div>
+
+            <div className="p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
+              <p className="font-bold text-gray-900 dark:text-gray-100 mb-3">⚖️ Direito</p>
+              <p className="text-sm text-gray-700 dark:text-gray-300">Contratos de financiamento, tributação (IR, IOF), regulamentação do mercado financeiro</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Conclusão Final */}
+      <section className="my-12 px-4 md:px-8">
+        <div className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-amber-100 to-yellow-100 dark:from-amber-950 dark:to-yellow-950 border-2 border-amber-400 dark:border-amber-600 rounded-xl text-center">
+          <p className="text-4xl mb-3">👑 ESPECIALISTA CERTIFICADO 👑</p>
+          <p className="text-gray-800 dark:text-gray-200 font-semibold mb-2">
+            Domínio Completo em Matemática Financeira
+          </p>
+          <p className="text-sm text-gray-700 dark:text-gray-400">
+            Pronto para CESGRANRIO, análise de projetos e mercado financeiro! 🚀
+          </p>
+        </div>
+      </section>
     </AulaTemplate>
   );
 }

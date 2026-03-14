@@ -85,8 +85,12 @@ export default function AulaEquacoes2Grau({
   const [quizM6] = useState(() => getRandomQuestions(QUIZ_M6_SOMA_PRODUTO, 5));
   const [quizM7] = useState(() => getRandomQuestions(QUIZ_M7_GRAFICOS, 5));
   const [quizM8] = useState(() => getRandomQuestions(QUIZ_M8_REVERSA, 5));
-  const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 5));
-  const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 5));
+  const [quizM9] = useState(() =>
+    getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 5),
+  );
+  const [quizM10] = useState(() =>
+    getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 5),
+  );
 
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
   const [showCompletionBadge, setShowCompletionBadge] = useState(false);
@@ -200,8 +204,8 @@ export default function AulaEquacoes2Grau({
               slides={[
                 {
                   titulo: "Conceituação - Extraindo a, b e c",
-                  icone:<LuTarget />,
-                  conteudo:(
+                  icone: <LuTarget />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
                         Cuidado máximo com o sinal que acompanha o número. Ele
@@ -235,23 +239,29 @@ export default function AulaEquacoes2Grau({
                 },
                 {
                   titulo: "Exemplificação - Os Casos Mais Comuns",
-                  icone:<LuBookOpen />,
-                  conteudo:(
+                  icone: <LuBookOpen />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
                         Veja como extrair coeficientes em diferentes formatos:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/20">
-                          <p className="font-bold text-blue-700 text-sm mb-1">3x² - 7x + 2 = 0</p>
+                          <p className="font-bold text-blue-700 text-sm mb-1">
+                            3x² - 7x + 2 = 0
+                          </p>
                           <p className="text-sm">a=3, b=-7, c=2</p>
                         </div>
                         <div className="bg-emerald-500/10 p-4 rounded-lg border border-emerald-500/20">
-                          <p className="font-bold text-emerald-700 text-sm mb-1">x² - 4 = 0</p>
+                          <p className="font-bold text-emerald-700 text-sm mb-1">
+                            x² - 4 = 0
+                          </p>
                           <p className="text-sm">a=1, b=0, c=-4 (incompleta)</p>
                         </div>
                         <div className="bg-orange-500/10 p-4 rounded-lg border border-orange-500/20">
-                          <p className="font-bold text-orange-700 text-sm mb-1">-2x² + 8x = 0</p>
+                          <p className="font-bold text-orange-700 text-sm mb-1">
+                            -2x² + 8x = 0
+                          </p>
                           <p className="text-sm">a=-2, b=8, c=0 (incompleta)</p>
                         </div>
                       </div>
@@ -264,10 +274,13 @@ export default function AulaEquacoes2Grau({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="warning" titulo="Sinal Negativo">
-                        Quando você vê <code>-x²</code>, o coeficiente é -1, não 0!
+                        Quando você vê <code>-x²</code>, o coeficiente é -1, não
+                        0!
                       </AlertBox>
                       <AlertBox tipo="info" titulo="Ordem Diferente">
-                        Se a equação vem assim: <code>5x + 2 - 3x² = 0</code>, reordene para <code>-3x² + 5x + 2 = 0</code> antes de extrair.
+                        Se a equação vem assim: <code>5x + 2 - 3x² = 0</code>,
+                        reordene para <code>-3x² + 5x + 2 = 0</code> antes de
+                        extrair.
                       </AlertBox>
                     </div>
                   ),
@@ -278,16 +291,25 @@ export default function AulaEquacoes2Grau({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground text-sm">
-                        Nem sempre você terá todos os três termos. Existem dois casos:
+                        Nem sempre você terá todos os três termos. Existem dois
+                        casos:
                       </p>
                       <div className="space-y-3">
                         <div className="border border-amber-500/30 bg-amber-500/10 p-4 rounded-lg">
-                          <p className="font-bold text-amber-700 mb-2">c = 0: ax² + bx = 0</p>
-                          <p className="text-sm">Fatore: x(ax + b) = 0 → x₁ = 0 ou x₂ = -b/a</p>
+                          <p className="font-bold text-amber-700 mb-2">
+                            c = 0: ax² + bx = 0
+                          </p>
+                          <p className="text-sm">
+                            Fatore: x(ax + b) = 0 → x₁ = 0 ou x₂ = -b/a
+                          </p>
                         </div>
                         <div className="border border-rose-500/30 bg-rose-500/10 p-4 rounded-lg">
-                          <p className="font-bold text-rose-700 mb-2">b = 0: ax² + c = 0</p>
-                          <p className="text-sm">Isole x²: x² = -c/a. Se positivo, x = ±√(-c/a)</p>
+                          <p className="font-bold text-rose-700 mb-2">
+                            b = 0: ax² + c = 0
+                          </p>
+                          <p className="text-sm">
+                            Isole x²: x² = -c/a. Se positivo, x = ±√(-c/a)
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -335,36 +357,53 @@ export default function AulaEquacoes2Grau({
             video={{
               videoId: "gZDzgZxrvAo",
               title: "Equações do 2º Grau: Conceitos Fundamentais",
-              duration: "12:30"
+              duration: "12:30",
             }}
             resumoVisual={{
               moduloNome: "Conceitos Fundamentais",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
-                { title: "Estrutura: ax² + bx + c = 0", type: "Conceito", placeholderColor: "bg-blue-500/20" },
-                { title: "Extrair Coeficientes Corretamente", type: "Técnica", placeholderColor: "bg-sky-500/20" },
-                { title: "Equações Incompletas", type: "Caso Especial", placeholderColor: "bg-cyan-500/20" }
-              ]
+                {
+                  title: "Estrutura: ax² + bx + c = 0",
+                  type: "Conceito",
+                  placeholderColor: "bg-blue-500/20",
+                },
+                {
+                  title: "Extrair Coeficientes Corretamente",
+                  type: "Técnica",
+                  placeholderColor: "bg-sky-500/20",
+                },
+                {
+                  title: "Equações Incompletas",
+                  type: "Caso Especial",
+                  placeholderColor: "bg-cyan-500/20",
+                },
+              ],
             }}
             maceteVisual={{
               title: "Lembre dos Sinais!",
               content: (
                 <div className="space-y-4 text-left">
-                  <p className="text-sm italic">"Os sinais contam como parte dos números!"</p>
+                  <p className="text-sm italic">
+                    "Os sinais contam como parte dos números!"
+                  </p>
                   <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl font-mono text-center text-sm">
                     <p>-3x² + 5x - 2 = 0</p>
                     <p className="text-xs text-muted-foreground">↓ extrair ↓</p>
                     <p>a = -3, b = 5, c = -2</p>
                   </div>
-                  <p className="text-xs text-muted-foreground">Não esqueça do sinal negativo em 'a' e em 'c'!</p>
+                  <p className="text-xs text-muted-foreground">
+                    Não esqueça do sinal negativo em 'a' e em 'c'!
+                  </p>
                 </div>
-              )
+              ),
             }}
             audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              audioUrl:
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
               titulo: "Equações 2º Grau: Fundamentos",
-              artista: "Prof. Algébrico"
+              artista: "Prof. Algébrico",
             }}
           />
 
@@ -403,8 +442,8 @@ export default function AulaEquacoes2Grau({
               slides={[
                 {
                   titulo: "Conceituação - A Trindade do Delta",
-                  icone:<LuBrain />,
-                  conteudo:(
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="space-y-4">
                       <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20 text-center shadow-inner">
                         <p className="text-xl font-bold font-mono text-emerald-700">
@@ -446,24 +485,37 @@ export default function AulaEquacoes2Grau({
                 },
                 {
                   titulo: "Exemplificação - Calculando o Delta",
-                  icone:<LuSigma />,
-                  conteudo:(
+                  icone: <LuSigma />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
                         Veja como calcular delta em diferentes equações:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-emerald-500/10 p-4 rounded-lg border border-emerald-500/20">
-                          <p className="font-bold text-emerald-700 text-sm mb-2">x² - 5x + 6 = 0</p>
-                          <p className="text-sm font-mono">Δ = (-5)² - 4(1)(6) = 25 - 24 = 1 &gt; 0 ✓ Duas raízes reais diferentes</p>
+                          <p className="font-bold text-emerald-700 text-sm mb-2">
+                            x² - 5x + 6 = 0
+                          </p>
+                          <p className="text-sm font-mono">
+                            Δ = (-5)² - 4(1)(6) = 25 - 24 = 1 &gt; 0 ✓ Duas
+                            raízes reais diferentes
+                          </p>
                         </div>
                         <div className="bg-teal-500/10 p-4 rounded-lg border border-teal-500/20">
-                          <p className="font-bold text-teal-700 text-sm mb-2">x² - 2x + 1 = 0</p>
-                          <p className="text-sm font-mono">Δ = (-2)² - 4(1)(1) = 4 - 4 = 0 → Uma raiz dupla</p>
+                          <p className="font-bold text-teal-700 text-sm mb-2">
+                            x² - 2x + 1 = 0
+                          </p>
+                          <p className="text-sm font-mono">
+                            Δ = (-2)² - 4(1)(1) = 4 - 4 = 0 → Uma raiz dupla
+                          </p>
                         </div>
                         <div className="bg-cyan-500/10 p-4 rounded-lg border border-cyan-500/20">
-                          <p className="font-bold text-cyan-700 text-sm mb-2">x² + 1 = 0</p>
-                          <p className="text-sm font-mono">Δ = 0² - 4(1)(1) = -4 &lt; 0 ✗ Sem raízes reais</p>
+                          <p className="font-bold text-cyan-700 text-sm mb-2">
+                            x² + 1 = 0
+                          </p>
+                          <p className="text-sm font-mono">
+                            Δ = 0² - 4(1)(1) = -4 &lt; 0 ✗ Sem raízes reais
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -480,7 +532,8 @@ export default function AulaEquacoes2Grau({
                         </p>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        O ± significa que você calcula duas vezes: uma com + (raiz 1) e outra com - (raiz 2).
+                        O ± significa que você calcula duas vezes: uma com +
+                        (raiz 1) e outra com - (raiz 2).
                       </p>
                     </div>
                   ),
@@ -491,13 +544,18 @@ export default function AulaEquacoes2Grau({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="danger" titulo="Cuidado!">
-                        <p className="text-sm">Se Δ &lt; 0, PARE. Não existem raízes reais. A resposta é "sem solução em ℝ".</p>
+                        <p className="text-sm">
+                          Se Δ &lt; 0, PARE. Não existem raízes reais. A
+                          resposta é "sem solução em ℝ".
+                        </p>
                       </AlertBox>
                       <AlertBox tipo="info" titulo="Passo a Passo Seguro">
                         <p className="text-sm">1. Identifique a, b, c</p>
                         <p className="text-sm">2. Calcule Δ = b² - 4ac</p>
                         <p className="text-sm">3. Se Δ &lt; 0, pare aqui!</p>
-                        <p className="text-sm">4. Se Δ ≥ 0, aplique x = (-b ± √Δ) / 2a</p>
+                        <p className="text-sm">
+                          4. Se Δ ≥ 0, aplique x = (-b ± √Δ) / 2a
+                        </p>
                       </AlertBox>
                     </div>
                   ),
@@ -537,17 +595,29 @@ export default function AulaEquacoes2Grau({
             video={{
               videoId: "RFKjZ2FLSrk",
               title: "Fórmula de Bhaskara: Passo a Passo",
-              duration: "14:15"
+              duration: "14:15",
             }}
             resumoVisual={{
               moduloNome: "Fórmula de Bhaskara",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
-                { title: "Δ = b² - 4ac", type: "Discriminante", placeholderColor: "bg-emerald-500/20" },
-                { title: "x = (-b ± √Δ) / 2a", type: "Fórmula", placeholderColor: "bg-teal-500/20" },
-                { title: "Δ > 0: 2 raízes; Δ = 0: 1 raiz; Δ < 0: 0 raízes", type: "Análise", placeholderColor: "bg-green-500/20" }
-              ]
+                {
+                  title: "Δ = b² - 4ac",
+                  type: "Discriminante",
+                  placeholderColor: "bg-emerald-500/20",
+                },
+                {
+                  title: "x = (-b ± √Δ) / 2a",
+                  type: "Fórmula",
+                  placeholderColor: "bg-teal-500/20",
+                },
+                {
+                  title: "Δ > 0: 2 raízes; Δ = 0: 1 raiz; Δ < 0: 0 raízes",
+                  type: "Análise",
+                  placeholderColor: "bg-green-500/20",
+                },
+              ],
             }}
             maceteVisual={{
               title: "O Truque do Delta",
@@ -559,14 +629,17 @@ export default function AulaEquacoes2Grau({
                     <p>Se Δ = 0 → 1 raiz dupla</p>
                     <p>Se Δ &lt; 0 → Sem raízes (PARE!)</p>
                   </div>
-                  <p className="text-xs text-muted-foreground">Sempre calcule delta PRIMEIRO!</p>
+                  <p className="text-xs text-muted-foreground">
+                    Sempre calcule delta PRIMEIRO!
+                  </p>
                 </div>
-              )
+              ),
             }}
             audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              audioUrl:
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
               titulo: "Bhaskara: O Mantra do 2º Grau",
-              artista: "Prof. Algébrico"
+              artista: "Prof. Algébrico",
             }}
           />
 
@@ -605,8 +678,8 @@ export default function AulaEquacoes2Grau({
               slides={[
                 {
                   titulo: "Conceituação - Raiz Negativa",
-                  icone:<LuBookOpen />,
-                  conteudo:(
+                  icone: <LuBookOpen />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
                         Problemas envolvendo geometria (ex: calcular as
@@ -628,8 +701,8 @@ export default function AulaEquacoes2Grau({
                 },
                 {
                   titulo: "Exemplificação - Lançamento de Projéteis",
-                  icone:<LuTarget />,
-                  conteudo:(
+                  icone: <LuTarget />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
                         Se o problema falar de "quando o balão atingiu o chão"
@@ -641,9 +714,8 @@ export default function AulaEquacoes2Grau({
                       </p>
                       <div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20">
                         <p className="font-mono text-sm">
-                          -2t² + 18t = 0<br/>
-                          t(-2t + 18) = 0<br/>
-                          t = 0 ou t = 9 segundos
+                          -2t² + 18t = 0<br />
+                          t(-2t + 18) = 0<br />t = 0 ou t = 9 segundos
                         </p>
                       </div>
                     </div>
@@ -655,10 +727,14 @@ export default function AulaEquacoes2Grau({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="info" titulo="Fórmula de Área">
-                        <p className="text-sm">Se um lado é x e o outro é (x+5), a área é x(x+5) = x² + 5x</p>
+                        <p className="text-sm">
+                          Se um lado é x e o outro é (x+5), a área é x(x+5) = x²
+                          + 5x
+                        </p>
                       </AlertBox>
                       <p className="text-sm text-muted-foreground">
-                        Terrenos sempre geram dois valores. O negativo SEMPRE é descartado.
+                        Terrenos sempre geram dois valores. O negativo SEMPRE é
+                        descartado.
                       </p>
                     </div>
                   ),
@@ -669,12 +745,21 @@ export default function AulaEquacoes2Grau({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="border border-orange-500/30 bg-orange-500/10 p-4 rounded-lg">
-                        <p className="font-bold text-orange-700 mb-2">Velocidade Negativa?</p>
-                        <p className="text-sm">Não faz sentido. Se uma raiz é negativa, ignore-a.</p>
+                        <p className="font-bold text-orange-700 mb-2">
+                          Velocidade Negativa?
+                        </p>
+                        <p className="text-sm">
+                          Não faz sentido. Se uma raiz é negativa, ignore-a.
+                        </p>
                       </div>
                       <div className="border border-amber-500/30 bg-amber-500/10 p-4 rounded-lg">
-                        <p className="font-bold text-amber-700 mb-2">Duas Raízes Positivas?</p>
-                        <p className="text-sm">Ambas podem ser válidas. Analize o contexto. No lançamento, t=0 é o início.</p>
+                        <p className="font-bold text-amber-700 mb-2">
+                          Duas Raízes Positivas?
+                        </p>
+                        <p className="text-sm">
+                          Ambas podem ser válidas. Analize o contexto. No
+                          lançamento, t=0 é o início.
+                        </p>
                       </div>
                     </div>
                   ),
@@ -714,36 +799,53 @@ export default function AulaEquacoes2Grau({
             video={{
               videoId: "lkK4kZWglOk",
               title: "Problemas Contextualizados com Equações 2º Grau",
-              duration: "13:40"
+              duration: "13:40",
             }}
             resumoVisual={{
               moduloNome: "Equações Avançadas",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
-                { title: "Problemas de Geometria", type: "Aplicação", placeholderColor: "bg-amber-500/20" },
-                { title: "Lançamento de Projéteis", type: "Física", placeholderColor: "bg-orange-500/20" },
-                { title: "Descarte de Soluções Inválidas", type: "Análise", placeholderColor: "bg-yellow-500/20" }
-              ]
+                {
+                  title: "Problemas de Geometria",
+                  type: "Aplicação",
+                  placeholderColor: "bg-amber-500/20",
+                },
+                {
+                  title: "Lançamento de Projéteis",
+                  type: "Física",
+                  placeholderColor: "bg-orange-500/20",
+                },
+                {
+                  title: "Descarte de Soluções Inválidas",
+                  type: "Análise",
+                  placeholderColor: "bg-yellow-500/20",
+                },
+              ],
             }}
             maceteVisual={{
               title: "Nem Toda Raiz Vale!",
               content: (
                 <div className="space-y-4 text-left">
-                  <p className="text-sm italic">"Raiz negativa? Analisa o contexto!"</p>
+                  <p className="text-sm italic">
+                    "Raiz negativa? Analisa o contexto!"
+                  </p>
                   <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-center text-sm">
                     <p>Comprimento: Descarte negativo ✗</p>
                     <p>Tempo: Pode ser válido se for momento 2 ✓</p>
                     <p>Velocidade: Descarte negativo ✗</p>
                   </div>
-                  <p className="text-xs text-muted-foreground">Sempre questione se a resposta faz sentido!</p>
+                  <p className="text-xs text-muted-foreground">
+                    Sempre questione se a resposta faz sentido!
+                  </p>
                 </div>
-              )
+              ),
             }}
             audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              audioUrl:
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
               titulo: "Problemas Reais com Equações 2º Grau",
-              artista: "Prof. Algébrico"
+              artista: "Prof. Algébrico",
             }}
           />
 
@@ -782,8 +884,8 @@ export default function AulaEquacoes2Grau({
               slides={[
                 {
                   titulo: "Conceituação - Sorriso ou Tristeza?",
-                  icone:<LuBrain />,
-                  conteudo:(
+                  icone: <LuBrain />,
+                  conteudo: (
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-center">
                         <p className="font-bold text-emerald-700">
@@ -814,8 +916,8 @@ export default function AulaEquacoes2Grau({
                 },
                 {
                   titulo: "Exemplificação - XV ou YV?",
-                  icone:<LuTarget />,
-                  conteudo:(
+                  icone: <LuTarget />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground">
                         A banca sempre perguntará duas variações disso. Se a
@@ -854,13 +956,17 @@ export default function AulaEquacoes2Grau({
                         <p className="font-mono text-sm font-bold text-cyan-700">
                           x_v = -b / 2a
                         </p>
-                        <p className="text-xs text-muted-foreground mt-2">Encontre a coordenada X do vértice</p>
+                        <p className="text-xs text-muted-foreground mt-2">
+                          Encontre a coordenada X do vértice
+                        </p>
                       </div>
                       <div className="bg-sky-500/10 p-4 rounded-xl border border-sky-500/20">
                         <p className="font-mono text-sm font-bold text-sky-700">
                           y_v = f(x_v) ou y_v = -Δ / 4a
                         </p>
-                        <p className="text-xs text-muted-foreground mt-2">Encontre a coordenada Y do vértice</p>
+                        <p className="text-xs text-muted-foreground mt-2">
+                          Encontre a coordenada Y do vértice
+                        </p>
                       </div>
                     </div>
                   ),
@@ -870,11 +976,20 @@ export default function AulaEquacoes2Grau({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-4">
-                      <AlertBox tipo="warning" titulo="Parábola Abre para Cima (a > 0)">
-                        <p className="text-sm">Tem MÍNIMO, mas NÃO tem máximo global. Confira o domínio!</p>
+                      <AlertBox
+                        tipo="warning"
+                        titulo="Parábola Abre para Cima (a > 0)"
+                      >
+                        <p className="text-sm">
+                          Tem MÍNIMO, mas NÃO tem máximo global. Confira o
+                          domínio!
+                        </p>
                       </AlertBox>
                       <AlertBox tipo="info" titulo="Domínio Restrito">
-                        <p className="text-sm">Se o problema restringe x (ex: 0 ≤ x ≤ 100), o máximo pode estar no vértice OU na borda do intervalo.</p>
+                        <p className="text-sm">
+                          Se o problema restringe x (ex: 0 ≤ x ≤ 100), o máximo
+                          pode estar no vértice OU na borda do intervalo.
+                        </p>
                       </AlertBox>
                     </div>
                   ),
@@ -889,41 +1004,58 @@ export default function AulaEquacoes2Grau({
             video={{
               videoId: "bPfYCGCYRN8",
               title: "Vértice e Otimização: Máximos e Mínimos",
-              duration: "15:20"
+              duration: "15:20",
             }}
             resumoVisual={{
               moduloNome: "Problemas Contextualizados",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
-                { title: "a > 0: Mínimo (∪)", type: "Côncava", placeholderColor: "bg-cyan-500/20" },
-                { title: "a < 0: Máximo (∩)", type: "Côncava", placeholderColor: "bg-sky-500/20" },
-                { title: "Xv = -b/2a, Yv = -Δ/4a", type: "Fórmulas", placeholderColor: "bg-blue-500/20" }
-              ]
+                {
+                  title: "a > 0: Mínimo (∪)",
+                  type: "Côncava",
+                  placeholderColor: "bg-cyan-500/20",
+                },
+                {
+                  title: "a < 0: Máximo (∩)",
+                  type: "Côncava",
+                  placeholderColor: "bg-sky-500/20",
+                },
+                {
+                  title: "Xv = -b/2a, Yv = -Δ/4a",
+                  type: "Fórmulas",
+                  placeholderColor: "bg-blue-500/20",
+                },
+              ],
             }}
             maceteVisual={{
               title: "Sorriso vs Tristeza",
               content: (
                 <div className="space-y-4 text-left">
-                  <p className="text-sm italic">"O sinal de 'a' determina tudo!"</p>
+                  <p className="text-sm italic">
+                    "O sinal de 'a' determina tudo!"
+                  </p>
                   <div className="grid grid-cols-2 gap-2 p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl text-center text-sm font-mono">
                     <div>
-                      <p className="font-bold text-emerald-700">a > 0 ∪</p>
+                      <p className="font-bold text-emerald-700">a &gt; 0 ∪</p>
                       <p className="text-xs">Mínimo</p>
                     </div>
                     <div>
-                      <p className="font-bold text-rose-700">a < 0 ∩</p>
+                      <p className="font-bold text-rose-700">a &lt; 0 ∩</p>
                       <p className="text-xs">Máximo</p>
                     </div>
                   </div>
-                  <p className="text-xs text-muted-foreground">Sempre o vértice é no x = -b/2a</p>
+                  <p className="text-xs text-muted-foreground">
+                    Sempre o vértice é no x = -b/2a
+                  </p>
                 </div>
-              )
+              ),
             }}
             audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              audioUrl:
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
               titulo: "Otimização: Máximos e Mínimos",
-              artista: "Prof. Algébrico"
+              artista: "Prof. Algébrico",
             }}
           />
 
@@ -962,17 +1094,20 @@ export default function AulaEquacoes2Grau({
               slides={[
                 {
                   titulo: "Conceituação - Integrando Tudo",
-                  icone:<LuRepeat />,
-                  conteudo:(
+                  icone: <LuRepeat />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground text-sm">
-                        Até agora você aprendeu a identificar coeficientes, usar Bhaskara e aplicar em contextos. Agora vamos integrar!
+                        Até agora você aprendeu a identificar coeficientes, usar
+                        Bhaskara e aplicar em contextos. Agora vamos integrar!
                       </p>
                       <AlertBox tipo="success" titulo="Rotina Completa">
                         <p className="text-sm">1. Extraia a, b, c</p>
                         <p className="text-sm">2. Calcule Δ</p>
                         <p className="text-sm">3. Se Δ ≥ 0, aplique Bhaskara</p>
-                        <p className="text-sm">4. Analise as raízes no contexto</p>
+                        <p className="text-sm">
+                          4. Analise as raízes no contexto
+                        </p>
                       </AlertBox>
                     </div>
                   ),
@@ -1012,17 +1147,29 @@ export default function AulaEquacoes2Grau({
             video={{
               videoId: "SJ-S32r9GUo",
               title: "Revisão: Equações 2º Grau Completas",
-              duration: "16:45"
+              duration: "16:45",
             }}
             resumoVisual={{
               moduloNome: "Desafio Parcial",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
-                { title: "Extrair a, b, c", type: "Passo 1", placeholderColor: "bg-violet-500/20" },
-                { title: "Calcular Δ e Raízes", type: "Passo 2", placeholderColor: "bg-purple-500/20" },
-                { title: "Analisar Contexto", type: "Passo 3", placeholderColor: "bg-indigo-500/20" }
-              ]
+                {
+                  title: "Extrair a, b, c",
+                  type: "Passo 1",
+                  placeholderColor: "bg-violet-500/20",
+                },
+                {
+                  title: "Calcular Δ e Raízes",
+                  type: "Passo 2",
+                  placeholderColor: "bg-purple-500/20",
+                },
+                {
+                  title: "Analisar Contexto",
+                  type: "Passo 3",
+                  placeholderColor: "bg-indigo-500/20",
+                },
+              ],
             }}
             maceteVisual={{
               title: "Checklist do Sucesso",
@@ -1035,14 +1182,17 @@ export default function AulaEquacoes2Grau({
                     <p>✓ Bhaskara aplicado?</p>
                     <p>✓ Contexto analisado?</p>
                   </div>
-                  <p className="text-xs text-muted-foreground">Se um passo falhar, volta e refaz!</p>
+                  <p className="text-xs text-muted-foreground">
+                    Se um passo falhar, volta e refaz!
+                  </p>
                 </div>
-              )
+              ),
             }}
             audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              audioUrl:
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
               titulo: "Desafio: Integrando Conceitos",
-              artista: "Prof. Algébrico"
+              artista: "Prof. Algébrico",
             }}
           />
 
@@ -1106,8 +1256,8 @@ export default function AulaEquacoes2Grau({
                 },
                 {
                   titulo: "Exemplificação - Aplicação Prática",
-                  icone:<LuSigma />,
-                  conteudo:(
+                  icone: <LuSigma />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground text-sm">
                         Dada x² - 7x + 10 = 0:
@@ -1115,7 +1265,9 @@ export default function AulaEquacoes2Grau({
                       <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20">
                         <p className="text-sm mb-2">Soma: S = -(-7)/1 = 7</p>
                         <p className="text-sm mb-2">Produto: P = 10/1 = 10</p>
-                        <p className="text-sm">Que dois números somam 7 e multiplicam 10? 2 e 5!</p>
+                        <p className="text-sm">
+                          Que dois números somam 7 e multiplicam 10? 2 e 5!
+                        </p>
                       </div>
                     </div>
                   ),
@@ -1127,9 +1279,10 @@ export default function AulaEquacoes2Grau({
                     <div className="space-y-4">
                       <AlertBox tipo="success" titulo="Comece Sempre pelo Fim">
                         <p className="text-sm">
-                          Comece sempre pensando quais números multiplicados dão o c. Exemplo: x² - 7x + 10 = 0.
-                          Produto é 10. O que vezes o que dá 10? (2 e 5) ou (1 e 10).
-                          Desses, qual par somado (logo soma 7) dá 7? O par é 2 e 5.
+                          Comece sempre pensando quais números multiplicados dão
+                          o c. Exemplo: x² - 7x + 10 = 0. Produto é 10. O que
+                          vezes o que dá 10? (2 e 5) ou (1 e 10). Desses, qual
+                          par somado (logo soma 7) dá 7? O par é 2 e 5.
                         </p>
                       </AlertBox>
                     </div>
@@ -1141,10 +1294,16 @@ export default function AulaEquacoes2Grau({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="warning" titulo="a ≠ 1">
-                        <p className="text-sm">Se a ≠ 1, você precisa de Bhaskara. Soma e Produto ficam mais complexas.</p>
+                        <p className="text-sm">
+                          Se a ≠ 1, você precisa de Bhaskara. Soma e Produto
+                          ficam mais complexas.
+                        </p>
                       </AlertBox>
                       <AlertBox tipo="info" titulo="Raízes Irracionais">
-                        <p className="text-sm">Se as raízes envolvem √, Soma e Produto é mais trabalhoso. Use Bhaskara.</p>
+                        <p className="text-sm">
+                          Se as raízes envolvem √, Soma e Produto é mais
+                          trabalhoso. Use Bhaskara.
+                        </p>
                       </AlertBox>
                     </div>
                   ),
@@ -1159,17 +1318,29 @@ export default function AulaEquacoes2Grau({
             video={{
               videoId: "8mR0h4Ymfuo",
               title: "Soma e Produto: Relações de Vieta",
-              duration: "12:50"
+              duration: "12:50",
             }}
             resumoVisual={{
               moduloNome: "Soma e Produto",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
-                { title: "Soma = -b/a", type: "Fórmula", placeholderColor: "bg-emerald-500/20" },
-                { title: "Produto = c/a", type: "Fórmula", placeholderColor: "bg-teal-500/20" },
-                { title: "Encontre números que somam e multiplicam", type: "Método", placeholderColor: "bg-green-500/20" }
-              ]
+                {
+                  title: "Soma = -b/a",
+                  type: "Fórmula",
+                  placeholderColor: "bg-emerald-500/20",
+                },
+                {
+                  title: "Produto = c/a",
+                  type: "Fórmula",
+                  placeholderColor: "bg-teal-500/20",
+                },
+                {
+                  title: "Encontre números que somam e multiplicam",
+                  type: "Método",
+                  placeholderColor: "bg-green-500/20",
+                },
+              ],
             }}
             maceteVisual={{
               title: "Truque do Produto",
@@ -1181,14 +1352,17 @@ export default function AulaEquacoes2Grau({
                     <p>2. Desses, qual soma = S?</p>
                     <p>3. Pronto!</p>
                   </div>
-                  <p className="text-xs text-muted-foreground">Rápido quando funciona. Bhaskara se ficar confuso!</p>
+                  <p className="text-xs text-muted-foreground">
+                    Rápido quando funciona. Bhaskara se ficar confuso!
+                  </p>
                 </div>
-              )
+              ),
             }}
             audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              audioUrl:
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
               titulo: "Soma e Produto: O Atalho",
-              artista: "Prof. Algébrico"
+              artista: "Prof. Algébrico",
             }}
           />
 
@@ -1231,7 +1405,8 @@ export default function AulaEquacoes2Grau({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        O vértice é o ponto extremo da parábola. Sua coordenada x é:
+                        O vértice é o ponto extremo da parábola. Sua coordenada
+                        x é:
                       </p>
                       <div className="bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/20 text-center">
                         <p className="font-mono text-lg font-bold text-cyan-700">
@@ -1239,24 +1414,33 @@ export default function AulaEquacoes2Grau({
                         </p>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        A reta vertical que passa por x_v é o eixo de simetria da parábola.
+                        A reta vertical que passa por x_v é o eixo de simetria
+                        da parábola.
                       </p>
                     </div>
                   ),
                 },
                 {
                   titulo: "Exemplificação - Encontrando Coordenadas",
-                  icone:<LuZap />,
-                  conteudo:(
+                  icone: <LuZap />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground text-sm">
                         Para y = x² - 4x + 3:
                       </p>
                       <div className="bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/20">
-                        <p className="text-sm font-mono">a = 1, b = -4, c = 3</p>
-                        <p className="text-sm font-mono mt-2">x_v = -(-4) / 2(1) = 4/2 = 2</p>
-                        <p className="text-sm font-mono mt-2">y_v = 2² - 4(2) + 3 = 4 - 8 + 3 = -1</p>
-                        <p className="text-sm mt-2 text-muted-foreground">Vértice: (2, -1)</p>
+                        <p className="text-sm font-mono">
+                          a = 1, b = -4, c = 3
+                        </p>
+                        <p className="text-sm font-mono mt-2">
+                          x_v = -(-4) / 2(1) = 4/2 = 2
+                        </p>
+                        <p className="text-sm font-mono mt-2">
+                          y_v = 2² - 4(2) + 3 = 4 - 8 + 3 = -1
+                        </p>
+                        <p className="text-sm mt-2 text-muted-foreground">
+                          Vértice: (2, -1)
+                        </p>
                       </div>
                     </div>
                   ),
@@ -1267,15 +1451,23 @@ export default function AulaEquacoes2Grau({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="bg-cyan-500/10 p-4 rounded-lg border border-cyan-500/20">
-                        <p className="font-bold text-cyan-700 text-sm mb-2">Raízes (Zeros)</p>
-                        <p className="text-sm">Pontos onde a parábola cruza o eixo X</p>
+                        <p className="font-bold text-cyan-700 text-sm mb-2">
+                          Raízes (Zeros)
+                        </p>
+                        <p className="text-sm">
+                          Pontos onde a parábola cruza o eixo X
+                        </p>
                       </div>
                       <div className="bg-sky-500/10 p-4 rounded-lg border border-sky-500/20">
-                        <p className="font-bold text-sky-700 text-sm mb-2">Vértice</p>
+                        <p className="font-bold text-sky-700 text-sm mb-2">
+                          Vértice
+                        </p>
                         <p className="text-sm">Ponto de mínimo ou máximo</p>
                       </div>
                       <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/20">
-                        <p className="font-bold text-blue-700 text-sm mb-2">Interseção com Y</p>
+                        <p className="font-bold text-blue-700 text-sm mb-2">
+                          Interseção com Y
+                        </p>
                         <p className="text-sm">Quando x=0, y=c</p>
                       </div>
                     </div>
@@ -1287,10 +1479,14 @@ export default function AulaEquacoes2Grau({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="info" titulo="Translação">
-                        <p className="text-sm">Se vira y = (x-h)² + k, o vértice move para (h, k)</p>
+                        <p className="text-sm">
+                          Se vira y = (x-h)² + k, o vértice move para (h, k)
+                        </p>
                       </AlertBox>
                       <AlertBox tipo="warning" titulo="Reflexão">
-                        <p className="text-sm">Se a < 0, a parábola vira de cabeça para baixo</p>
+                        <p className="text-sm">
+                          Se a &lt; 0, a parábola vira de cabeça para baixo
+                        </p>
                       </AlertBox>
                     </div>
                   ),
@@ -1305,36 +1501,53 @@ export default function AulaEquacoes2Grau({
             video={{
               videoId: "qAHgWGWZhGs",
               title: "Gráficos de Parábolas: Visualização Completa",
-              duration: "14:30"
+              duration: "14:30",
             }}
             resumoVisual={{
               moduloNome: "Gráficos e Parábolas",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
-                { title: "Raízes no eixo X", type: "Zeros", placeholderColor: "bg-cyan-500/20" },
-                { title: "Vértice (pico ou fundo)", type: "Extremo", placeholderColor: "bg-sky-500/20" },
-                { title: "Eixo de simetria", type: "Propriedade", placeholderColor: "bg-blue-500/20" }
-              ]
+                {
+                  title: "Raízes no eixo X",
+                  type: "Zeros",
+                  placeholderColor: "bg-cyan-500/20",
+                },
+                {
+                  title: "Vértice (pico ou fundo)",
+                  type: "Extremo",
+                  placeholderColor: "bg-sky-500/20",
+                },
+                {
+                  title: "Eixo de simetria",
+                  type: "Propriedade",
+                  placeholderColor: "bg-blue-500/20",
+                },
+              ],
             }}
             maceteVisual={{
               title: "3 Pontos Chave",
               content: (
                 <div className="space-y-4 text-left">
-                  <p className="text-sm italic">"Todo gráfico tem três informações!"</p>
+                  <p className="text-sm italic">
+                    "Todo gráfico tem três informações!"
+                  </p>
                   <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl text-sm space-y-2 font-mono text-center">
                     <p>1. Raízes (x₁, 0) e (x₂, 0)</p>
                     <p>2. Vértice (x_v, y_v)</p>
                     <p>3. Interseção Y (0, c)</p>
                   </div>
-                  <p className="text-xs text-muted-foreground">Marque esses e você terá o gráfico!</p>
+                  <p className="text-xs text-muted-foreground">
+                    Marque esses e você terá o gráfico!
+                  </p>
                 </div>
-              )
+              ),
             }}
             audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              audioUrl:
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
               titulo: "Gráficos: Visualizando Parábolas",
-              artista: "Prof. Algébrico"
+              artista: "Prof. Algébrico",
             }}
           />
 
@@ -1392,17 +1605,23 @@ export default function AulaEquacoes2Grau({
                 },
                 {
                   titulo: "Exemplificação - Aplicação Direta",
-                  icone:<LuSigma />,
-                  conteudo:(
+                  icone: <LuSigma />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground text-sm">
                         Se as raízes são 3 e -2:
                       </p>
                       <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20">
                         <p className="text-sm font-mono">Soma: 3 + (-2) = 1</p>
-                        <p className="text-sm font-mono mt-2">Produto: 3 × (-2) = -6</p>
-                        <p className="text-sm font-mono mt-2">Equação: x² - 1x + (-6) = 0</p>
-                        <p className="text-sm font-mono mt-1">Ou: x² - x - 6 = 0</p>
+                        <p className="text-sm font-mono mt-2">
+                          Produto: 3 × (-2) = -6
+                        </p>
+                        <p className="text-sm font-mono mt-2">
+                          Equação: x² - 1x + (-6) = 0
+                        </p>
+                        <p className="text-sm font-mono mt-1">
+                          Ou: x² - x - 6 = 0
+                        </p>
                       </div>
                     </div>
                   ),
@@ -1413,12 +1632,19 @@ export default function AulaEquacoes2Grau({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="info" titulo="Raízes em Função de m">
-                        <p className="text-sm">Se a banca dá "raízes são m+1 e m-1", use Soma e Produto em função de m!</p>
+                        <p className="text-sm">
+                          Se a banca dá "raízes são m+1 e m-1", use Soma e
+                          Produto em função de m!
+                        </p>
                       </AlertBox>
                       <div className="bg-rose-500/10 p-4 rounded-lg border border-rose-500/20">
                         <p className="text-sm">Soma: (m+1) + (m-1) = 2m</p>
-                        <p className="text-sm mt-2">Produto: (m+1)(m-1) = m² - 1</p>
-                        <p className="text-sm mt-2">Equação: x² - 2mx + (m² - 1) = 0</p>
+                        <p className="text-sm mt-2">
+                          Produto: (m+1)(m-1) = m² - 1
+                        </p>
+                        <p className="text-sm mt-2">
+                          Equação: x² - 2mx + (m² - 1) = 0
+                        </p>
                       </div>
                     </div>
                   ),
@@ -1429,7 +1655,10 @@ export default function AulaEquacoes2Grau({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="warning" titulo="Quando a ≠ 1">
-                        <p className="text-sm">Use (x - r₁)(x - r₂) = 0 e depois expanda, multiplicando por 'a' ao final.</p>
+                        <p className="text-sm">
+                          Use (x - r₁)(x - r₂) = 0 e depois expanda,
+                          multiplicando por 'a' ao final.
+                        </p>
                       </AlertBox>
                       <div className="bg-rose-500/10 p-4 rounded-lg border border-rose-500/20 text-sm">
                         <p>Se a = 2, r₁ = 3, r₂ = -1:</p>
@@ -1451,36 +1680,53 @@ export default function AulaEquacoes2Grau({
             video={{
               videoId: "v8HEYcH0WeM",
               title: "Resolução Reversa: Das Raízes à Equação",
-              duration: "13:15"
+              duration: "13:15",
             }}
             resumoVisual={{
               moduloNome: "Resolução Reversa",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
-                { title: "Dadas as raízes", type: "Entrada", placeholderColor: "bg-rose-500/20" },
-                { title: "Calcule Soma e Produto", type: "Passo", placeholderColor: "bg-pink-500/20" },
-                { title: "x² - Sx + P = 0", type: "Resultado", placeholderColor: "bg-red-500/20" }
-              ]
+                {
+                  title: "Dadas as raízes",
+                  type: "Entrada",
+                  placeholderColor: "bg-rose-500/20",
+                },
+                {
+                  title: "Calcule Soma e Produto",
+                  type: "Passo",
+                  placeholderColor: "bg-pink-500/20",
+                },
+                {
+                  title: "x² - Sx + P = 0",
+                  type: "Resultado",
+                  placeholderColor: "bg-red-500/20",
+                },
+              ],
             }}
             maceteVisual={{
               title: "Inverso de Bhaskara",
               content: (
                 <div className="space-y-4 text-left">
-                  <p className="text-sm italic">"Se a banca dá raízes, construa a equação!"</p>
+                  <p className="text-sm italic">
+                    "Se a banca dá raízes, construa a equação!"
+                  </p>
                   <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl font-mono text-center text-sm">
                     <p>1. Soma = r₁ + r₂</p>
                     <p>2. Produto = r₁ × r₂</p>
                     <p>3. x² - Sx + P = 0</p>
                   </div>
-                  <p className="text-xs text-muted-foreground">Rápido e elegante!</p>
+                  <p className="text-xs text-muted-foreground">
+                    Rápido e elegante!
+                  </p>
                 </div>
-              )
+              ),
             }}
             audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              audioUrl:
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
               titulo: "Reversa: Construindo Equações",
-              artista: "Prof. Algébrico"
+              artista: "Prof. Algébrico",
             }}
           />
 
@@ -1523,26 +1769,39 @@ export default function AulaEquacoes2Grau({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        Problemas de rendimento máximo, custo mínimo e pressão ótima são modelados por funções quadráticas. O vértice da parábola é sempre a solução.
+                        Problemas de rendimento máximo, custo mínimo e pressão
+                        ótima são modelados por funções quadráticas. O vértice
+                        da parábola é sempre a solução.
                       </p>
                       <AlertBox tipo="success" titulo="Modelo Típico">
-                        <p className="text-sm">Lucro L(x) = Receita - Custo. Se ambas envolvem x², teremos uma quadrática.</p>
+                        <p className="text-sm">
+                          Lucro L(x) = Receita - Custo. Se ambas envolvem x²,
+                          teremos uma quadrática.
+                        </p>
                       </AlertBox>
                     </div>
                   ),
                 },
                 {
                   titulo: "Exemplificação - Produção de Derivados",
-                  icone:<LuZap />,
-                  conteudo:(
+                  icone: <LuZap />,
+                  conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground text-sm">
-                        Uma refinaria produz x barris por dia. O lucro é L(x) = -2x² + 1000x - 50000. Qual a produção que maximiza lucro?
+                        Uma refinaria produz x barris por dia. O lucro é L(x) =
+                        -2x² + 1000x - 50000. Qual a produção que maximiza
+                        lucro?
                       </p>
                       <div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20">
-                        <p className="text-sm font-mono">a = -2, b = 1000, c = -50000</p>
-                        <p className="text-sm font-mono mt-2">x_v = -1000 / 2(-2) = -1000 / -4 = 250 barris</p>
-                        <p className="text-sm mt-2 text-muted-foreground">Produção ótima: 250 barris/dia</p>
+                        <p className="text-sm font-mono">
+                          a = -2, b = 1000, c = -50000
+                        </p>
+                        <p className="text-sm font-mono mt-2">
+                          x_v = -1000 / 2(-2) = -1000 / -4 = 250 barris
+                        </p>
+                        <p className="text-sm mt-2 text-muted-foreground">
+                          Produção ótima: 250 barris/dia
+                        </p>
                       </div>
                     </div>
                   ),
@@ -1553,12 +1812,20 @@ export default function AulaEquacoes2Grau({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
-                        <p className="font-bold text-amber-700 text-sm mb-2">Custo Unitário Mínimo</p>
-                        <p className="text-sm">Minimizar C(x)/x, não C(x) diretamente</p>
+                        <p className="font-bold text-amber-700 text-sm mb-2">
+                          Custo Unitário Mínimo
+                        </p>
+                        <p className="text-sm">
+                          Minimizar C(x)/x, não C(x) diretamente
+                        </p>
                       </div>
                       <div className="bg-orange-500/10 p-4 rounded-lg border border-orange-500/20">
-                        <p className="font-bold text-orange-700 text-sm mb-2">Temperatura Ótima</p>
-                        <p className="text-sm">Rendimento é máximo quando T = x_v da função</p>
+                        <p className="font-bold text-orange-700 text-sm mb-2">
+                          Temperatura Ótima
+                        </p>
+                        <p className="text-sm">
+                          Rendimento é máximo quando T = x_v da função
+                        </p>
                       </div>
                     </div>
                   ),
@@ -1569,10 +1836,16 @@ export default function AulaEquacoes2Grau({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="warning" titulo="Domínio Restrito">
-                        <p className="text-sm">Se x deve estar em [0, 500], o máximo pode NÃO estar no vértice. Verifique os limites!</p>
+                        <p className="text-sm">
+                          Se x deve estar em [0, 500], o máximo pode NÃO estar
+                          no vértice. Verifique os limites!
+                        </p>
                       </AlertBox>
                       <AlertBox tipo="info" titulo="Valores Inteiros">
-                        <p className="text-sm">Se x deve ser inteiro (barris), arredonde x_v e calcule L para ambos: x_v - 1 e x_v + 1</p>
+                        <p className="text-sm">
+                          Se x deve ser inteiro (barris), arredonde x_v e
+                          calcule L para ambos: x_v - 1 e x_v + 1
+                        </p>
                       </AlertBox>
                     </div>
                   ),
@@ -1587,17 +1860,29 @@ export default function AulaEquacoes2Grau({
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Aplicações Reais: Otimização na Indústria",
-              duration: "15:45"
+              duration: "15:45",
             }}
             resumoVisual={{
               moduloNome: "Aplicações Petrobras",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
-                { title: "Lucro/Custo = f(x)", type: "Modelo", placeholderColor: "bg-amber-500/20" },
-                { title: "Vértice = Solução Ótima", type: "Técnica", placeholderColor: "bg-orange-500/20" },
-                { title: "Verificar Domínio e Inteiros", type: "Análise", placeholderColor: "bg-yellow-500/20" }
-              ]
+                {
+                  title: "Lucro/Custo = f(x)",
+                  type: "Modelo",
+                  placeholderColor: "bg-amber-500/20",
+                },
+                {
+                  title: "Vértice = Solução Ótima",
+                  type: "Técnica",
+                  placeholderColor: "bg-orange-500/20",
+                },
+                {
+                  title: "Verificar Domínio e Inteiros",
+                  type: "Análise",
+                  placeholderColor: "bg-yellow-500/20",
+                },
+              ],
             }}
             maceteVisual={{
               title: "Triângulo da Otimização",
@@ -1611,14 +1896,17 @@ export default function AulaEquacoes2Grau({
                     <p>↓</p>
                     <p>✓ Verifica Limites</p>
                   </div>
-                  <p className="text-xs text-muted-foreground">Sempre os três passos!</p>
+                  <p className="text-xs text-muted-foreground">
+                    Sempre os três passos!
+                  </p>
                 </div>
-              )
+              ),
             }}
             audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              audioUrl:
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
               titulo: "Otimização: Aplicações Petrobras",
-              artista: "Prof. Algébrico"
+              artista: "Prof. Algébrico",
             }}
           />
 
@@ -1652,7 +1940,8 @@ export default function AulaEquacoes2Grau({
               </div>
               <h3 className="text-2xl font-black">Mestre Parabólico!</h3>
               <p className="text-center text-muted-foreground max-w-sm">
-                Você dominou completamente as Equações Quadráticas. Raízes, gráficos, vértices e aplicações práticas — tudo sob controle!
+                Você dominou completamente as Equações Quadráticas. Raízes,
+                gráficos, vértices e aplicações práticas — tudo sob controle!
               </p>
             </div>
           ) : (

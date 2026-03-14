@@ -5,9 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { AnimatedBorderCard } from '@/components/ui/animated-border-card';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import type { TooltipProps } from 'recharts';
 import { useTheme as useCombinedTheme } from '@/components/providers/theme-provider';
 import { cn } from '@/lib/utils';
+import { getDownloadsByCategoryAction, getTimelineAction } from '@/lib/actions/dashboard';
 
 // Dados mockados para Visitas (implementar tracking depois)
 const visitsDataByPeriod = {
@@ -55,6 +55,7 @@ interface CategoryDownload {
   downloads: number;
   percentage: number;
 }
+
 export function ChartsSection() {
   type PeriodKey = 'day' | 'week' | 'month' | 'year';
   type TimelinePoint = { name: string; value: number };
@@ -87,13 +88,9 @@ export function ChartsSection() {
   useEffect(() => {
     const fetchCategoryDownloads = async () => {
       try {
-        const response = await fetch('/api/dashboard/downloads-by-category', {
-          credentials: 'include'
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setCategoryData(data.categories || []);
+        const result = await getDownloadsByCategoryAction();
+        if (result.status === 'success') {
+          setCategoryData(result.data.categories || []);
         }
       } catch (error) {
         console.error('Erro ao buscar downloads por categoria:', error);
@@ -112,15 +109,11 @@ export function ChartsSection() {
 
       for (const period of periods) {
         try {
-          const response = await fetch(`/api/dashboard/downloads-timeline?period=${period}`, {
-            credentials: 'include'
-          });
-
-          if (response.ok) {
-            const result = await response.json();
+          const result = await getTimelineAction('downloads', period);
+          if (result.status === 'success') {
             setDownloadsData((prev: TimelineData) => ({
               ...prev,
-              [period]: result.data || []
+              [period]: result.data.data || []
             }));
           }
         } catch (error) {
@@ -132,22 +125,18 @@ export function ChartsSection() {
     fetchDownloadsData();
   }, []);
 
-  // Buscar dados de visitas por período (dados reais)
+  // Buscar dados de visitas por período
   useEffect(() => {
     const fetchVisitsData = async () => {
       const periods: Array<PeriodKey> = ['day', 'week', 'month', 'year'];
 
       for (const period of periods) {
         try {
-          const response = await fetch(`/api/dashboard/visits-timeline?period=${period}`, {
-            credentials: 'include'
-          });
-
-          if (response.ok) {
-            const result = await response.json();
+          const result = await getTimelineAction('visits', period);
+          if (result.status === 'success') {
             setVisitsData((prev: TimelineData) => ({
               ...prev,
-              [period]: result.data || []
+              [period]: result.data.data || []
             }));
           }
         } catch (error) {
@@ -221,27 +210,7 @@ export function ChartsSection() {
       : 'bg-transparent border border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary)]';
 
   const PROGRESS_WIDTH_CLASSES: Record<number, string> = {
-    0: 'w-0',
-    5: 'w-[5%]',
-    10: 'w-[10%]',
-    15: 'w-[15%]',
-    20: 'w-[20%]',
-    25: 'w-[25%]',
-    30: 'w-[30%]',
-    35: 'w-[35%]',
-    40: 'w-[40%]',
-    45: 'w-[45%]',
-    50: 'w-[50%]',
-    55: 'w-[55%]',
-    60: 'w-[60%]',
-    65: 'w-[65%]',
-    70: 'w-[70%]',
-    75: 'w-[75%]',
-    80: 'w-[80%]',
-    85: 'w-[85%]',
-    90: 'w-[90%]',
-    95: 'w-[95%]',
-    100: 'w-[100%]'
+    0: 'w-0', 5: 'w-[5%]', 10: 'w-[10%]', 15: 'w-[15%]', 20: 'w-[20%]', 25: 'w-[25%]', 30: 'w-[30%]', 35: 'w-[35%]', 40: 'w-[40%]', 45: 'w-[45%]', 50: 'w-[50%]', 55: 'w-[55%]', 60: 'w-[60%]', 65: 'w-[65%]', 70: 'w-[70%]', 75: 'w-[75%]', 80: 'w-[80%]', 85: 'w-[85%]', 90: 'w-[90%]', 95: 'w-[95%]', 100: 'w-[100%]'
   };
 
   return (
