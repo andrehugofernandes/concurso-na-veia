@@ -1948,8 +1948,8 @@ export default function AulaMatrizesDeterminantes({
                       <p className="text-sm"><strong>Preview:</strong> Autovalores de A satisfazem det(A − λI) = 0.</p>
                       <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-xs">
                         <p className="font-bold text-blue-600">Importância: Autovalores indicam estabilidade</p>
-                        <p className="mt-1">Se |λ| < 1 → sistema converge (estável)</p>
-                        <p>Se |λ| > 1 → sistema diverge (instável)</p>
+                        <p className="mt-1">Se |λ| &lt; 1 → sistema converge (estável)</p>
+                        <p>Se |λ| &gt; 1 → sistema diverge (instável)</p>
                         <p className="mt-1 text-muted-foreground">Usado em simulações de reservatório e dinâmica de plataforma.</p>
                       </div>
                     </div>
