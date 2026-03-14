@@ -48,7 +48,8 @@ Retorne APENAS um JSON válido seguindo este formato:
   "dificuldade": "${dificuldade || 'Média'}"
 }
 
-REGRAS DE FORMATAÇÃO HTML:
+REGRAS DE FORMATAÇÃO E COERÊNCIA:
+- COERÊNCIA TOTAL: Se o enunciado pede um conceito (ex: Pronome), as alternativas devem ser desse conceito.
 - Use tags HTML para destaque visual: <b>negrito</b>, <u>sublinhado</u>, <i>itálico</i>.
 - NÃO use Markdown no texto.`;
 
@@ -102,7 +103,8 @@ REGRAS DE FORMATAÇÃO HTML:
     1. Crie EXATAMENTE ${batchSize} questões de ${materia} ${assunto ? `(Assunto: ${assunto})` : ''} 
         2. Estilo CESGRANRIO: enunciado direto, 5 alternativas.
     3. PROIBIDO: Todas as 5 alternativas DEVEM ser diferentes entre si na mesma questão. Nunca repita uma opção. Todas as 5 opções devem ser únicas.
-    3. Retorne APENAS um JSON que seja um ARRAY de objetos.
+    4. COERÊNCIA: O enunciado e as alternativas devem tratar rigorosamente do mesmo conceito gramatical ou matemático.
+    5. Retorne APENAS um JSON que seja um ARRAY de objetos.
     4. NÃO adicione texto explicativo fora do JSON.
 
     Formato esperado:

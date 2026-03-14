@@ -52,7 +52,9 @@ Retorne APENAS um JSON válido seguindo este formato:
   "dificuldade": "${dificuldade || 'Média'}"
 }
 
-REGRAS DE FORMATAÇÃO HTML:
+REGRAS DE FORMATAÇÃO E COERÊNCIA:
+- COERÊNCIA TOTAL: O que for pedido no enunciado DEVE estar presente nas alternativas. (Ex: se pedir um adjetivo, todas as alternativas devem ser adjetivos).
+- PORTUGUÊS: Use terminologia gramatical correta (ex: não confunda Colocação Pronominal com Pronomes Relativos).
 - Use tags HTML para destaque visual: <b>negrito</b>, <u>sublinhado</u>, <i>itálico</i>.
 - NÃO use Markdown no texto.
 ${questoesAnteriores && questoesAnteriores.length > 0 ? `
