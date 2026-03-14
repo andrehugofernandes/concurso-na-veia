@@ -190,27 +190,62 @@ export default function AulaProgressoesPa({
 
             {/* ACORDEON 1: Conceituação */}
             <ContentAccordion
-              titulo="📖 Conceituação - O que é PA?"
+              titulo="Conceituação - O que é PA?"
               icone="🔢"
               corIndicador="bg-blue-500"
               defaultOpen={true}
+              mode="stacked"
               slides={[
                 {
-                  titulo: "Conceituação",
                   conteudo: (
-                    <div className="space-y-6">
-                      <p className="text-base leading-relaxed text-foreground">
-                        Uma <strong>Progressão Aritmética (PA)</strong> é uma sequência de números onde <strong>cada termo é obtido somando ao anterior uma constante chamada razão (r)</strong>.
-                      </p>
+                    <div className="space-y-8">
+                      <div>
+                        <h3 className="text-2xl font-bold text-foreground mb-4">Definição de Progressão Aritmética</h3>
+                        <p className="text-lg leading-relaxed text-foreground mb-4">
+                          Uma <strong>Progressão Aritmética (PA)</strong> é uma sequência infinita (ou finita) de números reais onde <strong>a diferença entre dois termos consecutivos é sempre a mesma</strong>. Essa diferença constante é chamada de <strong>razão (r)</strong>.
+                        </p>
+                        <p className="text-lg leading-relaxed text-foreground">
+                          Em outras palavras: para passar de um termo para o próximo, você sempre <strong>soma a mesma quantidade (r)</strong>. Se r é positiva, a sequência cresce; se r é negativa, a sequência decresce; se r é zero, todos os termos são iguais.
+                        </p>
+                      </div>
 
-                      <div className="p-6 bg-blue-500/15 rounded-xl border border-blue-500/30">
-                        <p className="text-lg font-bold text-blue-700 dark:text-blue-300 mb-4">Estrutura da PA:</p>
-                        <div className="space-y-3 font-mono text-base">
-                          <p className="text-foreground"><strong>PA:</strong> a₁, a₂, a₃, a₄, ...</p>
-                          <p className="text-foreground"><strong>a₂</strong> = a₁ + <strong>r</strong></p>
-                          <p className="text-foreground"><strong>a₃</strong> = a₁ + 2<strong>r</strong></p>
-                          <p className="text-foreground"><strong>aₙ</strong> = a₁ + (n-1)<strong>r</strong></p>
+                      <div className="p-6 bg-blue-500/15 rounded-xl border-2 border-blue-500/40">
+                        <p className="text-xl font-bold text-blue-700 dark:text-blue-300 mb-6">📐 Estrutura Fundamental da PA:</p>
+                        <div className="space-y-4 font-mono text-lg">
+                          <p className="text-foreground"><strong>PA:</strong> a₁, a₂, a₃, a₄, ..., aₙ</p>
+                          <div className="bg-blue-500/10 p-4 rounded-lg border-l-4 border-blue-500">
+                            <p className="text-foreground mb-2"><strong>Relação entre termos consecutivos:</strong></p>
+                            <p className="text-foreground"><strong>a₂</strong> = a₁ + <strong>r</strong></p>
+                            <p className="text-foreground"><strong>a₃</strong> = a₁ + 2<strong>r</strong></p>
+                            <p className="text-foreground"><strong>a₄</strong> = a₁ + 3<strong>r</strong></p>
+                            <p className="text-foreground"><strong>aₙ</strong> = a₁ + (n-1)<strong>r</strong></p>
+                          </div>
                         </div>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-foreground mb-4">🔑 Componentes Essenciais</h3>
+                        <div className="space-y-3">
+                          <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-lg border-l-4 border-slate-500">
+                            <p className="text-lg font-bold text-foreground mb-1"><strong>a₁</strong> (primeiro termo)</p>
+                            <p className="text-base text-foreground">É o ponto de partida da sequência. Todos os outros termos são calculados a partir dele.</p>
+                          </div>
+                          <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-lg border-l-4 border-blue-500">
+                            <p className="text-lg font-bold text-foreground mb-1"><strong>r</strong> (razão)</p>
+                            <p className="text-base text-foreground">É a constante que você soma a cada termo para obter o próximo. Pode ser positiva, negativa ou zero.</p>
+                          </div>
+                          <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-lg border-l-4 border-emerald-500">
+                            <p className="text-lg font-bold text-foreground mb-1"><strong>n</strong> (índice/posição)</p>
+                            <p className="text-base text-foreground">Indica qual termo da sequência você está procurando. O n-ésimo termo é: aₙ = a₁ + (n-1)r</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-6 bg-amber-500/15 rounded-xl border-2 border-amber-500/40">
+                        <p className="text-xl font-bold text-amber-700 dark:text-amber-300 mb-4">💡 A Ideia Central</p>
+                        <p className="text-lg leading-relaxed text-foreground">
+                          <strong>PA é uma máquina previsível:</strong> Se você conhece o primeiro termo (a₁) e a razão (r), você pode calcular qualquer termo da sequência sem precisar dos anteriores. Não há surpresas — tudo segue uma fórmula matemática exata.
+                        </p>
                       </div>
                     </div>
                   ),
@@ -220,35 +255,58 @@ export default function AulaProgressoesPa({
 
             {/* ACORDEON 2: Exemplificação */}
             <ContentAccordion
-              titulo="📚 Exemplificação - Casos Práticos"
+              titulo="Exemplificação - Casos Práticos"
               icone="📊"
               corIndicador="bg-emerald-500"
               defaultOpen={false}
+              mode="stacked"
               slides={[
                 {
-                  titulo: "Exemplificação",
                   conteudo: (
-                    <div className="space-y-6">
-                      <p className="text-base leading-relaxed text-foreground">
-                        Dependendo do valor de <strong>r</strong>, a PA pode crescer, manter-se constante ou decrescer:
-                      </p>
-
-                      <div className="p-6 bg-emerald-500/15 border border-emerald-500/30 rounded-xl">
-                        <p className="text-lg font-bold text-emerald-700 dark:text-emerald-300 mb-3">✅ Crescimento (r &gt; 0):</p>
-                        <p className="text-base text-foreground mb-2"><strong>PA: (5, 10, 15, 20, 25, ...)</strong></p>
-                        <p className="text-base text-foreground">• a₁ = 5 | r = 5 (cada termo soma 5)</p>
+                    <div className="space-y-8">
+                      <div>
+                        <h3 className="text-2xl font-bold text-foreground mb-4">Tipos de Progressão Aritmética</h3>
+                        <p className="text-lg leading-relaxed text-foreground">
+                          Dependendo do valor de <strong>r (razão)</strong>, a PA pode crescer, manter-se constante ou decrescer. Vejamos cada caso:
+                        </p>
                       </div>
 
-                      <div className="p-6 bg-red-500/15 border border-red-500/30 rounded-xl">
-                        <p className="text-lg font-bold text-red-700 dark:text-red-300 mb-3">📉 Decrescimento (r &lt; 0):</p>
-                        <p className="text-base text-foreground mb-2"><strong>PA: (100, 90, 80, 70, 60, ...)</strong></p>
-                        <p className="text-base text-foreground">• a₁ = 100 | r = -10 (cada termo diminui 10)</p>
+                      <div className="p-6 bg-emerald-500/15 border-2 border-emerald-500/40 rounded-xl">
+                        <p className="text-xl font-bold text-emerald-700 dark:text-emerald-300 mb-4">✅ PA Crescente (r &gt; 0):</p>
+                        <p className="text-lg font-mono text-foreground mb-3"><strong>Exemplo: PA = (5, 10, 15, 20, 25, 30, ...)</strong></p>
+                        <div className="space-y-2 text-base text-foreground">
+                          <p>• <strong>a₁ = 5</strong> (primeiro termo)</p>
+                          <p>• <strong>r = 5</strong> (razão positiva)</p>
+                          <p>• <strong>Comportamento:</strong> Cada termo é 5 unidades maior que o anterior</p>
+                          <p>• <strong>Crescimento:</strong> Lento (linear, não exponencial)</p>
+                        </div>
                       </div>
 
-                      <div className="p-6 bg-slate-500/15 border border-slate-500/30 rounded-xl">
-                        <p className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-3">➡️ Constante (r = 0):</p>
-                        <p className="text-base text-foreground mb-2"><strong>PA: (7, 7, 7, 7, 7, ...)</strong></p>
-                        <p className="text-base text-foreground">• a₁ = 7 | r = 0 (todos os termos iguais)</p>
+                      <div className="p-6 bg-red-500/15 border-2 border-red-500/40 rounded-xl">
+                        <p className="text-xl font-bold text-red-700 dark:text-red-300 mb-4">📉 PA Decrescente (r &lt; 0):</p>
+                        <p className="text-lg font-mono text-foreground mb-3"><strong>Exemplo: PA = (100, 90, 80, 70, 60, 50, ...)</strong></p>
+                        <div className="space-y-2 text-base text-foreground">
+                          <p>• <strong>a₁ = 100</strong> (primeiro termo)</p>
+                          <p>• <strong>r = -10</strong> (razão negativa)</p>
+                          <p>• <strong>Comportamento:</strong> Cada termo é 10 unidades menor que o anterior</p>
+                          <p>• <strong>Tendência:</strong> Diminui linearmente até potencialmente ficar negativa</p>
+                        </div>
+                      </div>
+
+                      <div className="p-6 bg-slate-500/15 border-2 border-slate-500/40 rounded-xl">
+                        <p className="text-xl font-bold text-slate-700 dark:text-slate-300 mb-4">➡️ PA Constante (r = 0):</p>
+                        <p className="text-lg font-mono text-foreground mb-3"><strong>Exemplo: PA = (7, 7, 7, 7, 7, 7, ...)</strong></p>
+                        <div className="space-y-2 text-base text-foreground">
+                          <p>• <strong>a₁ = 7</strong> (primeiro termo)</p>
+                          <p>• <strong>r = 0</strong> (razão zero)</p>
+                          <p>• <strong>Comportamento:</strong> Todos os termos são idênticos</p>
+                          <p>• <strong>Aplicação:</strong> Raro, mas matematicamente válido</p>
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-blue-500/10 rounded-lg border-l-4 border-blue-500">
+                        <p className="text-lg font-bold text-foreground mb-2">💡 Dica de Identificação</p>
+                        <p className="text-base text-foreground">Para qualquer PA, <strong>subtraia dois termos consecutivos</strong>. Se o resultado for sempre o mesmo, parabéns! Você encontrou r.</p>
                       </div>
                     </div>
                   ),
@@ -258,28 +316,62 @@ export default function AulaProgressoesPa({
 
             {/* ACORDEON 3: Dicas */}
             <ContentAccordion
-              titulo="💡 Dicas - Teste da Razão"
+              titulo="Dicas - Teste da Razão"
               icone="✅"
               corIndicador="bg-amber-500"
               defaultOpen={false}
+              mode="stacked"
               slides={[
                 {
-                  titulo: "Dicas",
                   conteudo: (
-                    <div className="space-y-6">
-                      <p className="text-base leading-relaxed text-foreground">
-                        Para verificar se uma sequência é uma <strong>Progressão Aritmética</strong>, faça o <strong>"Teste da Razão"</strong>: subtraia dois termos consecutivos. Se o resultado for sempre igual, é PA!
-                      </p>
+                    <div className="space-y-8">
+                      <div>
+                        <h3 className="text-2xl font-bold text-foreground mb-4">🎯 Teste da Razão: O Truque Infalível</h3>
+                        <p className="text-lg leading-relaxed text-foreground mb-4">
+                          Para verificar se uma sequência é uma <strong>Progressão Aritmética (PA)</strong>, existe um teste simples e infalível: o <strong>"Teste da Razão"</strong>.
+                        </p>
+                        <p className="text-lg leading-relaxed text-foreground">
+                          <strong>Regra:</strong> Subtraia qualquer termo pelo termo anterior. Se o resultado for <strong>sempre o mesmo número</strong>, parabéns! É uma PA e você encontrou a razão (r).
+                        </p>
+                      </div>
 
-                      <AlertBox tipo="success" titulo="✅ Teste Prático">
-                        <div className="space-y-3 text-base">
-                          <p><strong>Sequência: (3, 7, 11, 15)</strong></p>
-                          <p>• 7 - 3 = <strong>4</strong> ✓</p>
-                          <p>• 11 - 7 = <strong>4</strong> ✓</p>
-                          <p>• 15 - 11 = <strong>4</strong> ✓</p>
-                          <p className="text-green-700 dark:text-green-400 font-bold">→ É PA com r = 4!</p>
+                      <AlertBox tipo="success" titulo="✅ Teste Prático - Exemplo 1">
+                        <div className="space-y-3 text-lg">
+                          <p className="font-bold text-foreground"><strong>Sequência: (3, 7, 11, 15)</strong></p>
+                          <div className="bg-emerald-500/10 p-3 rounded border-l-4 border-emerald-500 space-y-2">
+                            <p className="text-base text-foreground">• 7 - 3 = <strong>4</strong> ✓</p>
+                            <p className="text-base text-foreground">• 11 - 7 = <strong>4</strong> ✓</p>
+                            <p className="text-base text-foreground">• 15 - 11 = <strong>4</strong> ✓</p>
+                          </div>
+                          <p className="text-lg text-emerald-700 dark:text-emerald-400 font-bold">✅ É PA com r = 4!</p>
                         </div>
                       </AlertBox>
+
+                      <AlertBox tipo="info" titulo="🔍 Teste Prático - Exemplo 2 (Não-PA)">
+                        <div className="space-y-3 text-lg">
+                          <p className="font-bold text-foreground"><strong>Sequência: (2, 5, 9, 14)</strong></p>
+                          <div className="bg-blue-500/10 p-3 rounded border-l-4 border-blue-500 space-y-2">
+                            <p className="text-base text-foreground">• 5 - 2 = <strong>3</strong></p>
+                            <p className="text-base text-foreground">• 9 - 5 = <strong>4</strong></p>
+                            <p className="text-base text-foreground">• 14 - 9 = <strong>5</strong></p>
+                          </div>
+                          <p className="text-lg text-blue-700 dark:text-blue-400 font-bold">❌ Não é PA! As diferenças variam (3, 4, 5).</p>
+                        </div>
+                      </AlertBox>
+
+                      <div className="p-6 bg-amber-500/15 border-2 border-amber-500/40 rounded-xl">
+                        <p className="text-xl font-bold text-amber-700 dark:text-amber-300 mb-4">⚡ Macete: "Diferença Constante"</p>
+                        <p className="text-lg leading-relaxed text-foreground">
+                          <strong>Memorize isso:</strong> "PA = Diferença Constante". Se você conseguir encontrar uma diferença que se repete, você identificou uma PA. Se a diferença muda, não é PA.
+                        </p>
+                      </div>
+
+                      <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                        <p className="text-lg font-bold text-foreground mb-3">💪 Por que essa dica funciona?</p>
+                        <p className="text-base text-foreground">
+                          Porque a definição de PA é exatamente isso: <strong>todos os pares de termos consecutivos têm a mesma diferença.</strong> Se você encontra essa diferença constante, provou que é uma PA!
+                        </p>
+                      </div>
                     </div>
                   ),
                 },
@@ -288,35 +380,75 @@ export default function AulaProgressoesPa({
 
             {/* ACORDEON 4: Exceções */}
             <ContentAccordion
-              titulo="⚠️ Exceções - Casos Especiais"
+              titulo="Exceções - Casos Especiais"
               icone="⚠️"
               corIndicador="bg-red-500"
               defaultOpen={false}
+              mode="stacked"
               slides={[
                 {
-                  titulo: "Exceções",
                   conteudo: (
-                    <div className="space-y-6">
-                      <p className="text-base leading-relaxed text-foreground">
-                        Existem <strong>situações especiais</strong> em PA que você deve conhecer para não cair em pegadinhas:
-                      </p>
-
-                      <div className="p-6 bg-blue-500/15 border border-blue-500/30 rounded-xl">
-                        <p className="text-lg font-bold text-blue-700 dark:text-blue-300 mb-2">1️⃣ PA com Primeiro Termo Zero</p>
-                        <p className="text-base text-foreground">PA: <strong>(0, 3, 6, 9, ...)</strong></p>
-                        <p className="text-base text-foreground">• a₁ = 0 (começa no zero) | r = 3</p>
+                    <div className="space-y-8">
+                      <div>
+                        <h3 className="text-2xl font-bold text-foreground mb-4">🚨 Pegadinhas CESGRANRIO em PA</h3>
+                        <p className="text-lg leading-relaxed text-foreground">
+                          Existem <strong>situações especiais e casos extremos</strong> em PA que aparecem nas provas de vestibular. Você deve dominar cada uma delas para não cair em pegadinhas:
+                        </p>
                       </div>
 
-                      <div className="p-6 bg-blue-500/15 border border-blue-500/30 rounded-xl">
-                        <p className="text-lg font-bold text-blue-700 dark:text-blue-300 mb-2">2️⃣ PA com Razão Negativa</p>
-                        <p className="text-base text-foreground">PA: <strong>(-2, -5, -8, -11, ...)</strong></p>
-                        <p className="text-base text-foreground">• a₁ = -2 | r = -3 (decrescente, mas valores negativos)</p>
+                      <div className="p-6 bg-blue-500/15 border-2 border-blue-500/40 rounded-xl">
+                        <p className="text-xl font-bold text-blue-700 dark:text-blue-300 mb-3">1️⃣ PA com Primeiro Termo Zero</p>
+                        <p className="text-lg font-mono text-foreground mb-3"><strong>Exemplo: PA = (0, 3, 6, 9, 12, ...)</strong></p>
+                        <div className="space-y-2 text-base text-foreground">
+                          <p>• <strong>a₁ = 0</strong> (começa no zero — não é raro!)</p>
+                          <p>• <strong>r = 3</strong> (razão normal)</p>
+                          <p>• <strong>Pegadinha:</strong> Alunos acham que PA deve começar com número "real", mas 0 é perfeitamente válido</p>
+                        </div>
                       </div>
 
-                      <div className="p-6 bg-blue-500/15 border border-blue-500/30 rounded-xl">
-                        <p className="text-lg font-bold text-blue-700 dark:text-blue-300 mb-2">3️⃣ PA com Dois Termos Apenas</p>
-                        <p className="text-base text-foreground">PA: <strong>(5, 8)</strong> ou <strong>(10, 7)</strong></p>
-                        <p className="text-base text-foreground">• Sempre forma PA com qualquer r | r = (a₂ - a₁)</p>
+                      <div className="p-6 bg-amber-500/15 border-2 border-amber-500/40 rounded-xl">
+                        <p className="text-xl font-bold text-amber-700 dark:text-amber-300 mb-3">2️⃣ PA com Razão Negativa (Números Negativos)</p>
+                        <p className="text-lg font-mono text-foreground mb-3"><strong>Exemplo: PA = (-2, -5, -8, -11, -14, ...)</strong></p>
+                        <div className="space-y-2 text-base text-foreground">
+                          <p>• <strong>a₁ = -2</strong> (começa negativo)</p>
+                          <p>• <strong>r = -3</strong> (razão negativa)</p>
+                          <p>• <strong>Pegadinha:</strong> A PA é decrescente (fica cada vez mais negativa), então os "maiores" termos estão no começo</p>
+                          <p>• <strong>Lembre-se:</strong> -2 &gt; -5 &gt; -8 (valores negativos menores à direita)</p>
+                        </div>
+                      </div>
+
+                      <div className="p-6 bg-red-500/15 border-2 border-red-500/40 rounded-xl">
+                        <p className="text-xl font-bold text-red-700 dark:text-red-300 mb-3">3️⃣ PA com Apenas Dois Termos</p>
+                        <p className="text-lg font-mono text-foreground mb-3"><strong>Exemplos: (5, 8) ou (10, 7) ou (100, 100)</strong></p>
+                        <div className="space-y-2 text-base text-foreground">
+                          <p>• <strong>Qualquer dois números formam uma PA!</strong></p>
+                          <p>• Para (5, 8): <strong>r = 8 - 5 = 3</strong></p>
+                          <p>• Para (10, 7): <strong>r = 7 - 10 = -3</strong></p>
+                          <p>• Para (100, 100): <strong>r = 100 - 100 = 0</strong> (PA constante)</p>
+                          <p>• <strong>Pegadinha:</strong> A questão pede "interpolação aritmética" e quer que você preencha os termos do meio</p>
+                        </div>
+                      </div>
+
+                      <div className="p-6 bg-purple-500/15 border-2 border-purple-500/40 rounded-xl">
+                        <p className="text-xl font-bold text-purple-700 dark:text-purple-300 mb-3">4️⃣ PA com Razão Fracionária</p>
+                        <p className="text-lg font-mono text-foreground mb-3"><strong>Exemplo: PA = (1, 1.5, 2, 2.5, 3, ...)</strong></p>
+                        <div className="space-y-2 text-base text-foreground">
+                          <p>• <strong>a₁ = 1</strong></p>
+                          <p>• <strong>r = 0.5 = 1/2</strong> (razão fracionária)</p>
+                          <p>• <strong>Pegadinha:</strong> Alunos esquecem que r pode ser decimal ou fração</p>
+                          <p>• <strong>Dica:</strong> Sempre trabalhe com frações em prova — é mais preciso que decimais</p>
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-red-500/10 rounded-lg border-l-4 border-red-500">
+                        <p className="text-lg font-bold text-foreground mb-2">⚡ Resumo das Pegadinhas</p>
+                        <ul className="space-y-1 text-base text-foreground">
+                          <li>✓ PA pode começar com 0 ou negativos</li>
+                          <li>✓ r pode ser negativa (PA decrescente)</li>
+                          <li>✓ r pode ser zero (PA constante)</li>
+                          <li>✓ r pode ser fração ou decimal</li>
+                          <li>✓ Qualquer dois números formam uma PA</li>
+                        </ul>
                       </div>
                     </div>
                   ),

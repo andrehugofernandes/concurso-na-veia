@@ -381,9 +381,28 @@ export function CardCarousel({
 }
 
 // ── ContentAccordion ─────────────────────────────────────────────────────
-// Acordeão que ao expandir revela um carrossel horizontal de slides ricos.
-// Inspirado no ModuleSection.tsx do admin-template.
-// Cada slide contém JSX denso (conceito, exemplos, exceções, macetes).
+// Acordeão que ao expandir revela conteúdo rico com modo configurável.
+//
+// PADRÃO FINAL (v3):
+// - mode="stacked" (recomendado): SEM carrossel, apenas conteúdo estático
+// - Ícone vindo da prop `icone` do ContentAccordion (não do slide)
+// - Título grande (text-xl md:text-2xl) no AccordionTrigger
+// - Espaçamento reduzido entre acordeons (space-y-2 md:space-y-1.5)
+// - Sem navegação de carrossel
+// - Slides com apenas `conteudo` (sem `titulo` redundante)
+//
+// Uso:
+// <ContentAccordion
+//   titulo="📖 Conceituação - O que é PA?"
+//   icone="🔢"
+//   defaultOpen={true}
+//   mode="stacked"
+//   slides={[
+//     {
+//       conteudo: <div>Conteúdo rico aqui...</div>,
+//     },
+//   ]}
+// />
 
 export interface ContentSlide {
   titulo?: string;
@@ -398,7 +417,8 @@ export interface ContentSlide {
 
 /**
  * Acordeão de conteúdo interativo.
- * MANDATÓRIO: Cada slide DEVE conter um exemplo prático (Antes/Depois ou Certo/Errado) em frases.
+ * PADRÃO FINAL: Use mode="stacked" para layout sem carrossel (recomendado).
+ * Títulos na prop da seção, conteúdo rico (C.E.D.E.) nos slides.
  */
 export function ContentAccordion({
   titulo,
@@ -476,7 +496,7 @@ export function ContentAccordion({
       </div>
     ) : (
       <div className="w-full md:bg-muted/20 md:rounded-xl md:border md:border-border/50 md:p-6">
-        <Accordion type="single" collapsible className="space-y-4 md:space-y-3">
+        <Accordion type="single" collapsible className="space-y-2 md:space-y-1.5">
           {slides.map((slide, index) => (
             <AccordionItem
               key={index}
@@ -485,11 +505,11 @@ export function ContentAccordion({
             >
               <AccordionTrigger className="w-full flex items-center justify-between gap-3 px-5 py-3 rounded-xl border border-border bg-card hover:bg-muted/40 transition-all duration-200 text-left hover:no-underline shadow-sm group [&[data-state=open]]:bg-primary/5 [&[data-state=open]]:border-primary/20 [&[data-state=open]]:rounded-b-none">
                 <div className="flex items-center gap-3">
-                  <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-lg shrink-0 group-hover:scale-110 transition-transform">
-                    {slide.icone}
+                  <span className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform">
+                    {icone || slide.icone}
                   </span>
-                  <span className="font-bold text-base text-foreground">
-                    {slide.titulo}
+                  <span className="font-bold text-xl md:text-2xl text-foreground">
+                    {titulo || slide.titulo}
                   </span>
                 </div>
               </AccordionTrigger>

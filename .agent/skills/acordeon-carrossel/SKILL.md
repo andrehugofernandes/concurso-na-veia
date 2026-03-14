@@ -236,147 +236,178 @@ ModuleSectionHeader (título da seção)
 
 ---
 
-## ✅ Padrão Correto (Tipo 3 - Recomendado)
+## ✅ Padrão Correto FINAL (Tipo 3 - SEM CARROSSEL)
+
+### Estrutura Obrigatória:
 
 ```tsx
-// ✅ CORRETO: 4 ContentAccordion independentes, cada um com conteúdo rico (SEM carrossel)
+// ✅ CORRETO: N ContentAccordion independentes com mode="stacked"
 
-<ModuleSectionHeader
-  index={1}
-  title="Conceitos Fundamentais de PA"
-  description="Entenda razão e primeiro termo"
-  variant="blue"
-/>
+<section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+  <ModuleSectionHeader
+    index={1}
+    title="Conceitos Fundamentais de PA"
+    variant="blue"
+  />
 
-{/* ACORDEON 1: Conceituação */}
-<ContentAccordion
-  titulo="📖 Conceituação - O que é PA?"
-  icone="🔢"
-  corIndicador="bg-blue-500"
-  defaultOpen={true}
-  slides={[
-    {
-      titulo: "Conceituação",
-      conteudo: (
-        <div className="space-y-6">
-          <p className="text-base leading-relaxed">
-            Uma <strong>Progressão Aritmética (PA)</strong> é uma sequência onde
-            <strong>cada termo é obtido somando uma constante chamada razão (r)</strong>.
-          </p>
+  {/* ACORDEON 1: Conceituação */}
+  <ContentAccordion
+    titulo="Conceituação - O que é PA?"
+    icone="📖"
+    corIndicador="bg-blue-500"
+    defaultOpen={true}
+    mode="stacked"
+    slides={[
+      {
+        conteudo: (
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Definição de Progressão Aritmética</h3>
+              <p className="text-lg leading-relaxed text-foreground">
+                Uma <strong>Progressão Aritmética (PA)</strong> é uma sequência...
+              </p>
+            </div>
 
-          <div className="p-6 bg-blue-500/15 rounded-xl border border-blue-500/30">
-            <p className="text-lg font-bold text-blue-700 mb-4">Estrutura da PA:</p>
-            <div className="space-y-3 font-mono text-base">
-              <p><strong>PA:</strong> a₁, a₂, a₃, ...</p>
-              <p><strong>aₙ</strong> = a₁ + (n-1)r</p>
+            <div className="p-6 bg-blue-500/15 rounded-xl border-2 border-blue-500/40">
+              <p className="text-xl font-bold text-blue-700 dark:text-blue-300 mb-6">📐 Estrutura Fundamental:</p>
+              <div className="space-y-4 font-mono text-lg">
+                <p className="text-foreground"><strong>PA:</strong> a₁, a₂, a₃, ..., aₙ</p>
+                <p className="text-foreground"><strong>aₙ</strong> = a₁ + (n-1)r</p>
+              </div>
             </div>
           </div>
-        </div>
-      ),
-    },
-  ]}
-/>
+        ),
+      },
+    ]}
+  />
 
-{/* ACORDEON 2: Exemplificação */}
-<ContentAccordion
-  titulo="📚 Exemplificação - Casos Práticos"
-  icone="📊"
-  corIndicador="bg-emerald-500"
-  defaultOpen={false}
-  slides={[
-    {
-      titulo: "Exemplificação",
-      conteudo: (
-        <div className="space-y-6">
-          <p className="text-base">Dependendo de r, a PA cresce, decresce ou se mantém:</p>
-
-          <div className="p-6 bg-emerald-500/15 rounded-xl">
-            <p className="text-lg font-bold text-emerald-700">✅ Crescimento (r > 0):</p>
-            <p className="text-base">PA: <strong>(5, 10, 15, 20, ...)</strong></p>
-          </div>
-
-          <div className="p-6 bg-red-500/15 rounded-xl">
-            <p className="text-lg font-bold text-red-700">📉 Decrescimento (r < 0):</p>
-            <p className="text-base">PA: <strong>(100, 90, 80, ...)</strong></p>
-          </div>
-        </div>
-      ),
-    },
-  ]}
-/>
-
-{/* ACORDEON 3: Dicas */}
-<ContentAccordion
-  titulo="💡 Dicas - Teste da Razão"
-  icone="✅"
-  corIndicador="bg-amber-500"
-  defaultOpen={false}
-  slides={[
-    {
-      titulo: "Dicas",
-      conteudo: (
-        <div className="space-y-6">
-          <p className="text-base">
-            Para verificar se é PA, subtraia termos consecutivos.
-            Se sempre igual, é PA!
-          </p>
-
-          <AlertBox tipo="success" titulo="✅ Teste Prático">
-            <div className="space-y-3 text-base">
-              <p><strong>Sequência: (3, 7, 11, 15)</strong></p>
-              <p>• 7 - 3 = 4 ✓ | 11 - 7 = 4 ✓</p>
-              <p>→ É PA com r = 4!</p>
+  {/* ACORDEON 2: Exemplificação */}
+  <ContentAccordion
+    titulo="Exemplificação - Casos Práticos"
+    icone="📚"
+    corIndicador="bg-emerald-500"
+    defaultOpen={false}
+    mode="stacked"
+    slides={[
+      {
+        conteudo: (
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Tipos de Progressão Aritmética</h3>
+              <p className="text-lg leading-relaxed text-foreground">
+                Dependendo do valor de r, a PA pode crescer, manter-se constante ou decrescer...
+              </p>
             </div>
-          </AlertBox>
-        </div>
-      ),
-    },
-  ]}
-/>
 
-{/* ACORDEON 4: Exceções */}
-<ContentAccordion
-  titulo="⚠️ Exceções - Casos Especiais"
-  icone="⚠️"
-  corIndicador="bg-red-500"
-  defaultOpen={false}
-  slides={[
-    {
-      titulo: "Exceções",
-      conteudo: (
-        <div className="space-y-6">
-          <p className="text-base">Situações especiais que você deve conhecer:</p>
-
-          <div className="p-6 bg-blue-500/15 rounded-xl">
-            <p className="text-lg font-bold text-blue-700">1️⃣ PA com Primeiro Termo Zero</p>
-            <p className="text-base">PA: <strong>(0, 3, 6, 9, ...)</strong> | r = 3</p>
+            <div className="p-6 bg-emerald-500/15 border-2 border-emerald-500/40 rounded-xl">
+              <p className="text-xl font-bold text-emerald-700">✅ PA Crescente (r > 0):</p>
+              <p className="text-lg font-mono text-foreground mb-3"><strong>Exemplo: PA = (5, 10, 15, 20, ...)</strong></p>
+              <div className="space-y-2 text-base text-foreground">
+                <p>• <strong>a₁ = 5</strong> (primeiro termo)</p>
+                <p>• <strong>r = 5</strong> (razão positiva)</p>
+              </div>
+            </div>
           </div>
+        ),
+      },
+    ]}
+  />
 
-          <div className="p-6 bg-blue-500/15 rounded-xl">
-            <p className="text-lg font-bold text-blue-700">2️⃣ PA com Razão Negativa</p>
-            <p className="text-base">PA: <strong>(-2, -5, -8, ...)</strong> | r = -3</p>
+  {/* ACORDEON 3: Dicas */}
+  <ContentAccordion
+    titulo="Dicas - Teste da Razão"
+    icone="💡"
+    corIndicador="bg-amber-500"
+    defaultOpen={false}
+    mode="stacked"
+    slides={[
+      {
+        conteudo: (
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-4">🎯 Teste da Razão</h3>
+              <p className="text-lg leading-relaxed text-foreground">
+                Para verificar se uma sequência é uma PA, subtraia termos consecutivos...
+              </p>
+            </div>
+
+            <AlertBox tipo="success" titulo="✅ Teste Prático">
+              <div className="space-y-3 text-lg">
+                <p className="font-bold"><strong>Sequência: (3, 7, 11, 15)</strong></p>
+                <p>• 7 - 3 = <strong>4</strong> ✓</p>
+                <p>• 11 - 7 = <strong>4</strong> ✓</p>
+                <p className="text-green-700 dark:text-green-400 font-bold">→ É PA com r = 4!</p>
+              </div>
+            </AlertBox>
           </div>
-        </div>
-      ),
-    },
-  ]}
-/>
+        ),
+      },
+    ]}
+  />
+
+  {/* ACORDEON 4: Exceções */}
+  <ContentAccordion
+    titulo="Exceções - Casos Especiais"
+    icone="⚠️"
+    corIndicador="bg-red-500"
+    defaultOpen={false}
+    mode="stacked"
+    slides={[
+      {
+        conteudo: (
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-4">🚨 Pegadinhas em PA</h3>
+              <p className="text-lg leading-relaxed text-foreground">
+                Existem situações especiais que aparecem em provas...
+              </p>
+            </div>
+
+            <div className="p-6 bg-blue-500/15 border-2 border-blue-500/40 rounded-xl">
+              <p className="text-xl font-bold text-blue-700">1️⃣ PA com Primeiro Termo Zero</p>
+              <p className="text-lg font-mono text-foreground mb-3"><strong>Exemplo: PA = (0, 3, 6, 9, ...)</strong></p>
+              <p className="text-base text-foreground">• a₁ = 0 | r = 3</p>
+            </div>
+          </div>
+        ),
+      },
+    ]}
+  />
+</section>
 ```
+
+### Checklist para Tipo 3 (SEM CARROSSEL):
+
+- [ ] **`mode="stacked"`** em cada ContentAccordion
+- [ ] **Ícone na prop** (ex: `icone="📖"`) — aparece NO BADGE
+- [ ] **Título na prop** — SEM emoji, apenas texto (ex: `titulo="Conceituação - O que é PA?"`)
+  - ⚠️ **NÃO FAZER:** `titulo="📖 Conceituação - O que é PA?"` (emoji em duplicação!)
+  - ✅ **CORRETO:** Emoji vai APENAS em `icone="📖"`
+- [ ] **Sem `titulo` dentro do slide** (apenas `conteudo`)
+- [ ] **1 único slide por ContentAccordion** (array com 1 objeto)
+- [ ] **Sem navegação de carrossel** (automático com `mode="stacked"`)
+- [ ] **Espaçamento entre acordeons**: `space-y-2 md:space-y-1.5` (reduzido pela metade)
+- [ ] **Conteúdo rico** com `space-y-8` entre seções e `text-lg`/`text-xl` para títulos
 
 ---
 
-## 🎨 Regras de Design
+## 🎨 Regras de Design (Tipo 3 - PADRÃO FINAL)
 
-| Elemento | Tipo 1 (Text) | Tipo 2 (Flip) | Tipo 3 (Simples) |
-|----------|--------------|---------------|-----------------|
-| **Acordeon 1** | `defaultOpen={true}` | `defaultOpen={true}` | `defaultOpen={true}` |
-| **Acordeon 2+** | `defaultOpen={false}` | `defaultOpen={false}` | `defaultOpen={false}` |
-| **`corIndicador`** | Cor semântica | Cor semântica | Cor semântica |
-| **Ícone** | LucideIcon | LucideIcon | Emoji simples |
-| **`slidesPerView`** | `{2}` (máximo 2 itens) | `{2}` (máximo 2 cards) | N/A (sem carrossel) |
-| **Navegação** | Setas de carrossel | Setas + flip | Nenhuma |
-| **Fonts** | `text-base` (corpo) | `text-base` | `text-base` ou maior |
-| **Espaçamento** | `space-y-6` entre cards | `space-y-4` | `space-y-6` entre seções |
+| Elemento | Valor/Propriedade |
+|----------|-------------------|
+| **Acordeon 1** | `defaultOpen={true}` |
+| **Acordeon 2+** | `defaultOpen={false}` |
+| **Modo** | `mode="stacked"` (OBRIGATÓRIO) |
+| **Ícone (prop)** | Emoji simples (ex: `icone="📖"`) — aparece no badge |
+| **Título (prop)** | String SEM emoji, apenas descrição (ex: `titulo="Conceituação - O que é PA?"`) |
+| **Slides interno** | Array com 1 objeto (sem `titulo`, apenas `conteudo`) |
+| **Ícone renderizado** | Aparece no AccordionTrigger com fundo `bg-primary/10` |
+| **Título renderizado** | `text-xl md:text-2xl font-bold` (grande e destacado) |
+| **Navegação** | NENHUMA (sem setas, sem "tópicos disponíveis") |
+| **Espaçamento entre acordeons** | `space-y-2 md:space-y-1.5` (reduzido pela metade) |
+| **Padding do conteúdo** | `p-4 md:p-8` |
+| **Fonts corpo** | `text-base` ou `text-lg` |
+| **Seções internas** | `space-y-6` ou `space-y-8` |
 
 ---
 
@@ -480,19 +511,63 @@ ModuleSectionHeader (título da seção)
 
 ---
 
+## 🚨 REGRAS IMPERATIVAS
+
+### 1️⃣ NUNCA números hardcoded
+- Contar items do conteúdo original
+- Listar categorias explicitamente antes de perguntar
+- Confirmar com o usuário a quantidade antes de implementar
+
+### 2️⃣ EMOJI APENAS em `icone`, NUNCA em `titulo`
+- ✅ CORRETO: `icone="📖"` + `titulo="Conceituação - O que é PA?"`
+- ❌ ERRADO: `titulo="📖 Conceituação - O que é PA?"` (duplica emoji)
+- Emoji aparece NO BADGE, não no texto do título
+
+### 3️⃣ SEMPRE `mode="stacked"` para ContentAccordion
+- Tipo 3 (recomendado) é SEM carrossel
+- Sem navegação de carrossel
+- Sem "tópicos disponíveis"
+- 1 único slide por ContentAccordion (array com 1 objeto)
+
+### 4️⃣ Conteúdo RICO em C.E.D.E.
+- Conceituação (definição + intuição)
+- Exemplificação (2+ exemplos com detalhes)
+- Dicas (macete + AlertBox)
+- Exceções (pegadinhas + casos especiais)
+- Fonts: `text-lg`/`text-xl` para títulos, `text-base` mínimo para corpo
+- Espaçamento: `space-y-8` entre seções
+
+### 5️⃣ Espaçamento reduzido
+- Entre acordeons: `space-y-2 md:space-y-1.5` (metade do original)
+- Dentro do conteúdo: `space-y-6` ou `space-y-8`
+
+### 6️⃣ SEM duplicação
+- Sem `titulo` no slide (apenas na prop do ContentAccordion)
+- Sem emoji no título (apenas no `icone`)
+- Sem slides vazios ou genéricos
+
+---
+
 ## 📋 Checklist de Implementação
 
-Ao usar esta skill, SEMPRE pergunte:
+Ao usar esta skill, SEMPRE:
 
-- [ ] **Qual tipo de conteúdo?**
-  - [ ] Tipo 1 (Carrossel de Texto — 2 itens)
-  - [ ] Tipo 2 (Carrossel de FlipCards — 2 cards)
-  - [ ] [ x ] Tipo 3 (Sem Carrossel — RECOMENDADO)
+**Passo 1: NUNCA deixar números hardcoded**
+- [ ] Ler o card/conteúdo original
+- [ ] CONTAR quantas categorias/items principais existem
+- [ ] Listar cada categoria explicitamente
+- [ ] Perguntar ao usuário para confirmar a contagem
+
+**Passo 2: Qual tipo de conteúdo?**
+- [ ] Tipo 1 (Carrossel de Texto — 2 itens)
+- [ ] Tipo 2 (Carrossel de FlipCards — 2 cards)
+- [ ] [ x ] Tipo 3 (Sem Carrossel — RECOMENDADO)
 
 - [ ] **Estrutura de ContentAccordion:**
-  - [ ] 4 ContentAccordion independentes (C.E.D.E.)
+  - [ ] **N ContentAccordion independentes** (onde N = número de categorias pré-identificadas no conteúdo)
   - [ ] Primeira aberta (`defaultOpen={true}`)
   - [ ] Restantes fechadas (`defaultOpen={false}`)
+  - [ ] **NUNCA** deixar um número hardcoded — contar os items do card original e criar 1 ContentAccordion por item
 
 - [ ] **Espaçamento:**
   - [ ] `<section className="space-y-6">` entre acordeons
@@ -511,10 +586,52 @@ Ao usar esta skill, SEMPRE pergunte:
 
 ---
 
-## 📚 Implementação de Referência
+## 📚 Implementação de Referência (Padrão FINAL)
 
 **Arquivo:** `src/components/aulas/matematica/AulaProgressoesPa.tsx` — **Módulo 1**
 
-**Padrão:** 4 ContentAccordion independentes (Tipo 3 - Sem Carrossel)
+**Padrão:** 4 ContentAccordion independentes (Conceituação, Exemplificação, Dicas, Exceções)
 
-Este é o exemplo canônico do padrão AcordeonCarrossel v2 implementado com todas as regras.
+**Características do Padrão FINAL:**
+- ✅ `mode="stacked"` (SEM carrossel)
+- ✅ Ícones aparecem no trigger do acordeon (não no slide)
+- ✅ Títulos grandes (`text-xl md:text-2xl`) no trigger
+- ✅ Conteúdo rico com `space-y-8` entre seções
+- ✅ Sem navegação de carrossel
+- ✅ Espaçamento reduzido (`space-y-2 md:space-y-1.5`) entre acordeons
+- ✅ Sem duplicação de títulos (apenas na prop `titulo` do ContentAccordion)
+
+Este é o exemplo canônico do padrão AcordeonCarrossel v3 (FINAL) implementado com todas as regras.
+
+---
+
+## 🎯 Regra Crítica: Contagem Dinâmica de Items
+
+### ❌ NUNCA FAÇA:
+```
+"Qual tipo de conteúdo você quer usar para os **4** acordeons?"
+```
+Deixar um número hardcoded (4, 5, etc) é ERRADO porque:
+- O número deve ser derivado do conteúdo pré-existente
+- Sem ver o contexto, não há garantia de que o número está correto
+- Força o usuário a contar manualmente
+
+### ✅ SEMPRE FAÇA:
+```
+"Qual tipo de conteúdo você quer usar para os acordeons?"
+
+Identifiquei que o card original contém estes items/categorias:
+1. Conceituação
+2. Exemplificação
+3. Dicas
+4. Exceções
+
+Vou criar 1 ContentAccordion para cada um. Está correto?
+```
+
+**Processo:**
+1. Ler o card/conteúdo original
+2. CONTAR quantas categorias/items principais existem
+3. Listar cada uma explicitamente no diálogo com o usuário
+4. Confirmar antes de implementar
+5. Criar exatamente N ContentAccordion (onde N = quantidade contada)
