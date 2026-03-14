@@ -11,6 +11,7 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
+  ModuleConsolidation,
 } from "../shared";
 import {
   QUIZ_M1_JUROS_SIMPLES,
@@ -259,6 +260,71 @@ export default function AulaMatematicaFinanceira({
             </AlertBox>
           </section>
 
+          <ModuleConsolidation
+            index={1}
+            variant="indigo"
+            video={{
+              videoId: "XxrO_yVcrTI",
+              title: "Juros Simples: Fórmula J=Cit e Aplicações Práticas",
+              duration: "12:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Juros Simples",
+              tituloAula: "Matemática Financeira",
+              materia: "Matemática",
+              images: [
+                { title: "Fórmula J=C·i·t", type: "diagram", placeholderColor: "bg-indigo-500/20" },
+                { title: "Crescimento Linear", type: "gráfico", placeholderColor: "bg-blue-500/20" },
+                { title: "Montante M=C+J", type: "fórmula", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Juros Simples vs Compostos",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
+                    <p className="font-bold text-indigo-700 dark:text-indigo-300 text-sm">Juros Simples = Sempre sobre o capital inicial (LINEAR)</p>
+                    <p className="text-xs mt-1">Fórmula: J = C × i × t | M = C(1 + it)</p>
+                  </div>
+                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                    <p className="font-bold text-blue-700 dark:text-blue-300 text-sm">Crescimento Previsível</p>
+                    <p className="text-xs mt-1">→ Proporcional ao tempo | → Reta em gráfico linear</p>
+                  </div>
+                  <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
+                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-sm">Quando Usar</p>
+                    <p className="text-xs mt-1">→ Caderneta poupança (antes 2012) | → Desconto comercial</p>
+                  </div>
+                  <div className="p-3 bg-indigo-500/5 border border-indigo-500/30 rounded-lg">
+                    <p className="font-bold text-indigo-600 dark:text-indigo-400 text-sm">Exemplo Prático</p>
+                    <p className="text-xs font-mono mt-1">C = R$ 1.000 | i = 5% a.m. | t = 3 meses</p>
+                    <p className="text-xs font-mono mt-1">J = 1.000 × 0,05 × 3 = R$ 150</p>
+                    <p className="text-xs font-mono mt-1">M = 1.000 + 150 = R$ 1.150</p>
+                  </div>
+                  <div className="p-3 bg-indigo-500/5 border border-indigo-500/30 rounded-lg">
+                    <p className="font-bold text-indigo-600 dark:text-indigo-400 text-sm">Tabela Comparativa: 1000 com 5% a.m.</p>
+                    <div className="text-xs font-mono space-y-1 mt-2">
+                      <p>Mês 1: J=50, M=1.050</p>
+                      <p>Mês 2: J=100, M=1.100</p>
+                      <p>Mês 3: J=150, M=1.150</p>
+                      <p>Mês 12: J=600, M=1.600</p>
+                    </div>
+                  </div>
+                  <div className="p-3 bg-indigo-500/5 border border-indigo-500/30 rounded-lg">
+                    <p className="font-bold text-indigo-600 dark:text-indigo-400 text-sm">Dicas CESGRANRIO</p>
+                    <p className="text-xs mt-1">→ Juros Simples aparece em operações de desconto</p>
+                    <p className="text-xs mt-1">→ Nunca use fórmula de juros compostos por engano!</p>
+                    <p className="text-xs mt-1">→ Percentual deve estar em forma decimal (5% = 0,05)</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "Ritmo dos Juros Simples",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-1" className="mt-16">
             <QuizInterativo
               questoes={quizM1}
@@ -389,6 +455,71 @@ export default function AulaMatematicaFinanceira({
             </div>
           </section>
 
+          <ModuleConsolidation
+            index={2}
+            variant="emerald"
+            video={{
+              videoId: "kL8nLz8zqWg",
+              title: "Montante Simples: Resgate e Capitalização Linear",
+              duration: "11:15"
+            }}
+            resumoVisual={{
+              moduloNome: "Montante em Juros Simples",
+              tituloAula: "Matemática Financeira",
+              materia: "Matemática",
+              images: [
+                { title: "Fórmula M=C(1+it)", type: "diagram", placeholderColor: "bg-emerald-500/20" },
+                { title: "Relação C+J", type: "esquema", placeholderColor: "bg-green-500/20" },
+                { title: "Resgate Final", type: "aplicação", placeholderColor: "bg-teal-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Montante = Capital + Juros",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
+                    <p className="font-bold text-emerald-700 dark:text-emerald-300 text-sm">M = C + J = C(1 + it)</p>
+                    <p className="text-xs mt-1">Montante é o valor TOTAL no final da aplicação</p>
+                  </div>
+                  <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
+                    <p className="font-bold text-green-700 dark:text-green-300 text-sm">Diferenças Chaves</p>
+                    <p className="text-xs mt-1">→ M - C = J | → M > C sempre (ganho positivo)</p>
+                  </div>
+                  <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-lg">
+                    <p className="font-bold text-teal-700 dark:text-teal-300 text-sm">Aplicação Petrobras</p>
+                    <p className="text-xs mt-1">→ Cálculo de retorno simples | → Investimentos curto prazo</p>
+                  </div>
+                  <div className="p-3 bg-emerald-500/5 border border-emerald-500/30 rounded-lg">
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm">Exemplo Financeiro</p>
+                    <p className="text-xs font-mono mt-1">Investimento inicial: R$ 10.000</p>
+                    <p className="text-xs font-mono mt-1">Taxa: 2% a.m. por 6 meses</p>
+                    <p className="text-xs font-mono mt-1">J = 10.000 × 0,02 × 6 = R$ 1.200</p>
+                    <p className="text-xs font-mono mt-1">Resgate: M = R$ 11.200</p>
+                  </div>
+                  <div className="p-3 bg-emerald-500/5 border border-emerald-500/30 rounded-lg">
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm">Decomposição: M = C + J</p>
+                    <div className="text-xs font-mono space-y-1 mt-2">
+                      <p>C (Capital) = R$ 10.000</p>
+                      <p>J (Juros) = R$ 1.200</p>
+                      <p>M (Montante) = R$ 11.200</p>
+                      <p>Ganho real = 11,2% sobre capital inicial</p>
+                    </div>
+                  </div>
+                  <div className="p-3 bg-emerald-500/5 border border-emerald-500/30 rounded-lg">
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm">Operações Inversas</p>
+                    <p className="text-xs mt-1">→ M = C + J | C = M - J | J = M - C</p>
+                    <p className="text-xs mt-1">→ Útil quando o problema não informa um dos valores</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+              titulo: "Montante Crescendo",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-2" className="mt-16">
             <QuizInterativo
               questoes={quizM2}
@@ -501,6 +632,71 @@ export default function AulaMatematicaFinanceira({
             />
           </section>
 
+          <ModuleConsolidation
+            index={3}
+            variant="cyan"
+            video={{
+              videoId: "h5FYmYW-I6Y",
+              title: "Juros Compostos: Capitalização Exponencial e Poder do Tempo",
+              duration: "13:45"
+            }}
+            resumoVisual={{
+              moduloNome: "Juros Compostos",
+              tituloAula: "Matemática Financeira",
+              materia: "Matemática",
+              images: [
+                { title: "Crescimento Exponencial", type: "diagram", placeholderColor: "bg-cyan-500/20" },
+                { title: "Fórmula M=C(1+i)^t", type: "fórmula", placeholderColor: "bg-blue-500/20" },
+                { title: "Juros sobre Juros", type: "conceito", placeholderColor: "bg-sky-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Juros Compostos = Explosivo!",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
+                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-sm">Juros Compostos (EXPONENCIAL)</p>
+                    <p className="text-xs mt-1">M = C·(1+i)^t → Crescimento acelerado!</p>
+                  </div>
+                  <div className="p-3 bg-sky-500/10 border border-sky-500/20 rounded-lg">
+                    <p className="font-bold text-sky-700 dark:text-sky-300 text-sm">Diferença Chave</p>
+                    <p className="text-xs mt-1">→ Juros sobre TUDO acumulado | → Multiplica período a período</p>
+                  </div>
+                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                    <p className="font-bold text-blue-700 dark:text-blue-300 text-sm">Quando Usar</p>
+                    <p className="text-xs mt-1">→ Financiamentos | → Poupança/CDB | → Petrobras investe assim!</p>
+                  </div>
+                  <div className="p-3 bg-cyan-500/5 border border-cyan-500/30 rounded-lg">
+                    <p className="font-bold text-cyan-600 dark:text-cyan-400 text-sm">Exemplo Exponencial</p>
+                    <p className="text-xs font-mono mt-1">C = R$ 1.000 | i = 10% a.a. | t = 3 anos</p>
+                    <p className="text-xs font-mono mt-1">Ano 1: M = 1.000 × 1,10 = R$ 1.100</p>
+                    <p className="text-xs font-mono mt-1">Ano 2: M = 1.100 × 1,10 = R$ 1.210</p>
+                    <p className="text-xs font-mono mt-1">Ano 3: M = 1.210 × 1,10 = R$ 1.331</p>
+                  </div>
+                  <div className="p-3 bg-cyan-500/5 border border-cyan-500/30 rounded-lg">
+                    <p className="font-bold text-cyan-600 dark:text-cyan-400 text-sm">Comparativo: Simples vs Composto</p>
+                    <div className="text-xs font-mono space-y-1 mt-2">
+                      <p>Simples (10% a.a.): M = 1.300 (3 anos)</p>
+                      <p>Composto (10% a.a.): M = 1.331 (3 anos)</p>
+                      <p>Diferença: R$ 31 → Crescente com tempo!</p>
+                    </div>
+                  </div>
+                  <div className="p-3 bg-cyan-500/5 border border-cyan-500/30 rounded-lg">
+                    <p className="font-bold text-cyan-600 dark:text-cyan-400 text-sm">Quando Usar Compostos</p>
+                    <p className="text-xs mt-1">→ Empréstimos bancários e financiamentos</p>
+                    <p className="text-xs mt-1">→ Investimentos de longo prazo (CDB, poupança pós-2012)</p>
+                    <p className="text-xs mt-1">→ A maioria das operações financeiras modernas</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+              titulo: "Exponencial Crescendo Rápido",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-3" className="mt-16">
             <QuizInterativo
               questoes={quizM3}
@@ -607,6 +803,70 @@ export default function AulaMatematicaFinanceira({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={4}
+            variant="blue"
+            video={{
+              videoId: "aX5LZQR-9Qc",
+              title: "Montante Composto: Encontrando Capital, Taxa e Tempo",
+              duration: "14:20"
+            }}
+            resumoVisual={{
+              moduloNome: "Montante em Juros Compostos",
+              tituloAula: "Matemática Financeira",
+              materia: "Matemática",
+              images: [
+                { title: "Fórmula M=C(1+i)^t", type: "diagram", placeholderColor: "bg-blue-500/20" },
+                { title: "Isolamento de Variáveis", type: "técnica", placeholderColor: "bg-indigo-500/20" },
+                { title: "Logaritmos para Prazo", type: "método", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Desdobramentos da Fórmula M=C(1+i)^t",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                    <p className="font-bold text-blue-700 dark:text-blue-300 text-sm">Encontre C, i ou t</p>
+                    <p className="text-xs mt-1">Da mesma fórmula, isole cada variável!</p>
+                  </div>
+                  <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
+                    <p className="font-bold text-indigo-700 dark:text-indigo-300 text-sm">Para Capital Presente</p>
+                    <p className="text-xs font-mono mt-1">C = M / (1+i)^t</p>
+                  </div>
+                  <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
+                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-sm">Para Taxa e Tempo</p>
+                    <p className="text-xs font-mono mt-1">i = (M/C)^(1/t) - 1 | t = log(M/C)/log(1+i)</p>
+                  </div>
+                  <div className="p-3 bg-blue-500/5 border border-blue-500/30 rounded-lg">
+                    <p className="font-bold text-blue-600 dark:text-blue-400 text-sm">Exemplo: Encontrar Capital</p>
+                    <p className="text-xs font-mono mt-1">Montante futuro: R$ 2.000</p>
+                    <p className="text-xs font-mono mt-1">Taxa: 5% a.a. por 10 anos</p>
+                    <p className="text-xs font-mono mt-1">C = 2.000 / (1,05)^10 ≈ R$ 1.227,83</p>
+                  </div>
+                  <div className="p-3 bg-blue-500/5 border border-blue-500/30 rounded-lg">
+                    <p className="font-bold text-blue-600 dark:text-blue-400 text-sm">Isolamento de Variáveis (Algébra)</p>
+                    <div className="text-xs font-mono space-y-1 mt-2">
+                      <p>M = C(1+i)^t</p>
+                      <p>log(M/C) = t × log(1+i)</p>
+                      <p>t = log(M/C) / log(1+i)</p>
+                    </div>
+                  </div>
+                  <div className="p-3 bg-blue-500/5 border border-blue-500/30 rounded-lg">
+                    <p className="font-bold text-blue-600 dark:text-blue-400 text-sm">Aplicação: Quanto Tempo até Dobrar?</p>
+                    <p className="text-xs mt-1">Investimento: R$ 1.000 com 10% a.a.</p>
+                    <p className="text-xs font-mono mt-1">2.000 = 1.000 × 1,10^t</p>
+                    <p className="text-xs font-mono mt-1">t = log(2)/log(1,1) ≈ 7,27 anos</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+              titulo: "Quebra-cabeça Financeiro Resolvido",
+              artista: "Prof. Rítmico"
+            }}
+          />
 
           <section id="quiz-modulo-4" className="mt-16">
             <QuizInterativo
@@ -717,6 +977,74 @@ export default function AulaMatematicaFinanceira({
             />
           </section>
 
+          <ModuleConsolidation
+            index={5}
+            variant="amber"
+            video={{
+              videoId: "S8xPFP1lU4w",
+              title: "Desconto Simples: Antecipação de Fluxos e Duplicatas",
+              duration: "12:00"
+            }}
+            resumoVisual={{
+              moduloNome: "Desconto Simples",
+              tituloAula: "Matemática Financeira",
+              materia: "Matemática",
+              images: [
+                { title: "Desconto Comercial (Por Fora)", type: "diagram", placeholderColor: "bg-amber-500/20" },
+                { title: "Desconto Racional (Por Dentro)", type: "fórmula", placeholderColor: "bg-yellow-500/20" },
+                { title: "Antecipação de Prazos", type: "aplicação", placeholderColor: "bg-orange-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Desconto Comercial vs Racional",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg">
+                    <p className="font-bold text-amber-700 dark:text-amber-300 text-sm">Dois Tipos de Desconto</p>
+                    <p className="text-xs mt-1">Comercial (maior) vs Racional (menor)</p>
+                  </div>
+                  <div className="p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                    <p className="font-bold text-yellow-700 dark:text-yellow-300 text-sm">Desconto Comercial (Por Fora)</p>
+                    <p className="text-xs font-mono mt-1">PV = FV·(1 - it)</p>
+                    <p className="text-xs mt-1">Mais usado, desconta sobre valor futuro</p>
+                  </div>
+                  <div className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg">
+                    <p className="font-bold text-orange-700 dark:text-orange-300 text-sm">Desconto Racional (Por Dentro)</p>
+                    <p className="text-xs font-mono mt-1">PV = FV/(1 + it)</p>
+                    <p className="text-xs mt-1">Usa em Petrobras: dividendos, recebíveis!</p>
+                  </div>
+                  <div className="p-3 bg-amber-500/5 border border-amber-500/30 rounded-lg">
+                    <p className="font-bold text-amber-600 dark:text-amber-400 text-sm">Exemplo: Duplicata</p>
+                    <p className="text-xs font-mono mt-1">Valor futuro: R$ 5.000 (vence em 60 dias)</p>
+                    <p className="text-xs font-mono mt-1">Taxa comercial: 2% a.m.</p>
+                    <p className="text-xs font-mono mt-1">Desc.Com: 5.000 × (1 - 0,02×2) = R$ 4.800</p>
+                    <p className="text-xs font-mono mt-1">Desc.Rac: 5.000 / (1 + 0,02×2) ≈ R$ 4.807,69</p>
+                  </div>
+                  <div className="p-3 bg-amber-500/5 border border-amber-500/30 rounded-lg">
+                    <p className="font-bold text-amber-600 dark:text-amber-400 text-sm">Diferença de Descontos</p>
+                    <div className="text-xs font-mono space-y-1 mt-2">
+                      <p>Comercial: D = FV × i × t</p>
+                      <p>Racional: D = FV × i × t / (1 + it)</p>
+                      <p>Diferença: Comercial &gt; Racional</p>
+                      <p>Para Petrobras: geralmente usa racional</p>
+                    </div>
+                  </div>
+                  <div className="p-3 bg-amber-500/5 border border-amber-500/30 rounded-lg">
+                    <p className="font-bold text-amber-600 dark:text-amber-400 text-sm">Na Prova CESGRANRIO</p>
+                    <p className="text-xs mt-1">→ Identifique qual tipo o problema pede!</p>
+                    <p className="text-xs mt-1">→ Termos como "por fora" = comercial</p>
+                    <p className="text-xs mt-1">→ Termos como "por dentro" = racional</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+              titulo: "Antecipação Financeira",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-5" className="mt-16">
             <QuizInterativo
               questoes={quizM5}
@@ -816,6 +1144,59 @@ export default function AulaMatematicaFinanceira({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={6}
+            variant="rose"
+            video={{
+              videoId: "kGZVW7zDV2Y",
+              title: "Equivalência de Capitais: Comparar Fluxos em Datas Diferentes",
+              duration: "13:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Equivalência de Capitais",
+              tituloAula: "Matemática Financeira",
+              materia: "Matemática",
+              images: [
+                { title: "Transportar Fluxos no Tempo", type: "diagram", placeholderColor: "bg-rose-500/20" },
+                { title: "Comparação de Alternativas", type: "técnica", placeholderColor: "bg-pink-500/20" },
+                { title: "Taxa Média Equivalente", type: "cálculo", placeholderColor: "bg-red-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Transportar Valores pela Linha do Tempo",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-lg">
+                    <p className="font-bold text-rose-700 dark:text-rose-300 text-sm">Equivalência = Mesmo Valor em Data-Base</p>
+                    <p className="text-xs mt-1">Escolha uma data e compare todos os fluxos ali</p>
+                  </div>
+                  <div className="p-3 bg-pink-500/10 border border-pink-500/20 rounded-lg">
+                    <p className="font-bold text-pink-700 dark:text-pink-300 text-sm">Leve para Frente</p>
+                    <p className="text-xs font-mono mt-1">M = C·(1+i)^t (compostos)</p>
+                  </div>
+                  <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+                    <p className="font-bold text-red-700 dark:text-red-300 text-sm">Traga para Trás</p>
+                    <p className="text-xs font-mono mt-1">PV = FV/(1+i)^t (desconto)</p>
+                    <p className="text-xs mt-1">Iguale os fluxos e resolva!</p>
+                  </div>
+                  <div className="p-3 bg-rose-500/5 border border-rose-500/30 rounded-lg">
+                    <p className="font-bold text-rose-600 dark:text-rose-400 text-sm">Exemplo: Data-base = Hoje</p>
+                    <p className="text-xs font-mono mt-1">Opção A: R$ 1.000 daqui 1 ano</p>
+                    <p className="text-xs font-mono mt-1">Opção B: R$ 1.100 daqui 2 anos</p>
+                    <p className="text-xs font-mono mt-1">Taxa: 5% a.a. | Hoje = data-base</p>
+                    <p className="text-xs font-mono mt-1">A: PV = 1.000/1,05 ≈ R$ 952</p>
+                    <p className="text-xs font-mono mt-1">B: PV = 1.100/1,05² ≈ R$ 999 → Opção A vale mais hoje!</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+              titulo: "Viagem Financeira no Tempo",
+              artista: "Prof. Rítmico"
+            }}
+          />
 
           <section id="quiz-modulo-6" className="mt-16">
             <QuizInterativo
@@ -940,6 +1321,57 @@ export default function AulaMatematicaFinanceira({
             />
           </section>
 
+          <ModuleConsolidation
+            index={7}
+            variant="indigo"
+            video={{
+              videoId: "rHzRFYdT3Kc",
+              title: "Taxa Nominal vs Taxa Efetiva: Conversão e Comparação Real",
+              duration: "12:45"
+            }}
+            resumoVisual={{
+              moduloNome: "Taxas Nominal e Efetiva",
+              tituloAula: "Matemática Financeira",
+              materia: "Matemática",
+              images: [
+                { title: "Taxa Nominal (Aparente)", type: "diagram", placeholderColor: "bg-indigo-500/20" },
+                { title: "Taxa Efetiva (Real)", type: "conceito", placeholderColor: "bg-purple-500/20" },
+                { title: "Conversão de Períodos", type: "fórmula", placeholderColor: "bg-violet-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: O Que Você VÊ vs O Que Você GANHA",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
+                    <p className="font-bold text-indigo-700 dark:text-indigo-300 text-sm">Taxa Nominal vs Efetiva</p>
+                    <p className="text-xs mt-1">Nominal = o que lê | Efetiva = o que recebe (realidade)</p>
+                  </div>
+                  <div className="p-3 bg-purple-500/10 border border-purple-500/20 rounded-lg">
+                    <p className="font-bold text-purple-700 dark:text-purple-300 text-sm">Exemplo Prático</p>
+                    <p className="text-xs mt-1">i_nom = 12% a.a. (capitalização mensal)</p>
+                    <p className="text-xs font-mono mt-1">i_efet = (1 + 0,01)^12 - 1 ≈ 12,68% a.a.</p>
+                  </div>
+                  <div className="p-3 bg-violet-500/10 border border-violet-500/20 rounded-lg">
+                    <p className="font-bold text-violet-700 dark:text-violet-300 text-sm">Na Prova CESGRANRIO</p>
+                    <p className="text-xs mt-1">→ Compare sempre pela taxa EFETIVA!</p>
+                  </div>
+                  <div className="p-3 bg-indigo-500/5 border border-indigo-500/30 rounded-lg">
+                    <p className="font-bold text-indigo-600 dark:text-indigo-400 text-sm">Conversão: Nominal → Efetiva</p>
+                    <p className="text-xs font-mono mt-1">i_nom = 18% a.a. cap. trimestral</p>
+                    <p className="text-xs font-mono mt-1">i_per = 18% / 4 = 4,5% ao trimestre</p>
+                    <p className="text-xs font-mono mt-1">i_efet = (1 + 0,045)^4 - 1 ≈ 19,25% a.a.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+              titulo: "Escondido na Letra Pequena",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-7" className="mt-16">
             <QuizInterativo
               questoes={quizM7}
@@ -1043,6 +1475,57 @@ export default function AulaMatematicaFinanceira({
             />
           </section>
 
+          <ModuleConsolidation
+            index={8}
+            variant="emerald"
+            video={{
+              videoId: "CXW5V4zDvWY",
+              title: "Séries de Pagamento: Anuidades Postecipadas e Antecipadas",
+              duration: "14:10"
+            }}
+            resumoVisual={{
+              moduloNome: "Séries de Pagamento",
+              tituloAula: "Matemática Financeira",
+              materia: "Matemática",
+              images: [
+                { title: "Anuidades Ordinárias", type: "diagram", placeholderColor: "bg-emerald-500/20" },
+                { title: "Anuidades Antecipadas", type: "conceito", placeholderColor: "bg-green-500/20" },
+                { title: "Valor Presente/Futuro", type: "fórmula", placeholderColor: "bg-teal-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Financiamento = Série de Parcelas",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
+                    <p className="font-bold text-emerald-700 dark:text-emerald-300 text-sm">Anuidade = Parcelas Iguais</p>
+                    <p className="text-xs mt-1">Mesma prestação ao longo do tempo (financiamento)</p>
+                  </div>
+                  <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
+                    <p className="font-bold text-green-700 dark:text-green-300 text-sm">Postecipada vs Antecipada</p>
+                    <p className="text-xs mt-1">→ Postecipada: 1ª parcela no FIM do período</p>
+                    <p className="text-xs mt-1">→ Antecipada: 1ª parcela no INÍCIO (à vista)</p>
+                  </div>
+                  <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-lg">
+                    <p className="font-bold text-teal-700 dark:text-teal-300 text-sm">Fórmula Postecipada</p>
+                    <p className="text-xs font-mono mt-1">VP = PMT × [(1 - (1+i)^-n) / i]</p>
+                  </div>
+                  <div className="p-3 bg-emerald-500/5 border border-emerald-500/30 rounded-lg">
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm">Exemplo: Financiamento de Casa</p>
+                    <p className="text-xs font-mono mt-1">Valor: R$ 300.000 | Taxa: 0,5% a.m. | Prazo: 360 meses</p>
+                    <p className="text-xs font-mono mt-1">PMT = VP / [(1 - (1+i)^-n) / i]</p>
+                    <p className="text-xs font-mono mt-1">PMT ≈ R$ 1.520 (parcela fixa mensal)</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+              titulo: "Parcelas no Ritmo Certo",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-8" className="mt-16">
             <QuizInterativo
               questoes={quizM8}
@@ -1142,6 +1625,59 @@ export default function AulaMatematicaFinanceira({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={9}
+            variant="cyan"
+            video={{
+              videoId: "2HYVqU1Kgdg",
+              title: "Matemática Financeira em Projetos Petrobras: VPL e TIR",
+              duration: "15:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Aplicações Petrobras",
+              tituloAula: "Matemática Financeira",
+              materia: "Matemática",
+              images: [
+                { title: "Fluxo de Caixa (Cash Flow)", type: "diagram", placeholderColor: "bg-cyan-500/20" },
+                { title: "VPL - Valor Presente Líquido", type: "conceito", placeholderColor: "bg-sky-500/20" },
+                { title: "TIR - Taxa Interna de Retorno", type: "aplicação", placeholderColor: "bg-blue-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Decisão de Investimento em Petrobras",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
+                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-sm">Critérios de Decisão</p>
+                    <p className="text-xs mt-1">VPL &gt; 0 = Viável | TIR &gt; taxa mín = Rentável</p>
+                  </div>
+                  <div className="p-3 bg-sky-500/10 border border-sky-500/20 rounded-lg">
+                    <p className="font-bold text-sky-700 dark:text-sky-300 text-sm">VPL (Valor Presente Líquido)</p>
+                    <p className="text-xs mt-1">Valor Presente de TODOS os fluxos futuros</p>
+                    <p className="text-xs mt-1">VPL = Σ(Fluxo_t / (1+i)^t) - Investimento Inicial</p>
+                  </div>
+                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                    <p className="font-bold text-blue-700 dark:text-blue-300 text-sm">TIR (Taxa Interna de Retorno)</p>
+                    <p className="text-xs mt-1">Taxa que torna VPL = 0</p>
+                    <p className="text-xs mt-1">Petrobras usa: poços, refinarias, infraestrutura</p>
+                  </div>
+                  <div className="p-3 bg-cyan-500/5 border border-cyan-500/30 rounded-lg">
+                    <p className="font-bold text-cyan-600 dark:text-cyan-400 text-sm">Exemplo: Poço Exploratório</p>
+                    <p className="text-xs font-mono mt-1">Investimento: -R$ 50M (ano 0)</p>
+                    <p className="text-xs font-mono mt-1">Retornos: +R$ 20M (anos 1-5)</p>
+                    <p className="text-xs font-mono mt-1">Taxa desconto: 10% a.a.</p>
+                    <p className="text-xs font-mono mt-1">Se VPL &gt; 0 e TIR &gt; 10%, viável!</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+              titulo: "Projeto Petroleum Viável",
+              artista: "Prof. Rítmico"
+            }}
+          />
 
           <section id="quiz-modulo-9" className="mt-16">
             <QuizInterativo
@@ -1264,6 +1800,59 @@ export default function AulaMatematicaFinanceira({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={10}
+            variant="blue"
+            video={{
+              videoId: "kxJXBg_lRfU",
+              title: "Revisão Final: Matemática Financeira Integrada CESGRANRIO",
+              duration: "16:00"
+            }}
+            resumoVisual={{
+              moduloNome: "Simulado Mestre",
+              tituloAula: "Matemática Financeira",
+              materia: "Matemática",
+              images: [
+                { title: "Síntese de Conceitos", type: "diagram", placeholderColor: "bg-blue-500/20" },
+                { title: "Estratégias de Prova", type: "técnica", placeholderColor: "bg-indigo-500/20" },
+                { title: "Casos Integrados", type: "desafio", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Checklist da Prova CESGRANRIO",
+              content: (
+                <div className="space-y-4 text-left">
+                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                    <p className="font-bold text-blue-700 dark:text-blue-300 text-sm">Passo 1: IDENTIFICAR</p>
+                    <p className="text-xs mt-1">→ Qual regime? (Simples ou Composto?)</p>
+                    <p className="text-xs mt-1">→ Qual a taxa? (Nominal ou Efetiva?)</p>
+                  </div>
+                  <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
+                    <p className="font-bold text-indigo-700 dark:text-indigo-300 text-sm">Passo 2: VERIFICAR</p>
+                    <p className="text-xs mt-1">✓ Leia o enunciado com CUIDADO</p>
+                    <p className="text-xs mt-1">✓ Procure por datas múltiplas (equivalência/séries?)</p>
+                  </div>
+                  <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
+                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-sm">Passo 3: CONVERTER</p>
+                    <p className="text-xs mt-1">✓ Períodos: transforme TUDO para mesma unidade</p>
+                    <p className="text-xs mt-1">✓ Datas: se houver inconsistência, use data-base!</p>
+                  </div>
+                  <div className="p-3 bg-blue-500/5 border border-blue-500/30 rounded-lg">
+                    <p className="font-bold text-blue-600 dark:text-blue-400 text-sm">Passo 4: CALCULAR E VALIDAR</p>
+                    <p className="text-xs mt-1">✓ Use a fórmula correta (J=Cit ou M=C(1+i)^t)</p>
+                    <p className="text-xs mt-1">✓ Verifique unidades (taxa e tempo compatíveis?)</p>
+                    <p className="text-xs mt-1">✓ Resultado faz sentido? (M &gt; C sempre!)</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+              titulo: "Mestre em Finanças - Consolidação Final",
+              artista: "Prof. Rítmico"
+            }}
+          />
 
           <section id="quiz-modulo-10" className="mt-16">
             <QuizInterativo

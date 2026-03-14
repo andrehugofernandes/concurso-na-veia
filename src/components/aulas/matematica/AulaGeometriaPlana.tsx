@@ -11,6 +11,7 @@ import {
   ContentAccordion,
   AulaTemplate,
   ModuleSectionHeader,
+  ModuleConsolidation,
 } from "../shared";
 import {
   QUIZ_M1_POLIGONOS,
@@ -340,6 +341,51 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
+          <ModuleConsolidation
+            index={1}
+            variant="indigo"
+            video={{
+              videoId: "aN1mKSMWiow",
+              title: "Polígonos: Classificação, Ângulos Internos e Propriedades",
+              duration: "12:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Polígonos",
+              tituloAula: "Geometria Plana",
+              materia: "Matemática",
+              images: [
+                { title: "Soma de Ângulos (n-2)×180°", type: "Fórmula", placeholderColor: "bg-indigo-500/20" },
+                { title: "Classificação: Convexo vs Côncavo", type: "Diagrama", placeholderColor: "bg-blue-500/20" },
+                { title: "Diagonal: n(n-3)/2", type: "Conceito", placeholderColor: "bg-purple-500/20" },
+                { title: "Polígonos Regulares: Eixos de Simetria", type: "Propriedade", placeholderColor: "bg-indigo-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: A Fórmula Mágica",
+              content: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl">
+                    <p className="font-semibold">🔑 Soma dos Ângulos Internos = (n - 2) × 180°</p>
+                    <p className="text-sm mt-2">Substitua n pelo número de lados. Sempre funciona para polígonos convexos. Para n=3 (triângulo): (3-2)×180° = 180°</p>
+                  </div>
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                    <p className="font-semibold text-emerald-400">💡 Cada ângulo interno (polígono regular) = Soma ÷ n</p>
+                    <p className="text-sm mt-2">Para hexágono regular: 720° ÷ 6 = 120° cada</p>
+                  </div>
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <p className="font-semibold text-blue-400">📐 Número de Diagonais = n(n-3)/2</p>
+                    <p className="text-sm mt-2">Pentágono (n=5): 5×2÷2 = 5 diagonais. Triângulo: 0 diagonais.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "A Dança dos Polígonos",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-1" className="mt-16">
             <QuizInterativo
               questoes={quizM1}
@@ -349,6 +395,38 @@ export default function AulaGeometriaPlana({
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
+          </section>
+
+          <section className="mt-16">
+            <div className="bg-gradient-to-br from-indigo-500/5 to-blue-500/5 rounded-2xl border border-indigo-500/20 p-8 space-y-6">
+              <h3 className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">📋 Referência Rápida — Polígonos</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Triângulo (n=3)</p>
+                  <p className="text-xs text-muted-foreground">Soma: 180° | Diagonais: 0</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Quadrilátero (n=4)</p>
+                  <p className="text-xs text-muted-foreground">Soma: 360° | Diagonais: 2</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Pentágono (n=5)</p>
+                  <p className="text-xs text-muted-foreground">Soma: 540° | Diagonais: 5</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Hexágono (n=6)</p>
+                  <p className="text-xs text-muted-foreground">Soma: 720° | Diagonais: 9</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Octógono (n=8)</p>
+                  <p className="text-xs text-muted-foreground">Soma: 1080° | Diagonais: 20</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Decágono (n=10)</p>
+                  <p className="text-xs text-muted-foreground">Soma: 1440° | Diagonais: 35</p>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
       </TabsContent>
@@ -470,6 +548,55 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
+          <ModuleConsolidation
+            index={2}
+            variant="emerald"
+            video={{
+              videoId: "xhEQa-uECe0",
+              title: "Triângulos: Classificação, Desigualdade Triangular e Altura",
+              duration: "14:20"
+            }}
+            resumoVisual={{
+              moduloNome: "Triângulos",
+              tituloAula: "Geometria Plana",
+              materia: "Matemática",
+              images: [
+                { title: "Soma dos Ângulos = 180°", type: "Teorema", placeholderColor: "bg-emerald-500/20" },
+                { title: "Desigualdade: a+b > c", type: "Restrição", placeholderColor: "bg-green-500/20" },
+                { title: "Ângulo Externo = α + β", type: "Propriedade", placeholderColor: "bg-teal-500/20" },
+                { title: "Altura e Mediatriz", type: "Elemento", placeholderColor: "bg-emerald-400/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Os Três Pilares",
+              content: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                    <p className="font-semibold">1️⃣ Soma dos Ângulos: α + β + γ = 180°</p>
+                    <p className="text-sm mt-2">Vale para TODO triângulo. Reto, agudo ou obtuso. A soma é invariável.</p>
+                  </div>
+                  <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl">
+                    <p className="font-semibold text-green-400">2️⃣ Desigualdade Triangular: a + b > c</p>
+                    <p className="text-sm mt-2">Todos os 3 pares de lados devem satisfazer. Se a+b=c, é colinear (não existe triângulo).</p>
+                  </div>
+                  <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
+                    <p className="font-semibold text-amber-400">3️⃣ Ângulo Externo: ê = α + β (remotos)</p>
+                    <p className="text-sm mt-2">Ângulo externo = soma dos 2 ângulos internos não adjacentes a ele.</p>
+                  </div>
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <p className="font-semibold text-blue-400">📍 Altura vs Mediana vs Mediatriz</p>
+                    <p className="text-sm mt-2">Altura ⊥ ao lado | Mediana une vértice ao meio do lado | Mediatriz ⊥ ao meio do lado</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+              titulo: "Trilha dos Triângulos",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-2" className="mt-16">
             <QuizInterativo
               questoes={quizM2}
@@ -479,6 +606,26 @@ export default function AulaGeometriaPlana({
               variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
+          </section>
+
+          <section className="mt-16">
+            <div className="bg-gradient-to-br from-cyan-500/5 to-emerald-500/5 rounded-2xl border border-cyan-500/20 p-8 space-y-6">
+              <h3 className="text-2xl font-bold text-cyan-600 dark:text-cyan-400">📋 Referência Rápida — Triângulos</h3>
+              <div className="space-y-4">
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Classificação por Ângulos</p>
+                  <p className="text-xs text-muted-foreground">• Acutângulo: todos ângulos < 90° | • Retângulo: um ângulo = 90° | • Obtusângulo: um ângulo > 90°</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Classificação por Lados</p>
+                  <p className="text-xs text-muted-foreground">• Equilátero: 3 lados iguais | • Isósceles: 2 lados iguais | • Escaleno: 3 lados diferentes</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Elementos Principais</p>
+                  <p className="text-xs text-muted-foreground">Altura: perpendicular do vértice ao lado | Mediana: linha do vértice ao meio do lado oposto | Mediatriz: perpendicular ao meio do lado</p>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
       </TabsContent>
@@ -591,6 +738,59 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
+          <ModuleConsolidation
+            index={3}
+            variant="cyan"
+            video={{
+              videoId: "K7eVVVHGDe4",
+              title: "Cálculo de Áreas de Triângulos: Fórmulas Principais e Casos Especiais",
+              duration: "11:15"
+            }}
+            resumoVisual={{
+              moduloNome: "Área do Triângulo",
+              tituloAula: "Geometria Plana",
+              materia: "Matemática",
+              images: [
+                { title: "A = (b × h)/2", type: "Fórmula Básica", placeholderColor: "bg-cyan-500/20" },
+                { title: "A = (L²√3)/4 Equilátero", type: "Caso Especial", placeholderColor: "bg-blue-500/20" },
+                { title: "Fórmula de Heron", type: "Avançado", placeholderColor: "bg-sky-500/20" },
+                { title: "A = (a×b×sen C)/2", type: "Trigonométrica", placeholderColor: "bg-cyan-400/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Qual Fórmula Usar?",
+              content: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                    <p className="font-semibold">🎯 Caso 1: Base e Altura conhecidas</p>
+                    <p className="font-mono text-sm mt-2">A = (b × h) / 2   [MAIS COMUM]</p>
+                    <p className="text-sm mt-2">Altura é perpendicular ao lado (base).</p>
+                  </div>
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <p className="font-semibold text-blue-400">⭐ Caso 2: Triângulo Equilátero (lado L)</p>
+                    <p className="font-mono text-sm mt-2">A = (L² × √3) / 4</p>
+                    <p className="text-sm mt-2">Ex: L=6 → A = 36√3/4 = 9√3 ≈ 15,59 m²</p>
+                  </div>
+                  <div className="p-4 bg-sky-500/10 border border-sky-500/20 rounded-xl">
+                    <p className="font-semibold text-sky-400">🔬 Caso 3: Três lados (Fórmula de Heron)</p>
+                    <p className="font-mono text-sm mt-2">A = √[s(s-a)(s-b)(s-c)], onde s=(a+b+c)/2</p>
+                    <p className="text-sm mt-2">Quando altura não é dada.</p>
+                  </div>
+                  <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl">
+                    <p className="font-semibold text-purple-400">📊 Caso 4: Dois lados e ângulo</p>
+                    <p className="font-mono text-sm mt-2">A = (a × b × sen C) / 2</p>
+                    <p className="text-sm mt-2">Usar quando ângulo entre dois lados é conhecido.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+              titulo: "A Fórmula da Área",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-3" className="mt-16">
             <QuizInterativo
               questoes={quizM3}
@@ -600,6 +800,31 @@ export default function AulaGeometriaPlana({
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
+          </section>
+
+          <section className="mt-16">
+            <div className="bg-gradient-to-br from-emerald-500/5 to-cyan-500/5 rounded-2xl border border-emerald-500/20 p-8 space-y-6">
+              <h3 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">📋 Referência Rápida — Áreas de Triângulos</h3>
+              <div className="space-y-4">
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Fórmula Geral</p>
+                  <p className="text-xs font-mono text-muted-foreground">A = (base × altura) / 2</p>
+                  <p className="text-xs mt-2 text-muted-foreground">Altura deve ser perpendicular à base escolhida.</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Triângulo Equilátero (lado L)</p>
+                  <p className="text-xs font-mono text-muted-foreground">A = (L² × √3) / 4 | h = (L × √3) / 2</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Fórmula de Heron (3 lados: a, b, c)</p>
+                  <p className="text-xs font-mono text-muted-foreground">A = √[s(s-a)(s-b)(s-c)], onde s = (a+b+c)/2</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Com 2 lados e ângulo entre eles</p>
+                  <p className="text-xs font-mono text-muted-foreground">A = (a × b × sen C) / 2</p>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
       </TabsContent>
@@ -771,6 +996,55 @@ export default function AulaGeometriaPlana({
             </div>
           </section>
 
+          <ModuleConsolidation
+            index={4}
+            variant="blue"
+            video={{
+              videoId: "ZcX-8SmG6nA",
+              title: "Quadriláteros: Tipos, Diagonais, Perímetro e Área",
+              duration: "13:45"
+            }}
+            resumoVisual={{
+              moduloNome: "Quadriláteros",
+              tituloAula: "Geometria Plana",
+              materia: "Matemática",
+              images: [
+                { title: "Retângulo: A = b × h", type: "Tipo 1", placeholderColor: "bg-blue-500/20" },
+                { title: "Losango: A = (d₁ × d₂)/2", type: "Tipo 2", placeholderColor: "bg-indigo-500/20" },
+                { title: "Trapézio: A = [(B+b)×h]/2", type: "Tipo 3", placeholderColor: "bg-cyan-500/20" },
+                { title: "Quadrado: A = L² ou d²/2", type: "Caso Especial", placeholderColor: "bg-blue-400/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Identificar e Calcular",
+              content: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <p className="font-semibold">📦 Retângulo: A = b × h</p>
+                    <p className="text-sm mt-2">Lados opostos iguais, 4 ângulos retos (90°). Diagonal: d = √(b² + h²)</p>
+                  </div>
+                  <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl">
+                    <p className="font-semibold text-purple-400">💎 Losango: A = (d₁ × d₂) / 2</p>
+                    <p className="text-sm mt-2">4 lados iguais. Diagonais perpendiculares e se bisectam.</p>
+                  </div>
+                  <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                    <p className="font-semibold text-cyan-400">📊 Trapézio: A = [(B + b) × h] / 2</p>
+                    <p className="text-sm mt-2">Uma só par de lados paralelos. Soma das bases vezes altura, divide por 2.</p>
+                  </div>
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                    <p className="font-semibold text-emerald-400">⬜ Quadrado: A = L² (ou d²/2 pela diagonal)</p>
+                    <p className="text-sm mt-2">Caso especial: 4 lados iguais e 4 ângulos de 90°. Diagonal: d = L√2</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+              titulo: "Os Quatro Quadros",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-4" className="mt-16">
             <QuizInterativo
               questoes={quizM4}
@@ -780,6 +1054,34 @@ export default function AulaGeometriaPlana({
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
+          </section>
+
+          <section className="mt-16">
+            <div className="bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-2xl border border-blue-500/20 p-8 space-y-6">
+              <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400">📋 Referência Rápida — Quadriláteros</h3>
+              <div className="space-y-4">
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Quadrado (lado L)</p>
+                  <p className="text-xs font-mono text-muted-foreground">A = L² | P = 4L | d = L√2</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Retângulo (base b, altura h)</p>
+                  <p className="text-xs font-mono text-muted-foreground">A = b × h | P = 2(b+h) | d = √(b² + h²)</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Losango (diagonais d₁ e d₂)</p>
+                  <p className="text-xs font-mono text-muted-foreground">A = (d₁ × d₂) / 2 | P = 4 × lado</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Trapézio (bases B e b, altura h)</p>
+                  <p className="text-xs font-mono text-muted-foreground">A = [(B + b) × h] / 2 | P = B + b + lado1 + lado2</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Paralelogramo</p>
+                  <p className="text-xs font-mono text-muted-foreground">A = base × altura | P = 2(lado1 + lado2)</p>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
       </TabsContent>
@@ -889,6 +1191,55 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
+          <ModuleConsolidation
+            index={5}
+            variant="amber"
+            video={{
+              videoId: "p-e5Ot_BDOA",
+              title: "Círculo e Circunferência: Perímetro, Área, Setor e Coroa Circular",
+              duration: "12:50"
+            }}
+            resumoVisual={{
+              moduloNome: "Círculo e Circunferência",
+              tituloAula: "Geometria Plana",
+              materia: "Matemática",
+              images: [
+                { title: "C = 2πr ou πd", type: "Perímetro", placeholderColor: "bg-amber-500/20" },
+                { title: "A = πr²", type: "Área", placeholderColor: "bg-yellow-500/20" },
+                { title: "Setor e Coroa", type: "Variações", placeholderColor: "bg-orange-500/20" },
+                { title: "Arco = (θ/360°) × 2πr", type: "Comprimento", placeholderColor: "bg-amber-400/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Memorizar π",
+              content: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
+                    <p className="font-semibold">🔵 Circunferência (perímetro): C = 2πr</p>
+                    <p className="text-sm mt-2">Se r dobra, C dobra (proporcionalidade linear). π ≈ 3,14159</p>
+                  </div>
+                  <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-xl">
+                    <p className="font-semibold text-yellow-600 dark:text-yellow-400">🟡 Área do Círculo: A = πr²</p>
+                    <p className="text-sm mt-2">Se r dobra, A quadruplica (proporcionalidade quadrática!). Ex: r=5 → A ≈ 78,54</p>
+                  </div>
+                  <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-xl">
+                    <p className="font-semibold text-orange-400">🍩 Coroa Circular: A = π(R² - r²)</p>
+                    <p className="text-sm mt-2">Área entre círculo maior (R) e menor (r). Subtrai os raios ao quadrado.</p>
+                  </div>
+                  <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl">
+                    <p className="font-semibold text-rose-400">🎯 Setor Circular: A = (θ/360°) × πr²</p>
+                    <p className="text-sm mt-2">Apenas uma "fatia" do círculo. θ é o ângulo central em graus.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+              titulo: "A Canção do Raio e do Pi",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-5" className="mt-16">
             <QuizInterativo
               questoes={quizM5}
@@ -898,6 +1249,32 @@ export default function AulaGeometriaPlana({
               variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
+          </section>
+
+          <section className="mt-16">
+            <div className="bg-gradient-to-br from-amber-500/5 to-yellow-500/5 rounded-2xl border border-amber-500/20 p-8 space-y-6">
+              <h3 className="text-2xl font-bold text-amber-600 dark:text-amber-400">📋 Referência Rápida — Círculo e Circunferência</h3>
+              <div className="space-y-4">
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Circunferência (raio r)</p>
+                  <p className="text-xs font-mono text-muted-foreground">C = 2πr (ou C = πd)</p>
+                  <p className="text-xs mt-1 text-muted-foreground">π ≈ 3,14159</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Área do Círculo</p>
+                  <p className="text-xs font-mono text-muted-foreground">A = πr²</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Setor Circular (ângulo θ em graus)</p>
+                  <p className="text-xs font-mono text-muted-foreground">A_setor = (θ/360°) × πr²</p>
+                  <p className="text-xs font-mono text-muted-foreground">C_arco = (θ/360°) × 2πr</p>
+                </div>
+                <div className="p-4 bg-card rounded-xl border border-border">
+                  <p className="font-bold text-sm mb-2">Coroa Circular (raio maior R, menor r)</p>
+                  <p className="text-xs font-mono text-muted-foreground">A = π(R² - r²)</p>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
       </TabsContent>
@@ -1008,6 +1385,55 @@ export default function AulaGeometriaPlana({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={6}
+            variant="rose"
+            video={{
+              videoId: "t4WdZDvp8Ps",
+              title: "Semelhança de Triângulos: Critérios AA, LAL, LLL e Teorema de Thales",
+              duration: "15:10"
+            }}
+            resumoVisual={{
+              moduloNome: "Semelhança de Triângulos",
+              tituloAula: "Geometria Plana",
+              materia: "Matemática",
+              images: [
+                { title: "Critério AA (2 ângulos)", type: "Suficiente", placeholderColor: "bg-rose-500/20" },
+                { title: "Razão k de Semelhança", type: "Proporcional", placeholderColor: "bg-pink-500/20" },
+                { title: "Teorema de Thales", type: "Retas Paralelas", placeholderColor: "bg-red-500/20" },
+                { title: "Casos LAL e LLL", type: "Critérios", placeholderColor: "bg-rose-400/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Razão de Semelhança",
+              content: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl">
+                    <p className="font-semibold">✅ Se triângulos são semelhantes com razão k:</p>
+                    <p className="font-mono text-sm mt-2">Lados: k | Perímetro: k | Altura: k | Área: k²</p>
+                  </div>
+                  <div className="p-4 bg-pink-500/10 border border-pink-500/20 rounded-xl">
+                    <p className="font-semibold text-pink-400">📐 Critério AA (mais rápido)</p>
+                    <p className="text-sm mt-2">2 ângulos iguais → triângulos semelhantes. Se ∠A = ∠A' e ∠B = ∠B', então △ ~ △'</p>
+                  </div>
+                  <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
+                    <p className="font-semibold text-red-400">🧵 Teorema de Thales</p>
+                    <p className="text-sm mt-2">Retas paralelas cortam transversais em segmentos proporcionais. AB/BC = A'B'/B'C'</p>
+                  </div>
+                  <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl">
+                    <p className="font-semibold text-purple-400">📊 Casos LAL e LLL</p>
+                    <p className="text-sm mt-2">LAL: 2 lados proporcionais + ângulo igual | LLL: 3 lados proporcionais</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+              titulo: "A Proporcionalidade dos Triângulos",
+              artista: "Prof. Rítmico"
+            }}
+          />
 
           <section id="quiz-modulo-6" className="mt-16">
             <QuizInterativo
@@ -1125,6 +1551,56 @@ export default function AulaGeometriaPlana({
               ]}
             />
           </section>
+
+          <ModuleConsolidation
+            index={7}
+            variant="indigo"
+            video={{
+              videoId: "v4Zl1qZpXv4",
+              title: "Teorema de Pitágoras: Aplicações, Ternas e Problemas Espaciais",
+              duration: "13:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Teorema de Pitágoras",
+              tituloAula: "Geometria Plana",
+              materia: "Matemática",
+              images: [
+                { title: "c² = a² + b²", type: "Teorema Fundamental", placeholderColor: "bg-indigo-500/20" },
+                { title: "Ternas Pitagóricas", type: "Atalhos", placeholderColor: "bg-blue-500/20" },
+                { title: "Diagonal do Quadrado = L√2", type: "Aplicação", placeholderColor: "bg-purple-500/20" },
+                { title: "Altura do Triângulo Equilátero", type: "Fórmula", placeholderColor: "bg-indigo-400/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Ternas Pitagóricas",
+              content: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl">
+                    <p className="font-semibold">📏 Fórmula: c² = a² + b²</p>
+                    <p className="text-sm mt-2">c é a hipotenusa (lado oposto ao ângulo reto). a e b são os catetos. Apenas em triângulos retângulos!</p>
+                  </div>
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <p className="font-semibold text-blue-400">⚡ Ternas Principais (economize tempo!):</p>
+                    <p className="text-sm mt-2 font-mono">3-4-5, 5-12-13, 8-15-17, 7-24-25, 9-40-41, 20-21-29</p>
+                    <p className="text-sm mt-2">Reconheça esses padrões na prova e evite cálculos.</p>
+                  </div>
+                  <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl">
+                    <p className="font-semibold text-purple-400">📐 Aplicações Geométricas:</p>
+                    <p className="text-sm mt-2">Diagonal quadrado: d = L√2 | Altura triângulo equilátero: h = L√3/2</p>
+                  </div>
+                  <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl">
+                    <p className="font-semibold text-rose-400">⚠️ Pegadinha:</p>
+                    <p className="text-sm mt-2">Não confunda: √2 ≠ 2, √3 ≠ 3. Deixe em forma radical na resposta.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+              titulo: "O Ritmo Pitagórico",
+              artista: "Prof. Rítmico"
+            }}
+          />
 
           <section id="quiz-modulo-7" className="mt-16">
             <QuizInterativo
@@ -1257,6 +1733,56 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
+          <ModuleConsolidation
+            index={8}
+            variant="emerald"
+            video={{
+              videoId: "JQuBrpJv2K8",
+              title: "Razão de Semelhança: Aplicação em Áreas e Volumes de Figuras Semelhantes",
+              duration: "14:20"
+            }}
+            resumoVisual={{
+              moduloNome: "Razão de Semelhança",
+              tituloAula: "Geometria Plana",
+              materia: "Matemática",
+              images: [
+                { title: "Razão Linear: k", type: "Lados", placeholderColor: "bg-emerald-500/20" },
+                { title: "Razão de Áreas: k²", type: "Superfícies", placeholderColor: "bg-green-500/20" },
+                { title: "Razão de Volumes: k³", type: "Espaço 3D", placeholderColor: "bg-teal-500/20" },
+                { title: "Perímetro também é k", type: "Perímetro", placeholderColor: "bg-emerald-400/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Não Confundir Razões",
+              content: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                    <p className="font-semibold">1️⃣ Razão Linear (lados e perímetro): k</p>
+                    <p className="text-sm mt-2">Se lado₁ = 3 e lado₂ = 6, então k = 2. Perímetro também multiplica por k.</p>
+                  </div>
+                  <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl">
+                    <p className="font-semibold text-green-400">2️⃣ Razão de Áreas: k²</p>
+                    <p className="text-sm mt-2">Se k = 2, então área₂ = 4 × área₁. ELEVAR AO QUADRADO! Não multiplicar por k.</p>
+                  </div>
+                  <div className="p-4 bg-teal-500/10 border border-teal-500/20 rounded-xl">
+                    <p className="font-semibold text-teal-400">3️⃣ Razão de Volumes: k³</p>
+                    <p className="text-sm mt-2">Se k = 2, então volume₂ = 8 × volume₁. ELEVAR AO CUBO! Não multiplicar por k ou k².</p>
+                  </div>
+                  <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
+                    <p className="font-semibold text-amber-400">🎯 Tabela Rápida (k=2):</p>
+                    <p className="text-sm mt-2 font-mono">Lados: ×2 | Perímetro: ×2 | Áreas: ×4 | Volumes: ×8</p>
+                    <p className="text-amber-600 dark:text-amber-300 font-bold mt-2">⚠️ PEGADINHA MAIS COMUM DA CESGRANRIO!</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+              titulo: "A Progressão das Razões",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-8" className="mt-16">
             <QuizInterativo
               questoes={quizM8}
@@ -1382,6 +1908,56 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
+          <ModuleConsolidation
+            index={9}
+            variant="cyan"
+            video={{
+              videoId: "xKh0_l-Wevs",
+              title: "Aplicações Petrobras: Cálculo de Áreas de Concessão, Plataformas e Tanques",
+              duration: "16:00"
+            }}
+            resumoVisual={{
+              moduloNome: "Aplicações Petrobras",
+              tituloAula: "Geometria Plana",
+              materia: "Matemática",
+              images: [
+                { title: "Blocos Exploratórios (polígonos)", type: "Concessão", placeholderColor: "bg-cyan-500/20" },
+                { title: "Perímetro de Cercas (segurança)", type: "Limite", placeholderColor: "bg-blue-500/20" },
+                { title: "Seção de Dutos (círculo)", type: "Vazão", placeholderColor: "bg-sky-500/20" },
+                { title: "Plataformas e Tanques", type: "Estrutura", placeholderColor: "bg-cyan-400/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Contexto Industrial Petrobras",
+              content: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                    <p className="font-semibold">🗺️ Blocos Exploratórios (Concessão)</p>
+                    <p className="text-sm mt-2">Áreas poligonais em terra ou mar. Use (n-2)×180° para validar ângulos. Calcule área com coordenadas ou divida em triângulos.</p>
+                  </div>
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <p className="font-semibold text-blue-400">🔒 Perímetro de Concessão</p>
+                    <p className="text-sm mt-2">Soma dos lados = custo de cercas/demarcação/segurança. Ex: Quadrado 100×100 km → P = 400 km → custo total em R$.</p>
+                  </div>
+                  <div className="p-4 bg-sky-500/10 border border-sky-500/20 rounded-xl">
+                    <p className="font-semibold text-sky-400">⭕ Duto Cilíndrico (Seção)</p>
+                    <p className="text-sm mt-2">Área molhada A = πr² determina vazão Q = A × v (velocidade). Diâmetro é CRÍTICO.</p>
+                    <p className="text-sm mt-1 font-mono">Se d dobra → A quadruplica → Q quadruplica</p>
+                  </div>
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                    <p className="font-semibold text-emerald-400">📏 Plataformas e Tanques</p>
+                    <p className="text-sm mt-2">Volume = Área da Base × Altura. Tanque cilíndrico: V = πr² × h. Otimização de espaço.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+              titulo: "Geometria no Poço (Tema Petrobras)",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
           <section id="quiz-modulo-9" className="mt-16">
             <QuizInterativo
               questoes={quizM9}
@@ -1451,6 +2027,61 @@ export default function AulaGeometriaPlana({
               1. Identifique QUAL figura está sendo descrita antes de escolher a fórmula. 2. Atenção: raio ≠ diâmetro; altura perpendicular ≠ lado oblíquo. 3. Em semelhança, nunca aplique a razão de lados diretamente em áreas. 4. Calcule usando as ternas pitagóricas quando possível para economizar tempo.
             </AlertBox>
           </section>
+
+          <ModuleConsolidation
+            index={10}
+            variant="blue"
+            video={{
+              videoId: "1N7NcVB0pN8",
+              title: "Simulado Mestre: Revisão Completa e Estratégia de Prova para Geometria Plana",
+              duration: "18:45"
+            }}
+            resumoVisual={{
+              moduloNome: "Simulado Mestre",
+              tituloAula: "Geometria Plana",
+              materia: "Matemática",
+              images: [
+                { title: "Checklist de Fórmulas", type: "Consolidação", placeholderColor: "bg-blue-500/20" },
+                { title: "Estratégia de Leitura", type: "Tática", placeholderColor: "bg-indigo-500/20" },
+                { title: "Pegadinhas Comuns", type: "Cuidados", placeholderColor: "bg-cyan-500/20" },
+                { title: "Gestão de Tempo", type: "Otimização", placeholderColor: "bg-blue-400/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato: Antes da Prova",
+              content: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <p className="font-semibold">✅ Checklist Final de Fórmulas:</p>
+                    <p className="text-sm mt-2">1. Polígonos: Si = (n-2)×180° | Diagonais: n(n-3)/2</p>
+                    <p className="text-sm">2. Triângulos: A = (b×h)/2 | Equilátero: A = L²√3/4 | Heron: √[s(s-a)(s-b)(s-c)]</p>
+                    <p className="text-sm">3. Quadriláteros: Retângulo A=b×h | Losango A=(d₁×d₂)/2 | Trapézio A=[(B+b)×h]/2</p>
+                    <p className="text-sm">4. Círculo: Perímetro C = 2πr | Área A = πr² | Setor: A = (θ/360°)×πr²</p>
+                    <p className="text-sm">5. Pitágoras: c² = a² + b² | Ternas: 3-4-5, 5-12-13, 8-15-17</p>
+                    <p className="text-sm">6. Semelhança: Lados k | Áreas k² | Perímetro k</p>
+                  </div>
+                  <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl">
+                    <p className="font-semibold text-indigo-400">🎯 Estratégia de Leitura:</p>
+                    <p className="text-sm mt-2">1. Leia com atenção: qual figura? | 2. Identifique o que é dado e o que é pedido | 3. Escolha a fórmula certa | 4. Calcule passo a passo</p>
+                  </div>
+                  <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                    <p className="font-semibold text-cyan-400">🔴 Pegadinhas CESGRANRIO (erros comuns):</p>
+                    <p className="text-sm mt-2">- Raio ≠ Diâmetro | - Altura ≠ Lado oblíquo | - k² em áreas (nunca k!) | - Ternas pitagóricas economizam cálculos</p>
+                    <p className="text-sm">- Desigualdade triangular: a+b > c (ESTRITA) | - Ângulo externo = soma dos remotos</p>
+                  </div>
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                    <p className="font-semibold text-emerald-400">⏱️ Gestão de Tempo:</p>
+                    <p className="text-sm mt-2">2-3 min por questão. Se travar, pule e volte depois. Priorize identificação correta da figura.</p>
+                  </div>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+              titulo: "Hino da Geometria Plana",
+              artista: "Prof. Rítmico"
+            }}
+          />
 
           <section id="quiz-modulo-10" className="mt-16">
             <QuizInterativo
