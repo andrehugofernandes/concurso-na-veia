@@ -183,28 +183,26 @@ export default function AulaProgressoesPa({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-12">
             <ModuleSectionHeader
               index={1}
-              title="A Sequência que Soma"
+              title="Conceitos Fundamentais de PA"
               description="Entenda a razão r e o primeiro termo a₁."
               variant="blue"
             />
 
-            {/* ACORDEON 1: Conceituação e Exemplos */}
+            {/* ACORDEON 1: Conceituação */}
             <ContentAccordion
-              titulo="📖 Conceito e Exemplos Práticos"
+              titulo="📖 Conceituação - O que é PA?"
+              icone="🔢"
               corIndicador="bg-blue-500"
               defaultOpen={true}
               slides={[
                 {
-                  titulo: "O que é uma Progressão Aritmética?",
-                  icone: "🔢",
+                  titulo: "Conceituação",
                   conteudo: (
                     <div className="space-y-6">
-                      {/* 1. CONCEITUAÇÃO */}
                       <p className="text-base leading-relaxed text-foreground">
                         Uma <strong>Progressão Aritmética (PA)</strong> é uma sequência de números onde <strong>cada termo é obtido somando ao anterior uma constante chamada razão (r)</strong>.
                       </p>
 
-                      {/* 2. FÓRMULA */}
                       <div className="p-6 bg-blue-500/15 rounded-xl border border-blue-500/30">
                         <p className="text-lg font-bold text-blue-700 dark:text-blue-300 mb-4">Estrutura da PA:</p>
                         <div className="space-y-3 font-mono text-base">
@@ -214,47 +212,42 @@ export default function AulaProgressoesPa({
                           <p className="text-foreground"><strong>aₙ</strong> = a₁ + (n-1)<strong>r</strong></p>
                         </div>
                       </div>
-
-                      {/* 3. EXEMPLO */}
-                      <div className="p-6 bg-green-500/15 border border-green-500/30 rounded-xl">
-                        <p className="text-lg font-bold text-green-700 dark:text-green-300 mb-3">✅ Exemplo Prático:</p>
-                        <p className="text-base text-foreground mb-3">PA: <strong>(2, 5, 8, 11, 14, ...)</strong></p>
-                        <ul className="space-y-2 text-base text-foreground">
-                          <li>• <strong>a₁ = 2</strong> (primeiro termo)</li>
-                          <li>• <strong>r = 3</strong> (razão — sempre soma 3)</li>
-                          <li>• <strong>a₅ = 14</strong> (último termo = 2 + 4×3 = 14) ✓</li>
-                        </ul>
-                      </div>
                     </div>
                   ),
                 },
+              ]}
+            />
+
+            {/* ACORDEON 2: Exemplificação */}
+            <ContentAccordion
+              titulo="📚 Exemplificação - Casos Práticos"
+              icone="📊"
+              corIndicador="bg-emerald-500"
+              defaultOpen={false}
+              slides={[
                 {
-                  titulo: "Casos Práticos: Crescimento, Constância, Decrescimento",
-                  icone: "📊",
+                  titulo: "Exemplificação",
                   conteudo: (
                     <div className="space-y-6">
                       <p className="text-base leading-relaxed text-foreground">
                         Dependendo do valor de <strong>r</strong>, a PA pode crescer, manter-se constante ou decrescer:
                       </p>
 
-                      {/* Caso 1: Crescente */}
                       <div className="p-6 bg-emerald-500/15 border border-emerald-500/30 rounded-xl">
-                        <p className="text-lg font-bold text-emerald-700 dark:text-emerald-300 mb-3">📈 Crescimento (r &gt; 0):</p>
-                        <p className="text-base text-foreground mb-2"><strong>(5, 10, 15, 20, 25, ...)</strong></p>
+                        <p className="text-lg font-bold text-emerald-700 dark:text-emerald-300 mb-3">✅ Crescimento (r &gt; 0):</p>
+                        <p className="text-base text-foreground mb-2"><strong>PA: (5, 10, 15, 20, 25, ...)</strong></p>
                         <p className="text-base text-foreground">• a₁ = 5 | r = 5 (cada termo soma 5)</p>
                       </div>
 
-                      {/* Caso 2: Decrescente */}
                       <div className="p-6 bg-red-500/15 border border-red-500/30 rounded-xl">
                         <p className="text-lg font-bold text-red-700 dark:text-red-300 mb-3">📉 Decrescimento (r &lt; 0):</p>
-                        <p className="text-base text-foreground mb-2"><strong>(100, 90, 80, 70, 60, ...)</strong></p>
+                        <p className="text-base text-foreground mb-2"><strong>PA: (100, 90, 80, 70, 60, ...)</strong></p>
                         <p className="text-base text-foreground">• a₁ = 100 | r = -10 (cada termo diminui 10)</p>
                       </div>
 
-                      {/* Caso 3: Constante */}
                       <div className="p-6 bg-slate-500/15 border border-slate-500/30 rounded-xl">
                         <p className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-3">➡️ Constante (r = 0):</p>
-                        <p className="text-base text-foreground mb-2"><strong>(7, 7, 7, 7, 7, ...)</strong></p>
+                        <p className="text-base text-foreground mb-2"><strong>PA: (7, 7, 7, 7, 7, ...)</strong></p>
                         <p className="text-base text-foreground">• a₁ = 7 | r = 0 (todos os termos iguais)</p>
                       </div>
                     </div>
@@ -263,24 +256,22 @@ export default function AulaProgressoesPa({
               ]}
             />
 
-            {/* ACORDEON 2: Dicas e Exceções */}
+            {/* ACORDEON 3: Dicas */}
             <ContentAccordion
-              titulo="💡 Dicas de Ouro e Casos Especiais"
+              titulo="💡 Dicas - Teste da Razão"
+              icone="✅"
               corIndicador="bg-amber-500"
               defaultOpen={false}
               slides={[
                 {
-                  titulo: "Como Identificar uma PA (Teste Rápido)",
-                  icone: "✅",
+                  titulo: "Dicas",
                   conteudo: (
                     <div className="space-y-6">
-                      {/* Conceituação */}
                       <p className="text-base leading-relaxed text-foreground">
                         Para verificar se uma sequência é uma <strong>Progressão Aritmética</strong>, faça o <strong>"Teste da Razão"</strong>: subtraia dois termos consecutivos. Se o resultado for sempre igual, é PA!
                       </p>
 
-                      {/* Exemplo */}
-                      <AlertBox tipo="success" titulo="Teste Prático">
+                      <AlertBox tipo="success" titulo="✅ Teste Prático">
                         <div className="space-y-3 text-base">
                           <p><strong>Sequência: (3, 7, 11, 15)</strong></p>
                           <p>• 7 - 3 = <strong>4</strong> ✓</p>
@@ -289,44 +280,39 @@ export default function AulaProgressoesPa({
                           <p className="text-green-700 dark:text-green-400 font-bold">→ É PA com r = 4!</p>
                         </div>
                       </AlertBox>
-
-                      {/* Contra-exemplo */}
-                      <AlertBox tipo="warning" titulo="Contra-exemplo (NÃO é PA)">
-                        <div className="space-y-3 text-base">
-                          <p><strong>Sequência: (2, 4, 8, 16)</strong></p>
-                          <p>• 4 - 2 = 2</p>
-                          <p>• 8 - 4 = 4 ❌</p>
-                          <p>• 16 - 8 = 8 ❌</p>
-                          <p className="text-red-700 dark:text-red-400 font-bold">→ Razões diferentes! É PG (Progressão Geométrica), não PA.</p>
-                        </div>
-                      </AlertBox>
                     </div>
                   ),
                 },
+              ]}
+            />
+
+            {/* ACORDEON 4: Exceções */}
+            <ContentAccordion
+              titulo="⚠️ Exceções - Casos Especiais"
+              icone="⚠️"
+              corIndicador="bg-red-500"
+              defaultOpen={false}
+              slides={[
                 {
-                  titulo: "Exceções e Casos Especiais",
-                  icone: "⚠️",
+                  titulo: "Exceções",
                   conteudo: (
                     <div className="space-y-6">
                       <p className="text-base leading-relaxed text-foreground">
                         Existem <strong>situações especiais</strong> em PA que você deve conhecer para não cair em pegadinhas:
                       </p>
 
-                      {/* Caso 1 */}
                       <div className="p-6 bg-blue-500/15 border border-blue-500/30 rounded-xl">
                         <p className="text-lg font-bold text-blue-700 dark:text-blue-300 mb-2">1️⃣ PA com Primeiro Termo Zero</p>
                         <p className="text-base text-foreground">PA: <strong>(0, 3, 6, 9, ...)</strong></p>
                         <p className="text-base text-foreground">• a₁ = 0 (começa no zero) | r = 3</p>
                       </div>
 
-                      {/* Caso 2 */}
                       <div className="p-6 bg-blue-500/15 border border-blue-500/30 rounded-xl">
                         <p className="text-lg font-bold text-blue-700 dark:text-blue-300 mb-2">2️⃣ PA com Razão Negativa</p>
                         <p className="text-base text-foreground">PA: <strong>(-2, -5, -8, -11, ...)</strong></p>
                         <p className="text-base text-foreground">• a₁ = -2 | r = -3 (decrescente, mas valores negativos)</p>
                       </div>
 
-                      {/* Caso 3 */}
                       <div className="p-6 bg-blue-500/15 border border-blue-500/30 rounded-xl">
                         <p className="text-lg font-bold text-blue-700 dark:text-blue-300 mb-2">3️⃣ PA com Dois Termos Apenas</p>
                         <p className="text-base text-foreground">PA: <strong>(5, 8)</strong> ou <strong>(10, 7)</strong></p>
