@@ -163,7 +163,10 @@ export default function SimuladoHome({
     dificuldade: string;
     assunto: string;
   }) => {
-    if (materiaSelecionada) {
+    if (tipoPagina === "maratona") {
+      // Maratona: sempre 100 questões, sem modal
+      iniciarSimulado("maratona", 100, "Média", "");
+    } else if (materiaSelecionada) {
       iniciarSimulado(
         materiaSelecionada.id as TipoSimulado,
         config.quantidade,
@@ -231,78 +234,109 @@ export default function SimuladoHome({
       <div className={cn(
         tipoPagina === "maratona" ? "flex justify-center" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
       , "gap-8")}>
-        {materiasVisiveis.map((materia) => (
-          <div
-            key={materia.id}
-            onClick={() => handleOpenModal(materia)}
-            className={cn(
-              "group relative flex flex-col bg-slate-50/50 dark:bg-card backdrop-blur-lg rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/10 overflow-hidden cursor-pointer",
-              tipoPagina === "maratona" && "w-full max-w-md"
-            )}
+        {tipoPagina === "maratona" ? (
+          // Card único para Maratona
+          <button
+            onClick={() => handleConfirmSimulado({ quantidade: 100, dificuldade: "Média", assunto: "" })}
+            disabled={gerandoQuestoes}
+            className="group relative flex flex-col bg-gradient-to-br from-primary/20 via-primary/10 to-transparent dark:from-primary/30 dark:via-primary/15 dark:to-transparent rounded-3xl border-2 border-primary/30 dark:border-primary/20 p-8 w-full max-w-md hover:border-primary/60 dark:hover:border-primary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <AnimatedBorder borderRadius="rounded-3xl" />
 
-            {/* Header Section */}
-            <div className="p-8 pb-4">
-              <div className="flex items-start justify-between mb-6">
-                <div
-                  className={cn(
-                    "flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br text-3xl shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform relative",
-                    materia.cor,
-                  )}
-                >
-                  {materia.icone}
-                  {materia.isSuperiorOnly && (
-                    <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-white dark:bg-zinc-900 border-2 border-red-500 flex items-center justify-center shadow-lg transform rotate-12 group-hover:rotate-0 transition-transform">
-                      <span className="text-[10px] font-black text-red-600 leading-none">
-                        US
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <span className="px-3 py-1 rounded-full bg-zinc-100/80 dark:bg-zinc-800/50 text-primary text-xs font-bold border border-zinc-200 dark:border-zinc-700">
-                  {materia.topicos.length}{" "}
-                  {materia.id === "ingles" ? "Tópicos" : "Áreas"}
-                </span>
-              </div>
-
-              <h2 className="text-3xl font-black text-foreground tracking-tight group-hover:text-primary transition-colors uppercase">
-                {materia.nome}
-              </h2>
-              <p className="text-muted-foreground text-sm mt-2 line-clamp-2">
-                {materia.descricao}
-              </p>
+            {/* Icon */}
+            <div className="flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-primary/60 text-4xl shadow-lg shadow-primary/30 mb-6 group-hover:scale-110 transition-transform">
+              🎯
             </div>
 
-            {/* List of Topics (Pricing Style) */}
-            <div className="flex-1 px-8 py-4 space-y-3">
-              {materia.topicos.slice(0, 6).map((topico: any, idx: number) => (
-                <div
-                  key={idx}
-                  className="flex items-center gap-3 text-sm text-muted-foreground group/item"
-                >
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/item:bg-primary transition-colors" />
-                  <span className="truncate group-hover/item:text-foreground transition-colors font-medium">
-                    {topico.titulo}
+            {/* Content */}
+            <h2 className="text-3xl font-black text-foreground uppercase tracking-tight mb-3">
+              Começar Maratona
+            </h2>
+            <p className="text-muted-foreground text-sm mb-6">
+              Enfrente o desafio final com 100 questões no estilo CESGRANRIO. Você tem até 4h30 para completar!
+            </p>
+
+            {/* Button */}
+            <button
+              onClick={() => handleConfirmSimulado({ quantidade: 100, dificuldade: "Média", assunto: "" })}
+              disabled={gerandoQuestoes}
+              className="mt-auto px-6 py-3 bg-gradient-to-r from-primary to-primary/80 text-white font-bold uppercase tracking-wide rounded-xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1 transition-all active:scale-95 disabled:opacity-50"
+            >
+              {gerandoQuestoes ? "Carregando..." : "Começar 🚀"}
+            </button>
+          </button>
+        ) : (
+          // Cards de matérias normais
+          materiasVisiveis.map((materia) => (
+            <div
+              key={materia.id}
+              onClick={() => handleOpenModal(materia)}
+              className="group relative flex flex-col bg-slate-50/50 dark:bg-card backdrop-blur-lg rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/10 overflow-hidden cursor-pointer"
+            >
+              <AnimatedBorder borderRadius="rounded-3xl" />
+
+              {/* Header Section */}
+              <div className="p-8 pb-4">
+                <div className="flex items-start justify-between mb-6">
+                  <div
+                    className={cn(
+                      "flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br text-3xl shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform relative",
+                      materia.cor,
+                    )}
+                  >
+                    {materia.icone}
+                    {materia.isSuperiorOnly && (
+                      <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-white dark:bg-zinc-900 border-2 border-red-500 flex items-center justify-center shadow-lg transform rotate-12 group-hover:rotate-0 transition-transform">
+                        <span className="text-[10px] font-black text-red-600 leading-none">
+                          US
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-zinc-100/80 dark:bg-zinc-800/50 text-primary text-xs font-bold border border-zinc-200 dark:border-zinc-700">
+                    {materia.topicos.length}{" "}
+                    {materia.id === "ingles" ? "Tópicos" : "Áreas"}
                   </span>
                 </div>
-              ))}
-              {materia.topicos.length > 6 && (
-                <div className="text-xs text-primary/60 font-black pl-4.5 uppercase tracking-wider">
-                  + {materia.topicos.length - 6} outros tópicos...
-                </div>
-              )}
-            </div>
 
-            {/* Decoration */}
-            <div
-              className={cn(
-                "absolute -right-12 -bottom-12 w-48 h-48 bg-gradient-to-br opacity-[0.03] group-hover:opacity-[0.08] rounded-full transition-opacity",
-                materia.cor,
-              )}
-            />
-          </div>
-        ))}
+                <h2 className="text-3xl font-black text-foreground tracking-tight group-hover:text-primary transition-colors uppercase">
+                  {materia.nome}
+                </h2>
+                <p className="text-muted-foreground text-sm mt-2 line-clamp-2">
+                  {materia.descricao}
+                </p>
+              </div>
+
+              {/* List of Topics (Pricing Style) */}
+              <div className="flex-1 px-8 py-4 space-y-3">
+                {materia.topicos.slice(0, 6).map((topico: any, idx: number) => (
+                  <div
+                    key={idx}
+                    className="flex items-center gap-3 text-sm text-muted-foreground group/item"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/item:bg-primary transition-colors" />
+                    <span className="truncate group-hover/item:text-foreground transition-colors font-medium">
+                      {topico.titulo}
+                    </span>
+                  </div>
+                ))}
+                {materia.topicos.length > 6 && (
+                  <div className="text-xs text-primary/60 font-black pl-4.5 uppercase tracking-wider">
+                    + {materia.topicos.length - 6} outros tópicos...
+                  </div>
+                )}
+              </div>
+
+              {/* Decoration */}
+              <div
+                className={cn(
+                  "absolute -right-12 -bottom-12 w-48 h-48 bg-gradient-to-br opacity-[0.03] group-hover:opacity-[0.08] rounded-full transition-opacity",
+                  materia.cor,
+                )}
+              />
+            </div>
+          ))
+        )}
       </div>
 
       {materiaSelecionada && (

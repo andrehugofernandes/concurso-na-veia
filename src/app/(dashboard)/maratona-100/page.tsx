@@ -3,14 +3,13 @@
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Usuario, Questao, Simulado } from "@/lib/types";
-import { calcularNivel, salvarUsuario, carregarUsuario } from "@/lib/utils";
+import { salvarUsuario, carregarUsuario } from "@/lib/utils";
 import LoadingScreen from "@/components/LoadingScreen";
-import SimuladoScreen from "@/components/SimuladoScreen";
+import CadernoProvaScreen from "@/components/simulados/CadernoProvaScreen";
 import ResultadoScreen from "@/components/ResultadoScreen";
 import SimuladoHome from "@/components/simulados/SimuladoHome";
 import { CONTEUDO_MATERIAS } from "@/data/conteudo";
-import { ActionResponse } from "@/lib/actions/safe-action";
-import { gerarQuestaoAction, gerarQuestoesLoteAction } from "@/lib/actions/questoes";
+import { gerarQuestoesLoteAction } from "@/lib/actions/questoes";
 import { getCurrentUserAction } from "@/lib/actions/auth";
 
 const usuarioInicial: Usuario = {
@@ -39,11 +38,6 @@ export default function Maratona100Page() {
   >("home");
   const [usuario, setUsuario] = useState<Usuario>(usuarioInicial);
   const [simuladoAtual, setSimuladoAtual] = useState<Simulado | null>(null);
-  const [questaoAtual, setQuestaoAtual] = useState(0);
-  const [respostaSelecionada, setRespostaSelecionada] = useState<number | null>(
-    null,
-  );
-  const [mostrarResultado, setMostrarResultado] = useState(false);
   const [cronometro, setCronometro] = useState(0);
   const [cronometroAtivo, setCronometroAtivo] = useState(false);
   const [gerandoQuestoes, setGerandoQuestoes] = useState(false);
@@ -379,19 +373,11 @@ export default function Maratona100Page() {
         questoesGeradas: prev.questoesGeradas + questoes.length,
       }));
 
-      setQuestaoAtual(0);
-      setRespostaSelecionada(null);
-      setMostrarResultado(false);
       setTempoEsgotado(false);
 
-      // Configurar timer: 4 horas para simulados de 60+ questões
-      if (quantidade >= 60) {
-        setTempoLimite(4 * 60 * 60); // 4 horas em segundos
-        setCronometro(4 * 60 * 60); // Iniciar do tempo máximo
-      } else {
-        setTempoLimite(null);
-        setCronometro(0); // Timer progressivo
-      }
+      // Maratona CESGRANRIO: 4h30 de prova
+      setTempoLimite(4.5 * 60 * 60); // 4h30 em segundos
+      setCronometro(4.5 * 60 * 60);
 
       setCronometroAtivo(true);
       setGerandoQuestoes(false);
@@ -404,83 +390,6 @@ export default function Maratona100Page() {
     }
   };
 
-  const responderQuestao = (indiceResposta: number) => {
-    if (mostrarResultado) return;
-    setRespostaSelecionada(indiceResposta);
-  };
-
-  const confirmarResposta = () => {
-    if (respostaSelecionada === null || !simuladoAtual) return;
-
-    const questao = simuladoAtual.questoes[questaoAtual];
-    const acertou = respostaSelecionada === questao.correta;
-
-    const novasRespostas = [...simuladoAtual.respostas];
-    novasRespostas[questaoAtual] = {
-      selecionada: respostaSelecionada,
-      correta: acertou,
-    };
-
-    setSimuladoAtual({
-      ...simuladoAtual,
-      respostas: novasRespostas,
-    });
-
-    let novoXP = usuario.xp;
-    let novaSequencia = usuario.sequenciaAtual;
-    let novasConquistas = [...usuario.conquistas];
-
-    if (acertou) {
-      novoXP += 10;
-      novaSequencia += 1;
-
-      if (novaSequencia === 10 && !novasConquistas.includes("combo10")) {
-        novoXP += 50;
-        novasConquistas.push("combo10");
-        setTimeout(
-          () => alert("🎉 COMBO! +50 XP por 10 acertos seguidos!"),
-          500,
-        );
-      }
-
-      setUsuario({
-        ...usuario,
-        xp: novoXP,
-        questoesCertas: usuario.questoesCertas + 1,
-        sequenciaAtual: novaSequencia,
-        maiorSequencia: Math.max(novaSequencia, usuario.maiorSequencia),
-        nivel: calcularNivel(novoXP),
-        conquistas: novasConquistas,
-      });
-    } else {
-      if (novaSequencia > 0) {
-        novoXP = Math.max(0, novoXP - 20);
-      }
-      novaSequencia = 0;
-
-      setUsuario({
-        ...usuario,
-        xp: novoXP,
-        questoesErradas: usuario.questoesErradas + 1,
-        sequenciaAtual: 0,
-        nivel: calcularNivel(novoXP),
-      });
-    }
-
-    setMostrarResultado(true);
-  };
-
-  const proximaQuestao = () => {
-    if (!simuladoAtual) return;
-
-    if (questaoAtual < simuladoAtual.questoes.length - 1) {
-      setQuestaoAtual(questaoAtual + 1);
-      setRespostaSelecionada(null);
-      setMostrarResultado(false);
-    } else {
-      finalizarSimulado();
-    }
-  };
 
   const finalizarSimulado = () => {
     if (!simuladoAtual) return;
@@ -525,7 +434,6 @@ export default function Maratona100Page() {
     } else {
       setTela("home");
       setSimuladoAtual(null);
-      setQuestaoAtual(0);
       setCronometro(0);
       setCronometroAtivo(false);
     }
@@ -559,18 +467,27 @@ export default function Maratona100Page() {
 
   if (tela === "simulado" && simuladoAtual) {
     return (
-      <SimuladoScreen
+      <CadernoProvaScreen
         simulado={simuladoAtual}
-        questaoAtual={questaoAtual}
-        respostaSelecionada={respostaSelecionada}
-        mostrarResultado={mostrarResultado}
         cronometro={cronometro}
         tempoLimite={tempoLimite}
         usuario={usuario}
-        responderQuestao={responderQuestao}
-        confirmarResposta={confirmarResposta}
-        proximaQuestao={proximaQuestao}
-        voltarHome={voltarHome}
+        onResponder={(questaoIdx, alternativaIdx) => {
+          // Resposta direta sem confirmar — formato caderno de prova
+          const questao = simuladoAtual.questoes[questaoIdx];
+          const acertou = alternativaIdx === questao.correta;
+          const novasRespostas = [...simuladoAtual.respostas];
+          novasRespostas[questaoIdx] = {
+            selecionada: alternativaIdx,
+            correta: acertou,
+          };
+          setSimuladoAtual({
+            ...simuladoAtual,
+            respostas: novasRespostas,
+          });
+        }}
+        onFinalizar={finalizarSimulado}
+        onVoltar={voltarHome}
       />
     );
   }
