@@ -228,12 +228,17 @@ export default function SimuladoHome({
         )}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className={cn(
+        tipoPagina === "maratona" ? "flex justify-center" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+      , "gap-8")}>
         {materiasVisiveis.map((materia) => (
           <div
             key={materia.id}
             onClick={() => handleOpenModal(materia)}
-            className="group relative flex flex-col bg-slate-50/50 dark:bg-card backdrop-blur-lg rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/10 overflow-hidden cursor-pointer"
+            className={cn(
+              "group relative flex flex-col bg-slate-50/50 dark:bg-card backdrop-blur-lg rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/10 overflow-hidden cursor-pointer",
+              tipoPagina === "maratona" && "w-full max-w-md"
+            )}
           >
             <AnimatedBorder borderRadius="rounded-3xl" />
 
