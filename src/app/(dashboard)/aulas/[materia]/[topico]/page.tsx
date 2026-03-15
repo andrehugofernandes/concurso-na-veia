@@ -313,6 +313,30 @@ const AulaMarketingGerencial = dynamic<AulaProps>(
   },
 );
 
+const AulaLei13303 = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaLei13303"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaRLCP = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaRLCP"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaAdministrativoTributario = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaAdministrativoTributario"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
 interface PageProps {
   params: Promise<{ materia: string; topico: string }>;
 }
@@ -1213,6 +1237,57 @@ export default function TopicoPage({ params }: PageProps) {
               prevTopico={prevTopico}
               nextTopico={nextTopico}
             />
+          ) : materiaId === "especifica-bloco-ii-legislacao-tributos" && topicoId === "lei-13303" ? (
+            <AulaLei13303
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "especifica-bloco-ii-legislacao-tributos" && topicoId === "rlcp" ? (
+            <AulaRLCP
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "especifica-bloco-ii-legislacao-tributos" && topicoId === "administrativo-tributario" ? (
+            <AulaAdministrativoTributario
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
           ) : conteudo ? (
             conteudo.secoes.map((secao, index) => (
               <section
@@ -1294,6 +1369,9 @@ export default function TopicoPage({ params }: PageProps) {
             "gestao-pessoas",
             "gestao-recursos-humanos",
             "marketing-gerencial",
+            "lei-13303",
+            "rlcp",
+            "administrativo-tributario",
           ].includes(topicoId) && (
             <div className="max-w-7xl mx-auto px-6 pb-32">
               <div className="mt-12 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-8 border border-yellow-500/30 text-center">

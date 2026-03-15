@@ -134,11 +134,11 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'comprehension', titulo: 'Text Comprehension', descricao: 'Interpretação de textos técnicos', duracao: '8 min', ordem: 6 },
         ]
     },
-    // ===== BLOCO II - GESTÃO DE PESSOAS E MARKETING =====
+    // ===== BLOCO II - GESTÃO DE PESSOAS E MARKETING (NÍVEL SUPERIOR) =====
     {
         id: 'especifica-bloco-ii-gestao-de-pessoas-e-marketing',
         nome: 'Bloco II - Gestão de Pessoas e Marketing',
-        descricao: 'Conhecimentos específicos em Gestão de Pessoas, RH e Marketing Gerencial para Administradores',
+        descricao: 'Conhecimentos específicos em Gestão de Pessoas, RH e Marketing Gerencial para Administradores Nível Superior',
         icone: '👥',
         cor: 'from-indigo-500 to-purple-500',
         requiredPlan: 'Ouro',
@@ -146,6 +146,20 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'gestao-pessoas', titulo: 'Gestão de Pessoas', descricao: 'Recrutamento, desenvolvimento, retenção e gestão de talentos', duracao: '90 min', ordem: 1 },
             { id: 'gestao-recursos-humanos', titulo: 'Gestão de Recursos Humanos', descricao: 'Estratégia, organização e métricas de RH (em desenvolvimento)', duracao: '90 min', ordem: 2 },
             { id: 'marketing-gerencial', titulo: 'Marketing Gerencial', descricao: 'Estratégia de marketing, segmentação e comunicação (em desenvolvimento)', duracao: '90 min', ordem: 3 },
+        ]
+    },
+    // ===== BLOCO II - LEGISLAÇÃO E TRIBUTOS (NÍVEL TÉCNICO/MÉDIO) =====
+    {
+        id: 'especifica-bloco-ii-legislacao-tributos',
+        nome: 'Bloco II - Legislação e Tributos',
+        descricao: 'Conhecimentos específicos em Lei 13.303, RLCP e Direito Tributário para Técnico de Suprimento - Administração',
+        icone: '⚖️',
+        cor: 'from-violet-500 to-fuchsia-500',
+        requiredPlan: 'Ouro',
+        topicos: [
+            { id: 'lei-13303', titulo: 'Lei 13.303 - Empresa Estatal', descricao: 'Lei Federal que disciplina funcionamento e governança de empresas públicas', duracao: '90 min', ordem: 1 },
+            { id: 'rlcp', titulo: 'RLCP - Regulamento de Licitações Petrobras', descricao: 'Procedimentos transparentes de compras e contratações', duracao: '90 min', ordem: 2 },
+            { id: 'administrativo-tributario', titulo: 'Administrativo e Tributário', descricao: 'Contabilidade básica, direito tributário e administração tributária (em desenvolvimento)', duracao: '90 min', ordem: 3 },
         ]
     },
 ];
