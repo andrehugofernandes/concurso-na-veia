@@ -134,6 +134,20 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'comprehension', titulo: 'Text Comprehension', descricao: 'Interpretação de textos técnicos', duracao: '8 min', ordem: 6 },
         ]
     },
+    // ===== BLOCO II - GESTÃO DE PESSOAS E MARKETING =====
+    {
+        id: 'especifica-bloco-ii-gestao-de-pessoas-e-marketing',
+        nome: 'Bloco II - Gestão de Pessoas e Marketing',
+        descricao: 'Conhecimentos específicos em Gestão de Pessoas, RH e Marketing Gerencial para Administradores',
+        icone: '👥',
+        cor: 'from-indigo-500 to-purple-500',
+        requiredPlan: 'Ouro',
+        topicos: [
+            { id: 'gestao-pessoas', titulo: 'Gestão de Pessoas', descricao: 'Recrutamento, desenvolvimento, retenção e gestão de talentos', duracao: '90 min', ordem: 1 },
+            { id: 'gestao-recursos-humanos', titulo: 'Gestão de Recursos Humanos', descricao: 'Estratégia, organização e métricas de RH (em desenvolvimento)', duracao: '90 min', ordem: 2 },
+            { id: 'marketing-gerencial', titulo: 'Marketing Gerencial', descricao: 'Estratégia de marketing, segmentação e comunicação (em desenvolvimento)', duracao: '90 min', ordem: 3 },
+        ]
+    },
 ];
 
 export function getMateriaById(id: string): MateriaConteudo | undefined {

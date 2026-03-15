@@ -289,6 +289,30 @@ const AulaGovernancaCorporativa = dynamic<AulaProps>(
   },
 );
 
+const AulaGestãoDePessoas = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaGestãoDePessoas"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaGestãoDeRecursosHumanos = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaGestãoDeRecursosHumanos"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaMarketingGerencial = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaMarketingGerencial"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
 interface PageProps {
   params: Promise<{ materia: string; topico: string }>;
 }
@@ -1138,6 +1162,57 @@ export default function TopicoPage({ params }: PageProps) {
               prevTopico={prevTopico}
               nextTopico={nextTopico}
             />
+          ) : materiaId === "especifica-bloco-ii-gestao-de-pessoas-e-marketing" && topicoId === "gestao-pessoas" ? (
+            <AulaGestãoDePessoas
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "especifica-bloco-ii-gestao-de-pessoas-e-marketing" && topicoId === "gestao-recursos-humanos" ? (
+            <AulaGestãoDeRecursosHumanos
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "especifica-bloco-ii-gestao-de-pessoas-e-marketing" && topicoId === "marketing-gerencial" ? (
+            <AulaMarketingGerencial
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
           ) : conteudo ? (
             conteudo.secoes.map((secao, index) => (
               <section
@@ -1216,6 +1291,9 @@ export default function TopicoPage({ params }: PageProps) {
             "gestao-de-processos",
             "gestao-de-projetos-pmbok",
             "governanca-corporativa",
+            "gestao-pessoas",
+            "gestao-recursos-humanos",
+            "marketing-gerencial",
           ].includes(topicoId) && (
             <div className="max-w-7xl mx-auto px-6 pb-32">
               <div className="mt-12 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-8 border border-yellow-500/30 text-center">
