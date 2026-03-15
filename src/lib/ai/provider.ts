@@ -1,52 +1,59 @@
 import { GeminiProvider } from "./providers/gemini-provider";
 import { FreeLLMProvider } from "./providers/freellm-provider";
-// import { AnthropicProvider } from "./providers/anthropic-provider";
+import { FallbackProvider } from "./providers/fallback-provider";
 import { AIProvider } from "./providers/base-provider";
 
+// Singleton: mantém o fallback ativo durante toda a sessão do servidor
+let cachedProvider: AIProvider | null = null;
+
 export function getAIProvider(): AIProvider {
+  if (cachedProvider) return cachedProvider;
+
   const preferredProvider = process.env.AI_PROVIDER;
   console.log(`[AI-FACTORY] Provedor preferido: ${preferredProvider}`);
 
-  // 1. Tentar o provedor preferido se definido no .env
-  if (preferredProvider === "gemini") {
-    try { 
-      console.log(`[AI-FACTORY] Tentando inicializar Gemini...`);
-      return new GeminiProvider(); 
-    } catch (e) { console.error("Falha ao iniciar Gemini:", e); }
-  } else if (preferredProvider === "freellm") {
-    try { 
-      console.log(`[AI-FACTORY] Tentando inicializar FreeLLM...`);
-      return new FreeLLMProvider(); 
-    } catch (e) { console.error("Falha ao iniciar FreeLLM:", e); }
-  } 
-  /* Anthropic desativado para economia
-  else if (preferredProvider === "anthropic") {
-    try { 
-      console.log(`[AI-FACTORY] Tentando inicializar Anthropic...`);
-      return new AnthropicProvider(); 
-    } catch (e) { console.error("Falha ao iniciar Anthropic:", e); }
-  }
-  */
+  const hasGemini = !!process.env.GEMINI_API_KEY;
+  const hasFreeLLM =
+    !!process.env.FREE_LLM_API_KEY &&
+    process.env.FREE_LLM_API_KEY !== "YOUR_FREE_LLM_API_KEY_HERE";
 
-  // 2. Fallback por disponibilidade (Ordem: Custos mais baixos primeiro)
-  console.log(`[AI-FACTORY] Usando lógica de fallback...`);
-  
-  // Gemini Pro (Free Tier)
-  if (process.env.GEMINI_API_KEY) {
-    try { 
-      console.log(`[AI-FACTORY] Fallback: Tentando Gemini...`);
-      return new GeminiProvider(); 
-    } catch (e) {}
+  // Se ambos estão disponíveis, usar FallbackProvider (Gemini → FreeLLM)
+  if (hasGemini && hasFreeLLM) {
+    try {
+      const gemini = new GeminiProvider();
+      const freellm = new FreeLLMProvider();
+      console.log(
+        `[AI-FACTORY] Usando FallbackProvider: Gemini → FreeLLM`,
+      );
+      cachedProvider = new FallbackProvider(gemini, freellm, "Gemini", "FreeLLM");
+      return cachedProvider;
+    } catch (e) {
+      console.error("[AI-FACTORY] Erro ao criar FallbackProvider:", e);
+    }
   }
 
-  // ApiFreeLLM (Totalmente gratuito)
-  if (process.env.FREE_LLM_API_KEY && process.env.FREE_LLM_API_KEY !== "YOUR_FREE_LLM_API_KEY_HERE") {
-    try { 
-      console.log(`[AI-FACTORY] Fallback: Tentando FreeLLM...`);
-      return new FreeLLMProvider(); 
-    } catch (e) {}
+  // Fallback: apenas um provider disponível
+  if (hasGemini) {
+    try {
+      console.log(`[AI-FACTORY] Usando apenas Gemini`);
+      cachedProvider = new GeminiProvider();
+      return cachedProvider;
+    } catch (e) {
+      console.error("Falha ao iniciar Gemini:", e);
+    }
   }
 
-  throw new Error("Nenhum provedor de IA (Gemini ou FreeLLM) configurado corretamente no .env.local");
+  if (hasFreeLLM) {
+    try {
+      console.log(`[AI-FACTORY] Usando apenas FreeLLM`);
+      cachedProvider = new FreeLLMProvider();
+      return cachedProvider;
+    } catch (e) {
+      console.error("Falha ao iniciar FreeLLM:", e);
+    }
+  }
+
+  throw new Error(
+    "Nenhum provedor de IA (Gemini ou FreeLLM) configurado corretamente no .env.local",
+  );
 }
-

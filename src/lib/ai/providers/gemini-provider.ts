@@ -12,10 +12,10 @@ export class GeminiProvider implements AIProvider {
       throw new Error("GEMINI_API_KEY não configurada");
     }
     this.genAI = new GoogleGenerativeAI(apiKey);
-    // Usando Gemini 3.1 Pro Preview (GA em Fevereiro 2026) 
-    // Suporta nativamente Respostas Estruturadas, Batch API e Execução de Código
-    this.model = this.genAI.getGenerativeModel({ 
-      model: "gemini-3.1-pro-preview",
+    // Gemini 2.5 Flash: estável, Free Tier generoso (250 RPD, 250K TPM)
+    // gemini-3.1-pro-preview NÃO tem Free Tier na API (limit: 0)
+    this.model = this.genAI.getGenerativeModel({
+      model: "gemini-2.5-flash",
       generationConfig: {
         responseMimeType: "application/json",
       }
