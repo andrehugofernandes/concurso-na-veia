@@ -10,12 +10,7 @@ import { CARGO_ID_MAP } from "@/lib/cargos-map";
 import { cn } from "@/lib/utils";
 import {
   LuTimer,
-  LuTarget,
   LuFlame,
-  LuBookOpen,
-  LuSettings,
-  LuLayoutDashboard,
-  LuChartBar,
   LuZap,
 } from "react-icons/lu";
 
@@ -196,6 +191,41 @@ export default function SimuladoHome({
               ? "Treinamento focado nos conhecimentos técnicos"
               : "O desafio final para sua aprovação"}
         </p>
+
+        {/* Maratona Info Cards */}
+        {tipoPagina === "maratona" && (
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 rounded-2xl bg-primary/5 border border-primary/10">
+              <div className="flex items-center gap-3 mb-2">
+                <LuFlame className="w-5 h-5 text-primary" />
+                <span className="text-sm font-bold text-muted-foreground uppercase">Estrutura</span>
+              </div>
+              <p className="text-foreground font-semibold text-sm">
+                100 questões{usuario?.nivelConcurso === "superior" ? " (20 Port + 15 Mat + 15 Ing + 50 Esp)" : " (20 Port + 20 Mat + 60 Esp)"}
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-primary/5 border border-primary/10">
+              <div className="flex items-center gap-3 mb-2">
+                <LuTimer className="w-5 h-5 text-primary" />
+                <span className="text-sm font-bold text-muted-foreground uppercase">Tempo</span>
+              </div>
+              <p className="text-foreground font-semibold text-sm">
+                Até 4 horas (~2-3 min por questão)
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-primary/5 border border-primary/10">
+              <div className="flex items-center gap-3 mb-2">
+                <LuZap className="w-5 h-5 text-primary" />
+                <span className="text-sm font-bold text-muted-foreground uppercase">Recompensa</span>
+              </div>
+              <p className="text-foreground font-semibold text-sm">
+                +200 XP + Bônus por desempenho
+              </p>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
