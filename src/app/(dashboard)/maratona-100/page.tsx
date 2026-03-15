@@ -185,19 +185,19 @@ export default function Maratona100Page() {
     if (tipo === "maratona") {
       const isSuperior = usuario.nivelConcurso === "superior";
       if (isSuperior) {
-        // Maratona Superior: 20 Port, 15 Mat, 15 Ing, 50 Esp (=100)
+        // Maratona Superior: 20 Port, 15 Mat, 15 Ing, 30 Esp (=80)
         distribuicao = [
           { materia: "Língua Portuguesa", qtd: 20 },
           { materia: "Matemática", qtd: 15 },
           { materia: "Língua Inglesa", qtd: 15 },
-          { materia: "Conhecimentos Específicos", qtd: 50 },
+          { materia: "Conhecimentos Específicos", qtd: 30 },
         ];
       } else {
-        // Maratona Médio: 20 Port, 20 Mat, 60 Esp (=100)
+        // Maratona Médio: 20 Port, 20 Mat, 30 Esp (=70)
         distribuicao = [
           { materia: "Língua Portuguesa", qtd: 20 },
           { materia: "Matemática", qtd: 20 },
-          { materia: "Conhecimentos Específicos", qtd: 60 },
+          { materia: "Conhecimentos Específicos", qtd: 30 },
         ];
       }
     } else if (tipo === "intensivo") {

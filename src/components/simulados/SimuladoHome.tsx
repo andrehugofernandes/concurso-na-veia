@@ -164,8 +164,9 @@ export default function SimuladoHome({
     assunto: string;
   }) => {
     if (tipoPagina === "maratona") {
-      // Maratona: sempre 100 questões, sem modal
-      iniciarSimulado("maratona", 100, "Média", "");
+      // Maratona: 70 questões (médio) ou 80 (superior), sem modal
+      const qtd = usuario.nivelConcurso === "superior" ? 80 : 70;
+      iniciarSimulado("maratona", qtd, "Média", "");
     } else if (materiaSelecionada) {
       iniciarSimulado(
         materiaSelecionada.id as TipoSimulado,
@@ -204,7 +205,7 @@ export default function SimuladoHome({
                 <span className="text-sm font-bold text-muted-foreground uppercase">Estrutura</span>
               </div>
               <p className="text-foreground font-semibold text-sm">
-                100 questões{usuario?.nivelConcurso === "superior" ? " (20 Port + 15 Mat + 15 Ing + 50 Esp)" : " (20 Port + 20 Mat + 60 Esp)"}
+                {usuario?.nivelConcurso === "superior" ? "80 questões (20 Port + 15 Mat + 15 Ing + 30 Esp)" : "70 questões (20 Port + 20 Mat + 30 Esp)"}
               </p>
             </div>
 
@@ -214,7 +215,7 @@ export default function SimuladoHome({
                 <span className="text-sm font-bold text-muted-foreground uppercase">Tempo</span>
               </div>
               <p className="text-foreground font-semibold text-sm">
-                Até 4 horas (~2-3 min por questão)
+                Até 4h30 (~3-4 min por questão)
               </p>
             </div>
 
@@ -237,7 +238,7 @@ export default function SimuladoHome({
         {tipoPagina === "maratona" ? (
           // Card único para Maratona
           <button
-            onClick={() => handleConfirmSimulado({ quantidade: 100, dificuldade: "Média", assunto: "" })}
+            onClick={() => handleConfirmSimulado({ quantidade: usuario.nivelConcurso === "superior" ? 80 : 70, dificuldade: "Média", assunto: "" })}
             disabled={gerandoQuestoes}
             className="group relative flex flex-col bg-gradient-to-br from-primary/20 via-primary/10 to-transparent dark:from-primary/30 dark:via-primary/15 dark:to-transparent rounded-3xl border-2 border-primary/30 dark:border-primary/20 p-8 w-full max-w-md hover:border-primary/60 dark:hover:border-primary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
           >
@@ -253,12 +254,12 @@ export default function SimuladoHome({
               Começar Maratona
             </h2>
             <p className="text-muted-foreground text-sm mb-6">
-              Enfrente o desafio final com 100 questões no estilo CESGRANRIO. Você tem até 4h30 para completar!
+              Enfrente o desafio final com {usuario?.nivelConcurso === "superior" ? "80" : "70"} questões no estilo CESGRANRIO. Você tem até 4h30 para completar!
             </p>
 
             {/* Button */}
             <button
-              onClick={() => handleConfirmSimulado({ quantidade: 100, dificuldade: "Média", assunto: "" })}
+              onClick={() => handleConfirmSimulado({ quantidade: usuario.nivelConcurso === "superior" ? 80 : 70, dificuldade: "Média", assunto: "" })}
               disabled={gerandoQuestoes}
               className="mt-auto px-6 py-3 bg-gradient-to-r from-primary to-primary/80 text-white font-bold uppercase tracking-wide rounded-xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1 transition-all active:scale-95 disabled:opacity-50"
             >
