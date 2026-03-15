@@ -696,7 +696,7 @@ export default function DashboardPage() {
                       <div className="absolute inset-0 z-10 bg-black/80 backdrop-blur-[2px] flex flex-col items-center justify-center p-4 text-center transition-opacity">
                         <div className="text-5xl mb-3">👑</div>
                         <h3 className="text-xl font-bold text-white mb-1">
-                          Maratona 100
+                          Maratona CESGRANRIO
                         </h3>
                         <p className="text-gray-300 text-sm mb-4">
                           Teste seus limites como no dia da prova!
@@ -712,7 +712,7 @@ export default function DashboardPage() {
                         <div className="bg-gradient-to-r from-yellow-500 to-orange-500 p-6 text-slate-900 rounded-lg mb-4">
                           <div className="text-4xl mb-2">🔥</div>
                           <h3 className="text-xl font-bold">
-                            Maratona 100 Questões
+                            Maratona 70 Questões
                           </h3>
                         </div>
                         <div className="p-2 flex justify-between">
@@ -783,9 +783,9 @@ export default function DashboardPage() {
                         setConfigModal({
                           open: true,
                           tipo: "maratona",
-                          nome: "Maratona Petrobras",
+                          nome: "Maratona CESGRANRIO",
                           cor: "yellow",
-                          qtd: 100,
+                          qtd: 70,
                         })
                       }
                       className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border hover:border-yellow-500/50 transition-all group text-left w-full shadow-lg"
