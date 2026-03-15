@@ -89,29 +89,32 @@ export function SimuladoConfigModal({
                         </div>
                     </div>
 
-                    {/* Assunto */}
-                    <div className="space-y-4">
-                        <label className="text-[13px] font-bold text-[#121214]/40 dark:text-white/40 tracking-wide">
-                            Assunto Específico (Opcional)
-                        </label>
-                        <div className="relative group">
-                            <select
-                                value={assunto}
-                                onChange={(e) => setAssunto(e.target.value)}
-                                className="w-full bg-white dark:bg-[#121214] border-2 border-[#F3B31C] rounded-xl py-4 px-5 text-[15px] font-bold text-[#121214] dark:text-white appearance-none outline-none focus:ring-2 focus:ring-[#F3B31C]/20 transition-all cursor-pointer shadow-sm"
-                            >
-                                <option value="all">Todos os tópicos (Misturado)</option>
-                                {topicos.map((t) => (
-                                    <option key={t.id || t.titulo} value={t.titulo}>
-                                        {t.titulo}
-                                    </option>
-                                ))}
-                            </select>
-                            <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
-                                <span className="text-[#F3B31C] text-lg">▾</span>
+                    {/* Assunto - Apenas se houver tópicos variados */}
+                    {topicos.length > 0 && (
+                        <div className="space-y-4">
+                            <label className="text-[13px] font-bold text-[#121214]/40 dark:text-white/40 tracking-wide">
+                                Assunto Específico (Opcional)
+                            </label>
+                            <div className="relative group">
+                                <select
+                                    value={assunto}
+                                    onChange={(e) => setAssunto(e.target.value)}
+                                    className="w-full bg-white dark:bg-[#121214] border-2 border-[#F3B31C] rounded-xl py-4 px-5 text-[15px] font-bold text-[#121214] dark:text-white appearance-none outline-none focus:ring-2 focus:ring-[#F3B31C]/20 transition-all cursor-pointer shadow-sm"
+                                >
+                                    <option value="all">Todos os tópicos (Misturado)</option>
+                                    {/* Deduplicação programática para evitar erros de key */}
+                                    {Array.from(new Map(topicos.map(t => [t.titulo, t])).values()).map((t) => (
+                                        <option key={t.id || t.titulo} value={t.titulo}>
+                                            {t.titulo}
+                                        </option>
+                                    ))}
+                                </select>
+                                <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
+                                    <span className="text-[#F3B31C] text-lg">▾</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
 
                     {/* Action */}
                     <Button

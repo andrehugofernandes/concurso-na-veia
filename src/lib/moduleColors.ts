@@ -11,51 +11,57 @@
 
 /**
  * Cores Tailwind para cada módulo (1-10)
+ * 1-5: -300 (claro/vibrante)
+ * 6-10: -900 (muito escuro)
  */
 const MODULE_COLORS = [
-  "blue-500",    // 1
-  "cyan-500",    // 2
-  "emerald-500", // 3
-  "teal-500",    // 4
-  "violet-500",  // 5
-  "amber-500",   // 6
-  "orange-500",  // 7
-  "red-500",     // 8
-  "pink-500",    // 9
-  "indigo-500"   // 10
+  "amber-300",    // 1 - Âmbar Claro
+  "blue-300",     // 2 - Azul Claro
+  "emerald-300",  // 3 - Esmeralda Clara
+  "rose-300",     // 4 - Vermelho Claro
+  "violet-300",   // 5 - Violeta Clara
+  "amber-900",    // 6 - Âmbar Muito Escuro
+  "blue-900",     // 7 - Azul Muito Escuro
+  "emerald-900",  // 8 - Esmeralda Muito Escura
+  "rose-900",     // 9 - Vermelho Muito Escuro
+  "violet-900"    // 10 - Violeta Muito Escura
 ] as const;
 
 /**
  * Cores Hex para cada módulo (1-10)
  * Usar quando Tailwind não for disponível (SVG, canvas, etc)
+ * 1-5: -300 (claro/vibrante)
+ * 6-10: -900 (muito escuro)
  */
 const MODULE_COLORS_HEX = [
-  "#3b82f6",  // 1 - Azul
-  "#06b6d4",  // 2 - Ciano
-  "#10b981",  // 3 - Esmeralda
-  "#14b8a6",  // 4 - Teal
-  "#a78bfa",  // 5 - Violeta
-  "#f59e0b",  // 6 - Âmbar
-  "#f97316",  // 7 - Laranja
-  "#ef4444",  // 8 - Vermelho
-  "#ec4899",  // 9 - Rosa
-  "#6366f1"   // 10 - Índigo
+  "#fcd34d",  // 1 - Âmbar Claro
+  "#93c5fd",  // 2 - Azul Claro
+  "#a7f3d0",  // 3 - Esmeralda Clara
+  "#fb7185",  // 4 - Vermelho Claro
+  "#e9d5ff",  // 5 - Violeta Clara
+  "#78350f",  // 6 - Âmbar Muito Escuro
+  "#1e3a8a",  // 7 - Azul Muito Escuro
+  "#064e3b",  // 8 - Esmeralda Muito Escura
+  "#500724",  // 9 - Vermelho Muito Escuro
+  "#4c0519"   // 10 - Violeta Muito Escura
 ] as const;
 
 /**
  * Variantes para ModuleBanner e ModuleSectionHeader
+ * 1-5: versão clara (-300)
+ * 6-10: versão escura (-900)
  */
 const MODULE_VARIANTS = [
+  "amber",
   "blue",
-  "cyan",
   "emerald",
-  "teal",
+  "rose",
   "violet",
   "amber",
-  "orange",
-  "red",
-  "pink",
-  "indigo"
+  "blue",
+  "emerald",
+  "rose",
+  "violet"
 ] as const;
 
 export type ModuleVariant = typeof MODULE_VARIANTS[number];
@@ -64,16 +70,16 @@ export type ModuleVariant = typeof MODULE_VARIANTS[number];
  * Nomes descritivos das cores para documentação
  */
 const MODULE_COLOR_NAMES = [
-  "Azul Primário",
-  "Ciano",
-  "Esmeralda",
-  "Teal",
-  "Violeta",
-  "Âmbar",
-  "Laranja",
-  "Vermelho",
-  "Rosa",
-  "Índigo"
+  "Âmbar Claro",
+  "Azul Claro",
+  "Esmeralda Clara",
+  "Vermelho Claro",
+  "Violeta Clara",
+  "Âmbar Muito Escuro",
+  "Azul Muito Escuro",
+  "Esmeralda Muito Escura",
+  "Vermelho Muito Escuro",
+  "Violeta Muito Escura"
 ] as const;
 
 /**

@@ -103,6 +103,21 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'petroleo', titulo: 'Petróleo e Derivados', descricao: 'Refino e produtos do petróleo', duracao: '10 min', ordem: 8 },
         ]
     },
+    // ===== CONHECIMENTOS ESPECÍFICOS - ADMINISTRAÇÃO =====
+    {
+        id: 'especifica-bloco-i-gestao-estrategica',
+        nome: 'Bloco I - Gestão Estratégica',
+        descricao: 'Conhecimentos específicos para Administração - Planejamento, Processos, Projetos e Governança',
+        icone: '📚',
+        cor: 'from-blue-600 to-indigo-600',
+        requiredPlan: 'Ouro',
+        topicos: [
+            { id: 'planejamento-estrategico', titulo: 'Planejamento Estratégico', descricao: 'Análise SWOT, BSC, formulação e implementação de estratégias corporativas', duracao: '60 min', ordem: 1 },
+            { id: 'gestao-de-processos', titulo: 'Gestão de Processos', descricao: 'BPM, mapeamento, modelagem BPMN, melhoria contínua e indicadores', duracao: '60 min', ordem: 2 },
+            { id: 'gestao-de-projetos-pmbok', titulo: 'Gestão de Projetos (PMBOK)', descricao: 'Áreas de conhecimento, ciclo de vida, metodologias ágeis e tradicionais', duracao: '60 min', ordem: 3 },
+            { id: 'governanca-corporativa', titulo: 'Governança Corporativa', descricao: 'Princípios, compliance, gestão de riscos, controles internos e Lei Sarbanes-Oxley', duracao: '60 min', ordem: 4 },
+        ]
+    },
     {
         id: 'ingles',
         nome: 'Língua Inglesa',

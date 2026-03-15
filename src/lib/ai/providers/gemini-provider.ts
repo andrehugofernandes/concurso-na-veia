@@ -12,9 +12,10 @@ export class GeminiProvider implements AIProvider {
       throw new Error("GEMINI_API_KEY não configurada");
     }
     this.genAI = new GoogleGenerativeAI(apiKey);
-    // Usando Gemini 1.5 Flash com JSON Mode nativo
+    // Usando Gemini 3.1 Pro Preview (GA em Fevereiro 2026) 
+    // Suporta nativamente Respostas Estruturadas, Batch API e Execução de Código
     this.model = this.genAI.getGenerativeModel({ 
-      model: "gemini-1.5-flash",
+      model: "gemini-3.1-pro-preview",
       generationConfig: {
         responseMimeType: "application/json",
       }
@@ -126,19 +127,31 @@ DIVERSIDADE:
           provider: 'gemini'
         };
       });
-    } catch (error) {
-      console.error("[Gemini-Batch] Erro:", error);
-      throw new Error("Falha ao gerar lote de questões com Gemini");
+    } catch (error: any) {
+      const errorMessage = error.message || 'Erro desconhecido';
+      console.error("[Gemini-Batch] Erro Crítico:", errorMessage);
+      
+      // Preserva o código 429 ou a mensagem de Rate Limit para que a Action possa retentar
+      if (errorMessage.includes('429') || errorMessage.toLowerCase().includes('rate limit')) {
+        throw new Error(`[Rate Limit] Gemini atingiu o limite de requisições. ${errorMessage}`);
+      }
+      
+      throw new Error(`Falha ao gerar lote de questões com Gemini: ${errorMessage}`);
     }
   }
 
   private parseResponse(text: string, options: AIProviderOptions): Questao {
     try {
-      // Limpeza básica de blocos de código
-      const jsonStr = text.replace(/```json/g, "").replace(/```/g, "").trim();
+      // Tenta extrair apenas o conteúdo JSON caso o modelo tenha retornado texto extra
+      let jsonStr = text.trim();
+      const jsonMatch = text.match(/\{[\s\S]*\}/) || text.match(/\[[\s\S]*\]/);
+      if (jsonMatch) {
+        jsonStr = jsonMatch[0];
+      }
+
       const data = JSON.parse(jsonStr);
 
-      // Randomização programática extra
+      // Randomização programática extra para garantir que a resposta correta não esteja sempre na mesma posição
       const originalCorretaText = data.alternativas[data.correta];
       const shuffled = [...data.alternativas];
       for (let i = shuffled.length - 1; i > 0; i--) {
@@ -157,9 +170,9 @@ DIVERSIDADE:
         geradaPorIA: true,
         provider: 'gemini'
       };
-    } catch (error) {
-      console.error("[Gemini] Erro ao parsear JSON:", text);
-      throw new Error("Falha ao processar resposta do Gemini");
+    } catch (error: any) {
+      console.error("[Gemini] Erro ao parsear JSON. Texto recebido:", text.substring(0, 200) + "...");
+      throw new Error(`Falha ao processar resposta do Gemini: ${error.message}`);
     }
   }
 }

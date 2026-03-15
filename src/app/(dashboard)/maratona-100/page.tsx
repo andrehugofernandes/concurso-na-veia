@@ -10,7 +10,7 @@ import ResultadoScreen from "@/components/ResultadoScreen";
 import SimuladoHome from "@/components/simulados/SimuladoHome";
 import { CONTEUDO_MATERIAS } from "@/data/conteudo";
 import { ActionResponse } from "@/lib/actions/safe-action";
-import { gerarQuestaoAction } from "@/lib/actions/questoes";
+import { gerarQuestaoAction, gerarQuestoesLoteAction } from "@/lib/actions/questoes";
 import { getCurrentUserAction } from "@/lib/actions/auth";
 
 const usuarioInicial: Usuario = {
@@ -51,6 +51,7 @@ export default function Maratona100Page() {
   const [totalGeracao, setTotalGeracao] = useState(0);
   const [tempoLimite, setTempoLimite] = useState<number | null>(null); // em segundos
   const [tempoEsgotado, setTempoEsgotado] = useState(false);
+  const [contagemRegressivaIA, setContagemRegressivaIA] = useState(0);
 
   // Carregar dados
   useEffect(() => {
@@ -128,6 +129,17 @@ export default function Maratona100Page() {
     return () => clearInterval(intervalo);
   }, [cronometroAtivo, tempoLimite]);
 
+  // Cronômetro para o Rate Limit da IA
+  useEffect(() => {
+    let intervalo: NodeJS.Timeout;
+    if (contagemRegressivaIA > 0) {
+      intervalo = setInterval(() => {
+        setContagemRegressivaIA((prev) => prev - 1);
+      }, 1000);
+    }
+    return () => clearInterval(intervalo);
+  }, [contagemRegressivaIA]);
+
   // Efeito para encerrar prova quando tempo esgota
   useEffect(() => {
     if (tempoEsgotado && simuladoAtual && tela === "simulado") {
@@ -135,32 +147,25 @@ export default function Maratona100Page() {
     }
   }, [tempoEsgotado]);
 
-  const gerarQuestaoIA = async (
+  const gerarQuestoesLote = async (
     materia: string,
+    quantidade: number,
     dificuldade?: string,
-    assunto?: string,
-    questoesAnteriores?: string[],
-  ): Promise<Questao> => {
-    const cargoContexto = usuario.cargo;
-
-    const result = await gerarQuestaoAction({
+    assunto?: string
+  ): Promise<Questao[]> => {
+    const result = await gerarQuestoesLoteAction({
       materia,
+      quantidade,
       dificuldade: (dificuldade as any) || "Média",
       assunto,
-      questoesAnteriores,
       contexto: {
-        cargo: cargoContexto || "Geral",
+        cargo: usuario.cargo || "Geral",
         nivel: usuario.nivelConcurso || "medio",
       },
     });
 
-    if (result.status === "error") {
-      console.error(`[FRONTEND] Erro na Server Action:`, result.error);
-      throw new Error(result.error || "Erro ao gerar questão");
-    }
-
-    if (!result.data) {
-      throw new Error("Não foi possível obter os dados da questão.");
+    if (result.status === "error" || !result.data) {
+      throw new Error(result.error || "Erro ao gerar lote");
     }
 
     return result.data;
@@ -249,16 +254,18 @@ export default function Maratona100Page() {
     setTotalGeracao(quantidade);
     setProgressoGeracao(0);
 
-    // Loop de geração
+    // Loop de geração por lotes
     for (const item of distribuicao) {
-      for (let i = 0; i < item.qtd; i++) {
-        // Break early if global quantity reached (safety)
-        if (questoes.length >= quantidade) break;
-
+      let restantes = item.qtd;
+      
+      while (restantes > 0) {
+        // Reduzido para 5 no Gemini para maior estabilidade no Free Tier
+        const batchSize = Math.min(restantes, 5);
+        
         try {
           let dificuldade = dificuldadeManual || dificuldadeUrl || undefined;
 
-          // Ajuste automático de dificuldade se não especificado
+          // Ajuste automático de dificuldade
           if (!dificuldade) {
             const taxaAcerto =
               usuario.questoesCertas /
@@ -268,38 +275,45 @@ export default function Maratona100Page() {
             else if (taxaAcerto < 0.5) dificuldade = "Fácil";
           }
 
-          const questoesAnteriores = questoes.map((q) =>
-            q.enunciado.substring(0, 80),
-          );
+          // Delay menor entre lotes
+          if (questoes.length > 0) await new Promise((r) => setTimeout(r, 1000));
 
-          // Delay maior para evitar rate limit (1500ms entre requisições)
-          if (questoes.length > 0) await new Promise((r) => setTimeout(r, 1500));
-
-          const questao = await gerarQuestaoIA(
+          const lote = await gerarQuestoesLote(
             item.materia,
+            batchSize,
             dificuldade,
-            item.assunto,
-            questoesAnteriores,
+            item.assunto
           );
-          questoes.push(questao);
+          
+          questoes.push(...lote);
+          restantes -= lote.length;
           setProgressoGeracao(questoes.length);
-        } catch (error) {
-          console.error(
-            `Erro ao gerar questão ${i + 1} de ${item.materia}:`,
-            error,
-          );
-          // Retentativa simples
+        } catch (error: any) {
+          console.error(`[MARATONA] Erro no lote de ${item.materia}:`, error.message);
+          
+          // Se for Rate Limit, espera mais tempo (15s) e tenta de novo o lote
+          if (error.message.includes('Rate Limit') || error.message.includes('429')) {
+             console.log("[MARATONA] Limite de taxa atingido. Respirando por 15s...");
+             setContagemRegressivaIA(15);
+             await new Promise((r) => setTimeout(r, 15000));
+             continue; // Tenta o mesmo lote de novo
+          }
+
+          // Fallback individual em caso de outros erros
           try {
-            const questao = await gerarQuestaoIA(
-              item.materia,
-              "Média",
-              item.assunto,
-              [],
-            );
-            questoes.push(questao);
+            console.log(`[MARATONA] Tentando fallback individual para ${item.materia}...`);
+            const individual = await gerarQuestoesLote(item.materia, 1, "Média", item.assunto);
+            questoes.push(...individual);
+            restantes -= 1;
             setProgressoGeracao(questoes.length);
-          } catch (retryError) {
-            console.error("Falha na retentativa:", retryError);
+          } catch (retryError: any) {
+            console.error("[MARATONA] Falha total na retentativa:", retryError.message);
+            // Se for rate limit aqui também, espera
+            if (retryError.message.includes('Rate Limit') || retryError.message.includes('429')) {
+               setContagemRegressivaIA(20);
+               await new Promise((r) => setTimeout(r, 20000));
+            }
+            restantes -= 1; // Pula para não travar o loop
           }
         }
       }
@@ -518,7 +532,13 @@ export default function Maratona100Page() {
   };
 
   if (tela === "gerando") {
-    return <LoadingScreen current={progressoGeracao} total={totalGeracao} />;
+    return (
+      <LoadingScreen
+        current={progressoGeracao}
+        total={totalGeracao}
+        timeRemaining={contagemRegressivaIA}
+      />
+    );
   }
 
   // Se tem parâmetros de URL e está na home, mostra loading enquanto inicia
