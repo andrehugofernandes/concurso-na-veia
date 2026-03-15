@@ -153,7 +153,7 @@ export default function SimuladoHome({
         descricao: "Desafio supremo de 100 questões",
         icone: "🔥",
         cor: "from-red-600 to-orange-600",
-        topicos: Array(10).fill({ titulo: "Simulação Real do Edital" }),
+        topicos: [{ titulo: "Simulação Real do Edital" }],
       },
     ];
   }
@@ -179,7 +179,7 @@ export default function SimuladoHome({
   };
 
   return (
-    <div className="p-2 md:p-4">
+    <div className="w-full md:p-[80px]">
       {/* Page Header */}
       <div className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-foreground uppercase tracking-tight">

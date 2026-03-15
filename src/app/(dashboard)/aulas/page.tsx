@@ -30,7 +30,7 @@ export default function AulasPage() {
     }
 
     return (
-        <div className="p-2 md:p-4">
+        <div className="p-2 md:p-[80px]">
             {/* Back Link */}
             <Link href="/dashboard" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition mb-6 group">
                 <span className="group-hover:-translate-x-1 transition-transform">←</span> Voltar ao Dashboard

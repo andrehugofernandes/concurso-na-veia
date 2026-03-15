@@ -3,13 +3,13 @@
 import { use, useEffect, useState } from "react";
 import Link from "next/link";
 import { getMateriaById, MateriaConteudo } from "@/data/conteudo";
+import { getProgramaDeEstudos } from "@/data/programa-estudos";
 import { useAllAulasProgress } from "@/hooks/useAulaProgress";
 import { notFound } from "next/navigation";
-import { carregarUsuario, cn } from "@/lib/utils";
+import { carregarUsuario } from "@/lib/utils";
 import { getCurrentUserAction } from "@/lib/actions/auth";
 import { Usuario } from "@/lib/types";
 import { getProfissaoById } from "@/lib/profissoes-edital";
-import AulaPontuacao from "@/components/aulas/AulaPontuacao";
 import { useSetPageTitle } from "@/contexts/UIContext";
 
 // Mapeamento de IDs do registro para IDs do profissoes-edital
@@ -68,10 +68,25 @@ export default function MateriaPage({ params }: PageProps) {
         setMateria(materiaEncontrada);
       }
 
-      // 2. Se for conhecimentos-especificos, criar dinamicamente
+      // 2. Se for matéria específica (especifica-bloco-*), resolver via programa de estudos
+      if (!materiaEncontrada && materiaId.startsWith("especifica-")) {
+        try {
+          const cargoId = usuario?.cargo;
+          if (cargoId) {
+            const programa = getProgramaDeEstudos(cargoId);
+            const especifica = programa.find((m) => m.id === materiaId);
+            if (especifica) {
+              setMateria(especifica);
+            }
+          }
+        } catch (error) {
+          console.error("[Aulas/Materia] Erro ao carregar específica:", error);
+        }
+      }
+
+      // 3. Fallback legado: conhecimentos-especificos
       if (materiaId === "conhecimentos-especificos") {
         try {
-          // Use the 'usuario' state which is loaded by the other useEffect
           const cargoIdOriginal = usuario?.cargo;
           const cargoId = cargoIdOriginal
             ? CARGO_ID_MAP[cargoIdOriginal] || cargoIdOriginal
@@ -110,7 +125,7 @@ export default function MateriaPage({ params }: PageProps) {
     };
 
     loadMateriaData();
-  }, [materiaId]);
+  }, [materiaId, usuario]);
 
   const { getProgress, loading: progressLoading } = useAllAulasProgress();
 
@@ -179,7 +194,7 @@ export default function MateriaPage({ params }: PageProps) {
   }
 
   return (
-    <div className="px-4 py-3 md:p-4">
+    <div className="px-4 py-3 md:p-[80px]">
       {/* Back Link */}
       <Link
         href="/aulas"

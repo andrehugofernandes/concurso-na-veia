@@ -188,7 +188,7 @@ function DashboardShell({
           isMobileSidebarOpen={isMobileSidebarOpen && isMobile}
         />
 
-        {/* Page Content */}
+        {/* ⚠️ IMUTÁVEL: md:p-0 é obrigatório — qualquer padding aqui quebra o StickyModuleNav */}
         <main className="py-4 px-2 sm:py-6 sm:px-4 md:p-0 pb-20 sm:pb-6 relative w-full">
           {children}
         </main>

@@ -90,7 +90,7 @@ export default function SejaProPage() {
     ];
 
     return (
-        <div className="p-2 md:p-4">
+        <div className="p-2 md:p-[80px]">
             {/* Page Header */}
             <div className="mb-12">
                 <h1 className="text-4xl md:text-5xl font-black text-foreground uppercase tracking-tight flex items-center gap-4">
