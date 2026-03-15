@@ -15,7 +15,6 @@ import {
   CardCarousel,
   Comparison,
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   LuBookOpen,
@@ -207,7 +206,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="O Conceito de Reescritura"
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -315,7 +314,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={2}
               title="Manutenção de Sentido vs Adequação de Registro"
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
             <p className="text-muted-foreground leading-relaxed text-sm">
               Na reescrita, há dois planos independentes que podem ser alterados
@@ -338,7 +337,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Tipos de Reescrita Cobrados pela Banca"
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
             <CardCarousel
               cards={[
@@ -380,7 +379,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={4}
               title="O Que a CESGRANRIO Realmente Avalia"
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
             <Comparison
               title="Questão Mal Respondida vs Bem Respondida"
@@ -415,7 +414,7 @@ export default function AulaReescritaFrases({
             titulo="Fixação - Módulo 1"
             icone="🎯"
             numero={1}
-            variant={getModuleVariant(1)}
+            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
@@ -435,7 +434,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="A Precisão das Palavras"
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
             <ContentAccordion
               slides={[
@@ -531,7 +530,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={2}
               title="Sinonímia: Sentido Formal vs Informal"
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
             <Comparison
               title="Equivalência de Registro — Exemplo Prático"
@@ -564,7 +563,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Pares de Palavras que a Banca Adora Confundir"
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -590,7 +589,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={4}
               title="Léxico Técnico Petrobras — Palavras que a Banca Usa"
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
             <p className="text-muted-foreground text-sm leading-relaxed">
               O vocabulário técnico do setor de energia tem equivalentes formais
@@ -638,7 +637,7 @@ export default function AulaReescritaFrases({
             titulo="Fixação - Módulo 2"
             icone="🎯"
             numero={2}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
@@ -658,7 +657,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="A Travessia (Vozes)"
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
             <ContentAccordion
               slides={[
@@ -782,7 +781,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={2}
               title="Armadilha CESGRANRIO: Passiva em Forma de Nominalização"
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
             <AlertBox tipo="danger" titulo="Armadilha CESGRANRIO — Passiva Disfarçada">
               A banca frequentemente apresenta nominalizações como reescritas
@@ -807,7 +806,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Casos Especiais de Voz Passiva"
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
             <ContentAccordion
               slides={[
@@ -908,7 +907,7 @@ export default function AulaReescritaFrases({
             titulo="Fixação - Módulo 3"
             icone="🎯"
             numero={3}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>
@@ -928,7 +927,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="Direto & Indireto"
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
             <ContentAccordion
               slides={[
@@ -1035,7 +1034,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={2}
               title="Exemplo Completo: Direto → Indireto"
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
             <Comparison
               title="Discurso Direto vs Indireto — Caso Real"
@@ -1070,7 +1069,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Mapa de Advérbios Temporais"
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -1096,7 +1095,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={4}
               title="Verbos Introdutores de Discurso Indireto"
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
             <p className="text-muted-foreground text-sm leading-relaxed">
               O verbo que introduz o discurso indireto determina como a
@@ -1151,7 +1150,7 @@ export default function AulaReescritaFrases({
             titulo="Fixação - Módulo 4"
             icone="🎯"
             numero={4}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </div>
@@ -1171,7 +1170,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="Verbo para Substantivo"
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <ContentAccordion
               slides={[
@@ -1260,7 +1259,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={2}
               title="Nominalização: Antes e Depois"
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <Comparison
               title="Frase Verbal vs Frase Nominalizada"
@@ -1286,7 +1285,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Léxico de Nominalizações Frequentes"
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <CardCarousel
               cards={[
@@ -1328,7 +1327,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={4}
               title="Sufixos Nominalizadores — Como Identificar o Substantivo Correto"
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Em provas de reescrita, a banca às vezes apresenta uma
@@ -1408,7 +1407,7 @@ export default function AulaReescritaFrases({
             titulo="Fixação - Módulo 5"
             icone="🎯"
             numero={5}
-            variant={getModuleVariant(6)}
+            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
         </div>
@@ -1428,7 +1427,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="Nexos Equivalentes"
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <ContentAccordion
               slides={[
@@ -1552,7 +1551,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={2}
               title="Conectivos Causais: Registro Informal vs Formal"
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <Comparison
               title="Substituição de Causal — Diferença de Registro"
@@ -1589,7 +1588,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Mapa Completo de Conjunções por Valor Lógico"
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Em reescrita, a equivalência conjuntiva só é válida dentro do
@@ -1651,7 +1650,7 @@ export default function AulaReescritaFrases({
             titulo="Fixação - Módulo 6"
             icone="🎯"
             numero={6}
-            variant={getModuleVariant(6)}
+            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
         </div>
@@ -2079,7 +2078,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="Padrões de Elite — As Trocas Favoritas da Banca"
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -2190,7 +2189,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={2}
               title="Os 5 Erros que Derrubam Candidatos"
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
             <AlertBox tipo="danger" titulo="Armadilhas Recorrentes em Provas Petrobras">
               A CESGRANRIO repete padrões de erro em provas diferentes. Conhecê-los
@@ -2237,7 +2236,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Comparação de Reescritas — Laboratório Prático"
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
             <Comparison
               title="Armadilha: Pronome Relativo 'Onde' vs 'Em que'"
@@ -2284,7 +2283,7 @@ export default function AulaReescritaFrases({
             titulo="Fixação - Módulo 9 (Laboratório CESGRANRIO)"
             icone="🎯"
             numero={9}
-            variant={getModuleVariant(1)}
+            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
         </div>
@@ -2304,7 +2303,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="Revisão Express — Todas as Técnicas"
-              variant={getModuleVariant(10)}
+              variant="indigo"
             />
             <ContentAccordion
               slides={[
@@ -2409,7 +2408,7 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={2}
               title="Estratégia de Prova"
-              variant={getModuleVariant(10)}
+              variant="indigo"
             />
             <AlertBox tipo="info" titulo="Recapitulação Final">
               A reescrita bem-sucedida é aquela em que você leria a frase nova num
@@ -2456,7 +2455,7 @@ export default function AulaReescritaFrases({
             titulo="Simulado de Conclusão"
             icone="🏆"
             numero={10}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
           />
         </div>

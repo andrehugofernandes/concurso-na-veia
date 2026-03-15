@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
   ModuleConsolidation,
-
+  
   AlertBox,
   QuizInterativo,
   ModuleBanner,
@@ -21,7 +21,6 @@ import {
   ModuleSectionHeader,
 
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 import { LuBookOpen, LuMusic } from "react-icons/lu";
 import {
   QUIZ_M1_CONCEITOS,
@@ -175,7 +174,7 @@ export default function AulaConjuntos({
               index={1}
               title="O que é um Conjunto?"
               description="A pedra fundamental da Matemática para concursos."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             {/* ACORDEON 1: DEFINIÇÃO DE CONJUNTO */}
@@ -511,7 +510,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={2}
               title="Subconjuntos e Conjunto Potência"
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -570,7 +569,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={3}
               title="Resumo e Multimídia"
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-8"
             />
             <LessonTabs
@@ -632,7 +631,7 @@ export default function AulaConjuntos({
           <section id="quiz-modulo-1" className="mt-16">
           <ModuleConsolidation
             index={1}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 1",
@@ -672,7 +671,7 @@ export default function AulaConjuntos({
               titulo="Quiz - Fundamentos de Conjuntos"
               icone="🧠"
               numero={1}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -692,7 +691,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={1}
               title="União (∪) e Interseção (∩)"
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <ContentAccordion
@@ -764,7 +763,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={2}
               title="Diferença e Complementar"
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <ContentAccordion
@@ -846,7 +845,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={3}
               title="Resumo e Multimídia"
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-8"
             />
             <LessonTabs
@@ -890,7 +889,7 @@ export default function AulaConjuntos({
           <section id="quiz-modulo-2" className="mt-16">
           <ModuleConsolidation
             index={2}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 2",
@@ -930,7 +929,7 @@ export default function AulaConjuntos({
               titulo="Quiz - Operações com Conjuntos"
               icone="🧠"
               numero={2}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -951,7 +950,7 @@ export default function AulaConjuntos({
               index={1}
               title="Diagramas de Venn"
               description="Transforme problemas complexos em simples."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1045,7 +1044,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={2}
               title="Fórmula da Cardinalidade"
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1135,7 +1134,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={3}
               title="Resumo e Multimídia"
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-8"
             />
             <LessonTabs
@@ -1181,7 +1180,7 @@ export default function AulaConjuntos({
           <section id="quiz-modulo-3" className="mt-16">
           <ModuleConsolidation
             index={3}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 3",
@@ -1221,7 +1220,7 @@ export default function AulaConjuntos({
               titulo="Quiz - Diagramas de Venn"
               icone="🧠"
               numero={3}
-              variant={getModuleVariant(1)}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -1241,7 +1240,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={1}
               title="Os 5 Conjuntos Numéricos"
-              variant={getModuleVariant(6)}
+              variant="amber"
               className="mb-6"
             />
             <CardCarousel
@@ -1291,7 +1290,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={2}
               title="Intervalos na Reta Real"
-              variant={getModuleVariant(6)}
+              variant="amber"
               className="mb-6"
             />
             <ContentAccordion
@@ -1370,7 +1369,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={3}
               title="Resumo e Multimídia"
-              variant={getModuleVariant(6)}
+              variant="amber"
               className="mb-8"
             />
             <LessonTabs
@@ -1408,7 +1407,7 @@ export default function AulaConjuntos({
           <section id="quiz-modulo-4" className="mt-16">
           <ModuleConsolidation
             index={4}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 4",
@@ -1448,7 +1447,7 @@ export default function AulaConjuntos({
               titulo="Quiz - Conjuntos Numéricos"
               icone="🔥"
               numero={4}
-              variant={getModuleVariant(6)}
+              variant="amber"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -1468,7 +1467,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index="🎯"
               title="Missão Cumprida?"
-              variant={getModuleVariant(9)}
+              variant="rose"
               className="mb-8"
             />
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
@@ -1494,7 +1493,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={2}
               title="Resumo Final"
-              variant={getModuleVariant(9)}
+              variant="rose"
               className="mb-8"
             />
             <LessonTabs
@@ -1538,7 +1537,7 @@ export default function AulaConjuntos({
           <section id="quiz-modulo-5" className="mt-16">
           <ModuleConsolidation
             index={5}
-            variant={getModuleVariant(6)}
+            variant="amber"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 5",
@@ -1578,7 +1577,7 @@ export default function AulaConjuntos({
               titulo="Simulado Final - Teoria dos Conjuntos"
               icone="🏆"
               numero={5}
-              variant={getModuleVariant(9)}
+              variant="rose"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -1599,7 +1598,7 @@ export default function AulaConjuntos({
               index={1}
               title="Fórmula para 2 Conjuntos"
               description="O princípio base: contar sem duplicar."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -1708,7 +1707,7 @@ export default function AulaConjuntos({
               index={2}
               title="Extensão para 3 Conjuntos"
               description="A fórmula completa — e a favorita das provas difíceis."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -1792,7 +1791,7 @@ export default function AulaConjuntos({
               index={3}
               title="Casos Especiais"
               description="Quando a geometria dos conjuntos simplifica o cálculo."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -1857,7 +1856,7 @@ export default function AulaConjuntos({
           <section id="quiz-modulo-6" className="mt-16">
           <ModuleConsolidation
             index={6}
-            variant={getModuleVariant(9)}
+            variant="rose"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 6",
@@ -1897,7 +1896,7 @@ export default function AulaConjuntos({
               titulo="Quiz — Inclusão-Exclusão"
               icone="➕"
               numero={6}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -1918,7 +1917,7 @@ export default function AulaConjuntos({
               index={1}
               title="Naturais (ℕ): A Origem dos Números"
               description="Os primeiros números que existiram — e que a CESGRANRIO usa para criar armadilhas."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -1978,7 +1977,7 @@ export default function AulaConjuntos({
               index={2}
               title="Inteiros (ℤ): Incluindo os Negativos"
               description="O que acontece quando a medição pode ser abaixo do zero?"
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -2093,7 +2092,7 @@ export default function AulaConjuntos({
               index={3}
               title="Racionais (ℚ): Frações e Dízimas"
               description="Todo número que pode ser escrito como fração p/q."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -2182,7 +2181,7 @@ export default function AulaConjuntos({
           <section id="quiz-modulo-7" className="mt-16">
           <ModuleConsolidation
             index={7}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 7",
@@ -2222,7 +2221,7 @@ export default function AulaConjuntos({
               titulo="Quiz — ℕ, ℤ, ℚ em Profundidade"
               icone="🔢"
               numero={7}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -2243,7 +2242,7 @@ export default function AulaConjuntos({
               index={1}
               title="Números Irracionais"
               description="Dízimas infinitas sem padrão — impossíveis de escrever como fração."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <ContentAccordion
@@ -2312,7 +2311,7 @@ export default function AulaConjuntos({
               index={2}
               title="ℝ = ℚ ∪ Irracionais"
               description="A reta real completa — sem lacunas, sem buracos."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -2396,7 +2395,7 @@ export default function AulaConjuntos({
               index={3}
               title="Raízes: Quando √n é Irracional?"
               description="Regra rápida para classificar raízes em prova."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -2466,7 +2465,7 @@ export default function AulaConjuntos({
           <section id="quiz-modulo-8" className="mt-16">
           <ModuleConsolidation
             index={8}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 8",
@@ -2506,7 +2505,7 @@ export default function AulaConjuntos({
               titulo="Quiz — Irracionais e ℝ"
               icone="∞"
               numero={8}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -2527,7 +2526,7 @@ export default function AulaConjuntos({
               index={1}
               title="1ª Lei de De Morgan"
               description="O complementar da UNIÃO é a INTERSEÇÃO dos complementares."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -2609,7 +2608,7 @@ export default function AulaConjuntos({
               index={2}
               title="2ª Lei de De Morgan"
               description="O complementar da INTERSEÇÃO é a UNIÃO dos complementares."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -2656,7 +2655,7 @@ export default function AulaConjuntos({
               index={3}
               title="Simplificação em Cascata"
               description="Aplicando De Morgan duas vezes — o nível avançado das provas."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -2765,7 +2764,7 @@ export default function AulaConjuntos({
           <section id="quiz-modulo-9" className="mt-16">
           <ModuleConsolidation
             index={9}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 9",
@@ -2805,7 +2804,7 @@ export default function AulaConjuntos({
               titulo="Quiz — Leis de De Morgan"
               icone="🔁"
               numero={9}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -2826,7 +2825,7 @@ export default function AulaConjuntos({
               index={1}
               title="Revisão Express — Todas as Fórmulas"
               description="Cole na mente antes de entrar na prova."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -2940,7 +2939,7 @@ export default function AulaConjuntos({
               index={2}
               title="Estratégias de Prova CESGRANRIO"
               description="Como resolver qualquer questão de conjuntos em 90 segundos."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6 mt-10"
             />
 
@@ -3169,7 +3168,7 @@ export default function AulaConjuntos({
           <section id="quiz-modulo-10" className="mt-16">
           <ModuleConsolidation
             index={10}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 10",
@@ -3209,7 +3208,7 @@ export default function AulaConjuntos({
               titulo="Simulado Final CESGRANRIO — Teoria dos Conjuntos"
               icone="🏆"
               numero={10}
-              variant={getModuleVariant(9)}
+              variant="rose"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>

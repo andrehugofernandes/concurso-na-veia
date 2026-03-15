@@ -13,7 +13,6 @@ import {
   ModuleSectionHeader,
   ModuleConsolidation,
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 import {
   QUIZ_M1_POLIGONOS,
   QUIZ_M2_TRIANGULOS,
@@ -135,7 +134,7 @@ export default function AulaGeometriaPlana({
               index={1}
               title="O que é um Polígono?"
               description="Definição, nomenclatura e propriedades angulares dos polígonos convexos."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -259,7 +258,7 @@ export default function AulaGeometriaPlana({
               index={2}
               title="Diagonais e Classificação"
               description="Conte diagonais e classifique polígonos quanto à convexidade e regularidade."
-              variant={getModuleVariant(2)}
+              variant="cyan"
               className="mb-6"
             />
             <ContentAccordion
@@ -344,7 +343,7 @@ export default function AulaGeometriaPlana({
 
           <ModuleConsolidation
             index={1}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "aN1mKSMWiow",
               title: "Polígonos: Classificação, Ângulos Internos e Propriedades",
@@ -393,7 +392,7 @@ export default function AulaGeometriaPlana({
               titulo="Quiz — Polígonos"
               icone="🔷"
               numero={1}
-              variant={getModuleVariant(1)}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -448,7 +447,7 @@ export default function AulaGeometriaPlana({
               index={1}
               title="Classificação dos Triângulos"
               description="Quanto aos lados e quanto aos ângulos — dois critérios independentes."
-              variant={getModuleVariant(2)}
+              variant="cyan"
               className="mb-6"
             />
             <ContentAccordion
@@ -551,7 +550,7 @@ export default function AulaGeometriaPlana({
 
           <ModuleConsolidation
             index={2}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "xhEQa-uECe0",
               title: "Triângulos: Classificação, Desigualdade Triangular e Altura",
@@ -604,7 +603,7 @@ export default function AulaGeometriaPlana({
               titulo="Quiz — Triângulos"
               icone="🔺"
               numero={2}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -647,7 +646,7 @@ export default function AulaGeometriaPlana({
               index={1}
               title="Fórmulas de Área do Triângulo"
               description="Da fórmula básica à Fórmula de Heron — domínio completo para qualquer situação."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <ContentAccordion
@@ -741,7 +740,7 @@ export default function AulaGeometriaPlana({
 
           <ModuleConsolidation
             index={3}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "K7eVVVHGDe4",
               title: "Cálculo de Áreas de Triângulos: Fórmulas Principais e Casos Especiais",
@@ -798,7 +797,7 @@ export default function AulaGeometriaPlana({
               titulo="Quiz — Área do Triângulo"
               icone="📐"
               numero={3}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -846,7 +845,7 @@ export default function AulaGeometriaPlana({
               index={1}
               title="Hierarquia dos Quadriláteros"
               description="Entenda as relações de inclusão entre os quadriláteros especiais."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -952,7 +951,7 @@ export default function AulaGeometriaPlana({
               index={2}
               title="Tabela Resumo das Fórmulas"
               description="Consulta rápida para a prova — todas as áreas em um só lugar."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
@@ -999,7 +998,7 @@ export default function AulaGeometriaPlana({
 
           <ModuleConsolidation
             index={4}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "ZcX-8SmG6nA",
               title: "Quadriláteros: Tipos, Diagonais, Perímetro e Área",
@@ -1052,7 +1051,7 @@ export default function AulaGeometriaPlana({
               titulo="Quiz — Quadriláteros"
               icone="⬛"
               numero={4}
-              variant={getModuleVariant(1)}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -1103,7 +1102,7 @@ export default function AulaGeometriaPlana({
               index={1}
               title="Fórmulas Fundamentais do Círculo"
               description="Área, circunferência, setor e coroa — tudo que a CESGRANRIO cobra."
-              variant={getModuleVariant(2)}
+              variant="cyan"
               className="mb-6"
             />
             <ContentAccordion
@@ -1194,7 +1193,7 @@ export default function AulaGeometriaPlana({
 
           <ModuleConsolidation
             index={5}
-            variant={getModuleVariant(6)}
+            variant="amber"
             video={{
               videoId: "p-e5Ot_BDOA",
               title: "Círculo e Circunferência: Perímetro, Área, Setor e Coroa Circular",
@@ -1247,7 +1246,7 @@ export default function AulaGeometriaPlana({
               titulo="Quiz — Círculo e Circunferência"
               icone="⭕"
               numero={5}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -1296,7 +1295,7 @@ export default function AulaGeometriaPlana({
               index={1}
               title="Critérios de Semelhança"
               description="Três critérios para provar que dois triângulos são semelhantes."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <ContentAccordion
@@ -1442,7 +1441,7 @@ export default function AulaGeometriaPlana({
               titulo="Quiz — Semelhança de Triângulos"
               icone="🔍"
               numero={6}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -1465,7 +1464,7 @@ export default function AulaGeometriaPlana({
               index={1}
               title="O Teorema e as Ternas Pitagóricas"
               description="Fórmula, demonstração visual e as ternas que economizam tempo de prova."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1555,7 +1554,7 @@ export default function AulaGeometriaPlana({
 
           <ModuleConsolidation
             index={7}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "v4Zl1qZpXv4",
               title: "Teorema de Pitágoras: Aplicações, Ternas e Problemas Espaciais",
@@ -1609,7 +1608,7 @@ export default function AulaGeometriaPlana({
               titulo="Quiz — Teorema de Pitágoras"
               icone="📐"
               numero={7}
-              variant={getModuleVariant(1)}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -1632,7 +1631,7 @@ export default function AulaGeometriaPlana({
               index={1}
               title="Razão de Semelhança × Áreas × Volumes"
               description="O triplo de proporção: lados, superfícies e espaços."
-              variant={getModuleVariant(2)}
+              variant="cyan"
               className="mb-6"
             />
             <ContentAccordion
@@ -1736,7 +1735,7 @@ export default function AulaGeometriaPlana({
 
           <ModuleConsolidation
             index={8}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "JQuBrpJv2K8",
               title: "Razão de Semelhança: Aplicação em Áreas e Volumes de Figuras Semelhantes",
@@ -1790,7 +1789,7 @@ export default function AulaGeometriaPlana({
               titulo="Quiz — Razão de Semelhança e Áreas"
               icone="📊"
               numero={8}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -1813,7 +1812,7 @@ export default function AulaGeometriaPlana({
               index={1}
               title="Geometria Plana na Indústria de Petróleo"
               description="Como as fórmulas de área e perímetro se aplicam em situações reais da Petrobras."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <ContentAccordion
@@ -1911,7 +1910,7 @@ export default function AulaGeometriaPlana({
 
           <ModuleConsolidation
             index={9}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "xKh0_l-Wevs",
               title: "Aplicações Petrobras: Cálculo de Áreas de Concessão, Plataformas e Tanques",
@@ -1965,7 +1964,7 @@ export default function AulaGeometriaPlana({
               titulo="Quiz — Aplicações Industriais"
               icone="🏭"
               numero={9}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -1988,7 +1987,7 @@ export default function AulaGeometriaPlana({
               index={1}
               title="Revisão Completa: Todas as Fórmulas"
               description="Consulta final antes do simulado — todas as fórmulas de Geometria Plana."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <div className="bg-blue-500/10 border border-blue-500/20 rounded-2xl p-6 space-y-4">
@@ -2031,7 +2030,7 @@ export default function AulaGeometriaPlana({
 
           <ModuleConsolidation
             index={10}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "1N7NcVB0pN8",
               title: "Simulado Mestre: Revisão Completa e Estratégia de Prova para Geometria Plana",
@@ -2090,7 +2089,7 @@ export default function AulaGeometriaPlana({
               titulo="Simulado Final — Geometria Plana"
               icone="🏆"
               numero={10}
-              variant={getModuleVariant(1)}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>

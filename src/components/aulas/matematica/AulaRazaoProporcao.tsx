@@ -21,7 +21,6 @@ import {
   type FunctionPlot,
 
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   LuBookOpen,
@@ -166,7 +165,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="O que é Razão?"
               description="A comparação exata entre duas quantidades da mesma natureza."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -291,7 +290,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="Tipos de Razão na Prática"
               description="Os contextos industriais onde razão aparece disfarçada."
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FlipCard
@@ -358,7 +357,7 @@ export default function AulaRazaoProporcao({
           <section id="quiz-modulo-1">
           <ModuleConsolidation
             index={1}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 1",
@@ -397,7 +396,7 @@ export default function AulaRazaoProporcao({
               questoes={quizRazao}
               titulo="Quiz — Razão: Fundamentos"
               numero={1}
-              variant={getModuleVariant(1)}
+              variant="blue"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -405,7 +404,7 @@ export default function AulaRazaoProporcao({
 
           {/* ─── RESUMO VISUAL ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={3} title="Resumo Visual" variant={getModuleVariant(10)} />
+            <ModuleSectionHeader index={3} title="Resumo Visual" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -458,7 +457,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Proporção e Propriedade Fundamental"
               description="A igualdade de duas razões e sua regra de ouro."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -576,7 +575,7 @@ export default function AulaRazaoProporcao({
           <section id="quiz-modulo-2">
           <ModuleConsolidation
             index={2}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 2",
@@ -615,7 +614,7 @@ export default function AulaRazaoProporcao({
               questoes={quizProporcao}
               titulo="Quiz — Proporção e Propriedades"
               numero={2}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               icone="⚖️"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -623,7 +622,7 @@ export default function AulaRazaoProporcao({
 
           {/* ─── RESUMO VISUAL ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo Visual" variant={getModuleVariant(10)} />
+            <ModuleSectionHeader index={2} title="Resumo Visual" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -670,7 +669,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="O Método Completo"
               description="Identificação, montagem e resolução em 3 passos."
-              variant={getModuleVariant(6)}
+              variant="amber"
               className="mb-6"
             />
             <ContentAccordion
@@ -781,7 +780,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="Regra de Três Composta"
               description="Múltiplas grandezas, um único resultado. O método que vence provas."
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <ContentAccordion
               titulo="Regra de Três Composta — Técnica Industrial"
@@ -830,7 +829,7 @@ export default function AulaRazaoProporcao({
               index={3}
               title="Visualização Gráfica: Direta vs. Inversa"
               description="Observe como as duas relações se comportam no mesmo domínio."
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <FunctionGraph
               title="Comparação: Proporção Direta vs. Inversa"
@@ -862,7 +861,7 @@ export default function AulaRazaoProporcao({
           <section id="quiz-modulo-3">
           <ModuleConsolidation
             index={3}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 3",
@@ -901,7 +900,7 @@ export default function AulaRazaoProporcao({
               questoes={quizRegra3}
               titulo="Quiz — Regra de Três Simples"
               numero={3}
-              variant={getModuleVariant(6)}
+              variant="amber"
               icone="🔢"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -909,7 +908,7 @@ export default function AulaRazaoProporcao({
 
           {/* ─── RESUMO VISUAL ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={3} title="Resumo Visual" variant={getModuleVariant(10)} />
+            <ModuleSectionHeader index={3} title="Resumo Visual" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -955,7 +954,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Dividir Proporcionalmente"
               description="Três passos infalíveis para nunca errar divisão proporcional."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <ContentAccordion
@@ -1058,7 +1057,7 @@ export default function AulaRazaoProporcao({
           <section id="quiz-modulo-4">
           <ModuleConsolidation
             index={4}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 4",
@@ -1097,7 +1096,7 @@ export default function AulaRazaoProporcao({
               questoes={quizDivisao}
               titulo="Quiz — Divisão Proporcional"
               numero={4}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               icone="✂️"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1105,7 +1104,7 @@ export default function AulaRazaoProporcao({
 
           {/* ─── RESUMO ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo Visual" variant={getModuleVariant(10)} />
+            <ModuleSectionHeader index={2} title="Resumo Visual" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -1151,7 +1150,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Direta vs. Inversa — A Grande Batalha"
               description="Como identificar a relação correta antes de montar a conta."
-              variant={getModuleVariant(2)}
+              variant="cyan"
               className="mb-6"
             />
             <ContentAccordion
@@ -1276,7 +1275,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="Visualização: Proporcionalidade Direta"
               description="Diferentes constantes k geram retas com inclinações distintas — todas passando pela origem."
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
             <FunctionGraph
               title="Proporcionalidade Direta: y = kx"
@@ -1317,7 +1316,7 @@ export default function AulaRazaoProporcao({
               index={3}
               title="Casos Clássicos da CESGRANRIO"
               description="Flashcards com as relações mais cobradas em prova."
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FlipCard
@@ -1367,7 +1366,7 @@ export default function AulaRazaoProporcao({
               index={4}
               title="Visualização: Proporcionalidade Inversa"
               description="Hipérboles: quanto maior x, menor y — o produto x·y permanece constante."
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
             <FunctionGraph
               title="Proporcionalidade Inversa: y = k/x"
@@ -1399,7 +1398,7 @@ export default function AulaRazaoProporcao({
           <section id="quiz-modulo-5">
           <ModuleConsolidation
             index={5}
-            variant={getModuleVariant(6)}
+            variant="amber"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 5",
@@ -1438,7 +1437,7 @@ export default function AulaRazaoProporcao({
               questoes={quizGrandezas}
               titulo="Quiz — Grandezas Proporcionais"
               numero={5}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               icone="↕️"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1446,7 +1445,7 @@ export default function AulaRazaoProporcao({
 
           {/* ─── RESUMO ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={3} title="Resumo Visual" variant={getModuleVariant(10)} />
+            <ModuleSectionHeader index={3} title="Resumo Visual" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -1492,7 +1491,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Divisão com Múltiplos Critérios"
               description="Quando a distribuição envolve condições mistas ou encadeadas."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -1594,7 +1593,7 @@ export default function AulaRazaoProporcao({
           <section id="quiz-modulo-6">
           <ModuleConsolidation
             index={6}
-            variant={getModuleVariant(9)}
+            variant="rose"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 6",
@@ -1633,7 +1632,7 @@ export default function AulaRazaoProporcao({
               questoes={quizDivisaoAdv}
               titulo="Quiz — Divisão Proporcional Avançada"
               numero={6}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1641,7 +1640,7 @@ export default function AulaRazaoProporcao({
 
           {/* ─── RESUMO ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo Visual" variant={getModuleVariant(10)} />
+            <ModuleSectionHeader index={2} title="Resumo Visual" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -1687,7 +1686,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Proporção Contínua e Termos Proporcionais"
               description="Da média geométrica à quarta proporcional — tudo que a CESGRANRIO cobra."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -1793,7 +1792,7 @@ export default function AulaRazaoProporcao({
           <section id="quiz-modulo-7">
           <ModuleConsolidation
             index={7}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 7",
@@ -1832,7 +1831,7 @@ export default function AulaRazaoProporcao({
               questoes={quizContinua}
               titulo="Quiz — Proporção Contínua e Média Proporcional"
               numero={7}
-              variant={getModuleVariant(9)}
+              variant="rose"
               icone="🔗"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1840,7 +1839,7 @@ export default function AulaRazaoProporcao({
 
           {/* ─── RESUMO ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo Visual" variant={getModuleVariant(10)} />
+            <ModuleSectionHeader index={2} title="Resumo Visual" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -1886,7 +1885,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Escalas: Teoria e Conversão"
               description="Da definição às conversões mais complexas de unidades."
-              variant={getModuleVariant(2)}
+              variant="cyan"
               className="mb-6"
             />
             <ContentAccordion
@@ -2010,7 +2009,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="Tipos de Questão de Escala"
               description="Os 4 formatos que a CESGRANRIO usa para cobrar escalas."
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
             <CardCarousel
               cards={[
@@ -2047,7 +2046,7 @@ export default function AulaRazaoProporcao({
           <section id="quiz-modulo-8">
           <ModuleConsolidation
             index={8}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 8",
@@ -2086,7 +2085,7 @@ export default function AulaRazaoProporcao({
               questoes={quizEscalas}
               titulo="Quiz — Escalas e Mapas"
               numero={8}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               icone="🗺️"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -2094,7 +2093,7 @@ export default function AulaRazaoProporcao({
 
           {/* ─── RESUMO ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={3} title="Resumo Visual" variant={getModuleVariant(10)} />
+            <ModuleSectionHeader index={3} title="Resumo Visual" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -2140,7 +2139,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Razão e Proporção no Setor de E&P"
               description="Exemplos reais de como estas ferramentas são usadas em operações petrolíferas."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -2247,7 +2246,7 @@ export default function AulaRazaoProporcao({
           <section id="quiz-modulo-9">
           <ModuleConsolidation
             index={9}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 9",
@@ -2286,7 +2285,7 @@ export default function AulaRazaoProporcao({
               questoes={quizPetrobras}
               titulo="Quiz — Aplicações Industriais Petrobras"
               numero={9}
-              variant={getModuleVariant(10)}
+              variant="slate"
               icone="🛢️"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2294,7 +2293,7 @@ export default function AulaRazaoProporcao({
 
           {/* ─── RESUMO ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo Visual" variant={getModuleVariant(10)} />
+            <ModuleSectionHeader index={2} title="Resumo Visual" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -2341,7 +2340,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Mapa de Revisão — Todos os Temas"
               description="Revise os pontos críticos antes de enfrentar o simulado final."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <CardCarousel
@@ -2394,7 +2393,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="Armadilhas Fatais da CESGRANRIO"
               description="Os erros que eliminam candidatos no último momento."
-              variant={getModuleVariant(10)}
+              variant="indigo"
             />
             <div className="grid md:grid-cols-2 gap-4">
               <AlertBox tipo="danger" titulo="Armadilha 1 — Ordem da Razão">
@@ -2420,7 +2419,7 @@ export default function AulaRazaoProporcao({
           <section id="quiz-modulo-10">
           <ModuleConsolidation
             index={10}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 10",
@@ -2459,7 +2458,7 @@ export default function AulaRazaoProporcao({
               questoes={quizFinal}
               titulo="Simulado Final — Nível Elite"
               numero={10}
-              variant={getModuleVariant(10)}
+              variant="slate"
               icone="🏆"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
@@ -2467,7 +2466,7 @@ export default function AulaRazaoProporcao({
 
           {/* ─── RESUMO FINAL ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={3} title="Resumo Visual da Aula Completa" variant={getModuleVariant(10)} />
+            <ModuleSectionHeader index={3} title="Resumo Visual da Aula Completa" variant="indigo" />
             <LessonTabs
               tabs={[
                 {

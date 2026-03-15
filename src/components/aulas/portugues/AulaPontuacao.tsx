@@ -44,7 +44,6 @@ import {
   AulaTemplate,
   Comparison,
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   QUIZ_M1_PONTUACAO,
@@ -181,7 +180,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="As Finalidades da Pontuação"
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
             <CardCarousel
               cards={[
@@ -223,7 +222,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Os Sinais e Suas Funções"
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -333,7 +332,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={3}
               title="Pontuação Normativa × Pontuação Expressiva"
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -388,7 +387,7 @@ export default function AulaPontuacao({
             titulo="Fixação - Módulo 1"
             icone="🎯"
             numero={1}
-            variant={getModuleVariant(1)}
+            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
@@ -657,7 +656,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={3}
               title="Listas e Repetições"
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -704,7 +703,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={4}
               title="Regras SVO e Enumeração"
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -803,7 +802,7 @@ export default function AulaPontuacao({
             titulo="Fixação - Módulo 3"
             icone="🎯"
             numero={3}
-            variant={getModuleVariant(1)}
+            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>
@@ -822,7 +821,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={4}
               title="Chamamento e Explicação"
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -860,7 +859,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={5}
               title="Tipos de Aposto e Posição do Vocativo"
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
             <ContentAccordion
               slides={[
@@ -968,7 +967,7 @@ export default function AulaPontuacao({
             titulo="Fixação - Módulo 4"
             icone="🎯"
             numero={4}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </div>
@@ -987,7 +986,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={5}
               title="A Regra do Comprimento"
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
             <AlertBox tipo="warning" titulo="O Pulo do Gato (Cesgranrio)">
               A banca avalia se o adjunto é **Longo** (obrigatória) ou **Curto**
@@ -1019,7 +1018,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={6}
               title="O Que É um Adjunto Adverbial Deslocado?"
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
             <ContentAccordion
               slides={[
@@ -1135,7 +1134,7 @@ export default function AulaPontuacao({
             titulo="Fixação - Módulo 5"
             icone="🎯"
             numero={5}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
         </div>
@@ -1154,7 +1153,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={6}
               title="A Conjunção 'E'"
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
             <p className="text-muted-foreground text-sm">
               Geralmente o 'E' não pede vírgula, mas em 3 situações ele é seu
@@ -1185,7 +1184,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={7}
               title="Tipos de Orações Coordenadas"
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
             <ContentAccordion
               slides={[
@@ -1338,7 +1337,7 @@ export default function AulaPontuacao({
             titulo="Fixação - Módulo 6"
             icone="🎯"
             numero={6}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
         </div>
@@ -1357,7 +1356,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={7}
               title="Explicativa vs Restritiva"
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <Comparison
               title="Impacto Semântico"
@@ -1382,7 +1381,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={8}
               title="Tipos de Orações Subordinadas e a Vírgula"
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <ContentAccordion
               slides={[
@@ -1499,7 +1498,7 @@ export default function AulaPontuacao({
             titulo="Fixação - Módulo 7"
             icone="🎯"
             numero={7}
-            variant={getModuleVariant(6)}
+            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
           />
         </div>
@@ -1518,7 +1517,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={8}
               title="O ponto-e-vírgula"
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <ContentAccordion
               slides={[
@@ -1545,7 +1544,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={9}
               title="Ponto Final, Ponto e Vírgula e Dois-Pontos"
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <ContentAccordion
               slides={[
@@ -1705,7 +1704,7 @@ export default function AulaPontuacao({
             titulo="Fixação - Módulo 8"
             icone="🎯"
             numero={8}
-            variant={getModuleVariant(6)}
+            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
         </div>
@@ -1913,7 +1912,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={11}
               title="Mapa Mental: Revisão Completa"
-              variant={getModuleVariant(10)}
+              variant="indigo"
             />
             <ContentAccordion
               slides={[
@@ -2129,7 +2128,7 @@ export default function AulaPontuacao({
               titulo="Simulado de Conclusão"
               icone="🏆"
               numero={10}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           )}

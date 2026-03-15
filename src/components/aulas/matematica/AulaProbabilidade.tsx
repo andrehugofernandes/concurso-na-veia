@@ -27,8 +27,6 @@ import {
   LuZap,
 } from "react-icons/lu";
 
-import { getModuleVariant } from "@/lib/moduleColors";
-
 import {
   QUIZ_M1_FUNDAMENTOS,
   QUIZ_M2_LAPLACE,
@@ -187,7 +185,7 @@ export default function AulaProbabilidade({
               index={1}
               title="A Base Intelectual"
               description="Terminologias que a banca adora cobrar."
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
 
             <ContentAccordion
@@ -266,7 +264,7 @@ export default function AulaProbabilidade({
 
           <ModuleConsolidation
             index={1}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "gZDzgZxrvAo",
               title: "Probabilidade: Fundamentos",
@@ -321,7 +319,7 @@ export default function AulaProbabilidade({
               questoes={quizM1}
               titulo="Fixação - Fundamentos"
               numero={1}
-              variant={getModuleVariant(1)}
+              variant="blue"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -344,7 +342,7 @@ export default function AulaProbabilidade({
               index={2}
               title="A Fórmula da Probabilidade"
               description="Quando todos os eventos são igualmente prováveis."
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
 
             <ContentAccordion
@@ -423,7 +421,7 @@ export default function AulaProbabilidade({
 
           <ModuleConsolidation
             index={2}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "2Aq7p7-VgEU",
               title: "Lei de Laplace Explicada",
@@ -479,7 +477,7 @@ export default function AulaProbabilidade({
               questoes={quizM2}
               titulo="Fixação - Lei de Laplace"
               numero={2}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -502,7 +500,7 @@ export default function AulaProbabilidade({
               index={3}
               title="Operações Entre Eventos"
               description="OU = União (+), E = Interseção (×)."
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
 
             <ContentAccordion
@@ -583,7 +581,7 @@ export default function AulaProbabilidade({
 
           <ModuleConsolidation
             index={3}
-            variant={getModuleVariant(6)}
+            variant="amber"
             video={{
               videoId: "4KzE9R6zWzY",
               title: "União e Interseção de Eventos",
@@ -640,7 +638,7 @@ export default function AulaProbabilidade({
               questoes={quizM3}
               titulo="Fixação - União e Interseção"
               numero={3}
-              variant={getModuleVariant(6)}
+              variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -666,7 +664,7 @@ export default function AulaProbabilidade({
               index={4}
               title="Eventos Dependentes"
               description="A probabilidade muda quando há informação prévia."
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
 
             <ContentAccordion
@@ -740,7 +738,7 @@ export default function AulaProbabilidade({
 
           <ModuleConsolidation
             index={4}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "7Pg5MZV2XqU",
               title: "Probabilidade Condicional",
@@ -797,7 +795,7 @@ export default function AulaProbabilidade({
               questoes={quizM4}
               titulo="Fixação - Condicional"
               numero={4}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -820,7 +818,7 @@ export default function AulaProbabilidade({
               index={5}
               title="Experimentos Repetidos"
               description="Exatamente k sucessos em n tentativas."
-              variant={getModuleVariant(5)}
+              variant="violet"
             />
 
             <ContentAccordion
@@ -890,7 +888,7 @@ export default function AulaProbabilidade({
 
           <ModuleConsolidation
             index={5}
-            variant={getModuleVariant(5)}
+            variant="violet"
             video={{
               videoId: "tZzgzUaHdCw",
               title: "Distribuição Binomial",
@@ -947,7 +945,7 @@ export default function AulaProbabilidade({
               questoes={quizM5}
               titulo="Fixação - Binomial"
               numero={5}
-              variant={getModuleVariant(5)}
+              variant="violet"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -970,7 +968,7 @@ export default function AulaProbabilidade({
               index={6}
               title="Negação de Eventos"
               description="Às vezes é mais fácil calcular o oposto."
-              variant={getModuleVariant(4)}
+              variant="teal"
             />
 
             <ContentAccordion
@@ -1044,7 +1042,7 @@ export default function AulaProbabilidade({
 
           <ModuleConsolidation
             index={6}
-            variant={getModuleVariant(4)}
+            variant="teal"
             video={{
               videoId: "9KZg0LdwAg4",
               title: "Evento Complementar",
@@ -1101,7 +1099,7 @@ export default function AulaProbabilidade({
               questoes={quizM6}
               titulo="Fixação - Complementar"
               numero={6}
-              variant={getModuleVariant(4)}
+              variant="teal"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1124,7 +1122,7 @@ export default function AulaProbabilidade({
               index={7}
               title="Eventos Contínuos"
               description="Quando o espaço amostral é infinito."
-              variant={getModuleVariant(10)}
+              variant="indigo"
             />
 
             <ContentAccordion
@@ -1203,7 +1201,7 @@ export default function AulaProbabilidade({
 
           <ModuleConsolidation
             index={7}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "5Rw9KzK3jqA",
               title: "Probabilidade Geométrica",
@@ -1260,7 +1258,7 @@ export default function AulaProbabilidade({
               questoes={quizM7}
               titulo="Fixação - Geométrica"
               numero={7}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1283,7 +1281,7 @@ export default function AulaProbabilidade({
               index={8}
               title="Eventos Sem Correlação"
               description="Multiplicação simples: P(A e B) = P(A) × P(B)."
-              variant={getModuleVariant(9)}
+              variant="rose"
             />
 
             <ContentAccordion
@@ -1362,7 +1360,7 @@ export default function AulaProbabilidade({
 
           <ModuleConsolidation
             index={8}
-            variant={getModuleVariant(9)}
+            variant="rose"
             video={{
               videoId: "2xQr4vZ5M1I",
               title: "Independência de Eventos",
@@ -1419,7 +1417,7 @@ export default function AulaProbabilidade({
               questoes={quizM8}
               titulo="Fixação - Independência"
               numero={8}
-              variant={getModuleVariant(9)}
+              variant="rose"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1442,7 +1440,7 @@ export default function AulaProbabilidade({
               index={9}
               title="Probabilidade na Indústria"
               description="Análise de risco e confiabilidade de sistemas."
-              variant={getModuleVariant(7)}
+              variant="orange"
             />
 
             <ContentAccordion
@@ -1518,7 +1516,7 @@ export default function AulaProbabilidade({
 
           <ModuleConsolidation
             index={9}
-            variant={getModuleVariant(7)}
+            variant="orange"
             video={{
               videoId: "4KzE9R6zWzY",
               title: "Engenharia de Riscos",
@@ -1575,7 +1573,7 @@ export default function AulaProbabilidade({
               questoes={quizM9}
               titulo="Fixação - Engenharia Riscos"
               numero={9}
-              variant={getModuleVariant(7)}
+              variant="orange"
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1611,7 +1609,7 @@ export default function AulaProbabilidade({
                 titulo="Simulado Elite - Probabilidade"
                 icone="🏆"
                 numero={10}
-                variant={getModuleVariant(10)}
+                variant="slate"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

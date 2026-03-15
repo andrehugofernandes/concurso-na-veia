@@ -37,6 +37,7 @@ Criar `src/components/aulas/[materia]/data/[topico]-quizzes.ts`
 
 ### Checklist de UI/UX (Design Premium):
 
+- **🔒 StickyModuleNav é IMUTÁVEL**: NUNCA modifique o componente `StickyModuleNav` em `shared.tsx` nem o padding do `<main>` em `admin-dashboard-layout.tsx` (deve permanecer `md:p-0`). O componente depende de cálculos precisos de breakout (margem negativa + calc) relativos ao layout pai. Qualquer alteração quebrará o posicionamento.
 - **Purple Ban**: Nunca use roxo/violeta (`purple`, `violet`, `indigo`). Use `blue`, `cyan`, `emerald`, `indigo-950` (quase preto).
   - _Nota: O projeto aceita Indigo mas prefere tons de azul/ciano para tecnologia._
 - **Glassmorphism**: Use `bg-card/50 backdrop-blur-md` em overlays.

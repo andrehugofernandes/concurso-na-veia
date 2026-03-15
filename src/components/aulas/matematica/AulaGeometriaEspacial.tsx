@@ -13,7 +13,6 @@ import {
   ModuleSectionHeader,
   ModuleConsolidation,
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 import {
   QUIZ_M1_POLIEDROS,
   QUIZ_M2_PRISMAS,
@@ -238,7 +237,7 @@ export default function AulaGeometriaEspacial({
               index={1}
               title="O que é um Poliedro?"
               description="Sólidos com faces planas — a base da geometria espacial."
-              variant={getModuleVariant(2)}
+              variant="cyan"
               className="mb-6"
             />
             <ContentAccordion
@@ -375,7 +374,7 @@ export default function AulaGeometriaEspacial({
               index={2}
               title="Fórmulas para Prismas e Pirâmides"
               description="Conte vértices, arestas e faces de qualquer prisma ou pirâmide usando fórmulas gerais."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -402,7 +401,7 @@ export default function AulaGeometriaEspacial({
 
           <ModuleConsolidation
             index={1}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "Zf4sGKq8TL8",
               title: "Poliedros e a Relação de Euler",
@@ -439,7 +438,7 @@ export default function AulaGeometriaEspacial({
               titulo="Quiz — Poliedros e Relação de Euler"
               icone="🔷"
               numero={1}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -462,7 +461,7 @@ export default function AulaGeometriaEspacial({
               index={1}
               title="Volume do Prisma: V = A_base × h"
               description="A fórmula universal que conecta geometria plana com geometria espacial."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <ContentAccordion
@@ -557,7 +556,7 @@ export default function AulaGeometriaEspacial({
 
           <ModuleConsolidation
             index={2}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "7K8VgX2sXMc",
               title: "Prismas: Volume, Área Lateral e Total",
@@ -594,7 +593,7 @@ export default function AulaGeometriaEspacial({
               titulo="Quiz — Prismas: Volume e Área"
               icone="📦"
               numero={2}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -617,7 +616,7 @@ export default function AulaGeometriaEspacial({
               index={1}
               title="Volume da Pirâmide: V = (1/3) × A_base × h"
               description="Por que 1/3? Três pirâmides de mesma base e altura formam um prisma."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -706,7 +705,7 @@ export default function AulaGeometriaEspacial({
 
           <ModuleConsolidation
             index={3}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "4lLu2Kj2W0A",
               title: "Pirâmides: Apótema, Volume e Área Lateral",
@@ -743,7 +742,7 @@ export default function AulaGeometriaEspacial({
               titulo="Quiz — Pirâmides: Volume e Área"
               icone="🔺"
               numero={3}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -766,7 +765,7 @@ export default function AulaGeometriaEspacial({
               index={1}
               title="Volume e Área do Cilindro"
               description="As três fórmulas essenciais que todo técnico Petrobras precisa dominar."
-              variant={getModuleVariant(2)}
+              variant="cyan"
               className="mb-6"
             />
             <ContentAccordion
@@ -848,7 +847,7 @@ export default function AulaGeometriaEspacial({
 
           <ModuleConsolidation
             index={4}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "I7C8Ygvdp8k",
               title: "Cilindro: Superfícies, Secções e Volume",
@@ -885,7 +884,7 @@ export default function AulaGeometriaEspacial({
               titulo="Quiz — Cilindro: Volume e Área"
               icone="🛢️"
               numero={4}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -908,7 +907,7 @@ export default function AulaGeometriaEspacial({
               index={1}
               title="Volume e Área do Cone de Revolução"
               description="O cone como pirâmide circular — 1/3 do cilindro correspondente."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <ContentAccordion
@@ -984,7 +983,7 @@ export default function AulaGeometriaEspacial({
 
           <ModuleConsolidation
             index={5}
-            variant={getModuleVariant(6)}
+            variant="amber"
             video={{
               videoId: "Gn7r8JTqPO8",
               title: "Cone: Geratriz, Planificação e Volume",
@@ -1021,7 +1020,7 @@ export default function AulaGeometriaEspacial({
               titulo="Quiz — Cone: Volume e Área"
               icone="🔻"
               numero={5}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -1044,7 +1043,7 @@ export default function AulaGeometriaEspacial({
               index={1}
               title="Volume e Área da Esfera"
               description="Duas fórmulas que você não pode errar na prova CESGRANRIO."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1167,7 +1166,7 @@ export default function AulaGeometriaEspacial({
               titulo="Quiz — Esfera: Volume e Área"
               icone="🌐"
               numero={6}
-              variant={getModuleVariant(1)}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -1190,7 +1189,7 @@ export default function AulaGeometriaEspacial({
               index={1}
               title="Volume dos Troncos"
               description="A fórmula de Heron generalizada — conecta as duas bases com a média geométrica."
-              variant={getModuleVariant(2)}
+              variant="cyan"
               className="mb-6"
             />
             <ContentAccordion
@@ -1267,7 +1266,7 @@ export default function AulaGeometriaEspacial({
 
           <ModuleConsolidation
             index={7}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "rK7qN2pL0J4",
               title: "Troncos de Cone e Pirâmide: Volumes",
@@ -1304,7 +1303,7 @@ export default function AulaGeometriaEspacial({
               titulo="Quiz — Troncos de Cone e Pirâmide"
               icone="🪣"
               numero={7}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -1327,7 +1326,7 @@ export default function AulaGeometriaEspacial({
               index={1}
               title="Estratégia: Decomposição em Sólidos Simples"
               description="Todo sólido composto é resolvido dividindo-o em partes conhecidas."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1417,7 +1416,7 @@ export default function AulaGeometriaEspacial({
 
           <ModuleConsolidation
             index={8}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "EZ9KF3dK8Hg",
               title: "Sólidos Compostos: Decomposição e Volume",
@@ -1454,7 +1453,7 @@ export default function AulaGeometriaEspacial({
               titulo="Quiz — Sólidos Compostos"
               icone="🏗️"
               numero={8}
-              variant={getModuleVariant(1)}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -1477,7 +1476,7 @@ export default function AulaGeometriaEspacial({
               index={1}
               title="Geometria na Indústria Petrolífera"
               description="Cada sólido tem uma aplicação real — reconheça e calcule no contexto industrial."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <ContentAccordion
@@ -1567,7 +1566,7 @@ export default function AulaGeometriaEspacial({
 
           <ModuleConsolidation
             index={9}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "zW7j2P5kK9I",
               title: "Geometria Espacial na Petrobras: Tanques e Tubulações",
@@ -1604,7 +1603,7 @@ export default function AulaGeometriaEspacial({
               titulo="Quiz — Aplicações Petrobras"
               icone="🛢️"
               numero={9}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -1627,7 +1626,7 @@ export default function AulaGeometriaEspacial({
               index={1}
               title="Revisão Final — Tabela de Fórmulas"
               description="Consolide todas as fórmulas antes do simulado definitivo."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <div className="overflow-x-auto">
@@ -1711,7 +1710,7 @@ export default function AulaGeometriaEspacial({
 
           <ModuleConsolidation
             index={10}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "hN1K7mX4qJE",
               title: "Geometria Espacial: Resumo Completo e Estratégia CESGRANRIO",
@@ -1748,7 +1747,7 @@ export default function AulaGeometriaEspacial({
               titulo="Simulado Final — CESGRANRIO Geometria Espacial"
               icone="🏆"
               numero={10}
-              variant={getModuleVariant(1)}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>
@@ -1765,7 +1764,7 @@ export default function AulaGeometriaEspacial({
             titulo="Recursos Complementares — Geometria Espacial 3D"
             descricao="Aprenda estratégias avançadas, como resolver problemas de visualização 3D e conversão entre unidades."
             icone="📚"
-            variant={getModuleVariant(5)}
+            variant="purple"
           />
 
           <AlertBox tipo="info" titulo="Como Usar Esta Seção de Recursos">

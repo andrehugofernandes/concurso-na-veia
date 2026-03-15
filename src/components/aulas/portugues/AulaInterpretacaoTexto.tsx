@@ -18,7 +18,6 @@ import {
   MusicPlayerCard,
   ModuleConsolidation,
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   LuBookOpen,
@@ -274,7 +273,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={1}
             title="A Anatomia do Sentido: O Que Você Vê vs. O Que Você Pensa"
-            variant={getModuleVariant(1)}
+            variant="blue"
             description="Para a CESGRANRIO, o maior erro do candidato é 'viajar' para além dos limites do texto. Vamos blindar sua leitura agora."
           />
 
@@ -439,7 +438,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={3}
             title="Laboratório de Gabarito: Certo vs Errado"
-            variant={getModuleVariant(1)}
+            variant="blue"
             description="Teste sua percepção antes do quiz final do módulo."
           />
 
@@ -494,7 +493,7 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={4}
-          variant={getModuleVariant(1)}
+          variant="blue"
           video={{
             videoId: "dQw4w9WgXcQ",
             title:
@@ -585,7 +584,7 @@ export default function AulaInterpretacaoTexto({
           titulo="Blindagem de Módulo: Fundamentos"
           icone="🛡️"
           numero={5}
-          variant={getModuleVariant(1)}
+          variant="blue"
           onComplete={(score) => handleModuleComplete("modulo-1", score)}
         />
       </TabsContent>
@@ -603,7 +602,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={1}
             title="A Engenharia do Parágrafo: A Viga Mestra"
-            variant={getModuleVariant(3)}
+            variant="emerald"
             description="Entender o tópico frasal é como identificar a viga de sustentação de um edifício: sem ela, o resto do conteúdo desmorona."
           />
 
@@ -704,7 +703,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={3}
             title="Prática de Combate: Localização"
-            variant={getModuleVariant(3)}
+            variant="emerald"
             description="Onde está o coração do texto?"
           />
 
@@ -790,7 +789,7 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={5}
-          variant={getModuleVariant(3)}
+          variant="emerald"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "A Engenharia do Parágrafo: Dominando o Tópico Frasal",
@@ -873,7 +872,7 @@ export default function AulaInterpretacaoTexto({
           titulo="Blindagem de Módulo: Arquitetura"
           icone="🏗️"
           numero={2}
-          variant={getModuleVariant(3)}
+          variant="emerald"
           onComplete={(score) => handleModuleComplete("modulo-2", score)}
         />
       </TabsContent>
@@ -891,7 +890,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={1}
             title="A Engenharia da Conexão"
-            variant={getModuleVariant(6)}
+            variant="amber"
             description="Um texto não é uma pilha de frases; é uma rede de conexões táticas."
           />
 
@@ -987,7 +986,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={2}
             title="Dossiê de Conectivos"
-            variant={getModuleVariant(6)}
+            variant="amber"
             description="Memorização rápida para os termos que a Cesgranrio 'adora'."
           />
 
@@ -1094,7 +1093,7 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={3}
-          variant={getModuleVariant(6)}
+          variant="amber"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Operadores Lógicos: A 'Cola' do Texto Petrobras",
@@ -1176,7 +1175,7 @@ export default function AulaInterpretacaoTexto({
           titulo="Blindagem de Módulo: Lógica"
           icone="🧠"
           numero={3}
-          variant={getModuleVariant(6)}
+          variant="amber"
           onComplete={(score) => handleModuleComplete("modulo-3", score)}
         />
       </TabsContent>
@@ -1194,7 +1193,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={1}
             title="A Matriz de Tipos: O Filtro Petrobras"
-            variant={getModuleVariant(1)}
+            variant="blue"
             description="As provas focam em Dissertação e Injunção. Mas as armadilhas estão nos textos Narrativos disfarçados."
           />
 
@@ -1285,7 +1284,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={2}
             title="Duelo de Gêneros & Tipos"
-            variant={getModuleVariant(1)}
+            variant="blue"
             description="Testando sua percepção tática de predominância."
           />
 
@@ -1369,7 +1368,7 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={4}
-          variant={getModuleVariant(1)}
+          variant="blue"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "DNA do Texto: Tipologias e Gêneros de Elite",
@@ -1436,7 +1435,7 @@ export default function AulaInterpretacaoTexto({
           titulo="Blindagem de Módulo: DNA"
           icone="🧬"
           numero={5}
-          variant={getModuleVariant(1)}
+          variant="blue"
           onComplete={(score) => handleModuleComplete("modulo-4", score)}
         />
       </TabsContent>
@@ -1454,7 +1453,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={1}
             title="As Âncoras do Candidato"
-            variant={getModuleVariant(3)}
+            variant="emerald"
             description="Para ler rápido, não é preciso ler 'correndo', mas sim ler sem carregar peso desnecessário."
           />
           <p className="text-muted-foreground leading-relaxed">
@@ -1591,7 +1590,7 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={5}
-          variant={getModuleVariant(3)}
+          variant="emerald"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Leitura de Elite: Eliminando Vícios e Ganhando Velocidade",
@@ -1674,7 +1673,7 @@ export default function AulaInterpretacaoTexto({
           titulo="Blindagem de Módulo: Velocidade"
           icone="⚡"
           numero={5}
-          variant={getModuleVariant(3)}
+          variant="emerald"
           onComplete={(score) => handleModuleComplete("modulo-5", score)}
         />
       </TabsContent>
@@ -1692,7 +1691,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={1}
             title="Lógica de Detecção"
-            variant={getModuleVariant(2)}
+            variant="cyan"
             description="Não é 'achismo'. É dedução lógica baseada em marcas gramaticais."
           />
           <p className="text-muted-foreground leading-relaxed">
@@ -1816,7 +1815,7 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={3}
-          variant={getModuleVariant(2)}
+          variant="cyan"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "A Arte das Entrelinhas: Pressupostos e Subentendidos",
@@ -1901,7 +1900,7 @@ export default function AulaInterpretacaoTexto({
           titulo="Desafio de Entrelinhas"
           icone="🕵️"
           numero={4}
-          variant={getModuleVariant(2)}
+          variant="cyan"
           onComplete={(score) => handleModuleComplete("modulo-6", score)}
         />
       </TabsContent>
@@ -2140,7 +2139,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={1}
             title="A Vontade por Trás das Palavras"
-            variant={getModuleVariant(1)}
+            variant="blue"
             description="Identificar o objetivo (informativo, persuasivo ou crítico) é 50% da questão."
           />
 
@@ -2239,7 +2238,7 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={3}
-          variant={getModuleVariant(1)}
+          variant="blue"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "A Vontade do Autor: Decifrando Intenção e Tons",
@@ -2322,7 +2321,7 @@ export default function AulaInterpretacaoTexto({
           titulo="Desafio de Intencionalidade"
           icone="🎯"
           numero={4}
-          variant={getModuleVariant(1)}
+          variant="blue"
           onComplete={(score) => handleModuleComplete("modulo-8", score)}
         />
       </TabsContent>
@@ -2340,7 +2339,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={1}
             title="Padrões de Substituição"
-            variant={getModuleVariant(1)}
+            variant="blue"
             description="Como a banca troca palavras para testar seu domínio do vocabulário industrial."
           />
 
@@ -2410,7 +2409,7 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={3}
-          variant={getModuleVariant(1)}
+          variant="blue"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "O Filtro Cesgranrio: Sinônimos e Eixos Temáticos",
@@ -2499,7 +2498,7 @@ export default function AulaInterpretacaoTexto({
           titulo="Desafio de Lógica"
           icone="🧠"
           numero={4}
-          variant={getModuleVariant(1)}
+          variant="blue"
           onComplete={(score) => handleModuleComplete("modulo-9", score)}
         />
       </TabsContent>
@@ -2517,7 +2516,7 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={1}
             title="Checklist de Blindagem Final"
-            variant={getModuleVariant(6)}
+            variant="amber"
             description="Revise os 5 mandamentos da interpretação Cesgranrio antes de começar."
           />
 
@@ -2610,7 +2609,7 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={2}
-          variant={getModuleVariant(6)}
+          variant="amber"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Checklist de Elite: A Blindagem Final",
@@ -2695,7 +2694,7 @@ export default function AulaInterpretacaoTexto({
           titulo="O Exame Final de Interpretação Mestra"
           icone="👑"
           numero={3}
-          variant={getModuleVariant(10)}
+          variant="indigo"
           onComplete={(score) => handleModuleComplete("modulo-10", score)}
         />
       </TabsContent>

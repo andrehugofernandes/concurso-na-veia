@@ -28,8 +28,6 @@ import {
   LuZap,
 } from "react-icons/lu";
 
-import { getModuleVariant } from "@/lib/moduleColors";
-
 import {
   QUIZ_M1_CONCEITOS,
   QUIZ_M2_PROPRIEDADES,
@@ -187,7 +185,7 @@ export default function AulaFuncoesLogaritmicas({
               index={1}
               title="A Pergunta Decodificadora"
               description="Esqueça o medo superficial de não entender a palavra Logaritmo."
-              variant={getModuleVariant(10)}
+              variant="indigo"
             />
 
             <ContentAccordion
@@ -326,7 +324,7 @@ export default function AulaFuncoesLogaritmicas({
 
           <ModuleConsolidation
             index={1}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "Uj1K_2OT82A",
               title: "Introdução ao Logaritmo: A Função Inversa da Exponencial",
@@ -368,7 +366,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM1}
               titulo="Fixação - Conceitos Fundamentais"
               numero={1}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -391,7 +389,7 @@ export default function AulaFuncoesLogaritmicas({
               index={2}
               title="A Vantagem Algébrica"
               description="Manobras lícitas que convertem calvários em passeios."
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
 
             <ContentAccordion
@@ -493,7 +491,7 @@ export default function AulaFuncoesLogaritmicas({
 
           <ModuleConsolidation
             index={2}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "WFQDrp84Hxc",
               title: "Propriedades dos Logaritmos Explicadas Passo a Passo",
@@ -537,7 +535,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM2}
               titulo="Fixação - Propriedades"
               numero={2}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -560,7 +558,7 @@ export default function AulaFuncoesLogaritmicas({
               index={3}
               title="Eliminando o Logaritmo"
               description="Para eliminar a palavra log da equação, a base inferior tem que se sacrificar."
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
 
             <ContentAccordion
@@ -656,7 +654,7 @@ export default function AulaFuncoesLogaritmicas({
 
           <ModuleConsolidation
             index={3}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "w5YdI5OXpGg",
               title: "Resolvendo Equações Logarítmicas: Técnicas Essenciais",
@@ -697,7 +695,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM3}
               titulo="Fixação - Equações"
               numero={3}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -720,7 +718,7 @@ export default function AulaFuncoesLogaritmicas({
               index={4}
               title="A Masmorra de Erros"
               description="Um logaritmo negativo te levará a uma explosão no meio da prova."
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
 
             <ContentAccordion
@@ -850,7 +848,7 @@ export default function AulaFuncoesLogaritmicas({
 
           <ModuleConsolidation
             index={4}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "8X3_kPaKqgQ",
               title: "Domínio e Restrições em Funções Logarítmicas",
@@ -895,7 +893,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM4}
               titulo="Fixação - Condições de Existência"
               numero={4}
-              variant={getModuleVariant(1)}
+              variant="blue"
               icone="🔍"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -918,7 +916,7 @@ export default function AulaFuncoesLogaritmicas({
               index={5}
               title="Consolidação do Conhecimento"
               description="Revisão de conceitos, propriedades, equações e domínios combinados."
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
 
             <ContentAccordion
@@ -1014,7 +1012,7 @@ export default function AulaFuncoesLogaritmicas({
 
           <ModuleConsolidation
             index={5}
-            variant={getModuleVariant(6)}
+            variant="amber"
             video={{
               videoId: "fJXCR-K8DxQ",
               title: "Problemas Integrados com Logaritmos: Estratégias Completas",
@@ -1051,7 +1049,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM5}
               titulo="Desafio Integrado - Problemas Combinados"
               numero={5}
-              variant={getModuleVariant(6)}
+              variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1074,7 +1072,7 @@ export default function AulaFuncoesLogaritmicas({
               index={6}
               title="A Forma Padrão das Funções Log"
               description="Como as funções logarítmicas se comportam quando transformadas."
-              variant={getModuleVariant(9)}
+              variant="rose"
             />
 
             <ContentAccordion
@@ -1216,7 +1214,7 @@ export default function AulaFuncoesLogaritmicas({
 
           <ModuleConsolidation
             index={6}
-            variant={getModuleVariant(9)}
+            variant="rose"
             video={{
               videoId: "TL_LjVyT_Xk",
               title: "Gráficos de Funções Logarítmicas e Suas Transformações",
@@ -1256,7 +1254,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM6}
               titulo="Fixação - Funções Logarítmicas"
               numero={6}
-              variant={getModuleVariant(9)}
+              variant="rose"
               icone="📊"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1279,7 +1277,7 @@ export default function AulaFuncoesLogaritmicas({
               index={7}
               title="Combinações Táticas de Logaritmos"
               description="A combinação tática de restrições logarítmicas simultâneas."
-              variant={getModuleVariant(10)}
+              variant="indigo"
             />
 
             <ContentAccordion
@@ -1393,7 +1391,7 @@ export default function AulaFuncoesLogaritmicas({
 
           <ModuleConsolidation
             index={7}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "TjfFfaO-YO0",
               title: "Sistemas e Inequações com Logaritmos",
@@ -1434,7 +1432,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM7}
               titulo="Fixação - Sistemas & Inequações"
               numero={7}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               icone="🔗"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1457,7 +1455,7 @@ export default function AulaFuncoesLogaritmicas({
               index={8}
               title="Decomposição de Problemas"
               description="Inverta a lógica: comece pelo resultado e trabalhe para trás até o argumento."
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
 
             <ContentAccordion
@@ -1550,7 +1548,7 @@ export default function AulaFuncoesLogaritmicas({
 
           <ModuleConsolidation
             index={8}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "K8oQAHHmXYQ",
               title: "Resolução Reversa: Convertendo Exponencial para Logaritmo",
@@ -1594,7 +1592,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM8}
               titulo="Fixação - Resolução Reversa"
               numero={8}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               icone="🔄"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1617,7 +1615,7 @@ export default function AulaFuncoesLogaritmicas({
               index={9}
               title="Logaritmos no Mundo Real"
               description="A matemática por trás das operações de exploração e produção."
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1725,7 +1723,7 @@ export default function AulaFuncoesLogaritmicas({
 
           <ModuleConsolidation
             index={9}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "uQDCPEEJVH0",
               title: "Logaritmos em Engenharia: pH, Decibéis e Escala Richter",
@@ -1769,7 +1767,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM9}
               titulo="Fixação - Aplicações Petrobras"
               numero={9}
-              variant={getModuleVariant(1)}
+              variant="blue"
               icone="🛢️"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1792,7 +1790,7 @@ export default function AulaFuncoesLogaritmicas({
               index={10}
               title="Integração Completa de Conhecimento"
               description="Questões que combinam múltiplos conceitos em um único desafio."
-              variant={getModuleVariant(5)}
+              variant="purple"
             />
 
             <ContentAccordion
@@ -1894,7 +1892,7 @@ export default function AulaFuncoesLogaritmicas({
 
           <ModuleConsolidation
             index={10}
-            variant={getModuleVariant(5)}
+            variant="purple"
             video={{
               videoId: "mUFv1Y-JkjE",
               title: "Revisão Completa de Logaritmos: Preparação para Prova",
@@ -1955,7 +1953,7 @@ export default function AulaFuncoesLogaritmicas({
                 titulo="Simulado Mestre - Domínio Logarítmico Completo"
                 icone="🏆"
                 numero={10}
-                variant={getModuleVariant(5)}
+                variant="purple"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

@@ -1,7 +1,7 @@
 'use server';
 
 import { createClient } from '@/lib/supabase/server';
-import { uploadToSupabaseStorage } from '@/lib/services/supabase-storage';
+import { uploadToFirebaseStorage } from '@/lib/services/firebase-storage';
 
 export async function uploadAvatarAction(formData: FormData) {
     try {
@@ -10,10 +10,11 @@ export async function uploadAvatarAction(formData: FormData) {
             return { success: false, error: 'No file provided' };
         }
 
-        // Realiza o upload para o Supabase Storage
-        // Nota: No servidor, podemos passar o objeto File se a versão do Node/Fetch suportar, 
-        // ou converter para Buffer. O utilitário uploadToSupabaseStorage usa o client.
-        const result = await uploadToSupabaseStorage(file, 'avatars', 'profiles');
+        const buffer = Buffer.from(await file.arrayBuffer());
+        const fileName = `avatar-${Date.now()}-${file.name}`;
+        const mimeType = file.type;
+
+        const result = await uploadToFirebaseStorage(buffer, fileName, mimeType);
 
         if (result.success && result.url) {
             // Update profile with new avatar URL
@@ -35,7 +36,6 @@ export async function uploadAvatarAction(formData: FormData) {
         }
 
         return { success: false, error: result.error };
-
     } catch (error: any) {
         return { success: false, error: error.message };
     }

@@ -59,6 +59,14 @@ Você é um designer instrucional especialista em educação a distância (EAD) 
 **2. INTEGRAÇÃO DE IMAGENS NA AULA:**
 - Ao gerar o código da aula, cada seção que solicitar uma imagem (`ModuleSummaryCarouselNew` ou `VideoModal`) deve vir acompanhada do **Prompt Técnico** para o Nano Banana, formatado conforme o novo padrão "Light".
 
+## 🔒 COMPONENTES IMUTÁVEIS
+
+> [!CAUTION]
+> **NUNCA modifique os seguintes itens ao criar ou editar aulas:**
+> - `StickyModuleNav` em `src/components/aulas/shared.tsx` — depende de cálculos precisos de breakout (margem negativa + calc) relativos ao layout pai
+> - O padding do `<main>` em `src/components/layouts/admin-dashboard-layout.tsx` — deve permanecer `md:p-0` para que o breakout funcione
+> - Qualquer alteração nesses dois pontos QUEBRARÁ a navegação sticky de módulos
+
 ## 📖 FUNDAMENTAÇÃO PEDAGÓGICA
 
 Use como referência principal a **Gramática Normativa da Língua Portuguesa de Evanildo Bechara** combinada com:

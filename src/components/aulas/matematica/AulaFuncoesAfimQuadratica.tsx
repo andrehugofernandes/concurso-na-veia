@@ -16,7 +16,6 @@ import {
   ModuleConsolidation,
   type FunctionPlot,
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   LuBookOpen,
@@ -186,7 +185,7 @@ export default function AulaFuncoesAfimQuadratica({
               index={1}
               title="A Receita do Bolo (ax + b)"
               description="Identifique a essência da linha reta nos gráficos empresariais."
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
 
             <p className="text-muted-foreground leading-relaxed text-lg">
@@ -330,7 +329,7 @@ export default function AulaFuncoesAfimQuadratica({
 
           <ModuleConsolidation
             index={1}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "gZDzgZxrvAo",
               title: "Função Afim: Fundamentos da Reta",
@@ -387,7 +386,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM1}
               titulo="Fixação - Função Afim"
               numero={1}
-              variant={getModuleVariant(1)}
+              variant="blue"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -410,7 +409,7 @@ export default function AulaFuncoesAfimQuadratica({
               index={2}
               title="Côncavas e Convexas"
               description="A equação ganha um expoente na potência dois. Tudo muda."
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
 
             <ContentAccordion
@@ -568,7 +567,7 @@ export default function AulaFuncoesAfimQuadratica({
 
           <ModuleConsolidation
             index={2}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "2Aq7p7-VgEU",
               title: "Função Quadrática: Análise Completa",
@@ -625,7 +624,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM2}
               titulo="Fixação - Função Quadrática"
               numero={2}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -648,7 +647,7 @@ export default function AulaFuncoesAfimQuadratica({
               index={3}
               title="Estudo Cidadão do Sinal"
               description="Quando o gráfico mente e quando o gráfico expõe verdades duras."
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
 
             <ContentAccordion
@@ -764,7 +763,7 @@ export default function AulaFuncoesAfimQuadratica({
 
           <ModuleConsolidation
             index={3}
-            variant={getModuleVariant(6)}
+            variant="amber"
             video={{
               videoId: "9KZg0LdwAg4",
               title: "Leitura de Gráficos: Análise Completa",
@@ -820,7 +819,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM3}
               titulo="Fixação - Interpretação Gráfica"
               numero={3}
-              variant={getModuleVariant(6)}
+              variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -843,7 +842,7 @@ export default function AulaFuncoesAfimQuadratica({
               index={4}
               title="Dominando Vértices"
               description="Não tente achar raízes em problemas de lucro máximo."
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
 
             <ContentAccordion
@@ -953,7 +952,7 @@ export default function AulaFuncoesAfimQuadratica({
 
           <ModuleConsolidation
             index={4}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "7Pg5MZV2XqU",
               title: "Otimização: Máximos e Mínimos",
@@ -1009,7 +1008,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM4}
               titulo="Fixação - Otimização"
               numero={4}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1032,7 +1031,7 @@ export default function AulaFuncoesAfimQuadratica({
               index={5}
               title="Duas Famílias Distintas"
               description="Linear versus Quadrático: comportamentos completamente diferentes."
-              variant={getModuleVariant(5)}
+              variant="violet"
             />
 
             <ContentAccordion
@@ -1173,7 +1172,7 @@ export default function AulaFuncoesAfimQuadratica({
 
           <ModuleConsolidation
             index={5}
-            variant={getModuleVariant(5)}
+            variant="violet"
             video={{
               videoId: "tZzgzUaHdCw",
               title: "Comparação: Afim vs Quadrática",
@@ -1233,7 +1232,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM5}
               titulo="Fixação - Comparação"
               numero={5}
-              variant={getModuleVariant(5)}
+              variant="violet"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1256,7 +1255,7 @@ export default function AulaFuncoesAfimQuadratica({
               index={6}
               title="Estudando o Sinal da Função"
               description="Onde a função é positiva, negativa ou nula."
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
 
             <ContentAccordion
@@ -1372,7 +1371,7 @@ export default function AulaFuncoesAfimQuadratica({
 
           <ModuleConsolidation
             index={6}
-            variant={getModuleVariant(6)}
+            variant="amber"
             video={{
               videoId: "4KzE9R6zWzY",
               title: "Inequações: Análise de Sinais",
@@ -1429,7 +1428,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM6}
               titulo="Fixação - Inequações"
               numero={6}
-              variant={getModuleVariant(6)}
+              variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1452,7 +1451,7 @@ export default function AulaFuncoesAfimQuadratica({
               index={7}
               title="Encontrando Pontos de Encontro"
               description="Sistemas com funções afim e quadrática."
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
 
             <ContentAccordion
@@ -1610,7 +1609,7 @@ export default function AulaFuncoesAfimQuadratica({
 
           <ModuleConsolidation
             index={7}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "5Rw9KzK3jqA",
               title: "Sistemas: Intersecções",
@@ -1666,7 +1665,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM7}
               titulo="Fixação - Sistemas"
               numero={7}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1689,7 +1688,7 @@ export default function AulaFuncoesAfimQuadratica({
               index={8}
               title="Vértice: O Ponto Mágico"
               description="Máximos e mínimos de funções quadráticas."
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
 
             <ContentAccordion
@@ -1813,7 +1812,7 @@ export default function AulaFuncoesAfimQuadratica({
 
           <ModuleConsolidation
             index={8}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "7Pg5MZV2XqU",
               title: "Otimização Avançada: Problemas Reais",
@@ -1869,7 +1868,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM8}
               titulo="Fixação - Otimização Avançada"
               numero={8}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1892,7 +1891,7 @@ export default function AulaFuncoesAfimQuadratica({
               index={9}
               title="Matemática Corporativa"
               description="Casos de uso na Petrobras e similares."
-              variant={getModuleVariant(9)}
+              variant="rose"
             />
 
             <ContentAccordion
@@ -2025,7 +2024,7 @@ export default function AulaFuncoesAfimQuadratica({
 
           <ModuleConsolidation
             index={9}
-            variant={getModuleVariant(9)}
+            variant="rose"
             video={{
               videoId: "2xQr4vZ5M1I",
               title: "Aplicações Petrobras: Otimização",
@@ -2082,7 +2081,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM9}
               titulo="Fixação - Aplicações Petrobras"
               numero={9}
-              variant={getModuleVariant(9)}
+              variant="rose"
               icone="🌹"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2118,7 +2117,7 @@ export default function AulaFuncoesAfimQuadratica({
                 titulo="Simulado Elite - Funções Afim e Quadrática"
                 icone="🏆"
                 numero={10}
-                variant={getModuleVariant(10)}
+                variant="slate"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

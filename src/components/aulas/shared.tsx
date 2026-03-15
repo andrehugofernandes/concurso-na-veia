@@ -909,11 +909,7 @@ export function QuizInterativo({
     | "rose"
     | "blue"
     | "cyan"
-    | "slate"
-    | "teal"
-    | "orange"
-    | "red"
-    | "pink";
+    | "slate";
   onComplete?: (score: number) => void;
   descricao?: string;
 }) {
@@ -1763,11 +1759,7 @@ export function LessonTabs({
     | "rose"
     | "blue"
     | "cyan"
-    | "slate"
-    | "teal"
-    | "orange"
-    | "red"
-    | "pink";
+    | "slate";
 }) {
   const variantClasses: Record<string, string> = {
     indigo:
@@ -2492,6 +2484,14 @@ export interface StickyModuleNavProps {
   isModuleUnlocked: (index: number) => boolean;
 }
 
+/**
+ * ⚠️ COMPONENTE IMUTÁVEL — NÃO MODIFIQUE ⚠️
+ * Este componente depende de cálculos precisos de breakout (margem negativa + calc)
+ * que são relativos ao layout pai (admin-dashboard-layout). Qualquer alteração aqui
+ * ou no layout do main/content wrapper QUEBRARÁ o posicionamento da nav.
+ * Se precisar ajustar layout de aulas, NÃO toque neste componente nem no padding
+ * do <main> em admin-dashboard-layout.tsx (deve permanecer md:p-0).
+ */
 export function StickyModuleNav({
   modules,
   activeTab,
@@ -2910,11 +2910,7 @@ export function SectionBadge({
     | "rose"
     | "blue"
     | "cyan"
-    | "slate"
-    | "teal"
-    | "orange"
-    | "red"
-    | "pink";
+    | "slate";
   className?: string;
 }) {
   const badgeVariants = {
@@ -2926,10 +2922,6 @@ export function SectionBadge({
     blue: "bg-white/20 text-white",
     cyan: "bg-white/20 text-white",
     slate: "bg-white/20 text-white",
-    teal: "bg-white/20 text-white",
-    orange: "bg-white/20 text-white",
-    red: "bg-white/20 text-white",
-    pink: "bg-white/20 text-white",
   };
 
   return (
@@ -2963,11 +2955,7 @@ export function ModuleSectionHeader({
     | "rose"
     | "blue"
     | "cyan"
-    | "slate"
-    | "teal"
-    | "orange"
-    | "red"
-    | "pink";
+    | "slate";
   className?: string;
 }) {
   const bgVariants = {
@@ -2979,10 +2967,6 @@ export function ModuleSectionHeader({
     blue: "bg-blue-600",
     cyan: "bg-cyan-600",
     slate: "bg-slate-600",
-    teal: "bg-teal-600",
-    orange: "bg-orange-600",
-    red: "bg-red-600",
-    pink: "bg-pink-600",
   };
 
   const badgeVariants = {
@@ -2994,10 +2978,6 @@ export function ModuleSectionHeader({
     blue: "bg-white/20 text-white",
     cyan: "bg-white/20 text-white",
     slate: "bg-white/20 text-white",
-    teal: "bg-white/20 text-white",
-    orange: "bg-white/20 text-white",
-    red: "bg-white/20 text-white",
-    pink: "bg-white/20 text-white",
   };
 
   return (
@@ -3078,11 +3058,7 @@ export function ModuleConsolidation({
     | "rose"
     | "blue"
     | "cyan"
-    | "slate"
-    | "teal"
-    | "orange"
-    | "red"
-    | "pink";
+    | "slate";
   video: {
     videoId: string;
     title: string;

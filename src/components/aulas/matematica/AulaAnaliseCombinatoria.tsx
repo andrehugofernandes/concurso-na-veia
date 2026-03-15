@@ -14,7 +14,6 @@ import {
   ModuleSectionHeader,
   ModuleConsolidation,
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 import {
   QUIZ_M1_PRINCIPIO_CONTAGEM,
   QUIZ_M2_FATORIAL,
@@ -136,7 +135,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="O Princípio Fundamental da Contagem (PFC)"
               description="Se uma tarefa pode ser feita em etapas independentes, o total de formas é o produto das possibilidades de cada etapa."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -219,7 +218,7 @@ export default function AulaAnaliseCombinatoria({
           
           <ModuleConsolidation
             index={1}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Princípio Fundamental da Contagem: A Regra do Produto",
@@ -263,7 +262,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="Quiz — Princípio Fundamental da Contagem"
               icone="🔢"
               numero={1}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -286,7 +285,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Definição de Fatorial"
               description="n! representa o produto de todos os inteiros positivos de 1 até n."
-              variant={getModuleVariant(2)}
+              variant="cyan"
               className="mb-6"
             />
             <ContentAccordion
@@ -381,7 +380,7 @@ export default function AulaAnaliseCombinatoria({
 
           <ModuleConsolidation
             index={2}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "iG0_F6gW2QY",
               title: "Fatorial: A Operação das Multipicações",
@@ -425,7 +424,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="Quiz — Fatorial e Notação"
               icone="❗"
               numero={2}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -448,7 +447,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="P(n) = n! — A Fórmula da Permutação"
               description="O número de arranjos de n elementos distintos em todos os n lugares é n fatorial."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <ContentAccordion
@@ -548,7 +547,7 @@ export default function AulaAnaliseCombinatoria({
 
           <ModuleConsolidation
             index={3}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "h6V7j6b7M0I",
               title: "Permutação Simples: Mudando Tudo de Lugar",
@@ -590,7 +589,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="Quiz — Permutação Simples"
               icone="🔀"
               numero={3}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -613,7 +612,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="P(n; n₁, n₂, ...) = n! / (n₁! × n₂! × ...)"
               description="Divida pelo fatorial de cada grupo de elementos repetidos para eliminar contagens duplicadas."
-              variant={getModuleVariant(2)}
+              variant="cyan"
               className="mb-6"
             />
             <ContentAccordion
@@ -690,7 +689,7 @@ export default function AulaAnaliseCombinatoria({
 
           <ModuleConsolidation
             index={4}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "8v2S4cI9U0k",
               title: "Permutação com Repetição: Corrigindo Dossiês",
@@ -732,7 +731,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="Quiz — Permutação com Repetição"
               icone="🔁"
               numero={4}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -755,7 +754,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="A(n,p) = n! / (n−p)!"
               description="Escolher p de n elementos onde a ordem importa — mais que combinação, menos que permutação total."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -844,7 +843,7 @@ export default function AulaAnaliseCombinatoria({
 
           <ModuleConsolidation
             index={5}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "Z1o6Hq0J-i8",
               title: "Arranjo Simples: Diferenciando da Combinação",
@@ -889,7 +888,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="Quiz — Arranjo Simples"
               icone="🏆"
               numero={5}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -912,7 +911,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="C(n,p) = n! / [p! × (n−p)!]"
               description="A fórmula mais importante da análise combinatória: contagem de subgrupos sem levar em conta a ordem."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -995,7 +994,7 @@ export default function AulaAnaliseCombinatoria({
 
           <ModuleConsolidation
             index={6}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "_bL1Qn6GezU",
               title: "Combinação Simples: O Coração da Combinatória",
@@ -1040,7 +1039,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="Quiz — Combinação Simples"
               icone="👥"
               numero={6}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -1063,7 +1062,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="CR(n,p) = C(n+p−1, p)"
               description="A fórmula que transforma um problema com repetição em uma combinação simples de ordem maior."
-              variant={getModuleVariant(2)}
+              variant="cyan"
               className="mb-6"
             />
             <ContentAccordion
@@ -1179,7 +1178,7 @@ export default function AulaAnaliseCombinatoria({
 
           <ModuleConsolidation
             index={7}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "jX_l5X7V9QY",
               title: "Combinação com Repetição: O Método Bolinha-Traço",
@@ -1220,7 +1219,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="Quiz — Combinação com Repetição"
               icone="♻️"
               numero={7}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -1243,7 +1242,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="As Três Propriedades Essenciais"
               description="Simetria, Pascal e a Soma de uma Linha — as ferramentas de aceleração de cálculo em prova."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -1342,7 +1341,7 @@ export default function AulaAnaliseCombinatoria({
 
           <ModuleConsolidation
             index={8}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "k1V9X8Z7Y6W",
               title: "Pascal e Binômio: As Leis da Harmonia",
@@ -1383,7 +1382,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="Quiz — Propriedades e Identidades"
               icone="🔏"
               numero={8}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -1406,7 +1405,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Problemas Compostos e Estratégia de Resolução"
               description="Como decompor enunciados complexos em etapas simples de combinatória — a habilidade mais exigida na CESGRANRIO."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <ContentAccordion
@@ -1496,7 +1495,7 @@ export default function AulaAnaliseCombinatoria({
 
           <ModuleConsolidation
             index={9}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "p8I2-9Z9R9U",
               title: "Aplicações Petrobras: Estratégias de Prova",
@@ -1537,7 +1536,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="Quiz — Aplicações Petrobras"
               icone="🏭"
               numero={9}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -1560,7 +1559,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Checklist Final: O que a CESGRANRIO Mais Cobra"
               description="Revise os padrões de questões mais recorrentes antes de encarar o simulado."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -1654,7 +1653,7 @@ export default function AulaAnaliseCombinatoria({
 
           <ModuleConsolidation
             index={10}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "m7X8Y9Z0W1V",
               title: "Revision Final e Simulado: O Grande Final",
@@ -1695,7 +1694,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="Simulado Final — Análise Combinatória"
               icone="🎯"
               numero={10}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>

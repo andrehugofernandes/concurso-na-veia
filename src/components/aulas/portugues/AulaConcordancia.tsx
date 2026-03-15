@@ -27,8 +27,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-import { getModuleVariant } from "@/lib/moduleColors";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -2147,7 +2145,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index="📚"
               title="Fundamentos da Concordância Verbal"
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-8"
             />
 
@@ -2215,7 +2213,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={1}
               title="A Lógica da Concordância (O Contrato Verbal)"
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-8"
             />
 
@@ -2338,7 +2336,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={2}
               title="Revisão Relâmpago: Transitividade Verbal"
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-8"
             />
             <p className="text-muted-foreground">
@@ -2961,7 +2959,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={3}
               title="Sujeito Composto"
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-8"
             />
             <p className="text-muted-foreground">
@@ -3200,7 +3198,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={4}
               title='O "Calcanhar de Aquiles": Verbos Impessoais'
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-8"
             />
 
@@ -3539,7 +3537,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={5}
               title='O Pesadelo: Part&iacute;cula "SE"'
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-8"
             />
             <p className="text-muted-foreground">
@@ -3824,7 +3822,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={6}
               title="Resumo e Multimídia"
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-8"
             />
 
@@ -3951,7 +3949,7 @@ export default function AulaConcordancia({
               titulo="Quiz de Fixação - Concordância Verbal"
               icone="📝"
               numero={7}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
             {!completedModules.has("modulo-1") && (
@@ -3977,7 +3975,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={1}
               title="O Conceito Central"
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-2"
             />
             <p className="text-muted-foreground text-sm ml-0 md:ml-[60px] -mt-6 mb-8">
@@ -4066,7 +4064,7 @@ export default function AulaConcordancia({
               index={2}
               title="Palavras Perigosas (Decore Agora!)"
               description="Baseado nas palavras mais cobradas pela CESGRANRIO em provas de 2020 a 2024 (Petrobras, Transpetro, Banco do Brasil)."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-8"
             />
             <CardCarousel cards={PALAVRAS_PERIGOSAS_CARDS} />
@@ -4077,7 +4075,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={3}
               title="Palavras Invari&aacute;veis e Arm&aacute;veis"
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <p className="text-muted-foreground">
@@ -4389,7 +4387,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={4}
               title="Resumo e Multimídia"
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-8"
             />
 
@@ -4520,7 +4518,7 @@ export default function AulaConcordancia({
               titulo="Quiz de Fixação - Concordância Nominal"
               icone="🧠"
               numero={10}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
             {!completedModules.has("modulo-2") && (
@@ -4546,7 +4544,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={1}
               title="O Algoritmo da Aprovação"
-              variant={getModuleVariant(5)}
+              variant="violet"
               className="mb-6"
             />
             <p className="text-muted-foreground">
@@ -4796,7 +4794,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={2}
               title="Desafio Prático: Identifique o Erro"
-              variant={getModuleVariant(5)}
+              variant="violet"
               className="mb-8"
             />
 
@@ -4881,7 +4879,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={3}
               title="Resumo e Multimídia"
-              variant={getModuleVariant(5)}
+              variant="violet"
               className="mb-8"
             />
 
@@ -5003,7 +5001,7 @@ export default function AulaConcordancia({
               titulo="Simulado Final - Estilo Banca"
               icone="🏆"
               numero={4}
-              variant={getModuleVariant(5)}
+              variant="violet"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -5023,7 +5021,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={1}
               title="Porcentagens e Frações"
-              variant={getModuleVariant(6)}
+              variant="amber"
               className="mb-8"
             />
             <div className="grid md:grid-cols-2 gap-6">
@@ -5070,7 +5068,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={2}
               title="Pronomes Relativos: QUE e QUEM"
-              variant={getModuleVariant(6)}
+              variant="amber"
               className="mb-8"
             />
             <div className="space-y-4">
@@ -5107,7 +5105,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={3}
               title="Resumo e Multimídia"
-              variant={getModuleVariant(6)}
+              variant="amber"
               className="mb-8"
             />
 
@@ -5167,7 +5165,7 @@ export default function AulaConcordancia({
               titulo="Desafio de Elite - Casos Complexos"
               icone="🔥"
               numero={10}
-              variant={getModuleVariant(6)}
+              variant="amber"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -5187,7 +5185,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index="🎯"
               title="Missão Cumprida?"
-              variant={getModuleVariant(9)}
+              variant="rose"
               className="mb-8"
             />
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
@@ -5214,7 +5212,7 @@ export default function AulaConcordancia({
             <ModuleSectionHeader
               index={2}
               title="Resumo Final e Revisão"
-              variant={getModuleVariant(9)}
+              variant="rose"
               className="mb-8"
             />
 
@@ -5274,7 +5272,7 @@ export default function AulaConcordancia({
               titulo="Grande Simulado Final - Petrobras Quest"
               icone="🏆"
               numero={10}
-              variant={getModuleVariant(9)}
+              variant="rose"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>

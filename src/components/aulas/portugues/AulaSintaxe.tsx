@@ -27,7 +27,6 @@ import {
   AulaProps,
   AulaTemplate,
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 import {
   LuCheck,
   LuBookOpen,
@@ -765,7 +764,7 @@ export default function AulaSintaxe({
               index={1}
               title="Anatomia da Oração"
               description="Aprenda a identificar a estrutura básica da oração: o sujeito e o predicado."
-              variant={getModuleVariant(10)}
+              variant="indigo"
             />
 
             <AlertBox tipo="info" titulo="O Princípio da Dependência">
@@ -870,7 +869,7 @@ export default function AulaSintaxe({
               index={2}
               title="Tipologia do Sujeito"
               description="Explore os diferentes tipos de sujeito e como a Cesgranrio cobra a identificação do termo principal."
-              variant={getModuleVariant(10)}
+              variant="indigo"
             />
             <p className="text-muted-foreground">
               O mapa completo para nunca mais errar a identificação do termo
@@ -1203,7 +1202,7 @@ export default function AulaSintaxe({
               index={3}
               title="Tipos de Predicado"
               description="Diferencie predicado verbal, nominal e verbo-nominal através do núcleo da declaração."
-              variant={getModuleVariant(10)}
+              variant="indigo"
             />
             <p className="text-muted-foreground">
               A classificação do predicado depende da natureza do seu núcleo: se
@@ -1495,7 +1494,7 @@ export default function AulaSintaxe({
               index={4}
               title="Resumo e Multimídia"
               description="Consolide os termos essenciais com vídeos, resumos e áudio explicativo."
-              variant={getModuleVariant(10)}
+              variant="indigo"
             />
 
             <LessonTabs
@@ -1595,7 +1594,7 @@ export default function AulaSintaxe({
             titulo="Sujeito e Predicado"
             icone="🧠"
             questoes={getRandomQuestions(QUIZ_ESSENCIAIS_POOL, 8)}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
@@ -1616,7 +1615,7 @@ export default function AulaSintaxe({
               index={1}
               title="Os Objetos: Direto e Indireto"
               description="O objeto é o paciente ou alvo da ação verbal. Domine a transitividade."
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
             <p className="text-muted-foreground italic">
               "O objeto é o paciente ou alvo da ação verbal."
@@ -1716,7 +1715,7 @@ export default function AulaSintaxe({
               index={2}
               title="Complemento Nominal vs Adjunto Adnominal"
               description="Entenda as diferenças sutis entre o alvo da ação e o agente/possuidor."
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
             <p className="text-muted-foreground italic">
               "Parecem irmãos gêmeos, pois ambos vêm encabeçados por preposição
@@ -1840,7 +1839,7 @@ export default function AulaSintaxe({
               index={3}
               title="Agente da Passiva"
               description="Identifique quem pratica a ação na voz passiva, o termo fundamental da estrutura passiva."
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
             <p className="text-muted-foreground italic">
               "Mesmo na voz passiva, alguém precisa sujar as mãos."
@@ -1882,7 +1881,7 @@ export default function AulaSintaxe({
             <ModuleSectionHeader
               index={4}
               title="Resumo e Multimedia"
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
 
             <LessonTabs
@@ -1982,7 +1981,7 @@ export default function AulaSintaxe({
             titulo="Termos Integrantes"
             icone="🧩"
             questoes={getRandomQuestions(QUIZ_INTEGRANTES_POOL, 8)}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
@@ -2003,7 +2002,7 @@ export default function AulaSintaxe({
               index={1}
               title="Adjunto Adverbial"
               description="O fofoqueiro da oração: entenda como os adjuntos trazem circunstâncias de tempo, lugar, modo e muito mais."
-              variant={getModuleVariant(5)}
+              variant="violet"
             />
             <p className="text-muted-foreground italic">
               "O fofoqueiro da oração: conta quando, onde, como e por que."
@@ -2159,7 +2158,7 @@ export default function AulaSintaxe({
               index={2}
               title="Adjunto Adnominal"
               description="O maquiador do substantivo: aprenda a identificar os termos que qualificam e determinam os nomes."
-              variant={getModuleVariant(5)}
+              variant="violet"
             />
             <p className="text-muted-foreground italic">
               "O maquiador do substantivo: qualifica, especifica e determina."
@@ -2235,7 +2234,7 @@ export default function AulaSintaxe({
               index={2}
               title="Aposto e Vocativo"
               description="A legenda e o megafone da oração: domine as explicações e os chamamentos."
-              variant={getModuleVariant(5)}
+              variant="violet"
             />
             {/* --- APOSTO --- */}
             <div className="space-y-6">
@@ -2331,7 +2330,7 @@ export default function AulaSintaxe({
               index={3}
               title="Resumo e Multimídia"
               description="Revise os termos acessórios e consolide sua percepção das circunstâncias textuais."
-              variant={getModuleVariant(5)}
+              variant="violet"
             />
 
             <LessonTabs
@@ -2429,7 +2428,7 @@ export default function AulaSintaxe({
             titulo="Termos Acessórios e Vocativo"
             icone="🔍"
             questoes={getRandomQuestions(QUIZ_ACESSORIOS_POOL, 8)}
-            variant={getModuleVariant(5)}
+            variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>
@@ -2449,7 +2448,7 @@ export default function AulaSintaxe({
               index={1}
               title="Desafio de Alto Nível"
               description="Enfrente as questões mais complexas da Cesgranrio e aprenda a não cair em pegadinhas."
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <AlertBox tipo="warning" titulo="O 'Pulo do Gato' da Cesgranrio">
               A banca costuma inverter a ordem das palavras (Ordem Indireta)
@@ -2509,7 +2508,7 @@ export default function AulaSintaxe({
               index={2}
               title="Dissecando a Oração"
               description="Aplique o método passo a passo para destrinchar frases densas e complexas."
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
             <p className="text-muted-foreground italic">
               "O método passo a passo para destrinchar frases gigantes."
@@ -2731,7 +2730,7 @@ export default function AulaSintaxe({
               index={3}
               title="Resumo e Multimídia"
               description="Consolidação final do Laboratório de Análise Sintática."
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
 
             <LessonTabs
@@ -2811,7 +2810,7 @@ export default function AulaSintaxe({
             titulo="Laboratório Final"
             icone="🔬"
             questoes={getRandomQuestions(QUIZ_LABORATORIO_POOL, 5)}
-            variant={getModuleVariant(6)}
+            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </div>

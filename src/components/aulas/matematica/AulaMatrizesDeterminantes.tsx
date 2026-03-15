@@ -13,7 +13,6 @@ import {
   ModuleSectionHeader,
   ModuleConsolidation,
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 import {
   QUIZ_M1_CONCEITO_MATRIZES,
   QUIZ_M2_TIPOS_MATRIZES,
@@ -135,7 +134,7 @@ export default function AulaMatrizesDeterminantes({
               index={1}
               title="O que é uma Matriz?"
               description="Tabelas de números com identidade própria — a linguagem da engenharia industrial."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -318,7 +317,7 @@ export default function AulaMatrizesDeterminantes({
 
           <ModuleConsolidation
             index={1}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "HgKYwTKiHc0",
               title: "Introdução às Matrizes: Conceitos Fundamentais",
@@ -360,7 +359,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="Conceito e Notação de Matrizes"
               icone="📊"
               numero={1}
-              variant={getModuleVariant(1)}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -383,7 +382,7 @@ export default function AulaMatrizesDeterminantes({
               index={1}
               title="Classificação das Matrizes Especiais"
               description="Reconheça cada tipo rapidamente — economia de tempo na prova."
-              variant={getModuleVariant(2)}
+              variant="cyan"
               className="mb-6"
             />
             <ContentAccordion
@@ -546,7 +545,7 @@ export default function AulaMatrizesDeterminantes({
 
           <ModuleConsolidation
             index={2}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId="ZjxCqCrHT48",
               title: "Matrizes Especiais: Diagonal, Nula, Identidade",
@@ -588,7 +587,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="Tipos Especiais de Matrizes"
               icone="🔢"
               numero={2}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -611,7 +610,7 @@ export default function AulaMatrizesDeterminantes({
               index={1}
               title="Regras de Adição e Multiplicação Escalar"
               description="Elemento a elemento — simples, mas com pegadinhas de dimensão."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <ContentAccordion
@@ -765,7 +764,7 @@ export default function AulaMatrizesDeterminantes({
 
           <ModuleConsolidation
             index={3}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId="1q4v5X8Y2Z3",
               title: "Adição e Subtração: Operações Elementares com Matrizes",
@@ -807,7 +806,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="Adição e Subtração de Matrizes"
               icone="➕"
               numero={3}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -830,7 +829,7 @@ export default function AulaMatrizesDeterminantes({
               index={1}
               title="Condição, Processo e Propriedades"
               description="O coração da álgebra matricial — domine e resolva 90% das questões."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -971,7 +970,7 @@ export default function AulaMatrizesDeterminantes({
 
           <ModuleConsolidation
             index={4}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId="7bK9Lm3X5O9",
               title: "Multiplicação de Matrizes: Linha × Coluna",
@@ -1013,7 +1012,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="Multiplicação de Matrizes"
               icone="✖️"
               numero={4}
-              variant={getModuleVariant(1)}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -1036,7 +1035,7 @@ export default function AulaMatrizesDeterminantes({
               index={1}
               title="Transposta: Linhas Viram Colunas"
               description="Operação simples com consequências profundas — e muito cobrada."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1175,7 +1174,7 @@ export default function AulaMatrizesDeterminantes({
 
           <ModuleConsolidation
             index={5}
-            variant={getModuleVariant(6)}
+            variant="amber"
             video={{
               videoId="4sF2Kx8Np6Q",
               title: "Transposta e Matriz Inversa: Operações Reversas",
@@ -1218,7 +1217,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="Transposta e Inversa"
               icone="🔄"
               numero={5}
-              variant={getModuleVariant(6)}
+              variant="amber"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -1241,7 +1240,7 @@ export default function AulaMatrizesDeterminantes({
               index={1}
               title="Cálculo e Propriedades do det 2×2"
               description="A fórmula mais simples, com as consequências mais profundas."
-              variant={getModuleVariant(10)}
+              variant="indigo"
               className="mb-6"
             />
             <ContentAccordion
@@ -1437,7 +1436,7 @@ export default function AulaMatrizesDeterminantes({
               index={1}
               title="A Regra de Sarrus: Passo a Passo"
               description="6 diagonais, 3 com sinal + e 3 com sinal −."
-              variant={getModuleVariant(2)}
+              variant="cyan"
               className="mb-6"
             />
             <ContentAccordion
@@ -1585,7 +1584,7 @@ export default function AulaMatrizesDeterminantes({
 
           <ModuleConsolidation
             index={7}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId="8iK3Ts0Uv4P",
               title: "Determinante 3×3: Regra de Sarrus vs Cofatores",
@@ -1628,7 +1627,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="Determinante 3×3 — Regra de Sarrus"
               icone="🔺"
               numero={7}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -1651,7 +1650,7 @@ export default function AulaMatrizesDeterminantes({
               index={1}
               title="Cofatores, Menores e Expansão de Laplace"
               description="A generalização que funciona para qualquer ordem n×n."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1782,7 +1781,7 @@ export default function AulaMatrizesDeterminantes({
 
           <ModuleConsolidation
             index={8}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId="5cJ7Nx2Lm8R",
               title: "Cofatores, Menor e Adjunta: Inversa Passo a Passo",
@@ -1825,7 +1824,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="Cofatores e Laplace"
               icone="🔬"
               numero={8}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -1848,7 +1847,7 @@ export default function AulaMatrizesDeterminantes({
               index={1}
               title="Sistemas Lineares e Transformações Industriais"
               description="Álgebra matricial aplicada ao dia a dia da engenharia de petróleo."
-              variant={getModuleVariant(3)}
+              variant="emerald"
               className="mb-6"
             />
             <ContentAccordion
@@ -1983,7 +1982,7 @@ export default function AulaMatrizesDeterminantes({
 
           <ModuleConsolidation
             index={9}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId="9lP8Qs1Xw5Y",
               title: "Matrizes na Petrobras: Sistemas de Dutos e Análise de Redes",
@@ -2026,7 +2025,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="Aplicações Petrobras"
               icone="🏭"
               numero={9}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -2049,7 +2048,7 @@ export default function AulaMatrizesDeterminantes({
               index={1}
               title="Revisão Estratégica — Os 10 Pontos-Chave"
               description="O que a CESGRANRIO mais cobra em Matrizes e Determinantes."
-              variant={getModuleVariant(1)}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -2296,7 +2295,7 @@ export default function AulaMatrizesDeterminantes({
 
           <ModuleConsolidation
             index={10}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "w2ZyJqA4OFs",
               title: "Simulado CESGRANRIO — Resolução Completa",
@@ -2339,7 +2338,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="Simulado CESGRANRIO"
               icone="🏆"
               numero={10}
-              variant={getModuleVariant(10)}
+              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>

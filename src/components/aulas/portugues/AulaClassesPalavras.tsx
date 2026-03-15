@@ -20,7 +20,6 @@ import {
   AulaTemplate,
   Comparison,
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 import {
   QUIZ_M1_SUBSTANTIVO,
   QUIZ_M2_ADJETIVO_ARTIGO,
@@ -339,7 +338,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={1}
             title="Conceito Científico"
-            variant={getModuleVariant(1)}
+            variant="blue"
           />
           <p className="text-lg text-muted-foreground">
             O <strong>Substantivo</strong> é a classe de palavra que{" "}
@@ -362,7 +361,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Classificações dos Substantivos"
-            variant={getModuleVariant(1)}
+            variant="blue"
           />
           <p className="text-base text-muted-foreground leading-relaxed text-justify">
             Os substantivos são organizados em{" "}
@@ -407,7 +406,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Substantivos Coletivos — Atenção Máxima"
-            variant={getModuleVariant(1)}
+            variant="blue"
           />
           <p className="text-base text-muted-foreground leading-relaxed text-justify">
             O substantivo <strong>coletivo</strong> designa, no singular, um conjunto de seres da mesma espécie. A Cesgranrio adora cobrar os coletivos menos óbvios. Vire o card para ver o coletivo correspondente.
@@ -479,7 +478,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant={getModuleVariant(1)}
+            variant="blue"
           />
           <LessonTabs
             tabs={[
@@ -529,7 +528,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={5}
             title="Derivação Imprópria — O 'Efeito Rei Midas'"
-            variant={getModuleVariant(1)}
+            variant="blue"
           />
           <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-xl mb-6 text-sm text-foreground">
             <p>
@@ -618,7 +617,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={6}
             title="Gênero dos Substantivos — Os Heterônimos"
-            variant={getModuleVariant(1)}
+            variant="blue"
           />
           <p className="text-base text-muted-foreground leading-relaxed text-justify">
             Os <strong>heterônimos</strong> são substantivos que formam o feminino através de palavras completamente diferentes (radicais distintos). São fontes frequentes de pegadinhas em prova de ortografia e concordância.
@@ -650,7 +649,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={7}
             title="Plural dos Substantivos Compostos"
-            variant={getModuleVariant(1)}
+            variant="blue"
           />
           <ContentAccordion
             mode="stacked"
@@ -699,7 +698,7 @@ export default function AulaClassesPalavras({
             titulo="Substantivo: O Nomeador"
             icone="🎯"
             numero={1}
-            variant={getModuleVariant(1)}
+            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </section>
@@ -718,7 +717,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={1}
             title="Conceito Científico"
-            variant={getModuleVariant(3)}
+            variant="emerald"
           />
           <p className="text-lg text-muted-foreground">
             O <strong>Adjetivo</strong> é a classe de palavra que{" "}
@@ -732,7 +731,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="A Posição do Adjetivo Muda o Sentido"
-            variant={getModuleVariant(3)}
+            variant="emerald"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FlipCard
@@ -806,7 +805,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Adjetivo Composto e Locução Adjetiva"
-            variant={getModuleVariant(3)}
+            variant="emerald"
           />
           <ContentAccordion
             mode="stacked"
@@ -844,7 +843,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant={getModuleVariant(3)}
+            variant="emerald"
           />
           <LessonTabs
             tabs={[
@@ -877,7 +876,7 @@ export default function AulaClassesPalavras({
             titulo="Adjetivo: O Qualificador"
             icone="✨"
             numero={2}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </section>
@@ -896,7 +895,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={1}
             title="Conceito Científico"
-            variant={getModuleVariant(6)}
+            variant="amber"
           />
           <p className="text-lg text-muted-foreground">
             O <strong>Artigo</strong> é a classe de palavra{" "}
@@ -911,7 +910,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Concordância: É Proibido vs É Proibida"
-            variant={getModuleVariant(6)}
+            variant="amber"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FlipCard
@@ -965,7 +964,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Usos Especiais do Artigo"
-            variant={getModuleVariant(6)}
+            variant="amber"
           />
           <ContentAccordion
             mode="stacked"
@@ -1009,7 +1008,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant={getModuleVariant(6)}
+            variant="amber"
           />
           <LessonTabs
             tabs={[
@@ -1040,7 +1039,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={5}
             title="Artigo e Concordância — Casos Especiais Cesgranrio"
-            variant={getModuleVariant(6)}
+            variant="amber"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FlipCard
@@ -1106,7 +1105,7 @@ export default function AulaClassesPalavras({
             titulo="Artigo: O Determinante"
             icone="🏷️"
             numero={3}
-            variant={getModuleVariant(6)}
+            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </section>
@@ -1125,7 +1124,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={1}
             title="Pessoais: Reto vs Oblíquo"
-            variant={getModuleVariant(5)}
+            variant="violet"
           />
           <div className="overflow-hidden rounded-xl border border-border bg-muted/30">
             <table className="w-full text-sm text-left">
@@ -1167,7 +1166,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Colocação Pronominal"
-            variant={getModuleVariant(5)}
+            variant="violet"
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 rounded-xl bg-violet-500/5 border border-violet-500/20 space-y-4">
@@ -1214,7 +1213,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Pronomes Possessivos, Demonstrativos e Relativos"
-            variant={getModuleVariant(5)}
+            variant="violet"
           />
           <ContentAccordion
             mode="stacked"
@@ -1296,7 +1295,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant={getModuleVariant(5)}
+            variant="violet"
           />
           <LessonTabs
             tabs={[
@@ -1327,7 +1326,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={5}
             title="Pronomes de Tratamento — A Armadilha do Concurso"
-            variant={getModuleVariant(5)}
+            variant="violet"
           />
           <p className="text-base text-muted-foreground leading-relaxed text-justify">
             Os pronomes de tratamento são formas especiais de se referir a pessoas de forma respeitosa ou protocolar. São a fonte de uma das pegadinhas mais clássicas da Cesgranrio: apesar de se referirem à <strong>2ª pessoa</strong> (o interlocutor), exigem o verbo e os pronomes na <strong>3ª pessoa do singular</strong>.
@@ -1371,7 +1370,7 @@ export default function AulaClassesPalavras({
             titulo="Pronome: O Substituto"
             icone="👤"
             numero={4}
-            variant={getModuleVariant(5)}
+            variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </section>
@@ -1633,7 +1632,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={1}
             title="Conceito e o Teste do 'Muito'"
-            variant={getModuleVariant(6)}
+            variant="amber"
           />
           <p className="text-lg text-muted-foreground">
             O <strong>Advérbio</strong> é a classe <strong>invariável</strong>{" "}
@@ -1654,7 +1653,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Palavras Camaleão"
-            variant={getModuleVariant(6)}
+            variant="amber"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 bg-muted/30 rounded-xl border border-border">
@@ -1676,7 +1675,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Locuções Adverbiais e Classificação"
-            variant={getModuleVariant(6)}
+            variant="amber"
           />
           <ContentAccordion
             mode="stacked"
@@ -1743,7 +1742,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant={getModuleVariant(6)}
+            variant="amber"
           />
           <LessonTabs
             tabs={[
@@ -1791,7 +1790,7 @@ export default function AulaClassesPalavras({
             titulo="Advérbio: A Circunstância"
             icone="🏃"
             numero={6}
-            variant={getModuleVariant(6)}
+            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
         </section>
@@ -1961,7 +1960,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={1}
             title="Coordenativas vs Subordinativas"
-            variant={getModuleVariant(10)}
+            variant="indigo"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-4">
@@ -1983,7 +1982,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Conjunções Coordenativas em Detalhe"
-            variant={getModuleVariant(10)}
+            variant="indigo"
           />
           <ContentAccordion
             mode="stacked"
@@ -2029,7 +2028,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Conjunções Subordinativas — O Mapa Semântico"
-            variant={getModuleVariant(10)}
+            variant="indigo"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FlipCard
@@ -2079,7 +2078,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant={getModuleVariant(10)}
+            variant="indigo"
           />
           <LessonTabs
             tabs={[
@@ -2110,7 +2109,7 @@ export default function AulaClassesPalavras({
             titulo="Conjunção: A Engrenagem"
             icone="⚙️"
             numero={8}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
         </section>
@@ -2281,7 +2280,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={1}
             title="Cardinais vs Ordinais"
-            variant={getModuleVariant(3)}
+            variant="emerald"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-6 bg-muted/30 rounded-xl">
@@ -2303,7 +2302,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Multiplicativos, Fracionários e Coletivos"
-            variant={getModuleVariant(3)}
+            variant="emerald"
           />
           <ContentAccordion
             mode="stacked"
@@ -2367,7 +2366,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Revisão Express — As 10 Classes de Palavras"
-            variant={getModuleVariant(3)}
+            variant="emerald"
           />
           <ContentAccordion
             mode="stacked"
@@ -2406,7 +2405,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant={getModuleVariant(3)}
+            variant="emerald"
           />
           <LessonTabs
             tabs={[
@@ -2439,7 +2438,7 @@ export default function AulaClassesPalavras({
             titulo="Numeral: A Quantidade"
             icone="🔢"
             numero={10}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
           />
         </section>

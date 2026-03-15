@@ -20,7 +20,6 @@ import {
   type FunctionPlot,
 
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   LuBookOpen,
@@ -211,7 +210,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="A Mecânica das Equações de 1º Grau"
               description="Dominando a balança matemática: o que você faz de um lado, faz do outro."
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
 
             <p className="text-muted-foreground leading-relaxed text-lg">
@@ -417,7 +416,7 @@ export default function AulaEquacoes1Grau({
           />
           <ModuleConsolidation
             index={1}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 1",
@@ -457,7 +456,7 @@ export default function AulaEquacoes1Grau({
             questoes={quizM1}
             titulo="Fixação - Módulo 1"
             numero={1}
-            variant={getModuleVariant(1)}
+            variant="blue"
             icone="🧠"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
@@ -496,7 +495,7 @@ export default function AulaEquacoes1Grau({
               index={2}
               title="O Dicionário Operacional"
               description="Como a CESGRANRIO pensa em português e a gente converte para x."
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
 
             <ContentAccordion
@@ -738,7 +737,7 @@ export default function AulaEquacoes1Grau({
           />
           <ModuleConsolidation
             index={2}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 2",
@@ -778,7 +777,7 @@ export default function AulaEquacoes1Grau({
             questoes={quizM2}
             titulo="Fixação - Módulo 2"
             numero={2}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
@@ -800,7 +799,7 @@ export default function AulaEquacoes1Grau({
               index={3}
               title="Limpando Frações Rápidamente"
               description="Frações atraem erros. Seu objetivo: eliminá-las no PRIMEIRO passo."
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
 
             <ContentAccordion
@@ -947,7 +946,7 @@ export default function AulaEquacoes1Grau({
           </section>
           <ModuleConsolidation
             index={3}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 3",
@@ -987,7 +986,7 @@ export default function AulaEquacoes1Grau({
             questoes={quizM3}
             titulo="Fixação - Módulo 3"
             numero={3}
-            variant={getModuleVariant(6)}
+            variant="amber"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
@@ -1009,7 +1008,7 @@ export default function AulaEquacoes1Grau({
               index={4}
               title="Dominando X e Y"
               description="Quando você tem duas balas para dois alvos."
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
 
             <ContentAccordion
@@ -1141,7 +1140,7 @@ export default function AulaEquacoes1Grau({
           </section>
           <ModuleConsolidation
             index={4}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 4",
@@ -1181,7 +1180,7 @@ export default function AulaEquacoes1Grau({
             questoes={quizM4}
             titulo="Fixação - Módulo 4"
             numero={4}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
@@ -1203,7 +1202,7 @@ export default function AulaEquacoes1Grau({
               index={5}
               title="Checkpoint: Revisão Progressiva"
               description="Teste seus conhecimentos antes de avançar para inequações e sistemas avançados."
-              variant={getModuleVariant(10)}
+              variant="indigo"
             />
 
             <AlertBox tipo="info" titulo="O que esperar">
@@ -1240,7 +1239,7 @@ export default function AulaEquacoes1Grau({
           />
           <ModuleConsolidation
             index={5}
-            variant={getModuleVariant(6)}
+            variant="amber"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 5",
@@ -1280,7 +1279,7 @@ export default function AulaEquacoes1Grau({
             questoes={quizM5}
             titulo="Simulado Parcial - M1 até M4"
             numero={5}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             icone="📋"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
@@ -1306,7 +1305,7 @@ export default function AulaEquacoes1Grau({
               description={
                 "Quando a igualdade (=) vira desigualdade (>, <, ≥, ≤)."
               }
-              variant={getModuleVariant(9)}
+              variant="rose"
             />
 
             <ContentAccordion
@@ -1447,7 +1446,7 @@ export default function AulaEquacoes1Grau({
           </section>
           <ModuleConsolidation
             index={6}
-            variant={getModuleVariant(9)}
+            variant="rose"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 6",
@@ -1487,7 +1486,7 @@ export default function AulaEquacoes1Grau({
             questoes={quizM6}
             titulo="Fixação - Módulo 6"
             numero={6}
-            variant={getModuleVariant(9)}
+            variant="rose"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
@@ -1509,7 +1508,7 @@ export default function AulaEquacoes1Grau({
               index={7}
               title="Da Dimensão 2x2 para 3x3"
               description="Mesma estratégia: isolar incógnitas progressivamente."
-              variant={getModuleVariant(5)}
+              variant="violet"
             />
 
             <ContentAccordion
@@ -1623,7 +1622,7 @@ export default function AulaEquacoes1Grau({
           </section>
           <ModuleConsolidation
             index={7}
-            variant={getModuleVariant(10)}
+            variant="indigo"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 7",
@@ -1663,7 +1662,7 @@ export default function AulaEquacoes1Grau({
             questoes={quizM7}
             titulo="Fixação - Módulo 7"
             numero={7}
-            variant={getModuleVariant(5)}
+            variant="violet"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
           />
@@ -1685,7 +1684,7 @@ export default function AulaEquacoes1Grau({
               index={8}
               title="Técnica de Prova: Substituição na Equação Original"
               description="A verificação não é luxo, é necessidade na CESGRANRIO."
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
 
             <ContentAccordion
@@ -1852,7 +1851,7 @@ export default function AulaEquacoes1Grau({
           </section>
           <ModuleConsolidation
             index={8}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 8",
@@ -1892,7 +1891,7 @@ export default function AulaEquacoes1Grau({
             questoes={quizM8}
             titulo="Fixação - Módulo 8"
             numero={8}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
@@ -1914,7 +1913,7 @@ export default function AulaEquacoes1Grau({
               index={9}
               title="Problemas Contextualizados Petrobras"
               description="A CESGRANRIO adora disfarçar equações em situações reais da empresa."
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
 
             <ContentAccordion
@@ -2110,7 +2109,7 @@ export default function AulaEquacoes1Grau({
           />
           <ModuleConsolidation
             index={9}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 9",
@@ -2150,7 +2149,7 @@ export default function AulaEquacoes1Grau({
             questoes={quizM9}
             titulo="Fixação - Módulo 9"
             numero={9}
-            variant={getModuleVariant(6)}
+            variant="amber"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
@@ -2190,7 +2189,7 @@ export default function AulaEquacoes1Grau({
                   index={10}
                   title="Avaliação Final Compreensiva"
                   description="Este simulado cobre TODOS os tópicos: M1 até M9. Mínimo 75% para aprovação."
-                  variant={getModuleVariant(10)}
+                  variant="slate"
                 />
 
                 <AlertBox tipo="warning" titulo="Instruções Importantes">
@@ -2208,7 +2207,7 @@ export default function AulaEquacoes1Grau({
               </section>
           <ModuleConsolidation
             index={10}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 10",
@@ -2249,7 +2248,7 @@ export default function AulaEquacoes1Grau({
                 titulo="Simulado Elite - Equações de 1º Grau"
                 icone="🏆"
                 numero={10}
-                variant={getModuleVariant(10)}
+                variant="slate"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

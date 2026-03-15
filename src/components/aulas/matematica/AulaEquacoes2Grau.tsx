@@ -18,7 +18,6 @@ import {
   ModuleConsolidation,
   type FunctionPlot,
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   LuBookOpen,
@@ -192,7 +191,7 @@ export default function AulaEquacoes2Grau({
               index={1}
               title="A Anatomia da Equação"
               description="Identificando os coeficientes sem cair nas armadilhas da banca."
-              variant={getModuleVariant(1)}
+              variant="blue"
             />
 
             <p className="text-muted-foreground leading-relaxed text-lg">
@@ -354,7 +353,7 @@ export default function AulaEquacoes2Grau({
 
           <ModuleConsolidation
             index={1}
-            variant={getModuleVariant(1)}
+            variant="blue"
             video={{
               videoId: "gZDzgZxrvAo",
               title: "Equações do 2º Grau: Conceitos Fundamentais",
@@ -413,7 +412,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM1}
               titulo="Fixação - Conceitos Fundamentais"
               numero={1}
-              variant={getModuleVariant(1)}
+              variant="blue"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -436,7 +435,7 @@ export default function AulaEquacoes2Grau({
               index={2}
               title="O Coração do 2º Grau"
               description="Bhaskara: a fórmula que resolve tudo quando bem compreendida."
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
 
             <ContentAccordion
@@ -592,7 +591,7 @@ export default function AulaEquacoes2Grau({
 
           <ModuleConsolidation
             index={2}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "RFKjZ2FLSrk",
               title: "Fórmula de Bhaskara: Passo a Passo",
@@ -649,7 +648,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM2}
               titulo="Fixação - Fórmula de Bhaskara"
               numero={2}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -672,7 +671,7 @@ export default function AulaEquacoes2Grau({
               index={3}
               title="A Tradução Física das Raízes"
               description="Ninguém desenha uma parábola sem motivo de prova."
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
 
             <ContentAccordion
@@ -796,7 +795,7 @@ export default function AulaEquacoes2Grau({
 
           <ModuleConsolidation
             index={3}
-            variant={getModuleVariant(6)}
+            variant="amber"
             video={{
               videoId: "lkK4kZWglOk",
               title: "Problemas Contextualizados com Equações 2º Grau",
@@ -855,7 +854,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM3}
               titulo="Fixação - Equações Avançadas"
               numero={3}
-              variant={getModuleVariant(6)}
+              variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -878,7 +877,7 @@ export default function AulaEquacoes2Grau({
               index={4}
               title="O Ápice da Parábola"
               description="Identificando o pico e o fundo do poço sem precisar desenhar o gráfico."
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
 
             <ContentAccordion
@@ -1001,7 +1000,7 @@ export default function AulaEquacoes2Grau({
 
           <ModuleConsolidation
             index={4}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "bPfYCGCYRN8",
               title: "Vértice e Otimização: Máximos e Mínimos",
@@ -1065,7 +1064,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM4}
               titulo="Fixação - Problemas Contextualizados"
               numero={4}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1088,7 +1087,7 @@ export default function AulaEquacoes2Grau({
               index={5}
               title="Revisão Estratégica"
               description="Antes de avançar para técnicas mais sofisticadas, teste seu domínio."
-              variant={getModuleVariant(5)}
+              variant="violet"
             />
 
             <ContentAccordion
@@ -1144,7 +1143,7 @@ export default function AulaEquacoes2Grau({
 
           <ModuleConsolidation
             index={5}
-            variant={getModuleVariant(5)}
+            variant="violet"
             video={{
               videoId: "SJ-S32r9GUo",
               title: "Revisão: Equações 2º Grau Completas",
@@ -1202,7 +1201,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM5}
               titulo="Fixação - Desafio Parcial"
               numero={5}
-              variant={getModuleVariant(5)}
+              variant="violet"
               icone="📊"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1225,7 +1224,7 @@ export default function AulaEquacoes2Grau({
               index={6}
               title="Relações de Vieta"
               description="Soma e produto das raízes."
-              variant={getModuleVariant(3)}
+              variant="emerald"
             />
 
             <ContentAccordion
@@ -1315,7 +1314,7 @@ export default function AulaEquacoes2Grau({
 
           <ModuleConsolidation
             index={6}
-            variant={getModuleVariant(3)}
+            variant="emerald"
             video={{
               videoId: "8mR0h4Ymfuo",
               title: "Soma e Produto: Relações de Vieta",
@@ -1372,7 +1371,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM6}
               titulo="Fixação - Soma e Produto"
               numero={6}
-              variant={getModuleVariant(3)}
+              variant="emerald"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1395,7 +1394,7 @@ export default function AulaEquacoes2Grau({
               index={7}
               title="O Ápice da Parábola"
               description="Encontrando máximos e mínimos."
-              variant={getModuleVariant(2)}
+              variant="cyan"
             />
 
             <ContentAccordion
@@ -1498,7 +1497,7 @@ export default function AulaEquacoes2Grau({
 
           <ModuleConsolidation
             index={7}
-            variant={getModuleVariant(2)}
+            variant="cyan"
             video={{
               videoId: "qAHgWGWZhGs",
               title: "Gráficos de Parábolas: Visualização Completa",
@@ -1557,7 +1556,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM7}
               titulo="Fixação - Gráficos e Parábolas"
               numero={7}
-              variant={getModuleVariant(2)}
+              variant="cyan"
               icone="📈"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1580,7 +1579,7 @@ export default function AulaEquacoes2Grau({
               index={8}
               title="Pensamento Inverso"
               description="Quando a banca dá as raízes, ache a equação."
-              variant={getModuleVariant(9)}
+              variant="rose"
             />
 
             <ContentAccordion
@@ -1677,7 +1676,7 @@ export default function AulaEquacoes2Grau({
 
           <ModuleConsolidation
             index={8}
-            variant={getModuleVariant(9)}
+            variant="rose"
             video={{
               videoId: "v8HEYcH0WeM",
               title: "Resolução Reversa: Das Raízes à Equação",
@@ -1736,7 +1735,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM8}
               titulo="Fixação - Resolução Reversa"
               numero={8}
-              variant={getModuleVariant(9)}
+              variant="rose"
               icone="🔄"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1759,7 +1758,7 @@ export default function AulaEquacoes2Grau({
               index={9}
               title="Contexto Industrial"
               description="Equações que resolvem problemas verdadeiros."
-              variant={getModuleVariant(6)}
+              variant="amber"
             />
 
             <ContentAccordion
@@ -1857,7 +1856,7 @@ export default function AulaEquacoes2Grau({
 
           <ModuleConsolidation
             index={9}
-            variant={getModuleVariant(6)}
+            variant="amber"
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Aplicações Reais: Otimização na Indústria",
@@ -1916,7 +1915,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM9}
               titulo="Fixação - Aplicações Petrobras"
               numero={9}
-              variant={getModuleVariant(6)}
+              variant="amber"
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1952,7 +1951,7 @@ export default function AulaEquacoes2Grau({
                 titulo="Simulado Mestre - Equações 2º Grau"
                 icone="🏆"
                 numero={10}
-                variant={getModuleVariant(10)}
+                variant="slate"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>
