@@ -228,7 +228,17 @@ export default function AulaGeometriaAnalitica({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={1}
             variant="indigo"
             video={{
@@ -263,7 +273,7 @@ export default function AulaGeometriaAnalitica({
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM1}
             moduleId="modulo-1"
             onComplete={handleModuleComplete}
@@ -399,7 +409,17 @@ export default function AulaGeometriaAnalitica({
             points={200}
           />
 
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={2}
             variant="emerald"
             video={{
@@ -434,7 +454,7 @@ export default function AulaGeometriaAnalitica({
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM2}
             moduleId="modulo-2"
             onComplete={handleModuleComplete}
@@ -586,7 +606,17 @@ export default function AulaGeometriaAnalitica({
             points={200}
           />
 
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={3}
             variant="cyan"
             video={{
@@ -621,7 +651,7 @@ export default function AulaGeometriaAnalitica({
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM3}
             moduleId="modulo-3"
             onComplete={handleModuleComplete}
@@ -727,7 +757,17 @@ export default function AulaGeometriaAnalitica({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={4}
             variant="blue"
             video={{
@@ -762,7 +802,7 @@ export default function AulaGeometriaAnalitica({
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM4}
             moduleId="modulo-4"
             onComplete={handleModuleComplete}
@@ -874,7 +914,17 @@ export default function AulaGeometriaAnalitica({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="amber"
             video={{
@@ -909,7 +959,7 @@ export default function AulaGeometriaAnalitica({
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM5}
             moduleId="modulo-5"
             onComplete={handleModuleComplete}
@@ -1037,7 +1087,17 @@ export default function AulaGeometriaAnalitica({
             points={300}
           />
 
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={6}
             variant="rose"
             video={{
@@ -1072,7 +1132,7 @@ export default function AulaGeometriaAnalitica({
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM6}
             moduleId="modulo-6"
             onComplete={handleModuleComplete}
@@ -1209,7 +1269,17 @@ export default function AulaGeometriaAnalitica({
             points={250}
           />
 
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={7}
             variant="indigo"
             video={{
@@ -1244,7 +1314,7 @@ export default function AulaGeometriaAnalitica({
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM7}
             moduleId="modulo-7"
             onComplete={handleModuleComplete}
@@ -1347,7 +1417,17 @@ export default function AulaGeometriaAnalitica({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={8}
             variant="emerald"
             video={{
@@ -1382,7 +1462,7 @@ export default function AulaGeometriaAnalitica({
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM8}
             moduleId="modulo-8"
             onComplete={handleModuleComplete}
@@ -1512,7 +1592,17 @@ export default function AulaGeometriaAnalitica({
             points={250}
           />
 
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={9}
             variant="cyan"
             video={{
@@ -1547,7 +1637,7 @@ export default function AulaGeometriaAnalitica({
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM9}
             moduleId="modulo-9"
             onComplete={handleModuleComplete}
@@ -1686,7 +1776,17 @@ export default function AulaGeometriaAnalitica({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={10}
             variant="blue"
             video={{
@@ -1721,7 +1821,7 @@ export default function AulaGeometriaAnalitica({
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM10}
             moduleId="modulo-10"
             onComplete={handleModuleComplete}

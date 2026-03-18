@@ -12,7 +12,7 @@ export interface Usuario {
   conquistas: string[];
   historico: HistoricoSimulado[];
   questoesGeradas: number;
-  plan?: 'free' | 'pro' | 'enterprise';
+  plan?: 'free' | 'aprovado-medio' | 'aprovado-superior' | 'elite-medio' | 'elite-superior' | 'elite-total';
 }
 
 export interface HistoricoSimulado {

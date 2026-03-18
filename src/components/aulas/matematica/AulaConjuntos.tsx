@@ -629,7 +629,18 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-1" className="mt-16">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={1}
             variant="indigo"
             video={{
@@ -665,8 +676,7 @@ export default function AulaConjuntos({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizFundamentos}
               titulo="Quiz - Fundamentos de Conjuntos"
               icone="🧠"
@@ -887,7 +897,18 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-2" className="mt-16">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={2}
             variant="emerald"
             video={{
@@ -923,8 +944,7 @@ export default function AulaConjuntos({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizOperacoes}
               titulo="Quiz - Operações com Conjuntos"
               icone="🧠"
@@ -1178,7 +1198,18 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-3" className="mt-16">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={3}
             variant="cyan"
             video={{
@@ -1214,8 +1245,7 @@ export default function AulaConjuntos({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizVenn}
               titulo="Quiz - Diagramas de Venn"
               icone="🧠"
@@ -1405,7 +1435,18 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-4" className="mt-16">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={4}
             variant="blue"
             video={{
@@ -1441,8 +1482,7 @@ export default function AulaConjuntos({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizNumericos}
               titulo="Quiz - Conjuntos Numéricos"
               icone="🔥"
@@ -1535,7 +1575,18 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-5" className="mt-16">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="amber"
             video={{
@@ -1571,8 +1622,7 @@ export default function AulaConjuntos({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizFinal}
               titulo="Simulado Final - Teoria dos Conjuntos"
               icone="🏆"
@@ -1854,7 +1904,18 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-6" className="mt-16">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={6}
             variant="rose"
             video={{
@@ -1890,8 +1951,7 @@ export default function AulaConjuntos({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizInclusaoExclusao}
               titulo="Quiz — Inclusão-Exclusão"
               icone="➕"
@@ -2179,7 +2239,18 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-7" className="mt-16">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={7}
             variant="indigo"
             video={{
@@ -2215,8 +2286,7 @@ export default function AulaConjuntos({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizNumericosBasicos}
               titulo="Quiz — ℕ, ℤ, ℚ em Profundidade"
               icone="🔢"
@@ -2463,7 +2533,18 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-8" className="mt-16">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={8}
             variant="emerald"
             video={{
@@ -2499,8 +2580,7 @@ export default function AulaConjuntos({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizIrracReais}
               titulo="Quiz — Irracionais e ℝ"
               icone="∞"
@@ -2762,7 +2842,18 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-9" className="mt-16">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={9}
             variant="cyan"
             video={{
@@ -2798,8 +2889,7 @@ export default function AulaConjuntos({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizDeMorgan}
               titulo="Quiz — Leis de De Morgan"
               icone="🔁"
@@ -3166,7 +3256,18 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-10" className="mt-16">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={10}
             variant="blue"
             video={{
@@ -3202,8 +3303,7 @@ export default function AulaConjuntos({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizSimulado}
               titulo="Simulado Final CESGRANRIO — Teoria dos Conjuntos"
               icone="🏆"

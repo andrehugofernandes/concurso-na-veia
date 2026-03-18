@@ -355,7 +355,18 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-1">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={1}
             variant="indigo"
             video={{
@@ -391,8 +402,7 @@ export default function AulaRazaoProporcao({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizRazao}
               titulo="Quiz — Razão: Fundamentos"
               numero={1}
@@ -573,7 +583,18 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-2">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={2}
             variant="emerald"
             video={{
@@ -609,8 +630,7 @@ export default function AulaRazaoProporcao({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizProporcao}
               titulo="Quiz — Proporção e Propriedades"
               numero={2}
@@ -859,7 +879,18 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-3">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={3}
             variant="cyan"
             video={{
@@ -895,8 +926,7 @@ export default function AulaRazaoProporcao({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizRegra3}
               titulo="Quiz — Regra de Três Simples"
               numero={3}
@@ -1055,7 +1085,18 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-4">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={4}
             variant="blue"
             video={{
@@ -1091,8 +1132,7 @@ export default function AulaRazaoProporcao({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizDivisao}
               titulo="Quiz — Divisão Proporcional"
               numero={4}
@@ -1396,7 +1436,18 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-5">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="amber"
             video={{
@@ -1432,8 +1483,7 @@ export default function AulaRazaoProporcao({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizGrandezas}
               titulo="Quiz — Grandezas Proporcionais"
               numero={5}
@@ -1591,7 +1641,18 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-6">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={6}
             variant="rose"
             video={{
@@ -1627,8 +1688,7 @@ export default function AulaRazaoProporcao({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizDivisaoAdv}
               titulo="Quiz — Divisão Proporcional Avançada"
               numero={6}
@@ -1790,7 +1850,18 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-7">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={7}
             variant="indigo"
             video={{
@@ -1826,8 +1897,7 @@ export default function AulaRazaoProporcao({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizContinua}
               titulo="Quiz — Proporção Contínua e Média Proporcional"
               numero={7}
@@ -2044,7 +2114,18 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-8">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={8}
             variant="emerald"
             video={{
@@ -2080,8 +2161,7 @@ export default function AulaRazaoProporcao({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizEscalas}
               titulo="Quiz — Escalas e Mapas"
               numero={8}
@@ -2244,7 +2324,18 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-9">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={9}
             variant="cyan"
             video={{
@@ -2280,8 +2371,7 @@ export default function AulaRazaoProporcao({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizPetrobras}
               titulo="Quiz — Aplicações Industriais Petrobras"
               numero={9}
@@ -2417,7 +2507,18 @@ export default function AulaRazaoProporcao({
 
           {/* ─── SIMULADO FINAL ─── */}
           <section id="quiz-modulo-10">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={10}
             variant="blue"
             video={{
@@ -2453,8 +2554,7 @@ export default function AulaRazaoProporcao({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizFinal}
               titulo="Simulado Final — Nível Elite"
               numero={10}

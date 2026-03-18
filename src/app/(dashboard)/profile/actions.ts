@@ -1,7 +1,7 @@
 'use server';
 
 import { createClient } from '@/lib/supabase/server';
-import { uploadToFirebaseStorage } from '@/lib/services/firebase-storage';
+import { uploadToSupabaseStorage } from '@/lib/services/supabase-storage';
 
 export async function uploadAvatarAction(formData: FormData) {
     try {
@@ -14,7 +14,7 @@ export async function uploadAvatarAction(formData: FormData) {
         const fileName = `avatar-${Date.now()}-${file.name}`;
         const mimeType = file.type;
 
-        const result = await uploadToFirebaseStorage(buffer, fileName, mimeType);
+        const result = await uploadToSupabaseStorage(buffer, fileName, mimeType);
 
         if (result.success && result.url) {
             // Update profile with new avatar URL

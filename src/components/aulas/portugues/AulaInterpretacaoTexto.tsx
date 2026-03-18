@@ -491,7 +491,17 @@ export default function AulaInterpretacaoTexto({
           </div>
         </section>
 
-        <ModuleConsolidation
+
+
+        
+
+
+
+
+
+
+
+<ModuleConsolidation
           index={4}
           variant="blue"
           video={{
@@ -579,7 +589,7 @@ export default function AulaInterpretacaoTexto({
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={quizM1}
           titulo="Blindagem de Módulo: Fundamentos"
           icone="🛡️"
@@ -787,7 +797,17 @@ export default function AulaInterpretacaoTexto({
           }
         />
 
-        <ModuleConsolidation
+
+
+        
+
+
+
+
+
+
+
+<ModuleConsolidation
           index={5}
           variant="emerald"
           video={{
@@ -867,7 +887,7 @@ export default function AulaInterpretacaoTexto({
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={quizM2}
           titulo="Blindagem de Módulo: Arquitetura"
           icone="🏗️"
@@ -1091,7 +1111,17 @@ export default function AulaInterpretacaoTexto({
           }
         />
 
-        <ModuleConsolidation
+
+
+        
+
+
+
+
+
+
+
+<ModuleConsolidation
           index={3}
           variant="amber"
           video={{
@@ -1170,7 +1200,7 @@ export default function AulaInterpretacaoTexto({
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={quizM3}
           titulo="Blindagem de Módulo: Lógica"
           icone="🧠"
@@ -1366,7 +1396,17 @@ export default function AulaInterpretacaoTexto({
           }
         />
 
-        <ModuleConsolidation
+
+
+        
+
+
+
+
+
+
+
+<ModuleConsolidation
           index={4}
           variant="blue"
           video={{
@@ -1430,7 +1470,7 @@ export default function AulaInterpretacaoTexto({
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={quizM4}
           titulo="Blindagem de Módulo: DNA"
           icone="🧬"
@@ -1588,7 +1628,17 @@ export default function AulaInterpretacaoTexto({
           }
         />
 
-        <ModuleConsolidation
+
+
+        
+
+
+
+
+
+
+
+<ModuleConsolidation
           index={5}
           variant="emerald"
           video={{
@@ -1668,7 +1718,7 @@ export default function AulaInterpretacaoTexto({
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={quizM5}
           titulo="Blindagem de Módulo: Velocidade"
           icone="⚡"
@@ -1813,7 +1863,17 @@ export default function AulaInterpretacaoTexto({
           }
         />
 
-        <ModuleConsolidation
+
+
+        
+
+
+
+
+
+
+
+<ModuleConsolidation
           index={3}
           variant="cyan"
           video={{
@@ -1895,7 +1955,7 @@ export default function AulaInterpretacaoTexto({
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={quizM6}
           titulo="Desafio de Entrelinhas"
           icone="🕵️"
@@ -2034,7 +2094,17 @@ export default function AulaInterpretacaoTexto({
           }
         />
 
-        <ModuleConsolidation
+
+
+        
+
+
+
+
+
+
+
+<ModuleConsolidation
           index={4}
           variant="rose"
           video={{
@@ -2116,7 +2186,7 @@ export default function AulaInterpretacaoTexto({
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={quizM7}
           titulo="Desafio de Detecção"
           icone="🚫"
@@ -2236,7 +2306,17 @@ export default function AulaInterpretacaoTexto({
           }
         />
 
-        <ModuleConsolidation
+
+
+        
+
+
+
+
+
+
+
+<ModuleConsolidation
           index={3}
           variant="blue"
           video={{
@@ -2316,7 +2396,7 @@ export default function AulaInterpretacaoTexto({
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={quizM8}
           titulo="Desafio de Intencionalidade"
           icone="🎯"
@@ -2407,7 +2487,17 @@ export default function AulaInterpretacaoTexto({
           }
         />
 
-        <ModuleConsolidation
+
+
+        
+
+
+
+
+
+
+
+<ModuleConsolidation
           index={3}
           variant="blue"
           video={{
@@ -2493,7 +2583,7 @@ export default function AulaInterpretacaoTexto({
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={quizM9}
           titulo="Desafio de Lógica"
           icone="🧠"
@@ -2607,7 +2697,17 @@ export default function AulaInterpretacaoTexto({
           </div>
         </section>
 
-        <ModuleConsolidation
+
+
+        
+
+
+
+
+
+
+
+<ModuleConsolidation
           index={2}
           variant="amber"
           video={{
@@ -2689,7 +2789,7 @@ export default function AulaInterpretacaoTexto({
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={quizFinal}
           titulo="O Exame Final de Interpretação Mestra"
           icone="👑"

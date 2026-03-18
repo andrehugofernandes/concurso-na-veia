@@ -193,11 +193,13 @@ export default function Maratona100Page() {
           { materia: "Conhecimentos Específicos", qtd: 30 },
         ];
       } else {
-        // Maratona Médio: 20 Port, 20 Mat, 30 Esp (=70)
+        // Maratona Médio: 20 Port, 20 Mat, 30 Esp (10 cada Bloco)
         distribuicao = [
           { materia: "Língua Portuguesa", qtd: 20 },
           { materia: "Matemática", qtd: 20 },
-          { materia: "Conhecimentos Específicos", qtd: 30 },
+          { materia: "Conhecimentos Específicos - Bloco I", qtd: 10 },
+          { materia: "Conhecimentos Específicos - Bloco II", qtd: 10 },
+          { materia: "Conhecimentos Específicos - Bloco III", qtd: 10 },
         ];
       }
     } else if (tipo === "intensivo") {
@@ -245,75 +247,90 @@ export default function Maratona100Page() {
       ];
     }
 
-    setTotalGeracao(quantidade);
-    setProgressoGeracao(0);
-
-    // Loop de geração por lotes
+    const totalReal = distribuicao.reduce((acc, item) => acc + item.qtd, 0);
+    setTotalGeracao(totalReal);
+    // Loop de geração por lotes — robusto contra rate limit
     for (const item of distribuicao) {
       let restantes = item.qtd;
-      
-      while (restantes > 0) {
-        // Reduzido para 5 no Gemini para maior estabilidade no Free Tier
+      let tentativasConsecutivas = 0;
+      const MAX_TENTATIVAS = 10; // safeguard para não travar para sempre
+
+      while (restantes > 0 && tentativasConsecutivas < MAX_TENTATIVAS) {
         const batchSize = Math.min(restantes, 5);
-        
+
+        let dificuldade = dificuldadeManual || dificuldadeUrl || undefined;
+        if (!dificuldade) {
+          const taxaAcerto =
+            usuario.questoesCertas /
+            (usuario.questoesCertas + usuario.questoesErradas || 1);
+          if (taxaAcerto > 0.8) dificuldade = "Difícil";
+          else if (taxaAcerto > 0.6) dificuldade = "Média";
+          else if (taxaAcerto < 0.5) dificuldade = "Fácil";
+        }
+
+        // Delay entre lotes (exceto o primeiro)
+        if (questoes.length > 0) await new Promise((r) => setTimeout(r, 1000));
+
         try {
-          let dificuldade = dificuldadeManual || dificuldadeUrl || undefined;
-
-          // Ajuste automático de dificuldade
-          if (!dificuldade) {
-            const taxaAcerto =
-              usuario.questoesCertas /
-              (usuario.questoesCertas + usuario.questoesErradas || 1);
-            if (taxaAcerto > 0.8) dificuldade = "Difícil";
-            else if (taxaAcerto > 0.6) dificuldade = "Média";
-            else if (taxaAcerto < 0.5) dificuldade = "Fácil";
-          }
-
-          // Delay menor entre lotes
-          if (questoes.length > 0) await new Promise((r) => setTimeout(r, 1000));
-
           const lote = await gerarQuestoesLote(
             item.materia,
             batchSize,
             dificuldade,
-            item.assunto
+            item.assunto,
           );
-          
+
           questoes.push(...lote);
           restantes -= lote.length;
+          tentativasConsecutivas = 0; // reset ao sucesso
           setProgressoGeracao(questoes.length);
-        } catch (error: any) {
-          console.error(`[MARATONA] Erro no lote de ${item.materia}:`, error.message);
-          
-          // Se for Rate Limit, espera mais tempo (15s) e tenta de novo o lote
-          if (error.message.includes('Rate Limit') || error.message.includes('429')) {
-             console.log("[MARATONA] Limite de taxa atingido. Respirando por 15s...");
-             setContagemRegressivaIA(15);
-             await new Promise((r) => setTimeout(r, 15000));
-             continue; // Tenta o mesmo lote de novo
-          }
 
-          // Fallback individual em caso de outros erros
-          try {
-            console.log(`[MARATONA] Tentando fallback individual para ${item.materia}...`);
-            const individual = await gerarQuestoesLote(item.materia, 1, "Média", item.assunto);
-            questoes.push(...individual);
+        } catch (error: any) {
+          tentativasConsecutivas++;
+          const isRateLimit =
+            error.message.includes("Rate Limit") ||
+            error.message.includes("429") ||
+            error.message.includes("Limite de taxa") ||
+            error.message.includes("fetch failed");
+
+          console.warn(
+            `[MARATONA] Erro lote (tentativa ${tentativasConsecutivas}/${MAX_TENTATIVAS}) ${item.materia}:`,
+            error.message,
+          );
+
+          if (isRateLimit) {
+            setContagemRegressivaIA(5);
+            await new Promise((r) => setTimeout(r, 5000));
+            setContagemRegressivaIA(0);
+            // não decrementa restantes — tenta o mesmo lote de novo
+          } else {
+            // Erro não relacionado a rate limit: pula 1 questão para não travar
             restantes -= 1;
-            setProgressoGeracao(questoes.length);
-          } catch (retryError: any) {
-            console.error("[MARATONA] Falha total na retentativa:", retryError.message);
-            // Se for rate limit aqui também, espera
-            if (retryError.message.includes('Rate Limit') || retryError.message.includes('429')) {
-               setContagemRegressivaIA(20);
-               await new Promise((r) => setTimeout(r, 20000));
-            }
-            restantes -= 1; // Pula para não travar o loop
+            console.warn(`[MARATONA] Pulando 1 questão de ${item.materia} após erro.`);
           }
         }
       }
+
+      if (tentativasConsecutivas >= MAX_TENTATIVAS) {
+        console.warn(`[MARATONA] Máximo de tentativas atingido para ${item.materia}. Prosseguindo com ${questoes.length} questões.`);
+      }
     }
 
-    return questoes;
+    // 🔍 Deduplicação: remove questões com enunciados muito parecidos
+    const unicas = questoes.filter((q, idx) => {
+      const enunciadoAtual = (q.enunciado as string).trim().toLowerCase().substring(0, 80);
+      return !questoes.slice(0, idx).some(
+        (prev) =>
+          (prev.enunciado as string).trim().toLowerCase().substring(0, 80) === enunciadoAtual,
+      );
+    });
+
+    if (unicas.length < questoes.length) {
+      console.warn(
+        `[MARATONA] Removidas ${questoes.length - unicas.length} questões duplicadas.`,
+      );
+    }
+
+    return unicas;
   };
 
   const iniciarSimulado = async (

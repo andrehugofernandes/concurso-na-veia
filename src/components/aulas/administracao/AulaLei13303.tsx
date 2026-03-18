@@ -252,7 +252,11 @@ export default function AulaLei13303(props: AulaProps) {
           />
         </div>
 
-        <ModuleConsolidation
+        
+
+
+
+<ModuleConsolidation
           index={1}
           variant={getBannerVariant(1)}
           video={{
@@ -298,7 +302,7 @@ export default function AulaLei13303(props: AulaProps) {
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={getQuiz("modulo-1")}
           titulo="Conceitos Fundamentais"
           numero={1}
@@ -444,7 +448,11 @@ export default function AulaLei13303(props: AulaProps) {
           />
         </div>
 
-        <ModuleConsolidation
+        
+
+
+
+<ModuleConsolidation
           index={2}
           variant={getBannerVariant(2)}
           video={{
@@ -481,7 +489,7 @@ export default function AulaLei13303(props: AulaProps) {
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={getQuiz("modulo-2")}
           titulo="Definições Estatais"
           numero={2}
@@ -604,7 +612,11 @@ export default function AulaLei13303(props: AulaProps) {
           />
         </div>
 
-        <ModuleConsolidation
+        
+
+
+
+<ModuleConsolidation
           index={3}
           variant={getBannerVariant(3)}
           video={{
@@ -639,7 +651,7 @@ export default function AulaLei13303(props: AulaProps) {
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={getQuiz("modulo-3")}
           titulo="Direitos e Deveres"
           numero={3}
@@ -763,7 +775,11 @@ export default function AulaLei13303(props: AulaProps) {
           />
         </div>
 
-        <ModuleConsolidation
+        
+
+
+
+<ModuleConsolidation
           index={4}
           variant={getBannerVariant(4)}
           video={{
@@ -798,7 +814,7 @@ export default function AulaLei13303(props: AulaProps) {
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={getQuiz("modulo-4")}
           titulo="Órgãos de Governança"
           numero={4}
@@ -922,7 +938,39 @@ export default function AulaLei13303(props: AulaProps) {
           />
         </div>
 
-        <ModuleConsolidation
+        
+
+        <div className="space-y-8 mt-8">
+          <h3 className="text-xl font-bold flex items-center gap-2 text-amber-500">
+            <LuBrain /> Estudo de Caso: A Petrobras em 2018
+          </h3>
+          <div className="p-6 bg-amber-500/5 rounded-2xl border border-amber-500/20 relative overflow-hidden">
+            <div className="absolute right-0 top-0 opacity-10">
+              <LuHistory size={120} />
+            </div>
+            <p className="text-sm leading-relaxed mb-4">
+              Em 2018, a Petrobras enfrentou uma AGE histórica para votar o acordo com o DOJ (Departamento de Justiça Americano). Esse evento demonstrou na prática o poder da Assembleia em decidir sobre acordos bilionários que afetam o futuro da companhia por décadas.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-3 bg-white/5 rounded-lg border border-white/10">
+                <span className="text-[10px] uppercase font-bold text-amber-400">Ponto Chave</span>
+                <p className="text-xs mt-1">Soberania da Assembleia em transações críticas.</p>
+              </div>
+              <div className="p-3 bg-white/5 rounded-lg border border-white/10">
+                <span className="text-[10px] uppercase font-bold text-amber-400">Transparência</span>
+                <p className="text-xs mt-1">Divulgação massiva de informações prévias.</p>
+              </div>
+              <div className="p-3 bg-white/5 rounded-lg border border-white/10">
+                <span className="text-[10px] uppercase font-bold text-amber-400">Resultado</span>
+                <p className="text-xs mt-1">Aprovação por ampla maioria dos votos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+<ModuleConsolidation
           index={5}
           variant={getBannerVariant(5)}
           video={{
@@ -960,35 +1008,7 @@ export default function AulaLei13303(props: AulaProps) {
           }}
         />
 
-        <div className="space-y-8 mt-8">
-          <h3 className="text-xl font-bold flex items-center gap-2 text-amber-500">
-            <LuBrain /> Estudo de Caso: A Petrobras em 2018
-          </h3>
-          <div className="p-6 bg-amber-500/5 rounded-2xl border border-amber-500/20 relative overflow-hidden">
-            <div className="absolute right-0 top-0 opacity-10">
-              <LuHistory size={120} />
-            </div>
-            <p className="text-sm leading-relaxed mb-4">
-              Em 2018, a Petrobras enfrentou uma AGE histórica para votar o acordo com o DOJ (Departamento de Justiça Americano). Esse evento demonstrou na prática o poder da Assembleia em decidir sobre acordos bilionários que afetam o futuro da companhia por décadas.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-3 bg-white/5 rounded-lg border border-white/10">
-                <span className="text-[10px] uppercase font-bold text-amber-400">Ponto Chave</span>
-                <p className="text-xs mt-1">Soberania da Assembleia em transações críticas.</p>
-              </div>
-              <div className="p-3 bg-white/5 rounded-lg border border-white/10">
-                <span className="text-[10px] uppercase font-bold text-amber-400">Transparência</span>
-                <p className="text-xs mt-1">Divulgação massiva de informações prévias.</p>
-              </div>
-              <div className="p-3 bg-white/5 rounded-lg border border-white/10">
-                <span className="text-[10px] uppercase font-bold text-amber-400">Resultado</span>
-                <p className="text-xs mt-1">Aprovação por ampla maioria dos votos.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <QuizInterativo
+                <QuizInterativo
           questoes={getQuiz("modulo-5")}
           titulo="Assembleia Geral"
           numero={5}
@@ -1109,7 +1129,28 @@ export default function AulaLei13303(props: AulaProps) {
           />
         </div>
 
-        <ModuleConsolidation
+        
+
+        <div className="space-y-8 mt-8">
+          <h3 className="text-xl font-bold flex items-center gap-2 text-rose-500">
+            <LuShield /> Firewall Institucional
+          </h3>
+          <p className="text-muted-foreground">O Conselho de Administração não pode ser apenas um espelho do governo; deve ser um escudo.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-6 bg-rose-500/5 rounded-2xl border border-rose-500/20 space-y-4">
+              <h4 className="font-bold flex items-center gap-2"><LuUsers /> Representatividade</h4>
+              <p className="text-sm text-muted-foreground">O Art. 19 garante que empregados e acionistas minoritários tenham voz e voto, quebrando o monopólio de decisão do controlador.</p>
+            </div>
+            <div className="p-6 bg-cyan-500/5 rounded-2xl border border-cyan-500/20 space-y-4">
+              <h4 className="font-bold flex items-center gap-2"><LuLayoutGrid /> Diversidade de Expertise</h4>
+              <p className="text-sm text-muted-foreground">Membros devem ter competências complementares em finanças, engenharia de petróleo, direito e gestão de riscos.</p>
+            </div>
+          </div>
+        </div>
+
+
+
+<ModuleConsolidation
           index={6}
           variant={getBannerVariant(6)}
           video={{
@@ -1143,24 +1184,7 @@ export default function AulaLei13303(props: AulaProps) {
           }}
         />
 
-        <div className="space-y-8 mt-8">
-          <h3 className="text-xl font-bold flex items-center gap-2 text-rose-500">
-            <LuShield /> Firewall Institucional
-          </h3>
-          <p className="text-muted-foreground">O Conselho de Administração não pode ser apenas um espelho do governo; deve ser um escudo.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 bg-rose-500/5 rounded-2xl border border-rose-500/20 space-y-4">
-              <h4 className="font-bold flex items-center gap-2"><LuUsers /> Representatividade</h4>
-              <p className="text-sm text-muted-foreground">O Art. 19 garante que empregados e acionistas minoritários tenham voz e voto, quebrando o monopólio de decisão do controlador.</p>
-            </div>
-            <div className="p-6 bg-cyan-500/5 rounded-2xl border border-cyan-500/20 space-y-4">
-              <h4 className="font-bold flex items-center gap-2"><LuLayoutGrid /> Diversidade de Expertise</h4>
-              <p className="text-sm text-muted-foreground">Membros devem ter competências complementares em finanças, engenharia de petróleo, direito e gestão de riscos.</p>
-            </div>
-          </div>
-        </div>
-
-        <QuizInterativo
+                <QuizInterativo
           questoes={getQuiz("modulo-6")}
           titulo="Conselho de Admin."
           numero={6}
@@ -1278,7 +1302,11 @@ export default function AulaLei13303(props: AulaProps) {
           />
         </div>
 
-        <ModuleConsolidation
+        
+
+
+
+<ModuleConsolidation
           index={7}
           variant={getBannerVariant(7)}
           video={{
@@ -1310,7 +1338,7 @@ export default function AulaLei13303(props: AulaProps) {
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={getQuiz("modulo-7")}
           titulo="Diretoria e Fiscal"
           numero={7}
@@ -1431,7 +1459,11 @@ export default function AulaLei13303(props: AulaProps) {
           />
         </div>
 
-        <ModuleConsolidation
+        
+
+
+
+<ModuleConsolidation
           index={8}
           variant={getBannerVariant(8)}
           video={{
@@ -1463,7 +1495,7 @@ export default function AulaLei13303(props: AulaProps) {
           }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={getQuiz("modulo-8")}
           titulo="Conflito de Interesses"
           numero={8}
@@ -1583,37 +1615,7 @@ export default function AulaLei13303(props: AulaProps) {
           />
         </div>
 
-        <ModuleConsolidation
-          index={9}
-          variant={getBannerVariant(9)}
-          video={{
-            videoId: "m9k8l7",
-            title: "Petrobras e Governanca",
-            duration: "15:10"
-          }}
-          resumoVisual={{
-            moduloNome: "Estudo Petrobras",
-            tituloAula: "Lei 13.303",
-            materia: "Administração",
-            images: [
-              { title: "Timeline de Evolução", type: "visual_summary", placeholderColor: "amber" },
-              { title: "Arquitetura de Controle", type: "diagram", placeholderColor: "orange" }
-            ]
-          }}
-          maceteVisual={{
-            title: "Petrobras = 303 x 404",
-            content: (
-              <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
-                <p className="text-sm">A Petrobras é a maior aplicação prática da **Lei 13.303** operando nos trilhos da **Lei 6.404**.</p>
-              </div>
-            )
-          }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-            titulo: "Podcast: O Case Petrobras",
-            artista: "Analista de Mercado"
-          }}
-        />
+        
 
         <div className="space-y-12 mt-12 bg-indigo-500/5 p-8 rounded-3xl border border-indigo-500/10">
           <div className="flex flex-col md:flex-row gap-8 items-center">
@@ -1646,7 +1648,41 @@ export default function AulaLei13303(props: AulaProps) {
           </div>
         </div>
 
-        <QuizInterativo
+
+
+<ModuleConsolidation
+          index={9}
+          variant={getBannerVariant(9)}
+          video={{
+            videoId: "m9k8l7",
+            title: "Petrobras e Governanca",
+            duration: "15:10"
+          }}
+          resumoVisual={{
+            moduloNome: "Estudo Petrobras",
+            tituloAula: "Lei 13.303",
+            materia: "Administração",
+            images: [
+              { title: "Timeline de Evolução", type: "visual_summary", placeholderColor: "amber" },
+              { title: "Arquitetura de Controle", type: "diagram", placeholderColor: "orange" }
+            ]
+          }}
+          maceteVisual={{
+            title: "Petrobras = 303 x 404",
+            content: (
+              <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
+                <p className="text-sm">A Petrobras é a maior aplicação prática da **Lei 13.303** operando nos trilhos da **Lei 6.404**.</p>
+              </div>
+            )
+          }}
+          audio={{
+            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+            titulo: "Podcast: O Case Petrobras",
+            artista: "Analista de Mercado"
+          }}
+        />
+
+                <QuizInterativo
           questoes={getQuiz("modulo-9")}
           titulo="Petrobras e a Lei"
           numero={9}

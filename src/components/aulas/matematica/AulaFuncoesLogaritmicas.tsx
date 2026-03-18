@@ -322,7 +322,18 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-1" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={1}
             variant="indigo"
             video={{
@@ -361,8 +372,7 @@ export default function AulaFuncoesLogaritmicas({
             }}
           />
 
-          <section id="quiz-modulo-1" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM1}
               titulo="Fixação - Conceitos Fundamentais"
               numero={1}
@@ -489,7 +499,18 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-2" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={2}
             variant="emerald"
             video={{
@@ -530,8 +551,7 @@ export default function AulaFuncoesLogaritmicas({
             }}
           />
 
-          <section id="quiz-modulo-2" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM2}
               titulo="Fixação - Propriedades"
               numero={2}
@@ -652,7 +672,18 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-3" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={3}
             variant="cyan"
             video={{
@@ -690,8 +721,7 @@ export default function AulaFuncoesLogaritmicas({
             }}
           />
 
-          <section id="quiz-modulo-3" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM3}
               titulo="Fixação - Equações"
               numero={3}
@@ -846,7 +876,18 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-4" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={4}
             variant="blue"
             video={{
@@ -888,8 +929,7 @@ export default function AulaFuncoesLogaritmicas({
             }}
           />
 
-          <section id="quiz-modulo-4" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM4}
               titulo="Fixação - Condições de Existência"
               numero={4}
@@ -1010,7 +1050,18 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-5" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="amber"
             video={{
@@ -1044,8 +1095,7 @@ export default function AulaFuncoesLogaritmicas({
             }}
           />
 
-          <section id="quiz-modulo-5" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM5}
               titulo="Desafio Integrado - Problemas Combinados"
               numero={5}
@@ -1212,7 +1262,18 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-6" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={6}
             variant="rose"
             video={{
@@ -1249,8 +1310,7 @@ export default function AulaFuncoesLogaritmicas({
             }}
           />
 
-          <section id="quiz-modulo-6" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM6}
               titulo="Fixação - Funções Logarítmicas"
               numero={6}
@@ -1389,7 +1449,18 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-7" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={7}
             variant="indigo"
             video={{
@@ -1427,8 +1498,7 @@ export default function AulaFuncoesLogaritmicas({
             }}
           />
 
-          <section id="quiz-modulo-7" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM7}
               titulo="Fixação - Sistemas & Inequações"
               numero={7}
@@ -1546,7 +1616,18 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-8" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={8}
             variant="emerald"
             video={{
@@ -1587,8 +1668,7 @@ export default function AulaFuncoesLogaritmicas({
             }}
           />
 
-          <section id="quiz-modulo-8" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM8}
               titulo="Fixação - Resolução Reversa"
               numero={8}
@@ -1721,7 +1801,18 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-9" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={9}
             variant="blue"
             video={{
@@ -1762,8 +1853,7 @@ export default function AulaFuncoesLogaritmicas({
             }}
           />
 
-          <section id="quiz-modulo-9" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM9}
               titulo="Fixação - Aplicações Petrobras"
               numero={9}
@@ -1890,7 +1980,31 @@ export default function AulaFuncoesLogaritmicas({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-black">
+                Logaritmos Completamente Dominados
+              </h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                Você conquistou a maestria em funções logarítmicas. Está pronto para qualquer desafio que vier na CESGRANRIO!
+              </p>
+            </div>
+          ) : (
+            <section id="quiz-modulo-10" className="mt-8">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={10}
             variant="purple"
             video={{
@@ -1934,21 +2048,7 @@ export default function AulaFuncoesLogaritmicas({
             }}
           />
 
-          {showCompletionBadge ? (
-            <div className="flex flex-col items-center gap-6 py-10 mt-10">
-              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
-                <LuTrophy className="w-12 h-12 text-emerald-500" />
-              </div>
-              <h3 className="text-2xl font-black">
-                Logaritmos Completamente Dominados
-              </h3>
-              <p className="text-center text-muted-foreground max-w-sm">
-                Você conquistou a maestria em funções logarítmicas. Está pronto para qualquer desafio que vier na CESGRANRIO!
-              </p>
-            </div>
-          ) : (
-            <section id="quiz-modulo-10" className="mt-8">
-              <QuizInterativo
+                        <QuizInterativo
                 questoes={quizM10}
                 titulo="Simulado Mestre - Domínio Logarítmico Completo"
                 icone="🏆"

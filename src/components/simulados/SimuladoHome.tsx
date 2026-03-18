@@ -237,10 +237,8 @@ export default function SimuladoHome({
       , "gap-8")}>
         {tipoPagina === "maratona" ? (
           // Card único para Maratona
-          <button
-            onClick={() => handleConfirmSimulado({ quantidade: usuario.nivelConcurso === "superior" ? 80 : 70, dificuldade: "Média", assunto: "" })}
-            disabled={gerandoQuestoes}
-            className="group relative flex flex-col bg-gradient-to-br from-primary/20 via-primary/10 to-transparent dark:from-primary/30 dark:via-primary/15 dark:to-transparent rounded-3xl border-2 border-primary/30 dark:border-primary/20 p-8 w-full max-w-md hover:border-primary/60 dark:hover:border-primary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+          <div
+            className="group relative flex flex-col bg-gradient-to-br from-primary/20 via-primary/10 to-transparent dark:from-primary/30 dark:via-primary/15 dark:to-transparent rounded-3xl border-2 border-primary/30 dark:border-primary/20 p-8 w-full max-w-md hover:border-primary/60 dark:hover:border-primary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden"
           >
             <AnimatedBorder borderRadius="rounded-3xl" />
 
@@ -265,7 +263,7 @@ export default function SimuladoHome({
             >
               {gerandoQuestoes ? "Carregando..." : "Começar 🚀"}
             </button>
-          </button>
+          </div>
         ) : (
           // Cards de matérias normais
           materiasVisiveis.map((materia) => (

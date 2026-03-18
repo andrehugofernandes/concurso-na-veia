@@ -11,6 +11,7 @@ import { PasswordChangeCard } from '@/components/profile/password-change-card';
 import { useToast } from '@/hooks/use-toast';
 import { useUserProfile } from '@/hooks/useUserProfile';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 import { uploadAvatarAction, updatePasswordAction } from './actions';
 
 export default function ProfilePage() {
@@ -89,14 +90,31 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="space-y-6 p-6 md:p-[80px] pb-20 md:pb-6">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-          Meu Perfil
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-2">
-          Gerencie suas informações pessoais e segurança.
-        </p>
+    <div className="px-4 py-3 md:p-[80px] pb-20 md:pb-6 space-y-8">
+      {/* Back Link */}
+      <Link
+        href="/dashboard"
+        className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition mb-2 group"
+      >
+        <span className="group-hover:-translate-x-1 transition-transform">
+          ←
+        </span>{" "}
+        Voltar ao Dashboard
+      </Link>
+
+      {/* Page Header */}
+      <div className="flex items-center gap-4 mb-8">
+        <div className="hidden md:inline-flex items-center justify-center w-16 h-16 rounded-xl bg-primary/10 text-primary text-4xl">
+          👤
+        </div>
+        <div>
+          <h1 className="text-3xl md:text-5xl font-black text-foreground uppercase tracking-tight">
+            Meu Perfil
+          </h1>
+          <p className="text-muted-foreground text-sm md:text-lg mt-1 font-medium">
+            Gerencie suas informações pessoais e segurança.
+          </p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -125,8 +143,29 @@ export default function ProfilePage() {
                   {profile.email}
                 </p>
                 <div className="mt-2 flex gap-2 justify-center flex-wrap">
-                  <Badge variant="secondary">{profile.role}</Badge>
-                  {profile.plan && <Badge variant="outline" className="uppercase">{profile.plan}</Badge>}
+                  <Badge variant="secondary">{profile.role?.toUpperCase()}</Badge>
+                  {profile.plan && (
+                    <Badge
+                      variant="outline"
+                      className={
+                        profile.plan === 'elite-total'   ? 'border-amber-500 text-amber-500 uppercase' :
+                        profile.plan === 'elite-superior'? 'border-purple-500 text-purple-500 uppercase' :
+                        profile.plan === 'elite-medio'   ? 'border-purple-400 text-purple-400 uppercase' :
+                        profile.plan === 'aprovado-superior' ? 'border-orange-500 text-orange-500 uppercase' :
+                        profile.plan === 'aprovado-medio'    ? 'border-yellow-500 text-yellow-500 uppercase' :
+                        'uppercase'
+                      }
+                    >
+                      {{
+                        'free':              'Iniciante',
+                        'aprovado-medio':    'Aprovado Médio',
+                        'aprovado-superior': 'Aprovado Superior',
+                        'elite-medio':       'Elite Médio',
+                        'elite-superior':    'Elite Superior',
+                        'elite-total':       '💎 Elite Total',
+                      }[profile.plan] ?? profile.plan}
+                    </Badge>
+                  )}
                 </div>
               </div>
 

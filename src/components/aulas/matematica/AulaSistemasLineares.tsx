@@ -265,7 +265,18 @@ export default function AulaSistemasLineares({
             </div>
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-1" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={1}
             variant="indigo"
             video={{
@@ -303,8 +314,7 @@ export default function AulaSistemasLineares({
             }}
           />
 
-          <section id="quiz-modulo-1" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM1}
               titulo="Conceito e Classificação de Sistemas Lineares"
               icone="🧠"
@@ -444,7 +454,18 @@ export default function AulaSistemasLineares({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-2" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={2}
             variant="emerald"
             video={{
@@ -483,8 +504,7 @@ export default function AulaSistemasLineares({
             }}
           />
 
-          <section id="quiz-modulo-2" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM2}
               titulo="Método de Substituição"
               icone="🔄"
@@ -605,7 +625,18 @@ export default function AulaSistemasLineares({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-3" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={3}
             variant="cyan"
             video={{
@@ -645,8 +676,7 @@ export default function AulaSistemasLineares({
             }}
           />
 
-          <section id="quiz-modulo-3" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM3}
               titulo="Método da Adição (Eliminação)"
               icone="➕"
@@ -777,7 +807,18 @@ export default function AulaSistemasLineares({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-4" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={4}
             variant="blue"
             video={{
@@ -817,8 +858,7 @@ export default function AulaSistemasLineares({
             }}
           />
 
-          <section id="quiz-modulo-4" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM4}
               titulo="Regra de Cramer e Determinantes"
               icone="📊"
@@ -929,7 +969,18 @@ export default function AulaSistemasLineares({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-5" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="amber"
             video={{
@@ -968,8 +1019,7 @@ export default function AulaSistemasLineares({
             }}
           />
 
-          <section id="quiz-modulo-5" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM5}
               titulo="Sistemas Impossíveis e Indeterminados"
               icone="⚠️"
@@ -1072,7 +1122,18 @@ export default function AulaSistemasLineares({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-6" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={6}
             variant="rose"
             video={{
@@ -1112,8 +1173,7 @@ export default function AulaSistemasLineares({
             }}
           />
 
-          <section id="quiz-modulo-6" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM6}
               titulo="Sistemas com 3 Variáveis"
               icone="3️⃣"
@@ -1231,7 +1291,18 @@ export default function AulaSistemasLineares({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-7" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={7}
             variant="indigo"
             video={{
@@ -1270,8 +1341,7 @@ export default function AulaSistemasLineares({
             }}
           />
 
-          <section id="quiz-modulo-7" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM7}
               titulo="Interpretação Geométrica"
               icone="📈"
@@ -1381,7 +1451,18 @@ export default function AulaSistemasLineares({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-8" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={8}
             variant="emerald"
             video={{
@@ -1421,8 +1502,7 @@ export default function AulaSistemasLineares({
             }}
           />
 
-          <section id="quiz-modulo-8" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM8}
               titulo="Sistemas de Inequações"
               icone="≤"
@@ -1530,7 +1610,18 @@ export default function AulaSistemasLineares({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-9" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={9}
             variant="cyan"
             video={{
@@ -1570,8 +1661,7 @@ export default function AulaSistemasLineares({
             }}
           />
 
-          <section id="quiz-modulo-9" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM9}
               titulo="Aplicações Petrobras"
               icone="🛢️"
@@ -1696,7 +1786,18 @@ export default function AulaSistemasLineares({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-10" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={10}
             variant="blue"
             video={{
@@ -1737,8 +1838,7 @@ export default function AulaSistemasLineares({
             }}
           />
 
-          <section id="quiz-modulo-10" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM10}
               titulo="Simulado Final CESGRANRIO"
               icone="🏆"

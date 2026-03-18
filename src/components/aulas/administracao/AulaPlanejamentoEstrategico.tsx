@@ -383,6 +383,8 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
+
+
 <ModuleConsolidation
             index={1}
             variant={getModuleVariant(1)}
@@ -561,6 +563,8 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
+
+
 <ModuleConsolidation index={2} variant={getModuleVariant(2)} video={{ videoId: "iV7hKYv0fDc", title: "SWOT Completo", duration: "15:00" }} resumoVisual={{ moduloNome: "Análise SWOT", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "Quadrantes SWOT", type: "Conceito", placeholderColor: "bg-emerald-500/20" }, { title: "Interno vs Externo", type: "Classificação", placeholderColor: "bg-teal-500/20" }, { title: "Cruzamento TOWS", type: "Estratégia", placeholderColor: "bg-green-500/20" }] }} maceteVisual={{ title: "SWOT: S e W = INTERNO, O e T = EXTERNO", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Força e Fraqueza você controla. Oportunidade e Ameaça você enfrenta."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "SWOT Descomplicado", artista: "Prof. Administração" }} />
 
                       <QuizInterativo questoes={quizM2} titulo="Fixação - SWOT" numero={2} variant={getModuleVariant(2)} icone="🎯" onComplete={(score) => handleModuleComplete("modulo-2", score)} />
@@ -679,6 +683,8 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
+
+
 <ModuleConsolidation index={3} variant={getModuleVariant(3)} video={{ videoId: "iV7hKYv0fDc", title: "BSC Explicado", duration: "16:00" }} resumoVisual={{ moduloNome: "Balanced Scorecard", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "4 Perspectivas BSC", type: "Conceito", placeholderColor: "bg-amber-500/20" }, { title: "Mapa Estratégico", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Causa e Efeito", type: "Relação", placeholderColor: "bg-yellow-500/20" }] }} maceteVisual={{ title: "BSC: F-C-P-A (Finanças Com Processos Aprendidos)", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Kaplan e Norton criaram em 1992. 4 perspectivas. Mapa estratégico."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "BSC na Prática", artista: "Prof. Administração" }} />
 
                       <QuizInterativo questoes={quizM3} titulo="Fixação - BSC" numero={3} variant={getModuleVariant(3)} icone="📊" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
@@ -791,6 +797,8 @@ export default function AulaPlanejamentoEstrategico({
           </section>
           
           <section id="quiz-modulo-4" className="mt-16">
+
+
 
 
 
@@ -914,6 +922,8 @@ export default function AulaPlanejamentoEstrategico({
           
           <section id="quiz-modulo-5" className="mt-16">
           
+
+
 
 
 
@@ -1061,6 +1071,8 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
+
+
 <ModuleConsolidation 
             index={6} 
             variant={getModuleVariant(6)} 
@@ -1182,6 +1194,8 @@ export default function AulaPlanejamentoEstrategico({
           
           <section id="quiz-modulo-7" className="mt-16">
           
+
+
 
 
 
@@ -1309,6 +1323,8 @@ export default function AulaPlanejamentoEstrategico({
           
           <section id="quiz-modulo-8" className="mt-16">
           
+
+
 
 
 
@@ -1450,6 +1466,8 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
+
+
 <ModuleConsolidation 
             index={9} 
             variant={getModuleVariant(9)} 
@@ -1516,6 +1534,8 @@ export default function AulaPlanejamentoEstrategico({
 
           <section id="quiz-modulo-10" className="mt-16">
           
+
+
 
 
 
@@ -1663,7 +1683,9 @@ export default function AulaPlanejamentoEstrategico({
           </section>
 
           <section id="quiz-modulo-11" className="mt-16">
-            <ModuleConsolidation
+            
+
+<ModuleConsolidation
               index={11}
               variant={getModuleVariant(11)}
               video={{ videoId: "iV7hKYv0fDc", title: "Estratégia Petrobras 2024-2028", duration: "32:00" }}
@@ -1688,7 +1710,7 @@ export default function AulaPlanejamentoEstrategico({
               audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3", titulo: "O Novo PE Petrobras", artista: "Prof. Administração" }}
             />
 
-            <QuizInterativo questoes={quizM11} titulo="Fixação - Estratégia Petrobras" numero={11} variant={getModuleVariant(11)} icone="🛢️" onComplete={(score) => handleModuleComplete("modulo-11", score)} />
+                        <QuizInterativo questoes={quizM11} titulo="Fixação - Estratégia Petrobras" numero={11} variant={getModuleVariant(11)} icone="🛢️" onComplete={(score) => handleModuleComplete("modulo-11", score)} />
           </section>
         </div>
       </TabsContent>

@@ -302,7 +302,8 @@ export function AdminHeader({
           {/* Seja Pro CTA - esconde quando sidebar overlay aberta */}
           {!isMobileSidebarOpen &&
             userRole !== "ADMIN" &&
-            userRole !== "SYSADMIN" && (
+            userRole !== "SYSADMIN" &&
+            (!profile?.plan || profile.plan === 'free') && (
               <Link
                 href="/seja-pro"
                 className="hidden md:flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black text-[11px] font-black rounded-full transition-all shadow-sm hover:shadow-yellow-500/20 active:scale-95 border border-yellow-200/50"
@@ -412,8 +413,8 @@ export function AdminHeader({
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/profile" className="flex items-center">
+                <DropdownMenuItem asChild className="cursor-pointer">
+                  <Link href="/profile" className="flex items-center w-full">
                     <LuUser className="mr-2 h-4 w-4" /> Perfil
                   </Link>
                 </DropdownMenuItem>

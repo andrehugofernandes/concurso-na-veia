@@ -1893,7 +1893,7 @@ export function ModuleSummaryCarouselNew({
       pdf.setFontSize(22);
       pdf.setTextColor(15, 23, 42);
       pdf.setFont("helvetica", "bold");
-      pdf.text("A VAGA É MINHA", margin, 18);
+      pdf.text("A VAGA EH MINHA", margin, 18);
 
       pdf.setFontSize(10);
       pdf.setFont("helvetica", "normal");
@@ -2526,7 +2526,7 @@ export function StickyModuleNav({
   const navRef = useRef<HTMLDivElement>(null);
   const [carouselStart, setCarouselStart] = useState(0);
 
-  // Responsive PAGE_SIZE: 2 on mobile, 10 on desktop (adjusted for word classes lesson)
+  // Responsive PAGE_SIZE: 2 on mobile, 5 on desktop (max 5 buttons for desktop)
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -2535,7 +2535,7 @@ export function StickyModuleNav({
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const PAGE_SIZE = isMobile ? 2 : 6;
+  const PAGE_SIZE = isMobile ? 2 : 5;
   const isCarouselMode = modules.length > PAGE_SIZE;
 
   // Clamp carouselStart when PAGE_SIZE changes (mobile ↔ desktop switch)
@@ -2660,7 +2660,7 @@ export function StickyModuleNav({
                       >
                         {mod.label}
                       </span>
-                      <span className="font-bold text-[10px] truncate w-full text-center flex items-center justify-center gap-1">
+                      <span className="font-bold text-[10px] w-full text-center flex items-center justify-center gap-1 leading-tight max-w-[80px]">
                         {mod.titulo || mod.title}
                         {completedModules.has(mod.id) && (
                           <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20 shrink-0">
@@ -2691,7 +2691,7 @@ export function StickyModuleNav({
           </div>
 
           {/* ── DESKTOP LAYOUT (≥ md) — one row (atual) ── */}
-          <div className="hidden md:flex items-center justify-center gap-2 px-6 py-1 max-w-7xl mx-auto">
+          <div className="hidden md:flex items-center justify-center gap-2 px-[50px] py-1 w-full">
             {/* Left arrow */}
             <div className={cn("shrink-0", isCarouselMode ? "flex" : "hidden")}>
               <button
@@ -2792,11 +2792,11 @@ export function StickyModuleNav({
                     key={mod.id}
                     value={mod.id}
                     className={cn(
-                      "shrink-0 py-2 px-4 md:px-5 rounded-xl border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group",
+                      "flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group",
                       !isVisible && "hidden",
                     )}
                   >
-                    <div className="flex flex-col items-center md:items-start gap-0.5">
+                    <div className="flex flex-col items-start gap-0.5">
                       <span
                         className={cn(
                           "text-[10px] uppercase tracking-widest font-bold font-display opacity-50 group-data-[state=active]:opacity-100 transition-opacity duration-200",
@@ -2807,16 +2807,16 @@ export function StickyModuleNav({
                       >
                         {mod.label}
                       </span>
-                      <span className="font-bold text-[10px] md:text-[13px] flex items-center gap-2">
-                        {mod.titulo || mod.title}
+                      <span className="font-bold text-[10px] md:text-[13px] leading-tight text-left flex items-start gap-1.5">
+                        <span className="line-clamp-2">{mod.titulo || mod.title}</span>
                         {completedModules.has(mod.id) && (
-                          <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20">
-                            <LuCheck size={14} />
+                          <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20 shrink-0 mt-0.5">
+                            <LuCheck size={12} />
                           </span>
                         )}
                         {!isModuleUnlocked(index) && (
-                          <span className="text-muted-foreground/40">
-                            <LuLock size={14} />
+                          <span className="text-muted-foreground/40 shrink-0 mt-0.5">
+                            <LuLock size={12} />
                           </span>
                         )}
                       </span>

@@ -9,6 +9,7 @@ import PetrobrasLogo from "@/components/PetrobrasLogo";
 import HeroCarousel from "@/components/HeroCarousel";
 import { fadeIn, staggerContainer, zoomIn } from "@/utils/motion";
 import { getCurrentUserAction } from "@/lib/actions/auth";
+import PricingSection from "@/components/PricingSection";
 
 const SectionWrapper = ({
   children,
@@ -471,171 +472,12 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing Section */}
-      <section
-        id="pricing"
-        className="py-24 bg-black border-t border-white/5 relative overflow-hidden"
-      >
-        {/* Decorative background elements */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-yellow-500/5 rounded-full blur-[100px] pointer-events-none" />
-
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent mb-6">
-              Investimento no Seu Futuro
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Escolha o plano ideal para sua aprovação. Cancele a qualquer
-              momento.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {/* Free Plan */}
-            <div className="bg-zinc-900/50 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all flex flex-col">
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-white mb-2">Iniciante</h3>
-                <div className="flex items-end gap-1 mb-4">
-                  <span className="text-4xl font-bold text-white">R$ 0</span>
-                  <span className="text-gray-500 mb-1">/mês</span>
-                </div>
-                <p className="text-gray-400 text-sm">
-                  Para conhecer a plataforma e testar a metodologia.
-                </p>
-              </div>
-              <ul className="space-y-4 mb-8 flex-1">
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-green-500">✓</span> 5 questões diárias
-                </li>
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-green-500">✓</span> Explicações básicas
-                </li>
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-green-500">✓</span> Histórico de 3 dias
-                </li>
-                <li className="flex items-center gap-3 text-gray-500">
-                  <span className="text-gray-600">✕</span> Professor IA
-                </li>
-                <li className="flex items-center gap-3 text-gray-500">
-                  <span className="text-gray-600">✕</span> Cronograma
-                  personalizado
-                </li>
-              </ul>
-              <Link
-                href="/register"
-                className="w-full py-4 rounded-xl border border-white/20 text-white font-bold hover:bg-white/5 transition text-center"
-              >
-                Começar Grátis
-              </Link>
-            </div>
-
-            {/* Pro Plan */}
-            <div className="bg-zinc-900 rounded-3xl p-8 border border-yellow-500/30 hover:border-yellow-500 transition-all relative transform md:-translate-y-4 shadow-2xl shadow-yellow-500/10 flex flex-col">
-              <div className="absolute top-0 center left-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                Mais Popular
-              </div>
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-yellow-500 mb-2">
-                  Aprovado
-                </h3>
-                <div className="flex items-end gap-1 mb-4">
-                  <span className="text-4xl font-bold text-white">R$ 49</span>
-                  <span className="text-gray-500 mb-1">,90/mês</span>
-                </div>
-                <p className="text-gray-400 text-sm">
-                  Tudo o que você precisa para garantir sua vaga.
-                </p>
-              </div>
-              <ul className="space-y-4 mb-8 flex-1">
-                <li className="flex items-center gap-3 text-white">
-                  <span className="text-yellow-500">✓</span> Questões ILIMITADAS
-                </li>
-                <li className="flex items-center gap-3 text-white">
-                  <span className="text-yellow-500">✓</span> Explicações
-                  detalhadas com IA
-                </li>
-                <li className="flex items-center gap-3 text-white">
-                  <span className="text-yellow-500">✓</span> Histórico completo
-                  + Gráficos
-                </li>
-                <li className="flex items-center gap-3 text-white">
-                  <span className="text-yellow-500">✓</span> Cronograma
-                  Inteligente
-                </li>
-                <li className="flex items-center gap-3 text-gray-500">
-                  <span className="text-gray-600">✕</span> Professor IA 24h
-                </li>
-              </ul>
-              <Link
-                href="/register?plan=pro"
-                className="w-full py-4 rounded-xl bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold hover:shadow-lg hover:shadow-orange-500/20 transition-all text-center transform hover:scale-105"
-              >
-                Quero ser Aprovado
-              </Link>
-            </div>
-
-            {/* Elite Plan */}
-            <div className="bg-gradient-to-b from-purple-900/40 to-black rounded-3xl p-8 border border-purple-500/50 hover:border-purple-400 transition-all relative overflow-hidden flex flex-col">
-              {/* Shine effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/10 to-transparent skew-x-12 animate-shimmer pointer-events-none" />
-
-              <div className="mb-8 relative z-10">
-                <div className="flex items-center gap-2 mb-2">
-                  <h3 className="text-xl font-bold text-purple-400">Elite</h3>
-                  <span className="bg-purple-500/20 text-purple-300 text-[10px] font-bold px-2 py-0.5 rounded border border-purple-500/30">
-                    BETA
-                  </span>
-                </div>
-                <div className="flex items-end gap-1 mb-4">
-                  <span className="text-4xl font-bold text-white">R$ 99</span>
-                  <span className="text-gray-500 mb-1">,90/mês</span>
-                </div>
-                <p className="text-gray-400 text-sm">
-                  A experiência definitiva de aprendizado com IA.
-                </p>
-              </div>
-
-              <ul className="space-y-4 mb-8 flex-1 relative z-10">
-                <li className="flex items-center gap-3 text-white">
-                  <span className="text-purple-400">✓</span>{" "}
-                  <strong>Tudo do plano Aprovado</strong>
-                </li>
-                <li className="flex items-start gap-3 text-white">
-                  <span className="text-purple-400 mt-1">✦</span>
-                  <div>
-                    <strong className="text-purple-300">
-                      Professor IA (Webinar)
-                    </strong>
-                    <p className="text-xs text-gray-400 leading-tight mt-1">
-                      Aulas ao vivo com avatar 3D que responde suas perguntas
-                      por voz em tempo real.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-center gap-3 text-white">
-                  <span className="text-purple-400">✦</span> Mentoria Semanal
-                </li>
-                <li className="flex items-center gap-3 text-white">
-                  <span className="text-purple-400">✦</span> Acesso Antecipado a
-                  Features
-                </li>
-              </ul>
-
-              <Link
-                href="/register?plan=elite"
-                className="relative z-10 w-full py-4 rounded-xl bg-purple-600 text-white font-bold hover:bg-purple-500 transition-all text-center shadow-lg shadow-purple-500/25"
-              >
-                Garantir Acesso Elite
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PricingSection />
 
       {/* Footer */}
       <footer className="py-12 border-t border-white/10 bg-black text-center text-gray-500 text-sm">
         <p>
-          &copy; 2026 Petrobras Quest AI. Feito com ❤️ e Inteligência
+          &copy; 2026 A Vaga EH Minha. Feito com ❤️ e Inteligência
           Artificial.
         </p>
       </footer>

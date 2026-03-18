@@ -25,6 +25,23 @@ import {
   LuRepeat,
   LuSigma,
   LuZap,
+  LuCheck,
+  LuLayoutDashboard,
+  LuLayers,
+  LuDatabase,
+  LuSettings,
+  LuShield,
+  LuMonitor,
+  LuArrowDown,
+  LuList,
+  LuWorkflow,
+  LuFileText,
+  LuSearch,
+  LuRefreshCw,
+  LuClock,
+  LuUsers,
+  LuDollarSign,
+  LuTriangle,
 } from "react-icons/lu";
 
 import { getModuleVariant } from "@/lib/moduleColors";
@@ -132,57 +149,755 @@ export default function AulaGestaoProjetos({
       loading={loading}
       xpGanho={xpGanho}
     >
-      {/* ═══ MÓDULO 1: CONCEITOS DE PROJETOS ═══ */}
+      {/* ═══ MÓDULO 1: CONCEITOS E FUNDAMENTOS ═══ */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={1} titulo="Conceitos Fundamentais de Projetos" descricao="O que define um projeto? Temporário, exclusivo e progressivamente elaborado." gradiente="bg-gradient-to-br from-blue-700 to-sky-800" />
+          <ModuleBanner 
+            numero={1} 
+            titulo="Conceitos e Fundamentos" 
+            descricao="O que define um projeto? Temporário, exclusivo e progressivamente elaborado." 
+            gradiente="bg-gradient-to-br from-blue-700 to-sky-800" 
+          />
+          
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={1} title="O que é um Projeto?" description="Definição PMBOK, características e ciclo de vida." variant={getModuleVariant(1)} />
+            <ModuleSectionHeader 
+              index={1} 
+              title="A Essência do Projeto" 
+              description="Definição PMBOK, características e a Tríplice Restrição." 
+              variant={getModuleVariant(1)} 
+            />
+            
             <ContentAccordion slides={[
-              { titulo: "Conceituação - Definição de Projeto", icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed">Segundo o <strong>PMBOK (Project Management Body of Knowledge)</strong>, um projeto é um <strong>esforço temporário</strong> empreendido para criar um <strong>produto, serviço ou resultado exclusivo</strong>.</p><div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20"><p className="font-bold text-blue-700 mb-2">Características do Projeto:</p><div className="space-y-1 text-sm"><p><strong>Temporário:</strong> Início e fim definidos</p><p><strong>Exclusivo:</strong> Resultado único, nunca feito antes</p><p><strong>Progressivo:</strong> Elaborado em etapas incrementais</p><p><strong>Recursos limitados:</strong> Orçamento e equipe finitos</p></div></div><div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20"><p className="font-bold text-blue-700 mb-2">Projeto vs. Operação:</p><div className="space-y-1 text-sm"><p><strong>Projeto:</strong> Temporário, resultado único (ex: construir plataforma P-80)</p><p><strong>Operação:</strong> Contínua, repetitiva (ex: produzir petróleo na P-80)</p></div></div></div>) },
-              { titulo: "Exemplificação - Projetos na Petrobras", icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><div className="space-y-2"><div className="bg-blue-500/10 p-3 rounded border border-blue-500/20"><p className="font-bold text-blue-700 text-sm">Projeto de Construção</p><p className="text-xs">Plataforma FPSO para campo de Búzios (pré-sal)</p></div><div className="bg-blue-500/10 p-3 rounded border border-blue-500/20"><p className="font-bold text-blue-700 text-sm">Projeto de TI</p><p className="text-xs">Implementação de ERP SAP na Petrobras</p></div><div className="bg-blue-500/10 p-3 rounded border border-blue-500/20"><p className="font-bold text-blue-700 text-sm">Projeto de Manutenção</p><p className="text-xs">Parada programada de unidade de refino (REPAR)</p></div></div></div>) },
-              { titulo: "Dicas - Tríplice Restrição", icone: <LuLightbulb />, conteudo: (<div className="space-y-4"><AlertBox tipo="info" titulo="Triângulo de Ferro"><div className="text-sm space-y-1"><p>Todo projeto é restrito por 3 fatores inter-relacionados:</p><p><strong>Escopo</strong> (o que fazer) × <strong>Tempo</strong> (quando) × <strong>Custo</strong> (quanto)</p><p className="text-xs text-muted-foreground mt-1">Alterar um impacta os outros. Ex: Aumentar escopo → mais tempo ou mais custo.</p></div></AlertBox></div>) },
-              { titulo: "Exceções - PMBOK 7 vs PMBOK 6", icone: <LuTrophy />, conteudo: (<div className="space-y-3"><AlertBox tipo="warning" titulo="Atenção na Prova!"><div className="text-sm space-y-1"><p><strong>PMBOK 6:</strong> 10 áreas de conhecimento, 5 grupos de processos, 49 processos</p><p><strong>PMBOK 7:</strong> 8 domínios de desempenho, baseado em princípios (mais ágil)</p><p className="text-xs text-muted-foreground mt-1">A CESGRANRIO geralmente cobra o PMBOK 6, mas fique atento ao edital!</p></div></AlertBox></div>) },
+              { 
+                titulo: "Conceituação - Definição PMBOK", 
+                icone: <LuBrain />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground leading-relaxed">
+                      Segundo o <strong>PMBOK Guide</strong>, um projeto é um esforço <strong>temporário</strong> empreendido para criar um produto, serviço ou resultado <strong>exclusivo</strong>.
+                    </p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl">
+                        <p className="font-bold text-blue-800 text-xs mb-2">⏳ Temporário</p>
+                        <p className="text-[10px] text-blue-700">Tem um início e um fim definidos. Não é um esforço contínuo como uma linha de montagem.</p>
+                      </div>
+                      <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
+                        <p className="font-bold text-emerald-800 text-xs mb-2">💎 Exclusivo</p>
+                        <p className="text-[10px] text-emerald-700">O resultado final tem características que o distinguem de todos os outros produtos ou serviços similares.</p>
+                      </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exemplificação - Projetos vs Operações", 
+                icone: <LuBookOpen />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground text-sm font-bold uppercase italic">Cenário Petrobras:</p>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2">
+                         <p className="text-[10px] font-bold text-blue-600 underline">PROJETO</p>
+                         <p className="text-[10px]">Construção e instalação da plataforma P-71.</p>
+                         <p className="text-[10px] text-slate-400">Objetivo: Entrega da unidade.</p>
+                      </div>
+                      <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2">
+                         <p className="text-[10px] font-bold text-emerald-600 underline">OPERAÇÃO</p>
+                         <p className="text-[10px]">Extração diária de petróleo pela P-71.</p>
+                         <p className="text-[10px] text-slate-400">Objetivo: Continuidade do negócio.</p>
+                      </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Dicas - Tríplice Restrição ou Triângulo de Ferro", 
+                icone: <LuLightbulb />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="success" titulo="Dica para a Prova">
+                      <p className="text-xs">
+                        Lembre-se do <strong>Triângulo de Ferro</strong>: Escopo, Tempo e Custo. Se você aumentar o Escopo sem mexer no Orçamento, o Tempo irá aumentar. Eles são interdependentes e a <strong>Qualidade</strong> fica no centro (ou é o quarto elemento).
+                      </p>
+                    </AlertBox>
+                    <div className="flex justify-center py-4 text-slate-300">
+                      <LuTarget size={60} className="animate-pulse" />
+                    </div>
+                  </div>
+                ) 
+              },
             ]} />
           </section>
-          <ModuleConsolidation index={1} variant={getModuleVariant(1)} video={{ videoId: "n7U7R8S_XuU", title: "Gestão de Projetos: Fundamentos", duration: "20:00" }} resumoVisual={{ moduloNome: "Conceitos de Projetos", tituloAula: "Gestão de Projetos (PMBOK)", materia: "Administração", images: [{ title: "Projeto: Temporário + Exclusivo", type: "Conceito", placeholderColor: "bg-blue-500/20" }, { title: "Tríplice Restrição", type: "Modelo", placeholderColor: "bg-sky-500/20" }, { title: "PMBOK 6 vs 7", type: "Comparação", placeholderColor: "bg-cyan-500/20" }] }} maceteVisual={{ title: "Projeto = Temporário + Exclusivo + Progressivo", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Projeto tem começo, meio e FIM. Operação não tem fim."</p><div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg font-mono text-xs text-center"><p>Escopo × Tempo × Custo</p><p className="text-muted-foreground">Triângulo de Ferro</p></div></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Projetos: Fundamentos", artista: "Prof. Administração" }} />
+
+
+          
           <section id="quiz-modulo-1" className="mt-16">
-            <QuizInterativo questoes={quizM1} titulo="Fixação - Conceitos de Projetos" numero={1} variant={getModuleVariant(1)} icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
+          
+
+
+
+
+
+
+
+<ModuleConsolidation 
+            index={1} 
+            variant={getModuleVariant(1)} 
+            video={{ 
+              videoId: "n7U7R8S_XuU", 
+              title: "Fundamentação de Projetos", 
+              duration: "18:45" 
+            }} 
+            resumoVisual={{ 
+              moduloNome: "Conceitos", 
+              tituloAula: "Gestão de Projetos", 
+              materia: "Administração", 
+              images: [
+                { title: "Projeto vs Operação", type: "Comparação", placeholderColor: "bg-blue-500/20" }, 
+                { title: "Tríplice Restrição", type: "Geometria", placeholderColor: "bg-sky-500/20" }, 
+                { title: "Partes Interessadas", type: "Mapa", placeholderColor: "bg-indigo-500/20" }
+              ] 
+            }} 
+            maceteVisual={{ 
+              title: "P.T.E. (Iniciais)", 
+              content: (
+                <div className="space-y-2 text-left">
+                  <p className="text-sm italic">"P.rojeto é T.emporário e E.xclusivo."</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-widest">Não confunda com processo!</p>
+                </div>
+              ) 
+            }} 
+            audio={{ 
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", 
+              titulo: "Podcast: O mindset de Projetos", 
+              artista: "Especialista em PMO" 
+            }} 
+          />
+
+                      <QuizInterativo 
+              questoes={quizM1} 
+              titulo="Fixação - Conceitos Iniciais" 
+              numero={1} 
+              variant={getModuleVariant(1)} 
+              icone="🧩" 
+              onComplete={(score) => handleModuleComplete("modulo-1", score)} 
+            />
           </section>
         </div>
       </TabsContent>
 
-      {/* ═══ MÓDULOS 2-10 ═══ */}
-      {[
-        { mod: "modulo-2", num: 2, titulo: "Áreas de Conhecimento do PMBOK", desc: "As 10 áreas: Integração, Escopo, Cronograma, Custos e mais.", grad: "bg-gradient-to-br from-emerald-600 to-teal-800", quiz: quizM2, secTitle: "10 Áreas PMBOK", secDesc: "Conheça cada uma das áreas de conhecimento." },
-        { mod: "modulo-3", num: 3, titulo: "Grupos de Processos", desc: "Iniciação, Planejamento, Execução, Monitoramento e Encerramento.", grad: "bg-gradient-to-br from-amber-600 to-orange-700", quiz: quizM3, secTitle: "5 Grupos", secDesc: "O fluxo natural de um projeto." },
-        { mod: "modulo-4", num: 4, titulo: "Escopo e Tempo", desc: "EAP, cronograma, caminho crítico e PERT/CPM.", grad: "bg-gradient-to-br from-rose-600 to-pink-800", quiz: quizM4, secTitle: "Planejando Escopo e Prazo", secDesc: "EAP e técnicas de estimativa." },
-        { mod: "modulo-5", num: 5, titulo: "Custos e Qualidade", desc: "Orçamento, EVA (Earned Value Analysis) e controle de qualidade.", grad: "bg-gradient-to-br from-violet-600 to-purple-800", quiz: quizM5, secTitle: "Quanto Custa e Como Medir", secDesc: "EVA, CPI, SPI e ferramentas da qualidade." },
-        { mod: "modulo-6", num: 6, titulo: "Gestão de Riscos", desc: "Identificar, analisar (qualitativa/quantitativa), planejar respostas e monitorar.", grad: "bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800", quiz: quizM6, secTitle: "Riscos em Projetos", secDesc: "Probabilidade × Impacto e estratégias de resposta." },
-        { mod: "modulo-7", num: 7, titulo: "Metodologias Ágeis", desc: "Scrum, Kanban, XP e abordagem híbrida.", grad: "bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800", quiz: quizM7, secTitle: "Agilidade em Projetos", secDesc: "Sprints, backlogs e entregas incrementais." },
-        { mod: "modulo-8", num: 8, titulo: "PMO e Governança de Projetos", desc: "Escritório de projetos, portfólios e programas.", grad: "bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800", quiz: quizM8, secTitle: "Estruturas de Governança", secDesc: "PMO, portfólio e seleção de projetos." },
-        { mod: "modulo-9", num: 9, titulo: "Aplicações Petrobras", desc: "Gestão de projetos em O&G, FPSOs e paradas de manutenção.", grad: "bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800", quiz: quizM9, secTitle: "Projetos na Petrobras", secDesc: "Do pré-sal às refinarias." },
-        { mod: "modulo-10", num: 10, titulo: "Simulado Mestre", desc: "Teste integrado com questões de todos os módulos.", grad: "bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800", quiz: quizM10, secTitle: "Desafio Final", secDesc: "Prove seu domínio em Gestão de Projetos!" },
-      ].map(({ mod, num, titulo: modTitulo, desc, grad, quiz, secTitle, secDesc }) => (
-        <TabsContent key={mod} value={mod} className="space-y-[50px]">
-          <div className="space-y-12 animate-in fade-in duration-500">
-            <ModuleBanner numero={num} titulo={modTitulo} descricao={desc} gradiente={grad} />
-            <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-              <ModuleSectionHeader index={num} title={secTitle} description={secDesc} variant={getModuleVariant(num)} />
-              <ContentAccordion slides={[
-                { titulo: `Conceituação - ${modTitulo}`, icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed">Conteúdo completo sobre {modTitulo.toLowerCase()} para o concurso Petrobras.</p><AlertBox tipo="info" titulo="Conteúdo Premium"><p className="text-sm">Este módulo contém material detalhado para a prova CESGRANRIO.</p></AlertBox></div>) },
-                { titulo: `Exemplificação - ${modTitulo}`, icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground text-sm">Exemplos práticos de {modTitulo.toLowerCase()} aplicados ao contexto Petrobras.</p></div>) },
-                { titulo: "Dicas para a Prova", icone: <LuLightbulb />, conteudo: (<div className="space-y-4"><AlertBox tipo="success" titulo="Dica CESGRANRIO"><p className="text-sm">Foque nos conceitos-chave e diferenças entre termos similares.</p></AlertBox></div>) },
-                { titulo: "Exceções e Pegadinhas", icone: <LuTrophy />, conteudo: (<div className="space-y-3"><AlertBox tipo="warning" titulo="Atenção!"><p className="text-sm">Revise os casos especiais mais cobrados em provas.</p></AlertBox></div>) },
-              ]} />
-            </section>
-            <ModuleConsolidation index={num} variant={getModuleVariant(num)} video={{ videoId: "n7U7R8S_XuU", title: modTitulo, duration: "12:00" }} resumoVisual={{ moduloNome: modTitulo, tituloAula: "Gestão de Projetos (PMBOK)", materia: "Administração", images: [{ title: modTitulo, type: "Conceito", placeholderColor: "bg-blue-500/20" }] }} maceteVisual={{ title: modTitulo, content: (<div className="text-sm italic text-left"><p>Resumo visual de {modTitulo.toLowerCase()}</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: modTitulo, artista: "Prof. Administração" }} />
-            <section id={`quiz-${mod}`} className="mt-16">
-              <QuizInterativo questoes={quiz} titulo={`Fixação - ${modTitulo}`} numero={num} variant={getModuleVariant(num)} icone={num === 10 ? "👑" : "🎯"} onComplete={(score) => handleModuleComplete(mod, score)} />
-            </section>
-          </div>
-        </TabsContent>
-      ))}
+      {/* ═══ MÓDULO 2: ÁREAS DE CONHECIMENTO (PMBOK 6) ═══ */}
+      <TabsContent value="modulo-2" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner 
+            numero={2} 
+            titulo="Áreas de Conhecimento" 
+            descricao="As 10 dimensões que um gerente de projetos deve dominar segundo o PMBOK 6." 
+            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800" 
+          />
+          
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader 
+              index={2} 
+              title="A Visão 360 do Projeto" 
+              description="Do Escopo às Partes Interessadas." 
+              variant={getModuleVariant(2)} 
+            />
+            
+            <ContentAccordion slides={[
+              { 
+                titulo: "Conceituação - As 10 Áreas", 
+                icone: <LuBrain />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground text-sm">O PMBOK 6 organiza a gestão em 10 frentes:</p>
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+                       {[
+                         "Integração", "Escopo", "Cronograma", "Custos", "Qualidade",
+                         "Recursos", "Comunicações", "Riscos", "Aquisições", "Partes Interessadas"
+                       ].map((area, idx) => (
+                         <div key={idx} className="p-2 border border-emerald-100 bg-emerald-50 rounded text-center">
+                            <p className="text-[10px] font-bold text-emerald-800">{area}</p>
+                         </div>
+                       ))}
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "A Área Mestra: Integração", 
+                icone: <LuLayers />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-[10px] leading-relaxed">
+                       A <strong>Integração</strong> é a única área que perpassa todos os grupos de processos. É ela que garante que o bico do navio se encontre com a popa no final da construção. Inclui o Termo de Abertura e o Plano de Gestão do Projeto.
+                    </p>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Dicas - Mudanças no PMBOK 7", 
+                icone: <LuLightbulb />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="warning" titulo="O Pulo do Gato">
+                      <p className="text-xs">
+                        No PMBOK 7, as 10 Áreas foram substituídas por <strong>8 Domínios de Desempenho</strong>. No entanto, para a Petrobras, a base conceitual das 10 áreas ainda é o norte fundamental nas questões de Administração.
+                      </p>
+                    </AlertBox>
+                  </div>
+                ) 
+              },
+            ]} />
+          </section>
+
+
+          
+          <section id="quiz-modulo-2" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation 
+            index={2} 
+            variant={getModuleVariant(2)} 
+            video={{ 
+              videoId: "n7U7R8S_XuU", 
+              title: "Navegando pelas 10 Áreas", 
+              duration: "15:00" 
+            }} 
+            resumoVisual={{ 
+              moduloNome: "Áreas", 
+              tituloAula: "Gestão de Projetos", 
+              materia: "Administração", 
+              images: [
+                { title: "Mapa Mental das Áreas", type: "Infográfico", placeholderColor: "bg-emerald-500/20" }, 
+                { title: "Fluxo de Integração", type: "Diagrama", placeholderColor: "bg-teal-500/20" }
+              ] 
+            }} 
+            maceteVisual={{ 
+              title: "I.E.C.C. Q.R.C. R.A.P.", 
+              content: (
+                <div className="text-[10px] text-left opacity-70">
+                  <p>In-Es-Cro-Cu Qual-Rec-Com Ris-Aqui-Par</p>
+                </div>
+              ) 
+            }} 
+            audio={{ 
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", 
+              titulo: "Resumo Áreas PMBOK", 
+              artista: "Especialista" 
+            }} 
+          />
+
+                      <QuizInterativo 
+              questoes={quizM2} 
+              titulo="Fixação - Áreas PMBOK" 
+              numero={2} 
+              variant={getModuleVariant(2)} 
+              icone="🎯" 
+              onComplete={(score) => handleModuleComplete("modulo-2", score)} 
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 3: GRUPOS DE PROCESSOS (O FLUXO) ═══ */}
+      <TabsContent value="modulo-3" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner 
+            numero={3} 
+            titulo="Grupos de Processos" 
+            descricao="O ciclo cronológico e lógico: Iniciação, Planejamento, Execução, Monitoramento e Encerramento." 
+            gradiente="bg-gradient-to-br from-amber-600 to-orange-700" 
+          />
+          
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader 
+              index={3} 
+              title="O Fluxo da Vida de um Projeto" 
+              description="Esqueça as fases, foque nos grupos de processos." 
+              variant={getModuleVariant(3)} 
+            />
+            
+            <ContentAccordion slides={[
+              { 
+                titulo: "Conceituação - Os 5 Grupos", 
+                icone: <LuBrain />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground text-sm">Todo projeto navega por estes 5 estágios:</p>
+                    <div className="flex flex-col gap-2">
+                       <div className="p-3 bg-amber-50 border-l-4 border-amber-500 rounded text-[10px]">
+                          <span className="font-bold">1. Iniciação:</span> Autorização do projeto (Termo de Abertura).
+                       </div>
+                       <div className="p-3 bg-blue-50 border-l-4 border-blue-500 rounded text-[10px]">
+                          <span className="font-bold">2. Planejamento:</span> Refinamento da estratégia e linha de base.
+                       </div>
+                       <div className="p-3 bg-emerald-50 border-l-4 border-emerald-500 rounded text-[10px]">
+                          <span className="font-bold">3. Execução:</span> Realização do trabalho em si.
+                       </div>
+                       <div className="p-3 bg-rose-50 border-l-4 border-rose-500 rounded text-[10px]">
+                          <span className="font-bold">4. Monitoramento e Controle:</span> Medir desvios e corrigir.
+                       </div>
+                       <div className="p-3 bg-slate-50 border-l-4 border-slate-500 rounded text-[10px]">
+                          <span className="font-bold">5. Encerramento:</span> Finalização formal e lições aprendidas.
+                       </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "O Loop de Monitoramento", 
+                icone: <LuRefreshCw />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-[10px] text-slate-500">
+                       Dica crucial: O <strong>Monitoramento e Controle</strong> não ocorre após a execução; ele ocorre <strong>ao mesmo tempo</strong> que todos os outros grupos. Você monitora desde o planejamento até o encerramento.
+                    </p>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exemplificação - O Termo de Abertura", 
+                icone: <LuFileText />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-slate-900 text-white rounded-xl">
+                       <p className="text-[10px] font-bold text-amber-400 uppercase">Input Principal: Termo de Abertura (TAP)</p>
+                       <p className="text-[10px] mt-2 italic">É o documento que dá 'vida' ao projeto e autoridade ao Gerente de Projeto (GP).</p>
+                    </div>
+                  </div>
+                ) 
+              },
+            ]} />
+          </section>
+
+
+          
+          <section id="quiz-modulo-3" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation 
+            index={3} 
+            variant={getModuleVariant(3)} 
+            video={{ 
+              videoId: "n7U7R8S_XuU", 
+              title: "A Jornada do Projeto", 
+              duration: "22:00" 
+            }} 
+            resumoVisual={{ 
+              moduloNome: "Grupos", 
+              tituloAula: "Gestão de Projetos", 
+              materia: "Administração", 
+              images: [
+                { title: "Fluxo PDCA no PMBOK", type: "Modelo", placeholderColor: "bg-amber-500/20" }, 
+                { title: "Iniciação ao Encerramento", type: "Cronos", placeholderColor: "bg-orange-500/20" }
+              ] 
+            }} 
+            maceteVisual={{ 
+              title: "I.P.E.M.E.", 
+              content: (
+                <p className="text-sm font-bold text-center text-amber-600 tracking-widest">Inicia - Planeja - Executa - Monitora - Encerra</p>
+              ) 
+            }} 
+            audio={{ 
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", 
+              titulo: "Fluxos e Processos PMI", 
+              artista: "Prof. Gestão" 
+            }} 
+          />
+
+                      <QuizInterativo 
+              questoes={quizM3} 
+              titulo="Fixação - Fluxo de Projeto" 
+              numero={3} 
+              variant={getModuleVariant(3)} 
+              icone="⚙️" 
+              onComplete={(score) => handleModuleComplete("modulo-3", score)} 
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 4: ESCOPO E TEMPO (O FUNDAMENTO DO ENTREGÁVEL) ═══ */}
+      <TabsContent value="modulo-4" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner 
+            numero={4} 
+            titulo="Escopo e Tempo" 
+            descricao="Definindo o que será feito e quando: EAP, Cronograma e Caminho Crítico." 
+            gradiente="bg-gradient-to-br from-rose-600 to-pink-800" 
+          />
+          
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader 
+              index={4} 
+              title="Planejamento de Entrega" 
+              description="A estrutura da EAP e o domínio do cronograma." 
+              variant={getModuleVariant(4)} 
+            />
+            
+            <ContentAccordion slides={[
+              { 
+                titulo: "Conceituação - EAP (Estrutura Analítica do Projeto)", 
+                icone: <LuLayers />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground leading-relaxed">
+                      A <strong>EAP (WBS - Work Breakdown Structure)</strong> é uma decomposição hierárquica orientada ao <strong>entregável</strong> do trabalho a ser executado pela equipe.
+                    </p>
+                    <AlertBox tipo="warning" titulo="Não é Lista de Tarefas!">
+                       <p className="text-xs">
+                         A EAP foca em <strong>subprodutos (substantivos)</strong> e não em ações (verbos). O nível mais baixo da EAP é chamado de <strong>Pacote de Trabalho</strong>.
+                       </p>
+                    </AlertBox>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Técnicas de Cronograma - Caminho Crítico (CPM)", 
+                icone: <LuTrendingUp />, 
+                conteudo: (
+                  <div className="space-y-4 text-[10px]">
+                    <p>O <strong>Caminho Crítico</strong> é a sequência de atividades que representa o caminho mais longo através de um projeto, o qual determina a <strong>menor duração possível</strong> do projeto.</p>
+                    <div className="p-3 bg-rose-50 border border-rose-200 rounded-lg">
+                       <p className="font-bold text-rose-800 uppercase">Resumo CPM:</p>
+                       <ul className="list-disc pl-4 space-y-1 text-rose-700">
+                          <li>Folga zero no caminho crítico.</li>
+                          <li>Qualquer atraso aqui atrasa o projeto inteiro.</li>
+                          <li>Fundamental para a gerência focar onde realmente importa.</li>
+                       </ul>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Fórmula PERT - Estimativa de Três Pontos", 
+                icone: <LuSigma />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-xs">Para lidar com incertezas, usamos a média ponderada PERT:</p>
+                    <div className="p-4 bg-slate-100 rounded-xl font-mono text-center text-sm border border-slate-300 shadow-inner">
+                       TE = (P + 4M + O) / 6
+                    </div>
+                    <p className="text-[10px] text-muted-foreground italic text-center">P = Pessimista | M = Mais Provável | O = Otimista</p>
+                  </div>
+                ) 
+              },
+            ]} />
+          </section>
+
+
+          
+          <section id="quiz-modulo-4" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation 
+            index={4} 
+            variant={getModuleVariant(4)} 
+            video={{ 
+              videoId: "n7U7R8S_XuU", 
+              title: "Técnicas de Escopo e Tempo", 
+              duration: "25:10" 
+            }} 
+            resumoVisual={{ 
+              moduloNome: "Escopo/Tempo", 
+              tituloAula: "Gestão de Projetos", 
+              materia: "Administração", 
+              images: [
+                { title: "Hierarquia EAP", type: "Árvore", placeholderColor: "bg-rose-500/20" }, 
+                { title: "Gráfico de Gantt", type: "Cronograma", placeholderColor: "bg-pink-500/20" }
+              ] 
+            }} 
+            maceteVisual={{ 
+              title: "PERT = P+4M+O / 6", 
+              content: (
+                <div className="space-y-1">
+                  <p className="text-[10px] italic">"Otimista (+), provável (x4) e pessimista (+), divide por 6."</p>
+                </div>
+              ) 
+            }} 
+            audio={{ 
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", 
+              titulo: "Minicast: EAP vs Cronograma", 
+              artista: "Especialista em Planejamento" 
+            }} 
+          />
+
+                      <QuizInterativo 
+              questoes={quizM4} 
+              titulo="Fixação - Escopo e Tempo" 
+              numero={4} 
+              variant={getModuleVariant(4)} 
+              icone="📅" 
+              onComplete={(score) => handleModuleComplete("modulo-4", score)} 
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 5: CUSTOS E QUALIDADE (KPIs DE SUCESSO) ═══ */}
+      <TabsContent value="modulo-5" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner 
+            numero={5} 
+            titulo="Custos e Qualidade" 
+            descricao="Gestão do valor agregado (EVA) e padrões de excelência." 
+            gradiente="bg-gradient-to-br from-violet-600 to-purple-800" 
+          />
+          
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader 
+              index={5} 
+              title="O Valor do Dinheiro e da Entrega" 
+              description="EVA, CPI, SPI e métricas de qualidade." 
+              variant={getModuleVariant(5)} 
+            />
+            
+            <ContentAccordion slides={[
+              { 
+                titulo: "Conceituação - Earned Value Analysis (EVA)", 
+                icone: <LuBrain />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground text-xs leading-relaxed">
+                      A <strong>Gestão do Valor Agregado</strong> é a técnica mais cobrada em provas de alto nível. Ela integra escopo, tempo e custo.
+                    </p>
+                    <div className="grid grid-cols-3 gap-2 text-[10px] text-center">
+                       <div className="p-2 bg-indigo-50 border border-indigo-200 rounded">
+                          <p className="font-bold">PV (VP)</p>
+                          <p>Valor Planejado</p>
+                       </div>
+                       <div className="p-2 bg-emerald-50 border border-emerald-200 rounded">
+                          <p className="font-bold">EV (VA)</p>
+                          <p>Valor Agregado</p>
+                       </div>
+                       <div className="p-2 bg-rose-50 border border-rose-200 rounded">
+                          <p className="font-bold">AC (CR)</p>
+                          <p>Custo Real</p>
+                       </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Índices de Desempenho (CPI e SPI)", 
+                icone: <LuTrendingUp />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-slate-900 text-white rounded-xl space-y-2">
+                       <p className="text-[10px]"><span className="text-emerald-400 font-bold">CPI (IDC):</span> EV / AC (Eficiência de Custo)</p>
+                       <p className="text-[10px]"><span className="text-blue-400 font-bold">SPI (IDP):</span> EV / PV (Eficiência de Prazo)</p>
+                    </div>
+                    <AlertBox tipo="success" titulo="Regra de Ouro">
+                       <p className="text-xs italic">"Se o índice é {">"} 1.0, o projeto está bem. Se {"<"} 1.0, está atrasado ou acima do orçamento."</p>
+                    </AlertBox>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Gestão da Qualidade", 
+                icone: <LuSettings />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-[10px]">
+                       No contexto Petrobras, a qualidade é inegociável. Envolve a conformidade com requisitos e a satisfação do cliente (interno ou externo). Diferencie <strong>Garantia da Qualidade</strong> (processo) de <strong>Controle da Qualidade</strong> (produto).
+                    </p>
+                  </div>
+                ) 
+              },
+            ]} />
+          </section>
+
+
+          
+          <section id="quiz-modulo-5" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation 
+            index={5} 
+            variant={getModuleVariant(5)} 
+            video={{ 
+              videoId: "n7U7R8S_XuU", 
+              title: "Dominando o EVA", 
+              duration: "30:00" 
+            }} 
+            resumoVisual={{ 
+              moduloNome: "Custos/Qualidade", 
+              tituloAula: "Gestão de Projetos", 
+              materia: "Administração", 
+              images: [
+                { title: "Curva S", type: "Gráfico", placeholderColor: "bg-indigo-500/20" }, 
+                { title: "Ferramentas da Qualidade", type: "Colagem", placeholderColor: "bg-violet-500/20" }
+              ] 
+            }} 
+            maceteVisual={{ 
+              title: "Índice > 1 = Sucesso", 
+              content: (
+                <p className="text-xs text-emerald-600 font-bold uppercase tracking-wider">Acima de 1 tá rindo, abaixo tá chorando!</p>
+              ) 
+            }} 
+            audio={{ 
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", 
+              titulo: "Podcast: Métricas do Valor Agregado", 
+              artista: "Controller de Projetos" 
+            }} 
+          />
+
+                      <QuizInterativo 
+              questoes={quizM5} 
+              titulo="Fixação - Custos e Metrificação" 
+              numero={5} 
+              variant={getModuleVariant(5)} 
+              icone="💰" 
+              onComplete={(score) => handleModuleComplete("modulo-5", score)} 
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 6: GESTÃO DE RISCOS (INCERTEZA PROATIVA) ═══ */}
+      <TabsContent value="modulo-6" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner 
+            numero={6} 
+            titulo="Gestão de Riscos" 
+            descricao="Incertezas que importam: ameaças, oportunidades e planos de contingência." 
+            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800" 
+          />
+          
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader 
+              index={6} 
+              title="O Gerenciamento da Incerteza" 
+              description="Identificação, análise e resposta aos riscos." 
+              variant={getModuleVariant(6)} 
+            />
+            
+            <ContentAccordion slides={[
+              { 
+                titulo: "Conceituação - O Que é Risco?", 
+                icone: <LuBrain />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground text-xs">
+                      Risco é um evento ou condição <strong>incerta</strong> que, se ocorrer, tem um efeito <strong>positivo (oportunidade)</strong> ou <strong>negativo (ameaça)</strong> em pelo menos um objetivo do projeto.
+                    </p>
+                    <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-center gap-4">
+                       <LuTriangle className="text-amber-600 flex-shrink-0" size={24} />
+                       <p className="text-[10px] text-amber-800 italic">"Risco conhecido = Contingência. Risco desconhecido = Reserva de Gerenciamento."</p>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Matriz Probabilidade x Impacto", 
+                icone: <LuMonitor />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-[10px]">A <strong>Análise Qualitativa</strong> prioriza os riscos usando a matriz PxI. Já a <strong>Análise Quantitativa</strong> tenta dar um valor monetário e estatístico (ex: Simulação de Monte Carlo).</p>
+                    <div className="grid grid-cols-2 gap-4">
+                       <div className="p-3 bg-red-50 rounded border border-red-100 text-[9px] font-bold text-red-700">Alta Probabilidade + Alto Impacto = FOCO TOTAL</div>
+                       <div className="p-3 bg-blue-50 rounded border border-blue-100 text-[9px] font-bold text-blue-700">Baixa Probabilidade + Baixo Impacto = MONITORAR</div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Estratégias de Resposta", 
+                icone: <LuShield />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-[10px] uppercase font-bold text-muted-foreground">Para Ameaças:</p>
+                    <div className="flex flex-wrap gap-2">
+                       {["Evitar", "Transferir", "Mitigar", "Aceitar"].map((est, idx) => (
+                         <span key={idx} className="px-2 py-1 bg-slate-100 border border-slate-300 rounded-full text-[9px] font-mono">{est}</span>
+                       ))}
+                    </div>
+                  </div>
+                ) 
+              },
+            ]} />
+          </section>
+
+
+          
+          <section id="quiz-modulo-6" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation 
+            index={6} 
+            variant={getModuleVariant(6)} 
+            video={{ 
+              videoId: "n7U7R8S_XuU", 
+              title: "Gestão de Riscos na Prática", 
+              duration: "20:45" 
+            }} 
+            resumoVisual={{ 
+              moduloNome: "Riscos", 
+              tituloAula: "Gestão de Projetos", 
+              materia: "Administração", 
+              images: [
+                { title: "Matriz PxI", type: "Matriz", placeholderColor: "bg-amber-500/20" }, 
+                { title: "Simulação Monte Carlo", type: "Dashboard", placeholderColor: "bg-orange-500/20" }
+              ] 
+            }} 
+            maceteVisual={{ 
+              title: "AMEAÇAS: E.T. M.A.", 
+              content: (
+                <div className="text-[10px] space-y-1">
+                  <p><strong>E</strong>vitar | <strong>T</strong>ransferir | <strong>M</strong>itigar | <strong>A</strong>ceitar</p>
+                </div>
+              ) 
+            }} 
+            audio={{ 
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", 
+              titulo: "Miniclass: Analise de Riscos", 
+              artista: "Especialista de Riscos" 
+            }} 
+          />
+
+                      <QuizInterativo 
+              questoes={quizM6} 
+              titulo="Fixação - Gestão de Riscos" 
+              numero={6} 
+              variant={getModuleVariant(6)} 
+              icone="⚠️" 
+              onComplete={(score) => handleModuleComplete("modulo-6", score)} 
+            />
+          </section>
+        </div>
+      </TabsContent>
     </AulaTemplate>
   );
 }

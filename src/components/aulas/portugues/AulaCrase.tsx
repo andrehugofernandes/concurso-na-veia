@@ -808,7 +808,17 @@ export default function AulaCrase({
             </AlertBox>
           </section>
 
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="indigo"
             video={{
@@ -904,7 +914,7 @@ Coloca o acento e brilha no final!
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             titulo="Conceitos"
             icone="🧠"
             numero={6}
@@ -1088,7 +1098,17 @@ Coloca o acento e brilha no final!
             </AlertBox>
           </section>
 
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="emerald"
             video={{
@@ -1137,7 +1157,7 @@ Coloca o acento e brilha no final!
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             titulo="Proibições"
             icone="🚫"
             numero={6}
@@ -1323,7 +1343,17 @@ Coloca o acento e brilha no final!
             </div>
           </section>
 
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="violet"
             video={{
@@ -1367,7 +1397,7 @@ Coloca o acento e brilha no final!
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             titulo="Facultativos"
             icone="📝"
             numero={6}
@@ -1547,7 +1577,17 @@ Coloca o acento e brilha no final!
             </AlertBox>
           </section>
 
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="amber"
             video={{
@@ -1589,7 +1629,7 @@ Coloca o acento e brilha no final!
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             titulo="Especiais"
             icone="🎯"
             numero={6}
@@ -1744,7 +1784,17 @@ Coloca o acento e brilha no final!
           </section>
 
           {/* REVISÃO MULTIMÍDIA */}
-          <ModuleConsolidation
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="rose"
             video={{
@@ -1809,7 +1859,7 @@ Coloca o acento e brilha no final!
             }}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             titulo="Simulado Final: Crase"
             icone="🏆"
             numero={6}

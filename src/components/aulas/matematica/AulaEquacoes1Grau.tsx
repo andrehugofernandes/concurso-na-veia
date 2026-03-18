@@ -414,7 +414,19 @@ export default function AulaEquacoes1Grau({
             yMax={10}
             points={250}
           />
-          <ModuleConsolidation
+
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={1}
             variant="indigo"
             video={{
@@ -450,9 +462,7 @@ export default function AulaEquacoes1Grau({
             }}
           />
 
-
-
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM1}
             titulo="Fixação - Módulo 1"
             numero={1}
@@ -735,7 +745,19 @@ export default function AulaEquacoes1Grau({
             yMax={6}
             points={250}
           />
-          <ModuleConsolidation
+
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={2}
             variant="emerald"
             video={{
@@ -771,9 +793,7 @@ export default function AulaEquacoes1Grau({
             }}
           />
 
-
-
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM2}
             titulo="Fixação - Módulo 2"
             numero={2}
@@ -944,7 +964,19 @@ export default function AulaEquacoes1Grau({
               />
             </div>
           </section>
-          <ModuleConsolidation
+
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={3}
             variant="cyan"
             video={{
@@ -980,9 +1012,7 @@ export default function AulaEquacoes1Grau({
             }}
           />
 
-
-
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM3}
             titulo="Fixação - Módulo 3"
             numero={3}
@@ -1138,7 +1168,19 @@ export default function AulaEquacoes1Grau({
               ]}
             />
           </section>
-          <ModuleConsolidation
+
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={4}
             variant="blue"
             video={{
@@ -1174,9 +1216,7 @@ export default function AulaEquacoes1Grau({
             }}
           />
 
-
-
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM4}
             titulo="Fixação - Módulo 4"
             numero={4}
@@ -1237,7 +1277,19 @@ export default function AulaEquacoes1Grau({
             yMax={8}
             points={250}
           />
-          <ModuleConsolidation
+
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="amber"
             video={{
@@ -1273,9 +1325,7 @@ export default function AulaEquacoes1Grau({
             }}
           />
 
-
-
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM5}
             titulo="Simulado Parcial - M1 até M4"
             numero={5}
@@ -1444,7 +1494,19 @@ export default function AulaEquacoes1Grau({
               />
             </div>
           </section>
-          <ModuleConsolidation
+
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={6}
             variant="rose"
             video={{
@@ -1480,9 +1542,7 @@ export default function AulaEquacoes1Grau({
             }}
           />
 
-
-
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM6}
             titulo="Fixação - Módulo 6"
             numero={6}
@@ -1620,7 +1680,19 @@ export default function AulaEquacoes1Grau({
               ]}
             />
           </section>
-          <ModuleConsolidation
+
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={7}
             variant="indigo"
             video={{
@@ -1656,9 +1728,7 @@ export default function AulaEquacoes1Grau({
             }}
           />
 
-
-
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM7}
             titulo="Fixação - Módulo 7"
             numero={7}
@@ -1849,7 +1919,19 @@ export default function AulaEquacoes1Grau({
               />
             </div>
           </section>
-          <ModuleConsolidation
+
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={8}
             variant="emerald"
             video={{
@@ -1885,9 +1967,7 @@ export default function AulaEquacoes1Grau({
             }}
           />
 
-
-
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM8}
             titulo="Fixação - Módulo 8"
             numero={8}
@@ -2107,7 +2187,19 @@ export default function AulaEquacoes1Grau({
             yMax={200}
             points={250}
           />
-          <ModuleConsolidation
+
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={9}
             variant="cyan"
             video={{
@@ -2143,9 +2235,7 @@ export default function AulaEquacoes1Grau({
             }}
           />
 
-
-
-          <QuizInterativo
+                    <QuizInterativo
             questoes={quizM9}
             titulo="Fixação - Módulo 9"
             numero={9}
@@ -2205,7 +2295,19 @@ export default function AulaEquacoes1Grau({
                   </ul>
                 </AlertBox>
               </section>
-          <ModuleConsolidation
+
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={10}
             variant="blue"
             video={{
@@ -2241,9 +2343,7 @@ export default function AulaEquacoes1Grau({
             }}
           />
 
-
-
-              <QuizInterativo
+                        <QuizInterativo
                 questoes={quizFinal}
                 titulo="Simulado Elite - Equações de 1º Grau"
                 icone="🏆"

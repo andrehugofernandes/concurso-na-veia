@@ -399,7 +399,18 @@ export default function AulaGeometriaEspacial({
             </div>
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-1" className="mt-8">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={1}
             variant="indigo"
             video={{
@@ -432,8 +443,7 @@ export default function AulaGeometriaEspacial({
             }}
           />
 
-          <section id="quiz-modulo-1" className="mt-8">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM1}
               titulo="Quiz — Poliedros e Relação de Euler"
               icone="🔷"
@@ -554,7 +564,18 @@ export default function AulaGeometriaEspacial({
             Quando a questão fala em "bloco retangular" ou "paralelepípedo reto-retângulo", use V = a × b × c. Mas se todos os lados são iguais (cubo), use V = a³. A banca às vezes omite que é um cubo!
           </AlertBox>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-2" className="mt-8">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={2}
             variant="emerald"
             video={{
@@ -587,8 +608,7 @@ export default function AulaGeometriaEspacial({
             }}
           />
 
-          <section id="quiz-modulo-2" className="mt-8">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM2}
               titulo="Quiz — Prismas: Volume e Área"
               icone="📦"
@@ -703,7 +723,18 @@ export default function AulaGeometriaEspacial({
             Se a questão menciona um silo ou estrutura "em forma de teto", provavelmente é uma pirâmide (V com fator 1/3). Se é um container ou caixa, é um prisma (sem o fator 1/3). Leia o enunciado com atenção!
           </AlertBox>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-3" className="mt-8">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={3}
             variant="cyan"
             video={{
@@ -736,8 +767,7 @@ export default function AulaGeometriaEspacial({
             }}
           />
 
-          <section id="quiz-modulo-3" className="mt-8">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM3}
               titulo="Quiz — Pirâmides: Volume e Área"
               icone="🔺"
@@ -845,7 +875,18 @@ export default function AulaGeometriaEspacial({
             O raio entra na fórmula <strong>ao quadrado (r²)</strong>. Se o raio dobra, o volume quadruplica (2² = 4). Se a questão pede comparação entre cilindros com raios diferentes, o fator é sempre (r₂/r₁)² para o volume.
           </AlertBox>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-4" className="mt-8">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={4}
             variant="blue"
             video={{
@@ -878,8 +919,7 @@ export default function AulaGeometriaEspacial({
             }}
           />
 
-          <section id="quiz-modulo-4" className="mt-8">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM4}
               titulo="Quiz — Cilindro: Volume e Área"
               icone="🛢️"
@@ -981,7 +1021,18 @@ export default function AulaGeometriaEspacial({
             Quando o enunciado diz "a medida do lado" ou "a geratriz mede X", use diretamente g na fórmula da área lateral. Quando diz "a altura mede X", você precisa calcular g primeiro com Pitágoras. Confundir os dois é o erro mais frequente!
           </AlertBox>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-5" className="mt-8">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="amber"
             video={{
@@ -1014,8 +1065,7 @@ export default function AulaGeometriaEspacial({
             }}
           />
 
-          <section id="quiz-modulo-5" className="mt-8">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM5}
               titulo="Quiz — Cone: Volume e Área"
               icone="🔻"
@@ -1127,7 +1177,18 @@ export default function AulaGeometriaEspacial({
             A questão dirá "o tanque esférico tem diâmetro de 6 m". Se você usar r = 6 (em vez de r = 3), o volume fica 8 vezes maior e você erra! Sempre verifique se a medida dada é diâmetro ou raio.
           </AlertBox>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-6" className="mt-8">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={6}
             variant="rose"
             video={{
@@ -1160,8 +1221,7 @@ export default function AulaGeometriaEspacial({
             }}
           />
 
-          <section id="quiz-modulo-6" className="mt-8">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM6}
               titulo="Quiz — Esfera: Volume e Área"
               icone="🌐"
@@ -1264,7 +1324,18 @@ export default function AulaGeometriaEspacial({
             Ao calcular o volume de um tronco por subtração (cone grande − cone pequeno), certifique-se de que os cones são semelhantes (raios e alturas proporcionais). Se o enunciado der raios e altura do tronco, use a fórmula direta.
           </AlertBox>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-7" className="mt-8">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={7}
             variant="indigo"
             video={{
@@ -1297,8 +1368,7 @@ export default function AulaGeometriaEspacial({
             }}
           />
 
-          <section id="quiz-modulo-7" className="mt-8">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM7}
               titulo="Quiz — Troncos de Cone e Pirâmide"
               icone="🪣"
@@ -1414,7 +1484,18 @@ export default function AulaGeometriaEspacial({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-8" className="mt-8">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={8}
             variant="emerald"
             video={{
@@ -1447,8 +1528,7 @@ export default function AulaGeometriaEspacial({
             }}
           />
 
-          <section id="quiz-modulo-8" className="mt-8">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM8}
               titulo="Quiz — Sólidos Compostos"
               icone="🏗️"
@@ -1564,7 +1644,18 @@ export default function AulaGeometriaEspacial({
             A CESGRANRIO frequentemente contextualiza questões de geometria espacial com cenários de refinarias, plataformas offshore e terminais. O sólido mais frequente é o cilindro (tanques, dutos). Identifique primeiro o sólido, depois aplique a fórmula.
           </AlertBox>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-9" className="mt-8">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={9}
             variant="cyan"
             video={{
@@ -1597,8 +1688,7 @@ export default function AulaGeometriaEspacial({
             }}
           />
 
-          <section id="quiz-modulo-9" className="mt-8">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM9}
               titulo="Quiz — Aplicações Petrobras"
               icone="🛢️"
@@ -1708,7 +1798,18 @@ export default function AulaGeometriaEspacial({
             </div>
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-10" className="mt-8">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={10}
             variant="blue"
             video={{
@@ -1741,8 +1842,7 @@ export default function AulaGeometriaEspacial({
             }}
           />
 
-          <section id="quiz-modulo-10" className="mt-8">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM10}
               titulo="Simulado Final — CESGRANRIO Geometria Espacial"
               icone="🏆"

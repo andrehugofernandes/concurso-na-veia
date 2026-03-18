@@ -351,7 +351,18 @@ export default function AulaEquacoes2Grau({
             points={250}
           />
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-1" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={1}
             variant="blue"
             video={{
@@ -407,8 +418,7 @@ export default function AulaEquacoes2Grau({
             }}
           />
 
-          <section id="quiz-modulo-1" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM1}
               titulo="Fixação - Conceitos Fundamentais"
               numero={1}
@@ -589,7 +599,18 @@ export default function AulaEquacoes2Grau({
             points={250}
           />
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-2" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={2}
             variant="emerald"
             video={{
@@ -643,8 +664,7 @@ export default function AulaEquacoes2Grau({
             }}
           />
 
-          <section id="quiz-modulo-2" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM2}
               titulo="Fixação - Fórmula de Bhaskara"
               numero={2}
@@ -793,7 +813,18 @@ export default function AulaEquacoes2Grau({
             points={250}
           />
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-3" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={3}
             variant="amber"
             video={{
@@ -849,8 +880,7 @@ export default function AulaEquacoes2Grau({
             }}
           />
 
-          <section id="quiz-modulo-3" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM3}
               titulo="Fixação - Equações Avançadas"
               numero={3}
@@ -998,7 +1028,18 @@ export default function AulaEquacoes2Grau({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-4" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={4}
             variant="cyan"
             video={{
@@ -1059,8 +1100,7 @@ export default function AulaEquacoes2Grau({
             }}
           />
 
-          <section id="quiz-modulo-4" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM4}
               titulo="Fixação - Problemas Contextualizados"
               numero={4}
@@ -1141,7 +1181,18 @@ export default function AulaEquacoes2Grau({
             points={250}
           />
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-5" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="violet"
             video={{
@@ -1196,8 +1247,7 @@ export default function AulaEquacoes2Grau({
             }}
           />
 
-          <section id="quiz-modulo-5" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM5}
               titulo="Fixação - Desafio Parcial"
               numero={5}
@@ -1312,7 +1362,18 @@ export default function AulaEquacoes2Grau({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-6" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={6}
             variant="emerald"
             video={{
@@ -1366,8 +1427,7 @@ export default function AulaEquacoes2Grau({
             }}
           />
 
-          <section id="quiz-modulo-6" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM6}
               titulo="Fixação - Soma e Produto"
               numero={6}
@@ -1495,7 +1555,18 @@ export default function AulaEquacoes2Grau({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-7" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={7}
             variant="cyan"
             video={{
@@ -1551,8 +1622,7 @@ export default function AulaEquacoes2Grau({
             }}
           />
 
-          <section id="quiz-modulo-7" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM7}
               titulo="Fixação - Gráficos e Parábolas"
               numero={7}
@@ -1674,7 +1744,18 @@ export default function AulaEquacoes2Grau({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-8" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={8}
             variant="rose"
             video={{
@@ -1730,8 +1811,7 @@ export default function AulaEquacoes2Grau({
             }}
           />
 
-          <section id="quiz-modulo-8" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM8}
               titulo="Fixação - Resolução Reversa"
               numero={8}
@@ -1854,7 +1934,18 @@ export default function AulaEquacoes2Grau({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-9" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={9}
             variant="amber"
             video={{
@@ -1910,8 +2001,7 @@ export default function AulaEquacoes2Grau({
             }}
           />
 
-          <section id="quiz-modulo-9" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM9}
               titulo="Fixação - Aplicações Petrobras"
               numero={9}

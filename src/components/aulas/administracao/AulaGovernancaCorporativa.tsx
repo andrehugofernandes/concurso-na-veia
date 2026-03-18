@@ -145,9 +145,17 @@ export default function AulaGovernancaCorporativa({
               { titulo: "Exceções - Shareholder vs. Stakeholder", icone: <LuTrophy />, conteudo: (<div className="space-y-3"><div className="bg-blue-500/10 p-3 rounded border border-blue-500/20"><p className="font-bold text-blue-700 text-sm mb-1">Modelo Shareholder (Friedman)</p><p className="text-xs">Empresa existe para maximizar valor para ACIONISTAS</p></div><div className="bg-blue-500/10 p-3 rounded border border-blue-500/20"><p className="font-bold text-blue-700 text-sm mb-1">Modelo Stakeholder (Freeman)</p><p className="text-xs">Empresa deve atender a TODOS os stakeholders (funcionários, comunidade, governo...)</p></div><AlertBox tipo="info" titulo="Tendência Moderna"><p className="text-sm">A governança moderna caminha para o modelo stakeholder, especialmente em estatais como a Petrobras.</p></AlertBox></div>) },
             ]} />
           </section>
-          <ModuleConsolidation index={1} variant={getModuleVariant(1)} video={{ videoId: "b1VjGMSRfMk", title: "Governança Corporativa: Fundamentos", duration: "18:00" }} resumoVisual={{ moduloNome: "Conceitos de Governança", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "4 Princípios IBGC", type: "Conceito", placeholderColor: "bg-blue-500/20" }, { title: "Problema de Agência", type: "Teoria", placeholderColor: "bg-sky-500/20" }, { title: "Agentes de Governança", type: "Estrutura", placeholderColor: "bg-cyan-500/20" }] }} maceteVisual={{ title: "TEPR: Transparência, Equidade, Prestação de Contas, Responsabilidade", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Principal quer lucro, Agente quer salário. Governança alinha os dois."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Governança: Fundamentos", artista: "Prof. Administração" }} />
+          
           <section id="quiz-modulo-1" className="mt-16">
-            <QuizInterativo questoes={quizM1} titulo="Fixação - Conceitos de Governança" numero={1} variant={getModuleVariant(1)} icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
+
+
+
+
+
+
+<ModuleConsolidation index={1} variant={getModuleVariant(1)} video={{ videoId: "b1VjGMSRfMk", title: "Governança Corporativa: Fundamentos", duration: "18:00" }} resumoVisual={{ moduloNome: "Conceitos de Governança", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "4 Princípios IBGC", type: "Conceito", placeholderColor: "bg-blue-500/20" }, { title: "Problema de Agência", type: "Teoria", placeholderColor: "bg-sky-500/20" }, { title: "Agentes de Governança", type: "Estrutura", placeholderColor: "bg-cyan-500/20" }] }} maceteVisual={{ title: "TEPR: Transparência, Equidade, Prestação de Contas, Responsabilidade", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Principal quer lucro, Agente quer salário. Governança alinha os dois."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Governança: Fundamentos", artista: "Prof. Administração" }} />
+
+                      <QuizInterativo questoes={quizM1} titulo="Fixação - Conceitos de Governança" numero={1} variant={getModuleVariant(1)} icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
           </section>
         </div>
       </TabsContent>
@@ -176,9 +184,17 @@ export default function AulaGovernancaCorporativa({
                 { titulo: "Exceções e Pegadinhas", icone: <LuTrophy />, conteudo: (<div className="space-y-3"><AlertBox tipo="warning" titulo="Atenção!"><p className="text-sm">Revise os casos especiais mais cobrados em provas.</p></AlertBox></div>) },
               ]} />
             </section>
-            <ModuleConsolidation index={num} variant={getModuleVariant(num)} video={{ videoId: "b1VjGMSRfMk", title: modTitulo, duration: "12:00" }} resumoVisual={{ moduloNome: modTitulo, tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: modTitulo, type: "Conceito", placeholderColor: "bg-blue-500/20" }] }} maceteVisual={{ title: modTitulo, content: (<div className="text-sm italic text-left"><p>Resumo visual de {modTitulo.toLowerCase()}</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: modTitulo, artista: "Prof. Administração" }} />
+            
             <section id={`quiz-${mod}`} className="mt-16">
-              <QuizInterativo questoes={quiz} titulo={`Fixação - ${modTitulo}`} numero={num} variant={getModuleVariant(num)} icone={num === 10 ? "👑" : "🎯"} onComplete={(score) => handleModuleComplete(mod, score)} />
+
+
+
+
+
+
+<ModuleConsolidation index={num} variant={getModuleVariant(num)} video={{ videoId: "b1VjGMSRfMk", title: modTitulo, duration: "12:00" }} resumoVisual={{ moduloNome: modTitulo, tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: modTitulo, type: "Conceito", placeholderColor: "bg-blue-500/20" }] }} maceteVisual={{ title: modTitulo, content: (<div className="text-sm italic text-left"><p>Resumo visual de {modTitulo.toLowerCase()}</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: modTitulo, artista: "Prof. Administração" }} />
+
+                          <QuizInterativo questoes={quiz} titulo={`Fixação - ${modTitulo}`} numero={num} variant={getModuleVariant(num)} icone={num === 10 ? "👑" : "🎯"} onComplete={(score) => handleModuleComplete(mod, score)} />
             </section>
           </div>
         </TabsContent>

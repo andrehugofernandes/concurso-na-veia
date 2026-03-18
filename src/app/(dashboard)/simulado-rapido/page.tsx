@@ -9,7 +9,7 @@ import SimuladoScreen from "@/components/SimuladoScreen";
 import ResultadoScreen from "@/components/ResultadoScreen";
 import SimuladoHome from "@/components/simulados/SimuladoHome";
 import { CONTEUDO_MATERIAS } from "@/data/conteudo";
-import { gerarQuestaoAction } from "@/lib/actions/questoes";
+import { gerarQuestaoAction, gerarQuestoesLoteAction } from "@/lib/actions/questoes";
 import { getCurrentUserAction } from "@/lib/actions/auth";
 
 const usuarioInicial: Usuario = {
@@ -46,8 +46,11 @@ export default function SimuladoPage() {
   const [cronometro, setCronometro] = useState(0);
   const [cronometroAtivo, setCronometroAtivo] = useState(false);
   const [gerandoQuestoes, setGerandoQuestoes] = useState(false);
+  const [progressoGeracao, setProgressoGeracao] = useState(0);
+  const [totalGeracao, setTotalGeracao] = useState(0);
   const [tempoLimite, setTempoLimite] = useState<number | null>(null); // em segundos
   const [tempoEsgotado, setTempoEsgotado] = useState(false);
+  const [contagemRegressivaIA, setContagemRegressivaIA] = useState(0);
 
   // Carregar dados
   useEffect(() => {
@@ -118,39 +121,36 @@ export default function SimuladoPage() {
     return () => clearInterval(intervalo);
   }, [cronometroAtivo, tempoLimite]);
 
-  // Efeito para encerrar prova quando tempo esgota
+  // Cronômetro para o Rate Limit da IA
   useEffect(() => {
-    if (tempoEsgotado && simuladoAtual && tela === "simulado") {
-      finalizarSimulado();
+    let intervalo: NodeJS.Timeout;
+    if (contagemRegressivaIA > 0) {
+      intervalo = setInterval(() => {
+        setContagemRegressivaIA((prev) => prev - 1);
+      }, 1000);
     }
-  }, [tempoEsgotado]);
+    return () => clearInterval(intervalo);
+  }, [contagemRegressivaIA]);
 
-  const gerarQuestaoIA = async (
+  const gerarQuestoesLote = async (
     materia: string,
+    quantidade: number,
     dificuldade?: string,
     assunto?: string,
-    questoesAnteriores?: string[],
-  ): Promise<Questao> => {
-    const cargoContexto = usuario.cargo;
-
-    const result = await gerarQuestaoAction({
+  ): Promise<Questao[]> => {
+    const result = await gerarQuestoesLoteAction({
       materia,
+      quantidade,
       dificuldade: (dificuldade as any) || "Média",
       assunto,
-      questoesAnteriores,
       contexto: {
-        cargo: cargoContexto || "Geral",
+        cargo: usuario.cargo || "Geral",
         nivel: usuario.nivelConcurso || "medio",
       },
     });
 
-    if (result.status === "error") {
-      console.error(`[FRONTEND] Erro na Server Action:`, result.error);
-      throw new Error(result.error || "Erro ao gerar questão");
-    }
-
-    if (!result.data) {
-      throw new Error("Não foi possível obter os dados da questão.");
+    if (result.status === "error" || !result.data) {
+      throw new Error(result.error || "Erro ao gerar lote");
     }
 
     return result.data;
@@ -169,19 +169,21 @@ export default function SimuladoPage() {
     if (tipo === "maratona") {
       const isSuperior = usuario.nivelConcurso === "superior";
       if (isSuperior) {
-        // Maratona Superior: 20 Port, 15 Mat, 15 Ing, 50 Esp (=100)
+        // Maratona Superior: 20 Port, 15 Mat, 15 Ing, 30 Esp (=80)
         distribuicao = [
           { materia: "Língua Portuguesa", qtd: 20 },
           { materia: "Matemática", qtd: 15 },
           { materia: "Língua Inglesa", qtd: 15 },
-          { materia: "Conhecimentos Específicos", qtd: 50 },
+          { materia: "Conhecimentos Específicos", qtd: 30 },
         ];
       } else {
-        // Maratona Médio: 20 Port, 20 Mat, 60 Esp (=100)
+        // Maratona Médio: 20 Port, 20 Mat, 30 Esp (10 cada Bloco)
         distribuicao = [
           { materia: "Língua Portuguesa", qtd: 20 },
           { materia: "Matemática", qtd: 20 },
-          { materia: "Conhecimentos Específicos", qtd: 60 },
+          { materia: "Conhecimentos Específicos - Bloco I", qtd: 10 },
+          { materia: "Conhecimentos Específicos - Bloco II", qtd: 10 },
+          { materia: "Conhecimentos Específicos - Bloco III", qtd: 10 },
         ];
       }
     } else if (tipo === "intensivo") {
@@ -238,18 +240,22 @@ export default function SimuladoPage() {
         },
       ];
     }
+    const totalReal = distribuicao.reduce((acc, item) => acc + item.qtd, 0);
+    setTotalGeracao(totalReal);
+    setProgressoGeracao(0);
 
-    // Loop de geração
+    // Loop de geração por lotes
     for (const item of distribuicao) {
-      console.log(`Gerando ${item.qtd} questões de ${item.materia}...`);
-      for (let i = 0; i < item.qtd; i++) {
-        // Break early if global quantity reached (safety)
-        if (questoes.length >= quantidade) break;
+      let restantes = item.qtd;
+
+      while (restantes > 0) {
+        // Lote de no máximo 5 questões para estabilidade
+        const batchSize = Math.min(restantes, 5);
 
         try {
           let dificuldade = dificuldadeManual || dificuldadeUrl || undefined;
 
-          // Ajuste automático de dificuldade se não especificado
+          // Ajuste automático de dificuldade
           if (!dificuldade) {
             const taxaAcerto =
               usuario.questoesCertas /
@@ -257,38 +263,58 @@ export default function SimuladoPage() {
             if (taxaAcerto > 0.8) dificuldade = "Difícil";
             else if (taxaAcerto > 0.6) dificuldade = "Média";
             else if (taxaAcerto < 0.5) dificuldade = "Fácil";
-            else dificuldade = "Média";
           }
 
-          const questoesAnterioresTitles = questoes.map((q) =>
-            typeof q.enunciado === "string" ? q.enunciado.substring(0, 80) : "",
-          );
-
-          // Delay maior para evitar rate limit (1500ms entre requisições)
+          // Pequeno delay entre lotes bem-sucedidos
           if (questoes.length > 0)
-            await new Promise((r) => setTimeout(r, 1500));
+            await new Promise((r) => setTimeout(r, 1000));
 
-          const questao = await gerarQuestaoIA(
+          const lote = await gerarQuestoesLote(
             item.materia,
+            batchSize,
             dificuldade,
             item.assunto,
-            questoesAnterioresTitles,
           );
-          questoes.push(questao);
 
-          // Progresso: você pode adicionar um state aqui se quiser feedback visual no componente
-          console.log(
-            ` Questão ${questoes.length}/${quantidade} gerada com sucesso (${item.materia})`,
-          );
-        } catch (error) {
-          console.error(
-            `Erro ao gerar questão ${questoes.length + 1} de ${item.materia}:`,
-            error,
-          );
-          // Em caso de erro, esperamos um pouco mais e tentamos a próxima do loop
-          // em vez de quebrar o loop inteiro ou retornar apenas uma.
-          await new Promise((r) => setTimeout(r, 2000));
-          continue;
+          questoes.push(...lote);
+          restantes -= lote.length;
+          setProgressoGeracao(questoes.length);
+        } catch (error: any) {
+          console.error(`[SIMULADO] Erro no lote de ${item.materia}:`, error.message);
+
+          // Se for Rate Limit ou Fetch Failed (muitas vezes correlacionado), espera (25s conforme erro)
+          if (
+            error.message.includes("Rate Limit") ||
+            error.message.includes("429") ||
+            error.message.includes("Limite de taxa") ||
+            error.message.includes("fetch failed")
+          ) {
+            console.log("[SIMULADO] Rate limit/Fetch error detectado. Aguardando 25s...");
+            setContagemRegressivaIA(25);
+            await new Promise((r) => setTimeout(r, 25000));
+            continue; // Tenta o mesmo lote de novo
+          }
+
+          // Fallback individual para não travar
+          try {
+            console.log(`[SIMULADO] Fallback individual para ${item.materia}...`);
+            const individual = await gerarQuestoesLote(
+              item.materia,
+              1,
+              "Média",
+              item.assunto,
+            );
+            questoes.push(...individual);
+            restantes -= 1;
+            setProgressoGeracao(questoes.length);
+          } catch (retryError: any) {
+            console.error("[SIMULADO] Erro na retentativa:", retryError.message);
+            if (retryError.message.includes("429") || retryError.message.includes("fetch failed")) {
+              setContagemRegressivaIA(5);
+              await new Promise((r) => setTimeout(r, 5000));
+            }
+            restantes -= 1; // Pula para evitar loop infinito
+          }
         }
       }
     }
@@ -513,12 +539,24 @@ export default function SimuladoPage() {
   };
 
   if (tela === "gerando") {
-    return <LoadingScreen />;
+    return (
+      <LoadingScreen
+        current={progressoGeracao}
+        total={totalGeracao}
+        timeRemaining={contagemRegressivaIA}
+      />
+    );
   }
 
   // Se tem parâmetros de URL e está na home, mostra loading enquanto inicia
   if (tipoUrl && tela === "home") {
-    return <LoadingScreen />;
+    return (
+      <LoadingScreen
+        current={progressoGeracao}
+        total={totalGeracao}
+        timeRemaining={contagemRegressivaIA}
+      />
+    );
   }
 
   if (tela === "home") {

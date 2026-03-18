@@ -76,20 +76,35 @@ export function formatarTempo(segundos: number): string {
 }
 
 const PLAN_LEVELS: Record<string, number> = {
+  // Nomes de conteúdo (requiredPlan em conteudo.ts)
   'Bronze': 1,
   'Prata': 2,
-  'Ouro': 3
+  'Ouro': 3,
+  // Planos do usuário vindos do Stripe/Supabase
+  'free': 1,
+  'pro': 2,
+  'enterprise': 3,
 };
 
 /**
  * Verifica se o plano do usuário atende ao requisito
  */
 export function checkPlanAccess(userPlan: string | undefined | null, requiredPlan: string | undefined): boolean {
-  if (!requiredPlan) return true; // Se não exigir plano, acesso liberado
+  if (!requiredPlan) return true;
 
-  // Normaliza o plano do usuário (pode vir como undefined, null ou string errada)
-  const userLevel = PLAN_LEVELS[userPlan || 'Bronze'] || 1;
-  const requiredLevel = PLAN_LEVELS[requiredPlan] || 1;
+  const userLevel = PLAN_LEVELS[userPlan ?? 'free'] ?? 1;
+  const requiredLevel = PLAN_LEVELS[requiredPlan] ?? 1;
 
   return userLevel >= requiredLevel;
+}
+
+/**
+ * Obtém as iniciais de um nome (máximo 2 letras)
+ */
+export function getInitials(name?: string | null): string {
+  if (!name || !name.trim()) return '?';
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return '?';
+  if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+  return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
 }

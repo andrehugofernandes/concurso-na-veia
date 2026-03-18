@@ -15,6 +15,7 @@ import { useSetPageTitle } from "@/contexts/UIContext";
 // Mapeamento de IDs do registro para IDs do profissoes-edital
 const CARGO_ID_MAP: Record<string, string> = {
   administracao: "suprimento-adm",
+  "enfermagem-trabalho": "enfermagem-trabalho",
   seguranca: "seguranca-trabalho",
   logistica: "logistica-transportes",
   quimica: "quimica-petroleo",
@@ -53,7 +54,7 @@ export default function MateriaPage({ params }: PageProps) {
         if (savedUser) currentUser = savedUser;
       }
       setUsuario(currentUser);
-      setUserPlan(currentUser?.plan || "Bronze");
+      setUserPlan(currentUser?.plan || "free");
       setAccessChecked(true);
     };
     loadUserData();
@@ -153,10 +154,19 @@ export default function MateriaPage({ params }: PageProps) {
 
   if (!accessChecked) return null; // Or loading spinner
 
-  // Import checkPlanAccess dynamically or use logic here to avoid circular deps if any
-  const PLAN_LEVELS: Record<string, number> = { Bronze: 1, Prata: 2, Ouro: 3 };
-  const userLevel = PLAN_LEVELS[userPlan || "Bronze"] || 1;
-  const requiredLevel = PLAN_LEVELS[materia.requiredPlan || "Bronze"] || 1;
+  const PLAN_LEVELS: Record<string, number> = {
+    // Nomes legados
+    Bronze: 1, Prata: 2, Ouro: 3,
+    free: 1, pro: 2, enterprise: 3,
+    // Novos planos
+    'aprovado-medio':    2,
+    'aprovado-superior': 2,
+    'elite-medio':       3,
+    'elite-superior':    3,
+    'elite-total':       3,
+  };
+  const userLevel = PLAN_LEVELS[userPlan ?? "free"] ?? 1;
+  const requiredLevel = PLAN_LEVELS[materia.requiredPlan ?? "Bronze"] ?? 1;
   const hasAccess = userLevel >= requiredLevel;
 
   if (!hasAccess) {

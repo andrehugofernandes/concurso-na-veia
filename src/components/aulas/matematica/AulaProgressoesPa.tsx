@@ -457,7 +457,18 @@ export default function AulaProgressoesPa({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-1" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={1}
             variant="blue"
             video={{
@@ -509,8 +520,7 @@ export default function AulaProgressoesPa({
             }}
           />
 
-          <section id="quiz-modulo-1" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM1}
               titulo="Fixação - Conceitos PA"
               numero={1}
@@ -615,7 +625,18 @@ export default function AulaProgressoesPa({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-2" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={2}
             variant="emerald"
             video={{
@@ -667,8 +688,7 @@ export default function AulaProgressoesPa({
             }}
           />
 
-          <section id="quiz-modulo-2" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM2}
               titulo="Fixação - Termo Geral"
               numero={2}
@@ -776,7 +796,18 @@ export default function AulaProgressoesPa({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-3" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={3}
             variant="amber"
             video={{
@@ -830,8 +861,7 @@ export default function AulaProgressoesPa({
             }}
           />
 
-          <section id="quiz-modulo-3" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM3}
               titulo="Fixação - Soma Finita"
               numero={3}
@@ -943,7 +973,18 @@ export default function AulaProgressoesPa({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-4" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={4}
             variant="cyan"
             video={{
@@ -996,8 +1037,7 @@ export default function AulaProgressoesPa({
             }}
           />
 
-          <section id="quiz-modulo-4" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM4}
               titulo="Fixação - Propriedades"
               numero={4}
@@ -1111,7 +1151,18 @@ export default function AulaProgressoesPa({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-5" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="violet"
             video={{
@@ -1165,8 +1216,7 @@ export default function AulaProgressoesPa({
             }}
           />
 
-          <section id="quiz-modulo-5" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM5}
               titulo="Fixação - Interpolação"
               numero={5}
@@ -1285,7 +1335,18 @@ export default function AulaProgressoesPa({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-6" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={6}
             variant="teal"
             video={{
@@ -1339,8 +1400,7 @@ export default function AulaProgressoesPa({
             }}
           />
 
-          <section id="quiz-modulo-6" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM6}
               titulo="Fixação - PA e Função Afim"
               numero={6}
@@ -1442,7 +1502,18 @@ export default function AulaProgressoesPa({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-7" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={7}
             variant="indigo"
             video={{
@@ -1494,8 +1565,7 @@ export default function AulaProgressoesPa({
             }}
           />
 
-          <section id="quiz-modulo-7" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM7}
               titulo="Fixação - Prática Integrada"
               numero={7}
@@ -1612,7 +1682,18 @@ export default function AulaProgressoesPa({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-8" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={8}
             variant="rose"
             video={{
@@ -1665,8 +1746,7 @@ export default function AulaProgressoesPa({
             }}
           />
 
-          <section id="quiz-modulo-8" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM8}
               titulo="Fixação - Desafios Avançados"
               numero={8}
@@ -1786,7 +1866,18 @@ export default function AulaProgressoesPa({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-9" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={9}
             variant="orange"
             video={{
@@ -1838,8 +1929,7 @@ export default function AulaProgressoesPa({
             }}
           />
 
-          <section id="quiz-modulo-9" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM9}
               titulo="Fixação - Aplicações Petrobras"
               numero={9}

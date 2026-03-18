@@ -341,7 +341,18 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-1" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={1}
             variant="indigo"
             video={{
@@ -386,8 +397,7 @@ export default function AulaGeometriaPlana({
             }}
           />
 
-          <section id="quiz-modulo-1" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM1}
               titulo="Quiz — Polígonos"
               icone="🔷"
@@ -548,7 +558,18 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-2" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={2}
             variant="emerald"
             video={{
@@ -597,8 +618,7 @@ export default function AulaGeometriaPlana({
             }}
           />
 
-          <section id="quiz-modulo-2" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM2}
               titulo="Quiz — Triângulos"
               icone="🔺"
@@ -738,7 +758,18 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-3" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={3}
             variant="cyan"
             video={{
@@ -791,8 +822,7 @@ export default function AulaGeometriaPlana({
             }}
           />
 
-          <section id="quiz-modulo-3" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM3}
               titulo="Quiz — Área do Triângulo"
               icone="📐"
@@ -996,7 +1026,18 @@ export default function AulaGeometriaPlana({
             </div>
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-4" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={4}
             variant="blue"
             video={{
@@ -1045,8 +1086,7 @@ export default function AulaGeometriaPlana({
             }}
           />
 
-          <section id="quiz-modulo-4" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM4}
               titulo="Quiz — Quadriláteros"
               icone="⬛"
@@ -1191,7 +1231,18 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-5" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="amber"
             video={{
@@ -1240,8 +1291,7 @@ export default function AulaGeometriaPlana({
             }}
           />
 
-          <section id="quiz-modulo-5" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM5}
               titulo="Quiz — Círculo e Circunferência"
               icone="⭕"
@@ -1386,6 +1436,9 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
+
+
+          <section id="quiz-modulo-6" className="mt-16">
           <ModuleConsolidation
             index={6}
             variant="rose"
@@ -1435,7 +1488,6 @@ export default function AulaGeometriaPlana({
             }}
           />
 
-          <section id="quiz-modulo-6" className="mt-16">
             <QuizInterativo
               questoes={quizM6}
               titulo="Quiz — Semelhança de Triângulos"
@@ -1552,7 +1604,18 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-7" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={7}
             variant="indigo"
             video={{
@@ -1602,8 +1665,7 @@ export default function AulaGeometriaPlana({
             }}
           />
 
-          <section id="quiz-modulo-7" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM7}
               titulo="Quiz — Teorema de Pitágoras"
               icone="📐"
@@ -1733,7 +1795,18 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-8" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={8}
             variant="emerald"
             video={{
@@ -1783,8 +1856,7 @@ export default function AulaGeometriaPlana({
             }}
           />
 
-          <section id="quiz-modulo-8" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM8}
               titulo="Quiz — Razão de Semelhança e Áreas"
               icone="📊"
@@ -1908,7 +1980,18 @@ export default function AulaGeometriaPlana({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-9" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={9}
             variant="cyan"
             video={{
@@ -1958,8 +2041,7 @@ export default function AulaGeometriaPlana({
             }}
           />
 
-          <section id="quiz-modulo-9" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM9}
               titulo="Quiz — Aplicações Industriais"
               icone="🏭"
@@ -2028,7 +2110,18 @@ export default function AulaGeometriaPlana({
             </AlertBox>
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-10" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={10}
             variant="blue"
             video={{
@@ -2083,8 +2176,7 @@ export default function AulaGeometriaPlana({
             }}
           />
 
-          <section id="quiz-modulo-10" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM10}
               titulo="Simulado Final — Geometria Plana"
               icone="🏆"

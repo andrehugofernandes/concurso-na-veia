@@ -2207,7 +2207,7 @@ Por que separado? Porque eu estudei!
         <section className="mt-12">
           <QuizInterativo
             questoes={qMod6}
-            titulo="A Vaga é Minha"
+            titulo="A Vaga EH Minha"
             icone="🏆"
             numero={2}
             variant="cyan"

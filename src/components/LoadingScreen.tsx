@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Progress } from "@/components/ui/progress";
 
 interface LoadingScreenProps {
@@ -6,130 +9,195 @@ interface LoadingScreenProps {
   timeRemaining?: number; // em segundos
 }
 
-export default function LoadingScreen({ current, total, timeRemaining }: LoadingScreenProps) {
+const steps = [
+  { label: "Analisando seu desempenho", delay: 0 },
+  { label: "Calibrando dificuldade", delay: 600 },
+  { label: "Criando questões inéditas...", delay: 1200 },
+];
+
+export default function LoadingScreen({
+  current,
+  total,
+  timeRemaining,
+}: LoadingScreenProps) {
   const percentage =
-    total && total > 0 ? Math.round(((current || 0) / total) * 100) : 0;
+    total && total > 0 
+      ? Math.min(Math.round(((current || 0) / total) * 100), 100) 
+      : 0;
+
+  const [activeStep, setActiveStep] = useState(0);
+  const [elapsed, setElapsed] = useState(0); // segundos decorridos
+
+  // Avança etapas com delay
+  useEffect(() => {
+    const timers = steps.map((step, i) =>
+      setTimeout(() => setActiveStep(i), step.delay),
+    );
+    return () => timers.forEach(clearTimeout);
+  }, []);
+
+  // Cronômetro geral (stopwatch)
+  useEffect(() => {
+    const intervalo = setInterval(() => setElapsed((s) => s + 1), 1000);
+    return () => clearInterval(intervalo);
+  }, []);
 
   const formatTime = (seconds: number) => {
     const min = Math.floor(seconds / 60);
     const sec = seconds % 60;
-    return `${min}:${sec.toString().padStart(2, "0")}`;
+    if (min > 0) return `${min}m ${sec.toString().padStart(2, "0")}s`;
+    return `${sec}s`;
   };
 
-  return (
-    <div className="min-h-screen gradient-bg flex items-center justify-center p-4">
-      <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl p-8 md:p-12 max-w-md w-full text-center ai-glow border border-purple-500/20">
-        <div className="mb-6">
-          <div className="inline-block p-6 bg-purple-100 dark:bg-purple-900/30 rounded-full animate-pulse">
-            <svg
-              className="w-16 h-16 text-purple-600 dark:text-purple-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-              />
-            </svg>
-          </div>
-        </div>
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">
-          🤖 IA Gerando Questões
-        </h2>
-        <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg mb-6">
-          A Inteligência Artificial está criando questões personalizadas para
-          você no estilo CESGRANRIO
-          <span className="loading-dots"></span>
-        </p>
+  const isWaiting = timeRemaining !== undefined && timeRemaining > 0;
 
-        {total && total > 0 ? (
-          <div className="mb-6 space-y-2">
-            <div className="flex justify-between text-sm font-bold text-purple-600 dark:text-purple-400">
-              <span>Progresso de Geração</span>
-              <span>
-                {current} de {total}
+  return (
+    <div className="min-h-screen flex items-center justify-center p-4 bg-[#0a0a0f]">
+      {/* Glow background orbs */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-indigo-600/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: "1s" }} />
+      </div>
+
+      <div
+        className="relative w-full max-w-sm rounded-2xl overflow-hidden"
+        style={{
+          background: "linear-gradient(145deg, #12121a, #1a1a2e)",
+          boxShadow: "0 0 80px rgba(124, 58, 237, 0.15), 0 0 0 1px rgba(139,92,246,0.15)",
+        }}
+      >
+        {/* Top gradient bar */}
+        <div className="h-1 w-full bg-gradient-to-r from-violet-600 via-indigo-500 to-fuchsia-500" />
+
+        <div className="p-8">
+          {/* Icon */}
+          <div className="flex justify-center mb-6">
+            <div
+              className="relative flex items-center justify-center w-20 h-20 rounded-2xl"
+              style={{
+                background: "linear-gradient(135deg, #5b21b6, #4338ca)",
+                boxShadow: "0 0 40px rgba(124, 58, 237, 0.5)",
+              }}
+            >
+              {/* Animated ring */}
+              <div className="absolute inset-0 rounded-2xl border-2 border-violet-400/30 animate-ping" />
+              <span className="text-3xl">🤖</span>
+            </div>
+          </div>
+
+          {/* Title */}
+          <div className="text-center mb-1">
+            <h2 className="text-2xl font-black text-white tracking-tight">
+              {isWaiting ? "Aguardando IA..." : "IA Gerando Questões"}
+            </h2>
+            <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
+              {isWaiting
+                ? "O provedor atingiu o limite de chamadas. Retomando em instantes."
+                : "Criando questões no padrão CESGRANRIO personalizadas para você"}
+            </p>
+
+            {/* Stopwatch */}
+            <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-800/80 border border-zinc-700/60">
+              <svg className="w-3.5 h-3.5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-xs font-mono font-bold text-zinc-300 tabular-nums">
+                {formatTime(elapsed)}
               </span>
             </div>
-            <Progress value={percentage} className="h-3 md:h-4" />
-            <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-black pt-1">
-              {percentage}% Concluído
-            </p>
           </div>
-        ) : null}
 
-        {timeRemaining !== undefined && timeRemaining > 0 && (
-          <div className="mb-8 p-4 bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-500/20 rounded-xl animate-pulse">
-            <p className="text-xs text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider mb-1">
-              Respeitando Limite de Taxa
-            </p>
-            <div className="text-3xl font-black text-amber-700 dark:text-amber-300">
-              {formatTime(timeRemaining)}
+          {/* Divider */}
+          <div className="my-5 h-px bg-gradient-to-r from-transparent via-zinc-700 to-transparent" />
+
+          {/* Progress bar */}
+          {total && total > 0 ? (
+            <div className="mb-5 space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-xs font-bold text-violet-400 uppercase tracking-widest">
+                  Progresso
+                </span>
+                <span className="text-xs font-black text-white tabular-nums">
+                  {current ?? 0} / {total}
+                </span>
+              </div>
+              <div className="relative">
+                <div className="w-full h-2.5 bg-zinc-800 rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full transition-all duration-700"
+                    style={{
+                      width: `${percentage}%`,
+                      background: "linear-gradient(90deg, #7c3aed, #6366f1, #a855f7)",
+                      boxShadow: "0 0 12px rgba(139,92,246,0.6)",
+                    }}
+                  />
+                </div>
+              </div>
+              <p className="text-center text-[10px] font-bold text-zinc-500 uppercase tracking-[0.2em]">
+                {percentage}% concluído
+              </p>
             </div>
-            <p className="text-[10px] text-amber-600/70 dark:text-amber-400/70 mt-1">
-              Aguardando janela de segurança do provedor gratuito
-            </p>
-          </div>
-        )}
+          ) : null}
 
-        <div className="space-y-3 text-left bg-purple-50 dark:bg-purple-900/10 p-4 rounded-lg border border-purple-100 dark:border-purple-500/10">
-          <div className="flex items-center space-x-3">
-            <svg
-              className="w-5 h-5 text-green-500"
-              fill="currentColor"
-              viewBox="0 0 20 20"
+          {/* Rate limit countdown */}
+          {isWaiting && (
+            <div
+              className="mb-5 p-4 rounded-xl text-center border"
+              style={{
+                background: "rgba(251, 146, 60, 0.05)",
+                borderColor: "rgba(251, 146, 60, 0.2)",
+              }}
             >
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <span className="text-sm text-gray-700 dark:text-gray-300">
-              Analisando seu desempenho
-            </span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <svg
-              className="w-5 h-5 text-green-500"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <span className="text-sm text-gray-700 dark:text-gray-300">
-              Ajustando dificuldade
-            </span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <svg
-              className="w-5 h-5 text-purple-500 animate-spin"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              ></circle>
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
-            </svg>
-            <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
-              Criando questões inéditas...
-            </span>
+              <p className="text-[10px] text-amber-400/70 uppercase tracking-widest font-bold mb-1">
+                Retomando em
+              </p>
+              <p
+                className="text-4xl font-black tabular-nums"
+                style={{ color: "#fb923c", textShadow: "0 0 20px rgba(251,146,60,0.4)" }}
+              >
+                {formatTime(timeRemaining!)}
+              </p>
+              <p className="text-[10px] text-amber-400/50 mt-1">
+                Limite do provedor gratuito
+              </p>
+            </div>
+          )}
+
+          {/* Steps */}
+          <div className="space-y-2.5">
+            {steps.map((step, i) => {
+              const isDone = i < activeStep;
+              const isActive = i === activeStep;
+              return (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
+                    {isDone ? (
+                      <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                    ) : isActive ? (
+                      <svg className="w-5 h-5 text-violet-400 animate-spin" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                    ) : (
+                      <div className="w-4 h-4 rounded-full border border-zinc-700 bg-zinc-800" />
+                    )}
+                  </div>
+                  <span
+                    className={`text-sm transition-all duration-300 ${
+                      isDone
+                        ? "text-emerald-400 font-medium line-through opacity-50"
+                        : isActive
+                          ? "text-white font-semibold"
+                          : "text-zinc-600"
+                    }`}
+                  >
+                    {step.label}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

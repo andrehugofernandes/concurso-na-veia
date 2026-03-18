@@ -25,9 +25,23 @@ import {
   LuRepeat,
   LuSigma,
   LuZap,
+  LuCheck,
+  LuLayoutDashboard,
+  LuLayers,
+  LuDatabase,
+  LuSettings,
+  LuShield,
+  LuMonitor,
+  LuArrowDown,
+  LuList,
+  LuWorkflow,
+  LuFileText,
+  LuSearch,
+  LuRefreshCw,
 } from "react-icons/lu";
 
 import { getModuleVariant } from "@/lib/moduleColors";
+import { QUIZ_GESTAO_PROCESSOS } from "@/data/quizzes/gestao-processos-quizzes";
 
 const MODULE_DEFS = [
   { id: "modulo-1", label: "Módulo 1", title: "Conceitos de Processos" },
@@ -42,13 +56,6 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
-// Temporary inline quizzes until data file is ready
-const TEMP_QUIZ = [
-  { id: 1, pergunta: "O que significa BPM?", opcoes: [{ label: "A", valor: "Business Process Management" }, { label: "B", valor: "Business Product Management" }, { label: "C", valor: "Basic Process Model" }, { label: "D", valor: "Business Plan Method" }, { label: "E", valor: "Best Practice Model" }], correta: "A", explicacao: "BPM = Business Process Management (Gerenciamento de Processos de Negócio). É a disciplina que combina métodos, ferramentas e tecnologia para projetar, analisar, executar e monitorar processos organizacionais." },
-  { id: 2, pergunta: "Qual a diferença entre processo e procedimento?", opcoes: [{ label: "A", valor: "São sinônimos" }, { label: "B", valor: "Processo é macro, procedimento é o passo-a-passo" }, { label: "C", valor: "Procedimento é mais amplo que processo" }, { label: "D", valor: "Processo não tem entrada definida" }, { label: "E", valor: "Procedimento não gera resultado" }], correta: "B", explicacao: "Processo é o conjunto de atividades inter-relacionadas que transforma entradas em saídas. Procedimento é a descrição detalhada (passo-a-passo) de como executar uma atividade dentro do processo." },
-  { id: 3, pergunta: "Na notação BPMN, um evento de início é representado por:", opcoes: [{ label: "A", valor: "Retângulo" }, { label: "B", valor: "Losango" }, { label: "C", valor: "Círculo fino" }, { label: "D", valor: "Círculo grosso" }, { label: "E", valor: "Seta" }], correta: "C", explicacao: "Na BPMN, eventos de início são representados por círculos com borda fina. Eventos intermediários têm borda dupla fina, e eventos de fim têm borda grossa." },
-  { id: 4, pergunta: "O mapeamento AS-IS representa:", opcoes: [{ label: "A", valor: "O processo futuro desejado" }, { label: "B", valor: "O processo atual como ele é" }, { label: "C", valor: "O processo ideal teórico" }, { label: "D", valor: "O benchmark do mercado" }, { label: "E", valor: "A documentação legal" }], correta: "B", explicacao: "AS-IS (como é) mapeia o processo atual. TO-BE (como será) mapeia o processo futuro desejado após melhorias. O gap analysis compara ambos para identificar oportunidades." },
-];
 
 export default function AulaGestaoProcessos({
   onComplete, isCompleted, loading, xpGanho = 50,
@@ -57,16 +64,16 @@ export default function AulaGestaoProcessos({
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
-  const [quizM1] = useState(() => TEMP_QUIZ);
-  const [quizM2] = useState(() => TEMP_QUIZ);
-  const [quizM3] = useState(() => TEMP_QUIZ);
-  const [quizM4] = useState(() => TEMP_QUIZ);
-  const [quizM5] = useState(() => TEMP_QUIZ);
-  const [quizM6] = useState(() => TEMP_QUIZ);
-  const [quizM7] = useState(() => TEMP_QUIZ);
-  const [quizM8] = useState(() => TEMP_QUIZ);
-  const [quizM9] = useState(() => TEMP_QUIZ);
-  const [quizM10] = useState(() => TEMP_QUIZ);
+  const [quizM1] = useState(() => QUIZ_GESTAO_PROCESSOS["modulo-1"]);
+  const [quizM2] = useState(() => QUIZ_GESTAO_PROCESSOS["modulo-2"]);
+  const [quizM3] = useState(() => QUIZ_GESTAO_PROCESSOS["modulo-3"]);
+  const [quizM4] = useState(() => QUIZ_GESTAO_PROCESSOS["modulo-4"]);
+  const [quizM5] = useState(() => QUIZ_GESTAO_PROCESSOS["modulo-5"]);
+  const [quizM6] = useState(() => QUIZ_GESTAO_PROCESSOS["modulo-6"]);
+  const [quizM7] = useState(() => QUIZ_GESTAO_PROCESSOS["modulo-7"]);
+  const [quizM8] = useState(() => QUIZ_GESTAO_PROCESSOS["modulo-8"]);
+  const [quizM9] = useState(() => QUIZ_GESTAO_PROCESSOS["modulo-9"]);
+  const [quizM10] = useState(() => QUIZ_GESTAO_PROCESSOS["modulo-10"]);
 
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
   const [showCompletionBadge, setShowCompletionBadge] = useState(false);
@@ -139,74 +146,147 @@ export default function AulaGestaoProcessos({
           <ModuleBanner
             numero={1}
             titulo="Conceitos de Processos Organizacionais"
-            descricao="Entenda o que são processos, como classificá-los e por que são a base da gestão moderna."
+            descricao="Domine a espinha dorsal da gestão moderna: como as organizações transformam insumos em valor."
             gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="O que é um Processo?"
-              description="Definição, elementos e classificação dos processos organizacionais."
+              title="Fundamentos do Processo de Negócio"
+              description="A definição técnica e os componentes vitais que caem na sua prova."
               variant={getModuleVariant(1)}
             />
 
             <ContentAccordion
               slides={[
                 {
-                  titulo: "Conceituação - Definição de Processo",
+                  titulo: "Conceituação - O Processo como Transformação",
                   icone: <LuBrain />,
                   conteudo: (
-                    <div className="space-y-4">
+                    <div className="space-y-6">
                       <p className="text-muted-foreground leading-relaxed">
-                        Um <strong>processo</strong> é um conjunto estruturado de atividades inter-relacionadas que transforma <strong>entradas</strong> (inputs) em <strong>saídas</strong> (outputs) de valor para o cliente ou stakeholder.
+                        Para a <strong>CESGRANRIO</strong>, um processo é uma sequência lógica de atividades que consome recursos para transformar uma <strong>entrada</strong> em uma <strong>saída</strong> de valor.
                       </p>
-                      <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20">
-                        <p className="font-bold text-blue-700 mb-2">Elementos de um Processo:</p>
-                        <div className="space-y-1 text-sm">
-                          <p><strong>Entrada (Input):</strong> Matéria-prima, informação, demanda</p>
-                          <p><strong>Atividades:</strong> Transformação, agregação de valor</p>
-                          <p><strong>Saída (Output):</strong> Produto, serviço, resultado</p>
-                          <p><strong>Responsável (Dono):</strong> Quem responde pelo processo</p>
-                          <p><strong>Indicadores:</strong> Métricas de desempenho</p>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="p-4 bg-blue-500/5 border border-blue-500/10 rounded-xl text-center">
+                          <p className="font-bold text-blue-600 mb-1">Entradas (Inputs)</p>
+                          <p className="text-xs text-muted-foreground">Demanda, Informação, Matéria-prima, Insumos.</p>
                         </div>
+                        <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-center flex flex-col justify-center">
+                          <p className="font-bold text-blue-700">ATIVIDADES</p>
+                          <p className="text-[10px] text-blue-600 uppercase tracking-widest font-bold">Processamento</p>
+                        </div>
+                        <div className="p-4 bg-blue-500/5 border border-blue-500/10 rounded-xl text-center">
+                          <p className="font-bold text-blue-600 mb-1">Saídas (Outputs)</p>
+                          <p className="text-xs text-muted-foreground">Valor agredado, Produto final, Serviço prestado.</p>
+                        </div>
+                      </div>
+
+                      <div className="bg-slate-900/5 p-4 rounded-xl border border-slate-900/10 space-y-3">
+                        <p className="font-bold text-slate-800 flex items-center gap-2">
+                          <LuCheck className="text-blue-600" /> Atributos Críticos:
+                        </p>
+                        <ul className="grid grid-cols-2 gap-2 text-sm">
+                          <li className="flex items-center gap-2">🔹 <strong>Repetitividade:</strong> Ocorre ciclicamente.</li>
+                          <li className="flex items-center gap-2">🔹 <strong>Previsibilidade:</strong> Resultado esperado.</li>
+                          <li className="flex items-center gap-2">🔹 <strong>Mecanismo:</strong> Como é feito.</li>
+                          <li className="flex items-center gap-2">🔹 <strong>Controle:</strong> Restrições e regras.</li>
+                        </ul>
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Exemplificação - Processos na Petrobras",
+                  titulo: "Exemplificação - Processos Petrobras",
                   icone: <LuBookOpen />,
                   conteudo: (
-                    <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">Tipos de processos em uma organização:</p>
-                      <div className="space-y-2">
-                        <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
-                          <p className="font-bold text-blue-700 text-sm">Processos Primários (Core)</p>
-                          <p className="text-xs">Exploração, Refino, Distribuição — geram valor direto ao cliente</p>
+                    <div className="space-y-6">
+                      <p className="text-muted-foreground">Analise como a Petrobras organiza sua cadeia de valor:</p>
+                      
+                      <div className="space-y-4">
+                        <div className="flex gap-4 p-4 bg-blue-50 rounded-xl border-l-4 border-blue-600">
+                          <div className="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-bold">1</div>
+                          <div>
+                            <p className="font-bold text-blue-900">Processos Primários (Core)</p>
+                            <p className="text-xs text-blue-700 mb-2">Aqueles que realizam a missão da empresa e tocam o cliente.</p>
+                            <div className="flex flex-wrap gap-2">
+                              <span className="px-2 py-1 bg-white border border-blue-200 rounded text-[10px] font-bold">Exploração</span>
+                              <span className="px-2 py-1 bg-white border border-blue-200 rounded text-[10px] font-bold">Refino</span>
+                              <span className="px-2 py-1 bg-white border border-blue-200 rounded text-[10px] font-bold">Venda</span>
+                            </div>
+                          </div>
                         </div>
-                        <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
-                          <p className="font-bold text-blue-700 text-sm">Processos de Suporte</p>
-                          <p className="text-xs">RH, TI, Compras — apoiam os processos primários</p>
+
+                        <div className="flex gap-4 p-4 bg-slate-50 rounded-xl border-l-4 border-slate-400">
+                          <div className="bg-slate-400 text-white w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-bold">2</div>
+                          <div>
+                            <p className="font-bold text-slate-800">Processos de Suporte (Apoio)</p>
+                            <p className="text-xs text-slate-600 mb-2">Garantem que os processos primários funcionem.</p>
+                            <div className="flex flex-wrap gap-2">
+                              <span className="px-2 py-1 bg-white border border-slate-200 rounded text-[10px] font-bold">RH</span>
+                              <span className="px-2 py-1 bg-white border border-slate-200 rounded text-[10px] font-bold">TI</span>
+                              <span className="px-2 py-1 bg-white border border-slate-200 rounded text-[10px] font-bold">Jurídico</span>
+                            </div>
+                          </div>
                         </div>
-                        <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
-                          <p className="font-bold text-blue-700 text-sm">Processos Gerenciais</p>
-                          <p className="text-xs">Planejamento, Governança, Controle — direcionam a organização</p>
+
+                        <div className="flex gap-4 p-4 bg-indigo-50 rounded-xl border-l-4 border-indigo-600">
+                          <div className="bg-indigo-600 text-white w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-bold">3</div>
+                          <div>
+                            <p className="font-bold text-indigo-900">Processos Gerenciais (Gestão)</p>
+                            <p className="text-xs text-indigo-700 mb-2">Monitoram e direcionam a organização.</p>
+                            <div className="flex flex-wrap gap-2">
+                              <span className="px-2 py-1 bg-white border border-indigo-200 rounded text-[10px] font-bold">Compliance</span>
+                              <span className="px-2 py-1 bg-white border border-indigo-200 rounded text-[10px] font-bold">Estratégia</span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Dicas - Hierarquia de Processos",
+                  titulo: "Dicas - Hierarquia e Níveis",
                   icone: <LuLightbulb />,
                   conteudo: (
-                    <div className="space-y-4">
-                      <AlertBox tipo="info" titulo="Hierarquia Processual">
-                        <div className="text-sm space-y-1">
-                          <p><strong>Macroprocesso</strong> → Processo → Subprocesso → Atividade → Tarefa</p>
-                          <p className="text-xs text-muted-foreground mt-2">Ex: Macroprocesso "Produção" → Processo "Refino" → Subprocesso "Destilação" → Atividade "Controle de temperatura" → Tarefa "Verificar sensor"</p>
+                    <div className="space-y-6">
+                      <p className="text-muted-foreground">Não confunda macroprocesso com tarefa! Use a escada da complexidade:</p>
+                      
+                      <div className="relative p-6 bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden">
+                        <div className="absolute top-0 right-0 p-3 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-tighter">Foco em Prova</div>
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-3">
+                            <div className="text-blue-600 font-bold">Nível 1</div>
+                            <div className="flex-1 h-2 bg-blue-200 rounded-full"><div className="w-1/5 h-full bg-blue-600 rounded-full" /></div>
+                            <div className="text-xs font-bold text-slate-700">MACROPROCESSO</div>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="text-blue-600 font-bold">Nível 2</div>
+                            <div className="flex-1 h-2 bg-blue-200 rounded-full"><div className="w-2/5 h-full bg-blue-600 rounded-full" /></div>
+                            <div className="text-xs font-bold text-slate-700">PROCESSO</div>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="text-blue-600 font-bold">Nível 3</div>
+                            <div className="flex-1 h-2 bg-blue-200 rounded-full"><div className="w-3/5 h-full bg-blue-600 rounded-full" /></div>
+                            <div className="text-xs font-bold text-slate-700">SUBPROCESSO</div>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="text-blue-600 font-bold">Nível 4</div>
+                            <div className="flex-1 h-2 bg-blue-200 rounded-full"><div className="w-4/5 h-full bg-blue-600 rounded-full" /></div>
+                            <div className="text-xs font-bold text-slate-700">ATIVIDADE</div>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="text-blue-600 font-bold">Nível 5</div>
+                            <div className="flex-1 h-2 bg-blue-200 rounded-full"><div className="w-5/5 h-full bg-blue-600 rounded-full" /></div>
+                            <div className="text-xs font-bold text-slate-700">TAREFA</div>
+                          </div>
                         </div>
+                      </div>
+
+                      <AlertBox tipo="info" titulo="Macete de Memorização">
+                        <p className="text-sm">Imagine uma boneca russa (Matrioska): O <strong>Macroprocesso</strong> é a maior, a <strong>Tarefa</strong> é a menorzinha lá dentro.</p>
                       </AlertBox>
                     </div>
                   ),
@@ -215,17 +295,30 @@ export default function AulaGestaoProcessos({
                   titulo: "Exceções - Processos vs. Projetos",
                   icone: <LuTrophy />,
                   conteudo: (
-                    <div className="space-y-3">
-                      <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
-                        <p className="font-bold text-blue-700 text-sm mb-1">Processo: Contínuo e Repetitivo</p>
-                        <p className="text-xs">Operações do dia a dia, sem data de término definida</p>
+                    <div className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl">
+                          <p className="font-bold text-green-700 mb-2 flex items-center gap-2"><LuRepeat /> Processos</p>
+                          <ul className="text-xs space-y-1 text-green-800">
+                            <li>• Permanentes / Contínuos</li>
+                            <li>• Geram produtos repetitivos</li>
+                            <li>• Foco em eficiência (baixa incerteza)</li>
+                            <li>• Sustentam o negócio (Operação)</li>
+                          </ul>
+                        </div>
+                        <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-xl">
+                          <p className="font-bold text-orange-700 mb-2 flex items-center gap-2"><LuZap /> Projetos</p>
+                          <ul className="text-xs space-y-1 text-orange-800">
+                            <li>• Temporários (Início e Fim)</li>
+                            <li>• Geram resultados únicos</li>
+                            <li>• Foco em eficácia (alta incerteza)</li>
+                            <li>• Mudam o negócio (Inovação)</li>
+                          </ul>
+                        </div>
                       </div>
-                      <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
-                        <p className="font-bold text-blue-700 text-sm mb-1">Projeto: Temporário e Único</p>
-                        <p className="text-xs">Início e fim definidos, resultado exclusivo</p>
-                      </div>
-                      <AlertBox tipo="warning" titulo="Pegadinha de Prova!">
-                        <p className="text-sm">A CESGRANRIO adora confundir processo com projeto. Lembre: processo é CONTÍNUO, projeto é TEMPORÁRIO.</p>
+
+                      <AlertBox tipo="warning" titulo="O Pulo do Gato!">
+                        <p className="text-sm">Se a questão falar que algo "tem fim determinado", mate na hora: é <strong>Projeto</strong>. Se falar em "rotina" ou "dia a dia", é <strong>Processo</strong>.</p>
                       </AlertBox>
                     </div>
                   ),
@@ -234,47 +327,61 @@ export default function AulaGestaoProcessos({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-1" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={1}
             variant={getModuleVariant(1)}
             video={{
               videoId: "T3Z7M-0eEG8",
-              title: "Gestão de Processos: Fundamentos",
-              duration: "15:30",
+              title: "Hierarquia e Tipos de Processos",
+              duration: "18:45",
             }}
             resumoVisual={{
               moduloNome: "Conceitos de Processos",
               tituloAula: "Gestão de Processos",
               materia: "Administração",
               images: [
-                { title: "Entrada → Processo → Saída", type: "Conceito", placeholderColor: "bg-blue-500/20" },
-                { title: "Primários, Suporte, Gerenciais", type: "Classificação", placeholderColor: "bg-sky-500/20" },
-                { title: "Hierarquia Processual", type: "Estrutura", placeholderColor: "bg-cyan-500/20" },
+                { title: "Input-Process-Output", type: "Esquema Central", placeholderColor: "bg-blue-500/20" },
+                { title: "Cadeia de Valor Petrobras", type: "Exemplificação", placeholderColor: "bg-sky-500/20" },
+                { title: "Processo vs Projeto", type: "Comparativo", placeholderColor: "bg-cyan-500/20" },
               ],
             }}
             maceteVisual={{
-              title: "Processo: Transforma Entradas em Saídas!",
+              title: "O Mantra do Processo",
               content: (
-                <div className="space-y-3 text-left">
-                  <p className="text-sm italic">"Todo processo tem dono, entrada, saída e indicador."</p>
-                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg font-mono text-xs text-center">
-                    <p>INPUT → PROCESSO → OUTPUT</p>
-                    <p className="text-muted-foreground">+ Dono + Indicadores</p>
+                <div className="space-y-4 text-left">
+                  <div className="p-4 bg-slate-900 text-white rounded-xl font-mono text-sm">
+                    <p className="text-blue-400"># Definição Premium</p>
+                    <p>Processo = <span className="text-amber-400">Input</span> + <span className="text-emerald-400">Atividade</span> + <span className="text-rose-400">Output</span> + <span className="text-indigo-400">Valor</span></p>
+                  </div>
+                  <div className="flex gap-2 text-[10px] font-bold uppercase overflow-x-auto pb-2">
+                    <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded whitespace-nowrap">Repetitivo</span>
+                    <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded whitespace-nowrap">Estruturado</span>
+                    <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded whitespace-nowrap">Transversal</span>
                   </div>
                 </div>
               ),
             }}
             audio={{
               audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Processos: Fundamentos",
-              artista: "Prof. Administração",
+              titulo: "Podcast: O que é Processo?",
+              artista: "Prof. Gestão de Operações",
             }}
           />
 
-          <section id="quiz-modulo-1" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM1}
-              titulo="Fixação - Conceitos de Processos"
+              titulo="Desafio de Nivelamento - Processos"
               numero={1}
               variant={getModuleVariant(1)}
               icone="🧠"
@@ -287,19 +394,196 @@ export default function AulaGestaoProcessos({
       {/* ═══ MÓDULO 2: BPM ═══ */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={2} titulo="BPM - Business Process Management" descricao="A disciplina que une métodos, ferramentas e tecnologia para gerir processos." gradiente="bg-gradient-to-br from-emerald-600 to-teal-800" />
+          <ModuleBanner 
+            numero={2} 
+            titulo="BPM - Business Process Management" 
+            descricao="A disciplina gerencial que une métodos, ferramentas e tecnologia para maximizar desempenho." 
+            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800" 
+          />
+          
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={2} title="O Ciclo BPM" description="Projetar, modelar, executar, monitorar e otimizar." variant={getModuleVariant(2)} />
+            <ModuleSectionHeader 
+              index={2} 
+              title="A Filosofia e o Ciclo de Vida" 
+              description="Do planejamento estratégico ao refinamento contínuo (Baseado no CBOK)." 
+              variant={getModuleVariant(2)} 
+            />
+            
             <ContentAccordion slides={[
-              { titulo: "Conceituação - O que é BPM?", icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed">BPM (Business Process Management) é uma abordagem disciplinada para identificar, desenhar, executar, documentar, medir, monitorar e controlar processos de negócio.</p><div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20"><p className="font-bold text-emerald-700 mb-2">Ciclo de Vida BPM:</p><div className="space-y-1 text-sm"><p>1. <strong>Planejamento:</strong> Definir estratégia de processos</p><p>2. <strong>Análise:</strong> Entender o AS-IS</p><p>3. <strong>Desenho:</strong> Projetar o TO-BE</p><p>4. <strong>Implementação:</strong> Implantar mudanças</p><p>5. <strong>Monitoramento:</strong> Medir desempenho</p><p>6. <strong>Refinamento:</strong> Melhoria contínua</p></div></div></div>) },
-              { titulo: "Exemplificação - BPM na Prática", icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground text-sm">Na Petrobras, BPM é usado para:</p><div className="space-y-2"><div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20"><p className="font-bold text-emerald-700 text-sm">Processo de Compras</p><p className="text-xs">Requisição → Cotação → Aprovação → Pedido → Recebimento</p></div><div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20"><p className="font-bold text-emerald-700 text-sm">Processo de Manutenção</p><p className="text-xs">Solicitação → Planejamento → Programação → Execução → Encerramento</p></div></div></div>) },
-              { titulo: "Dicas - BPMS vs BPM", icone: <LuLightbulb />, conteudo: (<div className="space-y-4"><AlertBox tipo="info" titulo="Não Confunda!"><div className="text-sm space-y-1"><p><strong>BPM:</strong> Disciplina/abordagem de gestão</p><p><strong>BPMS:</strong> Software/sistema que automatiza BPM</p><p><strong>BPMN:</strong> Notação gráfica para modelar processos</p></div></AlertBox></div>) },
-              { titulo: "Exceções - Quando NÃO usar BPM", icone: <LuTrophy />, conteudo: (<div className="space-y-3"><AlertBox tipo="warning" titulo="Cuidado na Prova!"><p className="text-sm">BPM não é adequado para atividades puramente criativas ou decisões estratégicas únicas. É ideal para processos repetitivos e estruturados.</p></AlertBox></div>) },
+              { 
+                titulo: "Conceituação - O que é BPM?", 
+                icone: <LuBrain />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground leading-relaxed">
+                      <strong>BPM</strong> não é um software, nem um projeto único. É uma <strong>disciplina gerencial</strong> contínua. Segundo o CBOK (corpo de conhecimento mundial), o foco é transformar a visão funcional (departamentos) em visão por processos (horizontal).
+                    </p>
+                    
+                    <div className="bg-emerald-500/10 p-5 rounded-2xl border border-emerald-500/20">
+                      <p className="font-bold text-emerald-800 mb-4 flex items-center gap-2">
+                        <LuWorkflow /> O Ciclo de Vida BPM (Padronizado):
+                      </p>
+                      <div className="space-y-3">
+                        {[
+                          { etapa: "1. Planejamento", desc: "Alinhamento com a estratégia da Petrobras." },
+                          { etapa: "2. Análise", desc: "Entender a realidade atual (Pé no chão)." },
+                          { etapa: "3. Desenho", desc: "Projetar a melhoria teórica." },
+                          { etapa: "4. Implementação", desc: "Colocar em prática (Tecnologia + Pessoas)." },
+                          { etapa: "5. Monitoramento", desc: "Acompanhar KPIs em tempo real." },
+                          { etapa: "6. Refinamento", desc: "Ajustar e melhorar (Não para nunca)." },
+                        ].map((item, i) => (
+                          <div key={i} className="flex items-start gap-3">
+                            <span className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">{i+1}</span>
+                            <div className="text-sm">
+                              <span className="font-bold text-emerald-900">{item.etapa}:</span>{" "}
+                              <span className="text-emerald-700">{item.desc}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exemplificação - Evolução da Maturidade", 
+                icone: <LuBookOpen />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground">Como as empresas evoluem na Gestão de Processos:</p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
+                      {[
+                        { nível: "Inicial", cor: "bg-slate-100", texto: "Caótico, sem padrões." },
+                        { nível: "Definido", cor: "bg-emerald-50", texto: "Documentado em papel." },
+                        { nível: "Gerido", cor: "bg-emerald-100", texto: "Monitorado por KPIs." },
+                        { nível: "Otimizado", cor: "bg-emerald-200", texto: "Melhoria automática." },
+                      ].map((n, i) => (
+                        <div key={i} className={`p-4 rounded-xl border border-black/5 ${n.cor} text-center`}>
+                          <p className="font-bold text-[10px] uppercase text-slate-500">Nível {i+1}</p>
+                          <p className="font-bold text-emerald-900 text-xs">{n.nível}</p>
+                          <p className="text-[10px] text-slate-600 mt-1">{n.texto}</p>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <div className="p-4 bg-emerald-600 text-white rounded-xl text-center space-y-1">
+                      <p className="font-bold">O Caso Petrobras</p>
+                      <p className="text-xs opacity-90 italic">Redução de burocracia no refino através da integração AS-IS e TO-BE.</p>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Dicas - Pilares da Gestão de Processos", 
+                icone: <LuLightbulb />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <div className="relative p-6 bg-slate-900 text-white rounded-2xl overflow-hidden border-4 border-emerald-500">
+                      <p className="text-emerald-400 font-bold mb-4 uppercase tracking-widest text-xs">Os 3 Ps do Sucesso</p>
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-4">
+                          <LuFileText className="text-2xl text-emerald-300" />
+                          <div>
+                            <p className="font-bold leading-none">PROCESSOS</p>
+                            <p className="text-[10px] text-slate-400">O método e o fluxo lógico.</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <LuBrain className="text-2xl text-emerald-300" />
+                          <div>
+                            <p className="font-bold leading-none">PESSOAS</p>
+                            <p className="text-[10px] text-slate-400">A cultura e o treinamento.</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <LuZap className="text-2xl text-emerald-300" />
+                          <div>
+                            <p className="font-bold leading-none">PLATAFORMAS</p>
+                            <p className="text-[10px] text-slate-400">A tecnologia e o software (BPMS).</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exceções - Quando BPM falha?", 
+                icone: <LuTrophy />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground">BPM não é "bala de prata". Veja onde ele não se aplica bem:</p>
+                    <ul className="space-y-2 text-sm">
+                      <li className="flex gap-2">❌ <strong>Processos Ad-Hoc:</strong> Atividades que mudam completamente toda vez (ex: criação artística pura).</li>
+                      <li className="flex gap-2">❌ <strong>Foco apenas em TI:</strong> Implementar o software sem mudar a cultura das pessoas.</li>
+                      <li className="flex gap-2">❌ <strong>Paralisia por Análise:</strong> Mapear até o infinito e nunca implementar a melhoria.</li>
+                    </ul>
+                    <AlertBox tipo="warning" titulo="Termo Técnico: Paralisia por Análise">
+                      <p className="text-xs">É o erro de gastar meses no AS-IS enquanto a organização perde dinheiro. A CESGRANRIO gosta de situações-problema sobre isso.</p>
+                    </AlertBox>
+                  </div>
+                ) 
+              },
             ]} />
           </section>
-          <ModuleConsolidation index={2} variant={getModuleVariant(2)} video={{ videoId: "T3Z7M-0eEG8", title: "BPM Explicado", duration: "12:00" }} resumoVisual={{ moduloNome: "BPM", tituloAula: "Gestão de Processos", materia: "Administração", images: [{ title: "Ciclo de Vida BPM", type: "Conceito", placeholderColor: "bg-emerald-500/20" }, { title: "BPM vs BPMS vs BPMN", type: "Diferença", placeholderColor: "bg-teal-500/20" }, { title: "Aplicações Práticas", type: "Aplicação", placeholderColor: "bg-green-500/20" }] }} maceteVisual={{ title: "BPM = Disciplina, BPMS = Software, BPMN = Notação", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"BPM é a filosofia, BPMS é a ferramenta, BPMN é a linguagem."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "BPM na Prática", artista: "Prof. Administração" }} />
+
+
+          
           <section id="quiz-modulo-2" className="mt-16">
-            <QuizInterativo questoes={quizM2} titulo="Fixação - BPM" numero={2} variant={getModuleVariant(2)} icone="🎯" onComplete={(score) => handleModuleComplete("modulo-2", score)} />
+          
+
+
+
+
+
+
+
+<ModuleConsolidation 
+            index={2} 
+            variant={getModuleVariant(2)} 
+            video={{ 
+              videoId: "T3Z7M-0eEG8", 
+              title: "A Jornada do Ciclo de Vida BPM", 
+              duration: "21:10" 
+            }} 
+            resumoVisual={{ 
+              moduloNome: "BPM", 
+              tituloAula: "Gestão de Processos", 
+              materia: "Administração", 
+              images: [
+                { title: "Ciclo PDCA vs Ciclo BPM", type: "Analogia", placeholderColor: "bg-emerald-500/20" }, 
+                { title: "Funções vs Processos", type: "Mudança Mental", placeholderColor: "bg-teal-500/20" }, 
+                { title: "O Papel do Process Owner", type: "Responsabilidade", placeholderColor: "bg-green-500/20" }
+              ] 
+            }} 
+            maceteVisual={{ 
+              title: "O Mantra do Gestor de Processos", 
+              content: (
+                <div className="space-y-3 text-left">
+                  <p className="text-sm italic">"Medir para entender, gerir para controlar, otimizar para evoluir."</p>
+                  <div className="grid grid-cols-2 gap-2 text-[10px] font-bold">
+                    <div className="bg-emerald-100 text-emerald-800 p-2 rounded">EFICIÊNCIA: "Fazer certo"</div>
+                    <div className="bg-blue-100 text-blue-800 p-2 rounded">EFICÁCIA: "Fazer o certo"</div>
+                  </div>
+                </div>
+              ) 
+            }} 
+            audio={{ 
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", 
+              titulo: "Masterclass: Ciclo BPM", 
+              artista: "Especialista CBOK" 
+            }} 
+          />
+
+                      <QuizInterativo 
+              questoes={quizM2} 
+              titulo="Desafio de Mestre - Ciclo BPM" 
+              numero={2} 
+              variant={getModuleVariant(2)} 
+              icone="🎯" 
+              onComplete={(score) => handleModuleComplete("modulo-2", score)} 
+            />
           </section>
         </div>
       </TabsContent>
@@ -307,52 +591,1297 @@ export default function AulaGestaoProcessos({
       {/* ═══ MÓDULO 3: MODELAGEM BPMN ═══ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={3} titulo="Modelagem BPMN" descricao="A notação padrão internacional para diagramar processos de negócio." gradiente="bg-gradient-to-br from-amber-600 to-orange-700" />
+          <ModuleBanner 
+            numero={3} 
+            titulo="Modelagem com BPMN 2.0" 
+            descricao="A linguagem universal para que humanos e máquinas entendam o fluxo de trabalho." 
+            gradiente="bg-gradient-to-br from-amber-600 to-orange-700" 
+          />
+          
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={3} title="Elementos da BPMN" description="Eventos, atividades, gateways e fluxos." variant={getModuleVariant(3)} />
+            <ModuleSectionHeader 
+              index={3} 
+              title="Gramática do Processo" 
+              description="Alfabeto visual: Eventos, Atividades, Gateways e Artefatos." 
+              variant={getModuleVariant(3)} 
+            />
+            
             <ContentAccordion slides={[
-              { titulo: "Conceituação - Elementos BPMN", icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed">BPMN (Business Process Model and Notation) é a notação gráfica padrão ISO para representar processos de negócio.</p><div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20"><p className="font-bold text-amber-700 mb-2">Elementos Principais:</p><div className="space-y-1 text-sm"><p><strong>Eventos (Círculos):</strong> Início, Intermediário, Fim</p><p><strong>Atividades (Retângulos):</strong> Tarefas e Subprocessos</p><p><strong>Gateways (Losangos):</strong> Decisões e junções</p><p><strong>Fluxos (Setas):</strong> Sequência, Mensagem, Associação</p></div></div></div>) },
-              { titulo: "Exemplificação - Gateway Exclusivo (XOR)", icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><div className="bg-amber-500/10 p-4 rounded border border-amber-500/20"><p className="font-bold text-amber-700 text-sm mb-2">Gateway Exclusivo (X)</p><p className="text-xs">Apenas UM caminho é seguido. Ex: "Pedido aprovado?" → Sim OU Não</p></div><div className="bg-amber-500/10 p-4 rounded border border-amber-500/20"><p className="font-bold text-amber-700 text-sm mb-2">Gateway Paralelo (+)</p><p className="text-xs">TODOS os caminhos são seguidos simultaneamente. Ex: "Enviar email E atualizar sistema"</p></div><div className="bg-amber-500/10 p-4 rounded border border-amber-500/20"><p className="font-bold text-amber-700 text-sm mb-2">Gateway Inclusivo (O)</p><p className="text-xs">UM OU MAIS caminhos são seguidos. Ex: "Notificar gerente E/OU auditor"</p></div></div>) },
-              { titulo: "Dicas - Pools e Lanes", icone: <LuLightbulb />, conteudo: (<div className="space-y-4"><AlertBox tipo="info" titulo="Organização Visual"><div className="text-sm space-y-1"><p><strong>Pool:</strong> Representa uma organização ou participante</p><p><strong>Lane:</strong> Subdivide o Pool por departamento/papel</p><p className="text-xs text-muted-foreground mt-2">Ex: Pool "Petrobras" com lanes "Compras", "Jurídico", "Financeiro"</p></div></AlertBox></div>) },
-              { titulo: "Exceções - Erros Comuns em BPMN", icone: <LuTrophy />, conteudo: (<div className="space-y-3"><AlertBox tipo="warning" titulo="Evite na Prova!"><div className="text-sm space-y-1"><p>• Processo sem evento de início ou fim</p><p>• Gateway sem condição nos fluxos de saída</p><p>• Fluxo de mensagem dentro do mesmo Pool</p><p>• Atividade sem fluxo de entrada ou saída</p></div></AlertBox></div>) },
+              { 
+                titulo: "Conceituação - O Alfabeto BPMN", 
+                icone: <LuBrain />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground leading-relaxed">
+                      Lembre-se: <strong>BPMN</strong> é para o processo o que a partitura é para a música. Todos os envolvidos devem ler e entender a mesma melodia operacional.
+                    </p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-3">
+                        <p className="font-bold text-amber-700 text-sm flex items-center gap-2">⭕ Eventos (Ondas de Impacto)</p>
+                        <ul className="text-xs space-y-2">
+                          <li className="flex items-center gap-2"><span className="w-4 h-4 rounded-full border border-slate-400" /> <strong>Início:</strong> Borda fina.</li>
+                          <li className="flex items-center gap-2"><span className="w-4 h-4 rounded-full border-2 border-double border-slate-400" /> <strong>Intermediário:</strong> Borda dupla.</li>
+                          <li className="flex items-center gap-2"><span className="w-4 h-4 rounded-full border-2 border-slate-600 bg-slate-100" /> <strong>Fim:</strong> Borda grossa.</li>
+                        </ul>
+                      </div>
+                      
+                      <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-3 text-sm">
+                        <p className="font-bold text-amber-700 text-sm flex items-center gap-2">Rect: Atividades (Ação)</p>
+                        <ul className="text-xs space-y-2">
+                          <li>🟦 <strong>Tarefa:</strong> Unidade atômica (não divídível).</li>
+                          <li>🟦 [+] <strong>Subprocesso:</strong> Atividade complexa detalhada em outro diagrama.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exemplificação - Gateways (O Coração da Lógica)", 
+                icone: <LuBookOpen />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground">O losango indica onde o processo "escolhe" um caminho:</p>
+                    
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-4 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+                        <div className="w-10 h-10 bg-white border-2 border-amber-500 rotate-45 flex items-center justify-center shrink-0">
+                          <span className="-rotate-45 font-bold text-amber-700">X</span>
+                        </div>
+                        <div>
+                          <p className="font-bold text-amber-800 text-xs">Exclusivo (XOR)</p>
+                          <p className="text-[10px] text-amber-700">Apenas UM caminho será seguido. <span className="italic">"Ou café ou chá".</span></p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-4 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+                        <div className="w-10 h-10 bg-white border-2 border-amber-500 rotate-45 flex items-center justify-center shrink-0">
+                          <span className="-rotate-45 font-bold text-amber-700">+</span>
+                        </div>
+                        <div>
+                          <p className="font-bold text-amber-800 text-xs">Paralelo (AND)</p>
+                          <p className="text-[10px] text-amber-700">TODOS os caminhos ocorrem ao mesmo tempo. <span className="italic">"Pague e retire".</span></p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-4 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+                        <div className="w-10 h-10 bg-white border-2 border-amber-500 rotate-45 flex items-center justify-center shrink-0">
+                          <span className="-rotate-45 font-bold text-amber-700">O</span>
+                        </div>
+                        <div>
+                          <p className="font-bold text-amber-800 text-xs">Inclusivo (OR)</p>
+                          <p className="text-[10px] text-amber-700">UM ou MAIS caminhos dependendo das condições.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Dicas - Piscinas (Pools) e Raias (Lanes)", 
+                icone: <LuLightbulb />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-5 bg-slate-900 text-white rounded-2xl relative">
+                      <div className="absolute top-4 right-4 text-amber-400"><LuLayoutDashboard className="text-2xl" /></div>
+                      <p className="font-bold mb-3">Geografia do Processo:</p>
+                      <div className="space-y-3 text-sm">
+                        <div className="border border-slate-700 p-3 rounded-lg">
+                          <p className="text-amber-400 font-bold uppercase text-[10px] tracking-widest">Piscina (Pool)</p>
+                          <p className="text-xs">Representa o Participante (ex: Petrobras, Cliente, Banco).</p>
+                        </div>
+                        <div className="border border-slate-700 p-3 rounded-lg ml-4">
+                          <p className="text-blue-400 font-bold uppercase text-[10px] tracking-widest">Raia (Lane)</p>
+                          <p className="text-xs">Subdivide o Pool por cargo ou área (ex: RH, Financeiro).</p>
+                        </div>
+                      </div>
+                    </div>
+                    <AlertBox tipo="success" titulo="Regra de Ouro!">
+                      <p className="text-xs">Fluxos de SEQUÊNCIA (setas cheias) nunca cruzam as bordas de um Pool. Para falar com outro Pool, use Fluxo de MENSAGEM (setas tracejadas).</p>
+                    </AlertBox>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exceções - Atividades e Marcadores", 
+                icone: <LuTrophy />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground">Existem tarefas especiais que caem muito em provas:</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="p-3 bg-slate-100 rounded-lg border border-slate-200">
+                        <p className="font-bold text-indigo-700 text-[10px] uppercase">Tarefa de Usuário 👤</p>
+                        <p className="text-[10px]">Humano realizando via sistema.</p>
+                      </div>
+                      <div className="p-3 bg-slate-100 rounded-lg border border-slate-200">
+                        <p className="font-bold text-indigo-700 text-[10px] uppercase">Tarefa de Serviço ⚙️</p>
+                        <p className="text-[10px]">Automação pura, sem intervenção.</p>
+                      </div>
+                    </div>
+                    <AlertBox tipo="info" titulo="Subprocesso em Loop">
+                      <p className="text-xs">Representado por uma espiral no fundo do retângulo. Indica que a atividade se repete até que uma condição seja atingida.</p>
+                    </AlertBox>
+                  </div>
+                ) 
+              },
             ]} />
           </section>
-          <ModuleConsolidation index={3} variant={getModuleVariant(3)} video={{ videoId: "T3Z7M-0eEG8", title: "BPMN na Prática", duration: "14:00" }} resumoVisual={{ moduloNome: "Modelagem BPMN", tituloAula: "Gestão de Processos", materia: "Administração", images: [{ title: "Eventos, Atividades, Gateways", type: "Elementos", placeholderColor: "bg-amber-500/20" }, { title: "Tipos de Gateway", type: "Decisão", placeholderColor: "bg-orange-500/20" }, { title: "Pools e Lanes", type: "Organização", placeholderColor: "bg-yellow-500/20" }] }} maceteVisual={{ title: "BPMN: Círculo-Retângulo-Losango!", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Evento é círculo, atividade é retângulo, gateway é losango."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "BPMN Descomplicado", artista: "Prof. Administração" }} />
+
+
+          
           <section id="quiz-modulo-3" className="mt-16">
-            <QuizInterativo questoes={quizM3} titulo="Fixação - BPMN" numero={3} variant={getModuleVariant(3)} icone="📊" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
+          
+
+
+
+
+
+
+
+<ModuleConsolidation 
+            index={3} 
+            variant={getModuleVariant(3)} 
+            video={{ 
+              videoId: "T3Z7M-0eEG8", 
+              title: "Modelando seu Primeiro Processo BPMN", 
+              duration: "25:00" 
+            }} 
+            resumoVisual={{ 
+              moduloNome: "Modelagem BPMN", 
+              tituloAula: "Gestão de Processos", 
+              materia: "Administração", 
+              images: [
+                { title: "Léxico Visual BPMN", type: "Tabela Técnica", placeholderColor: "bg-amber-500/20" }, 
+                { title: "Arquitetura de Gateways", type: "Diagrama Lógico", placeholderColor: "bg-orange-500/20" }, 
+                { title: "Pools e Colaboração", type: "Fluxograma", placeholderColor: "bg-yellow-500/20" }
+              ] 
+            }} 
+            maceteVisual={{ 
+              title: "Alfabeto Rápido", 
+              content: (
+                <div className="space-y-3 text-left">
+                  <div className="flex flex-col gap-2">
+                    <div className="flex gap-2 items-center"><span className="w-8 h-8 rounded-full border-2 border-slate-400 bg-white" /> <span className="text-xs">Borda fina = Começou!</span></div>
+                    <div className="flex gap-2 items-center"><span className="w-8 h-8 rounded-full border-2 border-double border-slate-400 bg-white" /> <span className="text-xs">Borda dupla = Esperou!</span></div>
+                    <div className="flex gap-2 items-center"><span className="w-8 h-8 rounded-full border-4 border-slate-600 bg-slate-200" /> <span className="text-xs">Borda grossa = Acabou!</span></div>
+                  </div>
+                </div>
+              ) 
+            }} 
+            audio={{ 
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", 
+              titulo: "Audioguia: Lógica de Gateways", 
+              artista: "Prof. Modelagem" 
+            }} 
+          />
+
+                      <QuizInterativo 
+              questoes={quizM3} 
+              titulo="Simulado Técnico - BPMN 2.0" 
+              numero={3} 
+              variant={getModuleVariant(3)} 
+              icone="📊" 
+              onComplete={(score) => handleModuleComplete("modulo-3", score)} 
+            />
           </section>
         </div>
       </TabsContent>
 
-      {/* ═══ MÓDULOS 4-10: Estrutura Base ═══ */}
-      {[
-        { mod: "modulo-4", num: 4, titulo: "Mapeamento de Processos", desc: "Técnicas AS-IS e TO-BE para diagnóstico e redesenho.", grad: "bg-gradient-to-br from-rose-600 to-pink-800", quiz: quizM4, secTitle: "AS-IS e TO-BE", secDesc: "Mapeie o presente, projete o futuro." },
-        { mod: "modulo-5", num: 5, titulo: "Melhoria Contínua", desc: "Kaizen, Lean, Six Sigma e PDCA aplicados a processos.", grad: "bg-gradient-to-br from-violet-600 to-purple-800", quiz: quizM5, secTitle: "Filosofias de Melhoria", secDesc: "Kaizen, Lean e Six Sigma na prática." },
-        { mod: "modulo-6", num: 6, titulo: "Indicadores de Processos", desc: "KPIs, dashboards e métricas para monitoramento eficaz.", grad: "bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800", quiz: quizM6, secTitle: "KPIs e Métricas", secDesc: "Medir para melhorar." },
-        { mod: "modulo-7", num: 7, titulo: "Automação e Transformação Digital", desc: "RPA, workflow engines e digitalização de processos.", grad: "bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800", quiz: quizM7, secTitle: "Automação de Processos", secDesc: "Do manual ao digital." },
-        { mod: "modulo-8", num: 8, titulo: "Gestão da Qualidade", desc: "ISO 9001, TQM e ferramentas da qualidade.", grad: "bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800", quiz: quizM8, secTitle: "Qualidade Total", secDesc: "ISO 9001 e ferramentas essenciais." },
-        { mod: "modulo-9", num: 9, titulo: "Aplicações Petrobras", desc: "Gestão de processos no setor de óleo e gás.", grad: "bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800", quiz: quizM9, secTitle: "Processos no O&G", secDesc: "Aplicações reais na Petrobras." },
-        { mod: "modulo-10", num: 10, titulo: "Simulado Mestre", desc: "Teste integrado com questões de todos os módulos.", grad: "bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800", quiz: quizM10, secTitle: "Desafio Final", secDesc: "Prove seu domínio em Gestão de Processos!" },
-      ].map(({ mod, num, titulo: modTitulo, desc, grad, quiz, secTitle, secDesc }) => (
-        <TabsContent key={mod} value={mod} className="space-y-[50px]">
-          <div className="space-y-12 animate-in fade-in duration-500">
-            <ModuleBanner numero={num} titulo={modTitulo} descricao={desc} gradiente={grad} />
-            <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-              <ModuleSectionHeader index={num} title={secTitle} description={secDesc} variant={getModuleVariant(num)} />
-              <ContentAccordion slides={[
-                { titulo: `Conceituação - ${modTitulo}`, icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed">Conteúdo detalhado sobre {modTitulo.toLowerCase()} será expandido com C.E.D.E. completo.</p><AlertBox tipo="info" titulo="Em Construção"><p className="text-sm">Este módulo está sendo expandido com conteúdo premium completo.</p></AlertBox></div>) },
-                { titulo: `Exemplificação - ${modTitulo}`, icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground text-sm">Exemplos práticos de {modTitulo.toLowerCase()} no contexto da Petrobras.</p></div>) },
-                { titulo: "Dicas para a Prova", icone: <LuLightbulb />, conteudo: (<div className="space-y-4"><AlertBox tipo="success" titulo="Dica CESGRANRIO"><p className="text-sm">Foque nos conceitos-chave e nas diferenças entre termos similares.</p></AlertBox></div>) },
-                { titulo: "Exceções e Pegadinhas", icone: <LuTrophy />, conteudo: (<div className="space-y-3"><AlertBox tipo="warning" titulo="Atenção!"><p className="text-sm">Revise os casos especiais e exceções mais cobrados em provas.</p></AlertBox></div>) },
-              ]} />
-            </section>
-            <ModuleConsolidation index={num} variant={getModuleVariant(num)} video={{ videoId: "T3Z7M-0eEG8", title: modTitulo, duration: "10:00" }} resumoVisual={{ moduloNome: modTitulo, tituloAula: "Gestão de Processos", materia: "Administração", images: [{ title: modTitulo, type: "Conceito", placeholderColor: "bg-blue-500/20" }] }} maceteVisual={{ title: modTitulo, content: (<div className="text-sm italic text-left"><p>Macete visual de {modTitulo.toLowerCase()}</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: modTitulo, artista: "Prof. Administração" }} />
-            <section id={`quiz-${mod}`} className="mt-16">
-              <QuizInterativo questoes={quiz} titulo={`Fixação - ${modTitulo}`} numero={num} variant={getModuleVariant(num)} icone={num === 10 ? "👑" : "🎯"} onComplete={(score) => handleModuleComplete(mod, score)} />
-            </section>
-          </div>
-        </TabsContent>
-      ))}
+      {/* ═══ MÓDULO 4: MAPEAMENTO AS-IS E TO-BE ═══ */}
+      <TabsContent value="modulo-4" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner 
+            numero={4} 
+            titulo="Mapeamento e Diagnóstico" 
+            descricao="Ouvir a operação, identificar gargalos e desenhar o futuro da eficiência." 
+            gradiente="bg-gradient-to-br from-rose-600 to-pink-800" 
+          />
+          
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader 
+              index={4} 
+              title="AS-IS e TO-BE: A Ponte para a Melhoria" 
+              description="Não se melhora o que não se entende. O mapeamento é a fotografia da realidade." 
+              variant={getModuleVariant(4)} 
+            />
+            
+            <ContentAccordion slides={[
+              { 
+                titulo: "Conceituação - O que é AS-IS e TO-BE?", 
+                icone: <LuBrain />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground leading-relaxed">
+                      Imagine que você quer otimizar a logística de suprimentos da Petrobras. Antes de comprar um novo software, você precisa saber como as coisas funcionam hoje.
+                    </p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="p-5 bg-rose-50 border border-rose-200 rounded-2xl">
+                        <p className="font-bold text-rose-800 flex items-center gap-2 mb-2">🔍 AS-IS (Como é)</p>
+                        <p className="text-xs text-rose-700">A visão nua e crua da realidade. Identifica gargalos, redundâncias e atividades que não agregam valor. É o diagnóstico.</p>
+                      </div>
+                      <div className="p-5 bg-emerald-50 border border-emerald-200 rounded-2xl">
+                        <p className="font-bold text-emerald-800 flex items-center gap-2 mb-2">🚀 TO-BE (Como será)</p>
+                        <p className="text-xs text-emerald-700">O desenho do processo otimizado. Aplica melhorias, automação e novos padrões. É o objetivo final.</p>
+                      </div>
+                    </div>
+
+                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                      <p className="text-xs font-bold text-slate-800 mb-2">Técnicas de Coleta de Dados:</p>
+                      <div className="grid grid-cols-2 gap-2">
+                        <div className="flex items-center gap-2 text-[10px] bg-white p-2 rounded border border-slate-100 italic">"Entrevistas individuais"</div>
+                        <div className="flex items-center gap-2 text-[10px] bg-white p-2 rounded border border-slate-100 italic">"Questionários (Surveys)"</div>
+                        <div className="flex items-center gap-2 text-[10px] bg-white p-2 rounded border border-slate-100 italic">"Observação Direta (Job Shadowing)"</div>
+                        <div className="flex items-center gap-2 text-[10px] bg-white p-2 rounded border border-slate-100 italic">"JAD (Joint Application Design)"</div>
+                      </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exemplificação - Mapeamento na Refinaria", 
+                icone: <LuBookOpen />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground">Caso real de otimização de manutenção preventiva:</p>
+                    
+                    <div className="border-l-4 border-rose-500 pl-4 py-2 space-y-4">
+                      <div>
+                        <p className="font-bold text-rose-900 text-sm">Cenário AS-IS:</p>
+                        <ul className="text-xs text-rose-700 list-disc ml-4 mt-1">
+                          <li>Solicitação via formulário de papel (demora 2 dias).</li>
+                          <li>Aprovação manual de 3 gerentes diferentes.</li>
+                          <li>Estoque não é verificado antes da ordem de serviço.</li>
+                        </ul>
+                      </div>
+                      
+                      <div className="flex justify-center py-2">
+                        <LuArrowDown className="text-2xl text-slate-400" />
+                      </div>
+
+                      <div>
+                        <p className="font-bold text-emerald-900 text-sm">Cenário TO-BE:</p>
+                        <ul className="text-xs text-emerald-700 list-disc ml-4 mt-1">
+                          <li>Abertura via App mobile (imediato).</li>
+                          <li>Aprovação automática baseada em níveis de risco.</li>
+                          <li>Reserva automática de peças no almoxarifado via IoT.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Dicas - Erros Fatais no Mapeamento", 
+                icone: <LuLightbulb />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground">Evite o que a CESGRANRIO gosta de cobrar:</p>
+                    <div className="bg-amber-900 p-6 rounded-2xl text-amber-100 border-2 border-amber-600 shadow-lg">
+                      <p className="font-bold mb-4 uppercase text-xs tracking-tighter">Checklist de Sobrevivência</p>
+                      <div className="space-y-3">
+                        <div className="flex gap-3">
+                          <LuCheck className="shrink-0 text-amber-400" />
+                          <p className="text-xs"><strong>Mapear o "Deveria Ser":</strong> No AS-IS, mapeie o erro, não o manual de procedimentos.</p>
+                        </div>
+                        <div className="flex gap-3">
+                          <LuCheck className="shrink-0 text-amber-400" />
+                          <p className="text-xs"><strong>Esquecer o Cliente:</strong> O processo deve agregar valor para quem recebe o output (interno ou externo).</p>
+                        </div>
+                        <div className="flex gap-3">
+                          <LuCheck className="shrink-0 text-amber-400" />
+                          <p className="text-xs"><strong>Documentação Viciada:</strong> Usar termos técnicos que só a TI entende ignora o negócio.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exceções - Quando NÃO mapear?", 
+                icone: <LuTrophy />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground text-sm">Existem situações onde o mapeamento detalhado é desperdício:</p>
+                    <ul className="space-y-3">
+                      <li className="p-3 bg-slate-100 rounded-lg flex items-center gap-3">
+                        <span className="text-xl">🏃</span>
+                        <p className="text-[10px] font-bold text-slate-700 uppercase">Processos em Crise Aguda:</p>
+                        <p className="text-[10px] text-slate-500 italic">"Se o prédio está pegando fogo, você não mapeia a saída, você sai."</p>
+                      </li>
+                      <li className="p-3 bg-slate-100 rounded-lg flex items-center gap-3">
+                        <span className="text-xl">🛠️</span>
+                        <p className="text-[10px] font-bold text-slate-700 uppercase">Ações Rápidas (Quick Wins):</p>
+                        <p className="text-[10px] text-slate-500 italic">"Se a solução é óbvia e barata, implemente direto."</p>
+                      </li>
+                    </ul>
+                    <AlertBox tipo="warning" titulo="Pegadinha de Prova">
+                      <p className="text-xs">A CESGRANRIO pode perguntar se o TO-BE deve ser feito ANTES do AS-IS. <strong>Nunca!</strong> Sem saber onde você está (AS-IS), você não traça a rota para onde quer ir.</p>
+                    </AlertBox>
+                  </div>
+                ) 
+              },
+            ]} />
+          </section>
+
+
+          
+          <section id="quiz-modulo-4" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation 
+            index={4} 
+            variant={getModuleVariant(4)} 
+            video={{ 
+              videoId: "T3Z7M-0eEG8", 
+              title: "Do Caos à Ordem: AS-IS e TO-BE", 
+              duration: "18:45" 
+            }} 
+            resumoVisual={{ 
+              moduloNome: "Diagnóstico", 
+              tituloAula: "Gestão de Processos", 
+              materia: "Administração", 
+              images: [
+                { title: "Dashboard de Lacunas", type: "Análise", placeholderColor: "bg-rose-500/20" }, 
+                { title: "Fluxo de Valor", type: "Design", placeholderColor: "bg-pink-500/20" }, 
+                { title: "Quick Wins", type: "Estratégia", placeholderColor: "bg-red-500/20" }
+              ] 
+            }} 
+            maceteVisual={{ 
+              title: "O Pulo do Gato", 
+              content: (
+                <div className="space-y-3 text-left">
+                  <p className="text-sm font-bold text-rose-800">Gap Analysis:</p>
+                  <p className="text-[10px] leading-snug italic text-rose-700">"GAP = (Onde queremos estar) - (Onde estamos hoje). A distância é o seu plano de projeto!"</p>
+                </div>
+              ) 
+            }} 
+            audio={{ 
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", 
+              titulo: "Minicast: Mapeamento Ágil", 
+              artista: "Consultor de Processos" 
+            }} 
+          />
+
+                      <QuizInterativo 
+              questoes={quizM4} 
+              titulo="Fixação - Mapeamento e Diagnóstico" 
+              numero={4} 
+              variant={getModuleVariant(4)} 
+              icone="🎯" 
+              onComplete={(score) => handleModuleComplete("modulo-4", score)} 
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 5: MELHORIA CONTÍNUA ═══ */}
+      <TabsContent value="modulo-5" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner 
+            numero={5} 
+            titulo="Melhoria Contínua e PDCA" 
+            descricao="A arte de nunca estar satisfeito com o 'bom o suficiente'. Evolução constante." 
+            gradiente="bg-gradient-to-br from-violet-600 to-purple-800" 
+          />
+          
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader 
+              index={5} 
+              title="Filosofias de Otimização" 
+              description="Do Ciclo de Deming ao rigor estatístico do Six Sigma." 
+              variant={getModuleVariant(5)} 
+            />
+            
+            <ContentAccordion slides={[
+              { 
+                titulo: "Conceituação - O Ciclo PDCA", 
+                icone: <LuBrain />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground leading-relaxed">
+                      O <strong>PDCA</strong> (Plan-Do-Check-Act) é a espinha dorsal de qualquer sistema de gestão moderna. Na Petrobras, ele é usado para garantir que as metas de segurança e produção sejam batidas sistematicamente.
+                    </p>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      <div className="p-4 bg-violet-100 border border-violet-200 rounded-xl text-center">
+                        <p className="font-black text-violet-800 text-xl">P</p>
+                        <p className="font-bold text-[10px] text-violet-700">PLAN</p>
+                        <p className="text-[8px] text-violet-600">Metas e Métodos</p>
+                      </div>
+                      <div className="p-4 bg-violet-100 border border-violet-200 rounded-xl text-center">
+                        <p className="font-black text-violet-800 text-xl">D</p>
+                        <p className="font-bold text-[10px] text-violet-700">DO</p>
+                        <p className="text-[8px] text-violet-600">Execução e Treino</p>
+                      </div>
+                      <div className="p-4 bg-violet-100 border border-violet-200 rounded-xl text-center">
+                        <p className="font-black text-violet-800 text-xl">C</p>
+                        <p className="font-bold text-[10px] text-violet-700">CHECK</p>
+                        <p className="text-[8px] text-violet-600">Verificação</p>
+                      </div>
+                      <div className="p-4 bg-violet-100 border border-violet-200 rounded-xl text-center">
+                        <p className="font-black text-violet-800 text-xl">A</p>
+                        <p className="font-bold text-[10px] text-violet-700">ACT</p>
+                        <p className="text-[8px] text-violet-600">Ação Corretiva</p>
+                      </div>
+                    </div>
+
+                    <AlertBox tipo="info" titulo="O 'A' é o mais importante!">
+                      <p className="text-xs">Muitas empresas param no 'C' (descobrem o erro mas não agem). A Melhoria Contínua só ocorre quando o ciclo recomeça a partir de uma nova base (Standard).</p>
+                    </AlertBox>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exemplificação - Lean e Six Sigma", 
+                icone: <LuBookOpen />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="bg-slate-900 text-white p-5 rounded-2xl border-l-8 border-orange-500">
+                        <p className="font-bold text-orange-400 mb-2 flex items-center gap-2">🚜 Lean (Manufatura Enxuta)</p>
+                        <p className="text-[10px] text-slate-300">Foco em <strong>Eliminar Desperdícios</strong> (Tempo, Estoque, Movimentação). "Fazer mais com menos".</p>
+                      </div>
+                      <div className="bg-slate-900 text-white p-5 rounded-2xl border-l-8 border-blue-500">
+                        <p className="font-bold text-blue-400 mb-2 flex items-center gap-2">📊 Six Sigma (6σ)</p>
+                        <p className="text-[10px] text-slate-300">Foco em <strong>Reduzir Variabilidade</strong> e defeitos. Usa o método DMAIC (Define, Measure, Analyze, Improve, Control).</p>
+                      </div>
+                    </div>
+                    
+                    <div className="p-4 bg-violet-50 rounded-xl border border-violet-200 italic text-[10px] text-violet-800 text-center">
+                      "Lean remove a gordura; Six Sigma remove a doença (erros)."
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Dicas - Os 7 Desperdícios do Lean", 
+                icone: <LuLightbulb />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground text-xs font-bold uppercase">Mnemônico: TIM WOODS</p>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                      {[
+                        { k: "T", v: "Transporte" },
+                        { k: "I", v: "Inventário" },
+                        { k: "M", v: "Movimentação" },
+                        { k: "W", v: "Espera (Waiting)" },
+                        { k: "O", v: "Superprocessamento" },
+                        { k: "O", v: "Superprodução" },
+                        { k: "D", v: "Defeitos" },
+                        { k: "S", v: "Skills (Talento)" },
+                      ].map((d, i) => (
+                        <div key={i} className="bg-white border border-slate-200 p-2 rounded-lg text-center">
+                          <p className="font-black text-rose-600">{d.k}</p>
+                          <p className="text-[8px] font-bold uppercase">{d.v}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exceções - Inovação vs Melhoria", 
+                icone: <LuTrophy />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground">Não confunda Melhoria Incremental com Inovação Disruptiva:</p>
+                    <table className="w-full text-xs">
+                      <thead>
+                        <tr className="bg-slate-100 text-slate-700">
+                          <th className="p-2 border border-slate-200 text-left">Característica</th>
+                          <th className="p-2 border border-slate-200 text-left underline">Kaizen (Incremental)</th>
+                          <th className="p-2 border border-slate-200 text-left italic">Kaikaku (Disruptivo)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="p-2 border border-slate-200 font-bold">Risco</td>
+                          <td className="p-2 border border-slate-200">Baixo</td>
+                          <td className="p-2 border border-slate-200">Alto</td>
+                        </tr>
+                        <tr>
+                          <td className="p-2 border border-slate-200 font-bold">Investimento</td>
+                          <td className="p-2 border border-slate-200">Baixo</td>
+                          <td className="p-2 border border-slate-200">Elevado</td>
+                        </tr>
+                        <tr>
+                          <td className="p-2 border border-slate-200 font-bold">Mudança</td>
+                          <td className="p-2 border border-slate-200">Constante/Lenta</td>
+                          <td className="p-2 border border-slate-200">Radical/Rápida</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                ) 
+              },
+            ]} />
+          </section>
+
+
+          
+          <section id="quiz-modulo-5" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation 
+            index={5} 
+            variant={getModuleVariant(5)} 
+            video={{ 
+              videoId: "pSg4e7jS_9I", 
+              title: "Lean Six Sigma na Indústria de Petróleo", 
+              duration: "15:20" 
+            }} 
+            resumoVisual={{ 
+              moduloNome: "Melhoria Contínua", 
+              tituloAula: "Gestão de Processos", 
+              materia: "Administração", 
+              images: [
+                { title: "Funil do PDCA", type: "Processo", placeholderColor: "bg-violet-500/20" }, 
+                { title: "Os 5 porquês", type: "Técnica", placeholderColor: "bg-purple-500/20" }, 
+                { title: "Cinto Negro (Black Belt)", type: "Hierarquia", placeholderColor: "bg-indigo-500/20" }
+              ] 
+            }} 
+            maceteVisual={{ 
+              title: "5S: A Base da Melhoria", 
+              content: (
+                <div className="grid grid-cols-5 gap-1 text-[8px] font-bold text-center">
+                  <div className="bg-slate-100 p-1 rounded">Seiri (Utilização)</div>
+                  <div className="bg-slate-100 p-1 rounded">Seiton (Ordenação)</div>
+                  <div className="bg-slate-100 p-1 rounded">Seiso (Limpeza)</div>
+                  <div className="bg-slate-100 p-1 rounded">Seiketsu (Saúde)</div>
+                  <div className="bg-slate-100 p-1 rounded">Shitsuke (Autodisciplina)</div>
+                </div>
+              ) 
+            }} 
+            audio={{ 
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", 
+              titulo: "Podcast: A Mentalidade Enxuta", 
+              artista: "Especialista em Qualidade" 
+            }} 
+          />
+
+                      <QuizInterativo 
+              questoes={quizM5} 
+              titulo="Desafio de Mestre - Melhoria Contínua" 
+              numero={5} 
+              variant={getModuleVariant(5)} 
+              icone="🚀" 
+              onComplete={(score) => handleModuleComplete("modulo-5", score)} 
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 6: INDICADORES DE PROCESSOS ═══ */}
+      <TabsContent value="modulo-6" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner 
+            numero={6} 
+            titulo="Indicadores e Métricas (KPIs)" 
+            descricao="O que não se mede, não se gerencia. A ciência de transformar dados em decisões." 
+            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800" 
+          />
+          
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader 
+              index={6} 
+              title="A Ciência da Medição" 
+              description="Eficiência, Eficácia e Efetividade: A trindade do desempenho." 
+              variant={getModuleVariant(6)} 
+            />
+            
+            <ContentAccordion slides={[
+              { 
+                titulo: "Conceituação - Eficiência vs Eficácia vs Efetividade", 
+                icone: <LuBrain />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground leading-relaxed">
+                      Esses três termos são os preferidos das bancas de concurso. Entender a diferença é garantir 2 ou 3 questões na prova.
+                    </p>
+                    
+                    <div className="space-y-4">
+                      <div className="p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl">
+                        <p className="font-bold text-amber-900 text-sm">⚙️ Eficiência (Meio)</p>
+                        <p className="text-xs text-amber-700">Fazer as coisas certo. Foco no uso dos recursos, custos e desperdícios. <span className="italic">"Economizar combustível durante a viagem."</span></p>
+                      </div>
+                      <div className="p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-xl">
+                        <p className="font-bold text-blue-900 text-sm">🎯 Eficácia (Fim)</p>
+                        <p className="text-xs text-blue-700">Fazer a coisa certa. Foco no resultado, na meta e no objetivo atingido. <span className="italic">"Chegar ao destino final."</span></p>
+                      </div>
+                      <div className="p-4 bg-emerald-50 border-l-4 border-emerald-500 rounded-r-xl">
+                        <p className="font-bold text-emerald-900 text-sm">💎 Efetividade (Impacto)</p>
+                        <p className="text-xs text-emerald-700">O impacto real. Foco na satisfação do cliente e na mudança social/organizacional. <span className="italic">"A viagem resolveu o problema do cliente?"</span></p>
+                      </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exemplificação - KPIs SMART", 
+                icone: <LuBookOpen />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground">Um indicador bem construído deve ser <strong>SMART</strong>:</p>
+                    
+                    <div className="grid grid-cols-1 gap-2">
+                      {[
+                        { l: "S", t: "Specific (Específico)", d: "O que exatamente queremos medir?" },
+                        { l: "M", t: "Measurable (Mensurável)", d: "Pode ser quantificado em números?" },
+                        { l: "A", t: "Achievable (Atingível)", d: "A meta é realista?" },
+                        { l: "R", t: "Relevant (Relevante)", d: "Faz sentido para a estratégia?" },
+                        { l: "T", t: "Time-bound (Prazo)", d: "Quando será medido?" },
+                      ].map((s, i) => (
+                        <div key={i} className="flex items-center gap-3 p-3 bg-white border border-slate-200 rounded-xl">
+                          <span className="w-8 h-8 flex items-center justify-center bg-amber-600 text-white font-black rounded-lg shrink-0">{s.l}</span>
+                          <div>
+                            <p className="font-bold text-xs text-slate-800">{s.t}</p>
+                            <p className="text-[10px] text-slate-500">{s.d}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Dicas - Dashboards e Gestão à Vista", 
+                icone: <LuLightbulb />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-6 bg-slate-900 text-white rounded-2xl space-y-4">
+                      <p className="font-bold text-amber-400 uppercase text-xs">O Painel de Controle</p>
+                      <p className="text-xs opacity-80">Assim como o cockpit de um avião, a Gestão à Vista permite que todos na Petrobras vejam o status do processo em tempo real através de luzes (Verde/Amarelo/Vermelho).</p>
+                      <div className="flex justify-around py-2">
+                        <div className="w-12 h-12 rounded-full bg-red-500 shadow-[0_0_15px_rgba(239,68,68,0.5)] animate-pulse" />
+                        <div className="w-12 h-12 rounded-full bg-yellow-500/30" />
+                        <div className="w-12 h-12 rounded-full bg-green-500/30" />
+                      </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exceções - Quando KPIs mentem", 
+                icone: <LuTrophy />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="warning" titulo="Efeito Cobra">
+                      <p className="text-xs leading-relaxed">
+                        Cuidado com metas que incentivam o comportamento errado. Exemplo: "Reduzir tempo de atendimento no suporte". O funcionário pode simplesmente desligar na cara do cliente para fechar o chamado rápido.
+                      </p>
+                    </AlertBox>
+                    <p className="text-xs italic text-slate-500">Sempre cruze indicadores (ex: Velocidade x Qualidade).</p>
+                  </div>
+                ) 
+              },
+            ]} />
+          </section>
+
+
+          
+          <section id="quiz-modulo-6" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation 
+            index={6} 
+            variant={getModuleVariant(6)} 
+            video={{ 
+              videoId: "T3Z7M-0eEG8", 
+              title: "Dominando KPIs de Processos", 
+              duration: "20:00" 
+            }} 
+            resumoVisual={{ 
+              moduloNome: "Indicadores", 
+              tituloAula: "Gestão de Processos", 
+              materia: "Administração", 
+              images: [
+                { title: "Painel de Controle", type: "Visual", placeholderColor: "bg-amber-500/20" }, 
+                { title: "Funil de Métricas", type: "Fluxo", placeholderColor: "bg-orange-500/20" }, 
+                { title: "Alinhamento SMART", type: "Filtro", placeholderColor: "bg-yellow-500/20" }
+              ] 
+            }} 
+            maceteVisual={{ 
+              title: "Mantra do Desempenho", 
+              content: (
+                <div className="space-y-2 text-left">
+                  <p className="text-[10px] font-bold">"EFICIÊNCIA é esforço. EFICÁCIA é alvo. EFETIVIDADE é legado."</p>
+                  <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-amber-500 w-3/4" />
+                  </div>
+                </div>
+              ) 
+            }} 
+            audio={{ 
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", 
+              titulo: "Masterclass: Métricas de Sucesso", 
+              artista: "Analista de Desempenho" 
+            }} 
+          />
+
+                      <QuizInterativo 
+              questoes={quizM6} 
+              titulo="Fixação - KPIs e Métricas" 
+              numero={6} 
+              variant={getModuleVariant(6)} 
+              icone="📈" 
+              onComplete={(score) => handleModuleComplete("modulo-6", score)} 
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 7: AUTOMAÇÃO E BPM ═══ */}
+      <TabsContent value="modulo-7" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner 
+            numero={7} 
+            titulo="Automação e Digitalização" 
+            descricao="BPMS e RPA: Deixando as máquinas fazerem a parte repetitiva para que os humanos possam pensar." 
+            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800" 
+          />
+          
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader 
+              index={7} 
+              title="A Era Digital nos Processos" 
+              description="Sistemas, robôs e orquestração de fluxos." 
+              variant={getModuleVariant(7)} 
+            />
+            
+            <ContentAccordion slides={[
+              { 
+                titulo: "Conceituação - BPMS vs RPA", 
+                icone: <LuBrain />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground">Nem toda automação é igual. Entenda onde cada uma brilha:</p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl">
+                        <p className="font-bold text-blue-800 text-xs mb-2">🤖 BPMS (Orquestrador)</p>
+                        <p className="text-[10px] text-blue-700">Faz a gestão do fluxo de ponta a ponta. Conecta pessoas e sistemas. É o "maestro".</p>
+                      </div>
+                      <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                        <p className="font-bold text-slate-800 text-xs mb-2">⚡ RPA (O Robô)</p>
+                        <p className="text-[10px] text-slate-700">Imita o clique do humano na tela. Ideal para sistemas legados que não têm API. É o "trabalhador braçal digital".</p>
+                      </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exemplificação - Workflow na Petrobras", 
+                icone: <LuBookOpen />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground text-sm font-bold">Automação de Requisição de Compras:</p>
+                    <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded bg-blue-600 text-white flex items-center justify-center text-[10px]">1</div>
+                        <p className="text-[10px]">Abertura de pedido via SAP.</p>
+                      </div>
+                      <div className="flex items-center gap-3 border-t border-slate-100 pt-3">
+                        <div className="w-6 h-6 rounded bg-blue-600 text-white flex items-center justify-center text-[10px]">2</div>
+                        <p className="text-[10px]">Motor de Regras (BRMS) verifica se está no orçamento.</p>
+                      </div>
+                      <div className="flex items-center gap-3 border-t border-slate-100 pt-3 text-emerald-600 font-bold">
+                        <div className="w-6 h-6 rounded bg-emerald-600 text-white flex items-center justify-center text-[10px]">3</div>
+                        <p className="text-[10px]">Aprovação automática se valor &lt; R$ 10.000,00.</p>
+                      </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Dicas - Low-code e Agilidade", 
+                icone: <LuLightbulb />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="success" titulo="Dica Premium">
+                      <p className="text-xs">
+                        O futuro não é programar código complexo, é desenhar processos em interfaces visuais. Na prova, lembre-se que o <strong>BPMS</strong> facilita a agilidade na mudança das regras de negócio.
+                      </p>
+                    </AlertBox>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exceções e Riscos", 
+                icone: <LuTrophy />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground">O erro clássico:</p>
+                    <div className="p-4 bg-rose-900 text-white rounded-xl text-center">
+                      <p className="font-black italic">"Automatizar um processo bagunçado apenas torna a bagunça mais rápida."</p>
+                    </div>
+                    <p className="text-xs text-slate-500 text-center uppercase font-bold tracking-widest mt-2 shrink-0">Simplifique antes de automatizar.</p>
+                  </div>
+                ) 
+              },
+            ]} />
+          </section>
+
+
+          
+          <section id="quiz-modulo-7" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation 
+            index={7} 
+            variant={getModuleVariant(7)} 
+            video={{ 
+              videoId: "T3Z7M-0eEG8", 
+              title: "A Revolução do BPMS", 
+              duration: "12:10" 
+            }} 
+            resumoVisual={{ 
+              moduloNome: "Automação", 
+              tituloAula: "Gestão de Processos", 
+              materia: "Administração", 
+              images: [
+                { title: "Arquitetura BPMS", type: "TI", placeholderColor: "bg-blue-500/20" }, 
+                { title: "Robôs de Processo", type: "Robótica", placeholderColor: "bg-slate-500/20" }, 
+                { title: "Dashboard de Execução", type: "Dados", placeholderColor: "bg-indigo-500/20" }
+              ] 
+            }} 
+            maceteVisual={{ 
+              title: "O Mantra Tech", 
+              content: (
+                <div className="space-y-2 text-left">
+                  <p className="text-sm italic">"Se é repetitivo, é robô. Se é decisão, é regra. Se é fluxo, é processo."</p>
+                </div>
+              ) 
+            }} 
+            audio={{ 
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", 
+              titulo: "Minicast: BPMS na Indústria 4.0", 
+              artista: "Especialista em Automação" 
+            }} 
+          />
+
+                      <QuizInterativo 
+              questoes={quizM7} 
+              titulo="Fixação - Automação e BPMS" 
+              numero={7} 
+              variant={getModuleVariant(7)} 
+              icone="⚙️" 
+              onComplete={(score) => handleModuleComplete("modulo-7", score)} 
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 8: GESTÃO DA QUALIDADE ═══ */}
+      <TabsContent value="modulo-8" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner 
+            numero={8} 
+            titulo="Qualidade e Maturidade" 
+            descricao="ISO 9001 e as ferramentas que garantem o padrão de excelência mundial." 
+            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800" 
+          />
+          
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader 
+              index={8} 
+              title="A Cultura da Qualidade" 
+              description="Do Ishikawa ao Pareto: Resolvendo problemas na raiz." 
+              variant={getModuleVariant(8)} 
+            />
+            
+            <ContentAccordion slides={[
+              { 
+                titulo: "Conceituação - As 7 Ferramentas da Qualidade", 
+                icone: <LuBrain />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground text-sm">Essenciais para qualquer analista de processos:</p>
+                    <div className="grid grid-cols-2 gap-2">
+                       <div className="bg-emerald-50 p-2 rounded border border-emerald-100 text-[10px] font-bold">1. Fluxograma</div>
+                       <div className="bg-emerald-50 p-2 rounded border border-emerald-100 text-[10px] font-bold">2. Diagrama de Ishikawa (Espinha de Peixe)</div>
+                       <div className="bg-emerald-50 p-2 rounded border border-emerald-100 text-[10px] font-bold">3. Folha de Verificação</div>
+                       <div className="bg-emerald-50 p-2 rounded border border-emerald-100 text-[10px] font-bold">4. Gráfico de Pareto (80/20)</div>
+                       <div className="bg-emerald-50 p-2 rounded border border-emerald-100 text-[10px] font-bold">5. Histograma</div>
+                       <div className="bg-emerald-50 p-2 rounded border border-emerald-100 text-[10px] font-bold">6. Gráfico de Dispersão</div>
+                       <div className="bg-emerald-50 p-2 rounded border border-emerald-100 text-[10px] font-bold">7. Carta de Controle</div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exemplificação - Diagrama de Ishikawa", 
+                icone: <LuBookOpen />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground text-xs font-bold uppercase">Causa e Efeito (Os 6Ms):</p>
+                    <div className="bg-slate-900 p-6 rounded-2xl text-white">
+                       <div className="flex flex-wrap gap-2 text-[10px]">
+                          <span className="px-2 py-1 bg-emerald-600 rounded">Método</span>
+                          <span className="px-2 py-1 bg-emerald-600 rounded">Mão de obra</span>
+                          <span className="px-2 py-1 bg-emerald-600 rounded">Máquina</span>
+                          <span className="px-2 py-1 bg-emerald-600 rounded">Meio Ambiente</span>
+                          <span className="px-2 py-1 bg-emerald-600 rounded">Material</span>
+                          <span className="px-2 py-1 bg-emerald-600 rounded">Medida</span>
+                       </div>
+                       <div className="mt-4 border-t border-slate-700 pt-4 flex items-center justify-between">
+                          <p className="text-[10px] italic">"O problema é a cabeça do peixe, as causas são as espinhas."</p>
+                       </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Dicas - ISO 9001 e Processos", 
+                icone: <LuLightbulb />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="info" titulo="O que a Prova quer de você?">
+                       <p className="text-xs">
+                          Saiba que a ISO 9001:2015 exige a <strong>Abordagem por Processos</strong> e a <strong>Mentalidade de Risco</strong>. Não é mais só documentar, é garantir que o processo gera valor com risco controlado.
+                       </p>
+                    </AlertBox>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exceções - Qualidade vs Burocracia", 
+                icone: <LuTrophy />, 
+                conteudo: (
+                  <div className="space-y-3">
+                    <p className="text-[10px] text-muted-foreground leading-relaxed italic">
+                      "Muita norma sem propósito vira burocracia. Pouca norma com propósito vira qualidade."
+                    </p>
+                  </div>
+                ) 
+              },
+            ]} />
+          </section>
+
+
+          
+          <section id="quiz-modulo-8" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation 
+            index={8} 
+            variant={getModuleVariant(8)} 
+            video={{ 
+              videoId: "T3Z7M-0eEG8", 
+              title: "ISO 9001 na Prática Operacional", 
+              duration: "25:00" 
+            }} 
+            resumoVisual={{ 
+              moduloNome: "Qualidade", 
+              tituloAula: "Gestão de Processos", 
+              materia: "Administração", 
+              images: [
+                { title: "As 7 Ferramentas", type: "Infográfico", placeholderColor: "bg-emerald-500/20" }, 
+                { title: "Níveis CMMI", type: "Escala", placeholderColor: "bg-green-500/20" }, 
+                { title: "Ciclo PDCA da Qualidade", type: "Loop", placeholderColor: "bg-teal-500/20" }
+              ] 
+            }} 
+            maceteVisual={{ 
+              title: "80/20 de Pareto", 
+              content: (
+                <div className="space-y-2 text-left">
+                  <p className="text-[10px] font-bold">"20% das causas resolvem 80% dos problemas."</p>
+                  <div className="flex gap-1 h-4">
+                    <div className="bg-emerald-500 w-[20%]" />
+                    <div className="bg-slate-200 w-[80%]" />
+                  </div>
+                </div>
+              ) 
+            }} 
+            audio={{ 
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", 
+              titulo: "Workshop: Ishikawa em Operações", 
+              artista: "Consultor Lean" 
+            }} 
+          />
+
+                      <QuizInterativo 
+              questoes={quizM8} 
+              titulo="Fixação - Gestão da Qualidade" 
+              numero={8} 
+              variant={getModuleVariant(8)} 
+              icone="🏆" 
+              onComplete={(score) => handleModuleComplete("modulo-8", score)} 
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 9: APLICAÇÕES NA PETROBRAS ═══ */}
+      <TabsContent value="modulo-9" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner 
+            numero={9} 
+            titulo="Processos no O&G (Petrobras)" 
+            descricao="Como a maior empresa do Brasil gerencia fluxos complexos de exploração até o posto de combustível." 
+            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800" 
+          />
+          
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader 
+              index={9} 
+              title="A Cadeia de Valor Integrada" 
+              description="Upstream, Midstream e Downstream." 
+              variant={getModuleVariant(9)} 
+            />
+            
+            <ContentAccordion slides={[
+              { 
+                titulo: "Conceituação - Upstream, Midstream e Downstream", 
+                icone: <LuBrain />, 
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground text-sm">O petróleo percorre um longo caminho de processos:</p>
+                    <div className="flex flex-col gap-4">
+                       <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl relative overflow-hidden">
+                          <p className="font-bold text-rose-800 text-xs">💦 Upstream (Exploração e Produção)</p>
+                          <p className="text-[10px] text-rose-700">Achar o óleo e tirar do mar. Processos de altíssimo risco e custo.</p>
+                       </div>
+                       <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl">
+                          <p className="font-bold text-amber-800 text-xs">🚢 Midstream (Transporte e Logística)</p>
+                          <p className="text-[10px] text-amber-700">Dutos, navios e estocagem. O elo de ligação.</p>
+                       </div>
+                       <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
+                          <p className="font-bold text-emerald-800 text-xs">⛽ Downstream (Refino e Distribuição)</p>
+                          <p className="text-[10px] text-emerald-700">Transformação em gasolina, diesel e plásticos. Venda ao consumidor.</p>
+                       </div>
+                    </div>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Exemplificação - HMS e Segurança", 
+                icone: <LuBookOpen />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground text-xs leading-relaxed">
+                       Na Petrobras, o processo de <strong>Segurança, Meio Ambiente e Saúde (SMS)</strong> é transversal. Ele interrompe qualquer outro processo se houver risco iminente de acidente. É a cultura da "Interrupção de Segurança".
+                    </p>
+                  </div>
+                ) 
+              },
+              { 
+                titulo: "Dicas - Auditoria de Processos", 
+                icone: <LuLightbulb />, 
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-5 bg-slate-900 text-white rounded-2xl border-b-4 border-rose-500">
+                       <p className="text-xs font-bold text-rose-400 mb-2 uppercase">Fique de Olho!</p>
+                       <p className="text-xs">
+                          Auditorias na Petrobras buscam conformidade com os processos internos (Manuais da Qualidade). Qualquer desvio deve ser relatado como "NÃO CONFORMIDADE".
+                       </p>
+                    </div>
+                  </div>
+                ) 
+              },
+            ]} />
+          </section>
+
+
+          
+          <section id="quiz-modulo-9" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation 
+            index={9} 
+            variant={getModuleVariant(9)} 
+            video={{ 
+              videoId: "T3Z7M-0eEG8", 
+              title: "Explorando a Cadeia de Valor Petrobras", 
+              duration: "30:00" 
+            }} 
+            resumoVisual={{ 
+              moduloNome: "Cadeia de Valor", 
+              tituloAula: "Gestão de Processos", 
+              materia: "Administração", 
+              images: [
+                { title: "Mapa de Exploração", type: "Geoprocesso", placeholderColor: "bg-rose-500/20" }, 
+                { title: "Logística de Dutos", type: "Infra", placeholderColor: "bg-red-500/20" }, 
+                { title: "Padrão de Refino", type: "Química", placeholderColor: "bg-rose-600/20" }
+              ] 
+            }} 
+            maceteVisual={{ 
+              title: "Cadeia Petrobras", 
+              content: (
+                <div className="flex justify-between items-center text-[8px] font-bold uppercase text-slate-500">
+                  <p>Mar (E&P)</p>
+                  <LuArrowDown className="-rotate-90" />
+                  <p>Navio (Mid)</p>
+                  <LuArrowDown className="-rotate-90" />
+                  <p>Posto (Down)</p>
+                </div>
+              ) 
+            }} 
+            audio={{ 
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", 
+              titulo: "Palestra: Governança e Processos", 
+              artista: "Diretor Petrobras" 
+            }} 
+          />
+
+                      <QuizInterativo 
+              questoes={quizM9} 
+              titulo="Fixação - Cenário Petrobras" 
+              numero={9} 
+              variant={getModuleVariant(9)} 
+              icone="🏭" 
+              onComplete={(score) => handleModuleComplete("modulo-9", score)} 
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 10: Simulado Mestre ═══ */}
+      <TabsContent value="modulo-10" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner 
+            numero={10} 
+            titulo="Simulado Mestre e Consolidação" 
+            descricao="Todas as competências testadas em um único simulado de alto nível. A hora da verdade!" 
+            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800" 
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader 
+              index={10} 
+              title="O Checklist de Ouro" 
+              description="O que você NÃO pode esquecer para a prova da CESGRANRIO." 
+              variant={getModuleVariant(10)} 
+            />
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Card 1: Conceitos Chave */}
+              <div className="p-6 bg-violet-50 border border-violet-100 rounded-3xl space-y-4">
+                <div className="w-10 h-10 bg-violet-600 rounded-xl flex items-center justify-center text-white">
+                  <LuCheck />
+                </div>
+                <h4 className="font-bold text-violet-900">Conceitos Fatais</h4>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-[10px] text-violet-800">
+                    <span className="font-bold">•</span>
+                    Processo vs Projeto (Repetitivo vs Único/Temporário)
+                  </li>
+                  <li className="flex items-start gap-2 text-[10px] text-violet-800">
+                    <span className="font-bold">•</span>
+                    Dono do Processo (Responsável pelo resultado final)
+                  </li>
+                  <li className="flex items-start gap-2 text-[10px] text-violet-800">
+                    <span className="font-bold">•</span>
+                    Valor Agregado (A visão do cliente interno/externo)
+                  </li>
+                </ul>
+              </div>
+
+              {/* Card 2: Ferramentas */}
+              <div className="p-6 bg-indigo-50 border border-indigo-100 rounded-3xl space-y-4">
+                <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white">
+                  <LuSettings />
+                </div>
+                <h4 className="font-bold text-indigo-900">Ferramentas Pro</h4>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-[10px] text-indigo-800">
+                    <span className="font-bold">•</span>
+                    Ishikawa (Causa e Efeito: 6 Ms)
+                  </li>
+                  <li className="flex items-start gap-2 text-[10px] text-indigo-800">
+                    <span className="font-bold">•</span>
+                    Pareto (80/20: Priorização de problemas)
+                  </li>
+                  <li className="flex items-start gap-2 text-[10px] text-indigo-800">
+                    <span className="font-bold">•</span>
+                    BPMN (Símbolos: Piscina, Raias, Eventos)
+                  </li>
+                </ul>
+              </div>
+
+              {/* Card 3: Metodologias */}
+              <div className="p-6 bg-blue-50 border border-blue-100 rounded-3xl space-y-4">
+                <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white">
+                  <LuTrendingUp />
+                </div>
+                <h4 className="font-bold text-blue-900">Estratégias de Melhoria</h4>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-[10px] text-blue-800">
+                    <span className="font-bold">•</span>
+                    PDCA (Ciclo de Deming: Nunca acaba!)
+                  </li>
+                  <li className="flex items-start gap-2 text-[10px] text-blue-800">
+                    <span className="font-bold">•</span>
+                    Lean (Redução de desperdícios: Muda)
+                  </li>
+                  <li className="flex items-start gap-2 text-[10px] text-blue-800">
+                    <span className="font-bold">•</span>
+                    Six Sigma (Redução de variabilidade: DMAIC)
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <AlertBox tipo="success" titulo="Aprovação Petrobras">
+              <p className="text-xs">
+                A CESGRANRIO costuma cobrar a integração desses conceitos. Saiba que a <strong>Gestão de Processos</strong> não é uma ilha; ela serve ao <strong>Planejamento Estratégico</strong> da companhia por meio de indicadores (KPIs).
+              </p>
+            </AlertBox>
+          </section>
+
+          <section id="quiz-modulo-10" className="mt-16">
+            <QuizInterativo 
+              questoes={quizM10} 
+              titulo="GRANDE SIMULADO - GESTÃO DE PROCESSOS" 
+              numero={10} 
+              variant={getModuleVariant(10)} 
+              icone="👑" 
+              onComplete={(score) => handleModuleComplete("modulo-10", score)} 
+            />
+          </section>
+
+          <footer className="pt-10 border-t border-slate-200 opacity-50 text-center pb-20">
+            <p className="text-xs text-slate-400 italic">© 2026 Petrobras Quest AI - Conteúdo Premium Estilo CESGRANRIO</p>
+          </footer>
+        </div>
+      </TabsContent>
     </AulaTemplate>
   );
 }

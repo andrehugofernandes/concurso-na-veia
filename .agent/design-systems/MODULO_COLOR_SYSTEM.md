@@ -353,7 +353,7 @@ export function ModuleSectionHeader({ index, title, variant }: ModuleSectionHead
         {index}
       </span>
       <h3 className="text-2xl font-bold text-foreground">{title}</h3>
-    </div>
+    </div
   );
 }
 ```

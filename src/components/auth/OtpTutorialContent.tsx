@@ -45,7 +45,7 @@ export function OtpTutorialContent({ mode }: OtpTutorialContentProps) {
             icon: "🔍",
             title: "Encontre sua Conta",
             description:
-              'Procure por "A Vaga é Minha" ou "Petrobras Quest" na lista de contas do app.',
+              'Procure por "A Vaga EH Minha" na lista de contas do app.',
           },
           {
             number: "03",

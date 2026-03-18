@@ -62,6 +62,18 @@ export const CARGOS: Cargo[] = [
         ]
     },
     {
+        id: 'enfermagem-trabalho',
+        nome: 'Técnico de Enfermagem do Trabalho',
+        nivel: 'medio',
+        materiasBasicas: MATERIAS_BASICAS_MEDIO,
+        materiasEspecificas: [
+            { id: 'anatomia', nome: 'Anatomia', peso: 2 },
+            { id: 'enfermagem-clinica', nome: 'Enfermagem Clínica', peso: 2 },
+            { id: 'biosseguranca', nome: 'Biossegurança', peso: 2 },
+            { id: 'nrs', nome: 'Normas Regulamentadoras', peso: 2 },
+        ]
+    },
+    {
         id: 'seguranca',
         nome: 'Segurança do Trabalho',
         nivel: 'medio',

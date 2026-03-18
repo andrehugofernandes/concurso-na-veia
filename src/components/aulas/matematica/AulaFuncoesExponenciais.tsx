@@ -352,7 +352,18 @@ export default function AulaFuncoesExponenciais({
             points={250}
           />
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-1" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={1}
             variant="indigo"
             video={{
@@ -389,8 +400,7 @@ export default function AulaFuncoesExponenciais({
             }}
           />
 
-          <section id="quiz-modulo-1" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM1}
               titulo="Fixação - Potenciação"
               numero={1}
@@ -536,7 +546,18 @@ export default function AulaFuncoesExponenciais({
             points={250}
           />
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-2" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={2}
             variant="emerald"
             video={{
@@ -573,8 +594,7 @@ export default function AulaFuncoesExponenciais({
             }}
           />
 
-          <section id="quiz-modulo-2" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM2}
               titulo="Fixação - Gráficos"
               numero={2}
@@ -811,7 +831,18 @@ export default function AulaFuncoesExponenciais({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-4" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={4}
             variant="blue"
             video={{
@@ -849,8 +880,7 @@ export default function AulaFuncoesExponenciais({
             }}
           />
 
-          <section id="quiz-modulo-4" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM4}
               titulo="Fixação - Aplicações"
               numero={4}
@@ -975,7 +1005,18 @@ export default function AulaFuncoesExponenciais({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-5" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="amber"
             video={{
@@ -1013,8 +1054,7 @@ export default function AulaFuncoesExponenciais({
             }}
           />
 
-          <section id="quiz-modulo-5" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM5}
               titulo="Desafio Parcial - Exponenciais"
               numero={5}
@@ -1134,7 +1174,18 @@ export default function AulaFuncoesExponenciais({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-6" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={6}
             variant="rose"
             video={{
@@ -1171,8 +1222,7 @@ export default function AulaFuncoesExponenciais({
             }}
           />
 
-          <section id="quiz-modulo-6" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM6}
               titulo="Fixação - Módulo 6"
               numero={6}
@@ -1336,7 +1386,18 @@ export default function AulaFuncoesExponenciais({
             points={250}
           />
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-7" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={7}
             variant="indigo"
             video={{
@@ -1375,8 +1436,7 @@ export default function AulaFuncoesExponenciais({
             }}
           />
 
-          <section id="quiz-modulo-7" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM7}
               titulo="Fixação - Módulo 7"
               numero={7}
@@ -1494,7 +1554,18 @@ export default function AulaFuncoesExponenciais({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-8" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={8}
             variant="emerald"
             video={{
@@ -1533,8 +1604,7 @@ export default function AulaFuncoesExponenciais({
             }}
           />
 
-          <section id="quiz-modulo-8" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM8}
               titulo="Fixação - Módulo 8"
               numero={8}
@@ -1666,7 +1736,18 @@ export default function AulaFuncoesExponenciais({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          <section id="quiz-modulo-9" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={9}
             variant="amber"
             video={{
@@ -1705,8 +1786,7 @@ export default function AulaFuncoesExponenciais({
             }}
           />
 
-          <section id="quiz-modulo-9" className="mt-16">
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM9}
               titulo="Fixação - Módulo 9"
               numero={9}
@@ -1850,7 +1930,29 @@ export default function AulaFuncoesExponenciais({
             />
           </section>
 
-          <ModuleConsolidation
+
+
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-black">Mestre das Exponenciais!</h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                Você dominou completamente as Funções Exponenciais. Crescimento, decaimento, transformações e aplicações práticas — tudo sob controle!
+              </p>
+            </div>
+          ) : (
+            <section id="quiz-modulo-10" className="mt-16">
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={10}
             variant="slate"
             video={{
@@ -1887,19 +1989,7 @@ export default function AulaFuncoesExponenciais({
             }}
           />
 
-          {showCompletionBadge ? (
-            <div className="flex flex-col items-center gap-6 py-10 mt-10">
-              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
-                <LuTrophy className="w-12 h-12 text-emerald-500" />
-              </div>
-              <h3 className="text-2xl font-black">Mestre das Exponenciais!</h3>
-              <p className="text-center text-muted-foreground max-w-sm">
-                Você dominou completamente as Funções Exponenciais. Crescimento, decaimento, transformações e aplicações práticas — tudo sob controle!
-              </p>
-            </div>
-          ) : (
-            <section id="quiz-modulo-10" className="mt-16">
-              <QuizInterativo
+                        <QuizInterativo
                 questoes={quizM10}
                 titulo="Simulado Mestre - Exponenciais"
                 icone="🏆"

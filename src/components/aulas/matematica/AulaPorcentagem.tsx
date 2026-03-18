@@ -398,7 +398,18 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-1">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={1}
             variant="indigo"
             video={{
@@ -434,8 +445,7 @@ export default function AulaPorcentagem({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM1}
               titulo="Fixação — Fundamentos"
               numero={1}
@@ -645,7 +655,18 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-2">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={2}
             variant="emerald"
             video={{
@@ -681,8 +702,7 @@ export default function AulaPorcentagem({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM2}
               titulo="Fixação — Fatores Multiplicadores"
               numero={2}
@@ -851,7 +871,18 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-3">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={3}
             variant="cyan"
             video={{
@@ -887,8 +918,7 @@ export default function AulaPorcentagem({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM3}
               titulo="Fixação — Variação Percentual"
               numero={3}
@@ -1053,7 +1083,18 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-4">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={4}
             variant="blue"
             video={{
@@ -1089,8 +1130,7 @@ export default function AulaPorcentagem({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM4}
               titulo="Fixação — Aplicações Industriais"
               numero={4}
@@ -1173,7 +1213,18 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-5">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={5}
             variant="amber"
             video={{
@@ -1209,8 +1260,7 @@ export default function AulaPorcentagem({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM5}
               titulo="Simulado — Nível 1"
               numero={5}
@@ -1462,7 +1512,18 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-6">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={6}
             variant="rose"
             video={{
@@ -1498,8 +1559,7 @@ export default function AulaPorcentagem({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM6}
               titulo="Fixação — % Composta"
               numero={6}
@@ -1729,7 +1789,18 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-7">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={7}
             variant="indigo"
             video={{
@@ -1765,8 +1836,7 @@ export default function AulaPorcentagem({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM7}
               titulo="Fixação — Cálculo Reverso"
               numero={7}
@@ -1918,7 +1988,18 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-8">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={8}
             variant="emerald"
             video={{
@@ -1954,8 +2035,7 @@ export default function AulaPorcentagem({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM8}
               titulo="Fixação — Regra de Três %"
               numero={8}
@@ -2175,7 +2255,18 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-9">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={9}
             variant="cyan"
             video={{
@@ -2211,8 +2302,7 @@ export default function AulaPorcentagem({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM9}
               titulo="Fixação — Financeiro"
               numero={9}
@@ -2308,7 +2398,18 @@ export default function AulaPorcentagem({
           </section>
 
           <section id="quiz-modulo-10">
-          <ModuleConsolidation
+
+
+
+          
+
+
+
+
+
+
+
+<ModuleConsolidation
             index={10}
             variant="blue"
             video={{
@@ -2344,8 +2445,7 @@ export default function AulaPorcentagem({
             }}
           />
 
-
-            <QuizInterativo
+                      <QuizInterativo
               questoes={quizM10}
               titulo="Simulado Elite — Porcentagem"
               icone="🏆"
