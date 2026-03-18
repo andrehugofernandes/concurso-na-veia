@@ -1,7 +1,7 @@
 'use server';
 
 import { z } from 'zod';
-import { createClient } from '@/lib/supabase/server';
+import { createClient, createAdminClient } from '@/lib/supabase/server';
 import { 
   ActionResponse, 
   createSuccessResponse, 
@@ -62,17 +62,16 @@ export async function loginAction(
     // Se o usuário tem intenção de MFA (pelo perfil) mas resetamos os fatores, forçamos setup.
     const mfaEnabledInProfile = session.user.user_metadata?.mfa_enabled === true;
 
+    // Log de Time Drift para diagnóstico
+    console.log(`[AUTH_DEBUG] Login processado para ${username}. MFA Profile: ${mfaEnabledInProfile}. Total Fatores: ${factors?.totp?.length}`);
+
     if (mfaEnabledInProfile && !hasVerifiedFactor) {
       return createSuccessResponse({ mfaSetupRequired: true });
     }
 
     return createSuccessResponse({ mfaRequired: !!hasVerifiedFactor });
   } catch (error: any) {
-    console.error('[loginAction] Erro inesperado:', {
-      error,
-      message: error.message,
-      stack: error.stack
-    });
+    console.error(`[AUTH_DEBUG] [TIME: ${new Date().toISOString()}] Erro inesperado no login:`, error.message);
     if (error instanceof z.ZodError) {
       return createErrorResponse(error.issues[0].message);
     }
@@ -197,36 +196,50 @@ export async function getCurrentUserAction(): Promise<ActionResponse<any>> {
  * Verifica código MFA. Pode ser usado para login ou para ativar um novo fator.
  */
 export async function verify2FAAction(code: string, factorId?: string): Promise<ActionResponse<any>> {
+  const serverTime = new Date();
+  console.log(`[AUTH_DEBUG] [TIMESTAMP: ${serverTime.getTime()}] Verificando código OTP: ${code}`);
   try {
     if (!code) return createErrorResponse('Código é obrigatório');
     
     const supabase = await createClient();
     
+    // Obter usuário para logar ID
+    const { data: { user } } = await supabase.auth.getUser();
+    console.log(`[AUTH_DEBUG] Usuário executando challenge OTP: ${user?.id || 'Desconhecido'}`);
+
     let targetFactorId = factorId;
 
     if (!targetFactorId) {
       const { data: factors, error: factorsError } = await supabase.auth.mfa.listFactors();
-      if (factorsError) return createErrorResponse('Erro ao recuperar fatores MFA');
+      if (factorsError) {
+          console.log(`[AUTH_DEBUG] Erro listar fatores: ${factorsError.message}`);
+          return createErrorResponse('Erro ao recuperar fatores MFA');
+      }
       
       const totpFactor = factors.totp.find(f => f.status === 'verified');
-      if (!totpFactor) return createErrorResponse('Nenhum fator MFA verificado');
+      if (!totpFactor) {
+          console.log('[AUTH_DEBUG] Nenhum fator verificado encontrado');
+          return createErrorResponse('Nenhum fator MFA verificado');
+      }
       targetFactorId = totpFactor.id;
     }
+
+    console.log(`[AUTH_DEBUG] Desafiando fator: ${targetFactorId}`);
 
     const { data, error: verifyError } = await supabase.auth.mfa.challengeAndVerify({
       factorId: targetFactorId,
       code
     });
 
-    if (verifyError) return createErrorResponse('Código inválido ou expirado');
+    if (verifyError) {
+        console.log(`[AUTH_DEBUG] DESSINCRONIZAÇÃO DE OTP OU CÓDIGO INVÁLIDO. Detalhes: ${verifyError.message}`);
+        return createErrorResponse('Código inválido ou expirado. Verifique a hora do seu celular.');
+    }
 
-    return createSuccessResponse(data);
+    console.log('[AUTH_DEBUG] OTP verificado com sucesso');
+    return createSuccessResponse({ success: true, verifiedAt: new Date().toISOString() });
   } catch (error: any) {
-    console.error('[verify2FAAction] Erro inesperado:', {
-      error,
-      message: error.message,
-      stack: error.stack
-    });
+    console.log(`[AUTH_DEBUG] Erro inesperado em verify2FAAction: ${error.message}`);
     return createErrorResponse(error.message || 'Erro na verificação MFA');
   }
 }
@@ -250,12 +263,20 @@ export async function enrollMFAAction(friendlyName?: string): Promise<ActionResp
 
     const { data, error } = await supabase.auth.mfa.enroll({
       factorType: 'totp',
-      friendlyName: friendlyName || `Petrobras Quest (${new Date().toLocaleTimeString()})`,
+      friendlyName: friendlyName || 'AVAGAEHMINHA',
     });
 
     if (error) return createErrorResponse(error.message);
 
-    return createSuccessResponse(data as any);
+    // Retorna explicitamente um Plain Object para a Server Action
+    return createSuccessResponse({
+      id: data.id,
+      totp: {
+        secret: data.totp.secret,
+        uri: data.totp.uri,
+        qr_code: data.totp.qr_code
+      }
+    });
   } catch (error: any) {
     return createErrorResponse(error.message || 'Erro ao iniciar enrollment MFA');
   }
@@ -287,55 +308,61 @@ export async function unenrollMFAAction(factorId: string): Promise<ActionRespons
  * Remove todos os fatores TOTP e atualiza metadata.
  */
 export async function reset2FAAction(): Promise<ActionResponse<boolean>> {
+  console.log(`[AUTH_DEBUG] Iniciando RESET de 2FA via ADMIN...`);
   try {
     const supabase = await createClient();
+    const adminSupabase = await createAdminClient();
     
-    // 1. Obter usuário (deve estar logado com senha pelo menos)
+    // 1. Obter usuário (precisa estar logado pelo menos com senha - AAL1)
     const { data: { user }, error: userError } = await supabase.auth.getUser();
     if (userError || !user) {
-      console.error('[reset2FAAction] Usuário não encontrado:', userError);
-      return createErrorResponse('Usuário não autenticado');
+      console.log(`[AUTH_DEBUG] Usuário não encontrado para reset: ${userError?.message}`);
+      return createErrorResponse('Sessão inválida. Faça login novamente.');
     }
 
-    // 2. Listar e remover todos os fatores
-    const { data: factors, error: factorsError } = await supabase.auth.mfa.listFactors();
-    if (factorsError) {
-      console.error('[reset2FAAction] Erro ao listar fatores:', factorsError);
-      return createErrorResponse('Erro ao listar fatores MFA');
-    }
+    console.log(`[AUTH_DEBUG] Resetando MFA para usuário: ${user.id} (${user.email})`);
 
-    const allFactors = [...factors.totp, ...factors.phone];
-    for (const factor of allFactors) {
-      const { error: unenrollError } = await supabase.auth.mfa.unenroll({ factorId: factor.id });
-      if (unenrollError) {
-        console.warn(`[reset2FAAction] Não foi possível remover fator ${factor.id}:`, unenrollError);
-        // Continuamos tentando remover os outros
-      }
-    }
-
-    // 3. Atualizar metadata no Auth
-    const { error: updateAuthError } = await supabase.auth.updateUser({
-      data: { mfa_enabled: false }
+    // 2. Listar fatores via Admin API
+    const { data: adminFactors, error: factorsError } = await adminSupabase.auth.admin.mfa.listFactors({
+        userId: user.id
     });
 
-    if (updateAuthError) {
-      console.error('[reset2FAAction] Erve ao atualizar metadata auth:', updateAuthError);
+    if (factorsError) {
+      console.log(`[AUTH_DEBUG] Erro Admin listFactors: ${factorsError.message}`);
+      return createErrorResponse('Erro ao acessar base de autenticação (Admin)');
     }
 
-    // 4. Atualizar perfil na tabela profiles (se existir a coluna)
-    const { error: profileError } = await supabase
-      .from('profiles')
-      .update({ mfa_enabled: false })
-      .eq('id', user.id);
+    console.log(`[AUTH_DEBUG] Fatores encontrados: ${adminFactors?.factors?.length || 0}`);
 
-    if (profileError) {
-      console.warn('[reset2FAAction] Erro ao atualizar profile:', profileError);
+    // 3. Remover fatores encontrados
+    if (adminFactors?.factors) {
+        for (const factor of adminFactors.factors) {
+            console.log(`[AUTH_DEBUG] Deletando fator ADMIN: ${factor.id} (${factor.friendly_name})`);
+            const { error: delError } = await adminSupabase.auth.admin.mfa.deleteFactor({
+                id: factor.id,
+                userId: user.id
+            });
+            if (delError) {
+              console.log(`[AUTH_DEBUG] Falha ao deletar fator ${factor.id}: ${delError.message}`);
+            }
+        }
     }
 
-    console.log(`[reset2FAAction] MFA resetado com sucesso para usuário: ${user.id}`);
+    // 4. Garantir que o Setup seja exigido no próximo login
+    console.log('[AUTH_DEBUG] Mantendo intenção de MFA na conta para forçar novo Setup...');
+    await adminSupabase.auth.admin.updateUserById(user.id, {
+        user_metadata: { mfa_enabled: true }
+    });
+
+    await adminSupabase.from('profiles').update({ mfa_enabled: true }).eq('id', user.id);
+
+    console.log(`[AUTH_DEBUG] 2FA Resetado com Sucesso!`);
+    
+    // IMPORTANTE: Retornando um booleano simples dentro da resposta
     return createSuccessResponse(true);
   } catch (error: any) {
-    console.error('[reset2FAAction] Erro crítico:', error);
+    console.log(`[AUTH_DEBUG] Falha Crítica no Reset: ${error.message}`);
     return createErrorResponse(error.message || 'Erro ao resetar MFA');
   }
 }
+

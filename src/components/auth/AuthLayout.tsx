@@ -60,12 +60,12 @@ export default function AuthLayout({
 
           {/* Logo Text Group */}
           <div className="flex flex-col justify-center leading-none">
-            <h1 className="font-bebas font-bold text-2xl md:text-5xl tracking-normal leading-[0.9] flex 
+            <h1 className="font-bebas font-bold text-2xl md:text-4xl tracking-normal leading-[0.9] flex 
             flex-wrap items-baseline gap-1 md:gap-2">
               <span style={{ color: "var(--primary-hex)" }}>A VAGA</span>
               <span className="text-foreground">EH MINHA</span>
             </h1>
-            <span className="font-sans text-[7px] md:text-[13px] font-bold uppercase tracking-[0.2em] text-foreground/40 md:mt-1 -mt-0.5">
+            <span className="font-sans text-[7px] md:text-[12.7px] font-bold uppercase tracking-[0.2em] text-foreground/40 md:mt-1 -mt-0.5">
               Simulador de Concursos
             </span>
           </div>

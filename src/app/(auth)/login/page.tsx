@@ -8,7 +8,9 @@ import { OtpTutorialContent } from "@/components/auth/OtpTutorialContent";
 import { AnimatedInput } from "@/components/ui/animated-input";
 import { LuUser, LuLock, LuEye, LuEyeOff } from "react-icons/lu";
 import { FaFacebook, FaHome } from "react-icons/fa";
-import { loginAction, verify2FAAction } from "@/lib/actions/auth";
+import { loginAction } from "@/lib/actions/auth";
+import { reset2FAAction } from "@/lib/actions/reset-2fa";
+import { createClient } from "@/lib/supabase/client";
 
 type AuthStep = "login" | "verify-otp" | "setup-otp";
 
@@ -109,17 +111,20 @@ export default function LoginPage() {
     setOtpLoading(true);
     setOtpError("");
     try {
-      const { reset2FAAction } = await import("@/lib/actions/auth");
       const result = await reset2FAAction();
       
-      if (result.status === "error") throw new Error(result.error);
+      if (!result.success) throw new Error(result.error);
       
       alert("Autenticador removido com sucesso. Por favor, faça login novamente.");
+
+      // Fazer logout para forçar novo fluxo com QR Code
+      const supabase = createClient();
+      await supabase.auth.signOut();
       setStep("login");
       setOtp(["", "", "", "", "", ""]);
     } catch (err: any) {
       console.error("[LoginOTP] Erro ao resetar MFA:", err);
-      setOtpError("Não foi possível resetar o 2FA automaticamente.");
+      setOtpError("Não foi possível resetar o 2FA. " + (err.message || ""));
     } finally {
       setOtpLoading(false);
     }
@@ -134,6 +139,8 @@ export default function LoginPage() {
     setOtpError("");
 
     try {
+      const supabase = createClient();
+
       if (step === "setup-otp") {
         const response = await fetch("/api/auth/2fa/enable", {
           method: "POST",
@@ -143,14 +150,24 @@ export default function LoginPage() {
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || "Código inválido");
       } else {
-        const result = await verify2FAAction(code);
-        if (result.status === "error") throw new Error(result.error);
+        // Verificação OTP via client SDK direto (evita crash de Server Action no Turbopack)
+        const { data: factors, error: factorsError } = await supabase.auth.mfa.listFactors();
+        if (factorsError) throw factorsError;
+
+        const totpFactor = factors.totp.find((f) => f.status === "verified");
+        if (!totpFactor) throw new Error("Nenhum fator 2FA encontrado.");
+
+        const { error: verifyError } = await supabase.auth.mfa.challengeAndVerify({
+          factorId: totpFactor.id,
+          code,
+        });
+        if (verifyError) throw verifyError;
       }
 
       router.push("/dashboard");
     } catch (err: any) {
       console.error("[LoginOTP] Erro na verificação:", err);
-      setOtpError(err.message);
+      setOtpError(err.message || "Código incorreto ou expirado.");
       setOtp(["", "", "", "", "", ""]);
       otpRefs.current[0]?.focus();
     } finally {

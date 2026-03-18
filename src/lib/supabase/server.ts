@@ -28,3 +28,20 @@ export async function createClient() {
         }
     )
 }
+
+/**
+ * Cria um cliente Supabase com a Service Role Key para operações administrativas.
+ * Cuidado: Só deve ser usado no SERVIDOR e em contextos extremamente controlados.
+ */
+export async function createAdminClient() {
+    return createServerClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.SUPABASE_SERVICE_ROLE_KEY!,
+        {
+            cookies: {
+                getAll() { return [] },
+                setAll() { }
+            }
+        }
+    )
+}

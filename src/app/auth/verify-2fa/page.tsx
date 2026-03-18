@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { reset2FAAction } from "@/lib/actions/reset-2fa";
 
 import AuthLayout from "@/components/auth/AuthLayout";
 import { OtpTutorialContent } from "@/components/auth/OtpTutorialContent";
@@ -71,16 +72,16 @@ export default function Verify2FAPage() {
     setLoading(true);
     setError("");
     try {
-      const { reset2FAAction } = await import("@/lib/actions/auth");
       const result = await reset2FAAction();
       
-      if (result.status === "error") throw new Error(result.error);
+      if (!result.success) throw new Error(result.error);
       
       alert("Autenticador removido com sucesso. Faça login novamente para reconfigurar.");
+      await supabase.auth.signOut();
       router.push("/login");
     } catch (err: any) {
       console.error("[Verify2FA] Erro ao resetar MFA:", err);
-      setError("Não foi possível resetar o 2FA. Tente novamente mais tarde.");
+      setError("Não foi possível resetar o 2FA. " + (err.message || ""));
     } finally {
       setLoading(false);
     }

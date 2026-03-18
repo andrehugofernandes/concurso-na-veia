@@ -1,0 +1,9 @@
+[2026-03-18T16:40:54.846Z] [AUTH_DEBUG] Login processado para andrehugofernandes. MFA Profile: true. Total Fatores: 1
+[2026-03-18T16:49:10.348Z] [AUTH_DEBUG] Login processado para andrehugofernandes. MFA Profile: true. Total Fatores: 1
+[2026-03-18T16:49:54.709Z] [AUTH_DEBUG] Login processado para andrehugofernandes. MFA Profile: true. Total Fatores: 1
+[2026-03-18T16:55:10.631Z] [AUTH_DEBUG] Login processado para andrehugofernandes. MFA Profile: true. Total Fatores: 0
+[2026-03-18T16:55:37.992Z] [AUTH_DEBUG] [TIMESTAMP: 1773852937991] Verificando código OTP: 502118
+[2026-03-18T16:55:38.315Z] [AUTH_DEBUG] Usuário executando challenge OTP: 8efe4080-43b3-4d7c-887b-2b84fc92b3bd
+[2026-03-18T16:55:38.323Z] [AUTH_DEBUG] Desafiando fator: 2b392481-46d0-4986-b803-475f1913f6d4
+[2026-03-18T16:55:39.032Z] [AUTH_DEBUG] OTP verificado com sucesso
+[2026-03-18T16:55:56.551Z] [AUTH_DEBUG] Login processado para andrehugofernandes. MFA Profile: true. Total Fatores: 1
