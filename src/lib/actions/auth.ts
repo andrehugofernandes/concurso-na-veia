@@ -29,7 +29,7 @@ const registerSchema = z.object({
  */
 export async function loginAction(
   input: z.infer<typeof loginSchema>
-): Promise<ActionResponse<{ mfaRequired?: boolean }>> {
+): Promise<ActionResponse<{ mfaRequired?: boolean, mfaSetupRequired?: boolean }>> {
   try {
     const { username, password } = loginSchema.parse(input);
     const supabase = await createClient();
@@ -58,9 +58,21 @@ export async function loginAction(
     // 3. Verificar MFA
     const { data: factors } = await supabase.auth.mfa.listFactors();
     const hasVerifiedFactor = factors?.totp.some(f => f.status === 'verified');
+    
+    // Se o usuário tem intenção de MFA (pelo perfil) mas resetamos os fatores, forçamos setup.
+    const mfaEnabledInProfile = session.user.user_metadata?.mfa_enabled === true;
+
+    if (mfaEnabledInProfile && !hasVerifiedFactor) {
+      return createSuccessResponse({ mfaSetupRequired: true });
+    }
 
     return createSuccessResponse({ mfaRequired: !!hasVerifiedFactor });
   } catch (error: any) {
+    console.error('[loginAction] Erro inesperado:', {
+      error,
+      message: error.message,
+      stack: error.stack
+    });
     if (error instanceof z.ZodError) {
       return createErrorResponse(error.issues[0].message);
     }
@@ -210,6 +222,11 @@ export async function verify2FAAction(code: string, factorId?: string): Promise<
 
     return createSuccessResponse(data);
   } catch (error: any) {
+    console.error('[verify2FAAction] Erro inesperado:', {
+      error,
+      message: error.message,
+      stack: error.stack
+    });
     return createErrorResponse(error.message || 'Erro na verificação MFA');
   }
 }
@@ -256,6 +273,69 @@ export async function unenrollMFAAction(factorId: string): Promise<ActionRespons
     
     return createSuccessResponse(true);
   } catch (error: any) {
+    console.error('[unenrollMFAAction] Erro inesperado:', {
+      error,
+      message: error.message,
+      stack: error.stack
+    });
     return createErrorResponse(error.message || 'Erro ao desativar MFA');
+  }
+}
+
+/**
+ * Reseta o MFA do usuário logado (usado quando usuário perde acesso ao app).
+ * Remove todos os fatores TOTP e atualiza metadata.
+ */
+export async function reset2FAAction(): Promise<ActionResponse<boolean>> {
+  try {
+    const supabase = await createClient();
+    
+    // 1. Obter usuário (deve estar logado com senha pelo menos)
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    if (userError || !user) {
+      console.error('[reset2FAAction] Usuário não encontrado:', userError);
+      return createErrorResponse('Usuário não autenticado');
+    }
+
+    // 2. Listar e remover todos os fatores
+    const { data: factors, error: factorsError } = await supabase.auth.mfa.listFactors();
+    if (factorsError) {
+      console.error('[reset2FAAction] Erro ao listar fatores:', factorsError);
+      return createErrorResponse('Erro ao listar fatores MFA');
+    }
+
+    const allFactors = [...factors.totp, ...factors.phone];
+    for (const factor of allFactors) {
+      const { error: unenrollError } = await supabase.auth.mfa.unenroll({ factorId: factor.id });
+      if (unenrollError) {
+        console.warn(`[reset2FAAction] Não foi possível remover fator ${factor.id}:`, unenrollError);
+        // Continuamos tentando remover os outros
+      }
+    }
+
+    // 3. Atualizar metadata no Auth
+    const { error: updateAuthError } = await supabase.auth.updateUser({
+      data: { mfa_enabled: false }
+    });
+
+    if (updateAuthError) {
+      console.error('[reset2FAAction] Erve ao atualizar metadata auth:', updateAuthError);
+    }
+
+    // 4. Atualizar perfil na tabela profiles (se existir a coluna)
+    const { error: profileError } = await supabase
+      .from('profiles')
+      .update({ mfa_enabled: false })
+      .eq('id', user.id);
+
+    if (profileError) {
+      console.warn('[reset2FAAction] Erro ao atualizar profile:', profileError);
+    }
+
+    console.log(`[reset2FAAction] MFA resetado com sucesso para usuário: ${user.id}`);
+    return createSuccessResponse(true);
+  } catch (error: any) {
+    console.error('[reset2FAAction] Erro crítico:', error);
+    return createErrorResponse(error.message || 'Erro ao resetar MFA');
   }
 }

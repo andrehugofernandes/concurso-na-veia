@@ -50,6 +50,8 @@ export default function LoginPage() {
 
       if (result.data?.mfaRequired) {
         setStep("verify-otp");
+      } else if (result.data?.mfaSetupRequired) {
+        router.push("/auth/setup-2fa");
       } else {
         router.push("/dashboard");
       }
@@ -101,6 +103,28 @@ export default function LoginPage() {
     otpRefs.current[Math.min(pasted.length, 5)]?.focus();
   };
 
+  const handleReset2FA = async () => {
+    if (!confirm("Isso removerá seu autenticador atual. Você precisará escanear um novo QR Code ao logar novamente. Continuar?")) return;
+    
+    setOtpLoading(true);
+    setOtpError("");
+    try {
+      const { reset2FAAction } = await import("@/lib/actions/auth");
+      const result = await reset2FAAction();
+      
+      if (result.status === "error") throw new Error(result.error);
+      
+      alert("Autenticador removido com sucesso. Por favor, faça login novamente.");
+      setStep("login");
+      setOtp(["", "", "", "", "", ""]);
+    } catch (err: any) {
+      console.error("[LoginOTP] Erro ao resetar MFA:", err);
+      setOtpError("Não foi possível resetar o 2FA automaticamente.");
+    } finally {
+      setOtpLoading(false);
+    }
+  };
+
   const handleOtpSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const code = otp.join("");
@@ -111,7 +135,6 @@ export default function LoginPage() {
 
     try {
       if (step === "setup-otp") {
-        // We'll handle setup-otp refactoring if needed, but verify-2fa is the main one here
         const response = await fetch("/api/auth/2fa/enable", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -126,6 +149,7 @@ export default function LoginPage() {
 
       router.push("/dashboard");
     } catch (err: any) {
+      console.error("[LoginOTP] Erro na verificação:", err);
       setOtpError(err.message);
       setOtp(["", "", "", "", "", ""]);
       otpRefs.current[0]?.focus();
@@ -400,7 +424,15 @@ export default function LoginPage() {
               </button>
             </form>
 
-            <div className="mt-6 text-center">
+            <div className="mt-8 flex flex-col gap-4 text-center">
+              {step === "verify-otp" && (
+                <button
+                  onClick={handleReset2FA}
+                  className="text-primary hover:underline text-sm font-semibold transition-all"
+                >
+                  Perdeu acesso ao autenticador? Resete aqui
+                </button>
+              )}
               <button
                 onClick={() => {
                   setStep("login");

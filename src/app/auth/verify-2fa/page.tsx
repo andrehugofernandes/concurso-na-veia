@@ -65,6 +65,26 @@ export default function Verify2FAPage() {
     setOtp(newOtp);
     inputRefs.current[Math.min(pastedData.length, 5)]?.focus();
   };
+  const handleReset2FA = async () => {
+    if (!confirm("Isso removerá seu autenticador atual. Você precisará escanear um novo QR Code. Continuar?")) return;
+    
+    setLoading(true);
+    setError("");
+    try {
+      const { reset2FAAction } = await import("@/lib/actions/auth");
+      const result = await reset2FAAction();
+      
+      if (result.status === "error") throw new Error(result.error);
+      
+      alert("Autenticador removido com sucesso. Faça login novamente para reconfigurar.");
+      router.push("/login");
+    } catch (err: any) {
+      console.error("[Verify2FA] Erro ao resetar MFA:", err);
+      setError("Não foi possível resetar o 2FA. Tente novamente mais tarde.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleVerify = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,7 +114,7 @@ export default function Verify2FAPage() {
       if (error) throw error;
       router.push("/dashboard");
     } catch (err: any) {
-      console.error(err);
+      console.error("[Verify2FA] Erro na verificação:", err);
       setError("Código incorreto ou expirado.");
     } finally {
       setLoading(false);
@@ -191,7 +211,13 @@ export default function Verify2FAPage() {
             </button>
           </form>
 
-          <div className="mt-8 text-center">
+          <div className="mt-8 flex flex-col items-center gap-4">
+            <button
+              onClick={handleReset2FA}
+              className="text-primary hover:underline text-sm font-semibold transition-all"
+            >
+              Perdeu acesso ao seu autenticador? Resete aqui
+            </button>
             <button
               onClick={() => router.push("/login")}
               className="text-foreground/40 hover:text-primary text-sm font-medium transition-colors"
