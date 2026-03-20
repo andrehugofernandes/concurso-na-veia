@@ -3,6 +3,19 @@
 import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import AuthLayout from "@/components/auth/AuthLayout";
+import { loadStripe } from "@stripe/stripe-js";
+import {
+  EmbeddedCheckoutProvider,
+  EmbeddedCheckout,
+} from "@stripe/react-stripe-js";
+import { useTheme } from "@/lib/contexts/theme-context";
+
+// Inicializar o Stripe promise
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? ""
+);
+
 import { verifyCheckoutSession } from "@/lib/actions/stripe";
 
 function SuccessContent() {
@@ -10,80 +23,86 @@ function SuccessContent() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
   const plan = searchParams.get("plan") || "free";
+  const { theme } = useTheme();
 
-  const [message, setMessage] = useState("Processando seu pagamento...");
-  const [status, setStatus] = useState<"processing" | "success" | "error">("processing");
+  const [loading, setLoading] = useState(true);
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
 
   useEffect(() => {
     if (!sessionId) {
-      setMessage("Sessão de pagamento não encontrada");
-      setStatus("error");
+      router.push("/register");
       return;
     }
 
-    const verifyPayment = async () => {
+    async function fetchSession() {
       try {
-        const data = await verifyCheckoutSession(sessionId);
-
-        if (data.success) {
-          setMessage("Pagamento confirmado! Redirecionando para finalizar seu cadastro...");
-          setStatus("success");
-
-          setTimeout(() => {
-            router.push(`/register/complete?session=${sessionId}&plan=${plan}`);
-          }, 2000);
+        const result = await verifyCheckoutSession(sessionId!);
+        if (result.success && result.clientSecret) {
+          setClientSecret(result.clientSecret);
         } else {
-          setMessage(data.error || "Pagamento pendente ou cancelado");
-          setStatus("error");
+          // Se não conseguir o secret, mas o pagamento fluiu, 
+          // ainda mantemos na página mas sem o componente detalhado
+          console.warn("Não foi possível carregar o client secret para o resumo detalhado");
         }
-      } catch (err: any) {
-        setMessage("Erro ao verificar pagamento: " + err.message);
-        setStatus("error");
+      } catch (err) {
+        console.error("Erro ao buscar sessão do Stripe:", err);
+      } finally {
+        setLoading(false);
       }
-    };
+    }
 
-    verifyPayment();
-  }, [sessionId, plan, router]);
+    fetchSession();
+  }, [sessionId, router]);
+
+  const options = {
+    clientSecret: clientSecret || "",
+  };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4">
-      <div className="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-8 max-w-md w-full text-center">
-        <div className="mb-6">
-          {status === "processing" && (
-            <div className="flex justify-center">
-              <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-yellow-400" />
-            </div>
-          )}
-          {status === "success" && <div className="text-6xl mb-4">✅</div>}
-          {status === "error" && <div className="text-6xl mb-4">❌</div>}
+    <AuthLayout>
+      {loading ? (
+        <div className="flex justify-center items-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary" />
         </div>
-
-        <h1 className="text-2xl font-bold text-white mb-4">
-          {status === "processing" && "Processando"}
-          {status === "success" && "Pagamento Confirmado!"}
-          {status === "error" && "Algo deu errado"}
-        </h1>
-
-        <p className="text-gray-400 mb-6">{message}</p>
-
-        {status === "error" && (
-          <div className="space-y-3">
-            <Link
-              href="/register"
-              className="w-full inline-block py-3 px-4 bg-yellow-400 text-black font-bold rounded-lg hover:bg-yellow-300 transition"
+      ) : (
+        <div className="bg-card border border-border rounded-2xl overflow-hidden transition-smooth shadow-xl flex flex-col pt-4">
+          <div className="text-center px-6 pt-6 pb-2">
+            <h1 
+              className="text-3xl md:text-4xl font-black tracking-tighter leading-none bg-clip-text text-transparent transition-smooth font-display mb-2"
+              style={{ backgroundImage: "var(--primary-gradient)" }}
             >
-              Tentar Novamente
-            </Link>
+              Pagamento Confirmado!
+            </h1>
+            <p className="text-muted-foreground text-sm font-medium">
+              Sua assinatura foi processada com sucesso.
+            </p>
+          </div>
+          
+          <div className="w-full min-h-[400px]">
+             {/* O Embedded Checkout renderiza automaticamente a tela de sucesso do Stripe Baseado no ID/Secret em return_url */}
+             {clientSecret && (
+               <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
+                 <EmbeddedCheckout className="w-full h-full" />
+               </EmbeddedCheckoutProvider>
+             )}
+          </div>
+
+          <div className="p-6 md:p-8 bg-background/50 border-t border-border mt-4 text-center">
+            <h3 className="font-bold text-lg mb-2">Falta pouco!</h3>
+            <p className="text-muted-foreground text-sm mb-6">
+              Para acessar sua área de estudos, finalize criando sua senha.
+            </p>
             <Link
-              href="/login"
-              className="w-full inline-block py-3 px-4 border border-zinc-700 text-white rounded-lg hover:bg-zinc-800 transition"
+              href={`/register/complete?session=${sessionId}&plan=${plan}`}
+              className="inline-flex w-full md:w-auto items-center justify-center px-8 py-3 bg-primary text-primary-foreground font-bold rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all text-sm"
+              style={{ background: "var(--primary-gradient)" }}
             >
-              Fazer Login
+              Criar Senha de Acesso
             </Link>
           </div>
-        )}
-      </div>
-    </div>
+        </div>
+      )}
+    </AuthLayout>
   );
 }
 
@@ -91,8 +110,8 @@ export default function SuccessPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-black flex items-center justify-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-yellow-400" />
+        <div className="min-h-screen bg-background flex items-center justify-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary" />
         </div>
       }
     >

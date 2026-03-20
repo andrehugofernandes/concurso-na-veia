@@ -42,8 +42,8 @@ export async function createCheckoutSession(data: CheckoutRegisterData) {
       payment_method_types: ["card"],
       line_items: [{ price: price.id, quantity: 1 }],
       mode: "subscription",
-      success_url: `${appUrl}/register/success?session_id={CHECKOUT_SESSION_ID}&plan=${planKey}`,
-      cancel_url: `${appUrl}/register?plan=${planKey}`,
+      ui_mode: "embedded",
+      return_url: `${appUrl}/register/success?session_id={CHECKOUT_SESSION_ID}&plan=${planKey}`,
       metadata: {
         app_plan: planKey,
         user_email: userData.email,
@@ -65,7 +65,7 @@ export async function createCheckoutSession(data: CheckoutRegisterData) {
       locale: "pt-BR",
     });
 
-    return { url: session.url };
+    return { clientSecret: session.client_secret };
   } catch (error: any) {
     console.error("[Stripe Checkout Register]", error);
     return { error: error.message ?? "Erro ao criar checkout" };
@@ -154,6 +154,7 @@ export async function verifyCheckoutSession(sessionId: string) {
       paymentStatus: session.payment_status,
       customerEmail: session.customer_email,
       metadata: session.metadata,
+      clientSecret: session.client_secret,
     };
   } catch (error: any) {
     console.error("[Verify Session]", error);

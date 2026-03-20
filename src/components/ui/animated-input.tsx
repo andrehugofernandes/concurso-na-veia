@@ -88,7 +88,7 @@ export const AnimatedInput = forwardRef<HTMLInputElement, AnimatedInputProps>(
 
     const leftClass = contentLeftClassName ?? "left-3";
     const labelLeftPosition = icon ? "left-8" : leftClass;
-    const surface = surfaceClassName ?? "bg-white dark:bg-slate-900";
+    const surface = surfaceClassName ?? "bg-background";
 
     return (
       <div className={cn("space-y-1 overflow-visible", containerClassName)}>
@@ -115,11 +115,11 @@ export const AnimatedInput = forwardRef<HTMLInputElement, AnimatedInputProps>(
             onBlur={handleBlur}
             placeholder={isFocused && !hasValue ? props.placeholder : " "}
             className={cn(
-              "peer w-full rounded-md border bg-white dark:bg-slate-900 px-3 py-3 text-base outline-none transition-colors focus:ring-offset-4 focus:ring-offset-white dark:focus:ring-offset-slate-900 focus:ring-2 focus:border-primary",
-              "border-gray-200 dark:border-slate-600",
-              "text-gray-900 dark:text-slate-100",
+              "peer w-full rounded-md border bg-transparent px-3 py-3 text-base outline-none transition-colors focus:ring-offset-4 focus:ring-offset-background focus:ring-2 focus:border-primary",
+              "border-border",
+              "text-foreground",
               isFocused && !hasValue
-                ? "placeholder:text-gray-400 dark:placeholder:text-slate-500"
+                ? "placeholder:text-gray-400 dark:placeholder:text-slate-700"
                 : "placeholder-transparent",
               icon && "pl-10",
               trailing && "pr-12",
@@ -139,7 +139,6 @@ export const AnimatedInput = forwardRef<HTMLInputElement, AnimatedInputProps>(
             className={cn(
               "pointer-events-none absolute origin-left text-base",
               labelLeftPosition,
-              surface,
               labelClassName,
             )}
             initial={false}
@@ -250,7 +249,7 @@ export const AnimatedTextarea = forwardRef<
     };
 
     const leftClass = contentLeftClassName ?? "left-3";
-    const surface = surfaceClassName ?? "bg-white dark:bg-slate-900";
+    const surface = surfaceClassName ?? "bg-background";
     const restingTop = "0.75rem";
 
     return (
@@ -266,11 +265,11 @@ export const AnimatedTextarea = forwardRef<
             onBlur={handleBlur}
             placeholder={isFocused && !hasValue ? props.placeholder : " "}
             className={cn(
-              "peer w-full rounded-md border bg-white dark:bg-slate-900 px-3 py-3 text-base outline-none transition-colors focus:ring-offset-4 focus:ring-offset-white dark:focus:ring-offset-slate-900 focus:ring-2 focus:ring-primary focus:border-primary",
-              "border-gray-200 dark:border-slate-600",
-              "text-gray-900 dark:text-slate-100",
+              "peer w-full rounded-md border bg-transparent px-3 py-3 text-base outline-none transition-colors focus:ring-offset-4 focus:ring-offset-background focus:ring-2 focus:ring-primary focus:border-primary",
+              "border-border",
+              "text-foreground",
               isFocused && !hasValue
-                ? "placeholder:text-gray-400 dark:placeholder:text-slate-500"
+                ? "placeholder:text-gray-400 dark:placeholder:text-slate-700"
                 : "placeholder-transparent",
               disabled && "opacity-60 cursor-not-allowed",
               error && "border-red-500 focus:border-red-500",
@@ -284,7 +283,6 @@ export const AnimatedTextarea = forwardRef<
             className={cn(
               "pointer-events-none absolute origin-left text-base",
               leftClass,
-              surface,
               labelClassName,
             )}
             initial={false}

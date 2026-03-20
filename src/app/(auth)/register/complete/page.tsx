@@ -5,6 +5,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { registerAction } from "@/lib/actions/auth";
 import { verifyCheckoutSession } from "@/lib/actions/stripe";
+import AuthLayout from "@/components/auth/AuthLayout";
+import { LuCheck, LuLock, LuEye, LuEyeOff } from "react-icons/lu";
+import { AnimatedInput } from "@/components/ui/animated-input";
 
 function CompleteContent() {
   const router = useRouter();
@@ -43,12 +46,12 @@ function CompleteContent() {
         if (data.success && data.metadata) {
           setFormData((prev) => ({
             ...prev,
-            email: data.customerEmail || data.metadata.user_email || "",
-            nome: data.metadata.user_nome || "",
-            username: data.metadata.username || "",
-            nivel: data.metadata.user_nivel || "",
-            cargo: data.metadata.user_cargo || "",
-            plan: data.metadata.app_plan || plan || "free",
+            email: data.customerEmail || data.metadata?.user_email || "",
+            nome: data.metadata?.user_nome || "",
+            username: data.metadata?.username || "",
+            nivel: data.metadata?.user_nivel || "",
+            cargo: data.metadata?.user_cargo || "",
+            plan: data.metadata?.app_plan || plan || "free",
           }));
         } else {
           setError("Erro ao carregar dados da sessão");
@@ -105,21 +108,26 @@ function CompleteContent() {
 
   if (loading && !formData.nome) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-yellow-400" />
-      </div>
+      <AuthLayout>
+        <div className="flex items-center justify-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary" />
+        </div>
+      </AuthLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
-      <div className="bg-slate-800/50 backdrop-blur-lg rounded-2xl p-8 border border-slate-700/50 shadow-2xl max-w-md w-full">
-        <h1 className="text-2xl font-bold text-white text-center mb-2">
-          Finalize seu cadastro
-        </h1>
-        <p className="text-gray-400 text-center mb-6">
-          Defina uma senha forte para sua conta
-        </p>
+    <AuthLayout>
+      <div className="bg-white dark:bg-slate-800/50 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-gray-200 dark:border-slate-700/50 shadow-xl mt-12">
+        <div className="text-center mb-6">
+          <LuCheck className="w-12 h-12 text-green-500 mx-auto mb-3" />
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            Finalize seu cadastro
+          </h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-2">
+            Defina uma senha forte para sua conta
+          </p>
+        </div>
 
         {error && (
           <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6">
@@ -129,97 +137,74 @@ function CompleteContent() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Dados somente leitura do Stripe */}
-          <div className="space-y-4 p-4 bg-slate-700/30 rounded-lg border border-slate-600">
-            <div>
-              <label className="block text-xs text-gray-400 mb-1">Nome</label>
-              <input
-                type="text"
-                value={formData.nome}
-                disabled
-                className="w-full px-3 py-2 bg-slate-600/50 border border-slate-600 rounded text-gray-300 text-sm opacity-60"
-              />
-            </div>
-            <div>
-              <label className="block text-xs text-gray-400 mb-1">Email</label>
-              <input
-                type="email"
-                value={formData.email}
-                disabled
-                className="w-full px-3 py-2 bg-slate-600/50 border border-slate-600 rounded text-gray-300 text-sm opacity-60"
-              />
-            </div>
-            <div>
-              <label className="block text-xs text-gray-400 mb-1">Username</label>
-              <input
-                type="text"
-                value={formData.username}
-                disabled
-                className="w-full px-3 py-2 bg-slate-600/50 border border-slate-600 rounded text-gray-300 text-sm opacity-60"
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-2">
+          <div className="space-y-4 p-4 bg-slate-50 dark:bg-slate-900/40 rounded-xl border border-gray-200 dark:border-slate-700">
+            <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs text-gray-400 mb-1">Nível</label>
-                <input
-                  type="text"
-                  value={formData.nivel === "medio" ? "Médio" : "Superior"}
-                  disabled
-                  className="w-full px-3 py-2 bg-slate-600/50 border border-slate-600 rounded text-gray-300 text-sm opacity-60"
-                />
+                <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Nome</label>
+                <p className="text-sm font-medium text-gray-700 dark:text-gray-300 truncate">{formData.nome}</p>
               </div>
               <div>
-                <label className="block text-xs text-gray-400 mb-1">Cargo</label>
-                <input
-                  type="text"
-                  value={formData.cargo}
-                  disabled
-                  className="w-full px-3 py-2 bg-slate-600/50 border border-slate-600 rounded text-gray-300 text-sm opacity-60"
-                />
+                <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Email</label>
+                <p className="text-sm font-medium text-gray-700 dark:text-gray-300 truncate">{formData.email}</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-4 border-t border-gray-200 dark:border-slate-700 pt-3">
+              <div className="col-span-1">
+                <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Username</label>
+                <p className="text-sm font-medium text-gray-700 dark:text-gray-300">@{formData.username}</p>
+              </div>
+              <div className="col-span-1">
+                <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Nível</label>
+                <p className="text-sm font-medium text-gray-700 dark:text-gray-300">{formData.nivel === "medio" ? "Médio" : "Superior"}</p>
+              </div>
+              <div className="col-span-1">
+                <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Plano</label>
+                <p className="text-sm font-bold text-primary uppercase">{formData.plan}</p>
               </div>
             </div>
           </div>
 
           {/* Senha */}
-          <div className="relative">
-            <label className="block text-sm font-medium text-gray-300 mb-2">
-              Senha
-            </label>
-            <input
-              type={showPassword ? "text" : "password"}
-              value={formData.password}
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
-              required
-              className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 transition pr-12"
-              placeholder="Crie uma senha forte"
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-[38px] text-gray-400 hover:text-white transition"
-            >
-              {showPassword ? "👁️" : "👁️‍🗨️"}
-            </button>
-          </div>
+          <AnimatedInput
+            id="password"
+            label="Senha"
+            type={showPassword ? "text" : "password"}
+            icon={<LuLock className="w-5 h-5 opacity-50" />}
+            value={formData.password}
+            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            required
+            placeholder="Crie uma senha forte"
+            surfaceClassName="bg-card"
+            inputClassName="bg-background border-border text-foreground rounded-xl focus:border-primary focus:ring-primary/20"
+            trailing={
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="text-muted-foreground hover:text-foreground transition"
+                tabIndex={-1}
+              >
+                {showPassword ? <LuEyeOff className="w-5 h-5" /> : <LuEye className="w-5 h-5" />}
+              </button>
+            }
+          />
 
           {/* Password Requirements */}
-          <div className="bg-slate-700/30 p-4 rounded-xl space-y-2 border border-slate-600">
-            <p className="text-xs text-gray-400 font-medium mb-2 uppercase tracking-wide">
-              Requisitos da senha:
+          <div className="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-xl space-y-2 border border-gray-200 dark:border-slate-700">
+            <p className="text-[10px] text-gray-400 font-bold mb-2 uppercase tracking-widest">
+              Requisitos mínimos:
             </p>
-            <ul className="space-y-1">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1">
               {[
-                { len: formData.password.length >= 12, text: "Mínimo de 12 caracteres" },
-                { len: /[A-Z]/.test(formData.password), text: "Pelo menos uma letra maiúscula" },
-                { len: /[a-z]/.test(formData.password), text: "Pelo menos uma letra minúscula" },
-                { len: /[0-9]/.test(formData.password), text: "Pelo menos um número" },
-                { len: /[!@#$%^&*(),.?":{}|<>]/.test(formData.password), text: "Pelo menos um caractere especial" },
+                { len: formData.password.length >= 12, text: "12+ caracteres" },
+                { len: /[A-Z]/.test(formData.password), text: "Letra maiúscula" },
+                { len: /[a-z]/.test(formData.password), text: "Letra minúscula" },
+                { len: /[0-9]/.test(formData.password), text: "Um número" },
+                { len: /[!@#$%^&*(),.?":{}|<>]/.test(formData.password), text: "Especial" },
               ].map((req, idx) => (
                 <li
                   key={idx}
                   className={`text-xs flex items-center gap-2 transition-colors ${
-                    req.len ? "text-green-400 font-medium" : "text-gray-400"
+                    req.len ? "text-green-500 font-medium" : "text-gray-400"
                   }`}
                 >
                   {req.len ? "✅" : "⭕"} {req.text}
@@ -229,79 +214,74 @@ function CompleteContent() {
           </div>
 
           {/* Confirmar Senha */}
-          <div className="relative">
-            <label className="block text-sm font-medium text-gray-300 mb-2">
-              Confirmar Senha
-            </label>
-            <input
-              type={showConfirmPassword ? "text" : "password"}
-              value={formData.confirmPassword}
-              onChange={(e) =>
-                setFormData({ ...formData, confirmPassword: e.target.value })
-              }
-              required
-              className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 transition pr-12"
-              placeholder="Repita a senha"
-            />
-            <button
-              type="button"
-              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="absolute right-3 top-[38px] text-gray-400 hover:text-white transition"
-            >
-              {showConfirmPassword ? "👁️" : "👁️‍🗨️"}
-            </button>
-          </div>
+          <AnimatedInput
+            id="confirmPassword"
+            label="Confirmar Senha"
+            type={showConfirmPassword ? "text" : "password"}
+            icon={<LuLock className="w-5 h-5 opacity-50" />}
+            value={formData.confirmPassword}
+            onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+            required
+            placeholder="Repita a senha"
+            surfaceClassName="bg-card"
+            inputClassName="bg-background border-border text-foreground rounded-xl focus:border-primary focus:ring-primary/20"
+            trailing={
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                className="text-muted-foreground hover:text-foreground transition"
+                tabIndex={-1}
+              >
+                {showConfirmPassword ? <LuEyeOff className="w-5 h-5" /> : <LuEye className="w-5 h-5" />}
+              </button>
+            }
+          />
 
           {/* Termos */}
-          <label className="flex items-start gap-2">
+          <label className="flex items-start gap-3 cursor-pointer group">
             <input
               type="checkbox"
               required
-              className="mt-1 w-4 h-4 rounded border-slate-600 bg-slate-700 text-yellow-500 focus:ring-yellow-500"
+              className="mt-1 w-4 h-4 rounded border-gray-300 dark:border-slate-600 bg-gray-50 dark:bg-slate-700 text-primary focus:ring-primary"
             />
-            <span className="text-sm text-gray-400">
+            <span className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-white transition-colors">
               Li e aceito os{" "}
-              <a href="#" className="text-yellow-400 hover:underline">
+              <a href="#" className="text-primary hover:underline font-medium">
                 Termos de Uso
               </a>{" "}
               e a{" "}
-              <a href="#" className="text-yellow-400 hover:underline">
+              <a href="#" className="text-primary hover:underline font-medium">
                 Política de Privacidade
               </a>
             </span>
           </label>
 
           {/* Botões */}
-          <div className="flex gap-4">
-            <Link
-              href="/login"
-              className="flex-1 py-4 border-2 border-slate-600 text-white font-semibold rounded-xl hover:bg-slate-700/50 transition text-center"
-            >
-              Voltar
-            </Link>
+          <div className="flex gap-4 pt-4">
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-4 text-primary-foreground font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.01]"
+              style={{ background: "var(--primary-gradient)" }}
             >
-              {loading ? "Criando conta..." : "Criar Conta"}
+              {loading ? "Criando conta..." : "Criar Minha Conta"}
             </button>
           </div>
         </form>
 
-        <div className="mt-6 text-center">
-          <p className="text-gray-400 text-sm">
+        <div className="mt-8 text-center">
+          <p className="text-gray-400 dark:text-gray-500 text-sm">
             Já tem uma conta?{" "}
             <Link
               href="/login"
-              className="text-yellow-400 font-semibold hover:text-yellow-300 transition"
+              className="text-primary font-semibold hover:text-primary/80 transition"
             >
               Fazer login
             </Link>
           </p>
         </div>
       </div>
-    </div>
+    </AuthLayout>
   );
 }
 

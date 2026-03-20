@@ -49,6 +49,8 @@ export async function loginAction(
     });
 
     if (error || !session) {
+      console.log(`[AUTH_DEBUG] Falha de login para ${username}: ${error?.message || 'Sem sessão'}`);
+      
       if (error?.message?.includes('Email not confirmed') || error?.code === 'email_not_confirmed') {
         return createErrorResponse('Email não confirmado. Verifique sua caixa de entrada.');
       }
@@ -112,12 +114,32 @@ export async function registerAction(
           nivel: validated.nivel,
           cargo: validated.cargo,
           plan: validated.plan,
+          mfa_enabled: true,
         },
         emailRedirectTo: `${origin}/auth/callback`,
       }
     });
 
     if (authError) return createErrorResponse(authError.message);
+
+    // Auto-confirm email if registration was successful
+    if (authData.user) {
+      try {
+        const adminSupabase = await createAdminClient();
+        await adminSupabase.auth.admin.updateUserById(authData.user.id, {
+          email_confirm: true,
+          user_metadata: { ...authData.user.user_metadata, mfa_enabled: true }
+        });
+        
+        // Ativar flag no perfil também
+        await adminSupabase.from('profiles').update({ mfa_enabled: true }).eq('id', authData.user.id);
+        
+        console.log(`[AUTH_DEBUG] User auto-confirmed and MFA enforced: ${authData.user.id}`);
+      } catch (confirmError) {
+        console.error('[AUTH_DEBUG] Failed to auto-confirm user:', confirmError);
+        // We don't fail the action here, the user can still confirm via email if the admin call failed
+      }
+    }
 
     return createSuccessResponse({
       id: authData.user?.id,
@@ -263,7 +285,7 @@ export async function enrollMFAAction(friendlyName?: string): Promise<ActionResp
 
     const { data, error } = await supabase.auth.mfa.enroll({
       factorType: 'totp',
-      friendlyName: friendlyName || 'AVAGAEHMINHA',
+      friendlyName: `AVAGAEHMINHA (${Date.now()})`,
     });
 
     if (error) return createErrorResponse(error.message);

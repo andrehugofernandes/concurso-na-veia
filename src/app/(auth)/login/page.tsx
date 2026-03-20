@@ -111,9 +111,11 @@ export default function LoginPage() {
     setOtpLoading(true);
     setOtpError("");
     try {
-      const result = await reset2FAAction();
+      // Chamada via API Route (100% estável no Turbopack)
+      const response = await fetch("/api/auth/reset-2fa", { method: "POST" });
+      const result = await response.json();
       
-      if (!result.success) throw new Error(result.error);
+      if (!response.ok || !result.success) throw new Error(result.error || "Falha no reset");
       
       alert("Autenticador removido com sucesso. Por favor, faça login novamente.");
 
@@ -204,7 +206,7 @@ export default function LoginPage() {
           onPaste={handleOtpPaste}
           maxLength={6}
           aria-label={`Dígito ${index + 1} do código OTP`}
-          className="w-12 h-14 bg-slate-700/50 border border-slate-600 rounded-lg text-white text-center text-2xl font-bold focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 transition"
+          className="w-10 h-14 md:w-12 md:h-16 text-center text-xl font-bold bg-gray-50 dark:bg-slate-900/50 border border-gray-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-white focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
         />
       ))}
     </div>
@@ -217,12 +219,24 @@ export default function LoginPage() {
       showHelp={step !== "login"}
     >
       {step === "login" ? (
-        <>
+        <div className="flex flex-col gap-8 md:gap-10 mt-12 md:mt-20">
+          {/* Título de Boas-vindas com Skin Gradient */}
+          <div className="text-center md:text-left space-y-2">
+            <h1 
+              className="text-4xl md:text-6xl font-black tracking-tighter leading-none bg-clip-text text-transparent transition-smooth font-display whitespace-nowrap"
+              style={{ backgroundImage: "var(--primary-gradient)" }}
+            >
+              Acesse sua conta
+            </h1>
+            <p className="text-muted-foreground text-sm md:text-lg font-medium">
+              Bem-vindo de volta! Continue sua jornada.
+            </p>
+          </div>
+
           {/* Login Form */}
-          <div className="bg-white mt-12 dark:bg-slate-800/50 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-gray-200 dark:border-slate-700/50 shadow-xl dark:shadow-2xl">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-4 md:mb-6">
-              Entrar na sua conta
-            </h2>
+          <div className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-xl dark:shadow-2xl transition-smooth overflow-hidden">
+            {/* Top accent */}
+            <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundImage: "var(--primary-gradient)" }} />
 
             {error && (
               <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-4">
@@ -238,9 +252,9 @@ export default function LoginPage() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
-                surfaceClassName="bg-white dark:bg-slate-800/50"
-                inputClassName="bg-white dark:bg-slate-700/50 border-gray-200 dark:border-slate-600 text-gray-900 dark:text-white rounded-xl"
-                labelClassName="text-gray-500 dark:text-gray-400"
+                surfaceClassName="bg-card"
+                inputClassName="bg-background border-border text-foreground rounded-xl focus:border-primary focus:ring-primary/20"
+                labelClassName="text-muted-foreground"
               />
 
               <AnimatedInput
@@ -251,9 +265,9 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                surfaceClassName="bg-white dark:bg-slate-800/50"
-                inputClassName="bg-white dark:bg-slate-700/50 border-gray-200 dark:border-slate-600 text-gray-900 dark:text-white rounded-xl"
-                labelClassName="text-gray-500 dark:text-gray-400"
+                surfaceClassName="bg-card"
+                inputClassName="bg-background border-border text-foreground rounded-xl focus:border-primary focus:ring-primary/20"
+                labelClassName="text-muted-foreground"
                 trailing={
                   <button
                     type="button"
@@ -275,7 +289,7 @@ export default function LoginPage() {
                     type="checkbox"
                     className="w-4 h-4 rounded border-gray-300 dark:border-slate-600 bg-gray-100 dark:bg-slate-700 text-primary focus:ring-primary"
                   />
-                  <span className="text-sm text-gray-600 dark:text-gray-400">
+                  <span className="text-sm text-muted-foreground">
                     Lembrar de mim
                   </span>
                 </label>
@@ -290,7 +304,8 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 bg-primary text-primary-foreground font-bold rounded-xl hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-4 bg-primary text-primary-foreground font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{ background: "var(--primary-gradient)" }}
               >
                 {loading ? (
                   <span className="inline-flex items-center gap-2">
@@ -322,7 +337,7 @@ export default function LoginPage() {
             </form>
 
             <div className="mt-6 text-center">
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
+              <p className="text-muted-foreground text-sm">
                 Não tem uma conta?{" "}
                 <Link
                   href="/register"
@@ -340,14 +355,14 @@ export default function LoginPage() {
                   <div className="w-full border-t border-gray-200 dark:border-slate-600" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-4 bg-white dark:bg-slate-800/50 text-gray-500 dark:text-gray-400">
+                  <span className="px-4 bg-card text-muted-foreground truncate-line">
                     ou continue com
                   </span>
                 </div>
               </div>
 
-              <div className="mt-6 grid grid-cols-3 gap-4">
-                <button className="flex items-center justify-center p-3 border border-gray-200 dark:border-slate-600 rounded-xl text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-700/50 transition">
+              <div className="mt-6 grid grid-cols-2 gap-4">
+                <button className="flex items-center justify-center p-3 border border-border rounded-xl text-foreground hover:bg-accent transition">
                   <svg
                     className="w-6 h-6"
                     viewBox="0 0 24 24"
@@ -374,51 +389,34 @@ export default function LoginPage() {
                 <button className="flex items-center justify-center p-3 border border-gray-200 dark:border-slate-600 rounded-xl text-[#1877F2] hover:bg-gray-50 dark:hover:bg-slate-700/50 transition">
                   <FaFacebook className="w-6 h-6" />
                 </button>
-                <button
-                  onClick={() => router.push("/")}
-                  className="flex items-center justify-center p-3 border border-gray-200 dark:border-slate-600 rounded-xl text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-700/50 transition"
-                >
-                  <FaHome className="w-6 h-6" />
-                </button>
               </div>
             </div>
-          </div>
 
-          {/* Back to home */}
-          <div className="text-center mt-6">
-            <Link
-              href="/"
-              className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition hidden md:inline-flex items-center gap-2"
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            {/* Back to home */}
+            <div className="mt-6 pt-4 border-t border-border/50 text-center">
+              <Link
+                href="/"
+                className="text-muted-foreground hover:text-foreground transition inline-flex items-center gap-2 text-sm font-medium"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              Voltar para o início
-            </Link>
+                <FaHome className="w-4 h-4" />
+                Voltar para o início
+              </Link>
+            </div>
           </div>
-        </>
+        </div>
       ) : (
         <>
           {/* OTP Form */}
-          <div className="bg-slate-800/50 backdrop-blur-lg rounded-2xl p-8 border border-slate-700/50 shadow-2xl">
+
+          <div className="bg-white dark:bg-slate-800/50 backdrop-blur-lg rounded-2xl p-8 border border-gray-200 dark:border-slate-700/50 shadow-2xl">
             <div className="text-center mb-6">
               <span className="text-4xl block mb-2">🔒</span>
-              <h2 className="text-2xl font-bold text-white">
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
                 {step === "setup-otp"
                   ? "Configurar Autenticação"
                   : "Verificação em Duas Etapas"}
               </h2>
-              <p className="text-gray-400 mt-2 text-sm">
+              <p className="text-slate-600 dark:text-gray-400 mt-2 text-sm">
                 Digite o código de 6 dígitos do seu aplicativo autenticador.
               </p>
             </div>
