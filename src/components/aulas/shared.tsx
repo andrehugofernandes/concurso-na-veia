@@ -2669,41 +2669,46 @@ export function StickyModuleNav({
               <LuChevronLeft className="w-4 h-4" />
             </button>
 
-            {/* TabsList mobile — só as TabsTriggers */}
+            {/* TabsList mobile — só as TabsTriggers (compact mode com tooltip) */}
             <TabsList className="flex flex-1 h-auto p-1 bg-muted/20 border border-border/10 rounded-2xl gap-1 shadow-inner min-w-0">
               {modules.map((mod, index) => {
                 const isVisible =
                   index >= effectiveStart && index < effectiveStart + PAGE_SIZE;
                 return (
-                  <TabsTrigger
-                    key={mod.id}
-                    value={mod.id}
-                    className={cn(
-                      "flex-1 py-1.5 px-2 rounded-lg border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
-                      !isVisible && "hidden",
-                    )}
-                  >
-                    <div className="flex flex-col items-center gap-0.5 min-w-0 w-full">
-                      <span
-                        className={cn(
-                          "text-[9px] uppercase tracking-widest font-bold opacity-50 group-data-[state=active]:opacity-100 transition-opacity duration-200 truncate w-full text-center",
-                          MODULE_LABEL_COLORS[
-                            index % MODULE_LABEL_COLORS.length
-                          ],
-                        )}
-                      >
-                        {mod.label}
-                      </span>
-                      <span className="font-bold text-[10px] w-full text-center flex items-center justify-center gap-1 leading-tight truncate px-1">
-                        <span className="truncate">{mod.titulo || mod.title}</span>
-                        {completedModules.has(mod.id) && (
-                          <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20 shrink-0">
-                            <LuCheck size={10} />
-                          </span>
-                        )}
-                      </span>
-                    </div>
-                  </TabsTrigger>
+                  <TooltipProvider key={mod.id}>
+                    <Tooltip delayDuration={200}>
+                      <TooltipTrigger asChild>
+                        <TabsTrigger
+                          value={mod.id}
+                          className={cn(
+                            "flex-1 py-2 px-1.5 rounded-lg border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
+                            !isVisible && "hidden",
+                          )}
+                        >
+                          <div className="flex flex-col items-center gap-0.5 min-w-0 w-full">
+                            <span
+                              className={cn(
+                                "text-[8px] uppercase tracking-widest font-bold opacity-60 group-data-[state=active]:opacity-100 transition-opacity duration-200",
+                                MODULE_LABEL_COLORS[
+                                  index % MODULE_LABEL_COLORS.length
+                                ],
+                              )}
+                            >
+                              M{index + 1}
+                            </span>
+                            {completedModules.has(mod.id) && (
+                              <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20">
+                                <LuCheck size={9} />
+                              </span>
+                            )}
+                          </div>
+                        </TabsTrigger>
+                      </TooltipTrigger>
+                      <TooltipContent side="bottom" className="bg-slate-900 border-none text-white font-medium text-xs max-w-[150px] text-center">
+                        {mod.titulo || mod.title}
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 );
               })}
             </TabsList>
