@@ -1121,6 +1121,49 @@ export default function AulaRazaoProporcao({
         />
         <div className="space-y-[50px]">
 
+          {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Divisão Proporcional: Distribuição Justa de Recursos"
+              description="Como repartir lucros, orçamentos e bonificações segundo razões estabelecidas"
+              variant="rose"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Divisão proporcional é a aplicação prática mais tangível de proporções na vida empresarial. Quando três sócios de um consórcio investem R$ 20.000, R$ 30.000 e R$ 50.000 em um projeto de exploração e o projeto gera um lucro de R$ 100.000, surge a questão inevitável: como distribuir esse lucro de forma justa? Ninguém questiona que cada sócio deve receber uma quantidade **proporcional** ao que investiu. O sócio que investiu 50% do capital (50.000 de 100.000) merecidamente recebe 50% do lucro (50.000 de 100.000). Este é o princípio basilar: cada beneficiário recebe uma fração do total que é **exatamente proporcional** à sua contribuição ou participação. Divisão proporcional não é um capricho matemático; é um requisito legal em praticamente todos os contratos de parceria e consorciamento industrial.
+              </p>
+
+              <p>
+                O método é deliciosamente simples, mas requer atenção no passo a passo. Você tem um total V a distribuir (lucro, orçamento, bonificação, prêmio) e razões r₁, r₂, r₃ que definem a proporção de cada beneficiário. Primeiro passo: some todas as partes da razão. Se a razão é 2:3:4, o total de "partes" é 2+3+4=9. Segundo passo: calcule o valor de cada "parte" dividindo o total pelo número de partes. Se você tem R$ 180.000 para distribuir em 9 partes, cada parte vale 180.000÷9 = R$ 20.000. Terceiro passo: multiplique cada razão pelo valor da parte. Quem tem razão 2 recebe 2×20.000 = R$ 40.000; quem tem razão 3 recebe 3×20.000 = R$ 60.000; quem tem razão 4 recebe 4×20.000 = R$ 80.000. Total: 40.000+60.000+80.000 = R$ 180.000 ✓. A beleza matemática reside no fato de que não importa se você tem 2 beneficiários ou 100; o método permanece idêntico.
+              </p>
+
+              <p>
+                Na Petrobras, divisão proporcional é ubíqua. Alocação de orçamento anual: a diretoria de E&P (Exploração e Produção) aloca R$ 2 bilhões entre plataformas A, B e C na razão de sua potencial produção: 5:7:3. Cada plataforma recebe uma fração exatamente proporcional. Distribuição de bonificação: três equipes trabalham 120 horas, 180 horas e 240 horas em um projeto crítico; o bônus de R$ 10.800 é repartido proporcionalmente ao tempo dedicado. Equipe 1: 120/540 × 10.800 = R$ 2.400; Equipe 2: R$ 3.600; Equipe 3: R$ 4.800. Divisão de receita: um consórcio Petrobras-Parceiro processa gás natural; 60% da receita vai para Petrobras (investidor maior) e 40% para o parceiro, em razão 60:40 (simplificável a 3:2). Toda a engenharia financeira de projetos de óleo e gás repousa sobre este conceito.
+              </p>
+
+              <p>
+                Existe também uma variação crucial: **divisão inversamente proporcional**. Quando você quer distribuir algo de forma inversamente proporcional a números, quem tem o número menor recebe a parte maior. Exemplo: três fornecedores tiveram históricos de atraso de 2 dias, 4 dias e 8 dias. A penalidade total de R$ 2.800 é distribuída inversamente proporcional aos atrasos — ou seja, quem atrasou menos paga proporcionalmente menos. Primeiro, inverta as razões: 2→1/2, 4→1/4, 8→1/8. Depois, converta para inteiros encontrando o MMC de 2, 4, 8 que é 8: 1/2=4/8, 1/4=2/8, 1/8=1/8. Agora a razão é 4:2:1. Total de partes: 7. Valor por parte: 2.800÷7=400. Fornecedor com 2 dias atraso: 4×400=R$ 1.600 (penalidade maior, pois proporcionalmente "menos responsável"); fornecedor com 8 dias: 1×400=R$ 400 (penalidade menor). Esta inversão é frequentemente cobrada em provas como "pegadinha" — candidatos automaticamente dividem proporcionalmente (erro!) em vez de proporcionalmente ao inverso.
+              </p>
+
+              <p>
+                A CESGRANRIO testa divisão proporcional em três contextos principais: (1) Divisão direta com razões explícitas (2:3:5); (2) Divisão inversa disfarçada em linguagem natural ("proporcional ao inverso dos atrasos" ou "inversamente proporcional à idade"); (3) Casos especiais onde a relação é expressa verbalmente ("A recebe o triplo de B", "C recebe 20% a mais que D"). Para o terceiro tipo, você deve converter a descrição verbal para razão numérica. Se A recebe triplo de B, a razão é A:B=3:1. Se C recebe 20% a mais que D, a razão é C:D=1,2:1 (ou 6:5 após simplificar). O erro mais comum é pular o passo "converter para razão numérica" e tentar resolver diretamente — isso causa confusão e cálculos errados. Cada questão de CESGRANRIO exige que você primeiro **identifique a razão**, depois aplique mecanicamente o método dos três passos.
+              </p>
+
+              <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Protocolo de 3 Passos & Inversão</h4>
+                <div className="space-y-3 text-sm">
+                  <p><strong>PASSO 1:</strong> Some as partes da razão: Total_partes = r₁ + r₂ + r₃ + ...</p>
+                  <p><strong>PASSO 2:</strong> Calcule o valor de cada parte: valor_parte = V / Total_partes</p>
+                  <p><strong>PASSO 3:</strong> Multiplique cada razão: xᵢ = rᵢ × valor_parte</p>
+                  <p><strong>INVERSÃO (se aplicável):</strong> Razão inversa a {a, b, c} = {1/a, 1/b, 1/c}. Converta para inteiros via MMC antes de aplicar passos.</p>
+                  <p><strong>Verificação:</strong> Sempre some os resultados finais — devem totalizar V exatamente</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
@@ -1330,6 +1373,53 @@ export default function AulaRazaoProporcao({
           gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
         <div className="space-y-[50px]">
+
+          {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Grandezas Proporcionais: Diretas vs. Inversas"
+              description="A rainha do erro em provas — identificar se duas variáveis crescem juntas ou em sentidos opostos"
+              variant="violet"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                A proporção é fundamentalmente sobre relação. Quando falamos que duas grandezas são proporcionais, estamos declarando que existe uma **relação constante** entre elas. Se você aumenta uma, a outra varia de forma previsível e determinística. A grande divisão ocorre justamente aqui: a variação pode ser **na mesma direção** (diretamente proporcional) ou **em direções opostas** (inversamente proporcional). Formalmente, duas grandezas x e y são **diretamente proporcionais** se y/x = k (uma constante), ou equivalentemente, y = k·x. Isto significa que triplicar x triplica y; reduzir x à metade reduz y à metade. Por outro lado, x e y são **inversamente proporcionais** se x·y = k (o produto é constante), ou equivalentemente, y = k/x. Aqui, triplicar x reduz y a um terço; reduzir x à metade triplica y. A implicação é profunda: para a mesma situação (por exemplo, construir um dique), se x representa "número de operários" e y representa "dias para completar", então x e y são inversamente proporcionais (mais operários = menos dias).
+              </p>
+
+              <p>
+                Na prática industrial, a proporção direta é ubíqua. Se uma refinaria processa petróleo bruto numa taxa constante de 500 barris por hora, então barris processados é diretamente proporcional ao tempo em operação. Após 1 hora: 500 barris. Após 2 horas: 1.000 barris. Após 10 horas: 5.000 barris. A razão (quantidade/tempo) permanece eternamente 500 barris/hora. De forma similar, se um técnico ganha R$ 50 por hora trabalhada, então seu salário é diretamente proporcional ao número de horas (assumindo sem horas extras ou variações); duplicar as horas duplica o salário. Consumo de combustível em um navio, custo de material em construção de oleoduto, número de óleo em uma carga versus o volume total — praticamente toda operação linear em engenharia segue proporcionalidade direta. A beleza da proporcionalidade direta é que ela permite previsões e escalabilidade: se você conhece a taxa (constante k), você pode computar qualquer valor.
+              </p>
+
+              <p>
+                A proporção inversa é igualmente importante mas conceptualmente mais traiçoeira. Se você tem um trabalho fixo (digamos, bombear 100.000 barris do poço) e aumenta o número de bombas (digamos, de 4 para 8), o tempo necessário diminui (não dobra). Com 4 bombas a 500 barris/hora cada (2.000 barris/hora total), levam 50 horas. Com 8 bombas (4.000 barris/hora total), levam 25 horas. Note que 4×50 = 8×25 = 200.000 barris-hora (o produto é constante). Esta é a marca registrada da proporção inversa: o produto x·y permanece fixo. Outro exemplo clássico: velocidade versus tempo para um percurso fixo. Um navio a 20 nós leva 10 dias para uma travessia. A 25 nós, levaria 8 dias (porque 20×10 = 25×8 = 200 nó-dias, uma constante). Frequência e comprimento de onda em física, pressão e volume em gases (Lei de Boyle, mas simplificada), resistência e corrente elétrica (Lei de Ohm, P = V²/R) — todas mostram proporcionalidade inversa em certos regimes.
+              </p>
+
+              <p>
+                A CESGRANRIO flagra candidatos justamente onde eles confundem os dois tipos. Uma questão típica: "Uma equipe de 12 pessoas completa um projeto em 30 dias. Se fossem 18 pessoas, quantos dias?" A reação automática é: "12/18 = 30/x" (tratando como direta, o que daria x = 45 dias, errado). A análise correta é: mais pessoas → menos dias (setas opostas, portanto INVERSA) → 12×30 = 18×x → x = 20 dias. O método das setas, discutido em Módulo 3, é infalível: se você desenha setas indicando a variação de ambas as grandezas e elas apontam na mesma direção (↑↑ ou ↓↓), é DIRETA; se apontam em sentidos opostos (↑↓ ou ↓↑), é INVERSA.
+              </p>
+
+              <p>
+                Um erro sutil mas frequente é aplicar a regra para inversas quando na verdade temos diretas (ou vice-versa), porque o candidato não leu cuidadosamente qual é a relação. A questão pode dizer "o custo é inversamente proporcional ao desconto" — isto soa estranho porque intuitivamente esperamos que mais desconto = menos custo (o que seria inverso... mas não!). Clarando: se desconto aumenta, o preço diminui (direto). Se você codificar "custo" como variável y e "desconto" como x, então y = k − f(x) (uma função de subtração, não de inversão proporcional). O termo "inversamente proporcional" é precise em matemática: significa x·y = constante, não "uma relação que vai na direção oposta intuitivamente". Estes confusões linguísticas semeiam erros.
+              </p>
+
+              <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 rounded-lg border border-violet-200 dark:border-violet-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Identificação Clara: Direta vs. Inversa</h4>
+                <div className="space-y-3 text-sm">
+                  <p><strong>DIRETAMENTE PROPORCIONAL:</strong> y/x = k (constante) ⟺ y = k·x</p>
+                  <p>Sinal: Aumentar x → Aumenta y. Setas ↑↑ ou ↓↓</p>
+                  <p>Exemplos: Tempo × Produção, Velocidade × Distância (tempo fixo), Quantidade × Custo</p>
+
+                  <p className="border-t border-border pt-3"><strong>INVERSAMENTE PROPORCIONAL:</strong> x·y = k (constante) ⟺ y = k/x</p>
+                  <p>Sinal: Aumentar x → Diminui y. Setas ↑↓ ou ↓↑</p>
+                  <p>Exemplos: Velocidade × Tempo (distância fixo), Operários × Dias (trabalho fixo), Pressão × Volume (Boyle)</p>
+
+                  <p className="border-t border-border pt-3"><strong>TESTE RÁPIDO:</strong> Multiplique os dois valores. Se produto constante → INVERSA. Se razão constante → DIRETA.</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1686,6 +1776,55 @@ export default function AulaRazaoProporcao({
         />
         <div className="space-y-[50px]">
 
+          {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Divisão Proporcional Avançada: Múltiplos Critérios"
+              description="De inversas puras a combinações complexas — o que separa candidatos aprovados de classificados"
+              variant="amber"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Enquanto os Módulos 4-5 abordaram divisão proporcional simples (direta ou inversa, um critério apenas), a realidade complexa de grandes empresas frequentemente envolve **múltiplos critérios** aplicados simultaneamente. Considere uma distribuidora de petróleo dividindo um bônus de R$ 100.000 entre três gerentes com base em: (1) volume de vendas que fizeram (critério DIRETO — quem vendeu mais merece mais) e (2) número de reclamações de cliente (critério INVERSO — quem tem mais reclamações não deveria receber tanto). Uma divisão que condiciona apenas ao volume seria injusta para quem tem vendas altas mas gerenciou mal os clientes. Uma divisão que condicionasse apenas às reclamações seria injusta para quem vendeu pouco. O método avançado **combina** ambos os critérios: cada gerente recebe uma pontuação c que é o quociente volume/reclamações, e depois a distribuição ocorre proporcionalmente às pontuações combinadas.
+              </p>
+
+              <p>
+                A fórmula de combinação é elegantemente simples: se você tem um critério direto (a₁, a₂, a₃...) e um critério inverso (b₁, b₂, b₃...), o coeficiente combinado para cada receptor é cᵢ = aᵢ / bᵢ. Depois, distribui-se o total V proporcionalmente aos coeficientes: xᵢ = (cᵢ / ∑cⱼ) × V. Por exemplo: três fornecedores têm históricos de qualidade (score 1-10, critério direto) e histórico de atraso em dias (critério inverso). Fornecedor A: 9 de qualidade, 2 dias de atraso → c_A = 9/2 = 4,5. Fornecedor B: 7 de qualidade, 1 dia → c_B = 7/1 = 7. Fornecedor C: 8 de qualidade, 4 dias → c_C = 8/4 = 2. Total de coeficientes: 4,5 + 7 + 2 = 13,5. Se houver R$ 27.000 a distribuir em bônus de performance: A recebe (4,5/13,5) × 27.000 = R$ 9.000; B recebe (7/13,5) × 27.000 = R$ 14.000; C recebe (2/13,5) × 27.000 = R$ 4.000. Note que B, apesar de ter qualidade inferior a A, recebeu mais porque praticamente não atrasa. Este é o poder da ponderação combinada.
+              </p>
+
+              <p>
+                Na Petrobras, casos avançados de divisão proporcional emergem em contextos como: alocação de crédito orçamentário entre Unidades de Negócio com base em desempenho operacional (DIRETO) e histórico de desvios (INVERSO); distribuição de bônus entre equipes por produção alcançada (DIRETO) mas ponderada pelo número de acidentes ocupacionais (INVERSO); alocação de verba para investimento em I&D por número de patentes geradas (DIRETO) ponderado pela idade da equipe (talvez INVERSO, supondo que equipes mais jovens merecem mais investimento). Todos estes requerem a lógica de coeficientes combinados, não apenas aplicação mecânica do método simples de três passos.
+              </p>
+
+              <p>
+                Complementando as divisões combinadas, há também **casos especiais onde a questão fornece dados incompletos** e você deve deduzir o total ou as partes faltantes. Por exemplo: "Quatro setores em razão 2:3:4:6, e o setor maior recebe R$ 180.000. Quanto recebem os outros?" Você não conhece o total V a priori, mas conhece a maior parte. O método é: maior razão é 6, maior parte é R$ 180.000, logo cada "parte unitária" vale 180.000 ÷ 6 = R$ 30.000. O total de partes é 2+3+4+6 = 15, logo total V = 15 × 30.000 = R$ 450.000. Os outros recebem 2×30.000 = R$ 60.000; 3×30.000 = R$ 90.000; 4×30.000 = R$ 120.000. Este atalho é frequentemente cobrado porque elimina candidatos que só decoraram "passo a passo" sem entender a estrutura.
+              </p>
+
+              <p>
+                A CESGRANRIO em nível avançado testa: (1) Divisão com múltiplos critérios (combinação direto-inverso); (2) Caso onde você conhece uma parte e deve deduzir o total; (3) Problemas onde a razão é expressa verbalmente ("A recebe 50% a mais que B, e B recebe o dobro de C") e você deve converter para números; (4) Pegadinhas linguísticas ("inversamente proporcional a 2 e 3" = proporcionalmente a 1/2 e 1/3, que após MMC = proporcionalmente a 3 e 2). Cada tipo exige uma adaptação tática do método básico. Candidatos que memorizaram cegamente o procedimento dos "três passos" fracassam nesses casos. Candidatos que internalizaram a **lógica subjacente** (distribuir proporcionalmente aos coeficientes, sejam quais forem) resolvem com segurança.
+              </p>
+
+              <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Métodos Avançados: Combinado & Dedução</h4>
+                <div className="space-y-3 text-sm">
+                  <p><strong>Divisão Combinada (Múltiplos Critérios):</strong></p>
+                  <p className="ml-4">1. Calcule coeficiente: cᵢ = (critério direto)ᵢ / (critério inverso)ᵢ</p>
+                  <p className="ml-4">2. Distribua: xᵢ = (cᵢ / ∑cⱼ) × V</p>
+
+                  <p className="border-t border-border pt-3"><strong>Dedução Reversa (Total Desconhecido):</strong></p>
+                  <p className="ml-4">Se conhece uma parte Xᵢ com razão rᵢ: valor_unitário = Xᵢ / rᵢ</p>
+                  <p className="ml-4">Total = (∑rⱼ) × valor_unitário</p>
+
+                  <p className="border-t border-border pt-3"><strong>Conversão Verbal → Numérica:</strong></p>
+                  <p className="ml-4">"A 50% mais que B" → A:B = 1,5:1 ou 3:2</p>
+                  <p className="ml-4">"Inv. proporcional a 2,4,8" → Conv. para inteiros: 1/2, 1/4, 1/8 → 4:2:1</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
@@ -1894,6 +2033,49 @@ export default function AulaRazaoProporcao({
           gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
         />
         <div className="space-y-[50px]">
+
+          {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Proporção Contínua: O Elegante Encadeamento"
+              description="Quando o meio termo é a chave geométrica entre os extremos — a média proporcional"
+              variant="blue"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Uma **proporção contínua** é um encadeamento elegante de razões onde o termo do meio aparece em ambas as razões. Formalmente, a:b = b:c. Note a estrutura: a e c são os "extremos" e b é o "meio" — e b aparece duas vezes, uma como consequente da primeira razão e outra como antecedente da segunda. Aplicando a propriedade fundamental (produto dos extremos = produto dos meios), obtemos: a × c = b × b, ou b² = a × c. Logo, b = √(a × c). Este resultado é profundo: o termo do meio é a **raiz quadrada geométrica** (ou média geométrica) dos extremos. Por exemplo, se a = 4 e c = 16, então a proporção contínua é 4:b = b:16, e b = √(4×16) = √64 = 8. Você pode verificar: 4:8 = 8:16 = 1:2 ✓. Esta relação é geometricamente bonita e frequentemente aparece em problemas de escala, ampliação de fotografias, e design (onde proporções mantêm a harmonia visual).
+              </p>
+
+              <p>
+                É crucial não confundir **média geométrica** (√(a×c)) com **média aritmética** ((a+c)/2). Para 4 e 16, a média aritmética é (4+16)/2 = 10, enquanto a média geométrica é √(4×16) = 8. Ambas são válidas em diferentes contextos, mas em proporção contínua, apenas a geométrica funciona. Por quê? Porque a proporção contínua é uma afirmação sobre **razões iguais**, não sobre diferenças iguais. A progressão geométrica (PG) é intimamente relacionada: em uma PG com primeiro termo a e último termo c, o termo do meio de três termos é exatamente √(a×c). Exemplo: a PG 2, 6, 18 tem razão q = 3. O termo do meio (6) é √(2×18) = √36 = 6 ✓. Em engenharia e finanças, progressões geométricas modelam crescimento exponencial (como juros compostos), e a média geométrica é a ferramenta natural para análise.
+              </p>
+
+              <p>
+                De proporção contínua derivam dois conceitos frequentemente testados: **terceira proporcional** e **quarta proporcional**. A terceira proporcional a dois números a e b é o número x tal que a:b = b:x. Aplicando a propriedade fundamental: ax = b² → x = b²/a. Exemplo: terceira proporcional a 5 e 10 é x tal que 5:10 = 10:x → 5x = 100 → x = 20. A quarta proporcional de três números a, b, c é o número x tal que a:b = c:x. Aplicando a propriedade: ax = bc → x = (b×c)/a. Exemplo: quarta proporcional de 6, 9, 8 é x tal que 6:9 = 8:x → 6x = 72 → x = 12. Estes dois conceitos são frequentemente cobertos em questões CESGRANRIO de forma indireta — uma questão pode perguntar "se a razão entre distância no mapa e distância real é 1:50.000, e uma distância no mapa é 4 cm, qual é a distância real?", que é exatamente encontrar a quarta proporcional de 1, 50.000, 4.
+              </p>
+
+              <p>
+                Um caso especial elegante é a **razão áurea**, frequentemente mencionada em contextos de arquitetura, arte e design. A razão áurea φ (lê-se "phi") ≈ 1,618 é definida pela proporção a:b = (a+b):a, que leva a x² − x − 1 = 0 com solução φ = (1+√5)/2. Se você possui um segmento de comprimento total L e deseja dividi-lo na razão áurea (encontrando um ponto que o separa em duas partes cuja razão é φ), o segmento maior será L × φ/(1+φ) e o menor será L − (segmento maior). A razão áurea aparece na natureza (conchas, pétalas de flores), na história da arte (padrão estético), e raramente em provas de CESGRANRIO — mas quando aparece, invariavelmente fornecem o valor φ ≈ 1,618, não sendo necessário memorizar ou derivar.
+              </p>
+
+              <p>
+                A CESGRANRIO testa proporção contínua através de: (1) Cálculo de média proporcional (geométrica) dadas dois números; (2) Identificação de termos em progressão geométrica; (3) Terceira ou quarta proporcional em problemas contextualizados (escalas, mapa, receitas, misturas); (4) Discriminação entre média aritmética e geométrica (pegadinha clássica). Uma questão típica: "Se a receita de um produto demanda proporção 3:5:7 de ingredientes A, B, C, qual a quantidade de B em 1.500g?" (quarta proporcional). Outra: "Uma série de tamanhos de tubulação segue proporção contínua: o primeiro tem 50mm, o terceiro tem 200mm. Qual o diâmetro do segundo?" (terceira proporcional ou média geométrica: √(50×200) = √10.000 = 100mm). Candidatos que entendem a lógica subjacente resolvem esses com confiança; candidatos que tentam memorizar fórmulas frequentemente falham.
+              </p>
+
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Definições: Contínua, Terceira, Quarta & Média</h4>
+                <div className="space-y-3 text-sm">
+                  <p><strong>Proporção Contínua:</strong> a:b = b:c ⟹ b² = a×c ⟹ b = √(a×c) (média geométrica)</p>
+                  <p><strong>Terceira Proporcional:</strong> a:b = b:x ⟹ x = b²/a</p>
+                  <p><strong>Quarta Proporcional:</strong> a:b = c:x ⟹ x = (b×c)/a</p>
+                  <p><strong>Média Geométrica vs Aritmética:</strong> √(a×c) ≠ (a+c)/2 | Geométrica para proporções, Aritmética para somas</p>
+                  <p><strong>Razão Áurea (φ):</strong> φ = (1+√5)/2 ≈ 1,618 | Define proporção a:b = (a+b):a</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2107,6 +2289,50 @@ export default function AulaRazaoProporcao({
           gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
         />
         <div className="space-y-[50px]">
+
+          {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Escalas: A Razão Entre Representação e Realidade"
+              description="De plantas industriais a mapas geográficos — a aplicação mais tangível da razão em engenharia"
+              variant="emerald"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Uma escala é formalmente a **razão entre a dimensão representada (mapa, planta, desenho) e a dimensão real correspondente**. Expressa-se como E = d_mapa / d_real ou na forma 1:N, significando que uma unidade no mapa representa N unidades na realidade. Uma escala 1:50.000 é uma razão — especificamente, 1 cm no mapa iguala 50.000 cm (500 metros) na realidade. O conceito é absolutamente essencial em engenharia, cartografia, arquitetura e design. Um engenheiro de Petrobras precisa desenhar uma tubulação de 20 metros de comprimento numa planta que cabe numa folha A4. Não é possível desenhar a verdadeiro tamanho, então usa-se escala. Com escala 1:50, a tubulação é representada por uma linha de 20m ÷ 50 = 0,4 m = 40 cm no papel — ainda grande, mas manejável. Se usasse escala 1:100, seria 20 cm. A escolha de escala é um compromisso entre detalhe visível (escala grande, como 1:50, mostra mais detalhe) e abrangência (escala pequena, como 1:500.000, mostra mais área).
+              </p>
+
+              <p>
+                Existe uma subdivisão importante: **escalas grandes** e **escalas pequenas**. Ao contrário da intuição linguística, uma escala "grande" (como 1:50) representa proporcionalmente um denominador menor, portanto cobre menos área mas oferece mais detalhe. Uma escala "pequena" (como 1:500.000) tem denominador maior, cobre mais área mas com menos detalhe. Em plantas industriais, Petrobras tipicamente usa escalas de 1:50 (para detalhes críticos de tubulação e valvularia), 1:100 (para layout de equipamentos em uma unidade de processamento), 1:500 (para layout geral de uma refinaria), 1:1.000 (para layout do complexo inteiro). Em mapas cartográficos, escalas variam drasticamente: 1:5.000 (mapa de uma cidade pequena), 1:25.000 (mapa detalhado de região), 1:100.000 (mapa de microrregião), 1:1.000.000 (mapa de estado ou país). A escala não é uma constante universal; é escolhida pelo designer conforme o propósito.
+              </p>
+
+              <p>
+                As conversões entre mapa e realidade são o coração da aplicação prática. Se você tem um mapa em escala 1:50.000 e mede uma distância de 4 cm entre duas cidades, a distância real é 4 cm × 50.000 = 200.000 cm = 2 km. O cálculo é uma simples proporcionalidade direta (módulo 3): 1 cm (mapa) / 50.000 cm (realidade) = 4 cm (mapa) / x cm (realidade) → x = 4 × 50.000 = 200.000 cm. A dificuldade frequentemente reside na **conversão de unidades**. Uma questão pode dizer "escala 1:24.000, distância real 1,2 km, qual a medida no mapa?". Se você tentar aplicar diretamente 1,2 ÷ 24.000, obtém um número estranho. O correto é converter 1,2 km para a mesma unidade do denominador: 1,2 km = 1.200.000 cm. Agora: mapa = 1.200.000 ÷ 24.000 = 50 cm. O erro mais comum é não converter unidades — candidatos mecanicamente dividem números sem perceber que estão misturando unidades (km no numerador, cm no denominador).
+              </p>
+
+              <p>
+                Na Petrobras, escalas aparecem em contextos específicos: plantas de refinarias, desenhos de oleodutos, mapas de campos de exploração, projetos de plataformas offshore. Um especialista em produção pode receber um mapa em escala 1:50.000 mostrando campos de petróleo e precisar calcular distâncias reais para planejamento logístico. Um engenheiro pode receber uma planta em escala 1:100 e precisar verificar se um novo equipamento (dimensões reais 3m × 5m) cabe no espaço alocado (10cm × 16,7cm no desenho, que correspondem a 10×100=1.000cm=10m e 16,7×100=1.670cm=16,7m na realidade — portanto cabe). A habilidade de converter entre escalas sem erros é absolutamente prática.
+              </p>
+
+              <p>
+                A CESGRANRIO testa escalas em cinco contextos principais: (1) Conversão direta (mapa → real ou real → mapa); (2) Mudança de escala (redrawing em escala diferente); (3) Problemas com unidades mistas (km, m, cm, mm); (4) Áreas em escala (se 1cm → 50m, então 1cm² → 2.500m²); (5) Reconhecimento de qual escala é "maior" ou "menor" (um truque semântico frequente). Um erro sistêmico: quando a questão apresenta uma mudança de escala, candidatos frequentemente calculam mal a nova medida. Exemplo: "desenho na escala 1:50 mede 6cm. Redesenhe em escala 1:100. Qual o novo tamanho?" Resposta correta: a medida real é 6×50=300cm. Na escala 1:100, é 300÷100=3cm. Candidatos erram tentando converter diretamente "de 1:50 para 1:100" sem passar pela realidade.
+              </p>
+
+              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Definição & Conversões Essenciais</h4>
+                <div className="space-y-3 text-sm">
+                  <p><strong>Escala:</strong> E = d_mapa / d_real | Forma 1:N (1 unidade no mapa = N unidades na realidade)</p>
+                  <p><strong>Mapa → Real:</strong> d_real = d_mapa × N</p>
+                  <p><strong>Real → Mapa:</strong> d_mapa = d_real ÷ N</p>
+                  <p><strong>Mudança de Escala:</strong> Passe sempre pela realidade: d_real = d_mapa1 × N₁, depois d_mapa2 = d_real ÷ N₂</p>
+                  <p><strong>Unidades:</strong> Converta TUDO para cm antes de calcular, depois converta para a unidade pedida</p>
+                  <p><strong>Escala Grande (mais detalhe):</strong> 1:50, 1:100 | <strong>Escala Pequena (menos detalhe):</strong> 1:50.000, 1:1.000.000</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2376,6 +2602,50 @@ export default function AulaRazaoProporcao({
         />
         <div className="space-y-[50px]">
 
+          {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Razão e Proporção no Coração da Petrobras"
+              description="De FPSO a refinarias: como a matemática funciona em operações reais de exploração e produção"
+              variant="rose"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Razão e proporção não são abstratidações matemáticas isoladas em livros; elas são o **linguajar prático da engenharia de petróleo**. Desde o momento em que uma empresa planeja um poço, até o fechamento de uma operação décadas depois, razões e proporções guiam decisões de bilhões de reais. Quando a Petrobras avalia o **rendimento de uma refinaria** — quantos barris úteis produz a partir de x barris de petróleo bruto processados — está calculando uma razão: rendimento = barris úteis / barris brutos. A Refinaria Presidente Bernardes (RPBC) processa cerca de 300.000 barris por dia e produz 210.000 barris de derivados úteis, rendimento = 210.000/300.000 = 0,70 = 70%. Este é um número absolutamente central para qualquer análise de competitividade e eficiência da refinaria. Se essa métrica cai de 70% para 60%, significa um problema operacional sério. Se sobe de 70% para 75% após otimização, é sucesso mensurado e reportado aos acionistas.
+              </p>
+
+              <p>
+                Na exploração e produção (E&P), plataformas offshore usam proporções para dimensionar **sistemas de separação e processamento**. Uma FPSO (Floating Production, Storage and Offloading) típica tem múltiplos separadores hidrociclo nicos para remover água do óleo bruto. Se 6 separadores em paralelo processam 2.400 m³/hora, então a taxa de processamento é diretamente proporcional ao número de separadores: com 9 separadores, espera-se 9/6 × 2.400 = 3.600 m³/hora. Além disso, **custos são proporcionais**: perfuração de poços a 500 metros custa aproximadamente R$ 3 milhões; perfuração a 1.200 metros segue a mesma proporcionalidade (com ajustes), custando rougly 1.200/500 × 3.000.000 = R$ 7.200.000. Estimar orçamentos de grandes projetos (que custam entre R$ 10 bilhões e R$ 30 bilhões) depende crucialmente dessas proporções iniciais.
+              </p>
+
+              <p>
+                Logística e transporte de petróleo dependem de **escalas e proporções constantemente**. Uma plataforma a 150 km da costa em escala de mapa 1:500.000 representa uma distância de 1.500.000 cm ÷ 500.000 = 3 cm no papel. Planejadores usam mapas para estimar rotas de navios tanque e sistemas de oleoduto, sempre convertendo entre escalas. Um oleoduto que deve percorrer 300 km em uma planta 1:100.000 é representado por uma linha de 300 km = 30.000.000 cm ÷ 100.000 = 300 cm = 3 metros no desenho — impraticável. Em escala 1:1.000.000, seria 30 cm — manejável. O engenheiro escolhe a escala apropriada conforme o contexto (plano geral, detalhes, logística).
+              </p>
+
+              <p>
+                Na **gestão de recursos e pessoal**, Petrobras distribui equipes em plataformas proporcionalmente a critérios combinados. Três plataformas A, B, C com capacidade de processamento 3.000, 4.000, 5.000 bpd (barris por dia) devem receber técnicos proporcionalmente — plataforma A: 3/(3+4+5) × 100 técnicos = 30; plataforma B: 40; plataforma C: 50. Mas há também critérios inversos: a plataforma com maior taxa de falhas histórica merece técnicos especializados. A divisão torna-se combinada: distribuir bônus anual proporcionalmente a produção (direto) mas inversamente a acidentes ocupacionais (inverso). O coeficiente é produção/acidentes, e a distribuição segue esses coeficientes normalizados.
+              </p>
+
+              <p>
+                A CESGRANRIO, ao cobrar "Razão e Proporção", frequentemente embutiça uma questão Petrobras real em linguagem de prova. Exemplo: "Uma plataforma processa 6.000 m³ de óleo bruto por dia. A razão entre óleo bruto processado e óleo destilado obtido é 5:4. Qual a quantidade de óleo destilado?" Resposta: óleo destilado = 6.000 × 4/5 = 4.800 m³/dia. Outra: "Três gerentes de campo recebem bonificação de R$ 120.000 na razão de 2:3:5 por desempenho. Quanto o segundo gerente recebe?" Resposta: 3/(2+3+5) × 120.000 = 36.000. Estes tipos de questão não são abstratos; refletem situações que acontecem mensalmente dentro da empresa.
+              </p>
+
+              <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Contextos Reais Petrobras: Checklist</h4>
+                <div className="space-y-2 text-sm">
+                  <p>✓ <strong>Rendimento/Eficiência:</strong> Barris úteis / barris brutos, energia saída / energia entrada, m³ produzido / m³ processado</p>
+                  <p>✓ <strong>Escalabilidade:</strong> Se N equipamentos processam X, então 2N equipamentos processam 2X (proporção direta)</p>
+                  <p>✓ <strong>Custos:</strong> Custo de perfuração ∝ profundidade; custo de tubagem ∝ comprimento</p>
+                  <p>✓ <strong>Logística:</strong> Escalas em plantas, mapas e rotas; conversões entre unidades essenciais</p>
+                  <p>✓ <strong>Gestão de Recursos:</strong> Distribuição proporcional a critérios (produção, capacidade, histórico)</p>
+                  <p>✓ <strong>Segurança:</strong> Razão acidentes/horas-trabalhadas; distribuição inversa de bônus conforme infrações</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
@@ -2589,6 +2859,49 @@ export default function AulaRazaoProporcao({
           gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
         />
         <div className="space-y-[50px]">
+
+          {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Simulado Final: Integrando Razão, Proporção e Aplicações"
+              description="O teste definitivo — 8 questões que cobrem todos os 9 módulos anteriores em contextos reais"
+              variant="violet"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Este módulo final é uma consolidação de tudo que foi aprendido nos nove módulos anteriores. Não é um novo tema matemático; é uma **prova integrada** que exige que você reconheça quando usar razão simples, quando usar proporção, quando usar regra de três, quando aplicar divisão proporcional, quando identificar proporcionalidade (direta ou inversa), quando aplicar proporção contínua, quando usar escalas, e como conectar tudo isto a contextos Petrobras reais. A prova de CESGRANRIO nunca testa um conceito isolado; sempre mescla conhecimentos. Uma questão pode começar com "Um oleoduto em escala 1:50.000 no mapa mede 8 cm. O custo de construção é proporcional ao comprimento real. Se 100 km custam R$ 500 milhões, quanto custará este oleoduto?" Você precisa: (1) Converter escala (8 cm × 50.000 = 400 km); (2) Identificar proporção direta (comprimento ↑ custo ↑); (3) Montar e resolver (100/500 = 400/x → x = 2.000 milhões = R$ 2 bilhões).
+              </p>
+
+              <p>
+                Os erros mais comuns em simulados finais refletem lacunas em qualquer dos módulos anteriores. Candidatos que confundem proporcionalidade direta com inversa frequentemente acertam 30-40% do simulado. Candidatos que incorrem em erros de conversão de unidades (cm para km, por exemplo) eliminam pontos mesmo tendo a lógica correta. Candidatos que não simplificam frações ou não verificam se divisões chegam a números inteiros sofrem erros matemáticos básicos. Candidatos que lêem apressadamente ("a razão entre A e B") mas invertem inconscientemente (calculam B/A em vez de A/B) caem em pegadinhas clássicas. Este simulado serve para **diagnosticar** onde suas fraquezas residem. Se você errar questões sobre proporção contínua, sabe que precisa revisar o Módulo 7. Se errar questões com escalas, volta ao Módulo 8. Se errar questões combinadas, pratica a integração.
+              </p>
+
+              <p>
+                O nível de dificuldade deste simulado é **Elite** — ou seja, questões que podem aparecer nas provas mais competitivas, onde a Petrobras seleciona entre candidatos com pontuação muito alta. Não são questões impossíveis, mas exigem atenção, cuidado e integração de múltiplos conceitos. Por exemplo: "Três plataformas A, B, C têm capacidade 4.000, 6.000, 8.000 bpd. Orçamento anual de R$ 18 bilhões é distribuído na razão de suas capacidades. Plataforma A recebe qual quantia?" Solução: Total capacidade = 18.000 bpd. A recebe 4.000/18.000 × 18 bilhões = R$ 4 bilhões. Simples se você domina divisão proporcional; inacessível se não. Outro exemplo de nível Elite: "Uma proporção é a:b = c:d. Dados a=6, b=9, d=12, encontre c e identifique se é uma proporção contínua ou quarta proporcional." Solução: 6/9 = c/12 → c = 8. É quarta proporcional. Verificação: 6:9 = 8:12 simplificam ambas para 2:3 ✓. Questões assim diferenciam candidatos que apenas memorizaram procedimentos de candidatos que internalizaram conceitos.
+              </p>
+
+              <p>
+                Estratégia para o simulado: (1) Leia a questão com atenção (uma leitura rápida pode perder nuances críticas); (2) Identifique qual tipo de problema é (razão? proporção? regra de três? escala?); (3) Converta unidades se necessário; (4) Aplique a fórmula apropriada; (5) Simplifique e chegue a uma resposta; (6) Verifique se a resposta faz sentido no contexto. Um número absurdamente grande ou pequeno em relação ao que se espera é sinal de erro. Se uma questão sobre escala (1:50.000) resulta em uma distância real de 0,001 cm, algo está errado. Se uma distribuição proporcional resulta em uma parte negativa, está errado. Verificações de plausibilidade eliminam muitos erros.
+              </p>
+
+              <p>
+                Após completar este simulado, você terá cobertura de 100% dos tópicos testados em provas CESGRANRIO de matemática básica para Petrobras. As questões de razão e proporção não são apenas 1-2 questões numa prova; frequentemente são 3-5 questões diretas + várias questões implícitas em regra de três composta, porcentagem, divisão de lucros, etc. Candidatos que dominam razão e proporção têm uma vantagem significativa. Candidatos que não dominam perdem pontos sistematicamente. Este módulo está desenhado para transformar você na primeira categoria.
+              </p>
+
+              <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 rounded-lg border border-violet-200 dark:border-violet-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Estratégia de Resolução: 5 Passos</h4>
+                <div className="space-y-3 text-sm">
+                  <p><strong>PASSO 1: Leitura atenta</strong> — Identifique o tipo de problema (razão, proporção, escala, divisão, etc.)</p>
+                  <p><strong>PASSO 2: Conversão de unidades</strong> — Se necessário, converta tudo para uma unidade comum (cm, por exemplo)</p>
+                  <p><strong>PASSO 3: Montagem da equação</strong> — Escreva proporção, regra de três, ou divisão apropriada</p>
+                  <p><strong>PASSO 4: Resolução e simplificação</strong> — Calcule, simplifique frações, chegue a número final</p>
+                  <p><strong>PASSO 5: Verificação de plausibilidade</strong> — O resultado faz sentido? É razoável em magnitude? Responda!</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
           {/* ─── Revisão Rápida ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
