@@ -202,8 +202,53 @@ export default function AulaEquacoes1Grau({
             numero={1}
             titulo="Fundamentos & Princípio da Balança"
             descricao="A base: isolar a incógnita na balança invisível. Operação inversa é LEI."
-            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
+
+          {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Equação de 1º Grau: A Linguagem Algébrica da Balança"
+              description="O conceito fundamental que permite resolver qualquer problema com uma incógnita desconhecida"
+              variant="amber"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Uma **equação do primeiro grau** é a tradução matemática de uma pergunta sobre um valor desconhecido. Formalmente, é uma igualdade algébrica contendo uma incógnita (geralmente representada por x, y ou outra letra) elevada ao expoente 1 (invisível). Exemplos: 2x − 8 = 10; 5y + 3 = 28; 3a − 6 = a + 2. O termo "primeiro grau" refere-se ao fato de que o maior expoente é 1 (em contraste com equações de segundo grau x² + 2x − 3 = 0, que têm expoente máximo 2). O sinal "=" é o pino central de uma **balança de laboratório invisible**: qualquer coisa que você faz de um lado, **você DEVE fazer exatamente do outro lado**, ou a balança quebra (a igualdade se destrói). A elegância das equações de 1º grau reside no fato de que, diferentemente de equações de grau superior, **sempre existe exatamente uma solução** (salvo casos degenerados). Se uma equação é verdadeira para x = 5, não há outro valor de x que a torna verdadeira.
+              </p>
+
+              <p>
+                Historicamente, equações lineares emergiram para resolver problemas práticos de comércio e engenharia. Babilônios antigos (1.800 a.C.) resolviam problemas do tipo "comprei 3 cestas de trigo e 2 de cevada por 10 moedas. Cada cesta de cevada custa 1 moeda. Quanto custa cada cesta de trigo?" — isto é uma equação linear em forma de linguagem. Na Idade Média, matemáticos árabes (Al-Khwarizmi, ~800 d.C.) formalizaram a resolução de equações lineares e até deram origem ao termo "álgebra". Na Petrobras e em engenharia moderna, equações de 1º grau aparecem continuamente: calcular vazão de óleo baseada em pressão e resistência, estimar custos de produção dado consumo de energia, determinar quantidades de insumos necessários para atingir uma meta de output. A incapacidade de resolver equações lineares é um bloqueador crítico em STEM (ciência, tecnologia, engenharia, matemática).
+              </p>
+
+              <p>
+                O **princípio fundamental** subjacente a todas as equações é chamado "operações inversas" ou "operações simétricas". Se você adiciona 8 a ambos os lados de uma igualdade, ela permanece verdadeira (propriedade fundamental da igualdade). Se você multiplica ambos os lados por 2, continua verdadeira. Se você tira a raiz quadrada de ambos os lados (com cuidado com sinais), continua. Este é o motivo pelo qual podemos "passar para o outro lado invertendo a operação": não é mágica, é uma aplicação consciente da propriedade fundamental. A adição se inverte por subtração (5 + 3 = 8 ⟺ 5 = 8 − 3). A multiplicação se inverte por divisão (6 × 4 = 24 ⟺ 6 = 24 ÷ 4). Esta "inversão de operações" é **a chave absoluta** para resolver qualquer equação de 1º grau.
+              </p>
+
+              <p>
+                O **método de resolução padrão** segue um protocolo de três passos, aplicável mecanicamente a qualquer equação de 1º grau. Passo 1: **Reúna termos com a incógnita de um lado e termos numéricos do outro**, usando operações inversas. Passo 2: **Simplifique ambos os lados** (combine termos semelhantes). Passo 3: **Isole a incógnita**, dividindo pelo coeficiente (se a incógnita está multiplicada por um número). Exemplo: 3x − 5 = 10. Passo 1: 3x = 10 + 5 = 15. Passo 2: 3x = 15. Passo 3: x = 15 ÷ 3 = 5. Verificação: 3(5) − 5 = 15 − 5 = 10 ✓. Qualquer candidato que domina estes três passos resolve 80% das questões de equações de 1º grau em provas CESGRANRIO. O outro 20% envolve sutilezas (frações, parênteses aninhados, armadilhas de sinal) cobertos em módulos posteriores.
+              </p>
+
+              <p>
+                A CESGRANRIO testa equações de 1º grau em cinco contextos principais: (1) Equações diretas (2x + 3 = 9); (2) Equações com parênteses (3(x−2) = 12); (3) Equações com frações (x/4 + 2 = 5); (4) Tradução de linguagem natural ("triplo de um número menos 5 é 16"); (5) Sistemas de equações onde você resolve uma por substituição. O erro mais comum é erro de sinal — esquecer de inverter o sinal ao "passar para o outro lado". Se você tem −x = 5, a solução é x = −5, não x = 5. Outro erro: dividir apenas um termo por um número em vez de dividir a equação inteira. Se 2x = 10, você divide ambos os lados por 2 para obter x = 5, não "divide 10 por 2 e deixa 2x intacto". Estes erros sistemáticos caem candidatos mesmo que entendam o conceito.
+              </p>
+
+              <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Definição Formal & Operações Inversas</h4>
+                <div className="space-y-3 text-sm">
+                  <p><strong>Equação de 1º Grau:</strong> Igualdade da forma ax + b = c (a ≠ 0) com uma incógnita x</p>
+                  <p><strong>Solução (Raiz):</strong> O valor de x que torna a igualdade verdadeira</p>
+                  <p><strong>Operações Inversas (CRÍTICAS):</strong></p>
+                  <p className="ml-4">• Adição ↔ Subtração (+ passa com −, − passa com +)</p>
+                  <p className="ml-4">• Multiplicação ↔ Divisão (× passa com ÷, ÷ passa com ×)</p>
+                  <p className="ml-4">• Potência ↔ Raiz (x² passa como √x, √x passa como x²)</p>
+                  <p><strong>Propriedade Fundamental da Igualdade:</strong> Se faz algo em um lado, faça do outro lado também</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -426,6 +471,10 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={1}
             variant="indigo"
@@ -464,8 +513,8 @@ export default function AulaEquacoes1Grau({
 
                     <QuizInterativo
             questoes={quizM1}
-            titulo="Fixação - Módulo 1"
-            numero={1}
+            titulo="QUIZ: Módulo Nº 1"
+            numero={2}
             variant="blue"
             icone="🧠"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -497,8 +546,51 @@ export default function AulaEquacoes1Grau({
             numero={2}
             titulo="Tradução de Problemas: Português → Matemática"
             descricao="A habilidade que separa os 70% dos 90%: ler e converter em equação."
-            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
           />
+
+          {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Do Português para a Linguagem Algébrica: A Tradução Crítica"
+              description="Converter palavras em símbolos matemáticos — a barreira entre ler um problema e resolvê-lo"
+              variant="blue"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                A maioria dos problemas de equações de 1º grau não é apresentada na forma pronta "2x + 5 = 15". Eles vêm em **linguagem natural (português)**, frequentemente com múltiplos parágrafos e contexto. A CESGRANRIO gosta de disfarçar equações em cenários realistas: "Um gerente de plataforma recebe salário fixo de R$ 10.000 por mês. Para cada metro de profundidade que perfura além de 500m, recebe um bônus de R$ 50 por metro. Se em um mês recebeu um total de R$ 12.000, qual foi a profundidade perfurada?" Esta é uma equação linear disfarçada: 10.000 + 50(x − 500) = 12.000, onde x é a profundidade. Candidatos que não conseguem **traduzir o português em símbolos algébricos** não conseguem nem montar a equação, portanto fracassam. Este módulo ensina exatamente esta tradução.
+              </p>
+
+              <p>
+                A tradução segue um **dicionário operacional** que CESGRANRIO usa consistentemente. Quando lê "um número", denota-se x. Quando lê "o dobro de um número", denota-se 2x. "A metade", denota x/2. "O triplo menos cinco", denota 3x − 5. "O sucessor" (próximo inteiro), x + 1. "O antecessor", x − 1. "Aumentou em 20%", significa multiplicar por 1,20. "Diminuiu em 10%", significa multiplicar por 0,90. "O quádruplo de um número somado a 8 é 32" traduz-se como 4x + 8 = 32. Este dicionário tem aproximadamente 20 palavras-chave que cobrem 99% das questões. Candidatos que decoram estas palavras-chave conseguem traduzir qualquer problema. Candidatos que não as decoram ficam presos, reinterpretando cada palavra enquanto o tempo passa.
+              </p>
+
+              <p>
+                Um padrão frequente em provas Petrobras é o **problema contextualizante**: "Uma refinaria recebe carregamento de x barris de petróleo bruto. Processa 15.000 barris no primeiro turno. Processa 12.000 barris no segundo turno. Restam 8.000 barris para o terceiro turno. Qual o carregamento total?" Tradução: x − 15.000 − 12.000 = 8.000, logo x = 35.000. Outro padrão: **divisão de quantidades** — "Duas equipes compartilham bônus de R$ 15.000 na razão 3:2 (você vê razão aqui! módulo anterior). Quanto a segunda equipe recebe?" Tradução: se a razão é 3:2, a segunda equipe recebe 2/(3+2) × 15.000 = 2/5 × 15.000 = 6.000. Estes problemas integram múltiplos conceitos — a razão do módulo anterior mais equação de 1º grau deste módulo.
+              </p>
+
+              <p>
+                A arte da tradução repousa em **separar a estrutura do problema do contexto emocional**. Uma questão diz "Maria tem o triplo da idade de João. A soma de suas idades é 40 anos. Qual a idade de João?" O contexto emocional (personagens, situação da vida real) é irrelevante. A **estrutura** é: x (idade de João) + 3x (idade de Maria) = 40. Logo 4x = 40, x = 10. Candidatos que se distraem com a narrativa ("Maria trabalha em uma refinaria, João é técnico...") perdem tempo. Candidatos que extraem imediatamente a estrutura matemática resolvem em segundos. Este é o diferencial entre candidatos que acertam 60% e candidatos que acertam 85%+ em provas.
+              </p>
+
+              <p>
+                Há também **pegadinhas de tradução** que CESGRANRIO adora. "A terça parte de um número é 12. Qual é o número?" Tradução correta: x/3 = 12, logo x = 36. Tradução errada (pegadinha): "terça parte" = 12, portanto número = 12/3 = 4 (falso). Outra: "Um número aumentado de 20 é 50. Qual é o número?" Tradução: x + 20 = 50, logo x = 30. Pegadinha: "aumentado de 20" interpretado como "multiplicado por 20" ou "à potência 20" (ambos errados). Outra: "O dobro de um número menos 5 é 19." Pergunta: é (2x − 5) ou 2(x − 5)? Depende da pontuação na leitura. Se lê "o dobro de (um número menos 5)", é 2(x − 5). Se lê "(o dobro de um número) menos 5", é 2x − 5. A CESGRANRIO escreve cuidadosamente para evitar ambiguidade, mas candidatos incautos caem nessas armadilhas.
+              </p>
+
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Dicionário Operacional: Palavras → Símbolos</h4>
+                <div className="space-y-3 text-sm">
+                  <p><strong>QUANTIDADES:</strong> Um número=x | Dobro=2x | Metade=x/2 | Triplo=3x | Quádruplo=4x | Sucessor=x+1 | Antecessor=x-1</p>
+                  <p><strong>OPERAÇÕES:</strong> Soma=+ | Diferença=- | Produto=× | Quociente=÷ | Aumentado de Y=(+Y) | Diminuído de Y=(-Y)</p>
+                  <p><strong>PERCENTUAIS:</strong> Aumento de 20%=(×1,20) | Diminuição de 10%=(×0,90) | Desconto de 5%=(×0,95)</p>
+                  <p><strong>COMPARAÇÕES:</strong> É igual=(=) | É maior que=(>) | É menor que=(<) | Não é=(≠)</p>
+                  <p><strong>REGRA CRÍTICA:</strong> Leia com atenção os parênteses implícitos. "Dobro de (número menos 5)" ≠ "(Dobro de número) menos 5"</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -757,6 +849,10 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -811,8 +907,52 @@ export default function AulaEquacoes1Grau({
             numero={3}
             titulo="Equações com Frações: O Aniquilador de Denominador"
             descricao="Como destruir frações em um único golpe: MMC. Nunca mais sofrer com ÷."
-            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
           />
+
+          {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Equações com Frações: Eliminando o Denominador Antes de Começar"
+              description="O segredo para eliminar 90% da complexidade — multiplicar tudo pelo MMC no primeiro passo"
+              variant="emerald"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Equações que contêm frações (também chamadas "equações racionais" em certos contextos) assustam muitos candidatos porque parecem intrinsecamente mais complexas. Exemplo: x/3 + 5 = x/2 − 1. A presença de denominadores introduz múltiplas operações: somar frações (exige MMC), multiplicar (cancelar), simplificar. Mas existe um **truque absoluto** que elimina toda essa complexidade em um único passo: multiplicar a **equação inteira** pelo **Mínimo Múltiplo Comum (MMC)** de todos os denominadores. Se você tem denominadores 3 e 2, o MMC é 6. Multiplique cada termo da equação por 6. A equação x/3 + 5 = x/2 − 1 vira 2x + 30 = 3x − 6 (todos os denominadores sumiram). Agora é uma equação linear pura, facilmente resolvível: −x = −36, logo x = 36. Este truque converte uma equação que parecia impossível em uma que qualquer candidato consegue resolver em trinta segundos.
+              </p>
+
+              <p>
+                O **Mínimo Múltiplo Comum (MMC)** é o menor número que é divisível por todos os denominadores presentes. Se os denominadores são 2, 3, 4, o MMC é 12 (pois 12 ÷ 2 = 6, 12 ÷ 3 = 4, 12 ÷ 4 = 3, todos resultam em inteiros). Se os denominadores são 5 e 7, o MMC é 35 (pois são coprime). O algoritmo para encontrar MMC é: fatorar cada denominador em seus fatores primos, depois tomar cada primo com o maior expoente. Por exemplo, 12 = 2² × 3, 18 = 2 × 3². O MMC é 2² × 3² = 4 × 9 = 36. Calculadoras rapidamente comutam este cálculo, e muitas equações em provas CESGRANRIO usam denominadores "amigáveis" (2, 3, 4, 5, 6, 10) cuja MMC é óbvia. Candidatos que dominam o cálculo rápido do MMC ganham tempo crítico em provas.
+              </p>
+
+              <p>
+                O **protocolo para resolver equações fracionárias** é: (1) Identificar todos os denominadores e calcular seu MMC; (2) **Multiplicar cada termo da equação pelo MMC** — isto cancela todos os denominadores; (3) Simplificar a equação resultante (agora sem frações); (4) Resolver a equação de 1º grau resultante usando os métodos do Módulo 1; (5) **Verificar se a solução não torna nenhum denominador igual a zero** (isto é crítico — se x = 0 e há um termo 1/x, a solução é inválida). Exemplo detalhado: x/4 + 2 = x/2. MMC(4, 2) = 4. Multiplique por 4: 4(x/4) + 4(2) = 4(x/2) ⟹ x + 8 = 2x. Subtraia x: 8 = x. Verifique: x = 8 não torna nenhum denominador zero ✓. Verifique substituindo: 8/4 + 2 = 2 + 2 = 4, e 8/2 = 4 ✓.
+              </p>
+
+              <p>
+                Na prática Petrobras, equações fracionárias aparecem em contextos de **distribuição ponderada e taxas**. "Um operador gasta x/6 do seu tempo em inspeção, x/3 em manutenção, e x/2 em operação normal. Se o tempo restante (que é 2 horas) é para pausa, qual é o tempo total?" Montamos: x − x/6 − x/3 − x/2 = 2. MMC(1, 6, 3, 2) = 6. Multiplique por 6: 6x − x − 2x − 3x = 12 ⟹ 0x = 12 (equação degenerada!). Isto significa não há solução consistente — o operador não pode dividir seu tempo dessa forma e ainda ter 2 horas de pausa. Esta é uma **detecção de inconsistência** via álgebra. Sem domínio de equações fracionárias, candidatos não conseguem nem montar esse problema.
+              </p>
+
+              <p>
+                Erros comuns incluem: (1) Esquecer de multiplicar **todos** os termos pelo MMC (multiplicar apenas os fracionários deixa números inteiros sem ajuste); (2) Erro de sinal ao multiplicar (se há um − antes de uma fração, o sinal flipa quando multiplica); (3) Simplificar incorretamente após a multiplicação (ex: 4 × x/4 = x, não 4x); (4) Esquecer de verificar se a solução torna um denominador zero (tornaria a equação original indefinida); (5) Confundir MMC com MCD (Máximo Comum Divisor — oposto). Esses erros são frequentemente o motivo por que candidatos que "entendem a lógica" ainda acertam apenas 40-50% das questões com frações.
+              </p>
+
+              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Protocolo: Resolver Equações com Frações</h4>
+                <div className="space-y-3 text-sm">
+                  <p><strong>PASSO 1:</strong> Identifique todos os denominadores (2, 3, 4, 5, etc.)</p>
+                  <p><strong>PASSO 2:</strong> Calcule MMC de todos os denominadores</p>
+                  <p><strong>PASSO 3:</strong> **Multiplique CADA termo da equação inteira pelo MMC** — isto cancela todos os denominadores</p>
+                  <p><strong>PASSO 4:</strong> Simplifique e resolva como equação de 1º grau comum (módulo 1)</p>
+                  <p><strong>PASSO 5:</strong> Verifique: a solução torna algum denominador zero? Se sim, INVÁLIDA. Se não, resposta final.</p>
+                  <p><strong>EXEMPLO MMC:</strong> Denominadores 2, 3, 6 → MMC = 6 | Denominadores 4, 6 → MMC = 12 | Denominadores 5, 7 → MMC = 35</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -976,6 +1116,10 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={3}
             variant="cyan"
@@ -1014,8 +1158,8 @@ export default function AulaEquacoes1Grau({
 
                     <QuizInterativo
             questoes={quizM3}
-            titulo="Fixação - Módulo 3"
-            numero={3}
+            titulo="QUIZ: Módulo Nº 3"
+            numero={4}
             variant="amber"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -1030,7 +1174,7 @@ export default function AulaEquacoes1Grau({
             numero={4}
             titulo="Sistemas Lineares 2x2"
             descricao="Duas equações, duas incógnitas. Método da Adição vs Substituição."
-            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1180,6 +1324,10 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={4}
             variant="blue"
@@ -1234,7 +1382,7 @@ export default function AulaEquacoes1Grau({
             numero={5}
             titulo="Simulado Parcial"
             descricao="Reúna tudo dos Módulos 1-4. Você está no caminho certo?"
-            gradiente="bg-gradient-to-br from-indigo-700 to-purple-800"
+            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1289,6 +1437,10 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="amber"
@@ -1327,8 +1479,8 @@ export default function AulaEquacoes1Grau({
 
                     <QuizInterativo
             questoes={quizM5}
-            titulo="Simulado Parcial - M1 até M4"
-            numero={5}
+            titulo="QUIZ: Módulo Nº 5"
+            numero={6}
             variant="indigo"
             icone="📋"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -1345,7 +1497,7 @@ export default function AulaEquacoes1Grau({
             descricao={
               "Equações ao contrário: > e <. Regra do Sinal INVERTE ao dividir por negativo."
             }
-            gradiente="bg-gradient-to-br from-rose-600 to-pink-700"
+            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1506,6 +1658,10 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={6}
             variant="rose"
@@ -1560,7 +1716,7 @@ export default function AulaEquacoes1Grau({
             numero={7}
             titulo="Sistemas Lineares Avançados (3x3)"
             descricao="Três equações, três incógnitas. Eliminação de Gauss (simplificado)."
-            gradiente="bg-gradient-to-br from-violet-600 to-indigo-700"
+            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1692,6 +1848,10 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={7}
             variant="indigo"
@@ -1730,8 +1890,8 @@ export default function AulaEquacoes1Grau({
 
                     <QuizInterativo
             questoes={quizM7}
-            titulo="Fixação - Módulo 7"
-            numero={7}
+            titulo="QUIZ: Módulo Nº 7"
+            numero={8}
             variant="violet"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
@@ -1746,7 +1906,7 @@ export default function AulaEquacoes1Grau({
             numero={8}
             titulo="Resolução Reversa e Verificação"
             descricao="Trabalhe de trás para frente: dado o resultado, é a solução certa?"
-            gradiente="bg-gradient-to-br from-teal-600 to-cyan-700"
+            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1931,6 +2091,10 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={8}
             variant="emerald"
@@ -1985,7 +2149,7 @@ export default function AulaEquacoes1Grau({
             numero={9}
             titulo="Aplicações Petrobras & Contextos Reais"
             descricao="Onde as equações vivem: RNEST, RPBC, caldeiras, licitações, folha de pagamento."
-            gradiente="bg-gradient-to-br from-orange-600 to-red-700"
+            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2199,6 +2363,10 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={9}
             variant="cyan"
@@ -2237,8 +2405,8 @@ export default function AulaEquacoes1Grau({
 
                     <QuizInterativo
             questoes={quizM9}
-            titulo="Fixação - Módulo 9"
-            numero={9}
+            titulo="QUIZ: Módulo Nº 9"
+            numero={10}
             variant="amber"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
@@ -2253,7 +2421,7 @@ export default function AulaEquacoes1Grau({
             numero={10}
             titulo="Simulado Mestre — Elite Masterclass"
             descricao="Reúna TUDO: balança, sistemas, inequações, contextos. 90+ = domínio total."
-            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
           />
 
           {showCompletionBadge ? (
@@ -2307,6 +2475,10 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={10}
             variant="blue"
@@ -2345,9 +2517,9 @@ export default function AulaEquacoes1Grau({
 
                         <QuizInterativo
                 questoes={quizFinal}
-                titulo="Simulado Elite - Equações de 1º Grau"
+                titulo="QUIZ: Módulo Nº 10"
                 icone="🏆"
-                numero={10}
+                numero={11}
                 variant="slate"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
