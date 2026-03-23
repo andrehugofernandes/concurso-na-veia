@@ -500,11 +500,23 @@ export default function AulaVerbTenses({
 <ModuleConsolidation
             index={2}
             variant={mv[1]}
+            maceteVisual={{
+              title: "Simple Present vs Present Continuous — Regra de Ouro",
+              content: (
+                <div className="space-y-2 text-sm">
+                  <p><strong>PERMANENTE / FATO</strong> → Simple Present: "The valve <em>controls</em> the flow."</p>
+                  <p><strong>AGORA / TEMPORÁRIO</strong> → Present Continuous: "The pressure <em>is rising</em>."</p>
+                  <p><strong>STATE VERBS</strong> nunca usam Continuous: know, understand, believe, own, contain.</p>
+                  <p className="text-xs text-muted-foreground">CESGRANRIO cobra state verbs em ~60% das questões de Present Tenses.</p>
+                </div>
+              )
+            }}
             onComplete={() => handleModuleComplete("modulo-1")}
           />
 
                     <QuizInterativo
             questoes={quizM1}
+            titulo="Simple Present & Present Continuous"
             numero={1}
             onComplete={() => handleModuleComplete("modulo-1")}
           />
@@ -851,11 +863,23 @@ export default function AulaVerbTenses({
 <ModuleConsolidation
             index={2}
             variant={mv[2]}
+            maceteVisual={{
+              title: "Simple Past vs Past Continuous — Regra de Ouro",
+              content: (
+                <div className="space-y-2 text-sm">
+                  <p><strong>AÇÃO PONTUAL</strong> → Simple Past: "The explosion <em>occurred</em> at 14:00."</p>
+                  <p><strong>PANO DE FUNDO</strong> → Past Continuous: "The team <em>was inspecting</em> when it happened."</p>
+                  <p><strong>WHEN</strong> = ação interrompe outra | <strong>WHILE</strong> = duas ações simultâneas.</p>
+                  <p className="text-xs text-muted-foreground">Verbos irregulares técnicos: break→broke, find→found, write→wrote, send→sent.</p>
+                </div>
+              )
+            }}
             onComplete={() => handleModuleComplete("modulo-2")}
           />
 
                     <QuizInterativo
             questoes={quizM2}
+            titulo="Simple Past & Past Continuous"
             numero={2}
             onComplete={() => handleModuleComplete("modulo-2")}
           />
@@ -1236,11 +1260,23 @@ export default function AulaVerbTenses({
 <ModuleConsolidation
             index={2}
             variant={mv[3]}
+            maceteVisual={{
+              title: "Present Perfect vs Simple Past — A Distinção Crucial",
+              content: (
+                <div className="space-y-2 text-sm">
+                  <p><strong>COM DATA/HORA</strong> → Simple Past: "We <em>completed</em> the audit on Friday."</p>
+                  <p><strong>SEM DATA (relevância presente)</strong> → Present Perfect: "We <em>have completed</em> the audit."</p>
+                  <p><strong>FOR</strong> = duração | <strong>SINCE</strong> = ponto de início no tempo.</p>
+                  <p className="text-xs text-muted-foreground">Past Perfect: "had + PP" — o que já tinha acontecido ANTES de outra ação passada.</p>
+                </div>
+              )
+            }}
             onComplete={() => handleModuleComplete("modulo-3")}
           />
 
                     <QuizInterativo
             questoes={quizM3}
+            titulo="Present Perfect & Past Perfect"
             numero={3}
             onComplete={() => handleModuleComplete("modulo-3")}
           />
@@ -1566,11 +1602,23 @@ export default function AulaVerbTenses({
 <ModuleConsolidation
             index={3}
             variant={mv[4]}
+            maceteVisual={{
+              title: "Future Forms — Quando Usar Cada Um",
+              content: (
+                <div className="space-y-2 text-sm">
+                  <p><strong>WILL</strong> = decisão espontânea / previsão sem evidência: "I'll check the report."</p>
+                  <p><strong>GOING TO</strong> = plano pré-decidido / evidência visível: "It's going to fail — look at the pressure."</p>
+                  <p><strong>PRES. CONTINUOUS</strong> = agenda/compromisso agendado: "We are meeting at 9am tomorrow."</p>
+                  <p className="text-xs text-muted-foreground">Planos de projeto Petrobras usam "going to" para metas e "will" para previsões financeiras.</p>
+                </div>
+              )
+            }}
             onComplete={() => handleModuleComplete("modulo-4")}
           />
 
                     <QuizInterativo
             questoes={quizM4}
+            titulo="Future Forms"
             numero={4}
             onComplete={() => handleModuleComplete("modulo-4")}
           />
@@ -1985,11 +2033,23 @@ The system was designed (by the engineer).`
 <ModuleConsolidation
             index={2}
             variant={mv[5]}
+            maceteVisual={{
+              title: "Passive Voice — Regra de Ouro",
+              content: (
+                <div className="space-y-2 text-sm">
+                  <p><strong>ESTRUTURA</strong>: BE (conjugado) + Past Participle</p>
+                  <p><strong>EXEMPLOS</strong>: "is inspected" | "was repaired" | "has been submitted" | "is being monitored"</p>
+                  <p><strong>BY-PHRASE</strong>: use somente quando o agente é relevante: "...by the engineering team."</p>
+                  <p className="text-xs text-muted-foreground">Textos técnicos Petrobras usam passiva porque o PROCESSO é mais importante que quem o executa.</p>
+                </div>
+              )
+            }}
             onComplete={() => handleModuleComplete("modulo-5")}
           />
 
                     <QuizInterativo
             questoes={quizM5}
+            titulo="Passive Voice"
             numero={5}
             onComplete={() => handleModuleComplete("modulo-5")}
           />
@@ -2407,11 +2467,24 @@ The system was designed (by the engineer).`
 <ModuleConsolidation
             index={2}
             variant={mv[6]}
+            maceteVisual={{
+              title: "Modal Verbs — Força e Função",
+              content: (
+                <div className="space-y-2 text-sm">
+                  <p><strong>MUST</strong> = obrigação interna / dedução lógica forte</p>
+                  <p><strong>HAVE TO</strong> = obrigação externa (regra, lei)</p>
+                  <p><strong>MUST NOT</strong> = proibição | <strong>DON'T HAVE TO</strong> = não é necessário (mas pode)</p>
+                  <p><strong>SHOULD</strong> = recomendação | <strong>MAY/MIGHT</strong> = possibilidade (may = maior)</p>
+                  <p className="text-xs text-muted-foreground">HSE Petrobras usa "must" para obrigações de segurança e "should" para boas práticas.</p>
+                </div>
+              )
+            }}
             onComplete={() => handleModuleComplete("modulo-6")}
           />
 
                     <QuizInterativo
             questoes={quizM6}
+            titulo="Modal Verbs"
             numero={6}
             onComplete={() => handleModuleComplete("modulo-6")}
           />
@@ -2787,11 +2860,24 @@ he would authorize the overtime.
 <ModuleConsolidation
             index={2}
             variant={mv[7]}
+            maceteVisual={{
+              title: "Conditionals — Os 3 Tipos e Probabilidade",
+              content: (
+                <div className="space-y-2 text-sm">
+                  <p><strong>TYPE 0</strong>: If + Present, Present → lei universal: "If you heat oil, it expands."</p>
+                  <p><strong>TYPE 1</strong>: If + Present, will + base → possível: "If the valve fails, we will shut down."</p>
+                  <p><strong>TYPE 2</strong>: If + Past, would + base → hipotético: "If we had more budget, we would expand."</p>
+                  <p><strong>UNLESS</strong> = If not: "Unless you calibrate it, it won't work."</p>
+                  <p className="text-xs text-muted-foreground">Risk assessments Petrobras usam Type 1 para riscos reais e Type 2 para cenários hipotéticos.</p>
+                </div>
+              )
+            }}
             onComplete={() => handleModuleComplete("modulo-7")}
           />
 
                     <QuizInterativo
             questoes={quizM7}
+            titulo="Conditionals"
             numero={7}
             onComplete={() => handleModuleComplete("modulo-7")}
           />
@@ -3193,11 +3279,24 @@ he would authorize the overtime.
 <ModuleConsolidation
             index={2}
             variant={mv[8]}
+            maceteVisual={{
+              title: "Tense Review — Âncoras de Tempo",
+              content: (
+                <div className="space-y-2 text-sm">
+                  <p><strong>YESTERDAY / AGO / LAST</strong> → Simple Past</p>
+                  <p><strong>ALREADY / JUST / YET / SINCE / FOR (sem data)</strong> → Present Perfect</p>
+                  <p><strong>TOMORROW / NEXT / SOON</strong> → Future (will / going to)</p>
+                  <p><strong>NOW / AT THE MOMENT / CURRENTLY</strong> → Present Continuous</p>
+                  <p className="text-xs text-muted-foreground">CESGRANRIO: identifique o marcador temporal PRIMEIRO — ele revela o tempo correto em 80% das questões.</p>
+                </div>
+              )
+            }}
             onComplete={() => handleModuleComplete("modulo-8")}
           />
 
                     <QuizInterativo
             questoes={quizM8}
+            titulo="Tense Review"
             numero={8}
             onComplete={() => handleModuleComplete("modulo-8")}
           />
@@ -3508,11 +3607,24 @@ he would authorize the overtime.
 <ModuleConsolidation
             index={2}
             variant={mv[9]}
+            maceteVisual={{
+              title: "English in Petrobras — Tempo por Documento",
+              content: (
+                <div className="space-y-2 text-sm">
+                  <p><strong>MANUAL OPERACIONAL</strong> → Simple Present: "The operator checks the gauge."</p>
+                  <p><strong>RELATÓRIO DE INCIDENTE</strong> → Simple Past: "The pressure dropped at 09:15."</p>
+                  <p><strong>RELATÓRIO DE PROGRESSO</strong> → Present Perfect: "The team has completed Phase 1."</p>
+                  <p><strong>RISK ASSESSMENT</strong> → Conditionals: "If the sensor fails, the system will shut down."</p>
+                  <p className="text-xs text-muted-foreground">CESGRANRIO adapta textos autênticos Petrobras — reconhecer o gênero textual = acertar o tempo.</p>
+                </div>
+              )
+            }}
             onComplete={() => handleModuleComplete("modulo-9")}
           />
 
                     <QuizInterativo
             questoes={quizM9}
+            titulo="English in Petrobras"
             numero={9}
             onComplete={() => handleModuleComplete("modulo-9")}
           />
@@ -3771,11 +3883,25 @@ he would authorize the overtime.
 <ModuleConsolidation
             index={2}
             variant={mv[10]}
+            maceteVisual={{
+              title: "Simulado Mestre — Os 5 Passos CESGRANRIO",
+              content: (
+                <div className="space-y-2 text-sm">
+                  <p><strong>1.</strong> Leia a frase completa antes de responder.</p>
+                  <p><strong>2.</strong> Identifique o marcador temporal (yesterday, since, now…).</p>
+                  <p><strong>3.</strong> Identifique o tipo de verbo (state verb = nunca continuous).</p>
+                  <p><strong>4.</strong> Elimine as alternativas incompatíveis com o marcador.</p>
+                  <p><strong>5.</strong> Confirme que a alternativa escolhida faz sentido semântico na frase.</p>
+                  <p className="text-xs text-muted-foreground">Você domina os 7 tempos verbais! Confiança + método = aprovação.</p>
+                </div>
+              )
+            }}
             onComplete={() => handleModuleComplete("modulo-10")}
           />
 
                     <QuizInterativo
             questoes={quizFinal}
+            titulo="Simulado Mestre"
             numero={10}
             onComplete={() => handleModuleComplete("modulo-10")}
           />

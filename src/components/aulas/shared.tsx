@@ -161,6 +161,30 @@ export function AlertBox({
   );
 }
 
+/**
+ * Componente de introdução rica para aulas ULTIMATE.
+ * Carrega parágrafos com fonte aumentada (text-xl) para facilitar a leitura de conteúdos densos.
+ * @param children Conteúdo JSX (geralmente parágrafos <p>)
+ */
+export function RichIntro({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "space-y-6 text-xl text-foreground/90 leading-relaxed font-medium mb-12",
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
 export function VideoModal({
   videoId,
   title,
