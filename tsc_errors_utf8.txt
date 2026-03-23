@@ -1,478 +1,162 @@
 ﻿
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(18,33): error TS2307: 
-Cannot find module '@/components/aulas/shared/ModuleConsolidation' or its corresponding 
-type declarations.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(19,30): error TS2307: 
-Cannot find module '@/components/aulas/shared/ContentAccordion' or its corresponding type 
-declarations.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(20,26): error TS2307: 
-Cannot find module '@/components/aulas/shared/CardCarousel' or its corresponding type 
-declarations.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(21,28): error TS2307: 
-Cannot find module '@/components/aulas/shared/QuizInterativo' or its corresponding type 
-declarations.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(22,26): error TS2307: 
-Cannot find module '@/components/aulas/shared/ModuleBanner' or its corresponding type 
-declarations.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(39,55): error TS2339: 
-Property 'topicoId' does not exist on type 'AulaProps'.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(112,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(172,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(232,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(292,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(352,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(412,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(472,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(532,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(592,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaAdministracaoTributaria.tsx(652,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(18,33): error TS2307: 
-Cannot find module '@/components/aulas/shared/ModuleConsolidation' or its corresponding 
-type declarations.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(19,30): error TS2307: 
-Cannot find module '@/components/aulas/shared/ContentAccordion' or its corresponding type 
-declarations.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(20,26): error TS2307: 
-Cannot find module '@/components/aulas/shared/CardCarousel' or its corresponding type 
-declarations.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(21,28): error TS2307: 
-Cannot find module '@/components/aulas/shared/QuizInterativo' or its corresponding type 
-declarations.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(22,26): error TS2307: 
-Cannot find module '@/components/aulas/shared/ModuleBanner' or its corresponding type 
-declarations.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(39,51): error TS2339: 
-Property 'topicoId' does not exist on type 'AulaProps'.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(112,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(172,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(232,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(292,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(352,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(412,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(472,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(532,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(592,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaContabilidadeBasica.tsx(652,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(18,33): error TS2307: Cannot 
-find module '@/components/aulas/shared/ModuleConsolidation' or its corresponding type 
-declarations.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(19,30): error TS2307: Cannot 
-find module '@/components/aulas/shared/ContentAccordion' or its corresponding type 
-declarations.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(20,26): error TS2307: Cannot 
-find module '@/components/aulas/shared/CardCarousel' or its corresponding type 
-declarations.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(21,28): error TS2307: Cannot 
-find module '@/components/aulas/shared/QuizInterativo' or its corresponding type 
-declarations.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(22,26): error TS2307: Cannot 
-find module '@/components/aulas/shared/ModuleBanner' or its corresponding type 
-declarations.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(39,49): error TS2339: 
-Property 'topicoId' does not exist on type 'AulaProps'.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(112,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(172,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(232,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(292,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(352,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(412,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(472,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(532,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(592,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaDireitoTributario.tsx(652,22): error TS7006: 
-Parameter 'score' implicitly has an 'any' type.
-src/components/aulas/administracao/AulaLei13303.tsx(59,33): error TS2349: This expression 
-is not callable.
-src/components/aulas/administracao/AulaLei13303.tsx(59,41): error TS7006: Parameter 'q' 
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(18,33): error TS2307: Cannot find module 
+'@/components/aulas/shared/ModuleConsolidation' or 
+its corresponding type declarations.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(19,30): error TS2307: Cannot find module 
+'@/components/aulas/shared/ContentAccordion' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(20,26): error TS2307: Cannot find module 
+'@/components/aulas/shared/CardCarousel' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(21,28): error TS2307: Cannot find module 
+'@/components/aulas/shared/QuizInterativo' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(22,26): error TS2307: Cannot find module 
+'@/components/aulas/shared/ModuleBanner' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(39,55): error TS2339: Property 
+'topicoId' does not exist on type 'AulaProps'.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(112,22): error TS7006: Parameter 'score' 
 implicitly has an 'any' type.
-src/components/aulas/administracao/AulaLei13303.tsx(60,33): error TS2349: This expression 
-is not callable.
-src/components/aulas/administracao/AulaLei13303.tsx(60,41): error TS7006: Parameter 'q' 
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(172,22): error TS7006: Parameter 'score' 
 implicitly has an 'any' type.
-src/components/aulas/administracao/AulaLei13303.tsx(61,34): error TS2349: This expression 
-is not callable.
-src/components/aulas/administracao/AulaLei13303.tsx(61,42): error TS7006: Parameter 'q' 
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(232,22): error TS7006: Parameter 'score' 
 implicitly has an 'any' type.
-src/components/aulas/administracao/AulaLei13303.tsx(111,17): error TS2353: Object literal 
-may only specify known properties, and 'id' does not exist in type 'CarouselCard'.
-src/components/aulas/administracao/AulaLei13303.tsx(117,17): error TS2353: Object literal 
-may only specify known properties, and 'id' does not exist in type 'CarouselCard'.
-src/components/aulas/administracao/AulaLei13303.tsx(123,17): error TS2353: Object literal 
-may only specify known properties, and 'id' does not exist in type 'CarouselCard'.
-src/components/aulas/administracao/AulaLei13303.tsx(129,17): error TS2353: Object literal 
-may only specify known properties, and 'id' does not exist in type 'CarouselCard'.
-src/components/aulas/administracao/AulaLei13303.tsx(192,17): error TS2353: Object literal 
-may only specify known properties, and 'id' does not exist in type 'CarouselCard'.
-src/components/aulas/administracao/AulaLei13303.tsx(198,17): error TS2353: Object literal 
-may only specify known properties, and 'id' does not exist in type 'CarouselCard'.
-src/components/aulas/administracao/AulaLei13303.tsx(250,13): error TS2322: Type '{ tipo: 
-"info"; titulo: string; description: string; }' is not assignable to type 
-'IntrinsicAttributes & { tipo: "success" | "info" | "danger" | "warning"; titulo: string; 
-children: ReactNode; }'.
-src/components/aulas/matematica/AulaFuncoesLogaritmicas.tsx(1811,15): error TS2322: Type 
-'"purple"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate" | undefined'.
-src/components/aulas/matematica/AulaFuncoesLogaritmicas.tsx(1929,13): error TS2322: Type 
-'"purple"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate"'.
-src/components/aulas/matematica/AulaFuncoesLogaritmicas.tsx(1976,17): error TS2322: Type 
-'"purple"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate" | undefined'.
-src/components/aulas/matematica/AulaGeometriaAnalitica.tsx(271,13): error TS2322: Type 
-'(moduleId: string, score: number) => void' is not assignable to type '(score: number) => 
-void'.
-src/components/aulas/matematica/AulaGeometriaAnalitica.tsx(444,13): error TS2322: Type 
-'(moduleId: string, score: number) => void' is not assignable to type '(score: number) => 
-void'.
-src/components/aulas/matematica/AulaGeometriaAnalitica.tsx(633,13): error TS2322: Type 
-'(moduleId: string, score: number) => void' is not assignable to type '(score: number) => 
-void'.
-src/components/aulas/matematica/AulaGeometriaAnalitica.tsx(776,13): error TS2322: Type 
-'(moduleId: string, score: number) => void' is not assignable to type '(score: number) => 
-void'.
-src/components/aulas/matematica/AulaGeometriaAnalitica.tsx(925,13): error TS2322: Type 
-'(moduleId: string, score: number) => void' is not assignable to type '(score: number) => 
-void'.
-src/components/aulas/matematica/AulaGeometriaAnalitica.tsx(1090,13): error TS2322: Type 
-'(moduleId: string, score: number) => void' is not assignable to type '(score: number) => 
-void'.
-src/components/aulas/matematica/AulaGeometriaAnalitica.tsx(1264,13): error TS2322: Type 
-'(moduleId: string, score: number) => void' is not assignable to type '(score: number) => 
-void'.
-src/components/aulas/matematica/AulaGeometriaAnalitica.tsx(1404,13): error TS2322: Type 
-'(moduleId: string, score: number) => void' is not assignable to type '(score: number) => 
-void'.
-src/components/aulas/matematica/AulaGeometriaAnalitica.tsx(1571,13): error TS2322: Type 
-'(moduleId: string, score: number) => void' is not assignable to type '(score: number) => 
-void'.
-src/components/aulas/matematica/AulaGeometriaAnalitica.tsx(1747,13): error TS2322: Type 
-'(moduleId: string, score: number) => void' is not assignable to type '(score: number) => 
-void'.
-src/components/aulas/matematica/AulaGeometriaEspacial.tsx(204,13): error TS2322: Type '{ 
-items: { titulo: string; icone: string; conteudo: Element; }[]; }' is not assignable to 
-type 'IntrinsicAttributes & { titulo?: string | undefined; icone?: ReactNode; 
-corIndicador?: string | undefined; slides: ContentSlide[]; defaultOpen?: boolean | 
-undefined; slidesPerView?: 1 | ... 1 more ... | undefined; mode?: "carousel" | ... 1 more 
-... | undefined; }'.
-src/components/aulas/matematica/AulaGeometriaEspacial.tsx(1787,13): error TS2322: Type 
-'"purple"' is not assignable to type '"cyan" | "indigo" | "violet" | "emerald" | "amber" | 
-"rose" | undefined'.
-src/components/aulas/matematica/AulaGeometriaEspacial.tsx(1861,15): error TS2322: Type '{ 
-items: { titulo: string; icone: string; conteudo: Element; }[]; }' is not assignable to 
-type 'IntrinsicAttributes & { titulo?: string | undefined; icone?: ReactNode; 
-corIndicador?: string | undefined; slides: ContentSlide[]; defaultOpen?: boolean | 
-undefined; slidesPerView?: 1 | ... 1 more ... | undefined; mode?: "carousel" | ... 1 more 
-... | undefined; }'.
-src/components/aulas/matematica/AulaGeometriaEspacial.tsx(1942,15): error TS2322: Type '{ 
-items: { titulo: string; icone: string; conteudo: Element; }[]; }' is not assignable to 
-type 'IntrinsicAttributes & { titulo?: string | undefined; icone?: ReactNode; 
-corIndicador?: string | undefined; slides: ContentSlide[]; defaultOpen?: boolean | 
-undefined; slidesPerView?: 1 | ... 1 more ... | undefined; mode?: "carousel" | ... 1 more 
-... | undefined; }'.
-src/components/aulas/matematica/AulaGeometriaEspacial.tsx(2001,15): error TS2322: Type '{ 
-items: { titulo: string; icone: string; conteudo: Element; }[]; }' is not assignable to 
-type 'IntrinsicAttributes & { titulo?: string | undefined; icone?: ReactNode; 
-corIndicador?: string | undefined; slides: ContentSlide[]; defaultOpen?: boolean | 
-undefined; slidesPerView?: 1 | ... 1 more ... | undefined; mode?: "carousel" | ... 1 more 
-... | undefined; }'.
-src/components/aulas/matematica/AulaGeometriaEspacial.tsx(2142,15): error TS2322: Type '{ 
-items: { titulo: string; icone: string; conteudo: Element; }[]; }' is not assignable to 
-type 'IntrinsicAttributes & { titulo?: string | undefined; icone?: ReactNode; 
-corIndicador?: string | undefined; slides: ContentSlide[]; defaultOpen?: boolean | 
-undefined; slidesPerView?: 1 | ... 1 more ... | undefined; mode?: "carousel" | ... 1 more 
-... | undefined; }'.
-src/components/aulas/matematica/AulaGeometriaEspacial.tsx(2206,15): error TS2322: Type '{ 
-items: { titulo: string; icone: string; conteudo: Element; }[]; }' is not assignable to 
-type 'IntrinsicAttributes & { titulo?: string | undefined; icone?: ReactNode; 
-corIndicador?: string | undefined; slides: ContentSlide[]; defaultOpen?: boolean | 
-undefined; slidesPerView?: 1 | ... 1 more ... | undefined; mode?: "carousel" | ... 1 more 
-... | undefined; }'.
-src/components/aulas/matematica/AulaGeometriaEspacial.tsx(2400,15): error TS2322: Type '{ 
-items: { titulo: string; icone: string; conteudo: Element; }[]; }' is not assignable to 
-type 'IntrinsicAttributes & { titulo?: string | undefined; icone?: ReactNode; 
-corIndicador?: string | undefined; slides: ContentSlide[]; defaultOpen?: boolean | 
-undefined; slidesPerView?: 1 | ... 1 more ... | undefined; mode?: "carousel" | ... 1 more 
-... | undefined; }'.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(209,24): error TS2741: 
-Property 'titulo' is missing in type '{ children: (string | Element)[]; tipo: "warning"; 
-}' but required in type '{ tipo: "success" | "info" | "danger" | "warning"; titulo: 
-string; children: ReactNode; }'.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(458,24): error TS2741: 
-Property 'titulo' is missing in type '{ children: (string | Element)[]; tipo: "warning"; 
-}' but required in type '{ tipo: "success" | "info" | "danger" | "warning"; titulo: 
-string; children: ReactNode; }'.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(555,22): error TS1312: Did 
-you mean to use a ':'? An '=' can only follow a property name when the containing object 
-literal is part of a destructuring pattern.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(680,24): error TS2741: 
-Property 'titulo' is missing in type '{ children: (string | Element)[]; tipo: "warning"; 
-}' but required in type '{ tipo: "success" | "info" | "danger" | "warning"; titulo: 
-string; children: ReactNode; }'.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(776,22): error TS1312: Did 
-you mean to use a ':'? An '=' can only follow a property name when the containing object 
-literal is part of a destructuring pattern.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(904,24): error TS2741: 
-Property 'titulo' is missing in type '{ children: (string | Element)[]; tipo: "warning"; 
-}' but required in type '{ tipo: "success" | "info" | "danger" | "warning"; titulo: 
-string; children: ReactNode; }'.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(984,22): error TS1312: Did 
-you mean to use a ':'? An '=' can only follow a property name when the containing object 
-literal is part of a destructuring pattern.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(1113,24): error TS2741: 
-Property 'titulo' is missing in type '{ children: (string | Element)[]; tipo: "warning"; 
-}' but required in type '{ tipo: "success" | "info" | "danger" | "warning"; titulo: 
-string; children: ReactNode; }'.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(1190,22): error TS1312: Did 
-you mean to use a ':'? An '=' can only follow a property name when the containing object 
-literal is part of a destructuring pattern.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(1293,24): error TS2741: 
-Property 'titulo' is missing in type '{ children: (string | Element)[]; tipo: "warning"; 
-}' but required in type '{ tipo: "success" | "info" | "danger" | "warning"; titulo: 
-string; children: ReactNode; }'.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(1389,22): error TS1312: Did 
-you mean to use a ':'? An '=' can only follow a property name when the containing object 
-literal is part of a destructuring pattern.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(1478,24): error TS2741: 
-Property 'titulo' is missing in type '{ children: (string | Element)[]; tipo: "warning"; 
-}' but required in type '{ tipo: "success" | "info" | "danger" | "warning"; titulo: 
-string; children: ReactNode; }'.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(1604,22): error TS1312: Did 
-you mean to use a ':'? An '=' can only follow a property name when the containing object 
-literal is part of a destructuring pattern.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(1734,24): error TS2741: 
-Property 'titulo' is missing in type '{ children: string; tipo: "warning"; }' but required 
-in type '{ tipo: "success" | "info" | "danger" | "warning"; titulo: string; children: 
-ReactNode; }'.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(1803,22): error TS1312: Did 
-you mean to use a ':'? An '=' can only follow a property name when the containing object 
-literal is part of a destructuring pattern.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(1932,24): error TS2741: 
-Property 'titulo' is missing in type '{ children: string; tipo: "warning"; }' but required 
-in type '{ tipo: "success" | "info" | "danger" | "warning"; titulo: string; children: 
-ReactNode; }'.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(2006,22): error TS1312: Did 
-you mean to use a ':'? An '=' can only follow a property name when the containing object 
-literal is part of a destructuring pattern.
-src/components/aulas/matematica/AulaMatrizesDeterminantes.tsx(2136,24): error TS2741: 
-Property 'titulo' is missing in type '{ children: string; tipo: "danger"; }' but required 
-in type '{ tipo: "success" | "info" | "danger" | "warning"; titulo: string; children: 
-ReactNode; }'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,75): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,75): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,75): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,75): error TS18007: JSX 
-expressions may not use the comma operator. Did you mean to write an array?
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,76): error TS2304: Cannot find 
-name 'Cara'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,76): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,81): error TS2304: Cannot find 
-name 'Cara'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,89): error TS2304: Cannot find 
-name 'Cara'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,89): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,94): error TS2304: Cannot find 
-name 'Coroa'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,103): error TS2304: Cannot find 
-name 'Coroa'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,103): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,109): error TS2304: Cannot find 
-name 'Cara'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,117): error TS2304: Cannot find 
-name 'Coroa'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,117): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(223,123): error TS2304: Cannot find 
-name 'Coroa'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(307,71): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(307,71): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(307,71): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(307,71): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(307,71): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(307,71): error TS18007: JSX 
-expressions may not use the comma operator. Did you mean to write an array?
-src/components/aulas/matematica/AulaProbabilidade.tsx(308,45): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(308,45): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(308,45): error TS18007: JSX 
-expressions may not use the comma operator. Did you mean to write an array?
-src/components/aulas/matematica/AulaProbabilidade.tsx(381,32): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(381,32): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(381,32): error TS18007: JSX 
-expressions may not use the comma operator. Did you mean to write an array?
-src/components/aulas/matematica/AulaProbabilidade.tsx(383,32): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(383,32): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(383,32): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(383,32): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(383,32): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(383,32): error TS18007: JSX 
-expressions may not use the comma operator. Did you mean to write an array?
-src/components/aulas/matematica/AulaProbabilidade.tsx(790,38): error TS2304: Cannot find 
-name 'nuvem'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(790,38): error TS2695: Left side of 
-comma operator is unused and has no side effects.
-src/components/aulas/matematica/AulaProbabilidade.tsx(790,38): error TS18007: JSX 
-expressions may not use the comma operator. Did you mean to write an array?
-src/components/aulas/matematica/AulaProbabilidade.tsx(790,45): error TS2304: Cannot find 
-name 'nublado'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(981,15): error TS2322: Type '"teal"' 
-is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | "amber" | 
-"rose" | "slate" | undefined'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(1058,13): error TS2322: Type 
-'"teal"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate"'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(1114,15): error TS2322: Type 
-'"teal"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate" | undefined'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(1459,15): error TS2322: Type 
-'"orange"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate" | undefined'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(1538,13): error TS2322: Type 
-'"orange"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate"'.
-src/components/aulas/matematica/AulaProbabilidade.tsx(1594,15): error TS2322: Type 
-'"orange"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate" | undefined'.
-src/components/aulas/matematica/AulaProgressoesPa.tsx(1206,15): error TS2322: Type 
-'"teal"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate" | undefined'.
-src/components/aulas/matematica/AulaProgressoesPa.tsx(1303,13): error TS2322: Type 
-'"teal"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate"'.
-src/components/aulas/matematica/AulaProgressoesPa.tsx(1359,15): error TS2322: Type 
-'"teal"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate" | undefined'.
-src/components/aulas/matematica/AulaProgressoesPa.tsx(1712,15): error TS2322: Type 
-'"orange"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate" | undefined'.
-src/components/aulas/matematica/AulaProgressoesPa.tsx(1810,13): error TS2322: Type 
-'"orange"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate"'.
-src/components/aulas/matematica/AulaProgressoesPa.tsx(1864,15): error TS2322: Type 
-'"orange"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate" | undefined'.
-src/components/aulas/matematica/AulaProgressoesPg.tsx(1032,15): error TS2322: Type 
-'"teal"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate" | undefined'.
-src/components/aulas/matematica/AulaProgressoesPg.tsx(1130,13): error TS2322: Type 
-'"teal"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate"'.
-src/components/aulas/matematica/AulaProgressoesPg.tsx(1184,15): error TS2322: Type 
-'"teal"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate" | undefined'.
-src/components/aulas/matematica/AulaProgressoesPg.tsx(1559,15): error TS2322: Type 
-'"orange"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate" | undefined'.
-src/components/aulas/matematica/AulaProgressoesPg.tsx(1661,13): error TS2322: Type 
-'"orange"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate"'.
-src/components/aulas/matematica/AulaProgressoesPg.tsx(1715,15): error TS2322: Type 
-'"orange"' is not assignable to type '"blue" | "cyan" | "indigo" | "violet" | "emerald" | 
-"amber" | "rose" | "slate" | undefined'.
-src/components/aulas/matematica/AulaTrigonometria.tsx(293,24): error TS2741: Property 
-'titulo' is missing in type '{ children: string; tipo: "success"; }' but required in type 
-'{ tipo: "success" | "info" | "danger" | "warning"; titulo: string; children: ReactNode; 
-}'.
-src/components/aulas/matematica/AulaTrigonometria.tsx(312,24): error TS2741: Property 
-'titulo' is missing in type '{ children: string; tipo: "info"; }' but required in type '{ 
-tipo: "success" | "info" | "danger" | "warning"; titulo: string; children: ReactNode; }'.
-src/components/aulas/matematica/AulaTrigonometria.tsx(596,24): error TS2741: Property 
-'titulo' is missing in type '{ children: string; tipo: "success"; }' but required in type 
-'{ tipo: "success" | "info" | "danger" | "warning"; titulo: string; children: ReactNode; 
-}'.
-src/components/aulas/matematica/AulaTrigonometria.tsx(831,24): error TS2741: Property 
-'titulo' is missing in type '{ children: string; tipo: "info"; }' but required in type '{ 
-tipo: "success" | "info" | "danger" | "warning"; titulo: string; children: ReactNode; }'.
-src/components/aulas/matematica/AulaTrigonometria.tsx(1066,24): error TS2741: Property 
-'titulo' is missing in type '{ children: string; tipo: "success"; }' but required in type 
-'{ tipo: "success" | "info" | "danger" | "warning"; titulo: string; children: ReactNode; 
-}'.
-src/components/aulas/matematica/AulaTrigonometria.tsx(1496,24): error TS2741: Property 
-'titulo' is missing in type '{ children: string; tipo: "success"; }' but required in type 
-'{ tipo: "success" | "info" | "danger" | "warning"; titulo: string; children: ReactNode; 
-}'.
-src/components/aulas/matematica/AulaTrigonometria.tsx(1703,24): error TS2741: Property 
-'titulo' is missing in type '{ children: string; tipo: "info"; }' but required in type '{ 
-tipo: "success" | "info" | "danger" | "warning"; titulo: string; children: ReactNode; }'.
-src/components/aulas/matematica/AulaTrigonometria.tsx(1910,24): error TS2741: Property 
-'titulo' is missing in type '{ children: string; tipo: "success"; }' but required in type 
-'{ tipo: "success" | "info" | "danger" | "warning"; titulo: string; children: ReactNode; 
-}'.
-src/components/aulas/matematica/AulaTrigonometria.tsx(2158,24): error TS2741: Property 
-'titulo' is missing in type '{ children: string; tipo: "success"; }' but required in type 
-'{ tipo: "success" | "info" | "danger" | "warning"; titulo: string; children: ReactNode; 
-}'.
-src/components/aulas/matematica/AulaTrigonometria.tsx(2418,24): error TS2741: Property 
-'titulo' is missing in type '{ children: string; tipo: "success"; }' but required in type 
-'{ tipo: "success" | "info" | "danger" | "warning"; titulo: string; children: ReactNode; 
-}'.
-src/components/aulas/matematica/AulaTrigonometria.tsx(2440,24): error TS2741: Property 
-'titulo' is missing in type '{ children: string; tipo: "info"; }' but required in type '{ 
-tipo: "success" | "info" | "danger" | "warning"; titulo: string; children: ReactNode; }'.
-src/components/aulas/portugues/AulaClassesPalavras.tsx(1447,13): error TS2322: Type '{ 
-titulo: string; esquerda: { titulo: string; items: { texto: string; }[]; }; direita: { 
-titulo: string; items: { texto: string; }[]; }; }' is not assignable to type 
-'IntrinsicAttributes & { title: string; left: { title: string; content: string; 
-description: string; variant: "success" | "info" | "danger" | "warning"; }; right: { ...; 
-}; }'.
-src/components/aulas/portugues/AulaClassesPalavras.tsx(1713,13): error TS2322: Type '{ 
-titulo: string; esquerda: { titulo: string; items: { texto: string; }[]; }; direita: { 
-titulo: string; items: { texto: string; }[]; }; }' is not assignable to type 
-'IntrinsicAttributes & { title: string; left: { title: string; content: string; 
-description: string; variant: "success" | "info" | "danger" | "warning"; }; right: { ...; 
-}; }'.
-src/components/aulas/portugues/AulaClassesPalavras.tsx(2340,13): error TS2322: Type '{ 
-titulo: string; esquerda: { titulo: string; items: { texto: string; }[]; }; direita: { 
-titulo: string; items: { texto: string; }[]; }; }' is not assignable to type 
-'IntrinsicAttributes & { title: string; left: { title: string; content: string; 
-description: string; variant: "success" | "info" | "danger" | "warning"; }; right: { ...; 
-}; }'.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(292,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(352,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(412,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(472,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(532,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(592,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(652,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(18,33): error TS2307: Cannot find module 
+'@/components/aulas/shared/ModuleConsolidation' or 
+its corresponding type declarations.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(19,30): error TS2307: Cannot find module 
+'@/components/aulas/shared/ContentAccordion' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(20,26): error TS2307: Cannot find module 
+'@/components/aulas/shared/CardCarousel' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(21,28): error TS2307: Cannot find module 
+'@/components/aulas/shared/QuizInterativo' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(22,26): error TS2307: Cannot find module 
+'@/components/aulas/shared/ModuleBanner' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(39,51): error TS2339: Property 'topicoId' 
+does not exist on type 'AulaProps'.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(112,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(172,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(232,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(292,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(352,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(412,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(472,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(532,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(592,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(652,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(18,33): error TS2307: Cannot find module 
+'@/components/aulas/shared/ModuleConsolidation' or 
+its corresponding type declarations.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(19,30): error TS2307: Cannot find module 
+'@/components/aulas/shared/ContentAccordion' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(20,26): error TS2307: Cannot find module 
+'@/components/aulas/shared/CardCarousel' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(21,28): error TS2307: Cannot find module 
+'@/components/aulas/shared/QuizInterativo' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(22,26): error TS2307: Cannot find module 
+'@/components/aulas/shared/ModuleBanner' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(39,49): error TS2339: Property 'topicoId' does 
+not exist on type 'AulaProps'.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(112,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(172,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(232,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(292,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(352,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(412,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(472,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(532,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(592,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(652,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
 
 

@@ -15,11 +15,13 @@
 
 import { useState } from "react";
 import { AulaProps } from "../shared";
-import ModuleConsolidation from "@/components/aulas/shared/ModuleConsolidation";
-import ContentAccordion from "@/components/aulas/shared/ContentAccordion";
-import CardCarousel from "@/components/aulas/shared/CardCarousel";
-import QuizInterativo from "@/components/aulas/shared/QuizInterativo";
-import ModuleBanner from "@/components/aulas/shared/ModuleBanner";
+import { 
+  ModuleConsolidation, 
+  ContentAccordion, 
+  CardCarousel, 
+  QuizInterativo, 
+  ModuleBanner 
+} from "../shared";
 import { ADMINISTRACAO_TRIBUTARIA_QUIZZES } from "@/data/quizzes/administracao-tributaria-quizzes";
 import { getModuleVariant } from "@/lib/moduleColors";
 
@@ -36,7 +38,7 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
-export default function AulaAdministracaoTributaria({ topicoId }: AulaProps) {
+export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
   const [quizAnswers, setQuizAnswers] = useState<Record<string, number | null>>({});
@@ -109,7 +111,7 @@ export default function AulaAdministracaoTributaria({ topicoId }: AulaProps) {
       </div>
       <QuizInterativo
         quiz={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-1"]}
-        onComplete={(score) => handleQuizComplete("modulo-1", score)}
+        onComplete={(score: number) => handleQuizComplete("modulo-1", score)}
       />
     </div>
   );
@@ -169,7 +171,7 @@ export default function AulaAdministracaoTributaria({ topicoId }: AulaProps) {
       </div>
       <QuizInterativo
         quiz={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-2"]}
-        onComplete={(score) => handleQuizComplete("modulo-2", score)}
+        onComplete={(score: number) => handleQuizComplete("modulo-2", score)}
       />
     </div>
   );
@@ -229,7 +231,7 @@ export default function AulaAdministracaoTributaria({ topicoId }: AulaProps) {
       </div>
       <QuizInterativo
         quiz={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-3"]}
-        onComplete={(score) => handleQuizComplete("modulo-3", score)}
+        onComplete={(score: number) => handleQuizComplete("modulo-3", score)}
       />
     </div>
   );
@@ -289,7 +291,7 @@ export default function AulaAdministracaoTributaria({ topicoId }: AulaProps) {
       </div>
       <QuizInterativo
         quiz={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-4"]}
-        onComplete={(score) => handleQuizComplete("modulo-4", score)}
+        onComplete={(score: number) => handleQuizComplete("modulo-4", score)}
       />
     </div>
   );
@@ -349,7 +351,7 @@ export default function AulaAdministracaoTributaria({ topicoId }: AulaProps) {
       </div>
       <QuizInterativo
         quiz={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-5"]}
-        onComplete={(score) => handleQuizComplete("modulo-5", score)}
+        onComplete={(score: number) => handleQuizComplete("modulo-5", score)}
       />
     </div>
   );
@@ -409,7 +411,7 @@ export default function AulaAdministracaoTributaria({ topicoId }: AulaProps) {
       </div>
       <QuizInterativo
         quiz={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-6"]}
-        onComplete={(score) => handleQuizComplete("modulo-6", score)}
+        onComplete={(score: number) => handleQuizComplete("modulo-6", score)}
       />
     </div>
   );
@@ -469,7 +471,7 @@ export default function AulaAdministracaoTributaria({ topicoId }: AulaProps) {
       </div>
       <QuizInterativo
         quiz={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-7"]}
-        onComplete={(score) => handleQuizComplete("modulo-7", score)}
+        onComplete={(score: number) => handleQuizComplete("modulo-7", score)}
       />
     </div>
   );
@@ -529,7 +531,7 @@ export default function AulaAdministracaoTributaria({ topicoId }: AulaProps) {
       </div>
       <QuizInterativo
         quiz={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-8"]}
-        onComplete={(score) => handleQuizComplete("modulo-8", score)}
+        onComplete={(score: number) => handleQuizComplete("modulo-8", score)}
       />
     </div>
   );
@@ -589,7 +591,7 @@ export default function AulaAdministracaoTributaria({ topicoId }: AulaProps) {
       </div>
       <QuizInterativo
         quiz={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-9"]}
-        onComplete={(score) => handleQuizComplete("modulo-9", score)}
+        onComplete={(score: number) => handleQuizComplete("modulo-9", score)}
       />
     </div>
   );
@@ -649,7 +651,7 @@ export default function AulaAdministracaoTributaria({ topicoId }: AulaProps) {
       </div>
       <QuizInterativo
         quiz={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-10"]}
-        onComplete={(score) => handleQuizComplete("modulo-10", score)}
+        onComplete={(score: number) => handleQuizComplete("modulo-10", score)}
       />
     </div>
   );

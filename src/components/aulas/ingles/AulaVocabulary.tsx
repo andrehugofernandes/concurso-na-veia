@@ -356,7 +356,19 @@ export default function AulaVocabulary({
 
           <ModuleConsolidation
             numero={1}
+            variant={mv[1]}
             onComplete={() => handleModuleComplete("modulo-1")}
+            maceteVisual={{
+              title: "Upstream Operations - Key Drilling Terms",
+              content: (
+                <div className="space-y-2">
+                  <p><strong>Wellhead:</strong> The equipment at the top of the well that controls pressure and flow</p>
+                  <p><strong>Casing:</strong> Large diameter pipe inserted into the borehole to provide structural support</p>
+                  <p><strong>Tubing:</strong> Smaller pipe inside the casing through which oil and gas are produced</p>
+                  <p><strong>Drill Bit:</strong> The cutting tool at the end of the drill string that removes rock</p>
+                </div>
+              ),
+            }}
           >
             <QuizInterativo
               questoes={quizM1}
@@ -575,7 +587,19 @@ export default function AulaVocabulary({
 
           <ModuleConsolidation
             numero={2}
+            variant={mv[2]}
             onComplete={() => handleModuleComplete("modulo-2")}
+            maceteVisual={{
+              title: "Downstream Operations - Refining & Distribution",
+              content: (
+                <div className="space-y-2">
+                  <p><strong>Refinery:</strong> Industrial facility that converts crude oil into usable products like gasoline</p>
+                  <p><strong>Distillation:</strong> The process of separating crude oil into different components by heating and cooling</p>
+                  <p><strong>Fractionation Column:</strong> Tall vertical structure where crude oil is separated into products of different weights</p>
+                  <p><strong>Distribution Network:</strong> System of pipelines and terminals that transport refined products to consumers</p>
+                </div>
+              ),
+            }}
           >
             <QuizInterativo
               questoes={quizM2}
@@ -807,7 +831,19 @@ export default function AulaVocabulary({
 
           <ModuleConsolidation
             numero={3}
+            variant={mv[3]}
             onComplete={() => handleModuleComplete("modulo-3")}
+            maceteVisual={{
+              title: "Industrial Equipment - Valves, Pumps & Pipes",
+              content: (
+                <div className="space-y-2">
+                  <p><strong>Gate Valve:</strong> On/off valve that uses a flat gate to control flow - simple and reliable</p>
+                  <p><strong>Centrifugal Pump:</strong> Uses rotation force for rapid, efficient high-volume oil transfer</p>
+                  <p><strong>Ball Valve:</strong> Rotating sphere with hole controls flow direction - quick closure, minimal leakage</p>
+                  <p><strong>Manifold:</strong> System of pipes and valves that directs fluid flow to multiple destinations</p>
+                </div>
+              ),
+            }}
           >
             <QuizInterativo
               questoes={quizM3}
@@ -1036,7 +1072,19 @@ export default function AulaVocabulary({
 
           <ModuleConsolidation
             numero={4}
+            variant={mv[4]}
             onComplete={() => handleModuleComplete("modulo-4")}
+            maceteVisual={{
+              title: "Safety & HSE - PPE, Hazards & Compliance",
+              content: (
+                <div className="space-y-2">
+                  <p><strong>PPE (Personal Protective Equipment):</strong> Protective gear like hard hats, gloves, and safety glasses</p>
+                  <p><strong>Hazard:</strong> Anything with potential to cause harm - H2S gas, high pressure, hot surfaces</p>
+                  <p><strong>Incident:</strong> Unplanned event that could be a near-miss or accident - must report within 24 hours</p>
+                  <p><strong>SOP (Standard Operating Procedure):</strong> Step-by-step guide to safely execute critical tasks like confined space entry</p>
+                </div>
+              ),
+            }}
           >
             <QuizInterativo
               questoes={quizM4}
@@ -1268,7 +1316,19 @@ export default function AulaVocabulary({
 
           <ModuleConsolidation
             numero={5}
+            variant={mv[5]}
             onComplete={() => handleModuleComplete("modulo-5")}
+            maceteVisual={{
+              title: "Financial & Business Terms - CAPEX, OPEX & Brent",
+              content: (
+                <div className="space-y-2">
+                  <p><strong>CAPEX (Capital Expenditure):</strong> Upfront investment in assets like drilling rigs - large initial cost</p>
+                  <p><strong>OPEX (Operating Expenditure):</strong> Ongoing costs to run the business - staff, maintenance, utilities</p>
+                  <p><strong>Brent Crude:</strong> Global oil benchmark price used as standard reference for trade - fluctuates daily</p>
+                  <p><strong>NPV (Net Present Value):</strong> Future value discounted to today - NPV {'>'} 0 means economically viable</p>
+                </div>
+              ),
+            }}
           >
             <QuizInterativo
               questoes={quizM5}
@@ -1493,7 +1553,19 @@ export default function AulaVocabulary({
 
           <ModuleConsolidation
             numero={6}
+            variant={mv[6]}
             onComplete={() => handleModuleComplete("modulo-6")}
+            maceteVisual={{
+              title: "Environmental Terms - Carbon Footprint & ESG",
+              content: (
+                <div className="space-y-2">
+                  <p><strong>Carbon Footprint:</strong> Total greenhouse gas emissions from operations - measured in CO2 equivalents</p>
+                  <p><strong>ESG (Environmental, Social, Governance):</strong> Framework assessing corporate responsibility beyond profit</p>
+                  <p><strong>Renewable Energy:</strong> Solar, wind, hydro sources that replenish - shift from fossil fuels</p>
+                  <p><strong>CCS (Carbon Capture & Storage):</strong> Capture CO2 and inject 2km deep for permanent sequestration</p>
+                </div>
+              ),
+            }}
           >
             <QuizInterativo
               questoes={quizM6}
@@ -1725,7 +1797,19 @@ export default function AulaVocabulary({
 
           <ModuleConsolidation
             numero={7}
+            variant={mv[7]}
             onComplete={() => handleModuleComplete("modulo-7")}
+            maceteVisual={{
+              title: "Management & Projects - KPI, Milestone & Scope",
+              content: (
+                <div className="space-y-2">
+                  <p><strong>KPI (Key Performance Indicator):</strong> Measurable metric tracking progress toward goals - e.g., production rate, safety incidents</p>
+                  <p><strong>Milestone:</strong> Significant project checkpoint - approval stage, equipment delivery, operational startup</p>
+                  <p><strong>Critical Path:</strong> Sequence of milestones determining total duration - delay here = overall project delay</p>
+                  <p><strong>Scope Creep:</strong> Uncontrolled addition of items after scope closure - increases cost and schedule</p>
+                </div>
+              ),
+            }}
           >
             <QuizInterativo
               questoes={quizM7}
@@ -1957,7 +2041,19 @@ export default function AulaVocabulary({
 
           <ModuleConsolidation
             numero={8}
+            variant={mv[8]}
             onComplete={() => handleModuleComplete("modulo-8")}
+            maceteVisual={{
+              title: "Procurement & Contracts - Tender, Bid & Liability",
+              content: (
+                <div className="space-y-2">
+                  <p><strong>Tender:</strong> Formal invitation to suppliers for competitive bids - establishes quality, timeline, and cost expectations</p>
+                  <p><strong>Bid:</strong> Proposal submitted by vendor - includes technical approach, timeline, and pricing</p>
+                  <p><strong>Liability:</strong> Legal responsibility for damage or failure - defined in contract with penalties for non-performance</p>
+                  <p><strong>Lump Sum:</strong> Fixed price contract - contractor assumes cost overrun risk, Petrobras is protected</p>
+                </div>
+              ),
+            }}
           >
             <QuizInterativo
               questoes={quizM8}
@@ -2189,7 +2285,19 @@ export default function AulaVocabulary({
 
           <ModuleConsolidation
             numero={9}
+            variant={mv[9]}
             onComplete={() => handleModuleComplete("modulo-9")}
+            maceteVisual={{
+              title: "Vocabulary in Petrobras Context",
+              content: (
+                <div className="space-y-2">
+                  <p><strong>Upstream/Downstream:</strong> Two main branches of oil business - exploration/extraction vs. refining/distribution</p>
+                  <p><strong>Production Rate:</strong> Volume of oil/gas extracted measured in barrels per day (bbl/d) - critical operational metric</p>
+                  <p><strong>Cost Per Barrel:</strong> OPEX divided by production - determines profitability at given oil prices</p>
+                  <p><strong>First Oil:</strong> Milestone when commercial production starts - marks transition from development to revenue generation</p>
+                </div>
+              ),
+            }}
           >
             <QuizInterativo
               questoes={quizM9}
@@ -2342,7 +2450,19 @@ export default function AulaVocabulary({
 
           <ModuleConsolidation
             numero={10}
+            variant={mv[10]}
             onComplete={() => handleModuleComplete("modulo-10")}
+            maceteVisual={{
+              title: "Master Simulator - Complete Petrobras Vocabulary",
+              content: (
+                <div className="space-y-2">
+                  <p><strong>Domains Covered:</strong> Upstream (drilling, wellhead, tubing), Downstream (refinery, distillation), Equipment (pumps, valves, manifold)</p>
+                  <p><strong>HSE & Business:</strong> Safety protocols (PPE, SOP, incident), Financial metrics (CAPEX, OPEX, NPV), Environmental responsibility (ESG, carbon footprint)</p>
+                  <p><strong>Project Management:</strong> Procurement (tender, bid, contract), Execution (KPI, milestone, critical path, scope creep)</p>
+                  <p><strong>Integration Test:</strong> Read 200+ word paragraphs mixing 3-4 domains and recognize meanings by context - the ultimate assessment</p>
+                </div>
+              ),
+            }}
           >
             <QuizInterativo
               questoes={quizFinal}

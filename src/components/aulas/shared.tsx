@@ -2694,8 +2694,8 @@ export function StickyModuleNav({
                       >
                         {mod.label}
                       </span>
-                      <span className="font-bold text-[10px] w-full text-center flex items-center justify-center gap-1 leading-tight max-w-[80px]">
-                        {mod.titulo || mod.title}
+                      <span className="font-bold text-[10px] w-full text-center flex items-center justify-center gap-1 leading-tight truncate px-1">
+                        <span className="truncate">{mod.titulo || mod.title}</span>
                         {completedModules.has(mod.id) && (
                           <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20 shrink-0">
                             <LuCheck size={10} />
