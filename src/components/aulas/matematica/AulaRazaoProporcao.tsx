@@ -155,9 +155,52 @@ export default function AulaRazaoProporcao({
           numero={1}
           titulo="Razão: A Comparação Primitiva"
           descricao="Domine o conceito fundamental que está por trás de densidades, escalas e produtividades industriais."
-          gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
         <div className="space-y-[50px]">
+
+          {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Razão: A Fundação da Comparação Quantitativa"
+              description="De densidades a escalas — o quociente que permeia toda a matemática industrial"
+              variant="amber"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                A razão é a operação matemática mais primitiva e ao mesmo tempo mais versátil da vida industrial. Formalmente, razão é a comparação entre duas quantidades através da divisão de uma pela outra, expressa como um quociente. Quando um engenheiro da Petrobras precisa reportar que uma plataforma processou 500.000 barris de petróleo bruto em 24 horas e obteve 350.000 barris de derivados, ele imediatamente reconhece a razão de rendimento: 350.000 ÷ 500.000 = 0,70 (ou 70%). Essa razão não é meramente um número; ela encapsula a eficiência operacional, a viabilidade econômica e o desempenho do equipamento. A razão, portanto, é a linguagem fundamental pela qual quantidades se relacionam.
+              </p>
+
+              <p>
+                Historicamente, a razão existe desde os tempos babilônicos, onde artesãos precisavam comparar comprimentos em padrões de construção. Na Grécia Antiga, Euclides dedicou livros inteiros da sua obra "Elementos" ao estudo de razões e proporções, reconhecendo sua universalidade. No contexto moderno — seja em engenharia, economia, química ou biologia — a razão permanece como o instrumento de eleição para expressar relações entre magnitudes. Quando um técnico afirma que a densidade de um fluido é 840 kg/m³, ele está de fato declarando a razão massa:volume. Quando um cartógrafo desenha um mapa em escala 1:100.000, está usando razão. Quando um químico prescreve uma mistura gasolina:etanol de 7:3, ratifica a razão.
+              </p>
+
+              <p>
+                A razão é expressa de três formas equivalentes: a forma fracionária (a/b), a forma colon (a:b) e a forma verbal ("a para b"). Todas significam exatamente o mesmo: o quociente entre a e b, onde b ≠ 0 (porque divisão por zero é indefinida). O numero "a" é chamado antecedente e "b" é o consequente. A ordem é absolutamente crítica — uma questão de CESGRANRIO que pergunta "a razão entre derivados e petróleo" exige que derivados (primeiro mencionado) seja o antecedente, jamais o contrário. Este é talvez o erro mais frequente em provas: inverter inconscientemente a sequência e obter uma fração incorreta. Um derivado/petróleo (correto) expressa rendimento; um petróleo/derivado (invertido) expressa o inverso, um fator conversão que não faz sentido no contexto.
+              </p>
+
+              <p>
+                No universo de Petrobras, razões aparecem em contextos tão variados quanto impressionantes. Em operações de refinaria: razão entre throughput máximo e consumo atual. Em exploração: razão de custo-benefício de um poço. Em logística: razão de equipamento disponível versus equipamento em manutenção. Em recursos humanos: razão técnicos:supervisores. Em confiabilidade: razão de falhas:horas operacionais (definindo a taxa de falha MTBF). Compreender razão não é compreender um tópico isolado; é adquirir a linguagem através da qual toda a engenharia pratica quantificação.
+              </p>
+
+              <p>
+                A CESGRANRIO, especificamente, testa razão em três frentes principais: (1) Identificação correta de qual grandeza é antecedente e qual é consequente — frequentemente disfarçada em linguagem ambígua; (2) Simplificação e equivalência — 210.000/300.000 simplifica-se a 7/10, e a banca cobra quale é "a razão na forma irredutível"; (3) Contexto — aplicações reais onde razão surge sob nomes especializados (densidade, escala, rendimento, taxa). Uma questão típica de prova pode ser: "Uma refinaria processa 1.200 barris/hora e obtém 840 barris de gasolina. Qual é a razão de aproveitamento?" A resposta não é "840 barris", mas "840/1.200 = 7/10 = 0,70", e a simplificação é obrigatória. O candidato que escrever "840/1.200" como resposta final será penalizado por não reduzir.
+              </p>
+
+              <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Definição Formal & Estrutura</h4>
+                <div className="space-y-3 text-sm">
+                  <p><strong>Razão entre a e b:</strong> r = a ÷ b = a/b (b ≠ 0)</p>
+                  <p><strong>Nomenclatura:</strong> a = antecedente (numerador), b = consequente (denominador)</p>
+                  <p><strong>Propriedade Crítica:</strong> Ordem importa. "a para b" ≠ "b para a"</p>
+                  <p><strong>Simplificação:</strong> Reduzir a fração a seus termos mínimos. 210.000/300.000 = 21/30 = 7/10 ✓</p>
+                  <p><strong>Contextos Comuns:</strong> Densidade (kg/m³), Escala (1:100.000), Rendimento (%), Taxa (falhas/hora)</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
           {/* ─── SEÇÃO 1: Definição e Formas ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -366,6 +409,10 @@ export default function AulaRazaoProporcao({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={1}
             variant="indigo"
@@ -404,8 +451,8 @@ export default function AulaRazaoProporcao({
 
                       <QuizInterativo
               questoes={quizRazao}
-              titulo="Quiz — Razão: Fundamentos"
-              numero={1}
+              titulo="QUIZ: Razão"
+              numero={4}
               variant="blue"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -457,9 +504,53 @@ export default function AulaRazaoProporcao({
           numero={2}
           titulo="Proporção: A Balança de Duas Razões"
           descricao="Propriedade fundamental, produtos cruzados e as fórmulas que a CESGRANRIO cobra todo ano."
-          gradiente="bg-gradient-to-br from-indigo-600 to-violet-700"
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
         <div className="space-y-[50px]">
+
+          {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Proporção: A Igualdade Que Governa a Engenharia"
+              description="Do produto cruzado à divisão proporcional de lucros — o fundamento das relações quantitativas"
+              variant="blue"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Enquanto razão é a comparação entre duas quantidades, proporção é a afirmação de que duas razões são iguais. Se você já estudou que a razão de aproveitamento de uma refinaria é 0,70 (70%), então temos uma proporção quando afirmamos que uma segunda refinaria também opera com a mesma razão: 350/500 = 0,70 = 280/400. Ambas as razões são 0,70, portanto elas estão em proporção. Formalmente, uma proporção é uma equação entre razões: a/b = c/d, lê-se "a está para b assim como c está para d". Os números a e d são chamados de extremos (ocupam as extremidades), enquanto b e c são os meios (ocupam o meio da sequência). Esta nomenclatura é puramente estrutural mas absolutamente crítica para entender a propriedade fundamental que sustenta toda proporção.
+              </p>
+
+              <p>
+                A propriedade fundamental da proporção é talvez a equação mais testada em concursos Petrobras: **o produto dos extremos é igual ao produto dos meios**, ou a × d = b × c. Esta regra não é apenas uma fórmula mágica; ela emerge naturalmente da algebra. Se a/b = c/d (multiplicando ambos os lados por b×d), obtemos a×d = b×c — é uma identidade algébrica. Por quê isso é tão importante? Porque em praticamente qualquer problema real, três dos quatro valores são conhecidos e um está faltando. Uma proporção permite resolver o valor faltante em segundos. Se 3 trabalhadores constroem um trecho de oleoduto em 20 dias, quantos trabalhadores são necessários para construir o mesmo trecho em 15 dias? Proporção: 3/20 = x/15 → 3×15 = 20×x → 45 = 20x → x = 2,25. Ambos os contextos invocam a mesma operação: o produto cruzado.
+              </p>
+
+              <p>
+                Na Petrobras e empresas de exploração e produção, proporções surgem constantemente em divisão de lucros, alocação de recursos e resolução de problemas de engenharia. Três sócios de um consórcio investem R$ 20.000, R$ 30.000 e R$ 50.000 (total de R$ 100.000) em um poço exploratório. Se o poço produz um lucro de R$ 100.000, ele é dividido proporcionalmente aos investimentos: o primeiro sócio recebe 20.000/100.000 × 100.000 = R$ 20.000; o segundo, 30.000/100.000 × 100.000 = R$ 30.000; o terceiro, 50.000/100.000 × 100.000 = R$ 50.000. Ou seja, cada um recebe uma quantidade **proporcional** ao que investiu. Este é o princípio da divisão proporcional — tão comum que muitas empresas têm departamentos jurídicos dedicados exclusivamente a calcular essas distribuições.
+              </p>
+
+              <p>
+                Outra característica determinante é que propor ções respeitem operações especiais. Se a/b = c/d = k (uma constante), então: (a+c)/(b+d) = k também. Isto é, a soma de antecedentes sobre a soma de consequentes preserva a proporção. Esta propriedade abre caminho para resolver sistemas onde múltiplas razões iguais coexistem. Suponha que a/2 = b/3 = c/5, e você sabe que a+b+c = 100. Você pode reescrever: a = 2k, b = 3k, c = 5k para alguma constante k. Então 2k + 3k + 5k = 100 → 10k = 100 → k = 10. Logo a = 20, b = 30, c = 50. Este padrão de uso da "constante de proporcionalidade" é absolutamente cobrado em provas.
+              </p>
+
+              <p>
+                A CESGRANRIO testa proporção em cinco cenários principais: (1) Identificação de valores nas proporções (dados três, encontrar um); (2) Verificação de proporção (dadas quatro números, é uma proporção válida?); (3) Propriedades manipuladas (se inverter, alternar ou somar, a proporção persiste?); (4) Proporcionalidade reversa (quando uma cresce, a outra diminui); (5) Divisão proporcional (distribuir um total segundo razões pré-determinadas). Um erro comum é confundir a propriedade fundamental (produto cruzado) com adição incorreta (a+d = b+c), que é geralmente falsa. Exemplo: 2/3 = 4/6 é válido (2×6 = 3×4 = 12), mas 2+6 ≠ 3+4. Este tipo de confusão elimina candidatos em provas competitivas.
+              </p>
+
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Definição Formal & Propriedade Fundamental</h4>
+                <div className="space-y-3 text-sm">
+                  <p><strong>Proporção:</strong> a/b = c/d (lê-se "a para b assim como c para d")</p>
+                  <p><strong>Extremos e Meios:</strong> a, d são extremos (ponta-a-ponta); b, c são meios (centro)</p>
+                  <p><strong>Propriedade Fundamental (OURO):</strong> a × d = b × c (produto dos extremos = produto dos meios)</p>
+                  <p><strong>Propriedade da Soma:</strong> Se a/b = c/d = k, então (a+c)/(b+d) = k</p>
+                  <p><strong>Inversão de Proporção:</strong> Se a/b = c/d, então b/a = d/c (ambos invertidos)</p>
+                  <p><strong>Alternância:</strong> Se a/b = c/d, então a/c = b/d (meios e extremos trocam posição)</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
           {/* ─── SEÇÃO 1: Proporção Fundamenta ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -594,6 +685,10 @@ export default function AulaRazaoProporcao({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -679,9 +774,52 @@ export default function AulaRazaoProporcao({
           numero={3}
           titulo="Regra de Três Simples"
           descricao="O método que resolve 60% das questões de matemática em concursos. Domine o passo a passo."
-          gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
         <div className="space-y-[50px]">
+
+          {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Regra de Três Simples: O Atalho da Indústria"
+              description="Da proporcionalidade direta à inversa — o método que resolve a maioria das questões de concurso"
+              variant="emerald"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Regra de três simples é a técnica de resolução mais direta quando temos duas grandezas (A e B) com uma relação proporcional entre elas, e conhecemos três dos quatro valores. Por exemplo: "se 5 bombeadores enchem 1.000 litros em 2 horas, quantos litros 8 bombeadores encherão no mesmo tempo?" Aqui, você tem três valores conhecidos (5 bombeadores, 1.000 litros, 2 horas) e quer encontrar o quarto (x litros para 8 bombeadores). A essência é reconhecer que existe uma proporção entre as duas grandezas. Se 5 bombeadores enchem 1.000 L, então 8 bombeadores encherão mais; inversamente, se você quiser o mesmo resultado em menos tempo, precisaria de mais bombeadores. A regra de três automatiza este raciocínio proporcional, permitindo que você resolva em segundos problemas que de outra forma exigiriam equações complexas.
+              </p>
+
+              <p>
+                Há dois tipos fundamentais de proporcionalidade: direta e inversa. Na **proporcionalidade direta**, quando uma grandeza aumenta, a outra também aumenta na mesma proporção. Exemplo: "Uma plataforma offshore produz 100 barris por dia. Em 3 dias, produz 300 barris." Aumentar o tempo em 3× aumenta a produção também em 3×. Não existe nada de oculto aqui; é transparente: mais tempo = mais produção. Na **proporcionalidade inversa**, quando uma grandeza aumenta, a outra diminui proporcionalmente. Exemplo clássico: "8 trabalhadores terminam uma tubagem em 15 dias. Se você contratar 12 trabalhadores, quanto tempo levará?" Mais trabalhadores significa menos tempo. O produto trabalh adores × dias permanece constante: 8 × 15 = 120 = 12 × x, logo x = 10 dias. Este é o grande erro em provas: confundir inversa com direta. Candidatos automàticamente montam "8/12 = 15/x" (incorreto — isso daria 22,5 dias!), quando deveriam ter invertido um dos pares: "8/12 = x/15" (correto).
+              </p>
+
+              <p>
+                Na Petrobras, regra de três aparece em contextos praticamente cotidianos. Planejamento de produção: se uma refinaria processa 500 barris/hora e operou por 3 dias consecutivos (72 horas), quantos barris foram processados? 500 × 72 = 36.000. Mas se a questão for "3 refinarias processam 50.000 barris em 2 dias; quanto processará 5 refinarias em 3 dias?", aí entra regra de três composta (que veremos em módulos posteriores). Mas agora, regra de três simples. Gestão de recursos: se 200 l itros de óleo lubrificante custam R$ 800, quanto custa 500 litros? Proporção direta: 200/800 = 500/x → x = 2.000. Tempo de manutenção: se 6 técnicos calibram 24 transmissores em 8 horas, quanto tempo levariam 10 técnicos? Proporção inversa: 6 × 8 = 10 × x → x = 4,8 horas. Todas estas situações invocam regra de três.
+              </p>
+
+              <p>
+                O método das **setas** é infalível para distinguir direta de inversa sem errar. Você monta a tabela com as duas grandezas lado a lado, coloca setas indicando a variação (↑ para aumento, ↓ para diminuição), e verifica: se ambas as setas apontam na mesma direção (ambas ↑ ou ambas ↓), é proporcionalidade DIRETA — você monta a proporção normalmente. Se as setas apontam em direções opostas (uma ↑ e outra ↓), é INVERSA — você inverte o segundo par antes de resolver. Este método visual elimina a confusão que causa erros sistêmicos. A banca CESGRANRIO frequentemente oferece alternativas que são respostas de "regra de três invertida"; candidatos que confundiram o tipo caem nela.
+              </p>
+
+              <p>
+                A CESGRANRIO testa regra de três em cenários onde a armadilha é real. Velocidade e tempo, para a mesma distância, são **sempre** inversamente proporcionais — este é um erro que aparece em praticamente toda prova. "Se um caminhão viaja a 80 km/h e leva 5 horas, quanto tempo levará a 100 km/h?" Resposta errada (direta): 100/80 = 5/x → x = 4h. Isto está CORRETO por acaso, mas o raciocínio é falho. O correto é: "Velocidade ↑, Tempo ↓ (setas opostas) → INVERSA → 80 × 5 = 100 × x → x = 4h." O resultado é o mesmo, mas o método está certo. Outras armadilhas: confundir "20% maior" com "regra de três"; tentar aplicar regra de três quando há três ou mais grandezas (aí é regra de três composta); não simplificar frações antes de calcular (levando a números desnecessariamente grandes). A habilidade de distinguir quando regra de três se aplica versus quando não se aplica é surpreendentemente decisiva em provas competitivas.
+              </p>
+
+              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Método das Setas & Resolução</h4>
+                <div className="space-y-3 text-sm">
+                  <p><strong>Passo 1:</strong> Identifique as duas grandezas e coloque setas (↑ ou ↓) conforme variam</p>
+                  <p><strong>Passo 2:</strong> Mesma direção? → DIRETA. Opostas? → INVERSA</p>
+                  <p><strong>Passo 3 (DIRETA):</strong> Monta a proporção normalmente: a/b = c/x</p>
+                  <p><strong>Passo 3 (INVERSA):</strong> Inverte o segundo par: a/b = x/c, então a × c = b × x</p>
+                  <p><strong>Regra de Ouro:</strong> Velocidade × Tempo = Distância (SEMPRE inversa); Tempo × Quantidade = Produção Total (SEMPRE direta)</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
           {/* ─── SEÇÃO 1: Método ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -890,6 +1028,10 @@ export default function AulaRazaoProporcao({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={3}
             variant="cyan"
@@ -928,8 +1070,8 @@ export default function AulaRazaoProporcao({
 
                       <QuizInterativo
               questoes={quizRegra3}
-              titulo="Quiz — Regra de Três Simples"
-              numero={3}
+              titulo="QUIZ: Regra de 3 Simples"
+              numero={4}
               variant="amber"
               icone="🔢"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -975,7 +1117,7 @@ export default function AulaRazaoProporcao({
           numero={4}
           titulo="Divisão Proporcional Básica"
           descricao="Distribua recursos com precisão: lucros, orçamentos e bonificações em questões CESGRANRIO."
-          gradiente="bg-gradient-to-br from-emerald-600 to-teal-700"
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
         <div className="space-y-[50px]">
 
@@ -1096,6 +1238,10 @@ export default function AulaRazaoProporcao({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={4}
             variant="blue"
@@ -1181,7 +1327,7 @@ export default function AulaRazaoProporcao({
           numero={5}
           titulo="Grandezas Proporcionais"
           descricao="O ponto que mais derruba candidatos: identificar se duas grandezas andam juntas ou em sentidos opostos."
-          gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
         <div className="space-y-[50px]">
 
@@ -1447,6 +1593,10 @@ export default function AulaRazaoProporcao({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="amber"
@@ -1485,8 +1635,8 @@ export default function AulaRazaoProporcao({
 
                       <QuizInterativo
               questoes={quizGrandezas}
-              titulo="Quiz — Grandezas Proporcionais"
-              numero={5}
+              titulo="QUIZ: Grandezas D/I"
+              numero={6}
               variant="cyan"
               icone="↕️"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -1532,7 +1682,7 @@ export default function AulaRazaoProporcao({
           numero={6}
           titulo="Divisão Proporcional Avançada"
           descricao="Distribuições inversas, combinadas e casos especiais. O nível que separa os aprovados dos classificados."
-          gradiente="bg-gradient-to-br from-violet-600 to-purple-700"
+          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
         />
         <div className="space-y-[50px]">
 
@@ -1652,6 +1802,10 @@ export default function AulaRazaoProporcao({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={6}
             variant="rose"
@@ -1737,7 +1891,7 @@ export default function AulaRazaoProporcao({
           numero={7}
           titulo="Proporção Contínua e Média Proporcional"
           descricao="O tema mais elegante da proporção: quando o meio é a raiz quadrada dos extremos."
-          gradiente="bg-gradient-to-br from-rose-600 to-pink-700"
+          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
         />
         <div className="space-y-[50px]">
 
@@ -1861,6 +2015,10 @@ export default function AulaRazaoProporcao({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={7}
             variant="indigo"
@@ -1899,8 +2057,8 @@ export default function AulaRazaoProporcao({
 
                       <QuizInterativo
               questoes={quizContinua}
-              titulo="Quiz — Proporção Contínua e Média Proporcional"
-              numero={7}
+              titulo="QUIZ: Proporção Contínua"
+              numero={8}
               variant="rose"
               icone="🔗"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
@@ -1946,7 +2104,7 @@ export default function AulaRazaoProporcao({
           numero={8}
           titulo="Escalas e Mapas"
           descricao="De plantas industriais a mapas cartográficos: as conversões que a CESGRANRIO cobra todo concurso."
-          gradiente="bg-gradient-to-br from-teal-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
         />
         <div className="space-y-[50px]">
 
@@ -2125,6 +2283,10 @@ export default function AulaRazaoProporcao({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={8}
             variant="emerald"
@@ -2210,7 +2372,7 @@ export default function AulaRazaoProporcao({
           numero={9}
           titulo="Aplicações Industriais Petrobras"
           descricao="Contextos reais: FPSO, oleodutos, refinarias e plataformas. O coração das questões CESGRANRIO."
-          gradiente="bg-gradient-to-br from-slate-700 to-slate-900"
+          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
         />
         <div className="space-y-[50px]">
 
@@ -2335,6 +2497,10 @@ export default function AulaRazaoProporcao({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={9}
             variant="cyan"
@@ -2373,8 +2539,8 @@ export default function AulaRazaoProporcao({
 
                       <QuizInterativo
               questoes={quizPetrobras}
-              titulo="Quiz — Aplicações Industriais Petrobras"
-              numero={9}
+              titulo="QUIZ: Aplicações Petrobras"
+              numero={10}
               variant="slate"
               icone="🛢️"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
@@ -2420,7 +2586,7 @@ export default function AulaRazaoProporcao({
           numero={10}
           titulo="Simulado Final — Nível Elite"
           descricao="8 questões integrando todos os temas. O teste definitivo de preparação para a CESGRANRIO."
-          gradiente="bg-gradient-to-br from-slate-800 via-slate-900 to-black"
+          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
         />
         <div className="space-y-[50px]">
 
@@ -2511,6 +2677,10 @@ export default function AulaRazaoProporcao({
 
 
           
+
+
+
+
 
 
 
