@@ -194,7 +194,7 @@ export default function AulaFuncoesExponenciais({
             numero={1}
             titulo="Potenciação Base"
             descricao="Onde tudo começa. Dominar as potências é o degrau principal."
-            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -363,6 +363,10 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={1}
             variant="indigo"
@@ -372,7 +376,7 @@ export default function AulaFuncoesExponenciais({
               duration: "12:30"
             }}
             resumoVisual={{
-              moduloNome: "Potenciação e Bases",
+              moduloNome: "Módulo 1",
               tituloAula: "Funções Exponenciais",
               materia: "Matemática",
               images: [
@@ -402,8 +406,8 @@ export default function AulaFuncoesExponenciais({
 
                       <QuizInterativo
               questoes={quizM1}
-              titulo="Fixação - Potenciação"
-              numero={1}
+              titulo="QUIZ: Módulo Nº 1"
+              numero={2}
               variant="blue"
               icone="🧮"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -419,7 +423,7 @@ export default function AulaFuncoesExponenciais({
             numero={2}
             titulo="Gráficos e Comportamento"
             descricao="Entenda como a base controla o crescimento ou decaimento visual da curva exponencial."
-            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -557,6 +561,10 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -566,7 +574,7 @@ export default function AulaFuncoesExponenciais({
               duration: "11:15"
             }}
             resumoVisual={{
-              moduloNome: "Gráficos e Comportamento",
+              moduloNome: "Módulo 2",
               tituloAula: "Funções Exponenciais",
               materia: "Matemática",
               images: [
@@ -613,7 +621,7 @@ export default function AulaFuncoesExponenciais({
             numero={3}
             titulo="Equações Exponenciais"
             descricao="Isolando a variável no expoente para encontrar respostas definitivas."
-            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -715,8 +723,8 @@ export default function AulaFuncoesExponenciais({
 
           <QuizInterativo
             questoes={quizM3}
-            titulo="Fixação - Equações"
-            numero={3}
+            titulo="QUIZ: Módulo Nº 3"
+            numero={2}
             variant="cyan"
             icone="⚡"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -731,7 +739,7 @@ export default function AulaFuncoesExponenciais({
             numero={4}
             titulo="Crescimento e Decaimento"
             descricao="Aplicações do mundo real onde a exponencial modela fenômenos naturais e financeiros."
-            gradiente="bg-gradient-to-br from-blue-600 to-indigo-700"
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -842,6 +850,10 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={4}
             variant="blue"
@@ -851,7 +863,7 @@ export default function AulaFuncoesExponenciais({
               duration: "13:45"
             }}
             resumoVisual={{
-              moduloNome: "Crescimento e Decaimento",
+              moduloNome: "Módulo 4",
               tituloAula: "Funções Exponenciais",
               materia: "Matemática",
               images: [
@@ -899,7 +911,7 @@ export default function AulaFuncoesExponenciais({
             numero={5}
             titulo="Desafio Parcial"
             descricao="Teste seus conhecimentos em problemas mistos de exponenciais."
-            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1016,6 +1028,10 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="amber"
@@ -1025,7 +1041,7 @@ export default function AulaFuncoesExponenciais({
               duration: "14:20"
             }}
             resumoVisual={{
-              moduloNome: "Desafio Parcial",
+              moduloNome: "Módulo 5",
               tituloAula: "Funções Exponenciais",
               materia: "Matemática",
               images: [
@@ -1056,8 +1072,8 @@ export default function AulaFuncoesExponenciais({
 
                       <QuizInterativo
               questoes={quizM5}
-              titulo="Desafio Parcial - Exponenciais"
-              numero={5}
+              titulo="QUIZ: Módulo Nº 5"
+              numero={6}
               variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -1073,7 +1089,7 @@ export default function AulaFuncoesExponenciais({
             numero={6}
             titulo="Número e e Logaritmo Natural"
             descricao="A base mais importante do cálculo: Euler e seus mistérios."
-            gradiente="bg-gradient-to-br from-rose-600 to-pink-700"
+            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1185,6 +1201,10 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={6}
             variant="rose"
@@ -1194,7 +1214,7 @@ export default function AulaFuncoesExponenciais({
               duration: "12:50"
             }}
             resumoVisual={{
-              moduloNome: "Número e e Logaritmo Natural",
+              moduloNome: "Módulo 6",
               tituloAula: "Funções Exponenciais",
               materia: "Matemática",
               images: [
@@ -1241,7 +1261,7 @@ export default function AulaFuncoesExponenciais({
             numero={7}
             titulo="Transformações e Deslocamentos"
             descricao="Manipulando gráficos: translações, ampliações e reflexões."
-            gradiente="bg-gradient-to-br from-indigo-600 to-purple-700"
+            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1397,6 +1417,10 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={7}
             variant="indigo"
@@ -1406,7 +1430,7 @@ export default function AulaFuncoesExponenciais({
               duration: "13:20"
             }}
             resumoVisual={{
-              moduloNome: "Transformações e Deslocamentos",
+              moduloNome: "Módulo 7",
               tituloAula: "Funções Exponenciais",
               materia: "Matemática",
               images: [
@@ -1438,8 +1462,8 @@ export default function AulaFuncoesExponenciais({
 
                       <QuizInterativo
               questoes={quizM7}
-              titulo="Fixação - Módulo 7"
-              numero={7}
+              titulo="QUIZ: Módulo Nº 7"
+              numero={8}
               variant="indigo"
               icone="🎨"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
@@ -1455,7 +1479,7 @@ export default function AulaFuncoesExponenciais({
             numero={8}
             titulo="Sistemas Exponenciais"
             descricao="Combinando múltiplas bases e resolvendo problemas complexos."
-            gradiente="bg-gradient-to-br from-emerald-600 to-green-700"
+            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1565,6 +1589,10 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={8}
             variant="emerald"
@@ -1574,7 +1602,7 @@ export default function AulaFuncoesExponenciais({
               duration: "14:10"
             }}
             resumoVisual={{
-              moduloNome: "Sistemas Exponenciais",
+              moduloNome: "Módulo 8",
               tituloAula: "Funções Exponenciais",
               materia: "Matemática",
               images: [
@@ -1623,7 +1651,7 @@ export default function AulaFuncoesExponenciais({
             numero={9}
             titulo="Aplicações Petrobras"
             descricao="Decaimento radioativo, depreciação e otimização em operações reais."
-            gradiente="bg-gradient-to-br from-amber-600 to-yellow-700"
+            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1747,6 +1775,10 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={9}
             variant="amber"
@@ -1756,7 +1788,7 @@ export default function AulaFuncoesExponenciais({
               duration: "15:05"
             }}
             resumoVisual={{
-              moduloNome: "Aplicações Petrobras",
+              moduloNome: "Módulo 9",
               tituloAula: "Funções Exponenciais",
               materia: "Matemática",
               images: [
@@ -1788,8 +1820,8 @@ export default function AulaFuncoesExponenciais({
 
                       <QuizInterativo
               questoes={quizM9}
-              titulo="Fixação - Módulo 9"
-              numero={9}
+              titulo="QUIZ: Módulo Nº 9"
+              numero={10}
               variant="amber"
               icone="🏭"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
@@ -1805,7 +1837,7 @@ export default function AulaFuncoesExponenciais({
             numero={10}
             titulo="Simulado Mestre"
             descricao="Teste seu domínio completo de funções exponenciais."
-            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1952,6 +1984,10 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={10}
             variant="slate"
@@ -1961,7 +1997,7 @@ export default function AulaFuncoesExponenciais({
               duration: "16:30"
             }}
             resumoVisual={{
-              moduloNome: "Simulado Mestre",
+              moduloNome: "Módulo 10",
               tituloAula: "Funções Exponenciais",
               materia: "Matemática",
               images: [
@@ -1991,9 +2027,9 @@ export default function AulaFuncoesExponenciais({
 
                         <QuizInterativo
                 questoes={quizM10}
-                titulo="Simulado Mestre - Exponenciais"
+                titulo="QUIZ: Módulo Nº 10"
                 icone="🏆"
-                numero={10}
+                numero={11}
                 variant="slate"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />

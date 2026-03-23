@@ -40,10 +40,8 @@ export default function AuthLayout({
       <header
         className="fixed top-0 left-0 right-0 flex items-center justify-between px-4 md:px-8 py-3 z-50 backdrop-blur-sm shadow-sm"
         style={{
-          backgroundColor: isDark
-            ? "rgba(15, 23, 42, 0.95)"
-            : "rgba(255, 255, 255, 0.80)",
-          borderBottom: isDark ? "1px solid rgba(255,255,255,0.08)" : "none",
+          backgroundColor: "hsl(var(--background) / 0.85)",
+          borderBottom: "1px solid hsl(var(--border))",
         }}
       >
         {/* Logo */}
@@ -113,8 +111,7 @@ export default function AuthLayout({
 
       {/* ── Left Column: Form ── */}
       <div
-        className="w-full md:w-1/2 min-h-screen flex flex-col justify-center px-4 py-8 md:px-12 md:py-16"
-        style={{ backgroundColor: isDark ? "#020617" : "#f8fafc" }}
+        className="w-full md:w-1/2 min-h-screen flex flex-col justify-center px-4 py-8 md:px-12 md:py-16 bg-background"
       >
         <div className="w-full max-w-md mx-auto pt-32 md:pt-0">{children}</div>
       </div>
@@ -125,9 +122,8 @@ export default function AuthLayout({
           <div
             className="w-full h-full min-h-screen flex items-center justify-center p-8 relative"
             style={{
-              background:
-                "radial-gradient(circle at center, rgba(var(--primary-rgb, 15, 23, 42), 0.2) 0%, #0f172a 100%)",
-              backgroundColor: "#0f172a",
+              background: "var(--primary-gradient)",
+              backgroundColor: "var(--primary-hex)",
             }}
           >
             <div className="relative z-10 w-full max-w-lg">{rightContent}</div>

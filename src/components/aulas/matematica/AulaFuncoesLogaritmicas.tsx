@@ -177,7 +177,7 @@ export default function AulaFuncoesLogaritmicas({
             numero={1}
             titulo="O Conceito de Logaritmo"
             descricao="Números colossais encolhem em números menores através da pergunta fundamental."
-            gradiente="bg-gradient-to-br from-indigo-600 via-blue-600 to-purple-700"
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -333,6 +333,10 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={1}
             variant="indigo"
@@ -342,7 +346,7 @@ export default function AulaFuncoesLogaritmicas({
               duration: "13:45"
             }}
             resumoVisual={{
-              moduloNome: "Conceito Logarítmico",
+              moduloNome: "Módulo 1",
               tituloAula: "Funções Logarítmicas",
               materia: "Matemática",
               images: [
@@ -374,8 +378,8 @@ export default function AulaFuncoesLogaritmicas({
 
                       <QuizInterativo
               questoes={quizM1}
-              titulo="Fixação - Conceitos Fundamentais"
-              numero={1}
+              titulo="QUIZ: Módulo Nº 1"
+              numero={2}
               variant="indigo"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -391,7 +395,7 @@ export default function AulaFuncoesLogaritmicas({
             numero={2}
             titulo="Propriedades Operacionais"
             descricao="Multiplicação encolhe para soma e potência descende como o tombo."
-            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -510,6 +514,10 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -519,7 +527,7 @@ export default function AulaFuncoesLogaritmicas({
               duration: "14:20"
             }}
             resumoVisual={{
-              moduloNome: "Propriedades Fundamentais",
+              moduloNome: "Módulo 2",
               tituloAula: "Funções Logarítmicas",
               materia: "Matemática",
               images: [
@@ -570,7 +578,7 @@ export default function AulaFuncoesLogaritmicas({
             numero={3}
             titulo="Equações Logarítmicas"
             descricao="X nas cordas e logs somando e subtraindo do lado."
-            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -683,6 +691,10 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={3}
             variant="cyan"
@@ -692,7 +704,7 @@ export default function AulaFuncoesLogaritmicas({
               duration: "12:50"
             }}
             resumoVisual={{
-              moduloNome: "Equações Logarítmicas",
+              moduloNome: "Módulo 3",
               tituloAula: "Funções Logarítmicas",
               materia: "Matemática",
               images: [
@@ -723,8 +735,8 @@ export default function AulaFuncoesLogaritmicas({
 
                       <QuizInterativo
               questoes={quizM3}
-              titulo="Fixação - Equações"
-              numero={3}
+              titulo="QUIZ: Módulo Nº 3"
+              numero={4}
               variant="cyan"
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -740,7 +752,7 @@ export default function AulaFuncoesLogaritmicas({
             numero={4}
             titulo="Condições de Existência"
             descricao="Bancas colocam raízes falsas que não existem na vida real."
-            gradiente="bg-gradient-to-br from-blue-600 to-indigo-700"
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -887,6 +899,10 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={4}
             variant="blue"
@@ -896,7 +912,7 @@ export default function AulaFuncoesLogaritmicas({
               duration: "11:30"
             }}
             resumoVisual={{
-              moduloNome: "Condições de Existência",
+              moduloNome: "Módulo 4",
               tituloAula: "Funções Logarítmicas",
               materia: "Matemática",
               images: [
@@ -948,7 +964,7 @@ export default function AulaFuncoesLogaritmicas({
             numero={5}
             titulo="Desafio Integrado"
             descricao="Combine todo o conhecimento em questões de média dificuldade."
-            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1061,6 +1077,10 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="amber"
@@ -1070,7 +1090,7 @@ export default function AulaFuncoesLogaritmicas({
               duration: "15:00"
             }}
             resumoVisual={{
-              moduloNome: "Desafio Integrado",
+              moduloNome: "Módulo 5",
               tituloAula: "Funções Logarítmicas",
               materia: "Matemática",
               images: [
@@ -1097,8 +1117,8 @@ export default function AulaFuncoesLogaritmicas({
 
                       <QuizInterativo
               questoes={quizM5}
-              titulo="Desafio Integrado - Problemas Combinados"
-              numero={5}
+              titulo="QUIZ: Módulo Nº 5"
+              numero={6}
               variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -1114,7 +1134,7 @@ export default function AulaFuncoesLogaritmicas({
             numero={6}
             titulo="Funções Logarítmicas"
             descricao="Transformações, composições e o domínio das curvas que subem com cuidado."
-            gradiente="bg-gradient-to-br from-rose-600 to-red-700"
+            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1273,6 +1293,10 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={6}
             variant="rose"
@@ -1282,7 +1306,7 @@ export default function AulaFuncoesLogaritmicas({
               duration: "13:15"
             }}
             resumoVisual={{
-              moduloNome: "Funções Logarítmicas",
+              moduloNome: "Módulo 6",
               tituloAula: "Funções Logarítmicas",
               materia: "Matemática",
               images: [
@@ -1329,7 +1353,7 @@ export default function AulaFuncoesLogaritmicas({
             numero={7}
             titulo="Sistemas e Inequações"
             descricao="Quando múltiplas equações logarítmicas se encontram numa mesma arena."
-            gradiente="bg-gradient-to-br from-indigo-600 to-purple-700"
+            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1460,6 +1484,10 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={7}
             variant="indigo"
@@ -1469,7 +1497,7 @@ export default function AulaFuncoesLogaritmicas({
               duration: "14:40"
             }}
             resumoVisual={{
-              moduloNome: "Sistemas & Inequações",
+              moduloNome: "Módulo 7",
               tituloAula: "Funções Logarítmicas",
               materia: "Matemática",
               images: [
@@ -1500,8 +1528,8 @@ export default function AulaFuncoesLogaritmicas({
 
                       <QuizInterativo
               questoes={quizM7}
-              titulo="Fixação - Sistemas & Inequações"
-              numero={7}
+              titulo="QUIZ: Módulo Nº 7"
+              numero={8}
               variant="indigo"
               icone="🔗"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
@@ -1517,7 +1545,7 @@ export default function AulaFuncoesLogaritmicas({
             numero={8}
             titulo="Resolução Reversa"
             descricao="Desconstruir problemas complexos até seus componentes logarítmicos primitivos."
-            gradiente="bg-gradient-to-br from-emerald-600 to-green-700"
+            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1627,6 +1655,10 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={8}
             variant="emerald"
@@ -1636,7 +1668,7 @@ export default function AulaFuncoesLogaritmicas({
               duration: "12:30"
             }}
             resumoVisual={{
-              moduloNome: "Resolução Reversa",
+              moduloNome: "Módulo 8",
               tituloAula: "Funções Logarítmicas",
               materia: "Matemática",
               images: [
@@ -1687,7 +1719,7 @@ export default function AulaFuncoesLogaritmicas({
             numero={9}
             titulo="Aplicações Petrobras"
             descricao="Onde os logaritmos vivem na indústria de petróleo e gás natural."
-            gradiente="bg-gradient-to-br from-blue-600 to-cyan-700"
+            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1812,6 +1844,10 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={9}
             variant="blue"
@@ -1821,7 +1857,7 @@ export default function AulaFuncoesLogaritmicas({
               duration: "15:20"
             }}
             resumoVisual={{
-              moduloNome: "Aplicações Petrobras",
+              moduloNome: "Módulo 9",
               tituloAula: "Funções Logarítmicas",
               materia: "Matemática",
               images: [
@@ -1855,8 +1891,8 @@ export default function AulaFuncoesLogaritmicas({
 
                       <QuizInterativo
               questoes={quizM9}
-              titulo="Fixação - Aplicações Petrobras"
-              numero={9}
+              titulo="QUIZ: Módulo Nº 9"
+              numero={10}
               variant="blue"
               icone="🛢️"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
@@ -1872,7 +1908,7 @@ export default function AulaFuncoesLogaritmicas({
             numero={10}
             titulo="Simulado Mestre"
             descricao="O teste final combinando todo o conhecimento de logaritmos. Prepare-se para a prova real."
-            gradiente="bg-gradient-to-br from-purple-600 to-rose-700"
+            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2004,6 +2040,10 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={10}
             variant="purple"
@@ -2013,7 +2053,7 @@ export default function AulaFuncoesLogaritmicas({
               duration: "16:45"
             }}
             resumoVisual={{
-              moduloNome: "Simulado Mestre",
+              moduloNome: "Módulo 10",
               tituloAula: "Funções Logarítmicas",
               materia: "Matemática",
               images: [

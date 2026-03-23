@@ -237,7 +237,7 @@ export function PostPreviewModal({
                     <div className="relative w-full h-[400px] sm:h-[500px] bg-blue-900 overflow-hidden shadow-2xl">
                         {/* Background Image - Bandeira de Jaboatão/Pernambuco */}
                         <div
-                            className="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 duration-[20s]"
+                            className="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 [transition-duration:20s]"
                             style={{
                                 backgroundImage: `url('/images/jaboatao-flag-bg.jpeg?v=${new Date().getTime()}')`, // Path corrigido + Cache buster
                                 opacity: 0.8

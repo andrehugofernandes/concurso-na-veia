@@ -119,6 +119,15 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
   const quizM9 = QUIZ_GESTAO_PESSOAS["modulo-9"];
   const quizM10 = getRandomQuestions(QUIZ_GESTAO_PESSOAS["modulo-10"] || [], 10);
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -143,13 +152,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           numero={1}
           titulo="Fundamentos de Gestão de Pessoas"
           descricao="A evolução do DP ao RH Estratégico: entendendo o capital humano como o ativo mais valioso da Petrobras."
-          variant={getModuleVariant(1)}
+          variant={mv[1]}
         />
 
         <div className="space-y-6">
           <ModuleSectionHeader
             index={1}
-            variant={getModuleVariant(1)}
+            variant={mv[1]}
             title="Dossiê de Fundamentos"
             description="Entenda as dimensões da Gestão de Pessoas no cenário industrial moderno."
           />
@@ -185,8 +194,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={1}
-            variant={getModuleVariant(1)}
+            index={2}
+            variant={mv[1]}
             title="Análise Técnica C.E.D.E."
             description="Explorando a profundidade pedagógica dos fundamentos de GP."
           />
@@ -262,7 +271,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={2}
+            index={3}
             variant="indigo"
             title="Exemplos Práticos Petrobras"
             description="Como a empresa aplica esses conceitos no dia a dia."
@@ -295,8 +304,12 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
+
+
 <ModuleConsolidation
-          index={1}
+          index={4}
           variant="indigo"
           video={{
             videoId: "XpREx30z5qI",
@@ -344,8 +357,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
                 <QuizInterativo
           questoes={quizM1}
-          titulo="Fundamentos de GP"
-          numero={3}
+          titulo="QUIZ: Fundamentos de Gestão de Pessoas"
+          numero={5}
           variant="indigo"
           onComplete={(score: number) => handleModuleComplete("modulo-1", score)}
         />
@@ -357,13 +370,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           numero={2}
           titulo="Recrutamento e Seleção"
           descricao="A ciência de atrair o talento certo e a técnica de escolher o perfil ideal para a cultura Petrobras."
-          variant={getModuleVariant(2)}
+          variant={mv[2]}
         />
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={2}
-            variant={getModuleVariant(2)}
+            index={1}
+            variant={mv[2]}
             title="Dossiê de Atração"
             description="Processos vitais para a renovação do capital intelectual."
           />
@@ -400,7 +413,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader
             index={2}
-            variant={getModuleVariant(2)}
+            variant={mv[2]}
             title="Análise Técnica C.E.D.E."
             description="O funil estratégico: do anúncio à decisão final."
           />
@@ -481,9 +494,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
+
+
 <ModuleConsolidation
-          index={2}
-          variant={getModuleVariant(2)}
+          index={3}
+          variant={mv[2]}
           video={{
             videoId: "7c-YVly_C9o",
             title: "Recrutamento e Seleção Estratégico",
@@ -526,9 +543,9 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
                 <QuizInterativo
           questoes={quizM2}
-          titulo="Recrutamento e Seleção"
-          numero={2}
-          variant={getModuleVariant(2)}
+          titulo="QUIZ: Recrutamento e Seleção"
+          numero={4}
+          variant={mv[2]}
           onComplete={(score: number) => handleModuleComplete("modulo-2", score)}
         />
       </TabsContent>
@@ -539,13 +556,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           numero={3}
           titulo="Admissão e Integração"
           descricao="A jornada de transformação do candidato em colaborador: do contrato ao aculturamento."
-          variant={getModuleVariant(3)}
+          variant={mv[3]}
         />
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={3}
-            variant={getModuleVariant(3)}
+            index={1}
+            variant={mv[3]}
             title="Dossiê de Boas-Vindas"
             description="Os primeiros passos críticos para a retenção de talentos."
           />
@@ -581,8 +598,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={3}
-            variant={getModuleVariant(3)}
+            index={2}
+            variant={mv[3]}
             title="Análise Técnica C.E.D.E."
             description="Transformando o recém-chegado em um parceiro de valor."
           />
@@ -660,9 +677,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
+
+
 <ModuleConsolidation
           index={3}
-          variant={getModuleVariant(3)}
+          variant={mv[3]}
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Onboarding de Sucesso",
@@ -701,9 +722,9 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
                 <QuizInterativo
           questoes={quizM3}
-          titulo="Admissão e Integração"
-          numero={3}
-          variant={getModuleVariant(3)}
+          titulo="QUIZ: Admissão e Integração"
+          numero={4}
+          variant={mv[3]}
           onComplete={(score: number) => handleModuleComplete("modulo-3", score)}
         />
       </TabsContent>
@@ -757,8 +778,12 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
+
+
 <ModuleConsolidation
-          index={4}
+          index={2}
           variant="cyan"
           video={{
             videoId: "7c-YVly_C9o", // Exemplo, idealmente um de capacitação
@@ -806,8 +831,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
                 <QuizInterativo
           questoes={quizM4}
-          titulo="Desenvolvimento e Capacitação"
-          numero={6}
+          titulo="QUIZ: Desenvolvimento e Capacitação"
+          numero={3}
           variant="cyan"
           onComplete={(score: number) => handleModuleComplete("modulo-4", score)}
         />
@@ -865,8 +890,12 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
+
+
 <ModuleConsolidation
-          index={5}
+          index={2}
           variant="amber"
           video={{
             videoId: "dQw4w9WgXcQ",
@@ -906,8 +935,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
                 <QuizInterativo
           questoes={quizM5}
-          titulo="Avaliação de Desempenho"
-          numero={7}
+          titulo="QUIZ: Avaliação de Desempenho"
+          numero={3}
           variant="amber"
           onComplete={(score: number) => handleModuleComplete("modulo-5", score)}
         />
@@ -959,8 +988,12 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
+
+
 <ModuleConsolidation
-          index={6}
+          index={2}
           variant="rose"
           video={{
             videoId: "XpREx30z5qI",
@@ -995,8 +1028,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
                 <QuizInterativo
           questoes={quizM6}
-          titulo="Salarial e Benefícios"
-          numero={8}
+          titulo="QUIZ: Gestão Salarial e Benefícios"
+          numero={3}
           variant="rose"
           onComplete={(score: number) => handleModuleComplete("modulo-6", score)}
         />
@@ -1008,13 +1041,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           numero={7}
           titulo="Motivação e Liderança"
           descricao="O motor humano: teorias, estilos e a influência do líder no comportamento organizacional."
-          variant={getModuleVariant(7) as any}
+          variant={mv[7] as any}
         />
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={7}
-            variant={getModuleVariant(7) as any}
+            index={1}
+            variant={mv[7] as any}
             title="Dossiê de Liderança"
             description="O impacto da influência na condução de equipes de alta performance."
           />
@@ -1050,8 +1083,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={7}
-            variant={getModuleVariant(7) as any}
+            index={2}
+            variant={mv[7] as any}
             title="Análise Técnica C.E.D.E."
             description="Teorias motivacionais e a psicologia do trabalho."
           />
@@ -1130,9 +1163,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
+
+
 <ModuleConsolidation
-          index={7}
-          variant={getModuleVariant(7) as any}
+          index={3}
+          variant={mv[7] as any}
           video={{
             videoId: "9H36Gjg5SLM",
             title: "O Poder da Liderança",
@@ -1166,9 +1203,9 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
                 <QuizInterativo
           questoes={quizM7}
-          titulo="Motivação e Liderança"
-          numero={7}
-          variant={getModuleVariant(7) as any}
+          titulo="QUIZ: Relações Trabalhistas"
+          numero={4}
+          variant={mv[7] as any}
           onComplete={(score: number) => handleModuleComplete("modulo-7", score)}
         />
       </TabsContent>
@@ -1179,13 +1216,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           numero={8}
           titulo="Gestão de Conflitos"
           descricao="A arte da negociação: transformando divergências em oportunidades de evolução e sinergia."
-          variant={getModuleVariant(8) as any}
+          variant={mv[8] as any}
         />
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={8}
-            variant={getModuleVariant(8) as any}
+            index={1}
+            variant={mv[8] as any}
             title="Dossiê de Conflitos"
             description="Entendendo as raízes e as estratégias de resolução."
           />
@@ -1221,8 +1258,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={8}
-            variant={getModuleVariant(8) as any}
+            index={2}
+            variant={mv[8] as any}
             title="Análise Técnica C.E.D.E."
             description="Estilos de gestão e mediação de interesses."
           />
@@ -1300,9 +1337,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
+
+
 <ModuleConsolidation
-          index={8}
-          variant={getModuleVariant(8) as any}
+          index={3}
+          variant={mv[8] as any}
           video={{
             videoId: "3tUuW5gV6k0",
             title: "Resolução de Conflitos",
@@ -1336,9 +1377,9 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
                 <QuizInterativo
           questoes={quizM8}
-          titulo="Gestão de Conflitos"
-          numero={8}
-          variant={getModuleVariant(8) as any}
+          titulo="QUIZ: Gestão de Conflitos"
+          numero={4}
+          variant={mv[8] as any}
           onComplete={(score: number) => handleModuleComplete("modulo-8", score)}
         />
       </TabsContent>
@@ -1349,13 +1390,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           numero={9}
           titulo="Cultura e Mudança"
           descricao="O DNA invisível: compreendendo as crenças, valores e os processos de transformação cultural."
-          variant={getModuleVariant(9) as any}
+          variant={mv[9] as any}
         />
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={9}
-            variant={getModuleVariant(9) as any}
+            index={1}
+            variant={mv[9] as any}
             title="Dossiê de Cultura"
             description="As camadas que definem quem somos como organização."
           />
@@ -1391,8 +1432,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={9}
-            variant={getModuleVariant(9) as any}
+            index={2}
+            variant={mv[9] as any}
             title="Análise Técnica C.E.D.E."
             description="Processos de mudança e resistência organizacional."
           />
@@ -1470,9 +1511,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
+
+
 <ModuleConsolidation
-          index={9}
-          variant={getModuleVariant(9) as any}
+          index={3}
+          variant={mv[9] as any}
           video={{
             videoId: "fW8amMCVAJQ",
             title: "Cultura Organizacional",
@@ -1506,9 +1551,9 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
                 <QuizInterativo
           questoes={quizM9}
-          titulo="Cultura e Mudança"
-          numero={9}
-          variant={getModuleVariant(9) as any}
+          titulo="QUIZ: Gestão de Pessoas na Petrobras"
+          numero={4}
+          variant={mv[9] as any}
           onComplete={(score: number) => handleModuleComplete("modulo-9", score)}
         />
       </TabsContent>
@@ -1519,13 +1564,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           numero={10}
           titulo="Tendências do RH"
           descricao="O futuro agora: RH Ágil, People Analytics e a integração da Inteligência Artificial."
-          variant={getModuleVariant(10) as any}
+          variant={mv[10] as any}
         />
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={10}
-            variant={getModuleVariant(10) as any}
+            index={1}
+            variant={mv[10] as any}
             title="Dossiê Future-Ready"
             description="As novas fronteiras da gestão do capital humano."
           />
@@ -1561,8 +1606,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={10}
-            variant={getModuleVariant(10) as any}
+            index={2}
+            variant={mv[10] as any}
             title="Análise Técnica C.E.D.E."
             description="Liderando na era da incerteza digital."
           />
@@ -1640,9 +1685,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
+
+
 <ModuleConsolidation
-          index={10}
-          variant={getModuleVariant(10) as any}
+          index={3}
+          variant={mv[10] as any}
           video={{
             videoId: "hYmX36X6y4M",
             title: "Future of HR",
@@ -1676,9 +1725,9 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
                 <QuizInterativo
           questoes={quizM10}
-          titulo="Tendências do RH"
-          numero={10}
-          variant={getModuleVariant(10) as any}
+          titulo="QUIZ: Simulado Mestre"
+          numero={4}
+          variant={mv[10] as any}
           onComplete={(score: number) => handleModuleComplete("modulo-10", score)}
         />
       </TabsContent>
@@ -1688,13 +1737,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           numero={11}
           titulo="RH na Realidade Petrobras"
           descricao="Aprofundamento no PCR, Teletrabalho e a cultura de excelência da companhia."
-          variant={getModuleVariant(1) as any}
+          variant={mv[11] as any}
         />
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={11}
-            variant={getModuleVariant(1) as any}
+            index={1}
+            variant={mv[11] as any}
             title="Dossiê Corporativo"
             description="Políticas internas e diretrizes de gestão de talentos."
           />
@@ -1730,8 +1779,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={11}
-            variant={getModuleVariant(1) as any}
+            index={2}
+            variant={mv[11] as any}
             title="Análise Técnica C.E.D.E."
             description="A prática da GP no setor de óleo e gás."
           />
@@ -1811,9 +1860,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         
 
 
+
+
+
+
 <ModuleConsolidation
-          index={11}
-          variant={getModuleVariant(1) as any}
+          index={3}
+          variant={mv[11] as any}
           video={{
              videoId: "LPT3-fW8y78",
              title: "RH Petrobras por Dentro",
@@ -1859,9 +1912,9 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
             correta: "B",
             explicacao: "Atitude representa o 'querer fazer', ou seja, o aspecto comportamental e motivacional da competência."
           }]}
-          titulo="RH Petrobras"
-          numero={11}
-          variant={getModuleVariant(1) as any}
+          titulo="QUIZ: Módulo Nº 11"
+          numero={4}
+          variant={mv[11] as any}
           onComplete={(score: number) => handleModuleComplete("modulo-11", score)}
         />
       </TabsContent>

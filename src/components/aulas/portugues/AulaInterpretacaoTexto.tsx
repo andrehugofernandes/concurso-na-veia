@@ -266,7 +266,7 @@ export default function AulaInterpretacaoTexto({
           numero={1}
           titulo="A Diferença Letal"
           descricao="O Dossiê Premium de Compreensão vs. Interpretação. A fronteira exata entre o que o texto afirma e o que a banca induz."
-          gradiente="bg-gradient-to-br from-blue-700 via-sky-600 to-cyan-500"
+          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
@@ -501,6 +501,10 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
+
+
 <ModuleConsolidation
           index={4}
           variant="blue"
@@ -513,7 +517,7 @@ export default function AulaInterpretacaoTexto({
               "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1073&auto=format&fit=crop",
           }}
           resumoVisual={{
-            moduloNome: "A Diferença Letal",
+            moduloNome: "Módulo 1",
             tituloAula: "Interpretação de Texto",
             materia: "Língua Portuguesa",
             images: [
@@ -591,7 +595,7 @@ export default function AulaInterpretacaoTexto({
 
                 <QuizInterativo
           questoes={quizM1}
-          titulo="Blindagem de Módulo: Fundamentos"
+          titulo="QUIZ: A Diferença Letal"
           icone="🛡️"
           numero={5}
           variant="blue"
@@ -605,7 +609,7 @@ export default function AulaInterpretacaoTexto({
           numero={2}
           titulo="O Tópico Frasal"
           descricao="A técnica cirúrgica para encontrar a ideia central do parágrafo em segundos, ignorando o ruído visual."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-500"
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
@@ -807,6 +811,10 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
+
+
 <ModuleConsolidation
           index={5}
           variant="emerald"
@@ -818,7 +826,7 @@ export default function AulaInterpretacaoTexto({
               "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000",
           }}
           resumoVisual={{
-            moduloNome: "O Tópico Frasal",
+            moduloNome: "Módulo 2",
             tituloAula: "Interpretação de Texto",
             materia: "Língua Portuguesa",
             images: [
@@ -903,7 +911,7 @@ export default function AulaInterpretacaoTexto({
           numero={3}
           titulo="Coesão e Argumentação"
           descricao="A 'Cola' que une as ideias e os 'Martelos' que as sustentam. Domine a lógica invisível preferida da Cesgranrio."
-          gradiente="bg-gradient-to-br from-amber-600 via-orange-500 to-yellow-500"
+          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
@@ -1121,6 +1129,10 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
+
+
 <ModuleConsolidation
           index={3}
           variant="amber"
@@ -1132,7 +1144,7 @@ export default function AulaInterpretacaoTexto({
               "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
           }}
           resumoVisual={{
-            moduloNome: "Coesão e Argumentação",
+            moduloNome: "Módulo 3",
             tituloAula: "Interpretação de Texto",
             materia: "Língua Portuguesa",
             images: [
@@ -1202,9 +1214,9 @@ export default function AulaInterpretacaoTexto({
 
                 <QuizInterativo
           questoes={quizM3}
-          titulo="Blindagem de Módulo: Lógica"
+          titulo="QUIZ: Coesão e Argumentação"
           icone="🧠"
-          numero={3}
+          numero={4}
           variant="amber"
           onComplete={(score) => handleModuleComplete("modulo-3", score)}
         />
@@ -1216,7 +1228,7 @@ export default function AulaInterpretacaoTexto({
           numero={4}
           titulo="Tipologia Textual"
           descricao="O DNA do Texto. Identifique o gênero e o tipo predominante para antecipar a intenção da Cesgranrio."
-          gradiente="bg-gradient-to-br from-indigo-600 via-blue-700 to-cyan-500"
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
@@ -1406,6 +1418,10 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
+
+
 <ModuleConsolidation
           index={4}
           variant="blue"
@@ -1417,7 +1433,7 @@ export default function AulaInterpretacaoTexto({
               "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000",
           }}
           resumoVisual={{
-            moduloNome: "Tipologia Textual",
+            moduloNome: "Módulo 4",
             tituloAula: "Interpretação de Texto",
             materia: "Língua Portuguesa",
             images: [
@@ -1472,7 +1488,7 @@ export default function AulaInterpretacaoTexto({
 
                 <QuizInterativo
           questoes={quizM4}
-          titulo="Blindagem de Módulo: DNA"
+          titulo="QUIZ: Tipologia Textual"
           icone="🧬"
           numero={5}
           variant="blue"
@@ -1486,7 +1502,7 @@ export default function AulaInterpretacaoTexto({
           numero={5}
           titulo="Vícios e Velocidade"
           descricao="Elimine as âncoras que te impedem de ler os textos técnicos da Petrobras em tempo recorde."
-          gradiente="bg-gradient-to-br from-emerald-600 via-green-500 to-teal-500"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
@@ -1638,6 +1654,10 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
+
+
 <ModuleConsolidation
           index={5}
           variant="emerald"
@@ -1649,7 +1669,7 @@ export default function AulaInterpretacaoTexto({
               "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000",
           }}
           resumoVisual={{
-            moduloNome: "Vícios e Velocidade",
+            moduloNome: "Módulo 5",
             tituloAula: "Interpretação de Texto",
             materia: "Língua Portuguesa",
             images: [
@@ -1734,7 +1754,7 @@ export default function AulaInterpretacaoTexto({
           numero={6}
           titulo="As Entrelinhas (Inferência)"
           descricao="A arte de ler o que não foi escrito, mas foi 'pago' para ser entendido. Pressupostos vs Subentendidos."
-          gradiente="bg-gradient-to-br from-sky-600 via-cyan-600 to-teal-500"
+          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
@@ -1873,6 +1893,10 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
+
+
 <ModuleConsolidation
           index={3}
           variant="cyan"
@@ -1884,7 +1908,7 @@ export default function AulaInterpretacaoTexto({
               "https://images.unsplash.com/photo-1454165833767-023023e1e2d1?q=80&w=1000",
           }}
           resumoVisual={{
-            moduloNome: "As Entrelinhas",
+            moduloNome: "Módulo 6",
             tituloAula: "Interpretação de Texto",
             materia: "Língua Portuguesa",
             images: [
@@ -1957,7 +1981,7 @@ export default function AulaInterpretacaoTexto({
 
                 <QuizInterativo
           questoes={quizM6}
-          titulo="Desafio de Entrelinhas"
+          titulo="QUIZ: Pistas e Entrelinhas"
           icone="🕵️"
           numero={4}
           variant="cyan"
@@ -1971,7 +1995,7 @@ export default function AulaInterpretacaoTexto({
           numero={7}
           titulo="As Ameaças Triplas"
           descricao="Redução, Extrapolação e Contradição. Detecte os venenos das alternativas falsas lógicas."
-          gradiente="bg-gradient-to-br from-red-600 via-rose-500 to-orange-500"
+          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
@@ -2104,6 +2128,10 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
+
+
 <ModuleConsolidation
           index={4}
           variant="rose"
@@ -2115,7 +2143,7 @@ export default function AulaInterpretacaoTexto({
               "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1000",
           }}
           resumoVisual={{
-            moduloNome: "Ameaças Triplas",
+            moduloNome: "Módulo 7",
             tituloAula: "Interpretação de Texto",
             materia: "Língua Portuguesa",
             images: [
@@ -2188,7 +2216,7 @@ export default function AulaInterpretacaoTexto({
 
                 <QuizInterativo
           questoes={quizM7}
-          titulo="Desafio de Detecção"
+          titulo="QUIZ: As Ameaças Triplas"
           icone="🚫"
           numero={5}
           variant="rose"
@@ -2202,7 +2230,7 @@ export default function AulaInterpretacaoTexto({
           numero={8}
           titulo="Intenção Autoral"
           descricao="Para que o texto foi escrito? Decifre a finalidade principal e o tom do autor."
-          gradiente="bg-gradient-to-br from-indigo-600 via-blue-500 to-sky-400"
+          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
@@ -2316,6 +2344,10 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
+
+
 <ModuleConsolidation
           index={3}
           variant="blue"
@@ -2327,7 +2359,7 @@ export default function AulaInterpretacaoTexto({
               "https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=1000",
           }}
           resumoVisual={{
-            moduloNome: "Intenção Autoral",
+            moduloNome: "Módulo 8",
             tituloAula: "Interpretação de Texto",
             materia: "Língua Portuguesa",
             images: [
@@ -2398,7 +2430,7 @@ export default function AulaInterpretacaoTexto({
 
                 <QuizInterativo
           questoes={quizM8}
-          titulo="Desafio de Intencionalidade"
+          titulo="QUIZ: A Lógica CESGRANRIO"
           icone="🎯"
           numero={4}
           variant="blue"
@@ -2412,7 +2444,7 @@ export default function AulaInterpretacaoTexto({
           numero={9}
           titulo="A Lógica Cesgranrio"
           descricao="O DNA das questões. Mapeamento de sinônimos técnicos e eixos temáticos repetitivos."
-          gradiente="bg-gradient-to-br from-blue-700 via-indigo-600 to-violet-500"
+          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
@@ -2497,6 +2529,10 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
+
+
 <ModuleConsolidation
           index={3}
           variant="blue"
@@ -2508,7 +2544,7 @@ export default function AulaInterpretacaoTexto({
               "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1000",
           }}
           resumoVisual={{
-            moduloNome: "Lógica Cesgranrio",
+            moduloNome: "Módulo 9",
             tituloAula: "Interpretação de Texto",
             materia: "Língua Portuguesa",
             images: [
@@ -2599,7 +2635,7 @@ export default function AulaInterpretacaoTexto({
           numero={10}
           titulo="Arena de Elite"
           descricao="A prova final. O Checklist de Blindagem antes do grande desafio."
-          gradiente="bg-gradient-to-br from-amber-600 via-orange-500 to-yellow-400"
+          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
@@ -2707,6 +2743,10 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
+
+
 <ModuleConsolidation
           index={2}
           variant="amber"
@@ -2718,7 +2758,7 @@ export default function AulaInterpretacaoTexto({
               "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1000",
           }}
           resumoVisual={{
-            moduloNome: "Reta Final",
+            moduloNome: "Módulo 10",
             tituloAula: "Interpretação de Texto",
             materia: "Língua Portuguesa",
             images: [
@@ -2791,7 +2831,7 @@ export default function AulaInterpretacaoTexto({
 
                 <QuizInterativo
           questoes={quizFinal}
-          titulo="O Exame Final de Interpretação Mestra"
+          titulo="QUIZ: Arena de Elite"
           icone="👑"
           numero={3}
           variant="indigo"

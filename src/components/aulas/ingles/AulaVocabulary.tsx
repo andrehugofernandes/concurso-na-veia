@@ -120,6 +120,15 @@ export default function AulaVocabulary({
     setCompletedModules((prev) => new Set([...prev, moduleId]));
   };
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       titulo={titulo || "Technical Vocabulary — Domínio do Vocabulário Técnico Petrobras"}
@@ -145,7 +154,7 @@ export default function AulaVocabulary({
           <ModuleBanner
             numero={1}
             titulo="Upstream Operations (Exploration & Drilling)"
-            variant={getModuleVariant(1)}
+            variant={mv[1]}
             />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -364,7 +373,7 @@ export default function AulaVocabulary({
           <ModuleBanner
             numero={2}
             titulo="Downstream Operations (Refining & Distribution)"
-            variant={getModuleVariant(2)}
+            variant={mv[2]}
             />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -570,7 +579,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM2}
-              numero={2}
+              numero={1}
               onComplete={() => handleModuleComplete("modulo-2")}
             />
           </ModuleConsolidation>
@@ -583,7 +592,7 @@ export default function AulaVocabulary({
           <ModuleBanner
             numero={3}
             titulo="Industrial Equipment (Valves, Pumps, Pipes, Rigs)"
-            variant={getModuleVariant(3)}
+            variant={mv[3]}
             />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -802,7 +811,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM3}
-              numero={3}
+              numero={1}
               onComplete={() => handleModuleComplete("modulo-3")}
             />
           </ModuleConsolidation>
@@ -815,7 +824,7 @@ export default function AulaVocabulary({
           <ModuleBanner
             numero={4}
             titulo="Safety & HSE (PPE, Hazard, Incident, Compliance)"
-            variant={getModuleVariant(4)}
+            variant={mv[4]}
             />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1031,7 +1040,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM4}
-              numero={4}
+              numero={1}
               onComplete={() => handleModuleComplete("modulo-4")}
             />
           </ModuleConsolidation>
@@ -1044,7 +1053,7 @@ export default function AulaVocabulary({
           <ModuleBanner
             numero={5}
             titulo="Financial & Business Terms (CAPEX, OPEX, Brent)"
-            variant={getModuleVariant(5)}
+            variant={mv[5]}
             />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1263,7 +1272,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM5}
-              numero={5}
+              numero={1}
               onComplete={() => handleModuleComplete("modulo-5")}
             />
           </ModuleConsolidation>
@@ -1276,7 +1285,7 @@ export default function AulaVocabulary({
           <ModuleBanner
             numero={6}
             titulo="Environmental Terms (Carbon Footprint, ESG)"
-            variant={getModuleVariant(6)}
+            variant={mv[6]}
             />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1488,7 +1497,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM6}
-              numero={6}
+              numero={1}
               onComplete={() => handleModuleComplete("modulo-6")}
             />
           </ModuleConsolidation>
@@ -1501,7 +1510,7 @@ export default function AulaVocabulary({
           <ModuleBanner
             numero={7}
             titulo="Management & Projects (KPI, Milestone, Scope)"
-            variant={getModuleVariant(7)}
+            variant={mv[7]}
             />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1720,7 +1729,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM7}
-              numero={7}
+              numero={1}
               onComplete={() => handleModuleComplete("modulo-7")}
             />
           </ModuleConsolidation>
@@ -1733,7 +1742,7 @@ export default function AulaVocabulary({
           <ModuleBanner
             numero={8}
             titulo="Procurement & Contracts (Tender, Bid, Liability)"
-            variant={getModuleVariant(8)}
+            variant={mv[8]}
             />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1952,7 +1961,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM8}
-              numero={8}
+              numero={1}
               onComplete={() => handleModuleComplete("modulo-8")}
             />
           </ModuleConsolidation>
@@ -1965,7 +1974,7 @@ export default function AulaVocabulary({
           <ModuleBanner
             numero={9}
             titulo="Vocabulary in Petrobras Context (Technical Integration)"
-            variant={getModuleVariant(9)}
+            variant={mv[9]}
             />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2184,7 +2193,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM9}
-              numero={9}
+              numero={1}
               onComplete={() => handleModuleComplete("modulo-9")}
             />
           </ModuleConsolidation>
@@ -2197,7 +2206,7 @@ export default function AulaVocabulary({
           <ModuleBanner
             numero={10}
             titulo="Simulado Mestre (FINAL)"
-            variant={getModuleVariant(10)}
+            variant={mv[10]}
             />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2337,7 +2346,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizFinal}
-              numero={10}
+              numero={1}
               onComplete={() => {
                 handleModuleComplete("modulo-10");
                 onComplete?.();

@@ -160,7 +160,7 @@ export default function AulaPorcentagem({
             numero={1}
             titulo="Fundamentos de Porcentagem"
             descricao="O alicerce: conversões, cálculos e a lógica por trás do símbolo %."
-            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
 
           {/* SEÇÃO 1: Conceito Central */}
@@ -409,6 +409,8 @@ export default function AulaPorcentagem({
 
 
 
+
+
 <ModuleConsolidation
             index={1}
             variant="indigo"
@@ -447,8 +449,8 @@ export default function AulaPorcentagem({
 
                       <QuizInterativo
               questoes={quizM1}
-              titulo="Fixação — Fundamentos"
-              numero={1}
+              titulo="QUIZ: Módulo Nº 1"
+              numero={3}
               variant="emerald"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -500,7 +502,7 @@ export default function AulaPorcentagem({
             numero={2}
             titulo="Aumentos e Descontos"
             descricao="O fator multiplicador: a arma secreta que elimina 3 passos de cálculo."
-            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -666,6 +668,8 @@ export default function AulaPorcentagem({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -751,7 +755,7 @@ export default function AulaPorcentagem({
             numero={3}
             titulo="Variação Percentual"
             descricao="Calcule quanto subiu ou caiu em relação ao valor inicial — sem errar a base."
-            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -882,6 +886,8 @@ export default function AulaPorcentagem({
 
 
 
+
+
 <ModuleConsolidation
             index={3}
             variant="cyan"
@@ -920,8 +926,8 @@ export default function AulaPorcentagem({
 
                       <QuizInterativo
               questoes={quizM3}
-              titulo="Fixação — Variação Percentual"
-              numero={3}
+              titulo="QUIZ: Módulo Nº 3"
+              numero={4}
               variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -967,7 +973,7 @@ export default function AulaPorcentagem({
             numero={4}
             titulo="Aplicações Industriais"
             descricao="Eficiência de equipamentos, misturas de substâncias e metas operacionais."
-            gradiente="bg-gradient-to-br from-cyan-600 to-teal-800"
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1094,6 +1100,8 @@ export default function AulaPorcentagem({
 
 
 
+
+
 <ModuleConsolidation
             index={4}
             variant="blue"
@@ -1179,7 +1187,7 @@ export default function AulaPorcentagem({
             numero={5}
             titulo="Simulado — Metade da Jornada"
             descricao="Teste integrado dos módulos 1 a 4. Mínimo 60% para avançar."
-            gradiente="bg-gradient-to-br from-rose-600 to-red-800"
+            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1217,6 +1225,8 @@ export default function AulaPorcentagem({
 
 
           
+
+
 
 
 
@@ -1262,8 +1272,8 @@ export default function AulaPorcentagem({
 
                       <QuizInterativo
               questoes={quizM5}
-              titulo="Simulado — Nível 1"
-              numero={5}
+              titulo="QUIZ: Módulo Nº 5"
+              numero={6}
               variant="rose"
               icone="🏆"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -1281,7 +1291,7 @@ export default function AulaPorcentagem({
             numero={6}
             titulo="Porcentagem Composta"
             descricao="Juros sobre juros, depreciação exponencial e a potência do tempo."
-            gradiente="bg-gradient-to-br from-indigo-700 to-blue-900"
+            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1523,6 +1533,8 @@ export default function AulaPorcentagem({
 
 
 
+
+
 <ModuleConsolidation
             index={6}
             variant="rose"
@@ -1614,7 +1626,7 @@ export default function AulaPorcentagem({
             numero={7}
             titulo="O Cálculo Reverso"
             descricao="Encontrar o valor original quando se conhece o resultado e a taxa aplicada."
-            gradiente="bg-gradient-to-br from-emerald-600 to-cyan-800"
+            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1800,6 +1812,8 @@ export default function AulaPorcentagem({
 
 
 
+
+
 <ModuleConsolidation
             index={7}
             variant="indigo"
@@ -1838,8 +1852,8 @@ export default function AulaPorcentagem({
 
                       <QuizInterativo
               questoes={quizM7}
-              titulo="Fixação — Cálculo Reverso"
-              numero={7}
+              titulo="QUIZ: Módulo Nº 7"
+              numero={8}
               variant="emerald"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
@@ -1885,7 +1899,7 @@ export default function AulaPorcentagem({
             numero={8}
             titulo="Regra de Três e Porcentagem"
             descricao="Quando o fator multiplicador não basta: alinhamento de grandezas proporcionais."
-            gradiente="bg-gradient-to-br from-amber-600 to-yellow-800"
+            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1999,6 +2013,8 @@ export default function AulaPorcentagem({
 
 
 
+
+
 <ModuleConsolidation
             index={8}
             variant="emerald"
@@ -2084,7 +2100,7 @@ export default function AulaPorcentagem({
             numero={9}
             titulo="Aplicações Financeiras"
             descricao="Salários, impostos, CDI, INSS e descontos embutidos do mundo real."
-            gradiente="bg-gradient-to-br from-teal-600 to-green-800"
+            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -2266,6 +2282,8 @@ export default function AulaPorcentagem({
 
 
 
+
+
 <ModuleConsolidation
             index={9}
             variant="cyan"
@@ -2304,8 +2322,8 @@ export default function AulaPorcentagem({
 
                       <QuizInterativo
               questoes={quizM9}
-              titulo="Fixação — Financeiro"
-              numero={9}
+              titulo="QUIZ: Módulo Nº 9"
+              numero={10}
               variant="emerald"
               icone="🔥"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
@@ -2357,7 +2375,7 @@ export default function AulaPorcentagem({
             numero={10}
             titulo="Simulado Mestre — Porcentagem"
             descricao="Todas as competências postas à prova. Nível CESGRANRIO real."
-            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
           />
 
           {/* Revisão rápida final */}
@@ -2402,6 +2420,8 @@ export default function AulaPorcentagem({
 
 
           
+
+
 
 
 

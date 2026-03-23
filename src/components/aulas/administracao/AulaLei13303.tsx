@@ -396,7 +396,7 @@ export default function AulaLei13303(props: AulaProps) {
             </p>
             <p>
               Por que a Petrobras é SEM e não EP? Porque a Lei 13.303 permite que empresas estratégicas brasileiras captem capital privado (via bolsa)
-              sem perder o controle estatal. Assim, a União mantém controle (>50%) mas também atrai investidores institucionais (fundos, bancos) que compram
+              sem perder o controle estatal. Assim, a União mantém controle ({'>'}50%) mas também atrai investidores institucionais (fundos, bancos) que compram
               ações minoritárias. Isso diversifica riscos e aumenta a capitalização sem abrir mão do comando.
             </p>
             <p>
@@ -413,8 +413,8 @@ export default function AulaLei13303(props: AulaProps) {
               <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-2">🏢 Diferenças Principais</p>
               <ul className="text-sm space-y-1 text-foreground">
                 <li>✓ <strong>EP:</strong> Capital 100% público; Sem acionistas privados; Decisões 100% governamentais</li>
-                <li>✓ <strong>SEM:</strong> Capital público (>50%) + privado (<50%); Tem acionistas privados; Assembleia Geral com votação</li>
-                <li>✓ <strong>Petrobras:</strong> SEM (S.A.); União detém >50%; Ações negociadas em bolsa</li>
+                <li>✓ <strong>SEM:</strong> Capital público ({'>'}50%) + privado ({'<'}50%); Tem acionistas privados; Assembleia Geral com votação</li>
+                <li>✓ <strong>Petrobras:</strong> SEM (S.A.); União detém {'>'}50%; Ações negociadas em bolsa</li>
               </ul>
             </div>
           </div>
@@ -621,7 +621,7 @@ export default function AulaLei13303(props: AulaProps) {
 
           <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
             <p>
-              Na Petrobras (SEM), existem dois tipos de acionistas: (1) <strong>União Federal</strong> (controladora, >50% das ordinárias);
+              Na Petrobras (SEM), existem dois tipos de acionistas: (1) <strong>União Federal</strong> (controladora, {'>'}50% das ordinárias);
               (2) <strong>Acionistas privados/minoritários</strong> (detêm ordinárias minoritárias e/ou preferenciais). A Lei 13.303 garante que
               acionistas minoritários não sejam arbitrariamente prejudicados por decisões do controlador. Essa proteção é fundamental para que
               investidores privados confiem em empresas estatais.

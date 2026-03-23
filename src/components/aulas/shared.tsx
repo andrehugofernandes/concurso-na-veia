@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname, useParams } from "next/navigation";
 import { useHeaderState } from "@/contexts/HeaderStateContext";
 export { FunctionGraph, type FunctionPlot } from "./shared/FunctionGraph";
+import { cn } from "@/lib/utils";
 import {
   Carousel,
   CarouselContent,
@@ -65,10 +66,10 @@ import {
   LuShieldAlert,
   LuBrain,
 } from "react-icons/lu";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Slider } from "../ui/slider";
+import { Slider } from "@/components/ui/slider";
+import { triggerSuccessConfetti } from "@/lib/confetti";
 
 export interface AulaProps {
   onComplete: () => void;
@@ -98,9 +99,9 @@ export interface ModuleDef {
 }
 
 export interface QuizQuestion {
-  id: number;
+  id: string | number;
   pergunta: string | React.ReactNode;
-  opcoes: { label: string; valor: string }[];
+  opcoes: { label: string; valor: string | React.ReactNode }[];
   correta: string;
   explicacao: string | React.ReactNode;
 }
@@ -124,10 +125,12 @@ export function getRandomQuestions(
 export function AlertBox({
   tipo,
   titulo,
+  className,
   children,
 }: {
   tipo: "info" | "warning" | "danger" | "success";
   titulo: string;
+  className?: string;
   children: React.ReactNode;
 }) {
   const styles: Record<string, { bg: string; border: string; icon: string }> = {
@@ -142,7 +145,7 @@ export function AlertBox({
   };
   const s = styles[tipo];
   return (
-    <div className={`${s.bg} border-l-4 ${s.border} rounded-xl p-5 my-5`}>
+    <div className={cn(`${s.bg} border-l-4 ${s.border} rounded-xl p-5 my-5`, className)}>
       <div className="flex gap-3 items-start">
         <span className="text-2xl">{s.icon}</span>
         <div>
@@ -913,8 +916,10 @@ export function QuizInterativo({
   onComplete?: (score: number) => void;
   descricao?: string;
 }) {
-  const [respostas, setRespostas] = useState<Record<number, string>>({});
-  const [verificados, setVerificados] = useState<Record<number, boolean>>({});
+  const [respostas, setRespostas] = useState<Record<string | number, string>>({});
+  const [verificados, setVerificados] = useState<Record<string | number, boolean>>(
+    {},
+  );
   const [completed, setCompleted] = useState(false);
 
   // 📝 IMPERATIVO: Padronização de Títulos de QUIZ
@@ -926,12 +931,12 @@ export function QuizInterativo({
 
   const displayTitle = `QUIZ: ${cleanTitle}`;
 
-  const selecionar = (qId: number, label: string) => {
+  const selecionar = (qId: string | number, label: string) => {
     if (verificados[qId]) return;
     setRespostas((prev) => ({ ...prev, [qId]: label }));
   };
 
-  const verificar = (qId: number) => {
+  const verificar = (qId: string | number) => {
     setVerificados((prev) => ({ ...prev, [qId]: true }));
   };
 
@@ -948,6 +953,7 @@ export function QuizInterativo({
       const aproveitamento = (acertos / questoes.length) * 100;
       if (aproveitamento >= 60) {
         setCompleted(true);
+        triggerSuccessConfetti();
         if (onComplete) onComplete(Math.round(aproveitamento));
       }
     }
@@ -1276,6 +1282,10 @@ export const MODULE_SKIN_COLORS = [
   {
     variant: "cyan" as const,
     gradiente: "bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700",
+  },
+  {
+    variant: "blue" as const,
+    gradiente: "bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700",
   },
 ];
 
@@ -2223,7 +2233,7 @@ export function AulaTemplate({
   setActiveTab,
   modules,
   completedModules,
-  isModuleUnlocked,
+  isModuleUnlocked = () => true,
   titulo,
   descricao,
   duracao,
@@ -2243,7 +2253,7 @@ export function AulaTemplate({
   setActiveTab: (val: string) => void;
   modules: readonly ModuleDef[];
   completedModules: Set<string>;
-  isModuleUnlocked: (index: number) => boolean;
+  isModuleUnlocked?: (index: number) => boolean;
   titulo: string;
   descricao: string;
   duracao: string;
@@ -2481,7 +2491,7 @@ export interface StickyModuleNavProps {
   modules: readonly ModuleDef[];
   activeTab: string;
   completedModules: Set<string>;
-  isModuleUnlocked: (index: number) => boolean;
+  isModuleUnlocked?: (index: number) => boolean;
 }
 
 /**
@@ -2496,7 +2506,7 @@ export function StickyModuleNav({
   modules,
   activeTab,
   completedModules,
-  isModuleUnlocked,
+  isModuleUnlocked = () => true,
 }: StickyModuleNavProps) {
   const {
     isStickyNavPinned,

@@ -331,7 +331,7 @@ export default function AulaClassesPalavras({
           numero={1}
           titulo="O Substantivo"
           descricao="A base de toda a nomeação e o núcleo dos termos da oração."
-          gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
+          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
@@ -695,9 +695,9 @@ export default function AulaClassesPalavras({
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod1}
-            titulo="Substantivo: O Nomeador"
+            titulo="QUIZ: Substantivo: O Nomeador"
             icone="🎯"
-            numero={1}
+            numero={8}
             variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
@@ -710,7 +710,7 @@ export default function AulaClassesPalavras({
           numero={2}
           titulo="O Adjetivo"
           descricao="O qualificador que define a concordância e a nuance do texto."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
@@ -873,9 +873,9 @@ export default function AulaClassesPalavras({
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod2}
-            titulo="Adjetivo: O Qualificador"
+            titulo="QUIZ: Adjetivo: O Qualificador"
             icone="✨"
-            numero={2}
+            numero={5}
             variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
@@ -888,7 +888,7 @@ export default function AulaClassesPalavras({
           numero={3}
           titulo="O Artigo"
           descricao="O determinante que define a substantivação e a concordância."
-          gradiente="bg-gradient-to-br from-amber-600 via-orange-600 to-yellow-700"
+          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
@@ -1102,9 +1102,9 @@ export default function AulaClassesPalavras({
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod3}
-            titulo="Artigo: O Determinante"
+            titulo="QUIZ: Artigo: O Determinante"
             icone="🏷️"
-            numero={3}
+            numero={6}
             variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
@@ -1117,7 +1117,7 @@ export default function AulaClassesPalavras({
           numero={4}
           titulo="O Pronome"
           descricao="O substituto estratégico e o mestre da coesão textual."
-          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1367,9 +1367,9 @@ export default function AulaClassesPalavras({
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod4}
-            titulo="Pronome: O Substituto"
+            titulo="QUIZ: Pronome: O Substituto"
             icone="👤"
-            numero={4}
+            numero={6}
             variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
@@ -1382,7 +1382,7 @@ export default function AulaClassesPalavras({
           numero={5}
           titulo="O Verbo"
           descricao="A classe mais complexa e importante da língua portuguesa."
-          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
@@ -1610,9 +1610,9 @@ export default function AulaClassesPalavras({
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod5}
-            titulo="Verbo: O Motor da Oração"
+            titulo="QUIZ: Verbo: O Motor da Oração"
             icone="⚡"
-            numero={5}
+            numero={6}
             variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
@@ -1625,7 +1625,7 @@ export default function AulaClassesPalavras({
           numero={6}
           titulo="O Advérbio"
           descricao="O modificador invariável e as armadilhas das palavras camaleão."
-          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
+          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
@@ -1787,9 +1787,9 @@ export default function AulaClassesPalavras({
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod6}
-            titulo="Advérbio: A Circunstância"
+            titulo="QUIZ: Advérbio: A Circunstância"
             icone="🏃"
-            numero={6}
+            numero={5}
             variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
@@ -1802,7 +1802,7 @@ export default function AulaClassesPalavras({
           numero={7}
           titulo="A Preposição"
           descricao="O elo de subordinação essencial para a regência e a crase."
-          gradiente="bg-gradient-to-br from-slate-600 via-gray-600 to-slate-700"
+          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
@@ -1938,9 +1938,9 @@ export default function AulaClassesPalavras({
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod7}
-            titulo="Preposição: O Elo"
+            titulo="QUIZ: Preposição: O Elo de Ligação"
             icone="🔗"
-            numero={7}
+            numero={5}
             variant="slate"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
           />
@@ -1953,7 +1953,7 @@ export default function AulaClassesPalavras({
           numero={8}
           titulo="A Conjunção"
           descricao="Os conectivos que articulam as ideias e as orações."
-          gradiente="bg-gradient-to-br from-indigo-600 via-blue-600 to-indigo-700"
+          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -2106,9 +2106,9 @@ export default function AulaClassesPalavras({
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod8}
-            titulo="Conjunção: A Engrenagem"
+            titulo="QUIZ: Conjunção: O Cimento do Texto"
             icone="⚙️"
-            numero={8}
+            numero={5}
             variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
@@ -2121,7 +2121,7 @@ export default function AulaClassesPalavras({
           numero={9}
           titulo="A Interjeição"
           descricao="A expressão das emoções e as regras sutis de pontuação."
-          gradiente="bg-gradient-to-br from-pink-500 via-rose-500 to-red-600"
+          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
@@ -2258,9 +2258,9 @@ export default function AulaClassesPalavras({
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod9}
-            titulo="Interjeição: A Emoção"
+            titulo="QUIZ: Interjeição: A Emoção"
             icone="⚡"
-            numero={9}
+            numero={5}
             variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
@@ -2273,7 +2273,7 @@ export default function AulaClassesPalavras({
           numero={10}
           titulo="O Numeral"
           descricao="Quantidades, ordens e a pegadinha do numeral dual."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-green-700"
+          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -2435,9 +2435,9 @@ export default function AulaClassesPalavras({
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod10}
-            titulo="Numeral: A Quantidade"
+            titulo="QUIZ: Numeral: A Quantidade"
             icone="🔢"
-            numero={10}
+            numero={5}
             variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
           />

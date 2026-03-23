@@ -78,44 +78,59 @@ export function useUserProfile() {
         fetchProfile();
     }, [fetchProfile]);
 
-    const updateProfile = async (data: Partial<UserProfile>) => {
+    const updateProfile = async (data: any) => {
         try {
             const { data: { user } } = await supabase.auth.getUser();
             if (!user) throw new Error('No user');
 
-            // Map frontend fields back to DB fields
-            // DB: nome, cargo, nivel (known from register route)
-
+            // Map frontend fields (job_title) back to DB fields (cargo)
             const updates: any = {};
-            if (data.full_name) updates.nome = data.full_name;
-            if (data.cargo) updates.cargo = data.cargo;
-            if (data.nivel) updates.nivel = data.nivel; // Assuming 'nivel' column exists
+            if (data.full_name !== undefined) updates.nome = data.full_name;
+            if (data.job_title !== undefined) updates.cargo = data.job_title;
+            if (data.nivel !== undefined) updates.nivel = data.nivel;
+            if (data.phone !== undefined) updates.phone = data.phone;
 
-            // Update 'profiles' table
-            const { error } = await supabase
-                .from('profiles')
-                .update(updates)
-                .eq('id', user.id);
+            // Update 'profiles' table (optional, might fail if schema is old)
+            try {
+                const { error: dbError } = await supabase
+                    .from('profiles')
+                    .update(updates)
+                    .eq('id', user.id);
+                
+                if (dbError) {
+                   console.log('[useUserProfile] DB Sync failed, but continuing to metadata:', dbError.message);
+                }
+            } catch (e) {
+                console.log('[useUserProfile] Profiles table update failed:', e);
+            }
 
-            if (error) throw error;
-
-            // Update metadata as fallback/sync
+            // 2. Update metadata (Always works and persists)
             const metadataUpdates: any = {};
-            if (data.full_name) metadataUpdates.full_name = data.full_name;
-            if (data.full_name) metadataUpdates.nome = data.full_name;
-            if (data.cargo) metadataUpdates.cargo = data.cargo;
-            if (data.nivel) metadataUpdates.nivel = data.nivel;
+            if (data.full_name !== undefined) metadataUpdates.full_name = data.full_name;
+            if (data.full_name !== undefined) metadataUpdates.nome = data.full_name;
+            if (data.job_title !== undefined) metadataUpdates.cargo = data.job_title;
+            if (data.nivel !== undefined) metadataUpdates.nivel = data.nivel;
+            if (data.phone !== undefined) metadataUpdates.phone = data.phone;
 
-            await supabase.auth.updateUser({
+            const { error: metaError } = await supabase.auth.updateUser({
                 data: metadataUpdates
             });
 
-            // Refresh local state
-            setProfile(prev => prev ? { ...prev, ...data } : null);
+            if (metaError) throw metaError;
+
+            // 3. Refresh local state
+            setProfile(prev => prev ? { 
+                ...prev, 
+                ...data,
+                cargo: data.job_title || prev.cargo,
+                job_title: data.job_title || prev.job_title
+            } : null);
 
             return { success: true };
         } catch (err: any) {
-            return { success: false, error: err.message };
+            const errorMessage = err?.message || err?.error_description || 'Erro de conexão com o banco de dados';
+            console.error('[useUserProfile] Erro completo ao atualizar:', err);
+            return { success: false, error: errorMessage };
         }
     };
 

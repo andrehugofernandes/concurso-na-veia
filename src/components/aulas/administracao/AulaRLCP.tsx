@@ -63,6 +63,10 @@ export default function AulaRLCP(props: AulaProps) {
   const quizM9 = QUIZ_RLCP["modulo-9"];
   const quizM10 = QUIZ_RLCP["modulo-10"];
 
+  const mv = Object.fromEntries(
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
       setCompletedModules((prev) => {
@@ -82,11 +86,7 @@ export default function AulaRLCP(props: AulaProps) {
   };
 
   const renderModulo1 = () => {
-    const variant = getModuleVariant(1);
-    // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
-    const mv = Object.fromEntries(
-      Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
-    ) as Record<number, ReturnType<typeof getModuleVariant>>;
+    const variant = mv[1];
 
     return (
       <TabsContent value="modulo-1" className="space-y-6">
@@ -1115,7 +1115,7 @@ export default function AulaRLCP(props: AulaProps) {
             </p>
             <p>
               O <strong>cronograma</strong> é crítico — define quando fornecedor entrega (data/prazo) e quando Petrobras paga. Exemplo: "Fornecedor entrega 100 toneladas em 2 parcelas (50 em 30 dias, 50 em 60 dias).
-              Petrobras paga 30 dias após recebimento e aceitação." Se fornecedor atrasa entrega, incide multa (ex.: 0,5% do valor por dia de atraso, até máximo 10%). Se atraso é muito grave (>30 dias), Petrobras pode
+              Petrobras paga 30 dias após recebimento e aceitação." Se fornecedor atrasa entrega, incide multa (ex.: 0,5% do valor por dia de atraso, até máximo 10%). Se atraso é muito grave ({'>'}30 dias), Petrobras pode
               rescindir contrato e cobrar fornecedor por perdas (comprar de outro a preço mais alto e cobrar diferença).
             </p>
             <p>

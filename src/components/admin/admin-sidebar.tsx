@@ -29,6 +29,8 @@ import {
 } from "react-icons/lu";
 import { cn } from "@/lib/utils";
 
+import { useUser } from "@/contexts/UserContext";
+
 interface AdminSidebarProps {
   isCollapsed: boolean;
   isHidden?: boolean;
@@ -38,6 +40,7 @@ interface AdminSidebarProps {
   onToggle?: () => void;
   userName?: string;
   userEmail?: string;
+  userPlan?: string;
 }
 
 interface MenuItem {
@@ -45,7 +48,7 @@ interface MenuItem {
   label: string;
   href: string;
   icon: React.ComponentType<{ className?: string; size?: number }>;
-  badge?: number;
+  badge?: number | string;
 }
 
 interface MenuSection {
@@ -59,6 +62,7 @@ const ALL_MENU_SECTIONS: MenuSection[] = [
     title: "Estudo",
     items: [
       { id: "aulas", label: "Aulas", href: "/aulas", icon: LuBookOpen },
+      { id: "petrolingo", label: "PetroLingo", href: "/aulas/ingles/petrolingo", icon: LuCrown, badge: "ELITE TOTAL" },
       {
         id: "simulados",
         label: "Simulados Rápidos",
@@ -180,15 +184,24 @@ export function AdminSidebar({
   userRole,
 }: AdminSidebarProps) {
   const pathname = usePathname();
+  const { profile } = useUser();
+  const isAdmin = profile?.role === "ADMIN" || profile?.role === "SYSADMIN" || userRole === "ADMIN";
+  const userPlan = profile?.plan?.toLowerCase() || "";
 
-  const isAdmin = userRole === "ADMIN" || userRole === "SYSADMIN";
-
-  // Filtra as seções com base no cargo (role)
-  const menuSections = ALL_MENU_SECTIONS.filter((section) => {
-    if (isAdmin) return true; // Mostra tudo para admin
-
-    // Para o usuário comum, mostramos apenas a seção "Estudo"
-    return section.title === "Estudo";
+  // Filtra as seções e itens com base no cargo (role) e plano
+  // O PetroLingo é exclusivo para Admin ou Plano Ouro/Elite
+  const menuSections = ALL_MENU_SECTIONS.map((section) => ({
+    ...section,
+    items: section.items.filter((item) => {
+      if (item.id === "petrolingo") {
+        const hasAccess = isAdmin || userPlan === "elite-total" || userPlan === "ouro";
+        return hasAccess;
+      }
+      return true;
+    }),
+  })).filter((section) => {
+    if (isAdmin) return true;
+    return section.title === "Estudo" && section.items.length > 0;
   });
 
   // Adiciona a seção de Suporte para o usuário comum se não for admin
@@ -337,9 +350,18 @@ export function AdminSidebar({
               <div className="space-y-2">
                 {section.items.map((item) => {
                   const Icon = item.icon;
-                  const isActive =
-                    pathname === item.href ||
-                    pathname.startsWith(item.href + "/");
+                  const isActive = (() => {
+                    // Check if strictly equal
+                    if (pathname === item.href) return true;
+                    
+                    // Specific priority for PetroLingo
+                    if (item.id === "aulas" && pathname.startsWith("/aulas/ingles/petrolingo")) {
+                      return false;
+                    }
+                    
+                    // Default startsWith match
+                    return pathname.startsWith(item.href + "/");
+                  })();
 
                   return (
                     <Link

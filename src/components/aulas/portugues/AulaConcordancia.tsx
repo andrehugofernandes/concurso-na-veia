@@ -2137,7 +2137,7 @@ export default function AulaConcordancia({
           numero={1}
           titulo="Concordância Verbal"
           descricao="Estudo sistemático das normas que regem a harmonia entre o verbo e o seu sujeito, fundamentado na gramática normativa de Bechara para garantir a precisão do texto técnico."
-          gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
+          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
         <div className="space-y-[50px]">
           {/* FUNDAMENTAÇÃO TEÓRICA - CIÊNCIA ANTES DO FLOREIO */}
@@ -3946,7 +3946,7 @@ export default function AulaConcordancia({
           <section id="quiz-modulo-1" className="mt-16">
             <QuizInterativo
               questoes={quizVerbalQuestions}
-              titulo="Quiz de Fixação - Concordância Verbal"
+              titulo="QUIZ: Módulo Nº 1"
               icone="📝"
               numero={7}
               variant="indigo"
@@ -3967,7 +3967,7 @@ export default function AulaConcordancia({
           numero={2}
           titulo="Concordância Nominal"
           descricao="Consiste na adaptação das palavras determinantes (artigos, adjetivos, pronomes adjetivos e numerais) ao gênero e número da palavra determinada (o substantivo), garantindo a coesão da frase."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
         <div className="space-y-[50px]">
           {/* ─── 1. REGRA GERAL & LOGICA (CONCEPT PRESENTATION) ─── */}
@@ -4536,7 +4536,7 @@ export default function AulaConcordancia({
           numero={3}
           titulo="Prática e Simulados"
           descricao="Como as bancas cobram? Aprenda o passo-a-passo para não cair em pegadinhas e resolva questões estilo CESGRANRIO."
-          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
+          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
         <div className="space-y-[50px]">
           {/* ─── 1. ESTRATÉGIA DE GUERRA ─── */}
@@ -4998,7 +4998,7 @@ export default function AulaConcordancia({
           <section id="quiz-modulo-3" className="mt-16">
             <QuizInterativo
               questoes={quizPraticoQuestions}
-              titulo="Simulado Final - Estilo Banca"
+              titulo="QUIZ: Módulo Nº 3"
               icone="🏆"
               numero={4}
               variant="violet"
@@ -5014,7 +5014,7 @@ export default function AulaConcordancia({
           numero={4}
           titulo="Casos de Elite"
           descricao="Aprofundamento em tópicos complexos: porcentagens, frações, pronomes relativos e expressões partitivas que definem a aprovação."
-          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -5178,7 +5178,7 @@ export default function AulaConcordancia({
           numero={5}
           titulo="Laboratório Cesgranrio"
           descricao="Simulado final com questões de alto nível e revisão dos pontos críticos para garantir sua vaga na Petrobras."
-          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm text-center">
@@ -5269,9 +5269,9 @@ export default function AulaConcordancia({
           <section id="quiz-modulo-5" className="mt-16">
             <QuizInterativo
               questoes={quizFinalQuestions}
-              titulo="Grande Simulado Final - Petrobras Quest"
+              titulo="QUIZ: Módulo Nº 5"
               icone="🏆"
-              numero={10}
+              numero={3}
               variant="rose"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />

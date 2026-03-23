@@ -198,7 +198,7 @@ export default function AulaReescritaFrases({
           numero={1}
           titulo="A Arte da Paráfrase"
           descricao="Entenda o binômio da reescrita perfeita: Sentido Intacto e Norma Culta Plena."
-          gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
 
         <div className="space-y-[50px]">
@@ -411,9 +411,9 @@ export default function AulaReescritaFrases({
 
           <QuizInterativo
             questoes={quizM1}
-            titulo="Fixação - Módulo 1"
+            titulo="QUIZ: A Arte da Paráfrase"
             icone="🎯"
-            numero={1}
+            numero={5}
             variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
@@ -426,7 +426,7 @@ export default function AulaReescritaFrases({
           numero={2}
           titulo="Sinonímia e Campo Semântico"
           descricao="Troque palavras mantendo a precisão técnica necessária para a indústria de energia."
-          gradiente="bg-gradient-to-br from-cyan-700 to-teal-800"
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
 
         <div className="space-y-[50px]">
@@ -634,9 +634,9 @@ export default function AulaReescritaFrases({
 
           <QuizInterativo
             questoes={quizM2}
-            titulo="Fixação - Módulo 2"
+            titulo="QUIZ: Sinonímia e Campo Semântico"
             icone="🎯"
-            numero={2}
+            numero={5}
             variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
@@ -649,7 +649,7 @@ export default function AulaReescritaFrases({
           numero={3}
           titulo="Vozes Verbais"
           descricao="A travessia entre Ativa e Passiva é o tema predileto da banca. Aprenda a não perder o tempo."
-          gradiente="bg-gradient-to-br from-emerald-600 to-teal-700"
+          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
 
         <div className="space-y-[50px]">
@@ -904,9 +904,9 @@ export default function AulaReescritaFrases({
 
           <QuizInterativo
             questoes={quizM3}
-            titulo="Fixação - Módulo 3"
+            titulo="QUIZ: Vozes Verbais"
             icone="🎯"
-            numero={3}
+            numero={4}
             variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
@@ -919,7 +919,7 @@ export default function AulaReescritaFrases({
           numero={4}
           titulo="O Discurso sob Controle"
           descricao="Direto para Indireto: ajuste pronomes, tempos e advérbios sem titubear."
-          gradiente="bg-gradient-to-br from-teal-600 to-emerald-800"
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
 
         <div className="space-y-[50px]">
@@ -1147,9 +1147,9 @@ export default function AulaReescritaFrases({
 
           <QuizInterativo
             questoes={quizM4}
-            titulo="Fixação - Módulo 4"
+            titulo="QUIZ: O Discurso sob Controle"
             icone="🎯"
-            numero={4}
+            numero={5}
             variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
@@ -1162,7 +1162,7 @@ export default function AulaReescritaFrases({
           numero={5}
           titulo="Nominalização"
           descricao="Transforme verbos em substantivos para dar densidade técnica e profissional ao seu texto."
-          gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
 
         <div className="space-y-[50px]">
@@ -1404,7 +1404,7 @@ export default function AulaReescritaFrases({
 
           <QuizInterativo
             questoes={quizM5}
-            titulo="Fixação - Módulo 5"
+            titulo="QUIZ: Troca de Classes (Nominalização)"
             icone="🎯"
             numero={5}
             variant="amber"
@@ -1419,7 +1419,7 @@ export default function AulaReescritaFrases({
           numero={6}
           titulo="Equivalência Conjutiva"
           descricao="Domine os conectivos causais, temporais e condicionais. A alma da reescrita sequencial."
-          gradiente="bg-gradient-to-br from-orange-600 to-amber-700"
+          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
         />
 
         <div className="space-y-[50px]">
@@ -1647,9 +1647,9 @@ export default function AulaReescritaFrases({
 
           <QuizInterativo
             questoes={quizM6}
-            titulo="Fixação - Módulo 6"
+            titulo="QUIZ: Equivalência Conjutiva"
             icone="🎯"
-            numero={6}
+            numero={4}
             variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
@@ -1662,7 +1662,7 @@ export default function AulaReescritaFrases({
           numero={7}
           titulo="O Duelo Concessivo"
           descricao="Embora vs Mas. A troca mais perigosa e frequente da banca Cesgranrio."
-          gradiente="bg-gradient-to-br from-red-600 to-rose-800"
+          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
         />
 
         <div className="space-y-[50px]">
@@ -1870,9 +1870,9 @@ export default function AulaReescritaFrases({
 
           <QuizInterativo
             questoes={getRandomQuestions(QUIZ_M8_PARAFRASES, 4)}
-            titulo="Fixação - Módulo 7"
+            titulo="QUIZ: O Duelo Concessivo"
             icone="🎯"
-            numero={7}
+            numero={4}
             variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
           />
@@ -1885,7 +1885,7 @@ export default function AulaReescritaFrases({
           numero={8}
           titulo="Pontuação e Sentido"
           descricao="A vírgula não é apenas uma pausa; ela é o interruptor do sentido explicativo/restritivo."
-          gradiente="bg-gradient-to-br from-rose-700 to-red-900"
+          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
         />
 
         <div className="space-y-[50px]">
@@ -2055,9 +2055,9 @@ export default function AulaReescritaFrases({
 
           <QuizInterativo
             questoes={quizM7}
-            titulo="Fixação - Módulo 8"
+            titulo="QUIZ: Pontuação e Sentido"
             icone="🎯"
-            numero={8}
+            numero={4}
             variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
@@ -2070,7 +2070,7 @@ export default function AulaReescritaFrases({
           numero={9}
           titulo="Laboratório CESGRANRIO"
           descricao="Analise as 5 trocas que a banca mais ama e que derrubam 90% dos candidatos."
-          gradiente="bg-gradient-to-br from-blue-700 to-cyan-800"
+          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
         />
 
         <div className="space-y-[50px]">
@@ -2280,9 +2280,9 @@ export default function AulaReescritaFrases({
 
           <QuizInterativo
             questoes={quizM9}
-            titulo="Fixação - Módulo 9 (Laboratório CESGRANRIO)"
+            titulo="QUIZ: Laboratório CESGRANRIO"
             icone="🎯"
-            numero={9}
+            numero={4}
             variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
@@ -2295,7 +2295,7 @@ export default function AulaReescritaFrases({
           numero={10}
           titulo="Arena de Elite"
           descricao="Simulado Final: 10 questões de reescrita global. O teste definitivo de sua semântica."
-          gradiente="bg-gradient-to-br from-slate-800 to-slate-950"
+          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
         />
 
         <div className="space-y-[50px]">

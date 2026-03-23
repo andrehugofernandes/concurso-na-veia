@@ -178,7 +178,7 @@ export default function AulaRegencia({
             numero={1}
             titulo="Fundamentos e Mecânica"
             descricao="Entenda a relação de atração entre o termo regente (imã) e o termo regido (complemento)."
-            gradiente="bg-gradient-to-br from-blue-700 to-indigo-900"
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -391,9 +391,9 @@ export default function AulaRegencia({
 
           <QuizInterativo
             questoes={QUIZ_M1_REGENCIA}
-            titulo="Fixação - Módulo 1"
+            titulo="QUIZ: Módulo Nº 1"
             icone="🎯"
-            numero={1}
+            numero={4}
             variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
@@ -407,7 +407,7 @@ export default function AulaRegencia({
             numero={2}
             titulo="Regência Nominal: Adjetivos"
             descricao="Lista crítica de adjetivos que exigem preposições fixas para não errar na prova."
-            gradiente="bg-gradient-to-br from-indigo-700 to-blue-800"
+            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -582,7 +582,7 @@ export default function AulaRegencia({
             numero={3}
             titulo="Regência Nominal: Substantivos"
             descricao="A forte atração de nomes como 'Respeito', 'Amor' e 'Dúvida'."
-            gradiente="bg-gradient-to-br from-indigo-800 to-slate-900"
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -744,9 +744,9 @@ export default function AulaRegencia({
 
           <QuizInterativo
             questoes={QUIZ_M3_REGENCIA}
-            titulo="Fixação - Módulo 3"
+            titulo="QUIZ: Módulo Nº 3"
             icone="🎯"
-            numero={3}
+            numero={4}
             variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
@@ -760,7 +760,7 @@ export default function AulaRegencia({
             numero={4}
             titulo="Verbos de Elite: Parte I"
             descricao="Assistir, Aspirar e Visar: O trio que decide aprovações na Cesgranrio."
-            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -942,7 +942,7 @@ export default function AulaRegencia({
             numero={5}
             titulo="Verbos de Elite: Parte II"
             descricao="Custar, Proceder, Querer e Chamar: nuances que o candidato comum ignora."
-            gradiente="bg-gradient-to-br from-emerald-700 to-green-900"
+            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1058,9 +1058,9 @@ export default function AulaRegencia({
 
           <QuizInterativo
             questoes={QUIZ_M5_REGENCIA}
-            titulo="Fixação - Módulo 5"
+            titulo="QUIZ: Módulo Nº 5"
             icone="🎯"
-            numero={5}
+            numero={4}
             variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
@@ -1074,7 +1074,7 @@ export default function AulaRegencia({
             numero={6}
             titulo="Transitividade Bifronte"
             descricao="Pagar, Perdoar e Informar: Um pé na preposição, outro na liberdade."
-            gradiente="bg-gradient-to-br from-teal-600 to-cyan-800"
+            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1224,7 +1224,7 @@ export default function AulaRegencia({
             numero={7}
             titulo="Movimento e Pronominais"
             descricao="Ir, Chegar e a saga dos verbos que 'se esquecem' ou 'lembram'."
-            gradiente="bg-gradient-to-br from-amber-600 to-orange-800"
+            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1367,9 +1367,9 @@ export default function AulaRegencia({
 
           <QuizInterativo
             questoes={QUIZ_M7_REGENCIA}
-            titulo="Fixação - Módulo 7"
+            titulo="QUIZ: Módulo Nº 7"
             icone="🎯"
-            numero={7}
+            numero={4}
             variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
           />
@@ -1383,7 +1383,7 @@ export default function AulaRegencia({
             numero={8}
             titulo="Peculiaridades Cesgranrio"
             descricao="Implicar, Preferir e Aludir: Detalhes técnicos que o manual do Petrobras exige."
-            gradiente="bg-gradient-to-br from-orange-700 to-red-800"
+            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1584,7 +1584,7 @@ export default function AulaRegencia({
             numero={9}
             titulo="Regência e Relativos"
             descricao="Onde a preposição viaja para antes do QUE, QUEM ou CUJO."
-            gradiente="bg-gradient-to-br from-purple-700 to-indigo-900"
+            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1749,9 +1749,9 @@ export default function AulaRegencia({
 
           <QuizInterativo
             questoes={QUIZ_M9_REGENCIA}
-            titulo="Fixação - Módulo 9"
+            titulo="QUIZ: Módulo Nº 9"
             icone="🎯"
-            numero={9}
+            numero={4}
             variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
@@ -1765,7 +1765,7 @@ export default function AulaRegencia({
             numero={10}
             titulo="Simulado Final"
             descricao="Teste seu domínio perante uma bateria definitiva focada em Regência Global Cesgranrio."
-            gradiente="bg-gradient-to-br from-indigo-800 to-black"
+            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
           />
 
           {/* ── CONTEÚDO RICO M10 ── */}

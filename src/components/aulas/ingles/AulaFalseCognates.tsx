@@ -118,6 +118,15 @@ export default function AulaFalseCognates({
     setCompletedModules((prev) => new Set([...prev, moduleId]));
   };
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       titulo={titulo || "False Cognates — As Armadilhas Clássicas do Inglês"}
@@ -144,7 +153,7 @@ export default function AulaFalseCognates({
             modulo={1}
             titulo="Os Clássicos — Actually, Eventually, Library, Parents"
             icone={<LuBookOpen className="w-8 h-8" />}
-            corModulo={getModuleVariant(1)}
+            corModulo={mv[1]}
             descricao="Os falsos cognatos mais famosos que derramam candidatos em provas Petrobras"
           />
 
@@ -464,13 +473,15 @@ export default function AulaFalseCognates({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={1}
-            corModulo={getModuleVariant(1)}
+            corModulo={mv[1]}
             onComplete={() => handleModuleComplete("modulo-1")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM1}
             modulo={1}
             onComplete={() => handleModuleComplete("modulo-1")}
@@ -486,7 +497,7 @@ export default function AulaFalseCognates({
             modulo={2}
             titulo="Industrial Traps — Fabric, Commodity, Schedule, College"
             icone={<LuFactory className="w-8 h-8" />}
-            corModulo={getModuleVariant(2)}
+            corModulo={mv[2]}
             descricao="Falsos cognatos específicos de contexto técnico e industrial Petrobras"
           />
 
@@ -802,13 +813,15 @@ export default function AulaFalseCognates({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={2}
-            corModulo={getModuleVariant(2)}
+            corModulo={mv[2]}
             onComplete={() => handleModuleComplete("modulo-2")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM2}
             modulo={2}
             onComplete={() => handleModuleComplete("modulo-2")}
@@ -824,7 +837,7 @@ export default function AulaFalseCognates({
             modulo={3}
             titulo="Management Traps — Policy, Tax, Legend, Claim"
             icone={<LuGraduationCap className="w-8 h-8" />}
-            corModulo={getModuleVariant(3)}
+            corModulo={mv[3]}
             descricao="Falsos cognatos em contexto gerencial e administrativo"
           />
 
@@ -1140,13 +1153,15 @@ export default function AulaFalseCognates({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={3}
-            corModulo={getModuleVariant(3)}
+            corModulo={mv[3]}
             onComplete={() => handleModuleComplete("modulo-3")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM3}
             modulo={3}
             onComplete={() => handleModuleComplete("modulo-3")}
@@ -1162,7 +1177,7 @@ export default function AulaFalseCognates({
             modulo={4}
             titulo="False Friends B2 Level"
             icone={<LuZap className="w-8 h-8" />}
-            corModulo={getModuleVariant(4)}
+            corModulo={mv[4]}
             descricao="Falsos cognatos nível B2 — mais sutis e contextuais"
           />
 
@@ -1173,13 +1188,15 @@ export default function AulaFalseCognates({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={4}
-            corModulo={getModuleVariant(4)}
+            corModulo={mv[4]}
             onComplete={() => handleModuleComplete("modulo-4")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM4}
             modulo={4}
             onComplete={() => handleModuleComplete("modulo-4")}
@@ -1194,7 +1211,7 @@ export default function AulaFalseCognates({
             modulo={5}
             titulo="Push vs Pull / Exit — Business English"
             icone={<LuTrendingUp className="w-8 h-8" />}
-            corModulo={getModuleVariant(5)}
+            corModulo={mv[5]}
             descricao="Estratégias opostas e vocabulário de negócios"
           />
 
@@ -1205,13 +1222,15 @@ export default function AulaFalseCognates({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={5}
-            corModulo={getModuleVariant(5)}
+            corModulo={mv[5]}
             onComplete={() => handleModuleComplete("modulo-5")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM5}
             modulo={5}
             onComplete={() => handleModuleComplete("modulo-5")}
@@ -1226,7 +1245,7 @@ export default function AulaFalseCognates({
             modulo={6}
             titulo="False Cognates em Contratos e Textos Jurídicos"
             icone={<LuGavel className="w-8 h-8" />}
-            corModulo={getModuleVariant(6)}
+            corModulo={mv[6]}
             descricao="Lease, Lien, Assess, Waive em contextos legais"
           />
 
@@ -1237,13 +1256,15 @@ export default function AulaFalseCognates({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={6}
-            corModulo={getModuleVariant(6)}
+            corModulo={mv[6]}
             onComplete={() => handleModuleComplete("modulo-6")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM6}
             modulo={6}
             onComplete={() => handleModuleComplete("modulo-6")}
@@ -1258,7 +1279,7 @@ export default function AulaFalseCognates({
             modulo={7}
             titulo="Nível Avançado — Nuances e Contexto"
             icone={<LuLightbulb className="w-8 h-8" />}
-            corModulo={getModuleVariant(7)}
+            corModulo={mv[7]}
             descricao="Actual, Prove, Engage, Billion — sutilezas de contexto"
           />
 
@@ -1269,13 +1290,15 @@ export default function AulaFalseCognates({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={7}
-            corModulo={getModuleVariant(7)}
+            corModulo={mv[7]}
             onComplete={() => handleModuleComplete("modulo-7")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM7}
             modulo={7}
             onComplete={() => handleModuleComplete("modulo-7")}
@@ -1290,7 +1313,7 @@ export default function AulaFalseCognates({
             modulo={8}
             titulo="Revisão por Contrastes (Inglês x Português)"
             icone={<LuCircleCheck className="w-8 h-8" />}
-            corModulo={getModuleVariant(8)}
+            corModulo={mv[8]}
             descricao="Tabela comparativa completa de 50+ falsos cognatos"
           />
 
@@ -1301,13 +1324,15 @@ export default function AulaFalseCognates({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={8}
-            corModulo={getModuleVariant(8)}
+            corModulo={mv[8]}
             onComplete={() => handleModuleComplete("modulo-8")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM8}
             modulo={8}
             onComplete={() => handleModuleComplete("modulo-8")}
@@ -1322,7 +1347,7 @@ export default function AulaFalseCognates({
             modulo={9}
             titulo="False Cognates em Provas CESGRANRIO — Contexto Petrobras"
             icone={<LuShield className="w-8 h-8" />}
-            corModulo={getModuleVariant(9)}
+            corModulo={mv[9]}
             descricao="Padrões de prova e estratégias CESGRANRIO específicas"
           />
 
@@ -1333,13 +1358,15 @@ export default function AulaFalseCognates({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={9}
-            corModulo={getModuleVariant(9)}
+            corModulo={mv[9]}
             onComplete={() => handleModuleComplete("modulo-9")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM9}
             modulo={9}
             onComplete={() => handleModuleComplete("modulo-9")}
@@ -1354,7 +1381,7 @@ export default function AulaFalseCognates({
             modulo={10}
             titulo="Simulado Mestre — False Cognates Completamente Dominado"
             icone={<LuTarget className="w-8 h-8" />}
-            corModulo={getModuleVariant(10)}
+            corModulo={mv[10]}
             descricao="Você aprendeu 60+ falsos cognatos. Agora, teste seu conhecimento."
           />
 
@@ -1404,13 +1431,15 @@ export default function AulaFalseCognates({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={10}
-            corModulo={getModuleVariant(10)}
+            corModulo={mv[10]}
             onComplete={() => handleModuleComplete("modulo-10")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizFinal}
             modulo={10}
             onComplete={() => handleModuleComplete("modulo-10")}

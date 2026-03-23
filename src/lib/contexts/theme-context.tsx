@@ -123,11 +123,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       root.style.setProperty("--primary", primaryHsl);
       root.style.setProperty("--primary-hover", primaryHoverHsl);
       root.style.setProperty("--primary-hex", colors.primary);
+      root.style.setProperty("--primary-hover-hex", colors.primaryHover);
       root.style.setProperty("--primary-rgb", primaryRgbValues);
 
       // Calcular contraste para o texto sobre a cor primária
       const isLight = isLightColor(colors.primary);
-      const foregroundHsl = isLight ? "222.2 47.4% 11.2%" : "210 40% 98%";
+      const foregroundHsl = isLight ? "222.2 84.7% 4.9%" : "210 40% 98%";
       root.style.setProperty("--primary-foreground", foregroundHsl);
 
       if (mounted) {

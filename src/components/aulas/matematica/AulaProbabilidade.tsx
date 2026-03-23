@@ -177,7 +177,7 @@ export default function AulaProbabilidade({
             numero={1}
             titulo="Fundamentos da Probabilidade"
             descricao="O alicerce: experimentos aleatórios, espaço amostral e eventos."
-            gradiente="bg-gradient-to-br from-blue-700 to-indigo-800"
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -273,6 +273,10 @@ export default function AulaProbabilidade({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={1}
             variant="blue"
@@ -282,7 +286,7 @@ export default function AulaProbabilidade({
               duration: "10:15",
             }}
             resumoVisual={{
-              moduloNome: "Fundamentos",
+              moduloNome: "Módulo 1",
               tituloAula: "Probabilidade",
               materia: "Matemática",
               images: [
@@ -327,8 +331,8 @@ export default function AulaProbabilidade({
 
                       <QuizInterativo
               questoes={quizM1}
-              titulo="Fixação - Fundamentos"
-              numero={1}
+              titulo="QUIZ: Módulo Nº 1"
+              numero={2}
               variant="blue"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -344,7 +348,7 @@ export default function AulaProbabilidade({
             numero={2}
             titulo="Lei de Laplace"
             descricao="P(E) = (casos favoráveis) / (casos totais). A fórmula mágica!"
-            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -440,6 +444,10 @@ export default function AulaProbabilidade({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -449,7 +457,7 @@ export default function AulaProbabilidade({
               duration: "11:00",
             }}
             resumoVisual={{
-              moduloNome: "Lei de Laplace",
+              moduloNome: "Módulo 2",
               tituloAula: "Probabilidade",
               materia: "Matemática",
               images: [
@@ -512,7 +520,7 @@ export default function AulaProbabilidade({
             numero={3}
             titulo="União e Interseção de Eventos"
             descricao="Quando combinar probabilidades: regra da adição."
-            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -610,6 +618,10 @@ export default function AulaProbabilidade({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={3}
             variant="amber"
@@ -619,7 +631,7 @@ export default function AulaProbabilidade({
               duration: "12:10",
             }}
             resumoVisual={{
-              moduloNome: "União e Interseção",
+              moduloNome: "Módulo 3",
               tituloAula: "Probabilidade",
               materia: "Matemática",
               images: [
@@ -666,8 +678,8 @@ export default function AulaProbabilidade({
 
                       <QuizInterativo
               questoes={quizM3}
-              titulo="Fixação - União e Interseção"
-              numero={3}
+              titulo="QUIZ: Módulo Nº 3"
+              numero={4}
               variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -686,7 +698,7 @@ export default function AulaProbabilidade({
             numero={4}
             titulo="Probabilidade Condicional"
             descricao="P(A|B) = Quando um evento depende de outro ter ocorrido."
-            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -777,6 +789,10 @@ export default function AulaProbabilidade({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={4}
             variant="cyan"
@@ -786,7 +802,7 @@ export default function AulaProbabilidade({
               duration: "13:00",
             }}
             resumoVisual={{
-              moduloNome: "Condicional",
+              moduloNome: "Módulo 4",
               tituloAula: "Probabilidade",
               materia: "Matemática",
               images: [
@@ -850,7 +866,7 @@ export default function AulaProbabilidade({
             numero={5}
             titulo="Distribuição Binomial"
             descricao="Repetir n tentativas de 2 resultados (sucesso/fracasso)."
-            gradiente="bg-gradient-to-br from-violet-600 to-purple-800"
+            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -937,6 +953,10 @@ export default function AulaProbabilidade({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="violet"
@@ -946,7 +966,7 @@ export default function AulaProbabilidade({
               duration: "12:30",
             }}
             resumoVisual={{
-              moduloNome: "Binomial",
+              moduloNome: "Módulo 5",
               tituloAula: "Probabilidade",
               materia: "Matemática",
               images: [
@@ -993,8 +1013,8 @@ export default function AulaProbabilidade({
 
                       <QuizInterativo
               questoes={quizM5}
-              titulo="Fixação - Binomial"
-              numero={5}
+              titulo="QUIZ: Módulo Nº 5"
+              numero={6}
               variant="violet"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -1010,7 +1030,7 @@ export default function AulaProbabilidade({
             numero={6}
             titulo="Evento Complementar"
             descricao="P(Eᶜ) = 1 - P(E). O atalho mais lindo!"
-            gradiente="bg-gradient-to-br from-teal-600 to-cyan-800"
+            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1101,6 +1121,10 @@ export default function AulaProbabilidade({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={6}
             variant="teal"
@@ -1110,7 +1134,7 @@ export default function AulaProbabilidade({
               duration: "9:45",
             }}
             resumoVisual={{
-              moduloNome: "Complementar",
+              moduloNome: "Módulo 6",
               tituloAula: "Probabilidade",
               materia: "Matemática",
               images: [
@@ -1174,7 +1198,7 @@ export default function AulaProbabilidade({
             numero={7}
             titulo="Probabilidade Geométrica"
             descricao="Razão de áreas/comprimentos para eventos contínuos."
-            gradiente="bg-gradient-to-br from-indigo-600 to-purple-800"
+            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1270,6 +1294,10 @@ export default function AulaProbabilidade({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={7}
             variant="indigo"
@@ -1279,7 +1307,7 @@ export default function AulaProbabilidade({
               duration: "11:20",
             }}
             resumoVisual={{
-              moduloNome: "Geométrica",
+              moduloNome: "Módulo 7",
               tituloAula: "Probabilidade",
               materia: "Matemática",
               images: [
@@ -1326,8 +1354,8 @@ export default function AulaProbabilidade({
 
                       <QuizInterativo
               questoes={quizM7}
-              titulo="Fixação - Geométrica"
-              numero={7}
+              titulo="QUIZ: Módulo Nº 7"
+              numero={8}
               variant="indigo"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
@@ -1343,7 +1371,7 @@ export default function AulaProbabilidade({
             numero={8}
             titulo="Independência de Eventos"
             descricao="Quando P(A ∩ B) = P(A) × P(B). Nenhuma interferência!"
-            gradiente="bg-gradient-to-br from-rose-600 to-red-800"
+            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1439,6 +1467,10 @@ export default function AulaProbabilidade({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={8}
             variant="rose"
@@ -1448,7 +1480,7 @@ export default function AulaProbabilidade({
               duration: "10:50",
             }}
             resumoVisual={{
-              moduloNome: "Independência",
+              moduloNome: "Módulo 8",
               tituloAula: "Probabilidade",
               materia: "Matemática",
               images: [
@@ -1512,7 +1544,7 @@ export default function AulaProbabilidade({
             numero={9}
             titulo="Engenharia de Riscos (Petrobras)"
             descricao="Confiabilidade, falhas e estratégias de redundância."
-            gradiente="bg-gradient-to-br from-orange-600 to-red-800"
+            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1605,6 +1637,10 @@ export default function AulaProbabilidade({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={9}
             variant="orange"
@@ -1614,7 +1650,7 @@ export default function AulaProbabilidade({
               duration: "13:15",
             }}
             resumoVisual={{
-              moduloNome: "Engenharia Riscos",
+              moduloNome: "Módulo 9",
               tituloAula: "Probabilidade",
               materia: "Matemática",
               images: [
@@ -1661,8 +1697,8 @@ export default function AulaProbabilidade({
 
                       <QuizInterativo
               questoes={quizM9}
-              titulo="Fixação - Engenharia Riscos"
-              numero={9}
+              titulo="QUIZ: Módulo Nº 9"
+              numero={10}
               variant="orange"
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
@@ -1678,7 +1714,7 @@ export default function AulaProbabilidade({
             numero={10}
             titulo="Simulado Mestre"
             descricao="Teste final: integre todos os conceitos de probabilidade."
-            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
           />
 
           {showCompletionBadge ? (

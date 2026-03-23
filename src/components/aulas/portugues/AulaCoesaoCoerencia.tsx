@@ -192,7 +192,7 @@ export default function AulaCoesaoCoerencia({
           numero={1}
           titulo="O Tecido do Texto"
           descricao="Entenda a diferença fundamental entre Coesão (forma) e Coerência (sentido) no padrão CESGRANRIO."
-          gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
 
         <div className="space-y-[50px]">
@@ -443,9 +443,9 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM1}
-            titulo="Fixação - Módulo 1"
+            titulo="QUIZ: O Tecido do Texto"
             icone="🎯"
-            numero={1}
+            numero={4}
             variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
@@ -458,7 +458,7 @@ export default function AulaCoesaoCoerencia({
           numero={2}
           titulo="O Poder do Retrovisor"
           descricao="Domine a Anáfora: o recurso de retomar termos anteriores para evitar a repetição cansativa."
-          gradiente="bg-gradient-to-br from-cyan-700 to-teal-800"
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
 
         <div className="space-y-[50px]">
@@ -528,9 +528,9 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM2}
-            titulo="Fixação - Módulo 2"
+            titulo="QUIZ: O Poder do Retrovisor"
             icone="🎯"
-            numero={2}
+            numero={3}
             variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
@@ -543,7 +543,7 @@ export default function AulaCoesaoCoerencia({
           numero={3}
           titulo="O Farol do Sentido"
           descricao="A Catáfora prepara o leitor para o que virá. Aprenda a antecipar ideias com elegância."
-          gradiente="bg-gradient-to-br from-blue-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
 
         <div className="space-y-[50px]">
@@ -621,9 +621,9 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM3}
-            titulo="Fixação - Módulo 3"
+            titulo="QUIZ: O Farol do Sentido"
             icone="🎯"
-            numero={3}
+            numero={4}
             variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
@@ -636,7 +636,7 @@ export default function AulaCoesaoCoerencia({
           numero={4}
           titulo="O Silêncio Eloquente"
           descricao="Às vezes, não dizer nada é a melhor forma de conectar. Domine Elipse e Zêugma."
-          gradiente="bg-gradient-to-br from-teal-600 to-emerald-700"
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
 
         <div className="space-y-[50px]">
@@ -688,9 +688,9 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM4}
-            titulo="Fixação - Módulo 4"
+            titulo="QUIZ: O Silêncio Eloquente"
             icone="🎯"
-            numero={4}
+            numero={5}
             variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
@@ -703,7 +703,7 @@ export default function AulaCoesaoCoerencia({
           numero={5}
           titulo="Substituições de Elite"
           descricao="Nominalização, Hiperonímia e Palavras-Sumário: o arsenal avançado de coesão lexical."
-          gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
 
         <div className="space-y-[50px]">
@@ -762,9 +762,9 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM5}
-            titulo="Fixação - Módulo 5"
+            titulo="QUIZ: Substituições de Elite"
             icone="🎯"
-            numero={5}
+            numero={6}
             variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
@@ -777,7 +777,7 @@ export default function AulaCoesaoCoerencia({
           numero={6}
           titulo="A Dança dos Conectivos"
           descricao="Transições perfeitas: aprenda a usar conjunções para dar ritmo e lógica ao seu texto."
-          gradiente="bg-gradient-to-br from-orange-600 to-amber-700"
+          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
         />
 
         <div className="space-y-[50px]">
@@ -844,9 +844,9 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM6}
-            titulo="Fixação - Módulo 6"
+            titulo="QUIZ: A Dança dos Conectivos"
             icone="🎯"
-            numero={6}
+            numero={7}
             variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
@@ -859,7 +859,7 @@ export default function AulaCoesaoCoerencia({
           numero={7}
           titulo="Concessão & Oposição"
           descricao="O divisor de águas da Cesgranrio: diferencie a força do 'Mas' da resiliência do 'Embora'."
-          gradiente="bg-gradient-to-br from-red-600 to-rose-800"
+          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
         />
 
         <div className="space-y-[50px]">
@@ -911,9 +911,9 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM7}
-            titulo="Fixação - Módulo 7"
+            titulo="QUIZ: Concessão & Oposição"
             icone="🎯"
-            numero={7}
+            numero={8}
             variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
           />
@@ -926,7 +926,7 @@ export default function AulaCoesaoCoerencia({
           numero={8}
           titulo="Arquitetura da Coerência"
           descricao="A harmonia lógica: entenda o Princípio da Não-Contradição e a Consistência Pragmática."
-          gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
         />
 
         <div className="space-y-[50px]">
@@ -965,9 +965,9 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM8}
-            titulo="Fixação - Módulo 8"
+            titulo="QUIZ: Arquitetura da Coerência"
             icone="🎯"
-            numero={8}
+            numero={9}
             variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
@@ -980,7 +980,7 @@ export default function AulaCoesaoCoerencia({
           numero={9}
           titulo="Progressão e Relevância"
           descricao="Evite o texto circular: aprenda a evoluir ideias sem perder a conexão temática."
-          gradiente="bg-gradient-to-br from-teal-600 to-cyan-800"
+          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
         />
 
         <div className="space-y-[50px]">
@@ -1013,9 +1013,9 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM9}
-            titulo="Fixação - Módulo 9"
+            titulo="QUIZ: Progressão e Relevância"
             icone="🎯"
-            numero={9}
+            numero={10}
             variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
@@ -1028,7 +1028,7 @@ export default function AulaCoesaoCoerencia({
           numero={10}
           titulo="Arena de Elite"
           descricao="Simulado Final: Teste seus conhecimentos em questões de alto nível da CESGRANRIO."
-          gradiente="bg-gradient-to-br from-slate-800 to-slate-950"
+          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
         />
 
         <div className="space-y-[50px]">
@@ -1039,9 +1039,9 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM10}
-            titulo="Simulado Final"
+            titulo="QUIZ: Arena de Elite"
             icone="🏆"
-            numero={10}
+            numero={1}
             variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
           />

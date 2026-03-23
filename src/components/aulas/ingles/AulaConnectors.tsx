@@ -125,6 +125,15 @@ export default function AulaConnectors({
     }
   };
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       titulo={titulo}
@@ -146,7 +155,7 @@ export default function AulaConnectors({
             numero={1}
             titulo="Addition Connectors"
             descricao="Furthermore, Moreover, Besides, In addition, Additionally"
-            gradiente="from-blue-500 to-blue-600"
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
 
           <div className="space-y-4 text-base leading-relaxed">
@@ -488,13 +497,15 @@ export default function AulaConnectors({
             />
           </div>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={1}
-            corModulo={getModuleVariant(1)}
+            corModulo={mv[1]}
             onComplete={() => handleModuleComplete("modulo-1")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM1}
             modulo={1}
             onComplete={() => handleModuleComplete("modulo-1")}
@@ -510,7 +521,7 @@ export default function AulaConnectors({
             numero={2}
             titulo="Contrast Connectors"
             descricao="However, Nevertheless, On the other hand, Yet, Still"
-            gradiente="from-cyan-500 to-blue-600"
+            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
           />
 
           <div className="space-y-4 text-base leading-relaxed">
@@ -864,13 +875,15 @@ export default function AulaConnectors({
             />
           </div>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={2}
-            corModulo={getModuleVariant(2)}
+            corModulo={mv[2]}
             onComplete={() => handleModuleComplete("modulo-2")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM2}
             modulo={2}
             onComplete={() => handleModuleComplete("modulo-2")}
@@ -886,7 +899,7 @@ export default function AulaConnectors({
             numero={3}
             titulo="Cause Connectors"
             descricao="Because, Since, Due to, Owing to, As"
-            gradiente="from-green-500 to-emerald-600"
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
           />
 
           <div className="space-y-4 text-base leading-relaxed">
@@ -1197,13 +1210,15 @@ export default function AulaConnectors({
             />
           </div>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={3}
-            corModulo={getModuleVariant(3)}
+            corModulo={mv[3]}
             onComplete={() => handleModuleComplete("modulo-3")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM3}
             modulo={3}
             onComplete={() => handleModuleComplete("modulo-3")}
@@ -1219,7 +1234,7 @@ export default function AulaConnectors({
             numero={4}
             titulo="Effect Connectors"
             descricao="Therefore, Thus, Consequently, As a result"
-            gradiente="from-amber-500 to-orange-600"
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
           />
 
           <div className="space-y-4 text-base leading-relaxed">
@@ -1540,13 +1555,15 @@ export default function AulaConnectors({
             />
           </div>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={4}
-            corModulo={getModuleVariant(4)}
+            corModulo={mv[4]}
             onComplete={() => handleModuleComplete("modulo-4")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM4}
             modulo={4}
             onComplete={() => handleModuleComplete("modulo-4")}
@@ -1561,7 +1578,7 @@ export default function AulaConnectors({
       {/* ═══ MÓDULO 5-10 PLACEHOLDER PARA COMPILAÇÃO ═══ */}
       <TabsContent value="modulo-5" className="space-y-6">
         <section className="space-y-6">
-          <ModuleBanner numero={5} titulo="Concession" descricao="Although / Despite / While / Even though" gradiente="from-rose-500 to-pink-600" />
+          <ModuleBanner numero={5} titulo="Concession" descricao="Although / Despite / While / Even though" gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400" />
           <div className="p-8 text-center">
             <p className="text-lg font-semibold">Módulo 5 — Concession Connectors</p>
             <p className="text-sm text-foreground/60 mt-2">Estrutura completa (4 slides C.E.D.E., 4 FlipCards) seguindo padrão M1-M4</p>
@@ -1577,7 +1594,7 @@ export default function AulaConnectors({
 
       <TabsContent value="modulo-6" className="space-y-6">
         <section className="space-y-6">
-          <ModuleBanner numero={6} titulo="Condition & Purpose" descricao="If / Unless / So that / In order to" gradiente="from-indigo-500 to-purple-600" />
+          <ModuleBanner numero={6} titulo="Condition & Purpose" descricao="If / Unless / So that / In order to" gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800" />
           <div className="p-8 text-center">
             <p className="text-lg font-semibold">Módulo 6 — Conditional & Purpose</p>
             <p className="text-sm text-foreground/60 mt-2">Estrutura completa seguindo padrão M1-M4</p>
@@ -1593,7 +1610,7 @@ export default function AulaConnectors({
 
       <TabsContent value="modulo-7" className="space-y-6">
         <section className="space-y-6">
-          <ModuleBanner numero={7} titulo="Sequential Connectors" descricao="First / Then / Finally / Subsequently" gradiente="from-teal-500 to-cyan-600" />
+          <ModuleBanner numero={7} titulo="Sequential Connectors" descricao="First / Then / Finally / Subsequently" gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800" />
           <div className="p-8 text-center">
             <p className="text-lg font-semibold">Módulo 7 — Sequential Order</p>
             <p className="text-sm text-foreground/60 mt-2">Estrutura completa seguindo padrão M1-M4</p>
@@ -1609,7 +1626,7 @@ export default function AulaConnectors({
 
       <TabsContent value="modulo-8" className="space-y-6">
         <section className="space-y-6">
-          <ModuleBanner numero={8} titulo="Advanced Academic" descricao="Otherwise / Thereby / Insofar as / Notwithstanding" gradiente="from-violet-500 to-purple-600" />
+          <ModuleBanner numero={8} titulo="Advanced Academic" descricao="Otherwise / Thereby / Insofar as / Notwithstanding" gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800" />
           <div className="p-8 text-center">
             <p className="text-lg font-semibold">Módulo 8 — Advanced Connectors</p>
             <p className="text-sm text-foreground/60 mt-2">Estrutura completa seguindo padrão M1-M4</p>
@@ -1625,7 +1642,7 @@ export default function AulaConnectors({
 
       <TabsContent value="modulo-9" className="space-y-6">
         <section className="space-y-6">
-          <ModuleBanner numero={9} titulo="Connectors in Technical Reports" descricao="Real-World Petrobras Context" gradiente="from-red-500 to-orange-600" />
+          <ModuleBanner numero={9} titulo="Connectors in Technical Reports" descricao="Real-World Petrobras Context" gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800" />
           <div className="p-8 text-center">
             <p className="text-lg font-semibold">Módulo 9 — Aplicação Petrobras</p>
             <p className="text-sm text-foreground/60 mt-2">Estrutura completa com exemplos de relatórios reais</p>
@@ -1641,7 +1658,7 @@ export default function AulaConnectors({
 
       <TabsContent value="modulo-10" className="space-y-6">
         <section className="space-y-6">
-          <ModuleBanner numero={10} titulo="Simulado Mestre" descricao="Integração de Todos os Conectores" gradiente="from-yellow-400 to-amber-600" />
+          <ModuleBanner numero={10} titulo="Simulado Mestre" descricao="Integração de Todos os Conectores" gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800" />
 
           <TimelineItem
             numero={1}
@@ -1676,13 +1693,15 @@ export default function AulaConnectors({
             </p>
           </div>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={10}
-            corModulo={getModuleVariant(10)}
+            corModulo={mv[10]}
             onComplete={() => handleModuleComplete("modulo-10")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizFinal}
             modulo={10}
             onComplete={() => handleModuleComplete("modulo-10")}

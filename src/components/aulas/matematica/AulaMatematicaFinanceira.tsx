@@ -126,7 +126,7 @@ export default function AulaMatematicaFinanceira({
           numero={1}
           titulo="Juros Simples: J = C · i · t"
           descricao="Compreenda o regime de capitalização simples, onde os juros incidem sempre sobre o capital inicial — base de descontos e operações de curto prazo."
-          gradiente="bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-700"
+          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -271,6 +271,10 @@ export default function AulaMatematicaFinanceira({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={1}
             variant="indigo"
@@ -280,7 +284,7 @@ export default function AulaMatematicaFinanceira({
               duration: "12:30"
             }}
             resumoVisual={{
-              moduloNome: "Juros Simples",
+              moduloNome: "Módulo 1",
               tituloAula: "Matemática Financeira",
               materia: "Matemática",
               images: [
@@ -338,9 +342,9 @@ export default function AulaMatematicaFinanceira({
 
                       <QuizInterativo
               questoes={quizM1}
-              titulo="Quiz — Juros Simples"
+              titulo="QUIZ: Juros Simples"
               icone="💰"
-              numero={1}
+              numero={3}
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -356,7 +360,7 @@ export default function AulaMatematicaFinanceira({
           numero={2}
           titulo="Montante em Juros Simples: M = C + J"
           descricao="Calcule o valor total retornado ao final de uma aplicação simples e interprete graficamente o crescimento linear."
-          gradiente="bg-gradient-to-br from-cyan-600 via-cyan-700 to-blue-700"
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -476,6 +480,10 @@ export default function AulaMatematicaFinanceira({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -485,7 +493,7 @@ export default function AulaMatematicaFinanceira({
               duration: "11:15"
             }}
             resumoVisual={{
-              moduloNome: "Montante em Juros Simples",
+              moduloNome: "Módulo 2",
               tituloAula: "Matemática Financeira",
               materia: "Matemática",
               images: [
@@ -561,7 +569,7 @@ export default function AulaMatematicaFinanceira({
           numero={3}
           titulo="Juros Compostos: Juros sobre Juros"
           descricao="O regime dominante no mercado financeiro: os juros se incorporam ao capital a cada período, gerando crescimento exponencial."
-          gradiente="bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-700"
+          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -663,6 +671,10 @@ export default function AulaMatematicaFinanceira({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={3}
             variant="cyan"
@@ -672,7 +684,7 @@ export default function AulaMatematicaFinanceira({
               duration: "13:45"
             }}
             resumoVisual={{
-              moduloNome: "Juros Compostos",
+              moduloNome: "Módulo 3",
               tituloAula: "Matemática Financeira",
               materia: "Matemática",
               images: [
@@ -730,9 +742,9 @@ export default function AulaMatematicaFinanceira({
 
                       <QuizInterativo
               questoes={quizM3}
-              titulo="Quiz — Juros Compostos"
+              titulo="QUIZ: Juros Compostos"
               icone="📊"
-              numero={3}
+              numero={4}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -748,7 +760,7 @@ export default function AulaMatematicaFinanceira({
           numero={4}
           titulo="Montante Composto: M = C·(1+i)^t"
           descricao="Aplique a fórmula exponencial para calcular montantes, encontrar capitais presentes e determinar prazos em operações de longo prazo."
-          gradiente="bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-800"
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -845,6 +857,10 @@ export default function AulaMatematicaFinanceira({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={4}
             variant="blue"
@@ -854,7 +870,7 @@ export default function AulaMatematicaFinanceira({
               duration: "14:20"
             }}
             resumoVisual={{
-              moduloNome: "Montante em Juros Compostos",
+              moduloNome: "Módulo 4",
               tituloAula: "Matemática Financeira",
               materia: "Matemática",
               images: [
@@ -929,7 +945,7 @@ export default function AulaMatematicaFinanceira({
           numero={5}
           titulo="Desconto Simples: Comercial e Racional"
           descricao="Aprenda a calcular o valor presente de títulos (duplicatas, cheques) antecipando seus vencimentos — operação central no dia a dia das empresas."
-          gradiente="bg-gradient-to-br from-cyan-600 via-teal-600 to-emerald-700"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1028,6 +1044,10 @@ export default function AulaMatematicaFinanceira({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="amber"
@@ -1037,7 +1057,7 @@ export default function AulaMatematicaFinanceira({
               duration: "12:00"
             }}
             resumoVisual={{
-              moduloNome: "Desconto Simples",
+              moduloNome: "Módulo 5",
               tituloAula: "Matemática Financeira",
               materia: "Matemática",
               images: [
@@ -1098,9 +1118,9 @@ export default function AulaMatematicaFinanceira({
 
                       <QuizInterativo
               questoes={quizM5}
-              titulo="Quiz — Desconto Simples"
+              titulo="QUIZ: Desconto"
               icone="🏦"
-              numero={5}
+              numero={6}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1116,7 +1136,7 @@ export default function AulaMatematicaFinanceira({
           numero={6}
           titulo="Equivalência de Capitais"
           descricao="Compare e substitua dívidas transportando capitais para uma mesma data focal — habilidade essencial em renegociações e contratos da Petrobras."
-          gradiente="bg-gradient-to-br from-blue-600 via-cyan-600 to-teal-600"
+          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1206,6 +1226,10 @@ export default function AulaMatematicaFinanceira({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={6}
             variant="rose"
@@ -1215,7 +1239,7 @@ export default function AulaMatematicaFinanceira({
               duration: "13:30"
             }}
             resumoVisual={{
-              moduloNome: "Equivalência de Capitais",
+              moduloNome: "Módulo 6",
               tituloAula: "Matemática Financeira",
               materia: "Matemática",
               images: [
@@ -1279,7 +1303,7 @@ export default function AulaMatematicaFinanceira({
           numero={7}
           titulo="Taxa Nominal vs. Taxa Efetiva"
           descricao="Entenda a diferença entre a taxa anunciada e a taxa que realmente incide sobre seu capital — fonte de inúmeras pegadinhas da CESGRANRIO."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1392,6 +1416,10 @@ export default function AulaMatematicaFinanceira({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={7}
             variant="indigo"
@@ -1401,7 +1429,7 @@ export default function AulaMatematicaFinanceira({
               duration: "12:45"
             }}
             resumoVisual={{
-              moduloNome: "Taxas Nominal e Efetiva",
+              moduloNome: "Módulo 7",
               tituloAula: "Matemática Financeira",
               materia: "Matemática",
               images: [
@@ -1445,9 +1473,9 @@ export default function AulaMatematicaFinanceira({
 
                       <QuizInterativo
               questoes={quizM7}
-              titulo="Quiz — Taxas Nominal e Efetiva"
+              titulo="QUIZ: Taxas Nominal e Efetiva"
               icone="📊"
-              numero={7}
+              numero={8}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1463,7 +1491,7 @@ export default function AulaMatematicaFinanceira({
           numero={8}
           titulo="Séries de Pagamento (Anuidades)"
           descricao="Calcule financiamentos, parcelas e valores presentes de fluxos de caixa periódicos — base para contratos de longo prazo e planos de investimento."
-          gradiente="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700"
+          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1556,6 +1584,10 @@ export default function AulaMatematicaFinanceira({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={8}
             variant="emerald"
@@ -1565,7 +1597,7 @@ export default function AulaMatematicaFinanceira({
               duration: "14:10"
             }}
             resumoVisual={{
-              moduloNome: "Séries de Pagamento",
+              moduloNome: "Módulo 8",
               tituloAula: "Matemática Financeira",
               materia: "Matemática",
               images: [
@@ -1627,7 +1659,7 @@ export default function AulaMatematicaFinanceira({
           numero={9}
           titulo="Aplicações Petrobras: Financiamentos e Contratos"
           descricao="Questões integradas com contexto real da indústria petrolífera: arrendamentos, PLR, financiamentos de equipamentos, debêntures e fundos de renovação."
-          gradiente="bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700"
+          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1717,6 +1749,10 @@ export default function AulaMatematicaFinanceira({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={9}
             variant="cyan"
@@ -1726,7 +1762,7 @@ export default function AulaMatematicaFinanceira({
               duration: "15:30"
             }}
             resumoVisual={{
-              moduloNome: "Aplicações Petrobras",
+              moduloNome: "Módulo 9",
               tituloAula: "Matemática Financeira",
               materia: "Matemática",
               images: [
@@ -1772,9 +1808,9 @@ export default function AulaMatematicaFinanceira({
 
                       <QuizInterativo
               questoes={quizM9}
-              titulo="Quiz — Aplicações Petrobras"
+              titulo="QUIZ: Aplicações Petrobras"
               icone="🛢️"
-              numero={9}
+              numero={10}
               variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1790,7 +1826,7 @@ export default function AulaMatematicaFinanceira({
           numero={10}
           titulo="Simulado Final CESGRANRIO"
           descricao="Questões integradas no nível e estilo CESGRANRIO, cobrindo todos os tópicos de Matemática Financeira — o teste definitivo antes da prova real."
-          gradiente="bg-gradient-to-br from-blue-700 via-indigo-700 to-blue-900"
+          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1902,6 +1938,10 @@ export default function AulaMatematicaFinanceira({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={10}
             variant="blue"
@@ -1911,7 +1951,7 @@ export default function AulaMatematicaFinanceira({
               duration: "16:00"
             }}
             resumoVisual={{
-              moduloNome: "Simulado Mestre",
+              moduloNome: "Módulo 10",
               tituloAula: "Matemática Financeira",
               materia: "Matemática",
               images: [
@@ -1957,9 +1997,9 @@ export default function AulaMatematicaFinanceira({
 
                       <QuizInterativo
               questoes={quizM10}
-              titulo="Simulado Final CESGRANRIO — Matemática Financeira"
+              titulo="QUIZ: Simulado Final"
               icone="🏆"
-              numero={10}
+              numero={11}
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />

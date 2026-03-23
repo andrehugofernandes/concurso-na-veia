@@ -72,9 +72,11 @@ export default function Verify2FAPage() {
     setLoading(true);
     setError("");
     try {
-      const result = await reset2FAAction();
+      // Chamada via API Route segura
+      const response = await fetch("/api/auth/reset-2fa", { method: "POST" });
+      const result = await response.json();
       
-      if (!result.success) throw new Error(result.error);
+      if (!response.ok || !result.success) throw new Error(result.error || "Falha no reset");
       
       alert("Autenticador removido com sucesso. Faça login novamente para reconfigurar.");
       await supabase.auth.signOut();

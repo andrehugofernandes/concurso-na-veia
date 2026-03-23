@@ -870,7 +870,7 @@ export default function AulaTiposTextuais({
           numero={1}
           titulo="Narrativo & Descritivo"
           descricao="Estudo sistemático da evolução temporal (ação) contraposta à observação espacial (fotografia)."
-          gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
+          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1190,7 +1190,7 @@ A tipologia você vai entender!
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod1}
-            titulo="Narrativo e Descritivo"
+            titulo="QUIZ: Narrativo & Descritivo"
             icone="📝"
             numero={4}
             variant="indigo"
@@ -1207,7 +1207,7 @@ A tipologia você vai entender!
           numero={2}
           titulo="Dissertativo"
           descricao="A arte de expor a realidade e usar argumentos lógicos para convencer o leitor."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1492,7 +1492,7 @@ Se tem julgamento, é argumentação!
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod2}
-            titulo="Expositivo e Injuntivo"
+            titulo="QUIZ: Dissertativo"
             icone="⚖️"
             numero={4}
             variant="emerald"
@@ -1512,7 +1512,7 @@ Se tem julgamento, é argumentação!
           numero={3}
           titulo="Injuntivo & Dialogal"
           descricao="A técnica das instruções, manuais, procedimentos normativos industriais e do diálogo."
-          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
+          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1756,7 +1756,7 @@ Imperativo na prova, injunção aflora!
           numero={4}
           titulo="Gêneros vs. Tipos"
           descricao="A armadilha clássica da CESGRANRIO: diferenciar a base estrutural (tipo) do uso social (gênero)."
-          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1953,7 +1953,7 @@ Gênero e tipo, essa é a lição!
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod4}
-            titulo="Quiz — Diferenciando"
+            titulo="QUIZ: Gêneros vs. Tipos"
             icone="🔍"
             numero={4}
             variant="amber"
@@ -1973,7 +1973,7 @@ Gênero e tipo, essa é a lição!
           numero={5}
           titulo="Laboratório CESGRANRIO"
           descricao="Revisão geral e simulado final cruzando todos os tipos textuais operacionais."
-          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -2123,9 +2123,9 @@ Imperativo manda, é a tipologia em ação!
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod5}
-            titulo="Laboratório Técnico"
+            titulo="QUIZ: Laboratório Técnico"
             icone="🎯"
-            numero={5}
+            numero={3}
             variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
@@ -2141,13 +2141,13 @@ Imperativo manda, é a tipologia em ação!
           numero={6}
           titulo="Simulado Final"
           descricao="O desafio supremo: todas as tipologias integradas e aplicadas ao contexto da Petrobras."
-          gradiente="bg-gradient-to-br from-cyan-600 via-teal-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
         />
 
         <section className="mt-8">
           <QuizInterativo
             questoes={qMod6}
-            titulo="Tipologia (Cesgranrio)"
+            titulo="QUIZ: Simulado Final"
             icone="🏆"
             numero={1}
             variant="cyan"

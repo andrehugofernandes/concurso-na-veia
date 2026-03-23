@@ -177,7 +177,7 @@ export default function AulaProgressoesPa({
             numero={1}
             titulo="Conceitos Fundamentais de PA"
             descricao="A diferença que se repete: progressão aritmética explicada."
-            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -468,6 +468,10 @@ export default function AulaProgressoesPa({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={1}
             variant="blue"
@@ -477,7 +481,7 @@ export default function AulaProgressoesPa({
               duration: "9:50",
             }}
             resumoVisual={{
-              moduloNome: "Conceitos PA",
+              moduloNome: "Módulo 1",
               tituloAula: "Progressões Aritméticas",
               materia: "Matemática",
               images: [
@@ -522,8 +526,8 @@ export default function AulaProgressoesPa({
 
                       <QuizInterativo
               questoes={quizM1}
-              titulo="Fixação - Conceitos PA"
-              numero={1}
+              titulo="QUIZ: Módulo Nº 1"
+              numero={2}
               variant="blue"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -539,7 +543,7 @@ export default function AulaProgressoesPa({
             numero={2}
             titulo="Termo Geral da PA"
             descricao="A fórmula para encontrar qualquer termo sem calcular todos."
-            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -636,6 +640,10 @@ export default function AulaProgressoesPa({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -645,7 +653,7 @@ export default function AulaProgressoesPa({
               duration: "11:20",
             }}
             resumoVisual={{
-              moduloNome: "Termo Geral PA",
+              moduloNome: "Módulo 2",
               tituloAula: "Progressões Aritméticas",
               materia: "Matemática",
               images: [
@@ -707,7 +715,7 @@ export default function AulaProgressoesPa({
             numero={3}
             titulo="Soma de Termos (Finita)"
             descricao="Calcule a soma dos primeiros n termos de uma PA."
-            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -807,6 +815,10 @@ export default function AulaProgressoesPa({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={3}
             variant="amber"
@@ -816,7 +828,7 @@ export default function AulaProgressoesPa({
               duration: "10:45",
             }}
             resumoVisual={{
-              moduloNome: "Soma Finita PA",
+              moduloNome: "Módulo 3",
               tituloAula: "Progressões Aritméticas",
               materia: "Matemática",
               images: [
@@ -863,8 +875,8 @@ export default function AulaProgressoesPa({
 
                       <QuizInterativo
               questoes={quizM3}
-              titulo="Fixação - Soma Finita"
-              numero={3}
+              titulo="QUIZ: Módulo Nº 3"
+              numero={4}
               variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -880,7 +892,7 @@ export default function AulaProgressoesPa({
             numero={4}
             titulo="Propriedades Especiais de PA"
             descricao="Relações e padrões únicos das progressões aritméticas."
-            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -984,6 +996,10 @@ export default function AulaProgressoesPa({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={4}
             variant="cyan"
@@ -993,7 +1009,7 @@ export default function AulaProgressoesPa({
               duration: "10:15",
             }}
             resumoVisual={{
-              moduloNome: "Propriedades PA",
+              moduloNome: "Módulo 4",
               tituloAula: "Progressões Aritméticas",
               materia: "Matemática",
               images: [
@@ -1056,7 +1072,7 @@ export default function AulaProgressoesPa({
             numero={5}
             titulo="Interpolação Aritmética"
             descricao="Insira termos entre dois números para formar uma PA."
-            gradiente="bg-gradient-to-br from-violet-600 to-purple-800"
+            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1162,6 +1178,10 @@ export default function AulaProgressoesPa({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="violet"
@@ -1171,7 +1191,7 @@ export default function AulaProgressoesPa({
               duration: "9:30",
             }}
             resumoVisual={{
-              moduloNome: "Interpolação PA",
+              moduloNome: "Módulo 5",
               tituloAula: "Progressões Aritméticas",
               materia: "Matemática",
               images: [
@@ -1218,8 +1238,8 @@ export default function AulaProgressoesPa({
 
                       <QuizInterativo
               questoes={quizM5}
-              titulo="Fixação - Interpolação"
-              numero={5}
+              titulo="QUIZ: Módulo Nº 5"
+              numero={6}
               variant="violet"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -1235,7 +1255,7 @@ export default function AulaProgressoesPa({
             numero={6}
             titulo="PA e Funções Afim"
             descricao="Conexão entre progressões aritméticas e funções do 1º grau."
-            gradiente="bg-gradient-to-br from-teal-600 to-cyan-800"
+            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1346,6 +1366,10 @@ export default function AulaProgressoesPa({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={6}
             variant="teal"
@@ -1355,7 +1379,7 @@ export default function AulaProgressoesPa({
               duration: "11:00",
             }}
             resumoVisual={{
-              moduloNome: "PA e Função Afim",
+              moduloNome: "Módulo 6",
               tituloAula: "Progressões Aritméticas",
               materia: "Matemática",
               images: [
@@ -1419,7 +1443,7 @@ export default function AulaProgressoesPa({
             numero={7}
             titulo="Prática Integrada"
             descricao="Combine tudo: fórmulas, propriedades e aplicações."
-            gradiente="bg-gradient-to-br from-indigo-600 to-purple-800"
+            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1513,6 +1537,10 @@ export default function AulaProgressoesPa({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={7}
             variant="indigo"
@@ -1522,7 +1550,7 @@ export default function AulaProgressoesPa({
               duration: "12:20",
             }}
             resumoVisual={{
-              moduloNome: "Prática Integrada",
+              moduloNome: "Módulo 7",
               tituloAula: "Progressões Aritméticas",
               materia: "Matemática",
               images: [
@@ -1567,8 +1595,8 @@ export default function AulaProgressoesPa({
 
                       <QuizInterativo
               questoes={quizM7}
-              titulo="Fixação - Prática Integrada"
-              numero={7}
+              titulo="QUIZ: Módulo Nº 7"
+              numero={8}
               variant="indigo"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
@@ -1584,7 +1612,7 @@ export default function AulaProgressoesPa({
             numero={8}
             titulo="Desafios Avançados"
             descricao="Problemas complexos e integrações com outros conceitos."
-            gradiente="bg-gradient-to-br from-rose-600 to-red-800"
+            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1693,6 +1721,10 @@ export default function AulaProgressoesPa({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={8}
             variant="rose"
@@ -1702,7 +1734,7 @@ export default function AulaProgressoesPa({
               duration: "13:15",
             }}
             resumoVisual={{
-              moduloNome: "Desafios Avançados",
+              moduloNome: "Módulo 8",
               tituloAula: "Progressões Aritméticas",
               materia: "Matemática",
               images: [
@@ -1765,7 +1797,7 @@ export default function AulaProgressoesPa({
             numero={9}
             titulo="Aplicações Petrobras"
             descricao="Cronogramas, investimentos e programação linear."
-            gradiente="bg-gradient-to-br from-orange-600 to-red-800"
+            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1877,6 +1909,10 @@ export default function AulaProgressoesPa({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={9}
             variant="orange"
@@ -1886,7 +1922,7 @@ export default function AulaProgressoesPa({
               duration: "12:50",
             }}
             resumoVisual={{
-              moduloNome: "Aplicações Petrobras",
+              moduloNome: "Módulo 9",
               tituloAula: "Progressões Aritméticas",
               materia: "Matemática",
               images: [
@@ -1931,8 +1967,8 @@ export default function AulaProgressoesPa({
 
                       <QuizInterativo
               questoes={quizM9}
-              titulo="Fixação - Aplicações Petrobras"
-              numero={9}
+              titulo="QUIZ: Módulo Nº 9"
+              numero={10}
               variant="orange"
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
@@ -1948,7 +1984,7 @@ export default function AulaProgressoesPa({
             numero={10}
             titulo="Simulado Mestre"
             descricao="Teste final: integre todos os conceitos de progressões aritméticas."
-            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
           />
 
           {showCompletionBadge ? (

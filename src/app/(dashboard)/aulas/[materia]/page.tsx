@@ -72,12 +72,29 @@ export default function MateriaPage({ params }: PageProps) {
       // 2. Se for matéria específica (especifica-bloco-*), resolver via programa de estudos
       if (!materiaEncontrada && materiaId.startsWith("especifica-")) {
         try {
+          // Tentar via cargo do usuário primeiro (comportamento atual)
           const cargoId = usuario?.cargo;
           if (cargoId) {
             const programa = getProgramaDeEstudos(cargoId);
             const especifica = programa.find((m) => m.id === materiaId);
             if (especifica) {
               setMateria(especifica);
+            }
+          }
+
+          // Fallback: Se não encontrou no cargo do usuário (ou usuário não carregado), 
+          // procurar em todas as profissões para garantir que a URL seja válida
+          if (!materia) {
+            const { PROFISSOES } = await import("@/lib/profissoes-edital");
+            // Nota: Import dinâmico para não inflar o bundle inicial se não necessário
+            
+            for (const p of PROFISSOES) {
+              const programa = getProgramaDeEstudos(p.id);
+              const especifica = programa.find(m => m.id === materiaId);
+              if (especifica) {
+                setMateria(especifica);
+                break;
+              }
             }
           }
         } catch (error) {

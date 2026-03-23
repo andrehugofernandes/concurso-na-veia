@@ -128,7 +128,7 @@ export default function AulaGeometriaAnalitica({
           numero={1}
           titulo="Ponto no Plano Cartesiano"
           descricao="Domine o sistema de coordenadas, quadrantes, simetrias e a localização de pontos — base de toda a Geometria Analítica."
-          gradiente="bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-700"
+          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -238,6 +238,10 @@ export default function AulaGeometriaAnalitica({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={1}
             variant="indigo"
@@ -247,7 +251,7 @@ export default function AulaGeometriaAnalitica({
               duration: "12:30"
             }}
             resumoVisual={{
-              moduloNome: "Ponto no Plano Cartesiano",
+              moduloNome: "Módulo 1",
               tituloAula: "Geometria Analítica",
               materia: "Matemática",
               images: [
@@ -289,7 +293,7 @@ export default function AulaGeometriaAnalitica({
           numero={2}
           titulo="Distância entre Pontos e Ponto Médio"
           descricao="As fórmulas essenciais para medir separação e encontrar o centro entre dois pontos — aplicadas em mapeamento de dutos e plataformas."
-          gradiente="bg-gradient-to-br from-cyan-600 via-cyan-700 to-blue-700"
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -419,6 +423,10 @@ export default function AulaGeometriaAnalitica({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -428,7 +436,7 @@ export default function AulaGeometriaAnalitica({
               duration: "14:15"
             }}
             resumoVisual={{
-              moduloNome: "Distância e Ponto Médio",
+              moduloNome: "Módulo 2",
               tituloAula: "Geometria Analítica",
               materia: "Matemática",
               images: [
@@ -470,7 +478,7 @@ export default function AulaGeometriaAnalitica({
           numero={3}
           titulo="Equação da Reta"
           descricao="Forme reduzida, geral e segmentária — entenda o coeficiente angular e linear para modelar qualquer trajetória linear."
-          gradiente="bg-gradient-to-br from-blue-600 via-blue-700 to-emerald-700"
+          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -616,6 +624,10 @@ export default function AulaGeometriaAnalitica({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={3}
             variant="cyan"
@@ -625,7 +637,7 @@ export default function AulaGeometriaAnalitica({
               duration: "15:45"
             }}
             resumoVisual={{
-              moduloNome: "Equação da Reta",
+              moduloNome: "Módulo 3",
               tituloAula: "Geometria Analítica",
               materia: "Matemática",
               images: [
@@ -667,7 +679,7 @@ export default function AulaGeometriaAnalitica({
           numero={4}
           titulo="Posição Relativa entre Retas"
           descricao="Paralelas, perpendiculares, coincidentes ou secantes — aprenda a classificar retas e encontrar pontos de interseção."
-          gradiente="bg-gradient-to-br from-emerald-600 via-emerald-700 to-cyan-700"
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -767,6 +779,10 @@ export default function AulaGeometriaAnalitica({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={4}
             variant="blue"
@@ -776,7 +792,7 @@ export default function AulaGeometriaAnalitica({
               duration: "13:50"
             }}
             resumoVisual={{
-              moduloNome: "Posições Relativas",
+              moduloNome: "Módulo 4",
               tituloAula: "Geometria Analítica",
               materia: "Matemática",
               images: [
@@ -818,7 +834,7 @@ export default function AulaGeometriaAnalitica({
           numero={5}
           titulo="Distância de um Ponto a uma Reta"
           descricao="A fórmula mais testada em concursos — fundamental para calcular afastamentos de equipamentos a gasodutos e zonas de segurança."
-          gradiente="bg-gradient-to-br from-blue-600 via-cyan-600 to-emerald-600"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -924,6 +940,10 @@ export default function AulaGeometriaAnalitica({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="amber"
@@ -933,7 +953,7 @@ export default function AulaGeometriaAnalitica({
               duration: "14:20"
             }}
             resumoVisual={{
-              moduloNome: "Distância Ponto-Reta",
+              moduloNome: "Módulo 5",
               tituloAula: "Geometria Analítica",
               materia: "Matemática",
               images: [
@@ -975,7 +995,7 @@ export default function AulaGeometriaAnalitica({
           numero={6}
           titulo="Circunferência: Equação e Posições Relativas"
           descricao="Modele tanques, zonas de segurança e áreas de influência com a equação da circunferência e analise posições de pontos e retas."
-          gradiente="bg-gradient-to-br from-cyan-600 via-blue-600 to-blue-800"
+          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1097,6 +1117,10 @@ export default function AulaGeometriaAnalitica({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={6}
             variant="rose"
@@ -1106,7 +1130,7 @@ export default function AulaGeometriaAnalitica({
               duration: "15:05"
             }}
             resumoVisual={{
-              moduloNome: "Circunferência",
+              moduloNome: "Módulo 6",
               tituloAula: "Geometria Analítica",
               materia: "Matemática",
               images: [
@@ -1148,7 +1172,7 @@ export default function AulaGeometriaAnalitica({
           numero={7}
           titulo="Parábola"
           descricao="Vértice, eixo de simetria, raízes e concavidade — a cônica mais presente em trajetórias, câmaras e otimizações industriais."
-          gradiente="bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-800"
+          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1279,6 +1303,10 @@ export default function AulaGeometriaAnalitica({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={7}
             variant="indigo"
@@ -1288,7 +1316,7 @@ export default function AulaGeometriaAnalitica({
               duration: "16:30"
             }}
             resumoVisual={{
-              moduloNome: "Parábola",
+              moduloNome: "Módulo 7",
               tituloAula: "Geometria Analítica",
               materia: "Matemática",
               images: [
@@ -1330,7 +1358,7 @@ export default function AulaGeometriaAnalitica({
           numero={8}
           titulo="Interseções e Sistemas"
           descricao="Combine retas, circunferências e parábolas em sistemas — encontre pontos de cruzamento com precisão analítica."
-          gradiente="bg-gradient-to-br from-emerald-600 via-blue-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1427,6 +1455,10 @@ export default function AulaGeometriaAnalitica({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={8}
             variant="emerald"
@@ -1436,7 +1468,7 @@ export default function AulaGeometriaAnalitica({
               duration: "14:40"
             }}
             resumoVisual={{
-              moduloNome: "Interseções e Sistemas",
+              moduloNome: "Módulo 8",
               tituloAula: "Geometria Analítica",
               materia: "Matemática",
               images: [
@@ -1478,7 +1510,7 @@ export default function AulaGeometriaAnalitica({
           numero={9}
           titulo="Aplicações Petrobras — Coordenadas Industriais"
           descricao="Plataformas, dutos, FPSOs e zonas de exclusão: Geometria Analítica no cenário real dos concursos CESGRANRIO para a Petrobras."
-          gradiente="bg-gradient-to-br from-blue-700 via-cyan-600 to-emerald-600"
+          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1602,6 +1634,10 @@ export default function AulaGeometriaAnalitica({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={9}
             variant="cyan"
@@ -1611,7 +1647,7 @@ export default function AulaGeometriaAnalitica({
               duration: "17:00"
             }}
             resumoVisual={{
-              moduloNome: "Aplicações Petrobras",
+              moduloNome: "Módulo 9",
               tituloAula: "Geometria Analítica",
               materia: "Matemática",
               images: [
@@ -1653,7 +1689,7 @@ export default function AulaGeometriaAnalitica({
           numero={10}
           titulo="Simulado Final — Padrão CESGRANRIO"
           descricao="Questões no nível e estilo exatos da banca CESGRANRIO. Integre todos os conceitos de Geometria Analítica com velocidade e precisão."
-          gradiente="bg-gradient-to-br from-blue-800 via-blue-700 to-cyan-600"
+          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1786,6 +1822,10 @@ export default function AulaGeometriaAnalitica({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={10}
             variant="blue"
@@ -1795,7 +1835,7 @@ export default function AulaGeometriaAnalitica({
               duration: "18:45"
             }}
             resumoVisual={{
-              moduloNome: "Simulado Final Consolidado",
+              moduloNome: "Módulo 10",
               tituloAula: "Geometria Analítica",
               materia: "Matemática",
               images: [

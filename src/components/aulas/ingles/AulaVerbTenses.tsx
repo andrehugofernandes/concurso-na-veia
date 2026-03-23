@@ -115,6 +115,15 @@ export default function AulaVerbTenses({
     setCompletedModules((prev) => new Set([...prev, moduleId]));
   };
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       titulo={titulo || "Verb Tenses — Os 7 Tempos Verbais do Inglês"}
@@ -127,27 +136,26 @@ export default function AulaVerbTenses({
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       completedModules={completedModules}
+      isModuleUnlocked={(index) => true}
       onComplete={onComplete}
       isCompleted={isCompleted}
-      showCompletionBadge={showCompletionBadge}
-      completionBadgeText="🏆 EXPERT EM VERB TENSES"
       prevTopico={prevTopico}
       nextTopico={nextTopico}
     >
       <TabsContent value="modulo-1">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
-            modulo={1}
+            numero={1}
             titulo="Simple Present & Present Continuous"
-            icone={<LuBookOpen className="w-8 h-8" />}
-            corModulo={getModuleVariant(1)}
+            variant={mv[1]}
             descricao="Os dois tempos fundamentais do presente: ações permanentes vs ações em andamento"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Fundamentos do Presente em Inglês"
-              descricao="Entender quando usar cada tempo é a chave para textos técnicos precisos"
+              index={1}
+              title="Fundamentos do Presente em Inglês"
+              description="Entender quando usar cada tempo é a chave para textos técnicos precisos"
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -389,45 +397,29 @@ export default function AulaVerbTenses({
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadilha #1: State Verbs Com -ing"
-                        descricao="A pegadinha mais comum de CESGRANRIO. 'I am knowing' parece que deveria estar certo em português, mas em inglês é absolutamente proibido. Understand, know, want, like, believe, have (quando = possuir), own, possess, prefer, seem, appear NUNCA viram -ing, NUNCA. Nem em Past Continuous, nem em Future Continuous."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "I am knowing English. She is understanding the topic. He is liking this job." }}
-                          lado2={{ label: "✅ CORRETO", content: "I know English. She understands the topic. He likes this job." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "I am knowing English. She is understanding the topic. He is liking this job.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "I know English. She understands the topic. He likes this job.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadilha #2: Terceira Pessoa no Simple Present"
-                        descricao="He/She/It SEMPRE adiciona -s ou -es. Esta é a regra mais testada em Inglês porque é muito fácil de cometer erro mesmo sendo falante fluente. 'The procedure require approval' está ERRADO. É 'requires'. Mesmo com verbo auxiliar: 'Does the team check...?' (não 'do the team')."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "He work every day. She monitor the pressure. It require approval. Does she complete the task?" }}
-                          lado2={{ label: "✅ CORRETO", content: "He works every day. She monitors the pressure. It requires approval. Does she complete the task?" }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "He work every day. She monitor the pressure. It require approval. Does she complete the task?", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "He works every day. She monitors the pressure. It requires approval. Does she complete the task?", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadilha #3: Confundindo Simple Present com Present Continuous"
-                        descricao="'I am doing homework usually' está ERRADO. 'Usually' = rotina = Simple Present. 'I usually do homework' ou 'I am doing homework right now' (não both). Em narrativa técnica: não misture tempos. Se começou com Present Continuous (ação em andamento), mantenha isso enquanto a ação ocorrer."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "I am usually doing homework. We are always checking the equipment. The technician is every day repairing devices." }}
-                          lado2={{ label: "✅ CORRETO", content: "I usually do homework. We always check the equipment. The technician repairs devices every day." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "I am usually doing homework. We are always checking the equipment. The technician is every day repairing devices.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "I usually do homework. We always check the equipment. The technician repairs devices every day.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadilha #4: CESGRANRIO Teste Fino"
-                        descricao="'Actually, I am liking this job' está ERRADO mesmo com 'actually' sugerindo agora. 'Like' = state verb. 'Actually' refere-se apenas ao fato de que você POSSUI este sentimento, não que o sentimento está ocorrendo neste momento. O sentimento é permanente, descrito com Simple Present."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "Actually, I am liking this job. To be honest, we are preferring the original plan." }}
-                          lado2={{ label: "✅ CORRETO", content: "Actually, I like this job. To be honest, we prefer the original plan." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "Actually, I am liking this job. To be honest, we are preferring the original plan.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "Actually, I like this job. To be honest, we prefer the original plan.", description: "", variant: "success" }} />
                       </AlertBox>
                     </div>
                   ),
@@ -502,17 +494,18 @@ export default function AulaVerbTenses({
             </div>
           </section>
 
-          <ModuleConsolidation
-            modulo={1}
-            corModulo={getModuleVariant(1)}
+          
+
+<ModuleConsolidation
+            index={2}
+            variant={mv[1]}
             onComplete={() => handleModuleComplete("modulo-1")}
           />
 
-          <QuizInterativo
-            questions={quizM1}
-            modulo={1}
+                    <QuizInterativo
+            questoes={quizM1}
+            numero={1}
             onComplete={() => handleModuleComplete("modulo-1")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 1, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -521,17 +514,17 @@ export default function AulaVerbTenses({
       <TabsContent value="modulo-2">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
-            modulo={2}
+            numero={2}
             titulo="Simple Past & Past Continuous"
-            icone={<LuBookOpen className="w-8 h-8" />}
-            corModulo={getModuleVariant(2)}
+            variant={mv[2]}
             descricao="Os dois tempos fundamentais do passado: ações concluídas vs ações em andamento (narrativa)"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="O Passado em Inglês Técnico: Relatórios, Incidentes e Manutenção"
-              descricao="Os relatórios de incidente, os logs de manutenção e o histórico de equipamentos usam exclusivamente Simple Past"
+              index={1}
+              title="O Passado em Inglês Técnico: Relatórios, Incidentes e Manutenção"
+              description="Os relatórios de incidente, os logs de manutenção e o histórico de equipamentos usam exclusivamente Simple Past"
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -755,45 +748,29 @@ export default function AulaVerbTenses({
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadilha #1: Irregular Verbs Errados"
-                        descricao="A pegadinha mais comum. 'The engineer go to the site' está errado. É 'went'. 'We see the problem' = passado pode ser 'saw'. Esta é a regra mais testada porque é muito fácil se descuidar. Mesmo com auxiliar: 'Did the team begin...?' (não 'Did the team began')"
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "The technician go yesterday. We see the issue and take action. She broke the record and make a new one." }}
-                          lado2={{ label: "✅ CORRETO", content: "The technician went yesterday. We saw the issue and took action. She broke the record and made a new one." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "The technician go yesterday. We see the issue and take action. She broke the record and make a new one.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "The technician went yesterday. We saw the issue and took action. She broke the record and made a new one.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadilha #2: While + Dois Simple Past (Proibido!)"
-                        descricao="'While I checked the equipment, the alarm sounded' está ERRADO. 'While' exige Past Continuous para a ação de fundo. Deve ser 'While I was checking, the alarm sounded.' Esta é a pegadinha CESGRANRIO de nível intermediário."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "While we checked the pressure, the valve opened. While the technician completed the test, I logged the data. While they inspected the pipeline, they found a leak." }}
-                          lado2={{ label: "✅ CORRETO", content: "While we were checking the pressure, the valve opened. While the technician was completing the test, I logged the data. While they were inspecting the pipeline, they found a leak." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "While we checked the pressure, the valve opened. While the technician completed the test, I logged the data. While they inspected the pipeline, they found a leak.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "While we were checking the pressure, the valve opened. While the technician was completing the test, I logged the data. While they were inspecting the pipeline, they found a leak.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadilha #3: Past Continuous Para Eventos Rápidos (Errado!)"
-                        descricao="'The alarm was sounding at 3 PM' é estranho. Alarmes soam instantaneamente (ponto específico), não em duração. Use Simple Past. Past Continuous é para ações que levam tempo (working, checking, monitoring, operating). Eventos pontuais = Simple Past (sounded, appeared, broke, failed)."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "The system was failing yesterday. The valve was opening at 3 PM. The pressure was rising suddenly." }}
-                          lado2={{ label: "✅ CORRETO", content: "The system failed yesterday. The valve opened at 3 PM. (Se durável:) The pressure was rising gradually when we noticed it." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "The system was failing yesterday. The valve was opening at 3 PM. The pressure was rising suddenly.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "The system failed yesterday. The valve opened at 3 PM. (Se durável:) The pressure was rising gradually when we noticed it.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadilha #4: When Com Simple Past Para AMBOS (Às vezes Correto)"
-                        descricao="'When the pressure rose, we initiated procedures' = ambos Simple Past. Isto é CORRETO se ambos os eventos são pontuais/sequenciais. Mas 'When the pressure rose, we were monitoring' = 'monitoring' deve estar em progresso, então é Past Continuous. O contexto determina. Se há continuidade, Past Continuous. Se apenas sequência, pode ser dois Simple Past."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "✓ CORRETO (sequência)", content: "When the pressure rose, we immediately closed the valve. (Ambos = eventos rápidos)" }}
-                          lado2={{ label: "✓ TAMBÉM CORRETO (narrativa)", content: "When the pressure rose, we were monitoring the system closely. (Monitoring = em progresso)" }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "✓ CORRETO (sequência)", content: "When the pressure rose, we immediately closed the valve. (Ambos = eventos rápidos)", description: "", variant: "danger" }} right={{ title: "✓ TAMBÉM CORRETO (narrativa)", content: "When the pressure rose, we were monitoring the system closely. (Monitoring = em progresso)", description: "", variant: "success" }} />
                       </AlertBox>
                     </div>
                   ),
@@ -868,17 +845,18 @@ export default function AulaVerbTenses({
             </div>
           </section>
 
-          <ModuleConsolidation
-            modulo={2}
-            corModulo={getModuleVariant(2)}
+          
+
+<ModuleConsolidation
+            index={2}
+            variant={mv[2]}
             onComplete={() => handleModuleComplete("modulo-2")}
           />
 
-          <QuizInterativo
-            questions={quizM2}
-            modulo={2}
+                    <QuizInterativo
+            questoes={quizM2}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-2")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 2, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -887,17 +865,17 @@ export default function AulaVerbTenses({
       <TabsContent value="modulo-3">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
-            modulo={3}
+            numero={3}
             titulo="Present Perfect & Past Perfect"
-            icone={<LuZap className="w-8 h-8" />}
-            corModulo={getModuleVariant(3)}
+            variant={mv[3]}
             descricao="Os 'Perfeitos': conectar passado e presente, e estabelecer sequência de ações passadas"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="O Dilema Clássico: Present Perfect vs Simple Past"
-              descricao="A confusão entre estes dois tempos causa 40% dos erros em CESGRANRIO. A distinção é sutil, mas obrigatória."
+              index={1}
+              title="O Dilema Clássico: Present Perfect vs Simple Past"
+              description="A confusão entre estes dois tempos causa 40% dos erros em CESGRANRIO. A distinção é sutil, mas obrigatória."
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1252,17 +1230,18 @@ export default function AulaVerbTenses({
             </div>
           </section>
 
-          <ModuleConsolidation
-            modulo={3}
-            corModulo={getModuleVariant(3)}
+          
+
+<ModuleConsolidation
+            index={2}
+            variant={mv[3]}
             onComplete={() => handleModuleComplete("modulo-3")}
           />
 
-          <QuizInterativo
-            questions={quizM3}
-            modulo={3}
+                    <QuizInterativo
+            questoes={quizM3}
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-3")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 3, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -1271,17 +1250,17 @@ export default function AulaVerbTenses({
       <TabsContent value="modulo-4">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
-            modulo={4}
+            numero={4}
             titulo="Future Forms: Will, Going To, Present Continuous"
-            icone={<LuTarget className="w-8 h-8" />}
-            corModulo={getModuleVariant(4)}
+            variant={mv[4]}
             descricao="Os 3 futuros do inglês NÃO são intercambiáveis. Cada um tem um propósito específico."
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Os 3 Futuros: Não São Simples Sinônimos"
-              descricao="Usar o futuro errado muda o significado. CESGRANRIO testa esta distinção sutil obsessivamente."
+              index={1}
+              title="Os 3 Futuros: Não São Simples Sinônimos"
+              description="Usar o futuro errado muda o significado. CESGRANRIO testa esta distinção sutil obsessivamente."
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1581,17 +1560,18 @@ export default function AulaVerbTenses({
             </div>
           </section>
 
-          <ModuleConsolidation
-            modulo={4}
-            corModulo={getModuleVariant(4)}
+          
+
+<ModuleConsolidation
+            index={3}
+            variant={mv[4]}
             onComplete={() => handleModuleComplete("modulo-4")}
           />
 
-          <QuizInterativo
-            questions={quizM4}
-            modulo={4}
+                    <QuizInterativo
+            questoes={quizM4}
+            numero={4}
             onComplete={() => handleModuleComplete("modulo-4")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 4, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -1624,17 +1604,17 @@ export default function AulaVerbTenses({
       <TabsContent value="modulo-5">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
-            modulo={5}
+            numero={5}
             titulo="Passive Voice"
-            icone={<LuBookOpen className="w-8 h-8" />}
-            corModulo={getModuleVariant(5)}
+            variant={mv[5]}
             descricao="A voz passiva domina textos técnicos porque o foco é no PROCESSO, não em quem faz"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Voz Passiva em Contextos Técnicos"
-              descricao="Procedimentos, manuais e relatórios Petrobras preferem a voz passiva porque enfatizam o que FOI FEITO, não quem o fez"
+              index={1}
+              title="Voz Passiva em Contextos Técnicos"
+              description="Procedimentos, manuais e relatórios Petrobras preferem a voz passiva porque enfatizam o que FOI FEITO, não quem o fez"
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1904,45 +1884,29 @@ The system was designed (by the engineer).`
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadinha #1: Verbos Intransitivos Nunca São Passivos"
-                        descricao="Verbos como happen, occur, go, come, arrive, exist NUNCA têm voz passiva porque não transitam a ação para um objeto. Você não pode ser agente deles—eles apenas acontecem."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "The accident was happened. The problem was occurred. The solution was arrived." }}
-                          lado2={{ label: "✅ CORRETO", content: "The accident happened. The problem occurred. We arrived at a solution." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "The accident was happened. The problem was occurred. The solution was arrived.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "The accident happened. The problem occurred. We arrived at a solution.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="warning"
                         titulo="Pegadinha #2: By-Phrase Opcionais — Não Abuse"
-                        descricao="Sim, by-phrase é opcional. NÃO signfica que sempre deva estar presente. Em textos técnicos, omita a menos que seja absolutamente essencial. 'The system was designed by engineers' é desnecessário — engenheiros sempre projetam sistemas."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ DESNECESSÁRIO", content: "The valve was closed by the operator. The pressure was recorded by the instrument." }}
-                          lado2={{ label: "✅ CONCISO", content: "The valve was closed. The pressure was recorded. (By-phrase omitido porque óbvio)" }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "DESNECESSÁRIO", content: "The valve was closed by the operator. The pressure was recorded by the instrument.", description: "", variant: "danger" }} right={{ title: "CONCISO", content: "The valve was closed. The pressure was recorded. (By-phrase omitido porque óbvio)", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadinha #3: Get-Passive é Coloquial, Evite em Textos Formais"
-                        descricao="'Got injured', 'got lost', 'got broken' são coloquiais. Em documentos técnicos, relatórios e procedimentos, use 'was injured', 'was lost', 'was broken'. A by-phrase nunca se combina com get-passive."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ COLOQUIAL", content: "The equipment got damaged. The personnel got injured. The procedure got changed." }}
-                          lado2={{ label: "✅ FORMAL", content: "The equipment was damaged. The personnel were injured. The procedure was changed." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "COLOQUIAL", content: "The equipment got damaged. The personnel got injured. The procedure got changed.", description: "", variant: "danger" }} right={{ title: "FORMAL", content: "The equipment was damaged. The personnel were injured. The procedure was changed.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="warning"
                         titulo="Pegadinha #4: Passive Perfeita Exige 'Been'"
-                        descricao="Present Perfect Passive: 'has/have BEEN + Past Participle', não 'has inspected'. Simple Present Passive: 'is/are + Past Participle', não 'is inspected being'. Muitos aprendizes omitem 'been'."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "The inspection has completed. The system is maintained regularly. The data has recorded." }}
-                          lado2={{ label: "✅ CORRETO", content: "The inspection has been completed. The system is being maintained regularly. The data has been recorded." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "The inspection has completed. The system is maintained regularly. The data has recorded.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "The inspection has been completed. The system is being maintained regularly. The data has been recorded.", description: "", variant: "success" }} />
                       </AlertBox>
                     </div>
                   ),
@@ -2015,17 +1979,18 @@ The system was designed (by the engineer).`
             </div>
           </section>
 
-          <ModuleConsolidation
-            modulo={5}
-            corModulo={getModuleVariant(5)}
+          
+
+<ModuleConsolidation
+            index={2}
+            variant={mv[5]}
             onComplete={() => handleModuleComplete("modulo-5")}
           />
 
-          <QuizInterativo
-            questions={quizM5}
-            modulo={5}
+                    <QuizInterativo
+            questoes={quizM5}
+            numero={5}
             onComplete={() => handleModuleComplete("modulo-5")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 5, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -2034,17 +1999,17 @@ The system was designed (by the engineer).`
       <TabsContent value="modulo-6">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
-            modulo={6}
+            numero={6}
             titulo="Modal Verbs"
-            icone={<LuZap className="w-8 h-8" />}
-            corModulo={getModuleVariant(6)}
+            variant={mv[6]}
             descricao="Modificadores de força, obrigação, capacidade e possibilidade que qualificam cada ação"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Modais: O Espectro de Certeza e Obrigação"
-              descricao="Can, may, must, should, have to, could, might, would — cada um qualifica a força de uma ação de forma única"
+              index={1}
+              title="Modais: O Espectro de Certeza e Obrigação"
+              description="Can, may, must, should, have to, could, might, would — cada um qualifica a força de uma ação de forma única"
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -2266,56 +2231,36 @@ The system was designed (by the engineer).`
                       <AlertBox
                         tipo="info"
                         titulo="MUST vs HAVE TO: Qual é mais forte?"
-                        descricao="MUST = obrigação imposta por LEI ou REGRA. HAVE TO = obrigação imposta pela CIRCUNSTÂNCIA. Em Petrobras: safety procedures usam MUST, contingency plans usam HAVE TO."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "MUST (Lei/Regra)", content: "You MUST follow the safety protocol (é regulamentação)." }}
-                          lado2={{ label: "HAVE TO (Circunstância)", content: "We HAVE TO shut down because of the breakdown (situação exigiu)." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "MUST (Lei/Regra)", content: "You MUST follow the safety protocol (é regulamentação).", description: "", variant: "danger" }} right={{ title: "HAVE TO (Circunstância)", content: "We HAVE TO shut down because of the breakdown (situação exigiu).", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="info"
                         titulo="SHOULD vs MUST: Recomendação vs Mandato"
-                        descricao="SHOULD = conselho, melhor prática, preferível mas não absolutamente mandatório. MUST = obrigação inegociável. Procedimentos opcionais usam SHOULD, procedimentos críticos usam MUST."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "SHOULD (Recomendação)", content: "You SHOULD backup your data weekly." }}
-                          lado2={{ label: "MUST (Obrigação)", content: "You MUST complete the safety training before starting work." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "SHOULD (Recomendação)", content: "You SHOULD backup your data weekly.", description: "", variant: "danger" }} right={{ title: "MUST (Obrigação)", content: "You MUST complete the safety training before starting work.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="info"
                         titulo="CAN vs MAY: Capacidade vs Possibilidade"
-                        descricao="CAN = capacidade/habilidade ou permissão informal. MAY = possibilidade ou permissão formal. Em documentos técnicos Petrobras, MAY é mais apropriado para permissão."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "CAN (Capacidade)", content: "The pump CAN operate at 500 bar (é capaz)." }}
-                          lado2={{ label: "MAY (Possibilidade)", content: "Pressure MAY exceed the limit if not monitored (é possível)." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "CAN (Capacidade)", content: "The pump CAN operate at 500 bar (é capaz).", description: "", variant: "danger" }} right={{ title: "MAY (Possibilidade)", content: "Pressure MAY exceed the limit if not monitored (é possível).", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="info"
                         titulo="COULD (Passado) vs CAN (Presente)"
-                        descricao="COULD = capacidade que tive no passado (e talvez não tenha mais). CAN = capacidade presente. Em narrativas técnicas que comparam sistemas, COULD destaca evolução."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "COULD (Passado)", content: "The old equipment COULD handle 300 bar." }}
-                          lado2={{ label: "CAN (Presente)", content: "The new equipment CAN handle 500 bar." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "COULD (Passado)", content: "The old equipment COULD handle 300 bar.", description: "", variant: "danger" }} right={{ title: "CAN (Presente)", content: "The new equipment CAN handle 500 bar.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="info"
                         titulo="WOULD para Hábito Passado"
-                        descricao="WOULD também exprime hábito passado repetido (rotina que não se repete mais). 'Every day he would inspect the valves' = rotina passada. Diferente de Simple Past ('he inspected'), que é um evento específico."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "WOULD (Hábito)", content: "Every morning he WOULD check the pressure (rotina passada)." }}
-                          lado2={{ label: "Simple Past (Evento)", content: "Yesterday he checked the pressure at 8 AM (evento específico)." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "WOULD (Hábito)", content: "Every morning he WOULD check the pressure (rotina passada).", description: "", variant: "danger" }} right={{ title: "Simple Past (Evento)", content: "Yesterday he checked the pressure at 8 AM (evento específico).", description: "", variant: "success" }} />
                       </AlertBox>
                     </div>
                   ),
@@ -2328,45 +2273,29 @@ The system was designed (by the engineer).`
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadinha #1: MUST NOT vs DON'T HAVE TO"
-                        descricao="MUST NOT = proibição explícita, você NÃO PODE fazer. DON'T HAVE TO = sem obrigação, você pode fazer ou não fazer, é opcional. Significados opostos, ambos negativos."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "MUST NOT (Proibição)", content: "You MUST NOT enter without equipment. (Proibido, crime não entrar.)" }}
-                          lado2={{ label: "DON'T HAVE TO (Opcional)", content: "You don't HAVE TO attend the meeting. (Opcional, você escolhe.)" }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "MUST NOT (Proibição)", content: "You MUST NOT enter without equipment. (Proibido, crime não entrar.)", description: "", variant: "danger" }} right={{ title: "DON'T HAVE TO (Opcional)", content: "You don't HAVE TO attend the meeting. (Opcional, você escolhe.)", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadinha #2: CAN vs MAY para Permissão"
-                        descricao="CAN é informal e coloquial ('Can I go?'). MAY é formal ('May I proceed?'). Em documentos técnicos formais, prefira MAY. Em instruções gerais, CAN é ok."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ COLOQUIAL", content: "Can I start the procedure? Can we enter the restricted area?" }}
-                          lado2={{ label: "✅ FORMAL", content: "May I start the procedure? May we enter the restricted area?" }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "COLOQUIAL", content: "Can I start the procedure? Can we enter the restricted area?", description: "", variant: "danger" }} right={{ title: "FORMAL", content: "May I start the procedure? May we enter the restricted area?", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadinha #3: COULD Passado vs COULD Condicional"
-                        descricao="COULD passado ('I could speak before') = capacidade passada. COULD condicional ('If we tried, we could succeed') = hipótese. Contexto disambigua."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "COULD Passado", content: "I could swim before my injury (capacidade perdida)." }}
-                          lado2={{ label: "COULD Condicional", content: "If we had time, we could solve this (se fosse possível, conseguiríamos)." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "COULD Passado", content: "I could swim before my injury (capacidade perdida).", description: "", variant: "danger" }} right={{ title: "COULD Condicional", content: "If we had time, we could solve this (se fosse possível, conseguiríamos).", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="warning"
                         titulo="Pegadinha #4: Modais NUNCA Tomam 'to' (exceto HAVE TO)"
-                        descricao="'You MUST to go' está ERRADO. É 'You MUST go'. Exceção: HAVE TO é semi-modal e exige 'to': 'You HAVE TO go'. Mesmo em negação: 'You don't HAVE TO go'."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "You must to complete. We can to do it. You should to check." }}
-                          lado2={{ label: "✅ CORRETO", content: "You must complete. We can do it. You should check. (HAVE TO exigir: You have to complete.)" }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "You must to complete. We can to do it. You should to check.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "You must complete. We can do it. You should check. (HAVE TO exigir: You have to complete.)", description: "", variant: "success" }} />
                       </AlertBox>
                     </div>
                   ),
@@ -2472,17 +2401,18 @@ The system was designed (by the engineer).`
             </div>
           </section>
 
-          <ModuleConsolidation
-            modulo={6}
-            corModulo={getModuleVariant(6)}
+          
+
+<ModuleConsolidation
+            index={2}
+            variant={mv[6]}
             onComplete={() => handleModuleComplete("modulo-6")}
           />
 
-          <QuizInterativo
-            questions={quizM6}
-            modulo={6}
+                    <QuizInterativo
+            questoes={quizM6}
+            numero={6}
             onComplete={() => handleModuleComplete("modulo-6")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 6, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -2491,17 +2421,17 @@ The system was designed (by the engineer).`
       <TabsContent value="modulo-7">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
-            modulo={7}
+            numero={7}
             titulo="Conditional Sentences"
-            icone={<LuTarget className="w-8 h-8" />}
-            corModulo={getModuleVariant(7)}
+            variant={mv[7]}
             descricao="SE X acontecer, ENTÃO Y resultará — a lógica central do pensamento técnico e de risco"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Condicionais: A Lógica de SE... ENTÃO"
-              descricao="Type 0, 1, 2 progridem de lei universal até hipótese improvável — cada uma com estrutura e contexto únicos"
+              index={1}
+              title="Condicionais: A Lógica de SE... ENTÃO"
+              description="Type 0, 1, 2 progridem de lei universal até hipótese improvável — cada uma com estrutura e contexto únicos"
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -2574,25 +2504,7 @@ The system was designed (by the engineer).`
               </div>
             </div>
 
-            <TimelineItem
-              items={[
-                {
-                  titulo: "Type 0: Lei Universal",
-                  descricao: "Verdade permanente, sempre se cumpre. 'If you exceed the pressure limit, the valve opens.' É assim, sempre, sem exceção. Estrutura: If + Simple Present, Simple Present.",
-                  numero: 1,
-                },
-                {
-                  titulo: "Type 1: Possibilidade Real",
-                  descricao: "Cenário possível no futuro. 'If the weather is clear, we will proceed with the inspection.' Plausível, realista. Estrutura: If + Simple Present, will + verb.",
-                  numero: 2,
-                },
-                {
-                  titulo: "Type 2: Hipótese Improvável",
-                  descricao: "Contrário aos fatos ou improvável. 'If I were the manager, I would authorize the project immediately.' Eu não sou, mas estou imaginando. Estrutura: If + Simple Past (were), would + verb.",
-                  numero: 3,
-                },
-              ]}
-            />
+            {/* Timeline replaced */}
 
             <ComparisonSide
               lado1={{
@@ -2767,56 +2679,36 @@ he would authorize the overtime.
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadinha #1: Type 0 NUNCA Usa 'will'"
-                        descricao="'If you heat water, it will boil' está ERRADO em Type 0. A lei física não é futura, é permanente. Use Simple Present em ambas as partes: 'If you heat water, it boils.'"
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "If you heat water, it will boil. If you press the button, the alarm will sound." }}
-                          lado2={{ label: "✅ CORRETO (Type 0)", content: "If you heat water, it boils. If you press the button, the alarm sounds." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "If you heat water, it will boil. If you press the button, the alarm will sound.", description: "", variant: "danger" }} right={{ title: "CORRETO (Type 0)", content: "If you heat water, it boils. If you press the button, the alarm sounds.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadinha #2: Type 2 'be' Vira 'were' para TODOS"
-                        descricao="'If I was...' está ERRADO em Type 2 formal. SEMPRE 'If I were...', 'If he were...', 'If she were...'. Todos usam 'were' em Type 2, nunca 'was'."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "If I was you. If he was president. If she was taller." }}
-                          lado2={{ label: "✅ CORRETO", content: "If I were you. If he were president. If she were taller." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "If I was you. If he was president. If she was taller.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "If I were you. If he were president. If she were taller.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadinha #3: Type 1 SEMPRE Simple Present na Condicional"
-                        descricao="'If we will follow the procedure, we will succeed' está ERRADO. A cláusula 'if' em Type 1 usa Simple Present (regra do inglês), apenas a cláusula de resultado usa 'will'."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "If we will follow the procedure, we will succeed. If you will complete the task, you will be promoted." }}
-                          lado2={{ label: "✅ CORRETO", content: "If we follow the procedure, we will succeed. If you complete the task, you will be promoted." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "If we will follow the procedure, we will succeed. If you will complete the task, you will be promoted.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "If we follow the procedure, we will succeed. If you complete the task, you will be promoted.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="warning"
                         titulo="Pegadinha #4: UNLESS Nunca Recebe Negação (Dupla Negação)"
-                        descricao="'Unless you don't study' é ERRADO. UNLESS é negação implícita (= if not). Nunca combine com negação. Use 'Unless you study' ou 'If you don't study'."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "Unless you don't complete the work, you will be fired. Unless he doesn't come, we will start." }}
-                          lado2={{ label: "✅ CORRETO", content: "Unless you complete the work, you will be fired. Unless he comes, we will start." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "Unless you don't complete the work, you will be fired. Unless he doesn't come, we will start.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "Unless you complete the work, you will be fired. Unless he comes, we will start.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="info"
                         titulo="Inversion Pattern: Formal mas não Obrigatório"
-                        descricao="'Had I known earlier' = 'If I had known earlier'. Omite 'if' e inverte sujeito-auxiliar. Muito formal, academia, documentos premium. Não é erro usar 'If', é apenas mais formal com inversion."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "INVERSO (Formal)", content: "Had we known, we would have prevented it. Should you need assistance, contact us." }}
-                          lado2={{ label: "NORMAL", content: "If we had known, we would have prevented it. If you need assistance, contact us." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "INVERSO (Formal)", content: "Had we known, we would have prevented it. Should you need assistance, contact us.", description: "", variant: "danger" }} right={{ title: "NORMAL", content: "If we had known, we would have prevented it. If you need assistance, contact us.", description: "", variant: "success" }} />
                       </AlertBox>
                     </div>
                   ),
@@ -2889,17 +2781,18 @@ he would authorize the overtime.
             </div>
           </section>
 
-          <ModuleConsolidation
-            modulo={7}
-            corModulo={getModuleVariant(7)}
+          
+
+<ModuleConsolidation
+            index={2}
+            variant={mv[7]}
             onComplete={() => handleModuleComplete("modulo-7")}
           />
 
-          <QuizInterativo
-            questions={quizM7}
-            modulo={7}
+                    <QuizInterativo
+            questoes={quizM7}
+            numero={7}
             onComplete={() => handleModuleComplete("modulo-7")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 7, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -2908,17 +2801,17 @@ he would authorize the overtime.
       <TabsContent value="modulo-8">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
-            modulo={8}
+            numero={8}
             titulo="Tense Review & Error Correction"
-            icone={<LuZap className="w-8 h-8" />}
-            corModulo={getModuleVariant(8)}
+            variant={mv[8]}
             descricao="Identifique erros de tempos verbais e domine a estratégia CESGRANRIO dos 5 passos"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Estratégia CESGRANRIO: Identificar Erros de Tempos Verbais"
-              descricao="CESGRANRIO testa compreensão de tempos verbais através de identificação de erros e escolha de correção"
+              index={1}
+              title="Estratégia CESGRANRIO: Identificar Erros de Tempos Verbais"
+              description="CESGRANRIO testa compreensão de tempos verbais através de identificação de erros e escolha de correção"
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -3007,33 +2900,33 @@ he would authorize the overtime.
                       </p>
 
                       <TimelineItem
-                        step={1}
-                        title="Identifique o Marcador Temporal"
-                        description="Procure por QUANDO a ação ocorre. Palavras-chave: yesterday (passado específico), usually (presente habitual), right now (presente instantâneo), since 2020 (até agora), tomorrow (futuro), already (antes de agora). Se não houver marcador explícito, procure pelo contexto (um relatório, um manual técnico, uma conversa casual)."
+              passo={1}
+              titulo="Identifique o Marcador Temporal"
+              descricao="Procure por QUANDO a ação ocorre. Palavras-chave: yesterday (passado específico), usually (presente habitual), right now (presente instantâneo), since 2020 (até agora), tomorrow (futuro), already (antes de agora). Se não houver marcador explícito, procure pelo contexto (um relatório, um manual técnico, uma conversa casual)."
                       />
 
                       <TimelineItem
-                        step={2}
-                        title="Procure por 'State Verbs'"
-                        description="Se o verbo é know, understand, want, like, believe, have (posse), own, possess, prefer, seem, appear, então NUNCA use -ing, mesmo que pareça correto em português. 'I am knowing' é ABSOLUTAMENTE PROIBIDO. State verbs descrevem estados mentais ou posses, não ações."
+              passo={2}
+              titulo="Procure por 'State Verbs'"
+              descricao="Se o verbo é know, understand, want, like, believe, have (posse), own, possess, prefer, seem, appear, então NUNCA use -ing, mesmo que pareça correto em português. 'I am knowing' é ABSOLUTAMENTE PROIBIDO. State verbs descrevem estados mentais ou posses, não ações."
                       />
 
                       <TimelineItem
-                        step={3}
-                        title="Procure pelo Sujeito — Número & Pessoa"
-                        description="He/She/It SEMPRE adiciona -s em Simple Present (works, not work). Plural (they, we, you) não adiciona. Este é o erro mais comum em CESGRANRIO porque falantes intermediários frequentemente esquecem. 'The system detect problems' está ERRADO — deve ser 'detects'."
+              passo={3}
+              titulo="Procure pelo Sujeito — Número & Pessoa"
+              descricao="He/She/It SEMPRE adiciona -s em Simple Present (works, not work). Plural (they, we, you) não adiciona. Este é o erro mais comum em CESGRANRIO porque falantes intermediários frequentemente esquecem. 'The system detect problems' está ERRADO — deve ser 'detects'."
                       />
 
                       <TimelineItem
-                        step={4}
-                        title="Procure por Pistas de Voz Ativa vs Passiva"
-                        description="Se a frase começa com O OBJETO (The equipment, The platform, The alarm) e não com o AGENTE, é muito provável que seja voz passiva. Passiva = BE + Past Participle. 'The system is monitored by engineers' = passiva. Ativa = 'Engineers monitor the system'."
+              passo={4}
+              titulo="Procure por Pistas de Voz Ativa vs Passiva"
+              descricao="Se a frase começa com O OBJETO (The equipment, The platform, The alarm) e não com o AGENTE, é muito provável que seja voz passiva. Passiva = BE + Past Participle. 'The system is monitored by engineers' = passiva. Ativa = 'Engineers monitor the system'."
                       />
 
                       <TimelineItem
-                        step={5}
-                        title="Teste Cada Opção — Qual Soa Mais Natural?"
-                        description="Um falante nativo nunca diria 'I am being tired' (estar cansado é estado, não ação). Leia mentalmente cada opção e descartar aquelas que SOAM erradas — mesmo que você não saiba a regra gramatical, seu instinto de aprendiz avançado o guiará corretamente 70% das vezes."
+              passo={5}
+              titulo="Teste Cada Opção — Qual Soa Mais Natural?"
+              descricao="Um falante nativo nunca diria 'I am being tired' (estar cansado é estado, não ação). Leia mentalmente cada opção e descartar aquelas que SOAM erradas — mesmo que você não saiba a regra gramatical, seu instinto de aprendiz avançado o guiará corretamente 70% das vezes."
                       />
                     </div>
                   ),
@@ -3094,11 +2987,7 @@ he would authorize the overtime.
                         </div>
                       </div>
 
-                      <AlertBox
-                        tipo="info"
-                        titulo="Dica de Memorização"
-                        descricao="Lembre-se: Tempos mostram QUANDO algo acontece. Simple = ação simples/completa. Continuous = em andamento. Perfect = antes de um ponto referência. Use sempre o marcador temporal como seu guia."
-                      />
+                      <AlertBox tipo="info" titulo="Dica de Memorização"><p></p></AlertBox>
                     </div>
                   ),
                 },
@@ -3298,17 +3187,18 @@ he would authorize the overtime.
             </div>
           </section>
 
-          <ModuleConsolidation
-            modulo={8}
-            corModulo={getModuleVariant(8)}
+          
+
+<ModuleConsolidation
+            index={2}
+            variant={mv[8]}
             onComplete={() => handleModuleComplete("modulo-8")}
           />
 
-          <QuizInterativo
-            questions={quizM8}
-            modulo={8}
+                    <QuizInterativo
+            questoes={quizM8}
+            numero={8}
             onComplete={() => handleModuleComplete("modulo-8")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 8, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -3317,17 +3207,17 @@ he would authorize the overtime.
       <TabsContent value="modulo-9">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
-            modulo={9}
+            numero={9}
             titulo="English in Petrobras Operations"
-            icone={<LuShield className="w-8 h-8" />}
-            corModulo={getModuleVariant(9)}
+            variant={mv[9]}
             descricao="Tempos verbais em contextos reais: manuais, relatórios, comunicações Petrobras"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Documentos Técnicos Petrobras: Um Tempo para Cada Propósito"
-              descricao="Cada tipo de documento corporativo Petrobras tem um 'registro verbal preferido'"
+              index={1}
+              title="Documentos Técnicos Petrobras: Um Tempo para Cada Propósito"
+              description="Cada tipo de documento corporativo Petrobras tem um 'registro verbal preferido'"
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -3418,11 +3308,7 @@ he would authorize the overtime.
                         </p>
                       </div>
 
-                      <AlertBox
-                        tipo="info"
-                        titulo="Regra Prática: Manual = Sempre Simple Present (Ativo ou Passivo)"
-                        descricao="Se você está lendo ou escrevendo um procedimento Petrobras, QUALQUER verbo que não esteja em Simple Present é ERRO. Mesmo que haja uma data ou contexto específico, procedimentos mantêm Simple Present porque descrevem processos que são repetidos infinitas vezes."
-                      />
+                      <AlertBox tipo="info" titulo="Regra Prática: Manual = Sempre Simple Present (Ativo ou Passivo)"><p></p></AlertBox>
                     </div>
                   ),
                 },
@@ -3455,11 +3341,7 @@ he would authorize the overtime.
                         </p>
                       </div>
 
-                      <AlertBox
-                        tipo="danger"
-                        titulo="Erro Comum em Relatórios"
-                        descricao="Nunca misture tempos em um incident report. Se começou em Simple Past, mantenha Simple Past para eventos sequenciais. Use Past Continuous apenas para ações que estavam em andamento quando algo interrompeu. Usar Present Perfect ou Present Continuous em um incident report = erro absoluto."
-                      />
+                      <AlertBox tipo="danger" titulo="Erro Comum em Relatórios"><p></p></AlertBox>
                     </div>
                   ),
                 },
@@ -3620,17 +3502,18 @@ he would authorize the overtime.
             </div>
           </section>
 
-          <ModuleConsolidation
-            modulo={9}
-            corModulo={getModuleVariant(9)}
+          
+
+<ModuleConsolidation
+            index={2}
+            variant={mv[9]}
             onComplete={() => handleModuleComplete("modulo-9")}
           />
 
-          <QuizInterativo
-            questions={quizM9}
-            modulo={9}
+                    <QuizInterativo
+            questoes={quizM9}
+            numero={9}
             onComplete={() => handleModuleComplete("modulo-9")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 9, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -3639,17 +3522,17 @@ he would authorize the overtime.
       <TabsContent value="modulo-10">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
-            modulo={10}
+            numero={10}
             titulo="Simulado Mestre — Consolidação Final"
-            icone={<LuGraduationCap className="w-8 h-8" />}
-            corModulo={getModuleVariant(10)}
+            variant={mv[10]}
             descricao="Você dominaria os 7 tempos verbais: teste sua expertise com 8 questões de simulado CESGRANRIO"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Os 7 Tempos Verbais — Guia de Referência Mestre"
-              descricao="Resumo completo: estrutura, quando usar, exemplos, marcadores temporais"
+              index={1}
+              title="Os 7 Tempos Verbais — Guia de Referência Mestre"
+              description="Resumo completo: estrutura, quando usar, exemplos, marcadores temporais"
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -3728,11 +3611,7 @@ he would authorize the overtime.
                 </div>
               </div>
 
-              <AlertBox
-                tipo="success"
-                titulo="📊 Você Está Pronto!"
-                descricao="Você aprendeu todos os 7 tempos verbais e como identificá-los em contextos reais. Eles são a chave para 30-40% das questões de Inglês em testes CESGRANRIO. Teste seu conhecimento abaixo e seja um EXPERT EM VERB TENSES!"
-              />
+              <AlertBox tipo="success" titulo="📊 Você Está Pronto!"><p></p></AlertBox>
             </div>
 
             <ContentAccordion
@@ -3748,33 +3627,33 @@ he would authorize the overtime.
                       </p>
 
                       <TimelineItem
-                        step={1}
-                        title="Identifique o Marcador Temporal"
-                        description="Procure pela PALAVRA que mostra QUANDO a ação ocorre. Yesterday? Now? Since 2020? Tomorrow? O marcador te diz qual tempo usar. Este passo sozinho elimina 70% da confusão."
+              passo={1}
+              titulo="Identifique o Marcador Temporal"
+              descricao="Procure pela PALAVRA que mostra QUANDO a ação ocorre. Yesterday? Now? Since 2020? Tomorrow? O marcador te diz qual tempo usar. Este passo sozinho elimina 70% da confusão."
                       />
 
                       <TimelineItem
-                        step={2}
-                        title="Identifique o Verbo — É State Verb?"
-                        description="Se for know, understand, want, like, believe, have, own, possess, prefer, seem, appear: NUNCA -ing. Ponto final. Isto elimina várias opções erradas."
+              passo={2}
+              titulo="Identifique o Verbo — É State Verb?"
+              descricao="Se for know, understand, want, like, believe, have, own, possess, prefer, seem, appear: NUNCA -ing. Ponto final. Isto elimina várias opções erradas."
                       />
 
                       <TimelineItem
-                        step={3}
-                        title="Procure pelo Sujeito — Singular ou Plural?"
-                        description="He/She/It = adiciona -s em Simple Present. Plural (they, we, you) = não adiciona. 'The system prevents' (singular). 'Systems prevent' (plural)."
+              passo={3}
+              titulo="Procure pelo Sujeito — Singular ou Plural?"
+              descricao="He/She/It = adiciona -s em Simple Present. Plural (they, we, you) = não adiciona. 'The system prevents' (singular). 'Systems prevent' (plural)."
                       />
 
                       <TimelineItem
-                        step={4}
-                        title="Procure por Indicadores de Passiva ou Ativa"
-                        description="Viu BE + Past Participle? É passiva. Viu sujeito AGINDO? É ativa. Isto muda completamente qual tempo usar."
+              passo={4}
+              titulo="Procure por Indicadores de Passiva ou Ativa"
+              descricao="Viu BE + Past Participle? É passiva. Viu sujeito AGINDO? É ativa. Isto muda completamente qual tempo usar."
                       />
 
                       <TimelineItem
-                        step={5}
-                        title="Teste Cada Opção — Qual Soa Mais Natural?"
-                        description="Um falante nativo NUNCA diria certas coisas. Se você lê uma opção e sente que é 'errado', confie em seu instinto — você provavelmente está certo."
+              passo={5}
+              titulo="Teste Cada Opção — Qual Soa Mais Natural?"
+              descricao="Um falante nativo NUNCA diria certas coisas. Se você lê uma opção e sente que é 'errado', confie em seu instinto — você provavelmente está certo."
                       />
                     </div>
                   ),
@@ -3787,56 +3666,36 @@ he would authorize the overtime.
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadilha #1: 'Since' vs 'For' com Present Perfect"
-                        descricao="SINCE = ponto de início (2020, last year). FOR = duração (5 years, 2 hours). 'I have worked SINCE 2020' CORRETO. 'I have worked FOR 5 years' CORRETO. 'I have worked SINCE 5 years' ERRADO. 'I have worked FOR 2020' ERRADO."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "I have worked since last 5 years. We have been here for 2020." }}
-                          lado2={{ label: "✅ CORRETO", content: "I have worked since 2020. We have been here for 5 years." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "I have worked since last 5 years. We have been here for 2020.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "I have worked since 2020. We have been here for 5 years.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadilha #2: Concordância em Third Person Singular"
-                        descricao="'The pressure rise' ERRADO. 'The pressure RISES' CORRETO. Esta é a pegadinha #1 em CESGRANRIO porque mesmo falantes avançados erram. 'Does the system work?' CORRETO. 'Do the system work?' ERRADO."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "He work here. She monitor the system. It require approval. Does she go?" }}
-                          lado2={{ label: "✅ CORRETO", content: "He works here. She monitors the system. It requires approval. Does she go?" }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "He work here. She monitor the system. It require approval. Does she go?", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "He works here. She monitors the system. It requires approval. Does she go?", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadilha #3: State Verbs + Contexto Temporal"
-                        descricao="'Actually, I am liking this job' ERRADO. 'Actually' não transforma 'like' (state verb) em action verb. 'I like this job' CORRETO. 'Recently, I am understanding the problem' ERRADO. 'I have recently understood the problem' CORRETO (Perfect, não Continuous)."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "Now, I am knowing the answer. Recently, I am understanding the concept." }}
-                          lado2={{ label: "✅ CORRETO", content: "Now, I know the answer. Recently, I have understood the concept." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "Now, I am knowing the answer. Recently, I am understanding the concept.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "Now, I know the answer. Recently, I have understood the concept.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadilha #4: Passiva com Verbo Modal"
-                        descricao="MUST + Passive = MUST + BE + Past Participle. 'The procedures must be followed' CORRETO. 'The procedures must be following' ERRADO. 'The system should be monitored' CORRETO. 'The system should monitor' ERRADO (falta o BE)."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ ERRADO", content: "The protocol must follow. All employees should respect. Can the equipment repair?" }}
-                          lado2={{ label: "✅ CORRETO", content: "The protocol must be followed. All employees should respect the rules. Can the equipment be repaired?" }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "ERRADO", content: "The protocol must follow. All employees should respect. Can the equipment repair?", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "The protocol must be followed. All employees should respect the rules. Can the equipment be repaired?", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
                         titulo="Pegadilha #5: Future Perfect vs Future Simple"
-                        descricao="'By tomorrow, I finish' ERRADO. 'By tomorrow, I will have finished' CORRETO (Future Perfect = ação terminada até futuro). 'Tomorrow, I will finish' CORRETO (Future Simple = ação futura, sem deadline específico)."
                       >
-                        <ComparisonSide
-                          lado1={{ label: "BY uma data (Future Perfect)", content: "By the deadline, we will have completed the report." }}
-                          lado2={{ label: "Sem deadline específico (Future Simple)", content: "We will complete the report soon." }}
-                        />
+                        <Comparison title="Exemplos" left={{ title: "BY uma data (Future Perfect)", content: "By the deadline, we will have completed the report.", description: "", variant: "danger" }} right={{ title: "Sem deadline específico (Future Simple)", content: "We will complete the report soon.", description: "", variant: "success" }} />
                       </AlertBox>
                     </div>
                   ),
@@ -3906,17 +3765,18 @@ he would authorize the overtime.
             </div>
           </section>
 
-          <ModuleConsolidation
-            modulo={10}
-            corModulo={getModuleVariant(10)}
+          
+
+<ModuleConsolidation
+            index={2}
+            variant={mv[10]}
             onComplete={() => handleModuleComplete("modulo-10")}
           />
 
-          <QuizInterativo
-            questions={quizFinal}
-            modulo={10}
+                    <QuizInterativo
+            questoes={quizFinal}
+            numero={10}
             onComplete={() => handleModuleComplete("modulo-10")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 10, tipo: "quiz" })}
           />
         </div>
       </TabsContent>

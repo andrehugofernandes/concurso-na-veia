@@ -125,6 +125,15 @@ export default function AulaGestaoProjetos({
     return completedModules.has(MODULE_DEFS[index - 1].id);
   };
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -156,7 +165,7 @@ export default function AulaGestaoProjetos({
             numero={1} 
             titulo="Conceitos e Fundamentos" 
             descricao="O que define um projeto? Temporário, exclusivo e progressivamente elaborado." 
-            gradiente="bg-gradient-to-br from-blue-700 to-sky-800" 
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400" 
           />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -164,7 +173,7 @@ export default function AulaGestaoProjetos({
               index={1} 
               title="A Essência do Projeto" 
               description="Definição PMBOK, características e a Tríplice Restrição." 
-              variant={getModuleVariant(1)} 
+              variant={mv[1]} 
             />
             
             <ContentAccordion slides={[
@@ -241,16 +250,20 @@ export default function AulaGestaoProjetos({
 
 
 
+
+
+
+
 <ModuleConsolidation 
-            index={1} 
-            variant={getModuleVariant(1)} 
+            index={2} 
+            variant={mv[1]} 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Fundamentação de Projetos", 
               duration: "18:45" 
             }} 
             resumoVisual={{ 
-              moduloNome: "Conceitos", 
+              moduloNome: "Módulo 1", 
               tituloAula: "Gestão de Projetos", 
               materia: "Administração", 
               images: [
@@ -277,9 +290,9 @@ export default function AulaGestaoProjetos({
 
                       <QuizInterativo 
               questoes={quizM1} 
-              titulo="Fixação - Conceitos Iniciais" 
-              numero={1} 
-              variant={getModuleVariant(1)} 
+              titulo="QUIZ: Conceitos de Projetos" 
+              numero={3} 
+              variant={mv[1]} 
               icone="🧩" 
               onComplete={(score) => handleModuleComplete("modulo-1", score)} 
             />
@@ -294,15 +307,15 @@ export default function AulaGestaoProjetos({
             numero={2} 
             titulo="Áreas de Conhecimento" 
             descricao="As 10 dimensões que um gerente de projetos deve dominar segundo o PMBOK 6." 
-            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800" 
+            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400" 
           />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={2} 
+              index={1} 
               title="A Visão 360 do Projeto" 
               description="Do Escopo às Partes Interessadas." 
-              variant={getModuleVariant(2)} 
+              variant={mv[2]} 
             />
             
             <ContentAccordion slides={[
@@ -363,16 +376,20 @@ export default function AulaGestaoProjetos({
 
 
 
+
+
+
+
 <ModuleConsolidation 
             index={2} 
-            variant={getModuleVariant(2)} 
+            variant={mv[2]} 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Navegando pelas 10 Áreas", 
               duration: "15:00" 
             }} 
             resumoVisual={{ 
-              moduloNome: "Áreas", 
+              moduloNome: "Módulo 2", 
               tituloAula: "Gestão de Projetos", 
               materia: "Administração", 
               images: [
@@ -399,7 +416,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM2} 
               titulo="Fixação - Áreas PMBOK" 
               numero={2} 
-              variant={getModuleVariant(2)} 
+              variant={mv[2]} 
               icone="🎯" 
               onComplete={(score) => handleModuleComplete("modulo-2", score)} 
             />
@@ -414,15 +431,15 @@ export default function AulaGestaoProjetos({
             numero={3} 
             titulo="Grupos de Processos" 
             descricao="O ciclo cronológico e lógico: Iniciação, Planejamento, Execução, Monitoramento e Encerramento." 
-            gradiente="bg-gradient-to-br from-amber-600 to-orange-700" 
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400" 
           />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={3} 
+              index={1} 
               title="O Fluxo da Vida de um Projeto" 
               description="Esqueça as fases, foque nos grupos de processos." 
-              variant={getModuleVariant(3)} 
+              variant={mv[3]} 
             />
             
             <ContentAccordion slides={[
@@ -489,16 +506,20 @@ export default function AulaGestaoProjetos({
 
 
 
+
+
+
+
 <ModuleConsolidation 
-            index={3} 
-            variant={getModuleVariant(3)} 
+            index={2} 
+            variant={mv[3]} 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "A Jornada do Projeto", 
               duration: "22:00" 
             }} 
             resumoVisual={{ 
-              moduloNome: "Grupos", 
+              moduloNome: "Módulo 3", 
               tituloAula: "Gestão de Projetos", 
               materia: "Administração", 
               images: [
@@ -521,9 +542,9 @@ export default function AulaGestaoProjetos({
 
                       <QuizInterativo 
               questoes={quizM3} 
-              titulo="Fixação - Fluxo de Projeto" 
+              titulo="QUIZ: Grupos de Processos" 
               numero={3} 
-              variant={getModuleVariant(3)} 
+              variant={mv[3]} 
               icone="⚙️" 
               onComplete={(score) => handleModuleComplete("modulo-3", score)} 
             />
@@ -538,15 +559,15 @@ export default function AulaGestaoProjetos({
             numero={4} 
             titulo="Escopo e Tempo" 
             descricao="Definindo o que será feito e quando: EAP, Cronograma e Caminho Crítico." 
-            gradiente="bg-gradient-to-br from-rose-600 to-pink-800" 
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400" 
           />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={4} 
+              index={1} 
               title="Planejamento de Entrega" 
               description="A estrutura da EAP e o domínio do cronograma." 
-              variant={getModuleVariant(4)} 
+              variant={mv[4]} 
             />
             
             <ContentAccordion slides={[
@@ -610,16 +631,20 @@ export default function AulaGestaoProjetos({
 
 
 
+
+
+
+
 <ModuleConsolidation 
-            index={4} 
-            variant={getModuleVariant(4)} 
+            index={2} 
+            variant={mv[4]} 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Técnicas de Escopo e Tempo", 
               duration: "25:10" 
             }} 
             resumoVisual={{ 
-              moduloNome: "Escopo/Tempo", 
+              moduloNome: "Módulo 4", 
               tituloAula: "Gestão de Projetos", 
               materia: "Administração", 
               images: [
@@ -646,7 +671,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM4} 
               titulo="Fixação - Escopo e Tempo" 
               numero={4} 
-              variant={getModuleVariant(4)} 
+              variant={mv[4]} 
               icone="📅" 
               onComplete={(score) => handleModuleComplete("modulo-4", score)} 
             />
@@ -661,15 +686,15 @@ export default function AulaGestaoProjetos({
             numero={5} 
             titulo="Custos e Qualidade" 
             descricao="Gestão do valor agregado (EVA) e padrões de excelência." 
-            gradiente="bg-gradient-to-br from-violet-600 to-purple-800" 
+            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400" 
           />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={5} 
+              index={1} 
               title="O Valor do Dinheiro e da Entrega" 
               description="EVA, CPI, SPI e métricas de qualidade." 
-              variant={getModuleVariant(5)} 
+              variant={mv[5]} 
             />
             
             <ContentAccordion slides={[
@@ -738,16 +763,20 @@ export default function AulaGestaoProjetos({
 
 
 
+
+
+
+
 <ModuleConsolidation 
-            index={5} 
-            variant={getModuleVariant(5)} 
+            index={2} 
+            variant={mv[5]} 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Dominando o EVA", 
               duration: "30:00" 
             }} 
             resumoVisual={{ 
-              moduloNome: "Custos/Qualidade", 
+              moduloNome: "Módulo 5", 
               tituloAula: "Gestão de Projetos", 
               materia: "Administração", 
               images: [
@@ -770,9 +799,9 @@ export default function AulaGestaoProjetos({
 
                       <QuizInterativo 
               questoes={quizM5} 
-              titulo="Fixação - Custos e Metrificação" 
-              numero={5} 
-              variant={getModuleVariant(5)} 
+              titulo="QUIZ: Custos e Qualidade" 
+              numero={3} 
+              variant={mv[5]} 
               icone="💰" 
               onComplete={(score) => handleModuleComplete("modulo-5", score)} 
             />
@@ -792,10 +821,10 @@ export default function AulaGestaoProjetos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={6} 
+              index={1} 
               title="O Gerenciamento da Incerteza" 
               description="Identificação, análise e resposta aos riscos." 
-              variant={getModuleVariant(6)} 
+              variant={mv[6]} 
             />
             
             <ContentAccordion slides={[
@@ -855,16 +884,20 @@ export default function AulaGestaoProjetos({
 
 
 
+
+
+
+
 <ModuleConsolidation 
-            index={6} 
-            variant={getModuleVariant(6)} 
+            index={2} 
+            variant={mv[6]} 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Gestão de Riscos na Prática", 
               duration: "20:45" 
             }} 
             resumoVisual={{ 
-              moduloNome: "Riscos", 
+              moduloNome: "Módulo 6", 
               tituloAula: "Gestão de Projetos", 
               materia: "Administração", 
               images: [
@@ -891,7 +924,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM6} 
               titulo="Fixação - Gestão de Riscos" 
               numero={6} 
-              variant={getModuleVariant(6)} 
+              variant={mv[6]} 
               icone="⚠️" 
               onComplete={(score) => handleModuleComplete("modulo-6", score)} 
             />

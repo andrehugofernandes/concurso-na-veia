@@ -755,7 +755,7 @@ export default function AulaSintaxe({
           numero={1}
           titulo="O Esqueleto da Oração"
           descricao="Dominando o Sujeito e o Predicado sob a ótica da Cesgranrio. O ponto de partida de toda análise sintática."
-          gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
+          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
         <div className="space-y-[50px]">
           {/* 1. Fundamentação Científica */}
@@ -1591,7 +1591,7 @@ export default function AulaSintaxe({
           {/* 5. Quiz de Fixação */}
           <QuizInterativo
             numero={5}
-            titulo="Sujeito e Predicado"
+            titulo="QUIZ: Módulo Nº 1"
             icone="🧠"
             questoes={getRandomQuestions(QUIZ_ESSENCIAIS_POOL, 8)}
             variant="indigo"
@@ -1606,7 +1606,7 @@ export default function AulaSintaxe({
           numero={2}
           titulo="O Recheio da Oração"
           descricao="Complementos verbais, nominais e o agente da passiva. Entenda como os verbos e nomes exigem seus parceiros de sentido."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
         <div className="space-y-[50px]">
           {/* 1. Objetos Verbais */}
@@ -1993,7 +1993,7 @@ export default function AulaSintaxe({
           numero={3}
           titulo="O Acabamento da Oração"
           descricao="Adjuntos adverbiais, adnominais, aposto e vocativo. Termos que trazem circunstância e precisão ao texto."
-          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
+          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
         <div className="space-y-[50px]">
           {/* 1. Adjunto Adverbial */}
@@ -2440,7 +2440,7 @@ export default function AulaSintaxe({
           numero={4}
           titulo="Laboratório de Análise Sintática"
           descricao="Desafios reais da Cesgranrio. Aplicação prática de tudo o que vimos sobre a estrutura da oração."
-          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
@@ -2807,7 +2807,7 @@ export default function AulaSintaxe({
           {/* 4. Quiz Módulo 4 */}
           <QuizInterativo
             numero={4}
-            titulo="Laboratório Final"
+            titulo="QUIZ: Módulo Nº 4"
             icone="🔬"
             questoes={getRandomQuestions(QUIZ_LABORATORIO_POOL, 5)}
             variant="amber"
@@ -2821,7 +2821,7 @@ export default function AulaSintaxe({
           numero={5}
           titulo="Síntese Estratégica"
           descricao="Resumo visual, mapas mentais e ferramentas de fixação rápida para não esquecer mais."
-          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">

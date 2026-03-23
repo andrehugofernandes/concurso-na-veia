@@ -817,7 +817,7 @@ export default function AulaOrtografia({
           numero={1}
           titulo="Encontros Vocálicos e Sílabas"
           descricao="A base da fonética: entenda ditongos, tritongos, hiatos e como separar as sílabas corretamente."
-          gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
+          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1009,7 +1009,7 @@ Ditongo é junto, hiato é separação!
         <section className="mt-12">
           <QuizInterativo
             questoes={qMod1}
-            titulo="Encontros Vocálicos"
+            titulo="QUIZ: Encontros Vocálicos e Sílabas"
             icone="🎯"
             numero={3}
             variant="indigo"
@@ -1029,7 +1029,7 @@ Ditongo é junto, hiato é separação!
           numero={2}
           titulo="Fundamentos da Acentuação"
           descricao="As 4 regras de ouro para dominar oxítonas, paroxítonas, proparoxítonas e monossílabos."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1324,9 +1324,9 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <section className="mt-12">
           <QuizInterativo
             questoes={qMod2}
-            titulo="Fundamentos da Acentuação"
+            titulo="QUIZ: Fundamentos da Acentuação"
             icone="⚡"
-            numero={4}
+            numero={3}
             variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
@@ -1343,7 +1343,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           numero={3}
           titulo="O Novo Acordo"
           descricao="Aprenda o que caiu, o que mudou e o que a Cesgranrio mais cobra sobre a Nova Ortografia."
-          gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
+          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1589,7 +1589,7 @@ Mas na prova a banca te espera!
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod3}
-            titulo="Quiz — O Novo Acordo"
+            titulo="QUIZ: O Novo Acordo"
             icone="✅"
             variant="violet"
             numero={4}
@@ -1609,7 +1609,7 @@ Mas na prova a banca te espera!
           numero={4}
           titulo="O Temido Uso do Hífen"
           descricao="Compreenda a lógica magnética dos prefixos para nunca mais errar uso de hífen."
-          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1916,7 +1916,7 @@ Iguais se repelem, diferentes se amam
           numero={5}
           titulo="Problemas Frequentes"
           descricao="Os maiores tropeços da língua testados exaustivamente em provas."
-          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -2137,7 +2137,7 @@ Por que separado? Porque eu estudei!
         <section className="mt-12">
           <QuizInterativo
             questoes={qMod5}
-            titulo="Expressões Problemáticas"
+            titulo="QUIZ: Expressões Problemáticas"
             icone="🧐"
             variant="rose"
             numero={4}
@@ -2157,7 +2157,7 @@ Por que separado? Porque eu estudei!
           numero={6}
           titulo="Laboratório & Revisão Integrada"
           descricao="Treinamento intensivo nível Cesgranrio para a prova da Petrobras."
-          gradiente="bg-gradient-to-br from-cyan-600 via-teal-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -2207,7 +2207,7 @@ Por que separado? Porque eu estudei!
         <section className="mt-12">
           <QuizInterativo
             questoes={qMod6}
-            titulo="A Vaga EH Minha"
+            titulo="QUIZ: Laboratório & Revisão"
             icone="🏆"
             numero={2}
             variant="cyan"

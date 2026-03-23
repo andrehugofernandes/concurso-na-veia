@@ -585,7 +585,7 @@ export default function AulaEquacoes1Grau({
                   <p><strong>QUANTIDADES:</strong> Um número=x | Dobro=2x | Metade=x/2 | Triplo=3x | Quádruplo=4x | Sucessor=x+1 | Antecessor=x-1</p>
                   <p><strong>OPERAÇÕES:</strong> Soma=+ | Diferença=- | Produto=× | Quociente=÷ | Aumentado de Y=(+Y) | Diminuído de Y=(-Y)</p>
                   <p><strong>PERCENTUAIS:</strong> Aumento de 20%=(×1,20) | Diminuição de 10%=(×0,90) | Desconto de 5%=(×0,95)</p>
-                  <p><strong>COMPARAÇÕES:</strong> É igual=(=) | É maior que=(>) | É menor que=(<) | Não é=(≠)</p>
+                  <p><strong>COMPARAÇÕES:</strong> É igual=(=) | É maior que=({'>'}) | É menor que=({'<'}) | Não é=(≠)</p>
                   <p><strong>REGRA CRÍTICA:</strong> Leia com atenção os parênteses implícitos. "Dobro de (número menos 5)" ≠ "(Dobro de número) menos 5"</p>
                 </div>
               </div>
@@ -1590,7 +1590,7 @@ export default function AulaEquacoes1Grau({
               <p>
                 Até agora, você resolveu <strong>equações</strong>: expressões com um sinal de igualdade (=).
                 Agora chegou o momento de lidar com <strong>inequações</strong>: expressões com sinais de desigualdade
-                ({">"}), (<{"<"}), ({"≥"}), ({"≤"}). A grande diferença é que a solução não é um número único,
+                ({'>'}), ({'<'}), ({"≥"}), ({"≤"}). A grande diferença é que a solução não é um número único,
                 mas um <strong>intervalo infinito</strong> de números. Por exemplo: "todos os números maiores que 5".
               </p>
               <p>

@@ -126,7 +126,7 @@ export default function AulaSistemasLineares({
           numero={1}
           titulo="Conceito e Classificação de Sistemas Lineares"
           descricao="Entenda o que é um sistema linear, como classificá-lo em SPD, SI ou SPI, e por que isso é essencial nos processos da Petrobras."
-          gradiente="bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -276,6 +276,10 @@ export default function AulaSistemasLineares({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={1}
             variant="indigo"
@@ -285,7 +289,7 @@ export default function AulaSistemasLineares({
               duration: "12:30"
             }}
             resumoVisual={{
-              moduloNome: "Conceito e Classificação",
+              moduloNome: "Módulo 1",
               tituloAula: "Sistemas Lineares",
               materia: "Matemática",
               images: [
@@ -316,9 +320,9 @@ export default function AulaSistemasLineares({
 
                       <QuizInterativo
               questoes={quizM1}
-              titulo="Conceito e Classificação de Sistemas Lineares"
+              titulo="QUIZ: Módulo Nº 1"
               icone="🧠"
-              numero={1}
+              numero={3}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -334,7 +338,7 @@ export default function AulaSistemasLineares({
           numero={2}
           titulo="Método de Substituição"
           descricao="Isole, substitua e resolva: o método mais intuitivo para sistemas 2×2, ideal quando um coeficiente é 1 ou −1."
-          gradiente="bg-gradient-to-br from-emerald-600 via-green-600 to-teal-700"
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -465,6 +469,10 @@ export default function AulaSistemasLineares({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -474,7 +482,7 @@ export default function AulaSistemasLineares({
               duration: "11:15"
             }}
             resumoVisual={{
-              moduloNome: "Método de Substituição",
+              moduloNome: "Módulo 2",
               tituloAula: "Sistemas Lineares",
               materia: "Matemática",
               images: [
@@ -524,7 +532,7 @@ export default function AulaSistemasLineares({
           numero={3}
           titulo="Método da Adição (Eliminação)"
           descricao="Elimine variáveis somando equações multiplicadas por escalares adequados — o método mais poderoso para sistemas com coeficientes complexos."
-          gradiente="bg-gradient-to-br from-amber-600 via-orange-600 to-red-700"
+          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -636,6 +644,10 @@ export default function AulaSistemasLineares({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={3}
             variant="cyan"
@@ -645,7 +657,7 @@ export default function AulaSistemasLineares({
               duration: "13:45"
             }}
             resumoVisual={{
-              moduloNome: "Método da Adição",
+              moduloNome: "Módulo 3",
               tituloAula: "Sistemas Lineares",
               materia: "Matemática",
               images: [
@@ -678,9 +690,9 @@ export default function AulaSistemasLineares({
 
                       <QuizInterativo
               questoes={quizM3}
-              titulo="Método da Adição (Eliminação)"
+              titulo="QUIZ: Módulo Nº 3"
               icone="➕"
-              numero={3}
+              numero={4}
               variant="amber"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -696,7 +708,7 @@ export default function AulaSistemasLineares({
           numero={4}
           titulo="Regra de Cramer e Determinantes"
           descricao="Use determinantes para resolver sistemas de forma sistemática e elegante — o método favorito da CESGRANRIO para sistemas com coeficientes não unitários."
-          gradiente="bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -818,6 +830,10 @@ export default function AulaSistemasLineares({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={4}
             variant="blue"
@@ -827,7 +843,7 @@ export default function AulaSistemasLineares({
               duration: "14:20"
             }}
             resumoVisual={{
-              moduloNome: "Regra de Cramer",
+              moduloNome: "Módulo 4",
               tituloAula: "Sistemas Lineares",
               materia: "Matemática",
               images: [
@@ -878,7 +894,7 @@ export default function AulaSistemasLineares({
           numero={5}
           titulo="Sistemas Impossíveis e Indeterminados"
           descricao="Domine a identificação de SI e SPI — tópico que a CESGRANRIO explora em questões de múltipla interpretação para testar a profundidade do conhecimento."
-          gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-red-700"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -980,6 +996,10 @@ export default function AulaSistemasLineares({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="amber"
@@ -989,7 +1009,7 @@ export default function AulaSistemasLineares({
               duration: "12:00"
             }}
             resumoVisual={{
-              moduloNome: "Impossível e Indeterminado",
+              moduloNome: "Módulo 5",
               tituloAula: "Sistemas Lineares",
               materia: "Matemática",
               images: [
@@ -1021,9 +1041,9 @@ export default function AulaSistemasLineares({
 
                       <QuizInterativo
               questoes={quizM5}
-              titulo="Sistemas Impossíveis e Indeterminados"
+              titulo="QUIZ: Módulo Nº 5"
               icone="⚠️"
-              numero={5}
+              numero={6}
               variant="rose"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1039,7 +1059,7 @@ export default function AulaSistemasLineares({
           numero={6}
           titulo="Sistemas com 3 Variáveis"
           descricao="Amplie o domínio para 3 incógnitas: balanços de massa em torres de destilação, fluxos em redes de tubulação e muito mais."
-          gradiente="bg-gradient-to-br from-cyan-600 via-teal-600 to-emerald-700"
+          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1133,6 +1153,10 @@ export default function AulaSistemasLineares({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={6}
             variant="rose"
@@ -1142,7 +1166,7 @@ export default function AulaSistemasLineares({
               duration: "15:30"
             }}
             resumoVisual={{
-              moduloNome: "Três Variáveis",
+              moduloNome: "Módulo 6",
               tituloAula: "Sistemas Lineares",
               materia: "Matemática",
               images: [
@@ -1193,7 +1217,7 @@ export default function AulaSistemasLineares({
           numero={7}
           titulo="Interpretação Geométrica de Sistemas"
           descricao="Visualize sistemas lineares como interseções de retas no plano — uma perspectiva que torna intuitiva a classificação e resolução de qualquer sistema."
-          gradiente="bg-gradient-to-br from-indigo-600 via-blue-700 to-cyan-600"
+          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1302,6 +1326,10 @@ export default function AulaSistemasLineares({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={7}
             variant="indigo"
@@ -1311,7 +1339,7 @@ export default function AulaSistemasLineares({
               duration: "11:50"
             }}
             resumoVisual={{
-              moduloNome: "Interpretação Geométrica",
+              moduloNome: "Módulo 7",
               tituloAula: "Sistemas Lineares",
               materia: "Matemática",
               images: [
@@ -1343,9 +1371,9 @@ export default function AulaSistemasLineares({
 
                       <QuizInterativo
               questoes={quizM7}
-              titulo="Interpretação Geométrica"
+              titulo="QUIZ: Módulo Nº 7"
               icone="📈"
-              numero={7}
+              numero={8}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1361,7 +1389,7 @@ export default function AulaSistemasLineares({
           numero={8}
           titulo="Sistemas de Inequações e Programação Linear"
           descricao="Quando as restrições são 'no máximo' e 'no mínimo': domine a Programação Linear, base das decisões de otimização na indústria do petróleo."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1462,6 +1490,10 @@ export default function AulaSistemasLineares({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={8}
             variant="emerald"
@@ -1471,7 +1503,7 @@ export default function AulaSistemasLineares({
               duration: "13:15"
             }}
             resumoVisual={{
-              moduloNome: "Sistemas de Inequações",
+              moduloNome: "Módulo 8",
               tituloAula: "Sistemas Lineares",
               materia: "Matemática",
               images: [
@@ -1522,7 +1554,7 @@ export default function AulaSistemasLineares({
           numero={9}
           titulo="Aplicações Petrobras — Misturas e Balanços"
           descricao="Sistemas lineares em ação real: blending de derivados, balanços energéticos, distribuição de vazão e problemas de proporcionalidade industrial."
-          gradiente="bg-gradient-to-br from-amber-600 via-yellow-600 to-orange-700"
+          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1621,6 +1653,10 @@ export default function AulaSistemasLineares({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={9}
             variant="cyan"
@@ -1630,7 +1666,7 @@ export default function AulaSistemasLineares({
               duration: "14:40"
             }}
             resumoVisual={{
-              moduloNome: "Aplicações Petrobras",
+              moduloNome: "Módulo 9",
               tituloAula: "Sistemas Lineares",
               materia: "Matemática",
               images: [
@@ -1663,9 +1699,9 @@ export default function AulaSistemasLineares({
 
                       <QuizInterativo
               questoes={quizM9}
-              titulo="Aplicações Petrobras"
+              titulo="QUIZ: Módulo Nº 9"
               icone="🛢️"
-              numero={9}
+              numero={10}
               variant="amber"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1681,7 +1717,7 @@ export default function AulaSistemasLineares({
           numero={10}
           titulo="Simulado Final CESGRANRIO"
           descricao="Questões no padrão exato da banca: sistemas lineares, Cramer, classificação, inequações e aplicações industriais — tudo integrado em um simulado definitivo."
-          gradiente="bg-gradient-to-br from-slate-700 via-blue-800 to-indigo-900"
+          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1797,6 +1833,10 @@ export default function AulaSistemasLineares({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={10}
             variant="blue"
@@ -1806,7 +1846,7 @@ export default function AulaSistemasLineares({
               duration: "16:00"
             }}
             resumoVisual={{
-              moduloNome: "Simulado Mestre",
+              moduloNome: "Módulo 10",
               tituloAula: "Sistemas Lineares",
               materia: "Matemática",
               images: [

@@ -120,6 +120,15 @@ export default function AulaPlanejamentoEstrategico({
     return completedModules.has(MODULE_DEFS[index - 1].id);
   };
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -151,7 +160,7 @@ export default function AulaPlanejamentoEstrategico({
             numero={1}
             titulo="Conceitos Fundamentais de Planejamento Estratégico"
             descricao="Missão, Visão, Valores: a tríade que norteia toda organização."
-            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -159,7 +168,7 @@ export default function AulaPlanejamentoEstrategico({
               index={1}
               title="A Base do Planejamento"
               description="Entenda missão, visão e valores antes de qualquer estratégia."
-              variant={getModuleVariant(1)}
+              variant={mv[1]}
             />
             <ContentAccordion
               slides={[
@@ -385,12 +394,16 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
+
+
+
+
 <ModuleConsolidation
-            index={1}
-            variant={getModuleVariant(1)}
+            index={2}
+            variant={mv[1]}
             video={{ videoId: "iV7hKYv0fDc", title: "Planejamento Estratégico: Fundamentos", duration: "18:00" }}
             resumoVisual={{
-              moduloNome: "Conceitos de PE",
+              moduloNome: "Módulo 1",
               tituloAula: "Planejamento Estratégico",
               materia: "Administração",
               images: [
@@ -414,7 +427,7 @@ export default function AulaPlanejamentoEstrategico({
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Conceitos de PE", artista: "Prof. Administração" }}
           />
 
-                      <QuizInterativo questoes={quizM1} titulo="Fixação - Conceitos de PE" numero={1} variant={getModuleVariant(1)} icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
+                      <QuizInterativo questoes={quizM1} titulo="QUIZ: Conceitos Fundamentais" numero={3} variant={mv[1]} icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
           </section>
         </div>
       </TabsContent>
@@ -422,9 +435,9 @@ export default function AulaPlanejamentoEstrategico({
       {/* ═══ MÓDULO 2: ANÁLISE SWOT ═══ */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={2} titulo="Análise SWOT" descricao="A ferramenta mais cobrada em provas: Forças, Fraquezas, Oportunidades e Ameaças." gradiente="bg-gradient-to-br from-emerald-600 to-teal-800" />
+          <ModuleBanner numero={2} titulo="Análise SWOT" descricao="A ferramenta mais cobrada em provas: Forças, Fraquezas, Oportunidades e Ameaças." gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={2} title="Diagnóstico Estratégico" description="Ambiente interno e externo sob a lupa da SWOT." variant={getModuleVariant(2)} />
+            <ModuleSectionHeader index={1} title="Diagnóstico Estratégico" description="Ambiente interno e externo sob a lupa da SWOT." variant={mv[2]} />
             <ContentAccordion slides={[
                 { 
                   titulo: "Conceituação - A Matriz SWOT (FOFA)", 
@@ -565,9 +578,13 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={2} variant={getModuleVariant(2)} video={{ videoId: "iV7hKYv0fDc", title: "SWOT Completo", duration: "15:00" }} resumoVisual={{ moduloNome: "Análise SWOT", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "Quadrantes SWOT", type: "Conceito", placeholderColor: "bg-emerald-500/20" }, { title: "Interno vs Externo", type: "Classificação", placeholderColor: "bg-teal-500/20" }, { title: "Cruzamento TOWS", type: "Estratégia", placeholderColor: "bg-green-500/20" }] }} maceteVisual={{ title: "SWOT: S e W = INTERNO, O e T = EXTERNO", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Força e Fraqueza você controla. Oportunidade e Ameaça você enfrenta."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "SWOT Descomplicado", artista: "Prof. Administração" }} />
 
-                      <QuizInterativo questoes={quizM2} titulo="Fixação - SWOT" numero={2} variant={getModuleVariant(2)} icone="🎯" onComplete={(score) => handleModuleComplete("modulo-2", score)} />
+
+
+
+<ModuleConsolidation index={2} variant={mv[2]} video={{ videoId: "iV7hKYv0fDc", title: "SWOT Completo", duration: "15:00" }} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "Quadrantes SWOT", type: "Conceito", placeholderColor: "bg-emerald-500/20" }, { title: "Interno vs Externo", type: "Classificação", placeholderColor: "bg-teal-500/20" }, { title: "Cruzamento TOWS", type: "Estratégia", placeholderColor: "bg-green-500/20" }] }} maceteVisual={{ title: "SWOT: S e W = INTERNO, O e T = EXTERNO", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Força e Fraqueza você controla. Oportunidade e Ameaça você enfrenta."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "SWOT Descomplicado", artista: "Prof. Administração" }} />
+
+                      <QuizInterativo questoes={quizM2} titulo="QUIZ: Análise SWOT" numero={3} variant={mv[2]} icone="🎯" onComplete={(score) => handleModuleComplete("modulo-2", score)} />
           </section>
         </div>
       </TabsContent>
@@ -575,9 +592,9 @@ export default function AulaPlanejamentoEstrategico({
       {/* ═══ MÓDULO 3: BSC ═══ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={3} titulo="Balanced Scorecard (BSC)" descricao="As 4 perspectivas de Kaplan e Norton para traduzir estratégia em ação." gradiente="bg-gradient-to-br from-amber-600 to-orange-700" />
+          <ModuleBanner numero={3} titulo="Balanced Scorecard (BSC)" descricao="As 4 perspectivas de Kaplan e Norton para traduzir estratégia em ação." gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={3} title="As 4 Perspectivas" description="Financeira, Clientes, Processos Internos, Aprendizado." variant={getModuleVariant(3)} />
+            <ModuleSectionHeader index={1} title="As 4 Perspectivas" description="Financeira, Clientes, Processos Internos, Aprendizado." variant={mv[3]} />
             <ContentAccordion slides={[
               { 
                 titulo: "Conceituação - O que é BSC (Balanced Scorecard)?", 
@@ -685,9 +702,13 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={3} variant={getModuleVariant(3)} video={{ videoId: "iV7hKYv0fDc", title: "BSC Explicado", duration: "16:00" }} resumoVisual={{ moduloNome: "Balanced Scorecard", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "4 Perspectivas BSC", type: "Conceito", placeholderColor: "bg-amber-500/20" }, { title: "Mapa Estratégico", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Causa e Efeito", type: "Relação", placeholderColor: "bg-yellow-500/20" }] }} maceteVisual={{ title: "BSC: F-C-P-A (Finanças Com Processos Aprendidos)", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Kaplan e Norton criaram em 1992. 4 perspectivas. Mapa estratégico."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "BSC na Prática", artista: "Prof. Administração" }} />
 
-                      <QuizInterativo questoes={quizM3} titulo="Fixação - BSC" numero={3} variant={getModuleVariant(3)} icone="📊" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
+
+
+
+<ModuleConsolidation index={2} variant={mv[3]} video={{ videoId: "iV7hKYv0fDc", title: "BSC Explicado", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "4 Perspectivas BSC", type: "Conceito", placeholderColor: "bg-amber-500/20" }, { title: "Mapa Estratégico", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Causa e Efeito", type: "Relação", placeholderColor: "bg-yellow-500/20" }] }} maceteVisual={{ title: "BSC: F-C-P-A (Finanças Com Processos Aprendidos)", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Kaplan e Norton criaram em 1992. 4 perspectivas. Mapa estratégico."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "BSC na Prática", artista: "Prof. Administração" }} />
+
+                      <QuizInterativo questoes={quizM3} titulo="QUIZ: Balanced Scorecard (BSC)" numero={3} variant={mv[3]} icone="📊" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
           </section>
         </div>
       </TabsContent>
@@ -695,9 +716,9 @@ export default function AulaPlanejamentoEstrategico({
       {/* ═══ MÓDULO 4: FORMULAÇÃO ESTRATÉGICA (UNROLLED) ═══ */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={4} titulo="Formulação Estratégica" descricao="Porter, Ansoff e a escolha do caminho competitivo." gradiente="bg-gradient-to-br from-rose-600 to-pink-800" />
+          <ModuleBanner numero={4} titulo="Formulação Estratégica" descricao="Porter, Ansoff e a escolha do caminho competitivo." gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={4} title="Estratégias Competitivas" description="As 5 Forças de Porter e a Matriz de Ansoff." variant={getModuleVariant(4)} />
+            <ModuleSectionHeader index={1} title="Estratégias Competitivas" description="As 5 Forças de Porter e a Matriz de Ansoff." variant={mv[4]} />
             <ContentAccordion slides={[
               { 
                 titulo: "Conceituação - As 5 Forças de Porter", 
@@ -803,9 +824,13 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={4} variant={getModuleVariant(4)} video={{ videoId: "iV7hKYv0fDc", title: "Estratégias de Porter", duration: "20:00" }} resumoVisual={{ moduloNome: "Formulação Estratégica", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "5 Forças de Porter", type: "Relação", placeholderColor: "bg-rose-500/20" }, { title: "Estratégias Genéricas", type: "Opções", placeholderColor: "bg-pink-500/20" }, { title: "Matriz Ansoff", type: "Crescimento", placeholderColor: "bg-red-500/20" }] }} maceteVisual={{ title: "PORTER: Custo, Diferenciação ou Foco", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Ou você é barato, ou é especial, ou foca em um bando."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Estratégias Competitivas", artista: "Prof. Administração" }} />
 
-                      <QuizInterativo questoes={quizM4} titulo="Fixação - Formulação" numero={4} variant={getModuleVariant(4)} icone="⚔️" onComplete={(score) => handleModuleComplete("modulo-4", score)} />
+
+
+
+<ModuleConsolidation index={2} variant={mv[4]} video={{ videoId: "iV7hKYv0fDc", title: "Estratégias de Porter", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "5 Forças de Porter", type: "Relação", placeholderColor: "bg-rose-500/20" }, { title: "Estratégias Genéricas", type: "Opções", placeholderColor: "bg-pink-500/20" }, { title: "Matriz Ansoff", type: "Crescimento", placeholderColor: "bg-red-500/20" }] }} maceteVisual={{ title: "PORTER: Custo, Diferenciação ou Foco", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Ou você é barato, ou é especial, ou foca em um bando."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Estratégias Competitivas", artista: "Prof. Administração" }} />
+
+                      <QuizInterativo questoes={quizM4} titulo="QUIZ: Formulação Estratégica" numero={3} variant={mv[4]} icone="⚔️" onComplete={(score) => handleModuleComplete("modulo-4", score)} />
           </section>
         </div>
       </TabsContent>
@@ -813,10 +838,10 @@ export default function AulaPlanejamentoEstrategico({
       {/* ═══ MÓDULO 5: IMPLEMENTAÇÃO ESTRATÉGICA (UNROLLED) ═══ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={5} titulo="Implementação Estratégica" descricao="Onde a maioria das estratégias falha: transformando planos em ação real." gradiente="bg-gradient-to-br from-violet-600 to-purple-800" />
+          <ModuleBanner numero={5} titulo="Implementação Estratégica" descricao="Onde a maioria das estratégias falha: transformando planos em ação real." gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400" />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={5} title="Da Estratégia à Ação" description="Ferramentas de execução: 5W2H e Matriz RACI." variant={getModuleVariant(5)} />
+            <ModuleSectionHeader index={1} title="Da Estratégia à Ação" description="Ferramentas de execução: 5W2H e Matriz RACI." variant={mv[5]} />
             
             <ContentAccordion slides={[
               { 
@@ -929,12 +954,16 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
+
+
+
+
 <ModuleConsolidation 
-            index={5} 
-            variant={getModuleVariant(5)} 
+            index={2} 
+            variant={mv[5]} 
             video={{ videoId: "iV7hKYv0fDc", title: "Implementação e Execução", duration: "22:00" }} 
             resumoVisual={{ 
-              moduloNome: "Implementação", 
+              moduloNome: "Módulo 5", 
               tituloAula: "Planejamento Estratégico", 
               materia: "Administração", 
               images: [
@@ -950,7 +979,7 @@ export default function AulaPlanejamentoEstrategico({
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Táticas de Implementação", artista: "Prof. Administração" }} 
           />
 
-                      <QuizInterativo questoes={quizM5} titulo="Fixação - Implementação" numero={5} variant={getModuleVariant(5)} icone="🎯" onComplete={(score) => handleModuleComplete("modulo-5", score)} />
+                      <QuizInterativo questoes={quizM5} titulo="QUIZ: Implementação Estratégica" numero={3} variant={mv[5]} icone="🎯" onComplete={(score) => handleModuleComplete("modulo-5", score)} />
           </section>
         </div>
       </TabsContent>
@@ -958,10 +987,10 @@ export default function AulaPlanejamentoEstrategico({
       {/* ═══ MÓDULO 6: CONTROLE E AVALIAÇÃO (UNROLLED) ═══ */}
       <TabsContent value="modulo-6" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={6} titulo="Controle e Avaliação" descricao="O que não é medido não é gerenciado: a ciência dos indicadores e feedback." gradiente="bg-gradient-to-br from-amber-600 to-amber-900" />
+          <ModuleBanner numero={6} titulo="Controle e Avaliação" descricao="O que não é medido não é gerenciado: a ciência dos indicadores e feedback." gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800" />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={6} title="Medindo o Sucesso" description="KPIs, semáforos e a gestão do desempenho." variant={getModuleVariant(6)} />
+            <ModuleSectionHeader index={1} title="Medindo o Sucesso" description="KPIs, semáforos e a gestão do desempenho." variant={mv[6]} />
             
             <ContentAccordion slides={[
               { 
@@ -1073,12 +1102,16 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
+
+
+
+
 <ModuleConsolidation 
-            index={6} 
-            variant={getModuleVariant(6)} 
+            index={2} 
+            variant={mv[6]} 
             video={{ videoId: "iV7hKYv0fDc", title: "Monitoramento e Controle", duration: "19:00" }} 
             resumoVisual={{ 
-              moduloNome: "Controle", 
+              moduloNome: "Módulo 6", 
               tituloAula: "Planejamento Estratégico", 
               materia: "Administração", 
               images: [
@@ -1094,7 +1127,7 @@ export default function AulaPlanejamentoEstrategico({
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "A Arte de Medir", artista: "Prof. Administração" }} 
           />
 
-                      <QuizInterativo questoes={quizM6} titulo="Fixação - Controle" numero={6} variant={getModuleVariant(6)} icone="📈" onComplete={(score) => handleModuleComplete("modulo-6", score)} />
+                      <QuizInterativo questoes={quizM6} titulo="QUIZ: Controle e Avaliação" numero={3} variant={mv[6]} icone="📈" onComplete={(score) => handleModuleComplete("modulo-6", score)} />
           </section>
         </div>
       </TabsContent>
@@ -1102,10 +1135,10 @@ export default function AulaPlanejamentoEstrategico({
       {/* ═══ MÓDULO 7: PE EM EMPRESAS PÚBLICAS (UNROLLED) ═══ */}
       <TabsContent value="modulo-7" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={7} titulo="PE em Empresas Públicas" descricao="A complexa missão de equilibrar lucro, legislação e interesse social." gradiente="bg-gradient-to-br from-blue-600 to-blue-900" />
+          <ModuleBanner numero={7} titulo="PE em Empresas Públicas" descricao="A complexa missão de equilibrar lucro, legislação e interesse social." gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800" />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={7} title="Setor Público e Governança" description="Lei 13.303/16 e a integração com o orçamento público." variant={getModuleVariant(7)} />
+            <ModuleSectionHeader index={1} title="Setor Público e Governança" description="Lei 13.303/16 e a integração com o orçamento público." variant={mv[7]} />
             
             <ContentAccordion slides={[
               { 
@@ -1201,12 +1234,16 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
+
+
+
+
 <ModuleConsolidation 
-            index={7} 
-            variant={getModuleVariant(7)} 
+            index={2} 
+            variant={mv[7]} 
             video={{ videoId: "iV7hKYv0fDc", title: "Legislação e Governança", duration: "21:00" }} 
             resumoVisual={{ 
-              moduloNome: "Setor Público", 
+              moduloNome: "Módulo 7", 
               tituloAula: "Planejamento Estratégico", 
               materia: "Administração", 
               images: [
@@ -1222,7 +1259,7 @@ export default function AulaPlanejamentoEstrategico({
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Público vs Privado", artista: "Prof. Administração" }} 
           />
 
-                      <QuizInterativo questoes={quizM7} titulo="Fixação - Setor Público" numero={7} variant={getModuleVariant(7)} icone="🏛️" onComplete={(score) => handleModuleComplete("modulo-7", score)} />
+                      <QuizInterativo questoes={quizM7} titulo="QUIZ: Empresas Públicas" numero={3} variant={mv[7]} icone="🏛️" onComplete={(score) => handleModuleComplete("modulo-7", score)} />
           </section>
         </div>
       </TabsContent>
@@ -1230,10 +1267,10 @@ export default function AulaPlanejamentoEstrategico({
       {/* ═══ MÓDULO 8: CENÁRIOS E PROSPECTIVA (UNROLLED) ═══ */}
       <TabsContent value="modulo-8" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={8} titulo="Cenários e Prospectiva" descricao="A arte de antecipar múltiplos futuros para reduzir a incerteza." gradiente="bg-gradient-to-br from-emerald-600 to-emerald-900" />
+          <ModuleBanner numero={8} titulo="Cenários e Prospectiva" descricao="A arte de antecipar múltiplos futuros para reduzir a incerteza." gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800" />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={8} title="Pensando o Futuro" description="Metodologias para navegar em ambientes VUCA e BANI." variant={getModuleVariant(8)} />
+            <ModuleSectionHeader index={1} title="Pensando o Futuro" description="Metodologias para navegar em ambientes VUCA e BANI." variant={mv[8]} />
             
             <ContentAccordion slides={[
               { 
@@ -1330,12 +1367,16 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
+
+
+
+
 <ModuleConsolidation 
-            index={8} 
-            variant={getModuleVariant(8)} 
+            index={2} 
+            variant={mv[8]} 
             video={{ videoId: "iV7hKYv0fDc", title: "Cenários e Prospectiva", duration: "18:00" }} 
             resumoVisual={{ 
-              moduloNome: "Cenários", 
+              moduloNome: "Módulo 8", 
               tituloAula: "Planejamento Estratégico", 
               materia: "Administração", 
               images: [
@@ -1351,7 +1392,7 @@ export default function AulaPlanejamentoEstrategico({
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Prospectiva Estratégica", artista: "Prof. Administração" }} 
           />
 
-                      <QuizInterativo questoes={quizM8} titulo="Fixação - Cenários" numero={8} variant={getModuleVariant(8)} icone="🔮" onComplete={(score) => handleModuleComplete("modulo-8", score)} />
+                      <QuizInterativo questoes={quizM8} titulo="QUIZ: Cenários e Prospectiva" numero={3} variant={mv[8]} icone="🔮" onComplete={(score) => handleModuleComplete("modulo-8", score)} />
           </section>
         </div>
       </TabsContent>
@@ -1359,10 +1400,10 @@ export default function AulaPlanejamentoEstrategico({
       {/* ═══ MÓDULO 9: APLICAÇÕES PETROBRAS (UNROLLED) ═══ */}
       <TabsContent value="modulo-9" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={9} titulo="Aplicações Petrobras" descricao="O Plano Estratégico 2024-2028 e a Transição Energética Justa." gradiente="bg-gradient-to-br from-rose-600 to-rose-900" />
+          <ModuleBanner numero={9} titulo="Aplicações Petrobras" descricao="O Plano Estratégico 2024-2028 e a Transição Energética Justa." gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800" />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={9} title="A Estratégia em Ação" description="Missão, Visão e o Plano de Negócios 2024-2028." variant={getModuleVariant(9)} />
+            <ModuleSectionHeader index={1} title="A Estratégia em Ação" description="Missão, Visão e o Plano de Negócios 2024-2028." variant={mv[9]} />
             
             <ContentAccordion slides={[
               { 
@@ -1468,12 +1509,16 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
+
+
+
+
 <ModuleConsolidation 
-            index={9} 
-            variant={getModuleVariant(9)} 
+            index={2} 
+            variant={mv[9]} 
             video={{ videoId: "iV7hKYv0fDc", title: "O Plano 2024-2028", duration: "25:00" }} 
             resumoVisual={{ 
-              moduloNome: "Petrobras", 
+              moduloNome: "Módulo 9", 
               tituloAula: "Planejamento Estratégico", 
               materia: "Administração", 
               images: [
@@ -1489,7 +1534,7 @@ export default function AulaPlanejamentoEstrategico({
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Estratégia Petrobras 2024", artista: "Prof. Administração" }} 
           />
 
-                      <QuizInterativo questoes={quizM9} titulo="Fixação - Petrobras" numero={9} variant={getModuleVariant(9)} icone="🛢️" onComplete={(score) => handleModuleComplete("modulo-9", score)} />
+                      <QuizInterativo questoes={quizM9} titulo="QUIZ: Aplicações Petrobras" numero={3} variant={mv[9]} icone="🛢️" onComplete={(score) => handleModuleComplete("modulo-9", score)} />
           </section>
         </div>
       </TabsContent>
@@ -1497,10 +1542,10 @@ export default function AulaPlanejamentoEstrategico({
       {/* ═══ MÓDULOS 10: SIMULADO MESTRE (UNROLLED PARA ESTABILIDADE) ═══ */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={10} titulo="Simulado Mestre" descricao="Desafio final integrando todos os conceitos de Planejamento Estratégico." gradiente="bg-gradient-to-br from-violet-600 to-violet-900" />
+          <ModuleBanner numero={10} titulo="Simulado Mestre" descricao="Desafio final integrando todos os conceitos de Planejamento Estratégico." gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800" />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={10} title="O Grande Desafio" description="Teste seus conhecimentos com questões de nível difícil (Cesgranrio)." variant={getModuleVariant(10)} />
+            <ModuleSectionHeader index={1} title="O Grande Desafio" description="Teste seus conhecimentos com questões de nível difícil (Cesgranrio)." variant={mv[10]} />
             
             <ContentAccordion slides={[
               { 
@@ -1541,12 +1586,16 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
+
+
+
+
 <ModuleConsolidation 
-            index={10} 
-            variant={getModuleVariant(10)} 
+            index={2} 
+            variant={mv[10]} 
             video={{ videoId: "iV7hKYv0fDc", title: "Simulado Comentado", duration: "45:00" }} 
             resumoVisual={{ 
-              moduloNome: "Simulado", 
+              moduloNome: "Módulo 10", 
               tituloAula: "Planejamento Estratégico", 
               materia: "Administração", 
               images: [{ title: "Checklist Final", type: "Desafio", placeholderColor: "bg-violet-500/20" }] 
@@ -1558,7 +1607,7 @@ export default function AulaPlanejamentoEstrategico({
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", titulo: "Dicas Finais", artista: "Prof. Administração" }} 
           />
 
-                      <QuizInterativo questoes={quizM10} titulo="Fixação - Simulado" numero={10} variant={getModuleVariant(10)} icone="👑" onComplete={(score) => handleModuleComplete("modulo-10", score)} />
+                      <QuizInterativo questoes={quizM10} titulo="QUIZ: Simulado Mestre" numero={3} variant={mv[10]} icone="👑" onComplete={(score) => handleModuleComplete("modulo-10", score)} />
           </section>
         </div>
       </TabsContent>
@@ -1575,10 +1624,10 @@ export default function AulaPlanejamentoEstrategico({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={11}
+              index={1}
               title="A Estratégia do Século XXI"
               description="Como a maior empresa do Brasil planeja os próximos 5 anos."
-              variant={getModuleVariant(11)}
+              variant={mv[11]}
             />
 
             <ContentAccordion
@@ -1685,12 +1734,16 @@ export default function AulaPlanejamentoEstrategico({
           <section id="quiz-modulo-11" className="mt-16">
             
 
+
+
+
+
 <ModuleConsolidation
-              index={11}
-              variant={getModuleVariant(11)}
+              index={2}
+              variant={mv[11]}
               video={{ videoId: "iV7hKYv0fDc", title: "Estratégia Petrobras 2024-2028", duration: "32:00" }}
               resumoVisual={{
-                moduloNome: "PE Petrobras Pro",
+                moduloNome: "Módulo 11",
                 tituloAula: "Planejamento Estratégico",
                 materia: "Administração",
                 images: [
@@ -1710,7 +1763,7 @@ export default function AulaPlanejamentoEstrategico({
               audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3", titulo: "O Novo PE Petrobras", artista: "Prof. Administração" }}
             />
 
-                        <QuizInterativo questoes={quizM11} titulo="Fixação - Estratégia Petrobras" numero={11} variant={getModuleVariant(11)} icone="🛢️" onComplete={(score) => handleModuleComplete("modulo-11", score)} />
+                        <QuizInterativo questoes={quizM11} titulo="QUIZ: PE Petrobras 2024-2028 (Pro)" numero={3} variant={mv[11]} icone="🛢️" onComplete={(score) => handleModuleComplete("modulo-11", score)} />
           </section>
         </div>
       </TabsContent>
@@ -2117,9 +2170,7 @@ export default function AulaPlanejamentoEstrategico({
                   </div>
                 ))}
               </div>
-            </div>
-          </section>
-
+              
               {/* Bloco 4: Gestão de Crises e Riscos Estratégicos */}
               <div className="space-y-8">
                 <h3 className="text-xl font-bold text-indigo-700 border-b pb-2 flex items-center gap-2">
@@ -2320,7 +2371,9 @@ export default function AulaPlanejamentoEstrategico({
                 </div>
               </div>
          </div>
-       </TabsContent>
+          </section>
+        </div>
+      </TabsContent>
 
         {/* Nota Final do Instrutor */}
         <div className="mt-20 p-12 bg-gradient-to-r from-slate-50 to-indigo-50 dark:from-slate-900/50 dark:to-indigo-900/50 rounded-[4rem] border border-indigo-200/50 text-center space-y-6 relative overflow-hidden">

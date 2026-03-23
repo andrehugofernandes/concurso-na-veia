@@ -593,7 +593,7 @@ export default function AulaCrase({
             numero={1}
             titulo="Conceito e Regra Geral"
             descricao="A matemática da língua: Preposição A + Artigo A = À."
-            gradiente="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600"
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
 
           {/* SEÇÃO 1: CONCEITUAÇÃO */}
@@ -818,6 +818,10 @@ export default function AulaCrase({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="indigo"
@@ -829,7 +833,7 @@ export default function AulaCrase({
                 "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1073&auto=format&fit=crop",
             }}
             resumoVisual={{
-              moduloNome: "Conceitos Gerais",
+              moduloNome: "Módulo 1",
               tituloAula: "Crase",
               materia: "Língua Portuguesa",
               images: [
@@ -915,7 +919,7 @@ Coloca o acento e brilha no final!
           />
 
                     <QuizInterativo
-            titulo="Conceitos"
+            titulo="QUIZ: Módulo Nº 1"
             icone="🧠"
             numero={6}
             questoes={quizM1}
@@ -932,7 +936,7 @@ Coloca o acento e brilha no final!
             numero={2}
             titulo="Proibições da Crase"
             descricao="Cenários onde o fenômeno da crase nunca ocorre. Onde o 'A' é apenas preposição."
-            gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
           />
 
           {/* SEÇÃO 1: CONCEITUAÇÃO */}
@@ -1108,6 +1112,10 @@ Coloca o acento e brilha no final!
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="emerald"
@@ -1119,7 +1127,7 @@ Coloca o acento e brilha no final!
                 "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1000&auto=format&fit=crop",
             }}
             resumoVisual={{
-              moduloNome: "Proibições",
+              moduloNome: "Módulo 2",
               tituloAula: "Crase",
               materia: "Língua Portuguesa",
               images: [
@@ -1158,7 +1166,7 @@ Coloca o acento e brilha no final!
           />
 
                     <QuizInterativo
-            titulo="Proibições"
+            titulo="QUIZ: Módulo Nº 2"
             icone="🚫"
             numero={6}
             questoes={quizM2}
@@ -1175,7 +1183,7 @@ Coloca o acento e brilha no final!
             numero={3}
             titulo="Crase Facultativa"
             descricao="Situações onde você escolhe usar ou não, sem erro gramatical."
-            gradiente="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700"
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
           />
 
           {/* SEÇÃO 1: CONCEITUAÇÃO */}
@@ -1353,6 +1361,10 @@ Coloca o acento e brilha no final!
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="violet"
@@ -1364,7 +1376,7 @@ Coloca o acento e brilha no final!
                 "https://images.unsplash.com/photo-1454165833267-028cc21e78e2?q=80&w=1000&auto=format&fit=crop",
             }}
             resumoVisual={{
-              moduloNome: "Facultativos",
+              moduloNome: "Módulo 3",
               tituloAula: "Crase",
               materia: "Língua Portuguesa",
               images: [
@@ -1398,7 +1410,7 @@ Coloca o acento e brilha no final!
           />
 
                     <QuizInterativo
-            titulo="Facultativos"
+            titulo="QUIZ: Módulo Nº 3"
             icone="📝"
             numero={6}
             questoes={quizM3}
@@ -1415,7 +1427,7 @@ Coloca o acento e brilha no final!
             numero={4}
             titulo="Casos Especiais"
             descricao="Horas, pronomes demonstrativos e as palavras Casa, Terra e Distância."
-            gradiente="bg-gradient-to-br from-amber-600 via-orange-600 to-amber-700"
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
           />
 
           {/* SEÇÃO 1: CONCEITUAÇÃO */}
@@ -1587,6 +1599,10 @@ Coloca o acento e brilha no final!
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="amber"
@@ -1598,7 +1614,7 @@ Coloca o acento e brilha no final!
                 "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1170&auto=format&fit=crop",
             }}
             resumoVisual={{
-              moduloNome: "Casos Especiais",
+              moduloNome: "Módulo 4",
               tituloAula: "Crase",
               materia: "Língua Portuguesa",
               images: [
@@ -1630,7 +1646,7 @@ Coloca o acento e brilha no final!
           />
 
                     <QuizInterativo
-            titulo="Especiais"
+            titulo="QUIZ: Módulo Nº 4"
             icone="🎯"
             numero={6}
             questoes={quizM4}
@@ -1647,7 +1663,7 @@ Coloca o acento e brilha no final!
             numero={5}
             titulo="Domínio do Acento Grave"
             descricao="Consolidação total com desafios do nível da Petrobras."
-            gradiente="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700"
+            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
           />
 
           {/* SEÇÃO 1: CONCEITUAÇÃO (REVISÃO EXPRESS) */}
@@ -1794,6 +1810,10 @@ Coloca o acento e brilha no final!
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="rose"
@@ -1821,7 +1841,7 @@ Coloca o acento e brilha no final!
               ),
             }}
             resumoVisual={{
-              moduloNome: "Simulado Final",
+              moduloNome: "Módulo 5",
               tituloAula: "Crase",
               materia: "Língua Portuguesa",
               images: [
@@ -1860,7 +1880,7 @@ Coloca o acento e brilha no final!
           />
 
                     <QuizInterativo
-            titulo="Simulado Final: Crase"
+            titulo="QUIZ: Módulo Nº 5"
             icone="🏆"
             numero={6}
             questoes={quizFinal}

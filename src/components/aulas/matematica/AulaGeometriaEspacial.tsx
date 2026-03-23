@@ -229,7 +229,7 @@ export default function AulaGeometriaEspacial({
           numero={1}
           titulo="Poliedros e a Relação de Euler"
           descricao="Identifique vértices, arestas e faces de sólidos geométricos e aplique a relação V − A + F = 2 para resolver questões CESGRANRIO."
-          gradiente="bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-700"
+          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -410,6 +410,10 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={1}
             variant="indigo"
@@ -419,7 +423,7 @@ export default function AulaGeometriaEspacial({
               duration: "12:45"
             }}
             resumoVisual={{
-              moduloNome: "Poliedros",
+              moduloNome: "Módulo 1",
               tituloAula: "Geometria Espacial",
               materia: "Matemática",
               images: [{
@@ -445,9 +449,9 @@ export default function AulaGeometriaEspacial({
 
                       <QuizInterativo
               questoes={quizM1}
-              titulo="Quiz — Poliedros e Relação de Euler"
+              titulo="QUIZ: Poliedros e Euler"
               icone="🔷"
-              numero={1}
+              numero={3}
               variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -463,7 +467,7 @@ export default function AulaGeometriaEspacial({
           numero={2}
           titulo="Prismas: Volume e Área Total"
           descricao="Calcule volumes e áreas de prismas retos e oblíquos — de containers a dutos industriais da Petrobras."
-          gradiente="bg-gradient-to-br from-emerald-600 via-emerald-700 to-cyan-700"
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -575,6 +579,10 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -584,7 +592,7 @@ export default function AulaGeometriaEspacial({
               duration: "14:30"
             }}
             resumoVisual={{
-              moduloNome: "Prismas",
+              moduloNome: "Módulo 2",
               tituloAula: "Geometria Espacial",
               materia: "Matemática",
               images: [{
@@ -628,7 +636,7 @@ export default function AulaGeometriaEspacial({
           numero={3}
           titulo="Pirâmides: Volume e Área Lateral"
           descricao="O fator 1/3 que muda tudo. Domine volumes e áreas laterais de pirâmides regulares e aplique em estruturas industriais."
-          gradiente="bg-gradient-to-br from-blue-700 via-cyan-600 to-emerald-600"
+          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -734,6 +742,10 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={3}
             variant="cyan"
@@ -743,7 +755,7 @@ export default function AulaGeometriaEspacial({
               duration: "15:20"
             }}
             resumoVisual={{
-              moduloNome: "Pirâmides",
+              moduloNome: "Módulo 3",
               tituloAula: "Geometria Espacial",
               materia: "Matemática",
               images: [{
@@ -769,9 +781,9 @@ export default function AulaGeometriaEspacial({
 
                       <QuizInterativo
               questoes={quizM3}
-              titulo="Quiz — Pirâmides: Volume e Área"
+              titulo="QUIZ: Pirâmides"
               icone="🔺"
-              numero={3}
+              numero={4}
               variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -787,7 +799,7 @@ export default function AulaGeometriaEspacial({
           numero={4}
           titulo="Cilindro: Volume e Área"
           descricao="O sólido mais presente na indústria petrolífera. Domine os cálculos de tanques, dutos e vasos de pressão cilíndricos."
-          gradiente="bg-gradient-to-br from-cyan-600 via-blue-600 to-blue-700"
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -886,6 +898,10 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={4}
             variant="blue"
@@ -895,7 +911,7 @@ export default function AulaGeometriaEspacial({
               duration: "13:45"
             }}
             resumoVisual={{
-              moduloNome: "Cilindro",
+              moduloNome: "Módulo 4",
               tituloAula: "Geometria Espacial",
               materia: "Matemática",
               images: [{
@@ -939,7 +955,7 @@ export default function AulaGeometriaEspacial({
           numero={5}
           titulo="Cone: Volume e Área"
           descricao="Silos, funis e coberturas cônicas — calcule volume, área lateral e geratriz com precisão de engenharia."
-          gradiente="bg-gradient-to-br from-blue-600 via-emerald-600 to-cyan-600"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1032,6 +1048,10 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="amber"
@@ -1041,7 +1061,7 @@ export default function AulaGeometriaEspacial({
               duration: "14:10"
             }}
             resumoVisual={{
-              moduloNome: "Cone",
+              moduloNome: "Módulo 5",
               tituloAula: "Geometria Espacial",
               materia: "Matemática",
               images: [{
@@ -1067,9 +1087,9 @@ export default function AulaGeometriaEspacial({
 
                       <QuizInterativo
               questoes={quizM5}
-              titulo="Quiz — Cone: Volume e Área"
+              titulo="QUIZ: Cone"
               icone="🔻"
-              numero={5}
+              numero={6}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1085,7 +1105,7 @@ export default function AulaGeometriaEspacial({
           numero={6}
           titulo="Esfera: Volume e Área"
           descricao="Tanques esféricos de GLP, boias de sondagem e vasos de pressão — as fórmulas da esfera são indispensáveis na engenharia offshore."
-          gradiente="bg-gradient-to-br from-cyan-600 via-blue-700 to-emerald-600"
+          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1188,6 +1208,10 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={6}
             variant="rose"
@@ -1197,7 +1221,7 @@ export default function AulaGeometriaEspacial({
               duration: "13:55"
             }}
             resumoVisual={{
-              moduloNome: "Esfera",
+              moduloNome: "Módulo 6",
               tituloAula: "Geometria Espacial",
               materia: "Matemática",
               images: [{
@@ -1241,7 +1265,7 @@ export default function AulaGeometriaEspacial({
           numero={7}
           titulo="Troncos: Cone e Pirâmide"
           descricao="Barris, silos decantadores e reservatórios troncocônicos — as fórmulas dos troncos resolvem problemas reais de armazenamento industrial."
-          gradiente="bg-gradient-to-br from-emerald-700 via-cyan-600 to-blue-600"
+          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1335,6 +1359,10 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={7}
             variant="indigo"
@@ -1344,7 +1372,7 @@ export default function AulaGeometriaEspacial({
               duration: "14:25"
             }}
             resumoVisual={{
-              moduloNome: "Troncos",
+              moduloNome: "Módulo 7",
               tituloAula: "Geometria Espacial",
               materia: "Matemática",
               images: [{
@@ -1370,9 +1398,9 @@ export default function AulaGeometriaEspacial({
 
                       <QuizInterativo
               questoes={quizM7}
-              titulo="Quiz — Troncos de Cone e Pirâmide"
+              titulo="QUIZ: Troncos"
               icone="🪣"
-              numero={7}
+              numero={8}
               variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1388,7 +1416,7 @@ export default function AulaGeometriaEspacial({
           numero={8}
           titulo="Sólidos Compostos"
           descricao="Silos, torres e tanques capsulares são combinações de sólidos. Domine a estratégia de decompor e calcular parte por parte."
-          gradiente="bg-gradient-to-br from-blue-700 via-blue-600 to-emerald-600"
+          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1495,6 +1523,10 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={8}
             variant="emerald"
@@ -1504,7 +1536,7 @@ export default function AulaGeometriaEspacial({
               duration: "13:30"
             }}
             resumoVisual={{
-              moduloNome: "Compostos",
+              moduloNome: "Módulo 8",
               tituloAula: "Geometria Espacial",
               materia: "Matemática",
               images: [{
@@ -1548,7 +1580,7 @@ export default function AulaGeometriaEspacial({
           numero={9}
           titulo="Aplicações Petrobras: Tanques e Reservatórios"
           descricao="Geometria espacial aplicada diretamente ao dia a dia da indústria petrolífera — oleodutos, tanques de lastro, vasos de pressão e silos de refinaria."
-          gradiente="bg-gradient-to-br from-emerald-700 via-blue-700 to-cyan-600"
+          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1655,6 +1687,10 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={9}
             variant="cyan"
@@ -1664,7 +1700,7 @@ export default function AulaGeometriaEspacial({
               duration: "15:40"
             }}
             resumoVisual={{
-              moduloNome: "Aplicações Petrobras",
+              moduloNome: "Módulo 9",
               tituloAula: "Geometria Espacial",
               materia: "Matemática",
               images: [{
@@ -1690,9 +1726,9 @@ export default function AulaGeometriaEspacial({
 
                       <QuizInterativo
               questoes={quizM9}
-              titulo="Quiz — Aplicações Petrobras"
+              titulo="QUIZ: Tanques e Reservatórios"
               icone="🛢️"
-              numero={9}
+              numero={10}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1708,7 +1744,7 @@ export default function AulaGeometriaEspacial({
           numero={10}
           titulo="Simulado CESGRANRIO — Geometria Espacial"
           descricao="Questões no estilo e nível de dificuldade da banca CESGRANRIO. Teste tudo que você aprendeu nos 9 módulos anteriores."
-          gradiente="bg-gradient-to-br from-blue-800 via-blue-700 to-cyan-700"
+          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1809,6 +1845,10 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={10}
             variant="blue"
@@ -1818,7 +1858,7 @@ export default function AulaGeometriaEspacial({
               duration: "16:20"
             }}
             resumoVisual={{
-              moduloNome: "Simulado Mestre",
+              moduloNome: "Módulo 10",
               tituloAula: "Geometria Espacial",
               materia: "Matemática",
               images: [{
@@ -1844,9 +1884,9 @@ export default function AulaGeometriaEspacial({
 
                       <QuizInterativo
               questoes={quizM10}
-              titulo="Simulado Final — CESGRANRIO Geometria Espacial"
+              titulo="QUIZ: Simulado Final"
               icone="🏆"
-              numero={10}
+              numero={11}
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />

@@ -38,22 +38,42 @@ export default function ProfilePage() {
     }
   }, [profile]);
 
+  const formatPhone = (value: string) => {
+    const raw = value.replace(/\D/g, "");
+    if (!raw) return "";
+    let formatted = raw.length > 2 ? `(${raw.slice(0, 2)}) ` : `(${raw}`;
+    if (raw.length > 2) {
+      const remaining = raw.slice(2);
+      if (remaining.length > 5) {
+        formatted += `${remaining.slice(0, 5)}-${remaining.slice(5, 9)}`;
+      } else {
+        formatted += remaining;
+      }
+    }
+    return formatted;
+  };
+
   const handleSave = async () => {
     setSaving(true);
-    const result = await updateProfile(formData);
-    setSaving(false);
-
-    if (result.success) {
-      toast({
-        title: 'Sucesso',
-        description: 'Perfil atualizado com sucesso!',
-      });
-    } else {
-      toast({
-        title: 'Erro',
-        description: result.error || 'Erro ao atualizar perfil',
-        variant: 'destructive',
-      });
+    try {
+      const result = await updateProfile(formData);
+      if (result.success) {
+        toast({
+          title: 'Sucesso',
+          description: 'Perfil atualizado com sucesso!',
+        });
+      } else {
+        console.error('[ProfilePage] Erro de perfil:', result.error);
+        toast({
+          title: 'Erro',
+          description: typeof result.error === 'string' ? result.error : 'Erro ao atualizar perfil',
+          variant: 'destructive',
+        });
+      }
+    } catch (err: any) {
+      console.error('[ProfilePage] Erro no catch:', err);
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -208,17 +228,6 @@ export default function ProfilePage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium flex items-center gap-1"><Phone className="h-3 w-3" /> Telefone</label>
-                <input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder="(00) 00000-0000"
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                />
-              </div>
-
-              <div className="space-y-2">
                 <label className="text-sm font-medium flex items-center gap-1"><User className="h-3 w-3" /> Username</label>
                 <input
                   type="text"
@@ -232,9 +241,20 @@ export default function ProfilePage() {
                 <label className="text-sm font-medium flex items-center gap-1"><Calendar className="h-3 w-3" /> Cargo Pretendido</label>
                 <input
                   type="text"
-                  value={formData.job_title}
-                  onChange={(e) => setFormData({ ...formData, job_title: e.target.value })}
-                  placeholder="Ex: Técnico de Operação"
+                  value={profile.cargo || formData.job_title}
+                  disabled
+                  placeholder="Não informado"
+                  className="flex h-10 w-full rounded-md border border-input bg-muted px-3 py-2 text-sm opacity-50 cursor-not-allowed"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium flex items-center gap-1"><Phone className="h-3 w-3" /> Telefone</label>
+                <input
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: formatPhone(e.target.value) })}
+                  placeholder="(00) 00000-0000"
                   className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 />
               </div>
@@ -244,9 +264,9 @@ export default function ProfilePage() {
                 <input
                   type="text"
                   value={formData.nivel}
-                  onChange={(e) => setFormData({ ...formData, nivel: e.target.value })}
-                  placeholder="Ex: Médio / Técnico"
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  disabled
+                  placeholder="Não informado"
+                  className="flex h-10 w-full rounded-md border border-input bg-muted px-3 py-2 text-sm opacity-50 cursor-not-allowed"
                 />
               </div>
             </div>

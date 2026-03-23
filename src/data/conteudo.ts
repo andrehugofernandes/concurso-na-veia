@@ -126,12 +126,13 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         cor: 'from-red-500 to-pink-500',
         requiredPlan: 'Ouro',
         topicos: [
-            { id: 'reading-strategies', titulo: 'Reading Strategies', descricao: 'Técnicas de leitura e skimming', duracao: '6 min', ordem: 1 },
-            { id: 'verb-tenses', titulo: 'Verb Tenses', descricao: 'Tempos verbais em inglês', duracao: '8 min', ordem: 2 },
-            { id: 'connectors', titulo: 'Connectors', descricao: 'Palavras de ligação e transição', duracao: '5 min', ordem: 3 },
-            { id: 'vocabulary', titulo: 'Technical Vocabulary', descricao: 'Vocabulário técnico de petróleo e gás', duracao: '10 min', ordem: 4 },
-            { id: 'false-cognates', titulo: 'False Cognates', descricao: 'Falsos cognatos mais comuns', duracao: '5 min', ordem: 5 },
-            { id: 'comprehension', titulo: 'Text Comprehension', descricao: 'Interpretação de textos técnicos', duracao: '8 min', ordem: 6 },
+            { id: 'petrolingo', titulo: 'Petro-Lingo', descricao: 'Aprenda inglês técnico com gamificação no estilo Duolingo', duracao: 'Prática Livre', ordem: 1 },
+            { id: 'reading-strategies', titulo: 'Reading Strategies', descricao: 'Técnicas de leitura e skimming', duracao: '6 min', ordem: 2 },
+            { id: 'verb-tenses', titulo: 'Verb Tenses', descricao: 'Tempos verbais em inglês', duracao: '8 min', ordem: 3 },
+            { id: 'connectors', titulo: 'Connectors', descricao: 'Palavras de ligação e transição', duracao: '5 min', ordem: 4 },
+            { id: 'vocabulary', titulo: 'Technical Vocabulary', descricao: 'Vocabulário técnico de petróleo e gás', duracao: '10 min', ordem: 5 },
+            { id: 'false-cognates', titulo: 'False Cognates', descricao: 'Falsos cognatos mais comuns', duracao: '5 min', ordem: 6 },
+            { id: 'comprehension', titulo: 'Text Comprehension', descricao: 'Interpretação de textos técnicos', duracao: '8 min', ordem: 7 },
         ]
     },
     // ===== BLOCO II - GESTÃO DE PESSOAS E MARKETING (NÍVEL SUPERIOR) =====
@@ -160,6 +161,21 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'lei-13303', titulo: 'Lei 13.303 - Empresa Estatal', descricao: 'Lei Federal que disciplina funcionamento e governança de empresas públicas', duracao: '90 min', ordem: 1 },
             { id: 'rlcp', titulo: 'RLCP - Regulamento de Licitações Petrobras', descricao: 'Procedimentos transparentes de compras e contratações', duracao: '90 min', ordem: 2 },
             { id: 'administrativo-tributario', titulo: 'Administrativo e Tributário', descricao: 'Contabilidade básica, direito tributário e administração tributária (em desenvolvimento)', duracao: '90 min', ordem: 3 },
+        ]
+    },
+    // ===== SEGURANÇA DO TRABALHO =====
+    {
+        id: 'nrs',
+        nome: 'Normas Regulamentadoras (NRs)',
+        descricao: 'Estudo aprofundado das principais NRs aplicadas à Petrobras e à indústria.',
+        icone: '👷',
+        cor: 'from-emerald-500 to-green-600',
+        requiredPlan: 'Prata',
+        topicos: [
+            { id: 'nr10', titulo: 'NR-10 (Elétrica)', descricao: 'Segurança em Instalações e Serviços em Eletricidade', duracao: '90 min', ordem: 1 },
+            { id: 'nr13', titulo: 'NR-13 (Vasos e Caldeiras)', descricao: 'Caldeiras, Vasos de Pressão e Tubulações', duracao: '90 min', ordem: 2 },
+            { id: 'nr33', titulo: 'NR-33 (Espaço Confinado)', descricao: 'Segurança e Saúde nos Trabalhos em Espaços Confinados', duracao: '90 min', ordem: 3 },
+            { id: 'nr35', titulo: 'NR-35 (Trabalho em Altura)', descricao: 'Requisitos e medidas de proteção para trabalho em altura', duracao: '90 min', ordem: 4 },
         ]
     },
 ];

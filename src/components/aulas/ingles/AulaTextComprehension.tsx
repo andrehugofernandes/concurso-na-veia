@@ -118,6 +118,15 @@ export default function AulaTextComprehension({
     setCompletedModules((prev) => new Set([...prev, moduleId]));
   };
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       titulo={titulo || "Text Comprehension — 8 Estratégias de Leitura em Inglês"}
@@ -146,7 +155,7 @@ export default function AulaTextComprehension({
             modulo={1}
             titulo="Decoding Question Types (Main Idea / Detail / Inference)"
             icone={<LuTarget className="w-8 h-8" />}
-            corModulo={getModuleVariant(1)}
+            corModulo={mv[1]}
             descricao="Identifique os 3 tipos principais de questões testadas em leitura CESGRANRIO e a estratégia específica para cada uma"
           />
 
@@ -411,13 +420,15 @@ export default function AulaTextComprehension({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={1}
-            corModulo={getModuleVariant(1)}
+            corModulo={mv[1]}
             onComplete={() => handleModuleComplete("modulo-1")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM1}
             modulo={1}
             onComplete={() => handleModuleComplete("modulo-1")}
@@ -435,7 +446,7 @@ export default function AulaTextComprehension({
             modulo={2}
             titulo="Skimming — Leitura Panorâmica Rápida"
             icone={<LuEye className="w-8 h-8" />}
-            corModulo={getModuleVariant(2)}
+            corModulo={mv[2]}
             descricao="Leia textos inteiros em 30-60 segundos para captar a ideia geral sem entender cada palavra"
           />
 
@@ -683,13 +694,15 @@ export default function AulaTextComprehension({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={2}
-            corModulo={getModuleVariant(2)}
+            corModulo={mv[2]}
             onComplete={() => handleModuleComplete("modulo-2")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM2}
             modulo={2}
             onComplete={() => handleModuleComplete("modulo-2")}
@@ -707,7 +720,7 @@ export default function AulaTextComprehension({
             modulo={3}
             titulo="Scanning — Localização Precisa de Informação"
             icone={<LuSearch className="w-8 h-8" />}
-            corModulo={getModuleVariant(3)}
+            corModulo={mv[3]}
             descricao="Procure por palavras-chave e números específicos para responder Detail questions em 15-30 segundos"
           />
 
@@ -986,13 +999,15 @@ export default function AulaTextComprehension({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={3}
-            corModulo={getModuleVariant(3)}
+            corModulo={mv[3]}
             onComplete={() => handleModuleComplete("modulo-3")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM3}
             modulo={3}
             onComplete={() => handleModuleComplete("modulo-3")}
@@ -1010,7 +1025,7 @@ export default function AulaTextComprehension({
             modulo={4}
             titulo="Vocabulary in Context — Deduzindo Significado"
             icone={<LuBookOpen className="w-8 h-8" />}
-            corModulo={getModuleVariant(4)}
+            corModulo={mv[4]}
             descricao="Deduza o significado de palavras desconhecidas pela estrutura da frase e pistas contextuais"
           />
 
@@ -1247,13 +1262,15 @@ export default function AulaTextComprehension({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={4}
-            corModulo={getModuleVariant(4)}
+            corModulo={mv[4]}
             onComplete={() => handleModuleComplete("modulo-4")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM4}
             modulo={4}
             onComplete={() => handleModuleComplete("modulo-4")}
@@ -1271,7 +1288,7 @@ export default function AulaTextComprehension({
             modulo={5}
             titulo="Paragraph Structure — Topic Sentences & Supporting Details"
             icone={<LuClipboardList className="w-8 h-8" />}
-            corModulo={getModuleVariant(5)}
+            corModulo={mv[5]}
             descricao="Identifique a sentença principal de cada parágrafo e os detalhes que a sustentam"
           />
 
@@ -1498,13 +1515,15 @@ export default function AulaTextComprehension({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={5}
-            corModulo={getModuleVariant(5)}
+            corModulo={mv[5]}
             onComplete={() => handleModuleComplete("modulo-5")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM5}
             modulo={5}
             onComplete={() => handleModuleComplete("modulo-5")}
@@ -1522,7 +1541,7 @@ export default function AulaTextComprehension({
             modulo={6}
             titulo="Reference Words & Text Cohesion"
             icone={<LuBookOpen className="w-8 h-8" />}
-            corModulo={getModuleVariant(6)}
+            corModulo={mv[6]}
             descricao="Identifique o que pronomes e expressões se referem para entender como as frases conectam"
           />
 
@@ -1753,13 +1772,15 @@ export default function AulaTextComprehension({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={6}
-            corModulo={getModuleVariant(6)}
+            corModulo={mv[6]}
             onComplete={() => handleModuleComplete("modulo-6")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM6}
             modulo={6}
             onComplete={() => handleModuleComplete("modulo-6")}
@@ -1777,7 +1798,7 @@ export default function AulaTextComprehension({
             modulo={7}
             titulo="Tone & Author's Purpose"
             icone={<LuZap className="w-8 h-8" />}
-            corModulo={getModuleVariant(7)}
+            corModulo={mv[7]}
             descricao="Identifique a atitude do autor (tone) e seu objetivo ao escrever (purpose)"
           />
 
@@ -2016,13 +2037,15 @@ export default function AulaTextComprehension({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={7}
-            corModulo={getModuleVariant(7)}
+            corModulo={mv[7]}
             onComplete={() => handleModuleComplete("modulo-7")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM7}
             modulo={7}
             onComplete={() => handleModuleComplete("modulo-7")}
@@ -2040,7 +2063,7 @@ export default function AulaTextComprehension({
             modulo={8}
             titulo="Inference & Implicit Information"
             icone={<LuLightbulb className="w-8 h-8" />}
-            corModulo={getModuleVariant(8)}
+            corModulo={mv[8]}
             descricao="Deduza o que está implicado mas não dito explicitamente no texto"
           />
 
@@ -2278,13 +2301,15 @@ export default function AulaTextComprehension({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={8}
-            corModulo={getModuleVariant(8)}
+            corModulo={mv[8]}
             onComplete={() => handleModuleComplete("modulo-8")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM8}
             modulo={8}
             onComplete={() => handleModuleComplete("modulo-8")}
@@ -2302,7 +2327,7 @@ export default function AulaTextComprehension({
             modulo={9}
             titulo="Reading Comprehension em Provas CESGRANRIO"
             icone={<LuClipboardList className="w-8 h-8" />}
-            corModulo={getModuleVariant(9)}
+            corModulo={mv[9]}
             descricao="Padrão real de prova: 3-4 textos, 12-20 questões de tipos mistos, 30 minutos"
           />
 
@@ -2521,13 +2546,15 @@ export default function AulaTextComprehension({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={9}
-            corModulo={getModuleVariant(9)}
+            corModulo={mv[9]}
             onComplete={() => handleModuleComplete("modulo-9")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizM9}
             modulo={9}
             onComplete={() => handleModuleComplete("modulo-9")}
@@ -2545,7 +2572,7 @@ export default function AulaTextComprehension({
             modulo={10}
             titulo="Simulado Mestre — Consolidação Final"
             icone={<LuGraduationCap className="w-8 h-8" />}
-            corModulo={getModuleVariant(10)}
+            corModulo={mv[10]}
             descricao="Teste suas 8 estratégias em um simulado realista com 2 textos completos e 8 questões"
           />
 
@@ -2785,13 +2812,15 @@ export default function AulaTextComprehension({
             </div>
           </section>
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             modulo={10}
-            corModulo={getModuleVariant(10)}
+            corModulo={mv[10]}
             onComplete={() => handleModuleComplete("modulo-10")}
           />
 
-          <QuizInterativo
+                    <QuizInterativo
             questions={quizFinal}
             modulo={10}
             onComplete={() => handleModuleComplete("modulo-10")}

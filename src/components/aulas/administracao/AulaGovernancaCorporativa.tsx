@@ -108,6 +108,15 @@ export default function AulaGovernancaCorporativa({
     return completedModules.has(MODULE_DEFS[index - 1].id);
   };
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -135,9 +144,9 @@ export default function AulaGovernancaCorporativa({
       {/* ═══ MÓDULO 1: CONCEITOS DE GOVERNANÇA ═══ */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={1} titulo="Conceitos de Governança Corporativa" descricao="Os princípios, agentes e mecanismos que protegem os stakeholders." gradiente="bg-gradient-to-br from-blue-700 to-sky-800" />
+          <ModuleBanner numero={1} titulo="Conceitos de Governança Corporativa" descricao="Os princípios, agentes e mecanismos que protegem os stakeholders." gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={1} title="Fundamentos da Governança" description="Princípios IBGC, problema de agência e stakeholders." variant={getModuleVariant(1)} />
+            <ModuleSectionHeader index={1} title="Fundamentos da Governança" description="Princípios IBGC, problema de agência e stakeholders." variant={mv[1]} />
             <ContentAccordion slides={[
               { titulo: "Conceituação - O que é Governança Corporativa?", icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed"><strong>Governança Corporativa</strong> é o sistema pelo qual as organizações são dirigidas, monitoradas e incentivadas, envolvendo os relacionamentos entre proprietários, conselho de administração, diretoria e órgãos de controle.</p><div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20"><p className="font-bold text-blue-700 mb-2">4 Princípios (IBGC):</p><div className="space-y-2 text-sm"><p><strong>Transparência:</strong> Disponibilizar informações além das obrigatórias</p><p><strong>Equidade:</strong> Tratamento justo para todos os sócios e stakeholders</p><p><strong>Prestação de Contas (Accountability):</strong> Responsabilizar-se pelas decisões</p><p><strong>Responsabilidade Corporativa:</strong> Zelar pela sustentabilidade da organização</p></div></div><div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20"><p className="font-bold text-blue-700 mb-2">Problema de Agência:</p><p className="text-sm">Conflito entre <strong>Principal</strong> (acionista/dono) e <strong>Agente</strong> (gestor). O gestor pode agir em interesse próprio, não do acionista. A governança mitiga isso.</p></div></div>) },
               { titulo: "Exemplificação - Agentes de Governança", icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><div className="space-y-2"><div className="bg-blue-500/10 p-3 rounded border border-blue-500/20"><p className="font-bold text-blue-700 text-sm">Assembleia de Acionistas</p><p className="text-xs">Órgão soberano — elege o Conselho de Administração</p></div><div className="bg-blue-500/10 p-3 rounded border border-blue-500/20"><p className="font-bold text-blue-700 text-sm">Conselho de Administração</p><p className="text-xs">Define estratégia, supervisiona diretoria, protege stakeholders</p></div><div className="bg-blue-500/10 p-3 rounded border border-blue-500/20"><p className="font-bold text-blue-700 text-sm">Diretoria Executiva</p><p className="text-xs">Executa a estratégia, gestão do dia a dia</p></div><div className="bg-blue-500/10 p-3 rounded border border-blue-500/20"><p className="font-bold text-blue-700 text-sm">Conselho Fiscal</p><p className="text-xs">Fiscaliza atos dos administradores e demonstrações financeiras</p></div></div></div>) },
@@ -153,9 +162,13 @@ export default function AulaGovernancaCorporativa({
 
 
 
-<ModuleConsolidation index={1} variant={getModuleVariant(1)} video={{ videoId: "b1VjGMSRfMk", title: "Governança Corporativa: Fundamentos", duration: "18:00" }} resumoVisual={{ moduloNome: "Conceitos de Governança", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "4 Princípios IBGC", type: "Conceito", placeholderColor: "bg-blue-500/20" }, { title: "Problema de Agência", type: "Teoria", placeholderColor: "bg-sky-500/20" }, { title: "Agentes de Governança", type: "Estrutura", placeholderColor: "bg-cyan-500/20" }] }} maceteVisual={{ title: "TEPR: Transparência, Equidade, Prestação de Contas, Responsabilidade", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Principal quer lucro, Agente quer salário. Governança alinha os dois."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Governança: Fundamentos", artista: "Prof. Administração" }} />
 
-                      <QuizInterativo questoes={quizM1} titulo="Fixação - Conceitos de Governança" numero={1} variant={getModuleVariant(1)} icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
+
+
+
+<ModuleConsolidation index={3} variant={mv[1]} video={{ videoId: "b1VjGMSRfMk", title: "Governança Corporativa: Fundamentos", duration: "18:00" }} resumoVisual={{ moduloNome: "Módulo 1", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "4 Princípios IBGC", type: "Conceito", placeholderColor: "bg-blue-500/20" }, { title: "Problema de Agência", type: "Teoria", placeholderColor: "bg-sky-500/20" }, { title: "Agentes de Governança", type: "Estrutura", placeholderColor: "bg-cyan-500/20" }] }} maceteVisual={{ title: "TEPR: Transparência, Equidade, Prestação de Contas, Responsabilidade", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Principal quer lucro, Agente quer salário. Governança alinha os dois."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Governança: Fundamentos", artista: "Prof. Administração" }} />
+
+                      <QuizInterativo questoes={quizM1} titulo="QUIZ: Conceitos de Governança" numero={4} variant={mv[1]} icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
           </section>
         </div>
       </TabsContent>
@@ -186,6 +199,10 @@ export default function AulaGovernancaCorporativa({
             </section>
             
             <section id={`quiz-${mod}`} className="mt-16">
+
+
+
+
 
 
 

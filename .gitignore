@@ -37,3 +37,5 @@ temp_reference_repo/
 next-env.d.ts
 /source/
 
+# claude
+.claude/

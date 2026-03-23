@@ -34,6 +34,9 @@ export default function Setup2FAPage() {
 
     const initSetup = async () => {
       try {
+        const supabase = (await import("@/lib/supabase/client")).createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+
         const result = await enrollMFAAction();
         if (result.status === "error" || !result.data) {
           setError(result.error || "Erro ao iniciar configuração");
@@ -43,7 +46,25 @@ export default function Setup2FAPage() {
         setFactorId(result.data.id);
         setSecret(result.data.totp.secret);
 
-        const qrUrl = await QRCode.toDataURL(result.data.totp.uri);
+        // MODIFICAÇÃO: Injetar o nome AVAGAEHMINHA na URI do QR Code
+        // URI original do Supabase é algo como:
+        // otpauth://totp/localhost:3000:user@email.com?secret=xxx&issuer=localhost:3000
+        let uri = result.data.totp.uri;
+        if (uri) {
+          try {
+            const urlObj = new URL(uri);
+            const userEmail = user?.email || "usuario";
+            
+            // Alterar o path (label) e o parâmetro issuer
+            urlObj.pathname = `AVAGAEHMINHA:${userEmail}`;
+            urlObj.searchParams.set("issuer", "AVAGAEHMINHA");
+            uri = urlObj.toString();
+          } catch (e) {
+            console.warn("Falha ao personalizar URI do MFA:", e);
+          }
+        }
+
+        const qrUrl = await QRCode.toDataURL(uri);
         setQrCodeUrl(qrUrl);
       } catch (err: any) {
         console.error("Error setup 2FA:", err);

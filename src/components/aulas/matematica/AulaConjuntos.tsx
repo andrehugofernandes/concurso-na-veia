@@ -166,7 +166,7 @@ export default function AulaConjuntos({
           numero={1}
           titulo="Fundamentos de Conjuntos"
           descricao="Domine os conceitos fundamentais: notação, pertinência, subconjuntos e propriedades."
-          gradiente="bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -640,6 +640,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             index={1}
             variant="indigo"
@@ -678,9 +680,9 @@ export default function AulaConjuntos({
 
                       <QuizInterativo
               questoes={quizFundamentos}
-              titulo="Quiz - Fundamentos de Conjuntos"
+              titulo="QUIZ: Fundamentos"
               icone="🧠"
-              numero={1}
+              numero={4}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -694,7 +696,7 @@ export default function AulaConjuntos({
           numero={2}
           titulo="Operações com Conjuntos"
           descricao="União, interseção, diferença e complementar: as 4 operações que a CESGRANRIO adora cobrar."
-          gradiente="bg-gradient-to-br from-emerald-600 via-green-600 to-teal-700"
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -908,6 +910,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -962,7 +966,7 @@ export default function AulaConjuntos({
           numero={3}
           titulo="Diagramas de Venn e Cardinalidade"
           descricao="A ferramenta visual mais poderosa para conjuntos. Domine a fórmula da cardinalidade."
-          gradiente="bg-gradient-to-br from-blue-600 via-blue-600 to-indigo-700"
+          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1209,6 +1213,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             index={3}
             variant="cyan"
@@ -1247,9 +1253,9 @@ export default function AulaConjuntos({
 
                       <QuizInterativo
               questoes={quizVenn}
-              titulo="Quiz - Diagramas de Venn"
+              titulo="QUIZ: Diagramas de Venn"
               icone="🧠"
-              numero={3}
+              numero={4}
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -1263,7 +1269,7 @@ export default function AulaConjuntos({
           numero={4}
           titulo="Conjuntos Numéricos e Intervalos"
           descricao="ℕ, ℤ, ℚ, 𝕀, ℝ — a hierarquia dos números e intervalos na reta real."
-          gradiente="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-700"
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1446,6 +1452,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             index={4}
             variant="blue"
@@ -1500,7 +1508,7 @@ export default function AulaConjuntos({
           numero={5}
           titulo="Laboratório CESGRANRIO"
           descricao="Simulado final e certificado de conclusão. A vaga é sua!"
-          gradiente="bg-gradient-to-br from-rose-600 via-rose-600 to-rose-700"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm text-center">
@@ -1586,6 +1594,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             index={5}
             variant="amber"
@@ -1624,9 +1634,9 @@ export default function AulaConjuntos({
 
                       <QuizInterativo
               questoes={quizFinal}
-              titulo="Simulado Final - Teoria dos Conjuntos"
+              titulo="QUIZ: Subconjuntos"
               icone="🏆"
-              numero={5}
+              numero={6}
               variant="rose"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1640,7 +1650,7 @@ export default function AulaConjuntos({
           numero={6}
           titulo="Fórmula de Inclusão-Exclusão"
           descricao="A ferramenta mestra para calcular cardinalidade de uniões sem contar dois vezes — e o coração das questões de Conjuntos da CESGRANRIO."
-          gradiente="bg-gradient-to-br from-cyan-600 via-teal-600 to-emerald-700"
+          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -1915,6 +1925,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             index={6}
             variant="rose"
@@ -1969,7 +1981,7 @@ export default function AulaConjuntos({
           numero={7}
           titulo="ℕ, ℤ, ℚ em Profundidade"
           descricao="Os três primeiros degraus da hierarquia dos números reais — com contexto industrial Petrobras e as pegadinhas favoritas da CESGRANRIO."
-          gradiente="bg-gradient-to-br from-indigo-500 via-blue-600 to-blue-700"
+          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -2250,6 +2262,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             index={7}
             variant="indigo"
@@ -2288,9 +2302,9 @@ export default function AulaConjuntos({
 
                       <QuizInterativo
               questoes={quizNumericosBasicos}
-              titulo="Quiz — ℕ, ℤ, ℚ em Profundidade"
+              titulo="QUIZ: ℕ, ℤ, ℚ"
               icone="🔢"
-              numero={7}
+              numero={8}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -2304,7 +2318,7 @@ export default function AulaConjuntos({
           numero={8}
           titulo="Irracionais e ℝ"
           descricao="Os números que 'escapam' das frações: dízimas infinitas e não periódicas, a reta real completa e as pegadinhas da CESGRANRIO."
-          gradiente="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700"
+          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -2544,6 +2558,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             index={8}
             variant="emerald"
@@ -2598,7 +2614,7 @@ export default function AulaConjuntos({
           numero={9}
           titulo="Leis de De Morgan"
           descricao="As duas leis que transformam complementares de operações — imprescindíveis para simplificar expressões e resolver questões avançadas da CESGRANRIO."
-          gradiente="bg-gradient-to-br from-blue-600 via-blue-600 to-indigo-700"
+          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -2853,6 +2869,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             index={9}
             variant="cyan"
@@ -2891,9 +2909,9 @@ export default function AulaConjuntos({
 
                       <QuizInterativo
               questoes={quizDeMorgan}
-              titulo="Quiz — Leis de De Morgan"
+              titulo="QUIZ: De Morgan"
               icone="🔁"
-              numero={9}
+              numero={10}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2907,7 +2925,7 @@ export default function AulaConjuntos({
           numero={10}
           titulo="Simulado Final — Teoria dos Conjuntos"
           descricao="Revisão express de todas as fórmulas e estratégias de prova, seguida de 10 questões no estilo CESGRANRIO para você sair daqui pronto para gabaritar."
-          gradiente="bg-gradient-to-br from-amber-500 via-orange-500 to-rose-600"
+          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -3260,6 +3278,8 @@ export default function AulaConjuntos({
 
 
           
+
+
 
 
 

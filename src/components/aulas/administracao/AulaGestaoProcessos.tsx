@@ -116,6 +116,15 @@ export default function AulaGestaoProcessos({
     return completedModules.has(MODULE_DEFS[index - 1].id);
   };
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -147,7 +156,7 @@ export default function AulaGestaoProcessos({
             numero={1}
             titulo="Conceitos de Processos Organizacionais"
             descricao="Domine a espinha dorsal da gestão moderna: como as organizações transformam insumos em valor."
-            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -155,7 +164,7 @@ export default function AulaGestaoProcessos({
               index={1}
               title="Fundamentos do Processo de Negócio"
               description="A definição técnica e os componentes vitais que caem na sua prova."
-              variant={getModuleVariant(1)}
+              variant={mv[1]}
             />
 
             <ContentAccordion
@@ -338,16 +347,18 @@ export default function AulaGestaoProcessos({
 
 
 
+
+
 <ModuleConsolidation
-            index={1}
-            variant={getModuleVariant(1)}
+            index={2}
+            variant={mv[1]}
             video={{
               videoId: "T3Z7M-0eEG8",
               title: "Hierarquia e Tipos de Processos",
               duration: "18:45",
             }}
             resumoVisual={{
-              moduloNome: "Conceitos de Processos",
+              moduloNome: "Módulo 1",
               tituloAula: "Gestão de Processos",
               materia: "Administração",
               images: [
@@ -381,9 +392,9 @@ export default function AulaGestaoProcessos({
 
                       <QuizInterativo
               questoes={quizM1}
-              titulo="Desafio de Nivelamento - Processos"
-              numero={1}
-              variant={getModuleVariant(1)}
+              titulo="QUIZ: Módulo Nº 1"
+              numero={3}
+              variant={mv[1]}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -398,15 +409,15 @@ export default function AulaGestaoProcessos({
             numero={2} 
             titulo="BPM - Business Process Management" 
             descricao="A disciplina gerencial que une métodos, ferramentas e tecnologia para maximizar desempenho." 
-            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800" 
+            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400" 
           />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={2} 
+              index={1} 
               title="A Filosofia e o Ciclo de Vida" 
               description="Do planejamento estratégico ao refinamento contínuo (Baseado no CBOK)." 
-              variant={getModuleVariant(2)} 
+              variant={mv[2]} 
             />
             
             <ContentAccordion slides={[
@@ -539,16 +550,18 @@ export default function AulaGestaoProcessos({
 
 
 
+
+
 <ModuleConsolidation 
             index={2} 
-            variant={getModuleVariant(2)} 
+            variant={mv[2]} 
             video={{ 
               videoId: "T3Z7M-0eEG8", 
               title: "A Jornada do Ciclo de Vida BPM", 
               duration: "21:10" 
             }} 
             resumoVisual={{ 
-              moduloNome: "BPM", 
+              moduloNome: "Módulo 2", 
               tituloAula: "Gestão de Processos", 
               materia: "Administração", 
               images: [
@@ -580,7 +593,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM2} 
               titulo="Desafio de Mestre - Ciclo BPM" 
               numero={2} 
-              variant={getModuleVariant(2)} 
+              variant={mv[2]} 
               icone="🎯" 
               onComplete={(score) => handleModuleComplete("modulo-2", score)} 
             />
@@ -595,15 +608,15 @@ export default function AulaGestaoProcessos({
             numero={3} 
             titulo="Modelagem com BPMN 2.0" 
             descricao="A linguagem universal para que humanos e máquinas entendam o fluxo de trabalho." 
-            gradiente="bg-gradient-to-br from-amber-600 to-orange-700" 
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400" 
           />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={3} 
+              index={1} 
               title="Gramática do Processo" 
               description="Alfabeto visual: Eventos, Atividades, Gateways e Artefatos." 
-              variant={getModuleVariant(3)} 
+              variant={mv[3]} 
             />
             
             <ContentAccordion slides={[
@@ -739,16 +752,18 @@ export default function AulaGestaoProcessos({
 
 
 
+
+
 <ModuleConsolidation 
-            index={3} 
-            variant={getModuleVariant(3)} 
+            index={2} 
+            variant={mv[3]} 
             video={{ 
               videoId: "T3Z7M-0eEG8", 
               title: "Modelando seu Primeiro Processo BPMN", 
               duration: "25:00" 
             }} 
             resumoVisual={{ 
-              moduloNome: "Modelagem BPMN", 
+              moduloNome: "Módulo 3", 
               tituloAula: "Gestão de Processos", 
               materia: "Administração", 
               images: [
@@ -778,9 +793,9 @@ export default function AulaGestaoProcessos({
 
                       <QuizInterativo 
               questoes={quizM3} 
-              titulo="Simulado Técnico - BPMN 2.0" 
+              titulo="QUIZ: Módulo Nº 3" 
               numero={3} 
-              variant={getModuleVariant(3)} 
+              variant={mv[3]} 
               icone="📊" 
               onComplete={(score) => handleModuleComplete("modulo-3", score)} 
             />
@@ -795,15 +810,15 @@ export default function AulaGestaoProcessos({
             numero={4} 
             titulo="Mapeamento e Diagnóstico" 
             descricao="Ouvir a operação, identificar gargalos e desenhar o futuro da eficiência." 
-            gradiente="bg-gradient-to-br from-rose-600 to-pink-800" 
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400" 
           />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={4} 
+              index={1} 
               title="AS-IS e TO-BE: A Ponte para a Melhoria" 
               description="Não se melhora o que não se entende. O mapeamento é a fotografia da realidade." 
-              variant={getModuleVariant(4)} 
+              variant={mv[4]} 
             />
             
             <ContentAccordion slides={[
@@ -936,16 +951,18 @@ export default function AulaGestaoProcessos({
 
 
 
+
+
 <ModuleConsolidation 
-            index={4} 
-            variant={getModuleVariant(4)} 
+            index={2} 
+            variant={mv[4]} 
             video={{ 
               videoId: "T3Z7M-0eEG8", 
               title: "Do Caos à Ordem: AS-IS e TO-BE", 
               duration: "18:45" 
             }} 
             resumoVisual={{ 
-              moduloNome: "Diagnóstico", 
+              moduloNome: "Módulo 4", 
               tituloAula: "Gestão de Processos", 
               materia: "Administração", 
               images: [
@@ -974,7 +991,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM4} 
               titulo="Fixação - Mapeamento e Diagnóstico" 
               numero={4} 
-              variant={getModuleVariant(4)} 
+              variant={mv[4]} 
               icone="🎯" 
               onComplete={(score) => handleModuleComplete("modulo-4", score)} 
             />
@@ -989,15 +1006,15 @@ export default function AulaGestaoProcessos({
             numero={5} 
             titulo="Melhoria Contínua e PDCA" 
             descricao="A arte de nunca estar satisfeito com o 'bom o suficiente'. Evolução constante." 
-            gradiente="bg-gradient-to-br from-violet-600 to-purple-800" 
+            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400" 
           />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={5} 
+              index={1} 
               title="Filosofias de Otimização" 
               description="Do Ciclo de Deming ao rigor estatístico do Six Sigma." 
-              variant={getModuleVariant(5)} 
+              variant={mv[5]} 
             />
             
             <ContentAccordion slides={[
@@ -1136,16 +1153,18 @@ export default function AulaGestaoProcessos({
 
 
 
+
+
 <ModuleConsolidation 
-            index={5} 
-            variant={getModuleVariant(5)} 
+            index={2} 
+            variant={mv[5]} 
             video={{ 
               videoId: "pSg4e7jS_9I", 
               title: "Lean Six Sigma na Indústria de Petróleo", 
               duration: "15:20" 
             }} 
             resumoVisual={{ 
-              moduloNome: "Melhoria Contínua", 
+              moduloNome: "Módulo 5", 
               tituloAula: "Gestão de Processos", 
               materia: "Administração", 
               images: [
@@ -1175,9 +1194,9 @@ export default function AulaGestaoProcessos({
 
                       <QuizInterativo 
               questoes={quizM5} 
-              titulo="Desafio de Mestre - Melhoria Contínua" 
-              numero={5} 
-              variant={getModuleVariant(5)} 
+              titulo="QUIZ: Módulo Nº 5" 
+              numero={3} 
+              variant={mv[5]} 
               icone="🚀" 
               onComplete={(score) => handleModuleComplete("modulo-5", score)} 
             />
@@ -1197,10 +1216,10 @@ export default function AulaGestaoProcessos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={6} 
+              index={1} 
               title="A Ciência da Medição" 
               description="Eficiência, Eficácia e Efetividade: A trindade do desempenho." 
-              variant={getModuleVariant(6)} 
+              variant={mv[6]} 
             />
             
             <ContentAccordion slides={[
@@ -1302,16 +1321,18 @@ export default function AulaGestaoProcessos({
 
 
 
+
+
 <ModuleConsolidation 
-            index={6} 
-            variant={getModuleVariant(6)} 
+            index={2} 
+            variant={mv[6]} 
             video={{ 
               videoId: "T3Z7M-0eEG8", 
               title: "Dominando KPIs de Processos", 
               duration: "20:00" 
             }} 
             resumoVisual={{ 
-              moduloNome: "Indicadores", 
+              moduloNome: "Módulo 6", 
               tituloAula: "Gestão de Processos", 
               materia: "Administração", 
               images: [
@@ -1342,7 +1363,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM6} 
               titulo="Fixação - KPIs e Métricas" 
               numero={6} 
-              variant={getModuleVariant(6)} 
+              variant={mv[6]} 
               icone="📈" 
               onComplete={(score) => handleModuleComplete("modulo-6", score)} 
             />
@@ -1362,10 +1383,10 @@ export default function AulaGestaoProcessos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={7} 
+              index={1} 
               title="A Era Digital nos Processos" 
               description="Sistemas, robôs e orquestração de fluxos." 
-              variant={getModuleVariant(7)} 
+              variant={mv[7]} 
             />
             
             <ContentAccordion slides={[
@@ -1452,16 +1473,18 @@ export default function AulaGestaoProcessos({
 
 
 
+
+
 <ModuleConsolidation 
-            index={7} 
-            variant={getModuleVariant(7)} 
+            index={2} 
+            variant={mv[7]} 
             video={{ 
               videoId: "T3Z7M-0eEG8", 
               title: "A Revolução do BPMS", 
               duration: "12:10" 
             }} 
             resumoVisual={{ 
-              moduloNome: "Automação", 
+              moduloNome: "Módulo 7", 
               tituloAula: "Gestão de Processos", 
               materia: "Administração", 
               images: [
@@ -1487,9 +1510,9 @@ export default function AulaGestaoProcessos({
 
                       <QuizInterativo 
               questoes={quizM7} 
-              titulo="Fixação - Automação e BPMS" 
-              numero={7} 
-              variant={getModuleVariant(7)} 
+              titulo="QUIZ: Módulo Nº 7" 
+              numero={3} 
+              variant={mv[7]} 
               icone="⚙️" 
               onComplete={(score) => handleModuleComplete("modulo-7", score)} 
             />
@@ -1509,10 +1532,10 @@ export default function AulaGestaoProcessos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={8} 
+              index={1} 
               title="A Cultura da Qualidade" 
               description="Do Ishikawa ao Pareto: Resolvendo problemas na raiz." 
-              variant={getModuleVariant(8)} 
+              variant={mv[8]} 
             />
             
             <ContentAccordion slides={[
@@ -1594,16 +1617,18 @@ export default function AulaGestaoProcessos({
 
 
 
+
+
 <ModuleConsolidation 
-            index={8} 
-            variant={getModuleVariant(8)} 
+            index={2} 
+            variant={mv[8]} 
             video={{ 
               videoId: "T3Z7M-0eEG8", 
               title: "ISO 9001 na Prática Operacional", 
               duration: "25:00" 
             }} 
             resumoVisual={{ 
-              moduloNome: "Qualidade", 
+              moduloNome: "Módulo 8", 
               tituloAula: "Gestão de Processos", 
               materia: "Administração", 
               images: [
@@ -1635,7 +1660,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM8} 
               titulo="Fixação - Gestão da Qualidade" 
               numero={8} 
-              variant={getModuleVariant(8)} 
+              variant={mv[8]} 
               icone="🏆" 
               onComplete={(score) => handleModuleComplete("modulo-8", score)} 
             />
@@ -1655,10 +1680,10 @@ export default function AulaGestaoProcessos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={9} 
+              index={1} 
               title="A Cadeia de Valor Integrada" 
               description="Upstream, Midstream e Downstream." 
-              variant={getModuleVariant(9)} 
+              variant={mv[9]} 
             />
             
             <ContentAccordion slides={[
@@ -1724,16 +1749,18 @@ export default function AulaGestaoProcessos({
 
 
 
+
+
 <ModuleConsolidation 
-            index={9} 
-            variant={getModuleVariant(9)} 
+            index={2} 
+            variant={mv[9]} 
             video={{ 
               videoId: "T3Z7M-0eEG8", 
               title: "Explorando a Cadeia de Valor Petrobras", 
               duration: "30:00" 
             }} 
             resumoVisual={{ 
-              moduloNome: "Cadeia de Valor", 
+              moduloNome: "Módulo 9", 
               tituloAula: "Gestão de Processos", 
               materia: "Administração", 
               images: [
@@ -1763,9 +1790,9 @@ export default function AulaGestaoProcessos({
 
                       <QuizInterativo 
               questoes={quizM9} 
-              titulo="Fixação - Cenário Petrobras" 
-              numero={9} 
-              variant={getModuleVariant(9)} 
+              titulo="QUIZ: Módulo Nº 9" 
+              numero={3} 
+              variant={mv[9]} 
               icone="🏭" 
               onComplete={(score) => handleModuleComplete("modulo-9", score)} 
             />
@@ -1785,10 +1812,10 @@ export default function AulaGestaoProcessos({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={10} 
+              index={1} 
               title="O Checklist de Ouro" 
               description="O que você NÃO pode esquecer para a prova da CESGRANRIO." 
-              variant={getModuleVariant(10)} 
+              variant={mv[10]} 
             />
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -1871,7 +1898,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM10} 
               titulo="GRANDE SIMULADO - GESTÃO DE PROCESSOS" 
               numero={10} 
-              variant={getModuleVariant(10)} 
+              variant={mv[10]} 
               icone="👑" 
               onComplete={(score) => handleModuleComplete("modulo-10", score)} 
             />

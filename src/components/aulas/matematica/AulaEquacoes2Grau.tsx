@@ -183,7 +183,7 @@ export default function AulaEquacoes2Grau({
             numero={1}
             titulo="Conceitos Fundamentais"
             descricao="Desvendando a estrutura das equações do 2º grau."
-            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -362,6 +362,10 @@ export default function AulaEquacoes2Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={1}
             variant="blue"
@@ -371,7 +375,7 @@ export default function AulaEquacoes2Grau({
               duration: "12:30",
             }}
             resumoVisual={{
-              moduloNome: "Conceitos Fundamentais",
+              moduloNome: "Módulo 1",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
@@ -420,8 +424,8 @@ export default function AulaEquacoes2Grau({
 
                       <QuizInterativo
               questoes={quizM1}
-              titulo="Fixação - Conceitos Fundamentais"
-              numero={1}
+              titulo="QUIZ: Módulo Nº 1"
+              numero={2}
               variant="blue"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -437,7 +441,7 @@ export default function AulaEquacoes2Grau({
             numero={2}
             titulo="Fórmula de Bhaskara"
             descricao="A fórmula mais famosa da Matemática. Dominando o a, b e c."
-            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -610,6 +614,10 @@ export default function AulaEquacoes2Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -619,7 +627,7 @@ export default function AulaEquacoes2Grau({
               duration: "14:15",
             }}
             resumoVisual={{
-              moduloNome: "Fórmula de Bhaskara",
+              moduloNome: "Módulo 2",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
@@ -683,7 +691,7 @@ export default function AulaEquacoes2Grau({
             numero={3}
             titulo="Equações Avançadas"
             descricao="Problemas físicos e geométricos que geram equações de 2º grau."
-            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -824,6 +832,10 @@ export default function AulaEquacoes2Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={3}
             variant="amber"
@@ -833,7 +845,7 @@ export default function AulaEquacoes2Grau({
               duration: "13:40",
             }}
             resumoVisual={{
-              moduloNome: "Equações Avançadas",
+              moduloNome: "Módulo 3",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
@@ -882,8 +894,8 @@ export default function AulaEquacoes2Grau({
 
                       <QuizInterativo
               questoes={quizM3}
-              titulo="Fixação - Equações Avançadas"
-              numero={3}
+              titulo="QUIZ: Módulo Nº 3"
+              numero={4}
               variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -899,7 +911,7 @@ export default function AulaEquacoes2Grau({
             numero={4}
             titulo="O Gráfico e os Vértices"
             descricao="Encontrando o limite absoluto: Lucro Máximo e Altura Máxima."
-            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1039,6 +1051,10 @@ export default function AulaEquacoes2Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={4}
             variant="cyan"
@@ -1048,7 +1064,7 @@ export default function AulaEquacoes2Grau({
               duration: "15:20",
             }}
             resumoVisual={{
-              moduloNome: "Problemas Contextualizados",
+              moduloNome: "Módulo 4",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
@@ -1119,7 +1135,7 @@ export default function AulaEquacoes2Grau({
             numero={5}
             titulo="Desafio Parcial"
             descricao="Consolidando os conhecimentos dos primeiros 4 módulos."
-            gradiente="bg-gradient-to-br from-indigo-600 to-purple-700"
+            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1192,6 +1208,10 @@ export default function AulaEquacoes2Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="violet"
@@ -1201,7 +1221,7 @@ export default function AulaEquacoes2Grau({
               duration: "16:45",
             }}
             resumoVisual={{
-              moduloNome: "Desafio Parcial",
+              moduloNome: "Módulo 5",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
@@ -1249,8 +1269,8 @@ export default function AulaEquacoes2Grau({
 
                       <QuizInterativo
               questoes={quizM5}
-              titulo="Fixação - Desafio Parcial"
-              numero={5}
+              titulo="QUIZ: Módulo Nº 5"
+              numero={6}
               variant="violet"
               icone="📊"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -1266,7 +1286,7 @@ export default function AulaEquacoes2Grau({
             numero={6}
             titulo="Soma e Produto (Relações de Vieta)"
             descricao="Os atalhos dos ninjas: descubra raízes sem Bhaskara."
-            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1373,6 +1393,10 @@ export default function AulaEquacoes2Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={6}
             variant="emerald"
@@ -1382,7 +1406,7 @@ export default function AulaEquacoes2Grau({
               duration: "12:50",
             }}
             resumoVisual={{
-              moduloNome: "Soma e Produto",
+              moduloNome: "Módulo 6",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
@@ -1446,7 +1470,7 @@ export default function AulaEquacoes2Grau({
             numero={7}
             titulo="Gráficos e Parábolas"
             descricao="Visualizando raízes, vértices e o comportamento das parábolas."
-            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1566,6 +1590,10 @@ export default function AulaEquacoes2Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={7}
             variant="cyan"
@@ -1575,7 +1603,7 @@ export default function AulaEquacoes2Grau({
               duration: "14:30",
             }}
             resumoVisual={{
-              moduloNome: "Gráficos e Parábolas",
+              moduloNome: "Módulo 7",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
@@ -1624,8 +1652,8 @@ export default function AulaEquacoes2Grau({
 
                       <QuizInterativo
               questoes={quizM7}
-              titulo="Fixação - Gráficos e Parábolas"
-              numero={7}
+              titulo="QUIZ: Módulo Nº 7"
+              numero={8}
               variant="cyan"
               icone="📈"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
@@ -1641,7 +1669,7 @@ export default function AulaEquacoes2Grau({
             numero={8}
             titulo="Resolução Reversa"
             descricao="Do resultado para a equação: encontre coeficientes e parâmetros."
-            gradiente="bg-gradient-to-br from-rose-600 to-pink-700"
+            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1755,6 +1783,10 @@ export default function AulaEquacoes2Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={8}
             variant="rose"
@@ -1764,7 +1796,7 @@ export default function AulaEquacoes2Grau({
               duration: "13:15",
             }}
             resumoVisual={{
-              moduloNome: "Resolução Reversa",
+              moduloNome: "Módulo 8",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
@@ -1830,7 +1862,7 @@ export default function AulaEquacoes2Grau({
             numero={9}
             titulo="Aplicações Petrobras"
             descricao="Problemas reais de otimização em operações de petróleo e gás."
-            gradiente="bg-gradient-to-br from-yellow-600 to-orange-700"
+            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1945,6 +1977,10 @@ export default function AulaEquacoes2Grau({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={9}
             variant="amber"
@@ -1954,7 +1990,7 @@ export default function AulaEquacoes2Grau({
               duration: "15:45",
             }}
             resumoVisual={{
-              moduloNome: "Aplicações Petrobras",
+              moduloNome: "Módulo 9",
               tituloAula: "Equações do 2º Grau",
               materia: "Matemática",
               images: [
@@ -2003,8 +2039,8 @@ export default function AulaEquacoes2Grau({
 
                       <QuizInterativo
               questoes={quizM9}
-              titulo="Fixação - Aplicações Petrobras"
-              numero={9}
+              titulo="QUIZ: Módulo Nº 9"
+              numero={10}
               variant="amber"
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
@@ -2020,7 +2056,7 @@ export default function AulaEquacoes2Grau({
             numero={10}
             titulo="Simulado Mestre"
             descricao="Teste seu domínio absoluto sobre Equações do 2º Grau."
-            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
           />
 
           {showCompletionBadge ? (

@@ -174,7 +174,7 @@ export default function AulaPontuacao({
             numero={1}
             titulo="Visão Geral e Funções"
             descricao="Pontuar não é apenas pausar para respirar; é garantir a clareza e a coesão do texto técnico."
-            gradiente="bg-gradient-to-br from-blue-700 to-indigo-900"
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -384,9 +384,9 @@ export default function AulaPontuacao({
 
           <QuizInterativo
             questoes={QUIZ_M1_PONTUACAO}
-            titulo="Fixação - Módulo 1"
+            titulo="QUIZ: Módulo Nº 1"
             icone="🎯"
-            numero={1}
+            numero={4}
             variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
@@ -400,7 +400,7 @@ export default function AulaPontuacao({
             numero={2}
             titulo="Vírgula: Proibições Fatais"
             descricao="O que NUNCA fazer se você quiser ser aprovado. Erros que zeram questões de gramática."
-            gradiente="bg-gradient-to-br from-red-700 to-orange-800"
+            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -650,7 +650,7 @@ export default function AulaPontuacao({
             numero={3}
             titulo="Vírgula: Termos Essenciais"
             descricao="Enumerações, repetições e a organização básica da frase."
-            gradiente="bg-gradient-to-br from-blue-600 to-cyan-800"
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -799,9 +799,9 @@ export default function AulaPontuacao({
 
           <QuizInterativo
             questoes={QUIZ_M3_PONTUACAO}
-            titulo="Fixação - Módulo 3"
+            titulo="QUIZ: Módulo Nº 3"
             icone="🎯"
-            numero={3}
+            numero={5}
             variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
@@ -815,7 +815,7 @@ export default function AulaPontuacao({
             numero={4}
             titulo="Vírgula: Aposto e Vocativo"
             descricao="Isole quem você chama e explique o que você cita."
-            gradiente="bg-gradient-to-br from-cyan-600 to-teal-800"
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -980,7 +980,7 @@ export default function AulaPontuacao({
             numero={5}
             titulo="Vírgula: Adjuntos Deslocados"
             descricao="Quando o advérbio sai do seu lugar original e exige o sinal."
-            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1131,9 +1131,9 @@ export default function AulaPontuacao({
 
           <QuizInterativo
             questoes={QUIZ_M5_PONTUACAO}
-            titulo="Fixação - Módulo 5"
+            titulo="QUIZ: Módulo Nº 5"
             icone="🎯"
-            numero={5}
+            numero={7}
             variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
@@ -1147,7 +1147,7 @@ export default function AulaPontuacao({
             numero={6}
             titulo="Vírgula: Orações Coordenadas"
             descricao="O fetiche da Cesgranrio: vírgulas antes de MAS, PORÉM e o polêmico E."
-            gradiente="bg-gradient-to-br from-teal-700 to-cyan-900"
+            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1350,7 +1350,7 @@ export default function AulaPontuacao({
             numero={7}
             titulo="Vírgula: Orações Subordinadas"
             descricao="A diferença vital entre explicar para todos ou restringir para alguns."
-            gradiente="bg-gradient-to-br from-amber-600 to-orange-800"
+            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1495,9 +1495,9 @@ export default function AulaPontuacao({
 
           <QuizInterativo
             questoes={QUIZ_M7_PONTUACAO}
-            titulo="Fixação - Módulo 7"
+            titulo="QUIZ: Módulo Nº 7"
             icone="🎯"
-            numero={7}
+            numero={9}
             variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
           />
@@ -1511,7 +1511,7 @@ export default function AulaPontuacao({
             numero={8}
             titulo="Ponto e Ponto e Vírgula"
             descricao="Organização de listas e períodos extensos que já possuem vírgulas internas."
-            gradiente="bg-gradient-to-br from-orange-700 to-red-900"
+            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1717,7 +1717,7 @@ export default function AulaPontuacao({
             numero={9}
             titulo="Sinais Complementares"
             descricao="Dois-pontos, Travessões e Parênteses: a estética da explicação."
-            gradiente="bg-gradient-to-br from-red-800 to-black"
+            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1890,9 +1890,9 @@ export default function AulaPontuacao({
 
           <QuizInterativo
             questoes={QUIZ_M9_PONTUACAO}
-            titulo="Fixação - Módulo 9"
+            titulo="QUIZ: Módulo Nº 9"
             icone="🎯"
-            numero={9}
+            numero={11}
             variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
@@ -1906,7 +1906,7 @@ export default function AulaPontuacao({
             numero={10}
             titulo="Simulado Final"
             descricao="Teste seu domínio perante uma bateria definitiva focada em Pontuação Global Cesgranrio."
-            gradiente="bg-gradient-to-br from-indigo-900 to-black"
+            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -2125,9 +2125,9 @@ export default function AulaPontuacao({
           ) : (
             <QuizInterativo
               questoes={QUIZ_FINAL_PONTUACAO}
-              titulo="Simulado de Conclusão"
+              titulo="QUIZ: Módulo Nº 10"
               icone="🏆"
-              numero={10}
+              numero={12}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />

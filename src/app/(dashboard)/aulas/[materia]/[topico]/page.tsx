@@ -8,7 +8,11 @@ import {
   getTopicoById,
   getNextTopico,
   getPrevTopico,
+  MateriaConteudo,
+  Topico,
 } from "@/data/conteudo";
+import { getProgramaDeEstudos } from "@/data/programa-estudos";
+import { PROFISSOES } from "@/lib/profissoes-edital";
 import { notFound } from "next/navigation";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 import { AulaProps } from "@/components/aulas/shared";
@@ -256,6 +260,79 @@ const AulaSistemasLineares = dynamic<AulaProps>(
   },
 );
 
+const AulaReadingStrategies = dynamic<AulaProps>(
+  () => import("@/components/aulas/ingles/AulaReadingStrategies"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaVerbTenses = dynamic<AulaProps>(
+  () => import("@/components/aulas/ingles/AulaVerbTenses"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaConnectors = dynamic<AulaProps>(
+  () => import("@/components/aulas/ingles/AulaConnectors"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaVocabulary = dynamic<AulaProps>(
+  () => import("@/components/aulas/ingles/AulaVocabulary"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaFalseCognates = dynamic<AulaProps>(
+  () => import("@/components/aulas/ingles/AulaFalseCognates"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaTextComprehension = dynamic<AulaProps>(
+  () => import("@/components/aulas/ingles/AulaTextComprehension"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const PetroLingoMain = dynamic(
+  () => import("@/components/aulas/ingles/PetroLingoMain"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-screen bg-background" />,
+  },
+);
+
+// ===== OPERAÇÃO - BLOCO I: FUNDAMENTOS =====
+const AulaTermodinamica = dynamic<AulaProps>(
+  () => import("@/components/aulas/operacao/AulaTermodinamica"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaMecanicaFluidos = dynamic<AulaProps>(
+  () => import("@/components/aulas/operacao/AulaMecanicaFluidos"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
 // ===== ADMINISTRAÇÃO - BLOCO I: GESTÃO ESTRATÉGICA =====
 const AulaPlanejamentoEstrategico = dynamic<AulaProps>(
   () => import("@/components/aulas/administracao/AulaPlanejamentoEstrategico"),
@@ -336,6 +413,15 @@ const AulaAdministrativoTributario = dynamic<AulaProps>(
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
   },
 );
+
+const AulaEngenhariaSoftware = dynamic<AulaProps>(
+  () => import("@/components/aulas/ti/AulaEngenhariaSoftware"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
 
 interface PageProps {
   params: Promise<{ materia: string; topico: string }>;
@@ -548,10 +634,49 @@ O rendimento máximo teórico é dado pelo Ciclo de Carnot:
 
 export default function TopicoPage({ params }: PageProps) {
   const { materia: materiaId, topico: topicoId } = use(params);
-  const materia = getMateriaById(materiaId);
-  const topico = getTopicoById(materiaId, topicoId);
-  const nextTopico = getNextTopico(materiaId, topicoId);
-  const prevTopico = getPrevTopico(materiaId, topicoId);
+  // Resolve Materia and Topic (including dynamic ones)
+  const [materia, setMateria] = useState<MateriaConteudo | null>(null);
+  const [topico, setTopico] = useState<Topico | null>(null);
+  const [nextTopico, setNextTopico] = useState<Topico | undefined>(undefined);
+  const [prevTopico, setPrevTopico] = useState<Topico | undefined>(undefined);
+  const [isResolving, setIsResolving] = useState(true);
+
+  useEffect(() => {
+    let resolvedMateria = getMateriaById(materiaId);
+    let resolvedTopico = getTopicoById(materiaId, topicoId);
+
+    // Se é uma matéria específica, buscar nos programas de estudo das profissões
+    if (!resolvedMateria && materiaId.startsWith("especifica-")) {
+      for (const p of PROFISSOES) {
+        const programa = getProgramaDeEstudos(p.id);
+        const match = programa.find((m) => m.id === materiaId);
+        if (match) {
+          resolvedMateria = match;
+          resolvedTopico = match.topicos.find((t) => t.id === topicoId);
+          break;
+        }
+      }
+    }
+
+    if (resolvedMateria) {
+      setMateria(resolvedMateria);
+      setTopico(resolvedTopico || null);
+
+      // Resolve Next/Prev for dynamic materia
+      const currentIndex = resolvedMateria.topicos.findIndex(
+        (t) => t.id === topicoId,
+      );
+      if (currentIndex !== -1) {
+        setNextTopico(resolvedMateria.topicos[currentIndex + 1]);
+        setPrevTopico(resolvedMateria.topicos[currentIndex - 1]);
+      } else {
+        // Fallback for non-dynamic lessons
+        setNextTopico(getNextTopico(materiaId, topicoId));
+        setPrevTopico(getPrevTopico(materiaId, topicoId));
+      }
+    }
+    setIsResolving(false);
+  }, [materiaId, topicoId]);
 
   // Definir título da página no cabeçalho
   useSetPageTitle(topico?.titulo || "");
@@ -566,6 +691,10 @@ export default function TopicoPage({ params }: PageProps) {
   useEffect(() => {
     setIsCompleted(completed);
   }, [completed]);
+
+  if (isResolving) {
+    return <div className="animate-pulse h-screen bg-background" />;
+  }
 
   if (!materia || !topico) {
     notFound();
@@ -1118,6 +1247,127 @@ export default function TopicoPage({ params }: PageProps) {
               prevTopico={prevTopico}
               nextTopico={nextTopico}
             />
+          ) : materiaId === "ingles" && topicoId === "petrolingo" ? (
+            <PetroLingoMain />
+          ) : materiaId === "especifica-bloco-i-fundamentos" && topicoId === "termodinamica" ? (
+            <AulaTermodinamica
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "ingles" && topicoId === "reading-strategies" ? (
+            <AulaReadingStrategies
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "ingles" && topicoId === "verb-tenses" ? (
+            <AulaVerbTenses
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "ingles" && topicoId === "connectors" ? (
+            <AulaConnectors
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "ingles" && topicoId === "vocabulary" ? (
+            <AulaVocabulary
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "ingles" && topicoId === "false-cognates" ? (
+            <AulaFalseCognates
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "ingles" && topicoId === "comprehension" ? (
+            <AulaTextComprehension
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
           ) : materiaId === "especifica-bloco-i-gestao-estrategica" && topicoId === "planejamento-estrategico" ? (
             <AulaPlanejamentoEstrategico
               onComplete={handleCompleteAula}
@@ -1288,6 +1538,61 @@ export default function TopicoPage({ params }: PageProps) {
               prevTopico={prevTopico}
               nextTopico={nextTopico}
             />
+          ) : (materiaId === "especifica-bloco-i-desenvolvimento" || 
+               materiaId === "especifica-bloco-ii-engenharia-de-software" || 
+               materiaId === "especifica-bloco-iii-arquitetura-e-bd") ? (
+            <AulaEngenhariaSoftware
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : (materiaId === "especifica-bloco-i-redes-e-comunicacao" ||
+               materiaId === "especifica-bloco-ii-sistemas-operacionais" ||
+               materiaId === "especifica-bloco-iii-gestao-e-nuvem") ? (
+            <AulaEngenhariaSoftware
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "especifica-bloco-i-fundamentos" && topicoId === "mecanica-fluidos" ? (
+            <AulaMecanicaFluidos
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
           ) : conteudo ? (
             conteudo.secoes.map((secao, index) => (
               <section
@@ -1313,16 +1618,57 @@ export default function TopicoPage({ params }: PageProps) {
               </section>
             ))
           ) : (
-            <div className="max-w-7xl mx-auto px-6 py-8">
-              <div className="bg-slate-800/50 rounded-xl p-8 border border-slate-700/50 text-center">
-                <span className="text-6xl mb-4 block">🚧</span>
-                <h2 className="text-2xl font-bold text-white mb-2">
-                  Conteúdo em Desenvolvimento
-                </h2>
-                <p className="text-gray-400">
-                  Esta aula está sendo preparada. Em breve você terá acesso ao
-                  conteúdo completo!
-                </p>
+            <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
+              <div className="relative overflow-hidden bg-white/5 dark:bg-slate-900/40 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl p-8 md:p-16 text-center group">
+                {/* Decorative background glow */}
+                <div className={`absolute -top-24 -right-24 w-64 h-64 bg-gradient-to-br ${materia.cor} opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-700`} />
+                <div className={`absolute -bottom-24 -left-24 w-64 h-64 bg-gradient-to-br ${materia.cor} opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-700`} />
+
+                <div className="relative z-10 flex flex-col items-center">
+                  <div className={`flex items-center justify-center w-24 h-24 rounded-3xl bg-gradient-to-br ${materia.cor} text-5xl mb-8 shadow-2xl shadow-primary/20 animate-bounce-subtle`}>
+                    {materia.icone}
+                  </div>
+                  
+                  <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 uppercase tracking-tight">
+                    {topico.titulo}
+                  </h2>
+                  
+                  <div className="h-1 w-20 bg-gradient-to-r from-transparent via-primary to-transparent mb-8" />
+                  
+                  <h3 className="text-xl md:text-2xl font-bold text-yellow-500 mb-6 flex items-center gap-3">
+                    <span className="animate-pulse">🚧</span> Conteúdo em Preparação Especial
+                  </h3>
+                  
+                  <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed mb-12">
+                     O conteúdo desta aula está sendo finalizado pela nossa equipe pedagógica para garantir a melhor experiência de aprendizado focada no edital da <span className="text-foreground font-bold italic">Petrobras</span>. 
+                     Em breve, vídeos, resumos e questões estarão disponíveis aqui.
+                  </p>
+                  
+                  <div className="flex flex-wrap justify-center gap-4">
+                    <Link 
+                      href={`/aulas/${materiaId}`}
+                      className="px-8 py-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-foreground font-bold transition-all flex items-center gap-2 group/btn"
+                    >
+                      <span className="group-hover/btn:-translate-x-1 transition-transform">←</span>
+                      Voltar para a ementa
+                    </Link>
+                    <button 
+                      disabled
+                      className="px-8 py-4 rounded-2xl bg-slate-800 text-slate-500 border border-slate-700 font-bold opacity-50 cursor-not-allowed"
+                    >
+                      Material em breve
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Sugestão de matérias básicas */}
+              <div className="mt-12 text-center">
+                <p className="text-muted-foreground mb-4">Enquanto isso, que tal revisar os conhecimentos básicos?</p>
+                <div className="flex justify-center gap-4 flex-wrap">
+                  <Link href="/aulas/portugues" className="text-sm font-bold text-blue-400 hover:text-blue-300 transition underline underline-offset-4">Português</Link>
+                  <Link href="/aulas/matematica" className="text-sm font-bold text-purple-400 hover:text-purple-300 transition underline underline-offset-4">Matemática</Link>
+                </div>
               </div>
             </div>
           )}
@@ -1372,6 +1718,7 @@ export default function TopicoPage({ params }: PageProps) {
             "lei-13303",
             "rlcp",
             "administrativo-tributario",
+            "reading-strategies",
           ].includes(topicoId) && (
             <div className="max-w-7xl mx-auto px-6 pb-32">
               <div className="mt-12 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-8 border border-yellow-500/30 text-center">

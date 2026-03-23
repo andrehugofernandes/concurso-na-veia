@@ -176,7 +176,7 @@ export default function AulaProgressoesPg({
             numero={1}
             titulo="Conceitos Fundamentais de PG"
             descricao="A razão que multiplica: progressão geométrica explicada."
-            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -280,6 +280,10 @@ export default function AulaProgressoesPg({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={1}
             variant="blue"
@@ -289,7 +293,7 @@ export default function AulaProgressoesPg({
               duration: "10:20",
             }}
             resumoVisual={{
-              moduloNome: "Conceitos PG",
+              moduloNome: "Módulo 1",
               tituloAula: "Progressões Geométricas",
               materia: "Matemática",
               images: [
@@ -334,8 +338,8 @@ export default function AulaProgressoesPg({
 
                       <QuizInterativo
               questoes={quizM1}
-              titulo="Fixação - Conceitos PG"
-              numero={1}
+              titulo="QUIZ: Módulo Nº 1"
+              numero={2}
               variant="blue"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -351,7 +355,7 @@ export default function AulaProgressoesPg({
             numero={2}
             titulo="Termo Geral da PG"
             descricao="A fórmula para encontrar qualquer termo sem calcular todos."
-            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -448,6 +452,10 @@ export default function AulaProgressoesPg({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -457,7 +465,7 @@ export default function AulaProgressoesPg({
               duration: "12:15",
             }}
             resumoVisual={{
-              moduloNome: "Termo Geral PG",
+              moduloNome: "Módulo 2",
               tituloAula: "Progressões Geométricas",
               materia: "Matemática",
               images: [
@@ -519,7 +527,7 @@ export default function AulaProgressoesPg({
             numero={3}
             titulo="Soma de Termos (Finita)"
             descricao="Calcule a soma dos primeiros n termos de uma PG."
-            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -624,6 +632,10 @@ export default function AulaProgressoesPg({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={3}
             variant="amber"
@@ -633,7 +645,7 @@ export default function AulaProgressoesPg({
               duration: "11:50",
             }}
             resumoVisual={{
-              moduloNome: "Soma Finita PG",
+              moduloNome: "Módulo 3",
               tituloAula: "Progressões Geométricas",
               materia: "Matemática",
               images: [
@@ -680,8 +692,8 @@ export default function AulaProgressoesPg({
 
                       <QuizInterativo
               questoes={quizM3}
-              titulo="Fixação - Soma Finita"
-              numero={3}
+              titulo="QUIZ: Módulo Nº 3"
+              numero={4}
               variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -697,7 +709,7 @@ export default function AulaProgressoesPg({
             numero={4}
             titulo="Soma Infinita (Série PG)"
             descricao="O limite da soma quando n tende ao infinito."
-            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -814,6 +826,10 @@ export default function AulaProgressoesPg({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={4}
             variant="cyan"
@@ -823,7 +839,7 @@ export default function AulaProgressoesPg({
               duration: "13:40",
             }}
             resumoVisual={{
-              moduloNome: "Série Infinita PG",
+              moduloNome: "Módulo 4",
               tituloAula: "Progressões Geométricas",
               materia: "Matemática",
               images: [
@@ -885,7 +901,7 @@ export default function AulaProgressoesPg({
             numero={5}
             titulo="Propriedades Especiais de PG"
             descricao="Relações e padrões únicos das progressões geométricas."
-            gradiente="bg-gradient-to-br from-violet-600 to-purple-800"
+            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -989,6 +1005,10 @@ export default function AulaProgressoesPg({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={5}
             variant="violet"
@@ -998,7 +1018,7 @@ export default function AulaProgressoesPg({
               duration: "10:50",
             }}
             resumoVisual={{
-              moduloNome: "Propriedades PG",
+              moduloNome: "Módulo 5",
               tituloAula: "Progressões Geométricas",
               materia: "Matemática",
               images: [
@@ -1044,8 +1064,8 @@ export default function AulaProgressoesPg({
 
                       <QuizInterativo
               questoes={quizM5}
-              titulo="Fixação - Propriedades"
-              numero={5}
+              titulo="QUIZ: Módulo Nº 5"
+              numero={6}
               variant="violet"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -1061,7 +1081,7 @@ export default function AulaProgressoesPg({
             numero={6}
             titulo="Crescimento e Decaimento"
             descricao="Exponencial na natureza: população, radioatividade, juros."
-            gradiente="bg-gradient-to-br from-teal-600 to-cyan-800"
+            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1173,6 +1193,10 @@ export default function AulaProgressoesPg({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={6}
             variant="teal"
@@ -1182,7 +1206,7 @@ export default function AulaProgressoesPg({
               duration: "12:25",
             }}
             resumoVisual={{
-              moduloNome: "Crescimento/Decaimento",
+              moduloNome: "Módulo 6",
               tituloAula: "Progressões Geométricas",
               materia: "Matemática",
               images: [
@@ -1244,7 +1268,7 @@ export default function AulaProgressoesPg({
             numero={7}
             titulo="Matemática Financeira com PG"
             descricao="Juros compostos, prestações e investimentos."
-            gradiente="bg-gradient-to-br from-indigo-600 to-purple-800"
+            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1358,6 +1382,10 @@ export default function AulaProgressoesPg({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={7}
             variant="indigo"
@@ -1367,7 +1395,7 @@ export default function AulaProgressoesPg({
               duration: "13:10",
             }}
             resumoVisual={{
-              moduloNome: "Matemática Financeira",
+              moduloNome: "Módulo 7",
               tituloAula: "Progressões Geométricas",
               materia: "Matemática",
               images: [
@@ -1413,8 +1441,8 @@ export default function AulaProgressoesPg({
 
                       <QuizInterativo
               questoes={quizM7}
-              titulo="Fixação - Matemática Financeira"
-              numero={7}
+              titulo="QUIZ: Módulo Nº 7"
+              numero={8}
               variant="indigo"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
@@ -1430,7 +1458,7 @@ export default function AulaProgressoesPg({
             numero={8}
             titulo="Comparação: PA vs PG"
             descricao="Diferenças fundamentais entre progressão aritmética e geométrica."
-            gradiente="bg-gradient-to-br from-rose-600 to-red-800"
+            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1539,6 +1567,10 @@ export default function AulaProgressoesPg({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={8}
             variant="rose"
@@ -1548,7 +1580,7 @@ export default function AulaProgressoesPg({
               duration: "11:30",
             }}
             resumoVisual={{
-              moduloNome: "PA vs PG",
+              moduloNome: "Módulo 8",
               tituloAula: "Progressões Geométricas",
               materia: "Matemática",
               images: [
@@ -1612,7 +1644,7 @@ export default function AulaProgressoesPg({
             numero={9}
             titulo="Aplicações Petrobras"
             descricao="Produção, reservas e investimentos em óleo e gás."
-            gradiente="bg-gradient-to-br from-orange-600 to-red-800"
+            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1728,6 +1760,10 @@ export default function AulaProgressoesPg({
 
 
 
+
+
+
+
 <ModuleConsolidation
             index={9}
             variant="orange"
@@ -1737,7 +1773,7 @@ export default function AulaProgressoesPg({
               duration: "12:40",
             }}
             resumoVisual={{
-              moduloNome: "Aplicações Petrobras",
+              moduloNome: "Módulo 9",
               tituloAula: "Progressões Geométricas",
               materia: "Matemática",
               images: [
@@ -1782,8 +1818,8 @@ export default function AulaProgressoesPg({
 
                       <QuizInterativo
               questoes={quizM9}
-              titulo="Fixação - Aplicações Petrobras"
-              numero={9}
+              titulo="QUIZ: Módulo Nº 9"
+              numero={10}
               variant="orange"
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
@@ -1799,7 +1835,7 @@ export default function AulaProgressoesPg({
             numero={10}
             titulo="Simulado Mestre"
             descricao="Teste final: integre todos os conceitos de progressões geométricas."
-            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
           />
 
           {showCompletionBadge ? (
