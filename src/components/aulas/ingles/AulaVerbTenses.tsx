@@ -16,6 +16,7 @@ import {
   FlipCard,
   TimelineItem,
   ComparisonSide,
+  Comparison,
 } from "../shared";
 
 import { getModuleVariant } from "@/lib/moduleColors";
