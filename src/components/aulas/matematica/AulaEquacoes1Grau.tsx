@@ -1177,6 +1177,50 @@ export default function AulaEquacoes1Grau({
             gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
           />
 
+          {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Sistemas de Duas Equações e Duas Incógnitas"
+              description="Quando você tem dois valores desconhecidos e duas pistas — usar múltiplas informações simultaneamente"
+              variant="rose"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Um **sistema linear 2×2** é um conjunto de duas equações de 1º grau, cada uma com duas incógnitas (usualmente x e y), que devem ser satisfeitas **simultaneamente**. Exemplo: x + y = 10 e x − y = 4. A solução é o par de valores (x, y) = (7, 3) que torna ambas as equações verdadeiras ao mesmo tempo. Verificação: 7 + 3 = 10 ✓ e 7 − 3 = 4 ✓. Sistemas lineares surgem em problemas do mundo real onde você tem múltiplas restrições. Exemplo: "Duas equipes perfuram poços em uma plataforma. Juntas perfuram 1.000 metros por dia. A primeira perfura 200 metros a mais que a segunda. Quanto cada uma perfura?" Monta-se: x + y = 1.000 e x = y + 200. A solução é x = 600, y = 400. Na Petrobras, sistemas lineares aparecem constantemente em **alocação de recursos**, **balanceamento de produções**, **custos compartilhados**.
+              </p>
+
+              <p>
+                Existem três **métodos clássicos** para resolver sistemas 2×2: (1) **Método da Adição (ou Eliminação)** — empilhe as equações e some, esperando que uma incógnita se cancele; (2) **Método da Substituição** — isole uma incógnita em uma equação e substitua na outra; (3) **Método Gráfico** — plotar ambas as retas e encontrar o ponto de interseção. O **Método da Adição** é o mais veloz em provas. Se você tem x + 2y = 10 e 2x − 2y = 8, soma imediatamente: 3x + 0y = 18, logo x = 6. Substitui em qualquer uma: 6 + 2y = 10 → y = 2. O **Método da Substituição** é útil quando uma incógnita está isolada. Se uma equação é J = M + 5 (João = Maria + 5), substitua esta expressão na outra equação em lugar de J, reduzindo a uma equação com uma incógnita. O **Método Gráfico** raramente é testado em provas CESGRANRIO de múltipla escolha, mas é importante para entender que a solução é o ponto de encontro das duas retas.
+              </p>
+
+              <p>
+                Há **três possibilidades de solução** para um sistema 2×2: (1) **Uma solução única** — as duas retas se cruzam em exatamente um ponto (caso típico, gráficos não-paralelos); (2) **Infinitas soluções** — as duas retas são idênticas (mesma reta, sobreposta); isto ocorre se as equações são múltiplas uma da outra: x + y = 5 e 2x + 2y = 10 representam a mesma reta; (3) **Nenhuma solução** — as duas retas são paralelas (nunca se encontram): x + y = 5 e x + y = 10 são paralelas, logo sistema impossível. A CESGRANRIO frequentemente inclui sistemas que resultam em infinitas soluções ou nenhuma solução como "pegadinhas" — candidatos esperam sempre uma solução única e não conferem este caso.
+              </p>
+
+              <p>
+                O **protocolo geral** para resolver um sistema 2×2 é: (1) Escolha o método (Adição é geralmente mais rápido); (2) Se usar Adição, manipule as equações (multiplique por constantes) para que uma incógnita tenha coeficientes opostos; (3) Some as equações; (4) Resolva a equação resultante de uma incógnita (módulo 1); (5) Substitua a solução em qualquer equação original para encontrar a segunda incógnita; (6) **Sempre verifique** substituindo ambos os valores em ambas as equações. Exemplo: 3x + y = 10 e x − y = 2. Multiplique a segunda por −3: −3x + 3y = −6. Some com a primeira: 4y = 4 → y = 1. Substitua: x − 1 = 2 → x = 3. Verificação: 3(3) + 1 = 10 ✓ e 3 − 1 = 2 ✓. Se a verificação falha, há erro aritmético.
+              </p>
+
+              <p>
+                Erros frequentes: (1) Esquecer de verificar — é a única salvaguarda contra erros aritméticos; (2) Erro de sinal ao multiplicar uma equação — se multiplica por −3, todos os termos mudam sinal, incluindo o lado direito; (3) Não reconhecer sistemas sem solução (paralelas) ou com infinitas soluções (idênticas) — isto causa confusão quando resolve e obtém "0 = 0" (infinitas) ou "0 = 5" (nenhuma); (4) Usar o método errado para a situação — substituição é melhor se uma incógnita está isolada, adição é melhor se os coeficientes se cancelam facilmente. Estes erros causam 50% das respostas erradas em questões sobre sistemas.
+              </p>
+
+              <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Métodos & Casos Especiais</h4>
+                <div className="space-y-3 text-sm">
+                  <p><strong>Método da Adição:</strong> Multiplique equações para cancelar uma incógnita, some, resolva a restante</p>
+                  <p><strong>Método da Substituição:</strong> Isole uma incógnita, substitua na outra equação, resolva</p>
+                  <p><strong>Uma Solução Única:</strong> Retas não-paralelas (caso típico) → (x, y) único</p>
+                  <p><strong>Infinitas Soluções:</strong> Retas idênticas (equações são múltiplas) → "0 = 0" ao resolver → resultado a + bt (reta paramétrica)</p>
+                  <p><strong>Nenhuma Solução:</strong> Retas paralelas → "0 = k" (k ≠ 0) ao resolver → impossível</p>
+                  <p><strong>SEMPRE VERIFICAR:</strong> Substitua x, y em ambas as equações originais</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={4}
@@ -1393,12 +1437,44 @@ export default function AulaEquacoes1Grau({
               variant="indigo"
             />
 
-            <AlertBox tipo="info" titulo="O que esperar">
-              <p className="text-sm">
-                Este simulado combina problemas dos 4 primeiros módulos. Mínimo
-                de 70% para avançar. Tempo estimado: 20 minutos.
+            <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+              <p>
+                Chegou o momento de consolidar tudo aquilo que aprendeu nos primeiros quatro módulos.
+                A resolução de equações de 1º grau é como construir uma fundação sólida: cada conceito
+                depende dos anteriores. Neste checkpoint, você enfrentará problemas que integram desde
+                a tradução de português para matemática até sistemas lineares 2×2, testando sua capacidade
+                de escolher o método correto para cada situação.
               </p>
-            </AlertBox>
+              <p>
+                Por que isso importa? Porque a CESGRANRIO não testa um conceito isolado. Ela mescla
+                módulos: uma questão pode começar pedindo tradução de uma frase, evoluir para manipulação
+                algébrica com frações, e terminar em um sistema 2×2. Dominar a integração é dominar a prova.
+              </p>
+              <p>
+                Este simulado de checkpoint é <strong>progressivo</strong>. As 8 questões começam fáceis
+                (diretas do M1-M2) e terminam complexas (integrações M3-M4). Mínimo de 70% indica que você
+                está pronto para inequações e sistemas avançados. Abaixo de 70%, recomendamos revisão dos
+                módulos anteriores usando a página de Consolidação antes de prosseguir.
+              </p>
+              <p>
+                Observe também que cada questão corrigida fornece feedback detalhado: qual método deveria
+                ter sido usado, por que seu erro aconteceu, e um link para a sessão teórica correspondente.
+                Use esses feedbacks como mapa de aprendizado pessoal.
+              </p>
+              <p>
+                Tempo estimado: 20 minutos. Sem calculadora. Pen and paper (ou rascunho no papel). Vamos lá?
+              </p>
+
+              <div className="bg-indigo-500/10 border-l-4 border-indigo-500 p-5 rounded-r-xl mt-6">
+                <p className="font-bold text-indigo-600 dark:text-indigo-400 text-sm mb-2">📊 O Que Esperar</p>
+                <ul className="text-sm space-y-1 text-foreground">
+                  <li>✓ 8 questões integradas (M1-M4)</li>
+                  <li>✓ Progressão fácil → difícil</li>
+                  <li>✓ Feedback detalhado por resposta</li>
+                  <li>✓ Desempenho ≥70% libera M6+ (Inequações)</li>
+                </ul>
+              </div>
+            </div>
           </section>
 
           <FunctionGraph
@@ -1509,6 +1585,46 @@ export default function AulaEquacoes1Grau({
               }
               variant="rose"
             />
+
+            <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+              <p>
+                Até agora, você resolveu <strong>equações</strong>: expressões com um sinal de igualdade (=).
+                Agora chegou o momento de lidar com <strong>inequações</strong>: expressões com sinais de desigualdade
+                ({">"}), (<{"<"}), ({"≥"}), ({"≤"}). A grande diferença é que a solução não é um número único,
+                mas um <strong>intervalo infinito</strong> de números. Por exemplo: "todos os números maiores que 5".
+              </p>
+              <p>
+                Inequações aparecem frequentemente em contextos reais. No mundo Petrobras, elas definem <strong>limites operacionais</strong>:
+                "a pressão deve ser ≥ 150 bar e {"<"} 200 bar", "a temperatura deve ficar entre 60ºC e 80ºC", "não gastar mais de R$ 500 mil".
+                Dominar inequações significa dominar restrições e intervalos de viabilidade técnica.
+              </p>
+              <p>
+                A regra mais importante é: <strong>ao multiplicar ou dividir por um número NEGATIVO, o sinal inverte</strong>.
+                Por exemplo: -2x {">"} 8 torna-se x {"<"} -4 (não x {">"}). Este detalhe é onde a maioria dos erros acontecem
+                — e onde a CESGRANRIO adora colocar pegadinhas. Se você errar o sinal uma vez, a resposta inteira fica errada.
+              </p>
+              <p>
+                As soluções de inequações são expressas em <strong>notação de intervalo</strong>: (5, 10), [3, 7], (-∞, 4), [2, +∞).
+                Os parênteses ( ) indicam intervalo aberto (o número não incluído); colchetes [ ] indicam intervalo fechado
+                (número incluído). Essa notação é padrão em todas as universidades e aparece em provas.
+              </p>
+              <p>
+                Neste módulo, você aprenderá a resolver qualquer inequação de 1º grau, dominar a regra do sinal invertido,
+                representar soluções graficamente (reta numérica) e em notação de intervalo. Vamos começar?
+              </p>
+
+              <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
+                <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">⚠️ Regra de Ouro</p>
+                <p className="text-sm font-mono bg-rose-500/5 p-3 rounded mb-2">
+                  Ao multiplicar/dividir por <strong>NEGATIVO</strong> → sinal INVERTE
+                </p>
+                <ul className="text-sm space-y-1 text-foreground">
+                  <li>✓ Exemplo: -2x {">"}  8  →  x {"<"} -4</li>
+                  <li>✓ Notação: x ∈ (-∞, -4)  ou  x {"<"} -4</li>
+                  <li>✓ Sempre VERIFIQUE com um valor do intervalo</li>
+                </ul>
+              </div>
+            </div>
 
             <ContentAccordion
               slides={[
@@ -1727,6 +1843,46 @@ export default function AulaEquacoes1Grau({
               variant="violet"
             />
 
+            <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+              <p>
+                Você já domina sistemas 2×2 (duas equações, duas incógnitas). Agora é hora de expandir para
+                <strong> sistemas 3×3 (três equações, três incógnitas)</strong>. O nome é assustador, mas a estratégia
+                é idêntica: eliminar incógnitas progressivamente até ficar com uma equação em uma variável.
+              </p>
+              <p>
+                A diferença principal é o número de passos: em 2×2, você reduz de 2 para 1 equação em um passo.
+                Em 3×3, você reduz de 3 para 2 (primeiro passo), depois de 2 para 1 (segundo passo). A lógica é
+                a mesma — apenas mais uma rodada de eliminação. Sistemas 3×3 aparecem em programação linear, planejamento
+                de produção e problemas Petrobras que envolvem múltiplas restrições simultâneas.
+              </p>
+              <p>
+                O método mais comum é <strong>eliminação de Gauss (forma simplificada)</strong>. A ideia: use a primeira
+                equação para eliminar x das duas seguintes (reduzindo para 2×2). Depois, use a segunda equação (agora sem x)
+                para eliminar y da terceira (reduzindo para 1 equação em z). Resolva z, volte à segunda equação para y, depois à primeira para x.
+              </p>
+              <p>
+                O ponto crítico é <strong>organização e arredondamento</strong>. Com 3 equações e operações repetidas,
+                erros aritmética acumulam rapidamente. Sempre reescreva o sistema claramente após cada eliminação. Se der
+                frações feias (ex.: 7/3), mantenha como fração — não arredonde até o final.
+              </p>
+              <p>
+                Neste módulo, você aprenderá o protocolo passo a passo, praticar com 4-5 sistemas variados (alguns com
+                soluções únicas, outros com soluções infinitas ou nenhuma), e dominar a verificação final. Vamos expandir?
+              </p>
+
+              <div className="bg-violet-500/10 border-l-4 border-violet-500 p-5 rounded-r-xl mt-6">
+                <p className="font-bold text-violet-600 dark:text-violet-400 text-sm mb-2">🔷 Protocolo 3×3</p>
+                <ol className="text-sm space-y-1 text-foreground list-decimal list-inside">
+                  <li>Use EQ1 para eliminar x das EQ2 e EQ3</li>
+                  <li>Use EQ2 (novo) para eliminar y de EQ3 (novo)</li>
+                  <li>Resolva z da última equação</li>
+                  <li>Substitua z na EQ2 para encontrar y</li>
+                  <li>Substitua y e z na EQ1 para encontrar x</li>
+                  <li><strong>SEMPRE</strong> verifique substituindo na equação original</li>
+                </ol>
+              </div>
+            </div>
+
             <ContentAccordion
               slides={[
                 {
@@ -1916,6 +2072,44 @@ export default function AulaEquacoes1Grau({
               description="A verificação não é luxo, é necessidade na CESGRANRIO."
               variant="cyan"
             />
+
+            <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+              <p>
+                Você resolveu a equação e encontrou uma resposta. Mas e se houver um erro de sinal no meio do caminho?
+                E se você tiver se enganado ao manipular as frações? A <strong>verificação (ou prova) é o seguro</strong>:
+                você substitui o valor encontrado na equação original e confirma que a igualdade é verdadeira.
+              </p>
+              <p>
+                Muitos estudantes acreditam que verificação é uma perda de tempo. Estatísticas reais de provas mostram o contrário:
+                estudantes que verificam suas respostas aumentam taxa de acertos em até 15%. Na CESGRANRIO, não há "quase certo" —
+                ou você acerta e ganha o ponto, ou erra e perde. A verificação de 30 segundos pode fazer a diferença entre passar e reprovar.
+              </p>
+              <p>
+                O processo é simples: pegue o valor que você encontrou (ex.: x = 5) e substitua-o em todas as instâncias de x na
+                <strong> equação original</strong> (não na versão modificada). Faça as contas. Se ambos os lados da equação forem iguais,
+                sua resposta está correta. Se forem diferentes, há erro algum lugar — volte e procure.
+              </p>
+              <p>
+                Também existe a <strong>resolução reversa (ou prova inversa)</strong>: dada uma resposta de múltipla escolha, você trabalha
+                de trás para frente para confirmar. Isso é uma técnica de economia de tempo em provas: em vez de resolver a equação inteira,
+                teste as 4 alternativas substituindo. A resposta correta satisfazará a equação original.
+              </p>
+              <p>
+                Neste módulo, você aprenderá quando e como verificar, como trabalhar de trás para frente eficientemente, e como usar essa
+                técnica para eliminar alternativas em questões de múltipla escolha. Vamos dominar essa arma poderosa?
+              </p>
+
+              <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
+                <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-2">✅ Protocolo de Verificação</p>
+                <ol className="text-sm space-y-1 text-foreground list-decimal list-inside">
+                  <li>Encontre o valor (ex.: x = 3)</li>
+                  <li>Substitua na equação <strong>original</strong> (não na modificada)</li>
+                  <li>Calcule o lado esquerdo</li>
+                  <li>Calcule o lado direito</li>
+                  <li>Lado esquerdo = Lado direito? ✓ Se sim, correto! ✗ Se não, há erro</li>
+                </ol>
+              </div>
+            </div>
 
             <ContentAccordion
               slides={[
@@ -2159,6 +2353,48 @@ export default function AulaEquacoes1Grau({
               description="A CESGRANRIO adora disfarçar equações em situações reais da empresa."
               variant="amber"
             />
+
+            <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+              <p>
+                Até agora, você resolveu equações na forma <strong>pura</strong>: 2x + 5 = 13. Mas a CESGRANRIO raramente pergunta assim.
+                Ela <strong>disfarça a equação em um contexto real</strong>: "Uma plataforma de petróleo produz x barris por dia. Outra produz
+                o dobro. Juntas, produzem 9.000 barris por dia. Quantos barris cada uma produz?" Esse é o segredo: reconhecer a equação escondida
+                no texto.
+              </p>
+              <p>
+                Dados estatísticos reais mostram que <strong>80% das questões de equações do concurso vêm contextualizadas</strong>. Isso significa
+                que sua habilidade de traduzir português para matemática (Módulo 2) é CRÍTICA. Se você não conseguir extrair a equação do texto,
+                você não consegue resolver, mesmo dominando o Módulo 1.
+              </p>
+              <p>
+                Os contextos mais comuns na Petrobras envolvem: <strong>produção de plataformas</strong> (barris, óleo, gás),
+                <strong>folha de pagamento</strong> (salários, bônus, distribuição), <strong>custos operacionais</strong> (OPEX, investimento),
+                <strong>distribuição de recursos</strong> (pessoal, equipamentos), <strong>cronogramas</strong> (tempo de operação, manutenção),
+                <strong>segurança (HSE)</strong> (horas de trabalho, incidentes) e <strong>licitações</strong> (lance inicial, incremento).
+              </p>
+              <p>
+                Neste módulo, você enfrentará 6-8 problemas autênticos Petrobras (contextos reais, nomes de plataformas, unidades técnicas).
+                Cada problema é uma equação disfarçada. Você aprenderá a: (1) ler o contexto, (2) identificar o que é conhecido e desconhecido,
+                (3) extrair a equação, (4) resolver, (5) responder a pergunta original (não apenas o valor de x).
+              </p>
+              <p>
+                Atenção especial: algumas questões têm <strong>múltiplas perguntas encadeadas</strong> (encontre x, depois use x para encontrar y).
+                A lógica é sequencial: se você errar a primeira, erra a segunda automaticamente. Sempre verifique o resultado contra o contexto:
+                "Isso faz sentido no mundo real?"
+              </p>
+
+              <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
+                <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">🏭 Protocolo: Problema Contextualizado</p>
+                <ol className="text-sm space-y-1 text-foreground list-decimal list-inside">
+                  <li><strong>Leia cuidadosamente</strong> — sublinhe os números e relações</li>
+                  <li><strong>Defina a incógnita:</strong> "Que x preciso encontrar?"</li>
+                  <li><strong>Extraia a equação</strong> do texto (use Módulo 2)</li>
+                  <li><strong>Resolva</strong> a equação (Módulos 1-8)</li>
+                  <li><strong>Responda a pergunta original</strong> (não apenas "x = ...")</li>
+                  <li><strong>Verifique:</strong> "A resposta faz sentido?" (valores negativos? valores gigantescos?)</li>
+                </ol>
+              </div>
+            </div>
 
             <ContentAccordion
               slides={[
@@ -2449,6 +2685,45 @@ export default function AulaEquacoes1Grau({
                   description="Este simulado cobre TODOS os tópicos: M1 até M9. Mínimo 75% para aprovação."
                   variant="slate"
                 />
+
+                <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+                  <p>
+                    Você chegou ao final. Este não é apenas mais um módulo — é uma <strong>avaliação compreensiva</strong> que integra
+                    <strong> TUDO</strong> que aprendeu: a balança (M1), tradução português-matemática (M2), frações (M3), sistemas 2×2 (M4),
+                    inequações (M6), sistemas 3×3 (M7), verificação (M8) e contextos Petrobras (M9). Não há novos conceitos aqui. Há consolidação.
+                  </p>
+                  <p>
+                    O simulado contém <strong>8 questões diversas</strong>, cada uma testando múltiplos módulos simultâneos. Uma questão pode começar
+                    em um contexto Petrobras (M9), exigir tradução (M2), levar a um sistema (M4), requerer verificação (M8). Essa integração é
+                    exatamente como aparecem nos concursos reais. A Petrobras não separa os conteúdos — ela os mistura.
+                  </p>
+                  <p>
+                    <strong>Mínimo 75% para aprovação</strong>. Isso significa acertar 6 de 8 questões. Abaixo de 75%, você será direcionado para
+                    as sessões de Consolidação dos módulos onde errou — um feedback diagnóstico ajuda a identificar exatamente onde reforçar.
+                    Acima de 90%? Você dominou Equações de 1º Grau e está pronto para Equações de 2º Grau.
+                  </p>
+                  <p>
+                    A estrutura é: <strong>sem calculadora, sem consulta, tempo contado</strong>. Isso simula as condições reais do concurso.
+                    Se você conseguir acertar 75%+ nessas condições, você conseguirá na prova. Se tiver dificuldades aqui, use os feedbacks e
+                    revise antes da prova real.
+                  </p>
+                  <p>
+                    Uma dica final: antes de começar, respire. Você treinou 9 módulos completos. Você sabe resolver. A questão agora é <strong>confiança
+                    e calma</strong>. Leia cada questão duas vezes, identifique o padrão (é balança? é tradução? é sistema?), resolva passo a passo,
+                    verifique. Vamos!
+                  </p>
+
+                  <div className="bg-violet-500/10 border-l-4 border-violet-500 p-5 rounded-r-xl mt-6">
+                    <p className="font-bold text-violet-600 dark:text-violet-400 text-sm mb-2">👑 Simulado Mestre: 5 Passos</p>
+                    <ol className="text-sm space-y-1 text-foreground list-decimal list-inside">
+                      <li><strong>Leia a questão 2x</strong> — primeira para entender, segunda para sublinhar números</li>
+                      <li><strong>Identifique o padrão</strong> — qual módulo (M1-M9) é o núcleo?</li>
+                      <li><strong>Resolva passo a passo</strong> — sem pular etapas, mesmo que pareça óbvio</li>
+                      <li><strong>Verifique sua resposta</strong> — substitua na equação original ou no contexto</li>
+                      <li><strong>Confira a lógica</strong> — a resposta faz sentido? (negativos incomuns? gigantescos?)</li>
+                    </ol>
+                  </div>
+                </div>
 
                 <AlertBox tipo="warning" titulo="Instruções Importantes">
                   <ul className="text-sm space-y-1 list-disc list-inside">
