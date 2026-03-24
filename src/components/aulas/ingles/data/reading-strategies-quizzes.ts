@@ -669,3 +669,807 @@ export const QUIZ_M5_FINAL: QuizQuestion[] = [
     explicacao: "Mainstream = predominante/geral (usado para mídia ou tendências)."
   }
 ];
+
+// ── MÓDULO 5: INFERENCING FROM CONTEXT ────────────────────────────
+export const QUIZ_M5_INFERENCING: QuizQuestion[] = [
+  {
+    id: "ing-m5-q1",
+    pergunta: "In 'The offshore platform experienced severe weather yesterday, so operations were temporarily suspended', the word 'suspended' most likely means:",
+    opcoes: [
+      { label: "a", valor: "Iniciadas." },
+      { label: "b", valor: "Pausadas / Interrompidas." },
+      { label: "c", valor: "Expandidas." },
+      { label: "d", valor: "Duplicadas." },
+      { label: "e", valor: "Finalizadas permanentemente." }
+    ],
+    correta: "b",
+    explicacao: "Context clues: 'severe weather' and 'so' (consequence) suggest operations were halted, not expanded."
+  },
+  {
+    id: "ing-m5-q2",
+    pergunta: "Given the sentence: 'The reservoir's permeability is crucial for oil extraction; without it, fluid cannot flow through rock formations', 'permeability' refers to:",
+    opcoes: [
+      { label: "a", valor: "A rocha muito dura." },
+      { label: "b", valor: "A capacidade de permitir passagem de fluidos." },
+      { label: "c", valor: "Um tipo de óleo especial." },
+      { label: "d", valor: "A profundidade do poço." },
+      { label: "e", valor: "Um equipamento de segurança." }
+    ],
+    correta: "b",
+    explicacao: "The text defines permeability through context: 'crucial for... fluid cannot flow through rock formations'."
+  },
+  {
+    id: "ing-m5-q3",
+    pergunta: "In a Petrobras safety manual: 'All employees must adhere to stringent HSE protocols. Non-compliance can result in disciplinary action.' The word 'stringent' infers:",
+    opcoes: [
+      { label: "a", valor: "Flexíveis e simples." },
+      { label: "b", valor: "Rigorosos / Estritos." },
+      { label: "c", valor: "Opcionais e sugestionados." },
+      { label: "d", valor: "Antigos e obsoletos." },
+      { label: "e", valor: "Apenas recomendados." }
+    ],
+    correta: "b",
+    explicacao: "Context clue: 'Non-compliance can result in disciplinary action' suggests strict requirements."
+  },
+  {
+    id: "ing-m5-q4",
+    pergunta: "From the text: 'Although the new refinery was commissioned last year, it has already improved efficiency by 25%', the word 'commissioned' suggests:",
+    opcoes: [
+      { label: "a", valor: "Danificada ou quebrada." },
+      { label: "b", valor: "Colocada em funcionamento / Ativada." },
+      { label: "c", valor: "Vendida para outro país." },
+      { label: "d", valor: "Estudada em um laboratório." },
+      { label: "e", valor: "Destruída em um acidente." }
+    ],
+    correta: "b",
+    explicacao: "Context: 'last year' and 'already improved efficiency' suggest it became operational."
+  },
+  {
+    id: "ing-m5-q5",
+    pergunta: "In 'Petrobras' commitment to mitigating carbon emissions demonstrates its alignment with global sustainability goals', 'mitigating' infers:",
+    opcoes: [
+      { label: "a", valor: "Aumentar as emissões." },
+      { label: "b", valor: "Reduzir / Minimizar." },
+      { label: "c", valor: "Ignorar completamente." },
+      { label: "d", valor: "Medir exatamente." },
+      { label: "e", valor: "Transferir para outro país." }
+    ],
+    correta: "b",
+    explicacao: "Context: 'commitment... alignment with global sustainability goals' suggests reducing, not increasing."
+  },
+  {
+    id: "ing-m5-q6",
+    pergunta: "From the passage: 'The FPSO vessel utilizes state-of-the-art technology to process and store crude oil offshore, eliminating the need for onshore infrastructure', 'state-of-the-art' means:",
+    opcoes: [
+      { label: "a", valor: "Muito velho e ineficaz." },
+      { label: "b", valor: "A mais avançada / A mais moderna." },
+      { label: "c", valor: "Simples e artesanal." },
+      { label: "d", valor: "Feita por artistas." },
+      { label: "e", valor: "Restaurada e histórica." }
+    ],
+    correta: "b",
+    explicacao: "In technology contexts, 'state-of-the-art' always means the most advanced available."
+  },
+  {
+    id: "ing-m5-q7",
+    pergunta: "Consider: 'The engineer flagged several impediments to project completion: insufficient funding, labor shortages, and equipment delays.' What does 'flagged' suggest?",
+    opcoes: [
+      { label: "a", valor: "Ignorou completamente." },
+      { label: "b", valor: "Identificou / Chamou atenção para." },
+      { label: "c", valor: "Aplaudiu e elogiou." },
+      { label: "d", valor: "Destruiu deliberadamente." },
+      { label: "e", valor: "Traduziu para português." }
+    ],
+    correta: "b",
+    explicacao: "Context: 'several impediments' listed afterward suggests the engineer highlighted/pointed out issues."
+  },
+  {
+    id: "ing-m5-q8",
+    pergunta: "From a sustainability report: 'The company implemented comprehensive measures to curtail operational waste, achieving a 40% reduction in landfill disposal.' 'Curtail' infers:",
+    opcoes: [
+      { label: "a", valor: "Aumentar drasticamente." },
+      { label: "b", valor: "Reduzir / Limitar." },
+      { label: "c", valor: "Distribuir igualmente." },
+      { label: "d", valor: "Reciclar 100%." },
+      { label: "e", valor: "Ignorar e continuar." }
+    ],
+    correta: "b",
+    explicacao: "'achieved a 40% reduction' confirms that curtail = to reduce."
+  },
+  {
+    id: "ing-m5-q9",
+    pergunta: "In 'The offshore pipeline infrastructure is inherently vulnerable to corrosion due to saltwater exposure; therefore, regular inspections are mandatory.' 'Inherently' suggests:",
+    opcoes: [
+      { label: "a", valor: "Por acaso ou coincidência." },
+      { label: "b", valor: "Naturalmente / Essencialmente / Intrinsecamente." },
+      { label: "c", valor: "Apenas em teoria." },
+      { label: "d", valor: "Raramente ou nunca." },
+      { label: "e", valor: "Apenas quando chove." }
+    ],
+    correta: "b",
+    explicacao: "Context: 'due to saltwater exposure; therefore, regular inspections are mandatory' suggests a natural, built-in vulnerability."
+  },
+  {
+    id: "ing-m5-q10",
+    pergunta: "From the document: 'The committee deliberated for hours before reaching consensus on the new drilling standards.' What does 'deliberated' mean?",
+    opcoes: [
+      { label: "a", valor: "Votou rapidamente sem discussão." },
+      { label: "b", valor: "Discutiu cuidadosamente / Refletiu profundamente." },
+      { label: "c", valor: "Ignorou completamente." },
+      { label: "d", valor: "Tentou enganar os outros." },
+      { label: "e", valor: "Preparou documentos." }
+    ],
+    correta: "b",
+    explicacao: "'for hours before reaching consensus' suggests careful, thorough discussion."
+  }
+];
+
+// ── MÓDULO 6: MAIN IDEA & SUPPORTING DETAILS ─────────────────────
+export const QUIZ_M6_MAIN_IDEA: QuizQuestion[] = [
+  {
+    id: "ing-m6-q1",
+    pergunta: "TEXT: 'Petrobras invested $50 billion in exploration. The company drilled 15 new wells. Production increased 30% annually. Environmental standards were implemented in all operations.' What is the MAIN IDEA?",
+    opcoes: [
+      { label: "a", valor: "Environmental standards." },
+      { label: "b", valor: "Petrobras conducted significant expansion and modernization efforts." },
+      { label: "c", valor: "The company drilled 15 wells." },
+      { label: "d", valor: "Production increased." },
+      { label: "e", valor: "$50 billion was invested." }
+    ],
+    correta: "b",
+    explicacao: "The main idea encompasses all details; other options are supporting details."
+  },
+  {
+    id: "ing-m6-q2",
+    pergunta: "Paragraph: 'Global oil demand is declining due to renewable energy adoption. Many countries have set net-zero targets. Electric vehicles are becoming mainstream. Oil companies are diversifying into clean energy.' Which is NOT a supporting detail for the main idea?",
+    opcoes: [
+      { label: "a", valor: "Many countries have set net-zero targets." },
+      { label: "b", valor: "Electric vehicles are becoming mainstream." },
+      { label: "c", valor: "Oil companies are diversifying into clean energy." },
+      { label: "d", valor: "The sky is blue." },
+      { label: "e", valor: "Global oil demand is declining." }
+    ],
+    correta: "d",
+    explicacao: "'The sky is blue' is irrelevant to the topic of energy transition."
+  },
+  {
+    id: "ing-m6-q3",
+    pergunta: "In a technical document about pre-salt fields, the TOPIC SENTENCE is typically found:",
+    opcoes: [
+      { label: "a", valor: "Na última frase do parágrafo." },
+      { label: "b", valor: "No meio do parágrafo." },
+      { label: "c", valor: "Na primeira frase (geralmente)." },
+      { label: "d", valor: "Em uma nota de rodapé." },
+      { label: "e", valor: "No título do documento." }
+    ],
+    correta: "c",
+    explicacao: "Topic sentences usually appear first and introduce the paragraph's central idea."
+  },
+  {
+    id: "ing-m6-q4",
+    pergunta: "Paragraph: 'The blowout preventer (BOP) is a critical safety device. It stops uncontrolled oil flow. It monitors pressure. It can be operated remotely.' What is the main topic?",
+    opcoes: [
+      { label: "a", valor: "Pressure monitoring systems." },
+      { label: "b", valor: "Remote operation of equipment." },
+      { label: "c", valor: "The function and importance of blowout preventers." },
+      { label: "d", valor: "Oil flow calculations." },
+      { label: "e", valor: "Safety regulations only." }
+    ],
+    correta: "c",
+    explicacao: "All sentences describe the BOP's role; the main topic is the device itself and its importance."
+  },
+  {
+    id: "ing-m6-q5",
+    pergunta: "Which statement is a SUPPORTING DETAIL rather than the main idea?",
+    opcoes: [
+      { label: "a", valor: "Petrobras operates 36 refineries worldwide." },
+      { label: "b", valor: "The company maintains a complex global refining network to process crude oil." },
+      { label: "c", valor: "The refinery network is essential to Petrobras' business." },
+      { label: "d", valor: "Refining is a core operation of Petrobras." },
+      { label: "e", valor: "Petrobras has invested in infrastructure upgrades." }
+    ],
+    correta: "a",
+    explicacao: "'36 refineries' is a specific detail supporting the broader concept of a global network."
+  },
+  {
+    id: "ing-m6-q6",
+    pergunta: "In analyzing a paragraph's structure, you notice: Topic Sentence → 3 Examples → Conclusion. The examples are:",
+    opcoes: [
+      { label: "a", valor: "A ideia principal." },
+      { label: "b", valor: "Detalhes de suporte." },
+      { label: "c", valor: "Irrelevantes." },
+      { label: "d", valor: "Apenas opiniões." },
+      { label: "e", valor: "Contra-argumentos." }
+    ],
+    correta: "b",
+    explicacao: "Examples function as supporting details that illustrate and strengthen the main idea."
+  },
+  {
+    id: "ing-m6-q7",
+    pergunta: "A Cesgranrio question asks: 'Which of the following best summarizes the main idea of the passage?' What approach should you use?",
+    opcoes: [
+      { label: "a", valor: "Leia cada palavra atentamente." },
+      { label: "b", valor: "Use skimming para identificar o tópico geral." },
+      { label: "c", valor: "Memorize o parágrafo." },
+      { label: "d", valor: "Ignore o título." },
+      { label: "e", valor: "Escolha a resposta mais longa." }
+    ],
+    correta: "b",
+    explicacao: "Skimming efficiently identifies the main idea by focusing on topic sentences and key concepts."
+  },
+  {
+    id: "ing-m6-q8",
+    pergunta: "Passage structure: 'Introduction (Problem) → Historical Context → Current Solutions → Future Outlook (Conclusion)'. The historical context is:",
+    opcoes: [
+      { label: "a", valor: "A ideia principal." },
+      { label: "b", valor: "Um detalhe de suporte que contextualiza o problema." },
+      { label: "c", valor: "Irrelevante." },
+      { label: "d", valor: "Apenas opinião." },
+      { label: "e", valor: "A conclusão." }
+    ],
+    correta: "b",
+    explicacao: "Historical context provides background and support for understanding the problem."
+  },
+  {
+    id: "ing-m6-q9",
+    pergunta: "In a multi-paragraph text, how do you identify the OVERALL main idea?",
+    opcoes: [
+      { label: "a", valor: "Leia apenas o primeiro parágrafo." },
+      { label: "b", valor: "Leia apenas o último parágrafo." },
+      { label: "c", valor: "Identifique o tema geral conectando as ideias principais de cada parágrafo." },
+      { label: "d", valor: "Conte o número de palavras." },
+      { label: "e", valor: "Escolha aleatoriamente." }
+    ],
+    correta: "c",
+    explicacao: "The overall main idea emerges from synthesizing the main ideas of individual paragraphs."
+  },
+  {
+    id: "ing-m6-q10",
+    pergunta: "Paragraph: 'Deep-water drilling requires advanced robotics. ROVs (Remotely Operated Vehicles) perform inspections. Automation reduces human risk. Precision is enhanced by AI systems.' The main idea is:",
+    opcoes: [
+      { label: "a", valor: "ROVs são robôs." },
+      { label: "b", valor: "A IA é importante." },
+      { label: "c", valor: "Tecnologia avançada é essencial para operações em águas profundas." },
+      { label: "d", valor: "Humanos não devem trabalhar em plataformas." },
+      { label: "e", valor: "Os robôs são melhores que pessoas." }
+    ],
+    correta: "c",
+    explicacao: "All details illustrate how advanced technology is essential for deep-water operations."
+  }
+];
+
+// ── MÓDULO 7: CRITICAL READING & TONE ────────────────────────────
+export const QUIZ_M7_TONE: QuizQuestion[] = [
+  {
+    id: "ing-m7-q1",
+    pergunta: "TEXT: 'The environmental assessment revealed alarming levels of contamination. Immediate remediation is imperative. Delayed action would be catastrophic.' The author's TONE is:",
+    opcoes: [
+      { label: "a", valor: "Descontraído e humorístico." },
+      { label: "b", valor: "Urgente e alarmista." },
+      { label: "c", valor: "Dúbio e incerto." },
+      { label: "d", valor: "Elogiador e aprovador." },
+      { label: "e", valor: "Neutro e desinteressado." }
+    ],
+    correta: "b",
+    explicacao: "'Alarming', 'imperative', 'catastrophic' convey urgency and concern."
+  },
+  {
+    id: "ing-m7-q2",
+    pergunta: "Which author's PURPOSE is implied by: 'The company's renewable energy portfolio has increased substantially, positioning Petrobras as a leader in energy transition.'?",
+    opcoes: [
+      { label: "a", valor: "Criticar a empresa." },
+      { label: "b", valor: "Elogiar e promover a empresa." },
+      { label: "c", valor: "Questionar a credibilidade." },
+      { label: "d", valor: "Expressar dúvida." },
+      { label: "e", valor: "Advertir sobre riscos." }
+    ],
+    correta: "b",
+    explicacao: "'Substantially' and 'leader' suggest positive portrayal and promotion."
+  },
+  {
+    id: "ing-m7-q3",
+    pergunta: "Passage: 'While the project promises efficiency gains, critics argue the economic costs outweigh the benefits.' The author's ATTITUDE toward the project is:",
+    opcoes: [
+      { label: "a", valor: "Totalmente favorável." },
+      { label: "b", valor: "Totalmente contrária." },
+      { label: "c", valor: "Equilibrada / Apresenta ambos os lados." },
+      { label: "d", valor: "Indiferente." },
+      { label: "e", valor: "Cínica." }
+    ],
+    correta: "c",
+    explicacao: "The use of 'while' and presenting both 'promises' and 'critics argue' shows balanced perspective."
+  },
+  {
+    id: "ing-m7-q4",
+    pergunta: "TEXT: 'Despite regulatory pressures, Petrobras continues fossil fuel investments. This strategy contradicts climate commitments.' The author IMPLIES:",
+    opcoes: [
+      { label: "a", valor: "Petrobras está agindo coerentemente." },
+      { label: "b", valor: "Petrobras é hipócrita / Contraditória." },
+      { label: "c", valor: "As regulações são desnecessárias." },
+      { label: "d", valor: "Os combustíveis fósseis não poluem." },
+      { label: "e", valor: "Os compromissos climáticos são falsos." }
+    ],
+    correta: "b",
+    explicacao: "'Despite... pressures' + 'contradicts commitments' implies hypocrisy."
+  },
+  {
+    id: "ing-m7-q5",
+    pergunta: "A safety manual states: 'Non-compliance with HSE protocols WILL result in immediate disciplinary action, up to and including termination.' The tone is:",
+    opcoes: [
+      { label: "a", valor: "Sugestivo e opcional." },
+      { label: "b", valor: "Firme, formal e obrigatório." },
+      { label: "c", valor: "Amigável e casual." },
+      { label: "d", valor: "Apologético." },
+      { label: "e", valor: "Irônico." }
+    ],
+    correta: "b",
+    explicacao: "'WILL', 'immediate', 'up to and including termination' convey absolute firmness."
+  },
+  {
+    id: "ing-m7-q6",
+    pergunta: "Which sentence reflects an OPINION rather than a FACT?",
+    opcoes: [
+      { label: "a", valor: "Petrobras produces 3 million barrels per day." },
+      { label: "b", valor: "Pre-salt reserves are located below the salt layer." },
+      { label: "c", valor: "Petrobras' renewable initiatives are inadequate and insufficient." },
+      { label: "d", valor: "The company operates in 70 countries." },
+      { label: "e", valor: "Oil refining requires high temperatures." }
+    ],
+    correta: "c",
+    explicacao: "'Inadequate' and 'insufficient' are value judgments, not provable facts."
+  },
+  {
+    id: "ing-m7-q7",
+    pergunta: "A technical report uses phrases: 'The equipment was tested', 'Results suggest improved performance', 'Further validation is recommended.' The author's TONE is:",
+    opcoes: [
+      { label: "a", valor: "Entusiasmado e apaixonado." },
+      { label: "b", valor: "Objetivo, técnico e cauteloso." },
+      { label: "c", valor: "Pessimista e negativista." },
+      { label: "d", valor: "Agressivo e confrontacional." },
+      { label: "e", valor: "Humorístico." }
+    ],
+    correta: "b",
+    explicacao: "Passive voice, 'suggest' (not 'proves'), and 'recommended' show objective, cautious professionalism."
+  },
+  {
+    id: "ing-m7-q8",
+    pergunta: "What does the author IMPLY by: 'Although the new policies are challenging, they are necessary for long-term sustainability.'?",
+    opcoes: [
+      { label: "a", valor: "As políticas são impossíveis." },
+      { label: "b", valor: "A sustentabilidade não importa." },
+      { label: "c", valor: "Benefícios futuros justificam as dificuldades presentes." },
+      { label: "d", valor: "As políticas devem ser abandonadas." },
+      { label: "e", valor: "Ninguém aceita as mudanças." }
+    ],
+    correta: "c",
+    explicacao: "'Although... challenging' followed by 'necessary' suggests short-term cost for long-term gain."
+  },
+  {
+    id: "ing-m7-q9",
+    pergunta: "In 'The recent incident exposed serious lapses in emergency protocols', the word 'exposed' carries which CONNOTATION?",
+    opcoes: [
+      { label: "a", valor: "Positiva (revelou boas práticas)." },
+      { label: "b", valor: "Negativa (revelou problemas/falhas)." },
+      { label: "c", valor: "Neutra (simplesmente mostrou)." },
+      { label: "d", valor: "Humorística." },
+      { label: "e", valor: "Confusa." }
+    ],
+    correta: "b",
+    explicacao: "'Exposed' + 'serious lapses' conveys negative judgment."
+  },
+  {
+    id: "ing-m7-q10",
+    pergunta: "A journalist writes: 'Petrobras claims to be committed to renewable energy, yet continues expanding oil production.' The author's STANCE is:",
+    opcoes: [
+      { label: "a", valor: "Completamente confiante na empresa." },
+      { label: "b", valor: "Cética / Crítica das alegações da empresa." },
+      { label: "c", valor: "Apoiadora incondicional." },
+      { label: "d", valor: "Desinteressada." },
+      { label: "e", valor: "Admira a companhia." }
+    ],
+    correta: "b",
+    explicacao: "'Claims... yet continues' suggests skepticism and contradiction-spotting."
+  }
+];
+
+// ── MÓDULO 8: TEXT STRUCTURE & ORGANIZATION ──────────────────────
+export const QUIZ_M8_STRUCTURE: QuizQuestion[] = [
+  {
+    id: "ing-m8-q1",
+    pergunta: "A text shows: '...the first step. Next, ... Second, ... Finally, ...' This organization pattern is:",
+    opcoes: [
+      { label: "a", valor: "Comparison and contrast." },
+      { label: "b", valor: "Chronological / Sequential." },
+      { label: "c", valor: "Cause and effect." },
+      { label: "d", valor: "Problem and solution." },
+      { label: "e", valor: "Question and answer." }
+    ],
+    correta: "b",
+    explicacao: "'First', 'Next', 'Second', 'Finally' are sequential time markers."
+  },
+  {
+    id: "ing-m8-q2",
+    pergunta: "In a procedural document: 'To extract crude oil, companies drill through rock layers. As pressure builds, oil flows. Eventually, production declines.' The structure is:",
+    opcoes: [
+      { label: "a", valor: "Comparison." },
+      { label: "b", valor: "Chronological process." },
+      { label: "c", valor: "Problem-solution." },
+      { label: "d", valor: "Definition." },
+      { label: "e", valor: "Aleatória." }
+    ],
+    correta: "b",
+    explicacao: "The text describes stages in a process: drilling → pressure → flow → decline."
+  },
+  {
+    id: "ing-m8-q3",
+    pergunta: "Which TRANSITION WORD signals a CAUSE-EFFECT relationship?",
+    opcoes: [
+      { label: "a", valor: "Similarly." },
+      { label: "b", valor: "In contrast." },
+      { label: "c", valor: "Therefore." },
+      { label: "d", valor: "On the other hand." },
+      { label: "e", valor: "For instance." }
+    ],
+    correta: "c",
+    explicacao: "'Therefore' introduces a consequence or effect."
+  },
+  {
+    id: "ing-m8-q4",
+    pergunta: "TEXT: 'Pre-salt fields are very deep, while onshore fields are shallow. Pre-salt requires advanced technology, whereas onshore uses simpler methods.' The pattern is:",
+    opcoes: [
+      { label: "a", valor: "Sequential (primeiro... depois...)." },
+      { label: "b", valor: "Comparison and Contrast." },
+      { label: "c", valor: "Cause and effect." },
+      { label: "d", valor: "Problem-solution." },
+      { label: "e", valor: "Definition." }
+    ],
+    correta: "b",
+    explicacao: "'While', 'whereas' are comparison/contrast markers highlighting differences."
+  },
+  {
+    id: "ing-m8-q5",
+    pergunta: "Which organization is typical for a problem-solution text?",
+    opcoes: [
+      { label: "a", valor: "Define termo → Exemplos → Conclusão." },
+      { label: "b", valor: "Identificar problema → Analisar causas → Propor soluções." },
+      { label: "c", valor: "Apresentar Evento A → Apresentar Evento B → Comparar." },
+      { label: "d", valor: "Início → Meio → Fim (Cronológico)." },
+      { label: "e", valor: "Perguntas → Respostas (Aleatório)." }
+    ],
+    correta: "b",
+    explicacao: "Problem-solution texts identify an issue, analyze it, and propose remedies."
+  },
+  {
+    id: "ing-m8-q6",
+    pergunta: "In 'Although environmental concerns exist, the benefits of the project outweigh the drawbacks', 'Although' introduces:",
+    opcoes: [
+      { label: "a", valor: "Uma razão." },
+      { label: "b", valor: "Uma concessão / Um contraste." },
+      { label: "c", valor: "Uma consequência." },
+      { label: "d", valor: "Um exemplo." },
+      { label: "e", valor: "Uma definição." }
+    ],
+    correta: "b",
+    explicacao: "'Although' signals a concession where a contrasting idea is acknowledged."
+  },
+  {
+    id: "ing-m8-q7",
+    pergunta: "A Petrobras safety procedure lists: 'Step 1: Put on gear. Step 2: Enter the chamber. Step 3: Perform inspection. Step 4: Document findings. Step 5: Exit safely.' This is structured as:",
+    opcoes: [
+      { label: "a", valor: "Comparison." },
+      { label: "b", valor: "Cause-effect." },
+      { label: "c", valor: "Sequential process / Procedural." },
+      { label: "d", valor: "Problem-solution." },
+      { label: "e", valor: "Argumentativo." }
+    ],
+    correta: "c",
+    explicacao: "Numbered steps show a clear, ordered sequence."
+  },
+  {
+    id: "ing-m8-q8",
+    pergunta: "Which TRANSITION WORD indicates ADDITIONAL INFORMATION?",
+    opcoes: [
+      { label: "a", valor: "However." },
+      { label: "b", valor: "Moreover / Furthermore." },
+      { label: "c", valor: "Instead." },
+      { label: "d", valor: "Eventually." },
+      { label: "e", valor: "Nevertheless." }
+    ],
+    correta: "b",
+    explicacao: "'Moreover' and 'Furthermore' add more supporting information."
+  },
+  {
+    id: "ing-m8-q9",
+    pergunta: "A text explains: 'When oil reserves deplete (CAUSE), production costs increase (EFFECT). As costs rise, profitability decreases.' This shows:",
+    opcoes: [
+      { label: "a", valor: "Comparação entre dois campos." },
+      { label: "b", valor: "Cadeia de causas e efeitos." },
+      { label: "c", valor: "Passos de um procedimento." },
+      { label: "d", valor: "Argumentos contraditórios." },
+      { label: "e", valor: "Definições técnicas." }
+    ],
+    correta: "b",
+    explicacao: "Multiple connected cause-effect relationships form a chain."
+  },
+  {
+    id: "ing-m8-q10",
+    pergunta: "In a technical document, you see: 'The refinery processes crude oil. First, ... Second, ... Finally, ...' then 'As a result, the output is high-quality fuel.' The structure combines:",
+    opcoes: [
+      { label: "a", valor: "Comparação pura." },
+      { label: "b", valor: "Sequential process + Cause-effect." },
+      { label: "c", valor: "Problema-solução." },
+      { label: "d", valor: "Cronologia histórica." },
+      { label: "e", valor: "Definição." }
+    ],
+    correta: "b",
+    explicacao: "The text shows steps (sequential) followed by a result (cause-effect)."
+  }
+];
+
+// ── MÓDULO 9: READING COMPREHENSION IN PETROBRAS CONTEXT ─────────
+export const QUIZ_M9_PETROBRAS: QuizQuestion[] = [
+  {
+    id: "ing-m9-q1",
+    pergunta: "PASSAGE: 'Petrobras achieved record production of 3.2 million barrels per day in 2023, driven by increased output from pre-salt fields in the Santos Basin. The company invested $12 billion in capital expenditures to support growth. Operational efficiency improved by 15% compared to 2022. Safety metrics remained strong with zero fatalities in offshore operations.' Based on this passage, the company's 2023 performance was:",
+    opcoes: [
+      { label: "a", valor: "Abaixo do esperado." },
+      { label: "b", valor: "Bem-sucedida e positiva." },
+      { label: "c", valor: "Problemática." },
+      { label: "d", valor: "Estagnada." },
+      { label: "e", valor: "Perdeu produção." }
+    ],
+    correta: "b",
+    explicacao: "Record production, high investment, improved efficiency, zero fatalities = strong performance."
+  },
+  {
+    id: "ing-m9-q2",
+    pergunta: "PASSAGE: 'The Libra Field consortium, operated by Petrobras, faced production delays due to equipment malfunctions in Q2 2024. Supply chain disruptions caused a 20% shortfall from planned output. However, remedial measures were implemented in Q3, and full production resumed by Q4.' What was the main challenge?",
+    opcoes: [
+      { label: "a", valor: "Falta de tecnologia." },
+      { label: "b", valor: "Problemas de equipamento e cadeia de suprimentos." },
+      { label: "c", valor: "Falta de interesse em produzir." },
+      { label: "d", valor: "Retorno financeiro baixo." },
+      { label: "e", valor: "Pessoal insuficiente." }
+    ],
+    correta: "b",
+    explicacao: "The passage explicitly mentions 'equipment malfunctions' and 'supply chain disruptions'."
+  },
+  {
+    id: "ing-m9-q3",
+    pergunta: "PASSAGE: 'Petrobras' renewable energy portfolio expanded to 5.5 GW of installed capacity by 2024, including wind, solar, and biofuels. The company aims to reach carbon neutrality by 2050. These initiatives align with Brazil's NDC (Nationally Determined Contribution) under the Paris Agreement.' According to the passage, the company's renewable focus is:",
+    opcoes: [
+      { label: "a", valor: "Apenas um marketing stunt." },
+      { label: "b", valor: "Alinhada com metas globais e nacionais de sustentabilidade." },
+      { label: "c", valor: "Insignificante." },
+      { label: "d", valor: "Impossível de alcançar." },
+      { label: "e", valor: "Contrária aos lucros." }
+    ],
+    correta: "b",
+    explicacao: "The text explicitly states alignment with Brazil's NDC and Paris Agreement targets."
+  },
+  {
+    id: "ing-m9-q4",
+    pergunta: "PASSAGE: 'The Pré-Sal cluster contributed 65% of Petrobras' total crude oil production. These ultra-deep offshore reservoirs require sophisticated FPSO vessels and subsea infrastructure. The exploration cost per barrel is $8-12 USD, making pre-salt economically viable despite technical complexity.' What is the economic implication?",
+    opcoes: [
+      { label: "a", valor: "O pré-sal não é viável economicamente." },
+      { label: "b", valor: "O pré-sal é extremamente caro e inutilizável." },
+      { label: "c", valor: "Apesar da complexidade técnica, os custos são justificáveis." },
+      { label: "d", valor: "Só é lucrativo em português." },
+      { label: "e", valor: "Requer subsídios governamentais." }
+    ],
+    correta: "c",
+    explicacao: "'Economically viable despite technical complexity' confirms profitability."
+  },
+  {
+    id: "ing-m9-q5",
+    pergunta: "PASSAGE: 'Petrobras implemented strict HSE (Health, Safety, and Environment) protocols across all operations. The Lost Time Injury Frequency Rate (LTIFR) decreased from 0.8 to 0.4 per million hours worked. No spills exceeding 1 barrel were reported in offshore operations in 2023. The company completed 500+ environmental audits.' What do these metrics indicate?",
+    opcoes: [
+      { label: "a", valor: "Negligência ambiental." },
+      { label: "b", valor: "Foco forte em segurança e meio ambiente." },
+      { label: "c", valor: "Falta de conformidade regulatória." },
+      { label: "d", valor: "Ignorância de protocolos." },
+      { label: "e", valor: "Indiferença aos acidentes." }
+    ],
+    correta: "b",
+    explicacao: "Declining injury rates, minimal spills, extensive audits show strong HSE commitment."
+  },
+  {
+    id: "ing-m9-q6",
+    pergunta: "PASSAGE: 'Petrobras' integrated refining system processes 2 million barrels per day across 13 refineries in Brazil and 1 abroad. Downstream operations contribute 40% of the company's EBITDA. Challenges include rising feedstock costs and competition from imported fuels.' What is the strategic importance of refining?",
+    opcoes: [
+      { label: "a", valor: "Irrelevante para Petrobras." },
+      { label: "b", valor: "Uma fonte importante de receita e valor agregado." },
+      { label: "c", valor: "Um negócio perdedor." },
+      { label: "d", valor: "Apenas uma operação secundária." },
+      { label: "e", valor: "Obsoleta." }
+    ],
+    correta: "b",
+    explicacao: "'40% of EBITDA' demonstrates strategic importance despite market challenges."
+  },
+  {
+    id: "ing-m9-q7",
+    pergunta: "PASSAGE: 'The Campos and Santos Basins account for 90% of Brazil's offshore oil production. Aging infrastructure in Campos requires $5 billion in capital investment over the next decade. However, the Santos Basin, featuring pre-salt fields, offers superior geology and longer asset life.' What is the infrastructure reality?",
+    opcoes: [
+      { label: "a", valor: "Campos é mais novo que Santos." },
+      { label: "b", valor: "Santos é mais velho e requer mais investimento." },
+      { label: "c", valor: "Campos precisa de investimento; Santos oferece maior potencial futuro." },
+      { label: "d", valor: "Ambas são obsoletas." },
+      { label: "e", valor: "Nenhuma requer manutenção." }
+    ],
+    correta: "c",
+    explicacao: "The passage contrasts aging Campos (needs investment) with superior Santos geology."
+  },
+  {
+    id: "ing-m9-q8",
+    pergunta: "PASSAGE: 'A pipeline incident occurred in 2015, releasing approximately 3,000 barrels into the Atlantic. Petrobras paid $44 million in fines and remediation costs. The incident prompted a comprehensive overhaul of pipeline inspection protocols using advanced AI-assisted monitoring.' This historical incident demonstrates:",
+    opcoes: [
+      { label: "a", valor: "A incompetência permanente." },
+      { label: "b", valor: "Accountability e implementação de melhorias." },
+      { label: "c", valor: "Nenhuma ação corretiva." },
+      { label: "d", valor: "Repetição do mesmo erro." },
+      { label: "e", valor: "Falta de conformidade regulatória." }
+    ],
+    correta: "b",
+    explicacao: "Payment of fines + comprehensive protocol overhaul show accountability and improvement."
+  },
+  {
+    id: "ing-m9-q9",
+    pergunta: "PASSAGE: 'Petrobras reduced its carbon intensity (CO₂ per barrel) from 85 kg CO₂e to 72 kg CO₂e between 2015 and 2023. The company aims for 48 kg CO₂e by 2030. These reductions stem from operational efficiency, renewable energy integration, and natural gas substitution.' How is the company achieving climate targets?",
+    opcoes: [
+      { label: "a", valor: "Apenas com reobtenciação de metas." },
+      { label: "b", valor: "Através de múltiplas iniciativas operacionais e energéticas." },
+      { label: "c", valor: "Abandonando a produção de petróleo." },
+      { label: "d", valor: "Falsificando dados." },
+      { label: "e", valor: "Sem ação real." }
+    ],
+    correta: "b",
+    explicacao: "Multiple concrete strategies (efficiency, renewables, gas) drive measurable reductions."
+  },
+  {
+    id: "ing-m9-q10",
+    pergunta: "PASSAGE: 'Petrobras operates in the challenging environment of Brazil's maritime regulatory framework, ANP oversight, and international ESG standards. The company must balance profitability with environmental stewardship. Strategic partnerships with technology providers enable innovation. Government relationships shape long-term planning.' The passage implies that Petrobras' operations are influenced by:",
+    opcoes: [
+      { label: "a", valor: "Apenas interesse em lucros." },
+      { label: "b", valor: "Múltiplos stakeholders, regulações e pressões sociais." },
+      { label: "c", valor: "Nenhuma regulação externa." },
+      { label: "d", valor: "Autonomia completa." },
+      { label: "e", valor: "Interesse exclusivo em crescimento." }
+    ],
+    correta: "b",
+    explicacao: "The passage identifies regulatory, environmental, technological, and political influences."
+  }
+];
+
+// ── MÓDULO 10: SIMULADO MESTRE ──────────────────────────────────
+export const QUIZ_M10_SIMULADO_MESTRE: QuizQuestion[] = [
+  {
+    id: "ing-m10-q1",
+    pergunta: "INTEGRATED PASSAGE CLIP: 'Petrobras' strategic investments in pre-salt exploration aim to optimize production while minimizing environmental impact. The company employs state-of-the-art monitoring technologies. Despite industry challenges, production targets for 2025 are ambitious.' Which strategy best combines the information?",
+    opcoes: [
+      { label: "a", valor: "Ignoring environmental concerns." },
+      { label: "b", valor: "Using advanced technology to balance productivity and sustainability." },
+      { label: "c", valor: "Abandoning exploration entirely." },
+      { label: "d", valor: "Reducing all operational standards." },
+      { label: "e", valor: "Focusing only on cost reduction." }
+    ],
+    correta: "b",
+    explicacao: "The passage shows balanced approach: optimize production + minimize impact = sustainability."
+  },
+  {
+    id: "ing-m10-q2",
+    pergunta: "PASSAGE: 'Cesgranrio exams assess reading comprehension through prediction, scanning, main idea identification, and inference. The exam allocates 30 minutes for a 350-word passage with 10 questions. Candidates must prioritize efficiency over translation.' What is the implied exam strategy?",
+    opcoes: [
+      { label: "a", valor: "Traduzir cada palavra." },
+      { label: "b", valor: "Aplicar técnicas de leitura estratégica: skimming, scanning, prediction." },
+      { label: "c", valor: "Adivinhar as respostas." },
+      { label: "d", valor: "Ignorar completamente o texto." },
+      { label: "e", valor: "Gastar 30 minutos em uma questão." }
+    ],
+    correta: "b",
+    explicacao: "'Prioritize efficiency' + exam structure suggests using all reading strategies."
+  },
+  {
+    id: "ing-m10-q3",
+    pergunta: "Which reading strategy is most effective for: 'According to the text, the pre-salt field reserves are estimated at...'?",
+    opcoes: [
+      { label: "a", valor: "Prediction." },
+      { label: "b", valor: "Skimming." },
+      { label: "c", valor: "Scanning for specific numbers/data." },
+      { label: "d", valor: "Reading every word slowly." },
+      { label: "e", valor: "Ignoring the text." }
+    ],
+    correta: "c",
+    explicacao: "'According to the text' + specific data request = scanning for numbers."
+  },
+  {
+    id: "ing-m10-q4",
+    pergunta: "INFERENCE: If a text states 'The cost per barrel in pre-salt increased 20% due to deeper wells', we can infer:",
+    opcoes: [
+      { label: "a", valor: "Profundidade não afeta custos." },
+      { label: "b", valor: "Poços mais profundos implicam maiores despesas operacionais." },
+      { label: "c", valor: "Os custos diminuíram." },
+      { label: "d", valor: "Os poços ficaram mais rasos." },
+      { label: "e", valor: "Profundidade reduz custos." }
+    ],
+    correta: "b",
+    explicacao: "Cause-effect relationship: deeper wells → higher costs."
+  },
+  {
+    id: "ing-m10-q5",
+    pergunta: "MAIN IDEA: A passage discusses Petrobras' refinery modernization, capacity increases, production timelines, and investment amounts. The main idea is likely:",
+    opcoes: [
+      { label: "a", valor: "Os refinários são antigos." },
+      { label: "b", valor: "O programa abrangente de modernização da Petrobras." },
+      { label: "c", valor: "O custo é muito elevado." },
+      { label: "d", valor: "Apenas um refinário será modernizado." },
+      { label: "e", valor: "Não há planos futuros." }
+    ],
+    correta: "b",
+    explicacao: "All details support the umbrella concept of comprehensive modernization."
+  },
+  {
+    id: "ing-m10-q6",
+    pergunta: "TONE/AUTHOR'S INTENT: 'While Petrobras claims commitment to sustainability, its fossil fuel production contradicts this pledge.' The author's perspective is:",
+    opcoes: [
+      { label: "a", valor: "Totalmente apoiadora." },
+      { label: "b", valor: "Cética / Crítica dos apelos de sustentabilidade." },
+      { label: "c", valor: "Indiferente." },
+      { label: "d", valor: "Entusiasmada." },
+      { label: "e", valor: "Enganada." }
+    ],
+    correta: "b",
+    explicacao: "'Claims... contradicts' signals skepticism and contradiction-spotting."
+  },
+  {
+    id: "ing-m10-q7",
+    pergunta: "TEXT STRUCTURE: A passage on HSE protocols shows: 'Overview → 5 specific policies → consequences of violations → conclusion.' This structure is:",
+    opcoes: [
+      { label: "a", valor: "Cronológica." },
+      { label: "b", valor: "Definição + exemplos + consequências." },
+      { label: "c", valor: "Problema-solução." },
+      { label: "d", valor: "Cronologia histórica." },
+      { label: "e", valor: "Apenas opinião." }
+    ],
+    correta: "b",
+    explicacao: "Definition (overview) → examples (policies) → implications (consequences) → summary."
+  },
+  {
+    id: "ing-m10-q8",
+    pergunta: "VOCABULARY IN CONTEXT: 'The deepwater environment is inherently hostile; therefore, all equipment must be redundantly protected.' 'Redundantly' means:",
+    opcoes: [
+      { label: "a", valor: "Uma única vez." },
+      { label: "b", valor: "Com múltiplas camadas de proteção / Backup." },
+      { label: "c", valor: "Sem proteção." },
+      { label: "d", valor: "Com tecnologia antiga." },
+      { label: "e", valor: "Sem necessidade." }
+    ],
+    correta: "b",
+    explicacao: "Context: 'inherently hostile... therefore... redundantly' suggests multiple layers for safety."
+  },
+  {
+    id: "ing-m10-q9",
+    pergunta: "SUPPORTING DETAIL vs. MAIN IDEA: Passage: 'Petrobras operates 13 refineries across Brazil. These facilities process 2 million barrels daily. The company plans $8 billion in modernization.' Which is a SUPPORTING DETAIL?",
+    opcoes: [
+      { label: "a", valor: "Petrobras operates refineries." },
+      { label: "b", valor: "As refinarias processam 2 milhões de barris diários." },
+      { label: "c", valor: "A modernização é planejada." },
+      { label: "d", valor: "Petrobras é importante na indústria." },
+      { label: "e", valor: "Brasil tem muitas refinarias." }
+    ],
+    correta: "b",
+    explicacao: "The specific number (2 million barrels) is a supporting detail, not the main idea."
+  },
+  {
+    id: "ing-m10-q10",
+    pergunta: "FINAL SYNTHESIS: To excel at Cesgranrio English reading, the most important combination of strategies is:",
+    opcoes: [
+      { label: "a", valor: "Memorizar todas as palavras do dicionário." },
+      { label: "b", valor: "Traduzir tudo lentamente." },
+      { label: "c", valor: "Prediction + Skimming + Scanning + Context clues + Inference." },
+      { label: "d", valor: "Ignorar o texto completamente." },
+      { label: "e", valor: "Focar apenas em gramática." }
+    ],
+    correta: "c",
+    explicacao: "The integrated use of all reading strategies maximizes comprehension and time efficiency."
+  }
+];

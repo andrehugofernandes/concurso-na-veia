@@ -29,7 +29,12 @@ import {
   QUIZ_M2_SKIMMING,
   QUIZ_M3_SCANNING,
   QUIZ_M4_VOCABULARY,
-  QUIZ_M5_FINAL,
+  QUIZ_M5_INFERENCING,
+  QUIZ_M6_MAIN_IDEA,
+  QUIZ_M7_TONE,
+  QUIZ_M8_STRUCTURE,
+  QUIZ_M9_PETROBRAS,
+  QUIZ_M10_SIMULADO_MESTRE,
 } from "./data/reading-strategies-quizzes";
 
 export default function AulaReadingStrategies({
@@ -55,7 +60,12 @@ export default function AulaReadingStrategies({
   const [quizSkimming] = useState(() => getRandomQuestions(QUIZ_M2_SKIMMING, 8));
   const [quizScanning] = useState(() => getRandomQuestions(QUIZ_M3_SCANNING, 8));
   const [quizVocabulary] = useState(() => getRandomQuestions(QUIZ_M4_VOCABULARY, 8));
-  const [quizFinal] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 10));
+  const [quizInferencing] = useState(() => getRandomQuestions(QUIZ_M5_INFERENCING, 8));
+  const [quizMainIdea] = useState(() => getRandomQuestions(QUIZ_M6_MAIN_IDEA, 8));
+  const [quizTone] = useState(() => getRandomQuestions(QUIZ_M7_TONE, 8));
+  const [quizStructure] = useState(() => getRandomQuestions(QUIZ_M8_STRUCTURE, 8));
+  const [quizPetrobras] = useState(() => getRandomQuestions(QUIZ_M9_PETROBRAS, 8));
+  const [quizSimuladoMestre] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 10));
 
   const isModuleUnlocked = (index: number) => true;
 
@@ -66,16 +76,16 @@ export default function AulaReadingStrategies({
         n.add(moduleId);
         return n;
       });
-      const idx = ["modulo-1", "modulo-2", "modulo-3", "modulo-4", "modulo-5"].findIndex((m) => m === moduleId);
-      const pct = Math.round(((idx + 1) / 5) * 100);
+      const idx = ["modulo-1", "modulo-2", "modulo-3", "modulo-4", "modulo-5", "modulo-6", "modulo-7", "modulo-8", "modulo-9", "modulo-10"].findIndex((m) => m === moduleId);
+      const pct = Math.round(((idx + 1) / 10) * 100);
       onUpdateProgress?.(pct);
-      if (idx < 4) setTimeout(() => setActiveTab(`modulo-${idx + 2}`), 1500);
+      if (idx < 9) setTimeout(() => setActiveTab(`modulo-${idx + 2}`), 1500);
     }
   };
 
   useEffect(() => {
     if (currentProgress && currentProgress > 0) {
-      const count = Math.floor((currentProgress / 100) * 5);
+      const count = Math.floor((currentProgress / 100) * 10);
       const s = new Set<string>();
       for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
       setCompletedModules(s);
@@ -87,7 +97,12 @@ export default function AulaReadingStrategies({
     { id: "modulo-2", label: "Módulo 2", title: "Skimming (The Gist)" },
     { id: "modulo-3", label: "Módulo 3", title: "Scanning (The Details)" },
     { id: "modulo-4", label: "Módulo 4", title: "Vocabulary & Cognates" },
-    { id: "modulo-5", label: "Módulo 5", title: "Simulado Final" },
+    { id: "modulo-5", label: "Módulo 5", title: "Inferencing from Context" },
+    { id: "modulo-6", label: "Módulo 6", title: "Main Idea & Details" },
+    { id: "modulo-7", label: "Módulo 7", title: "Critical Reading & Tone" },
+    { id: "modulo-8", label: "Módulo 8", title: "Text Structure" },
+    { id: "modulo-9", label: "Módulo 9", title: "Petrobras Context" },
+    { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
   ];
 
   return (
@@ -151,7 +166,7 @@ export default function AulaReadingStrategies({
           titulo="PREDICTION & CONTEXT"
           descricao="O primeiro contato com o texto técnico: como antecipar o conteúdo e ativar o seu conhecimento de mundo."
           gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
-          variant="blue"
+          variant={getModuleVariant(1)}
         />
 
         <RichIntro>
@@ -177,7 +192,7 @@ export default function AulaReadingStrategies({
               index={1}
               title="A Arte da Predição (Pre-Reading)"
               description="Transformando um texto desconhecido em território familiar em 30 segundos."
-              variant="blue"
+              variant={getModuleVariant(1)}
               className="mb-6"
             />
             
@@ -256,7 +271,7 @@ export default function AulaReadingStrategies({
             
 <ModuleConsolidation
               index={1}
-              variant="blue"
+              variant={getModuleVariant(1)}
               video={{
                 videoId: "kOunF5Z0vWA",
                 title: "Prediction Techniques for Exams",
@@ -336,7 +351,7 @@ export default function AulaReadingStrategies({
               index={2}
               title="A Arte do Voo Rasante"
               description="Como ler 1000 palavras em 1 minuto e entender a tese central."
-              variant="indigo"
+              variant={getModuleVariant(2)}
               className="mb-6"
             />
             
@@ -395,7 +410,7 @@ export default function AulaReadingStrategies({
             
 <ModuleConsolidation
               index={2}
-              variant="indigo"
+              variant={getModuleVariant(2)}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Skimming Mastery",
@@ -473,7 +488,7 @@ export default function AulaReadingStrategies({
               index={1}
               title="Scanning: O Sniper da Leitura"
               description="Como encontrar informações específicas sem ler o texto completo."
-              variant="indigo"
+              variant={getModuleVariant(3)}
               className="mb-6"
             />
             
@@ -563,7 +578,7 @@ export default function AulaReadingStrategies({
             
 <ModuleConsolidation
               index={3}
-              variant="indigo"
+              variant={getModuleVariant(3)}
               video={{
                 videoId: "8kGv8C_R91A",
                 title: "Scanning Drills for Competitive Exams",
@@ -642,7 +657,7 @@ export default function AulaReadingStrategies({
               index={1}
               title="O Poder dos Cognatos"
               description="A sua maior vantagem competitiva como falante de língua latina."
-              variant="amber"
+              variant={getModuleVariant(4)}
               className="mb-6"
             />
             
@@ -725,11 +740,11 @@ export default function AulaReadingStrategies({
             />
 
             <div className="pt-12 space-y-8">
-              <ModuleSectionHeader 
+              <ModuleSectionHeader
                 index={2}
                 title="Industrial Flashcards: Vocabulário Petrobras"
                 description="Clique nos cards para revelar o significado técnico e exemplos práticos de termos fundamentais da indústria."
-                variant="amber"
+                variant={getModuleVariant(4)}
               />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <FlipCard 
@@ -795,7 +810,7 @@ export default function AulaReadingStrategies({
             
 <ModuleConsolidation
               index={4}
-              variant="amber"
+              variant={getModuleVariant(4)}
               video={{
                 videoId: "kOunF5Z0vWA",
                 title: "Vocabulary Strategies for Petrobras",
@@ -841,25 +856,785 @@ export default function AulaReadingStrategies({
         </div>
       </TabsContent>
 
-      {/* ═══ MÓDULO 5: SIMULADO FINAL ═══ */}
+      {/* ═══ MÓDULO 5: INFERENCING FROM CONTEXT ═══ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
         <ModuleBanner
           numero={5}
-          titulo="SIMULADO FINAL: CESGRANRIO MODE"
-          descricao="Hora de aplicar Prediction, Skimming e Scanning em questões reais no padrão Petrobras."
-          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
-          variant="amber"
+          titulo="INFERENCING FROM CONTEXT"
+          descricao="Adivinhe significados de palavras desconhecidas usando pistas do contexto sem dicionário."
+          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
+          variant="rose"
         />
+
+        <RichIntro>
+          <p>
+            **Inferencing** é a arte de deduzir significados sem tradução direta. Em uma prova de Cesgranrio, você certamente encontrará vocabulário técnico desconhecido — palavras como "permeability", "mitigating" ou "inherently" — que não aparecem em nenhuma lista de vocabulário padrão. A solução não é ter memorizado cada palavra, mas saber **ler as pistas** que o próprio texto oferece.
+          </p>
+          <p>
+            O contexto oferece várias estratégias de inferência: **sinônimos explicativos** (quando a palavra é seguida por uma explicação em aposto), **exemplos em cadeia** (que mostram como a palavra é usada), **definições implícitas** (em uma frase longa que descreve o conceito), e **pistas causais** (quando a conjunção "because" ou "so" revela a relação semântica).
+          </p>
+          <p>
+            Para Petrobras especificamente, dominar a inferência significa que você pode ler documentos técnicos em inglês sem parar a cada palavra desconhecida. Se o documento menciona "reservoir's permeability is crucial for extraction; without it, fluid cannot flow", você **não precisa conhecer "permeability"** — o texto já o definiu implicitamente: é a capacidade do fluido fluir.
+          </p>
+          <p>
+            Neste módulo, aprenderemos a reconhecer os **padrões de pista** mais comuns: as pontuações que isolam definições (vírgulas em aposto, parênteses, travessões), as transições que indicam causalidade, e como a estrutura da frase revela a intenção semântica do autor.
+          </p>
+        </RichIntro>
+
         <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={5}
+              title="Context Clues Mastery"
+              description="Desvendando significados através de pistas contextuais."
+              variant={getModuleVariant(5)}
+              className="mb-6"
+            />
+
+            <ContentAccordion
+              titulo="Os Padrões de Pista"
+              icone="🔍"
+              corIndicador="bg-rose-500"
+              slides={[
+                {
+                  titulo: "Appositive Clues (Definições em Aposto)",
+                  icone: "📌",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm italic">
+                        "The FPSO vessel, a floating production and storage unit, operates offshore."
+                      </p>
+                      <p className="text-xs">O texto define FPSO entre vírgulas. Você não precisa saber a sigla — a explicação é fornecida.</p>
+                    </div>
+                  )
+                },
+                {
+                  titulo: "Cause & Effect Clues (Pistas Causais)",
+                  icone: "⚡",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm italic">
+                        "The platform was severely damaged; consequently, operations were suspended."
+                      </p>
+                      <p className="text-xs">'Suspended' = parado/interrompido. O "so" (consequently) revela a relação: dano → parada.</p>
+                    </div>
+                  )
+                },
+                {
+                  titulo: "Example Clues (Pistas por Exemplo)",
+                  icone: "📋",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm italic">
+                        "Stringent protocols mandate compliance. For instance, all employees must follow HSE guidelines."
+                      </p>
+                      <p className="text-xs">'Stringent' = rigoroso. O exemplo mostra exigências rigorosas.</p>
+                    </div>
+                  )
+                }
+              ]}
+            />
+          </section>
+
           <section id="quiz-modulo-5" className="mt-16">
-            <QuizInterativo
-              questoes={quizFinal}
-              titulo="QUIZ: Simulado Final"
+
+<ModuleConsolidation
+              index={5}
+              variant={getModuleVariant(5)}
+              video={{
+                videoId: "kOunF5Z0vWA",
+                title: "Context Clues & Inference",
+                duration: "8:45"
+              }}
+              resumoVisual={{
+                moduloNome: "Módulo 5",
+                tituloAula: titulo,
+                materia: materiaNome,
+                images: [
+                  { title: "Padrões de Pista", type: "Mapa Mental", placeholderColor: "bg-rose-500/20" },
+                  { title: "Palavras Técnicas Deduzidas", type: "Esquema", placeholderColor: "bg-pink-500/20" },
+                  { title: "Conexões Contextuais", type: "Fórmula", placeholderColor: "bg-red-500/20" }
+                ]
+              }}
+              maceteVisual={{
+                title: "O Segredo: Procure a Pista",
+                content: (
+                  <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl">
+                    <p className="font-bold text-rose-600">Context Clue Hunt</p>
+                    <ul className="text-[10px] leading-tight text-muted-foreground mt-2 space-y-1">
+                      <li>• Vírgulas e parênteses isolam explicações</li>
+                      <li>• Conectores (so, because, therefore) mostram relações</li>
+                      <li>• Exemplos ilustram o conceito</li>
+                    </ul>
+                  </div>
+                )
+              }}
+              audio={{
+                audioUrl: "#",
+                titulo: "Inferência Contextual",
+                artista: "Prof. Douglas"
+              }}
+            />
+
+                        <QuizInterativo
+              questoes={quizInferencing}
+              titulo="Quiz 5 - Inferencing from Context"
+              icone="🔍"
+              numero={5}
+              variant="rose"
+              onComplete={(score) => handleModuleComplete("modulo-5", score)}
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 6: MAIN IDEA & SUPPORTING DETAILS ═══ */}
+      <TabsContent value="modulo-6" className="space-y-[50px]">
+        <ModuleBanner
+          numero={6}
+          titulo="MAIN IDEA & SUPPORTING DETAILS"
+          descricao="Separe a tese central dos exemplos e detalhes que a sustentam."
+          gradiente="bg-gradient-to-br from-cyan-300 via-cyan-500 to-cyan-400"
+          variant="cyan"
+        />
+
+        <RichIntro>
+          <p>
+            A maioria dos leitores iniciantes em inglês técnico comete o erro de **tratar todas as informações com igual importância**. Se um parágrafo menciona que "Petrobras invested 50 billion, drilled 15 wells, increased production 30%, and implemented environmental standards", muitos tentam memorizar todos os números. Mas a Cesgranrio raramente pergunta sobre números isolados — ela pergunta sobre o **quadro geral**: qual é o significado desses investimentos?
+          </p>
+          <p>
+            A estrutura de texto obedece a uma hierarquia rigorosa: uma **ideia principal** (main idea) que encapsula o conceito central, e **detalhes de suporte** que a sustentam com números, exemplos, definições e explicações. Identificar essa hierarquia é a chave para responder perguntas sobre "main purpose", "best title", "which statement summarizes..."
+          </p>
+          <p>
+            O **Topic Sentence** — geralmente a primeira ou segunda frase de um parágrafo — funciona como a síntese condensada. Tudo que vem depois são justificativas, exemplos ou aplicações daquele tópico. Em textos sobre Petrobras (relatórios de sustentabilidade, prospectos técnicos), essa estrutura é extremamente previsível.
+          </p>
+          <p>
+            Neste módulo, aprenderemos a usar a **hierarchical reading** para fazer scans eficientes, responder perguntas sobre "main idea" em segundos, e distinguir informações essenciais de detalhes acessórios que podem confundir durante uma prova cronometrada.
+          </p>
+        </RichIntro>
+
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={6}
+              title="Hierarquia da Informação"
+              description="Mapeando a estrutura lógica de textos técnicos."
+              variant={getModuleVariant(6)}
+              className="mb-6"
+            />
+
+            <ContentAccordion
+              titulo="Identificando Ideia Principal vs. Detalhes"
               icone="🎯"
-              numero={1}
-              variant="amber"
+              corIndicador="bg-cyan-500"
+              slides={[
+                {
+                  titulo: "O Topic Sentence",
+                  icone: "📍",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Primeira ou segunda frase do parágrafo, contém a ideia-chave.</p>
+                      <p className="text-xs italic">"The blowout preventer (BOP) is a critical safety device."</p>
+                      <p className="text-xs">Tudo que segue explica ou exemplifica o BOP.</p>
+                    </div>
+                  )
+                },
+                {
+                  titulo: "Supporting Details",
+                  icone: "📊",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Números, exemplos, definições que sustentam a tese.</p>
+                      <ul className="text-xs space-y-1 list-disc pl-4">
+                        <li>Estatísticas (36 refineries)</li>
+                        <li>Exemplos (pre-salt fields)</li>
+                        <li>Explicações de mecanismo</li>
+                      </ul>
+                    </div>
+                  )
+                },
+                {
+                  titulo: "Multi-paragraph Main Idea",
+                  icone: "🔗",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Sintetize as ideias principais de cada parágrafo.</p>
+                      <p className="text-xs">Se os parágrafos discutem: investimento + produção + segurança + sustentabilidade, a ideia geral é "Petrobras' comprehensive modernization strategy".</p>
+                    </div>
+                  )
+                }
+              ]}
+            />
+          </section>
+
+          <section id="quiz-modulo-6" className="mt-16">
+
+<ModuleConsolidation
+              index={6}
+              variant={getModuleVariant(6)}
+              video={{
+                videoId: "kOunF5Z0vWA",
+                title: "Main Idea & Text Organization",
+                duration: "9:20"
+              }}
+              resumoVisual={{
+                moduloNome: "Módulo 6",
+                tituloAula: titulo,
+                materia: materiaNome,
+                images: [
+                  { title: "Estrutura Hierárquica", type: "Mapa Mental", placeholderColor: "bg-cyan-500/20" },
+                  { title: "Topic Sentence Radar", type: "Esquema", placeholderColor: "bg-blue-500/20" },
+                  { title: "Supporting Evidence Grid", type: "Fórmula", placeholderColor: "bg-sky-500/20" }
+                ]
+              }}
+              maceteVisual={{
+                title: "A Pirâmide Invertida",
+                content: (
+                  <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                    <p className="font-bold text-cyan-600">Hierarchy of Info</p>
+                    <p className="text-[10px] leading-tight text-muted-foreground mt-2">
+                       Main Idea (Topo) → Supporting Points → Details (Base)
+                    </p>
+                  </div>
+                )
+              }}
+              audio={{
+                audioUrl: "#",
+                titulo: "Arquitetura de Texto",
+                artista: "Prof. Douglas"
+              }}
+            />
+
+                        <QuizInterativo
+              questoes={quizMainIdea}
+              titulo="Quiz 6 - Main Idea & Details"
+              icone="🎯"
+              numero={6}
+              variant="cyan"
+              onComplete={(score) => handleModuleComplete("modulo-6", score)}
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 7: CRITICAL READING & TONE ═══ */}
+      <TabsContent value="modulo-7" className="space-y-[50px]">
+        <ModuleBanner
+          numero={7}
+          titulo="CRITICAL READING & TONE"
+          descricao="Identifique intenção do autor, tom, atitude e implicações implícitas."
+          gradiente="bg-gradient-to-br from-lime-300 via-lime-500 to-lime-400"
+          variant="lime"
+        />
+
+        <RichIntro>
+          <p>
+            Um texto técnico não é neutro como parece. Por trás de cada frase há uma **intenção** (intent), um **tom** (tone) e uma **atitude** (stance) do autor — pistas que revelam credibilidade, viés, urgência ou ceticismo. A Cesgranrio frequentemente pergunta: "What is the author's purpose?" ou "The author's tone can be best described as..."
+          </p>
+          <p>
+            Em um documento de sustentabilidade de Petrobras, a escolha de palavras "Petrobras is leading energy transition" (léxico positivo) versus "Petrobras claims commitment to sustainability while expanding fossil fuels" (léxico crítico/cético) revela uma diferença monumental de intenção. A leitura crítica exige que você **leia além das palavras**: reconheça o vocabulário carregado, as transições que indicam contraste, e as implicações lógicas entre ideias.
+          </p>
+          <p>
+            O **tone** é mais sutil que a intenção. Pode ser urgente, formal, irônico, pessimista, entusiasmado ou cauteloso. Um manual de segurança que diz "Non-compliance WILL result in termination" tem tom firme e obrigatório; já um relatório que diz "We suggest exploring renewable options" tem tom sugestivo e não-vinculante.
+          </p>
+          <p>
+            Neste módulo, aprenderemos a captar o **tone implícito** através de seleção vocabular, a identificar quando o autor **implica** algo sem dizer explicitamente, e a reconhecer o **viés** e a **credibilidade** do texto — habilidades críticas para textos de verdade/falsidade e interpretação.
+          </p>
+        </RichIntro>
+
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={7}
+              title="Desvendando Intenção e Atitude"
+              description="Leitura crítica além das palavras superficiais."
+              variant={getModuleVariant(7)}
+              className="mb-6"
+            />
+
+            <ContentAccordion
+              titulo="Ferramentas de Análise Crítica"
+              icone="🔎"
+              corIndicador="bg-lime-500"
+              slides={[
+                {
+                  titulo: "Loaded Vocabulary (Vocabulário Carregado)",
+                  icone: "⚡",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Palavras com conotação positiva ou negativa revelam atitude.</p>
+                      <p className="text-xs"><span className="font-bold">Positivo:</span> "innovative", "leader", "committed"</p>
+                      <p className="text-xs"><span className="font-bold">Negativo:</span> "alarming", "lapses", "contradicts"</p>
+                    </div>
+                  )
+                },
+                {
+                  titulo: "Author's Purpose (Objetivo do Autor)",
+                  icone: "🎯",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Diferenciar: informar, persuadir, criticar, alertar.</p>
+                      <ul className="text-xs space-y-1 list-disc pl-4">
+                        <li>Informar = linguagem neutra, fatos</li>
+                        <li>Persuadir = argumentos, evidência carregada</li>
+                        <li>Criticar = tom cético, contradições</li>
+                      </ul>
+                    </div>
+                  )
+                },
+                {
+                  titulo: "Fact vs. Opinion (Fato vs. Opinião)",
+                  icone: "📋",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Fatos são verificáveis; opiniões são juízos de valor.</p>
+                      <p className="text-xs italic">"Petrobras produces 3M barrels/day" = fato</p>
+                      <p className="text-xs italic">"Petrobras is inadequate in sustainability" = opinião</p>
+                    </div>
+                  )
+                }
+              ]}
+            />
+          </section>
+
+          <section id="quiz-modulo-7" className="mt-16">
+
+<ModuleConsolidation
+              index={7}
+              variant={getModuleVariant(7)}
+              video={{
+                videoId: "kOunF5Z0vWA",
+                title: "Tone, Bias & Critical Reading",
+                duration: "10:05"
+              }}
+              resumoVisual={{
+                moduloNome: "Módulo 7",
+                tituloAula: titulo,
+                materia: materiaNome,
+                images: [
+                  { title: "Vocabulário Carregado", type: "Mapa Mental", placeholderColor: "bg-lime-500/20" },
+                  { title: "Intenção do Autor", type: "Esquema", placeholderColor: "bg-green-500/20" },
+                  { title: "Análise de Tom", type: "Fórmula", placeholderColor: "bg-emerald-500/20" }
+                ]
+              }}
+              maceteVisual={{
+                title: "O Detector de Intenção",
+                content: (
+                  <div className="p-4 bg-lime-500/10 border border-lime-500/20 rounded-xl">
+                    <p className="font-bold text-lime-600">3 Perguntas-Chave</p>
+                    <ul className="text-[10px] leading-tight text-muted-foreground mt-2 space-y-1">
+                      <li>1. Qual é o tom? (Urgente, formal, crítico?)</li>
+                      <li>2. Qual é a intenção? (Informar, persuadir?)</li>
+                      <li>3. O que é implícito? (O que não é dito?)</li>
+                    </ul>
+                  </div>
+                )
+              }}
+              audio={{
+                audioUrl: "#",
+                titulo: "Leitura Crítica",
+                artista: "Prof. Douglas"
+              }}
+            />
+
+                        <QuizInterativo
+              questoes={quizTone}
+              titulo="Quiz 7 - Critical Reading & Tone"
+              icone="🔎"
+              numero={7}
+              variant="lime"
+              onComplete={(score) => handleModuleComplete("modulo-7", score)}
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 8: TEXT STRUCTURE & ORGANIZATION ═══ */}
+      <TabsContent value="modulo-8" className="space-y-[50px]">
+        <ModuleBanner
+          numero={8}
+          titulo="TEXT STRUCTURE & ORGANIZATION"
+          descricao="Recognize padrões de organização textual: causa-efeito, comparação, cronologia, problema-solução."
+          gradiente="bg-gradient-to-br from-teal-300 via-teal-500 to-teal-400"
+          variant="teal"
+        />
+
+        <RichIntro>
+          <p>
+            Um texto não é uma sequência aleatória de frases — é uma **arquitetura lógica** onde cada parágrafo se conecta ao próximo através de padrões estruturais reconhecíveis. Documentos sobre exploração de petróleo frequentemente usam **causa-efeito** ("Deep wells require advanced technology; therefore, costs are high"). Comparativas entre pré-sal e onshore usam **comparison-contrast** ("While pre-salt is deep, onshore is shallow"). Procedimentos de perfuração usam **chronological/sequential** ordering ("First, drill... Next, test pressure... Finally, establish production").
+          </p>
+          <p>
+            A Cesgranrio pergunta sobre essas estruturas implicitamente. Se uma questão pede que você identifique "What caused the production decline?" ou "How do the two fields differ?", você precisará navegar através de estruturas causa-efeito e comparativas. Palavras de transição — **signal words** — como "However", "Therefore", "Similarly", "First", "Eventually" — funcionam como sinais de trânsito, indicando qual padrão estrutural você está lendo.
+          </p>
+          <p>
+            Dominar essas estruturas acelera dramaticdamente sua leitura, pois você já **sabe de antemão** para onde o texto está indo. Se lê "Although pre-salt is technically complex...", você já antecipa que virá um "but" ou "however" introduzindo os benefícios ou uma perspectiva alternativa.
+          </p>
+          <p>
+            Neste módulo, aprenderemos a reconhecer os **cinco padrões principais** e as **transition words** que os sinalam, e a usá-los como GPS para navegar textos densos sem se perder em detalhes.
+          </p>
+        </RichIntro>
+
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={8}
+              title="Os 5 Padrões Principais"
+              description="Mapeando arquitetura lógica textual."
+              variant={getModuleVariant(8)}
+              className="mb-6"
+            />
+
+            <ContentAccordion
+              titulo="Padrões de Organização Textual"
+              icone="🏗️"
+              corIndicador="bg-teal-500"
+              slides={[
+                {
+                  titulo: "Chronological / Sequential (Ordem Temporal)",
+                  icone: "⏱️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Passos em ordem: First → Next → Finally</p>
+                      <p className="text-xs italic">"To drill: first assemble equipment, next position rig, finally initiate drilling."</p>
+                      <p className="text-xs">Signal words: First, Second, Then, Finally, Eventually, While, When</p>
+                    </div>
+                  )
+                },
+                {
+                  titulo: "Cause & Effect (Causa → Consequência)",
+                  icone: "⚡",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Um evento provoca outro: Because X → Therefore Y</p>
+                      <p className="text-xs italic">"Equipment malfunctions caused delays; consequently, production targets were missed."</p>
+                      <p className="text-xs">Signal words: Because, Since, Therefore, Consequently, As a result, Led to</p>
+                    </div>
+                  )
+                },
+                {
+                  titulo: "Comparison & Contrast (Similaridade vs. Diferença)",
+                  icone: "⚖️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Mostrar semelhanças ou diferenças entre ideias</p>
+                      <p className="text-xs italic">"While pre-salt is deep, onshore fields are shallow. Both require advanced technology."</p>
+                      <p className="text-xs">Signal words: However, But, Although, Similarly, Unlike, In contrast</p>
+                    </div>
+                  )
+                },
+                {
+                  titulo: "Problem & Solution (Problema → Solução)",
+                  icone: "🔧",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Identificar um desafio e uma resposta</p>
+                      <p className="text-xs italic">"Corrosion threatens pipelines; therefore, AI monitoring systems were implemented."</p>
+                      <p className="text-xs">Signal words: Problem, Challenge, Solution, Solved by, Addressed through</p>
+                    </div>
+                  )
+                },
+                {
+                  titulo: "Definition & Example (Definir e Ilustrar)",
+                  icone: "📚",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Explicar termo seguido de exemplos</p>
+                      <p className="text-xs italic">"Permeability — the ability of fluid to flow through rock — is essential for extraction."</p>
+                      <p className="text-xs">Signal words: For instance, Such as, Including, Like, For example</p>
+                    </div>
+                  )
+                }
+              ]}
+            />
+          </section>
+
+          <section id="quiz-modulo-8" className="mt-16">
+
+<ModuleConsolidation
+              index={8}
+              variant={getModuleVariant(8)}
+              video={{
+                videoId: "kOunF5Z0vWA",
+                title: "Text Structure Signals",
+                duration: "9:50"
+              }}
+              resumoVisual={{
+                moduloNome: "Módulo 8",
+                tituloAula: titulo,
+                materia: materiaNome,
+                images: [
+                  { title: "5 Padrões Estruturais", type: "Mapa Mental", placeholderColor: "bg-teal-500/20" },
+                  { title: "Signal Words Chart", type: "Esquema", placeholderColor: "bg-cyan-500/20" },
+                  { title: "Pattern Recognition Grid", type: "Fórmula", placeholderColor: "bg-blue-500/20" }
+                ]
+              }}
+              maceteVisual={{
+                title: "O Radar de Transição",
+                content: (
+                  <div className="p-4 bg-teal-500/10 border border-teal-500/20 rounded-xl">
+                    <p className="font-bold text-teal-600">Signal Words = Mapa</p>
+                    <p className="text-[10px] leading-tight text-muted-foreground mt-2">
+                       Therefore = efeito próximo | But = contraste vindo | First = sequência iniciada
+                    </p>
+                  </div>
+                )
+              }}
+              audio={{
+                audioUrl: "#",
+                titulo: "Arquitetura Textual",
+                artista: "Prof. Douglas"
+              }}
+            />
+
+                        <QuizInterativo
+              questoes={quizStructure}
+              titulo="Quiz 8 - Text Structure"
+              icone="🏗️"
+              numero={8}
+              variant="teal"
+              onComplete={(score) => handleModuleComplete("modulo-8", score)}
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 9: READING IN PETROBRAS CONTEXT ═══ */}
+      <TabsContent value="modulo-9" className="space-y-[50px]">
+        <ModuleBanner
+          numero={9}
+          titulo="READING COMPREHENSION: PETROBRAS CONTEXT"
+          descricao="Integre todas as estratégias: textos autênticos com vocabulário e temas Petrobras reais."
+          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
+          variant="blue"
+        />
+
+        <RichIntro>
+          <p>
+            Você dominou **Prediction**, **Skimming**, **Scanning**, **Inferencing**, **Main Idea**, **Tone** e **Structure**. Agora é hora de **integrar tudo** em textos autênticos de Petrobras: relatórios anuais, documentos de sustentabilidade, press releases técnicos, e prospetos de exploração. Este módulo abandona questões isoladas e abraça **passagens de 300-400 palavras** — exatamente como aparecem na Cesgranrio.
+          </p>
+          <p>
+            As questões variam: algumas perguntam sobre **main purpose** (skimming + main idea), outras sobre **specific data** (scanning), outras sobre **implied meaning** (inferencing + critical reading), e ainda outras sobre **passage structure** (organization). Você precisará escolher qual ferramenta usar para cada pergunta, desenvolvendo a **flexibilidade estratégica** que distingue candidatos aprovados de reprovados.
+          </p>
+          <p>
+            Petrobras textos apresentam desafios específicos: vocabulário técnico denso (downstream, pre-salt, FPSO, HSE, EBITDA), múltiplas abreviaturas e siglas (ANP, BOP, ROV), contexto industrial complexo (geologia, engenharia, regulação), e frequentemente um **tom corporativo/marketing** que mistura fato com persuasão ("Petrobras is committed to..." pode ser fato genuíno ou retórica corporativa — você precisa reconhecer a diferença).
+          </p>
+          <p>
+            Neste módulo, trabalharemos com **passagens de comprimento Cesgranrio**, desenvolvendo a stamina e a confiança necessárias para manter a concentração durante uma prova cronometrada enquanto aplica múltiplas estratégias simultaneamente.
+          </p>
+        </RichIntro>
+
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={9}
+              title="Integração de Estratégias"
+              description="Textos autênticos Petrobras: 300-400 palavras com 8 questões."
+              variant={getModuleVariant(9)}
+              className="mb-6"
+            />
+
+            <ContentAccordion
+              titulo="Aplicação Estratégica Integrada"
+              icone="🧠"
+              corIndicador="bg-blue-500"
+              slides={[
+                {
+                  titulo: "Step 1: Prediction (30 segundos)",
+                  icone: "🔮",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Leia título, subtítulos, primeira frase, último parágrafo.</p>
+                      <p className="text-xs">Ative seu conhecimento: pré-sal, Petrobras, sustentabilidade, exploração, regulação?</p>
+                    </div>
+                  )
+                },
+                {
+                  titulo: "Step 2: Leia as Questões (1 minuto)",
+                  icone: "📋",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Identifique que tipo de informação cada questão busca.</p>
+                      <p className="text-xs">"Main purpose?" = Skimming | "According to para 3?" = Scanning | "Implied?" = Inferencing</p>
+                    </div>
+                  )
+                },
+                {
+                  titulo: "Step 3: Skim Estratégico (1-2 minutos)",
+                  icone: "🏃",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Leia topic sentences para captar a estrutura geral.</p>
+                      <p className="text-xs">Identifique transições, conectores, padrão (causa-efeito? problema-solução?).</p>
+                    </div>
+                  )
+                },
+                {
+                  titulo: "Step 4: Scan por Palavra-Chave (3-4 minutos)",
+                  icone: "🔍",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Para cada questão, busque os dados específicos localizando palavras-chave.</p>
+                      <p className="text-xs">"2023 production?" → busque números. "What caused delays?" → busque causa.</p>
+                    </div>
+                  )
+                },
+                {
+                  titulo: "Step 5: Infer & Synthesize (2-3 minutos)",
+                  icone: "⚡",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-sm font-bold">Para questões implícitas, use pistas contextuais e lógica causal.</p>
+                      <p className="text-xs">"Author's tone?" → olhe vocabulário carregado, estrutura argumentativa.</p>
+                    </div>
+                  )
+                }
+              ]}
+            />
+          </section>
+
+          <section id="quiz-modulo-9" className="mt-16">
+
+<ModuleConsolidation
+              index={9}
+              variant={getModuleVariant(9)}
+              video={{
+                videoId: "kOunF5Z0vWA",
+                title: "Integrated Strategies in Action",
+                duration: "11:30"
+              }}
+              resumoVisual={{
+                moduloNome: "Módulo 9",
+                tituloAula: titulo,
+                materia: materiaNome,
+                images: [
+                  { title: "5-Step Strategy Map", type: "Mapa Mental", placeholderColor: "bg-blue-500/20" },
+                  { title: "Petrobras Vocabulary", type: "Esquema", placeholderColor: "bg-cyan-500/20" },
+                  { title: "300-400 Word Passage Flow", type: "Fórmula", placeholderColor: "bg-indigo-500/20" }
+                ]
+              }}
+              maceteVisual={{
+                title: "O Fluxo de Leitura",
+                content: (
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <p className="font-bold text-blue-600">P-Q-S-C-I</p>
+                    <p className="text-[10px] leading-tight text-muted-foreground mt-2">
+                       Predict → Questions → Skim → Context-scan → Infer
+                    </p>
+                  </div>
+                )
+              }}
+              audio={{
+                audioUrl: "#",
+                titulo: "Leitura Integrada",
+                artista: "Prof. Douglas"
+              }}
+            />
+
+                        <QuizInterativo
+              questoes={quizPetrobras}
+              titulo="Quiz 9 - Petrobras Context"
+              icone="🌎"
+              numero={9}
+              variant="blue"
+              onComplete={(score) => handleModuleComplete("modulo-9", score)}
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 10: SIMULADO MESTRE ═══ */}
+      <TabsContent value="modulo-10" className="space-y-[50px]">
+        <ModuleBanner
+          numero={10}
+          titulo="SIMULADO MESTRE: CESGRANRIO MASTER EXAM"
+          descricao="Teste final: integração completa de todas as 9 estratégias em um simulado autêntico."
+          gradiente="bg-gradient-to-br from-purple-300 via-purple-500 to-purple-400"
+          variant="purple"
+        />
+
+        <RichIntro>
+          <p>
+            Este é o desafio final — o **Simulado Mestre**. Você terá acesso a um conjunto de **10 questões** que integram todas as competências dos módulos anteriores: **Prediction** (antecipar temas), **Skimming** (identificar propósito geral), **Scanning** (localizar dados específicos), **Inferencing** (deduzir significados), **Main Idea** (sintetizar argumentação), **Critical Reading** (reconhecer tom e intenção), **Text Structure** (navegar organização lógica), e **Petrobras Domain Knowledge** (aplicar contexto real).
+          </p>
+          <p>
+            Não há atalhos aqui — apenas aplicação. Cada questão pode exigir uma combinação diferente de estratégias. Algumas serão diretas (skimming simples), outras sutis (exigindo inferência cuidadosa). O tempo é limitado — em uma prova Cesgranrio real, você teria ~3 minutos por questão. Use essa limitação para treinar **velocidade sob pressão**, a habilidade que mais importa no exame real.
+          </p>
+          <p>
+            Uma pontuação ≥ 70% neste simulado indica que você está **pronto para Cesgranrio**. Abaixo disso, retorne aos módulos onde teve dificuldade e reforce as estratégias específicas. Acima de 85%, você está no **nível de proficiência máxima** esperado para este tipo de prova.
+          </p>
+          <p>
+            Boa sorte. Você treinou o máximo possível. Agora é hora de demonstrar domínio.
+          </p>
+        </RichIntro>
+
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={10}
+              title="Avaliação Final Integrada"
+              description="10 questões: teste completo de leitura em inglês instrumental."
+              variant={getModuleVariant(10)}
+              className="mb-6"
+            />
+
+            <AlertBox tipo="info" titulo="📊 Critério de Aprovação">
+              Score ≥ 70% (7/10 corretas) = Módulo completo + Aula completa 🎯
+              <br/>
+              Score 60-69% (6/10 corretas) = Módulo completo, continue a próxima aula
+              <br/>
+              Score &lt; 60% (5 ou menos corretas) = Revise os módulos anteriores
+            </AlertBox>
+          </section>
+
+          <section id="quiz-modulo-10" className="mt-16">
+
+<ModuleConsolidation
+              index={10}
+              variant={getModuleVariant(10)}
+              video={{
+                videoId: "kOunF5Z0vWA",
+                title: "Master Exam Strategies",
+                duration: "12:00"
+              }}
+              resumoVisual={{
+                moduloNome: "Módulo 10",
+                tituloAula: titulo,
+                materia: materiaNome,
+                images: [
+                  { title: "All 9 Strategies", type: "Mapa Mental", placeholderColor: "bg-purple-500/20" },
+                  { title: "Cesgranrio Format", type: "Esquema", placeholderColor: "bg-violet-500/20" },
+                  { title: "Performance Benchmarks", type: "Fórmula", placeholderColor: "bg-fuchsia-500/20" }
+                ]
+              }}
+              maceteVisual={{
+                title: "O Checklist Final",
+                content: (
+                  <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl">
+                    <p className="font-bold text-purple-600">Antes de Entregar</p>
+                    <ul className="text-[10px] leading-tight text-muted-foreground mt-2 space-y-1">
+                      <li>✓ Reread main idea questions</li>
+                      <li>✓ Verify scanning facts in text</li>
+                      <li>✓ Check inference logic twice</li>
+                      <li>✓ Confirm tone vocabulary match</li>
+                    </ul>
+                  </div>
+                )
+              }}
+              audio={{
+                audioUrl: "#",
+                titulo: "Domínio Completo",
+                artista: "Prof. Douglas"
+              }}
+            />
+
+                        <QuizInterativo
+              questoes={quizSimuladoMestre}
+              titulo="SIMULADO MESTRE: Master Exam"
+              icone="👑"
+              numero={10}
+              variant="purple"
               onComplete={(score) => {
-                handleModuleComplete("modulo-5", score);
+                handleModuleComplete("modulo-10", score);
                 if (score >= 60) onComplete?.();
               }}
             />
