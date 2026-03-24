@@ -27,6 +27,8 @@ import {
   LuTriangleAlert,
   LuShield,
   LuZap,
+  LuFileText,
+  LuCheck,
 } from "react-icons/lu";
 
 import {
@@ -213,29 +215,54 @@ export default function AulaNr10({
                 ),
               },
               {
-                titulo: "Pegadinhas CESGRANRIO",
+                titulo: "Dicas: A Pegadinha da Unidade",
+                icone: <LuLightbulb className="w-5 h-5 text-amber-500" />,
+                conteudo: (
+                  <div className="space-y-2">
+                    <p>A Petrobras/Cesgranrio AMA confundir as fases (G-T-D-C) com as etapas (P-C-M-O-M). </p>
+                    <p><strong>Macete:</strong> O 25,4 da metrologia é útil, mas aqui o número é 75 (kW) para o PIE. Nunca esqueça!</p>
+                  </div>
+                )
+              },
+              {
+                titulo: "Exceções e Casos Especiais",
                 icone: <LuTriangleAlert className="w-5 h-5 text-amber-500" />,
                 conteudo: (
-                  <div className="space-y-4">
-                    <AlertBox
-                      tipo="danger"
-                      titulo="A exclusão imaginária do projeto"
-                    >
-                      Muitos candidatos de provas de técnico assumem incorretamente que a NR-10 versa unicamente sobre os montadores elétricos na fábrica (o pessoal de chapéu). As assertivas falsas das provas afirmam constantemente: "Nas etapas de planejamento administrativo e estruturação do projeto corporativo, dispensa-se a consideração da norma preterindo a proteção coletiva, pois não há potencial materializado". Isso é cabalmente FALSO. O item 10.1.2 impõe que O PROJETO seja inteiramente contemplado com EPCs.
-                    </AlertBox>
-                  </div>
-                ),
-              },
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Instalações de TI/Telecom menores que 50V CA ou 120V CC (Extra-Baixa Tensão) têm critérios diferenciados.</li>
+                    <li>Equipamentos hospitalares de suporte à vida têm normas redundantes sobrepostas.</li>
+                  </ul>
+                )
+              }
             ]}
           />
 
           <ModuleConsolidation
             index={1}
             variant={mv[1]}
-            video={{ videoId: "", title: "", duration: "" }}
-            resumoVisual={{ moduloNome: "", tituloAula: "", materia: "", images: [] }}
-            maceteVisual={{ title: "Resumo", content: <div>Resumo do módulo</div> }}
-            audio={{ audioUrl: "", titulo: "", artista: "" }}
+            video={{ 
+              videoId: "dQw4w9WgXcQ", 
+              title: "NR-10: Introdução e Abrangência", 
+              duration: "08:45" 
+            }}
+            resumoVisual={{ 
+              moduloNome: "Módulo 1", 
+              tituloAula: "Segurança em Eletricidade", 
+              materia: "Segurança do Trabalho", 
+              images: [
+                { title: "G-T-D-C", type: "infographic", placeholderColor: "amber" },
+                { title: "Berço ao Túmulo", type: "diagram", placeholderColor: "orange" }
+              ]
+            }}
+            maceteVisual={{ 
+              title: "O Mantra da NR-10", 
+              content: <div className="text-xl font-bold italic text-center p-4">"Gera, Transmite, Distribui e Consome... do Projeto ao Descarte, a regra tem nome!"</div> 
+            }}
+            audio={{ 
+              audioUrl: "/audio/nr10-m1.mp3", 
+              titulo: "Podcast NR-10 M1", 
+              artista: "Segurança Petrobras" 
+            }}
           />
 
           <QuizInterativo titulo="Simulado de Conhecimento"
@@ -325,29 +352,59 @@ export default function AulaNr10({
                 ),
               },
               {
-                titulo: "Pegadinha: Religamento Automático",
-                icone: <LuTriangleAlert className="w-5 h-5 text-blue-500" />,
+                titulo: "Exemplificação: EPC em Painéis",
+                icone: <LuShield className="w-5 h-5 text-blue-500" />,
                 conteudo: (
-                  <div className="space-y-4">
-                    <AlertBox
-                      tipo="danger"
-                      titulo="Trabalhos c/ Religamento Automático"
-                    >
-                      Em trabalhos instalados em subestações operativas, os equipamentos dotados de dispositivos de religamento automático DEVEM SER BLOQUEADOS (desoperados/inalterados p/ modo manual) ANTES de iniciar a atividade. As provas alegam que "eles geram mais segurança porque poupam o operador de subir até lá, então podem ficar on-line ativados". MENTIRA. O religamento automático causará morte no executor na linha.
-                    </AlertBox>
+                  <div className="space-y-2">
+                    <p><strong>Cenário:</strong> Manutenção em cubículo de 13.8kV. </p>
+                    <p><strong>Ação Correta:</strong> Seccionamento e Aterramento Temporário Equipotencializado (EPC) antes de qualquer toque. Jamais confiar apenas na bota e luva.</p>
                   </div>
-                ),
+                )
               },
+              {
+                titulo: "Dicas e Exceções",
+                icone: <LuZap className="w-5 h-5 text-blue-500" />,
+                conteudo: (
+                  <ul className="list-disc list-inside space-y-1">
+                    <li><strong>Exceção:</strong> Tensão de Segurança. Se for menos de 50V CA, a hierarquia muda.</li>
+                    <li><strong>Dica:</strong> Decorar os 6 passos da desenergização (S-I-C-A-P-S).</li>
+                  </ul>
+                )
+              }
             ]}
           />
 
           <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{ videoId: "", title: "", duration: "" }}
-            resumoVisual={{ moduloNome: "", tituloAula: "", materia: "", images: [] }}
-            maceteVisual={{ title: "Resumo", content: <div>Resumo do módulo</div> }}
-            audio={{ audioUrl: "", titulo: "", artista: "" }}
+            video={{ 
+              videoId: "dQw4w9WgXcQ", 
+              title: "Hierarquia de Proteção Elétrica", 
+              duration: "12:10" 
+            }}
+            resumoVisual={{ 
+              moduloNome: "Módulo 2", 
+              tituloAula: "Medidas de Controle", 
+              materia: "NR-10", 
+              images: [
+                { title: "EPC > EPI", type: "infographic", placeholderColor: "blue" },
+                { title: "As 6 Etapas", type: "table", placeholderColor: "indigo" }
+              ]
+            }}
+            maceteVisual={{ 
+              title: "S-I-C-A-P-S", 
+              content: (
+                <div className="space-y-2 text-center p-4">
+                  <p className="font-bold">S-I-C-A-P-S</p>
+                  <p className="text-sm">Secciona, Impede, Constata, Aterra, Protege e Sinaliza!</p>
+                </div>
+              ) 
+            }}
+            audio={{ 
+              audioUrl: "/audio/nr10-m2.mp3", 
+              titulo: "Podcast Medidas de Controle", 
+              artista: "Segurança Petrobras" 
+            }}
           />
 
           <QuizInterativo titulo="Simulado de Conhecimento"
@@ -398,13 +455,67 @@ export default function AulaNr10({
             </div>
           </section>
 
+          <ContentAccordion 
+            mode="stacked"
+            slides={[
+                {
+                    titulo: "Conceituação: O que NÃO pode faltar no PIE?",
+                    icone: <LuFileText className="w-5 h-5 text-emerald-500" />,
+                    conteudo: (
+                        <ul className="list-disc list-inside space-y-1">
+                            <li>Diagramas unifilares atualizados.</li>
+                            <li>Laudos de inspeção do SPDA.</li>
+                            <li>Relatório de Auditoria de conformidade.</li>
+                            <li>Especificações dos EPIs e EPCs.</li>
+                        </ul>
+                    )
+                },
+                {
+                    titulo: "Exemplificação: Auditoria Petrobras",
+                    icone: <LuCheck className="w-5 h-5 text-emerald-500" />,
+                    conteudo: (
+                        <p>O fiscal da Petrobras solicita o PIE de uma refinaria. Se os diagramas não tiverem a assinatura do Engenheiro Eletricista ou se o laudo de SPDA estiver vencido (inspeção anual), a unidade é multada.</p>
+                    )
+                },
+                {
+                    titulo: "Dicas de Memorização",
+                    icone: <LuLightbulb className="w-5 h-5 text-emerald-500" />,
+                    conteudo: <p>Número Mágico: <strong>75 kW</strong>. Abaixo disso, a norma se preocupa menos com o dossiê textual (PIE).</p>
+                },
+                {
+                    titulo: "Exceções e Pegadinhas",
+                    icone: <LuTriangleAlert className="w-5 h-5 text-emerald-500" />,
+                    conteudo: <p>Bancas afirmam que empresas com 50kW precisam de PIE. FALSO. Só acima de 75kW.</p>
+                }
+            ]}
+          />
+
           <ModuleConsolidation
             index={3}
             variant={mv[3]}
-            video={{ videoId: "", title: "", duration: "" }}
-            resumoVisual={{ moduloNome: "", tituloAula: "", materia: "", images: [] }}
-            maceteVisual={{ title: "Resumo", content: <div>Resumo do módulo</div> }}
-            audio={{ audioUrl: "", titulo: "", artista: "" }}
+            video={{ 
+                videoId: "dQw4w9WgXcQ", 
+                title: "Dossiê PIE na Prática", 
+                duration: "10:30" 
+            }}
+            resumoVisual={{ 
+                moduloNome: "Módulo 3", 
+                tituloAula: "O Prontuário", 
+                materia: "NR-10", 
+                images: [
+                    { title: "Checklist PIE", type: "gallery", placeholderColor: "emerald" },
+                    { title: "A Regra dos 75kW", type: "infographic", placeholderColor: "green" }
+                ]
+            }}
+            maceteVisual={{ 
+                title: "PIE = 75", 
+                content: <div className="text-4xl font-black text-center text-emerald-600 p-6">75 kW+</div> 
+            }}
+            audio={{ 
+                audioUrl: "/audio/nr10-m3.mp3", 
+                titulo: "Rádio PIE", 
+                artista: "Segurança Petrobras" 
+            }}
           />
 
           <QuizInterativo titulo="Simulado de Conhecimento" questoes={quizM3} variant={mv[3]} onComplete={() => handleModuleComplete("modulo-3")} />
@@ -439,13 +550,66 @@ export default function AulaNr10({
             </div>
           </section>
 
+          <ContentAccordion 
+            mode="stacked"
+            slides={[
+                {
+                    titulo: "Conceituação: Vestimentas e a Chama",
+                    icone: <LuShield className="w-5 h-5 text-orange-500" />,
+                    conteudo: (
+                        <p>A vestimenta de trabalho deve ser capaz de suportar o efeito térmico do arco elétrico e ser condutiva para evitar acúmulo de estática em áreas classificadas.</p>
+                    )
+                },
+                {
+                    titulo: "Exemplificação: O Risco do Adorno",
+                    icone: <LuTriangleAlert className="w-5 h-5 text-orange-500" />,
+                    conteudo: (
+                        <p>Um eletricista usando aliança de ouro pode sofrer uma queimadura de 3º grau instantânea se a joia entrar em contato com um barramento energizado, mesmo de baixa tensão.</p>
+                    )
+                },
+                {
+                    titulo: "Dica: Proibição de Adornos",
+                    icone: <LuLightbulb className="w-5 h-5 text-orange-500" />,
+                    conteudo: (
+                        <p>O item 10.2.9.3 proíbe expressamente o uso de adornos pessoais nos trabalhos com instalações elétricas.</p>
+                    )
+                },
+                {
+                    titulo: "Exceções Técnicas",
+                    icone: <LuZap className="w-5 h-5 text-orange-500" />,
+                    conteudo: (
+                        <p>Algumas vestimentas especiais são projetadas para resistir a ATPV específicos. Verifique sempre a etiqueta CA.</p>
+                    )
+                }
+            ]}
+          />
+
           <ModuleConsolidation
             index={4}
             variant={mv[4]}
-            video={{ videoId: "", title: "", duration: "" }}
-            resumoVisual={{ moduloNome: "", tituloAula: "", materia: "", images: [] }}
-            maceteVisual={{ title: "Resumo", content: <div>Resumo do módulo</div> }}
-            audio={{ audioUrl: "", titulo: "", artista: "" }}
+            video={{ 
+                videoId: "dQw4w9WgXcQ", 
+                title: "EPI e Vestimentas na NR-10", 
+                duration: "09:20" 
+            }}
+            resumoVisual={{ 
+                moduloNome: "Módulo 4", 
+                tituloAula: "EPI e Vestimentas", 
+                materia: "NR-10", 
+                images: [
+                    { title: "Proibição de Adornos", type: "infographic", placeholderColor: "orange" },
+                    { title: "Tecidos Ignífugos", type: "gallery", placeholderColor: "red" }
+                ]
+            }}
+            maceteVisual={{ 
+                title: "Regra do Ouro", 
+                content: <div className="text-xl font-bold text-center text-orange-700 p-4">"Aliança, brinco ou relógio... na elétrica, trazem o necrotério!"</div> 
+            }}
+            audio={{ 
+                audioUrl: "/audio/nr10-m4.mp3", 
+                titulo: "Podcast EPIs", 
+                artista: "Segurança Petrobras" 
+            }}
           />
 
           <QuizInterativo titulo="Simulado de Conhecimento" questoes={quizM4} variant={mv[4]} onComplete={() => handleModuleComplete("modulo-4")} />
@@ -493,13 +657,70 @@ export default function AulaNr10({
             </div>
           </section>
 
+          <ContentAccordion 
+            mode="stacked"
+            slides={[
+                {
+                    titulo: "Conceituação: Zonas de Risco e Livre",
+                    icone: <LuZap className="w-5 h-5 text-red-500" />,
+                    conteudo: (
+                        <ul className="list-disc list-inside space-y-1">
+                            <li><strong>ZR:</strong> Área em torno de ponto energizado acessível apenas a profissionais autorizados.</li>
+                            <li><strong>ZC:</strong> Área entre a ZR e a zona livre.</li>
+                            <li><strong>ZL:</strong> Todo o restante do ambiente.</li>
+                        </ul>
+                    )
+                },
+                {
+                    titulo: "Exemplificação: Distâncias de Segurança",
+                    icone: <LuTriangleAlert className="w-5 h-5 text-red-500" />,
+                    conteudo: (
+                        <p>Para uma linha de 13.8kV, a zona de risco é de 0,6m. Estar a 50cm significa estar DENTRO do risco de arco, mesmo sem tocar no fio.</p>
+                    )
+                },
+                {
+                    titulo: "Dica de Prova: Prontuário vs Zonas",
+                    icone: <LuLightbulb className="w-5 h-5 text-red-500" />,
+                    conteudo: (
+                        <p>Lembre-se: O PIE é para instalações acima de 75kW. As zonas de risco se aplicam a QUALQUER tensão acima de 50V CA.</p>
+                    )
+                },
+                {
+                    titulo: "Exceções e Casos Especiais",
+                    icone: <LuZap className="w-5 h-5 text-red-500" />,
+                    conteudo: (
+                        <p>Trabalhos em proximidade exigem barreiras físicas ou sinalização rígida para evitar invasão inadvertida da ZR.</p>
+                    )
+                }
+            ]}
+          />
+
           <ModuleConsolidation
             index={5}
             variant={mv[5]}
-            video={{ videoId: "", title: "", duration: "" }}
-            resumoVisual={{ moduloNome: "", tituloAula: "", materia: "", images: [] }}
-            maceteVisual={{ title: "Resumo", content: <div>Resumo do módulo</div> }}
-            audio={{ audioUrl: "", titulo: "", artista: "" }}
+            video={{ 
+                videoId: "dQw4w9WgXcQ", 
+                title: "Zonas de Risco Detalhadas", 
+                duration: "14:50" 
+            }}
+            resumoVisual={{ 
+                moduloNome: "Módulo 5", 
+                tituloAula: "Zonas de Risco", 
+                materia: "NR-10", 
+                images: [
+                    { title: "Mapa de Zonas", type: "diagram", placeholderColor: "red" },
+                    { title: "Tabela de Raio", type: "table", placeholderColor: "rose" }
+                ]
+            }}
+            maceteVisual={{ 
+                title: "ZR vs ZC", 
+                content: <div className="text-center p-4">ZR = Risco (Só autorizados) <br/> ZC = Controlada (Monitorado)</div> 
+            }}
+            audio={{ 
+                audioUrl: "/audio/nr10-m5.mp3", 
+                titulo: "Podcast Final NR-10", 
+                artista: "Segurança Petrobras" 
+            }}
           />
 
           <QuizInterativo titulo="Simulado de Conhecimento" questoes={quizM5} variant={mv[5]} onComplete={() => handleModuleComplete("modulo-5")} />

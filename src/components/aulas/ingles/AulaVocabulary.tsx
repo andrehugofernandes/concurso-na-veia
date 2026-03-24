@@ -164,15 +164,23 @@ export default function AulaVocabulary({
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
-                Upstream operations representam a primeira etapa da cadeia de valor de óleo e gás: exploração, desenvolvimento e produção. A Petrobras é uma empresa heavily upstream-dependent porque o Brasil possui algumas das maiores reservas de petróleo do mundo, especialmente no pré-sal. O termo "upstream" literalmente significa "contra a corrente" — você está procurando pela fonte do óleo, não processando o que já foi encontrado. Esta distinção é crítica para entender documentos técnicos, relatórios de operação e discussões estratégicas em Petrobras.
+                Upstream operations representam a primeira etapa da cadeia de valor de óleo e gás: exploração, desenvolvimento e produção. A Petrobras é uma empresa heavily upstream-dependent porque o Brasil possui algumas das maiores reservas de petróleo do mundo, especialmente no pré-sal. O termo "upstream" literalmente significa "contra a corrente" — você está procurando pela fonte do óleo, não processando o que já foi encontrado. Esta distinção é crítica para entender documentos técnicos, relatórios de operação e discussões estratégicas em Petrobras. Profissionais que trabalham em upstream lidam com desafios extremos: ambientes offshore hostis, perfuração em profundidades record (3.000+ metros), pressões gigantescas, e riscos ambientais significativos.
               </p>
 
               <p>
-                A jornada upstream segue uma sequência lógica: Seismic Survey (investigação sísmica para identificar estruturas geológicas) → Exploration Well (poço exploratório para confirmar reservas) → Drilling (perfuração do poço de produção) → Well Completion (conclusão do poço) → Production Testing (testes de produção) → Field Development (desenvolvimento do campo) → Continuous Production (produção contínua). Cada etapa tem vocabulário específico que é testado em provas CESGRANRIO.
+                A jornada upstream segue uma sequência lógica e bem definida: Seismic Survey (investigação sísmica para mapear estruturas geológicas subterrâneas) → Exploration Well (poço exploratório para confirmar presença de hidrocarbonetos) → Drilling (perfuração do poço de produção em série) → Well Completion (conclusão, equipagem e testes do poço) → Production Testing (testes de vazão e pressão) → Field Development (desenvolvimento da infraestrutura do campo) → Continuous Production (produção comercial contínua e monitoramento). Cada etapa tem vocabulário específico que é testado em provas CESGRANRIO e aparece em relatórios técnicos.
               </p>
 
               <p>
-                Termos críticos: Exploration (exploração), Drilling (perfuração), Well (poço), Borehole (furo do poço), Rig (sonda/plataforma de perfuração), Platform (plataforma de produção), Reservoir (reservatório/jazida), Crude Oil (óleo cru), Extraction (extração), Onshore (em terra), Offshore (no mar), Seismic (sísmico), Wellhead (cabeçote do poço), Casing (revestimento), Tubing (coluna de produção), Perforation (canhoneio).
+                Regras técnicas essenciais: Um poço "onshore" (em terra) é mais acessível mas limitado geographicamente. Um poço "offshore" (no mar) requer plataformas fixas ou flutuantes e custosão bilhões. A profundidade é medida em metros (typical: 2.000-3.500m), e o diâmetro do furo varia conforme a sequência de perfuração (casing programme). A pressão do reservatório determina se é "flowing well" (fluxo natural) ou requer "artificial lift" (bombas). Termos críticos: Exploration (exploração), Drilling (perfuração), Well (poço), Borehole (furo do poço), Rig (sonda/plataforma), Platform (estrutura de produção), Reservoir (jazida), Crude Oil (óleo cru), Extraction (extração), Wellhead (cabeçote), Casing (revestimento), Tubing (coluna de produção), Perforation (canhoneio).
+              </p>
+
+              <p>
+                Na prática Petrobras, geólogos e engenheiros exploram blocos sísmicos em bacias conhecidas (Campos, Santos, Espírito Santo pré-sal) usando dados 3D/4D. Uma descoberta promissora leva a perfuração de poços exploratórios ("wildcat") com custo de $10-50M cada, dependendo da profundidade e locação. Se bem-sucedido, estima-se o tamanho da reserva (STOIIP - Stock Tank Oil Initially In Place). O desenvolvimento subsequente pode envolver dezenas de poços, sistemas de completação complexos, pipelines submarinos, e processos de separação água/óleo na plataforma. O desafio final é tirar o máximo valor econômico de cada reserva durante sua vida útil (15-40+ anos).
+              </p>
+
+              <p>
+                A CESGRANRIO frequentemente testa compreensão de sequência (qual etapa vem depois de seismic?), diferenciação entre componentes (wellhead vs tubing vs casing), e aplicação de conceitos a cenários realistas. Candidatos costumam confundir "exploration" (busca por reservas) com "development" (construção da infraestrutura), ou não entender que múltiplos poços são perfurados num mesmo campo. Outra pegadinha comum é não reconhecer que "production platform" é diferente de "drilling rig" — uma plataforma produz óleo continuamente, enquanto uma sonda é usada temporariamente para perfuração. O vocabulário é especializado e não aparece em inglês casual, então é necessário memorizar associações contexto-específicas (e.g., "casing" nunca significa "case" ou "covering" genérico — é SEMPRE revestimento de poço).
               </p>
 
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
@@ -395,15 +403,23 @@ export default function AulaVocabulary({
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
-                Downstream operations começam quando o óleo cru sai do poço e termina quando produtos finais (gasolina, diesel, querosene, óleo lubrificante, petroquímicos) chegam ao consumidor final. Enquanto upstream é sobre ENCONTRAR e EXTRAIR o óleo, downstream é sobre TRANSFORMAR e VENDER. A Petrobras tem operações significativas em ambas, mas a estratégia corporativa tem priorizado upstream (pré-sal) nos últimos 15 anos.
+                Downstream operations começam quando o óleo cru sai do poço (ou é importado) e termina quando produtos finais (gasolina, diesel, querosene, óleo lubrificante, petroquímicos, asfalto) chegam ao consumidor final. Enquanto upstream é sobre ENCONTRAR e EXTRAIR o óleo, downstream é sobre REFINAR, TRANSFORMAR e DISTRIBUIR. A Petrobras tem operações significativas em ambas, mas a estratégia corporativa tem priorizado upstream (pré-sal) nos últimos 15 anos porque a margem de refino é mais baixa. Entender a cadeia downstream é essencial para compreender relatórios operacionais, planejamento de produção, e discussões sobre varejo de combustíveis.
               </p>
 
               <p>
-                O processo começa na refinery (refinaria), onde o crude oil (óleo cru) é destilado — aquecido e separado em frações baseadas em ponto de ebulição. Cada fração tem uso diferente: lighter fractions (gasolina, querosene) vs heavier fractions (óleo combustível, asfalto). Alguns hidrocarbonetos maiores são "cracked" (quebrados) em moléculas menores usando calor e catalisadores para aumentar a produção de produtos valiosos. Após refining, produtos são armazenados em tanques, transportados via pipelines/tankers, e distribuídos para retailers (postos de gasolina, clientes industriais, etc.).
+                O processo começa na refinery (refinaria), onde o crude oil (óleo cru) é destilado — aquecido a ~350°C e separado em frações baseadas em ponto de ebulição e densidade. Cada fração tem uso diferente: lighter fractions (gasolina, querosene) fluem para o topo da torre de destilação; heavier fractions (óleo combustível, asfalto) saem do fundo. Alguns hidrocarbonetos maiores são "cracked" (quebrados) em moléculas menores usando calor extremo (thermal cracking) e catalisadores (catalytic cracking) para aumentar a produção de produtos valiosos. Após refining, produtos são desulfurizados (redução de enxofre para atender normas ambientais), armazenados em tanques gigantescos, transportados via pipelines submarinos/terrestres e tankers, distribuídos para terminais regionais, e finalmente vendidos em postos de gasolina, para clientes industriais, ou como matéria prima petroquímica.
               </p>
 
               <p>
-                Termos críticos: Refinery (refinaria), Refining (refino), Distillation (destilação), Crude Oil Fraction (fração de óleo cru), Distillate (destilado), Gasoline (gasolina), Diesel (diesel), Jet Fuel (combustível de aviação), Fuel Oil (óleo combustível), Lubricant (lubrificante), Petrochemical (petroquímico), Cracking (craqueamento), Processing (processamento), Distribution (distribuição), Retail (varejo).
+                Regras técnicas obrigatórias: Distillation é a separação por volatilidade — não separa por tipo de molécula, apenas por tamanho/peso. Naphtha (destilado mais leve) é matéria prima para petroquímicos (plásticos, fertilizantes). Gasoline (gasolina) e Diesel (diesel) são os produtos de maior volume e margem. Jet Fuel (querosene de aviação) tem especificações rígidas de pureza. Fuel Oil (óleo combustível pesado) é usado por indústrias pesadas e navios. Lubrificants são óleos de motor com aditivos. O rendimento de refino típico é: 30-40% gasolina, 25-35% diesel, 10-15% fuel oil, resto em outros produtos. Termos críticos: Refinery (refinaria), Refining (refino), Distillation (destilação), Fractionating Column (torre de destilação), Distillate (destilado), Naphtha (nafta), Gasoline (gasolina), Diesel (diesel), Jet Fuel (querosene), Fuel Oil (óleo combustível), Lubricant (lubrificante), Petrochemical (petroquímico), Cracking (craqueamento), Blending (mistura/aditivação), Processing (processamento), Distribution (distribuição).
+              </p>
+
+              <p>
+                No contexto Petrobras, as refinarias principais (Paulínia, Cubatão, Duque de Caxias, Potiguar) processam ~1,8M barris/dia de crude. Cada refinaria tem diferentes configuraçõesde unidades (destilação, craqueamento, reformação, isomerização) que determinam qual tipo de crude é mais viável economicamente. Uma refinaria com "conversão alta" consegue converter mais crude em produtos leves valiosos; uma "conversão baixa" produz mais fuel oil pesado. O pipeline de logística é crítico: óleo sai da plataforma, entra em terminal de entrada, vai para refinaria, seus produtos são distribuídos via pipeline para terminais de distribuição, que enviam via caminhão para postos de gasolina. Qualquer interrupção num elo quebra a cadeia inteira.
+              </p>
+
+              <p>
+                A CESGRANRIO testa compreensão da sequência de refino (crude → distillation → fractions → products), diferenciação entre tipos de produtos (gasoline vs diesel vs fuel oil), e entendimento de "conversão" (quantos barris de produto valioso saem de X barris de crude). Erros típicos: confundir "naphtha" com "gasoline" (naphtha é matéria prima para petroquímicos, não combustível direto); não entender que "cracking" AUMENTA a produção de gasolina (muitos pensam que reduz); achar que "distillation" separa tipos diferentes de moléculas (na verdade, separa apenas por tamanho/volatilidade). Outra pegadinha: questões sobre "light crude" vs "heavy crude" — light crude é mais fácil de refinar e produz mais gasolina (margem maior), heavy crude requer processamento adicional (conversão). Vocabulário downstream é frequentemente usado em relatórios financeiros da Petrobras, então é importante não apenas memorizar, mas entender COMO é usado em contexto corporativo.
               </p>
 
               <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30 rounded-lg border border-orange-200 dark:border-orange-800 p-6 space-y-4">
@@ -626,7 +642,7 @@ export default function AulaVocabulary({
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
-                Equipamentos são o esqueleto da indústria de óleo e gás. Cada sistema de produção, refino ou transporte é construído com hundreds de componentes especializados que devem funcionar de forma coordenada. Um pequeno vazamento numa válvula pode parar operações inteiras. Entender nomes e funções de equipamentos é CRÍTICO para compreender documentos técnicos, relatórios de manutenção e discussões operacionais. Este módulo apresenta os 4 tipos principais: valves (válvulas), pumps (bombas), pipes (tubulações) e rigs (sondas/equipamentos de perfuração).
+                Equipamentos são o esqueleto da indústria de óleo e gás. Cada sistema de produção, refino ou transporte é construído com centenas de componentes especializados que devem funcionar de forma coordenada sob pressões extremas, temperaturas variáveis, e ambientes hostis (offshore, deserto, etc.). Um pequeno vazamento numa válvula pode parar operações inteiras, resultando em perdas de milhões de dólares por dia. Entender nomes, funções e especificações de equipamentos é CRÍTICO para compreender documentos técnicos, relatórios de manutenção, pedidos de compra (procurement) e discussões operacionais de engenharia. Este módulo apresenta os 4 tipos principais: valves (válvulas de controle), pumps (bombas de sucção e pressão), pipes (tubulações e conexões), e rigs (sondas de perfuração e equipamentos de poço).
               </p>
 
               <p>
@@ -643,6 +659,14 @@ export default function AulaVocabulary({
 
               <p>
                 <strong>Rigs</strong> perfuram poços. Onshore rig (em terra) é uma torre com motor, tração para levantar drill pipe, e bomba circulating drilling fluid. Offshore rig (no mar) é uma estrutura maior flutuante. Rotary rig usa rotação do broca. Percussion rig usa impacto (menos comum). As maiores rigs custam US$ 500 milhões+ e alugam por US$ 1+ milhão/dia.
+              </p>
+
+              <p>
+                Contexto Petrobras prático: Uma plataforma de produção típica tem centenas de válvulas (ball, gate, check, relief, control) em diferentes seções (manifold de cabeça do poço, separadores, compressores, bombas de exportação). Cada válvula tem número de série, especificação de material, pressão de projeto (design pressure), temperatura de operação, e histórico de manutenção. Bombas movem óleo da plataforma para tankers ou costaneira; bombas submersas levantam óleo do fundo do poço se a pressão natural é insuficiente. Tubulações (pipes) conectam tudo — especificações incorretas causam corrosão, rachaduras, vazamentos (blowouts). Rigs são alugadas por projeto — uma perfuração exploratória em 3000m offshore custaria $500M em operação de rig sozinha, então a viabilidade econômica é crítica.
+              </p>
+
+              <p>
+                CESGRANRIO testa identificação de equipamentos por função ("which valve prevents backflow?"), compreensão de especificações (pressão, material), e aplicação a cenários ("if pump fails, what happens to production?"). Erros comuns: confundir ball valve com check valve (ball controla fluxo bidirecional, check permite apenas uma direção); não entender que relief valve é "proteção" ativa (abre automaticamente sob pressão alta); achar que todas as bombas funcionam igual (centrifugal vs positive displacement têm características muito diferentes). Vocabulário técnico é altamente contextual — "pump failure" numa prova pode significar: bomba não liga, bomba liga mas não produz pressão, bomba ligada mas com vazamento. Cada um requer diagnóstico e solução diferente, e essa nuance aparece em questões de compreensão.
               </p>
 
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-lg border border-purple-200 dark:border-purple-800 p-6 space-y-4">
@@ -889,6 +913,14 @@ export default function AulaVocabulary({
                 <strong>Compliance (Conformidade):</strong> Seguir regulations (leis/regulações estaduais/federais), standards (ISO 14001 para ambiente, OHSAS 18001 para segurança), procedures (guias operacionais), audits (verificação de conformidade), corrective actions (ações corretivas se não-conformidade encontrada), certifications (prova de cumprimento). Non-compliance resulta em multas, perda de licença operacional, ou encerramento de operações.
               </p>
 
+              <p>
+                Contexto Petrobras real: A empresa tem "Zero Harm" como meta corporativa — significa ZERO mortes, ZERO lesões graves. Trabalhos em altura (towers, platforms) exigem harness + rope access training. Trabalho em "confined spaces" (tanques, tubagens) requer respirador + safety watch + permit-to-work. Exposição a H2S (hydrogen sulfide gas) é letal em segundos — qualquer operação em campos com H2S requer treinamento certificado e monitoramento contínuo com detectores. Offshore trabalha com sistema IMCA (International Marine Contractors Association) padrões. Incidentes são investigados por Time Investigador usando RCA (Root Cause Analysis) — objetivo é não punir, mas entender "why did it happen?" e prevenir repetição. Cultura de reportar near-misses é encorajada ("if it could have been an accident, REPORT IT") porque é oportunidade de aprender sem alguém ter ferido.
+              </p>
+
+              <p>
+                CESGRANRIO testa compreensão de "hazard vs risk" (hazard = situação potencial, risk = probabilidade + consequência), diferença entre "incident vs accident" (accident = incidente que causou dano), e aplicação prática de HSE ("if you see a spill, what do you do?"). Erros comuns: confundir "PPE" com "control" (PPE é última defesa, deve-se eliminar hazard primeiro através de engineering controls); achar que "compliance" é just "follow rules" (é framework inteiro para evitar dano); não entender que "incident" inclui near-misses (muitos acham que só accounts coisas que machucaram). Vocabulário HSE é legal-formal, então tons e contexto são críticos — "non-compliance" é mais grave que "issue", "corrective action" é mais permanente que "temporary fix". Em provas CESGRANRIO, cenários realistas (e.g., "worker found sleeping in confined space — what should supervisor do?") testam julgamento, não só memorização.
+              </p>
+
               <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 rounded-lg border border-red-200 dark:border-red-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">HSE Framework</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -1128,6 +1160,14 @@ export default function AulaVocabulary({
 
               <p>
                 <strong>Stakeholder:</strong> Qualquer pessoa interessada na empresa: acionistas (querem lucro), empregados (querem salário/benefícios), governo (quer impostos/compliance), comunidade local (quer meio ambiente limpo), fornecedores (querem pagamento pontual). Gestão de stakeholders = equilibrar interesses conflitantes. Uma decisão que aumenta lucro de acionistas pode prejudicar comunidade local.
+              </p>
+
+              <p>
+                Métricas financeiras que CESGRANRIO testa: NPV (Net Present Value) = valor presente de fluxo de caixa futuro descontado a taxa de juros. Projeto com NPV positivo é viável. IRR (Internal Rate of Return) = taxa de retorno anual. Payback period = quantos anos até recuperar investimento inicial. Break-even price = mínimo preço de Brent para projeto ser lucrativo (e.g., "break-even é US$ 45/bbl — abaixo disso, projeto perde dinheiro"). Margin = diferença entre receita e custo. Esses conceitos aparecem em textos de análise de viabilidade de projetos.
+              </p>
+
+              <p>
+                CESGRANRIO testa identificação de que termos pertencem a que categoria (CAPEX vs OPEX?), entendimento de relação causal (se Brent cai, o que acontece com profit?), e aplicação a cenários ("se projeto A tem OPEX baixo mas CAPEX alto, e projeto B tem OPEX alto mas CAPEX baixo, qual é mais viável?"). Erros comuns: confundir CAPEX (investimento de longo prazo) com OPEX (custos diários); achar que "higher CAPEX = always bad" (pode ser justificado se OPEX for significativamente menor); não entender que price do Brent afeta VIABILIDADE inteira de um projeto (um "good project" em Brent US$ 80/bbl vira "bad project" em Brent US$ 30/bbl). Linguagem financeira também requer compreensão de nuances — "cost reduction" é diferente de "cost cutting" (primeiro é estratégico, segundo é reativo e pode prejudicar qualidade).
               </p>
 
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-lg border border-green-200 dark:border-green-800 p-6 space-y-4">
@@ -1370,6 +1410,18 @@ export default function AulaVocabulary({
                 <strong>Net-Zero Commitment:</strong> Compromisso de reduzir emissões a zero. "Net" significa que permanecer com algumas emissões é OK se forem OFFSET por carbon removal (captura e armazenamento). Petrobras comprometeu Net-Zero Upstream 2030: reduzir emissões de operação em 25% até 2030. Mas combustão do produto vendido ainda emitirá — aí entra carbon removal como offset.
               </p>
 
+              <p>
+                Contexto Petrobras prático: A empresa tem operações com diferentes carbon intensities. Pré-sal (poços novos, eficientes) = ~5 tCO2e/bbl. Campos antigos (Bacia de Campos) = ~12-15 tCO2e/bbl. Estratégia: investir em pré-sal (baixa emissão, alta margem), decommission campos antigos de alta emissão. Renewable energy é prioridade — estão desenvolvendo parques eólicos/solares para alimentar plataformas, reduzindo diesel consumption. Carbon capture é exótica mas promissora — tecnologia ainda cara, mas governo oferece incentivos. Flaring (queima de gás sem valor) é regulado; Petrobras investe em gas processing para monetizar (vender gás) em vez de queimar.
+              </p>
+
+              <p>
+                CESGRANRIO testa diferenciação entre escopos (qual emissão é Scope 1?), entendimento de trade-offs (se Petrobras parar de produzir óleo, emissões da operação vão a zero mas: 1) perdem receita, 2) alguém mais vai produzir (talvez com tecnologia mais suja)). Conceitos avançados: "carbon intensity" (emissão por barril — métrica de eficiência operacional), "net-zero vs carbon-neutral" (net-zero permite offset, carbon-neutral é zero puro — diferença importante), "green energy" vs "renewable energy" vs "clean energy" (termos frequentemente confundidos). ESG também inclui social e governance — diversidade no board, salários justos, anti-corrupção — então resposta correta pode requerer compreender múltiplas dimensões.
+              </p>
+
+              <p>
+                Erros comuns: achar que "ESG" é só environmental (na verdade, é 3 pilares); confundir "net-zero" com "zero emissions" (net-zero permite offsets, zero puro não); não entender que "carbon footprint" de oil company é dominado por Scope 3 (combustão do produto, não operação); interpretar "sustainable" como "100% green" (na prática, é "less harmful than alternatives"). Vocabulário ESG é crescente em relatórios anuais Petrobras, comunicados de imprensa, apresentações a investidores — então candidatos precisam reconhecer termos em contexto corporativo formal (linguagem mais técnica, menos coloquial).
+              </p>
+
               <div className="bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-950/30 dark:to-teal-950/30 rounded-lg border border-green-200 dark:border-green-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">ESG Framework</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -1609,6 +1661,14 @@ export default function AulaVocabulary({
 
               <p>
                 <strong>Deliverable:</strong> Qualquer coisa tangível que o projeto entrega. Podem ser: Documentos (engineering drawings, manuals, reports), Infraestrutura (plataforma, pipeline, refinaria), Serviços (treinamento, operação), Capacidade (50,000 bbl/d of production). Cada deliverable tem acceptance criteria (como sabemos que está "pronto").
+              </p>
+
+              <p>
+                Contexto Petrobras de projetos reais: Um projeto típico (e.g., desenvolvimento de novo campo) tem phases: Permitting (2-3 anos, regulatory approvals), Engineering (1-2 anos, design detalhado), Procurement (1-2 anos, compra de equipamento), Fabrication (1-3 anos, construção de plataforma), Installation (6-18 meses, montagem no site), Hook-up & Testing (3-6 meses, integração de sistemas), Ramp-up (2-4 meses, aumento gradual de produção). Total: 8-15 anos de primeira permissão a produção máxima. Cada fase tem gates (go/no-go decision points). Se permitting falha, projeto inteiro é parado. Se instalação atrasa, "first oil" (produção inicial) atrasa, afetando NPV inteiro — por isso milestones críticos são rastreados obsessivamente.
+              </p>
+
+              <p>
+                CESGRANRIO testa compreensão de relações de sequência (qual milestone pode ser paralelo? qual é sequential?), diferenciação entre termos (KPI vs milestone vs deliverable — são coisas diferentes), e aplicação a cenários ("if platform installation is delayed 3 months, what happens to first oil target?"). Erros comuns: confundir "scope" com "deliverable" (scope é WHAT vai ser feito, deliverable é WHAT é entregue); achar que "scope creep" é sempre ruim (pode ser justificado se negócio muda); não entender que "critical path" determina prazo total — se atrasa qualquer atividade no critical path, projeto inteiro atrasa (atividades non-critical podem atrasar um pouco sem afetar prazo final). Linguagem de PM é também formal — "schedule variance", "cost variance", "value earned" — termos técnicos com definições precisas em PMBOK (Project Management Body of Knowledge).
               </p>
 
               <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
@@ -1855,6 +1915,14 @@ export default function AulaVocabulary({
                 <strong>Liability:</strong> Responsabilidade legal por danos, atrasos, não-conformidade. Exemplo: "Contractor é responsável por acidentes de seus trabalhadores até US$ 10M. Petrobras é responsável por design errors até US$ 50M." Se contractor não entrega no prazo, Petrobras pode aplicar penalties (multa por dia de atraso). Se Petrobras não paga, contractor pode parar o trabalho ou processar judicialmente.
               </p>
 
+              <p>
+                Contexto Petrobras real: Procurements críticos incluem plataformas offshore (gigantescas, bilhões de dólares, 24-36 meses), tubulações submarinas (rede complexa de pipes, milhões de metros), rigs de perfuração (aluguel apenas, contrato de $1M+/dia), e engenharia (design básico e detalhado, 1-3 anos). Tender típica atrai 3-8 bidders internacionais (Technip, Subsea7, Saipem, etc.). Processo é transparente — todos os bidders recebem mesmas informações; perguntas são respondidas em "Addendum" publicado para todos. Petrobras é rigorosa com "technical compliance" — se um bidder não satisfaz requisitos, é desqualificado ANTES de olhar o preço. Protesto legal é comum — perdedores apelam em tribunal, pode atrasar projeto 6-12 meses se apelo tem mérito.
+              </p>
+
+              <p>
+                CESGRANRIO testa diferenciação entre fases do processo (tender vs bid vs contract), compreensão de motivações diferentes (contractor quer lucro, Petrobras quer qualidade + prazo), e aplicação a cenários realistas ("if contractor não tem experiência no Escopo, deve ser desqualificado mesmo se preço é melhor?"). Erros comuns: confundir "tender" (processo) com "bid" (proposta); achar que "lowest bid always wins" (na verdade, avaliação é técnico+comercial, não só preço); não entender que "liability cap" (limite de responsabilidade) é negociável e afeta viabilidade para contractor. Vocabulário procurement inclui termos legais formais ("indemnification", "force majeure", "material breach") que aparecem em contratos reais. Linguagem é também setorial — "mobilization" (preparação do site), "demobilization" (desmontagem), "standby" (tempo ocioso pago porque contractor fica disponível mesmo sem trabalho) — termos específicos de projetos E&P.
+              </p>
+
               <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Procurement Cycle</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -2099,6 +2167,18 @@ export default function AulaVocabulary({
                 4. <strong>Bid Responses & Contracts:</strong> Documento de procurement. Integra: technical specs (equipment, performance, warranty), commercial terms (price, schedule, liability), project language (scope, deliverables, acceptance criteria), HSE commitments (safety record, insurance, training).
               </p>
 
+              <p>
+                Estratégia de leitura: Quando você encontrar um documento integrando múltiplos domínios, procure "context clues" para decodificar vocabulário. Exemplo: "Maintenance downtime caused by critical valve failure resulted in loss of 5,000 bbl/d production. Immediate procurement action released emergency supply with expedited delivery. Equipment swap completed within 36 hours; no safety incidents, HSE compliance maintained. Estimated revenue loss $350K at current Brent price." Decodificação: valve (equipment domain) + bbl/d (upstream production domain) + procurement action (business domain) + HSE compliance (safety domain) + Brent price (financial domain). Uma sentença, 5 domínios. Candidato que entende TODOS os termos + como se conectam ganha pontos em compreensão profunda.
+              </p>
+
+              <p>
+                Estrutura de CESGRANRIO para este módulo: Apresenta cenário complexo (100-300 palavras), faz perguntas de compreensão. Exemplo: "A project discovered increased H2S hazard during well drilling. Immediate corrective actions included...what safety measure is NOT mentioned?" Resposta requer: 1) entender que H2S é hazard (HSE domain), 2) reconhecer que corrective actions são respostas a hazards, 3) ter lido atentamente (muitos candidatos "adivinham"). Outra questão: "If CAPEX increases by 15% and Brent price drops below break-even, what is MOST likely consequence?" Requer: 1) entender CAPEX (financial), 2) entender break-even (financial), 3) conectar impacto: projeto fica inviável = cancelado ou delayed. Integração é a chave — candidatos que dominam individual domains mas não conseguem conectá-los vão ficar com pontuação média.
+              </p>
+
+              <p>
+                Prática efetiva: Leia textos reais de relatórios Petrobras (disponíveis em investor.petrobras.com.br), identifique vocabulário de cada domain, anote contexto. Faça perguntas a si mesmo: "Por que mencionaram OPEX aqui?" (porque projeto é economicamente viável só se OPEX for baixo). "Por que mencionaram HSE?" (porque um incidente poderia parar a operação, custa milhões). Cada termo tem "por quê" associado. Uma vez que você entenda o porquê, memorização vira natural. Textos de processos licitatórios também são boas práticas — encontre um tender de Petrobras publicado, leia inteiro, identifique vocabulário. Você verá que real business writing mistura todos os domínios simultaneamente, exatamente como CESGRANRIO testa.
+              </p>
+
               <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/30 dark:to-blue-950/30 rounded-lg border border-indigo-200 dark:border-indigo-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Tipos de Documentos Petrobras</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -2333,6 +2413,18 @@ export default function AulaVocabulary({
 
               <p>
                 Seu objetivo: reconhecer vocabulário por colocação, contexto, padrão. Não precisa saber TUDO — precisa ser capaz de deduzir.
+              </p>
+
+              <p>
+                Metod integrada: O candidato bem-preparado está confortável em QUALQUER contexto porque entende estrutura. Viu uma operação offshore? Sabe: "haverá equipamento (valves, pumps), vocabulário upstream (wells, reservoir, drilling), HSE concerns (H2S hazard, PPE), e operação de projeto (KPIs, schedule)." Viu um cenário financeiro? Sabe: "CAPEX é investimento inicial, OPEX é custos contínuos, Brent é preço que flutua, e impacta viabilidade." Viu incidente? Sabe: "procure sequência: hazard → incident → investigation → corrective action → prevention." Essa estrutura mental permite você ser eficaz mesmo quando vê termo novo — porque você entende ONDE ele se encaixa no sistema maior.
+              </p>
+
+              <p>
+                Questões difíceis frequentemente testam nuances: "Qual é a diferença entre 'near-miss' e 'breach' de contrato?" (near-miss = almost happened, breach = violation, não são mesma coisa). "Por que ESG scores importam para Petrobras?" (baixo ESG = menos capital disponível, custo de empréstimos sobe, diminui profitabilidade). "Se um contractor está 3 meses behind schedule, qual é o MAIOR risco?" (atraso cascata em milestones seguintes, podendo atrasar "first oil" months ou years, impactando NPV bilhões). Essas questões requerem compreensão PROFUNDA, não memorização.
+              </p>
+
+              <p>
+                Sua preparação neste módulo: Complete o simulado de 8 questões. Para cada questão, depois de responder, escreva: 1) O que testava? (vocabulário X? compreensão de conceito Y? lógica de negócios Z?) 2) Por que a resposta correta é aquela? 3) Que contexto clue levou você à resposta? Se você acertou por sorte, revise o módulo correspondente. Se acertou com confiança, parabéns — dominé aquele conceito. Meta final: 8/8 correto E capacidade de EXPLICAR por que cada resposta está certa, não só ter "adivinhou certo."
               </p>
             </div>
 
