@@ -1089,7 +1089,7 @@ export default function AulaProgressoesPg({
               index={6}
               title="PG Aplicada a Fenômenos Naturais"
               description="Exponencial explica crescimento rápido ou decaimento lento."
-              variant="teal"
+              variant="cyan"
             />
 
             <ContentAccordion
@@ -1199,7 +1199,7 @@ export default function AulaProgressoesPg({
 
 <ModuleConsolidation
             index={6}
-            variant="teal"
+            variant="cyan"
             video={{
               videoId: "tZzgzUaHdCw",
               title: "Crescimento Exponencial: Aplicações",
@@ -1253,7 +1253,7 @@ export default function AulaProgressoesPg({
               questoes={quizM6}
               titulo="Fixação - Crescimento/Decaimento"
               numero={6}
-              variant="teal"
+              variant="cyan"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1652,7 +1652,7 @@ export default function AulaProgressoesPg({
               index={9}
               title="Progressões Geométricas na Indústria"
               description="Crescimento de produção, depleção de reservas."
-              variant="orange"
+              variant="amber"
             />
 
             <ContentAccordion
@@ -1766,7 +1766,7 @@ export default function AulaProgressoesPg({
 
 <ModuleConsolidation
             index={9}
-            variant="orange"
+            variant="amber"
             video={{
               videoId: "4KzE9R6zWzY",
               title: "PG na Petrobras: Produção e Reservas",
@@ -1820,7 +1820,7 @@ export default function AulaProgressoesPg({
               questoes={quizM9}
               titulo="QUIZ: Módulo Nº 9"
               numero={10}
-              variant="orange"
+              variant="amber"
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />

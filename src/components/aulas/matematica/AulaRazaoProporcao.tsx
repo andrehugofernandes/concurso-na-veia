@@ -1157,7 +1157,7 @@ export default function AulaRazaoProporcao({
                   <p><strong>PASSO 1:</strong> Some as partes da razão: Total_partes = r₁ + r₂ + r₃ + ...</p>
                   <p><strong>PASSO 2:</strong> Calcule o valor de cada parte: valor_parte = V / Total_partes</p>
                   <p><strong>PASSO 3:</strong> Multiplique cada razão: xᵢ = rᵢ × valor_parte</p>
-                  <p><strong>INVERSÃO (se aplicável):</strong> Razão inversa a {a, b, c} = {1/a, 1/b, 1/c}. Converta para inteiros via MMC antes de aplicar passos.</p>
+                  <p><strong>INVERSÃO (se aplicável):</strong> Razão inversa a {"{a, b, c}"} = {"{1/a, 1/b, 1/c}"}. Converta para inteiros via MMC antes de aplicar passos.</p>
                   <p><strong>Verificação:</strong> Sempre some os resultados finais — devem totalizar V exatamente</p>
                 </div>
               </div>

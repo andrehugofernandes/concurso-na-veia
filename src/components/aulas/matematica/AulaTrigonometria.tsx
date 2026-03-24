@@ -290,7 +290,7 @@ export default function AulaTrigonometria({
                         <p className="text-sm">3. tg(30°) = √3/3, então: √3/3 = h/100</p>
                         <p className="text-sm">4. h = 100 · √3/3 ≈ 57,7m</p>
                       </div>
-                      <AlertBox tipo="success">
+                      <AlertBox tipo="success" titulo="Ângulo de Elevação">
                         Lembre: o ângulo de elevação é sempre medido do chão para cima, formando um triângulo retângulo com o observador no solo.
                       </AlertBox>
                     </div>
@@ -309,7 +309,7 @@ export default function AulaTrigonometria({
                         <p className="text-sm">3. sen(20°) ≈ 0,342, então: 0,342 = h/15</p>
                         <p className="text-sm">4. h ≈ 5,13m (altura vertical da rampa)</p>
                       </div>
-                      <AlertBox tipo="info">
+                      <AlertBox tipo="info" titulo="Aplicação em Plataformas">
                         Esta é uma aplicação comum em inspeções de segurança de rampas de acesso em plataformas de petróleo.
                       </AlertBox>
                     </div>
@@ -605,7 +605,7 @@ export default function AulaTrigonometria({
                           </tbody>
                         </table>
                       </div>
-                      <AlertBox tipo="success">
+                      <AlertBox tipo="success" titulo="Padrão dos Valores">
                         Dica: Seno aumenta (1/2 → √2/2 → √3/2), Cosseno diminui (√3/2 → √2/2 → 1/2). Tangente: na ordem 1/√3, 1, √3.
                       </AlertBox>
                     </div>
@@ -852,7 +852,7 @@ export default function AulaTrigonometria({
                         <p className="text-sm">2π rad = 360° (volta completa)</p>
                         <p className="text-sm">π/2 rad = 90°, π/3 rad = 60°, π/4 rad = 45°</p>
                       </div>
-                      <AlertBox tipo="info">
+                      <AlertBox tipo="info" titulo="Por que Radianos?">
                         Em cálculo e física, radianos são preferidos porque simplificam muitas fórmulas (derivadas de sen(x) é cos(x) quando x está em radianos).
                       </AlertBox>
                     </div>
@@ -1099,7 +1099,7 @@ export default function AulaTrigonometria({
                         <p className="text-sm">• <strong>c</strong>: deslocamento horizontal (defasagem)</p>
                         <p className="text-sm">• <strong>d</strong>: deslocamento vertical</p>
                       </div>
-                      <AlertBox tipo="success">
+                      <AlertBox tipo="success" titulo="Exemplo Completo">
                         Exemplo: y = 2·sen(3x - π/2) + 1 tem amplitude 2, período 2π/3, deslocamento horizontal π/6 à direita, e desloca 1 unidade para cima.
                       </AlertBox>
                     </div>
@@ -1553,7 +1553,7 @@ export default function AulaTrigonometria({
                         <p className="text-sm">3. a/sen(60°) = 10/sen(75°)</p>
                         <p className="text-sm">4. a = 10·sen(60°)/sen(75°) = 10·(√3/2)/0,966 ≈ 8,93</p>
                       </div>
-                      <AlertBox tipo="success">
+                      <AlertBox tipo="success" titulo="Caso Mais Comum">
                         Este é o caso mais comum em testes: use Lei dos Senos quando conhecer uma medida de lado com seu ângulo oposto.
                       </AlertBox>
                     </div>
@@ -1772,7 +1772,7 @@ export default function AulaTrigonometria({
                         <p className="text-sm">c² = 74 - 35 = 39</p>
                         <p className="text-sm">c = √39 ≈ 6,24</p>
                       </div>
-                      <AlertBox tipo="info">
+                      <AlertBox tipo="info" titulo="Quando Usar Lei dos Cossenos">
                         Quando você conhece dois lados e o ângulo ENTRE eles, sempre use Lei dos Cossenos (SAS).
                       </AlertBox>
                     </div>
@@ -1991,7 +1991,7 @@ export default function AulaTrigonometria({
                         <p className="text-sm ml-4">• Primeira volta: x = π/3 (60°) ou x = 2π/3 (120°)</p>
                         <p className="text-sm">4. Solução geral: x = π/3 + 2πk ou x = 2π/3 + 2πk, onde k ∈ Z</p>
                       </div>
-                      <AlertBox tipo="success">
+                      <AlertBox tipo="success" titulo="Soluções no Intervalo">
                         Lembre: se sin(x) = a, então x = arcsin(a) ou x = π - arcsin(a) (ambas soluções no intervalo [0, 2π)).
                       </AlertBox>
                     </div>
@@ -2251,7 +2251,7 @@ export default function AulaTrigonometria({
                         <p className="text-sm">3. Use: cos(θ) = CO/Hip = 2000/2500 = 0,8</p>
                         <p className="text-sm">4. θ = arccos(0,8) ≈ 36,87°</p>
                       </div>
-                      <AlertBox tipo="success">
+                      <AlertBox tipo="success" titulo="Engenharia de Poços">
                         Este cálculo é essencial em engenharia de poços para verificar se o desvio está dentro dos parâmetros operacionais (geralmente 0-60° dependendo da zona).
                       </AlertBox>
                     </div>
@@ -2523,7 +2523,7 @@ export default function AulaTrigonometria({
                           <p>Isole, ache o ângulo de referência, aplique periodicidade</p>
                         </div>
                       </div>
-                      <AlertBox tipo="success">
+                      <AlertBox tipo="success" titulo="Dica Final">
                         Estudou? Revise este mapa no dia da prova. Ele define qual ferramenta usar em cada situação!
                       </AlertBox>
                     </div>
@@ -2545,7 +2545,7 @@ export default function AulaTrigonometria({
                           <p>☐ Fiz 20+ questões de fixação?</p>
                         </div>
                       </div>
-                      <AlertBox tipo="info">
+                      <AlertBox tipo="info" titulo="Checklist de Revisão">
                         Se respondeu "não" para qualquer item, revise aquele módulo agora! Não vá para a prova com lacunas.
                       </AlertBox>
                     </div>

@@ -1263,7 +1263,7 @@ export default function AulaProgressoesPa({
               index={6}
               title="PA Como Restrição de Função Afim"
               description="Quando n é número natural, f(n) forma uma PA."
-              variant="teal"
+              variant="cyan"
             />
 
             <ContentAccordion
@@ -1372,7 +1372,7 @@ export default function AulaProgressoesPa({
 
 <ModuleConsolidation
             index={6}
-            variant="teal"
+            variant="cyan"
             video={{
               videoId: "tZzgzUaHdCw",
               title: "PA e Funções Afim: Conexão",
@@ -1428,7 +1428,7 @@ export default function AulaProgressoesPa({
               questoes={quizM6}
               titulo="Fixação - PA e Função Afim"
               numero={6}
-              variant="teal"
+              variant="cyan"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1805,7 +1805,7 @@ export default function AulaProgressoesPa({
               index={9}
               title="PA na Indústria"
               description="Cronogramas, depreciação, e programação."
-              variant="orange"
+              variant="amber"
             />
 
             <ContentAccordion
@@ -1915,7 +1915,7 @@ export default function AulaProgressoesPa({
 
 <ModuleConsolidation
             index={9}
-            variant="orange"
+            variant="amber"
             video={{
               videoId: "9KZg0LdwAg4",
               title: "PA na Petrobras: Cronogramas",
@@ -1969,7 +1969,7 @@ export default function AulaProgressoesPa({
               questoes={quizM9}
               titulo="QUIZ: Módulo Nº 9"
               numero={10}
-              variant="orange"
+              variant="amber"
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />

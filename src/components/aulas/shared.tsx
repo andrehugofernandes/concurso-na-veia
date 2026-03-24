@@ -69,7 +69,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Slider } from "@/components/ui/slider";
-import { triggerSuccessConfetti } from "@/lib/confetti";
+import { triggerSuccessConfetti } from "../../lib/confetti";
 
 export interface AulaProps {
   onComplete: () => void;

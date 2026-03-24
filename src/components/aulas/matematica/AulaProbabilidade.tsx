@@ -220,7 +220,7 @@ export default function AulaProbabilidade({
                       </p>
                       <div className="bg-blue-500/10 p-4 rounded border border-blue-500/20">
                         <p className="font-bold text-blue-700 text-sm mb-2">Lançar moeda 2 vezes:</p>
-                        <p className="font-mono text-xs text-center">S = {(Cara,Cara), (Cara,Coroa), (Coroa,Cara), (Coroa,Coroa)}</p>
+                        <p className="font-mono text-xs text-center">S = {"{(Cara,Cara), (Cara,Coroa), (Coroa,Cara), (Coroa,Coroa)}"}</p>
                         <p className="text-xs text-center mt-1">n(S) = 4</p>
                       </div>
                     </div>
@@ -316,8 +316,8 @@ export default function AulaProbabilidade({
                   </p>
                   <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg font-mono text-xs text-center">
                     <p>Lançar 1 dado</p>
-                    <p className="text-xs text-muted-foreground">S = {1,2,3,4,5,6}</p>
-                    <p>Evento: tirar par = {2,4,6}</p>
+                    <p className="text-xs text-muted-foreground">S = {"{1,2,3,4,5,6}"}</p>
+                    <p>Evento: tirar par = {"{2,4,6}"}</p>
                   </div>
                 </div>
               ),
@@ -390,9 +390,9 @@ export default function AulaProbabilidade({
                       </p>
                       <div className="bg-emerald-500/10 p-4 rounded border border-emerald-500/20">
                         <p className="font-mono text-xs text-center">
-                          E = {2, 4, 6} → n(E) = 3
+                          E = {"{2, 4, 6}"} → n(E) = 3
                           <br />
-                          S = {1,2,3,4,5,6} → n(S) = 6
+                          S = {"{1,2,3,4,5,6}"} → n(S) = 6
                           <br />
                           P(E) = 3/6 = 1/2 = 50%
                         </p>
@@ -835,7 +835,7 @@ export default function AulaProbabilidade({
                     <p className="text-xs text-muted-foreground">
                       P(sim|nuvem) = ?
                     </p>
-                    <p>Novo espaço: {nuvem, nublado}</p>
+                    <p>Novo espaço: "nuvem, nublado"</p>
                   </div>
                 </div>
               ),
@@ -1038,7 +1038,7 @@ export default function AulaProbabilidade({
               index={6}
               title="Negação de Eventos"
               description="Às vezes é mais fácil calcular o oposto."
-              variant="teal"
+              variant="cyan"
             />
 
             <ContentAccordion
@@ -1127,7 +1127,7 @@ export default function AulaProbabilidade({
 
 <ModuleConsolidation
             index={6}
-            variant="teal"
+            variant="cyan"
             video={{
               videoId: "9KZg0LdwAg4",
               title: "Evento Complementar",
@@ -1183,7 +1183,7 @@ export default function AulaProbabilidade({
               questoes={quizM6}
               titulo="Fixação - Complementar"
               numero={6}
-              variant="teal"
+              variant="cyan"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1552,7 +1552,7 @@ export default function AulaProbabilidade({
               index={9}
               title="Probabilidade na Indústria"
               description="Análise de risco e confiabilidade de sistemas."
-              variant="orange"
+              variant="amber"
             />
 
             <ContentAccordion
@@ -1643,7 +1643,7 @@ export default function AulaProbabilidade({
 
 <ModuleConsolidation
             index={9}
-            variant="orange"
+            variant="amber"
             video={{
               videoId: "4KzE9R6zWzY",
               title: "Engenharia de Riscos",
@@ -1699,7 +1699,7 @@ export default function AulaProbabilidade({
               questoes={quizM9}
               titulo="QUIZ: Módulo Nº 9"
               numero={10}
-              variant="orange"
+              variant="amber"
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />

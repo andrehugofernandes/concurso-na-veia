@@ -71,11 +71,6 @@ export default function AulaNr10({
   const [quizM5, setQuizM5] = useState<typeof QUIZ_M5_NR10_MESTRE>([]);
 
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
-  const [showCompletionBadge, setShowCompletionBadge] = useState(false);
-
-  useEffect(() => {
-    if (isCompleted) setShowCompletionBadge(true);
-  }, [isCompleted]);
 
   useEffect(() => {
     if (!hasSyncedInitial && !loading) {
@@ -112,8 +107,6 @@ export default function AulaNr10({
       completedModules={completedModules}
       onComplete={onComplete}
       isCompleted={isCompleted}
-      showCompletionBadge={showCompletionBadge}
-      completionBadgeText="🏆 ESPECIALISTA EM NR-10"
       prevTopico={prevTopico}
       nextTopico={nextTopico}
     >
@@ -239,6 +232,10 @@ export default function AulaNr10({
           <ModuleConsolidation
             index={1}
             variant={mv[1]}
+            video={{ videoId: "", title: "", duration: "" }}
+            resumoVisual={{ moduloNome: "", tituloAula: "", materia: "", images: [] }}
+            maceteVisual={{ title: "Resumo", content: <div>Resumo do módulo</div> }}
+            audio={{ audioUrl: "", titulo: "", artista: "" }}
           />
 
           <QuizInterativo titulo="Simulado de Conhecimento"
@@ -294,10 +291,10 @@ export default function AulaNr10({
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">A Hierarquia de Ouro (Decore!)</h4>
                 <div className="space-y-3">
-                  <TimelineItem numero={1} titulo="EPC (Proteção Coletiva)" descricao="Desenergização absoluta de toda a estrutura, respeitadas as cinco etapas essenciais (seccionamento, trancamento, teste de ausência, aterramento, sinalização)." />
-                  <TimelineItem numero={2} titulo="Tensão de Segurança" descricao="Caso desenergizar destrua a logística do equipamento em operação crítica (Ex: bomba de ar ininterrupta ou controle HMI vital), usa-se Tensão abaixo das barreiras corporais causadoras de choque letal." />
-                  <TimelineItem numero={3} titulo="Outros EPCs Físicos" descricao="Colocação de isolantes nas partes vivas, invólucros plásticos, barricadas com grade protetora e chaves para bloqueio." />
-                  <TimelineItem numero={4} titulo="EPI (Proteção Individual)" descricao="Somente na falha técnica ou na inviabilidade operacional manifesta das 3 etapas anteriores é que o trabalhador ampara-se primariamente numa luva ou vestimenta." />
+                  <TimelineItem passo={1} titulo="EPC (Proteção Coletiva)" descricao="Desenergização absoluta de toda a estrutura, respeitadas as cinco etapas essenciais (seccionamento, trancamento, teste de ausência, aterramento, sinalização)." />
+                  <TimelineItem passo={2} titulo="Tensão de Segurança" descricao="Caso desenergizar destrua a logística do equipamento em operação crítica (Ex: bomba de ar ininterrupta ou controle HMI vital), usa-se Tensão abaixo das barreiras corporais causadoras de choque letal." />
+                  <TimelineItem passo={3} titulo="Outros EPCs Físicos" descricao="Colocação de isolantes nas partes vivas, invólucros plásticos, barricadas com grade protetora e chaves para bloqueio." />
+                  <TimelineItem passo={4} titulo="EPI (Proteção Individual)" descricao="Somente na falha técnica ou na inviabilidade operacional manifesta das 3 etapas anteriores é que o trabalhador ampara-se primariamente numa luva ou vestimenta." />
                 </div>
               </div>
             </div>
@@ -347,6 +344,10 @@ export default function AulaNr10({
           <ModuleConsolidation
             index={2}
             variant={mv[2]}
+            video={{ videoId: "", title: "", duration: "" }}
+            resumoVisual={{ moduloNome: "", tituloAula: "", materia: "", images: [] }}
+            maceteVisual={{ title: "Resumo", content: <div>Resumo do módulo</div> }}
+            audio={{ audioUrl: "", titulo: "", artista: "" }}
           />
 
           <QuizInterativo titulo="Simulado de Conhecimento"
@@ -397,7 +398,14 @@ export default function AulaNr10({
             </div>
           </section>
 
-          <ModuleConsolidation index={3} variant={mv[3]} />
+          <ModuleConsolidation
+            index={3}
+            variant={mv[3]}
+            video={{ videoId: "", title: "", duration: "" }}
+            resumoVisual={{ moduloNome: "", tituloAula: "", materia: "", images: [] }}
+            maceteVisual={{ title: "Resumo", content: <div>Resumo do módulo</div> }}
+            audio={{ audioUrl: "", titulo: "", artista: "" }}
+          />
 
           <QuizInterativo titulo="Simulado de Conhecimento" questoes={quizM3} variant={mv[3]} onComplete={() => handleModuleComplete("modulo-3")} />
         </div>
@@ -431,7 +439,14 @@ export default function AulaNr10({
             </div>
           </section>
 
-          <ModuleConsolidation index={4} variant={mv[4]} />
+          <ModuleConsolidation
+            index={4}
+            variant={mv[4]}
+            video={{ videoId: "", title: "", duration: "" }}
+            resumoVisual={{ moduloNome: "", tituloAula: "", materia: "", images: [] }}
+            maceteVisual={{ title: "Resumo", content: <div>Resumo do módulo</div> }}
+            audio={{ audioUrl: "", titulo: "", artista: "" }}
+          />
 
           <QuizInterativo titulo="Simulado de Conhecimento" questoes={quizM4} variant={mv[4]} onComplete={() => handleModuleComplete("modulo-4")} />
         </div>
@@ -464,13 +479,28 @@ export default function AulaNr10({
               </p>
             </div>
 
-            <ComparisonSide
-              lado1={{ label: "Pessoas Não Autorizadas", content: "Jamais entram ou adentram as linhas tênues das margens radiotivas da Zona Controlada (ZC) nem, pior ainda, da Zona de Risco (ZR)." }}
-              lado2={{ label: "Trabalhadores Autorizados", content: "Possuem aval burocrático, aptidão documental médica total para ZC, mas ingressam com ferramental e autorização na ZR apenas sob as cautelas severas de EPCs / EPIs." }}
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <ComparisonSide
+                tipo="incorrect"
+                titulo="Pessoas Não Autorizadas"
+                items={["Jamais entram ou adentram as linhas tênues das margens radiotivas da Zona Controlada (ZC)", "Pior ainda, não acessam a Zona de Risco (ZR)"]}
+              />
+              <ComparisonSide
+                tipo="correct"
+                titulo="Trabalhadores Autorizados"
+                items={["Possuem aval burocrático e aptidão documental médica total para ZC", "Ingressam com ferramental e autorização na ZR apenas sob as cautelas severas de EPCs / EPIs"]}
+              />
+            </div>
           </section>
 
-          <ModuleConsolidation index={5} variant={mv[5]} />
+          <ModuleConsolidation
+            index={5}
+            variant={mv[5]}
+            video={{ videoId: "", title: "", duration: "" }}
+            resumoVisual={{ moduloNome: "", tituloAula: "", materia: "", images: [] }}
+            maceteVisual={{ title: "Resumo", content: <div>Resumo do módulo</div> }}
+            audio={{ audioUrl: "", titulo: "", artista: "" }}
+          />
 
           <QuizInterativo titulo="Simulado de Conhecimento" questoes={quizM5} variant={mv[5]} onComplete={() => handleModuleComplete("modulo-5")} />
         </div>

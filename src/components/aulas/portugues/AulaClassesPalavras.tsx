@@ -1444,24 +1444,18 @@ export default function AulaClassesPalavras({
             variant="rose"
           />
           <Comparison
-            titulo="Ativa vs Passiva Analítica vs Passiva Sintética"
-            esquerda={{
-              titulo: "Voz Ativa",
-              items: [
-                { texto: "Sujeito pratica a ação" },
-                { texto: "\"A Petrobras extraiu o petróleo.\"" },
-                { texto: "Sujeito = Petrobras (agente)" },
-                { texto: "Objeto Direto = o petróleo" },
-              ],
+            title="Ativa vs Passiva Analítica vs Passiva Sintética"
+            left={{
+              title: "Voz Ativa",
+              content: "Sujeito pratica a ação\n\"A Petrobras extraiu o petróleo.\"\nSujeito = Petrobras (agente)\nObjeto Direto = o petróleo",
+              description: "Forma direta",
+              variant: "success",
             }}
-            direita={{
-              titulo: "Voz Passiva",
-              items: [
-                { texto: "Sujeito recebe a ação" },
-                { texto: "\"O petróleo foi extraído pela Petrobras.\"" },
-                { texto: "Sujeito = petróleo (paciente)" },
-                { texto: "Agente da passiva = pela Petrobras" },
-              ],
+            right={{
+              title: "Voz Passiva",
+              content: "Sujeito recebe a ação\n\"O petróleo foi extraído pela Petrobras.\"\nSujeito = petróleo (paciente)\nAgente da passiva = pela Petrobras",
+              description: "Forma transformada",
+              variant: "info",
             }}
           />
           <AlertBox tipo="warning" titulo="Passiva Pronominal — A Pegadinha">
@@ -1710,26 +1704,18 @@ export default function AulaClassesPalavras({
             ]}
           />
           <Comparison
-            titulo="BOM vs BEM — MAU vs MAL: A Pegadinha da Cesgranrio"
-            esquerda={{
-              titulo: "BOM / MAU (Adjetivos)",
-              items: [
-                { texto: "Modificam SUBSTANTIVO" },
-                { texto: "Concordam em gênero e número" },
-                { texto: "\"É um BOM relatório\"" },
-                { texto: "\"Foi uma MÁ decisão\"" },
-                { texto: "\"São bons analistas\"" },
-              ],
+            title="BOM vs BEM — MAU vs MAL: A Pegadinha da Cesgranrio"
+            left={{
+              title: "BOM / MAU (Adjetivos)",
+              content: "Modificam SUBSTANTIVO\nConcordam em gênero e número\n\"É um BOM relatório\"\n\"Foi uma MÁ decisão\"\n\"São bons analistas\"",
+              description: "Classes adjetivas",
+              variant: "success",
             }}
-            direita={{
-              titulo: "BEM / MAL (Advérbios)",
-              items: [
-                { texto: "Modificam VERBO ou ADJETIVO" },
-                { texto: "São invariáveis — nunca flexionam" },
-                { texto: "\"Ele trabalha BEM\"" },
-                { texto: "\"Ela se saiu MAL na prova\"" },
-                { texto: "\"Está BEM preparado\" (modifica adjetivo)" },
-              ],
+            right={{
+              title: "BEM / MAL (Advérbios)",
+              content: "Modificam VERBO ou ADJETIVO\nSão invariáveis — nunca flexionam\n\"Ele trabalha BEM\"\n\"Ela se saiu MAL na prova\"\n\"Está BEM preparado\" (modifica adjetivo)",
+              description: "Classes adverbiais",
+              variant: "info",
             }}
           />
           <AlertBox tipo="danger" titulo="Erro Clássico: 'Ele é bem o funcionário certo'">
@@ -2337,24 +2323,18 @@ export default function AulaClassesPalavras({
             ]}
           />
           <Comparison
-            titulo="Numeral vs Pronome Indefinido vs Artigo Indefinido"
-            esquerda={{
-              titulo: "Numeral Cardinal",
-              items: [
-                { texto: "Quantidade exata e determinada" },
-                { texto: "\"Há TRÊS candidatos aprovados\"" },
-                { texto: "\"Comprei DOIS relatórios\"" },
-                { texto: "Pode ser substituído por algarismo" },
-              ],
+            title="Numeral vs Pronome Indefinido vs Artigo Indefinido"
+            left={{
+              title: "Numeral Cardinal",
+              content: "Quantidade exata e determinada\n\"Há TRÊS candidatos aprovados\"\n\"Comprei DOIS relatórios\"\nPode ser substituído por algarismo",
+              description: "Numerais precisos",
+              variant: "success",
             }}
-            direita={{
-              titulo: "Pronome Indefinido",
-              items: [
-                { texto: "Quantidade vaga, imprecisa" },
-                { texto: "\"ALGUNS candidatos foram aprovados\"" },
-                { texto: "\"MUITOS relatórios chegaram\"" },
-                { texto: "Não pode ser substituído por algarismo" },
-              ],
+            right={{
+              title: "Pronome Indefinido",
+              content: "Quantidade vaga, imprecisa\n\"ALGUNS candidatos foram aprovados\"\n\"MUITOS relatórios chegaram\"\nNão pode ser substituído por algarismo",
+              description: "Quantidades vagas",
+              variant: "warning",
             }}
           />
           <AlertBox tipo="danger" titulo="Concordância: Numeral + Substantivo Feminino">
