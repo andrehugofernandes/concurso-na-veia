@@ -1,61 +1,91 @@
-import { Questao } from "../../shared";
+import { QuizQuestion } from "../../shared";
 
-// Módulo 1: Definição e Responsabilidade
-export const QUIZ_M1_NR35_INTRO: Questao[] = [
+/**
+ * QUIZ: NR-35 - MÓDULO 1: Gestão e Planejamento
+ */
+export const QUIZ_M1_NR35_GESTAO: QuizQuestion[] = [
   {
-    pergunta: "A NR-35 considera trabalho em altura toda atividade executada acima de quantos metros do nível inferior, onde haja risco de queda?",
-    opcoes: ["1,50 metros", "1,80 metros", "2,00 metros", "3,00 metros"],
-    respostaCorreta: 2,
-    explicacao: "Conforme o item 35.1.2, considera-se trabalho em altura toda atividade executada acima de 2,00 m (dois metros) do nível inferior, onde haja risco de queda."
-  },
-  {
-    pergunta: "Cabe ao empregador, em relação ao trabalho em altura:",
+    id: "nr35_m1_1",
+    pergunta: "De acordo com a NR-35, considera-se trabalho em altura toda atividade executada acima de quantos metros do nível inferior, onde haja risco de queda?",
     opcoes: [
-      "Zelar pela sua própria segurança e saúde.",
-      "Garantir a implementação das medidas de proteção estabelecidas na norma.",
-      "Comprar seus próprios EPIs de marca preferida.",
-      "Ignorar o uso de cinturão em atividades rápidas."
+      { label: "A", valor: "1,50 metros" },
+      { label: "B", valor: "2,00 metros" },
+      { label: "C", valor: "2,50 metros" },
+      { label: "D", valor: "3,00 metros" }
     ],
-    respostaCorreta: 1,
-    explicacao: "O item 35.3.1 estabelece que cabe ao empregador garantir a implementação das medidas de proteção estabelecidas na Norma."
+    correta: "B",
+    explicacao: "A NR-35 define trabalho em altura como toda atividade executada acima de 2,00 m (dois metros) do nível inferior, onde haja risco de queda."
   }
 ];
 
-// Módulo 2: Planejamento e Organização (AR e PT)
-export const QUIZ_M2_NR35_AR_PT: Questao[] = [
+/**
+ * QUIZ: NR-35 - MÓDULO 2: Análise de Risco e PT
+ */
+export const QUIZ_M2_NR35_AR_PT: QuizQuestion[] = [
   {
-    pergunta: "A Análise de Risco (AR) deve considerar, entre outros fatores:",
+    id: "nr35_m2_1",
+    pergunta: "As atividades de trabalho em altura não rotineiras devem ser precedidas obrigatoriamente de qual documento?",
     opcoes: [
-        "Apenas os riscos de queda de nível.",
-        "As condições meteorológicas adversas.",
-        "O custo dos equipamentos importados.",
-        "A cor da farda do trabalhador."
+      { label: "A", valor: "Ordem de Serviço" },
+      { label: "B", valor: "Atestado de Saúde Ocupacional (ASO)" },
+      { label: "C", valor: "Permissão de Trabalho (PT)" },
+      { label: "D", valor: "Relatório de Incidente" }
     ],
-    respostaCorreta: 1,
-    explicacao: "A AR deve considerar as condições meteorológicas adversas (Item 35.5.2) e outros riscos adicionais."
+    correta: "C",
+    explicacao: "Para atividades de trabalho em altura não rotineiras, a Permissão de Trabalho (PT) é obrigatória, baseada nas recomendações da Análise de Risco (AR)."
   }
 ];
 
-// Módulo 9: Escadas (Anexo III - NOVO 2023)
-export const QUIZ_M9_NR35_ESCADAS: Questao[] = [
+/**
+ * QUIZ: NR-35 - MÓDULO 3: EPI, EPC e Sistemas de Proteção
+ */
+export const QUIZ_M3_NR35_SISTEMAS: QuizQuestion[] = [
   {
-    pergunta: "De acordo com o Anexo III da NR-35 (2023), as escadas portáteis devem possuir:",
+    id: "nr35_m3_1",
+    pergunta: "Qual é o nome do componente do sistema de proteção contra quedas que tem a função de limitar a força de impacto transmitida ao trabalhador em caso de queda?",
     opcoes: [
-        "Pés antiderrapantes.",
-        "Rodízios para transporte rápido com carga.",
-        "Assento para descanso no último degrau.",
-        "Pintura em azul petróleo obrigatória."
+      { label: "A", valor: "Talabarte simples" },
+      { label: "B", valor: "Trava-quedas" },
+      { label: "C", valor: "Absorvedor de energia" },
+      { label: "D", valor: "Conector manual" }
     ],
-    respostaCorreta: 0,
-    explicacao: "O Anexo III exige que escadas portáteis tenham dispositivos que impeçam o deslizamento (pés antiderrapantes)."
+    correta: "C",
+    explicacao: "O absorvedor de energia é essencial em talabartes de segurança para reduzir o impacto no corpo do trabalhador durante a frenagem de uma queda."
   }
 ];
 
-// Fallback para outros módulos não implementados no detalhe de questões
-export const QUIZ_M3_NR35_CAPACITACAO = QUIZ_M1_NR35_INTRO;
-export const QUIZ_M4_NR35_SPQ = QUIZ_M1_NR35_INTRO;
-export const QUIZ_M5_NR35_ANCORAGEM = QUIZ_M1_NR35_INTRO;
-export const QUIZ_M6_NR35_EPIS = QUIZ_M1_NR35_INTRO;
-export const QUIZ_M7_NR35_CORDAS = QUIZ_M1_NR35_INTRO;
-export const QUIZ_M8_NR35_SISTEMAS = QUIZ_M1_NR35_INTRO;
-export const QUIZ_M10_NR35_RESGATE = QUIZ_M1_NR35_INTRO;
+/**
+ * QUIZ: NR-35 - MÓDULO 4: Emergência e Salvamento
+ */
+export const QUIZ_M4_NR35_EMERGENCIA: QuizQuestion[] = [
+  {
+    id: "nr35_m4_1",
+    pergunta: "A suspensão inerte de um trabalhador após uma queda pode levar a graves complicações circulatórias em poucos minutos. Como este fenômeno é conhecido?",
+    opcoes: [
+      { label: "A", valor: "Choque anafilático" },
+      { label: "B", valor: "Trauma de Suspensão" },
+      { label: "C", valor: "Insolação severa" },
+      { label: "D", valor: "Hipotermia súbita" }
+    ],
+    correta: "B",
+    explicacao: "O trauma de suspensão (ou intolerância à suspensão inerte) ocorre quando o trabalhador fica pendurado e imóvel no cinto, prejudicando o retorno venoso."
+  }
+];
+
+/**
+ * QUIZ: NR-35 - MÓDULO 5: Acesso por Cordas e Escadas
+ */
+export const QUIZ_M5_NR35_ACESSOS: QuizQuestion[] = [
+  {
+    id: "nr35_m5_1",
+    pergunta: "No sistema de acesso por cordas (Anexo I), quantas cordas são obrigatoriamente necessárias para a execução do trabalho com segurança?",
+    opcoes: [
+      { label: "A", valor: "Uma corda única de alta resistência." },
+      { label: "B", valor: "Duas cordas: uma de trabalho e uma de segurança (back-up)." },
+      { label: "C", valor: "Três cordas: trabalho, segurança e resgate." },
+      { label: "D", valor: "Uma corda e uma corrente de aço." }
+    ],
+    correta: "B",
+    explicacao: "O sistema de acesso por cordas deve ser composto por pelo menos duas cordas com pontos de ancoragem independentes: a corda de trabalho e a corda de segurança."
+  }
+];

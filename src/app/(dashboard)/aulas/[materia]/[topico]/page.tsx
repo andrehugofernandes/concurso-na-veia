@@ -422,6 +422,39 @@ const AulaEngenhariaSoftware = dynamic<AulaProps>(
   },
 );
 
+// ===== SEGURANÇA E NRs =====
+const AulaNr10 = dynamic<AulaProps>(
+  () => import("@/components/aulas/seguranca/AulaNr10"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaNr35 = dynamic<AulaProps>(
+  () => import("@/components/aulas/seguranca/AulaNr35"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+// ===== MANUTENÇÃO INDUSTRIAL =====
+const AulaMetrologia = dynamic<AulaProps>(
+  () => import("@/components/aulas/manutencao/AulaMetrologia"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaDesenhoTecnico = dynamic<AulaProps>(
+  () => import("@/components/aulas/manutencao/AulaDesenhoTecnico"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
 
 interface PageProps {
   params: Promise<{ materia: string; topico: string }>;
@@ -1578,6 +1611,74 @@ export default function TopicoPage({ params }: PageProps) {
             />
           ) : materiaId === "especifica-bloco-i-fundamentos" && topicoId === "mecanica-fluidos" ? (
             <AulaMecanicaFluidos
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "nrs" && topicoId === "nr10" ? (
+            <AulaNr10
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "nrs" && topicoId === "nr35" ? (
+            <AulaNr35
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "manutencao" && topicoId === "metrologia" ? (
+            <AulaMetrologia
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "manutencao" && topicoId === "desenho-tecnico" ? (
+            <AulaDesenhoTecnico
               onComplete={handleCompleteAula}
               isCompleted={isCompleted}
               loading={loading}

@@ -67,7 +67,17 @@ export function getProgramaDeEstudos(cargoId?: string): MateriaConteudo[] {
         }
     }
 
+    // 3. Para suprimento-adm, usar blocos pré-configurados de CONTEUDO_MATERIAS
+    // Em vez de gerar dinamicamente (que causava slug incorreto)
+    if (normalizedCargoId === 'suprimento-adm') {
+        // Buscar blocos já definidos em CONTEUDO_MATERIAS
+        const blocoII = CONTEUDO_MATERIAS.find(m => m.id === 'especifica-bloco-ii-legislacao-tributos');
+        if (blocoII) programa.push(blocoII);
+        return programa;
+    }
+
     // 3. Adicionar Matérias Específicas (Baseadas nos Blocos)
+    // Para outros cargos, gerar dinamicamente
     if (profissao.blocos) {
         profissao.blocos.forEach((bloco, index) => {
             const materiaId = `especifica-${slugify(bloco.nome)}`;

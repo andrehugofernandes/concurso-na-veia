@@ -2,61 +2,33 @@
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
-import { getModuleVariant } from "@/lib/moduleColors";
-
 import {
-  ModuleConsolidation,
-  QuizInterativo,
   ModuleBanner,
-  getRandomQuestions,
   AulaProps,
-  ContentAccordion,
   AulaTemplate,
-  ModuleSectionHeader,
   RichIntro,
-  TimelineItem,
-  ComparisonSide,
+  ModuleSectionHeader,
+  ContentAccordion,
+  QuizInterativo,
+  ModuleConsolidation,
+  AlertBox,
+  Comparison,
 } from "../shared";
 
 import {
-  LuBookOpen,
-  LuLightbulb,
-  LuPlay,
-  LuTriangleAlert,
-  LuShield,
-  LuZap,
-  LuFileText,
-  LuCheck,
-  LuArrowUpCircle,
-  LuCloudRain,
-  LuHistory,
-  LuConstruction,
-} from "react-icons/lu";
-
-import {
-  QUIZ_M1_NR35_INTRO,
+  QUIZ_M1_NR35_GESTAO,
   QUIZ_M2_NR35_AR_PT,
-  QUIZ_M3_NR35_CAPACITACAO,
-  QUIZ_M4_NR35_SPQ,
-  QUIZ_M5_NR35_ANCORAGEM,
-  QUIZ_M6_NR35_EPIS,
-  QUIZ_M7_NR35_CORDAS,
-  QUIZ_M8_NR35_SISTEMAS,
-  QUIZ_M9_NR35_ESCADAS,
-  QUIZ_M10_NR35_RESGATE,
+  QUIZ_M3_NR35_SISTEMAS,
+  QUIZ_M4_NR35_EMERGENCIA,
+  QUIZ_M5_NR35_ACESSOS,
 } from "./data/nr35-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", title: "Introdução e Objetivos" },
-  { id: "modulo-2", label: "Módulo 2", title: "Planejamento e Organização (AR/PT)" },
-  { id: "modulo-3", label: "Módulo 3", title: "Capacitação e Treinamento" },
-  { id: "modulo-4", label: "Módulo 4", title: "Sistemas de Proteção (SPQ)" },
-  { id: "modulo-5", label: "Módulo 5", title: "Ancoragem e Retenção" },
-  { id: "modulo-6", label: "Módulo 6", title: "EPIs e Equipamentos" },
-  { id: "modulo-7", label: "Módulo 7", title: "Acesso por Cordas" },
-  { id: "modulo-8", label: "Módulo 8", title: "Sistemas de Ancoragem (Anexo II)" },
-  { id: "modulo-9", label: "Módulo 9", title: "Escadas (Anexo III - NOVO 2023)" },
-  { id: "modulo-10", label: "Módulo 10", title: "Emergência e Salvamento" },
+  { id: "modulo-1", numero: 1, label: "Gestão", titulo: "Gestão e Planejamento", descricao: "Definição de altura, responsabilidades e análise prévia." },
+  { id: "modulo-2", numero: 2, label: "Controle", titulo: "Análise de Risco e PT", descricao: "AR, Permissão de Trabalho e Medidas de Proteção." },
+  { id: "modulo-3", numero: 3, label: "Sistemas", titulo: "Proteção contra Quedas", descricao: "EPI, EPC e Ancoragens (Cinturão e Talabartes)." },
+  { id: "modulo-4", numero: 4, label: "Socorro", titulo: "Emergência e Salvamento", descricao: "Plano de Resgate e Intolerância à Suspensão Inerte." },
+  { id: "modulo-5", numero: 5, label: "Normas", titulo: "Acessos por Cordas e Escadas", descricao: "Anexos I (Cordas) e II (Escadas) revisados." },
 ] as const;
 
 export default function AulaNr35({
@@ -76,228 +48,285 @@ export default function AulaNr35({
   const [activeTab, setActiveTab] = useState("modulo-1");
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
 
-  const [quizM1, setQuizM1] = useState<typeof QUIZ_M1_NR35_INTRO>([]);
-  const [quizM2, setQuizM2] = useState<typeof QUIZ_M2_NR35_AR_PT>([]);
-  const [quizM3, setQuizM3] = useState<typeof QUIZ_M3_NR35_CAPACITACAO>([]);
-  const [quizM4, setQuizM4] = useState<typeof QUIZ_M4_NR35_SPQ>([]);
-  const [quizM5, setQuizM5] = useState<typeof QUIZ_M5_NR35_ANCORAGEM>([]);
-  const [quizM6, setQuizM6] = useState<typeof QUIZ_M6_NR35_EPIS>([]);
-  const [quizM7, setQuizM7] = useState<typeof QUIZ_M7_NR35_CORDAS>([]);
-  const [quizM8, setQuizM8] = useState<typeof QUIZ_M8_NR35_SISTEMAS>([]);
-  const [quizM9, setQuizM9] = useState<typeof QUIZ_M9_NR35_ESCADAS>([]);
-  const [quizM10, setQuizM10] = useState<typeof QUIZ_M10_NR35_RESGATE>([]);
-
-  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
-
   useEffect(() => {
-    if (!hasSyncedInitial && !loading) {
-      setQuizM1(getRandomQuestions(QUIZ_M1_NR35_INTRO, 8));
-      setQuizM2(getRandomQuestions(QUIZ_M2_NR35_AR_PT, 8));
-      setQuizM3(getRandomQuestions(QUIZ_M3_NR35_CAPACITACAO, 8));
-      setQuizM4(getRandomQuestions(QUIZ_M4_NR35_SPQ, 8));
-      setQuizM5(getRandomQuestions(QUIZ_M5_NR35_ANCORAGEM, 8));
-      setQuizM6(getRandomQuestions(QUIZ_M6_NR35_EPIS, 8));
-      setQuizM7(getRandomQuestions(QUIZ_M7_NR35_CORDAS, 8));
-      setQuizM8(getRandomQuestions(QUIZ_M8_NR35_SISTEMAS, 8));
-      setQuizM9(getRandomQuestions(QUIZ_M9_NR35_ESCADAS, 8));
-      setQuizM10(getRandomQuestions(QUIZ_M10_NR35_RESGATE, 8));
-      setHasSyncedInitial(true);
+    if (isCompleted) {
+      setCompletedModules(new Set(MODULE_DEFS.map(m => m.id)));
     }
-  }, [loading, hasSyncedInitial]);
+  }, [isCompleted]);
 
   const handleModuleComplete = (moduleId: string) => {
-    setCompletedModules((prev) => new Set([...prev, moduleId]));
-  };
+    const newCompleted = new Set(completedModules);
+    newCompleted.add(moduleId);
+    setCompletedModules(newCompleted);
 
-  const mv = Object.fromEntries(
-    Array.from({ length: 11 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
-  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+    if (newCompleted.size === 5) {
+      setTimeout(() => {
+        onComplete?.();
+      }, 500);
+    }
+  };
 
   return (
     <AulaTemplate
-      titulo={titulo || "NR-35: Trabalho em Altura (Compilado Atualizado 2023)"}
-      descricao={descricao || "Guia definitivo para concursos da área técnica e de segurança da Petrobras, incluindo o novo Anexo III sobra escadas."}
-      duracao={duracao || "120 min"}
-      materiaNome={materiaNome || "Segurança do Trabalho"}
-      materiaCor={materiaCor || "from-sky-500 to-blue-600"}
-      materiaId={materiaId || "nrs"}
-      modules={MODULE_DEFS}
       activeTab={activeTab}
       setActiveTab={setActiveTab}
+      modules={MODULE_DEFS}
       completedModules={completedModules}
-      onComplete={onComplete}
+      titulo={titulo || "NR-35 - Segurança no Trabalho em Altura"}
+      descricao={descricao || "Domine a diretriz normativa para prevenção de quedas, essencial para operações na Petrobras."}
+      duracao={duracao || "180 min"}
+      materiaNome={materiaNome || "Segurança e NRs"}
+      materiaCor={materiaCor || "from-amber-600 to-orange-700"}
+      materiaId={materiaId || "nrs"}
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
+      onComplete={onComplete}
+      loading={loading}
+      xpGanho={xpGanho}
     >
-      {/* ========================================================================= */}
-      {/* MÓDULO 1: Introdução */}
-      {/* ========================================================================= */}
-      <TabsContent value="modulo-1">
-        <div className="space-y-12 animate-in fade-in duration-500 text-slate-700">
-          <ModuleBanner
-            numero={1}
-            titulo="O que é Trabalho em Altura?"
-            variant={mv[1]}
-            descricao="Definições fundamentais e responsabilidades segundo a NR-35."
-          />
+      {/* 🟧 MÓDULO 1: GESTÃO */}
+      <TabsContent value="modulo-1" className="space-y-6">
+        <ModuleBanner 
+            numero={1} 
+            titulo="Gestão, Planejamento e Organização" 
+            descricao="Responsabilidades e definições cruciais da norma (Rer. 2023)."
+            variant="amber"
+        />
+        
+        <RichIntro>
+            <p>O trabalho em altura é a causa número um de fatalidades no setor de Óleo e Gás e na Construção Civil. Por isso, a <strong>NR-35</strong> não é recomendação: é <strong>Lei Ordinária</strong> (através da CLT). A norma considera trabalho em altura toda atividade executada acima de <strong>2,00 metros</strong> do nível inferior, onde haja risco de queda. Note o detalhe: se você está a 1 metro de altura, mas sob um fosso de 5 metros, a NR-35 já se aplica.</p>
+            <p>A gestão do risco começa com as <strong>Responsabilidades</strong>. É dever da empresa (empregador) garantir a implementação das medidas de proteção, realizar o treinamento bianual de 8h e assegurar a supervisão. O trabalhador, por sua vez, deve zelar por sua segurança, usar obrigatoriamente os EPIs e interromper o trabalho caso detecte um risco grave e iminente (Direito de Recusa).</p>
+            <p>O <strong>Planejamento</strong> deve priorizar a 'Hierarquia de Controle': 1. Evitar o trabalho em altura (ex: usar drone de inspeção); 2. Impedir a queda através de barreiras física (EPCs); 3. Mitigar as consequências da queda (EPIs com absorvedor de energia).</p>
+        </RichIntro>
 
-          <RichIntro>
-            <div className="space-y-6 leading-relaxed">
-              <p className="text-xl font-bold text-slate-900 border-l-4 border-sky-500 pl-4 mb-4">
-                Em qualquer questão de prova sobre a NR-35, a primeira coisa que você deve buscar é o número "2,00".
-              </p>
-              <p>
-                Considera-se trabalho em altura toda atividade executada <strong>acima de 2,00 m (dois metros)</strong> do nível inferior, onde haja risco de queda. 
-                Isso parece simples, mas a Petrobras/Cesgranrio costuma colocar o trabalhador em cima de uma escada de 1,50m e perguntar se a NR-35 é obrigatória. A resposta é: Pela norma, não, mas as práticas de gestão podem exigir proteção antes dessa altura.
-              </p>
-              <div className="bg-sky-50 p-4 rounded-xl border border-sky-100 my-6">
-                <h4 className="font-bold text-sky-900 mb-2 flex items-center gap-2">
-                  <LuArrowUpCircle className="w-5 h-5" /> Regra dos 2 Metros
-                </h4>
-                <p className="text-sm italic">
-                  "Considera-se trabalho em altura toda atividade executada acima de 2,00 m (dois metros) do nível inferior, onde haja risco de queda." (Item 35.1.2)
-                </p>
-              </div>
-            </div>
-          </RichIntro>
+        <AlertBox tipo="info" titulo="Ponto de Prova (Reciclagem)">
+            O treinamento inicial deve ter carga horária de 8 horas. A reciclagem (treinamento periódico) é obrigatória a cada **dois anos**, mas também deve ocorrer se houver mudança nos procedimentos ou após afastamento superior a 90 dias.
+        </AlertBox>
 
-          <ContentAccordion
-            mode="stacked"
-            slides={[
-              {
-                titulo: "Responsabilidades do Empregador",
-                icone: <LuShield className="w-5 h-5 text-sky-500" />,
-                conteudo: (
-                  <ul className="list-disc list-inside text-sm">
-                    <li>Garantir a implementação das medidas de proteção;</li>
-                    <li>Assegurar a realização da AR (Análise de Risco);</li>
-                    <li>Desenvolver procedimentos operacionais para as atividades de rotina;</li>
-                    <li>Garantir a autorização e capacitação dos trabalhadores.</li>
-                  </ul>
-                ),
-              },
-              {
-                titulo: "Responsabilidades do Trabalhador",
-                icone: <LuShield className="w-5 h-5 text-sky-500" />,
-                conteudo: <p>Zelar pela sua segurança e saúde e a de outras pessoas que possam ser afetadas; Comunicar riscos ao superior; Cumprir os procedimentos operacionais.</p>,
-              }
-            ]}
-          />
-
-          <ModuleConsolidation
+        <ModuleConsolidation 
             index={1}
-            variant={mv[1]}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Fundamentos NR-35", duration: "08:15" }}
-            maceteVisual={{ title: "Limite de Ouro", content: "Altura > 2,00m = NR-35!" }}
-            audio={{ audioUrl: "/audio/nr35-m1.mp3", titulo: "Audioaula Intro NR-35", artista: "Segurança Petrobras" }}
-          />
+            variant="amber"
+            video={{
+                videoId: "dQw4w9WgXcQ",
+                title: "Princípios da NR-35",
+                duration: "10:30"
+            }}
+            resumoVisual={{
+                moduloNome: "Módulo 1",
+                tituloAula: "Gestão NR-35",
+                materia: "Segurança",
+                images: [
+                    { title: "Limite de 2,00m", type: "infographic", placeholderColor: "amber" },
+                    { title: "Direitos e Deveres", type: "card", placeholderColor: "orange" }
+                ]
+            }}
+            maceteVisual={{
+                title: "O Mnemônico de Planejamento",
+                content: <p className="text-sm italic">"Eliminar &rarr; Prevenir &rarr; Mitigar." Essa é a ordem de sobrevivência!</p>
+            }}
+            audio={{
+                audioUrl: "/audio/nr35-m1.mp3",
+                titulo: "Gestão de Segurança",
+                artista: "Técnico Petrobras"
+            }}
+        />
 
-          <QuizInterativo titulo="Simulado de Conhecimento" questoes={quizM1} variant={mv[1]} onComplete={() => handleModuleComplete("modulo-1")} />
-        </div>
+        <QuizInterativo 
+            questoes={QUIZ_M1_NR35_GESTAO}
+            numero={1}
+            titulo="Gestão e Planejamento"
+            onComplete={() => handleModuleComplete("modulo-1")}
+        />
       </TabsContent>
 
-      {/* ========================================================================= */}
-      {/* MÓDULO 9: Escadas (Anexo III) - Foco em 2023 */}
-      {/* ========================================================================= */}
-      <TabsContent value="modulo-9">
-        <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={9}
-            titulo="Escadas e o Novo Anexo III"
-            variant={mv[9]}
-            descricao="O que mudou com a atualização de 2023 sobre o uso de escadas fixas e portáteis."
-          />
+      {/* 🟧 MÓDULO 2: CONTROLE */}
+      <TabsContent value="modulo-2" className="space-y-6">
+        <ModuleBanner 
+            numero={2} 
+            titulo="Análise de Risco (AR) e PT" 
+            descricao="As ferramentas de controle administrativo e operacional."
+            variant="amber"
+        />
+        
+        <RichIntro>
+            <p>A atividade só sai do papel no trabalho em altura após a <strong>Análise de Risco (AR)</strong>. Esta deve considerar: o isolamento da área (para não atingir pessoas embaixo), o local em que o trabalho será executado, a seleção de pontos de ancoragem, as condições climáticas (vento, chuva) e os riscos adicionais (elétrico, inflamáveis, calor).</p>
+            <p>Para atividades não rotineiras, é obrigatória a <strong>Permissão de Trabalho (PT)</strong>. Ela tem validade limitada à duração da atividade, devendo ser encerrada ao final do turno. Na Petrobras, as PTs são documentadas e assinadas pelo Emitente e pelo Responsável pelo Serviço, garantindo rastreabilidade e segurança coletiva.</p>
+        </RichIntro>
 
-          <RichIntro>
-            <div className="space-y-6 leading-relaxed">
-              <p className="text-xl font-bold text-slate-900 border-l-4 border-emerald-500 pl-4 mb-4">
-                Escadas não são mais "apenas acessórios" — agora têm um anexo dedicado e rigoroso.
-              </p>
-              <p>
-                O <strong>Anexo III</strong>, publicado em 2023, trouxe regramentos específicos para escadas portáteis e fixas. A premissa básica é que as escadas portáteis 
-                são equipamentos de <strong>acesso</strong> e só podem ser usadas como <strong>postos de trabalho</strong> para atividades de curta duração e baixo risco.
-              </p>
-              <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100 my-6">
-                <h4 className="font-bold text-emerald-900 mb-2 flex items-center gap-2">
-                  <LuCheck className="w-5 h-5" /> Regra do Triângulo (Três Pontos)
-                </h4>
-                <p className="text-sm">
-                  Ao subir ou descer, mantenha sempre contato de 3 pontos (dois pés e uma mão, ou duas mãos e um pé). Nunca use o último degrau em escadas de abrir.
-                </p>
-              </div>
-            </div>
-          </RichIntro>
+        <Comparison 
+          title="Atividades Rotineiras vs Não Rotineiras"
+          left={{
+            title: "Rotineiras",
+            content: "Padronizadas por Procedimento Operacional.",
+            description: "Exige AR, mas pode dispensar PT se previsto em norma interna.",
+            variant: "info"
+          }}
+          right={{
+            title: "Não Rotineiras",
+            content: "Atividades eventuais ou imprevisíveis.",
+            description: "Exige AR e Permissão de Trabalho (PT) obrigatória.",
+            variant: "warning"
+          }}
+        />
 
-          <ContentAccordion
+        <QuizInterativo 
+            questoes={QUIZ_M2_NR35_AR_PT}
+            numero={2}
+            titulo="Controle de Atividades"
+            onComplete={() => handleModuleComplete("modulo-2")}
+        />
+      </TabsContent>
+
+      {/* 🟧 MÓDULO 3: SISTEMAS */}
+      <TabsContent value="modulo-3" className="space-y-6">
+        <ModuleBanner 
+            numero={3} 
+            titulo="Sistemas de Proteção contra Quedas" 
+            descricao="Equipamentos, ancoragens e o uso correto do Cinturão Pará-quedas."
+            variant="rose"
+        />
+        
+        <RichIntro>
+            <p>O <strong>Sistema de Proteção Contra Quedas (SPCQ)</strong> é dividido em: Sistema de Proteção Coletiva (EPC - ex: guarda-corpo, redes) e Sistema de Proteção Individual (SPIQ). O SPIQ é um conjunto composto por: Elemento de Engate (Cinturão), Elemento de Ligação (Talabarte ou Trava-quedas) e Ponto de Ancoragem.</p>
+            <p>O **Cinturão de Segurança tipo Paraquedista** é o único permitido para trabalho em altura. Deve ser verificado diariamente (inspeção pré-uso) em busca de cortes, abrasões ou partes metálicas oxidadas. Um componente vital é o **Absorvedor de Energia**, usado em talabartes de 2 metros: sua função é garantir que a força de impacto no corpo em uma queda não ultrapasse os limites suportáveis pelos órgãos internos.</p>
+        </RichIntro>
+
+        <ContentAccordion 
+            titulo="Equipamentos Chave"
+            icone="👷"
             mode="stacked"
             slides={[
-              {
-                titulo: "Escadas Portáteis",
-                icone: <LuConstruction className="w-5 h-5 text-emerald-500" />,
-                conteudo: (
-                  <ul className="list-disc list-inside text-sm">
-                    <li>Devem possuir identificação do fabricante;</li>
-                    <li>Devem ter sapatas antiderrapantes íntegras;</li>
-                    <li>Só devem ser pintadas com verniz ou selador (transparente) para não esconder rachaduras.</li>
-                  </ul>
-                ),
-              },
-              {
-                titulo: "Escadas de Marinheiro (Fixas)",
-                icone: <LuLadderIcon className="w-5 h-5 text-emerald-500" />,
-                conteudo: <p>Exigem sistema de proteção de queda se a altura for superior a 2,00m. A partir de 2023, as gaiolas metálicas não são mais consideradas proteção contra queda, sendo obrigatório o uso de trava-quedas de cabo/trilho.</p>,
-              }
+                {
+                    titulo: "Talabarte em Y",
+                    conteudo: "Permite que o trabalhador se desloque mantendo sempre um ponto de conexão preso à estrutura (100% de conexão).",
+                    icone: "⛓️"
+                },
+                {
+                    titulo: "Trava-Quedas Retrátil",
+                    conteudo: "Funciona como um 'cinto de segurança de carro', bloqueando instantaneamente a queda no menor espaço possível.",
+                    icone: "🧲"
+                },
+                {
+                    titulo: "Linha de Vida Vertical/Horizontal",
+                    conteudo: "Sistemas temporários ou permanentes que servem como o ponto de conexão estável para o trabalhador.",
+                    icone: "🛤️"
+                }
             ]}
-          />
+        />
 
-          <ModuleConsolidation
-            index={9}
-            variant={mv[9]}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Anexo III - Escadas", duration: "15:20" }}
-            maceteVisual={{ title: "Regra do Topo", content: "Em escadas de abrir, NUNCA use o último degrau como plataforma!" }}
-            audio={{ audioUrl: "/audio/nr35-m9.mp3", titulo: "Podcast Novas NRs", artista: "Segurança Petrobras" }}
-          />
+        <ModuleConsolidation 
+            index={3}
+            variant="rose"
+            video={{
+                videoId: "dQw4w9WgXcQ",
+                title: "Inspecionando EPIs",
+                duration: "14:45"
+            }}
+            resumoVisual={{
+                moduloNome: "Módulo 3",
+                tituloAula: "EPI e EPC",
+                materia: "Segurança",
+                images: [
+                    { title: "Esquema da Zona de Queda Livre", type: "diagram", placeholderColor: "rose" },
+                    { title: "Pontos de Ancoragem", type: "infographic", placeholderColor: "pink" }
+                ]
+            }}
+            maceteVisual={{
+                title: "A ZQL (Zona de Queda Livre)",
+                content: <p className="text-sm">"Antes de subir, calcule se o chão vai te atingir!" ZQL = Comprimento do Talabarte + Absorvedor Aberto + Altura do Trabalhador + 1m de Segurança.</p>
+            }}
+            audio={{
+                audioUrl: "/audio/nr35-m3.mp3",
+                titulo: "Sistemas Anti-Queda",
+                artista: "Mestre de Segurança"
+            }}
+        />
 
-          <QuizInterativo titulo="Simulado Mestre Escadas" questoes={quizM9} variant={mv[9]} onComplete={() => handleModuleComplete("modulo-9")} />
-        </div>
+        <QuizInterativo 
+            questoes={QUIZ_M3_NR35_SISTEMAS}
+            numero={3}
+            titulo="Proteção Coletiva e Individual"
+            onComplete={() => handleModuleComplete("modulo-3")}
+        />
       </TabsContent>
 
-      {/* Módulos restantes omitidos para brevidade e implementados conforme necessário */}
-      <TabsContent value="modulo-2"><ModuleBanner numero={2} titulo="Em Breve" variant={mv[2]} descricao="Conteúdo sendo carregado..." /></TabsContent>
-      <TabsContent value="modulo-3"><ModuleBanner numero={3} titulo="Em Breve" variant={mv[3]} descricao="Conteúdo sendo carregado..." /></TabsContent>
-      <TabsContent value="modulo-4"><ModuleBanner numero={4} titulo="Em Breve" variant={mv[4]} descricao="Conteúdo sendo carregado..." /></TabsContent>
-      <TabsContent value="modulo-5"><ModuleBanner numero={5} titulo="Em Breve" variant={mv[5]} descricao="Conteúdo sendo carregado..." /></TabsContent>
-      <TabsContent value="modulo-6"><ModuleBanner numero={6} titulo="Em Breve" variant={mv[6]} descricao="Conteúdo sendo carregado..." /></TabsContent>
-      <TabsContent value="modulo-7"><ModuleBanner numero={7} titulo="Em Breve" variant={mv[7]} descricao="Conteúdo sendo carregado..." /></TabsContent>
-      <TabsContent value="modulo-8"><ModuleBanner numero={8} titulo="Em Breve" variant={mv[8]} descricao="Conteúdo sendo carregado..." /></TabsContent>
-      <TabsContent value="modulo-10"><ModuleBanner numero={10} titulo="Em Breve" variant={mv[10]} descricao="Conteúdo sendo carregado..." /></TabsContent>
+      {/* 🟧 MÓDULO 4: SOCORRO */}
+      <TabsContent value="modulo-4" className="space-y-6">
+        <ModuleBanner 
+            numero={4} 
+            titulo="Emergência e Salvamento" 
+            descricao="A corrida contra o tempo em caso de queda real."
+            variant="amber"
+        />
+        
+        <RichIntro>
+            <p>Se as proteções falharam e o trabalhador caiu, a batalha não acabou. O **Plano de Resgate** deve estar pronto ANTES da subida. O maior risco após a queda (com o trabalhador ainda pendurado) é a **Intolerância à Suspensão Inerte** (Trauma de Suspensão).</p>
+            <p>A gravidade puxa o sangue para as pernas, mas o movimento muscular que auxilia o retorno do sangue ao coração está impedido (o trabalhador está imóvel). Isso pode causar síncope e morte em menos de 15 minutos se o resgate não for rápido e especializado.</p>
+        </RichIntro>
+
+        <AlertBox tipo="danger" titulo="Risco Crítico">
+            Um trabalhador suspenso e inconsciente é uma emergência médica de prioridade absoluta. Nunca trabalhe sozinho em altura; a vigilância mútua é o que garante o resgate rápido.
+        </AlertBox>
+
+        <QuizInterativo 
+            questoes={QUIZ_M4_NR35_EMERGENCIA}
+            numero={4}
+            titulo="Plano de Resgate"
+            onComplete={() => handleModuleComplete("modulo-4")}
+        />
+      </TabsContent>
+
+      {/* 🟧 MÓDULO 5: NORMAS ESPECÍFICAS */}
+      <TabsContent value="modulo-5" className="space-y-6">
+        <ModuleBanner 
+            numero={5} 
+            titulo="Acessos por Cordas e Escadas" 
+            descricao="Os Anexos I e II da NR-35 e as técnicas especiais."
+            variant="amber"
+        />
+        
+        <RichIntro>
+            <p>O <strong>Anexo I (Acesso por Cordas)</strong> é muito comum em inspeções de plataformas da Petrobras. Exige certificação específica (Irata ou Abendi) e obrigatoriamente duas cordas separadas: Corda de Trabalho e Corda de Segurança (Back-up).</p>
+            <p>O <strong>Anexo II (Escadas)</strong> trata das escadas individuais (simples, de abrira ou extensíveis). Regra de ouro da escada simples: ângulo de inclinação de 75° (ou 4 para 1) e deve ultrapassar o ponto de apoio em pelo menos 1 metro.</p>
+        </RichIntro>
+
+        <ModuleConsolidation 
+            index={5}
+            variant="amber"
+            video={{
+                videoId: "dQw4w9WgXcQ",
+                title: "Segurança em Escadas Industriais",
+                duration: "18:00"
+            }}
+            resumoVisual={{
+                moduloNome: "Módulo 5",
+                tituloAula: "Anexos Especiais",
+                materia: "Segurança",
+                images: [
+                    { title: "Nó de Ancoragem (Acesso por Corda)", type: "infographic", placeholderColor: "amber" },
+                    { title: "Padrão de Escada Extensível", type: "diagram", placeholderColor: "orange" }
+                ]
+            }}
+            maceteVisual={{
+                title: "A Regra dos 3 Pontos",
+                content: <p className="text-sm italic">"Duas mãos e um pé, ou dois pés e uma mão. Na escada, nunca se solta do corrimão!"</p>
+            }}
+            audio={{
+                audioUrl: "/audio/nr35-m5.mp3",
+                titulo: "Acessos Especializados",
+                artista: "Mestre da Segurança"
+            }}
+        />
+
+        <QuizInterativo 
+            questoes={QUIZ_M5_NR35_ACESSOS}
+            numero={5}
+            titulo="Cordas e Escadas"
+            onComplete={() => handleModuleComplete("modulo-5")}
+        />
+      </TabsContent>
 
     </AulaTemplate>
   );
-}
-
-// Icone customizado temporário
-function LuLadderIcon(props: any) {
-    return (
-        <svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <path d="M19 3v18" />
-            <path d="M5 3v18" />
-            <path d="M19 7H5" />
-            <path d="M19 11H5" />
-            <path d="M19 15H5" />
-            <path d="M19 19H5" />
-        </svg>
-    )
 }

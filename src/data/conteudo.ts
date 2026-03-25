@@ -178,6 +178,19 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'nr35', titulo: 'NR-35 (Trabalho em Altura)', descricao: 'Requisitos e medidas de proteção para trabalho em altura', duracao: '90 min', ordem: 4 },
         ]
     },
+    // ===== MANUTENÇÃO INDUSTRIAL (CLUSTER BASE) =====
+    {
+        id: 'manutencao',
+        nome: 'Manutenção Industrial',
+        descricao: 'Conhecimentos básicos de mecânica, metrologia e desenho técnico para técnicos de manutenção e inspeção.',
+        icone: '🛠️',
+        cor: 'from-blue-600 to-indigo-700',
+        requiredPlan: 'Prata',
+        topicos: [
+            { id: 'metrologia', titulo: 'Metrologia Industrial', descricao: 'Medição com paquímetro, micrômetro e tolerâncias ISO', duracao: '120 min', ordem: 1 },
+            { id: 'desenho-tecnico', titulo: 'Desenho Técnico', descricao: 'Projeção ortográfica, cortes e representação industrial', duracao: '120 min', ordem: 2 },
+        ]
+    },
 ];
 
 export function getMateriaById(id: string): MateriaConteudo | undefined {
