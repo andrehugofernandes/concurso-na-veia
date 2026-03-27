@@ -21,6 +21,7 @@ import {
   ModuleSectionHeader,
 
 } from "../shared";
+import { getModuleVariant } from "@/lib/moduleColors";
 import { LuBookOpen, LuMusic } from "react-icons/lu";
 import {
   QUIZ_M1_CONCEITOS,
@@ -168,6 +169,57 @@ export default function AulaConjuntos({
           descricao="Domine os conceitos fundamentais: notação, pertinência, subconjuntos e propriedades."
           gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
+
+        {/* ═══ RICH INTRO SECTION M1 ═══ */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="Conceito Fundamental de Conjunto"
+            description="A pedra angular da Matemática moderna e seu lugar no edital CESGRANRIO"
+            variant={getModuleVariant(1)}
+          />
+
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <p>
+              Um conjunto é definido como uma coleção bem definida de objetos chamados elementos. A palavra "bem definida" é crucial: significa que, dado qualquer objeto, você deve ser capaz de determinar com certeza absoluta se ele pertence ou não ao conjunto. Esta definição, embora simples, é a base de toda a Matemática moderna, incluindo lógica, análise e álgebra. Na teoria axiomática de conjuntos de Zermelo-Fraenkel, essa ideia intuitiva é formalizada através de axiomas rigorosos que garantem a consistência lógica da teoria. Para contexto, o matemático Georg Cantor desenvolveu a teoria dos conjuntos no final do século XIX, revolucionando como entendemos a própria estrutura da Matemática.
+            </p>
+
+            <p>
+              Em termos práticos, quando falamos em conjuntos, pensamos em agrupamentos com características claramente definidas. Por exemplo, o conjunto das vogais da língua portuguesa {'{'}a, e, i, o, u{'}'} é bem definido porque sabemos exatamente quais são seus elementos. Já o conceito de "palavras bonitas da Matemática" não forma um conjunto matemático porque a característica "bonita" é subjetiva — diferentes pessoas concordariam ou discordariam sobre quais palavras são bonitas. Esta distinção entre o bem definido e o vago é absolutamente central na resolução de problemas de conjuntos em provas como a CESGRANRIO, onde questões frequentemente testam se o candidato consegue reconhecer o que é e o que não é um conjunto válido.
+            </p>
+
+            <p>
+              Os elementos de um conjunto podem ser números, letras, objetos, pessoas, ou qualquer entidade matemática. Usamos a notação "a ∈ A" para indicar que o elemento 'a' pertence ao conjunto A, e "b ∉ A" para indicar que 'b' não pertence a A. Um conjunto pode ser finito (possuindo um número limitado de elementos) ou infinito (possuindo infinitos elementos). O conjunto dos números naturais ℕ = {'{'}0, 1, 2, 3, ...{'}'} é infinito, enquanto o conjunto das letras do alfabeto é finito. Dois conjuntos são iguais se e somente se possuem exatamente os mesmos elementos, independentemente da ordem em que esses elementos são listados — assim, {'{'}1, 2, 3{'}'} = {'{'}3, 1, 2{'}'}. Existe também o conjunto vazio ∅, que não contém nenhum elemento, e ele é único e bem definido.
+            </p>
+
+            <p>
+              Na indústria de petróleo e gás, conjuntos aparecem constantemente na modelagem de dados. Pense em um conjunto contendo todas as plataformas de exploração na Bacia de Campos, ou o conjunto de todos os poços ativos em um campo específico, ou ainda o conjunto de funcionários com certificação em segurança NR-35. Esses agrupamentos bem definidos permitem análises rápidas: quantas plataformas temos? Quais plataformas operam em águas profundas? Que funcionários podemos alocar para uma tarefa de risco? A CESGRANRIO valoriza essa contextualização, frequentemente inserindo exemplos Petrobras em questões sobre conjuntos para testar se o candidato consegue aplicar a teoria em cenários reais da empresa.
+            </p>
+
+            <p>
+              A CESGRANRIO costuma cobrar conjuntos através de questões que exigem (1) reconhecer se algo é um conjunto válido, (2) contar elementos usando diagramas de Venn, (3) realizar operações (união, interseção, diferença), e (4) aplicar propriedades em contextos práticos. Um erro frequente é confundir "elemento" com "subconjunto" — o número 3 é um elemento de {'{'}1, 2, 3{'}'}', mas o conjunto {'{'}3{'}'} é um subconjunto. Outro erro comum é esquecer que o conjunto vazio ∅ é um subconjunto de qualquer conjunto. As questões frequentemente usam diagramas de Venn para estabelecer relações visuais entre conjuntos, exigindo que o candidato trabalhe de forma sistemática, preenchendo o diagrama de dentro para fora (interseção primeiro, depois as partes exclusivas de cada conjunto, finalmente a região externa).
+            </p>
+
+            <div className="bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/30 dark:to-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">Fórmula e Regra-Chave: Definição de Conjunto</h4>
+              <div className="space-y-3">
+                <div>
+                  <p className="font-semibold text-sm text-amber-700 dark:text-amber-300">Condição de Pertinência</p>
+                  <p className="text-sm mt-1">Para todo objeto x e todo conjunto A: OU x ∈ A OU x ∉ A. Não existe meio termo na Matemática clássica.</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-sm text-amber-700 dark:text-amber-300">Igualdade de Conjuntos</p>
+                  <p className="text-sm mt-1">A = B se, e somente se, para todo elemento x: x ∈ A ⟺ x ∈ B. Ou seja, A e B contêm exatamente os mesmos elementos.</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-sm text-amber-700 dark:text-amber-300">Notação Simbólica</p>
+                  <p className="font-mono text-sm mt-1">A = {'{'} x | P(x) {'}'} significa "o conjunto A contém todos os x para os quais a propriedade P(x) é verdadeira"</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -632,10 +684,6 @@ export default function AulaConjuntos({
 
 
 
-          
-
-
-
 
 
 
@@ -698,6 +746,65 @@ export default function AulaConjuntos({
           descricao="União, interseção, diferença e complementar: as 4 operações que a CESGRANRIO adora cobrar."
           gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
+
+        {/* ═══ RICH INTRO SECTION M2 ═══ */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={2}
+            title="Operações com Conjuntos: Fundamentos e Aplicações"
+            description="Dominando união, interseção, diferença e complemento"
+            variant={getModuleVariant(2)}
+          />
+
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <p>
+              Operações com conjuntos são procedimentos que combinam dois ou mais conjuntos para gerar novos conjuntos. Assim como a Aritmética trabalha com números (adição, subtração, multiplicação), a teoria dos conjuntos trabalha com conjuntos através de operações bem definidas. As quatro operações fundamentais são: União (∪), Interseção (∩), Diferença (-) e Complemento (ou Complementar) ('). Cada uma delas possui propriedades específicas que facilitam a resolução de problemas. A álgebra de conjuntos é isomórfica à álgebra booleana, que é base para toda a Ciência da Computação e Engenharia Eletrônica — razão pela qual a CESGRANRIO valoriza essa competência em concursos para níveis técnicos e administrativos.
+            </p>
+
+            <p>
+              A União de dois conjuntos A e B, denotada por A ∪ B, é o conjunto que contém todos os elementos que pertencem a A, OU pertencem a B, OU pertencem a ambos. Em linguagem simbólica: A ∪ B = {'{'}x | x ∈ A OU x ∈ B{'}'}. Importante: na união, cada elemento é contado apenas uma vez, mesmo que apareça em ambos os conjuntos. Se A = {'{'}1, 2, 3{'}'} e B = {'{'}3, 4, 5{'}'}', então A ∪ B = {'{'}1, 2, 3, 4, 5{'}'} — note que o '3' aparece uma só vez. A Interseção A ∩ B é o conjunto contendo apenas os elementos que pertencem simultaneamente a A E a B. A ∩ B = {'{'}x | x ∈ A E x ∈ B{'}'}. No exemplo anterior, A ∩ B = {'{'}3{'}'}, pois apenas o 3 está em ambos. Quando dois conjuntos não compartilham elementos, sua interseção é o conjunto vazio: A ∩ B = ∅. Tais conjuntos são chamados disjuntos.
+            </p>
+
+            <p>
+              A Diferença de A por B, denotada por A - B (ou A \\ B), contém todos os elementos que estão em A mas não estão em B. A - B = {'{'}x | x ∈ A E x ∉ B{'}'}. Continuando o exemplo: A - B = {'{'}1, 2{'}'} pois removemos o 3 (que está em B) de A. Note que A - B ≠ B - A em geral: B - A = {'{'}4, 5{'}'}. O Complemento de um conjunto A (em relação a um conjunto universal U) é o conjunto de todos os elementos em U que não estão em A. Denotado por A' ou A^c: A' = {'{'}x | x ∈ U E x ∉ A{'}'}. O conjunto universal U deve ser especificado no contexto — não existe complemento absoluto. Em contexto Petrobras, se U = {'{'}todos os funcionários da empresa{'}'}' e A = {'{'}funcionários com certificação NR-35{'}'}', então A' = {'{'}funcionários SEM certificação NR-35{'}'}'. Isso é crucial para segurança no trabalho: qualificar pessoas é essencial.
+            </p>
+
+            <p>
+              Na prática Petrobras, operações com conjuntos resolvem problemas reais constantemente. Suponha que U = todas as plataformas, A = plataformas em Campos, B = plataformas com sistema de contingência ativo. Então: A ∩ B = plataformas em Campos COM contingência (segurança crítica), A - B = plataformas em Campos SEM contingência (prioridade de upgrade), B - A = plataformas fora de Campos COM contingência (possível redundância). Operações com conjuntos permitem alocar recursos com precisão. Em dados corporativos, interseções e diferenças são fundamentais para relatórios: quantos funcionários trabalham simultaneamente em duas operações? Quantos projetos estão atrasados mas dentro do orçamento? Quantos poços produziram além da meta? Essas perguntas exigem pensamento de conjuntos.
+            </p>
+
+            <p>
+              A CESGRANRIO frequentemente testa operações com conjuntos usando diagramas de Venn — representações visuais onde círculos representam conjuntos e sobreposições representam interseções. O método mais seguro é preencher o diagrama de dentro para fora: começar pela interseção de todos os conjuntos, depois as interseções dois a dois, depois as regiões exclusivas, e finalmente a região externa (elementos em nenhum conjunto). Erros comuns incluem: (1) contar elementos repetidos na união, (2) confundir união com interseção, (3) esquecer que a união de A com seu complemento é o universal (A ∪ A' = U), e (4) não reconhecer que a interseção de A com seu complemento é vazia (A ∩ A' = ∅). Questões CESGRANRIO frequentemente envolvem três ou mais conjuntos, exigindo cuidado no preenchimento sistemático do diagrama.
+            </p>
+
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">As 4 Operações Fundamentais</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <div className="font-semibold text-sm text-blue-700 dark:text-blue-300">União (A ∪ B)</div>
+                  <div className="text-sm">Todos os elementos de A OU B: A ∪ B = {'{'}x | x ∈ A ∨ x ∈ B{'}'}</div>
+                  <div className="text-sm italic">Exemplo: {'{'}1,2{'}'} ∪ {'{'}2,3{'}'} = {'{'}1,2,3{'}'}  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="font-semibold text-sm text-cyan-700 dark:text-cyan-300">Interseção (A ∩ B)</div>
+                  <div className="text-sm">Apenas elementos em AMBOS: A ∩ B = {'{'}x | x ∈ A ∧ x ∈ B{'}'}</div>
+                  <div className="text-sm italic">Exemplo: {'{'}1,2{'}'} ∩ {'{'}2,3{'}'} = {'{'}2{'}'}  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="font-semibold text-sm text-emerald-700 dark:text-emerald-300">Diferença (A - B)</div>
+                  <div className="text-sm">Elementos em A mas não em B: A - B = {'{'}x | x ∈ A ∧ x ∉ B{'}'}</div>
+                  <div className="text-sm italic">Exemplo: {'{'}1,2{'}'} - {'{'}2,3{'}'} = {'{'}1{'}'}  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="font-semibold text-sm text-amber-700 dark:text-amber-300">Complemento (A')</div>
+                  <div className="text-sm">Tudo que NÃO está em A: A' = {'{'}x | x ∈ U ∧ x ∉ A{'}'}</div>
+                  <div className="text-sm italic">Se U={'{'}1,2,3{'}'} e A={'{'}1,2{'}'}, então A'={'{'}3{'}'}  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -902,10 +1009,6 @@ export default function AulaConjuntos({
 
 
 
-          
-
-
-
 
 
 
@@ -968,6 +1071,57 @@ export default function AulaConjuntos({
           descricao="A ferramenta visual mais poderosa para conjuntos. Domine a fórmula da cardinalidade."
           gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
+
+        {/* ═══ RICH INTRO SECTION M3 ═══ */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={3}
+            title="Diagramas de Venn: Linguagem Visual de Conjuntos"
+            description="Ferramentas gráficas para resolver problemas com precisão"
+            variant={getModuleVariant(3)}
+          />
+
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <p>
+              Um diagrama de Venn é uma representação gráfica de conjuntos usando curvas fechadas (usualmente círculos) em um plano. Cada círculo representa um conjunto, e o interior do círculo representa os elementos desse conjunto. Quando círculos se sobrepõem, a região de sobreposição representa a interseção dos conjuntos correspondentes. O matemático inglês John Venn introduziu este método em 1880 como uma forma intuitiva de visualizar relacionamentos entre conjuntos. A beleza do diagrama de Venn está em sua simplicidade: problemas que pareceriam complicados em forma simbólica tornam-se triviais quando visualizados graficamente. Para um diagrama com 2 conjuntos, há 4 regiões (somente A, somente B, A ∩ B, e fora de ambos). Para 3 conjuntos, há 8 regiões. Para 4 ou mais, os diagramas tornam-se complexos, mas o princípio permanece: cada região representa uma combinação única de pertencimento/não pertencimento aos conjuntos.
+            </p>
+
+            <p>
+              A cardinalidade de um conjunto, denotada por |A| ou n(A), é a quantidade de elementos que ele contém. Para conjuntos finitos, é simplesmente contar os elementos. O conjunto vazio tem cardinalidade 0: |∅| = 0. Um conjunto finito com n elementos tem 2^n subconjuntos (incluindo o conjunto vazio e o próprio conjunto). Por exemplo, se A = {'{'}1, 2, 3{'}'}, então |A| = 3 e o número de subconjuntos é 2³ = 8: {'{'}∅, {'{'}1{'}'}, {'{'}2{'}'}, {'{'}3{'}'}, {'{'}1,2{'}'}, {'{'}1,3{'}'}, {'{'}2,3{'}'}, {'{'}1,2,3{'}'}{'}'}. A fórmula crucial para problemas com Venn é: |A ∪ B| = |A| + |B| - |A ∩ B|. Esta fórmula garante que não contamos elementos da interseção duas vezes. Se |A| = 10, |B| = 15, e |A ∩ B| = 4, então |A ∪ B| = 10 + 15 - 4 = 21, não 25.
+            </p>
+
+            <p>
+              Para três conjuntos, a fórmula se expande: |A ∪ B ∪ C| = |A| + |B| + |C| - |A ∩ B| - |A ∩ C| - |B ∩ C| + |A ∩ B ∩ C|. Esta é a fórmula de inclusão-exclusão, um dos conceitos mais testados da CESGRANRIO em provas técnicas. A razão é que essa fórmula modela situações reais: se você quer saber quantas pessoas numa empresa têm alergia a alguma coisa (alimentos, medicamentos, ambiente), o cálculo exige levar em conta quantas têm alergia A, quantas têm B, quantas têm ambas, etc. Em contexto Petrobras, imagine contar funcionários que: possuem certificação NR-35 (A), possuem certificação NR-33 (B), e possuem certificação NR-10 (C). O número total de certificados únicos é dado exatamente por essa fórmula.
+            </p>
+
+            <p>
+              A método mais seguro para resolver um problema de Venn é: (1) desenhar o diagrama com a quantidade correta de regiões, (2) preencher do interior para o exterior começando pela interseção de TODOS os conjuntos, (3) depois as interseções de pares, (4) depois as regiões exclusivas de cada conjunto, e (5) finalmente verificar se a soma total bate com os dados fornecidos. Na prática Petrobras, Venn aparece em segurança do trabalho (funcionários com múltiplas certificações), em planejamento (projetos que usam múltiplos recursos), e em análise de dados (funcionários que atendem critérios múltiplos). Um erro comum é interpretar mal o problema: ler atentamente o enunciado distinguindo entre "pessoas que têm A OU B" (união), "pessoas que têm A E B" (interseção), e "pessoas que têm A mas não B" (diferença) é crítico.
+            </p>
+
+            <p>
+              A CESGRANRIO frequentemente testa Venn através de questões de álgebra (simplifique (A ∪ B)' usando leis de De Morgan), questões de contagem (preencha o diagrama com números), e questões conceituais (qual é a cardinalidade de A ∩ B ∩ C?). Um erro muito frequente é esquecer a fórmula de inclusão-exclusão e tentar somar cardinalidades diretamente — isso leva a supercontagem. Outro erro é não reconhecer equivalências: A - B = A ∩ B' (a diferença é a interseção do primeiro com o complemento do segundo). Dominar essas manipulações algébricas junto com a visualização gráfica é a chave para acertar questões complexas de Venn em provas CESGRANRIO.
+            </p>
+
+            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">Fórmulas de Cardinalidade</h4>
+              <div className="space-y-3">
+                <div className="p-3 bg-white/50 dark:bg-black/20 rounded border border-emerald-200 dark:border-emerald-700">
+                  <p className="font-mono text-sm font-semibold">|A ∪ B| = |A| + |B| - |A ∩ B|</p>
+                  <p className="text-sm mt-1">Inclua-exclua: conte A, conte B, subtraia a interseção (contada duas vezes)</p>
+                </div>
+                <div className="p-3 bg-white/50 dark:bg-black/20 rounded border border-emerald-200 dark:border-emerald-700">
+                  <p className="font-mono text-sm font-semibold">|A ∪ B ∪ C| = |A| + |B| + |C| - |A ∩ B| - |A ∩ C| - |B ∩ C| + |A ∩ B ∩ C|</p>
+                  <p className="text-sm mt-1">Três conjuntos: some tudo, subtraia interseções duplas, adicione interseção tripla</p>
+                </div>
+                <div className="p-3 bg-white/50 dark:bg-black/20 rounded border border-emerald-200 dark:border-emerald-700">
+                  <p className="font-mono text-sm font-semibold">|A'| = |U| - |A|</p>
+                  <p className="text-sm mt-1">Complemento: total universal menos o conjunto</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1205,10 +1359,6 @@ export default function AulaConjuntos({
 
 
 
-          
-
-
-
 
 
 
@@ -1271,6 +1421,56 @@ export default function AulaConjuntos({
           descricao="ℕ, ℤ, ℚ, 𝕀, ℝ — a hierarquia dos números e intervalos na reta real."
           gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
+
+        {/* ═══ RICH INTRO SECTION M4 ═══ */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={4}
+            title="Conjuntos Numéricos: A Hierarquia dos Números"
+            description="De naturais a reais: construindo a estrutura do sistema numérico"
+            variant={getModuleVariant(4)}
+          />
+
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <p>
+              Os conjuntos numéricos formam uma hierarquia bem definida, começando com os naturais e culminando nos reais. Os Números Naturais (ℕ) são {'{'}0, 1, 2, 3, ...{'}'}, usados para contar e ordenar. Alguns textos omitem o zero: ℕ* = {'{'}1, 2, 3, ...{'}'}, chamado conjunto dos naturais não-nulos. Os Números Inteiros (ℤ) expandem os naturais incluindo os negativos: ℤ = {'{'}..., -2, -1, 0, 1, 2, ...{'}'}. Aplicação Petrobras: tempos relativos (t=0 é o início de uma operação, t=-5 seria 5 minutos antes, t=10 seria 10 minutos depois). Os Números Racionais (ℚ) são todos os números que podem ser expressos como razão entre inteiros p/q, onde q ≠ 0. Isto inclui naturais, inteiros, frações próprias, frações impróprias, e decimais finitos ou periódicos. ℚ = {'{'}p/q | p ∈ ℤ, q ∈ ℤ*{'}'}. Exemplos: 1/2, -3/7, 5 (que é 5/1), 0.333... (que é 1/3).
+            </p>
+
+            <p>
+              Os Números Irracionais (𝕀) são números que NÃO podem ser expressos como razão entre inteiros. Seus desenvolvimentos decimais são infinitos e não periódicos. Os mais famosos são π ≈ 3.14159..., e ≈ 2.71828..., e √2 ≈ 1.41421.... Uma propriedade é que a soma ou produto de um racional com um irracional é sempre irracional (exceto em casos triviais de multiplicação por zero). Os Números Reais (ℝ) são a união de todos os anteriores: ℝ = ℚ ∪ 𝕀. Geometricamente, ℝ pode ser representado como a reta numérica contínua, onde cada ponto corresponde a um número real e vice-versa. Esta correspondência biunívoca é fundamental para análise matemática. A cardinalidade é: |ℕ| é infinito contável, |ℤ| é infinito contável, |ℚ| é infinito contável (surpreendentemente!), mas |ℝ| é infinito incontável (a cardinalidade do contínuo). Isto foi provado por Georg Cantor e revolucionou nossa compreensão do infinito.
+            </p>
+
+            <p>
+              Intervalos na reta real são subconjuntos de ℝ representados de forma compacta. Um intervalo aberto (a, b) contém todos os x com a {'<'} x {'<'} b, excluindo os extremos. Um intervalo fechado [a, b] contém todos os x com a ≤ x ≤ b, incluindo os extremos. Intervalos semi-abertos: [a, b) inclui a mas exclui b; (a, b] exclui a mas inclui b. Intervalos infinitos: (a, +∞) = {'{'}x ∈ ℝ | x {'>'} a{'}'}, [a, +∞) = {'{'}x ∈ ℝ | x ≥ a{'}'}, (-∞, b) = {'{'}x ∈ ℝ | x {'<'} b{'}'}, (-∞, b] = {'{'}x ∈ ℝ | x ≤ b{'}'}. A reta inteira é (-∞, +∞) = ℝ. Em inequações, quando você resolve |x| {'<'} 3, o resultado é o intervalo aberto (-3, 3). Quando resolve |x| ≤ 3, o resultado é o intervalo fechado [-3, 3]. Esta notação é crucial para expressar soluções de inequações e domínios/contradomínios de funções.
+            </p>
+
+            <p>
+              Na indústria Petrobras, conjuntos numéricos aparecem em especificações técnicas. Por exemplo: "pressão deve estar em ℚ milibares" (valor discreto e racional), "temperatura em [20, 40]°C" (intervalo fechado), "viscosidade {'>'} 50 cSt" (intervalo semi-infinito). Em análise de dados, quando coletamos medições contínuas (pressão, temperatura, densidade), os dados teoricamente pertencem a ℝ, mas na prática são arredondados para ℚ (números racionais com casas decimais finitas) pela limitação de instrumentos. Compreender que os dados reais são uma aproximação racional de valores reais é importante para análise e modelagem. Engenheiros petrolíferos trabalham diariamente com inequações que definem intervalos: "fluxo entre 100 e 500 bbl/dia" é o intervalo [100, 500].
+            </p>
+            <p>
+              A CESGRANRIO testa essa matéria através de: (1) identificar a qual conjunto um número pertence (√2 é irracional, 22/7 é racional), (2) estabelecer relacionamentos entre conjuntos (ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ), (3) descrever intervalos em notação de conjunto ({'{'}x | 2 {'<'} x ≤ 5{'}'} = (2, 5]), (4) operações com intervalos (intersecção e união). Um erro comum é confundir notação: [2, 5) não é o mesmo que [2, 5]. Outro erro é não reconhecer que π + 1 é irracional (a soma de irracional com racional), ou que √2 · √2 = 2 é racional (o produto de dois irracionais pode ser racional). Intervalos também aparecem em problemas de desigualdade: se A = {'{'}x | x² {'<'} 4{'}'} = (-2, 2) e B = {'{'}x | x {'>'} 0{'}'} = (0, +∞), então A ∩ B = (0, 2).
+            </p>
+
+            <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">Hierarquia e Notação dos Conjuntos Numéricos</h4>
+              <div className="space-y-3">
+                <div className="font-mono text-sm p-3 bg-white/50 dark:bg-black/20 rounded border border-rose-200 dark:border-rose-700">
+                  <div className="font-semibold mb-1">ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ</div>
+                  <div className="text-xs mt-2">Naturais (contar) ⊂ Inteiros (negativos) ⊂ Racionais (frações) ⊂ Reais (contínuo)</div>
+                </div>
+                <div className="font-mono text-sm p-3 bg-white/50 dark:bg-black/20 rounded border border-rose-200 dark:border-rose-700">
+                  <div className="font-semibold mb-1">ℝ = ℚ ∪ 𝕀</div>
+                  <div className="text-xs mt-2">Reais = Racionais ∪ Irracionais (partição disjunta)</div>
+                </div>
+                <div className="font-mono text-sm p-3 bg-white/50 dark:bg-black/20 rounded border border-rose-200 dark:border-rose-700">
+                  <div className="font-semibold mb-1">Intervalos: [a,b], (a,b), [a,b), (a,b]</div>
+                  <div className="text-xs mt-2">Fechado = inclui extremos | Aberto = exclui | Semi-aberto = misto</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1444,10 +1644,6 @@ export default function AulaConjuntos({
 
 
 
-          
-
-
-
 
 
 
@@ -1510,6 +1706,57 @@ export default function AulaConjuntos({
           descricao="Simulado final e certificado de conclusão. A vaga é sua!"
           gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
+
+        {/* ═══ RICH INTRO SECTION M5 ═══ */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={5}
+            title="Relações e Propriedades Especiais de Conjuntos"
+            description="Subconjuntos, inclusão, igualdade e as leis que governam as operações"
+            variant={getModuleVariant(5)}
+          />
+
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <p>
+              Uma relação fundamental entre conjuntos é a relação de inclusão, denotada por A ⊆ B. Dizemos que A é um subconjunto de B se todo elemento de A é também elemento de B. Simbolicamente: A ⊆ B ⟺ (∀x: x ∈ A → x ∈ B). Se existe pelo menos um elemento em A que não pertence a B, então A ⊄ B. A inclusão é reflexiva (A ⊆ A), antissimétrica (A ⊆ B E B ⊆ A ⟹ A = B), e transitiva (A ⊆ B E B ⊆ C ⟹ A ⊆ C). Quando A ⊆ B mas A ≠ B, escrevemos A ⊂ B (inclusão própria ou estrita). Dois fatos importantes: (1) o conjunto vazio ∅ é subconjunto de todo conjunto, e (2) qualquer conjunto é subconjunto de si mesmo. O número total de subconjuntos de um conjunto com n elementos é 2^n. Por exemplo, se C = {'{'}a, b{'}'}', os subconjuntos são: ∅, {'{'}a{'}'}', {'{'}b{'}'}', {'{'}a, b{'}'}' — total de 2² = 4.
+            </p>
+
+            <p>
+              As propriedades das operações com conjuntos garantem que manipulações algébricas sejam válidas. A Comutatividade afirma que A ∪ B = B ∪ A e A ∩ B = B ∩ A — a ordem não importa. A Associatividade garante que (A ∪ B) ∪ C = A ∪ (B ∪ C) e (A ∩ B) ∩ C = A ∩ (B ∩ C) — o agrupamento não importa. A Distributividade conecta as duas operações: A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C) e A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C). A Identidade estabelece que A ∪ ∅ = A e A ∩ U = A (onde U é o universal). A Complementação diz que A ∪ A' = U e A ∩ A' = ∅. A Lei de De Morgan, uma das mais importantes, afirma (A ∪ B)' = A' ∩ B' e (A ∩ B)' = A' ∪ B'. Esta lei é testada frequentemente na CESGRANRIO porque permite simplificar expressões complexas em seus complementares.
+            </p>
+
+            <p>
+              A absorção é uma propriedade que afirma A ∪ (A ∩ B) = A e A ∩ (A ∪ B) = A. Intuitivamente, se você une A com qualquer coisa que esteja dentro de A, obtém A. Se você intersecciona A com qualquer coisa que contenha A, obtém A. A Idempotência diz que A ∪ A = A e A ∩ A = A — unir um conjunto consigo mesmo não muda nada. A Involução afirma que (A')' = A — o complemento do complemento retorna ao original. Estas propriedades transformam problemas aparentemente complexos em simples. Por exemplo, se você precisa simplificar (A ∪ B')' ∩ (A ∩ B), aplique De Morgan: [(A ∪ B')' = A' ∩ (B')' = A' ∩ B], então teremos (A' ∩ B) ∩ (A ∩ B) = (A' ∩ A) ∩ (B ∩ B) = ∅ ∩ B = ∅. Dominar essas manipulações é essencial.
+            </p>
+
+            <p>
+              Na prática Petrobras, propriedades de conjuntos aparecem em lógica de dados. Se você define o conjunto de "equipamentos que passaram em inspeção" (I) e "equipamentos operacionais" (O), você pode usar propriedades para responder: quantos passaram em I OU estão em O? (|I ∪ O|, usa inclusão-exclusão). Quantos estão em ambos? (|I ∩ O|). Quantos estão em I mas não em O? (|I - O| = |I ∩ O'|). Quantos NÃO estão em I? (|I'|). Sistemas de computadores usam operações de conjuntos para filtrar dados: SQL usa UNION (∪), INTERSECT (∩), e EXCEPT (-) para combinar resultados de queries. Dominar as propriedades permite escrever queries eficientes e corretas.
+            </p>
+
+            <p>
+              A CESGRANRIO frequentemente testa propriedades através de: (1) simplificação de expressões com leis de De Morgan, (2) verificação de subconjuntos (A ⊆ B?), (3) problemas de contagem envolvendo cardinalidade, e (4) análise lógica (se verdade X é certa, qual conclusão segue?). Um erro muito comum é aplicar De Morgan incorretamente: (A ∪ B)' ≠ A' ∪ B' — note o operador muda de ∪ para ∩. Outro erro é confundir inclusão com pertencimento: 2 ∈ {'{'}1, 2, 3{'}'}' (pertence), mas {'{'}2{'}'} ⊆ {'{'}1, 2, 3{'}'} (está incluído como subconjunto), não {'{'}2{'}'} ∈ {'{'}1, 2, 3{'}'}. Neste último caso, estávamos perguntando se o conjunto {'{'}2{'}'} é elemento de {'{'}1,2,3{'}'}', o que é falso — os elementos são 1, 2, e 3, não conjuntos.
+            </p>
+
+            <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 rounded-lg border border-violet-200 dark:border-violet-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">Propriedades Fundamentais de Operações</h4>
+              <div className="space-y-2 text-sm">
+                <div className="p-2 bg-white/50 dark:bg-black/20 rounded border border-violet-200 dark:border-violet-700">
+                  <span className="font-semibold text-violet-700 dark:text-violet-300">Comutatividade:</span> A ∪ B = B ∪ A; A ∩ B = B ∩ A
+                </div>
+                <div className="p-2 bg-white/50 dark:bg-black/20 rounded border border-violet-200 dark:border-violet-700">
+                  <span className="font-semibold text-violet-700 dark:text-violet-300">Associatividade:</span> (A ∪ B) ∪ C = A ∪ (B ∪ C)
+                </div>
+                <div className="p-2 bg-white/50 dark:bg-black/20 rounded border border-violet-200 dark:border-violet-700">
+                  <span className="font-semibold text-violet-700 dark:text-violet-300">Lei de De Morgan:</span> (A ∪ B)' = A' ∩ B'; (A ∩ B)' = A' ∪ B'
+                </div>
+                <div className="p-2 bg-white/50 dark:bg-black/20 rounded border border-violet-200 dark:border-violet-700">
+                  <span className="font-semibold text-violet-700 dark:text-violet-300">Complementação:</span> A ∪ A' = U; A ∩ A' = ∅
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm text-center">
             <ModuleSectionHeader
@@ -1586,10 +1833,6 @@ export default function AulaConjuntos({
 
 
 
-          
-
-
-
 
 
 
@@ -1652,6 +1895,53 @@ export default function AulaConjuntos({
           descricao="A ferramenta mestra para calcular cardinalidade de uniões sem contar dois vezes — e o coração das questões de Conjuntos da CESGRANRIO."
           gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
         />
+
+        {/* ═══ RICH INTRO SECTION M6 ═══ */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={6}
+            title="O Princípio de Inclusão-Exclusão: Contagem Sem Dupla Contagem"
+            description="A ferramenta mais poderosa para resolver problemas de conjuntos"
+            variant={getModuleVariant(6)}
+          />
+
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <p>
+              O Princípio de Inclusão-Exclusão é um método combinatório que permite calcular o tamanho da união de múltiplos conjuntos sem contar elementos repetidos. Para dois conjuntos A e B, a fórmula é simples: |A ∪ B| = |A| + |B| - |A ∩ B|. A lógica é clara: somamos os tamanhos de A e B, mas isso conta os elementos de A ∩ B duas vezes, então subtraímos uma vez. Para três conjuntos: |A ∪ B ∪ C| = |A| + |B| + |C| - |A ∩ B| - |A ∩ C| - |B ∩ C| + |A ∩ B ∩ C|. Aqui somamos os três conjuntos, subtraímos as três interseções duplas (que foram contadas em excesso), e adicionamos a interseção tripla (que foi subtraída em excesso). O padrão segue um princípio geral: INCLUA (soma os conjuntos), EXCLUA (subtraia as interseções duplas), INCLUA (adicione as interseções triplas), e assim alternadamente. Este princípio é atribuído a Henri Poincaré e é fundamental em probabilidade, combinatória e teoria dos conjuntos.
+            </p>
+
+            <p>
+              A prova do caso de 2 conjuntos é intuitiva com um diagrama de Venn: o círculo A contém |A| elementos, o círculo B contém |B| elementos, mas a sobreposição (A ∩ B) é contada em ambos. Logo, o total de elementos únicos é |A| + |B| - |A ∩ B|. Para 3 conjuntos, a prova requer mais cuidado: quando somamos |A| + |B| + |C|, contamos cada elemento da região A ∩ B ∩ C três vezes (uma para cada círculo). Quando subtraímos |A ∩ B|, |A ∩ C|, |B ∩ C|, estamos removendo as contagens duplas, mas isso remove A ∩ B ∩ C três vezes (ele está em cada uma dessas interseções duplas). Portanto, adicionamos |A ∩ B ∩ C| uma vez de volta. O resultado é que cada elemento é contado exatamente uma vez. Esta alternância de inclusão e exclusão é o núcleo do princípio e é extremamente poderosa.
+            </p>
+
+            <p>
+              Exemplos práticos tornam o princípio cristalino. Suponha que numa escola há 150 alunos, 85 estudam Inglês (I), 70 estudam Francês (F), e 30 estudam ambos. Quantos estudam pelo menos um idioma? |I ∪ F| = 85 + 70 - 30 = 125. Quantos estudam exatamente um? (85 - 30) + (70 - 30) = 55 + 40 = 95. Quantos não estudam nenhum? 150 - 125 = 25. No contexto Petrobras: 200 funcionários, 120 têm NR-10 (segurança em eletricidade), 100 têm NR-35 (trabalho em altura), 60 têm ambas. Quantos têm pelo menos uma certificação? |NR10 ∪ NR35| = 120 + 100 - 60 = 160. Quantos não têm nenhuma? 200 - 160 = 40 (prioridade de treinamento). Três conjuntos: 100 funcionários, 60 falam Inglês (I), 50 falam Espanhol (E), 40 falam Português (P), 20 falam I e E, 15 falam I e P, 10 falam E e P, 5 falam os três. Quantos falam pelo menos um? |I ∪ E ∪ P| = 60 + 50 + 40 - 20 - 15 - 10 + 5 = 110. Mas só temos 100 funcionários! Isso é impossível — há um erro nos dados.
+            </p>
+
+            <p>
+              A CESGRANRIO adora problemas de inclusão-exclusão porque testam: (1) capacidade de interpretar enunciados complexos, (2) habilidade de aplicar a fórmula corretamente, (3) reconhecimento de impossibilidades lógicas (quando os números não batem). Um erro frequente é esquecer de subtrair a interseção: se você apenas somar |A| + |B|, vai contar os elementos de A ∩ B duas vezes. Outro erro é aplicar a fórmula de 2 conjuntos quando há 3: use a fórmula correta para a quantidade de conjuntos. Um terceiro erro é confundir "pelo menos um" (União, inclusão) com "exatamente um" (exige subtrações adicionais). A CESGRANRIO frequentemente insere múltiplos conjuntos em um único problema para testar isso. Diagramas de Venn preenchidos corretamente tornam esses problemas triviais — sempre preencha de dentro para fora (interseção de todos primeiro, depois pairwise, depois exclusivas).
+            </p>
+
+            <p>
+              A beleza do princípio é sua generalização: para n conjuntos, a fórmula alterna entre inclusões (sum de |A_i|) e exclusões (subtract de |A_i ∩ A_j|), com o padrão continuando para interseções cada vez maiores, sempre alternando os sinais. Isto é escrito formally como: |A₁ ∪ A₂ ∪ ... ∪ Aₙ| = Σ|A_i| - Σ|A_i ∩ A_j| + Σ|A_i ∩ A_j ∩ A_k| - ... + (-1)^(n+1)|A₁ ∩ A₂ ∩ ... ∩ Aₙ|. Embora pareça complicado com muitos conjuntos, na prática CESGRANRIO raramente vai além de 3-4 conjuntos. Dominar a fórmula para 2 e 3 é suficiente para acertar praticamente todas as questões desta banca.
+            </p>
+
+            <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">Fórmulas de Inclusão-Exclusão</h4>
+              <div className="space-y-2 text-sm font-mono">
+                <div className="p-3 bg-white/50 dark:bg-black/20 rounded border border-amber-200 dark:border-amber-700">
+                  <div className="font-semibold text-amber-700 dark:text-amber-300">2 Conjuntos:</div>
+                  <div className="mt-1">|A ∪ B| = |A| + |B| - |A ∩ B|</div>
+                </div>
+                <div className="p-3 bg-white/50 dark:bg-black/20 rounded border border-amber-200 dark:border-amber-700">
+                  <div className="font-semibold text-amber-700 dark:text-amber-300">3 Conjuntos:</div>
+                  <div className="mt-1">|A ∪ B ∪ C| = |A| + |B| + |C| - |A∩B| - |A∩C| - |B∩C| + |A∩B∩C|</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1917,10 +2207,6 @@ export default function AulaConjuntos({
 
 
 
-          
-
-
-
 
 
 
@@ -1983,6 +2269,61 @@ export default function AulaConjuntos({
           descricao="Os três primeiros degraus da hierarquia dos números reais — com contexto industrial Petrobras e as pegadinhas favoritas da CESGRANRIO."
           gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
         />
+
+        {/* ═══ RICH INTRO SECTION M7 ═══ */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={7}
+            title="Conjuntos Numéricos Discretos: Naturais, Inteiros e Racionais"
+            description="Aprofundando-se nos primeiros degraus da hierarquia"
+            variant={getModuleVariant(7)}
+          />
+
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <p>
+              O conjunto dos Números Naturais (ℕ) é o mais antigo e fundamental — foi o primeiro conjunto numérico que a humanidade desenvolveu para contar objetos. Na convenção brasileira e adotada pela CESGRANRIO, ℕ = {'{'}0, 1, 2, 3, 4, ...{'}'}, incluindo o zero. Alguns contextos, especialmente europeus, definem ℕ* = {'{'}1, 2, 3, ...{'}'} (excluindo zero). A prova CESGRANRIO frequentemente testa essa nuance perguntando: "Quantos naturais existem entre 1 e 10?" Se o candidato esquecer que 0 ∈ ℕ, pode perder uma questão. Propriedades: (1) é um conjunto infinito, (2) é bem-ordenado (todo subconjunto não vazio tem mínimo), (3) é fechado sob adição e multiplicação (a + b ∈ ℕ e a·b ∈ ℕ para todo a, b ∈ ℕ), mas NÃO é fechado sob subtração (3 - 5 = -2 ∉ ℕ). Esta "lacuna" motivou a criação dos números inteiros.
+            </p>
+
+            <p>
+              O conjunto dos Números Inteiros (ℤ, do alemão "Zahl") surgiu para permitir subtração sem restrições. ℤ = {'{'}..., -3, -2, -1, 0, 1, 2, 3, ...{'}'} e é fechado sob adição, subtração e multiplicação. Propriedades: (1) é infinito tanto positivamente quanto negativamente (|ℤ| = ∞), (2) contém ℕ como subconjunto próprio (ℕ ⊂ ℤ), (3) tem cardinalidade igual a ℕ (ambos infinitos contáveis, |ℕ| = |ℤ| na teoria de Cantor), (4) pode ser particionado em inteiros pares e ímpares. Subconjuntos importantes: ℤ* = {'{'}..., -2, -1, 1, 2, ...{'}'} (sem zero), ℤ+ = ℕ (inteiros não-negativos), ℤ- = {'{'}..., -3, -2, -1, 0{'}'} (inteiros não-positivos). Na prática Petrobras, temperaturas podem ser negativas (inteiros), posições relativas (acima/abaixo de um referencial) usam ℤ.
+            </p>
+
+            <p>
+              O conjunto dos Números Racionais (ℚ, de "quociente") é definido como ℚ = {'{'}p/q | p ∈ ℤ, q ∈ ℤ*{'}'}. Isto é, são frações onde numerador é inteiro e denominador é inteiro não-nulo. Inclui: todos os inteiros (5 = 5/1), frações próprias (1/2), frações impróprias (7/3), decimais finitos (0.5 = 1/2, 0.25 = 1/4), e decimais periódicos (1/3 = 0.333..., 1/7 = 0.142857142857...). Propriedade crucial: entre quaisquer dois racionais distintos, existe sempre outro racional. Logo, ℚ é DENSO em ℝ. Isso significa que podemos nos aproximar arbitrariamente de qualquer número real usando apenas racionais. No entanto, ℚ tem "lacunas" — os irracionais √2, π, e. A cardinalidade: |ℚ| = |ℕ| (ambos infinitos contáveis, surpreendentemente). Isto foi provado por Cantor através da "diagonalização" — é possível enumerar todos os racionais, mesmo que pareça haver "mais" deles do que naturais.
+            </p>
+
+            <p>
+              Um ponto crítico testado em CESGRANRIO é a representação decimal de racionais. Todo racional tem uma expansão decimal que é FINITA ou PERIÓDICA (ou seja, eventualmente repete um padrão). Exemplos: 1/2 = 0.5 (finita), 1/3 = 0.333... (periódica simples), 1/6 = 0.1666... (periódica mista — não repete desde o início). A recíproca é verdadeira: toda expansão decimal finita ou periódica representa um racional. Isto é usado para identificar racionais vs irracionais: √2 ≈ 1.414213562373... (não periódica) → irracional, π ≈ 3.14159265... (não periódica) → irracional. Na prática: medições em ℚ (com unidades de precisão finita), preços em ℚ (números com centavos), proporções em receitas ou processos industrias usam ℚ. Mas qualquer valor "contínuo" na natureza (comprimento, tempo, energia) é teoricamente um real, aproximado em prática por ℚ.
+            </p>
+
+            <p>
+              A CESGRANRIO testa esses três conjuntos através de: (1) Classificação (5 ∈ ℚ? Sim. -3 ∈ ℕ? Não, pois ℕ não contém negativos. π ∈ ℚ? Não.), (2) Operações (ℕ é fechado sob multiplicação? Sim. ℤ é fechado sob divisão? Não.). (3) Relações (ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ), (4) Problemas contextualizados. Um erro muito comum é esquecer que 0 ∈ ℕ em algumas provas. Outro é não reconhecer que frações como 2/4 = 1/2 são o mesmo racional (representações diferentes do mesmo número). Um terceiro é confundir "racional" com "racionalizável" — √2 NÃO é racional, mas pode ser racionalizado (multiplicando por √2/√2). Dominar essas distinções é essencial.
+            </p>
+
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-3">
+              <h4 className="font-bold text-foreground">Definições e Relações</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                <div className="p-2 bg-white/50 dark:bg-black/20 rounded border border-blue-200 dark:border-blue-700">
+                  <span className="font-semibold text-blue-700 dark:text-blue-300">ℕ (Naturais)</span>
+                  <div className="text-xs mt-1">{'{'}0, 1, 2, 3, ...{'}'} — contagem</div>
+                </div>
+                <div className="p-2 bg-white/50 dark:bg-black/20 rounded border border-blue-200 dark:border-blue-700">
+                  <span className="font-semibold text-blue-700 dark:text-blue-300">ℤ (Inteiros)</span>
+                  <div className="text-xs mt-1">{'{'}..., -1, 0, 1, ...{'}'} — subtração ilimitada</div>
+                </div>
+                <div className="p-2 bg-white/50 dark:bg-black/20 rounded border border-blue-200 dark:border-blue-700">
+                  <span className="font-semibold text-blue-700 dark:text-blue-300">ℚ (Racionais)</span>
+                  <div className="text-xs mt-1">{'{'} p/q | p∈ℤ, q∈ℤ* {'}'} — frações e decimais finitos/periódicos</div>
+                </div>
+                <div className="p-2 bg-white/50 dark:bg-black/20 rounded border border-blue-200 dark:border-blue-700">
+                  <span className="font-semibold text-blue-700 dark:text-blue-300">ℕ ⊂ ℤ ⊂ ℚ</span>
+                  <div className="text-xs mt-1">Hierarquia: cada contém o anterior como subconjunto</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2320,6 +2661,57 @@ export default function AulaConjuntos({
           descricao="Os números que 'escapam' das frações: dízimas infinitas e não periódicas, a reta real completa e as pegadinhas da CESGRANRIO."
           gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
         />
+
+        {/* ═══ RICH INTRO SECTION M8 ═══ */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={8}
+            title="Números Irracionais e o Conjunto dos Reais"
+            description="As lacunas em ℚ e a completude do contínuo"
+            variant={getModuleVariant(8)}
+          />
+
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <p>
+              Números Irracionais (𝕀) são números reais que NÃO podem ser expressos como razão entre inteiros p/q. Sua característica distintiva é que sua representação decimal é INFINITA E NÃO PERIÓDICA — os dígitos continuam para sempre sem repetir um padrão. Os irracionais preenchem as "lacunas" deixadas pelos racionais na reta numérica. Embora haja infinitos racionais (infinito contável), há ainda MAIS infinitos irracionais (infinito incontável). Os mais famosos irracionais são: (1) √2 ≈ 1.41421356... (a diagonal de um quadrado unitário), provado irracional pelos pitagóricos antigos através de prova por absurdo, (2) π ≈ 3.14159265... (razão circunferência/diâmetro), provado irracional por Lambert em 1761, (3) e ≈ 2.71828182... (base dos logaritmos naturais), (4) φ ≈ 1.61803398... (razão áurea, encontrada na natureza). Existe uma infinidade incontável de irracionais — quase todo número real é irracional.
+            </p>
+
+            <p>
+              A diferença essencial entre racionais e irracionais reside na estrutura de sua representação decimal. 1/3 = 0.333... (periódico, período 1), 1/7 = 0.142857142857... (periódico, período 6), mas √2 não repete — qualquer padrão que você identifique em seus primeiros dígitos eventualmente falha. Isto é formalmente provado: se √2 = p/q (reduzido), então 2 = p²/q², logo 2q² = p². Isto implica p² é par, logo p é par. Escreva p = 2m, então 2q² = 4m², logo q² = 2m². Isto implica q² é par, logo q é par. Mas se ambos p e q são pares, então p/q não está reduzido — contradição. Portanto, √2 é irracional. Este argumento generaliza: √n é irracional para qualquer n que não seja um quadrado perfeito.
+            </p>
+
+            <p>
+              O conjunto dos Números Reais (ℝ) é definido como ℝ = ℚ ∪ 𝕀, a união de todos os racionais com todos os irracionais. Geometricamente, ℝ corresponde a todos os pontos em uma reta infinita (a "reta real"). Há uma correspondência biunívoca entre pontos da reta e números reais — isto é tão fundamental que chamamos de "completude" da reta real. Propriedades: (1) ℝ é um corpo (fechado sob +, -, ×, ÷), (2) ℝ é ordenado (para quaisquer a, b ∈ ℝ, ou a {'<'} b ou a = b ou a {'>'} b), (3) ℝ é completo (todo subconjunto não-vazio e limitado superiormente tem um supremo), (4) ℝ tem cardinalidade |ℝ| = ∞ incontável (a cardinalidade do contínuo), que é MAIOR que |ℕ| = |ℤ| = |ℚ| = ∞ contável. Este último fato, provado por Cantor, foi revolucionário: existem "mais" infinitos irracionais do que números naturais!
+            </p>
+
+            <p>
+              Operações com irracionais apresentam propriedades interessantes. √2 + √2 = 2√2 é irracional, mas √2 - √2 = 0 é racional (inteiro, até). √2 · √2 = 2 é racional. √2 / √2 = 1 é racional. Logo, a soma, produto e quociente de irracionais pode resultar em racionais. Mas a soma ou produto de um racional não-nulo com um irracional é sempre irracional. Para provar: se r ∈ ℚ, r ≠ 0, e x ∈ 𝕀, suponha r + x = q ∈ ℚ. Então x = q - r ∈ ℚ (diferença de racionais), contradição. Logo, r + x ∈ 𝕀. Na prática Petrobras, valores contínuos como pressão, temperatura, e fluxo são modelados como reais. Porém, instrumentos medem com precisão finita, produzindo aproximações em ℚ. Compreender que a realidade é ℝ, mas os dados são ℚ, é importante para análise de incerteza e precisão.
+            </p>
+
+            <p>
+              A CESGRANRIO testa irracionais e reais através de: (1) Classificação (√4 = 2 é racional?, Sim. √5 é racional?, Não. π + 1 é irracional?, Sim.). (2) Operações (√2 · √3 = √6 é irracional?, Sim. √4 = 2 é racional?, Sim.). (3) Relacionamentos (ℚ ⊂ ℝ? Sim. 𝕀 ⊂ ℝ? Sim. ℚ ∩ 𝕀 = ∅? Sim, são disjuntos). (4) Problemas contextualizados. Erros comuns: (1) confundir irracional com "não é número" — é um número real completamente válido, (2) pensar que √4 = ±2 é irracional — não, é racional (especificamente 2), (3) não reconhecer que √(a·b) = √a · √b só quando a, b ≥ 0, (4) não perceber que alguns números parecem complexos mas são simples — exemplo: √(3 + 2√2) = 1 + √2, um irracional que "simplifica" a outro irracional. Mastering reals é dominar o sistema numérico completo que sustenta toda a Análise Matemática.
+            </p>
+
+            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">A Hierarquia Completa dos Números</h4>
+              <div className="space-y-2 text-sm font-mono">
+                <div className="p-3 bg-white/50 dark:bg-black/20 rounded border border-emerald-200 dark:border-emerald-700">
+                  <div className="font-semibold text-emerald-700 dark:text-emerald-300">ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ</div>
+                  <div className="text-xs mt-1">Toda hierarquia: cada contém o anterior</div>
+                </div>
+                <div className="p-3 bg-white/50 dark:bg-black/20 rounded border border-emerald-200 dark:border-emerald-700">
+                  <div className="font-semibold text-emerald-700 dark:text-emerald-300">ℝ = ℚ ∪ 𝕀 (disjuntos)</div>
+                  <div className="text-xs mt-1">Reais = Racionais ∪ Irracionais (partição)</div>
+                </div>
+                <div className="p-3 bg-white/50 dark:bg-black/20 rounded border border-emerald-200 dark:border-emerald-700">
+                  <div className="font-semibold text-emerald-700 dark:text-emerald-300">|ℕ| = |ℤ| = |ℚ| &lt; |ℝ|</div>
+                  <div className="text-xs mt-1">Infinitos contáveis &lt; Infinito incontável (Cantor)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader

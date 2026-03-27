@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import { LuChevronDown } from "react-icons/lu";
+import { getModuleVariant } from "@/lib/moduleColors";
 import {
   AlertBox,
   QuizInterativo,
@@ -130,6 +131,51 @@ export default function AulaAnaliseCombinatoria({
           gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
         />
         <div className="space-y-[50px]">
+          {/* ★ RICH INTRO SECTION: Princípio Fundamental da Contagem */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Fundamentos: O Princípio Fundamental da Contagem"
+              description="Como contar sequências de escolhas independentes sem listar todas as possibilidades"
+              variant={getModuleVariant(1)}
+            />
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                O <strong>Princípio Fundamental da Contagem (PFC)</strong>, também conhecido como regra do produto, é o alicerce de toda análise combinatória. Formulado rigorosamente no século XVIII, ele estabelece que quando uma tarefa pode ser executada em múltiplas etapas independentes — onde a escolha de uma etapa não afeta o número de possibilidades nas outras — o número total de maneiras de executar a tarefa é o produto do número de possibilidades de cada etapa. Formalmente, se uma tarefa T pode ser dividida em etapas E₁, E₂, ..., Eₙ, e existem m₁ formas de executar E₁, m₂ formas de executar E₂, e assim sucessivamente, então o número total de formas de executar T é m₁ × m₂ × ... × mₙ. Este princípio é testado constantemente em provas da CESGRANRIO porque forma a base lógica para diferenciar problemas que exigem multiplicação daqueles que exigem adição.
+              </p>
+              <p>
+                A intuição por trás do PFC é elegantemente simples: imagine que você precisa fazer duas escolhas sequenciais. Se a primeira tem 3 opções e a segunda tem 4 opções, e essas escolhas são independentes (o resultado da primeira não limita a segunda), então você pode parear cada uma das 3 primeiras opções com cada uma das 4 segundas opções, obtendo 3 × 4 = 12 pares totais. Este raciocínio de "paramento" estende-se para qualquer número de etapas e é a razão pela qual multiplicamos as possibilidades. Uma forma visual de pensar é imaginar uma árvore de possibilidades: cada "ramo" que parte de um nó representa uma nova escolha, e o número total de caminhos desde a raiz até as folhas é o produto das ramificações em cada nível.
+              </p>
+              <p>
+                Aplicando o PFC exige identificação precisa das etapas independentes. Uma etapa é um conjunto de alternativas mutuamente excludentes: você escolhe UMA dessas alternativas e avança para a próxima etapa. A independência significa que o número de opções em cada etapa não depende das escolhas anteriores. Por exemplo, se você escolhe uma cor de camiseta (5 cores) e depois um modelo de calça (3 modelos), essas etapas são independentes — a cor da camiseta não restringe o número de calças disponíveis. Logo, há 5 × 3 = 15 combinações de roupa. Porém, se o problema disser "escolha um meio de transporte: ônibus (3 linhas), barco (2 linhas) OU carro (5 rotas)", aqui não há etapas — há alternativas excludentes. Você escolhe UM meio OU O OUTRO, não ambos. Isso exige adição, não multiplicação: 3 + 2 + 5 = 10 formas totais. Este é o erro mais comum: confundir "E" (multiplicação) com "OU" (adição).
+              </p>
+              <p>
+                No contexto operacional da Petrobras, o PFC aparece constantemente em decisões sobre segurança, logística e gerenciamento. Um técnico de plataforma que precisa escolher equipamento de proteção individual (EPI) enfrenta múltiplas etapas independentes: selecionar tipo de capacete (3 opções), respirador (4 opções) e luvas (2 opções). O número total de combinações seguras de EPI é 3 × 4 × 2 = 24 configurações possíveis. Em planejamento de rotas de transporte, um gestor pode escolher entre 5 portos de origem, 3 refinarias intermediárias e 4 destinos finais — totalizando 5 × 3 × 4 = 60 rotas distintas. A CESGRANRIO frequentemente testa essa aplicação prática para verificar se o candidato compreende quando usar multiplicação em contextos realistas, não apenas em exercícios abstratos.
+              </p>
+              <p>
+                A CESGRANRIO costuma cobrir o PFC com pegadinhas sutis. A mais comum é misturar "E" e "OU" no mesmo enunciado: "De quantas formas um funcionário pode se transportar até a plataforma E voltar para a base? Há 3 ônibus, 2 barcos OU 5 carros disponíveis para ida, e 4 ônibus, 1 barco OU 6 carros para volta." Aqui, você precisa primeiro resolver os OU (escolher um meio para ida: 3+2+5=10; um meio para volta: 4+1+6=11), depois multiplicar os totais: 10 × 11 = 110 formas. Outra pegadinha é a restrição implícita: "Escolha um chefe de turno E um vice, sendo que a mesma pessoa não pode ocupar ambos os cargos." Aqui as etapas parecem independentes, mas não são — há uma restrição que reduz o número total. Se há 8 pessoas, não é 8 × 8 = 64; é 8 × 7 = 56 (escolhe 1 de 8 para chefe, depois 1 dos 7 restantes para vice). Identificar essas restrições é crítico para acertar as questões CESGRANRIO.
+              </p>
+              <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground text-lg">Fórmula Geral do Princípio Fundamental da Contagem</h4>
+                <div className="bg-white dark:bg-slate-900 rounded p-4 font-mono text-center space-y-2">
+                  <p className="text-sm md:text-base">Se uma tarefa T tem etapas E₁, E₂, ..., Eₙ com m₁, m₂, ..., mₙ opções respectivamente:</p>
+                  <p className="text-base md:text-lg font-bold text-amber-600 dark:text-amber-400">Total = m₁ × m₂ × ... × mₙ</p>
+                  <p className="text-xs text-muted-foreground mt-3">Válido APENAS quando as etapas são independentes (nenhuma opção em uma etapa depende de escolhas anteriores)</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                  <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded">
+                    <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400">✅ USAR MULTIPLICAÇÃO quando:</p>
+                    <p className="text-xs mt-1">Etapas sequenciais, independentes (E lógico)</p>
+                  </div>
+                  <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded">
+                    <p className="text-xs font-bold text-rose-600 dark:text-rose-400">✅ USAR ADIÇÃO quando:</p>
+                    <p className="text-xs mt-1">Alternativas mutuamente excludentes (OU lógico)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
@@ -294,6 +340,61 @@ export default function AulaAnaliseCombinatoria({
           gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
         />
         <div className="space-y-[50px]">
+          {/* ★ RICH INTRO SECTION: Fatorial */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={2}
+              title="Fundamentos: A Notação Fatorial"
+              description="Entenda o operador ! que aparece em todas as fórmulas de permutações, arranjos e combinações"
+              variant={getModuleVariant(2)}
+            />
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                O <strong>fatorial</strong> é uma operação aritmética fundamental representada pelo símbolo "!" (exclamação). O fatorial de um inteiro positivo n, escrito como n!, é definido como o produto de todos os inteiros positivos de 1 até n inclusive. Matematicamente: n! = n × (n-1) × (n-2) × ... × 3 × 2 × 1. Por exemplo, 5! = 5 × 4 × 3 × 2 × 1 = 120. A história do fatorial remonta ao século XV em análises de permutações, mas a notação "!" foi popularizada por Christian Kramp em 1808. Este operador é absolutamente central à análise combinatória porque representa o número de formas de ordenar um conjunto de n objetos — uma permutação de n elementos é precisamente n!. Portanto, entender fatorial é pré-requisito para qualquer trabalho com contagem e probabilidade. A CESGRANRIO testa fatorial em praticamente todas as provas, tanto em cálculos diretos quanto em simplificações dentro de fórmulas maiores.
+              </p>
+              <p>
+                Visualmente, o fatorial cresce EXTREMAMENTE rápido. O fatorial de números pequenos já produz resultados grandes: 1!=1, 2!=2, 3!=6, 4!=24, 5!=120, 6!=720, 7!=5.040, 8!=40.320, 9!=362.880, 10!=3.628.800. Observe que 10! é mais de 3 milhões! Esta explosão exponencial é crucial entender porque, em provas, nunca você calculará 10! manualmente — seria perda de tempo. Em vez disso, você aprenderá técnicas de simplificação e cancelamento que permitem trabalhar com fatoriais sem calcular valores brutos. Uma forma intuitiva de pensar em n! é imaginar n pessoas em fila: há n escolhas para quem fica em primeiro lugar, (n-1) para segundo, (n-2) para terceiro, e assim por diante. Quando você multiplica todos esses números, obtém n!, o número total de ordens diferentes em que essas n pessoas podem se organizar — todas as permutações possíveis.
+              </p>
+              <p>
+                A definição de fatorial inclui um caso especial importante: <strong>0! = 1 por definição</strong>. Esta não é uma escolha arbitrária, mas uma necessidade matemática para que as fórmulas de combinatória funcionem. Por que? Porque existem exatamente 1 forma de ordenar 0 objetos (a sequência vazia), e existem exatamente 1 formas de escolher 0 elementos de um conjunto (obtendo o conjunto vazio). Se 0! fosse qualquer valor diferente de 1, as fórmulas para C(n,k) e P(n,k) não funcionariam nos casos limites. A fórmula C(n,0) = n!/(0! × n!) deveria dar 1 (há 1 forma de escolher nada de um conjunto), o que ocorre APENAS se 0! = 1. Este é um dos fatos que a CESGRANRIO testa porque candidatos frequentemente se confundem quando 0! aparece em cálculos. Memorize: 0! = 1, fim da discussão.
+              </p>
+              <p>
+                Na prática de Petrobras, o fatorial aparece em contextos como: quantas maneiras uma equipe de 8 pessoas pode se organizar em fila para inspeção? Resposta: 8! = 40.320 formas. De quantos jeitos 6 cores de etiqueta podem ser dispostas em ordem? 6! = 720 arranjos. Quantas sequências de senha de 5 dígitos sem repetição podemos criar? 10 × 9 × 8 × 7 × 6 = 30.240 (que é equivalente a 10!/5!, uma simplificação de fatorial). Assim, fatorial é inseparável de problemas reais envolvendo ordem, sequência e permutação de recursos.
+              </p>
+              <p>
+                A CESGRANRIO raramente pede apenas "calcule 8!". Em vez disso, apresenta expressões como 10!/8!, 8!/(5! × 3!), ou 12!/(4! × 3! × 5!). Aqui a chave é <strong>simplificação antes de cálculo</strong>. Nunca calcule fatoriais brutos — primeiro cancele os termos comuns. Por exemplo: 10!/8! = (10 × 9 × 8!)/8! = 10 × 9 = 90. Ou: 8!/(5! × 3!) = (8 × 7 × 6 × 5!)/(5! × 3 × 2 × 1) = (8 × 7 × 6)/(6) = 56. A banca testa se você domina essa simplificação porque candidatos que tentam calcular valores brutos perdem tempo crítico. Outra pegadinha é expressões como 7! + 8! ou 5! × 6!. Observe que 7! + 8! = 7! + 8×7! = 7!(1 + 8) = 9 × 7! (não é 9!). Frequentemente, candidatos erram somando ou multiplicando fatoriais sem entender a propriedade subjacente.
+              </p>
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground text-lg">Definição e Propriedades do Fatorial</h4>
+                <div className="bg-white dark:bg-slate-900 rounded p-4 space-y-3">
+                  <div className="font-mono text-center">
+                    <p className="text-sm md:text-base"><strong>n! = n × (n-1) × (n-2) × ... × 2 × 1</strong></p>
+                    <p className="text-xs text-muted-foreground mt-1">Para n ≥ 1</p>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-3">
+                    {[
+                      { n: "0!", v: "1" },
+                      { n: "1!", v: "1" },
+                      { n: "2!", v: "2" },
+                      { n: "3!", v: "6" },
+                      { n: "4!", v: "24" },
+                      { n: "5!", v: "120" },
+                      { n: "6!", v: "720" },
+                      { n: "7!", v: "5040" },
+                      { n: "8!", v: "40320" },
+                    ].map((item) => (
+                      <div key={item.n} className="p-2 bg-blue-500/10 border border-blue-500/20 rounded text-center">
+                        <p className="text-xs font-bold text-blue-600 dark:text-blue-400">{item.n}</p>
+                        <p className="text-sm font-mono">{item.v}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-3">✅ <strong>Memorize:</strong> 0! = 1 (por definição), 1! = 1, 10! = 3.628.800, e use simplificação para valores maiores</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
@@ -470,6 +571,52 @@ export default function AulaAnaliseCombinatoria({
           gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
         />
         <div className="space-y-[50px]">
+          {/* ★ RICH INTRO SECTION: Permutação Simples */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={3}
+              title="Fundamentos: Permutações Simples"
+              description="Contando ordenações quando a ordem é essencial e todos os elementos são usados"
+              variant={getModuleVariant(3)}
+            />
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Uma <strong>Permutação Simples</strong> é uma forma específica de organizar todos os elementos de um conjunto em sequência, onde a ordem é relevante e cada elemento é usado exatamente uma vez. Formalmente, uma permutação de n elementos distintos é qualquer arranjo de todos esses n elementos em uma sequência linear. O número total de permutações de n elementos é dado por P(n) = n!, que lê-se "n fatorial". Esta é uma das fórmulas mais fundamentais em análise combinatória, porque permutações aparecem em inúmeros contextos práticos: ordenação de pessoas em fila, sequências de tarefas, arranjos de assentos, etc. Historicamente, o conceito de permutação surgiu com o estudo de problemas de contagem no século XVI, particularmente em jogos de azar e criptografia. A CESGRANRIO testa permutações em praticamente todas as provas, frequentemente combinando-as com outras técnicas combinatórias.
+              </p>
+              <p>
+                A razão pela qual P(n) = n! é intuitivamente clara: para a primeira posição, você tem n escolhas (qualquer um dos n elementos). Para a segunda posição, você tem (n-1) escolhas (o restante dos elementos, excluindo o que você escolheu para a primeira posição). Para a terceira, você tem (n-2) escolhas. Continuando essa lógica até a última posição, onde há 1 única escolha (o último elemento restante), o total de sequências é n × (n-1) × (n-2) × ... × 2 × 1 = n!. Imagine 5 pessoas em fila: há 5 escolhas para quem é primeiro, depois 4 para quem é segundo, depois 3 para terceiro, 2 para quarto e 1 para quinto. Total: 5 × 4 × 3 × 2 × 1 = 120 formas de organizar essas 5 pessoas. Esta multiplicação sucessiva é a essência de "permutações com restrição: cada elemento é único, e cada posição é única".
+              </p>
+              <p>
+                Um ponto crítico: a permutação simples P(n) exige que <strong>TODOS os n elementos sejam usados</strong> e que <strong>não haja repetição</strong> (cada elemento aparece apenas uma vez na sequência). Se você só usa p elementos de um total de n (com p &lt; n), isso deixa de ser uma permutação simples e torna-se um <strong>Arranjo A(n,p) = n!/(n-p)!</strong>. Por exemplo, se você tem 10 corredores competindo por 1º, 2º e 3º lugar, está escolhendo 3 corredores de 10 — isto é A(10,3) = 10!/(10-3)! = 10 × 9 × 8 = 720, não P(3) = 6. Este é um erro extremamente comum em provas: confundir "permutação dos elementos escolhidos" com "arranjo dos elementos". Se o problema diz "escolha e ordene", é arranjo. Se diz "ordene todos", é permutação.
+              </p>
+              <p>
+                Na prática operacional da Petrobras, permutações simples aparecem em decisões como: de quantas formas 8 funcionários podem ser dispostos em fila para revista de segurança? P(8) = 8! = 40.320 formas. De quantas maneiras 6 cores de sinalização podem ser sequenciadas em uma plataforma? P(6) = 720. De quantos jeitos uma sequência de 5 tarefas críticas pode ser ordenada? P(5) = 120. Cada uma dessas situações envolve organização completa (todos os elementos, todas as posições) onde ordem importa. Se o problema envolvesse "organizar alguns desses elementos" (ex.: escolher 3 das 6 cores para colocar em sequência), aí seria arranjo, não permutação.
+              </p>
+              <p>
+                A CESGRANRIO testa permutações com pegadinhas sutis. A mais frequente é: "Quantas senhas de 5 algarismos distintos podemos formar?" Aqui você tem 10 algarismos (0-9) e quer usar 5 deles sem repetição, importando a ordem — logo é A(10,5) = 10 × 9 × 8 × 7 × 6 = 30.240, não P(5) = 120. Outra pegadinha envolve "restrições": "Quantas formas 4 pessoas podem se sentar em fila se João NÃO quer sentar ao lado de Maria?" Aqui você não usa P(4) = 24 diretamente — você deve usar a técnica de "complementar": total de assentos menos assentos proibidos. Total = P(4) = 24; assentos com João e Maria juntos = P(3) × 2 = 12 (trata João-Maria como bloco, arranja 3 blocos, multiplica por 2 pois podem estar em duas ordens). Logo, assentos separados = 24 - 12 = 12. Este tipo de raciocínio é crítico.
+              </p>
+              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground text-lg">Fórmula da Permutação Simples</h4>
+                <div className="bg-white dark:bg-slate-900 rounded p-4 font-mono text-center space-y-2">
+                  <p className="text-sm md:text-base"><strong>P(n) = n! = n × (n-1) × (n-2) × ... × 2 × 1</strong></p>
+                  <p className="text-xs text-muted-foreground mt-2">Válido quando: Todos os n elementos são usados, ordem importa, sem repetição</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                  <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded">
+                    <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400">✅ PERMUTAÇÃO quando:</p>
+                    <p className="text-xs mt-1">Todos os n elementos, ordem importa</p>
+                    <p className="text-xs font-mono mt-1">P(n) = n!</p>
+                  </div>
+                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded">
+                    <p className="text-xs font-bold text-blue-600 dark:text-blue-400">⚠️ ARRANJO quando:</p>
+                    <p className="text-xs mt-1">Usa p de n elementos, ordem importa</p>
+                    <p className="text-xs font-mono mt-1">A(n,p) = n!/(n-p)!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
@@ -649,6 +796,44 @@ export default function AulaAnaliseCombinatoria({
           gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
         />
         <div className="space-y-[50px]">
+          {/* ★ RICH INTRO SECTION: Permutação com Repetição */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={4}
+              title="Fundamentos: Permutações com Elementos Repetidos"
+              description="Ajustando contagens quando alguns elementos são indistinguíveis entre si"
+              variant={getModuleVariant(4)}
+            />
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Na vida real, nem sempre temos n elementos completamente distintos. Frequentemente, alguns elementos são idênticos (repetidos). Uma <strong>Permutação com Repetição</strong> é uma organização de n elementos onde alguns são iguais entre si. Por exemplo, as letras da palavra "MISSISSIPPI" incluem repetições: 1 M, 4 I's, 4 S's e 2 P's. O número total de organizações distintas dessas 11 letras é calculado dividindo 11! pelas permutações dos elementos iguais: 11! / (1! × 4! × 4! × 2!) = 34.650 formas. Esta fórmula é crucial porque, sem divisão, você contaria múltiplas vezes a mesma palavra (trocar dois I's de posição gera a "mesma" palavra visualmente). A CESGRANRIO testa isso frequentemente em problemas de anagramas, códigos com dígitos repetidos e sequências de cores ou símbolos.
+              </p>
+              <p>
+                A intuição da fórmula é clara: comece com P(n) = n!, que conta todas as maneiras de organizar n elementos distintos. Mas se alguns elementos são idênticos, você over-conta. Se há k₁ cópias de um elemento idêntico, essas k₁ cópias podem ser permutadas entre si de k₁! formas, mas como são indistinguíveis, essas k₁! arranjos contam como 1 único arranjo visual. Portanto, divida por k₁!. Faça isso para cada grupo de elementos repetidos. A fórmula geral é: P(n; k₁, k₂, ..., kₘ) = n! / (k₁! × k₂! × ... × kₘ!), onde k₁ + k₂ + ... + kₘ = n. Por exemplo, a palavra "ABA" tem 3 letras, com 2 A's repetidos: P(3; 2, 1) = 3! / (2! × 1!) = 6 / 2 = 3 arranjos distintos (ABA, BAA, AAB). Se calculasse P(3) = 6, estaria contando ABA uma única vez visualmente, mas como unidade "A1 B A2" versus "A2 B A1", que são visualmente iguais.
+              </p>
+              <p>
+                O domínio dessa fórmula é essencial porque ela aparece em contextos industriais reais da Petrobras. Por exemplo: você tem 5 etiquetas de cor para sinalização de tanques — 2 vermelhas, 1 azul, 1 verde e 1 amarela. Quantas sequências diferentes de sinalização podem ser criadas? P(5; 2, 1, 1, 1) = 5! / (2! × 1! × 1! × 1!) = 120 / 2 = 60 sequências. Se fosse P(5) = 120, estaria duplicando cada configuração que troca as duas etiquetas vermelhas. Outro exemplo: um código de acesso usa 4 dígitos, com 3 zeros e 1 nonce. Quantos códigos distintos? P(4; 3, 1) = 4! / 3! = 24 / 6 = 4 códigos (0001, 0010, 0100, 1000). Esta fórmula permite contagem precisa em situações com simetria.
+              </p>
+              <p>
+                Um aspecto crítico é <strong>identificar o que se repete</strong>. O enunciado pode dizer explicitamente ("2 bolas vermelhas, 3 azuis") ou pode exigir que você identifique (um anagrama da palavra "BANANA" — 1 B, 3 A's, 1 N, 1 A = 6 letras, com 3 A's iguais). Aplicar a fórmula errada é o erro mais frequente. Por exemplo, se um candidato vê "quantos anagramas de BANANA" e calcula P(6) = 720 sem dividir por 3!, obterá uma resposta 6 vezes maior do que correta. A CESGRANRIO observa atentamente se o candidato identifica repetições.
+              </p>
+              <p>
+                A CESGRANRIO testa essa fórmula de forma traiçoeira. Exemplo: "Quantos números de 5 dígitos podem ser formados usando os dígitos 1, 1, 2, 2, 3?" Aqui, há 5 dígitos no total, com 2 uns repetidos e 2 dois repetidos. Resposta: P(5; 2, 2, 1) = 5! / (2! × 2! × 1!) = 120 / 4 = 30 números. Um candidato ingênuo que calcula 5 × 4 × 3 × 2 × 1 = 120 está completamente errado porque não contabilizou as repetições. Outra pegadinha: "Quantas maneiras de arranjar 4 bolas em fila se 2 são vermelhas, 1 azul e 1 verde?" Alguns candidatos confundem com arranjo A(4,3) ou permutação P(4). A resposta correta é P(4; 2, 1, 1) = 4! / (2! × 1! × 1!) = 24 / 2 = 12. Dominar a identificação da aplicação é crítico.
+              </p>
+              <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground text-lg">Fórmula da Permutação com Repetição</h4>
+                <div className="bg-white dark:bg-slate-900 rounded p-4 space-y-2">
+                  <p className="font-mono text-center text-sm md:text-base"><strong>P(n; k₁, k₂, ..., kₘ) = n! / (k₁! × k₂! × ... × kₘ!)</strong></p>
+                  <p className="text-xs text-center text-muted-foreground mt-2">Onde: n = total de elementos | k₁, k₂, ..., kₘ = quantidade de cada tipo repetido | k₁ + k₂ + ... + kₘ = n</p>
+                  <div className="mt-3 p-3 bg-rose-500/10 border border-rose-500/20 rounded">
+                    <p className="text-xs font-bold text-rose-600 dark:text-rose-400">Exemplo: Palavra "AAABBC" (6 letras, 3 A's, 2 B's, 1 C)</p>
+                    <p className="text-xs font-mono mt-1">P(6; 3, 2, 1) = 6! / (3! × 2! × 1!) = 720 / (6 × 2 × 1) = 60 anagramas distintos</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
@@ -805,6 +990,53 @@ export default function AulaAnaliseCombinatoria({
           gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
         />
         <div className="space-y-[50px]">
+          {/* ★ RICH INTRO SECTION: Arranjo Simples */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={5}
+              title="Fundamentos: Arranjos Simples"
+              description="Selecionando e ordenando um subconjunto de elementos de um conjunto maior"
+              variant={getModuleVariant(5)}
+            />
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Um <strong>Arranjo Simples A(n,p)</strong> é a seleção ordenada de p elementos distintos de um conjunto de n elementos, onde p ≤ n. A ordem importa — o arranjo (A, B, C) é diferente de (C, B, A) — e nenhum elemento pode ser repetido. A fórmula é A(n,p) = n!/(n-p)! = n × (n-1) × ... × (n-p+1), que são exatamente p termos consecutivos começando de n. Por exemplo, A(10,3) = 10 × 9 × 8 = 720. Esta é a situação de "podium" em competições: 10 competidores, mas apenas 3 colocações (1º, 2º, 3º). Há 10 escolhas para 1º, 9 para 2º (o 1º já foi escolhido), e 8 para 3º, totalizando 10 × 9 × 8 = 720 combinações de pódio. A CESGRANRIO testa arranjos em cenários onde seleção E ordem ambas importam — uma das situações mais comuns em provas de concurso.
+              </p>
+              <p>
+                A diferença entre arranjo e permutação é sutil mas crítica. Permutação P(n) = n! usa TODOS os n elementos, enquanto arranjo A(n,p) usa apenas p deles. Se p = n, então A(n,n) = n!/(n-n)! = n!/0! = n! = P(n), e arranjo torna-se permutação. Mas se p &lt; n, arranjo é "mais apertado" que permutação. A diferença entre arranjo e combinação é ainda mais importante: arranjo conta ordem (AB ≠ BA), enquanto combinação não (AB = BA). Se você está escolhendo 3 pessoas de 10 para formar um comitê de chefia (presidente, secretário, tesoureiro — cargos distintos), é arranjo porque os cargos dão ordem: A(10,3) = 720. Se está escolhendo 3 pessoas de 10 para um comitê sem cargos (apenas 3 membros iguais), é combinação: C(10,3) = 120. Este é o erro mais frequente em provas: confundir arranjo com combinação.
+              </p>
+              <p>
+                Na prática operacional de Petrobras, arranjos surgem constantemente. Um pátio tem 8 espaços de estacionamento e 5 carros a estacionar. Quantas formas de ocupar os espaços? A(8,5) = 8 × 7 × 6 × 5 × 4 = 6.720 arranjos. Uma equipe de projeto precisa designar 4 pessoas de 12 para coordenador, vice-coordenador, assistente técnico e auxiliar (4 papéis distintos). Há A(12,4) = 12 × 11 × 10 × 9 = 11.880 formas de fazer isso. Se o problema fosse "escolha apenas 4 pessoas para a equipe, sem papéis específicos", seria C(12,4) = 495 (bem menor). O contexto de "papéis distintos" versus "apenas membros" diferencia arranjo de combinação.
+              </p>
+              <p>
+                A CESGRANRIO frequentemente "disfarça" o arranjo em linguagem prática. Exemplo: "Uma agência de viagens oferece 8 pontos turísticos. Um turista quer visitar exatamente 4 deles, em uma sequência específica. Quantos itinerários são possíveis?" Resposta: A(8,4) = 8 × 7 × 6 × 5 = 1.680 itinerários. A palavra "sequência" sinaliza que ordem importa — é arranjo. Se o enunciado disser apenas "escolha 4 desses 8 pontos", sem mencionar sequência ou ordem, seria combinação C(8,4) = 70. Candidatos que ignoram palavras-chave ("sequência", "ordem", "posição", "lugar") frequentemente confundem arranjo e combinação.
+              </p>
+              <p>
+                Pegadinhas de CESGRANRIO com arranjos são sutis. Uma comum: "Quantas senhas de 4 caracteres podem ser formadas usando letras A-Z sem repetição?" Resposta: A(26,4) = 26 × 25 × 24 × 23 = 358.800. Um candidato que calcula 26^4 (permitindo repetição) ou C(26,4) (ignorando ordem) está errado. Outra: "De um baralho de 52 cartas, quantas mãos de 5 cartas onde a sequência importa?" A(52,5) — mas a maioria de provas de poker usa combinação porque uma "mão" é apenas um conjunto, não uma sequência. O contexto importa. Finalmente, manipulação algébrica: "Se A(n,3) = 24, qual é n?" Aqui, n × (n-1) × (n-2) = 24. Testando: n=4 → 4×3×2=24 ✓. Logo n=4. A CESGRANRIO testa essa manipulação menos frequentemente, mas pode aparecer.
+              </p>
+              <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 rounded-lg border border-violet-200 dark:border-violet-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground text-lg">Fórmula do Arranjo Simples</h4>
+                <div className="bg-white dark:bg-slate-900 rounded p-4 space-y-3">
+                  <div className="font-mono text-center">
+                    <p className="text-sm md:text-base"><strong>A(n,p) = n! / (n-p)! = n × (n-1) × ... × (n-p+1)</strong></p>
+                    <p className="text-xs text-muted-foreground mt-2">Exatamente p termos consecutivos começando de n</p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                    <div className="p-3 bg-violet-500/10 border border-violet-500/20 rounded">
+                      <p className="text-xs font-bold text-violet-600 dark:text-violet-400">✅ ARRANJO quando:</p>
+                      <p className="text-xs mt-1">Seleciona p de n, ordem importa (papéis/posições)</p>
+                    </div>
+                    <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded">
+                      <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400">⚠️ COMBINAÇÃO quando:</p>
+                      <p className="text-xs mt-1">Seleciona p de n, ordem NÃO importa (comitê)</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-center mt-3 text-muted-foreground">Palavra-chave "pódio", "posto", "sequência", "ordem" → Arranjo. Palavra-chave "comitê", "grupo", "seleção" → Combinação</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
@@ -976,6 +1208,53 @@ export default function AulaAnaliseCombinatoria({
           gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
         />
         <div className="space-y-[50px]">
+          {/* ★ RICH INTRO SECTION: Combinação Simples */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={6}
+              title="Fundamentos: Combinações Simples"
+              description="Selecionando subconjuntos quando a ordem de seleção não importa"
+              variant={getModuleVariant(6)}
+            />
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Uma <strong>Combinação Simples C(n,p)</strong> é a seleção de p elementos distintos de um conjunto de n elementos, onde a ordem NÃO importa. Formalmente, é o número de subconjuntos de tamanho p que podem ser formados de um conjunto de tamanho n. A fórmula é C(n,p) = n! / [p! × (n-p)!]. Por exemplo, C(8,3) = 8!/(3! × 5!) = (8 × 7 × 6) / (3 × 2 × 1) = 56. Esta é a fórmula central da análise combinatória, pois combinações aparecem em praticamente toda situação em que você "escolhe um grupo" de pessoas, objetos ou opções. A diferença crucial com relação a arranjos é que a ordem não importa: o grupo &#123;A, B, C&#125; é idêntico ao grupo &#123;C, B, A&#125; — é o mesmo subconjunto. A CESGRANRIO testa combinações em mais problemas do que qualquer outra técnica combinatória, porque situações de "escolha de grupo" são muito comuns em contextos práticos.
+              </p>
+              <p>
+                A intuição de por que dividimos por p! é clara: se você calcula A(n,p) = n!/(n-p)!, está contando ordenações (arranjos). Mas combinações não se importam com a ordem. Se há p elementos escolhidos, esses p elementos podem ser ordenados de p! formas diferentes — porém todas essas ordenações representam o MESMO grupo (combinação). Portanto, dividindo A(n,p) por p!, você remove a contagem excessiva de ordenações: C(n,p) = A(n,p) / p! = [n!/(n-p)!] / p! = n! / [p! × (n-p)!]. Exemplo: de 5 pessoas, quantas maneiras escolher 3 para um comitê? A(5,3) = 5 × 4 × 3 = 60 (se ordem importasse — chefe, vice, secretário). Mas se é só "3 pessoas iguais", dividimos por 3! = 6: C(5,3) = 60 / 6 = 10 grupos distintos. Visualmente, os 10 grupos são &#123;1,2,3&#125;, &#123;1,2,4&#125;, &#123;1,2,5&#125;, &#123;1,3,4&#125;, &#123;1,3,5&#125;, &#123;1,4,5&#125;, &#123;2,3,4&#125;, &#123;2,3,5&#125;, &#123;2,4,5&#125;, &#123;3,4,5&#125;.
+              </p>
+              <p>
+                Uma propriedade crítica é a <strong>simetria C(n,p) = C(n, n-p)</strong>. Por que? Porque escolher p elementos de n é o mesmo que "deixar de fora" (n-p) elementos. Se você escolhe 3 de 8, deixa 5 de fora; há C(8,3) = 56 formas. Se você escolhe quais 5 deixar de fora, há C(8,5) = 56 formas — idêntico! Este insight permite simplificar cálculos: C(100, 99) = C(100, 1) = 100 (escolher 99 de 100 é o mesmo que escolher qual 1 deixar de fora). A CESGRANRIO explora essa simetria em cálculos onde p é grande, forçando candidatos que não sabem da propriedade a fazer contas enormes desnecessariamente.
+              </p>
+              <p>
+                Na prática de Petrobras, combinações aparecem em contextos como: de 12 engenheiros, quantos comitês de 4 pessoas podem ser formados? C(12,4) = (12 × 11 × 10 × 9) / (4 × 3 × 2 × 1) = 11.880 / 24 = 495 comitês. De 20 materiais disponíveis, de quantas formas escolher 3 para um projeto? C(20,3) = 1.140. De 6 projetos, quantas combinações de 2 podem ser selecionadas para análise? C(6,2) = 15. Diferente de "arranjo", onde cargos ou posições dão ordem, "combinação" é quando o grupo é homogêneo — todos os membros têm igualdade de "peso". Se o problema diz "comitê", "equipe", "grupo", "seleção", é combinação. Se diz "pódio", "cargo", "sequência", "ordem", é arranjo.
+              </p>
+              <p>
+                A CESGRANRIO testa combinações com armadilhas frequentes. Uma comum: "De 10 pessoas, quantas duplas podem se formar para um trabalho?" C(10,2) = 45. Um candidato ingênuo que calcula A(10,2) = 90 (pensando em "primeira pessoa" e "segunda pessoa") está errado — pares não têm ordem. Outra pegadinha: "De um total de 8 times em um campeonato, quantos jogos há se cada time joga cada outro time uma vez?" C(8,2) = 28 jogos (cada jogo é um par de times). Se fosse "com ida e volta", seria A(8,2) = 56. A banca testa se você diferencia "encontros únicos" (combinação) de "confrontos com mandante" (arranjo). Finalmente, expressões com combinação: "Se C(n,2) = 45, qual n?" Resolvendo: n(n-1)/2 = 45 → n(n-1) = 90 → n² - n - 90 = 0 → n = 10. A CESGRANRIO ocasionalmente testa essa manipulação algébrica com combinações.
+              </p>
+              <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground text-lg">Fórmula da Combinação Simples</h4>
+                <div className="bg-white dark:bg-slate-900 rounded p-4 space-y-3">
+                  <div className="font-mono text-center">
+                    <p className="text-sm md:text-base"><strong>C(n,p) = n! / [p! × (n-p)!]</strong></p>
+                    <p className="text-xs text-muted-foreground mt-2">Propriedade: C(n,p) = C(n, n-p) — Simetria</p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                    <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded">
+                      <p className="text-xs font-bold text-amber-600 dark:text-amber-400">✅ COMBINAÇÃO quando:</p>
+                      <p className="text-xs mt-1">Ordem NÃO importa (grupo, comitê, equipe)</p>
+                    </div>
+                    <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded">
+                      <p className="text-xs font-bold text-blue-600 dark:text-blue-400">⚠️ ARRANJO quando:</p>
+                      <p className="text-xs mt-1">Ordem importa (pódio, cargos, sequência)</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-center mt-3 text-muted-foreground">Atalho: C(n,2) = n(n-1)/2 para "apertos de mão", "diagonais", "pares"</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
@@ -1141,6 +1420,47 @@ export default function AulaAnaliseCombinatoria({
           gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
         />
         <div className="space-y-[50px]">
+          {/* ★ RICH INTRO SECTION: Combinação com Repetição */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={7}
+              title="Fundamentos: Combinações com Repetição"
+              description="Selecionando elementos quando múltiplas cópias de cada elemento podem ser escolhidas"
+              variant={getModuleVariant(7)}
+            />
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Uma <strong>Combinação com Repetição CR(n,p)</strong> é a seleção de p elementos de um conjunto de n tipos diferentes, onde cada tipo pode ser escolhido múltiplas vezes (com repetição) e a ordem não importa. Por exemplo, quantas formas de comprar 5 sorvetes de 3 sabores diferentes? Você pode comprar 5 de baunilha, ou 3 de morango e 2 de chocolate, etc. A fórmula, que é notavelmente elegante, é CR(n,p) = C(n+p-1, p) = (n+p-1)! / [p! × (n-1)!]. Para o exemplo: CR(3,5) = C(3+5-1, 5) = C(7,5) = C(7,2) = 21 formas de comprar 5 sorvetes de 3 sabores. Esta é a fórmula menos intuitiva em análise combinatória, mas crucial para problemas envolvendo "distribuição com repetição" — um padrão recorrente em provas da CESGRANRIO, especialmente em contextos de alocação de recursos, seleção com reposição ou problemas de "stars and bars".
+              </p>
+              <p>
+                A intuição por trás da fórmula CR(n,p) = C(n+p-1, p) é revelada através do método "stars and bars" (estrelas e barras). Imagine p "estrelas" (objetos a selar) e (n-1) "barras" (separadores de categoria). Para contar formas de distribuir p objetos entre n categorias, você precisa de (n-1) barras para criar n compartimentos. Por exemplo, com 5 sorvetes e 3 sabores, imagine 5 estrelas (* * * * *) e 2 barras (|). O padrão ** | * | ** representa 2 de baunilha, 1 de morango, 2 de chocolate. O número total de arranjos de 5 estrelas + 2 barras é C(5+2, 2) = C(7,2) = 21. Generalizando: CR(n,p) = C(p + (n-1), n-1) = C(n+p-1, p). Este método transforma um problema confuso com repetição em uma simples combinação, daí o termo "fórmula mágica".
+              </p>
+              <p>
+                Um aspecto crítico: combinação com repetição é <strong>diferente</strong> de arranjo com repetição ou permutação com repetição. Combinação com repetição significa que ordem não importa E repetição é permitida. Exemplos práticos: quantas maneiras de escolher 3 frutas de 4 tipos em uma frutaria onde há abundância de cada tipo? CR(4,3) = C(6,3) = 20. Quantas maneiras de distribuir 10 moedas idênticas entre 3 pessoas? CR(3,10) = C(12,10) = 66. Quantas soluções inteiras não-negativas para x + y + z = 5? CR(3,5) = C(7,5) = 21 (representando "quantas de tipo x, quantas de tipo y, quantas de tipo z"). Em todas essas situações, há repetição e ordem não importa — é combinação com repetição.
+              </p>
+              <p>
+                Na prática de Petrobras, combinação com repetição aparece em cenários reais. Um gerente de RH quer distribuir 8 bônus iguais entre 3 departamentos. De quantas formas? CR(3,8) = C(10,8) = C(10,2) = 45 formas. Um centro de distribuição tem 4 tipos de combustível e precisa selecionar 6 "porções" (podendo repetir o mesmo combustível) para análise. Quantas amostras distintas? CR(4,6) = C(9,6) = 84. Um engenheiro precisa escolher 5 componentes de 3 modelos diferentes para um protótipo, podendo repetir componentes. Quantas configurações? CR(3,5) = C(7,5) = 21. A fórmula permite contagem eficiente sem enumerar manualmente todas as possibilidades.
+              </p>
+              <p>
+                A CESGRANRIO testa combinação com repetição frequentemente porque é menos intuitiva e candidatos confundem com combinação simples ou outros modelos. Uma pegadinha comum: "Quantas maneiras de distribuir 10 doces idênticos entre 4 crianças?" Usa-se CR(4,10) = C(13,10) = 286, não C(10,4) = 210 (que seria combinação simples, sem reconhecer que doces são repetíveis). Outra pegadinha: diferenciar "com reposição" (repetição permitida) de "sem reposição" (sem repetição). "Escolher 3 números de um dado (com reposição)" = CR(6,3) = C(8,3) = 56. "Escolher 3 números diferentes de um dado (sem reposição)" = C(6,3) = 20. Um candidato que calcula a primeira como C(6,3) está ignorando a possibilidade de repetição. A CESGRANRIO observa se você diferencia essas situações. Finalmente, expressões: "Se CR(n,3) = 20, qual n?" Aqui, C(n+2, 3) = 20 → (n+2)(n+1)n/6 = 20 → (n+2)(n+1)n = 120 → testando, n=4 → 6×5×4 = 120 ✓. Logo n=4.
+              </p>
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground text-lg">Fórmula de Combinação com Repetição</h4>
+                <div className="bg-white dark:bg-slate-900 rounded p-4 space-y-3">
+                  <div className="font-mono text-center">
+                    <p className="text-sm md:text-base"><strong>CR(n,p) = C(n+p-1, p) = (n+p-1)! / [p! × (n-1)!]</strong></p>
+                    <p className="text-xs text-muted-foreground mt-2">Método: "Stars and Bars" — p estrelas, (n-1) barras</p>
+                  </div>
+                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded mt-4">
+                    <p className="text-xs font-bold text-blue-600 dark:text-blue-400">Exemplo: 5 sorvetes, 3 sabores</p>
+                    <p className="text-xs font-mono mt-1">CR(3,5) = C(7,5) = C(7,2) = 7×6/2 = 21 combinações</p>
+                  </div>
+                  <p className="text-xs text-center mt-3 text-muted-foreground">Diferença: Combinação simples = sem repetição | Combinação com repetição = com repetição permitida</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}

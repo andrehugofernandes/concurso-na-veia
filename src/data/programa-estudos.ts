@@ -27,19 +27,20 @@ const BLOCO_COLORS = [
 
 const BLOCO_ICONS = ['📚', '🔧', '🧠', '⚙️', '🔬'];
 
-export function getProgramaDeEstudos(cargoId?: string): MateriaConteudo[] {
-    // 1. Matérias Básicas (Sempre presentes)
+export function getProgramaDeEstudos(cargoId?: string, isElite?: boolean): MateriaConteudo[] {
+    // 1. Se for Elite Total, retorna todas as matérias disponíveis
+    if (isElite) {
+        return CONTEUDO_MATERIAS;
+    }
+
+    // 2. Matérias Básicas (Sempre presentes para usuários comuns)
     const programa: MateriaConteudo[] = [
         CONTEUDO_MATERIAS.find(m => m.id === 'portugues')!,
         CONTEUDO_MATERIAS.find(m => m.id === 'matematica')!,
     ];
 
-    // Se não tiver cargo selecionado, retorna o básico padrão + exemplo de técnicas
+    // Se não tiver cargo selecionado, retorna o básico padrão
     if (!cargoId) {
-        const fisica = CONTEUDO_MATERIAS.find(m => m.id === 'fisica');
-        const quimica = CONTEUDO_MATERIAS.find(m => m.id === 'quimica');
-        if (fisica) programa.push(fisica);
-        if (quimica) programa.push(quimica); // Exemplo genérico
         return programa;
     }
 
@@ -48,46 +49,36 @@ export function getProgramaDeEstudos(cargoId?: string): MateriaConteudo[] {
     const profissao = getProfissaoById(normalizedCargoId);
 
     if (!profissao) {
-        // Fallback se profissão não encontrada
         return programa;
     }
 
-    // 2. Adicionar Inglês se for Nível Superior e ainda não estiver na lista
-    // OBS: Verificamos tanto o nível da profissão quanto uma possível flag de nível no sistema
+    // 3. Adicionar Inglês se for Nível Superior
     if (profissao.nivel === 'superior') {
         const ingles = CONTEUDO_MATERIAS.find(m => m.id === 'ingles');
         if (ingles && !programa.find(p => p.id === 'ingles')) {
             programa.push(ingles);
         }
-    } else {
-        // Garantir que inglês seja removido se existir acidentalmente para nível médio
-        const indexIngles = programa.findIndex(p => p.id === 'ingles');
-        if (indexIngles !== -1) {
-            programa.splice(indexIngles, 1);
-        }
     }
 
-    // 3. Para suprimento-adm, usar blocos pré-configurados de CONTEUDO_MATERIAS
-    // Em vez de gerar dinamicamente (que causava slug incorreto)
-    if (normalizedCargoId === 'suprimento-adm') {
-        // Buscar blocos já definidos em CONTEUDO_MATERIAS
-        const blocoII = CONTEUDO_MATERIAS.find(m => m.id === 'especifica-bloco-ii-legislacao-tributos');
-        if (blocoII) programa.push(blocoII);
-        return programa;
-    }
+    // 4. Adicionar Matérias Específicas
+    // Tenta encontrar blocos pré-definidos em CONTEUDO_MATERIAS primeiro (Ex: Suprimento-ADM)
+    const blocosPreDefinidos = CONTEUDO_MATERIAS.filter(m => 
+        m.id.startsWith(`especifica-bloco`) && 
+        m.descricao.toLowerCase().includes(profissao.nome.toLowerCase())
+    );
 
-    // 3. Adicionar Matérias Específicas (Baseadas nos Blocos)
-    // Para outros cargos, gerar dinamicamente
-    if (profissao.blocos) {
+    if (blocosPreDefinidos.length > 0) {
+        programa.push(...blocosPreDefinidos);
+    } else if (profissao.blocos) {
+        // Se não houver pré-definido, gera dinamicamente a partir de PROFISSOES
         profissao.blocos.forEach((bloco, index) => {
             const materiaId = `especifica-${slugify(bloco.nome)}`;
-
-            // Transformar strings de tópicos em objetos Topico
+            
             const topicos: Topico[] = bloco.topicos.map((topicoTitulo, tIndex) => ({
                 id: slugify(topicoTitulo),
                 titulo: topicoTitulo,
                 descricao: `Tópico específico de ${profissao.nome}`,
-                duracao: '30 min', // Duração padrão estimada
+                duracao: '30 min',
                 ordem: tIndex + 1
             }));
 
@@ -97,7 +88,7 @@ export function getProgramaDeEstudos(cargoId?: string): MateriaConteudo[] {
                 descricao: `Conhecimentos específicos para ${profissao.nome}`,
                 icone: BLOCO_ICONS[index % BLOCO_ICONS.length],
                 cor: BLOCO_COLORS[index % BLOCO_COLORS.length],
-                requiredPlan: 'Ouro', // Específicas geralmente são premium
+                requiredPlan: 'Ouro',
                 topicos: topicos
             };
 

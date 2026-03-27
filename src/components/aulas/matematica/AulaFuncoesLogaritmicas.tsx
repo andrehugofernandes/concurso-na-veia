@@ -209,8 +209,8 @@ export default function AulaFuncoesLogaritmicas({
                       <div className="bg-indigo-500/5 p-4 rounded-lg border border-indigo-500/20">
                         <p className="text-sm"><strong>Terminologia:</strong></p>
                         <ul className="text-sm space-y-1 mt-2">
-                          <li>• <strong>a</strong> = base (sempre positiva, ≠ 1)</li>
-                          <li>• <strong>b</strong> = logaritmando (sempre positivo)</li>
+                          <li>• <strong>a</strong> = base (sempre positiva, ≠ 1): a {'>'} 0, a ≠ 1</li>
+                          <li>• <strong>b</strong> = logaritmando (sempre positivo): b {'>'} 0</li>
                           <li>• <strong>c</strong> = logaritmo (qualquer real)</li>
                         </ul>
                       </div>
@@ -274,8 +274,8 @@ export default function AulaFuncoesLogaritmicas({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="danger" titulo="Restrições Absolutas">
-                        <p className="text-sm">• A base <strong>a</strong> deve ser positiva e diferente de 1: a &gt; 0, a ≠ 1</p>
-                        <p className="text-sm">• O logaritmando <strong>b</strong> deve ser positivo: b &gt; 0</p>
+                        <p className="text-sm">• A base <strong>a</strong> deve ser positiva e diferente de 1: a {'>'} 0, a ≠ 1</p>
+                        <p className="text-sm">• O logaritmando <strong>b</strong> deve ser positivo: b {'>'} 0</p>
                         <p className="text-sm">• Se violar: não existe logaritmo no campo real!</p>
                       </AlertBox>
                       <div className="bg-red-500/5 p-3 rounded-lg border border-red-500/20 mt-3">
@@ -431,7 +431,7 @@ export default function AulaFuncoesLogaritmicas({
                         </div>
                       </div>
                       <AlertBox tipo="info" titulo="Propriedade Extra: Log de 1">
-                        log_a(1) = 0 para qualquer base a &gt; 0, a ≠ 1. Por quê? Porque a⁰ = 1!
+                        log_a(1) = 0 para qualquer base a {'>'} 0, a ≠ 1. Por quê? Porque a⁰ = 1!
                       </AlertBox>
                     </div>
                   ),
@@ -625,13 +625,13 @@ export default function AulaFuncoesLogaritmicas({
                         <div className="bg-cyan-500/10 p-4 rounded-lg border border-cyan-500/20">
                           <p className="text-sm font-bold text-cyan-700 mb-2">Caso 2: log₃(x) + log₃(x-2) = 1</p>
                           <p className="text-sm">Combine: log₃[x(x-2)] = 1 → x(x-2) = 3¹ → x² - 2x - 3 = 0</p>
-                          <p className="text-sm">Bhaskara: x = 3 ou x = -1. Teste domínio: x &gt; 0 e x-2 &gt; 0 → x &gt; 2</p>
+                          <p className="text-sm">Bhaskara: x = 3 ou x = -1. Teste domínio: x {'>'} 0 e x-2 {'>'} 0 → x {'>'} 2</p>
                           <p className="text-sm font-bold text-green-600">Apenas x = 3 é válido!</p>
                         </div>
                         <div className="bg-indigo-500/10 p-4 rounded-lg border border-indigo-500/20">
                           <p className="text-sm font-bold text-indigo-700 mb-2">Caso 3: 2log₅(x) = log₅(25)</p>
                           <p className="text-sm">Simplifique: log₅(x²) = log₅(25) → x² = 25 → x = ±5</p>
-                          <p className="text-sm">Domínio: x &gt; 0 → apenas x = 5 válido</p>
+                          <p className="text-sm">Domínio: x {'>'} 0 → apenas x = 5 válido</p>
                         </div>
                       </div>
                     </div>
@@ -775,13 +775,13 @@ export default function AulaFuncoesLogaritmicas({
                       </p>
                       <div className="space-y-3">
                         <AlertBox tipo="danger" titulo="Restrição 1: Base">
-                          A base <strong>a</strong> deve satisfazer: <strong>a &gt; 0 e a ≠ 1</strong>
+                          A base <strong>a</strong> deve satisfazer: <strong>a {'>'} 0 e a ≠ 1</strong>
                         </AlertBox>
                         <AlertBox tipo="danger" titulo="Restrição 2: Logaritmando">
-                          O argumento <strong>b</strong> deve satisfazer: <strong>b &gt; 0</strong>
+                          O argumento <strong>b</strong> deve satisfazer: <strong>b {'>'} 0</strong>
                         </AlertBox>
                         <div className="bg-blue-500/5 p-3 rounded-lg border border-blue-500/20">
-                          <p className="text-sm"><strong>Combinadas:</strong> log_a(b) só existe quando a&gt;0, a≠1, E b&gt;0 simultaneamente!</p>
+                          <p className="text-sm"><strong>Combinadas:</strong> log_a(b) só existe quando a {'>'} 0, a ≠ 1, E b {'>'} 0 simultaneamente!</p>
                         </div>
                       </div>
                     </div>
@@ -1916,7 +1916,7 @@ export default function AulaFuncoesLogaritmicas({
               index={10}
               title="Integração Completa de Conhecimento"
               description="Questões que combinam múltiplos conceitos em um único desafio."
-              variant="purple"
+              variant="violet"
             />
 
             <ContentAccordion
@@ -2046,7 +2046,7 @@ export default function AulaFuncoesLogaritmicas({
 
 <ModuleConsolidation
             index={10}
-            variant="purple"
+            variant="violet"
             video={{
               videoId: "mUFv1Y-JkjE",
               title: "Revisão Completa de Logaritmos: Preparação para Prova",
@@ -2093,7 +2093,7 @@ export default function AulaFuncoesLogaritmicas({
                 titulo="Simulado Mestre - Domínio Logarítmico Completo"
                 icone="🏆"
                 numero={10}
-                variant="purple"
+                variant="violet"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

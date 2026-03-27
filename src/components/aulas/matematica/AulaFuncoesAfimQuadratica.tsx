@@ -17,6 +17,8 @@ import {
   type FunctionPlot,
 } from "../shared";
 
+import { getModuleVariant } from "@/lib/moduleColors";
+
 import {
   LuBookOpen,
   LuLightbulb,
@@ -183,16 +185,48 @@ export default function AulaFuncoesAfimQuadratica({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="A Receita do Bolo (ax + b)"
-              description="Identifique a essência da linha reta nos gráficos empresariais."
-              variant="blue"
+              title="A Função Afim: Fundamentos da Reta"
+              description="Modelagem linear em operações Petrobras"
+              variant={getModuleVariant(1)}
             />
 
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              A <strong>Função Afim</strong>, muitas vezes chamada de Função do
-              1º Grau, é a forma matemática de prever valores proporcionais no
-              futuro, como os custos de produção em série.
-            </p>
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                A <strong>Função Afim</strong>, também chamada de função polinomial do 1º grau, é a forma matemática fundamental para modelar relações lineares entre duas variáveis. Definida genericamente como f(x) = ax + b, onde a ≠ 0, ela representa processos de crescimento ou decrescimento constante. Na indústria petrolífera, funções afim aparecem em modelos de custo de produção, onde custos fixos e variáveis se combinam linearmente. A CESGRANRIO frequentemente testa esse conceito porque ele é a base para entender comportamentos econômicos simples em operações de exploração e produção.
+              </p>
+
+              <p>
+                Em termos intuitivos, pense na função afim como uma receita de ingredientes proporcionais. Se você tem um custo fixo (como aluguel de equipamento) e um custo variável (como combustível por unidade produzida), a função afim captura exatamente essa lógica: comece com o valor fixo b, depois adicione uma contribuição linear (a multiplicado por x) que cresce ou diminui proporcionalmente à quantidade x. Geometricamente, o gráfico é sempre uma reta, e essa reta nunca é horizontal (pois a ≠ 0) nem vertical.
+              </p>
+
+              <p>
+                Os parâmetros têm significados claros. O coeficiente a é chamado de coeficiente angular ou inclinação: ele determina a "velocidade" de mudança da função. Se a {'>'} 0, a reta sobe da esquerda para a direita (função crescente); se a {'<'} 0, a reta desce (função decrescente). O coeficiente b é o coeficiente linear ou termo independente: ele indica exatamente onde a reta cruza o eixo y, ou seja, f(0) = b. Toda função afim passa por (0, b).
+              </p>
+
+              <p>
+                Na prática Petrobras, considere um modelo de custo diário de uma plataforma: C(x) = 500 + 12x, onde x é o número de barris produzidos em centenas. Aqui, 500 é o custo fixo (equipamentos, pessoal permanente) e 12 é o custo variável por 100 barris. A raiz (zero da função) ocorre em x = -500/12 ≈ -41,7, o que não faz sentido físico (não há produção negativa), mas matematicamente mostra onde a função cruza o eixo x.
+              </p>
+
+              <p>
+                A CESGRANRIO costuma cobrar: identificação de a e b em uma fórmula dada, cálculo da raiz (zero da função), interpretação de paralelismo (mesma inclinação a implica retas paralelas), análise de crescimento/decrescimento, e problemas de intersecção entre duas retas. Um erro comum é confundir o sinal de a com o sinal de b, ou tentar forçar uma interpretação física a partes do gráfico que não fazem sentido no contexto (como quantidade negativa).
+              </p>
+
+              <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Fórmula Geral e Propriedades</h4>
+                <div className="space-y-3">
+                  <div className="bg-white dark:bg-slate-900 p-3 rounded border border-amber-300/30">
+                    <p className="font-mono text-sm font-bold text-amber-700 dark:text-amber-300">f(x) = ax + b, onde a ≠ 0</p>
+                  </div>
+                  <ul className="space-y-2 text-sm">
+                    <li><strong>a {'>'} 0:</strong> Função crescente (reta sobe)</li>
+                    <li><strong>a {'<'} 0:</strong> Função decrescente (reta desce)</li>
+                    <li><strong>Raiz:</strong> f(x) = 0 ⟹ x = -b/a (onde a reta cruza o eixo x)</li>
+                    <li><strong>Intercepto y:</strong> f(0) = b (onde a reta cruza o eixo y)</li>
+                    <li><strong>Taxa de variação:</strong> Δy/Δx = a (sempre constante)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
             <ContentAccordion
               slides={[
@@ -421,10 +455,49 @@ export default function AulaFuncoesAfimQuadratica({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={2}
-              title="Côncavas e Convexas"
-              description="A equação ganha um expoente na potência dois. Tudo muda."
-              variant="emerald"
+              title="A Função Quadrática: Parábolas e Otimização"
+              description="Forma, vértice e análise de extremos"
+              variant={getModuleVariant(2)}
             />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                A <strong>Função Quadrática</strong> ou função polinomial do 2º grau é definida como f(x) = ax² + bx + c, onde a ≠ 0. Diferentemente da função afim, a quadrática é uma curva chamada parábola, e modela fenômenos onde a taxa de mudança varia com x: movimento com aceleração, custos com economias de escala, ou receitas com pontos de saturação. Na Petrobras, função quadrática aparece em análises de otimização de produção, onde buscar-se encontrar o máximo de lucro ou o mínimo de custo em uma operação.
+              </p>
+
+              <p>
+                A forma parabólica é determinada principalmente pelo coeficiente a. Se a {'>'} 0, a parábola abre para cima, formando um "U" — há um ponto de mínimo (vértice). Se a {'<'} 0, a parábola abre para baixo, formando um "∩" — há um ponto de máximo. O coeficiente b influencia a posição horizontal do vértice, e c determina a interseção com o eixo y (valor de f quando x = 0). Cada um dos três coeficientes tem significado geométrico e prático.
+              </p>
+
+              <p>
+                O vértice da parábola é o ponto mais importante: coordenadas xᵥ = -b/(2a) e yᵥ = f(xᵥ). Se a {'>'} 0, yᵥ é o mínimo da função; se a {'<'} 0, yᵥ é o máximo. Em problemas de otimização (lucro máximo, custo mínimo, área máxima), o vértice é a resposta. O eixo de simetria da parábola é a reta vertical x = xᵥ, e a parábola é simétrica em relação a essa reta. A importância do vértice em questões CESGRANRIO é altíssima.
+              </p>
+
+              <p>
+                As raízes (zeros) da função quadrática são encontradas pela fórmula de Bhaskara: x = (-b ± √Δ) / (2a), onde Δ = b² - 4ac é o discriminante. O valor de Δ determina a natureza das raízes: Δ {'>'} 0 significa duas raízes reais distintas (parábola cruza o eixo x em dois pontos); Δ = 0 significa raiz dupla (parábola toca o eixo x em um ponto, tangência); Δ {'<'} 0 significa sem raízes reais (parábola não toca o eixo x). Essa classificação é essencial para entender o comportamento da função.
+              </p>
+
+              <p>
+                Imagine uma operação de refinaria onde o lucro é L(x) = -2x² + 40x - 100, com x em centenas de barris. Aqui a = -2 {'<'} 0, então há máximo. xᵥ = 40/4 = 10 (produção ótima: 1.000 barris), yᵥ = -200 + 400 - 100 = 100 (lucro máximo: R$ 100 mil). A CESGRANRIO frequentemente cobra: identificação de a, b, c, cálculo do vértice, determinação de raízes, estudo de sinal (quando f(x) {'>'} 0, f(x) {'<'} 0), e problemas de otimização real.
+              </p>
+
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Fórmulas e Propriedades</h4>
+                <div className="space-y-3">
+                  <div className="bg-white dark:bg-slate-900 p-3 rounded border border-blue-300/30">
+                    <p className="font-mono text-sm font-bold text-blue-700 dark:text-blue-300">f(x) = ax² + bx + c, onde a ≠ 0</p>
+                  </div>
+                  <ul className="space-y-2 text-sm">
+                    <li><strong>a {'>'} 0:</strong> Parábola abre para cima (U) — vértice é MÍNIMO</li>
+                    <li><strong>a {'<'} 0:</strong> Parábola abre para baixo (∩) — vértice é MÁXIMO</li>
+                    <li><strong>Vértice:</strong> V = (-b/2a, -Δ/4a) onde Δ = b² - 4ac</li>
+                    <li><strong>Eixo de simetria:</strong> x = -b/2a</li>
+                    <li><strong>Discriminante:</strong> Δ {'>'} 0 (2 raízes) | Δ = 0 (1 raiz dupla) | Δ {'<'} 0 (sem raízes reais)</li>
+                    <li><strong>Bhaskara:</strong> x = (-b ± √Δ) / 2a</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
             <ContentAccordion
               slides={[
@@ -673,10 +746,72 @@ export default function AulaFuncoesAfimQuadratica({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={3}
-              title="Estudo Cidadão do Sinal"
-              description="Quando o gráfico mente e quando o gráfico expõe verdades duras."
-              variant="amber"
+              title="Interpretação Gráfica: Sinal e Monotonia"
+              description="Lendo parábolas e retas para extrair informações"
+              variant={getModuleVariant(3)}
             />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Analisar um gráfico de função é uma habilidade crítica em provas CESGRANRIO. Para função afim (reta), a inclinação visual corresponde ao coeficiente a: reta subindo significa a {'>'} 0, reta descendo significa a {'<'} 0. O ponto onde a reta cruza o eixo y é b. Para função quadrática (parábola), a forma em U ou ∩ revela o sinal de a, e a posição do vértice mostra xᵥ e yᵥ. Ler corretamente um gráfico permite responder questões sem cálculos adicionais.
+              </p>
+
+              <p>
+                O "estudo do sinal" de uma função responde: para quais valores de x a função é positiva (f(x) {'>'} 0), negativa (f(x) {'<'} 0), ou nula (f(x) = 0)? Para funções afim, basta encontrar a raiz x = -b/a, e aplicar o sinal de a: se a {'>'} 0, a função é negativa antes da raiz e positiva depois; se a {'<'} 0, é o oposto. Para quadrática, o processo é semelhante, mas agora há até duas raízes. Se a {'>'} 0 (parábola para cima), a função é negativa ENTRE as raízes e positiva fora delas; se a {'<'} 0 (parábola para baixo), é positiva entre as raízes e negativa fora.
+              </p>
+
+              <p>
+                Monotonia refere-se ao crescimento ou decrescimento da função. Função afim é monótona: sempre cresce (se a {'>'} 0) ou sempre decresce (se a {'<'} 0). Função quadrática não é monótona: cresce até o vértice (se a {'>'} 0) e depois decresce, ou decresce até o vértice (se a {'<'} 0) e depois cresce. O vértice é sempre um ponto de mudança de monotonia. Em otimização, monotonia ajuda a determinar se estamos antes ou depois do ponto ótimo.
+              </p>
+
+              <p>
+                Na prática, imagine um gráfico de custo C(x) sendo uma parábola com vértice em x = 20. Isso significa: para x {'<'} 20, custo está diminuindo (economias de escala); para x {'>'} 20, custo está aumentando (saturação). Ou um gráfico de receita R(x) sendo reta com a {'>'} 0, significando receita aumenta linearmente com quantidade. Ler essas informações do gráfico é mais rápido que fazer contas, especialmente em múltipla escolha.
+              </p>
+
+              <p>
+                Pegadinhas comuns: confundir raiz com y-intercepto (raiz é onde cruza eixo x, y-intercepto é onde cruza eixo y); supor que onde o gráfico está mais baixo há mínimo absoluto (pode ser só local, fora do domínio restrito); perder de vista que a {'>'}0 implica U (não ∩). A CESGRANRIO testa essas sutilezas frequentemente, oferecendo alternativas que diferem apenas nesses pontos.
+              </p>
+
+              <div className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/30 dark:to-green-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Tabela de Sinais</h4>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm border border-emerald-200 dark:border-emerald-800">
+                    <tbody>
+                      <tr className="border-b border-emerald-200 dark:border-emerald-800">
+                        <td className="p-2 font-bold">Função</td>
+                        <td className="p-2 font-bold">Tipo</td>
+                        <td className="p-2 font-bold">f(x) {'>'} 0</td>
+                        <td className="p-2 font-bold">f(x) {'<'} 0</td>
+                      </tr>
+                      <tr className="border-b border-emerald-200 dark:border-emerald-800">
+                        <td className="p-2">f(x) = ax + b, a {'>'} 0</td>
+                        <td className="p-2">Afim crescente</td>
+                        <td className="p-2">x {'>'} -b/a</td>
+                        <td className="p-2">x {'<'} -b/a</td>
+                      </tr>
+                      <tr className="border-b border-emerald-200 dark:border-emerald-800">
+                        <td className="p-2">f(x) = ax + b, a {'<'} 0</td>
+                        <td className="p-2">Afim decrescente</td>
+                        <td className="p-2">x {'<'} -b/a</td>
+                        <td className="p-2">x {'>'} -b/a</td>
+                      </tr>
+                      <tr className="border-b border-emerald-200 dark:border-emerald-800">
+                        <td className="p-2">f(x) = a(x-r₁)(x-r₂), a {'>'} 0</td>
+                        <td className="p-2">Quadrática (parábola ∪)</td>
+                        <td className="p-2">x {'<'} r₁ ou x {'>'} r₂</td>
+                        <td className="p-2">r₁ {'<'} x {'<'} r₂</td>
+                      </tr>
+                      <tr>
+                        <td className="p-2">f(x) = a(x-r₁)(x-r₂), a {'<'} 0</td>
+                        <td className="p-2">Quadrática (parábola ∩)</td>
+                        <td className="p-2">r₁ {'<'} x {'<'} r₂</td>
+                        <td className="p-2">x {'<'} r₁ ou x {'>'} r₂</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
 
             <ContentAccordion
               slides={[

@@ -471,7 +471,7 @@ export default function AulaEquacoes2Grau({
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className="bg-card border p-4 rounded-lg text-center">
                           <div className="font-bold text-emerald-600 text-lg">
-                            Δ &gt; 0
+                            Δ {'>'} 0
                           </div>
                           <p className="text-xs text-muted-foreground mt-2">
                             Duas raízes REAIS e DIFERENTES.
@@ -487,7 +487,7 @@ export default function AulaEquacoes2Grau({
                         </div>
                         <div className="bg-card border p-4 rounded-lg text-center">
                           <div className="font-bold text-rose-600 text-lg">
-                            Δ &lt; 0
+                            Δ {'<'} 0
                           </div>
                           <p className="text-xs text-muted-foreground mt-2">
                             NEM CONTINUE A CONTA. Não tem raiz real!
@@ -511,7 +511,7 @@ export default function AulaEquacoes2Grau({
                             x² - 5x + 6 = 0
                           </p>
                           <p className="text-sm font-mono">
-                            Δ = (-5)² - 4(1)(6) = 25 - 24 = 1 &gt; 0 ✓ Duas
+                            Δ = (-5)² - 4(1)(6) = 25 - 24 = 1 {'>'} 0 ✓ Duas
                             raízes reais diferentes
                           </p>
                         </div>
@@ -528,7 +528,7 @@ export default function AulaEquacoes2Grau({
                             x² + 1 = 0
                           </p>
                           <p className="text-sm font-mono">
-                            Δ = 0² - 4(1)(1) = -4 &lt; 0 ✗ Sem raízes reais
+                            Δ = 0² - 4(1)(1) = -4 {'<'} 0 ✗ Sem raízes reais
                           </p>
                         </div>
                       </div>
@@ -559,14 +559,14 @@ export default function AulaEquacoes2Grau({
                     <div className="space-y-4">
                       <AlertBox tipo="danger" titulo="Cuidado!">
                         <p className="text-sm">
-                          Se Δ &lt; 0, PARE. Não existem raízes reais. A
+                          Se Δ {'<'} 0, PARE. Não existem raízes reais. A
                           resposta é "sem solução em ℝ".
                         </p>
                       </AlertBox>
                       <AlertBox tipo="info" titulo="Passo a Passo Seguro">
                         <p className="text-sm">1. Identifique a, b, c</p>
                         <p className="text-sm">2. Calcule Δ = b² - 4ac</p>
-                        <p className="text-sm">3. Se Δ &lt; 0, pare aqui!</p>
+                        <p className="text-sm">3. Se Δ {'<'} 0, pare aqui!</p>
                         <p className="text-sm">
                           4. Se Δ ≥ 0, aplique x = (-b ± √Δ) / 2a
                         </p>
@@ -654,9 +654,9 @@ export default function AulaEquacoes2Grau({
                 <div className="space-y-4 text-left">
                   <p className="text-sm italic">"Delta decide tudo!"</p>
                   <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl font-mono text-center text-sm">
-                    <p>Se Δ &gt; 0 → 2 raízes diferentes</p>
+                    <p>Se Δ {'>'} 0 → 2 raízes diferentes</p>
                     <p>Se Δ = 0 → 1 raiz dupla</p>
-                    <p>Se Δ &lt; 0 → Sem raízes (PARE!)</p>
+                    <p>Se Δ {'<'} 0 → Sem raízes (PARE!)</p>
                   </div>
                   <p className="text-xs text-muted-foreground">
                     Sempre calcule delta PRIMEIRO!

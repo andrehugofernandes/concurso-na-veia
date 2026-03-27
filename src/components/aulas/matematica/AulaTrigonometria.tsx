@@ -719,7 +719,7 @@ export default function AulaTrigonometria({
                       <p>
                         O eixo x representa o <strong>cosseno</strong> e o eixo
                         y representa o <strong>seno</strong>. Isso significa que
-                        −1 ≤ sen θ ≤ 1 e −1 ≤ cos θ ≤ 1 para qualquer ângulo.
+                        -1 ≤ sen θ ≤ 1 e -1 ≤ cos θ ≤ 1 para qualquer ângulo.
                       </p>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                         {[

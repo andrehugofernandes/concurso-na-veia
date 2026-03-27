@@ -663,6 +663,20 @@ O rendimento máximo teórico é dado pelo Ciclo de Carnot:
       ],
     },
   },
+  "especifica-bloco-ii-legislacao-tributos": {
+    "lei-13303": {
+      titulo: "Lei 13.303 - Empresa Estatal",
+      secoes: [],
+    },
+    "rlcp": {
+      titulo: "RLCP - Regulamento de Licitações Petrobras",
+      secoes: [],
+    },
+    "administrativo-tributario": {
+      titulo: "Administrativo e Tributário",
+      secoes: [],
+    },
+  },
 };
 
 export default function TopicoPage({ params }: PageProps) {

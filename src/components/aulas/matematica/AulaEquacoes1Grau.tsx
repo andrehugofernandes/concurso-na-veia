@@ -252,6 +252,41 @@ export default function AulaEquacoes1Grau({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
+              index={2}
+              title="Protocolo de Três Passos para Resolver Qualquer Equação de 1º Grau"
+              description="A sequência mecânica que SEMPRE funciona, sem exceção"
+              variant="amber"
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                Toda equação de 1º grau, não importa quão complexa pareça, pode ser resolvida usando um protocolo de três passos que é imutável. <strong>Passo 1: Isolamento de Variáveis.</strong> Use operações inversas para deixar todos os termos com x de um lado e todos os números do outro lado. Lembre-se: quando você "passa" um termo para o outro lado, inverte a operação. Se o termo está sendo adicionado (+), passa subtraindo (−). Se está sendo multiplicado (×), passa dividindo (÷). Por exemplo, em 3x + 5 = 20, passe o +5: 3x = 20 − 5 = 15. <strong>Passo 2: Simplificação.</strong> Após isolar a variável, simplifique ambos os lados da equação combinando termos semelhantes. No exemplo anterior, 3x = 15 já está simplificado. <strong>Passo 3: Isolamento da Incógnita.</strong> Se a variável está multiplicada por um coeficiente, divida ambos os lados por esse coeficiente. Se 3x = 15, divida por 3: x = 15 ÷ 3 = 5. Verificação: 3(5) + 5 = 20 ✓. Este protocolo é tão fundamental que candidatos que o dominam conseguem resolver 80% das questões mecanicamente, sem precisar "entender" cada situação específica.
+              </p>
+
+              <p>
+                <strong>Exemplos Resolvidos Passo a Passo:</strong> Exemplo 1: 2(x − 3) = 10. Passo 1: Aplique distributiva: 2x − 6 = 10. Passe o −6: 2x = 10 + 6 = 16. Passo 2: Simplificado. Passo 3: Divida por 2: x = 8. Verificação: 2(8−3) = 2(5) = 10 ✓. Exemplo 2: (x + 4)/2 = 6. Passo 1: Multiplique ambos os lados por 2: x + 4 = 12. Passe o +4: x = 8. Passo 2: Simplificado. Passo 3: Não precisa (x já está isolado). Verificação: (8+4)/2 = 12/2 = 6 ✓. Exemplo 3: 5x − 3 = 2x + 9. Passo 1: Deixe x de um lado: 5x − 2x = 9 + 3. Passo 2: Simplifique: 3x = 12. Passo 3: Divida por 3: x = 4. Verificação: 5(4) − 3 = 20 − 3 = 17, e 2(4) + 9 = 8 + 9 = 17 ✓.
+              </p>
+
+              <p>
+                <strong>Erros de Sinal — O Inimigo Silencioso:</strong> O erro mais frequente na resolução de equações é errar o sinal. Quando você "passa" um termo para o outro lado, DEVE inverter o sinal. Se você tem −x = 5 e ignora a inversão de sinal, pode estar tentado a concluir x = 5 (errado). Correto: −x = 5 → x = −5. Teste: −(−5) = 5 ✓. Outro erro comum: ao multiplicar ambos os lados por um número negativo, esquecer de aplicar a distributiva corretamente. Se tem 2x + 5 = −3 e multiplica ambos os lados por −1, o resultado DEVE ser −2x − 5 = 3 (todos os termos mudam sinal), não "−2x + 5 = 3". Estes erros de sinal caem candidatos mesmo que entendam o conceito, porque "entender" não é suficiente — é necessário ATENÇÃO ABSOLUTA ao manipular sinais.
+              </p>
+
+              <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Checklist de Resolução (Faça Sempre)</h4>
+                <div className="space-y-2 text-sm">
+                  <p><strong>□ Identifique a equação original</strong> (ex: 3x + 5 = 20)</p>
+                  <p><strong>□ Passo 1: Isole x</strong> usando operações inversas (3x = 15)</p>
+                  <p><strong>□ Passo 2: Simplifique</strong> (3x = 15 → já está)</p>
+                  <p><strong>□ Passo 3: Divida pelo coeficiente</strong> (x = 5)</p>
+                  <p><strong>□ SEMPRE verifique</strong> substituindo na original: 3(5)+5 = 20 ✓</p>
+                  <p><strong>□ Se a verificação falha</strong>, recomece e procure o erro (provavelmente sinal)</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
               index={1}
               title="A Mecânica das Equações de 1º Grau"
               description="Dominando a balança matemática: o que você faz de um lado, faz do outro."
@@ -900,6 +935,41 @@ export default function AulaEquacoes1Grau({
         </div>
       </TabsContent>
 
+      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mx-auto max-w-4xl mt-12 mb-12">
+        <ModuleSectionHeader
+          index={3}
+          title="Interpretação Avançada: Pegadinhas Comuns de Tradução"
+          description="Onde candidatos escorregam (e como você vai se safar)"
+          variant="rose"
+        />
+
+        <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+          <p>
+            A tradução de linguagem natural para equações matemática é tão crítica que CESGRANRIO deliberadamente inclui pegadinhas. <strong>Pegadinha 1: Ambiguidade com "é".</strong> "O preço de um item é R$ 10 mais caro que outro" é ambíguo em português. Faz P1 = P2 + 10 ou P1 = P2 − 10? Resposta: é P1 = P2 + 10 (o primeiro item custa mais). Candidatos que interpretam errado caem. CESGRANRIO escreve com clareza ("A é 10 a mais que B" = A = B + 10), mas candidatos estressados em prova leem rápido e caem. <strong>Pegadinha 2: Proporções invertidas.</strong> "Maria tem o dobro da idade de João" é M = 2J. Mas "Maria é duas vezes mais velha" é ambíguo — alguns interpretam como M = 2J (errado), outros como M = J + 2J = 3J (correto, ela é João + mais dois Joãos). A formulação correta é "Maria tem duas vezes a idade de João" = M = 2J. Mas CESGRANRIO às vezes usa formulações que exploram essa ambiguidade, então estude as diferenças.
+          </p>
+
+          <p>
+            <strong>Pegadinha 3: Ordens de operação implícitas.</strong> "O triplo de um número, menos 5" — essa frase é claramente 3x − 5 (triplo, DEPOIS menos 5). Mas "5 menos o triplo de um número" é 5 − 3x (ordem inversa). Se não ler com cuidado, inverte a ordem. Outro exemplo: "A idade de João dividida por 2, mais 3" é J/2 + 3. Mas "3 mais a idade de João, tudo dividido por 2" é (J + 3)/2 (parênteses implícitos pela ordem). Candidatos que não reescreverem a equação antes de resolver frequentemente erram esses. <strong>Pegadinha 4: "De vs "em".</strong> "Aumentou de 20%" é ×1,20. "Aumentou em 20%" também é ×1,20. Mas "reduzido de 20%" é ×0,80, e "reduzido a 20%" significa ficou COM 20%, logo ×0,20 (não ×0,80). A diferença é sutil mas crítica.
+          </p>
+
+          <p>
+            <strong>Protocolo Anti-Pegadinha:</strong> (1) Leia a frase DUAS vezes — primeira para entender, segunda para desenhar um diagrama. Se o problema é "Maria tem 5 reais a mais que João", desenhe: Maria = |———|  + 5, João = |———|. Isto desambigua visualmente. (2) Reescreva a equação em português ANTES de resolver — "Se João tem J reais, Maria tem J + 5. Juntos têm 50: J + (J+5) = 50". (3) Sempre verifique com números específicos — se J = 22,5 e M = 27,5, então J + M = 50 ✓. Este protocolo agrega 30+ segundos por questão, mas economiza erros bobos que valem pontos.
+          </p>
+
+          <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
+            <h4 className="font-bold text-foreground">Tabela de Traduções Ambíguas (CESGRANRIO explora isso!)</h4>
+            <div className="space-y-3 text-sm">
+              <p><strong>Frase</strong> → <strong>Tradução Correta</strong> | <strong>Armadilha Comum</strong></p>
+              <p>"X é Y a mais que Z" → X = Z + Y | ❌ X = Z − Y</p>
+              <p>"X é duas vezes Y" → X = 2Y | ❌ X = Y + 2 (confunde "vezes" com "mais 2")</p>
+              <p>"Aumentou de 30%" → ×1.30 | ❌ ×0.30 (confunde com "redução")</p>
+              <p>"Reduziu a 40%" → ×0.40 (ficou com 40%) | ❌ ×0.60 (confunde com "reduziu em 40%")</p>
+              <p>"Triplo menos 5" → 3x − 5 | ❌ 3(x − 5) = 3x − 15 (ordem das operações)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ MÓDULO 3 ═══ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
@@ -1166,6 +1236,39 @@ export default function AulaEquacoes1Grau({
           />
         </div>
       </TabsContent>
+
+      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mx-auto max-w-4xl mt-12 mb-12">
+        <ModuleSectionHeader
+          index={4}
+          title="Casos Especiais: Equações Degeneradas e Indeterminadas"
+          description="Quando MMC é apenas meia história"
+          variant="emerald"
+        />
+
+        <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+          <p>
+            Nem toda equação com frações é resolvida simplesmente pelo MMC. Existem casos especiais que CESGRANRIO adora cobrar como pegadinha. <strong>Caso 1: Equação Indeterminada (Infinitas Soluções).</strong> Exemplo: (x + 2)/3 = (x + 2)/3. Multiplique por 3: x + 2 = x + 2. Resulta em 0 = 0 (verdade universal). Isto significa que QUALQUER valor de x satisfaz a equação — há infinitas soluções. A CESGRANRIO pergunta "qual é a solução?" esperando que candidatos não percebam este caso especial e marquem uma resposta aleatória. <strong>Caso 2: Equação Impossível (Sem Solução).</strong> Exemplo: (x + 2)/2 = (x + 5)/2. Multiplique por 2: x + 2 = x + 5. Subtraia x: 2 = 5 (absurdo). Isto significa que NÃO HÁ valor de x que satisfaça — zero soluções. Candidatos que não percebem isto tentam "resolver" uma equação que não tem solução, gerando respostas erradas. <strong>Caso 3: Restrições de Domínio.</strong> Exemplo: 1/(x − 3) + 2 = 5. Mesmo que você resolva e encontre x = 3, isto é INVÁLIDO porque torna o denominador zero, tornando a fração indefinida. A equação original não está definida para x = 3. Candidatos descuidados marcam x = 3 e perdem pontos. Sempre verifique: a solução torna algum denominador zero?
+          </p>
+
+          <p>
+            <strong>Protocolo para Detectar Casos Especiais:</strong> Após multiplicar pelo MMC e simplificar, observe o resultado: (1) Se obtém "0 = 0", infinitas soluções — normalmente a resposta é "S = ℝ" (todos os reais). (2) Se obtém "0 = k" (k ≠ 0), nenhuma solução — normalmente a resposta é "S = ∅" (vazio). (3) Se obtém uma equação normal (ex: 3x = 12 → x = 4), continue resolvendo, MAS verifique se x = 4 torna algum denominador zero. Se sim, a resposta é que não há solução. Este protocolo protege contra 90% das pegadinhas de CESGRANRIO. Candidatos que o aplicam sistematicamente ganham uma vantagem imensa.
+          </p>
+
+          <p>
+            <strong>Integração com Módulo 1 (Balança Fundamental):</strong> Os casos especiais vêm do fato de que equações de 1º grau podem ter 0, 1, ou infinitas soluções (diferente de equações de grau mais alto, que podem ter mais soluções). A balança fundamental (o que você faz de um lado, faz do outro) ainda se aplica, mas os resultados podem ser: balança em um ponto único (1 solução), balança perfeitamente equilibrada em todos os pontos (infinitas), ou balança nunca equilibrada (nenhuma). Entender isto geometricamente (retas que se cruzam, são idênticas, ou paralelas) ajuda na intuição.
+          </p>
+
+          <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
+            <h4 className="font-bold text-foreground">Decisão Rápida: Qual Tipo de Solução?</h4>
+            <div className="space-y-3 text-sm">
+              <p><strong>Se resulta em "0 = 0"</strong> → Infinitas soluções (identidade). Resposta: S = ℝ</p>
+              <p><strong>Se resulta em "0 = 5" ou "3 = 0"</strong> → Nenhuma solução (contradição). Resposta: S = ∅</p>
+              <p><strong>Se resulta em "2x = 10"</strong> → Uma solução (x = 5). Resposta: S = {5}</p>
+              <p><strong>SEMPRE verifique</strong> se a solução torna denominador zero. Se sim, mude para S = ∅</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ═══ MÓDULO 4 ═══ */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
@@ -1613,6 +1716,18 @@ export default function AulaEquacoes1Grau({
                 representar soluções graficamente (reta numérica) e em notação de intervalo. Vamos começar?
               </p>
 
+              <p>
+                <strong>Classificação de Sistemas de Inequações:</strong> Quando você combina duas ou mais inequações, terá de identificar se usa E (interseção — solução deve satisfazer ambas) ou OU (união — solução satisfaz pelo menos uma). Exemplo: "x {">"} 2 E x {"<"} 7" significa 2 {"<"} x {"<"} 7 (intervalo entre 2 e 7). "x {"<"} 0 OU x {">"} 5" significa x está fora de [0, 5], ou seja, x ∈ (-∞, 0) ∪ (5, +∞). A CESGRANRIO frequentemente cobra este tipo de raciocínio combinatório em questões que parecem simples mas exigem cuidado lógico.
+              </p>
+
+              <p>
+                <strong>Geração de Soluções Infinitas:</strong> Ao resolver uma inequação, você obtém um conjunto infinito de soluções (não um número único como em equações). A CESGRANRIO frequentemente pergunta "quantos números inteiros satisfazem" ou "qual o menor inteiro" ou "qual o maior número real". Por exemplo, x ≤ 5 é satisfeito por &#123;..., 3, 4, 5&#125; inteiros, mas também por 5, 4.9, 4.999, etc. em reais. Compreender esta diferença (discreto vs. contínuo) é essencial para interpretar corretamente o que a questão pede.
+              </p>
+
+              <p>
+                <strong>Aplicações Práticas em Limites Operacionais:</strong> Na Petrobras, inequações definem <strong>restrições de operação</strong>: "a temperatura não deve ultrapassar 80°C" é T ≤ 80; "a pressão deve estar entre 100 e 150 bar" é 100 ≤ P ≤ 150; "o tempo de parada não deve exceder 48 horas" é t ≤ 48. Dominar inequações significa saber ler especificações técnicas e traduzir limites em inequações matemáticas. Um técnico que não consegue resolver inequações não consegue verificar se uma operação está dentro de parâmetros seguros.
+              </p>
+
               <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
                 <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">⚠️ Regra de Ouro</p>
                 <p className="text-sm font-mono bg-rose-500/5 p-3 rounded mb-2">
@@ -1870,6 +1985,18 @@ export default function AulaEquacoes1Grau({
                 soluções únicas, outros com soluções infinitas ou nenhuma), e dominar a verificação final. Vamos expandir?
               </p>
 
+              <p>
+                <strong>Geometria do Sistema 3×3:</strong> Diferentemente do sistema 2×2 (onde duas retas podem se cruzar, ser paralelas ou idênticas), o sistema 3×3 envolve <strong>três planos no espaço tridimensional</strong>. Um sistema com solução única significa que os três planos se encontram em exatamente um ponto. Um sistema com infinitas soluções pode significar que os três planos se intersectam em uma reta (infinitos pontos naquela reta) ou que todos os três planos são idênticos. Um sistema impossível (sem solução) ocorre quando os planos não têm ponto de encontro comum — por exemplo, dois planos são idênticos e o terceiro é paralelo a eles. Essa intuição geométrica ajuda a entender o que significam os resultados algébricos.
+              </p>
+
+              <p>
+                <strong>Classificação de Sistemas 3×3:</strong> Após resolução, o sistema cai em uma de três categorias: (1) <strong>SPD (Possível e Determinado)</strong> — uma solução única (x, y, z); (2) <strong>SPI (Possível e Indeterminado)</strong> — infinitas soluções, normalmente expressa como uma reta paramétrica ou um plano; (3) <strong>SI (Impossível)</strong> — nenhuma solução, detectado quando você obtém um absurdo matemático como "0 = 5". A CESGRANRIO frequentemente cobra qual é a classificação de um sistema após resolvê-lo parcialmente, então é crítico reconhecer os sinais de cada caso.
+              </p>
+
+              <p>
+                <strong>Aplicações Reais Petrobras:</strong> Sistemas 3×3 aparecem em problemas de <strong>alocação de três recursos</strong> ou <strong>mistura de três componentes</strong>. Exemplo: uma refinaria mistura três tipos de óleo cru (tipo A, B, C) em proporções que devem atender a três restrições simultâneas: (1) volume total 1.000 barris, (2) custo total R$ 50.000, (3) viscosidade média dentro de intervalo específico. Cada restrição gera uma equação, resultando em um sistema 3×3. Resolver isto manualmente em prova sem erros é um diferencial competitivo.
+              </p>
+
               <div className="bg-violet-500/10 border-l-4 border-violet-500 p-5 rounded-r-xl mt-6">
                 <p className="font-bold text-violet-600 dark:text-violet-400 text-sm mb-2">🔷 Protocolo 3×3</p>
                 <ol className="text-sm space-y-1 text-foreground list-decimal list-inside">
@@ -2097,6 +2224,18 @@ export default function AulaEquacoes1Grau({
               <p>
                 Neste módulo, você aprenderá quando e como verificar, como trabalhar de trás para frente eficientemente, e como usar essa
                 técnica para eliminar alternativas em questões de múltipla escolha. Vamos dominar essa arma poderosa?
+              </p>
+
+              <p>
+                <strong>Técnica de Prova de Múltiplas Escolhas:</strong> A CESGRANRIO oferece 5 alternativas. Em vez de resolver a equação inteira do zero, você pode testar cada alternativa na equação original, partindo da que parece mais plausível. Se a equação é 2(x + 3) = 14 e as alternativas são (A) 1, (B) 2, (C) 3, (D) 4, (E) 5, você testa: "Se x = 4, então 2(4+3) = 2(7) = 14 ✓". Encontrou! Esta técnica economiza tempo, especialmente em provas com muitas questões. É particularmente útil quando a resolução algébrica é complexa (muitas frações, parênteses aninhados). Candidatos que dominam esta técnica conseguem resolver questões 40-50% mais rápido que aqueles que insistem em resolver algebricamente toda vez.
+              </p>
+
+              <p>
+                <strong>Detecção de Erros Comuns na Verificação:</strong> Ao verificar, você frequentemente descobrirá onde errou. Se substituir x = 3 na equação original 2x + 5 = 11 e obter 11 ≠ 11, há erro. Trace para trás: em qual passo isso começou? Se você tinha 2x = 6 e concluiu x = 3, mas então 2(3) = 6 ✓, o erro foi DEPOIS. Talvez ao transpor o 5 inicial. Este diagnóstico é ouro puro — você identifica exatamente onde o erro mora e não comete novamente. Candidatos que fazem este diagnóstico sistematicamente aprendem mais rápido que aqueles que apenas decoram métodos.
+              </p>
+
+              <p>
+                <strong>Casos Especiais na Verificação:</strong> Há equações degeneradas que geram armadilhas. Se resolve e obtém "0x = 0" (identidade), a equação é satisfeita por QUALQUER x — infinitas soluções. Se obtém "0x = 5" (contradição), não há solução. A verificação ajuda a reconhecer esses casos antes de marcar uma resposta incorreta. Além disto, em sistemas de equações, verificar significa substituir a solução (x, y) em AMBAS as equações originais, não apenas uma. Muitos candidatos verificam apenas a primeira e perdem a resposta correta.
               </p>
 
               <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
@@ -2381,6 +2520,18 @@ export default function AulaEquacoes1Grau({
                 Atenção especial: algumas questões têm <strong>múltiplas perguntas encadeadas</strong> (encontre x, depois use x para encontrar y).
                 A lógica é sequencial: se você errar a primeira, erra a segunda automaticamente. Sempre verifique o resultado contra o contexto:
                 "Isso faz sentido no mundo real?"
+              </p>
+
+              <p>
+                <strong>Padrões Recorrentes de Contextos Petrobras:</strong> A CESGRANRIO usa certos padrões repetidamente. (1) <strong>Sistemas de Produção:</strong> "Plataforma A produz x barris/dia, Plataforma B produz 2x. Juntas devem atingir meta de 45.000 b/dia." (2) <strong>Distribuição de Pessoal:</strong> "Team X tem y operadores, Team Y tem 1.5y. Total de 300 operadores." (3) <strong>Custos Compartilhados:</strong> "Projeto custa R$ Z total. Departamento X paga 40%, Departamento Y paga resto." (4) <strong>Tempo de Operação:</strong> "Turno A dura x horas, Turno B dura x+2 horas. 3 turnos completos por dia = 24h." Candidatos que memorizam estes padrões conseguem reconhecer a equação em segundos, sem reler o texto múltiplas vezes.
+              </p>
+
+              <p>
+                <strong>Validação Realística da Resposta:</strong> Após resolver, pergunte-se: a resposta faz sentido? Se x = 200.000 barris e a pergunta era "quantas horas de produção", certamente está errado (unidade e magnitude inconsistentes). Se x = -500 litros, impossível (quantidade negativa). Se x = 0,0003 pessoas, improvável (não existe fração de pessoa em contextos discretos). Esta validação elimina respostas absurdas e frequentemente revela erros algébricos antes de entregar a resposta. Profissionais experientes em Petrobras fazem esta checagem automaticamente — você também deve desenvolver este hábito.
+              </p>
+
+              <p>
+                <strong>Integração de Múltiplos Módulos:</strong> Problemas contextualizados Petrobras integram frequentemente conceitos de vários módulos. Um problema pode começar com tradução (M2), exigir resolução com frações (M3), terminar em um sistema (M4), e requerer verificação (M8). Candidatos que dominam apenas M1 mas falham em M2-M8 não conseguem resolver estes problemas. Portanto, o sucesso em M9 é um indicador de domínio verdadeiro da aula inteira.
               </p>
 
               <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
@@ -2711,6 +2862,18 @@ export default function AulaEquacoes1Grau({
                     Uma dica final: antes de começar, respire. Você treinou 9 módulos completos. Você sabe resolver. A questão agora é <strong>confiança
                     e calma</strong>. Leia cada questão duas vezes, identifique o padrão (é balança? é tradução? é sistema?), resolva passo a passo,
                     verifique. Vamos!
+                  </p>
+
+                  <p>
+                    <strong>Estratégia de Tempo no Simulado:</strong> Com 45 minutos para 8 questões, você tem aproximadamente 5-6 minutos por questão. Algumas questões podem ser resolvidas em 2-3 minutos (equações diretas), deixando tempo para as complexas (15-20 minutos). Dica: comece pelas questões que parecem mais fáceis, construindo confiança. Deixe para o fim as que parecem mais difíceis. Se ficar travado em uma questão por mais de 8 minutos, pule e volte depois — é contraproducente gastar tempo demais em um problema único quando há outros mais rápidos.
+                  </p>
+
+                  <p>
+                    <strong>Diagnóstico pós-Simulado:</strong> Após terminar, analise seus erros: em qual módulo (M1-M9) cada erro ocorreu? Se errou 3 de 8 questões todas em M2 (tradução), você precisa reforçar M2 antes de tentar novamente. Se erros estão espalhados (um em M1, um em M3, outro em M7), indica que domina os conceitos mas comete erros aritméticos — neste caso, trabalhe lentidão e atenção, não reestude teoria. O feedback diagnóstico é mais valioso que a nota final.
+                  </p>
+
+                  <p>
+                    <strong>O Que Significa 75%+ de Acerto:</strong> Acertar 6 de 8 questões (75%) significa que você está pronto para a prova real. Você dominou a aula. Acima de 80% (6,4 questões) — praticamente pronto, com margem de segurança pequeno. Acima de 90% (7,2 questões) — excelente domínio, pode confiar. Abaixo de 75% — ainda há gaps. Releia os módulos onde errou, faça exercícios adicionais, e tente novamente. O simulado é para diagnóstico e aprendizado, não para classificação — use-o a seu favor.
                   </p>
 
                   <div className="bg-violet-500/10 border-l-4 border-violet-500 p-5 rounded-r-xl mt-6">

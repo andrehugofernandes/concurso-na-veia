@@ -206,7 +206,7 @@ export default function AulaMatrizesDeterminantes({
                         Duas matrizes são <strong>iguais</strong> somente se têm a mesma dimensão{" "}
                         <strong>e</strong> todos os elementos correspondentes são iguais.
                       </p>
-                      <AlertBox tipo="warning">
+                      <AlertBox tipo="warning" titulo="Dica de Dimensão">
                         Uma matriz 2×3 <strong>NUNCA</strong> é igual a uma 3×2, mesmo que contenham
                         os mesmos 6 números — a dimensão muda tudo. Pegadinha #1 da CESGRANRIO.
                       </AlertBox>
@@ -467,7 +467,7 @@ export default function AulaMatrizesDeterminantes({
                       <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
                         <p className="font-mono text-sm">Simétrica: [[1,3],[3,7]] — note a₁₂=a₂₁=3</p>
                       </div>
-                      <AlertBox tipo="warning">
+                      <AlertBox tipo="warning" titulo="Propriedade Estrutural">
                         Matrizes de rigidez estrutural (análise de plataformas offshore) são{" "}
                         <strong>sempre simétricas</strong>. A CESGRANRIO usa essa propriedade para
                         simplificar cálculos em enunciados de engenharia.
@@ -576,7 +576,7 @@ export default function AulaMatrizesDeterminantes({
             index={2}
             variant="emerald"
             video={{
-              videoId="ZjxCqCrHT48",
+              videoId: "ZjxCqCrHT48",
               title: "Matrizes Especiais: Diagonal, Nula, Identidade",
               duration: "12:15"
             }}
@@ -701,7 +701,7 @@ export default function AulaMatrizesDeterminantes({
                         <li><strong>Elemento neutro</strong>: A + 0 = A ✓</li>
                         <li><strong>Inverso aditivo</strong>: A + (−A) = 0 ✓</li>
                       </ul>
-                      <AlertBox tipo="warning">
+                      <AlertBox tipo="warning" titulo="Soma vs Multiplicação">
                         A condição &quot;colunas de A = linhas de B&quot; é para <strong>multiplicação</strong>,
                         não para soma! Para somar, a condição é <strong>mesma ordem m×n</strong>.
                         Confundir isso custa pontos na CESGRANRIO.
@@ -809,9 +809,9 @@ export default function AulaMatrizesDeterminantes({
             index={3}
             variant="cyan"
             video={{
-              videoId="1q4v5X8Y2Z3",
-              title: "Adição e Subtração: Operações Elementares com Matrizes",
-              duration: "10:40"
+              videoId: "3v8FqU29m_c",
+              title: "Operações com Matrizes: Adição, Subtração e Escalar",
+              duration: "18:45"
             }}
             resumoVisual={{
               moduloNome: "Módulo 3",
@@ -1029,9 +1029,9 @@ export default function AulaMatrizesDeterminantes({
             index={4}
             variant="blue"
             video={{
-              videoId="7bK9Lm3X5O9",
-              title: "Multiplicação de Matrizes: Linha × Coluna",
-              duration: "16:50"
+              videoId: "v2D1zVqAowc",
+              title: "Multiplicação de Matrizes: O Guia Definitivo",
+              duration: "22:10"
             }}
             resumoVisual={{
               moduloNome: "Módulo 4",
@@ -1247,9 +1247,9 @@ export default function AulaMatrizesDeterminantes({
             index={5}
             variant="amber"
             video={{
-              videoId="4sF2Kx8Np6Q",
-              title: "Transposta e Matriz Inversa: Operações Reversas",
-              duration: "14:25"
+              videoId: "mD7_Q_LhE6Y",
+              title: "Matriz Inversa e Transposta",
+              duration: "20:30"
             }}
             resumoVisual={{
               moduloNome: "Módulo 5",
@@ -2025,7 +2025,7 @@ export default function AulaMatrizesDeterminantes({
                         <p>Elemento +1: saída do nó / −1: entrada / 0: sem conexão</p>
                         <p>Balanço: A·fluxo = produção_líquida</p>
                       </div>
-                      <AlertBox tipo="warning">
+                      <AlertBox tipo="warning" titulo="Alerta de Topologia">
                         Quando det=0 na matriz do sistema de dutos, há dependência linear — um duto
                         é redundante ou o modelo é inconsistente. A equipe de engenharia precisa
                         revisar a topologia da rede. Contexto real de operação da Petrobras!
@@ -2241,7 +2241,7 @@ export default function AulaMatrizesDeterminantes({
                         <li>A transposta sempre existe; a inversa só se det≠0</li>
                         <li>Matriz 2×3 ≠ 3×2 mesmo com os mesmos números</li>
                       </ul>
-                      <AlertBox tipo="danger">
+                      <AlertBox tipo="danger" titulo="Alerta CESGRANRIO">
                         O erro mais caro: aplicar Sarrus em matrizes 4×4. A banca dá as 6 diagonais
                         como resposta para pegar quem usa Sarrus indevidamente. Para 4×4, use Laplace
                         (cofatores)!

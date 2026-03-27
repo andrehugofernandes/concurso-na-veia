@@ -272,7 +272,7 @@ export default function AulaProgressoesPa({
                       </div>
 
                       <div className="p-6 bg-emerald-500/15 border-2 border-emerald-500/40 rounded-xl">
-                        <p className="text-xl font-bold text-emerald-700 dark:text-emerald-300 mb-4">✅ PA Crescente (r &gt; 0):</p>
+                        <p className="text-xl font-bold text-emerald-700 dark:text-emerald-300 mb-4">✅ PA Crescente (r {'>'} 0):</p>
                         <p className="text-lg font-mono text-foreground mb-3"><strong>Exemplo: PA = (5, 10, 15, 20, 25, 30, ...)</strong></p>
                         <div className="space-y-2 text-base text-foreground">
                           <p>• <strong>a₁ = 5</strong> (primeiro termo)</p>
@@ -283,7 +283,7 @@ export default function AulaProgressoesPa({
                       </div>
 
                       <div className="p-6 bg-red-500/15 border-2 border-red-500/40 rounded-xl">
-                        <p className="text-xl font-bold text-red-700 dark:text-red-300 mb-4">📉 PA Decrescente (r &lt; 0):</p>
+                        <p className="text-xl font-bold text-red-700 dark:text-red-300 mb-4">📉 PA Decrescente (r {'<'} 0):</p>
                         <p className="text-lg font-mono text-foreground mb-3"><strong>Exemplo: PA = (100, 90, 80, 70, 60, 50, ...)</strong></p>
                         <div className="space-y-2 text-base text-foreground">
                           <p>• <strong>a₁ = 100</strong> (primeiro termo)</p>
@@ -413,7 +413,7 @@ export default function AulaProgressoesPa({
                           <p>• <strong>a₁ = -2</strong> (começa negativo)</p>
                           <p>• <strong>r = -3</strong> (razão negativa)</p>
                           <p>• <strong>Pegadinha:</strong> A PA é decrescente (fica cada vez mais negativa), então os "maiores" termos estão no começo</p>
-                          <p>• <strong>Lembre-se:</strong> -2 &gt; -5 &gt; -8 (valores negativos menores à direita)</p>
+                          <p>• <strong>Lembre-se:</strong> -2 {'>'} -5 {'>'} -8 (valores negativos menores à direita)</p>
                         </div>
                       </div>
 
@@ -615,11 +615,11 @@ export default function AulaProgressoesPa({
                         <p className="text-xs">aₙ = a₁ (todos os termos iguais)</p>
                       </div>
                       <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
-                        <p className="font-bold text-emerald-700 text-sm mb-1">r &gt; 0: Crescente</p>
+                        <p className="font-bold text-emerald-700 text-sm mb-1">r {'>'} 0: Crescente</p>
                         <p className="text-xs">Termos aumentam progressivamente</p>
                       </div>
                       <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
-                        <p className="font-bold text-emerald-700 text-sm mb-1">r &lt; 0: Decrescente</p>
+                        <p className="font-bold text-emerald-700 text-sm mb-1">r {'<'} 0: Decrescente</p>
                         <p className="text-xs">Termos diminuem progressivamente</p>
                       </div>
                     </div>

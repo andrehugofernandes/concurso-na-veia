@@ -427,11 +427,11 @@ export default function AulaProgressoesPg({
                         <p className="text-xs">aₙ = a₁ (todos os termos iguais)</p>
                       </div>
                       <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
-                        <p className="font-bold text-emerald-700 text-sm mb-1">0 &lt; q &lt; 1: Decaimento</p>
+                        <p className="font-bold text-emerald-700 text-sm mb-1">0 {'<'} q {'<'} 1: Decaimento</p>
                         <p className="text-xs">Termos diminuem (mais lentamente)</p>
                       </div>
                       <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
-                        <p className="font-bold text-emerald-700 text-sm mb-1">q &lt; 0: Alternado</p>
+                        <p className="font-bold text-emerald-700 text-sm mb-1">q {'<'} 0: Alternado</p>
                         <p className="text-xs">Sinais alternados, módulo aumenta</p>
                       </div>
                     </div>
@@ -728,12 +728,12 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        Para |q| &lt; 1, a série infinita converge a um limite finito:
+                        Para |q| {'<'} 1, a série infinita converge a um limite finito:
                       </p>
                       <div className="bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/20">
                         <p className="font-mono font-bold text-center text-cyan-700 mb-3">S∞ = a₁ / (1 - q)</p>
                         <p className="text-sm mt-3">
-                          <strong>Válida somente se |q| &lt; 1</strong>
+                          <strong>Válida somente se |q| {'<'} 1</strong>
                         </p>
                         <p className="text-xs text-muted-foreground mt-2">
                           Se |q| ≥ 1, a série diverge (não converge).
@@ -752,7 +752,7 @@ export default function AulaProgressoesPg({
                       </p>
                       <div className="bg-cyan-500/10 p-4 rounded border border-cyan-500/20">
                         <p className="font-mono text-xs text-center">
-                          a₁ = 1, q = 1/2 (|q| = 0.5 &lt; 1 ✓)
+                          a₁ = 1, q = 1/2 (|q| = 0.5 {'<'} 1 ✓)
                           <br />
                           S∞ = 1 / (1 - 1/2) = 1 / (1/2) = 2
                         </p>
@@ -770,7 +770,7 @@ export default function AulaProgressoesPg({
                     <div className="space-y-3">
                       <div className="bg-cyan-500/10 p-3 rounded border border-cyan-500/20">
                         <p className="font-bold text-cyan-700 text-sm mb-1">
-                          |q| &lt; 1: CONVERGE
+                          |q| {'<'} 1: CONVERGE
                         </p>
                         <p className="text-xs">Série tem soma finita</p>
                       </div>

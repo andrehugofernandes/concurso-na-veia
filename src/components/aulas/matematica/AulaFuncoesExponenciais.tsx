@@ -27,6 +27,8 @@ import {
   LuZap,
 } from "react-icons/lu";
 
+import { getModuleVariant } from "@/lib/moduleColors";
+
 import {
   QUIZ_M1_POTENCIACAO,
   QUIZ_M2_GRAFICO,
@@ -196,6 +198,61 @@ export default function AulaFuncoesExponenciais({
             descricao="Onde tudo começa. Dominar as potências é o degrau principal."
             gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
           />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Fundamentos da Potenciação"
+              description="A base teórica que sustenta toda a matemática exponencial"
+              variant={getModuleVariant(1)}
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                A potenciação é uma operação matemática fundamental que expressa a multiplicação repetida de um número por si mesmo. Formalmente, aⁿ representa o produto de a multiplicado n vezes, onde a é a base e n é o expoente. Esta operação transcende a simples aritmética: é o alicerce da exponenciação, da modelagem de crescimento em contextos científicos, econômicos e industriais. Estudos de natureza acadêmica, como os apresentados em livros de Gelson Iezzi e Dante Alighieri, confirmam que a potenciação é testada recorrentemente em avaliações CESGRANRIO pela sua ubiquidade em modelos de produção, depreciação e fenômenos naturais encontrados no setor de petróleo e gás.
+              </p>
+
+              <p>
+                Em outras palavras, quando dizemos que algo "cresce exponencialmente", estamos falando sobre uma grandeza que se multiplica pelo mesmo fator repetidamente. Imagine uma população de bactérias que dobra a cada hora: uma bactéria torna-se 2, depois 4, depois 8, depois 16. Essa progressão, expressa como 2¹, 2², 2³, 2⁴, é justamente potenciação. A potência é a linguagem universal para descrever crescimentos que não são lineares, mas que seguem uma progressão geométrica constante. Compreender a notação aⁿ é, portanto, compreender o padrão de crescimento multiplicativo que aparece em quase todas as equações de fenômenos naturais.
+              </p>
+
+              <p>
+                As regras fundamentais da potenciação são imutáveis e devem ser decoradas. Quando multiplicamos duas potências de mesma base, conservamos a base e somamos os expoentes: aᵐ × aⁿ = aᵐ⁺ⁿ. Quando dividimos, mantemos a base e subtraímos: aᵐ ÷ aⁿ = aᵐ⁻ⁿ. Quando elevamos uma potência a outro expoente, multiplicamos os expoentes: (aᵐ)ⁿ = aᵐˣⁿ. Um expoente negativo inverte a base: a⁻ⁿ = 1/aⁿ. Um expoente zero resulta sempre em 1 (exceto quando a=0, caso indeterminado): a⁰ = 1. Quando o expoente é uma fração, temos uma raiz: a^(m/n) = ⁿ√(aᵐ). Estas seis regras cobrem mais de 80% das questões que a CESGRANRIO formula sobre potências.
+              </p>
+
+              <p>
+                Na indústria de petróleo, as potências aparecem continuamente. Se a produção de um poço cresce 5% ao ano, modelamos essa produção como P(t) = P₀ × 1,05ᵗ. Se um equipamento deprecia 10% a cada período, usamos V(t) = V₀ × 0,9ᵗ. Se precisamos calcular juros compostos sobre um investimento em pesquisa de exploração, recorremos a M = C × (1 + i)ᵗ. Até mesmo em problemas de consumo energético de refinarias, que obedecem a curvas de eficiência tecnológica, usamos exponenciais. Por isso, dominar as regras de potência é prerequisito para qualquer candidato Petrobras.
+              </p>
+
+              <p>
+                A CESGRANRIO costuma cobrar potências através de questões que exigem simplificação rápida, identificação de erros comuns e transformação entre diferentes bases. O erro mais frequente é tentar somar expoentes em uma soma de potências (2² + 2³ não é 2⁵, é 4 + 8 = 12). Outro erro clássico é não reconhecer quando há transformações envolvidas: (-2)⁴ = 16, mas -2⁴ = -16 (o sinal fora da base não é elevado). A banca também gosta de cobrar transformação de bases: saber que 8 = 2³ e 4 = 2² é essencial para resolver 8ˣ = 4.
+              </p>
+
+              <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Regras-Chave da Potenciação</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                  <div className="bg-white dark:bg-slate-800 p-3 rounded border border-amber-200 dark:border-amber-700">
+                    <p className="font-mono font-bold text-amber-700 dark:text-amber-300">aᵐ × aⁿ = aᵐ⁺ⁿ</p>
+                  </div>
+                  <div className="bg-white dark:bg-slate-800 p-3 rounded border border-amber-200 dark:border-amber-700">
+                    <p className="font-mono font-bold text-amber-700 dark:text-amber-300">aᵐ ÷ aⁿ = aᵐ⁻ⁿ</p>
+                  </div>
+                  <div className="bg-white dark:bg-slate-800 p-3 rounded border border-amber-200 dark:border-amber-700">
+                    <p className="font-mono font-bold text-amber-700 dark:text-amber-300">(aᵐ)ⁿ = aᵐˣⁿ</p>
+                  </div>
+                  <div className="bg-white dark:bg-slate-800 p-3 rounded border border-amber-200 dark:border-amber-700">
+                    <p className="font-mono font-bold text-amber-700 dark:text-amber-300">a⁻ⁿ = 1/aⁿ</p>
+                  </div>
+                  <div className="bg-white dark:bg-slate-800 p-3 rounded border border-amber-200 dark:border-amber-700">
+                    <p className="font-mono font-bold text-amber-700 dark:text-amber-300">a⁰ = 1</p>
+                  </div>
+                  <div className="bg-white dark:bg-slate-800 p-3 rounded border border-amber-200 dark:border-amber-700">
+                    <p className="font-mono font-bold text-amber-700 dark:text-amber-300">a^(1/n) = ⁿ√a</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -429,9 +486,61 @@ export default function AulaFuncoesExponenciais({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
+              title="Função Exponencial: Definição e Domínio"
+              description="f(x) = aˣ onde a > 0 e a ≠ 1"
+              variant={getModuleVariant(2)}
+            />
+
+            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              <p>
+                A função exponencial é uma relação matemática da forma f(x) = aˣ, onde a é a base (um número real positivo e diferente de 1) e x é a variável independente. Diferentemente das funções polinomiais, o expoente aqui é a variável, não a base. O domínio da função exponencial é o conjunto dos números reais ℝ, isto é, qualquer número real pode ser expoente. O contradomínio é ℝ⁺ (reais positivos), pois aˣ sempre resulta em um número positivo, independentemente do valor de x. Uma propriedade crítica: toda exponencial passa pelo ponto (0, 1), porque a⁰ = 1 para qualquer base a {'>'} 0. Esta característica é frequentemente testada pela CESGRANRIO em questões de identificação de gráficos.
+              </p>
+
+              <p>
+                A forma do gráfico depende fundamentalmente da base. Se a {'>'} 1, a função é estritamente crescente: conforme x aumenta, f(x) aumenta exponencialmente. Se 0 {'<'} a {'<'} 1, a função é estritamente decrescente: conforme x aumenta, f(x) diminui, aproximando-se de zero assintoticamente. O gráfico nunca toca o eixo x (assíntota horizontal em y = 0), mas está sempre acima dele. A concavidade é sempre para cima (convexa) em ambos os casos. Compreender essas características permite identificar rapidamente o comportamento da função sem calcular pontos, uma habilidade valiosa em provas com tempo limitado.
+              </p>
+
+              <p>
+                A base mais importante em aplicações científicas é o número e ≈ 2,71828, que aparece naturalmente em processos de crescimento contínuo. A função f(x) = eˣ é tão comum que se chama simplesmente "exponencial" em contextos avançados. Juros compostos contínuos, desintegração radioativa, crescimento de populações — todos obedecem a f(t) = f₀ × eᵏᵗ. A base 10 é frequentemente usada em escalas logarítmicas (como em decibéis, pH, magnitude de terremotos). A base 2 aparece em ciência da computação e em modelos de doubling time (tempo de duplicação). Cada base tem seu contexto apropriado, e a CESGRANRIO testa a capacidade de reconhecer qual usar.
+              </p>
+
+              <p>
+                Na Petrobras, modelos exponenciais descrevem fenômenos reais: produção de petróleo crescendo 3% ao ano é modelada como P(t) = P₀ × 1,03ᵗ; um equipamento depreciando 8% ao ano é V(t) = V₀ × 0,92ᵗ; a pressão em um poço diminuindo conforme a profundidade segue um modelo exponencial decrescente; consumo de energia e emissões de CO₂ em refinarias crescem exponencialmente com a produção. O gráfico da exponencial, portanto, não é abstração matemática, mas representação visual de como as coisas realmente evoluem em processos industriais e ambientais.
+              </p>
+
+              <p>
+                A CESGRANRIO testa exponenciais através de problemas que envolvem: (1) leitura de gráficos — identificar a base pelo formato; (2) transformações de gráficos — entender como y = aˣ⁺ᶜ desloca horizontalmente, y = aˣ + d desloca verticalmente, y = k × aˣ altera a amplitude; (3) intersecções — onde dois exponenciais se encontram; (4) aplicações — modelar situações reais. O erro mais comum é confundir crescimento e decaimento ou errar a direção da transformação. Outro erro frequente é não reconhecer que a assíntota horizontal é em y = 0, não em y = c (a menos que haja translação vertical).
+              </p>
+
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground">Características Essenciais de f(x) = aˣ</h4>
+                <div className="space-y-3 text-sm">
+                  <div className="bg-white dark:bg-slate-800 p-3 rounded border border-blue-200 dark:border-blue-700">
+                    <p className="font-semibold">Domínio:</p> ℝ (todos os reais)
+                  </div>
+                  <div className="bg-white dark:bg-slate-800 p-3 rounded border border-blue-200 dark:border-blue-700">
+                    <p className="font-semibold">Contradomínio (Imagem):</p> ℝ⁺ (positivos)
+                  </div>
+                  <div className="bg-white dark:bg-slate-800 p-3 rounded border border-blue-200 dark:border-blue-700">
+                    <p className="font-semibold">Ponto fixo:</p> (0, 1) sempre
+                  </div>
+                  <div className="bg-white dark:bg-slate-800 p-3 rounded border border-blue-200 dark:border-blue-700">
+                    <p className="font-semibold">Se a {'>'} 1:</p> Crescente, passa por (1, a)
+                  </div>
+                  <div className="bg-white dark:bg-slate-800 p-3 rounded border border-blue-200 dark:border-blue-700">
+                    <p className="font-semibold">Se 0 {'<'} a {'<'} 1:</p> Decrescente, passa por (1, a)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
               title="Leitura e Interpretação de Gráficos"
               description="A forma do gráfico depende essencialmente da base escolhida."
-              variant="emerald"
+              variant={getModuleVariant(2)}
             />
 
             <ContentAccordion

@@ -163,6 +163,35 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'administrativo-tributario', titulo: 'Administrativo e Tributário', descricao: 'Contabilidade básica, direito tributário e administração tributária (em desenvolvimento)', duracao: '90 min', ordem: 3 },
         ]
     },
+    // ===== BLOCO I - ADMINISTRAÇÃO (NÍVEL TÉCNICO) =====
+    {
+        id: 'especifica-bloco-i-administracao-suprimento',
+        nome: 'Bloco I - Administração (Suprimento)',
+        descricao: 'Conhecimentos de Administração Geral, Gestão de Qualidade, Logística e Compras',
+        icone: '📁',
+        cor: 'from-blue-500 to-indigo-600',
+        requiredPlan: 'Ouro',
+        topicos: [
+            { id: 'administracao-geral-suprimento', titulo: 'Administração Geral', descricao: 'Conceitos fundamentais, funções administrativas e comportamento organizacional', duracao: '90 min', ordem: 1 },
+            { id: 'gestao-qualidade-suprimento', titulo: 'Gestão de Qualidade', descricao: 'Princípios da qualidade, ferramentas e melhoria de processos', duracao: '90 min', ordem: 2 },
+            { id: 'logistica-suprimento', titulo: 'Logística', descricao: 'Cadeia de suprimentos, armazenagem e distribuição', duracao: '90 min', ordem: 3 },
+            { id: 'compras-suprimento', titulo: 'Compras', descricao: 'Processos de aquisição, seleção de fornecedores e negociação', duracao: '90 min', ordem: 4 },
+        ]
+    },
+    // ===== BLOCO III - TRIBUTOS (NÍVEL TÉCNICO) =====
+    {
+        id: 'especifica-bloco-iii-tributos-suprimento',
+        nome: 'Bloco III - Tributos (Suprimento)',
+        descricao: 'Contabilidade básica, Direito tributário e Administração tributária aplicada',
+        icone: '💰',
+        cor: 'from-emerald-500 to-teal-600',
+        requiredPlan: 'Ouro',
+        topicos: [
+            { id: 'contabilidade-basica-suprimento', titulo: 'Contabilidade Básica', descricao: 'Fundamentos contábeis, balanço e lançamentos', duracao: '90 min', ordem: 1 },
+            { id: 'direito-tributario-suprimento', titulo: 'Direito Tributário', descricao: 'Princípios tributários, impostos e obrigações', duracao: '90 min', ordem: 2 },
+            { id: 'administracao-tributaria-suprimento', titulo: 'Administração Tributária', descricao: 'Processos administrativos e fiscalização', duracao: '90 min', ordem: 3 },
+        ]
+    },
     // ===== SEGURANÇA DO TRABALHO =====
     {
         id: 'nrs',

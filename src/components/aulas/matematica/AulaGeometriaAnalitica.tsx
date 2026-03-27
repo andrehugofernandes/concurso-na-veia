@@ -27,6 +27,7 @@ import {
   QUIZ_M9_APLICACOES_PETROBRAS,
   QUIZ_M10_SIMULADO,
 } from "./data/geometria-analitica-quizzes";
+import { getModuleVariant } from "@/lib/moduleColors";
 
 export default function AulaGeometriaAnalitica({
   onComplete,

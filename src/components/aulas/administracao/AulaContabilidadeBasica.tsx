@@ -111,19 +111,21 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       <ModuleConsolidation
         index={1}
         variant={getModuleVariant(1)}
+        video={{ videoId: "cont-m1", title: "O que é Contabilidade", duration: "10:00" }}
         resumoVisual={{
-          title: "Mapa Mental: O que é Contabilidade",
-          items: [
-            "Ciência Social: Estudo do patrimônio",
-            "Objetivo: Informação para tomada de decisão",
-            "Princípios: Competência e Continuidade",
-            "Técnicas: Escrituração e Demonstrações"
-          ]
+          moduloNome: "Módulo 1",
+          tituloAula: "Contabilidade Básica",
+          materia: "Administração",
+          images: [
+            { title: "Conceitos Fundamentais", type: "Conceito", placeholderColor: "bg-amber-500/20" },
+            { title: "Princípios Contábeis", type: "Estrutura", placeholderColor: "bg-amber-500/20" },
+          ],
         }}
         maceteVisual={{
           title: "O Pulo do Gato",
-          content: <p className="text-sm italic">"A Contabilidade não é exata, é social. Ela conta a história da empresa através dos números."</p>
+          content: <p className="text-sm italic">{"A Contabilidade não é exata, é social. Ela conta a história da empresa através dos números."}</p>
         }}
+        audio={{ audioUrl: "#", titulo: "Introdução à Contabilidade", artista: "Prof. Contabilidade" }}
       />
       <ContentAccordion
         slides={[
@@ -150,19 +152,16 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         <CardCarousel
           cards={[
             {
-              emoji: "🏢",
               title: "Petrobras Exploração",
-              description: "Contabilidade registra todos os gastos com perfuração, produção e transporte de óleo, fornecendo informações para análise de rentabilidade por campo."
+              descricao: "Contabilidade registra todos os gastos com perfuração, produção e transporte de óleo, fornecendo informações para análise de rentabilidade por campo."
             },
             {
-              emoji: "📊",
               title: "Decisão de Investimento",
-              description: "Gerentes da Petrobras usam demonstrações contábeis para decidir se investir em novas plataformas ou modernizar refinarias."
+              descricao: "Gerentes da Petrobras usam demonstrações contábeis para decidir se investir em novas plataformas ou modernizar refinarias."
             },
             {
-              emoji: "🔍",
               title: "Conformidade Regulatória",
-              description: "Governo fiscaliza os registros contábeis da Petrobras para garantir cumprimento de leis tributárias e regulatórias."
+              descricao: "Governo fiscaliza os registros contábeis da Petrobras para garantir cumprimento de leis tributárias e regulatórias."
             }
           ]}
         />
@@ -231,19 +230,21 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       <ModuleConsolidation
         index={2}
         variant={getModuleVariant(2)}
+        video={{ videoId: "cont-m2", title: "Equação Contábil", duration: "12:00" }}
         resumoVisual={{
-          title: "A Balança Contábil",
-          items: [
-            "Ativo: Bens + Direitos (Esq)",
-            "Passivo: Obrigações (Dir)",
-            "PL: Capital Próprio (Dir)",
-            "Equilíbrio: A = P + PL"
-          ]
+          moduloNome: "Módulo 2",
+          tituloAula: "Contabilidade Básica",
+          materia: "Administração",
+          images: [
+            { title: "Balança Contábil", type: "Estrutura", placeholderColor: "bg-amber-500/20" },
+            { title: "A = P + PL", type: "Regra", placeholderColor: "bg-amber-500/20" },
+          ],
         }}
         maceteVisual={{
           title: "Dica de Mestre",
-          content: <p className="text-sm italic">"Pense no Ativo como o que você TEM e no Passivo como o que você DEVE. O PL é o que realmente é SEU."</p>
+          content: <p className="text-sm italic">{"Pense no Ativo como o que você TEM e no Passivo como o que você DEVE. O PL é o que realmente é SEU."}</p>
         }}
+        audio={{ audioUrl: "#", titulo: "Equação Patrimonial", artista: "Prof. Contabilidade" }}
       />
       <ContentAccordion
         slides={[
@@ -270,19 +271,16 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         <CardCarousel
           cards={[
             {
-              emoji: "💰",
               title: "Empresa de Suprimentos",
-              description: "Ativo: R$ 500 mil (estoques, máquinas). Passivo: R$ 200 mil (dívidas). Patrimônio: R$ 300 mil (capital dos sócios)."
+              descricao: "Ativo: R$ 500 mil (estoques, máquinas). Passivo: R$ 200 mil (dívidas). Patrimônio: R$ 300 mil (capital dos sócios)."
             },
             {
-              emoji: "🏭",
               title: "Plataforma Petrobras",
-              description: "Ativo: R$ 2 bilhões (instalações). Passivo: R$ 800 milhões (empréstimos). Patrimônio: R$ 1,2 bilhão."
+              descricao: "Ativo: R$ 2 bilhões (instalações). Passivo: R$ 800 milhões (empréstimos). Patrimônio: R$ 1,2 bilhão."
             },
             {
-              emoji: "📈",
               title: "Impacto do Lucro",
-              description: "Empresa com lucro de R$ 100 mil vê seu patrimônio aumentar de R$ 300 mil para R$ 400 mil sem novos investimentos."
+              descricao: "Empresa com lucro de R$ 100 mil vê seu patrimônio aumentar de R$ 300 mil para R$ 400 mil sem novos investimentos."
             }
           ]}
         />
@@ -324,7 +322,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           </p>
 
           <p>
-            A <strong>codificação de contas</strong> segue padrão numérico que reflete a hierarquia. Tipicamente, primeira cifra indica classe (1=Ativo, 2=Passivo, 3=Patrimônio, 4=Receita, 5=Despesa). Cifras subsequentes indicam nível hierárquico. Exemplo: 1.1.1.01 = Classe 1 (Ativo) > Grupo 1 (Circulante) > Subgrupo 1 (Disponibilidades) > Conta 01 (Caixa em Reais). Essa codificação é tão importante que sistemas contábeis usam-na para validação automática: não é possível lançar em conta inexistente no plano. Um contador não precisa memorizar códigos; sistema contábil oferece dropdown com contas válidas filtradas por hierarquia.
+            A <strong>codificação de contas</strong> segue padrão numérico que reflete a hierarquia. Tipicamente, primeira cifra indica classe (1=Ativo, 2=Passivo, 3=Patrimônio, 4=Receita, 5=Despesa). Cifras subsequentes indicam nível hierárquico. Exemplo: 1.1.1.01 = Classe 1 (Ativo) {'>'} Grupo 1 (Circulante) {'>'} Subgrupo 1 (Disponibilidades) {'>'} Conta 01 (Caixa em Reais). Essa codificação é tão importante que sistemas contábeis usam-na para validação automática: não é possível lançar em conta inexistente no plano. Um contador não precisa memorizar códigos; sistema contábil oferece dropdown com contas válidas filtradas por hierarquia.
           </p>
 
           <p>
@@ -357,22 +355,22 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           duration: "11:15"
         }}
         resumoVisual={{
-          title: "Hierarquia Contábil",
-          items: [
-            "1. ATIVO (Circulante/Não-Circulante)",
-            "2. PASSIVO (Obrigações)",
-            "3. PATRIMÔNIO LÍQUIDO",
-            "4. RECEITAS / 5. DESPESAS"
-          ]
+          moduloNome: "Módulo 3",
+          tituloAula: "Contabilidade Básica",
+          materia: "Administração",
+          images: [
+            { title: "Plano de Contas", type: "Estrutura", placeholderColor: "bg-violet-500/20" },
+            { title: "Codificação", type: "Regra", placeholderColor: "bg-violet-500/20" },
+          ],
         }}
         maceteVisual={{
           title: "Macete de Código",
-          content: <p className="text-sm italic">"O primeiro dígito diz o que a conta representa. 1 é sempre Ativo, 2 é Passivo."</p>
+          content: <p className="text-sm italic">{"O primeiro dígito diz o que a conta representa. 1 é sempre Ativo, 2 é Passivo."}</p>
         }}
         audio={{
-          audioUrl: "/audio/cont-m3.mp3",
-          title: "Podcast: Plano de Contas",
-          description: "A linguagem universal do contador."
+          audioUrl: "#",
+          titulo: "Podcast: Plano de Contas",
+          artista: "Prof. Contabilidade"
         }}
       />
       <ContentAccordion
@@ -400,19 +398,16 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         <CardCarousel
           cards={[
             {
-              emoji: "💼",
               title: "Ativo Circulante",
-              description: "Caixa em Reais, Caixa em Dólares, Contas a Receber - Clientes, Contas a Receber - Governo."
+              descricao: "Caixa em Reais, Caixa em Dólares, Contas a Receber - Clientes, Contas a Receber - Governo."
             },
             {
-              emoji: "📦",
               title: "Estoque",
-              description: "Estoques de Matérias-Primas, Estoques de Produtos em Processo, Estoques de Produtos Acabados, Estoques de Combustíveis."
+              descricao: "Estoques de Matérias-Primas, Estoques de Produtos em Processo, Estoques de Produtos Acabados, Estoques de Combustíveis."
             },
             {
-              emoji: "🏗️",
               title: "Ativo Imobilizado",
-              description: "Edifícios, Máquinas e Equipamentos, Plataformas de Produção, Dutos de Transporte, Refinarias, Depreciacão Acumulada."
+              descricao: "Edifícios, Máquinas e Equipamentos, Plataformas de Produção, Dutos de Transporte, Refinarias, Depreciacão Acumulada."
             }
           ]}
         />
@@ -488,22 +483,22 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           duration: "12:45"
         }}
         resumoVisual={{
-          title: "A Regra de Ouro",
-          items: [
-            "Débito: Aplicação de recursos",
-            "Crédito: Origem de recursos",
-            "Ativo: + Débito / - Crédito",
-            "Passivo/PL: - Débito / + Crédito"
-          ]
+          moduloNome: "Módulo 4",
+          tituloAula: "Contabilidade Básica",
+          materia: "Administração",
+          images: [
+            { title: "Débito e Crédito", type: "Regra", placeholderColor: "bg-emerald-500/20" },
+            { title: "Partidas Dobradas", type: "Estrutura", placeholderColor: "bg-emerald-500/20" },
+          ],
         }}
         maceteVisual={{
           title: "Mnemônico",
-          content: <p className="text-sm italic">"O Ativo DEVE para a empresa, por isso aumenta no DÉBITO."</p>
+          content: <p className="text-sm italic">{"O Ativo DEVE para a empresa, por isso aumenta no DÉBITO."}</p>
         }}
         audio={{
-          audioUrl: "/audio/cont-m4.mp3",
-          title: "PodQuest: Lançamentos",
-          description: "Entenda a lógica por trás das partidas dobradas."
+          audioUrl: "#",
+          titulo: "PodQuest: Lançamentos",
+          artista: "Prof. Contabilidade"
         }}
       />
       <ContentAccordion
@@ -531,19 +526,16 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         <CardCarousel
           cards={[
             {
-              emoji: "🛢️",
               title: "Compra de Matéria-Prima",
-              description: "Débito: Estoques de Matérias-Primas. Crédito: Contas a Pagar. Afeta ativo (estoque) e passivo (dívida) equilibradamente."
+              descricao: "Débito: Estoques de Matérias-Primas. Crédito: Contas a Pagar. Afeta ativo (estoque) e passivo (dívida) equilibradamente."
             },
             {
-              emoji: "💵",
               title: "Recebimento de Cliente",
-              description: "Débito: Caixa. Crédito: Contas a Receber. Ambos são ativos, apenas muda a forma de apresentação."
+              descricao: "Débito: Caixa. Crédito: Contas a Receber. Ambos são ativos, apenas muda a forma de apresentação."
             },
             {
-              emoji: "👷",
               title: "Pagamento de Folha",
-              description: "Débito: Despesa de Pessoal. Crédito: Caixa. Diminui caixa e gera despesa que reduz resultado."
+              descricao: "Débito: Despesa de Pessoal. Crédito: Caixa. Diminui caixa e gera despesa que reduz resultado."
             }
           ]}
         />
@@ -618,22 +610,22 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           duration: "10:20"
         }}
         resumoVisual={{
-          title: "Checklist do Balancete",
-          items: [
-            "Listar todas as contas",
-            "Somar os saldos devedores",
-            "Somar os saldos credores",
-            "Validar: Σ Devedores = Σ Credores"
-          ]
+          moduloNome: "Módulo 5",
+          tituloAula: "Contabilidade Básica",
+          materia: "Administração",
+          images: [
+            { title: "Balancete", type: "Estrutura", placeholderColor: "bg-amber-500/20" },
+            { title: "Verificação", type: "Regra", placeholderColor: "bg-amber-500/20" },
+          ],
         }}
         maceteVisual={{
           title: "Dica de Segurança",
-          content: <p className="text-sm italic">"O balancete acusa erros matemáticos, mas não acusa se você debitou a conta errada!"</p>
+          content: <p className="text-sm italic">{"O balancete acusa erros matemáticos, mas não acusa se você debitou a conta errada!"}</p>
         }}
         audio={{
-          audioUrl: "/audio/cont-m5.mp3",
-          title: "Podcast Técnico",
-          description: "A importância do fechamento mensal."
+          audioUrl: "#",
+          titulo: "Podcast Técnico",
+          artista: "Prof. Contabilidade"
         }}
       />
       <ContentAccordion
@@ -661,19 +653,16 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         <CardCarousel
           cards={[
             {
-              emoji: "📋",
               title: "Verificação de Igualdade",
-              description: "Empresa com débitos totais R$ 500.000 e créditos R$ 500.000. Balancete equilibrado indica que lançamentos duplos foram feitos corretamente."
+              descricao: "Empresa com débitos totais R$ 500.000 e créditos R$ 500.000. Balancete equilibrado indica que lançamentos duplos foram feitos corretamente."
             },
             {
-              emoji: "⚠️",
               title: "Detecção de Erro",
-              description: "Débitos R$ 510.000 e créditos R$ 500.000. Diferença de R$ 10.000 indica erro de lançamento que deve ser corrigido."
+              descricao: "Débitos R$ 510.000 e créditos R$ 500.000. Diferença de R$ 10.000 indica erro de lançamento que deve ser corrigido."
             },
             {
-              emoji: "🔍",
               title: "Análise de Contas",
-              description: "Balancete mostra que Caixa tem saldo devedor de R$ 50.000, indicando possível saque a descoberto não autorizado."
+              descricao: "Balancete mostra que Caixa tem saldo devedor de R$ 50.000, indicando possível saque a descoberto não autorizado."
             }
           ]}
         />
@@ -740,15 +729,26 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       </section>
 
       <ModuleConsolidation
-        cards={[
-          { title: "Balanço Patrimonial", content: "Posição financeira em determinada data", variant: getModuleVariant(6) },
-          { title: "DRE", content: "Resultado de exercício (receitas menos despesas)", variant: getModuleVariant(6) },
-          { title: "DMPL", content: "Mutações do patrimônio líquido no período", variant: getModuleVariant(6) },
-          { title: "Fluxo de Caixa", content: "Movimentação de entrada e saída de dinheiro", variant: getModuleVariant(6) },
-        ]}
+        index={6}
+        variant={getModuleVariant(6)}
+        video={{ videoId: "cont-m6", title: "Demonstrações Contábeis", duration: "16:00" }}
+        resumoVisual={{
+          moduloNome: "Módulo 6",
+          tituloAula: "Contabilidade Básica",
+          materia: "Administração",
+          images: [
+            { title: "Balanço Patrimonial", type: "Estrutura", placeholderColor: "bg-violet-500/20" },
+            { title: "DRE", type: "Resultado", placeholderColor: "bg-violet-500/20" },
+          ],
+        }}
+        maceteVisual={{
+          title: "Mestre da DRE",
+          content: <p className="text-sm italic">{"Receita - Custo - Despesa = Lucro. Siga o fluxo!"}</p>
+        }}
+        audio={{ audioUrl: "#", titulo: "Relatórios Contábeis", artista: "Prof. Contabilidade" }}
       />
       <ContentAccordion
-        sections={[
+        slides={[
           {
             title: "Balanço Patrimonial",
             content: "Demonstra a posição financeira da empresa em determinada data, mostrando Ativo (recursos), Passivo (obrigações) e Patrimônio Líquido (capital dos sócios). Geralmente elaborado em 31 de dezembro e em 30 de junho (demonstrações intermediárias)."
@@ -772,19 +772,16 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         <CardCarousel
           cards={[
             {
-              emoji: "📊",
               title: "Balanço Patrimonial Petrobras",
-              description: "Ativo Total: R$ 800 bilhões. Passivo: R$ 400 bilhões. Patrimônio Líquido: R$ 400 bilhões. Estrutura reflete investimentos em infraestrutura."
+              descricao: "Ativo Total: R$ 800 bilhões. Passivo: R$ 400 bilhões. Patrimônio Líquido: R$ 400 bilhões. Estrutura reflete investimentos em infraestrutura."
             },
             {
-              emoji: "📈",
               title: "DRE Petrobras 2024",
-              description: "Receita de Vendas: R$ 500 bilhões. Custos: R$ 350 bilhões. Lucro Bruto: R$ 150 bilhões. Despesas: R$ 50 bilhões. Lucro Líquido: R$ 100 bilhões."
+              descricao: "Receita de Vendas: R$ 500 bilhões. Custos: R$ 350 bilhões. Lucro Bruto: R$ 150 bilhões. Despesas: R$ 50 bilhões. Lucro Líquido: R$ 100 bilhões."
             },
             {
-              emoji: "💵",
               title: "Fluxo de Caixa Operacional",
-              description: "Atividades Operacionais: +R$ 120 bilhões. Investimentos: -R$ 80 bilhões. Financiamento: -R$ 30 bilhões. Caixa Final: +R$ 10 bilhões."
+              descricao: "Atividades Operacionais: +R$ 120 bilhões. Investimentos: -R$ 80 bilhões. Financiamento: -R$ 30 bilhões. Caixa Final: +R$ 10 bilhões."
             }
           ]}
         />
@@ -822,11 +819,11 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           </p>
 
           <p>
-            Os <strong>índices de liquidez</strong> medem capacidade da empresa de pagar dívidas de curto prazo. Liquidez Corrente = Ativo Circulante / Passivo Circulante: se resultado > 1, empresa tem mais ativo circulante que dívida circulante (bom). Liquidez Seca = (Ativo Circulante - Estoques) / Passivo Circulante: mais conservador, exclui estoques (que podem ser de difícil venda). Liquidez Imediata = Caixa e Equivalentes / Passivo Circulante: capacidade de pagar imediatamente (mais restritivo). Exemplo prático: se empresa tem LC=2.0, significa que para cada R$ 1 de dívida curto prazo, tem R$ 2 de ativo circulante — liquidez confortável.
+            Os <strong>índices de liquidez</strong> medem capacidade da empresa de pagar dívidas de curto prazo. Liquidez Corrente = Ativo Circulante / Passivo Circulante: se resultado {'>'} 1, empresa tem mais ativo circulante que dívida circulante (bom). Liquidez Seca = (Ativo Circulante - Estoques) / Passivo Circulante: mais conservador, exclui estoques (que podem ser de difícil venda). Liquidez Imediata = Caixa e Equivalentes / Passivo Circulante: capacidade de pagar imediatamente (mais restritivo). Exemplo prático: se empresa tem LC=2.0, significa que para cada R$ 1 de dívida curto prazo, tem R$ 2 de ativo circulante — liquidez confortável.
           </p>
 
           <p>
-            Os <strong>índices de solvência</strong> avaliam capacidade de pagar todas as dívidas (curto e longo prazo). Solvência Geral = Ativo Total / Passivo Total: se > 1, ativo excede passivo (solvente). Endividamento = Passivo Total / Ativo Total: percentual do ativo financiado por terceiros; inferior a 50% é conservador. Cobertura de Juros = Lucro Operacional / Despesa de Juros: quantas vezes lucro operacional cobre despesa com juros; superior a 3 é saudável. Esses índices interessam a credores: banco que vai emprestar quer garantia de que empresa conseguirá pagar.
+            Os <strong>índices de solvência</strong> avaliam capacidade de pagar todas as dívidas (curto e longo prazo). Solvência Geral = Ativo Total / Passivo Total: se {'>'} 1, ativo excede passivo (solvente). Endividamento = Passivo Total / Ativo Total: percentual do ativo financiado por terceiros; inferior a 50% é conservador. Cobertura de Juros = Lucro Operacional / Despesa de Juros: quantas vezes lucro operacional cobre despesa com juros; superior a 3 é saudável. Esses índices interessam a credores: banco que vai emprestar quer garantia de que empresa conseguirá pagar.
           </p>
 
           <p>
@@ -859,22 +856,22 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           duration: "18:20"
         }}
         resumoVisual={{
-          title: "Principais Rácios",
-          items: [
-            "Liquidez Corrente: AC / PC",
-            "Endividamento: Passivo / Ativo",
-            "ROE: Lucro / PL",
-            "Margem Líquida: Lucro / Receita"
-          ]
+          moduloNome: "Módulo 7",
+          tituloAula: "Contabilidade Básica",
+          materia: "Administração",
+          images: [
+            { title: "Indicadores", type: "Análise", placeholderColor: "bg-amber-500/20" },
+            { title: "Rácios Financeiros", type: "Regra", placeholderColor: "bg-amber-500/20" },
+          ],
         }}
         maceteVisual={{
           title: "Regra do 1.0",
-          content: <p className="text-sm italic">"Liquidez abaixo de 1.0 é sinal de alerta: a empresa deve mais do que tem disponível no ano."</p>
+          content: <p className="text-sm italic">{"Liquidez abaixo de 1.0 é sinal de alerta: a empresa deve mais do que tem disponível no ano."}</p>
         }}
         audio={{
-          audioUrl: "/audio/cont-m7.mp3",
-          title: "Debate: Saúde Financeira",
-          description: "Interpretando os sinais vitais das empresas."
+          audioUrl: "#",
+          titulo: "Debate: Saúde Financeira",
+          artista: "Prof. Contabilidade"
         }}
       />
       <ContentAccordion
@@ -902,19 +899,16 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         <CardCarousel
           cards={[
             {
-              emoji: "💧",
               title: "Análise de Liquidez",
-              description: "Empresa com LC = 2.0 tem bom desempenho. Para cada R$ 1 de dívida curto prazo, tem R$ 2 de ativo circulante."
+              descricao: "Empresa com LC = 2.0 tem bom desempenho. Para cada R$ 1 de dívida curto prazo, tem R$ 2 de ativo circulante."
             },
             {
-              emoji: "🏦",
               title: "Endividamento Petrobras",
-              description: "Petrobras com 40% endividamento é considerada conservadora na indústria de óleo e gás, permitindo investimentos."
+              descricao: "Petrobras com 40% endividamento é considerada conservadora na indústria de óleo e gás, permitindo investimentos."
             },
             {
-              emoji: "📈",
               title: "Rentabilidade ROE",
-              description: "ROE de 15% significa que para cada R$ 100 de patrimônio, a empresa gera R$ 15 de lucro ao ano. Acima da média é positivo."
+              descricao: "ROE de 15% significa que para cada R$ 100 de patrimônio, a empresa gera R$ 15 de lucro ao ano. Acima da média é positivo."
             }
           ]}
         />
@@ -948,7 +942,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
 
         <div className="space-y-6 text-base leading-relaxed text-foreground">
           <p>
-            A <strong>contabilidade de custos</strong> é especialização da contabilidade dedicada a acumular, analisar e interpretar custos de produção e operação. Diferente de contabilidade geral (que registra todas as transações), contabilidade de custos foca especificamente em custos: quanto custa produzir cada unidade? Qual é a margem de lucro por produto? Onde estão os maiores gastos? Essas informações são <strong>críticas para decisões operacionais</strong> que contabilidade geral não fornece. Um gerente de produção em Petrobras precisa saber custo por barril de óleo produzido para decidir se continua operação de um poço (se preço de mercado < custo de produção, melhor parar).
+            A <strong>contabilidade de custos</strong> é especialização da contabilidade dedicada a acumular, analisar e interpretar custos de produção e operação. Diferente de contabilidade geral (que registra todas as transações), contabilidade de custos foca especificamente em custos: quanto custa produzir cada unidade? Qual é a margem de lucro por produto? Onde estão os maiores gastos? Essas informações são <strong>críticas para decisões operacionais</strong> que contabilidade geral não fornece. Um gerente de produção em Petrobras precisa saber custo por barril de óleo produzido para decidir se continua operação de um poço (se preço de mercado for menor que custo de produção, melhor parar).
           </p>
 
           <p>
@@ -990,22 +984,22 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           duration: "14:50"
         }}
         resumoVisual={{
-          title: "Fluxo de Custos",
-          items: [
-            "MD: Materiais Diretos",
-            "MOD: Mão de Obra Direta",
-            "CIF: Custos Indiretos",
-            "Ponto de Eq: Custos = Receitas"
-          ]
+          moduloNome: "Módulo 8",
+          tituloAula: "Contabilidade Básica",
+          materia: "Administração",
+          images: [
+            { title: "Engenharia de Custos", type: "Conceito", placeholderColor: "bg-emerald-500/20" },
+            { title: "MD + MOD + CIF", type: "Estrutura", placeholderColor: "bg-emerald-500/20" },
+          ],
         }}
         maceteVisual={{
           title: "Custo vs Despesa",
-          content: <p className="text-sm italic">"Se faz falta na fábrica, é CUSTO. Se faz falta no escritório, é DESPESA."</p>
+          content: <p className="text-sm italic">{"Se faz falta na fábrica, é CUSTO. Se faz falta no escritório, é DESPESA."}</p>
         }}
         audio={{
-          audioUrl: "/audio/cont-m8.mp3",
-          title: "Papo de Engenheiro",
-          description: "Como a Petrobras otimiza o custo por barril."
+          audioUrl: "#",
+          titulo: "Papo de Engenheiro",
+          artista: "Prof. Contabilidade"
         }}
       />
       <ContentAccordion
@@ -1033,19 +1027,16 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         <CardCarousel
           cards={[
             {
-              emoji: "🏭",
               title: "Custos de Refino",
-              description: "Matéria-Prima: R$ 500/bbl de óleo. Mão-de-Obra: R$ 50/bbl. CIF: R$ 100/bbl. Custo Total: R$ 650/bbl. Receita: R$ 800/bbl."
+              descricao: "Matéria-Prima: R$ 500/bbl de óleo. Mão-de-Obra: R$ 50/bbl. CIF: R$ 100/bbl. Custo Total: R$ 650/bbl. Receita: R$ 800/bbl."
             },
             {
-              emoji: "📍",
               title: "Ponto de Equilíbrio",
-              description: "Custos fixos R$ 1 milhão. Margem de contribuição R$ 100/barril. Equilíbrio = 10.000 barris por mês."
+              descricao: "Custos fixos R$ 1 milhão. Margem de contribuição R$ 100/barril. Equilíbrio = 10.000 barris por mês."
             },
             {
-              emoji: "⚙️",
               title: "Decisão de Produção",
-              description: "Preço do óleo caiu para R$ 600/bbl. Custo total R$ 650. Perda de R$ 50 por barril. Decisão: parar produção ou buscar redução de custos."
+              descricao: "Preço do óleo caiu para R$ 600/bbl. Custo total R$ 650. Perda de R$ 50 por barril. Decisão: parar produção ou buscar redução de custos."
             }
           ]}
         />
@@ -1113,8 +1104,26 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       </section>
 
       <ModuleConsolidation
+        index={9}
+        variant={getModuleVariant(9)}
+        video={{ videoId: "cont-m9", title: "Contabilidade na Petrobras", duration: "15:00" }}
+        resumoVisual={{
+          moduloNome: "Módulo 9",
+          tituloAula: "Contabilidade Básica",
+          materia: "Administração",
+          images: [
+            { title: "Regulação Contábil", type: "Conceito", placeholderColor: "bg-amber-500/20" },
+            { title: "IFRS em Petrobras", type: "Estrutura", placeholderColor: "bg-amber-500/20" },
+          ],
+        }}
+        maceteVisual={{
+          title: "Compliance é Lei",
+          content: <p className="text-sm italic">{"Lei 13.303 + CVM + IFRS = Transparência total para acionistas e sociedade."}</p>
+        }}
+        audio={{ audioUrl: "#", titulo: "Petrobras Contábil", artista: "Prof. Contabilidade" }}
+      />
       <ContentAccordion
-        sections={[
+        slides={[
           {
             title: "Regras de Contabilidade em Petrobras",
             content: "Petrobras é empresa estatal de capital aberto, sujeita a Lei 13.303 e regulação da CVM. Adota IFRS para apresentação de demonstrações financeiras. Segue normas de contabilidade pública para alguns aspectos. Auditoria externa independente obrigatória."
@@ -1138,19 +1147,16 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         <CardCarousel
           cards={[
             {
-              emoji: "📊",
               title: "Demonstração de Resultados Trimestral",
-              description: "Petrobras divulga resultados Q1 2024: Receita R$ 125 bilhões. Lucro Operacional R$ 35 bilhões. Lucro Líquido R$ 28 bilhões. Relatório explicativo em português e inglês."
+              descricao: "Petrobras divulga resultados Q1 2024: Receita R$ 125 bilhões. Lucro Operacional R$ 35 bilhões. Lucro Líquido R$ 28 bilhões. Relatório explicativo em português e inglês."
             },
             {
-              emoji: "🔍",
               title: "Auditoria de Estoque",
-              description: "Auditores externos verificam estoques de óleo em terminais. Conferem quantidade física com registros contábeis. Emitem parecer sobre confiabilidade de informações de estoque (ativo importante)."
+              descricao: "Auditores externos verificam estoques de óleo em terminais. Conferem quantidade física com registros contábeis. Emitem parecer sobre confiabilidade de informações de estoque (ativo importante)."
             },
             {
-              emoji: "💼",
               title: "Compliance de Transações",
-              description: "Conformidade com Lei 13.303: todas contratações acima de R$ 1 milhão exigem aprovação de áreas específicas. Auditoria interna monitora cumprimento."
+              descricao: "Conformidade com Lei 13.303: todas contratações acima de R$ 1 milhão exigem aprovação de áreas específicas. Auditoria interna monitora cumprimento."
             }
           ]}
         />
@@ -1226,22 +1232,22 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           duration: "20:00"
         }}
         resumoVisual={{
-          title: "Recap Final",
-          items: [
-            "Lógica de Partidas Dobradas",
-            "Análise de BP e DRE",
-            "Gestão de Custos",
-            "Normas Petrobras"
-          ]
+          moduloNome: "Simulado Final",
+          tituloAula: "Contabilidade Básica",
+          materia: "Administração",
+          images: [
+            { title: "Recap Final", type: "Revisão", placeholderColor: "bg-rose-500/20" },
+            { title: "Flashcards", type: "Memorização", placeholderColor: "bg-rose-500/20" },
+          ],
         }}
         maceteVisual={{
           title: "Foco Total",
-          content: <p className="text-sm italic">"Respire fundo. A contabilidade é lógica. Se a conta não fechar, verifique a origem versus aplicação."</p>
+          content: <p className="text-sm italic">{"Respire fundo. A contabilidade é lógica. Se a conta não fechar, verifique a origem versus aplicação."}</p>
         }}
         audio={{
-          audioUrl: "/audio/cont-m10.mp3",
-          title: "Podcast: Sucesso no Concurso",
-          description: "Como as bancas costumam cobrar este tema."
+          audioUrl: "#",
+          titulo: "Podcast: Sucesso no Concurso",
+          artista: "Prof. Contabilidade"
         }}
       />
       <ContentAccordion
@@ -1269,19 +1275,16 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         <CardCarousel
           cards={[
             {
-              emoji: "🔄",
               title: "Ciclo Contábil Completo",
-              description: "Dado balanço inicial, série de lançamentos (compra estoque, venda a prazo, pagamento despesa), calcule balanço final e resultado. Requer entendimento de equação contábil, lançamentos e DRE."
+              descricao: "Dado balanço inicial, série de lançamentos (compra estoque, venda a prazo, pagamento despesa), calcule balanço final e resultado. Requer entendimento de equação contábil, lançamentos e DRE."
             },
             {
-              emoji: "📊",
               title: "Análise de Demonstrações",
-              description: "Apresentado balanço e DRE de empresa, calcule índices de liquidez, rentabilidade e compare com padrão do setor. Determine se empresa está saudável e recomende ações."
+              descricao: "Apresentado balanço e DRE de empresa, calcule índices de liquidez, rentabilidade e compare com padrão do setor. Determine se empresa está saudável e recomende ações."
             },
             {
-              emoji: "💡",
               title: "Decisão Operacional",
-              description: "Plataforma de petróleo com custos fixos R$ 100 mi/ano e custos variáveis R$ 50/barril. Preço de venda R$ 80/barril. Determine ponto de equilíbrio e impacto de queda de preço para R$ 60."
+              descricao: "Plataforma de petróleo com custos fixos R$ 100 mi/ano e custos variáveis R$ 50/barril. Preço de venda R$ 80/barril. Determine ponto de equilíbrio e impacto de queda de preço para R$ 60."
             }
           ]}
         />
