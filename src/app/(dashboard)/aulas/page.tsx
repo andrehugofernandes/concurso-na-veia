@@ -99,34 +99,34 @@ export default function AulasPage() {
             <AnimatedBorder borderRadius="rounded-3xl" />
 
             {/* Header Section */}
-            <div className={`${size === 'small' ? 'p-6 pb-2' : 'p-8 pb-4'}`}>
+            <div className={`${size === 'small' ? 'p-6 pb-2' : 'p-8 pb-6'}`}>
                 <div className="flex items-start justify-between mb-6">
-                    <div className={`flex items-center justify-center ${size === 'small' ? 'w-12 h-12 text-2xl' : 'w-16 h-16 text-3xl'} rounded-2xl bg-gradient-to-br ${materia.cor} shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500`}>
+                    <div className={`flex items-center justify-center ${size === 'small' ? 'w-12 h-12 text-2xl' : 'w-20 h-20 text-4xl'} rounded-xl bg-gradient-to-br ${materia.cor} shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500`}>
                         {materia.icone}
                     </div>
-                    <span className="px-3 py-1 rounded-full bg-zinc-100/80 dark:bg-zinc-800/50 text-primary text-xs font-bold border border-zinc-200 dark:border-zinc-700 whitespace-nowrap">
+                    <span className={`px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-black border border-orange-200 dark:border-orange-800/50 whitespace-nowrap ${size === 'small' ? '' : ''}`}>
                         {materia.topicos.length} Tópicos
                     </span>
                 </div>
 
-                <h2 className={`${size === 'small' ? 'text-xl' : size === 'elite' ? 'text-xl' : 'text-3xl'} font-black text-foreground tracking-tight group-hover:text-primary transition-colors uppercase leading-tight`}>
+                <h2 className={`${size === 'small' ? 'text-xl' : 'text-2xl'} font-black text-orange-600 dark:text-orange-400 tracking-tight group-hover:text-orange-500 transition-colors uppercase leading-tight mb-2`}>
                     {materia.nome}
                 </h2>
-                <p className="text-muted-foreground text-sm mt-3 line-clamp-2 font-medium opacity-80">
+                <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">
                     {materia.descricao}
                 </p>
             </div>
 
             {/* List of Topics (Preview) - Only for normal size */}
             {size === 'normal' && (
-                <div className="flex-1 px-8 py-4 space-y-3">
+                <div className="flex-1 px-8 py-4 space-y-2">
                     {materia.topicos.slice(0, 5).map((topico) => {
                         const prog = getProgress(materia.id, topico.id);
                         const isCompleted = prog?.completed;
                         return (
-                            <div key={topico.id} className="flex items-center gap-3 text-sm text-muted-foreground group/item">
-                                <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${isCompleted ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]' : 'bg-blue-500/30 group-hover/item:bg-blue-500'}`} />
-                                <span className={`truncate transition-colors flex-1 ${isCompleted ? 'text-green-600 dark:text-green-400 font-semibold' : 'group-hover/item:text-foreground'}`}>
+                            <div key={topico.id} className="flex items-start gap-3 text-sm group/item">
+                                <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 transition-all duration-300 ${isCompleted ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]' : 'bg-blue-400 dark:bg-blue-500 group-hover/item:bg-blue-600'}`} />
+                                <span className={`transition-colors flex-1 ${isCompleted ? 'text-green-600 dark:text-green-400 font-semibold' : 'text-slate-600 dark:text-slate-400 group-hover/item:text-foreground'}`}>
                                     {topico.titulo}
                                 </span>
                                 {isCompleted && (
@@ -138,7 +138,7 @@ export default function AulasPage() {
                         );
                     })}
                     {materia.topicos.length > 5 && (
-                        <div className="text-xs text-primary/60 font-bold pl-4.5 pt-2 flex items-center gap-1 opacity-70 group-hover:opacity-100 transition-opacity">
+                        <div className="text-xs text-orange-600 dark:text-orange-400 font-bold pl-5 pt-1 flex items-center gap-1 opacity-90 group-hover:opacity-100 transition-opacity">
                             + {materia.topicos.length - 5} outros tópicos <span className="text-[10px]">→</span>
                         </div>
                     )}
