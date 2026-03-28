@@ -221,19 +221,20 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           duration: "10:30"
         }}
         resumoVisual={{
-          titulo: "Principais Tributos Federais",
-          itens: [
-            "IRPJ: 15% + 10% de adicional sobre o lucro",
-            "CSLL: 9% sobre o lucro líquido",
-            "II/IE: Regulação do fluxo internacional"
-          ]
+          moduloNome: "Módulo 2",
+          tituloAula: "Direito Tributário",
+          materia: "Administração",
+          images: [
+            { title: "Impostos sobre Lucro", type: "Tabela", placeholderColor: "bg-indigo-500/20" },
+            { title: "Comércio Exterior", type: "Fluxograma", placeholderColor: "bg-indigo-500/20" },
+          ],
         }}
         maceteVisual={{
-          titulo: "Dica de Mestre",
-          texto: "Federais = Lucro e Fronteira (IRPJ e Comércio Exterior)"
+          title: "Dica de Mestre",
+          content: <p className="text-sm italic">{"Federais = Lucro e Fronteira (IRPJ e Comércio Exterior)"}</p>
         }}
         audio={{
-          url: "/audio/tributario-m2.mp3",
+          audioUrl: "/audio/tributario-m2.mp3",
           titulo: "Resumo Módulo 2",
           artista: "Especialista Tributário"
         }}
@@ -295,47 +296,79 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
           index={3}
+          title="ICMS, ISS e Contribuições incidentes"
+          description="A tributação indireta que afeta a circulação de bens e serviços."
+          variant="emerald"
+        />
+
         <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
           <p>
-            Os <strong>tributos sobre consumo</strong> são aqueles que incidem sobre a circulação de mercadorias e a prestação de serviços. Diferem de impostos sobre renda (que afetam a pessoa que ganha) — esses atingem o ato de comercializar. São chamados "indiretos" porque o fabricante/prestador paga ao fisco, mas repassa o custo ao consumidor final via preço. Não há escapatória: qualquer produto que você compra tem múltiplos tributos sobre consumo embutidos no preço.
+            Os <strong>tributos sobre consumo</strong> são aqueles que incidem sobre a circulação de mercadorias e a prestação de serviços. São chamados "indiretos" porque o fabricante/prestador paga ao fisco, mas repassa o custo ao consumidor final via preço.
           </p>
           <p>
-            O <strong>ICMS (Imposto sobre Circulação de Mercadorias e Serviços)</strong> é o maior tributo sobre consumo do Brasil. É estadual (cada estado legisla sua alíquota), com alíquotas variando de 7% a 18% dependendo do estado e do produto. Sistema de crédito/débito: quando uma empresa compra insumo com ICMS, ela abate esse ICMS da venda — não paga ICMS em cascata. Combustível, por exemplo, tem alta alíquota de ICMS (14-18%) porque estados dependem dessa arrecadação.
+            O <strong>ICMS</strong> é estadual e incide sobre circulação de mercadorias. Já o <strong>ISS</strong> é municipal e incide sobre serviços. Para a Petrobras, a substituição tributária no ICMS é um tema central, onde a empresa retém e paga o imposto por toda a cadeia.
           </p>
-          <p>
-            O <strong>ISS (Imposto sobre Serviços)</strong> é municipal — cada prefeitura define alíquota entre 2% e 5%. Incide sobre prestação de serviços (consultoria, limpeza, reparos, trabalhos técnicos). Obrigação de reter na fonte: quem contrata um serviço retém o ISS e repassa à prefeitura. Isso protege o município de fraude. Petrobras, ao contratar serviços em diferentes cidades, enfrenta ISS em várias alíquotas.
-          </p>
-          <p>
-            <strong>PIS e COFINS</strong> são contribuições federais sobre a receita bruta. PIS (Programa de Integração Social): 1,65% de faturamento. COFINS (Contribuição para Financiamento da Seguridade Social): 7,65% de faturamento. Juntas, somam 9,3% sobre receita — não há crédito total. Essas contribuições financiam benefícios sociais e programas de integração. Todas as empresas pagam (salvo muito pequenas) independentemente de lucro.
-          </p>
-          <p>
-            Neste módulo, você compreenderá a cascata tributária: produto sai da refinaria com ICMS, passa por distribuidor com mais ICMS, chega ao posto de gasolina com ICMS, e o consumidor final paga tudo isso embutido no preço. Verá exemplos práticos: quando Petrobras vende combustível ao distribuidor, incide ICMS; quando distribuidor revende, incide mais ICMS (mas pode abater o anterior). Compreenderá também como Petrobras, em suas operações internas, negocia ISS em serviços contratados em diferentes estados.
-          </p>
-
-          <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">🛒 Tributos sobre Consumo</p>
-            <ul className="text-sm space-y-1 text-foreground">
-              <li>✓ ICMS: Estadual, 7-18%, sistema de crédito/débito, não cascata</li>
-              <li>✓ ISS: Municipal, 2-5%, retenção na fonte em serviços</li>
-              <li>✓ PIS: Federal, 1,65% sobre faturamento bruto</li>
-              <li>✓ COFINS: Federal, 7,65% sobre faturamento bruto</li>
-              <li>✓ Cascata: produto passa por múltiplos tributos até chegar ao consumidor final</li>
-            </ul>
-          </div>
         </div>
       </section>
 
       <ModuleConsolidation
-        cards={[
-          { title: "ICMS", content: "Imposto sobre Circulação de Mercadorias e Serviços (estadual)", variant: getModuleVariant(3) },
-          { title: "ISS", content: "Imposto sobre Serviços de Qualquer Natureza (municipal)", variant: getModuleVariant(3) },
-          { title: "PIS/COFINS", content: "Contribuições sobre receita bruta (federal)", variant: getModuleVariant(3) },
-          { title: "Alíquota Média", content: "ICMS 7-18% (varia por estado e produto)", variant: getModuleVariant(3) },
+        index={3}
+        variant="emerald"
+        video={{
+          videoId: "tributario-m3",
+          title: "Tributos sobre Consumo",
+          duration: "11:15"
+        }}
+        resumoVisual={{
+          moduloNome: "Módulo 3",
+          tituloAula: "Direito Tributário",
+          materia: "Administração",
+          images: [
+            { title: "Cadeia do ICMS", type: "Infográfico", placeholderColor: "bg-emerald-500/20" },
+            { title: "Retenção de ISS", type: "Diagrama", placeholderColor: "bg-emerald-500/20" },
+          ],
+        }}
+        maceteVisual={{
+          title: "Dica de Mestre",
+          content: <p className="text-sm italic">{"Consumo = Indireto (Alguém paga, você sente no preço final)."}</p>
+        }}
+        audio={{
+          audioUrl: "/audio/tributario-m3.mp3",
+          titulo: "Resumo Módulo 3",
+          artista: "Especialista Tributário"
+        }}
+      />
+
+      <ContentAccordion
+        titulo="Detalhamento Técnico"
+        slides={[
+          {
+            title: "ICMS e Substituição",
+            content: "A Petrobras, como refinaria, recolhe o ICMS de toda a cadeia de combustíveis (ST)."
+          },
+          {
+            title: "ISS nos Serviços",
+            content: "Retenção na fonte em serviços tomados de terceiros, conforme a legislação municipal."
+          }
         ]}
       />
-      <ContentAccordion
-        sections={[
+
+      <CardCarousel
+        cards={[
           {
+            title: "Gasolina no Posto",
+            descricao: "O ICMS já foi pago pela Petrobras na refinaria através do regime de Substituição Tributária.",
+            corFundo: "bg-emerald-100 dark:bg-emerald-900/30"
+          },
+          {
+            title: "Consultoria Técnica",
+            descricao: "A Petrobras retém o ISS do prestador e repassa à prefeitura da sede do serviço.",
+            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+          }
+        ]}
+      />
+
+      <QuizInterativo
         titulo="Tributos sobre Consumo"
         numero={3}
         variant="emerald"
@@ -364,10 +397,10 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
         <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
           <p>
-            As contribuições sociais (PIS/PASEP e COFINS) incidem sobre a receita bruta das empresas e são fundamentais para o financiamento da seguridade social (Saúde, Previdência e Assistência Social). Para uma empresa do porte da Petrobras, essas contribuições representam volumes gigantescos de recursos.
+            As contribuições sociais (PIS/PASEP e COFINS) incidem sobre a receita bruta das empresas e são fundamentais para o financiamento da seguridade social. Para uma empresa do porte da Petrobras, essas contribuições representam volumes gigantescos de recursos.
           </p>
           <p>
-            Existe ainda a <strong>CIDE-Combustíveis</strong> (Contribuição de Intervenção no Domínio Econômico), que incide sobre a importação e a comercialização de petróleo e derivados. Ela tem finalidade extrafiscal, servindo para ajustar preços de mercado e financiar subsídios ao transporte e projetos ambientais.
+            Existe ainda a <strong>CIDE-Combustíveis</strong>, que incide sobre a importação e a comercialização de petróleo e derivados. Ela tem finalidade extrafiscal, servindo para ajustar preços de mercado.
           </p>
         </div>
       </section>
@@ -381,34 +414,35 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           duration: "09:20"
         }}
         resumoVisual={{
-          titulo: "Principais Contribuições",
-          itens: [
-            "PIS/COFINS: Sobre faturamento ou importação",
-            "CIDE-Combustíveis: Incidência específica no setor",
-            "Não-Cumulatividade: Essencial para cálculos industriais"
-          ]
+          moduloNome: "Módulo 4",
+          tituloAula: "Direito Tributário",
+          materia: "Administração",
+          images: [
+            { title: "Financiamento Social", type: "Diagrama", placeholderColor: "bg-violet-500/20" },
+            { title: "CIDE-Combustíveis", type: "Fluxograma", placeholderColor: "bg-violet-500/20" },
+          ],
         }}
         maceteVisual={{
-          titulo: "Dica de Mestre",
-          texto: "CIDE = Intervenção (Governo usando imposto para regular o preço do óleo)."
+          title: "Dica de Mestre",
+          content: <p className="text-sm italic">{"CIDE = Intervenção (Governo usando imposto para regular o preço do óleo)."}</p>
         }}
         audio={{
-          url: "/audio/tributario-m4.mp3",
+          audioUrl: "/audio/tributario-m4.mp3",
           titulo: "Resumo Módulo 4",
           artista: "Especialista Tributário"
         }}
       />
 
       <ContentAccordion
-        titulo="Detalhamento das Contribuições"
+        titulo="Detalhamento Técnico"
         slides={[
           {
-            title: "PIS/COFINS Cumulativo vs Não-Cumulativo",
-            content: "Diferença entre regimes de incidência conforme o enquadramento tributário da operação."
+            title: "PIS/COFINS",
+            content: "Incidência sobre a receita bruta. Essencial entender o regime não-cumulativo."
           },
           {
             title: "CIDE-Combustíveis",
-            content: "Tributo destinado ao ajuste de preços e financiamento de infraestrutura de transportes."
+            content: "Contribuição específica para regulação do mercado de energia e combustíveis."
           }
         ]}
       />
@@ -416,25 +450,20 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
       <CardCarousel
         cards={[
           {
-            title: "Faturamento Bruto",
-            descricao: "Cálculo mensal de PIS e COFINS sobre as vendas de derivados.",
+            title: "Receita Operacional",
+            descricao: "O PIS/COFINS incide sobre cada venda de derivado realizada pela companhia.",
             corFundo: "bg-emerald-100 dark:bg-emerald-900/30"
           },
           {
-            title: "Importação de Gás",
-            descricao: "Incidência de PIS/COFINS-Importação na entrada de GLP internacional.",
+            title: "Regulação de Preços",
+            descricao: "A CIDE pode ser zerada ou aumentada pelo governo para estabilizar preços de bomba.",
             corFundo: "bg-violet-100 dark:bg-violet-900/30"
-          },
-          {
-            title: "Recursos da CIDE",
-            descricao: "Monitoramento do destino legal da contribuição para projetos do setor.",
-            corFundo: "bg-amber-100 dark:bg-amber-900/30"
           }
         ]}
       />
 
       <QuizInterativo
-        titulo="Contribuições e CIDE"
+        titulo="Contribuições Sociais"
         numero={4}
         variant="violet"
         questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-4"].questions}
@@ -465,7 +494,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
             A <strong>obrigação tributária</strong> nasce com o <strong>Fato Gerador</strong>: uma situação prevista em lei que, ao ocorrer, obriga o pagamento do tributo. Por exemplo, vender gasolina é o fato gerador do ICMS. Uma vez ocorrido, o tributo deve ser quantificado e formalizado através do <strong>Lançamento</strong>.
           </p>
           <p>
-            O <strong>crédito tributário</strong> é o direito do Estado de receber o valor. Ele pode ser extinto pelo pagamento, mas também por compensação, anistia ou decisão judicial. Entender esses processos é crucial para evitar a inadimplência fiscal, que traz multas pesadíssimas e impede a empresa de contratar com o Poder Público.
+            O <strong>crédito tributário</strong> é o direito do Estado de receber o valor. Ele pode ser extinto pelo pagamento, mas também por compensação, anistia ou decisão judicial. Entender esses processos é crucial para evitar a inadimplência fiscal.
           </p>
         </div>
       </section>
@@ -479,19 +508,20 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           duration: "11:10"
         }}
         resumoVisual={{
-          titulo: "Fluxo Tributário",
-          itens: [
-            "Fato Gerador: Ação que cria o dever de pagar",
-            "Lançamento: Procedimento administrativo de cobrança",
-            "Extinção: Pagamento ou alternativas legais"
-          ]
+          moduloNome: "Módulo 5",
+          tituloAula: "Direito Tributário",
+          materia: "Administração",
+          images: [
+            { title: "Nascimento do Crédito", type: "Diagrama", placeholderColor: "bg-amber-500/20" },
+            { title: "Extinção do Crédito", type: "Fluxograma", placeholderColor: "bg-amber-500/20" },
+          ],
         }}
         maceteVisual={{
-          titulo: "Dica de Mestre",
-          texto: "Fato Gerador ocorreu? Dívida nasceu! Lançamento formalizou? Cobrança começou!"
+          title: "Dica de Mestre",
+          content: <p className="text-sm italic">{"Fato Gerador ocorreu? Dívida nasceu! Lançamento formalizou? Cobrança começou!"}</p>
         }}
         audio={{
-          url: "/audio/tributario-m5.mp3",
+          audioUrl: "/audio/tributario-m5.mp3",
           titulo: "Resumo Módulo 5",
           artista: "Especialista Tributário"
         }}
@@ -560,10 +590,10 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
         <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
           <p>
-            O Fisco tem o poder de fiscalizar permanentemente todos os atos dos contribuintes. Isso inclui o acesso a livros contábeis, extratos bancários e sistemas eletrônicos. No entanto, esse poder não é absoluto; o fiscal deve seguir ritos legais e respeitar o sigilo de dados não tributários.
+            O Fisco tem o poder de fiscalizar permanentemente todos os atos dos contribuintes. No entanto, esse poder não é absoluto; o fiscal deve seguir ritos legais e respeitar o sigilo de dados não tributários.
           </p>
           <p>
-            As infrações podem ser por falta de pagamento ou por erro em obrigações acessórias. As <strong>multas</strong> podem ser moratórias (por atraso) ou punitivas (pelo descumprimento legal), chegando em alguns casos a 150% do valor do imposto. A regularidade fiscal é um pilar da governança corporativa da Petrobras.
+            As infrações podem ser por falta de pagamento ou por erro em obrigações acessórias. As <strong>multas</strong> podem ser moratórias ou punitivas.
           </p>
         </div>
       </section>
@@ -577,19 +607,20 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           duration: "07:50"
         }}
         resumoVisual={{
-          titulo: "Combate à Evasão",
-          itens: [
-            "Fiscalização: Verificação sistemática de conformidade",
-            "Auto de Infração: Documento que formaliza a multa",
-            "Defesa Administrativa: Direito de contestar no CARF"
-          ]
+          moduloNome: "Módulo 6",
+          tituloAula: "Direito Tributário",
+          materia: "Administração",
+          images: [
+            { title: "Tipos de Multas", type: "Tabela", placeholderColor: "bg-rose-500/20" },
+            { title: "Rito de Punição", type: "Diagrama", placeholderColor: "bg-rose-500/20" },
+          ],
         }}
         maceteVisual={{
-          titulo: "Dica de Mestre",
-          texto: "Multa não é tributo! Tributo é obrigação, multa é punição."
+          title: "Dica de Mestre",
+          content: <p className="text-sm italic">{"Multa não é tributo! Tributo é obrigação, multa é punição."}</p>
         }}
         audio={{
-          url: "/audio/tributario-m6.mp3",
+          audioUrl: "/audio/tributario-m6.mp3",
           titulo: "Resumo Módulo 6",
           artista: "Especialista Tributário"
         }}
@@ -620,17 +651,12 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
             title: "CARF",
             descricao: "Conselho onde a Petrobras discute administrativamente cobranças bilionárias da Receita.",
             corFundo: "bg-violet-100 dark:bg-violet-900/30"
-          },
-          {
-            title: "Denúncia Espontânea",
-            descricao: "Pagar o erro antes de ser fiscalizado livra a empresa da multa punitiva.",
-            corFundo: "bg-amber-100 dark:bg-amber-900/30"
           }
         ]}
       />
 
       <QuizInterativo
-        titulo="Fiscalização e Multas"
+        titulo="Fiscalização e Infrações"
         numero={6}
         variant="rose"
         questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-6"].questions}
@@ -641,98 +667,94 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
   const renderModulo7 = () => (
     <div className="space-y-6">
-      <ModuleBanner module={7} title="Normas de Incidência Tributária" />
+      <ModuleBanner
+        numero={7}
+        titulo="Normas de Incidência Tributária"
+        descricao="Compreenda como o imposto é calculado: fato gerador, base e alíquota."
+        variant="amber"
+      />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
           index={7}
-          title="Normas de Incidência Tributária"
-          description="Compreenda como o imposto é calculado: fato gerador, base e alíquota."
-          variant="rose"
+          title="Normas de Incidência"
+          description="A estrutura fundamental que define o nascimento e o valor da obrigação tributária."
+          variant="amber"
         />
 
         <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
           <p>
-            A <strong>Norma de Incidência Tributária</strong> é a regra que estrutura como um imposto é cobrado. Toda norma tributária tem três componentes essenciais: (1) <strong>Fato Gerador</strong> — situação de fato ou jurídica que origina obrigação; (2) <strong>Base de Cálculo</strong> — valor sobre qual a alíquota incide; (3) <strong>Alíquota</strong> — percentual que se aplica. Entender essa estrutura é fundamental para calcular qualquer imposto corretamente.
+            A <strong>Norma de Incidência Tributária</strong> é a regra que estrutura como um imposto é cobrado. Toda norma tributária tem três componentes essenciais: (1) <strong>Fato Gerador</strong>; (2) <strong>Base de Cálculo</strong>; (3) <strong>Alíquota</strong>.
           </p>
-          <p>
-            O <strong>Fato Gerador</strong> é o evento que "dispara" a obrigação tributária. Momento de ocorrência é crítico — é quando nasce obrigação de pagar. Para IR, fato gerador é "auferição de renda" — quando você recebe dinheiro. Para ICMS, é "saída de mercadoria da empresa" — quando produto sai do estabelecimento. Para Taxa, é "exercício de atividade estatal" — quando governo oferece um serviço. Sem fato gerador, não há obrigação.
-          </p>
-          <p>
-            A <strong>Base de Cálculo</strong> é o valor sobre qual se aplica a alíquota. Para IR, a base é a renda auferida menos deduções (salário - deduções = base). Para ICMS, é o preço da operação (valor da mercadoria). Para IPI, é o valor da industrialização. A base é definida por lei — não é o quanto você acha que "merecia" pagar, mas o que a lei estabelece como valor tributável. Calcular errado a base é uma das infrações mais comuns.
-          </p>
-          <p>
-            A <strong>Alíquota Tributária</strong> é o percentual aplicado à base. Pode ser: Fixa (mesmo percentual para todos), Progressiva (aumenta conforme cresce a base — como IR pessoa física), Regressiva (diminui conforme cresce — raro), ou Seletiva (diferente por tipo de bem/serviço — como IPI). A alíquota é definida em lei e não muda arbitrariamente. Lei de 2024 não pode retroagir e aumentar alíquota para 2023. Alíquota é previsível — segurança jurídica ao contribuinte.
-          </p>
-          <p>
-            Neste módulo, você aprenderá a estrutura completa de qualquer imposto: identificar qual é o fato gerador (quando nasce obrigação), qual é a base de cálculo (valor tributável), qual é a alíquota (percentual). Verá exemplos práticos de Petrobras: quando vende gasolina, fato gerador é saída da mercadoria, base é preço de venda, alíquota é 18% (ICMS em SP) — resultado é R$ 5 × 18% = R$ 0,90 por litro. Compreenderá também que muitas infrações tributárias vêm de erro de cálculo — base mal calculada ou alíquota mal interpretada.
-          </p>
-
-          <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">📐 Estrutura da Incidência</p>
-            <ul className="text-sm space-y-1 text-foreground">
-              <li>✓ Fato Gerador: Evento que origina obrigação (quando nasce dever de pagar)</li>
-              <li>✓ Base de Cálculo: Valor sobre qual incide alíquota (definido por lei)</li>
-              <li>✓ Alíquota: Percentual (fixa, progressiva, regressiva ou seletiva)</li>
-              <li>✓ Fórmula: Base × Alíquota = Valor do Tributo</li>
-              <li>✓ Segurança: Todos componentes definidos em lei, sem arbitrariedade</li>
-            </ul>
-          </div>
         </div>
       </section>
 
       <ModuleConsolidation
-        cards={[
-          { title: "Fato Gerador", content: "Situação legal que origina obrigação tributária", variant: getModuleVariant(7) },
-          { title: "Base de Cálculo", content: "Valor sobre qual se aplica alíquota (renda, preço venda)", variant: getModuleVariant(7) },
-          { title: "Alíquota", content: "Percentual aplicado à base (taxa tributária)", variant: getModuleVariant(7) },
-          { title: "Valor do Tributo", content: "Base de Cálculo × Alíquota = Valor final", variant: getModuleVariant(7) },
-        ]}
+        index={7}
+        variant="amber"
+        video={{
+          videoId: "tributario-m7",
+          title: "Incidência Tributária",
+          duration: "10:15"
+        }}
+        resumoVisual={{
+          moduloNome: "Módulo 7",
+          tituloAula: "Direito Tributário",
+          materia: "Administração",
+          images: [
+            { title: "Pilares da Incidência", type: "Diagrama", placeholderColor: "bg-amber-500/20" },
+          ],
+        }}
+        maceteVisual={{
+          title: "Dica de Mestre",
+          content: <p className="text-sm italic">{"Fato Gerador é o gatilho; Base e Alíquota definem o tamanho do estrago no caixa."}</p>
+        }}
+        audio={{
+          audioUrl: "/audio/tributario-m7.mp3",
+          titulo: "Resumo Módulo 7",
+          artista: "Especialista Tributário"
+        }}
       />
+
       <ContentAccordion
-        sections={[
+        titulo="Detalhamento Técnico"
+        slides={[
           {
-            title: "Fato Gerador da Obrigação",
-            content: "Definição legal: situação de fato ou jurídica que origina obrigação tributária. Momento de ocorrência é crítico (quando nasce obrigação). Exemplos: IR = auferição de renda (fato), ICMS = saída de mercadoria (fato), Taxa = exercício de atividade estatal (fato jurídico)."
+            title: "Modalidades de Alíquotas",
+            content: "Fixas, progressivas, proporcionais ou ad rem (valor fixo por unidade)."
           },
           {
-            title: "Base de Cálculo",
-            content: "Valor sobre qual alíquota incide. IR: renda auferida (base). ICMS: preço da operação (base). IPI: valor da industrialização (base). Pode ser quantificado em dinheiro, quantidade ou valor patrimonial."
-          },
-          {
-            title: "Alíquota Tributária",
-            content: "Percentual fixado por lei para aplicação sobre base. Pode ser: fixa (mesmo percentual), progressiva (aumenta conforme base - IR), regressiva (diminui), seletiva (diferente por produto). Definida no momento da lei, não pode mudar arbitrariamente."
-          },
-          {
-            title: "Incidência em Operações Petrobras",
-            content: "Exemplo venda de gasolina: Fato Gerador = saída de combustível da refinaria. Base = preço de venda R$ 5,00. ICMS alíquota 18%. Tributo = R$ 5,00 × 18% = R$ 0,90 por litro."
+            title: "Quantificação da Base",
+            content: "Como o valor da operação é definido para fins de tributação (valor comercial vs valor de pauta)."
           }
         ]}
       />
-      <div>
-        <h3 className="text-lg font-semibold mb-4">Exemplos de Cálculo de Incidência</h3>
-        <CardCarousel
-          cards={[
-            {
-              emoji: "📊",
-              title: "IR Pessoa Física",
-              description: "Fato Gerador: ganho de renda R$ 5.000. Base: R$ 5.000 - deduções R$ 500 = R$ 4.500. Alíquota: 22,5%. Tributo: R$ 1.012,50."
-            },
-            {
-              emoji: "🏭",
-              title: "ICMS em Produto",
-              description: "Fato Gerador: saída de pneu da fábrica. Base: R$ 100 (preço). Alíquota: 12%. ICMS: R$ 12 por pneu."
-            },
-            {
-              emoji: "💼",
-              title: "PIS em Faturamento",
-              description: "Fato Gerador: faturamento de R$ 1 milhão. Base: R$ 1 milhão. Alíquota: 1,65%. PIS: R$ 16.500."
-            }
-          ]}
-        />
-      </div>
+
+      <CardCarousel
+        cards={[
+          {
+            title: "Venda de Combustível",
+            descricao: "Fato Gerador: Saída da Refinaria. Base: Valor de Venda. Alíquota: 18%.",
+            corFundo: "bg-emerald-100 dark:bg-emerald-900/30"
+          },
+          {
+            title: "Ganho de Capital",
+            descricao: "Fato Gerador: Venda de ativo com lucro. Base: Lucro obtido. Alíquota: 15%.",
+            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+          },
+          {
+            title: "Serviço Prestado",
+            descricao: "Fato Gerador: Conclusão do serviço. Base: Valor da NF. Alíquota: 5%.",
+            corFundo: "bg-amber-100 dark:bg-amber-900/30"
+          }
+        ]}
+      />
+
       <QuizInterativo
-        quiz={DIREITO_TRIBUTARIO_QUIZZES["modulo-7"]}
+        titulo="Normas de Incidência"
+        numero={7}
+        variant="amber"
+        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-7"].questions}
         onComplete={(score: number) => handleQuizComplete("modulo-7", score)}
       />
     </div>
@@ -740,197 +762,163 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
   const renderModulo8 = () => (
     <div className="space-y-6">
-      <ModuleBanner module={8} title="Tributos em Operações Petrobras" />
+      <ModuleBanner
+        numero={8}
+        titulo="Tributos em Operações Petrobras"
+        descricao="Explore a estrutura tributária específica da indústria de óleo e gás brasileira."
+        variant="blue"
+      />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
           index={8}
-          title="Tributos em Operações Petrobras"
-          description="Explore a estrutura tributária específica da indústria de óleo e gás brasileiro."
-          variant="rose"
+          title="Operações de Óleo e Gás"
+          description="Do poço ao posto: como a Petrobras lida com a carga tributária do setor."
+          variant="blue"
         />
 
         <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
           <p>
-            A <strong>tributação de Petrobras</strong> é mais complexa que empresa comum porque envolve tributos específicos do setor de óleo e gás. Além dos impostos convencionais (IRPJ, ICMS, COFINS), Petrobras paga Royalties (compensação ao Estado por exploração de recurso natural), Participações Especiais (quando campo é super-lucrativo), e enfrenta regimes especiais de tributação. Entender essa estrutura é essencial para técnico em suprimento que negocia com Petrobras — qualquer contrato tem implicações tributárias.
+            A <strong>tributação da Petrobras</strong> envolve Royalties e Participações Especiais, além dos impostos convencionais. Os <strong>Royalties</strong> são uma compensação financeira pela exploração de recursos não renováveis.
           </p>
-          <p>
-            Os <strong>Royalties</strong> são tributo específico de setor petrolífero. Petrobras, como concessionária que explora reserva de petróleo (que pertence ao povo/Estado), obrigadamente paga percentual mínimo de 5% da produção mensal ao Estado. Calculado sobre "preço de referência" (tipicamente preço do Brent no mercado internacional). Exemplo: campo produz 100 mil barris/mês, Brent está R$ 80/barril, Royalties = 5 mil barris × R$ 80 = R$ 400 mil ao mês para o Estado.
-          </p>
-          <p>
-            As <strong>Participações Especiais (PE)</strong> são contribuição extraordinária cobrada em campos super-lucrativos. Função: quando campo gera lucros extraordinários, Estado participa desse lucro anormal. Cálculo: quando receita líquida ultrapassa certos patamares, alíquota de PE aumenta progressivamente (até 40% do lucro). Isso significa que em anos muito bons (preço do petróleo alto), Estado recebe mais. Em anos ruins, PE pode ser zero. Essa estrutura busca repartir benefícios extraordinários.
-          </p>
-          <p>
-            A <strong>Estrutura da Cadeia Tributária</strong> em Petrobras funciona assim: Exploração (Royalties + PE), Refino (IRPJ sobre lucro de refino), Distribuição (ICMS estadual em cada transferência), Varejo (ICMS + PIS/COFINS ao consumidor). Cada elo tem seus tributos. Petrobras estrategicamente tenta otimizar essa cascata — usar créditos de ICMS em distribuição para abater em refino, compensar prejuízos em um elo com lucros em outro.
-          </p>
-          <p>
-            Neste módulo, você compreenderá a estrutura completa: Royalties como compensação ao Estado pela exploração de recurso, Participações Especiais em anos de lucro extraordinário, IRPJ aplicado a cada elo (exploração, refino, distribuição), ICMS em cada estado (alíquota varia), PIS/COFINS sobre receita. Verá exemplos práticos: produção de 1 milhão de barris/mês, cada tributo aplicado, carga tributária total. Entenderá também como negociações de suprimento em Petrobras consideram "preço com/sem tributo" — sempre há implicação fiscal.
-          </p>
-
-          <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">🛢️ Tributos Petrobras</p>
-            <ul className="text-sm space-y-1 text-foreground">
-              <li>✓ Royalties: Mínimo 5% produção mensal, sobre preço de referência</li>
-              <li>✓ Participações Especiais: Até 40% quando campo é super-lucrativo</li>
-              <li>✓ IRPJ: 15-25% sobre lucro de cada atividade (exploração, refino, distribuição)</li>
-              <li>✓ ICMS: Estadual em cada venda (7-18% conforme estado e produto)</li>
-              <li>✓ PIS/COFINS: 9,3% sobre receita de venda de produtos finais</li>
-            </ul>
-          </div>
         </div>
       </section>
 
       <ModuleConsolidation
-        cards={[
-          { title: "Royalties", content: "Tributo por exploração de petróleo (mínimo 5% da produção)", variant: getModuleVariant(8) },
-          { title: "Participações Especiais", content: "Contribuição adicional quando campos são lucrativos", variant: getModuleVariant(8) },
-          { title: "IRPJ", content: "Imposto renda de pessoa jurídica sobre lucro (15-25%)", variant: getModuleVariant(8) },
-          { title: "Tributos Indiretos", content: "ICMS, COFINS, PIS em venda de combustíveis", variant: getModuleVariant(8) },
-        ]}
+        index={8}
+        variant="blue"
+        video={{
+          videoId: "tributario-m8",
+          title: "Operações Petrobras",
+          duration: "12:30"
+        }}
+        resumoVisual={{
+          moduloNome: "Módulo 8",
+          tituloAula: "Direito Tributário",
+          materia: "Administração",
+          images: [
+            { title: "Royalties e Taxas", type: "Diagrama", placeholderColor: "bg-blue-500/20" },
+          ],
+        }}
+        maceteVisual={{
+          title: "Dica de Mestre",
+          content: <p className="text-sm italic">{"Royalties se paga pela produção; Imposto se paga pelo lucro."}</p>
+        }}
+        audio={{
+          audioUrl: "/audio/tributario-m8.mp3",
+          titulo: "Resumo Módulo 8",
+          artista: "Especialista Tributário"
+        }}
       />
+
       <ContentAccordion
-        sections={[
+        titulo="Detalhamento do Setor"
+        slides={[
           {
-            title: "Royalties de Petróleo",
-            content: "Tributo específico de setor de óleo e gás. Petrobras (concessionária) paga ao Estado (proprietário da reserva) percentual mínimo de 5% da produção mensal. Calculado sobre valor de referência (preço do Brent). Garante compensação ao Estado pela exploração de recurso natural."
+            title: "O Funcionamento dos Royalties",
+            content: "Base de cálculo sobre a produção bruta e repasse para Estados e Municípios."
           },
           {
-            title: "Participações Especiais (PE)",
-            content: "Contribuição extraordinária cobrada quando campo de petróleo é super-lucrativo. Cálculo: quando receita líquida ultrapassa certos patamares, alíquota de PE aumenta progressivamente (até 40% do lucro). Objetivo: Estado participa de lucros extraordinários de campos rentáveis."
-          },
-          {
-            title: "IRPJ em Petrobras",
-            content: "Petrobras (PJ) paga IRPJ sobre lucro real. Alíquota 15% + adicional 10% sobre lucro > R$ 20 mil/mês. Lucro Real: resultado contábil com ajustes fiscais. Abatimentos: royalties, participações especiais, despesas operacionais."
-          },
-          {
-            title: "Tributos na Cadeia de Distribuição",
-            content: "Refino: IRPJ + tributos sobre venda. Distribuição: ICMS estadual sobre transferência para distribuidoras. Varejo: ICMS + PIS/COFINS cobrado ao consumidor final. Estrutura integrada de tributação em toda cadeia."
+            title: "REPETRO",
+            content: "Regime que suspende tributos federais na importação de equipamentos para exploração."
           }
         ]}
       />
-      <div>
-        <h3 className="text-lg font-semibold mb-4">Exemplo de Tributação em Petrobras</h3>
-        <CardCarousel
-          cards={[
-            {
-              emoji: "⛰️",
-              title: "Royalties de Campo",
-              description: "Campo produz 100 mil barris/mês. Preço Brent R$ 80/barril. Royalties 5% = 5 mil barris × R$ 80 = R$ 400 mil/mês ao governo."
-            },
-            {
-              emoji: "💰",
-              title: "Participação Especial",
-              description: "Campo super-lucrativo: receita R$ 100 milhões, custos R$ 20 milhões, lucro R$ 80 milhões. PE 30% = R$ 24 milhões ao governo."
-            },
-            {
-              emoji: "🛢️",
-              title: "Carga Tributária Combustível",
-              description: "Gasolina: custo refino R$ 3,50 + royalties/PE R$ 0,30 + IRPJ R$ 0,20 + ICMS R$ 0,90 + COFINS R$ 0,30 = R$ 6,20 ao consumidor."
-            }
-          ]}
-        />
-      </div>
-      <QuizInterativo
-        quiz={DIREITO_TRIBUTARIO_QUIZZES["modulo-8"]}
-        onComplete={(score: number) => handleQuizComplete("modulo-8", score)}
-      />
-    </div>
-  );
 
-  const renderModulo9 = () => (
+      <CardCarousel
+        cards={[
+          {
+            title: "Pré-Sal",
+            descricao: "Campos gigantes que geram altas Participações Especiais para a União.",
+            corFundo: "bg-emerald-100 dark:bg-emerald-900/30"
+          },
+          {
+            title: "Navios-Sonda",
+            descricao: "Equipamentos importados sob regime d  const renderModulo9 = () => (
     <div className="space-y-6">
-      <ModuleBanner module={9} title="Planejamento Tributário Lícito" />
+      <ModuleBanner
+        numero={9}
+        titulo="Planejamento Tributário Lícito"
+        descricao="Estratégias para otimização da carga tributária dentro da legalidade."
+        variant="emerald"
+      />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
           index={9}
-          title="Planejamento Tributário Lícito"
-          description="Conheça estratégias legais de otimização tributária e os limites éticos do planejamento."
-          variant="rose"
+          title="Elisão vs Evasão"
+          description="A diferença entre reduzir impostos legalmente e cometer crime fiscal."
+          variant="emerald"
         />
 
         <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
           <p>
-            O <strong>Planejamento Tributário</strong> é a atividade de organizar estrutura jurídica/contratual de negócios para minimizar carga tributária, sempre permanecendo dentro da lei. Não é fraude — é uso legal da lei para reduzir impostos. Exemplo: empresa pequena pode escolher "regime simplificado" (alíquota menor) em vez de "lucro real" (alíquota maior). Ambas são legais, mas uma reduz imposto. Isso é planejamento tributário lícito.
+            O <strong>Planejamento Tributário (Elisão)</strong> é o uso de meios lícitos para reduzir o ônus fiscal. A <strong>Evasão</strong>, por outro lado, é ilegal.
           </p>
-          <p>
-            Há uma distinção crucial: <strong>Elisão Fiscal</strong> é redução legal de imposto usando brechas/interpretações da lei. É permitida. Exemplo: empresa resgata dividendo (não tributado) em vez de distribuir lucro (tributado). Tecnicamente legal, reduz carga. Diferente é <strong>Evasão Fiscal</strong> — violação da lei através de fraude, falsificação, ocultação. Evasão é crime. Administrador que autoriza evasão pode ir preso, sofrer bloqueio de bens, responder criminalmente.
-          </p>
-          <p>
-            <strong>Estratégias legítimas</strong> incluem: (1) Escolha de regime tributário — Simple, Presumido ou Real conforme negócio; (2) Aproveitamento de incentivos legais — Lei oferece abatimentos para investimento em P&D, por exemplo; (3) Estruturação contratual — forma como contrato é redigido influencia tributação (exemplo: fazer em várias parcelas vs. uma única pode gerar IRPJ diferente); (4) Timing de operações — realizar dentro de período tributário vantajoso.
-          </p>
-          <p>
-            Há limite ético: STJ criou conceito de "Abuso de Direito" — mesmo que tecnicamente dentro da lei, se operação foi feita com propósito **exclusivo** de fraude e contra a "substância econômica", fisco pode desconhecer. Exemplo: empresa cria 50 filiais apenas para fragmentar faturamento e usar alíquota de Simple — isso pode ser considerado abuso mesmo sendo tecnicamente legal. Planejamento tributário responsável busca reduzir imposto mantendo propósito econômico real.
-          </p>
-          <p>
-            Neste módulo, você entenderá a diferença entre Elisão (legal) e Evasão (crime), aprenderá estratégias legítimas que Petrobras usa (abatimento de royalties em IRPJ, compensação de prejuízos), e compreenderá os limites: onde termina "planejamento criativo" e começa "fraude". Verá exemplos práticos: escolher regime tributário adequado, estruturar contratos de forma vantajosa, aproveitar incentivos legais. Aprenderá também responsabilidade: se você, como técnico, participa de fraude tributária, você pode responder solidariamente junto com empresa.
-          </p>
-
-          <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">⚖️ Planejamento Tributário Ético</p>
-            <ul className="text-sm space-y-1 text-foreground">
-              <li>✓ Elisão Fiscal: Legal, usa brechas/interpretações da lei</li>
-              <li>✓ Evasão Fiscal: Ilegal, fraude, falsificação, ocultação</li>
-              <li>✓ Estratégias: Regime tributário, incentivos, estrutura contratual, timing</li>
-              <li>✓ Limite: Não pode ser abuso de direito (propósito exclusivo de fraude)</li>
-              <li>✓ Responsabilidade: Administrador pode responder criminalmente por fraude</li>
-            </ul>
-          </div>
         </div>
       </section>
 
       <ModuleConsolidation
-        cards={[
-          { title: "Distinção", content: "Planejamento lícito ≠ Evasão de impostos (fraude)", variant: getModuleVariant(9) },
-          { title: "Elisão Fiscal", content: "Redução legal de impostos usando brechas da lei", variant: getModuleVariant(9) },
-          { title: "Otimização", content: "Escolha de estrutura jurídica/contratual legal", variant: getModuleVariant(9) },
-          { title: "Responsabilidade", content: "Empresa responsável por planejamento ético e legal", variant: getModuleVariant(9) },
-        ]}
+        index={9}
+        variant="emerald"
+        video={{
+          videoId: "tributario-m9",
+          title: "Planejamento Tributário",
+          duration: "09:45"
+        }}
+        resumoVisual={{
+          moduloNome: "Módulo 9",
+          tituloAula: "Direito Tributário",
+          materia: "Administração",
+          images: [
+            { title: "Elisão Fiscal", type: "Mapa Mental", placeholderColor: "bg-emerald-500/20" },
+          ],
+        }}
+        maceteVisual={{
+          title: "Dica de Mestre",
+          content: <p className="text-sm italic">{"Elisão = Lícita (Antes do fato gerador). Evasão = Crime (Depois do fato gerador)."}</p>
+        }}
+        audio={{
+          audioUrl: "/audio/tributario-m9.mp3",
+          titulo: "Resumo Módulo 9",
+          artista: "Especialista Tributário"
+        }}
       />
+
       <ContentAccordion
-        sections={[
+        titulo="Detalhamento do Planejamento"
+        slides={[
           {
-            title: "Planejamento Tributário Lícito",
-            content: "É permitido ao contribuinte organizar seus negócios para minimizar carga tributária, desde que permaneça dentro da lei. Exemplo: escolher regime tributário (simples, lucro presumido, lucro real) que menor tributo gera. Diferente de fraude/evasão que viola lei."
+            title: "Elisão Fiscal",
+            content: "Organizar os negócios de forma a aproveitar as lacunas ou opções legais que reduzam o imposto."
           },
           {
-            title: "Elisão Fiscal vs. Evasão",
-            content: "Elisão (Legal): uso inteligente de brechas legais para reduzir imposto. Exemplo: empresa pode escolher distribuir lucro via dividendo (não tributado) ou reter (tributado). Evasão (Ilegal): fraude, ocultação de informações, falsificação de documentos. Fisco pune evasão com multas e até processo criminal."
-          },
-          {
-            title: "Estratégias Legítimas",
-            content: "Escolha de regime tributário: simple (micro/PME) vs lucro real (grandes). Aproveitamento de incentivos legais: dedução de investimentos em pesquisa/desenvolvimento. Estruturação de contratos: forma jurídica adequada ao negócio. Timing de operações: realizar dentro de período tributário vantajoso."
-          },
-          {
-            title: "Planejamento em Petrobras",
-            content: "Petrobras realiza planejamento complexo: abatimento de royalties/participações no cálculo de IRPJ, aproveitamento de compensação de prejuízos, estrutura de contratos internacionais. Tudo dentro de conformidade regulatória máxima (auditoria, CVM)."
+            title: "Evasão Fiscal",
+            content: "Crime de sonegação, ocultação de bens ou falsificação de documentos para não pagar."
           }
         ]}
       />
-      <div>
-        <h3 className="text-lg font-semibold mb-4">Exemplos de Planejamento Lícito</h3>
-        <CardCarousel
-          cards={[
-            {
-              emoji: "✅",
-              title: "Escolha de Regime",
-              description: "Consultoria pode faturar R$ 300 mil/ano. Simples: imposto ~18% = R$ 54 k. Lucro Presumido: 8% presumido + impostos = R$ 35 k. Planejamento: usar Presumido se viável legalmente."
-            },
-            {
-              emoji: "📊",
-              title: "Aproveitamento de Incentivos",
-              description: "Empresa investe em tecnologia/P&D. Lei permite abatimento de 50% do investimento do IRPJ. Investimento R$ 1 milhão, abatimento R$ 500 mil × 25% taxa = economia R$ 125 mil."
-            },
-            {
-              emoji: "⚖️",
-              title: "Fraude vs. Planejamento",
-              description: "Lícito: empresa escolhe regime tributário legal e estrutura contrato corretamente. Ilícito: empresa emite nota fiscal falsa para reduzir imposto (fraude processável criminalmente)."
-            }
-          ]}
-        />
-      </div>
+
+      <CardCarousel
+        cards={[
+          {
+            title: "Regime Tributário",
+            descricao: "Escolher entre Lucro Real ou Presumido conforme a margem de lucro da operação.",
+            corFundo: "bg-emerald-100 dark:bg-emerald-900/30"
+          },
+          {
+            title: "Isenções Setoriais",
+            descricao: "Uso de benefícios fiscais concedidos por lei para atividades de pesquisa e inovação.",
+            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+          }
+        ]}
+      />
+
       <QuizInterativo
-        quiz={DIREITO_TRIBUTARIO_QUIZZES["modulo-9"]}
+        titulo="Planejamento Tributário"
+        numero={9}
+        variant="emerald"
+        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-9"].questions}
         onComplete={(score: number) => handleQuizComplete("modulo-9", score)}
       />
     </div>
@@ -938,98 +926,79 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
   const renderModulo10 = () => (
     <div className="space-y-6">
-      <ModuleBanner module={10} title="Simulado Mestre - Direito Tributário" />
+      <ModuleBanner
+        numero={10}
+        titulo="Simulado Mestre"
+        descricao="Teste seus conhecimentos em Direito Tributário com foco total Cesgranrio."
+        variant="rose"
+      />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
           index={10}
-          title="Simulado Mestre - Direito Tributário"
-          description="Consolidação final: teste sua compreensão com questões integradas sobre todo o conteúdo."
+          title="Avaliação Final"
+          description="Questões selecionadas para simular o nível de dificuldade do concurso."
           variant="rose"
         />
-
-        <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
-          <p>
-            O <strong>Simulado Mestre</strong> é avaliação final que integra conhecimento de todos os 9 módulos anteriores. Não é apenas revisão — exige que você combine conceitos. Questões podem pedir: calcular IRPJ considerando royalties (módulos 2 + 8), analisar conformidade de documentação (módulo 5), identificar tipo de multa em auditoria (módulo 6), escolher regime tributário melhor (módulo 9). Alcançar 70% nesse simulado prova que você compreendeu direito tributário em nível técnico de suprimento Petrobras.
-          </p>
-          <p>
-            O simulado avalia <strong>múltiplos domínios</strong>. Conceitual: você entende definições de tributo, fato gerador, base de cálculo? Calculista: consegue calcular incidência corretamente, aplicar alíquota, considerar deduções? Operacional: como seu trabalho em suprimento interage com tributação? Conformidade: conhece obrigações acessórias, prazos, documentação exigida? Meta é não apenas saber teoria, mas aplicar em situações reais de negócios.
-          </p>
-          <p>
-            As questões são <strong>realistas e contextualizadas em Petrobras</strong>. Exemplo: "Petrobras contrata serviço de consultoria em São Paulo por R$ 500 mil. Qual ISS incide? Como registrar em nota? Como considerar na formação de preço?" Ou: "Campo de petróleo produz 50 mil barris/mês, preço Brent R$ 100. Calcule Royalties totais ao ano." Ou: "Auditoria Receita Federal encontra omissão de informação. Qual multa? Qual prazo para defesa?" Contexto Petrobras é intencional — você já está em ambiente real de trabalho.
-          </p>
-          <p>
-            <strong>Estratégia de Resolução</strong> para o simulado: (1) Leia questão completa, não responda apressado; (2) Identifique qual módulo a questão toca (é sobre impostos federais? Sobre ICMS? Sobre planejamento?); (3) Relembre regra específica daquele módulo; (4) Aplique a regra ao caso específico da questão; (5) Calcule (se necessário) e verifique se resultado faz sentido. Erros comuns: ler errado, confundir alíquota entre tributos, esquecer que múltiplos tributos incidem juntos.
-          </p>
-          <p>
-            Este é o módulo de consolidação. Você aprendeu estrutura de direito tributário brasileiro (CTN, princípios, tributos), entendeu tributos específicos (IR, ICMS, contribuições), compreendeu operações em Petrobras (royalties, IRPJ, cadeia tributária), e conhece processos (fiscalização, multas, planejamento). O simulado testa integração. Atingir 70% não é "conhecimento mínimo" — é comprova competência técnica para operar em suprimento Petrobras com consciência de impacto tributário. Você está pronto para lidar com negociações, contratos, e operações sabendo exatamente qual a carga tributária envolvida.
-          </p>
-
-          <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">🎯 Domínios do Simulado</p>
-            <ul className="text-sm space-y-1 text-foreground">
-              <li>✓ Conceitual: Definições, princípios, estrutura tributária</li>
-              <li>✓ Calculista: Cálculos de incidência, alíquotas, deduções</li>
-              <li>✓ Operacional: Impacto em negociações de suprimento</li>
-              <li>✓ Conformidade: Obrigações, prazos, documentação</li>
-              <li>✓ Meta: 70% = Competência técnica verificada em direito tributário</li>
-            </ul>
-          </div>
-        </div>
       </section>
 
       <ModuleConsolidation
-        cards={[
-          { title: "Integração", content: "Questões combinam conceitos de múltiplos módulos", variant: getModuleVariant(10) },
-          { title: "Análise Crítica", content: "Demanda compreensão profunda, não simples memorização", variant: getModuleVariant(10) },
-          { title: "Cenários Realistas", content: "Casos práticos de Petrobras e indústria", variant: getModuleVariant(10) },
-          { title: "Meta de Aprovação", content: "70% de acerto valida competência em direito tributário", variant: getModuleVariant(10) },
-        ]}
+        index={10}
+        variant="rose"
+        video={{
+          videoId: "tributario-m10",
+          title: "Revisão Geral",
+          duration: "15:00"
+        }}
+        resumoVisual={{
+          moduloNome: "Módulo 10",
+          tituloAula: "Direito Tributário",
+          materia: "Administração",
+          images: [
+            { title: "Resumo Global", type: "Diagrama", placeholderColor: "bg-rose-500/20" },
+          ],
+        }}
+        maceteVisual={{
+          title: "Dica de Mestre",
+          content: <p className="text-sm italic">{"Leia o enunciado com calma. Identifique o tributo e a competência primeiro."}</p>
+        }}
+        audio={{
+          audioUrl: "/audio/tributario-m10.mp3",
+          titulo: "Resumo Módulo 10",
+          artista: "Especialista Tributário"
+        }}
       />
-      <ContentAccordion
-        sections={[
-          {
-            title: "Estrutura do Simulado",
-            content: "Contém 10 questões complexas que exigem integração de conhecimento. Tópicos: princípios constitucionais, tributos específicos (IR, ICMS, IRPJ), cálculos de incidência, obrigações acessórias, processos de fiscalização, planejamento tributário."
+
+      <QuizInterativo
+        titulo="Simulado Mestre"
+        numero={10}
+        variant="rose"
+        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-10"].questions}
+        onComplete={(score: number) => handleQuizComplete("modulo-10", score)}
+      />
+    </div>
+  );
+            descricao: "Elimine distrações. Este simulado reflete o nível das provas da CESGRANRIO.",
+            corFundo: "bg-emerald-100 dark:bg-emerald-900/30"
           },
           {
-            title: "Domínios Avaliados",
-            content: "Conceitos: definição de tributo, fato gerador, base de cálculo. Cálculos: incidência de alíquota, multas, valores de contribuições. Operações: análise de situações reais e impacto tributário. Conformidade: obrigações do contribuinte, prazos, responsabilidades."
+            title: "Tempo",
+            descricao: "Tente resolver cada questão em no máximo 3 minutos para treinar o ritmo.",
+            corFundo: "bg-violet-100 dark:bg-violet-900/30"
           },
           {
-            title: "Estratégia de Resolução",
-            content: "Leia com atenção: detalhes de fatos mudam resposta. Identifique fato gerador: qual é a base de incidência? Aplique regra: qual lei/alíquota se aplica? Calcule: se pede valor, faça cálculo preciso. Verifique: resultado faz sentido no contexto?"
-          },
-          {
-            title: "Preparação para Concurso Petrobras",
-            content: "Atingir 70% neste simulado demonstra competência de nível técnico/médio em direito tributário. Prepara para questões de prova sobre compliance tributário, operações de suprimento com impacto fiscal, análise de custos e margens."
+            title: "Revisão",
+            descricao: "Ao final, revise as questões que errou para entender a lógica das pegadinhas.",
+            corFundo: "bg-amber-100 dark:bg-amber-900/30"
           }
         ]}
       />
-      <div>
-        <h3 className="text-lg font-semibold mb-4">Exemplos de Questões Integradas</h3>
-        <CardCarousel
-          cards={[
-            {
-              emoji: "🔢",
-              title: "Cálculo Integrado",
-              description: "Empresa fatura R$ 2 milhões. Custos 50%, despesas 15%. IRPJ 25%, COFINS 7,65%, PIS 1,65%. Calcule valor total de impostos e alíquota efetiva sobre faturamento."
-            },
-            {
-              emoji: "⚖️",
-              title: "Análise de Conformidade",
-              description: "Petrobras recebe autos de infração por omissão de informação em declaração. Qual o impacto? Multa por infração acessória? Prazo para defesa? Possibilidade de prescrição?"
-            },
-            {
-              emoji: "💼",
-              title: "Planejamento Operacional",
-              description: "Técnico de Suprimento negocia contrato de serviço R$ 500 mil. Identifique: ISS aplicável? Retenção na fonte? Qual cidade influencia alíquota? Como estruturar contrato?"
-            }
-          ]}
-        />
-      </div>
+
       <QuizInterativo
-        quiz={DIREITO_TRIBUTARIO_QUIZZES["modulo-10"]}
+        titulo="Simulado Mestre"
+        numero={10}
+        variant="rose"
+        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-10"].questions}
         onComplete={(score: number) => handleQuizComplete("modulo-10", score)}
       />
     </div>
