@@ -90,18 +90,18 @@ export default function AulasPage() {
         );
     }
 
-    const renderMateriaCard = (materia: MateriaConteudo, size: 'normal' | 'small' | 'elite' = 'normal') => (
+    const renderMateriaCard = (materia: MateriaConteudo, size: 'normal' | 'small' = 'normal') => (
         <Link
             href={`/aulas/${materia.id}`}
             key={materia.id}
-            className={`group relative flex flex-col bg-slate-50/50 dark:bg-card/40 backdrop-blur-xl rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-500 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/20 overflow-hidden ${size !== 'normal' ? 'h-full' : ''}`}
+            className={`group relative flex flex-col bg-slate-50/50 dark:bg-card/40 backdrop-blur-xl rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-500 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/20 overflow-hidden ${size === 'small' ? 'h-full' : ''}`}
         >
             <AnimatedBorder borderRadius="rounded-3xl" />
 
             {/* Header Section */}
-            <div className={`${size === 'small' ? 'p-6 pb-2' : size === 'elite' ? 'p-7 pb-3' : 'p-8 pb-4'}`}>
+            <div className={`${size === 'small' ? 'p-6 pb-2' : 'p-8 pb-4'}`}>
                 <div className="flex items-start justify-between mb-6">
-                    <div className={`flex items-center justify-center ${size === 'small' ? 'w-12 h-12 text-2xl' : size === 'elite' ? 'w-14 h-14 text-2xl' : 'w-16 h-16 text-3xl'} rounded-2xl bg-gradient-to-br ${materia.cor} shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500`}>
+                    <div className={`flex items-center justify-center ${size === 'small' ? 'w-12 h-12 text-2xl' : 'w-16 h-16 text-3xl'} rounded-2xl bg-gradient-to-br ${materia.cor} shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500`}>
                         {materia.icone}
                     </div>
                     <span className="px-3 py-1 rounded-full bg-zinc-100/80 dark:bg-zinc-800/50 text-primary text-xs font-bold border border-zinc-200 dark:border-zinc-700 whitespace-nowrap">
@@ -142,45 +142,6 @@ export default function AulasPage() {
                             + {materia.topicos.length - 5} outros tópicos <span className="text-[10px]">→</span>
                         </div>
                     )}
-                </div>
-            )}
-
-            {/* Carousel of Topics - Only for elite size */}
-            {size === 'elite' && (
-                <div className="flex-1 px-2 py-4" onClick={(e) => e.preventDefault()}>
-                    <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
-                        <CarouselContent className="-ml-2">
-                            {materia.topicos.map((topico: Topico) => {
-                                const prog = getProgress(materia.id, topico.id);
-                                const isCompleted = prog?.completed;
-                                return (
-                                    <CarouselItem key={topico.id} className="pl-2 basis-[180px]">
-                                        <Link
-                                            href={`/aulas/${materia.id}/${topico.id}`}
-                                            className="block h-full p-3 rounded-xl border border-border/50 dark:border-white/10 bg-slate-100/50 dark:bg-slate-900/30 hover:bg-slate-200/70 dark:hover:bg-slate-800/50 transition-colors"
-                                            onClick={(e) => e.stopPropagation()}
-                                        >
-                                            <div className="flex items-start gap-2 mb-2">
-                                                <div className={`w-2 h-2 rounded-full mt-1 flex-shrink-0 ${isCompleted ? 'bg-green-500' : 'bg-slate-400'}`} />
-                                                <span className="text-xs font-bold text-foreground line-clamp-2 flex-1">
-                                                    {topico.titulo}
-                                                </span>
-                                            </div>
-                                            <p className="text-xs text-muted-foreground">
-                                                {topico.duracao}
-                                            </p>
-                                        </Link>
-                                    </CarouselItem>
-                                );
-                            })}
-                        </CarouselContent>
-                        {materia.topicos.length > 1 && (
-                            <>
-                                <CarouselPrevious className="absolute -left-12 top-1/2" />
-                                <CarouselNext className="absolute -right-12 top-1/2" />
-                            </>
-                        )}
-                    </Carousel>
                 </div>
             )}
 
@@ -248,18 +209,30 @@ export default function AulasPage() {
                             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
                         </div>
 
-                        {eliteSuperior.map((prof, pIdx) => (
-                            <div key={`superior-${pIdx}`} className="space-y-6">
-                                <div className="flex items-center gap-3">
-                                    <h3 className="text-xl md:text-2xl font-black text-foreground uppercase tracking-tight opacity-70">
-                                        {prof.nome}
-                                    </h3>
-                                </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-                                    {prof.materias.map((m: MateriaConteudo) => renderMateriaCard(m, 'elite'))}
-                                </div>
-                            </div>
-                        ))}
+                        <Carousel opts={{ align: 'start', loop: false, dragFree: true }} className="w-full">
+                            <CarouselContent className="-ml-4 md:-ml-20">
+                                {eliteSuperior.map((prof, pIdx) => (
+                                    <CarouselItem key={`superior-${pIdx}`} className="pl-4 md:pl-20 basis-full md:basis-[calc(100%-40px)]">
+                                        <div className="space-y-6">
+                                            <div className="flex items-center gap-3">
+                                                <h3 className="text-xl md:text-2xl font-black text-foreground uppercase tracking-tight opacity-70">
+                                                    {prof.nome}
+                                                </h3>
+                                            </div>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                                {prof.materias.map((m: MateriaConteudo) => renderMateriaCard(m, 'normal'))}
+                                            </div>
+                                        </div>
+                                    </CarouselItem>
+                                ))}
+                            </CarouselContent>
+                            {eliteSuperior.length > 1 && (
+                                <>
+                                    <CarouselPrevious className="absolute -left-20 top-12" />
+                                    <CarouselNext className="absolute -right-20 top-12" />
+                                </>
+                            )}
+                        </Carousel>
                     </section>
                 )}
 
@@ -274,18 +247,30 @@ export default function AulasPage() {
                             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
                         </div>
 
-                        {eliteTecnico.map((prof, pIdx) => (
-                            <div key={`tecnico-${pIdx}`} className="space-y-6">
-                                <div className="flex items-center gap-3">
-                                    <h3 className="text-xl md:text-2xl font-black text-foreground uppercase tracking-tight opacity-70">
-                                        {prof.nome}
-                                    </h3>
-                                </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-                                    {prof.materias.map((m: MateriaConteudo) => renderMateriaCard(m, 'elite'))}
-                                </div>
-                            </div>
-                        ))}
+                        <Carousel opts={{ align: 'start', loop: false, dragFree: true }} className="w-full">
+                            <CarouselContent className="-ml-4 md:-ml-20">
+                                {eliteTecnico.map((prof, pIdx) => (
+                                    <CarouselItem key={`tecnico-${pIdx}`} className="pl-4 md:pl-20 basis-full md:basis-[calc(100%-40px)]">
+                                        <div className="space-y-6">
+                                            <div className="flex items-center gap-3">
+                                                <h3 className="text-xl md:text-2xl font-black text-foreground uppercase tracking-tight opacity-70">
+                                                    {prof.nome}
+                                                </h3>
+                                            </div>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                                {prof.materias.map((m: MateriaConteudo) => renderMateriaCard(m, 'normal'))}
+                                            </div>
+                                        </div>
+                                    </CarouselItem>
+                                ))}
+                            </CarouselContent>
+                            {eliteTecnico.length > 1 && (
+                                <>
+                                    <CarouselPrevious className="absolute -left-20 top-12" />
+                                    <CarouselNext className="absolute -right-20 top-12" />
+                                </>
+                            )}
+                        </Carousel>
                     </section>
                 )}
             </div>
