@@ -36,7 +36,7 @@ export default function AulasPage() {
             if (user?.cargo === prof.id || user?.cargo === prof.nome) return;
 
             const materiasDessaProf = getProgramaDeEstudos(prof.id, false)
-                .filter(m => !['portugues', 'matematica', 'fisica', 'quimica'].includes(m.id));
+                .filter(m => !['portugues', 'matematica'].includes(m.id));
 
             if (materiasDessaProf.length > 0) {
                 const item = {
@@ -57,18 +57,27 @@ export default function AulasPage() {
         const isTecnico = profUsuario?.nivel === 'tecnico';
         
         if (isTecnico) {
-            const ingles = getProgramaDeEstudos(undefined, true).find(m => m.id === 'ingles');
-            if (ingles) {
-                // Adicionar Inglês como uma "Seção Premium" ou no topo do nível superior
+            const allMaterias = getProgramaDeEstudos(undefined, true);
+            const ingles = allMaterias.find(m => m.id === 'ingles');
+            const fisica = allMaterias.find(m => m.id === 'fisica');
+            const quimica = allMaterias.find(m => m.id === 'quimica');
+
+            const materiasPremium = [];
+            if (ingles) materiasPremium.push(ingles);
+            if (fisica) materiasPremium.push(fisica);
+            if (quimica) materiasPremium.push(quimica);
+
+            if (materiasPremium.length > 0) {
+                // Adicionar Premium subjects como uma "Seção Base Nível Superior"
                 eliteSuperior.unshift({
-                    nome: 'Língua Inglesa (Bases Nível Superior)',
-                    materias: [ingles]
+                    nome: 'Bases Nível Superior (Catálogo Elite)',
+                    materias: materiasPremium
                 });
             }
         }
     }
 
-    const cargoNome = user?.cargo ? minhaGrade.filter(m => !['portugues', 'matematica', 'ingles', 'fisica', 'quimica'].includes(m.id))[0]?.descricao.split('para ')[1] || user.cargo : '';
+    const cargoNome = user?.cargo ? minhaGrade.filter(m => !['portugues', 'matematica', 'ingles'].includes(m.id))[0]?.descricao.split('para ')[1] || user.cargo : '';
 
     const loading = userLoading || progressLoading;
 

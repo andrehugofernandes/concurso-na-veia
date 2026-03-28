@@ -183,110 +183,101 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         onComplete={(score: number) => handleQuizComplete("modulo-1", score)}
       />
     </div>
-  );]}
-        />
-      </div>
-      <QuizInterativo
-        quiz={DIREITO_TRIBUTARIO_QUIZZES["modulo-1"]}
-        onComplete={(score: number) => handleQuizComplete("modulo-1", score)}
-      />
-    </div>
   );
 
   const renderModulo2 = () => (
     <div className="space-y-6">
-      <ModuleBanner module={2} title="Tributos Federais: Impostos" />
+      <ModuleBanner
+        numero={2}
+        titulo="Tributos Federais: Impostos"
+        descricao="O detalhamento dos impostos de competência da União que afetam a Petrobras."
+        variant="indigo"
+      />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
           index={2}
-          title="Tributos Federais: Impostos"
-          description="Conheça os principais impostos federais que Petrobras e suas operações estão sujeitos."
-          variant="rose"
+          title="IRPJ, CSLL e Impostos de Comércio Exterior"
+          description="Os tributos que incidem diretamente sobre o lucro e as operações internacionais."
+          variant="indigo"
         />
 
         <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
           <p>
-            Os <strong>impostos federais</strong> são tributos cobrados pela União sobre fatos gerados em qualquer parte do Brasil. Diferem de tributos estaduais e municipais por terem cobertura nacional e financiar a máquina federal (defesa, infraestrutura, saúde nacional). Petrobras, sendo uma empresa federal com operações em todo o país, está sujeita a todos os impostos federais principais: IR (pessoa jurídica), IPI e outros específicos do setor.
+            A União detém a competência para os impostos que mais pesam no caixa das grandes corporações. O <strong>Imposto de Renda Pessoa Jurídica (IRPJ)</strong> e a <strong>Contribuição Social sobre o Lucro Líquido (CSLL)</strong> incidem sobre o resultado financeiro positivo da empresa. Para a Petrobras, que opera com bilhões em lucro, o planejamento tributário correto nessas áreas é vital para a sustentabilidade do negócio.
           </p>
           <p>
-            O <strong>Imposto de Renda (IR)</strong> é o imposto mais importante do sistema tributário brasileiro — representa cerca de 50% da receita tributária federal. Incide sobre todo tipo de renda ou rendimento: salários, lucros empresariais, aluguéis, ganhos de capital, dividendos. Para pessoas jurídicas como Petrobras, é chamado IRPJ e tem alíquota de 15% sobre lucro real, podendo chegar a 25% com adicional em operações muito lucrativas.
+            Além do lucro, a União tributa o comércio internacional. O <strong>Imposto de Importação (II)</strong> incide quando a Petrobras traz tecnologia ou equipamentos do exterior. Já o <strong>Imposto sobre Exportação (IE)</strong> pode incidir na saída de petróleo bruto, dependendo das políticas de mercado do governo federal. Esses tributos são extrafiscais, ou seja, servem mais para regular a economia do que propriamente para arrecadar dinheiro.
           </p>
-          <p>
-            O <strong>IPI (Imposto sobre Produtos Industrializados)</strong> é um imposto seletivo (alíquota varia conforme o produto) cobrado na saída de produto industrializado da fábrica. A seletividade tem objetivo: tributar mais produtos prejudiciais à saúde (bebidas alcoólicas, cigarros — até 150% de IPI) e menos produtos essenciais (alimentos básicos — 0% de IPI). Petrobras, como refinaria, paga IPI ao vender seus produtos finais (gasolina, diesel, etc.).
-          </p>
-          <p>
-            A <strong>tabela progressiva de IR</strong> funciona assim: quanto maior sua renda, maior o percentual de imposto. Para pessoa física, começa em 0% até R$ 2.112/mês e sobe até 45% para rendas altas. Para pessoa jurídica, é mais simples: alíquota fixa de 15% do lucro real. Essa progressividade existe para respeitar "capacidade contributiva" — quem ganha mais pode pagar mais imposto sem prejuízo necessário.
-          </p>
-          <p>
-            Neste módulo, você aprenderá a calcular e compreender esses impostos federais, entenderá como deduções (dependentes, previdência) reduzem a base de IR, verá exemplos práticos de Petrobras pagando IRPJ sobre bilhões de reais em lucro, e perceberá como esses impostos afetam a saúde financeira da empresa. Você compreenderá também a diferença entre alíquota nominal (taxa escrita em lei) e alíquota efetiva (real percentual pago).
-          </p>
-
-          <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">💰 Impostos Federais Principais</p>
-            <ul className="text-sm space-y-1 text-foreground">
-              <li>✓ IRPJ (Pessoa Jurídica): 15% sobre lucro real, até 25% com adicional</li>
-              <li>✓ IR Pessoa Física: Tabela progressiva de 0% a 45% conforme renda</li>
-              <li>✓ IPI: Seletivo, varia 0%-150% conforme produto (maior em supérfluos)</li>
-              <li>✓ Deduções reduzem base de IR (dependentes, previdência, despesas)</li>
-              <li>✓ Alíquota efetiva é a real carga tributária, considerando deduções e créditos</li>
-            </ul>
-          </div>
         </div>
       </section>
 
       <ModuleConsolidation
-        cards={[
-          { title: "IR (Imposto de Renda)", content: "Sobre renda e proventos de qualquer natureza", variant: getModuleVariant(2) },
-          { title: "IPI (Imposto sobre Produtos)", content: "Tributo seletivo sobre industrialização", variant: getModuleVariant(2) },
-          { title: "Tabela Progressiva", content: "Alíquota aumenta conforme renda (20% até 45%)", variant: getModuleVariant(2) },
-          { title: "Deduções", content: "Abatimentos permitidos (dependentes, contribuição)", variant: getModuleVariant(2) },
-        ]}
+        index={2}
+        variant="indigo"
+        video={{
+          videoId: "tributario-m2",
+          title: "Impostos Federais em Detalhes",
+          duration: "10:30"
+        }}
+        resumoVisual={{
+          titulo: "Principais Tributos Federais",
+          itens: [
+            "IRPJ: 15% + 10% de adicional sobre o lucro",
+            "CSLL: 9% sobre o lucro líquido",
+            "II/IE: Regulação do fluxo internacional"
+          ]
+        }}
+        maceteVisual={{
+          titulo: "Dica de Mestre",
+          texto: "Federais = Lucro e Fronteira (IRPJ e Comércio Exterior)"
+        }}
+        audio={{
+          url: "/audio/tributario-m2.mp3",
+          titulo: "Resumo Módulo 2",
+          artista: "Especialista Tributário"
+        }}
       />
+
       <ContentAccordion
-        sections={[
+        titulo="Detalhamento Técnico"
+        slides={[
           {
-            title: "Imposto de Renda (IR)",
-            content: "Tributo federal sobre renda, proventos de qualquer natureza. Incide sobre salários, aluguéis, lucros, ganhos de capital. Tabela progressiva: quanto maior renda, maior alíquota. Pessoas físicas: alíquota de 0% até 45%. Pessoas jurídicas: alíquota fixa (15% + adicional)."
+            title: "IRPJ e CSLL",
+            content: "Incidência sobre o lucro das empresas. A Petrobras utiliza geralmente o regime de Lucro Real devido ao seu faturamento."
           },
           {
-            title: "Cálculo do IR Pessoa Física",
-            content: "Base: renda bruta - deduções legais = base de cálculo. Deduções: dependentes (R$ 2.275/ano), contribuição a previdência, instrução. Aplicar tabela progressiva progressivamente. Exemplos: ganho até R$ 2.112 = isento; de R$ 2.112-2.826 = 7,5%; acima = até 45%."
-          },
-          {
-            title: "IPI (Imposto sobre Produtos Industrializados)",
-            content: "Tributo federal seletivo (alíquota varia por produto). Objetivo: tributar mais produtos prejudiciais (bebidas alcoólicas, cigarros). Menos tributo em produtos essenciais. Incide na saída de produto industrializado da fábrica. Crédito tributário: empresa que compra produto com IPI pode abater."
-          },
-          {
-            title: "IR em Petrobras",
-            content: "Petrobras (pessoa jurídica) paga IRPJ (Imposto de Renda Pessoa Jurídica) sobre lucro: Lucro Real = resultado contábil com ajustes. Alíquota: 15% + adicional de 10% sobre lucro superior a R$ 20 mil/mês. Lucro presumido: presunção legal de lucro (8% da receita para refino)."
+            title: "Comércio Exterior",
+            content: "Impostos incidentes na entrada (II) e saída (IE) de bens. Essenciais para operações de prospecção com equipamentos importados."
           }
         ]}
       />
-      <div>
-        <h3 className="text-lg font-semibold mb-4">Exemplos de Cálculo</h3>
-        <CardCarousel
-          cards={[
-            {
-              emoji: "💼",
-              title: "IR Pessoa Física",
-              description: "Salário R$ 5.000 + aluguel R$ 1.000 = R$ 6.000. Deduções R$ 500. Base R$ 5.500. Alíquota 22,5% = IR R$ 1.237,50."
-            },
-            {
-              emoji: "🏭",
-              title: "IPI em Produto",
-              description: "Fábrica produz bebida alcoólica. Custa R$ 10 para produzir. IPI 30% = R$ 3. Vende por R$ 15 (inclui IPI)."
-            },
-            {
-              emoji: "🛢️",
-              title: "IRPJ Petrobras",
-              description: "Lucro Real de R$ 1 bilhão. IRPJ: 15% = R$ 150 milhões. Adicional 10% sobre R$ 980 milhões = R$ 98 milhões. Total: R$ 248 milhões."
-            }
-          ]}
-        />
-      </div>
+
+      <CardCarousel
+        cards={[
+          {
+            title: "Importação de Sondas",
+            descricao: "O II incide na entrada de equipamentos de perfuração vindos de Singapura ou Noruega.",
+            corFundo: "bg-emerald-100 dark:bg-emerald-900/30"
+          },
+          {
+            title: "Exportação de Óleo",
+            descricao: "A Petrobras monitora as alíquotas de IE na venda de barris para o mercado chinês.",
+            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+          },
+          {
+            title: "Lucro da Holding",
+            descricao: "O IRPJ é calculado de forma consolidada sobre o lucro operacional de todas as unidades.",
+            corFundo: "bg-amber-100 dark:bg-amber-900/30"
+          }
+        ]}
+      />
+
       <QuizInterativo
-        quiz={DIREITO_TRIBUTARIO_QUIZZES["modulo-2"]}
+        titulo="Tributos Federais"
+        numero={2}
+        variant="indigo"
+        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-2"].questions}
         onComplete={(score: number) => handleQuizComplete("modulo-2", score)}
       />
     </div>
@@ -294,16 +285,16 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
   const renderModulo3 = () => (
     <div className="space-y-6">
-      <ModuleBanner module={3} title="Tributos sobre Consumo" />
+      <ModuleBanner
+        numero={3}
+        titulo="Tributos sobre Consumo"
+        descricao="ICMS, IPI e o papel da Petrobras como substituta tributária."
+        variant="emerald"
+      />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
           index={3}
-          title="Tributos sobre Consumo"
-          description="Entenda como tributos incidem na circulação de bens e serviços na cadeia de suprimento."
-          variant="rose"
-        />
-
         <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
           <p>
             Os <strong>tributos sobre consumo</strong> são aqueles que incidem sobre a circulação de mercadorias e a prestação de serviços. Diferem de impostos sobre renda (que afetam a pessoa que ganha) — esses atingem o ato de comercializar. São chamados "indiretos" porque o fabricante/prestador paga ao fisco, mas repassa o custo ao consumidor final via preço. Não há escapatória: qualquer produto que você compra tem múltiplos tributos sobre consumo embutidos no preço.
@@ -345,47 +336,10 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
       <ContentAccordion
         sections={[
           {
-            title: "ICMS (Imposto sobre Circulação de Mercadorias)",
-            content: "Tributo estadual (legislado por cada estado, mas direito comum). Incide sobre operação de circulação de mercadoria ou prestação de serviço de transporte. Alíquota varia: 7-18% dependendo estado e produto. Sistema de crédito/débito: empresa que compra ICMS pode abater na venda."
-          },
-          {
-            title: "ISS (Imposto sobre Serviços)",
-            content: "Tributo municipal (cada município fixa alíquota). Incide sobre prestação de serviços (consultoria, limpeza, reparos, etc). Alíquota de 2% a 5% (município específico). Obrigação de reter na fonte: quem contrata retém ISS e repassa à prefeitura."
-          },
-          {
-            title: "PIS e COFINS",
-            content: "Contribuições Federais sobre Receita Bruta. PIS (Programa de Integração Social): 1,65% sobre faturamento. COFINS (Contribuição para Financiamento da Seguridade Social): 7,65% sobre faturamento. Algumas empresas apuram por regime de caixa (quando recebe)."
-          },
-          {
-            title: "Tributos sobre Consumo em Petrobras",
-            content: "ICMS: sobre venda de combustíveis (gasolina, diesel) em cada estado. ISS: em contratos de serviços. PIS/COFINS: sobre receita de vendas de óleo e derivados. Cálculo integrado: esses tributos são custos que Petrobras repassa ao preço final do produto ao consumidor."
-          }
-        ]}
-      />
-      <div>
-        <h3 className="text-lg font-semibold mb-4">Exemplos de Incidência</h3>
-        <CardCarousel
-          cards={[
-            {
-              emoji: "⛽",
-              title: "ICMS em Combustível",
-              description: "Diesel custa R$ 5,00 na refinaria. ICMS 18% (SP) = R$ 0,90. Preço ao distribuidor: R$ 5,90. Carga tributária visível."
-            },
-            {
-              emoji: "🔧",
-              title: "ISS em Serviço",
-              description: "Petrobras contrata consultoria por R$ 100 mil. ISS 2,5% (Rio de Janeiro) = R$ 2.500. Empresa de consultoria recebe R$ 97.500."
-            },
-            {
-              emoji: "📊",
-              title: "PIS/COFINS em Receita",
-              description: "Faturamento R$ 1 milhão. PIS 1,65% = R$ 16.500. COFINS 7,65% = R$ 76.500. Total de contribuições = R$ 93 mil (9,3%)."
-            }
-          ]}
-        />
-      </div>
-      <QuizInterativo
-        quiz={DIREITO_TRIBUTARIO_QUIZZES["modulo-3"]}
+        titulo="Tributos sobre Consumo"
+        numero={3}
+        variant="emerald"
+        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-3"].questions}
         onComplete={(score: number) => handleQuizComplete("modulo-3", score)}
       />
     </div>
@@ -393,98 +347,97 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
   const renderModulo4 = () => (
     <div className="space-y-6">
-      <ModuleBanner module={4} title="Contribuições Sociais" />
+      <ModuleBanner
+        numero={4}
+        titulo="Contribuições Sociais e de Intervenção"
+        descricao="PIS, COFINS e CIDE: a base do financiamento social e regulatório."
+        variant="violet"
+      />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
           index={4}
-          title="Contribuições Sociais"
-          description="Explore as obrigações de empresa e empregado com seguridade social e benefícios trabalhistas."
-          variant="rose"
+          title="Financiamento da Seguridade e Intervenção Econômica"
+          description="O impacto do PIS e da COFINS no faturamento e a incidência da CIDE-Combustíveis."
+          variant="violet"
         />
 
         <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
           <p>
-            As <strong>contribuições sociais</strong> são tributos que financiam a seguridade social: previdência (aposentadorias), assistência social e saúde. Diferem de impostos porque têm destinação específica (não caem na receita geral da União). Toda empresa que tem empregado obrigadamente paga contribuições sociais — é praticamente impossível contratar alguém sem gerar contribuições. Petrobras, com milhares de empregados, tem custo gigantesco em contribuições sociais.
+            As contribuições sociais (PIS/PASEP e COFINS) incidem sobre a receita bruta das empresas e são fundamentais para o financiamento da seguridade social (Saúde, Previdência e Assistência Social). Para uma empresa do porte da Petrobras, essas contribuições representam volumes gigantescos de recursos.
           </p>
           <p>
-            O <strong>INSS (Instituto Nacional de Seguridade Social)</strong> gerencia a previdência pública. Empregado contribui 8-11% de seu salário (desconto em contracheque). Empregador contribui 20% da folha de salários. Autônomo contribui 20% de sua receita. Essas contribuições garantem direito a aposentadoria por tempo/idade, auxílio-doença, pensão por morte. O INSS é obrigatório — não há forma legal de escapar se há vínculo de emprego.
+            Existe ainda a <strong>CIDE-Combustíveis</strong> (Contribuição de Intervenção no Domínio Econômico), que incide sobre a importação e a comercialização de petróleo e derivados. Ela tem finalidade extrafiscal, servindo para ajustar preços de mercado e financiar subsídios ao transporte e projetos ambientais.
           </p>
-          <p>
-            O <strong>FGTS (Fundo Garantia Tempo Serviço)</strong> é contribuição de 8% do salário mensal que empregador deposita em conta individual do empregado. Esse dinheiro fica com a Caixa (banco oficial), rendendo. Empregado só saca em casos específicos: demissão sem justa causa (saca tudo), aposentadoria (saca tudo), compra de imóvel, doença grave. Representa proteção ao trabalhador — cria poupança forçada que o protege do desemprego.
-          </p>
-          <p>
-            Há também <strong>Contribuição Sindical</strong> (equivalente a 1 dia de salário anual, descontado uma única vez) e, para setores específicos, contribuições para fundos especiais (Sebrae, Senar). O custo total em encargos sociais (INSS + FGTS + contribuições) representa 25-35% do salário bruto — isso significa que uma empresa que paga R$ 10 mil a um empregado gasta realmente R$ 12.500-13.500 com encargos.
-          </p>
-          <p>
-            Neste módulo, você compreenderá a estrutura de custos de pessoal em Petrobras: cada funcionário "custa" significativamente mais que seu salário. Verá exemplos práticos de desconto de INSS no contracheque do empregado e custo de INSS que empregador paga em paralelo. Entenderá por que empresas pequenas sofrem com encargos sociais (são proporcionalmente mais altos) e por que há discussão constante sobre reforma tributária tocando em contribuições sociais.
-          </p>
-
-          <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">👥 Encargos Sociais em Folha</p>
-            <ul className="text-sm space-y-1 text-foreground">
-              <li>✓ INSS: Empregado 8-11%, Empregador 20%</li>
-              <li>✓ FGTS: Empregador 8%, acumula em conta do empregado</li>
-              <li>✓ Contribuição Sindical: Equivalente a 1 dia de salário (uma vez/ano)</li>
-              <li>✓ Encargo Total: 25-35% do salário bruto para empresa</li>
-              <li>✓ Destinação: Previdência, saúde, assistência social, fundos setoriais</li>
-            </ul>
-          </div>
         </div>
       </section>
 
       <ModuleConsolidation
-        cards={[
-          { title: "INSS", content: "Previdência social (empregado 8-11%, empregador 20%)", variant: getModuleVariant(4) },
-          { title: "FGTS", content: "Fundo Garantia Tempo Serviço (empregador 8% de folha)", variant: getModuleVariant(4) },
-          { title: "Contribuição Sindical", content: "Sindicato de categoria (1 dia de salário anual)", variant: getModuleVariant(4) },
-          { title: "Encargos Sociais", content: "Totalizam 25-35% do custo da folha de pagamento", variant: getModuleVariant(4) },
-        ]}
+        index={4}
+        variant="violet"
+        video={{
+          videoId: "tributario-m4",
+          title: "PIS/COFINS e CIDE",
+          duration: "09:20"
+        }}
+        resumoVisual={{
+          titulo: "Principais Contribuições",
+          itens: [
+            "PIS/COFINS: Sobre faturamento ou importação",
+            "CIDE-Combustíveis: Incidência específica no setor",
+            "Não-Cumulatividade: Essencial para cálculos industriais"
+          ]
+        }}
+        maceteVisual={{
+          titulo: "Dica de Mestre",
+          texto: "CIDE = Intervenção (Governo usando imposto para regular o preço do óleo)."
+        }}
+        audio={{
+          url: "/audio/tributario-m4.mp3",
+          titulo: "Resumo Módulo 4",
+          artista: "Especialista Tributário"
+        }}
       />
+
       <ContentAccordion
-        sections={[
+        titulo="Detalhamento das Contribuições"
+        slides={[
           {
-            title: "INSS (Instituto Nacional Seguridade Social)",
-            content: "Contribuição à previdência social. Empregado: desconto de 8-11% do salário (progressivo). Empregador: alíquota de 20% sobre folha. Autônomo: 20% de sua receita. Garante direito a aposentadoria, auxílio-doença, pensão por morte."
+            title: "PIS/COFINS Cumulativo vs Não-Cumulativo",
+            content: "Diferença entre regimes de incidência conforme o enquadramento tributário da operação."
           },
           {
-            title: "FGTS (Fundo Garantia Tempo Serviço)",
-            content: "Contribuição do empregador de 8% do salário mensal do empregado. Acumulado em conta individual do trabalhador. Saque permitido: demissão sem justa causa, aposentadoria, compra de imóvel, doença grave. Representa direito trabalhista importante."
-          },
-          {
-            title: "Contribuição Sindical e Encargos",
-            content: "Contribuição Sindical: equivalente a 1 dia de trabalho anual (descontado uma vez). Encargos Sociais: soma de INSS + FGTS + contribuições = 25-35% do salário bruto. Custo total da folha para empresa é salário + encargos."
-          },
-          {
-            title: "Encargos em Folha de Petrobras",
-            content: "Petrobras paga salário + 25-35% em encargos sociais. Exemplo: salário R$ 10.000, encargos R$ 2.500-3.500. Custo total para empresa: R$ 12.500-13.500. Importante para cálculo de custos de pessoal."
+            title: "CIDE-Combustíveis",
+            content: "Tributo destinado ao ajuste de preços e financiamento de infraestrutura de transportes."
           }
         ]}
       />
-      <div>
-        <h3 className="text-lg font-semibold mb-4">Exemplos de Cálculo</h3>
-        <CardCarousel
-          cards={[
-            {
-              emoji: "👤",
-              title: "Desconto INSS Empregado",
-              description: "Salário R$ 3.000. INSS 10% = R$ 300. Salário líquido: R$ 2.700 (perde R$ 300 mensal)."
-            },
-            {
-              emoji: "🏢",
-              title: "FGTS Empresa",
-              description: "Folha de R$ 100 mil com 10 funcionários (média R$ 10 mil cada). FGTS 8% = R$ 8 mil (custo da empresa)."
-            },
-            {
-              emoji: "📊",
-              title: "Custo Total Folha",
-              description: "Salário R$ 10 mil. INSS (10%) R$ 1 mil. FGTS (8%) R$ 800. Contribuição Sindical ~R$ 100. Custo total: ~R$ 11.900 para empresa."
-            }
-          ]}
-        />
-      </div>
+
+      <CardCarousel
+        cards={[
+          {
+            title: "Faturamento Bruto",
+            descricao: "Cálculo mensal de PIS e COFINS sobre as vendas de derivados.",
+            corFundo: "bg-emerald-100 dark:bg-emerald-900/30"
+          },
+          {
+            title: "Importação de Gás",
+            descricao: "Incidência de PIS/COFINS-Importação na entrada de GLP internacional.",
+            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+          },
+          {
+            title: "Recursos da CIDE",
+            descricao: "Monitoramento do destino legal da contribuição para projetos do setor.",
+            corFundo: "bg-amber-100 dark:bg-amber-900/30"
+          }
+        ]}
+      />
+
       <QuizInterativo
-        quiz={DIREITO_TRIBUTARIO_QUIZZES["modulo-4"]}
+        titulo="Contribuições e CIDE"
+        numero={4}
+        variant="violet"
+        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-4"].questions}
         onComplete={(score: number) => handleQuizComplete("modulo-4", score)}
       />
     </div>
@@ -492,98 +445,97 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
   const renderModulo5 = () => (
     <div className="space-y-6">
-      <ModuleBanner module={5} title="Obrigações Tributárias" />
+      <ModuleBanner
+        numero={5}
+        titulo="Obrigações e Crédito Tributário"
+        descricao="O nascimento da dívida com o Fisco e como ela se extingue."
+        variant="amber"
+      />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
           index={5}
-          title="Obrigações Tributárias"
-          description="Entenda as responsabilidades legais de contribuintes perante o fisco brasileiro."
-          variant="rose"
+          title="Fato Gerador e Lançamento"
+          description="A jornada desde a ocorrência do fato até a constituição definitiva do crédito."
+          variant="amber"
         />
 
         <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
           <p>
-            A <strong>obrigação tributária</strong> é a relação jurídica entre o Estado (credor) e o contribuinte (devedor). Nasce quando ocorre um "fato gerador" — situação prevista em lei que gera dever de pagar. Por exemplo: você ganha renda (fato gerador de IR), empresa vende mercadoria (fato gerador de ICMS), funcionário recebe salário (fato gerador de INSS). A obrigação não nasce da vontade das partes — é imposta por lei. Você não escolhe pagar IR, você é obrigado.
+            A <strong>obrigação tributária</strong> nasce com o <strong>Fato Gerador</strong>: uma situação prevista em lei que, ao ocorrer, obriga o pagamento do tributo. Por exemplo, vender gasolina é o fato gerador do ICMS. Uma vez ocorrido, o tributo deve ser quantificado e formalizado através do <strong>Lançamento</strong>.
           </p>
           <p>
-            Existem dois tipos de obrigação: <strong>Principal</strong> (obrigação de pagar o tributo) e <strong>Acessória</strong> (obrigações de fazer, como registrar, informar, manter documentos). A obrigação principal é cobrada pela força — o fisco cobra com execução fiscal se necessário. A obrigação acessória, se violada, gera multa mesmo que o imposto tenha sido pago. Exemplo: empresa pagou IR corretamente, mas não emitiu nota fiscal (obrigação acessória) — sofre multa por isso.
+            O <strong>crédito tributário</strong> é o direito do Estado de receber o valor. Ele pode ser extinto pelo pagamento, mas também por compensação, anistia ou decisão judicial. Entender esses processos é crucial para evitar a inadimplência fiscal, que traz multas pesadíssimas e impede a empresa de contratar com o Poder Público.
           </p>
-          <p>
-            O conceito de <strong>Sujeito Ativo e Passivo</strong> é crítico: Sujeito Ativo é o fisco (União, Estado ou Município) que cobra. Sujeito Passivo é o contribuinte que paga — pessoa sobre quem incide o tributo. Há casos em que há "responsável tributário" — pessoa que não sofreu o fato gerador mas responde pelo pagamento (exemplo: sócio-diretor pela empresa, ou a fonte pagadora retendo imposto de empregado).
-          </p>
-          <p>
-            Há também <strong>Responsabilidade Tributária</strong> em três formas: Solidária (responsável junto com o devedor original — ambos podem ser cobrados), Subsidiária (responsável só se devedor original não pagar), e Pessoal (por infração da lei, como fraude — pode resultar em bloqueio de bens). Essas responsabilidades permitem ao fisco cobrar de terceiros se o devedor original desaparece ou não tem patrimônio.
-          </p>
-          <p>
-            Neste módulo, você entenderá quando nasce obrigação tributária (fato gerador), qual é sua estrutura legal, quem é responsável pelo pagamento e quem é responsável por informações. Verá exemplos práticos: Petrobras tem obrigação principal de pagar IRPJ; tem obrigação acessória de manter registros e enviar informações ao fisco. Se um diretor de Petrobras aprova fraude tributária, ele pode responder pessoalmente. Compreenderá também a diferença entre não pagar (passível de cobrança) e não informar (passível de multa).
-          </p>
-
-          <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">⚖️ Estrutura das Obrigações</p>
-            <ul className="text-sm space-y-1 text-foreground">
-              <li>✓ Principal: Obrigação de pagar o tributo (cobrada com força)</li>
-              <li>✓ Acessória: Obrigações de fazer (registrar, informar, documentar)</li>
-              <li>✓ Sujeito Ativo: Fisco (União, Estado, Município)</li>
-              <li>✓ Sujeito Passivo: Contribuinte ou responsável tributário</li>
-              <li>✓ Responsabilidade: Solidária, subsidiária ou pessoal por infração</li>
-            </ul>
-          </div>
         </div>
       </section>
 
       <ModuleConsolidation
-        cards={[
-          { title: "Obrigação Principal", content: "Pagar tributo (obrigação de dar)", variant: getModuleVariant(5) },
-          { title: "Obrigação Acessória", content: "Registrar, informar dados (obrigação de fazer)", variant: getModuleVariant(5) },
-          { title: "Responsabilidade", content: "Solidária, subsidiária ou pessoal por infração", variant: getModuleVariant(5) },
-          { title: "Sujeito Ativo e Passivo", content: "Ativo = fisco (Estado), Passivo = contribuinte", variant: getModuleVariant(5) },
-        ]}
+        index={5}
+        variant="amber"
+        video={{
+          videoId: "tributario-m5",
+          title: "Crédito e Obrigação Tributária",
+          duration: "11:10"
+        }}
+        resumoVisual={{
+          titulo: "Fluxo Tributário",
+          itens: [
+            "Fato Gerador: Ação que cria o dever de pagar",
+            "Lançamento: Procedimento administrativo de cobrança",
+            "Extinção: Pagamento ou alternativas legais"
+          ]
+        }}
+        maceteVisual={{
+          titulo: "Dica de Mestre",
+          texto: "Fato Gerador ocorreu? Dívida nasceu! Lançamento formalizou? Cobrança começou!"
+        }}
+        audio={{
+          url: "/audio/tributario-m5.mp3",
+          titulo: "Resumo Módulo 5",
+          artista: "Especialista Tributário"
+        }}
       />
+
       <ContentAccordion
-        sections={[
+        titulo="Processos Administrativos"
+        slides={[
           {
-            title: "Obrigação Tributária Principal",
-            content: "Obrigação de pagar o tributo. Surge quando ocorre fato gerador (evento que gera direito de tributar). Exemplo: fato gerador de IR = auferição de renda. Fato gerador de ICMS = saída de mercadoria. Obrigação é pessoal de quem sofreu o fato gerador."
+            title: "Modalidades de Lançamento",
+            content: "Lançamento por homologação (contribuinte declara/paga) vs Lançamento de ofício (fisco cobra)."
           },
           {
-            title: "Obrigação Tributária Acessória",
-            content: "Obrigações de fazer (registrar, informar, manter documentos). Exemplos: escrituração de livros, emissão de notas fiscais, declarações de renda, informações ao fisco. Infrações a obrigações acessórias geram multas ainda que não haja imposto a pagar."
-          },
-          {
-            title: "Responsabilidade Tributária",
-            content: "Solidária: responsável junto com o devedor original. Subsidiária: responsável se devedor original não pagar. Pessoal: por infração da lei tributária (diretor, sócio que cometeu fraude). Permite fisco cobrar de terceiros se devedor não paga."
-          },
-          {
-            title: "Sujeitos da Obrigação Tributária",
-            content: "Sujeito Ativo: fisco (União, estados, municípios) que cobra. Sujeito Passivo: contribuinte que paga (pessoa física ou jurídica sobre quem incide tributo). Pode haver responsável tributário que não é contribuinte original."
+            title: "Suspensão do Crédito",
+            content: "Situações onde a cobrança é pausada, como moratória ou liminar judicial."
           }
         ]}
       />
-      <div>
-        <h3 className="text-lg font-semibold mb-4">Exemplos de Obrigações</h3>
-        <CardCarousel
-          cards={[
-            {
-              emoji: "📋",
-              title: "Obrigação Principal",
-              description: "Pessoa ganha renda (fato gerador). Surge obrigação de pagar IR. Estado (sujeito ativo) cobra da pessoa (sujeito passivo)."
-            },
-            {
-              emoji: "🗂️",
-              title: "Obrigação Acessória",
-              description: "Empresa obrigada a manter nota fiscal, registro de venda, declaração mensal. Infração: multa por falta de nota fiscal (mesmo sem imposto não pago)."
-            },
-            {
-              emoji: "⚖️",
-              title: "Responsabilidade Solidária",
-              description: "Sócio que aprovou fraude tributária é responsável solidário. Estado cobra imposto + multa do sócio se empresa não pagar."
-            }
-          ]}
-        />
-      </div>
+
+      <CardCarousel
+        cards={[
+          {
+            title: "Auto-Lançamento",
+            descricao: "A Petrobras declara e paga seus próprios impostos mensalmente (homologação).",
+            corFundo: "bg-emerald-100 dark:bg-emerald-900/30"
+          },
+          {
+            title: "Parcelamento",
+            descricao: "Uso de REFIS para regularizar débitos tributários antigos e suspender a cobrança.",
+            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+          },
+          {
+            title: "Decadência",
+            descricao: "Perda do prazo do Fisco para lançar o imposto (geralmente 5 anos).",
+            corFundo: "bg-amber-100 dark:bg-amber-900/30"
+          }
+        ]}
+      />
+
       <QuizInterativo
-        quiz={DIREITO_TRIBUTARIO_QUIZZES["modulo-5"]}
+        titulo="Obrigações e Crédito"
+        numero={5}
+        variant="amber"
+        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-5"].questions}
         onComplete={(score: number) => handleQuizComplete("modulo-5", score)}
       />
     </div>
@@ -591,98 +543,97 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
   const renderModulo6 = () => (
     <div className="space-y-6">
-      <ModuleBanner module={6} title="Fiscalização e Multas" />
+      <ModuleBanner
+        numero={6}
+        titulo="Fiscalização e Infrações"
+        descricao="O poder de polícia do Fisco e as punições por descumprimento."
+        variant="rose"
+      />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
           index={6}
-          title="Fiscalização e Multas"
-          description="Explore o processo de fiscalização, penalidades e direitos de defesa do contribuinte."
+          title="Poder de Império e Garantias do Contribuinte"
+          description="Como ocorrem os procedimentos fiscais e quais os limites da autoridade tributária."
           variant="rose"
         />
 
         <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
           <p>
-            A <strong>fiscalização tributária</strong> é o procedimento pelo qual o fisco verifica se contribuintes estão cumprindo obrigações de pagar e informar. A Receita Federal escolhe empresas para auditoria por critérios diversos: sorteio, análise de risco, denúncia anônima, anomalias em declarações. Auditor vai às dependências da empresa, solicita documentos, analisa livros e notas fiscais. Se encontra irregularidade, lavra um "Auto de Infração" documentando o ilícito. A empresa tem direito de defesa antes de decisão final.
+            O Fisco tem o poder de fiscalizar permanentemente todos os atos dos contribuintes. Isso inclui o acesso a livros contábeis, extratos bancários e sistemas eletrônicos. No entanto, esse poder não é absoluto; o fiscal deve seguir ritos legais e respeitar o sigilo de dados não tributários.
           </p>
           <p>
-            Existem diferentes tipos de <strong>multas tributárias</strong>: Multa de Ofício (por não pagar imposto no prazo — 0,5% ao mês até 20% do valor não pago), Multa por Infração (por violação de obrigação acessória — até R$ 20 mil ou percentual fixo), Multa por Fraude (aumentada, 75-150% do imposto — para casos de má-fé com falsificação). As multas são receita do tesouro e têm propósito arrecadador, não punitivo (diferente do direito penal).
+            As infrações podem ser por falta de pagamento ou por erro em obrigações acessórias. As <strong>multas</strong> podem ser moratórias (por atraso) ou punitivas (pelo descumprimento legal), chegando em alguns casos a 150% do valor do imposto. A regularidade fiscal é um pilar da governança corporativa da Petrobras.
           </p>
-          <p>
-            Um conceito importante é a <strong>Prescrição Tributária</strong> — o fisco tem até 5 anos para cobrar imposto após o período-base. Se não cobrar em 5 anos, prescreve e o débito é cancelado. Porém, se contribuinte entra em concordata/falência, o prazo interrompe. Contribuinte pode também ter prescrição de pena (após certo tempo de bom comportamento, multa por infração pode ser cancelada). Prescrição existe para criar segurança jurídica ao contribuinte.
-          </p>
-          <p>
-            Há direitos de <strong>Defesa e Recurso</strong> no processo fiscal. Auto de Infração é apenas comunicação — não é sentença. Contribuinte pode apresentar "Impugnação" (defesa) ao Auto, mostrando que não houve infração ou que interpretação foi errada. Se não concorda com julgamento, pode interpor recurso na CARF (Conselho Administrativo de Recursos Fiscais) — instância recursal administrativa. Essa estrutura de direito à defesa é garantia constitucional.
-          </p>
-          <p>
-            Neste módulo, você compreenderá todo o processo: como o fisco escolhe empresas para auditoria, como lavrá autos, como empresas se defendem, como funcionam multas e julgamentos. Verá exemplos práticos de Petrobras recebendo Autos (grande empresa sempre é auditada), recursos de defesa, e cálculo de multas sobre valores bilionários. Entenderá também por que ter documentação organizada e registros corretos é essencial — facilita defesa em caso de fiscalização.
-          </p>
-
-          <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">🔍 Processo Fiscal</p>
-            <ul className="text-sm space-y-1 text-foreground">
-              <li>✓ Seleção: Fisco escolhe por sorteio, risco ou denúncia</li>
-              <li>✓ Auditoria: Análise de documentos e registros</li>
-              <li>✓ Auto de Infração: Comunicação de irregularidade (não é sentença)</li>
-              <li>✓ Defesa: Direito a impugnação e recurso (CARF)</li>
-              <li>✓ Prescrição: 5 anos para fisco cobrar, segurança ao contribuinte</li>
-            </ul>
-          </div>
         </div>
       </section>
 
       <ModuleConsolidation
-        cards={[
-          { title: "Auditoria Fiscal", content: "Procedimento que fisco verifica documentos e registros", variant: getModuleVariant(6) },
-          { title: "Autos de Infração", content: "Documento que fisco lavra ao encontrar irregularidade", variant: getModuleVariant(6) },
-          { title: "Multa por Infração", content: "Penalidade proporcional à infração (até 150% do imposto)", variant: getModuleVariant(6) },
-          { title: "Recurso Administrativo", content: "Direito de recorrer de decisão do fisco", variant: getModuleVariant(6) },
-        ]}
+        index={6}
+        variant="rose"
+        video={{
+          videoId: "tributario-m6",
+          title: "Fiscalização e Multas",
+          duration: "07:50"
+        }}
+        resumoVisual={{
+          titulo: "Combate à Evasão",
+          itens: [
+            "Fiscalização: Verificação sistemática de conformidade",
+            "Auto de Infração: Documento que formaliza a multa",
+            "Defesa Administrativa: Direito de contestar no CARF"
+          ]
+        }}
+        maceteVisual={{
+          titulo: "Dica de Mestre",
+          texto: "Multa não é tributo! Tributo é obrigação, multa é punição."
+        }}
+        audio={{
+          url: "/audio/tributario-m6.mp3",
+          titulo: "Resumo Módulo 6",
+          artista: "Especialista Tributário"
+        }}
       />
+
       <ContentAccordion
-        sections={[
+        titulo="Ritos de Fiscalização"
+        slides={[
           {
-            title: "Processo de Fiscalização",
-            content: "Fisco escolhe empresas para auditoria (por sorteio, risco ou denúncia). Auditor analisa livros, notas fiscais, documentos. Se encontra irregularidade, lavra Auto de Infração. Contribuinte tem direito de defesa antes de decisão final."
+            title: "O Procedimento Fiscal",
+            content: "Termo de início de fiscalização e prazos para entrega de documentos ao auditor."
           },
           {
-            title: "Multas Tributárias",
-            content: "Multa de Ofício: por não pagar imposto (0,5% ao mês, máximo 20%). Multa por Infração: por infração de obrigação acessória (até R$ 20 mil ou percentual). Multa por Fraude: aumentada (75-150% do imposto). Multas são receita do tesouro, não têm fins punitivos apenas."
-          },
-          {
-            title: "Prazos de Cobrança e Prescrição",
-            content: "Prazo para fisco cobrar: 5 anos. Após 5 anos sem ação do fisco, prescreve. Porém, se contribuinte entra em concordata/falência, prazo interrompe. Contribuinte também tem prazo de defesa."
-          },
-          {
-            title: "Auditoria em Petrobras",
-            content: "Petrobras é auditada regularmente pela Receita Federal e auditorias internas. Registros de transações bilionárias exigem conformidade total. Multas de Petrobras podem ser altas (milhões de reais) se irregularidade detectada."
+            title: "Espécies de Multas",
+            content: "Multas isoladas (obrigações acessórias) vs Multas de ofício (falta de pagamento)."
           }
         ]}
       />
-      <div>
-        <h3 className="text-lg font-semibold mb-4">Exemplos de Fiscalização</h3>
-        <CardCarousel
-          cards={[
-            {
-              emoji: "🔍",
-              title: "Auditoria Fiscal Descoberta",
-              description: "Fisco constata que empresa não emitiu nota em venda. Auto de Infração: multa por obrigação acessória (omissão de informação)."
-            },
-            {
-              emoji: "⚠️",
-              title: "Cálculo de Multa",
-              description: "Imposto não pago: R$ 100 mil. Multa de ofício 20% = R$ 20 mil. Juros de mora + multa totalizam R$ 35 mil a pagar."
-            },
-            {
-              emoji: "📜",
-              title: "Recurso de Defesa",
-              description: "Empresa contesta auto de infração. Apresenta documentos mostrando que pagou imposto via compensação. Junta recurso administrativo ao fisco."
-            }
-          ]}
-        />
-      </div>
+
+      <CardCarousel
+        cards={[
+          {
+            title: "Auditoria interna",
+            descricao: "Equipes de compliance da Petrobras revisam os impostos antes do envio do SPED.",
+            corFundo: "bg-emerald-100 dark:bg-emerald-900/30"
+          },
+          {
+            title: "CARF",
+            descricao: "Conselho onde a Petrobras discute administrativamente cobranças bilionárias da Receita.",
+            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+          },
+          {
+            title: "Denúncia Espontânea",
+            descricao: "Pagar o erro antes de ser fiscalizado livra a empresa da multa punitiva.",
+            corFundo: "bg-amber-100 dark:bg-amber-900/30"
+          }
+        ]}
+      />
+
       <QuizInterativo
-        quiz={DIREITO_TRIBUTARIO_QUIZZES["modulo-6"]}
+        titulo="Fiscalização e Multas"
+        numero={6}
+        variant="rose"
+        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-6"].questions}
         onComplete={(score: number) => handleQuizComplete("modulo-6", score)}
       />
     </div>
