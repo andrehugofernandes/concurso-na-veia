@@ -36,7 +36,7 @@ export default function AulasPage() {
             if (user?.cargo === prof.id || user?.cargo === prof.nome) return;
 
             const materiasDessaProf = getProgramaDeEstudos(prof.id, false)
-                .filter(m => !['portugues', 'matematica'].includes(m.id));
+                .filter(m => !['portugues', 'matematica', 'fisica', 'quimica'].includes(m.id));
 
             if (materiasDessaProf.length > 0) {
                 const item = {
@@ -68,7 +68,7 @@ export default function AulasPage() {
         }
     }
 
-    const cargoNome = user?.cargo ? minhaGrade.filter(m => !['portugues', 'matematica', 'ingles'].includes(m.id))[0]?.descricao.split('para ')[1] || user.cargo : '';
+    const cargoNome = user?.cargo ? minhaGrade.filter(m => !['portugues', 'matematica', 'ingles', 'fisica', 'quimica'].includes(m.id))[0]?.descricao.split('para ')[1] || user.cargo : '';
 
     const loading = userLoading || progressLoading;
 
