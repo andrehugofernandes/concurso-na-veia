@@ -219,8 +219,12 @@ export default function AulasPage() {
 
                                 {prof.materias.length <= 3 ? (
                                     // Se 3 ou menos, mostra grid simples
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                        {prof.materias.map((m: MateriaConteudo) => renderMateriaCard(m, 'normal'))}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-max">
+                                        {prof.materias.map((m: MateriaConteudo) => (
+                                            <div key={m.id} className="h-full">
+                                                {renderMateriaCard(m, 'normal')}
+                                            </div>
+                                        ))}
                                     </div>
                                 ) : (
                                     // Se mais de 3, mostra em carrossel
@@ -228,7 +232,9 @@ export default function AulasPage() {
                                         <CarouselContent className="-ml-4">
                                             {prof.materias.map((m: MateriaConteudo) => (
                                                 <CarouselItem key={m.id} className="pl-4 basis-[calc(100%/3-16px)]">
-                                                    {renderMateriaCard(m, 'normal')}
+                                                    <div className="h-full">
+                                                        {renderMateriaCard(m, 'normal')}
+                                                    </div>
                                                 </CarouselItem>
                                             ))}
                                         </CarouselContent>
@@ -262,8 +268,12 @@ export default function AulasPage() {
 
                                 {prof.materias.length <= 3 ? (
                                     // Se 3 ou menos, mostra grid simples
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                        {prof.materias.map((m: MateriaConteudo) => renderMateriaCard(m, 'normal'))}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-max">
+                                        {prof.materias.map((m: MateriaConteudo) => (
+                                            <div key={m.id} className="h-full">
+                                                {renderMateriaCard(m, 'normal')}
+                                            </div>
+                                        ))}
                                     </div>
                                 ) : (
                                     // Se mais de 3, mostra em carrossel
@@ -271,7 +281,9 @@ export default function AulasPage() {
                                         <CarouselContent className="-ml-4">
                                             {prof.materias.map((m: MateriaConteudo) => (
                                                 <CarouselItem key={m.id} className="pl-4 basis-[calc(100%/3-16px)]">
-                                                    {renderMateriaCard(m, 'normal')}
+                                                    <div className="h-full">
+                                                        {renderMateriaCard(m, 'normal')}
+                                                    </div>
                                                 </CarouselItem>
                                             ))}
                                         </CarouselContent>
