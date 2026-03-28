@@ -1,3 +1,4 @@
+import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -25,6 +26,8 @@ import {
   QUIZ_M9_APLICACOES,
   QUIZ_M10_SIMULADO,
 } from "./data/geometria-plana-quizzes";
+
+const mv = [undefined, ...getAllModuleVariants()];
 
 export default function AulaGeometriaPlana({
   onComplete,
@@ -58,7 +61,7 @@ export default function AulaGeometriaPlana({
   const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_APLICACOES, 6));
   const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO, 6));
 
-  const isModuleUnlocked = (_index: number) => true;
+  const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
@@ -122,12 +125,10 @@ export default function AulaGeometriaPlana({
       {/* MÓDULO 1: POLÍGONOS — CLASSIFICAÇÃO E PROPRIEDADES               */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
-        <ModuleBanner
-          numero={1}
+        <ModuleBanner numero={1}
           titulo="Polígonos: Classificação e Propriedades"
           descricao="Domine a classificação de polígonos, soma dos ângulos internos e externos — fundamentos que a CESGRANRIO cobra todo concurso."
-          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
-        />
+           variant={mv[1]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -357,7 +358,7 @@ export default function AulaGeometriaPlana({
 
 
 <ModuleConsolidation
-            index={1}
+            index={3}
             variant="indigo"
             video={{
               videoId: "aN1mKSMWiow",
@@ -405,7 +406,7 @@ export default function AulaGeometriaPlana({
               questoes={quizM1}
               titulo="QUIZ: Polígonos"
               icone="🔷"
-              numero={3}
+              numero={4}
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -449,12 +450,10 @@ export default function AulaGeometriaPlana({
       {/* MÓDULO 2: TRIÂNGULOS — TIPOS E PROPRIEDADES                      */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
-        <ModuleBanner
-          numero={2}
+        <ModuleBanner numero={2}
           titulo="Triângulos: Tipos e Propriedades"
           descricao="Classifique triângulos quanto aos lados e ângulos, aplique a desigualdade triangular e o teorema do ângulo externo."
-          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
-        />
+           variant={mv[2]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -630,7 +629,7 @@ export default function AulaGeometriaPlana({
               questoes={quizM2}
               titulo="Quiz — Triângulos"
               icone="🔺"
-              numero={2}
+              numero={3}
               variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -662,12 +661,10 @@ export default function AulaGeometriaPlana({
       {/* MÓDULO 3: ÁREA DO TRIÂNGULO                                       */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
-        <ModuleBanner
-          numero={3}
+        <ModuleBanner numero={3}
           titulo="Área do Triângulo"
           descricao="Calcule áreas com a fórmula clássica, pela Fórmula de Heron e casos especiais: retângulo, equilátero e isósceles."
-          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
-        />
+           variant={mv[3]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -782,7 +779,7 @@ export default function AulaGeometriaPlana({
 
 
 <ModuleConsolidation
-            index={3}
+            index={2}
             variant="cyan"
             video={{
               videoId: "K7eVVVHGDe4",
@@ -838,7 +835,7 @@ export default function AulaGeometriaPlana({
               questoes={quizM3}
               titulo="QUIZ: Área do Triângulo"
               icone="📐"
-              numero={4}
+              numero={3}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -875,12 +872,10 @@ export default function AulaGeometriaPlana({
       {/* MÓDULO 4: QUADRILÁTEROS — TIPOS E ÁREAS                          */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
-        <ModuleBanner
-          numero={4}
+        <ModuleBanner numero={4}
           titulo="Quadriláteros: Tipos e Áreas"
           descricao="Domine retângulo, quadrado, losango, paralelogramo e trapézio — com todas as fórmulas de área e propriedades para a prova."
-          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
-        />
+           variant={mv[4]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1054,7 +1049,7 @@ export default function AulaGeometriaPlana({
 
 
 <ModuleConsolidation
-            index={4}
+            index={3}
             variant="blue"
             video={{
               videoId: "ZcX-8SmG6nA",
@@ -1146,12 +1141,10 @@ export default function AulaGeometriaPlana({
       {/* MÓDULO 5: CÍRCULO E CIRCUNFERÊNCIA                               */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
-        <ModuleBanner
-          numero={5}
+        <ModuleBanner numero={5}
           titulo="Círculo e Circunferência"
           descricao="Área, comprimento, setores e coroas circulares — fundamento para cálculo de seções de dutos, tanques e vedações."
-          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
-        />
+           variant={mv[5]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1263,7 +1256,7 @@ export default function AulaGeometriaPlana({
 
 
 <ModuleConsolidation
-            index={5}
+            index={2}
             variant="amber"
             video={{
               videoId: "p-e5Ot_BDOA",
@@ -1315,7 +1308,7 @@ export default function AulaGeometriaPlana({
               questoes={quizM5}
               titulo="QUIZ: Círculo e Circunferência"
               icone="⭕"
-              numero={6}
+              numero={3}
               variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1353,12 +1346,10 @@ export default function AulaGeometriaPlana({
       {/* MÓDULO 6: SEMELHANÇA DE TRIÂNGULOS                               */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-6" className="space-y-[50px]">
-        <ModuleBanner
-          numero={6}
+        <ModuleBanner numero={6}
           titulo="Semelhança de Triângulos"
           descricao="Critérios AA, LAL e LLL, escalas de plantas industriais e razões de lados, áreas e volumes em figuras semelhantes."
-          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
-        />
+           variant={mv[6]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1460,7 +1451,7 @@ export default function AulaGeometriaPlana({
 
           <section id="quiz-modulo-6" className="mt-16">
           <ModuleConsolidation
-            index={6}
+            index={2}
             variant="rose"
             video={{
               videoId: "t4WdZDvp8Ps",
@@ -1512,7 +1503,7 @@ export default function AulaGeometriaPlana({
               questoes={quizM6}
               titulo="Quiz — Semelhança de Triângulos"
               icone="🔍"
-              numero={6}
+              numero={3}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1524,12 +1515,10 @@ export default function AulaGeometriaPlana({
       {/* MÓDULO 7: TEOREMA DE PITÁGORAS E APLICAÇÕES                      */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-7" className="space-y-[50px]">
-        <ModuleBanner
-          numero={7}
+        <ModuleBanner numero={7}
           titulo="Teorema de Pitágoras e Aplicações"
           descricao="O teorema mais usado em engenharia: cabos, diagonais, alturas e ternas pitagóricas essenciais para concursos."
-          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
-        />
+           variant={mv[7]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1640,7 +1629,7 @@ export default function AulaGeometriaPlana({
 
 
 <ModuleConsolidation
-            index={7}
+            index={2}
             variant="indigo"
             video={{
               videoId: "v4Zl1qZpXv4",
@@ -1693,7 +1682,7 @@ export default function AulaGeometriaPlana({
               questoes={quizM7}
               titulo="QUIZ: Teorema de Pitágoras"
               icone="📐"
-              numero={8}
+              numero={3}
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1705,12 +1694,10 @@ export default function AulaGeometriaPlana({
       {/* MÓDULO 8: RAZÃO E ÁREAS SEMELHANTES                              */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-8" className="space-y-[50px]">
-        <ModuleBanner
-          numero={8}
+        <ModuleBanner numero={8}
           titulo="Razão de Semelhança e Áreas"
           descricao="Domine a relação entre razão de semelhança, áreas e volumes — a mais cobrada em questões avançadas de Geometria Plana."
-          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
-        />
+           variant={mv[8]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1835,7 +1822,7 @@ export default function AulaGeometriaPlana({
 
 
 <ModuleConsolidation
-            index={8}
+            index={2}
             variant="emerald"
             video={{
               videoId: "JQuBrpJv2K8",
@@ -1888,7 +1875,7 @@ export default function AulaGeometriaPlana({
               questoes={quizM8}
               titulo="Quiz — Razão de Semelhança e Áreas"
               icone="📊"
-              numero={8}
+              numero={3}
               variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1900,12 +1887,10 @@ export default function AulaGeometriaPlana({
       {/* MÓDULO 9: APLICAÇÕES PETROBRAS                                   */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-9" className="space-y-[50px]">
-        <ModuleBanner
-          numero={9}
+        <ModuleBanner numero={9}
           titulo="Aplicações Industriais Petrobras"
           descricao="Seções de dutos, plantas de refinaria, maquetes de plataforma e cálculo de área útil — Geometria Plana no contexto real da Petrobras."
-          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
-        />
+           variant={mv[9]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2024,7 +2009,7 @@ export default function AulaGeometriaPlana({
 
 
 <ModuleConsolidation
-            index={9}
+            index={2}
             variant="cyan"
             video={{
               videoId: "xKh0_l-Wevs",
@@ -2077,7 +2062,7 @@ export default function AulaGeometriaPlana({
               questoes={quizM9}
               titulo="QUIZ: Aplicações Industriais"
               icone="🏭"
-              numero={10}
+              numero={3}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2089,12 +2074,10 @@ export default function AulaGeometriaPlana({
       {/* MÓDULO 10: SIMULADO CESGRANRIO                                   */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
-        <ModuleBanner
-          numero={10}
+        <ModuleBanner numero={10}
           titulo="Simulado Final CESGRANRIO"
           descricao="Questões no padrão CESGRANRIO integrando todos os tópicos de Geometria Plana. Prove que você está pronto para a prova real."
-          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
-        />
+           variant={mv[10]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2158,7 +2141,7 @@ export default function AulaGeometriaPlana({
 
 
 <ModuleConsolidation
-            index={10}
+            index={2}
             variant="blue"
             video={{
               videoId: "1N7NcVB0pN8",
@@ -2216,7 +2199,7 @@ export default function AulaGeometriaPlana({
               questoes={quizM10}
               titulo="QUIZ: Simulado Final"
               icone="🏆"
-              numero={11}
+              numero={3}
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />

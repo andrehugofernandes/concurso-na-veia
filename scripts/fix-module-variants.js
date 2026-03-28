@@ -163,6 +163,30 @@ for (const filePath of files) {
       searchPos = mcIdx + newTag.length;
     }
 
+    // 2d: Re-indexar QuizInterativo numero={continua + 1}
+    searchPos = 0;
+    while (true) {
+      const qIdx = section.indexOf("<QuizInterativo", searchPos);
+      if (qIdx === -1) break;
+
+      const tagEnd = findTagEnd(section, qIdx);
+      if (tagEnd === -1) { searchPos = qIdx + 1; continue; }
+
+      const tagStr = section.substring(qIdx, tagEnd);
+      sectionIndex++; // Quiz é o último número na sequência
+
+      const newTag = tagStr.replace(/\bnumero=\{(\d+)\}/, () => {
+        fileIndexFixes++;
+        return `numero={${sectionIndex}}`;
+      });
+
+      if (newTag !== tagStr) {
+        section = section.substring(0, qIdx) + newTag + section.substring(tagEnd);
+      }
+
+      searchPos = qIdx + newTag.length;
+    }
+
     content =
       content.substring(0, startIndex) + section + content.substring(endIndex);
   }
@@ -213,7 +237,7 @@ for (const filePath of files) {
 }
 
 console.log(
-  `\nTotal: ${totalFilesChanged} arquivos, ${totalReplacements} variants, ${totalIndexFixes} indexes`
+  `\nTotal: ${totalFilesChanged} arquivos, ${totalReplacements} variants, ${totalIndexFixes} indexes/numeros`
 );
 if (totalBlocked > 0) {
   console.log(`⚠️  ${totalBlocked} arquivo(s) BLOQUEADO(s) por segurança. Use --force para forçar.`);
@@ -222,24 +246,27 @@ if (totalBlocked > 0) {
 /**
  * Encontra o fim de uma tag JSX self-closing (/>), respeitando chaves { }.
  * Retorna a posição APÓS o />, ou -1 se não encontrou.
+ * MELHORADO: Ignora tags aninhadas (< >) e foca apenas no fechamento /> de nível 0.
  */
 function findTagEnd(content, startIdx) {
   let braceDepth = 0;
   let i = startIdx;
+  
   // Pula o nome da tag
-  while (i < content.length && content[i] !== " " && content[i] !== "\n" && content[i] !== "/") i++;
+  while (i < content.length && !/[\s\n/>]/.test(content[i])) i++;
 
   while (i < content.length - 1) {
     const ch = content[i];
+    
+    // Rastreia chaves {} para não confundir /> dentro de strings ou props complexas
     if (ch === "{") braceDepth++;
     else if (ch === "}") braceDepth--;
-    else if (ch === "/" && content[i + 1] === ">" && braceDepth === 0) {
+    
+    // Se encontrarmos /> em braceDepth 0, e ele for o FECHAMENTO da tag principal
+    if (braceDepth === 0 && ch === "/" && content[i + 1] === ">") {
       return i + 2;
     }
-    // Safety: se encontrar abertura de outra tag sem ter fechado, aborta
-    else if (ch === "<" && braceDepth === 0 && i > startIdx + 10) {
-      return -1;
-    }
+    
     i++;
   }
   return -1;

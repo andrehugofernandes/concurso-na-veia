@@ -231,14 +231,14 @@ export default function AulaPontuacao({
                   icone: <LuFileText />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         A vírgula é o sinal mais versátil e mais cobrado em
                         provas. Ela separa elementos de mesma função sintática
                         (enumerações), isola termos intercalados (aposto,
                         vocativo, adjunto deslocado) e marca orações inseridas
                         dentro do período.
                       </p>
-                      <div className="p-4 bg-red-500/5 border border-red-500/20 rounded-xl text-sm">
+                      <div className="p-4 bg-red-500/5 border border-red-500/20 rounded-xl text-lg">
                         ❌ Nunca deve separar o sujeito do verbo nem o verbo do
                         objeto direto.
                       </div>
@@ -250,7 +250,7 @@ export default function AulaPontuacao({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O ponto final encerra um período declarativo ou
                         imperativo. Marca a conclusão completa de uma ideia.
                         Também é usado em abreviações (Dr., Eng.). Em provas da
@@ -265,7 +265,7 @@ export default function AulaPontuacao({
                   icone: <LuLayers />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O ponto e vírgula indica uma pausa maior que a vírgula
                         e menor que o ponto final. É usado para separar orações
                         coordenadas extensas que já contêm vírgulas internas e
@@ -280,13 +280,13 @@ export default function AulaPontuacao({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Os dois-pontos anunciam o que vem a seguir: uma
                         enumeração, uma citação direta, uma explicação ou uma
                         conclusão. São obrigatórios antes de discurso direto e
                         em enumerações que sumarizam o sujeito da oração.
                       </p>
-                      <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl italic text-sm">
+                      <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl italic text-lg">
                         "Trouxe tudo: relatórios, planilhas e contratos."
                       </div>
                     </div>
@@ -297,13 +297,13 @@ export default function AulaPontuacao({
                   icone: <LuArrowRight />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O travessão isola explicações intercaladas com maior
                         destaque que o parênteses ou as vírgulas. Também marca
                         a fala de personagens em discurso direto. O travessão
                         duplo dá ênfase ao trecho intercalado.
                       </p>
-                      <div className="p-4 bg-purple-500/5 border border-purple-500/20 rounded-xl italic text-sm">
+                      <div className="p-4 bg-purple-500/5 border border-purple-500/20 rounded-xl italic text-lg">
                         "O laudo — aprovado por todos — foi publicado."
                       </div>
                     </div>
@@ -314,7 +314,7 @@ export default function AulaPontuacao({
                   icone: <LuMessageCircle />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         As reticências indicam suspensão do pensamento,
                         hesitação, omissão intencional de parte do texto citado,
                         ou um sentido implícito deixado para o leitor
@@ -340,13 +340,13 @@ export default function AulaPontuacao({
                   <div className="text-center space-y-2">
                     <LuShield className="h-8 w-8 text-blue-400 mx-auto" />
                     <p className="font-bold text-lg">Pontuação Normativa</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Regras gramaticais obrigatórias
                     </p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p>✅ Segue as normas da gramática tradicional</p>
                     <p>✅ Cobrada em provas de concursos públicos</p>
                     <p>✅ Exemplo: vírgula isolando aposto e vocativo</p>
@@ -359,13 +359,13 @@ export default function AulaPontuacao({
                   <div className="text-center space-y-2">
                     <LuMusic className="h-8 w-8 text-purple-400 mx-auto" />
                     <p className="font-bold text-lg">Pontuação Expressiva</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Escolha estilística do autor
                     </p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p>🎨 Usada com liberdade em textos literários</p>
                     <p>🎨 Cria ritmo, ênfase e efeitos dramáticos</p>
                     <p>🎨 Exemplo: reticências para criar suspense</p>
@@ -449,17 +449,17 @@ export default function AulaPontuacao({
                   icone: <LuCircleX />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Jamais separe o sujeito (simples ou composto) de seu
                         predicado por vírgula. Mesmo que o sujeito seja longo,
                         a regra é categórica.
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-lg">
                           ❌ "A equipe de engenharia da plataforma P-36,
                           concluiu a inspeção."
                         </div>
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-lg">
                           ✅ "A equipe de engenharia da plataforma P-36
                           concluiu a inspeção."
                         </div>
@@ -472,17 +472,17 @@ export default function AulaPontuacao({
                   icone: <LuCircleX />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O verbo e seu objeto direto (sem preposição) formam um
                         bloco inseparável. Inserir vírgula entre eles é erro
                         grave de pontuação.
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-lg">
                           ❌ "O inspetor verificou, todos os registros de
                           pressão."
                         </div>
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-lg">
                           ✅ "O inspetor verificou todos os registros de
                           pressão."
                         </div>
@@ -495,16 +495,16 @@ export default function AulaPontuacao({
                   icone: <LuCircleX />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O objeto indireto (com preposição obrigatória) também
                         não admite vírgula de separação do verbo que o rege.
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-lg">
                           ❌ "A diretora informou, ao conselho sobre os
                           resultados."
                         </div>
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-lg">
                           ✅ "A diretora informou ao conselho sobre os
                           resultados."
                         </div>
@@ -517,16 +517,16 @@ export default function AulaPontuacao({
                   icone: <LuCircleX />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Em orações com verbos de ligação (ser, estar, ficar,
                         parecer etc.), nunca separe o verbo de ligação do
                         predicativo do sujeito por vírgula.
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-lg">
                           ❌ "O relatório final ficou, incompleto."
                         </div>
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-lg">
                           ✅ "O relatório final ficou incompleto."
                         </div>
                       </div>
@@ -538,18 +538,18 @@ export default function AulaPontuacao({
                   icone: <LuCircleX />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Não se usa vírgula antes das conjunções integrantes
                         "que" e "se" quando introduzem oração subordinada
                         substantiva em posição normal (depois do verbo da
                         oração principal).
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-lg">
                           ❌ "A gerência decidiu, que o projeto seria
                           aprovado."
                         </div>
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-lg">
                           ✅ "A gerência decidiu que o projeto seria aprovado."
                         </div>
                       </div>
@@ -580,16 +580,16 @@ export default function AulaPontuacao({
                   <div className="text-center space-y-3 p-2">
                     <LuEye className="h-7 w-7 text-yellow-400 mx-auto" />
                     <p className="font-bold">Analise esta frase:</p>
-                    <p className="italic text-sm">
+                    <p className="italic text-lg">
                       "Os operadores da Petrobras, treinaram por seis meses."
                     </p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Vire para ver a resposta
                     </p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-3 text-sm">
+                  <div className="space-y-3 text-lg">
                     <p className="font-bold text-red-400">❌ ERRADA</p>
                     <p>
                       A vírgula após "Petrobras" separa ilegalmente o sujeito
@@ -607,16 +607,16 @@ export default function AulaPontuacao({
                   <div className="text-center space-y-3 p-2">
                     <LuEye className="h-7 w-7 text-yellow-400 mx-auto" />
                     <p className="font-bold">Analise esta frase:</p>
-                    <p className="italic text-sm">
+                    <p className="italic text-lg">
                       "O coordenador solicitou, a revisão do contrato."
                     </p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Vire para ver a resposta
                     </p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-3 text-sm">
+                  <div className="space-y-3 text-lg">
                     <p className="font-bold text-red-400">❌ ERRADA</p>
                     <p>
                       A vírgula após "solicitou" separa o verbo de seu objeto
@@ -634,9 +634,9 @@ export default function AulaPontuacao({
 
           <QuizInterativo
             questoes={QUIZ_M2_PONTUACAO}
-            titulo="Fixação - Módulo 2"
+            titulo="QUIZ: Módulo Nº 2"
             icone="🎯"
-            numero={2}
+            numero={5}
             variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
@@ -665,7 +665,7 @@ export default function AulaPontuacao({
                   icone: <LuLayers />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Usada para separar elementos de mesma função sintática
                         sem conjunção entre eles.
                       </p>
@@ -681,14 +681,14 @@ export default function AulaPontuacao({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         A vírgula substitui um verbo já mencionado
                         anteriormente.
                       </p>
                       <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl italic">
                         "João prefere o mar; Pedro, a terra."
                         <br />{" "}
-                        <span className="text-xs opacity-60">
+                        <span className="text-lg opacity-60">
                           (A vírgula substitui "prefere")
                         </span>
                       </div>
@@ -712,17 +712,17 @@ export default function AulaPontuacao({
                   icone: <LuLayers />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Na ordem direta (Sujeito + Verbo + Objeto), nunca há
                         vírgula separando esses termos essenciais. A vírgula só
                         aparece quando um termo intercalado (aposto, adjunto
                         deslocado, oração explicativa) rompe essa sequência.
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-lg">
                           ✅ "A Petrobras produziu petróleo." (SVO sem vírgula)
                         </div>
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-lg">
                           ✅ "A Petrobras, empresa estatal, produziu petróleo."
                           (aposto intercalado entre vírgulas)
                         </div>
@@ -735,12 +735,12 @@ export default function AulaPontuacao({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Quando todos os elementos de uma lista são separados por
                         vírgula, sem conjunção no final, cria-se um efeito de
                         lista exaustiva e acumulativa (assíndeto).
                       </p>
-                      <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl italic text-sm">
+                      <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl italic text-lg">
                         "Chegou, olhou, avaliou, assinou." — ritmo acelerado,
                         ações sequenciais rápidas.
                       </div>
@@ -752,17 +752,17 @@ export default function AulaPontuacao({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O padrão mais comum em textos formais: vírgulas
                         separando os primeiros elementos e conjunção "e" / "ou"
                         antes do último. A vírgula antes da conjunção final
                         (serial comma) é facultativa no português brasileiro.
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-xl text-lg">
                           ✅ "Comprou brocas, compressores e bombas."
                         </div>
-                        <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-xl text-lg">
                           ✅ "Comprou brocas, compressores, e bombas."
                           (facultativa)
                         </div>
@@ -827,7 +827,7 @@ export default function AulaPontuacao({
               <FlipCard
                 frente={<div className="font-bold">VOCATIVO</div>}
                 verso={
-                  <div className="space-y-3 text-xs">
+                  <div className="space-y-3 text-lg">
                     <p>
                       <strong>Conceito:</strong> Chamamento direto.
                     </p>
@@ -841,7 +841,7 @@ export default function AulaPontuacao({
               <FlipCard
                 frente={<div className="font-bold">APOSTO</div>}
                 verso={
-                  <div className="space-y-3 text-xs">
+                  <div className="space-y-3 text-lg">
                     <p>
                       <strong>Conceito:</strong> Explicação de um termo.
                     </p>
@@ -868,13 +868,13 @@ export default function AulaPontuacao({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O aposto explicativo retoma um termo anterior e o
                         explica ou detalha. Vem sempre entre vírgulas (ou entre
                         travessões / parênteses) quando está intercalado, ou
                         precedido de vírgula quando está no final da oração.
                       </p>
-                      <div className="p-4 bg-cyan-500/5 border border-cyan-500/20 rounded-xl italic text-sm">
+                      <div className="p-4 bg-cyan-500/5 border border-cyan-500/20 rounded-xl italic text-lg">
                         "O diretor da unidade, Carlos Ferreira, assinou o
                         contrato." — aposto intercalado.
                         <br />
@@ -889,12 +889,12 @@ export default function AulaPontuacao({
                   icone: <LuLayers />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O aposto enumerativo detalha o termo anterior por meio
                         de uma lista. Geralmente é introduzido por dois-pontos
                         antes da enumeração.
                       </p>
-                      <div className="p-4 bg-cyan-500/5 border border-cyan-500/20 rounded-xl italic text-sm">
+                      <div className="p-4 bg-cyan-500/5 border border-cyan-500/20 rounded-xl italic text-lg">
                         "Contrataram três especialistas: um geólogo, um químico
                         e um engenheiro."
                       </div>
@@ -906,13 +906,13 @@ export default function AulaPontuacao({
                   icone: <LuMessageCircle />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Quando o vocativo inicia a oração, é seguido por
                         vírgula. Quando está no meio, é isolado por duas
                         vírgulas. Quando encerra a oração, é precedido por
                         vírgula.
                       </p>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-2 text-lg">
                         <div className="p-3 bg-teal-500/10 border border-teal-500/30 rounded-xl">
                           ✅ "Senhoras e senhores, o evento está aberto."
                         </div>
@@ -931,7 +931,7 @@ export default function AulaPontuacao({
                   icone: <LuTriangleAlert />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         A banca costuma confundir o candidato apresentando um
                         predicativo do sujeito e chamando-o de aposto. O
                         predicativo do sujeito é ligado ao sujeito por um verbo
@@ -939,11 +939,11 @@ export default function AulaPontuacao({
                         significado. O aposto é acessório e pode ser removido.
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-lg">
                           "Ele é engenheiro." — "engenheiro" é predicativo, não
                           aposto. Sem vírgula.
                         </div>
-                        <div className="p-3 bg-teal-500/10 border border-teal-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-teal-500/10 border border-teal-500/30 rounded-xl text-lg">
                           "Ele, o engenheiro-chefe, assinou." — aposto
                           explicativo. Com vírgulas.
                         </div>
@@ -964,9 +964,9 @@ export default function AulaPontuacao({
 
           <QuizInterativo
             questoes={QUIZ_M4_PONTUACAO}
-            titulo="Fixação - Módulo 4"
+            titulo="QUIZ: Módulo Nº 4"
             icone="🎯"
-            numero={4}
+            numero={6}
             variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
@@ -995,7 +995,7 @@ export default function AulaPontuacao({
             <div className="p-6 bg-emerald-500/5 border border-emerald-500/20 rounded-2xl space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-1">
-                  <span className="text-xs font-bold text-muted-foreground uppercase">
+                  <span className="text-lg font-bold text-muted-foreground uppercase">
                     Curto (Facultativa)
                   </span>
                   <p className="font-medium">
@@ -1003,7 +1003,7 @@ export default function AulaPontuacao({
                   </p>
                 </div>
                 <div className="space-y-1">
-                  <span className="text-xs font-bold text-muted-foreground uppercase">
+                  <span className="text-lg font-bold text-muted-foreground uppercase">
                     Longo (Obrigatória)
                   </span>
                   <p className="font-medium">
@@ -1027,14 +1027,14 @@ export default function AulaPontuacao({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O adjunto adverbial é um termo acessório que modifica o
                         verbo, um adjetivo ou um advérbio, indicando
                         circunstâncias como tempo, lugar, modo, causa,
                         condição, etc. Sua posição natural é após o verbo ou no
                         final da oração.
                       </p>
-                      <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl italic text-sm">
+                      <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl italic text-lg">
                         Posição natural: "O inspetor verificou os registros{" "}
                         <strong>no dia seguinte</strong>."
                         <br />
@@ -1049,16 +1049,16 @@ export default function AulaPontuacao({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Adjuntos de uma ou duas palavras deslocados para o
                         início da oração admitem o uso ou a omissão da vírgula.
                         Ambas as formas são consideradas corretas.
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-lg">
                           ✅ "Ontem, concluímos o relatório."
                         </div>
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-lg">
                           ✅ "Ontem concluímos o relatório."
                         </div>
                       </div>
@@ -1070,17 +1070,17 @@ export default function AulaPontuacao({
                   icone: <LuCircleCheck />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Adjuntos adverbiais longos (locuções prepositivas,
                         orações adverbiais) deslocados para o início da frase
                         exigem vírgula obrigatória após eles.
                       </p>
                       <div className="space-y-2">
-                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-lg">
                           ❌ "Durante o processo de certificação de segurança
                           operacional todos os técnicos foram convocados."
                         </div>
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-lg">
                           ✅ "Durante o processo de certificação de segurança
                           operacional, todos os técnicos foram convocados."
                         </div>
@@ -1093,12 +1093,12 @@ export default function AulaPontuacao({
                   icone: <LuArrowRight />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Quando o adjunto adverbial aparece entre o sujeito e o
                         verbo, ou entre o verbo e o objeto, ele deve
                         obrigatoriamente ser isolado por duas vírgulas.
                       </p>
-                      <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl italic text-sm">
+                      <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl italic text-lg">
                         "A equipe, <strong>em razão do prazo</strong>,
                         trabalhou no fim de semana." — adjunto intercalado
                         isolado por vírgulas.
@@ -1155,7 +1155,7 @@ export default function AulaPontuacao({
               title="A Conjunção 'E'"
               variant="cyan"
             />
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground text-lg">
               Geralmente o 'E' não pede vírgula, mas em 3 situações ele é seu
               melhor amigo:
             </p>
@@ -1193,17 +1193,17 @@ export default function AulaPontuacao({
                   icone: <LuLayers />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         As conjunções aditivas somam orações de mesmo valor.
                         Com "e" e sujeito idêntico, não se usa vírgula. Com
                         sujeitos diferentes, usa-se vírgula antes do "e".
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-teal-500/10 border border-teal-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-teal-500/10 border border-teal-500/30 rounded-xl text-lg">
                           ✅ "O analista coletou e analisou os dados." (sujeito
                           igual — sem vírgula)
                         </div>
-                        <div className="p-3 bg-teal-500/10 border border-teal-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-teal-500/10 border border-teal-500/30 rounded-xl text-lg">
                           ✅ "O analista coletou os dados, e a equipe os
                           analisou." (sujeitos diferentes — vírgula)
                         </div>
@@ -1216,17 +1216,17 @@ export default function AulaPontuacao({
                   icone: <LuArrowRight />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         As conjunções adversativas indicam oposição ou contraste
                         entre as orações. A vírgula antes delas é sempre
                         obrigatória, independentemente de os sujeitos serem
                         iguais ou diferentes.
                       </p>
                       <div className="space-y-2">
-                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-xl text-lg">
                           ✅ "Estudou muito, mas não foi aprovado."
                         </div>
-                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-xl text-lg">
                           ✅ "Trabalhou durante anos; contudo, não foi
                           reconhecido." (com ponto e vírgula também correto)
                         </div>
@@ -1239,17 +1239,17 @@ export default function AulaPontuacao({
                   icone: <LuCircleCheck />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         As conjunções conclusivas concluem a ideia da oração
                         anterior. Sempre exigem vírgula antes delas (quando
                         iniciam a segunda oração) ou após elas (quando
                         intercaladas).
                       </p>
                       <div className="space-y-2">
-                        <div className="p-3 bg-teal-500/10 border border-teal-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-teal-500/10 border border-teal-500/30 rounded-xl text-lg">
                           ✅ "Concluiu todas as etapas, logo foi promovido."
                         </div>
-                        <div className="p-3 bg-teal-500/10 border border-teal-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-teal-500/10 border border-teal-500/30 rounded-xl text-lg">
                           ✅ "Concluiu todas as etapas; portanto, foi
                           promovido." (portanto intercalado: vírgula após)
                         </div>
@@ -1262,13 +1262,13 @@ export default function AulaPontuacao({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         As conjunções alternativas indicam alternância de ações
                         ou situações. Nas correlativas (ou...ou, ora...ora,
                         seja...seja), usa-se vírgula antes de cada repetição da
                         conjunção a partir da segunda ocorrência.
                       </p>
-                      <div className="p-4 bg-cyan-500/5 border border-cyan-500/20 rounded-xl italic text-sm">
+                      <div className="p-4 bg-cyan-500/5 border border-cyan-500/20 rounded-xl italic text-lg">
                         "Ou aprova o orçamento, ou cancela o projeto." — vírgula
                         antes do segundo "ou".
                         <br />
@@ -1286,13 +1286,13 @@ export default function AulaPontuacao({
                   <div className="text-center space-y-2">
                     <LuCircleCheck className="h-8 w-8 text-emerald-400 mx-auto" />
                     <p className="font-bold">Vírgula Obrigatória</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Conjunções que sempre pedem vírgula
                     </p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p>✅ Adversativas: mas, porém, contudo, todavia</p>
                     <p>✅ Conclusivas: logo, portanto, por isso, assim</p>
                     <p>✅ Explicativas: pois, porque (= pois)</p>
@@ -1305,13 +1305,13 @@ export default function AulaPontuacao({
                   <div className="text-center space-y-2">
                     <LuCircleX className="h-8 w-8 text-red-400 mx-auto" />
                     <p className="font-bold">Vírgula Proibida</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Situações que não admitem vírgula
                     </p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p>❌ "E" com sujeito idêntico nas duas orações</p>
                     <p>❌ "Ou" simples com sujeito idêntico</p>
                     <p>❌ "Nem" em primeira ocorrência</p>
@@ -1334,9 +1334,9 @@ export default function AulaPontuacao({
 
           <QuizInterativo
             questoes={QUIZ_M6_PONTUACAO}
-            titulo="Fixação - Módulo 6"
+            titulo="QUIZ: Módulo Nº 6"
             icone="🎯"
-            numero={6}
+            numero={8}
             variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
@@ -1390,18 +1390,18 @@ export default function AulaPontuacao({
                   icone: <LuArrowRight />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Quando a oração subordinada adverbial (causal,
                         condicional, temporal, concessiva etc.) aparece antes
                         da oração principal, a vírgula é obrigatória ao final
                         dela, separando-a da principal.
                       </p>
                       <div className="space-y-2">
-                        <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-lg">
                           ✅ "Se houver vazamento, desligue a válvula." (cond.
                           antes da principal)
                         </div>
-                        <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-lg">
                           ✅ "Embora chovesse, a operação continuou." (concess.
                           antes)
                         </div>
@@ -1414,18 +1414,18 @@ export default function AulaPontuacao({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Quando a oração subordinada adverbial vem após a
                         principal, a vírgula torna-se facultativa para a maioria
                         dos tipos. Para as causais e as explicativas com
                         "porque", ela é recomendada.
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-lg">
                           ✅ "Desligue a válvula se houver vazamento."
                           (facultativa)
                         </div>
-                        <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-lg">
                           ✅ "Não compareceu, porque estava doente." (causal —
                           recomendada)
                         </div>
@@ -1438,7 +1438,7 @@ export default function AulaPontuacao({
                   icone: <LuLightbulb />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Esta é a distinção mais cobrada em provas sobre
                         subordinadas. A relativa explicativa (com vírgula) se
                         aplica a todos os membros do grupo referenciado. A
@@ -1446,12 +1446,12 @@ export default function AulaPontuacao({
                         subconjunto.
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-lg">
                           ✅ "Os geólogos, que estudaram no exterior, são
                           competentes." — TODOS os geólogos estudaram fora e
                           são competentes.
                         </div>
-                        <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-xl text-lg">
                           ✅ "Os geólogos que estudaram no exterior são
                           competentes." — Apenas os que estudaram fora.
                         </div>
@@ -1464,7 +1464,7 @@ export default function AulaPontuacao({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         As orações subordinadas substantivas (introduzidas por
                         "que" integrante ou "se" integrante) em posição normal
                         (após o verbo da principal) não recebem vírgula. A
@@ -1472,10 +1472,10 @@ export default function AulaPontuacao({
                         da principal.
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-lg">
                           ❌ "Espera-se, que o projeto seja aprovado."
                         </div>
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-lg">
                           ✅ "Espera-se que o projeto seja aprovado."
                         </div>
                       </div>
@@ -1526,7 +1526,7 @@ export default function AulaPontuacao({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O ponto-e-vírgula é uma pausa mais longa que a vírgula e
                         mais curta que o ponto final.
                       </p>
@@ -1553,14 +1553,14 @@ export default function AulaPontuacao({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O ponto final é usado para encerrar períodos
                         declarativos e imperativos. Também aparece em
                         abreviações (Prof., Sr., Dr., Eng., p. ex.). Não se usa
                         ponto final em títulos isolados nem em subtítulos quando
                         seguidos de texto.
                       </p>
-                      <div className="p-4 bg-orange-500/5 border border-orange-500/20 rounded-xl text-sm">
+                      <div className="p-4 bg-orange-500/5 border border-orange-500/20 rounded-xl text-lg">
                         ✅ "A reunião encerrou às 18h." (período declarativo)
                         <br />
                         ✅ "Assine o documento." (imperativo)
@@ -1575,14 +1575,14 @@ export default function AulaPontuacao({
                   icone: <LuLayers />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O ponto e vírgula tem três empregos clássicos: (1)
                         separar orações coordenadas longas que já têm vírgulas
                         internas; (2) separar itens de uma lista após
                         dois-pontos; (3) marcar oposição enfática entre orações
                         (equivale a "porém/mas" sem conjunção).
                       </p>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-2 text-lg">
                         <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl">
                           "Os técnicos de campo coletaram as amostras, mediram
                           a pressão e registraram a temperatura; os analistas de
@@ -1602,13 +1602,13 @@ export default function AulaPontuacao({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Os dois-pontos são obrigatórios: (1) antes de discurso
                         direto; (2) antes de enumeração que resume o sujeito ou
                         objeto; (3) para introduzir uma explicação ou conclusão
                         que resume o que foi dito antes.
                       </p>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-2 text-lg">
                         <div className="p-3 bg-orange-500/10 border border-orange-500/30 rounded-xl">
                           ✅ "O diretor declarou: 'O projeto está aprovado.'"
                           (discurso direto)
@@ -1635,13 +1635,13 @@ export default function AulaPontuacao({
                       .
                     </p>
                     <p className="font-bold">Ponto Final</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Encerramento total
                     </p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p>📌 Encerra período declarativo ou imperativo</p>
                     <p>📌 Usado em abreviações: Sr., Dr., Prof.</p>
                     <p>⛔ Não usar em títulos isolados</p>
@@ -1655,13 +1655,13 @@ export default function AulaPontuacao({
                       ;
                     </p>
                     <p className="font-bold">Ponto e Vírgula</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Pausa intermediária
                     </p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p>📌 Separa orações longas com vírgulas internas</p>
                     <p>📌 Separa itens de listas após dois-pontos</p>
                     <p>📌 Marca oposição sem conjunção adversativa</p>
@@ -1675,13 +1675,13 @@ export default function AulaPontuacao({
                       :
                     </p>
                     <p className="font-bold">Dois-Pontos</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Anúncio e explicação
                     </p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p>📌 Antes de discurso direto</p>
                     <p>📌 Antes de enumeração introduzida por resumo</p>
                     <p>📌 Para introduzir explicação ou conclusão</p>
@@ -1701,9 +1701,9 @@ export default function AulaPontuacao({
 
           <QuizInterativo
             questoes={QUIZ_M8_PONTUACAO}
-            titulo="Fixação - Módulo 8"
+            titulo="QUIZ: Módulo Nº 8"
             icone="🎯"
-            numero={8}
+            numero={10}
             variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
@@ -1790,16 +1790,16 @@ export default function AulaPontuacao({
                   icone: <LuMessageCircle />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O ponto de interrogação só aparece em perguntas
                         diretas. Em perguntas indiretas (relatadas, com "se" ou
                         "qual"), usa-se ponto final, não interrogação.
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-lg">
                           ✅ "Qual é o prazo?" (interrogativa direta — usa ?)
                         </div>
-                        <div className="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-sm">
+                        <div className="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-lg">
                           ✅ "Perguntou qual era o prazo." (indireta — usa .)
                         </div>
                       </div>
@@ -1811,14 +1811,14 @@ export default function AulaPontuacao({
                   icone: <LuShield />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O travessão dá maior destaque ao trecho intercalado;
                         os parênteses indicam informação acessória e discreta.
                         Em textos técnicos e formais, os parênteses são
                         preferidos para informações secundárias, enquanto o
                         travessão é reservado para ênfase ou citações de fala.
                       </p>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-2 text-lg">
                         <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl">
                           Ênfase: "O resultado — surpreendente para todos — foi
                           aprovado." (travessão)
@@ -1836,14 +1836,14 @@ export default function AulaPontuacao({
                   icone: <LuFileText />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         As aspas têm quatro funções principais: (1) delimitar
                         citação textual direta; (2) marcar sentido irônico ou
                         inusitado; (3) destacar termos técnicos, estrangeiros ou
                         neologismos; (4) indicar título de obra menor (artigo,
                         capítulo, poema).
                       </p>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-2 text-lg">
                         <div className="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl">
                           "O autor afirmou: 'A pontuação é a alma do texto.'"
                           (citação direta)
@@ -1860,13 +1860,13 @@ export default function AulaPontuacao({
                   icone: <LuEye />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         As reticências indicam: (1) suspensão ou incompletude
                         do pensamento; (2) hesitação ou pausa dramática; (3)
                         supressão de parte de uma citação (uso acadêmico/técnico
                         — sempre entre colchetes: [...]).
                       </p>
-                      <div className="p-4 bg-zinc-500/5 border border-zinc-500/20 rounded-xl text-sm space-y-2">
+                      <div className="p-4 bg-zinc-500/5 border border-zinc-500/20 rounded-xl text-lg space-y-2">
                         <p>"Não sei o que dizer... é tudo tão confuso."
                         (hesitação)</p>
                         <p>"O relatório concluiu que [...] os dados confirmam
@@ -1921,11 +1921,11 @@ export default function AulaPontuacao({
                   icone: <LuCircleX />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         As regras de ouro que nunca mudam, independentemente do
                         contexto ou da extensão da frase:
                       </p>
-                      <ul className="space-y-2 text-sm">
+                      <ul className="space-y-2 text-lg">
                         <li className="p-2 bg-red-500/10 border border-red-500/30 rounded-lg">
                           ❌ Nunca separe sujeito do verbo com vírgula
                         </li>
@@ -1948,10 +1948,10 @@ export default function AulaPontuacao({
                   icone: <LuCircleCheck />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Situações em que a vírgula é sempre obrigatória:
                       </p>
-                      <ul className="space-y-2 text-sm">
+                      <ul className="space-y-2 text-lg">
                         <li className="p-2 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
                           ✅ Aposto explicativo intercalado ou final
                         </li>
@@ -1983,11 +1983,11 @@ export default function AulaPontuacao({
                   icone: <LuLayers />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Resumo dos usos dos dois sinais frequentemente cobrados
                         em questões de redação oficial e gramática:
                       </p>
-                      <div className="grid md:grid-cols-2 gap-3 text-sm">
+                      <div className="grid md:grid-cols-2 gap-3 text-lg">
                         <div className="space-y-2">
                           <p className="font-bold text-amber-400">
                             Ponto e Vírgula (;)
@@ -2025,10 +2025,10 @@ export default function AulaPontuacao({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Quadro-resumo dos sinais além da vírgula:
                       </p>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-2 text-lg">
                         <p className="p-2 bg-indigo-500/10 border border-indigo-500/30 rounded-lg">
                           <strong>? :</strong> Interrogativas diretas apenas
                         </p>
@@ -2073,13 +2073,13 @@ export default function AulaPontuacao({
                   <div className="text-center space-y-2">
                     <LuBrain className="h-8 w-8 text-indigo-400 mx-auto" />
                     <p className="font-bold">Checklist Pré-Prova</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       5 perguntas que salvam questões
                     </p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p>1️⃣ Há vírgula entre sujeito e verbo? → Errado</p>
                     <p>2️⃣ "Mas/porém" sem vírgula antes? → Errado</p>
                     <p>3️⃣ Subordinada adverbial antes sem vírgula? → Errado</p>
@@ -2093,13 +2093,13 @@ export default function AulaPontuacao({
                   <div className="text-center space-y-2">
                     <LuTrophy className="h-8 w-8 text-yellow-400 mx-auto" />
                     <p className="font-bold">Pontuação = Aprovação</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       O que fazer no dia da prova
                     </p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p>✅ Releia a frase isolando sujeito e verbo</p>
                     <p>✅ Identifique a conjunção e sua classe</p>
                     <p>✅ Verifique se há termos intercalados</p>

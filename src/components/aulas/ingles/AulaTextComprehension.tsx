@@ -165,7 +165,7 @@ export default function AulaTextComprehension({
               descricao="CESGRANRIO sempre testa: (1) Main Idea — qual é o tema central? (2) Detail — qual detalhe específico? (3) Inference — o que está implicado?"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Questões de compreensão de leitura em inglês podem parecer variadas, mas CESGRANRIO as agrupa em três categorias universais. Entender qual tipo você está respondendo é o primeiro passo para uma estratégia vencedora. A diferença entre estes três tipos NÃO é apenas semântica — cada um exige uma abordagem completamente diferente ao texto. Confundir os tipos é a razão pela qual muitos candidatos acertam por sorte, não por estratégia.
               </p>
@@ -184,25 +184,25 @@ export default function AulaTextComprehension({
 
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Tabela de Tipos de Questão</h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-lg">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="border-l-4 border-blue-500 pl-4 py-2">
                       <p className="font-semibold text-blue-700 dark:text-blue-300">Main Idea</p>
-                      <p className="text-xs mt-1">Sinais: "main idea", "primarily", "summarize"</p>
-                      <p className="text-xs mt-1">Estratégia: Título + 1ª/última sentença</p>
-                      <p className="text-xs mt-1">Tempo: 1-2 min</p>
+                      <p className="text-lg mt-1">Sinais: "main idea", "primarily", "summarize"</p>
+                      <p className="text-lg mt-1">Estratégia: Título + 1ª/última sentença</p>
+                      <p className="text-lg mt-1">Tempo: 1-2 min</p>
                     </div>
                     <div className="border-l-4 border-cyan-500 pl-4 py-2">
                       <p className="font-semibold text-cyan-700 dark:text-cyan-300">Detail</p>
-                      <p className="text-xs mt-1">Sinais: "According to", "When", "Who", "How many"</p>
-                      <p className="text-xs mt-1">Estratégia: Scanning (procure palavra-chave)</p>
-                      <p className="text-xs mt-1">Tempo: 30 seg</p>
+                      <p className="text-lg mt-1">Sinais: "According to", "When", "Who", "How many"</p>
+                      <p className="text-lg mt-1">Estratégia: Scanning (procure palavra-chave)</p>
+                      <p className="text-lg mt-1">Tempo: 30 seg</p>
                     </div>
                     <div className="border-l-4 border-green-500 pl-4 py-2">
                       <p className="font-semibold text-green-700 dark:text-green-300">Inference</p>
-                      <p className="text-xs mt-1">Sinais: "Implies", "Suggests", "Infers"</p>
-                      <p className="text-xs mt-1">Estratégia: Contexto + causa-efeito + deduz</p>
-                      <p className="text-xs mt-1">Tempo: 1-2 min</p>
+                      <p className="text-lg mt-1">Sinais: "Implies", "Suggests", "Infers"</p>
+                      <p className="text-lg mt-1">Estratégia: Contexto + causa-efeito + deduz</p>
+                      <p className="text-lg mt-1">Tempo: 1-2 min</p>
                     </div>
                   </div>
                 </div>
@@ -216,21 +216,21 @@ export default function AulaTextComprehension({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         <strong>Main Idea Question (Pergunta de Ideia Central):</strong> Testa se você entende o TEMA GERAL do texto. Não é sobre um detalhe específico — é sobre qual é o propósito ou mensagem geral. Exemplos de sinais linguísticos: "What is the main purpose...?", "Which statement best summarizes...?", "The passage is primarily about...?", "What is the author's main concern...?" A estratégia é nunca ler o texto inteiro palavra-por-palavra. Em vez disso: (1) Leia o título (se houver), (2) Leia a primeira sentença do primeiro parágrafo (topic sentence), (3) Leia a última sentença de cada parágrafo subsequente, (4) Procure por palavras repetidas que indicam o tema central. Depois responda a pergunta mental: "Sobre qual tema geral fala este texto?" Opções muito específicas são armadilhas — recuse qualquer opção que pareça ser apenas uma PARTE do texto.
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         <strong>Detail Question (Pergunta de Detalhe):</strong> Testa se você consegue LOCALIZAR informação específica no texto. A resposta EXISTE no texto, em preto e branco. Exemplos de sinais: "According to the text...", "The author mentions that...", "When did X occur?", "How many...?", "What did the author say about...?" A estratégia é SCANNING puro: (1) Leia a pergunta e identifique a palavra-chave, (2) Procure aquela palavra no texto (use Ctrl+F em testes digitais se possível), (3) Quando achar, releia a sentença e o contexto ao redor, (4) Valide que aquela informação responde a pergunta, (5) Responda e avance. Detail questions são RÁPIDAS quando você escaneia em vez de ler. A pegadinha: a palavra-chave pode aparecer em múltiplas linhas — procure aquela que realmente responde a pergunta específica.
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         <strong>Inference Question (Pergunta de Inferência):</strong> Testa se você consegue DEDUZIR logicamente algo que não está dito explicitamente. Exemplos de sinais: "The author implies that...", "It can be inferred that...", "What does the author suggest about...?", "What would the author probably agree with...?" A resposta NÃO aparece palavra-por-palavra — você precisa deduzir. A estratégia é: (1) Leia o contexto completo ao redor da questão, (2) Procure por CAUSA-EFEITO (because, therefore, as a result, since, due to), (3) Procure por CONTRASTE (but, however, yet, although), (4) Procure por EVIDÊNCIA que suporta uma conclusão lógica, (5) Deduza qual conclusão o texto suportaria. A diferença crítica: inferência é DEDUÇÃO LÓGICA, não ADIVINHAÇÃO. A resposta pode não estar palavra-por-palavra, mas deve ser APOIADA logicamente pelo texto. Se você não consegue achar evidência no texto, é especulação, não inferência.
                       </p>
 
                       <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-2">
-                        <h5 className="font-semibold text-sm">Diferenças Críticas Entre os Tipos:</h5>
-                        <div className="text-sm space-y-2">
+                        <h5 className="font-semibold text-lg">Diferenças Críticas Entre os Tipos:</h5>
+                        <div className="text-lg space-y-2">
                           <div>• <strong>Main Idea</strong> = tema GERAL (cobre todo o texto)</div>
                           <div>• <strong>Detail</strong> = fato ESPECÍFICO (está no texto, achado!)</div>
                           <div>• <strong>Inference</strong> = conclusão DEDUZIDA (não está dita, mas apoiada)</div>
@@ -248,27 +248,27 @@ export default function AulaTextComprehension({
                   conteudo: (
                     <div className="space-y-6">
                       <div className="border-l-4 border-blue-500 pl-4 py-3">
-                        <p className="font-semibold text-sm mb-2">Exemplo 1: Main Idea Question</p>
-                        <p className="text-sm text-foreground/80 italic">"Petrobras implemented a new safety protocol in 2023. The protocol requires daily inspections of all equipment. Workers must report any abnormalities immediately. So far, the protocol has prevented 12 incidents."</p>
-                        <p className="text-sm text-foreground/80 mt-2">❓ Pergunta: "What is the primary purpose of this passage?"</p>
-                        <p className="text-sm text-green-600 font-semibold mt-1">✅ Resposta correta: "To describe a safety protocol and its effectiveness"</p>
-                        <p className="text-xs text-foreground/70 mt-1">❌ Armadilha: "Daily inspections are required" (detalhe, não ideia principal)</p>
+                        <p className="font-semibold text-lg mb-2">Exemplo 1: Main Idea Question</p>
+                        <p className="text-lg text-foreground/80 italic">"Petrobras implemented a new safety protocol in 2023. The protocol requires daily inspections of all equipment. Workers must report any abnormalities immediately. So far, the protocol has prevented 12 incidents."</p>
+                        <p className="text-lg text-foreground/80 mt-2">❓ Pergunta: "What is the primary purpose of this passage?"</p>
+                        <p className="text-lg text-green-600 font-semibold mt-1">✅ Resposta correta: "To describe a safety protocol and its effectiveness"</p>
+                        <p className="text-lg text-foreground/70 mt-1">❌ Armadilha: "Daily inspections are required" (detalhe, não ideia principal)</p>
                       </div>
 
                       <div className="border-l-4 border-cyan-500 pl-4 py-3">
-                        <p className="font-semibold text-sm mb-2">Exemplo 2: Detail Question</p>
-                        <p className="text-sm text-foreground/80 italic">"The compressor malfunction occurred on March 15. The technician discovered the issue at 2 PM. Maintenance took 4 hours to complete. Production resumed at 6 PM."</p>
-                        <p className="text-sm text-foreground/80 mt-2">❓ Pergunta: "When did the technician discover the compressor malfunction?"</p>
-                        <p className="text-sm text-green-600 font-semibold mt-1">✅ Resposta correta: "At 2 PM"</p>
-                        <p className="text-xs text-foreground/70 mt-1">Estratégia: Procura "discovered" → resposta está ali, 2 PM</p>
+                        <p className="font-semibold text-lg mb-2">Exemplo 2: Detail Question</p>
+                        <p className="text-lg text-foreground/80 italic">"The compressor malfunction occurred on March 15. The technician discovered the issue at 2 PM. Maintenance took 4 hours to complete. Production resumed at 6 PM."</p>
+                        <p className="text-lg text-foreground/80 mt-2">❓ Pergunta: "When did the technician discover the compressor malfunction?"</p>
+                        <p className="text-lg text-green-600 font-semibold mt-1">✅ Resposta correta: "At 2 PM"</p>
+                        <p className="text-lg text-foreground/70 mt-1">Estratégia: Procura "discovered" → resposta está ali, 2 PM</p>
                       </div>
 
                       <div className="border-l-4 border-green-500 pl-4 py-3">
-                        <p className="font-semibold text-sm mb-2">Exemplo 3: Inference Question</p>
-                        <p className="text-sm text-foreground/80 italic">"Production in the North field increased by 15% after the pipeline upgrade. The upgrade cost $50 million. Engineering teams worked for 18 months to complete it."</p>
-                        <p className="text-sm text-foreground/80 mt-2">❓ Pergunta: "What can be inferred about the effectiveness of the pipeline upgrade?"</p>
-                        <p className="text-sm text-green-600 font-semibold mt-1">✅ Resposta correta: "The upgrade was effective because production increased"</p>
-                        <p className="text-xs text-foreground/70 mt-1">Estratégia: Causa (upgrade) → Efeito (15% aumento) → Inferência de efetividade</p>
+                        <p className="font-semibold text-lg mb-2">Exemplo 3: Inference Question</p>
+                        <p className="text-lg text-foreground/80 italic">"Production in the North field increased by 15% after the pipeline upgrade. The upgrade cost $50 million. Engineering teams worked for 18 months to complete it."</p>
+                        <p className="text-lg text-foreground/80 mt-2">❓ Pergunta: "What can be inferred about the effectiveness of the pipeline upgrade?"</p>
+                        <p className="text-lg text-green-600 font-semibold mt-1">✅ Resposta correta: "The upgrade was effective because production increased"</p>
+                        <p className="text-lg text-foreground/70 mt-1">Estratégia: Causa (upgrade) → Efeito (15% aumento) → Inferência de efetividade</p>
                       </div>
                     </div>
                   ),
@@ -361,12 +361,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Tipo de Questão?</p>
-                    <p className="text-base">"What is the main purpose of this passage?"</p>
+                    <p className="font-semibold text-lg">Tipo de Questão?</p>
+                    <p className="text-lg">"What is the main purpose of this passage?"</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-blue-600">MAIN IDEA</p>
                     <p>Pergunta pelo TEMA GERAL. Estratégia: Lê título + primeira/última sentença.</p>
                   </div>
@@ -376,12 +376,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Tipo de Questão?</p>
-                    <p className="text-base">"According to the text, when did the project start?"</p>
+                    <p className="font-semibold text-lg">Tipo de Questão?</p>
+                    <p className="text-lg">"According to the text, when did the project start?"</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-cyan-600">DETAIL</p>
                     <p>Pergunta por FATO ESPECÍFICO. Estratégia: Scanning (procura palavra-chave).</p>
                   </div>
@@ -391,12 +391,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Tipo de Questão?</p>
-                    <p className="text-base">"What does the author imply about the safety protocol?"</p>
+                    <p className="font-semibold text-lg">Tipo de Questão?</p>
+                    <p className="text-lg">"What does the author imply about the safety protocol?"</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">INFERENCE</p>
                     <p>Pergunta por DEDUÇÃO LÓGICA. Estratégia: Contexto + causa-efeito + deduz.</p>
                   </div>
@@ -406,12 +406,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é Main Idea deste texto?</p>
-                    <p className="text-xs text-foreground/70 italic">"Production increased 15%. The upgrade cost $50M. It took 18 months. Teams worked hard."</p>
+                    <p className="font-semibold text-lg">Qual é Main Idea deste texto?</p>
+                    <p className="text-lg text-foreground/70 italic">"Production increased 15%. The upgrade cost $50M. It took 18 months. Teams worked hard."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-blue-600">TEMA GERAL (Main Idea)</p>
                     <p>"To describe a major upgrade and its positive impact on production" — NÃO é "O upgrade custou $50M" (detalhe específico)</p>
                   </div>
@@ -456,7 +456,7 @@ export default function AulaTextComprehension({
               descricao="Skimming é leitura seletiva — você lê ALGUNS partes do texto, muito rapidamente, apenas para entender o tema geral"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Em provas CESGRANRIO, você não tem tempo para ler cada palavra de cada parágrafo. Uma prova típica tem 3-4 textos e 12-20 perguntas. Se você gasta 5 minutos lendo um texto palavra-por-palavra, você fica sem tempo. Skimming resolve este problema. Skimming é uma técnica de leitura onde você PULA PROPOSITALMENTE partes do texto, lendo apenas palavras-chave e estrutura, para entender a ideia geral em 30-60 segundos.
               </p>
@@ -475,7 +475,7 @@ export default function AulaTextComprehension({
 
               <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Processo de Skimming Passo-a-Passo</h4>
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <div className="flex items-start gap-3">
                     <div className="font-semibold text-amber-600 dark:text-amber-400 min-w-fit">Passo 1 (10s):</div>
                     <div>Leia o TÍTULO — isto te diz o tópico geral</div>
@@ -507,33 +507,33 @@ export default function AulaTextComprehension({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Skimming é uma técnica onde você lê SELETIVAMENTE apenas partes-chave do texto, muito rapidamente, para captar a IDEIA GERAL sem entender cada palavra ou detalhe. É diferente de ler para aprofundamento. Quando você lê uma livro sobre um tópico que interessa, você lê lentamente, palavra-por-palavra, para APRENDER tudo. Quando você skim (escaneia rapidamente), você está apenas procurando responder "Sobre o que fala este texto?" — a resposta é suficiente se você puder responder perguntas de main idea.
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         A estrutura de um texto típico oferece uma oportunidade para skimming efetivo:
                       </p>
 
                       <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm">Anatomia de um Texto para Skimming:</h5>
-                        <div className="text-sm space-y-2">
+                        <h5 className="font-semibold text-lg">Anatomia de um Texto para Skimming:</h5>
+                        <div className="text-lg space-y-2">
                           <div className="font-semibold">1. TÍTULO (5-10 palavras)</div>
-                          <div className="text-xs text-foreground/80">— Te diz o assunto geral em uma linha. Exemplo: "Petrobras Improves Pipeline Safety with New Monitoring System"</div>
+                          <div className="text-lg text-foreground/80">— Te diz o assunto geral em uma linha. Exemplo: "Petrobras Improves Pipeline Safety with New Monitoring System"</div>
                           <div className="font-semibold">2. PARÁGRAFO 1 (Topic Sentence)</div>
-                          <div className="text-xs text-foreground/80">— A primeira sentença resume toda a ideia do parágrafo. Resto = detalhes de suporte.</div>
+                          <div className="text-lg text-foreground/80">— A primeira sentença resume toda a ideia do parágrafo. Resto = detalhes de suporte.</div>
                           <div className="font-semibold">3. PARÁGRAFOS 2-N (Supporting Details)</div>
-                          <div className="text-xs text-foreground/80">— Leia apenas 1ª sentença de cada (topic) e pule o resto. Se uma pergunta pede detalhes deste parágrafo, volta depois.</div>
+                          <div className="text-lg text-foreground/80">— Leia apenas 1ª sentença de cada (topic) e pule o resto. Se uma pergunta pede detalhes deste parágrafo, volta depois.</div>
                           <div className="font-semibold">4. PARÁGRAFO FINAL (Conclusão)</div>
-                          <div className="text-xs text-foreground/80">— Última sentença resume o conclusion ou implicação. Leia esta para entender como o autor termina.</div>
+                          <div className="text-lg text-foreground/80">— Última sentença resume o conclusion ou implicação. Leia esta para entender como o autor termina.</div>
                         </div>
                       </div>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Quando você skims usando esta anatomia, você entende 80-90% da ideia geral em 40-60 segundos, sem ter lido 80% do texto. Isto é especialmente poderoso em provas onde você tem MÚLTIPLOS textos. Você skims todos em ~3 minutos total (3 textos × 60 segundos), entende a ideia geral de cada um, e depois você volta conforme as perguntas pedem detalhes.
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         <strong>Quando usar skimming:</strong> (1) Main idea questions, (2) Quando você tem MUITO texto e POUCO tempo, (3) Quando você quer prioridade — entender o geral antes dos detalhes. <strong>Quando NÃO usar APENAS skimming:</strong> (1) Detail questions, (2) Inference questions, (3) Vocabulary questions — estes exigem leitura mais profunda.
                       </p>
                     </div>
@@ -545,10 +545,10 @@ export default function AulaTextComprehension({
                   conteudo: (
                     <div className="space-y-6">
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
-                        <p className="font-semibold text-sm">EXEMPLO 1: Production Report</p>
-                        <p className="text-xs text-foreground/70 italic mb-2">"Q3 Production Efficiency Improvement Initiative"</p>
-                        <p className="text-sm font-semibold">Skim: Lê título → 1ª sentença → Pula meio → Última sentença</p>
-                        <div className="bg-card rounded p-3 text-xs space-y-1 mt-2">
+                        <p className="font-semibold text-lg">EXEMPLO 1: Production Report</p>
+                        <p className="text-lg text-foreground/70 italic mb-2">"Q3 Production Efficiency Improvement Initiative"</p>
+                        <p className="text-lg font-semibold">Skim: Lê título → 1ª sentença → Pula meio → Última sentença</p>
+                        <div className="bg-card rounded p-3 text-lg space-y-1 mt-2">
                           <p><strong>Título:</strong> "Production Efficiency Improvement" = sobre EFICIÊNCIA</p>
                           <p><strong>1ª sentença:</strong> "Petrobras achieved 12% production increase in Q3..." = RESULTADO POSITIVO</p>
                           <p><strong>Pula:</strong> (detalhes técnicos sobre equipment, methods)</p>
@@ -558,10 +558,10 @@ export default function AulaTextComprehension({
                       </div>
 
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
-                        <p className="font-semibold text-sm">EXEMPLO 2: Safety Bulletin</p>
-                        <p className="text-xs text-foreground/70 italic mb-2">"Updated Emergency Response Procedures for Pressure Incidents"</p>
-                        <p className="text-sm font-semibold">Skim: Título + 1ª sentença + Pula + Última sentença</p>
-                        <div className="bg-card rounded p-3 text-xs space-y-1 mt-2">
+                        <p className="font-semibold text-lg">EXEMPLO 2: Safety Bulletin</p>
+                        <p className="text-lg text-foreground/70 italic mb-2">"Updated Emergency Response Procedures for Pressure Incidents"</p>
+                        <p className="text-lg font-semibold">Skim: Título + 1ª sentença + Pula + Última sentença</p>
+                        <div className="bg-card rounded p-3 text-lg space-y-1 mt-2">
                           <p><strong>Título:</strong> "Emergency Response Procedures" = sobre SEGURANÇA</p>
                           <p><strong>1ª:</strong> "Safety protocols were updated following last year's incident..." = MOTIVO da atualização</p>
                           <p><strong>Pula:</strong> (4 parágrafos de detalhes sobre procedures)</p>
@@ -639,11 +639,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é o objetivo de Skimming?</p>
+                    <p className="font-semibold text-lg">Qual é o objetivo de Skimming?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-amber-600">Entender ideia GERAL rapidamente</p>
                     <p>Você lê apenas título + 1ª sentença de cada parágrafo + última sentença = 60 segundos = ideia geral do texto.</p>
                   </div>
@@ -653,11 +653,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é a estrutura ideal para skim?</p>
+                    <p className="font-semibold text-lg">Qual é a estrutura ideal para skim?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-amber-600">Título + 1ª + Pula + Última</p>
                     <p>10s: Título. 10s: 1ª sentença. 15s: 1ª sentença de parágrafos 2-N. 5s: Última sentença. Total: 40s.</p>
                   </div>
@@ -667,11 +667,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Skimming é suficiente para que tipo de pergunta?</p>
+                    <p className="font-semibold text-lg">Skimming é suficiente para que tipo de pergunta?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-amber-600">MAIN IDEA QUESTIONS</p>
                     <p>Skimming é perfeito para 'What is the main purpose?' Não é suficiente para Detail ou Inference — volta e releia.</p>
                   </div>
@@ -681,11 +681,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Texto tem 400 palavras, você tem 2 minutos. O que fazer?</p>
+                    <p className="font-semibold text-lg">Texto tem 400 palavras, você tem 2 minutos. O que fazer?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-amber-600">Skim em 60 segundos (30% do tempo)</p>
                     <p>Skim em 1 min → entenda ideia geral → use 1 min restante para responder perguntas ou releia contexto específico.</p>
                   </div>
@@ -730,7 +730,7 @@ export default function AulaTextComprehension({
               descricao="Scanning é diferente de skimming — você NÃO quer ideia geral, você quer UM DADO ESPECÍFICO"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Scanning é uma técnica de leitura onde você procura por UMA PALAVRA-CHAVE ou NÚMERO específico no texto, muito rapidamente. Você não lê o texto linearmente — você PROCURA. A diferença entre skimming e scanning é crítica: skimming é "leia o tema geral", scanning é "ache-me este número ou esta palavra". Exemplo: "According to the text, when did the project start?" — Você procura pela palavra "start" ou data no texto. Quando achar, relê a sentença ao redor e extrai a resposta. Tempo: 15-30 segundos.
               </p>
@@ -749,7 +749,7 @@ export default function AulaTextComprehension({
 
               <div className="bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950/30 dark:to-blue-950/30 rounded-lg border border-cyan-200 dark:border-cyan-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Processo de Scanning Passo-a-Passo</h4>
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <div className="flex items-start gap-3">
                     <div className="font-semibold text-cyan-600 dark:text-cyan-400 min-w-fit">Passo 1:</div>
                     <div>Leia a pergunta completamente e identifique a PALAVRA-CHAVE (que é perguntado?)</div>
@@ -781,38 +781,38 @@ export default function AulaTextComprehension({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Scanning é uma técnica de leitura não-linear. Ao invés de ler da primeira palavra até a última (leitura linear), você PROCURA por uma palavra-chave específica em qualquer lugar do texto. É como usar Ctrl+F em um documento digital — você procura por "2023" e o computador te mostra onde "2023" aparece, sem você ler o resto. Em uma prova física, você pode fazer isto com os olhos — procurar rapidamente pela palavra.
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         A vantagem de scanning é VELOCIDADE. Se você precisa responder "How much money was allocated to the project?" e o texto tem 500 palavras, você não lê 500 palavras. Você procura "money" ou um símbolo de moeda ($, USD), acha a sentença, relê aquela sentença, extrai "$50 million", e responde. Tempo: 20-30 segundos. Leitura linear: 10-15 minutos.
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         <strong>Tipos de Palavras-Chave para Scanning:</strong>
                       </p>
 
                       <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-3">
-                        <div className="text-sm">
+                        <div className="text-lg">
                           <div className="font-semibold">1. NÚMEROS (datas, quantidades, percentagens)</div>
-                          <div className="text-xs text-foreground/80">Procura: "2023", "15%", "5 million", "$", "1000"</div>
+                          <div className="text-lg text-foreground/80">Procura: "2023", "15%", "5 million", "$", "1000"</div>
                         </div>
-                        <div className="text-sm">
+                        <div className="text-lg">
                           <div className="font-semibold">2. NOMES (pessoas, locais, organizações)</div>
-                          <div className="text-xs text-foreground/80">Procura: "Petrobras", "North Field", "John Smith"</div>
+                          <div className="text-lg text-foreground/80">Procura: "Petrobras", "North Field", "John Smith"</div>
                         </div>
-                        <div className="text-sm">
+                        <div className="text-lg">
                           <div className="font-semibold">3. VERBOS ESPECÍFICOS (ação procurada)</div>
-                          <div className="text-xs text-foreground/80">Procura: "completed", "failed", "announced", "decreased"</div>
+                          <div className="text-lg text-foreground/80">Procura: "completed", "failed", "announced", "decreased"</div>
                         </div>
-                        <div className="text-sm">
+                        <div className="text-lg">
                           <div className="font-semibold">4. PALAVRAS-CHAVE DA PERGUNTA</div>
-                          <div className="text-xs text-foreground/80">Pergunta: "What about safety?" → Procura: "safety"</div>
+                          <div className="text-lg text-foreground/80">Pergunta: "What about safety?" → Procura: "safety"</div>
                         </div>
                       </div>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         <strong>Quando usar scanning:</strong> Detail questions ("According to...", "When...", "Who...", "What...", "How many..."). Também útil para inferências quando você precisa de contexto específico.
                       </p>
                     </div>
@@ -824,9 +824,9 @@ export default function AulaTextComprehension({
                   conteudo: (
                     <div className="space-y-6">
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
-                        <p className="font-semibold text-sm">EXEMPLO 1: Scanning para Data</p>
-                        <p className="text-xs text-foreground/70 italic mb-2">Pergunta: "According to the text, when did the maintenance begin?"</p>
-                        <div className="bg-card rounded p-3 text-xs space-y-1 mt-2">
+                        <p className="font-semibold text-lg">EXEMPLO 1: Scanning para Data</p>
+                        <p className="text-lg text-foreground/70 italic mb-2">Pergunta: "According to the text, when did the maintenance begin?"</p>
+                        <div className="bg-card rounded p-3 text-lg space-y-1 mt-2">
                           <p><strong>Palavra-chave:</strong> "began" OR data (2023, January, etc.)</p>
                           <p><strong>Procura:</strong> Scan o texto por "began" ou um padrão de data (XX/XX, MONTH, ano)</p>
                           <p><strong>Encontra:</strong> "Maintenance began in January 2023"</p>
@@ -836,9 +836,9 @@ export default function AulaTextComprehension({
                       </div>
 
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
-                        <p className="font-semibold text-sm">EXEMPLO 2: Scanning para Número</p>
-                        <p className="text-xs text-foreground/70 italic mb-2">Pergunta: "How much did the project cost?"</p>
-                        <div className="bg-card rounded p-3 text-xs space-y-1 mt-2">
+                        <p className="font-semibold text-lg">EXEMPLO 2: Scanning para Número</p>
+                        <p className="text-lg text-foreground/70 italic mb-2">Pergunta: "How much did the project cost?"</p>
+                        <div className="bg-card rounded p-3 text-lg space-y-1 mt-2">
                           <p><strong>Palavra-chave:</strong> "$" OR "million" OR "cost"</p>
                           <p><strong>Procura:</strong> Scan por símbolo "$" ou "million"</p>
                           <p><strong>Encontra:</strong> "The $50 million project was completed..."</p>
@@ -848,9 +848,9 @@ export default function AulaTextComprehension({
                       </div>
 
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
-                        <p className="font-semibold text-sm">EXEMPLO 3: Scanning para Nome</p>
-                        <p className="text-xs text-foreground/70 italic mb-2">Pergunta: "Which rig was scheduled for maintenance?"</p>
-                        <div className="bg-card rounded p-3 text-xs space-y-1 mt-2">
+                        <p className="font-semibold text-lg">EXEMPLO 3: Scanning para Nome</p>
+                        <p className="text-lg text-foreground/70 italic mb-2">Pergunta: "Which rig was scheduled for maintenance?"</p>
+                        <div className="bg-card rounded p-3 text-lg space-y-1 mt-2">
                           <p><strong>Palavra-chave:</strong> "Rig" + número</p>
                           <p><strong>Procura:</strong> Scan por "Rig #" ou "Rig"</p>
                           <p><strong>Encontra:</strong> "Rig #3 was scheduled in Q4 2024"</p>
@@ -944,11 +944,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é o objetivo de Scanning?</p>
+                    <p className="font-semibold text-lg">Qual é o objetivo de Scanning?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-cyan-600">Localizar UM DADO específico rapidamente</p>
                     <p>Procura palavra-chave no texto, encontra, relê contexto, extrai resposta. Tempo: 15-30 segundos.</p>
                   </div>
@@ -958,11 +958,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Que tipo de pergunta exige Scanning?</p>
+                    <p className="font-semibold text-lg">Que tipo de pergunta exige Scanning?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-cyan-600">DETAIL QUESTIONS</p>
                     <p>"According to...", "When...", "Who...", "What...", "How much..." — procura a resposta específica.</p>
                   </div>
@@ -972,11 +972,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Você procura por "start" e não acha. O que fazer?</p>
+                    <p className="font-semibold text-lg">Você procura por "start" e não acha. O que fazer?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-cyan-600">Procura por sinônimos</p>
                     <p>Tenta "began", "commenced", "initiated" ou procura por data (2023, Jan, XX/XX).</p>
                   </div>
@@ -986,11 +986,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Você encontrou a palavra-chave. Próximo passo?</p>
+                    <p className="font-semibold text-lg">Você encontrou a palavra-chave. Próximo passo?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-cyan-600">Releia o contexto completo</p>
                     <p>Sentença completa + 1 antes + 1 depois. Valida que aquela menção responde a pergunta específica.</p>
                   </div>
@@ -1035,7 +1035,7 @@ export default function AulaTextComprehension({
               descricao="CESGRANRIO testa vocabulário não por definição simples, mas por significado em contexto"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Vocabulary in Context é diferente de memorizar palavras isoladas. A prova não pergunta "O que significa 'mitigate'?" — ela coloca a palavra em uma frase técnica e pergunta qual opção melhor descreve seu significado NAQUELA FRASE. Exemplo: "The new safety protocol mitigates excessive pressure events." — Qual é o significado de "mitigate" aqui? Não é memorização, é DEDUÇÃO pela estrutura.
               </p>
@@ -1050,22 +1050,22 @@ export default function AulaTextComprehension({
 
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-lg border border-purple-200 dark:border-purple-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Sinais de Contexto para Dedução</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-lg">
                   <div className="border-l-4 border-purple-500 pl-3">
                     <p className="font-semibold">Preposições</p>
-                    <p className="text-xs">in, with, from, by, through indicam relacionamento</p>
+                    <p className="text-lg">in, with, from, by, through indicam relacionamento</p>
                   </div>
                   <div className="border-l-4 border-pink-500 pl-3">
                     <p className="font-semibold">Verbos Vizinhos</p>
-                    <p className="text-xs">helps, prevents, increases, reduces indicam efeito</p>
+                    <p className="text-lg">helps, prevents, increases, reduces indicam efeito</p>
                   </div>
                   <div className="border-l-4 border-purple-500 pl-3">
                     <p className="font-semibold">Adjetivos</p>
-                    <p className="text-xs">excessive, critical, dangerous, positive indicam valor</p>
+                    <p className="text-lg">excessive, critical, dangerous, positive indicam valor</p>
                   </div>
                   <div className="border-l-4 border-pink-500 pl-3">
                     <p className="font-semibold">Conectores</p>
-                    <p className="text-xs">because, although, therefore indicam causa/efeito</p>
+                    <p className="text-lg">because, although, therefore indicam causa/efeito</p>
                   </div>
                 </div>
               </div>
@@ -1078,17 +1078,17 @@ export default function AulaTextComprehension({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Quando você encontra uma palavra desconhecida em um texto, NÃO PÂNICO. A maioria das palavras em testes CESGRANRIO pode ser deduzida pelo contexto. Você não precisa conhecer a definição exata — você precisa entender o significado NAQUELA FRASE. O processo é: (1) Leia a sentença completa, (2) Procure por preposições, verbos, adjetivos ao redor, (3) Deduza se a palavra é positiva/negativa/neutra, (4) Deduza se é um verbo/nome/adjetivo, (5) Procure por sinônimos nas opções que FAZ SENTIDO no contexto.
                       </p>
 
                       <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm">Exemplo Passo-a-Passo:</h5>
-                        <p className="text-sm italic text-foreground/80">"The maintenance team worked to MITIGATE the excessive pressure in the system."</p>
-                        <div className="text-sm space-y-2">
+                        <h5 className="font-semibold text-lg">Exemplo Passo-a-Passo:</h5>
+                        <p className="text-lg italic text-foreground/80">"The maintenance team worked to MITIGATE the excessive pressure in the system."</p>
+                        <div className="text-lg space-y-2">
                           <div><strong>Passo 1:</strong> Você não conhece "mitigate" — leia a sentença completa</div>
                           <div><strong>Passo 2:</strong> Procure pistas:
-                            <div className="text-xs ml-4 mt-1">
+                            <div className="text-lg ml-4 mt-1">
                               • "worked to" = verbo de ação
                               <br/>
                               • "excessive pressure" = algo ruim/problemático (excessive = demais)
@@ -1101,7 +1101,7 @@ export default function AulaTextComprehension({
                         </div>
                       </div>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         <strong>Atributos a procurar:</strong> (1) É um verbo (ação) ou nome (coisa)? Procure por padrão: verb + mitigate ou the mitigate (name), (2) É positivo ou negativo? Se está ao lado de "excessive" ou "problem", é para resolver, logo é positivo. Se está ao lado de "increase" ou "harm", é negativo, (3) É causa ou efeito? Se precede uma consequência com "therefore" ou "as a result", é causa.
                       </p>
                     </div>
@@ -1111,22 +1111,22 @@ export default function AulaTextComprehension({
                   titulo: "② Exemplos de Vocabulário Técnico Petrobras",
                   icone: <LuPlay className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-lg">
                       <div className="border-l-4 border-blue-500 pl-4 py-2">
                         <p><strong>Exemplo 1: "The inspection REVEALED significant corrosion"</strong></p>
-                        <p className="text-xs text-foreground/80 mt-1">Dedução: revealed = fez conhecido/mostrou (porque inspection encontrou corrosão) = discover, expose</p>
+                        <p className="text-lg text-foreground/80 mt-1">Dedução: revealed = fez conhecido/mostrou (porque inspection encontrou corrosão) = discover, expose</p>
                       </div>
                       <div className="border-l-4 border-cyan-500 pl-4 py-2">
                         <p><strong>Exemplo 2: "Production levels remained STABLE throughout the quarter"</strong></p>
-                        <p className="text-xs text-foreground/80 mt-1">Dedução: stable = não mudou/constante (porque "remained" = ficou igual, "throughout" = durante tudo) = constant, unchanged</p>
+                        <p className="text-lg text-foreground/80 mt-1">Dedução: stable = não mudou/constante (porque "remained" = ficou igual, "throughout" = durante tudo) = constant, unchanged</p>
                       </div>
                       <div className="border-l-4 border-green-500 pl-4 py-2">
                         <p><strong>Exemplo 3: "The company IMPLEMENTED new safety procedures"</strong></p>
-                        <p className="text-xs text-foreground/80 mt-1">Dedução: implemented = colocou em prática (porque procedures são novas, implementar significa usar) = adopted, put into effect</p>
+                        <p className="text-lg text-foreground/80 mt-1">Dedução: implemented = colocou em prática (porque procedures são novas, implementar significa usar) = adopted, put into effect</p>
                       </div>
                       <div className="border-l-4 border-amber-500 pl-4 py-2">
                         <p><strong>Exemplo 4: "Equipment DETERIORATES without proper maintenance"</strong></p>
-                        <p className="text-xs text-foreground/80 mt-1">Dedução: deteriorates = fica pior (porque "without maintenance" = sem cuidado, logo fica ruim) = decays, worsens, degrades</p>
+                        <p className="text-lg text-foreground/80 mt-1">Dedução: deteriorates = fica pior (porque "without maintenance" = sem cuidado, logo fica ruim) = decays, worsens, degrades</p>
                       </div>
                     </div>
                   ),
@@ -1203,12 +1203,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Deduz significado</p>
-                    <p className="text-base">"The repair EXPEDITED the return to service."</p>
+                    <p className="font-semibold text-lg">Deduz significado</p>
+                    <p className="text-lg">"The repair EXPEDITED the return to service."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-purple-600">EXPEDITED = Acelerou/Apressou</p>
                     <p>Pistas: "repair" (ação positiva) + "return to service" (resultado bom/rápido) = expedite = acelerar/apressar</p>
                   </div>
@@ -1218,12 +1218,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Que significa "leverage"?</p>
-                    <p className="text-xs italic text-foreground/70">"The company will LEVERAGE its technology for growth."</p>
+                    <p className="font-semibold text-lg">Que significa "leverage"?</p>
+                    <p className="text-lg italic text-foreground/70">"The company will LEVERAGE its technology for growth."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-purple-600">LEVERAGE = Usar/Aproveitar</p>
                     <p>Pistas: "technology" (ferramenta) + "for growth" (resultado positivo) = leverage = usar vantagem</p>
                   </div>
@@ -1233,12 +1233,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Palavra COGNATA verdadeira ou falsa?</p>
-                    <p className="text-base">"SENSIBLE decision"</p>
+                    <p className="font-semibold text-lg">Palavra COGNATA verdadeira ou falsa?</p>
+                    <p className="text-lg">"SENSIBLE decision"</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-purple-600">❌ FALSO COGNATO</p>
                     <p>"Sensible" = lógico/razoável (NÃO sensível/emocionado). "Sensible decision" = decisão RACIONAL.</p>
                   </div>
@@ -1248,12 +1248,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual significado em contexto?</p>
-                    <p className="text-base">"The manufacturing PLANT produces oil."</p>
+                    <p className="font-semibold text-lg">Qual significado em contexto?</p>
+                    <p className="text-lg">"The manufacturing PLANT produces oil."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-purple-600">PLANT = Fábrica/Refinaria</p>
                     <p>(NÃO vegetal). Em contexto Petrobras, "plant" = instalação industrial, não flor.</p>
                   </div>
@@ -1298,7 +1298,7 @@ export default function AulaTextComprehension({
               descricao="Todo parágrafo em textos técnicos segue padrão: 1ª sentença (tema) + resto (detalhes)"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Textos técnicos e acadêmicos seguem uma estrutura MUITO previsível: cada parágrafo começa com uma TOPIC SENTENCE (sentença temática) que resume o ponto principal do parágrafo. O resto do parágrafo fornece SUPPORTING DETAILS (exemplos, números, evidência, explicação) que sustentam aquela topic sentence. Quando você entende esta estrutura, você consegue entender 80% de um texto apenas lendo as topic sentences de cada parágrafo — sem ler os detalhes. Isto é o fundamento de skimming.
               </p>
@@ -1317,7 +1317,7 @@ export default function AulaTextComprehension({
 
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-lg border border-green-200 dark:border-green-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Padrão de Estrutura de Parágrafo</h4>
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <div className="flex items-start gap-3">
                     <div className="font-semibold text-green-600 dark:text-green-400 min-w-fit">Sentença 1:</div>
                     <div><strong>Topic Sentence</strong> — resume o ponto principal</div>
@@ -1341,18 +1341,18 @@ export default function AulaTextComprehension({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Uma topic sentence é uma sentença que RESUME o ponto principal de um parágrafo. Ela responde à pergunta mental "Qual é o ponto deste parágrafo?" Características: (1) Geralmente é a 1ª ou 2ª sentença do parágrafo, (2) É uma afirmação geral, não um detalhe específico, (3) O resto do parágrafo fornece evidência para sustentá-la, (4) Frequentemente contém palavras como "main", "important", "key", "several", "many", "caused by", "results in".
                       </p>
 
                       <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm">Exemplo: Parágrafo com Topic Sentence Clara</h5>
-                        <p className="text-sm italic text-foreground/80 mb-3">"The equipment failure had three main causes. First, the pressure valve was corroded due to saltwater exposure. Second, maintenance logs showed no inspection in 18 months. Third, the monitoring system was offline during the incident."</p>
-                        <div className="text-sm space-y-2">
+                        <h5 className="font-semibold text-lg">Exemplo: Parágrafo com Topic Sentence Clara</h5>
+                        <p className="text-lg italic text-foreground/80 mb-3">"The equipment failure had three main causes. First, the pressure valve was corroded due to saltwater exposure. Second, maintenance logs showed no inspection in 18 months. Third, the monitoring system was offline during the incident."</p>
+                        <div className="text-lg space-y-2">
                           <div className="font-semibold">✓ Topic Sentence:</div>
-                          <div className="text-xs text-foreground/80">"The equipment failure had three main causes"</div>
+                          <div className="text-lg text-foreground/80">"The equipment failure had three main causes"</div>
                           <div className="font-semibold">✓ Supporting Details:</div>
-                          <div className="text-xs text-foreground/80">
+                          <div className="text-lg text-foreground/80">
                             • Pressure valve was corroded<br/>
                             • No inspection in 18 months<br/>
                             • Monitoring system was offline
@@ -1360,7 +1360,7 @@ export default function AulaTextComprehension({
                         </div>
                       </div>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         <strong>Palavras que indicam Topic Sentence:</strong> "main", "primary", "key", "important", "several", "many", "few", "three causes", "resulted in", "due to", "as a result", "therefore". Quando você vê estas palavras, a topic sentence está próxima.
                       </p>
                     </div>
@@ -1370,11 +1370,11 @@ export default function AulaTextComprehension({
                   titulo: "② Supporting Details: Como Extrair",
                   icone: <LuPlay className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-lg">
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
                         <p className="font-semibold">EXEMPLO 1: Supporting Details com Números</p>
-                        <p className="text-xs text-foreground/70 italic mb-2">Topic: "The project achieved three objectives. (1) Safety improved by 20%. (2) Costs reduced by 15%. (3) Timeline met deadline."</p>
-                        <div className="text-xs space-y-1">
+                        <p className="text-lg text-foreground/70 italic mb-2">Topic: "The project achieved three objectives. (1) Safety improved by 20%. (2) Costs reduced by 15%. (3) Timeline met deadline."</p>
+                        <div className="text-lg space-y-1">
                           <p>Topic Sentence: "achieved three objectives"</p>
                           <p>Details: 20% safety, 15% cost, deadline met</p>
                         </div>
@@ -1382,8 +1382,8 @@ export default function AulaTextComprehension({
 
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
                         <p className="font-semibold">EXEMPLO 2: Supporting Details com Explicação</p>
-                        <p className="text-xs text-foreground/70 italic mb-2">Topic: "Equipment monitoring is critical. Automated sensors detect anomalies within seconds. Operators receive real-time alerts. This prevents catastrophic failures."</p>
-                        <div className="text-xs space-y-1">
+                        <p className="text-lg text-foreground/70 italic mb-2">Topic: "Equipment monitoring is critical. Automated sensors detect anomalies within seconds. Operators receive real-time alerts. This prevents catastrophic failures."</p>
+                        <div className="text-lg space-y-1">
                           <p>Topic Sentence: "monitoring is critical"</p>
                           <p>Details: sensors detect, operators alerted, prevents failures</p>
                         </div>
@@ -1458,12 +1458,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é a Topic Sentence?</p>
-                    <p className="text-xs italic text-foreground/70">"The project had two phases. Phase 1 lasted 6 months. Phase 2 took 4 months."</p>
+                    <p className="font-semibold text-lg">Qual é a Topic Sentence?</p>
+                    <p className="text-lg italic text-foreground/70">"The project had two phases. Phase 1 lasted 6 months. Phase 2 took 4 months."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✓ "The project had two phases"</p>
                     <p>Resumo geral. O resto são detalhes de cada fase.</p>
                   </div>
@@ -1473,12 +1473,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é Supporting Detail?</p>
-                    <p className="text-xs italic text-foreground/70">"Safety improved significantly. Workers reported fewer incidents. Equipment breakdowns decreased by 40%."</p>
+                    <p className="font-semibold text-lg">Qual é Supporting Detail?</p>
+                    <p className="text-lg italic text-foreground/70">"Safety improved significantly. Workers reported fewer incidents. Equipment breakdowns decreased by 40%."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✓ "Equipment breakdowns decreased by 40%"</p>
                     <p>Detalhe específico que sustenta a ideia geral "Safety improved".</p>
                   </div>
@@ -1488,11 +1488,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Topic Sentence sempre é a 1ª sentença?</p>
+                    <p className="font-semibold text-lg">Topic Sentence sempre é a 1ª sentença?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">Geralmente SIM (90%), mas nem sempre</p>
                     <p>Procure pela sentença que RESUME as outras, não necessariamente a primeira.</p>
                   </div>
@@ -1502,11 +1502,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Como usar Topic Sentences para ganhar tempo?</p>
+                    <p className="font-semibold text-lg">Como usar Topic Sentences para ganhar tempo?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">Skim: Leia apenas 1ª sentença de cada parágrafo</p>
                     <p>Entenda 80% em 1 minuto. Volta para detalhes conforme perguntas pedem.</p>
                   </div>
@@ -1551,7 +1551,7 @@ export default function AulaTextComprehension({
               descricao="Pronomes, demonstrativas e expressões definem-se ('hold together') o texto"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Reference words (pronomes como he, it, they, this, that, the) conectam frases ao referenciarem algo mencionado anteriormente. Exemplo: "The equipment failed. It was corroded." — 'It' refere-se a 'equipment'. Sem entender esta referência, você pensa que 'It' refere-se a outra coisa. A pegadinha mais comum é quando o pronome está distante do antecedente (a palavra que refencia). Você precisa procurar pelo NOUN mais próximo do MESMO GÊNERO E NÚMERO.
               </p>
@@ -1566,22 +1566,22 @@ export default function AulaTextComprehension({
 
               <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 rounded-lg border border-indigo-200 dark:border-indigo-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Tipos de Reference Words</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-lg">
                   <div className="border-l-4 border-indigo-500 pl-3">
                     <p className="font-semibold">Pronouns</p>
-                    <p className="text-xs">he, she, it, they, who</p>
+                    <p className="text-lg">he, she, it, they, who</p>
                   </div>
                   <div className="border-l-4 border-purple-500 pl-3">
                     <p className="font-semibold">Demonstratives</p>
-                    <p className="text-xs">this, that, these, those</p>
+                    <p className="text-lg">this, that, these, those</p>
                   </div>
                   <div className="border-l-4 border-indigo-500 pl-3">
                     <p className="font-semibold">Definite Articles</p>
-                    <p className="text-xs">the (refere-se a coisa específica)</p>
+                    <p className="text-lg">the (refere-se a coisa específica)</p>
                   </div>
                   <div className="border-l-4 border-purple-500 pl-3">
                     <p className="font-semibold">Possessives</p>
-                    <p className="text-xs">his, her, its, their</p>
+                    <p className="text-lg">his, her, its, their</p>
                   </div>
                 </div>
               </div>
@@ -1594,16 +1594,16 @@ export default function AulaTextComprehension({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Pronomes substitúem nomes para evitar repetição. "The technician inspected the equipment. He found a leak. The leak was small. He repaired it." — 'He' = technician, 'it' = leak. O desafio é que o pronome pode estar longe do noun original, ou pode haver múltiplos nouns próximos (ambiguidade). Quando você vê um pronome, procure por: (1) Qual noun é mais próximo? (2) Qual noun combina em gênero? (3) Qual noun combina em número (singular/plural)?
                       </p>
 
                       <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm">Exemplo: Identificando Antecedente</h5>
-                        <p className="text-sm italic text-foreground/80 mb-3">"The pressure valve and the flow regulator are critical components. It monitors pressure. It was designed for extreme temperatures."</p>
-                        <div className="text-sm space-y-2">
+                        <h5 className="font-semibold text-lg">Exemplo: Identificando Antecedente</h5>
+                        <p className="text-lg italic text-foreground/80 mb-3">"The pressure valve and the flow regulator are critical components. It monitors pressure. It was designed for extreme temperatures."</p>
+                        <div className="text-lg space-y-2">
                           <div className="font-semibold">Pergunta: O que 'It' refere?</div>
-                          <div className="text-xs text-foreground/80 mt-1">
+                          <div className="text-lg text-foreground/80 mt-1">
                             • Valve (singular, neutro) — combina!<br/>
                             • Regulator (singular, neutro) — combina!<br/>
                             • Qual é mais próximo? Regulator (última noun antes de 'It')<br/>
@@ -1613,7 +1613,7 @@ export default function AulaTextComprehension({
                         </div>
                       </div>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         <strong>Regra de Ouro:</strong> o pronome refere-se geralmente ao NOUN MAIS PRÓXIMO que combina em gênero/número, E faz sentido logicamente.
                       </p>
                     </div>
@@ -1623,11 +1623,11 @@ export default function AulaTextComprehension({
                   titulo: "② Demonstratives & Definite Articles",
                   icone: <LuPlay className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-lg">
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
                         <p className="font-semibold">Demonstratives: This vs That</p>
-                        <p className="text-xs text-foreground/70 italic mb-2">"Production increased 15% last year. This achievement demonstrates our progress. Before that, we had stagnation."</p>
-                        <div className="text-xs space-y-1">
+                        <p className="text-lg text-foreground/70 italic mb-2">"Production increased 15% last year. This achievement demonstrates our progress. Before that, we had stagnation."</p>
+                        <div className="text-lg space-y-1">
                           <p>"<strong>This</strong> achievement" = recém mencionado (15% increase)</p>
                           <p>"<strong>That</strong>" = tempo anterior (stagnation period)</p>
                           <p>This = PERTO (recente), That = LONGE (passado)</p>
@@ -1636,8 +1636,8 @@ export default function AulaTextComprehension({
 
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
                         <p className="font-semibold">Definite Article: The</p>
-                        <p className="text-xs text-foreground/70 italic mb-2">"We reported a leak. The leak was in Sector B."</p>
-                        <div className="text-xs space-y-1">
+                        <p className="text-lg text-foreground/70 italic mb-2">"We reported a leak. The leak was in Sector B."</p>
+                        <div className="text-lg space-y-1">
                           <p>"<strong>A</strong> leak" = indefinido (qualquer leak, primeira menção)</p>
                           <p>"<strong>The</strong> leak" = definido (específico leak já mencionado)</p>
                           <p>The = REFERE a algo específico anterior</p>
@@ -1713,12 +1713,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">O que 'It' refere?</p>
-                    <p className="text-xs italic">"The regulator was replaced. It was damaged."</p>
+                    <p className="font-semibold text-lg">O que 'It' refere?</p>
+                    <p className="text-lg italic">"The regulator was replaced. It was damaged."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-indigo-600">It = regulator</p>
                     <p>Noun mais próximo, combina em número (singular), faz sentido logicamente.</p>
                   </div>
@@ -1728,12 +1728,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é o antecedente?</p>
-                    <p className="text-xs italic">"The pipeline and valve system was installed. The technician inspected it daily."</p>
+                    <p className="font-semibold text-lg">Qual é o antecedente?</p>
+                    <p className="text-lg italic">"The pipeline and valve system was installed. The technician inspected it daily."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-indigo-600">It = system</p>
                     <p>Não "pipeline" (específico). "System" é o noun geral que technician inspeciona.</p>
                   </div>
@@ -1743,12 +1743,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">This vs That?</p>
-                    <p className="text-xs italic">"Production rose 20%. This result pleased investors. Before that, targets were missed."</p>
+                    <p className="font-semibold text-lg">This vs That?</p>
+                    <p className="text-lg italic">"Production rose 20%. This result pleased investors. Before that, targets were missed."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-indigo-600">This = recém mencionado (20% rise)</p>
                     <p>That = passado distante (período anterior quando targets foram missed)</p>
                   </div>
@@ -1758,12 +1758,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">A vs The?</p>
-                    <p className="text-xs italic">"We found a leak. The leak was small."</p>
+                    <p className="font-semibold text-lg">A vs The?</p>
+                    <p className="text-lg italic">"We found a leak. The leak was small."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-indigo-600">A = indefinido (primeira vez)</p>
                     <p>The = definido (refere-se a leak específico já mencionado)</p>
                   </div>
@@ -1808,7 +1808,7 @@ export default function AulaTextComprehension({
               descricao="Dois textos com MESMO CONTEÚDO podem ter tones/purposes DIFERENTES"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Tone é a ATITUDE do autor ao escrever — formal, informal, crítico, neutro, entusiasmado, céptico. Purpose é o OBJETIVO — informar, persuadir, criticar, avisar, explicar. Textos técnicos Petrobras frequentemente têm tone FORMAL/NEUTRO (porque é documentação) e purpose INFORMATIVO (porque está descrevendo processo). Mas um relatório executivo pode ter tone PERSUASIVO (porque quer convincer investidores) e purpose PERSUASIVO (vender a ideia do projeto).
               </p>
@@ -1823,14 +1823,14 @@ export default function AulaTextComprehension({
 
               <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 rounded-lg border border-red-200 dark:border-red-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Tone vs Purpose</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                   <div className="border-l-4 border-red-500 pl-3">
                     <p className="font-semibold">TONE (Como?)</p>
-                    <p className="text-xs">formal, informal, critico, neutro, otimista, pessimista</p>
+                    <p className="text-lg">formal, informal, critico, neutro, otimista, pessimista</p>
                   </div>
                   <div className="border-l-4 border-orange-500 pl-3">
                     <p className="font-semibold">PURPOSE (Por quê?)</p>
-                    <p className="text-xs">informar, persuadir, criticar, avisar, explicar</p>
+                    <p className="text-lg">informar, persuadir, criticar, avisar, explicar</p>
                   </div>
                 </div>
               </div>
@@ -1843,33 +1843,33 @@ export default function AulaTextComprehension({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Tone é a atitude ou "voz" do autor. Procure por pistas: (1) Adjetivos escolhidos (positive vs negative vs neutral), (2) Estrutura das sentenças (curtas/diretas vs longas/complexas), (3) Uso de exclamações (!), (4) Palavras emocionais vs factuais. Exemplo: "The project achieved targets" (NEUTRO) vs "The project brilliantly achieved targets" (ENTUSIASMADO) vs "The project somehow achieved targets" (CÉPTICO, implicando luck ao invés de skill).
                       </p>
 
                       <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm">Exemplos de Tones Diferentes</h5>
-                        <div className="text-sm space-y-3">
+                        <h5 className="font-semibold text-lg">Exemplos de Tones Diferentes</h5>
+                        <div className="text-lg space-y-3">
                           <div>
                             <p className="font-semibold text-blue-700">FORMAL/NEUTRO:</p>
-                            <p className="text-xs text-foreground/80">"The equipment failed due to corrosion." — Factual, sem julgamento</p>
+                            <p className="text-lg text-foreground/80">"The equipment failed due to corrosion." — Factual, sem julgamento</p>
                           </div>
                           <div>
                             <p className="font-semibold text-green-700">ENTUSIASMADO:</p>
-                            <p className="text-xs text-foreground/80">"The new protocol brilliantly solved the problem!" — Palavras como "brilliantly", exclamação</p>
+                            <p className="text-lg text-foreground/80">"The new protocol brilliantly solved the problem!" — Palavras como "brilliantly", exclamação</p>
                           </div>
                           <div>
                             <p className="font-semibold text-amber-700">CRÍTICO:</p>
-                            <p className="text-xs text-foreground/80">"The equipment failed miserably, revealing poor maintenance practices." — Julgamento negativo</p>
+                            <p className="text-lg text-foreground/80">"The equipment failed miserably, revealing poor maintenance practices." — Julgamento negativo</p>
                           </div>
                           <div>
                             <p className="font-semibold text-purple-700">CÉPTICO:</p>
-                            <p className="text-xs text-foreground/80">"The project allegedly met deadlines, though data suggests otherwise." — Dúvida/desconfiança</p>
+                            <p className="text-lg text-foreground/80">"The project allegedly met deadlines, though data suggests otherwise." — Dúvida/desconfiança</p>
                           </div>
                         </div>
                       </div>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         <strong>Palavras que indicam tone:</strong> Positivas (excellent, brilliant, successful, efficient), Negativas (poor, failure, inadequate, insufficient), Neutras (adequate, sufficient, completed, occurred). Mesmo conteúdo fatorial, tom diferente conforme adjetivo.
                       </p>
                     </div>
@@ -1879,29 +1879,29 @@ export default function AulaTextComprehension({
                   titulo: "② Identificando Purpose (Objetivo)",
                   icone: <LuPlay className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-lg">
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
                         <p className="font-semibold">Purpose: INFORMATIVO</p>
-                        <p className="text-xs text-foreground/70">Objetivo: Descrever fatos, processos, dados</p>
-                        <p className="text-xs">Ex: "The protocol includes three steps. (1)... (2)... (3)..."</p>
+                        <p className="text-lg text-foreground/70">Objetivo: Descrever fatos, processos, dados</p>
+                        <p className="text-lg">Ex: "The protocol includes three steps. (1)... (2)... (3)..."</p>
                       </div>
 
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
                         <p className="font-semibold">Purpose: PERSUASIVO</p>
-                        <p className="text-xs text-foreground/70">Objetivo: Convencer você de algo, mudar opinião</p>
-                        <p className="text-xs">Ex: "You MUST adopt this protocol because it prevents 95% of failures."</p>
+                        <p className="text-lg text-foreground/70">Objetivo: Convencer você de algo, mudar opinião</p>
+                        <p className="text-lg">Ex: "You MUST adopt this protocol because it prevents 95% of failures."</p>
                       </div>
 
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
                         <p className="font-semibold">Purpose: CRÍTICO/ARGUMENTATIVO</p>
-                        <p className="text-xs text-foreground/70">Objetivo: Apontar problemas, criticar, debater</p>
-                        <p className="text-xs">Ex: "The old protocol was ineffective because it allowed 50% failure rate."</p>
+                        <p className="text-lg text-foreground/70">Objetivo: Apontar problemas, criticar, debater</p>
+                        <p className="text-lg">Ex: "The old protocol was ineffective because it allowed 50% failure rate."</p>
                       </div>
 
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
                         <p className="font-semibold">Purpose: AVISO/PRECAUÇÃO</p>
-                        <p className="text-xs text-foreground/70">Objetivo: Alertar para perigos, avisar</p>
-                        <p className="text-xs">Ex: "Failure to maintain the system will result in catastrophic consequences."</p>
+                        <p className="text-lg text-foreground/70">Objetivo: Alertar para perigos, avisar</p>
+                        <p className="text-lg">Ex: "Failure to maintain the system will result in catastrophic consequences."</p>
                       </div>
                     </div>
                   ),
@@ -1978,12 +1978,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é o Tone?</p>
-                    <p className="text-xs italic">"The protocol is an outstanding solution that brilliantly prevents failure!"</p>
+                    <p className="font-semibold text-lg">Qual é o Tone?</p>
+                    <p className="text-lg italic">"The protocol is an outstanding solution that brilliantly prevents failure!"</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-red-600">ENTUSIASMADO/POSITIVO</p>
                     <p>Palavras: outstanding, brilliantly, ! = tone que admira/aprova.</p>
                   </div>
@@ -1993,12 +1993,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é o Purpose?</p>
-                    <p className="text-xs italic">"You MUST adopt this protocol because it prevents 95% of failures."</p>
+                    <p className="font-semibold text-lg">Qual é o Purpose?</p>
+                    <p className="text-lg italic">"You MUST adopt this protocol because it prevents 95% of failures."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-red-600">PERSUASIVO</p>
                     <p>Author quer convencer você com evidência (95%) para agir (adotar).</p>
                   </div>
@@ -2008,12 +2008,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Tone Neutro ou Crítico?</p>
-                    <p className="text-xs italic">"The equipment failed. The maintenance logs showed no inspection in 18 months."</p>
+                    <p className="font-semibold text-lg">Tone Neutro ou Crítico?</p>
+                    <p className="text-lg italic">"The equipment failed. The maintenance logs showed no inspection in 18 months."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-red-600">NEUTRO (com implicação crítica)</p>
                     <p>Palavras factuais, sem adjetivos emotivos. Pero estrutura implica culpa.</p>
                   </div>
@@ -2023,12 +2023,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Tone Irônico?</p>
-                    <p className="text-xs italic">"The procedure worked wonderfully—it only delayed us 6 months."</p>
+                    <p className="font-semibold text-lg">Tone Irônico?</p>
+                    <p className="text-lg italic">"The procedure worked wonderfully—it only delayed us 6 months."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-red-600">IRÓNICO/SARCÁSTICO</p>
                     <p>"Wonderfully" parece positivo, pero contexto (6-month delay) revela que é crítico.</p>
                   </div>
@@ -2073,7 +2073,7 @@ export default function AulaTextComprehension({
               descricao="A resposta não aparece palavra-por-palavra, você precisa deduzir a partir de pistas"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Inferência é uma conclusão lógica derivada de evidência no texto, mas NÃO DITA explicitamente. Exemplo: "The company reported record profits. The CEO announced a raise for all employees." — Isto NÃO diz "profit causou raise", mas você infere isto porque causa-efeito faz sentido lógico. A diferença crítica entre inferência VÁLIDA e ESPECULAÇÃO: inferência é suportada por evidência no texto. Especulação é pura fantasia sem suporte.
               </p>
@@ -2088,7 +2088,7 @@ export default function AulaTextComprehension({
 
               <div className="bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950/30 dark:to-blue-950/30 rounded-lg border border-cyan-200 dark:border-cyan-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Tipos de Inferência</h4>
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <div className="flex items-start gap-3">
                     <div className="font-semibold text-cyan-600 dark:text-cyan-400 min-w-fit">Causa-Efeito:</div>
                     <div>Se X aconteceu, você infere que Y causou X ou Y resultou de X</div>
@@ -2116,24 +2116,24 @@ export default function AulaTextComprehension({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         INFERÊNCIA é uma conclusão lógica suportada por evidência no texto. ESPECULAÇÃO é uma ideia que você tem, mas o texto não a suporta. Exemplo: "The company announced a 50% cost reduction." — Você PODE inferir "The company made difficult decisions" (porque cost reduction geralmente exige decisões difíceis). Você NÃO PODE inferir "The CEO is a genius" (porque texto não menciona CEO, inteligência, ou qualidade de decisão — é pura especulação).
                       </p>
 
                       <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm">Exemplo: Inferência vs Especulação</h5>
-                        <p className="text-sm italic text-foreground/80 mb-3">Texto: "Production failed in Sector B due to a valve malfunction. The valve was last inspected 8 months ago."</p>
-                        <div className="text-sm space-y-2">
+                        <h5 className="font-semibold text-lg">Exemplo: Inferência vs Especulação</h5>
+                        <p className="text-lg italic text-foreground/80 mb-3">Texto: "Production failed in Sector B due to a valve malfunction. The valve was last inspected 8 months ago."</p>
+                        <div className="text-lg space-y-2">
                           <div className="font-semibold text-green-600">✓ INFERÊNCIA VÁLIDA:</div>
-                          <div className="text-xs text-foreground/80">"The valve malfunction could have been prevented with more frequent inspections."<br/>
+                          <div className="text-lg text-foreground/80">"The valve malfunction could have been prevented with more frequent inspections."<br/>
                           (Suportado: 8-month interval é longo para válvulas críticas)</div>
                           <div className="font-semibold text-red-600">❌ ESPECULAÇÃO:</div>
-                          <div className="text-xs text-foreground/80">"The technician was lazy and didn't care about safety."<br/>
+                          <div className="text-lg text-foreground/80">"The technician was lazy and didn't care about safety."<br/>
                           (Não suportado: texto não menciona technician, laziness, ou atitude)</div>
                         </div>
                       </div>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         <strong>Teste de Validade:</strong> Toda a evidência no texto suporta esta inferência? Se a resposta é SIM, é inferência. Se é TALVEZ ou NÃO, é especulação.
                       </p>
                     </div>
@@ -2143,10 +2143,10 @@ export default function AulaTextComprehension({
                   titulo: "② Sinais de Causa-Efeito & Contexto",
                   icone: <LuPlay className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-lg">
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
                         <p className="font-semibold">Sinais Linguísticos de Causa-Efeito:</p>
-                        <div className="text-xs space-y-1">
+                        <div className="text-lg space-y-1">
                           <div>• <strong>Because, since, due to, caused by</strong> = introduz causa</div>
                           <div>• <strong>Therefore, as a result, consequently, thus</strong> = introduz efeito</div>
                           <div>• <strong>If...then, leads to, results in</strong> = relação causal</div>
@@ -2156,14 +2156,14 @@ export default function AulaTextComprehension({
 
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
                         <p className="font-semibold">Inferência de Causa-Efeito (3 Exemplos):</p>
-                        <div className="text-xs space-y-2">
+                        <div className="text-lg space-y-2">
                           <div>
                             <strong>Texto:</strong> "The new protocol prevented 95% of failures. Companies adopted it widely."
-                            <div className="text-xs text-foreground/70 mt-1">✓ Infer: "The effectiveness of the protocol caused widespread adoption."</div>
+                            <div className="text-lg text-foreground/70 mt-1">✓ Infer: "The effectiveness of the protocol caused widespread adoption."</div>
                           </div>
                           <div>
                             <strong>Texto:</strong> "Maintenance stopped. Equipment degraded rapidly."
-                            <div className="text-xs text-foreground/70 mt-1">✓ Infer: "Lack of maintenance caused rapid degradation."</div>
+                            <div className="text-lg text-foreground/70 mt-1">✓ Infer: "Lack of maintenance caused rapid degradation."</div>
                           </div>
                         </div>
                       </div>
@@ -2242,12 +2242,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">O que você pode inferir?</p>
-                    <p className="text-xs italic">"The equipment failed. The last inspection was 18 months ago."</p>
+                    <p className="font-semibold text-lg">O que você pode inferir?</p>
+                    <p className="text-lg italic">"The equipment failed. The last inspection was 18 months ago."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-cyan-600">Inferência válida:</p>
                     <p>"Manutenção inadequada ou insuficiente causou falha" (18 meses = muito tempo)</p>
                   </div>
@@ -2257,12 +2257,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">É Inferência ou Especulação?</p>
-                    <p className="text-xs italic">"O técnico é negligente" (texto não menciona técnico)</p>
+                    <p className="font-semibold text-lg">É Inferência ou Especulação?</p>
+                    <p className="text-lg italic">"O técnico é negligente" (texto não menciona técnico)</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-cyan-600">❌ ESPECULAÇÃO</p>
                     <p>Sem evidência sobre técnico ou negligência. Não suportado.</p>
                   </div>
@@ -2272,11 +2272,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Que implica "Profits increased 50%"?</p>
+                    <p className="font-semibold text-lg">Que implica "Profits increased 50%"?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-cyan-600">✓ Negócio foi bem-sucedido</p>
                     <p>✓ Decisões gerenciais funcionaram</p>
                     <p>❌ CEO é gênio (over-inference)</p>
@@ -2287,12 +2287,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Teste de Validade:</p>
-                    <p className="text-xs">"O texto suporta esta inferência?"</p>
+                    <p className="font-semibold text-lg">Teste de Validade:</p>
+                    <p className="text-lg">"O texto suporta esta inferência?"</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-cyan-600">Se SIM = Inferência Válida</p>
                     <p>Se TALVEZ ou NÃO = Especulação (rejeita)</p>
                   </div>
@@ -2337,7 +2337,7 @@ export default function AulaTextComprehension({
               descricao="Entenda exatamente o que você vai enfrentar numa prova real Petrobras"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Uma prova CESGRANRIO típica de leitura em inglês tem: 3-4 TEXTOS (cada um com 200-400 palavras), 12-20 QUESTÕES TOTAIS (3-5 por texto), TEMPO: ~30 minutos (5-8 minutos por texto). Isto significa você DEVE ler e responder 4 questões em ~6 minutos. Se você gasta 10 minutos lendo um texto palavra-por-palavra, você fica sem tempo.
               </p>
@@ -2352,7 +2352,7 @@ export default function AulaTextComprehension({
 
               <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30 rounded-lg border border-orange-200 dark:border-orange-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Padrão Típico de Prova</h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-lg">
                   <div className="flex items-start gap-3">
                     <div className="font-semibold text-orange-600 dark:text-orange-400 min-w-fit">Texto 1:</div>
                     <div>~300 palavras | 4 questões | 6 minutos</div>
@@ -2380,21 +2380,21 @@ export default function AulaTextComprehension({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Uma estratégia vencedora em prova CESGRANRIO: (1) SKIM o texto (~1 min): leia título + 1ª sentença + última = entenda main idea. (2) LEIA QUESTÕES (~1 min): vire para as questões e leia TODAS 4 de uma vez. Você sabe agora O QUÊ procurar. (3) VOLTA AO TEXTO E RESPONDA (~3 min): volta ao texto, scan para cada resposta, responde as 4. (4) REVISA (~1 min): volta para questões que tem dúvida, valida respostas.
                       </p>
 
                       <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm">Distribuição de Tempo (6 minutos por texto):</h5>
-                        <div className="text-sm space-y-2">
-                          <div className="font-semibold text-xs text-blue-700">Passo 1: Skim (~60 segundos)</div>
-                          <div className="text-xs text-foreground/80">Lê título + 1ª sentença + última sentença. Objetivo: entender tema geral.</div>
-                          <div className="font-semibold text-xs text-blue-700">Passo 2: Lê Questões (~60 segundos)</div>
-                          <div className="text-xs text-foreground/80">Vire para as 4 perguntas. Lê cada uma. Identifica O QUÊ procurar (main idea, detail, vocabulary).</div>
-                          <div className="font-semibold text-xs text-blue-700">Passo 3: Volta & Responde (~180 segundos)</div>
-                          <div className="text-xs text-foreground/80">Volta ao texto. Para cada questão, procura informação (scan para detail, relê contexto para inference). Responde.</div>
-                          <div className="font-semibold text-xs text-blue-700">Passo 4: Revisa (~60 segundos)</div>
-                          <div className="text-xs text-foreground/80">Se tempo permite, volta para questões duvidosas. Valida respostas.</div>
+                        <h5 className="font-semibold text-lg">Distribuição de Tempo (6 minutos por texto):</h5>
+                        <div className="text-lg space-y-2">
+                          <div className="font-semibold text-lg text-blue-700">Passo 1: Skim (~60 segundos)</div>
+                          <div className="text-lg text-foreground/80">Lê título + 1ª sentença + última sentença. Objetivo: entender tema geral.</div>
+                          <div className="font-semibold text-lg text-blue-700">Passo 2: Lê Questões (~60 segundos)</div>
+                          <div className="text-lg text-foreground/80">Vire para as 4 perguntas. Lê cada uma. Identifica O QUÊ procurar (main idea, detail, vocabulary).</div>
+                          <div className="font-semibold text-lg text-blue-700">Passo 3: Volta & Responde (~180 segundos)</div>
+                          <div className="text-lg text-foreground/80">Volta ao texto. Para cada questão, procura informação (scan para detail, relê contexto para inference). Responde.</div>
+                          <div className="font-semibold text-lg text-blue-700">Passo 4: Revisa (~60 segundos)</div>
+                          <div className="text-lg text-foreground/80">Se tempo permite, volta para questões duvidosas. Valida respostas.</div>
                         </div>
                       </div>
                     </div>
@@ -2404,20 +2404,20 @@ export default function AulaTextComprehension({
                   titulo: "② Antecipação: Qual Tipo de Questão?",
                   icone: <LuPlay className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-lg">
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
                         <p className="font-semibold">Texto Típico 1: Production Report</p>
-                        <p className="text-xs text-foreground/70">Esperadas questões: 1 main idea, 2 details (números), 1 inference (causa do resultado)</p>
+                        <p className="text-lg text-foreground/70">Esperadas questões: 1 main idea, 2 details (números), 1 inference (causa do resultado)</p>
                       </div>
 
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
                         <p className="font-semibold">Texto Típico 2: Safety Bulletin</p>
-                        <p className="text-xs text-foreground/70">Esperadas questões: 1 main idea, 2 details (procedimentos), 1 tone/purpose (é informativo ou persuasivo?)</p>
+                        <p className="text-lg text-foreground/70">Esperadas questões: 1 main idea, 2 details (procedimentos), 1 tone/purpose (é informativo ou persuasivo?)</p>
                       </div>
 
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-3">
                         <p className="font-semibold">Texto Típico 3: Equipment Description</p>
-                        <p className="text-xs text-foreground/70">Esperadas questões: 1 main idea, 1-2 details (função), 1 vocabulary (o que significa X?), 1 inference (propósito)</p>
+                        <p className="text-lg text-foreground/70">Esperadas questões: 1 main idea, 1-2 details (função), 1 vocabulary (o que significa X?), 1 inference (propósito)</p>
                       </div>
                     </div>
                   ),
@@ -2490,11 +2490,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Quanto tempo skim?</p>
+                    <p className="font-semibold text-lg">Quanto tempo skim?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-orange-600">~60 segundos por texto</p>
                     <p>Título + 1ª sentença + última = entenda tema geral. Não leia tudo ainda.</p>
                   </div>
@@ -2504,11 +2504,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Próximo passo depois de skim?</p>
+                    <p className="font-semibold text-lg">Próximo passo depois de skim?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-orange-600">Leia as 4 questões</p>
                     <p>Antes de reler o texto inteiro. Saiba O QUÊ procurar antes de procurar.</p>
                   </div>
@@ -2518,12 +2518,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual ordem de prioridade?</p>
-                    <p className="text-xs">Se tempo é curto, qual tipo responde primeiro?</p>
+                    <p className="font-semibold text-lg">Qual ordem de prioridade?</p>
+                    <p className="text-lg">Se tempo é curto, qual tipo responde primeiro?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-orange-600">Main Idea &gt; Detail &gt; Vocabulary &gt; Inference</p>
                     <p>Main idea é mais rápido (~30s). Inference é mais lento (~60s).</p>
                   </div>
@@ -2533,11 +2533,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Você tem 6 minutos por texto. Distribuição?</p>
+                    <p className="font-semibold text-lg">Você tem 6 minutos por texto. Distribuição?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-orange-600">1min skim + 1min lê questões + 3min responde + 1min revisa</p>
                     <p>Tempo total = 6 min para 1 texto. Para 4 textos = 24 min (sobra 6min buffer).</p>
                   </div>
@@ -2582,7 +2582,7 @@ export default function AulaTextComprehension({
               descricao="Você aprendeu 8 estratégias. Agora integre tudo num pipeline único"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Você dominou 8 estratégias: (1) Decoding question types, (2) Skimming, (3) Scanning, (4) Vocabulary in context, (5) Paragraph structure, (6) Reference words, (7) Tone & purpose, (8) Inference. Agora você precisa INTEGRAR todas numa rotina automática. Quando você vê um texto novo em prova, você não pensa "qual estratégia uso?" — você AUTOMATICAMENTE skim → read questions → scan para answers → inference where needed.
               </p>
@@ -2597,7 +2597,7 @@ export default function AulaTextComprehension({
 
               <div className="bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-950/30 dark:to-teal-950/30 rounded-lg border border-green-200 dark:border-green-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">O Pipeline de 5 Passos (Automático)</h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-lg">
                   <TimelineItem
                     numero={1}
                     titulo="SKIM (60 segundos)"
@@ -2633,9 +2633,9 @@ export default function AulaTextComprehension({
                   titulo: "① Tabela de Referência: 8 Estratégias Rápidas",
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-lg">
                       <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm mb-3">Cheat Sheet: Qual Estratégia Usar Quando?</h5>
+                        <h5 className="font-semibold text-lg mb-3">Cheat Sheet: Qual Estratégia Usar Quando?</h5>
                         <div className="space-y-2">
                           <div><strong>Pergunta 'Main idea'?</strong> → Skim (título + 1ª/última) = 30 seg</div>
                           <div><strong>Pergunta 'According to text' (Detail)?</strong> → Scan palavra-chave = 30 seg</div>
@@ -2649,8 +2649,8 @@ export default function AulaTextComprehension({
                       </div>
 
                       <div className="bg-amber-50 dark:bg-amber-950/20 rounded-lg p-4 space-y-2 mt-4">
-                        <h5 className="font-semibold text-sm">Tempo Total para 4 Questões:</h5>
-                        <div className="text-xs">30+30+60+20 = 140 segundos = ~2.5 minutos. Dentro do orçamento de 6 min/texto!</div>
+                        <h5 className="font-semibold text-lg">Tempo Total para 4 Questões:</h5>
+                        <div className="text-lg">30+30+60+20 = 140 segundos = ~2.5 minutos. Dentro do orçamento de 6 min/texto!</div>
                       </div>
                     </div>
                   ),
@@ -2659,10 +2659,10 @@ export default function AulaTextComprehension({
                   titulo: "② Checklist Final: Antes de Prova Real",
                   icone: <LuPlay className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-lg">
                       <div className="bg-foreground/5 rounded-lg p-4 space-y-2">
                         <p className="font-semibold">✓ Você consegue...</p>
-                        <div className="text-xs space-y-1">
+                        <div className="text-lg space-y-1">
                           <div>□ Identificar tipos de questão (main idea, detail, inference, vocabulary, tone)?</div>
                           <div>□ Skim um texto de 300 palavras em 60 segundos?</div>
                           <div>□ Scan para uma palavra-chave em 30 segundos?</div>
@@ -2677,8 +2677,8 @@ export default function AulaTextComprehension({
                       </div>
 
                       <div className="bg-green-50 dark:bg-green-950/20 rounded-lg p-4 space-y-2 mt-4">
-                        <p className="font-semibold text-sm">Se respondeu SIM a 8+: Você está PRONTO!</p>
-                        <p className="text-xs">Você domina reading comprehension. 40-50% de questões de inglês são suas!</p>
+                        <p className="font-semibold text-lg">Se respondeu SIM a 8+: Você está PRONTO!</p>
+                        <p className="text-lg">Você domina reading comprehension. 40-50% de questões de inglês são suas!</p>
                       </div>
                     </div>
                   ),
@@ -2728,8 +2728,8 @@ export default function AulaTextComprehension({
 
                       <div className="bg-gradient-to-br from-green-100 to-teal-100 dark:from-green-950/50 dark:to-teal-950/50 rounded-lg p-6 border-2 border-green-500 dark:border-green-400 space-y-3">
                         <p className="text-center font-bold text-lg">🏆 ESPECIALISTA EM READING COMPREHENSION 🏆</p>
-                        <p className="text-sm text-center">Você domina todas as 8 estratégias e consegue ler textos técnicos com confiança.</p>
-                        <div className="text-xs space-y-1 mt-4">
+                        <p className="text-lg text-center">Você domina todas as 8 estratégias e consegue ler textos técnicos com confiança.</p>
+                        <div className="text-lg space-y-1 mt-4">
                           <p>✅ Decoding Question Types — você identifica se é main idea, detail ou inference</p>
                           <p>✅ Skimming — você entende textos em 60 segundos</p>
                           <p>✅ Scanning — você localiza informação específica rapidamente</p>
@@ -2756,11 +2756,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Quantas estratégias você aprendeu?</p>
+                    <p className="font-semibold text-lg">Quantas estratégias você aprendeu?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">8 Estratégias Comprovadas</p>
                     <p>Decoding, Skimming, Scanning, Vocabulary, Structure, Reference, Tone, Inference</p>
                   </div>
@@ -2770,11 +2770,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é seu ganho esperado em prova?</p>
+                    <p className="font-semibold text-lg">Qual é seu ganho esperado em prova?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">40-50% de reading comprehension</p>
                     <p>40-50% das questões de inglês são leitura. Você domina isto agora!</p>
                   </div>
@@ -2784,12 +2784,12 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Pipeline automático em prova?</p>
-                    <p className="text-xs">Qual ordem?</p>
+                    <p className="font-semibold text-lg">Pipeline automático em prova?</p>
+                    <p className="text-lg">Qual ordem?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">Skim → Questões → Scan → Responde</p>
                     <p>60s + 60s + 180s + 30s = 330s = ~5.5 min por texto. Pronto!</p>
                   </div>
@@ -2799,11 +2799,11 @@ export default function AulaTextComprehension({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Sua próxima ação?</p>
+                    <p className="font-semibold text-lg">Sua próxima ação?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">Praticar com textos reais!</p>
                     <p>Pegue provas CESGRANRIO antigas e pratique com o pipeline que aprendeu.</p>
                   </div>

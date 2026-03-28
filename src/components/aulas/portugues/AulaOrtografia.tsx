@@ -875,7 +875,7 @@ export default function AulaOrtografia({
                     </div>
                     <div>
                       <p className="font-bold">SV + V + SV na mesma sílaba</p>
-                      <p className="text-sm opacity-80 italic">
+                      <p className="text-lg opacity-80 italic">
                         Exemplos: Pa-ra-guai, Sa-guão, En-xaguei.
                       </p>
                     </div>
@@ -889,7 +889,7 @@ export default function AulaOrtografia({
                   <AlertBox tipo="warning" titulo="Não se engane!">
                     No hiato, as vogais estão juntas na palavra, mas pertencem a
                     sílabas DIFERENTES.
-                    <div className="mt-2 font-mono text-sm">
+                    <div className="mt-2 font-mono text-lg">
                       Ex: Sa-ú-de, Co-e-lho, Ba-ú.
                     </div>
                   </AlertBox>
@@ -1044,7 +1044,7 @@ Ditongo é junto, hiato é separação!
             É a sílaba pronunciada com maior intensidade na palavra. Dependendo
             da posição dessa sílaba (contando sempre do final para o início),
             aplicamos regras de acentuação diferentes.
-            <div className="bg-emerald-500/10 border border-emerald-500/20 p-3 rounded-md text-sm mt-3">
+            <div className="bg-emerald-500/10 border border-emerald-500/20 p-3 rounded-md text-lg mt-3">
               <strong>Oxítona:</strong> Ja-ca-<strong>RÉ</strong> (última
               forte).
               <br />
@@ -1370,7 +1370,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-4">
+                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-4">
                   <p>Abolido totalmente em palavras em português.</p>
                   <div className="bg-blue-500/10 p-3 rounded">
                     <p className="line-through text-red-400">
@@ -1392,7 +1392,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-4">
+                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-4">
                   <p>
                     ÉI e ÓI perderam o acento APENAS em palavras paroxítonas.
                   </p>
@@ -1412,7 +1412,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-4">
+                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-4">
                   <p>
                     Vogais repetidas (OO, EE) não têm mais acento circunflexo.
                   </p>
@@ -1452,7 +1452,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
                   <LuCheck className="text-green-500 w-6 h-6 shrink-0" />
                   <div className="space-y-1">
                     <p className="font-semibold text-lg">Feiura</p>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-lg">
                       Fei(ditongo)-u(hiato)-ra = O "U" vem depois de ditongo
                       "ei". Perde o acento.
                     </p>
@@ -1462,7 +1462,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
                   <LuCheck className="text-green-500 w-6 h-6 shrink-0" />
                   <div className="space-y-1">
                     <p className="font-semibold text-lg">Bocaiuva</p>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-lg">
                       Bo-cai(ditongo)-u(hiato)-va = Sem acento.
                     </p>
                   </div>
@@ -1624,7 +1624,7 @@ Mas na prova a banca te espera!
             lembra a física dos ímãs: opostos se atraem (juntam sem hífen) e
             iguais se repelem (separam com hífen). Entender essa lógica evita a
             decoreba infinita de regras.
-            <div className="bg-indigo-500/10 border border-indigo-500/20 p-3 rounded-md text-sm mt-3">
+            <div className="bg-indigo-500/10 border border-indigo-500/20 p-3 rounded-md text-lg mt-3">
               <strong>Exemplo Prático:</strong> Em "Autoescola", o prefixo
               termina em "O", e a palavra começa com "E" (vogais
               opostas/diferentes). Portanto, elas <strong>se atraem</strong> e
@@ -1639,7 +1639,7 @@ Mas na prova a banca te espera!
                   <p className="text-4xl font-bold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
                     Opostos
                   </p>
-                  <p className="text-sm text-muted-foreground font-medium mt-2">
+                  <p className="text-lg text-muted-foreground font-medium mt-2">
                     SE ATRAEM (Juntam)
                   </p>
                 </div>
@@ -1659,7 +1659,7 @@ Mas na prova a banca te espera!
                     <p className="font-semibold text-lg">
                       Autoescola (e não auto-escola)
                     </p>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-lg">
                       O terminando, E começando. Opostos atraem.
                     </p>
                   </div>
@@ -1668,7 +1668,7 @@ Mas na prova a banca te espera!
                   <LuCheck className="text-green-500 w-6 h-6 shrink-0" />
                   <div className="space-y-1">
                     <p className="font-semibold text-lg">Infraestrutura</p>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-lg">
                       A terminando, E começando. Opostos atraem.
                     </p>
                   </div>
@@ -1684,7 +1684,7 @@ Mas na prova a banca te espera!
                   <p className="text-4xl font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
                     Iguais
                   </p>
-                  <p className="text-sm text-muted-foreground font-medium mt-2">
+                  <p className="text-lg text-muted-foreground font-medium mt-2">
                     SE REPELEM (Separam)
                   </p>
                 </div>
@@ -1701,7 +1701,7 @@ Mas na prova a banca te espera!
                   <LuTriangleAlert className="text-red-500 w-6 h-6 shrink-0" />
                   <div className="space-y-1">
                     <p className="font-semibold text-lg">Micro-ondas</p>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-lg">
                       O de micro + O de ondas. Iguais separam.
                     </p>
                   </div>
@@ -1710,7 +1710,7 @@ Mas na prova a banca te espera!
                   <LuTriangleAlert className="text-red-500 w-6 h-6 shrink-0" />
                   <div className="space-y-1">
                     <p className="font-semibold text-lg">Anti-inflamatório</p>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-lg">
                       I com I. Hífen no meio.
                     </p>
                   </div>
@@ -1739,7 +1739,7 @@ Mas na prova a banca te espera!
               <h4 className="font-bold flex items-center gap-2">
                 <LuCheck className="text-emerald-500" /> Vogal + R/S = Dobra
               </h4>
-              <div className="space-y-3 font-mono text-sm">
+              <div className="space-y-3 font-mono text-lg">
                 <p className="flex justify-between border-b pb-1">
                   <span>Mini + Saia</span>{" "}
                   <strong className="text-indigo-500">Minissaia</strong>
@@ -1763,7 +1763,7 @@ Mas na prova a banca te espera!
                 <LuTriangleAlert className="text-amber-500" /> Consoante Igual =
                 Hífen
               </h4>
-              <div className="space-y-3 font-mono text-sm">
+              <div className="space-y-3 font-mono text-lg">
                 <p className="flex justify-between border-b pb-1">
                   <span>Inter + Regional</span>{" "}
                   <strong className="text-amber-600">Inter-regional</strong>
@@ -1897,9 +1897,9 @@ Iguais se repelem, diferentes se amam
         <section className="mt-12">
           <QuizInterativo
             questoes={qMod4}
-            titulo="Hífen sem Mistério"
+            titulo="QUIZ: O Temido Uso do Hífen"
             icone="⛓️"
-            numero={3}
+            numero={4}
             variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
@@ -1937,10 +1937,10 @@ Iguais se repelem, diferentes se amam
               <h4 className="text-xl font-bold text-amber-600 dark:text-amber-400">
                 Por que (Separado, Sem Acento)
               </h4>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-muted-foreground text-lg">
                 Perguntas (diretas ou indiretas) ou "pelo qual".
               </p>
-              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-xs">
+              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-lg">
                 "Não sabemos <strong>por que</strong> o sistema caiu."
               </div>
             </div>
@@ -1949,10 +1949,10 @@ Iguais se repelem, diferentes se amam
               <h4 className="text-xl font-bold text-amber-600 dark:text-amber-400">
                 Porque (Junto, Sem Acento)
               </h4>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-muted-foreground text-lg">
                 Respostas e justificativas. Equivale a <strong>"pois"</strong>.
               </p>
-              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-xs">
+              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-lg">
                 "Caiu <strong>porque</strong> houve pico de uso."
               </div>
             </div>
@@ -1961,10 +1961,10 @@ Iguais se repelem, diferentes se amam
               <h4 className="text-xl font-bold text-orange-600 dark:text-orange-400">
                 Por quê (Separado, Com Acento)
               </h4>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-muted-foreground text-lg">
                 Final de frases (antes de pontuação).
               </p>
-              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-xs">
+              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-lg">
                 "Você não veio ontem <strong>por quê</strong>?"
               </div>
             </div>
@@ -1973,10 +1973,10 @@ Iguais se repelem, diferentes se amam
               <h4 className="text-xl font-bold text-orange-600 dark:text-orange-400">
                 Porquê (Junto, Com Acento)
               </h4>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-muted-foreground text-lg">
                 Substantivo (o motivo). Geralmente com artigo.
               </p>
-              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-xs">
+              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-lg">
                 "Gostaria de entender <strong>o porquê</strong>."
               </div>
             </div>
@@ -1997,7 +1997,7 @@ Iguais se repelem, diferentes se amam
               {
                 title: "MAU vs MAL",
                 descricao: (
-                  <div className="space-y-4 text-sm text-center mt-4">
+                  <div className="space-y-4 text-lg text-center mt-4">
                     <p>
                       <strong>MAU</strong> (Adjetivo) &lt;-&gt; BOM
                     </p>
@@ -2011,7 +2011,7 @@ Iguais se repelem, diferentes se amam
               {
                 title: "ONDE vs AONDE",
                 descricao: (
-                  <div className="space-y-4 text-sm text-center mt-4">
+                  <div className="space-y-4 text-lg text-center mt-4">
                     <p>
                       <strong>ONDE</strong> = Estático.
                     </p>

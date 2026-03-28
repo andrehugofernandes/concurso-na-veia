@@ -1,0 +1,822 @@
+/**
+ * ADMINISTRACAO_GERAL_QUIZZES
+ * 10 módulos × 6 questões = 60 questões totais
+ * IDs: 101-106 (M1), 201-206 (M2), ..., 1001-1006 (M10)
+ */
+
+export interface Question {
+  id: number;
+  question: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+}
+
+export interface Quiz {
+  id?: string;
+  title: string;
+  moduleNumber: number;
+  questions: Question[];
+}
+
+export const ADMINISTRACAO_GERAL_QUIZZES: Record<string, Quiz> = {
+  "modulo-1": {
+    id: "adm-geral-m1-quiz",
+    title: "Fundamentos de Administração",
+    moduleNumber: 1,
+    questions: [
+      {
+        id: 101,
+        question: "Henry Fayol é reconhecido por sua contribuição à Teoria Clássica da Administração. Qual foi sua principal proposta?",
+        options: [
+          "Estudo dos tempos e movimentos para aumentar a produtividade operária",
+          "Definição de 14 princípios e funções administrativas universais",
+          "Criação da teoria das necessidades humanas hierarquizadas",
+          "Proposta da Escola das Relações Humanas com foco em grupos informais",
+        ],
+        correct: 1,
+        explanation: "Fayol (1916) propôs 14 princípios (divisão do trabalho, autoridade, disciplina etc.) e as cinco funções administrativas: planejar, organizar, comandar, coordenar e controlar. Sua abordagem era top-down, focada na estrutura gerencial.",
+      },
+      {
+        id: 102,
+        question: "Frederick Taylor desenvolveu a Administração Científica em 1911. Qual era o foco central de sua abordagem?",
+        options: [
+          "Motivar trabalhadores por meio de reconhecimento social e pertencimento a grupos",
+          "Analisar e padronizar tarefas operacionais para maximizar eficiência e produtividade",
+          "Estruturar a hierarquia corporativa com princípios universais de gestão",
+          "Estudar a organização como um sistema aberto que interage com o ambiente",
+        ],
+        correct: 1,
+        explanation: "Taylor focou na eficiência das tarefas operacionais por meio de estudo de tempos e movimentos, seleção científica de trabalhadores, treinamento padronizado e pagamento por desempenho. Abordagem bottom-up (foco no chão de fábrica).",
+      },
+      {
+        id: 103,
+        question: "A Escola das Relações Humanas surgiu a partir dos experimentos de Hawthorne. Qual foi a principal descoberta desses estudos?",
+        options: [
+          "A produtividade é determinada exclusivamente pela remuneração financeira",
+          "A estrutura hierárquica formal é o único fator que influencia o desempenho",
+          "Fatores sociais e psicológicos — como atenção, pertencimento e motivação — influenciam a produtividade",
+          "A tecnologia é o principal fator de aumento de eficiência nas organizações",
+        ],
+        correct: 2,
+        explanation: "Elton Mayo e a Escola de Hawthorne (1920s-1930s) demonstraram que condições sociais — sentir-se observado, pertencer a um grupo, ter relacionamentos positivos — impactam o desempenho tanto quanto condições físicas. Nascimento do foco nas pessoas.",
+      },
+      {
+        id: 104,
+        question: "Qual das alternativas melhor define 'Administração' segundo Idalberto Chiavenato?",
+        options: [
+          "Arte de maximizar lucros por meio de controle rígido de custos operacionais",
+          "Processo de planejar, organizar, dirigir e controlar recursos para atingir objetivos organizacionais",
+          "Conjunto de normas legais que regulam o funcionamento de empresas públicas e privadas",
+          "Técnica de gerenciamento de conflitos interpessoais dentro das organizações",
+        ],
+        correct: 1,
+        explanation: "A definição clássica de Chiavenato é: 'Administração é o processo de planejar, organizar, dirigir e controlar o uso de recursos para alcançar objetivos organizacionais'. Essa definição fundamenta o modelo PODC (estudado no módulo 2).",
+      },
+      {
+        id: 105,
+        question: "Qual dos seguintes princípios de Fayol se refere à necessidade de cada trabalhador ter apenas um superior direto, evitando ordens conflitantes?",
+        options: [
+          "Divisão do trabalho",
+          "Unidade de comando",
+          "Amplitude de controle",
+          "Centralização",
+        ],
+        correct: 1,
+        explanation: "O princípio da 'Unidade de Comando' de Fayol estabelece que cada empregado deve receber ordens de apenas um superior. Isso evita conflitos, ambiguidades e problemas de autoridade. Violá-lo cria confusão e tensão organizacional.",
+      },
+      {
+        id: 106,
+        question: "No contexto da evolução do pensamento administrativo, a CESGRANRIO frequentemente testa a ordem cronológica das escolas. Qual é a sequência correta?",
+        options: [
+          "Relações Humanas → Teoria Clássica → Administração Científica → Burocracia",
+          "Administração Científica (Taylor) → Teoria Clássica (Fayol) → Relações Humanas (Mayo) → Teoria Sistêmica",
+          "Burocracia (Weber) → Administração Científica → Teoria Clássica → Relações Humanas",
+          "Teoria Sistêmica → Burocracia → Administração Científica → Relações Humanas",
+        ],
+        correct: 1,
+        explanation: "Cronologia correta: Taylor (1911) com Administração Científica → Fayol (1916) com Teoria Clássica → Mayo (1924-1932) com Relações Humanas → Weber com Burocracia → Bertalanffy com Teoria Sistêmica → Teoria da Contingência. A CESGRANRIO testa essa linha do tempo frequentemente.",
+      },
+    ],
+  },
+
+  "modulo-2": {
+    id: "adm-geral-m2-quiz",
+    title: "Funções Administrativas (PODC)",
+    moduleNumber: 2,
+    questions: [
+      {
+        id: 201,
+        question: "O planejamento estratégico, tático e operacional diferem principalmente em qual aspecto?",
+        options: [
+          "Pela área funcional que cada um cobre (RH, Finanças, Operações)",
+          "Pelo horizonte temporal e nível hierárquico: longo prazo/alta direção, médio/média gerência, curto/operacional",
+          "Pelo grau de formalidade exigido pela legislação vigente",
+          "Pelo número de pessoas envolvidas no processo de decisão",
+        ],
+        correct: 1,
+        explanation: "Planejamento estratégico: longo prazo (3-5+ anos), alta direção, define missão/visão/objetivos macro. Planejamento tático: médio prazo (1-2 anos), gerência média, define planos por área. Planejamento operacional: curto prazo (dias/meses), nível operacional, define tarefas específicas.",
+      },
+      {
+        id: 202,
+        question: "A função 'Organizar' no modelo PODC refere-se a qual conjunto de atividades?",
+        options: [
+          "Definir metas e estratégias para atingir os objetivos da organização",
+          "Distribuir recursos, definir hierarquia, alocar responsabilidades e criar estruturas formais",
+          "Liderar, motivar, comunicar e coordenar as pessoas para executar os planos",
+          "Monitorar resultados, comparar com o planejado e corrigir desvios",
+        ],
+        correct: 1,
+        explanation: "Organizar significa estruturar a organização: criar departamentos, definir cargos, estabelecer hierarquia, alocar recursos (humanos, financeiros, tecnológicos) e distribuir responsabilidades. É o 'como se faz' depois do 'o que fazer' (planejar).",
+      },
+      {
+        id: 203,
+        question: "Qual função administrativa se preocupa com a comparação de resultados reais com os planejados, identificando desvios e implementando correções?",
+        options: [
+          "Planejar",
+          "Organizar",
+          "Dirigir",
+          "Controlar",
+        ],
+        correct: 3,
+        explanation: "Controlar é a função de fechar o ciclo: medir resultados, comparar com metas estabelecidas no planejamento, identificar desvios e implementar ações corretivas. Sem controle, o planejamento não tem feedback e a organização não aprende.",
+      },
+      {
+        id: 204,
+        question: "Um gerente de uma refinaria da Petrobras convoca sua equipe, explica os objetivos do próximo turno, motiva o grupo frente a um desafio técnico e resolve um conflito entre dois operadores. Que função administrativa ele está exercendo?",
+        options: [
+          "Planejar — pois está definindo objetivos para a equipe",
+          "Organizar — pois está estruturando as tarefas do turno",
+          "Dirigir — pois está liderando, comunicando e motivando pessoas",
+          "Controlar — pois está monitorando o desempenho da equipe",
+        ],
+        correct: 2,
+        explanation: "Dirigir (ou Liderar) envolve influenciar pessoas para que alcancem objetivos: motivar, comunicar, resolver conflitos, coordenar esforços. Toda interação interpessoal voltada à execução é função de Direção. A CESGRANRIO frequentemente apresenta cenários como este.",
+      },
+      {
+        id: 205,
+        question: "Segundo o modelo PODC, qual é a relação lógica entre as funções administrativas?",
+        options: [
+          "São funções independentes que podem ser executadas em qualquer ordem conforme a necessidade",
+          "Formam um ciclo sequencial: Planejar define objetivos → Organizar estrutura recursos → Dirigir executa → Controlar avalia e reinicia",
+          "Somente Planejar e Controlar são essenciais; Organizar e Dirigir são opcionais em organizações maduras",
+          "São hierarquicamente separadas: alta direção planeja, média gerência organiza, supervisores dirigem e controlam",
+        ],
+        correct: 1,
+        explanation: "O PODC forma um ciclo contínuo: Planejar (definir o que e como) → Organizar (estruturar recursos e responsabilidades) → Dirigir (liderar a execução) → Controlar (monitorar e corrigir). O resultado do controle alimenta novo planejamento, criando melhoria contínua.",
+      },
+      {
+        id: 206,
+        question: "Na Petrobras, o Planejamento Estratégico 2024-2028 define prioridades para E&P e transição energética. Esse é um exemplo de qual nível de planejamento?",
+        options: [
+          "Operacional — pois envolve metas de produção do dia a dia",
+          "Tático — pois envolve planos de médio prazo por área funcional",
+          "Estratégico — pois é de longo prazo, envolve alta direção e define direção geral da empresa",
+          "Normativo — pois é um plano regulatório exigido pela ANP",
+        ],
+        correct: 2,
+        explanation: "O Plano Estratégico da Petrobras é planejamento estratégico: definido pelo Conselho de Administração e Diretoria Executiva, horizonte de 5+ anos, define grandes prioridades (E&P, transição energética, desinvestimentos). É o nível mais alto de planejamento.",
+      },
+    ],
+  },
+
+  "modulo-3": {
+    id: "adm-geral-m3-quiz",
+    title: "Estruturas Organizacionais",
+    moduleNumber: 3,
+    questions: [
+      {
+        id: 301,
+        question: "A estrutura organizacional funcional organiza a empresa principalmente por:",
+        options: [
+          "Produtos ou linhas de negócio distintas",
+          "Regiões geográficas de atuação da empresa",
+          "Funções ou especialidades (RH, Finanças, Operações, Marketing)",
+          "Projetos temporários com times multidisciplinares",
+        ],
+        correct: 2,
+        explanation: "Na estrutura funcional, departamentos são organizados por especialidade: RH, Finanças, Marketing, Operações etc. É a mais comum em empresas tradicionais. Vantagem: especialização e economia de escala. Desvantagem: silos funcionais e comunicação lateral difícil.",
+      },
+      {
+        id: 302,
+        question: "A estrutura matricial é caracterizada por:",
+        options: [
+          "Ter apenas uma linha de autoridade clara e hierarquia vertical única",
+          "Combinar duas estruturas simultaneamente: funcional (departamentos) e de projetos (times temporários), criando dupla hierarquia",
+          "Terceirizar todas as atividades não essenciais, mantendo apenas um núcleo estratégico",
+          "Dividir a empresa em divisões completamente autônomas por produto ou região",
+        ],
+        correct: 1,
+        explanation: "Na estrutura matricial, um profissional responde a dois gestores: seu gerente funcional (RH, Engenharia) e o gerente de projeto. Vantagem: flexibilidade e uso eficiente de especialistas. Desvantagem: ambiguidade de autoridade e potencial de conflito entre gestores.",
+      },
+      {
+        id: 303,
+        question: "O conceito de 'amplitude de controle' (span of control) refere-se a:",
+        options: [
+          "O número máximo de projetos simultâneos que uma organização pode executar",
+          "O número de subordinados diretos que um gestor pode supervisionar eficientemente",
+          "O nível hierárquico máximo permitido em estruturas organizacionais modernas",
+          "O escopo de autoridade formal atribuído a cada cargo gerencial",
+        ],
+        correct: 1,
+        explanation: "Amplitude de controle é quantos subordinados um gestor pode supervisionar com eficácia. Amplitude larga (muitos subordinados): estrutura achatada/horizontal. Amplitude estreita (poucos subordinados): estrutura alta/vertical. Depende da complexidade das tarefas e experiência da equipe.",
+      },
+      {
+        id: 304,
+        question: "Uma empresa petroquímica decide criar três divisões autônomas: Exploração & Produção, Refino e Distribuição, cada uma com seu próprio RH, Finanças e Operações. Que estrutura está adotando?",
+        options: [
+          "Estrutura funcional",
+          "Estrutura matricial",
+          "Estrutura divisional",
+          "Estrutura em rede (virtual)",
+        ],
+        correct: 2,
+        explanation: "Estrutura divisional: cada divisão opera quase como empresa independente, com suas próprias funções de apoio. Vantagem: autonomia e foco em cada negócio. Desvantagem: duplicação de recursos e potencial perda de economias de escala. É comum em grandes conglomerados.",
+      },
+      {
+        id: 305,
+        question: "Em termos de centralização vs descentralização, qual afirmativa é CORRETA?",
+        options: [
+          "Centralização aumenta a velocidade de resposta a situações locais, pois decisões chegam mais rápido ao topo",
+          "Descentralização delega autoridade para níveis inferiores, aumentando agilidade e autonomia local, mas reduzindo controle central",
+          "Organizações modernas tendem à centralização total para garantir padronização e conformidade regulatória",
+          "Descentralização elimina a necessidade de controle gerencial, pois cada unidade é autossuficiente",
+        ],
+        correct: 1,
+        explanation: "Descentralização: autoridade distribuída por níveis hierárquicos ou unidades geográficas. Vantagens: maior agilidade, melhor adaptação ao contexto local, maior motivação dos gestores. Desvantagens: menor uniformidade, risco de inconsistência de decisões. Petrobras combina os dois modelos.",
+      },
+      {
+        id: 306,
+        question: "Qual estrutura organizacional é mais indicada para uma empresa que executa projetos de construção de plataformas offshore com equipes multidisciplinares temporárias?",
+        options: [
+          "Estrutura funcional pura, pois garante especialização técnica máxima",
+          "Estrutura divisional por produto, pois cada plataforma é um produto distinto",
+          "Estrutura matricial, pois combina especialistas funcionais com coordenação de projeto",
+          "Estrutura em rede, pois permite terceirizar todas as atividades para fornecedores especializados",
+        ],
+        correct: 2,
+        explanation: "Projetos de engenharia complexos (como construção offshore) são o caso de uso clássico da estrutura matricial: engenheiros, geólogos, especialistas em segurança etc. pertencem a seus departamentos funcionais mas são alocados temporariamente ao projeto específico.",
+      },
+    ],
+  },
+
+  "modulo-4": {
+    id: "adm-geral-m4-quiz",
+    title: "Comportamento Organizacional",
+    moduleNumber: 4,
+    questions: [
+      {
+        id: 401,
+        question: "A Pirâmide de Maslow hierarquiza necessidades humanas. Qual é a ordem correta da base ao topo?",
+        options: [
+          "Estima → Segurança → Fisiológicas → Social → Autorrealização",
+          "Fisiológicas → Segurança → Social (pertencimento) → Estima → Autorrealização",
+          "Autorrealização → Estima → Social → Segurança → Fisiológicas",
+          "Social → Fisiológicas → Estima → Segurança → Autorrealização",
+        ],
+        correct: 1,
+        explanation: "Maslow: base (mais urgente) = Fisiológicas (alimento, abrigo) → Segurança (emprego, estabilidade) → Social (pertencimento, amizades) → Estima (reconhecimento, status) → Autorrealização (realização do potencial). Necessidades inferiores devem ser minimamente atendidas antes das superiores.",
+      },
+      {
+        id: 402,
+        question: "Frederick Herzberg propôs a teoria dos dois fatores. Qual é a distinção entre fatores higiênicos e motivacionais?",
+        options: [
+          "Fatores higiênicos motivam quando presentes; fatores motivacionais causam insatisfação quando ausentes",
+          "Fatores higiênicos (salário, condições de trabalho) evitam insatisfação mas não motivam; fatores motivacionais (crescimento, reconhecimento) geram satisfação genuína",
+          "Ambos os tipos de fatores têm o mesmo efeito sobre a motivação e satisfação dos trabalhadores",
+          "Fatores higiênicos são extrínsecos e motivam; fatores motivacionais são intrínsecos e apenas evitam conflitos",
+        ],
+        correct: 1,
+        explanation: "Herzberg: fatores higiênicos (salário, supervisão, condições físicas) — quando ausentes causam insatisfação, mas quando presentes não geram motivação. Fatores motivacionais (conquista, reconhecimento, crescimento) — quando presentes geram satisfação e motivação genuína.",
+      },
+      {
+        id: 403,
+        question: "O estilo de liderança situacional de Hersey e Blanchard baseia-se principalmente em:",
+        options: [
+          "Traços de personalidade do líder, que determinam seu estilo natural e imutável",
+          "Adaptar o estilo de liderança ao nível de maturidade (competência + comprometimento) do liderado para cada tarefa",
+          "Preferências da equipe pelo estilo democrático ou autocrático de gestão",
+          "Fatores externos como mercado, concorrência e regulamentação que exigem estilos diferentes",
+        ],
+        correct: 1,
+        explanation: "Hersey e Blanchard: líder eficaz adapta seu estilo ao 'nível de maturidade' do subordinado para a tarefa específica. Maturidade baixa → estilo diretivo (muito direcionamento, pouco apoio). Maturidade alta → delegação (pouco direcionamento, pouco apoio). Liderança situacional.",
+      },
+      {
+        id: 404,
+        question: "Cultura organizacional é definida como:",
+        options: [
+          "O conjunto de normas formais e regulamentos que disciplinam o comportamento dos funcionários",
+          "O sistema de valores compartilhados, crenças, símbolos, rituais e premissas que guiam o comportamento organizacional",
+          "A estrutura hierárquica e os processos formais de tomada de decisão da empresa",
+          "O plano estratégico de longo prazo que define os objetivos e prioridades da organização",
+        ],
+        correct: 1,
+        explanation: "Cultura organizacional (Edgar Schein e outros): conjunto de valores, crenças, premissas básicas, rituais e símbolos compartilhados que formam 'a forma como fazemos as coisas aqui'. Influencia comportamento, decisões e relacionamentos. A Petrobras tem forte cultura de segurança ('Safety First').",
+      },
+      {
+        id: 405,
+        question: "Clima organizacional diferencia-se de cultura organizacional porque:",
+        options: [
+          "Clima é mais permanente e difícil de mudar; cultura é temporária e varia mensalmente",
+          "Clima é a percepção coletiva e subjetiva do ambiente de trabalho em determinado momento; cultura são os valores e premissas profundas mais estáveis",
+          "Clima refere-se ao ambiente físico de trabalho; cultura refere-se às práticas de gestão de pessoas",
+          "Não há diferença real: os dois termos descrevem o mesmo fenômeno organizacional",
+        ],
+        correct: 1,
+        explanation: "Clima organizacional: percepção compartilhada pelos membros sobre o ambiente de trabalho (como as pessoas se sentem) — mais superficial e mutável. Cultura organizacional: valores e premissas profundas que moldam o 'DNA' da empresa — mais estável e difícil de mudar.",
+      },
+      {
+        id: 406,
+        question: "McClelland identificou três necessidades que motivam profissionais. Qual delas descreve a necessidade de pertencer a grupos e manter relacionamentos harmoniosos?",
+        options: [
+          "Necessidade de Realização (nAch) — busca por excelência e superação de desafios",
+          "Necessidade de Poder (nPow) — desejo de influenciar e controlar outros",
+          "Necessidade de Afiliação (nAff) — busca por relacionamentos positivos e pertencimento",
+          "Necessidade de Segurança — desejo de estabilidade e proteção contra riscos",
+        ],
+        correct: 2,
+        explanation: "McClelland (Teoria das Necessidades Adquiridas): nAch (realização) → pessoas motivadas por desafios e excelência; nPow (poder) → motivadas por influência e liderança; nAff (afiliação) → motivadas por pertencimento, cooperação e harmonia. Cada pessoa tem combinação diferente dessas três.",
+      },
+    ],
+  },
+
+  "modulo-5": {
+    id: "adm-geral-m5-quiz",
+    title: "Gestão de Processos e Produtividade",
+    moduleNumber: 5,
+    questions: [
+      {
+        id: 501,
+        question: "O ciclo PDCA (Plan-Do-Check-Act) é uma ferramenta de melhoria contínua. O que representa a fase 'Check'?",
+        options: [
+          "Definir objetivos, metas e o plano de ação para a melhoria",
+          "Implementar o plano definido na fase anterior em escala piloto",
+          "Verificar e analisar os resultados obtidos, comparando com o planejado e identificando desvios",
+          "Padronizar as melhorias confirmadas e corrigir o plano se necessário",
+        ],
+        correct: 2,
+        explanation: "PDCA: Plan (planejar: definir objetivo e como alcançar) → Do (executar: implementar o plano) → Check (verificar: medir resultados e comparar com metas) → Act (agir: padronizar se funcionou, ou corrigir e replanejar se não). O ciclo recomeça continuamente.",
+      },
+      {
+        id: 502,
+        question: "BPM (Business Process Management) é definido como:",
+        options: [
+          "Software de gestão financeira para controle de orçamentos e custos operacionais",
+          "Abordagem sistemática para identificar, modelar, executar, monitorar e melhorar processos de negócio",
+          "Metodologia de gestão de projetos focada em entregas iterativas e incrementais",
+          "Sistema de qualidade baseado em normas ISO para certificação de produtos",
+        ],
+        correct: 1,
+        explanation: "BPM é uma disciplina de gestão que trata processos como ativos estratégicos: identificar como as coisas são feitas, modelar graficamente (BPMN), executar com suporte tecnológico (BPMS), monitorar com indicadores (KPIs) e melhorar continuamente. Base da gestão por processos.",
+      },
+      {
+        id: 503,
+        question: "Qual a diferença entre eficiência e eficácia no contexto da gestão de processos?",
+        options: [
+          "Eficiência é atingir os objetivos certos; eficácia é usar recursos com o mínimo de desperdício",
+          "Eficácia é atingir os objetivos desejados (fazer a coisa certa); eficiência é fazer bem feito com o mínimo de recursos (fazer certo a coisa)",
+          "Eficiência e eficácia são sinônimos no contexto da administração moderna",
+          "Eficiência refere-se ao resultado financeiro; eficácia refere-se ao resultado operacional",
+        ],
+        correct: 1,
+        explanation: "Clássica distinção de Drucker: Eficácia = fazer as coisas certas (atingir os objetivos). Eficiência = fazer as coisas de forma certa (com o mínimo de recursos). Ideal: ser eficiente E eficaz. Pior cenário: eficiente em fazer as coisas erradas (alta eficiência, baixa eficácia).",
+      },
+      {
+        id: 504,
+        question: "A reengenharia de processos, proposta por Hammer e Champy, diferencia-se da melhoria contínua (Kaizen) porque:",
+        options: [
+          "A reengenharia promove melhorias graduais e incrementais; Kaizen propõe mudanças radicais e disruptivas",
+          "A reengenharia propõe redesenho radical e fundamental dos processos buscando ganhos de 50%+; Kaizen propõe melhorias incrementais contínuas",
+          "Ambas propõem o mesmo tipo de mudança, diferindo apenas no escopo organizacional",
+          "Kaizen é aplicável apenas a manufatura; reengenharia é exclusiva para serviços",
+        ],
+        correct: 1,
+        explanation: "Reengenharia (Hammer/Champy): questionar processos existentes do zero, redesenhá-los radicalmente, buscar ganhos drásticos (50-100%). Kaizen (melhoria contínua): pequenas melhorias incrementais, todos os dias, em todos os processos. São abordagens complementares para contextos diferentes.",
+      },
+      {
+        id: 505,
+        question: "KPIs (Key Performance Indicators) são utilizados na gestão de processos para:",
+        options: [
+          "Definir a estrutura hierárquica e os cargos da organização",
+          "Medir e monitorar o desempenho dos processos em relação às metas estabelecidas",
+          "Descrever graficamente o fluxo de atividades de um processo",
+          "Selecionar quais processos devem ser terceirizados ou automatizados",
+        ],
+        correct: 1,
+        explanation: "KPIs são indicadores quantitativos que medem o desempenho de processos, projetos ou áreas. Exemplos: tempo médio de processamento, taxa de defeitos, custo por unidade, satisfação do cliente. Devem ser SMART: específicos, mensuráveis, atingíveis, relevantes e temporais.",
+      },
+      {
+        id: 506,
+        question: "Na Petrobras, o processo de refinamento de petróleo segue procedimentos altamente padronizados com controle estatístico de qualidade. Isso é exemplo de:",
+        options: [
+          "Estrutura matricial com projetos temporários de melhoria",
+          "Gestão por processos com foco em eficiência, padronização e monitoramento contínuo via KPIs",
+          "Modelo burocrático de Weber com ênfase em regras formais e hierarquia rígida",
+          "Teoria da Contingência que adapta processos ao ambiente externo",
+        ],
+        correct: 1,
+        explanation: "Processos industriais como refino utilizam BPM: processos mapeados, padronizados (ISO, ABNT), monitorados com KPIs (eficiência energética, rendimento, taxa de avaria), com ciclos de melhoria contínua. A gestão por processos é fundamental em operações de alta complexidade técnica.",
+      },
+    ],
+  },
+
+  "modulo-6": {
+    id: "adm-geral-m6-quiz",
+    title: "Teoria das Organizações",
+    moduleNumber: 6,
+    questions: [
+      {
+        id: 601,
+        question: "Max Weber propôs o modelo burocrático de organização. Qual é a principal característica desse modelo?",
+        options: [
+          "Ênfase em relações informais e cultura organizacional para guiar o comportamento",
+          "Racionalidade legal-racional: autoridade baseada em normas formais, cargos, procedimentos escritos e impessoalidade",
+          "Foco na eficiência das tarefas operacionais por meio de padronização de movimentos",
+          "Adaptação constante ao ambiente externo, sem estrutura formal definida",
+        ],
+        correct: 1,
+        explanation: "Weber identificou três tipos de autoridade: tradicional (costumes), carismática (personalidade do líder) e legal-racional (normas). A burocracia é baseada na legal-racional: cargos (não pessoas), normas escritas, impessoalidade, hierarquia definida, competência técnica. Ideal weberiano de racionalidade.",
+      },
+      {
+        id: 602,
+        question: "A Teoria dos Sistemas aplicada à administração (Bertalanffy) contribuiu com qual perspectiva fundamental?",
+        options: [
+          "As organizações devem ser gerenciadas como máquinas fechadas, maximizando eficiência interna",
+          "As organizações são sistemas abertos que interagem com o ambiente: entradas (inputs) → processos → saídas (outputs) → feedback",
+          "A estrutura hierárquica é o único fator determinante do sucesso organizacional",
+          "As teorias de motivação humana são mais relevantes que a estrutura organizacional",
+        ],
+        correct: 1,
+        explanation: "Teoria Sistêmica: organização como sistema aberto que interage com ambiente externo. Entradas (recursos, informação, pessoas) → Processamento (transformação) → Saídas (produtos, serviços) → Feedback (mercado, reguladores). Ambiente externo influencia e é influenciado pela organização.",
+      },
+      {
+        id: 603,
+        question: "A Teoria da Contingência afirma que:",
+        options: [
+          "Existe uma única estrutura organizacional ideal aplicável a todas as organizações",
+          "Não existe uma estrutura ótima universal; a melhor estrutura depende das contingências (ambiente, tecnologia, tamanho, estratégia)",
+          "O fator humano é sempre o mais importante, independentemente do contexto organizacional",
+          "Organizações devem adotar estruturas burocráticas rígidas para garantir estabilidade",
+        ],
+        correct: 1,
+        explanation: "Contingência (Lawrence, Lorsch, Burns, Stalker): 'it all depends' — a estrutura ideal depende de contingências: ambiente estável → estruturas mecanicistas/burocráticas; ambiente dinâmico → estruturas orgânicas/flexíveis. Não há solução universal em administração.",
+      },
+      {
+        id: 604,
+        question: "Qual escola teórica é identificada quando uma empresa adota divisão rígida de trabalho, especialização máxima e separação clara entre planejamento (gestão) e execução (operários)?",
+        options: [
+          "Escola das Relações Humanas — foco no bem-estar e motivação dos trabalhadores",
+          "Teoria da Contingência — adaptação ao contexto ambiental específico",
+          "Administração Científica de Taylor — separação planejamento/execução, padronização, eficiência operacional",
+          "Teoria Sistêmica de Bertalanffy — organização como sistema aberto",
+        ],
+        correct: 2,
+        explanation: "Características tayloristas: separação planejamento/execução (gestão planeja, operário executa), especialização máxima das tarefas, estudo de tempos e movimentos, pagamento por produção, supervisão funcional. Crítica: desumanização do trabalho, visão do trabalhador como 'engrenagem'.",
+      },
+      {
+        id: 605,
+        question: "Qual das teorias organizacionais critica explicitamente o modelo burocrático weberiano, apontando suas disfunções como excesso de formalismo e rigidez?",
+        options: [
+          "Teoria Científica de Taylor",
+          "Teoria Estruturalista — analisa burocracia e suas disfunções (papelada, lentidão, rigidez, apego às normas)",
+          "Teoria das Relações Humanas de Mayo",
+          "Teoria Clássica de Fayol",
+        ],
+        correct: 1,
+        explanation: "A Teoria Estruturalista (Etzioni, Merton) analisa criticamente a burocracia weberiana, identificando disfunções: excesso de formalismo ('papelada'), despersonalização, resistência a mudanças, dificuldade de inovação, conflito com objetivos pessoais. Transição entre escola clássica e humanista.",
+      },
+      {
+        id: 606,
+        question: "Uma empresa de tecnologia que opera em ambiente altamente dinâmico e imprevisível deveria adotar, segundo a Teoria da Contingência:",
+        options: [
+          "Estrutura mecanicista: muito formalismo, centralização, especialização rígida",
+          "Modelo burocrático weberiano com normas escritas para todas as situações",
+          "Estrutura orgânica: flexível, comunicação lateral intensa, baixa formalização, rápida adaptação",
+          "Administração Científica com padronização máxima de todos os processos",
+        ],
+        correct: 2,
+        explanation: "Contingência (Burns e Stalker): ambiente estável → estrutura mecanicista (hierarquia, formalização, centralização). Ambiente turbulento → estrutura orgânica (flexibilidade, descentralização, comunicação lateral, adaptabilidade). Startups e empresas de tecnologia precisam de estruturas orgânicas.",
+      },
+    ],
+  },
+
+  "modulo-7": {
+    id: "adm-geral-m7-quiz",
+    title: "Comunicação Organizacional e Conflitos",
+    moduleNumber: 7,
+    questions: [
+      {
+        id: 701,
+        question: "O processo de comunicação organizacional inclui vários elementos. O 'ruído' nesse processo refere-se a:",
+        options: [
+          "O volume sonoro nos ambientes de trabalho que dificulta reuniões presenciais",
+          "Qualquer interferência que distorce ou impede a transmissão fiel da mensagem do emissor ao receptor",
+          "A falta de canais digitais de comunicação interna na organização",
+          "O desalinhamento entre comunicação formal e informal dentro da empresa",
+        ],
+        correct: 1,
+        explanation: "Ruído na comunicação: qualquer fator que distorce, bloqueia ou distrai a transmissão da mensagem. Pode ser físico (barulho), semântico (palavras com múltiplos sentidos), psicológico (preconceitos, emoções), organizacional (hierarquia excessiva) ou tecnológico (falhas no sistema).",
+      },
+      {
+        id: 702,
+        question: "A 'rádio corredor' (comunicação informal) nas organizações é caracterizada por:",
+        options: [
+          "Comunicados oficiais distribuídos via e-mail corporativo e murais de avisos",
+          "Transmissão de informações por canais não oficiais (conversas, rumores, boatos) que complementam ou distorcem a comunicação formal",
+          "Sistema de comunicação interna via aplicativos corporativos autorizados pela TI",
+          "Comunicação formal entre pares (horizontal) dentro do mesmo departamento",
+        ],
+        correct: 1,
+        explanation: "Comunicação informal ('grapevine' ou rádio corredor): informações transmitidas por canais não oficiais (conversas de corredor, WhatsApp pessoal, rumores). Pode ser mais rápida que formal, mas sujeita a distorções. Gestores devem monitorá-la e usar comunicação formal para corrigi-la quando necessário.",
+      },
+      {
+        id: 703,
+        question: "No modelo de gestão de conflitos de Thomas-Kilmann, qual estilo reflete alta assertividade e alta cooperação simultaneamente?",
+        options: [
+          "Evasão (evitar) — ignorar o conflito esperando que se resolva sozinho",
+          "Acomodação — ceder completamente às demandas da outra parte",
+          "Competição — impor sua posição independentemente do outro",
+          "Colaboração — buscar solução que atenda plenamente às necessidades de ambas as partes (ganha-ganha)",
+        ],
+        correct: 3,
+        explanation: "Thomas-Kilmann: Colaboração = alta assertividade (defende seus interesses) + alta cooperação (considera interesses do outro). Resultado ganha-ganha: ambas as partes saem satisfeitas. É o estilo mais eficaz mas mais demorado. Ideal para conflitos importantes com relacionamento de longo prazo.",
+      },
+      {
+        id: 704,
+        question: "O conflito funcional, diferentemente do conflito disfuncional, é caracterizado por:",
+        options: [
+          "Gerar apenas consequências negativas para o desempenho e relacionamento da equipe",
+          "Resultar em aprendizado, inovação e melhoria de processos quando bem gerenciado",
+          "Ser sempre originado por diferenças pessoais entre funcionários incompatíveis",
+          "Precisar ser eliminado imediatamente para preservar a harmonia organizacional",
+        ],
+        correct: 1,
+        explanation: "Conflito funcional: nível moderado de conflito que estimula criatividade, questionamento de premissas, identificação de problemas ocultos e melhoria contínua. Conflito disfuncional: intensidade excessiva que prejudica relacionamentos, desempenho e bem-estar. Gestores devem administrar conflitos, não apenas eliminá-los.",
+      },
+      {
+        id: 705,
+        question: "A negociação integrativa (ganha-ganha) diferencia-se da distributiva (ganha-perde) porque:",
+        options: [
+          "Na integrativa, o 'bolo' de recursos é fixo e as partes disputam a maior fatia possível",
+          "Na integrativa, as partes buscam expandir os recursos disponíveis e satisfazer interesses mútuos, criando valor conjunto",
+          "A negociação distributiva é sempre preferível por ser mais rápida e objetiva",
+          "Na integrativa, uma das partes deve ceder completamente para preservar o relacionamento",
+        ],
+        correct: 1,
+        explanation: "Negociação distributiva ('win-lose'): recursos fixos, ganho de um é perda do outro. Negociação integrativa ('win-win'): partes identificam interesses mútuos, criam opções criativas, expandem o 'bolo' e chegam a acordo que satisfaz ambas. Mais durável e preserva relacionamentos de longo prazo.",
+      },
+      {
+        id: 706,
+        question: "Uma das principais barreiras à comunicação eficaz nas organizações é a 'filtragem'. Esse fenômeno ocorre quando:",
+        options: [
+          "O receptor não tem vocabulário técnico suficiente para entender a mensagem enviada",
+          "O emissor manipula deliberadamente a informação ao transmiti-la para torná-la mais favorável (ex.: subordinado filtra más notícias para o chefe)",
+          "O canal de comunicação tem limitações tecnológicas que impedem transmissão completa",
+          "A mensagem é traduzida entre idiomas diferentes, perdendo nuances culturais",
+        ],
+        correct: 1,
+        explanation: "Filtragem: o emissor modifica a mensagem antes de enviá-la, omitindo ou distorcendo informações negativas. Muito comum na comunicação ascendente (subordinado → chefe): funcionários tendem a omitir más notícias ou problemas. Cria distorção da realidade na tomada de decisão gerencial.",
+      },
+    ],
+  },
+
+  "modulo-8": {
+    id: "adm-geral-m8-quiz",
+    title: "Tomada de Decisão e Inovação",
+    moduleNumber: 8,
+    questions: [
+      {
+        id: 801,
+        question: "O modelo de 'racionalidade limitada' de Herbert Simon contradiz o modelo racional clássico ao propor que:",
+        options: [
+          "Gestores têm acesso a toda informação relevante e sempre escolhem a opção ótima",
+          "As decisões são irracionais e baseadas exclusivamente em emoções e intuições pessoais",
+          "Gestores tomam decisões com informação limitada, tempo limitado e capacidade cognitiva limitada, buscando solução 'satisfatória' (satisficing), não a ótima",
+          "A tomada de decisão deve ser sempre delegada a especialistas externos à organização",
+        ],
+        correct: 2,
+        explanation: "Simon (Nobel de Economia, 1978): na realidade, gestores não têm informação perfeita, tempo ilimitado nem capacidade de processar todas as alternativas. Buscam 'satisficing' (solução boa o suficiente) em vez de otimização. Isso explica por que decisões reais diferem do modelo racional teórico.",
+      },
+      {
+        id: 802,
+        question: "Decisões programadas diferem de decisões não-programadas em qual aspecto fundamental?",
+        options: [
+          "Programadas são sempre melhores porque seguem algoritmos mais eficientes",
+          "Programadas são rotineiras com solução padronizada; não-programadas são novas, complexas, sem solução prévia definida",
+          "Programadas são tomadas pela alta direção; não-programadas pelos operadores",
+          "Programadas envolvem maior risco; não-programadas são previsíveis e de baixo impacto",
+        ],
+        correct: 1,
+        explanation: "Decisões programadas: repetitivas, estruturadas, com procedimentos padrão definidos (ex.: aprovação de férias, reposição de estoque mínimo). Decisões não-programadas: únicas, complexas, sem histórico de solução (ex.: entrar em novo mercado, fusão/aquisição). Maior nível hierárquico = mais decisões não-programadas.",
+      },
+      {
+        id: 803,
+        question: "A Análise SWOT é uma ferramenta de tomada de decisão estratégica que analisa:",
+        options: [
+          "Somente fatores internos (forças e fraquezas) para melhorar eficiência operacional",
+          "Somente fatores externos (ameaças e oportunidades) do macroambiente da empresa",
+          "Fatores internos (Forças e Fraquezas) e externos (Oportunidades e Ameaças) para subsidiar decisões estratégicas",
+          "O desempenho financeiro histórico para projetar resultados futuros",
+        ],
+        correct: 2,
+        explanation: "SWOT (Strengths, Weaknesses, Opportunities, Threats): matriz 2×2 que analisa fatores internos controláveis (forças e fraquezas) e externos não controláveis (oportunidades e ameaças). Orienta estratégia: usar forças para aproveitar oportunidades, minimizar fraquezas, mitigar ameaças.",
+      },
+      {
+        id: 804,
+        question: "A inovação incremental diferencia-se da inovação radical porque:",
+        options: [
+          "A incremental muda completamente o mercado; a radical melhora gradativamente produtos existentes",
+          "A incremental melhora gradualmente produtos/processos existentes; a radical cria novos paradigmas, mercados ou categorias",
+          "A incremental é sempre mais arriscada e cara; a radical é mais segura e previsível",
+          "Ambas são equivalentes em termos de impacto e investimento necessário",
+        ],
+        correct: 1,
+        explanation: "Inovação incremental: melhorias contínuas em produtos/serviços/processos existentes (novo modelo de carro, nova versão de software). Inovação radical: criação de algo fundamentalmente novo que muda o mercado (internet, smartphone, energia eólica offshore). Petrobras inova em ambas frentes.",
+      },
+      {
+        id: 805,
+        question: "O conceito de 'ambidestria organizacional' refere-se à capacidade de:",
+        options: [
+          "Gerenciar simultaneamente operações em múltiplos países com diferentes culturas",
+          "Equilibrar eficiência nas operações atuais (exploitation) e exploração de novas oportunidades (exploration) ao mesmo tempo",
+          "Adotar dois sistemas de gestão diferentes para empresas públicas e privadas do grupo",
+          "Ter gestores com habilidades tanto técnicas quanto comportamentais",
+        ],
+        correct: 1,
+        explanation: "Ambidestria organizacional (March): empresas precisam ser ambidestras — otimizar operações atuais (exploitation: eficiência, qualidade, custo) E explorar inovações futuras (exploration: P&D, novos modelos de negócio). O desafio é equilibrar os dois, pois competem por recursos.",
+      },
+      {
+        id: 806,
+        question: "A Matriz de Eisenhower para priorização de decisões classifica tarefas por:",
+        options: [
+          "Custo e prazo de implementação de cada atividade",
+          "Grau de dificuldade técnica e número de pessoas envolvidas",
+          "Urgência (tempo) e Importância (impacto), gerando quatro quadrantes: Fazer, Agendar, Delegar, Eliminar",
+          "Nível hierárquico responsável e área funcional envolvida",
+        ],
+        correct: 2,
+        explanation: "Matriz de Eisenhower: dois eixos — Urgente/Não urgente × Importante/Não importante. Quadrante 1 (urgente+importante): FAZER agora. Quadrante 2 (importante, não urgente): AGENDAR. Quadrante 3 (urgente, não importante): DELEGAR. Quadrante 4 (não urgente, não importante): ELIMINAR.",
+      },
+    ],
+  },
+
+  "modulo-9": {
+    id: "adm-geral-m9-quiz",
+    title: "Administração na Petrobras",
+    moduleNumber: 9,
+    questions: [
+      {
+        id: 901,
+        question: "A Lei 13.303/2016 (Lei das Estatais) impôs diversas obrigações de governança à Petrobras. Qual das alternativas descreve corretamente uma dessas exigências?",
+        options: [
+          "Proibição total de contratar executivos com experiência no setor privado",
+          "Obrigatoriedade de Conselho de Administração com maioria de membros independentes e Comitê de Auditoria Estatutário",
+          "Eliminação do processo licitatório para compras abaixo de R$ 10 milhões",
+          "Vedação de qualquer parceria com empresas estrangeiras no setor de E&P",
+        ],
+        correct: 1,
+        explanation: "Lei 13.303/2016: exige Conselho de Administração com 25%+ de membros independentes, Comitê de Auditoria Estatutário, Comitê de Elegibilidade (perfil dos conselheiros), código de conduta, ouvidoria. Objetivo: aumentar transparência, accountability e reduzir interferência política.",
+      },
+      {
+        id: 902,
+        question: "Qual é a estrutura de governança corporativa da Petrobras no topo da hierarquia?",
+        options: [
+          "CEO → Diretoria Executiva → Conselho de Administração → Acionistas",
+          "Assembleia de Acionistas → Conselho de Administração → CEO/Diretoria Executiva → áreas de negócio",
+          "Ministério de Minas e Energia → Conselho Fiscal → Diretoria → Subsidiárias",
+          "Conselho Fiscal → Comitê de Auditoria → Presidente → Diretores",
+        ],
+        correct: 1,
+        explanation: "Hierarquia de governança Petrobras: Assembleia Geral (acionistas) elege → Conselho de Administração (define estratégia, supervisiona) → CEO (Presidente)/Diretoria Executiva (gestão operacional) → áreas e subsidiárias. Conselho Fiscal e comitês assessoram o Conselho de Administração.",
+      },
+      {
+        id: 903,
+        question: "O Plano Estratégico 2024-2028 da Petrobras elege o Pré-Sal como prioridade de investimento. Qual função administrativa isso representa?",
+        options: [
+          "Controle — monitoramento dos investimentos já realizados em E&P",
+          "Organização — reestruturação dos departamentos de exploração e produção",
+          "Planejamento estratégico — definição de prioridades e alocação de recursos de longo prazo",
+          "Direção — liderança das equipes operacionais nas plataformas offshore",
+        ],
+        correct: 2,
+        explanation: "O Plano Estratégico 2024-2028 é planejamento estratégico: define prioridades (Pré-Sal, transição energética), aloca capital (US$102 bilhões), estabelece metas (produção, rentabilidade, sustentabilidade). Envolve Conselho de Administração e Diretoria Executiva no horizonte de 5 anos.",
+      },
+      {
+        id: 904,
+        question: "A Transpetro é uma subsidiária da Petrobras responsável principalmente por:",
+        options: [
+          "Exploração e produção de petróleo em aguas profundas e ultraprofundas",
+          "Transporte e armazenamento de petróleo, derivados e gás natural por meio de dutos e navios",
+          "Refino de petróleo bruto e produção de combustíveis e petroquímicos",
+          "Comercialização de combustíveis no varejo para consumidores finais",
+        ],
+        correct: 1,
+        explanation: "Transpetro (Petrobras Transporte S.A.): subsidiária integral responsável pelo transporte e armazenamento de petróleo, derivados e gás. Opera o maior sistema de dutos do Brasil (mais de 7.000 km), terminais e navios. É elo logístico crítico entre produção (plataformas/campos) e refino/distribuição.",
+      },
+      {
+        id: 905,
+        question: "O Técnico de Suprimento de Nível Médio/Técnico da Petrobras atua principalmente em qual função administrativa?",
+        options: [
+          "Planejamento estratégico de longo prazo das prioridades de E&P",
+          "Gestão de processos de compras, contratos e logística — função operacional e tática de suprimentos",
+          "Liderança de equipes de alta gestão e definição de políticas corporativas",
+          "Auditoria e controle das demonstrações financeiras da companhia",
+        ],
+        correct: 1,
+        explanation: "O Técnico de Suprimento atua na função operacional/tática de suprimentos: execução de processos de compras (cotação, negociação, pedido), controle de estoques, gestão de fornecedores, acompanhamento de contratos, logística de materiais. É fundamental para a continuidade das operações industriais.",
+      },
+      {
+        id: 906,
+        question: "Compliance na Petrobras refere-se a:",
+        options: [
+          "Programa exclusivamente voltado ao cumprimento de normas ambientais e de segurança operacional",
+          "Conjunto de políticas, controles e práticas para garantir que a empresa e seus funcionários cumpram leis, regulamentos, normas internas e princípios éticos",
+          "Departamento responsável pela gestão financeira e fiscal da empresa",
+          "Sistema de treinamento e capacitação de empregados para melhoria de desempenho",
+        ],
+        correct: 1,
+        explanation: "Compliance (do inglês 'to comply'): estar em conformidade. Na Petrobras, abrange: código de conduta ética, políticas anticorrupção (Lei 12.846/2013), FCPA, programas de integridade, canal de denúncias (Fale com o Ouvidor), treinamentos obrigatórios. Fortalecido após Operação Lava Jato.",
+      },
+    ],
+  },
+
+  "modulo-10": {
+    id: "adm-geral-m10-quiz",
+    title: "Simulado Mestre — Administração Geral",
+    moduleNumber: 10,
+    questions: [
+      {
+        id: 1001,
+        question: "Um gestor da área de manutenção da Petrobras identifica que a taxa de falhas em equipamentos aumentou 15% no último trimestre. Ele define metas de redução, redesenha o processo de manutenção preventiva, lidera a equipe na implementação e monitora os resultados. Quais funções do PODC estão sendo exercidas, respectivamente?",
+        options: [
+          "Controlar → Organizar → Planejar → Dirigir",
+          "Planejar (metas) → Organizar (redesenho de processo) → Dirigir (liderança) → Controlar (monitoramento)",
+          "Dirigir → Planejar → Controlar → Organizar",
+          "Organizar → Planejar → Controlar → Dirigir",
+        ],
+        correct: 1,
+        explanation: "Esse cenário percorre o PODC completo: Planejar (define metas de redução de falhas) → Organizar (redesenha o processo de manutenção preventiva) → Dirigir (lidera a equipe na implementação) → Controlar (monitora resultados). Compreender o PODC em situações práticas é essencial na CESGRANRIO.",
+      },
+      {
+        id: 1002,
+        question: "Uma empresa decidiu criar uma nova unidade de negócios de energias renováveis. Contratou especialistas em energia solar e eólica, criou um departamento específico com orçamento próprio e definiu metas de crescimento para 5 anos. Qual combinação de teoria e função administrativa melhor descreve essa ação?",
+        options: [
+          "Teoria Científica de Taylor + Controlar",
+          "Teoria da Contingência + Planejar e Organizar (estrutura divisional adaptada ao contexto de transição energética)",
+          "Escola de Relações Humanas + Dirigir",
+          "Modelo Burocrático de Weber + Controlar",
+        ],
+        correct: 1,
+        explanation: "Teoria da Contingência: estrutura adaptada ao contexto (oportunidade de transição energética). Funções: Planejar (metas de 5 anos, estratégia de crescimento) + Organizar (criação de departamento, alocação de especialistas, orçamento). Questões integradas como esta são típicas de provas de nível superior da CESGRANRIO.",
+      },
+      {
+        id: 1003,
+        question: "Uma questão clássica de CESGRANRIO: 'Taylor pregava a separação entre quem pensa e quem executa; Fayol pregava os princípios universais de gestão; Mayo mostrou a importância dos grupos informais.' Essas afirmações descrevem, respectivamente:",
+        options: [
+          "Teoria das Relações Humanas; Teoria Clássica; Administração Científica",
+          "Administração Científica (Taylor); Teoria Clássica (Fayol); Escola das Relações Humanas (Mayo) — cada teoria em sua ordem",
+          "Teoria Burocrática; Teoria Sistêmica; Teoria da Contingência",
+          "Teoria Estruturalista; Teoria das Relações Humanas; Administração Científica",
+        ],
+        correct: 1,
+        explanation: "Identificação direta das escolas: Taylor (Administração Científica, 1911): separação planejamento/execução, tempos e movimentos. Fayol (Teoria Clássica, 1916): 14 princípios, funções administrativas universais. Mayo (Relações Humanas, 1924-1932): grupos informais, fatores sociais determinam produtividade.",
+      },
+      {
+        id: 1004,
+        question: "Na Petrobras, durante uma reunião de negociação com fornecedores para renovação de contratos de manutenção offshore, o gestor de suprimentos busca acordar um aumento de preço mínimo em troca de extensão do prazo contratual e garantia de volume. Que tipo de negociação está sendo praticada?",
+        options: [
+          "Distributiva — pois envolve divisão de um recurso fixo (o contrato)",
+          "Integrativa — pois cria valor conjunto ao combinar diferentes interesses (preço, prazo e volume) numa solução satisfatória para ambas as partes",
+          "Competitiva — pois a Petrobras sempre tem mais poder que seus fornecedores",
+          "Burocrática — pois segue os procedimentos formais do RLCP",
+        ],
+        correct: 1,
+        explanation: "Negociação integrativa (ganha-ganha): as partes identificam múltiplos interesses (não apenas preço) e criam trocas que satisfazem ambas — fornecedor aceita menor reajuste em troca de mais volume e prazo garantido. Isso é negociação por interesses, não por posições. Gera parceria sustentável.",
+      },
+      {
+        id: 1005,
+        question: "Qual das seguintes situações representa um conflito FUNCIONAL (positivo) no ambiente organizacional?",
+        options: [
+          "Dois gerentes entram em conflito pessoal intenso que paralisa decisões e deteriora o clima da equipe",
+          "Engenheiros de produção e segurança debatem vigorosamente procedimentos de parada de planta, resultando em protocolo mais seguro e eficiente",
+          "Disputa por orçamento entre departamentos cria rivalidade e falta de cooperação crônica",
+          "Funcionário recusa-se a seguir orientações do gestor por discordância pessoal",
+        ],
+        correct: 1,
+        explanation: "Conflito funcional: debate construtivo entre áreas com perspectivas diferentes (produção quer velocidade; segurança quer cautela) gera resultado superior ao que qualquer uma alcançaria sozinha. O conflito 'força' criatividade e soluções mais robustas. Conflito disfuncional deteriora relacionamentos e desempenho.",
+      },
+      {
+        id: 1006,
+        question: "A CESGRANRIO frequentemente combina conceitos em questões integradas. Qual afirmação sobre Administração Geral está INCORRETA?",
+        options: [
+          "A Teoria da Contingência afirma que não existe estrutura organizacional universalmente ótima",
+          "Fayol identificou 14 princípios e 5 funções administrativas (planejar, organizar, comandar, coordenar, controlar)",
+          "No modelo de Maslow, as necessidades de estima devem ser satisfeitas ANTES das necessidades de segurança",
+          "Herzberg distinguiu fatores higiênicos (evitam insatisfação) de fatores motivacionais (geram satisfação)",
+        ],
+        correct: 2,
+        explanation: "INCORRETA: Na Pirâmide de Maslow, a ordem da base ao topo é: Fisiológicas → Segurança → Social → Estima → Autorrealização. Segurança (nível 2) vem ANTES de Estima (nível 4), não o contrário. As demais afirmações estão corretas. Pegadinha clássica da CESGRANRIO: inverter a ordem da pirâmide.",
+      },
+    ],
+  },
+};

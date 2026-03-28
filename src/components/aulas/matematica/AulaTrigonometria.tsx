@@ -1,3 +1,4 @@
+import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -25,6 +26,8 @@ import {
   QUIZ_M9_APLICACOES_PETROBRAS,
   QUIZ_M10_SIMULADO_CESGRANRIO,
 } from "./data/trigonometria-quizzes";
+
+const mv = [undefined, ...getAllModuleVariants()];
 
 export default function AulaTrigonometria({
   onComplete,
@@ -58,7 +61,7 @@ export default function AulaTrigonometria({
   const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_APLICACOES_PETROBRAS, 6));
   const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO_CESGRANRIO, 6));
 
-  const isModuleUnlocked = (_index: number) => true;
+  const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
@@ -122,12 +125,10 @@ export default function AulaTrigonometria({
       {/* MÓDULO 1: RAZÕES TRIGONOMÉTRICAS                                  */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
-        <ModuleBanner
-          numero={1}
+        <ModuleBanner numero={1}
           titulo="Razões Trigonométricas no Triângulo Retângulo"
           descricao="Domine seno, cosseno e tangente — a base de toda a trigonometria aplicada à engenharia e inspeção industrial."
-          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
-        />
+           variant={mv[1]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -333,7 +334,7 @@ export default function AulaTrigonometria({
 
 
 <ModuleConsolidation
-            index={1}
+            index={2}
             variant="indigo"
             video={{
               videoId: "qXv_IOKSZPY",
@@ -372,7 +373,7 @@ export default function AulaTrigonometria({
               questoes={quizM1}
               titulo="QUIZ: Razões Trigonométricas"
               icone="📐"
-              numero={2}
+              numero={3}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -384,12 +385,10 @@ export default function AulaTrigonometria({
       {/* MÓDULO 2: ÂNGULOS NOTÁVEIS                                        */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
-        <ModuleBanner
-          numero={2}
+        <ModuleBanner numero={2}
           titulo="Ângulos Notáveis: 30°, 45°, 60° e 90°"
           descricao="Memorize os valores exatos que aparecem em 90% das questões de concurso — sem calculadora!"
-          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
-        />
+           variant={mv[2]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -667,7 +666,7 @@ export default function AulaTrigonometria({
               questoes={quizM2}
               titulo="Quiz — Ângulos Notáveis"
               icone="📊"
-              numero={2}
+              numero={3}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -679,12 +678,10 @@ export default function AulaTrigonometria({
       {/* MÓDULO 3: CÍRCULO TRIGONOMÉTRICO                                  */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
-        <ModuleBanner
-          numero={3}
+        <ModuleBanner numero={3}
           titulo="Círculo Trigonométrico"
           descricao="Entenda o círculo unitário — a ferramenta que unifica seno, cosseno e tangente para todos os ângulos."
-          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
-        />
+           variant={mv[3]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -876,7 +873,7 @@ export default function AulaTrigonometria({
 
 
 <ModuleConsolidation
-            index={3}
+            index={2}
             variant="cyan"
             video={{
               videoId: "0PqJ_MN0n8U",
@@ -915,7 +912,7 @@ export default function AulaTrigonometria({
               questoes={quizM3}
               titulo="QUIZ: Círculo Trigonométrico"
               icone="⭕"
-              numero={4}
+              numero={3}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -927,12 +924,10 @@ export default function AulaTrigonometria({
       {/* MÓDULO 4: FUNÇÕES TRIGONOMÉTRICAS                                 */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
-        <ModuleBanner
-          numero={4}
+        <ModuleBanner numero={4}
           titulo="Funções Trigonométricas"
           descricao="Seno, cosseno e tangente como funções reais — amplitude, período e gráficos aplicados à engenharia."
-          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
-        />
+           variant={mv[4]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1123,7 +1118,7 @@ export default function AulaTrigonometria({
 
 
 <ModuleConsolidation
-            index={4}
+            index={2}
             variant="blue"
             video={{
               videoId: "xEiUPR46EIQ",
@@ -1163,7 +1158,7 @@ export default function AulaTrigonometria({
               questoes={quizM4}
               titulo="Quiz — Funções Trigonométricas"
               icone="📈"
-              numero={4}
+              numero={3}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1175,12 +1170,10 @@ export default function AulaTrigonometria({
       {/* MÓDULO 5: IDENTIDADES TRIGONOMÉTRICAS                             */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
-        <ModuleBanner
-          numero={5}
+        <ModuleBanner numero={5}
           titulo="Identidades Trigonométricas Fundamentais"
           descricao="As equações que são verdadeiras para todos os ângulos — ferramentas de simplificação e prova."
-          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
-        />
+           variant={mv[5]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1351,7 +1344,7 @@ export default function AulaTrigonometria({
 
 
 <ModuleConsolidation
-            index={5}
+            index={2}
             variant="amber"
             video={{
               videoId: "1Ixnl1bN3yg",
@@ -1390,7 +1383,7 @@ export default function AulaTrigonometria({
               questoes={quizM5}
               titulo="QUIZ: Identidades"
               icone="🔑"
-              numero={6}
+              numero={3}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1402,12 +1395,10 @@ export default function AulaTrigonometria({
       {/* MÓDULO 6: LEI DOS SENOS                                           */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-6" className="space-y-[50px]">
-        <ModuleBanner
-          numero={6}
+        <ModuleBanner numero={6}
           titulo="Lei dos Senos"
           descricao="Resolva qualquer triângulo quando você conhece ângulos e lados opostos — essencial para triangulação em campo."
-          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
-        />
+           variant={mv[6]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1577,7 +1568,7 @@ export default function AulaTrigonometria({
 
 
 <ModuleConsolidation
-            index={6}
+            index={2}
             variant="rose"
             video={{
               videoId: "FAp9XvJNc0I",
@@ -1615,7 +1606,7 @@ export default function AulaTrigonometria({
               questoes={quizM6}
               titulo="Quiz — Lei dos Senos"
               icone="⚖️"
-              numero={6}
+              numero={3}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1627,12 +1618,10 @@ export default function AulaTrigonometria({
       {/* MÓDULO 7: LEI DOS COSSENOS                                        */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-7" className="space-y-[50px]">
-        <ModuleBanner
-          numero={7}
+        <ModuleBanner numero={7}
           titulo="Lei dos Cossenos"
           descricao="A generalização do Teorema de Pitágoras — resolva triângulos quando você conhece três lados ou dois lados e o ângulo entre eles."
-          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
-        />
+           variant={mv[7]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1796,7 +1785,7 @@ export default function AulaTrigonometria({
 
 
 <ModuleConsolidation
-            index={7}
+            index={2}
             variant="indigo"
             video={{
               videoId: "oXDe-QYqbWo",
@@ -1834,7 +1823,7 @@ export default function AulaTrigonometria({
               questoes={quizM7}
               titulo="QUIZ: Lei dos Cossenos"
               icone="📐"
-              numero={8}
+              numero={3}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1846,12 +1835,10 @@ export default function AulaTrigonometria({
       {/* MÓDULO 8: EQUAÇÕES TRIGONOMÉTRICAS                                */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-8" className="space-y-[50px]">
-        <ModuleBanner
-          numero={8}
+        <ModuleBanner numero={8}
           titulo="Equações Trigonométricas"
           descricao="Encontre todos os ângulos que satisfazem uma equação — incluindo a solução geral com periodicidade."
-          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
-        />
+           variant={mv[8]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2015,7 +2002,7 @@ export default function AulaTrigonometria({
 
 
 <ModuleConsolidation
-            index={8}
+            index={2}
             variant="emerald"
             video={{
               videoId: "jOpTkIwmJqE",
@@ -2054,7 +2041,7 @@ export default function AulaTrigonometria({
               questoes={quizM8}
               titulo="Quiz — Equações Trigonométricas"
               icone="🔐"
-              numero={8}
+              numero={3}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -2066,12 +2053,10 @@ export default function AulaTrigonometria({
       {/* MÓDULO 9: APLICAÇÕES PETROBRAS                                    */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-9" className="space-y-[50px]">
-        <ModuleBanner
-          numero={9}
+        <ModuleBanner numero={9}
           titulo="Aplicações Industriais Petrobras"
           descricao="Trigonometria aplicada em rampas offshore, dutos submarinos, triangulação, içamento de cargas e inspeções industriais."
-          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
-        />
+           variant={mv[9]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2275,7 +2260,7 @@ export default function AulaTrigonometria({
 
 
 <ModuleConsolidation
-            index={9}
+            index={2}
             variant="cyan"
             video={{
               videoId: "2mQ8V3vAVPs",
@@ -2315,7 +2300,7 @@ export default function AulaTrigonometria({
               questoes={quizM9}
               titulo="QUIZ: Aplicações Industriais"
               icone="⚙️"
-              numero={10}
+              numero={3}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2327,12 +2312,10 @@ export default function AulaTrigonometria({
       {/* MÓDULO 10: SIMULADO CESGRANRIO                                    */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
-        <ModuleBanner
-          numero={10}
+        <ModuleBanner numero={10}
           titulo="Simulado Final — Estilo CESGRANRIO"
           descricao="Questões de nível concurso integrando todos os tópicos de trigonometria. Prove que está pronto para a prova!"
-          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
-        />
+           variant={mv[10]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2569,7 +2552,7 @@ export default function AulaTrigonometria({
 
 
 <ModuleConsolidation
-            index={10}
+            index={2}
             variant="blue"
             video={{
               videoId: "lW3W5I6VLkY",
@@ -2613,7 +2596,7 @@ export default function AulaTrigonometria({
               questoes={quizM10}
               titulo="Simulado Final — CESGRANRIO"
               icone="🏆"
-              numero={10}
+              numero={3}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />

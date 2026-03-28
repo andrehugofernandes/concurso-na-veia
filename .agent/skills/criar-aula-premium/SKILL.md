@@ -145,7 +145,9 @@ node scripts/fix-module-consolidation-titles.js
 - ✅ Ajusta `moduloNome` para dinâmico: "Módulo N"
 - ✅ Preserva indexação já calculada
 
-**Verificar:** Cards de resumo dizem "Resumo do Módulo N" correto
+**Verificar:**
+- [ ] Cards de resumo dizem "Resumo do Módulo N" correto
+- [ ] **Macete Visual segue o padrão rico do workflow `aula-ultimate.md` (Ícones + Frase + Comparative Cards)**
 
 ---
 

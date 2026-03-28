@@ -225,11 +225,11 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-emerald-500" /> Abordagem Clássica</h5>
-                        <p className="text-sm">Reposição de vagas por aposentadoria ou demissão (Reativo).</p>
+                        <p className="text-lg">Reposição de vagas por aposentadoria ou demissão (Reativo).</p>
                       </div>
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-blue-500" /> Abordagem Estratégica</h5>
-                        <p className="text-sm">Desenvolvimento de competências em energias renováveis antes da demanda (Proativo).</p>
+                        <p className="text-lg">Desenvolvimento de competências em energias renováveis antes da demanda (Proativo).</p>
                       </div>
                     </div>
                   </div>
@@ -282,7 +282,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
                 <LuBriefcase className="text-indigo-500" />
                 Programa de Trainees
               </h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed">
                 Exemplo de atração e desenvolvimento: programa estruturado que
                 atrai jovens talentos, oferece mentoring e rotações por áreas.
               </p>
@@ -292,7 +292,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
                 <LuAward className="text-indigo-500" />
                 Sucessão de Liderança
               </h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed">
                 Pipeline de talentos para posições críticas, garantindo a
                 continuidade estratégica em cargos executivos.
               </p>
@@ -335,15 +335,15 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-center">
                   <p className="font-bold text-indigo-600">ATRAIR</p>
-                  <p className="text-xs">Trazer os melhores</p>
+                  <p className="text-lg">Trazer os melhores</p>
                 </div>
                 <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-center">
                   <p className="font-bold text-emerald-600">DESENVOLVER</p>
-                  <p className="text-xs">Melhorar competências</p>
+                  <p className="text-lg">Melhorar competências</p>
                 </div>
                 <div className="p-4 bg-rose-500/10 rounded-xl border border-rose-500/20 text-center">
                   <p className="font-bold text-rose-600">RETER</p>
-                  <p className="text-xs">Manter talentos</p>
+                  <p className="text-lg">Manter talentos</p>
                 </div>
               </div>
             ),
@@ -443,11 +443,11 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-emerald-500" /> Vantagem</h5>
-                        <p className="text-sm">Isonomia, impessoalidade e seleção técnica baseada em mérito comprovado por provas.</p>
+                        <p className="text-lg">Isonomia, impessoalidade e seleção técnica baseada em mérito comprovado por provas.</p>
                       </div>
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-rose-500" /> Desafio</h5>
-                        <p className="text-sm">Dificuldade em avaliar 'soft skills' (comportamental) apenas através de provas objetivas.</p>
+                        <p className="text-lg">Dificuldade em avaliar 'soft skills' (comportamental) apenas através de provas objetivas.</p>
                       </div>
                     </div>
                   </div>
@@ -525,11 +525,11 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
                   <p className="font-bold text-emerald-600 mb-1">INTERNO</p>
-                  <p className="text-xs">Motivação, Carreira, Econômico, mas gera conservadorismo.</p>
+                  <p className="text-lg">Motivação, Carreira, Econômico, mas gera conservadorismo.</p>
                 </div>
                 <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
                   <p className="font-bold text-cyan-600 mb-1">EXTERNO</p>
-                  <p className="text-xs">Novas ideias, renovação, mas caro e impacta o clima.</p>
+                  <p className="text-lg">Novas ideias, renovação, mas caro e impacta o clima.</p>
                 </div>
               </div>
             ),
@@ -629,11 +629,11 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-violet-500" /> Hard Skills</h5>
-                        <p className="text-sm">Normas de segurança (SMS), processos de refino, exploração e logística.</p>
+                        <p className="text-lg">Normas de segurança (SMS), processos de refino, exploração e logística.</p>
                       </div>
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-indigo-500" /> Soft Skills</h5>
-                        <p className="text-sm">Ética, conformidade, compliance e valores organizacionais.</p>
+                        <p className="text-lg">Ética, conformidade, compliance e valores organizacionais.</p>
                       </div>
                     </div>
                   </div>
@@ -705,7 +705,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           maceteVisual={{
             title: "Checklist 4Cs",
             content: (
-              <div className="grid grid-cols-2 gap-2 text-xs font-bold">
+              <div className="grid grid-cols-2 gap-2 text-lg font-bold">
                 <div className="p-2 border border-violet-200 bg-violet-50 rounded">CONFORMIDADE</div>
                 <div className="p-2 border border-violet-200 bg-violet-50 rounded">CLARIFICAÇÃO</div>
                 <div className="p-2 border border-violet-200 bg-violet-50 rounded">CULTURA</div>
@@ -809,15 +809,15 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-sky-500 flex items-center justify-center text-white font-bold">70%</div>
-                  <p className="text-sm"><strong>On-the-job:</strong> Vivência prática e desafios reais.</p>
+                  <p className="text-lg"><strong>On-the-job:</strong> Vivência prática e desafios reais.</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold">20%</div>
-                  <p className="text-sm"><strong>Social:</strong> Mentoria, feedback e networking.</p>
+                  <p className="text-lg"><strong>Social:</strong> Mentoria, feedback e networking.</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold">10%</div>
-                  <p className="text-sm"><strong>Formal:</strong> Cursos, livros e treinamentos.</p>
+                  <p className="text-lg"><strong>Formal:</strong> Cursos, livros e treinamentos.</p>
                 </div>
               </div>
             ),
@@ -918,7 +918,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           maceteVisual={{
             title: "Tipos de Avaliação",
             content: (
-              <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="grid grid-cols-2 gap-2 text-lg">
                 <div className="p-2 border border-amber-200 bg-amber-50 rounded"><strong>90°:</strong> Chefe direto</div>
                 <div className="p-2 border border-amber-200 bg-amber-50 rounded"><strong>180°:</strong> Auto + Chefe</div>
                 <div className="p-2 border border-amber-200 bg-amber-50 rounded"><strong>360°:</strong> Todos (chefes, pares, sub)</div>
@@ -1016,7 +1016,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           maceteVisual={{
             title: "Equidade Interna vs. Externa",
             content: (
-              <p className="text-sm italic">"<strong>Interna:</strong> Cargos iguais = Salários iguais. <strong>Externa:</strong> O que o mercado paga pra não perder o talento."</p>
+              <p className="text-lg italic">"<strong>Interna:</strong> Cargos iguais = Salários iguais. <strong>Externa:</strong> O que o mercado paga pra não perder o talento."</p>
             ),
           }}
           audio={{
@@ -1115,11 +1115,11 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-blue-500" /> Presença Próxima</h5>
-                        <p className="text-sm">O líder não apenas manda, ele vivencia a rotina perigosa com a equipe.</p>
+                        <p className="text-lg">O líder não apenas manda, ele vivencia a rotina perigosa com a equipe.</p>
                       </div>
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-emerald-500" /> Comunicação Clara</h5>
-                        <p className="text-sm">Essencial para evitar acidentes e manter a moral alta em períodos longos fora de casa.</p>
+                        <p className="text-lg">Essencial para evitar acidentes e manter a moral alta em períodos longos fora de casa.</p>
                       </div>
                     </div>
                   </div>
@@ -1191,7 +1191,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           maceteVisual={{
             title: "Grade Gerencial",
             content: (
-              <p className="text-sm font-medium">9.9 (Liderança de Equipes) é o ápice: foco em pessoas E em resultados.</p>
+              <p className="text-lg font-medium">9.9 (Liderança de Equipes) é o ápice: foco em pessoas E em resultados.</p>
             ),
           }}
           audio={{
@@ -1289,11 +1289,11 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-rose-500" /> Negociação Distributiva</h5>
-                        <p className="text-sm">Soma zero: o que um ganha, o outro perde (ex: aumento direto).</p>
+                        <p className="text-lg">Soma zero: o que um ganha, o outro perde (ex: aumento direto).</p>
                       </div>
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-emerald-500" /> Negociação Integrativa</h5>
-                        <p className="text-sm">Ganha-ganha: criam-se novas opções que beneficiam ambos (ex: novos benefícios).</p>
+                        <p className="text-lg">Ganha-ganha: criam-se novas opções que beneficiam ambos (ex: novos benefícios).</p>
                       </div>
                     </div>
                   </div>
@@ -1365,7 +1365,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           maceteVisual={{
             title: "Soft Skills",
             content: (
-              <p className="text-sm font-medium">Escuta Ativa, Empatia, Comunicação Assertiva e Inteligência Emocional.</p>
+              <p className="text-lg font-medium">Escuta Ativa, Empatia, Comunicação Assertiva e Inteligência Emocional.</p>
             ),
           }}
           audio={{
@@ -1463,11 +1463,11 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-rose-500" /> Velha Cultura</h5>
-                        <p className="text-sm">Foco exclusivo em hidrocarbonetos e exploração pesada.</p>
+                        <p className="text-lg">Foco exclusivo em hidrocarbonetos e exploração pesada.</p>
                       </div>
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-emerald-500" /> Nova Cultura</h5>
-                        <p className="text-sm">Inovação, sustentabilidade e fontes renováveis.</p>
+                        <p className="text-lg">Inovação, sustentabilidade e fontes renováveis.</p>
                       </div>
                     </div>
                   </div>
@@ -1539,7 +1539,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           maceteVisual={{
             title: "Iceberg da Cultura",
             content: (
-              <p className="text-sm font-medium">Artefatos (Vê) → Valores (Diz) → Pressupostos (Sente/É).</p>
+              <p className="text-lg font-medium">Artefatos (Vê) → Valores (Diz) → Pressupostos (Sente/É).</p>
             ),
           }}
           audio={{
@@ -1637,11 +1637,11 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-amber-500" /> Leaderboards</h5>
-                        <p className="text-sm">Ranking saudável entre áreas em competições de segurança zero acidente.</p>
+                        <p className="text-lg">Ranking saudável entre áreas em competições de segurança zero acidente.</p>
                       </div>
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-indigo-500" /> Badges</h5>
-                        <p className="text-sm">Reconhecimento digital por conclusão de trilhas de conhecimento complexas.</p>
+                        <p className="text-lg">Reconhecimento digital por conclusão de trilhas de conhecimento complexas.</p>
                       </div>
                     </div>
                   </div>
@@ -1713,7 +1713,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           maceteVisual={{
             title: "V.U.C.A. to B.A.N.I.",
             content: (
-              <p className="text-sm font-medium">RH deve ser: Ágil, Digital, Humano e orientado a Dados.</p>
+              <p className="text-lg font-medium">RH deve ser: Ágil, Digital, Humano e orientado a Dados.</p>
             ),
           }}
           audio={{
@@ -1812,11 +1812,11 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-emerald-500" /> Autoavaliação</h5>
-                        <p className="text-sm">O empregado avalia seu próprio cumprimento de metas e comportamentos.</p>
+                        <p className="text-lg">O empregado avalia seu próprio cumprimento de metas e comportamentos.</p>
                       </div>
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-blue-500" /> Avaliação do Gestor</h5>
-                        <p className="text-sm">O líder direto valida os resultados e sugere planos de desenvolvimento (PDI).</p>
+                        <p className="text-lg">O líder direto valida os resultados e sugere planos de desenvolvimento (PDI).</p>
                       </div>
                     </div>
                   </div>
@@ -1888,7 +1888,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           maceteVisual={{
              title: "C.H.A.",
              content: (
-               <p className="text-sm font-medium">Conhecimento, Habilidade e Atitude (O tripé da competência).</p>
+               <p className="text-lg font-medium">Conhecimento, Habilidade e Atitude (O tripé da competência).</p>
              ),
           }}
           audio={{
@@ -1935,96 +1935,96 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           {/* BLOCO DE QUESTÕES 1-5 */}
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm">01</span>
+              <span className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-lg">01</span>
               Teoria dos Dois Fatores (Herzberg)
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Um gestor da Petrobras percebe que sua equipe está desmotivada. Ele decide aumentar o vale-alimentação e melhorar a iluminação das salas. Segundo Herzberg, qual o resultado dessa ação?"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">A) Motivação imediata e duradoura.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">B) Redução da insatisfação, mas sem gerar motivação real.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Aumento da produtividade por ser um fator motivacional.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Inexistência de impacto, pois alimentação não é fator higiênico.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Promoção de autorrealização no trabalho.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">A) Motivação imediata e duradoura.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">B) Redução da insatisfação, mas sem gerar motivação real.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Aumento da produtividade por ser um fator motivacional.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Inexistência de impacto, pois alimentação não é fator higiênico.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Promoção de autorrealização no trabalho.</div>
             </div>
             <div className="p-5 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
               <h5 className="font-bold text-emerald-700 dark:text-emerald-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito B. Herzberg classifica ambiente e benefícios como fatores higiênicos. Eles são extrínsecos. Se você os melhora, o funcionário para de reclamar (reduz a insatisfação), mas ele não acorda 'inspirado' para dar o seu melhor. A motivação real só vem de fatores intrínsecos (desafio, responsabilidade, reconhecimento).</p>
+              <p className="text-lg leading-relaxed">Gabarito B. Herzberg classifica ambiente e benefícios como fatores higiênicos. Eles são extrínsecos. Se você os melhora, o funcionário para de reclamar (reduz a insatisfação), mas ele não acorda 'inspirado' para dar o seu melhor. A motivação real só vem de fatores intrínsecos (desafio, responsabilidade, reconhecimento).</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm">02</span>
+              <span className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-lg">02</span>
               Liderança Situacional
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Um novo técnico de operação acaba de ser contratado para uma refinaria. Ele tem muito entusiasmo, mas baixo conhecimento técnico das máquinas. Qual estilo de liderança é recomendado?"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Direcionar (E1): Foco na tarefa, ordens claras.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Delegar (E4): Dar autonomia total.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Apoiar (E3): Foco no relacionamento social.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Orientar (E2): Negociação de decisões.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Liderança Liberal.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Direcionar (E1): Foco na tarefa, ordens claras.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Delegar (E4): Dar autonomia total.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Apoiar (E3): Foco no relacionamento social.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Orientar (E2): Negociação de decisões.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Liderança Liberal.</div>
             </div>
             <div className="p-5 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
               <h5 className="font-bold text-emerald-700 dark:text-emerald-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Segundo Hersey e Blanchard, para subordinados M1 (Baixa competência, Alto empenho), o líder deve ser DIRETIVO. Instruções passo a passo são fundamentais para evitar acidentes e garantir o aprendizado.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Segundo Hersey e Blanchard, para subordinados M1 (Baixa competência, Alto empenho), o líder deve ser DIRETIVO. Instruções passo a passo são fundamentais para evitar acidentes e garantir o aprendizado.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm">03</span>
+              <span className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-lg">03</span>
               Recrutamento e Seleção
             </h3>
             <p className="mb-4 text-muted-foreground italic">"A Petrobras opta por realizar um concurso público externo para preencher vagas de Engenharia. Qual a principal vantagem dessa modalidade?"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">A) Baixo custo operacional.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Velocidade extrema de contratação.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">C) Renovação cultural e entrada de novas tecnologias.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Valorização exclusiva dos talentos internos.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Redução do turnover por lealdade.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">A) Baixo custo operacional.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Velocidade extrema de contratação.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">C) Renovação cultural e entrada de novas tecnologias.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Valorização exclusiva dos talentos internos.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Redução do turnover por lealdade.</div>
             </div>
             <div className="p-5 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
               <h5 className="font-bold text-emerald-700 dark:text-emerald-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito C. O recrutamento externo traz o que chamamos de 'sangue novo'. Em uma estatal, isso oxigena a cultura e traz profissionais com visões de mercado atualizadas, embora seja mais caro e lento que o interno.</p>
+              <p className="text-lg leading-relaxed">Gabarito C. O recrutamento externo traz o que chamamos de 'sangue novo'. Em uma estatal, isso oxigena a cultura e traz profissionais com visões de mercado atualizadas, embora seja mais caro e lento que o interno.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm">04</span>
+              <span className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-lg">04</span>
               Avaliação 360 Graus
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Sobre a avaliação de desempenho circular (360 graus), é correto afirmar que:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">A) É feita exclusivamente pelo superior imediato.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">B) Envolve múltiplas fontes de feedback, reduzindo distorções individuais.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) É a modalidade mais simples e barata de se aplicar.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Garante que o colaborador nunca seja avaliado por seus pares.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Foca apenas nos erros do passado.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">A) É feita exclusivamente pelo superior imediato.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">B) Envolve múltiplas fontes de feedback, reduzindo distorções individuais.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) É a modalidade mais simples e barata de se aplicar.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Garante que o colaborador nunca seja avaliado por seus pares.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Foca apenas nos erros do passado.</div>
             </div>
             <div className="p-5 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
               <h5 className="font-bold text-emerald-700 dark:text-emerald-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito B. Ao ouvir chefes, colegas, subordinados e clientes, a empresa tem uma visão holística. Isso diminui o viés de 'estima' ou 'antipatia' que um único chefe poderia ter.</p>
+              <p className="text-lg leading-relaxed">Gabarito B. Ao ouvir chefes, colegas, subordinados e clientes, a empresa tem uma visão holística. Isso diminui o viés de 'estima' ou 'antipatia' que um único chefe poderia ter.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm">05</span>
+              <span className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-lg">05</span>
               Equipes de Alta Performance
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Qual a principal característica que diferencia um GRUPO de uma EQUIPE?"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Sinergia positiva e objetivos compartilhados.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Apenas o número de pessoas envolvidas.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) A presença de um chefe autoritário.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) O fato de trabalharem no mesmo prédio.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) A partilha de salários idênticos.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Sinergia positiva e objetivos compartilhados.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Apenas o número de pessoas envolvidas.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) A presença de um chefe autoritário.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) O fato de trabalharem no mesmo prédio.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) A partilha de salários idênticos.</div>
             </div>
             <div className="p-5 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
               <h5 className="font-bold text-emerald-700 dark:text-emerald-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. No grupo, as pessoas trabalham lado a lado, mas o resultado é a soma individual. Na equipe, existe sinergia: o todo é maior que a soma das partes, graças à colaboração e interdependência.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. No grupo, as pessoas trabalham lado a lado, mas o resultado é a soma individual. Na equipe, existe sinergia: o todo é maior que a soma das partes, graças à colaboração e interdependência.</p>
             </div>
           </div>
 
@@ -2034,96 +2034,96 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           {/* BLOCO DE QUESTÕES 6-10 */}
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center text-sm">06</span>
+              <span className="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center text-lg">06</span>
               Clima Organizational
             </h3>
             <p className="mb-4 text-muted-foreground italic">"O clima organizacional é frequentemente descrito como:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) A percepção coletiva dos colaboradores sobre o ambiente de trabalho.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) A estrutura física dos escritórios da companhia.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) O conjunto de leis trabalhistas vigentes.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) O planejamento estratégico de longo prazo.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) A variação meteorológica das unidades offshore.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) A percepção coletiva dos colaboradores sobre o ambiente de trabalho.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) A estrutura física dos escritórios da companhia.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) O conjunto de leis trabalhistas vigentes.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) O planejamento estratégico de longo prazo.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) A variação meteorológica das unidades offshore.</div>
             </div>
              <div className="p-5 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
               <h5 className="font-bold text-indigo-700 dark:text-indigo-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. O clima é reflexo do 'humor' da organização. Ele é mutável e influenciado por salários, chefias e condições de trabalho. Diferente da cultura, que é estável e profunda.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. O clima é reflexo do 'humor' da organização. Ele é mutável e influenciado por salários, chefias e condições de trabalho. Diferente da cultura, que é estável e profunda.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center text-sm">07</span>
+              <span className="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center text-lg">07</span>
               Treinamento (T&D)
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Sobre as fases do treinamento, a etapa de 'Levantamento de Necessidades' visa:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Identificar o gap entre o que o funcionário sabe e o que o cargo exige.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Medir quanto dinheiro sobrou no orçamento do RH.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Aplicar as provas finais aos alunos.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Escolher o coffee break do evento.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Demitir aqueles que não querem estudar.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Identificar o gap entre o que o funcionário sabe e o que o cargo exige.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Medir quanto dinheiro sobrou no orçamento do RH.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Aplicar as provas finais aos alunos.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Escolher o coffee break do evento.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Demitir aqueles que não querem estudar.</div>
             </div>
              <div className="p-5 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
               <h5 className="font-bold text-indigo-700 dark:text-indigo-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. É a fase do diagnóstico. Sem ela, a empresa gasta dinheiro treinando pessoas em coisas que elas já sabem ou que não são úteis para a função.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. É a fase do diagnóstico. Sem ela, a empresa gasta dinheiro treinando pessoas em coisas que elas já sabem ou que não são úteis para a função.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center text-sm">08</span>
+              <span className="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center text-lg">08</span>
               Administração de Salários
             </h3>
             <p className="mb-4 text-muted-foreground italic">"O que define o 'Equilíbrio Interno' em um plano de cargos e salários?"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Salários maiores para cargos com maior responsabilidade e complexidade.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Pagar o mesmo que a Shell ou a Chevron pagam.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Dar aumentos baseados apenas em amizade.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Manter o lucro da empresa estável.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Pagar o salário mínimo para todos.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Salários maiores para cargos com maior responsabilidade e complexidade.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Pagar o mesmo que a Shell ou a Chevron pagam.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Dar aumentos baseados apenas em amizade.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Manter o lucro da empresa estável.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Pagar o salário mínimo para todos.</div>
             </div>
              <div className="p-5 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
               <h5 className="font-bold text-indigo-700 dark:text-indigo-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Equilíbrio Interno é justiça dentro da casa (Hierarquia). Equilíbrio Externo é competitividade com o mercado fora da empresa.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Equilíbrio Interno é justiça dentro da casa (Hierarquia). Equilíbrio Externo é competitividade com o mercado fora da empresa.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center text-sm">09</span>
+              <span className="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center text-lg">09</span>
               Cultura Organizacional (Edgar Schein)
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Qual elemento de cultura é considerado o mais difícil de ser alterado?"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">A) Os artefatos visuais (móveis, uniformes).</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Os valores declarados na missão.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">C) Os pressupostos básicos inconscientes.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) O logotipo da empresa.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) As regras de vestimenta (dress code).</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">A) Os artefatos visuais (móveis, uniformes).</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Os valores declarados na missão.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">C) Os pressupostos básicos inconscientes.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) O logotipo da empresa.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) As regras de vestimenta (dress code).</div>
             </div>
              <div className="p-5 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
               <h5 className="font-bold text-indigo-700 dark:text-indigo-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito C. Pressupostos básicos são o 'DNA'. São verdades tão profundas que nem pensamos sobre elas. Mudar isso exige décadas de esforço e liderança exemplar.</p>
+              <p className="text-lg leading-relaxed">Gabarito C. Pressupostos básicos são o 'DNA'. São verdades tão profundas que nem pensamos sobre elas. Mudar isso exige décadas de esforço e liderança exemplar.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center text-sm">10</span>
+              <span className="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center text-lg">10</span>
               Empowerment
             </h3>
             <p className="mb-4 text-muted-foreground italic">"A prática do empoderamento (empowerment) requer prioritariamente:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Delegação de poder e fornecimento de recursos/informação.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Aumento de supervisão e controle pelo chefe.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Substituição total de humanos por robôs.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Redução do horário de almoço.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Fim dos feriados Prolongados.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Delegação de poder e fornecimento de recursos/informação.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Aumento de supervisão e controle pelo chefe.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Substituição total de humanos por robôs.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Redução do horário de almoço.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Fim dos feriados Prolongados.</div>
             </div>
              <div className="p-5 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
               <h5 className="font-bold text-indigo-700 dark:text-indigo-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Empoderar não é só 'dar ordens'. É dar poder, conhecimento, recursos e responsabilidade para quem executa a ponta.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Empoderar não é só 'dar ordens'. É dar poder, conhecimento, recursos e responsabilidade para quem executa a ponta.</p>
             </div>
           </div>
 
@@ -2133,96 +2133,96 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           {/* BLOCO DE QUESTÕES 11-15 */}
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm">11</span>
+              <span className="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-lg">11</span>
               Gestão de Talentos
             </h3>
             <p className="mb-4 text-muted-foreground italic">"A retenção de talentos em empresas de tecnologia de ponta, como a Petrobras, foca em:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Oferecer trilhas de carreira desafiadoras e clima inovador.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Proibir o funcionário de sair do prédio.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Oferecer apenas o salário mínimo da categoria.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Eliminar o feedback para não gerar estresse.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Focar apenas em profissionais prestes a se aposentar.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Oferecer trilhas de carreira desafiadoras e clima inovador.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Proibir o funcionário de sair do prédio.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Oferecer apenas o salário mínimo da categoria.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Eliminar o feedback para não gerar estresse.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Focar apenas em profissionais prestes a se aposentar.</div>
             </div>
              <div className="p-5 bg-rose-500/5 rounded-xl border border-rose-500/20">
               <h5 className="font-bold text-rose-700 dark:text-rose-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Talentos buscam autonomia e crescimento. A retenção moderna vai além do dinheiro e foca no 'Propósito' e na 'Aprendabilidade'.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Talentos buscam autonomia e crescimento. A retenção moderna vai além do dinheiro e foca no 'Propósito' e na 'Aprendabilidade'.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm">12</span>
+              <span className="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-lg">12</span>
               Inteligência Emocional (Goleman)
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Domínio das próprias emoções e capacidade de motivar a si mesmo são pilares da:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Inteligência Emocional Intrapessoal.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Inteligência Lógico-Matemática.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Destreza Física Offshore.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Liderança Autocrática pura.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Teoria de Campo de Lewin.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Inteligência Emocional Intrapessoal.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Inteligência Lógico-Matemática.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Destreza Física Offshore.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Liderança Autocrática pura.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Teoria de Campo de Lewin.</div>
             </div>
              <div className="p-5 bg-rose-500/5 rounded-xl border border-rose-500/20">
               <h5 className="font-bold text-rose-700 dark:text-rose-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Goleman divide a IE em Intrapessoal (Eu Comigo) e Interpessoal (Eu Com os Outros). Essencial para cargos de risco.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Goleman divide a IE em Intrapessoal (Eu Comigo) e Interpessoal (Eu Com os Outros). Essencial para cargos de risco.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm">13</span>
+              <span className="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-lg">13</span>
               Negociação Integrativa
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Em uma negociação integrativa, o objetivo principal é:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Criar valor para ambas as partes (ganha-ganha).</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Derrotar o oponente o mais rápido possível.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Enganar a outra parte com dados Falsos.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Adiar a decisão o máximo possível.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Aceitar qualquer proposta para evitar brigas.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Criar valor para ambas as partes (ganha-ganha).</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Derrotar o oponente o mais rápido possível.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Enganar a outra parte com dados Falsos.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Adiar a decisão o máximo possível.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Aceitar qualquer proposta para evitar brigas.</div>
             </div>
              <div className="p-5 bg-rose-500/5 rounded-xl border border-rose-500/20">
               <h5 className="font-bold text-rose-700 dark:text-rose-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. É a negociação baseada em interesses, não em posições rígidas. Busca expandir o bolo antes de dividi-lo.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. É a negociação baseada em interesses, não em posições rígidas. Busca expandir o bolo antes de dividi-lo.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm">14</span>
+              <span className="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-lg">14</span>
               Análise SWOT (RH)
             </h3>
             <p className="mb-4 text-muted-foreground italic">"O alto índice de aposentadorias de especialistas técnicos em uma estatal é considerado uma:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Ameaça (Ambiente Externo/Incontrolável) ou Fraqueza (Interna).</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Oportunidade Incrível de Lucro.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Ponto Forte da Cultura.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Estratégia de Marketing.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Atividade de Lazer.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Ameaça (Ambiente Externo/Incontrolável) ou Fraqueza (Interna).</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Oportunidade Incrível de Lucro.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Ponto Forte da Cultura.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Estratégia de Marketing.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Atividade de Lazer.</div>
             </div>
              <div className="p-5 bg-rose-500/5 rounded-xl border border-rose-500/20">
               <h5 className="font-bold text-rose-700 dark:text-rose-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Dependendo do ponto de vista, é uma fraqueza interna (falha na sucessão) ou uma ameaça demográfica externa. Exige planejamento de sucessão urgente.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Dependendo do ponto de vista, é uma fraqueza interna (falha na sucessão) ou uma ameaça demográfica externa. Exige planejamento de sucessão urgente.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm">15</span>
+              <span className="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-lg">15</span>
               Diversidade e Inclusão
             </h3>
             <p className="mb-4 text-muted-foreground italic">"A diversidade nas equipes de engenharia offshore visa, primordialmente:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Aumentar a criatividade e a capacidade de resolução de problemas complexos.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Cumprir apenas cotas governamentais sem interesse real.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Facilitar o transporte aéreo para as plataformas.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Reduzir o consumo de carne nos refeitórios.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Aumentar o número de feriados no ano.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Aumentar a criatividade e a capacidade de resolução de problemas complexos.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Cumprir apenas cotas governamentais sem interesse real.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Facilitar o transporte aéreo para as plataformas.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Reduzir o consumo de carne nos refeitórios.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Aumentar o número de feriados no ano.</div>
             </div>
              <div className="p-5 bg-rose-500/5 rounded-xl border border-rose-500/20">
               <h5 className="font-bold text-rose-700 dark:text-rose-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Grupos diversos pensam em soluções diferentes para o mesmo problema. Isso evita o 'Groupthink' (pensamento de manada).</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Grupos diversos pensam em soluções diferentes para o mesmo problema. Isso evita o 'Groupthink' (pensamento de manada).</p>
             </div>
           </div>
 
@@ -2232,286 +2232,286 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           {/* BLOCO DE QUESTÕES 16-20 */}
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">16</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">16</span>
               Teoria da Equidade
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Um engenheiro sente-se desmotivado ao saber que outro colega com a mesma função e produtividade ganha 20% a mais. Qual teoria explica isso?"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Teoria da Equidade de Adams.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Teoria das Necessidades de Maslow.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Modelo de Expectativa de Vroom.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Teoria X de McGregor.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Princípio de Pareto.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Teoria da Equidade de Adams.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Teoria das Necessidades de Maslow.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Modelo de Expectativa de Vroom.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Teoria X de McGregor.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Princípio de Pareto.</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Adams propõe que as pessoas comparam sua relação esforço/recompensa com a dos outros. Se houver desigualdade, surge a tensão desmotivadora.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Adams propõe que as pessoas comparam sua relação esforço/recompensa com a dos outros. Se houver desigualdade, surge a tensão desmotivadora.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">17</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">17</span>
               Teoria da Expectativa (Vroom)
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Segundo Vroom, a motivação é o produto de três fatores: Valência, Instrumentalidade e..."</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Expectativa (Crença de que o esforço levará ao desempenho).</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Experiência prévia em plataformas.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Exigência do sindicato local.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Extroversão do colaborador.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Estabilidade no emprego Público.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Expectativa (Crença de que o esforço levará ao desempenho).</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Experiência prévia em plataformas.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Exigência do sindicato local.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Extroversão do colaborador.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Estabilidade no emprego Público.</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. M = V x I x E. Se o funcionário acha que não consegue bater a meta (E=0), a motivação será ZERO, não importa o prêmio.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. M = V x I x E. Se o funcionário acha que não consegue bater a meta (E=0), a motivação será ZERO, não importa o prêmio.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">18</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">18</span>
               Liderança Transformacional
             </h3>
             <p className="mb-4 text-muted-foreground italic">"O líder que inspira seus seguidores a transcender seus próprios interesses em prol da organização é classificado como:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Transformacional.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Transacional (Foco em troca: prêmio/punição).</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Autocrático Clássico.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Laissez-faire Inoperante.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Burocrata de Carreira.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Transformacional.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Transacional (Foco em troca: prêmio/punição).</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Autocrático Clássico.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Laissez-faire Inoperante.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Burocrata de Carreira.</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. O transformacional foca na visão, no carisma e na estimulação intelectual. Ele muda a cultura, não apenas gerencia processos.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. O transformacional foca na visão, no carisma e na estimulação intelectual. Ele muda a cultura, não apenas gerencia processos.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">19</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">19</span>
               Job Enrichment
             </h3>
             <p className="mb-4 text-muted-foreground italic">"O enriquecimento de cargos visa aumentar a motivação através do/a:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Aumento da variedade e responsabilidade das tarefas.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Redução do salário para gerar desafios financeiros.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Automação de todas as tarefas humanas.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Aumento de 4 para 8 horas de trabalho diário.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Fim dos dias de folga remunerada.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Aumento da variedade e responsabilidade das tarefas.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Redução do salário para gerar desafios financeiros.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Automação de todas as tarefas humanas.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Aumento de 4 para 8 horas de trabalho diário.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Fim dos dias de folga remunerada.</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Pode ser vertical (mais autoridade) ou horizontal (mais tarefas diferentes). Combate a alienação do trabalho repetitivo.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Pode ser vertical (mais autoridade) ou horizontal (mais tarefas diferentes). Combate a alienação do trabalho repetitivo.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">20</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">20</span>
               Caminho-Meta (House)
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Na Teoria Caminho-Meta, o papel principal do líder é:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Remover obstáculos para que os subordinados alcancem as metas.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Definir metas impossíveis para testar a resistência.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Ignorar os problemas da equipe.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Focar apenas no próprio bônus de final de ano.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Pagar cursos externos sem relação com o cargo.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Remover obstáculos para que os subordinados alcancem as metas.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Definir metas impossíveis para testar a resistência.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Ignorar os problemas da equipe.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Focar apenas no próprio bônus de final de ano.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Pagar cursos externos sem relação com o cargo.</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. O líder é um facilitador. Ele ajusta seu comportamento (diretivo, apoiador, participativo ou orientado para conquista) para ajudar o subordinado a chegar lá.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. O líder é um facilitador. Ele ajusta seu comportamento (diretivo, apoiador, participativo ou orientado para conquista) para ajudar o subordinado a chegar lá.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">21</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">21</span>
               Gestão por Competências
             </h3>
             <p className="mb-4 text-muted-foreground italic">"O mapeamento de competências visa identificar o 'gap' entre:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) As competências atuais da equipe e as competências necessárias para a estratégia organizacional.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) O salário do diretor e o salário do estagiário.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) O tempo de café e o tempo de produção.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) O número de funcionários e o número de máquinas.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) A cor das paredes e a produtividade.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) As competências atuais da equipe e as competências necessárias para a estratégia organizacional.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) O salário do diretor e o salário do estagiário.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) O tempo de café e o tempo de produção.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) O número de funcionários e o número de máquinas.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) A cor das paredes e a produtividade.</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. O gap (lacuna) é a diferença entre o que a empresa tem e o que ela precisa para atingir seus objetivos de longo prazo.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. O gap (lacuna) é a diferença entre o que a empresa tem e o que ela precisa para atingir seus objetivos de longo prazo.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">22</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">22</span>
               Clima Organizacional
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Diferente da Cultura, o Clima Organizacional é:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Temporal, mutável e reflete a percepção imediata dos colaboradores.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Imutável e definido na fundação da empresa.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Relacionado apenas à temperatura do ar-condicionado.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Definido exclusivamente pelo sindicato.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Uma ferramenta de marketing externo.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Temporal, mutável e reflete a percepção imediata dos colaboradores.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Imutável e definido na fundação da empresa.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Relacionado apenas à temperatura do ar-condicionado.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Definido exclusivamente pelo sindicato.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Uma ferramenta de marketing externo.</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Enquanto a cultura é profunda (raízes), o clima é a 'atmosfera' do momento, podendo mudar dependendo de uma decisão da chefia ou cenário econômico.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Enquanto a cultura é profunda (raízes), o clima é a 'atmosfera' do momento, podendo mudar dependendo de uma decisão da chefia ou cenário econômico.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">23</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">23</span>
               Seleção de Pessoal
             </h3>
             <p className="mb-4 text-muted-foreground italic">"A validade de um teste de seleção refere-se a:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Sua capacidade de medir exatamente o que se propõe a medir para o cargo.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Sua data de expiração impressa no papel.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Quanto custou para a empresa aplicar o teste.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Se o candidato gostou ou não das perguntas.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Se o teste foi feito por um computador ou por uma pessoa.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Sua capacidade de medir exatamente o que se propõe a medir para o cargo.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Sua data de expiração impressa no papel.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Quanto custou para a empresa aplicar o teste.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Se o candidato gostou ou não das perguntas.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Se o teste foi feito por um computador ou por uma pessoa.</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Validade é precisão. Se o teste foca em lógica mas o cargo pede força física, ele pode ter fidedignidade mas não tem validade para aquele contexto.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Validade é precisão. Se o teste foca em lógica mas o cargo pede força física, ele pode ter fidedignidade mas não tem validade para aquele contexto.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">24</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">24</span>
               Teoria da Equidade (Adams)
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Segundo Adams, a motivação é afetada pela percepção de justiça na relação:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Esforço vs. Recompensa (comparado aos outros).</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Lucro da empresa vs. Impostos do governo.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Idade do funcionário vs. Tempo de empresa.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Número de feedbacks vs. Número de críticas.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Cor do uniforme vs. Performance.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Esforço vs. Recompensa (comparado aos outros).</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Lucro da empresa vs. Impostos do governo.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Idade do funcionário vs. Tempo de empresa.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Número de feedbacks vs. Número de críticas.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Cor do uniforme vs. Performance.</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Se eu trabalho muito e ganho X, mas meu colega trabalha metade e ganha o mesmo X, sinto iniquidade e minha motivação cai.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Se eu trabalho muito e ganho X, mas meu colega trabalha metade e ganha o mesmo X, sinto iniquidade e minha motivação cai.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">25</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">25</span>
               Liderança Transacional
             </h3>
             <p className="mb-4 text-muted-foreground italic">"O líder transacional baseia sua influência em:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Trocas claras: prêmios pelo desempenho e punições por falhas.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Inspiração mística e visões de futuro.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Amizade pessoal acima das metas.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Ignorar as regras em favor da criatividade.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Deixar que a equipe decida tudo sozinha (Laissez-faire).</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Trocas claras: prêmios pelo desempenho e punições por falhas.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Inspiração mística e visões de futuro.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Amizade pessoal acima das metas.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Ignorar as regras em favor da criatividade.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Deixar que a equipe decida tudo sozinha (Laissez-faire).</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. É o 'toma lá, dá cá'. Diferente do líder transformador, que busca mudar a consciência do seguidor.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. É o 'toma lá, dá cá'. Diferente do líder transformador, que busca mudar a consciência do seguidor.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">26</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">26</span>
               Educação Corporativa
             </h3>
             <p className="mb-4 text-muted-foreground italic">"O foco principal da Educação Corporativa na visão estratégica é:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Vincular o aprendizado aos objetivos e resultados do negócio.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Dar diplomas para pendurar na parede.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Gastar o orçamento anual de treinamento.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Ensinar hobbies não relacionados ao trabalho.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Substituir o ensino superior tradicional.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Vincular o aprendizado aos objetivos e resultados do negócio.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Dar diplomas para pendurar na parede.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Gastar o orçamento anual de treinamento.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Ensinar hobbies não relacionados ao trabalho.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Substituir o ensino superior tradicional.</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Na Petrobras (Universidade Petrobras), o ensino visa gap de competências reais que geram valor para a cadeia produtiva de energia.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Na Petrobras (Universidade Petrobras), o ensino visa gap de competências reais que geram valor para a cadeia produtiva de energia.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">27</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">27</span>
               Avaliação de Desempenho (Erros)
             </h3>
             <p className="mb-4 text-muted-foreground italic">"O 'Efeito Halo' na avaliação ocorre quando o avaliador:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Generaliza uma característica positiva para todos os outros fatores.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Avalia todos como 'médios' para não se comprometer.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Avalia com base apenas no que aconteceu ontem.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Favorece apenas os parentes e amigos próximos.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Usa dados puramente matemáticos de produção.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Generaliza uma característica positiva para todos os outros fatores.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Avalia todos como 'médios' para não se comprometer.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Avalia com base apenas no que aconteceu ontem.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Favorece apenas os parentes e amigos próximos.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Usa dados puramente matemáticos de produção.</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Se o funcionário chega sempre cedo (positivo), o chefe acha que ele também é excelente técnico e líder, o que pode ser falso.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Se o funcionário chega sempre cedo (positivo), o chefe acha que ele também é excelente técnico e líder, o que pode ser falso.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">28</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">28</span>
               Liderança Situacional (Hersey/Blanchard)
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Um liderado com alta competência e alto empenho exige um estilo de liderança:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Delegador.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Diretivo.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Persuasivo.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Punitivo.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Centralizador.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Delegador.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Diretivo.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Persuasivo.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Punitivo.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Centralizador.</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. Se ele sabe fazer e quer fazer, o líder deve sair do caminho e deixar o talento fluir (delegação).</p>
+              <p className="text-lg leading-relaxed">Gabarito A. Se ele sabe fazer e quer fazer, o líder deve sair do caminho e deixar o talento fluir (delegação).</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">29</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">29</span>
               Recrutamento Misto
             </h3>
             <p className="mb-4 text-muted-foreground italic">"O recrutamento misto é vantajoso por:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Unir o aproveitamento de talentos internos com a oxigenação externa.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Ser o mais barato de todos os métodos.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Acabar com a necessidade de fazer entrevistas.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Focar apenas em candidatos com mais de 20 anos de experiência.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Ser proibido por lei em empresas públicas.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Unir o aproveitamento de talentos internos com a oxigenação externa.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Ser o mais barato de todos os métodos.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Acabar com a necessidade de fazer entrevistas.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Focar apenas em candidatos com mais de 20 anos de experiência.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Ser proibido por lei em empresas públicas.</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. É o equilíbrio. Você motiva quem já está na casa mas não deixa a cultura virar um 'loop' fechado.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. É o equilíbrio. Você motiva quem já está na casa mas não deixa a cultura virar um 'loop' fechado.</p>
             </div>
           </div>
 
           <div className="p-8 bg-card rounded-3xl border border-border">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">30</span>
+              <span className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg">30</span>
               Teoria da Expectativa (Vroom)
             </h3>
             <p className="mb-4 text-muted-foreground italic">"Os três pilares da motivação para Vroom são:"</p>
             <div className="space-y-3 mb-6">
-              <div className="p-4 bg-muted/50 rounded-lg text-sm border-2 border-emerald-500/50">A) Expectativa, Instrumentalidade e Valência.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">B) Salário, Bônus e Carro da Empresa.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">C) Idade, Sexo e Formação Acadêmica.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">D) Fome, Sede e Sono.</div>
-              <div className="p-4 bg-muted/50 rounded-lg text-sm">E) Medo, Raiva e Alegria.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg border-2 border-emerald-500/50">A) Expectativa, Instrumentalidade e Valência.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">B) Salário, Bônus e Carro da Empresa.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">C) Idade, Sexo e Formação Acadêmica.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">D) Fome, Sede e Sono.</div>
+              <div className="p-4 bg-muted/50 rounded-lg text-lg">E) Medo, Raiva e Alegria.</div>
             </div>
              <div className="p-5 bg-amber-500/5 rounded-xl border border-amber-500/20">
               <h5 className="font-bold text-amber-700 dark:text-amber-400 mb-2">Comentário Técnico:</h5>
-              <p className="text-sm leading-relaxed">Gabarito A. (E x I x V = M). Se qualquer um desses for zero, a motivação total é zero. É uma teoria matemática da motivação.</p>
+              <p className="text-lg leading-relaxed">Gabarito A. (E x I x V = M). Se qualquer um desses for zero, a motivação total é zero. É uma teoria matemática da motivação.</p>
             </div>
           </div>
 
@@ -2533,7 +2533,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
              <h4 className="font-bold border-b pb-2">Clássicos da Administração</h4>
-             <ul className="space-y-2 text-sm text-muted-foreground">
+             <ul className="space-y-2 text-lg text-muted-foreground">
                <li>**CHIAVENATO, Idalberto.** Gestão de Pessoas: O Novo Papel dos Recursos Humanos nas Organizações.</li>
                <li>**ROBBINS, Stephen.** Comportamento Organizacional.</li>
                <li>**DUTRA, Joel Souza.** Gestão de Pessoas: Modelo, Processos, Tendências e Estratégias.</li>
@@ -2542,7 +2542,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           </div>
           <div className="space-y-4">
              <h4 className="font-bold border-b pb-2">Normativos e Práticas Petrobras</h4>
-             <ul className="space-y-2 text-sm text-muted-foreground">
+             <ul className="space-y-2 text-lg text-muted-foreground">
                <li>**Petrobras.** Relatório de Sustentabilidade 2023 - Seção Social/Capital Humano.</li>
                <li>**PCR Petrobras.** Plano de Carreiras e Remuneração (Público).</li>
                <li>**Acordo Coletivo de Trabalho (ACT) 2023-2025.**</li>
@@ -2555,7 +2555,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           <h4 className="font-bold text-blue-700 dark:text-blue-400 mb-4 flex items-center gap-2">
             <LuBrain className="w-5 h-5" /> Nota Final do Instrutor
           </h4>
-          <p className="text-sm leading-relaxed text-muted-foreground">
+          <p className="text-lg leading-relaxed text-muted-foreground">
             A Gestão de Pessoas não é uma ciência exata, mas sim uma ciência social aplicada. Para a banca Cesgranrio, o segredo é entender que a Petrobras busca profissionais que unam excelência técnica com alta inteligência emocional e adaptabilidade. Estude as teorias motivacionais e de liderança como se fossem ferramentas práticas de operação, pois é assim que elas serão cobradas.
           </p>
         </div>
@@ -2576,43 +2576,43 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="p-6 bg-card rounded-2xl border border-border shadow-sm hover:shadow-md transition-all">
             <h4 className="font-bold text-blue-500 mb-2">Absenteísmo</h4>
-            <p className="text-sm text-muted-foreground">Frequência ou duração do tempo de trabalho perdido quando os colaboradores não comparecem. Pode ser causal (doença) ou voluntário.</p>
+            <p className="text-lg text-muted-foreground">Frequência ou duração do tempo de trabalho perdido quando os colaboradores não comparecem. Pode ser causal (doença) ou voluntário.</p>
           </div>
           <div className="p-6 bg-card rounded-2xl border border-border shadow-sm hover:shadow-md transition-all">
             <h4 className="font-bold text-blue-500 mb-2">Benchmarking</h4>
-            <p className="text-sm text-muted-foreground">Processo contínuo de comparação dos produtos, serviços e práticas entre os concorrentes mais fortes ou as empresas reconhecidas como líderes.</p>
+            <p className="text-lg text-muted-foreground">Processo contínuo de comparação dos produtos, serviços e práticas entre os concorrentes mais fortes ou as empresas reconhecidas como líderes.</p>
           </div>
           <div className="p-6 bg-card rounded-2xl border border-border shadow-sm hover:shadow-md transition-all">
             <h4 className="font-bold text-blue-500 mb-2">Downsizing</h4>
-            <p className="text-sm text-muted-foreground">Redução drástica do tamanho da organização, visando reduzir custos e burocracia, geralmente através de demissões em massa.</p>
+            <p className="text-lg text-muted-foreground">Redução drástica do tamanho da organização, visando reduzir custos e burocracia, geralmente através de demissões em massa.</p>
           </div>
           <div className="p-6 bg-card rounded-2xl border border-border shadow-sm hover:shadow-md transition-all">
             <h4 className="font-bold text-blue-500 mb-2">Empowerment</h4>
-            <p className="text-sm text-muted-foreground">Fortalecimento e delegação de autoridade aos colaboradores para que estes possam tomar decisões e ter mais autonomia em suas atividades.</p>
+            <p className="text-lg text-muted-foreground">Fortalecimento e delegação de autoridade aos colaboradores para que estes possam tomar decisões e ter mais autonomia em suas atividades.</p>
           </div>
           <div className="p-6 bg-card rounded-2xl border border-border shadow-sm hover:shadow-md transition-all">
             <h4 className="font-bold text-blue-500 mb-2">Headhunting</h4>
-            <p className="text-sm text-muted-foreground">Processo de recrutamento executado por especialistas (headhunters) focado em atrair profissionais de alto escalão ou talentos raros.</p>
+            <p className="text-lg text-muted-foreground">Processo de recrutamento executado por especialistas (headhunters) focado em atrair profissionais de alto escalão ou talentos raros.</p>
           </div>
           <div className="p-6 bg-card rounded-2xl border border-border shadow-sm hover:shadow-md transition-all">
             <h4 className="font-bold text-blue-500 mb-2">Job Rotation</h4>
-            <p className="text-sm text-muted-foreground">Rodízio de funções. Técnica de treinamento onde o colaborador passa por diferentes áreas para ganhar visão sistêmica.</p>
+            <p className="text-lg text-muted-foreground">Rodízio de funções. Técnica de treinamento onde o colaborador passa por diferentes áreas para ganhar visão sistêmica.</p>
           </div>
           <div className="p-6 bg-card rounded-2xl border border-border shadow-sm hover:shadow-md transition-all">
             <h4 className="font-bold text-blue-500 mb-2">Mentoring</h4>
-            <p className="text-sm text-muted-foreground">Mentoria. Processo onde um profissional mais experiente orienta a carreira e o desenvolvimento de um menos experiente.</p>
+            <p className="text-lg text-muted-foreground">Mentoria. Processo onde um profissional mais experiente orienta a carreira e o desenvolvimento de um menos experiente.</p>
           </div>
           <div className="p-6 bg-card rounded-2xl border border-border shadow-sm hover:shadow-md transition-all">
             <h4 className="font-bold text-blue-500 mb-2">Outplacement</h4>
-            <p className="text-sm text-muted-foreground">Serviço oferecido pela empresa para ajudar o colaborador demitido a se recolocar no mercado de trabalho.</p>
+            <p className="text-lg text-muted-foreground">Serviço oferecido pela empresa para ajudar o colaborador demitido a se recolocar no mercado de trabalho.</p>
           </div>
           <div className="p-6 bg-card rounded-2xl border border-border shadow-sm hover:shadow-md transition-all">
             <h4 className="font-bold text-blue-500 mb-2">Turnover</h4>
-            <p className="text-sm text-muted-foreground">Rotatividade de pessoal. Índice que mede a entrada e saída de colaboradores em um determinado período.</p>
+            <p className="text-lg text-muted-foreground">Rotatividade de pessoal. Índice que mede a entrada e saída de colaboradores em um determinado período.</p>
           </div>
           <div className="p-6 bg-card rounded-2xl border border-border shadow-sm hover:shadow-md transition-all">
             <h4 className="font-bold text-blue-500 mb-2">Work-Life Balance</h4>
-            <p className="text-sm text-muted-foreground">Equilíbrio entre a vida profissional e pessoal. Indica a qualidade de vida e a saúde organizacional.</p>
+            <p className="text-lg text-muted-foreground">Equilíbrio entre a vida profissional e pessoal. Indica a qualidade de vida e a saúde organizacional.</p>
           </div>
         </div>
       </div>
@@ -2632,27 +2632,27 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <div className="space-y-4">
           <div className="p-6 bg-muted rounded-2xl">
             <h4 className="font-bold mb-2">P: A banca diz que 'Teoria X' foca em pessoas. Verdade?</h4>
-            <p className="text-sm">**R:** Errado! Teoria X foca em controle e punição porque ignora o lado motivacional intrínseco. Teoria Y é a que foca no potencial humano.</p>
+            <p className="text-lg">**R:** Errado! Teoria X foca em controle e punição porque ignora o lado motivacional intrínseco. Teoria Y é a que foca no potencial humano.</p>
           </div>
           <div className="p-6 bg-muted rounded-2xl">
             <h4 className="font-bold mb-2">P: Recrutamento Interno é sempre melhor que o Externo?</h4>
-            <p className="text-sm">**R:** Para a Cesgranrio, nenhum é absoluto. O interno motiva os de casa, o externo traz 'sangue novo' e combate a cultura de mesmice.</p>
+            <p className="text-lg">**R:** Para a Cesgranrio, nenhum é absoluto. O interno motiva os de casa, o externo traz 'sangue novo' e combate a cultura de mesmice.</p>
           </div>
           <div className="p-6 bg-muted rounded-2xl">
             <h4 className="font-bold mb-2">P: A avaliação 360 graus deve ser feita por apenas uma pessoa?</h4>
-            <p className="text-sm">**R:** Absolutamente não! O nome '360' indica que o avaliado recebe feedbacks de chefes, pares, subordinados e até clientes.</p>
+            <p className="text-lg">**R:** Absolutamente não! O nome '360' indica que o avaliado recebe feedbacks de chefes, pares, subordinados e até clientes.</p>
           </div>
           <div className="p-6 bg-muted rounded-2xl">
             <h4 className="font-bold mb-2">P: Treinamento e Desenvolvimento (T&D) são a mesma coisa?</h4>
-            <p className="text-sm">**R:** Não. Treinamento foca no cargo ATUAL (curto prazo). Desenvolvimento foca na CARREIRA e no futuro (longo prazo).</p>
+            <p className="text-lg">**R:** Não. Treinamento foca no cargo ATUAL (curto prazo). Desenvolvimento foca na CARREIRA e no futuro (longo prazo).</p>
           </div>
           <div className="p-6 bg-muted rounded-2xl">
             <h4 className="font-bold mb-2">P: Se falta salário, o funcionário fica satisfeito segundo Herzberg?</h4>
-            <p className="text-sm">**R:** Pegadinha clássica! Segundo Herzberg, salário é fator HIGIÊNICO. Se falta, gera insatisfação. Se existe, apenas PREVINE a insatisfação, não gera motivação real.</p>
+            <p className="text-lg">**R:** Pegadinha clássica! Segundo Herzberg, salário é fator HIGIÊNICO. Se falta, gera insatisfação. Se existe, apenas PREVINE a insatisfação, não gera motivação real.</p>
           </div>
           <div className="p-6 bg-muted rounded-2xl">
             <h4 className="font-bold mb-2">P: Cultura organizacional pode ser mudada em uma semana?</h4>
-            <p className="text-sm">**R:** Impossível para a banca. Cultura envolve pressupostos básicos profundos. Mudanças culturais são graduais e demoradas (anos).</p>
+            <p className="text-lg">**R:** Impossível para a banca. Cultura envolve pressupostos básicos profundos. Mudanças culturais são graduais e demoradas (anos).</p>
           </div>
         </div>
       </div>

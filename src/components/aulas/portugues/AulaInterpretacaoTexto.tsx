@@ -190,7 +190,7 @@ export default function AulaInterpretacaoTexto({
               {index}
             </div>
             <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-lg font-bold uppercase tracking-wider">
                 <LuCpu className="w-3 h-3" /> Laboratório Tático
               </div>
               <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
@@ -209,7 +209,7 @@ export default function AulaInterpretacaoTexto({
                 className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm"
               >
                 <div className={`w-3 h-3 rounded-full ${item.cor}`} />
-                <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                <span className="text-lg font-medium text-slate-700 dark:text-slate-300">
                   {item.label}
                 </span>
               </div>
@@ -227,7 +227,7 @@ export default function AulaInterpretacaoTexto({
           <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
             <LuBrain className="w-5 h-5" />
           </div>
-          <p className="text-sm text-slate-500 dark:text-slate-400 italic">
+          <p className="text-lg text-slate-500 dark:text-slate-400 italic">
             "O marca-texto acima simula o 'olhar clínico' que você deve ter
             durante a prova. Note como as informações mudam de valor dependendo
             da sua intenção de leitura."
@@ -296,7 +296,7 @@ export default function AulaInterpretacaoTexto({
                 ].map((item, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-2 text-sm text-foreground/80"
+                    className="flex items-start gap-2 text-lg text-foreground/80"
                   >
                     <LuCheck className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" />{" "}
                     {item}
@@ -323,7 +323,7 @@ export default function AulaInterpretacaoTexto({
                 ].map((item, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-2 text-sm text-foreground/80"
+                    className="flex items-start gap-2 text-lg text-foreground/80"
                   >
                     <LuCheck className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />{" "}
                     {item}
@@ -372,13 +372,13 @@ export default function AulaInterpretacaoTexto({
                 icone: "🔗",
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-sm">
+                    <p className="text-lg">
                       Para compreender, você deve dominar quem é quem no texto.
                       O "Ele" retoma o "Presidente" ou a "Comunicação"?
                     </p>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/10">
-                        <span className="font-bold text-xs block mb-1">
+                        <span className="font-bold text-lg block mb-1">
                           Anáfora
                         </span>
                         <p className="text-[10px]">
@@ -387,7 +387,7 @@ export default function AulaInterpretacaoTexto({
                         </p>
                       </div>
                       <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/10">
-                        <span className="font-bold text-xs block mb-1">
+                        <span className="font-bold text-lg block mb-1">
                           Catáfora
                         </span>
                         <p className="text-[10px]">
@@ -457,7 +457,7 @@ export default function AulaInterpretacaoTexto({
                   <div className="flex items-center gap-2 text-red-500 font-bold border-b border-white/10 pb-2">
                     <LuShieldAlert /> <span>FALSO (CONTRADIÇÃO)</span>
                   </div>
-                  <p className="text-sm">
+                  <p className="text-lg">
                     O texto afirma explicitamente que "não decorreu de falta de
                     verba". A banca tenta te induzir ao erro técnico externo.
                   </p>
@@ -479,7 +479,7 @@ export default function AulaInterpretacaoTexto({
                   <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-white/10 pb-2">
                     <LuCheck /> <span>VERDADEIRO (INFERÊNCIA)</span>
                   </div>
-                  <p className="text-sm">
+                  <p className="text-lg">
                     A expressão "crise de gestão logística" sustenta essa
                     interpretação como causa raiz. Resposta autorizada pelo
                     texto.
@@ -557,10 +557,10 @@ export default function AulaInterpretacaoTexto({
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
                   <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mb-2">
+                    <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
                       Compreensão (Explícito)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic">
+                    <p className="text-lg text-muted-foreground italic">
                       "O autor afirma que..."
                     </p>
                     <p className="text-[10px] mt-2 font-medium text-emerald-700 dark:text-emerald-300">
@@ -568,10 +568,10 @@ export default function AulaInterpretacaoTexto({
                     </p>
                   </div>
                   <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-blue-600 dark:text-blue-400 mb-2">
+                    <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">
                       Interpretação (Implícito)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic">
+                    <p className="text-lg text-muted-foreground italic">
                       "Infere-se que..."
                     </p>
                     <p className="text-[10px] mt-2 font-medium text-blue-700 dark:text-blue-300">
@@ -645,7 +645,7 @@ export default function AulaInterpretacaoTexto({
                   titulo: "1. Declaração Inicial (O Padrão Ouro)",
                   icone: "📌",
                   conteudo: (
-                    <div className="space-y-3 text-sm text-muted-foreground">
+                    <div className="space-y-3 text-lg text-muted-foreground">
                       <p>
                         O autor faz uma afirmação categórica logo no início e
                         passa o resto do parágrafo provando-a.
@@ -662,7 +662,7 @@ export default function AulaInterpretacaoTexto({
                   titulo: "2. Definição (O Padrão Didático)",
                   icone: "📖",
                   conteudo: (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       O parágrafo começa definindo um termo técnico ou conceito.
                       Comum em manuais de operação e normas de segurança
                       (EPI/EPC).
@@ -673,7 +673,7 @@ export default function AulaInterpretacaoTexto({
                   titulo: "3. Contraste (O Padrão Argumentativo)",
                   icone: "⚖️",
                   conteudo: (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       O foco é a oposição entre dois fatos. "Enquanto o custo de
                       extração sobe, a eficiência das bombas compensa o
                       impacto."
@@ -736,7 +736,7 @@ export default function AulaInterpretacaoTexto({
                   <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-white/10 pb-2">
                     <LuCheck /> <span>PREDOMINANTEMENTE SIM</span>
                   </div>
-                  <p className="text-sm">
+                  <p className="text-lg">
                     Em textos técnicos da Petrobras, a eficácia manda. A ideia
                     principal abre o parágrafo (Ponto de Impacto) para facilitar
                     a decodificação rápida.
@@ -759,7 +759,7 @@ export default function AulaInterpretacaoTexto({
                   <div className="flex items-center gap-2 text-red-500 font-bold border-b border-white/10 pb-2">
                     <LuShieldAlert /> <span>NÃO OBRIGATORIAMENTE</span>
                   </div>
-                  <p className="text-sm">
+                  <p className="text-lg">
                     Em textos narrativos ou muito densos, a ideia central pode
                     estar implícita na soma das partes. Requer síntese
                     interpretativa do candidato.
@@ -865,18 +865,18 @@ export default function AulaInterpretacaoTexto({
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
                   <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mb-2">
+                    <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
                       Dedução (Início)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic truncate">
+                    <p className="text-lg text-muted-foreground italic truncate">
                       "A energia solar é farta..." + Provas.
                     </p>
                   </div>
                   <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-blue-600 dark:text-blue-400 mb-2">
+                    <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">
                       Indução (Fim)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic truncate">
+                    <p className="text-lg text-muted-foreground italic truncate">
                       Provas... + "Portanto, a energia solar..."
                     </p>
                   </div>
@@ -897,9 +897,9 @@ export default function AulaInterpretacaoTexto({
 
                 <QuizInterativo
           questoes={quizM2}
-          titulo="Blindagem de Módulo: Arquitetura"
+          titulo="QUIZ: O Tópico Frasal"
           icone="🏗️"
-          numero={2}
+          numero={6}
           variant="emerald"
           onComplete={(score) => handleModuleComplete("modulo-2", score)}
         />
@@ -947,7 +947,7 @@ export default function AulaInterpretacaoTexto({
                   titulo: "1. Oposição: O 'Mas' vs O 'Embora'",
                   icone: "⚖️",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-lg">
                       <p>
                         <strong>Conceituação:</strong> A Cesgranrio ama o
                         contraste. Adversativos (MAS, POREM) enfatizam a SEGUNDA
@@ -986,7 +986,7 @@ export default function AulaInterpretacaoTexto({
                   titulo: "2. Causa vs Consequência (A Lógica do Petróleo)",
                   icone: "🎯",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-lg">
                       <p>
                         <strong>Capa de Causa:</strong> "Visto que", "Já que",
                         "Uma vez que".
@@ -1033,7 +1033,7 @@ export default function AulaInterpretacaoTexto({
                   <p className="font-bold text-emerald-500 flex items-center gap-2">
                     <LuCheck /> CAUSAL
                   </p>
-                  <p className="text-xs italic">Equivale a "Porque".</p>
+                  <p className="text-lg italic">Equivale a "Porque".</p>
                   <p className="text-[10px] bg-white/5 p-2 rounded">
                     "A plataforma parou <strong>porquanto</strong> houve
                     tempestade."
@@ -1056,7 +1056,7 @@ export default function AulaInterpretacaoTexto({
                   <p className="font-bold text-emerald-500 flex items-center gap-2">
                     <LuCheck /> CONCESSIVA
                   </p>
-                  <p className="text-xs italic">Equivale a "Embora".</p>
+                  <p className="text-lg italic">Equivale a "Embora".</p>
                   <p className="text-[10px] bg-white/5 p-2 rounded">
                     "<strong>Conquanto</strong> houvesse riscos, a missão
                     seguiu."
@@ -1077,7 +1077,7 @@ export default function AulaInterpretacaoTexto({
                   <p className="font-bold text-emerald-500 flex items-center gap-2">
                     <LuCheck /> RETIFICAÇÃO
                   </p>
-                  <p className="text-xs italic">Ajusta ou reforça o dito.</p>
+                  <p className="text-lg italic">Ajusta ou reforça o dito.</p>
                   <p className="text-[10px] bg-white/5 p-2 rounded">
                     "Somos eficientes; <strong>aliás</strong>, os melhores do
                     setor."
@@ -1110,7 +1110,7 @@ export default function AulaInterpretacaoTexto({
                 </span>{" "}
                 detectar irregularidades no balanço."
               </p>
-              <div className="p-3 bg-amber-500/5 dark:bg-amber-500/10 border-l-4 border-amber-500 text-xs text-amber-800 dark:text-amber-200">
+              <div className="p-3 bg-amber-500/5 dark:bg-amber-500/10 border-l-4 border-amber-500 text-lg text-amber-800 dark:text-amber-200">
                 Atenção: "Esta" (pronome demonstrativo) refere-se ao elemento
                 mais próximo: o <strong>comitê de ética</strong>, e não à
                 subsidiária.
@@ -1182,18 +1182,18 @@ export default function AulaInterpretacaoTexto({
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
                   <div className="p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-amber-600 dark:text-amber-400 mb-2">
+                    <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">
                       Mas (Adversativa)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic truncate">
+                    <p className="text-lg text-muted-foreground italic truncate">
                       "Estudei muito, mas não passei." (Foco no Mas)
                     </p>
                   </div>
                   <div className="p-4 bg-orange-500/5 border border-orange-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-orange-600 dark:text-orange-400 mb-2">
+                    <h4 className="text-lg font-bold text-orange-600 dark:text-orange-400 mb-2">
                       Embora (Concessiva)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic truncate">
+                    <p className="text-lg text-muted-foreground italic truncate">
                       "Embora não tenha passado, estudei muito."
                     </p>
                   </div>
@@ -1263,7 +1263,7 @@ export default function AulaInterpretacaoTexto({
                   titulo: "1. Dissertação-Argumentativa",
                   icone: "🖋️",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-lg">
                       <p>
                         <strong>Objetivo:</strong> Persuadir o leitor. O autor
                         defende uma tese com base em argumentos lógicos.
@@ -1272,7 +1272,7 @@ export default function AulaInterpretacaoTexto({
                         "É imperativo que a Petrobras mantenha o foco no
                         Pré-Sal, <u>dado que</u> os lucros são consistentes."
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         MARCAS: Subjetividade controlada, conectivos de
                         causa/consequência, adjetivos valorativos.
                       </p>
@@ -1283,7 +1283,7 @@ export default function AulaInterpretacaoTexto({
                   titulo: "2. Dissertação-Expositiva",
                   icone: "📊",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-lg">
                       <p>
                         <strong>Objetivo:</strong> Informar. Texto neutro,
                         impessoal, repleto de dados estatísticos e definições
@@ -1293,7 +1293,7 @@ export default function AulaInterpretacaoTexto({
                         "A unidade de refino opera com 95% de capacidade,
                         processando 200 mil barris/dia."
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         MARCAS: Verbos no presente (valor atemporal), dados
                         numéricos, ausência de opinião.
                       </p>
@@ -1304,7 +1304,7 @@ export default function AulaInterpretacaoTexto({
                   titulo: "3. Texto Injuntivo (O Comando)",
                   icone: "⚙️",
                   conteudo: (
-                    <div className="space-y-4 text-sm text-balance">
+                    <div className="space-y-4 text-lg text-balance">
                       <p>
                         Aquele que orienta um comportamento. Comum em manuais de
                         segurança e normativos da empresa.
@@ -1345,7 +1345,7 @@ export default function AulaInterpretacaoTexto({
                   <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-white/10 pb-2">
                     <LuCheck /> <span>DISSERTATIVO-ARGUMENTATIVO</span>
                   </div>
-                  <p className="text-sm">
+                  <p className="text-lg">
                     O editorial expressa a opinião do jornal. Se há opinião
                     defendida, há argumentação.
                   </p>
@@ -1367,7 +1367,7 @@ export default function AulaInterpretacaoTexto({
                   <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-white/10 pb-2">
                     <LuCheck /> <span>INJUNTIVO / EXPOSITIVO</span>
                   </div>
-                  <p className="text-sm">
+                  <p className="text-lg">
                     Instrui o operador (Injunção) e descreve o equipamento
                     (Exposição).
                   </p>
@@ -1400,7 +1400,7 @@ export default function AulaInterpretacaoTexto({
                 </span>{" "}
                 da unidade X para a unidade Y imediatamente."
               </p>
-              <div className="p-3 bg-indigo-500/5 dark:bg-indigo-500/10 border-l-4 border-indigo-500 text-xs text-indigo-800 dark:text-indigo-200">
+              <div className="p-3 bg-indigo-500/5 dark:bg-indigo-500/10 border-l-4 border-indigo-500 text-lg text-indigo-800 dark:text-indigo-200">
                 Análise: O texto é híbrido, mas a <strong>predominância</strong>{" "}
                 é dissertativa no início (tese) e injuntiva no final (comando).
               </div>
@@ -1456,18 +1456,18 @@ export default function AulaInterpretacaoTexto({
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
                   <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-blue-600 dark:text-blue-400 mb-2">
+                    <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">
                       Dissertação (Opinião)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic truncate">
+                    <p className="text-lg text-muted-foreground italic truncate">
                       "É fundamental que a empresa invista..."
                     </p>
                   </div>
                   <div className="p-4 bg-indigo-500/5 border border-indigo-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-indigo-600 dark:text-indigo-400 mb-2">
+                    <h4 className="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-2">
                       Injunção (Instrução)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic truncate">
+                    <p className="text-lg text-muted-foreground italic truncate">
                       "Utilize o EPI antes de iniciar..."
                     </p>
                   </div>
@@ -1532,7 +1532,7 @@ export default function AulaInterpretacaoTexto({
                   <div className="flex items-center gap-2 text-red-500 font-bold border-b border-white/10 pb-2">
                     <LuShieldAlert /> <span>VÍCIO DE LENTIDÃO</span>
                   </div>
-                  <p className="text-sm">
+                  <p className="text-lg">
                     É o hábito de "ouvir" a voz na mente enquanto lê. Isso
                     limita sua velocidade de leitura à velocidade da fala (150
                     ppm). Leitura visual pura atinge 600+ ppm.
@@ -1555,7 +1555,7 @@ export default function AulaInterpretacaoTexto({
                   <div className="flex items-center gap-2 text-red-500 font-bold border-b border-white/10 pb-2">
                     <LuShieldAlert /> <span>DESTRUTOR DE FLUXO</span>
                   </div>
-                  <p className="text-sm">
+                  <p className="text-lg">
                     Voltar ao início da frase porque "não entendeu" destrói a
                     coesão mental. O cérebro entende melhor no fluxo contínuo.
                     Confie na sua primeira leitura.
@@ -1587,7 +1587,7 @@ export default function AulaInterpretacaoTexto({
                   titulo: "1. Leitura de Reconhecimento",
                   icone: "🔍",
                   conteudo: (
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Busca de palavras-chave. Usada após ler o enunciado.
                     </p>
                   ),
@@ -1596,7 +1596,7 @@ export default function AulaInterpretacaoTexto({
                   titulo: "2. Leitura de Compreensão",
                   icone: "📘",
                   conteudo: (
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Para entender a lógica dos parágrafos e a tese do autor.
                     </p>
                   ),
@@ -1605,7 +1605,7 @@ export default function AulaInterpretacaoTexto({
                   titulo: "3. Leitura Analítica",
                   icone: "⚖️",
                   conteudo: (
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Focada em um único período para identificar pegadinhas de
                       negação ou restrição.
                     </p>
@@ -1708,18 +1708,18 @@ export default function AulaInterpretacaoTexto({
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
                   <div className="p-4 bg-red-500/5 border border-red-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-red-600 dark:text-red-400 mb-2">
+                    <h4 className="text-lg font-bold text-red-600 dark:text-red-400 mb-2">
                       Subvocalização (Vício)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic truncate">
+                    <p className="text-lg text-muted-foreground italic truncate">
                       "Ler em voz alta na cabeça."
                     </p>
                   </div>
                   <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mb-2">
+                    <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
                       Visão Periférica (Elite)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic truncate">
+                    <p className="text-lg text-muted-foreground italic truncate">
                       "Captar blocos de 3+ palavras."
                     </p>
                   </div>
@@ -1740,9 +1740,9 @@ export default function AulaInterpretacaoTexto({
 
                 <QuizInterativo
           questoes={quizM5}
-          titulo="Blindagem de Módulo: Velocidade"
+          titulo="QUIZ: Coesão Referencial"
           icone="⚡"
-          numero={5}
+          numero={6}
           variant="emerald"
           onComplete={(score) => handleModuleComplete("modulo-5", score)}
         />
@@ -1776,7 +1776,7 @@ export default function AulaInterpretacaoTexto({
                   <LuSearch className="w-12 h-12 text-primary opacity-50" />
                   <div className="text-center">
                     <h6 className="text-xl font-bold uppercase">Pressuposto</h6>
-                    <p className="text-sm font-medium opacity-80">
+                    <p className="text-lg font-medium opacity-80">
                       O que o texto "paga" para ser verdade.
                     </p>
                   </div>
@@ -1784,16 +1784,16 @@ export default function AulaInterpretacaoTexto({
               }
               verso={
                 <div className="space-y-4">
-                  <p className="text-sm leading-relaxed text-zinc-100">
+                  <p className="text-lg leading-relaxed text-zinc-100">
                     Informação que o texto não diz explicitamente, mas que é
                     **logicamente obrigatória** para o sentido da frase. Se você
                     negar o pressuposto, a frase perde o sentido.
                   </p>
-                  <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary font-bold">
+                  <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-lg text-primary font-bold">
                     Dica de Elite: Procure por verbos como 'deixar de',
                     'continuar' ou advérbios como 'ainda' e 'já'.
                   </div>
-                  <p className="text-xs italic text-zinc-400">
+                  <p className="text-lg italic text-zinc-400">
                     Ex: "O refino **voltou** a crescer" pressupõe que ele não
                     crescia antes.
                   </p>
@@ -1809,7 +1809,7 @@ export default function AulaInterpretacaoTexto({
                     <h6 className="text-xl font-bold uppercase">
                       Subentendido
                     </h6>
-                    <p className="text-sm font-medium opacity-80">
+                    <p className="text-lg font-medium opacity-80">
                       A insinuação que pode ser negada.
                     </p>
                   </div>
@@ -1817,17 +1817,17 @@ export default function AulaInterpretacaoTexto({
               }
               verso={
                 <div className="space-y-4">
-                  <p className="text-sm leading-relaxed text-zinc-100">
+                  <p className="text-lg leading-relaxed text-zinc-100">
                     Dedução que depende totalmente do **contexto** e da
                     interpretação do leitor. O autor pode negar a intenção se
                     for confrontado, pois não há marca gramatical blindada.
                   </p>
-                  <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary font-bold">
+                  <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-lg text-primary font-bold">
                     Cuidado Cesgranrio: Insinuações são 'perigosas' em
                     interpretação técnica. Responda apenas o que o texto
                     autoriza.
                   </div>
-                  <p className="text-xs italic text-zinc-400">
+                  <p className="text-lg italic text-zinc-400">
                     Ex: "O ar-condicionado está desligado?" subentende um pedido
                     para ligar.
                   </p>
@@ -1942,10 +1942,10 @@ export default function AulaInterpretacaoTexto({
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
                   <div className="p-4 bg-cyan-500/5 border border-cyan-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-cyan-600 dark:text-cyan-400 mb-2">
+                    <h4 className="text-lg font-bold text-cyan-600 dark:text-cyan-400 mb-2">
                       Pressuposto (Gramática)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic">
+                    <p className="text-lg text-muted-foreground italic">
                       "A Petrobras **voltou** a crescer."
                     </p>
                     <p className="text-[10px] mt-2 font-medium text-cyan-700 dark:text-cyan-300">
@@ -1954,10 +1954,10 @@ export default function AulaInterpretacaoTexto({
                     </p>
                   </div>
                   <div className="p-4 bg-teal-500/5 border border-teal-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-teal-600 dark:text-teal-400 mb-2">
+                    <h4 className="text-lg font-bold text-teal-600 dark:text-teal-400 mb-2">
                       Subentendido (Contexto)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic">
+                    <p className="text-lg text-muted-foreground italic">
                       "Está calor aqui dentro, não acha?"
                     </p>
                     <p className="text-[10px] mt-2 font-medium text-teal-700 dark:text-teal-300">
@@ -2011,7 +2011,7 @@ export default function AulaInterpretacaoTexto({
               frente={
                 <div className="flex flex-col items-center gap-3">
                   <LuShieldAlert className="w-10 h-10 text-primary opacity-50" />
-                  <span className="font-bold uppercase text-sm">
+                  <span className="font-bold uppercase text-lg">
                     1. Redução
                   </span>
                 </div>
@@ -2035,7 +2035,7 @@ export default function AulaInterpretacaoTexto({
               frente={
                 <div className="flex flex-col items-center gap-3">
                   <LuSearch className="w-10 h-10 text-primary opacity-50" />
-                  <span className="font-bold uppercase text-sm">
+                  <span className="font-bold uppercase text-lg">
                     2. Extrapolação
                   </span>
                 </div>
@@ -2058,7 +2058,7 @@ export default function AulaInterpretacaoTexto({
               frente={
                 <div className="flex flex-col items-center gap-3">
                   <LuTarget className="w-10 h-10 text-primary opacity-50" />
-                  <span className="font-bold uppercase text-sm">
+                  <span className="font-bold uppercase text-lg">
                     3. Contradição
                   </span>
                 </div>
@@ -2083,7 +2083,7 @@ export default function AulaInterpretacaoTexto({
             <h4 className="font-bold text-red-700 dark:text-red-400 mb-3 flex items-center gap-2">
               <LuShieldAlert className="w-5 h-5" /> Regra de Ouro: A Blindagem
             </h4>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
               <li className="flex gap-2">
                 <span className="text-red-500 font-bold">1.</span>
                 <span>
@@ -2177,10 +2177,10 @@ export default function AulaInterpretacaoTexto({
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
                   <div className="p-4 bg-orange-500/5 border border-orange-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-orange-600 dark:text-orange-400 mb-2">
+                    <h4 className="text-lg font-bold text-orange-600 dark:text-orange-400 mb-2">
                       Extrapolação (Mais comum)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic">
+                    <p className="text-lg text-muted-foreground italic">
                       "A energia nuclear é o futuro do Brasil." (O texto só
                       citou que é uma opção).
                     </p>
@@ -2189,10 +2189,10 @@ export default function AulaInterpretacaoTexto({
                     </p>
                   </div>
                   <div className="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-rose-600 dark:text-rose-400 mb-2">
+                    <h4 className="text-lg font-bold text-rose-600 dark:text-rose-400 mb-2">
                       Fidelidade (Regra de Ouro)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic">
+                    <p className="text-lg text-muted-foreground italic">
                       "A energia nuclear é uma das opções citadas."
                     </p>
                     <p className="text-[10px] mt-2 font-medium text-rose-700 dark:text-rose-300">
@@ -2250,7 +2250,7 @@ export default function AulaInterpretacaoTexto({
                     <h6 className="text-xl font-bold uppercase">
                       Informativo vs. Persuasivo
                     </h6>
-                    <p className="text-sm font-medium opacity-80">
+                    <p className="text-lg font-medium opacity-80">
                       Qual o objetivo real do autor?
                     </p>
                   </div>
@@ -2258,12 +2258,12 @@ export default function AulaInterpretacaoTexto({
               }
               verso={
                 <div className="space-y-4">
-                  <p className="text-sm leading-relaxed text-zinc-100">
+                  <p className="text-lg leading-relaxed text-zinc-100">
                     O texto **informativo** apenas relata fatos (neutro). O
                     **persuasivo** quer mudar sua opinião ou convencer de uma
                     tese (subjetivo).
                   </p>
-                  <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary font-bold">
+                  <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-lg text-primary font-bold">
                     Dica: Textos da Petrobras costumam ser Informativos, mas com
                     tom 'Institucional' (positivo).
                   </div>
@@ -2279,7 +2279,7 @@ export default function AulaInterpretacaoTexto({
                     <h6 className="text-xl font-bold uppercase">
                       Crítico vs. Elogioso
                     </h6>
-                    <p className="text-sm font-medium opacity-80">
+                    <p className="text-lg font-medium opacity-80">
                       O tom das palavras escolhidas.
                     </p>
                   </div>
@@ -2287,12 +2287,12 @@ export default function AulaInterpretacaoTexto({
               }
               verso={
                 <div className="space-y-4">
-                  <p className="text-sm leading-relaxed text-zinc-100">
+                  <p className="text-lg leading-relaxed text-zinc-100">
                     A escolha de adjetivos indica o tom. O uso de **aspas**
                     quase sempre indica ironia ou distanciamento crítico da
                     banca.
                   </p>
-                  <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary font-bold">
+                  <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-lg text-primary font-bold">
                     Atenção: A Cesgranrio adora perguntar sobre o 'efeito de
                     sentido' de um termo entre aspas.
                   </div>
@@ -2307,7 +2307,7 @@ export default function AulaInterpretacaoTexto({
               <LuTarget className="w-5 h-5" /> Foco na Finalidade
             </h4>
             <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-800">
-              <p className="text-sm text-blue-800 dark:text-blue-300">
+              <p className="text-lg text-blue-800 dark:text-blue-300">
                 <strong>Dica de Ouro:</strong> Procure pelo verbo de ação na
                 conclusão. Se o autor termina com solicitações ou visões de
                 futuro, a intenção é <strong>propositiva</strong>. Se termina
@@ -2392,10 +2392,10 @@ export default function AulaInterpretacaoTexto({
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
                   <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-blue-600 dark:text-blue-400 mb-2">
+                    <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">
                       Ironia (Armadilha)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic">
+                    <p className="text-lg text-muted-foreground italic">
                       "O 'genial' plano resultou em prejuízo."
                     </p>
                     <p className="text-[10px] mt-2 font-medium text-blue-700 dark:text-blue-300">
@@ -2403,10 +2403,10 @@ export default function AulaInterpretacaoTexto({
                     </p>
                   </div>
                   <div className="p-4 bg-sky-500/5 border border-sky-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-sky-600 dark:text-sky-400 mb-2">
+                    <h4 className="text-lg font-bold text-sky-600 dark:text-sky-400 mb-2">
                       Informativo (Neutralidade)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic">
+                    <p className="text-lg text-muted-foreground italic">
                       "A empresa registrou lucro de 10%."
                     </p>
                     <p className="text-[10px] mt-2 font-medium text-sky-700 dark:text-sky-300">
@@ -2463,7 +2463,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="font-bold text-blue-500 block">
                     VOCABULÁRIO
                   </span>
-                  <p className="text-sm">
+                  <p className="text-lg">
                     A banca troca 'fomentar' por 'estimular', 'negligenciar' por
                     'omitir'. Domine a lista de 50 verbos recorrentes da
                     Cesgranrio.
@@ -2478,7 +2478,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="font-bold text-indigo-500 block">
                     RECORRÊNCIA
                   </span>
-                  <p className="text-sm">
+                  <p className="text-lg">
                     90% dos textos giram em torno de: Transição Energética,
                     Sustentabilidade e Inovação Tecnológica na Indústria.
                   </p>
@@ -2491,7 +2491,7 @@ export default function AulaInterpretacaoTexto({
             <h4 className="font-bold text-indigo-700 dark:text-indigo-400 mb-2 flex items-center gap-2">
               <LuSearch className="w-5 h-5" /> Radar de Questão
             </h4>
-            <p className="text-sm">
+            <p className="text-lg">
               Sempre que aparecer um termo entre aspas no texto, a Cesgranrio
               perguntará sobre a <strong>ressignificação</strong> ou o{" "}
               <strong>efeito de sentido</strong> desse termo no contexto.
@@ -2583,10 +2583,10 @@ export default function AulaInterpretacaoTexto({
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
                   <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-blue-600 dark:text-blue-400 mb-2">
+                    <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">
                       Fomentar (Cesgranrio)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic">
+                    <p className="text-lg text-muted-foreground italic">
                       "É preciso fomentar o debate."
                     </p>
                     <p className="text-[10px] mt-2 font-medium text-blue-700 dark:text-blue-300">
@@ -2594,10 +2594,10 @@ export default function AulaInterpretacaoTexto({
                     </p>
                   </div>
                   <div className="p-4 bg-indigo-500/5 border border-indigo-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-indigo-600 dark:text-indigo-400 mb-2">
+                    <h4 className="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-2">
                       Negligenciar (Cesgranrio)
                     </h4>
-                    <p className="text-xs text-muted-foreground italic">
+                    <p className="text-lg text-muted-foreground italic">
                       "A gestão negligenciou os dados."
                     </p>
                     <p className="text-[10px] mt-2 font-medium text-indigo-700 dark:text-indigo-300">
@@ -2621,7 +2621,7 @@ export default function AulaInterpretacaoTexto({
 
                 <QuizInterativo
           questoes={quizM9}
-          titulo="Desafio de Lógica"
+          titulo="QUIZ: Checklist Tático"
           icone="🧠"
           numero={4}
           variant="blue"
@@ -2651,7 +2651,7 @@ export default function AulaInterpretacaoTexto({
               frente={
                 <div className="flex flex-col items-center gap-3">
                   <LuEye className="w-10 h-10 text-primary opacity-50" />
-                  <span className="font-bold uppercase text-sm text-center">
+                  <span className="font-bold uppercase text-lg text-center">
                     1. Olhar de Raio-X
                   </span>
                 </div>
@@ -2674,7 +2674,7 @@ export default function AulaInterpretacaoTexto({
               frente={
                 <div className="flex flex-col items-center gap-3">
                   <LuShieldAlert className="w-10 h-10 text-primary opacity-50" />
-                  <span className="font-bold uppercase text-sm text-center">
+                  <span className="font-bold uppercase text-lg text-center">
                     2. Filtro Anti-Achismo
                   </span>
                 </div>
@@ -2698,7 +2698,7 @@ export default function AulaInterpretacaoTexto({
               frente={
                 <div className="flex flex-col items-center gap-3">
                   <LuTarget className="w-10 h-10 text-primary opacity-50" />
-                  <span className="font-bold uppercase text-sm text-center">
+                  <span className="font-bold uppercase text-lg text-center">
                     3. Radar de Sinônimos
                   </span>
                 </div>
@@ -2724,7 +2724,7 @@ export default function AulaInterpretacaoTexto({
             <h4 className="font-bold text-orange-700 dark:text-primary mb-3 flex items-center gap-2">
               <LuTrophy className="w-5 h-5" /> Mensagem Especial: A Blindagem
             </h4>
-            <p className="text-sm italic text-muted-foreground">
+            <p className="text-lg italic text-muted-foreground">
               "A interpretação na Petrobras não é sobre adivinhação, é sobre
               **mapeamento**. Se você utilizou as técnicas deste dossiê, o
               gabarito é apenas uma consequência lógica. Boa sorte na Arena." -
@@ -2797,7 +2797,7 @@ export default function AulaInterpretacaoTexto({
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
                   <div className="p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-amber-600 dark:text-amber-400 mb-2">
+                    <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">
                       A Tática do Descarte
                     </h4>
                     <p className="text-[10px] text-muted-foreground">
@@ -2806,7 +2806,7 @@ export default function AulaInterpretacaoTexto({
                     </p>
                   </div>
                   <div className="p-4 bg-indigo-500/5 border border-indigo-500/20 rounded-xl">
-                    <h4 className="text-sm font-bold text-indigo-600 dark:text-indigo-400 mb-2">
+                    <h4 className="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-2">
                       Foco no Comando
                     </h4>
                     <p className="text-[10px] text-muted-foreground">

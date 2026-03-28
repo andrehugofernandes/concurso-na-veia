@@ -50,7 +50,7 @@ export default function AulaMarketingGerencial(props: AulaProps) {
       </div>
 
       <div className="bg-yellow-50 dark:bg-yellow-950/30 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
-        <p className="text-sm text-yellow-800 dark:text-yellow-200">
+        <p className="text-lg text-yellow-800 dark:text-yellow-200">
           <strong>⏳ Em desenvolvimento:</strong> Este módulo está estruturado (carcaça) e será expandido com conteúdo completo em breve.
           Todos os 10 módulos com quizzes completos virão no próximo ciclo de desenvolvimento.
         </p>
@@ -68,7 +68,7 @@ export default function AulaMarketingGerencial(props: AulaProps) {
             }`}
           >
             <div className="font-bold text-foreground">{mod.label}</div>
-            <div className="text-sm text-muted-foreground">{mod.title}</div>
+            <div className="text-lg text-muted-foreground">{mod.title}</div>
           </button>
         ))}
       </div>

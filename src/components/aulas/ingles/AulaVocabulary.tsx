@@ -162,7 +162,7 @@ export default function AulaVocabulary({
               titulo="Upstream: A Jornada da Exploração até a Produção"
               />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Upstream operations representam a primeira etapa da cadeia de valor de óleo e gás: exploração, desenvolvimento e produção. A Petrobras é uma empresa heavily upstream-dependent porque o Brasil possui algumas das maiores reservas de petróleo do mundo, especialmente no pré-sal. O termo "upstream" literalmente significa "contra a corrente" — você está procurando pela fonte do óleo, não processando o que já foi encontrado. Esta distinção é crítica para entender documentos técnicos, relatórios de operação e discussões estratégicas em Petrobras. Profissionais que trabalham em upstream lidam com desafios extremos: ambientes offshore hostis, perfuração em profundidades record (3.000+ metros), pressões gigantescas, e riscos ambientais significativos.
               </p>
@@ -185,22 +185,22 @@ export default function AulaVocabulary({
 
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Fases Principais do Upstream</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                   <div>
                     <div className="font-semibold text-blue-700 dark:text-blue-300">Exploration</div>
-                    <div className="text-xs mt-1">Seismic surveys, wildcat wells, reserve estimation</div>
+                    <div className="text-lg mt-1">Seismic surveys, wildcat wells, reserve estimation</div>
                   </div>
                   <div>
                     <div className="font-semibold text-cyan-700 dark:text-cyan-300">Development</div>
-                    <div className="text-xs mt-1">Platform design, well drilling, infrastructure</div>
+                    <div className="text-lg mt-1">Platform design, well drilling, infrastructure</div>
                   </div>
                   <div>
                     <div className="font-semibold text-teal-700 dark:text-teal-300">Production</div>
-                    <div className="text-xs mt-1">Oil/gas extraction, processing, transport to refinery</div>
+                    <div className="text-lg mt-1">Oil/gas extraction, processing, transport to refinery</div>
                   </div>
                   <div>
                     <div className="font-semibold text-green-700 dark:text-green-300">Decommissioning</div>
-                    <div className="text-xs mt-1">Well abandonment, platform removal, site restoration</div>
+                    <div className="text-lg mt-1">Well abandonment, platform removal, site restoration</div>
                   </div>
                 </div>
               </div>
@@ -212,7 +212,7 @@ export default function AulaVocabulary({
                   titulo: "① Conceituação: Fases do Upstream",
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-base leading-relaxed">
+                    <div className="space-y-4 text-lg leading-relaxed">
                       <p>
                         <strong>Exploration Phase:</strong> Geoscientists usam seismic surveys (ondas sonoras que penetram a terra) para identificar estruturas geológicas que POSSAM conter óleo. Se os dados sísmicos são promissores, eles perfuram um wildcat well (poço exploratório de risco) para confirmar a presença de óleo e gás. Se bem-sucedido, estimam o tamanho da reserva usando cores e valores de teste.
                       </p>
@@ -235,31 +235,31 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <div className="border-l-4 border-blue-500 pl-4">
                         <p className="font-semibold">1. Seismic Survey Identifies Structures</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The seismic survey revealed a large anticlinal structure that could contain oil reserves beneath 2,000 meters of overburden."
                         </p>
                       </div>
                       <div className="border-l-4 border-cyan-500 pl-4">
                         <p className="font-semibold">2. Drilling Operations</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The drilling rig commenced operations on the Campos Basin well, targeting a depth of 3,500 meters with 9.5-inch casing."
                         </p>
                       </div>
                       <div className="border-l-4 border-green-500 pl-4">
                         <p className="font-semibold">3. Well Completion</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "After perforation and tubing installation, the well was tested for production capacity and flow rates."
                         </p>
                       </div>
                       <div className="border-l-4 border-amber-500 pl-4">
                         <p className="font-semibold">4. Platform Operations</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The offshore platform processed 50,000 bbl/d of crude oil, which was then transported via pipeline to the terminal."
                         </p>
                       </div>
                       <div className="border-l-4 border-purple-500 pl-4">
                         <p className="font-semibold">5. Reservoir Management</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The reservoir pressure declined over five years, requiring enhanced recovery techniques such as water injection to maintain extraction rates."
                         </p>
                       </div>
@@ -380,7 +380,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM1}
-              numero={1}
+              numero={3}
               onComplete={() => handleModuleComplete("modulo-1")}
             />
           </ModuleConsolidation>
@@ -401,7 +401,7 @@ export default function AulaVocabulary({
               titulo="Downstream: Transformando Óleo Cru em Produtos"
               />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Downstream operations começam quando o óleo cru sai do poço (ou é importado) e termina quando produtos finais (gasolina, diesel, querosene, óleo lubrificante, petroquímicos, asfalto) chegam ao consumidor final. Enquanto upstream é sobre ENCONTRAR e EXTRAIR o óleo, downstream é sobre REFINAR, TRANSFORMAR e DISTRIBUIR. A Petrobras tem operações significativas em ambas, mas a estratégia corporativa tem priorizado upstream (pré-sal) nos últimos 15 anos porque a margem de refino é mais baixa. Entender a cadeia downstream é essencial para compreender relatórios operacionais, planejamento de produção, e discussões sobre varejo de combustíveis.
               </p>
@@ -424,22 +424,22 @@ export default function AulaVocabulary({
 
               <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30 rounded-lg border border-orange-200 dark:border-orange-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Cadeia de Valor Downstream</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                   <div>
                     <div className="font-semibold text-orange-700 dark:text-orange-300">Refining</div>
-                    <div className="text-xs mt-1">Crude oil → Distillation → Fractions (gasoline, diesel, etc)</div>
+                    <div className="text-lg mt-1">Crude oil → Distillation → Fractions (gasoline, diesel, etc)</div>
                   </div>
                   <div>
                     <div className="font-semibold text-amber-700 dark:text-amber-300">Processing</div>
-                    <div className="text-xs mt-1">Additional treatment, blending, quality control</div>
+                    <div className="text-lg mt-1">Additional treatment, blending, quality control</div>
                   </div>
                   <div>
                     <div className="font-semibold text-yellow-700 dark:text-yellow-300">Storage & Transport</div>
-                    <div className="text-xs mt-1">Tanks, pipelines, trucks, ships to distribution centers</div>
+                    <div className="text-lg mt-1">Tanks, pipelines, trucks, ships to distribution centers</div>
                   </div>
                   <div>
                     <div className="font-semibold text-red-700 dark:text-red-300">Retail & Consumption</div>
-                    <div className="text-xs mt-1">Gas stations, industrial users, power plants</div>
+                    <div className="text-lg mt-1">Gas stations, industrial users, power plants</div>
                   </div>
                 </div>
               </div>
@@ -451,7 +451,7 @@ export default function AulaVocabulary({
                   titulo: "① Conceituação: Processos Downstream",
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-base leading-relaxed">
+                    <div className="space-y-4 text-lg leading-relaxed">
                       <p>
                         <strong>Distillation:</strong> O crude oil aquecido a ~350°C entra numa fractionating column (torre de destilação). Moléculas leves (gasolina) sobem para o topo e saem como vapor; moléculas pesadas (fuel oil) descem para o fundo. Cada fração tem nome: naphtha (matéria prima petroquímica), gasoline (gasolina), kerosene (querosene), gasoil (diesel), fuel oil (óleo combustível).
                       </p>
@@ -474,31 +474,31 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <div className="border-l-4 border-orange-500 pl-4">
                         <p className="font-semibold">1. Refinery Operations</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The Paulínia refinery processes 170,000 bbl/d of crude oil and produces gasoline, diesel, and fuel oil."
                         </p>
                       </div>
                       <div className="border-l-4 border-amber-500 pl-4">
                         <p className="font-semibold">2. Distillation Process</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "In the distillation unit, crude oil fractions are separated based on boiling point and sent to different processing streams."
                         </p>
                       </div>
                       <div className="border-l-4 border-yellow-500 pl-4">
                         <p className="font-semibold">3. Cracking & Conversion</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Catalytic cracking converts heavy molecules into lighter, more valuable products like gasoline and jet fuel."
                         </p>
                       </div>
                       <div className="border-l-4 border-red-500 pl-4">
                         <p className="font-semibold">4. Quality Control</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Desulfurization treatment reduces sulfur content in diesel to meet environmental standards."
                         </p>
                       </div>
                       <div className="border-l-4 border-pink-500 pl-4">
                         <p className="font-semibold">5. Distribution Network</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Finished gasoline is transported via pipeline to distribution terminals and then trucked to retail gas stations."
                         </p>
                       </div>
@@ -619,7 +619,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM2}
-              numero={1}
+              numero={3}
               onComplete={() => handleModuleComplete("modulo-2")}
             />
           </ModuleConsolidation>
@@ -640,7 +640,7 @@ export default function AulaVocabulary({
               titulo="Equipamentos: Construindo a Indústria"
               />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Equipamentos são o esqueleto da indústria de óleo e gás. Cada sistema de produção, refino ou transporte é construído com centenas de componentes especializados que devem funcionar de forma coordenada sob pressões extremas, temperaturas variáveis, e ambientes hostis (offshore, deserto, etc.). Um pequeno vazamento numa válvula pode parar operações inteiras, resultando em perdas de milhões de dólares por dia. Entender nomes, funções e especificações de equipamentos é CRÍTICO para compreender documentos técnicos, relatórios de manutenção, pedidos de compra (procurement) e discussões operacionais de engenharia. Este módulo apresenta os 4 tipos principais: valves (válvulas de controle), pumps (bombas de sucção e pressão), pipes (tubulações e conexões), e rigs (sondas de perfuração e equipamentos de poço).
               </p>
@@ -671,22 +671,22 @@ export default function AulaVocabulary({
 
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-lg border border-purple-200 dark:border-purple-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Equipamentos Principais e Funções</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                   <div>
                     <div className="font-semibold text-purple-700 dark:text-purple-300">Valve</div>
-                    <div className="text-xs mt-1">Controls, isolates, or relieves fluid flow. Types: ball, gate, check, relief, control.</div>
+                    <div className="text-lg mt-1">Controls, isolates, or relieves fluid flow. Types: ball, gate, check, relief, control.</div>
                   </div>
                   <div>
                     <div className="font-semibold text-pink-700 dark:text-pink-300">Pump</div>
-                    <div className="text-xs mt-1">Moves fluids by imparting kinetic energy. Types: centrifugal, positive displacement, submersible.</div>
+                    <div className="text-lg mt-1">Moves fluids by imparting kinetic energy. Types: centrifugal, positive displacement, submersible.</div>
                   </div>
                   <div>
                     <div className="font-semibold text-indigo-700 dark:text-indigo-300">Pipe</div>
-                    <div className="text-xs mt-1">Conveys fluid. Specs: diameter, wall thickness, material, pressure rating. Series = pipeline.</div>
+                    <div className="text-lg mt-1">Conveys fluid. Specs: diameter, wall thickness, material, pressure rating. Series = pipeline.</div>
                   </div>
                   <div>
                     <div className="font-semibold text-rose-700 dark:text-rose-300">Rig</div>
-                    <div className="text-xs mt-1">Drills wells. Types: onshore, offshore, rotary, percussion. Rental: US$1M+/day for mega-rigs.</div>
+                    <div className="text-lg mt-1">Drills wells. Types: onshore, offshore, rotary, percussion. Rental: US$1M+/day for mega-rigs.</div>
                   </div>
                 </div>
               </div>
@@ -698,7 +698,7 @@ export default function AulaVocabulary({
                   titulo: "① Conceituação: Tipos e Funções",
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-base leading-relaxed">
+                    <div className="space-y-4 text-lg leading-relaxed">
                       <p>
                         <strong>Valves — Flow Control:</strong> Ball valve (furo esférico, ON/OFF rápido), Gate valve (porta deslizante, isolamento), Check valve (fluxo unidirecional), Relief valve (proteção de sobrepressão), Control valve (regulação fina com atuador pneumático/elétrico).
                       </p>
@@ -721,31 +721,31 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <div className="border-l-4 border-purple-500 pl-4">
                         <p className="font-semibold">1. Valve Selection</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "A ball valve was installed at the wellhead for quick isolation, and a relief valve protects the line against overpressure."
                         </p>
                       </div>
                       <div className="border-l-4 border-pink-500 pl-4">
                         <p className="font-semibold">2. Pump Operation</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The centrifugal pump circulates cooling water at 500 GPM; a positive displacement pump handles the viscous crude oil transfer."
                         </p>
                       </div>
                       <div className="border-l-4 border-indigo-500 pl-4">
                         <p className="font-semibold">3. Pipe Specifications</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The main transmission line is 12-inch NPS carbon steel, Schedule 60, rated for 900 psi, with corrosion allowance included."
                         </p>
                       </div>
                       <div className="border-l-4 border-rose-500 pl-4">
                         <p className="font-semibold">4. Rig Operations</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The offshore rotary rig drilled 3,500 meters depth in 45 days at an operating cost of US$ 1.2 million per day."
                         </p>
                       </div>
                       <div className="border-l-4 border-violet-500 pl-4">
                         <p className="font-semibold">5. Integrated System</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The production platform uses ball valves for quick isolation, centrifugal pumps for export, and 12-inch pipelines to the terminal."
                         </p>
                       </div>
@@ -871,7 +871,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM3}
-              numero={1}
+              numero={3}
               onComplete={() => handleModuleComplete("modulo-3")}
             />
           </ModuleConsolidation>
@@ -892,7 +892,7 @@ export default function AulaVocabulary({
               titulo="HSE: Mais Que Compliance, É Cultura"
               />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 HSE (Health, Safety, Environment) é o pilar mais importante da cultura corporativa Petrobras. Não é apenas regulamentação — é sobrevivência. A indústria de óleo e gás carrega riscos inerentes: pressão alta, temperaturas extremas, produtos inflamáveis, gases tóxicos, ambientes isolados. Um pequeno erro pode causar explosão, vazamento, morte. Por isso Petrobras investe billions em HSE: treinamento obrigatório, auditorias regulares, cultura Zero Harm (zero acidentes).
               </p>
@@ -923,22 +923,22 @@ export default function AulaVocabulary({
 
               <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 rounded-lg border border-red-200 dark:border-red-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">HSE Framework</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                   <div>
                     <div className="font-semibold text-red-700 dark:text-red-300">Health</div>
-                    <div className="text-xs mt-1">Worker wellness, medical exams, occupational disease prevention</div>
+                    <div className="text-lg mt-1">Worker wellness, medical exams, occupational disease prevention</div>
                   </div>
                   <div>
                     <div className="font-semibold text-orange-700 dark:text-orange-300">Safety</div>
-                    <div className="text-xs mt-1">Accident prevention, incident investigation, hazard control, PPE, training</div>
+                    <div className="text-lg mt-1">Accident prevention, incident investigation, hazard control, PPE, training</div>
                   </div>
                   <div>
                     <div className="font-semibold text-yellow-700 dark:text-yellow-300">Environment</div>
-                    <div className="text-xs mt-1">Spill prevention, emissions control, waste management, restoration</div>
+                    <div className="text-lg mt-1">Spill prevention, emissions control, waste management, restoration</div>
                   </div>
                   <div>
                     <div className="font-semibold text-green-700 dark:text-green-300">Compliance</div>
-                    <div className="text-xs mt-1">Regulations, standards, audits, corrective actions, certifications</div>
+                    <div className="text-lg mt-1">Regulations, standards, audits, corrective actions, certifications</div>
                   </div>
                 </div>
               </div>
@@ -950,7 +950,7 @@ export default function AulaVocabulary({
                   titulo: "① Conceituação: PPE & Hazards",
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-base leading-relaxed">
+                    <div className="space-y-4 text-lg leading-relaxed">
                       <p>
                         <strong>PPE (Equipamento de Proteção Individual):</strong> Hard hat (capacete de segurança resistente a impacto), Safety glasses (proteção ocular contra particles/splashes), Gloves (nitrila, couro, composite específico para risco), Safety boots (com toe cap de aço, eletricamente isoladas se necessário), Respirator (N95, P100, ou SCBA para atmosfera perigosa), High-visibility vest (colete fluorescente), Harness/fall arrest equipment (para trabalho em altura). Cada operação prescreve PPE específico conforme risk assessment.
                       </p>
@@ -970,31 +970,31 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <div className="border-l-4 border-red-500 pl-4">
                         <p className="font-semibold">1. PPE Requirement</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "All workers entering the platform must wear hard hat, safety glasses, work boots, and high-visibility vest. Respirator required in the H2S zone."
                         </p>
                       </div>
                       <div className="border-l-4 border-orange-500 pl-4">
                         <p className="font-semibold">2. Hazard Identification</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The pre-startup safety review identified chemical hazard (pressurized H2S), thermal hazard (high-temperature piping), and mechanical hazard (rotating compressor)."
                         </p>
                       </div>
                       <div className="border-l-4 border-yellow-500 pl-4">
                         <p className="font-semibold">3. Incident Reporting</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "A near-miss occurred when a worker slipped but caught the railing. The incident was reported immediately, the floor was cleaned, and anti-slip tape was installed."
                         </p>
                       </div>
                       <div className="border-l-4 border-green-500 pl-4">
                         <p className="font-semibold">4. Compliance Audit</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The ISO 14001 audit found non-compliance in waste segregation. Corrective action was implemented: new waste bins and worker retraining completed within 30 days."
                         </p>
                       </div>
                       <div className="border-l-4 border-blue-500 pl-4">
                         <p className="font-semibold">5. Safety Training</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "All new hires complete mandatory HSE induction covering PPE, hazard recognition, emergency procedures, and incident reporting protocols."
                         </p>
                       </div>
@@ -1120,7 +1120,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM4}
-              numero={1}
+              numero={3}
               onComplete={() => handleModuleComplete("modulo-4")}
             />
           </ModuleConsolidation>
@@ -1141,7 +1141,7 @@ export default function AulaVocabulary({
               titulo="Business & Finance: O Lado Econômico"
               />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Petrobras é uma empresa de capital intensivo — projetos de bilhões de dólares que levam 5-10 anos para retorno sobre investimento. Entender linguagem financeira é crítico para compreender decisões estratégicas. Um projeto pode ser tecnicamente bom mas economicamente inviável se o price do Brent (benchmark internacional) cair. Ou um CAPEX (investimento inicial) gigante pode ser justificado se OPEX (custos diários) forem baixos e o poço produzir por 30 anos.
               </p>
@@ -1172,22 +1172,22 @@ export default function AulaVocabulary({
 
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-lg border border-green-200 dark:border-green-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Economic Framework</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                   <div>
                     <div className="font-semibold text-green-700 dark:text-green-300">Brent Price</div>
-                    <div className="text-xs mt-1">International oil benchmark, USD/barrel, sets revenue potential</div>
+                    <div className="text-lg mt-1">International oil benchmark, USD/barrel, sets revenue potential</div>
                   </div>
                   <div>
                     <div className="font-semibold text-emerald-700 dark:text-emerald-300">CAPEX</div>
-                    <div className="text-xs mt-1">Capital investments in assets, amortized over decades</div>
+                    <div className="text-lg mt-1">Capital investments in assets, amortized over decades</div>
                   </div>
                   <div>
                     <div className="font-semibold text-teal-700 dark:text-teal-300">OPEX</div>
-                    <div className="text-xs mt-1">Operating costs, daily expenses, impact on profitability</div>
+                    <div className="text-lg mt-1">Operating costs, daily expenses, impact on profitability</div>
                   </div>
                   <div>
                     <div className="font-semibold text-cyan-700 dark:text-cyan-300">Stakeholders</div>
-                    <div className="text-xs mt-1">Shareholders, employees, governments, communities, suppliers</div>
+                    <div className="text-lg mt-1">Shareholders, employees, governments, communities, suppliers</div>
                   </div>
                 </div>
               </div>
@@ -1199,7 +1199,7 @@ export default function AulaVocabulary({
                   titulo: "① Conceituação: Economia do Petróleo",
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-base leading-relaxed">
+                    <div className="space-y-4 text-lg leading-relaxed">
                       <p>
                         <strong>Brent Crude Oil:</strong> Benchmark internacional que determina preço de venda. Publicado diariamente, flutuante, afetado por: oferta global, demanda (crescimento econômico), geopolítica (guerras, embargo, OPEC decisions). 2008: Brent atingiu US$ 147/bbl (pico histórico). 2020: Caiu para US$ 15/bbl (pandemia). 2022-2023: US$ 70-100/bbl (volatilidade pós-Ucrânia). Petrobras recomendou projetos pressupondo Brent = US$ 50-60/bbl "para segurança".
                       </p>
@@ -1222,31 +1222,31 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <div className="border-l-4 border-green-500 pl-4">
                         <p className="font-semibold">1. Brent Impact on Revenue</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "When Brent crude fell from $120/bbl to $60/bbl, Petrobras revenue dropped 50%, forcing postponement of several CAPEX projects."
                         </p>
                       </div>
                       <div className="border-l-4 border-emerald-500 pl-4">
                         <p className="font-semibold">2. CAPEX Investment</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The pre-sal development project required a CAPEX of $8 billion for platform, wells, and infrastructure, with payback period of 7 years at current production levels."
                         </p>
                       </div>
                       <div className="border-l-4 border-teal-500 pl-4">
                         <p className="font-semibold">3. OPEX Management</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "By automating platform operations and reducing crew size, the unit OPEX decreased from $25/bbl to $18/bbl, improving project economics."
                         </p>
                       </div>
                       <div className="border-l-4 border-cyan-500 pl-4">
                         <p className="font-semibold">4. Stakeholder Conflict</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The government wanted higher royalty (20% vs 12.5%), community demanded local hiring, shareholders demanded cost cuts. Management negotiated compromise."
                         </p>
                       </div>
                       <div className="border-l-4 border-blue-500 pl-4">
                         <p className="font-semibold">5. Project Viability</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The marginal field was viable at $80/bbl Brent but became uneconomical at $50/bbl. The break-even price was calculated at $72/bbl."
                         </p>
                       </div>
@@ -1372,7 +1372,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM5}
-              numero={1}
+              numero={3}
               onComplete={() => handleModuleComplete("modulo-5")}
             />
           </ModuleConsolidation>
@@ -1393,7 +1393,7 @@ export default function AulaVocabulary({
               titulo="Environmental: A Transição Energética"
               />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 ESG (Environmental, Social, Governance) é o framework que define sustentabilidade corporativa. Institucional investors (fundos de pensão, seguros) agora exigem ESG compliance antes de investir bilhões. Petrobras tem meta Net-Zero Upstream 2030 e Net-Zero Scope 1+2 por 2050. Mas como uma oil company chega a net-zero enquanto produz bilhões de barris? Resposta: investimento em renewable energy (eólica, solar), carbon capture (captura de CO2 e injeção no solo), e transição gradual.
               </p>
@@ -1424,22 +1424,22 @@ export default function AulaVocabulary({
 
               <div className="bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-950/30 dark:to-teal-950/30 rounded-lg border border-green-200 dark:border-green-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">ESG Framework</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                   <div>
                     <div className="font-semibold text-green-700 dark:text-green-300">Environmental</div>
-                    <div className="text-xs mt-1">Carbon footprint, emissions, renewable energy, net-zero targets</div>
+                    <div className="text-lg mt-1">Carbon footprint, emissions, renewable energy, net-zero targets</div>
                   </div>
                   <div>
                     <div className="font-semibold text-teal-700 dark:text-teal-300">Social</div>
-                    <div className="text-xs mt-1">Community impact, employee welfare, diversity, human rights</div>
+                    <div className="text-lg mt-1">Community impact, employee welfare, diversity, human rights</div>
                   </div>
                   <div>
                     <div className="font-semibold text-cyan-700 dark:text-cyan-300">Governance</div>
-                    <div className="text-xs mt-1">Board oversight, ethics, transparency, anti-corruption</div>
+                    <div className="text-lg mt-1">Board oversight, ethics, transparency, anti-corruption</div>
                   </div>
                   <div>
                     <div className="font-semibold text-blue-700 dark:text-blue-300">Stakeholder Value</div>
-                    <div className="text-xs mt-1">Balanced returns to shareholders with responsible practices</div>
+                    <div className="text-lg mt-1">Balanced returns to shareholders with responsible practices</div>
                   </div>
                 </div>
               </div>
@@ -1451,7 +1451,7 @@ export default function AulaVocabulary({
                   titulo: "① Conceituação: Carbon & ESG",
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-base leading-relaxed">
+                    <div className="space-y-4 text-lg leading-relaxed">
                       <p>
                         <strong>Carbon Footprint &amp; Scopes:</strong> Scope 1 = emissões DIRETAS da operação (ex: queimadores na plataforma). Scope 2 = emissões INDIRETAS de eletricidade comprada (se eletricidade vem de carvão, tem footprint). Scope 3 = emissões da cadeia de valor (o maior número para oil company: quando o cliente QUEIMA o combustível vendido). Para oil company, Scope 3 &gt;&gt; Scope 1+2.
                       </p>
@@ -1471,31 +1471,31 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <div className="border-l-4 border-green-500 pl-4">
                         <p className="font-semibold">1. Carbon Footprint Reduction</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "By installing solar panels on the platform, Petrobras reduced Scope 2 emissions by 30% and energy costs by US$ 5M annually."
                         </p>
                       </div>
                       <div className="border-l-4 border-teal-500 pl-4">
                         <p className="font-semibold">2. ESG Target Setting</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Petrobras committed to net-zero Scope 1+2 emissions by 2050 and 25% reduction by 2030, aligning with Paris Agreement goals."
                         </p>
                       </div>
                       <div className="border-l-4 border-cyan-500 pl-4">
                         <p className="font-semibold">3. Carbon Capture Project</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "A CCS project captures 1 million tCO2/year from the refinery and injects it 2,000m deep for permanent storage, offsetting operational emissions."
                         </p>
                       </div>
                       <div className="border-l-4 border-blue-500 pl-4">
                         <p className="font-semibold">4. ESG Reporting</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Petrobras publishes annual Sustainability Report with GRI-verified carbon intensity, renewable energy %, and diversity metrics."
                         </p>
                       </div>
                       <div className="border-l-4 border-indigo-500 pl-4">
                         <p className="font-semibold">5. Investor Influence</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Institutional investors (BlackRock, Vanguard) increasingly vote for ESG compliance; poor ESG leads to lower stock valuations and higher cost of capital."
                         </p>
                       </div>
@@ -1621,7 +1621,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM6}
-              numero={1}
+              numero={3}
               onComplete={() => handleModuleComplete("modulo-6")}
             />
           </ModuleConsolidation>
@@ -1642,7 +1642,7 @@ export default function AulaVocabulary({
               titulo="Project Management: Acompanhando o Progresso"
               />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Projetos em Petrobras são gigantescos: bilhões de dólares, 5-10 anos, milhares de pessoas. Gerenciar tudo requer framework de KPIs (métricas de sucesso), milestones (pontos de verificação), scope (o que está incluído), e deliverables (o que será entregue). Um projeto sem KPI é como navegar sem bússola — você não sabe se está indo bem. Um projeto sem milestones é caótico — ninguém sabe o que vem próximo. Vocabulário de gestão é testado porque entrevistadores querem candidatos que entendem planejamento.
               </p>
@@ -1673,22 +1673,22 @@ export default function AulaVocabulary({
 
               <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Project Framework</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                   <div>
                     <div className="font-semibold text-blue-700 dark:text-blue-300">KPI</div>
-                    <div className="text-xs mt-1">Metric of success: time, cost, safety, performance. Must be specific, measurable.</div>
+                    <div className="text-lg mt-1">Metric of success: time, cost, safety, performance. Must be specific, measurable.</div>
                   </div>
                   <div>
                     <div className="font-semibold text-purple-700 dark:text-purple-300">Milestone</div>
-                    <div className="text-xs mt-1">Key checkpoint in schedule. Date-specific, binary (done or not).</div>
+                    <div className="text-lg mt-1">Key checkpoint in schedule. Date-specific, binary (done or not).</div>
                   </div>
                   <div>
                     <div className="font-semibold text-indigo-700 dark:text-indigo-300">Scope</div>
-                    <div className="text-xs mt-1">Definition of what's included. Formal change control for additions.</div>
+                    <div className="text-lg mt-1">Definition of what's included. Formal change control for additions.</div>
                   </div>
                   <div>
                     <div className="font-semibold text-pink-700 dark:text-pink-300">Deliverable</div>
-                    <div className="text-xs mt-1">Tangible output: documents, infrastructure, services, capacity. Must meet acceptance criteria.</div>
+                    <div className="text-lg mt-1">Tangible output: documents, infrastructure, services, capacity. Must meet acceptance criteria.</div>
                   </div>
                 </div>
               </div>
@@ -1700,7 +1700,7 @@ export default function AulaVocabulary({
                   titulo: "① Conceituação: Project Governance",
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-base leading-relaxed">
+                    <div className="space-y-4 text-lg leading-relaxed">
                       <p>
                         <strong>KPI Definition:</strong> Cada KPI deve ter: Owner (quem é responsável), Target (número específico), Baseline (onde estamos agora), Timeline (quando será medido). Exemplo KPI: "Complete first oil production by Q4 2025 (vs baseline Q1 2026)". Se você completa em Jul 2025, você está "ahead of schedule". Se completa em Dez 2026, está "behind schedule".
                       </p>
@@ -1723,31 +1723,31 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <div className="border-l-4 border-blue-500 pl-4">
                         <p className="font-semibold">1. KPI Tracking</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Project KPIs: (1) Schedule: Complete first oil by Q4 2025, (2) Cost: Deliver within $2B ±5%, (3) Safety: Zero LTI, (4) Quality: 100% inspection compliance."
                         </p>
                       </div>
                       <div className="border-l-4 border-purple-500 pl-4">
                         <p className="font-semibold">2. Milestone Delay</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "The platform installation milestone (originally Q2 2024) was delayed to Q3 due to weather. This cascaded to push first oil from Q4 2025 to Q1 2026."
                         </p>
                       </div>
                       <div className="border-l-4 border-indigo-500 pl-4">
                         <p className="font-semibold">3. Scope Change</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "A change request proposed adding water treatment to scope. PMO evaluated: +$50M cost, +6 months schedule. Approved by steering committee on Nov 2023."
                         </p>
                       </div>
                       <div className="border-l-4 border-pink-500 pl-4">
                         <p className="font-semibold">4. Deliverable Rejection</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Pipeline inspections found 3 critical welds that didn't meet specifications. Deliverable was rejected; contractor reworked and resubmitted."
                         </p>
                       </div>
                       <div className="border-l-4 border-indigo-600 pl-4">
                         <p className="font-semibold">5. Cost Control</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Monthly cost tracking shows project is tracking 8% over budget YTD. If trend continues, expect final cost overrun of $160M. Mitigation strategies implemented."
                         </p>
                       </div>
@@ -1873,7 +1873,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM7}
-              numero={1}
+              numero={3}
               onComplete={() => handleModuleComplete("modulo-7")}
             />
           </ModuleConsolidation>
@@ -1894,7 +1894,7 @@ export default function AulaVocabulary({
               titulo="Procurement: Gerenciando a Cadeia de Suprimento"
               />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Procurement representa 40-50% dos custos totais de um projeto Petrobras. Para um projeto de US$ 2 bilhões, US$ 800M+ vão para compras de equipamento, contratação de serviços, construção. O processo é rigidamente formal: transparência, competição, compliance. Qualquer desvio resulta em investigação, multas, execução ou desempenho contratual. Este módulo apresenta vocabulário crítico: tender (licitação), bid (proposta), contract (contrato), liability (responsabilidade legal).
               </p>
@@ -1925,22 +1925,22 @@ export default function AulaVocabulary({
 
               <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Procurement Cycle</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                   <div>
                     <div className="font-semibold text-amber-700 dark:text-amber-300">Tender Publication</div>
-                    <div className="text-xs mt-1">Formal RFQ/RFP with specs, terms, timeline, qualification requirements</div>
+                    <div className="text-lg mt-1">Formal RFQ/RFP with specs, terms, timeline, qualification requirements</div>
                   </div>
                   <div>
                     <div className="font-semibold text-orange-700 dark:text-orange-300">Bid Submission</div>
-                    <div className="text-xs mt-1">Vendors submit proposals: price, schedule, methodology, qualifications</div>
+                    <div className="text-lg mt-1">Vendors submit proposals: price, schedule, methodology, qualifications</div>
                   </div>
                   <div>
                     <div className="font-semibold text-yellow-700 dark:text-yellow-300">Evaluation & Award</div>
-                    <div className="text-xs mt-1">Technical + commercial assessment. Winner announced; losers can protest.</div>
+                    <div className="text-lg mt-1">Technical + commercial assessment. Winner announced; losers can protest.</div>
                   </div>
                   <div>
                     <div className="font-semibold text-red-700 dark:text-red-300">Contract & Execution</div>
-                    <div className="text-xs mt-1">Contract signed. Work begins. Liability, penalties, insurance defined.</div>
+                    <div className="text-lg mt-1">Contract signed. Work begins. Liability, penalties, insurance defined.</div>
                   </div>
                 </div>
               </div>
@@ -1952,7 +1952,7 @@ export default function AulaVocabulary({
                   titulo: "① Conceituação: Procurement Process",
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-base leading-relaxed">
+                    <div className="space-y-4 text-lg leading-relaxed">
                       <p>
                         <strong>Tender Documents:</strong> Publicação formal que define: RFQ (Request for Quotation — simples) ou RFP (Request for Proposal — complexo). Inclui: Scope of work (o quê exatamente), Schedule (cronograma esperado), Site conditions (onde será, que desafios tem), Qualification requirements (que experiência você precisa ter), Commercial terms (pagamento, currency, insurance), Evaluation criteria (técnico 60%, comercial 40%, exemplo). Deadline para bid submission — depois disso, não aceita mais.
                       </p>
@@ -1975,31 +1975,31 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <div className="border-l-4 border-amber-500 pl-4">
                         <p className="font-semibold">1. Tender Publication</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Tender for platform jacket fabrication published: Scope=design+FAB+ship, Schedule=24 months, Price ceiling=$200M, Bid deadline=60 days."
                         </p>
                       </div>
                       <div className="border-l-4 border-orange-500 pl-4">
                         <p className="font-semibold">2. Competitive Bidding</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Three vendors submitted bids: Vendor A=$180M (delayed schedule +3 months), Vendor B=$210M (on time, proven), Vendor C=$150M (unqualified). Vendor B selected."
                         </p>
                       </div>
                       <div className="border-l-4 border-yellow-500 pl-4">
                         <p className="font-semibold">3. Contract Negotiation</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Contract finalized: Lump sum $210M, schedule 24 months, warranty 12 months, penalty 0.5%/week (max 10%), liability split $20M Petrobras/$190M Contractor."
                         </p>
                       </div>
                       <div className="border-l-4 border-red-500 pl-4">
                         <p className="font-semibold">4. Performance Issue</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Contractor missed fabrication milestone by 8 weeks. Penalty applied: 0.5% × 8 weeks = 4% of contract = $8.4M deducted from payment."
                         </p>
                       </div>
                       <div className="border-l-4 border-pink-500 pl-4">
                         <p className="font-semibold">5. Change Order</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Client requested design change mid-fabrication. Contractor submitted change order: +$5M cost, +6 weeks schedule. Petrobras approved; contract amended."
                         </p>
                       </div>
@@ -2125,7 +2125,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM8}
-              numero={1}
+              numero={3}
               onComplete={() => handleModuleComplete("modulo-8")}
             />
           </ModuleConsolidation>
@@ -2146,7 +2146,7 @@ export default function AulaVocabulary({
               titulo="Integrando Tudo: Vocabulary in Real Business Scenarios"
               />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Agora que você domina os 8 domínios técnicos, é hora de integrar tudo em cenários realistas. CESGRANRIO não testa "defina CAPEX" em contexto vazio. Em vez disso, apresenta parágrafos longos (150-300 palavras) misturando vocabulário de múltiplos domínios e exigindo que você reconheça significados por contexto. Este módulo apresenta 4 tipos de documentos reais (contraído para proteção de propriedade intelectual) que você encontrará:
               </p>
@@ -2181,22 +2181,22 @@ export default function AulaVocabulary({
 
               <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/30 dark:to-blue-950/30 rounded-lg border border-indigo-200 dark:border-indigo-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Tipos de Documentos Petrobras</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                   <div>
                     <div className="font-semibold text-indigo-700 dark:text-indigo-300">Operational Report</div>
-                    <div className="text-xs mt-1">Daily/weekly production status, incidents, compliance, equipment performance</div>
+                    <div className="text-lg mt-1">Daily/weekly production status, incidents, compliance, equipment performance</div>
                   </div>
                   <div>
                     <div className="font-semibold text-blue-700 dark:text-blue-300">Project Proposal</div>
-                    <div className="text-xs mt-1">Business case with technical, financial, environmental, management aspects</div>
+                    <div className="text-lg mt-1">Business case with technical, financial, environmental, management aspects</div>
                   </div>
                   <div>
                     <div className="font-semibold text-cyan-700 dark:text-cyan-300">Safety Bulletin</div>
-                    <div className="text-xs mt-1">Incident description, hazard analysis, corrective actions, training implications</div>
+                    <div className="text-lg mt-1">Incident description, hazard analysis, corrective actions, training implications</div>
                   </div>
                   <div>
                     <div className="font-semibold text-purple-700 dark:text-purple-300">Bid/Contract</div>
-                    <div className="text-xs mt-1">Proposal with technical specs, commercial terms, HSE commitments</div>
+                    <div className="text-lg mt-1">Proposal with technical specs, commercial terms, HSE commitments</div>
                   </div>
                 </div>
               </div>
@@ -2208,7 +2208,7 @@ export default function AulaVocabulary({
                   titulo: "① Conceituação: Integração de Domínios",
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
-                    <div className="space-y-4 text-base leading-relaxed">
+                    <div className="space-y-4 text-lg leading-relaxed">
                       <p>
                         <strong>Scenario 1 — Project Viability Assessment:</strong> "Our upstream team discovered a major field in the pre-sal with estimated 500 million barrels. To maximize efficiency and minimize carbon footprint, we will deploy new drilling rigs with advanced safety features (PPE, hazard controls, incident management). The project requires CAPEX $8 billion (platform, wells, pipeline) with OPEX $18/bbl. At Brent assumption $70/bbl, net margin $52/bbl generates NPV $15 billion over 20 years. We will release a competitive tender for jacket fabrication (specifications in RFP). All work must meet ISO 14001 environmental compliance, OHSAS 18001 safety standards, and net-zero scope 1+2 emissions target. Milestones: permitting Q1 2024, FID Q2 2024, drilling start Q4 2024, first oil Q4 2026."
                       </p>
@@ -2231,31 +2231,31 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <div className="border-l-4 border-indigo-500 pl-4">
                         <p className="font-semibold">1. Daily Operations Report</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Production 95,000 bbl/d on schedule. Platform pressure nominal, all valves operating within spec. One near-miss (worker trip hazard); SOP review conducted. Cathodic protection system maintenance ongoing. No spills or environmental incidents. All personnel trained in HSE compliance. Equipment inspection 100% complete, no defects. Onshore pipeline transport to refinery nominal."
                         </p>
                       </div>
                       <div className="border-l-4 border-blue-500 pl-4">
                         <p className="font-semibold">2. Project Approval Memo</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Development Plan approved: CAPEX $3.2B, OPEX $22/bbl, payback 6.5 years at Brent $65/bbl. Drilling to commence with 2 offshore rotary rigs. Platform design incorporates renewable energy (solar panels). Scope: drill 30 wells, install production topsides, 150-km pipeline to terminal. Milestones: drilling start Mar 2024, first oil Jan 2026. Tender for drilling services and jacket will open Q4 2023. Risk: Brent price below $60 makes project economically marginal."
                         </p>
                       </div>
                       <div className="border-l-4 border-cyan-500 pl-4">
                         <p className="font-semibold">3. Safety Alert</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "ALERT: H2S hazard detected in Sector B wellhead. All personnel must wear respirators (Class D PPE requirement). Site-wide incident investigation initiated. Corrective action: install additional sensors and emergency venting system (equipment change). Work order issued; estimated completion 5 days. Zero LTI target strictly maintained. Compliance: OHSAS 18001 audit scheduled."
                         </p>
                       </div>
                       <div className="border-l-4 border-purple-500 pl-4">
                         <p className="font-semibold">4. Tender Evaluation Summary</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Three bids received for jacket fabrication RFP. Vendor A: $195M, 26-month schedule, proven record. Vendor B: $180M, delayed +4 weeks, unproven. Vendor C: $220M, on-time, superior quality. Evaluation committee recommends Vendor A: technically sound, commercial competitive, liability split favorable (Contractor &lt;$15M). Change order risk identified if client adds scope mid-fabrication; cost impact will be tracked."
                         </p>
                       </div>
                       <div className="border-l-4 border-pink-500 pl-4">
                         <p className="font-semibold">5. Sustainability Commitment</p>
-                        <p className="text-sm text-foreground/80 mt-1">
+                        <p className="text-lg text-foreground/80 mt-1">
                           "Our ESG strategy targets net-zero Scope 1+2 by 2050 and 25% carbon footprint reduction by 2030. Platform will use solar + wind renewable energy, reducing Scope 2 emissions 40%. Carbon capture project will sequester 500,000 tCO2/year. Investments in sustainable procurement: all equipment suppliers must meet ESG standards. Workforce diversity target: 40% women by 2030."
                         </p>
                       </div>
@@ -2326,38 +2326,38 @@ export default function AulaVocabulary({
 
             <div className="space-y-4">
               <h4 className="font-bold text-lg">Tabela de Referência: 200+ Termos por Domínio</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm mt-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg mt-4">
                 <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4">
                   <h5 className="font-semibold text-blue-700 dark:text-blue-300 mb-2">Upstream (M1)</h5>
-                  <div className="text-xs space-y-1">Exploration, seismic survey, wildcat well, drilling, rig, borehole, casing, tubing, wellhead, perforation, reservoir, crude oil, extraction, production platform, offshore, onshore, bbl/d</div>
+                  <div className="text-lg space-y-1">Exploration, seismic survey, wildcat well, drilling, rig, borehole, casing, tubing, wellhead, perforation, reservoir, crude oil, extraction, production platform, offshore, onshore, bbl/d</div>
                 </div>
                 <div className="bg-orange-50 dark:bg-orange-950/20 rounded-lg p-4">
                   <h5 className="font-semibold text-orange-700 dark:text-orange-300 mb-2">Downstream (M2)</h5>
-                  <div className="text-xs space-y-1">Refinery, refining, distillation, crude oil fraction, gasoline, diesel, jet fuel, fuel oil, lubricant, petrochemical, cracking, processing, desulfurization, distribution terminal, retail</div>
+                  <div className="text-lg space-y-1">Refinery, refining, distillation, crude oil fraction, gasoline, diesel, jet fuel, fuel oil, lubricant, petrochemical, cracking, processing, desulfurization, distribution terminal, retail</div>
                 </div>
                 <div className="bg-purple-50 dark:bg-purple-950/20 rounded-lg p-4">
                   <h5 className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Equipment (M3)</h5>
-                  <div className="text-xs space-y-1">Valve (ball, gate, check, relief, control), pump (centrifugal, positive displacement), pipe, pipeline, flange, compressor, turbine, motor, capacity, pressure rating, flow rate (GPM, bbl/d)</div>
+                  <div className="text-lg space-y-1">Valve (ball, gate, check, relief, control), pump (centrifugal, positive displacement), pipe, pipeline, flange, compressor, turbine, motor, capacity, pressure rating, flow rate (GPM, bbl/d)</div>
                 </div>
                 <div className="bg-red-50 dark:bg-red-950/20 rounded-lg p-4">
                   <h5 className="font-semibold text-red-700 dark:text-red-300 mb-2">HSE (M4)</h5>
-                  <div className="text-xs space-y-1">PPE, hard hat, gloves, respirator, harness, hazard, chemical, thermal, mechanical, incident, accident, near-miss, injury, spill, SOP, compliance, audit, KPI (zero LTI)</div>
+                  <div className="text-lg space-y-1">PPE, hard hat, gloves, respirator, harness, hazard, chemical, thermal, mechanical, incident, accident, near-miss, injury, spill, SOP, compliance, audit, KPI (zero LTI)</div>
                 </div>
                 <div className="bg-green-50 dark:bg-green-950/20 rounded-lg p-4">
                   <h5 className="font-semibold text-green-700 dark:text-green-300 mb-2">Financial (M5)</h5>
-                  <div className="text-xs space-y-1">Brent crude, WTI, barrel ($USD), price, revenue, CAPEX (capital expenditure), OPEX (operating expense), break-even, NPV, stakeholder, shareholder, dividend, margin</div>
+                  <div className="text-lg space-y-1">Brent crude, WTI, barrel ($USD), price, revenue, CAPEX (capital expenditure), OPEX (operating expense), break-even, NPV, stakeholder, shareholder, dividend, margin</div>
                 </div>
                 <div className="bg-teal-50 dark:bg-teal-950/20 rounded-lg p-4">
                   <h5 className="font-semibold text-teal-700 dark:text-teal-300 mb-2">Environmental (M6)</h5>
-                  <div className="text-xs space-y-1">Carbon footprint, tCO2e, emissions, GHG, Scope 1/2/3, net-zero, ESG, carbon capture & storage (CCS), renewable energy, solar, wind, just transition, circular economy</div>
+                  <div className="text-lg space-y-1">Carbon footprint, tCO2e, emissions, GHG, Scope 1/2/3, net-zero, ESG, carbon capture & storage (CCS), renewable energy, solar, wind, just transition, circular economy</div>
                 </div>
                 <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4">
                   <h5 className="font-semibold text-blue-700 dark:text-blue-300 mb-2">Management (M7)</h5>
-                  <div className="text-xs space-y-1">KPI, milestone, scope, deliverable, acceptance criteria, schedule, critical path, Gantt chart, change order, scope creep, project manager, PMO, sponsor, stakeholder</div>
+                  <div className="text-lg space-y-1">KPI, milestone, scope, deliverable, acceptance criteria, schedule, critical path, Gantt chart, change order, scope creep, project manager, PMO, sponsor, stakeholder</div>
                 </div>
                 <div className="bg-amber-50 dark:bg-amber-950/20 rounded-lg p-4">
                   <h5 className="font-semibold text-amber-700 dark:text-amber-300 mb-2">Procurement (M8)</h5>
-                  <div className="text-xs space-y-1">Tender, RFQ, RFP, bid, proposal, contract, lump sum, cost-plus, liability, penalty, warranty, change order, supplier, vendor, evaluation, award</div>
+                  <div className="text-lg space-y-1">Tender, RFQ, RFP, bid, proposal, contract, lump sum, cost-plus, liability, penalty, warranty, change order, supplier, vendor, evaluation, award</div>
                 </div>
               </div>
             </div>
@@ -2381,7 +2381,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizM9}
-              numero={1}
+              numero={3}
               onComplete={() => handleModuleComplete("modulo-9")}
             />
           </ModuleConsolidation>
@@ -2402,7 +2402,7 @@ export default function AulaVocabulary({
               titulo="Simulado Mestre: Você Domina Vocabulário Técnico!"
               />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Parabéns! Você completou 8 módulos com 200+ termos técnicos Petrobras em contexto real. Agora é hora do teste final: simulado com questões estilo CESGRANRIO que misturam domínios, exigem interpretação contextual, e testam se você pode deduzir significado mesmo quando encontra termos desconhecidos. Este módulo apresenta a estratégia final em 8 passos + quiz de consolidação com 8 questões sorteadas de todas as categorias.
               </p>
@@ -2492,39 +2492,39 @@ export default function AulaVocabulary({
               <div className="space-y-3">
                 <div className="flex gap-3 items-start">
                   <div className="text-lg">✓</div>
-                  <div className="text-sm">Você reconhece 30+ termos upstream (exploration, drilling, reservoir, platform, bbl/d) em contexto?</div>
+                  <div className="text-lg">Você reconhece 30+ termos upstream (exploration, drilling, reservoir, platform, bbl/d) em contexto?</div>
                 </div>
                 <div className="flex gap-3 items-start">
                   <div className="text-lg">✓</div>
-                  <div className="text-sm">Você diferencia downstream (refining, distillation, cracking, petrochemical) de upstream?</div>
+                  <div className="text-lg">Você diferencia downstream (refining, distillation, cracking, petrochemical) de upstream?</div>
                 </div>
                 <div className="flex gap-3 items-start">
                   <div className="text-lg">✓</div>
-                  <div className="text-sm">Você sabe que valve CONTROLA e pump MOVE fluido — equipamentos diferentes?</div>
+                  <div className="text-lg">Você sabe que valve CONTROLA e pump MOVE fluido — equipamentos diferentes?</div>
                 </div>
                 <div className="flex gap-3 items-start">
                   <div className="text-lg">✓</div>
-                  <div className="text-sm">Você compreende HSE prioridade = zero accidents, PPE não-negociável, incident reporting obrigatório?</div>
+                  <div className="text-lg">Você compreende HSE prioridade = zero accidents, PPE não-negociável, incident reporting obrigatório?</div>
                 </div>
                 <div className="flex gap-3 items-start">
                   <div className="text-lg">✓</div>
-                  <div className="text-sm">Você diferencia CAPEX (investimento inicial) de OPEX (custos diários) e entende break-even?</div>
+                  <div className="text-lg">Você diferencia CAPEX (investimento inicial) de OPEX (custos diários) e entende break-even?</div>
                 </div>
                 <div className="flex gap-3 items-start">
                   <div className="text-lg">✓</div>
-                  <div className="text-sm">Você reconhece ESG/net-zero não é zero absoluto — é redução + carbon removal?</div>
+                  <div className="text-lg">Você reconhece ESG/net-zero não é zero absoluto — é redução + carbon removal?</div>
                 </div>
                 <div className="flex gap-3 items-start">
                   <div className="text-lg">✓</div>
-                  <div className="text-sm">Você sabe que KPI, milestone, scope são coordenadas de projeto e colocações importam?</div>
+                  <div className="text-lg">Você sabe que KPI, milestone, scope são coordenadas de projeto e colocações importam?</div>
                 </div>
                 <div className="flex gap-3 items-start">
                   <div className="text-lg">✓</div>
-                  <div className="text-sm">Você diferencia tender (publicação) de bid (resposta) de contract (acordo vinculante)?</div>
+                  <div className="text-lg">Você diferencia tender (publicação) de bid (resposta) de contract (acordo vinculante)?</div>
                 </div>
                 <div className="flex gap-3 items-start">
                   <div className="text-lg">✓</div>
-                  <div className="text-sm">Você consegue ler parágrafo de 200 palavras misturando 3-4 domínios e reconhecer significados por contexto?</div>
+                  <div className="text-lg">Você consegue ler parágrafo de 200 palavras misturando 3-4 domínios e reconhecer significados por contexto?</div>
                 </div>
               </div>
             </div>
@@ -2534,7 +2534,7 @@ export default function AulaVocabulary({
                 <LuCircleCheck className="w-5 h-5 text-emerald-600" />
                 🏆 Você Domina Vocabulário Técnico Petrobras!
               </h4>
-              <p className="text-sm leading-relaxed">
+              <p className="text-lg leading-relaxed">
                 Este é o top 30-40% do conteúdo de Inglês CESGRANRIO. Você aprendeu 200+ termos em 8 domínios críticos: Upstream, Downstream, Equipamentos, Segurança, Financeiro, Ambiental, Gestão e Procurement. Mais importante: você entende NÃO só definições, mas CONTEXTO — como estes termos se usam em cenários reais Petrobras. CESGRANRIO testará sua capacidade de ler parágrafos longos, reconhecer vocabulário por padrão, e deduzir significado mesmo com termos desconhecidos. Este módulo final consolida essa habilidade.
               </p>
             </div>
@@ -2558,7 +2558,7 @@ export default function AulaVocabulary({
           >
             <QuizInterativo
               questoes={quizFinal}
-              numero={1}
+              numero={3}
               onComplete={() => {
                 handleModuleComplete("modulo-10");
                 onComplete?.();

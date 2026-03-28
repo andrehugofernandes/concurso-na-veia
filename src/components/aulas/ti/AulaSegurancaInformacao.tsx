@@ -212,7 +212,7 @@ export default function AulaSegurancaInformacao({
           <section id="quiz-modulo-2">
             <QuizInterativo
               questoes={quizM2}
-              titulo="Mestre das Cifras"
+              titulo="QUIZ: Módulo Nº 2"
               variant={mv[2]}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -299,7 +299,7 @@ export default function AulaSegurancaInformacao({
           <section id="quiz-modulo-4">
             <QuizInterativo
               questoes={quizM4}
-              titulo="Certificação Digital Expert"
+              titulo="QUIZ: Módulo Nº 4"
               variant={mv[4]}
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -387,7 +387,7 @@ export default function AulaSegurancaInformacao({
           <section id="quiz-modulo-6">
             <QuizInterativo
               questoes={quizM6}
-              titulo="Analista de SOC"
+              titulo="QUIZ: Módulo Nº 6"
               variant={mv[6]}
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -526,11 +526,11 @@ export default function AulaSegurancaInformacao({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="p-6 bg-slate-900 rounded-xl border border-border">
                     <h5 className="font-bold mb-2">Fundamentos da LGPD</h5>
-                    <p className="text-sm text-slate-400">Privacidade by Design, Transparência, Consentimento e Finalidade.</p>
+                    <p className="text-lg text-slate-400">Privacidade by Design, Transparência, Consentimento e Finalidade.</p>
                 </div>
                 <div className="p-6 bg-slate-900 rounded-xl border border-border">
                     <h5 className="font-bold mb-2">Atores da Lei</h5>
-                    <p className="text-sm text-slate-400">Titular, Controlador (quem decide), Operador (quem processa) e o Encarregado (DPO).</p>
+                    <p className="text-lg text-slate-400">Titular, Controlador (quem decide), Operador (quem processa) e o Encarregado (DPO).</p>
                 </div>
             </div>
 

@@ -14,7 +14,7 @@
  */
 
 import { useState } from "react";
-import { AulaProps } from "../shared";
+import { AulaProps, QuizQuestion } from "../shared";
 import {
   ModuleConsolidation,
   ContentAccordion,
@@ -25,6 +25,17 @@ import {
 } from "../shared";
 import { CONTABILIDADE_BASICA_QUIZZES } from "@/data/quizzes/contabilidade-basica-quizzes";
 import { getModuleVariant } from "@/lib/moduleColors";
+
+function toQQ(quiz: { questions: { id: number; question: string; options: string[]; correct: number; explanation: string }[] } | undefined): QuizQuestion[] {
+  if (!quiz) return [];
+  return quiz.questions.map((q) => ({
+    id: q.id,
+    pergunta: q.question,
+    opcoes: q.options.map((o) => ({ label: o, valor: o })),
+    correta: q.options[q.correct] ?? "",
+    explicacao: q.explanation,
+  }));
+}
 
 const MODULE_DEFS = [
   { id: "modulo-1", label: "Módulo 1", title: "Fundamentos de Contabilidade" },
@@ -74,7 +85,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           variant="amber"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             A <strong>contabilidade</strong> é a ciência social que estuda e pratica as funções de orientação, controle e registro dos atos e fatos administrativos de uma entidade. Diferente do que muitos pensam, ela não é apenas um conjunto de cálculos financeiros, mas uma <strong>ferramenta estratégica de gestão</strong> que fornece informações essenciais para tomada de decisão. Em organizações como a Petrobras, a contabilidade rastreia não apenas caixa, mas operações complexas envolvendo exploração, refino, distribuição e comercialização de derivados de petróleo.
           </p>
@@ -96,8 +107,8 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           </p>
 
           <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-sm mb-2">📋 Escopo da Contabilidade</p>
-            <ul className="text-sm space-y-1 text-foreground">
+            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Escopo da Contabilidade</p>
+            <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Controla o patrimônio através de técnicas de escrituração</li>
               <li>✓ Fornece informações para decisões gerenciais e de investimento</li>
               <li>✓ Atende usuários internos (gestores) e externos (credores, governo, investidores)</li>
@@ -123,7 +134,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "O Pulo do Gato",
-          content: <p className="text-sm italic">{"A Contabilidade não é exata, é social. Ela conta a história da empresa através dos números."}</p>
+          content: <p className="text-lg italic">{"A Contabilidade não é exata, é social. Ela conta a história da empresa através dos números."}</p>
         }}
         audio={{ audioUrl: "#", titulo: "Introdução à Contabilidade", artista: "Prof. Contabilidade" }}
       />
@@ -170,7 +181,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         titulo="Fundamentos da Profissão"
         numero={1}
         variant="amber"
-        questoes={CONTABILIDADE_BASICA_QUIZZES["modulo-1"].questions}
+        questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-1"])}
         onComplete={(score: number) => handleQuizComplete("modulo-1", score)}
       />
     </div>
@@ -193,7 +204,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           variant="amber"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             A <strong>equação contábil fundamental</strong> é a espinha dorsal de toda a contabilidade: Ativo = Passivo + Patrimônio Líquido. Esta equação não é meramente teórica; é uma <strong>representação matemática da realidade econômica</strong> de qualquer empresa. Ela expressa que todos os recursos da empresa (ativo) têm origem em fontes de financiamento: obrigações com terceiros (passivo) ou capital investido pelos sócios (patrimônio líquido). Essa equação deve estar <strong>sempre em equilíbrio</strong>, uma propriedade fundamental que permite que a contabilidade detecte erros de registro.
           </p>
@@ -215,8 +226,8 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           </p>
 
           <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-sm mb-2">📋 Estrutura da Equação Contábil</p>
-            <ul className="text-sm space-y-1 text-foreground">
+            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Estrutura da Equação Contábil</p>
+            <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Ativo = Bens + Direitos (recursos da empresa)</li>
               <li>✓ Passivo = Obrigações (financiamento de terceiros)</li>
               <li>✓ Patrimônio Líquido = Ativo - Passivo (capital dos sócios)</li>
@@ -242,7 +253,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Dica de Mestre",
-          content: <p className="text-sm italic">{"Pense no Ativo como o que você TEM e no Passivo como o que você DEVE. O PL é o que realmente é SEU."}</p>
+          content: <p className="text-lg italic">{"Pense no Ativo como o que você TEM e no Passivo como o que você DEVE. O PL é o que realmente é SEU."}</p>
         }}
         audio={{ audioUrl: "#", titulo: "Equação Patrimonial", artista: "Prof. Contabilidade" }}
       />
@@ -289,7 +300,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         titulo="Desafio da Equação"
         numero={2}
         variant="emerald"
-        questoes={CONTABILIDADE_BASICA_QUIZZES["modulo-2"].questions}
+        questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-2"])}
         onComplete={(score: number) => handleQuizComplete("modulo-2", score)}
       />
     </div>
@@ -312,7 +323,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           variant="amber"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             O <strong>plano de contas</strong> é um documento normativo que lista e codifica todas as contas que uma empresa utilizará para registrar suas operações. Funciona como um <strong>índice de referência estruturado e hierárquico</strong>, facilitando a localização de contas para lançamento e garantindo uniformidade de registro. Sem plano de contas padronizado, diferentes áreas da empresa poderiam registrar mesma operação de formas distintas, tornando impossível consolidar informações para demonstrações financeiras confiáveis. O plano de contas garante que "Caixa" significa a mesma coisa em São Paulo, no Rio e em Houston (plataformas marítimas).
           </p>
@@ -334,8 +345,8 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           </p>
 
           <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-sm mb-2">📋 Estrutura do Plano de Contas</p>
-            <ul className="text-sm space-y-1 text-foreground">
+            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Estrutura do Plano de Contas</p>
+            <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Primeiro nível: Classe (1=Ativo, 2=Passivo, 3=Patrimônio, 4=Receita, 5=Despesa)</li>
               <li>✓ Segundo nível: Grupo (Circulante, Não-Circulante, etc)</li>
               <li>✓ Terceiro nível: Subgrupo (Caixa, Estoques, Imobilizado)</li>
@@ -365,7 +376,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Macete de Código",
-          content: <p className="text-sm italic">{"O primeiro dígito diz o que a conta representa. 1 é sempre Ativo, 2 é Passivo."}</p>
+          content: <p className="text-lg italic">{"O primeiro dígito diz o que a conta representa. 1 é sempre Ativo, 2 é Passivo."}</p>
         }}
         audio={{
           audioUrl: "#",
@@ -416,7 +427,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         titulo="Mapeamento de Contas"
         numero={3}
         variant="violet"
-        questoes={CONTABILIDADE_BASICA_QUIZZES["modulo-3"].questions}
+        questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-3"])}
         onComplete={(score: number) => handleQuizComplete("modulo-3", score)}
       />
     </div>
@@ -439,7 +450,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           variant="amber"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             O <strong>método das partidas dobradas</strong> é o fundamento da contabilidade moderna. Ele estabelece que cada operação gera um débito e um crédito de igual valor. Essa simetria não é coincidência; reflete que toda operação econômica tem duas dimensões: de onde vieram os recursos (fonte de financiamento) e para onde foram (aplicação). Quando você compra máquina à vista, máquina é a aplicação (débito em ativo) e caixa que sai é a fonte (crédito em ativo), mantendo equação balanceada. Quando toma empréstimo, caixa que entra é a aplicação e dívida que assume é a fonte, novamente balanceado.
           </p>
@@ -461,8 +472,8 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           </p>
 
           <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-sm mb-2">📋 Regras de Débito e Crédito</p>
-            <ul className="text-sm space-y-1 text-foreground">
+            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Regras de Débito e Crédito</p>
+            <ul className="text-lg space-y-1 text-foreground">
               <li>✓ ATIVO: Débito aumenta, Crédito diminui</li>
               <li>✓ PASSIVO: Débito diminui, Crédito aumenta</li>
               <li>✓ PATRIMÔNIO LÍQUIDO: Débito diminui, Crédito aumenta</li>
@@ -493,7 +504,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Mnemônico",
-          content: <p className="text-sm italic">{"O Ativo DEVE para a empresa, por isso aumenta no DÉBITO."}</p>
+          content: <p className="text-lg italic">{"O Ativo DEVE para a empresa, por isso aumenta no DÉBITO."}</p>
         }}
         audio={{
           audioUrl: "#",
@@ -544,7 +555,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         titulo="Domine os Lançamentos"
         numero={4}
         variant="emerald"
-        questoes={CONTABILIDADE_BASICA_QUIZZES["modulo-4"].questions}
+        questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-4"])}
         onComplete={(score: number) => handleQuizComplete("modulo-4", score)}
       />
     </div>
@@ -567,7 +578,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           variant="amber"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             O <strong>balancete de verificação</strong> é uma demonstração contábil que lista o saldo de todas as contas abertas em determinada data. Serve como <strong>ferramenta de controle interno</strong> para verificar a integridade dos registros contábeis antes da elaboração das demonstrações financeiras oficiais. Não é obrigatório publicar balancete (apenas balanço patrimonial, DRE, etc.), mas é imprescindível gerar internamente para auditoria. Um balancete desequilibrado (débitos ≠ créditos) sinaliza erro que deve ser encontrado e corrigido antes de publicar demonstrações.
           </p>
@@ -589,8 +600,8 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           </p>
 
           <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-sm mb-2">📋 Função do Balancete</p>
-            <ul className="text-sm space-y-1 text-foreground">
+            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Função do Balancete</p>
+            <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Verifica integridade matemática: débitos = créditos</li>
               <li>✓ Identifica erros de lançamento antes de publicar demonstrações</li>
               <li>✓ Permite correção de erros em período ainda aberto</li>
@@ -620,7 +631,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Dica de Segurança",
-          content: <p className="text-sm italic">{"O balancete acusa erros matemáticos, mas não acusa se você debitou a conta errada!"}</p>
+          content: <p className="text-lg italic">{"O balancete acusa erros matemáticos, mas não acusa se você debitou a conta errada!"}</p>
         }}
         audio={{
           audioUrl: "#",
@@ -671,7 +682,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         titulo="Desafio do Equilíbrio"
         numero={5}
         variant="amber"
-        questoes={CONTABILIDADE_BASICA_QUIZZES["modulo-5"].questions}
+        questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-5"])}
         onComplete={(score: number) => handleQuizComplete("modulo-5", score)}
       />
     </div>
@@ -694,7 +705,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           variant="amber"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             As <strong>demonstrações contábeis</strong> são relatórios estruturados que consolidam informações contábeis em formato padronizado, permitindo que qualquer pessoa ao redor do mundo compreenda posição financeira, performance operacional e fluxos de caixa de uma empresa. São mandatórias por lei (Lei das S.A., Lei 13.303 para estatais), normas contábeis (IFRS), regulação de mercado (CVM para empresas abertas) e são essenciais para que mercado de capitais funcione de forma informada. Sem demonstrações confiáveis, investidores não teriam informação para avaliar valor de uma ação, credores não saberiam avaliar risco de emprestar.
           </p>
@@ -716,8 +727,8 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           </p>
 
           <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-sm mb-2">📋 Principais Demonstrações</p>
-            <ul className="text-sm space-y-1 text-foreground">
+            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Principais Demonstrações</p>
+            <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Balanço Patrimonial: posição estática (ativo, passivo, patrimônio)</li>
               <li>✓ DRE: performance dinâmica (receitas, custos, despesas, lucro)</li>
               <li>✓ DMPL: mudanças no patrimônio (inicial + lucro - dividendos = final)</li>
@@ -743,7 +754,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Mestre da DRE",
-          content: <p className="text-sm italic">{"Receita - Custo - Despesa = Lucro. Siga o fluxo!"}</p>
+          content: <p className="text-lg italic">{"Receita - Custo - Despesa = Lucro. Siga o fluxo!"}</p>
         }}
         audio={{ audioUrl: "#", titulo: "Relatórios Contábeis", artista: "Prof. Contabilidade" }}
       />
@@ -790,7 +801,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         titulo="Mestre dos Relatórios"
         numero={6}
         variant="violet"
-        questoes={CONTABILIDADE_BASICA_QUIZZES["modulo-6"].questions}
+        questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-6"])}
         onComplete={(score: number) => handleQuizComplete("modulo-6", score)}
       />
     </div>
@@ -813,7 +824,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           variant="amber"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             A <strong>análise de demonstrações contábeis</strong> é a arte de extrair significado dos números brutos para compreender saúde financeira, performance operacional e perspectivas futuras de uma empresa. Números absolutos (Ativo Total R$ 800 bilhões) dizem pouco isolados; precisam ser contextualizados. Análise consegue isso através de índices (rácios) que comparam contas relacionadas, tendências que comparam períodos, e benchmarking que compara com concorrentes ou padrão de setor. Um gerente que lê apenas números brutos vê crise; um analista que calcula índices pode distinguir se é crise estrutural ou flutuação temporal.
           </p>
@@ -835,8 +846,8 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           </p>
 
           <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-sm mb-2">📋 Principais Análises</p>
-            <ul className="text-sm space-y-1 text-foreground">
+            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Principais Análises</p>
+            <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Índices de Liquidez: capacidade pagar dívidas curto prazo</li>
               <li>✓ Índices de Solvência: capacidade pagar todas dívidas</li>
               <li>✓ Índices de Rentabilidade: lucro gerado (ROA, ROE, Margem Líquida, Giro)</li>
@@ -866,7 +877,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Regra do 1.0",
-          content: <p className="text-sm italic">{"Liquidez abaixo de 1.0 é sinal de alerta: a empresa deve mais do que tem disponível no ano."}</p>
+          content: <p className="text-lg italic">{"Liquidez abaixo de 1.0 é sinal de alerta: a empresa deve mais do que tem disponível no ano."}</p>
         }}
         audio={{
           audioUrl: "#",
@@ -917,7 +928,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         titulo="Raio-X Financeiro"
         numero={7}
         variant="amber"
-        questoes={CONTABILIDADE_BASICA_QUIZZES["modulo-7"].questions}
+        questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-7"])}
         onComplete={(score: number) => handleQuizComplete("modulo-7", score)}
       />
     </div>
@@ -940,7 +951,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           variant="amber"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             A <strong>contabilidade de custos</strong> é especialização da contabilidade dedicada a acumular, analisar e interpretar custos de produção e operação. Diferente de contabilidade geral (que registra todas as transações), contabilidade de custos foca especificamente em custos: quanto custa produzir cada unidade? Qual é a margem de lucro por produto? Onde estão os maiores gastos? Essas informações são <strong>críticas para decisões operacionais</strong> que contabilidade geral não fornece. Um gerente de produção em Petrobras precisa saber custo por barril de óleo produzido para decidir se continua operação de um poço (se preço de mercado for menor que custo de produção, melhor parar).
           </p>
@@ -962,8 +973,8 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           </p>
 
           <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-sm mb-2">📋 Elementos de Custo</p>
-            <ul className="text-sm space-y-1 text-foreground">
+            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Elementos de Custo</p>
+            <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Matéria-Prima: material que entra no produto</li>
               <li>✓ Mão-de-Obra Direta: salários de quem produz</li>
               <li>✓ Custos Indiretos de Fabricação: custos compartilhados</li>
@@ -994,7 +1005,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Custo vs Despesa",
-          content: <p className="text-sm italic">{"Se faz falta na fábrica, é CUSTO. Se faz falta no escritório, é DESPESA."}</p>
+          content: <p className="text-lg italic">{"Se faz falta na fábrica, é CUSTO. Se faz falta no escritório, é DESPESA."}</p>
         }}
         audio={{
           audioUrl: "#",
@@ -1045,7 +1056,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         titulo="Engenharia de Custos"
         numero={8}
         variant="emerald"
-        questoes={CONTABILIDADE_BASICA_QUIZZES["modulo-8"].questions}
+        questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-8"])}
         onComplete={(score: number) => handleQuizComplete("modulo-8", score)}
       />
     </div>
@@ -1068,7 +1079,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           variant="amber"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             A <strong>Petrobras é empresa estatal de capital aberto</strong>, combinação que a submete a múltiplas camadas de regulação. Como estatal, segue Lei 13.303/2016 (Lei das Empresas Estatais), que estabelece regras rígidas de governança, auditoria e transparência. Como capital aberto (listada na B3 e NYSE), segue regulação da CVM (Comissão de Valores Mobiliários), que exige divulgação ampla de informações financeiras e não-financeiras. Como empresa privada, segue Lei das S.A. (6.404/76) e normas contábeis internacionais (IFRS). Essa confluência de regulações garante que Petrobras é uma das empresas mais auditadas e transparentes do Brasil, mas também a mais complexa contabilmente.
           </p>
@@ -1090,8 +1101,8 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           </p>
 
           <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-sm mb-2">📋 Regulação Contábil em Petrobras</p>
-            <ul className="text-sm space-y-1 text-foreground">
+            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Regulação Contábil em Petrobras</p>
+            <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Lei 13.303/2016: Estatuto das Estatais (governança, transparência)</li>
               <li>✓ Lei 6.404/76: Lei das S.A. (direito societário)</li>
               <li>✓ IFRS: Normas Contábeis Internacionais (reconhecidas globalmente)</li>
@@ -1118,7 +1129,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Compliance é Lei",
-          content: <p className="text-sm italic">{"Lei 13.303 + CVM + IFRS = Transparência total para acionistas e sociedade."}</p>
+          content: <p className="text-lg italic">{"Lei 13.303 + CVM + IFRS = Transparência total para acionistas e sociedade."}</p>
         }}
         audio={{ audioUrl: "#", titulo: "Petrobras Contábil", artista: "Prof. Contabilidade" }}
       />
@@ -1165,7 +1176,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         titulo="Elite e Compliance"
         numero={9}
         variant="violet"
-        questoes={CONTABILIDADE_BASICA_QUIZZES["modulo-9"].questions}
+        questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-9"])}
         onComplete={(score: number) => handleQuizComplete("modulo-9", score)}
       />
     </div>
@@ -1188,7 +1199,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           variant="amber"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             O <strong>Simulado Mestre é avaliação integradora</strong> que sintetiza tudo que você aprendeu em 9 módulos anteriores. Diferente de quizzes de cada módulo (que focam conceitos específicos), simulado combina múltiplos domínios em <strong>questões de alta complexidade</strong>. Uma questão pode começar descrevendo lançamento contábil, pedir cálculo de índice de liquidez da empresa, e então questionar implicações para decisão de investimento. Requer que você entenda não apenas "o que é", mas também "como funciona em contexto integrado". Simulado mestre em CESGRANRIO é tipicamente assim: questões exigem compreensão de múltiplos conceitos e capacidade de análise crítica, não simples memorização.
           </p>
@@ -1210,8 +1221,8 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           </p>
 
           <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-sm mb-2">📋 Estrutura do Simulado Mestre</p>
-            <ul className="text-sm space-y-1 text-foreground">
+            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Estrutura do Simulado Mestre</p>
+            <ul className="text-lg space-y-1 text-foreground">
               <li>✓ 10 questões de múltipla escolha integradas</li>
               <li>✓ Meta de aprovação: 70% (7 de 10 questões)</li>
               <li>✓ Tempo recomendado: 30-40 minutos (3-4 min por questão)</li>
@@ -1242,7 +1253,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Foco Total",
-          content: <p className="text-sm italic">{"Respire fundo. A contabilidade é lógica. Se a conta não fechar, verifique a origem versus aplicação."}</p>
+          content: <p className="text-lg italic">{"Respire fundo. A contabilidade é lógica. Se a conta não fechar, verifique a origem versus aplicação."}</p>
         }}
         audio={{
           audioUrl: "#",
@@ -1293,7 +1304,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         titulo="O Grande Final"
         numero={10}
         variant="rose"
-        questoes={CONTABILIDADE_BASICA_QUIZZES["modulo-10"].questions}
+        questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-10"])}
         onComplete={(score: number) => handleQuizComplete("modulo-10", score)}
       />
     </div>
@@ -1346,7 +1357,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
               key={mod.id}
               onClick={() => isUnlocked && setActiveTab(mod.id)}
               disabled={!isUnlocked}
-              className={`p-3 rounded-lg text-sm font-medium transition-all ${
+              className={`p-3 rounded-lg text-lg font-medium transition-all ${
                 isCompleted
                   ? "bg-green-500/20 border-2 border-green-500 text-green-700 dark:text-green-300"
                   : activeTab === mod.id
@@ -1366,7 +1377,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       {renderModule()}
 
       <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-        <p className="text-sm text-blue-800 dark:text-blue-200">
+        <p className="text-lg text-blue-800 dark:text-blue-200">
           <strong>💡 Dica:</strong> Complete cada módulo com pelo menos 70% de acerto para desbloquear o próximo. Ao final, você terá domínio completo de contabilidade básica.
         </p>
       </div>

@@ -145,14 +145,14 @@ export default function AulaMobile({
                   <span className="w-2 h-2 bg-green-500 rounded-full" />
                   Android: Linux & ART
                 </h4>
-                <p className="text-muted-foreground leading-relaxed text-sm">
+                <p className="text-muted-foreground leading-relaxed text-lg">
                   O Android utiliza o kernel Linux para gerenciar drivers e
                   segurança. Acima dele, o **ART (Android Runtime)** substituiu
                   o antigo Dalvik, utilizando compilação **AOT (Ahead-of-Time)**
                   para melhorar a performance e o consumo de bateria.
                 </p>
                 <div className="p-4 bg-muted rounded-lg border-l-4 border-green-500">
-                  <p className="text-xs font-mono">
+                  <p className="text-lg font-mono">
                     Kernel {"->"} HAL {"->"} ART {"->"} Framework {"->"} Apps
                   </p>
                 </div>
@@ -162,14 +162,14 @@ export default function AulaMobile({
                   <span className="w-2 h-2 bg-blue-500 rounded-full" />
                   iOS: XNU & Darwin
                 </h4>
-                <p className="text-muted-foreground leading-relaxed text-sm">
+                <p className="text-muted-foreground leading-relaxed text-lg">
                   Baseado no kernel Darwin (BSD/Mach), o iOS é um sistema
                   fechado onde o hardware e software são co-desenhados. A
                   segurança é baseada no **Secure Enclave** (coprocessador
                   isolado para biometria e chaves).
                 </p>
                 <div className="p-4 bg-muted rounded-lg border-l-4 border-blue-500">
-                  <p className="text-xs font-mono">
+                  <p className="text-lg font-mono">
                     Kernel {"->"} CoreOS {"->"} CoreServices {"->"} CocoaTouch{" "}
                     {"->"} Apps
                   </p>
@@ -188,7 +188,7 @@ export default function AulaMobile({
                   titulo: "O Modelo de Sandbox",
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Cada aplicativo roda em um ambiente isolado. No Android,
                         cada app tem seu próprio **UID (User ID)** único no
                         kernel Linux. No iOS, o sandbox impede que um app acesse
@@ -220,14 +220,14 @@ export default function AulaMobile({
                   titulo: "Permissões e Privacidade",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-lg">
                         As permissões evoluíram de 'estáticas' (instalação) para
                         'dinâmicas' (runtime). Importante para concursos:
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className="p-4 border border-border rounded-lg text-center">
                           <span className="text-2xl mb-2 block">📍</span>
-                          <h6 className="font-bold text-xs uppercase tracking-wider">
+                          <h6 className="font-bold text-lg uppercase tracking-wider">
                             Localização
                           </h6>
                           <p className="text-[10px] text-muted-foreground">
@@ -236,7 +236,7 @@ export default function AulaMobile({
                         </div>
                         <div className="p-4 border border-border rounded-lg text-center">
                           <span className="text-2xl mb-2 block">📷</span>
-                          <h6 className="font-bold text-xs uppercase tracking-wider">
+                          <h6 className="font-bold text-lg uppercase tracking-wider">
                             Câmera
                           </h6>
                           <p className="text-[10px] text-muted-foreground">
@@ -245,7 +245,7 @@ export default function AulaMobile({
                         </div>
                         <div className="p-4 border border-border rounded-lg text-center">
                           <span className="text-2xl mb-2 block">📂</span>
-                          <h6 className="font-bold text-xs uppercase tracking-wider">
+                          <h6 className="font-bold text-lg uppercase tracking-wider">
                             Storage
                           </h6>
                           <p className="text-[10px] text-muted-foreground">
@@ -310,7 +310,7 @@ export default function AulaMobile({
             maceteVisual={{
               title: "O Mantra da Segurança",
               content: (
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <p>
                     <strong>Isolamento:</strong> Sandboxing é a base.
                   </p>
@@ -361,14 +361,14 @@ export default function AulaMobile({
                   titulo: "Swift: Automatic Reference Counting (ARC)",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O iOS não possui um Garbage Collector (GC) tradicional.
                         Ele usa o **ARC**, que insere comandos de retenção e
                         liberação de memória em tempo de compilação.
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-muted rounded-lg border border-border">
-                          <h6 className="font-bold text-xs flex items-center gap-1">
+                          <h6 className="font-bold text-lg flex items-center gap-1">
                             Strong References{" "}
                             <span className="text-red-500">
                               (Perigo: Retain Cycle)
@@ -380,7 +380,7 @@ export default function AulaMobile({
                           </p>
                         </div>
                         <div className="p-4 bg-muted rounded-lg border border-border">
-                          <h6 className="font-bold text-xs flex items-center gap-1">
+                          <h6 className="font-bold text-lg flex items-center gap-1">
                             Weak / Unowned
                           </h6>
                           <p className="text-[10px]">
@@ -395,12 +395,12 @@ export default function AulaMobile({
                 {
                   titulo: "Android: Garbage Collection (GC)",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-lg">
                       <p>
                         O ART gerencia a memória automaticamente. Pontos para
                         prova:
                       </p>
-                      <ul className="list-disc pl-5 space-y-2 text-xs text-muted-foreground">
+                      <ul className="list-disc pl-5 space-y-2 text-lg text-muted-foreground">
                         <li>
                           <strong>Heap:</strong> Onde os objetos vivem.
                         </li>
@@ -424,7 +424,7 @@ export default function AulaMobile({
               <h4 className="text-xl font-bold">
                 Ciclo de Vida: Aprofundamento Técnico
               </h4>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 Não decore apenas os nomes, entenda o **PORQUÊ** de cada estado.
               </p>
 
@@ -458,7 +458,7 @@ export default function AulaMobile({
                 <h5 className="font-bold border-b border-slate-700 pb-2">
                   Jetpack Compose
                 </h5>
-                <p className="text-xs text-slate-400">
+                <p className="text-lg text-slate-400">
                   O novo padrão Android para UI declarativa. Menos código, mais
                   reatividade. Remove o uso de XMLs pesados.
                 </p>
@@ -467,7 +467,7 @@ export default function AulaMobile({
                 <h5 className="font-bold border-b border-slate-700 pb-2">
                   SwiftUI
                 </h5>
-                <p className="text-xs text-slate-400">
+                <p className="text-lg text-slate-400">
                   Mesma lógica do Compose para Apple. Usa struct em vez de
                   classes para visão, sendo extremamente leve.
                 </p>
@@ -519,7 +519,7 @@ export default function AulaMobile({
               title: "O Pulo do Gato: Memória",
               content: (
                 <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                  <p className="text-xs font-bold text-red-500">
+                  <p className="text-lg font-bold text-red-500">
                     Cuidado com Retain Cycles no iOS!
                   </p>
                   <p className="text-[10px] italic">
@@ -533,7 +533,7 @@ export default function AulaMobile({
 
                     <QuizInterativo
             questoes={quizM2}
-            titulo="Simulado de Performance e Nativo"
+            titulo="QUIZ: Módulo Nº 2"
             variant={mv[2]}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
@@ -565,7 +565,7 @@ export default function AulaMobile({
                   titulo: "1. Registro e Instalação",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-lg">
                         O navegador registra o arquivo JS em background. No
                         evento `install`, geralmente fazemos o pre-cache dos
                         arquivos estáticos (App Shell).
@@ -581,11 +581,11 @@ export default function AulaMobile({
                   titulo: "2. Ativação e Interceptação",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-lg">
                         O Service Worker se torna o 'proxy' da rede. Ele pode
                         usar estratégias como:
                       </p>
-                      <ul className="list-disc pl-5 text-xs space-y-2">
+                      <ul className="list-disc pl-5 text-lg space-y-2">
                         <li>
                           <strong>Cache First:</strong> Tenta o cache, se falhar
                           vai na rede (Ideal para fotos, estilos).
@@ -627,7 +627,7 @@ export default function AulaMobile({
               <h4 className="text-xl font-bold">
                 Web App Manifest: O Coração do PWA
               </h4>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 O arquivo JSON que diz ao sistema: "Eu não sou apenas um site".
               </p>
 
@@ -701,7 +701,7 @@ export default function AulaMobile({
             maceteVisual={{
               title: "PWA = R.I.P.",
               content: (
-                <div className="space-y-2 text-xs">
+                <div className="space-y-2 text-lg">
                   <p>
                     <strong>R</strong>esponsive (Qualquer tela).
                   </p>
@@ -746,7 +746,7 @@ export default function AulaMobile({
               <h4 className="text-xl font-bold text-blue-400">
                 The New Architecture: JSI
               </h4>
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <p className="text-lg text-slate-300 leading-relaxed">
                 A antiga "Bridge" era assíncrona e serializava tudo em JSON. A
                 nova **JSI (JavaScript Interface)** permite que o JavaScript
                 tenha uma referência direta aos objetos nativos em C++,
@@ -755,7 +755,7 @@ export default function AulaMobile({
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
                 <div className="p-4 bg-slate-900 rounded-lg space-y-2">
-                  <h6 className="text-xs font-bold uppercase text-blue-500">
+                  <h6 className="text-lg font-bold uppercase text-blue-500">
                     Fabric
                   </h6>
                   <p className="text-[10px]">
@@ -764,7 +764,7 @@ export default function AulaMobile({
                   </p>
                 </div>
                 <div className="p-4 bg-slate-900 rounded-lg space-y-2">
-                  <h6 className="text-xs font-bold uppercase text-blue-500">
+                  <h6 className="text-lg font-bold uppercase text-blue-500">
                     Turbo Modules
                   </h6>
                   <p className="text-[10px]">
@@ -784,11 +784,11 @@ export default function AulaMobile({
                   titulo: "Yoga Engine: Flexbox Deep Dive",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-lg">
                         Diferente da Web, o RN usa o motor **Yoga**. Diferenças
                         cruciais:
                       </p>
-                      <ul className="list-disc pl-5 text-xs space-y-3">
+                      <ul className="list-disc pl-5 text-lg space-y-3">
                         <li>
                           <strong>flexDirection:</strong> No RN o padrão é
                           `column`, na Web é `row`.
@@ -837,7 +837,7 @@ export default function AulaMobile({
               <h4 className="text-xl font-bold">Debug & Ferramentas</h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="p-4 border border-border rounded-lg">
-                  <span className="font-mono text-xs font-bold block mb-2">
+                  <span className="font-mono text-lg font-bold block mb-2">
                     Flipper
                   </span>
                   <p className="text-[10px] text-muted-foreground">
@@ -846,7 +846,7 @@ export default function AulaMobile({
                   </p>
                 </div>
                 <div className="p-4 border border-border rounded-lg">
-                  <span className="font-mono text-xs font-bold block mb-2">
+                  <span className="font-mono text-lg font-bold block mb-2">
                     React DevTools
                   </span>
                   <p className="text-[10px] text-muted-foreground">
@@ -854,7 +854,7 @@ export default function AulaMobile({
                   </p>
                 </div>
                 <div className="p-4 border border-border rounded-lg">
-                  <span className="font-mono text-xs font-bold block mb-2">
+                  <span className="font-mono text-lg font-bold block mb-2">
                     Hermes
                   </span>
                   <p className="text-[10px] text-muted-foreground">
@@ -910,7 +910,7 @@ export default function AulaMobile({
               title: "Dica de Performance",
               content: (
                 <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
-                  <p className="text-xs">
+                  <p className="text-lg">
                     <strong>Use Memoization:</strong> useMemo e useCallback são
                     vitais no RN para evitar re-renderizações que pesam no JS
                     Thread.
@@ -922,7 +922,7 @@ export default function AulaMobile({
 
                     <QuizInterativo
             questoes={quizM4}
-            titulo="Maratona de Arquitetura React Native"
+            titulo="QUIZ: Módulo Nº 4"
             variant={mv[4]}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
@@ -953,7 +953,7 @@ export default function AulaMobile({
                 {
                   titulo: "O Fluxo Unidirecional",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-lg">
                       <p>
                         O Redux ainda é o padrão para apps complexos. No mobile,
                         adicionamos o **Persistence layer** para suporte
@@ -1016,14 +1016,14 @@ export default function AulaMobile({
               <h4 className="text-xl font-bold">
                 Navegação Profissional: React Navigation
               </h4>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 Como estruturar apps complexos (Petrobras Dashboards).
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-4">
                   <h6 className="font-bold underline italic">Deep Linking</h6>
-                  <p className="text-xs">
+                  <p className="text-lg">
                     Permite abrir telas específicas via URL (ex:
                     `petrobras://relatorio/50`). Vital para notificações push
                     que levam o usuário a uma ação.
@@ -1031,7 +1031,7 @@ export default function AulaMobile({
                 </div>
                 <div className="space-y-4">
                   <h6 className="font-bold underline italic">Param Passing</h6>
-                  <p className="text-xs">
+                  <p className="text-lg">
                     Evite passar objetos gigantes via rota. Passe apenas o ID e
                     busque o dado do estado global ou API na tela de destino.
                   </p>
@@ -1102,7 +1102,7 @@ export default function AulaMobile({
               title: "Prop Drilling? Jamais!",
               content: (
                 <div className="p-4 bg-violet-500/10 border border-violet-500/20 rounded-lg">
-                  <p className="text-xs italic">
+                  <p className="text-lg italic">
                     "Se o dado viaja mais de 2 níveis para baixo, considere
                     Context ou uma Store Global."
                   </p>
@@ -1142,7 +1142,7 @@ export default function AulaMobile({
                   <span className="w-2 h-2 bg-sky-500 rounded-full" />
                   Skia & Impeller Engine
                 </h4>
-                <p className="text-muted-foreground leading-relaxed text-sm">
+                <p className="text-muted-foreground leading-relaxed text-lg">
                   Diferente do React Native, o Flutter não usa componentes
                   nativos. Ele desenha cada pixel na tela usando a engine
                   **Skia** (ou a nova **Impeller** no iOS/Android moderno). Isso
@@ -1161,20 +1161,20 @@ export default function AulaMobile({
                   <span className="w-2 h-2 bg-blue-600 rounded-full" />
                   As Três Árvores
                 </h4>
-                <p className="text-muted-foreground leading-relaxed text-sm">
+                <p className="text-muted-foreground leading-relaxed text-lg">
                   O Flutter gerencia três estruturas simultâneas para otimizar a
                   performance:
                 </p>
                 <ul className="space-y-4">
-                  <li className="p-3 bg-muted rounded border-l-4 border-blue-400 text-xs">
+                  <li className="p-3 bg-muted rounded border-l-4 border-blue-400 text-lg">
                     <strong>Widget Tree:</strong> Configuração imutável (o
                     plano).
                   </li>
-                  <li className="p-3 bg-muted rounded border-l-4 border-amber-400 text-xs">
+                  <li className="p-3 bg-muted rounded border-l-4 border-amber-400 text-lg">
                     <strong>Element Tree:</strong> Gerencia o ciclo de vida e
                     liga o Widget ao objeto de tela.
                   </li>
-                  <li className="p-3 bg-muted rounded border-l-4 border-red-400 text-xs">
+                  <li className="p-3 bg-muted rounded border-l-4 border-red-400 text-lg">
                     <strong>RenderObject Tree:</strong> Onde ocorre o cálculo de
                     tamanho (layout) e pintura (paint).
                   </li>
@@ -1191,7 +1191,7 @@ export default function AulaMobile({
                   titulo: "Sound Null Safety",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-lg">
                         O Dart garante que um erro de 'null' nunca ocorra em
                         runtime se o tipo não for explicitamente anulável.
                       </p>
@@ -1220,11 +1220,11 @@ export default function AulaMobile({
                   titulo: "Mixins e Extensions",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-lg">
                         Poderosos recursos de reuso de código sem herança
                         múltipla.
                       </p>
-                      <ul className="list-disc pl-5 text-xs text-muted-foreground space-y-2">
+                      <ul className="list-disc pl-5 text-lg text-muted-foreground space-y-2">
                         <li>
                           <strong>Mixins:</strong> Compartilham comportamentos
                           entre classes que não herdam uma da outra.
@@ -1313,7 +1313,7 @@ export default function AulaMobile({
               title: "Tudo é um Widget!",
               content: (
                 <div className="p-4 bg-sky-500/10 border border-sky-500/20 rounded-lg">
-                  <p className="text-xs">
+                  <p className="text-lg">
                     No Flutter, até o alinhamento (Center) e o espaçamento
                     (Padding) são Widgets, não propriedades de CSS.
                   </p>
@@ -1324,7 +1324,7 @@ export default function AulaMobile({
 
                     <QuizInterativo
             questoes={quizM6}
-            titulo="Imersão Flutter & Dart"
+            titulo="QUIZ: Módulo Nº 6"
             variant={mv[6]}
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
@@ -1356,12 +1356,12 @@ export default function AulaMobile({
                   titulo: "Separação de Preocupações",
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         O BLoC separa a lógica da UI usando **Streams** e
                         **Sinks**. A UI envia Eventos e o BLoC devolve Estados.
                       </p>
                       <div className="bg-slate-950 p-6 rounded-xl border border-blue-500/30">
-                        <h6 className="text-xs font-mono text-blue-400 mb-4 uppercase">
+                        <h6 className="text-lg font-mono text-blue-400 mb-4 uppercase">
                           Workflow do BLoC:
                         </h6>
                         <ul className="space-y-2">
@@ -1401,7 +1401,7 @@ export default function AulaMobile({
                   titulo: "Riverpod: O Sucessor do Provider",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-lg">
                         Resolve problemas de segurança em tempo de compilação e
                         elimina a necessidade do BuildContext para acessar o
                         estado.
@@ -1438,7 +1438,7 @@ export default function AulaMobile({
 
             <div className="space-y-6">
               <h4 className="text-xl font-bold">Imutabilidade com Freezed</h4>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 Gerar código para estados imutáveis e Uniões (Sealed Classes).
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1497,7 +1497,7 @@ export default function AulaMobile({
             maceteVisual={{
               title: "Sinks e Streams",
               content: (
-                <p className="text-sm">
+                <p className="text-lg">
                   "Eventos entram no Sink, Estados saem para o Stream." Memorize
                   isso para BLoC.
                 </p>
@@ -1535,7 +1535,7 @@ export default function AulaMobile({
                 <h4 className="text-xl font-bold flex items-center gap-2">
                   📍 Localização & Geofencing
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-lg text-muted-foreground">
                   Trabalhar com localização no mobile exige cuidado com o
                   consumo de bateria. Diferenciamos **Foreground location**
                   (apenas com app aberto) de **Background location** (app
@@ -1557,7 +1557,7 @@ export default function AulaMobile({
                 <h4 className="text-xl font-bold flex items-center gap-2">
                   🔐 Biometria & Segurança Nativa
                 </h4>
-                <p className="text-sm text-muted-foreground text-justify">
+                <p className="text-lg text-muted-foreground text-justify">
                   Uso de FaceID (iOS) e Impressão Digital (Android) via APIs
                   unificadas. O app não recebe o dado da digital, mas sim um{" "}
                   <strong>Token de sucesso</strong> vindo do hardware seguro.
@@ -1579,12 +1579,12 @@ export default function AulaMobile({
                   titulo: "Android WorkManager",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-lg">
                         A API padrão para tarefas persistentes. Ela sobrevive a
                         reinicializações e respeita o **Doze Mode** (economia de
                         bateria).
                       </p>
-                      <ul className="list-decimal pl-5 text-xs space-y-2">
+                      <ul className="list-decimal pl-5 text-lg space-y-2">
                         <li>
                           Defina restrições (ex: apenas no Wi-Fi e Carregando).
                         </li>
@@ -1603,10 +1603,10 @@ export default function AulaMobile({
                   titulo: "iOS Background Fetch",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-center italic">
+                      <p className="text-lg text-center italic">
                         "Background no iOS é um privilégio, não um direito."
                       </p>
-                      <p className="text-xs">
+                      <p className="text-lg">
                         O sistema aprende o padrão de uso do usuário e acorda o
                         app periodicamente para atualizar dados (ex: e-mails).
                       </p>
@@ -1697,7 +1697,7 @@ export default function AulaMobile({
 
                     <QuizInterativo
             questoes={quizM8}
-            titulo="Desafio de Sensores e Background"
+            titulo="QUIZ: Módulo Nº 8"
             variant={mv[8]}
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
@@ -1722,7 +1722,7 @@ export default function AulaMobile({
 
             <div className="space-y-8">
               <h4 className="text-xl font-bold">Design Token Architecture</h4>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 Em apps corporativos de grande escala (Petrobras), não usamos
                 cores 'hardcoded'. Usamos Tokens.
               </p>
@@ -1760,11 +1760,11 @@ export default function AulaMobile({
                   titulo: "TalkBack & VoiceOver",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-lg">
                         O código deve ser navegável por leitores de tela. Sempre
                         use labels descritivos em botões de ícone.
                       </p>
-                      <ul className="list-disc pl-5 text-xs space-y-2">
+                      <ul className="list-disc pl-5 text-lg space-y-2">
                         <li>
                           <strong>accessibilityLabel:</strong> O que o leitor
                           diz.
@@ -1785,7 +1785,7 @@ export default function AulaMobile({
                   titulo: "Cores e Contraste",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-lg">
                         Ratio mínimo de 4.5:1 para texto normal. Teste sempre o
                         'Dark Mode' e como ele afeta a legibilidade em ambientes
                         de alta luminosidade (ex: plataformas de petróleo).
@@ -1798,7 +1798,7 @@ export default function AulaMobile({
 
             <div className="space-y-6">
               <h4 className="text-xl font-bold">Micro-interações & Lottie</h4>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 Movimentos que dão feedback e vida ao app.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -1865,7 +1865,7 @@ export default function AulaMobile({
             maceteVisual={{
               title: "Safe Area",
               content: (
-                <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-xs">
+                <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-lg">
                   Sempre use o widget <strong>SafeArea</strong> no Flutter ou o
                   hook <strong>useSafeAreaInsets</strong> no RN para evitar que
                   a UI seja cortada pelo 'notch' ou 'island' do celular.
@@ -1904,7 +1904,7 @@ export default function AulaMobile({
                 <h4 className="text-xl font-bold text-indigo-400 mb-4">
                   Fastlane Mastery
                 </h4>
-                <p className="text-sm text-indigo-200">
+                <p className="text-lg text-indigo-200">
                   O Fastlane é a 'canivete suíço' da automação mobile. Ele
                   gerencia desde os certificados até o upload final para as
                   lojas.
@@ -1939,7 +1939,7 @@ export default function AulaMobile({
                   {
                     titulo: "Diretriz 4.0: Business & Design",
                     conteudo: (
-                      <div className="space-y-4 text-xs">
+                      <div className="space-y-4 text-lg">
                         <p>
                           A Apple rejeita apps que não parecem 'nativos' ou que
                           são apenas sites empacotados. É necessário ter valor
@@ -1965,7 +1965,7 @@ export default function AulaMobile({
                   {
                     titulo: "Google Play Integrity",
                     conteudo: (
-                      <p className="text-xs">
+                      <p className="text-lg">
                         Uso do Play Integrity API para garantir que o
                         dispositivo do usuário não foi comprometido e que o app
                         é original da loja.
@@ -1981,13 +1981,13 @@ export default function AulaMobile({
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="p-6 bg-muted rounded-xl border border-border">
-                    <h6 className="font-bold text-xs mb-2">Internal Testing</h6>
+                    <h6 className="font-bold text-lg mb-2">Internal Testing</h6>
                     <p className="text-[10px] text-muted-foreground">
                       Até 100 testers internos. Deploy imediato.
                     </p>
                   </div>
                   <div className="p-6 bg-muted rounded-xl border border-border">
-                    <h6 className="font-bold text-xs mb-2">
+                    <h6 className="font-bold text-lg mb-2">
                       Alpha / TestFlight
                     </h6>
                     <p className="text-[10px] text-muted-foreground">
@@ -1996,7 +1996,7 @@ export default function AulaMobile({
                     </p>
                   </div>
                   <div className="p-6 bg-muted rounded-xl border border-border">
-                    <h6 className="font-bold text-xs mb-2">Staged Rollout</h6>
+                    <h6 className="font-bold text-lg mb-2">Staged Rollout</h6>
                     <p className="text-[10px] text-muted-foreground">
                       Lançamento gradual (5% {"->"} 20% {"->"} 100%) para
                       monitorar crashes.
@@ -2017,7 +2017,7 @@ export default function AulaMobile({
                       checked
                       className="accent-green-500"
                     />
-                    <span className="text-xs">
+                    <span className="text-lg">
                       Código ofuscado (R8/Proguard)
                     </span>
                   </div>
@@ -2028,7 +2028,7 @@ export default function AulaMobile({
                       checked
                       className="accent-green-500"
                     />
-                    <span className="text-xs">
+                    <span className="text-lg">
                       Logs de debug removidos (release mode)
                     </span>
                   </div>
@@ -2039,7 +2039,7 @@ export default function AulaMobile({
                       checked
                       className="accent-green-500"
                     />
-                    <span className="text-xs">
+                    <span className="text-lg">
                       Políticas de privacidade atualizadas nas lojas
                     </span>
                   </div>
@@ -2050,7 +2050,7 @@ export default function AulaMobile({
                       checked
                       className="accent-green-500"
                     />
-                    <span className="text-xs">
+                    <span className="text-lg">
                       Certificados de produção gerados e seguros
                     </span>
                   </div>
@@ -2102,7 +2102,7 @@ export default function AulaMobile({
             maceteVisual={{
               title: "O Mantra do Lançamento",
               content: (
-                <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-lg text-xs italic">
+                <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-lg text-lg italic">
                   "Automatize tudo o que puder, pois o erro humano no dia do
                   lançamento custa caro nas lojas."
                 </div>
@@ -2112,7 +2112,7 @@ export default function AulaMobile({
 
                     <QuizInterativo
             questoes={quizM10}
-            titulo="Simulado Final: Mobile Development Master"
+            titulo="QUIZ: Módulo Nº 10"
             variant={mv[10]}
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
           />

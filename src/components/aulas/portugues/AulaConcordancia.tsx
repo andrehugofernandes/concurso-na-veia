@@ -361,7 +361,7 @@ const CONCEPT_EXAMPLES = [
         <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
           Ambos podem estar corretos!
         </h4>
-        <ul className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-sm">
+        <ul className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-lg">
           <li className="flex gap-2">
             <span className="text-green-500 font-bold">1.</span>
             <span>
@@ -397,7 +397,7 @@ const CONCEPT_EXAMPLES = [
         <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
           Dupla Possibilidade!
         </h4>
-        <ul className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-sm">
+        <ul className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-lg">
           <li className="flex gap-2">
             <span className="text-green-500 font-bold">1.</span>
             <span>
@@ -433,7 +433,7 @@ const CONCEPT_EXAMPLES = [
         <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
           "Anexo" é ADJETIVO!
         </h4>
-        <div className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-sm">
+        <div className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-lg">
           <p>Deve concordar com o substantivo a que se refere:</p>
           <ul className="space-y-2 mt-2">
             <li className="text-green-600">
@@ -465,7 +465,7 @@ const CONCEPT_EXAMPLES = [
         <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
           Depende do Artigo!
         </h4>
-        <div className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-sm">
+        <div className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-lg">
           <p>O adjetivo só varia se houver determinante (artigo/pronome):</p>
           <ul className="space-y-2 mt-2">
             <li className="text-green-600">
@@ -499,7 +499,7 @@ const CONCEPT_EXAMPLES = [
         <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
           Troque por "MUITOS"!
         </h4>
-        <div className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-sm">
+        <div className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-lg">
           <p>
             Se "MUITOS" couber, "BASTANTES" também cabe (é Pronome Indefinido).
           </p>
@@ -531,7 +531,7 @@ const CONCEPT_EXAMPLES = [
         <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
           Numeral fracionário varia!
         </h4>
-        <div className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-sm">
+        <div className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-lg">
           <p>
             Se significa "metade", concorda com o substantivo oculto (hora).
           </p>
@@ -565,7 +565,7 @@ const CONCEPT_EXAMPLES = [
         <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
           Verbo de preço = Advérbio!
         </h4>
-        <div className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-sm">
+        <div className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-lg">
           <p>
             Quando associado a verbo (custar, pagar), funciona como advérbio
             (modo/preço) e não varia.
@@ -597,7 +597,7 @@ const CONCEPT_EXAMPLES = [
         <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
           Concorda com quem fala!
         </h4>
-        <div className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-sm">
+        <div className="text-left space-y-3 bg-muted/30 p-4 rounded-xl text-lg">
           <p>
             "Obrigado" é um adjetivo que expressa gratidão (sentir-se obrigado a
             retribuir).
@@ -1661,7 +1661,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
           <li className="text-green-600">
             ✅ "O documento vai <strong>anexo</strong>."
           </li>
-          <li className="text-red-500 text-xs mt-1">
+          <li className="text-red-500 text-lg mt-1">
             ⚠️ "Em anexo" é invariável (locução).
           </li>
         </ul>
@@ -1846,7 +1846,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
             ❌ "Ela <strong>mesmo</strong> fez."
           </li>
         </ul>
-        <p className="text-xs mt-2">
+        <p className="text-lg mt-2">
           ⚠️ "Mesmo" = "realmente" (advérbio) → invariável: "Ela fez{" "}
           <strong>mesmo</strong>."
         </p>
@@ -1898,7 +1898,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
             ❌ "Os soldados estão <strong>alertas</strong>."
           </li>
         </ul>
-        <p className="text-xs mt-2">
+        <p className="text-lg mt-2">
           ⚠️ Mesmo raciocínio para "a sós" → invariável.
         </p>
       </>
@@ -1925,7 +1925,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
             ❌ "Hajam <strong>vistas</strong> os problemas."
           </li>
         </ul>
-        <p className="text-xs mt-2">
+        <p className="text-lg mt-2">
           ⚠️ Bancas como CESGRANRIO consideram "haja vista" locução
           cristalizada.
         </p>
@@ -1962,7 +1962,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
             ❌ "Camisas <strong>verdes-musgos</strong>."
           </li>
         </ul>
-        <p className="text-xs mt-2">
+        <p className="text-lg mt-2">
           ⚠️ Exceção: surdo-mudo → surdos-mudos (ambos variam).
         </p>
       </>
@@ -1996,7 +1996,7 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
             ✅ Paredes <strong>creme</strong>
           </li>
         </ul>
-        <p className="text-xs mt-2">
+        <p className="text-lg mt-2">
           ⚠️ Exceção: "marrom" → "marrons" (varia normalmente).
         </p>
       </>
@@ -2162,15 +2162,15 @@ export default function AulaConcordancia({
                   <h4 className="flex items-center gap-2 font-bold text-indigo-600 dark:text-indigo-400 text-xl">
                     <LuCheck size={21} /> 01. Regra Geral
                   </h4>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                  <p className="text-lg text-slate-500 dark:text-slate-400">
                     O verbo concorda com o núcleo do sujeito em número
                     (singular/plural) e pessoa (1ª, 2ª ou 3ª).
                   </p>
                   <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
-                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400">
+                    <p className="text-lg font-bold uppercase tracking-widest text-slate-400">
                       Exemplos Formais:
                     </p>
-                    <div className="space-y-3 font-mono text-sm">
+                    <div className="space-y-3 font-mono text-lg">
                       <p className="p-2 bg-white dark:bg-slate-950 rounded-lg border border-slate-100 dark:border-slate-800">
                         "O **técnico** (singular) **concluiu** a análise."
                       </p>
@@ -2185,16 +2185,16 @@ export default function AulaConcordancia({
                   <h4 className="flex items-center gap-2 font-bold text-emerald-600 dark:text-emerald-400 text-xl">
                     <LuBrain size={21} /> 02. Identificação do Sujeito
                   </h4>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                  <p className="text-lg text-slate-500 dark:text-slate-400">
                     A precisão na concordância depende da correta identificação
                     do núcleo do sujeito, ignorando adjuntos adnominais ou
                     preposições intermediárias.
                   </p>
                   <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
-                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400">
+                    <p className="text-lg font-bold uppercase tracking-widest text-slate-400">
                       Exemplos Formais:
                     </p>
-                    <div className="space-y-3 font-mono text-sm">
+                    <div className="space-y-3 font-mono text-lg">
                       <p className="p-2 bg-white dark:bg-slate-950 rounded-lg border border-slate-100 dark:border-slate-800">
                         "A **lista** de materiais **chegou**." (concorda com
                         lista)
@@ -2241,7 +2241,7 @@ export default function AulaConcordancia({
                             em número e pessoa. Ponto.
                           </p>
                         </div>
-                        <p className="text-sm text-foreground">
+                        <p className="text-lg text-foreground">
                           Imagine um contrato: O sujeito manda, o verbo obedece.
                           Se o sujeito está no plural, o verbo{" "}
                           <strong className="text-foreground">
@@ -2270,7 +2270,7 @@ export default function AulaConcordancia({
                               </span>{" "}
                               de pássaros voou."
                             </p>
-                            <p className="text-xs text-muted-foreground mt-1">
+                            <p className="text-lg text-muted-foreground mt-1">
                               Quem voou? <strong>O bando</strong> (Sg). O verbo
                               fica no singular.
                             </p>
@@ -2283,7 +2283,7 @@ export default function AulaConcordancia({
                               </span>{" "}
                               da Petrobras aprovaram."
                             </p>
-                            <p className="text-xs text-muted-foreground mt-1">
+                            <p className="text-lg text-muted-foreground mt-1">
                               Quem aprovou? <strong>Os engenheiros</strong>{" "}
                               (Pl). O verbo vai para o plural.
                             </p>
@@ -2300,26 +2300,26 @@ export default function AulaConcordancia({
                         <p className="font-bold text-foreground mb-2">
                           Quando o Sujeito se Esconde
                         </p>
-                        <p className="text-sm mb-3">
+                        <p className="text-lg mb-3">
                           A banca ADORA colocar o sujeito depois do verbo para
                           te confundir. A regra não muda!
                         </p>
 
                         <div className="bg-card border border-border p-3 rounded-lg shadow-sm space-y-2">
-                          <div className="flex justify-between items-center text-sm">
+                          <div className="flex justify-between items-center text-lg">
                             <span>Ordem Direta:</span>
                             <span className="font-mono text-green-600">
                               As <strong>críticas</strong> chegaram.
                             </span>
                           </div>
-                          <div className="flex justify-between items-center text-sm border-t border-border pt-2">
+                          <div className="flex justify-between items-center text-lg border-t border-border pt-2">
                             <span>Ordem Inversa:</span>
                             <span className="font-mono text-green-600">
                               Chegaram as <strong>críticas</strong>.
                             </span>
                           </div>
                         </div>
-                        <div className="mt-3 bg-red-500/10 p-2 rounded text-xs text-red-600 border border-red-500/20">
+                        <div className="mt-3 bg-red-500/10 p-2 rounded text-lg text-red-600 border border-red-500/20">
                           ❌ Erro comum: "Chegou as encomendas." (O verbo
                           deveria concordar com "encomendas"!)
                         </div>
@@ -2412,7 +2412,7 @@ export default function AulaConcordancia({
                             ✅ "A Petrobras <strong>comprou</strong> novos
                             equipamentos."
                             <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (comprou O QUÊ? → equipamentos, sem preposição)
                             </span>
                           </li>
@@ -2420,7 +2420,7 @@ export default function AulaConcordancia({
                             ✅ "O técnico <strong>elaborou</strong> o
                             relatório."
                             <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (elaborou O QUÊ? → o relatório)
                             </span>
                           </li>
@@ -2428,7 +2428,7 @@ export default function AulaConcordancia({
                             ✅ "A equipe <strong>concluiu</strong> a
                             manutenção."
                             <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (concluiu O QUÊ? → a manutenção)
                             </span>
                           </li>
@@ -2466,7 +2466,7 @@ export default function AulaConcordancia({
                           </li>
                           <li className="text-red-500">❌ "Aluga-se casas."</li>
                         </ul>
-                        <p className="text-xs mt-2">
+                        <p className="text-lg mt-2">
                           ⚠️ Isso é a <strong>Partícula Apassivadora</strong> —
                           será aprofundado na Seção 5.
                         </p>
@@ -2490,7 +2490,7 @@ export default function AulaConcordancia({
                           </strong>
                           :
                         </p>
-                        <div className="bg-muted/30 p-3 rounded mt-2 space-y-1 text-sm">
+                        <div className="bg-muted/30 p-3 rounded mt-2 space-y-1 text-lg">
                           <p>
                             "Vendem-se <strong>apartamentos</strong>."
                           </p>
@@ -2500,7 +2500,7 @@ export default function AulaConcordancia({
                           </p>
                           <p>→ Logo, é VTD + SE = verbo no plural.</p>
                         </div>
-                        <p className="mt-2 text-xs">
+                        <p className="mt-2 text-lg">
                           Se a passiva analítica NÃO funcionar, o verbo
                           provavelmente é VTI e o SE é Índice de Indeterminação.
                         </p>
@@ -2574,7 +2574,7 @@ export default function AulaConcordancia({
                             ✅ "O engenheiro <strong>precisa de</strong>{" "}
                             aprovação."
                             <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (precisa DE QUÊ? → preposição obrigatória)
                             </span>
                           </li>
@@ -2582,7 +2582,7 @@ export default function AulaConcordancia({
                             ✅ "A empresa <strong>obedece às</strong> normas da
                             ANP."
                             <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (obedece A QUÊ? → preposição A)
                             </span>
                           </li>
@@ -2592,7 +2592,7 @@ export default function AulaConcordancia({
                           </li>
                         </ul>
                         <div className="bg-red-500/10 p-3 rounded-lg mt-3">
-                          <p className="text-sm">
+                          <p className="text-lg">
                             <strong className="text-red-600">
                               Importante:
                             </strong>{" "}
@@ -2660,7 +2660,7 @@ export default function AulaConcordancia({
                           </strong>{" "}
                           para induzir ao erro:
                         </p>
-                        <div className="bg-muted/30 p-3 rounded mt-2 space-y-2 text-sm">
+                        <div className="bg-muted/30 p-3 rounded mt-2 space-y-2 text-lg">
                           <p>
                             "Trata-se de <strong>questões</strong> complexas."
                           </p>
@@ -2676,7 +2676,7 @@ export default function AulaConcordancia({
                             → Verbo fica no SINGULAR sempre.
                           </p>
                         </div>
-                        <p className="mt-2 text-xs">
+                        <p className="mt-2 text-lg">
                           🧠 Macete: A preposição (DE) é uma{" "}
                           <strong>barreira</strong> — o termo após ela nunca é
                           sujeito.
@@ -2735,7 +2735,7 @@ export default function AulaConcordancia({
                           <li className="text-green-600">
                             ✅ "O equipamento <strong>falhou</strong> ontem."
                             <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               ("ontem" é adjunto de tempo, não complemento)
                             </span>
                           </li>
@@ -2743,13 +2743,13 @@ export default function AulaConcordancia({
                             ✅ "Os técnicos <strong>chegaram</strong> à
                             plataforma."
                             <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               ("à plataforma" é adjunto de lugar)
                             </span>
                           </li>
                         </ul>
                         <div className="bg-yellow-500/10 p-3 rounded-lg mt-3">
-                          <p className="text-sm">
+                          <p className="text-lg">
                             <strong className="text-yellow-700 dark:text-yellow-400">
                               ⚠️ Cuidado:
                             </strong>{" "}
@@ -2776,8 +2776,8 @@ export default function AulaConcordancia({
                           <div className="flex gap-2 items-start">
                             <span className="text-lg">🟢</span>
                             <div>
-                              <p className="font-bold text-sm">VTD:</p>
-                              <p className="text-xs">
+                              <p className="font-bold text-lg">VTD:</p>
+                              <p className="text-lg">
                                 "Comprou <strong>algo</strong>." → Com
                                 complemento, sem preposição.
                               </p>
@@ -2786,8 +2786,8 @@ export default function AulaConcordancia({
                           <div className="flex gap-2 items-start">
                             <span className="text-lg">🔴</span>
                             <div>
-                              <p className="font-bold text-sm">VTI:</p>
-                              <p className="text-xs">
+                              <p className="font-bold text-lg">VTI:</p>
+                              <p className="text-lg">
                                 "Precisa <strong>de</strong> algo." → Com
                                 complemento, com preposição.
                               </p>
@@ -2796,8 +2796,8 @@ export default function AulaConcordancia({
                           <div className="flex gap-2 items-start">
                             <span className="text-lg">🔵</span>
                             <div>
-                              <p className="font-bold text-sm">VI:</p>
-                              <p className="text-xs">
+                              <p className="font-bold text-lg">VI:</p>
+                              <p className="text-lg">
                                 "Falhou." → <strong>Sem complemento</strong>. O
                                 resto é acessório.
                               </p>
@@ -2876,27 +2876,27 @@ export default function AulaConcordancia({
                           <li className="text-green-600">
                             ✅ "O problema <strong>são</strong> as falhas."{" "}
                             <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (Verbo SER atraído pelo predicativo plural —
                               aceito!)
                             </span>
                           </li>
                           <li className="text-green-600">
                             ✅ "O problema <strong>é</strong> as falhas." <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (Concordância com o sujeito — também aceito!)
                             </span>
                           </li>
                           <li className="text-green-600">
                             ✅ "Hoje <strong>são</strong> 15 de março." <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (Verbo SER indica datas, horas, distâncias →
                               concorda com o numeral)
                             </span>
                           </li>
                         </ul>
                         <div className="bg-yellow-500/10 p-3 rounded-lg mt-2">
-                          <p className="text-xs">
+                          <p className="text-lg">
                             <strong>Regra CESGRANRIO:</strong> O verbo SER é o
                             mais "flexível" — pode concordar com sujeito ou
                             predicativo, dependendo de qual é mais relevante
@@ -2916,31 +2916,31 @@ export default function AulaConcordancia({
                         </p>
                         <div className="space-y-2">
                           <div className="bg-muted/30 p-3 rounded">
-                            <p className="text-sm">
+                            <p className="text-lg">
                               <strong>1. Datas/Horas:</strong> "Hoje{" "}
                               <strong>são</strong> 15 de março." / "É 1h da
                               manhã."
                             </p>
-                            <p className="text-xs text-muted-foreground">
+                            <p className="text-lg text-muted-foreground">
                               → SER concorda com o numeral.
                             </p>
                           </div>
                           <div className="bg-muted/30 p-3 rounded">
-                            <p className="text-sm">
+                            <p className="text-lg">
                               <strong>2. Distâncias:</strong> "Daqui à
                               plataforma <strong>são</strong> 200 km."
                             </p>
-                            <p className="text-xs text-muted-foreground">
+                            <p className="text-lg text-muted-foreground">
                               → SER concorda com o numeral.
                             </p>
                           </div>
                           <div className="bg-muted/30 p-3 rounded">
-                            <p className="text-sm">
+                            <p className="text-lg">
                               <strong>3. Sujeito vs Predicativo:</strong> "Tudo{" "}
                               <strong>são</strong> flores." / "O culpado{" "}
                               <strong>somos</strong> nós."
                             </p>
-                            <p className="text-xs text-muted-foreground">
+                            <p className="text-lg text-muted-foreground">
                               → Se o predicativo é pronome pessoal ("nós"), SER
                               concorda com ele.
                             </p>
@@ -3024,14 +3024,14 @@ export default function AulaConcordancia({
                           <li className="text-green-600">
                             ✅ "A angústia e a aflição <strong>tomou</strong>{" "}
                             conta dele." <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (sinônimos = ideia única)
                             </span>
                           </li>
                           <li className="text-green-600">
                             ✅ "Um minuto, uma hora, um dia{" "}
                             <strong>passa</strong> rápido." <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (gradação crescente)
                             </span>
                           </li>
@@ -3049,21 +3049,21 @@ export default function AulaConcordancia({
                         </p>
                         <div className="space-y-3">
                           <div className="bg-muted/30 p-3 rounded">
-                            <p className="text-sm">
+                            <p className="text-lg">
                               {'"'}O gerente e a supervisora _____ (aprovar) o
                               or&ccedil;amento.{'"'}
                             </p>
-                            <p className="text-xs text-green-600 mt-1">
+                            <p className="text-lg text-green-600 mt-1">
                               {"=> "}
                               <strong>aprovaram</strong> (anteposto = plural)
                             </p>
                           </div>
                           <div className="bg-muted/30 p-3 rounded">
-                            <p className="text-sm">
+                            <p className="text-lg">
                               {'"'}A dedica&ccedil;&atilde;o e o empenho _____
                               (garantir) o sucesso.{'"'}
                             </p>
-                            <p className="text-xs text-green-600 mt-1">
+                            <p className="text-lg text-green-600 mt-1">
                               {"=> "}
                               <strong>garantiram</strong> (anteposto = plural)
                               ou <strong>garantiu</strong> (sin&ocirc;nimos)
@@ -3100,7 +3100,7 @@ export default function AulaConcordancia({
                             {"\u2705"} {'"'}
                             <strong>Chegaram</strong> o material e as
                             ferramentas.{'"'} <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (concord&acirc;ncia gramatical)
                             </span>
                           </li>
@@ -3108,13 +3108,13 @@ export default function AulaConcordancia({
                             {"\u2705"} {'"'}
                             <strong>Chegou</strong> o material e as ferramentas.
                             {'"'} <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (concord&acirc;ncia atrativa)
                             </span>
                           </li>
                         </ul>
                         <div className="bg-yellow-500/10 p-3 rounded-lg mt-3">
-                          <p className="text-xs">
+                          <p className="text-lg">
                             A CESGRANRIO aceita ambas, mas pede para identificar
                             qual &eacute; a preferencial (plural).
                           </p>
@@ -3140,19 +3140,19 @@ export default function AulaConcordancia({
                         </p>
                         <div className="space-y-2">
                           <div className="bg-muted/30 p-3 rounded">
-                            <p className="text-sm">
+                            <p className="text-lg">
                               <strong>OU = exclusão</strong> (um ou outro)
                             </p>
-                            <p className="text-xs text-green-600">
+                            <p className="text-lg text-green-600">
                               Verbo no SINGULAR: "Pedro ou João{" "}
                               <strong>será</strong> o gerente."
                             </p>
                           </div>
                           <div className="bg-muted/30 p-3 rounded">
-                            <p className="text-sm">
+                            <p className="text-lg">
                               <strong>OU = inclus&atilde;o</strong> (tanto faz)
                             </p>
-                            <p className="text-xs text-green-600">
+                            <p className="text-lg text-green-600">
                               Verbo no PLURAL: {'"'}O frio ou o calor{" "}
                               <strong>prejudicam</strong> a
                               opera&ccedil;&atilde;o.{'"'}
@@ -3178,7 +3178,7 @@ export default function AulaConcordancia({
                           </li>
                         </ul>
                         <div className="bg-yellow-500/10 p-3 rounded-lg mt-3">
-                          <p className="text-xs">
+                          <p className="text-lg">
                             <strong>Exce&ccedil;&atilde;o rara:</strong> Com
                             valor exclusivo aceita singular: {'"'}Nem
                             Jo&atilde;o nem Pedro <strong>ser&aacute;</strong>{" "}
@@ -3232,25 +3232,25 @@ export default function AulaConcordancia({
                         </p>
                         <div className="grid grid-cols-2 gap-2 mt-3">
                           <div className="bg-green-500/10 p-3 rounded-lg text-center">
-                            <p className="font-bold text-green-700 dark:text-green-400 text-sm">
+                            <p className="font-bold text-green-700 dark:text-green-400 text-lg">
                               {"\u2705"} Correto
                             </p>
-                            <p className="text-xs mt-1">
+                            <p className="text-lg mt-1">
                               {'"'}
                               <strong>Havia</strong> muitos riscos.{'"'}
                             </p>
                           </div>
                           <div className="bg-red-500/10 p-3 rounded-lg text-center">
-                            <p className="font-bold text-red-700 dark:text-red-400 text-sm">
+                            <p className="font-bold text-red-700 dark:text-red-400 text-lg">
                               {"\u274C"} Errado
                             </p>
-                            <p className="text-xs mt-1">
+                            <p className="text-lg mt-1">
                               {'"'}
                               <strong>Haviam</strong> muitos riscos...{'"'}
                             </p>
                           </div>
                         </div>
-                        <p className="text-xs mt-2 text-muted-foreground">
+                        <p className="text-lg mt-2 text-muted-foreground">
                           {"\u{1F9E0}"} {'"'}muitos riscos{'"'} n&atilde;o
                           &eacute; sujeito &mdash; &eacute; Objeto Direto de
                           HAVER.
@@ -3321,7 +3321,7 @@ export default function AulaConcordancia({
                           <li className="text-green-600">
                             {"\u2705"} {'"'}Eles se <strong>houveram</strong>{" "}
                             bem na prova.{'"'} <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (= portaram-se)
                             </span>
                           </li>
@@ -3329,13 +3329,13 @@ export default function AulaConcordancia({
                             {"\u2705"} {'"'}Os r&eacute;us{" "}
                             <strong>haver&atilde;o</strong> de responder.
                             {'"'} <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (= ter&atilde;o de)
                             </span>
                           </li>
                         </ul>
                         <div className="bg-yellow-500/10 p-3 rounded-lg mt-3">
-                          <p className="text-xs">
+                          <p className="text-lg">
                             <strong>Na prova:</strong> A CESGRANRIO usa esses
                             sentidos raros como distratores.
                           </p>
@@ -3382,7 +3382,7 @@ export default function AulaConcordancia({
                             <strong>Fazem</strong> cinco anos...{'"'} (ERRADO!)
                           </li>
                         </ul>
-                        <p className="text-xs mt-2 text-muted-foreground">
+                        <p className="text-lg mt-2 text-muted-foreground">
                           A contamina&ccedil;&atilde;o tamb&eacute;m se aplica:{" "}
                           {'"'}
                           <strong>Vai fazer</strong> dois anos{'"'} (n&atilde;o{" "}
@@ -3404,14 +3404,14 @@ export default function AulaConcordancia({
                           <li className="text-green-600">
                             {"\u2705"} {'"'}Os alunos <strong>fizeram</strong> a
                             prova.{'"'} <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (= realizaram)
                             </span>
                           </li>
                           <li className="text-green-600">
                             {"\u2705"} {'"'}As chuvas <strong>fizeram</strong>{" "}
                             estragos.{'"'} <br />
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-lg text-muted-foreground">
                               (= causaram)
                             </span>
                           </li>
@@ -3447,7 +3447,7 @@ export default function AulaConcordancia({
                             <span className="text-red-500 font-bold shrink-0">
                               HAVER:
                             </span>
-                            <div className="text-sm">
+                            <div className="text-lg">
                               <p>
                                 {'"'}
                                 <strong>Havia</strong> problemas.{'"'}{" "}
@@ -3464,7 +3464,7 @@ export default function AulaConcordancia({
                             <span className="text-green-600 font-bold shrink-0">
                               EXISTIR:
                             </span>
-                            <div className="text-sm">
+                            <div className="text-lg">
                               <p>
                                 {'"'}
                                 <strong>Existiam</strong> problemas.{'"'}{" "}
@@ -3517,7 +3517,7 @@ export default function AulaConcordancia({
                           </li>
                         </ul>
                         <div className="bg-yellow-500/10 p-3 rounded-lg mt-2">
-                          <p className="text-xs">
+                          <p className="text-lg">
                             {"\u{1F9E0}"} <strong>Macete:</strong> S&oacute;
                             HAVER &eacute; impessoal. Todos os {'"'}primos
                             {'"'} dele (existir, ocorrer, acontecer) s&atilde;o
@@ -3581,11 +3581,11 @@ export default function AulaConcordancia({
                           com esse sujeito!
                         </p>
                         <div className="bg-muted/30 p-3 rounded mt-2">
-                          <p className="text-sm">
+                          <p className="text-lg">
                             {'"'}Aluga-<strong>se</strong> casa.{'"'} = Casa{" "}
                             <strong>&eacute; alugada</strong>
                           </p>
-                          <p className="text-sm font-bold text-green-600">
+                          <p className="text-lg font-bold text-green-600">
                             {'"'}Alugam-<strong>se</strong> casas.{'"'} = Casas{" "}
                             <strong>s&atilde;o alugadas</strong>
                           </p>
@@ -3611,7 +3611,7 @@ export default function AulaConcordancia({
                           . Se funcionar, o verbo concorda!
                         </p>
                         <div className="space-y-2 mt-3">
-                          <div className="bg-muted/30 p-3 rounded text-sm">
+                          <div className="bg-muted/30 p-3 rounded text-lg">
                             <p>
                               {'"'}Vendem-se apartamentos.{'"'}
                             </p>
@@ -3621,7 +3621,7 @@ export default function AulaConcordancia({
                               {"\u2705"} Funciona!
                             </p>
                           </div>
-                          <div className="bg-muted/30 p-3 rounded text-sm">
+                          <div className="bg-muted/30 p-3 rounded text-lg">
                             <p>
                               {'"'}Contratam-se funcion&aacute;rios.{'"'}
                             </p>
@@ -3644,27 +3644,27 @@ export default function AulaConcordancia({
                           Armadilhas comuns na prova:
                         </p>
                         <div className="space-y-2">
-                          <div className="bg-red-500/10 p-3 rounded text-sm">
+                          <div className="bg-red-500/10 p-3 rounded text-lg">
                             <p className="text-red-500">
                               {"\u274C"} {'"'}Vende-se apartamentos.{'"'}
                             </p>
-                            <p className="text-xs text-muted-foreground">
+                            <p className="text-lg text-muted-foreground">
                               Apartamentos &eacute; o sujeito (plural) = verbo
                               no plural!
                             </p>
                           </div>
-                          <div className="bg-green-500/10 p-3 rounded text-sm">
+                          <div className="bg-green-500/10 p-3 rounded text-lg">
                             <p className="text-green-600">
                               {"\u2705"} {'"'}Vendem-se apartamentos.{'"'}
                             </p>
                           </div>
-                          <div className="bg-red-500/10 p-3 rounded text-sm">
+                          <div className="bg-red-500/10 p-3 rounded text-lg">
                             <p className="text-red-500">
                               {"\u274C"} {'"'}Contrata-se engenheiros.
                               {'"'}{" "}
                             </p>
                           </div>
-                          <div className="bg-green-500/10 p-3 rounded text-sm">
+                          <div className="bg-green-500/10 p-3 rounded text-lg">
                             <p className="text-green-600">
                               {"\u2705"} {'"'}Contratam-se engenheiros.{'"'}
                             </p>
@@ -3702,15 +3702,15 @@ export default function AulaConcordancia({
                           <strong className="text-foreground">SINGULAR</strong>.
                         </p>
                         <div className="bg-muted/30 p-3 rounded mt-2">
-                          <p className="text-sm">
+                          <p className="text-lg">
                             {'"'}Precisa-se <strong>de</strong> operador.
                             {'"'} (singular)
                           </p>
-                          <p className="text-sm font-bold text-green-600">
+                          <p className="text-lg font-bold text-green-600">
                             {'"'}Precisa-se <strong>de</strong> operadores.
                             {'"'} (singular tamb&eacute;m!)
                           </p>
-                          <p className="text-sm text-red-500">
+                          <p className="text-lg text-red-500">
                             {"\u274C"} {'"'}Precisam-se de operadores.{'"'}{" "}
                             (ERRADO!)
                           </p>
@@ -3728,37 +3728,37 @@ export default function AulaConcordancia({
                         </p>
                         <div className="space-y-2">
                           <div className="flex gap-2 items-start bg-indigo-500/10 p-3 rounded">
-                            <span className="font-bold text-indigo-600 shrink-0 text-sm">
+                            <span className="font-bold text-indigo-600 shrink-0 text-lg">
                               PA:
                             </span>
-                            <div className="text-sm">
+                            <div className="text-lg">
                               <p>
                                 <strong>VTD</strong> + SE = verbo{" "}
                                 <strong>concorda</strong> com o sujeito
                               </p>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="text-lg text-muted-foreground">
                                 Preposi&ccedil;&atilde;o? N&Atilde;O {"\u2192"}{" "}
                                 PA
                               </p>
                             </div>
                           </div>
                           <div className="flex gap-2 items-start bg-orange-500/10 p-3 rounded">
-                            <span className="font-bold text-orange-600 shrink-0 text-sm">
+                            <span className="font-bold text-orange-600 shrink-0 text-lg">
                               IIS:
                             </span>
-                            <div className="text-sm">
+                            <div className="text-lg">
                               <p>
                                 <strong>VTI/VI</strong> + SE = verbo sempre no{" "}
                                 <strong>SINGULAR</strong>
                               </p>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="text-lg text-muted-foreground">
                                 Preposi&ccedil;&atilde;o? SIM {"\u2192"} IIS
                               </p>
                             </div>
                           </div>
                         </div>
                         <div className="bg-yellow-500/10 p-3 rounded-lg mt-3">
-                          <p className="text-xs">
+                          <p className="text-lg">
                             {"\u{1F9E0}"} <strong>Macete:</strong> Viu a
                             PREPOSI&Ccedil;&Atilde;O depois do SE? &Eacute; IIS,
                             verbo no singular! Sem preposi&ccedil;&atilde;o?
@@ -3776,7 +3776,7 @@ export default function AulaConcordancia({
                         <p className="font-bold text-foreground mb-2">
                           Passo a passo para a quest&atilde;o:
                         </p>
-                        <ol className="space-y-2 list-decimal pl-5 text-sm">
+                        <ol className="space-y-2 list-decimal pl-5 text-lg">
                           <li>Identifique o verbo + SE</li>
                           <li>
                             Pergunte: tem{" "}
@@ -3796,7 +3796,7 @@ export default function AulaConcordancia({
                             concordar
                           </li>
                         </ol>
-                        <div className="bg-muted/30 p-3 rounded mt-3 text-sm">
+                        <div className="bg-muted/30 p-3 rounded mt-3 text-lg">
                           <p className="font-bold text-foreground">
                             Exemplo pr&aacute;tico:
                           </p>
@@ -3804,7 +3804,7 @@ export default function AulaConcordancia({
                             {'"'}Necessita-se <strong>de</strong> profissionais
                             qualificados.{'"'}
                           </p>
-                          <p className="text-xs text-muted-foreground mt-1">
+                          <p className="text-lg text-muted-foreground mt-1">
                             {"\u2192"} Tem {'"'}de{'"'}{" "}
                             (preposi&ccedil;&atilde;o) {"\u2192"} IIS {"\u2192"}{" "}
                             singular {"\u2192"} CORRETO!
@@ -3978,7 +3978,7 @@ export default function AulaConcordancia({
               variant="emerald"
               className="mb-2"
             />
-            <p className="text-muted-foreground text-sm ml-0 md:ml-[60px] -mt-6 mb-8">
+            <p className="text-muted-foreground text-lg ml-0 md:ml-[60px] -mt-6 mb-8">
               Entenda a lógica por trás da regra
             </p>
 
@@ -4012,18 +4012,18 @@ export default function AulaConcordancia({
               {/* LD: Comparação (Metáfora vs Técnica) */}
               <div className="flex flex-col gap-4">
                 <div className="flex-1 bg-card rounded-xl border-l-4 border-indigo-500 p-6 shadow-sm">
-                  <span className="text-xs font-bold uppercase tracking-wider text-indigo-500 mb-2 block">
+                  <span className="text-lg font-bold uppercase tracking-wider text-indigo-500 mb-2 block">
                     A Metáfora
                   </span>
                   <p className="text-lg font-medium text-foreground">
                     "O cometa (substantivo) define a cauda (adjetivos)."
                   </p>
-                  <p className="text-sm text-muted-foreground mt-2">
+                  <p className="text-lg text-muted-foreground mt-2">
                     Se o cometa muda de rota, a cauda segue.
                   </p>
                 </div>
                 <div className="flex-1 bg-card rounded-xl border-l-4 border-slate-500 p-6 shadow-sm">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">
+                  <span className="text-lg font-bold uppercase tracking-wider text-slate-500 mb-2 block">
                     A Regra Técnica
                   </span>
                   <p className="text-lg font-medium text-foreground">
@@ -4049,7 +4049,7 @@ export default function AulaConcordancia({
                     );
                     setCurrentExample(CONCEPT_EXAMPLES[random]);
                   }}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium hover:bg-indigo-200 dark:hover:bg-indigo-900/50 transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-lg font-medium hover:bg-indigo-200 dark:hover:bg-indigo-900/50 transition-colors cursor-pointer"
                 >
                   <LuShuffle className="w-3 h-3" />
                   Gerar novo exemplo
@@ -4155,7 +4155,7 @@ export default function AulaConcordancia({
                           </li>
                         </ul>
                         <div className="bg-yellow-500/10 p-3 rounded-lg mt-2">
-                          <p className="text-xs">
+                          <p className="text-lg">
                             <strong>Outros invari&aacute;veis:</strong> bastante
                             (quando adv&eacute;rbio), meio (quando
                             adv&eacute;rbio), caro/barato (quando
@@ -4174,7 +4174,7 @@ export default function AulaConcordancia({
                           Depende da fun&ccedil;&atilde;o:
                         </p>
                         <div className="space-y-2">
-                          <div className="bg-indigo-500/10 p-3 rounded text-sm">
+                          <div className="bg-indigo-500/10 p-3 rounded text-lg">
                             <p>
                               <strong className="text-indigo-600">
                                 Adv&eacute;rbio
@@ -4190,7 +4190,7 @@ export default function AulaConcordancia({
                               cansada.{'"'}
                             </p>
                           </div>
-                          <div className="bg-emerald-500/10 p-3 rounded text-sm">
+                          <div className="bg-emerald-500/10 p-3 rounded text-lg">
                             <p>
                               <strong className="text-emerald-600">
                                 Adjetivo/Numeral
@@ -4274,7 +4274,7 @@ export default function AulaConcordancia({
                           </li>
                         </ul>
                         <div className="bg-yellow-500/10 p-3 rounded-lg mt-2">
-                          <p className="text-xs">
+                          <p className="text-lg">
                             <strong>Cuidado:</strong> {'"'}EM ANEXO{'"'}{" "}
                             &eacute; locu&ccedil;&atilde;o adverbial e
                             n&atilde;o varia: {'"'}As planilhas seguem{" "}
@@ -4301,7 +4301,7 @@ export default function AulaConcordancia({
                           Depende do DETERMINANTE:
                         </p>
                         <div className="space-y-2">
-                          <div className="bg-muted/30 p-3 rounded text-sm">
+                          <div className="bg-muted/30 p-3 rounded text-lg">
                             <p>
                               <strong>SEM determinante</strong> (artigo){" "}
                               {"\u2192"} express&atilde;o{" "}
@@ -4317,7 +4317,7 @@ export default function AulaConcordancia({
                               paci&ecirc;ncia.{'"'}
                             </p>
                           </div>
-                          <div className="bg-muted/30 p-3 rounded text-sm">
+                          <div className="bg-muted/30 p-3 rounded text-lg">
                             <p>
                               <strong>COM determinante</strong> (artigo){" "}
                               {"\u2192"} express&atilde;o{" "}
@@ -4345,7 +4345,7 @@ export default function AulaConcordancia({
                         <p className="font-bold text-foreground mb-2">
                           Viu o ARTIGO? Concordou!
                         </p>
-                        <div className="space-y-2 text-sm">
+                        <div className="space-y-2 text-lg">
                           <p>
                             {"\u2705"} {'"'}&Eacute; proibido entrada.{'"'} (sem
                             artigo = invari&aacute;vel)
@@ -4369,7 +4369,7 @@ export default function AulaConcordancia({
                           </p>
                         </div>
                         <div className="bg-yellow-500/10 p-3 rounded-lg mt-3">
-                          <p className="text-xs">
+                          <p className="text-lg">
                             <strong>Na CESGRANRIO:</strong> Esta regra aparece
                             em quase todas as provas. A banca mistura frases com
                             e sem artigo como alternativas.
@@ -4467,12 +4467,12 @@ export default function AulaConcordancia({
                         <p className="text-xl font-bold text-center mb-2">
                           SUBSTANTIVO = ÍMÃ 🧲
                         </p>
-                        <p className="text-sm text-muted-foreground text-center leading-relaxed">
+                        <p className="text-lg text-muted-foreground text-center leading-relaxed">
                           Tudo ao redor (adjetivo, artigo, numeral) deve
                           concordar com o ímã em gênero e número!
                         </p>
                       </div>
-                      <div className="text-sm space-y-1 inline-block text-left">
+                      <div className="text-lg space-y-1 inline-block text-left">
                         <p>
                           ✅ "As <strong>duas</strong> casas{" "}
                           <strong>velhas</strong>."
@@ -4515,9 +4515,9 @@ export default function AulaConcordancia({
           <section id="quiz-modulo-2" className="mt-16">
             <QuizInterativo
               questoes={quizNominalQuestions}
-              titulo="Quiz de Fixação - Concordância Nominal"
+              titulo="QUIZ: Módulo Nº 2"
               icone="🧠"
-              numero={10}
+              numero={5}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -4572,7 +4572,7 @@ export default function AulaConcordancia({
                             <p className="font-bold text-violet-700 dark:text-violet-400">
                               Passo 1: Ache o VERBO
                             </p>
-                            <p className="text-sm mt-1">
+                            <p className="text-lg mt-1">
                               O primeiro passo é sempre localizar o verbo.{" "}
                               <strong>Grife-o</strong> imediatamente na prova.
                             </p>
@@ -4581,7 +4581,7 @@ export default function AulaConcordancia({
                             <p className="font-bold text-indigo-700 dark:text-indigo-400">
                               Passo 2: Pergunte {'"'}QUEM?{'"'}
                             </p>
-                            <p className="text-sm mt-1">
+                            <p className="text-lg mt-1">
                               Pergunte ao verbo: {'"'}Quem &eacute; que [verbo]?
                               {'"'} A resposta &eacute; o{" "}
                               <strong>Sujeito</strong>. O verbo DEVE concordar
@@ -4602,10 +4602,10 @@ export default function AulaConcordancia({
                             <p className="font-bold text-orange-700 dark:text-orange-400">
                               Passo 3: Tem {'"'}SE{'"'}?
                             </p>
-                            <p className="text-sm mt-1">
+                            <p className="text-lg mt-1">
                               Se tiver SE, analise a transitividade:
                             </p>
-                            <ul className="text-sm mt-1 space-y-1">
+                            <ul className="text-lg mt-1 space-y-1">
                               <li>
                                 {"\u2022"}{" "}
                                 <strong>Verbo Transitivo Direto + SE</strong> =
@@ -4625,7 +4625,7 @@ export default function AulaConcordancia({
                             <p className="font-bold text-red-700 dark:text-red-400">
                               Passo 4: DIST&Acirc;NCIA
                             </p>
-                            <p className="text-sm mt-1">
+                            <p className="text-lg mt-1">
                               As bancas adoram colocar {'"'}lixo{'"'} (adjuntos,
                               ora&ccedil;&otilde;es intercaladas) entre o
                               sujeito e o verbo.{" "}
@@ -4644,7 +4644,7 @@ export default function AulaConcordancia({
                         <p className="font-bold text-foreground mb-2">
                           Antes de marcar a quest&atilde;o, verifique:
                         </p>
-                        <ol className="space-y-2 list-decimal pl-5 text-sm">
+                        <ol className="space-y-2 list-decimal pl-5 text-lg">
                           <li>
                             O verbo est&aacute; concordando com o sujeito?
                           </li>
@@ -4661,7 +4661,7 @@ export default function AulaConcordancia({
                           </li>
                         </ol>
                         <div className="bg-violet-500/10 p-3 rounded-lg mt-3">
-                          <p className="text-xs">
+                          <p className="text-lg">
                             {"\u{1F4A1}"} <strong>Dica:</strong> Se sobrar
                             tempo, releia a alternativa escolhida aplicando cada
                             passo mentalmente.
@@ -4683,7 +4683,7 @@ export default function AulaConcordancia({
                     icone: "\u{1F6A8}",
                     conteudo:(
                       <>
-                        <div className="space-y-2 text-sm">
+                        <div className="space-y-2 text-lg">
                           <div className="flex gap-2">
                             <span className="font-bold text-red-500 shrink-0">
                               1.
@@ -4748,7 +4748,7 @@ export default function AulaConcordancia({
                         <p className="font-bold text-foreground mb-2">
                           Estrat&eacute;gias finais:
                         </p>
-                        <ul className="space-y-2 text-sm">
+                        <ul className="space-y-2 text-lg">
                           <li className="flex gap-2">
                             <span>{"\u{1F552}"}</span>
                             <span>
@@ -4837,7 +4837,7 @@ export default function AulaConcordancia({
                         <p className="text-lg md:text-xl font-bold text-emerald-800 dark:text-emerald-200 text-center mb-6 break-words max-w-full">
                           "{shuffledChallenges[challengeIndex].correct}"
                         </p>
-                        <div className="w-full flex items-start gap-3 text-sm text-emerald-700 dark:text-emerald-300 bg-white/60 dark:bg-black/20 p-4 rounded-xl border border-emerald-100/50 dark:border-emerald-800/30 backdrop-blur-sm">
+                        <div className="w-full flex items-start gap-3 text-lg text-emerald-700 dark:text-emerald-300 bg-white/60 dark:bg-black/20 p-4 rounded-xl border border-emerald-100/50 dark:border-emerald-800/30 backdrop-blur-sm">
                           <span className="text-lg shrink-0">💡</span>
                           <p className="leading-relaxed font-medium">
                             {shuffledChallenges[challengeIndex].explanation}
@@ -4850,7 +4850,7 @@ export default function AulaConcordancia({
 
                 {/* ACTIONS FOOTER: BADGE + BUTTON */}
                 <div className="flex flex-col md:flex-row items-center justify-center gap-4 pt-10 border-t border-border/50">
-                  <span className="bg-muted text-muted-foreground px-4 py-2 rounded-full text-sm font-bold border border-border">
+                  <span className="bg-muted text-muted-foreground px-4 py-2 rounded-full text-lg font-bold border border-border">
                     Questão {challengeIndex + 1} de {shuffledChallenges.length}
                   </span>
                   <button
@@ -4860,7 +4860,7 @@ export default function AulaConcordancia({
                       )
                     }
                     className={cn(
-                      "px-8 py-3 text-white rounded-full text-base font-bold shadow-lg transition-all flex items-center justify-center gap-2 active:scale-95 transform hover:-translate-y-0.5",
+                      "px-8 py-3 text-white rounded-full text-lg font-bold shadow-lg transition-all flex items-center justify-center gap-2 active:scale-95 transform hover:-translate-y-0.5",
                       materiaCor.includes("blue")
                         ? "bg-gradient-to-r from-blue-600 to-cyan-600 shadow-blue-500/20 hover:shadow-blue-500/40"
                         : materiaCor.includes("emerald")
@@ -5029,11 +5029,11 @@ export default function AulaConcordancia({
                 <h4 className="font-bold text-amber-700 dark:text-amber-400 mb-2">
                   Porcentagem
                 </h4>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-lg text-muted-foreground mb-4">
                   O verbo concorda com o numeral ou com o substantivo que o
                   segue.
                 </p>
-                <ul className="space-y-2 text-sm">
+                <ul className="space-y-2 text-lg">
                   <li className="text-green-600">
                     ✅ "1% do <strong>pessoal</strong> faltou."
                   </li>
@@ -5049,10 +5049,10 @@ export default function AulaConcordancia({
                 <h4 className="font-bold text-orange-700 dark:text-orange-400 mb-2">
                   Frações
                 </h4>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-lg text-muted-foreground mb-4">
                   O verbo concorda com o <strong>numerador</strong> da fração.
                 </p>
-                <ul className="space-y-2 text-sm">
+                <ul className="space-y-2 text-lg">
                   <li className="text-green-600">
                     ✅ "<strong>Um</strong> terço dos poços parou."
                   </li>
@@ -5074,7 +5074,7 @@ export default function AulaConcordancia({
             <div className="space-y-4">
               <div className="p-6 bg-red-500/5 rounded-xl border border-red-500/10">
                 <p className="font-bold mb-2">Sujeito é o relativo "QUE":</p>
-                <p className="text-sm mb-4">
+                <p className="text-lg mb-4">
                   O verbo concorda com o <strong>antecedente</strong> do "QUE".
                 </p>
                 <p className="text-green-600 font-medium">
@@ -5083,11 +5083,11 @@ export default function AulaConcordancia({
               </div>
               <div className="p-6 bg-rose-500/5 rounded-xl border border-rose-500/10">
                 <p className="font-bold mb-2">Sujeito é o relativo "QUEM":</p>
-                <p className="text-sm mb-4">
+                <p className="text-lg mb-4">
                   O verbo pode ficar na <strong>3ª pessoa do singular</strong>{" "}
                   ou concordar com o <strong>antecedente</strong>.
                 </p>
-                <ul className="space-y-2 text-sm">
+                <ul className="space-y-2 text-lg">
                   <li className="text-green-600">
                     ✅ "Fomos nós quem <strong>fez</strong>." (singular - mais
                     comum em prova)
@@ -5162,9 +5162,9 @@ export default function AulaConcordancia({
           <section id="quiz-modulo-4" className="mt-16">
             <QuizInterativo
               questoes={quizAprofundamentoQuestions}
-              titulo="Desafio de Elite - Casos Complexos"
+              titulo="QUIZ: Módulo Nº 4"
               icone="🔥"
-              numero={10}
+              numero={4}
               variant="amber"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -5195,13 +5195,13 @@ export default function AulaConcordancia({
             <div className="flex flex-wrap justify-center gap-4">
               <div className="p-4 bg-primary/10 rounded-2xl border border-primary/20 min-w-[150px]">
                 <p className="text-3xl font-bold text-primary">10</p>
-                <p className="text-xs uppercase tracking-widest font-bold opacity-70">
+                <p className="text-lg uppercase tracking-widest font-bold opacity-70">
                   Questões
                 </p>
               </div>
               <div className="p-4 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 min-w-[150px]">
                 <p className="text-3xl font-bold text-emerald-600">85%</p>
-                <p className="text-xs uppercase tracking-widest font-bold opacity-70">
+                <p className="text-lg uppercase tracking-widest font-bold opacity-70">
                   Meta Elite
                 </p>
               </div>

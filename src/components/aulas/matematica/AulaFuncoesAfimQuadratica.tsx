@@ -17,7 +17,7 @@ import {
   type FunctionPlot,
 } from "../shared";
 
-import { getModuleVariant } from "@/lib/moduleColors";
+import { getModuleVariant, getAllModuleVariants } from "@/lib/moduleColors";
 
 import {
   LuBookOpen,
@@ -55,6 +55,8 @@ const MODULE_DEFS = [
   { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
+
+const mv = [undefined, ...getAllModuleVariants()];
 
 export default function AulaFuncoesAfimQuadratica({
   onComplete,
@@ -141,10 +143,7 @@ export default function AulaFuncoesAfimQuadratica({
     }
   };
 
-  const isModuleUnlocked = (index: number) => {
-    if (isCompleted || index === 0) return true;
-    return completedModules.has(MODULE_DEFS[index - 1].id);
-  };
+  const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
 
   return (
     <AulaTemplate
@@ -175,19 +174,17 @@ export default function AulaFuncoesAfimQuadratica({
       {/* ═══ MÓDULO 1: A FUNÇÃO AFIM ═══ */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={1}
+          <ModuleBanner numero={1}
             titulo="Função Afim (A Reta)"
             descricao="Custo fixo e variável: modelando o comportamento corporativo."
-            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
-          />
+             variant={mv[1]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Função Afim: Fundamentos da Reta"
               description="Modelagem linear em operações Petrobras"
-              variant={getModuleVariant(1)}
+              variant={mv[1]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -377,7 +374,7 @@ export default function AulaFuncoesAfimQuadratica({
 
 
 <ModuleConsolidation
-            index={1}
+            index={2}
             variant="blue"
             video={{
               videoId: "gZDzgZxrvAo",
@@ -433,7 +430,7 @@ export default function AulaFuncoesAfimQuadratica({
                       <QuizInterativo
               questoes={quizM1}
               titulo="QUIZ: Módulo Nº 1"
-              numero={2}
+              numero={3}
               variant="blue"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -445,19 +442,17 @@ export default function AulaFuncoesAfimQuadratica({
       {/* ═══ MÓDULO 2: A FUNÇÃO QUADRÁTICA ═══ */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={2}
+          <ModuleBanner numero={2}
             titulo="A Função Quadrática"
             descricao="O reino do crescimento acelerado e do formato parabólico."
-            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
-          />
+             variant={mv[2]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={2}
+              index={1}
               title="A Função Quadrática: Parábolas e Otimização"
               description="Forma, vértice e análise de extremos"
-              variant={getModuleVariant(2)}
+              variant={mv[2]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -724,7 +719,7 @@ export default function AulaFuncoesAfimQuadratica({
                       <QuizInterativo
               questoes={quizM2}
               titulo="Fixação - Função Quadrática"
-              numero={2}
+              numero={3}
               variant="emerald"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
@@ -736,19 +731,17 @@ export default function AulaFuncoesAfimQuadratica({
       {/* ═══ MÓDULO 3: INTERPRETAÇÃO GRÁFICA ═══ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={3}
+          <ModuleBanner numero={3}
             titulo="Interpretação Geográfica"
             descricao="Brotou o gráfico na sua frente. O que ele está dizendo?"
-            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
-          />
+             variant={mv[3]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={3}
+              index={1}
               title="Interpretação Gráfica: Sinal e Monotonia"
               description="Lendo parábolas e retas para extrair informações"
-              variant={getModuleVariant(3)}
+              variant={mv[3]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -940,7 +933,7 @@ export default function AulaFuncoesAfimQuadratica({
 
 
 <ModuleConsolidation
-            index={3}
+            index={2}
             variant="amber"
             video={{
               videoId: "9KZg0LdwAg4",
@@ -995,7 +988,7 @@ export default function AulaFuncoesAfimQuadratica({
                       <QuizInterativo
               questoes={quizM3}
               titulo="QUIZ: Módulo Nº 3"
-              numero={4}
+              numero={3}
               variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -1007,16 +1000,14 @@ export default function AulaFuncoesAfimQuadratica({
       {/* ═══ MÓDULO 4: APLICAÇÕES E OTIMIZAÇÃO ═══ */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={4}
+          <ModuleBanner numero={4}
             titulo="O Vértice do Poder"
             descricao="Maximizando o lucro da empresa ou escapando da ruína a tempo."
-            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
-          />
+             variant={mv[4]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={4}
+              index={1}
               title="Dominando Vértices"
               description="Não tente achar raízes em problemas de lucro máximo."
               variant="cyan"
@@ -1143,7 +1134,7 @@ export default function AulaFuncoesAfimQuadratica({
 
 
 <ModuleConsolidation
-            index={4}
+            index={2}
             variant="cyan"
             video={{
               videoId: "7Pg5MZV2XqU",
@@ -1198,7 +1189,7 @@ export default function AulaFuncoesAfimQuadratica({
                       <QuizInterativo
               questoes={quizM4}
               titulo="Fixação - Otimização"
-              numero={4}
+              numero={3}
               variant="cyan"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
@@ -1210,16 +1201,14 @@ export default function AulaFuncoesAfimQuadratica({
       {/* ═══ MÓDULO 5: COMPARAÇÃO AFIM VS QUADRÁTICA ═══ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={5}
+          <ModuleBanner numero={5}
             titulo="Comparação Afim vs Quadrática"
             descricao="Entenda as diferenças e semelhanças entre retas e parábolas."
-            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
-          />
+             variant={mv[5]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={5}
+              index={1}
               title="Duas Famílias Distintas"
               description="Linear versus Quadrático: comportamentos completamente diferentes."
               variant="violet"
@@ -1377,7 +1366,7 @@ export default function AulaFuncoesAfimQuadratica({
 
 
 <ModuleConsolidation
-            index={5}
+            index={2}
             variant="violet"
             video={{
               videoId: "tZzgzUaHdCw",
@@ -1436,7 +1425,7 @@ export default function AulaFuncoesAfimQuadratica({
                       <QuizInterativo
               questoes={quizM5}
               titulo="QUIZ: Módulo Nº 5"
-              numero={6}
+              numero={3}
               variant="violet"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -1448,16 +1437,14 @@ export default function AulaFuncoesAfimQuadratica({
       {/* ═══ MÓDULO 6: INEQUAÇÕES ═══ */}
       <TabsContent value="modulo-6" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={6}
+          <ModuleBanner numero={6}
             titulo="Inequações com Afim e Quadrática"
             descricao="Resolva f(x) > 0, f(x) < 0 e variações com confiança."
-            gradiente="bg-gradient-to-br from-amber-600 to-orange-800"
-          />
+             variant={mv[6]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={6}
+              index={1}
               title="Estudando o Sinal da Função"
               description="Onde a função é positiva, negativa ou nula."
               variant="amber"
@@ -1590,7 +1577,7 @@ export default function AulaFuncoesAfimQuadratica({
 
 
 <ModuleConsolidation
-            index={6}
+            index={2}
             variant="amber"
             video={{
               videoId: "4KzE9R6zWzY",
@@ -1646,7 +1633,7 @@ export default function AulaFuncoesAfimQuadratica({
                       <QuizInterativo
               questoes={quizM6}
               titulo="Fixação - Inequações"
-              numero={6}
+              numero={3}
               variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
@@ -1658,16 +1645,14 @@ export default function AulaFuncoesAfimQuadratica({
       {/* ═══ MÓDULO 7: SISTEMAS E INTERSECÇÕES ═══ */}
       <TabsContent value="modulo-7" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={7}
+          <ModuleBanner numero={7}
             titulo="Sistemas e Intersecções"
             descricao="Encontre onde retas e parábolas se cruzam no plano cartesiano."
-            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
-          />
+             variant={mv[7]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={7}
+              index={1}
               title="Encontrando Pontos de Encontro"
               description="Sistemas com funções afim e quadrática."
               variant="cyan"
@@ -1842,7 +1827,7 @@ export default function AulaFuncoesAfimQuadratica({
 
 
 <ModuleConsolidation
-            index={7}
+            index={2}
             variant="cyan"
             video={{
               videoId: "5Rw9KzK3jqA",
@@ -1897,7 +1882,7 @@ export default function AulaFuncoesAfimQuadratica({
                       <QuizInterativo
               questoes={quizM7}
               titulo="QUIZ: Módulo Nº 7"
-              numero={8}
+              numero={3}
               variant="cyan"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
@@ -1909,16 +1894,14 @@ export default function AulaFuncoesAfimQuadratica({
       {/* ═══ MÓDULO 8: OTIMIZAÇÃO AVANÇADA ═══ */}
       <TabsContent value="modulo-8" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={8}
+          <ModuleBanner numero={8}
             titulo="Otimização Avançada"
             descricao="Maximizar lucros, minimizar custos e resolver problemas reais."
-            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
-          />
+             variant={mv[8]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={8}
+              index={1}
               title="Vértice: O Ponto Mágico"
               description="Máximos e mínimos de funções quadráticas."
               variant="emerald"
@@ -2059,7 +2042,7 @@ export default function AulaFuncoesAfimQuadratica({
 
 
 <ModuleConsolidation
-            index={8}
+            index={2}
             variant="emerald"
             video={{
               videoId: "7Pg5MZV2XqU",
@@ -2114,7 +2097,7 @@ export default function AulaFuncoesAfimQuadratica({
                       <QuizInterativo
               questoes={quizM8}
               titulo="Fixação - Otimização Avançada"
-              numero={8}
+              numero={3}
               variant="emerald"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
@@ -2126,16 +2109,14 @@ export default function AulaFuncoesAfimQuadratica({
       {/* ═══ MÓDULO 9: APLICAÇÕES PETROBRAS ═══ */}
       <TabsContent value="modulo-9" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={9}
+          <ModuleBanner numero={9}
             titulo="Aplicações Petrobras"
             descricao="Resolvendo problemas reais da indústria de petróleo e gás."
-            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
-          />
+             variant={mv[9]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={9}
+              index={1}
               title="Matemática Corporativa"
               description="Casos de uso na Petrobras e similares."
               variant="rose"
@@ -2285,7 +2266,7 @@ export default function AulaFuncoesAfimQuadratica({
 
 
 <ModuleConsolidation
-            index={9}
+            index={2}
             variant="rose"
             video={{
               videoId: "2xQr4vZ5M1I",
@@ -2341,7 +2322,7 @@ export default function AulaFuncoesAfimQuadratica({
                       <QuizInterativo
               questoes={quizM9}
               titulo="QUIZ: Módulo Nº 9"
-              numero={10}
+              numero={3}
               variant="rose"
               icone="🌹"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
@@ -2353,12 +2334,10 @@ export default function AulaFuncoesAfimQuadratica({
       {/* ═══ MÓDULO 10: SIMULADO MESTRE ═══ */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={10}
+          <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="Teste final: integre tudo e domine funções afim e quadrática."
-            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
-          />
+             variant={mv[10]}/>
 
           {showCompletionBadge ? (
             <div className="flex flex-col items-center gap-6 py-10 mt-10">
@@ -2377,7 +2356,7 @@ export default function AulaFuncoesAfimQuadratica({
                 questoes={quizM10}
                 titulo="Simulado Elite - Funções Afim e Quadrática"
                 icone="🏆"
-                numero={10}
+                numero={1}
                 variant="slate"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />

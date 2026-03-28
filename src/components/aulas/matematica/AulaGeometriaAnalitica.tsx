@@ -27,7 +27,9 @@ import {
   QUIZ_M9_APLICACOES_PETROBRAS,
   QUIZ_M10_SIMULADO,
 } from "./data/geometria-analitica-quizzes";
-import { getModuleVariant } from "@/lib/moduleColors";
+import { getModuleVariant, getAllModuleVariants } from "@/lib/moduleColors";
+
+const mv = [undefined, ...getAllModuleVariants()];
 
 export default function AulaGeometriaAnalitica({
   onComplete,
@@ -61,7 +63,7 @@ export default function AulaGeometriaAnalitica({
   const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_APLICACOES_PETROBRAS, 6));
   const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO, 6));
 
-  const isModuleUnlocked = (_index: number) => true;
+  const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
@@ -125,12 +127,10 @@ export default function AulaGeometriaAnalitica({
       {/* MÓDULO 1: PONTO NO PLANO CARTESIANO                              */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
-        <ModuleBanner
-          numero={1}
+        <ModuleBanner numero={1}
           titulo="Ponto no Plano Cartesiano"
           descricao="Domine o sistema de coordenadas, quadrantes, simetrias e a localização de pontos — base de toda a Geometria Analítica."
-          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
-        />
+           variant={mv[1]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -244,7 +244,7 @@ export default function AulaGeometriaAnalitica({
 
 
 <ModuleConsolidation
-            index={1}
+            index={2}
             variant="indigo"
             video={{
               videoId: "6coNvK0rMoE",
@@ -290,12 +290,10 @@ export default function AulaGeometriaAnalitica({
       {/* MÓDULO 2: DISTÂNCIA ENTRE PONTOS E PONTO MÉDIO                   */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
-        <ModuleBanner
-          numero={2}
+        <ModuleBanner numero={2}
           titulo="Distância entre Pontos e Ponto Médio"
           descricao="As fórmulas essenciais para medir separação e encontrar o centro entre dois pontos — aplicadas em mapeamento de dutos e plataformas."
-          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
-        />
+           variant={mv[2]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -475,12 +473,10 @@ export default function AulaGeometriaAnalitica({
       {/* MÓDULO 3: EQUAÇÃO DA RETA                                        */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
-        <ModuleBanner
-          numero={3}
+        <ModuleBanner numero={3}
           titulo="Equação da Reta"
           descricao="Forme reduzida, geral e segmentária — entenda o coeficiente angular e linear para modelar qualquer trajetória linear."
-          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
-        />
+           variant={mv[3]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -630,7 +626,7 @@ export default function AulaGeometriaAnalitica({
 
 
 <ModuleConsolidation
-            index={3}
+            index={2}
             variant="cyan"
             video={{
               videoId: "oSbX2VVjkts",
@@ -676,12 +672,10 @@ export default function AulaGeometriaAnalitica({
       {/* MÓDULO 4: POSIÇÃO RELATIVA ENTRE RETAS                           */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
-        <ModuleBanner
-          numero={4}
+        <ModuleBanner numero={4}
           titulo="Posição Relativa entre Retas"
           descricao="Paralelas, perpendiculares, coincidentes ou secantes — aprenda a classificar retas e encontrar pontos de interseção."
-          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
-        />
+           variant={mv[4]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -785,7 +779,7 @@ export default function AulaGeometriaAnalitica({
 
 
 <ModuleConsolidation
-            index={4}
+            index={2}
             variant="blue"
             video={{
               videoId: "QJL5J6LjqFE",
@@ -831,12 +825,10 @@ export default function AulaGeometriaAnalitica({
       {/* MÓDULO 5: DISTÂNCIA PONTO-RETA                                   */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
-        <ModuleBanner
-          numero={5}
+        <ModuleBanner numero={5}
           titulo="Distância de um Ponto a uma Reta"
           descricao="A fórmula mais testada em concursos — fundamental para calcular afastamentos de equipamentos a gasodutos e zonas de segurança."
-          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
-        />
+           variant={mv[5]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -946,7 +938,7 @@ export default function AulaGeometriaAnalitica({
 
 
 <ModuleConsolidation
-            index={5}
+            index={2}
             variant="amber"
             video={{
               videoId: "D4FZQBmYzFU",
@@ -992,12 +984,10 @@ export default function AulaGeometriaAnalitica({
       {/* MÓDULO 6: CIRCUNFERÊNCIA                                         */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-6" className="space-y-[50px]">
-        <ModuleBanner
-          numero={6}
+        <ModuleBanner numero={6}
           titulo="Circunferência: Equação e Posições Relativas"
           descricao="Modele tanques, zonas de segurança e áreas de influência com a equação da circunferência e analise posições de pontos e retas."
-          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
-        />
+           variant={mv[6]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1123,7 +1113,7 @@ export default function AulaGeometriaAnalitica({
 
 
 <ModuleConsolidation
-            index={6}
+            index={2}
             variant="rose"
             video={{
               videoId: "8YS-4Zj1JVo",
@@ -1169,12 +1159,10 @@ export default function AulaGeometriaAnalitica({
       {/* MÓDULO 7: PARÁBOLA                                               */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-7" className="space-y-[50px]">
-        <ModuleBanner
-          numero={7}
+        <ModuleBanner numero={7}
           titulo="Parábola"
           descricao="Vértice, eixo de simetria, raízes e concavidade — a cônica mais presente em trajetórias, câmaras e otimizações industriais."
-          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
-        />
+           variant={mv[7]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1309,7 +1297,7 @@ export default function AulaGeometriaAnalitica({
 
 
 <ModuleConsolidation
-            index={7}
+            index={2}
             variant="indigo"
             video={{
               videoId: "F3T0xZZz9nE",
@@ -1355,12 +1343,10 @@ export default function AulaGeometriaAnalitica({
       {/* MÓDULO 8: INTERSEÇÕES E SISTEMAS                                 */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-8" className="space-y-[50px]">
-        <ModuleBanner
-          numero={8}
+        <ModuleBanner numero={8}
           titulo="Interseções e Sistemas"
           descricao="Combine retas, circunferências e parábolas em sistemas — encontre pontos de cruzamento com precisão analítica."
-          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
-        />
+           variant={mv[8]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1461,7 +1447,7 @@ export default function AulaGeometriaAnalitica({
 
 
 <ModuleConsolidation
-            index={8}
+            index={2}
             variant="emerald"
             video={{
               videoId: "hCHWEFQgQPw",
@@ -1507,12 +1493,10 @@ export default function AulaGeometriaAnalitica({
       {/* MÓDULO 9: APLICAÇÕES PETROBRAS                                   */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-9" className="space-y-[50px]">
-        <ModuleBanner
-          numero={9}
+        <ModuleBanner numero={9}
           titulo="Aplicações Petrobras — Coordenadas Industriais"
           descricao="Plataformas, dutos, FPSOs e zonas de exclusão: Geometria Analítica no cenário real dos concursos CESGRANRIO para a Petrobras."
-          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
-        />
+           variant={mv[9]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1640,7 +1624,7 @@ export default function AulaGeometriaAnalitica({
 
 
 <ModuleConsolidation
-            index={9}
+            index={2}
             variant="cyan"
             video={{
               videoId: "SflP4vQ0jEE",
@@ -1686,12 +1670,10 @@ export default function AulaGeometriaAnalitica({
       {/* MÓDULO 10: SIMULADO CESGRANRIO                                   */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
-        <ModuleBanner
-          numero={10}
+        <ModuleBanner numero={10}
           titulo="Simulado Final — Padrão CESGRANRIO"
           descricao="Questões no nível e estilo exatos da banca CESGRANRIO. Integre todos os conceitos de Geometria Analítica com velocidade e precisão."
-          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
-        />
+           variant={mv[10]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1828,7 +1810,7 @@ export default function AulaGeometriaAnalitica({
 
 
 <ModuleConsolidation
-            index={10}
+            index={2}
             variant="blue"
             video={{
               videoId: "7U2Vh_7y3BE",

@@ -232,7 +232,7 @@ export default function AulaCoesaoCoerencia({
                         <h4 className="font-bold text-blue-600 mb-2">
                           Coesão (Capa/Forma)
                         </h4>
-                        <p className="text-sm">
+                        <p className="text-lg">
                           Uso de pronomes, conjunções, sinônimos e pontuação
                           para ligar as frases.
                         </p>
@@ -241,7 +241,7 @@ export default function AulaCoesaoCoerencia({
                         <h4 className="font-bold text-emerald-600 mb-2">
                           Coerência (Interior/Sentido)
                         </h4>
-                        <p className="text-sm">
+                        <p className="text-lg">
                           Unidade lógica, ausência de contradição e relevância
                           das informações.
                         </p>
@@ -291,7 +291,7 @@ export default function AulaCoesaoCoerencia({
                       <p className="text-muted-foreground leading-relaxed">
                         Referência é o mecanismo pelo qual um elemento do texto remete a outro — dentro do próprio texto (endofórica) ou fora dele (exofórica). Divide-se em <strong>anáfora</strong> (retoma o que já foi dito) e <strong>catáfora</strong> (antecipa o que será dito).
                       </p>
-                      <div className="p-3 bg-blue-500/5 rounded-xl border-l-4 border-blue-500 font-mono text-sm italic">
+                      <div className="p-3 bg-blue-500/5 rounded-xl border-l-4 border-blue-500 font-mono text-lg italic">
                         "A engenheira chegou. <span className="text-blue-600 font-bold">Ela</span> assumiu o posto." — 'ela' refere-se a 'a engenheira'.
                       </div>
                     </div>
@@ -305,7 +305,7 @@ export default function AulaCoesaoCoerencia({
                       <p className="text-muted-foreground leading-relaxed">
                         A substituição troca um elemento por outro de valor equivalente para evitar repetição. Pode ser <strong>nominal</strong>, <strong>verbal</strong> ou <strong>oracional</strong>.
                       </p>
-                      <div className="p-3 bg-emerald-500/5 rounded-xl border-l-4 border-emerald-500 font-mono text-sm italic">
+                      <div className="p-3 bg-emerald-500/5 rounded-xl border-l-4 border-emerald-500 font-mono text-lg italic">
                         "O relatório técnico foi entregue. <span className="text-emerald-600 font-bold">O documento</span> estava impecável." — substituição nominal.
                       </div>
                     </div>
@@ -319,7 +319,7 @@ export default function AulaCoesaoCoerencia({
                       <p className="text-muted-foreground leading-relaxed">
                         A elipse é a omissão de um termo recuperável pelo contexto. Cria fluidez eliminando repetições desnecessárias. Na CESGRANRIO, a elipse verbal frequentemente é marcada pela vírgula.
                       </p>
-                      <div className="p-3 bg-cyan-500/5 rounded-xl border-l-4 border-cyan-500 font-mono text-sm italic">
+                      <div className="p-3 bg-cyan-500/5 rounded-xl border-l-4 border-cyan-500 font-mono text-lg italic">
                         "Maria aprovou a proposta; Pedro <span className="text-cyan-600 font-bold">[aprovou]</span> a minuta." — verbo elidido.
                       </div>
                     </div>
@@ -353,13 +353,13 @@ export default function AulaCoesaoCoerencia({
                 <div className="text-center space-y-3">
                   <div className="text-4xl">🔄</div>
                   <div className="font-bold text-lg">Anáfora vs. Catáfora</div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-lg text-muted-foreground">
                     Clique para ver a diferença essencial
                   </div>
                 </div>
               }
               verso={
-                <div className="space-y-4 text-sm">
+                <div className="space-y-4 text-lg">
                   <div className="p-3 bg-cyan-500/20 rounded-xl border border-cyan-500/30">
                     <p className="font-bold text-cyan-300 mb-1">
                       ANÁFORA — Retrovisor
@@ -369,7 +369,7 @@ export default function AulaCoesaoCoerencia({
                       <span className="text-cyan-300 font-bold">O equipamento</span>{" "}
                       foi substituído."
                     </p>
-                    <p className="text-zinc-400 text-xs mt-1">
+                    <p className="text-zinc-400 text-lg mt-1">
                       ← 'O equipamento' retoma 'a turbina' (passado)
                     </p>
                   </div>
@@ -382,7 +382,7 @@ export default function AulaCoesaoCoerencia({
                       <span className="text-blue-300 font-bold">Isto</span> foi
                       anunciado: nova perfuração no pré-sal."
                     </p>
-                    <p className="text-zinc-400 text-xs mt-1">
+                    <p className="text-zinc-400 text-lg mt-1">
                       → 'Isto' antecipa 'nova perfuração no pré-sal' (futuro)
                     </p>
                   </div>
@@ -587,7 +587,7 @@ export default function AulaCoesaoCoerencia({
                         </span>
                         a
                       </div>
-                      <p className="text-sm text-center">
+                      <p className="text-lg text-center">
                         Pronomens com <span className="font-bold">T</span> olham
                         para a <span className="font-bold underline">T</span>
                         extura que vem di
@@ -609,7 +609,7 @@ export default function AulaCoesaoCoerencia({
                     <span className="text-primary font-black">ISTO:</span> sua
                     aprovação."
                   </p>
-                  <p className="text-xs text-zinc-400">
+                  <p className="text-lg text-zinc-400">
                     O 'ISTO' não faz sentido sozinho; ele 'pede' o que vem
                     depois.
                   </p>
@@ -657,7 +657,7 @@ export default function AulaCoesaoCoerencia({
                         Omissão de um termo subentendido pelo contexto
                         (frequentemente o sujeito).
                       </p>
-                      <p className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 font-mono text-sm italic">
+                      <p className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 font-mono text-lg italic">
                         "[Nós] Fizemos os testes. [Nós] Passamos."
                       </p>
                     </div>
@@ -672,7 +672,7 @@ export default function AulaCoesaoCoerencia({
                         Omissão de um termo que <strong>já apareceu</strong> no
                         texto.
                       </p>
-                      <p className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 font-mono text-sm italic">
+                      <p className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 font-mono text-lg italic">
                         "Ela gosta de café; eu, [gosto] de chá."
                       </p>
                     </div>
@@ -726,7 +726,7 @@ export default function AulaCoesaoCoerencia({
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="p-4 bg-background border rounded-xl text-center">
-                          <span className="text-xs text-muted-foreground block">
+                          <span className="text-lg text-muted-foreground block">
                             Ação
                           </span>
                           <span className="font-bold">
@@ -734,7 +734,7 @@ export default function AulaCoesaoCoerencia({
                           </span>
                         </div>
                         <div className="p-4 bg-primary/10 border border-primary/20 rounded-xl text-center">
-                          <span className="text-xs text-primary block">
+                          <span className="text-lg text-primary block">
                             Retomada
                           </span>
                           <span className="font-bold">"A EXPLOSÃO..."</span>
@@ -805,7 +805,7 @@ export default function AulaCoesaoCoerencia({
                   icone: <LuCheck />,
                   conteudo: (
                     <div className="overflow-x-auto">
-                      <table className="w-full text-sm">
+                      <table className="w-full text-lg">
                         <thead>
                           <tr className="border-b">
                             <th className="p-3 text-left">Valor</th>

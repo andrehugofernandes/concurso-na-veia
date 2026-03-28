@@ -159,7 +159,7 @@ export default function AulaVerbTenses({
               description="Entender quando usar cada tempo é a chave para textos técnicos precisos"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 O Simple Present é o tempo dos manuais técnicos, das especificações de equipamento e das rotinas laborais permanentes.
                 Segundo Raymond Murphy em "English Grammar in Use", o Simple Present descreve fatos que permanecem verdadeiros por um
@@ -208,16 +208,16 @@ export default function AulaVerbTenses({
                 <h4 className="font-bold text-foreground">Estrutura e Usos Fundamentais</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <div className="font-semibold text-sm text-blue-700 dark:text-blue-300">Simple Present</div>
-                    <div className="text-sm">Estrutura: S + V (he/she/it + V-s)</div>
-                    <div className="text-sm">Uso: Rotinas, fatos, verdades permanentes</div>
-                    <div className="text-sm italic">Ex: "The pump operates continuously."</div>
+                    <div className="font-semibold text-lg text-blue-700 dark:text-blue-300">Simple Present</div>
+                    <div className="text-lg">Estrutura: S + V (he/she/it + V-s)</div>
+                    <div className="text-lg">Uso: Rotinas, fatos, verdades permanentes</div>
+                    <div className="text-lg italic">Ex: "The pump operates continuously."</div>
                   </div>
                   <div className="space-y-2">
-                    <div className="font-semibold text-sm text-cyan-700 dark:text-cyan-300">Present Continuous</div>
-                    <div className="text-sm">Estrutura: S + am/is/are + V-ing</div>
-                    <div className="text-sm">Uso: Ações em andamento agora</div>
-                    <div className="text-sm italic">Ex: "The pressure is rising rapidly."</div>
+                    <div className="font-semibold text-lg text-cyan-700 dark:text-cyan-300">Present Continuous</div>
+                    <div className="text-lg">Estrutura: S + am/is/are + V-ing</div>
+                    <div className="text-lg">Uso: Ações em andamento agora</div>
+                    <div className="text-lg italic">Ex: "The pressure is rising rapidly."</div>
                   </div>
                 </div>
               </div>
@@ -230,7 +230,7 @@ export default function AulaVerbTenses({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         O Simple Present é construído de forma simples: use o infinitivo do verbo para todos os sujeitos, EXCETO
                         na terceira pessoa singular (he, she, it), onde você adiciona "-s" ou "-es" à raiz. "I work, you work, he
                         works, we work, they work." Para verbos terminados em -s, -ss, -sh, -ch, -x, -z, use "-es": "watch → watches",
@@ -239,8 +239,8 @@ export default function AulaVerbTenses({
                       </p>
 
                       <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm">State Verbs (NUNCA Present Continuous):</h5>
-                        <div className="grid grid-cols-2 gap-2 text-sm">
+                        <h5 className="font-semibold text-lg">State Verbs (NUNCA Present Continuous):</h5>
+                        <div className="grid grid-cols-2 gap-2 text-lg">
                           <div>• know (conhecer)</div>
                           <div>• understand (entender)</div>
                           <div>• want (querer)</div>
@@ -260,7 +260,7 @@ export default function AulaVerbTenses({
                         </div>
                       </div>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Frequency adverbs (sempre, geralmente, às vezes, raramente, nunca) usam-se em posições específicas no Simple
                         Present. Quando o verbo é "be", o advérbio vai APÓS "be": "She is usually punctual." Para outros verbos, o
                         advérbio vai ANTES: "We usually inspect the equipment." Esta regra é rigorosa e nunca muda. Adverbs de frequência
@@ -268,7 +268,7 @@ export default function AulaVerbTenses({
                         never (nunca).
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Em contextos Petrobras, o Simple Present domina porque a maioria dos documentos técnicos descreve procedimentos
                         permanentes e funções equipamentos. Um operational manual nunca diz "The valve is controlling the pressure right now"
                         — sempre "The valve controls the pressure." Este uso reflete o fato de que estamos descrevendo uma realidade constante
@@ -285,65 +285,65 @@ export default function AulaVerbTenses({
                       <div className="space-y-4">
                         <div className="border-l-4 border-blue-500 pl-4">
                           <p className="font-semibold">1. Função Permanente do Equipamento</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The compressor works at maximum capacity during peak hours."
-                            <span className="block mt-1 text-xs italic">Análise: Função regular do equipamento, uma característica permanente, não um evento momentâneo.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Função regular do equipamento, uma característica permanente, não um evento momentâneo.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-cyan-500 pl-4">
                           <p className="font-semibold">2. Rotina Diária Estabelecida</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The drilling team inspects the wellhead every morning at 6 AM."
-                            <span className="block mt-1 text-xs italic">Análise: Rotina estabelecida, repetida regularmente, descrita em Simple Present.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Rotina estabelecida, repetida regularmente, descrita em Simple Present.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-green-500 pl-4">
                           <p className="font-semibold">3. Verdade Científica Permanente</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "Oil floats on water due to its lower density."
-                            <span className="block mt-1 text-xs italic">Análise: Fato científico permanente que nunca muda, requer Simple Present.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Fato científico permanente que nunca muda, requer Simple Present.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-amber-500 pl-4">
                           <p className="font-semibold">4. Ação em Andamento: Present Continuous</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The pressure is rising rapidly in Sector B right now."
-                            <span className="block mt-1 text-xs italic">Análise: "Right now" = neste momento específico. É uma circunstância temporária, não a função normal do equipamento.</span>
+                            <span className="block mt-1 text-lg italic">Análise: "Right now" = neste momento específico. É uma circunstância temporária, não a função normal do equipamento.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-purple-500 pl-4">
                           <p className="font-semibold">5. Situação Temporária em Andamento</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The maintenance team is repairing the pipeline in Zone 3."
-                            <span className="block mt-1 text-xs italic">Análise: Ação em andamento, temporária, requer Present Continuous. Quando terminar, param de reparar.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Ação em andamento, temporária, requer Present Continuous. Quando terminar, param de reparar.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-red-500 pl-4">
                           <p className="font-semibold">6. State Verb: Errado com -ing</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "❌ I am knowing the safety procedures. → ✅ I know the safety procedures."
-                            <span className="block mt-1 text-xs italic">Análise: "Know" = state verb. Descreve um conhecimento que você POSSUI, não uma ação em andamento.</span>
+                            <span className="block mt-1 text-lg italic">Análise: "Know" = state verb. Descreve um conhecimento que você POSSUI, não uma ação em andamento.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-pink-500 pl-4">
                           <p className="font-semibold">7. Procedimento Padronizado</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The operator closes the isolation valve before starting maintenance."
-                            <span className="block mt-1 text-xs italic">Análise: Procedimento padrão, Always implied, requer Simple Present.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Procedimento padrão, Always implied, requer Simple Present.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-indigo-500 pl-4">
                           <p className="font-semibold">8. Narrativa Técnica em Andamento</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "While the team is conducting the pressure test, we are monitoring all gauges."
-                            <span className="block mt-1 text-xs italic">Análise: Dois Present Continuous descrevendo ações simultâneas ocorrendo no momento da redação do relatório.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Dois Present Continuous descrevendo ações simultâneas ocorrendo no momento da redação do relatório.</span>
                           </p>
                         </div>
                       </div>
@@ -432,13 +432,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual tempo é correto?</p>
-                    <p className="text-base">"The technician ___ equipment every morning."</p>
-                    <p className="text-xs text-foreground/60">(A) checks (B) is checking</p>
+                    <p className="font-semibold text-lg">Qual tempo é correto?</p>
+                    <p className="text-lg">"The technician ___ equipment every morning."</p>
+                    <p className="text-lg text-foreground/60">(A) checks (B) is checking</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ CHECKS</p>
                     <p>"Every morning" = rotina estabelecida, marcador de Simple Present. Descreve o que ele FAZ regularmente, não o que está fazendo neste segundo.</p>
                   </div>
@@ -448,13 +448,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual tempo é correto?</p>
-                    <p className="text-base">"Right now, the pressure ___ rapidly!"</p>
-                    <p className="text-xs text-foreground/60">(A) rises (B) is rising</p>
+                    <p className="font-semibold text-lg">Qual tempo é correto?</p>
+                    <p className="text-lg">"Right now, the pressure ___ rapidly!"</p>
+                    <p className="text-lg text-foreground/60">(A) rises (B) is rising</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ IS RISING</p>
                     <p>"Right now" = neste momento específico. Present Continuous descreve uma circunstância que está ocorrendo NESTE SEGUNDO, não a função normal.</p>
                   </div>
@@ -464,13 +464,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">State Verb ou Action Verb?</p>
-                    <p className="text-base">"I ___ English grammar."</p>
-                    <p className="text-xs text-foreground/60">Verbo: UNDERSTAND | Pode ser -ing?</p>
+                    <p className="font-semibold text-lg">State Verb ou Action Verb?</p>
+                    <p className="text-lg">"I ___ English grammar."</p>
+                    <p className="text-lg text-foreground/60">Verbo: UNDERSTAND | Pode ser -ing?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-red-600">❌ NÃO -ing (State Verb)</p>
                     <p>"Understand" descreve um estado mental que você POSSUI. Nunca -ing. ✅ "I understand grammar." NOT: "I am understanding."</p>
                   </div>
@@ -480,13 +480,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Terceira Pessoa Singular</p>
-                    <p className="text-base">"The valve ___ the flow of oil."</p>
-                    <p className="text-xs text-foreground/60">(A) control (B) controls</p>
+                    <p className="font-semibold text-lg">Terceira Pessoa Singular</p>
+                    <p className="text-lg">"The valve ___ the flow of oil."</p>
+                    <p className="text-lg text-foreground/60">(A) control (B) controls</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ CONTROLS</p>
                     <p>He/She/It SEMPRE adiciona -s. Função permanente do equipamento = Simple Present. "The valve controls the flow."</p>
                   </div>
@@ -503,11 +503,11 @@ export default function AulaVerbTenses({
             maceteVisual={{
               title: "Simple Present vs Present Continuous — Regra de Ouro",
               content: (
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <p><strong>PERMANENTE / FATO</strong> → Simple Present: "The valve <em>controls</em> the flow."</p>
                   <p><strong>AGORA / TEMPORÁRIO</strong> → Present Continuous: "The pressure <em>is rising</em>."</p>
                   <p><strong>STATE VERBS</strong> nunca usam Continuous: know, understand, believe, own, contain.</p>
-                  <p className="text-xs text-muted-foreground">CESGRANRIO cobra state verbs em ~60% das questões de Present Tenses.</p>
+                  <p className="text-lg text-muted-foreground">CESGRANRIO cobra state verbs em ~60% das questões de Present Tenses.</p>
                 </div>
               )
             }}
@@ -516,8 +516,8 @@ export default function AulaVerbTenses({
 
                     <QuizInterativo
             questoes={quizM1}
-            titulo="Simple Present & Present Continuous"
-            numero={1}
+            titulo="QUIZ: Módulo Nº 1"
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-1")}
           />
         </div>
@@ -540,7 +540,7 @@ export default function AulaVerbTenses({
               description="Os relatórios de incidente, os logs de manutenção e o histórico de equipamentos usam exclusivamente Simple Past"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 O Simple Past é o tempo dos relatórios. Quando algo aconteceu e terminou — em um momento específico do passado —
                 você descreve com Simple Past. "The incident occurred yesterday." "We completed the project in 2023." "The valve failed at 3 PM."
@@ -583,16 +583,16 @@ export default function AulaVerbTenses({
                 <h4 className="font-bold text-foreground">Estrutura e Usos Fundamentais</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <div className="font-semibold text-sm text-emerald-700 dark:text-emerald-300">Simple Past</div>
-                    <div className="text-sm">Estrutura: S + V-ed (regular) | S + V (irregular)</div>
-                    <div className="text-sm">Uso: Ações concluídas, eventos pontuais, narrativa histórica</div>
-                    <div className="text-sm italic">Ex: "The valve failed at 3 PM yesterday."</div>
+                    <div className="font-semibold text-lg text-emerald-700 dark:text-emerald-300">Simple Past</div>
+                    <div className="text-lg">Estrutura: S + V-ed (regular) | S + V (irregular)</div>
+                    <div className="text-lg">Uso: Ações concluídas, eventos pontuais, narrativa histórica</div>
+                    <div className="text-lg italic">Ex: "The valve failed at 3 PM yesterday."</div>
                   </div>
                   <div className="space-y-2">
-                    <div className="font-semibold text-sm text-teal-700 dark:text-teal-300">Past Continuous</div>
-                    <div className="text-sm">Estrutura: S + was/were + V-ing</div>
-                    <div className="text-sm">Uso: Ação em andamento, interrompida por outra (narrativa)</div>
-                    <div className="text-sm italic">Ex: "While we were inspecting, the alarm sounded."</div>
+                    <div className="font-semibold text-lg text-teal-700 dark:text-teal-300">Past Continuous</div>
+                    <div className="text-lg">Estrutura: S + was/were + V-ing</div>
+                    <div className="text-lg">Uso: Ação em andamento, interrompida por outra (narrativa)</div>
+                    <div className="text-lg italic">Ex: "While we were inspecting, the alarm sounded."</div>
                   </div>
                 </div>
               </div>
@@ -605,15 +605,15 @@ export default function AulaVerbTenses({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Irregular verbs não seguem o padrão -ed. Cada um tem uma forma especial que DEVE ser memorizada. Em contextos Petrobras,
                         cerca de 20 irregular verbs aparecem repetidamente em documentação técnica. A boa notícia: você provavelmente já sabe a maioria
                         em oral; agora, precisa consolidar a escrita.
                       </p>
 
                       <div className="bg-emerald-50 dark:bg-emerald-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm">20+ Irregular Verbs Técnicos (Base | Past | Past Participle):</h5>
-                        <div className="grid grid-cols-2 gap-3 text-sm">
+                        <h5 className="font-semibold text-lg">20+ Irregular Verbs Técnicos (Base | Past | Past Participle):</h5>
+                        <div className="grid grid-cols-2 gap-3 text-lg">
                           <div>• go | went | gone</div>
                           <div>• see | saw | seen</div>
                           <div>• have | had | had</div>
@@ -637,7 +637,7 @@ export default function AulaVerbTenses({
                         </div>
                       </div>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Contexto Petrobras: "The inspector went to the platform and saw the damaged valve." (went, saw) Não "The inspector go" ou "The inspector see".
                         Em logs: "We had completed the maintenance by 5 PM." (had) Em procedimentos: "The operator did the safety check." (did) Em relatórios:
                         "The pressure relief valve broke at 3 PM." (broke, não "breaked")
@@ -653,65 +653,65 @@ export default function AulaVerbTenses({
                       <div className="space-y-4">
                         <div className="border-l-4 border-emerald-500 pl-4">
                           <p className="font-semibold">1. Simple Past: Evento Documentado</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The compressor unit failed at 14:30 on March 15, 2026."
-                            <span className="block mt-1 text-xs italic">Análise: Tempo específico, evento encerrado, necessariamente Simple Past.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Tempo específico, evento encerrado, necessariamente Simple Past.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-teal-500 pl-4">
                           <p className="font-semibold">2. Simple Past: Ações Sequenciais (Então... depois...)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The team arrived at the site, inspected the equipment, and identified the leak."
-                            <span className="block mt-1 text-xs italic">Análise: Série de ações passadas, cada uma concluída sequencialmente. Tudo Simple Past.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Série de ações passadas, cada uma concluída sequencialmente. Tudo Simple Past.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-blue-500 pl-4">
                           <p className="font-semibold">3. Past Continuous: Cenário de Fundo</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "While the pressure was rising dangerously, the operator was monitoring the readings."
-                            <span className="block mt-1 text-xs italic">Análise: Dois eventos simultâneos no passado, ambos em progresso. Past Continuous.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Dois eventos simultâneos no passado, ambos em progresso. Past Continuous.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-purple-500 pl-4">
                           <p className="font-semibold">4. Past Continuous + Simple Past: Interrupção Narrativa</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "When the alarm sounded (Simple Past), we were conducting a routine inspection (Past Continuous)."
-                            <span className="block mt-1 text-xs italic">Análise: "When" marca ponto específico; "were conducting" = fundo; "sounded" = interrupção.</span>
+                            <span className="block mt-1 text-lg italic">Análise: "When" marca ponto específico; "were conducting" = fundo; "sounded" = interrupção.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-pink-500 pl-4">
                           <p className="font-semibold">5. Irregular Verbs: Contexto Técnico</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The technician saw the anomaly and took corrective action immediately."
-                            <span className="block mt-1 text-xs italic">Análise: saw (irregular: see→saw) + took (irregular: take→took). Ambos Simple Past, documentam eventos.</span>
+                            <span className="block mt-1 text-lg italic">Análise: saw (irregular: see→saw) + took (irregular: take→took). Ambos Simple Past, documentam eventos.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-red-500 pl-4">
                           <p className="font-semibold">6. Errado: Confundindo Past Continuous com Simple Past</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "❌ While we checked the equipment, the pressure went up. → ✅ While we were checking the equipment, the pressure went up."
-                            <span className="block mt-1 text-xs italic">Análise: "While" exige Past Continuous para a ação de fundo. Só Simple Past na interrupção.</span>
+                            <span className="block mt-1 text-lg italic">Análise: "While" exige Past Continuous para a ação de fundo. Só Simple Past na interrupção.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-orange-500 pl-4">
                           <p className="font-semibold">7. When vs While: Posicionamento</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "When the technician arrived, the team was already working." vs "While the team was working, the technician arrived."
-                            <span className="block mt-1 text-xs italic">Análise: Sentido idêntico, mas estrutura diferente. A ordem das cláusulas não muda o significado.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Sentido idêntico, mas estrutura diferente. A ordem das cláusulas não muda o significado.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-indigo-500 pl-4">
                           <p className="font-semibold">8. Narrativa Técnica Completa</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The platform was operating normally when the pressure gauge showed an anomaly. The control room immediately initiated a full system check."
-                            <span className="block mt-1 text-xs italic">Análise: "was operating" = Past Continuous (fundo); "showed" = Simple Past (evento). Estrutura narrativa clássica.</span>
+                            <span className="block mt-1 text-lg italic">Análise: "was operating" = Past Continuous (fundo); "showed" = Simple Past (evento). Estrutura narrativa clássica.</span>
                           </p>
                         </div>
                       </div>
@@ -795,13 +795,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é o tempo correto?</p>
-                    <p className="text-base">"The technician ___ the fault and ___ the procedure."</p>
-                    <p className="text-xs text-foreground/60">(found/take, sees/took, saw/took)</p>
+                    <p className="font-semibold text-lg">Qual é o tempo correto?</p>
+                    <p className="text-lg">"The technician ___ the fault and ___ the procedure."</p>
+                    <p className="text-lg text-foreground/60">(found/take, sees/took, saw/took)</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ SAW/TOOK</p>
                     <p>Passado específico: "saw" (see→saw, irregular) + "took" (take→took, irregular). Ambos simple past = eventos sequenciais.</p>
                   </div>
@@ -811,13 +811,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">While ou When?</p>
-                    <p className="text-base">"___ the team was checking the system, the alarm sounded."</p>
-                    <p className="text-xs text-foreground/60">(A) While (B) When</p>
+                    <p className="font-semibold text-lg">While ou When?</p>
+                    <p className="text-lg">"___ the team was checking the system, the alarm sounded."</p>
+                    <p className="text-lg text-foreground/60">(A) While (B) When</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ WHILE</p>
                     <p>"While" descreve duração de fundo. "Checking" = Past Continuous. "Sounded" = Simple Past interrompe. When marcaria apenas um ponto específico.</p>
                   </div>
@@ -827,13 +827,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Tempo ou Frase?</p>
-                    <p className="text-base">"The pressure was rising dangerously."</p>
-                    <p className="text-xs text-foreground/60">Qual é o tempo? O que descreve?</p>
+                    <p className="font-semibold text-lg">Tempo ou Frase?</p>
+                    <p className="text-lg">"The pressure was rising dangerously."</p>
+                    <p className="text-lg text-foreground/60">Qual é o tempo? O que descreve?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ PAST CONTINUOUS</p>
                     <p>"Was rising" = ação em andamento no passado. Descreve uma situação que estava em progresso. Se houve interrupção, não aparece aqui, mas seria Simple Past.</p>
                   </div>
@@ -843,13 +843,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Irregular Verb</p>
-                    <p className="text-base">"The engineer ___ the site and ___ the problem."</p>
-                    <p className="text-xs text-foreground/60">Verbo: GO, SEE</p>
+                    <p className="font-semibold text-lg">Irregular Verb</p>
+                    <p className="text-lg">"The engineer ___ the site and ___ the problem."</p>
+                    <p className="text-lg text-foreground/60">Verbo: GO, SEE</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ WENT / SAW</p>
                     <p>Go→went (irregular) + see→saw (irregular). "The engineer went the site and saw the problem." Não "goed" ou "sawed".</p>
                   </div>
@@ -866,11 +866,11 @@ export default function AulaVerbTenses({
             maceteVisual={{
               title: "Simple Past vs Past Continuous — Regra de Ouro",
               content: (
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <p><strong>AÇÃO PONTUAL</strong> → Simple Past: "The explosion <em>occurred</em> at 14:00."</p>
                   <p><strong>PANO DE FUNDO</strong> → Past Continuous: "The team <em>was inspecting</em> when it happened."</p>
                   <p><strong>WHEN</strong> = ação interrompe outra | <strong>WHILE</strong> = duas ações simultâneas.</p>
-                  <p className="text-xs text-muted-foreground">Verbos irregulares técnicos: break→broke, find→found, write→wrote, send→sent.</p>
+                  <p className="text-lg text-muted-foreground">Verbos irregulares técnicos: break→broke, find→found, write→wrote, send→sent.</p>
                 </div>
               )
             }}
@@ -880,7 +880,7 @@ export default function AulaVerbTenses({
                     <QuizInterativo
             questoes={quizM2}
             titulo="Simple Past & Past Continuous"
-            numero={2}
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-2")}
           />
         </div>
@@ -903,7 +903,7 @@ export default function AulaVerbTenses({
               description="A confusão entre estes dois tempos causa 40% dos erros em CESGRANRIO. A distinção é sutil, mas obrigatória."
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 "I have completed the inspection" vs "I completed the inspection yesterday" — qual é a diferença? Present Perfect conecta
                 passado e presente. O resultado importa AGORA. O tempo em que ocorreu é irrelevante ou não mencionado. "I have completed the
@@ -943,7 +943,7 @@ export default function AulaVerbTenses({
 
               <div className="bg-gradient-to-br from-pink-50 to-purple-50 dark:from-pink-950/30 dark:to-purple-950/30 rounded-lg border border-pink-200 dark:border-pink-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">For vs Since (Tabela Crítica)</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-lg">
                   <div className="space-y-2">
                     <div className="font-semibold text-pink-700 dark:text-pink-300">FOR (duração)</div>
                     <div>Usa quantidade de tempo: "for 5 years", "for 3 hours", "for 2 weeks"</div>
@@ -970,15 +970,15 @@ export default function AulaVerbTenses({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Present Perfect = have/has + Past Participle. "Have" para I, you, we, they. "Has" para he, she, it. Past Participle:
                         verbos regulares terminam em -ed (completed, worked, checked); irregulares têm formas especiais (gone, seen, been, done,
                         broken, taken, found, written). Estrutura deve ser memorizada rigorosamente porque é testada obsessivamente em CESGRANRIO.
                       </p>
 
                       <div className="bg-pink-50 dark:bg-pink-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm">Just | Already | Yet (Present Perfect Markers)</h5>
-                        <div className="space-y-2 text-sm">
+                        <h5 className="font-semibold text-lg">Just | Already | Yet (Present Perfect Markers)</h5>
+                        <div className="space-y-2 text-lg">
                           <div className="border-b pb-2">
                             <div className="font-semibold text-pink-700 dark:text-pink-300">JUST = há poucos momentos</div>
                             <div>"I have just arrived." (Cheguei segundos atrás, ainda não se moveu muito)</div>
@@ -994,7 +994,7 @@ export default function AulaVerbTenses({
                         </div>
                       </div>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Contexto Petrobras: "The platform has just started operations." (Iniciou segundos atrás, ainda em startup). "We have
                         already completed the safety audit." (Concluído, relatório pode ser gerado). "The technician hasn't finished the inspection
                         yet." (Inspeção contínua, resultado ainda pendente).
@@ -1007,7 +1007,7 @@ export default function AulaVerbTenses({
                   icone: <LuLightbulb className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Past Perfect = had + Past Participle. Sempre indica uma ação que terminou ANTES de outra ação passada. Pense em Past Perfect
                         como "o mais que passado" — tudo que é mais antigo que Simple Past. Estrutura: had + particípio (had completed, had seen, had
                         been, had done, had written). Duas ações passadas = sequência temporal → use Past Perfect para a primeira, Simple Past para a
@@ -1015,8 +1015,8 @@ export default function AulaVerbTenses({
                       </p>
 
                       <div className="bg-purple-50 dark:bg-purple-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm">Padrão UNIVERSAL: Past Perfect + Simple Past</h5>
-                        <div className="space-y-4 text-sm">
+                        <h5 className="font-semibold text-lg">Padrão UNIVERSAL: Past Perfect + Simple Past</h5>
+                        <div className="space-y-4 text-lg">
                           <div className="border-l-4 border-purple-500 pl-3">
                             <p className="font-semibold">Padrão 1: "After [had + V], [Simple Past V]."</p>
                             <p className="italic">"After the technician had checked the pressure, the system resumed normal operation."</p>
@@ -1032,7 +1032,7 @@ export default function AulaVerbTenses({
                         </div>
                       </div>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Contexto Petrobras: "By the time the inspector arrived, the technician had already completed the repairs." (Repairs = primeira ação,
                         Past Perfect; arrived = segunda, Simple Past). Em relatórios: "The platform had operated for 20 years before the incident occurred."
                         (Operado = mais antigo; occurred = referência; Past Perfect marca anterior).
@@ -1048,65 +1048,65 @@ export default function AulaVerbTenses({
                       <div className="space-y-4">
                         <div className="border-l-4 border-pink-500 pl-4">
                           <p className="font-semibold">1. Present Perfect: Status Actual (Relevância AGORA)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "We have completed the Phase 1 testing."
-                            <span className="block mt-1 text-xs italic">Análise: Completo no passado, mas relevante agora porque Phase 2 pode começar. Sem data específica.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Completo no passado, mas relevante agora porque Phase 2 pode começar. Sem data específica.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-purple-500 pl-4">
                           <p className="font-semibold">2. Present Perfect: Experiência (Sem Data Específica)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "I have worked on three major projects in my career."
-                            <span className="block mt-1 text-xs italic">Análise: Experiência acumulada, relevante para CV/avaliação. Não importa quando, apenas que ocorreu.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Experiência acumulada, relevante para CV/avaliação. Não importa quando, apenas que ocorreu.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-indigo-500 pl-4">
                           <p className="font-semibold">3. Simple Past: Data Específica (Sem Relevância Presente)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "I worked on the Guanabara Project from 2018 to 2020."
-                            <span className="block mt-1 text-xs italic">Análise: Tempo definido (2018-2020). Encerrado. Fato histórico, não Present Perfect.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Tempo definido (2018-2020). Encerrado. Fato histórico, não Present Perfect.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-pink-500 pl-4">
                           <p className="font-semibold">4. Just/Already/Yet: Timing em Present Perfect</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The report has just been submitted to management."
-                            <span className="block mt-1 text-xs italic">Análise: "Just" = segundos atrás. Impacta ação presente (management recebeu, pode revisar). Present Perfect necessário.</span>
+                            <span className="block mt-1 text-lg italic">Análise: "Just" = segundos atrás. Impacta ação presente (management recebeu, pode revisar). Present Perfect necessário.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-purple-500 pl-4">
                           <p className="font-semibold">5. For vs Since: Duração vs Ponto</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "We have worked on safety procedures for 15 years." / "We have worked on safety procedures since 2011."
-                            <span className="block mt-1 text-xs italic">Análise: For = duração (15 anos). Since = ponto de partida (2011). Ambas Present Perfect, mas indicadores diferentes.</span>
+                            <span className="block mt-1 text-lg italic">Análise: For = duração (15 anos). Since = ponto de partida (2011). Ambas Present Perfect, mas indicadores diferentes.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-red-500 pl-4">
                           <p className="font-semibold">6. Errado: Data Específica Com Present Perfect</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "❌ I have completed the project yesterday. → ✅ I completed the project yesterday."
-                            <span className="block mt-1 text-xs italic">Análise: "Yesterday" = data específica. Exclui Present Perfect. Obrigatoriamente Simple Past.</span>
+                            <span className="block mt-1 text-lg italic">Análise: "Yesterday" = data específica. Exclui Present Perfect. Obrigatoriamente Simple Past.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-orange-500 pl-4">
                           <p className="font-semibold">7. Past Perfect: Sequência (Qual Aconteceu Primeiro?)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "When the inspector arrived at the site, the maintenance crew had already completed the repairs."
-                            <span className="block mt-1 text-xs italic">Análise: "Had completed" = primeiro. "Arrived" = segundo. Past Perfect marca o anterior.</span>
+                            <span className="block mt-1 text-lg italic">Análise: "Had completed" = primeiro. "Arrived" = segundo. Past Perfect marca o anterior.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-blue-500 pl-4">
                           <p className="font-semibold">8. Narrativa Completa: Três Tempos</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "By the time we arrived, the technician had already started working. When we began, he was still completing the final checks."
-                            <span className="block mt-1 text-xs italic">Análise: Had started (Past Perfect, 1º) → Arrived (Simple Past, 2º) → Was completing (Past Continuous, 3º simultâneo). Timeline clara.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Had started (Past Perfect, 1º) → Arrived (Simple Past, 2º) → Was completing (Past Continuous, 3º simultâneo). Timeline clara.</span>
                           </p>
                         </div>
                       </div>
@@ -1160,13 +1160,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Present Perfect ou Simple Past?</p>
-                    <p className="text-base">"I ___ the inspection yesterday."</p>
-                    <p className="text-xs text-foreground/60">(completed, have completed)</p>
+                    <p className="font-semibold text-lg">Present Perfect ou Simple Past?</p>
+                    <p className="text-lg">"I ___ the inspection yesterday."</p>
+                    <p className="text-lg text-foreground/60">(completed, have completed)</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ COMPLETED (Simple Past)</p>
                     <p>"Yesterday" = data específica. Proíbe Present Perfect. Obrigatoriamente Simple Past.</p>
                   </div>
@@ -1176,13 +1176,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Just/Already/Yet = Qual Tempo?</p>
-                    <p className="text-base">"The team ___ started the project."</p>
-                    <p className="text-xs text-foreground/60">(started, has just started)</p>
+                    <p className="font-semibold text-lg">Just/Already/Yet = Qual Tempo?</p>
+                    <p className="text-lg">"The team ___ started the project."</p>
+                    <p className="text-lg text-foreground/60">(started, has just started)</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ HAS JUST STARTED</p>
                     <p>"Just" exige Present Perfect. Descreve momento muito recente com relevância presente (projeto é novo, planejamento afetado).</p>
                   </div>
@@ -1192,13 +1192,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">For vs Since?</p>
-                    <p className="text-base">"We ___ worked ___ 2020."</p>
-                    <p className="text-xs text-foreground/60">(have, since) ou (have, for)?</p>
+                    <p className="font-semibold text-lg">For vs Since?</p>
+                    <p className="text-lg">"We ___ worked ___ 2020."</p>
+                    <p className="text-lg text-foreground/60">(have, since) ou (have, for)?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ HAVE / SINCE 2020</p>
                     <p>Since = ponto de partida (2020). For = duração (5 years). Aqui: "since 2020" = começou 2020, continua agora.</p>
                   </div>
@@ -1208,13 +1208,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Past Perfect ou Simple Past?</p>
-                    <p className="text-base">"When we arrived, the team ___ already left."</p>
-                    <p className="text-xs text-foreground/60">(left, had left)</p>
+                    <p className="font-semibold text-lg">Past Perfect ou Simple Past?</p>
+                    <p className="text-lg">"When we arrived, the team ___ already left."</p>
+                    <p className="text-lg text-foreground/60">(left, had left)</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ HAD LEFT (Past Perfect)</p>
                     <p>Past Perfect = ação anterior no passado. "Had left" aconteceu antes de "arrived". Marca sequência temporal clara.</p>
                   </div>
@@ -1224,13 +1224,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Which is relevant NOW?</p>
-                    <p className="text-base">"The report ___ submitted."</p>
-                    <p className="text-xs text-foreground/60">(was submitted, has been submitted)</p>
+                    <p className="font-semibold text-lg">Which is relevant NOW?</p>
+                    <p className="text-lg">"The report ___ submitted."</p>
+                    <p className="text-lg text-foreground/60">(was submitted, has been submitted)</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ HAS BEEN SUBMITTED</p>
                     <p>Present Perfect = relevância AGORA. Está no sistema de revisão, impacta ações presentes. (Was = apenas fato histórico, sem relevância agora)</p>
                   </div>
@@ -1240,13 +1240,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Sequência de Ações</p>
-                    <p className="text-base">"After the technician ___ the procedure, the supervisor approved it."</p>
-                    <p className="text-xs text-foreground/60">(completed, had completed)</p>
+                    <p className="font-semibold text-lg">Sequência de Ações</p>
+                    <p className="text-lg">"After the technician ___ the procedure, the supervisor approved it."</p>
+                    <p className="text-lg text-foreground/60">(completed, had completed)</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ HAD COMPLETED</p>
                     <p>"After" indica sequência. "Had completed" = primeiro. "Approved" = segundo (Simple Past). Padrão obrigatório.</p>
                   </div>
@@ -1263,11 +1263,11 @@ export default function AulaVerbTenses({
             maceteVisual={{
               title: "Present Perfect vs Simple Past — A Distinção Crucial",
               content: (
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <p><strong>COM DATA/HORA</strong> → Simple Past: "We <em>completed</em> the audit on Friday."</p>
                   <p><strong>SEM DATA (relevância presente)</strong> → Present Perfect: "We <em>have completed</em> the audit."</p>
                   <p><strong>FOR</strong> = duração | <strong>SINCE</strong> = ponto de início no tempo.</p>
-                  <p className="text-xs text-muted-foreground">Past Perfect: "had + PP" — o que já tinha acontecido ANTES de outra ação passada.</p>
+                  <p className="text-lg text-muted-foreground">Past Perfect: "had + PP" — o que já tinha acontecido ANTES de outra ação passada.</p>
                 </div>
               )
             }}
@@ -1276,7 +1276,7 @@ export default function AulaVerbTenses({
 
                     <QuizInterativo
             questoes={quizM3}
-            titulo="Present Perfect & Past Perfect"
+            titulo="QUIZ: Módulo Nº 3"
             numero={3}
             onComplete={() => handleModuleComplete("modulo-3")}
           />
@@ -1300,7 +1300,7 @@ export default function AulaVerbTenses({
               description="Usar o futuro errado muda o significado. CESGRANRIO testa esta distinção sutil obsessivamente."
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Os 3 futuros do inglês NÃO são intercambiáveis. Cada um comunica algo diferente. "WILL: Decisão espontânea ou previsão SEM evidência.
                 Você não sabe especificamente o que vai acontecer, apenas faz uma suposição geral." Exemplo: "The inspection will reveal issues."
@@ -1335,7 +1335,7 @@ export default function AulaVerbTenses({
 
               <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30 rounded-lg border border-orange-200 dark:border-orange-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Os 3 Futuros: Tabela Comparativa</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-lg">
                   <div className="space-y-2">
                     <div className="font-semibold text-orange-700 dark:text-orange-300">WILL (will + infinitive)</div>
                     <div>Decisão espontânea OU previsão genérica</div>
@@ -1362,7 +1362,7 @@ export default function AulaVerbTenses({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         WILL é para decisões que você toma NESTE MOMENTO ou previsões sem evidência específica. "I will help you with this."
                         (Você acaba de decidir, no momento da fala). "The inspection will take 3 days." (Previsão geral, sem saber quantos dias
                         EXATAMENTE). GOING TO é para planos que você JÁ FEZ ou previsões onde você VÊ EVIDÊNCIA. "We are going to renovate the
@@ -1381,7 +1381,7 @@ export default function AulaVerbTenses({
                         }}
                       />
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Contexto Petrobras: Management na reunião: "We will reduce operational costs by 20%." (Decisão neste segundo, será comunicada
                         aos acionistas). Depois: "We are going to introduce a new Safety Management System next quarter." (Já aprovado, projeto já
                         começou, design já foi feito).
@@ -1394,7 +1394,7 @@ export default function AulaVerbTenses({
                   icone: <LuPlay className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         GOING TO é para planos e projetos — ainda faltam passos antes de execução. PRESENT CONTINUOUS para futuro é para eventos
                         que JÁ ESTÃO NA AGENDA, praticamente confirmados. "We are going to build a new facility" = projeto aprovado, engenharia começou,
                         terreno escolhido. Ainda há meses de design. "We are building a new facility next month" = construção literal começa no próximo
@@ -1412,7 +1412,7 @@ export default function AulaVerbTenses({
                         }}
                       />
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Contexto Petrobras: Diretoria planeja: "We are going to explore new deepwater fields." (Plano em desenvolvimento). Operações
                         coordena: "The drilling team is departing for Platform A tomorrow at 7 AM." (Agenda confirmada, literal amanhã).
                       </p>
@@ -1427,65 +1427,65 @@ export default function AulaVerbTenses({
                       <div className="space-y-4">
                         <div className="border-l-4 border-orange-500 pl-4">
                           <p className="font-semibold">1. WILL: Decisão Espontânea (Agora)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The manager just decided: 'I will allocate more budget to this project.'"
-                            <span className="block mt-1 text-xs italic">Análise: Decisão neste segundo. Comunicada oralmente, impacta imediatamente. WILL necessário.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Decisão neste segundo. Comunicada oralmente, impacta imediatamente. WILL necessário.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-orange-500 pl-4">
                           <p className="font-semibold">2. WILL: Previsão Genérica (Sem Evidência Específica)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The inspection will identify potential issues."
-                            <span className="block mt-1 text-xs italic">Análise: Expectativa geral. Não sei quais problemas. Apenas suposição. WILL necessário.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Expectativa geral. Não sei quais problemas. Apenas suposição. WILL necessário.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-amber-500 pl-4">
                           <p className="font-semibold">3. GOING TO: Plano Aprovado (Projeto Iniciado)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "We are going to upgrade the pressure relief system. (It was already approved last month.)"
-                            <span className="block mt-1 text-xs italic">Análise: Projeto foi aprovado, planejamento começou. Ainda não é execução (não é presente continuous). GOING TO necessário.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Projeto foi aprovado, planejamento começou. Ainda não é execução (não é presente continuous). GOING TO necessário.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-amber-500 pl-4">
                           <p className="font-semibold">4. GOING TO: Previsão Com Evidência (Vejo Agora)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "Look at the pressure gauge! The system is going to fail if we don't act immediately."
-                            <span className="block mt-1 text-xs italic">Análise: Números críticos AGORA (evidência visível). Previsão baseada em dados presentes. GOING TO necessário.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Números críticos AGORA (evidência visível). Previsão baseada em dados presentes. GOING TO necessário.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-yellow-500 pl-4">
                           <p className="font-semibold">5. PRESENT CONTINUOUS: Agenda Confirmada (Evento Próximo)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The safety audit is happening next Tuesday at 9 AM." (It's in the calendar, confirmado.)"
-                            <span className="block mt-1 text-xs italic">Análise: Evento está em agenda, confirmado, quase acontecendo (dias, não meses). PRESENT CONTINUOUS necessário.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Evento está em agenda, confirmado, quase acontecendo (dias, não meses). PRESENT CONTINUOUS necessário.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-yellow-500 pl-4">
                           <p className="font-semibold">6. PRESENT CONTINUOUS: Booking Confirmada (Viagem)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "We are flying to Rio de Janeiro next Friday at 2 PM." (Tickets booked, confirmado.)"
-                            <span className="block mt-1 text-xs italic">Análise: Viagem é literal, reserva confirmada, acontece dias (não meses) de agora. PRESENT CONTINUOUS necessário.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Viagem é literal, reserva confirmada, acontece dias (não meses) de agora. PRESENT CONTINUOUS necessário.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-red-500 pl-4">
                           <p className="font-semibold">7. Errado: Confundindo WILL com GOING TO (1)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "❌ The project is going to fail because of budget. → ✅ The project will fail because of budget."
-                            <span className="block mt-1 text-xs italic">Análise: Previsão genérica (sem evidência específica de quando/como). WILL necessário. "Going to" exigiria evidência: "The budget numbers are 30% over now."</span>
+                            <span className="block mt-1 text-lg italic">Análise: Previsão genérica (sem evidência específica de quando/como). WILL necessário. "Going to" exigiria evidência: "The budget numbers are 30% over now."</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-red-500 pl-4">
                           <p className="font-semibold">8. Confusão Clássica: Present Continuous em Contexto Errado</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "❌ We are implementing AI next year. → ✅ We are going to implement AI next year."
-                            <span className="block mt-1 text-xs italic">Análise: "Next year" = meses de agora. Não está em agenda próxima. "Going to" para plano. Present continuous = dias.</span>
+                            <span className="block mt-1 text-lg italic">Análise: "Next year" = meses de agora. Não está em agenda próxima. "Going to" para plano. Present continuous = dias.</span>
                           </p>
                         </div>
                       </div>
@@ -1534,13 +1534,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">WILL ou GOING TO?</p>
-                    <p className="text-base">"We ___ implement new safety protocols next quarter."</p>
-                    <p className="text-xs text-foreground/60">(will, are going to)</p>
+                    <p className="font-semibold text-lg">WILL ou GOING TO?</p>
+                    <p className="text-lg">"We ___ implement new safety protocols next quarter."</p>
+                    <p className="text-lg text-foreground/60">(will, are going to)</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ ARE GOING TO</p>
                     <p>Contexto: "Next quarter" + projeto já aprovado = GOING TO. Não é decisão espontânea (será). É plano pré-decidido.</p>
                   </div>
@@ -1550,13 +1550,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é o Futuro?</p>
-                    <p className="text-base">"The board meeting ___ on Friday at 2 PM."</p>
-                    <p className="text-xs text-foreground/60">(will be, is going to be, is being)</p>
+                    <p className="font-semibold text-lg">Qual é o Futuro?</p>
+                    <p className="text-lg">"The board meeting ___ on Friday at 2 PM."</p>
+                    <p className="text-lg text-foreground/60">(will be, is going to be, is being)</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ IS (happening/on Friday)</p>
                     <p>Evento em agenda confirmada, dias de agora. Present Continuous para futuro próximo. Não será, não going to. Está no calendário.</p>
                   </div>
@@ -1566,13 +1566,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Decisão vs Plano</p>
-                    <p className="text-base">"Manager says: 'I ___ approve this budget immediately.'"</p>
-                    <p className="text-xs text-foreground/60">(will, am going to)</p>
+                    <p className="font-semibold text-lg">Decisão vs Plano</p>
+                    <p className="text-lg">"Manager says: 'I ___ approve this budget immediately.'"</p>
+                    <p className="text-lg text-foreground/60">(will, am going to)</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ WILL</p>
                     <p>Decisão neste segundo. Não foi planejado antes. Manager está decidindo AGORA. WILL = decisão espontânea.</p>
                   </div>
@@ -1582,13 +1582,13 @@ export default function AulaVerbTenses({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Evidência Visível?</p>
-                    <p className="text-base">"Look! The pressure gauge shows 30 PSI over limit. The system ___ fail!"</p>
-                    <p className="text-xs text-foreground/60">(will, is going to)</p>
+                    <p className="font-semibold text-lg">Evidência Visível?</p>
+                    <p className="text-lg">"Look! The pressure gauge shows 30 PSI over limit. The system ___ fail!"</p>
+                    <p className="text-lg text-foreground/60">(will, is going to)</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ IS GOING TO</p>
                     <p>Evidência VISÍVEL AGORA (números críticos). Previsão baseada em dados presentes = GOING TO, não WILL (genérico).</p>
                   </div>
@@ -1605,11 +1605,11 @@ export default function AulaVerbTenses({
             maceteVisual={{
               title: "Future Forms — Quando Usar Cada Um",
               content: (
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <p><strong>WILL</strong> = decisão espontânea / previsão sem evidência: "I'll check the report."</p>
                   <p><strong>GOING TO</strong> = plano pré-decidido / evidência visível: "It's going to fail — look at the pressure."</p>
                   <p><strong>PRES. CONTINUOUS</strong> = agenda/compromisso agendado: "We are meeting at 9am tomorrow."</p>
-                  <p className="text-xs text-muted-foreground">Planos de projeto Petrobras usam "going to" para metas e "will" para previsões financeiras.</p>
+                  <p className="text-lg text-muted-foreground">Planos de projeto Petrobras usam "going to" para metas e "will" para previsões financeiras.</p>
                 </div>
               )
             }}
@@ -1666,7 +1666,7 @@ export default function AulaVerbTenses({
               description="Procedimentos, manuais e relatórios Petrobras preferem a voz passiva porque enfatizam o que FOI FEITO, não quem o fez"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 A voz passiva é o idioma padrão de textos técnicos porque desvia o foco de QUEM FAZ uma ação para O PROCESSO que está sendo realizado.
                 Quando você lê "The valve was inspected yesterday", você não se preocupa em saber QUEM inspecionou — o importante é que a válvula foi inspecionada
@@ -1707,30 +1707,30 @@ export default function AulaVerbTenses({
 
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-lg border border-purple-200 dark:border-purple-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Formação da Voz Passiva em Todos os Tempos</h4>
-                <div className="grid grid-cols-1 gap-3 text-sm">
+                <div className="grid grid-cols-1 gap-3 text-lg">
                   <div className="border-l-4 border-purple-500 pl-4">
                     <div className="font-semibold">Simple Present</div>
-                    <div className="text-xs italic">am/is/are + Past Participle</div>
+                    <div className="text-lg italic">am/is/are + Past Participle</div>
                     <div className="text-foreground/80">"The system is maintained regularly."</div>
                   </div>
                   <div className="border-l-4 border-pink-500 pl-4">
                     <div className="font-semibold">Simple Past</div>
-                    <div className="text-xs italic">was/were + Past Participle</div>
+                    <div className="text-lg italic">was/were + Past Participle</div>
                     <div className="text-foreground/80">"The equipment was repaired yesterday."</div>
                   </div>
                   <div className="border-l-4 border-rose-500 pl-4">
                     <div className="font-semibold">Present Perfect</div>
-                    <div className="text-xs italic">has/have + been + Past Participle</div>
+                    <div className="text-lg italic">has/have + been + Past Participle</div>
                     <div className="text-foreground/80">"The inspection has been completed."</div>
                   </div>
                   <div className="border-l-4 border-red-500 pl-4">
                     <div className="font-semibold">Future Simple</div>
-                    <div className="text-xs italic">will + be + Past Participle</div>
+                    <div className="text-lg italic">will + be + Past Participle</div>
                     <div className="text-foreground/80">"The report will be submitted tomorrow."</div>
                   </div>
                   <div className="border-l-4 border-orange-500 pl-4">
                     <div className="font-semibold">Conditional</div>
-                    <div className="text-xs italic">would + be + Past Participle</div>
+                    <div className="text-lg italic">would + be + Past Participle</div>
                     <div className="text-foreground/80">"If needed, the valve would be replaced."</div>
                   </div>
                 </div>
@@ -1759,7 +1759,7 @@ The system was designed (by the engineer).`
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         A voz passiva segue um padrão consistente: sujeito recebe a ação ao invés de realizá-la. Para converter active para passive:
                         (1) O objeto direto (what) da ativa vira sujeito da passiva, (2) O verbo vira BE (no tempo apropriado) + Past Participle,
                         (3) O sujeito original pode entrar como by-phrase ou ser omitido. Exemplo: "The technician inspected the valve" → "The valve was inspected
@@ -1768,8 +1768,8 @@ The system was designed (by the engineer).`
                       </p>
 
                       <div className="bg-purple-50 dark:bg-purple-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm">Verbos que NUNCA Aceitam Passiva:</h5>
-                        <div className="grid grid-cols-2 gap-2 text-sm">
+                        <h5 className="font-semibold text-lg">Verbos que NUNCA Aceitam Passiva:</h5>
+                        <div className="grid grid-cols-2 gap-2 text-lg">
                           <div>• happen (acontecer)</div>
                           <div>• occur (ocorrer)</div>
                           <div>• go (ir)</div>
@@ -1781,7 +1781,7 @@ The system was designed (by the engineer).`
                         </div>
                       </div>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         A by-phrase é opcional e deve ser incluída APENAS quando essencial ao significado. Em documentação técnica Petrobras, você verá pouquíssimas
                         by-phrases porque a identidade do executante é irrelevante — o documento quer registrar O QUÊ foi feito e em qual estado ficou. "The pressure
                         relief valve was tested" é suficiente. "The pressure relief valve was tested by Technician Silva" acrescenta informação não técnica.
@@ -1797,93 +1797,93 @@ The system was designed (by the engineer).`
                       <div className="space-y-4">
                         <div className="border-l-4 border-purple-500 pl-4">
                           <p className="font-semibold">1. Manual Técnico: Função Permanente</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The safety system monitors pressure continuously."
-                            <span className="block mt-1 text-xs italic text-purple-600">ATIVO: Ênfase no sistema que trabalha.</span>
+                            <span className="block mt-1 text-lg italic text-purple-600">ATIVO: Ênfase no sistema que trabalha.</span>
                           </p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "Pressure is monitored continuously by the safety system."
-                            <span className="block mt-1 text-xs italic text-purple-600">PASSIVO: Ênfase na pressão que é monitorada. Preferível em manuais.</span>
+                            <span className="block mt-1 text-lg italic text-purple-600">PASSIVO: Ênfase na pressão que é monitorada. Preferível em manuais.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-pink-500 pl-4">
                           <p className="font-semibold">2. Relatório de Incidente: By-Phrase Opcional</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The team discovered a leak in Sector B."
-                            <span className="block mt-1 text-xs italic text-pink-600">ATIVO: Identifica quem descobriu.</span>
+                            <span className="block mt-1 text-lg italic text-pink-600">ATIVO: Identifica quem descobriu.</span>
                           </p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "A leak was discovered in Sector B."
-                            <span className="block mt-1 text-xs italic text-pink-600">PASSIVO: Foca no fato. O by-phrase é desnecessário em relatórios técnicos.</span>
+                            <span className="block mt-1 text-lg italic text-pink-600">PASSIVO: Foca no fato. O by-phrase é desnecessário em relatórios técnicos.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-rose-500 pl-4">
                           <p className="font-semibold">3. Procedimento de Segurança: Diretiva Clara</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "Operators must close the isolation valve before maintenance."
-                            <span className="block mt-1 text-xs italic text-rose-600">ATIVO: Diz ao operador o que fazer.</span>
+                            <span className="block mt-1 text-lg italic text-rose-600">ATIVO: Diz ao operador o que fazer.</span>
                           </p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The isolation valve must be closed before maintenance."
-                            <span className="block mt-1 text-xs italic text-rose-600">PASSIVO: Ênfase na ação necessária. Padrão em procedimentos.</span>
+                            <span className="block mt-1 text-lg italic text-rose-600">PASSIVO: Ênfase na ação necessária. Padrão em procedimentos.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-red-500 pl-4">
                           <p className="font-semibold">4. Inspeção Concluída: Present Perfect Passive</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The team has completed the inspection."
-                            <span className="block mt-1 text-xs italic text-red-600">ATIVO: Foca na equipe.</span>
+                            <span className="block mt-1 text-lg italic text-red-600">ATIVO: Foca na equipe.</span>
                           </p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The inspection has been completed."
-                            <span className="block mt-1 text-xs italic text-red-600">PASSIVO: Foca na conclusão da inspeção. Preferível em relatórios.</span>
+                            <span className="block mt-1 text-lg italic text-red-600">PASSIVO: Foca na conclusão da inspeção. Preferível em relatórios.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-orange-500 pl-4">
                           <p className="font-semibold">5. Condicional: Ação Hipotética</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "If the pressure exceeds the limit, we would release it."
-                            <span className="block mt-1 text-xs italic text-orange-600">ATIVO: Ação nossa em resposta.</span>
+                            <span className="block mt-1 text-lg italic text-orange-600">ATIVO: Ação nossa em resposta.</span>
                           </p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "If the pressure exceeds the limit, it would be released automatically."
-                            <span className="block mt-1 text-xs italic text-orange-600">PASSIVO: Processo automático. Ênfase no equipamento, não na ação humana.</span>
+                            <span className="block mt-1 text-lg italic text-orange-600">PASSIVO: Processo automático. Ênfase no equipamento, não na ação humana.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-indigo-500 pl-4">
                           <p className="font-semibold">6. Log de Eventos: Histórico Neutro</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The technician recorded the data at 14:30."
-                            <span className="block mt-1 text-xs italic text-indigo-600">ATIVO: Identifica o técnico (responsabilidade).</span>
+                            <span className="block mt-1 text-lg italic text-indigo-600">ATIVO: Identifica o técnico (responsabilidade).</span>
                           </p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The data was recorded at 14:30."
-                            <span className="block mt-1 text-xs italic text-indigo-600">PASSIVO: Foca no registro do dado. Melhor para logs automatizados ou procedimentos.</span>
+                            <span className="block mt-1 text-lg italic text-indigo-600">PASSIVO: Foca no registro do dado. Melhor para logs automatizados ou procedimentos.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-violet-500 pl-4">
                           <p className="font-semibold">7. By-Phrase Necessária: Responsabilidade Importante</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The safety certification was issued by the regulatory body."
-                            <span className="block mt-1 text-xs italic text-violet-600">PASSIVO + BY-PHRASE: A identidade importa — o órgão regulador é crucial.</span>
+                            <span className="block mt-1 text-lg italic text-violet-600">PASSIVO + BY-PHRASE: A identidade importa — o órgão regulador é crucial.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-fuchsia-500 pl-4">
                           <p className="font-semibold">8. Get-Passive (Coloquial, Evite):</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The equipment got damaged during transport."
-                            <span className="block mt-1 text-xs italic text-fuchsia-600">❌ COLOQUIAL: Evite em contextos técnicos formais.</span>
+                            <span className="block mt-1 text-lg italic text-fuchsia-600">❌ COLOQUIAL: Evite em contextos técnicos formais.</span>
                           </p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The equipment was damaged during transport."
-                            <span className="block mt-1 text-xs italic text-fuchsia-600">✅ FORMAL: Use sempre em documentos técnicos.</span>
+                            <span className="block mt-1 text-lg italic text-fuchsia-600">✅ FORMAL: Use sempre em documentos técnicos.</span>
                           </p>
                         </div>
                       </div>
@@ -1967,12 +1967,12 @@ The system was designed (by the engineer).`
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Transforme para Passive:</p>
-                    <p className="text-base">"The technician inspected the valve."</p>
+                    <p className="font-semibold text-lg">Transforme para Passive:</p>
+                    <p className="text-lg">"The technician inspected the valve."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ THE VALVE WAS INSPECTED</p>
                     <p>Ou com by-phrase opcional: "The valve was inspected by the technician." Mas em documentos técnicos, a by-phrase é frequentemente omitida.</p>
                   </div>
@@ -1982,12 +1982,12 @@ The system was designed (by the engineer).`
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Passive → Active:</p>
-                    <p className="text-base">"The report has been submitted."</p>
+                    <p className="font-semibold text-lg">Passive → Active:</p>
+                    <p className="text-lg">"The report has been submitted."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ SOMEONE HAS SUBMITTED THE REPORT</p>
                     <p>A passiva omite o agente porque é desconhecido ou óbvio. Se precisasse especificar: "The report has been submitted by the team."</p>
                   </div>
@@ -1997,13 +1997,13 @@ The system was designed (by the engineer).`
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é correta?</p>
-                    <p className="text-base">"The accident _____ at 14:30."</p>
-                    <p className="text-xs text-foreground/60">(A) happened (B) was happened</p>
+                    <p className="font-semibold text-lg">Qual é correta?</p>
+                    <p className="text-lg">"The accident _____ at 14:30."</p>
+                    <p className="text-lg text-foreground/60">(A) happened (B) was happened</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ HAPPENED</p>
                     <p>"Happen" é intransitivo e NUNCA recebe voz passiva. O acidente simplesmente aconteceu — ninguém causa o acidente, ele ocorre.</p>
                   </div>
@@ -2013,13 +2013,13 @@ The system was designed (by the engineer).`
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Present Perfect Passive:</p>
-                    <p className="text-base">"The system _____ serviced."</p>
-                    <p className="text-xs text-foreground/60">(A) has (B) has been (C) is</p>
+                    <p className="font-semibold text-lg">Present Perfect Passive:</p>
+                    <p className="text-lg">"The system _____ serviced."</p>
+                    <p className="text-lg text-foreground/60">(A) has (B) has been (C) is</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ HAS BEEN</p>
                     <p>Present Perfect Passive SEMPRE: has/have + BEEN + Past Participle. "The system has been serviced." Erro comum: omitir "been".</p>
                   </div>
@@ -2036,11 +2036,11 @@ The system was designed (by the engineer).`
             maceteVisual={{
               title: "Passive Voice — Regra de Ouro",
               content: (
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <p><strong>ESTRUTURA</strong>: BE (conjugado) + Past Participle</p>
                   <p><strong>EXEMPLOS</strong>: "is inspected" | "was repaired" | "has been submitted" | "is being monitored"</p>
                   <p><strong>BY-PHRASE</strong>: use somente quando o agente é relevante: "...by the engineering team."</p>
-                  <p className="text-xs text-muted-foreground">Textos técnicos Petrobras usam passiva porque o PROCESSO é mais importante que quem o executa.</p>
+                  <p className="text-lg text-muted-foreground">Textos técnicos Petrobras usam passiva porque o PROCESSO é mais importante que quem o executa.</p>
                 </div>
               )
             }}
@@ -2049,8 +2049,8 @@ The system was designed (by the engineer).`
 
                     <QuizInterativo
             questoes={quizM5}
-            titulo="Passive Voice"
-            numero={5}
+            titulo="QUIZ: Módulo Nº 5"
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-5")}
           />
         </div>
@@ -2073,7 +2073,7 @@ The system was designed (by the engineer).`
               description="Can, may, must, should, have to, could, might, would — cada um qualifica a força de uma ação de forma única"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Os verbos modais (can, may, must, should, have to, could, might, would) são "modificadores de força" porque qualificam o grau de certeza, obrigação,
                 capacidade ou permissão de uma ação. Eles não descrevem o verbo em si, mas o contexto da ação. "You must complete the safety training" indica obrigação
@@ -2113,7 +2113,7 @@ The system was designed (by the engineer).`
 
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Escala de Força: MUST → MIGHT</h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-lg">
                   <div className="flex items-center gap-3">
                     <div className="font-bold text-red-600 min-w-fit">MUST</div>
                     <div className="flex-1 text-foreground/80">Obrigação Absoluta (Lei, Regra Imposta)</div>
@@ -2184,7 +2184,7 @@ The system was designed (by the engineer).`
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Cada modal tem um "significado núcleo" que se ramifica em contextos. MUST = forte imposição, CAN = capacidade/permissão, MAY = possibilidade
                         com permissão formal, MIGHT = menor possibilidade, SHOULD = recomendação, HAVE TO = obrigação circunstancial, COULD = capacidade passada ou
                         condicional, WOULD = condicional ou hábito passado. A estrutura é simples: modal + infinitivo SEM "to" (exceto "have to", que é semi-modal).
@@ -2192,8 +2192,8 @@ The system was designed (by the engineer).`
                       </p>
 
                       <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm">Negações Criticamente Diferentes:</h5>
-                        <div className="grid grid-cols-1 gap-2 text-sm">
+                        <h5 className="font-semibold text-lg">Negações Criticamente Diferentes:</h5>
+                        <div className="grid grid-cols-1 gap-2 text-lg">
                           <div><span className="font-semibold">MUST NOT</span> = Proibição explícita (❌ não faça)</div>
                           <div><span className="font-semibold">DON'T HAVE TO</span> = Sem obrigação (nem faça nem deixe de fazer)</div>
                           <div><span className="font-semibold">SHOULDN'T</span> = Recomendação negativa (não é bom fazer)</div>
@@ -2203,7 +2203,7 @@ The system was designed (by the engineer).`
                         </div>
                       </div>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         A distinção entre MUST NOT (proibição) e DON'T HAVE TO (sem obrigação) é critical em contextos onde o significado importa. Em uma situação de
                         emergência: "You MUST NOT enter without equipment" (proibição absoluta). Em um dia normal: "You don't HAVE TO attend the meeting if you're busy"
                         (sem obrigação, mas se puder, talvez fosse bom). Em Petrobras, MUST NOT aparece em safety protocols. Don't have to aparece em procedimentos opcionais.
@@ -2219,65 +2219,65 @@ The system was designed (by the engineer).`
                       <div className="space-y-4">
                         <div className="border-l-4 border-red-600 pl-4">
                           <p className="font-semibold">1. Safety Mandate: MUST (Obrigação Absoluta)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "All personnel MUST wear hard hats in restricted areas."
-                            <span className="block mt-1 text-xs italic">Análise: Lei, regulamento, obrigação absoluta. Sem exceção.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Lei, regulamento, obrigação absoluta. Sem exceção.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-orange-600 pl-4">
                           <p className="font-semibold">2. Circunstância Obrigatória: HAVE TO</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "Due to the equipment failure, we HAVE TO shut down production today."
-                            <span className="block mt-1 text-xs italic">Análise: Obrigação imposta pela circunstância (falha), não por lei.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Obrigação imposta pela circunstância (falha), não por lei.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-yellow-600 pl-4">
                           <p className="font-semibold">3. Recomendação: SHOULD</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The pressure gauge SHOULD be recalibrated quarterly."
-                            <span className="block mt-1 text-xs italic">Análise: Melhor prática, recomendação, não absolutamente mandatório.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Melhor prática, recomendação, não absolutamente mandatório.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-green-600 pl-4">
                           <p className="font-semibold">4. Capacidade/Permissão: CAN</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The new pump CAN handle pressures up to 500 bar."
-                            <span className="block mt-1 text-xs italic">Análise: Capacidade técnica da máquina.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Capacidade técnica da máquina.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-blue-600 pl-4">
                           <p className="font-semibold">5. Possibilidade Razoável: MAY</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The inspection MAY be delayed due to weather conditions."
-                            <span className="block mt-1 text-xs italic">Análise: Cenário possível, mas não garantido. Maior probabilidade que MIGHT.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Cenário possível, mas não garantido. Maior probabilidade que MIGHT.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-purple-600 pl-4">
                           <p className="font-semibold">6. Possibilidade Remota: MIGHT</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The system MIGHT fail if we exceed operational limits, but we have safeguards."
-                            <span className="block mt-1 text-xs italic">Análise: Cenário de risco, possível mas improvável. Menor probabilidade.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Cenário de risco, possível mas improvável. Menor probabilidade.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-indigo-600 pl-4">
                           <p className="font-semibold">7. Capacidade Passada: COULD</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "The old system COULD only handle 300 bar; the new system handles 500 bar."
-                            <span className="block mt-1 text-xs italic">Análise: Capacidade que tinha no passado, mas não tem mais.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Capacidade que tinha no passado, mas não tem mais.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-pink-600 pl-4">
                           <p className="font-semibold">8. Condicional: WOULD</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "If we increased the pressure by 10%, the flow WOULD increase proportionally."
-                            <span className="block mt-1 text-xs italic">Análise: Hipótese, não realidade. Consequência de uma condição.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Hipótese, não realidade. Consequência de uma condição.</span>
                           </p>
                         </div>
                       </div>
@@ -2368,13 +2368,13 @@ The system was designed (by the engineer).`
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Escolha o modal:</p>
-                    <p className="text-base">"All workers ___ complete the training before starting."</p>
-                    <p className="text-xs text-foreground/60">(A) must (B) should (C) can</p>
+                    <p className="font-semibold text-lg">Escolha o modal:</p>
+                    <p className="text-lg">"All workers ___ complete the training before starting."</p>
+                    <p className="text-lg text-foreground/60">(A) must (B) should (C) can</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ MUST</p>
                     <p>Lei de segurança obrigatória. MUST = mandato absoluto. Should = recomendação fraca. Can = capacidade.</p>
                   </div>
@@ -2384,13 +2384,13 @@ The system was designed (by the engineer).`
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual negação é correta?</p>
-                    <p className="text-base">"You ___ enter the lab without a badge."</p>
-                    <p className="text-xs text-foreground/60">(A) can't (B) shouldn't (C) don't have to</p>
+                    <p className="font-semibold text-lg">Qual negação é correta?</p>
+                    <p className="text-lg">"You ___ enter the lab without a badge."</p>
+                    <p className="text-lg text-foreground/60">(A) can't (B) shouldn't (C) don't have to</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ CAN'T ou MUST NOT</p>
                     <p>É uma proibição (não permitido). Can't e must not = proibição. Don't have to = opcional. Shouldn't = desaconselhado.</p>
                   </div>
@@ -2400,12 +2400,12 @@ The system was designed (by the engineer).`
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">COULD Passado ou Condicional?</p>
-                    <p className="text-base">"When I was younger, I ___ work 12 hours without fatigue."</p>
+                    <p className="font-semibold text-lg">COULD Passado ou Condicional?</p>
+                    <p className="text-lg">"When I was younger, I ___ work 12 hours without fatigue."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ COULD (Passado)</p>
                     <p>"When I was younger" = contexto passado. Capacidade que tive mas talvez não tenha mais. É COULD para hábito ou capacidade passada.</p>
                   </div>
@@ -2415,13 +2415,13 @@ The system was designed (by the engineer).`
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Modal certo?</p>
-                    <p className="text-base">"The report ___ arrive tomorrow, but it's not guaranteed."</p>
-                    <p className="text-xs text-foreground/60">(A) may (B) might (C) will</p>
+                    <p className="font-semibold text-lg">Modal certo?</p>
+                    <p className="text-lg">"The report ___ arrive tomorrow, but it's not guaranteed."</p>
+                    <p className="text-lg text-foreground/60">(A) may (B) might (C) will</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ MAY ou MIGHT</p>
                     <p>Incerteza: "might not guaranteed" sugerindo possibilidade mas sem certeza. May = um pouco mais de certeza. Might = menos certo.</p>
                   </div>
@@ -2431,13 +2431,13 @@ The system was designed (by the engineer).`
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Hábito Passado vs Evento:</p>
-                    <p className="text-base">"Every shift he ___ inspect the equipment."</p>
-                    <p className="text-xs text-foreground/60">Qual modal?</p>
+                    <p className="font-semibold text-lg">Hábito Passado vs Evento:</p>
+                    <p className="text-lg">"Every shift he ___ inspect the equipment."</p>
+                    <p className="text-lg text-foreground/60">Qual modal?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ WOULD ou USED TO</p>
                     <p>"Every shift" = rotina repetida no passado. WOULD exprime hábito passado. Used to também (mais comum em coloquial).</p>
                   </div>
@@ -2447,13 +2447,13 @@ The system was designed (by the engineer).`
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">MUST NOT vs DON'T HAVE TO:</p>
-                    <p className="text-base">"You ___ touch the hot surface; it's dangerous."</p>
-                    <p className="text-xs text-foreground/60">Qual é proibição?</p>
+                    <p className="font-semibold text-lg">MUST NOT vs DON'T HAVE TO:</p>
+                    <p className="text-lg">"You ___ touch the hot surface; it's dangerous."</p>
+                    <p className="text-lg text-foreground/60">Qual é proibição?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ MUST NOT</p>
                     <p>Perigo = proibição absoluta (MUST NOT). Don't have to = opcional, não obrigatório. Aqui é perigoso, então é MUST NOT.</p>
                   </div>
@@ -2470,12 +2470,12 @@ The system was designed (by the engineer).`
             maceteVisual={{
               title: "Modal Verbs — Força e Função",
               content: (
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <p><strong>MUST</strong> = obrigação interna / dedução lógica forte</p>
                   <p><strong>HAVE TO</strong> = obrigação externa (regra, lei)</p>
                   <p><strong>MUST NOT</strong> = proibição | <strong>DON'T HAVE TO</strong> = não é necessário (mas pode)</p>
                   <p><strong>SHOULD</strong> = recomendação | <strong>MAY/MIGHT</strong> = possibilidade (may = maior)</p>
-                  <p className="text-xs text-muted-foreground">HSE Petrobras usa "must" para obrigações de segurança e "should" para boas práticas.</p>
+                  <p className="text-lg text-muted-foreground">HSE Petrobras usa "must" para obrigações de segurança e "should" para boas práticas.</p>
                 </div>
               )
             }}
@@ -2484,8 +2484,8 @@ The system was designed (by the engineer).`
 
                     <QuizInterativo
             questoes={quizM6}
-            titulo="Modal Verbs"
-            numero={6}
+            titulo="QUIZ: Módulo Nº 6"
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-6")}
           />
         </div>
@@ -2508,7 +2508,7 @@ The system was designed (by the engineer).`
               description="Type 0, 1, 2 progridem de lei universal até hipótese improvável — cada uma com estrutura e contexto únicos"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 As sentenças condicionais são a estrutura lógica central do pensamento técnico. Toda avaliação de risco, todo procedimento alternativo, toda contingência
                 usa condicionais. "If the pressure exceeds the limit, the relief valve opens" — esta é a base de qualquer sistema automatizado. "If we follow the procedure,
@@ -2553,25 +2553,25 @@ The system was designed (by the engineer).`
 
               <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/30 dark:to-blue-950/30 rounded-lg border border-indigo-200 dark:border-indigo-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Os Três Tipos de Condicionais</h4>
-                <div className="grid grid-cols-1 gap-3 text-sm">
+                <div className="grid grid-cols-1 gap-3 text-lg">
                   <div className="border-l-4 border-blue-600 pl-4">
                     <div className="font-semibold">Type 0: Lei Universal</div>
-                    <div className="text-xs italic">If + Simple Present, Simple Present</div>
+                    <div className="text-lg italic">If + Simple Present, Simple Present</div>
                     <div className="text-foreground/80">"If you heat water to 100°C, it boils." (SEMPRE verdadeiro)</div>
                   </div>
                   <div className="border-l-4 border-cyan-600 pl-4">
                     <div className="font-semibold">Type 1: Possibilidade Real</div>
-                    <div className="text-xs italic">If + Simple Present, will + verb</div>
+                    <div className="text-lg italic">If + Simple Present, will + verb</div>
                     <div className="text-foreground/80">"If we follow the procedure, we will succeed." (PODE acontecer)</div>
                   </div>
                   <div className="border-l-4 border-purple-600 pl-4">
                     <div className="font-semibold">Type 2: Hipótese Improvável</div>
-                    <div className="text-xs italic">If + Simple Past, would + verb (be → were)</div>
+                    <div className="text-lg italic">If + Simple Past, would + verb (be → were)</div>
                     <div className="text-foreground/80">"If I were you, I would report it." (CONTRÁRIO aos fatos)</div>
                   </div>
                   <div className="border-l-4 border-pink-600 pl-4">
                     <div className="font-semibold">Type 3: Reflexão Passada</div>
-                    <div className="text-xs italic">If + Past Perfect, would have + Past Participle</div>
+                    <div className="text-lg italic">If + Past Perfect, would have + Past Participle</div>
                     <div className="text-foreground/80">"If we had known, we would have prevented it." (PODERIA TER SIDO)</div>
                   </div>
                 </div>
@@ -2610,26 +2610,26 @@ he would authorize the overtime.
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         TYPE 0 = Lei Física/Lógica. Estrutura: If + Simple Present, Simple Present. NUNCA "will". Exemplo: "If you increase the temperature, the pressure increases."
                         Isto não é futuro, é uma relação causal permanente. Toda vez que você aumenta temperatura, pressão sobe. Agora, amanhã, sempre. Por isso não usa will.
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         TYPE 1 = Possibilidade Real. Estrutura: If + Simple Present, will + verb. Por que Simple Present na condicional? Porque é regra do inglês — a cláusula "if"
                         sempre usa Simple Present (mesmo falando de futuro). A cláusula de resultado usa "will" para indicar futuro. "If you press the button, the alarm will sound."
                         Resultado futuro, condição em Simple Present (regra de ouro do inglês).
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         TYPE 2 = Hipótese Improvável/Contrária aos Fatos. Estrutura: If + Simple Past, would + verb. Importante: "be" vira "were" para TODOS. "If I were you" (não
                         "If I was you"), "If he were here" (não "If he was here"). Em Type 2, você está brincando com um cenário contrário à realidade. "If I were the president..."
                         (não sou). "If she were taller..." (não é). Então a conjugação muda.
                       </p>
 
                       <div className="bg-indigo-50 dark:bg-indigo-950/20 rounded-lg p-4 space-y-3">
-                        <h5 className="font-semibold text-sm">Inversion Pattern (Menos Comum mas Importante):</h5>
-                        <p className="text-sm text-foreground/80">
+                        <h5 className="font-semibold text-lg">Inversion Pattern (Menos Comum mas Importante):</h5>
+                        <p className="text-lg text-foreground/80">
                           Você pode inverter a ordem formal de uma condicional omitindo "if" e invertendo sujeito-auxiliar. "Had I known earlier, I would have prevented it" = "If I had known earlier, I would have prevented it."
                           Muito formal, raro em conversação, comum em escrita técnica premium.
                         </p>
@@ -2645,65 +2645,65 @@ he would authorize the overtime.
                       <div className="space-y-4">
                         <div className="border-l-4 border-blue-600 pl-4">
                           <p className="font-semibold">1. Type 0: Funcionamento de Equipamento</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "If the pressure exceeds 500 bar, the relief valve opens."
-                            <span className="block mt-1 text-xs italic">Análise: Lei física do equipamento. Sempre acontece assim, sem exceção. Type 0.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Lei física do equipamento. Sempre acontece assim, sem exceção. Type 0.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-cyan-600 pl-4">
                           <p className="font-semibold">2. Type 1: Procedimento Operacional</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "If we follow the safety procedure, we will complete the task without incident."
-                            <span className="block mt-1 text-xs italic">Análise: Possível realmente. Se fizer assim, resultado será seguro. Scenario tipo 1.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Possível realmente. Se fizer assim, resultado será seguro. Scenario tipo 1.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-purple-600 pl-4">
                           <p className="font-semibold">3. Type 1: Contingência Realista</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "If the weather deteriorates, the helicopter will return to the base."
-                            <span className="block mt-1 text-xs italic">Análise: Cenário plausível. Tempo ruim é realista em offshore. Type 1.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Cenário plausível. Tempo ruim é realista em offshore. Type 1.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-pink-600 pl-4">
                           <p className="font-semibold">4. Type 2: Análise Hipotética</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "If we were to operate the system without safeguards, it would fail catastrophically."
-                            <span className="block mt-1 text-xs italic">Análise: Não estamos operando sem safeguards. Isto é hipotético, contrário aos fatos. Type 2.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Não estamos operando sem safeguards. Isto é hipotético, contrário aos fatos. Type 2.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-orange-600 pl-4">
                           <p className="font-semibold">5. Type 2: Simulação de Cenário</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "If the team were to increase the flow rate by 50%, the system would exceed operational limits."
-                            <span className="block mt-1 text-xs italic">Análise: Estamos explorando um cenário hipotético. Não está acontecendo, é especulação. Type 2.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Estamos explorando um cenário hipotético. Não está acontecendo, é especulação. Type 2.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-red-600 pl-4">
                           <p className="font-semibold">6. Type 3: Retrospectiva de Incidente</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "If the team had followed the protocol, the accident would have been prevented."
-                            <span className="block mt-1 text-xs italic">Análise: Reflexão sobre o passado. Não seguiram o protocolo. Se tivessem seguido, não teria acontecido. Type 3.</span>
+                            <span className="block mt-1 text-lg italic">Análise: Reflexão sobre o passado. Não seguiram o protocolo. Se tivessem seguido, não teria acontecido. Type 3.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-indigo-600 pl-4">
                           <p className="font-semibold">7. UNLESS = IF NOT (Lei de Risco)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "Unless the inspection is completed, production cannot restart."
-                            <span className="block mt-1 text-xs italic">Análise: UNLESS = se NÃO. Inversão da lógica. Produção depende da inspeção. Se não inspet, não reinicia.</span>
+                            <span className="block mt-1 text-lg italic">Análise: UNLESS = se NÃO. Inversão da lógica. Produção depende da inspeção. Se não inspet, não reinicia.</span>
                           </p>
                         </div>
 
                         <div className="border-l-4 border-green-600 pl-4">
                           <p className="font-semibold">8. Inversion Pattern (Formal)</p>
-                          <p className="text-sm text-foreground/80 mt-2">
+                          <p className="text-lg text-foreground/80 mt-2">
                             "Had we monitored the system continuously, the leak would have been detected earlier."
-                            <span className="block mt-1 text-xs italic">Análise: = "If we had monitored..." Inversion omite "if" e inverte sujeito-auxiliar. Muito formal.</span>
+                            <span className="block mt-1 text-lg italic">Análise: = "If we had monitored..." Inversion omite "if" e inverte sujeito-auxiliar. Muito formal.</span>
                           </p>
                         </div>
                       </div>
@@ -2794,13 +2794,13 @@ he would authorize the overtime.
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é Type 0?</p>
-                    <p className="text-base">"If you freeze water, it becomes ice."</p>
-                    <p className="text-xs text-foreground/60">Por que não Type 1?</p>
+                    <p className="font-semibold text-lg">Qual é Type 0?</p>
+                    <p className="text-lg">"If you freeze water, it becomes ice."</p>
+                    <p className="text-lg text-foreground/60">Por que não Type 1?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ TYPE 0: Lei Física</p>
                     <p>Não é futuro, é permanente. Sempre que você congela água, ela vira gelo. AGORA, AMANHÃ, SEMPRE. Por isso usa Simple Present em ambas as partes.</p>
                   </div>
@@ -2810,12 +2810,12 @@ he would authorize the overtime.
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Type 1 ou Type 2?</p>
-                    <p className="text-base">"If we increase the budget, we will hire more staff."</p>
+                    <p className="font-semibold text-lg">Type 1 ou Type 2?</p>
+                    <p className="text-lg">"If we increase the budget, we will hire more staff."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ TYPE 1: Possibilidade Real</p>
                     <p>É plausível aumentar o orçamento. Resultado real se isso acontecer. Se não acontecer, não contratamos. TYPE 1: cenário realista.</p>
                   </div>
@@ -2825,13 +2825,13 @@ he would authorize the overtime.
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual verbo está certo?</p>
-                    <p className="text-base">"If I ___ the manager, I would authorize the project."</p>
-                    <p className="text-xs text-foreground/60">(A) am (B) was (C) were</p>
+                    <p className="font-semibold text-lg">Qual verbo está certo?</p>
+                    <p className="text-lg">"If I ___ the manager, I would authorize the project."</p>
+                    <p className="text-lg text-foreground/60">(A) am (B) was (C) were</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ WERE</p>
                     <p>Type 2: "If I were the manager..." (não sou). Contrário aos fatos. Em Type 2, "be" sempre vira "were" para TODOS os sujeitos.</p>
                   </div>
@@ -2841,12 +2841,12 @@ he would authorize the overtime.
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Encontre o erro:</p>
-                    <p className="text-base">"If we will complete the project, we will be promoted."</p>
+                    <p className="font-semibold text-lg">Encontre o erro:</p>
+                    <p className="text-lg">"If we will complete the project, we will be promoted."</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-red-600">❌ ERRO: "will complete"</p>
                     <p>Type 1 NUNCA usa "will" na cláusula "if". Use Simple Present: "If we complete the project, we will be promoted."</p>
                   </div>
@@ -2863,12 +2863,12 @@ he would authorize the overtime.
             maceteVisual={{
               title: "Conditionals — Os 3 Tipos e Probabilidade",
               content: (
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <p><strong>TYPE 0</strong>: If + Present, Present → lei universal: "If you heat oil, it expands."</p>
                   <p><strong>TYPE 1</strong>: If + Present, will + base → possível: "If the valve fails, we will shut down."</p>
                   <p><strong>TYPE 2</strong>: If + Past, would + base → hipotético: "If we had more budget, we would expand."</p>
                   <p><strong>UNLESS</strong> = If not: "Unless you calibrate it, it won't work."</p>
-                  <p className="text-xs text-muted-foreground">Risk assessments Petrobras usam Type 1 para riscos reais e Type 2 para cenários hipotéticos.</p>
+                  <p className="text-lg text-muted-foreground">Risk assessments Petrobras usam Type 1 para riscos reais e Type 2 para cenários hipotéticos.</p>
                 </div>
               )
             }}
@@ -2877,8 +2877,8 @@ he would authorize the overtime.
 
                     <QuizInterativo
             questoes={quizM7}
-            titulo="Conditionals"
-            numero={7}
+            titulo="QUIZ: Módulo Nº 7"
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-7")}
           />
         </div>
@@ -2901,7 +2901,7 @@ he would authorize the overtime.
               description="CESGRANRIO testa compreensão de tempos verbais através de identificação de erros e escolha de correção"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 A estratégia principal de CESGRANRIO em testes de Verb Tenses é apresentar uma frase com uma palavra sublinhada
                 (indicando que há um erro) e pedir para escolher a correção entre várias opções. A chave para resolver rapidamente é
@@ -2927,7 +2927,7 @@ he would authorize the overtime.
 
               <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Tabela: Marcadores Temporais → Tempos Verbais</h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-lg">
                   <div className="grid grid-cols-3 gap-3">
                     <div className="font-semibold text-amber-700 dark:text-amber-300">Marcador</div>
                     <div className="font-semibold text-amber-700 dark:text-amber-300">Tempo Verbal</div>
@@ -2979,7 +2979,7 @@ he would authorize the overtime.
                   icone: <LuTarget className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Desenvolver uma estratégia sistemática é a diferença entre acertar 50% e 95% das questões de tenses em CESGRANRIO.
                         Os 5 passos abaixo são testados repetidamente em provas reais e funcionam para QUALQUER tipo de questão sobre verb tenses.
                         Quando você vê uma questão com um verbo sublinhado ou um espaço em branco para completar, siga esta sequência mental
@@ -3025,50 +3025,50 @@ he would authorize the overtime.
                     <div className="space-y-6">
                       <div className="space-y-4">
                         <div className="border-l-4 border-blue-500 pl-4">
-                          <p className="font-semibold text-sm text-blue-700 dark:text-blue-300">Simple Present (S + V)</p>
-                          <p className="text-sm mt-1">
+                          <p className="font-semibold text-lg text-blue-700 dark:text-blue-300">Simple Present (S + V)</p>
+                          <p className="text-lg mt-1">
                             Rotinas, fatos permanentes, verdades universais. "The pump operates 24/7." "Oil floats on water."
                           </p>
                         </div>
 
                         <div className="border-l-4 border-cyan-500 pl-4">
-                          <p className="font-semibold text-sm text-cyan-700 dark:text-cyan-300">Present Continuous (am/is/are + -ing)</p>
-                          <p className="text-sm mt-1">
+                          <p className="font-semibold text-lg text-cyan-700 dark:text-cyan-300">Present Continuous (am/is/are + -ing)</p>
+                          <p className="text-lg mt-1">
                             Ações em andamento AGORA. "The pressure is rising right now." Palavra-chave: "right now", "at this moment".
                           </p>
                         </div>
 
                         <div className="border-l-4 border-emerald-500 pl-4">
-                          <p className="font-semibold text-sm text-emerald-700 dark:text-emerald-300">Simple Past (V + -ed)</p>
-                          <p className="text-sm mt-1">
+                          <p className="font-semibold text-lg text-emerald-700 dark:text-emerald-300">Simple Past (V + -ed)</p>
+                          <p className="text-lg mt-1">
                             Ação concluída em tempo definido. "We completed the inspection yesterday." Palavra-chave: "yesterday", "last week", "in 2020".
                           </p>
                         </div>
 
                         <div className="border-l-4 border-purple-500 pl-4">
-                          <p className="font-semibold text-sm text-purple-700 dark:text-purple-300">Past Continuous (was/were + -ing)</p>
-                          <p className="text-sm mt-1">
+                          <p className="font-semibold text-lg text-purple-700 dark:text-purple-300">Past Continuous (was/were + -ing)</p>
+                          <p className="text-lg mt-1">
                             Ação em andamento em momento passado, frequentemente interrompida. "We were checking when the alarm sounded."
                           </p>
                         </div>
 
                         <div className="border-l-4 border-pink-500 pl-4">
-                          <p className="font-semibold text-sm text-pink-700 dark:text-pink-300">Present Perfect (have/has + Past Participle)</p>
-                          <p className="text-sm mt-1">
+                          <p className="font-semibold text-lg text-pink-700 dark:text-pink-300">Present Perfect (have/has + Past Participle)</p>
+                          <p className="text-lg mt-1">
                             Ação passada com relevância atual, sem data definida. "We have completed three projects this year." Palavra-chave: "just", "already", "for 5 years", "since 2020".
                           </p>
                         </div>
 
                         <div className="border-l-4 border-orange-500 pl-4">
-                          <p className="font-semibold text-sm text-orange-700 dark:text-orange-300">Future Simple (will + infinitive)</p>
-                          <p className="text-sm mt-1">
+                          <p className="font-semibold text-lg text-orange-700 dark:text-orange-300">Future Simple (will + infinitive)</p>
+                          <p className="text-lg mt-1">
                             Ação futura, decisão espontânea ou previsão. "The system will shut down tomorrow." "I will help you with this."
                           </p>
                         </div>
 
                         <div className="border-l-4 border-red-500 pl-4">
-                          <p className="font-semibold text-sm text-red-700 dark:text-red-300">Conditional Type 1 (if + Simple Present, will + infinitive)</p>
-                          <p className="text-sm mt-1">
+                          <p className="font-semibold text-lg text-red-700 dark:text-red-300">Conditional Type 1 (if + Simple Present, will + infinitive)</p>
+                          <p className="text-lg mt-1">
                             Situação realista no futuro. "If the pressure exceeds 20 bar, the alarm will sound." Muito realista/provável.
                           </p>
                         </div>
@@ -3085,66 +3085,66 @@ he would authorize the overtime.
                     <div className="space-y-6">
                       <div className="space-y-4">
                         <div className="bg-red-50 dark:bg-red-950/20 rounded-lg p-4 border border-red-200 dark:border-red-800">
-                          <p className="font-semibold text-red-700 dark:text-red-300 text-sm mb-2">Erro #1: "The engineers are knowing the safety procedures."</p>
-                          <p className="text-sm">
+                          <p className="font-semibold text-red-700 dark:text-red-300 text-lg mb-2">Erro #1: "The engineers are knowing the safety procedures."</p>
+                          <p className="text-lg">
                             <strong>Problema:</strong> "Know" é state verb. Nunca -ing.
                           </p>
-                          <p className="text-sm text-green-600 dark:text-green-400 mt-2">
+                          <p className="text-lg text-green-600 dark:text-green-400 mt-2">
                             <strong>Correção:</strong> "The engineers know the safety procedures."
                           </p>
-                          <p className="text-xs text-foreground/70 mt-2 italic">
+                          <p className="text-lg text-foreground/70 mt-2 italic">
                             Passo 2 aplicado: reconheceu state verb → removeu -ing.
                           </p>
                         </div>
 
                         <div className="bg-red-50 dark:bg-red-950/20 rounded-lg p-4 border border-red-200 dark:border-red-800">
-                          <p className="font-semibold text-red-700 dark:text-red-300 text-sm mb-2">Erro #2: "I have finished the report yesterday."</p>
-                          <p className="text-sm">
+                          <p className="font-semibold text-red-700 dark:text-red-300 text-lg mb-2">Erro #2: "I have finished the report yesterday."</p>
+                          <p className="text-lg">
                             <strong>Problema:</strong> "Yesterday" = tempo definido, pede Simple Past, não Present Perfect.
                           </p>
-                          <p className="text-sm text-green-600 dark:text-green-400 mt-2">
+                          <p className="text-lg text-green-600 dark:text-green-400 mt-2">
                             <strong>Correção:</strong> "I finished the report yesterday."
                           </p>
-                          <p className="text-xs text-foreground/70 mt-2 italic">
+                          <p className="text-lg text-foreground/70 mt-2 italic">
                             Passo 1 aplicado: "yesterday" = Simple Past (não have + Past Participle).
                           </p>
                         </div>
 
                         <div className="bg-red-50 dark:bg-red-950/20 rounded-lg p-4 border border-red-200 dark:border-red-800">
-                          <p className="font-semibold text-red-700 dark:text-red-300 text-sm mb-2">Erro #3: "While we check the equipment, the power went out."</p>
-                          <p className="text-sm">
+                          <p className="font-semibold text-red-700 dark:text-red-300 text-lg mb-2">Erro #3: "While we check the equipment, the power went out."</p>
+                          <p className="text-lg">
                             <strong>Problema:</strong> "While" = ação em andamento (Past Continuous) interrompida por Simple Past.
                           </p>
-                          <p className="text-sm text-green-600 dark:text-green-400 mt-2">
+                          <p className="text-lg text-green-600 dark:text-green-400 mt-2">
                             <strong>Correção:</strong> "While we were checking the equipment, the power went out."
                           </p>
-                          <p className="text-xs text-foreground/70 mt-2 italic">
+                          <p className="text-lg text-foreground/70 mt-2 italic">
                             Passo 1 aplicado: "while" + ação em andamento = Past Continuous (were checking) + interrupção Simple Past (went).
                           </p>
                         </div>
 
                         <div className="bg-red-50 dark:bg-red-950/20 rounded-lg p-4 border border-red-200 dark:border-red-800">
-                          <p className="font-semibold text-red-700 dark:text-red-300 text-sm mb-2">Erro #4: "The technician are testing the system right now."</p>
-                          <p className="text-sm">
+                          <p className="font-semibold text-red-700 dark:text-red-300 text-lg mb-2">Erro #4: "The technician are testing the system right now."</p>
+                          <p className="text-lg">
                             <strong>Problema:</strong> "Technician" = singular (he/she/it), pede "is", não "are".
                           </p>
-                          <p className="text-sm text-green-600 dark:text-green-400 mt-2">
+                          <p className="text-lg text-green-600 dark:text-green-400 mt-2">
                             <strong>Correção:</strong> "The technician is testing the system right now."
                           </p>
-                          <p className="text-xs text-foreground/70 mt-2 italic">
+                          <p className="text-lg text-foreground/70 mt-2 italic">
                             Passo 3 aplicado: reconheceu singular → "is" (não "are").
                           </p>
                         </div>
 
                         <div className="bg-red-50 dark:bg-red-950/20 rounded-lg p-4 border border-red-200 dark:border-red-800">
-                          <p className="font-semibold text-red-700 dark:text-red-300 text-sm mb-2">Erro #5: "By tomorrow, we complete the project."</p>
-                          <p className="text-sm">
+                          <p className="font-semibold text-red-700 dark:text-red-300 text-lg mb-2">Erro #5: "By tomorrow, we complete the project."</p>
+                          <p className="text-lg">
                             <strong>Problema:</strong> "By tomorrow" = Future Perfect (ação terminada ATÉ futuro), não Simple Present.
                           </p>
-                          <p className="text-sm text-green-600 dark:text-green-400 mt-2">
+                          <p className="text-lg text-green-600 dark:text-green-400 mt-2">
                             <strong>Correção:</strong> "By tomorrow, we will have completed the project."
                           </p>
-                          <p className="text-xs text-foreground/70 mt-2 italic">
+                          <p className="text-lg text-foreground/70 mt-2 italic">
                             Passo 1 aplicado: "by tomorrow" = futuro com tempo definido = Future Perfect (will have completed).
                           </p>
                         </div>
@@ -3199,13 +3199,13 @@ he would authorize the overtime.
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual opção está CORRETA?</p>
-                    <p className="text-base">"She ___ English since 2015."</p>
-                    <p className="text-xs text-foreground/60">(A) works (B) has worked (C) is working (D) worked</p>
+                    <p className="font-semibold text-lg">Qual opção está CORRETA?</p>
+                    <p className="text-lg">"She ___ English since 2015."</p>
+                    <p className="text-lg text-foreground/60">(A) works (B) has worked (C) is working (D) worked</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ HAS WORKED (B)</p>
                     <p>
                       "Since 2015" = ponto de início no passado com relevância até agora. Present Perfect (has worked) = ação que começou
@@ -3218,13 +3218,13 @@ he would authorize the overtime.
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Identifique o ERRO:</p>
-                    <p className="text-base">"While we are monitoring the system, the alarm sounded."</p>
-                    <p className="text-xs text-foreground/60">Qual tempo está ERRADO?</p>
+                    <p className="font-semibold text-lg">Identifique o ERRO:</p>
+                    <p className="text-lg">"While we are monitoring the system, the alarm sounded."</p>
+                    <p className="text-lg text-foreground/60">Qual tempo está ERRADO?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ MUDANÇA DE TEMPO</p>
                     <p>
                       "Are monitoring" (Present Continuous) está em CONTEXTO PASSADO (sounded = Simple Past). Deve ser "were monitoring"
@@ -3237,13 +3237,13 @@ he would authorize the overtime.
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual está CORRETO?</p>
-                    <p className="text-base">"By the time you arrive, I ___ the report."</p>
-                    <p className="text-xs text-foreground/60">(A) finish (B) will finish (C) will have finished</p>
+                    <p className="font-semibold text-lg">Qual está CORRETO?</p>
+                    <p className="text-lg">"By the time you arrive, I ___ the report."</p>
+                    <p className="text-lg text-foreground/60">(A) finish (B) will finish (C) will have finished</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ WILL HAVE FINISHED (C)</p>
                     <p>
                       "By the time" (até aquele momento) pede Future Perfect: ação que TERMINARÁ antes de outro evento futuro (você
@@ -3256,13 +3256,13 @@ he would authorize the overtime.
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">State Verb ou Action?</p>
-                    <p className="text-base">"I ___ how to fix this." (KNOW)</p>
-                    <p className="text-xs text-foreground/60">Pode ser -ing?</p>
+                    <p className="font-semibold text-lg">State Verb ou Action?</p>
+                    <p className="text-lg">"I ___ how to fix this." (KNOW)</p>
+                    <p className="text-lg text-foreground/60">Pode ser -ing?</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-red-600">❌ NÃO -ing</p>
                     <p>
                       "Know" = state verb (conhecimento que você POSSUI). ✅ "I know how to fix this." NOT: "I am knowing how to fix
@@ -3282,12 +3282,12 @@ he would authorize the overtime.
             maceteVisual={{
               title: "Tense Review — Âncoras de Tempo",
               content: (
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <p><strong>YESTERDAY / AGO / LAST</strong> → Simple Past</p>
                   <p><strong>ALREADY / JUST / YET / SINCE / FOR (sem data)</strong> → Present Perfect</p>
                   <p><strong>TOMORROW / NEXT / SOON</strong> → Future (will / going to)</p>
                   <p><strong>NOW / AT THE MOMENT / CURRENTLY</strong> → Present Continuous</p>
-                  <p className="text-xs text-muted-foreground">CESGRANRIO: identifique o marcador temporal PRIMEIRO — ele revela o tempo correto em 80% das questões.</p>
+                  <p className="text-lg text-muted-foreground">CESGRANRIO: identifique o marcador temporal PRIMEIRO — ele revela o tempo correto em 80% das questões.</p>
                 </div>
               )
             }}
@@ -3296,8 +3296,8 @@ he would authorize the overtime.
 
                     <QuizInterativo
             questoes={quizM8}
-            titulo="Tense Review"
-            numero={8}
+            titulo="QUIZ: Módulo Nº 8"
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-8")}
           />
         </div>
@@ -3320,7 +3320,7 @@ he would authorize the overtime.
               description="Cada tipo de documento corporativo Petrobras tem um 'registro verbal preferido'"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Quando você trabalha em Petrobras — seja redigindo procedimentos, respondendo e-mails, ou lendo manuais operacionais —
                 você rapidamente perceberá que cada tipo de documento tem uma ASSINATURA VERBAL específica. Um manual operacional NUNCA é
@@ -3346,7 +3346,7 @@ he would authorize the overtime.
                 <div className="space-y-4">
                   <div className="border-l-4 border-blue-600 pl-4">
                     <p className="font-semibold text-blue-700 dark:text-blue-300">1. Operational Manual (Procedimentos)</p>
-                    <p className="text-sm text-foreground/80 mt-1">
+                    <p className="text-lg text-foreground/80 mt-1">
                       <strong>Tempo Principal:</strong> Simple Present. <strong>Razão:</strong> Descreve procedimentos permanentes que são repetidos
                       infinitas vezes. "The pump operates continuously. The pressure valve prevents overpressure."
                     </p>
@@ -3354,7 +3354,7 @@ he would authorize the overtime.
 
                   <div className="border-l-4 border-amber-600 pl-4">
                     <p className="font-semibold text-amber-700 dark:text-amber-300">2. Incident Report (O que Aconteceu)</p>
-                    <p className="text-sm text-foreground/80 mt-1">
+                    <p className="text-lg text-foreground/80 mt-1">
                       <strong>Tempo Principal:</strong> Simple Past + Past Continuous. <strong>Razão:</strong> Relata eventos que já ocorreram.
                       "The alarm sounded at 14:32. The team was conducting maintenance when the incident occurred. We implemented corrective actions."
                     </p>
@@ -3362,7 +3362,7 @@ he would authorize the overtime.
 
                   <div className="border-l-4 border-green-600 pl-4">
                     <p className="font-semibold text-green-700 dark:text-green-300">3. Progress Report (Status Atual)</p>
-                    <p className="text-sm text-foreground/80 mt-1">
+                    <p className="text-lg text-foreground/80 mt-1">
                       <strong>Tempo Principal:</strong> Present Perfect + Simple Past. <strong>Razão:</strong> Descreve o que foi completo (resultado
                       até agora) e o que iniciou. "We have completed Phase 1. Phase 2 began last week. Deliverables are expected by Q4."
                     </p>
@@ -3370,7 +3370,7 @@ he would authorize the overtime.
 
                   <div className="border-l-4 border-red-600 pl-4">
                     <p className="font-semibold text-red-700 dark:text-red-300">4. Risk Assessment (Cenários Hipotéticos)</p>
-                    <p className="text-sm text-foreground/80 mt-1">
+                    <p className="text-lg text-foreground/80 mt-1">
                       <strong>Tempo Principal:</strong> Conditional Type 2 + Type 3. <strong>Razão:</strong> Descreve cenários irreais/improvável.
                       "If the pipeline were to rupture, it would require full emergency protocols. Had this been detected earlier, we would have prevented the incident."
                     </p>
@@ -3386,7 +3386,7 @@ he would authorize the overtime.
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Um operational manual Petrobras descreve procedimentos que são executados repetidamente, frequentemente por diferentes
                         operadores em diferentes datas. Portanto, NUNCA há datas específicas e NUNCA há pessoa específica — é tudo genérico e
                         atemporal. "The operator closes the isolation valve. He opens the pressure relief valve. He monitors the gauge." Cada
@@ -3394,15 +3394,15 @@ he would authorize the overtime.
                       </p>
 
                       <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-                        <p className="font-semibold text-sm mb-3">Exemplo: Drilling Procedure — Change Drill Bit (Manual Técnico Petrobras)</p>
-                        <div className="space-y-2 text-sm italic text-foreground/90">
+                        <p className="font-semibold text-lg mb-3">Exemplo: Drilling Procedure — Change Drill Bit (Manual Técnico Petrobras)</p>
+                        <div className="space-y-2 text-lg italic text-foreground/90">
                           <p>
                             "Step 1: The driller slows the rotational speed to minimum. Step 2: The circulation is stopped at the pump house.
                             Step 3: The kelly is picked up and positioned over the BOP. Step 4: The damaged bit is disconnected from the kelly.
                             Step 5: The new bit is carefully lowered and locked into position. Step 6: Normal circulation procedures resume."
                           </p>
                         </div>
-                        <p className="text-xs text-foreground/70 mt-3">
+                        <p className="text-lg text-foreground/70 mt-3">
                           <strong>Análise:</strong> Cada verbo é Simple Present porque descreve procedimento. "Is stopped", "is positioned", "is
                           disconnected" são passivas, mas ainda Simple Present — porque descrevem ações permanentes, não eventos únicos.
                         </p>
@@ -3417,7 +3417,7 @@ he would authorize the overtime.
                   icone: <LuTriangleAlert className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Um Incident Report relata algo que JÁ ACONTECEU. É uma narrativa histórica de um evento específico no passado. Todos
                         os tempos serão passado: Simple Past para eventos sequenciais, Past Continuous para ações em andamento, Past Perfect
                         para algo que terminou ANTES de outro evento passado. "The platform evacuated at 14:32. While the team was conducting
@@ -3425,8 +3425,8 @@ he would authorize the overtime.
                       </p>
 
                       <div className="bg-red-50 dark:bg-red-950/20 rounded-lg p-4 border border-red-200 dark:border-red-800">
-                        <p className="font-semibold text-sm mb-3">Exemplo: HSE Incident Report — Pressure Spike on Offshore Platform</p>
-                        <div className="space-y-2 text-sm italic text-foreground/90">
+                        <p className="font-semibold text-lg mb-3">Exemplo: HSE Incident Report — Pressure Spike on Offshore Platform</p>
+                        <div className="space-y-2 text-lg italic text-foreground/90">
                           <p>
                             "On March 15th at 14:32, a pressure anomaly was detected in Sector 3. The monitoring team was conducting routine checks
                             when the alarm triggered. The lead supervisor immediately activated emergency procedures. By 14:45, all non-essential
@@ -3435,7 +3435,7 @@ he would authorize the overtime.
                             16:00."
                           </p>
                         </div>
-                        <p className="text-xs text-foreground/70 mt-3">
+                        <p className="text-lg text-foreground/70 mt-3">
                           <strong>Tempos Utilizados:</strong> Simple Past (detected, triggered, activated, evacuated). Past Continuous (was
                           conducting). Past Perfect (had been, had isolated). Past Perfect Passive (had been evacuated).
                         </p>
@@ -3450,7 +3450,7 @@ he would authorize the overtime.
                   icone: <LuZap className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Um Progress Report é um SNAPSHOT — mostra o que foi feito até agora (resultado presente) e o que iniciou. Usa Present
                         Perfect para descrever o que foi COMPLETADO (porque o resultado é relevante AGORA) e Simple Past para descrever EVENTOS
                         que já passaram. "We have completed Phase 1 ahead of schedule. Phase 2 began last Monday. Deliverables are expected by
@@ -3458,8 +3458,8 @@ he would authorize the overtime.
                       </p>
 
                       <div className="bg-green-50 dark:bg-green-950/20 rounded-lg p-4 border border-green-200 dark:border-green-800">
-                        <p className="font-semibold text-sm mb-3">Exemplo: Quarterly Progress Report — Deepwater Platform Development</p>
-                        <div className="space-y-2 text-sm italic text-foreground/90">
+                        <p className="font-semibold text-lg mb-3">Exemplo: Quarterly Progress Report — Deepwater Platform Development</p>
+                        <div className="space-y-2 text-lg italic text-foreground/90">
                           <p>
                             "We have successfully completed the structural foundation installation. The team has installed 35 of 40 primary support
                             columns. The mooring system installation began on March 1st and is progressing on schedule. We have resolved two critical
@@ -3468,7 +3468,7 @@ he would authorize the overtime.
                             by Q3."
                           </p>
                         </div>
-                        <p className="text-xs text-foreground/70 mt-3">
+                        <p className="text-lg text-foreground/70 mt-3">
                           <strong>Tempos:</strong> Present Perfect (have completed, have installed, have resolved) para resultados. Simple Past
                           (began) para eventos históricos. Present Continuous (is progressing, is being integrated) para ações em andamento.
                         </p>
@@ -3481,7 +3481,7 @@ he would authorize the overtime.
                   icone: <LuShield className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Um Risk Assessment descreve cenários hipotéticos e consequências. "If X were to happen, Y would result." É Conditional
                         Type 2 (improvável) ou Type 3 (arrependimento). "If a pipeline rupture were to occur in Sector 5, it would trigger
                         immediate emergency protocols. Had this vulnerability been detected in the design phase, we would have redesigned the
@@ -3489,8 +3489,8 @@ he would authorize the overtime.
                       </p>
 
                       <div className="bg-amber-50 dark:bg-amber-950/20 rounded-lg p-4 border border-amber-200 dark:border-amber-800">
-                        <p className="font-semibold text-sm mb-3">Exemplo: Environmental Risk Assessment — Oil Spill Scenario</p>
-                        <div className="space-y-2 text-sm italic text-foreground/90">
+                        <p className="font-semibold text-lg mb-3">Exemplo: Environmental Risk Assessment — Oil Spill Scenario</p>
+                        <div className="space-y-2 text-lg italic text-foreground/90">
                           <p>
                             "If an uncontrolled release of crude oil were to occur at the wellhead, the environmental impact would be severe within
                             a 50-km radius. Should weather conditions be unfavorable, the dispersal would take 7-10 days. Had the double-wall
@@ -3499,7 +3499,7 @@ he would authorize the overtime.
                             dispersant spraying and deploy containment booms along the coastline."
                           </p>
                         </div>
-                        <p className="text-xs text-foreground/70 mt-3">
+                        <p className="text-lg text-foreground/70 mt-3">
                           <strong>Tempos:</strong> Conditional Type 2 (were to occur, would be) + Type 3 (Had been installed, would have been).
                           "Should" = Formal conditional. Resultado sempre em WOULD ou WOULD HAVE.
                         </p>
@@ -3527,13 +3527,13 @@ he would authorize the overtime.
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual tempo em Manual Técnico?</p>
-                    <p className="text-base">"The valve ___ the pressure flow."</p>
-                    <p className="text-xs text-foreground/60">(A) controls (B) is controlling (C) has controlled (D) controlled</p>
+                    <p className="font-semibold text-lg">Qual tempo em Manual Técnico?</p>
+                    <p className="text-lg">"The valve ___ the pressure flow."</p>
+                    <p className="text-lg text-foreground/60">(A) controls (B) is controlling (C) has controlled (D) controlled</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ CONTROLS (A)</p>
                     <p>
                       Manual = procedimento permanente = Simple Present. Descreve função do equipamento que é repetida infinitas vezes, não um
@@ -3546,13 +3546,13 @@ he would authorize the overtime.
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual em Incident Report?</p>
-                    <p className="text-base">"The alarm ___ while the team ___ maintenance."</p>
-                    <p className="text-xs text-foreground/60">(A) sounds / conducts (B) sounded / was conducting (C) has sounded / is conducting</p>
+                    <p className="font-semibold text-lg">Qual em Incident Report?</p>
+                    <p className="text-lg">"The alarm ___ while the team ___ maintenance."</p>
+                    <p className="text-lg text-foreground/60">(A) sounds / conducts (B) sounded / was conducting (C) has sounded / is conducting</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ SOUNDED / WAS CONDUCTING (B)</p>
                     <p>
                       Incident = evento passado completo. Simple Past (sounded = evento) + Past Continuous (was conducting = ação em andamento
@@ -3565,13 +3565,13 @@ he would authorize the overtime.
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Progress Report: Qual tempo para resultado?</p>
-                    <p className="text-base">"We ___ Phase 1 on schedule."</p>
-                    <p className="text-xs text-foreground/60">(A) completed (B) have completed (C) are completing (D) will complete</p>
+                    <p className="font-semibold text-lg">Progress Report: Qual tempo para resultado?</p>
+                    <p className="text-lg">"We ___ Phase 1 on schedule."</p>
+                    <p className="text-lg text-foreground/60">(A) completed (B) have completed (C) are completing (D) will complete</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ HAVE COMPLETED (B)</p>
                     <p>
                       Progress Report usa Present Perfect para "o que foi feito" (resultado relevante até agora). Não é tempo fechado (completed
@@ -3584,13 +3584,13 @@ he would authorize the overtime.
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Risk Assessment: Qual estrutura?</p>
-                    <p className="text-base">"If the system ___ to fail, operations ___ shut down."</p>
-                    <p className="text-xs text-foreground/60">(A) was / would (B) were / will (C) is / would (D) will / would</p>
+                    <p className="font-semibold text-lg">Risk Assessment: Qual estrutura?</p>
+                    <p className="text-lg">"If the system ___ to fail, operations ___ shut down."</p>
+                    <p className="text-lg text-foreground/60">(A) was / would (B) were / will (C) is / would (D) will / would</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ WERE / WOULD (A)</p>
                     <p>
                       Risk Assessment = cenário hipotético (improvável). Conditional Type 2: IF + Simple Past (were) + WOULD + infinitive
@@ -3610,12 +3610,12 @@ he would authorize the overtime.
             maceteVisual={{
               title: "English in Petrobras — Tempo por Documento",
               content: (
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <p><strong>MANUAL OPERACIONAL</strong> → Simple Present: "The operator checks the gauge."</p>
                   <p><strong>RELATÓRIO DE INCIDENTE</strong> → Simple Past: "The pressure dropped at 09:15."</p>
                   <p><strong>RELATÓRIO DE PROGRESSO</strong> → Present Perfect: "The team has completed Phase 1."</p>
                   <p><strong>RISK ASSESSMENT</strong> → Conditionals: "If the sensor fails, the system will shut down."</p>
-                  <p className="text-xs text-muted-foreground">CESGRANRIO adapta textos autênticos Petrobras — reconhecer o gênero textual = acertar o tempo.</p>
+                  <p className="text-lg text-muted-foreground">CESGRANRIO adapta textos autênticos Petrobras — reconhecer o gênero textual = acertar o tempo.</p>
                 </div>
               )
             }}
@@ -3624,8 +3624,8 @@ he would authorize the overtime.
 
                     <QuizInterativo
             questoes={quizM9}
-            titulo="English in Petrobras"
-            numero={9}
+            titulo="QUIZ: Módulo Nº 9"
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-9")}
           />
         </div>
@@ -3648,7 +3648,7 @@ he would authorize the overtime.
               description="Resumo completo: estrutura, quando usar, exemplos, marcadores temporais"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Você chegou ao final. Este módulo consolida TUDO que aprendeu sobre Verb Tenses em uma referência completa. Aqui está a
                 tabela que você deve memorizar, a estratégia dos 5 passos que funciona para QUALQUER questão, e um conjunto de questões
@@ -3658,8 +3658,8 @@ he would authorize the overtime.
 
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-lg border border-purple-200 dark:border-purple-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Tabela Mestre: 7 Tempos Verbais em Uma Página</h4>
-                <div className="space-y-3 text-sm overflow-x-auto">
-                  <table className="w-full text-xs border-collapse">
+                <div className="space-y-3 text-lg overflow-x-auto">
+                  <table className="w-full text-lg border-collapse">
                     <thead>
                       <tr className="bg-purple-200 dark:bg-purple-900">
                         <th className="border border-purple-300 dark:border-purple-700 p-2 text-left">Tempo</th>
@@ -3734,7 +3734,7 @@ he would authorize the overtime.
                   icone: <LuTarget className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Esta é a estratégia que você deve usar para QUALQUER questão sobre Verb Tenses em uma prova CESGRANRIO. Não há
                         exceção. Siga sempre nesta ordem exata, e você acertará 90% das questões.
                       </p>
@@ -3864,14 +3864,14 @@ he would authorize the overtime.
 
             <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg p-6 text-white space-y-4">
               <h4 className="font-bold text-lg">🎯 Você Tem Tudo Que Precisa</h4>
-              <p className="text-sm leading-relaxed">
+              <p className="text-lg leading-relaxed">
                 Você aprendeu os 7 tempos verbais (Simple Present, Present Continuous, Simple Past, Past Continuous, Present Perfect,
                 Future Simple, Conditional). Você aprendeu a estratégia dos 5 passos que funciona para QUALQUER questão. Você aprendeu os
                 marcadores temporais que revelam qual tempo usar. Você aprendeu os contextos Petrobras (manuais, relatórios, avaliações de
                 risco). Agora, teste seu conhecimento no simulado abaixo. Se você conseguir 70% ou mais, você está pronto para a prova
                 oficial de CESGRANRIO.
               </p>
-              <p className="text-xs font-semibold">
+              <p className="text-lg font-semibold">
                 Dica final: Leia cada questão lentamente. Procure primeiro pelo marcador temporal. Aplique os 5 passos. Confie em seu
                 instinto.
               </p>
@@ -3886,13 +3886,13 @@ he would authorize the overtime.
             maceteVisual={{
               title: "Simulado Mestre — Os 5 Passos CESGRANRIO",
               content: (
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-lg">
                   <p><strong>1.</strong> Leia a frase completa antes de responder.</p>
                   <p><strong>2.</strong> Identifique o marcador temporal (yesterday, since, now…).</p>
                   <p><strong>3.</strong> Identifique o tipo de verbo (state verb = nunca continuous).</p>
                   <p><strong>4.</strong> Elimine as alternativas incompatíveis com o marcador.</p>
                   <p><strong>5.</strong> Confirme que a alternativa escolhida faz sentido semântico na frase.</p>
-                  <p className="text-xs text-muted-foreground">Você domina os 7 tempos verbais! Confiança + método = aprovação.</p>
+                  <p className="text-lg text-muted-foreground">Você domina os 7 tempos verbais! Confiança + método = aprovação.</p>
                 </div>
               )
             }}
@@ -3902,7 +3902,7 @@ he would authorize the overtime.
                     <QuizInterativo
             questoes={quizFinal}
             titulo="Simulado Mestre"
-            numero={10}
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-10")}
           />
         </div>

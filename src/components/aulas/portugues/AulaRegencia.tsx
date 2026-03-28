@@ -204,7 +204,7 @@ export default function AulaRegencia({
                           <h4 className="font-bold text-blue-500 mb-2 flex items-center gap-2">
                             <LuTarget className="w-4 h-4" /> Termo Regente
                           </h4>
-                          <p className="text-sm">
+                          <p className="text-lg">
                             É a palavra que exige um complemento para ter
                             sentido pleno. Pode ser um verbo ou um nome.
                           </p>
@@ -213,7 +213,7 @@ export default function AulaRegencia({
                           <h4 className="font-bold text-emerald-500 mb-2 flex items-center gap-2">
                             <LuCheck className="w-4 h-4" /> Termo Regido
                           </h4>
-                          <p className="text-sm">
+                          <p className="text-lg">
                             É o complemento que satisfaz a exigência do regente,
                             podendo ou não vir acompanhado de preposição.
                           </p>
@@ -227,14 +227,14 @@ export default function AulaRegencia({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         A preposição é o "conector" que vincula os termos. No
                         concurso, o erro mais comum é trocar ou omitir esse
                         conector.
                       </p>
                       <div className="p-5 bg-amber-500/10 rounded-xl border border-amber-500/20 italic">
                         "O povo confia **em** soluções rápidas." <br />
-                        <span className="text-xs text-muted-foreground">
+                        <span className="text-lg text-muted-foreground">
                           (Confia = VERBO REGENTE; EM = PREPOSIÇÃO CONECTORA;
                           Soluções = TERMO REGIDO)
                         </span>
@@ -266,19 +266,19 @@ export default function AulaRegencia({
                         ou sem preposição. Isso define a transitividade do verbo.
                       </p>
                       <div className="grid gap-3 md:grid-cols-3">
-                        <div className="p-3 bg-blue-500/5 rounded-xl border border-blue-500/20 text-sm">
+                        <div className="p-3 bg-blue-500/5 rounded-xl border border-blue-500/20 text-lg">
                           <span className="font-bold text-blue-500 block mb-1">
                             Intransitivo
                           </span>
                           Não exige complemento. Ex: "O sol <strong>nasce</strong>."
                         </div>
-                        <div className="p-3 bg-indigo-500/5 rounded-xl border border-indigo-500/20 text-sm">
+                        <div className="p-3 bg-indigo-500/5 rounded-xl border border-indigo-500/20 text-lg">
                           <span className="font-bold text-indigo-500 block mb-1">
                             Transitivo Direto
                           </span>
                           Complemento SEM preposição. Ex: "Ela <strong>comprou</strong> o relatório."
                         </div>
-                        <div className="p-3 bg-purple-500/5 rounded-xl border border-purple-500/20 text-sm">
+                        <div className="p-3 bg-purple-500/5 rounded-xl border border-purple-500/20 text-lg">
                           <span className="font-bold text-purple-500 block mb-1">
                             Transitivo Indireto
                           </span>
@@ -299,13 +299,13 @@ export default function AulaRegencia({
                         preposição exigida é fixa para cada palavra.
                       </p>
                       <div className="grid gap-3 md:grid-cols-2">
-                        <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-sm">
+                        <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-lg">
                           <span className="font-bold text-emerald-500 block mb-1">
                             Adjetivo
                           </span>
                           "Apto <strong>a</strong> trabalhar" — a preposição pertence ao adjetivo.
                         </div>
-                        <div className="p-3 bg-teal-500/5 rounded-xl border border-teal-500/20 text-sm">
+                        <div className="p-3 bg-teal-500/5 rounded-xl border border-teal-500/20 text-lg">
                           <span className="font-bold text-teal-500 block mb-1">
                             Substantivo
                           </span>
@@ -320,20 +320,20 @@ export default function AulaRegencia({
                   icone: <LuShield />,
                   conteudo: (
                     <div className="space-y-3">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         A Cesgranrio cobra regência porque a língua coloquial
                         usa preposições erradas com frequência. O candidato
                         despreparado escreve como fala. Para a Petrobras, a
                         excelência linguística é exigida.
                       </p>
-                      <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20 text-sm space-y-2">
+                      <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20 text-lg space-y-2">
                         <p>
                           ❌ <span className="line-through opacity-60">"Eu prefiro isso do que aquilo."</span>
                         </p>
                         <p>
                           ✅ "Eu prefiro isso <strong>a</strong> aquilo."
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-muted-foreground">
                           O verbo PREFERIR exige a preposição A, nunca "do que".
                         </p>
                       </div>
@@ -354,12 +354,12 @@ export default function AulaRegencia({
               <FlipCard
                 frente={<div className="font-bold text-lg">TRANSITIVO DIRETO</div>}
                 verso={
-                  <div className="space-y-3 text-sm">
+                  <div className="space-y-3 text-lg">
                     <p className="font-semibold text-emerald-400">Sem preposição obrigatória</p>
                     <p>O verbo liga-se diretamente ao complemento.</p>
                     <p>✅ "A Petrobras <strong>assinou</strong> o contrato."</p>
                     <p>✅ "Ele <strong>comprou</strong> os equipamentos."</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       O complemento pode ser substituído por o/a/os/as.
                     </p>
                   </div>
@@ -368,12 +368,12 @@ export default function AulaRegencia({
               <FlipCard
                 frente={<div className="font-bold text-lg">TRANSITIVO INDIRETO</div>}
                 verso={
-                  <div className="space-y-3 text-sm">
+                  <div className="space-y-3 text-lg">
                     <p className="font-semibold text-blue-400">Com preposição obrigatória</p>
                     <p>O verbo precisa da preposição para conectar o complemento.</p>
                     <p>✅ "Ele <strong>obedeceu às</strong> normas."</p>
                     <p>✅ "Aspiramos <strong>ao</strong> crescimento."</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       O complemento pode ser substituído por lhe/lhes.
                     </p>
                   </div>
@@ -462,7 +462,7 @@ export default function AulaRegencia({
                         preposição <strong>COM</strong>. Errar essas preposições
                         é um dos itens mais cobrados pela Cesgranrio.
                       </p>
-                      <div className="grid gap-2 text-sm">
+                      <div className="grid gap-2 text-lg">
                         {[
                           { adj: "Compatível", prep: "COM", ex: "compatível com as normas" },
                           { adj: "Contente", prep: "COM", ex: "contente com o resultado" },
@@ -475,10 +475,10 @@ export default function AulaRegencia({
                             className="flex items-center justify-between p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/10"
                           >
                             <span className="font-semibold">{item.adj}</span>
-                            <span className="font-mono text-indigo-400 text-xs font-bold">
+                            <span className="font-mono text-indigo-400 text-lg font-bold">
                               {item.prep}
                             </span>
-                            <span className="text-muted-foreground text-xs italic">
+                            <span className="text-muted-foreground text-lg italic">
                               {item.ex}
                             </span>
                           </div>
@@ -492,18 +492,18 @@ export default function AulaRegencia({
                   icone: <LuTriangleAlert />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         O adjetivo <strong>ANSIOSO</strong> admite duas
                         preposições com sentidos diferentes:
                       </p>
                       <div className="grid gap-3 md:grid-cols-2">
-                        <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20 text-sm">
+                        <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20 text-lg">
                           <span className="font-bold text-blue-500 block mb-1">Ansioso POR</span>
                           Desejo intenso de algo.
                           <br />
                           ✅ "Ansioso <strong>pela</strong> aprovação."
                         </div>
-                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-sm">
+                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-lg">
                           <span className="font-bold text-emerald-500 block mb-1">Ansioso PARA</span>
                           Pronto para fazer algo.
                           <br />
@@ -542,7 +542,7 @@ export default function AulaRegencia({
               <FlipCard
                 frente={<div className="font-bold">APTO</div>}
                 verso={
-                  <div className="space-y-2 text-xs">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-emerald-400">Preposição: A</p>
                     <p>✅ "Profissional apto <strong>ao</strong> cargo."</p>
                     <p>✅ "Apto <strong>a</strong> assumir a função."</p>
@@ -553,7 +553,7 @@ export default function AulaRegencia({
               <FlipCard
                 frente={<div className="font-bold">ATENTO</div>}
                 verso={
-                  <div className="space-y-2 text-xs">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-blue-400">Preposição: A</p>
                     <p>✅ "Atento <strong>às</strong> diretrizes corporativas."</p>
                     <p>✅ "Fique atento <strong>ao</strong> prazo."</p>
@@ -566,9 +566,9 @@ export default function AulaRegencia({
 
           <QuizInterativo
             questoes={QUIZ_M2_REGENCIA}
-            titulo="Fixação - Módulo 2"
+            titulo="QUIZ: Módulo Nº 2"
             icone="🎯"
-            numero={2}
+            numero={4}
             variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
@@ -601,7 +601,7 @@ export default function AulaRegencia({
                         Diferente do que muitos pensam, alguns nomes aceitam
                         mais de uma preposição sem mudar o sentido.
                       </p>
-                      <div className="grid gap-2 text-sm">
+                      <div className="grid gap-2 text-lg">
                         <div className="flex justify-between p-2 border-b">
                           <span>Respeito</span>{" "}
                           <span className="font-mono text-primary">
@@ -642,11 +642,11 @@ export default function AulaRegencia({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Os substantivos de sentimento possuem preposições fixas
                         que o candidato deve memorizar:
                       </p>
-                      <div className="grid gap-2 text-sm">
+                      <div className="grid gap-2 text-lg">
                         {[
                           { subst: "Amor", prep: "A / DE / POR", ex: "amor à pátria / amor de mãe / amor pelo trabalho" },
                           { subst: "Medo", prep: "DE", ex: "medo de falhar" },
@@ -660,11 +660,11 @@ export default function AulaRegencia({
                           >
                             <div className="flex items-center gap-2">
                               <span className="font-bold">{item.subst}</span>
-                              <span className="text-indigo-400 font-mono text-xs font-bold">
+                              <span className="text-indigo-400 font-mono text-lg font-bold">
                                 {item.prep}
                               </span>
                             </div>
-                            <p className="text-xs text-muted-foreground italic">
+                            <p className="text-lg text-muted-foreground italic">
                               {item.ex}
                             </p>
                           </div>
@@ -678,11 +678,11 @@ export default function AulaRegencia({
                   icone: <LuFileText />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         No contexto corporativo da Petrobras, estes substantivos
                         aparecem com frequência em relatórios técnicos:
                       </p>
-                      <div className="grid gap-2 text-sm">
+                      <div className="grid gap-2 text-lg">
                         {[
                           { subst: "Necessidade", prep: "DE", ex: "necessidade de treinamento" },
                           { subst: "Referência", prep: "A", ex: "referência ao protocolo" },
@@ -695,10 +695,10 @@ export default function AulaRegencia({
                             className="flex items-center justify-between p-3 bg-slate-500/5 rounded-lg border border-slate-500/10"
                           >
                             <span className="font-semibold">{item.subst}</span>
-                            <span className="text-primary font-mono text-xs font-bold">
+                            <span className="text-primary font-mono text-lg font-bold">
                               {item.prep}
                             </span>
-                            <span className="text-muted-foreground text-xs italic">
+                            <span className="text-muted-foreground text-lg italic">
                               {item.ex}
                             </span>
                           </div>
@@ -772,7 +772,7 @@ export default function AulaRegencia({
               <FlipCard
                 frente={<div className="font-bold">ASSISTIR</div>}
                 verso={
-                  <div className="space-y-3 text-xs">
+                  <div className="space-y-3 text-lg">
                     <p>
                       <strong>VTI (A):</strong> Ver/Presenciar. Ex: Assisti ao
                       curso.
@@ -790,7 +790,7 @@ export default function AulaRegencia({
               <FlipCard
                 frente={<div className="font-bold">ASPIRAR</div>}
                 verso={
-                  <div className="space-y-3 text-xs">
+                  <div className="space-y-3 text-lg">
                     <p>
                       <strong>VTD:</strong> Cheirar/Suggar. Ex: Aspirei o pó.
                     </p>
@@ -803,7 +803,7 @@ export default function AulaRegencia({
               <FlipCard
                 frente={<div className="font-bold">VISAR</div>}
                 verso={
-                  <div className="space-y-3 text-xs">
+                  <div className="space-y-3 text-lg">
                     <p>
                       <strong>VTD:</strong> Mirar ou Rubricar. Ex: Visou o
                       documento.
@@ -846,12 +846,12 @@ export default function AulaRegencia({
                   icone: <LuEye />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         O verbo ASSISTIR merece atenção especial porque seus
                         três sentidos têm regências completamente distintas:
                       </p>
                       <div className="space-y-3">
-                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-sm">
+                        <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-lg">
                           <span className="font-bold text-emerald-500 block mb-1">
                             1. VER / PRESENCIAR → VTI (A)
                           </span>
@@ -859,14 +859,14 @@ export default function AulaRegencia({
                           <p>✅ "Os técnicos assistiram <strong>às</strong> operações."</p>
                           <p className="text-red-400 mt-1">❌ "Assisti o treinamento." (errado neste sentido)</p>
                         </div>
-                        <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20 text-sm">
+                        <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20 text-lg">
                           <span className="font-bold text-blue-500 block mb-1">
                             2. AJUDAR / SOCORRER → VTD
                           </span>
                           <p>✅ "A equipe assistiu <strong>os</strong> trabalhadores acidentados."</p>
                           <p>✅ "O médico assistiu <strong>os</strong> pacientes."</p>
                         </div>
-                        <div className="p-4 bg-purple-500/5 rounded-xl border border-purple-500/20 text-sm">
+                        <div className="p-4 bg-purple-500/5 rounded-xl border border-purple-500/20 text-lg">
                           <span className="font-bold text-purple-500 block mb-1">
                             3. CABER / SER DIREITO DE → VTI (A)
                           </span>
@@ -882,13 +882,13 @@ export default function AulaRegencia({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
-                      <div className="p-4 bg-teal-500/5 rounded-xl border border-teal-500/20 text-sm">
+                      <div className="p-4 bg-teal-500/5 rounded-xl border border-teal-500/20 text-lg">
                         <span className="font-bold text-teal-500 block mb-2">ASPIRAR</span>
                         <p>✅ "Os trabalhadores aspiraram <strong>o</strong> pó do ambiente." (inalar = VTD)</p>
                         <p>✅ "Os engenheiros aspiram <strong>ao</strong> cargo de gestão." (desejar = VTI-A)</p>
                         <p className="text-red-400 mt-1">❌ "Aspiro ao pó" (sentido incorreto — inalar não aceita preposição)</p>
                       </div>
-                      <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20 text-sm">
+                      <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20 text-lg">
                         <span className="font-bold text-cyan-500 block mb-2">VISAR</span>
                         <p>✅ "O gerente visou <strong>o</strong> documento oficial." (rubricar = VTD)</p>
                         <p>✅ "A empresa visava <strong>ao</strong> lucro sustentável." (objetivar = VTI-A)</p>
@@ -926,7 +926,7 @@ export default function AulaRegencia({
 
           <QuizInterativo
             questoes={QUIZ_M4_REGENCIA}
-            titulo="Fixação - Módulo 4"
+            titulo="QUIZ: Módulo Nº 4"
             icone="🎯"
             numero={4}
             variant="emerald"
@@ -1013,7 +1013,7 @@ export default function AulaRegencia({
               <FlipCard
                 frente={<div className="font-bold">AGRADAR</div>}
                 verso={
-                  <div className="space-y-2 text-xs">
+                  <div className="space-y-2 text-lg">
                     <p className="text-emerald-400 font-bold">Dois sentidos, duas regências:</p>
                     <p>✅ <strong>VTD</strong> (satisfazer): "A decisão agradou <strong>os</strong> diretores."</p>
                     <p>✅ <strong>VTI (A)</strong> (fazer carinho): "O gestor agradou <strong>aos</strong> subordinados."</p>
@@ -1024,7 +1024,7 @@ export default function AulaRegencia({
               <FlipCard
                 frente={<div className="font-bold">CHAMAR</div>}
                 verso={
-                  <div className="space-y-2 text-xs">
+                  <div className="space-y-2 text-lg">
                     <p className="text-blue-400 font-bold">Convocar vs Denominar:</p>
                     <p>✅ <strong>VTD</strong> (convocar): "Chamou <strong>o</strong> técnico."</p>
                     <p>✅ <strong>VTD ou VTI (DE/A)</strong> (denominar): "Chamou-o de herói." / "Chamou-lhe herói."</p>
@@ -1034,7 +1034,7 @@ export default function AulaRegencia({
               <FlipCard
                 frente={<div className="font-bold">PRESIDIR</div>}
                 verso={
-                  <div className="space-y-2 text-xs">
+                  <div className="space-y-2 text-lg">
                     <p className="text-teal-400 font-bold">Contexto Petrobras:</p>
                     <p>✅ <strong>VTD</strong>: "O diretor presidiu <strong>a</strong> cerimônia."</p>
                     <p>✅ <strong>VTD</strong>: "Presidiu <strong>a</strong> reunião do conselho."</p>
@@ -1045,11 +1045,11 @@ export default function AulaRegencia({
               <FlipCard
                 frente={<div className="font-bold">QUERER</div>}
                 verso={
-                  <div className="space-y-2 text-xs">
+                  <div className="space-y-2 text-lg">
                     <p className="text-purple-400 font-bold">Desejar vs Estimar:</p>
                     <p>✅ <strong>VTD</strong> (desejar): "Quero <strong>o</strong> relatório."</p>
                     <p>✅ <strong>VTI (A)</strong> (estimar): "Quero <strong>bem a</strong> minha equipe."</p>
-                    <p className="text-xs text-muted-foreground mt-1">Quero-lhe bem = estimo você</p>
+                    <p className="text-lg text-muted-foreground mt-1">Quero-lhe bem = estimo você</p>
                   </div>
                 }
               />
@@ -1083,18 +1083,18 @@ export default function AulaRegencia({
               variant="cyan"
             />
             <div className="p-6 bg-cyan-500/5 rounded-2xl border border-cyan-500/20 space-y-4">
-              <h4 className="font-black text-cyan-600 uppercase tracking-widest text-sm flex items-center gap-2">
+              <h4 className="font-black text-cyan-600 uppercase tracking-widest text-lg flex items-center gap-2">
                 <LuZap className="w-5 h-5" /> Regra de Ouro (Pagar/Perdoar)
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-background p-4 rounded-xl border">
-                  <span className="text-xs font-bold text-muted-foreground uppercase">
+                  <span className="text-lg font-bold text-muted-foreground uppercase">
                     Objeto Coisa (VTD)
                   </span>
                   <p className="mt-1 font-medium">Paguei **o boleto**.</p>
                 </div>
                 <div className="bg-background p-4 rounded-xl border">
-                  <span className="text-xs font-bold text-muted-foreground uppercase">
+                  <span className="text-lg font-bold text-muted-foreground uppercase">
                     Objeto Pessoa (VTI)
                   </span>
                   <p className="mt-1 font-medium">Paguei **ao funcionário**.</p>
@@ -1123,15 +1123,15 @@ export default function AulaRegencia({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Estes dois verbos seguem a mesma lógica: quando o
                         objeto é uma <strong>coisa</strong>, é direto; quando é
                         uma <strong>pessoa</strong>, é indireto (exige A).
                       </p>
                       <div className="grid gap-3 md:grid-cols-2">
                         <div className="space-y-2">
-                          <h5 className="text-teal-500 font-bold text-sm">PAGAR</h5>
-                          <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/10 text-xs space-y-1">
+                          <h5 className="text-teal-500 font-bold text-lg">PAGAR</h5>
+                          <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/10 text-lg space-y-1">
                             <p>✅ Paguei <strong>a conta</strong> (coisa = VTD)</p>
                             <p>✅ Paguei <strong>ao fornecedor</strong> (pessoa = VTI)</p>
                             <p className="text-red-400">❌ Paguei a conta ao fornecedor</p>
@@ -1139,8 +1139,8 @@ export default function AulaRegencia({
                           </div>
                         </div>
                         <div className="space-y-2">
-                          <h5 className="text-cyan-500 font-bold text-sm">PERDOAR</h5>
-                          <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/10 text-xs space-y-1">
+                          <h5 className="text-cyan-500 font-bold text-lg">PERDOAR</h5>
+                          <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/10 text-lg space-y-1">
                             <p>✅ Perdoei <strong>o erro</strong> (coisa = VTD)</p>
                             <p>✅ Perdoei <strong>ao colega</strong> (pessoa = VTI)</p>
                             <p className="text-muted-foreground">Perdoo-lhe = perdoo a você</p>
@@ -1155,15 +1155,15 @@ export default function AulaRegencia({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Alguns verbos aceitam dois complementos ao mesmo
                         tempo: um direto (a coisa ensinada/perguntada) e um
                         indireto (a pessoa).
                       </p>
-                      <div className="p-4 bg-teal-500/5 rounded-xl border border-teal-500/20 text-sm space-y-2">
+                      <div className="p-4 bg-teal-500/5 rounded-xl border border-teal-500/20 text-lg space-y-2">
                         <p>✅ "O supervisor ensinou <strong>os procedimentos</strong> (VTD) <strong>aos</strong> novatos (VTI)."</p>
                         <p>✅ "Perguntou <strong>o prazo</strong> (VTD) <strong>ao</strong> gerente (VTI)."</p>
-                        <p className="text-muted-foreground text-xs mt-2">
+                        <p className="text-muted-foreground text-lg mt-2">
                           Regra: a coisa sempre é VTD; a pessoa sempre é VTI (A).
                         </p>
                       </div>
@@ -1208,9 +1208,9 @@ export default function AulaRegencia({
 
           <QuizInterativo
             questoes={QUIZ_M6_REGENCIA}
-            titulo="Fixação - Módulo 6"
+            titulo="QUIZ: Módulo Nº 6"
             icone="🎯"
-            numero={6}
+            numero={4}
             variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
@@ -1264,13 +1264,13 @@ export default function AulaRegencia({
                   icone: <LuArrowRight />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Na norma culta, a preposição que acompanha verbos de
                         movimento (<em>ir, chegar, voltar, regressar</em>) tem
                         regras precisas:
                       </p>
                       <div className="grid gap-3 md:grid-cols-2">
-                        <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20 text-sm">
+                        <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20 text-lg">
                           <span className="font-bold text-amber-500 block mb-1">IR A</span>
                           Indica movimento com intenção de retorno.
                           <br />
@@ -1278,7 +1278,7 @@ export default function AulaRegencia({
                           <br />
                           ✅ "Vou <strong>à</strong> reunião agora."
                         </div>
-                        <div className="p-4 bg-orange-500/5 rounded-xl border border-orange-500/20 text-sm">
+                        <div className="p-4 bg-orange-500/5 rounded-xl border border-orange-500/20 text-lg">
                           <span className="font-bold text-orange-500 block mb-1">IR PARA</span>
                           Indica movimento com intenção de permanência.
                           <br />
@@ -1287,7 +1287,7 @@ export default function AulaRegencia({
                           ✅ "Mudou-se <strong>para</strong> o Rio de Janeiro."
                         </div>
                       </div>
-                      <div className="p-3 bg-red-500/5 rounded-lg border border-red-500/20 text-sm">
+                      <div className="p-3 bg-red-500/5 rounded-lg border border-red-500/20 text-lg">
                         <span className="font-bold text-red-400">IR EM</span> — ERRADO na norma culta escrita!
                         <br />
                         ❌ <span className="line-through opacity-60">"Fui em São Paulo semana passada."</span>
@@ -1302,12 +1302,12 @@ export default function AulaRegencia({
                   icone: <LuLink />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Quando o verbo se pronominaliza (recebe SE, ME, TE),
                         geralmente muda de transitivo direto para indireto —
                         e exige preposição:
                       </p>
-                      <div className="grid gap-2 text-sm">
+                      <div className="grid gap-2 text-lg">
                         {[
                           { sem: "Lembrar (VTD)", com: "Lembrar-se DE (VTI)", ex: "Lembrou o relatório → Lembrou-se do relatório" },
                           { sem: "Esquecer (VTD)", com: "Esquecer-se DE (VTI)", ex: "Esqueceu a senha → Esqueceu-se da senha" },
@@ -1318,12 +1318,12 @@ export default function AulaRegencia({
                             key={i}
                             className="p-3 bg-amber-500/5 rounded-lg border border-amber-500/10"
                           >
-                            <div className="flex items-center gap-2 text-xs font-bold mb-1">
+                            <div className="flex items-center gap-2 text-lg font-bold mb-1">
                               <span className="text-muted-foreground">{item.sem}</span>
                               <LuArrowRight className="w-3 h-3" />
                               <span className="text-amber-400">{item.com}</span>
                             </div>
-                            <p className="text-xs text-muted-foreground italic">{item.ex}</p>
+                            <p className="text-lg text-muted-foreground italic">{item.ex}</p>
                           </div>
                         ))}
                       </div>
@@ -1432,18 +1432,18 @@ export default function AulaRegencia({
                   icone: <LuTriangleAlert />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         O verbo <strong>PREFERIR</strong> é transitivo direto e
                         indireto. O complemento preferido é VTD; o preterido
                         vem com preposição A. Nunca use "do que" ou "antes".
                       </p>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-2 text-lg">
                         <div className="p-3 bg-red-500/5 rounded-lg border border-red-500/10">
                           ❌ <span className="line-through opacity-70">"Prefiro café do que chá."</span>
                         </div>
                         <div className="p-3 bg-red-500/5 rounded-lg border border-red-500/10">
                           ❌ <span className="line-through opacity-70">"Prefiro muito mais café."</span>
-                          <span className="text-xs text-muted-foreground ml-2">(pleonasmo vicioso)</span>
+                          <span className="text-lg text-muted-foreground ml-2">(pleonasmo vicioso)</span>
                         </div>
                         <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/10">
                           ✅ "Prefiro café <strong>a</strong> chá."
@@ -1460,12 +1460,12 @@ export default function AulaRegencia({
                   icone: <LuMessageCircle />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Estes três verbos são muito usados em textos formais e
                         relatórios técnicos da Petrobras. Todos exigem
                         preposição <strong>A</strong>.
                       </p>
-                      <div className="grid gap-2 text-sm">
+                      <div className="grid gap-2 text-lg">
                         <div className="p-3 bg-orange-500/5 rounded-lg border border-orange-500/10">
                           <span className="font-bold text-orange-400">ALUDIR A</span>
                           <br />
@@ -1494,11 +1494,11 @@ export default function AulaRegencia({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Alguns verbos oscilam entre DE e EM na linguagem
                         coloquial. A gramática normativa é clara:
                       </p>
-                      <div className="grid gap-2 text-sm">
+                      <div className="grid gap-2 text-lg">
                         {[
                           { verbo: "Precisar", prep: "DE", ex: "precisar de aprovação", errado: "precisar em" },
                           { verbo: "Carecer", prep: "DE", ex: "carecer de recursos", errado: "carecer em" },
@@ -1509,10 +1509,10 @@ export default function AulaRegencia({
                           <div key={item.verbo} className="p-3 bg-amber-500/5 rounded-lg border border-amber-500/10">
                             <div className="flex items-center gap-2 mb-1">
                               <span className="font-bold">{item.verbo}</span>
-                              <span className="text-amber-400 font-mono text-xs font-bold">{item.prep}</span>
+                              <span className="text-amber-400 font-mono text-lg font-bold">{item.prep}</span>
                             </div>
-                            <p className="text-xs">✅ {item.ex}</p>
-                            <p className="text-xs text-red-400">❌ <span className="line-through opacity-70">{item.errado}</span></p>
+                            <p className="text-lg">✅ {item.ex}</p>
+                            <p className="text-lg text-red-400">❌ <span className="line-through opacity-70">{item.errado}</span></p>
                           </div>
                         ))}
                       </div>
@@ -1533,7 +1533,7 @@ export default function AulaRegencia({
               <FlipCard
                 frente={<div className="font-bold">PRECISAR</div>}
                 verso={
-                  <div className="space-y-2 text-xs">
+                  <div className="space-y-2 text-lg">
                     <p className="text-orange-400 font-bold">Preposição: DE</p>
                     <p>✅ "A operação precisa <strong>de</strong> autorização."</p>
                     <p>✅ "Precisamos <strong>de</strong> mais tempo."</p>
@@ -1544,22 +1544,22 @@ export default function AulaRegencia({
               <FlipCard
                 frente={<div className="font-bold">CARECER</div>}
                 verso={
-                  <div className="space-y-2 text-xs">
+                  <div className="space-y-2 text-lg">
                     <p className="text-amber-400 font-bold">Preposição: DE</p>
                     <p>✅ "O projeto carece <strong>de</strong> revisão técnica."</p>
                     <p>✅ "A proposta carece <strong>de</strong> embasamento."</p>
-                    <p className="text-muted-foreground text-xs mt-1">Sinônimo formal de "precisar"</p>
+                    <p className="text-muted-foreground text-lg mt-1">Sinônimo formal de "precisar"</p>
                   </div>
                 }
               />
               <FlipCard
                 frente={<div className="font-bold">NECESSITAR</div>}
                 verso={
-                  <div className="space-y-2 text-xs">
+                  <div className="space-y-2 text-lg">
                     <p className="text-yellow-400 font-bold">Preposição: DE</p>
                     <p>✅ "A planta necessita <strong>de</strong> manutenção preventiva."</p>
                     <p>✅ "Todos necessitam <strong>de</strong> treinamento."</p>
-                    <p className="text-muted-foreground text-xs mt-1">Uso formal muito frequente na Petrobras</p>
+                    <p className="text-muted-foreground text-lg mt-1">Uso formal muito frequente na Petrobras</p>
                   </div>
                 }
               />
@@ -1568,9 +1568,9 @@ export default function AulaRegencia({
 
           <QuizInterativo
             questoes={QUIZ_M8_REGENCIA}
-            titulo="Fixação - Módulo 8"
+            titulo="QUIZ: Módulo Nº 8"
             icone="🎯"
-            numero={8}
+            numero={4}
             variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
@@ -1592,7 +1592,7 @@ export default function AulaRegencia({
               title="A Preposição Viajante"
               variant="indigo"
             />
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground text-lg">
               A regra é: olhe para o verbo que vem DEPOIS do pronome. Se ele
               exigir preposição, ela deve ser jogada para ANTES do pronome.
             </p>
@@ -1648,12 +1648,12 @@ export default function AulaRegencia({
                   icone: <LuFileText />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         A Cesgranrio gosta de inserir pronomes relativos (que,
                         quem, o qual) para verificar se o candidato mantém a
                         preposição correta do verbo:
                       </p>
-                      <div className="space-y-3 text-sm">
+                      <div className="space-y-3 text-lg">
                         <div className="p-3 bg-purple-500/5 rounded-lg border border-purple-500/10">
                           <span className="font-bold text-purple-400">Verbo CONFIAR EM</span>
                           <br />
@@ -1684,22 +1684,22 @@ export default function AulaRegencia({
                   icone: <LuShield />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Em questões de reescrita e adequação de linguagem
                         técnica, a Cesgranrio verifica se o candidato sabe
                         usar a regência correta em contexto formal:
                       </p>
-                      <div className="space-y-3 text-sm">
+                      <div className="space-y-3 text-lg">
                         <div className="p-3 bg-slate-500/5 rounded-lg border border-slate-500/10">
-                          <p className="text-muted-foreground text-xs mb-1">ANTES (inadequado):</p>
+                          <p className="text-muted-foreground text-lg mb-1">ANTES (inadequado):</p>
                           <p className="italic">"O sistema que nos referimos apresenta falhas."</p>
-                          <p className="text-muted-foreground text-xs mt-2 mb-1">DEPOIS (correto):</p>
+                          <p className="text-muted-foreground text-lg mt-2 mb-1">DEPOIS (correto):</p>
                           <p className="italic text-emerald-400">"O sistema <strong>a que</strong> nos referimos apresenta falhas."</p>
                         </div>
                         <div className="p-3 bg-slate-500/5 rounded-lg border border-slate-500/10">
-                          <p className="text-muted-foreground text-xs mb-1">ANTES (inadequado):</p>
+                          <p className="text-muted-foreground text-lg mb-1">ANTES (inadequado):</p>
                           <p className="italic">"A norma que procedemos foi aprovada."</p>
-                          <p className="text-muted-foreground text-xs mt-2 mb-1">DEPOIS (correto):</p>
+                          <p className="text-muted-foreground text-lg mt-2 mb-1">DEPOIS (correto):</p>
                           <p className="italic text-emerald-400">"A norma <strong>a que</strong> procedemos foi aprovada."</p>
                         </div>
                       </div>
@@ -1782,11 +1782,11 @@ export default function AulaRegencia({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Consolide todas as regras de regência verbal em um
                         único bloco de revisão:
                       </p>
-                      <div className="grid gap-2 text-xs">
+                      <div className="grid gap-2 text-lg">
                         {[
                           { verbo: "Assistir (ver)", regencia: "VTI — A", ex: "Assisti ao documentário" },
                           { verbo: "Assistir (ajudar)", regencia: "VTD", ex: "Assistiu os feridos" },
@@ -1824,11 +1824,11 @@ export default function AulaRegencia({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Todos os adjetivos e substantivos com preposições fixas
                         que caem na prova:
                       </p>
-                      <div className="grid gap-2 md:grid-cols-2 text-xs">
+                      <div className="grid gap-2 md:grid-cols-2 text-lg">
                         {[
                           { nome: "Apto", prep: "A", tipo: "adj" },
                           { nome: "Atento", prep: "A", tipo: "adj" },
@@ -1852,7 +1852,7 @@ export default function AulaRegencia({
                             className="flex items-center justify-between p-2 bg-slate-500/5 rounded-lg border border-slate-500/10"
                           >
                             <span className="font-bold">{item.nome}</span>
-                            <span className={`text-xs px-1 rounded ${item.tipo === "adj" ? "bg-blue-500/20 text-blue-400" : "bg-emerald-500/20 text-emerald-400"}`}>
+                            <span className={`text-lg px-1 rounded ${item.tipo === "adj" ? "bg-blue-500/20 text-blue-400" : "bg-emerald-500/20 text-emerald-400"}`}>
                               {item.tipo}
                             </span>
                             <span className="text-primary font-mono font-bold">{item.prep}</span>
@@ -1866,13 +1866,13 @@ export default function AulaRegencia({
                   titulo: "Pronomes relativos com preposição: revisão final",
                   icone: <LuLink />,
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-lg">
                       <p className="text-muted-foreground">
                         O mecanismo é simples: a preposição exigida pelo verbo
                         que segue o pronome relativo deve ser colocada
                         <strong> antes</strong> do pronome.
                       </p>
-                      <div className="space-y-2 text-xs">
+                      <div className="space-y-2 text-lg">
                         {[
                           { frase: "a norma a que me refiro", verb: "referir-se A" },
                           { frase: "o cargo a que aspiro", verb: "aspirar A" },
@@ -1883,7 +1883,7 @@ export default function AulaRegencia({
                         ].map((item, i) => (
                           <div key={i} className="p-2 bg-indigo-500/5 rounded-lg border border-indigo-500/10 flex items-center justify-between">
                             <span className="italic">"{item.frase}"</span>
-                            <span className="text-indigo-400 font-mono text-xs shrink-0 ml-2">({item.verb})</span>
+                            <span className="text-indigo-400 font-mono text-lg shrink-0 ml-2">({item.verb})</span>
                           </div>
                         ))}
                       </div>
@@ -1956,9 +1956,9 @@ export default function AulaRegencia({
           ) : (
             <QuizInterativo
               questoes={QUIZ_FINAL_REGENCIA}
-              titulo="Simulado de Conclusão"
+              titulo="QUIZ: Módulo Nº 10"
               icone="🏆"
-              numero={10}
+              numero={3}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />

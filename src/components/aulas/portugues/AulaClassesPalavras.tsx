@@ -91,7 +91,7 @@ const renderConj = (
 ) => {
   const w = prefixo ? "w-16" : "w-10";
   return (
-    <div className="text-base space-y-2 font-mono">
+    <div className="text-lg space-y-2 font-mono">
       {[p1, p2, p3, p4, p5, p6].map((p, i) => {
         const pronoun = ["eu", "tu", "ele", "nós", "vós", "eles"][i];
         return (
@@ -128,10 +128,10 @@ const criarCard = (
   descricao: conj,
 });
 
-const i1 = <span className="font-black text-xs text-blue-500">-AR</span>;
-const i2 = <span className="font-black text-xs text-emerald-500">-ER</span>;
-const i3 = <span className="font-black text-xs text-rose-500">-IR</span>;
-const iIr = <span className="font-black text-base text-amber-500">✦</span>;
+const i1 = <span className="font-black text-lg text-blue-500">-AR</span>;
+const i2 = <span className="font-black text-lg text-emerald-500">-ER</span>;
+const i3 = <span className="font-black text-lg text-rose-500">-IR</span>;
+const iIr = <span className="font-black text-lg text-amber-500">✦</span>;
 
 const CONJ_SLIDES = [
   {
@@ -363,7 +363,7 @@ export default function AulaClassesPalavras({
             title="Classificações dos Substantivos"
             variant="blue"
           />
-          <p className="text-base text-muted-foreground leading-relaxed text-justify">
+          <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             Os substantivos são organizados em{" "}
             <strong>quatro pares de oposição</strong> que definem a natureza do
             ser.
@@ -408,7 +408,7 @@ export default function AulaClassesPalavras({
             title="Substantivos Coletivos — Atenção Máxima"
             variant="blue"
           />
-          <p className="text-base text-muted-foreground leading-relaxed text-justify">
+          <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             O substantivo <strong>coletivo</strong> designa, no singular, um conjunto de seres da mesma espécie. A Cesgranrio adora cobrar os coletivos menos óbvios. Vire o card para ver o coletivo correspondente.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -417,14 +417,14 @@ export default function AulaClassesPalavras({
                 <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
                   <span className="text-5xl">🐟</span>
                   <span className="font-bold text-xl text-foreground">Cardume</span>
-                  <p className="text-xs text-muted-foreground">Qual é o ser?</p>
+                  <p className="text-lg text-muted-foreground">Qual é o ser?</p>
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-3 text-center text-sm p-2">
+                <div className="flex flex-col justify-center h-full space-y-3 text-center text-lg p-2">
                   <p className="font-black text-blue-400 text-lg">Peixes</p>
                   <hr className="border-border/50" />
-                  <p className="text-muted-foreground text-xs">
+                  <p className="text-muted-foreground text-lg">
                     "Um <strong>cardume</strong> de sardinhas bloqueou o sonar."
                   </p>
                 </div>
@@ -435,14 +435,14 @@ export default function AulaClassesPalavras({
                 <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
                   <span className="text-5xl">🌳</span>
                   <span className="font-bold text-xl text-foreground">Arvoredo</span>
-                  <p className="text-xs text-muted-foreground">Qual é o ser?</p>
+                  <p className="text-lg text-muted-foreground">Qual é o ser?</p>
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-3 text-center text-sm p-2">
+                <div className="flex flex-col justify-center h-full space-y-3 text-center text-lg p-2">
                   <p className="font-black text-emerald-400 text-lg">Árvores</p>
                   <hr className="border-border/50" />
-                  <p className="text-muted-foreground text-xs">
+                  <p className="text-muted-foreground text-lg">
                     "O <strong>arvoredo</strong> às margens do rio foi preservado."
                   </p>
                 </div>
@@ -453,14 +453,14 @@ export default function AulaClassesPalavras({
                 <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
                   <span className="text-5xl">⭐</span>
                   <span className="font-bold text-xl text-foreground">Constelação</span>
-                  <p className="text-xs text-muted-foreground">Qual é o ser?</p>
+                  <p className="text-lg text-muted-foreground">Qual é o ser?</p>
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-3 text-center text-sm p-2">
+                <div className="flex flex-col justify-center h-full space-y-3 text-center text-lg p-2">
                   <p className="font-black text-amber-400 text-lg">Estrelas</p>
                   <hr className="border-border/50" />
-                  <p className="text-muted-foreground text-xs">
+                  <p className="text-muted-foreground text-lg">
                     "A <strong>constelação</strong> de Órion guia navegadores há séculos."
                   </p>
                 </div>
@@ -530,7 +530,7 @@ export default function AulaClassesPalavras({
             title="Derivação Imprópria — O 'Efeito Rei Midas'"
             variant="blue"
           />
-          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-xl mb-6 text-sm text-foreground">
+          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-xl mb-6 text-lg text-foreground">
             <p>
               <strong>O Artigo é o nosso Rei Midas</strong>: qualquer palavra da
               língua que venha antecedida por ele perderá a sua classe original
@@ -551,7 +551,7 @@ export default function AulaClassesPalavras({
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-2">
+                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-2">
                   <p>
                     <strong>O cantar</strong> dos pássaros encanta.
                   </p>
@@ -575,7 +575,7 @@ export default function AulaClassesPalavras({
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-2">
+                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-2">
                   <p>
                     Ele recebeu um <strong>não</strong> rotundo.
                   </p>
@@ -599,7 +599,7 @@ export default function AulaClassesPalavras({
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-2">
+                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-2">
                   <p>
                     <strong>O azul</strong> do céu é intenso.
                   </p>
@@ -619,7 +619,7 @@ export default function AulaClassesPalavras({
             title="Gênero dos Substantivos — Os Heterônimos"
             variant="blue"
           />
-          <p className="text-base text-muted-foreground leading-relaxed text-justify">
+          <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             Os <strong>heterônimos</strong> são substantivos que formam o feminino através de palavras completamente diferentes (radicais distintos). São fontes frequentes de pegadinhas em prova de ortografia e concordância.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -633,7 +633,7 @@ export default function AulaClassesPalavras({
               ["homem", "mulher"],
               ["padrinho", "madrinha"],
             ].map(([m, f], i) => (
-              <div key={i} className="p-3 bg-muted/30 rounded-xl border border-border text-center text-sm">
+              <div key={i} className="p-3 bg-muted/30 rounded-xl border border-border text-center text-lg">
                 <span className="font-bold text-blue-500">{m}</span>
                 <span className="mx-2 text-muted-foreground">/</span>
                 <span className="font-bold text-rose-400">{f}</span>
@@ -741,10 +741,10 @@ export default function AulaClassesPalavras({
                   <h4 className="font-black text-xl uppercase">
                     Adjetivo POSPOSTO
                   </h4>
-                  <p className="text-sm text-muted-foreground uppercase tracking-widest">
+                  <p className="text-lg text-muted-foreground uppercase tracking-widest">
                     Depois do Substantivo
                   </p>
-                  <p className="text-sm">
+                  <p className="text-lg">
                     Mantém o sentido original, literal e objetivo (
                     <strong>denotativo</strong>).
                   </p>
@@ -758,7 +758,7 @@ export default function AulaClassesPalavras({
                   <p>
                     "Ele é um homem <strong>grande</strong>."
                   </p>
-                  <p className="text-muted-foreground text-xs">
+                  <p className="text-muted-foreground text-lg">
                     (Alguém fisicamente alto)
                   </p>
                 </div>
@@ -771,10 +771,10 @@ export default function AulaClassesPalavras({
                   <h4 className="font-black text-xl uppercase">
                     Adjetivo ANTEPOSTO
                   </h4>
-                  <p className="text-sm text-muted-foreground uppercase tracking-widest">
+                  <p className="text-lg text-muted-foreground uppercase tracking-widest">
                     Antes do Substantivo
                   </p>
-                  <p className="text-sm">
+                  <p className="text-lg">
                     Sentido figurado, emotivo ou subjetivo (
                     <strong>conotativo</strong>).
                   </p>
@@ -788,7 +788,7 @@ export default function AulaClassesPalavras({
                   <p>
                     "Ele é um <strong>grande</strong> homem."
                   </p>
-                  <p className="text-muted-foreground text-xs">
+                  <p className="text-muted-foreground text-lg">
                     (Alguém notável ou bondoso)
                   </p>
                 </div>
@@ -918,7 +918,7 @@ export default function AulaClassesPalavras({
               frente={
                 <div className="space-y-4 py-2">
                   <h4 className="font-black text-xl uppercase">Sem Artigo</h4>
-                  <p className="text-sm">Fica invariável (masculino).</p>
+                  <p className="text-lg">Fica invariável (masculino).</p>
                 </div>
               }
               verso={
@@ -929,7 +929,7 @@ export default function AulaClassesPalavras({
                   <p>
                     "É <strong>proibido</strong> entrada."
                   </p>
-                  <p className="text-muted-foreground text-xs">
+                  <p className="text-muted-foreground text-lg">
                     (Entrada em geral)
                   </p>
                 </div>
@@ -940,7 +940,7 @@ export default function AulaClassesPalavras({
               frente={
                 <div className="space-y-4 py-2">
                   <h4 className="font-black text-xl uppercase">Com Artigo</h4>
-                  <p className="text-sm">Ocorre a concordância.</p>
+                  <p className="text-lg">Ocorre a concordância.</p>
                 </div>
               }
               verso={
@@ -951,7 +951,7 @@ export default function AulaClassesPalavras({
                   <p>
                     "É <strong>proibida a</strong> entrada."
                   </p>
-                  <p className="text-muted-foreground text-xs">
+                  <p className="text-muted-foreground text-lg">
                     (Aquela entrada específica)
                   </p>
                 </div>
@@ -1047,15 +1047,15 @@ export default function AulaClassesPalavras({
                 <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
                   <span className="text-5xl">🇧🇷</span>
                   <span className="font-black text-xl text-amber-500">O Brasil vs Portugal</span>
-                  <p className="text-sm text-muted-foreground">Como fica o artigo?</p>
+                  <p className="text-lg text-muted-foreground">Como fica o artigo?</p>
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-2 p-2 text-sm">
+                <div className="flex flex-col justify-center h-full space-y-2 p-2 text-lg">
                   <p className="text-emerald-400 font-bold">✅ Fui AO Brasil. (artigo obrigatório)</p>
                   <p className="text-emerald-400 font-bold">✅ Fui a Portugal. (sem artigo)</p>
                   <hr className="border-border/50" />
-                  <p className="text-xs text-muted-foreground">Países que pedem artigo: Brasil, EUA, Argentina, França, China, Japão, Alemanha. Países sem artigo: Portugal, Cuba, Moçambique, Angola, Israel.</p>
+                  <p className="text-lg text-muted-foreground">Países que pedem artigo: Brasil, EUA, Argentina, França, China, Japão, Alemanha. Países sem artigo: Portugal, Cuba, Moçambique, Angola, Israel.</p>
                 </div>
               }
             />
@@ -1064,13 +1064,13 @@ export default function AulaClassesPalavras({
                 <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
                   <span className="text-5xl">🏢</span>
                   <span className="font-black text-xl text-amber-500">A Petrobras</span>
-                  <p className="text-sm text-muted-foreground">Artigo e concordância</p>
+                  <p className="text-lg text-muted-foreground">Artigo e concordância</p>
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-2 p-2 text-sm">
+                <div className="flex flex-col justify-center h-full space-y-2 p-2 text-lg">
                   <p className="text-emerald-400 font-bold">✅ "A Petrobras anunciou seus resultados."</p>
-                  <p className="text-blue-400 text-xs">O artigo é parte do nome próprio da empresa e exige concordância feminina.</p>
+                  <p className="text-blue-400 text-lg">O artigo é parte do nome próprio da empresa e exige concordância feminina.</p>
                   <hr className="border-border/50" />
                   <p className="text-red-400 font-bold">❌ "O Petrobras anunciou" — artigo masculino com substantivo feminino.</p>
                 </div>
@@ -1127,7 +1127,7 @@ export default function AulaClassesPalavras({
             variant="violet"
           />
           <div className="overflow-hidden rounded-xl border border-border bg-muted/30">
-            <table className="w-full text-sm text-left">
+            <table className="w-full text-lg text-left">
               <thead className="bg-muted text-foreground font-bold uppercase text-[10px] tracking-widest">
                 <tr>
                   <th className="p-4">Pessoa</th>
@@ -1171,10 +1171,10 @@ export default function AulaClassesPalavras({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 rounded-xl bg-violet-500/5 border border-violet-500/20 space-y-4">
               <h4 className="font-bold text-violet-600 text-lg">Próclise</h4>
-              <p className="text-xs text-muted-foreground italic">
+              <p className="text-lg text-muted-foreground italic">
                 Antes do verbo
               </p>
-              <p className="text-sm">
+              <p className="text-lg">
                 "Não <strong>me</strong> diga!"
               </p>
               <div className="text-[11px] bg-white dark:bg-black/20 p-2 rounded">
@@ -1183,10 +1183,10 @@ export default function AulaClassesPalavras({
             </div>
             <div className="p-6 rounded-xl bg-emerald-500/5 border border-emerald-500/20 space-y-4">
               <h4 className="font-bold text-emerald-600 text-lg">Ênclise</h4>
-              <p className="text-xs text-muted-foreground italic">
+              <p className="text-lg text-muted-foreground italic">
                 Depois do verbo
               </p>
-              <p className="text-sm">
+              <p className="text-lg">
                 "Diga-<strong>me</strong> a verdade."
               </p>
               <div className="text-[11px] bg-white dark:bg-black/20 p-2 rounded">
@@ -1195,10 +1195,10 @@ export default function AulaClassesPalavras({
             </div>
             <div className="p-6 rounded-xl bg-amber-500/5 border border-amber-500/20 space-y-4">
               <h4 className="font-bold text-amber-600 text-lg">Mesóclise</h4>
-              <p className="text-xs text-muted-foreground italic">
+              <p className="text-lg text-muted-foreground italic">
                 No meio do verbo
               </p>
-              <p className="text-sm">
+              <p className="text-lg">
                 "Dir-<strong>te</strong>-ei tudo."
               </p>
               <div className="text-[11px] bg-white dark:bg-black/20 p-2 rounded">
@@ -1253,16 +1253,16 @@ export default function AulaClassesPalavras({
                 <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
                   <LuBookOpen className="h-10 w-10 text-violet-400" />
                   <span className="font-black text-2xl text-violet-400">CUJO</span>
-                  <p className="text-sm text-muted-foreground">A armadilha mais perigosa da prova</p>
+                  <p className="text-lg text-muted-foreground">A armadilha mais perigosa da prova</p>
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-3 p-2 text-sm">
+                <div className="flex flex-col justify-center h-full space-y-3 p-2 text-lg">
                   <p className="text-emerald-400 font-bold">✅ "O relatório CUJAS conclusões foram aprovadas"</p>
                   <hr className="border-border/50" />
                   <p className="text-red-400 font-bold">❌ "cujas AS conclusões" — artigo proibido após cujo!</p>
                   <hr className="border-border/50" />
-                  <p className="text-blue-400 text-xs">Concorda em gênero/número com o POSSUÍDO, não com o possuidor.</p>
+                  <p className="text-blue-400 text-lg">Concorda em gênero/número com o POSSUÍDO, não com o possuidor.</p>
                 </div>
               }
             />
@@ -1271,16 +1271,16 @@ export default function AulaClassesPalavras({
                 <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
                   <LuNavigation className="h-10 w-10 text-amber-400" />
                   <span className="font-black text-2xl text-amber-400">ONDE</span>
-                  <p className="text-sm text-muted-foreground">Pronome relativo de lugar</p>
+                  <p className="text-lg text-muted-foreground">Pronome relativo de lugar</p>
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-3 p-2 text-sm">
+                <div className="flex flex-col justify-center h-full space-y-3 p-2 text-lg">
                   <p className="text-emerald-400 font-bold">✅ "A empresa onde trabalho é sólida."</p>
                   <hr className="border-border/50" />
                   <p className="text-red-400 font-bold">❌ "onde" para antecedente não-lugar: "A situação onde me encontro..." → use "em que".</p>
                   <hr className="border-border/50" />
-                  <p className="text-blue-400 text-xs">'Onde' exige antecedente com ideia de LUGAR.</p>
+                  <p className="text-blue-400 text-lg">'Onde' exige antecedente com ideia de LUGAR.</p>
                 </div>
               }
             />
@@ -1328,11 +1328,11 @@ export default function AulaClassesPalavras({
             title="Pronomes de Tratamento — A Armadilha do Concurso"
             variant="violet"
           />
-          <p className="text-base text-muted-foreground leading-relaxed text-justify">
+          <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             Os pronomes de tratamento são formas especiais de se referir a pessoas de forma respeitosa ou protocolar. São a fonte de uma das pegadinhas mais clássicas da Cesgranrio: apesar de se referirem à <strong>2ª pessoa</strong> (o interlocutor), exigem o verbo e os pronomes na <strong>3ª pessoa do singular</strong>.
           </p>
           <div className="overflow-hidden rounded-xl border border-border bg-muted/30">
-            <table className="w-full text-sm text-left">
+            <table className="w-full text-lg text-left">
               <thead className="bg-muted text-foreground font-bold uppercase text-[10px] tracking-widest">
                 <tr>
                   <th className="p-4">Pronome</th>
@@ -1341,7 +1341,7 @@ export default function AulaClassesPalavras({
                   <th className="p-4">Possessivo Correto</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border text-xs">
+              <tbody className="divide-y divide-border text-lg">
                 {[
                   ["Vossa Excelência", "V. Exa.", "Presidente, Ministro, Governador, Senador", "de V. Exa."],
                   ["Vossa Senhoria", "V. Sa.", "Pessoas de destaque, autoridades em geral", "de V. Sa."],
@@ -1522,19 +1522,19 @@ export default function AulaClassesPalavras({
               <ul className="space-y-4">
                 <li className="flex gap-3">
                   <LuCheck className="text-emerald-500 shrink-0 mt-1" />
-                  <p className="text-sm">
+                  <p className="text-lg">
                     Sentido de <strong>EXISTIR</strong> ou{" "}
                     <strong>OCORRER</strong>.
                   </p>
                 </li>
                 <li className="flex gap-3">
                   <LuCheck className="text-emerald-500 shrink-0 mt-1" />
-                  <p className="text-sm">
+                  <p className="text-lg">
                     Fica sempre no <strong>SINGULAR</strong> (3ª pessoa).
                   </p>
                 </li>
               </ul>
-              <div className="p-4 bg-white/5 rounded-lg border border-white/10 text-xs italic">
+              <div className="p-4 bg-white/5 rounded-lg border border-white/10 text-lg italic">
                 ✅ "Haverá problemas." (Certo) <br />❌ "Haverão problemas."
                 (Errado)
               </div>
@@ -1546,18 +1546,18 @@ export default function AulaClassesPalavras({
               <ul className="space-y-4">
                 <li className="flex gap-3">
                   <LuCheck className="text-emerald-500 shrink-0 mt-1" />
-                  <p className="text-sm">
+                  <p className="text-lg">
                     Indicando <strong>TEMPO DECORRIDO</strong>.
                   </p>
                 </li>
                 <li className="flex gap-3">
                   <LuCheck className="text-emerald-500 shrink-0 mt-1" />
-                  <p className="text-sm">
+                  <p className="text-lg">
                     Fica sempre no <strong>SINGULAR</strong>.
                   </p>
                 </li>
               </ul>
-              <div className="p-4 bg-white/5 rounded-lg border border-white/10 text-xs italic">
+              <div className="p-4 bg-white/5 rounded-lg border border-white/10 text-lg italic">
                 ✅ "Faz dez anos." (Certo) <br />❌ "Fazem dez anos." (Errado)
               </div>
             </div>
@@ -1652,13 +1652,13 @@ export default function AulaClassesPalavras({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 bg-muted/30 rounded-xl border border-border">
               <p className="font-bold text-amber-500">MEIO (Advérbio)</p>
-              <p className="text-xs italic">
+              <p className="text-lg italic">
                 "Ela está <strong>meio</strong> cansada." (Um pouco)
               </p>
             </div>
             <div className="p-4 bg-muted/30 rounded-xl border border-border">
               <p className="font-bold text-blue-500">MEIO (Numeral)</p>
-              <p className="text-xs italic">
+              <p className="text-lg italic">
                 "Comeu <strong>meia</strong> pizza." (Metade)
               </p>
             </div>
@@ -1895,7 +1895,7 @@ export default function AulaClassesPalavras({
             title="Preposição e Regência — Os Verbos Mais Cobrados"
             variant="slate"
           />
-          <p className="text-base text-muted-foreground leading-relaxed text-justify">
+          <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             A <strong>regência verbal</strong> define qual preposição o verbo exige para ligar seu complemento. Errar a preposição na regência é um dos erros mais cobrados na Cesgranrio em questões de correção e reescrita.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1910,8 +1910,8 @@ export default function AulaClassesPalavras({
               { verbo: "RESIDIR", prep: "EM", ex: "Reside EM Brasília." },
             ].map(({ verbo, prep, ex }, i) => (
               <div key={i} className="p-4 bg-muted/30 rounded-xl border border-border flex flex-col gap-1">
-                <span className="font-black text-slate-600 dark:text-slate-300 text-sm">{verbo} + <span className="text-amber-500">{prep}</span></span>
-                <span className="text-xs text-muted-foreground italic">{ex}</span>
+                <span className="font-black text-slate-600 dark:text-slate-300 text-lg">{verbo} + <span className="text-amber-500">{prep}</span></span>
+                <span className="text-lg text-muted-foreground italic">{ex}</span>
               </div>
             ))}
           </div>
@@ -1951,13 +1951,13 @@ export default function AulaClassesPalavras({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-4">
               <h4 className="font-bold text-indigo-500">Coordenativas</h4>
-              <p className="text-sm text-muted-foreground italic">
+              <p className="text-lg text-muted-foreground italic">
                 Adição, Oposição, Alternância, Conclusão, Explicação.
               </p>
             </div>
             <div className="space-y-4">
               <h4 className="font-bold text-emerald-500">Subordinativas</h4>
-              <p className="text-sm text-muted-foreground italic">
+              <p className="text-lg text-muted-foreground italic">
                 Causa, Concessão, Condição, Finalidade, Tempo, etc.
               </p>
             </div>
@@ -2022,16 +2022,16 @@ export default function AulaClassesPalavras({
                 <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
                   <LuZap className="h-10 w-10 text-indigo-400" />
                   <span className="font-black text-xl text-indigo-400">EMBORA / APESAR DE</span>
-                  <p className="text-sm text-muted-foreground">Que tipo de relação indicam?</p>
+                  <p className="text-lg text-muted-foreground">Que tipo de relação indicam?</p>
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-3 p-2 text-sm">
-                  <p className="text-indigo-400 font-black text-base">CONCESSÃO</p>
+                <div className="flex flex-col justify-center h-full space-y-3 p-2 text-lg">
+                  <p className="text-indigo-400 font-black text-lg">CONCESSÃO</p>
                   <hr className="border-border/50" />
                   <p>Admite a hipótese adversa mas não cede: "Embora cansado, concluiu o relatório."</p>
                   <hr className="border-border/50" />
-                  <p className="text-xs text-muted-foreground">Modo Subjuntivo obrigatório com EMBORA.</p>
+                  <p className="text-lg text-muted-foreground">Modo Subjuntivo obrigatório com EMBORA.</p>
                 </div>
               }
             />
@@ -2040,16 +2040,16 @@ export default function AulaClassesPalavras({
                 <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
                   <LuZap className="h-10 w-10 text-emerald-400" />
                   <span className="font-black text-xl text-emerald-400">SE / CASO / DESDE QUE</span>
-                  <p className="text-sm text-muted-foreground">Que tipo de relação indicam?</p>
+                  <p className="text-lg text-muted-foreground">Que tipo de relação indicam?</p>
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-3 p-2 text-sm">
-                  <p className="text-emerald-400 font-black text-base">CONDICIONAL</p>
+                <div className="flex flex-col justify-center h-full space-y-3 p-2 text-lg">
+                  <p className="text-emerald-400 font-black text-lg">CONDICIONAL</p>
                   <hr className="border-border/50" />
                   <p>Estabelece condição para o fato principal: "Se a meta for atingida, haverá bônus."</p>
                   <hr className="border-border/50" />
-                  <p className="text-xs text-muted-foreground">CASO e DESDE QUE também pedem subjuntivo.</p>
+                  <p className="text-lg text-muted-foreground">CASO e DESDE QUE também pedem subjuntivo.</p>
                 </div>
               }
             />
@@ -2123,14 +2123,14 @@ export default function AulaClassesPalavras({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="p-6 rounded-xl bg-orange-500/5 border border-orange-500/20">
               <h4 className="font-bold text-orange-600">O Camaleão "AH!"</h4>
-              <p className="text-sm">
+              <p className="text-lg">
                 Pode indicar alegria, dor, ironia ou compreensão. O contexto é
                 rei.
               </p>
             </div>
             <div className="p-6 rounded-xl bg-blue-500/5 border border-blue-500/20">
               <h4 className="font-bold text-blue-600">Regra de Pontuação</h4>
-              <p className="text-sm">
+              <p className="text-lg">
                 "Ah! Que bom." (Exclamação na interjeição) vs "Ah, que bom!"
                 (Exclamação no final).
               </p>
@@ -2219,21 +2219,21 @@ export default function AulaClassesPalavras({
             title="Interjeição no Texto — Análise de Efeitos de Sentido"
             variant="rose"
           />
-          <p className="text-base text-muted-foreground leading-relaxed text-justify">
+          <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             Na Cesgranrio, a interjeição aparece principalmente em questões de <strong>interpretação de texto</strong> e <strong>análise de efeitos de sentido</strong>. O examinador quer saber qual emoção ou intenção comunicativa a interjeição expressa no contexto específico.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-6 rounded-xl bg-emerald-500/5 border border-emerald-500/20 space-y-3">
-              <h4 className="font-bold text-emerald-600 text-base">Função Expressiva (Emotiva)</h4>
-              <p className="text-sm text-muted-foreground">A interjeição exprime o estado emocional do falante.</p>
-              <p className="text-sm italic">"Ah! Que relatório brilhante!" → alegria/satisfação</p>
-              <p className="text-sm italic">"Ai! Que resultado terrível." → dor/lamento</p>
+              <h4 className="font-bold text-emerald-600 text-lg">Função Expressiva (Emotiva)</h4>
+              <p className="text-lg text-muted-foreground">A interjeição exprime o estado emocional do falante.</p>
+              <p className="text-lg italic">"Ah! Que relatório brilhante!" → alegria/satisfação</p>
+              <p className="text-lg italic">"Ai! Que resultado terrível." → dor/lamento</p>
             </div>
             <div className="p-6 rounded-xl bg-blue-500/5 border border-blue-500/20 space-y-3">
-              <h4 className="font-bold text-blue-600 text-base">Função Apelativa (Conativa)</h4>
-              <p className="text-sm text-muted-foreground">A interjeição provoca uma ação no interlocutor.</p>
-              <p className="text-sm italic">"Psiu! Não interrompa." → ordem de silêncio</p>
-              <p className="text-sm italic">"Olá! Pode entrar." → chamamento/saudação</p>
+              <h4 className="font-bold text-blue-600 text-lg">Função Apelativa (Conativa)</h4>
+              <p className="text-lg text-muted-foreground">A interjeição provoca uma ação no interlocutor.</p>
+              <p className="text-lg italic">"Psiu! Não interrompa." → ordem de silêncio</p>
+              <p className="text-lg italic">"Olá! Pode entrar." → chamamento/saudação</p>
             </div>
           </div>
           <AlertBox tipo="success" titulo="Dica de Prova — Interjeição em Questões de Efeito de Sentido">
@@ -2271,11 +2271,11 @@ export default function AulaClassesPalavras({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-6 bg-muted/30 rounded-xl">
               <p className="font-bold">Cardinais (Quantidade)</p>
-              <p className="text-sm">Um, dois, três... mil.</p>
+              <p className="text-lg">Um, dois, três... mil.</p>
             </div>
             <div className="p-6 bg-muted/30 rounded-xl">
               <p className="font-bold">Ordinais (Ordem)</p>
-              <p className="text-sm">Primeiro, décimo, centésimo.</p>
+              <p className="text-lg">Primeiro, décimo, centésimo.</p>
             </div>
           </div>
           <AlertBox tipo="warning" titulo="Numeral Dual">
@@ -2460,15 +2460,15 @@ export default function AulaClassesPalavras({
             </div>
 
             <div className="flex items-center justify-center gap-8 pt-8 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700">
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+              <span className="text-lg font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
                 Premium Content
               </span>
               <div className="w-1 h-1 bg-slate-300 rounded-full" />
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+              <span className="text-lg font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
                 LMS Quest AI
               </span>
               <div className="w-1 h-1 bg-slate-300 rounded-full" />
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+              <span className="text-lg font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
                 Padrao Cesgranrio
               </span>
             </div>

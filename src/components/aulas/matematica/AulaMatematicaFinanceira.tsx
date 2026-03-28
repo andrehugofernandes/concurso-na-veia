@@ -1,3 +1,4 @@
+import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -25,6 +26,8 @@ import {
   QUIZ_M9_APLICACOES_PETROBRAS,
   QUIZ_M10_SIMULADO,
 } from "./data/matematica-financeira-quizzes";
+
+const mv = [undefined, ...getAllModuleVariants()];
 
 export default function AulaMatematicaFinanceira({
   onComplete,
@@ -58,7 +61,7 @@ export default function AulaMatematicaFinanceira({
   const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_APLICACOES_PETROBRAS, 6));
   const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO, 6));
 
-  const isModuleUnlocked = (_index: number) => true;
+  const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
@@ -122,12 +125,10 @@ export default function AulaMatematicaFinanceira({
       {/* MÓDULO 1: JUROS SIMPLES — CONCEITO E FÓRMULA                     */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
-        <ModuleBanner
-          numero={1}
+        <ModuleBanner numero={1}
           titulo="Juros Simples: J = C · i · t"
           descricao="Compreenda o regime de capitalização simples, onde os juros incidem sempre sobre o capital inicial — base de descontos e operações de curto prazo."
-          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
-        />
+           variant={mv[1]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -276,7 +277,7 @@ export default function AulaMatematicaFinanceira({
 
 
 <ModuleConsolidation
-            index={1}
+            index={3}
             variant="indigo"
             video={{
               videoId: "XxrO_yVcrTI",
@@ -344,7 +345,7 @@ export default function AulaMatematicaFinanceira({
               questoes={quizM1}
               titulo="QUIZ: Juros Simples"
               icone="💰"
-              numero={3}
+              numero={4}
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -356,12 +357,10 @@ export default function AulaMatematicaFinanceira({
       {/* MÓDULO 2: MONTANTE EM JUROS SIMPLES                              */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
-        <ModuleBanner
-          numero={2}
+        <ModuleBanner numero={2}
           titulo="Montante em Juros Simples: M = C + J"
           descricao="Calcule o valor total retornado ao final de uma aplicação simples e interprete graficamente o crescimento linear."
-          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
-        />
+           variant={mv[2]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -485,7 +484,7 @@ export default function AulaMatematicaFinanceira({
 
 
 <ModuleConsolidation
-            index={2}
+            index={3}
             variant="emerald"
             video={{
               videoId: "kL8nLz8zqWg",
@@ -553,7 +552,7 @@ export default function AulaMatematicaFinanceira({
               questoes={quizM2}
               titulo="Quiz — Montante em Juros Simples"
               icone="📈"
-              numero={2}
+              numero={4}
               variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -565,12 +564,10 @@ export default function AulaMatematicaFinanceira({
       {/* MÓDULO 3: JUROS COMPOSTOS — CONCEITO E FÓRMULA                   */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
-        <ModuleBanner
-          numero={3}
+        <ModuleBanner numero={3}
           titulo="Juros Compostos: Juros sobre Juros"
           descricao="O regime dominante no mercado financeiro: os juros se incorporam ao capital a cada período, gerando crescimento exponencial."
-          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
-        />
+           variant={mv[3]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -676,7 +673,7 @@ export default function AulaMatematicaFinanceira({
 
 
 <ModuleConsolidation
-            index={3}
+            index={2}
             variant="cyan"
             video={{
               videoId: "h5FYmYW-I6Y",
@@ -744,7 +741,7 @@ export default function AulaMatematicaFinanceira({
               questoes={quizM3}
               titulo="QUIZ: Juros Compostos"
               icone="📊"
-              numero={4}
+              numero={3}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -756,12 +753,10 @@ export default function AulaMatematicaFinanceira({
       {/* MÓDULO 4: MONTANTE EM JUROS COMPOSTOS                            */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
-        <ModuleBanner
-          numero={4}
+        <ModuleBanner numero={4}
           titulo="Montante Composto: M = C·(1+i)^t"
           descricao="Aplique a fórmula exponencial para calcular montantes, encontrar capitais presentes e determinar prazos em operações de longo prazo."
-          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
-        />
+           variant={mv[4]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -862,7 +857,7 @@ export default function AulaMatematicaFinanceira({
 
 
 <ModuleConsolidation
-            index={4}
+            index={2}
             variant="blue"
             video={{
               videoId: "aX5LZQR-9Qc",
@@ -929,7 +924,7 @@ export default function AulaMatematicaFinanceira({
               questoes={quizM4}
               titulo="Quiz — Montante em Juros Compostos"
               icone="💹"
-              numero={4}
+              numero={3}
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -941,12 +936,10 @@ export default function AulaMatematicaFinanceira({
       {/* MÓDULO 5: DESCONTO SIMPLES                                       */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
-        <ModuleBanner
-          numero={5}
+        <ModuleBanner numero={5}
           titulo="Desconto Simples: Comercial e Racional"
           descricao="Aprenda a calcular o valor presente de títulos (duplicatas, cheques) antecipando seus vencimentos — operação central no dia a dia das empresas."
-          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
-        />
+           variant={mv[5]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1049,7 +1042,7 @@ export default function AulaMatematicaFinanceira({
 
 
 <ModuleConsolidation
-            index={5}
+            index={2}
             variant="amber"
             video={{
               videoId: "S8xPFP1lU4w",
@@ -1120,7 +1113,7 @@ export default function AulaMatematicaFinanceira({
               questoes={quizM5}
               titulo="QUIZ: Desconto"
               icone="🏦"
-              numero={6}
+              numero={3}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1132,12 +1125,10 @@ export default function AulaMatematicaFinanceira({
       {/* MÓDULO 6: EQUIVALÊNCIA DE CAPITAIS                               */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-6" className="space-y-[50px]">
-        <ModuleBanner
-          numero={6}
+        <ModuleBanner numero={6}
           titulo="Equivalência de Capitais"
           descricao="Compare e substitua dívidas transportando capitais para uma mesma data focal — habilidade essencial em renegociações e contratos da Petrobras."
-          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
-        />
+           variant={mv[6]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1231,7 +1222,7 @@ export default function AulaMatematicaFinanceira({
 
 
 <ModuleConsolidation
-            index={6}
+            index={2}
             variant="rose"
             video={{
               videoId: "kGZVW7zDV2Y",
@@ -1287,7 +1278,7 @@ export default function AulaMatematicaFinanceira({
               questoes={quizM6}
               titulo="Quiz — Equivalência de Capitais"
               icone="🔀"
-              numero={6}
+              numero={3}
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1299,12 +1290,10 @@ export default function AulaMatematicaFinanceira({
       {/* MÓDULO 7: TAXA NOMINAL vs TAXA EFETIVA                           */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-7" className="space-y-[50px]">
-        <ModuleBanner
-          numero={7}
+        <ModuleBanner numero={7}
           titulo="Taxa Nominal vs. Taxa Efetiva"
           descricao="Entenda a diferença entre a taxa anunciada e a taxa que realmente incide sobre seu capital — fonte de inúmeras pegadinhas da CESGRANRIO."
-          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
-        />
+           variant={mv[7]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1421,7 +1410,7 @@ export default function AulaMatematicaFinanceira({
 
 
 <ModuleConsolidation
-            index={7}
+            index={2}
             variant="indigo"
             video={{
               videoId: "rHzRFYdT3Kc",
@@ -1475,7 +1464,7 @@ export default function AulaMatematicaFinanceira({
               questoes={quizM7}
               titulo="QUIZ: Taxas Nominal e Efetiva"
               icone="📊"
-              numero={8}
+              numero={3}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1487,12 +1476,10 @@ export default function AulaMatematicaFinanceira({
       {/* MÓDULO 8: SÉRIES DE PAGAMENTO                                    */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-8" className="space-y-[50px]">
-        <ModuleBanner
-          numero={8}
+        <ModuleBanner numero={8}
           titulo="Séries de Pagamento (Anuidades)"
           descricao="Calcule financiamentos, parcelas e valores presentes de fluxos de caixa periódicos — base para contratos de longo prazo e planos de investimento."
-          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
-        />
+           variant={mv[8]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1589,7 +1576,7 @@ export default function AulaMatematicaFinanceira({
 
 
 <ModuleConsolidation
-            index={8}
+            index={2}
             variant="emerald"
             video={{
               videoId: "CXW5V4zDvWY",
@@ -1643,7 +1630,7 @@ export default function AulaMatematicaFinanceira({
               questoes={quizM8}
               titulo="Quiz — Séries de Pagamento"
               icone="💳"
-              numero={8}
+              numero={3}
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1655,12 +1642,10 @@ export default function AulaMatematicaFinanceira({
       {/* MÓDULO 9: APLICAÇÕES PETROBRAS                                   */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-9" className="space-y-[50px]">
-        <ModuleBanner
-          numero={9}
+        <ModuleBanner numero={9}
           titulo="Aplicações Petrobras: Financiamentos e Contratos"
           descricao="Questões integradas com contexto real da indústria petrolífera: arrendamentos, PLR, financiamentos de equipamentos, debêntures e fundos de renovação."
-          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
-        />
+           variant={mv[9]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1754,7 +1739,7 @@ export default function AulaMatematicaFinanceira({
 
 
 <ModuleConsolidation
-            index={9}
+            index={2}
             variant="cyan"
             video={{
               videoId: "2HYVqU1Kgdg",
@@ -1810,7 +1795,7 @@ export default function AulaMatematicaFinanceira({
               questoes={quizM9}
               titulo="QUIZ: Aplicações Petrobras"
               icone="🛢️"
-              numero={10}
+              numero={3}
               variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1822,12 +1807,10 @@ export default function AulaMatematicaFinanceira({
       {/* MÓDULO 10: SIMULADO CESGRANRIO                                   */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
-        <ModuleBanner
-          numero={10}
+        <ModuleBanner numero={10}
           titulo="Simulado Final CESGRANRIO"
           descricao="Questões integradas no nível e estilo CESGRANRIO, cobrindo todos os tópicos de Matemática Financeira — o teste definitivo antes da prova real."
-          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
-        />
+           variant={mv[10]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1943,7 +1926,7 @@ export default function AulaMatematicaFinanceira({
 
 
 <ModuleConsolidation
-            index={10}
+            index={2}
             variant="blue"
             video={{
               videoId: "kxJXBg_lRfU",
@@ -1999,7 +1982,7 @@ export default function AulaMatematicaFinanceira({
               questoes={quizM10}
               titulo="QUIZ: Simulado Final"
               icone="🏆"
-              numero={11}
+              numero={3}
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />

@@ -105,6 +105,15 @@ export default function AulaReadingStrategies({
     { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
   ];
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -139,7 +148,7 @@ export default function AulaReadingStrategies({
               <h4 className="text-emerald-700 dark:text-emerald-400 font-black text-xl tracking-tight">
                 Pratique a construção de frases técnicas agora!
               </h4>
-              <p className="text-sm text-foreground/80 font-medium max-w-lg">
+              <p className="text-lg text-foreground/80 font-medium max-w-lg">
                 Seu novo modo gamificado focado no padrão Cesgranrio. Treine conectores, voz passiva e vocabulário industrial enquanto constrói frases reais.
               </p>
               <div className="pt-2">
@@ -166,7 +175,7 @@ export default function AulaReadingStrategies({
           titulo="PREDICTION & CONTEXT"
           descricao="O primeiro contato com o texto técnico: como antecipar o conteúdo e ativar o seu conhecimento de mundo."
           gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
-          variant={getModuleVariant(1)}
+          variant={mv[1]}
         />
 
         <RichIntro>
@@ -192,7 +201,7 @@ export default function AulaReadingStrategies({
               index={1}
               title="A Arte da Predição (Pre-Reading)"
               description="Transformando um texto desconhecido em território familiar em 30 segundos."
-              variant={getModuleVariant(1)}
+              variant={mv[1]}
               className="mb-6"
             />
             
@@ -212,13 +221,13 @@ export default function AulaReadingStrategies({
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                          <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/10">
                             <h6 className="font-bold text-blue-600">Schema (Conhecimento Prévio)</h6>
-                            <p className="text-xs opacity-80 leading-relaxed italic">
+                            <p className="text-lg opacity-80 leading-relaxed italic">
                               "Se o texto é sobre 'Pre-salt', você já ativa conceitos de geologia, exploração offshore e recordes de produção da Petrobras."
                             </p>
                          </div>
                          <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/10">
                             <h6 className="font-bold text-indigo-600">Pistas Tipográficas</h6>
-                            <p className="text-xs opacity-80 leading-relaxed italic">
+                            <p className="text-lg opacity-80 leading-relaxed italic">
                               "Negritos, itálicos, imagens e siglas (OPEC, ANP, ESG) organizam o texto hierarquicamente antes mesmo da primeira frase ser lida."
                             </p>
                          </div>
@@ -244,10 +253,10 @@ export default function AulaReadingStrategies({
                   icone: "🧪",
                   conteudo: (
                     <div className="space-y-4">
-                      <div className="p-6 bg-slate-900 text-slate-100 rounded-xl font-mono text-sm border-l-4 border-blue-500">
+                      <div className="p-6 bg-slate-900 text-slate-100 rounded-xl font-mono text-lg border-l-4 border-blue-500">
                         "PETROBRAS REACHES RECORD PRODUCTION IN PRE-SALT FIELDS"
                       </div>
-                      <RichIntro className="text-base mb-0">
+                      <RichIntro className="text-lg mb-0">
                         <p>
                           **O que prevemos aqui?**
                         </p>
@@ -256,7 +265,7 @@ export default function AulaReadingStrategies({
                           <li>**Ação:** Reach record production (atingir recorde).</li>
                           <li>**Local:** Pre-salt (Pré-sal).</li>
                         </ul>
-                        <p className="mt-4 text-sm italic opacity-80">
+                        <p className="mt-4 text-lg italic opacity-80">
                           Sem ler o texto, você já sabe que encontrará números de barris, nomes de campos e possivelmente datas de comparação.
                         </p>
                       </RichIntro>
@@ -270,8 +279,8 @@ export default function AulaReadingStrategies({
           <section id="quiz-modulo-1" className="mt-16">
             
 <ModuleConsolidation
-              index={1}
-              variant={getModuleVariant(1)}
+              index={2}
+              variant={mv[1]}
               video={{
                 videoId: "kOunF5Z0vWA",
                 title: "Prediction Techniques for Exams",
@@ -292,7 +301,7 @@ export default function AulaReadingStrategies({
                 content: (
                   <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                     <p className="font-bold text-blue-600">P.T.I. Strategy</p>
-                    <ul className="text-xs space-y-1 mt-2">
+                    <ul className="text-lg space-y-1 mt-2">
                       <li>**P** - Source</li>
                       <li>**T** - Title</li>
                       <li>**I** - Image</li>
@@ -311,7 +320,7 @@ export default function AulaReadingStrategies({
               questoes={quizPrediction}
               titulo="QUIZ: Prediction & Context"
               icone="🧠"
-              numero={2}
+              numero={3}
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -348,10 +357,10 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={2}
+              index={1}
               title="A Arte do Voo Rasante"
               description="Como ler 1000 palavras em 1 minuto e entender a tese central."
-              variant={getModuleVariant(2)}
+              variant={mv[2]}
               className="mb-6"
             />
             
@@ -379,8 +388,8 @@ export default function AulaReadingStrategies({
                   icone: "🦅",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Onde focar:</p>
-                      <ul className="list-decimal pl-5 space-y-1 text-xs">
+                      <p className="text-lg font-bold">Onde focar:</p>
+                      <ul className="list-decimal pl-5 space-y-1 text-lg">
                         <li>**Topic Sentences**: Primeira e última frase de cada parágrafo.</li>
                         <li>**Signal Words**: Conectores de contraste ou conclusão.</li>
                         <li>**Nouns**: Substantivos repetidos indicam o tema.</li>
@@ -393,10 +402,10 @@ export default function AulaReadingStrategies({
                   icone: "🐈",
                   conteudo: (
                     <div className="space-y-4">
-                      <div className="p-4 bg-indigo-500/5 border border-indigo-500/20 rounded-xl italic text-sm">
+                      <div className="p-4 bg-indigo-500/5 border border-indigo-500/20 rounded-xl italic text-lg">
                         "Despite the global challenges, the company's investment in renewable energy increased significantly last year. This trend reflects a commitment to sustainability."
                       </div>
-                      <p className="text-xs">
+                      <p className="text-lg">
                         **Skimming Result:** Ao ler apenas *"Despite... renewable energy increased... sustainability"*, você captura o **Gist**: A empresa está investindo em energia limpa apesar dos problemas. Você não precisou traduzir *"significantly"* ou *"reflects"* para entender a mensagem principal.
                       </p>
                     </div>
@@ -410,7 +419,7 @@ export default function AulaReadingStrategies({
             
 <ModuleConsolidation
               index={2}
-              variant={getModuleVariant(2)}
+              variant={mv[2]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Skimming Mastery",
@@ -445,9 +454,9 @@ export default function AulaReadingStrategies({
 
                         <QuizInterativo
               questoes={quizSkimming}
-              titulo="Quiz 2 - Skimming"
+              titulo="QUIZ: Skimming (The Gist)"
               icone="🏃"
-              numero={2}
+              numero={3}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -488,7 +497,7 @@ export default function AulaReadingStrategies({
               index={1}
               title="Scanning: O Sniper da Leitura"
               description="Como encontrar informações específicas sem ler o texto completo."
-              variant={getModuleVariant(3)}
+              variant={mv[3]}
               className="mb-6"
             />
             
@@ -509,15 +518,15 @@ export default function AulaReadingStrategies({
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                          <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/10 text-center">
                             <h6 className="text-[10px] font-black uppercase text-emerald-600">NÚMEROS</h6>
-                            <p className="text-xs font-mono font-bold">2024, 45%, $1.2B</p>
+                            <p className="text-lg font-mono font-bold">2024, 45%, $1.2B</p>
                          </div>
                          <div className="p-4 bg-teal-500/5 rounded-xl border border-teal-500/10 text-center">
                             <h6 className="text-[10px] font-black uppercase text-teal-600">NOMES PRÓPRIOS</h6>
-                            <p className="text-xs font-mono font-bold">Petrobras, OPEC, ANP</p>
+                            <p className="text-lg font-mono font-bold">Petrobras, OPEC, ANP</p>
                          </div>
                          <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/10 text-center">
                             <h6 className="text-[10px] font-black uppercase text-cyan-600">SIGLAS (Acronyms)</h6>
-                            <p className="text-xs font-mono font-bold">FPSO, SCADA, ESG</p>
+                            <p className="text-lg font-mono font-bold">FPSO, SCADA, ESG</p>
                          </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Nunca escanie sem Keyword">
@@ -531,7 +540,7 @@ export default function AulaReadingStrategies({
                   icone: "👀",
                   conteudo: (
                     <div className="space-y-6">
-                       <p className="text-sm">Técnicas de varredura ocular:</p>
+                       <p className="text-lg">Técnicas de varredura ocular:</p>
                        <div className="space-y-4">
                           <TimelineItem 
                             passo={1}
@@ -558,12 +567,12 @@ export default function AulaReadingStrategies({
                   icone: "🎯",
                   conteudo: (
                     <div className="space-y-4">
-                      <RichIntro className="text-base mb-0">
+                      <RichIntro className="text-lg mb-0">
                         <p>**Questão:** What was the percentage of production increase in the P-71 field during 2023?</p>
                         <ul className="list-disc pl-5 space-y-2 mt-2">
                           <li>**Keywords:** P-71, 2023, %.</li>
                         </ul>
-                        <p className="mt-4 text-xs italic opacity-80">
+                        <p className="mt-4 text-lg italic opacity-80">
                           Ao escanear, você ignora palavras como "investment", "safety" ou "oil", e busca apenas a forma visual de "P-71" e o símbolo "%". Ao achar, você lê a frase ao redor para achar "2023".
                         </p>
                       </RichIntro>
@@ -577,8 +586,8 @@ export default function AulaReadingStrategies({
           <section id="quiz-modulo-3" className="mt-16">
             
 <ModuleConsolidation
-              index={3}
-              variant={getModuleVariant(3)}
+              index={2}
+              variant={mv[3]}
               video={{
                 videoId: "8kGv8C_R91A",
                 title: "Scanning Drills for Competitive Exams",
@@ -616,7 +625,7 @@ export default function AulaReadingStrategies({
               questoes={quizScanning}
               titulo="QUIZ: Scanning (The Details)"
               icone="🎯"
-              numero={4}
+              numero={3}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -657,7 +666,7 @@ export default function AulaReadingStrategies({
               index={1}
               title="O Poder dos Cognatos"
               description="A sua maior vantagem competitiva como falante de língua latina."
-              variant={getModuleVariant(4)}
+              variant={mv[4]}
               className="mb-6"
             />
             
@@ -687,7 +696,7 @@ export default function AulaReadingStrategies({
                             { en: "Logistics", pt: "Logística" }
                          ].map((item, i) => (
                             <div key={i} className="p-3 bg-amber-500/5 rounded-xl border border-amber-500/20 text-center">
-                               <p className="text-xs font-black text-amber-700">{item.en}</p>
+                               <p className="text-lg font-black text-amber-700">{item.en}</p>
                                <p className="text-[10px] text-muted-foreground">{item.pt}</p>
                             </div>
                          ))}
@@ -700,22 +709,22 @@ export default function AulaReadingStrategies({
                   icone: "🔗",
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-sm">As palavras-chave que conectam o raciocínio técnico. Memorize por categoria:</p>
+                      <p className="text-lg">As palavras-chave que conectam o raciocínio técnico. Memorize por categoria:</p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/10">
-                          <h6 className="font-bold text-emerald-600 text-xs">Contraste / Concessão</h6>
+                          <h6 className="font-bold text-emerald-600 text-lg">Contraste / Concessão</h6>
                           <p className="text-[10px] opacity-80 mt-1">**However, Nevertheless, Despite, Although, Yet.**</p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/10">
-                          <h6 className="font-bold text-blue-600 text-xs">Causa / Consequência</h6>
+                          <h6 className="font-bold text-blue-600 text-lg">Causa / Consequência</h6>
                           <p className="text-[10px] opacity-80 mt-1">**Therefore, Thus, Consequently, Due to, Since.**</p>
                         </div>
                         <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/10">
-                          <h6 className="font-bold text-amber-600 text-xs">Adição</h6>
+                          <h6 className="font-bold text-amber-600 text-lg">Adição</h6>
                           <p className="text-[10px] opacity-80 mt-1">**Furthermore, Moreover, In addition to, Besides.**</p>
                         </div>
                         <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/10">
-                          <h6 className="font-bold text-rose-600 text-xs">Condição</h6>
+                          <h6 className="font-bold text-rose-600 text-lg">Condição</h6>
                           <p className="text-[10px] opacity-80 mt-1">**Unless (a menos que), Provided that, Whether.**</p>
                         </div>
                       </div>
@@ -727,10 +736,10 @@ export default function AulaReadingStrategies({
                   icone: "⚙️",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">No inglês técnico da Petrobras, o foco é no **processo**, não no executor.</p>
-                      <div className="p-4 bg-slate-900 text-slate-100 rounded-xl font-mono text-xs">
+                      <p className="text-lg">No inglês técnico da Petrobras, o foco é no **processo**, não no executor.</p>
+                      <div className="p-4 bg-slate-900 text-slate-100 rounded-xl font-mono text-lg">
                         <p className="text-blue-400">Ativa: "Engineers inspected the platform."</p>
-                        <p className="text-emerald-400 mt-2 text-sm font-bold">Passiva: "The platform WAS INSPECTED (by engineers)."</p>
+                        <p className="text-emerald-400 mt-2 text-lg font-bold">Passiva: "The platform WAS INSPECTED (by engineers)."</p>
                       </div>
                       <p className="text-[10px] italic">A Cesgranrio costuma pedir para identificar quem realizou a ação ou o estado do objeto.</p>
                     </div>
@@ -744,7 +753,7 @@ export default function AulaReadingStrategies({
                 index={2}
                 title="Industrial Flashcards: Vocabulário Petrobras"
                 description="Clique nos cards para revelar o significado técnico e exemplos práticos de termos fundamentais da indústria."
-                variant={getModuleVariant(4)}
+                variant={mv[4]}
               />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <FlipCard 
@@ -752,7 +761,7 @@ export default function AulaReadingStrategies({
                   frente={<div className="text-center text-2xl font-black">Crude Oil</div>}
                   verso={<div className="space-y-4">
                     <p className="font-bold text-amber-600 uppercase tracking-tight">Petróleo Bruto</p>
-                    <p className="text-xs leading-relaxed">Em seu estado natural, antes de passar por refino.</p>
+                    <p className="text-lg leading-relaxed">Em seu estado natural, antes de passar por refino.</p>
                     <div className="p-3 bg-amber-500/10 rounded-lg border border-amber-500/20 italic text-[10px]">
                       "The crude oil was transported via pipeline."
                     </div>
@@ -763,7 +772,7 @@ export default function AulaReadingStrategies({
                   frente={<div className="text-center text-2xl font-black">Offshore</div>}
                   verso={<div className="space-y-4">
                     <p className="font-bold text-blue-600 uppercase tracking-tight">Em alto mar</p>
-                    <p className="text-xs leading-relaxed">Atividades realizadas em mar aberto (plataformas, navios).</p>
+                    <p className="text-lg leading-relaxed">Atividades realizadas em mar aberto (plataformas, navios).</p>
                     <div className="p-3 bg-blue-500/10 rounded-lg border border-blue-500/20 italic text-[10px]">
                       "Petrobras is a world leader in offshore drilling."
                     </div>
@@ -774,7 +783,7 @@ export default function AulaReadingStrategies({
                   frente={<div className="text-center text-2xl font-black">Well / Drill</div>}
                   verso={<div className="space-y-4">
                     <p className="font-bold text-slate-600 uppercase tracking-tight">Poço / Perfurar</p>
-                    <p className="text-xs leading-relaxed">Infraestrutura e ação central na fase de exploração.</p>
+                    <p className="text-lg leading-relaxed">Infraestrutura e ação central na fase de exploração.</p>
                     <div className="p-3 bg-slate-500/10 rounded-lg border border-slate-500/20 italic text-[10px]">
                       "The company plans to drill three new wells."
                     </div>
@@ -785,7 +794,7 @@ export default function AulaReadingStrategies({
                   frente={<div className="text-center text-2xl font-black">Refinery</div>}
                   verso={<div className="space-y-4">
                     <p className="font-bold text-purple-600 uppercase tracking-tight">Refinaria</p>
-                    <p className="text-xs leading-relaxed">Onde o petróleo é transformado em derivados (gasolina, diesel).</p>
+                    <p className="text-lg leading-relaxed">Onde o petróleo é transformado em derivados (gasolina, diesel).</p>
                     <div className="p-3 bg-purple-500/10 rounded-lg border border-purple-500/20 italic text-[10px]">
                       "The modern refinery operates 24/7."
                     </div>
@@ -796,7 +805,7 @@ export default function AulaReadingStrategies({
                   frente={<div className="text-center text-2xl font-black">Rig</div>}
                   verso={<div className="space-y-4">
                     <p className="font-bold text-emerald-600 uppercase tracking-tight">Sonda / Plataforma</p>
-                    <p className="text-xs leading-relaxed">Equipamento de perfuração ou unidade de produção.</p>
+                    <p className="text-lg leading-relaxed">Equipamento de perfuração ou unidade de produção.</p>
                     <div className="p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20 italic text-[10px]">
                       "The oil rig is located 200km from the coast."
                     </div>
@@ -809,8 +818,8 @@ export default function AulaReadingStrategies({
           <section id="quiz-modulo-4" className="mt-16">
             
 <ModuleConsolidation
-              index={4}
-              variant={getModuleVariant(4)}
+              index={3}
+              variant={mv[4]}
               video={{
                 videoId: "kOunF5Z0vWA",
                 title: "Vocabulary Strategies for Petrobras",
@@ -846,7 +855,7 @@ export default function AulaReadingStrategies({
 
                         <QuizInterativo
               questoes={quizVocabulary}
-              titulo="Quiz 4 - Vocabulary & Cognates"
+              titulo="QUIZ: Vocabulary & Cognates"
               icone="🎭"
               numero={4}
               variant="amber"
@@ -862,7 +871,7 @@ export default function AulaReadingStrategies({
           numero={5}
           titulo="INFERENCING FROM CONTEXT"
           descricao="Adivinhe significados de palavras desconhecidas usando pistas do contexto sem dicionário."
-          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
+          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
           variant="rose"
         />
 
@@ -884,10 +893,10 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={5}
+              index={1}
               title="Context Clues Mastery"
               description="Desvendando significados através de pistas contextuais."
-              variant={getModuleVariant(5)}
+              variant={mv[5]}
               className="mb-6"
             />
 
@@ -901,10 +910,10 @@ export default function AulaReadingStrategies({
                   icone: "📌",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm italic">
+                      <p className="text-lg italic">
                         "The FPSO vessel, a floating production and storage unit, operates offshore."
                       </p>
-                      <p className="text-xs">O texto define FPSO entre vírgulas. Você não precisa saber a sigla — a explicação é fornecida.</p>
+                      <p className="text-lg">O texto define FPSO entre vírgulas. Você não precisa saber a sigla — a explicação é fornecida.</p>
                     </div>
                   )
                 },
@@ -913,10 +922,10 @@ export default function AulaReadingStrategies({
                   icone: "⚡",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm italic">
+                      <p className="text-lg italic">
                         "The platform was severely damaged; consequently, operations were suspended."
                       </p>
-                      <p className="text-xs">'Suspended' = parado/interrompido. O "so" (consequently) revela a relação: dano → parada.</p>
+                      <p className="text-lg">'Suspended' = parado/interrompido. O "so" (consequently) revela a relação: dano → parada.</p>
                     </div>
                   )
                 },
@@ -925,10 +934,10 @@ export default function AulaReadingStrategies({
                   icone: "📋",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm italic">
+                      <p className="text-lg italic">
                         "Stringent protocols mandate compliance. For instance, all employees must follow HSE guidelines."
                       </p>
-                      <p className="text-xs">'Stringent' = rigoroso. O exemplo mostra exigências rigorosas.</p>
+                      <p className="text-lg">'Stringent' = rigoroso. O exemplo mostra exigências rigorosas.</p>
                     </div>
                   )
                 }
@@ -939,8 +948,8 @@ export default function AulaReadingStrategies({
           <section id="quiz-modulo-5" className="mt-16">
 
 <ModuleConsolidation
-              index={5}
-              variant={getModuleVariant(5)}
+              index={2}
+              variant={mv[5]}
               video={{
                 videoId: "kOunF5Z0vWA",
                 title: "Context Clues & Inference",
@@ -980,7 +989,7 @@ export default function AulaReadingStrategies({
               questoes={quizInferencing}
               titulo="Quiz 5 - Inferencing from Context"
               icone="🔍"
-              numero={5}
+              numero={3}
               variant="rose"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -994,7 +1003,7 @@ export default function AulaReadingStrategies({
           numero={6}
           titulo="MAIN IDEA & SUPPORTING DETAILS"
           descricao="Separe a tese central dos exemplos e detalhes que a sustentam."
-          gradiente="bg-gradient-to-br from-cyan-300 via-cyan-500 to-cyan-400"
+          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
           variant="cyan"
         />
 
@@ -1016,10 +1025,10 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={6}
+              index={1}
               title="Hierarquia da Informação"
               description="Mapeando a estrutura lógica de textos técnicos."
-              variant={getModuleVariant(6)}
+              variant={mv[6]}
               className="mb-6"
             />
 
@@ -1033,9 +1042,9 @@ export default function AulaReadingStrategies({
                   icone: "📍",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Primeira ou segunda frase do parágrafo, contém a ideia-chave.</p>
-                      <p className="text-xs italic">"The blowout preventer (BOP) is a critical safety device."</p>
-                      <p className="text-xs">Tudo que segue explica ou exemplifica o BOP.</p>
+                      <p className="text-lg font-bold">Primeira ou segunda frase do parágrafo, contém a ideia-chave.</p>
+                      <p className="text-lg italic">"The blowout preventer (BOP) is a critical safety device."</p>
+                      <p className="text-lg">Tudo que segue explica ou exemplifica o BOP.</p>
                     </div>
                   )
                 },
@@ -1044,8 +1053,8 @@ export default function AulaReadingStrategies({
                   icone: "📊",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Números, exemplos, definições que sustentam a tese.</p>
-                      <ul className="text-xs space-y-1 list-disc pl-4">
+                      <p className="text-lg font-bold">Números, exemplos, definições que sustentam a tese.</p>
+                      <ul className="text-lg space-y-1 list-disc pl-4">
                         <li>Estatísticas (36 refineries)</li>
                         <li>Exemplos (pre-salt fields)</li>
                         <li>Explicações de mecanismo</li>
@@ -1058,8 +1067,8 @@ export default function AulaReadingStrategies({
                   icone: "🔗",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Sintetize as ideias principais de cada parágrafo.</p>
-                      <p className="text-xs">Se os parágrafos discutem: investimento + produção + segurança + sustentabilidade, a ideia geral é "Petrobras' comprehensive modernization strategy".</p>
+                      <p className="text-lg font-bold">Sintetize as ideias principais de cada parágrafo.</p>
+                      <p className="text-lg">Se os parágrafos discutem: investimento + produção + segurança + sustentabilidade, a ideia geral é "Petrobras' comprehensive modernization strategy".</p>
                     </div>
                   )
                 }
@@ -1070,8 +1079,8 @@ export default function AulaReadingStrategies({
           <section id="quiz-modulo-6" className="mt-16">
 
 <ModuleConsolidation
-              index={6}
-              variant={getModuleVariant(6)}
+              index={2}
+              variant={mv[6]}
               video={{
                 videoId: "kOunF5Z0vWA",
                 title: "Main Idea & Text Organization",
@@ -1107,9 +1116,9 @@ export default function AulaReadingStrategies({
 
                         <QuizInterativo
               questoes={quizMainIdea}
-              titulo="Quiz 6 - Main Idea & Details"
+              titulo="QUIZ: Main Idea & Details"
               icone="🎯"
-              numero={6}
+              numero={3}
               variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1123,7 +1132,7 @@ export default function AulaReadingStrategies({
           numero={7}
           titulo="CRITICAL READING & TONE"
           descricao="Identifique intenção do autor, tom, atitude e implicações implícitas."
-          gradiente="bg-gradient-to-br from-lime-300 via-lime-500 to-lime-400"
+          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
           variant="lime"
         />
 
@@ -1145,10 +1154,10 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={7}
+              index={1}
               title="Desvendando Intenção e Atitude"
               description="Leitura crítica além das palavras superficiais."
-              variant={getModuleVariant(7)}
+              variant={mv[7]}
               className="mb-6"
             />
 
@@ -1162,9 +1171,9 @@ export default function AulaReadingStrategies({
                   icone: "⚡",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Palavras com conotação positiva ou negativa revelam atitude.</p>
-                      <p className="text-xs"><span className="font-bold">Positivo:</span> "innovative", "leader", "committed"</p>
-                      <p className="text-xs"><span className="font-bold">Negativo:</span> "alarming", "lapses", "contradicts"</p>
+                      <p className="text-lg font-bold">Palavras com conotação positiva ou negativa revelam atitude.</p>
+                      <p className="text-lg"><span className="font-bold">Positivo:</span> "innovative", "leader", "committed"</p>
+                      <p className="text-lg"><span className="font-bold">Negativo:</span> "alarming", "lapses", "contradicts"</p>
                     </div>
                   )
                 },
@@ -1173,8 +1182,8 @@ export default function AulaReadingStrategies({
                   icone: "🎯",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Diferenciar: informar, persuadir, criticar, alertar.</p>
-                      <ul className="text-xs space-y-1 list-disc pl-4">
+                      <p className="text-lg font-bold">Diferenciar: informar, persuadir, criticar, alertar.</p>
+                      <ul className="text-lg space-y-1 list-disc pl-4">
                         <li>Informar = linguagem neutra, fatos</li>
                         <li>Persuadir = argumentos, evidência carregada</li>
                         <li>Criticar = tom cético, contradições</li>
@@ -1187,9 +1196,9 @@ export default function AulaReadingStrategies({
                   icone: "📋",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Fatos são verificáveis; opiniões são juízos de valor.</p>
-                      <p className="text-xs italic">"Petrobras produces 3M barrels/day" = fato</p>
-                      <p className="text-xs italic">"Petrobras is inadequate in sustainability" = opinião</p>
+                      <p className="text-lg font-bold">Fatos são verificáveis; opiniões são juízos de valor.</p>
+                      <p className="text-lg italic">"Petrobras produces 3M barrels/day" = fato</p>
+                      <p className="text-lg italic">"Petrobras is inadequate in sustainability" = opinião</p>
                     </div>
                   )
                 }
@@ -1200,8 +1209,8 @@ export default function AulaReadingStrategies({
           <section id="quiz-modulo-7" className="mt-16">
 
 <ModuleConsolidation
-              index={7}
-              variant={getModuleVariant(7)}
+              index={2}
+              variant={mv[7]}
               video={{
                 videoId: "kOunF5Z0vWA",
                 title: "Tone, Bias & Critical Reading",
@@ -1241,7 +1250,7 @@ export default function AulaReadingStrategies({
               questoes={quizTone}
               titulo="Quiz 7 - Critical Reading & Tone"
               icone="🔎"
-              numero={7}
+              numero={3}
               variant="lime"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1255,7 +1264,7 @@ export default function AulaReadingStrategies({
           numero={8}
           titulo="TEXT STRUCTURE & ORGANIZATION"
           descricao="Recognize padrões de organização textual: causa-efeito, comparação, cronologia, problema-solução."
-          gradiente="bg-gradient-to-br from-teal-300 via-teal-500 to-teal-400"
+          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
           variant="teal"
         />
 
@@ -1277,10 +1286,10 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={8}
+              index={1}
               title="Os 5 Padrões Principais"
               description="Mapeando arquitetura lógica textual."
-              variant={getModuleVariant(8)}
+              variant={mv[8]}
               className="mb-6"
             />
 
@@ -1294,9 +1303,9 @@ export default function AulaReadingStrategies({
                   icone: "⏱️",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Passos em ordem: First → Next → Finally</p>
-                      <p className="text-xs italic">"To drill: first assemble equipment, next position rig, finally initiate drilling."</p>
-                      <p className="text-xs">Signal words: First, Second, Then, Finally, Eventually, While, When</p>
+                      <p className="text-lg font-bold">Passos em ordem: First → Next → Finally</p>
+                      <p className="text-lg italic">"To drill: first assemble equipment, next position rig, finally initiate drilling."</p>
+                      <p className="text-lg">Signal words: First, Second, Then, Finally, Eventually, While, When</p>
                     </div>
                   )
                 },
@@ -1305,9 +1314,9 @@ export default function AulaReadingStrategies({
                   icone: "⚡",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Um evento provoca outro: Because X → Therefore Y</p>
-                      <p className="text-xs italic">"Equipment malfunctions caused delays; consequently, production targets were missed."</p>
-                      <p className="text-xs">Signal words: Because, Since, Therefore, Consequently, As a result, Led to</p>
+                      <p className="text-lg font-bold">Um evento provoca outro: Because X → Therefore Y</p>
+                      <p className="text-lg italic">"Equipment malfunctions caused delays; consequently, production targets were missed."</p>
+                      <p className="text-lg">Signal words: Because, Since, Therefore, Consequently, As a result, Led to</p>
                     </div>
                   )
                 },
@@ -1316,9 +1325,9 @@ export default function AulaReadingStrategies({
                   icone: "⚖️",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Mostrar semelhanças ou diferenças entre ideias</p>
-                      <p className="text-xs italic">"While pre-salt is deep, onshore fields are shallow. Both require advanced technology."</p>
-                      <p className="text-xs">Signal words: However, But, Although, Similarly, Unlike, In contrast</p>
+                      <p className="text-lg font-bold">Mostrar semelhanças ou diferenças entre ideias</p>
+                      <p className="text-lg italic">"While pre-salt is deep, onshore fields are shallow. Both require advanced technology."</p>
+                      <p className="text-lg">Signal words: However, But, Although, Similarly, Unlike, In contrast</p>
                     </div>
                   )
                 },
@@ -1327,9 +1336,9 @@ export default function AulaReadingStrategies({
                   icone: "🔧",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Identificar um desafio e uma resposta</p>
-                      <p className="text-xs italic">"Corrosion threatens pipelines; therefore, AI monitoring systems were implemented."</p>
-                      <p className="text-xs">Signal words: Problem, Challenge, Solution, Solved by, Addressed through</p>
+                      <p className="text-lg font-bold">Identificar um desafio e uma resposta</p>
+                      <p className="text-lg italic">"Corrosion threatens pipelines; therefore, AI monitoring systems were implemented."</p>
+                      <p className="text-lg">Signal words: Problem, Challenge, Solution, Solved by, Addressed through</p>
                     </div>
                   )
                 },
@@ -1338,9 +1347,9 @@ export default function AulaReadingStrategies({
                   icone: "📚",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Explicar termo seguido de exemplos</p>
-                      <p className="text-xs italic">"Permeability — the ability of fluid to flow through rock — is essential for extraction."</p>
-                      <p className="text-xs">Signal words: For instance, Such as, Including, Like, For example</p>
+                      <p className="text-lg font-bold">Explicar termo seguido de exemplos</p>
+                      <p className="text-lg italic">"Permeability — the ability of fluid to flow through rock — is essential for extraction."</p>
+                      <p className="text-lg">Signal words: For instance, Such as, Including, Like, For example</p>
                     </div>
                   )
                 }
@@ -1351,8 +1360,8 @@ export default function AulaReadingStrategies({
           <section id="quiz-modulo-8" className="mt-16">
 
 <ModuleConsolidation
-              index={8}
-              variant={getModuleVariant(8)}
+              index={2}
+              variant={mv[8]}
               video={{
                 videoId: "kOunF5Z0vWA",
                 title: "Text Structure Signals",
@@ -1388,9 +1397,9 @@ export default function AulaReadingStrategies({
 
                         <QuizInterativo
               questoes={quizStructure}
-              titulo="Quiz 8 - Text Structure"
+              titulo="QUIZ: Text Structure"
               icone="🏗️"
-              numero={8}
+              numero={3}
               variant="teal"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1404,7 +1413,7 @@ export default function AulaReadingStrategies({
           numero={9}
           titulo="READING COMPREHENSION: PETROBRAS CONTEXT"
           descricao="Integre todas as estratégias: textos autênticos com vocabulário e temas Petrobras reais."
-          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
+          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
           variant="blue"
         />
 
@@ -1426,10 +1435,10 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={9}
+              index={1}
               title="Integração de Estratégias"
               description="Textos autênticos Petrobras: 300-400 palavras com 8 questões."
-              variant={getModuleVariant(9)}
+              variant={mv[9]}
               className="mb-6"
             />
 
@@ -1443,8 +1452,8 @@ export default function AulaReadingStrategies({
                   icone: "🔮",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Leia título, subtítulos, primeira frase, último parágrafo.</p>
-                      <p className="text-xs">Ative seu conhecimento: pré-sal, Petrobras, sustentabilidade, exploração, regulação?</p>
+                      <p className="text-lg font-bold">Leia título, subtítulos, primeira frase, último parágrafo.</p>
+                      <p className="text-lg">Ative seu conhecimento: pré-sal, Petrobras, sustentabilidade, exploração, regulação?</p>
                     </div>
                   )
                 },
@@ -1453,8 +1462,8 @@ export default function AulaReadingStrategies({
                   icone: "📋",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Identifique que tipo de informação cada questão busca.</p>
-                      <p className="text-xs">"Main purpose?" = Skimming | "According to para 3?" = Scanning | "Implied?" = Inferencing</p>
+                      <p className="text-lg font-bold">Identifique que tipo de informação cada questão busca.</p>
+                      <p className="text-lg">"Main purpose?" = Skimming | "According to para 3?" = Scanning | "Implied?" = Inferencing</p>
                     </div>
                   )
                 },
@@ -1463,8 +1472,8 @@ export default function AulaReadingStrategies({
                   icone: "🏃",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Leia topic sentences para captar a estrutura geral.</p>
-                      <p className="text-xs">Identifique transições, conectores, padrão (causa-efeito? problema-solução?).</p>
+                      <p className="text-lg font-bold">Leia topic sentences para captar a estrutura geral.</p>
+                      <p className="text-lg">Identifique transições, conectores, padrão (causa-efeito? problema-solução?).</p>
                     </div>
                   )
                 },
@@ -1473,8 +1482,8 @@ export default function AulaReadingStrategies({
                   icone: "🔍",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Para cada questão, busque os dados específicos localizando palavras-chave.</p>
-                      <p className="text-xs">"2023 production?" → busque números. "What caused delays?" → busque causa.</p>
+                      <p className="text-lg font-bold">Para cada questão, busque os dados específicos localizando palavras-chave.</p>
+                      <p className="text-lg">"2023 production?" → busque números. "What caused delays?" → busque causa.</p>
                     </div>
                   )
                 },
@@ -1483,8 +1492,8 @@ export default function AulaReadingStrategies({
                   icone: "⚡",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-bold">Para questões implícitas, use pistas contextuais e lógica causal.</p>
-                      <p className="text-xs">"Author's tone?" → olhe vocabulário carregado, estrutura argumentativa.</p>
+                      <p className="text-lg font-bold">Para questões implícitas, use pistas contextuais e lógica causal.</p>
+                      <p className="text-lg">"Author's tone?" → olhe vocabulário carregado, estrutura argumentativa.</p>
                     </div>
                   )
                 }
@@ -1495,8 +1504,8 @@ export default function AulaReadingStrategies({
           <section id="quiz-modulo-9" className="mt-16">
 
 <ModuleConsolidation
-              index={9}
-              variant={getModuleVariant(9)}
+              index={2}
+              variant={mv[9]}
               video={{
                 videoId: "kOunF5Z0vWA",
                 title: "Integrated Strategies in Action",
@@ -1534,7 +1543,7 @@ export default function AulaReadingStrategies({
               questoes={quizPetrobras}
               titulo="Quiz 9 - Petrobras Context"
               icone="🌎"
-              numero={9}
+              numero={3}
               variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1548,7 +1557,7 @@ export default function AulaReadingStrategies({
           numero={10}
           titulo="SIMULADO MESTRE: CESGRANRIO MASTER EXAM"
           descricao="Teste final: integração completa de todas as 9 estratégias em um simulado autêntico."
-          gradiente="bg-gradient-to-br from-purple-300 via-purple-500 to-purple-400"
+          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
           variant="purple"
         />
 
@@ -1570,10 +1579,10 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={10}
+              index={1}
               title="Avaliação Final Integrada"
               description="10 questões: teste completo de leitura em inglês instrumental."
-              variant={getModuleVariant(10)}
+              variant={mv[10]}
               className="mb-6"
             />
 
@@ -1589,8 +1598,8 @@ export default function AulaReadingStrategies({
           <section id="quiz-modulo-10" className="mt-16">
 
 <ModuleConsolidation
-              index={10}
-              variant={getModuleVariant(10)}
+              index={2}
+              variant={mv[10]}
               video={{
                 videoId: "kOunF5Z0vWA",
                 title: "Master Exam Strategies",
@@ -1629,9 +1638,9 @@ export default function AulaReadingStrategies({
 
                         <QuizInterativo
               questoes={quizSimuladoMestre}
-              titulo="SIMULADO MESTRE: Master Exam"
+              titulo="QUIZ: Simulado Mestre"
               icone="👑"
-              numero={10}
+              numero={3}
               variant="purple"
               onComplete={(score) => {
                 handleModuleComplete("modulo-10", score);

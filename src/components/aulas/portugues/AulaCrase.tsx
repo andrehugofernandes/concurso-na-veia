@@ -327,7 +327,7 @@ const CRASE_CONCEPT_EXAMPLES = [
         <LuTarget size={48} className="text-rose-500" />
         <div>
           <h3 className="text-xl font-bold mb-2">Vou ___ escola.</h3>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-lg text-muted-foreground">
             Tem crase? Troque 'escola' por 'colégio'.
           </p>
         </div>
@@ -354,7 +354,7 @@ const CRASE_CONCEPT_EXAMPLES = [
         <LuTarget size={48} className="text-rose-500" />
         <div>
           <h3 className="text-xl font-bold mb-2">Fui ___ praça.</h3>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-lg text-muted-foreground">
             Tem crase? Troque 'praça' por 'parque'.
           </p>
         </div>
@@ -379,7 +379,7 @@ const CRASE_CONCEPT_EXAMPLES = [
         <LuTarget size={48} className="text-rose-500" />
         <div>
           <h3 className="text-xl font-bold mb-2">Assisti ___ peça.</h3>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-lg text-muted-foreground">
             Tem crase? Troque 'peça' por 'filme'.
           </p>
         </div>
@@ -406,7 +406,7 @@ const CRASE_CONCEPT_EXAMPLES = [
         <LuTarget size={48} className="text-rose-500" />
         <div>
           <h3 className="text-xl font-bold mb-2">Obedeci ___ regra.</h3>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-lg text-muted-foreground">
             Tem crase? Troque 'regra' por 'regulamento'.
           </p>
         </div>
@@ -433,7 +433,7 @@ const CRASE_CONCEPT_EXAMPLES = [
         <LuTarget size={48} className="text-rose-500" />
         <div>
           <h3 className="text-xl font-bold mb-2">Peça ___ diretora.</h3>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-lg text-muted-foreground">
             Tem crase? Troque 'diretora' por 'diretor'.
           </p>
         </div>
@@ -624,10 +624,10 @@ export default function AulaCrase({
                   <div className="text-4xl font-bold mb-2 text-indigo-500">
                     A
                   </div>
-                  <div className="text-xs uppercase tracking-wider font-bold text-muted-foreground">
+                  <div className="text-lg uppercase tracking-wider font-bold text-muted-foreground">
                     Preposição
                   </div>
-                  <div className="text-xs text-muted-foreground/60 mt-1">
+                  <div className="text-lg text-muted-foreground/60 mt-1">
                     (Termo Regente pede: Ex: Ir A)
                   </div>
                 </div>
@@ -636,10 +636,10 @@ export default function AulaCrase({
                 </div>
                 <div className="bg-muted/30 p-6 rounded-xl text-center border border-border/50">
                   <div className="text-4xl font-bold mb-2 text-rose-500">A</div>
-                  <div className="text-xs uppercase tracking-wider font-bold text-muted-foreground">
+                  <div className="text-lg uppercase tracking-wider font-bold text-muted-foreground">
                     Artigo Definido
                   </div>
-                  <div className="text-xs text-muted-foreground/60 mt-1">
+                  <div className="text-lg text-muted-foreground/60 mt-1">
                     (Termo Regido aceita: Ex: A Praia)
                   </div>
                 </div>
@@ -647,7 +647,7 @@ export default function AulaCrase({
                   <div className="text-6xl font-extrabold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-rose-600">
                     = À
                   </div>
-                  <div className="text-sm font-bold text-foreground">
+                  <div className="text-lg font-bold text-foreground">
                     A fusão de preposição + artigo (ou pronome)
                   </div>
                 </div>
@@ -676,7 +676,7 @@ export default function AulaCrase({
                   );
                   setCurrentExample(CRASE_CONCEPT_EXAMPLES[random]);
                 }}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium hover:bg-indigo-200 dark:hover:bg-indigo-900/50 transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-lg font-medium hover:bg-indigo-200 dark:hover:bg-indigo-900/50 transition-colors cursor-pointer"
               >
                 <LuShuffle className="w-3 h-3" />
                 Gerar novo exemplo
@@ -770,7 +770,7 @@ export default function AulaCrase({
               tipo="warning"
               titulo="Lugares Especificados: A Regra 'Volto de' cai por terra"
             >
-              <p className="text-sm mb-3 text-muted-foreground">
+              <p className="text-lg mb-3 text-muted-foreground">
                 Se um lugar (que normalmente pediria apenas 'de', sem artigo)
                 vier <strong>especificado/determinado</strong>, ele ganha
                 artigo, e consequentemente, a crase ocorre!
@@ -797,7 +797,7 @@ export default function AulaCrase({
                       Vou <span className="text-emerald-500 font-bold">à</span>{" "}
                       Roma <strong>dos Césares</strong>.
                     </p>
-                    <p className="text-xs text-muted-foreground italic mt-2">
+                    <p className="text-lg text-muted-foreground italic mt-2">
                       Nesse caso, a palavra 'Roma' foi especificada ('dos
                       Césares'), então ela passa a admitir artigo definido 'A' -
                       ocorrendo a crase.
@@ -870,10 +870,10 @@ export default function AulaCrase({
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
                     <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-                      <h4 className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mb-2">
+                      <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
                         Deu "AO"?
                       </h4>
-                      <p className="text-xs text-muted-foreground italic">
+                      <p className="text-lg text-muted-foreground italic">
                         Fui <strong>ao</strong> clubinho.
                       </p>
                       <p className="text-[10px] mt-2 font-medium text-emerald-700 dark:text-emerald-300">
@@ -881,10 +881,10 @@ export default function AulaCrase({
                       </p>
                     </div>
                     <div className="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl">
-                      <h4 className="text-sm font-bold text-rose-600 dark:text-rose-400 mb-2">
+                      <h4 className="text-lg font-bold text-rose-600 dark:text-rose-400 mb-2">
                         Deu "O"?
                       </h4>
-                      <p className="text-xs text-muted-foreground italic">
+                      <p className="text-lg text-muted-foreground italic">
                         Vi <strong>o</strong> clubinho.
                       </p>
                       <p className="text-[10px] mt-2 font-medium text-rose-700 dark:text-rose-300">
@@ -995,8 +995,8 @@ Coloca o acento e brilha no final!
                   <h4 className="font-bold text-red-600 mb-2 flex items-center gap-2">
                     <LuBan /> {item.title}
                   </h4>
-                  <p className="text-sm opacity-80 mb-3">{item.desc}</p>
-                  <p className="text-xs font-mono italic text-red-700 bg-red-100 dark:bg-red-900/30 rounded px-3 py-1.5 w-fit">
+                  <p className="text-lg opacity-80 mb-3">{item.desc}</p>
+                  <p className="text-lg font-mono italic text-red-700 bg-red-100 dark:bg-red-900/30 rounded px-3 py-1.5 w-fit">
                     {item.example}
                   </p>
                 </div>
@@ -1032,7 +1032,7 @@ Coloca o acento e brilha no final!
                   <p className="font-bold text-rose-500 flex items-center gap-2">
                     <LuBan size={16} /> ERRADO
                   </p>
-                  <p className="font-mono text-sm mt-2">
+                  <p className="font-mono text-lg mt-2">
                     Falava <strong>à pessoas</strong>.
                   </p>
                 </div>
@@ -1040,7 +1040,7 @@ Coloca o acento e brilha no final!
                   <p className="font-bold text-emerald-500 flex items-center gap-2">
                     <LuCheck size={16} /> CORRETO
                   </p>
-                  <p className="font-mono text-sm mt-2">
+                  <p className="font-mono text-lg mt-2">
                     Falava <strong>a pessoas</strong>.<br />
                     Falava <strong>às pessoas</strong>.
                   </p>
@@ -1061,7 +1061,7 @@ Coloca o acento e brilha no final!
               tipo="warning"
               titulo="Termos Subentendidos: À moda de / À maneira de"
             >
-              <p className="text-sm mb-3">
+              <p className="text-lg mb-3">
                 Quando a expressão <strong>"à moda de"</strong> ou{" "}
                 <strong>"à maneira de"</strong> estiver subentendida, a crase
                 ocorre mesmo diante de uma palavra masculina. Isso é muito
@@ -1074,7 +1074,7 @@ Coloca o acento e brilha no final!
                   </div>
                   <div>
                     Fez um drible <strong>à</strong> Pelé. <br />
-                    <span className="text-muted-foreground font-mono text-xs italic">
+                    <span className="text-muted-foreground font-mono text-lg italic">
                       (Fez um drible à moda de Pelé)
                     </span>
                   </div>
@@ -1085,7 +1085,7 @@ Coloca o acento e brilha no final!
                   </div>
                   <div>
                     Comeu um bife <strong>à</strong> Oswaldo Aranha. <br />
-                    <span className="text-muted-foreground font-mono text-xs italic">
+                    <span className="text-muted-foreground font-mono text-lg italic">
                       (Bife à maneira de)
                     </span>
                   </div>
@@ -1264,7 +1264,7 @@ Coloca o acento e brilha no final!
               </p>
 
               <div className="bg-background rounded-lg p-4 border border-border">
-                <p className="text-sm italic text-muted-foreground mb-2">
+                <p className="text-lg italic text-muted-foreground mb-2">
                   Exemplo matador em provas da Cesgranrio:
                 </p>
                 <div className="space-y-4">
@@ -1272,7 +1272,7 @@ Coloca o acento e brilha no final!
                     "Obedeci <strong>à sua</strong> ordem e não{" "}
                     <strong>à minha</strong>."
                   </p>
-                  <ul className="text-sm space-y-2 mt-4">
+                  <ul className="text-lg space-y-2 mt-4">
                     <li className="flex items-start gap-2">
                       <LuCheck className="text-emerald-500 mt-1 shrink-0" />
                       <div>
@@ -1309,7 +1309,7 @@ Coloca o acento e brilha no final!
                 tipo="warning"
                 titulo="Personalidades e Figuras Históricas"
               >
-                <p className="text-sm mb-3 text-muted-foreground">
+                <p className="text-lg mb-3 text-muted-foreground">
                   Nomes de personalidades históricas ou religiosas que não
                   admitem intimidade <strong>NÃO ACEITAM ARTIGO</strong>. Logo,
                   a crase é <strong>PROIBIDA</strong>.
@@ -1318,30 +1318,30 @@ Coloca o acento e brilha no final!
                   <div className="flex items-center gap-2 mb-2 text-red-700 dark:text-red-400 font-bold">
                     <LuBan /> ERRADO
                   </div>
-                  <p className="font-mono text-sm opacity-80 mb-4 line-through">
+                  <p className="font-mono text-lg opacity-80 mb-4 line-through">
                     Fez homenagem à Joana d'Arc.
                   </p>
 
                   <div className="flex items-center gap-2 mb-2 text-emerald-700 dark:text-emerald-400 font-bold">
                     <LuCheck /> CORRETO
                   </div>
-                  <p className="font-mono text-sm">
+                  <p className="font-mono text-lg">
                     Fez homenagem a Joana d'Arc.
                   </p>
                 </div>
               </AlertBox>
 
               <AlertBox tipo="warning" titulo="Especificador no Nome Próprio">
-                <p className="text-sm mb-3 text-muted-foreground">
+                <p className="text-lg mb-3 text-muted-foreground">
                   Se um nome feminino vier especificado por um adjetivo ou
                   adjunto, o uso do artigo deixa de ser opcional e torna-se{" "}
                   <strong>OBRIGATÓRIO</strong>.
                 </p>
                 <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-lg h-full flex flex-col justify-center">
-                  <p className="font-mono text-emerald-700 dark:text-emerald-400 text-sm leading-relaxed">
+                  <p className="font-mono text-emerald-700 dark:text-emerald-400 text-lg leading-relaxed">
                     Refiro-me <strong>à Maria do Carmo</strong>.<br />
                     <br />
-                    <span className="text-xs italic text-muted-foreground">
+                    <span className="text-lg italic text-muted-foreground">
                       (Neste caso, a crase deixou de ser facultativa e passou a
                       ser OBRIGATÓRIA devido à especificação).
                     </span>
@@ -1493,7 +1493,7 @@ Coloca o acento e brilha no final!
                 <h4 className="font-bold text-amber-700 dark:text-amber-400 mb-4 flex items-center gap-2">
                   <LuClock /> Crase antes de Horas Exatas
                 </h4>
-                <p className="text-sm text-foreground leading-relaxed mb-4">
+                <p className="text-lg text-foreground leading-relaxed mb-4">
                   Antes de horas marcadas no relógio, a regra é{" "}
                   <strong>usar a crase</strong>. <br />
                   <span className="italic mt-2 block">
@@ -1501,7 +1501,7 @@ Coloca o acento e brilha no final!
                     <strong>às</strong> 17h."
                   </span>
                 </p>
-                <div className="bg-amber-100 dark:bg-amber-900/30 p-3 rounded text-xs text-amber-800 dark:text-amber-300 font-medium">
+                <div className="bg-amber-100 dark:bg-amber-900/30 p-3 rounded text-lg text-amber-800 dark:text-amber-300 font-medium">
                   Cuidado: Se houver preposições antes (Desde, Até, Após, Para),
                   NÃO há crase. Ex: "Estou aqui <u>desde as</u> 8h".
                 </div>
@@ -1511,12 +1511,12 @@ Coloca o acento e brilha no final!
                 <h4 className="font-bold text-amber-700 dark:text-amber-400 mb-4 flex items-center gap-2">
                   <LuUser /> Pronomes: Aquele / Aquela / Aquilo
                 </h4>
-                <p className="text-sm text-foreground leading-relaxed mb-4">
+                <p className="text-lg text-foreground leading-relaxed mb-4">
                   Esses pronomes já começam com a letra "A". Se o verbo anterior
                   pedir a preposição "A", elas vão colidir e gerar a crase no
                   próprio pronome.
                 </p>
-                <div className="bg-white/50 dark:bg-black/20 p-3 rounded border border-border/50 text-sm">
+                <div className="bg-white/50 dark:bg-black/20 p-3 rounded border border-border/50 text-lg">
                   <p className="text-muted-foreground">
                     Quem entrega, entrega algo <strong>A</strong> alguém.
                   </p>
@@ -1542,7 +1542,7 @@ Coloca o acento e brilha no final!
             />
 
             <AlertBox tipo="warning" titulo="O Paralelismo Sintático">
-              <p className="text-sm mb-3">
+              <p className="text-lg mb-3">
                 Quando temos enumerações ou intervalos de horas (De ... a ... /
                 Das ... às ...), o Paralelismo Sintático exige que os dois lados
                 da balança sejam iguais.
@@ -1550,10 +1550,10 @@ Coloca o acento e brilha no final!
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 text-left">
                 <div className="bg-rose-500/5 border-l-4 border-rose-500 p-4 rounded-r-lg">
-                  <p className="font-bold text-rose-600 text-sm mb-2">
+                  <p className="font-bold text-rose-600 text-lg mb-2">
                     Desequilibrado (Erro)
                   </p>
-                  <p className="font-mono text-sm leading-relaxed">
+                  <p className="font-mono text-lg leading-relaxed">
                     A aula vai{" "}
                     <span className="font-bold text-foreground">DE</span> 8h{" "}
                     <span className="font-bold bg-rose-200 dark:bg-rose-900/40 text-rose-700 rounded px-1">
@@ -1561,17 +1561,17 @@ Coloca o acento e brilha no final!
                     </span>{" "}
                     12h.
                   </p>
-                  <p className="text-xs text-muted-foreground mt-2 italic">
+                  <p className="text-lg text-muted-foreground mt-2 italic">
                     No primeiro lado só tem preposição (De), no segundo tem
                     preposição + artigo (às).
                   </p>
                 </div>
 
                 <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-4 rounded-r-lg">
-                  <p className="font-bold text-emerald-600 text-sm mb-2">
+                  <p className="font-bold text-emerald-600 text-lg mb-2">
                     Equilibrado (Acerto)
                   </p>
-                  <p className="font-mono text-sm leading-relaxed">
+                  <p className="font-mono text-lg leading-relaxed">
                     A aula vai{" "}
                     <span className="font-bold text-foreground">DA</span> 1h{" "}
                     <span className="font-bold text-emerald-600">À</span> 5h.{" "}
@@ -1698,7 +1698,7 @@ Coloca o acento e brilha no final!
                 <h4 className="font-bold text-emerald-700 dark:text-emerald-400 mb-3 flex items-center gap-2">
                   <LuCheck /> Frase Comum
                 </h4>
-                <p className="text-sm italic text-foreground">
+                <p className="text-lg italic text-foreground">
                   "Fui à praia ontem."
                 </p>
                 <p className="text-[10px] text-muted-foreground mt-2">
@@ -1709,7 +1709,7 @@ Coloca o acento e brilha no final!
                 <h4 className="font-bold text-rose-700 dark:text-rose-400 mb-3 flex items-center gap-2">
                   <LuZap /> Desafio de Prova (Pegadinhas)
                 </h4>
-                <p className="text-sm italic text-foreground leading-relaxed">
+                <p className="text-lg italic text-foreground leading-relaxed">
                   "Referi-me àquilo que, a distância, parecia ser uma homenagem
                   a Joana d'Arc."
                 </p>
@@ -1767,7 +1767,7 @@ Coloca o acento e brilha no final!
                   <h4 className="font-bold text-rose-700 dark:text-rose-400 mb-2 mt-2">
                     {item.title}
                   </h4>
-                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                  <p className="text-lg text-muted-foreground">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -1782,13 +1782,13 @@ Coloca o acento e brilha no final!
               description="O detalhe final sobre a palavra 'QUAL' que separa os 90% dos 100%."
             />
             <AlertBox tipo="info" titulo="Crase com Pronomes Relativos">
-              <p className="text-sm">
+              <p className="text-lg">
                 A crase antes de <strong>"Qual / Quais"</strong> depende
                 exclusivamente da regência do verbo que vem depois. Se o verbo
                 pedir "A", a crase é obrigatória.
               </p>
               <div className="mt-4 p-4 bg-background rounded-lg border border-border">
-                <p className="text-sm">
+                <p className="text-lg">
                   "Esta é a regra <strong>à qual</strong> me referi."
                 </p>
                 <p className="text-[10px] text-muted-foreground mt-1">

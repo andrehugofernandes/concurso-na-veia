@@ -691,7 +691,7 @@ const GENERO_VS_TIPO_FLIPS = [
       </div>
     ),
     verso: (
-      <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-4">
+      <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-4">
         <p>
           <strong>São poucos e rígidos.</strong>
         </p>
@@ -709,7 +709,7 @@ const GENERO_VS_TIPO_FLIPS = [
       </div>
     ),
     verso: (
-      <div className="flex flex-col justify-center h-full text-center text-sm p-4">
+      <div className="flex flex-col justify-center h-full text-center text-lg p-4">
         <p className="font-bold text-amber-500">
           MÚLTIPLOS GÊNEROS DEVORAM OS TIPOS
         </p>
@@ -728,7 +728,7 @@ const GENERO_VS_TIPO_FLIPS = [
       </div>
     ),
     verso: (
-      <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-4">
+      <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-4">
         <p>
           <strong>São infinitos e sociais.</strong>
         </p>
@@ -901,7 +901,7 @@ export default function AulaTiposTextuais({
                       Exige mudança de estado: algo <em>era</em> de um jeito e{" "}
                       <em>passou a ser</em> de outro.
                     </p>
-                    <div className="bg-emerald-500/10 p-5 rounded-xl border border-emerald-500/20 text-sm space-y-2">
+                    <div className="bg-emerald-500/10 p-5 rounded-xl border border-emerald-500/20 text-lg space-y-2">
                       <p>
                         ✅{" "}
                         <em>
@@ -929,7 +929,7 @@ export default function AulaTiposTextuais({
                       história (o narrador). Pode ser em 1ª Pessoa ou 3ª Pessoa.
                     </p>
                     <div className="space-y-3">
-                      <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20 text-sm">
+                      <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20 text-lg">
                         <p className="font-bold text-emerald-700 dark:text-emerald-400">
                           1ª Pessoa (Narrador Personagem)
                         </p>
@@ -941,7 +941,7 @@ export default function AulaTiposTextuais({
                           quando <strong>me aproximei</strong>."
                         </p>
                       </div>
-                      <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20 text-sm">
+                      <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20 text-lg">
                         <p className="font-bold text-emerald-700 dark:text-emerald-400">
                           3ª Pessoa (Narrador Observador / Onisciente)
                         </p>
@@ -969,7 +969,7 @@ export default function AulaTiposTextuais({
                       personagem.
                     </p>
                     <ul className="space-y-4">
-                      <li className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20 text-sm">
+                      <li className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20 text-lg">
                         <strong>Discurso Direto:</strong> A própria personagem
                         fala. (Usa verbo de elocução + aspas/travessão).
                         <br />
@@ -977,7 +977,7 @@ export default function AulaTiposTextuais({
                           Ex: O gerente gritou: — Parem as máquinas!
                         </span>
                       </li>
-                      <li className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20 text-sm">
+                      <li className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20 text-lg">
                         <strong>Discurso Indireto:</strong> O narrador conta o
                         que a personagem falou. (Usa conjunção integrante "que"
                         ou "se").
@@ -986,7 +986,7 @@ export default function AulaTiposTextuais({
                           Ex: O gerente gritou que eles parassem as máquinas.
                         </span>
                       </li>
-                      <li className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20 text-sm border-l-4 border-l-emerald-500">
+                      <li className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20 text-lg border-l-4 border-l-emerald-500">
                         <strong>Discurso Indireto Livre:</strong> A mais
                         cobrada! A fala/pensamento da personagem se confunde com
                         a narração, sem verbo de elocução. Fundem-se narrador e
@@ -1033,7 +1033,7 @@ export default function AulaTiposTextuais({
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-4">
+                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-4">
                   <p>
                     Fiel à realidade, neutra, exata. Usa palavras no sentido
                     denotativo. Muito comum em manuais técnicos.
@@ -1060,7 +1060,7 @@ export default function AulaTiposTextuais({
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-4">
+                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-4">
                   <p>
                     Passa pelo "filtro" da emoção de quem descreve. Usa
                     linguagem conotativa e juízos de valor. Comum na literatura.
@@ -1238,7 +1238,7 @@ A tipologia você vai entender!
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-4">
+                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-4">
                   <p>
                     Apresenta fatos, teorias, dados, de modo neutro e impessoal.
                     Não tenta mudar sua opinião, apenas acrescenta conhecimento.
@@ -1265,7 +1265,7 @@ A tipologia você vai entender!
                 </div>
               }
               verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-sm p-4">
+                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-4">
                   <p>
                     Apresenta um posicionamento pessoal (Tese) e tenta persuadir
                     o leitor usando provas, causas/consequências e exemplos.
@@ -1310,7 +1310,7 @@ A tipologia você vai entender!
                       o texto existirá apenas para provar que a Tese é
                       verdadeira.
                     </p>
-                    <div className="bg-blue-500/10 p-5 rounded-xl border border-blue-500/20 text-sm space-y-2">
+                    <div className="bg-blue-500/10 p-5 rounded-xl border border-blue-500/20 text-lg space-y-2">
                       <p>
                         ✅{" "}
                         <em>
@@ -1342,17 +1342,17 @@ A tipologia você vai entender!
                       foram usados num parágrafo.
                     </p>
                     <ul className="space-y-4">
-                      <li className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-sm">
+                      <li className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-lg">
                         <strong>Autoridade:</strong> "Como atesta o relatório do
                         IBAMA de 2025, os vazamentos..." (Citar
                         especialista/órgão).
                       </li>
-                      <li className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-sm">
+                      <li className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-lg">
                         <strong>Exemplificação:</strong> "...isso já ocorreu
                         antes, a exemplo do desastre no terminal X ocorrido na
                         década passada..."
                       </li>
-                      <li className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-sm">
+                      <li className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-lg">
                         <strong>Causa e Consequência:</strong> "As tubulações
                         não foram limpas (causa), culminando na pressão máxima
                         (consequência)."
@@ -1539,7 +1539,7 @@ Se tem julgamento, é argumentação!
                 icone: <LuTriangleAlert className="text-indigo-500" />,
                 title: "Objetivo Final",
                 descricao: (
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p>
                       Instruir, ordenar, aconselhar ou modificar o comportamento
                       do receptor da mensagem externa.
@@ -1551,7 +1551,7 @@ Se tem julgamento, é argumentação!
                 icone: <LuCheck className="text-indigo-500" />,
                 title: "A Marca do Imperativo",
                 descricao: (
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p>
                       O <strong>Verbo no Imperativo</strong> (Faça, Desligue,
                       Mantenha) é o grande rastro deste tipo. Também se aceita o
@@ -1564,7 +1564,7 @@ Se tem julgamento, é argumentação!
                 icone: <LuBookOpen className="text-indigo-500" />,
                 title: "Gêneros Associados",
                 descricao: (
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p>
                       Manuais, Manuais de calibração, Regimentos, Receitas,
                       Editais de concurso, Bulas.
@@ -1603,12 +1603,12 @@ Se tem julgamento, é argumentação!
                       invertem os papéis constantemente). É a transcrição da
                       interação.
                     </p>
-                    <div className="bg-indigo-500/10 p-5 rounded-xl border border-indigo-500/20 text-sm space-y-2">
+                    <div className="bg-indigo-500/10 p-5 rounded-xl border border-indigo-500/20 text-lg space-y-2">
                       <p>— Você isolou a válvula três?</p>
                       <p>— Sim, senhor. A pressão zerou às quatorze.</p>
                       <p>— Perfeito. Iniciaremos o expurgo.</p>
                     </div>
-                    <p className="text-muted-foreground text-sm pt-2">
+                    <p className="text-muted-foreground text-lg pt-2">
                       Na interpretação cesgranrio, a conversa transcrita
                       (entrevista, peça de teatro) constitui este tipo autônomo.
                       É repleto de <strong>tópicos e interrupções</strong>.
@@ -1736,7 +1736,7 @@ Imperativo na prova, injunção aflora!
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod3}
-            titulo="Quiz — Injunção"
+            titulo="QUIZ: Injuntivo & Dialogal"
             icone="📋"
             numero={4}
             variant="violet"

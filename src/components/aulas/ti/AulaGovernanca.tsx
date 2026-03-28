@@ -185,7 +185,7 @@ export default function AulaGovernanca({
                           <h4 className="font-bold text-blue-500 mb-2">
                             Visão Corporativa
                           </h4>
-                          <p className="text-sm">
+                          <p className="text-lg">
                             A Governança olha para fora e para o futuro,
                             garantindo compliance e retorno sobre investimento
                             (ROI).
@@ -195,7 +195,7 @@ export default function AulaGovernanca({
                           <h4 className="font-bold text-emerald-500 mb-2">
                             Visão Operacional
                           </h4>
-                          <p className="text-sm">
+                          <p className="text-lg">
                             A Gestão olha para dentro e para o presente, focando
                             em eficiência, SLAs e entrega de serviços.
                           </p>
@@ -204,7 +204,7 @@ export default function AulaGovernanca({
 
                       <div className="space-y-4">
                         <h4 className="text-xl font-bold flex items-center gap-2">
-                          <span className="p-2 bg-amber-500/20 rounded-lg text-amber-500 text-sm">
+                          <span className="p-2 bg-amber-500/20 rounded-lg text-amber-500 text-lg">
                             PROVA
                           </span>
                           Os 5 Pilares da Governança de TI
@@ -270,7 +270,7 @@ export default function AulaGovernanca({
                       />
 
                       <div className="p-6 bg-muted rounded-xl bg-[#0a0a0a] text-white">
-                        <p className="font-mono text-sm">
+                        <p className="font-mono text-lg">
                           <span className="text-blue-400">
                             // Cenário Petrobras
                           </span>
@@ -304,7 +304,7 @@ export default function AulaGovernanca({
                             <div className="space-y-2">
                               <span className="text-2xl">🔄</span>
                               <h5 className="font-bold">O que é EDM?</h5>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="text-lg text-muted-foreground">
                                 O mantra da Governança na ISO 38500.
                               </p>
                             </div>
@@ -315,7 +315,7 @@ export default function AulaGovernanca({
                               <h5 className="font-bold">
                                 Evaluate, Direct, Monitor
                               </h5>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="text-lg text-muted-foreground">
                                 Avaliar o uso atual, Direcionar a estratégia e
                                 Monitorar a conformidade.
                               </p>
@@ -327,7 +327,7 @@ export default function AulaGovernanca({
                             <div className="space-y-2">
                               <span className="text-2xl">⚖️</span>
                               <h5 className="font-bold">Diferença Chave</h5>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="text-lg text-muted-foreground">
                                 Como não esquecer Governança vs Gestão.
                               </p>
                             </div>
@@ -336,7 +336,7 @@ export default function AulaGovernanca({
                             <div className="space-y-2">
                               <span className="text-2xl">✅</span>
                               <h5 className="font-bold">Dono vs Empregado</h5>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="text-lg text-muted-foreground">
                                 O dono (Governança) dá o rumo; o empregado
                                 (Gestão) faz o trabalho acontecer.
                               </p>
@@ -517,10 +517,10 @@ export default function AulaGovernanca({
                             key={i}
                             className="p-4 border border-border rounded-lg bg-muted/30"
                           >
-                            <h5 className="font-bold text-sm text-blue-400">
+                            <h5 className="font-bold text-lg text-blue-400">
                               {p.t}
                             </h5>
-                            <p className="text-xs text-muted-foreground">
+                            <p className="text-lg text-muted-foreground">
                               {p.d}
                             </p>
                           </div>
@@ -531,7 +531,7 @@ export default function AulaGovernanca({
                         <h4 className="font-bold mb-2">
                           Fatores de Design (Tailoring)
                         </h4>
-                        <p className="text-sm">
+                        <p className="text-lg">
                           Diferente das versões anteriores, o COBIT 2019 permite
                           que a Petrobras ajuste a governança com base em:
                           **Estratégia, Objetivos de Negócio, Perfil de Risco,
@@ -611,7 +611,7 @@ export default function AulaGovernanca({
 
                       <div className="space-y-4">
                         <h4 className="font-bold">Ciclo de Implementação</h4>
-                        <p className="text-sm">
+                        <p className="text-lg">
                           No COBIT, a implementação segue o{" "}
                           <strong>Continuous Improvement</strong> em 7 fases,
                           desde o 'Quais são os drivers?' até 'Como mantemos o
@@ -645,7 +645,7 @@ export default function AulaGovernanca({
                           <p className="font-bold text-red-500">
                             ❌ Onde as pessoas erram:
                           </p>
-                          <p className="text-sm">
+                          <p className="text-lg">
                             Achar que o COBIT é apenas para segurança. Ele é
                             para a <strong>TI INTEIRA</strong>, do código ao
                             hardware.
@@ -655,7 +655,7 @@ export default function AulaGovernanca({
                           <p className="font-bold text-emerald-500">
                             ✅ Foco Petrobras:
                           </p>
-                          <p className="text-sm">
+                          <p className="text-lg">
                             A Petrobras usa o COBIT para auditoria de TI e para
                             garantir que o dinheiro do contribuinte/acionista
                             não suma em projetos infinitos.
@@ -716,7 +716,7 @@ export default function AulaGovernanca({
 
                     <QuizInterativo
             questoes={quizM2}
-            titulo="Quiz: Framework COBIT 2019"
+            titulo="QUIZ: COBIT 2019: Framework"
             variant={mv[2]}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
@@ -758,7 +758,7 @@ export default function AulaGovernanca({
 
                       <div className="space-y-6">
                         <h4 className="font-bold flex items-center gap-2 text-xl">
-                          <span className="w-8 h-8 flex items-center justify-center bg-blue-500 text-white rounded-full text-sm">
+                          <span className="w-8 h-8 flex items-center justify-center bg-blue-500 text-white rounded-full text-lg">
                             5
                           </span>
                           Componentes do SVS
@@ -768,7 +768,7 @@ export default function AulaGovernanca({
                             <h5 className="font-bold text-blue-500">
                               1. Princípios Orientadores
                             </h5>
-                            <p className="text-sm">
+                            <p className="text-lg">
                               Cultura e diretrizes (ex: 'Foco no Valor').
                             </p>
                           </div>
@@ -776,7 +776,7 @@ export default function AulaGovernanca({
                             <h5 className="font-bold text-blue-500">
                               2. Governança
                             </h5>
-                            <p className="text-sm">
+                            <p className="text-lg">
                               Alinhamento com o sistema EDM.
                             </p>
                           </div>
@@ -784,7 +784,7 @@ export default function AulaGovernanca({
                             <h5 className="font-bold text-blue-500">
                               3. Cadeia de Valor de Serviço
                             </h5>
-                            <p className="text-sm">
+                            <p className="text-lg">
                               Atividades operacionais (Planejar, Engajar, etc).
                             </p>
                           </div>
@@ -792,14 +792,14 @@ export default function AulaGovernanca({
                             <h5 className="font-bold text-blue-500">
                               4. Práticas (ex-processos)
                             </h5>
-                            <p className="text-sm">As 34 práticas de gestão.</p>
+                            <p className="text-lg">As 34 práticas de gestão.</p>
                           </div>
                         </div>
                         <div className="p-5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                           <h5 className="font-bold text-emerald-500 italic">
                             5. Melhoria Contínua
                           </h5>
-                          <p className="text-sm text-emerald-700 dark:text-emerald-400">
+                          <p className="text-lg text-emerald-700 dark:text-emerald-400">
                             Presente em todos os níveis do SVS.
                           </p>
                         </div>
@@ -888,7 +888,7 @@ export default function AulaGovernanca({
                         <h5 className="font-bold text-amber-500 mb-2">
                           Mnemonic: FOCO NO P.E.C.A
                         </h5>
-                        <ul className="text-sm space-y-1">
+                        <ul className="text-lg space-y-1">
                           <li>
                             <strong>F</strong>oco no Valor
                           </li>
@@ -1040,7 +1040,7 @@ export default function AulaGovernanca({
                           ].map((item, idx) => (
                             <div key={idx} className="text-center space-y-2">
                               <span className="text-3xl">{item.i}</span>
-                              <h6 className="font-bold text-xs">{item.n}</h6>
+                              <h6 className="font-bold text-lg">{item.n}</h6>
                               <p className="text-[10px] text-muted-foreground">
                                 {item.d}
                               </p>
@@ -1081,7 +1081,7 @@ export default function AulaGovernanca({
                       />
 
                       <div className="p-6 bg-[#0a0a0a] rounded-xl text-white">
-                        <p className="text-sm italic">
+                        <p className="text-lg italic">
                           "O sucesso da Petrobras depende de como a TI é
                           dirigida. A ISO 38500 garante que quem manda entenda
                           seu papel de cobrar e guiar a tecnologia."
@@ -1111,7 +1111,7 @@ export default function AulaGovernanca({
                               <h5 className="font-bold">
                                 Conformidade vs Desempenho
                               </h5>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="text-lg text-muted-foreground">
                                 A eterna briga da governança.
                               </p>
                             </div>
@@ -1120,7 +1120,7 @@ export default function AulaGovernanca({
                             <div className="space-y-2">
                               <span className="text-2xl">✅</span>
                               <h5 className="font-bold">O Equilíbrio</h5>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="text-lg text-muted-foreground">
                                 Não adianta ser 100% legal e 0% eficiente. A ISO
                                 busca ambos.
                               </p>
@@ -1132,7 +1132,7 @@ export default function AulaGovernanca({
                             <div className="space-y-2">
                               <span className="text-2xl">👥</span>
                               <h5 className="font-bold">Quem é o foco?</h5>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="text-lg text-muted-foreground">
                                 A quem se destina esta norma?
                               </p>
                             </div>
@@ -1141,7 +1141,7 @@ export default function AulaGovernanca({
                             <div className="space-y-2">
                               <span className="text-2xl">✅</span>
                               <h5 className="font-bold">O Board</h5>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="text-lg text-muted-foreground">
                                 Diretores, Proprietários e Alta Gestão.
                               </p>
                             </div>
@@ -1341,7 +1341,7 @@ export default function AulaGovernanca({
                           <div className="space-y-2">
                             <span className="text-2xl">⚔️</span>
                             <h5 className="font-bold">PETI vs PDTI</h5>
-                            <p className="text-xs text-muted-foreground">
+                            <p className="text-lg text-muted-foreground">
                               Qual o prazo?
                             </p>
                           </div>
@@ -1350,7 +1350,7 @@ export default function AulaGovernanca({
                           <div className="space-y-2">
                             <span className="text-2xl">✅</span>
                             <h5 className="font-bold">Longo vs Curto</h5>
-                            <p className="text-xs text-muted-foreground">
+                            <p className="text-lg text-muted-foreground">
                               PETI = Longo prazo (Estratégico). PDTI =
                               Curto/Médio (Planejamento).
                             </p>
@@ -1440,7 +1440,7 @@ export default function AulaGovernanca({
                           <h4 className="font-bold text-red-500">
                             Riscos Negativos
                           </h4>
-                          <p className="text-sm">
+                          <p className="text-lg">
                             Ameaças que podem causar perdas ou interrupções.
                           </p>
                         </div>
@@ -1448,7 +1448,7 @@ export default function AulaGovernanca({
                           <h4 className="font-bold text-emerald-500">
                             Oportunidades
                           </h4>
-                          <p className="text-sm">
+                          <p className="text-lg">
                             Riscos positivos que podem trazer ganhos
                             estratégicos.
                           </p>

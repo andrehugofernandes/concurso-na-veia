@@ -134,7 +134,7 @@ export default function AulaLei13303(props: AulaProps) {
             variant="indigo"
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               A <strong>Lei 13.303/2016</strong>, conhecida como "Lei das Estatais" ou "Lei de Governança das Empresas Públicas",
               é o principal estatuto jurídico que disciplina o funcionamento das empresas públicas e das sociedades de economia mista
@@ -164,8 +164,8 @@ export default function AulaLei13303(props: AulaProps) {
             </p>
 
             <div className="bg-indigo-500/10 border-l-4 border-indigo-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-indigo-600 dark:text-indigo-400 text-sm mb-2">📋 Escopo da Lei 13.303</p>
-              <ul className="text-sm space-y-1 text-foreground">
+              <p className="font-bold text-indigo-600 dark:text-indigo-400 text-lg mb-2">📋 Escopo da Lei 13.303</p>
+              <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ Aplicável a empresas públicas federais</li>
                 <li>✓ Aplicável a sociedades de economia mista federais</li>
                 <li>✓ Abrange governança, transparência, conflito de interesse</li>
@@ -257,11 +257,11 @@ export default function AulaLei13303(props: AulaProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-emerald-500" /> Direito Privado</h5>
-                        <p className="text-sm">Contratos comerciais, exploração de poços e concorrência no mercado de combustíveis.</p>
+                        <p className="text-lg">Contratos comerciais, exploração de poços e concorrência no mercado de combustíveis.</p>
                       </div>
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-blue-500" /> Direito Público</h5>
-                        <p className="text-sm">Realização de concursos internos para contratação de engenheiros e técnicos.</p>
+                        <p className="text-lg">Realização de concursos internos para contratação de engenheiros e técnicos.</p>
                       </div>
                     </div>
                   </div>
@@ -381,7 +381,7 @@ export default function AulaLei13303(props: AulaProps) {
             variant="emerald"
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               A Lei 13.303 define <strong>dois tipos de empresas estatais</strong>: <strong>Empresa Pública (EP)</strong> e
               <strong> Sociedade de Economia Mista (SEM)</strong>. A diferença é exclusivamente no <strong>capital (estrutura de propriedade)</strong>.
@@ -410,8 +410,8 @@ export default function AulaLei13303(props: AulaProps) {
             </p>
 
             <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-2">🏢 Diferenças Principais</p>
-              <ul className="text-sm space-y-1 text-foreground">
+              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">🏢 Diferenças Principais</p>
+              <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>EP:</strong> Capital 100% público; Sem acionistas privados; Decisões 100% governamentais</li>
                 <li>✓ <strong>SEM:</strong> Capital público ({'>'}50%) + privado ({'<'}50%); Tem acionistas privados; Assembleia Geral com votação</li>
                 <li>✓ <strong>Petrobras:</strong> SEM (S.A.); União detém {'>'}50%; Ações negociadas em bolsa</li>
@@ -486,8 +486,8 @@ export default function AulaLei13303(props: AulaProps) {
                       A grande linha divisória é o **Capital Social**. Na Empresa Pública, não há espaço para investimento privado direto no capital. Na SEM, o Estado senta-se à mesa com investidores do mercado.
                     </p>
                     <div className="p-4 bg-muted border border-border rounded-xl">
-                      <p className="text-sm font-bold border-b border-border pb-2 mb-2">Composição do Capital:</p>
-                      <ul className="space-y-1 text-sm">
+                      <p className="text-lg font-bold border-b border-border pb-2 mb-2">Composição do Capital:</p>
+                      <ul className="space-y-1 text-lg">
                         <li><strong>EP:</strong> 100% Público (União, Estados, Municípios).</li>
                         <li><strong>SEM:</strong> Público (+) Privado (Ações em Bolsa).</li>
                       </ul>
@@ -503,13 +503,13 @@ export default function AulaLei13303(props: AulaProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-indigo-500/5 rounded-lg border border-indigo-500/20">
                         <h5 className="font-bold text-indigo-400">Exemplo EP</h5>
-                        <p className="text-xs uppercase font-bold text-muted-foreground">Caixa Econômica Federal</p>
-                        <p className="text-sm mt-2">Todo o patrimônio pertence à União. Atua como banco mas sem acionistas privados externos.</p>
+                        <p className="text-lg uppercase font-bold text-muted-foreground">Caixa Econômica Federal</p>
+                        <p className="text-lg mt-2">Todo o patrimônio pertence à União. Atua como banco mas sem acionistas privados externos.</p>
                       </div>
                       <div className="p-4 bg-emerald-500/5 rounded-lg border border-emerald-500/20">
                         <h5 className="font-bold text-emerald-400">Exemplo SEM</h5>
-                        <p className="text-xs uppercase font-bold text-muted-foreground">Petróleo Brasileiro S.A.</p>
-                        <p className="text-sm mt-2">A União controla, mas investidores de Nova York e São Paulo possuem fatias do capital.</p>
+                        <p className="text-lg uppercase font-bold text-muted-foreground">Petróleo Brasileiro S.A.</p>
+                        <p className="text-lg mt-2">A União controla, mas investidores de Nova York e São Paulo possuem fatias do capital.</p>
                       </div>
                     </div>
                   </div>
@@ -537,7 +537,7 @@ export default function AulaLei13303(props: AulaProps) {
                     <p>
                       Subsidiárias são empresas criadas pela estatal para fins específicos (ex: Transpetro). Coligadas são empresas onde a estatal tem influência mas não o controle total.
                     </p>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "A criação de subsidiárias depende de autorização legislativa, conforme o STF, mas essa autorização pode ser genérica (prevista na lei que criou a estatal)."
                     </p>
                   </div>
@@ -582,7 +582,7 @@ export default function AulaLei13303(props: AulaProps) {
                   <p className="font-black text-emerald-400">EP Federal = JUSTIÇA FEDERAL</p>
                   <p className="font-black text-cyan-400">SEM Federal = JUSTIÇA ESTADUAL</p>
                 </div>
-                <p className="text-xs text-muted-foreground">A Petrobras (SEM) é julgada na Justiça Estadual, apesar de ser federal!</p>
+                <p className="text-lg text-muted-foreground">A Petrobras (SEM) é julgada na Justiça Estadual, apesar de ser federal!</p>
               </div>
             )
           }}
@@ -619,7 +619,7 @@ export default function AulaLei13303(props: AulaProps) {
             variant="violet"
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               Na Petrobras (SEM), existem dois tipos de acionistas: (1) <strong>União Federal</strong> (controladora, {'>'}50% das ordinárias);
               (2) <strong>Acionistas privados/minoritários</strong> (detêm ordinárias minoritárias e/ou preferenciais). A Lei 13.303 garante que
@@ -651,8 +651,8 @@ export default function AulaLei13303(props: AulaProps) {
             </p>
 
             <div className="bg-violet-500/10 border-l-4 border-violet-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-violet-600 dark:text-violet-400 text-sm mb-2">⚖️ Direitos vs Deveres</p>
-              <ul className="text-sm space-y-1 text-foreground">
+              <p className="font-bold text-violet-600 dark:text-violet-400 text-lg mb-2">⚖️ Direitos vs Deveres</p>
+              <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Direitos:</strong> Voto (ordinárias), Dividendos, Fiscalização, Informação</li>
                 <li>✓ <strong>Deveres:</strong> Integralizar capital, Respeitar estatuto, Não votar abusivamente</li>
                 <li>✓ <strong>Proteção Minoritária:</strong> Votação separada, Conselho Fiscal, Publicidade</li>
@@ -729,7 +729,7 @@ export default function AulaLei13303(props: AulaProps) {
                       Imagine que a estatal decida mudar radicalmente seu ramo de atuação (ex: sair do petróleo para focar apenas em energia nuclear).
                     </p>
                     <div className="p-4 bg-muted border border-border rounded-lg">
-                      <p className="text-sm italic">"O acionista dissidente tem o direito de se retirar da companhia, recebendo o valor de suas ações pelo valor patrimonial ou de mercado, conforme o estatuto."</p>
+                      <p className="text-lg italic">"O acionista dissidente tem o direito de se retirar da companhia, recebendo o valor de suas ações pelo valor patrimonial ou de mercado, conforme o estatuto."</p>
                     </div>
                   </div>
                 ),
@@ -740,7 +740,7 @@ export default function AulaLei13303(props: AulaProps) {
                 conteudo: (
                   <div className="space-y-4">
                     <p>A Cesgranrio frequenta o tema do **Acionista Controlador**. O Estado não pode usar o controle para extrair vantagens indevidas da empresa.</p>
-                    <ul className="list-disc pl-5 text-sm space-y-2">
+                    <ul className="list-disc pl-5 text-lg space-y-2">
                       <li>O controlador responde civilmente por danos causados por abuso de poder.</li>
                       <li>Deve-se votar no melhor interesse da companhia, não apenas do governo da vez.</li>
                     </ul>
@@ -794,7 +794,7 @@ export default function AulaLei13303(props: AulaProps) {
           maceteVisual={{
             title: "V.I.D.A. do Acionista",
             content: (
-              <div className="grid grid-cols-2 gap-2 text-sm font-bold">
+              <div className="grid grid-cols-2 gap-2 text-lg font-bold">
                 <div className="p-2 bg-blue-500/20 text-blue-400 rounded">Voto</div>
                 <div className="p-2 bg-emerald-500/20 text-emerald-400 rounded">Informação</div>
                 <div className="p-2 bg-amber-500/20 text-amber-400 rounded">Dividendo</div>
@@ -835,7 +835,7 @@ export default function AulaLei13303(props: AulaProps) {
             variant="amber"
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               A Lei 13.303 estabelece uma <strong>estrutura de governança de três níveis</strong> para estatais: (1) <strong>Assembleia Geral de Acionistas</strong> —
               órgão supremo de decisão (poder legislativo corporativo); (2) <strong>Conselho de Administração</strong> — órgão de controle estratégico (poder executivo + fiscalização);
@@ -862,8 +862,8 @@ export default function AulaLei13303(props: AulaProps) {
             </p>
 
             <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-amber-600 dark:text-amber-400 text-sm mb-2">🏛️ Três Órgãos — Três Papéis</p>
-              <ul className="text-sm space-y-1 text-foreground">
+              <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">🏛️ Três Órgãos — Três Papéis</p>
+              <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Assembleia Geral:</strong> Suprema; Aprova estratégia, orçamento, dividendos; Elege Conselho</li>
                 <li>✓ <strong>Conselho Admin:</strong> Controle estratégico; Supervisiona diretores; Maioria independente</li>
                 <li>✓ <strong>Diretoria:</strong> Operação; Reporta ao Conselho; Responsável por resultados</li>
@@ -937,7 +937,7 @@ export default function AulaLei13303(props: AulaProps) {
                 conteudo: (
                   <div className="space-y-4">
                     <p>O que acontece se a Diretoria quiser fazer um investimento não previsto no plano estratégico?</p>
-                    <ul className="list-disc pl-5 text-sm space-y-2">
+                    <ul className="list-disc pl-5 text-lg space-y-2">
                       <li>O **Conselho de Administração** deve barrar o investimento.</li>
                       <li>Se o Conselho for omisso, o **Conselho Fiscal** deve denunciar o fato.</li>
                       <li>A **Assembleia Geral** pode, ao final, destituir os conselheiros por má gestão.</li>
@@ -951,11 +951,11 @@ export default function AulaLei13303(props: AulaProps) {
                 conteudo: (
                   <div className="space-y-4">
                     <p>Fique atento aos prazos unificados pela Lei 13.303:</p>
-                    <div className="p-4 bg-muted border border-border rounded-xl font-mono text-sm">
+                    <div className="p-4 bg-muted border border-border rounded-xl font-mono text-lg">
                       <p>Prazo de Gestão: Até 2 anos</p>
                       <p>Reconduções: Máximo 3 consecutivas</p>
                     </div>
-                    <p className="text-xs mt-2 italic">Dica: A lei busca a oxigenação da gestão, evitando a perpetuação de diretores no cargo.</p>
+                    <p className="text-lg mt-2 italic">Dica: A lei busca a oxigenação da gestão, evitando a perpetuação de diretores no cargo.</p>
                   </div>
                 ),
                 icone: <LuAward />,
@@ -1006,7 +1006,7 @@ export default function AulaLei13303(props: AulaProps) {
           maceteVisual={{
             title: "Pirâmide de Comando",
             content: (
-              <div className="space-y-2 text-sm text-center">
+              <div className="space-y-2 text-lg text-center">
                 <div className="p-2 border border-border bg-indigo-500/10 rounded">ASSEMBLEIA (Dono)</div>
                 <div className="p-2 border border-border bg-cyan-500/10 rounded">CONSELHO (Mente)</div>
                 <div className="p-2 border border-border bg-emerald-500/10 rounded">DIRETORIA (Braço)</div>
@@ -1047,7 +1047,7 @@ export default function AulaLei13303(props: AulaProps) {
             variant="rose"
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               A <strong>Assembleia Geral de Acionistas</strong> é o órgão supremo de qualquer empresa (Lei 6.404/76 — Lei de S.A.). Na Petrobras (SEM), a Assembleia reúne
               todos os acionistas (ou seus procuradores) para deliberar sobre questões estratégicas. Existem dois tipos: (1) <strong>Assembleia Ordinária</strong> — acontece
@@ -1076,8 +1076,8 @@ export default function AulaLei13303(props: AulaProps) {
             </p>
 
             <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">📋 Competências da Assembleia (EXCLUSIVAS)</p>
-              <ul className="text-sm space-y-1 text-foreground">
+              <p className="font-bold text-rose-600 dark:text-rose-400 text-lg mb-2">📋 Competências da Assembleia (EXCLUSIVAS)</p>
+              <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ Alterar estatuto social</li>
                 <li>✓ Eleger/destituir conselheiros e auditores</li>
                 <li>✓ Aprovar contas e balanço anual</li>
@@ -1156,7 +1156,7 @@ export default function AulaLei13303(props: AulaProps) {
                       Todo ano, a Petrobras realiza sua AGO para que os acionistas examinem o balanço financeiro do ano anterior.
                     </p>
                     <div className="p-4 bg-muted border border-border rounded-lg">
-                      <p className="text-sm">Se a Assembleia rejeita as contas, pode haver a destituição de administradores e o início de auditorias especiais. É o momento de maior 'stress' na governança.</p>
+                      <p className="text-lg">Se a Assembleia rejeita as contas, pode haver a destituição de administradores e o início de auditorias especiais. É o momento de maior 'stress' na governança.</p>
                     </div>
                   </div>
                 ),
@@ -1167,7 +1167,7 @@ export default function AulaLei13303(props: AulaProps) {
                 conteudo: (
                   <div className="space-y-4">
                     <p>A Cesgranrio costuma cobrar os prazos de convocação da Lei das S.A. que se aplicam aqui:</p>
-                    <ul className="list-disc pl-5 text-sm space-y-1">
+                    <ul className="list-disc pl-5 text-lg space-y-1">
                       <li>1ª Convocação: 15 dias de antecedência (CVM requer 30 para abertas).</li>
                       <li>2ª Convocação: 8 dias de antecedência.</li>
                       <li>AGO: Obrigatória uma vez por ano.</li>
@@ -1204,21 +1204,21 @@ export default function AulaLei13303(props: AulaProps) {
             <div className="absolute right-0 top-0 opacity-10">
               <LuHistory size={120} />
             </div>
-            <p className="text-sm leading-relaxed mb-4">
+            <p className="text-lg leading-relaxed mb-4">
               Em 2018, a Petrobras enfrentou uma AGE histórica para votar o acordo com o DOJ (Departamento de Justiça Americano). Esse evento demonstrou na prática o poder da Assembleia em decidir sobre acordos bilionários que afetam o futuro da companhia por décadas.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-3 bg-white/5 rounded-lg border border-white/10">
                 <span className="text-[10px] uppercase font-bold text-amber-400">Ponto Chave</span>
-                <p className="text-xs mt-1">Soberania da Assembleia em transações críticas.</p>
+                <p className="text-lg mt-1">Soberania da Assembleia em transações críticas.</p>
               </div>
               <div className="p-3 bg-white/5 rounded-lg border border-white/10">
                 <span className="text-[10px] uppercase font-bold text-amber-400">Transparência</span>
-                <p className="text-xs mt-1">Divulgação massiva de informações prévias.</p>
+                <p className="text-lg mt-1">Divulgação massiva de informações prévias.</p>
               </div>
               <div className="p-3 bg-white/5 rounded-lg border border-white/10">
                 <span className="text-[10px] uppercase font-bold text-amber-400">Resultado</span>
-                <p className="text-xs mt-1">Aprovação por ampla maioria dos votos.</p>
+                <p className="text-lg mt-1">Aprovação por ampla maioria dos votos.</p>
               </div>
             </div>
           </div>
@@ -1252,7 +1252,7 @@ export default function AulaLei13303(props: AulaProps) {
             content: (
               <div className="space-y-2">
                 <p>O que a AGO faz obrigatoriamente?</p>
-                <div className="space-y-1 font-mono text-sm">
+                <div className="space-y-1 font-mono text-lg">
                   <p><strong>A</strong>provar contas</p>
                   <p><strong>G</strong>erenciar lucros (Destinação)</p>
                   <p><strong>O</strong>rdinar Admins (Eleger)</p>
@@ -1294,7 +1294,7 @@ export default function AulaLei13303(props: AulaProps) {
             variant="cyan"
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               O <strong>Conselho de Administração</strong> é a "ponte" entre acionistas (via Assembleia) e gerência (Diretoria). Eleito pela Assembleia, o Conselho tem
               competências de <strong>supervisão estratégica, aprovação de investimentos e monitoramento de riscos</strong>. Na Petrobras, o Conselho é obrigatório (Lei 13.303)
@@ -1321,8 +1321,8 @@ export default function AulaLei13303(props: AulaProps) {
             </p>
 
             <div className="bg-cyan-500/10 border-l-4 border-cyan-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-cyan-600 dark:text-cyan-400 text-sm mb-2">📊 Conselho de Administração (Lei 13.303)</p>
-              <ul className="text-sm space-y-1 text-foreground">
+              <p className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">📊 Conselho de Administração (Lei 13.303)</p>
+              <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Tamanho:</strong> 7-11 membros; Maioria independentes</li>
                 <li>✓ <strong>Representação:</strong> 1+ empregado; 1+ minoritário</li>
                 <li>✓ <strong>Mandato:</strong> Até 2 anos</li>
@@ -1398,7 +1398,7 @@ export default function AulaLei13303(props: AulaProps) {
                 conteudo: (
                   <div className="space-y-4">
                     <p>Quem NÃO pode ser conselheiro na Petrobras?</p>
-                    <ul className="list-disc pl-5 text-sm space-y-2">
+                    <ul className="list-disc pl-5 text-lg space-y-2">
                       <li>Ministros de Estado e Secretários.</li>
                       <li>Dirigentes de partidos políticos.</li>
                       <li>Pessoas com conflito de interesse no setor de petróleo.</li>
@@ -1413,7 +1413,7 @@ export default function AulaLei13303(props: AulaProps) {
                 conteudo: (
                   <div className="space-y-4">
                     <p>Existe uma 'quarentena' de 36 meses para dirigentes partidários e detentores de cargos públicos em comissão assumirem o conselho.</p>
-                    <p className="text-xs bg-muted p-2 rounded italic">"Este ponto é o mais atacado juridicamente e o que mais cai em provas da Cesgranrio."</p>
+                    <p className="text-lg bg-muted p-2 rounded italic">"Este ponto é o mais atacado juridicamente e o que mais cai em provas da Cesgranrio."</p>
                   </div>
                 ),
                 icone: <LuShield />,
@@ -1446,11 +1446,11 @@ export default function AulaLei13303(props: AulaProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-6 bg-rose-500/5 rounded-2xl border border-rose-500/20 space-y-4">
               <h4 className="font-bold flex items-center gap-2"><LuUsers /> Representatividade</h4>
-              <p className="text-sm text-muted-foreground">O Art. 19 garante que empregados e acionistas minoritários tenham voz e voto, quebrando o monopólio de decisão do controlador.</p>
+              <p className="text-lg text-muted-foreground">O Art. 19 garante que empregados e acionistas minoritários tenham voz e voto, quebrando o monopólio de decisão do controlador.</p>
             </div>
             <div className="p-6 bg-cyan-500/5 rounded-2xl border border-cyan-500/20 space-y-4">
               <h4 className="font-bold flex items-center gap-2"><LuLayoutGrid /> Diversidade de Expertise</h4>
-              <p className="text-sm text-muted-foreground">Membros devem ter competências complementares em finanças, engenharia de petróleo, direito e gestão de riscos.</p>
+              <p className="text-lg text-muted-foreground">Membros devem ter competências complementares em finanças, engenharia de petróleo, direito e gestão de riscos.</p>
             </div>
           </div>
         </div>
@@ -1481,7 +1481,7 @@ export default function AulaLei13303(props: AulaProps) {
           maceteVisual={{
             title: "Regra do 10-4-36",
             content: (
-              <div className="space-y-2 text-sm">
+              <div className="space-y-2 text-lg">
                 <p><strong>10</strong> anos de profissão ou</p>
                 <p><strong>4</strong> anos de chefia ou</p>
                 <p><strong>36</strong> meses de quarentena política.</p>
@@ -1521,7 +1521,7 @@ export default function AulaLei13303(props: AulaProps) {
             variant="indigo"
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               A <strong>Diretoria Executiva (ou Diretoria)</strong> é responsável pela <strong>gestão operacional</strong> da Petrobras. Indicada pelo Conselho de Administração,
               a Diretoria implementa as estratégias aprovadas pelo Conselho, toma decisões do dia a dia, e reporta-se ao Conselho regularmente. Na Petrobras, a Diretoria é colegiada
@@ -1548,8 +1548,8 @@ export default function AulaLei13303(props: AulaProps) {
             </p>
 
             <div className="bg-indigo-500/10 border-l-4 border-indigo-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-indigo-600 dark:text-indigo-400 text-sm mb-2">⚖️ Diretoria vs Conselho Fiscal</p>
-              <ul className="text-sm space-y-1 text-foreground">
+              <p className="font-bold text-indigo-600 dark:text-indigo-400 text-lg mb-2">⚖️ Diretoria vs Conselho Fiscal</p>
+              <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Diretoria:</strong> Executa, implementa estratégia, toma decisões operacionais</li>
                 <li>✓ <strong>Conselho Fiscal:</strong> Fiscaliza, examina contas, denúncia fraude, obrigatório em estatais</li>
                 <li>✓ <strong>Independência:</strong> Conselheiros fiscais não podem ter sido administradores há 3 anos</li>
@@ -1624,7 +1624,7 @@ export default function AulaLei13303(props: AulaProps) {
                 conteudo: (
                   <div className="space-y-4">
                     <p>Imagine que a Petrobras vai comprar uma nova frota de navios. O que o Conselho Fiscal faz?</p>
-                    <ol className="list-decimal pl-5 text-sm space-y-1">
+                    <ol className="list-decimal pl-5 text-lg space-y-1">
                       <li>Examina se há verba no orçamento aprovado.</li>
                       <li>Denuncia erros ou irregularidades à Assembleia.</li>
                       <li>Opina sobre os relatórios anuais de desempenho.</li>
@@ -1638,7 +1638,7 @@ export default function AulaLei13303(props: AulaProps) {
                 conteudo: (
                   <div className="space-y-4">
                     <p>O Conselho Fiscal deve ter de 3 a 5 membros efetivos e igual número de suplentes.</p>
-                    <p className="bg-rose-500/10 p-4 rounded text-xs font-bold">"IMPORTANTE: Um dos membros deve ser eleito pelos acionistas minoritários na SEM."</p>
+                    <p className="bg-rose-500/10 p-4 rounded text-lg font-bold">"IMPORTANTE: Um dos membros deve ser eleito pelos acionistas minoritários na SEM."</p>
                   </div>
                 ),
                 icone: <LuAward />,
@@ -1725,7 +1725,7 @@ export default function AulaLei13303(props: AulaProps) {
             variant="emerald"
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               <strong>Conflito de interesse</strong> é quando um administrador (conselheiro, diretor) tem interesse pessoal que entra em choque com o interesse da empresa.
               Exemplo: um Conselheiro que é sócio de uma fornecedora da Petrobras tem conflito ao votar sobre contratar essa fornecedora. Lei 13.303 proíbe essa situação porque
@@ -1752,8 +1752,8 @@ export default function AulaLei13303(props: AulaProps) {
             </p>
 
             <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-2">⚠️ Impedimentos Lei 13.303</p>
-              <ul className="text-sm space-y-1 text-foreground">
+              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">⚠️ Impedimentos Lei 13.303</p>
+              <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ Participar deliberação com interesse pessoal conflitante</li>
                 <li>✓ Usar informação privilegiada (insider trading)</li>
                 <li>✓ Aproveitar oportunidade de negócio do cargo</li>
@@ -1831,7 +1831,7 @@ export default function AulaLei13303(props: AulaProps) {
                   <div className="space-y-4">
                     <p>Cenário clássico: O conselho vai votar a contratação de uma empresa de logística cuja dona é esposa de um dos diretores.</p>
                     <div className="p-4 bg-muted border border-border rounded-lg">
-                      <p className="text-sm"><strong>O que deve ser feito?</strong> O diretor deve declarar seu conflito, retirar-se da sala e não participar nem influenciar a deliberação.</p>
+                      <p className="text-lg"><strong>O que deve ser feito?</strong> O diretor deve declarar seu conflito, retirar-se da sala e não participar nem influenciar a deliberação.</p>
                     </div>
                   </div>
                 ),
@@ -1842,7 +1842,7 @@ export default function AulaLei13303(props: AulaProps) {
                 conteudo: (
                   <div className="space-y-4">
                     <p>A declaração de impedimento deve constar obrigatoriamente na **Ata da Reunião**.</p>
-                    <ul className="list-disc pl-5 text-sm space-y-1">
+                    <ul className="list-disc pl-5 text-lg space-y-1">
                       <li>O administrador que não declarar o conflito pode ser responsabilizado por perdas e danos.</li>
                       <li>A CVM (Comissão de Valores Mobiliários) fiscaliza rigorosamente esse ponto em estatais abertas.</li>
                     </ul>
@@ -1934,7 +1934,7 @@ export default function AulaLei13303(props: AulaProps) {
             variant="violet"
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               A Petrobras é a <strong>maior empresa brasileira e uma das maiores do mundo</strong> em capitalização. Como Sociedade de Economia Mista federal, ela está 100% submetida
               à Lei 13.303. Seu <strong>Estatuto Social</strong> (documento máster de governança) incorpora todas as exigências da lei e as detalha em 10 artigos específicos. Entender
@@ -1961,8 +1961,8 @@ export default function AulaLei13303(props: AulaProps) {
             </p>
 
             <div className="bg-violet-500/10 border-l-4 border-violet-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-violet-600 dark:text-violet-400 text-sm mb-2">🏢 Petrobras: Modelo de Lei 13.303</p>
-              <ul className="text-sm space-y-1 text-foreground">
+              <p className="font-bold text-violet-600 dark:text-violet-400 text-lg mb-2">🏢 Petrobras: Modelo de Lei 13.303</p>
+              <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Assembleia Geral:</strong> Maio, aprova contas e elege Conselho</li>
                 <li>✓ <strong>Conselho Admin:</strong> 9 membros; presidente independente; representantes empregados/minoritários</li>
                 <li>✓ <strong>Diretoria:</strong> CEO + 5 diretores; reportam ao Conselho</li>
@@ -2038,7 +2038,7 @@ export default function AulaLei13303(props: AulaProps) {
                 conteudo: (
                   <div className="space-y-4">
                     <p>Para o Presidente da Petrobras assumir, ele passa por um 'Double Check':</p>
-                    <ol className="list-decimal pl-5 text-sm space-y-1">
+                    <ol className="list-decimal pl-5 text-lg space-y-1">
                       <li>Nomeação pelo Governo Federal.</li>
                       <li>Avaliação de conformidade pelo Comitê de Elegibilidade da Petrobras (Compliance).</li>
                       <li>Eleição formal pelo Conselho de Administração.</li>
@@ -2052,7 +2052,7 @@ export default function AulaLei13303(props: AulaProps) {
                 conteudo: (
                   <div className="space-y-4">
                     <p>A Petrobras cobra em seu concurso não apenas a letra da lei, mas como sua governança é premiada no mercado.</p>
-                    <p className="p-2 border border-border rounded text-xs">"Mencione sempre o Nível 2 de Governança Corporativa da B3 como diferencial da Petrobras."</p>
+                    <p className="p-2 border border-border rounded text-lg">"Mencione sempre o Nível 2 de Governança Corporativa da B3 como diferencial da Petrobras."</p>
                   </div>
                 ),
                 icone: <LuAward />,
@@ -2093,7 +2093,7 @@ export default function AulaLei13303(props: AulaProps) {
                   { label: "Treinamento Ético", icon: <LuBrain /> },
                   { label: "Monitoramento Contínuo", icon: <LuActivity /> }
                 ].map((tag, i) => (
-                  <div key={i} className="flex items-center gap-2 px-3 py-1.5 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-xs font-bold text-indigo-300">
+                  <div key={i} className="flex items-center gap-2 px-3 py-1.5 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-lg font-bold text-indigo-300">
                     {tag.icon} {tag.label}
                   </div>
                 ))}
@@ -2135,7 +2135,7 @@ export default function AulaLei13303(props: AulaProps) {
             title: "Petrobras = 303 x 404",
             content: (
               <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
-                <p className="text-sm">A Petrobras é a maior aplicação prática da **Lei 13.303** operando nos trilhos da **Lei 6.404**.</p>
+                <p className="text-lg">A Petrobras é a maior aplicação prática da **Lei 13.303** operando nos trilhos da **Lei 6.404**.</p>
               </div>
             )
           }}
@@ -2172,7 +2172,7 @@ export default function AulaLei13303(props: AulaProps) {
             variant="amber"
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               Você completou 9 módulos de Lei 13.303: conceitos fundamentais, empresa estatal, direitos de acionista, órgãos de governança, assembleia, conselho de administração,
               diretoria/fiscal, conflito de interesse, e aplicação na Petrobras. Agora é hora de <strong>consolidar tudo</strong> em um <strong>Simulado Mestre</strong> que reflete
@@ -2198,8 +2198,8 @@ export default function AulaLei13303(props: AulaProps) {
             </p>
 
             <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-amber-600 dark:text-amber-400 text-sm mb-2">👑 Simulado Mestre: 5-Step Strategy</p>
-              <ol className="text-sm space-y-1 text-foreground list-decimal list-inside">
+              <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">👑 Simulado Mestre: 5-Step Strategy</p>
+              <ol className="text-lg space-y-1 text-foreground list-decimal list-inside">
                 <li><strong>Leia 2x:</strong> Contexto na primeira; Pergunta na segunda</li>
                 <li><strong>Identifique módulo-núcleo:</strong> Qual conceito (M1-M9) é central?</li>
                 <li><strong>Resolva em lei:</strong> Procure em Lei 13.303 (não adivinhe)</li>
@@ -2213,7 +2213,7 @@ export default function AulaLei13303(props: AulaProps) {
         <QuizInterativo
           questoes={getQuiz("modulo-10")}
           titulo="QUIZ: Simulado Mestre"
-          numero={1}
+          numero={11}
           variant={getBannerVariant(10)}
           onComplete={(score) => handleModuleComplete("modulo-10", score)}
         />

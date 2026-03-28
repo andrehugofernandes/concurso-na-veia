@@ -185,7 +185,7 @@ export default function AulaPlanejamentoEstrategico({
                         <p className="font-bold text-blue-700 flex items-center gap-2">
                            <LuTarget className="w-5 h-5" /> Atributos do Planejamento Estratégico:
                         </p>
-                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-lg">
                           <li className="flex gap-2">
                             <span className="text-blue-500 font-bold">•</span>
                             <span><strong>Holicidade:</strong> Abrange a organização como um todo (visão sistêmica).</span>
@@ -223,7 +223,7 @@ export default function AulaPlanejamentoEstrategico({
                         </div>
                       </div>
 
-                      <table className="w-full text-xs border-collapse rounded-lg overflow-hidden border border-slate-200">
+                      <table className="w-full text-lg border-collapse rounded-lg overflow-hidden border border-slate-200">
                         <thead>
                           <tr className="bg-slate-100 dark:bg-slate-800">
                             <th className="p-3 text-left border-b border-slate-200">Nível</th>
@@ -261,27 +261,27 @@ export default function AulaPlanejamentoEstrategico({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-muted-foreground text-sm italic">
+                      <p className="text-muted-foreground text-lg italic">
                         Para a prova, você deve conhecer como a Petrobras aplica esses conceitos no seu <strong>Plano Estratégico (PE 2024-2028)</strong>:
                       </p>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="bg-slate-500/5 p-5 rounded-2xl border-l-8 border-blue-600 shadow-sm">
                           <div className="flex justify-between items-start mb-2">
-                             <p className="font-black text-blue-800 text-xs uppercase tracking-widest">Missão Petrobras</p>
+                             <p className="font-black text-blue-800 text-lg uppercase tracking-widest">Missão Petrobras</p>
                              <span className="px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full text-[9px] font-bold">PRESENTE</span>
                           </div>
-                          <p className="text-sm leading-relaxed">
+                          <p className="text-lg leading-relaxed">
                             "Prover energia que move a sociedade e contribui para o desenvolvimento do Brasil, de forma ética, segura e com foco na sustentabilidade."
                           </p>
                         </div>
 
                         <div className="bg-slate-500/5 p-5 rounded-2xl border-l-8 border-emerald-600 shadow-sm">
                           <div className="flex justify-between items-start mb-2">
-                             <p className="font-black text-emerald-800 text-xs uppercase tracking-widest">Visão Petrobras</p>
+                             <p className="font-black text-emerald-800 text-lg uppercase tracking-widest">Visão Petrobras</p>
                              <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full text-[9px] font-bold">FUTURO</span>
                           </div>
-                          <p className="text-sm leading-relaxed font-medium">
+                          <p className="text-lg leading-relaxed font-medium">
                             "Ser a melhor empresa de energia na geração de valor, liderando a transição energética justa no Brasil."
                           </p>
                         </div>
@@ -292,21 +292,21 @@ export default function AulaPlanejamentoEstrategico({
                         <div className="space-y-3">
                           <div className="flex items-center gap-4">
                             <div className="w-16 h-1 bg-blue-600 rounded-full"></div>
-                            <p className="text-xs"><strong>Estratégico:</strong> Plano 2024-2028 (Direção Geral: Exploração, Eólicas, Descarbonização).</p>
+                            <p className="text-lg"><strong>Estratégico:</strong> Plano 2024-2028 (Direção Geral: Exploração, Eólicas, Descarbonização).</p>
                           </div>
                           <div className="flex items-center gap-4">
                             <div className="w-12 h-1 bg-blue-400 rounded-full"></div>
-                            <p className="text-xs"><strong>Tático:</strong> Plano de Negócios da Gerência de Refino (Modernização de Abreu e Lima).</p>
+                            <p className="text-lg"><strong>Tático:</strong> Plano de Negócios da Gerência de Refino (Modernização de Abreu e Lima).</p>
                           </div>
                           <div className="flex items-center gap-4">
                             <div className="w-8 h-1 bg-blue-200 rounded-full"></div>
-                            <p className="text-xs"><strong>Operacional:</strong> Procedimento de segurança em plataforma (Troca de válvula no FPSO).</p>
+                            <p className="text-lg"><strong>Operacional:</strong> Procedimento de segurança em plataforma (Troca de válvula no FPSO).</p>
                           </div>
                         </div>
                       </div>
 
                       <AlertBox tipo="info" titulo="O 'Hóspede' na Estratégia">
-                        <p className="text-xs">
+                        <p className="text-lg">
                           O Governo Federal, como acionista majoritário, exerce influência no PE através do Conselho de Administração. Isso significa que o planejamento da Petrobras também deve estar alinhado com as políticas públicas de energia do país (PPA e PDE).
                         </p>
                       </AlertBox>
@@ -320,24 +320,24 @@ export default function AulaPlanejamentoEstrategico({
                     <div className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <AlertBox tipo="danger" titulo="PEGADINHA: EFICÁCIA vs EFICIÊNCIA">
-                          <p className="text-xs leading-relaxed">
+                          <p className="text-lg leading-relaxed">
                             A Cesgranrio vai dizer que o Planejamento Estratégico foca na <strong>Eficiência</strong>. <br/>
                             <strong>FALSO!</strong> O nível estratégico foca na <strong>EFICÁCIA</strong> (resultados globais). Eficiência é foco do nível OPERACIONAL (meios/recursos).
                           </p>
                         </AlertBox>
 
                         <div className="p-5 bg-amber-500/10 rounded-2xl border border-amber-500/20">
-                          <p className="font-bold text-amber-800 text-sm mb-3 flex items-center gap-2">
+                          <p className="font-bold text-amber-800 text-lg mb-3 flex items-center gap-2">
                             <LuTarget className="w-4 h-4" /> Palavras-Chave de Prova:
                           </p>
-                          <ul className="space-y-2 text-xs">
+                          <ul className="space-y-2 text-lg">
                             <li><strong>Estratégico:</strong> Global, Estabilidade, Mudança, Longo Prazo, Ambiguidade.</li>
                             <li><strong>Operacional:</strong> Pormenorizado, Curto Prazo, Rotina, Tarefa, Precisão.</li>
                           </ul>
                         </div>
                       </div>
 
-                      <div className="bg-slate-900 text-emerald-400 p-5 rounded-2xl font-mono text-xs border-l-4 border-emerald-500 shadow-xl">
+                      <div className="bg-slate-900 text-emerald-400 p-5 rounded-2xl font-mono text-lg border-l-4 border-emerald-500 shadow-xl">
                         <p className="text-emerald-500 font-black mb-2 uppercase">// MACETE ATÔMICO</p>
                         <p>MISSÃO = M de MÃE (Quem sou eu hoje, o que eu faço agora)</p>
                         <p>VISÃO = V de VIAGEM (Onde eu quero chegar no futuro)</p>
@@ -351,16 +351,16 @@ export default function AulaPlanejamentoEstrategico({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         Apesar da teoria clássica, a realidade impõe limites ao planejamento rígido. Conheça as exceções mais cobradas:
                       </p>
                       
                       <div className="space-y-4">
                         <div className="p-5 bg-rose-500/5 rounded-2xl border border-rose-500/20">
-                          <p className="font-bold text-rose-700 text-sm mb-2 flex items-center gap-2">
+                          <p className="font-bold text-rose-700 text-lg mb-2 flex items-center gap-2">
                             <LuRepeat className="w-4 h-4" /> Planejamento Adaptativo vs. Rígido
                           </p>
-                          <p className="text-xs">
+                          <p className="text-lg">
                             Em ambientes de <strong>extrema volatilidade</strong> (como o preço do petróleo), o planejamento não pode ser um dogma. Empresas modernas usam <strong>estratégias emergentes</strong> — aquelas que surgem da necessidade e da prática, independentemente do que foi escrito no plano original de janeiro.
                           </p>
                         </div>
@@ -416,8 +416,8 @@ export default function AulaPlanejamentoEstrategico({
               title: "PE = Missão + Visão + Valores + Estratégia",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">"Missão é o HOJE, Visão é o AMANHÃ, Valores são o SEMPRE."</p>
-                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg font-mono text-xs text-center">
+                  <p className="text-lg italic">"Missão é o HOJE, Visão é o AMANHÃ, Valores são o SEMPRE."</p>
+                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg font-mono text-lg text-center">
                     <p>Estratégico → Tático → Operacional</p>
                     <p className="text-muted-foreground">Longo prazo → Médio → Curto</p>
                   </div>
@@ -452,28 +452,28 @@ export default function AulaPlanejamentoEstrategico({
                         <p className="font-bold text-emerald-700 mb-4 flex items-center gap-2">
                            <LuTarget className="w-5 h-5" /> Dinâmica da Matriz:
                         </p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg">
                           <div className="bg-white/40 dark:bg-black/20 p-4 rounded-xl border border-green-200">
                             <p className="font-bold text-green-700 flex items-center gap-1">💪 S - Strengths (Forças)</p>
-                            <p className="text-xs mt-1 text-muted-foreground">Fatores <strong>internos</strong> positivos que a empresa controla. Vantagens competitivas.</p>
+                            <p className="text-lg mt-1 text-muted-foreground">Fatores <strong>internos</strong> positivos que a empresa controla. Vantagens competitivas.</p>
                           </div>
                           <div className="bg-white/40 dark:bg-black/20 p-4 rounded-xl border border-red-200">
                             <p className="font-bold text-red-700 flex items-center gap-1">⚠️ W - Weaknesses (Fraquezas)</p>
-                            <p className="text-xs mt-1 text-muted-foreground">Fatores <strong>internos</strong> negativos. Gaps de competência ou recursos.</p>
+                            <p className="text-lg mt-1 text-muted-foreground">Fatores <strong>internos</strong> negativos. Gaps de competência ou recursos.</p>
                           </div>
                           <div className="bg-white/40 dark:bg-black/20 p-4 rounded-xl border border-blue-200">
                             <p className="font-bold text-blue-700 flex items-center gap-1">🌟 O - Opportunities (Oportunidades)</p>
-                            <p className="text-xs mt-1 text-muted-foreground">Fatores <strong>externos</strong> positivos. Janelas de mercado não controláveis.</p>
+                            <p className="text-lg mt-1 text-muted-foreground">Fatores <strong>externos</strong> positivos. Janelas de mercado não controláveis.</p>
                           </div>
                           <div className="bg-white/40 dark:bg-black/20 p-4 rounded-xl border border-orange-200">
                             <p className="font-bold text-orange-700 flex items-center gap-1">🔥 T - Threats (Ameaças)</p>
-                            <p className="text-xs mt-1 text-muted-foreground">Fatores <strong>externos</strong> negativos. Pressões ou riscos fora do controle.</p>
+                            <p className="text-lg mt-1 text-muted-foreground">Fatores <strong>externos</strong> negativos. Pressões ou riscos fora do controle.</p>
                           </div>
                         </div>
                       </div>
 
                       <AlertBox tipo="info" titulo="O Conceito de Controlabilidade">
-                         <p className="text-sm leading-relaxed">
+                         <p className="text-lg leading-relaxed">
                            Identifique o ambiente pela <strong>capacidade de controle</strong>: 
                            Se a gestão pode mudar diretamente (ex: contratar, treinar, investir), é <strong>Mundo Interno</strong>. 
                            Se a gestão apenas reage (ex: câmbio, leis, clima, concorrência), é <strong>Mundo Externo</strong>.
@@ -487,26 +487,26 @@ export default function AulaPlanejamentoEstrategico({
                   icone: <LuBookOpen />, 
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         Ao analisar a Petrobras, os estrategistas separam ativos e competências (interno) de variáveis macroeconômicas (externo).
                       </p>
                       <div className="space-y-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
                             <p className="font-black text-green-700 text-[10px] uppercase">Força: Tecnologia de Águas Ultraprofundas</p>
-                            <p className="text-xs italic mt-1 text-muted-foreground">"Liderança mundial na exploração do Pré-sal e premiações da OTC."</p>
+                            <p className="text-lg italic mt-1 text-muted-foreground">"Liderança mundial na exploração do Pré-sal e premiações da OTC."</p>
                           </div>
                           <div className="p-4 bg-orange-500/5 rounded-xl border border-orange-500/20">
                             <p className="font-black text-orange-700 text-[10px] uppercase">Ameaça: Transição Global para Renováveis</p>
-                            <p className="text-xs italic mt-1 text-muted-foreground">"Pressão de fundos de investimento para descarbonização rápida."</p>
+                            <p className="text-lg italic mt-1 text-muted-foreground">"Pressão de fundos de investimento para descarbonização rápida."</p>
                           </div>
                           <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
                             <p className="font-black text-blue-700 text-[10px] uppercase">Oportunidade: Margem Equatorial</p>
-                            <p className="text-xs italic mt-1 text-muted-foreground">"Novas fronteiras geológicas que podem repor reservas estratégicas."</p>
+                            <p className="text-lg italic mt-1 text-muted-foreground">"Novas fronteiras geológicas que podem repor reservas estratégicas."</p>
                           </div>
                           <div className="p-4 bg-red-500/5 rounded-xl border border-red-500/20">
                             <p className="font-black text-red-700 text-[10px] uppercase">Fraqueza: Dependência de Fornecedores Únicos</p>
-                            <p className="text-xs italic mt-1 text-muted-foreground">"Vulnerabilidade na cadeia de suprimentos de sondas especiais."</p>
+                            <p className="text-lg italic mt-1 text-muted-foreground">"Vulnerabilidade na cadeia de suprimentos de sondas especiais."</p>
                           </div>
                         </div>
                       </div>
@@ -518,34 +518,34 @@ export default function AulaPlanejamentoEstrategico({
                   icone: <LuLightbulb />, 
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-muted-foreground text-sm">A prova não quer apenas que você liste, mas que você <strong>cruze</strong> os fatores:</p>
+                      <p className="text-muted-foreground text-lg">A prova não quer apenas que você liste, mas que você <strong>cruze</strong> os fatores:</p>
                       <div className="space-y-3">
                         <div className="flex gap-4 p-4 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 items-center transition-all hover:scale-[1.02]">
                           <div className="w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center font-black">SO</div>
                           <div className="flex-1">
-                             <p className="font-bold text-sm">Desenvolvimento/Ofensiva</p>
-                             <p className="text-xs opacity-70">Use sua Força para agarrar a Oportunidade.</p>
+                             <p className="font-bold text-lg">Desenvolvimento/Ofensiva</p>
+                             <p className="text-lg opacity-70">Use sua Força para agarrar a Oportunidade.</p>
                           </div>
                         </div>
                         <div className="flex gap-4 p-4 bg-blue-500/10 rounded-2xl border border-blue-500/20 items-center transition-all hover:scale-[1.02]">
                           <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-black">WO</div>
                           <div className="flex-1">
-                             <p className="font-bold text-sm">Crescimento/Melhoria</p>
-                             <p className="text-xs opacity-70">Reduza Fraquezas para conseguir aproveitar Oportunidades.</p>
+                             <p className="font-bold text-lg">Crescimento/Melhoria</p>
+                             <p className="text-lg opacity-70">Reduza Fraquezas para conseguir aproveitar Oportunidades.</p>
                           </div>
                         </div>
                         <div className="flex gap-4 p-4 bg-amber-500/10 rounded-2xl border border-amber-500/20 items-center transition-all hover:scale-[1.02]">
                           <div className="w-10 h-10 bg-amber-600 text-white rounded-full flex items-center justify-center font-black">ST</div>
                           <div className="flex-1">
-                             <p className="font-bold text-sm">Manutenção/Confronto</p>
-                             <p className="text-xs opacity-70">Use sua Força para mitigar ou enfrentar Ameaças.</p>
+                             <p className="font-bold text-lg">Manutenção/Confronto</p>
+                             <p className="text-lg opacity-70">Use sua Força para mitigar ou enfrentar Ameaças.</p>
                           </div>
                         </div>
                         <div className="flex gap-4 p-4 bg-rose-500/10 rounded-2xl border border-rose-500/20 items-center transition-all hover:scale-[1.02]">
                           <div className="w-10 h-10 bg-rose-600 text-white rounded-full flex items-center justify-center font-black">WT</div>
                           <div className="flex-1">
-                             <p className="font-bold text-sm">Sobrevivência/Defensiva</p>
-                             <p className="text-xs opacity-70">Minimize Fraquezas e tente escapar de Ameaças (Pior cenário).</p>
+                             <p className="font-bold text-lg">Sobrevivência/Defensiva</p>
+                             <p className="text-lg opacity-70">Minimize Fraquezas e tente escapar de Ameaças (Pior cenário).</p>
                           </div>
                         </div>
                       </div>
@@ -556,14 +556,14 @@ export default function AulaPlanejamentoEstrategico({
                   titulo: "Exceções - Quando a SWOT Falha", 
                   icone: <LuTrophy />, 
                   conteudo: (
-                    <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+                    <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
                       <p>
                         A SWOT é frequentemente criticada por ser subjetiva demais. O que um gestor vê como "Força", outro pode ver como "Fraqueza" (ex: "Cultura Conservadora").
                       </p>
                       <div className="bg-orange-500/10 p-4 rounded-xl border-l-4 border-orange-500">
                         <p className="font-bold text-orange-800 mb-1">Cuidado com Listas Infinitas!</p>
-                        <p className="text-xs underline">Swot é sobre priorização.</p>
-                        <p className="text-xs">Uma matriz com 50 itens em cada quadrante perde o foco estratégico e paralisa a decisão.</p>
+                        <p className="text-lg underline">Swot é sobre priorização.</p>
+                        <p className="text-lg">Uma matriz com 50 itens em cada quadrante perde o foco estratégico e paralisa a decisão.</p>
                       </div>
                     </div>
                   ) 
@@ -582,7 +582,7 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={2} variant={mv[2]} video={{ videoId: "iV7hKYv0fDc", title: "SWOT Completo", duration: "15:00" }} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "Quadrantes SWOT", type: "Conceito", placeholderColor: "bg-emerald-500/20" }, { title: "Interno vs Externo", type: "Classificação", placeholderColor: "bg-teal-500/20" }, { title: "Cruzamento TOWS", type: "Estratégia", placeholderColor: "bg-green-500/20" }] }} maceteVisual={{ title: "SWOT: S e W = INTERNO, O e T = EXTERNO", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Força e Fraqueza você controla. Oportunidade e Ameaça você enfrenta."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "SWOT Descomplicado", artista: "Prof. Administração" }} />
+<ModuleConsolidation index={2} variant={mv[2]} video={{ videoId: "iV7hKYv0fDc", title: "SWOT Completo", duration: "15:00" }} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "Quadrantes SWOT", type: "Conceito", placeholderColor: "bg-emerald-500/20" }, { title: "Interno vs Externo", type: "Classificação", placeholderColor: "bg-teal-500/20" }, { title: "Cruzamento TOWS", type: "Estratégia", placeholderColor: "bg-green-500/20" }] }} maceteVisual={{ title: "SWOT: S e W = INTERNO, O e T = EXTERNO", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Força e Fraqueza você controla. Oportunidade e Ameaça você enfrenta."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "SWOT Descomplicado", artista: "Prof. Administração" }} />
 
                       <QuizInterativo questoes={quizM2} titulo="QUIZ: Análise SWOT" numero={3} variant={mv[2]} icone="🎯" onComplete={(score) => handleModuleComplete("modulo-2", score)} />
           </section>
@@ -608,19 +608,19 @@ export default function AulaPlanejamentoEstrategico({
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-amber-500/10 rounded-2xl border border-amber-500/20 shadow-sm">
                         <p className="font-bold text-amber-800 border-b border-amber-500/30 pb-2 mb-3">📈 Perspectiva Financeira</p>
-                        <p className="text-xs leading-relaxed">Foca no valor gerado para os acionistas. Exemplos: ROE (Retorno sobre Patrimônio), Fluxo de Caixa Livre e Redução de Custos Operacionais.</p>
+                        <p className="text-lg leading-relaxed">Foca no valor gerado para os acionistas. Exemplos: ROE (Retorno sobre Patrimônio), Fluxo de Caixa Livre e Redução de Custos Operacionais.</p>
                       </div>
                       <div className="p-4 bg-amber-500/10 rounded-2xl border border-amber-500/20 shadow-sm">
                         <p className="font-bold text-amber-800 border-b border-amber-500/30 pb-2 mb-3">👥 Perspectiva de Clientes</p>
-                        <p className="text-xs leading-relaxed">Foca na proposta de valor e participação de mercado. Exemplos: NPS (Satisfação), Taxa de Retenção e Market Share no mercado de GN.</p>
+                        <p className="text-lg leading-relaxed">Foca na proposta de valor e participação de mercado. Exemplos: NPS (Satisfação), Taxa de Retenção e Market Share no mercado de GN.</p>
                       </div>
                       <div className="p-4 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 shadow-sm">
                         <p className="font-bold text-emerald-800 border-b border-emerald-500/30 pb-2 mb-3">⚙️ Processos Internos</p>
-                        <p className="text-xs leading-relaxed">Foca na excelência operacional e inovação. Exemplos: Tempo de ciclo de perfuração, Custo de Extração (Lifting Cost) e HSE.</p>
+                        <p className="text-lg leading-relaxed">Foca na excelência operacional e inovação. Exemplos: Tempo de ciclo de perfuração, Custo de Extração (Lifting Cost) e HSE.</p>
                       </div>
                       <div className="p-4 bg-blue-500/10 rounded-2xl border border-blue-500/20 shadow-sm">
                         <p className="font-bold text-blue-800 border-b border-blue-500/30 pb-2 mb-3">🌱 Aprendizado e Crescimento</p>
-                        <p className="text-xs leading-relaxed">Foca nas pessoas, cultura e sistemas. Exemplos: Horas de treinamento, Disponibilidade de TI e Clima Organizacional.</p>
+                        <p className="text-lg leading-relaxed">Foca nas pessoas, cultura e sistemas. Exemplos: Horas de treinamento, Disponibilidade de TI e Clima Organizacional.</p>
                       </div>
                     </div>
                   </div>
@@ -631,7 +631,7 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuBookOpen />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-lg">
                       O <strong>Mapa Estratégico</strong> é a representação visual da estratégia. Na Petrobras, os objetivos são interconectados por relações de causa e efeito:
                     </p>
                     <div className="relative p-6 bg-slate-100 dark:bg-slate-900 rounded-3xl border-2 border-dashed border-slate-300 dark:border-slate-700">
@@ -645,7 +645,7 @@ export default function AulaPlanejamentoEstrategico({
                         <div className="bg-slate-700 text-white p-2 rounded-lg text-[10px] w-full text-center font-bold">CULTURA DE ALTA PERFORMANCE E CAPACITAÇÃO</div>
                       </div>
                     </div>
-                    <p className="text-xs text-center text-muted-foreground italic">Representação simplificada de fluxos do BSC.</p>
+                    <p className="text-lg text-center text-muted-foreground italic">Representação simplificada de fluxos do BSC.</p>
                   </div>
                 ) 
               },
@@ -655,7 +655,7 @@ export default function AulaPlanejamentoEstrategico({
                 conteudo: (
                   <div className="space-y-5">
                     <AlertBox tipo="warning" titulo="DIFERENCIE INDICADOR DE INICIATIVA">
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Muitas questões confundem <strong>Indicadores</strong> (como medimos?) com <strong>Iniciativas</strong> (o que faremos?).
                       </p>
                       <div className="grid grid-cols-2 gap-2 mt-3">
@@ -669,8 +669,8 @@ export default function AulaPlanejamentoEstrategico({
                     </AlertBox>
 
                     <div className="bg-blue-500/5 p-4 rounded-xl border-l-4 border-blue-500">
-                       <p className="font-bold text-sm text-blue-900 mb-1">Mnemônico das Perspectivas:</p>
-                       <p className="text-xs"><strong>F</strong>inanças <strong>C</strong>om <strong>P</strong>rocessos <strong>A</strong>prendidos (F - C - P - A)</p>
+                       <p className="font-bold text-lg text-blue-900 mb-1">Mnemônico das Perspectivas:</p>
+                       <p className="text-lg"><strong>F</strong>inanças <strong>C</strong>om <strong>P</strong>rocessos <strong>A</strong>prendidos (F - C - P - A)</p>
                     </div>
                   </div>
                 ) 
@@ -680,12 +680,12 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuTrophy />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-lg leading-relaxed">
                       Lembre-se: em organizações sem fins lucrativos ou setor público, a hierarquia muda.
                     </p>
                     <div className="bg-orange-500/5 p-4 rounded-xl border border-orange-500/20">
-                       <p className="font-bold text-orange-800 text-xs mb-2">Inversão de Topo:</p>
-                       <p className="text-xs">
+                       <p className="font-bold text-orange-800 text-lg mb-2">Inversão de Topo:</p>
+                       <p className="text-lg">
                          Enquanto empresas privadas buscam o lucro (Financeira no topo), as públicas buscam o <strong>Impacto Social / Atendimento ao Cidadão</strong>. Portanto, a perspectiva "Clientes/Sociedade" sobe para o topo do mapa, e a financeira passa a ser uma <strong>restrição orçamentária</strong> (meio, e não fim).
                        </p>
                     </div>
@@ -706,7 +706,7 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={2} variant={mv[3]} video={{ videoId: "iV7hKYv0fDc", title: "BSC Explicado", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "4 Perspectivas BSC", type: "Conceito", placeholderColor: "bg-amber-500/20" }, { title: "Mapa Estratégico", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Causa e Efeito", type: "Relação", placeholderColor: "bg-yellow-500/20" }] }} maceteVisual={{ title: "BSC: F-C-P-A (Finanças Com Processos Aprendidos)", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Kaplan e Norton criaram em 1992. 4 perspectivas. Mapa estratégico."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "BSC na Prática", artista: "Prof. Administração" }} />
+<ModuleConsolidation index={2} variant={mv[3]} video={{ videoId: "iV7hKYv0fDc", title: "BSC Explicado", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "4 Perspectivas BSC", type: "Conceito", placeholderColor: "bg-amber-500/20" }, { title: "Mapa Estratégico", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Causa e Efeito", type: "Relação", placeholderColor: "bg-yellow-500/20" }] }} maceteVisual={{ title: "BSC: F-C-P-A (Finanças Com Processos Aprendidos)", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Kaplan e Norton criaram em 1992. 4 perspectivas. Mapa estratégico."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "BSC na Prática", artista: "Prof. Administração" }} />
 
                       <QuizInterativo questoes={quizM3} titulo="QUIZ: Balanced Scorecard (BSC)" numero={3} variant={mv[3]} icone="📊" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
           </section>
@@ -730,24 +730,24 @@ export default function AulaPlanejamentoEstrategico({
                     </p>
                     <div className="space-y-3">
                       <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-200">
-                         <p className="text-sm font-bold text-rose-800 tracking-tight">1. Rivalidade entre Concorrentes</p>
-                         <p className="text-xs text-muted-foreground">A intensidade da disputa por market share.</p>
+                         <p className="text-lg font-bold text-rose-800 tracking-tight">1. Rivalidade entre Concorrentes</p>
+                         <p className="text-lg text-muted-foreground">A intensidade da disputa por market share.</p>
                       </div>
                       <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-200">
-                         <p className="text-sm font-bold text-rose-800 tracking-tight">2. Poder de Negociação dos Fornecedores</p>
-                         <p className="text-xs text-muted-foreground">Quando poucos fornecedores dominam insumos críticos.</p>
+                         <p className="text-lg font-bold text-rose-800 tracking-tight">2. Poder de Negociação dos Fornecedores</p>
+                         <p className="text-lg text-muted-foreground">Quando poucos fornecedores dominam insumos críticos.</p>
                       </div>
                       <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-200">
-                         <p className="text-sm font-bold text-rose-800 tracking-tight">3. Poder de Negociação dos Clientes</p>
-                         <p className="text-xs text-muted-foreground">Capacidade do comprador de forçar preços para baixo.</p>
+                         <p className="text-lg font-bold text-rose-800 tracking-tight">3. Poder de Negociação dos Clientes</p>
+                         <p className="text-lg text-muted-foreground">Capacidade do comprador de forçar preços para baixo.</p>
                       </div>
                       <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-200">
-                         <p className="text-sm font-bold text-rose-800 tracking-tight">4. Ameaça de Novos Entrantes</p>
-                         <p className="text-xs text-muted-foreground">Barreiras de entrada como escala e regulação.</p>
+                         <p className="text-lg font-bold text-rose-800 tracking-tight">4. Ameaça de Novos Entrantes</p>
+                         <p className="text-lg text-muted-foreground">Barreiras de entrada como escala e regulação.</p>
                       </div>
                       <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-200">
-                         <p className="text-sm font-bold text-rose-800 tracking-tight">5. Ameaça de Produtos Substitutos</p>
-                         <p className="text-xs text-muted-foreground">Novas tecnologias que tornam seu produto obsoleto.</p>
+                         <p className="text-lg font-bold text-rose-800 tracking-tight">5. Ameaça de Produtos Substitutos</p>
+                         <p className="text-lg text-muted-foreground">Novas tecnologias que tornam seu produto obsoleto.</p>
                       </div>
                     </div>
                   </div>
@@ -758,11 +758,11 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuBookOpen />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-lg">
                       Na Petrobras, a <strong>Barreira de Entrada</strong> é gigantesca devido ao capital necessário para operar em águas ultraprofundas (Força 4). Entretanto, a <strong>Ameaça de Substitutos</strong> (Força 5) vem crescendo com o barateamento da energia solar e veículos elétricos.
                     </p>
                     <AlertBox tipo="info" titulo="Estratégias Genéricas de Porter:">
-                       <ul className="text-xs space-y-2 list-disc list-inside">
+                       <ul className="text-lg space-y-2 list-disc list-inside">
                          <li><strong>Liderança em Custo:</strong> Ser o produtor mais eficiente (ex: Petróleo com baixo custo de extração).</li>
                          <li><strong>Diferenciação:</strong> Ter um produto único (ex: Combustíveis premium com aditivos exclusivos).</li>
                          <li><strong>Enfoque (Nicho):</strong> Focar em um segmento geográfico ou de produto específico.</li>
@@ -776,7 +776,7 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuLightbulb />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-sm">A Matriz de Ansoff foca no <strong>Crescimento</strong>:</p>
+                    <p className="text-lg">A Matriz de Ansoff foca no <strong>Crescimento</strong>:</p>
                     <table className="w-full text-[10px] border-collapse">
                       <thead>
                         <tr className="bg-rose-500/20">
@@ -807,7 +807,7 @@ export default function AulaPlanejamentoEstrategico({
                 conteudo: (
                   <div className="space-y-4">
                     <AlertBox tipo="danger" titulo="MEIO-TERMO (STUCK IN THE MIDDLE)">
-                       <p className="text-sm leading-relaxed">
+                       <p className="text-lg leading-relaxed">
                          Segundo Porter, o maior perigo é não escolher. Uma empresa que tenta ter custo baixo E ser diferenciada ao mesmo tempo pode acabar <strong>presa no meio</strong>, sem as vantagens de nenhum dos dois lados.
                        </p>
                     </AlertBox>
@@ -828,7 +828,7 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={2} variant={mv[4]} video={{ videoId: "iV7hKYv0fDc", title: "Estratégias de Porter", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "5 Forças de Porter", type: "Relação", placeholderColor: "bg-rose-500/20" }, { title: "Estratégias Genéricas", type: "Opções", placeholderColor: "bg-pink-500/20" }, { title: "Matriz Ansoff", type: "Crescimento", placeholderColor: "bg-red-500/20" }] }} maceteVisual={{ title: "PORTER: Custo, Diferenciação ou Foco", content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Ou você é barato, ou é especial, ou foca em um bando."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Estratégias Competitivas", artista: "Prof. Administração" }} />
+<ModuleConsolidation index={2} variant={mv[4]} video={{ videoId: "iV7hKYv0fDc", title: "Estratégias de Porter", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "5 Forças de Porter", type: "Relação", placeholderColor: "bg-rose-500/20" }, { title: "Estratégias Genéricas", type: "Opções", placeholderColor: "bg-pink-500/20" }, { title: "Matriz Ansoff", type: "Crescimento", placeholderColor: "bg-red-500/20" }] }} maceteVisual={{ title: "PORTER: Custo, Diferenciação ou Foco", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Ou você é barato, ou é especial, ou foca em um bando."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Estratégias Competitivas", artista: "Prof. Administração" }} />
 
                       <QuizInterativo questoes={quizM4} titulo="QUIZ: Formulação Estratégica" numero={3} variant={mv[4]} icone="⚔️" onComplete={(score) => handleModuleComplete("modulo-4", score)} />
           </section>
@@ -874,14 +874,14 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuSigma />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-sm">Um plano de ação só serve se responder a 7 perguntas cruciais:</p>
+                    <p className="text-lg">Um plano de ação só serve se responder a 7 perguntas cruciais:</p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                        {['What (O quê)', 'Why (Por quê)', 'Who (Quem)', 'Where (Onde)', 'When (Quando)', 'How (Como)', 'How Much (Quanto custa)'].map(q => (
                          <div key={q} className="p-2 bg-white/50 dark:bg-black/20 border rounded-lg text-center font-bold text-[10px]">{q}</div>
                        ))}
                     </div>
                     <AlertBox tipo="warning" titulo="PEGADINHA COMUM">
-                       <p className="text-xs italic">"Who" (Quem) deve ser sempre UMA pessoa ou área específica (Accountability), nunca um grupo vago como 'todos os colaboradores'.</p>
+                       <p className="text-lg italic">"Who" (Quem) deve ser sempre UMA pessoa ou área específica (Accountability), nunca um grupo vago como 'todos os colaboradores'.</p>
                     </AlertBox>
                   </div>
                 ) 
@@ -891,33 +891,33 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuBookOpen />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-sm">Em projetos complexos como a exploração de um novo poço na <strong>Margem Equatorial</strong>, as responsabilidades precisam ser cristalinas:</p>
+                    <p className="text-muted-foreground text-lg">Em projetos complexos como a exploração de um novo poço na <strong>Margem Equatorial</strong>, as responsabilidades precisam ser cristalinas:</p>
                     <div className="space-y-3">
                       <div className="flex items-start gap-3 p-3 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <div className="bg-blue-600 text-white w-6 h-6 rounded flex-shrink-0 flex items-center justify-center font-bold text-xs text-nowrap">R</div>
+                        <div className="bg-blue-600 text-white w-6 h-6 rounded flex-shrink-0 flex items-center justify-center font-bold text-lg text-nowrap">R</div>
                         <div>
-                          <p className="font-bold text-xs">Responsible (Responsável)</p>
+                          <p className="font-bold text-lg">Responsible (Responsável)</p>
                           <p className="text-[10px] opacity-70">Quem põe a mão na massa (Engenheiros de perfuração).</p>
                         </div>
                       </div>
                       <div className="flex items-start gap-3 p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <div className="bg-emerald-600 text-white w-6 h-6 rounded flex-shrink-0 flex items-center justify-center font-bold text-xs text-nowrap">A</div>
+                        <div className="bg-emerald-600 text-white w-6 h-6 rounded flex-shrink-0 flex items-center justify-center font-bold text-lg text-nowrap">A</div>
                         <div>
-                          <p className="font-bold text-xs">Accountable (Autoridade/Dono)</p>
+                          <p className="font-bold text-lg">Accountable (Autoridade/Dono)</p>
                           <p className="text-[10px] opacity-70">Quem responde pelo sucesso/fracasso (Gerente Executivo). <strong>Apenas UM A por tarefa!</strong></p>
                         </div>
                       </div>
                       <div className="flex items-start gap-3 p-3 bg-amber-500/5 rounded-xl border border-amber-500/20">
-                        <div className="bg-amber-600 text-white w-6 h-6 rounded flex-shrink-0 flex items-center justify-center font-bold text-xs text-nowrap">C</div>
+                        <div className="bg-amber-600 text-white w-6 h-6 rounded flex-shrink-0 flex items-center justify-center font-bold text-lg text-nowrap">C</div>
                         <div>
-                          <p className="font-bold text-xs">Consulted (Consultado)</p>
+                          <p className="font-bold text-lg">Consulted (Consultado)</p>
                           <p className="text-[10px] opacity-70">Especialistas que dão opinião (Geólogos, Ambientalistas).</p>
                         </div>
                       </div>
                       <div className="flex items-start gap-3 p-3 bg-violet-500/5 rounded-xl border border-violet-500/20">
-                        <div className="bg-violet-600 text-white w-6 h-6 rounded flex-shrink-0 flex items-center justify-center font-bold text-xs text-nowrap">I</div>
+                        <div className="bg-violet-600 text-white w-6 h-6 rounded flex-shrink-0 flex items-center justify-center font-bold text-lg text-nowrap">I</div>
                         <div>
-                          <p className="font-bold text-xs">Informed (Informado)</p>
+                          <p className="font-bold text-lg">Informed (Informado)</p>
                           <p className="text-[10px] opacity-70">Quem precisa saber do status (Diretoria, Acionistas).</p>
                         </div>
                       </div>
@@ -930,12 +930,12 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuZap />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-sm">Fique atento aos 4 tipos de barreiras que a Cesgranrio ama:</p>
+                    <p className="text-lg">Fique atento aos 4 tipos de barreiras que a Cesgranrio ama:</p>
                     <ul className="space-y-2">
-                       <li className="text-xs">🚫 <strong>Barreira da Visão:</strong> Apenas 5% dos funcionários entendem a estratégia.</li>
-                       <li className="text-xs">🚫 <strong>Barreira da Gestão:</strong> Gerentes gastam pouco tempo discutindo o futuro.</li>
-                       <li className="text-xs">🚫 <strong>Barreira dos Recursos:</strong> O orçamento não segue a estratégia (desconexão financeira).</li>
-                       <li className="text-xs">🚫 <strong>Barreira das Pessoas:</strong> Incentivos e remuneração não estão ligados às metas.</li>
+                       <li className="text-lg">🚫 <strong>Barreira da Visão:</strong> Apenas 5% dos funcionários entendem a estratégia.</li>
+                       <li className="text-lg">🚫 <strong>Barreira da Gestão:</strong> Gerentes gastam pouco tempo discutindo o futuro.</li>
+                       <li className="text-lg">🚫 <strong>Barreira dos Recursos:</strong> O orçamento não segue a estratégia (desconexão financeira).</li>
+                       <li className="text-lg">🚫 <strong>Barreira das Pessoas:</strong> Incentivos e remuneração não estão ligados às metas.</li>
                     </ul>
                   </div>
                 ) 
@@ -974,7 +974,7 @@ export default function AulaPlanejamentoEstrategico({
             }} 
             maceteVisual={{ 
               title: "RACI: Quem Faz, Quem Manda, Quem Ajuda, Quem Sabe", 
-              content: (<div className="space-y-3 text-left"><p className="text-sm italic">"R - Põe a mão. A - Responde (O Dono). C - Dá pitaco. I - Fica sabendo."</p></div>) 
+              content: (<div className="space-y-3 text-left"><p className="text-lg italic">"R - Põe a mão. A - Responde (O Dono). C - Dá pitaco. I - Fica sabendo."</p></div>) 
             }} 
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Táticas de Implementação", artista: "Prof. Administração" }} 
           />
@@ -1005,7 +1005,7 @@ export default function AulaPlanejamentoEstrategico({
                       <p className="font-bold text-amber-700 mb-3 flex items-center gap-2">
                          <LuTarget className="w-5 h-5" /> Os 3 Níveis de Controle:
                       </p>
-                      <ul className="space-y-2 text-xs">
+                      <ul className="space-y-2 text-lg">
                         <li>🎯 <strong>Estratégico:</strong> Focado no longo prazo e na organização como um todo (BSC).</li>
                         <li>📊 <strong>Tático:</strong> Focado em unidades de negócio ou departamentos (Metas Trimestrais).</li>
                         <li>⚙️ <strong>Operacional:</strong> Focado em tarefas e processos diários (Checklists, Horas-máquina).</li>
@@ -1019,21 +1019,21 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuSigma />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-sm">Nas provas da Cesgranrio, saber a diferença entre indicadores de <strong>Resultado</strong> e de <strong>Risco</strong> é vital:</p>
+                    <p className="text-lg">Nas provas da Cesgranrio, saber a diferença entre indicadores de <strong>Resultado</strong> e de <strong>Risco</strong> é vital:</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-200">
-                        <p className="font-bold text-emerald-800 text-sm mb-1">KPI (Key Performance Indicator)</p>
-                        <p className="text-xs opacity-70 italic">"O quão rápido estamos indo?"</p>
+                        <p className="font-bold text-emerald-800 text-lg mb-1">KPI (Key Performance Indicator)</p>
+                        <p className="text-lg opacity-70 italic">"O quão rápido estamos indo?"</p>
                         <p className="text-[10px] mt-2">Ex: Volume de extração de barris/dia.</p>
                       </div>
                       <div className="p-4 bg-rose-500/10 rounded-xl border border-rose-200">
-                        <p className="font-bold text-rose-800 text-sm mb-1">KRI (Key Risk Indicator)</p>
-                        <p className="text-xs opacity-70 italic">"O quão perigoso está o caminho?"</p>
+                        <p className="font-bold text-rose-800 text-lg mb-1">KRI (Key Risk Indicator)</p>
+                        <p className="text-lg opacity-70 italic">"O quão perigoso está o caminho?"</p>
                         <p className="text-[10px] mt-2">Ex: Pressão instável em tubulações submarinas.</p>
                       </div>
                     </div>
                     <AlertBox tipo="info" titulo="O SISTEMA DE SEMÁFOROS">
-                       <p className="text-xs leading-relaxed">
+                       <p className="text-lg leading-relaxed">
                          🟢 <strong>Verde:</strong> Meta atingida ou acima.<br/>
                          🟡 <strong>Amarelo:</strong> Desvio aceitável, requer monitoramento.<br/>
                          🔴 <strong>Vermelho:</strong> Desvio crítico, requer ação imediata (Plano de Contingência).
@@ -1047,20 +1047,20 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuBookOpen />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-sm">Na Petrobras, o <strong>Painel de Desempenho</strong> é centralizado. Um dos KPIs mais críticos é o <strong>Vazamento de Óleo (VO)</strong> e a <strong>Taxa de Acidentes Registráveis (TAR)</strong>.</p>
+                    <p className="text-muted-foreground text-lg">Na Petrobras, o <strong>Painel de Desempenho</strong> é centralizado. Um dos KPIs mais críticos é o <strong>Vazamento de Óleo (VO)</strong> e a <strong>Taxa de Acidentes Registráveis (TAR)</strong>.</p>
                     <div className="p-4 bg-slate-100 dark:bg-slate-800/50 rounded-2xl border-dashed border-2 border-slate-300">
                        <p className="text-[10px] font-mono text-center uppercase opacity-50 mb-4">Simulação de Dashboard de Refinaria</p>
                        <div className="grid grid-cols-3 gap-2">
                           <div className="p-2 bg-green-500/20 text-green-700 rounded text-center">
-                            <p className="font-black text-xs">98%</p>
+                            <p className="font-black text-lg">98%</p>
                             <p className="text-[8px]">Disponibilidade</p>
                           </div>
                           <div className="p-2 bg-yellow-500/20 text-yellow-700 rounded text-center">
-                            <p className="font-black text-xs">85%</p>
+                            <p className="font-black text-lg">85%</p>
                             <p className="text-[8px]">Produção Diesel</p>
                           </div>
                           <div className="p-2 bg-red-500/20 text-red-700 rounded text-center">
-                            <p className="font-black text-xs">1.2</p>
+                            <p className="font-black text-lg">1.2</p>
                             <p className="text-[8px]">Indice Acidentes</p>
                           </div>
                        </div>
@@ -1074,14 +1074,14 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuTrendingUp />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-sm">Entenda como a organização aprende com os erros:</p>
+                    <p className="text-lg">Entenda como a organização aprende com os erros:</p>
                     <div className="space-y-3">
                       <div className="p-4 bg-blue-500/5 rounded-xl border-l-4 border-blue-500">
-                        <p className="font-bold text-xs">Single Loop Learning (Aprendizagem Simples)</p>
+                        <p className="font-bold text-lg">Single Loop Learning (Aprendizagem Simples)</p>
                         <p className="text-[10px] opacity-70">Corrigimos o erro para manter o plano. "O poço falhou, vamos consertar a sonda."</p>
                       </div>
                       <div className="p-4 bg-emerald-500/5 rounded-xl border-l-4 border-emerald-500">
-                        <p className="font-bold text-xs">Double Loop Learning (Aprendizagem Dupla)</p>
+                        <p className="font-bold text-lg">Double Loop Learning (Aprendizagem Dupla)</p>
                         <p className="text-[10px] opacity-70">Questionamos as premissas do plano. "Por que estamos usando esse tipo de sonda? Nossa estratégia de perfuração está certa?"</p>
                       </div>
                     </div>
@@ -1122,7 +1122,7 @@ export default function AulaPlanejamentoEstrategico({
             }} 
             maceteVisual={{ 
               title: "KPI: Como estou? KRI: Vou me ferrar?", 
-              content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Se o KPI tá baixo, você não produziu. Se o KRI tá alto, você vai explodir."</p></div>) 
+              content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Se o KPI tá baixo, você não produziu. Se o KRI tá alto, você vai explodir."</p></div>) 
             }} 
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "A Arte de Medir", artista: "Prof. Administração" }} 
           />
@@ -1153,7 +1153,7 @@ export default function AulaPlanejamentoEstrategico({
                       <p className="font-bold text-blue-700 mb-3 flex items-center gap-2">
                          <LuTarget className="w-5 h-5" /> Pilares da Lei 13.303/16:
                       </p>
-                      <ul className="space-y-2 text-xs">
+                      <ul className="space-y-2 text-lg">
                         <li>🏢 <strong>Transparência:</strong> Divulgação tempestiva de dados financeiros e operacionais.</li>
                         <li>🛡️ <strong>Gestão de Riscos:</strong> Implementação de controles internos e compliance obrigatórios.</li>
                         <li>👥 <strong>Indicação de Dirigentes:</strong> Critérios técnicos rigorosos para reduzir a interferência política.</li>
@@ -1167,7 +1167,7 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuSigma />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-sm">O planejamento das estatais deve conversar com o ciclo orçamentário federal:</p>
+                    <p className="text-lg">O planejamento das estatais deve conversar com o ciclo orçamentário federal:</p>
                     <div className="space-y-3">
                        <div className="p-4 bg-white/50 dark:bg-black/20 border rounded-xl">
                           <p className="font-bold text-[11px] text-blue-800">PPA (Plano Plurianual) - 4 ANOS</p>
@@ -1190,9 +1190,9 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuBookOpen />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-sm">A Petrobras é uma <strong>Sociedade de Economia Mista</strong>. Isso significa que ela deve seguir as regras de mercado (CVM) E as regras de controle público (TCU/CGU).</p>
+                    <p className="text-muted-foreground text-lg">A Petrobras é uma <strong>Sociedade de Economia Mista</strong>. Isso significa que ela deve seguir as regras de mercado (CVM) E as regras de controle público (TCU/CGU).</p>
                     <AlertBox tipo="success" titulo="COMPLIANCE E ÉTICA">
-                       <p className="text-xs">
+                       <p className="text-lg">
                          O <strong>Estatuto Social</strong> da Petrobras prevê que qualquer decisão de investimento de alto valor deve passar por comitês técnicos independentes, garantindo que o interesse da empresa esteja acima de pressões conjunturais.
                        </p>
                     </AlertBox>
@@ -1209,12 +1209,12 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuZap />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-sm">A Cesgranrio costuma cobrar a multiplicidade de stakeholders:</p>
+                    <p className="text-lg">A Cesgranrio costuma cobrar a multiplicidade de stakeholders:</p>
                     <ul className="space-y-2">
-                       <li className="text-xs">🌍 <strong>Sociedade:</strong> Quer preços justos e sustentabilidade.</li>
-                       <li className="text-xs">🏛️ <strong>Governo (Acionista Majoritário):</strong> Quer dividendos e política energética.</li>
-                       <li className="text-xs">📈 <strong>Investidores (Minoritários):</strong> Querem valorização da ação e lucro.</li>
-                       <li className="text-xs">👷 <strong>Colaboradores:</strong> Querem segurança e boas condições de trabalho.</li>
+                       <li className="text-lg">🌍 <strong>Sociedade:</strong> Quer preços justos e sustentabilidade.</li>
+                       <li className="text-lg">🏛️ <strong>Governo (Acionista Majoritário):</strong> Quer dividendos e política energética.</li>
+                       <li className="text-lg">📈 <strong>Investidores (Minoritários):</strong> Querem valorização da ação e lucro.</li>
+                       <li className="text-lg">👷 <strong>Colaboradores:</strong> Querem segurança e boas condições de trabalho.</li>
                     </ul>
                     <p className="text-[10px] italic text-rose-600 font-bold">Macro-regra: O Planejamento Estratégico deve harmonizar esses interesses conflitantes.</p>
                   </div>
@@ -1254,7 +1254,7 @@ export default function AulaPlanejamentoEstrategico({
             }} 
             maceteVisual={{ 
               title: "PPA-LDO-LOA: Planeja - Decide - Aloca", 
-              content: (<div className="space-y-3 text-left"><p className="text-sm italic">"PPA guia o rumo. LDO escolhe a briga. LOA paga a conta."</p></div>) 
+              content: (<div className="space-y-3 text-left"><p className="text-lg italic">"PPA guia o rumo. LDO escolhe a briga. LOA paga a conta."</p></div>) 
             }} 
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Público vs Privado", artista: "Prof. Administração" }} 
           />
@@ -1283,11 +1283,11 @@ export default function AulaPlanejamentoEstrategico({
                     </p>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/10 text-center">
-                        <p className="font-bold text-emerald-700 text-xs">Forças Motrizes</p>
+                        <p className="font-bold text-emerald-700 text-lg">Forças Motrizes</p>
                         <p className="text-[10px] opacity-70">Eventos que moldam o futuro (ex: IA, Transição Energética).</p>
                       </div>
                       <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/10 text-center">
-                        <p className="font-bold text-amber-700 text-xs">Incertezas Críticas</p>
+                        <p className="font-bold text-amber-700 text-lg">Incertezas Críticas</p>
                         <p className="text-[10px] opacity-70">Variáveis de alto impacto e baixa previsibilidade.</p>
                       </div>
                     </div>
@@ -1299,17 +1299,17 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuTarget />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-sm">Quanto mais longe olhamos, maior o leque de possibilidades:</p>
+                    <p className="text-lg">Quanto mais longe olhamos, maior o leque de possibilidades:</p>
                     <ul className="space-y-3">
-                       <li className="flex items-start gap-2 text-xs">
+                       <li className="flex items-start gap-2 text-lg">
                          <div className="mt-1 w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
                          <span><strong>Futuro Desejável:</strong> O que queremos que aconteça (Visão).</span>
                        </li>
-                       <li className="flex items-start gap-2 text-xs">
+                       <li className="flex items-start gap-2 text-lg">
                          <div className="mt-1 w-2 h-2 rounded-full bg-blue-500 shrink-0" />
                          <span><strong>Futuro Provável:</strong> A tendência inercial (Business as usual).</span>
                        </li>
-                       <li className="flex items-start gap-2 text-xs">
+                       <li className="flex items-start gap-2 text-lg">
                          <div className="mt-1 w-2 h-2 rounded-full bg-amber-500 shrink-0" />
                          <span><strong>Futuro Plausível:</strong> O que pode acontecer face às rupturas.</span>
                        </li>
@@ -1325,14 +1325,14 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuBookOpen />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-sm">A Petrobras utiliza cenários de longo prazo para decidir investimentos Bilionários que duram 30 anos:</p>
+                    <p className="text-muted-foreground text-lg">A Petrobras utiliza cenários de longo prazo para decidir investimentos Bilionários que duram 30 anos:</p>
                     <div className="space-y-3">
                        <div className="p-3 bg-white/50 dark:bg-black/20 border-l-4 border-l-rose-500 rounded-lg">
-                          <p className="font-bold text-xs">Cenário "Inércia":</p>
+                          <p className="font-bold text-lg">Cenário "Inércia":</p>
                           <p className="text-[10px]">Gargalos na transição, dependência fóssil continua alta.</p>
                        </div>
                        <div className="p-3 bg-white/50 dark:bg-black/20 border-l-4 border-l-emerald-500 rounded-lg">
-                          <p className="font-bold text-xs">Cenário "Aceleração":</p>
+                          <p className="font-bold text-lg">Cenário "Aceleração":</p>
                           <p className="text-[10px]">Políticas climáticas globais agressivas reduzem demanda por óleo.</p>
                        </div>
                     </div>
@@ -1345,7 +1345,7 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuZap />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-sm">O maior erro em prospectiva é o <strong>Pensamento Único</strong>. Fique atento a estas armadilhas:</p>
+                    <p className="text-lg">O maior erro em prospectiva é o <strong>Pensamento Único</strong>. Fique atento a estas armadilhas:</p>
                     <ul className="grid grid-cols-1 gap-2 text-[10px]">
                       <li className="p-2 bg-amber-500/5 border border-amber-500/10 rounded"><strong>Excesso de Otimismo:</strong> Ignorar eventos improváveis (Black Swans).</li>
                       <li className="p-2 bg-emerald-500/5 border border-emerald-500/10 rounded"><strong>Dogmatismo:</strong> Apegar-se ao cenário "mais provável" como se fosse certeza.</li>
@@ -1387,7 +1387,7 @@ export default function AulaPlanejamentoEstrategico({
             }} 
             maceteVisual={{ 
               title: "Cenário não é Previsão!", 
-              content: (<div className="space-y-3 text-left"><p className="text-sm italic">"Prever é tentar acertar um ponto. Cenarizar é desenhar o mapa do território desconhecido."</p></div>) 
+              content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Prever é tentar acertar um ponto. Cenarizar é desenhar o mapa do território desconhecido."</p></div>) 
             }} 
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Prospectiva Estratégica", artista: "Prof. Administração" }} 
           />
@@ -1416,11 +1416,11 @@ export default function AulaPlanejamentoEstrategico({
                     </p>
                     <div className="space-y-3">
                       <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/10">
-                        <p className="font-bold text-rose-700 text-xs uppercase tracking-wider">Missão:</p>
+                        <p className="font-bold text-rose-700 text-lg uppercase tracking-wider">Missão:</p>
                         <p className="text-[11px] font-medium italic">"Prover energia que assegura prosperidade de forma ética, justa e segura."</p>
                       </div>
                       <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/10">
-                        <p className="font-bold text-rose-700 text-xs uppercase tracking-wider">Visão:</p>
+                        <p className="font-bold text-rose-700 text-lg uppercase tracking-wider">Visão:</p>
                         <p className="text-[11px] font-medium italic">"Ser a melhor empresa de energia na geração de valor, com liderança na transição energética justa."</p>
                       </div>
                     </div>
@@ -1432,18 +1432,18 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuTarget />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-sm">O novo plano foca em 3 eixos fundamentais:</p>
+                    <p className="text-lg">O novo plano foca em 3 eixos fundamentais:</p>
                     <div className="grid grid-cols-1 gap-3">
                        <div className="p-3 bg-white/50 dark:bg-black/20 border-l-4 border-l-blue-500 rounded-lg">
-                          <p className="font-bold text-xs uppercase text-blue-800">1. Óleo e Gás de Baixo Carbono</p>
+                          <p className="font-bold text-lg uppercase text-blue-800">1. Óleo e Gás de Baixo Carbono</p>
                           <p className="text-[10px]">Foco no Pré-Sal e exploração de novas fronteiras (Margem Equatorial).</p>
                        </div>
                        <div className="p-3 bg-white/50 dark:bg-black/20 border-l-4 border-l-emerald-500 rounded-lg">
-                          <p className="font-bold text-xs uppercase text-emerald-800">2. Transição Energética Justa</p>
+                          <p className="font-bold text-lg uppercase text-emerald-800">2. Transição Energética Justa</p>
                           <p className="text-[10px]">Investimentos em eólica, solar, hidrogênio e biorefino.</p>
                        </div>
                        <div className="p-3 bg-white/50 dark:bg-black/20 border-l-4 border-l-amber-500 rounded-lg">
-                          <p className="font-bold text-xs uppercase text-amber-800">3. Valor Social e Ambiental</p>
+                          <p className="font-bold text-lg uppercase text-amber-800">3. Valor Social e Ambiental</p>
                           <p className="text-[10px]">Geração de empregos, descarbonização e proteção ambiental.</p>
                        </div>
                     </div>
@@ -1455,9 +1455,9 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuSigma />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-sm">O volume de investimentos para 2024-2028 é de aproximadamente <strong>US$ 102 bilhões</strong>.</p>
+                    <p className="text-muted-foreground text-lg">O volume de investimentos para 2024-2028 é de aproximadamente <strong>US$ 102 bilhões</strong>.</p>
                     <AlertBox tipo="info" titulo="ALOCAÇÃO DE RECURSOS">
-                       <ul className="space-y-2 text-xs">
+                       <ul className="space-y-2 text-lg">
                          <li>🔥 <strong>E&P (Exploração):</strong> US$ 73 Bi (Foco no Pré-sal).</li>
                          <li>🌱 <strong>Baixo Carbono:</strong> US$ 11.5 Bi (Cerca de 11% do CAPEX total).</li>
                          <li>⚙️ <strong>Refino e Gás:</strong> US$ 17 Bi (Modernização e Bio-combustíveis).</li>
@@ -1529,7 +1529,7 @@ export default function AulaPlanejamentoEstrategico({
             }} 
             maceteVisual={{ 
               title: "Missão E J S", 
-              content: (<div className="space-y-3 text-left"><p className="text-sm italic">"<strong>É</strong>tica, <strong>J</strong>usta e <strong>S</strong>egura. Lembre-se do EJS para a Missão!"</p></div>) 
+              content: (<div className="space-y-3 text-left"><p className="text-lg italic">"<strong>É</strong>tica, <strong>J</strong>usta e <strong>S</strong>egura. Lembre-se do EJS para a Missão!"</p></div>) 
             }} 
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Estratégia Petrobras 2024", artista: "Prof. Administração" }} 
           />
@@ -1555,7 +1555,7 @@ export default function AulaPlanejamentoEstrategico({
                   <div className="space-y-4">
                     <p className="text-muted-foreground leading-relaxed">No dia da prova, o cansaço é seu maior inimigo. O Simulado Mestre treina sua resistência mental.</p>
                     <AlertBox tipo="success" titulo="DICA DE OURO">
-                       <p className="text-xs">Leia primeiro o comando da questão e depois o texto de apoio. Muitas questões de Administração podem ser resolvidas apenas com lógica e eliminação.</p>
+                       <p className="text-lg">Leia primeiro o comando da questão e depois o texto de apoio. Muitas questões de Administração podem ser resolvidas apenas com lógica e eliminação.</p>
                     </AlertBox>
                   </div>
                 ) 
@@ -1602,7 +1602,7 @@ export default function AulaPlanejamentoEstrategico({
             }} 
             maceteVisual={{ 
               title: "Confie no Processo!", 
-              content: (<div className="text-sm italic text-left"><p>Você percorreu todos os 10 módulos. Agora é hora de brilhar!</p></div>) 
+              content: (<div className="text-lg italic text-left"><p>Você percorreu todos os 10 módulos. Agora é hora de brilhar!</p></div>) 
             }} 
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", titulo: "Dicas Finais", artista: "Prof. Administração" }} 
           />
@@ -1643,17 +1643,17 @@ export default function AulaPlanejamentoEstrategico({
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-5 bg-emerald-500/10 rounded-2xl border border-emerald-500/20">
-                          <p className="font-bold text-emerald-800 text-sm mb-2">Descarbonização (Scope 1 e 2)</p>
-                          <p className="text-xs">Meta de ser <strong>Net Zero</strong> até 2050. Investimento maciço em CCUS (Captura, Uso e Armazenamento de Carbono).</p>
+                          <p className="font-bold text-emerald-800 text-lg mb-2">Descarbonização (Scope 1 e 2)</p>
+                          <p className="text-lg">Meta de ser <strong>Net Zero</strong> até 2050. Investimento maciço em CCUS (Captura, Uso e Armazenamento de Carbono).</p>
                         </div>
                         <div className="p-5 bg-blue-500/10 rounded-2xl border border-blue-500/20">
-                          <p className="font-bold text-blue-800 text-sm mb-2">Energia Renovável</p>
-                          <p className="text-xs">Foco em <strong>Eólica Offshore</strong> e <strong>Hidrogênio Verde</strong>, aproveitando a expertise em engenharia submarina.</p>
+                          <p className="font-bold text-blue-800 text-lg mb-2">Energia Renovável</p>
+                          <p className="text-lg">Foco em <strong>Eólica Offshore</strong> e <strong>Hidrogênio Verde</strong>, aproveitando a expertise em engenharia submarina.</p>
                         </div>
                       </div>
 
                       <AlertBox tipo="warning" titulo="TERMO DE PROVA: CAPEX E OPEX NO PE">
-                        <p className="text-xs">
+                        <p className="text-lg">
                           O plano prevê <strong>US$ 102 bilhões</strong> de CAPEX. Lembrar que a alocação de recursos em "Baixo Carbono" subiu de 6% no plano anterior para cerca de 11% no atual. Isso mostra uma mudança na <strong>Priorização Estratégica</strong>.
                         </p>
                       </AlertBox>
@@ -1665,7 +1665,7 @@ export default function AulaPlanejamentoEstrategico({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         O PE define a <strong>Margem Equatorial (do Amapá ao Rio Grande do Norte)</strong> como o "Novo Pré-sal". Estratégica para garantir a segurança energética do Brasil pós-2030.
                       </p>
 
@@ -1685,11 +1685,11 @@ export default function AulaPlanejamentoEstrategico({
                   icone: <LuShieldCheck />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         A <strong>Governança Corporativa</strong> é o escudo do PE. Na Petrobras, as decisões não são individuais, seguem o rito da Lei 13.303/16 (Lei das Estatais).
                       </p>
                       <div className="bg-blue-500/5 p-4 rounded-xl border border-blue-500/10">
-                         <p className="font-bold text-xs text-blue-700 mb-1 leading-relaxed">Blindagem contra Influência Política:</p>
+                         <p className="font-bold text-lg text-blue-700 mb-1 leading-relaxed">Blindagem contra Influência Política:</p>
                          <p className="text-[10px] opacity-80 leading-relaxed italic">
                            "A aprovação do Plano de Negócios deve passar por diversas camadas de análise técnica e ser chancelada pelo Conselho de Administração, garantindo a perenidade dos projetos além dos ciclos eleitorais."
                          </p>
@@ -1756,7 +1756,7 @@ export default function AulaPlanejamentoEstrategico({
                 title: "O Pulo do Gato: 102 Bi",
                 content: (
                   <div className="space-y-3 text-left">
-                    <p className="text-sm italic">"Lembre-se: 102 Bi de investimento total. 73% em E&P (Exploração), 11% em Baixo Carbono."</p>
+                    <p className="text-lg italic">"Lembre-se: 102 Bi de investimento total. 73% em E&P (Exploração), 11% em Baixo Carbono."</p>
                   </div>
                 ),
               }}
@@ -1813,7 +1813,7 @@ export default function AulaPlanejamentoEstrategico({
                 { t: "Transição Energética", d: "Mudança estrutural dos sistemas de energia focada na descarbonização." },
               ].map((item, idx) => (
                 <div key={idx} className="p-4 bg-slate-50 dark:bg-slate-900/50 border rounded-xl hover:shadow-md transition-all">
-                  <p className="font-black text-xs text-slate-800 dark:text-slate-200 mb-1">{item.t}</p>
+                  <p className="font-black text-lg text-slate-800 dark:text-slate-200 mb-1">{item.t}</p>
                   <p className="text-[10px] opacity-70 leading-relaxed">{item.d}</p>
                 </div>
               ))}
@@ -1851,7 +1851,7 @@ export default function AulaPlanejamentoEstrategico({
                       <span className="w-6 h-6 bg-rose-500 text-white rounded-full flex items-center justify-center text-[10px]">Q</span>
                       {faq.q}
                     </p>
-                    <p className="text-xs text-muted-foreground ml-8 leading-relaxed">
+                    <p className="text-lg text-muted-foreground ml-8 leading-relaxed">
                       <span className="font-bold text-emerald-600 mr-2">RESPOSTA:</span> {faq.a}
                     </p>
                  </div>
@@ -1952,12 +1952,12 @@ export default function AulaPlanejamentoEstrategico({
                 ].map((item, idx) => (
                   <div key={idx} className="space-y-4 p-6 bg-slate-50 dark:bg-slate-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl">
                     <div className="flex gap-4">
-                      <span className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-lg flex items-center justify-center font-bold text-sm">{item.id}</span>
-                      <p className="text-sm font-medium leading-relaxed">{item.q}</p>
+                      <span className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">{item.id}</span>
+                      <p className="text-lg font-medium leading-relaxed">{item.q}</p>
                     </div>
                     <div className="ml-12 grid grid-cols-1 gap-2">
                        {item.o.map((opt, oidx) => (
-                         <div key={oidx} className={`p-3 rounded-xl border text-xs ${opt === item.r ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-800 dark:text-emerald-400 font-bold' : 'bg-white dark:bg-black/20 border-slate-200 dark:border-slate-800'}`}>
+                         <div key={oidx} className={`p-3 rounded-xl border text-lg ${opt === item.r ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-800 dark:text-emerald-400 font-bold' : 'bg-white dark:bg-black/20 border-slate-200 dark:border-slate-800'}`}>
                            {String.fromCharCode(65 + oidx)}) {opt}
                          </div>
                        ))}
@@ -2050,8 +2050,8 @@ export default function AulaPlanejamentoEstrategico({
                 ].map((item, idx) => (
                   <div key={idx} className="space-y-4 p-6 bg-slate-50 dark:bg-slate-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                     <div className="flex gap-4">
-                      <span className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-sm tracking-tight">{item.id}</span>
-                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-100 leading-snug">{item.q}</p>
+                      <span className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-lg tracking-tight">{item.id}</span>
+                      <p className="text-lg font-semibold text-slate-800 dark:text-slate-100 leading-snug">{item.q}</p>
                     </div>
                     <div className="ml-12 grid grid-cols-1 gap-2">
                        {item.o.map((opt, oidx) => (
@@ -2151,12 +2151,12 @@ export default function AulaPlanejamentoEstrategico({
                 ].map((item, idx) => (
                   <div key={idx} className="space-y-4 p-6 bg-slate-50 dark:bg-slate-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl">
                     <div className="flex gap-4">
-                      <span className="flex-shrink-0 w-8 h-8 bg-violet-600 text-white rounded-lg flex items-center justify-center font-bold text-sm">{item.id}</span>
-                      <p className="text-sm font-medium leading-relaxed">{item.q}</p>
+                      <span className="flex-shrink-0 w-8 h-8 bg-violet-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">{item.id}</span>
+                      <p className="text-lg font-medium leading-relaxed">{item.q}</p>
                     </div>
                     <div className="ml-12 grid grid-cols-1 gap-2">
                        {item.o.map((opt, oidx) => (
-                         <div key={oidx} className={`p-3 rounded-xl border text-xs ${opt === item.r ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-800 dark:text-emerald-400 font-bold' : 'bg-white dark:bg-black/20 border-slate-200 dark:border-slate-800'}`}>
+                         <div key={oidx} className={`p-3 rounded-xl border text-lg ${opt === item.r ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-800 dark:text-emerald-400 font-bold' : 'bg-white dark:bg-black/20 border-slate-200 dark:border-slate-800'}`}>
                            {String.fromCharCode(65 + oidx)}) {opt}
                          </div>
                        ))}
@@ -2251,12 +2251,12 @@ export default function AulaPlanejamentoEstrategico({
                 ].map((item, idx) => (
                   <div key={idx} className="space-y-4 p-6 bg-slate-50 dark:bg-slate-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl">
                     <div className="flex gap-4">
-                      <span className="flex-shrink-0 w-8 h-8 bg-rose-600 text-white rounded-lg flex items-center justify-center font-bold text-sm">{item.id}</span>
-                      <p className="text-sm font-medium leading-relaxed">{item.q}</p>
+                      <span className="flex-shrink-0 w-8 h-8 bg-rose-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">{item.id}</span>
+                      <p className="text-lg font-medium leading-relaxed">{item.q}</p>
                     </div>
                     <div className="ml-12 grid grid-cols-1 gap-2">
                        {item.o.map((opt, oidx) => (
-                         <div key={oidx} className={`p-3 rounded-xl border text-xs ${opt === item.r ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-800 dark:text-emerald-400 font-bold' : 'bg-white dark:bg-black/20 border-slate-200 dark:border-slate-800'}`}>
+                         <div key={oidx} className={`p-3 rounded-xl border text-lg ${opt === item.r ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-800 dark:text-emerald-400 font-bold' : 'bg-white dark:bg-black/20 border-slate-200 dark:border-slate-800'}`}>
                            {String.fromCharCode(65 + oidx)}) {opt}
                          </div>
                        ))}
@@ -2291,7 +2291,7 @@ export default function AulaPlanejamentoEstrategico({
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 pt-4">
                          <div className="space-y-8">
                             <div className="space-y-4">
-                               <p className="text-base leading-relaxed text-slate-300 font-medium italic border-l-2 border-emerald-500 pl-6">
+                               <p className="text-lg leading-relaxed text-slate-300 font-medium italic border-l-2 border-emerald-500 pl-6">
                                   "Como planejar a sobrevivência de longo prazo quando seu produto principal é o centro de uma crise climática global? Este é o dilema que o PE 2024-2028 tenta resolver."
                                </p>
                                <p className="text-[12px] leading-relaxed text-slate-400">
@@ -2301,11 +2301,11 @@ export default function AulaPlanejamentoEstrategico({
 
                             <div className="grid grid-cols-2 gap-4">
                                <div className="p-6 bg-white/5 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
-                                  <p className="font-bold text-emerald-400 text-xs mb-3 flex items-center gap-2"><LuBrain className="w-4 h-4" /> Visão 2050</p>
+                                  <p className="font-bold text-emerald-400 text-lg mb-3 flex items-center gap-2"><LuBrain className="w-4 h-4" /> Visão 2050</p>
                                   <p className="text-[10px] leading-relaxed text-slate-400">Neutralidade de carbono em operações sob controle (Escopo 1 e 2) e ambição de influenciar a cadeia.</p>
                                </div>
                                <div className="p-6 bg-white/5 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
-                                  <p className="font-bold text-blue-400 text-xs mb-3 flex items-center gap-2"><LuTarget className="w-4 h-4" /> CAPEX Verde</p>
+                                  <p className="font-bold text-blue-400 text-lg mb-3 flex items-center gap-2"><LuTarget className="w-4 h-4" /> CAPEX Verde</p>
                                   <p className="text-[10px] leading-relaxed text-slate-400">Alocação histórica de US$ 11,5 bilhões em projetos de baixo carbono no quinquênio.</p>
                                </div>
                             </div>
@@ -2313,24 +2313,24 @@ export default function AulaPlanejamentoEstrategico({
 
                          <div className="space-y-6">
                             <div className="p-8 bg-white/5 rounded-[3rem] border border-white/10 space-y-6">
-                               <h4 className="text-xs font-black uppercase text-emerald-400 tracking-widest border-b border-white/10 pb-4">Análise SWOT Dinâmica (Cenário 2024)</h4>
+                               <h4 className="text-lg font-black uppercase text-emerald-400 tracking-widest border-b border-white/10 pb-4">Análise SWOT Dinâmica (Cenário 2024)</h4>
                                <div className="space-y-6">
                                   <div className="flex gap-4">
-                                     <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0 font-bold text-xs italic">F</div>
+                                     <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0 font-bold text-lg italic">F</div>
                                      <div className="space-y-1">
                                         <p className="text-[11px] font-bold text-white uppercase">Custo de Extração de Elite</p>
                                         <p className="text-[10px] text-slate-400 leading-relaxed">A Petrobras produz o barril mais 'limpo' (menos CO2 por barril) e mais barato do mundo no Pré-sal.</p>
                                      </div>
                                   </div>
                                   <div className="flex gap-4">
-                                     <div className="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-400 shrink-0 font-bold text-xs italic">A</div>
+                                     <div className="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-400 shrink-0 font-bold text-lg italic">A</div>
                                      <div className="space-y-1">
                                         <p className="text-[11px] font-bold text-white uppercase">Obsolescência da Demanda</p>
                                         <p className="text-[10px] text-slate-400 leading-relaxed">Eletrificação veicular na China e Europa pode derrubar a demanda global por combustível fóssil abruptamente.</p>
                                      </div>
                                   </div>
                                   <div className="flex gap-4">
-                                     <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0 font-bold text-xs italic">O</div>
+                                     <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0 font-bold text-lg italic">O</div>
                                      <div className="space-y-1">
                                         <p className="text-[11px] font-bold text-white uppercase">Liderança em Eólica Offshore</p>
                                         <p className="text-[10px] text-slate-400 leading-relaxed">Uso das plataformas desativadas para ancorar torres de geração eólica, criando uma economia circular.</p>

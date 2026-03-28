@@ -86,7 +86,7 @@ export default function AulaRLCP(props: AulaProps) {
   };
 
   const renderModulo1 = () => {
-    const variant = mv[1];
+    const variant = getModuleVariant(1);
 
     return (
       <TabsContent value="modulo-1" className="space-y-6">
@@ -94,12 +94,12 @@ export default function AulaRLCP(props: AulaProps) {
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={1}
-            variant={getModuleVariant(1)}
+            variant={mv[1]}
             title="Princípios Fundamentais do RLCP"
             description="O framework de licitações transparentes e competitivas da Petrobras."
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               O <strong>RLCP (Regulamento de Licitações e Contratos da Petrobras)</strong> é o documento que disciplina como a Petrobras contrata obras, serviços, compras e aluguel.
               Baseia-se na <strong>Lei 13.303/2016</strong> (Lei das Estatais), que exige que empresas públicas sigam procedimentos competitivos, transparentes e éticos. O RLCP não é capricho —
@@ -126,8 +126,8 @@ export default function AulaRLCP(props: AulaProps) {
             </p>
 
             <div className="bg-indigo-500/10 border-l-4 border-indigo-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-indigo-600 dark:text-indigo-400 text-sm mb-2">⚖️ Cinco Princípios do RLCP</p>
-              <ul className="text-sm space-y-1 text-foreground">
+              <p className="font-bold text-indigo-600 dark:text-indigo-400 text-lg mb-2">⚖️ Cinco Princípios do RLCP</p>
+              <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Eficiência:</strong> Melhor resultado; menor custo</li>
                 <li>✓ <strong>Economicidade:</strong> Prudência fiscal; sem desperdício</li>
                 <li>✓ <strong>Publicidade:</strong> Transparência; edital aberto; participação livre</li>
@@ -140,7 +140,7 @@ export default function AulaRLCP(props: AulaProps) {
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={1}
+            index={2}
             variant={variant}
             title="Conceitos e Âmbito de Aplicação"
           />
@@ -177,7 +177,7 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 <ModuleConsolidation
-          index={2}
+          index={3}
           variant={variant}
           video={{
             videoId: "dQw4w9WgXcQ",
@@ -239,13 +239,13 @@ export default function AulaRLCP(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={2}
-            variant={getModuleVariant(2)}
+            index={1}
+            variant={mv[2]}
             title="Modalidades de Licitação"
             description="Concorrência, Tomada de Preços, Convite — escolher a modalidade correta é crítico."
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               Lei 13.303 e RLCP definem <strong>4 modalidades de licitação</strong>, cada uma apropriada para um cenário diferente: (1) <strong>Concorrência</strong> — maior publicidade,
               qualquer fornecedor, prazos longos, ideal para grandes valores; (2) <strong>Tomada de Preços</strong> — fornecedores pré-qualificados, prazos médios, valor médio;
@@ -271,8 +271,8 @@ export default function AulaRLCP(props: AulaProps) {
             </p>
 
             <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-2">📋 Quatro Modalidades</p>
-              <ul className="text-sm space-y-1 text-foreground">
+              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">📋 Quatro Modalidades</p>
+              <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Concorrência:</strong> Aberta a todos; 5 dias; grandes valores</li>
                 <li>✓ <strong>Tomada Preços:</strong> Pré-qualificados; 3 dias; médios valores</li>
                 <li>✓ <strong>Convite:</strong> 3+ convidados; 1 dia; baixos valores</li>
@@ -284,7 +284,7 @@ export default function AulaRLCP(props: AulaProps) {
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={1}
+            index={2}
             variant={variant}
             title="Tipos de Licitação"
           />
@@ -318,7 +318,7 @@ export default function AulaRLCP(props: AulaProps) {
               <h4 className="font-bold text-foreground mb-2">
                 📌 Compra de Tubulação
               </h4>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 Petrobras precisa de 1.000 km de tubulação. Publica edital (RLCP) definindo:
                 especificações (diâmetro, material), quantidade, prazo de entrega. Empresas
                 concorrem. Critério: menor preço + qualidade. Vencedor assina contrato.
@@ -329,7 +329,7 @@ export default function AulaRLCP(props: AulaProps) {
               <h4 className="font-bold text-foreground mb-2">
                 ⚡ Contratação de Consultoria
               </h4>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 Petrobras contrata consultoria para projeto estratégico. Usa Melhor Técnica:
                 qualidade (metodologia, equipe, experiência) é mais importante que preço.
                 Melhor proposta técnica vence.
@@ -340,7 +340,7 @@ export default function AulaRLCP(props: AulaProps) {
               <h4 className="font-bold text-foreground mb-2">
                 🚨 Situação de Emergência
               </h4>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 Vazamento de óleo requer resposta imediata. Petrobras dispensa licitação
                 formal (calamidade) mas garante documentação. Contrata fornecedor de resposta
                 rápida. Após situação controlada, justifica contratos.
@@ -360,7 +360,7 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 <ModuleConsolidation
-          index={2}
+          index={3}
           variant={variant}
           video={{
             videoId: "dQw4w9WgXcQ",
@@ -420,13 +420,13 @@ export default function AulaRLCP(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={3}
-            variant={getModuleVariant(3)}
+            index={1}
+            variant={mv[3]}
             title="Procedimento Licitatório: Fases"
             description="Preparação, publicidade, julgamento, adjudicação — roteiro de uma licitação completa."
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               Uma licitação completa segue <strong>4 fases bem definidas</strong>: (1) <strong>Preparatória</strong> — definir o que comprar, estimar custos, elaborar Termo de Referência;
               (2) <strong>Publicação/Inscrição</strong> — publicar edital, deixar aberto para inscrição de interessados, fornecer informações; (3) <strong>Julgamento</strong> — abrir propostas,
@@ -454,8 +454,8 @@ export default function AulaRLCP(props: AulaProps) {
             </p>
 
             <div className="bg-violet-500/10 border-l-4 border-violet-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-violet-600 dark:text-violet-400 text-sm mb-2">🔄 Quatro Fases do Procedimento</p>
-              <ol className="text-sm space-y-1 text-foreground list-decimal list-inside">
+              <p className="font-bold text-violet-600 dark:text-violet-400 text-lg mb-2">🔄 Quatro Fases do Procedimento</p>
+              <ol className="text-lg space-y-1 text-foreground list-decimal list-inside">
                 <li><strong>Preparatória:</strong> Termo de Referência, especificação, estimativa, modalidade</li>
                 <li><strong>Publicação:</strong> Edital publicado, inscrição aberta, esclarecimentos</li>
                 <li><strong>Julgamento:</strong> Conformidade, técnica, preço — quem vence?</li>
@@ -467,7 +467,7 @@ export default function AulaRLCP(props: AulaProps) {
 
         <div className="space-y-6">
           <ModuleSectionHeader
-            index={1}
+            index={2}
             variant={variant}
             title="As Fases da Licitação"
           />
@@ -501,7 +501,7 @@ export default function AulaRLCP(props: AulaProps) {
               <h4 className="font-bold text-foreground mb-2">
                 📅 Cronograma Típico de Concorrência
               </h4>
-              <p className="text-sm text-muted-foreground mb-3">
+              <p className="text-lg text-muted-foreground mb-3">
                 <strong>01/03:</strong> Edital publicado. <br />
                 <strong>03/03:</strong> Prazo de impugnação (2 dias antes de 05/03). <br />
                 <strong>05/03:</strong> Prazo de resposta começa. <br />
@@ -527,7 +527,7 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 <ModuleConsolidation
-          index={2}
+          index={3}
           variant={variant}
           video={{
             videoId: "dQw4w9WgXcQ",
@@ -590,13 +590,13 @@ export default function AulaRLCP(props: AulaProps) {
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={4}
-              variant={getModuleVariant(4)}
+              index={1}
+              variant={mv[4]}
               title="Termo de Referência e Edital"
               description="Os documentos-mestres que definem o que será licitado e como."
             />
 
-            <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+            <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
               <p>
                 O <strong>Termo de Referência (TR)</strong> e o <strong>Edital</strong> são os "pilares documentais" de uma licitação. TR é o documento técnico (O QUÊ será contratado?);
                 Edital é o documento legal/administrativo (COMO será o processo?). Sem ambos bem elaborados, licitação fracassa: fornecedores não entendem, propostas são inconformes, processos
@@ -623,8 +623,8 @@ export default function AulaRLCP(props: AulaProps) {
               </p>
 
               <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-                <p className="font-bold text-amber-600 dark:text-amber-400 text-sm mb-2">📄 Termo de Referência vs Edital</p>
-                <ul className="text-sm space-y-1 text-foreground">
+                <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📄 Termo de Referência vs Edital</p>
+                <ul className="text-lg space-y-1 text-foreground">
                   <li>✓ <strong>TR:</strong> Técnico; O QUÊ será contratado; Especificações, SLAs, critérios aceitação</li>
                   <li>✓ <strong>Edital:</strong> Legal; COMO será o processo; Modalidade, prazos, julgamento, documentação</li>
                   <li>✓ <strong>Ambos:</strong> Devem ser claros, sem ambiguidade, publicados antecipadamente</li>
@@ -634,7 +634,7 @@ export default function AulaRLCP(props: AulaProps) {
           </section>
 
           <ModuleConsolidation
-            index={4}
+            index={5}
             variant={variant}
             video={{
               videoId: "dQw4w9WgXcQ",
@@ -664,11 +664,11 @@ export default function AulaRLCP(props: AulaProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
                   <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/10">
                     <h6 className="font-bold text-blue-600 mb-1">Termo de Referência (TR)</h6>
-                    <p className="text-xs text-muted-foreground">O "O QUE" será comprado. Especificações técnicas, quantidades e prazos.</p>
+                    <p className="text-lg text-muted-foreground">O "O QUE" será comprado. Especificações técnicas, quantidades e prazos.</p>
                   </div>
                   <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/10">
                     <h6 className="font-bold text-indigo-600 mb-1">Edital</h6>
-                    <p className="text-xs text-muted-foreground">As "REGRAS DO JOGO". Como será a licitação, prazos e julgamento.</p>
+                    <p className="text-lg text-muted-foreground">As "REGRAS DO JOGO". Como será a licitação, prazos e julgamento.</p>
                   </div>
                 </div>
               ),
@@ -734,7 +734,7 @@ export default function AulaRLCP(props: AulaProps) {
               <h4 className="font-bold text-foreground mb-2">
                 📋 Exemplo 1: TR para Tubulação
               </h4>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 <strong>Objeto:</strong> Fornecimento de 1.000 km de tubulação. <br />
                 <strong>Especificação:</strong> Aço API 5L Grade X65, diâmetro 24\", espessura 15.9mm. <br />
                 <strong>Qualidade:</strong> Teste hidrostático a 72 atm. Certificado de origem. <br />
@@ -747,7 +747,7 @@ export default function AulaRLCP(props: AulaProps) {
               <h4 className="font-bold text-foreground mb-2">
                 📄 Exemplo 2: Edital para Tubulação
               </h4>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 <strong>Objeto:</strong> Conforme TR anexado. <br />
                 <strong>Modalidade:</strong> Concorrência Internacional. <br />
                 <strong>Critério:</strong> Menor Preço (proposta com menor preço que atenda TR vence). <br />
@@ -761,7 +761,7 @@ export default function AulaRLCP(props: AulaProps) {
               <h4 className="font-bold text-foreground mb-2">
                 ⚠️ Caso Negativo: TR Vago
               </h4>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 <strong>Erro:</strong> \"Compra tubulação de aço, tamanho grande, qualidade boa, entrega rápida\". <br />
                 <strong>Problema:</strong> 'Grande' = qual diâmetro? 'Boa' = qual norma? 'Rápida' = quantos dias? <br />
                 <strong>Resultado:</strong> Propostas incomparáveis. Fornecedor A oferece 10\" @ R$100m. Fornecedor B oferece 24\" @ R$200m. Qual é melhor? Litígio.
@@ -822,13 +822,13 @@ export default function AulaRLCP(props: AulaProps) {
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={5}
-              variant={getModuleVariant(5)}
+              index={2}
+              variant={mv[5]}
               title="Julgamento e Adjudicação"
               description="Como as propostas são avaliadas e o vencedor é declarado."
             />
 
-            <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+            <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
               <p>
                 Após o prazo de inscrição fechar, Petrobras abre as propostas recebidas e inicia <strong>julgamento</strong>. Julgamento ocorre em duas etapas: (1) <strong>Habilitação</strong> —
                 o fornecedor atende aos requisitos legais? (CNPJ válido, sem débitos, certificações exigidas?); (2) <strong>Julgamento de Mérito</strong> — qual proposta melhor atende ao Termo de Referência
@@ -855,8 +855,8 @@ export default function AulaRLCP(props: AulaProps) {
               </p>
 
               <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-                <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">🏆 Julgamento em Duas Etapas</p>
-                <ul className="text-sm space-y-1 text-foreground">
+                <p className="font-bold text-rose-600 dark:text-rose-400 text-lg mb-2">🏆 Julgamento em Duas Etapas</p>
+                <ul className="text-lg space-y-1 text-foreground">
                   <li>✓ <strong>Habilitação:</strong> CNPJ, fiscal, certificações, patrimônio — quem pode participar?</li>
                   <li>✓ <strong>Mérito:</strong> Menor Preço vs Técnica+Preço vs Melhor Técnica</li>
                   <li>✓ <strong>Recursos:</strong> Fornecedores podem contestar resultado</li>
@@ -885,7 +885,7 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 <ModuleConsolidation
-          index={3}
+          index={4}
           variant={variant}
           video={{
             videoId: "dQw4w9WgXcQ",
@@ -921,17 +921,17 @@ export default function AulaRLCP(props: AulaProps) {
                 <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-center">
                   <div className="text-2xl mb-2">💵</div>
                   <h5 className="font-bold text-emerald-700 dark:text-emerald-400">Menor Preço</h5>
-                  <p className="text-xs text-muted-foreground">O critério mais comum para bens e serviços comuns.</p>
+                  <p className="text-lg text-muted-foreground">O critério mais comum para bens e serviços comuns.</p>
                 </div>
                 <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 text-center">
                   <div className="text-2xl mb-2">📐</div>
                   <h5 className="font-bold text-blue-700 dark:text-blue-400">Melhor Técnica</h5>
-                  <p className="text-xs text-muted-foreground">Foco na qualidade e expertise técnica do fornecedor.</p>
+                  <p className="text-lg text-muted-foreground">Foco na qualidade e expertise técnica do fornecedor.</p>
                 </div>
                 <div className="p-4 bg-purple-500/10 rounded-xl border border-purple-500/20 text-center">
                   <div className="text-2xl mb-2">⚖️</div>
                   <h5 className="font-bold text-purple-700 dark:text-purple-400">Técnica e Preço</h5>
-                  <p className="text-xs text-muted-foreground">Equilíbrio entre custo e qualidade técnica.</p>
+                  <p className="text-lg text-muted-foreground">Equilíbrio entre custo e qualidade técnica.</p>
                 </div>
               </div>
             ),
@@ -960,13 +960,13 @@ export default function AulaRLCP(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={6}
-            variant={getModuleVariant(6)}
+            index={1}
+            variant={mv[6]}
             title="Recursos e Impugnações"
             description="Direitos do fornecedor de contestar decisões da licitação."
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               A Lei 13.303 e RLCP garantem que fornecedores tenham <strong>direito de contestar decisões</strong> de licitação se acharem injustas. Existem dois mecanismos: (1) <strong>Impugnação</strong> —
               questiona REGRAS do edital (é legal? segue RLCP?); (2) <strong>Recurso</strong> — questiona RESULTADO (julgamento foi justo? habilitação foi correta?). Ambos têm prazos (expirados, perdem direito)
@@ -992,8 +992,8 @@ export default function AulaRLCP(props: AulaProps) {
             </p>
 
             <div className="bg-cyan-500/10 border-l-4 border-cyan-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-cyan-600 dark:text-cyan-400 text-sm mb-2">⚖️ Impugnação vs Recurso</p>
-              <ul className="text-sm space-y-1 text-foreground">
+              <p className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">⚖️ Impugnação vs Recurso</p>
+              <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Impugnação:</strong> ANTES da licitação; questiona REGRAS do edital; prazo curto</li>
                 <li>✓ <strong>Recurso:</strong> DEPOIS do resultado; questiona RESULTADO; prazo 5 dias</li>
                 <li>✓ <strong>Formal:</strong> Por escrito, com fundamentos legais, dentro de prazos rígidos</li>
@@ -1038,7 +1038,7 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 <ModuleConsolidation
-          index={2}
+          index={3}
           variant={variant}
           video={{
             videoId: "dQw4w9WgXcQ",
@@ -1067,12 +1067,12 @@ export default function AulaRLCP(props: AulaProps) {
             content: (
               <div className="space-y-4">
                 <div className="p-3 bg-indigo-500/10 rounded-lg border border-indigo-500/20">
-                  <p className="text-sm font-bold">Impugnação: DO EDITAL (Antes)</p>
-                  <p className="text-xs">Prazo: Até 2 dias úteis antes das propostas.</p>
+                  <p className="text-lg font-bold">Impugnação: DO EDITAL (Antes)</p>
+                  <p className="text-lg">Prazo: Até 2 dias úteis antes das propostas.</p>
                 </div>
                 <div className="p-3 bg-purple-500/10 rounded-lg border border-purple-500/20">
-                  <p className="text-sm font-bold">Recurso: DO RESULTADO (Depois)</p>
-                  <p className="text-xs">Prazo: 2 dias úteis após a publicação.</p>
+                  <p className="text-lg font-bold">Recurso: DO RESULTADO (Depois)</p>
+                  <p className="text-lg">Prazo: 2 dias úteis após a publicação.</p>
                 </div>
               </div>
             ),
@@ -1102,13 +1102,13 @@ export default function AulaRLCP(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={7}
-            variant={getModuleVariant(7)}
+            index={1}
+            variant={mv[7]}
             title="Contratos e Execução"
             description="De assinatura até cumprimento: obrigações, sanções, encerramento."
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               Após vencedor ser declarado, Petrobras formaliza <strong>contrato</strong> — acordo legal que define direitos e deveres de ambas as partes. Contrato é baseado no Edital e Termo de Referência,
               mas detalha ainda mais: cronograma de entrega, forma de pagamento (parcelas? frete incluído?), garantias exigidas (caução em dinheiro? seguro?), penalidades por atraso, como fiscalizar qualidade.
@@ -1133,8 +1133,8 @@ export default function AulaRLCP(props: AulaProps) {
             </p>
 
             <div className="bg-indigo-500/10 border-l-4 border-indigo-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-indigo-600 dark:text-indigo-400 text-sm mb-2">📝 Execução Contratual: Pilares</p>
-              <ul className="text-sm space-y-1 text-foreground">
+              <p className="font-bold text-indigo-600 dark:text-indigo-400 text-lg mb-2">📝 Execução Contratual: Pilares</p>
+              <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Contrato:</strong> Acordo formal baseado Edital + TR, com cronograma e formas pagamento</li>
                 <li>✓ <strong>Fiscalização:</strong> Gestor verifica conformidade com TR; aprova ou rejeita entrega</li>
                 <li>✓ <strong>Sanções:</strong> Multa, advertência, suspensão, impedimento por descumprimento</li>
@@ -1179,7 +1179,7 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 <ModuleConsolidation
-          index={2}
+          index={3}
           variant={variant}
           video={{
             videoId: "dQw4w9WgXcQ",
@@ -1201,7 +1201,7 @@ export default function AulaRLCP(props: AulaProps) {
           maceteVisual={{
             title: "Checklist de Recebimento",
             content: (
-              <ul className="text-left text-xs space-y-2 list-decimal list-inside">
+              <ul className="text-left text-lg space-y-2 list-decimal list-inside">
                 <li>Entrega do objeto</li>
                 <li>Recebimento Provisório (conferência)</li>
                 <li>Testes de qualidade</li>
@@ -1233,13 +1233,13 @@ export default function AulaRLCP(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={8}
-            variant={getModuleVariant(8)}
+            index={1}
+            variant={mv[8]}
             title="Inabilitação, Eliminação e Desempate"
             description="Critérios que excluem fornecedores e como desempatar propostas iguais."
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               Durante o processo licitatório, fornecedores podem ser <strong>inabilitados</strong> (excluídos por não cumprir requisitos) ou propostas podem ser <strong>eliminadas</strong> (rejeitadas por não conformidade técnica).
               Diferença: inabilitação é questão legal/administrativa (CNPJ inválido, débitos fiscais); eliminação é questão técnica (proposta não atende Termo de Referência). Ambos levam à rejeição.
@@ -1264,8 +1264,8 @@ export default function AulaRLCP(props: AulaProps) {
             </p>
 
             <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-2">❌ Inabilitação vs Eliminação vs Desempate</p>
-              <ul className="text-sm space-y-1 text-foreground">
+              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">❌ Inabilitação vs Eliminação vs Desempate</p>
+              <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Inabilitação:</strong> Fornecedor não qualificado (legal/fiscal); CNPJ, débitos, certificações</li>
                 <li>✓ <strong>Eliminação:</strong> Proposta não conforme (técnico); não atende TR, prazos, especificações</li>
                 <li>✓ <strong>Desempate:</strong> Dois fornecedores com mesmo preço; usar critério prédefinido no Edital</li>
@@ -1309,7 +1309,7 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 <ModuleConsolidation
-          index={2}
+          index={3}
           variant={variant}
           video={{
             videoId: "dQw4w9WgXcQ",
@@ -1339,11 +1339,11 @@ export default function AulaRLCP(props: AulaProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 bg-red-500/10 rounded-xl border border-red-500/20">
                   <h5 className="font-bold text-red-700 dark:text-red-400">Inabilitação</h5>
-                  <p className="text-xs text-muted-foreground">Problema com o LICITANTE (Documentos, Capacidade).</p>
+                  <p className="text-lg text-muted-foreground">Problema com o LICITANTE (Documentos, Capacidade).</p>
                 </div>
                 <div className="p-4 bg-orange-500/10 rounded-xl border border-orange-500/20">
                   <h5 className="font-bold text-orange-700 dark:text-orange-400">Desclassificação</h5>
-                  <p className="text-xs text-muted-foreground">Problema com a PROPOSTA (Preço, Técnica).</p>
+                  <p className="text-lg text-muted-foreground">Problema com a PROPOSTA (Preço, Técnica).</p>
                 </div>
               </div>
             ),
@@ -1374,13 +1374,13 @@ export default function AulaRLCP(props: AulaProps) {
         <div className="space-y-6">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={9}
-              variant={getModuleVariant(9)}
+              index={1}
+              variant={mv[9]}
               title="RLCP na Prática Petrobras"
               description="Casos reais, estrutura organizacional, papéis e responsabilidades."
             />
 
-            <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+            <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
               <p>
                 A Petrobras executa <strong>centenas de licitações por ano</strong> — desde pequenas compras de material de escritório até grandes contratos de engenharia (bilhões). Toda licitação segue RLCP.
                 <strong> Estrutura organizacional</strong> envolve: (1) Unidade de negócio (Ex.: E&P Norte) define necessidade; (2) Área de Suprimentos elabora Termo de Referência; (3) Comissão de Licitação
@@ -1407,8 +1407,8 @@ export default function AulaRLCP(props: AulaProps) {
               </p>
 
               <div className="bg-violet-500/10 border-l-4 border-violet-500 p-5 rounded-r-xl mt-6">
-                <p className="font-bold text-violet-600 dark:text-violet-400 text-sm mb-2">🏢 Papéis na Licitação Petrobras</p>
-                <ul className="text-sm space-y-1 text-foreground">
+                <p className="font-bold text-violet-600 dark:text-violet-400 text-lg mb-2">🏢 Papéis na Licitação Petrobras</p>
+                <ul className="text-lg space-y-1 text-foreground">
                   <li>✓ <strong>Gestor:</strong> Define necessidade; autoriza processo</li>
                   <li>✓ <strong>Especialista Suprimentos:</strong> Escreve Termo de Referência técnico</li>
                   <li>✓ <strong>Técnico Suprimento:</strong> Prepara Edital (regras); administra processo</li>
@@ -1437,7 +1437,7 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 <ModuleConsolidation
-          index={2}
+          index={3}
           variant={variant}
           video={{
             videoId: "dQw4w9WgXcQ",
@@ -1459,7 +1459,7 @@ export default function AulaRLCP(props: AulaProps) {
           maceteVisual={{
             title: "O Papel do Técnico",
             content: (
-              <p className="text-xs text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 O Técnico de Suprimento atua na elaboração do TR, participa de comissões e fiscaliza a entrega dos bens.
               </p>
             ),
@@ -1488,13 +1488,13 @@ export default function AulaRLCP(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={10}
-            variant={getModuleVariant(10)}
+            index={1}
+            variant={mv[10]}
             title="Simulado Mestre RLCP"
             description="Teste integrado: M1-M9 consolidados em questões CESGRANRIO autênticas."
           />
 
-          <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               Você completou 9 módulos: princípios, modalidades, procedimento, edital/TR, julgamento, recursos, contratos, inabilitação, e prática Petrobras. Agora <strong>consolida tudo</strong> em um
               <strong> Simulado Mestre</strong> que espelha questões CESGRANRIO reais. Este simulado testa INTEGRAÇÃO — questões combinam múltiplos módulos.
@@ -1518,8 +1518,8 @@ export default function AulaRLCP(props: AulaProps) {
             </p>
 
             <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-amber-600 dark:text-amber-400 text-sm mb-2">👑 Simulado Mestre: 5-Step Strategy</p>
-              <ol className="text-sm space-y-1 text-foreground list-decimal list-inside">
+              <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">👑 Simulado Mestre: 5-Step Strategy</p>
+              <ol className="text-lg space-y-1 text-foreground list-decimal list-inside">
                 <li><strong>Leia 2x:</strong> Contexto na primeira; Pergunta na segunda</li>
                 <li><strong>Identifique módulo-núcleo:</strong> Qual conceito (M1-M9) é central?</li>
                 <li><strong>Resolva em RLCP:</strong> Procure em Lei/RLCP (não adivinhe)</li>
@@ -1550,7 +1550,7 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 <ModuleConsolidation
-          index={2}
+          index={3}
           variant={variant}
           video={{
             videoId: "dQw4w9WgXcQ",
@@ -1571,7 +1571,7 @@ export default function AulaRLCP(props: AulaProps) {
           }}
           maceteVisual={{
             title: "Você está pronto!",
-            content: <p className="text-xs">Domine o RLCP e conquiste sua vaga.</p>,
+            content: <p className="text-lg">Domine o RLCP e conquiste sua vaga.</p>,
           }}
           audio={{
             audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",

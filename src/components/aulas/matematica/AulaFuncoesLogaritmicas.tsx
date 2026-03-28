@@ -1,3 +1,4 @@
+import { getAllModuleVariants } from "@/lib/moduleColors";
 // Last modified: 2026-03-13 - Upgraded with ModuleConsolidation (4-tab system) and C.E.D.E. pedagogy
 "use client";
 
@@ -53,6 +54,8 @@ const MODULE_DEFS = [
   { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
+
+const mv = [undefined, ...getAllModuleVariants()];
 
 export default function AulaFuncoesLogaritmicas({
   onComplete,
@@ -139,10 +142,7 @@ export default function AulaFuncoesLogaritmicas({
     }
   };
 
-  const isModuleUnlocked = (index: number) => {
-    if (isCompleted || index === 0) return true;
-    return completedModules.has(MODULE_DEFS[index - 1].id);
-  };
+  const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
 
   return (
     <AulaTemplate
@@ -173,12 +173,10 @@ export default function AulaFuncoesLogaritmicas({
       {/* ═══ MÓDULO 1: CONCEITO LOGARÍTMICO ═══ */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={1}
+          <ModuleBanner numero={1}
             titulo="O Conceito de Logaritmo"
             descricao="Números colossais encolhem em números menores através da pergunta fundamental."
-            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
-          />
+             variant={mv[1]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -338,7 +336,7 @@ export default function AulaFuncoesLogaritmicas({
 
 
 <ModuleConsolidation
-            index={1}
+            index={2}
             variant="indigo"
             video={{
               videoId: "Uj1K_2OT82A",
@@ -379,7 +377,7 @@ export default function AulaFuncoesLogaritmicas({
                       <QuizInterativo
               questoes={quizM1}
               titulo="QUIZ: Módulo Nº 1"
-              numero={2}
+              numero={3}
               variant="indigo"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -391,16 +389,14 @@ export default function AulaFuncoesLogaritmicas({
       {/* ═══ MÓDULO 2: PROPRIEDADES FUNDAMENTAIS ═══ */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={2}
+          <ModuleBanner numero={2}
             titulo="Propriedades Operacionais"
             descricao="Multiplicação encolhe para soma e potência descende como o tombo."
-            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
-          />
+             variant={mv[2]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={2}
+              index={1}
               title="A Vantagem Algébrica"
               description="Manobras lícitas que convertem calvários em passeios."
               variant="emerald"
@@ -562,7 +558,7 @@ export default function AulaFuncoesLogaritmicas({
                       <QuizInterativo
               questoes={quizM2}
               titulo="Fixação - Propriedades"
-              numero={2}
+              numero={3}
               variant="emerald"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
@@ -574,16 +570,14 @@ export default function AulaFuncoesLogaritmicas({
       {/* ═══ MÓDULO 3: EQUAÇÕES LOGARÍTMICAS ═══ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={3}
+          <ModuleBanner numero={3}
             titulo="Equações Logarítmicas"
             descricao="X nas cordas e logs somando e subtraindo do lado."
-            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
-          />
+             variant={mv[3]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={3}
+              index={1}
               title="Eliminando o Logaritmo"
               description="Para eliminar a palavra log da equação, a base inferior tem que se sacrificar."
               variant="cyan"
@@ -696,7 +690,7 @@ export default function AulaFuncoesLogaritmicas({
 
 
 <ModuleConsolidation
-            index={3}
+            index={2}
             variant="cyan"
             video={{
               videoId: "w5YdI5OXpGg",
@@ -736,7 +730,7 @@ export default function AulaFuncoesLogaritmicas({
                       <QuizInterativo
               questoes={quizM3}
               titulo="QUIZ: Módulo Nº 3"
-              numero={4}
+              numero={3}
               variant="cyan"
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -748,16 +742,14 @@ export default function AulaFuncoesLogaritmicas({
       {/* ═══ MÓDULO 4: CONDIÇÕES DE EXISTÊNCIA ═══ */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={4}
+          <ModuleBanner numero={4}
             titulo="Condições de Existência"
             descricao="Bancas colocam raízes falsas que não existem na vida real."
-            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
-          />
+             variant={mv[4]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={4}
+              index={1}
               title="A Masmorra de Erros"
               description="Um logaritmo negativo te levará a uma explosão no meio da prova."
               variant="blue"
@@ -904,7 +896,7 @@ export default function AulaFuncoesLogaritmicas({
 
 
 <ModuleConsolidation
-            index={4}
+            index={2}
             variant="blue"
             video={{
               videoId: "8X3_kPaKqgQ",
@@ -948,7 +940,7 @@ export default function AulaFuncoesLogaritmicas({
                       <QuizInterativo
               questoes={quizM4}
               titulo="Fixação - Condições de Existência"
-              numero={4}
+              numero={3}
               variant="blue"
               icone="🔍"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
@@ -960,16 +952,14 @@ export default function AulaFuncoesLogaritmicas({
       {/* ═══ MÓDULO 5: DESAFIO INTEGRADO ═══ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={5}
+          <ModuleBanner numero={5}
             titulo="Desafio Integrado"
             descricao="Combine todo o conhecimento em questões de média dificuldade."
-            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
-          />
+             variant={mv[5]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={5}
+              index={1}
               title="Consolidação do Conhecimento"
               description="Revisão de conceitos, propriedades, equações e domínios combinados."
               variant="amber"
@@ -1082,7 +1072,7 @@ export default function AulaFuncoesLogaritmicas({
 
 
 <ModuleConsolidation
-            index={5}
+            index={2}
             variant="amber"
             video={{
               videoId: "fJXCR-K8DxQ",
@@ -1118,7 +1108,7 @@ export default function AulaFuncoesLogaritmicas({
                       <QuizInterativo
               questoes={quizM5}
               titulo="QUIZ: Módulo Nº 5"
-              numero={6}
+              numero={3}
               variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -1130,16 +1120,14 @@ export default function AulaFuncoesLogaritmicas({
       {/* ═══ MÓDULO 6: FUNÇÕES LOGARÍTMICAS ═══ */}
       <TabsContent value="modulo-6" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={6}
+          <ModuleBanner numero={6}
             titulo="Funções Logarítmicas"
             descricao="Transformações, composições e o domínio das curvas que subem com cuidado."
-            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
-          />
+             variant={mv[6]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={6}
+              index={1}
               title="A Forma Padrão das Funções Log"
               description="Como as funções logarítmicas se comportam quando transformadas."
               variant="rose"
@@ -1298,7 +1286,7 @@ export default function AulaFuncoesLogaritmicas({
 
 
 <ModuleConsolidation
-            index={6}
+            index={2}
             variant="rose"
             video={{
               videoId: "TL_LjVyT_Xk",
@@ -1337,7 +1325,7 @@ export default function AulaFuncoesLogaritmicas({
                       <QuizInterativo
               questoes={quizM6}
               titulo="Fixação - Funções Logarítmicas"
-              numero={6}
+              numero={3}
               variant="rose"
               icone="📊"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
@@ -1349,16 +1337,14 @@ export default function AulaFuncoesLogaritmicas({
       {/* ═══ MÓDULO 7: SISTEMAS & INEQUAÇÕES ═══ */}
       <TabsContent value="modulo-7" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={7}
+          <ModuleBanner numero={7}
             titulo="Sistemas e Inequações"
             descricao="Quando múltiplas equações logarítmicas se encontram numa mesma arena."
-            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
-          />
+             variant={mv[7]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={7}
+              index={1}
               title="Combinações Táticas de Logaritmos"
               description="A combinação tática de restrições logarítmicas simultâneas."
               variant="indigo"
@@ -1489,7 +1475,7 @@ export default function AulaFuncoesLogaritmicas({
 
 
 <ModuleConsolidation
-            index={7}
+            index={2}
             variant="indigo"
             video={{
               videoId: "TjfFfaO-YO0",
@@ -1529,7 +1515,7 @@ export default function AulaFuncoesLogaritmicas({
                       <QuizInterativo
               questoes={quizM7}
               titulo="QUIZ: Módulo Nº 7"
-              numero={8}
+              numero={3}
               variant="indigo"
               icone="🔗"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
@@ -1541,16 +1527,14 @@ export default function AulaFuncoesLogaritmicas({
       {/* ═══ MÓDULO 8: RESOLUÇÃO REVERSA ═══ */}
       <TabsContent value="modulo-8" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={8}
+          <ModuleBanner numero={8}
             titulo="Resolução Reversa"
             descricao="Desconstruir problemas complexos até seus componentes logarítmicos primitivos."
-            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
-          />
+             variant={mv[8]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={8}
+              index={1}
               title="Decomposição de Problemas"
               description="Inverta a lógica: comece pelo resultado e trabalhe para trás até o argumento."
               variant="emerald"
@@ -1660,7 +1644,7 @@ export default function AulaFuncoesLogaritmicas({
 
 
 <ModuleConsolidation
-            index={8}
+            index={2}
             variant="emerald"
             video={{
               videoId: "K8oQAHHmXYQ",
@@ -1703,7 +1687,7 @@ export default function AulaFuncoesLogaritmicas({
                       <QuizInterativo
               questoes={quizM8}
               titulo="Fixação - Resolução Reversa"
-              numero={8}
+              numero={3}
               variant="emerald"
               icone="🔄"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
@@ -1715,16 +1699,14 @@ export default function AulaFuncoesLogaritmicas({
       {/* ═══ MÓDULO 9: APLICAÇÕES PETROBRAS ═══ */}
       <TabsContent value="modulo-9" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={9}
+          <ModuleBanner numero={9}
             titulo="Aplicações Petrobras"
             descricao="Onde os logaritmos vivem na indústria de petróleo e gás natural."
-            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
-          />
+             variant={mv[9]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={9}
+              index={1}
               title="Logaritmos no Mundo Real"
               description="A matemática por trás das operações de exploração e produção."
               variant="blue"
@@ -1849,7 +1831,7 @@ export default function AulaFuncoesLogaritmicas({
 
 
 <ModuleConsolidation
-            index={9}
+            index={2}
             variant="blue"
             video={{
               videoId: "uQDCPEEJVH0",
@@ -1892,7 +1874,7 @@ export default function AulaFuncoesLogaritmicas({
                       <QuizInterativo
               questoes={quizM9}
               titulo="QUIZ: Módulo Nº 9"
-              numero={10}
+              numero={3}
               variant="blue"
               icone="🛢️"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
@@ -1904,16 +1886,14 @@ export default function AulaFuncoesLogaritmicas({
       {/* ═══ MÓDULO 10: SIMULADO MESTRE ═══ */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={10}
+          <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="O teste final combinando todo o conhecimento de logaritmos. Prepare-se para a prova real."
-            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
-          />
+             variant={mv[10]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={10}
+              index={1}
               title="Integração Completa de Conhecimento"
               description="Questões que combinam múltiplos conceitos em um único desafio."
               variant="violet"
@@ -2045,7 +2025,7 @@ export default function AulaFuncoesLogaritmicas({
 
 
 <ModuleConsolidation
-            index={10}
+            index={2}
             variant="violet"
             video={{
               videoId: "mUFv1Y-JkjE",
@@ -2092,7 +2072,7 @@ export default function AulaFuncoesLogaritmicas({
                 questoes={quizM10}
                 titulo="Simulado Mestre - Domínio Logarítmico Completo"
                 icone="🏆"
-                numero={10}
+                numero={3}
                 variant="violet"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />

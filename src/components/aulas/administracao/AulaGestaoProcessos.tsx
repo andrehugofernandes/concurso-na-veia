@@ -181,7 +181,7 @@ export default function AulaGestaoProcessos({
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className="p-4 bg-blue-500/5 border border-blue-500/10 rounded-xl text-center">
                           <p className="font-bold text-blue-600 mb-1">Entradas (Inputs)</p>
-                          <p className="text-xs text-muted-foreground">Demanda, Informação, Matéria-prima, Insumos.</p>
+                          <p className="text-lg text-muted-foreground">Demanda, Informação, Matéria-prima, Insumos.</p>
                         </div>
                         <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-center flex flex-col justify-center">
                           <p className="font-bold text-blue-700">ATIVIDADES</p>
@@ -189,7 +189,7 @@ export default function AulaGestaoProcessos({
                         </div>
                         <div className="p-4 bg-blue-500/5 border border-blue-500/10 rounded-xl text-center">
                           <p className="font-bold text-blue-600 mb-1">Saídas (Outputs)</p>
-                          <p className="text-xs text-muted-foreground">Valor agredado, Produto final, Serviço prestado.</p>
+                          <p className="text-lg text-muted-foreground">Valor agredado, Produto final, Serviço prestado.</p>
                         </div>
                       </div>
 
@@ -197,7 +197,7 @@ export default function AulaGestaoProcessos({
                         <p className="font-bold text-slate-800 flex items-center gap-2">
                           <LuCheck className="text-blue-600" /> Atributos Críticos:
                         </p>
-                        <ul className="grid grid-cols-2 gap-2 text-sm">
+                        <ul className="grid grid-cols-2 gap-2 text-lg">
                           <li className="flex items-center gap-2">🔹 <strong>Repetitividade:</strong> Ocorre ciclicamente.</li>
                           <li className="flex items-center gap-2">🔹 <strong>Previsibilidade:</strong> Resultado esperado.</li>
                           <li className="flex items-center gap-2">🔹 <strong>Mecanismo:</strong> Como é feito.</li>
@@ -219,7 +219,7 @@ export default function AulaGestaoProcessos({
                           <div className="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-bold">1</div>
                           <div>
                             <p className="font-bold text-blue-900">Processos Primários (Core)</p>
-                            <p className="text-xs text-blue-700 mb-2">Aqueles que realizam a missão da empresa e tocam o cliente.</p>
+                            <p className="text-lg text-blue-700 mb-2">Aqueles que realizam a missão da empresa e tocam o cliente.</p>
                             <div className="flex flex-wrap gap-2">
                               <span className="px-2 py-1 bg-white border border-blue-200 rounded text-[10px] font-bold">Exploração</span>
                               <span className="px-2 py-1 bg-white border border-blue-200 rounded text-[10px] font-bold">Refino</span>
@@ -232,7 +232,7 @@ export default function AulaGestaoProcessos({
                           <div className="bg-slate-400 text-white w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-bold">2</div>
                           <div>
                             <p className="font-bold text-slate-800">Processos de Suporte (Apoio)</p>
-                            <p className="text-xs text-slate-600 mb-2">Garantem que os processos primários funcionem.</p>
+                            <p className="text-lg text-slate-600 mb-2">Garantem que os processos primários funcionem.</p>
                             <div className="flex flex-wrap gap-2">
                               <span className="px-2 py-1 bg-white border border-slate-200 rounded text-[10px] font-bold">RH</span>
                               <span className="px-2 py-1 bg-white border border-slate-200 rounded text-[10px] font-bold">TI</span>
@@ -245,7 +245,7 @@ export default function AulaGestaoProcessos({
                           <div className="bg-indigo-600 text-white w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-bold">3</div>
                           <div>
                             <p className="font-bold text-indigo-900">Processos Gerenciais (Gestão)</p>
-                            <p className="text-xs text-indigo-700 mb-2">Monitoram e direcionam a organização.</p>
+                            <p className="text-lg text-indigo-700 mb-2">Monitoram e direcionam a organização.</p>
                             <div className="flex flex-wrap gap-2">
                               <span className="px-2 py-1 bg-white border border-indigo-200 rounded text-[10px] font-bold">Compliance</span>
                               <span className="px-2 py-1 bg-white border border-indigo-200 rounded text-[10px] font-bold">Estratégia</span>
@@ -269,33 +269,33 @@ export default function AulaGestaoProcessos({
                           <div className="flex items-center gap-3">
                             <div className="text-blue-600 font-bold">Nível 1</div>
                             <div className="flex-1 h-2 bg-blue-200 rounded-full"><div className="w-1/5 h-full bg-blue-600 rounded-full" /></div>
-                            <div className="text-xs font-bold text-slate-700">MACROPROCESSO</div>
+                            <div className="text-lg font-bold text-slate-700">MACROPROCESSO</div>
                           </div>
                           <div className="flex items-center gap-3">
                             <div className="text-blue-600 font-bold">Nível 2</div>
                             <div className="flex-1 h-2 bg-blue-200 rounded-full"><div className="w-2/5 h-full bg-blue-600 rounded-full" /></div>
-                            <div className="text-xs font-bold text-slate-700">PROCESSO</div>
+                            <div className="text-lg font-bold text-slate-700">PROCESSO</div>
                           </div>
                           <div className="flex items-center gap-3">
                             <div className="text-blue-600 font-bold">Nível 3</div>
                             <div className="flex-1 h-2 bg-blue-200 rounded-full"><div className="w-3/5 h-full bg-blue-600 rounded-full" /></div>
-                            <div className="text-xs font-bold text-slate-700">SUBPROCESSO</div>
+                            <div className="text-lg font-bold text-slate-700">SUBPROCESSO</div>
                           </div>
                           <div className="flex items-center gap-3">
                             <div className="text-blue-600 font-bold">Nível 4</div>
                             <div className="flex-1 h-2 bg-blue-200 rounded-full"><div className="w-4/5 h-full bg-blue-600 rounded-full" /></div>
-                            <div className="text-xs font-bold text-slate-700">ATIVIDADE</div>
+                            <div className="text-lg font-bold text-slate-700">ATIVIDADE</div>
                           </div>
                           <div className="flex items-center gap-3">
                             <div className="text-blue-600 font-bold">Nível 5</div>
                             <div className="flex-1 h-2 bg-blue-200 rounded-full"><div className="w-5/5 h-full bg-blue-600 rounded-full" /></div>
-                            <div className="text-xs font-bold text-slate-700">TAREFA</div>
+                            <div className="text-lg font-bold text-slate-700">TAREFA</div>
                           </div>
                         </div>
                       </div>
 
                       <AlertBox tipo="info" titulo="Macete de Memorização">
-                        <p className="text-sm">Imagine uma boneca russa (Matrioska): O <strong>Macroprocesso</strong> é a maior, a <strong>Tarefa</strong> é a menorzinha lá dentro.</p>
+                        <p className="text-lg">Imagine uma boneca russa (Matrioska): O <strong>Macroprocesso</strong> é a maior, a <strong>Tarefa</strong> é a menorzinha lá dentro.</p>
                       </AlertBox>
                     </div>
                   ),
@@ -308,7 +308,7 @@ export default function AulaGestaoProcessos({
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl">
                           <p className="font-bold text-green-700 mb-2 flex items-center gap-2"><LuRepeat /> Processos</p>
-                          <ul className="text-xs space-y-1 text-green-800">
+                          <ul className="text-lg space-y-1 text-green-800">
                             <li>• Permanentes / Contínuos</li>
                             <li>• Geram produtos repetitivos</li>
                             <li>• Foco em eficiência (baixa incerteza)</li>
@@ -317,7 +317,7 @@ export default function AulaGestaoProcessos({
                         </div>
                         <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-xl">
                           <p className="font-bold text-orange-700 mb-2 flex items-center gap-2"><LuZap /> Projetos</p>
-                          <ul className="text-xs space-y-1 text-orange-800">
+                          <ul className="text-lg space-y-1 text-orange-800">
                             <li>• Temporários (Início e Fim)</li>
                             <li>• Geram resultados únicos</li>
                             <li>• Foco em eficácia (alta incerteza)</li>
@@ -327,7 +327,7 @@ export default function AulaGestaoProcessos({
                       </div>
 
                       <AlertBox tipo="warning" titulo="O Pulo do Gato!">
-                        <p className="text-sm">Se a questão falar que algo "tem fim determinado", mate na hora: é <strong>Projeto</strong>. Se falar em "rotina" ou "dia a dia", é <strong>Processo</strong>.</p>
+                        <p className="text-lg">Se a questão falar que algo "tem fim determinado", mate na hora: é <strong>Projeto</strong>. Se falar em "rotina" ou "dia a dia", é <strong>Processo</strong>.</p>
                       </AlertBox>
                     </div>
                   ),
@@ -371,7 +371,7 @@ export default function AulaGestaoProcessos({
               title: "O Mantra do Processo",
               content: (
                 <div className="space-y-4 text-left">
-                  <div className="p-4 bg-slate-900 text-white rounded-xl font-mono text-sm">
+                  <div className="p-4 bg-slate-900 text-white rounded-xl font-mono text-lg">
                     <p className="text-blue-400"># Definição Premium</p>
                     <p>Processo = <span className="text-amber-400">Input</span> + <span className="text-emerald-400">Atividade</span> + <span className="text-rose-400">Output</span> + <span className="text-indigo-400">Valor</span></p>
                   </div>
@@ -445,7 +445,7 @@ export default function AulaGestaoProcessos({
                         ].map((item, i) => (
                           <div key={i} className="flex items-start gap-3">
                             <span className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">{i+1}</span>
-                            <div className="text-sm">
+                            <div className="text-lg">
                               <span className="font-bold text-emerald-900">{item.etapa}:</span>{" "}
                               <span className="text-emerald-700">{item.desc}</span>
                             </div>
@@ -472,7 +472,7 @@ export default function AulaGestaoProcessos({
                       ].map((n, i) => (
                         <div key={i} className={`p-4 rounded-xl border border-black/5 ${n.cor} text-center`}>
                           <p className="font-bold text-[10px] uppercase text-slate-500">Nível {i+1}</p>
-                          <p className="font-bold text-emerald-900 text-xs">{n.nível}</p>
+                          <p className="font-bold text-emerald-900 text-lg">{n.nível}</p>
                           <p className="text-[10px] text-slate-600 mt-1">{n.texto}</p>
                         </div>
                       ))}
@@ -480,7 +480,7 @@ export default function AulaGestaoProcessos({
                     
                     <div className="p-4 bg-emerald-600 text-white rounded-xl text-center space-y-1">
                       <p className="font-bold">O Caso Petrobras</p>
-                      <p className="text-xs opacity-90 italic">Redução de burocracia no refino através da integração AS-IS e TO-BE.</p>
+                      <p className="text-lg opacity-90 italic">Redução de burocracia no refino através da integração AS-IS e TO-BE.</p>
                     </div>
                   </div>
                 ) 
@@ -491,7 +491,7 @@ export default function AulaGestaoProcessos({
                 conteudo: (
                   <div className="space-y-6">
                     <div className="relative p-6 bg-slate-900 text-white rounded-2xl overflow-hidden border-4 border-emerald-500">
-                      <p className="text-emerald-400 font-bold mb-4 uppercase tracking-widest text-xs">Os 3 Ps do Sucesso</p>
+                      <p className="text-emerald-400 font-bold mb-4 uppercase tracking-widest text-lg">Os 3 Ps do Sucesso</p>
                       <div className="space-y-4">
                         <div className="flex items-center gap-4">
                           <LuFileText className="text-2xl text-emerald-300" />
@@ -525,13 +525,13 @@ export default function AulaGestaoProcessos({
                 conteudo: (
                   <div className="space-y-4">
                     <p className="text-muted-foreground">BPM não é "bala de prata". Veja onde ele não se aplica bem:</p>
-                    <ul className="space-y-2 text-sm">
+                    <ul className="space-y-2 text-lg">
                       <li className="flex gap-2">❌ <strong>Processos Ad-Hoc:</strong> Atividades que mudam completamente toda vez (ex: criação artística pura).</li>
                       <li className="flex gap-2">❌ <strong>Foco apenas em TI:</strong> Implementar o software sem mudar a cultura das pessoas.</li>
                       <li className="flex gap-2">❌ <strong>Paralisia por Análise:</strong> Mapear até o infinito e nunca implementar a melhoria.</li>
                     </ul>
                     <AlertBox tipo="warning" titulo="Termo Técnico: Paralisia por Análise">
-                      <p className="text-xs">É o erro de gastar meses no AS-IS enquanto a organização perde dinheiro. A CESGRANRIO gosta de situações-problema sobre isso.</p>
+                      <p className="text-lg">É o erro de gastar meses no AS-IS enquanto a organização perde dinheiro. A CESGRANRIO gosta de situações-problema sobre isso.</p>
                     </AlertBox>
                   </div>
                 ) 
@@ -574,7 +574,7 @@ export default function AulaGestaoProcessos({
               title: "O Mantra do Gestor de Processos", 
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">"Medir para entender, gerir para controlar, otimizar para evoluir."</p>
+                  <p className="text-lg italic">"Medir para entender, gerir para controlar, otimizar para evoluir."</p>
                   <div className="grid grid-cols-2 gap-2 text-[10px] font-bold">
                     <div className="bg-emerald-100 text-emerald-800 p-2 rounded">EFICIÊNCIA: "Fazer certo"</div>
                     <div className="bg-blue-100 text-blue-800 p-2 rounded">EFICÁCIA: "Fazer o certo"</div>
@@ -591,8 +591,8 @@ export default function AulaGestaoProcessos({
 
                       <QuizInterativo 
               questoes={quizM2} 
-              titulo="Desafio de Mestre - Ciclo BPM" 
-              numero={2} 
+              titulo="QUIZ: Módulo Nº 2" 
+              numero={3} 
               variant={mv[2]} 
               icone="🎯" 
               onComplete={(score) => handleModuleComplete("modulo-2", score)} 
@@ -631,17 +631,17 @@ export default function AulaGestaoProcessos({
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-3">
-                        <p className="font-bold text-amber-700 text-sm flex items-center gap-2">⭕ Eventos (Ondas de Impacto)</p>
-                        <ul className="text-xs space-y-2">
+                        <p className="font-bold text-amber-700 text-lg flex items-center gap-2">⭕ Eventos (Ondas de Impacto)</p>
+                        <ul className="text-lg space-y-2">
                           <li className="flex items-center gap-2"><span className="w-4 h-4 rounded-full border border-slate-400" /> <strong>Início:</strong> Borda fina.</li>
                           <li className="flex items-center gap-2"><span className="w-4 h-4 rounded-full border-2 border-double border-slate-400" /> <strong>Intermediário:</strong> Borda dupla.</li>
                           <li className="flex items-center gap-2"><span className="w-4 h-4 rounded-full border-2 border-slate-600 bg-slate-100" /> <strong>Fim:</strong> Borda grossa.</li>
                         </ul>
                       </div>
                       
-                      <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-3 text-sm">
-                        <p className="font-bold text-amber-700 text-sm flex items-center gap-2">Rect: Atividades (Ação)</p>
-                        <ul className="text-xs space-y-2">
+                      <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-3 text-lg">
+                        <p className="font-bold text-amber-700 text-lg flex items-center gap-2">Rect: Atividades (Ação)</p>
+                        <ul className="text-lg space-y-2">
                           <li>🟦 <strong>Tarefa:</strong> Unidade atômica (não divídível).</li>
                           <li>🟦 [+] <strong>Subprocesso:</strong> Atividade complexa detalhada em outro diagrama.</li>
                         </ul>
@@ -663,7 +663,7 @@ export default function AulaGestaoProcessos({
                           <span className="-rotate-45 font-bold text-amber-700">X</span>
                         </div>
                         <div>
-                          <p className="font-bold text-amber-800 text-xs">Exclusivo (XOR)</p>
+                          <p className="font-bold text-amber-800 text-lg">Exclusivo (XOR)</p>
                           <p className="text-[10px] text-amber-700">Apenas UM caminho será seguido. <span className="italic">"Ou café ou chá".</span></p>
                         </div>
                       </div>
@@ -673,7 +673,7 @@ export default function AulaGestaoProcessos({
                           <span className="-rotate-45 font-bold text-amber-700">+</span>
                         </div>
                         <div>
-                          <p className="font-bold text-amber-800 text-xs">Paralelo (AND)</p>
+                          <p className="font-bold text-amber-800 text-lg">Paralelo (AND)</p>
                           <p className="text-[10px] text-amber-700">TODOS os caminhos ocorrem ao mesmo tempo. <span className="italic">"Pague e retire".</span></p>
                         </div>
                       </div>
@@ -683,7 +683,7 @@ export default function AulaGestaoProcessos({
                           <span className="-rotate-45 font-bold text-amber-700">O</span>
                         </div>
                         <div>
-                          <p className="font-bold text-amber-800 text-xs">Inclusivo (OR)</p>
+                          <p className="font-bold text-amber-800 text-lg">Inclusivo (OR)</p>
                           <p className="text-[10px] text-amber-700">UM ou MAIS caminhos dependendo das condições.</p>
                         </div>
                       </div>
@@ -699,19 +699,19 @@ export default function AulaGestaoProcessos({
                     <div className="p-5 bg-slate-900 text-white rounded-2xl relative">
                       <div className="absolute top-4 right-4 text-amber-400"><LuLayoutDashboard className="text-2xl" /></div>
                       <p className="font-bold mb-3">Geografia do Processo:</p>
-                      <div className="space-y-3 text-sm">
+                      <div className="space-y-3 text-lg">
                         <div className="border border-slate-700 p-3 rounded-lg">
                           <p className="text-amber-400 font-bold uppercase text-[10px] tracking-widest">Piscina (Pool)</p>
-                          <p className="text-xs">Representa o Participante (ex: Petrobras, Cliente, Banco).</p>
+                          <p className="text-lg">Representa o Participante (ex: Petrobras, Cliente, Banco).</p>
                         </div>
                         <div className="border border-slate-700 p-3 rounded-lg ml-4">
                           <p className="text-blue-400 font-bold uppercase text-[10px] tracking-widest">Raia (Lane)</p>
-                          <p className="text-xs">Subdivide o Pool por cargo ou área (ex: RH, Financeiro).</p>
+                          <p className="text-lg">Subdivide o Pool por cargo ou área (ex: RH, Financeiro).</p>
                         </div>
                       </div>
                     </div>
                     <AlertBox tipo="success" titulo="Regra de Ouro!">
-                      <p className="text-xs">Fluxos de SEQUÊNCIA (setas cheias) nunca cruzam as bordas de um Pool. Para falar com outro Pool, use Fluxo de MENSAGEM (setas tracejadas).</p>
+                      <p className="text-lg">Fluxos de SEQUÊNCIA (setas cheias) nunca cruzam as bordas de um Pool. Para falar com outro Pool, use Fluxo de MENSAGEM (setas tracejadas).</p>
                     </AlertBox>
                   </div>
                 ) 
@@ -733,7 +733,7 @@ export default function AulaGestaoProcessos({
                       </div>
                     </div>
                     <AlertBox tipo="info" titulo="Subprocesso em Loop">
-                      <p className="text-xs">Representado por uma espiral no fundo do retângulo. Indica que a atividade se repete até que uma condição seja atingida.</p>
+                      <p className="text-lg">Representado por uma espiral no fundo do retângulo. Indica que a atividade se repete até que uma condição seja atingida.</p>
                     </AlertBox>
                   </div>
                 ) 
@@ -777,9 +777,9 @@ export default function AulaGestaoProcessos({
               content: (
                 <div className="space-y-3 text-left">
                   <div className="flex flex-col gap-2">
-                    <div className="flex gap-2 items-center"><span className="w-8 h-8 rounded-full border-2 border-slate-400 bg-white" /> <span className="text-xs">Borda fina = Começou!</span></div>
-                    <div className="flex gap-2 items-center"><span className="w-8 h-8 rounded-full border-2 border-double border-slate-400 bg-white" /> <span className="text-xs">Borda dupla = Esperou!</span></div>
-                    <div className="flex gap-2 items-center"><span className="w-8 h-8 rounded-full border-4 border-slate-600 bg-slate-200" /> <span className="text-xs">Borda grossa = Acabou!</span></div>
+                    <div className="flex gap-2 items-center"><span className="w-8 h-8 rounded-full border-2 border-slate-400 bg-white" /> <span className="text-lg">Borda fina = Começou!</span></div>
+                    <div className="flex gap-2 items-center"><span className="w-8 h-8 rounded-full border-2 border-double border-slate-400 bg-white" /> <span className="text-lg">Borda dupla = Esperou!</span></div>
+                    <div className="flex gap-2 items-center"><span className="w-8 h-8 rounded-full border-4 border-slate-600 bg-slate-200" /> <span className="text-lg">Borda grossa = Acabou!</span></div>
                   </div>
                 </div>
               ) 
@@ -834,16 +834,16 @@ export default function AulaGestaoProcessos({
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="p-5 bg-rose-50 border border-rose-200 rounded-2xl">
                         <p className="font-bold text-rose-800 flex items-center gap-2 mb-2">🔍 AS-IS (Como é)</p>
-                        <p className="text-xs text-rose-700">A visão nua e crua da realidade. Identifica gargalos, redundâncias e atividades que não agregam valor. É o diagnóstico.</p>
+                        <p className="text-lg text-rose-700">A visão nua e crua da realidade. Identifica gargalos, redundâncias e atividades que não agregam valor. É o diagnóstico.</p>
                       </div>
                       <div className="p-5 bg-emerald-50 border border-emerald-200 rounded-2xl">
                         <p className="font-bold text-emerald-800 flex items-center gap-2 mb-2">🚀 TO-BE (Como será)</p>
-                        <p className="text-xs text-emerald-700">O desenho do processo otimizado. Aplica melhorias, automação e novos padrões. É o objetivo final.</p>
+                        <p className="text-lg text-emerald-700">O desenho do processo otimizado. Aplica melhorias, automação e novos padrões. É o objetivo final.</p>
                       </div>
                     </div>
 
                     <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                      <p className="text-xs font-bold text-slate-800 mb-2">Técnicas de Coleta de Dados:</p>
+                      <p className="text-lg font-bold text-slate-800 mb-2">Técnicas de Coleta de Dados:</p>
                       <div className="grid grid-cols-2 gap-2">
                         <div className="flex items-center gap-2 text-[10px] bg-white p-2 rounded border border-slate-100 italic">"Entrevistas individuais"</div>
                         <div className="flex items-center gap-2 text-[10px] bg-white p-2 rounded border border-slate-100 italic">"Questionários (Surveys)"</div>
@@ -863,8 +863,8 @@ export default function AulaGestaoProcessos({
                     
                     <div className="border-l-4 border-rose-500 pl-4 py-2 space-y-4">
                       <div>
-                        <p className="font-bold text-rose-900 text-sm">Cenário AS-IS:</p>
-                        <ul className="text-xs text-rose-700 list-disc ml-4 mt-1">
+                        <p className="font-bold text-rose-900 text-lg">Cenário AS-IS:</p>
+                        <ul className="text-lg text-rose-700 list-disc ml-4 mt-1">
                           <li>Solicitação via formulário de papel (demora 2 dias).</li>
                           <li>Aprovação manual de 3 gerentes diferentes.</li>
                           <li>Estoque não é verificado antes da ordem de serviço.</li>
@@ -876,8 +876,8 @@ export default function AulaGestaoProcessos({
                       </div>
 
                       <div>
-                        <p className="font-bold text-emerald-900 text-sm">Cenário TO-BE:</p>
-                        <ul className="text-xs text-emerald-700 list-disc ml-4 mt-1">
+                        <p className="font-bold text-emerald-900 text-lg">Cenário TO-BE:</p>
+                        <ul className="text-lg text-emerald-700 list-disc ml-4 mt-1">
                           <li>Abertura via App mobile (imediato).</li>
                           <li>Aprovação automática baseada em níveis de risco.</li>
                           <li>Reserva automática de peças no almoxarifado via IoT.</li>
@@ -894,19 +894,19 @@ export default function AulaGestaoProcessos({
                   <div className="space-y-4">
                     <p className="text-muted-foreground">Evite o que a CESGRANRIO gosta de cobrar:</p>
                     <div className="bg-amber-900 p-6 rounded-2xl text-amber-100 border-2 border-amber-600 shadow-lg">
-                      <p className="font-bold mb-4 uppercase text-xs tracking-tighter">Checklist de Sobrevivência</p>
+                      <p className="font-bold mb-4 uppercase text-lg tracking-tighter">Checklist de Sobrevivência</p>
                       <div className="space-y-3">
                         <div className="flex gap-3">
                           <LuCheck className="shrink-0 text-amber-400" />
-                          <p className="text-xs"><strong>Mapear o "Deveria Ser":</strong> No AS-IS, mapeie o erro, não o manual de procedimentos.</p>
+                          <p className="text-lg"><strong>Mapear o "Deveria Ser":</strong> No AS-IS, mapeie o erro, não o manual de procedimentos.</p>
                         </div>
                         <div className="flex gap-3">
                           <LuCheck className="shrink-0 text-amber-400" />
-                          <p className="text-xs"><strong>Esquecer o Cliente:</strong> O processo deve agregar valor para quem recebe o output (interno ou externo).</p>
+                          <p className="text-lg"><strong>Esquecer o Cliente:</strong> O processo deve agregar valor para quem recebe o output (interno ou externo).</p>
                         </div>
                         <div className="flex gap-3">
                           <LuCheck className="shrink-0 text-amber-400" />
-                          <p className="text-xs"><strong>Documentação Viciada:</strong> Usar termos técnicos que só a TI entende ignora o negócio.</p>
+                          <p className="text-lg"><strong>Documentação Viciada:</strong> Usar termos técnicos que só a TI entende ignora o negócio.</p>
                         </div>
                       </div>
                     </div>
@@ -918,7 +918,7 @@ export default function AulaGestaoProcessos({
                 icone: <LuTrophy />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-muted-foreground text-sm">Existem situações onde o mapeamento detalhado é desperdício:</p>
+                    <p className="text-muted-foreground text-lg">Existem situações onde o mapeamento detalhado é desperdício:</p>
                     <ul className="space-y-3">
                       <li className="p-3 bg-slate-100 rounded-lg flex items-center gap-3">
                         <span className="text-xl">🏃</span>
@@ -932,7 +932,7 @@ export default function AulaGestaoProcessos({
                       </li>
                     </ul>
                     <AlertBox tipo="warning" titulo="Pegadinha de Prova">
-                      <p className="text-xs">A CESGRANRIO pode perguntar se o TO-BE deve ser feito ANTES do AS-IS. <strong>Nunca!</strong> Sem saber onde você está (AS-IS), você não traça a rota para onde quer ir.</p>
+                      <p className="text-lg">A CESGRANRIO pode perguntar se o TO-BE deve ser feito ANTES do AS-IS. <strong>Nunca!</strong> Sem saber onde você está (AS-IS), você não traça a rota para onde quer ir.</p>
                     </AlertBox>
                   </div>
                 ) 
@@ -975,7 +975,7 @@ export default function AulaGestaoProcessos({
               title: "O Pulo do Gato", 
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm font-bold text-rose-800">Gap Analysis:</p>
+                  <p className="text-lg font-bold text-rose-800">Gap Analysis:</p>
                   <p className="text-[10px] leading-snug italic text-rose-700">"GAP = (Onde queremos estar) - (Onde estamos hoje). A distância é o seu plano de projeto!"</p>
                 </div>
               ) 
@@ -989,8 +989,8 @@ export default function AulaGestaoProcessos({
 
                       <QuizInterativo 
               questoes={quizM4} 
-              titulo="Fixação - Mapeamento e Diagnóstico" 
-              numero={4} 
+              titulo="QUIZ: Módulo Nº 4" 
+              numero={3} 
               variant={mv[4]} 
               icone="🎯" 
               onComplete={(score) => handleModuleComplete("modulo-4", score)} 
@@ -1051,7 +1051,7 @@ export default function AulaGestaoProcessos({
                     </div>
 
                     <AlertBox tipo="info" titulo="O 'A' é o mais importante!">
-                      <p className="text-xs">Muitas empresas param no 'C' (descobrem o erro mas não agem). A Melhoria Contínua só ocorre quando o ciclo recomeça a partir de uma nova base (Standard).</p>
+                      <p className="text-lg">Muitas empresas param no 'C' (descobrem o erro mas não agem). A Melhoria Contínua só ocorre quando o ciclo recomeça a partir de uma nova base (Standard).</p>
                     </AlertBox>
                   </div>
                 ) 
@@ -1083,7 +1083,7 @@ export default function AulaGestaoProcessos({
                 icone: <LuLightbulb />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-muted-foreground text-xs font-bold uppercase">Mnemônico: TIM WOODS</p>
+                    <p className="text-muted-foreground text-lg font-bold uppercase">Mnemônico: TIM WOODS</p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                       {[
                         { k: "T", v: "Transporte" },
@@ -1110,7 +1110,7 @@ export default function AulaGestaoProcessos({
                 conteudo: (
                   <div className="space-y-4">
                     <p className="text-muted-foreground">Não confunda Melhoria Incremental com Inovação Disruptiva:</p>
-                    <table className="w-full text-xs">
+                    <table className="w-full text-lg">
                       <thead>
                         <tr className="bg-slate-100 text-slate-700">
                           <th className="p-2 border border-slate-200 text-left">Característica</th>
@@ -1234,16 +1234,16 @@ export default function AulaGestaoProcessos({
                     
                     <div className="space-y-4">
                       <div className="p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl">
-                        <p className="font-bold text-amber-900 text-sm">⚙️ Eficiência (Meio)</p>
-                        <p className="text-xs text-amber-700">Fazer as coisas certo. Foco no uso dos recursos, custos e desperdícios. <span className="italic">"Economizar combustível durante a viagem."</span></p>
+                        <p className="font-bold text-amber-900 text-lg">⚙️ Eficiência (Meio)</p>
+                        <p className="text-lg text-amber-700">Fazer as coisas certo. Foco no uso dos recursos, custos e desperdícios. <span className="italic">"Economizar combustível durante a viagem."</span></p>
                       </div>
                       <div className="p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-xl">
-                        <p className="font-bold text-blue-900 text-sm">🎯 Eficácia (Fim)</p>
-                        <p className="text-xs text-blue-700">Fazer a coisa certa. Foco no resultado, na meta e no objetivo atingido. <span className="italic">"Chegar ao destino final."</span></p>
+                        <p className="font-bold text-blue-900 text-lg">🎯 Eficácia (Fim)</p>
+                        <p className="text-lg text-blue-700">Fazer a coisa certa. Foco no resultado, na meta e no objetivo atingido. <span className="italic">"Chegar ao destino final."</span></p>
                       </div>
                       <div className="p-4 bg-emerald-50 border-l-4 border-emerald-500 rounded-r-xl">
-                        <p className="font-bold text-emerald-900 text-sm">💎 Efetividade (Impacto)</p>
-                        <p className="text-xs text-emerald-700">O impacto real. Foco na satisfação do cliente e na mudança social/organizacional. <span className="italic">"A viagem resolveu o problema do cliente?"</span></p>
+                        <p className="font-bold text-emerald-900 text-lg">💎 Efetividade (Impacto)</p>
+                        <p className="text-lg text-emerald-700">O impacto real. Foco na satisfação do cliente e na mudança social/organizacional. <span className="italic">"A viagem resolveu o problema do cliente?"</span></p>
                       </div>
                     </div>
                   </div>
@@ -1267,7 +1267,7 @@ export default function AulaGestaoProcessos({
                         <div key={i} className="flex items-center gap-3 p-3 bg-white border border-slate-200 rounded-xl">
                           <span className="w-8 h-8 flex items-center justify-center bg-amber-600 text-white font-black rounded-lg shrink-0">{s.l}</span>
                           <div>
-                            <p className="font-bold text-xs text-slate-800">{s.t}</p>
+                            <p className="font-bold text-lg text-slate-800">{s.t}</p>
                             <p className="text-[10px] text-slate-500">{s.d}</p>
                           </div>
                         </div>
@@ -1282,8 +1282,8 @@ export default function AulaGestaoProcessos({
                 conteudo: (
                   <div className="space-y-4">
                     <div className="p-6 bg-slate-900 text-white rounded-2xl space-y-4">
-                      <p className="font-bold text-amber-400 uppercase text-xs">O Painel de Controle</p>
-                      <p className="text-xs opacity-80">Assim como o cockpit de um avião, a Gestão à Vista permite que todos na Petrobras vejam o status do processo em tempo real através de luzes (Verde/Amarelo/Vermelho).</p>
+                      <p className="font-bold text-amber-400 uppercase text-lg">O Painel de Controle</p>
+                      <p className="text-lg opacity-80">Assim como o cockpit de um avião, a Gestão à Vista permite que todos na Petrobras vejam o status do processo em tempo real através de luzes (Verde/Amarelo/Vermelho).</p>
                       <div className="flex justify-around py-2">
                         <div className="w-12 h-12 rounded-full bg-red-500 shadow-[0_0_15px_rgba(239,68,68,0.5)] animate-pulse" />
                         <div className="w-12 h-12 rounded-full bg-yellow-500/30" />
@@ -1299,11 +1299,11 @@ export default function AulaGestaoProcessos({
                 conteudo: (
                   <div className="space-y-4">
                     <AlertBox tipo="warning" titulo="Efeito Cobra">
-                      <p className="text-xs leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         Cuidado com metas que incentivam o comportamento errado. Exemplo: "Reduzir tempo de atendimento no suporte". O funcionário pode simplesmente desligar na cara do cliente para fechar o chamado rápido.
                       </p>
                     </AlertBox>
-                    <p className="text-xs italic text-slate-500">Sempre cruze indicadores (ex: Velocidade x Qualidade).</p>
+                    <p className="text-lg italic text-slate-500">Sempre cruze indicadores (ex: Velocidade x Qualidade).</p>
                   </div>
                 ) 
               },
@@ -1361,8 +1361,8 @@ export default function AulaGestaoProcessos({
 
                       <QuizInterativo 
               questoes={quizM6} 
-              titulo="Fixação - KPIs e Métricas" 
-              numero={6} 
+              titulo="QUIZ: Módulo Nº 6" 
+              numero={3} 
               variant={mv[6]} 
               icone="📈" 
               onComplete={(score) => handleModuleComplete("modulo-6", score)} 
@@ -1399,11 +1399,11 @@ export default function AulaGestaoProcessos({
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl">
-                        <p className="font-bold text-blue-800 text-xs mb-2">🤖 BPMS (Orquestrador)</p>
+                        <p className="font-bold text-blue-800 text-lg mb-2">🤖 BPMS (Orquestrador)</p>
                         <p className="text-[10px] text-blue-700">Faz a gestão do fluxo de ponta a ponta. Conecta pessoas e sistemas. É o "maestro".</p>
                       </div>
                       <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
-                        <p className="font-bold text-slate-800 text-xs mb-2">⚡ RPA (O Robô)</p>
+                        <p className="font-bold text-slate-800 text-lg mb-2">⚡ RPA (O Robô)</p>
                         <p className="text-[10px] text-slate-700">Imita o clique do humano na tela. Ideal para sistemas legados que não têm API. É o "trabalhador braçal digital".</p>
                       </div>
                     </div>
@@ -1415,7 +1415,7 @@ export default function AulaGestaoProcessos({
                 icone: <LuBookOpen />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-sm font-bold">Automação de Requisição de Compras:</p>
+                    <p className="text-muted-foreground text-lg font-bold">Automação de Requisição de Compras:</p>
                     <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-3">
                       <div className="flex items-center gap-3">
                         <div className="w-6 h-6 rounded bg-blue-600 text-white flex items-center justify-center text-[10px]">1</div>
@@ -1439,7 +1439,7 @@ export default function AulaGestaoProcessos({
                 conteudo: (
                   <div className="space-y-4">
                     <AlertBox tipo="success" titulo="Dica Premium">
-                      <p className="text-xs">
+                      <p className="text-lg">
                         O futuro não é programar código complexo, é desenhar processos em interfaces visuais. Na prova, lembre-se que o <strong>BPMS</strong> facilita a agilidade na mudança das regras de negócio.
                       </p>
                     </AlertBox>
@@ -1455,7 +1455,7 @@ export default function AulaGestaoProcessos({
                     <div className="p-4 bg-rose-900 text-white rounded-xl text-center">
                       <p className="font-black italic">"Automatizar um processo bagunçado apenas torna a bagunça mais rápida."</p>
                     </div>
-                    <p className="text-xs text-slate-500 text-center uppercase font-bold tracking-widest mt-2 shrink-0">Simplifique antes de automatizar.</p>
+                    <p className="text-lg text-slate-500 text-center uppercase font-bold tracking-widest mt-2 shrink-0">Simplifique antes de automatizar.</p>
                   </div>
                 ) 
               },
@@ -1497,7 +1497,7 @@ export default function AulaGestaoProcessos({
               title: "O Mantra Tech", 
               content: (
                 <div className="space-y-2 text-left">
-                  <p className="text-sm italic">"Se é repetitivo, é robô. Se é decisão, é regra. Se é fluxo, é processo."</p>
+                  <p className="text-lg italic">"Se é repetitivo, é robô. Se é decisão, é regra. Se é fluxo, é processo."</p>
                 </div>
               ) 
             }} 
@@ -1544,7 +1544,7 @@ export default function AulaGestaoProcessos({
                 icone: <LuBrain />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-sm">Essenciais para qualquer analista de processos:</p>
+                    <p className="text-muted-foreground text-lg">Essenciais para qualquer analista de processos:</p>
                     <div className="grid grid-cols-2 gap-2">
                        <div className="bg-emerald-50 p-2 rounded border border-emerald-100 text-[10px] font-bold">1. Fluxograma</div>
                        <div className="bg-emerald-50 p-2 rounded border border-emerald-100 text-[10px] font-bold">2. Diagrama de Ishikawa (Espinha de Peixe)</div>
@@ -1562,7 +1562,7 @@ export default function AulaGestaoProcessos({
                 icone: <LuBookOpen />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-xs font-bold uppercase">Causa e Efeito (Os 6Ms):</p>
+                    <p className="text-muted-foreground text-lg font-bold uppercase">Causa e Efeito (Os 6Ms):</p>
                     <div className="bg-slate-900 p-6 rounded-2xl text-white">
                        <div className="flex flex-wrap gap-2 text-[10px]">
                           <span className="px-2 py-1 bg-emerald-600 rounded">Método</span>
@@ -1585,7 +1585,7 @@ export default function AulaGestaoProcessos({
                 conteudo: (
                   <div className="space-y-4">
                     <AlertBox tipo="info" titulo="O que a Prova quer de você?">
-                       <p className="text-xs">
+                       <p className="text-lg">
                           Saiba que a ISO 9001:2015 exige a <strong>Abordagem por Processos</strong> e a <strong>Mentalidade de Risco</strong>. Não é mais só documentar, é garantir que o processo gera valor com risco controlado.
                        </p>
                     </AlertBox>
@@ -1658,8 +1658,8 @@ export default function AulaGestaoProcessos({
 
                       <QuizInterativo 
               questoes={quizM8} 
-              titulo="Fixação - Gestão da Qualidade" 
-              numero={8} 
+              titulo="QUIZ: Módulo Nº 8" 
+              numero={3} 
               variant={mv[8]} 
               icone="🏆" 
               onComplete={(score) => handleModuleComplete("modulo-8", score)} 
@@ -1692,18 +1692,18 @@ export default function AulaGestaoProcessos({
                 icone: <LuBrain />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-sm">O petróleo percorre um longo caminho de processos:</p>
+                    <p className="text-muted-foreground text-lg">O petróleo percorre um longo caminho de processos:</p>
                     <div className="flex flex-col gap-4">
                        <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl relative overflow-hidden">
-                          <p className="font-bold text-rose-800 text-xs">💦 Upstream (Exploração e Produção)</p>
+                          <p className="font-bold text-rose-800 text-lg">💦 Upstream (Exploração e Produção)</p>
                           <p className="text-[10px] text-rose-700">Achar o óleo e tirar do mar. Processos de altíssimo risco e custo.</p>
                        </div>
                        <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl">
-                          <p className="font-bold text-amber-800 text-xs">🚢 Midstream (Transporte e Logística)</p>
+                          <p className="font-bold text-amber-800 text-lg">🚢 Midstream (Transporte e Logística)</p>
                           <p className="text-[10px] text-amber-700">Dutos, navios e estocagem. O elo de ligação.</p>
                        </div>
                        <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
-                          <p className="font-bold text-emerald-800 text-xs">⛽ Downstream (Refino e Distribuição)</p>
+                          <p className="font-bold text-emerald-800 text-lg">⛽ Downstream (Refino e Distribuição)</p>
                           <p className="text-[10px] text-emerald-700">Transformação em gasolina, diesel e plásticos. Venda ao consumidor.</p>
                        </div>
                     </div>
@@ -1715,7 +1715,7 @@ export default function AulaGestaoProcessos({
                 icone: <LuBookOpen />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-muted-foreground text-xs leading-relaxed">
+                    <p className="text-muted-foreground text-lg leading-relaxed">
                        Na Petrobras, o processo de <strong>Segurança, Meio Ambiente e Saúde (SMS)</strong> é transversal. Ele interrompe qualquer outro processo se houver risco iminente de acidente. É a cultura da "Interrupção de Segurança".
                     </p>
                   </div>
@@ -1727,8 +1727,8 @@ export default function AulaGestaoProcessos({
                 conteudo: (
                   <div className="space-y-4">
                     <div className="p-5 bg-slate-900 text-white rounded-2xl border-b-4 border-rose-500">
-                       <p className="text-xs font-bold text-rose-400 mb-2 uppercase">Fique de Olho!</p>
-                       <p className="text-xs">
+                       <p className="text-lg font-bold text-rose-400 mb-2 uppercase">Fique de Olho!</p>
+                       <p className="text-lg">
                           Auditorias na Petrobras buscam conformidade com os processos internos (Manuais da Qualidade). Qualquer desvio deve ser relatado como "NÃO CONFORMIDADE".
                        </p>
                     </div>
@@ -1887,7 +1887,7 @@ export default function AulaGestaoProcessos({
             </div>
 
             <AlertBox tipo="success" titulo="Aprovação Petrobras">
-              <p className="text-xs">
+              <p className="text-lg">
                 A CESGRANRIO costuma cobrar a integração desses conceitos. Saiba que a <strong>Gestão de Processos</strong> não é uma ilha; ela serve ao <strong>Planejamento Estratégico</strong> da companhia por meio de indicadores (KPIs).
               </p>
             </AlertBox>
@@ -1896,8 +1896,8 @@ export default function AulaGestaoProcessos({
           <section id="quiz-modulo-10" className="mt-16">
             <QuizInterativo 
               questoes={quizM10} 
-              titulo="GRANDE SIMULADO - GESTÃO DE PROCESSOS" 
-              numero={10} 
+              titulo="QUIZ: Módulo Nº 10" 
+              numero={2} 
               variant={mv[10]} 
               icone="👑" 
               onComplete={(score) => handleModuleComplete("modulo-10", score)} 
@@ -1905,7 +1905,7 @@ export default function AulaGestaoProcessos({
           </section>
 
           <footer className="pt-10 border-t border-slate-200 opacity-50 text-center pb-20">
-            <p className="text-xs text-slate-400 italic">© 2026 Petrobras Quest AI - Conteúdo Premium Estilo CESGRANRIO</p>
+            <p className="text-lg text-slate-400 italic">© 2026 Petrobras Quest AI - Conteúdo Premium Estilo CESGRANRIO</p>
           </footer>
         </div>
       </TabsContent>

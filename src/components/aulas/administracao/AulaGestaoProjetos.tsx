@@ -188,11 +188,11 @@ export default function AulaGestaoProjetos({
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl">
-                        <p className="font-bold text-blue-800 text-xs mb-2">⏳ Temporário</p>
+                        <p className="font-bold text-blue-800 text-lg mb-2">⏳ Temporário</p>
                         <p className="text-[10px] text-blue-700">Tem um início e um fim definidos. Não é um esforço contínuo como uma linha de montagem.</p>
                       </div>
                       <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
-                        <p className="font-bold text-emerald-800 text-xs mb-2">💎 Exclusivo</p>
+                        <p className="font-bold text-emerald-800 text-lg mb-2">💎 Exclusivo</p>
                         <p className="text-[10px] text-emerald-700">O resultado final tem características que o distinguem de todos os outros produtos ou serviços similares.</p>
                       </div>
                     </div>
@@ -204,7 +204,7 @@ export default function AulaGestaoProjetos({
                 icone: <LuBookOpen />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-sm font-bold uppercase italic">Cenário Petrobras:</p>
+                    <p className="text-muted-foreground text-lg font-bold uppercase italic">Cenário Petrobras:</p>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2">
                          <p className="text-[10px] font-bold text-blue-600 underline">PROJETO</p>
@@ -226,7 +226,7 @@ export default function AulaGestaoProjetos({
                 conteudo: (
                   <div className="space-y-4">
                     <AlertBox tipo="success" titulo="Dica para a Prova">
-                      <p className="text-xs">
+                      <p className="text-lg">
                         Lembre-se do <strong>Triângulo de Ferro</strong>: Escopo, Tempo e Custo. Se você aumentar o Escopo sem mexer no Orçamento, o Tempo irá aumentar. Eles são interdependentes e a <strong>Qualidade</strong> fica no centro (ou é o quarto elemento).
                       </p>
                     </AlertBox>
@@ -276,8 +276,8 @@ export default function AulaGestaoProjetos({
               title: "P.T.E. (Iniciais)", 
               content: (
                 <div className="space-y-2 text-left">
-                  <p className="text-sm italic">"P.rojeto é T.emporário e E.xclusivo."</p>
-                  <p className="text-xs text-muted-foreground uppercase tracking-widest">Não confunda com processo!</p>
+                  <p className="text-lg italic">"P.rojeto é T.emporário e E.xclusivo."</p>
+                  <p className="text-lg text-muted-foreground uppercase tracking-widest">Não confunda com processo!</p>
                 </div>
               ) 
             }} 
@@ -324,7 +324,7 @@ export default function AulaGestaoProjetos({
                 icone: <LuBrain />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-sm">O PMBOK 6 organiza a gestão em 10 frentes:</p>
+                    <p className="text-muted-foreground text-lg">O PMBOK 6 organiza a gestão em 10 frentes:</p>
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
                        {[
                          "Integração", "Escopo", "Cronograma", "Custos", "Qualidade",
@@ -355,7 +355,7 @@ export default function AulaGestaoProjetos({
                 conteudo: (
                   <div className="space-y-4">
                     <AlertBox tipo="warning" titulo="O Pulo do Gato">
-                      <p className="text-xs">
+                      <p className="text-lg">
                         No PMBOK 7, as 10 Áreas foram substituídas por <strong>8 Domínios de Desempenho</strong>. No entanto, para a Petrobras, a base conceitual das 10 áreas ainda é o norte fundamental nas questões de Administração.
                       </p>
                     </AlertBox>
@@ -414,8 +414,8 @@ export default function AulaGestaoProjetos({
 
                       <QuizInterativo 
               questoes={quizM2} 
-              titulo="Fixação - Áreas PMBOK" 
-              numero={2} 
+              titulo="QUIZ: Áreas do PMBOK" 
+              numero={3} 
               variant={mv[2]} 
               icone="🎯" 
               onComplete={(score) => handleModuleComplete("modulo-2", score)} 
@@ -448,7 +448,7 @@ export default function AulaGestaoProjetos({
                 icone: <LuBrain />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-sm">Todo projeto navega por estes 5 estágios:</p>
+                    <p className="text-muted-foreground text-lg">Todo projeto navega por estes 5 estágios:</p>
                     <div className="flex flex-col gap-2">
                        <div className="p-3 bg-amber-50 border-l-4 border-amber-500 rounded text-[10px]">
                           <span className="font-bold">1. Iniciação:</span> Autorização do projeto (Termo de Abertura).
@@ -530,7 +530,7 @@ export default function AulaGestaoProjetos({
             maceteVisual={{ 
               title: "I.P.E.M.E.", 
               content: (
-                <p className="text-sm font-bold text-center text-amber-600 tracking-widest">Inicia - Planeja - Executa - Monitora - Encerra</p>
+                <p className="text-lg font-bold text-center text-amber-600 tracking-widest">Inicia - Planeja - Executa - Monitora - Encerra</p>
               ) 
             }} 
             audio={{ 
@@ -580,7 +580,7 @@ export default function AulaGestaoProjetos({
                       A <strong>EAP (WBS - Work Breakdown Structure)</strong> é uma decomposição hierárquica orientada ao <strong>entregável</strong> do trabalho a ser executado pela equipe.
                     </p>
                     <AlertBox tipo="warning" titulo="Não é Lista de Tarefas!">
-                       <p className="text-xs">
+                       <p className="text-lg">
                          A EAP foca em <strong>subprodutos (substantivos)</strong> e não em ações (verbos). O nível mais baixo da EAP é chamado de <strong>Pacote de Trabalho</strong>.
                        </p>
                     </AlertBox>
@@ -609,8 +609,8 @@ export default function AulaGestaoProjetos({
                 icone: <LuSigma />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-xs">Para lidar com incertezas, usamos a média ponderada PERT:</p>
-                    <div className="p-4 bg-slate-100 rounded-xl font-mono text-center text-sm border border-slate-300 shadow-inner">
+                    <p className="text-lg">Para lidar com incertezas, usamos a média ponderada PERT:</p>
+                    <div className="p-4 bg-slate-100 rounded-xl font-mono text-center text-lg border border-slate-300 shadow-inner">
                        TE = (P + 4M + O) / 6
                     </div>
                     <p className="text-[10px] text-muted-foreground italic text-center">P = Pessimista | M = Mais Provável | O = Otimista</p>
@@ -669,8 +669,8 @@ export default function AulaGestaoProjetos({
 
                       <QuizInterativo 
               questoes={quizM4} 
-              titulo="Fixação - Escopo e Tempo" 
-              numero={4} 
+              titulo="QUIZ: Escopo e Tempo" 
+              numero={3} 
               variant={mv[4]} 
               icone="📅" 
               onComplete={(score) => handleModuleComplete("modulo-4", score)} 
@@ -703,7 +703,7 @@ export default function AulaGestaoProjetos({
                 icone: <LuBrain />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-xs leading-relaxed">
+                    <p className="text-muted-foreground text-lg leading-relaxed">
                       A <strong>Gestão do Valor Agregado</strong> é a técnica mais cobrada em provas de alto nível. Ela integra escopo, tempo e custo.
                     </p>
                     <div className="grid grid-cols-3 gap-2 text-[10px] text-center">
@@ -733,7 +733,7 @@ export default function AulaGestaoProjetos({
                        <p className="text-[10px]"><span className="text-blue-400 font-bold">SPI (IDP):</span> EV / PV (Eficiência de Prazo)</p>
                     </div>
                     <AlertBox tipo="success" titulo="Regra de Ouro">
-                       <p className="text-xs italic">"Se o índice é {">"} 1.0, o projeto está bem. Se {"<"} 1.0, está atrasado ou acima do orçamento."</p>
+                       <p className="text-lg italic">"Se o índice é {">"} 1.0, o projeto está bem. Se {"<"} 1.0, está atrasado ou acima do orçamento."</p>
                     </AlertBox>
                   </div>
                 ) 
@@ -787,7 +787,7 @@ export default function AulaGestaoProjetos({
             maceteVisual={{ 
               title: "Índice > 1 = Sucesso", 
               content: (
-                <p className="text-xs text-emerald-600 font-bold uppercase tracking-wider">Acima de 1 tá rindo, abaixo tá chorando!</p>
+                <p className="text-lg text-emerald-600 font-bold uppercase tracking-wider">Acima de 1 tá rindo, abaixo tá chorando!</p>
               ) 
             }} 
             audio={{ 
@@ -833,7 +833,7 @@ export default function AulaGestaoProjetos({
                 icone: <LuBrain />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <p className="text-muted-foreground text-xs">
+                    <p className="text-muted-foreground text-lg">
                       Risco é um evento ou condição <strong>incerta</strong> que, se ocorrer, tem um efeito <strong>positivo (oportunidade)</strong> ou <strong>negativo (ameaça)</strong> em pelo menos um objetivo do projeto.
                     </p>
                     <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-center gap-4">
@@ -922,8 +922,8 @@ export default function AulaGestaoProjetos({
 
                       <QuizInterativo 
               questoes={quizM6} 
-              titulo="Fixação - Gestão de Riscos" 
-              numero={6} 
+              titulo="QUIZ: Gestão de Riscos" 
+              numero={3} 
               variant={mv[6]} 
               icone="⚠️" 
               onComplete={(score) => handleModuleComplete("modulo-6", score)} 

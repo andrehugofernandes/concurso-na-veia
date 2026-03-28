@@ -192,7 +192,7 @@ export default function AulaWeb({
           <section id="quiz-modulo-2">
             <QuizInterativo
               questoes={quizM2}
-              titulo="Arquiteto HTML"
+              titulo="QUIZ: Módulo Nº 2"
               variant={mv[2]}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -370,7 +370,7 @@ export default function AulaWeb({
                  variant={mv[7]}
             />
 
-            <div className="p-6 bg-slate-900 border border-border rounded-xl font-mono text-sm leading-relaxed">
+            <div className="p-6 bg-slate-900 border border-border rounded-xl font-mono text-lg leading-relaxed">
                 <span className="text-blue-400">async function</span> getData() {'{'}<br/>
                 &nbsp;&nbsp;<span className="text-blue-400">try</span> {'{'}<br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">const</span> res = <span className="text-blue-400">await</span> fetch(url);<br/>
@@ -488,7 +488,7 @@ export default function AulaWeb({
           <section id="quiz-modulo-10">
             <QuizInterativo
               questoes={quizM10}
-              titulo="Desafio de Inclusão"
+              titulo="QUIZ: Módulo Nº 10"
               variant={mv[10]}
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />

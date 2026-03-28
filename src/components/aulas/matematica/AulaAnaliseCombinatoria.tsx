@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import { LuChevronDown } from "react-icons/lu";
-import { getModuleVariant } from "@/lib/moduleColors";
+import { getModuleVariant, getAllModuleVariants } from "@/lib/moduleColors";
 import {
   AlertBox,
   QuizInterativo,
@@ -27,6 +27,8 @@ import {
   QUIZ_M9_APLICACOES_PETROBRAS,
   QUIZ_M10_SIMULADO_CESGRANRIO,
 } from "./data/analise-combinatoria-quizzes";
+
+const mv = [undefined, ...getAllModuleVariants()];
 
 export default function AulaAnaliseCombinatoria({
   onComplete,
@@ -60,7 +62,7 @@ export default function AulaAnaliseCombinatoria({
   const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_APLICACOES_PETROBRAS, 6));
   const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO_CESGRANRIO, 6));
 
-  const isModuleUnlocked = (_index: number) => true;
+  const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
@@ -124,12 +126,10 @@ export default function AulaAnaliseCombinatoria({
       {/* MÓDULO 1: PRINCÍPIO FUNDAMENTAL DA CONTAGEM                      */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
-        <ModuleBanner
-          numero={1}
+        <ModuleBanner numero={1}
           titulo="Princípio Fundamental da Contagem"
           descricao="A base de toda análise combinatória: quando multiplicar as possibilidades para contar corretamente sem listar cada caso."
-          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
-        />
+           variant={mv[1]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Princípio Fundamental da Contagem */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -137,7 +137,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: O Princípio Fundamental da Contagem"
               description="Como contar sequências de escolhas independentes sem listar todas as possibilidades"
-              variant={getModuleVariant(1)}
+              variant={mv[1]}
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -178,7 +178,7 @@ export default function AulaAnaliseCombinatoria({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="O Princípio Fundamental da Contagem (PFC)"
               description="Se uma tarefa pode ser feita em etapas independentes, o total de formas é o produto das possibilidades de cada etapa."
               variant="indigo"
@@ -278,7 +278,7 @@ export default function AulaAnaliseCombinatoria({
 
 
 <ModuleConsolidation
-            index={1}
+            index={3}
             variant="indigo"
             video={{
               videoId: "h3S9XW1WzIk",
@@ -321,7 +321,7 @@ export default function AulaAnaliseCombinatoria({
               questoes={quizM1}
               titulo="QUIZ: Princípio da Contagem"
               icone="🔢"
-              numero={2}
+              numero={4}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -333,20 +333,18 @@ export default function AulaAnaliseCombinatoria({
       {/* MÓDULO 2: FATORIAL E NOTAÇÃO                                     */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
-        <ModuleBanner
-          numero={2}
+        <ModuleBanner numero={2}
           titulo="Fatorial e Notação"
           descricao="Domine a operação fundamental que sustenta todas as fórmulas de análise combinatória: o fatorial."
-          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
-        />
+           variant={mv[2]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Fatorial */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={2}
+              index={1}
               title="Fundamentos: A Notação Fatorial"
               description="Entenda o operador ! que aparece em todas as fórmulas de permutações, arranjos e combinações"
-              variant={getModuleVariant(2)}
+              variant={mv[2]}
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -397,7 +395,7 @@ export default function AulaAnaliseCombinatoria({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="Definição de Fatorial"
               description="n! representa o produto de todos os inteiros positivos de 1 até n."
               variant="cyan"
@@ -509,7 +507,7 @@ export default function AulaAnaliseCombinatoria({
 
 
 <ModuleConsolidation
-            index={2}
+            index={3}
             variant="cyan"
             video={{
               videoId: "iG0_F6gW2QY",
@@ -552,7 +550,7 @@ export default function AulaAnaliseCombinatoria({
               questoes={quizM2}
               titulo="Quiz — Fatorial e Notação"
               icone="❗"
-              numero={2}
+              numero={4}
               variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -564,20 +562,18 @@ export default function AulaAnaliseCombinatoria({
       {/* MÓDULO 3: PERMUTAÇÃO SIMPLES                                     */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
-        <ModuleBanner
-          numero={3}
+        <ModuleBanner numero={3}
           titulo="Permutação Simples"
           descricao="Quando a ordem importa e usamos todos os elementos: quantas formas distintas de organizar n objetos diferentes."
-          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
-        />
+           variant={mv[3]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Permutação Simples */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={3}
+              index={1}
               title="Fundamentos: Permutações Simples"
               description="Contando ordenações quando a ordem é essencial e todos os elementos são usados"
-              variant={getModuleVariant(3)}
+              variant={mv[3]}
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -619,7 +615,7 @@ export default function AulaAnaliseCombinatoria({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="P(n) = n! — A Fórmula da Permutação"
               description="O número de arranjos de n elementos distintos em todos os n lugares é n fatorial."
               variant="emerald"
@@ -789,20 +785,18 @@ export default function AulaAnaliseCombinatoria({
       {/* MÓDULO 4: PERMUTAÇÃO COM REPETIÇÃO                               */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
-        <ModuleBanner
-          numero={4}
+        <ModuleBanner numero={4}
           titulo="Permutação com Repetição"
           descricao="Quando alguns elementos são idênticos, organizações que parecem distintas são na verdade iguais. Aprenda a corrigir a contagem."
-          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
-        />
+           variant={mv[4]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Permutação com Repetição */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={4}
+              index={1}
               title="Fundamentos: Permutações com Elementos Repetidos"
               description="Ajustando contagens quando alguns elementos são indistinguíveis entre si"
-              variant={getModuleVariant(4)}
+              variant={mv[4]}
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -836,7 +830,7 @@ export default function AulaAnaliseCombinatoria({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="P(n; n₁, n₂, ...) = n! / (n₁! × n₂! × ...)"
               description="Divida pelo fatorial de cada grupo de elementos repetidos para eliminar contagens duplicadas."
               variant="cyan"
@@ -930,7 +924,7 @@ export default function AulaAnaliseCombinatoria({
 
 
 <ModuleConsolidation
-            index={4}
+            index={3}
             variant="indigo"
             video={{
               videoId: "8v2S4cI9U0k",
@@ -983,20 +977,18 @@ export default function AulaAnaliseCombinatoria({
       {/* MÓDULO 5: ARRANJO SIMPLES                                        */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
-        <ModuleBanner
-          numero={5}
+        <ModuleBanner numero={5}
           titulo="Arranjo Simples"
           descricao="Selecionar e ordenar p elementos de um conjunto de n: a ordem importa e cada elemento é usado no máximo uma vez."
-          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
-        />
+           variant={mv[5]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Arranjo Simples */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={5}
+              index={1}
               title="Fundamentos: Arranjos Simples"
               description="Selecionando e ordenando um subconjunto de elementos de um conjunto maior"
-              variant={getModuleVariant(5)}
+              variant={mv[5]}
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -1039,7 +1031,7 @@ export default function AulaAnaliseCombinatoria({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="A(n,p) = n! / (n−p)!"
               description="Escolher p de n elementos onde a ordem importa — mais que combinação, menos que permutação total."
               variant="indigo"
@@ -1145,7 +1137,7 @@ export default function AulaAnaliseCombinatoria({
 
 
 <ModuleConsolidation
-            index={5}
+            index={3}
             variant="indigo"
             video={{
               videoId: "Z1o6Hq0J-i8",
@@ -1189,7 +1181,7 @@ export default function AulaAnaliseCombinatoria({
               questoes={quizM5}
               titulo="QUIZ: Arranjo Simples"
               icone="🏆"
-              numero={6}
+              numero={4}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1201,20 +1193,18 @@ export default function AulaAnaliseCombinatoria({
       {/* MÓDULO 6: COMBINAÇÃO SIMPLES                                     */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-6" className="space-y-[50px]">
-        <ModuleBanner
-          numero={6}
+        <ModuleBanner numero={6}
           titulo="Combinação Simples"
           descricao="Selecionar p elementos de n sem se preocupar com a ordem: equipes, grupos, subconjuntos — o conceito mais cobrado em provas."
-          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
-        />
+           variant={mv[6]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Combinação Simples */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={6}
+              index={1}
               title="Fundamentos: Combinações Simples"
               description="Selecionando subconjuntos quando a ordem de seleção não importa"
-              variant={getModuleVariant(6)}
+              variant={mv[6]}
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -1257,7 +1247,7 @@ export default function AulaAnaliseCombinatoria({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="C(n,p) = n! / [p! × (n−p)!]"
               description="A fórmula mais importante da análise combinatória: contagem de subgrupos sem levar em conta a ordem."
               variant="blue"
@@ -1357,7 +1347,7 @@ export default function AulaAnaliseCombinatoria({
 
 
 <ModuleConsolidation
-            index={6}
+            index={3}
             variant="indigo"
             video={{
               videoId: "_bL1Qn6GezU",
@@ -1401,7 +1391,7 @@ export default function AulaAnaliseCombinatoria({
               questoes={quizM6}
               titulo="Quiz — Combinação Simples"
               icone="👥"
-              numero={6}
+              numero={4}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1413,20 +1403,18 @@ export default function AulaAnaliseCombinatoria({
       {/* MÓDULO 7: COMBINAÇÃO COM REPETIÇÃO                               */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-7" className="space-y-[50px]">
-        <ModuleBanner
-          numero={7}
+        <ModuleBanner numero={7}
           titulo="Combinação com Repetição"
           descricao="Quando é permitido escolher o mesmo elemento mais de uma vez: o mais difícil dos problemas de combinatória."
-          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
-        />
+           variant={mv[7]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Combinação com Repetição */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={7}
+              index={1}
               title="Fundamentos: Combinações com Repetição"
               description="Selecionando elementos quando múltiplas cópias de cada elemento podem ser escolhidas"
-              variant={getModuleVariant(7)}
+              variant={mv[7]}
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -1463,7 +1451,7 @@ export default function AulaAnaliseCombinatoria({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="CR(n,p) = C(n+p−1, p)"
               description="A fórmula que transforma um problema com repetição em uma combinação simples de ordem maior."
               variant="cyan"
@@ -1596,7 +1584,7 @@ export default function AulaAnaliseCombinatoria({
 
 
 <ModuleConsolidation
-            index={7}
+            index={3}
             variant="emerald"
             video={{
               videoId: "jX_l5X7V9QY",
@@ -1636,7 +1624,7 @@ export default function AulaAnaliseCombinatoria({
               questoes={quizM7}
               titulo="QUIZ: Combinação com Repetição"
               icone="♻️"
-              numero={8}
+              numero={4}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1648,12 +1636,10 @@ export default function AulaAnaliseCombinatoria({
       {/* MÓDULO 8: PROPRIEDADES E IDENTIDADES                             */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-8" className="space-y-[50px]">
-        <ModuleBanner
-          numero={8}
+        <ModuleBanner numero={8}
           titulo="Propriedades e Identidades"
           descricao="As relações entre combinações que permitem resolver problemas complexos rapidamente: simetria, Pascal e o Teorema Binomial."
-          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
-        />
+           variant={mv[8]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1773,7 +1759,7 @@ export default function AulaAnaliseCombinatoria({
 
 
 <ModuleConsolidation
-            index={8}
+            index={2}
             variant="indigo"
             video={{
               videoId: "k1V9X8Z7Y6W",
@@ -1813,7 +1799,7 @@ export default function AulaAnaliseCombinatoria({
               questoes={quizM8}
               titulo="Quiz — Propriedades e Identidades"
               icone="🔏"
-              numero={8}
+              numero={3}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1825,12 +1811,10 @@ export default function AulaAnaliseCombinatoria({
       {/* MÓDULO 9: APLICAÇÕES PETROBRAS                                   */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-9" className="space-y-[50px]">
-        <ModuleBanner
-          numero={9}
+        <ModuleBanner numero={9}
           titulo="Aplicações Petrobras"
           descricao="Equipes, senhas, rotas, comissões: os cenários reais mais cobrados pela CESGRANRIO com contexto de operações petrolíferas."
-          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
-        />
+           variant={mv[9]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1941,7 +1925,7 @@ export default function AulaAnaliseCombinatoria({
 
 
 <ModuleConsolidation
-            index={9}
+            index={2}
             variant="emerald"
             video={{
               videoId: "p8I2-9Z9R9U",
@@ -1981,7 +1965,7 @@ export default function AulaAnaliseCombinatoria({
               questoes={quizM9}
               titulo="QUIZ: Aplicações Petrobras"
               icone="🏭"
-              numero={10}
+              numero={3}
               variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1993,12 +1977,10 @@ export default function AulaAnaliseCombinatoria({
       {/* MÓDULO 10: SIMULADO CESGRANRIO                                   */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
-        <ModuleBanner
-          numero={10}
+        <ModuleBanner numero={10}
           titulo="Simulado CESGRANRIO"
           descricao="Questões no estilo exato da banca: enunciados elaborados, múltiplas restrições, armadilhas clássicas. Teste sua preparação completa."
-          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
-        />
+           variant={mv[10]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2113,7 +2095,7 @@ export default function AulaAnaliseCombinatoria({
 
 
 <ModuleConsolidation
-            index={10}
+            index={2}
             variant="indigo"
             video={{
               videoId: "m7X8Y9Z0W1V",
@@ -2153,7 +2135,7 @@ export default function AulaAnaliseCombinatoria({
               questoes={quizM10}
               titulo="QUIZ: Simulado Final"
               icone="🎯"
-              numero={11}
+              numero={3}
               variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />

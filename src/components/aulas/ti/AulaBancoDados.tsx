@@ -242,7 +242,7 @@ export default function AulaBancoDados({
           <section id="quiz-modulo-2">
             <QuizInterativo
               questoes={quizM2}
-              titulo="Checkpoint Relacional"
+              titulo="QUIZ: Módulo Nº 2"
               variant={mv[2]}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -343,7 +343,7 @@ export default function AulaBancoDados({
           <section id="quiz-modulo-4">
             <QuizInterativo
               questoes={quizM4}
-              titulo="SQL Architect"
+              titulo="QUIZ: Módulo Nº 4"
               variant={mv[4]}
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -371,7 +371,7 @@ export default function AulaBancoDados({
            />
 
            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-               <div className="p-6 bg-slate-900 rounded-xl border border-border font-mono text-sm leading-relaxed">
+               <div className="p-6 bg-slate-900 rounded-xl border border-border font-mono text-lg leading-relaxed">
                    <span className="text-blue-400">SELECT</span> nome, cargo <br/>
                    <span className="text-blue-400">FROM</span> funcionarios <br/>
                    <span className="text-blue-400">WHERE</span> salario {`>`} 5000 <br/>
@@ -379,7 +379,7 @@ export default function AulaBancoDados({
                </div>
                <div className="space-y-4">
                     <p className="font-bold underline">Funções de Grupo:</p>
-                    <ul className="list-disc pl-5 text-sm space-y-2">
+                    <ul className="list-disc pl-5 text-lg space-y-2">
                         <li><strong>COUNT:</strong> Conta registros.</li>
                         <li><strong>SUM / AVG:</strong> Soma e Média.</li>
                         <li><strong>MAX / MIN:</strong> Valores extremos.</li>
@@ -483,7 +483,7 @@ export default function AulaBancoDados({
           <section id="quiz-modulo-7">
             <QuizInterativo
               questoes={quizM7}
-              titulo="ACID Mastery"
+              titulo="QUIZ: Módulo Nº 7"
               variant={mv[7]}
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -562,8 +562,8 @@ export default function AulaBancoDados({
 
             <div className="p-6 bg-slate-900/40 rounded-xl border border-border">
                 <h4 className="font-bold text-lg mb-4">Modelos Dimensional (Star vs Snowflake)</h4>
-                <p className="text-sm"><strong>Star Schema:</strong> Dimensões desnormalizadas (redundantes). Mais rápido.</p>
-                <p className="text-sm"><strong>Snowflake:</strong> Dimensões normalizadas. Menos espaço, consultas mais lentas.</p>
+                <p className="text-lg"><strong>Star Schema:</strong> Dimensões desnormalizadas (redundantes). Mais rápido.</p>
+                <p className="text-lg"><strong>Snowflake:</strong> Dimensões normalizadas. Menos espaço, consultas mais lentas.</p>
             </div>
 
           <section id="quiz-modulo-9">
@@ -599,11 +599,11 @@ export default function AulaBancoDados({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="p-6 bg-green-900/10 border border-green-500/20 rounded-xl">
                     <h5 className="font-bold text-green-400 mb-2">B-Tree (O Clássico)</h5>
-                    <p className="text-xs">Balancamento automático. Ótimo para buscas de igualdade e intervalos.</p>
+                    <p className="text-lg">Balancamento automático. Ótimo para buscas de igualdade e intervalos.</p>
                 </div>
                 <div className="p-6 bg-blue-900/10 border border-blue-500/20 rounded-xl">
                     <h5 className="font-bold text-blue-400 mb-2">Hash Index</h5>
-                    <p className="text-xs">Extremanente rápido para busca exata (=), mas inútil para faixas ({`>`}, {`<`}).</p>
+                    <p className="text-lg">Extremanente rápido para busca exata (=), mas inútil para faixas ({`>`}, {`<`}).</p>
                 </div>
             </div>
 

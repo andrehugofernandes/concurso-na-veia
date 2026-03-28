@@ -172,7 +172,7 @@ export default function AulaTermodinamica({
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
               <div className="lg:col-span-7 space-y-8">
                 <div className="space-y-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-lg font-bold uppercase tracking-wider">
                     <LuFlame className="animate-pulse" /> Conhecimentos Específicos - Bloco I
                     </div>
                   <h1 className="text-5xl md:text-7xl font-black text-foreground leading-[1.1] tracking-tight">
@@ -190,7 +190,7 @@ export default function AulaTermodinamica({
                     </div>
                     <div>
                       <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-widest">Duração</p>
-                      <p className="text-sm font-bold">{duracao}</p>
+                      <p className="text-lg font-bold">{duracao}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 bg-card border border-border px-5 py-3 rounded-2xl shadow-sm">
@@ -199,7 +199,7 @@ export default function AulaTermodinamica({
                     </div>
                     <div>
                       <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-widest">Recompensa</p>
-                      <p className="text-sm font-bold">+{xpGanho} XP</p>
+                      <p className="text-lg font-bold">+{xpGanho} XP</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 bg-card border border-border px-5 py-3 rounded-2xl shadow-sm">
@@ -208,7 +208,7 @@ export default function AulaTermodinamica({
                     </div>
                     <div>
                       <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-widest">Nível</p>
-                      <p className="text-sm font-bold">Especialista</p>
+                      <p className="text-lg font-bold">Especialista</p>
                     </div>
                   </div>
                 </div>
@@ -232,7 +232,7 @@ export default function AulaTermodinamica({
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8">
-                    <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-2">Simulação de Fluxo</p>
+                    <p className="text-white/60 text-lg font-bold uppercase tracking-widest mb-2">Simulação de Fluxo</p>
                     <h3 className="text-white text-2xl font-black italic">Ciclos de Vida da Energia</h3>
                   </div>
                 </div>
@@ -261,7 +261,7 @@ export default function AulaTermodinamica({
                       <item.icon size={28} />
                     </div>
                     <h4 className="font-black text-xl">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                    <p className="text-lg text-muted-foreground leading-relaxed">{item.desc}</p>
                   </motion.div>
                 ))}
               </div>
@@ -296,14 +296,14 @@ export default function AulaTermodinamica({
                           <LuTarget size={32} />
                         </div>
                         <h3 className="text-2xl font-black">Sistema Aberto</h3>
-                        <p className="text-sm text-muted-foreground underline decoration-blue-500/30">Clique para ver o verso</p>
+                        <p className="text-lg text-muted-foreground underline decoration-blue-500/30">Clique para ver o verso</p>
                       </div>
                     }
                     verso={
                       <div className="space-y-4 text-center">
-                         <p className="text-blue-600 font-bold uppercase tracking-tighter text-xs">Conceito Típico</p>
-                         <p className="text-base font-medium">Troca **Massa** e **Energia**. Exemplo: Uma turbina ou uma válvula de controle.</p>
-                         <div className="mt-4 p-3 bg-blue-600/10 rounded-xl text-blue-700 text-xs font-bold italic">
+                         <p className="text-blue-600 font-bold uppercase tracking-tighter text-lg">Conceito Típico</p>
+                         <p className="text-lg font-medium">Troca **Massa** e **Energia**. Exemplo: Uma turbina ou uma válvula de controle.</p>
+                         <div className="mt-4 p-3 bg-blue-600/10 rounded-xl text-blue-700 text-lg font-bold italic">
                            "Volume de Controle"
                          </div>
                       </div>
@@ -317,14 +317,14 @@ export default function AulaTermodinamica({
                            <LuShieldAlert size={32} />
                         </div>
                         <h3 className="text-2xl font-black">Sistema Fechado</h3>
-                         <p className="text-sm text-muted-foreground underline decoration-amber-500/30">Clique para ver o verso</p>
+                         <p className="text-lg text-muted-foreground underline decoration-amber-500/30">Clique para ver o verso</p>
                       </div>
                     }
                     verso={
                       <div className="space-y-4 text-center">
-                         <p className="text-amber-600 font-bold uppercase tracking-tighter text-xs">Conceito Típico</p>
-                         <p className="text-base font-medium">Troca apenas **Energia**. A massa permanece fixa.</p>
-                         <div className="mt-4 p-3 bg-amber-600/10 rounded-xl text-amber-700 text-xs font-bold italic">
+                         <p className="text-amber-600 font-bold uppercase tracking-tighter text-lg">Conceito Típico</p>
+                         <p className="text-lg font-medium">Troca apenas **Energia**. A massa permanece fixa.</p>
+                         <div className="mt-4 p-3 bg-amber-600/10 rounded-xl text-amber-700 text-lg font-bold italic">
                            "Massa de Controle"
                          </div>
                       </div>
@@ -338,13 +338,13 @@ export default function AulaTermodinamica({
                           <LuLock size={32} />
                         </div>
                         <h3 className="text-2xl font-black">S. Isoliado</h3>
-                         <p className="text-sm text-muted-foreground underline decoration-slate-500/30">Clique para ver o verso</p>
+                         <p className="text-lg text-muted-foreground underline decoration-slate-500/30">Clique para ver o verso</p>
                       </div>
                     }
                     verso={
                       <div className="space-y-4 text-center">
-                         <p className="text-slate-600 font-bold uppercase tracking-tighter text-xs">Conceito Típico</p>
-                         <p className="text-base font-medium">Não troca nada. O universo idealizado.</p>
+                         <p className="text-slate-600 font-bold uppercase tracking-tighter text-lg">Conceito Típico</p>
+                         <p className="text-lg font-medium">Não troca nada. O universo idealizado.</p>
                       </div>
                     }
                     variant="slate"
@@ -364,11 +364,11 @@ export default function AulaTermodinamica({
                            <div className="grid grid-cols-2 gap-4">
                               <div className="p-3 border border-border rounded-xl flex items-center gap-3">
                                 <span className="p-2 bg-orange-100 rounded-lg text-orange-600 italic font-black">T</span>
-                                <span className="text-sm font-bold">Temperatura</span>
+                                <span className="text-lg font-bold">Temperatura</span>
                               </div>
                                <div className="p-3 border border-border rounded-xl flex items-center gap-3">
                                 <span className="p-2 bg-blue-100 rounded-lg text-blue-600 italic font-black">P</span>
-                                <span className="text-sm font-bold">Pressão</span>
+                                <span className="text-lg font-bold">Pressão</span>
                               </div>
                            </div>
                            <AlertBox tipo="info" titulo="Macete Cesgranrio">
@@ -409,8 +409,8 @@ export default function AulaTermodinamica({
                     <p className="text-muted-foreground">O comportamento de um gás ideal ou real é frequentemente analisado através de funções matemáticas. No gráfico ao lado, você pode ver fatias de temperatura constante (**Isotermas**).</p>
                     <div className="space-y-4">
                       <div className="p-4 bg-muted rounded-2xl border border-border">
-                        <p className="text-sm font-bold mb-2">💡 Observação do Gráfico:</p>
-                        <p className="text-xs text-muted-foreground leading-relaxed">Quanto mais alta a curva no gráfico P-V, maior é a temperatura do gás. A área sob a curva representa o **Trabalho (W)** realizado ou recebido.</p>
+                        <p className="text-lg font-bold mb-2">💡 Observação do Gráfico:</p>
+                        <p className="text-lg text-muted-foreground leading-relaxed">Quanto mais alta a curva no gráfico P-V, maior é a temperatura do gás. A área sob a curva representa o **Trabalho (W)** realizado ou recebido.</p>
                       </div>
                       <AlertBox tipo="warning" titulo="Equação de Clapeyron">
                          PV = nRT. Lembrar que a pressão é inversamente proporcional ao volume em processos isotérmicos.
@@ -456,7 +456,7 @@ export default function AulaTermodinamica({
                   content: (
                     <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
                       <p className="font-bold text-amber-600">Intensivas vs Extensivas</p>
-                      <p className="text-xs">Dividiu ao meio? Se ficar igual é Intensiva (T, P). Se mudar é Extensiva (m, V).</p>
+                      <p className="text-lg">Dividiu ao meio? Se ficar igual é Intensiva (T, P). Se mudar é Extensiva (m, V).</p>
                     </div>
                   )
                 }}
@@ -510,14 +510,14 @@ export default function AulaTermodinamica({
                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                        <div className="p-5 bg-card border border-border rounded-2xl hover:border-blue-500/40 transition-colors">
                           <h4 className="font-bold mb-2 flex items-center gap-2"><LuFlame className="text-red-500"/> Calor (Q)</h4>
-                          <ul className="text-sm space-y-1 text-muted-foreground">
+                          <ul className="text-lg space-y-1 text-muted-foreground">
                             <li>Positivo (+): Calor ENTROU no sistema.</li>
                             <li>Negativo (-): Calor SAIU do sistema.</li>
                           </ul>
                        </div>
                         <div className="p-5 bg-card border border-border rounded-2xl hover:border-blue-500/40 transition-colors">
                           <h4 className="font-bold mb-2 flex items-center gap-2"><LuZap className="text-amber-500"/> Trabalho (W)</h4>
-                          <ul className="text-sm space-y-1 text-muted-foreground">
+                          <ul className="text-lg space-y-1 text-muted-foreground">
                             <li>Positivo (+): Trabalho REALIZADO pelo sistema.</li>
                             <li>Negativo (-): Trabalho RECEBIDO pelo sistema.</li>
                           </ul>
@@ -586,11 +586,11 @@ export default function AulaTermodinamica({
                     <div className="space-y-4">
                       <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                          <p className="font-black text-emerald-600 mb-1">Entalpia (H)</p>
-                         <p className="text-xs">Energia total para processos de FLUXO (h = u + Pv).</p>
+                         <p className="text-lg">Energia total para processos de FLUXO (h = u + Pv).</p>
                       </div>
                       <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-xl">
                          <p className="font-black text-orange-600 mb-1">Entropia (S)</p>
-                         <p className="text-xs">Mede a impossibilidade de conversão em trabalho útil.</p>
+                         <p className="text-lg">Mede a impossibilidade de conversão em trabalho útil.</p>
                       </div>
                     </div>
                   )
@@ -648,8 +648,8 @@ export default function AulaTermodinamica({
                                   {i+1}
                                 </span>
                                 <div className="flex-1">
-                                   <p className="font-black text-sm">{step.t}</p>
-                                   <p className="text-xs text-muted-foreground">{step.d}</p>
+                                   <p className="font-black text-lg">{step.t}</p>
+                                   <p className="text-lg text-muted-foreground">{step.d}</p>
                                 </div>
                              </li>
                            ))}
@@ -658,8 +658,8 @@ export default function AulaTermodinamica({
                                   🇬🇧
                                 </span>
                                 <div className="flex-1">
-                                 <h4 className="text-base font-black text-amber-600 dark:text-amber-400 leading-tight">Practice English: PetroLingo</h4>
-                                 <p className="text-xs text-muted-foreground">Domine 'Passive Voice', 'Connectors' e referências no PetroLingo.</p>
+                                 <h4 className="text-lg font-black text-amber-600 dark:text-amber-400 leading-tight">Practice English: PetroLingo</h4>
+                                 <p className="text-lg text-muted-foreground">Domine 'Passive Voice', 'Connectors' e referências no PetroLingo.</p>
                                </div>
                            </li>
                         </ol>
@@ -754,11 +754,11 @@ export default function AulaTermodinamica({
                      
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-violet-50 dark:bg-violet-900/20 border border-violet-500/20 rounded-2xl">
-                           <h5 className="font-black text-violet-600 mb-2 uppercase text-xs">Fórmula do Título (x)</h5>
+                           <h5 className="font-black text-violet-600 mb-2 uppercase text-lg">Fórmula do Título (x)</h5>
                            <p className="text-xl font-mono font-bold text-center">x = m_vapor / m_total</p>
                         </div>
                         <div className="p-4 bg-pink-50 dark:bg-pink-900/20 border border-pink-500/20 rounded-2xl">
-                           <h5 className="font-black text-pink-600 mb-2 uppercase text-xs">Propriedade da Mistura</h5>
+                           <h5 className="font-black text-pink-600 mb-2 uppercase text-lg">Propriedade da Mistura</h5>
                            <p className="text-xl font-mono font-bold text-center">y = y_f + x * y_fg</p>
                         </div>
                      </div>

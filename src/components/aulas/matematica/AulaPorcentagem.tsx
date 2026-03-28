@@ -1,3 +1,4 @@
+import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -64,6 +65,8 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Final" },
 ] as const;
 
+const mv = [undefined, ...getAllModuleVariants()];
+
 export default function AulaPorcentagem({
   onComplete,
   isCompleted,
@@ -122,10 +125,7 @@ export default function AulaPorcentagem({
     }
   }, [currentProgress, totalModulos]);
 
-  const isModuleUnlocked = (index: number) => {
-    if (isCompleted || index === 0) return true;
-    return completedModules.has(MODULE_DEFS[index - 1].id);
-  };
+  const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
 
   return (
     <AulaTemplate
@@ -156,12 +156,10 @@ export default function AulaPorcentagem({
       ═══════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-1">
         <div className="space-y-[50px]">
-          <ModuleBanner
-            numero={1}
+          <ModuleBanner numero={1}
             titulo="Fundamentos de Porcentagem"
             descricao="O alicerce: conversões, cálculos e a lógica por trás do símbolo %."
-            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
-          />
+             variant={mv[1]}/>
 
           {/* SEÇÃO 1: Conceito Central */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -412,7 +410,7 @@ export default function AulaPorcentagem({
 
 
 <ModuleConsolidation
-            index={1}
+            index={3}
             variant="indigo"
             video={{
               videoId: "h3S9XW1WzIk",
@@ -450,7 +448,7 @@ export default function AulaPorcentagem({
                       <QuizInterativo
               questoes={quizM1}
               titulo="QUIZ: Módulo Nº 1"
-              numero={3}
+              numero={5}
               variant="emerald"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -458,7 +456,7 @@ export default function AulaPorcentagem({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={4} title="Resumo e Multimídia" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -498,12 +496,10 @@ export default function AulaPorcentagem({
       ═══════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-2">
         <div className="space-y-[50px]">
-          <ModuleBanner
-            numero={2}
+          <ModuleBanner numero={2}
             titulo="Aumentos e Descontos"
             descricao="O fator multiplicador: a arma secreta que elimina 3 passos de cálculo."
-            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
-          />
+             variant={mv[2]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -671,7 +667,7 @@ export default function AulaPorcentagem({
 
 
 <ModuleConsolidation
-            index={2}
+            index={3}
             variant="emerald"
             video={{
               videoId: "h3S9XW1WzIk",
@@ -709,7 +705,7 @@ export default function AulaPorcentagem({
                       <QuizInterativo
               questoes={quizM2}
               titulo="Fixação — Fatores Multiplicadores"
-              numero={2}
+              numero={5}
               variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
@@ -717,7 +713,7 @@ export default function AulaPorcentagem({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={4} title="Resumo e Multimídia" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -751,12 +747,10 @@ export default function AulaPorcentagem({
       ═══════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-3">
         <div className="space-y-[50px]">
-          <ModuleBanner
-            numero={3}
+          <ModuleBanner numero={3}
             titulo="Variação Percentual"
             descricao="Calcule quanto subiu ou caiu em relação ao valor inicial — sem errar a base."
-            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
-          />
+             variant={mv[3]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -889,7 +883,7 @@ export default function AulaPorcentagem({
 
 
 <ModuleConsolidation
-            index={3}
+            index={2}
             variant="cyan"
             video={{
               videoId: "h3S9XW1WzIk",
@@ -935,7 +929,7 @@ export default function AulaPorcentagem({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={3} title="Resumo e Multimídia" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -969,12 +963,10 @@ export default function AulaPorcentagem({
       ═══════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-4">
         <div className="space-y-[50px]">
-          <ModuleBanner
-            numero={4}
+          <ModuleBanner numero={4}
             titulo="Aplicações Industriais"
             descricao="Eficiência de equipamentos, misturas de substâncias e metas operacionais."
-            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
-          />
+             variant={mv[4]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1103,7 +1095,7 @@ export default function AulaPorcentagem({
 
 
 <ModuleConsolidation
-            index={4}
+            index={2}
             variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
@@ -1149,7 +1141,7 @@ export default function AulaPorcentagem({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={3} title="Resumo e Multimídia" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -1183,12 +1175,10 @@ export default function AulaPorcentagem({
       ═══════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-5">
         <div className="space-y-[50px]">
-          <ModuleBanner
-            numero={5}
+          <ModuleBanner numero={5}
             titulo="Simulado — Metade da Jornada"
             descricao="Teste integrado dos módulos 1 a 4. Mínimo 60% para avançar."
-            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
-          />
+             variant={mv[5]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1235,7 +1225,7 @@ export default function AulaPorcentagem({
 
 
 <ModuleConsolidation
-            index={5}
+            index={2}
             variant="amber"
             video={{
               videoId: "h3S9XW1WzIk",
@@ -1273,7 +1263,7 @@ export default function AulaPorcentagem({
                       <QuizInterativo
               questoes={quizM5}
               titulo="QUIZ: Módulo Nº 5"
-              numero={6}
+              numero={3}
               variant="rose"
               icone="🏆"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -1287,12 +1277,10 @@ export default function AulaPorcentagem({
       ═══════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-6">
         <div className="space-y-[50px]">
-          <ModuleBanner
-            numero={6}
+          <ModuleBanner numero={6}
             titulo="Porcentagem Composta"
             descricao="Juros sobre juros, depreciação exponencial e a potência do tempo."
-            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
-          />
+             variant={mv[6]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1536,7 +1524,7 @@ export default function AulaPorcentagem({
 
 
 <ModuleConsolidation
-            index={6}
+            index={4}
             variant="rose"
             video={{
               videoId: "h3S9XW1WzIk",
@@ -1582,7 +1570,7 @@ export default function AulaPorcentagem({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={5} title="Resumo e Multimídia" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -1622,12 +1610,10 @@ export default function AulaPorcentagem({
       ═══════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-7">
         <div className="space-y-[50px]">
-          <ModuleBanner
-            numero={7}
+          <ModuleBanner numero={7}
             titulo="O Cálculo Reverso"
             descricao="Encontrar o valor original quando se conhece o resultado e a taxa aplicada."
-            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
-          />
+             variant={mv[7]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1815,7 +1801,7 @@ export default function AulaPorcentagem({
 
 
 <ModuleConsolidation
-            index={7}
+            index={3}
             variant="indigo"
             video={{
               videoId: "h3S9XW1WzIk",
@@ -1853,7 +1839,7 @@ export default function AulaPorcentagem({
                       <QuizInterativo
               questoes={quizM7}
               titulo="QUIZ: Módulo Nº 7"
-              numero={8}
+              numero={5}
               variant="emerald"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
@@ -1861,7 +1847,7 @@ export default function AulaPorcentagem({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={4} title="Resumo e Multimídia" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -1895,12 +1881,10 @@ export default function AulaPorcentagem({
       ═══════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-8">
         <div className="space-y-[50px]">
-          <ModuleBanner
-            numero={8}
+          <ModuleBanner numero={8}
             titulo="Regra de Três e Porcentagem"
             descricao="Quando o fator multiplicador não basta: alinhamento de grandezas proporcionais."
-            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
-          />
+             variant={mv[8]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2016,7 +2000,7 @@ export default function AulaPorcentagem({
 
 
 <ModuleConsolidation
-            index={8}
+            index={2}
             variant="emerald"
             video={{
               videoId: "h3S9XW1WzIk",
@@ -2054,7 +2038,7 @@ export default function AulaPorcentagem({
                       <QuizInterativo
               questoes={quizM8}
               titulo="Fixação — Regra de Três %"
-              numero={8}
+              numero={4}
               variant="amber"
               icone="🔥"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
@@ -2062,7 +2046,7 @@ export default function AulaPorcentagem({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={3} title="Resumo e Multimídia" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -2096,12 +2080,10 @@ export default function AulaPorcentagem({
       ═══════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-9">
         <div className="space-y-[50px]">
-          <ModuleBanner
-            numero={9}
+          <ModuleBanner numero={9}
             titulo="Aplicações Financeiras"
             descricao="Salários, impostos, CDI, INSS e descontos embutidos do mundo real."
-            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
-          />
+             variant={mv[9]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2285,7 +2267,7 @@ export default function AulaPorcentagem({
 
 
 <ModuleConsolidation
-            index={9}
+            index={3}
             variant="cyan"
             video={{
               videoId: "h3S9XW1WzIk",
@@ -2323,7 +2305,7 @@ export default function AulaPorcentagem({
                       <QuizInterativo
               questoes={quizM9}
               titulo="QUIZ: Módulo Nº 9"
-              numero={10}
+              numero={5}
               variant="emerald"
               icone="🔥"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
@@ -2331,7 +2313,7 @@ export default function AulaPorcentagem({
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={4} title="Resumo e Multimídia" variant="indigo" />
             <LessonTabs
               tabs={[
                 {
@@ -2371,12 +2353,10 @@ export default function AulaPorcentagem({
       ═══════════════════════════════════════════════════════ */}
       <TabsContent value="modulo-10">
         <div className="space-y-[50px]">
-          <ModuleBanner
-            numero={10}
+          <ModuleBanner numero={10}
             titulo="Simulado Mestre — Porcentagem"
             descricao="Todas as competências postas à prova. Nível CESGRANRIO real."
-            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
-          />
+             variant={mv[10]}/>
 
           {/* Revisão rápida final */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -2430,7 +2410,7 @@ export default function AulaPorcentagem({
 
 
 <ModuleConsolidation
-            index={10}
+            index={2}
             variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
@@ -2469,7 +2449,7 @@ export default function AulaPorcentagem({
               questoes={quizM10}
               titulo="Simulado Elite — Porcentagem"
               icone="🏆"
-              numero={10}
+              numero={4}
               variant="slate"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
@@ -2492,7 +2472,7 @@ export default function AulaPorcentagem({
           )}
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-4">
-            <ModuleSectionHeader index={2} title="Resumo e Multimídia" variant="indigo" />
+            <ModuleSectionHeader index={3} title="Resumo e Multimídia" variant="indigo" />
             <LessonTabs
               tabs={[
                 {

@@ -123,7 +123,7 @@ export default function AulaNr35({
             }}
             maceteVisual={{
                 title: "O Mnemônico de Planejamento",
-                content: <p className="text-sm italic">"Eliminar &rarr; Prevenir &rarr; Mitigar." Essa é a ordem de sobrevivência!</p>
+                content: <p className="text-lg italic">"Eliminar &rarr; Prevenir &rarr; Mitigar." Essa é a ordem de sobrevivência!</p>
             }}
             audio={{
                 audioUrl: "/audio/nr35-m1.mp3",
@@ -134,8 +134,8 @@ export default function AulaNr35({
 
         <QuizInterativo 
             questoes={QUIZ_M1_NR35_GESTAO}
-            numero={1}
-            titulo="Gestão e Planejamento"
+            numero={2}
+            titulo="QUIZ: Módulo Nº 1"
             onComplete={() => handleModuleComplete("modulo-1")}
         />
       </TabsContent>
@@ -234,7 +234,7 @@ export default function AulaNr35({
             }}
             maceteVisual={{
                 title: "A ZQL (Zona de Queda Livre)",
-                content: <p className="text-sm">"Antes de subir, calcule se o chão vai te atingir!" ZQL = Comprimento do Talabarte + Absorvedor Aberto + Altura do Trabalhador + 1m de Segurança.</p>
+                content: <p className="text-lg">"Antes de subir, calcule se o chão vai te atingir!" ZQL = Comprimento do Talabarte + Absorvedor Aberto + Altura do Trabalhador + 1m de Segurança.</p>
             }}
             audio={{
                 audioUrl: "/audio/nr35-m3.mp3",
@@ -245,8 +245,8 @@ export default function AulaNr35({
 
         <QuizInterativo 
             questoes={QUIZ_M3_NR35_SISTEMAS}
-            numero={3}
-            titulo="Proteção Coletiva e Individual"
+            numero={4}
+            titulo="QUIZ: Módulo Nº 3"
             onComplete={() => handleModuleComplete("modulo-3")}
         />
       </TabsContent>
@@ -310,7 +310,7 @@ export default function AulaNr35({
             }}
             maceteVisual={{
                 title: "A Regra dos 3 Pontos",
-                content: <p className="text-sm italic">"Duas mãos e um pé, ou dois pés e uma mão. Na escada, nunca se solta do corrimão!"</p>
+                content: <p className="text-lg italic">"Duas mãos e um pé, ou dois pés e uma mão. Na escada, nunca se solta do corrimão!"</p>
             }}
             audio={{
                 audioUrl: "/audio/nr35-m5.mp3",
@@ -321,8 +321,8 @@ export default function AulaNr35({
 
         <QuizInterativo 
             questoes={QUIZ_M5_NR35_ACESSOS}
-            numero={5}
-            titulo="Cordas e Escadas"
+            numero={6}
+            titulo="QUIZ: Módulo Nº 5"
             onComplete={() => handleModuleComplete("modulo-5")}
         />
       </TabsContent>

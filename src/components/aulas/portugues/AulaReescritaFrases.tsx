@@ -235,7 +235,7 @@ export default function AulaReescritaFrases({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-lg">
                         Veja um caso de relatórios industriais:
                       </p>
                       <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl italic">
@@ -279,20 +279,20 @@ export default function AulaReescritaFrases({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
-                          <p className="font-bold text-sm mb-1">
+                          <p className="font-bold text-lg mb-1">
                             1. Equivalência Semântica
                           </p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-lg text-muted-foreground">
                             O sentido completo — incluindo modalidade (certeza,
                             dúvida, possibilidade) e polaridade (afirmação,
                             negação) — deve ser preservado.
                           </p>
                         </div>
                         <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl">
-                          <p className="font-bold text-sm mb-1">
+                          <p className="font-bold text-lg mb-1">
                             2. Correção Gramatical
                           </p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-lg text-muted-foreground">
                             A frase resultante deve obedecer à norma culta:
                             concordância, regência, crase e pontuação corretas.
                           </p>
@@ -316,7 +316,7 @@ export default function AulaReescritaFrases({
               title="Manutenção de Sentido vs Adequação de Registro"
               variant="blue"
             />
-            <p className="text-muted-foreground leading-relaxed text-sm">
+            <p className="text-muted-foreground leading-relaxed text-lg">
               Na reescrita, há dois planos independentes que podem ser alterados
               ou mantidos. Entender a diferença é fundamental para acertar as
               questões de múltipla escolha da CESGRANRIO.
@@ -479,7 +479,7 @@ export default function AulaReescritaFrases({
                         estranha ou mudar de nível (formal/informal), o sinônimo
                         não serve para aquele contexto.
                       </p>
-                      <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl text-sm space-y-2">
+                      <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl text-lg space-y-2">
                         <p>
                           <strong>Original:</strong> "A empresa <em>cessou</em> as
                           atividades no campo."
@@ -510,13 +510,13 @@ export default function AulaReescritaFrases({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-muted/50 rounded-xl border border-border">
-                          <p className="font-bold text-xs mb-1">Hipônimo (específico)</p>
-                          <p className="text-sm">"A <em>fragata</em> foi recolhida ao porto."</p>
+                          <p className="font-bold text-lg mb-1">Hipônimo (específico)</p>
+                          <p className="text-lg">"A <em>fragata</em> foi recolhida ao porto."</p>
                         </div>
                         <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
-                          <p className="font-bold text-xs mb-1">Hiperônimo (genérico)</p>
-                          <p className="text-sm">"A <em>embarcação</em> foi recolhida ao porto."</p>
-                          <p className="text-xs text-muted-foreground mt-1">Válido se o texto não exige precisão sobre o tipo de navio.</p>
+                          <p className="font-bold text-lg mb-1">Hiperônimo (genérico)</p>
+                          <p className="text-lg">"A <em>embarcação</em> foi recolhida ao porto."</p>
+                          <p className="text-lg text-muted-foreground mt-1">Válido se o texto não exige precisão sobre o tipo de navio.</p>
                         </div>
                       </div>
                     </div>
@@ -591,7 +591,7 @@ export default function AulaReescritaFrases({
               title="Léxico Técnico Petrobras — Palavras que a Banca Usa"
               variant="cyan"
             />
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               O vocabulário técnico do setor de energia tem equivalentes formais
               específicos que a CESGRANRIO usa em seus textos-base. Conhecê-los
               permite reconhecer sinônimos válidos rapidamente.
@@ -671,7 +671,7 @@ export default function AulaReescritaFrases({
                         transposição de voz.
                       </p>
                       <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
-                        <p className="text-sm">
+                        <p className="text-lg">
                           Se o verbo na ativa está no{" "}
                           <strong>Pretérito Imperfeito</strong> ("fazia"), o
                           verbo <i>ser</i> na passiva deve ir para o{" "}
@@ -690,7 +690,7 @@ export default function AulaReescritaFrases({
                         Siga o algoritmo de três passos para a conversão
                         perfeita:
                       </p>
-                      <ol className="list-decimal pl-5 text-sm space-y-2 text-muted-foreground">
+                      <ol className="list-decimal pl-5 text-lg space-y-2 text-muted-foreground">
                         <li>
                           O <strong>objeto direto</strong> da ativa vira o
                           <strong> sujeito paciente</strong> da passiva.
@@ -706,7 +706,7 @@ export default function AulaReescritaFrases({
                           preposição <em>por</em> (ou <em>pelo/pela</em>).
                         </li>
                       </ol>
-                      <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-sm">
+                      <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-lg">
                         <p><strong>Ativa:</strong> A Petrobras produziu o relatório.</p>
                         <p className="mt-1"><strong>Passiva:</strong> O relatório foi produzido pela Petrobras.</p>
                       </div>
@@ -724,10 +724,10 @@ export default function AulaReescritaFrases({
                         apassivadora). O sujeito da ativa é completamente
                         omitido — não há agente da passiva.
                       </p>
-                      <div className="p-4 bg-muted/50 border border-border rounded-xl text-sm space-y-1">
+                      <div className="p-4 bg-muted/50 border border-border rounded-xl text-lg space-y-1">
                         <p><strong>Analítica:</strong> Os contratos foram assinados pela diretoria.</p>
                         <p><strong>Sintética:</strong> Assinaram-se os contratos.</p>
-                        <p className="text-xs text-muted-foreground mt-2">
+                        <p className="text-lg text-muted-foreground mt-2">
                           Atenção: na sintética, o verbo concorda com o sujeito
                           paciente que o segue.
                         </p>
@@ -746,10 +746,10 @@ export default function AulaReescritaFrases({
                         substantivo, a relação ativo/passivo some — e você
                         precisa reconstruir quem faz e quem recebe a ação.
                       </p>
-                      <div className="p-4 bg-red-500/5 border border-red-500/20 rounded-xl text-sm space-y-1">
+                      <div className="p-4 bg-red-500/5 border border-red-500/20 rounded-xl text-lg space-y-1">
                         <p><strong>Verbal (ativa):</strong> A equipe realizou a inspeção.</p>
                         <p><strong>Nominalizado:</strong> A realização da inspeção pela equipe...</p>
-                        <p className="text-xs text-muted-foreground mt-2">
+                        <p className="text-lg text-muted-foreground mt-2">
                           O agente "pela equipe" preserva a relação de autoria
                           da ação mesmo sem verbo conjugado.
                         </p>
@@ -815,12 +815,12 @@ export default function AulaReescritaFrases({
                   icone: <LuTriangleAlert />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         Nem todo verbo transitivo direto pode ser passivizado.
                         Verbos de medida, peso, duração e valor geralmente ficam
                         apenas na voz ativa:
                       </p>
-                      <div className="p-4 bg-muted/50 rounded-xl border border-border text-sm space-y-1">
+                      <div className="p-4 bg-muted/50 rounded-xl border border-border text-lg space-y-1">
                         <p>❌ "Dois anos foram durados pelo projeto." (errado)</p>
                         <p className="text-green-600 dark:text-green-400">✅ "O projeto durou dois anos." (correto — apenas ativa)</p>
                         <p className="mt-2">❌ "Mil metros foram medidos pelo cabo." (inadequado)</p>
@@ -834,22 +834,22 @@ export default function AulaReescritaFrases({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         Além da passiva com SER (que indica processo), existe a
                         passiva de estado com ESTAR (que indica resultado/estado
                         permanente). A banca usa essa distinção em questões de
                         reescrita:
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                         <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
-                          <p className="font-bold text-xs mb-1">Passiva de Processo (SER)</p>
+                          <p className="font-bold text-lg mb-1">Passiva de Processo (SER)</p>
                           <p>"O contrato <strong>foi assinado</strong> ontem."</p>
-                          <p className="text-xs text-muted-foreground mt-1">Foca no momento da ação.</p>
+                          <p className="text-lg text-muted-foreground mt-1">Foca no momento da ação.</p>
                         </div>
                         <div className="p-4 bg-teal-500/10 border border-teal-500/20 rounded-xl">
-                          <p className="font-bold text-xs mb-1">Passiva de Estado (ESTAR)</p>
+                          <p className="font-bold text-lg mb-1">Passiva de Estado (ESTAR)</p>
                           <p>"O contrato <strong>está assinado</strong>."</p>
-                          <p className="text-xs text-muted-foreground mt-1">Foca no estado resultante atual.</p>
+                          <p className="text-lg text-muted-foreground mt-1">Foca no estado resultante atual.</p>
                         </div>
                       </div>
                       <AlertBox tipo="info" titulo="Implicação para Reescrita">
@@ -865,11 +865,11 @@ export default function AulaReescritaFrases({
                   icone: <LuRepeat />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Referência rápida de como cada tempo ativo se converte na passiva analítica:
                       </p>
                       <div className="overflow-x-auto">
-                        <table className="w-full text-xs border-collapse">
+                        <table className="w-full text-lg border-collapse">
                           <thead>
                             <tr className="bg-muted/70">
                               <th className="p-2 text-left border border-border">Ativa</th>
@@ -940,7 +940,7 @@ export default function AulaReescritaFrases({
                         Ao passar do discurso direto (fala real) para o indireto
                         (relato), os tempos verbais "recuam" no tempo.
                       </p>
-                      <ul className="list-disc pl-5 text-sm space-y-2">
+                      <ul className="list-disc pl-5 text-lg space-y-2">
                         <li>
                           <strong>Presente</strong> vira{" "}
                           <strong>Pretérito Imperfeito</strong>.
@@ -962,12 +962,12 @@ export default function AulaReescritaFrases({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Memorize a tabela abaixo — ela resolve 90% das questões
                         de discurso indireto na CESGRANRIO:
                       </p>
                       <div className="overflow-x-auto">
-                        <table className="w-full text-sm border-collapse">
+                        <table className="w-full text-lg border-collapse">
                           <thead>
                             <tr className="bg-muted/70">
                               <th className="p-3 text-left border border-border rounded-tl-lg">Discurso Direto</th>
@@ -1012,13 +1012,13 @@ export default function AulaReescritaFrases({
                         vista do narrador:
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="p-4 bg-muted/50 rounded-xl border border-border text-sm space-y-1">
-                          <p className="font-bold text-xs mb-2">Discurso Direto</p>
+                        <div className="p-4 bg-muted/50 rounded-xl border border-border text-lg space-y-1">
+                          <p className="font-bold text-lg mb-2">Discurso Direto</p>
                           <p>"Eu vou resolver o problema."</p>
                           <p>"Você precisa assinar o contrato."</p>
                         </div>
-                        <div className="p-4 bg-teal-500/10 rounded-xl border border-teal-500/20 text-sm space-y-1">
-                          <p className="font-bold text-xs mb-2">Discurso Indireto</p>
+                        <div className="p-4 bg-teal-500/10 rounded-xl border border-teal-500/20 text-lg space-y-1">
+                          <p className="font-bold text-lg mb-2">Discurso Indireto</p>
                           <p>Ele disse que <em>ele</em> iria resolver o problema.</p>
                           <p>Ele disse que <em>ela/o interlocutor</em> precisava assinar o contrato.</p>
                         </div>
@@ -1097,7 +1097,7 @@ export default function AulaReescritaFrases({
               title="Verbos Introdutores de Discurso Indireto"
               variant="emerald"
             />
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               O verbo que introduz o discurso indireto determina como a
               transposição é feita. Diferentes verbos dicendi exigem diferentes
               construções sintáticas:
@@ -1200,19 +1200,19 @@ export default function AulaReescritaFrases({
                   icone: <LuRepeat />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Há três padrões principais de nominalização:
                       </p>
                       <div className="space-y-3">
-                        <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-sm">
+                        <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-lg">
                           <p className="font-bold mb-1">1. Verbo → Substantivo de ação</p>
                           <p>"Decidir" → "a decisão" | "Executar" → "a execução" | "Implantar" → "a implantação"</p>
                         </div>
-                        <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-sm">
+                        <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-lg">
                           <p className="font-bold mb-1">2. Verbo → Substantivo de agente</p>
                           <p>"Operar" → "o operador" | "Supervisionar" → "o supervisor"</p>
                         </div>
-                        <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-sm">
+                        <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-lg">
                           <p className="font-bold mb-1">3. Verbo → Substantivo de resultado</p>
                           <p>"Aprovar" → "a aprovação" (ação) ou "o aprovado" (resultado/agente)</p>
                         </div>
@@ -1232,13 +1232,13 @@ export default function AulaReescritaFrases({
                         é essencial tanto para a prova quanto para o exercício
                         profissional.
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-lg">
                         <div className="p-3 bg-muted/50 rounded-lg border border-border">
-                          <p className="font-bold text-xs mb-1">Verbal (informal)</p>
+                          <p className="font-bold text-lg mb-1">Verbal (informal)</p>
                           <p>"A empresa decidiu contratar novos técnicos."</p>
                         </div>
                         <div className="p-3 bg-orange-500/10 rounded-lg border border-orange-500/20">
-                          <p className="font-bold text-xs mb-1">Nominalizado (formal/técnico)</p>
+                          <p className="font-bold text-lg mb-1">Nominalizado (formal/técnico)</p>
                           <p>"A decisão de contratação de novos técnicos foi tomada pela empresa."</p>
                         </div>
                       </div>
@@ -1329,7 +1329,7 @@ export default function AulaReescritaFrases({
               title="Sufixos Nominalizadores — Como Identificar o Substantivo Correto"
               variant="amber"
             />
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Em provas de reescrita, a banca às vezes apresenta uma
               nominalização com o sufixo errado como distrator. Conhecer os
               sufixos nominalizadores mais produtivos do português é uma
@@ -1342,23 +1342,23 @@ export default function AulaReescritaFrases({
                   icone: <LuActivity />,
                   conteudo: (
                     <div className="space-y-4">
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-lg">
                         <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
-                          <p className="font-bold text-xs mb-2">-ção / -são</p>
+                          <p className="font-bold text-lg mb-2">-ção / -são</p>
                           <p>produzir → produção</p>
                           <p>executar → execução</p>
                           <p>decidir → decisão</p>
                           <p>contratar → contratação</p>
                         </div>
                         <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-xl">
-                          <p className="font-bold text-xs mb-2">-mento</p>
+                          <p className="font-bold text-lg mb-2">-mento</p>
                           <p>aperfeiçoar → aperfeiçoamento</p>
                           <p>processar → processamento</p>
                           <p>lançar → lançamento</p>
                           <p>desenvolver → desenvolvimento</p>
                         </div>
                         <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-xl">
-                          <p className="font-bold text-xs mb-2">-agem / -ância / -ência</p>
+                          <p className="font-bold text-lg mb-2">-agem / -ância / -ência</p>
                           <p>bloquear → blocagem</p>
                           <p>exportar → exportação / exportância (raro)</p>
                           <p>convergir → convergência</p>
@@ -1378,13 +1378,13 @@ export default function AulaReescritaFrases({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         Ao nominalizar, o sujeito da ação pode aparecer após
                         preposição "de" (agente do processo) ou ficar implícito.
                         A banca testa se você percebe quando o agente foi
                         indevidamente omitido ou trocado:
                       </p>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-2 text-lg">
                         <div className="p-3 bg-muted/50 rounded-xl border border-border">
                           <p><strong>Ativa:</strong> "A ANP fiscalizou a plataforma."</p>
                         </div>
@@ -1440,12 +1440,12 @@ export default function AulaReescritaFrases({
                         <p className="font-bold">
                           SE = CASO = DESDE QUE = CONTANTO QUE
                         </p>
-                        <p className="text-xs text-muted-foreground mt-2">
+                        <p className="text-lg text-muted-foreground mt-2">
                           Nota: 'Desde que' pode ser temporal ou condicional —
                           o contexto determina o valor.
                         </p>
                       </div>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         <strong>Exemplo:</strong> "Se o equipamento falhar,
                         acione o alarme." = "Caso o equipamento venha a falhar,
                         acione o alarme."
@@ -1458,12 +1458,12 @@ export default function AulaReescritaFrases({
                   icone: <LuLink />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         As conjunções causais são as mais trocadas em questões
                         de reescrita. Todas as opções abaixo expressam causa,
                         mas diferem em registro e posição na frase:
                       </p>
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-lg">
                         {[
                           { conj: "porque", nota: "registro neutro/informal" },
                           { conj: "pois", nota: "posição pós-verbal; mais formal" },
@@ -1477,7 +1477,7 @@ export default function AulaReescritaFrases({
                             className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-xl text-center"
                           >
                             <p className="font-bold">{item.conj}</p>
-                            <p className="text-xs text-muted-foreground mt-1">
+                            <p className="text-lg text-muted-foreground mt-1">
                               {item.nota}
                             </p>
                           </div>
@@ -1491,23 +1491,23 @@ export default function AulaReescritaFrases({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                         <div className="p-4 bg-muted/50 rounded-xl border border-border">
-                          <p className="font-bold text-xs mb-2">Conclusivas</p>
+                          <p className="font-bold text-lg mb-2">Conclusivas</p>
                           <p>
                             portanto = logo = por isso = por conseguinte =
                             assim = dessa forma = destarte
                           </p>
-                          <p className="text-xs text-muted-foreground mt-2">
+                          <p className="text-lg text-muted-foreground mt-2">
                             Indicam consequência lógica da oração anterior.
                           </p>
                         </div>
                         <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
-                          <p className="font-bold text-xs mb-2">Explicativas</p>
+                          <p className="font-bold text-lg mb-2">Explicativas</p>
                           <p>
                             pois (anteposto) = que = porque (pós-imperativo)
                           </p>
-                          <p className="text-xs text-muted-foreground mt-2">
+                          <p className="text-lg text-muted-foreground mt-2">
                             Explicam ou justificam a afirmação anterior — não
                             introduzem causa real.
                           </p>
@@ -1528,16 +1528,16 @@ export default function AulaReescritaFrases({
                         de partida no tempo, é temporal; se indica condição, é
                         condicional.
                       </AlertBox>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                         <div className="p-3 bg-muted/50 rounded-xl border border-border">
-                          <p className="font-bold text-xs mb-1">Temporal</p>
+                          <p className="font-bold text-lg mb-1">Temporal</p>
                           <p>"Desde que entrou na empresa, o técnico se destacou."</p>
-                          <p className="text-xs text-muted-foreground">(= A partir do momento em que)</p>
+                          <p className="text-lg text-muted-foreground">(= A partir do momento em que)</p>
                         </div>
                         <div className="p-3 bg-orange-500/10 rounded-xl border border-orange-500/20">
-                          <p className="font-bold text-xs mb-1">Condicional</p>
+                          <p className="font-bold text-lg mb-1">Condicional</p>
                           <p>"Aprovarei o projeto, desde que o orçamento seja respeitado."</p>
-                          <p className="text-xs text-muted-foreground">(= Contanto que / desde que = condição)</p>
+                          <p className="text-lg text-muted-foreground">(= Contanto que / desde que = condição)</p>
                         </div>
                       </div>
                     </div>
@@ -1590,13 +1590,13 @@ export default function AulaReescritaFrases({
               title="Mapa Completo de Conjunções por Valor Lógico"
               variant="amber"
             />
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Em reescrita, a equivalência conjuntiva só é válida dentro do
               mesmo <strong>valor lógico</strong>. Nunca troque uma conjunção
               por outra de valor diferente, mesmo que pareça sinônima na
               língua cotidiana.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
               {[
                 {
                   valor: "Causal",
@@ -1633,8 +1633,8 @@ export default function AulaReescritaFrases({
                   key={item.valor}
                   className={`p-4 ${item.cor} border rounded-xl`}
                 >
-                  <p className="font-bold text-xs mb-2">{item.valor}</p>
-                  <p className="text-muted-foreground text-xs leading-relaxed">{item.lista}</p>
+                  <p className="font-bold text-lg mb-2">{item.valor}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed">{item.lista}</p>
                 </div>
               ))}
             </div>
@@ -1699,12 +1699,12 @@ export default function AulaReescritaFrases({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Todas as conjunções/locuções abaixo introduzem oração
                         concessiva (ideia contrária que não impede o fato
                         principal):
                       </p>
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-lg">
                         {[
                           "embora",
                           "ainda que",
@@ -1724,7 +1724,7 @@ export default function AulaReescritaFrases({
                           </div>
                         ))}
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Todas exigem verbo no <strong>Subjuntivo</strong> na
                         oração que introduzem (exceto "apesar de que" que admite
                         indicativo em registros mais informais).
@@ -1737,23 +1737,23 @@ export default function AulaReescritaFrases({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         A oposição entre adversativas e concessivas é de{" "}
                         <strong>posição de ênfase</strong>:
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                         <div className="p-4 bg-muted/50 rounded-xl border border-border">
-                          <p className="font-bold text-xs mb-2">Adversativa (MAS)</p>
+                          <p className="font-bold text-lg mb-2">Adversativa (MAS)</p>
                           <p>"O equipamento falhou,{" "}<strong>mas</strong>{" "}a operação continuou."</p>
-                          <p className="text-xs text-muted-foreground mt-2">
+                          <p className="text-lg text-muted-foreground mt-2">
                             Ênfase na segunda oração: a operação continuou
                             apesar do obstáculo.
                           </p>
                         </div>
                         <div className="p-4 bg-red-500/10 rounded-xl border border-red-500/20">
-                          <p className="font-bold text-xs mb-2">Concessiva (EMBORA)</p>
+                          <p className="font-bold text-lg mb-2">Concessiva (EMBORA)</p>
                           <p>"<strong>Embora</strong>{" "}o equipamento falhasse, a operação continuou."</p>
-                          <p className="text-xs text-muted-foreground mt-2">
+                          <p className="text-lg text-muted-foreground mt-2">
                             Ênfase na oração principal: "a operação continuou"
                             é a informação nuclear.
                           </p>
@@ -1806,27 +1806,27 @@ export default function AulaReescritaFrases({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         A concessão pode ser expressa sem conjunção subordinativa,
                         usando construções com gerúndio, locução prepositiva ou
                         particípio. A banca exige que você reconheça essas
                         equivalências:
                       </p>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-2 text-lg">
                         <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl">
-                          <p className="font-bold text-xs mb-1">Com conjunção (padrão)</p>
+                          <p className="font-bold text-lg mb-1">Com conjunção (padrão)</p>
                           <p>"<em>Embora</em> o prazo estivesse apertado, a equipe entregou o projeto."</p>
                         </div>
                         <div className="p-3 bg-muted/50 rounded-xl border border-border">
-                          <p className="font-bold text-xs mb-1">Com locução prepositiva</p>
+                          <p className="font-bold text-lg mb-1">Com locução prepositiva</p>
                           <p>"<em>Apesar de</em> o prazo estar apertado, a equipe entregou o projeto."</p>
                         </div>
                         <div className="p-3 bg-muted/50 rounded-xl border border-border">
-                          <p className="font-bold text-xs mb-1">Com gerúndio concessivo</p>
+                          <p className="font-bold text-lg mb-1">Com gerúndio concessivo</p>
                           <p>"<em>Mesmo tendo</em> o prazo apertado, a equipe entregou o projeto."</p>
                         </div>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         Todas as três versões são semanticamente equivalentes e
                         válidas na norma culta — a banca pode apresentar qualquer
                         uma como reescrita correta.
@@ -1839,23 +1839,23 @@ export default function AulaReescritaFrases({
                   icone: <LuScale />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         "Embora" e "ainda que" introduzem tipos diferentes de
                         concessão:
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                         <div className="p-4 bg-muted/50 rounded-xl border border-border">
-                          <p className="font-bold text-xs mb-1">Concessiva Real (Embora)</p>
+                          <p className="font-bold text-lg mb-1">Concessiva Real (Embora)</p>
                           <p>"Embora o relatório <em>estivesse</em> incompleto, foi aprovado."</p>
-                          <p className="text-xs text-muted-foreground mt-1">
+                          <p className="text-lg text-muted-foreground mt-1">
                             Fato real — o relatório realmente estava incompleto.
                             Subjuntivo Imperfeito.
                           </p>
                         </div>
                         <div className="p-4 bg-red-500/10 rounded-xl border border-red-500/20">
-                          <p className="font-bold text-xs mb-1">Concessiva Hipotética (Mesmo que)</p>
+                          <p className="font-bold text-lg mb-1">Concessiva Hipotética (Mesmo que)</p>
                           <p>"Mesmo que o relatório <em>esteja</em> incompleto, será aprovado."</p>
-                          <p className="text-xs text-muted-foreground mt-1">
+                          <p className="text-lg text-muted-foreground mt-1">
                             Hipótese — o relatório pode ou não estar incompleto.
                             Subjuntivo Presente.
                           </p>
@@ -1904,24 +1904,24 @@ export default function AulaReescritaFrases({
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-muted/50 rounded-xl border border-border">
-                          <p className="text-xs font-bold mb-1">
+                          <p className="text-lg font-bold mb-1">
                             COM Vírgula (Explicativa)
                           </p>
-                          <p className="text-sm">
+                          <p className="text-lg">
                             Os homens, que são racionais, lutam. (Todos os homens)
                           </p>
                         </div>
                         <div className="p-4 bg-primary/5 rounded-xl border border-primary/20">
-                          <p className="text-xs font-bold mb-1 text-primary">
+                          <p className="text-lg font-bold mb-1 text-primary">
                             SEM Vírgula (Restritiva)
                           </p>
-                          <p className="text-sm">
+                          <p className="text-lg">
                             Os homens que são racionais lutam. (Somente os
                             racionais)
                           </p>
                         </div>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-muted-foreground">
                         A presença ou ausência da vírgula muda completamente
                         quem está incluído na afirmação — por isso a banca usa
                         essa distinção em questões de reescrita.
@@ -1934,23 +1934,23 @@ export default function AulaReescritaFrases({
                   icone: <LuLightbulb />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         A vírgula antes de uma conjunção coordenativa não é
                         sempre opcional — ela é obrigatória em alguns casos e
                         proibida em outros:
                       </p>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-2 text-lg">
                         <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-xl">
-                          <p className="font-bold text-xs mb-1">Obrigatória: adversativas e conclusivas</p>
+                          <p className="font-bold text-lg mb-1">Obrigatória: adversativas e conclusivas</p>
                           <p>"O técnico chegou atrasado<strong>,</strong> mas concluiu o serviço."</p>
                           <p>"Estudou bastante<strong>,</strong> portanto foi aprovado."</p>
                         </div>
                         <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl">
-                          <p className="font-bold text-xs mb-1">Proibida (em geral): aditiva simples com sujeito igual</p>
+                          <p className="font-bold text-lg mb-1">Proibida (em geral): aditiva simples com sujeito igual</p>
                           <p>"O engenheiro planejou e executou o projeto." (sem vírgula)</p>
                         </div>
                         <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl">
-                          <p className="font-bold text-xs mb-1">Permitida: aditiva com sujeito diferente</p>
+                          <p className="font-bold text-lg mb-1">Permitida: aditiva com sujeito diferente</p>
                           <p>"A diretoria aprovou o contrato<strong>,</strong> e o jurídico o arquivou."</p>
                         </div>
                       </div>
@@ -1962,12 +1962,12 @@ export default function AulaReescritaFrases({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         A CESGRANRIO apresenta duas versões de uma frase —
                         idênticas exceto pela pontuação — e pergunta se o
                         sentido foi mantido. As principais armadilhas:
                       </p>
-                      <ul className="list-disc pl-5 text-sm space-y-2 text-muted-foreground">
+                      <ul className="list-disc pl-5 text-lg space-y-2 text-muted-foreground">
                         <li>
                           Adicionar vírgula em oração restritiva transforma-a
                           em explicativa, alterando o escopo da afirmação.
@@ -2092,12 +2092,12 @@ export default function AulaReescritaFrases({
                         referentes abstratos (reunião, contrato, processo),
                         use "em que" ou "no qual/na qual".
                       </p>
-                      <div className="p-3 bg-red-500/5 rounded-xl border border-red-500/20 text-sm space-y-1">
+                      <div className="p-3 bg-red-500/5 rounded-xl border border-red-500/20 text-lg space-y-1">
                         <p>❌ "Na reunião <strong>onde</strong> decidimos o orçamento..."</p>
                         <p className="text-green-600 dark:text-green-400">
                           ✅ "Na reunião <strong>em que</strong> decidimos o orçamento..."
                         </p>
-                        <p className="text-xs text-muted-foreground mt-2">
+                        <p className="text-lg text-muted-foreground mt-2">
                           "Reunião" não é lugar físico — exige pronome relativo
                           "em que" ou "na qual".
                         </p>
@@ -2112,14 +2112,14 @@ export default function AulaReescritaFrases({
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
                         <div className="p-3 bg-muted rounded-lg text-center">
-                          <p className="font-bold text-xs">Posto Que</p>
+                          <p className="font-bold text-lg">Posto Que</p>
                           <p className="text-[10px] text-muted-foreground mt-1">Concessão (= Embora)</p>
-                          <p className="text-xs mt-2 italic">"Posto que fosse difícil, foi aprovado."</p>
+                          <p className="text-lg mt-2 italic">"Posto que fosse difícil, foi aprovado."</p>
                         </div>
                         <div className="p-3 bg-muted rounded-lg text-center">
-                          <p className="font-bold text-xs">Contanto Que</p>
+                          <p className="font-bold text-lg">Contanto Que</p>
                           <p className="text-[10px] text-muted-foreground mt-1">Condição (= Caso / Se)</p>
-                          <p className="text-xs mt-2 italic">"Será aprovado, contanto que atenda os requisitos."</p>
+                          <p className="text-lg mt-2 italic">"Será aprovado, contanto que atenda os requisitos."</p>
                         </div>
                       </div>
                       <AlertBox tipo="danger" titulo="Erro Clássico CESGRANRIO">
@@ -2135,18 +2135,18 @@ export default function AulaReescritaFrases({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         "Cujo/cuja" é pronome relativo possessivo — indica
                         posse. Nunca aceita artigo depois dele e concorda em
                         gênero e número com o substantivo que o segue (o
                         possuído), não com o antecedente.
                       </p>
-                      <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl text-sm space-y-1">
+                      <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl text-lg space-y-1">
                         <p>❌ "O técnico cujo o relatório foi aprovado..."</p>
                         <p className="text-green-600 dark:text-green-400">
                           ✅ "O técnico cujo relatório foi aprovado..."
                         </p>
-                        <p className="text-xs text-muted-foreground mt-2">
+                        <p className="text-lg text-muted-foreground mt-2">
                           Sem artigo após "cujo". O gênero (cujo/cuja) segue o
                           possuído: "relatório" (masc.) → "cujo".
                         </p>
@@ -2159,23 +2159,23 @@ export default function AulaReescritaFrases({
                   icone: <LuRepeat />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Uma questão frequente combina duas transformações:
                         passiva + nominalização. Exemplo real de prova:
                       </p>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-2 text-lg">
                         <div className="p-3 bg-muted/50 rounded-xl border border-border">
-                          <p className="font-bold text-xs mb-1">Original (ativa verbal)</p>
+                          <p className="font-bold text-lg mb-1">Original (ativa verbal)</p>
                           <p>"A diretoria aprovou o plano de negócios."</p>
                         </div>
                         <div className="p-3 bg-blue-500/10 rounded-xl border border-blue-500/20">
-                          <p className="font-bold text-xs mb-1">Reescrita (passiva)</p>
+                          <p className="font-bold text-lg mb-1">Reescrita (passiva)</p>
                           <p>"O plano de negócios foi aprovado pela diretoria."</p>
                         </div>
                         <div className="p-3 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
-                          <p className="font-bold text-xs mb-1">Reescrita (nominalização)</p>
+                          <p className="font-bold text-lg mb-1">Reescrita (nominalização)</p>
                           <p>"A aprovação do plano de negócios pela diretoria..."</p>
-                          <p className="text-xs text-muted-foreground">(incompleta sem predicado — válida apenas em contexto nominal)</p>
+                          <p className="text-lg text-muted-foreground">(incompleta sem predicado — válida apenas em contexto nominal)</p>
                         </div>
                       </div>
                     </div>
@@ -2312,17 +2312,17 @@ export default function AulaReescritaFrases({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         <strong>M1 — Paráfrase:</strong> Equivalência semântica +
                         correção gramatical. Nunca extrapole nem restrinja o
                         sentido original. Verifique modalidade e polaridade.
                       </p>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         <strong>M2 — Sinonímia:</strong> Teste a substituição no
                         contexto. Preserve o registro (formal/técnico em textos
                         Petrobras). Cuidado com parônimos e hiperônimos.
                       </p>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         <strong>M3 — Vozes:</strong> OD ativo → sujeito passivo.
                         Verbo SER + particípio, tempo idêntico. Agente introduzido
                         por "por". Passiva sintética: "se" apassivador, verbo
@@ -2336,18 +2336,18 @@ export default function AulaReescritaFrases({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         <strong>M4 — Discurso Indireto:</strong> Recuo temporal
                         obrigatório (presente → imperfeito; futuro → condicional).
                         Pronomes 1ª/2ª → 3ª pessoa. Advérbios: hoje → naquele dia,
                         amanhã → no dia seguinte.
                       </p>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         <strong>M5 — Nominalização:</strong> Verbo → substantivo
                         de ação. O agente pode aparecer como "por" + SN. Muito
                         frequente em documentos técnicos Petrobras.
                       </p>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         <strong>M6 — Conectivos:</strong> Causais (porque, pois,
                         já que, uma vez que, visto que). Condicionais (se, caso,
                         contanto que). "Desde que" é bifuncional. Preserve o valor
@@ -2361,18 +2361,18 @@ export default function AulaReescritaFrases({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         <strong>M7 — Concessivas:</strong> Adversativa (mas) →
                         concessiva (embora): indicativo → subjuntivo. Família:
                         embora, ainda que, mesmo que, posto que, conquanto.
                         Ênfase muda de oração.
                       </p>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         <strong>M8 — Pontuação:</strong> Vírgula em restritiva
                         → explicativa (muda escopo). Vírgula obrigatória antes
                         de "mas". Ponto-e-vírgula altera hierarquia oracional.
                       </p>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
                         <strong>M9 — CESGRANRIO:</strong> "Onde" só para lugar
                         físico. "Cujo" sem artigo. "Posto que" ≠ "contanto que".
                         Os 5 erros: modalidade, agente, concessiva/condicional,
@@ -2386,10 +2386,10 @@ export default function AulaReescritaFrases({
                   icone: <LuCheck />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-lg">
                         Use este roteiro mental para cada questão de reescrita:
                       </p>
-                      <ol className="list-decimal pl-5 text-sm space-y-2 text-muted-foreground">
+                      <ol className="list-decimal pl-5 text-lg space-y-2 text-muted-foreground">
                         <li>Leia a frase original inteira sem pressa.</li>
                         <li>Identifique o <strong>tipo de reescrita</strong> pedido (voz, discurso, conectivo...).</li>
                         <li>Aplique a regra específica do tipo identificado.</li>
@@ -2452,9 +2452,9 @@ export default function AulaReescritaFrases({
 
           <QuizInterativo
             questoes={quizM10}
-            titulo="Simulado de Conclusão"
+            titulo="QUIZ: Arena de Elite"
             icone="🏆"
-            numero={10}
+            numero={3}
             variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
           />

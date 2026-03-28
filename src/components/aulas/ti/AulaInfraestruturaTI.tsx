@@ -278,7 +278,7 @@ export default function AulaInfraestruturaTI({
                     titulo: "Interior Gateway (IGP)",
                     conteudo: (
                         <div className="bg-slate-900/40 p-6 rounded-xl border border-green-500/20">
-                            <ul className="list-disc pl-5 space-y-2 text-sm">
+                            <ul className="list-disc pl-5 space-y-2 text-lg">
                                 <li><strong>RIP:</strong> Baseado em saltos (máx 15).</li>
                                 <li><strong>OSPF:</strong> Baseado em custo de link. Rápido.</li>
                             </ul>
@@ -289,7 +289,7 @@ export default function AulaInfraestruturaTI({
                     titulo: "Exterior Gateway (EGP)",
                     conteudo: (
                         <div className="bg-slate-900/40 p-6 rounded-xl border border-blue-500/20">
-                            <p className="text-sm"><strong>BGP:</strong> O protocolo da Internet. Baseado em políticas de Sistemas Autônomos (AS).</p>
+                            <p className="text-lg"><strong>BGP:</strong> O protocolo da Internet. Baseado em políticas de Sistemas Autônomos (AS).</p>
                         </div>
                     )
                 }
@@ -299,7 +299,7 @@ export default function AulaInfraestruturaTI({
           <section id="quiz-modulo-2">
             <QuizInterativo
               questoes={quizM2}
-              titulo="Checkpoint de Comutação"
+              titulo="QUIZ: Módulo Nº 2"
               variant={mv[2]}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -456,7 +456,7 @@ export default function AulaInfraestruturaTI({
           <section id="quiz-modulo-4">
             <QuizInterativo
               questoes={quizM4}
-              titulo="Certificação AD"
+              titulo="QUIZ: Módulo Nº 4"
               variant={mv[4]}
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -504,7 +504,7 @@ export default function AulaInfraestruturaTI({
                   {
                       titulo: "Permissões e Donos",
                       conteudo: (
-                        <ul className="space-y-3 font-mono text-sm">
+                        <ul className="space-y-3 font-mono text-lg">
                             <li><strong>chown user:group:</strong> Muda dono.</li>
                             <li><strong>chmod 755:</strong> Muda rwxr-xr-x.</li>
                         </ul>
@@ -513,7 +513,7 @@ export default function AulaInfraestruturaTI({
                   {
                       titulo: "Sistema",
                       conteudo: (
-                        <ul className="space-y-3 font-mono text-sm">
+                        <ul className="space-y-3 font-mono text-lg">
                             <li><strong>df -h:</strong> Uso de disco.</li>
                             <li><strong>systemctl:</strong> Gerencia serviços (Systemd).</li>
                         </ul>
@@ -653,7 +653,7 @@ export default function AulaInfraestruturaTI({
                 {
                     titulo: "Conceitos K8s",
                     conteudo: (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                             <div className="p-3 bg-slate-800 rounded border border-blue-500/30"><strong>Pod:</strong> Menor unidade de deploy.</div>
                             <div className="p-3 bg-slate-800 rounded border border-blue-500/30"><strong>Node:</strong> Máquina que roda os pods.</div>
                         </div>
@@ -747,7 +747,7 @@ export default function AulaInfraestruturaTI({
                </AlertBox>
                <div className="bg-slate-900/40 p-6 rounded-xl border border-yellow-500/20">
                   <h4 className="text-yellow-400 font-bold mb-4">Golden Signals</h4>
-                  <p className="text-sm text-gray-300">Latência, Tráfego, Erros e Saturação.</p>
+                  <p className="text-lg text-gray-300">Latência, Tráfego, Erros e Saturação.</p>
                </div>
            </div>
 
@@ -784,11 +784,11 @@ export default function AulaInfraestruturaTI({
            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="p-6 bg-red-900/10 border border-red-500/30 rounded-xl">
                 <h4 className="text-red-400 font-bold mb-2">RPO</h4>
-                <p className="text-sm text-gray-400">Quanto dado você aceita perder? Define a frequência do backup.</p>
+                <p className="text-lg text-gray-400">Quanto dado você aceita perder? Define a frequência do backup.</p>
               </div>
               <div className="p-6 bg-green-900/10 border border-green-500/30 rounded-xl">
                 <h4 className="text-green-400 font-bold mb-2">RTO</h4>
-                <p className="text-sm text-gray-400">Quanto tempo o serviço pode ficar fora? Define a velocidade de recup.</p>
+                <p className="text-lg text-gray-400">Quanto tempo o serviço pode ficar fora? Define a velocidade de recup.</p>
               </div>
            </div>
 

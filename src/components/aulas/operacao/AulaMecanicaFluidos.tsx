@@ -171,7 +171,7 @@ export default function AulaMecanicaFluidos({
             <TabsContent value="introducao" className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                   <div className="space-y-8">
-                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 font-bold text-sm">
+                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 font-bold text-lg">
                         <LuWaves className="animate-bounce" />
                         <span>Mecânica dos Fluidos de Missão Crítica</span>
                      </div>
@@ -185,17 +185,17 @@ export default function AulaMecanicaFluidos({
                      <div className="flex gap-6 pt-4">
                         <div className="flex flex-col">
                            <span className="text-4xl font-black text-foreground">80min</span>
-                           <span className="text-sm text-muted-foreground uppercase font-bold tracking-widest">Duração</span>
+                           <span className="text-lg text-muted-foreground uppercase font-bold tracking-widest">Duração</span>
                         </div>
                         <div className="w-px h-12 bg-border self-center" />
                         <div className="flex flex-col">
                            <span className="text-4xl font-black text-emerald-500">500</span>
-                           <span className="text-sm uppercase font-bold tracking-widest text-emerald-500/70">XP Ganhos</span>
+                           <span className="text-lg uppercase font-bold tracking-widest text-emerald-500/70">XP Ganhos</span>
                         </div>
                         <div className="w-px h-12 bg-border self-center" />
                         <div className="flex flex-col">
                            <span className="text-4xl font-black text-amber-500">III</span>
-                           <span className="text-sm uppercase font-bold tracking-widest text-amber-500/70">Bloco Edital</span>
+                           <span className="text-lg uppercase font-bold tracking-widest text-amber-500/70">Bloco Edital</span>
                         </div>
                      </div>
 
@@ -215,7 +215,7 @@ export default function AulaMecanicaFluidos({
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
                            <div className="flex items-center gap-4 text-white/90">
                               <LuGauge className="text-blue-400 w-8 h-8" />
-                              <span className="font-mono text-sm tracking-tighter italic">P₁ + ½ρv₁² + ρgh₁ = const.</span>
+                              <span className="font-mono text-lg tracking-tighter italic">P₁ + ½ρv₁² + ρgh₁ = const.</span>
                            </div>
                         </div>
                      </div>
@@ -226,17 +226,17 @@ export default function AulaMecanicaFluidos({
                   <div className="p-8 bg-card rounded-3xl border border-border/50 hover:border-blue-500/50 transition-colors space-y-4">
                      <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 font-black">01</div>
                      <h3 className="text-xl font-bold">Domine a Estática</h3>
-                     <p className="text-muted-foreground text-sm">Entenda como a pressão se comporta em reservatórios e vasos de pressão em repouso.</p>
+                     <p className="text-muted-foreground text-lg">Entenda como a pressão se comporta em reservatórios e vasos de pressão em repouso.</p>
                   </div>
                   <div className="p-8 bg-card rounded-3xl border border-border/50 hover:border-blue-500/50 transition-colors space-y-4">
                      <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-500 font-black">02</div>
                      <h3 className="text-xl font-bold">Fluxo & Energia</h3>
-                     <p className="text-muted-foreground text-sm">Use Bernoulli para calcular perdas de carga e garantir que o produto chegue ao destino.</p>
+                     <p className="text-muted-foreground text-lg">Use Bernoulli para calcular perdas de carga e garantir que o produto chegue ao destino.</p>
                   </div>
                   <div className="p-8 bg-card rounded-3xl border border-border/50 hover:border-blue-500/50 transition-colors space-y-4">
                      <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 font-black">03</div>
                      <h3 className="text-xl font-bold">Perdas Reais</h3>
-                     <p className="text-muted-foreground text-sm">O pesadelo do Operador: Perda de carga distribuída e localizada em bombas e válvulas.</p>
+                     <p className="text-muted-foreground text-lg">O pesadelo do Operador: Perda de carga distribuída e localizada em bombas e válvulas.</p>
                   </div>
                </div>
             </TabsContent>
@@ -268,14 +268,14 @@ export default function AulaMecanicaFluidos({
 
                         <div className="grid grid-cols-2 gap-4 mt-8">
                             <div className="p-4 bg-muted rounded-2xl border border-border/50">
-                               <p className="text-sm font-bold opacity-50 uppercase">Densidade (ρ)</p>
+                               <p className="text-lg font-bold opacity-50 uppercase">Densidade (ρ)</p>
                                <p className="text-2xl font-black">ρ = m/V</p>
-                               <p className="text-xs text-muted-foreground">Massa por unidade de volume (kg/m³).</p>
+                               <p className="text-lg text-muted-foreground">Massa por unidade de volume (kg/m³).</p>
                             </div>
                             <div className="p-4 bg-muted rounded-2xl border border-border/50">
-                               <p className="text-sm font-bold opacity-50 uppercase">Peso Específico (γ)</p>
+                               <p className="text-lg font-bold opacity-50 uppercase">Peso Específico (γ)</p>
                                <p className="text-2xl font-black">γ = ρ.g</p>
-                               <p className="text-xs text-muted-foreground">Peso por unidade de volume (N/m³).</p>
+                               <p className="text-lg text-muted-foreground">Peso por unidade de volume (N/m³).</p>
                             </div>
                         </div>
                      </div>
@@ -342,7 +342,7 @@ export default function AulaMecanicaFluidos({
                   content: (
                     <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                       <p className="font-bold text-blue-600">Viscosidade & T</p>
-                      <p className="text-xs">Líquido: Fica ralo no calor. Gás: Fica grosso (mais colisão) no calor.</p>
+                      <p className="text-lg">Líquido: Fica ralo no calor. Gás: Fica grosso (mais colisão) no calor.</p>
                     </div>
                   )
                 }}
@@ -382,10 +382,10 @@ export default function AulaMecanicaFluidos({
                         </AlertBox>
                         
                         <div className="p-6 bg-cyan-500/5 rounded-3xl border border-cyan-500/20 space-y-4">
-                           <h4 className="font-black text-cyan-600 uppercase tracking-widest text-sm">Equação Fundamental da Hidrostática</h4>
+                           <h4 className="font-black text-cyan-600 uppercase tracking-widest text-lg">Equação Fundamental da Hidrostática</h4>
                            <div className="flex items-center gap-6">
                               <div className="text-4xl font-mono font-black text-foreground">ΔP = ρgh</div>
-                              <div className="text-xs text-muted-foreground flex-1">
+                              <div className="text-lg text-muted-foreground flex-1">
                                  Onde <strong>h</strong> é a profundidade. Em um tanque aberto à atmosfera, P = Patm + ρgh.
                               </div>
                            </div>
@@ -403,13 +403,13 @@ export default function AulaMecanicaFluidos({
                               <LuGauge size={32} />
                             </div>
                             <h3 className="text-2xl font-black">Princípio de Stevin</h3>
-                             <p className="text-sm text-muted-foreground underline decoration-cyan-500/30">Clique para ver o conceito</p>
+                             <p className="text-lg text-muted-foreground underline decoration-cyan-500/30">Clique para ver o conceito</p>
                           </div>
                         }
                         verso={
                           <div className="space-y-4">
-                            <p className="text-sm font-medium">Pontos em uma mesma horizontal em um fluido contínuo e em repouso <strong>possuem a mesma pressão</strong>.</p>
-                             <ul className="text-xs space-y-2 opacity-80">
+                            <p className="text-lg font-medium">Pontos em uma mesma horizontal em um fluido contínuo e em repouso <strong>possuem a mesma pressão</strong>.</p>
+                             <ul className="text-lg space-y-2 opacity-80">
                                <li>• Independe da forma do vaso.</li>
                                <li>• Independe da área da superfície livre.</li>
                              </ul>
@@ -443,7 +443,7 @@ export default function AulaMecanicaFluidos({
                   content: (
                     <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
                       <p className="font-bold text-cyan-600">Regra do Mergulhador</p>
-                      <p className="text-xs">Desceu? Soma (+ρgh). Subiu? Subtrai (-ρgh). Mesma horizontal? Igual (P₁=P₂).</p>
+                      <p className="text-lg">Desceu? Soma (+ρgh). Subiu? Subtrai (-ρgh). Mesma horizontal? Igual (P₁=P₂).</p>
                     </div>
                   )
                 }}
@@ -470,7 +470,7 @@ export default function AulaMecanicaFluidos({
                      <div className="p-8 bg-indigo-500/5 border border-indigo-500/20 rounded-3xl space-y-6">
                         <div className="flex flex-col items-center gap-4">
                            <div className="text-5xl font-mono font-black text-indigo-600">Re = ρvD / μ</div>
-                           <p className="text-sm text-center text-muted-foreground font-medium italic">
+                           <p className="text-lg text-center text-muted-foreground font-medium italic">
                              "A luta entre a inércia (movimento) e a viscosidade (freio)."
                            </p>
                         </div>
@@ -478,15 +478,15 @@ export default function AulaMecanicaFluidos({
                         <div className="space-y-4">
                            <div className="flex items-center justify-between p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl">
                               <span className="font-bold">Laminar</span>
-                              <span className="font-mono px-3 py-1 bg-emerald-500 text-white rounded-lg text-xs">Re {'<'} 2000-2300</span>
+                              <span className="font-mono px-3 py-1 bg-emerald-500 text-white rounded-lg text-lg">Re {'<'} 2000-2300</span>
                            </div>
                            <div className="flex items-center justify-between p-4 bg-amber-500/10 border border-amber-500/20 rounded-2xl">
                               <span className="font-bold">Transição</span>
-                              <span className="font-mono px-3 py-1 bg-amber-500 text-white rounded-lg text-xs">2000-2300 {'<'} Re {'<'} 4000</span>
+                              <span className="font-mono px-3 py-1 bg-amber-500 text-white rounded-lg text-lg">2000-2300 {'<'} Re {'<'} 4000</span>
                            </div>
                            <div className="flex items-center justify-between p-4 bg-rose-500/10 border border-rose-500/20 rounded-2xl">
                               <span className="font-bold">Turbulento</span>
-                              <span className="font-mono px-3 py-1 bg-rose-500 text-white rounded-lg text-xs">Re {'\u003e'} 4000</span>
+                              <span className="font-mono px-3 py-1 bg-rose-500 text-white rounded-lg text-lg">Re {'\u003e'} 4000</span>
                            </div>
                         </div>
                      </div>
@@ -525,7 +525,7 @@ export default function AulaMecanicaFluidos({
                     <p className="text-lg">Diz que a soma da energia de pressão, cinética e potencial é constante ao longo de uma linha de corrente.</p>
                     <div className="p-8 bg-rose-500/10 border border-rose-500/20 rounded-[2rem] text-center space-y-4">
                         <p className="text-xl font-mono font-black text-rose-600">P/γ + v²/2g + z = const.</p>
-                        <ul className="text-sm text-left grid grid-cols-1 gap-2 opacity-80 pl-8 list-disc">
+                        <ul className="text-lg text-left grid grid-cols-1 gap-2 opacity-80 pl-8 list-disc">
                           <li><strong>P/γ</strong>: Carga de Pressão</li>
                           <li><strong>v²/2g</strong>: Carga de Velocidade</li>
                           <li><strong>z</strong>: Carga de Posição (Cota)</li>
@@ -569,12 +569,12 @@ export default function AulaMecanicaFluidos({
                     <p>O estrangulamento da tubulação cria aumento de velocidade e queda de pressão. Usamos essa ΔP para medir vazão.</p>
                     <div className="grid grid-cols-2 gap-4">
                        <div className="p-4 bg-muted rounded-xl text-center">
-                          <p className="text-xs uppercase opacity-50 font-bold">Placa de Orifício</p>
-                          <p className="text-sm">Barata, mas causa alta perda de carga permanente.</p>
+                          <p className="text-lg uppercase opacity-50 font-bold">Placa de Orifício</p>
+                          <p className="text-lg">Barata, mas causa alta perda de carga permanente.</p>
                        </div>
                        <div className="p-4 bg-muted rounded-xl text-center">
-                          <p className="text-xs uppercase opacity-50 font-bold">Tubo de Venturi</p>
-                          <p className="text-sm">Caro, mas eficiente (baixa perda de carga).</p>
+                          <p className="text-lg uppercase opacity-50 font-bold">Tubo de Venturi</p>
+                          <p className="text-lg">Caro, mas eficiente (baixa perda de carga).</p>
                        </div>
                     </div>
                   </div>
@@ -586,9 +586,9 @@ export default function AulaMecanicaFluidos({
                     </AlertBox>
                     <div className="p-6 bg-slate-900 rounded-3xl text-white">
                         <p className="text-pink-400 font-bold underline">SINTOMAS:</p>
-                        <p className="text-sm mt-2">• Ruído de 'pedras' dentro da bomba.</p>
-                        <p className="text-sm">• Vibração intensa.</p>
-                        <p className="text-sm">• Queda no desempenho (H e Q).</p>
+                        <p className="text-lg mt-2">• Ruído de 'pedras' dentro da bomba.</p>
+                        <p className="text-lg">• Vibração intensa.</p>
+                        <p className="text-lg">• Queda no desempenho (H e Q).</p>
                     </div>
                   </div>
                </div>
@@ -637,7 +637,7 @@ export default function AulaMecanicaFluidos({
 
                      {/* CTA PETROLINGO - Relacionando conteúdo */}
                      <div className="pt-8 border-t border-blue-500/10 mt-8">
-                        <p className="text-sm text-muted-foreground mb-4 uppercase font-black tracking-widest flex items-center justify-center gap-2">
+                        <p className="text-lg text-muted-foreground mb-4 uppercase font-black tracking-widest flex items-center justify-center gap-2">
                           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
                           Bônus de Especialista
                         </p>
@@ -648,7 +648,7 @@ export default function AulaMecanicaFluidos({
                             </div>
                             <div className="flex-1 space-y-1">
                               <h4 className="text-xl font-black text-emerald-600 dark:text-emerald-400">Praticar English: PetroLingo</h4>
-                              <p className="text-sm text-muted-foreground">O edital cobra Inglês. Domine Voz Passiva e Conectores fundamentais para ler textos técnicos no PetroLingo!</p>
+                              <p className="text-lg text-muted-foreground">O edital cobra Inglês. Domine Voz Passiva e Conectores fundamentais para ler textos técnicos no PetroLingo!</p>
                             </div>
                             <div className="px-6 py-3 rounded-xl bg-emerald-500 text-white font-bold group-hover:bg-emerald-600 transition-colors">
                               IR PARA O PETROLINGO

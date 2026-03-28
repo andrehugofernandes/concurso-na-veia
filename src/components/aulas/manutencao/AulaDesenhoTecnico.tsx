@@ -154,7 +154,7 @@ export default function AulaDesenhoTecnico({
             }}
             maceteVisual={{
                 title: "A Regra do Oposto na Escala",
-                content: <p className="text-sm">"Se o 1 vem atrás, o desenho é maior. Se o 1 vem na frente, o desenho é menor!"</p>
+                content: <p className="text-lg">"Se o 1 vem atrás, o desenho é maior. Se o 1 vem na frente, o desenho é menor!"</p>
             }}
             audio={{
                 audioUrl: "/audio/desenho-m1.mp3",
@@ -165,8 +165,8 @@ export default function AulaDesenhoTecnico({
 
         <QuizInterativo 
             questoes={QUIZ_M1_DESENHO_FUNDAMENTOS}
-            numero={1}
-            titulo="Fundamentos e Normas"
+            numero={2}
+            titulo="QUIZ: Módulo Nº 1"
             onComplete={() => handleModuleComplete("modulo-1")}
         />
       </TabsContent>
@@ -221,7 +221,7 @@ export default function AulaDesenhoTecnico({
             }}
             maceteVisual={{
                 title: "O Pulo do Gato",
-                content: <p className="text-sm italic">"Superior em baixo, esquerda na direita. No Brasil a projeção é assim feita!"</p>
+                content: <p className="text-lg italic">"Superior em baixo, esquerda na direita. No Brasil a projeção é assim feita!"</p>
             }}
             audio={{
                 audioUrl: "/audio/desenho-m2.mp3",
@@ -294,7 +294,7 @@ export default function AulaDesenhoTecnico({
             }}
             maceteVisual={{
                 title: "Hachura não é enfeite",
-                content: <p className="text-sm">"Lugar de hachura é no lugar da massa!" Se for vazio, não tem risquinho.</p>
+                content: <p className="text-lg">"Lugar de hachura é no lugar da massa!" Se for vazio, não tem risquinho.</p>
             }}
             audio={{
                 audioUrl: "/audio/desenho-m3.mp3",
@@ -305,8 +305,8 @@ export default function AulaDesenhoTecnico({
 
         <QuizInterativo 
             questoes={QUIZ_M3_DESENHO_CORTES}
-            numero={3}
-            titulo="Cortes e Seções"
+            numero={4}
+            titulo="QUIZ: Módulo Nº 3"
             onComplete={() => handleModuleComplete("modulo-3")}
         />
       </TabsContent>
@@ -347,7 +347,7 @@ export default function AulaDesenhoTecnico({
             }}
             maceteVisual={{
                 title: "A Orientação da Cota",
-                content: <p className="text-sm">"Leia de baixo ou da direita." As cotas devem estar sempre acima da linha de cota.</p>
+                content: <p className="text-lg">"Leia de baixo ou da direita." As cotas devem estar sempre acima da linha de cota.</p>
             }}
             audio={{
                 audioUrl: "/audio/desenho-m4.mp3",
@@ -358,8 +358,8 @@ export default function AulaDesenhoTecnico({
 
         <QuizInterativo 
             questoes={QUIZ_M4_DESENHO_COTAGEM}
-            numero={4}
-            titulo="Cotagem Industrial"
+            numero={5}
+            titulo="QUIZ: Módulo Nº 4"
             onComplete={() => handleModuleComplete("modulo-4")}
         />
       </TabsContent>
@@ -397,7 +397,7 @@ export default function AulaDesenhoTecnico({
             }}
             maceteVisual={{
                 title: "A Bússola no Isométrico",
-                content: <p className="text-sm">"Olhe sempre para o Norte!" Todo isométrico indica a direção do Norte de Projeto para orientação no campo.</p>
+                content: <p className="text-lg">"Olhe sempre para o Norte!" Todo isométrico indica a direção do Norte de Projeto para orientação no campo.</p>
             }}
             audio={{
                 audioUrl: "/audio/desenho-m5.mp3",

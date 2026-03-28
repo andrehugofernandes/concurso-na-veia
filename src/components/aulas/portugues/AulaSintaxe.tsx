@@ -785,31 +785,31 @@ export default function AulaSintaxe({
                   (após o verbo) para induzir ao erro.
                 </p>
                 <div className="space-y-3">
-                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-indigo-500 text-sm">
+                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-indigo-500 text-lg">
                     <p className="font-bold">1. Simples (Deslocado):</p>
                     <p className="italic">
                       "Ocorreram <b>falhas</b> no sistema."
                     </p>
                   </div>
-                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-indigo-500 text-sm">
+                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-indigo-500 text-lg">
                     <p className="font-bold">2. Composto:</p>
                     <p className="italic">
                       "<b>Petróleo e gás</b> movem o país."
                     </p>
                   </div>
-                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-indigo-500 text-sm">
+                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-indigo-500 text-lg">
                     <p className="font-bold">3. Oculto (Desinencial):</p>
                     <p className="italic">
                       "(Nós) <b>Concluímos</b> o relatório."
                     </p>
                   </div>
-                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-indigo-500 text-sm">
+                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-indigo-500 text-lg">
                     <p className="font-bold">4. Indeterminado:</p>
                     <p className="italic">
                       "<b>Precisa-se</b> de técnicos."
                     </p>
                   </div>
-                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-indigo-500 text-sm">
+                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-indigo-500 text-lg">
                     <p className="font-bold">5. Inexistente:</p>
                     <p className="italic">
                       "<b>Há</b> muitos desafios aqui."
@@ -828,31 +828,31 @@ export default function AulaSintaxe({
                   ambos (verbo-nominal).
                 </p>
                 <div className="space-y-3">
-                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-amber-500 text-sm">
+                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-amber-500 text-lg">
                     <p className="font-bold">1. Verbal (Ação):</p>
                     <p className="italic">
                       "O motor <b>parou</b> de repente."
                     </p>
                   </div>
-                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-amber-500 text-sm">
+                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-amber-500 text-lg">
                     <p className="font-bold">2. Nominal (Estado):</p>
                     <p className="italic">
                       "A situação <b>parece crítica</b>."
                     </p>
                   </div>
-                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-amber-500 text-sm">
+                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-amber-500 text-lg">
                     <p className="font-bold">3. Verbo-Nominal (Misto):</p>
                     <p className="italic">
                       "O navio <b>partiu atrasado</b>."
                     </p>
                   </div>
-                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-amber-500 text-sm">
+                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-amber-500 text-lg">
                     <p className="font-bold">4. Nominal (Substantivo):</p>
                     <p className="italic">
                       "O diretor <b>é um mestre</b>."
                     </p>
                   </div>
-                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-amber-500 text-sm">
+                  <div className="bg-muted/50 p-3 rounded-lg border-l-4 border-amber-500 text-lg">
                     <p className="font-bold">5. V-N (Estado do Objeto):</p>
                     <p className="italic">
                       "Julgaram o réu <b>culpado</b>."
@@ -887,7 +887,7 @@ export default function AulaSintaxe({
                     icone: "🎯",
                     conteudo:(
                       <div className="space-y-6">
-                        <p className="text-base text-muted-foreground leading-relaxed">
+                        <p className="text-lg text-muted-foreground leading-relaxed">
                           A classificação entre sujeito simples e composto se
                           apoia unicamente na quantidade de <b>núcleos</b> que o
                           formam. O <b>núcleo</b> é a palavra base da estrutura
@@ -896,19 +896,19 @@ export default function AulaSintaxe({
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div className="bg-green-500/10 p-5 rounded-xl border border-green-500/30">
                             <div className="flex items-center gap-2 mb-3">
-                              <span className="w-6 h-6 bg-green-500/20 text-green-700 dark:text-green-400 rounded-md flex items-center justify-center font-bold text-sm">
+                              <span className="w-6 h-6 bg-green-500/20 text-green-700 dark:text-green-400 rounded-md flex items-center justify-center font-bold text-lg">
                                 1
                               </span>
                               <p className="font-bold text-green-800 dark:text-green-300">
                                 Sujeito Simples (Único Núcleo)
                               </p>
                             </div>
-                            <p className="text-sm text-muted-foreground mb-4">
+                            <p className="text-lg text-muted-foreground mb-4">
                               Mesmo que a palavra esteja no plural, se for
                               apenas uma palavra central ditando a concordância,
                               o sujeito é simples.
                             </p>
-                            <ul className="space-y-2 text-sm text-foreground">
+                            <ul className="space-y-2 text-lg text-foreground">
                               <li className="flex gap-2">
                                 <span className="text-green-500">✓</span> "A{" "}
                                 <b>produção</b> subiu 10% hoje."
@@ -923,19 +923,19 @@ export default function AulaSintaxe({
                           </div>
                           <div className="bg-blue-500/10 p-5 rounded-xl border border-blue-500/30">
                             <div className="flex items-center gap-2 mb-3">
-                              <span className="w-6 h-6 bg-blue-500/20 text-blue-700 dark:text-blue-400 rounded-md flex items-center justify-center font-bold text-sm">
+                              <span className="w-6 h-6 bg-blue-500/20 text-blue-700 dark:text-blue-400 rounded-md flex items-center justify-center font-bold text-lg">
                                 +
                               </span>
                               <p className="font-bold text-blue-800 dark:text-blue-300">
                                 Sujeito Composto (2 ou mais Núcleos)
                               </p>
                             </div>
-                            <p className="text-sm text-muted-foreground mb-4">
+                            <p className="text-lg text-muted-foreground mb-4">
                               Formado por mais de um termo independente e não
                               preposicionado ligados, normalmente, por conjunção
                               (e, nem).
                             </p>
-                            <ul className="space-y-2 text-sm text-foreground">
+                            <ul className="space-y-2 text-lg text-foreground">
                               <li className="flex gap-2">
                                 <span className="text-blue-500">✓</span> "O{" "}
                                 <b>diretor</b> e o <b>gerente</b> chegaram."
@@ -965,7 +965,7 @@ export default function AulaSintaxe({
                     icone: "🚫",
                     conteudo:(
                       <div className="space-y-6">
-                        <p className="text-base text-muted-foreground leading-relaxed">
+                        <p className="text-lg text-muted-foreground leading-relaxed">
                           A oração sem sujeito ocorre com os{" "}
                           <b>verbos impessoais</b>. Como não há ser vivo, objeto
                           ou ideia conjugando o verbo na oração, o verbo
@@ -977,15 +977,15 @@ export default function AulaSintaxe({
                             <p className="font-bold text-foreground mb-2 flex items-center gap-2">
                               🔄 O Temutável Verbo Haver
                             </p>
-                            <p className="text-sm text-muted-foreground mb-3">
+                            <p className="text-lg text-muted-foreground mb-3">
                               Somente quando estiver empregado com sentido de{" "}
                               <b>existir</b>, <b>ocorrer</b> ou indicando{" "}
                               <b>tempo passado</b>. Ficará no singular.
                             </p>
-                            <p className="text-sm font-medium italic mb-2">
+                            <p className="text-lg font-medium italic mb-2">
                               "Houve problemas na tubulação."
                             </p>
-                            <p className="text-sm font-medium italic">
+                            <p className="text-lg font-medium italic">
                               "Há muitos anos não os vejo."
                             </p>
                           </div>
@@ -994,14 +994,14 @@ export default function AulaSintaxe({
                               <p className="font-bold text-foreground mb-2 flex items-center gap-2">
                                 ⏱️ Verbo Fazer e Ir
                               </p>
-                              <p className="text-sm text-muted-foreground mb-2">
+                              <p className="text-lg text-muted-foreground mb-2">
                                 Quando determinam tempo cronológico ou
                                 meteorológico.
                               </p>
-                              <p className="text-sm font-medium italic mb-1">
+                              <p className="text-lg font-medium italic mb-1">
                                 "Fazia dias frios." (nunca "Faziam")
                               </p>
-                              <p className="text-sm font-medium italic">
+                              <p className="text-lg font-medium italic">
                                 "Vai para três anos que operamos aqui."
                               </p>
                             </div>
@@ -1009,17 +1009,17 @@ export default function AulaSintaxe({
                               <p className="font-bold text-foreground mb-2 flex items-center gap-2">
                                 🌩️ Fenômenos da Natureza
                               </p>
-                              <p className="text-sm text-muted-foreground mb-2">
+                              <p className="text-lg text-muted-foreground mb-2">
                                 Sentido real denotativo. (Em sentido figurado,
                                 eles têm sujeito).
                               </p>
-                              <p className="text-sm font-medium italic mb-1">
+                              <p className="text-lg font-medium italic mb-1">
                                 "Ventou muito no oceano."
                               </p>
-                              <p className="text-sm font-medium italic mb-1">
+                              <p className="text-lg font-medium italic mb-1">
                                 "Garoava durante o embarque."
                               </p>
-                              <p className="text-sm font-medium italic">
+                              <p className="text-lg font-medium italic">
                                 "Amanheceu com muita neblina."
                               </p>
                             </div>
@@ -1043,7 +1043,7 @@ export default function AulaSintaxe({
                     icone: "👻",
                     conteudo:(
                       <div className="space-y-6">
-                        <p className="text-base text-muted-foreground leading-relaxed">
+                        <p className="text-lg text-muted-foreground leading-relaxed">
                           O sujeito oculto (ou desinencial/elíptico) é aquele
                           que não está escrito com todas as letras na frase, mas
                           nós conseguimos adivinhar facilmente quem ele é apenas
@@ -1052,19 +1052,19 @@ export default function AulaSintaxe({
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div className="bg-orange-500/10 p-5 rounded-xl border border-orange-500/30">
                             <div className="flex items-center gap-2 mb-3">
-                              <span className="w-6 h-6 bg-orange-500/20 text-orange-700 dark:text-orange-400 rounded-md flex items-center justify-center font-bold text-sm">
+                              <span className="w-6 h-6 bg-orange-500/20 text-orange-700 dark:text-orange-400 rounded-md flex items-center justify-center font-bold text-lg">
                                 1
                               </span>
                               <p className="font-bold text-orange-800 dark:text-orange-300">
                                 Escondido pela Desinência
                               </p>
                             </div>
-                            <p className="text-sm text-muted-foreground mb-4">
+                            <p className="text-lg text-muted-foreground mb-4">
                               Acontece muito na 1ª e na 2ª pessoa (eu, tu, nós,
                               vós), pois a terminação do verbo já "grita" quem
                               está praticando a ação.
                             </p>
-                            <ul className="space-y-2 text-sm text-foreground">
+                            <ul className="space-y-2 text-lg text-foreground">
                               <li className="flex gap-2">
                                 <span className="text-orange-500">✓</span> "Fui
                                 à plataforma ontem." (
@@ -1085,19 +1085,19 @@ export default function AulaSintaxe({
                           </div>
                           <div className="bg-orange-500/10 p-5 rounded-xl border border-orange-500/30">
                             <div className="flex items-center gap-2 mb-3">
-                              <span className="w-6 h-6 bg-orange-500/20 text-orange-700 dark:text-orange-400 rounded-md flex items-center justify-center font-bold text-sm">
+                              <span className="w-6 h-6 bg-orange-500/20 text-orange-700 dark:text-orange-400 rounded-md flex items-center justify-center font-bold text-lg">
                                 2
                               </span>
                               <p className="font-bold text-orange-800 dark:text-orange-300">
                                 Escondido pelo Contexto
                               </p>
                             </div>
-                            <p className="text-sm text-muted-foreground mb-4">
+                            <p className="text-lg text-muted-foreground mb-4">
                               Acontece na 3ª pessoa, quando o sujeito já foi
                               citado na frase anterior e não precisamos repetir
                               a palavra.
                             </p>
-                            <ul className="space-y-2 text-sm text-foreground">
+                            <ul className="space-y-2 text-lg text-foreground">
                               <li className="flex gap-2">
                                 <span className="text-orange-500">✓</span> "O
                                 motor falhou. Foi consertado." (
@@ -1127,7 +1127,7 @@ export default function AulaSintaxe({
                     icone: "🕵️",
                     conteudo:(
                       <div className="space-y-6">
-                        <p className="text-base text-muted-foreground leading-relaxed">
+                        <p className="text-lg text-muted-foreground leading-relaxed">
                           Decorre de uma estratégia sintática ou textual: existe
                           alguém que pratica a ação, mas o emissor da mensagem
                           não sabe quem é, não pode revelar ou não deseja
@@ -1144,13 +1144,13 @@ export default function AulaSintaxe({
                                 Verbo na 3ª P. do Plural
                               </h4>
                             </div>
-                            <p className="text-sm text-muted-foreground mb-4 border-b border-border pb-3">
+                            <p className="text-lg text-muted-foreground mb-4 border-b border-border pb-3">
                               Ocorre quando conjugamos o verbo na{" "}
                               <b>3ª pessoa do plural</b> sem que haja um termo
                               antecedente no período. Se o termo anterior foi
                               citado, o sujeito passa a ser oculto!
                             </p>
-                            <div className="space-y-2 text-sm mt-auto">
+                            <div className="space-y-2 text-lg mt-auto">
                               <p className="italic text-foreground">
                                 "<b>Roubaram</b> a carga durante a madrugada."
                                 (Não sei quem foi)
@@ -1170,13 +1170,13 @@ export default function AulaSintaxe({
                                 Índice de Indeterminação
                               </h4>
                             </div>
-                            <p className="text-sm text-muted-foreground mb-4 border-b border-border pb-3">
+                            <p className="text-lg text-muted-foreground mb-4 border-b border-border pb-3">
                               Agrega-se a <b>partícula 'se'</b> a verbos
                               transitivos indiretos (VTI), intransitivos (VI) ou
                               de ligação (VL). O verbo congela obrigatoriamente
                               na <b>3ª pessoa do singular</b>.
                             </p>
-                            <div className="space-y-2 text-sm mt-auto">
+                            <div className="space-y-2 text-lg mt-auto">
                               <p className="italic text-foreground">
                                 "<b>Precisa-se</b> de técnicos." (VTI + se)
                               </p>
@@ -1220,7 +1220,7 @@ export default function AulaSintaxe({
                     icone: "⚡",
                     conteudo:(
                       <div className="space-y-6">
-                        <p className="text-base text-muted-foreground leading-relaxed">
+                        <p className="text-lg text-muted-foreground leading-relaxed">
                           O grande protagonista deste tipo de predicado é a{" "}
                           <b>ação</b>. Seu núcleo será invariavelmente um{" "}
                           <b>Verbo Nocional</b> (ação ou fenômeno da natureza),
@@ -1237,13 +1237,13 @@ export default function AulaSintaxe({
                                 Com Verbo Intransitivo
                               </h4>
                             </div>
-                            <p className="text-sm text-muted-foreground mb-4 border-b border-border pb-3">
+                            <p className="text-lg text-muted-foreground mb-4 border-b border-border pb-3">
                               O verbo já tem sentido completo por si só, não
                               precisando transitar até um objeto. Pode vir
                               acompanhado de adjuntos adverbiais de tempo,
                               lugar, etc.
                             </p>
-                            <div className="space-y-2 text-sm mt-auto">
+                            <div className="space-y-2 text-lg mt-auto">
                               <p className="italic text-foreground">
                                 "O motor da bomba <b>pifou</b>."
                               </p>
@@ -1261,13 +1261,13 @@ export default function AulaSintaxe({
                                 Com Verbo Transitivo
                               </h4>
                             </div>
-                            <p className="text-sm text-muted-foreground mb-4 border-b border-border pb-3">
+                            <p className="text-lg text-muted-foreground mb-4 border-b border-border pb-3">
                               A ação do verbo passa obrigatoriamente para um
                               complemento (objeto direto ou indireto). Ainda
                               assim, o verbo continua sendo o único núcleo do
                               predicado!
                             </p>
-                            <div className="space-y-2 text-sm mt-auto">
+                            <div className="space-y-2 text-lg mt-auto">
                               <p className="italic text-foreground">
                                 "A refinaria <b>comprou</b> (verbo){" "}
                                 <b>novos equipamentos</b> (objeto)."
@@ -1298,7 +1298,7 @@ export default function AulaSintaxe({
                     icone: "🎯",
                     conteudo:(
                       <div className="space-y-6">
-                        <p className="text-base text-muted-foreground leading-relaxed">
+                        <p className="text-lg text-muted-foreground leading-relaxed">
                           Aqui o protagonista não é a ação, mas o{" "}
                           <b>estado, qualidade ou condição</b> do sujeito. O{" "}
                           <b>núcleo</b> é sempre um nome (substantivo ou
@@ -1311,13 +1311,13 @@ export default function AulaSintaxe({
                           <h4 className="font-bold text-amber-800 dark:text-amber-300 mb-2 flex items-center gap-2">
                             ⭐ O Que é o Predicativo do Sujeito?
                           </h4>
-                          <p className="text-sm text-foreground mb-4">
+                          <p className="text-lg text-foreground mb-4">
                             É o termo que, com o auxílio de um verbo de ligação,
                             atribui uma <b>característica ou estado</b> ao
                             sujeito. Ele é a palavra mais importante (núcleo) do
                             predicado nominal.
                           </p>
-                          <ul className="space-y-2 text-sm text-foreground italic border-l-4 border-amber-500 pl-3">
+                          <ul className="space-y-2 text-lg text-foreground italic border-l-4 border-amber-500 pl-3">
                             <li>
                               "A água do mar é <b>salgada</b>." (Salgada =
                               qualidade permanente)
@@ -1338,11 +1338,11 @@ export default function AulaSintaxe({
                             <h4 className="font-bold text-amber-800 dark:text-amber-300 mb-3 flex items-center gap-2">
                               🔄 Verbos de Ligação (VL)
                             </h4>
-                            <p className="text-sm text-muted-foreground mb-4">
+                            <p className="text-lg text-muted-foreground mb-4">
                               Eles apenas unem o sujeito à sua qualidade.
                               Memorize o bizu das iniciais <b>SER PAC F</b>:
                             </p>
-                            <ul className="space-y-1 text-sm text-foreground font-mono bg-background/50 p-3 rounded-lg border border-border">
+                            <ul className="space-y-1 text-lg text-foreground font-mono bg-background/50 p-3 rounded-lg border border-border">
                               <li>
                                 <b>S</b>er
                               </li>
@@ -1370,12 +1370,12 @@ export default function AulaSintaxe({
                             <h4 className="font-bold text-foreground mb-3 flex items-center gap-2">
                               ⚠️ O Cuidado com o Verbo Andar
                             </h4>
-                            <p className="text-sm text-muted-foreground mb-4 border-b border-border pb-3">
+                            <p className="text-lg text-muted-foreground mb-4 border-b border-border pb-3">
                               Um verbo pode transitar entre nocional (ação) e de
                               ligação dependendo do contexto. Avalie o peso
                               semântico!
                             </p>
-                            <div className="space-y-4 text-sm mt-auto">
+                            <div className="space-y-4 text-lg mt-auto">
                               <div>
                                 <p className="font-bold text-red-500 mb-1">
                                   Ação (Verbal)
@@ -1414,7 +1414,7 @@ export default function AulaSintaxe({
                     icone: "🎭",
                     conteudo:(
                       <div className="space-y-6">
-                        <p className="text-base text-muted-foreground leading-relaxed">
+                        <p className="text-lg text-muted-foreground leading-relaxed">
                           O tipo "híbrido". Informa, <b>ao mesmo tempo</b>, uma{" "}
                           <b>ação</b> praticada ou sofrida e o <b>estado</b>{" "}
                           durante ou logo após essa ação. Assim, ele possui{" "}
@@ -1431,14 +1431,14 @@ export default function AulaSintaxe({
                                 Verbo de Ação + Predicativo do Sujeito
                               </h4>
                             </div>
-                            <p className="text-sm text-muted-foreground mb-4 bg-background/50 p-3 rounded text-center font-bold">
+                            <p className="text-lg text-muted-foreground mb-4 bg-background/50 p-3 rounded text-center font-bold">
                               [SUJEITO] + AÇÃO + [ESTADO DO SUJEITO]
                             </p>
-                            <p className="text-sm text-foreground mb-2">
+                            <p className="text-lg text-foreground mb-2">
                               Durante ou após a ação verbal, o sujeito adquire
                               (ou demonstra) um estado/qualidade.
                             </p>
-                            <div className="space-y-2 text-sm text-foreground italic border-l-4 border-emerald-500 pl-3">
+                            <div className="space-y-2 text-lg text-foreground italic border-l-4 border-emerald-500 pl-3">
                               <p>
                                 "Os petroleiros <b>chegaram</b> (ação){" "}
                                 <b>exaustos</b> (estado em que os petroleiros
@@ -1459,14 +1459,14 @@ export default function AulaSintaxe({
                                 Verbo de Ação + Predicativo do Objeto
                               </h4>
                             </div>
-                            <p className="text-sm text-muted-foreground mb-4 bg-background/50 p-3 rounded text-center font-bold">
+                            <p className="text-lg text-muted-foreground mb-4 bg-background/50 p-3 rounded text-center font-bold">
                               [SUJEITO] + AÇÃO + [OBJETO] + [ESTADO DO OBJETO]
                             </p>
-                            <p className="text-sm text-foreground mb-2">
+                            <p className="text-lg text-foreground mb-2">
                               A ação do verbo recai sobre um objeto direto, e
                               este mesmo objeto recebe uma qualidade ou estado.
                             </p>
-                            <div className="space-y-2 text-sm text-foreground italic border-l-4 border-teal-500 pl-3">
+                            <div className="space-y-2 text-lg text-foreground italic border-l-4 border-teal-500 pl-3">
                               <p>
                                 "O juiz <b>declarou</b> (ação) o réu (objeto){" "}
                                 <b>inocente</b> (estado impresso ao réu)."
@@ -1629,13 +1629,13 @@ export default function AulaSintaxe({
                     Objeto Direto (OD)
                   </h4>
                 </div>
-                <p className="text-sm text-muted-foreground mb-4 pb-4 border-b border-border">
+                <p className="text-lg text-muted-foreground mb-4 pb-4 border-b border-border">
                   Liga-se ao verbo <b>SEM preposição</b> obrigatória. Completa
                   Verbos Transitivos Diretos (VTD).
                 </p>
                 <div className="space-y-4 mt-auto">
                   <div>
-                    <p className="text-sm font-bold text-foreground">
+                    <p className="text-lg font-bold text-foreground">
                       Exemplos práticos:
                     </p>
                     <p className="italic text-foreground mb-1">
@@ -1649,10 +1649,10 @@ export default function AulaSintaxe({
                     </p>
                   </div>
                   <div className="bg-emerald-500/10 p-4 rounded-lg">
-                    <p className="text-sm font-bold text-emerald-800 dark:text-emerald-300 mb-2">
+                    <p className="text-lg font-bold text-emerald-800 dark:text-emerald-300 mb-2">
                       A grande dica (Macete da Pergunta):
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       O verbo conta o segredo! Pergunte a ele:{" "}
                       <i>
                         Quem analisa, analisa <b>alguma coisa</b> (ou{" "}
@@ -1671,13 +1671,13 @@ export default function AulaSintaxe({
                     Objeto Indireto (OI)
                   </h4>
                 </div>
-                <p className="text-sm text-muted-foreground mb-4 pb-4 border-b border-border">
+                <p className="text-lg text-muted-foreground mb-4 pb-4 border-b border-border">
                   Liga-se ao verbo <b>COM preposição</b> obrigatória. Completa
                   Verbos Transitivos Indiretos (VTI).
                 </p>
                 <div className="space-y-4 mt-auto">
                   <div>
-                    <p className="text-sm font-bold text-foreground">
+                    <p className="text-lg font-bold text-foreground">
                       Exemplos práticos:
                     </p>
                     <p className="italic text-foreground mb-1">
@@ -1691,10 +1691,10 @@ export default function AulaSintaxe({
                     </p>
                   </div>
                   <div className="bg-rose-500/10 p-4 rounded-lg">
-                    <p className="text-sm font-bold text-rose-800 dark:text-rose-300 mb-2">
+                    <p className="text-lg font-bold text-rose-800 dark:text-rose-300 mb-2">
                       A grande dica (Macete da Pergunta):
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       O verbo escancara a preposição:{" "}
                       <i>
                         Quem necessita, necessita <b>DE</b> alguma coisa. Quem
@@ -1730,17 +1730,17 @@ export default function AulaSintaxe({
                     Complemento Nominal (CN)
                   </h4>
                 </div>
-                <p className="text-sm text-muted-foreground mb-4 pb-4 border-b border-border">
+                <p className="text-lg text-muted-foreground mb-4 pb-4 border-b border-border">
                   Tem sentido <b>passivo</b> (é o alvo, sofre a ação). Pode
                   completar o sentido de{" "}
                   <b>substantivos abstratos, adjetivos ou advérbios</b>.
                 </p>
                 <div className="space-y-4 mt-auto">
                   <div>
-                    <p className="text-sm font-bold text-foreground">
+                    <p className="text-lg font-bold text-foreground">
                       Exemplos práticos:
                     </p>
-                    <ul className="list-disc list-inside space-y-2 text-sm text-foreground italic">
+                    <ul className="list-disc list-inside space-y-2 text-lg text-foreground italic">
                       <li>
                         "Obediência <b>às leis do mar</b>" (
                         <span className="text-muted-foreground">
@@ -1765,10 +1765,10 @@ export default function AulaSintaxe({
                     </ul>
                   </div>
                   <div className="bg-indigo-500/10 p-4 rounded-lg">
-                    <p className="text-sm font-bold text-indigo-800 dark:text-indigo-300 mb-2">
+                    <p className="text-lg font-bold text-indigo-800 dark:text-indigo-300 mb-2">
                       O Macete Matador:
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Se a palavra prévia for <b>Adjetivo</b> ou <b>Advérbio</b>
                       , não perca tempo: é SEMPRE Complemento Nominal. O duelo
                       só existe após Substantivos Abstratos.
@@ -1783,17 +1783,17 @@ export default function AulaSintaxe({
                     Adjunto Adnominal (AA)
                   </h4>
                 </div>
-                <p className="text-sm text-muted-foreground mb-4 pb-4 border-b border-border">
+                <p className="text-lg text-muted-foreground mb-4 pb-4 border-b border-border">
                   Tem sentido <b>ativo</b> (pratica a ação) ou indica relação de{" "}
                   <b>posse/origem/matéria</b>. Acompanha EXCLUSIVAMENTE{" "}
                   <b>substantivos</b>.
                 </p>
                 <div className="space-y-4 mt-auto">
                   <div>
-                    <p className="text-sm font-bold text-foreground">
+                    <p className="text-lg font-bold text-foreground">
                       Exemplos práticos:
                     </p>
-                    <ul className="list-disc list-inside space-y-2 text-sm text-foreground italic">
+                    <ul className="list-disc list-inside space-y-2 text-lg text-foreground italic">
                       <li>
                         "A crítica <b>da diretoria</b>" (
                         <span className="text-muted-foreground">
@@ -1818,10 +1818,10 @@ export default function AulaSintaxe({
                     </ul>
                   </div>
                   <div className="bg-amber-500/10 p-4 rounded-lg">
-                    <p className="text-sm font-bold text-amber-800 dark:text-amber-300 mb-2">
+                    <p className="text-lg font-bold text-amber-800 dark:text-amber-300 mb-2">
                       O Macete Matador:
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Na dúvida, olhe o que vem antes! Se for um substantivo{" "}
                       <b>concreto</b> (mesa, navio, bota), o termo
                       preposicionado será SEMPRE Adjunto Adnominal. Ele é apenas
@@ -1846,7 +1846,7 @@ export default function AulaSintaxe({
             </p>
 
             <div className="bg-blue-500/5 p-6 rounded-xl border border-blue-500/30">
-              <p className="text-sm text-foreground mb-4">
+              <p className="text-lg text-foreground mb-4">
                 O <b>Agente da Passiva</b> é o termo que executa a ação quando o
                 verbo da oração está na <b>Voz Passiva</b>. Ele sempre aparece
                 encabeçado pelas preposições <b>"por"</b> (pelo, pela) ou
@@ -1854,7 +1854,7 @@ export default function AulaSintaxe({
               </p>
               <div className="space-y-4">
                 <div>
-                  <p className="text-sm font-bold text-foreground">
+                  <p className="text-lg font-bold text-foreground">
                     Exemplo prático:
                   </p>
                   <p className="italic text-foreground">
@@ -1863,10 +1863,10 @@ export default function AulaSintaxe({
                   </p>
                 </div>
                 <div className="bg-blue-500/10 p-4 rounded-lg mt-4">
-                  <p className="text-sm font-bold text-blue-800 dark:text-blue-300 mb-2">
+                  <p className="text-lg font-bold text-blue-800 dark:text-blue-300 mb-2">
                     Atenção à Transformação:
                   </p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-lg text-muted-foreground">
                     Na conversão da voz passiva para a ativa, o{" "}
                     <b>Agente da Passiva</b> vira o <b>Sujeito</b> da frase. Ex:{" "}
                     <i>"Os novos robôs perfuraram o poço."</i>
@@ -1978,7 +1978,7 @@ export default function AulaSintaxe({
           {/* 5. Quiz Módulo 2 */}
           <QuizInterativo
             numero={5}
-            titulo="Termos Integrantes"
+            titulo="QUIZ: Módulo Nº 2"
             icone="🧩"
             questoes={getRandomQuestions(QUIZ_INTEGRANTES_POOL, 8)}
             variant="emerald"
@@ -2009,7 +2009,7 @@ export default function AulaSintaxe({
             </p>
 
             <div className="bg-amber-500/5 p-6 rounded-xl border border-amber-500/30">
-              <p className="text-sm text-foreground mb-4">
+              <p className="text-lg text-foreground mb-4">
                 Modifica o verbo, adjetivo ou outro advérbio, trazendo
                 circunstâncias para o fato. Existem diversos tipos, cobrados em
                 interpretação e sintaxe:
@@ -2020,7 +2020,7 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       1. Afirmação
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "A sonda <b>certamente</b> suportará a pressão."
                     </p>
                   </div>
@@ -2028,7 +2028,7 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       2. Negação
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "O técnico <b>nunca</b> ignorou o alerta de segurança."
                     </p>
                   </div>
@@ -2036,7 +2036,7 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       3. Dúvida
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "Essa válvula <b>talvez</b> precise de manutenção."
                     </p>
                   </div>
@@ -2044,7 +2044,7 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       4. Tempo
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "A vistoria ocorrerá <b>amanhã de manhã</b>."
                     </p>
                   </div>
@@ -2052,7 +2052,7 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       5. Lugar
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "O helicóptero pousou <b>na plataforma</b>."
                     </p>
                   </div>
@@ -2060,7 +2060,7 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       6. Modo
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "Eles trabalharam <b>incansavelmente</b> no projeto."
                     </p>
                   </div>
@@ -2068,7 +2068,7 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       7. Intensidade
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "A broca desgastou-se <b>demais</b>."
                     </p>
                   </div>
@@ -2076,7 +2076,7 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       8. Causa
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "O duto rompeu <b>por causa da alta pressão</b>."
                     </p>
                   </div>
@@ -2084,7 +2084,7 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       9. Assunto
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "Debatemos <b>sobre as novas normas da ANP</b>."
                     </p>
                   </div>
@@ -2092,7 +2092,7 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       10. Companhia
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "Fizemos a inspeção <b>com o gerente</b>."
                     </p>
                   </div>
@@ -2100,7 +2100,7 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       11. Instrumento
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "Apertamos as juntas <b>com a chave inglesa</b>."
                     </p>
                   </div>
@@ -2108,7 +2108,7 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       12. Meio
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "Os relatórios foram enviados <b>por satélite</b>."
                     </p>
                   </div>
@@ -2116,7 +2116,7 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       13. Finalidade
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "Trabalhamos duro <b>para o alcance das metas</b>."
                     </p>
                   </div>
@@ -2124,7 +2124,7 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       14. Concessão
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "Operamos <b>apesar da forte tempestade</b>."
                     </p>
                   </div>
@@ -2132,16 +2132,16 @@ export default function AulaSintaxe({
                     <h5 className="font-bold text-amber-600 dark:text-amber-400 mb-2">
                       15. Condição
                     </h5>
-                    <p className="text-sm italic">
+                    <p className="text-lg italic">
                       "<b>Sem autorização</b>, ninguém entra na área restrita."
                     </p>
                   </div>
                 </div>
                 <div className="bg-amber-500/10 p-4 rounded-lg mt-4">
-                  <p className="text-sm font-bold text-amber-800 dark:text-amber-300 mb-2">
+                  <p className="text-lg font-bold text-amber-800 dark:text-amber-300 mb-2">
                     Regra de Ouro (Atenção à Vírgula):
                   </p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-lg text-muted-foreground">
                     O lugar natural do Adverbial é no final da frase. Se ele for{" "}
                     <b>deslocado para o início</b> e for <b>longo</b> (3 ou mais
                     palavras), a vírgula é OBRIGATÓRIA. Ex:{" "}
@@ -2165,7 +2165,7 @@ export default function AulaSintaxe({
             </p>
 
             <div className="bg-emerald-500/5 p-6 rounded-xl border border-emerald-500/30">
-              <p className="text-sm text-foreground mb-4">
+              <p className="text-lg text-foreground mb-4">
                 Grava isso: Ad-junto Ad-nominal = "Junto ao Nome". É o termo
                 acessório que acompanha o <b>substantivo</b>. Pode ser
                 representado por{" "}
@@ -2173,10 +2173,10 @@ export default function AulaSintaxe({
               </p>
               <div className="space-y-4">
                 <div>
-                  <p className="text-sm font-bold text-foreground">
+                  <p className="text-lg font-bold text-foreground">
                     Exemplos práticos:
                   </p>
-                  <ul className="list-disc list-inside space-y-2 text-sm text-foreground mt-2">
+                  <ul className="list-disc list-inside space-y-2 text-lg text-foreground mt-2">
                     <li>
                       "<b>Dois</b> engenheiros resolveram o problema." (
                       <span className="text-muted-foreground italic">
@@ -2207,10 +2207,10 @@ export default function AulaSintaxe({
                     </span>
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-emerald-800 dark:text-emerald-300 mb-1">
+                    <p className="text-lg font-bold text-emerald-800 dark:text-emerald-300 mb-1">
                       Cuidado com o Duelo!
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-lg text-muted-foreground">
                       Nunca se esqueça da batalha épica entre{" "}
                       <b className="text-emerald-700 dark:text-emerald-500">
                         Adjunto Adnominal
@@ -2248,7 +2248,7 @@ export default function AulaSintaxe({
                 "A legenda da frase: explica, resume ou enumera outro termo."
               </p>
               <div className="bg-violet-500/5 p-6 rounded-xl border border-violet-500/30">
-                <p className="text-sm text-foreground mb-4">
+                <p className="text-lg text-foreground mb-4">
                   O Aposto é a explicação "embutida" numa oração. Ele detalha ou
                   esclarece o termo anterior.
                 </p>
@@ -2259,19 +2259,19 @@ export default function AulaSintaxe({
                     <TabsTrigger value="resumitivo">Resumitivo</TabsTrigger>
                   </TabsList>
                   <TabsContent value="explicativo" className="space-y-4">
-                    <div className="p-4 bg-muted/30 rounded-lg border border-border text-sm italic">
+                    <div className="p-4 bg-muted/30 rounded-lg border border-border text-lg italic">
                       "Rio de Janeiro, <b>capital do petróleo</b>, sedia a
                       empresa."
                     </div>
                   </TabsContent>
                   <TabsContent value="enumerativo" className="space-y-4">
-                    <div className="p-4 bg-muted/30 rounded-lg border border-border text-sm italic">
+                    <div className="p-4 bg-muted/30 rounded-lg border border-border text-lg italic">
                       "O poço precisa de duas coisas:{" "}
                       <b>tecnologia e segurança</b>."
                     </div>
                   </TabsContent>
                   <TabsContent value="resumitivo" className="space-y-4">
-                    <div className="p-4 bg-muted/30 rounded-lg border border-border text-sm italic">
+                    <div className="p-4 bg-muted/30 rounded-lg border border-border text-lg italic">
                       "Engenheiros, técnicos e gestores, <b>todos</b>{" "}
                       aplaudiram."
                     </div>
@@ -2294,12 +2294,12 @@ export default function AulaSintaxe({
                 "O megafone da oração: serve EXCLUSIVAMENTE para chamar."
               </p>
               <div className="bg-pink-500/5 p-6 rounded-xl border border-pink-500/30">
-                <p className="text-sm text-foreground mb-4">
+                <p className="text-lg text-foreground mb-4">
                   É um termo independente: não faz parte nem do sujeito, nem do
                   predicado. **OBRIGATORIAMENTE exige vírgula**.
                 </p>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <ul className="list-disc list-inside space-y-2 text-sm text-foreground italic">
+                  <ul className="list-disc list-inside space-y-2 text-lg text-foreground italic">
                     <li>
                       "<b>Turma</b>, a inspeção vai começar."
                     </li>
@@ -2310,7 +2310,7 @@ export default function AulaSintaxe({
                       "Venha assinar o contrato, <b>senhora</b>."
                     </li>
                   </ul>
-                  <div className="bg-pink-500/10 p-4 rounded-lg border border-pink-500/20 text-xs">
+                  <div className="bg-pink-500/10 p-4 rounded-lg border border-pink-500/20 text-lg">
                     <p className="font-bold text-pink-800 dark:text-pink-300 mb-1">
                       🚨 Armadilha Frequente
                     </p>
@@ -2471,7 +2471,7 @@ export default function AulaSintaxe({
                     <p className="font-bold text-green-600">
                       Resposta: Verbo Transitivo Indireto!
                     </p>
-                    <p className="text-sm">
+                    <p className="text-lg">
                       O sujeito é "a produtividade" (O que interessa? A
                       produtividade). "Aos funcionários" é Objeto Indireto.
                     </p>
@@ -2492,7 +2492,7 @@ export default function AulaSintaxe({
                     <p className="font-bold text-green-600">
                       Resposta: Oração Sem Sujeito!
                     </p>
-                    <p className="text-sm">
+                    <p className="text-lg">
                       O verbo "fazer" indicando tempo decorrido ou clima é
                       impessoal, devendo ficar sempre na 3ª pessoa do singular.
                     </p>
@@ -2532,7 +2532,7 @@ export default function AulaSintaxe({
                   conteudo:(
                     <div className="space-y-4">
                       {/* 1. CONCEITUAÇÃO */}
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-lg text-muted-foreground leading-relaxed">
                         A análise sintática <strong>NUNCA</strong> começa pelo
                         começo da frase. Ela sempre começa pelo{" "}
                         <strong>verbo</strong>, que é o pilar de qualquer oração
@@ -2541,10 +2541,10 @@ export default function AulaSintaxe({
 
                       {/* 2. EXEMPLO */}
                       <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
-                        <p className="text-sm font-bold text-foreground mb-2">
+                        <p className="text-lg font-bold text-foreground mb-2">
                           Frase em Análise:
                         </p>
-                        <p className="text-sm font-mono text-amber-700 dark:text-amber-400">
+                        <p className="text-lg font-mono text-amber-700 dark:text-amber-400">
                           Sempre os experientes engenheiros{" "}
                           <span className="bg-amber-500/20 px-1 py-0.5 rounded">
                             confiaram
@@ -2562,7 +2562,7 @@ export default function AulaSintaxe({
                       </AlertBox>
 
                       {/* 4. EXCEÇÃO */}
-                      <p className="text-xs text-muted-foreground italic mt-2">
+                      <p className="text-lg text-muted-foreground italic mt-2">
                         Exceção: Em frases nominais (sem verbo), como "Que belo
                         dia!", não fazemos análise sintática da mesma forma,
                         pois não há oração estruturada.
@@ -2576,7 +2576,7 @@ export default function AulaSintaxe({
                   conteudo:(
                     <div className="space-y-4">
                       {/* 1. CONCEITUAÇÃO */}
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-lg text-muted-foreground leading-relaxed">
                         Faça a <strong>pergunta mágica</strong> ("Quem confia?"
                         ou "O que confia?") ANTES DO VERBO para encontrar o
                         sujeito da oração, independente de onde ele estiver
@@ -2585,10 +2585,10 @@ export default function AulaSintaxe({
 
                       {/* 2. EXEMPLO */}
                       <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
-                        <p className="text-sm font-bold text-foreground mb-2">
+                        <p className="text-lg font-bold text-foreground mb-2">
                           Pergunta: "Quem confiaram?"
                         </p>
-                        <p className="text-sm font-mono text-amber-700 dark:text-amber-400">
+                        <p className="text-lg font-mono text-amber-700 dark:text-amber-400">
                           Sempre{" "}
                           <span className="bg-amber-500/20 px-1 py-0.5 rounded">
                             os experientes engenheiros
@@ -2624,7 +2624,7 @@ export default function AulaSintaxe({
                   conteudo:(
                     <div className="space-y-4">
                       {/* 1. CONCEITUAÇÃO */}
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-lg text-muted-foreground leading-relaxed">
                         Como o verbo "confiar" é VTI, precisamos encontrar seu
                         alvo: o <strong>Objeto Indireto</strong>, que sempre
                         será encabeçado por sua preposição exigida (em + o =
@@ -2633,7 +2633,7 @@ export default function AulaSintaxe({
 
                       {/* 2. EXEMPLO */}
                       <div className="p-4 bg-orange-500/5 rounded-xl border border-orange-500/20">
-                        <p className="text-sm font-mono text-orange-700 dark:text-orange-400">
+                        <p className="text-lg font-mono text-orange-700 dark:text-orange-400">
                           ... confiaram{" "}
                           <span className="bg-orange-500/20 px-1 py-0.5 rounded">
                             no sucesso
@@ -2658,7 +2658,7 @@ export default function AulaSintaxe({
                   conteudo:(
                     <div className="space-y-4">
                       {/* 1. CONCEITUAÇÃO */}
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-lg text-muted-foreground leading-relaxed">
                         Restaram apenas as palavras que orbitam os núcleos
                         acompanhando, caracterizando ou indicando circunstâncias
                         extras (os acessórios e complementos menores).
@@ -2666,7 +2666,7 @@ export default function AulaSintaxe({
 
                       {/* 2. EXEMPLO */}
                       <div className="p-4 bg-orange-500/5 rounded-xl border border-orange-500/20">
-                        <p className="text-sm font-mono text-foreground mb-3 leading-relaxed">
+                        <p className="text-lg font-mono text-foreground mb-3 leading-relaxed">
                           <span className="text-rose-500 font-bold">
                             Sempre
                           </span>{" "}
@@ -2679,7 +2679,7 @@ export default function AulaSintaxe({
                           </span>
                           .
                         </p>
-                        <ul className="list-inside space-y-2 text-sm text-muted-foreground mt-4">
+                        <ul className="list-inside space-y-2 text-lg text-muted-foreground mt-4">
                           <li>
                             🔴 <strong className="text-rose-500">Sempre</strong>
                             : Adjunto Adverbial de Tempo (deslocado para o
@@ -2836,7 +2836,7 @@ export default function AulaSintaxe({
               <h3 className="text-lg font-bold text-rose-800 dark:text-rose-300 mb-3 flex items-center gap-2">
                 <LuInfo className="w-5 h-5" /> Como Extrair o Máximo da Síntese
               </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+              <p className="text-muted-foreground text-lg leading-relaxed mb-4">
                 Este espaço de síntese não é apenas uma revisão passiva, mas sim
                 uma{" "}
                 <strong>ferramenta estratégica de fixação intermodal</strong>. A
@@ -2844,7 +2844,7 @@ export default function AulaSintaxe({
                 quando ela é processada de múltiplas formas. Portanto,
                 recomendamos o seguinte roteiro de estudo:
               </p>
-              <ul className="space-y-3 text-sm text-foreground">
+              <ul className="space-y-3 text-lg text-foreground">
                 <li className="flex items-start gap-3">
                   <span className="bg-rose-500/20 text-rose-600 dark:text-rose-400 p-1.5 rounded-md mt-0.5">
                     <LuPlayCircle className="w-4 h-4" />

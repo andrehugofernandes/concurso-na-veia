@@ -1,4 +1,9 @@
-import { Quiz } from "@/lib/types";
+interface Quiz {
+  id?: string;
+  title: string;
+  moduleNumber: number;
+  questions: { id: number; question: string; options: string[]; correct: number; explanation: string }[];
+}
 
 export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
   "modulo-1": {

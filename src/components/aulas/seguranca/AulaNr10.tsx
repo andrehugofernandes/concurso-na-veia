@@ -135,7 +135,7 @@ export default function AulaNr10({
                 <h4 className="font-bold text-amber-900 dark:text-amber-100 mb-2 flex items-center gap-2">
                   <LuTriangleAlert className="w-5 h-5" /> Fique Atento:
                 </h4>
-                <p className="text-sm">
+                <p className="text-lg">
                   A NR-10 não se limita a quem "mexe no fio". Ela abrange todos que trabalham nas proximidades, inclusive quem apenas opera o maquinário alimentado.
                 </p>
               </div>
@@ -186,7 +186,7 @@ export default function AulaNr10({
             audio={{ audioUrl: "/audio/nr10-m1.mp3", titulo: "Podcast NR-10 Intro", artista: "Prof. Petro" }}
           />
 
-          <QuizInterativo titulo="Simulado de Conhecimento" questoes={quizM1} variant={mv[1]} onComplete={() => handleModuleComplete("modulo-1")} />
+          <QuizInterativo titulo="QUIZ: Módulo Nº 1" questoes={quizM1} variant={mv[1]} onComplete={() => handleModuleComplete("modulo-1")} />
         </div>
       </TabsContent>
 
@@ -217,13 +217,13 @@ export default function AulaNr10({
                   <p className="font-bold text-blue-900 dark:text-blue-100 flex items-center gap-2 mb-2">
                     <LuShield className="w-5 h-5" /> EPC (Prioridade 1)
                   </p>
-                  <p className="text-sm">Blindagem, seccionamento, barreiras e aterramento temporário.</p>
+                  <p className="text-lg">Blindagem, seccionamento, barreiras e aterramento temporário.</p>
                 </div>
                 <div className="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl">
                   <p className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 mb-2">
                     <LuZap className="w-5 h-5" /> EPI (Prioridade 2)
                   </p>
-                  <p className="text-sm">Luvas, vestimentas e calçados (última alternativa).</p>
+                  <p className="text-lg">Luvas, vestimentas e calçados (última alternativa).</p>
                 </div>
               </div>
             </div>
@@ -238,7 +238,7 @@ export default function AulaNr10({
                 conteudo: (
                   <div className="space-y-2">
                     <p>Para uma instalação ser considerada desenergizada (Livre de Tensão), os 6 passos devem ser seguidos (Item 10.5.1):</p>
-                    <ol className="list-decimal list-inside ml-2 text-sm italic">
+                    <ol className="list-decimal list-inside ml-2 text-lg italic">
                       <li>Seccionamento;</li>
                       <li>Impedimento do religamento (Travamento);</li>
                       <li>Constatação da ausência de tensão;</li>
@@ -258,7 +258,7 @@ export default function AulaNr10({
           />
 
           <ModuleConsolidation
-            index={2}
+            index={1}
             variant={mv[2]}
             video={{ videoId: "dQw4w9WgXcQ", title: "Hierarquia de Proteção", duration: "12:15" }}
             resumoVisual={{
@@ -304,7 +304,7 @@ export default function AulaNr10({
                 <h4 className="font-bold text-emerald-900 dark:text-emerald-100 mb-2 flex items-center gap-2">
                   <LuCheck className="w-5 h-5" /> Número Mágico: 75 kW
                 </h4>
-                <p className="text-sm">
+                <p className="text-lg">
                   Decore este número. Se a carga instalada for 75 kW ou menor, a obrigatoriedade do PIE é flexibilizada pela norma.
                 </p>
               </div>
@@ -318,7 +318,7 @@ export default function AulaNr10({
                 titulo: "Conteúdo Obrigatório do PIE",
                 icone: <LuFileText className="w-5 h-5 text-emerald-500" />,
                 conteudo: (
-                  <ul className="list-disc list-inside text-sm">
+                  <ul className="list-disc list-inside text-lg">
                     <li>Diagramas unifilares atualizados;</li>
                     <li>Procedimentos de segurança e trabalho;</li>
                     <li>Especificações técnicas de EPI/EPC;</li>
@@ -335,7 +335,7 @@ export default function AulaNr10({
           />
 
           <ModuleConsolidation
-            index={3}
+            index={1}
             variant={mv[3]}
             video={{ videoId: "dQw4w9WgXcQ", title: "Entendendo o PIE", duration: "09:40" }}
             resumoVisual={{
@@ -348,7 +348,7 @@ export default function AulaNr10({
             audio={{ audioUrl: "/audio/nr10-m3.mp3", titulo: "Podcast PIE", artista: "Prof. Petro" }}
           />
 
-          <QuizInterativo titulo="Simulado de Conhecimento" questoes={quizM3} variant={mv[3]} onComplete={() => handleModuleComplete("modulo-3")} />
+          <QuizInterativo titulo="QUIZ: Módulo Nº 3" questoes={quizM3} variant={mv[3]} onComplete={() => handleModuleComplete("modulo-3")} />
         </div>
       </TabsContent>
 
@@ -379,7 +379,7 @@ export default function AulaNr10({
                 <h4 className="font-bold text-orange-900 dark:text-orange-100 mb-2 flex items-center gap-2">
                   <LuShield className="w-5 h-5" /> Regra de Ouro: Proibição de Adornos
                 </h4>
-                <p className="text-sm italic text-orange-800 dark:text-orange-200">
+                <p className="text-lg italic text-orange-800 dark:text-orange-200">
                   "É vedado o uso de adornos pessoais nos trabalhos com instalações elétricas ou em suas proximidades." (Item 10.2.9.3)
                 </p>
               </div>
@@ -399,7 +399,7 @@ export default function AulaNr10({
                 titulo: "EPIs Comuns",
                 icone: <LuShield className="w-5 h-5 text-orange-500" />,
                 conteudo: (
-                  <ul className="list-disc list-inside text-sm">
+                  <ul className="list-disc list-inside text-lg">
                     <li>Luvas isolantes de borracha (com sobreluva de proteção);</li>
                     <li>Capacete de segurança Classe B;</li>
                     <li>Botas sem componentes metálicos expostos;</li>
@@ -416,7 +416,7 @@ export default function AulaNr10({
           />
 
           <ModuleConsolidation
-            index={4}
+            index={1}
             variant={mv[4]}
             video={{ videoId: "dQw4w9WgXcQ", title: "EPI e Vestimentas", duration: "11:00" }}
             resumoVisual={{
@@ -462,7 +462,7 @@ export default function AulaNr10({
                 <h4 className="font-bold text-red-900 dark:text-red-100 mb-2 flex items-center gap-2">
                   <LuTriangleAlert className="w-5 h-5" /> ZR vs ZC
                 </h4>
-                <p className="text-sm">
+                <p className="text-lg">
                   A <strong>Zona de Risco</strong> é restrita apenas a profissionais autorizados e com equipamentos específicos. 
                   A <strong>Zona Controlada</strong> é para autorizados sob vigilância e supervisão técnica.
                 </p>
@@ -487,7 +487,7 @@ export default function AulaNr10({
           />
 
           <ModuleConsolidation
-            index={5}
+            index={1}
             variant={mv[5]}
             video={{ videoId: "dQw4w9WgXcQ", title: "Mapa de Zonas", duration: "14:50" }}
             resumoVisual={{
@@ -500,7 +500,7 @@ export default function AulaNr10({
             audio={{ audioUrl: "/audio/nr10-m5.mp3", titulo: "Podcast Final", artista: "Prof. Petro" }}
           />
 
-          <QuizInterativo titulo="Simulado de Conhecimento" questoes={quizM5} variant={mv[5]} onComplete={() => handleModuleComplete("modulo-5")} />
+          <QuizInterativo titulo="QUIZ: Módulo Nº 5" questoes={quizM5} variant={mv[5]} onComplete={() => handleModuleComplete("modulo-5")} />
         </div>
       </TabsContent>
 

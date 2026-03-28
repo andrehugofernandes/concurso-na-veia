@@ -14,7 +14,7 @@
  */
 
 import { useState } from "react";
-import { AulaProps } from "../shared";
+import { AulaProps, QuizQuestion } from "../shared";
 import {
   ModuleConsolidation,
   ContentAccordion,
@@ -25,6 +25,17 @@ import {
 } from "../shared";
 import { ADMINISTRACAO_TRIBUTARIA_QUIZZES } from "@/data/quizzes/administracao-tributaria-quizzes";
 import { getModuleVariant } from "@/lib/moduleColors";
+
+function toQQ(quiz: { questions: { id: number; question: string; options: string[]; correct: number; explanation: string }[] } | undefined): QuizQuestion[] {
+  if (!quiz) return [];
+  return quiz.questions.map((q) => ({
+    id: q.id,
+    pergunta: q.question,
+    opcoes: q.options.map((o) => ({ label: o, valor: o })),
+    correta: q.options[q.correct] ?? "",
+    explicacao: q.explanation,
+  }));
+}
 
 const MODULE_DEFS = [
   { id: "modulo-1", label: "Módulo 1", title: "Administração Tributária: Conceitos" },
@@ -70,7 +81,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           description="Disciplina que estuda gestão de tributos na empresa"
           variant="emerald"
         />
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             <strong>Administração Tributária</strong> é a disciplina que estuda como as empresas gerenciam suas obrigações tributárias de forma eficiente, legal e estratégica. Na Petrobras, essa gestão é particularmente complexa devido ao volume de operações em múltiplas jurisdições (federal, estadual, municipal) e à diversidade de tributos incidentes. A administração tributária envolve planejamento estruturado, documentação rigorosa, cumprimento de prazos e otimização de custos tributários sem incorrer em riscos legais.
           </p>
@@ -87,8 +98,8 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
             Neste módulo, você entenderá os conceitos fundamentais de administração tributária: quais são os desafios, qual é o escopo, quem são os responsáveis, como a gestão tributária impacta a estratégia empresarial. Esses conceitos são a base para todos os módulos subsequentes que explorarão órgãos arrecadadores, documentos, declarações, prazos e sistemas específicos. Dominar administração tributária é essencial para qualquer profissional que trabalhe em departamentos administrativos, financeiros ou de suprimentos da Petrobras.
           </p>
           <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-3">🎯 Conceitos-Chave</p>
-            <ul className="text-sm space-y-2 text-foreground">
+            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-3">🎯 Conceitos-Chave</p>
+            <ul className="text-lg space-y-2 text-foreground">
               <li>✓ <strong>Administração Tributária:</strong> Gestão sistemática de obrigações tributárias</li>
               <li>✓ <strong>Conformidade:</strong> Cumprir 100% exigências legais e prazos</li>
               <li>✓ <strong>Otimização:</strong> Reduzir custos tributários via estruturação legal</li>
@@ -114,7 +125,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Tripé da Administração Tributária",
-          content: <div className="text-sm space-y-2"><p><strong>1. Conformidade:</strong> Cumprir prazos e obrigações</p><p><strong>2. Otimização:</strong> Reduzir custos legalmente</p><p><strong>3. Segurança:</strong> Documentação robusta</p></div>,
+          content: <div className="text-lg space-y-2"><p><strong>1. Conformidade:</strong> Cumprir prazos e obrigações</p><p><strong>2. Otimização:</strong> Reduzir custos legalmente</p><p><strong>3. Segurança:</strong> Documentação robusta</p></div>,
         }}
         audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Administração Tributária", artista: "Prof. Administração" }}
       />
@@ -137,7 +148,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
       />
 
       <QuizInterativo
-        questoes={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-1"]?.questoes || []}
+        questoes={toQQ(ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-1"])}
         titulo="Quiz: Administração Tributária - Conceitos"
         numero={1}
         variant={getModuleVariant(1)}
@@ -157,7 +168,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           description="Receita Federal, SEFAZ estadual, prefeituras e INSS/FGTS"
           variant="emerald"
         />
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             A <strong>Receita Federal do Brasil (RFB)</strong> é o órgão federal responsável pela arrecadação, fiscalização e cobrança de tributos federais. Subordinada ao Ministério da Fazenda, a RFB arrecada Imposto de Renda (IR), Imposto sobre Produtos Industrializados (IPI), Contribuição Social sobre o Lucro Líquido (CSLL), PIS (Programa de Integração Social), COFINS (Contribuição para Financiamento da Seguridade Social) e outros tributos federais. A RFB também processa declarações eletrônicas (DIPJ, ECF, ECD) e realiza fiscalização em larga escala. Para a Petrobras, a RFB é interlocutor crítico: recolhimentos mensais de IR, PIS, COFINS; conformidade em declarações anuais; monitoramento de créditos e compensações.
           </p>
@@ -174,8 +185,8 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
             A <strong>coordenação entre órgãos</strong> é fundamental em administração tributária. RFB compartilha informações com SFAZs via SPED; sistemas cruzam dados para validar consistência (receita bruta RFB vs. saídas ICMS); discrepâncias geram questionamentos. Para Petrobras, operar com transparência e consistência entre jurisdições evita múltiplas autuações. A gestão tributária eficiente envolve entender a hierarquia, papéis, sistemas e prazos de cada órgão e estruturar operações para satisfazer todos simultaneamente.
           </p>
           <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-3">🏛️ Órgãos Principais</p>
-            <ul className="text-sm space-y-2 text-foreground">
+            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-3">🏛️ Órgãos Principais</p>
+            <ul className="text-lg space-y-2 text-foreground">
               <li>✓ <strong>RFB:</strong> Federal — IR, IPI, CSLL, PIS, COFINS</li>
               <li>✓ <strong>SEFAZ:</strong> Estadual — ICMS (tributo estadual mais importante)</li>
               <li>✓ <strong>Prefeitura:</strong> Municipal — ISS, IPTU, taxas</li>
@@ -201,7 +212,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Hierarquia dos Órgãos",
-          content: <div className="text-sm space-y-2"><p><strong>Federal:</strong> RFB (IR, COFINS, PIS)</p><p><strong>Estadual:</strong> SEFAZ (ICMS)</p><p><strong>Municipal:</strong> Prefeitura (ISS)</p></div>,
+          content: <div className="text-lg space-y-2"><p><strong>Federal:</strong> RFB (IR, COFINS, PIS)</p><p><strong>Estadual:</strong> SEFAZ (ICMS)</p><p><strong>Municipal:</strong> Prefeitura (ISS)</p></div>,
         }}
         audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Órgãos Arrecadadores", artista: "Prof. Administração" }}
       />
@@ -224,7 +235,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
       />
 
       <QuizInterativo
-        questoes={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-2"]?.questoes || []}
+        questoes={toQQ(ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-2"])}
         titulo="Quiz: Órgãos Arrecadadores"
         numero={2}
         variant={getModuleVariant(2)}
@@ -244,7 +255,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           description="Nota Fiscal, RPA, livros fiscais e escrituração contábil digital"
           variant="emerald"
         />
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             A <strong>Nota Fiscal Eletrônica (NF-e)</strong> é documento obrigatório para circulação de mercadorias no Brasil desde 2006. Emitida eletronicamente por software integrado, a NF-e contém informações: dados do vendedor (CNPJ, inscrição estadual), comprador (CNPJ/CPF), produto (descrição, NCM, quantidade, preço), valor total, tributos (ICMS, IPI, PIS, COFINS) e assinatura digital. A SEFAZ autoriza a nota (2-3 minutos) e gera DANFE (Documento Auxiliar da Nota Fiscal Eletrônica) que acompanha mercadoria. NF-e gera obrigações: registros em livros, pagamento de impostos, conformidade fiscal.
           </p>
@@ -261,8 +272,8 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
             A <strong>importância desses registros</strong> para Petrobras é crítica. Milhões de operações diárias geram documentação em volume colossal. Controle rigoroso (sistemas integrados de ERP) garante: conformidade fiscal (pagar impostos corretos), defesa em fiscalização (documentação robusta), planejamento tributário (dados para análise). Falta de registro ou erros expõem empresa a multas, juros, penalidades criminais. Auditorias internas (compliance) verificam se documentação está completa e consistente.
           </p>
           <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-3">📄 Documentos Críticos</p>
-            <ul className="text-sm space-y-2 text-foreground">
+            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-3">📄 Documentos Críticos</p>
+            <ul className="text-lg space-y-2 text-foreground">
               <li>✓ <strong>NF-e:</strong> Nota Fiscal Eletrônica (obrigatória, circulação mercadoria)</li>
               <li>✓ <strong>RPA:</strong> Recibo Pagamento Autônomo (serviço ocasional)</li>
               <li>✓ <strong>Livros Fiscais:</strong> Apuração ICMS, IR, entrada/saída</li>
@@ -288,7 +299,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Documentação Essencial",
-          content: <div className="text-sm space-y-2"><p><strong>NF-e:</strong> Venda de mercadoria</p><p><strong>RPA:</strong> Serviço autônomo</p><p><strong>ECD:</strong> Contabilidade digital</p></div>,
+          content: <div className="text-lg space-y-2"><p><strong>NF-e:</strong> Venda de mercadoria</p><p><strong>RPA:</strong> Serviço autônomo</p><p><strong>ECD:</strong> Contabilidade digital</p></div>,
         }}
         audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Documentos Fiscais", artista: "Prof. Administração" }}
       />
@@ -311,7 +322,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
       />
 
       <QuizInterativo
-        questoes={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-3"]?.questoes || []}
+        questoes={toQQ(ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-3"])}
         titulo="Quiz: Registros e Documentos Fiscais"
         numero={3}
         variant={getModuleVariant(3)}
@@ -331,7 +342,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           description="DIPJ, ECF, DACON, SPED - declarações obrigatórias ao fisco"
           variant="emerald"
         />
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             A <strong>DIPJ (Declaração de Imposto Pessoa Jurídica)</strong> é declaração anual de Imposto de Renda que apresenta a posição tributária da empresa ao fisco. Apresenta: receita bruta, custos, despesas, lucro calculado. Bases de cálculo: lucro real (empresa calcula IR sobre lucro) ou lucro presumido (alíquota sobre receita). DIPJ declara IR calculado, estimativas já pagas (recolhimentos mensais), saldo a pagar ou restituição. Prazo: até 30 de abril do ano seguinte ao exercício. Erros em DIPJ podem gerar autuações, multas, lançamento de ofício pela RFB. Para Petrobras, DIPJ é declaração crítica envolvendo cálculos complexos, bases ajustadas, créditos diversos.
           </p>
@@ -348,8 +359,8 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
             A <strong>importância dessas declarações</strong> é que consolidam posição fiscal da empresa. Erros em DIPJ, ECF ou DACON podem ser questionados pela RFB e gerar processos administrativos. Para Petrobras, com operações complexas e volume imenso, precisão é crítica. Sistemas integrados (ERP + software fiscal) garantem: cálculos corretos, conformidade automática com prazos, rastreabilidade de dados. Equipes de contabilidade/fiscal preparam, analistas tributários revisam, compliance aprova antes de transmissão.
           </p>
           <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-3">📋 Declarações-Chave</p>
-            <ul className="text-sm space-y-2 text-foreground">
+            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-3">📋 Declarações-Chave</p>
+            <ul className="text-lg space-y-2 text-foreground">
               <li>✓ <strong>DIPJ:</strong> Anual de IR (até 30 de abril)</li>
               <li>✓ <strong>ECF:</strong> Mensal de bases fiscais (até dia 15 mês seguinte)</li>
               <li>✓ <strong>DACON:</strong> Compensação de crédito (quando aplicável)</li>
@@ -375,7 +386,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Calendário de Declarações",
-          content: <div className="text-sm space-y-2"><p><strong>ECF:</strong> Até dia 15 (mensal)</p><p><strong>DACON:</strong> Quando compensar</p><p><strong>DIPJ:</strong> Até 30 de abril</p></div>,
+          content: <div className="text-lg space-y-2"><p><strong>ECF:</strong> Até dia 15 (mensal)</p><p><strong>DACON:</strong> Quando compensar</p><p><strong>DIPJ:</strong> Até 30 de abril</p></div>,
         }}
         audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Declarações Tributárias", artista: "Prof. Administração" }}
       />
@@ -398,7 +409,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
       />
 
       <QuizInterativo
-        questoes={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-4"]?.questoes || []}
+        questoes={toQQ(ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-4"])}
         titulo="Quiz: Declarações Tributárias"
         numero={4}
         variant={getModuleVariant(4)}
@@ -418,7 +429,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           description="Calendário tributário e penalidades por atraso"
           variant="emerald"
         />
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             O <strong>calendário de prazos</strong> é elemento crítico da administração tributária. ICMS (estadual): recolhimento até dia 15. PIS/COFINS: até dia 15. IR (se apuração mensal): até dia 21. INSS: até dia 15 do mês seguinte. FGTS: até dia 7-8 do mês seguinte. Esses prazos são rígidos: atraso = multa de mora + juros. Para Petrobras, com centenas de recolhimentos mensais, planejamento financeiro rigoroso garante caixa disponível para vencer todas as obrigações. Um atraso de um dia em ICMS (tributo com maiores valores) resulta em multa + juros de centenas de milhares.
           </p>
@@ -435,8 +446,8 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
             A <strong>gestão de prazos</strong> envolve: calendário rigoroso (agenda mensal de todos os vencimentos), fluxo de caixa tributário (prever quanto sai de caixa em cada data), acompanhamento (avisos automáticos 5 dias antes do vencimento), execução (pagamento 2-3 dias antes para evitar falhas), comprovação (manter todos os recibos/comprovantes). Grandes empresas usam softwares que integram ERP + sistema fiscal para automação. Petrobras tem departamentos dedicados ao calendário tributário: elimina risco de esquecimento.
           </p>
           <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-3">⏰ Prazos Críticos</p>
-            <ul className="text-sm space-y-2 text-foreground">
+            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-3">⏰ Prazos Críticos</p>
+            <ul className="text-lg space-y-2 text-foreground">
               <li>✓ <strong>Recolhimento:</strong> ICMS/PIS/COFINS/INSS até dia 15</li>
               <li>✓ <strong>IR:</strong> Até dia 21 (estimativa) ou 30 abril (DIPJ)</li>
               <li>✓ <strong>ECF/SPED:</strong> Até dia 15 mês seguinte</li>
@@ -462,7 +473,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Regra de Ouro",
-          content: <div className="text-sm space-y-2"><p><strong>Dia 15:</strong> ICMS, PIS, COFINS, INSS</p><p><strong>Dia 21:</strong> IR (estimativa)</p><p><strong>Não atrasar = evitar multas imensas</strong></p></div>,
+          content: <div className="text-lg space-y-2"><p><strong>Dia 15:</strong> ICMS, PIS, COFINS, INSS</p><p><strong>Dia 21:</strong> IR (estimativa)</p><p><strong>Não atrasar = evitar multas imensas</strong></p></div>,
         }}
         audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Prazos Tributários", artista: "Prof. Administração" }}
       />
@@ -485,7 +496,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
       />
 
       <QuizInterativo
-        questoes={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-5"]?.questoes || []}
+        questoes={toQQ(ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-5"])}
         titulo="Quiz: Prazos e Obrigações"
         numero={5}
         variant={getModuleVariant(5)}
@@ -505,7 +516,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           description="Planejamento tributário, fluxo de caixa e otimização de custos"
           variant="emerald"
         />
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             O <strong>planejamento tributário integrado</strong> é análise estruturada de como operações geram imposto e como minimizá-lo legalmente. Exemplo: Petrobras precisa comprar equipamento. Opção 1: compra à vista (gera ICMS crédito na compra). Opção 2: aluga (gera ISS na locação). Qual gera menos imposto? Análise compara carga tributária total (ICMS, ISS, impostos sobre lucro) com benefícios econômicos (posse vs. uso). Planejamento tributário é LEGAL: estrutura operação conforme lei para melhorar resultado.
           </p>
@@ -522,8 +533,8 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
             A <strong>gestão de impostos em Petrobras</strong> é particularmente sofisticada. Bilhões em imposto anual significam: pequenas melhorias de 0,1% resultam em dezenas de milhões de economia. Departamento tributário trabalha com planejadores tributários, economistas, analistas. Cada operação relevante (fusão, investimento em novo campo, mudança de estrutura) é analisada: "qual é o impacto tributário?" Objetivo: maximizar retorno aos acionistas respeitando plenamente a lei.
           </p>
           <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-3">💰 Gestão Tributária</p>
-            <ul className="text-sm space-y-2 text-foreground">
+            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-3">💰 Gestão Tributária</p>
+            <ul className="text-lg space-y-2 text-foreground">
               <li>✓ <strong>Planejamento:</strong> Analisar operações para otimizar tributação (legal)</li>
               <li>✓ <strong>Fluxo de Caixa:</strong> Prever quando imposto vence</li>
               <li>✓ <strong>Créditos:</strong> Aproveitar ICMS, PIS, COFINS créditos</li>
@@ -549,7 +560,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Equação de Sucesso",
-          content: <div className="text-sm space-y-2"><p><strong>Conformidade:</strong> 100% cumprimento</p><p><strong>+Otimização:</strong> reduzir custos legalmente</p><p><strong>=Excelência tributária</strong></p></div>,
+          content: <div className="text-lg space-y-2"><p><strong>Conformidade:</strong> 100% cumprimento</p><p><strong>+Otimização:</strong> reduzir custos legalmente</p><p><strong>=Excelência tributária</strong></p></div>,
         }}
         audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Gestão de Impostos", artista: "Prof. Administração" }}
       />
@@ -572,7 +583,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
       />
 
       <QuizInterativo
-        questoes={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-6"]?.questoes || []}
+        questoes={toQQ(ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-6"])}
         titulo="Quiz: Gestão de Impostos"
         numero={6}
         variant={getModuleVariant(6)}
@@ -592,7 +603,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           description="Apuração de ICMS, PIS/COFINS, aproveitamento e prescrição de créditos"
           variant="emerald"
         />
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             O <strong>sistema de crédito em cascata</strong> do ICMS é mecanismo que evita tributação múltipla. Exemplo: fabricante vende a varejista (ICMS débito na venda), varejista compra (ICMS crédito na compra). Crédito pode abater débito. Resultado: consumidor final paga ICMS uma vez (não em cada etapa). Sistema funciona porque cada etapa registra débito/crédito corretamente. Importância: manter registro diário, apuração mensal, documentação. Falta de controle = perda de crédito = tributação em cascata (injusta).
           </p>
@@ -609,8 +620,8 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
             O <strong>controle de créditos em Petrobras</strong> é operação sofisticada. Empresa com bilhões em faturamento pode ter créditos de centenas de milhões. Petrobras mantém sistemas de BI (Business Intelligence) que monitoram: saldo de crédito por tipo (ICMS, PIS, COFINS), vencimento, estratégia de compensação. Cada trimestre, equipe revisa oportunidades de compensação para maximizar caixa. Crédito bem gerenciado melhora posição de caixa sem afetar conformidade.
           </p>
           <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-3">📋 Controle de Créditos</p>
-            <ul className="text-sm space-y-2 text-foreground">
+            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-3">📋 Controle de Créditos</p>
+            <ul className="text-lg space-y-2 text-foreground">
               <li>✓ <strong>ICMS Crédito:</strong> Direito de abater em ICMS futuro</li>
               <li>✓ <strong>PIS/COFINS Crédito:</strong> Abate em débito futuro (insumos)</li>
               <li>✓ <strong>Documentação:</strong> NF, RPA, comprovante pagamento essenciais</li>
@@ -636,7 +647,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Fórmula ICMS",
-          content: <div className="text-sm space-y-2"><p><strong>Débito (saída):</strong> ICMS na venda</p><p><strong>- Crédito (entrada):</strong> ICMS na compra</p><p><strong>= ICMS a pagar</strong> (a diferença)</p></div>,
+          content: <div className="text-lg space-y-2"><p><strong>Débito (saída):</strong> ICMS na venda</p><p><strong>- Crédito (entrada):</strong> ICMS na compra</p><p><strong>= ICMS a pagar</strong> (a diferença)</p></div>,
         }}
         audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Créditos Tributários", artista: "Prof. Administração" }}
       />
@@ -659,7 +670,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
       />
 
       <QuizInterativo
-        questoes={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-7"]?.questoes || []}
+        questoes={toQQ(ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-7"])}
         titulo="Quiz: Controle de Créditos"
         numero={7}
         variant={getModuleVariant(7)}
@@ -679,7 +690,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           description="NF-e, SPED, certificado digital, validação de dados"
           variant="emerald"
         />
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             A <strong>NF-e (Nota Fiscal Eletrônica)</strong> é sistema obrigatório desde 2006 para circulação de mercadorias. Empresa emite NF-e eletronicamente via software (integrado ao ERP). Sistema valida formato (XML), calcula hash. NF-e é enviada à SEFAZ estadual via internet (https). SEFAZ valida dados (CNPJ existe? Produto tem NCM válido? Impostos calculados corretamente?). Se OK, SEFAZ autoriza e retorna número de protocolo. Comprador recebe DANFE (documento auxiliar) via email em 2-3 minutos. NF-e é rastreável: SEFAZ mantém histórico de todas as NF-e emitidas. Controle: empresa não consegue "desaparecer" com nota (transparência fiscal).
           </p>
@@ -696,8 +707,8 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
             A <strong>transformação digital tributária</strong> em Petrobras envolve: ERP integrado com sistema fiscal, automação de geração de NF-e/SPED (sem digitação manual), assinatura digital integrada (certificado em servidor seguro), transmissão automática, BI tributário (dashboards de conformidade, alertas de atraso). Benefício: elimina erro humano, garante conformidade, automatiza, reduz equipe necessária. Petrobras investe bilhões em sistemas: garantir conformidade em escala (milhões de NF-e/ano).
           </p>
           <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-3">💻 Sistemas Críticos</p>
-            <ul className="text-sm space-y-2 text-foreground">
+            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-3">💻 Sistemas Críticos</p>
+            <ul className="text-lg space-y-2 text-foreground">
               <li>✓ <strong>NF-e:</strong> Nota Fiscal Eletrônica (obrigatória)</li>
               <li>✓ <strong>EFD-ICMS:</strong> Lançamentos ICMS/IPI (até dia 15)</li>
               <li>✓ <strong>EFD-Contribuições:</strong> PIS/COFINS (até dia 15)</li>
@@ -723,7 +734,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Fluxo Digital",
-          content: <div className="text-sm space-y-2"><p><strong>ERP → NF-e (valida) → Assina (cert.) → SEFAZ</strong></p><p><strong>ERP → SPED (valida) → Assina → RFB</strong></p><p>Tudo integrado, automático</p></div>,
+          content: <div className="text-lg space-y-2"><p><strong>ERP → NF-e (valida) → Assina (cert.) → SEFAZ</strong></p><p><strong>ERP → SPED (valida) → Assina → RFB</strong></p><p>Tudo integrado, automático</p></div>,
         }}
         audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Sistemas Tributários", artista: "Prof. Administração" }}
       />
@@ -746,7 +757,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
       />
 
       <QuizInterativo
-        questoes={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-8"]?.questoes || []}
+        questoes={toQQ(ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-8"])}
         titulo="Quiz: Sistemas de Informação"
         numero={8}
         variant={getModuleVariant(8)}
@@ -766,7 +777,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           description="Desafios específicos, múltiplas jurisdições, royalties e governance"
           variant="emerald"
         />
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             Os <strong>desafios tributários específicos de Petrobras</strong> são imensos. Empresa opera em múltiplos estados (SP, RJ, MG, BA, etc.): cada estado tem ICMS diferente (SP 18%, RJ 20%, MG 12%). Apuração: separar ICMS por estado, pagar para cada SEFAZ diferente. Complexidade multiplicada. Múltiplos tributos incidem simultaneamente: IRPJ, CSLL, PIS, COFINS, ICMS, ISS, impostos sobre combustível, royalties, PE (Participação Especial em alguns campos). Operações integradas: exploração (petróleo), transporte (dutos), refino (processamento), distribuição (vendas). Cada etapa tem tributação própria. Volume: Petrobras fatura dezenas de bilhões/ano, gera imposto de bilhões/ano. Gestão em escala desafiadora.
           </p>
@@ -783,8 +794,8 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
             Os <strong>sistemas de informação em Petrobras</strong> são world-class. ERP corporativo integra dados de todas as unidades em tempo real. Sistema de BI (Business Intelligence) consolida tributos: dashboard de ICMS por estado (quem pagou quanto, quando), dashboard de IR/CSLL (bases, cálculos), dashboard de royalties (produção, preços, cálculos). Alertas automáticos: prazo de recolhimento vencendo amanhã, nota fiscal com erro de CNPJ, discrepância entre sistemas. Automação: cálculo de tributos sem erro humano, transmissão automática de SPED, geração automática de documentos. Investimento: Petrobras gasta centenas de milhões em sistemas: retorno via conformidade + otimização = bilhões.
           </p>
           <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-3">⛽ Petrobras Específico</p>
-            <ul className="text-sm space-y-2 text-foreground">
+            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-3">⛽ Petrobras Específico</p>
+            <ul className="text-lg space-y-2 text-foreground">
               <li>✓ <strong>Múltiplas Jurisdições:</strong> 27 estados + DF, cada com legislação</li>
               <li>✓ <strong>Royalties:</strong> % produção repassada ao governo (bilhões/ano)</li>
               <li>✓ <strong>PE (Participação Especial):</strong> Em campos super-lucrosos</li>
@@ -810,7 +821,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Complexidade Petrobras",
-          content: <div className="text-sm space-y-2"><p><strong>27 estados:</strong> cada um com ICMS diferente</p><p><strong>Bilhões em imposto:</strong> exigem precisão absoluta</p><p><strong>Royalties/PE:</strong> repassos bilionários ao governo</p></div>,
+          content: <div className="text-lg space-y-2"><p><strong>27 estados:</strong> cada um com ICMS diferente</p><p><strong>Bilhões em imposto:</strong> exigem precisão absoluta</p><p><strong>Royalties/PE:</strong> repassos bilionários ao governo</p></div>,
         }}
         audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Tributação Petrobras", artista: "Prof. Administração" }}
       />
@@ -833,7 +844,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
       />
 
       <QuizInterativo
-        questoes={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-9"]?.questoes || []}
+        questoes={toQQ(ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-9"])}
         titulo="Quiz: Tributação em Petrobras"
         numero={9}
         variant={getModuleVariant(9)}
@@ -853,7 +864,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           description="Teste integrado: conceitos, prazos, procedimentos, aplicação Petrobras"
           variant="emerald"
         />
-        <div className="space-y-6 text-base leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
             O <strong>Simulado Mestre integra conhecimento</strong> de todos os 9 módulos anteriores em questões práticas. Não é teste de memorização, mas de compreensão e aplicação. Questões: cenários realistas (empresa tem situação tributária X, qual é o procedimento correto?), análise crítica (identifique órgão responsável, prazo aplicável, documentação necessária), decisão (qual estratégia reduz imposto legalmente?). Objetivo: validar se você domina administração tributária de forma integrada.
           </p>
@@ -870,8 +881,8 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
             Os <strong>benefícios de passar no Simulado Mestre</strong> com ≥70%: demonstra que você consolidou aprendizado dos 10 módulos, está pronto para prova, pode responder questões práticas de administração tributária em ambiente real (Petrobras), tem base sólida para evitar erros em operações reais. Estudar administração tributária não é apenas para passar em prova: é para trabalhar com integridade e competência na Petrobras. Cada procedimento que você aprende aqui protege empresa de riscos tributários.
           </p>
           <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-3">👑 Domínio Total</p>
-            <ul className="text-sm space-y-2 text-foreground">
+            <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-3">👑 Domínio Total</p>
+            <ul className="text-lg space-y-2 text-foreground">
               <li>✓ <strong>Conhecimento:</strong> Órgãos, tributos, prazos, documentos</li>
               <li>✓ <strong>Procedimentos:</strong> Registro, créditos, declarações, conformidade</li>
               <li>✓ <strong>Gestão:</strong> Otimização, planejamento, fluxo de caixa</li>
@@ -897,7 +908,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Estrutura Simulado",
-          content: <div className="text-sm space-y-2"><p><strong>10 questões integradas</strong> cobrindo todos módulos</p><p><strong>Conhecimento + Procedimentos + Gestão</strong></p><p><strong>70%+ = Expert em Tributária</strong></p></div>,
+          content: <div className="text-lg space-y-2"><p><strong>10 questões integradas</strong> cobrindo todos módulos</p><p><strong>Conhecimento + Procedimentos + Gestão</strong></p><p><strong>70%+ = Expert em Tributária</strong></p></div>,
         }}
         audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Simulado Mestre", artista: "Prof. Administração" }}
       />
@@ -920,7 +931,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
       />
 
       <QuizInterativo
-        questoes={ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-10"]?.questoes || []}
+        questoes={toQQ(ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-10"])}
         titulo="Simulado Mestre - Administração Tributária"
         numero={10}
         variant={getModuleVariant(10)}
@@ -965,7 +976,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
               key={mod.id}
               onClick={() => isUnlocked && setActiveTab(mod.id)}
               disabled={!isUnlocked}
-              className={`p-3 rounded-lg text-sm font-medium transition-all ${
+              className={`p-3 rounded-lg text-lg font-medium transition-all ${
                 isCompleted
                   ? "bg-green-500/20 border-2 border-green-500 text-green-700 dark:text-green-300"
                   : activeTab === mod.id
@@ -985,7 +996,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
       {renderModule()}
 
       <div className="bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-lg p-4">
-        <p className="text-sm text-emerald-800 dark:text-emerald-200">
+        <p className="text-lg text-emerald-800 dark:text-emerald-200">
           <strong>💡 Dica:</strong> Administração Tributária é prática: prazos, procedimentos, sistemas. Domine os calendários, documentação e fluxos. Complete cada módulo com 70%+ para desbloquear o próximo e consolidar competência em gestão tributária.
         </p>
       </div>

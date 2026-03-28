@@ -16,7 +16,7 @@
  */
 
 import { useState } from "react";
-import { AulaProps } from "../shared";
+import { AulaProps, QuizQuestion } from "../shared";
 import {
   ModuleConsolidation,
   ContentAccordion,
@@ -27,6 +27,17 @@ import {
 } from "../shared";
 import { DIREITO_TRIBUTARIO_QUIZZES } from "@/data/quizzes/direito-tributario-quizzes";
 import { getModuleVariant } from "@/lib/moduleColors";
+
+function toQQ(quiz: { questions: { id: number; question: string; options: string[]; correct: number; explanation: string }[] } | undefined): QuizQuestion[] {
+  if (!quiz) return [];
+  return quiz.questions.map((q) => ({
+    id: q.id,
+    pergunta: q.question,
+    opcoes: q.options.map((o) => ({ label: o, valor: o })),
+    correta: q.options[q.correct] ?? "",
+    explicacao: q.explanation,
+  }));
+}
 
 const MODULE_DEFS = [
   { id: "modulo-1", label: "Módulo 1", title: "Fundamentos de Direito Tributário" },
@@ -76,7 +87,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           variant="indigo"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
           <p>
             O <strong>Direito Tributário</strong> é um ramo do direito público que regula a relação jurídica entre o Estado (fisco) e o cidadão (contribuinte) no tocante à arrecadação de tributos. Diferentemente do direito privado, que busca equilíbrio entre partes iguais, o direito tributário existe numa relação desigual: o Estado tem autoridade para cobrar, e o contribuinte tem obrigação de pagar. Mas essa desigualdade não é arbitrária — ela é limitada por princípios constitucionais rigorosos que protegem os direitos do cidadão contra abuso estatal.
           </p>
@@ -94,8 +105,8 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           </p>
 
           <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">⚖️ Pilares Fundamentais</p>
-            <ul className="text-sm space-y-1 text-foreground">
+            <p className="font-bold text-rose-600 dark:text-rose-400 text-lg mb-2">⚖️ Pilares Fundamentais</p>
+            <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Tributo é receita pública derivada (compulsória, por lei, não retributiva)</li>
               <li>✓ CTN é a lei geral, fonte de todos os princípios tributários</li>
               <li>✓ Princípios constitucionais são intocáveis (legalidade, igualdade, capacidade)</li>
@@ -125,7 +136,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "O Pulo do Gato",
-          content: <p className="text-sm italic">{"Competência é indelegável. O que é meu, é meu e ninguém tasca (só posso delegar a capacidade de arrecadar)."}</p>
+          content: <p className="text-lg italic">{"Competência é indelegável. O que é meu, é meu e ninguém tasca (só posso delegar a capacidade de arrecadar)."}</p>
         }}
         audio={{
           audioUrl: "#",
@@ -179,7 +190,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         titulo="Fundamentos Tributários"
         numero={1}
         variant="indigo"
-        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-1"].questions}
+        questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-1"])}
         onComplete={(score: number) => handleQuizComplete("modulo-1", score)}
       />
     </div>
@@ -202,7 +213,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           variant="indigo"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
           <p>
             A União detém a competência para os impostos que mais pesam no caixa das grandes corporações. O <strong>Imposto de Renda Pessoa Jurídica (IRPJ)</strong> e a <strong>Contribuição Social sobre o Lucro Líquido (CSLL)</strong> incidem sobre o resultado financeiro positivo da empresa. Para a Petrobras, que opera com bilhões em lucro, o planejamento tributário correto nessas áreas é vital para a sustentabilidade do negócio.
           </p>
@@ -231,7 +242,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Dica de Mestre",
-          content: <p className="text-sm italic">{"Federais = Lucro e Fronteira (IRPJ e Comércio Exterior)"}</p>
+          content: <p className="text-lg italic">{"Federais = Lucro e Fronteira (IRPJ e Comércio Exterior)"}</p>
         }}
         audio={{
           audioUrl: "/audio/tributario-m2.mp3",
@@ -278,7 +289,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         titulo="Tributos Federais"
         numero={2}
         variant="indigo"
-        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-2"].questions}
+        questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-2"])}
         onComplete={(score: number) => handleQuizComplete("modulo-2", score)}
       />
     </div>
@@ -301,7 +312,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           variant="emerald"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
           <p>
             Os <strong>tributos sobre consumo</strong> são aqueles que incidem sobre a circulação de mercadorias e a prestação de serviços. São chamados "indiretos" porque o fabricante/prestador paga ao fisco, mas repassa o custo ao consumidor final via preço.
           </p>
@@ -330,7 +341,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Dica de Mestre",
-          content: <p className="text-sm italic">{"Consumo = Indireto (Alguém paga, você sente no preço final)."}</p>
+          content: <p className="text-lg italic">{"Consumo = Indireto (Alguém paga, você sente no preço final)."}</p>
         }}
         audio={{
           audioUrl: "/audio/tributario-m3.mp3",
@@ -372,7 +383,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         titulo="Tributos sobre Consumo"
         numero={3}
         variant="emerald"
-        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-3"].questions}
+        questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-3"])}
         onComplete={(score: number) => handleQuizComplete("modulo-3", score)}
       />
     </div>
@@ -395,7 +406,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           variant="violet"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
           <p>
             As contribuições sociais (PIS/PASEP e COFINS) incidem sobre a receita bruta das empresas e são fundamentais para o financiamento da seguridade social. Para uma empresa do porte da Petrobras, essas contribuições representam volumes gigantescos de recursos.
           </p>
@@ -424,7 +435,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Dica de Mestre",
-          content: <p className="text-sm italic">{"CIDE = Intervenção (Governo usando imposto para regular o preço do óleo)."}</p>
+          content: <p className="text-lg italic">{"CIDE = Intervenção (Governo usando imposto para regular o preço do óleo)."}</p>
         }}
         audio={{
           audioUrl: "/audio/tributario-m4.mp3",
@@ -466,7 +477,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         titulo="Contribuições Sociais"
         numero={4}
         variant="violet"
-        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-4"].questions}
+        questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-4"])}
         onComplete={(score: number) => handleQuizComplete("modulo-4", score)}
       />
     </div>
@@ -489,7 +500,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           variant="amber"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
           <p>
             A <strong>obrigação tributária</strong> nasce com o <strong>Fato Gerador</strong>: uma situação prevista em lei que, ao ocorrer, obriga o pagamento do tributo. Por exemplo, vender gasolina é o fato gerador do ICMS. Uma vez ocorrido, o tributo deve ser quantificado e formalizado através do <strong>Lançamento</strong>.
           </p>
@@ -518,7 +529,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Dica de Mestre",
-          content: <p className="text-sm italic">{"Fato Gerador ocorreu? Dívida nasceu! Lançamento formalizou? Cobrança começou!"}</p>
+          content: <p className="text-lg italic">{"Fato Gerador ocorreu? Dívida nasceu! Lançamento formalizou? Cobrança começou!"}</p>
         }}
         audio={{
           audioUrl: "/audio/tributario-m5.mp3",
@@ -565,7 +576,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         titulo="Obrigações e Crédito"
         numero={5}
         variant="amber"
-        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-5"].questions}
+        questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-5"])}
         onComplete={(score: number) => handleQuizComplete("modulo-5", score)}
       />
     </div>
@@ -588,7 +599,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           variant="rose"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
           <p>
             O Fisco tem o poder de fiscalizar permanentemente todos os atos dos contribuintes. No entanto, esse poder não é absoluto; o fiscal deve seguir ritos legais e respeitar o sigilo de dados não tributários.
           </p>
@@ -617,7 +628,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Dica de Mestre",
-          content: <p className="text-sm italic">{"Multa não é tributo! Tributo é obrigação, multa é punição."}</p>
+          content: <p className="text-lg italic">{"Multa não é tributo! Tributo é obrigação, multa é punição."}</p>
         }}
         audio={{
           audioUrl: "/audio/tributario-m6.mp3",
@@ -659,7 +670,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         titulo="Fiscalização e Infrações"
         numero={6}
         variant="rose"
-        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-6"].questions}
+        questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-6"])}
         onComplete={(score: number) => handleQuizComplete("modulo-6", score)}
       />
     </div>
@@ -682,7 +693,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           variant="amber"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
           <p>
             A <strong>Norma de Incidência Tributária</strong> é a regra que estrutura como um imposto é cobrado. Toda norma tributária tem três componentes essenciais: (1) <strong>Fato Gerador</strong>; (2) <strong>Base de Cálculo</strong>; (3) <strong>Alíquota</strong>.
           </p>
@@ -707,7 +718,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Dica de Mestre",
-          content: <p className="text-sm italic">{"Fato Gerador é o gatilho; Base e Alíquota definem o tamanho do estrago no caixa."}</p>
+          content: <p className="text-lg italic">{"Fato Gerador é o gatilho; Base e Alíquota definem o tamanho do estrago no caixa."}</p>
         }}
         audio={{
           audioUrl: "/audio/tributario-m7.mp3",
@@ -754,7 +765,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         titulo="Normas de Incidência"
         numero={7}
         variant="amber"
-        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-7"].questions}
+        questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-7"])}
         onComplete={(score: number) => handleQuizComplete("modulo-7", score)}
       />
     </div>
@@ -777,7 +788,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           variant="blue"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
           <p>
             A <strong>tributação da Petrobras</strong> envolve Royalties e Participações Especiais, além dos impostos convencionais. Os <strong>Royalties</strong> são uma compensação financeira pela exploração de recursos não renováveis.
           </p>
@@ -802,7 +813,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Dica de Mestre",
-          content: <p className="text-sm italic">{"Royalties se paga pela produção; Imposto se paga pelo lucro."}</p>
+          content: <p className="text-lg italic">{"Royalties se paga pela produção; Imposto se paga pelo lucro."}</p>
         }}
         audio={{
           audioUrl: "/audio/tributario-m8.mp3",
@@ -844,7 +855,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         titulo="Operações Petrobras"
         numero={8}
         variant="blue"
-        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-8"].questions}
+        questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-8"])}
         onComplete={(score: number) => handleQuizComplete("modulo-8", score)}
       />
     </div>
@@ -867,7 +878,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           variant="emerald"
         />
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
+        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
           <p>
             O <strong>Planejamento Tributário (Elisão)</strong> é o uso de meios lícitos para reduzir o ônus fiscal. A <strong>Evasão</strong>, por outro lado, é ilegal.
           </p>
@@ -892,7 +903,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Dica de Mestre",
-          content: <p className="text-sm italic">{"Elisão = Lícita (Antes do fato gerador). Evasão = Crime (Depois do fato gerador)."}</p>
+          content: <p className="text-lg italic">{"Elisão = Lícita (Antes do fato gerador). Evasão = Crime (Depois do fato gerador)."}</p>
         }}
         audio={{
           audioUrl: "/audio/tributario-m9.mp3",
@@ -934,7 +945,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         titulo="Planejamento Tributário"
         numero={9}
         variant="emerald"
-        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-9"].questions}
+        questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-9"])}
         onComplete={(score: number) => handleQuizComplete("modulo-9", score)}
       />
     </div>
@@ -976,7 +987,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         }}
         maceteVisual={{
           title: "Dica de Mestre",
-          content: <p className="text-sm italic">{"Leia o enunciado com calma. Identifique o tributo e a competência primeiro."}</p>
+          content: <p className="text-lg italic">{"Leia o enunciado com calma. Identifique o tributo e a competência primeiro."}</p>
         }}
         audio={{
           audioUrl: "/audio/tributario-m10.mp3",
@@ -989,7 +1000,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         titulo="Simulado Mestre"
         numero={10}
         variant="rose"
-        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-10"].questions}
+        questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-10"])}
         onComplete={(score: number) => handleQuizComplete("modulo-10", score)}
       />
     </div>
@@ -1042,7 +1053,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
               key={mod.id}
               onClick={() => isUnlocked && setActiveTab(mod.id)}
               disabled={!isUnlocked}
-              className={`p-3 rounded-lg text-sm font-medium transition-all ${
+              className={`p-3 rounded-lg text-lg font-medium transition-all ${
                 isCompleted
                   ? "bg-green-500/20 border-2 border-green-500 text-green-700 dark:text-green-300"
                   : activeTab === mod.id
@@ -1062,7 +1073,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
       {renderModule()}
 
       <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-        <p className="text-sm text-blue-800 dark:text-blue-200">
+        <p className="text-lg text-blue-800 dark:text-blue-200">
           <strong>💡 Dica:</strong> Direito tributário é complexo mas lógico. Entenda o fato gerador e a estrutura de incidência. Complete cada módulo com 70%+ para desbloquear o próximo e consolidar aprendizado.
         </p>
       </div>

@@ -154,6 +154,67 @@ description: Upgrade de aulas para padrão ULTIMATE — texto introdutório rico
 </section>
 ```
 
+---
+
+## PADRÃO DO MACETE VISUAL (Bloco 5)
+
+### Objetivo
+O Macete Visual (aba 3 do `ModuleConsolidation`) não deve ser apenas texto. Deve ser uma experiência mnemônica rica que use o "espaço visual" para fixar o conceito central.
+
+### Template JSX Obrigatório
+
+```tsx
+maceteVisual={{
+  title: "O Macete do '[Nome Criativo]'",
+  content: (
+    <>
+      {/* 1. Header Visual: 2 Emojis grandes com pulsação */}
+      <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
+        <span>[Emoji 1]</span>
+        <span>[Emoji 2]</span>
+      </div>
+
+      {/* 2. Frase de Impacto: O "Mantra" do módulo */}
+      <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
+        "Frase curta e impactante que resume a lógica do tema. Use **negrito** para palavras-chave."
+      </p>
+
+      {/* 3. Cards de Reforço (2): Estrutura comparativa ou complementar */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+        <div className="p-4 bg-[color]-500/5 border border-[color]-500/20 rounded-xl">
+          <h4 className="text-lg font-bold text-[color]-600 dark:text-[color]-400 mb-2">
+            [Conceito A]
+          </h4>
+          <p className="text-lg text-muted-foreground italic">
+            "Exemplo prático curto e direto."
+          </p>
+          <p className="text-[10px] mt-2 font-medium text-[color]-700 dark:text-[color]-300 uppercase">
+             [Dica Curta] ✅
+          </p>
+        </div>
+        <div className="p-4 bg-[secondary-color]-500/5 border border-[secondary-color]-500/20 rounded-xl">
+          <h4 className="text-lg font-bold text-[secondary-color]-600 dark:text-[secondary-color]-400 mb-2">
+            [Conceito B]
+          </h4>
+          <p className="text-lg text-muted-foreground italic">
+            "Exemplo prático oposto ou complementar."
+          </p>
+          <p className="text-[10px] mt-2 font-medium text-[secondary-color]-700 dark:text-[secondary-color]-300 uppercase">
+             [Dica Curta] ✅
+          </p>
+        </div>
+      </div>
+    </>
+  ),
+}}
+```
+
+### Regras de Cores (Macete)
+- Use a variante de cor do módulo (`variant={mv[N]}`) para os cards.
+- Pode usar opacidades `/5` (fundo) e `/20` (borda) para o efeito premium.
+
+---
+
 ### Requisitos de Conteúdo por Tipo de Matéria
 
 | Matéria | Fonte Primária | Foco do Texto Introdutório |

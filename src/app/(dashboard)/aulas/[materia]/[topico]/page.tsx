@@ -414,6 +414,30 @@ const AulaAdministrativoTributario = dynamic<AulaProps>(
   },
 );
 
+const AulaContabilidadeBasica = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaContabilidadeBasica"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaDireitoTributario = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaDireitoTributario"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaAdministracaoTributaria = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaAdministracaoTributaria"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
 const AulaEngenhariaSoftware = dynamic<AulaProps>(
   () => import("@/components/aulas/ti/AulaEngenhariaSoftware"),
   {
@@ -1570,6 +1594,57 @@ export default function TopicoPage({ params }: PageProps) {
             />
           ) : materiaId === "especifica-bloco-ii-legislacao-tributos" && topicoId === "administrativo-tributario" ? (
             <AulaAdministrativoTributario
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "especifica-bloco-iii-tributos-suprimento" && topicoId === "contabilidade-basica-suprimento" ? (
+            <AulaContabilidadeBasica
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "especifica-bloco-iii-tributos-suprimento" && topicoId === "direito-tributario-suprimento" ? (
+            <AulaDireitoTributario
+              onComplete={handleCompleteAula}
+              isCompleted={isCompleted}
+              loading={loading}
+              xpGanho={xpGanho}
+              currentProgress={progress}
+              onUpdateProgress={updateProgress}
+              titulo={topico.titulo}
+              descricao={topico.descricao}
+              duracao={topico.duracao}
+              materiaNome={materia.nome}
+              materiaCor={materia.cor}
+              materiaId={materiaId}
+              prevTopico={prevTopico}
+              nextTopico={nextTopico}
+            />
+          ) : materiaId === "especifica-bloco-iii-tributos-suprimento" && topicoId === "administracao-tributaria-suprimento" ? (
+            <AulaAdministracaoTributaria
               onComplete={handleCompleteAula}
               isCompleted={isCompleted}
               loading={loading}

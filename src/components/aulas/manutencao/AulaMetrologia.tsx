@@ -143,7 +143,7 @@ export default function AulaMetrologia({
             }}
             maceteVisual={{
                 title: "O Pulo do Gato: 25,4",
-                content: <p className="text-sm italic">"Vinte e cinco vírgula quatro, no meu bolso eu sempre guardo. De polegada para mm, multiplique sem medo!"</p>
+                content: <p className="text-lg italic">"Vinte e cinco vírgula quatro, no meu bolso eu sempre guardo. De polegada para mm, multiplique sem medo!"</p>
             }}
             audio={{
                 audioUrl: "/audio/metrologia-rap-1.mp3",
@@ -154,8 +154,8 @@ export default function AulaMetrologia({
 
         <QuizInterativo 
             questoes={QUIZ_M1_FUNDAMENTOS}
-            numero={1}
-            titulo="Fundamentos da Metrologia"
+            numero={2}
+            titulo="QUIZ: Módulo Nº 1"
             onComplete={() => handleModuleComplete("modulo-1")}
         />
       </TabsContent>
@@ -225,7 +225,7 @@ export default function AulaMetrologia({
             }}
             maceteVisual={{
                 title: "Resolução na Mão",
-                content: <p className="text-sm">Sempre 1 dividido pelo número de casinhas do nônio. 50 divisões? 0,02. 20 divisões? 0,05.</p>
+                content: <p className="text-lg">Sempre 1 dividido pelo número de casinhas do nônio. 50 divisões? 0,02. 20 divisões? 0,05.</p>
             }}
             audio={{
                 audioUrl: "/audio/paquimetro-beat.mp3",
@@ -300,7 +300,7 @@ export default function AulaMetrologia({
             }}
             maceteVisual={{
                 title: "Dica de Ouro: O traço de baixo",
-                content: <p className="text-sm">Viu o traço debaixo da bainha? Some na hora 0,50mm ao valor do tambor!</p>
+                content: <p className="text-lg">Viu o traço debaixo da bainha? Some na hora 0,50mm ao valor do tambor!</p>
             }}
             audio={{
                 audioUrl: "/audio/micrometro-lofi.mp3",
@@ -311,8 +311,8 @@ export default function AulaMetrologia({
 
         <QuizInterativo 
             questoes={QUIZ_M3_MICROMETRO}
-            numero={3}
-            titulo="Prática com Micrômetro"
+            numero={4}
+            titulo="QUIZ: Módulo Nº 3"
             onComplete={() => handleModuleComplete("modulo-3")}
         />
       </TabsContent>
@@ -382,7 +382,7 @@ export default function AulaMetrologia({
             }}
             maceteVisual={{
                 title: "Maiúsculo vs Minúsculo",
-                content: <p className="text-sm">"FURO é GRANDE (Letra Maiúscula), eixo é pequeno (letra minúscula)."</p>
+                content: <p className="text-lg">"FURO é GRANDE (Letra Maiúscula), eixo é pequeno (letra minúscula)."</p>
             }}
             audio={{
                 audioUrl: "/audio/iso-techno.mp3",
@@ -459,7 +459,7 @@ export default function AulaMetrologia({
             }}
             maceteVisual={{
                 title: "Ra x Rz",
-                content: <p className="text-sm">"Ra é a média, Rz é o pico. Para a Cesgranrio, o Ra é o favorito!"</p>
+                content: <p className="text-lg">"Ra é a média, Rz é o pico. Para a Cesgranrio, o Ra é o favorito!"</p>
             }}
             audio={{
                 audioUrl: "/audio/rugosidade-funk.mp3",
@@ -470,8 +470,8 @@ export default function AulaMetrologia({
 
         <QuizInterativo 
             questoes={QUIZ_M5_RUGOSIDADE}
-            numero={5}
-            titulo="Rugosidade de Superfície"
+            numero={6}
+            titulo="QUIZ: Módulo Nº 5"
             onComplete={() => handleModuleComplete("modulo-5")}
         />
       </TabsContent>

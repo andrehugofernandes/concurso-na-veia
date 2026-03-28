@@ -163,7 +163,7 @@ export default function AulaFalseCognates({
               descricao="Palavras que PARECEM significar uma coisa em português, mas significam COMPLETAMENTE outra em inglês"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Os falsos cognatos clássicos são a armadilha número um de candidatos em provas CESGRANRIO. Estas palavras parecem iguais ou muito similares em português e inglês, mas seus significados são radicalmente diferentes. ACTUALLY parece "atualmente" (agora, presente), mas significa "de fato" ou "na verdade" (um qualificador de opinião, não tempo). EVENTUALLY parece "eventualmente" (talvez, possivelmente), mas significa "finalmente" ou "por fim" (após longo tempo, definitivamente, mas depois). LIBRARY parece "livraria" (loja de livros), mas é "biblioteca" (lugar de empréstimo, pesquisa, acervo público). PARENTS parece "pais" (país), mas significa "pais" (pai e mãe, genitor). Estas palavras aparecem em 40-60% das questões de leitura em provas Petrobras porque testam exatamente essa confusão cognitiva.
               </p>
@@ -186,7 +186,7 @@ export default function AulaFalseCognates({
 
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Tabela: Os Clássicos</h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-lg">
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-2 border-b pb-2">
                     <div className="font-semibold">Falso Cognato</div>
                     <div className="font-semibold">Português (Errado)</div>
@@ -197,25 +197,25 @@ export default function AulaFalseCognates({
                     <div>ACTUALLY</div>
                     <div className="text-red-600">Atualmente (agora)</div>
                     <div className="text-green-600">De fato / Na verdade</div>
-                    <div className="text-xs">Qualificação de opinião/fato</div>
+                    <div className="text-lg">Qualificação de opinião/fato</div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-2 border-b pb-2">
                     <div>EVENTUALLY</div>
                     <div className="text-red-600">Eventualmente (talvez)</div>
                     <div className="text-green-600">Finalmente / Por fim (após tempo)</div>
-                    <div className="text-xs">Resultado após longo tempo</div>
+                    <div className="text-lg">Resultado após longo tempo</div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-2 border-b pb-2">
                     <div>LIBRARY</div>
                     <div className="text-red-600">Livraria (loja)</div>
                     <div className="text-green-600">Biblioteca (empréstimo/pesquisa)</div>
-                    <div className="text-xs">Instituição pública</div>
+                    <div className="text-lg">Instituição pública</div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
                     <div>PARENTS</div>
                     <div className="text-red-600">Pais (país)</div>
                     <div className="text-green-600">Pais (genitor, pai/mãe)</div>
-                    <div className="text-xs">Relação familiar</div>
+                    <div className="text-lg">Relação familiar</div>
                   </div>
                 </div>
               </div>
@@ -228,19 +228,19 @@ export default function AulaFalseCognates({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         ACTUALLY = "na verdade", "de fato", "na realidade". Qualificador de pensamento, não marcador de tempo. Use quando você quer dizer "contrário ao que você poderia pensar" ou "a realidade é". "Actually, oil is less dense than water" = "Na verdade, óleo é menos denso que água" (qualificação de fato científico). "Actually, I disagree" = "De fato, não concordo" (qualificação de opinião). NUNCA use para "agora" ou "atualmente". Use "currently", "at present", "these days" para tempo presente.
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         EVENTUALLY = "finalmente", "por fim", "no fim das contas" (sempre com conotação de tempo longo). Use para descrever um resultado que vai acontecer, mas só após espera considerável. "After months of testing, we eventually found the issue" = "Após meses de teste, FINALMENTE achamos o problema". "If this continues, we will eventually fail" = "Se isto continuar, DEFINITIVAMENTE vamos falhar (mas depois)". Português "eventualmente" = "talvez" (muito fraco). Inglês "eventually" = "certeza, mas tarde".
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         LIBRARY = "biblioteca", instituição pública para pesquisa, leitura, empréstimo de materiais. Em contexto técnico Petrobras, "technical library" = "biblioteca técnica" (repositório de documentos). "Bookstore" = loja de livros (venda). "The company has a technical library with 5,000 documents" = "A empresa tem uma biblioteca técnica com 5.000 documentos". Biblioteca é PÚBLICA ou INSTITUCIONAL. Livraria (bookstore) é COMERCIAL.
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         PARENTS = "pais" (genitores, pai e mãe). "My parents work for Petrobras" = "Meus pais trabalham na Petrobras". NUNCA use "parents" para país. País = "country" ou "nation". "Brazil is my country" = "Brasil é meu país" (não "meus pais").
                       </p>
                     </div>
@@ -253,65 +253,65 @@ export default function AulaFalseCognates({
                     <div className="space-y-4">
                       <div className="border-l-4 border-blue-500 pl-4">
                         <p className="font-semibold">1. ACTUALLY em Relatório Técnico</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "Actually, the corrosion rate is lower than our initial estimate."
-                          <span className="block mt-1 text-xs italic">Análise: Qualificação de fato. Realidade contrária à expectativa. NÃO "agora".</span>
+                          <span className="block mt-1 text-lg italic">Análise: Qualificação de fato. Realidade contrária à expectativa. NÃO "agora".</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-cyan-500 pl-4">
                         <p className="font-semibold">2. EVENTUALLY em Previsão</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "If we continue this extraction rate, we will eventually deplete the reservoir."
-                          <span className="block mt-1 text-xs italic">Análise: Resultado certo, mas após longo tempo. Definitividade + espera temporal.</span>
+                          <span className="block mt-1 text-lg italic">Análise: Resultado certo, mas após longo tempo. Definitividade + espera temporal.</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-green-500 pl-4">
                         <p className="font-semibold">3. LIBRARY em Contexto Institucional</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "Access the technical library to find equipment specifications."
-                          <span className="block mt-1 text-xs italic">Análise: Biblioteca técnica = repositório de documentos. NÃO loja (bookstore).</span>
+                          <span className="block mt-1 text-lg italic">Análise: Biblioteca técnica = repositório de documentos. NÃO loja (bookstore).</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-amber-500 pl-4">
                         <p className="font-semibold">4. PARENTS em Contexto Familiar</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "My parents retired from Petrobras after 30 years of service."
-                          <span className="block mt-1 text-xs italic">Análise: Pais = pai e mãe. NÃO país (country).</span>
+                          <span className="block mt-1 text-lg italic">Análise: Pais = pai e mãe. NÃO país (country).</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-purple-500 pl-4">
                         <p className="font-semibold">5. Confusão Perigosa: ACTUALLY + Tempo</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "❌ Actually, the pressure is rising (agora)" vs "✅ Actually, the pressure is higher than expected"
-                          <span className="block mt-1 text-xs italic">Análise: ACTUALLY não marca tempo. Marca qualificação de fato. Se é "agora", use "right now", "currently", "at this moment".</span>
+                          <span className="block mt-1 text-lg italic">Análise: ACTUALLY não marca tempo. Marca qualificação de fato. Se é "agora", use "right now", "currently", "at this moment".</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-red-500 pl-4">
                         <p className="font-semibold">6. Confusão Perigosa: EVENTUALLY + Imediato</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "❌ We will eventually finish this task today" vs "✅ We will finish this task today"
-                          <span className="block mt-1 text-xs italic">Análise: EVENTUALLY implica longo tempo. Se é "hoje", não use EVENTUALLY.</span>
+                          <span className="block mt-1 text-lg italic">Análise: EVENTUALLY implica longo tempo. Se é "hoje", não use EVENTUALLY.</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-pink-500 pl-4">
                         <p className="font-semibold">7. LIBRARY em Contexto Digital</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "The software includes a component library with 200 reusable modules."
-                          <span className="block mt-1 text-xs italic">Análise: "Library" em programação = coleção reutilizável (metáfora de biblioteca).</span>
+                          <span className="block mt-1 text-lg italic">Análise: "Library" em programação = coleção reutilizável (metáfora de biblioteca).</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-indigo-500 pl-4">
                         <p className="font-semibold">8. Contraste: ACTUALLY vs CURRENTLY</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "Actually, the system is better than before" (qualificação de fato) vs "Currently, the system is down" (tempo presente).
-                          <span className="block mt-1 text-xs italic">Análise: ACTUALLY = opinião/qualificação. CURRENTLY = tempo presente. Use a palavra correta!</span>
+                          <span className="block mt-1 text-lg italic">Análise: ACTUALLY = opinião/qualificação. CURRENTLY = tempo presente. Use a palavra correta!</span>
                         </p>
                       </div>
                     </div>
@@ -410,13 +410,13 @@ export default function AulaFalseCognates({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Escolha a palavra correta</p>
-                    <p className="text-base">"___, the system is more efficient than before."</p>
-                    <p className="text-xs text-foreground/60">(A) Actually (B) Currently</p>
+                    <p className="font-semibold text-lg">Escolha a palavra correta</p>
+                    <p className="text-lg">"___, the system is more efficient than before."</p>
+                    <p className="text-lg text-foreground/60">(A) Actually (B) Currently</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ ACTUALLY</p>
                     <p>Qualificação de fato. "Na verdade" o sistema é mais eficiente (opinião/qualificação). CURRENTLY = tempo presente agora.</p>
                   </div>
@@ -426,13 +426,13 @@ export default function AulaFalseCognates({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Escolha a palavra correta</p>
-                    <p className="text-base">"After years, we will ___ find the solution."</p>
-                    <p className="text-xs text-foreground/60">(A) eventually (B) actually</p>
+                    <p className="font-semibold text-lg">Escolha a palavra correta</p>
+                    <p className="text-lg">"After years, we will ___ find the solution."</p>
+                    <p className="text-lg text-foreground/60">(A) eventually (B) actually</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ EVENTUALLY</p>
                     <p>"After years" = longo tempo. EVENTUALLY = finalmente após espera. ACTUALLY = qualificação, não tempo.</p>
                   </div>
@@ -442,13 +442,13 @@ export default function AulaFalseCognates({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Escolha a palavra correta</p>
-                    <p className="text-base">"I borrowed books from the ___."</p>
-                    <p className="text-xs text-foreground/60">(A) library (B) bookstore</p>
+                    <p className="font-semibold text-lg">Escolha a palavra correta</p>
+                    <p className="text-lg">"I borrowed books from the ___."</p>
+                    <p className="text-lg text-foreground/60">(A) library (B) bookstore</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ LIBRARY</p>
                     <p>BORROWED = empréstimo = library. Se fosse BOUGHT (comprou) = bookstore. Library = pesquisa/empréstimo.</p>
                   </div>
@@ -458,13 +458,13 @@ export default function AulaFalseCognates({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Escolha a palavra correta</p>
-                    <p className="text-base">"My ___ work in the energy sector."</p>
-                    <p className="text-xs text-foreground/60">(A) parents (B) country</p>
+                    <p className="font-semibold text-lg">Escolha a palavra correta</p>
+                    <p className="text-lg">"My ___ work in the energy sector."</p>
+                    <p className="text-lg text-foreground/60">(A) parents (B) country</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ PARENTS</p>
                     <p>Relação familiar = PARENTS. COUNTRY = país (nação). "My parents" = meu pai e minha mãe.</p>
                   </div>
@@ -507,7 +507,7 @@ export default function AulaFalseCognates({
               descricao="Palavras que enganam especialmente em relatórios técnicos, especificações e textos gerenciais"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Contexto industrial traz um conjunto diferente de falsos cognatos. FABRIC parece "fábrica" (lugar de manufatura), mas significa "tecido" (material têxtil) OU "estrutura/componentes" em contexto técnico. Uma fábrica em inglês = "factory" (lugar onde se fabrica). FABRIC = tecido (têxtil, roupa) ou metaforicamente "estrutura" ("the fabric of society" = a estrutura da sociedade). Em um manual Petrobras, "equipment fabric" NUNCA significa "tecido do equipamento" — pode significar "estrutura do equipamento" (componentes, arquitetura). Esta confusão acontece porque português "fábrica" soa like "fabric", mas significados divergem completamente.
               </p>
@@ -526,7 +526,7 @@ export default function AulaFalseCognates({
 
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Tabela: Industrial Traps</h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-lg">
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-2 border-b pb-2">
                     <div className="font-semibold">Falso Cognato</div>
                     <div className="font-semibold">Português (Errado)</div>
@@ -537,25 +537,25 @@ export default function AulaFalseCognates({
                     <div>FABRIC</div>
                     <div className="text-red-600">Fábrica (lugar)</div>
                     <div className="text-green-600">Tecido / Estrutura</div>
-                    <div className="text-xs">Material têxtil ou arquitetura</div>
+                    <div className="text-lg">Material têxtil ou arquitetura</div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-2 border-b pb-2">
                     <div>COMMODITY</div>
                     <div className="text-red-600">Comodidade (conforto)</div>
                     <div className="text-green-600">Bem comercial padronizado</div>
-                    <div className="text-xs">Produto de bolsa (óleo, ouro)</div>
+                    <div className="text-lg">Produto de bolsa (óleo, ouro)</div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-2 border-b pb-2">
                     <div>SCHEDULE</div>
                     <div className="text-red-600">Agendar (casual)</div>
                     <div className="text-green-600">Cronograma / Agenda formal</div>
-                    <div className="text-xs">Planejamento futuro oficial</div>
+                    <div className="text-lg">Planejamento futuro oficial</div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
                     <div>COLLEGE</div>
                     <div className="text-red-600">Faculdade genérica</div>
                     <div className="text-green-600">Instituição de educação superior</div>
-                    <div className="text-xs">Universidade / Faculdade</div>
+                    <div className="text-lg">Universidade / Faculdade</div>
                   </div>
                 </div>
               </div>
@@ -568,19 +568,19 @@ export default function AulaFalseCognates({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         FABRIC: (1) Tecido, material têxtil (cloth, material). "The fabric of the cloth is cotton." = "O tecido do pano é algodão." (2) Estrutura, composição (metafórico). "The fabric of the system is stable." = "A estrutura do sistema é estável." Em contextos industriais, fabric frequentemente refere-se a estrutura/componentes, não material têxtil. "Equipment fabric" = estrutura do equipamento (como está montado, quais componentes). NUNCA = tecido do equipamento (não faz sentido).
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         COMMODITY: Bem comercial padronizado que pode ser negociado em mercado. Crude oil = commodity. Natural gas = commodity. Gold = commodity. Características: (1) Padronizado (toda unidade é igual). (2) Negociável em bolsa. (3) Preço varia com oferta/demanda global. "Oil commodity prices hit $100/barrel" = "Preços de óleo atingem $100/barril". Commodity NÃO = comodidade (conforto). Commodity = "produto de negócio" (mercadoria-padrão).
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         SCHEDULE: (1) Cronograma, plano de atividades futuras (timeline formal). "The project schedule includes 5 phases." = "O cronograma do projeto inclui 5 fases." (2) Agenda, lista de eventos/tarefas. "The maintenance schedule shows maintenance dates." = "A agenda de manutenção mostra datas de manutenção." SCHEDULE é FORMAL e PLANEJADO. "Book an appointment" = casual. "Schedule an appointment" = formal/oficial. Em contextos Petrobras, sempre formal.
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         COLLEGE: Instituição de educação superior (universidade, faculdade, academy). "She graduated from college." = "Ela se formou na faculdade/universidade." COLLEGE pode ser 4-year university (USA) ou divisão de universidade maior (UK). Em qualquer contexto, refere-se a educação pós-high-school. Não confunda com "university" genérica ou "school" (antes do college).
                       </p>
                     </div>
@@ -593,65 +593,65 @@ export default function AulaFalseCognates({
                     <div className="space-y-4">
                       <div className="border-l-4 border-blue-500 pl-4">
                         <p className="font-semibold">1. FABRIC em Contexto Técnico</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "The structural fabric of the compressor withstood extreme pressure."
-                          <span className="block mt-1 text-xs italic">Análise: FABRIC = estrutura (componentes do compressor). NÃO = tecido.</span>
+                          <span className="block mt-1 text-lg italic">Análise: FABRIC = estrutura (componentes do compressor). NÃO = tecido.</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-cyan-500 pl-4">
                         <p className="font-semibold">2. COMMODITY em Contexto Econômico</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "Crude oil remains the primary commodity driving global markets."
-                          <span className="block mt-1 text-xs italic">Análise: COMMODITY = bem comercial padronizado. NÃO comodidade (conforto).</span>
+                          <span className="block mt-1 text-lg italic">Análise: COMMODITY = bem comercial padronizado. NÃO comodidade (conforto).</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-green-500 pl-4">
                         <p className="font-semibold">3. SCHEDULE em Planejamento</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "The maintenance schedule includes quarterly inspections."
-                          <span className="block mt-1 text-xs italic">Análise: SCHEDULE = cronograma de atividades planejadas. Formal e oficial.</span>
+                          <span className="block mt-1 text-lg italic">Análise: SCHEDULE = cronograma de atividades planejadas. Formal e oficial.</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-amber-500 pl-4">
                         <p className="font-semibold">4. COLLEGE em Contexto Educacional</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "He received his petroleum engineering degree from college."
-                          <span className="block mt-1 text-xs italic">Análise: COLLEGE = faculdade (instituição educação superior).</span>
+                          <span className="block mt-1 text-lg italic">Análise: COLLEGE = faculdade (instituição educação superior).</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-purple-500 pl-4">
                         <p className="font-semibold">5. Confusão: FABRIC vs FACTORY</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "❌ The fabric produced 1,000 units" vs "✅ The factory produced 1,000 units"
-                          <span className="block mt-1 text-xs italic">Análise: FABRIC = material/estrutura. FACTORY = lugar de produção. FACTORY é o lugar onde se fabrica.</span>
+                          <span className="block mt-1 text-lg italic">Análise: FABRIC = material/estrutura. FACTORY = lugar de produção. FACTORY é o lugar onde se fabrica.</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-red-500 pl-4">
                         <p className="font-semibold">6. Confusão: COMMODITY vs COMFORT</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "❌ Oil is a comfort product" vs "✅ Oil is a commodity product"
-                          <span className="block mt-1 text-xs italic">Análise: COMMODITY = bem comercial (negociável). COMFORT = comodidade (conforto físico).</span>
+                          <span className="block mt-1 text-lg italic">Análise: COMMODITY = bem comercial (negociável). COMFORT = comodidade (conforto físico).</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-pink-500 pl-4">
                         <p className="font-semibold">7. SCHEDULE em Urgência</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "We need to accelerate the schedule by 2 weeks."
-                          <span className="block mt-1 text-xs italic">Análise: SCHEDULE = cronograma. ACCELERATE = mudar datas planejadas (adiantar).</span>
+                          <span className="block mt-1 text-lg italic">Análise: SCHEDULE = cronograma. ACCELERATE = mudar datas planejadas (adiantar).</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-indigo-500 pl-4">
                         <p className="font-semibold">8. FABRIC em Arquitetura</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "The fabric of the organization is built on trust."
-                          <span className="block mt-1 text-xs italic">Análise: FABRIC metafórico = estrutura (valores, componentes).</span>
+                          <span className="block mt-1 text-lg italic">Análise: FABRIC metafórico = estrutura (valores, componentes).</span>
                         </p>
                       </div>
                     </div>
@@ -750,13 +750,13 @@ export default function AulaFalseCognates({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é correto?</p>
-                    <p className="text-base">"The ___ produced 5,000 barrels daily."</p>
-                    <p className="text-xs text-foreground/60">(A) fabric (B) factory</p>
+                    <p className="font-semibold text-lg">Qual é correto?</p>
+                    <p className="text-lg">"The ___ produced 5,000 barrels daily."</p>
+                    <p className="text-lg text-foreground/60">(A) fabric (B) factory</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ FACTORY</p>
                     <p>FACTORY = lugar de produção. FABRIC = material/estrutura. Produção acontece em factory.</p>
                   </div>
@@ -766,13 +766,13 @@ export default function AulaFalseCognates({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é correto?</p>
-                    <p className="text-base">"Oil prices are rising because oil is a ___."</p>
-                    <p className="text-xs text-foreground/60">(A) commodity (B) comfort</p>
+                    <p className="font-semibold text-lg">Qual é correto?</p>
+                    <p className="text-lg">"Oil prices are rising because oil is a ___."</p>
+                    <p className="text-lg text-foreground/60">(A) commodity (B) comfort</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ COMMODITY</p>
                     <p>COMMODITY = bem comercial (negociável em bolsa, preço varia). COMFORT = conforto (não negociável).</p>
                   </div>
@@ -782,13 +782,13 @@ export default function AulaFalseCognates({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é correto?</p>
-                    <p className="text-base">"We must ___ the maintenance for next month."</p>
-                    <p className="text-xs text-foreground/60">(A) schedule (B) book</p>
+                    <p className="font-semibold text-lg">Qual é correto?</p>
+                    <p className="text-lg">"We must ___ the maintenance for next month."</p>
+                    <p className="text-lg text-foreground/60">(A) schedule (B) book</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ SCHEDULE (depende do contexto)</p>
                     <p>SCHEDULE = formal/cronograma (Petrobras). BOOK = casual/reserva (restaurante). Em contexto técnico, SCHEDULE.</p>
                   </div>
@@ -798,13 +798,13 @@ export default function AulaFalseCognates({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é correto?</p>
-                    <p className="text-base">"She graduated from ___ with an engineering degree."</p>
-                    <p className="text-xs text-foreground/60">(A) college (B) university</p>
+                    <p className="font-semibold text-lg">Qual é correto?</p>
+                    <p className="text-lg">"She graduated from ___ with an engineering degree."</p>
+                    <p className="text-lg text-foreground/60">(A) college (B) university</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ COLLEGE (em contexto USA)</p>
                     <p>COLLEGE = instituição educação superior (undergrad USA). UNIVERSITY = genérico. Ambos podem estar certos dependendo contexto.</p>
                   </div>
@@ -847,7 +847,7 @@ export default function AulaFalseCognates({
               descricao="Palavras críticas em documentos gerenciais, políticas corporativas e textos administrativos"
             />
 
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Management Petrobras tem seu próprio conjunto de falsos cognatos. POLICY em "Company policy" é "política da empresa" (norma/regra corporativa), NÃO política de governo. Politics = governo/eleições. Policy = norma/regra (corporate policy = norma da empresa). "Compliance policy" = "política de conformidade" (regra de conformidade). Confusão comum: português "política" pode ser governo OU regra corporativa, mas em inglês POLICY = regra corporativa exclusivamente. Governo/eleição = POLITICS (sempre plural).
               </p>
@@ -866,7 +866,7 @@ export default function AulaFalseCognates({
 
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Tabela: Management Traps</h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-lg">
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-2 border-b pb-2">
                     <div className="font-semibold">Falso Cognato</div>
                     <div className="font-semibold">Português (Errado)</div>
@@ -877,25 +877,25 @@ export default function AulaFalseCognates({
                     <div>POLICY</div>
                     <div className="text-red-600">Política (governo)</div>
                     <div className="text-green-600">Política / Norma corporativa</div>
-                    <div className="text-xs">Regra da empresa (não governo)</div>
+                    <div className="text-lg">Regra da empresa (não governo)</div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-2 border-b pb-2">
                     <div>TAX</div>
                     <div className="text-red-600">Taxa (de juros/crescimento)</div>
                     <div className="text-green-600">Imposto (fiscal)</div>
-                    <div className="text-xs">Imposto direto (income, sales)</div>
+                    <div className="text-lg">Imposto direto (income, sales)</div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-2 border-b pb-2">
                     <div>LEGEND</div>
                     <div className="text-red-600">Lenda (pessoa famosa)</div>
                     <div className="text-green-600">Legenda (gráfico/mapa) OU Lenda</div>
-                    <div className="text-xs">Explicação visual OU fama</div>
+                    <div className="text-lg">Explicação visual OU fama</div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
                     <div>CLAIM</div>
                     <div className="text-red-600">Reclamação (queixa)</div>
                     <div className="text-green-600">Reivindicação / Alegação</div>
-                    <div className="text-xs">Direito / Alegação (não queixa)</div>
+                    <div className="text-lg">Direito / Alegação (não queixa)</div>
                   </div>
                 </div>
               </div>
@@ -908,19 +908,19 @@ export default function AulaFalseCognates({
                   icone: <LuBookOpen className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-6">
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         POLICY: Norma, regra, procedimento estabelecido por uma organização. "Company policy forbids smoking in the office" = "A política da empresa proíbe fumar no escritório". POLITICS = governo, sistema eleitoral, eleições. "He works in politics" = "Ele trabalha em política (governo)". Em contextos corporativos Petrobras, sempre POLICY (norma da empresa). NEVER use POLITICS para regra corporativa.
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         TAX: Imposto governamental. "Income tax" = imposto de renda. "Corporate tax" = imposto corporativo. "Sales tax" = imposto sobre vendas. RATE = taxa (taxa de juros, taxa de crescimento, taxa de desemprego). "Interest rate" = taxa de juros. "Growth rate" = taxa de crescimento. TARIFF = tarifa/imposto de importação. "Import tariff" = tarifa de importação. Em relatórios Petrobras, identifique: é imposto = TAX, é percentual de variação = RATE, é imposto de importação = TARIFF.
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         LEGEND: (1) Legenda, explicação de símbolos em mapa/gráfico/tabela. "Refer to the legend for color meanings" = "Refira-se à legenda para significados de cores". (2) Lenda, pessoa lendária/famosa (menos comum). "He is a legend in engineering" = "Ele é uma lenda em engenharia". Em documentos técnicos, quase sempre significado (1) legenda/explicação visual.
                       </p>
 
-                      <p className="text-base leading-relaxed">
+                      <p className="text-lg leading-relaxed">
                         CLAIM: (1) Reivindicação, alegação (pedido de direito ou afirmação não comprovada). "The company claims to reduce emissions by 50%" = "A empresa ALEGA/RECLAMA reduzir emissões 50%". (2) Insurance claim = reivindicação de seguro (pedido de pagamento). "File a claim" = "apresentar uma reivindicação". COMPLAINT = queixa, reclamação negativa. "File a complaint" = "apresentar uma queixa/reclamação" (negativa). CLAIM = reivindicação (direito). COMPLAINT = reclamação (insatisfação).
                       </p>
                     </div>
@@ -933,65 +933,65 @@ export default function AulaFalseCognates({
                     <div className="space-y-4">
                       <div className="border-l-4 border-blue-500 pl-4">
                         <p className="font-semibold">1. POLICY em Documento Corporativo</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "According to company policy, all employees must wear safety equipment."
-                          <span className="block mt-1 text-xs italic">Análise: POLICY = norma da empresa. NÃO política (governo).</span>
+                          <span className="block mt-1 text-lg italic">Análise: POLICY = norma da empresa. NÃO política (governo).</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-cyan-500 pl-4">
                         <p className="font-semibold">2. TAX em Relatório Financeiro</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "The company paid $50 million in federal income tax."
-                          <span className="block mt-1 text-xs italic">Análise: TAX = imposto de renda. NÃO taxa (rate).</span>
+                          <span className="block mt-1 text-lg italic">Análise: TAX = imposto de renda. NÃO taxa (rate).</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-green-500 pl-4">
                         <p className="font-semibold">3. LEGEND em Gráfico Técnico</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "Refer to the legend at the bottom to understand the pressure measurements."
-                          <span className="block mt-1 text-xs italic">Análise: LEGEND = explicação visual do gráfico. NÃO lenda (pessoa).</span>
+                          <span className="block mt-1 text-lg italic">Análise: LEGEND = explicação visual do gráfico. NÃO lenda (pessoa).</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-amber-500 pl-4">
                         <p className="font-semibold">4. CLAIM em Documento de Reivindicação</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "The insurance claim was approved for $100,000 in damages."
-                          <span className="block mt-1 text-xs italic">Análise: CLAIM = reivindicação (direito). NÃO reclamação (queixa).</span>
+                          <span className="block mt-1 text-lg italic">Análise: CLAIM = reivindicação (direito). NÃO reclamação (queixa).</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-purple-500 pl-4">
                         <p className="font-semibold">5. Confusão: POLICY vs POLITICS</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "❌ Government policy vs ✅ Government politics (eleições/governo)"
-                          <span className="block mt-1 text-xs italic">Análise: POLICY = norma (seja governo ou empresa). POLITICS = governo/eleições (sempre plural).</span>
+                          <span className="block mt-1 text-lg italic">Análise: POLICY = norma (seja governo ou empresa). POLITICS = governo/eleições (sempre plural).</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-red-500 pl-4">
                         <p className="font-semibold">6. Confusão: TAX vs RATE vs TARIFF</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "Income tax" (imposto) vs "Growth rate" (taxa) vs "Import tariff" (tarifa)
-                          <span className="block mt-1 text-xs italic">Análise: TAX = imposto direto. RATE = percentual variação. TARIFF = imposto importação.</span>
+                          <span className="block mt-1 text-lg italic">Análise: TAX = imposto direto. RATE = percentual variação. TARIFF = imposto importação.</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-pink-500 pl-4">
                         <p className="font-semibold">7. CLAIM em Contexto de Negócio</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "The company's claim of zero emissions is disputed by environmental groups."
-                          <span className="block mt-1 text-xs italic">Análise: CLAIM = alegação (afirmação não comprovada). NÃO reclamação negativa (complaint).</span>
+                          <span className="block mt-1 text-lg italic">Análise: CLAIM = alegação (afirmação não comprovada). NÃO reclamação negativa (complaint).</span>
                         </p>
                       </div>
 
                       <div className="border-l-4 border-indigo-500 pl-4">
                         <p className="font-semibold">8. LEGEND em Mapa Geológico</p>
-                        <p className="text-sm text-foreground/80 mt-2">
+                        <p className="text-lg text-foreground/80 mt-2">
                           "The geological map's legend identifies rock formations by color."
-                          <span className="block mt-1 text-xs italic">Análise: LEGEND = explicação de cores/símbolos. Parte essencial de mapa/gráfico.</span>
+                          <span className="block mt-1 text-lg italic">Análise: LEGEND = explicação de cores/símbolos. Parte essencial de mapa/gráfico.</span>
                         </p>
                       </div>
                     </div>
@@ -1090,13 +1090,13 @@ export default function AulaFalseCognates({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é correto?</p>
-                    <p className="text-base">"According to company ___, all employees..."</p>
-                    <p className="text-xs text-foreground/60">(A) policy (B) politics</p>
+                    <p className="font-semibold text-lg">Qual é correto?</p>
+                    <p className="text-lg">"According to company ___, all employees..."</p>
+                    <p className="text-lg text-foreground/60">(A) policy (B) politics</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ POLICY</p>
                     <p>POLICY = norma da empresa. POLITICS = governo/eleições. "Company policy" é obrigatório.</p>
                   </div>
@@ -1106,13 +1106,13 @@ export default function AulaFalseCognates({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é correto?</p>
-                    <p className="text-base">"The company paid 25% ___."</p>
-                    <p className="text-xs text-foreground/60">(A) tax (B) rate</p>
+                    <p className="font-semibold text-lg">Qual é correto?</p>
+                    <p className="text-lg">"The company paid 25% ___."</p>
+                    <p className="text-lg text-foreground/60">(A) tax (B) rate</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ TAX (depende)</p>
                     <p>Se é "25% imposto" = TAX. Se é "taxa de juros 25%" = RATE. Contexto importa.</p>
                   </div>
@@ -1122,13 +1122,13 @@ export default function AulaFalseCognates({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é correto?</p>
-                    <p className="text-base">"Check the ___ for color meanings."</p>
-                    <p className="text-xs text-foreground/60">(A) legend (B) story</p>
+                    <p className="font-semibold text-lg">Qual é correto?</p>
+                    <p className="text-lg">"Check the ___ for color meanings."</p>
+                    <p className="text-lg text-foreground/60">(A) legend (B) story</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ LEGEND</p>
                     <p>LEGEND (legenda) = explicação visual. STORY = história (não visual). Em gráficos/mapas, sempre LEGEND.</p>
                   </div>
@@ -1138,13 +1138,13 @@ export default function AulaFalseCognates({
               <FlipCard
                 frente={
                   <div className="space-y-3">
-                    <p className="font-semibold text-sm">Qual é correto?</p>
-                    <p className="text-base">"The customer filed a ___."</p>
-                    <p className="text-xs text-foreground/60">(A) claim (B) complaint</p>
+                    <p className="font-semibold text-lg">Qual é correto?</p>
+                    <p className="text-lg">"The customer filed a ___."</p>
+                    <p className="text-lg text-foreground/60">(A) claim (B) complaint</p>
                   </div>
                 }
                 verso={
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-lg">
                     <p className="font-semibold text-green-600">✅ Ambos possíveis!</p>
                     <p>CLAIM = reivindicação (direito). COMPLAINT = queixa (insatisfação). Contexto determina qual.</p>
                   </div>
@@ -1184,7 +1184,7 @@ export default function AulaFalseCognates({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
             <div className="text-center text-foreground/60">
               <p>Módulo 4: Eventual, Pretend, Resume, Sensible (Em Desenvolvimento)</p>
-              <p className="text-sm mt-2">Quiz disponível abaixo para praticar</p>
+              <p className="text-lg mt-2">Quiz disponível abaixo para praticar</p>
             </div>
           </section>
 
@@ -1218,7 +1218,7 @@ export default function AulaFalseCognates({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
             <div className="text-center text-foreground/60">
               <p>Módulo 5: Push vs Pull, Exit Strategy (Em Desenvolvimento)</p>
-              <p className="text-sm mt-2">Quiz disponível abaixo para praticar</p>
+              <p className="text-lg mt-2">Quiz disponível abaixo para praticar</p>
             </div>
           </section>
 
@@ -1252,7 +1252,7 @@ export default function AulaFalseCognates({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
             <div className="text-center text-foreground/60">
               <p>Módulo 6: Termos Legais e Contratuais (Em Desenvolvimento)</p>
-              <p className="text-sm mt-2">Quiz disponível abaixo para praticar</p>
+              <p className="text-lg mt-2">Quiz disponível abaixo para praticar</p>
             </div>
           </section>
 
@@ -1286,7 +1286,7 @@ export default function AulaFalseCognates({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
             <div className="text-center text-foreground/60">
               <p>Módulo 7: Nuances B2+ (Em Desenvolvimento)</p>
-              <p className="text-sm mt-2">Quiz disponível abaixo para praticar</p>
+              <p className="text-lg mt-2">Quiz disponível abaixo para praticar</p>
             </div>
           </section>
 
@@ -1320,7 +1320,7 @@ export default function AulaFalseCognates({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
             <div className="text-center text-foreground/60">
               <p>Módulo 8: Síntese e Revisão (Em Desenvolvimento)</p>
-              <p className="text-sm mt-2">Quiz disponível abaixo para praticar</p>
+              <p className="text-lg mt-2">Quiz disponível abaixo para praticar</p>
             </div>
           </section>
 
@@ -1354,7 +1354,7 @@ export default function AulaFalseCognates({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
             <div className="text-center text-foreground/60">
               <p>Módulo 9: Análise de Provas CESGRANRIO (Em Desenvolvimento)</p>
-              <p className="text-sm mt-2">Quiz disponível abaixo para praticar</p>
+              <p className="text-lg mt-2">Quiz disponível abaixo para praticar</p>
             </div>
           </section>
 
@@ -1425,7 +1425,7 @@ export default function AulaFalseCognates({
 
             <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg p-6 text-white space-y-4">
               <h4 className="font-bold text-lg">👑 Você Domina False Cognates</h4>
-              <p className="text-sm leading-relaxed">
+              <p className="text-lg leading-relaxed">
                 Você aprendeu os 4 clássicos (Actually, Eventually, Library, Parents), os 4 industriais (Fabric, Commodity, Schedule, College), os 4 gerenciais (Policy, Tax, Legend, Claim), e dezenas de outros em contextos B2, legal, e nuances avançadas. Você aprendeu os 5 passos que funcionam para QUALQUER falso cognato. Você aprendeu os padrões CESGRANRIO. Agora, vá direto para o simulado abaixo. Se conseguir 70% ou mais, você está pronto para dominar a seção de leitura Petrobras.
               </p>
             </div>

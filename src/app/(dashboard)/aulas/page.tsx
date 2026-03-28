@@ -24,8 +24,9 @@ export default function AulasPage() {
     // Programa base para o cargo do usuário (inclui básicas + específicas dele)
     const programaBase = getProgramaDeEstudos(user?.cargo, false);
     
-    // Unificação da Grade Principal (Básicas + Específicas do Usuário)
-    const minhaGrade = programaBase;
+    // Separação em Blocos (Básicos vs Específicos) conforme o brainstorm
+    const gradeBase = programaBase.filter(m => ['portugues', 'matematica', 'ingles'].includes(m.id));
+    const gradeEspecifica = programaBase.filter(m => !['portugues', 'matematica', 'ingles'].includes(m.id));
     
     // Separação Elite por Nível
     const eliteSuperior: { nome: string, materias: MateriaConteudo[] }[] = [];
@@ -37,7 +38,7 @@ export default function AulasPage() {
             if (user?.cargo === prof.id || user?.cargo === prof.nome) return;
 
             const materiasDessaProf = getProgramaDeEstudos(prof.id, false)
-                .filter(m => !['portugues', 'matematica'].includes(m.id));
+                .filter(m => !['portugues', 'matematica', 'ingles'].includes(m.id));
 
             if (materiasDessaProf.length > 0) {
                 const item = {
@@ -52,33 +53,50 @@ export default function AulasPage() {
             }
         });
         
-        // Se o usuário for Nível Técnico, Inglês não aparece na minhaGrade.
-        // Vamos garantir que ele apareça em uma seção "Bases Superior / Premium" se for Elite.
+        // Seção Base (Matérias transversais para o Catálogo Elite)
+        const allMaterias = getProgramaDeEstudos(undefined, true);
+        const ingles = allMaterias.find(m => m.id === 'ingles');
+        const fisica = allMaterias.find(m => m.id === 'fisica');
+        const quimica = allMaterias.find(m => m.id === 'quimica');
+        const portugues = allMaterias.find(m => m.id === 'portugues');
+        const matematica = allMaterias.find(m => m.id === 'matematica');
+
         const profUsuario = PROFISSOES.find(p => p.id === user?.cargo || p.id === CARGO_ID_MAP[user?.cargo || '']);
         const isTecnico = profUsuario?.nivel === 'tecnico';
         
         if (isTecnico) {
-            const allMaterias = getProgramaDeEstudos(undefined, true);
-            const ingles = allMaterias.find(m => m.id === 'ingles');
-            const fisica = allMaterias.find(m => m.id === 'fisica');
-            const quimica = allMaterias.find(m => m.id === 'quimica');
+            // Técnico vê as Bases do Superior
+            const materiasPremiumSuperior = [];
+            if (portugues) materiasPremiumSuperior.push(portugues);
+            if (matematica) materiasPremiumSuperior.push(matematica);
+            if (ingles) materiasPremiumSuperior.push(ingles);
+            if (fisica) materiasPremiumSuperior.push(fisica);
+            if (quimica) materiasPremiumSuperior.push(quimica);
 
-            const materiasPremium = [];
-            if (ingles) materiasPremium.push(ingles);
-            if (fisica) materiasPremium.push(fisica);
-            if (quimica) materiasPremium.push(quimica);
-
-            if (materiasPremium.length > 0) {
-                // Adicionar Premium subjects como uma "Seção Base Nível Superior"
+            if (materiasPremiumSuperior.length > 0) {
                 eliteSuperior.unshift({
                     nome: 'Bases Nível Superior (Catálogo Elite)',
-                    materias: materiasPremium
+                    materias: materiasPremiumSuperior
+                });
+            }
+        } else {
+            // Superior vê as Bases do Técnico
+            const materiasPremiumTecnico = [];
+            if (portugues) materiasPremiumTecnico.push(portugues);
+            if (matematica) materiasPremiumTecnico.push(matematica);
+            if (fisica) materiasPremiumTecnico.push(fisica);
+            if (quimica) materiasPremiumTecnico.push(quimica);
+
+            if (materiasPremiumTecnico.length > 0) {
+                eliteTecnico.unshift({
+                    nome: 'Bases Nível Técnico (Catálogo Elite)',
+                    materias: materiasPremiumTecnico
                 });
             }
         }
     }
 
-    const cargoNome = user?.cargo ? minhaGrade.filter(m => !['portugues', 'matematica', 'ingles'].includes(m.id))[0]?.descricao.split('para ')[1] || user.cargo : '';
+    const cargoNome = user?.cargo ? programaBase.filter(m => !['portugues', 'matematica', 'ingles'].includes(m.id))[0]?.descricao.split('para ')[1] || user.cargo : '';
 
     const loading = userLoading || progressLoading;
 
@@ -94,27 +112,33 @@ export default function AulasPage() {
         <Link
             href={`/aulas/${materia.id}`}
             key={materia.id}
-            className={`group relative flex flex-col bg-slate-50/50 dark:bg-card/40 backdrop-blur-xl rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-500 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/20 overflow-hidden ${size === 'small' ? 'h-full' : ''}`}
+            className={`group relative flex flex-col h-full bg-slate-50/50 dark:bg-card/40 backdrop-blur-xl rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-500 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/20 overflow-hidden`}
         >
             <AnimatedBorder borderRadius="rounded-3xl" />
 
             {/* Header Section */}
             <div className={`${size === 'small' ? 'p-6 pb-2' : 'p-8 pb-6'}`}>
-                <div className="flex items-start justify-between mb-6">
-                    <div className={`flex items-center justify-center ${size === 'small' ? 'w-12 h-12 text-2xl' : 'w-20 h-20 text-4xl'} rounded-xl bg-gradient-to-br ${materia.cor} shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500`}>
-                        {materia.icone}
+                <div className="flex items-start gap-6 mb-4">
+                    {/* Coluna Esquerda: Ícone + Badge */}
+                    <div className="flex flex-col items-center gap-3 flex-shrink-0">
+                        <div className={`flex items-center justify-center ${size === 'small' ? 'w-14 h-14 text-2xl' : 'w-24 h-24 text-5xl'} rounded-2xl bg-gradient-to-br ${materia.cor} shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500`}>
+                            {materia.icone}
+                        </div>
+                        <span className="px-2.5 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-[10px] font-black border border-orange-200 dark:border-orange-800/50 whitespace-nowrap">
+                            {materia.topicos.length} TÓPICOS
+                        </span>
                     </div>
-                    <span className={`px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-black border border-orange-200 dark:border-orange-800/50 whitespace-nowrap ${size === 'small' ? '' : ''}`}>
-                        {materia.topicos.length} Tópicos
-                    </span>
-                </div>
 
-                <h2 className={`${size === 'small' ? 'text-xl' : 'text-2xl'} font-black text-orange-600 dark:text-orange-400 tracking-tight group-hover:text-orange-500 transition-colors uppercase leading-tight mb-2`}>
-                    {materia.nome}
-                </h2>
-                <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">
-                    {materia.descricao}
-                </p>
+                    {/* Coluna Direita: Título + Descrição */}
+                    <div className="flex-1 pt-1">
+                        <h2 className={`${size === 'small' ? 'text-2xl' : 'text-3xl'} font-black text-orange-600 dark:text-orange-400 tracking-tight group-hover:text-orange-500 transition-colors uppercase leading-none mb-3`}>
+                            {materia.nome}
+                        </h2>
+                        <p className="text-slate-500 dark:text-slate-400 text-sm font-semibold leading-tight line-clamp-3">
+                            {materia.descricao}
+                        </p>
+                    </div>
+                </div>
             </div>
 
             {/* List of Topics (Preview) - Only for normal size */}
@@ -184,19 +208,37 @@ export default function AulasPage() {
             </div>
 
             <div className="space-y-20">
-                {/* 1. SUA GRADE PRINCIPAL (Unificada) */}
-                <section>
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
-                        <h2 className="text-sm font-black text-primary uppercase tracking-[0.3em] flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" /> Sua Grade de Estudos
-                        </h2>
-                        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {minhaGrade.map((m: MateriaConteudo) => renderMateriaCard(m))}
-                    </div>
-                </section>
+                {/* 1. SEÇÃO DE BASES DO USUÁRIO */}
+                {gradeBase.length > 0 && (
+                    <section>
+                        <div className="flex items-center gap-4 mb-8">
+                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
+                            <h2 className="text-sm font-black text-primary uppercase tracking-[0.3em] flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" /> Conhecimentos Básicos
+                            </h2>
+                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {gradeBase.map((m: MateriaConteudo) => renderMateriaCard(m))}
+                        </div>
+                    </section>
+                )}
+
+                {/* 2. SEÇÃO DE ESPECÍFICAS DO USUÁRIO */}
+                {gradeEspecifica.length > 0 && (
+                    <section>
+                         <div className="flex items-center gap-4 mb-8">
+                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
+                            <h2 className="text-sm font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em] flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" /> Conhecimentos Específicos
+                            </h2>
+                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {gradeEspecifica.map((m: MateriaConteudo) => renderMateriaCard(m))}
+                        </div>
+                    </section>
+                )}
 
                 {/* 2. CONTEÚDO ELITE - NÍVEL SUPERIOR */}
                 {isElite && eliteSuperior.length > 0 && (
@@ -228,11 +270,11 @@ export default function AulasPage() {
                                     </div>
                                 ) : (
                                     // Se mais de 3, mostra em carrossel
-                                    <Carousel opts={{ align: 'start', loop: false, dragFree: true }} className="w-full relative">
+                                    <Carousel opts={{ align: 'start', loop: true, dragFree: true }} className="w-full relative">
                                         <CarouselContent className="-ml-4">
                                             {prof.materias.map((m: MateriaConteudo) => (
-                                                <CarouselItem key={m.id} className="pl-4 basis-[calc(100%/3-16px)]">
-                                                    <div className="h-full">
+                                                <CarouselItem key={m.id} className="pl-4 basis-[calc(100%/3-16px)] flex">
+                                                    <div className="h-full w-full">
                                                         {renderMateriaCard(m, 'normal')}
                                                     </div>
                                                 </CarouselItem>
@@ -277,11 +319,11 @@ export default function AulasPage() {
                                     </div>
                                 ) : (
                                     // Se mais de 3, mostra em carrossel
-                                    <Carousel opts={{ align: 'start', loop: false, dragFree: true }} className="w-full relative">
+                                    <Carousel opts={{ align: 'start', loop: true, dragFree: true }} className="w-full relative">
                                         <CarouselContent className="-ml-4">
                                             {prof.materias.map((m: MateriaConteudo) => (
-                                                <CarouselItem key={m.id} className="pl-4 basis-[calc(100%/3-16px)]">
-                                                    <div className="h-full">
+                                                <CarouselItem key={m.id} className="pl-4 basis-[calc(100%/3-16px)] flex">
+                                                    <div className="h-full w-full">
                                                         {renderMateriaCard(m, 'normal')}
                                                     </div>
                                                 </CarouselItem>

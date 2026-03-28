@@ -1,3 +1,4 @@
+import { getAllModuleVariants } from "@/lib/moduleColors";
 // Last modified: 2026-03-13 - Upgraded with ModuleConsolidation (4-tab system) and C.E.D.E. pedagogy
 "use client";
 
@@ -52,6 +53,8 @@ const MODULE_DEFS = [
   { id: "modulo-9", label: "Módulo 9", title: "Engenharia de Riscos" },
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
+
+const mv = [undefined, ...getAllModuleVariants()];
 
 export default function AulaProbabilidade({
   onComplete,
@@ -138,10 +141,7 @@ export default function AulaProbabilidade({
     }
   };
 
-  const isModuleUnlocked = (index: number) => {
-    if (isCompleted || index === 0) return true;
-    return completedModules.has(MODULE_DEFS[index - 1].id);
-  };
+  const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
 
   return (
     <AulaTemplate
@@ -173,12 +173,10 @@ export default function AulaProbabilidade({
       {/* ═══ MÓDULO 1: FUNDAMENTOS ═══ */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={1}
+          <ModuleBanner numero={1}
             titulo="Fundamentos da Probabilidade"
             descricao="O alicerce: experimentos aleatórios, espaço amostral e eventos."
-            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
-          />
+             variant={mv[1]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -278,7 +276,7 @@ export default function AulaProbabilidade({
 
 
 <ModuleConsolidation
-            index={1}
+            index={2}
             variant="blue"
             video={{
               videoId: "gZDzgZxrvAo",
@@ -332,7 +330,7 @@ export default function AulaProbabilidade({
                       <QuizInterativo
               questoes={quizM1}
               titulo="QUIZ: Módulo Nº 1"
-              numero={2}
+              numero={3}
               variant="blue"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -344,16 +342,14 @@ export default function AulaProbabilidade({
       {/* ═══ MÓDULO 2: LEI DE LAPLACE ═══ */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={2}
+          <ModuleBanner numero={2}
             titulo="Lei de Laplace"
             descricao="P(E) = (casos favoráveis) / (casos totais). A fórmula mágica!"
-            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
-          />
+             variant={mv[2]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={2}
+              index={1}
               title="A Fórmula da Probabilidade"
               description="Quando todos os eventos são igualmente prováveis."
               variant="emerald"
@@ -504,7 +500,7 @@ export default function AulaProbabilidade({
                       <QuizInterativo
               questoes={quizM2}
               titulo="Fixação - Lei de Laplace"
-              numero={2}
+              numero={3}
               variant="emerald"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
@@ -516,16 +512,14 @@ export default function AulaProbabilidade({
       {/* ═══ MÓDULO 3: UNIÃO E INTERSEÇÃO ═══ */}
       <TabsContent value="modulo-3" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={3}
+          <ModuleBanner numero={3}
             titulo="União e Interseção de Eventos"
             descricao="Quando combinar probabilidades: regra da adição."
-            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
-          />
+             variant={mv[3]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={3}
+              index={1}
               title="Operações Entre Eventos"
               description="OU = União (+), E = Interseção (×)."
               variant="amber"
@@ -623,7 +617,7 @@ export default function AulaProbabilidade({
 
 
 <ModuleConsolidation
-            index={3}
+            index={2}
             variant="amber"
             video={{
               videoId: "4KzE9R6zWzY",
@@ -679,7 +673,7 @@ export default function AulaProbabilidade({
                       <QuizInterativo
               questoes={quizM3}
               titulo="QUIZ: Módulo Nº 3"
-              numero={4}
+              numero={3}
               variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -694,16 +688,14 @@ export default function AulaProbabilidade({
       {/* MÓDULO 4: CONDICIONAL */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={4}
+          <ModuleBanner numero={4}
             titulo="Probabilidade Condicional"
             descricao="P(A|B) = Quando um evento depende de outro ter ocorrido."
-            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
-          />
+             variant={mv[4]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={4}
+              index={1}
               title="Eventos Dependentes"
               description="A probabilidade muda quando há informação prévia."
               variant="cyan"
@@ -794,7 +786,7 @@ export default function AulaProbabilidade({
 
 
 <ModuleConsolidation
-            index={4}
+            index={2}
             variant="cyan"
             video={{
               videoId: "7Pg5MZV2XqU",
@@ -850,7 +842,7 @@ export default function AulaProbabilidade({
                       <QuizInterativo
               questoes={quizM4}
               titulo="Fixação - Condicional"
-              numero={4}
+              numero={3}
               variant="cyan"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
@@ -862,16 +854,14 @@ export default function AulaProbabilidade({
       {/* ═══ MÓDULO 5: BINOMIAL ═══ */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={5}
+          <ModuleBanner numero={5}
             titulo="Distribuição Binomial"
             descricao="Repetir n tentativas de 2 resultados (sucesso/fracasso)."
-            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
-          />
+             variant={mv[5]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={5}
+              index={1}
               title="Experimentos Repetidos"
               description="Exatamente k sucessos em n tentativas."
               variant="violet"
@@ -958,7 +948,7 @@ export default function AulaProbabilidade({
 
 
 <ModuleConsolidation
-            index={5}
+            index={2}
             variant="violet"
             video={{
               videoId: "tZzgzUaHdCw",
@@ -1014,7 +1004,7 @@ export default function AulaProbabilidade({
                       <QuizInterativo
               questoes={quizM5}
               titulo="QUIZ: Módulo Nº 5"
-              numero={6}
+              numero={3}
               variant="violet"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -1026,16 +1016,14 @@ export default function AulaProbabilidade({
       {/* ═══ MÓDULO 6: COMPLEMENTAR ═══ */}
       <TabsContent value="modulo-6" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={6}
+          <ModuleBanner numero={6}
             titulo="Evento Complementar"
             descricao="P(Eᶜ) = 1 - P(E). O atalho mais lindo!"
-            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
-          />
+             variant={mv[6]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={6}
+              index={1}
               title="Negação de Eventos"
               description="Às vezes é mais fácil calcular o oposto."
               variant="cyan"
@@ -1126,7 +1114,7 @@ export default function AulaProbabilidade({
 
 
 <ModuleConsolidation
-            index={6}
+            index={2}
             variant="cyan"
             video={{
               videoId: "9KZg0LdwAg4",
@@ -1182,7 +1170,7 @@ export default function AulaProbabilidade({
                       <QuizInterativo
               questoes={quizM6}
               titulo="Fixação - Complementar"
-              numero={6}
+              numero={3}
               variant="cyan"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
@@ -1194,16 +1182,14 @@ export default function AulaProbabilidade({
       {/* MÓDULO 7: GEOMÉTRICA */}
       <TabsContent value="modulo-7" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={7}
+          <ModuleBanner numero={7}
             titulo="Probabilidade Geométrica"
             descricao="Razão de áreas/comprimentos para eventos contínuos."
-            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
-          />
+             variant={mv[7]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={7}
+              index={1}
               title="Eventos Contínuos"
               description="Quando o espaço amostral é infinito."
               variant="indigo"
@@ -1299,7 +1285,7 @@ export default function AulaProbabilidade({
 
 
 <ModuleConsolidation
-            index={7}
+            index={2}
             variant="indigo"
             video={{
               videoId: "5Rw9KzK3jqA",
@@ -1355,7 +1341,7 @@ export default function AulaProbabilidade({
                       <QuizInterativo
               questoes={quizM7}
               titulo="QUIZ: Módulo Nº 7"
-              numero={8}
+              numero={3}
               variant="indigo"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
@@ -1367,16 +1353,14 @@ export default function AulaProbabilidade({
       {/* MÓDULO 8: INDEPENDÊNCIA */}
       <TabsContent value="modulo-8" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={8}
+          <ModuleBanner numero={8}
             titulo="Independência de Eventos"
             descricao="Quando P(A ∩ B) = P(A) × P(B). Nenhuma interferência!"
-            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
-          />
+             variant={mv[8]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={8}
+              index={1}
               title="Eventos Sem Correlação"
               description="Multiplicação simples: P(A e B) = P(A) × P(B)."
               variant="rose"
@@ -1472,7 +1456,7 @@ export default function AulaProbabilidade({
 
 
 <ModuleConsolidation
-            index={8}
+            index={2}
             variant="rose"
             video={{
               videoId: "2xQr4vZ5M1I",
@@ -1528,7 +1512,7 @@ export default function AulaProbabilidade({
                       <QuizInterativo
               questoes={quizM8}
               titulo="Fixação - Independência"
-              numero={8}
+              numero={3}
               variant="rose"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
@@ -1540,16 +1524,14 @@ export default function AulaProbabilidade({
       {/* MÓDULO 9: PETROBRAS */}
       <TabsContent value="modulo-9" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={9}
+          <ModuleBanner numero={9}
             titulo="Engenharia de Riscos (Petrobras)"
             descricao="Confiabilidade, falhas e estratégias de redundância."
-            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
-          />
+             variant={mv[9]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={9}
+              index={1}
               title="Probabilidade na Indústria"
               description="Análise de risco e confiabilidade de sistemas."
               variant="amber"
@@ -1642,7 +1624,7 @@ export default function AulaProbabilidade({
 
 
 <ModuleConsolidation
-            index={9}
+            index={2}
             variant="amber"
             video={{
               videoId: "4KzE9R6zWzY",
@@ -1698,7 +1680,7 @@ export default function AulaProbabilidade({
                       <QuizInterativo
               questoes={quizM9}
               titulo="QUIZ: Módulo Nº 9"
-              numero={10}
+              numero={3}
               variant="amber"
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
@@ -1710,12 +1692,10 @@ export default function AulaProbabilidade({
       {/* MÓDULO 10: SIMULADO */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={10}
+          <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="Teste final: integre todos os conceitos de probabilidade."
-            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
-          />
+             variant={mv[10]}/>
 
           {showCompletionBadge ? (
             <div className="flex flex-col items-center gap-6 py-10 mt-10">
@@ -1734,7 +1714,7 @@ export default function AulaProbabilidade({
                 questoes={quizM10}
                 titulo="Simulado Elite - Probabilidade"
                 icone="🏆"
-                numero={10}
+                numero={1}
                 variant="slate"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
