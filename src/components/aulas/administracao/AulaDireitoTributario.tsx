@@ -61,14 +61,19 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
   const renderModulo1 = () => (
     <div className="space-y-6">
-      <ModuleBanner module={1} title="Fundamentos de Direito Tributário" />
+      <ModuleBanner
+        numero={1}
+        titulo="Fundamentos e Competência Tributária"
+        descricao="A base do Sistema Tributário Nacional e o poder de tributar dos entes federativos."
+        variant="indigo"
+      />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
           index={1}
-          title="Fundamentos de Direito Tributário"
-          description="Entenda o porquê dos tributos e como a lei regula a relação entre fisco e contribuinte."
-          variant="rose"
+          title="O Sistema Tributário Nacional"
+          description="Entenda como a Constituição Federal organiza o poder de tributar no Brasil."
+          variant="indigo"
         />
 
         <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
@@ -94,7 +99,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
               <li>✓ Tributo é receita pública derivada (compulsória, por lei, não retributiva)</li>
               <li>✓ CTN é a lei geral, fonte de todos os princípios tributários</li>
               <li>✓ Princípios constitucionais são intocáveis (legalidade, igualdade, capacidade)</li>
-              <li>✓ Fato gerador é o evento que gera a obrigação de pagar</li>
+              <li>✓ Fato gerador é the evento que gera a obrigação de pagar</li>
               <li>✓ Contribuinte é quem sofre o fato gerador; fisco é quem cobra</li>
             </ul>
           </div>
@@ -102,53 +107,83 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
       </section>
 
       <ModuleConsolidation
-        cards={[
-          { title: "Definição", content: "Direito que estuda relação entre fisco e contribuinte", variant: getModuleVariant(1) },
-          { title: "Fontes", content: "Lei, decretos, resoluções, jurisprudência, costumes", variant: getModuleVariant(1) },
-          { title: "Princípios", content: "Legalidade, irretroatividade, segurança jurídica", variant: getModuleVariant(1) },
-          { title: "Código Tributário Nacional", content: "Lei 5.172/66 - marco regulatório brasileiro", variant: getModuleVariant(1) },
-        ]}
+        index={1}
+        variant="indigo"
+        video={{
+          videoId: "tributario-m1",
+          title: "Competência Tributária",
+          duration: "12:30"
+        }}
+        resumoVisual={{
+          moduloNome: "Módulo 1",
+          tituloAula: "Direito Tributário",
+          materia: "Administração",
+          images: [
+            { title: "Hierarquia Legal", type: "Diagrama", placeholderColor: "bg-indigo-500/20" },
+            { title: "Entes Federativos", type: "Mapa Mental", placeholderColor: "bg-indigo-500/20" },
+          ],
+        }}
+        maceteVisual={{
+          title: "O Pulo do Gato",
+          content: <p className="text-sm italic">{"Competência é indelegável. O que é meu, é meu e ninguém tasca (só posso delegar a capacidade de arrecadar)."}</p>
+        }}
+        audio={{
+          audioUrl: "#",
+          titulo: "Podcast: Fundamentos Tributários",
+          artista: "Prof. Direito"
+        }}
       />
       <ContentAccordion
-        sections={[
+        titulo="📖 Explicação Detalhada"
+        icone="⚖️"
+        slides={[
           {
-            title: "O que é Direito Tributário?",
-            content: "Ramo do direito que estuda a relação jurídica entre o fisco (Estado) e o contribuinte sobre arrecadação de tributos. Aborda obrigações de pagar impostos, direitos do contribuinte, procedimentos de cobrança, e garantias legais."
+            title: "O que é Tributo?",
+            content: "Segundo o CTN (Art. 3º), tributo é toda prestação pecuniária compulsória, em moeda ou cujo valor nela se possa exprimir, que não constitua sanção de ato ilícito, instituída em lei e cobrada mediante atividade administrativa plenamente vinculada."
           },
           {
-            title: "Princípios Constitucionais Tributários",
-            content: "Legalidade: imposto só pode ser cobrado por lei (não por decreto). Irretroatividade: não cobra imposto com efeito retroativo. Igualdade: mesmas condições para contribuintes em situação similar. Capacidade Contributiva: imposto considerando renda/patrimônio. Segurança Jurídica: regras claras e previsíveis."
+            title: "Competência vs Capacidade",
+            content: "A competência tributária (poder de legislar) é indelegável. Já a capacidade tributária ativa (poder de cobrar e arrecadar) pode ser delegada de um ente para outro (ex: da União para o ITR)."
           },
           {
-            title: "Código Tributário Nacional (CTN)",
-            content: "Lei 5.172/66 é a lei geral tributária brasileira. Define conceitos de tributo, impostos, taxas, contribuições. Estabelece obrigações principais (pagar imposto) e acessórias (informar dados ao fisco). Base para interpretação de todas leis tributárias posteriores."
-          },
-          {
-            title: "Tributo: Conceito Jurídico",
-            content: "Segundo CTN: prestação pecuniária compulsória (obrigatória), instituída por lei, cobrada pela administração tributária. Características: legalidade, obrigatoriedade, natureza arrecadatória, interesse público."
+            title: "Espécies Tributárias",
+            content: "A doutrina majoritária e o STF adotam a teoria pentapartida: Impostos, Taxas, Contribuições de Melhoria, Empréstimos Compulsórios e Contribuições Especiais."
           }
         ]}
       />
       <div>
-        <h3 className="text-lg font-semibold mb-4">Exemplos de Aplicação</h3>
+        <h3 className="text-lg font-semibold mb-4 text-foreground flex items-center gap-2">
+          <span>🎯</span> Exemplos e Casos Práticos
+        </h3>
         <CardCarousel
           cards={[
             {
-              emoji: "⚖️",
-              title: "Legalidade em Ação",
-              description: "Governo tenta cobrar novo imposto por decreto. Contribuinte recorre: inconstitucional (viola princípio da legalidade). Tribunal cancela cobrança."
+              title: "IPVA Petrobras",
+              descricao: "A frota de veículos da Petrobras paga IPVA para os Estados onde estão licenciados, exemplificando a competência estadual.",
+              corFundo: "bg-indigo-100 dark:bg-indigo-900/30"
             },
             {
-              emoji: "📋",
-              title: "Obrigação Acessória",
-              description: "Petrobras é obrigada a manter registros de operações, fornecer relatórios ao fisco mensalmente (obrigação acessória = informar)."
+              title: "Taxas de Fiscalização",
+              descricao: "A ANP cobra taxas de fiscalização para monitorar as atividades de exploração e produção de petróleo.",
+              corFundo: "bg-indigo-100 dark:bg-indigo-900/30"
             },
             {
-              emoji: "💰",
-              title: "Capacidade Contributiva",
-              description: "Empresa com lucro R$ 1 milhão paga mais imposto que empresa com lucro R$ 100 mil. Proporcional à capacidade de pagar."
+              title: "Contribuições Sociais",
+              descricao: "A Petrobras, como empregadora, é um dos maiores contribuintes da Seguridade Social no Brasil.",
+              corFundo: "bg-indigo-100 dark:bg-indigo-900/30"
             }
           ]}
+        />
+      </div>
+      <QuizInterativo
+        titulo="Fundamentos Tributários"
+        numero={1}
+        variant="indigo"
+        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-1"].questions}
+        onComplete={(score: number) => handleQuizComplete("modulo-1", score)}
+      />
+    </div>
+  );]}
         />
       </div>
       <QuizInterativo

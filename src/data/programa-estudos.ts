@@ -37,6 +37,8 @@ export function getProgramaDeEstudos(cargoId?: string, isElite?: boolean): Mater
     const programa: MateriaConteudo[] = [
         CONTEUDO_MATERIAS.find(m => m.id === 'portugues')!,
         CONTEUDO_MATERIAS.find(m => m.id === 'matematica')!,
+        CONTEUDO_MATERIAS.find(m => m.id === 'fisica')!,
+        CONTEUDO_MATERIAS.find(m => m.id === 'quimica')!,
     ];
 
     // Se não tiver cargo selecionado, retorna o básico padrão
