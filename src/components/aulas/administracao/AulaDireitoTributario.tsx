@@ -834,7 +834,23 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           },
           {
             title: "Navios-Sonda",
-            descricao: "Equipamentos importados sob regime d  const renderModulo9 = () => (
+            descricao: "Equipamentos importados sob regime de suspensão tributária (REPETRO).",
+            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+          }
+        ]}
+      />
+
+      <QuizInterativo
+        titulo="Operações Petrobras"
+        numero={8}
+        variant="blue"
+        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-8"].questions}
+        onComplete={(score: number) => handleQuizComplete("modulo-8", score)}
+      />
+    </div>
+  );
+
+  const renderModulo9 = () => (
     <div className="space-y-6">
       <ModuleBanner
         numero={9}
@@ -967,31 +983,6 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           titulo: "Resumo Módulo 10",
           artista: "Especialista Tributário"
         }}
-      />
-
-      <QuizInterativo
-        titulo="Simulado Mestre"
-        numero={10}
-        variant="rose"
-        questoes={DIREITO_TRIBUTARIO_QUIZZES["modulo-10"].questions}
-        onComplete={(score: number) => handleQuizComplete("modulo-10", score)}
-      />
-    </div>
-  );
-            descricao: "Elimine distrações. Este simulado reflete o nível das provas da CESGRANRIO.",
-            corFundo: "bg-emerald-100 dark:bg-emerald-900/30"
-          },
-          {
-            title: "Tempo",
-            descricao: "Tente resolver cada questão em no máximo 3 minutos para treinar o ritmo.",
-            corFundo: "bg-violet-100 dark:bg-violet-900/30"
-          },
-          {
-            title: "Revisão",
-            descricao: "Ao final, revise as questões que errou para entender a lógica das pegadinhas.",
-            corFundo: "bg-amber-100 dark:bg-amber-900/30"
-          }
-        ]}
       />
 
       <QuizInterativo

@@ -209,30 +209,35 @@ export default function AulasPage() {
                             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
                         </div>
 
-                        <Carousel opts={{ align: 'start', loop: false, dragFree: true }} className="w-full">
-                            <CarouselContent className="-ml-4 md:-ml-20">
-                                {eliteSuperior.map((prof, pIdx) => (
-                                    <CarouselItem key={`superior-${pIdx}`} className="pl-4 md:pl-20 basis-full md:basis-[calc(100%-40px)]">
-                                        <div className="space-y-6">
-                                            <div className="flex items-center gap-3">
-                                                <h3 className="text-xl md:text-2xl font-black text-foreground uppercase tracking-tight opacity-70">
-                                                    {prof.nome}
-                                                </h3>
-                                            </div>
-                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                                {prof.materias.map((m: MateriaConteudo) => renderMateriaCard(m, 'normal'))}
-                                            </div>
-                                        </div>
-                                    </CarouselItem>
-                                ))}
-                            </CarouselContent>
-                            {eliteSuperior.length > 1 && (
-                                <>
-                                    <CarouselPrevious className="absolute -left-20 top-12" />
-                                    <CarouselNext className="absolute -right-20 top-12" />
-                                </>
-                            )}
-                        </Carousel>
+                        {eliteSuperior.map((prof, pIdx) => (
+                            <div key={`superior-${pIdx}`} className="space-y-6">
+                                <div className="flex items-center gap-3">
+                                    <h3 className="text-xl md:text-2xl font-black text-foreground uppercase tracking-tight opacity-70">
+                                        {prof.nome}
+                                    </h3>
+                                </div>
+
+                                {prof.materias.length <= 3 ? (
+                                    // Se 3 ou menos, mostra grid simples
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                        {prof.materias.map((m: MateriaConteudo) => renderMateriaCard(m, 'normal'))}
+                                    </div>
+                                ) : (
+                                    // Se mais de 3, mostra em carrossel
+                                    <Carousel opts={{ align: 'start', loop: false, dragFree: true }} className="w-full relative">
+                                        <CarouselContent className="-ml-4">
+                                            {prof.materias.map((m: MateriaConteudo) => (
+                                                <CarouselItem key={m.id} className="pl-4 basis-[calc(100%/3-16px)]">
+                                                    {renderMateriaCard(m, 'normal')}
+                                                </CarouselItem>
+                                            ))}
+                                        </CarouselContent>
+                                        <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2" />
+                                        <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2" />
+                                    </Carousel>
+                                )}
+                            </div>
+                        ))}
                     </section>
                 )}
 
@@ -247,30 +252,35 @@ export default function AulasPage() {
                             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
                         </div>
 
-                        <Carousel opts={{ align: 'start', loop: false, dragFree: true }} className="w-full">
-                            <CarouselContent className="-ml-4 md:-ml-20">
-                                {eliteTecnico.map((prof, pIdx) => (
-                                    <CarouselItem key={`tecnico-${pIdx}`} className="pl-4 md:pl-20 basis-full md:basis-[calc(100%-40px)]">
-                                        <div className="space-y-6">
-                                            <div className="flex items-center gap-3">
-                                                <h3 className="text-xl md:text-2xl font-black text-foreground uppercase tracking-tight opacity-70">
-                                                    {prof.nome}
-                                                </h3>
-                                            </div>
-                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                                {prof.materias.map((m: MateriaConteudo) => renderMateriaCard(m, 'normal'))}
-                                            </div>
-                                        </div>
-                                    </CarouselItem>
-                                ))}
-                            </CarouselContent>
-                            {eliteTecnico.length > 1 && (
-                                <>
-                                    <CarouselPrevious className="absolute -left-20 top-12" />
-                                    <CarouselNext className="absolute -right-20 top-12" />
-                                </>
-                            )}
-                        </Carousel>
+                        {eliteTecnico.map((prof, pIdx) => (
+                            <div key={`tecnico-${pIdx}`} className="space-y-6">
+                                <div className="flex items-center gap-3">
+                                    <h3 className="text-xl md:text-2xl font-black text-foreground uppercase tracking-tight opacity-70">
+                                        {prof.nome}
+                                    </h3>
+                                </div>
+
+                                {prof.materias.length <= 3 ? (
+                                    // Se 3 ou menos, mostra grid simples
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                        {prof.materias.map((m: MateriaConteudo) => renderMateriaCard(m, 'normal'))}
+                                    </div>
+                                ) : (
+                                    // Se mais de 3, mostra em carrossel
+                                    <Carousel opts={{ align: 'start', loop: false, dragFree: true }} className="w-full relative">
+                                        <CarouselContent className="-ml-4">
+                                            {prof.materias.map((m: MateriaConteudo) => (
+                                                <CarouselItem key={m.id} className="pl-4 basis-[calc(100%/3-16px)]">
+                                                    {renderMateriaCard(m, 'normal')}
+                                                </CarouselItem>
+                                            ))}
+                                        </CarouselContent>
+                                        <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2" />
+                                        <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2" />
+                                    </Carousel>
+                                )}
+                            </div>
+                        ))}
                     </section>
                 )}
             </div>
