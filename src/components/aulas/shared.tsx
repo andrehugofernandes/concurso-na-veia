@@ -2846,7 +2846,7 @@ export function StickyModuleNav({
                       >
                         {mod.label}
                       </span>
-                      <span className="font-bold text-[10px] md:text-[13px] leading-tight text-left flex items-start gap-1.5">
+                      <span className="font-bold text-[10px] md:text-xs leading-tight text-left flex items-start gap-1.5 max-w-[120px] line-clamp-2">
                         <span className="line-clamp-2">{mod.titulo || mod.title}</span>
                         {completedModules.has(mod.id) && (
                           <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20 shrink-0 mt-0.5">

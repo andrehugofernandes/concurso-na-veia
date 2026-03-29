@@ -31,11 +31,11 @@ export default function AuthErrorPage() {
                         </div>
                     </CardContent>
                     <CardFooter>
-                        <Button asChild className="w-full">
-                            <Link href="/login">
+                        <Link href="/login" className="w-full">
+                            <Button className="w-full">
                                 Voltar para Login
-                            </Link>
-                        </Button>
+                            </Button>
+                        </Link>
                     </CardFooter>
                 </Card>
             </div>

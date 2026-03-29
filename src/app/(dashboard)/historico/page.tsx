@@ -18,10 +18,10 @@ export default function HistoricoPage() {
       try {
         const result = await getCurrentUserAction();
         if (result.status === "error") {
-          console.error("Error loading user:", result.message);
+          console.error("Error loading user:", result);
           router.push("/login"); // Redirect on error
         } else {
-          setUser(result.user);
+          setUser(result.data);
         }
       } catch (error) {
         console.error("Error loading user:", error);

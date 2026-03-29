@@ -26,6 +26,7 @@ import {
   LuCircleCheck,
   LuBuilding,
   LuCrown,
+  LuTriangleAlert,
 } from "react-icons/lu";
 
 const MODULE_DEFS = [
@@ -691,10 +692,10 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader index={2} title="C.E.D.E. — IRPJ e CSLL" variant={mv[5]} />
           <ContentAccordion slides={[
-            { titulo: "Conceituacao", icone: <LuBriefcase />, defaultOpen: true, conteudo: (<div className="space-y-2 text-lg"><p><strong>IRPJ:</strong> 15% + 10% adicional (lucro acima R$240k/ano). Federal. <strong>CSLL:</strong> 9% sobre lucro. Lucro Real obrigatorio acima R$78M.</p></div>) },
+            { titulo: "Conceituacao", icone: <LuBriefcase />, conteudo: (<div className="space-y-2 text-lg"><p><strong>IRPJ:</strong> 15% + 10% adicional (lucro acima R$240k/ano). Federal. <strong>CSLL:</strong> 9% sobre lucro. Lucro Real obrigatorio acima R$78M.</p></div>) },
             { titulo: "Exemplificacao", icone: <LuCalculator />, conteudo: (<div className="space-y-2 text-lg"><p><strong>Lucro Presumido comercio:</strong> Receita R$10M x 8% = R$800k. IRPJ = R$800k x 15% = R$120k.</p><p><strong>Petrobras Lucro Real:</strong> Lucro R$101bi x 34% = R$34,34bi de IRPJ+CSLL.</p></div>) },
             { titulo: "Dicas", icone: <LuTrendingUp />, conteudo: (<div className="space-y-2 text-lg"><p>Petrobras = Lucro Real obrigatorio. IRPJ: anterioridade anual, NAO nonagesimal. Prejuizo: compensavel em ate 30% do lucro futuro.</p></div>) },
-            { titulo: "Excecoes", icone: <LuAlertTriangle />, conteudo: (<div className="space-y-2 text-lg"><p>Dividendos: isentos de IR para o acionista. JCP (Juros s/ Capital Proprio): tributado a 15% na fonte — diferenca importante.</p></div>) },
+            { titulo: "Excecoes", icone: <LuTriangleAlert />, conteudo: (<div className="space-y-2 text-lg"><p>Dividendos: isentos de IR para o acionista. JCP (Juros s/ Capital Proprio): tributado a 15% na fonte — diferenca importante.</p></div>) },
           ]} />
         </div>
         <ModuleConsolidation index={3} variant={mv[5]} video={{ videoId: "dQw4w9WgXcQ", title: "IRPJ e CSLL — Regimes", duration: "13:00" }} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "IRPJ e CSLL", materia: "Administracao", images: [{ title: "Regimes vs Faturamento", type: "Comparativo", placeholderColor: "bg-violet-500/20" }] }} maceteVisual={{ title: "34% sobre o lucro", content: (<div className="p-4 bg-violet-500/10 border border-violet-500/20 rounded-xl text-lg"><p className="font-bold text-violet-600 dark:text-violet-400">IRPJ 25% + CSLL 9% = 34% sobre o lucro</p><p className="text-lg text-foreground/70">Lucro Real obrigatorio acima R$78M (Petrobras)</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Audio IRPJ e CSLL", artista: "Resumo Petrobras" }} />
@@ -726,10 +727,10 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader index={2} title="C.E.D.E. — PIS e COFINS" variant={mv[6]} />
           <ContentAccordion slides={[
-            { titulo: "Conceituacao", icone: <LuShield />, defaultOpen: true, conteudo: (<div className="space-y-2 text-lg"><p>PIS + COFINS = sobre RECEITA (nao lucro). Cumulativo: 3,65% sem credito. Nao-cum: 9,25% com credito sobre compras.</p></div>) },
+            { titulo: "Conceituacao", icone: <LuShield />, conteudo: (<div className="space-y-2 text-lg"><p>PIS + COFINS = sobre RECEITA (nao lucro). Cumulativo: 3,65% sem credito. Nao-cum: 9,25% com credito sobre compras.</p></div>) },
             { titulo: "Exemplificacao", icone: <LuCalculator />, conteudo: (<div className="space-y-2 text-lg"><p>Petrobras nao-cum.: Receita R$100M, compras R$60M. COFINS debito: 7,6%xR$100M=R$7,6M. Credito: 7,6%xR$60M=R$4,56M. A recolher: R$3,04M.</p></div>) },
             { titulo: "Dicas", icone: <LuTrendingUp />, conteudo: (<div className="space-y-2 text-lg"><p>PIS/COFINS = RECEITA. CSLL/IRPJ = LUCRO. Exportacoes: imunes. Petrobras = nao-cumulativo obrigatorio (Lucro Real).</p></div>) },
-            { titulo: "Excecoes", icone: <LuAlertTriangle />, conteudo: (<div className="space-y-2 text-lg"><p>Combustiveis: regime monofasico — aliquota maior na refinaria; demais da cadeia com aliquota zero. COFINS-Importacao incide sobre importacoes do exterior.</p></div>) },
+            { titulo: "Excecoes", icone: <LuTriangleAlert />, conteudo: (<div className="space-y-2 text-lg"><p>Combustiveis: regime monofasico — aliquota maior na refinaria; demais da cadeia com aliquota zero. COFINS-Importacao incide sobre importacoes do exterior.</p></div>) },
           ]} />
         </div>
         <ModuleConsolidation index={3} variant={mv[6]} video={{ videoId: "dQw4w9WgXcQ", title: "PIS e COFINS — Regimes", duration: "11:30" }} resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "PIS e COFINS", materia: "Administracao", images: [{ title: "Aliquotas Comparadas", type: "Tabela", placeholderColor: "bg-amber-500/20" }] }} maceteVisual={{ title: "0,65/3 vs 1,65/7,6", content: (<div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-lg"><p className="font-bold text-amber-600 dark:text-amber-400">Cumulativo: PIS 0,65% + COFINS 3%</p><p className="font-bold text-amber-600 dark:text-amber-400">Nao-cum: PIS 1,65% + COFINS 7,6%</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "Audio PIS e COFINS", artista: "Resumo Petrobras" }} />
@@ -763,10 +764,10 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader index={2} title="C.E.D.E. — Administracao Tributaria" variant={mv[7]} />
           <ContentAccordion slides={[
-            { titulo: "Conceituacao", icone: <LuFileText />, defaultOpen: true, conteudo: (<div className="space-y-2 text-lg"><p>Principal: pagar tributo. Acessoria: escriturar, declarar. Lancamento: oficio / declaracao / homologacao.</p></div>) },
+            { titulo: "Conceituacao", icone: <LuFileText />, conteudo: (<div className="space-y-2 text-lg"><p>Principal: pagar tributo. Acessoria: escriturar, declarar. Lancamento: oficio / declaracao / homologacao.</p></div>) },
             { titulo: "Exemplificacao", icone: <LuBuilding />, conteudo: (<div className="space-y-2 text-lg"><p>Petrobras apura IRPJ mensalmente via DARF (homologacao). Fisco homologa em ate 5 anos. Auto de infracao SEFAZ: impugnacao 30 dias, DRJ, CARF.</p></div>) },
             { titulo: "Dicas", icone: <LuTrendingUp />, conteudo: (<div className="space-y-2 text-lg"><p>Decadencia = 5 anos para LANCAR. Prescricao = 5 anos para COBRAR apos lancamento. Acessoria nao cumprida = multa = obrigacao principal.</p></div>) },
-            { titulo: "Excecoes", icone: <LuAlertTriangle />, conteudo: (<div className="space-y-2 text-lg"><p>Sigilo fiscal (CTN art. 198): Receita Federal NAO divulga dados a terceiros. CARF e orgao administrativo — contribuinte pode recorrer ao Judiciario apos CARF.</p></div>) },
+            { titulo: "Excecoes", icone: <LuTriangleAlert />, conteudo: (<div className="space-y-2 text-lg"><p>Sigilo fiscal (CTN art. 198): Receita Federal NAO divulga dados a terceiros. CARF e orgao administrativo — contribuinte pode recorrer ao Judiciario apos CARF.</p></div>) },
           ]} />
         </div>
         <ModuleConsolidation index={3} variant={mv[7]} video={{ videoId: "dQw4w9WgXcQ", title: "Administracao Tributaria", duration: "12:00" }} resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "Adm. Tributaria", materia: "Administracao", images: [{ title: "3 Modalidades Lancamento", type: "Tabela", placeholderColor: "bg-blue-500/20" }] }} maceteVisual={{ title: "Decadencia vs Prescricao", content: (<div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-lg"><p className="font-bold text-blue-600 dark:text-blue-400">Decadencia: 5 anos para LANCAR</p><p className="font-bold text-blue-600 dark:text-blue-400">Prescricao: 5 anos para COBRAR</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Audio Adm. Tributaria", artista: "Resumo Petrobras" }} />
@@ -799,10 +800,10 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader index={2} title="C.E.D.E. — Planejamento Tributario" variant={mv[8]} />
           <ContentAccordion slides={[
-            { titulo: "Conceituacao", icone: <LuCheckCircle />, defaultOpen: true, conteudo: (<div className="space-y-2 text-lg"><p>Elisao: legal, ANTES do FG. Evasao: ilegal, APOS. Sonegacao = evasao = crime tributario.</p></div>) },
+            { titulo: "Conceituacao", icone: <LuCircleCheck />, conteudo: (<div className="space-y-2 text-lg"><p>Elisao: legal, ANTES do FG. Evasao: ilegal, APOS. Sonegacao = evasao = crime tributario.</p></div>) },
             { titulo: "Exemplificacao", icone: <LuBriefcase />, conteudo: (<div className="space-y-2 text-lg"><p>Elisao: Petrobras usa JCP para remunerar acionistas e deduzir IRPJ. Evasao: empresa emite nota fiscal fria para inflar custos — fraude e crime.</p></div>) },
             { titulo: "Dicas", icone: <LuTrendingUp />, conteudo: (<div className="space-y-2 text-lg"><p>Elisao = ANTES + legal. Evasao = APOS + ilegal. Sonegacao ≠ inadimplencia (inadimplencia nao e crime; sonegacao sim).</p></div>) },
-            { titulo: "Excecoes", icone: <LuAlertTriangle />, conteudo: (<div className="space-y-2 text-lg"><p>Norma antielisiva (CTN art. 116 par. unico): fisco pode desconsiderar atos sem proposito negocial real. Elusao = elisao abusiva (zona cinzenta).</p></div>) },
+            { titulo: "Excecoes", icone: <LuTriangleAlert />, conteudo: (<div className="space-y-2 text-lg"><p>Norma antielisiva (CTN art. 116 par. unico): fisco pode desconsiderar atos sem proposito negocial real. Elusao = elisao abusiva (zona cinzenta).</p></div>) },
           ]} />
         </div>
         <ModuleConsolidation index={3} variant={mv[8]} video={{ videoId: "dQw4w9WgXcQ", title: "Planejamento Tributario", duration: "10:00" }} resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Planejamento Tributario", materia: "Administracao", images: [{ title: "Elisao vs Evasao", type: "Comparativo", placeholderColor: "bg-emerald-500/20" }] }} maceteVisual={{ title: "Antes x Depois do FG", content: (<div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-lg"><p className="font-bold text-emerald-600 dark:text-emerald-400">Antes + legal = ELISAO (ok)</p><p className="font-bold text-red-500 dark:text-red-400">Depois + ilegal = EVASAO (crime)</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Audio Planejamento Tributario", artista: "Resumo Petrobras" }} />
@@ -830,10 +831,10 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader index={2} title="C.E.D.E. — Tributos na Petrobras" variant={mv[9]} />
           <ContentAccordion slides={[
-            { titulo: "Conceituacao", icone: <LuBuilding />, defaultOpen: true, conteudo: (<div className="space-y-2 text-lg"><p>Participacoes Governamentais: Royalties, Part. Especial, Bonus Assinatura, CIDE. Creditos (IPI+ICMS+PIS/COFINS) nas compras reduzem custo efetivo em Suprimentos.</p></div>) },
+            { titulo: "Conceituacao", icone: <LuBuilding />, conteudo: (<div className="space-y-2 text-lg"><p>Participacoes Governamentais: Royalties, Part. Especial, Bonus Assinatura, CIDE. Creditos (IPI+ICMS+PIS/COFINS) nas compras reduzem custo efetivo em Suprimentos.</p></div>) },
             { titulo: "Exemplificacao", icone: <LuCalculator />, conteudo: (<div className="space-y-2 text-lg"><p>Royalties Campo Tupi: 500k bbl/dia x 15% x preco Brent = bilhoes/ano. CIDE: Petrobras recolhe ao vender gasolina — receita destinada a infraestrutura de transporte.</p></div>) },
             { titulo: "Dicas", icone: <LuTrendingUp />, conteudo: (<div className="space-y-2 text-lg"><p>Royalties nao sao tributos stricto sensu (compensacao financeira, Lei 9.478). Custo efetivo = preco menos creditos tributarios recuperaveis (IPI+ICMS+PIS/COFINS).</p></div>) },
-            { titulo: "Excecoes", icone: <LuAlertTriangle />, conteudo: (<div className="space-y-2 text-lg"><p>CIDE ≠ COFINS (fatos geradores diferentes). Exportacoes de petroleo: imunes ao ICMS e PIS/COFINS — creditos acumulados podem ser compensados com outros tributos.</p></div>) },
+            { titulo: "Excecoes", icone: <LuTriangleAlert />, conteudo: (<div className="space-y-2 text-lg"><p>CIDE ≠ COFINS (fatos geradores diferentes). Exportacoes de petroleo: imunes ao ICMS e PIS/COFINS — creditos acumulados podem ser compensados com outros tributos.</p></div>) },
           ]} />
         </div>
         <CardCarousel cards={[
@@ -841,7 +842,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           { icone: <LuTrendingUp className="w-6 h-6" />, titulo: "Participacao Especial", descricao: "Sobre lucros extraordinarios de campos com grande producao. Aliquota progressiva ate 40% do lucro liquido do campo." },
           { icone: <LuFileText className="w-6 h-6" />, titulo: "CIDE Combustiveis", descricao: "Contribuicao de Intervencao no Dominio Economico sobre comercializacao de derivados de petroleo. Receita para infraestrutura." },
           { icone: <LuScale className="w-6 h-6" />, titulo: "Bonus de Assinatura", descricao: "Pagamento unico a ANP pela concessao ou partilha de producao. Nao e tributo recorrente." },
-        ]} titulo="Participacoes Governamentais" variant={mv[9]} />
+        ]} titulo="Participacoes Governamentais" />
         <ModuleConsolidation index={3} variant={mv[9]} video={{ videoId: "dQw4w9WgXcQ", title: "Tributacao Petrobras e Suprimentos", duration: "14:00" }} resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Tributos Petrobras", materia: "Administracao", images: [{ title: "Participacoes Governamentais", type: "Estrutura", placeholderColor: "bg-rose-500/20" }] }} maceteVisual={{ title: "Custo Efetivo em Suprimentos", content: (<div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl text-lg"><p className="font-bold text-rose-600 dark:text-rose-400">Custo Efetivo = Preco menos (IPI+ICMS+PIS/COFINS)</p><p className="text-lg text-foreground/70">Pode ser 20-30% menor que o valor nominal.</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Audio Tributos Petrobras", artista: "Resumo Petrobras" }} />
         <QuizInterativo questoes={[
           { id: "m9q1", pergunta: "Os Royalties pagos pela Petrobras sao:", opcoes: [{ label: "IR sobre a producao", valor: "a" }, { label: "Compensacao financeira pela exploracao de recursos naturais da Uniao", valor: "b" }, { label: "Taxa da ANP pela licenca", valor: "c" }, { label: "Contribuicao previdenciaria dos trabalhadores", valor: "d" }], correta: "b", explicacao: "Royalties = compensacao financeira pela exploracao de recursos da Uniao (Lei 9.478/1997). Nao sao tributos no sentido estrito do CTN." },

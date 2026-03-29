@@ -92,11 +92,6 @@ export default function AulaTextComprehension({
   const [quizFinal, setQuizFinal] = useState<typeof QUIZ_M10_SIMULADO_MESTRE>([]);
 
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
-  const [showCompletionBadge, setShowCompletionBadge] = useState(false);
-
-  useEffect(() => {
-    if (isCompleted) setShowCompletionBadge(true);
-  }, [isCompleted]);
 
   useEffect(() => {
     if (!hasSyncedInitial && !loading) {
@@ -141,8 +136,6 @@ export default function AulaTextComprehension({
       completedModules={completedModules}
       onComplete={onComplete}
       isCompleted={isCompleted}
-      showCompletionBadge={showCompletionBadge}
-      completionBadgeText="📚 MASTER EM READING COMPREHENSION"
       prevTopico={prevTopico}
       nextTopico={nextTopico}
     >
@@ -161,8 +154,9 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Os 3 Tipos de Questões de Compreensão"
-              descricao="CESGRANRIO sempre testa: (1) Main Idea — qual é o tema central? (2) Detail — qual detalhe específico? (3) Inference — o que está implicado?"
+              index={1}
+              title="Os 3 Tipos de Questões de Compreensão"
+              description="CESGRANRIO sempre testa: (1) Main Idea — qual é o tema central? (2) Detail — qual detalhe específico? (3) Inference — o que está implicado?"
             />
 
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -429,8 +423,8 @@ export default function AulaTextComprehension({
           />
 
                     <QuizInterativo
-            questions={quizM1}
-            modulo={1}
+            questoes={quizM1}
+            numero={1}
             onComplete={() => handleModuleComplete("modulo-1")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 1, tipo: "quiz" })}
           />
@@ -452,8 +446,9 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Técnica de Skimming: Leitura RÁPIDA para Ideia Geral"
-              descricao="Skimming é leitura seletiva — você lê ALGUNS partes do texto, muito rapidamente, apenas para entender o tema geral"
+              index={2}
+              title="Técnica de Skimming: Leitura RÁPIDA para Ideia Geral"
+              description="Skimming é leitura seletiva — você lê ALGUNS partes do texto, muito rapidamente, apenas para entender o tema geral"
             />
 
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -703,8 +698,8 @@ export default function AulaTextComprehension({
           />
 
                     <QuizInterativo
-            questions={quizM2}
-            modulo={2}
+            questoes={quizM2}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-2")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 2, tipo: "quiz" })}
           />
@@ -726,8 +721,9 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Técnica de Scanning: Localização Orientada por Palavra-Chave"
-              descricao="Scanning é diferente de skimming — você NÃO quer ideia geral, você quer UM DADO ESPECÍFICO"
+              index={3}
+              title="Técnica de Scanning: Localização Orientada por Palavra-Chave"
+              description="Scanning é diferente de skimming — você NÃO quer ideia geral, você quer UM DADO ESPECÍFICO"
             />
 
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -1008,8 +1004,8 @@ export default function AulaTextComprehension({
           />
 
                     <QuizInterativo
-            questions={quizM3}
-            modulo={3}
+            questoes={quizM3}
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-3")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 3, tipo: "quiz" })}
           />
@@ -1031,8 +1027,9 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Como Entender Palavras Desconhecidas Sem Dicionário"
-              descricao="CESGRANRIO testa vocabulário não por definição simples, mas por significado em contexto"
+              index={4}
+              title="Como Entender Palavras Desconhecidas Sem Dicionário"
+              description="CESGRANRIO testa vocabulário não por definição simples, mas por significado em contexto"
             />
 
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -1271,8 +1268,8 @@ export default function AulaTextComprehension({
           />
 
                     <QuizInterativo
-            questions={quizM4}
-            modulo={4}
+            questoes={quizM4}
+            numero={4}
             onComplete={() => handleModuleComplete("modulo-4")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 4, tipo: "quiz" })}
           />
@@ -1294,8 +1291,9 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Estrutura Padrão: Topic Sentence + Supporting Details"
-              descricao="Todo parágrafo em textos técnicos segue padrão: 1ª sentença (tema) + resto (detalhes)"
+              index={5}
+              title="Estrutura Padrão: Topic Sentence + Supporting Details"
+              description="Todo parágrafo em textos técnicos segue padrão: 1ª sentença (tema) + resto (detalhes)"
             />
 
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -1524,8 +1522,8 @@ export default function AulaTextComprehension({
           />
 
                     <QuizInterativo
-            questions={quizM5}
-            modulo={5}
+            questoes={quizM5}
+            numero={5}
             onComplete={() => handleModuleComplete("modulo-5")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 5, tipo: "quiz" })}
           />
@@ -1547,8 +1545,9 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Coesão Textual: Como Frases Conectam Logicamente"
-              descricao="Pronomes, demonstrativas e expressões definem-se ('hold together') o texto"
+              index={6}
+              title="Coesão Textual: Como Frases Conectam Logicamente"
+              description="Pronomes, demonstrativas e expressões definem-se ('hold together') o texto"
             />
 
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -1781,8 +1780,8 @@ export default function AulaTextComprehension({
           />
 
                     <QuizInterativo
-            questions={quizM6}
-            modulo={6}
+            questoes={quizM6}
+            numero={6}
             onComplete={() => handleModuleComplete("modulo-6")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 6, tipo: "quiz" })}
           />
@@ -1804,8 +1803,9 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Tone: A 'Voz' do Autor | Purpose: Seu Objetivo"
-              descricao="Dois textos com MESMO CONTEÚDO podem ter tones/purposes DIFERENTES"
+              index={7}
+              title="Tone: A 'Voz' do Autor | Purpose: Seu Objetivo"
+              description="Dois textos com MESMO CONTEÚDO podem ter tones/purposes DIFERENTES"
             />
 
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -2046,8 +2046,8 @@ export default function AulaTextComprehension({
           />
 
                     <QuizInterativo
-            questions={quizM7}
-            modulo={7}
+            questoes={quizM7}
+            numero={7}
             onComplete={() => handleModuleComplete("modulo-7")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 7, tipo: "quiz" })}
           />
@@ -2069,8 +2069,9 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Inferência: Ler Entre as Linhas"
-              descricao="A resposta não aparece palavra-por-palavra, você precisa deduzir a partir de pistas"
+              index={8}
+              title="Inferência: Ler Entre as Linhas"
+              description="A resposta não aparece palavra-por-palavra, você precisa deduzir a partir de pistas"
             />
 
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -2310,8 +2311,8 @@ export default function AulaTextComprehension({
           />
 
                     <QuizInterativo
-            questions={quizM8}
-            modulo={8}
+            questoes={quizM8}
+            numero={8}
             onComplete={() => handleModuleComplete("modulo-8")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 8, tipo: "quiz" })}
           />
@@ -2333,8 +2334,9 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Formato Real de Prova CESGRANRIO"
-              descricao="Entenda exatamente o que você vai enfrentar numa prova real Petrobras"
+              index={9}
+              title="Formato Real de Prova CESGRANRIO"
+              description="Entenda exatamente o que você vai enfrentar numa prova real Petrobras"
             />
 
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -2555,8 +2557,8 @@ export default function AulaTextComprehension({
           />
 
                     <QuizInterativo
-            questions={quizM9}
-            modulo={9}
+            questoes={quizM9}
+            numero={9}
             onComplete={() => handleModuleComplete("modulo-9")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 9, tipo: "quiz" })}
           />
@@ -2578,8 +2580,9 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Os 8 Passos Integrados para Leitura Dominante"
-              descricao="Você aprendeu 8 estratégias. Agora integre tudo num pipeline único"
+              index={10}
+              title="Os 8 Passos Integrados para Leitura Dominante"
+              description="Você aprendeu 8 estratégias. Agora integre tudo num pipeline único"
             />
 
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -2821,8 +2824,8 @@ export default function AulaTextComprehension({
           />
 
                     <QuizInterativo
-            questions={quizFinal}
-            modulo={10}
+            questoes={quizFinal}
+            numero={10}
             onComplete={() => handleModuleComplete("modulo-10")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 10, tipo: "quiz" })}
           />

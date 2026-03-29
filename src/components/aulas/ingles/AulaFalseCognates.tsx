@@ -92,11 +92,6 @@ export default function AulaFalseCognates({
   const [quizFinal, setQuizFinal] = useState<typeof QUIZ_M10_SIMULADO_MESTRE>([]);
 
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
-  const [showCompletionBadge, setShowCompletionBadge] = useState(false);
-
-  useEffect(() => {
-    if (isCompleted) setShowCompletionBadge(true);
-  }, [isCompleted]);
 
   useEffect(() => {
     if (!hasSyncedInitial && !loading) {
@@ -141,8 +136,6 @@ export default function AulaFalseCognates({
       completedModules={completedModules}
       onComplete={onComplete}
       isCompleted={isCompleted}
-      showCompletionBadge={showCompletionBadge}
-      completionBadgeText="👑 ESPECIALISTA EM FALSE COGNATES"
       prevTopico={prevTopico}
       nextTopico={nextTopico}
     >
@@ -159,8 +152,9 @@ export default function AulaFalseCognates({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Os Falsos Cognatos Clássicos"
-              descricao="Palavras que PARECEM significar uma coisa em português, mas significam COMPLETAMENTE outra em inglês"
+              index={1}
+              title="Os Falsos Cognatos Clássicos"
+              description="Palavras que PARECEM significar uma coisa em português, mas significam COMPLETAMENTE outra em inglês"
             />
 
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -482,8 +476,8 @@ export default function AulaFalseCognates({
           />
 
                     <QuizInterativo
-            questions={quizM1}
-            modulo={1}
+            questoes={quizM1}
+            numero={1}
             onComplete={() => handleModuleComplete("modulo-1")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 1, tipo: "quiz" })}
           />
@@ -503,8 +497,9 @@ export default function AulaFalseCognates({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Falsos Cognatos em Contexto Industrial"
-              descricao="Palavras que enganam especialmente em relatórios técnicos, especificações e textos gerenciais"
+              index={2}
+              title="Falsos Cognatos em Contexto Industrial"
+              description="Palavras que enganam especialmente em relatórios técnicos, especificações e textos gerenciais"
             />
 
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -822,8 +817,8 @@ export default function AulaFalseCognates({
           />
 
                     <QuizInterativo
-            questions={quizM2}
-            modulo={2}
+            questoes={quizM2}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-2")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 2, tipo: "quiz" })}
           />
@@ -843,8 +838,9 @@ export default function AulaFalseCognates({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Falsos Cognatos em Management"
-              descricao="Palavras críticas em documentos gerenciais, políticas corporativas e textos administrativos"
+              index={3}
+              title="Falsos Cognatos em Management"
+              description="Palavras críticas em documentos gerenciais, políticas corporativas e textos administrativos"
             />
 
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -1162,8 +1158,8 @@ export default function AulaFalseCognates({
           />
 
                     <QuizInterativo
-            questions={quizM3}
-            modulo={3}
+            questoes={quizM3}
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-3")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 3, tipo: "quiz" })}
           />
@@ -1197,8 +1193,8 @@ export default function AulaFalseCognates({
           />
 
                     <QuizInterativo
-            questions={quizM4}
-            modulo={4}
+            questoes={quizM4}
+            numero={4}
             onComplete={() => handleModuleComplete("modulo-4")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 4, tipo: "quiz" })}
           />
@@ -1231,8 +1227,8 @@ export default function AulaFalseCognates({
           />
 
                     <QuizInterativo
-            questions={quizM5}
-            modulo={5}
+            questoes={quizM5}
+            numero={5}
             onComplete={() => handleModuleComplete("modulo-5")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 5, tipo: "quiz" })}
           />
@@ -1265,8 +1261,8 @@ export default function AulaFalseCognates({
           />
 
                     <QuizInterativo
-            questions={quizM6}
-            modulo={6}
+            questoes={quizM6}
+            numero={6}
             onComplete={() => handleModuleComplete("modulo-6")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 6, tipo: "quiz" })}
           />
@@ -1299,8 +1295,8 @@ export default function AulaFalseCognates({
           />
 
                     <QuizInterativo
-            questions={quizM7}
-            modulo={7}
+            questoes={quizM7}
+            numero={7}
             onComplete={() => handleModuleComplete("modulo-7")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 7, tipo: "quiz" })}
           />
@@ -1333,8 +1329,8 @@ export default function AulaFalseCognates({
           />
 
                     <QuizInterativo
-            questions={quizM8}
-            modulo={8}
+            questoes={quizM8}
+            numero={8}
             onComplete={() => handleModuleComplete("modulo-8")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 8, tipo: "quiz" })}
           />
@@ -1367,8 +1363,8 @@ export default function AulaFalseCognates({
           />
 
                     <QuizInterativo
-            questions={quizM9}
-            modulo={9}
+            questoes={quizM9}
+            numero={9}
             onComplete={() => handleModuleComplete("modulo-9")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 9, tipo: "quiz" })}
           />
@@ -1387,8 +1383,9 @@ export default function AulaFalseCognates({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              titulo="Seu Checklist Final"
-              descricao="5 passos para nunca mais cair em armadilha de falso cognato"
+              index={10}
+              title="Seu Checklist Final"
+              description="5 passos para nunca mais cair em armadilha de falso cognato"
             />
 
             <div className="space-y-6">
@@ -1440,8 +1437,8 @@ export default function AulaFalseCognates({
           />
 
                     <QuizInterativo
-            questions={quizFinal}
-            modulo={10}
+            questoes={quizFinal}
+            numero={10}
             onComplete={() => handleModuleComplete("modulo-10")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 10, tipo: "quiz" })}
           />

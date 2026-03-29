@@ -37,11 +37,11 @@ export default function VerifiedPage({
                         </div>
                     </CardContent>
                     <CardFooter>
-                        <Button asChild className="w-full">
-                            <Link href={nextPath}>
+                        <Link href={nextPath} className="w-full">
+                            <Button className="w-full">
                                 Continuar para o Dashboard
-                            </Link>
-                        </Button>
+                            </Button>
+                        </Link>
                     </CardFooter>
                 </Card>
             </div>

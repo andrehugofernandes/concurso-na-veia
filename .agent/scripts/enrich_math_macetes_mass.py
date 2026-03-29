@@ -1,6 +1,11 @@
 import re
 import os
+import sys
 from pathlib import Path
+sys.path.insert(0, os.path.dirname(__file__))
+from safeguard import safe_write, safe_read
+
+DRY_RUN = "--dry-run" in sys.argv
 
 # --- DICIONÁRIO DE MACETES POR TEMA (Baseado nos arquivos detectados) ---
 THEME_MACETES = {
@@ -87,10 +92,9 @@ def get_best_template(aula_name, mod_num, mod_title):
 
 def enrich_file(file_path):
     path = Path(file_path)
-    if not path.exists(): return
-    
-    with open(path, "r", encoding="utf-8") as f:
-        content = f.read()
+    content = safe_read(str(path))
+    if content is None:
+        return
 
     # Identificar nome da aula
     aula_name = path.stem.replace("Aula", "")
@@ -169,9 +173,7 @@ def enrich_file(file_path):
     final_content = tabs_content_pattern.sub(replacer, content)
     
     if final_content != content:
-        with open(path, "w", encoding="utf-8") as f:
-            f.write(final_content)
-        print(f"✅ {path.name}: Macetes enriquecidos.")
+        safe_write(str(path), final_content, dry_run=DRY_RUN)
     else:
         print(f"➖ {path.name}: Nenhuma alteração necessária.")
 

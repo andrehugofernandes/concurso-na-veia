@@ -17,6 +17,7 @@ import { notFound } from "next/navigation";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 import { AulaProps } from "@/components/aulas/shared";
 import { useSetPageTitle } from "@/contexts/UIContext";
+import { HeaderStateProvider } from "@/contexts/HeaderStateContext";
 import { LuClock, LuCheck } from "react-icons/lu";
 
 // Dynamic import para evitar hydration mismatch dos componentes Radix UI (Dialog, Accordion, Tabs)
@@ -783,7 +784,8 @@ export default function TopicoPage({ params }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <HeaderStateProvider>
+      <div className="min-h-screen bg-background">
       {/* Main Content */}
       <main className="w-full">
         {/* Article Content */}
@@ -1942,5 +1944,6 @@ export default function TopicoPage({ params }: PageProps) {
           )}
       </main>
     </div>
+  </HeaderStateProvider>
   );
 }

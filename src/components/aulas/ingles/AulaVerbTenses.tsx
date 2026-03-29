@@ -90,11 +90,6 @@ export default function AulaVerbTenses({
   const [quizFinal, setQuizFinal] = useState<typeof QUIZ_M10_MESTRE>([]);
 
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
-  const [showCompletionBadge, setShowCompletionBadge] = useState(false);
-
-  useEffect(() => {
-    if (isCompleted) setShowCompletionBadge(true);
-  }, [isCompleted]);
 
   useEffect(() => {
     if (!hasSyncedInitial && !loading) {
@@ -517,7 +512,7 @@ export default function AulaVerbTenses({
                     <QuizInterativo
             questoes={quizM1}
             titulo="QUIZ: Módulo Nº 1"
-            numero={3}
+            numero={1}
             onComplete={() => handleModuleComplete("modulo-1")}
           />
         </div>
@@ -880,7 +875,7 @@ export default function AulaVerbTenses({
                     <QuizInterativo
             questoes={quizM2}
             titulo="Simple Past & Past Continuous"
-            numero={3}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-2")}
           />
         </div>
@@ -1638,8 +1633,9 @@ export default function AulaVerbTenses({
             />
             <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
               <ModuleSectionHeader
-                titulo={MODULE_DEFS[modNum - 1]?.title || `Módulo ${modNum}`}
-                descricao="Conteúdo premium detalhado será adicionado em breve"
+                index={modNum}
+                title={MODULE_DEFS[modNum - 1]?.title || `Módulo ${modNum}`}
+                description="Conteúdo premium detalhado será adicionado em breve"
               />
               <div className="text-center py-16 text-foreground/50">
                 <p>Este módulo está em desenvolvimento. Volte em breve para conteúdo premium detalhado.</p>
@@ -2050,7 +2046,7 @@ The system was designed (by the engineer).`
                     <QuizInterativo
             questoes={quizM5}
             titulo="QUIZ: Módulo Nº 5"
-            numero={3}
+            numero={5}
             onComplete={() => handleModuleComplete("modulo-5")}
           />
         </div>
@@ -2485,7 +2481,7 @@ The system was designed (by the engineer).`
                     <QuizInterativo
             questoes={quizM6}
             titulo="QUIZ: Módulo Nº 6"
-            numero={3}
+            numero={6}
             onComplete={() => handleModuleComplete("modulo-6")}
           />
         </div>
@@ -2878,7 +2874,7 @@ he would authorize the overtime.
                     <QuizInterativo
             questoes={quizM7}
             titulo="QUIZ: Módulo Nº 7"
-            numero={3}
+            numero={7}
             onComplete={() => handleModuleComplete("modulo-7")}
           />
         </div>
@@ -3297,7 +3293,7 @@ he would authorize the overtime.
                     <QuizInterativo
             questoes={quizM8}
             titulo="QUIZ: Módulo Nº 8"
-            numero={3}
+            numero={8}
             onComplete={() => handleModuleComplete("modulo-8")}
           />
         </div>
@@ -3625,7 +3621,7 @@ he would authorize the overtime.
                     <QuizInterativo
             questoes={quizM9}
             titulo="QUIZ: Módulo Nº 9"
-            numero={3}
+            numero={9}
             onComplete={() => handleModuleComplete("modulo-9")}
           />
         </div>
@@ -3902,7 +3898,7 @@ he would authorize the overtime.
                     <QuizInterativo
             questoes={quizFinal}
             titulo="Simulado Mestre"
-            numero={3}
+            numero={10}
             onComplete={() => handleModuleComplete("modulo-10")}
           />
         </div>

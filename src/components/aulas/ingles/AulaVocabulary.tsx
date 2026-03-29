@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
@@ -15,11 +14,9 @@ import {
   ModuleSectionHeader,
   FlipCard,
   TimelineItem,
-  ComparisonSide,
+  Comparison,
 } from "../shared";
-
 import { getModuleVariant } from "@/lib/moduleColors";
-
 import {
   LuBookOpen,
   LuLightbulb,
@@ -36,7 +33,6 @@ import {
   LuClipboardList,
   LuHandshake,
 } from "react-icons/lu";
-
 import {
   QUIZ_M1_UPSTREAM,
   QUIZ_M2_DOWNSTREAM,
@@ -49,20 +45,18 @@ import {
   QUIZ_M9_PETROBRASESPECIFICO,
   QUIZ_M10_MESTRE,
 } from "./data/vocabulary-quizzes";
-
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", title: "Upstream Operations (Exploration & Drilling)" },
-  { id: "modulo-2", label: "Módulo 2", title: "Downstream Operations (Refining & Distribution)" },
-  { id: "modulo-3", label: "Módulo 3", title: "Industrial Equipment (Valves, Pumps, Pipes, Rigs)" },
-  { id: "modulo-4", label: "Módulo 4", title: "Safety & HSE (PPE, Hazard, Incident, Compliance)" },
-  { id: "modulo-5", label: "Módulo 5", title: "Financial & Business Terms (CAPEX, OPEX, Brent)" },
-  { id: "modulo-6", label: "Módulo 6", title: "Environmental Terms (Carbon Footprint, ESG)" },
-  { id: "modulo-7", label: "Módulo 7", title: "Management & Projects (KPI, Milestone, Scope)" },
-  { id: "modulo-8", label: "Módulo 8", title: "Procurement & Contracts (Tender, Bid, Liability)" },
-  { id: "modulo-9", label: "Módulo 9", title: "Vocabulary in Petrobras Context" },
+  { id: "modulo-1", label: "Módulo 1", title: "Upstream Ops" },
+  { id: "modulo-2", label: "Módulo 2", title: "Downstream Ops" },
+  { id: "modulo-3", label: "Módulo 3", title: "Equipment" },
+  { id: "modulo-4", label: "Módulo 4", title: "Safety & HSE" },
+  { id: "modulo-5", label: "Módulo 5", title: "Financial Terms" },
+  { id: "modulo-6", label: "Módulo 6", title: "Environmental" },
+  { id: "modulo-7", label: "Módulo 7", title: "Management" },
+  { id: "modulo-8", label: "Módulo 8", title: "Procurement" },
+  { id: "modulo-9", label: "Módulo 9", title: "Petrobras Context" },
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
-
 export default function AulaVocabulary({
   onComplete,
   isCompleted,
@@ -81,7 +75,6 @@ export default function AulaVocabulary({
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
-
   const [quizM1, setQuizM1] = useState<typeof QUIZ_M1_UPSTREAM>([]);
   const [quizM2, setQuizM2] = useState<typeof QUIZ_M2_DOWNSTREAM>([]);
   const [quizM3, setQuizM3] = useState<typeof QUIZ_M3_EQUIPMENT>([]);
@@ -92,14 +85,12 @@ export default function AulaVocabulary({
   const [quizM8, setQuizM8] = useState<typeof QUIZ_M8_PROCUREMENT>([]);
   const [quizM9, setQuizM9] = useState<typeof QUIZ_M9_PETROBRASESPECIFICO>([]);
   const [quizFinal, setQuizFinal] = useState<typeof QUIZ_M10_MESTRE>([]);
-
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
-  const [showCompletionBadge, setShowCompletionBadge] = useState(false);
-
   useEffect(() => {
-    if (isCompleted) setShowCompletionBadge(true);
+    if (isCompleted) {
+      // Mark module as completed
+    }
   }, [isCompleted]);
-
   useEffect(() => {
     if (!hasSyncedInitial && !loading) {
       setQuizM1(getRandomQuestions(QUIZ_M1_UPSTREAM, 8));
@@ -115,20 +106,13 @@ export default function AulaVocabulary({
       setHasSyncedInitial(true);
     }
   }, [loading, hasSyncedInitial]);
-
   const handleModuleComplete = (moduleId: string) => {
     setCompletedModules((prev) => new Set([...prev, moduleId]));
   };
-
   // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
-
   const mv = Object.fromEntries(
-
     Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
-
   ) as Record<number, ReturnType<typeof getModuleVariant>>;
-
-
   return (
     <AulaTemplate
       titulo={titulo || "Technical Vocabulary — Domínio do Vocabulário Técnico Petrobras"}
@@ -143,46 +127,33 @@ export default function AulaVocabulary({
       completedModules={completedModules}
       onComplete={onComplete}
       isCompleted={isCompleted}
-      showCompletionBadge={showCompletionBadge}
-      completionBadgeText="🏆 MASTER EM VOCABULÁRIO TÉCNICO"
       prevTopico={prevTopico}
       nextTopico={nextTopico}
     >
       {/* ═══ MÓDULO 1: UPSTREAM OPERATIONS ═══ */}
       <TabsContent value="modulo-1">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={1}
-            titulo="Upstream Operations (Exploration & Drilling)"
-            variant={mv[1]}
-            />
-
+          <ModuleBanner numero={1} titulo="Upstream Operations" descricao="Domínio de termos técnicos e expressões essenciais do setor." variant={mv[1]} />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              titulo="Upstream: A Jornada da Exploração até a Produção"
+            <ModuleSectionHeader index={1}
+              title="Upstream: A Jornada da Exploração até a Produção"
               />
-
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Upstream operations representam a primeira etapa da cadeia de valor de óleo e gás: exploração, desenvolvimento e produção. A Petrobras é uma empresa heavily upstream-dependent porque o Brasil possui algumas das maiores reservas de petróleo do mundo, especialmente no pré-sal. O termo "upstream" literalmente significa "contra a corrente" — você está procurando pela fonte do óleo, não processando o que já foi encontrado. Esta distinção é crítica para entender documentos técnicos, relatórios de operação e discussões estratégicas em Petrobras. Profissionais que trabalham em upstream lidam com desafios extremos: ambientes offshore hostis, perfuração em profundidades record (3.000+ metros), pressões gigantescas, e riscos ambientais significativos.
               </p>
-
               <p>
                 A jornada upstream segue uma sequência lógica e bem definida: Seismic Survey (investigação sísmica para mapear estruturas geológicas subterrâneas) → Exploration Well (poço exploratório para confirmar presença de hidrocarbonetos) → Drilling (perfuração do poço de produção em série) → Well Completion (conclusão, equipagem e testes do poço) → Production Testing (testes de vazão e pressão) → Field Development (desenvolvimento da infraestrutura do campo) → Continuous Production (produção comercial contínua e monitoramento). Cada etapa tem vocabulário específico que é testado em provas CESGRANRIO e aparece em relatórios técnicos.
               </p>
-
               <p>
                 Regras técnicas essenciais: Um poço "onshore" (em terra) é mais acessível mas limitado geographicamente. Um poço "offshore" (no mar) requer plataformas fixas ou flutuantes e custosão bilhões. A profundidade é medida em metros (typical: 2.000-3.500m), e o diâmetro do furo varia conforme a sequência de perfuração (casing programme). A pressão do reservatório determina se é "flowing well" (fluxo natural) ou requer "artificial lift" (bombas). Termos críticos: Exploration (exploração), Drilling (perfuração), Well (poço), Borehole (furo do poço), Rig (sonda/plataforma), Platform (estrutura de produção), Reservoir (jazida), Crude Oil (óleo cru), Extraction (extração), Wellhead (cabeçote), Casing (revestimento), Tubing (coluna de produção), Perforation (canhoneio).
               </p>
-
               <p>
                 Na prática Petrobras, geólogos e engenheiros exploram blocos sísmicos em bacias conhecidas (Campos, Santos, Espírito Santo pré-sal) usando dados 3D/4D. Uma descoberta promissora leva a perfuração de poços exploratórios ("wildcat") com custo de $10-50M cada, dependendo da profundidade e locação. Se bem-sucedido, estima-se o tamanho da reserva (STOIIP - Stock Tank Oil Initially In Place). O desenvolvimento subsequente pode envolver dezenas de poços, sistemas de completação complexos, pipelines submarinos, e processos de separação água/óleo na plataforma. O desafio final é tirar o máximo valor econômico de cada reserva durante sua vida útil (15-40+ anos).
               </p>
-
               <p>
                 A CESGRANRIO frequentemente testa compreensão de sequência (qual etapa vem depois de seismic?), diferenciação entre componentes (wellhead vs tubing vs casing), e aplicação de conceitos a cenários realistas. Candidatos costumam confundir "exploration" (busca por reservas) com "development" (construção da infraestrutura), ou não entender que múltiplos poços são perfurados num mesmo campo. Outra pegadinha comum é não reconhecer que "production platform" é diferente de "drilling rig" — uma plataforma produz óleo continuamente, enquanto uma sonda é usada temporariamente para perfuração. O vocabulário é especializado e não aparece em inglês casual, então é necessário memorizar associações contexto-específicas (e.g., "casing" nunca significa "case" ou "covering" genérico — é SEMPRE revestimento de poço).
               </p>
-
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Fases Principais do Upstream</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
@@ -205,7 +176,6 @@ export default function AulaVocabulary({
                 </div>
               </div>
             </div>
-
             <ContentAccordion
               slides={[
                 {
@@ -308,20 +278,18 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <AlertBox tipo="danger"
                         titulo="Confusão #1: Platform vs Plataforma (português)"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ Errado", content: "Platform é uma estação de trem." }}
-                          lado2={{ label: "✅ Correto", content: "The offshore platform produces 100,000 bbl/d." }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "❌ Errado", content: "Platform é uma estação de trem.", description: "Contexto Petrobras", variant: "danger" }}
+                          right={{ title: "✅ Correto", content: "The offshore platform produces 100,000 bbl/d.", description: "Contexto Petrobras", variant: "success" }}
                         />
                       </AlertBox>
                       <AlertBox tipo="warning"
                         titulo="Confusão #2: Well vs Poço (água)"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ Contextualmente estranho", content: "We drilled a well to extract drinking water. (Possível mas incomum em Petrobras)" }}
-                          lado2={{ label: "✅ Em Petrobras", content: "We drilled 50 exploration wells in the pre-sal region. (Contexto oil/gas)" }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "❌ Contextualmente estranho", content: "We drilled a well to extract drinking water. (Possível mas incomum em Petrobras)", description: "Contexto Petrobras", variant: "danger" }}
+                          right={{ title: "✅ Em Petrobras", content: "We drilled 50 exploration wells in the pre-sal region. (Contexto oil/gas)", description: "Contexto Petrobras", variant: "success" }}
                         />
                       </AlertBox>
                       <AlertBox tipo="info" titulo="Dica #3: Upstream = ANTES do Refino"><p>Se você vê: seismic, drilling, platform, reservoir, extraction — é UPSTREAM. Se vê: refinery, distillation, products — é DOWNSTREAM.</p></AlertBox>
@@ -330,7 +298,6 @@ export default function AulaVocabulary({
                 },
               ]}
             />
-
             <div className="space-y-4">
               <h4 className="font-bold text-lg">FlipCards: Termos Upstream</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -361,11 +328,8 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-
-          <ModuleConsolidation
-            numero={1}
+          <ModuleConsolidation index={1}
             variant={mv[1]}
-            onComplete={() => handleModuleComplete("modulo-1")}
             maceteVisual={{
               title: "Upstream Operations - Key Drilling Terms",
               content: (
@@ -376,52 +340,37 @@ export default function AulaVocabulary({
                   <p><strong>Drill Bit:</strong> The cutting tool at the end of the drill string that removes rock</p>
                 </div>
               ),
-            }}
-          >
-            <QuizInterativo
-              questoes={quizM1}
-              numero={3}
-              onComplete={() => handleModuleComplete("modulo-1")}
-            />
-          </ModuleConsolidation>
+          }} 
+            video={{ videoId: "h3S9XW1WzIk", title: "Technical English Masterclass", duration: "12:45" }}
+            resumoVisual={{ moduloNome: "Vocabulário", tituloAula: "Inglês Petrobras", materia: "Inglês", images: [] }}
+            audio={{ audioUrl: "https://www.google.com", titulo: "Podclass Vocabulário", artista: "Professor de Inglês" }} />
+          <QuizInterativo questoes={quizM1} titulo="Desafio de Vocabulário" numero={1} variant={mv[1]} onComplete={() => handleModuleComplete("modulo-1")} />
         </div>
       </TabsContent>
-
       {/* ═══ MÓDULO 2: DOWNSTREAM OPERATIONS ═══ */}
       <TabsContent value="modulo-2">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={2}
-            titulo="Downstream Operations (Refining & Distribution)"
-            variant={mv[2]}
-            />
-
+          <ModuleBanner numero={2} titulo="Downstream Operations" descricao="Domínio de termos técnicos e expressões essenciais do setor." variant={mv[2]} />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              titulo="Downstream: Transformando Óleo Cru em Produtos"
+            <ModuleSectionHeader index={2}
+              title="Downstream: Transformando Óleo Cru em Produtos"
               />
-
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Downstream operations começam quando o óleo cru sai do poço (ou é importado) e termina quando produtos finais (gasolina, diesel, querosene, óleo lubrificante, petroquímicos, asfalto) chegam ao consumidor final. Enquanto upstream é sobre ENCONTRAR e EXTRAIR o óleo, downstream é sobre REFINAR, TRANSFORMAR e DISTRIBUIR. A Petrobras tem operações significativas em ambas, mas a estratégia corporativa tem priorizado upstream (pré-sal) nos últimos 15 anos porque a margem de refino é mais baixa. Entender a cadeia downstream é essencial para compreender relatórios operacionais, planejamento de produção, e discussões sobre varejo de combustíveis.
               </p>
-
               <p>
                 O processo começa na refinery (refinaria), onde o crude oil (óleo cru) é destilado — aquecido a ~350°C e separado em frações baseadas em ponto de ebulição e densidade. Cada fração tem uso diferente: lighter fractions (gasolina, querosene) fluem para o topo da torre de destilação; heavier fractions (óleo combustível, asfalto) saem do fundo. Alguns hidrocarbonetos maiores são "cracked" (quebrados) em moléculas menores usando calor extremo (thermal cracking) e catalisadores (catalytic cracking) para aumentar a produção de produtos valiosos. Após refining, produtos são desulfurizados (redução de enxofre para atender normas ambientais), armazenados em tanques gigantescos, transportados via pipelines submarinos/terrestres e tankers, distribuídos para terminais regionais, e finalmente vendidos em postos de gasolina, para clientes industriais, ou como matéria prima petroquímica.
               </p>
-
               <p>
                 Regras técnicas obrigatórias: Distillation é a separação por volatilidade — não separa por tipo de molécula, apenas por tamanho/peso. Naphtha (destilado mais leve) é matéria prima para petroquímicos (plásticos, fertilizantes). Gasoline (gasolina) e Diesel (diesel) são os produtos de maior volume e margem. Jet Fuel (querosene de aviação) tem especificações rígidas de pureza. Fuel Oil (óleo combustível pesado) é usado por indústrias pesadas e navios. Lubrificants são óleos de motor com aditivos. O rendimento de refino típico é: 30-40% gasolina, 25-35% diesel, 10-15% fuel oil, resto em outros produtos. Termos críticos: Refinery (refinaria), Refining (refino), Distillation (destilação), Fractionating Column (torre de destilação), Distillate (destilado), Naphtha (nafta), Gasoline (gasolina), Diesel (diesel), Jet Fuel (querosene), Fuel Oil (óleo combustível), Lubricant (lubrificante), Petrochemical (petroquímico), Cracking (craqueamento), Blending (mistura/aditivação), Processing (processamento), Distribution (distribuição).
               </p>
-
               <p>
                 No contexto Petrobras, as refinarias principais (Paulínia, Cubatão, Duque de Caxias, Potiguar) processam ~1,8M barris/dia de crude. Cada refinaria tem diferentes configuraçõesde unidades (destilação, craqueamento, reformação, isomerização) que determinam qual tipo de crude é mais viável economicamente. Uma refinaria com "conversão alta" consegue converter mais crude em produtos leves valiosos; uma "conversão baixa" produz mais fuel oil pesado. O pipeline de logística é crítico: óleo sai da plataforma, entra em terminal de entrada, vai para refinaria, seus produtos são distribuídos via pipeline para terminais de distribuição, que enviam via caminhão para postos de gasolina. Qualquer interrupção num elo quebra a cadeia inteira.
               </p>
-
               <p>
                 A CESGRANRIO testa compreensão da sequência de refino (crude → distillation → fractions → products), diferenciação entre tipos de produtos (gasoline vs diesel vs fuel oil), e entendimento de "conversão" (quantos barris de produto valioso saem de X barris de crude). Erros típicos: confundir "naphtha" com "gasoline" (naphtha é matéria prima para petroquímicos, não combustível direto); não entender que "cracking" AUMENTA a produção de gasolina (muitos pensam que reduz); achar que "distillation" separa tipos diferentes de moléculas (na verdade, separa apenas por tamanho/volatilidade). Outra pegadinha: questões sobre "light crude" vs "heavy crude" — light crude é mais fácil de refinar e produz mais gasolina (margem maior), heavy crude requer processamento adicional (conversão). Vocabulário downstream é frequentemente usado em relatórios financeiros da Petrobras, então é importante não apenas memorizar, mas entender COMO é usado em contexto corporativo.
               </p>
-
               <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30 rounded-lg border border-orange-200 dark:border-orange-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Cadeia de Valor Downstream</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
@@ -444,7 +393,6 @@ export default function AulaVocabulary({
                 </div>
               </div>
             </div>
-
             <ContentAccordion
               slides={[
                 {
@@ -547,20 +495,18 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <AlertBox tipo="danger"
                         titulo="Confusão #1: Refinery vs Refining"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "Refinery (lugar)", content: "The refinery is a large industrial facility." }}
-                          lado2={{ label: "Refining (processo)", content: "Refining crude oil produces gasoline." }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "Refinery (lugar)", content: "The refinery is a large industrial facility.", description: "Contexto Petrobras", variant: "info"}} 
+                          right={{ title: "Refining (processo)", content: "Refining crude oil produces gasoline.", description: "Contexto Petrobras", variant: "info"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="warning"
                         titulo="Confusão #2: Crude vs Crude Oil"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "❌ Uncommon", content: "We extracted crude from the well." }}
-                          lado2={{ label: "✅ Correct", content: "We extracted crude oil from the well." }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "❌ Uncommon", content: "We extracted crude from the well.", description: "Contexto Petrobras", variant: "danger"}} 
+                          right={{ title: "✅ Correct", content: "We extracted crude oil from the well.", description: "Contexto Petrobras", variant: "success"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="info" titulo="Dica #3: DOWNSTREAM = Valor Agregado"><p>Downstream gera mais lucro por unidade mas requer investimento capital em refinarias. Upstream é exploração pura.</p></AlertBox>
@@ -569,7 +515,6 @@ export default function AulaVocabulary({
                 },
               ]}
             />
-
             <div className="space-y-4">
               <h4 className="font-bold text-lg">FlipCards: Termos Downstream</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -600,11 +545,8 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-
-          <ModuleConsolidation
-            numero={2}
+          <ModuleConsolidation index={2}
             variant={mv[2]}
-            onComplete={() => handleModuleComplete("modulo-2")}
             maceteVisual={{
               title: "Downstream Operations - Refining & Distribution",
               content: (
@@ -615,60 +557,43 @@ export default function AulaVocabulary({
                   <p><strong>Distribution Network:</strong> System of pipelines and terminals that transport refined products to consumers</p>
                 </div>
               ),
-            }}
-          >
-            <QuizInterativo
-              questoes={quizM2}
-              numero={3}
-              onComplete={() => handleModuleComplete("modulo-2")}
-            />
-          </ModuleConsolidation>
+          }} 
+            video={{ videoId: "h3S9XW1WzIk", title: "Technical English Masterclass", duration: "12:45" }}
+            resumoVisual={{ moduloNome: "Vocabulário", tituloAula: "Inglês Petrobras", materia: "Inglês", images: [] }}
+            audio={{ audioUrl: "https://www.google.com", titulo: "Podclass Vocabulário", artista: "Professor de Inglês" }} />
+          <QuizInterativo questoes={quizM2} titulo="Desafio de Vocabulário" numero={2} variant={mv[2]} onComplete={() => handleModuleComplete("modulo-2")} />
         </div>
       </TabsContent>
-
       {/* ═══ MÓDULO 3: INDUSTRIAL EQUIPMENT ═══ */}
       <TabsContent value="modulo-3">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={3}
-            titulo="Industrial Equipment (Valves, Pumps, Pipes, Rigs)"
-            variant={mv[3]}
-            />
-
+          <ModuleBanner numero={3} titulo="Industrial Equipment" descricao="Domínio de termos técnicos e expressões essenciais do setor." variant={mv[3]} />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              titulo="Equipamentos: Construindo a Indústria"
+            <ModuleSectionHeader index={3}
+              title="Equipamentos: Construindo a Indústria"
               />
-
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Equipamentos são o esqueleto da indústria de óleo e gás. Cada sistema de produção, refino ou transporte é construído com centenas de componentes especializados que devem funcionar de forma coordenada sob pressões extremas, temperaturas variáveis, e ambientes hostis (offshore, deserto, etc.). Um pequeno vazamento numa válvula pode parar operações inteiras, resultando em perdas de milhões de dólares por dia. Entender nomes, funções e especificações de equipamentos é CRÍTICO para compreender documentos técnicos, relatórios de manutenção, pedidos de compra (procurement) e discussões operacionais de engenharia. Este módulo apresenta os 4 tipos principais: valves (válvulas de controle), pumps (bombas de sucção e pressão), pipes (tubulações e conexões), e rigs (sondas de perfuração e equipamentos de poço).
               </p>
-
               <p>
                 <strong>Valves</strong> controlam fluxo de fluidos. Ball valve usa uma esfera com furo central — rápida, simples, selador excelente. Gate valve usa uma porta deslizante — boa para isolar completamente. Check valve permite fluxo em uma direção apenas — previne backflow. Relief valve libera pressão quando excede limite — proteção crítica. Control valve regula fluxo fino — automática com atuador.
               </p>
-
               <p>
                 <strong>Pumps</strong> movem fluidos aplicando força. Centrifugal pump (força centrífuga, tipo hélice) é rápida, eficiente em alto volume, mas precisa de startup power. Positive displacement pump (deslocamento positivo) move volume fixo por ciclo — forte, lenta, confiável mesmo com fluidos viscosos. Submersible pump fica submersa — usada para lift em poços.
               </p>
-
               <p>
                 <strong>Pipes</strong> transportam fluidos. Especificações: diâmetro (inches), espessura de parede (wall thickness), material (carbon steel/aço carbono, stainless/inox, composite), e pressure rating (nominal pipe size vs actual OD/ID). Pipeline é uma série de pipes soldados — pode ter centenas de quilômetros. Um leak em alta pressão é catastrófico.
               </p>
-
               <p>
                 <strong>Rigs</strong> perfuram poços. Onshore rig (em terra) é uma torre com motor, tração para levantar drill pipe, e bomba circulating drilling fluid. Offshore rig (no mar) é uma estrutura maior flutuante. Rotary rig usa rotação do broca. Percussion rig usa impacto (menos comum). As maiores rigs custam US$ 500 milhões+ e alugam por US$ 1+ milhão/dia.
               </p>
-
               <p>
                 Contexto Petrobras prático: Uma plataforma de produção típica tem centenas de válvulas (ball, gate, check, relief, control) em diferentes seções (manifold de cabeça do poço, separadores, compressores, bombas de exportação). Cada válvula tem número de série, especificação de material, pressão de projeto (design pressure), temperatura de operação, e histórico de manutenção. Bombas movem óleo da plataforma para tankers ou costaneira; bombas submersas levantam óleo do fundo do poço se a pressão natural é insuficiente. Tubulações (pipes) conectam tudo — especificações incorretas causam corrosão, rachaduras, vazamentos (blowouts). Rigs são alugadas por projeto — uma perfuração exploratória em 3000m offshore custaria $500M em operação de rig sozinha, então a viabilidade econômica é crítica.
               </p>
-
               <p>
                 CESGRANRIO testa identificação de equipamentos por função ("which valve prevents backflow?"), compreensão de especificações (pressão, material), e aplicação a cenários ("if pump fails, what happens to production?"). Erros comuns: confundir ball valve com check valve (ball controla fluxo bidirecional, check permite apenas uma direção); não entender que relief valve é "proteção" ativa (abre automaticamente sob pressão alta); achar que todas as bombas funcionam igual (centrifugal vs positive displacement têm características muito diferentes). Vocabulário técnico é altamente contextual — "pump failure" numa prova pode significar: bomba não liga, bomba liga mas não produz pressão, bomba ligada mas com vazamento. Cada um requer diagnóstico e solução diferente, e essa nuance aparece em questões de compreensão.
               </p>
-
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-lg border border-purple-200 dark:border-purple-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Equipamentos Principais e Funções</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
@@ -691,7 +616,6 @@ export default function AulaVocabulary({
                 </div>
               </div>
             </div>
-
             <ContentAccordion
               slides={[
                 {
@@ -799,20 +723,18 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <AlertBox tipo="danger"
                         titulo="Confusão #1: Pump vs Valve"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "Pump", content: "Centrifugal pump supplies water at 100 GPM" }}
-                          lado2={{ label: "Valve", content: "Ball valve controls the pump discharge flow" }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "Pump", content: "Centrifugal pump supplies water at 100 GPM", description: "Contexto Petrobras", variant: "info"}} 
+                          right={{ title: "Valve", content: "Ball valve controls the pump discharge flow", description: "Contexto Petrobras", variant: "info"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="warning"
                         titulo="Confusão #2: Pipe vs Pipeline vs Piping"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "Pipe", content: "A single 6-inch carbon steel pipe" }}
-                          lado2={{ label: "Pipeline", content: "A 500-km pipeline transporting crude to refinery" }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "Pipe", content: "A single 6-inch carbon steel pipe", description: "Contexto Petrobras", variant: "info"}} 
+                          right={{ title: "Pipeline", content: "A 500-km pipeline transporting crude to refinery", description: "Contexto Petrobras", variant: "info"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="info" titulo="Dica #3: Rig vs Drill vs Drilling"><p>Rig = equipamento físico. Drill/Drilling = ação. 'The rig is drilling the well' = a máquina está perfurando.</p></AlertBox>
@@ -821,7 +743,6 @@ export default function AulaVocabulary({
                 },
               ]}
             />
-
             <div className="space-y-4">
               <h4 className="font-bold text-lg">FlipCards: Equipamentos Técnicos</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -852,11 +773,8 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-
-          <ModuleConsolidation
-            numero={3}
+          <ModuleConsolidation index={3}
             variant={mv[3]}
-            onComplete={() => handleModuleComplete("modulo-3")}
             maceteVisual={{
               title: "Industrial Equipment - Valves, Pumps & Pipes",
               content: (
@@ -867,60 +785,43 @@ export default function AulaVocabulary({
                   <p><strong>Manifold:</strong> System of pipes and valves that directs fluid flow to multiple destinations</p>
                 </div>
               ),
-            }}
-          >
-            <QuizInterativo
-              questoes={quizM3}
-              numero={3}
-              onComplete={() => handleModuleComplete("modulo-3")}
-            />
-          </ModuleConsolidation>
+          }} 
+            video={{ videoId: "h3S9XW1WzIk", title: "Technical English Masterclass", duration: "12:45" }}
+            resumoVisual={{ moduloNome: "Vocabulário", tituloAula: "Inglês Petrobras", materia: "Inglês", images: [] }}
+            audio={{ audioUrl: "https://www.google.com", titulo: "Podclass Vocabulário", artista: "Professor de Inglês" }} />
+          <QuizInterativo questoes={quizM3} titulo="Desafio de Vocabulário" numero={3} variant={mv[3]} onComplete={() => handleModuleComplete("modulo-3")} />
         </div>
       </TabsContent>
-
       {/* ═══ MÓDULO 4: SAFETY & HSE ═══ */}
       <TabsContent value="modulo-4">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={4}
-            titulo="Safety & HSE (PPE, Hazard, Incident, Compliance)"
-            variant={mv[4]}
-            />
-
+          <ModuleBanner numero={4} titulo="Safety & HSE" descricao="Domínio de termos técnicos e expressões essenciais do setor." variant={mv[4]} />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              titulo="HSE: Mais Que Compliance, É Cultura"
+            <ModuleSectionHeader index={4}
+              title="HSE: Mais Que Compliance, É Cultura"
               />
-
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 HSE (Health, Safety, Environment) é o pilar mais importante da cultura corporativa Petrobras. Não é apenas regulamentação — é sobrevivência. A indústria de óleo e gás carrega riscos inerentes: pressão alta, temperaturas extremas, produtos inflamáveis, gases tóxicos, ambientes isolados. Um pequeno erro pode causar explosão, vazamento, morte. Por isso Petrobras investe billions em HSE: treinamento obrigatório, auditorias regulares, cultura Zero Harm (zero acidentes).
               </p>
-
               <p>
                 <strong>PPE (Personal Protective Equipment):</strong> Hard hat protege cabeça de queda/impacto. Safety glasses protege olhos de sprays/particles. Safety gloves (nitrila para química, couro para abrasão, composite para múltiplos riscos). Safety boots com toe cap (ponta de aço) para esmagamento, eletricamente isoladas em áreas com risco elétrico. Respirator para ambientes com gases/vapores perigosos. Harness para trabalho em altura.
               </p>
-
               <p>
                 <strong>Hazard (Perigo):</strong> Qualquer situação que PODE causar dano. Chemical hazard (vazamento de ácido, exposição a H2S). Thermal hazard (superfícies quentes). Mechanical hazard (peças móveis, torque, engrenagens). Electrical hazard (choque, arco elétrico). Biological hazard (bactérias, vírus em ambientes marinhos). CESGRANRIO frequentemente testa "identify hazards" = reconhecer riscos antes que virem acidentes.
               </p>
-
               <p>
                 <strong>Incident (Incidente):</strong> Qualquer EVENTO com potencial de causar dano. Accident = incidente que CAUSOU dano (lesão, morte, perda de propriedade). Near-miss = incidente que QUASE causou dano (escapou por sorte). Injury = ferimento corporativo (cut, burn, fracture). Spill/Leak = vazamento de produto. Explosion = reação violenta (raro mas catastrófico). Toda empresa tem protocolo de incident reporting para análise e prevenção.
               </p>
-
               <p>
                 <strong>Compliance (Conformidade):</strong> Seguir regulations (leis/regulações estaduais/federais), standards (ISO 14001 para ambiente, OHSAS 18001 para segurança), procedures (guias operacionais), audits (verificação de conformidade), corrective actions (ações corretivas se não-conformidade encontrada), certifications (prova de cumprimento). Non-compliance resulta em multas, perda de licença operacional, ou encerramento de operações.
               </p>
-
               <p>
                 Contexto Petrobras real: A empresa tem "Zero Harm" como meta corporativa — significa ZERO mortes, ZERO lesões graves. Trabalhos em altura (towers, platforms) exigem harness + rope access training. Trabalho em "confined spaces" (tanques, tubagens) requer respirador + safety watch + permit-to-work. Exposição a H2S (hydrogen sulfide gas) é letal em segundos — qualquer operação em campos com H2S requer treinamento certificado e monitoramento contínuo com detectores. Offshore trabalha com sistema IMCA (International Marine Contractors Association) padrões. Incidentes são investigados por Time Investigador usando RCA (Root Cause Analysis) — objetivo é não punir, mas entender "why did it happen?" e prevenir repetição. Cultura de reportar near-misses é encorajada ("if it could have been an accident, REPORT IT") porque é oportunidade de aprender sem alguém ter ferido.
               </p>
-
               <p>
                 CESGRANRIO testa compreensão de "hazard vs risk" (hazard = situação potencial, risk = probabilidade + consequência), diferença entre "incident vs accident" (accident = incidente que causou dano), e aplicação prática de HSE ("if you see a spill, what do you do?"). Erros comuns: confundir "PPE" com "control" (PPE é última defesa, deve-se eliminar hazard primeiro através de engineering controls); achar que "compliance" é just "follow rules" (é framework inteiro para evitar dano); não entender que "incident" inclui near-misses (muitos acham que só accounts coisas que machucaram). Vocabulário HSE é legal-formal, então tons e contexto são críticos — "non-compliance" é mais grave que "issue", "corrective action" é mais permanente que "temporary fix". Em provas CESGRANRIO, cenários realistas (e.g., "worker found sleeping in confined space — what should supervisor do?") testam julgamento, não só memorização.
               </p>
-
               <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 rounded-lg border border-red-200 dark:border-red-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">HSE Framework</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
@@ -943,7 +844,6 @@ export default function AulaVocabulary({
                 </div>
               </div>
             </div>
-
             <ContentAccordion
               slides={[
                 {
@@ -1048,20 +948,18 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <AlertBox tipo="danger"
                         titulo="Confusão #1: Hazard vs Incident vs Accident"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "Hazard", content: "Slippery floor (risk potential)" }}
-                          lado2={{ label: "Incident", content: "Worker slipped on floor (event that happened)" }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "Hazard", content: "Slippery floor (risk potential)", description: "Contexto Petrobras", variant: "info"}} 
+                          right={{ title: "Incident", content: "Worker slipped on floor (event that happened)", description: "Contexto Petrobras", variant: "info"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="warning"
                         titulo="Confusão #2: Near-Miss = IMPORTANTE"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "Accident", content: "Worker fell and broke leg" }}
-                          lado2={{ label: "Near-Miss", content: "Worker tripped but grabbed railing and didn't fall" }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "Accident", content: "Worker fell and broke leg", description: "Contexto Petrobras", variant: "info"}} 
+                          right={{ title: "Near-Miss", content: "Worker tripped but grabbed railing and didn't fall", description: "Contexto Petrobras", variant: "info"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="info" titulo="Dica #3: PETROBRAS = HSE FOCUSED"><p>Petrobras é conhecida por HSE rigoroso. Prioriza segurança acima de produção. Qualquer pergunta sobre trade-off entre lucro e segurança = escolha segurança.</p></AlertBox>
@@ -1070,7 +968,6 @@ export default function AulaVocabulary({
                 },
               ]}
             />
-
             <div className="space-y-4">
               <h4 className="font-bold text-lg">FlipCards: Termos HSE</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1101,11 +998,8 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-
-          <ModuleConsolidation
-            numero={4}
+          <ModuleConsolidation index={4}
             variant={mv[4]}
-            onComplete={() => handleModuleComplete("modulo-4")}
             maceteVisual={{
               title: "Safety & HSE - PPE, Hazards & Compliance",
               content: (
@@ -1116,60 +1010,43 @@ export default function AulaVocabulary({
                   <p><strong>SOP (Standard Operating Procedure):</strong> Step-by-step guide to safely execute critical tasks like confined space entry</p>
                 </div>
               ),
-            }}
-          >
-            <QuizInterativo
-              questoes={quizM4}
-              numero={3}
-              onComplete={() => handleModuleComplete("modulo-4")}
-            />
-          </ModuleConsolidation>
+          }} 
+            video={{ videoId: "h3S9XW1WzIk", title: "Technical English Masterclass", duration: "12:45" }}
+            resumoVisual={{ moduloNome: "Vocabulário", tituloAula: "Inglês Petrobras", materia: "Inglês", images: [] }}
+            audio={{ audioUrl: "https://www.google.com", titulo: "Podclass Vocabulário", artista: "Professor de Inglês" }} />
+          <QuizInterativo questoes={quizM4} titulo="Desafio de Vocabulário" numero={4} variant={mv[4]} onComplete={() => handleModuleComplete("modulo-4")} />
         </div>
       </TabsContent>
-
       {/* ═══ MÓDULO 5: FINANCIAL & BUSINESS TERMS ═══ */}
       <TabsContent value="modulo-5">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={5}
-            titulo="Financial & Business Terms (CAPEX, OPEX, Brent)"
-            variant={mv[5]}
-            />
-
+          <ModuleBanner numero={5} titulo="Financial & Business Terms" descricao="Domínio de termos técnicos e expressões essenciais do setor." variant={mv[5]} />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              titulo="Business & Finance: O Lado Econômico"
+            <ModuleSectionHeader index={5}
+              title="Business & Finance: O Lado Econômico"
               />
-
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Petrobras é uma empresa de capital intensivo — projetos de bilhões de dólares que levam 5-10 anos para retorno sobre investimento. Entender linguagem financeira é crítico para compreender decisões estratégicas. Um projeto pode ser tecnicamente bom mas economicamente inviável se o price do Brent (benchmark internacional) cair. Ou um CAPEX (investimento inicial) gigante pode ser justificado se OPEX (custos diários) forem baixos e o poço produzir por 30 anos.
               </p>
-
               <p>
                 <strong>Brent Crude:</strong> Benchmark de preço de óleo usado globalmente (especialmente Europa/África/Ásia). WTI (West Texas Intermediate) é outro benchmark para América do Norte. Preço flutuante: pode ser US$ 40/bbl em recessão, US$ 120/bbl em stress geopolítico. Um bbl = 159 litros. Petrobras faz hedge (proteção) de preço para reduzir volatilidade. Se Brent cai, receita cai — menos dinheiro para investimento.
               </p>
-
               <p>
                 <strong>CAPEX (Capital Expenditure):</strong> Investimento em ativos de longa duração: plataforma offshore (US$ 1-3 bilhões), refinaria nova (US$ 5-10 bilhões), pipeline (centenas de milhões). CAPEX é amortizado ao longo de vida útil (asset depreciation). Decisão de CAPEX requer aprovação de conselho porque envolve bilhões e 20+ anos de compromisso.
               </p>
-
               <p>
                 <strong>OPEX (Operating Expense):</strong> Custos operacionais diários: salários, manutenção, peças sobressalentes, combustível para operação, água de processo, taxas regulatórias. OPEX é despesa corrente (deducted imediatamente do lucro). Reduzir OPEX é meta constante — automação, eficiência, renegociação com fornecedores. Se OPEX é alto, projeto é menos lucrativo mesmo se Brent for alto.
               </p>
-
               <p>
                 <strong>Stakeholder:</strong> Qualquer pessoa interessada na empresa: acionistas (querem lucro), empregados (querem salário/benefícios), governo (quer impostos/compliance), comunidade local (quer meio ambiente limpo), fornecedores (querem pagamento pontual). Gestão de stakeholders = equilibrar interesses conflitantes. Uma decisão que aumenta lucro de acionistas pode prejudicar comunidade local.
               </p>
-
               <p>
                 Métricas financeiras que CESGRANRIO testa: NPV (Net Present Value) = valor presente de fluxo de caixa futuro descontado a taxa de juros. Projeto com NPV positivo é viável. IRR (Internal Rate of Return) = taxa de retorno anual. Payback period = quantos anos até recuperar investimento inicial. Break-even price = mínimo preço de Brent para projeto ser lucrativo (e.g., "break-even é US$ 45/bbl — abaixo disso, projeto perde dinheiro"). Margin = diferença entre receita e custo. Esses conceitos aparecem em textos de análise de viabilidade de projetos.
               </p>
-
               <p>
                 CESGRANRIO testa identificação de que termos pertencem a que categoria (CAPEX vs OPEX?), entendimento de relação causal (se Brent cai, o que acontece com profit?), e aplicação a cenários ("se projeto A tem OPEX baixo mas CAPEX alto, e projeto B tem OPEX alto mas CAPEX baixo, qual é mais viável?"). Erros comuns: confundir CAPEX (investimento de longo prazo) com OPEX (custos diários); achar que "higher CAPEX = always bad" (pode ser justificado se OPEX for significativamente menor); não entender que price do Brent afeta VIABILIDADE inteira de um projeto (um "good project" em Brent US$ 80/bbl vira "bad project" em Brent US$ 30/bbl). Linguagem financeira também requer compreensão de nuances — "cost reduction" é diferente de "cost cutting" (primeiro é estratégico, segundo é reativo e pode prejudicar qualidade).
               </p>
-
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-lg border border-green-200 dark:border-green-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Economic Framework</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
@@ -1192,7 +1069,6 @@ export default function AulaVocabulary({
                 </div>
               </div>
             </div>
-
             <ContentAccordion
               slides={[
                 {
@@ -1300,20 +1176,18 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <AlertBox tipo="danger"
                         titulo="Confusão #1: CAPEX vs OPEX"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "CAPEX", content: "$3B for platform construction (one-time, amortized)" }}
-                          lado2={{ label: "OPEX", content: "$200M annual operating costs (recurring, yearly)" }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "CAPEX", content: "$3B for platform construction (one-time, amortized)", description: "Contexto Petrobras", variant: "info"}} 
+                          right={{ title: "OPEX", content: "$200M annual operating costs (recurring, yearly)", description: "Contexto Petrobras", variant: "info"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="warning"
                         titulo="Confusão #2: Brent é Receita, NÃO Lucro"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "Revenue", content: "100,000 bbl/d × $100/bbl = $10M daily (gross)" }}
-                          lado2={{ label: "Profit", content: "$10M revenue - $3M OPEX - taxes = actual profit" }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "Revenue", content: "100,000 bbl/d × $100/bbl = $10M daily (gross)", description: "Contexto Petrobras", variant: "info"}} 
+                          right={{ title: "Profit", content: "$10M revenue - $3M OPEX - taxes = actual profit", description: "Contexto Petrobras", variant: "info"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="info" titulo="Dica #3: Stakeholder = EQUILIBRIO"><p>Não existe decisão que agrada 100% dos stakeholders. Gestão = negociar compromissos.</p></AlertBox>
@@ -1322,7 +1196,6 @@ export default function AulaVocabulary({
                 },
               ]}
             />
-
             <div className="space-y-4">
               <h4 className="font-bold text-lg">FlipCards: Termos Financeiros</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1353,11 +1226,8 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-
-          <ModuleConsolidation
-            numero={5}
+          <ModuleConsolidation index={5}
             variant={mv[5]}
-            onComplete={() => handleModuleComplete("modulo-5")}
             maceteVisual={{
               title: "Financial & Business Terms - CAPEX, OPEX & Brent",
               content: (
@@ -1368,60 +1238,43 @@ export default function AulaVocabulary({
                   <p><strong>NPV (Net Present Value):</strong> Future value discounted to today - NPV {'>'} 0 means economically viable</p>
                 </div>
               ),
-            }}
-          >
-            <QuizInterativo
-              questoes={quizM5}
-              numero={3}
-              onComplete={() => handleModuleComplete("modulo-5")}
-            />
-          </ModuleConsolidation>
+          }} 
+            video={{ videoId: "h3S9XW1WzIk", title: "Technical English Masterclass", duration: "12:45" }}
+            resumoVisual={{ moduloNome: "Vocabulário", tituloAula: "Inglês Petrobras", materia: "Inglês", images: [] }}
+            audio={{ audioUrl: "https://www.google.com", titulo: "Podclass Vocabulário", artista: "Professor de Inglês" }} />
+          <QuizInterativo questoes={quizM5} titulo="Desafio de Vocabulário" numero={5} variant={mv[5]} onComplete={() => handleModuleComplete("modulo-5")} />
         </div>
       </TabsContent>
-
       {/* ═══ MÓDULO 6: ENVIRONMENTAL TERMS ═══ */}
       <TabsContent value="modulo-6">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={6}
-            titulo="Environmental Terms (Carbon Footprint, ESG)"
-            variant={mv[6]}
-            />
-
+          <ModuleBanner numero={6} titulo="Environmental Terms" descricao="Domínio de termos técnicos e expressões essenciais do setor." variant={mv[6]} />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              titulo="Environmental: A Transição Energética"
+            <ModuleSectionHeader index={6}
+              title="Environmental: A Transição Energética"
               />
-
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 ESG (Environmental, Social, Governance) é o framework que define sustentabilidade corporativa. Institucional investors (fundos de pensão, seguros) agora exigem ESG compliance antes de investir bilhões. Petrobras tem meta Net-Zero Upstream 2030 e Net-Zero Scope 1+2 por 2050. Mas como uma oil company chega a net-zero enquanto produz bilhões de barris? Resposta: investimento em renewable energy (eólica, solar), carbon capture (captura de CO2 e injeção no solo), e transição gradual.
               </p>
-
               <p>
                 <strong>Carbon Footprint:</strong> Medida total de emissões de GHG (greenhouse gases) causadas por atividade. Medido em toneladas de CO2-equivalente (tCO2e). Scope 1 = emissões diretas da operação (queima de combustível na plataforma). Scope 2 = emissões indiretas da eletricidade comprada. Scope 3 = emissões da cadeia de valor (combustão do produto vendido, que é o maior para oil company). Reduzir carbon footprint = menos queima, mais eficiência, melhor tecnologia.
               </p>
-
               <p>
                 <strong>ESG Compliance:</strong> Seguir padrões de sustentabilidade corporativa. Climate Action (reduzir emissões), Renewable Energy (investir em solar/eólica), Circular Economy (reuso, reciclagem), Diversity & Inclusion (equidade de gênero, etnias), Good Governance (corrupção zero, transparência). Empresas com bom ESG score recebem menor custo de capital (empréstimos mais baratos) e atratizam investimento.
               </p>
-
               <p>
                 <strong>Net-Zero Commitment:</strong> Compromisso de reduzir emissões a zero. "Net" significa que permanecer com algumas emissões é OK se forem OFFSET por carbon removal (captura e armazenamento). Petrobras comprometeu Net-Zero Upstream 2030: reduzir emissões de operação em 25% até 2030. Mas combustão do produto vendido ainda emitirá — aí entra carbon removal como offset.
               </p>
-
               <p>
                 Contexto Petrobras prático: A empresa tem operações com diferentes carbon intensities. Pré-sal (poços novos, eficientes) = ~5 tCO2e/bbl. Campos antigos (Bacia de Campos) = ~12-15 tCO2e/bbl. Estratégia: investir em pré-sal (baixa emissão, alta margem), decommission campos antigos de alta emissão. Renewable energy é prioridade — estão desenvolvendo parques eólicos/solares para alimentar plataformas, reduzindo diesel consumption. Carbon capture é exótica mas promissora — tecnologia ainda cara, mas governo oferece incentivos. Flaring (queima de gás sem valor) é regulado; Petrobras investe em gas processing para monetizar (vender gás) em vez de queimar.
               </p>
-
               <p>
                 CESGRANRIO testa diferenciação entre escopos (qual emissão é Scope 1?), entendimento de trade-offs (se Petrobras parar de produzir óleo, emissões da operação vão a zero mas: 1) perdem receita, 2) alguém mais vai produzir (talvez com tecnologia mais suja)). Conceitos avançados: "carbon intensity" (emissão por barril — métrica de eficiência operacional), "net-zero vs carbon-neutral" (net-zero permite offset, carbon-neutral é zero puro — diferença importante), "green energy" vs "renewable energy" vs "clean energy" (termos frequentemente confundidos). ESG também inclui social e governance — diversidade no board, salários justos, anti-corrupção — então resposta correta pode requerer compreender múltiplas dimensões.
               </p>
-
               <p>
                 Erros comuns: achar que "ESG" é só environmental (na verdade, é 3 pilares); confundir "net-zero" com "zero emissions" (net-zero permite offsets, zero puro não); não entender que "carbon footprint" de oil company é dominado por Scope 3 (combustão do produto, não operação); interpretar "sustainable" como "100% green" (na prática, é "less harmful than alternatives"). Vocabulário ESG é crescente em relatórios anuais Petrobras, comunicados de imprensa, apresentações a investidores — então candidatos precisam reconhecer termos em contexto corporativo formal (linguagem mais técnica, menos coloquial).
               </p>
-
               <div className="bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-950/30 dark:to-teal-950/30 rounded-lg border border-green-200 dark:border-green-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">ESG Framework</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
@@ -1444,7 +1297,6 @@ export default function AulaVocabulary({
                 </div>
               </div>
             </div>
-
             <ContentAccordion
               slides={[
                 {
@@ -1549,20 +1401,18 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <AlertBox tipo="danger"
                         titulo="Confusão #1: Carbon vs Emissions"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "Carbon", content: "Shorthand for CO2-equivalent (includes all GHG)" }}
-                          lado2={{ label: "Emissions", content: "Broader: all air pollutants (CO2, CH4, NOx, etc)" }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "Carbon", content: "Shorthand for CO2-equivalent (includes all GHG)", description: "Contexto Petrobras", variant: "info"}} 
+                          right={{ title: "Emissions", content: "Broader: all air pollutants (CO2, CH4, NOx, etc)", description: "Contexto Petrobras", variant: "info"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="warning"
                         titulo="Confusão #2: Net-Zero ≠ Zero Absoluto"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "Net-Zero", content: "Reduce 80%, offset 20% = net zero (achievable)" }}
-                          lado2={{ label: "Zero", content: "0% emissions (impossible for fossil fuels)" }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "Net-Zero", content: "Reduce 80%, offset 20% = net zero (achievable)", description: "Contexto Petrobras", variant: "info"}} 
+                          right={{ title: "Zero", content: "0% emissions (impossible for fossil fuels)", description: "Contexto Petrobras", variant: "info"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="info" titulo="Dica #3: Scope 3 é o MAIOR Problema"><p>Para oil company, quando cliente queima o combustível, emissões são enormes. Escopo 3 &gt;&gt; Escopo 1+2. Net-zero deve incluir Scope 3.</p></AlertBox>
@@ -1571,7 +1421,6 @@ export default function AulaVocabulary({
                 },
               ]}
             />
-
             <div className="space-y-4">
               <h4 className="font-bold text-lg">FlipCards: Termos Ambientais</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1602,11 +1451,8 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-
-          <ModuleConsolidation
-            numero={6}
+          <ModuleConsolidation index={6}
             variant={mv[6]}
-            onComplete={() => handleModuleComplete("modulo-6")}
             maceteVisual={{
               title: "Environmental Terms - Carbon Footprint & ESG",
               content: (
@@ -1617,60 +1463,43 @@ export default function AulaVocabulary({
                   <p><strong>CCS (Carbon Capture & Storage):</strong> Capture CO2 and inject 2km deep for permanent sequestration</p>
                 </div>
               ),
-            }}
-          >
-            <QuizInterativo
-              questoes={quizM6}
-              numero={3}
-              onComplete={() => handleModuleComplete("modulo-6")}
-            />
-          </ModuleConsolidation>
+          }} 
+            video={{ videoId: "h3S9XW1WzIk", title: "Technical English Masterclass", duration: "12:45" }}
+            resumoVisual={{ moduloNome: "Vocabulário", tituloAula: "Inglês Petrobras", materia: "Inglês", images: [] }}
+            audio={{ audioUrl: "https://www.google.com", titulo: "Podclass Vocabulário", artista: "Professor de Inglês" }} />
+          <QuizInterativo questoes={quizM6} titulo="Desafio de Vocabulário" numero={6} variant={mv[6]} onComplete={() => handleModuleComplete("modulo-6")} />
         </div>
       </TabsContent>
-
       {/* ═══ MÓDULO 7: MANAGEMENT & PROJECTS ═══ */}
       <TabsContent value="modulo-7">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={7}
-            titulo="Management & Projects (KPI, Milestone, Scope)"
-            variant={mv[7]}
-            />
-
+          <ModuleBanner numero={7} titulo="Management & Projects" descricao="Domínio de termos técnicos e expressões essenciais do setor." variant={mv[7]} />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              titulo="Project Management: Acompanhando o Progresso"
+            <ModuleSectionHeader index={7}
+              title="Project Management: Acompanhando o Progresso"
               />
-
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Projetos em Petrobras são gigantescos: bilhões de dólares, 5-10 anos, milhares de pessoas. Gerenciar tudo requer framework de KPIs (métricas de sucesso), milestones (pontos de verificação), scope (o que está incluído), e deliverables (o que será entregue). Um projeto sem KPI é como navegar sem bússola — você não sabe se está indo bem. Um projeto sem milestones é caótico — ninguém sabe o que vem próximo. Vocabulário de gestão é testado porque entrevistadores querem candidatos que entendem planejamento.
               </p>
-
               <p>
                 <strong>KPI (Key Performance Indicator):</strong> Métrica que mede sucesso. Para projeto upstream: "Complete drilling 2 months ahead of schedule" (tempo), "Maintain safety with zero LTI" (segurança = Lost Time Injury), "Deliver within CAPEX budget ±5%" (custo), "Achieve 90,000 bbl/d production target" (desempenho). Cada KPI tem owner (responsável) e target (número específico). Se KPI não é atingido, projeto é problema.
               </p>
-
               <p>
                 <strong>Milestone:</strong> Ponto-chave de verificação no cronograma. Exemplo: "Jan 2024: Permitting complete", "Mar 2024: Platform piles installed", "Jun 2024: Topsides on deck", "Sep 2024: First oil". Cada milestone tem predecessors (o que deve vir antes) e successors (o que vem depois). Delay em um milestone cascata para todos depois.
               </p>
-
               <p>
                 <strong>Scope:</strong> Definição de O QUE está incluído no projeto. Exemplo: "Scope = drill 50 wells, install platform, build 200-km pipeline, NOT including refining or distribution". Scope creep (adicionar coisas depois) é problema comum — aumenta custo, atrasa prazo. Formal change control: proposição de mudança de escopo deve ser aprovada pelo PMO (Project Management Office).
               </p>
-
               <p>
                 <strong>Deliverable:</strong> Qualquer coisa tangível que o projeto entrega. Podem ser: Documentos (engineering drawings, manuals, reports), Infraestrutura (plataforma, pipeline, refinaria), Serviços (treinamento, operação), Capacidade (50,000 bbl/d of production). Cada deliverable tem acceptance criteria (como sabemos que está "pronto").
               </p>
-
               <p>
                 Contexto Petrobras de projetos reais: Um projeto típico (e.g., desenvolvimento de novo campo) tem phases: Permitting (2-3 anos, regulatory approvals), Engineering (1-2 anos, design detalhado), Procurement (1-2 anos, compra de equipamento), Fabrication (1-3 anos, construção de plataforma), Installation (6-18 meses, montagem no site), Hook-up & Testing (3-6 meses, integração de sistemas), Ramp-up (2-4 meses, aumento gradual de produção). Total: 8-15 anos de primeira permissão a produção máxima. Cada fase tem gates (go/no-go decision points). Se permitting falha, projeto inteiro é parado. Se instalação atrasa, "first oil" (produção inicial) atrasa, afetando NPV inteiro — por isso milestones críticos são rastreados obsessivamente.
               </p>
-
               <p>
                 CESGRANRIO testa compreensão de relações de sequência (qual milestone pode ser paralelo? qual é sequential?), diferenciação entre termos (KPI vs milestone vs deliverable — são coisas diferentes), e aplicação a cenários ("if platform installation is delayed 3 months, what happens to first oil target?"). Erros comuns: confundir "scope" com "deliverable" (scope é WHAT vai ser feito, deliverable é WHAT é entregue); achar que "scope creep" é sempre ruim (pode ser justificado se negócio muda); não entender que "critical path" determina prazo total — se atrasa qualquer atividade no critical path, projeto inteiro atrasa (atividades non-critical podem atrasar um pouco sem afetar prazo final). Linguagem de PM é também formal — "schedule variance", "cost variance", "value earned" — termos técnicos com definições precisas em PMBOK (Project Management Body of Knowledge).
               </p>
-
               <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Project Framework</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
@@ -1693,7 +1522,6 @@ export default function AulaVocabulary({
                 </div>
               </div>
             </div>
-
             <ContentAccordion
               slides={[
                 {
@@ -1801,20 +1629,18 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <AlertBox tipo="danger"
                         titulo="Confusão #1: Milestone vs Deliverable"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "Milestone", content: "Oct 2024: Platform installation complete (TIME)" }}
-                          lado2={{ label: "Deliverable", content: "Offshore platform 100% ready (THING)" }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "Milestone", content: "Oct 2024: Platform installation complete (TIME)", description: "Contexto Petrobras", variant: "info"}} 
+                          right={{ title: "Deliverable", content: "Offshore platform 100% ready (THING)", description: "Contexto Petrobras", variant: "info"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="warning"
                         titulo="Confusão #2: Target vs Baseline"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "Baseline", content: "Current: schedule slippage 2 months" }}
-                          lado2={{ label: "Target", content: "Goal: eliminate slippage, deliver on time" }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "Baseline", content: "Current: schedule slippage 2 months", description: "Contexto Petrobras", variant: "info"}} 
+                          right={{ title: "Target", content: "Goal: eliminate slippage, deliver on time", description: "Contexto Petrobras", variant: "info"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="info" titulo="Dica #3: Crítico vs Não-Crítico"><p>Milestone no Critical Path = atraso cascata. Milestone não-crítico = float (margem de atraso sem impacto no prazo total).</p></AlertBox>
@@ -1823,7 +1649,6 @@ export default function AulaVocabulary({
                 },
               ]}
             />
-
             <div className="space-y-4">
               <h4 className="font-bold text-lg">FlipCards: Termos de Gestão</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1854,11 +1679,8 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-
-          <ModuleConsolidation
-            numero={7}
+          <ModuleConsolidation index={7}
             variant={mv[7]}
-            onComplete={() => handleModuleComplete("modulo-7")}
             maceteVisual={{
               title: "Management & Projects - KPI, Milestone & Scope",
               content: (
@@ -1869,60 +1691,43 @@ export default function AulaVocabulary({
                   <p><strong>Scope Creep:</strong> Uncontrolled addition of items after scope closure - increases cost and schedule</p>
                 </div>
               ),
-            }}
-          >
-            <QuizInterativo
-              questoes={quizM7}
-              numero={3}
-              onComplete={() => handleModuleComplete("modulo-7")}
-            />
-          </ModuleConsolidation>
+          }} 
+            video={{ videoId: "h3S9XW1WzIk", title: "Technical English Masterclass", duration: "12:45" }}
+            resumoVisual={{ moduloNome: "Vocabulário", tituloAula: "Inglês Petrobras", materia: "Inglês", images: [] }}
+            audio={{ audioUrl: "https://www.google.com", titulo: "Podclass Vocabulário", artista: "Professor de Inglês" }} />
+          <QuizInterativo questoes={quizM7} titulo="Desafio de Vocabulário" numero={7} variant={mv[7]} onComplete={() => handleModuleComplete("modulo-7")} />
         </div>
       </TabsContent>
-
       {/* ═══ MÓDULO 8: PROCUREMENT & CONTRACTS ═══ */}
       <TabsContent value="modulo-8">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={8}
-            titulo="Procurement & Contracts (Tender, Bid, Liability)"
-            variant={mv[8]}
-            />
-
+          <ModuleBanner numero={8} titulo="Procurement & Contracts" descricao="Domínio de termos técnicos e expressões essenciais do setor." variant={mv[8]} />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              titulo="Procurement: Gerenciando a Cadeia de Suprimento"
+            <ModuleSectionHeader index={8}
+              title="Procurement: Gerenciando a Cadeia de Suprimento"
               />
-
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Procurement representa 40-50% dos custos totais de um projeto Petrobras. Para um projeto de US$ 2 bilhões, US$ 800M+ vão para compras de equipamento, contratação de serviços, construção. O processo é rigidamente formal: transparência, competição, compliance. Qualquer desvio resulta em investigação, multas, execução ou desempenho contratual. Este módulo apresenta vocabulário crítico: tender (licitação), bid (proposta), contract (contrato), liability (responsabilidade legal).
               </p>
-
               <p>
                 <strong>Tender:</strong> Processo formal de licitação. Petrobras publica tender documents (especificações técnicas, termos comerciais, cronograma, requisitos de qualificação). Fornecedores respondem com bid (proposta) contendo preço, prazos, metodologia. Avaliação: técnica (é capaz?) + comercial (quem é mais barato?). Vencedor é informado; perdedores podem protestar em tribunal.
               </p>
-
               <p>
                 <strong>Bid:</strong> Proposta formal de fornecedor ao tender. Deve incluir: preço (lump sum ou unit rate?), cronograma (quando entrega?), metodologia (como você vai fazer?), organização (quem faz?), qualificações (experiência anterior?). Um bid bem escrito = maior chance de ganhar. Bid ruins = desqualificação imediata.
               </p>
-
               <p>
                 <strong>Contract:</strong> Acordo vinculante entre Petrobras (cliente) e contractor (fornecedor). Define: Scope (o quê), Schedule (quando), Price (quanto), Liability (quem paga se algo der errado), Insurance (coberturas obrigatórias), Warranty (garantia de performance). Contracts variam: lump sum (preço fixo, risco para contractor), cost-plus (custo + margem, risco para cliente), time & materials (horário + materiais).
               </p>
-
               <p>
                 <strong>Liability:</strong> Responsabilidade legal por danos, atrasos, não-conformidade. Exemplo: "Contractor é responsável por acidentes de seus trabalhadores até US$ 10M. Petrobras é responsável por design errors até US$ 50M." Se contractor não entrega no prazo, Petrobras pode aplicar penalties (multa por dia de atraso). Se Petrobras não paga, contractor pode parar o trabalho ou processar judicialmente.
               </p>
-
               <p>
                 Contexto Petrobras real: Procurements críticos incluem plataformas offshore (gigantescas, bilhões de dólares, 24-36 meses), tubulações submarinas (rede complexa de pipes, milhões de metros), rigs de perfuração (aluguel apenas, contrato de $1M+/dia), e engenharia (design básico e detalhado, 1-3 anos). Tender típica atrai 3-8 bidders internacionais (Technip, Subsea7, Saipem, etc.). Processo é transparente — todos os bidders recebem mesmas informações; perguntas são respondidas em "Addendum" publicado para todos. Petrobras é rigorosa com "technical compliance" — se um bidder não satisfaz requisitos, é desqualificado ANTES de olhar o preço. Protesto legal é comum — perdedores apelam em tribunal, pode atrasar projeto 6-12 meses se apelo tem mérito.
               </p>
-
               <p>
                 CESGRANRIO testa diferenciação entre fases do processo (tender vs bid vs contract), compreensão de motivações diferentes (contractor quer lucro, Petrobras quer qualidade + prazo), e aplicação a cenários realistas ("if contractor não tem experiência no Escopo, deve ser desqualificado mesmo se preço é melhor?"). Erros comuns: confundir "tender" (processo) com "bid" (proposta); achar que "lowest bid always wins" (na verdade, avaliação é técnico+comercial, não só preço); não entender que "liability cap" (limite de responsabilidade) é negociável e afeta viabilidade para contractor. Vocabulário procurement inclui termos legais formais ("indemnification", "force majeure", "material breach") que aparecem em contratos reais. Linguagem é também setorial — "mobilization" (preparação do site), "demobilization" (desmontagem), "standby" (tempo ocioso pago porque contractor fica disponível mesmo sem trabalho) — termos específicos de projetos E&P.
               </p>
-
               <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Procurement Cycle</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
@@ -1945,7 +1750,6 @@ export default function AulaVocabulary({
                 </div>
               </div>
             </div>
-
             <ContentAccordion
               slides={[
                 {
@@ -2053,20 +1857,18 @@ export default function AulaVocabulary({
                     <div className="space-y-4">
                       <AlertBox tipo="danger"
                         titulo="Confusão #1: Tender vs Bid"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "Tender (convite)", content: "Petrobras publishes: design+build platform" }}
-                          lado2={{ label: "Bid (resposta)", content: "Vendor responds: we'll do it for $180M in 24 months" }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "Tender (convite)", content: "Petrobras publishes: design+build platform", description: "Contexto Petrobras", variant: "info"}} 
+                          right={{ title: "Bid (resposta)", content: "Vendor responds: we'll do it for $180M in 24 months", description: "Contexto Petrobras", variant: "info"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="warning"
                         titulo="Confusão #2: Contract vs Change Order"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "Contract", content: "Original scope: drill 50 wells" }}
-                          lado2={{ label: "Change Order", content: "Add: drill 10 more wells (+$50M, +8 weeks)" }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "Contract", content: "Original scope: drill 50 wells", description: "Contexto Petrobras", variant: "info"}} 
+                          right={{ title: "Change Order", content: "Add: drill 10 more wells (+$50M, +8 weeks)", description: "Contexto Petrobras", variant: "info"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="info" titulo="Dica #3: Liability é DIVISÃO de Risco"><p>Contractor não assume TUDO. Risco dividido: contractor = execução, Petrobras = design/site. Isso é típico.</p></AlertBox>
@@ -2075,7 +1877,6 @@ export default function AulaVocabulary({
                 },
               ]}
             />
-
             <div className="space-y-4">
               <h4 className="font-bold text-lg">FlipCards: Termos de Procurement</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -2106,11 +1907,8 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-
-          <ModuleConsolidation
-            numero={8}
+          <ModuleConsolidation index={8}
             variant={mv[8]}
-            onComplete={() => handleModuleComplete("modulo-8")}
             maceteVisual={{
               title: "Procurement & Contracts - Tender, Bid & Liability",
               content: (
@@ -2121,64 +1919,46 @@ export default function AulaVocabulary({
                   <p><strong>Lump Sum:</strong> Fixed price contract - contractor assumes cost overrun risk, Petrobras is protected</p>
                 </div>
               ),
-            }}
-          >
-            <QuizInterativo
-              questoes={quizM8}
-              numero={3}
-              onComplete={() => handleModuleComplete("modulo-8")}
-            />
-          </ModuleConsolidation>
+          }} 
+            video={{ videoId: "h3S9XW1WzIk", title: "Technical English Masterclass", duration: "12:45" }}
+            resumoVisual={{ moduloNome: "Vocabulário", tituloAula: "Inglês Petrobras", materia: "Inglês", images: [] }}
+            audio={{ audioUrl: "https://www.google.com", titulo: "Podclass Vocabulário", artista: "Professor de Inglês" }} />
+          <QuizInterativo questoes={quizM8} titulo="Desafio de Vocabulário" numero={8} variant={mv[8]} onComplete={() => handleModuleComplete("modulo-8")} />
         </div>
       </TabsContent>
-
       {/* ═══ MÓDULO 9: VOCABULÁRIO EM CONTEXTO PETROBRAS ═══ */}
       <TabsContent value="modulo-9">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={9}
-            titulo="Vocabulary in Petrobras Context (Technical Integration)"
-            variant={mv[9]}
-            />
-
+          <ModuleBanner numero={9} titulo="Petrobras Context" descricao="Domínio de termos técnicos e expressões essenciais do setor." variant={mv[9]} />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              titulo="Integrando Tudo: Vocabulary in Real Business Scenarios"
+            <ModuleSectionHeader index={9}
+              title="Integrando Tudo: Vocabulary in Real Business Scenarios"
               />
-
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Agora que você domina os 8 domínios técnicos, é hora de integrar tudo em cenários realistas. CESGRANRIO não testa "defina CAPEX" em contexto vazio. Em vez disso, apresenta parágrafos longos (150-300 palavras) misturando vocabulário de múltiplos domínios e exigindo que você reconheça significados por contexto. Este módulo apresenta 4 tipos de documentos reais (contraído para proteção de propriedade intelectual) que você encontrará:
               </p>
-
               <p>
                 1. <strong>Operational Reports:</strong> Documento diário/semanal descrevendo atividades de produção. Usa upstream vocabulary (wells, production rate bbl/d, reservoir pressure), HSE language (incidents, hazards, compliance), equipment specs (valve types, pump performance, pipeline specs).
               </p>
-
               <p>
                 2. <strong>Project Proposals:</strong> Business case para novo investimento. Integra: upstream (field potential, reserve estimate), financial (CAPEX $2B, OPEX $30/bbl, Brent assumption $70), environmental (carbon footprint 8 tCO2e/bbl), management (KPIs, milestones, scope), procurement (tender strategy, contractor selection).
               </p>
-
               <p>
                 3. <strong>Safety Bulletins:</strong> Comunicado de incidente/hazard. Usa: HSE vocabulary (near-miss, accident, hazard identification, PPE, incident investigation, corrective actions), equipment terms (específico que falhou), management language (KPIs for safety, compliance, training requirement).
               </p>
-
               <p>
                 4. <strong>Bid Responses & Contracts:</strong> Documento de procurement. Integra: technical specs (equipment, performance, warranty), commercial terms (price, schedule, liability), project language (scope, deliverables, acceptance criteria), HSE commitments (safety record, insurance, training).
               </p>
-
               <p>
                 Estratégia de leitura: Quando você encontrar um documento integrando múltiplos domínios, procure "context clues" para decodificar vocabulário. Exemplo: "Maintenance downtime caused by critical valve failure resulted in loss of 5,000 bbl/d production. Immediate procurement action released emergency supply with expedited delivery. Equipment swap completed within 36 hours; no safety incidents, HSE compliance maintained. Estimated revenue loss $350K at current Brent price." Decodificação: valve (equipment domain) + bbl/d (upstream production domain) + procurement action (business domain) + HSE compliance (safety domain) + Brent price (financial domain). Uma sentença, 5 domínios. Candidato que entende TODOS os termos + como se conectam ganha pontos em compreensão profunda.
               </p>
-
               <p>
                 Estrutura de CESGRANRIO para este módulo: Apresenta cenário complexo (100-300 palavras), faz perguntas de compreensão. Exemplo: "A project discovered increased H2S hazard during well drilling. Immediate corrective actions included...what safety measure is NOT mentioned?" Resposta requer: 1) entender que H2S é hazard (HSE domain), 2) reconhecer que corrective actions são respostas a hazards, 3) ter lido atentamente (muitos candidatos "adivinham"). Outra questão: "If CAPEX increases by 15% and Brent price drops below break-even, what is MOST likely consequence?" Requer: 1) entender CAPEX (financial), 2) entender break-even (financial), 3) conectar impacto: projeto fica inviável = cancelado ou delayed. Integração é a chave — candidatos que dominam individual domains mas não conseguem conectá-los vão ficar com pontuação média.
               </p>
-
               <p>
                 Prática efetiva: Leia textos reais de relatórios Petrobras (disponíveis em investor.petrobras.com.br), identifique vocabulário de cada domain, anote contexto. Faça perguntas a si mesmo: "Por que mencionaram OPEX aqui?" (porque projeto é economicamente viável só se OPEX for baixo). "Por que mencionaram HSE?" (porque um incidente poderia parar a operação, custa milhões). Cada termo tem "por quê" associado. Uma vez que você entenda o porquê, memorização vira natural. Textos de processos licitatórios também são boas práticas — encontre um tender de Petrobras publicado, leia inteiro, identifique vocabulário. Você verá que real business writing mistura todos os domínios simultaneamente, exatamente como CESGRANRIO testa.
               </p>
-
               <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/30 dark:to-blue-950/30 rounded-lg border border-indigo-200 dark:border-indigo-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Tipos de Documentos Petrobras</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
@@ -2201,7 +1981,6 @@ export default function AulaVocabulary({
                 </div>
               </div>
             </div>
-
             <ContentAccordion
               slides={[
                 {
@@ -2310,11 +2089,10 @@ export default function AulaVocabulary({
                       <AlertBox tipo="info" titulo="Padrão CESGRANRIO: Texto Longo + 5 Alternativas"><p>Você recebe parágrafo de 150-300 palavras (operação, projeto, segurança, ou procurement). Pergunta pede: 'O texto implica que X é ...' ou 'A palavra Y neste contexto significa ...' Estratégia: leia o texto 2 vezes. Primeira = compreensão geral. Segunda = local da palavra-alvo + contexto imediato.</p></AlertBox>
                       <AlertBox tipo="warning"
                         titulo="Pegadinha Comum: Significado Literal vs Contextual"
-                        
                       >
-                        <ComparisonSide
-                          lado1={{ label: "Literal", content: "'Platform' = elevated stage for speeches" }}
-                          lado2={{ label: "Contextual (CESGRANRIO)", content: "'The offshore platform produces 100,000 bbl/d' = production structure" }}
+                        <Comparison title="Análise de Uso"
+                          left={{ title: "Literal", content: "'Platform' = elevated stage for speeches", description: "Contexto Petrobras", variant: "info"}} 
+                          right={{ title: "Contextual (CESGRANRIO)", content: "'The offshore platform produces 100,000 bbl/d' = production structure", description: "Contexto Petrobras", variant: "info"}} 
                         />
                       </AlertBox>
                       <AlertBox tipo="success" titulo="Estratégia Vencedora: Eliminate Impossibilities"><p>Se opção A (significado literal) não faz sentido no contexto, elimine. Se opção B (sinônimo incorreto) é tecnicamente impossível, elimine. Sobram as plausíveis — escolha a mais específica ao contexto Petrobras.</p></AlertBox>
@@ -2323,7 +2101,6 @@ export default function AulaVocabulary({
                 },
               ]}
             />
-
             <div className="space-y-4">
               <h4 className="font-bold text-lg">Tabela de Referência: 200+ Termos por Domínio</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg mt-4">
@@ -2362,11 +2139,8 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-
-          <ModuleConsolidation
-            numero={9}
+          <ModuleConsolidation index={9}
             variant={mv[9]}
-            onComplete={() => handleModuleComplete("modulo-9")}
             maceteVisual={{
               title: "Vocabulary in Petrobras Context",
               content: (
@@ -2377,57 +2151,41 @@ export default function AulaVocabulary({
                   <p><strong>First Oil:</strong> Milestone when commercial production starts - marks transition from development to revenue generation</p>
                 </div>
               ),
-            }}
-          >
-            <QuizInterativo
-              questoes={quizM9}
-              numero={3}
-              onComplete={() => handleModuleComplete("modulo-9")}
-            />
-          </ModuleConsolidation>
+          }} 
+            video={{ videoId: "h3S9XW1WzIk", title: "Technical English Masterclass", duration: "12:45" }}
+            resumoVisual={{ moduloNome: "Vocabulário", tituloAula: "Inglês Petrobras", materia: "Inglês", images: [] }}
+            audio={{ audioUrl: "https://www.google.com", titulo: "Podclass Vocabulário", artista: "Professor de Inglês" }} />
+          <QuizInterativo questoes={quizM9} titulo="Desafio de Vocabulário" numero={9} variant={mv[9]} onComplete={() => handleModuleComplete("modulo-9")} />
         </div>
       </TabsContent>
-
       {/* ═══ MÓDULO 10: SIMULADO MESTRE ═══ */}
       <TabsContent value="modulo-10">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={10}
-            titulo="Simulado Mestre (FINAL)"
-            variant={mv[10]}
-            />
-
+          <ModuleBanner numero={10} titulo="Simulado Mestre" descricao="Domínio de termos técnicos e expressões essenciais do setor." variant={mv[10]} />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              titulo="Simulado Mestre: Você Domina Vocabulário Técnico!"
+            <ModuleSectionHeader index={10}
+              title="Simulado Mestre: Você Domina Vocabulário Técnico!"
               />
-
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
                 Parabéns! Você completou 8 módulos com 200+ termos técnicos Petrobras em contexto real. Agora é hora do teste final: simulado com questões estilo CESGRANRIO que misturam domínios, exigem interpretação contextual, e testam se você pode deduzir significado mesmo quando encontra termos desconhecidos. Este módulo apresenta a estratégia final em 8 passos + quiz de consolidação com 8 questões sorteadas de todas as categorias.
               </p>
-
               <p>
                 <strong>A realidade:</strong> CESGRANRIO não testará "O que é upstream?" literalmente. Em vez disso, apresentará parágrafo sobre "descoberta de novo campo pré-sal com potencial de 500 milhões de barris" e perguntará: "Qual é o impacto PRINCIPAL desta descoberta?" (resposta: aumenta reservas, potencial de receita, justifica investimento CAPEX bilionário). Ou apresentará "A empresa decidiu não perfurar este campo porque Brent está US$ 50/bbl" e perguntará "Por que?" (resposta: break-even &gt; Brent atual, projeto economicamente inviável). Ou apresentará incidente com trabalhador lesionado e perguntará "Que categoria de PPE teria prevenido?" (resposta: reconhecer situação + causaroot + solução PPE).
               </p>
-
               <p>
                 Seu objetivo: reconhecer vocabulário por colocação, contexto, padrão. Não precisa saber TUDO — precisa ser capaz de deduzir.
               </p>
-
               <p>
                 Metod integrada: O candidato bem-preparado está confortável em QUALQUER contexto porque entende estrutura. Viu uma operação offshore? Sabe: "haverá equipamento (valves, pumps), vocabulário upstream (wells, reservoir, drilling), HSE concerns (H2S hazard, PPE), e operação de projeto (KPIs, schedule)." Viu um cenário financeiro? Sabe: "CAPEX é investimento inicial, OPEX é custos contínuos, Brent é preço que flutua, e impacta viabilidade." Viu incidente? Sabe: "procure sequência: hazard → incident → investigation → corrective action → prevention." Essa estrutura mental permite você ser eficaz mesmo quando vê termo novo — porque você entende ONDE ele se encaixa no sistema maior.
               </p>
-
               <p>
                 Questões difíceis frequentemente testam nuances: "Qual é a diferença entre 'near-miss' e 'breach' de contrato?" (near-miss = almost happened, breach = violation, não são mesma coisa). "Por que ESG scores importam para Petrobras?" (baixo ESG = menos capital disponível, custo de empréstimos sobe, diminui profitabilidade). "Se um contractor está 3 meses behind schedule, qual é o MAIOR risco?" (atraso cascata em milestones seguintes, podendo atrasar "first oil" months ou years, impactando NPV bilhões). Essas questões requerem compreensão PROFUNDA, não memorização.
               </p>
-
               <p>
                 Sua preparação neste módulo: Complete o simulado de 8 questões. Para cada questão, depois de responder, escreva: 1) O que testava? (vocabulário X? compreensão de conceito Y? lógica de negócios Z?) 2) Por que a resposta correta é aquela? 3) Que contexto clue levou você à resposta? Se você acertou por sorte, revise o módulo correspondente. Se acertou com confiança, parabéns — dominé aquele conceito. Meta final: 8/8 correto E capacidade de EXPLICAR por que cada resposta está certa, não só ter "adivinhou certo."
               </p>
             </div>
-
             <div className="space-y-6">
               <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6">
                 <h4 className="font-bold text-foreground mb-4 flex items-center gap-2">
@@ -2436,57 +2194,56 @@ export default function AulaVocabulary({
                 </h4>
                 <div className="space-y-4">
                   <TimelineItem
-                    step={1}
+                    passo={1}
                     title="Identifique a Categoria"
-                    description="O termo está relacionado a: equipamento? Processo? Pessoa? Substância? Risco? Financeiro? Gestão? Sustentabilidade? Procurement? Categoria restringe possibilidades."
+                    descricao="O termo está relacionado a: equipamento? Processo? Pessoa? Substância? Risco? Financeiro? Gestão? Sustentabilidade? Procurement? Categoria restringe possibilidades."
                     example="Exemplo: 'The operator checked the wellhead pressure.' → Categoria: EQUIPAMENTO (wellhead)"
                   />
                   <TimelineItem
-                    step={2}
+                    passo={2}
                     title="Procure Cognatos Português"
-                    description="Muitas palavras técnicas vêm do português ou latim. 'Perforation' ≈ 'perfuração', 'Reservoir' ≈ 'reservatório', 'Compliance' ≈ 'conformidade'."
+                    descricao="Muitas palavras técnicas vêm do português ou latim. 'Perforation' ≈ 'perfuração', 'Reservoir' ≈ 'reservatório', 'Compliance' ≈ 'conformidade'."
                     example="Cognato: 'distillation' → 'destilação' → processo que separa"
                   />
                   <TimelineItem
-                    step={3}
+                    passo={3}
                     title="Use Contextual Clues"
-                    description="Palavras ao redor revelam significado. Se vê 'valve controls flow', sabe que valve = algo que controla. Se vê 'Brent fell from 100 to 60', sabe que Brent = preço que flutua."
+                    descricao="Palavras ao redor revelam significado. Se vê 'valve controls flow', sabe que valve = algo que controla. Se vê 'Brent fell from 100 to 60', sabe que Brent = preço que flutua."
                     example="Clue: 'deploy drilling rigs' → deploy = colocar, rigs = estruturas → drilling rig = estrutura de perfuração"
                   />
                   <TimelineItem
-                    step={4}
+                    passo={4}
                     title="Elimine Opções Impossíveis"
-                    description="Se frase é 'We installed a pump to move crude oil', opção 'pump = celebração da multidão' é impossível. Elimine. Sobra opção correta."
+                    descricao="Se frase é 'We installed a pump to move crude oil', opção 'pump = celebração da multidão' é impossível. Elimine. Sobra opção correta."
                     example="Impossível: 'The pump celebrates the crew' (nonsense) → Elimina qualquer opção abstrata"
                   />
                   <TimelineItem
-                    step={5}
+                    passo={5}
                     title="Reconheça Colocações"
-                    description="Certas palavras sempre andam juntas: 'capital expenditure' (CAPEX), 'operating expense' (OPEX), 'break-even price', 'first oil', 'production platform'."
+                    descricao="Certas palavras sempre andam juntas: 'capital expenditure' (CAPEX), 'operating expense' (OPEX), 'break-even price', 'first oil', 'production platform'."
                     example="Colocação: 'offshore platform' (não 'offshore pump' ou 'offshore wellhead sozinho') = equipamento grande no mar"
                   />
                   <TimelineItem
-                    step={6}
+                    passo={6}
                     title="Considere a Lógica de Negócios"
-                    description="Petrobras existe para produzir óleo de forma rentável e segura. Decisões respeitam: risco técnico, viabilidade econômica, conformidade HSE/ambiental. Que significado faz sentido nessa lógica?"
+                    descricao="Petrobras existe para produzir óleo de forma rentável e segura. Decisões respeitam: risco técnico, viabilidade econômica, conformidade HSE/ambiental. Que significado faz sentido nessa lógica?"
                     example="Se pergunta menciona atraso + CAPEX + Brent cai, lógica é: atraso aumenta custo, Brent baixo reduz receita, projeto fica economicamente inviável"
                   />
                   <TimelineItem
-                    step={7}
+                    passo={7}
                     title="Valide Contra Sentença Inteira"
-                    description="Escolheu um significado? Substitua na frase original. Faz sentido? Se não, reconsidere. Significado correto deve se encaixar perfeitamente no contexto."
+                    descricao="Escolheu um significado? Substitua na frase original. Faz sentido? Se não, reconsidere. Significado correto deve se encaixar perfeitamente no contexto."
                     example="Significado testado: 'The valve [= device that controls flow] released pressure.' ✓ Faz sentido. Validado."
                   />
                   <TimelineItem
-                    step={8}
+                    passo={8}
                     title="Se Ainda Incerto, Escolha Mais Específico"
-                    description="Se 2 opções parecem corretas, escolha aquela que é MAIS ESPECÍFICA ao contexto Petrobras/técnico, não a genérica."
+                    descricao="Se 2 opções parecem corretas, escolha aquela que é MAIS ESPECÍFICA ao contexto Petrobras/técnico, não a genérica."
                     example="Opção A: 'CAPEX = qualquer investimento' (genérico) vs Opção B: 'CAPEX = investimento em ativos de longa vida' (específico) → B é melhor"
                   />
                 </div>
               </div>
             </div>
-
             <div className="mt-8">
               <h4 className="font-bold text-lg mb-4">Checklist Final: Você Está Pronto?</h4>
               <div className="space-y-3">
@@ -2528,7 +2285,6 @@ export default function AulaVocabulary({
                 </div>
               </div>
             </div>
-
             <div className="bg-gradient-to-r from-emerald-100 to-teal-100 dark:from-emerald-900/40 dark:to-teal-900/40 rounded-lg p-6 mt-8 border border-emerald-300 dark:border-emerald-700">
               <h4 className="font-bold text-foreground mb-2 flex items-center gap-2">
                 <LuCircleCheck className="w-5 h-5 text-emerald-600" />
@@ -2539,11 +2295,8 @@ export default function AulaVocabulary({
               </p>
             </div>
           </section>
-
-          <ModuleConsolidation
-            numero={10}
+          <ModuleConsolidation index={10}
             variant={mv[10]}
-            onComplete={() => handleModuleComplete("modulo-10")}
             maceteVisual={{
               title: "Master Simulator - Complete Petrobras Vocabulary",
               content: (
@@ -2554,20 +2307,20 @@ export default function AulaVocabulary({
                   <p><strong>Integration Test:</strong> Read 200+ word paragraphs mixing 3-4 domains and recognize meanings by context - the ultimate assessment</p>
                 </div>
               ),
-            }}
-          >
-            <QuizInterativo
+          }} 
+            video={{ videoId: "h3S9XW1WzIk", title: "Technical English Masterclass", duration: "12:45" }}
+            resumoVisual={{ moduloNome: "Vocabulário", tituloAula: "Inglês Petrobras", materia: "Inglês", images: [] }}
+            audio={{ audioUrl: "https://www.google.com", titulo: "Podclass Vocabulário", artista: "Professor de Inglês" }} />
+          <QuizInterativo
               questoes={quizFinal}
               numero={3}
               onComplete={() => {
                 handleModuleComplete("modulo-10");
                 onComplete?.();
-              }}
+            }} 
             />
-          </ModuleConsolidation>
         </div>
       </TabsContent>
     </AulaTemplate>
   );
 }
-

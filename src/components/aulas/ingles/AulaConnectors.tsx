@@ -24,16 +24,16 @@ import {
 } from "./data/connectors-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", numero: 1, titulo: "Addition Connectors", descricao: "Furthermore, Moreover, Besides" },
-  { id: "modulo-2", numero: 2, titulo: "Contrast Connectors", descricao: "However, Nevertheless, On the other hand" },
-  { id: "modulo-3", numero: 3, titulo: "Cause Connectors", descricao: "Because, Since, Due to, Owing to" },
-  { id: "modulo-4", numero: 4, titulo: "Effect Connectors", descricao: "Therefore, Thus, Consequently" },
-  { id: "modulo-5", numero: 5, titulo: "Concession", descricao: "Although, Despite, While, Even though" },
-  { id: "modulo-6", numero: 6, titulo: "Condition & Purpose", descricao: "If, Unless, So that, In order to" },
-  { id: "modulo-7", numero: 7, titulo: "Sequential Connectors", descricao: "First, Then, Finally, Subsequently" },
-  { id: "modulo-8", numero: 8, titulo: "Advanced Academic", descricao: "Otherwise, Thereby, Insofar as" },
-  { id: "modulo-9", numero: 9, titulo: "Technical Reports", descricao: "Connectors in Petrobras Documents" },
-  { id: "modulo-10", numero: 10, titulo: "Simulado Mestre", descricao: "Full Practice Test" },
+  { id: "modulo-1", label: "Módulo 1", numero: 1, titulo: "Addition Connectors", descricao: "Furthermore, Moreover, Besides" },
+  { id: "modulo-2", label: "Módulo 2", numero: 2, titulo: "Contrast Connectors", descricao: "However, Nevertheless, On the other hand" },
+  { id: "modulo-3", label: "Módulo 3", numero: 3, titulo: "Cause Connectors", descricao: "Because, Since, Due to, Owing to" },
+  { id: "modulo-4", label: "Módulo 4", numero: 4, titulo: "Effect Connectors", descricao: "Therefore, Thus, Consequently" },
+  { id: "modulo-5", label: "Módulo 5", numero: 5, titulo: "Concession", descricao: "Although, Despite, While, Even though" },
+  { id: "modulo-6", label: "Módulo 6", numero: 6, titulo: "Condition & Purpose", descricao: "If, Unless, So that, In order to" },
+  { id: "modulo-7", label: "Módulo 7", numero: 7, titulo: "Sequential Connectors", descricao: "First, Then, Finally, Subsequently" },
+  { id: "modulo-8", label: "Módulo 8", numero: 8, titulo: "Advanced Academic", descricao: "Otherwise, Thereby, Insofar as" },
+  { id: "modulo-9", label: "Módulo 9", numero: 9, titulo: "Technical Reports", descricao: "Connectors in Petrobras Documents" },
+  { id: "modulo-10", label: "Módulo 10", numero: 10, titulo: "Simulado Mestre", descricao: "Full Practice Test" },
 ] as const;
 
 export default function AulaConnectors({
@@ -66,7 +66,7 @@ export default function AulaConnectors({
 
     if (newCompleted.size === 10) {
       setTimeout(() => {
-        onComplete?.(xpGanho);
+        onComplete?.();
       }, 500);
     }
   };
@@ -92,7 +92,7 @@ export default function AulaConnectors({
     >
       {MODULE_DEFS.map((mod) => (
         <TabsContent key={mod.id} value={mod.id} className="space-y-6">
-          <ModuleBanner numero={mod.numero} titulo={mod.titulo} />
+          <ModuleBanner numero={mod.numero} titulo={mod.titulo} descricao="Conteúdo do módulo" />
           <AlertBox tipo="info" titulo="Em Desenvolvimento">
             Este módulo será implementado em breve.
           </AlertBox>
