@@ -2310,7 +2310,7 @@ export function AulaTemplate({
           >
             <span className="text-lg leading-none shrink-0">←</span>
             <span className="flex flex-col md:flex-row md:gap-1">
-              {materiaNome.includes(" ") ? (
+              {materiaNome?.includes(" ") ? (
                 <>
                   <span>{materiaNome.split(" ")[0]}</span>
                   <span className="md:inline">
@@ -2318,7 +2318,7 @@ export function AulaTemplate({
                   </span>
                 </>
               ) : (
-                <span>{materiaNome}</span>
+                <span>{materiaNome || "Aula"}</span>
               )}
             </span>
           </Link>
