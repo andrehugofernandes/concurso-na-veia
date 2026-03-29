@@ -533,10 +533,10 @@ export function ContentAccordion({
               <AccordionTrigger className="w-full flex items-center justify-between gap-3 px-5 py-3 rounded-xl border border-border bg-card hover:bg-muted/40 transition-all duration-200 text-left hover:no-underline shadow-sm group [&[data-state=open]]:bg-primary/5 [&[data-state=open]]:border-primary/20 [&[data-state=open]]:rounded-b-none">
                 <div className="flex items-center gap-3">
                   <span className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform">
-                    {icone || slide.icone}
+                    {slide.icone || slide.icon || icone}
                   </span>
                   <span className="font-bold text-xl md:text-2xl text-foreground">
-                    {titulo || slide.titulo}
+                    {slide.titulo || slide.title || titulo}
                   </span>
                 </div>
               </AccordionTrigger>
