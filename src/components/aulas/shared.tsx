@@ -1112,11 +1112,13 @@ export function TimelineItem({
   titulo,
   descricao,
   isLast,
+  example,
 }: {
   passo: number;
   titulo: string;
   descricao: string;
   isLast?: boolean;
+  example?: string;
 }) {
   return (
     <div className="flex gap-4">
@@ -2271,6 +2273,8 @@ export function AulaTemplate({
   onComplete,
   loading,
   xpGanho = 50,
+  showCompletionBadge = false,
+  completionBadgeText,
   children,
 }: {
   activeTab: string;
@@ -2285,6 +2289,8 @@ export function AulaTemplate({
   materiaCor: string;
   materiaId: string;
   isCompleted: boolean;
+  showCompletionBadge?: boolean;
+  completionBadgeText?: string;
   prevTopico?: { id: string; titulo: string } | null;
   nextTopico?: { id: string; titulo: string } | null;
   currentProgress?: number;
@@ -2384,10 +2390,22 @@ export function AulaTemplate({
                   <h1 className="text-xl md:text-5xl font-bold text-foreground tracking-tight">
                     {titulo}
                   </h1>
-                  {isCompleted && (
-                    <span className="flex items-center gap-1.5 px-2 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-bold bg-gradient-to-r from-green-600 to-emerald-500 text-white uppercase tracking-wider shadow-md h-fit self-center md:mt-2 animate-in fade-in zoom-in duration-500">
-                      <LuCheck className="w-3 h-3 md:w-3.5 md:h-3.5 stroke-[3]" />
-                      Concluída
+                  {/* Badge de Conclusão Dinâmico */}
+                  {(isCompleted || showCompletionBadge) && (
+                    <span
+                      className={cn(
+                        "flex items-center gap-1.5 px-2 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider shadow-md h-fit self-center md:mt-2 animate-in fade-in zoom-in duration-500",
+                        showCompletionBadge
+                          ? "bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 text-white shadow-amber-500/20"
+                          : "bg-gradient-to-r from-green-600 to-emerald-500 text-white"
+                      )}
+                    >
+                      {showCompletionBadge ? (
+                        <LuTrophy className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                      ) : (
+                        <LuCheck className="w-3 h-3 md:w-3.5 md:h-3.5 stroke-[3]" />
+                      )}
+                      {completionBadgeText || "Concluída"}
                     </span>
                   )}
                 </div>
