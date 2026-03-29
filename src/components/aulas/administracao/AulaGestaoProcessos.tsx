@@ -349,6 +349,8 @@ export default function AulaGestaoProcessos({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[1]}
@@ -543,6 +545,8 @@ export default function AulaGestaoProcessos({
           
           <section id="quiz-modulo-2" className="mt-16">
           
+
+
 
 
 
@@ -754,6 +758,8 @@ export default function AulaGestaoProcessos({
 
 
 
+
+
 <ModuleConsolidation 
             index={2} 
             variant={mv[3]} 
@@ -944,6 +950,8 @@ export default function AulaGestaoProcessos({
           
           <section id="quiz-modulo-4" className="mt-16">
           
+
+
 
 
 
@@ -1155,6 +1163,8 @@ export default function AulaGestaoProcessos({
 
 
 
+
+
 <ModuleConsolidation 
             index={2} 
             variant={mv[5]} 
@@ -1323,6 +1333,8 @@ export default function AulaGestaoProcessos({
 
 
 
+
+
 <ModuleConsolidation 
             index={2} 
             variant={mv[6]} 
@@ -1466,6 +1478,8 @@ export default function AulaGestaoProcessos({
           
           <section id="quiz-modulo-7" className="mt-16">
           
+
+
 
 
 
@@ -1619,6 +1633,8 @@ export default function AulaGestaoProcessos({
 
 
 
+
+
 <ModuleConsolidation 
             index={2} 
             variant={mv[8]} 
@@ -1742,6 +1758,8 @@ export default function AulaGestaoProcessos({
           
           <section id="quiz-modulo-9" className="mt-16">
           
+
+
 
 
 

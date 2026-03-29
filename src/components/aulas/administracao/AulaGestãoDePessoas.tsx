@@ -308,6 +308,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={4}
           variant="indigo"
@@ -498,6 +500,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={3}
           variant={mv[2]}
@@ -681,6 +685,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={3}
           variant={mv[3]}
@@ -771,6 +777,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         </div>
 
         
+
+
 
 
 
@@ -894,6 +902,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={2}
           variant="amber"
@@ -981,6 +991,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         </div>
 
         
+
+
 
 
 
@@ -1167,6 +1179,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={3}
           variant={mv[7] as any}
@@ -1334,6 +1348,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         </div>
 
         
+
+
 
 
 
@@ -1515,6 +1531,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={3}
           variant={mv[9] as any}
@@ -1682,6 +1700,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         </div>
 
         
+
+
 
 
 
@@ -1858,6 +1878,8 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
         
         
+
+
 
 
 

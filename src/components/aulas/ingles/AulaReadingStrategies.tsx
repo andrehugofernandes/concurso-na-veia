@@ -278,6 +278,8 @@ export default function AulaReadingStrategies({
 
           <section id="quiz-modulo-1" className="mt-16">
             
+
+
 <ModuleConsolidation
               index={2}
               variant={mv[1]}
@@ -417,6 +419,8 @@ export default function AulaReadingStrategies({
 
           <section id="quiz-modulo-2" className="mt-16">
             
+
+
 <ModuleConsolidation
               index={2}
               variant={mv[2]}
@@ -585,6 +589,8 @@ export default function AulaReadingStrategies({
 
           <section id="quiz-modulo-3" className="mt-16">
             
+
+
 <ModuleConsolidation
               index={2}
               variant={mv[3]}
@@ -817,6 +823,8 @@ export default function AulaReadingStrategies({
 
           <section id="quiz-modulo-4" className="mt-16">
             
+
+
 <ModuleConsolidation
               index={3}
               variant={mv[4]}
@@ -947,6 +955,8 @@ export default function AulaReadingStrategies({
 
           <section id="quiz-modulo-5" className="mt-16">
 
+
+
 <ModuleConsolidation
               index={2}
               variant={mv[5]}
@@ -987,7 +997,7 @@ export default function AulaReadingStrategies({
 
                         <QuizInterativo
               questoes={quizInferencing}
-              titulo="Quiz 5 - Inferencing from Context"
+              titulo="QUIZ: Inferencing from Context"
               icone="🔍"
               numero={3}
               variant="rose"
@@ -1077,6 +1087,8 @@ export default function AulaReadingStrategies({
           </section>
 
           <section id="quiz-modulo-6" className="mt-16">
+
+
 
 <ModuleConsolidation
               index={2}
@@ -1208,6 +1220,8 @@ export default function AulaReadingStrategies({
 
           <section id="quiz-modulo-7" className="mt-16">
 
+
+
 <ModuleConsolidation
               index={2}
               variant={mv[7]}
@@ -1248,7 +1262,7 @@ export default function AulaReadingStrategies({
 
                         <QuizInterativo
               questoes={quizTone}
-              titulo="Quiz 7 - Critical Reading & Tone"
+              titulo="QUIZ: Critical Reading & Tone"
               icone="🔎"
               numero={3}
               variant="lime"
@@ -1358,6 +1372,8 @@ export default function AulaReadingStrategies({
           </section>
 
           <section id="quiz-modulo-8" className="mt-16">
+
+
 
 <ModuleConsolidation
               index={2}
@@ -1503,6 +1519,8 @@ export default function AulaReadingStrategies({
 
           <section id="quiz-modulo-9" className="mt-16">
 
+
+
 <ModuleConsolidation
               index={2}
               variant={mv[9]}
@@ -1541,7 +1559,7 @@ export default function AulaReadingStrategies({
 
                         <QuizInterativo
               questoes={quizPetrobras}
-              titulo="Quiz 9 - Petrobras Context"
+              titulo="QUIZ: Petrobras Context"
               icone="🌎"
               numero={3}
               variant="blue"
@@ -1596,6 +1614,8 @@ export default function AulaReadingStrategies({
           </section>
 
           <section id="quiz-modulo-10" className="mt-16">
+
+
 
 <ModuleConsolidation
               index={2}

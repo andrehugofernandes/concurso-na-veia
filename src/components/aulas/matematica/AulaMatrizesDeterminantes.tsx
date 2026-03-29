@@ -116,6 +116,15 @@ export default function AulaMatrizesDeterminantes({
     { id: "modulo-10", label: "Módulo 10", titulo: "Simulado CESGRANRIO" },
   ];
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -405,7 +414,9 @@ export default function AulaMatrizesDeterminantes({
           </section>
 
           <section id="quiz-modulo-1" className="mt-16">
-            <ModuleConsolidation
+            
+
+<ModuleConsolidation
               index={2}
               variant="indigo"
               video={{
@@ -462,7 +473,7 @@ export default function AulaMatrizesDeterminantes({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizM1}
               titulo="QUIZ: Conceito e Notação"
               icone="📊"
@@ -724,7 +735,9 @@ export default function AulaMatrizesDeterminantes({
           </section>
 
           <section id="quiz-modulo-2" className="mt-16">
-            <ModuleConsolidation
+            
+
+<ModuleConsolidation
               index={2}
               variant="emerald"
               video={{
@@ -781,9 +794,9 @@ export default function AulaMatrizesDeterminantes({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizM2}
-              titulo="Tipos Especiais de Matrizes"
+              titulo="QUIZ: Tipos de Matrizes"
               icone="🔢"
               numero={3}
               variant="cyan"
@@ -1031,7 +1044,9 @@ export default function AulaMatrizesDeterminantes({
           </section>
 
           <section id="quiz-modulo-3" className="mt-16">
-            <ModuleConsolidation
+            
+
+<ModuleConsolidation
               index={2}
               variant="cyan"
               video={{
@@ -1088,7 +1103,7 @@ export default function AulaMatrizesDeterminantes({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizM3}
               titulo="QUIZ: Adição e Subtração"
               icone="➕"
@@ -1299,7 +1314,9 @@ export default function AulaMatrizesDeterminantes({
           </section>
 
           <section id="quiz-modulo-4" className="mt-16">
-            <ModuleConsolidation
+            
+
+<ModuleConsolidation
               index={2}
               variant="blue"
               video={{
@@ -1358,9 +1375,9 @@ export default function AulaMatrizesDeterminantes({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizM4}
-              titulo="Multiplicação de Matrizes"
+              titulo="QUIZ: Multiplicação"
               icone="✖️"
               numero={3}
               variant="blue"
@@ -1570,7 +1587,9 @@ export default function AulaMatrizesDeterminantes({
           </section>
 
           <section id="quiz-modulo-5" className="mt-16">
-            <ModuleConsolidation
+            
+
+<ModuleConsolidation
               index={2}
               variant="amber"
               video={{
@@ -1629,7 +1648,7 @@ export default function AulaMatrizesDeterminantes({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizM5}
               titulo="QUIZ: Transposta e Inversa"
               icone="🔄"
@@ -1837,7 +1856,9 @@ export default function AulaMatrizesDeterminantes({
           </section>
 
           <section id="quiz-modulo-6" className="mt-16">
-            <ModuleConsolidation
+            
+
+<ModuleConsolidation
               index={2}
               variant="rose"
               video={{
@@ -1894,7 +1915,7 @@ export default function AulaMatrizesDeterminantes({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizM6}
               titulo="QUIZ: Determinante 2×2"
               icone="🔢"
@@ -2116,7 +2137,9 @@ export default function AulaMatrizesDeterminantes({
           </section>
 
           <section id="quiz-modulo-7" className="mt-16">
-            <ModuleConsolidation
+            
+
+<ModuleConsolidation
               index={2}
               variant="indigo"
               video={{
@@ -2177,9 +2200,9 @@ export default function AulaMatrizesDeterminantes({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizM7}
-              titulo="Determinante 3×3 — Regra de Sarrus"
+              titulo="QUIZ: Determinante 3×3"
               icone="🔺"
               numero={3}
               variant="indigo"
@@ -2378,7 +2401,9 @@ export default function AulaMatrizesDeterminantes({
           </section>
 
           <section id="quiz-modulo-8" className="mt-16">
-            <ModuleConsolidation
+            
+
+<ModuleConsolidation
               index={2}
               variant="emerald"
               video={{
@@ -2436,7 +2461,7 @@ export default function AulaMatrizesDeterminantes({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizM8}
               titulo="QUIZ: Cofatores"
               icone="🔬"
@@ -2638,7 +2663,9 @@ export default function AulaMatrizesDeterminantes({
           </section>
 
           <section id="quiz-modulo-9" className="mt-16">
-            <ModuleConsolidation
+            
+
+<ModuleConsolidation
               index={2}
               variant="cyan"
               video={{
@@ -2697,9 +2724,9 @@ export default function AulaMatrizesDeterminantes({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizM9}
-              titulo="Aplicações Petrobras"
+              titulo="QUIZ: Aplicações Petrobras"
               icone="🏭"
               numero={3}
               variant="emerald"
@@ -3093,7 +3120,9 @@ export default function AulaMatrizesDeterminantes({
           </section>
 
           <section id="quiz-modulo-10" className="mt-8">
-            <ModuleConsolidation
+            
+
+<ModuleConsolidation
               index={2}
               variant="blue"
               video={{
@@ -3153,7 +3182,7 @@ export default function AulaMatrizesDeterminantes({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizM10}
               titulo="QUIZ: Simulado CESGRANRIO"
               icone="🏆"

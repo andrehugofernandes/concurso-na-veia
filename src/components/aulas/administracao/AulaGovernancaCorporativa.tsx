@@ -166,9 +166,11 @@ export default function AulaGovernancaCorporativa({
 
 
 
+
+
 <ModuleConsolidation index={3} variant={mv[1]} video={{ videoId: "b1VjGMSRfMk", title: "Governança Corporativa: Fundamentos", duration: "18:00" }} resumoVisual={{ moduloNome: "Módulo 1", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "4 Princípios IBGC", type: "Conceito", placeholderColor: "bg-blue-500/20" }, { title: "Problema de Agência", type: "Teoria", placeholderColor: "bg-sky-500/20" }, { title: "Agentes de Governança", type: "Estrutura", placeholderColor: "bg-cyan-500/20" }] }} maceteVisual={{ title: "TEPR: Transparência, Equidade, Prestação de Contas, Responsabilidade", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Principal quer lucro, Agente quer salário. Governança alinha os dois."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Governança: Fundamentos", artista: "Prof. Administração" }} />
 
-                      <QuizInterativo questoes={quizM1} titulo="QUIZ: Conceitos de Governança" numero={5} variant={mv[1]} icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
+                      <QuizInterativo questoes={quizM1} titulo="QUIZ: Conceitos de Governança" numero={4} variant={mv[1]} icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
           </section>
         </div>
       </TabsContent>
@@ -199,6 +201,8 @@ export default function AulaGovernancaCorporativa({
             </section>
             
             <section id={`quiz-${mod}`} className="mt-16">
+
+
 
 
 

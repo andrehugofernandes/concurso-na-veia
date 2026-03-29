@@ -169,6 +169,15 @@ export default function AulaEquacoes1Grau({
 
   const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -508,6 +517,8 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
 <ModuleConsolidation
             index={4}
             variant="indigo"
@@ -546,7 +557,7 @@ export default function AulaEquacoes1Grau({
 
                     <QuizInterativo
             questoes={quizM1}
-            titulo="QUIZ: Módulo Nº 1"
+            titulo="QUIZ: Fundamentos & Balança"
             numero={5}
             variant="blue"
             icone="🧠"
@@ -884,8 +895,10 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
 <ModuleConsolidation
-            index={3}
+            index={4}
             variant="emerald"
             video={{
               videoId: "h3S9XW1WzIk",
@@ -922,8 +935,8 @@ export default function AulaEquacoes1Grau({
 
                     <QuizInterativo
             questoes={quizM2}
-            titulo="Fixação - Módulo 2"
-            numero={4}
+            titulo="QUIZ: Tradução de Problemas"
+            numero={5}
             variant="emerald"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
@@ -1184,8 +1197,10 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
 <ModuleConsolidation
-            index={3}
+            index={4}
             variant="cyan"
             video={{
               videoId: "h3S9XW1WzIk",
@@ -1222,8 +1237,8 @@ export default function AulaEquacoes1Grau({
 
                     <QuizInterativo
             questoes={quizM3}
-            titulo="QUIZ: Módulo Nº 3"
-            numero={4}
+            titulo="QUIZ: Equações com Frações"
+            numero={5}
             variant="amber"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
@@ -1233,7 +1248,7 @@ export default function AulaEquacoes1Grau({
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mx-auto max-w-4xl mt-12 mb-12">
         <ModuleSectionHeader
-          index={4}
+          index={3}
           title="Casos Especiais: Equações Degeneradas e Indeterminadas"
           description="Quando MMC é apenas meia história"
           variant="emerald"
@@ -1467,6 +1482,8 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
 <ModuleConsolidation
             index={3}
             variant="blue"
@@ -1505,7 +1522,7 @@ export default function AulaEquacoes1Grau({
 
                     <QuizInterativo
             questoes={quizM4}
-            titulo="Fixação - Módulo 4"
+            titulo="QUIZ: Sistemas Lineares"
             numero={4}
             variant="cyan"
             icone="🎯"
@@ -1610,6 +1627,8 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="amber"
@@ -1648,7 +1667,7 @@ export default function AulaEquacoes1Grau({
 
                     <QuizInterativo
             questoes={quizM5}
-            titulo="QUIZ: Módulo Nº 5"
+            titulo="QUIZ: Simulado Parcial (M1-M4)"
             numero={3}
             variant="indigo"
             icone="📋"
@@ -1882,6 +1901,8 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="rose"
@@ -1920,7 +1941,7 @@ export default function AulaEquacoes1Grau({
 
                     <QuizInterativo
             questoes={quizM6}
-            titulo="Fixação - Módulo 6"
+            titulo="QUIZ: Inequações de 1º Grau"
             numero={3}
             variant="rose"
             icone="🎯"
@@ -2122,6 +2143,8 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="indigo"
@@ -2160,7 +2183,7 @@ export default function AulaEquacoes1Grau({
 
                     <QuizInterativo
             questoes={quizM7}
-            titulo="QUIZ: Módulo Nº 7"
+            titulo="QUIZ: Sistemas 3x3 & Avançado"
             numero={3}
             variant="violet"
             icone="🎯"
@@ -2413,6 +2436,8 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -2451,7 +2476,7 @@ export default function AulaEquacoes1Grau({
 
                     <QuizInterativo
             questoes={quizM8}
-            titulo="Fixação - Módulo 8"
+            titulo="QUIZ: Resolução Reversa"
             numero={3}
             variant="cyan"
             icone="🎯"
@@ -2737,6 +2762,8 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="cyan"
@@ -2775,7 +2802,7 @@ export default function AulaEquacoes1Grau({
 
                     <QuizInterativo
             questoes={quizM9}
-            titulo="QUIZ: Módulo Nº 9"
+            titulo="QUIZ: Aplicações Petrobras"
             numero={3}
             variant="amber"
             icone="🎯"
@@ -2898,6 +2925,8 @@ export default function AulaEquacoes1Grau({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="blue"
@@ -2936,7 +2965,7 @@ export default function AulaEquacoes1Grau({
 
                         <QuizInterativo
                 questoes={quizFinal}
-                titulo="QUIZ: Módulo Nº 10"
+                titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={3}
                 variant="slate"

@@ -505,6 +505,8 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
 <ModuleConsolidation
           index={4}
           variant="blue"
@@ -804,6 +806,8 @@ export default function AulaInterpretacaoTexto({
 
 
         
+
+
 
 
 
@@ -1133,6 +1137,8 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
 <ModuleConsolidation
           index={3}
           variant="amber"
@@ -1422,6 +1428,8 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
 <ModuleConsolidation
           index={4}
           variant="blue"
@@ -1647,6 +1655,8 @@ export default function AulaInterpretacaoTexto({
 
 
         
+
+
 
 
 
@@ -1897,6 +1907,8 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
 <ModuleConsolidation
           index={3}
           variant="cyan"
@@ -2132,6 +2144,8 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
 <ModuleConsolidation
           index={4}
           variant="rose"
@@ -2348,6 +2362,8 @@ export default function AulaInterpretacaoTexto({
 
 
 
+
+
 <ModuleConsolidation
           index={3}
           variant="blue"
@@ -2522,6 +2538,8 @@ export default function AulaInterpretacaoTexto({
 
 
         
+
+
 
 
 
@@ -2736,6 +2754,8 @@ export default function AulaInterpretacaoTexto({
 
 
         
+
+
 
 
 

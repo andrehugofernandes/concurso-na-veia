@@ -144,6 +144,15 @@ export default function AulaProgressoesPa({
 
   const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -470,6 +479,8 @@ export default function AulaProgressoesPa({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="blue"
@@ -524,7 +535,7 @@ export default function AulaProgressoesPa({
 
                       <QuizInterativo
               questoes={quizM1}
-              titulo="QUIZ: Módulo Nº 1"
+              titulo="QUIZ: Conceitos Fundamentais"
               numero={3}
               variant="blue"
               icone="🧠"
@@ -640,6 +651,8 @@ export default function AulaProgressoesPa({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -694,7 +707,7 @@ export default function AulaProgressoesPa({
 
                       <QuizInterativo
               questoes={quizM2}
-              titulo="Fixação - Termo Geral"
+              titulo="QUIZ: Termo Geral"
               numero={3}
               variant="emerald"
               icone="🎯"
@@ -813,6 +826,8 @@ export default function AulaProgressoesPa({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="amber"
@@ -869,7 +884,7 @@ export default function AulaProgressoesPa({
 
                       <QuizInterativo
               questoes={quizM3}
-              titulo="QUIZ: Módulo Nº 3"
+              titulo="QUIZ: Soma Finita"
               numero={3}
               variant="amber"
               icone="🎯"
@@ -992,6 +1007,8 @@ export default function AulaProgressoesPa({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="cyan"
@@ -1047,7 +1064,7 @@ export default function AulaProgressoesPa({
 
                       <QuizInterativo
               questoes={quizM4}
-              titulo="Fixação - Propriedades"
+              titulo="QUIZ: Propriedades"
               numero={3}
               variant="cyan"
               icone="🎯"
@@ -1172,6 +1189,8 @@ export default function AulaProgressoesPa({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="violet"
@@ -1228,7 +1247,7 @@ export default function AulaProgressoesPa({
 
                       <QuizInterativo
               questoes={quizM5}
-              titulo="QUIZ: Módulo Nº 5"
+              titulo="QUIZ: Interpolação"
               numero={3}
               variant="violet"
               icone="🧠"
@@ -1358,6 +1377,8 @@ export default function AulaProgressoesPa({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="cyan"
@@ -1414,7 +1435,7 @@ export default function AulaProgressoesPa({
 
                       <QuizInterativo
               questoes={quizM6}
-              titulo="Fixação - PA e Função Afim"
+              titulo="QUIZ: PA e Funções Afim"
               numero={3}
               variant="cyan"
               icone="🎯"
@@ -1527,6 +1548,8 @@ export default function AulaProgressoesPa({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="indigo"
@@ -1581,7 +1604,7 @@ export default function AulaProgressoesPa({
 
                       <QuizInterativo
               questoes={quizM7}
-              titulo="QUIZ: Módulo Nº 7"
+              titulo="QUIZ: Prática Integrada"
               numero={3}
               variant="indigo"
               icone="🎯"
@@ -1709,6 +1732,8 @@ export default function AulaProgressoesPa({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="rose"
@@ -1764,7 +1789,7 @@ export default function AulaProgressoesPa({
 
                       <QuizInterativo
               questoes={quizM8}
-              titulo="Fixação - Desafios Avançados"
+              titulo="QUIZ: Desafios Avançados"
               numero={3}
               variant="rose"
               icone="🎯"
@@ -1895,6 +1920,8 @@ export default function AulaProgressoesPa({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="amber"
@@ -1949,7 +1976,7 @@ export default function AulaProgressoesPa({
 
                       <QuizInterativo
               questoes={quizM9}
-              titulo="QUIZ: Módulo Nº 9"
+              titulo="QUIZ: Aplicações Petrobras"
               numero={3}
               variant="amber"
               icone="🌊"
@@ -1982,7 +2009,7 @@ export default function AulaProgressoesPa({
             <section id="quiz-modulo-10" className="mt-8">
               <QuizInterativo
                 questoes={quizM10}
-                titulo="Simulado Elite - Progressões Aritméticas"
+                titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={1}
                 variant="slate"

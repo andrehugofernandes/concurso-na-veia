@@ -275,108 +275,75 @@ source/conteudo/05 SL 061FV 26 PREP PETROBRAS SUPRIM_Conhecimentos Específicos.
 
 ---
 
+## ESTRUTURA E PADRONIZAÇÃO (Operação Faxina)
+
+### Organização de Diretórios
+O projeto segue uma estrutura rigorosa para manter a raiz limpa e focada na stack (`Next.js/TS`):
+
+| Pasta | Conteúdo |
+|-------|----------|
+| `/src` | Código fonte da aplicação (Componentes, Páginas, Libs) |
+| `/scripts` | **Ultimate Engine** (`ultimate-fixer.js`) e utilitários ativos |
+| `/scripts/automation` | Scripts Python e utilitários de suporte |
+| `/scripts/_legacy` | Scripts antigos e obsoletos (não utilizar) |
+| `/docs` | Documentação, guias de design e relatórios de status |
+| `/logs` | Logs de build, relatórios de erro e diagnósticos TXT |
+| `/backups` | Versões antigas de arquivos e archives |
+
+---
+
 ## SISTEMA DE CORES (moduleColors.ts)
 
 ### Paleta de 10 Módulos
 
-| Módulo | Variant | Cor Tailwind | Hex | Gradiente Banner |
+| Módulo | Variant | Cor Tailwind | Hex | Gradiente Banner (Auto) |
 |--------|---------|-------------|-----|-----------------|
-| 1 | `amber` | `amber-300` | `#fcd34d` | `from-amber-300 to-amber-500` |
-| 2 | `blue` | `blue-300` | `#93c5fd` | `from-blue-300 to-blue-500` |
-| 3 | `emerald` | `emerald-300` | `#a7f3d0` | `from-emerald-300 to-emerald-500` |
-| 4 | `rose` | `rose-300` | `#fb7185` | `from-rose-300 to-rose-500` |
-| 5 | `violet` | `violet-300` | `#e9d5ff` | `from-violet-300 to-violet-500` |
-| 6 | `amber` | `amber-900` | `#78350f` | `from-amber-900 to-amber-700` |
-| 7 | `blue` | `blue-900` | `#1e3a8a` | `from-blue-900 to-blue-700` |
-| 8 | `emerald` | `emerald-900` | `#064e3b` | `from-emerald-900 to-emerald-700` |
-| 9 | `rose` | `rose-900` | `#500724` | `from-rose-900 to-rose-700` |
-| 10 | `violet` | `violet-900` | `#4c0519` | `from-violet-900 to-violet-700` |
+| 1 | `amber` | `amber-300` | `#fcd34d` | Gerado pelo `ultimate-fixer` |
+| 2 | `blue` | `blue-300` | `#93c5fd` | Gerado pelo `ultimate-fixer` |
+| 3 | `emerald` | `emerald-300` | `#a7f3d0` | Gerado pelo `ultimate-fixer` |
+| 4 | `rose` | `rose-300` | `#fb7185` | Gerado pelo `ultimate-fixer` |
+| 5 | `violet` | `violet-300` | `#e9d5ff` | Gerado pelo `ultimate-fixer` |
+| 6 | `amber` | `amber-900` | `#78350f` | Gerado pelo `ultimate-fixer` |
+| 7 | `blue` | `blue-900` | `#1e3a8a` | Gerado pelo `ultimate-fixer` |
+| 8 | `emerald` | `emerald-900` | `#064e3b` | Gerado pelo `ultimate-fixer` |
+| 9 | `rose` | `rose-900` | `#500724` | Gerado pelo `ultimate-fixer` |
+| 10 | `violet` | `violet-900` | `#4c0519` | Gerado pelo `ultimate-fixer` |
 
-### Funções Disponíveis (`@/lib/moduleColors`)
-
-```ts
-getModuleVariant(N)      // → "amber" | "blue" | "emerald" | "rose" | "violet"
-getModuleColor(N)        // → "amber-300" (Tailwind class)
-getModuleColorHex(N)     // → "#fcd34d" (para SVG/canvas)
-getModuleBackgroundClass(N) // → "bg-amber-500"
-getModuleTextClass(N)    // → "text-amber-500"
-getModuleBorderClass(N)  // → "border-amber-500"
-getModuleColorInfo(N)    // → { variant, hex, bgClass, textClass, ... }
-```
-
-### Regra: NUNCA hardcode cores
+### Regra de Ouro: Zero Hardcode
+**NUNCA** escreva gradientes manuais ou variantes estáticas. Use sempre a referência dinâmica:
 
 ```tsx
-// ❌ ERRADO
-<ModuleBanner variant="blue" />
-<ModuleSectionHeader variant="emerald" />
+// ❌ ERRADO (Risco de inconsistência)
+<ModuleBanner variant="blue" gradiente="bg-gradient-to-br..." />
 
-// ✅ CORRETO
-<ModuleBanner variant={getModuleVariant(1)} />
-<ModuleSectionHeader variant={getModuleVariant(1)} />
+// ✅ CORRETO (O Ultimate Engine cuidará da cor baseada no módulo)
+<ModuleBanner variant={mv[1]} />
 ```
 
 ---
 
-## SCRIPTS DE PADRONIZAÇÃO (Pipeline Completo)
+## O MOTOR ULTIMATE (ultimate-fixer.js)
 
-### Inventário de Scripts
+### O que ele faz automaticamente:
+1.  **Injeta Infraestrutura:** Garante imports de `moduleColors` e definição da constante `mv`.
+2.  **Limpa Redundâncias:** Remove props `gradiente` manuais e força `variant={mv[N]}`.
+3.  **Tipografia Editorial:** Converte `text-base` em `text-lg text-justify` nas seções de intro.
+4.  **Indexação Sequencial:** Re-indexa todos os `ModuleSectionHeader`, `ContentAccordion` e `QuizInterativo` para seguir a ordem natural 1, 2, 3...
+5.  **Segurança:** Utiliza `lib/safety.js` para garantir que nenhum conteúdo seja deletado.
 
-#### Python (Raiz do Projeto)
+### Pipeline de Execução (Finalização de Aula)
 
-| Script | O que faz | Quando usar |
-|--------|-----------|-------------|
-| `fix_consolidation_position.py` | Garante ModuleConsolidation ANTES de QuizInterativo | Após gerar/editar módulos |
-| `fix_count.py` | Diagnostica tags JSX desbalanceadas | Antes de qualquer fix |
-| `fix_tags.py` | Insere tags de fechamento faltantes | Após detectar desbalanceamento |
-| `analyze_tags.py` | Análise avançada com stack de tags | Debug de erros de build |
-
-#### JavaScript (scripts/)
-
-| Script | O que faz | Dependência |
-|--------|-----------|-------------|
-| `fix-module-variants.js` | Substitui `getModuleVariant(N)` hardcoded por `mv[N]` dinâmico; reseta `ModuleSectionHeader` index por módulo | `lib/safety.js` |
-| `fix-module-banners.js` | Atualiza gradientes do ModuleBanner (M1-5: claro, M6-10: escuro) | `lib/safety.js` |
-| `fix-module-consolidation-titles.js` | Define título "Resumo do Módulo N" em cada ModuleConsolidation | `lib/safety.js` |
-| `fix-quiz-indexing.js` | Ajusta `numero={N}` e `titulo="QUIZ: [nome]"` em QuizInterativo | `lib/safety.js` |
-| `fix-resumo-multimedia.js` | Consolida cards "Resumo e Multimídia" dentro do ModuleConsolidation | `lib/safety.js` |
-
-#### JavaScript (Raiz - Utilitários)
-
-| Script | O que faz | Escopo |
-|--------|-----------|-------|
-| `fix_alertbox.js` | Adiciona `titulo` faltante em AlertBox | Matemática |
-| `fix_quizzes.js` | Converte `opcoes` de string[] para `{label, valor}[]` | Pontual |
-
-### Módulo de Segurança (`scripts/lib/safety.js`)
-
-```
-safeWriteFile(path, newContent, original, options)
-├── Valida shrinkage ratio (máx 2%)
-├── Verifica componentes críticos presentes
-│   (ContentAccordion, FlipCard, CardCarousel,
-│    ModuleConsolidation, ModuleBanner, QuizInterativo)
-└── Só escreve se passar todas as validações
-```
-
-### Pipeline de Execução (Ordem Obrigatória)
+Qualquer edição de aula **DEVE** terminar com a execução do motor:
 
 ```bash
-# FASE 1: Diagnóstico
-python fix_count.py                            # Verifica tags
+# Para uma aula específica
+node scripts/ultimate-fixer.js src/components/aulas/portugues/AulaClassesPalavras.tsx
 
-# FASE 2: Correção Estrutural
-python fix_tags.py                             # Fecha tags abertas
-python fix_consolidation_position.py           # Reordena componentes
+# Para uma matéria inteira
+node scripts/ultimate-fixer.js src/components/aulas/matematica/
 
-# FASE 3: Padronização Visual
-node scripts/fix-module-banners.js             # Gradientes corretos
-node scripts/fix-module-variants.js            # Cores dinâmicas
-node scripts/fix-module-consolidation-titles.js # Títulos "Resumo do Módulo N"
-node scripts/fix-quiz-indexing.js              # Numeração dos quizzes
-
-# FASE 4: Validação
-pnpm dev                                       # Build sem erros
+# Verificação de integridade (Opcional se houver erros de fechamento)
+python scripts/automation/fix_count.py
 ```
 
 ---

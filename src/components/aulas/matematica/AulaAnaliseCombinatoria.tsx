@@ -101,6 +101,15 @@ export default function AulaAnaliseCombinatoria({
     { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Final" },
   ];
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -266,6 +275,8 @@ export default function AulaAnaliseCombinatoria({
 
           <section id="quiz-modulo-1" className="mt-16">
           
+
+
 
 
 
@@ -506,6 +517,8 @@ export default function AulaAnaliseCombinatoria({
 
 
 
+
+
 <ModuleConsolidation
             index={3}
             variant="cyan"
@@ -548,7 +561,7 @@ export default function AulaAnaliseCombinatoria({
 
                       <QuizInterativo
               questoes={quizM2}
-              titulo="Quiz — Fatorial e Notação"
+              titulo="QUIZ: Fatorial"
               icone="❗"
               numero={4}
               variant="cyan"
@@ -720,6 +733,8 @@ export default function AulaAnaliseCombinatoria({
 
           <section id="quiz-modulo-3" className="mt-16">
           
+
+
 
 
 
@@ -923,6 +938,8 @@ export default function AulaAnaliseCombinatoria({
 
 
 
+
+
 <ModuleConsolidation
             index={3}
             variant="indigo"
@@ -963,7 +980,7 @@ export default function AulaAnaliseCombinatoria({
 
                       <QuizInterativo
               questoes={quizM4}
-              titulo="Quiz — Permutação com Repetição"
+              titulo="QUIZ: Permutação com Repetição"
               icone="🔁"
               numero={4}
               variant="indigo"
@@ -1125,6 +1142,8 @@ export default function AulaAnaliseCombinatoria({
 
           <section id="quiz-modulo-5" className="mt-16">
           
+
+
 
 
 
@@ -1346,6 +1365,8 @@ export default function AulaAnaliseCombinatoria({
 
 
 
+
+
 <ModuleConsolidation
             index={3}
             variant="indigo"
@@ -1389,7 +1410,7 @@ export default function AulaAnaliseCombinatoria({
 
                       <QuizInterativo
               questoes={quizM6}
-              titulo="Quiz — Combinação Simples"
+              titulo="QUIZ: Combinação Simples"
               icone="👥"
               numero={4}
               variant="indigo"
@@ -1583,6 +1604,8 @@ export default function AulaAnaliseCombinatoria({
 
 
 
+
+
 <ModuleConsolidation
             index={3}
             variant="emerald"
@@ -1758,6 +1781,8 @@ export default function AulaAnaliseCombinatoria({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="indigo"
@@ -1797,7 +1822,7 @@ export default function AulaAnaliseCombinatoria({
 
                       <QuizInterativo
               questoes={quizM8}
-              titulo="Quiz — Propriedades e Identidades"
+              titulo="QUIZ: Propriedades e Identidades"
               icone="🔏"
               numero={3}
               variant="indigo"
@@ -1913,6 +1938,8 @@ export default function AulaAnaliseCombinatoria({
 
           <section id="quiz-modulo-9" className="mt-16">
           
+
+
 
 
 
@@ -2083,6 +2110,8 @@ export default function AulaAnaliseCombinatoria({
 
           <section id="quiz-modulo-10" className="mt-16">
           
+
+
 
 
 

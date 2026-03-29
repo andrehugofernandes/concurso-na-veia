@@ -1,10 +1,10 @@
 import re
 
-content = open(r'src/components/aulas/administracao/AulaPlanejamentoEstrategico.tsx', encoding='utf-8').read()
+content = open(r'src/components/aulas/portugues/AulaConcordancia.tsx', encoding='utf-8').read()
 lines = content.split('\n')
 
 stack = []
-for i, line in enumerate(lines[1788:], start=1789):
+for i, line in enumerate(lines, start=1):
     # Find opening tags (not self-closing)
     for m in re.finditer(r'<(div|section|TabsContent)[\s>]', line):
         tag = m.group(1)

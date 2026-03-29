@@ -469,6 +469,8 @@ export default function AulaFalseCognates({
 
           
 
+
+
 <ModuleConsolidation
             modulo={1}
             corModulo={mv[1]}
@@ -477,7 +479,7 @@ export default function AulaFalseCognates({
 
                     <QuizInterativo
             questoes={quizM1}
-            numero={1}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-1")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 1, tipo: "quiz" })}
           />
@@ -497,7 +499,7 @@ export default function AulaFalseCognates({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={2}
+              index={1}
               title="Falsos Cognatos em Contexto Industrial"
               description="Palavras que enganam especialmente em relatórios técnicos, especificações e textos gerenciais"
             />
@@ -810,6 +812,8 @@ export default function AulaFalseCognates({
 
           
 
+
+
 <ModuleConsolidation
             modulo={2}
             corModulo={mv[2]}
@@ -838,7 +842,7 @@ export default function AulaFalseCognates({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={3}
+              index={1}
               title="Falsos Cognatos em Management"
               description="Palavras críticas em documentos gerenciais, políticas corporativas e textos administrativos"
             />
@@ -1151,6 +1155,8 @@ export default function AulaFalseCognates({
 
           
 
+
+
 <ModuleConsolidation
             modulo={3}
             corModulo={mv[3]}
@@ -1159,7 +1165,7 @@ export default function AulaFalseCognates({
 
                     <QuizInterativo
             questoes={quizM3}
-            numero={3}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-3")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 3, tipo: "quiz" })}
           />
@@ -1186,6 +1192,8 @@ export default function AulaFalseCognates({
 
           
 
+
+
 <ModuleConsolidation
             modulo={4}
             corModulo={mv[4]}
@@ -1194,7 +1202,7 @@ export default function AulaFalseCognates({
 
                     <QuizInterativo
             questoes={quizM4}
-            numero={4}
+            numero={1}
             onComplete={() => handleModuleComplete("modulo-4")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 4, tipo: "quiz" })}
           />
@@ -1220,6 +1228,8 @@ export default function AulaFalseCognates({
 
           
 
+
+
 <ModuleConsolidation
             modulo={5}
             corModulo={mv[5]}
@@ -1228,7 +1238,7 @@ export default function AulaFalseCognates({
 
                     <QuizInterativo
             questoes={quizM5}
-            numero={5}
+            numero={1}
             onComplete={() => handleModuleComplete("modulo-5")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 5, tipo: "quiz" })}
           />
@@ -1254,6 +1264,8 @@ export default function AulaFalseCognates({
 
           
 
+
+
 <ModuleConsolidation
             modulo={6}
             corModulo={mv[6]}
@@ -1262,7 +1274,7 @@ export default function AulaFalseCognates({
 
                     <QuizInterativo
             questoes={quizM6}
-            numero={6}
+            numero={1}
             onComplete={() => handleModuleComplete("modulo-6")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 6, tipo: "quiz" })}
           />
@@ -1288,6 +1300,8 @@ export default function AulaFalseCognates({
 
           
 
+
+
 <ModuleConsolidation
             modulo={7}
             corModulo={mv[7]}
@@ -1296,7 +1310,7 @@ export default function AulaFalseCognates({
 
                     <QuizInterativo
             questoes={quizM7}
-            numero={7}
+            numero={1}
             onComplete={() => handleModuleComplete("modulo-7")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 7, tipo: "quiz" })}
           />
@@ -1322,6 +1336,8 @@ export default function AulaFalseCognates({
 
           
 
+
+
 <ModuleConsolidation
             modulo={8}
             corModulo={mv[8]}
@@ -1330,7 +1346,7 @@ export default function AulaFalseCognates({
 
                     <QuizInterativo
             questoes={quizM8}
-            numero={8}
+            numero={1}
             onComplete={() => handleModuleComplete("modulo-8")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 8, tipo: "quiz" })}
           />
@@ -1356,6 +1372,8 @@ export default function AulaFalseCognates({
 
           
 
+
+
 <ModuleConsolidation
             modulo={9}
             corModulo={mv[9]}
@@ -1364,7 +1382,7 @@ export default function AulaFalseCognates({
 
                     <QuizInterativo
             questoes={quizM9}
-            numero={9}
+            numero={1}
             onComplete={() => handleModuleComplete("modulo-9")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 9, tipo: "quiz" })}
           />
@@ -1383,7 +1401,7 @@ export default function AulaFalseCognates({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={10}
+              index={1}
               title="Seu Checklist Final"
               description="5 passos para nunca mais cair em armadilha de falso cognato"
             />
@@ -1430,6 +1448,8 @@ export default function AulaFalseCognates({
 
           
 
+
+
 <ModuleConsolidation
             modulo={10}
             corModulo={mv[10]}
@@ -1438,7 +1458,7 @@ export default function AulaFalseCognates({
 
                     <QuizInterativo
             questoes={quizFinal}
-            numero={10}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-10")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 10, tipo: "quiz" })}
           />

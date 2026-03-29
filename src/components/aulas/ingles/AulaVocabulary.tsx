@@ -111,10 +111,16 @@ export default function AulaVocabulary({
   const handleModuleComplete = (moduleId: string) => {
     setCompletedModules((prev) => new Set([...prev, moduleId]));
   };
+
   // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
   const mv = Object.fromEntries(
-    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)]),
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
   ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       titulo={
@@ -500,8 +506,9 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-          <ModuleConsolidation
-            index={1}
+          
+<ModuleConsolidation
+            index={2}
             variant={mv[1]}
             maceteVisual={{
               title: "Upstream Operations - Key Drilling Terms",
@@ -532,7 +539,7 @@ export default function AulaVocabulary({
               duration: "12:45",
             }}
             resumoVisual={{
-              moduloNome: "Vocabulário",
+              moduloNome: "Módulo 1",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
@@ -543,10 +550,11 @@ export default function AulaVocabulary({
               artista: "Professor de Inglês",
             }}
           />
-          <QuizInterativo
+
+                    <QuizInterativo
             questoes={quizM1}
-            titulo="Desafio de Vocabulário"
-            numero={1}
+            titulo="QUIZ: Módulo Nº 1"
+            numero={3}
             variant={mv[1]}
             onComplete={() => handleModuleComplete("modulo-1")}
           />
@@ -563,7 +571,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={2}
+              index={1}
               title="Downstream: Transformando Óleo Cru em Produtos"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -918,7 +926,8 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-          <ModuleConsolidation
+          
+<ModuleConsolidation
             index={2}
             variant={mv[2]}
             maceteVisual={{
@@ -951,7 +960,7 @@ export default function AulaVocabulary({
               duration: "12:45",
             }}
             resumoVisual={{
-              moduloNome: "Vocabulário",
+              moduloNome: "Módulo 2",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
@@ -962,10 +971,11 @@ export default function AulaVocabulary({
               artista: "Professor de Inglês",
             }}
           />
-          <QuizInterativo
+
+                    <QuizInterativo
             questoes={quizM2}
-            titulo="Desafio de Vocabulário"
-            numero={2}
+            titulo="QUIZ: Módulo Nº 2"
+            numero={3}
             variant={mv[2]}
             onComplete={() => handleModuleComplete("modulo-2")}
           />
@@ -982,7 +992,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={3}
+              index={1}
               title="Equipamentos: Construindo a Indústria"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -1348,8 +1358,9 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-          <ModuleConsolidation
-            index={3}
+          
+<ModuleConsolidation
+            index={2}
             variant={mv[3]}
             maceteVisual={{
               title: "Industrial Equipment - Valves, Pumps & Pipes",
@@ -1380,7 +1391,7 @@ export default function AulaVocabulary({
               duration: "12:45",
             }}
             resumoVisual={{
-              moduloNome: "Vocabulário",
+              moduloNome: "Módulo 3",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
@@ -1391,9 +1402,10 @@ export default function AulaVocabulary({
               artista: "Professor de Inglês",
             }}
           />
-          <QuizInterativo
+
+                    <QuizInterativo
             questoes={quizM3}
-            titulo="Desafio de Vocabulário"
+            titulo="QUIZ: Módulo Nº 3"
             numero={3}
             variant={mv[3]}
             onComplete={() => handleModuleComplete("modulo-3")}
@@ -1411,7 +1423,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={4}
+              index={1}
               title="HSE: Mais Que Compliance, É Cultura"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -1779,8 +1791,9 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-          <ModuleConsolidation
-            index={4}
+          
+<ModuleConsolidation
+            index={2}
             variant={mv[4]}
             maceteVisual={{
               title: "Safety & HSE - PPE, Hazards & Compliance",
@@ -1812,7 +1825,7 @@ export default function AulaVocabulary({
               duration: "12:45",
             }}
             resumoVisual={{
-              moduloNome: "Vocabulário",
+              moduloNome: "Módulo 4",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
@@ -1823,10 +1836,11 @@ export default function AulaVocabulary({
               artista: "Professor de Inglês",
             }}
           />
-          <QuizInterativo
+
+                    <QuizInterativo
             questoes={quizM4}
-            titulo="Desafio de Vocabulário"
-            numero={4}
+            titulo="QUIZ: Módulo Nº 4"
+            numero={3}
             variant={mv[4]}
             onComplete={() => handleModuleComplete("modulo-4")}
           />
@@ -1843,7 +1857,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={5}
+              index={1}
               title="Business & Finance: O Lado Econômico"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -2209,8 +2223,9 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-          <ModuleConsolidation
-            index={5}
+          
+<ModuleConsolidation
+            index={2}
             variant={mv[5]}
             maceteVisual={{
               title: "Financial & Business Terms - CAPEX, OPEX & Brent",
@@ -2241,7 +2256,7 @@ export default function AulaVocabulary({
               duration: "12:45",
             }}
             resumoVisual={{
-              moduloNome: "Vocabulário",
+              moduloNome: "Módulo 5",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
@@ -2252,10 +2267,11 @@ export default function AulaVocabulary({
               artista: "Professor de Inglês",
             }}
           />
-          <QuizInterativo
+
+                    <QuizInterativo
             questoes={quizM5}
-            titulo="Desafio de Vocabulário"
-            numero={5}
+            titulo="QUIZ: Módulo Nº 5"
+            numero={3}
             variant={mv[5]}
             onComplete={() => handleModuleComplete("modulo-5")}
           />
@@ -2272,7 +2288,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={6}
+              index={1}
               title="Environmental: A Transição Energética"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -2630,8 +2646,9 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-          <ModuleConsolidation
-            index={6}
+          
+<ModuleConsolidation
+            index={2}
             variant={mv[6]}
             maceteVisual={{
               title: "Environmental Terms - Carbon Footprint & ESG",
@@ -2662,7 +2679,7 @@ export default function AulaVocabulary({
               duration: "12:45",
             }}
             resumoVisual={{
-              moduloNome: "Vocabulário",
+              moduloNome: "Módulo 6",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
@@ -2673,10 +2690,11 @@ export default function AulaVocabulary({
               artista: "Professor de Inglês",
             }}
           />
-          <QuizInterativo
+
+                    <QuizInterativo
             questoes={quizM6}
-            titulo="Desafio de Vocabulário"
-            numero={6}
+            titulo="QUIZ: Módulo Nº 6"
+            numero={3}
             variant={mv[6]}
             onComplete={() => handleModuleComplete("modulo-6")}
           />
@@ -2693,7 +2711,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={7}
+              index={1}
               title="Project Management: Acompanhando o Progresso"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -3057,8 +3075,9 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-          <ModuleConsolidation
-            index={7}
+          
+<ModuleConsolidation
+            index={2}
             variant={mv[7]}
             maceteVisual={{
               title: "Management & Projects - KPI, Milestone & Scope",
@@ -3091,7 +3110,7 @@ export default function AulaVocabulary({
               duration: "12:45",
             }}
             resumoVisual={{
-              moduloNome: "Vocabulário",
+              moduloNome: "Módulo 7",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
@@ -3102,10 +3121,11 @@ export default function AulaVocabulary({
               artista: "Professor de Inglês",
             }}
           />
-          <QuizInterativo
+
+                    <QuizInterativo
             questoes={quizM7}
-            titulo="Desafio de Vocabulário"
-            numero={7}
+            titulo="QUIZ: Módulo Nº 7"
+            numero={3}
             variant={mv[7]}
             onComplete={() => handleModuleComplete("modulo-7")}
           />
@@ -3122,7 +3142,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={8}
+              index={1}
               title="Procurement: Gerenciando a Cadeia de Suprimento"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -3491,8 +3511,9 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-          <ModuleConsolidation
-            index={8}
+          
+<ModuleConsolidation
+            index={2}
             variant={mv[8]}
             maceteVisual={{
               title: "Procurement & Contracts - Tender, Bid & Liability",
@@ -3525,7 +3546,7 @@ export default function AulaVocabulary({
               duration: "12:45",
             }}
             resumoVisual={{
-              moduloNome: "Vocabulário",
+              moduloNome: "Módulo 8",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
@@ -3536,10 +3557,11 @@ export default function AulaVocabulary({
               artista: "Professor de Inglês",
             }}
           />
-          <QuizInterativo
+
+                    <QuizInterativo
             questoes={quizM8}
-            titulo="Desafio de Vocabulário"
-            numero={8}
+            titulo="QUIZ: Módulo Nº 8"
+            numero={3}
             variant={mv[8]}
             onComplete={() => handleModuleComplete("modulo-8")}
           />
@@ -3556,7 +3578,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={9}
+              index={1}
               title="Integrando Tudo: Vocabulary in Real Business Scenarios"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -4028,8 +4050,9 @@ export default function AulaVocabulary({
               </div>
             </div>
           </section>
-          <ModuleConsolidation
-            index={9}
+          
+<ModuleConsolidation
+            index={2}
             variant={mv[9]}
             maceteVisual={{
               title: "Vocabulary in Petrobras Context",
@@ -4063,7 +4086,7 @@ export default function AulaVocabulary({
               duration: "12:45",
             }}
             resumoVisual={{
-              moduloNome: "Vocabulário",
+              moduloNome: "Módulo 9",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
@@ -4074,10 +4097,11 @@ export default function AulaVocabulary({
               artista: "Professor de Inglês",
             }}
           />
-          <QuizInterativo
+
+                    <QuizInterativo
             questoes={quizM9}
-            titulo="Desafio de Vocabulário"
-            numero={9}
+            titulo="QUIZ: Módulo Nº 9"
+            numero={3}
             variant={mv[9]}
             onComplete={() => handleModuleComplete("modulo-9")}
           />
@@ -4094,7 +4118,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={10}
+              index={1}
               title="Simulado Mestre: Você Domina Vocabulário Técnico!"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -4308,8 +4332,9 @@ export default function AulaVocabulary({
               </p>
             </div>
           </section>
-          <ModuleConsolidation
-            index={10}
+          
+<ModuleConsolidation
+            index={2}
             variant={mv[10]}
             maceteVisual={{
               title: "Master Simulator - Complete Petrobras Vocabulary",
@@ -4344,7 +4369,7 @@ export default function AulaVocabulary({
               duration: "12:45",
             }}
             resumoVisual={{
-              moduloNome: "Vocabulário",
+              moduloNome: "Módulo 10",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
@@ -4355,10 +4380,11 @@ export default function AulaVocabulary({
               artista: "Professor de Inglês",
             }}
           />
-          <QuizInterativo
+
+                    <QuizInterativo
             questoes={quizFinal}
-            titulo="Simulado Mestre"
-            numero={10}
+            titulo="QUIZ: Módulo Nº 10"
+            numero={3}
             variant={mv[10]}
             onComplete={() => {
               handleModuleComplete("modulo-10");

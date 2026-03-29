@@ -124,7 +124,9 @@ export default function AulaMetrologia({
             ]}
         />
 
-        <ModuleConsolidation 
+        
+
+<ModuleConsolidation 
             index={1}
             variant="indigo"
             video={{
@@ -152,7 +154,7 @@ export default function AulaMetrologia({
             }}
         />
 
-        <QuizInterativo 
+                <QuizInterativo 
             questoes={QUIZ_M1_FUNDAMENTOS}
             numero={2}
             titulo="QUIZ: Módulo Nº 1"
@@ -206,7 +208,9 @@ export default function AulaMetrologia({
             ]}
         />
 
-        <ModuleConsolidation 
+        
+
+<ModuleConsolidation 
             index={2}
             variant="emerald"
             video={{
@@ -234,10 +238,10 @@ export default function AulaMetrologia({
             }}
         />
 
-        <QuizInterativo 
+                <QuizInterativo 
             questoes={QUIZ_M2_PAQUIMETRO}
-            numero={2}
-            titulo="Prática com Paquímetro"
+            numero={3}
+            titulo="QUIZ: Módulo Nº 2"
             onComplete={() => handleModuleComplete("modulo-2")}
         />
       </TabsContent>
@@ -281,7 +285,9 @@ export default function AulaMetrologia({
           }}
         />
 
-        <ModuleConsolidation 
+        
+
+<ModuleConsolidation 
             index={3}
             variant="violet"
             video={{
@@ -309,7 +315,7 @@ export default function AulaMetrologia({
             }}
         />
 
-        <QuizInterativo 
+                <QuizInterativo 
             questoes={QUIZ_M3_MICROMETRO}
             numero={4}
             titulo="QUIZ: Módulo Nº 3"
@@ -363,7 +369,9 @@ export default function AulaMetrologia({
             ]}
         />
 
-        <ModuleConsolidation 
+        
+
+<ModuleConsolidation 
             index={4}
             variant="amber"
             video={{
@@ -391,10 +399,10 @@ export default function AulaMetrologia({
             }}
         />
 
-        <QuizInterativo 
+                <QuizInterativo 
             questoes={QUIZ_M4_TOLERANCIAS}
-            numero={4}
-            titulo="Tolerâncias e Ajustes"
+            numero={5}
+            titulo="QUIZ: Módulo Nº 4"
             onComplete={() => handleModuleComplete("modulo-4")}
         />
       </TabsContent>
@@ -440,7 +448,9 @@ export default function AulaMetrologia({
             ]}
         />
 
-        <ModuleConsolidation 
+        
+
+<ModuleConsolidation 
             index={5}
             variant="rose"
             video={{
@@ -468,7 +478,7 @@ export default function AulaMetrologia({
             }}
         />
 
-        <QuizInterativo 
+                <QuizInterativo 
             questoes={QUIZ_M5_RUGOSIDADE}
             numero={6}
             titulo="QUIZ: Módulo Nº 5"

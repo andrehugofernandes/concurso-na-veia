@@ -100,6 +100,15 @@ export default function AulaSistemasLineares({
     { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Final" },
   ] as const;
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -270,6 +279,8 @@ export default function AulaSistemasLineares({
 
           <section id="quiz-modulo-1" className="mt-16">
           
+
+
 
 
 
@@ -472,6 +483,8 @@ export default function AulaSistemasLineares({
 
 
 
+
+
 <ModuleConsolidation
             index={3}
             variant="emerald"
@@ -513,7 +526,7 @@ export default function AulaSistemasLineares({
 
                       <QuizInterativo
               questoes={quizM2}
-              titulo="Método de Substituição"
+              titulo="QUIZ: Módulo Nº 2"
               icone="🔄"
               numero={4}
               variant="emerald"
@@ -634,6 +647,8 @@ export default function AulaSistemasLineares({
 
           <section id="quiz-modulo-3" className="mt-16">
           
+
+
 
 
 
@@ -829,6 +844,8 @@ export default function AulaSistemasLineares({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="blue"
@@ -871,7 +888,7 @@ export default function AulaSistemasLineares({
 
                       <QuizInterativo
               questoes={quizM4}
-              titulo="Regra de Cramer e Determinantes"
+              titulo="QUIZ: Módulo Nº 4"
               icone="📊"
               numero={3}
               variant="blue"
@@ -982,6 +999,8 @@ export default function AulaSistemasLineares({
 
           <section id="quiz-modulo-5" className="mt-16">
           
+
+
 
 
 
@@ -1148,6 +1167,8 @@ export default function AulaSistemasLineares({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="rose"
@@ -1190,7 +1211,7 @@ export default function AulaSistemasLineares({
 
                       <QuizInterativo
               questoes={quizM6}
-              titulo="Sistemas com 3 Variáveis"
+              titulo="QUIZ: Módulo Nº 6"
               icone="3️⃣"
               numero={3}
               variant="cyan"
@@ -1308,6 +1329,8 @@ export default function AulaSistemasLineares({
 
           <section id="quiz-modulo-7" className="mt-16">
           
+
+
 
 
 
@@ -1481,6 +1504,8 @@ export default function AulaSistemasLineares({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -1523,7 +1548,7 @@ export default function AulaSistemasLineares({
 
                       <QuizInterativo
               questoes={quizM8}
-              titulo="Sistemas de Inequações"
+              titulo="QUIZ: Módulo Nº 8"
               icone="≤"
               numero={3}
               variant="emerald"
@@ -1631,6 +1656,8 @@ export default function AulaSistemasLineares({
 
           <section id="quiz-modulo-9" className="mt-16">
           
+
+
 
 
 
@@ -1820,6 +1847,8 @@ export default function AulaSistemasLineares({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="blue"
@@ -1863,7 +1892,7 @@ export default function AulaSistemasLineares({
 
                       <QuizInterativo
               questoes={quizM10}
-              titulo="Simulado Final CESGRANRIO"
+              titulo="QUIZ: Módulo Nº 10"
               icone="🏆"
               numero={3}
               variant="blue"

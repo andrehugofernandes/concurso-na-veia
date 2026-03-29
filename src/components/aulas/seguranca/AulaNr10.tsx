@@ -172,7 +172,9 @@ export default function AulaNr10({
             ]}
           />
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             index={1}
             variant={mv[1]}
             video={{ videoId: "dQw4w9WgXcQ", title: "Introdução à NR-10", duration: "10:30" }}
@@ -186,7 +188,7 @@ export default function AulaNr10({
             audio={{ audioUrl: "/audio/nr10-m1.mp3", titulo: "Podcast NR-10 Intro", artista: "Prof. Petro" }}
           />
 
-          <QuizInterativo titulo="QUIZ: Módulo Nº 1" questoes={quizM1} variant={mv[1]} onComplete={() => handleModuleComplete("modulo-1")} />
+                    <QuizInterativo titulo="QUIZ: Módulo Nº 1" questoes={quizM1} variant={mv[1]} onComplete={() => handleModuleComplete("modulo-1")} />
         </div>
       </TabsContent>
 
@@ -257,7 +259,9 @@ export default function AulaNr10({
             ]}
           />
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             index={1}
             variant={mv[2]}
             video={{ videoId: "dQw4w9WgXcQ", title: "Hierarquia de Proteção", duration: "12:15" }}
@@ -271,7 +275,7 @@ export default function AulaNr10({
             audio={{ audioUrl: "/audio/nr10-m2.mp3", titulo: "Audioaula Medidas", artista: "Prof. Petro" }}
           />
 
-          <QuizInterativo titulo="Simulado de Conhecimento" questoes={quizM2} variant={mv[2]} onComplete={() => handleModuleComplete("modulo-2")} />
+                    <QuizInterativo titulo="QUIZ: Módulo Nº 2" questoes={quizM2} variant={mv[2]} onComplete={() => handleModuleComplete("modulo-2")} />
         </div>
       </TabsContent>
 
@@ -334,7 +338,9 @@ export default function AulaNr10({
             ]}
           />
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             index={1}
             variant={mv[3]}
             video={{ videoId: "dQw4w9WgXcQ", title: "Entendendo o PIE", duration: "09:40" }}
@@ -348,7 +354,7 @@ export default function AulaNr10({
             audio={{ audioUrl: "/audio/nr10-m3.mp3", titulo: "Podcast PIE", artista: "Prof. Petro" }}
           />
 
-          <QuizInterativo titulo="QUIZ: Módulo Nº 3" questoes={quizM3} variant={mv[3]} onComplete={() => handleModuleComplete("modulo-3")} />
+                    <QuizInterativo titulo="QUIZ: Módulo Nº 3" questoes={quizM3} variant={mv[3]} onComplete={() => handleModuleComplete("modulo-3")} />
         </div>
       </TabsContent>
 
@@ -415,7 +421,9 @@ export default function AulaNr10({
             ]}
           />
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             index={1}
             variant={mv[4]}
             video={{ videoId: "dQw4w9WgXcQ", title: "EPI e Vestimentas", duration: "11:00" }}
@@ -429,7 +437,7 @@ export default function AulaNr10({
             audio={{ audioUrl: "/audio/nr10-m4.mp3", titulo: "Podcast Vestimentas", artista: "Prof. Petro" }}
           />
 
-          <QuizInterativo titulo="Simulado de Conhecimento" questoes={quizM4} variant={mv[4]} onComplete={() => handleModuleComplete("modulo-4")} />
+                    <QuizInterativo titulo="QUIZ: Módulo Nº 4" questoes={quizM4} variant={mv[4]} onComplete={() => handleModuleComplete("modulo-4")} />
         </div>
       </TabsContent>
 
@@ -486,7 +494,9 @@ export default function AulaNr10({
             ]}
           />
 
-          <ModuleConsolidation
+          
+
+<ModuleConsolidation
             index={1}
             variant={mv[5]}
             video={{ videoId: "dQw4w9WgXcQ", title: "Mapa de Zonas", duration: "14:50" }}
@@ -500,7 +510,7 @@ export default function AulaNr10({
             audio={{ audioUrl: "/audio/nr10-m5.mp3", titulo: "Podcast Final", artista: "Prof. Petro" }}
           />
 
-          <QuizInterativo titulo="QUIZ: Módulo Nº 5" questoes={quizM5} variant={mv[5]} onComplete={() => handleModuleComplete("modulo-5")} />
+                    <QuizInterativo titulo="QUIZ: Módulo Nº 5" questoes={quizM5} variant={mv[5]} onComplete={() => handleModuleComplete("modulo-5")} />
         </div>
       </TabsContent>
 

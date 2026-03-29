@@ -20,6 +20,7 @@ import {
   AulaTemplate,
   Comparison,
 } from "../shared";
+import { getAllModuleVariants, getModuleVariant } from "@/lib/moduleColors";
 import {
   QUIZ_M1_SUBSTANTIVO,
   QUIZ_M2_ADJETIVO_ARTIGO,
@@ -139,48 +140,92 @@ const CONJ_SLIDES = [
     icone: "🕒",
     conteudo: (
       <CardCarousel
-        titulo=""
+        titulo="Conjugação Regular: Presente do Indicativo"
         cards={[
           criarCard(
             i1,
             "Estudar",
-            renderConj(
-              "estudo",
-              "estudas",
-              "estuda",
-              "estudamos",
-              "estudais",
-              "estudam",
-            ),
+            <div className="space-y-4">
+              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+                <h4 className="font-bold text-blue-700 dark:text-blue-300 mb-2">Modelo -AR</h4>
+                <div className="text-lg font-mono text-center space-y-1">
+                  {renderConj(
+                    "estudo",
+                    "estudas", 
+                    "estuda",
+                    "estudamos",
+                    "estudais",
+                    "estudam",
+                  )}
+                </div>
+              </div>
+              <div className="text-sm text-muted-foreground bg-amber-50 dark:bg-amber-950/30 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
+                <strong>Regra:</strong> Verbos terminados em -AR seguem este padrão. 
+                Ex: "falo", "falas", "fala", "falamos", "falais", "falam".
+              </div>
+            </div>
           ),
           criarCard(
             i2,
             "Vender",
-            renderConj(
-              "vendo",
-              "vendes",
-              "vende",
-              "vendemos",
-              "vendeis",
-              "vendem",
-            ),
+            <div className="space-y-4">
+              <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-4 border border-emerald-200 dark:border-emerald-800">
+                <h4 className="font-bold text-emerald-700 dark:text-emerald-300 mb-2">Modelo -ER</h4>
+                <div className="text-lg font-mono text-center space-y-1">
+                  {renderConj(
+                    "vendo",
+                    "vendes",
+                    "vende", 
+                    "vendemos",
+                    "vendeis",
+                    "vendem",
+                  )}
+                </div>
+              </div>
+              <div className="text-sm text-muted-foreground bg-amber-50 dark:bg-amber-950/30 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
+                <strong>Regra:</strong> Verbos terminados em -ER seguem este padrão.
+                Ex: "corro", "corres", "corre", "corremos", "correis", "correm".
+              </div>
+            </div>
           ),
           criarCard(
             i3,
             "Partir",
-            renderConj(
-              "parto",
-              "partes",
-              "parte",
-              "partimos",
-              "partis",
-              "partem",
-            ),
+            <div className="space-y-4">
+              <div className="bg-rose-50 dark:bg-rose-950/30 rounded-lg p-4 border border-rose-200 dark:border-rose-800">
+                <h4 className="font-bold text-rose-700 dark:text-rose-300 mb-2">Modelo -IR</h4>
+                <div className="text-lg font-mono text-center space-y-1">
+                  {renderConj(
+                    "parto",
+                    "partes",
+                    "parte",
+                    "partimos", 
+                    "partis",
+                    "partem",
+                  )}
+                </div>
+              </div>
+              <div className="text-sm text-muted-foreground bg-amber-50 dark:bg-amber-950/30 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
+                <strong>Regra:</strong> Verbos terminados em -IR seguem este padrão.
+                Ex: "abro", "abres", "abre", "abrimos", "abris", "abrem".
+              </div>
+            </div>
           ),
           criarCard(
             iIr,
             "Ser",
-            renderConj("sou", "és", "é", "somos", "sois", "são"),
+            <div className="space-y-4">
+              <div className="bg-violet-50 dark:bg-violet-950/30 rounded-lg p-4 border border-violet-200 dark:border-violet-800">
+                <h4 className="font-bold text-violet-700 dark:text-violet-300 mb-2">Verbo Irregular ⚠️</h4>
+                <div className="text-lg font-mono text-center space-y-1">
+                  {renderConj("sou", "és", "é", "somos", "sois", "são")}
+                </div>
+              </div>
+              <div className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/30 rounded-lg p-3 border border-red-200 dark:border-red-800">
+                <strong>Atenção:</strong> "SER" é totalmente irregular! Não segue padrão nenhum.
+                Memorize: sou/és/é/somos/sois/são.
+              </div>
+            </div>,
             "irreg",
           ),
         ]}
@@ -192,48 +237,92 @@ const CONJ_SLIDES = [
     icone: "✅",
     conteudo: (
       <CardCarousel
-        titulo=""
+        titulo="Conjugação Regular: Pretérito Perfeito"
         cards={[
           criarCard(
             i1,
             "Estudar",
-            renderConj(
-              "estudei",
-              "estudaste",
-              "estudou",
-              "estudamos",
-              "estudastes",
-              "estudaram",
-            ),
+            <div className="space-y-4">
+              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+                <h4 className="font-bold text-blue-700 dark:text-blue-300 mb-2">Modelo -AR</h4>
+                <div className="text-lg font-mono text-center space-y-1">
+                  {renderConj(
+                    "estudei",
+                    "estudaste",
+                    "estudou",
+                    "estudamos",
+                    "estudastes",
+                    "estudaram",
+                  )}
+                </div>
+              </div>
+              <div className="text-sm text-muted-foreground bg-amber-50 dark:bg-amber-950/30 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
+                <strong>Regra:</strong> Pretérito perfeito indica ação concluída no passado.
+                Terminações: -ei/-aste/-ou/-amos/-astes/-aram.
+              </div>
+            </div>
           ),
           criarCard(
             i2,
             "Vender",
-            renderConj(
-              "vendi",
-              "vendeste",
-              "vendeu",
-              "vendemos",
-              "vendestes",
-              "venderam",
-            ),
+            <div className="space-y-4">
+              <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-4 border border-emerald-200 dark:border-emerald-800">
+                <h4 className="font-bold text-emerald-700 dark:text-emerald-300 mb-2">Modelo -ER</h4>
+                <div className="text-lg font-mono text-center space-y-1">
+                  {renderConj(
+                    "vendi",
+                    "vendeste",
+                    "vendeu",
+                    "vendemos",
+                    "vendestes",
+                    "venderam",
+                  )}
+                </div>
+              </div>
+              <div className="text-sm text-muted-foreground bg-amber-50 dark:bg-amber-950/30 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
+                <strong>Regra:</strong> Verbos -ER no pretérito: -i/-este/-eu/-emos/-estes/-eram.
+                Ex: "corri", "correste", "correu", "corremos", "correstes", "correram".
+              </div>
+            </div>
           ),
           criarCard(
             i3,
             "Partir",
-            renderConj(
-              "parti",
-              "partiste",
-              "partiu",
-              "partimos",
-              "partistes",
-              "partiram",
-            ),
+            <div className="space-y-4">
+              <div className="bg-rose-50 dark:bg-rose-950/30 rounded-lg p-4 border border-rose-200 dark:border-rose-800">
+                <h4 className="font-bold text-rose-700 dark:text-rose-300 mb-2">Modelo -IR</h4>
+                <div className="text-lg font-mono text-center space-y-1">
+                  {renderConj(
+                    "parti",
+                    "partiste",
+                    "partiu",
+                    "partimos",
+                    "partistes",
+                    "partiram",
+                  )}
+                </div>
+              </div>
+              <div className="text-sm text-muted-foreground bg-amber-50 dark:bg-amber-950/30 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
+                <strong>Regra:</strong> Verbos -IR no pretérito: -i/-iste/-iu/-imos/-istes/-iram.
+                Ex: "abri", "abriste", "abriu", "abrimos", "abristes", "abriram".
+              </div>
+            </div>
           ),
           criarCard(
             iIr,
-            "Vir",
-            renderConj("vim", "vieste", "veio", "viemos", "viestes", "vieram"),
+            "Ser",
+            <div className="space-y-4">
+              <div className="bg-violet-50 dark:bg-violet-950/30 rounded-lg p-4 border border-violet-200 dark:border-violet-800">
+                <h4 className="font-bold text-violet-700 dark:text-violet-300 mb-2">Verbo Irregular ⚠️</h4>
+                <div className="text-lg font-mono text-center space-y-1">
+                  {renderConj("fui", "foste", "foi", "fomos", "fostes", "foram")}
+                </div>
+              </div>
+              <div className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/30 rounded-lg p-3 border border-red-200 dark:border-red-800">
+                <strong>Atenção:</strong> "SER" no pretérito é totalmente irregular!
+                Memorize: fui/foste/foi/fomos/fostes/foram.
+              </div>
+            </div>,
             "irreg",
           ),
         ]}
@@ -241,10 +330,6 @@ const CONJ_SLIDES = [
     ),
   },
 ];
-
-// ══════════════════════════════════════════════════════════════════════════
-// COMPONENTE PRINCIPAL
-// ══════════════════════════════════════════════════════════════════════════
 
 export default function AulaClassesPalavras({
   onComplete,
@@ -258,6 +343,11 @@ export default function AulaClassesPalavras({
   materiaNome,
   materiaId,
 }: AulaProps) {
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+  const mv = Object.fromEntries(
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)]),
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
   const [activeTab, setActiveTab] = useState("modulo-1");
   const [completedModules, setCompletedModules] = useState<Set<string>>(
     new Set(),
@@ -327,18 +417,136 @@ export default function AulaClassesPalavras({
     >
       {/* ── MÓDULO 1: SUBSTANTIVO ── */}
       <TabsContent value="modulo-1" className="space-y-12 mt-12">
-        <ModuleBanner
-          numero={1}
+        <ModuleBanner numero={1}
           titulo="O Substantivo"
           descricao="A base de toda a nomeação e o núcleo dos termos da oração."
-          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
-        />
+          variant={mv[1]} gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"/>
+
+        {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Fundamentação dos Substantivos"
+            description="Domine a classe de palavras que nomeia o mundo e estrutura o pensamento"
+            variant={mv[1]}
+          />
+
+          <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+            {/* PARÁGRAFO 1: Definição formal + contexto histórico/acadêmico */}
+            <p>
+              O substantivo constitui a classe lexical fundamental da língua portuguesa, 
+              responsável pela designação de seres, conceitos, fenômenos e abstrações. 
+              Segundo Evanildo Bechara em sua "Moderna Gramática Portuguesa", o substantivo 
+              é "a palavra com que designamos os seres em geral", estabelecendo-se como 
+              o pilar sobre o qual se edifica toda a estrutura sintática da oração. 
+              Na tradição gramatical ocidental, desde Dionísio da Trácia (século II a.C.), 
+              os substantivos representam a categoria primordial de nomeação, 
+              funcionando como âncora semântica para todas as outras classes gramaticais. 
+              Para o contexto Petrobras, o domínio dos substantivos revela-se crucial 
+              na compreensão de documentos técnicos, relatórios e comunicados corporativos 
+              que empregam terminologia específica da indústria de óleo e gás.
+            </p>
+
+            {/* PARÁGRAFO 2: Explicação intuitiva + analogia */}
+            <p>
+              Em outras palavras, os substantivos funcionam como os "blocos de construção" 
+              da linguagem humana. Assim como os átomos formam toda a matéria conhecida, 
+              os substantivos nomeiam os elementos essenciais que compõem nossa realidade 
+              comunicativa. Quando dizemos "plataforma", "refinaria" ou "petróleo", 
+              estamos utilizando substantivos que atuam como recipientes conceituais, 
+              armazenando não apenas o objeto em si, mas todo o universo de propriedades, 
+              relações e funções a ele associadas. Esta capacidade de nomeação transcende 
+              a mera etiquetagem, constituindo-se como ato cognitivo fundamental que 
+              permite aos seres humanos organizar, categorizar e compartilhar conhecimento 
+              sobre o mundo circundante.
+            </p>
+
+            {/* PARÁGRAFO 3: Regras/Fórmulas/Artigos de lei */}
+            <p>
+              A classificação dos substantivos obedece a critérios morfológicos e semânticos 
+              rigorosos, organizados em quatro eixos fundamentais: concreto vs. abstrato, 
+              próprio vs. comum, simples vs. composto, e primitivo vs. derivado. 
+              Substantivos concretos designam seres com existência independente, perceptíveis 
+              pelos sentidos (sondador, plataforma, reservatório), enquanto abstratos 
+              referem-se a qualidades, estados ou ações (exploração, produção, refino). 
+              Os próprios individualizam seres específicos (Bacia de Campos, Campo de Tupi), 
+              exigindo inicial maiúscula, enquanto os comuns aplicam-se genericamente 
+              (bacia, campo, poço). A flexão de número constitui-se como marca morfológica 
+              obrigatória, com o plural seguindo regras precisas: terminações em -ão 
+              podem flexionar-se em -ões, -ães ou -ãos, constituindo-se clássica 
+              armadilha em avaliações da CESGRANRIO.
+            </p>
+
+            {/* PARÁGRAFO 4: Aplicação prática / Contexto Petrobras */}
+            <p>
+              No universo Petrobras, os substantivos técnicos assumem papel preponderante 
+              na comunicação corporativa e documentação técnica. Termos como "laminado", 
+              "wellhead", "flowline" e "riser" transcendem o vocabulário comum, 
+              constituindo-se como léxico especializado fundamental para profissionais 
+              da área. A precisão na utilização desses substantivos técnicos impacta 
+              diretamente a segurança operacional, eficiência produtiva e conformidade 
+              regulatória. Relatórios de produção, por exemplo, dependem da correta 
+              nomeação de equipamentos e processos para garantir interpretação unívoca 
+              e tomada de decisões adequadas. Além disso, a compreensão dos substantivos 
+              coletivos específicos da indústria (frota, sonda, plataforma) revela-se 
+              essencial para leitura crítica de comunicados institucionais e documentos 
+              de licitação.
+            </p>
+
+            {/* PARÁGRAFO 5: Erros comuns + como a CESGRANRIO cobra */}
+            <p>
+              A CESGRANRIO sistematicamente explora as sutilezas morfológicas dos substantivos 
+              em suas avaliações, com ênfase particular na flexão de número, 
+              identificação de coletivos e distinção entre concreto/abstrato. 
+              Erros frequentes dos candidatos incluem a pluralização incorreta de 
+              substantivos compostos (guarda-chuvas vs. guarda-chuva), confusão entre 
+              substantivos e adjetivos pátrios, e dificuldade em identificar substantivos 
+              abstratos em contextos técnicos. A banca costuma apresentar alternativas 
+              com termos semanticamente próximos mas morfologicamente distintos, 
+              exigindo atenção redobrada à análise das classes gramaticais. 
+              Questões envolvendo substantivos coletivos menos comuns (alcatéia, 
+              cáfila, ninhada) frequentemente aparecem associadas a contextos 
+              da indústria de petróleo, testando tanto o conhecimento lexicográfico 
+              quanto a capacidade de aplicação em situações práticas.
+            </p>
+
+            {/* CAIXA DE DESTAQUE: Fórmula / Regra-Chave / Artigo de Lei */}
+            <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200/50 dark:border-amber-800/50 p-6 space-y-4">
+              <h4 className="font-bold text-foreground text-lg">
+                Estrutura de Flexão dos Substantivos
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                <div>
+                  <p className="font-semibold text-amber-700 dark:text-amber-300">
+                    Singular → Plural
+                  </p>
+                  <ul className="space-y-1 mt-2">
+                    <li>• -ão → -ões (razão → razões)</li>
+                    <li>• -ão → -ães (capitão → capitães)</li>
+                    <li>• -ão → -ãos (cidadão → cidadãos)</li>
+                    <li>• Paroxítonos em -l → -is (projétil → projéteis)</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-amber-700 dark:text-amber-300">
+                    Compostos Especiais
+                  </p>
+                  <ul className="space-y-1 mt-2">
+                    <li>• Verbo + substantivo: só o 2º varia (guarda-roupas)</li>
+                    <li>• Repetição: invariável (pingue-pongue)</li>
+                    <li>• Ligação hífen: variam os 2 (couve-flores)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
           <ModuleSectionHeader
-            index={1}
+            index={2}
             title="Conceito Científico"
-            variant="blue"
+            variant={mv[1]}
           />
           <p className="text-lg text-muted-foreground">
             O <strong>Substantivo</strong> é a classe de palavra que{" "}
@@ -359,9 +567,9 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={2}
+            index={3}
             title="Classificações dos Substantivos"
-            variant="blue"
+            variant={mv[1]}
           />
           <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             Os substantivos são organizados em{" "}
@@ -370,33 +578,117 @@ export default function AulaClassesPalavras({
           </p>
           <ContentAccordion
             mode="stacked"
-            titulo="Os 4 Pares"
+            titulo="Os 4 Pares Fundamentais de Classificação"
             icone={<LuTag />}
             corIndicador="bg-blue-500"
             slides={[
               {
-                titulo: "Concreto vs Abstrato",
+                titulo: "🏗️ Concreto vs Abstrato",
                 icone: "1️⃣",
-                conteudo:
-                  "Concreto designa seres com existência própria; Abstrato designa ações, qualidades e sentimentos.",
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+                        <h4 className="font-bold text-blue-700 dark:text-blue-300 mb-2">Concreto 🏢</h4>
+                        <p className="text-sm">Seres com existência física, perceptível pelos sentidos.</p>
+                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
+                          <strong>Exemplos:</strong> plataforma, refinaria, petróleo, mar, funcionário
+                        </div>
+                      </div>
+                      <div className="bg-purple-50 dark:bg-purple-950/30 rounded-lg p-4 border border-purple-200 dark:border-purple-800">
+                        <h4 className="font-bold text-purple-700 dark:text-purple-300 mb-2">Abstrato 💭</h4>
+                        <p className="text-sm">Qualidades, estados, ações, sentimentos - existem na mente.</p>
+                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
+                          <strong>Exemplos:</strong> beleza, eficiência, segurança, liberdade, produção
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-amber-50 dark:bg-amber-950/30 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
+                      <p className="text-xs"><strong>⚠️ Dica Petrobras:</strong> "Segurança" é abstrato, mas "plataforma de segurança" é concreto!</p>
+                    </div>
+                  </div>
+                ),
               },
               {
-                titulo: "Próprio vs Comum",
+                titulo: "🏷️ Próprio vs Comum",
                 icone: "2️⃣",
-                conteudo:
-                  "O substantivo Próprio denomina um ser específico, individualizado, e é escrito com letra maiúscula (Petrobras, Rio de Janeiro). O substantivo Comum designa qualquer elemento de uma classe de seres, escrito com letra minúscula (empresa, cidade).",
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-4 border border-emerald-200 dark:border-emerald-800">
+                        <h4 className="font-bold text-emerald-700 dark:text-emerald-300 mb-2">Próprio 🎯</h4>
+                        <p className="text-sm">Ser específico, individualizado. Sempre letra maiúscula!</p>
+                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
+                          <strong>Exemplos:</strong> Petrobras, Rio de Janeiro, Bacia de Campos, Atlântico
+                        </div>
+                      </div>
+                      <div className="bg-rose-50 dark:bg-rose-950/30 rounded-lg p-4 border border-rose-200 dark:border-rose-800">
+                        <h4 className="font-bold text-rose-700 dark:text-rose-300 mb-2">Comum 🌍</h4>
+                        <p className="text-sm">Qualquer elemento de uma classe. Letra minúscula.</p>
+                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
+                          <strong>Exemplos:</strong> empresa, cidade, bacia, oceano, funcionário
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-3 border border-blue-200 dark:border-blue-800">
+                      <p className="text-xs"><strong>📝 Regra:</strong> Próprio não admite artigo - "Petrobras" (não "a Petrobras")!</p>
+                    </div>
+                  </div>
+                ),
               },
               {
-                titulo: "Simples vs Composto",
+                titulo: "🔗 Simples vs Composto",
                 icone: "3️⃣",
-                conteudo:
-                  "Simples é formado por um único radical: 'mar', 'flor'. Composto é formado pela junção de dois ou mais radicais: 'guarda-chuva', 'passatempo'. Atenção: a pluralização do substantivo composto é uma armadilha clássica da Cesgranrio.",
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="bg-cyan-50 dark:bg-cyan-950/30 rounded-lg p-4 border border-cyan-200 dark:border-cyan-800">
+                        <h4 className="font-bold text-cyan-700 dark:text-cyan-300 mb-2">Simples 🔷</h4>
+                        <p className="text-sm">Um único radical. Uma palavra só.</p>
+                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
+                          <strong>Exemplos:</strong> mar, flor, petróleo, gás, poço, plataforma
+                        </div>
+                      </div>
+                      <div className="bg-orange-50 dark:bg-orange-950/30 rounded-lg p-4 border border-orange-200 dark:border-orange-800">
+                        <h4 className="font-bold text-orange-700 dark:text-orange-300 mb-2">Composto 🔗</h4>
+                        <p className="text-sm">Dois ou mais radicais unidos.</p>
+                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
+                          <strong>Exemplos:</strong> guarda-chuva, passatempo, petróleo-diesel, baixo-mar
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-red-50 dark:bg-red-950/30 rounded-lg p-3 border border-red-200 dark:border-red-800">
+                      <p className="text-xs"><strong>⚠️ ARMADILHA CESGRANRIO:</strong> Plural de compostos é cobrado sempre! "guarda-chuvas" (não "guardas-chuvas")!</p>
+                    </div>
+                  </div>
+                ),
               },
               {
-                titulo: "Primitivo vs Derivado",
+                titulo: "🌱 Primitivo vs Derivado",
                 icone: "4️⃣",
-                conteudo:
-                  "Primitivo não deriva de outra palavra da língua portuguesa: 'pedra', 'ferro'. Derivado origina-se de outra palavra: 'pedreira' (de pedra), 'ferreiro' (de ferro). A derivação é o principal processo de formação de palavras cobrado em prova.",
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="bg-indigo-50 dark:bg-indigo-950/30 rounded-lg p-4 border border-indigo-200 dark:border-indigo-800">
+                        <h4 className="font-bold text-indigo-700 dark:text-indigo-300 mb-2">Primitivo 🌳</h4>
+                        <p className="text-sm">Não deriva de outra palavra portuguesa. Raiz original.</p>
+                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
+                          <strong>Exemplos:</strong> pedra, ferro, mar, terra, fogo, água
+                        </div>
+                      </div>
+                      <div className="bg-violet-50 dark:bg-violet-950/30 rounded-lg p-4 border border-violet-200 dark:border-violet-800">
+                        <h4 className="font-bold text-violet-700 dark:text-violet-300 mb-2">Derivado 🌿</h4>
+                        <p className="text-sm">Origina-se de outra palavra. Sufixos/prefixos.</p>
+                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
+                          <strong>Exemplos:</strong> pedreira (de pedra), ferreiro (de ferro), marinheiro (de mar)
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-green-50 dark:bg-green-950/30 rounded-lg p-3 border border-green-200 dark:border-green-800">
+                      <p className="text-xs"><strong>🎯 Foco Petrobras:</strong> "perfuração" (de perfurar), "extração" (de extrair), "refinaria" (de refinar)!</p>
+                    </div>
+                  </div>
+                ),
               },
             ]}
           />
@@ -404,9 +696,9 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={3}
+            index={4}
             title="Substantivos Coletivos — Atenção Máxima"
-            variant="blue"
+            variant={mv[1]}
           />
           <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             O substantivo <strong>coletivo</strong> designa, no singular, um conjunto de seres da mesma espécie. A Cesgranrio adora cobrar os coletivos menos óbvios. Vire o card para ver o coletivo correspondente.
@@ -476,9 +768,9 @@ export default function AulaClassesPalavras({
         {/* Resumo + Multimídia M1 */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={4}
+            index={5}
             title="Resumo e Multimídia"
-            variant="blue"
+            variant={mv[1]}
           />
           <LessonTabs
             tabs={[
@@ -526,9 +818,9 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={5}
+            index={6}
             title="Derivação Imprópria — O 'Efeito Rei Midas'"
-            variant="blue"
+            variant={mv[1]}
           />
           <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-xl mb-6 text-lg text-foreground">
             <p>
@@ -615,9 +907,9 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={6}
+            index={7}
             title="Gênero dos Substantivos — Os Heterônimos"
-            variant="blue"
+            variant={mv[1]}
           />
           <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             Os <strong>heterônimos</strong> são substantivos que formam o feminino através de palavras completamente diferentes (radicais distintos). São fontes frequentes de pegadinhas em prova de ortografia e concordância.
@@ -647,9 +939,9 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={7}
+            index={8}
             title="Plural dos Substantivos Compostos"
-            variant="blue"
+            variant={mv[1]}
           />
           <ContentAccordion
             mode="stacked"
@@ -697,7 +989,7 @@ export default function AulaClassesPalavras({
             questoes={qMod1}
             titulo="QUIZ: Substantivo: O Nomeador"
             icone="🎯"
-            numero={8}
+            numero={9}
             variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
@@ -706,12 +998,10 @@ export default function AulaClassesPalavras({
 
       {/* ── MÓDULO 2: ADJETIVO ── */}
       <TabsContent value="modulo-2" className="space-y-12 mt-12">
-        <ModuleBanner
-          numero={2}
+        <ModuleBanner numero={2}
           titulo="O Adjetivo"
           descricao="O qualificador que define a concordância e a nuance do texto."
-          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
-        />
+           variant={mv[2]} gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"/>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
           <ModuleSectionHeader
@@ -884,12 +1174,10 @@ export default function AulaClassesPalavras({
 
       {/* ── MÓDULO 3: ARTIGO ── */}
       <TabsContent value="modulo-3" className="space-y-12 mt-12">
-        <ModuleBanner
-          numero={3}
+        <ModuleBanner numero={3}
           titulo="O Artigo"
           descricao="O determinante que define a substantivação e a concordância."
-          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
-        />
+           variant={mv[3]} gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"/>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
           <ModuleSectionHeader
@@ -1113,12 +1401,10 @@ export default function AulaClassesPalavras({
 
       {/* ── MÓDULO 4: PRONOME ── */}
       <TabsContent value="modulo-4" className="space-y-12 mt-12">
-        <ModuleBanner
-          numero={4}
+        <ModuleBanner numero={4}
           titulo="O Pronome"
           descricao="O substituto estratégico e o mestre da coesão textual."
-          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
-        />
+          variant={mv[4]} gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"/>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
@@ -1326,7 +1612,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={5}
             title="Pronomes de Tratamento — A Armadilha do Concurso"
-            variant="violet"
+            variant={mv[4]}
           />
           <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             Os pronomes de tratamento são formas especiais de se referir a pessoas de forma respeitosa ou protocolar. São a fonte de uma das pegadinhas mais clássicas da Cesgranrio: apesar de se referirem à <strong>2ª pessoa</strong> (o interlocutor), exigem o verbo e os pronomes na <strong>3ª pessoa do singular</strong>.
@@ -1378,18 +1664,16 @@ export default function AulaClassesPalavras({
 
       {/* ── MÓDULO 5: VERBO ── */}
       <TabsContent value="modulo-5" className="space-y-12 mt-12">
-        <ModuleBanner
-          numero={5}
+        <ModuleBanner numero={5}
           titulo="O Verbo"
           descricao="A classe mais complexa e importante da língua portuguesa."
-          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
-        />
+          variant={mv[5]} gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"/>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
           <ModuleSectionHeader
             index={1}
             title="Conceito e Classificação dos Verbos"
-            variant="rose"
+            variant={mv[5]}
           />
           <p className="text-lg text-muted-foreground">
             O <strong>Verbo</strong> é a classe de palavra que exprime{" "}
@@ -1441,7 +1725,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Vozes Verbais e Passiva Pronominal"
-            variant="rose"
+            variant={mv[5]}
           />
           <Comparison
             title="Ativa vs Passiva Analítica vs Passiva Sintética"
@@ -1615,18 +1899,16 @@ export default function AulaClassesPalavras({
 
       {/* ── MÓDULO 6: ADVÉRBIO ── */}
       <TabsContent value="modulo-6" className="space-y-12 mt-12">
-        <ModuleBanner
-          numero={6}
+        <ModuleBanner numero={6}
           titulo="O Advérbio"
           descricao="O modificador invariável e as armadilhas das palavras camaleão."
-          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
-        />
+          variant={mv[6]} gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"/>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
           <ModuleSectionHeader
             index={1}
             title="Conceito e o Teste do 'Muito'"
-            variant="amber"
+            variant={mv[6]}
           />
           <p className="text-lg text-muted-foreground">
             O <strong>Advérbio</strong> é a classe <strong>invariável</strong>{" "}
@@ -1647,7 +1929,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Palavras Camaleão"
-            variant="amber"
+            variant={mv[6]}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 bg-muted/30 rounded-xl border border-border">
@@ -1669,7 +1951,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Locuções Adverbiais e Classificação"
-            variant="amber"
+            variant={mv[6]}
           />
           <ContentAccordion
             mode="stacked"
@@ -1776,7 +2058,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Advérbio: A Circunstância"
             icone="🏃"
             numero={5}
-            variant="amber"
+            variant={mv[6]}
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
         </section>
@@ -1784,18 +2066,16 @@ export default function AulaClassesPalavras({
 
       {/* ── MÓDULO 7: PREPOSIÇÃO ── */}
       <TabsContent value="modulo-7" className="space-y-12 mt-12">
-        <ModuleBanner
-          numero={7}
+        <ModuleBanner numero={7}
           titulo="A Preposição"
           descricao="O elo de subordinação essencial para a regência e a crase."
-          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
-        />
+          variant={mv[7]} gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"/>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
           <ModuleSectionHeader
             index={1}
             title="Conceito e Contrações"
-            variant="slate"
+            variant={mv[7]}
           />
           <p className="text-lg text-muted-foreground">
             A <strong>Preposição</strong> liga dois termos, estabelecendo uma
@@ -1818,7 +2098,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Preposições Essenciais vs Acidentais"
-            variant="slate"
+            variant={mv[7]}
           />
           <ContentAccordion
             mode="stacked"
@@ -1862,7 +2142,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Resumo e Multimídia"
-            variant="slate"
+            variant={mv[7]}
           />
           <LessonTabs
             tabs={[
@@ -1893,7 +2173,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Preposição e Regência — Os Verbos Mais Cobrados"
-            variant="slate"
+            variant={mv[7]}
           />
           <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             A <strong>regência verbal</strong> define qual preposição o verbo exige para ligar seu complemento. Errar a preposição na regência é um dos erros mais cobrados na Cesgranrio em questões de correção e reescrita.
@@ -1927,7 +2207,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Preposição: O Elo de Ligação"
             icone="🔗"
             numero={5}
-            variant="slate"
+            variant={mv[7]}
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
           />
         </section>
@@ -1935,18 +2215,16 @@ export default function AulaClassesPalavras({
 
       {/* ── MÓDULO 8: CONJUNÇÃO ── */}
       <TabsContent value="modulo-8" className="space-y-12 mt-12">
-        <ModuleBanner
-          numero={8}
+        <ModuleBanner numero={8}
           titulo="A Conjunção"
           descricao="Os conectivos que articulam as ideias e as orações."
-          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
-        />
+          variant={mv[8]} gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"/>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
             title="Coordenativas vs Subordinativas"
-            variant="indigo"
+            variant={mv[8]}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-4">
@@ -1968,7 +2246,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Conjunções Coordenativas em Detalhe"
-            variant="indigo"
+            variant={mv[8]}
           />
           <ContentAccordion
             mode="stacked"
@@ -2014,7 +2292,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Conjunções Subordinativas — O Mapa Semântico"
-            variant="indigo"
+            variant={mv[8]}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FlipCard
@@ -2064,7 +2342,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant="indigo"
+            variant={mv[8]}
           />
           <LessonTabs
             tabs={[
@@ -2095,7 +2373,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Conjunção: O Cimento do Texto"
             icone="⚙️"
             numero={5}
-            variant="indigo"
+            variant={mv[8]}
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
         </section>
@@ -2103,18 +2381,16 @@ export default function AulaClassesPalavras({
 
       {/* ── MÓDULO 9: INTERJEIÇÃO ── */}
       <TabsContent value="modulo-9" className="space-y-12 mt-12">
-        <ModuleBanner
-          numero={9}
+        <ModuleBanner numero={9}
           titulo="A Interjeição"
           descricao="A expressão das emoções e as regras sutis de pontuação."
-          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
-        />
+          variant={mv[9]} gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"/>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
           <ModuleSectionHeader
             index={1}
             title="Conceito e Pontuação"
-            variant="rose"
+            variant={mv[9]}
           />
           <p className="text-lg text-muted-foreground">
             A <strong>Interjeição</strong> é a palavra invariável que exprime
@@ -2142,7 +2418,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Classificação por Sentimento e Locuções Interjetivas"
-            variant="rose"
+            variant={mv[9]}
           />
           <ContentAccordion
             mode="stacked"
@@ -2217,7 +2493,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Interjeição no Texto — Análise de Efeitos de Sentido"
-            variant="rose"
+            variant={mv[9]}
           />
           <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             Na Cesgranrio, a interjeição aparece principalmente em questões de <strong>interpretação de texto</strong> e <strong>análise de efeitos de sentido</strong>. O examinador quer saber qual emoção ou intenção comunicativa a interjeição expressa no contexto específico.
@@ -2247,7 +2523,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Interjeição: A Emoção"
             icone="⚡"
             numero={5}
-            variant="rose"
+            variant={mv[9]}
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
         </section>
@@ -2255,18 +2531,16 @@ export default function AulaClassesPalavras({
 
       {/* ── MÓDULO 10: NUMERAL ── */}
       <TabsContent value="modulo-10" className="space-y-12 mt-12">
-        <ModuleBanner
-          numero={10}
+        <ModuleBanner numero={10}
           titulo="O Numeral"
           descricao="Quantidades, ordens e a pegadinha do numeral dual."
-          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
-        />
+          variant={mv[10]} gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"/>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
             title="Cardinais vs Ordinais"
-            variant="emerald"
+            variant={mv[10]}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-6 bg-muted/30 rounded-xl">
@@ -2288,7 +2562,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Multiplicativos, Fracionários e Coletivos"
-            variant="emerald"
+            variant={mv[10]}
           />
           <ContentAccordion
             mode="stacked"

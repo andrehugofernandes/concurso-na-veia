@@ -120,13 +120,9 @@ def custom_reorder(full_content: str) -> Tuple[str, bool]:
     return ("".join(new_parts), changed)
 
 if __name__ == "__main__":
-    search_dir = 'src/components/aulas'
-    if os.path.exists(search_dir):
-        for dirpath, _, filenames in os.walk(search_dir):
-            for filename in filenames:
-                if filename.endswith('.tsx'):
-                    filepath = os.path.join(dirpath, filename)
-                    process_file(filepath)
+    filepath = 'src/components/aulas/portugues/AulaConcordancia.tsx'
+    if os.path.exists(filepath):
+        process_file(filepath)
     else:
-        print(f"Directory {search_dir} not found.")
+        print(f"File {filepath} not found.")
 

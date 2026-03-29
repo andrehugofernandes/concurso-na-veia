@@ -309,6 +309,8 @@ export default function AulaLei13303(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={1}
           variant={getBannerVariant(1)}
@@ -556,6 +558,8 @@ export default function AulaLei13303(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={2}
           variant={getBannerVariant(2)}
@@ -774,6 +778,8 @@ export default function AulaLei13303(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={3}
           variant={getBannerVariant(3)}
@@ -979,6 +985,8 @@ export default function AulaLei13303(props: AulaProps) {
         </div>
 
         
+
+
 
 
 
@@ -1230,6 +1238,8 @@ export default function AulaLei13303(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={5}
           variant={getBannerVariant(5)}
@@ -1461,6 +1471,8 @@ export default function AulaLei13303(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={6}
           variant={getBannerVariant(6)}
@@ -1660,6 +1672,8 @@ export default function AulaLei13303(props: AulaProps) {
         </div>
 
         
+
+
 
 
 
@@ -1869,6 +1883,8 @@ export default function AulaLei13303(props: AulaProps) {
         </div>
 
         
+
+
 
 
 
@@ -2107,6 +2123,8 @@ export default function AulaLei13303(props: AulaProps) {
             </div>
           </div>
         </div>
+
+
 
 
 

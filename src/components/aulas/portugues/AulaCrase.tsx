@@ -822,6 +822,8 @@ export default function AulaCrase({
 
 
 
+
+
 <ModuleConsolidation
             index={5}
             variant="indigo"
@@ -1116,6 +1118,8 @@ Coloca o acento e brilha no final!
 
 
 
+
+
 <ModuleConsolidation
             index={5}
             variant="emerald"
@@ -1365,6 +1369,8 @@ Coloca o acento e brilha no final!
 
 
 
+
+
 <ModuleConsolidation
             index={5}
             variant="violet"
@@ -1603,6 +1609,8 @@ Coloca o acento e brilha no final!
 
 
 
+
+
 <ModuleConsolidation
             index={5}
             variant="amber"
@@ -1803,6 +1811,8 @@ Coloca o acento e brilha no final!
 
 
           
+
+
 
 
 

@@ -100,6 +100,15 @@ export default function AulaGeometriaEspacial({
     { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Final" },
   ];
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -415,6 +424,8 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
 <ModuleConsolidation
             index={3}
             variant="indigo"
@@ -582,6 +593,8 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -617,7 +630,7 @@ export default function AulaGeometriaEspacial({
 
                       <QuizInterativo
               questoes={quizM2}
-              titulo="Quiz — Prismas: Volume e Área"
+              titulo="QUIZ: Prismas"
               icone="📦"
               numero={3}
               variant="emerald"
@@ -732,6 +745,8 @@ export default function AulaGeometriaEspacial({
 
           <section id="quiz-modulo-3" className="mt-8">
           
+
+
 
 
 
@@ -897,6 +912,8 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="blue"
@@ -932,7 +949,7 @@ export default function AulaGeometriaEspacial({
 
                       <QuizInterativo
               questoes={quizM4}
-              titulo="Quiz — Cilindro: Volume e Área"
+              titulo="QUIZ: Cilindro"
               icone="🛢️"
               numero={3}
               variant="cyan"
@@ -1034,6 +1051,8 @@ export default function AulaGeometriaEspacial({
 
           <section id="quiz-modulo-5" className="mt-8">
           
+
+
 
 
 
@@ -1203,6 +1222,8 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="rose"
@@ -1238,7 +1259,7 @@ export default function AulaGeometriaEspacial({
 
                       <QuizInterativo
               questoes={quizM6}
-              titulo="Quiz — Esfera: Volume e Área"
+              titulo="QUIZ: Esfera"
               icone="🌐"
               numero={3}
               variant="blue"
@@ -1341,6 +1362,8 @@ export default function AulaGeometriaEspacial({
 
           <section id="quiz-modulo-7" className="mt-8">
           
+
+
 
 
 
@@ -1514,6 +1537,8 @@ export default function AulaGeometriaEspacial({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -1549,7 +1574,7 @@ export default function AulaGeometriaEspacial({
 
                       <QuizInterativo
               questoes={quizM8}
-              titulo="Quiz — Sólidos Compostos"
+              titulo="QUIZ: Sólidos Compostos"
               icone="🏗️"
               numero={3}
               variant="blue"
@@ -1665,6 +1690,8 @@ export default function AulaGeometriaEspacial({
 
           <section id="quiz-modulo-9" className="mt-8">
           
+
+
 
 
 
@@ -1821,6 +1848,8 @@ export default function AulaGeometriaEspacial({
 
           <section id="quiz-modulo-10" className="mt-8">
           
+
+
 
 
 

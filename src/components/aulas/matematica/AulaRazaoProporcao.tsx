@@ -141,6 +141,15 @@ export default function AulaRazaoProporcao({
     }
   }, [currentProgress, totalModulos]);
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -586,9 +595,11 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-1">
-            <ModuleConsolidation
-              index={4}
-              variant={getModuleVariant(1)}
+            
+
+<ModuleConsolidation
+              index={5}
+              variant={mv[1]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 1",
@@ -639,11 +650,11 @@ export default function AulaRazaoProporcao({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizRazao}
               titulo="QUIZ: Razão"
               numero={6}
-              variant={getModuleVariant(1)}
+              variant={mv[1]}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -652,7 +663,7 @@ export default function AulaRazaoProporcao({
           {/* ─── RESUMO VISUAL ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
-              index={5}
+              index={4}
               title="Resumo Visual"
               variant={mv[1]}
             />
@@ -1013,9 +1024,11 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-2">
-            <ModuleConsolidation
-              index={3}
-              variant={getModuleVariant(2)}
+            
+
+<ModuleConsolidation
+              index={4}
+              variant={mv[2]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 2",
@@ -1066,11 +1079,11 @@ export default function AulaRazaoProporcao({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizProporcao}
-              titulo="Quiz — Proporção e Propriedades"
+              titulo="QUIZ: Proporção"
               numero={5}
-              variant={getModuleVariant(2)}
+              variant={mv[2]}
               icone="⚖️"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -1079,7 +1092,7 @@ export default function AulaRazaoProporcao({
           {/* ─── RESUMO VISUAL ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
-              index={4}
+              index={3}
               title="Resumo Visual"
               variant={mv[2]}
             />
@@ -1493,9 +1506,11 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-3">
-            <ModuleConsolidation
-              index={5}
-              variant={getModuleVariant(3)}
+            
+
+<ModuleConsolidation
+              index={6}
+              variant={mv[3]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 3",
@@ -1546,11 +1561,11 @@ export default function AulaRazaoProporcao({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizRegra3}
               titulo="QUIZ: Regra de 3 Simples"
               numero={7}
-              variant={getModuleVariant(3)}
+              variant={mv[3]}
               icone="🔢"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -1559,7 +1574,7 @@ export default function AulaRazaoProporcao({
           {/* ─── RESUMO VISUAL ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
-              index={6}
+              index={5}
               title="Resumo Visual"
               variant={mv[3]}
             />
@@ -1867,9 +1882,11 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-4">
-            <ModuleConsolidation
-              index={3}
-              variant={getModuleVariant(4)}
+            
+
+<ModuleConsolidation
+              index={4}
+              variant={mv[4]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 4",
@@ -1920,11 +1937,11 @@ export default function AulaRazaoProporcao({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizDivisao}
-              titulo="Quiz — Divisão Proporcional"
+              titulo="QUIZ: Divisão Proporcional"
               numero={5}
-              variant={getModuleVariant(4)}
+              variant={mv[4]}
               icone="✂️"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1933,7 +1950,7 @@ export default function AulaRazaoProporcao({
           {/* ─── RESUMO ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
-              index={4}
+              index={3}
               title="Resumo Visual"
               variant={mv[4]}
             />
@@ -2413,9 +2430,11 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-5">
-            <ModuleConsolidation
-              index={6}
-              variant={getModuleVariant(5)}
+            
+
+<ModuleConsolidation
+              index={7}
+              variant={mv[5]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 5",
@@ -2466,11 +2485,11 @@ export default function AulaRazaoProporcao({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizGrandezas}
               titulo="QUIZ: Grandezas D/I"
               numero={8}
-              variant={getModuleVariant(5)}
+              variant={mv[5]}
               icone="↕️"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -2479,7 +2498,7 @@ export default function AulaRazaoProporcao({
           {/* ─── RESUMO ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
-              index={7}
+              index={6}
               title="Resumo Visual"
               variant={mv[5]}
             />
@@ -2795,9 +2814,11 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-6">
-            <ModuleConsolidation
-              index={3}
-              variant={getModuleVariant(6)}
+            
+
+<ModuleConsolidation
+              index={4}
+              variant={mv[6]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 6",
@@ -2848,11 +2869,11 @@ export default function AulaRazaoProporcao({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizDivisaoAdv}
-              titulo="Quiz — Divisão Proporcional Avançada"
+              titulo="QUIZ: Div. Prop. Avançada"
               numero={5}
-              variant={getModuleVariant(6)}
+              variant={mv[6]}
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -2861,7 +2882,7 @@ export default function AulaRazaoProporcao({
           {/* ─── RESUMO ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
-              index={4}
+              index={3}
               title="Resumo Visual"
               variant={mv[6]}
             />
@@ -3175,9 +3196,11 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-7">
-            <ModuleConsolidation
-              index={3}
-              variant={getModuleVariant(7)}
+            
+
+<ModuleConsolidation
+              index={4}
+              variant={mv[7]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 7",
@@ -3228,11 +3251,11 @@ export default function AulaRazaoProporcao({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizContinua}
               titulo="QUIZ: Proporção Contínua"
               numero={5}
-              variant={getModuleVariant(7)}
+              variant={mv[7]}
               icone="🔗"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -3241,7 +3264,7 @@ export default function AulaRazaoProporcao({
           {/* ─── RESUMO ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
-              index={4}
+              index={3}
               title="Resumo Visual"
               variant={mv[7]}
             />
@@ -3626,9 +3649,11 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-8">
-            <ModuleConsolidation
-              index={4}
-              variant={getModuleVariant(8)}
+            
+
+<ModuleConsolidation
+              index={5}
+              variant={mv[8]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 8",
@@ -3679,11 +3704,11 @@ export default function AulaRazaoProporcao({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizEscalas}
-              titulo="Quiz — Escalas e Mapas"
+              titulo="QUIZ: Escalas e Mapas"
               numero={6}
-              variant={getModuleVariant(8)}
+              variant={mv[8]}
               icone="🗺️"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -3692,7 +3717,7 @@ export default function AulaRazaoProporcao({
           {/* ─── RESUMO ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
-              index={5}
+              index={4}
               title="Resumo Visual"
               variant={mv[8]}
             />
@@ -3999,9 +4024,11 @@ export default function AulaRazaoProporcao({
 
           {/* ─── QUIZ ─── */}
           <section id="quiz-modulo-9">
-            <ModuleConsolidation
-              index={3}
-              variant={getModuleVariant(9)}
+            
+
+<ModuleConsolidation
+              index={4}
+              variant={mv[9]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 9",
@@ -4052,11 +4079,11 @@ export default function AulaRazaoProporcao({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizPetrobras}
               titulo="QUIZ: Aplicações Petrobras"
               numero={5}
-              variant={getModuleVariant(9)}
+              variant={mv[9]}
               icone="🛢️"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -4065,7 +4092,7 @@ export default function AulaRazaoProporcao({
           {/* ─── RESUMO ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
-              index={4}
+              index={3}
               title="Resumo Visual"
               variant={mv[9]}
             />
@@ -4324,9 +4351,11 @@ export default function AulaRazaoProporcao({
 
           {/* ─── SIMULADO FINAL ─── */}
           <section id="quiz-modulo-10">
-            <ModuleConsolidation
-              index={4}
-              variant={getModuleVariant(10)}
+            
+
+<ModuleConsolidation
+              index={5}
+              variant={mv[10]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 10",
@@ -4377,11 +4406,11 @@ export default function AulaRazaoProporcao({
               }}
             />
 
-            <QuizInterativo
+                        <QuizInterativo
               questoes={quizFinal}
-              titulo="Simulado Final — Nível Elite"
+              titulo="QUIZ: Simulado Final"
               numero={6}
-              variant={getModuleVariant(10)}
+              variant={mv[10]}
               icone="🏆"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
@@ -4390,7 +4419,7 @@ export default function AulaRazaoProporcao({
           {/* ─── RESUMO FINAL ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
-              index={5}
+              index={4}
               title="Resumo Visual da Aula Completa"
               variant={mv[10]}
             />

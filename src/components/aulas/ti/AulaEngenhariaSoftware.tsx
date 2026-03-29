@@ -475,6 +475,8 @@ export default function AulaEngenhariaSoftware({
           
 
           <section id="quiz-modulo-1">
+
+
 <ModuleConsolidation
             index={3}
             variant={mv[1]}
@@ -704,6 +706,8 @@ export default function AulaEngenhariaSoftware({
           
 
           <section id="quiz-modulo-2">
+
+
 <ModuleConsolidation
             index={3}
             variant={mv[2]}
@@ -1293,6 +1297,8 @@ export default function AulaEngenhariaSoftware({
           
 
           <section id="quiz-modulo-4">
+
+
 <ModuleConsolidation
             index={3}
             variant={mv[4]}
@@ -1536,6 +1542,8 @@ export default function AulaEngenhariaSoftware({
           
 
           <section id="quiz-modulo-5">
+
+
 <ModuleConsolidation
             index={3}
             variant={mv[5]}
@@ -1765,6 +1773,8 @@ export default function AulaEngenhariaSoftware({
           
 
           <section id="quiz-modulo-6">
+
+
 <ModuleConsolidation
             index={3}
             variant={mv[6]}
@@ -1940,6 +1950,8 @@ export default function AulaEngenhariaSoftware({
           
 
           <section id="quiz-modulo-7">
+
+
 <ModuleConsolidation
             index={3}
             variant={mv[7]}
@@ -2109,6 +2121,8 @@ export default function AulaEngenhariaSoftware({
           
 
           <section id="quiz-modulo-8">
+
+
 <ModuleConsolidation
             index={3}
             variant={mv[8]}
@@ -2280,6 +2294,8 @@ export default function AulaEngenhariaSoftware({
           
 
           <section id="quiz-modulo-9">
+
+
 <ModuleConsolidation
             index={3}
             variant={mv[9]}
@@ -2449,6 +2465,8 @@ export default function AulaEngenhariaSoftware({
           
 
           <section id="quiz-modulo-10">
+
+
 <ModuleConsolidation
             index={3}
             variant={mv[10]}

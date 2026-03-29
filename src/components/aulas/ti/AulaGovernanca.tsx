@@ -395,6 +395,8 @@ export default function AulaGovernanca({
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[1]}
@@ -671,6 +673,8 @@ export default function AulaGovernanca({
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[2]}
@@ -919,6 +923,8 @@ export default function AulaGovernanca({
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[3]}
@@ -1162,6 +1168,8 @@ export default function AulaGovernanca({
           </section>
 
           
+
+
 
 <ModuleConsolidation
             index={2}
@@ -1463,6 +1471,8 @@ export default function AulaGovernanca({
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[6]}
@@ -1554,6 +1564,8 @@ export default function AulaGovernanca({
           </section>
 
           
+
+
 
 <ModuleConsolidation
             index={2}
@@ -1659,6 +1671,8 @@ export default function AulaGovernanca({
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[8]}
@@ -1753,6 +1767,8 @@ export default function AulaGovernanca({
           </section>
 
           
+
+
 
 <ModuleConsolidation
             index={2}
@@ -1851,6 +1867,8 @@ export default function AulaGovernanca({
           </section>
 
           
+
+
 
 <ModuleConsolidation
             index={2}

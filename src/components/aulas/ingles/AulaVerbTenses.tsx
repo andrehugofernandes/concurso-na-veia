@@ -492,6 +492,8 @@ export default function AulaVerbTenses({
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[1]}
@@ -512,7 +514,7 @@ export default function AulaVerbTenses({
                     <QuizInterativo
             questoes={quizM1}
             titulo="QUIZ: Módulo Nº 1"
-            numero={1}
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-1")}
           />
         </div>
@@ -855,6 +857,8 @@ export default function AulaVerbTenses({
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[2]}
@@ -874,8 +878,8 @@ export default function AulaVerbTenses({
 
                     <QuizInterativo
             questoes={quizM2}
-            titulo="Simple Past & Past Continuous"
-            numero={2}
+            titulo="QUIZ: Módulo Nº 2"
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-2")}
           />
         </div>
@@ -1252,6 +1256,8 @@ export default function AulaVerbTenses({
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[3]}
@@ -1594,6 +1600,8 @@ export default function AulaVerbTenses({
 
           
 
+
+
 <ModuleConsolidation
             index={3}
             variant={mv[4]}
@@ -1613,7 +1621,7 @@ export default function AulaVerbTenses({
 
                     <QuizInterativo
             questoes={quizM4}
-            titulo="Future Forms"
+            titulo="QUIZ: Módulo Nº 4"
             numero={4}
             onComplete={() => handleModuleComplete("modulo-4")}
           />
@@ -2026,6 +2034,8 @@ The system was designed (by the engineer).`
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[5]}
@@ -2046,7 +2056,7 @@ The system was designed (by the engineer).`
                     <QuizInterativo
             questoes={quizM5}
             titulo="QUIZ: Módulo Nº 5"
-            numero={5}
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-5")}
           />
         </div>
@@ -2481,7 +2491,7 @@ The system was designed (by the engineer).`
                     <QuizInterativo
             questoes={quizM6}
             titulo="QUIZ: Módulo Nº 6"
-            numero={6}
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-6")}
           />
         </div>
@@ -2853,6 +2863,8 @@ he would authorize the overtime.
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[7]}
@@ -2874,7 +2886,7 @@ he would authorize the overtime.
                     <QuizInterativo
             questoes={quizM7}
             titulo="QUIZ: Módulo Nº 7"
-            numero={7}
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-7")}
           />
         </div>
@@ -3272,6 +3284,8 @@ he would authorize the overtime.
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[8]}
@@ -3293,7 +3307,7 @@ he would authorize the overtime.
                     <QuizInterativo
             questoes={quizM8}
             titulo="QUIZ: Módulo Nº 8"
-            numero={8}
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-8")}
           />
         </div>
@@ -3600,6 +3614,8 @@ he would authorize the overtime.
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[9]}
@@ -3621,7 +3637,7 @@ he would authorize the overtime.
                     <QuizInterativo
             questoes={quizM9}
             titulo="QUIZ: Módulo Nº 9"
-            numero={9}
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-9")}
           />
         </div>
@@ -3876,6 +3892,8 @@ he would authorize the overtime.
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[10]}
@@ -3897,8 +3915,8 @@ he would authorize the overtime.
 
                     <QuizInterativo
             questoes={quizFinal}
-            titulo="Simulado Mestre"
-            numero={10}
+            titulo="QUIZ: Módulo Nº 10"
+            numero={3}
             onComplete={() => handleModuleComplete("modulo-10")}
           />
         </div>

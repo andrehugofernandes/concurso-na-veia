@@ -416,6 +416,8 @@ export default function AulaTextComprehension({
 
           
 
+
+
 <ModuleConsolidation
             modulo={1}
             corModulo={mv[1]}
@@ -424,7 +426,7 @@ export default function AulaTextComprehension({
 
                     <QuizInterativo
             questoes={quizM1}
-            numero={1}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-1")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 1, tipo: "quiz" })}
           />
@@ -446,7 +448,7 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={2}
+              index={1}
               title="Técnica de Skimming: Leitura RÁPIDA para Ideia Geral"
               description="Skimming é leitura seletiva — você lê ALGUNS partes do texto, muito rapidamente, apenas para entender o tema geral"
             />
@@ -691,6 +693,8 @@ export default function AulaTextComprehension({
 
           
 
+
+
 <ModuleConsolidation
             modulo={2}
             corModulo={mv[2]}
@@ -721,7 +725,7 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={3}
+              index={1}
               title="Técnica de Scanning: Localização Orientada por Palavra-Chave"
               description="Scanning é diferente de skimming — você NÃO quer ideia geral, você quer UM DADO ESPECÍFICO"
             />
@@ -997,6 +1001,8 @@ export default function AulaTextComprehension({
 
           
 
+
+
 <ModuleConsolidation
             modulo={3}
             corModulo={mv[3]}
@@ -1005,7 +1011,7 @@ export default function AulaTextComprehension({
 
                     <QuizInterativo
             questoes={quizM3}
-            numero={3}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-3")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 3, tipo: "quiz" })}
           />
@@ -1027,7 +1033,7 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={4}
+              index={1}
               title="Como Entender Palavras Desconhecidas Sem Dicionário"
               description="CESGRANRIO testa vocabulário não por definição simples, mas por significado em contexto"
             />
@@ -1261,6 +1267,8 @@ export default function AulaTextComprehension({
 
           
 
+
+
 <ModuleConsolidation
             modulo={4}
             corModulo={mv[4]}
@@ -1269,7 +1277,7 @@ export default function AulaTextComprehension({
 
                     <QuizInterativo
             questoes={quizM4}
-            numero={4}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-4")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 4, tipo: "quiz" })}
           />
@@ -1291,7 +1299,7 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={5}
+              index={1}
               title="Estrutura Padrão: Topic Sentence + Supporting Details"
               description="Todo parágrafo em textos técnicos segue padrão: 1ª sentença (tema) + resto (detalhes)"
             />
@@ -1515,6 +1523,8 @@ export default function AulaTextComprehension({
 
           
 
+
+
 <ModuleConsolidation
             modulo={5}
             corModulo={mv[5]}
@@ -1523,7 +1533,7 @@ export default function AulaTextComprehension({
 
                     <QuizInterativo
             questoes={quizM5}
-            numero={5}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-5")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 5, tipo: "quiz" })}
           />
@@ -1545,7 +1555,7 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={6}
+              index={1}
               title="Coesão Textual: Como Frases Conectam Logicamente"
               description="Pronomes, demonstrativas e expressões definem-se ('hold together') o texto"
             />
@@ -1773,6 +1783,8 @@ export default function AulaTextComprehension({
 
           
 
+
+
 <ModuleConsolidation
             modulo={6}
             corModulo={mv[6]}
@@ -1781,7 +1793,7 @@ export default function AulaTextComprehension({
 
                     <QuizInterativo
             questoes={quizM6}
-            numero={6}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-6")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 6, tipo: "quiz" })}
           />
@@ -1803,7 +1815,7 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={7}
+              index={1}
               title="Tone: A 'Voz' do Autor | Purpose: Seu Objetivo"
               description="Dois textos com MESMO CONTEÚDO podem ter tones/purposes DIFERENTES"
             />
@@ -2039,6 +2051,8 @@ export default function AulaTextComprehension({
 
           
 
+
+
 <ModuleConsolidation
             modulo={7}
             corModulo={mv[7]}
@@ -2047,7 +2061,7 @@ export default function AulaTextComprehension({
 
                     <QuizInterativo
             questoes={quizM7}
-            numero={7}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-7")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 7, tipo: "quiz" })}
           />
@@ -2069,7 +2083,7 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={8}
+              index={1}
               title="Inferência: Ler Entre as Linhas"
               description="A resposta não aparece palavra-por-palavra, você precisa deduzir a partir de pistas"
             />
@@ -2304,6 +2318,8 @@ export default function AulaTextComprehension({
 
           
 
+
+
 <ModuleConsolidation
             modulo={8}
             corModulo={mv[8]}
@@ -2312,7 +2328,7 @@ export default function AulaTextComprehension({
 
                     <QuizInterativo
             questoes={quizM8}
-            numero={8}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-8")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 8, tipo: "quiz" })}
           />
@@ -2334,7 +2350,7 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={9}
+              index={1}
               title="Formato Real de Prova CESGRANRIO"
               description="Entenda exatamente o que você vai enfrentar numa prova real Petrobras"
             />
@@ -2550,6 +2566,8 @@ export default function AulaTextComprehension({
 
           
 
+
+
 <ModuleConsolidation
             modulo={9}
             corModulo={mv[9]}
@@ -2558,7 +2576,7 @@ export default function AulaTextComprehension({
 
                     <QuizInterativo
             questoes={quizM9}
-            numero={9}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-9")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 9, tipo: "quiz" })}
           />
@@ -2580,7 +2598,7 @@ export default function AulaTextComprehension({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={10}
+              index={1}
               title="Os 8 Passos Integrados para Leitura Dominante"
               description="Você aprendeu 8 estratégias. Agora integre tudo num pipeline único"
             />
@@ -2817,6 +2835,8 @@ export default function AulaTextComprehension({
 
           
 
+
+
 <ModuleConsolidation
             modulo={10}
             corModulo={mv[10]}
@@ -2825,7 +2845,7 @@ export default function AulaTextComprehension({
 
                     <QuizInterativo
             questoes={quizFinal}
-            numero={10}
+            numero={2}
             onComplete={() => handleModuleComplete("modulo-10")}
             onScoreSubmit={() => onUpdateProgress?.({ modulo: 10, tipo: "quiz" })}
           />

@@ -104,7 +104,9 @@ export default function AulaNr35({
             O treinamento inicial deve ter carga horária de 8 horas. A reciclagem (treinamento periódico) é obrigatória a cada **dois anos**, mas também deve ocorrer se houver mudança nos procedimentos ou após afastamento superior a 90 dias.
         </AlertBox>
 
-        <ModuleConsolidation 
+        
+
+<ModuleConsolidation 
             index={1}
             variant="amber"
             video={{
@@ -132,7 +134,7 @@ export default function AulaNr35({
             }}
         />
 
-        <QuizInterativo 
+                <QuizInterativo 
             questoes={QUIZ_M1_NR35_GESTAO}
             numero={2}
             titulo="QUIZ: Módulo Nº 1"
@@ -172,8 +174,8 @@ export default function AulaNr35({
 
         <QuizInterativo 
             questoes={QUIZ_M2_NR35_AR_PT}
-            numero={2}
-            titulo="Controle de Atividades"
+            numero={1}
+            titulo="QUIZ: Módulo Nº 2"
             onComplete={() => handleModuleComplete("modulo-2")}
         />
       </TabsContent>
@@ -215,7 +217,9 @@ export default function AulaNr35({
             ]}
         />
 
-        <ModuleConsolidation 
+        
+
+<ModuleConsolidation 
             index={3}
             variant="rose"
             video={{
@@ -243,7 +247,7 @@ export default function AulaNr35({
             }}
         />
 
-        <QuizInterativo 
+                <QuizInterativo 
             questoes={QUIZ_M3_NR35_SISTEMAS}
             numero={4}
             titulo="QUIZ: Módulo Nº 3"
@@ -271,8 +275,8 @@ export default function AulaNr35({
 
         <QuizInterativo 
             questoes={QUIZ_M4_NR35_EMERGENCIA}
-            numero={4}
-            titulo="Plano de Resgate"
+            numero={1}
+            titulo="QUIZ: Módulo Nº 4"
             onComplete={() => handleModuleComplete("modulo-4")}
         />
       </TabsContent>
@@ -291,7 +295,9 @@ export default function AulaNr35({
             <p>O <strong>Anexo II (Escadas)</strong> trata das escadas individuais (simples, de abrira ou extensíveis). Regra de ouro da escada simples: ângulo de inclinação de 75° (ou 4 para 1) e deve ultrapassar o ponto de apoio em pelo menos 1 metro.</p>
         </RichIntro>
 
-        <ModuleConsolidation 
+        
+
+<ModuleConsolidation 
             index={5}
             variant="amber"
             video={{
@@ -319,7 +325,7 @@ export default function AulaNr35({
             }}
         />
 
-        <QuizInterativo 
+                <QuizInterativo 
             questoes={QUIZ_M5_NR35_ACESSOS}
             numero={6}
             titulo="QUIZ: Módulo Nº 5"

@@ -434,6 +434,8 @@ export default function AulaTermodinamica({
 
               
 
+
+
 <ModuleConsolidation 
                 index={1}
                 variant="amber"

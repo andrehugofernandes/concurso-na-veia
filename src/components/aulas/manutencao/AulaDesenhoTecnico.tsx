@@ -135,7 +135,9 @@ export default function AulaDesenhoTecnico({
             ]}
         />
 
-        <ModuleConsolidation 
+        
+
+<ModuleConsolidation 
             index={1}
             variant="blue"
             video={{
@@ -163,7 +165,7 @@ export default function AulaDesenhoTecnico({
             }}
         />
 
-        <QuizInterativo 
+                <QuizInterativo 
             questoes={QUIZ_M1_DESENHO_FUNDAMENTOS}
             numero={2}
             titulo="QUIZ: Módulo Nº 1"
@@ -202,7 +204,9 @@ export default function AulaDesenhoTecnico({
           }}
         />
 
-        <ModuleConsolidation 
+        
+
+<ModuleConsolidation 
             index={2}
             variant="indigo"
             video={{
@@ -230,10 +234,10 @@ export default function AulaDesenhoTecnico({
             }}
         />
 
-        <QuizInterativo 
+                <QuizInterativo 
             questoes={QUIZ_M2_DESENHO_PROJECAO}
-            numero={2}
-            titulo="Projeção Ortográfica"
+            numero={3}
+            titulo="QUIZ: Módulo Nº 2"
             onComplete={() => handleModuleComplete("modulo-2")}
         />
       </TabsContent>
@@ -275,7 +279,9 @@ export default function AulaDesenhoTecnico({
             ]}
         />
 
-        <ModuleConsolidation 
+        
+
+<ModuleConsolidation 
             index={3}
             variant="emerald"
             video={{
@@ -303,7 +309,7 @@ export default function AulaDesenhoTecnico({
             }}
         />
 
-        <QuizInterativo 
+                <QuizInterativo 
             questoes={QUIZ_M3_DESENHO_CORTES}
             numero={4}
             titulo="QUIZ: Módulo Nº 3"
@@ -328,7 +334,9 @@ export default function AulaDesenhoTecnico({
             Nunca tente medir um desenho técnico com uma régua escolar para descobrir uma dimensão que falta. Isso é terminantemente proibido. Se uma cota falta, o desenho está incompleto. A escala do desenho serve apenas para proporção visual, nunca para medição direta pelo executor.
         </AlertBox>
 
-        <ModuleConsolidation 
+        
+
+<ModuleConsolidation 
             index={4}
             variant="amber"
             video={{
@@ -356,7 +364,7 @@ export default function AulaDesenhoTecnico({
             }}
         />
 
-        <QuizInterativo 
+                <QuizInterativo 
             questoes={QUIZ_M4_DESENHO_COTAGEM}
             numero={5}
             titulo="QUIZ: Módulo Nº 4"
@@ -378,7 +386,9 @@ export default function AulaDesenhoTecnico({
             <p>O isométrico de tubulação foge das vistas ortográficas para mostrar a linha em 3D de forma simplificada em uma única folha. Ele utiliza eixos a 120° e símbolos padronizados para válvulas, flanges e curvas. É através do isométrico que o técnico identifica a classe de pressão, o material e o posicionamento geográfico da linha.</p>
         </RichIntro>
 
-        <ModuleConsolidation 
+        
+
+<ModuleConsolidation 
             index={5}
             variant="rose"
             video={{
@@ -406,10 +416,10 @@ export default function AulaDesenhoTecnico({
             }}
         />
 
-        <QuizInterativo 
+                <QuizInterativo 
             questoes={QUIZ_M5_DESENHO_ISOMETRICOS}
-            numero={5}
-            titulo="Isométricos e P&ID"
+            numero={6}
+            titulo="QUIZ: Módulo Nº 5"
             onComplete={() => handleModuleComplete("modulo-5")}
         />
       </TabsContent>

@@ -100,6 +100,15 @@ export default function AulaTrigonometria({
     { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Final" },
   ];
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -322,6 +331,8 @@ export default function AulaTrigonometria({
 
           <section id="quiz-modulo-1" className="mt-16">
           
+
+
 
 
 
@@ -627,6 +638,8 @@ export default function AulaTrigonometria({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -664,7 +677,7 @@ export default function AulaTrigonometria({
 
                       <QuizInterativo
               questoes={quizM2}
-              titulo="Quiz — Ângulos Notáveis"
+              titulo="QUIZ: Ângulos Notáveis"
               icone="📊"
               numero={3}
               variant="emerald"
@@ -861,6 +874,8 @@ export default function AulaTrigonometria({
 
           <section id="quiz-modulo-3" className="mt-16">
           
+
+
 
 
 
@@ -1117,6 +1132,8 @@ export default function AulaTrigonometria({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="blue"
@@ -1156,7 +1173,7 @@ export default function AulaTrigonometria({
 
                       <QuizInterativo
               questoes={quizM4}
-              titulo="Quiz — Funções Trigonométricas"
+              titulo="QUIZ: Funções Trigonométricas"
               icone="📈"
               numero={3}
               variant="emerald"
@@ -1332,6 +1349,8 @@ export default function AulaTrigonometria({
 
           <section id="quiz-modulo-5" className="mt-16">
           
+
+
 
 
 
@@ -1567,6 +1586,8 @@ export default function AulaTrigonometria({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="rose"
@@ -1604,7 +1625,7 @@ export default function AulaTrigonometria({
 
                       <QuizInterativo
               questoes={quizM6}
-              titulo="Quiz — Lei dos Senos"
+              titulo="QUIZ: Lei dos Senos"
               icone="⚖️"
               numero={3}
               variant="emerald"
@@ -1773,6 +1794,8 @@ export default function AulaTrigonometria({
 
           <section id="quiz-modulo-7" className="mt-16">
           
+
+
 
 
 
@@ -2001,6 +2024,8 @@ export default function AulaTrigonometria({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -2039,7 +2064,7 @@ export default function AulaTrigonometria({
 
                       <QuizInterativo
               questoes={quizM8}
-              titulo="Quiz — Equações Trigonométricas"
+              titulo="QUIZ: Equações Trigonométricas"
               icone="🔐"
               numero={3}
               variant="indigo"
@@ -2248,6 +2273,8 @@ export default function AulaTrigonometria({
 
           <section id="quiz-modulo-9" className="mt-16">
           
+
+
 
 
 
@@ -2551,6 +2578,8 @@ export default function AulaTrigonometria({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="blue"
@@ -2594,7 +2623,7 @@ export default function AulaTrigonometria({
 
                       <QuizInterativo
               questoes={quizM10}
-              titulo="Simulado Final — CESGRANRIO"
+              titulo="QUIZ: Simulado Final"
               icone="🏆"
               numero={3}
               variant="indigo"

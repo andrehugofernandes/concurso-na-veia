@@ -269,6 +269,8 @@ export default function AulaMobile({
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[1]}
@@ -477,6 +479,8 @@ export default function AulaMobile({
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[2]}
@@ -659,6 +663,8 @@ export default function AulaMobile({
           </section>
 
           
+
+
 
 <ModuleConsolidation
             index={2}
@@ -868,6 +874,8 @@ export default function AulaMobile({
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[4]}
@@ -1059,6 +1067,8 @@ export default function AulaMobile({
           </section>
 
           
+
+
 
 <ModuleConsolidation
             index={2}
@@ -1271,6 +1281,8 @@ export default function AulaMobile({
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[6]}
@@ -1456,6 +1468,8 @@ export default function AulaMobile({
 
           
 
+
+
 <ModuleConsolidation
             index={2}
             variant={mv[7]}
@@ -1638,6 +1652,8 @@ export default function AulaMobile({
           </section>
 
           
+
+
 
 <ModuleConsolidation
             index={2}
@@ -1823,6 +1839,8 @@ export default function AulaMobile({
           </section>
 
           
+
+
 
 <ModuleConsolidation
             index={2}
@@ -2060,6 +2078,8 @@ export default function AulaMobile({
           </section>
 
           
+
+
 
 <ModuleConsolidation
             index={2}

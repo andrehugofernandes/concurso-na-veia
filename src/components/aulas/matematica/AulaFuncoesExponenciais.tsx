@@ -162,6 +162,15 @@ export default function AulaFuncoesExponenciais({
 
   const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -421,6 +430,8 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
 <ModuleConsolidation
             index={3}
             variant="indigo"
@@ -460,7 +471,7 @@ export default function AulaFuncoesExponenciais({
 
                       <QuizInterativo
               questoes={quizM1}
-              titulo="QUIZ: Módulo Nº 1"
+              titulo="QUIZ: Potenciação e Bases"
               numero={4}
               variant="blue"
               icone="🧮"
@@ -669,6 +680,8 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
 <ModuleConsolidation
             index={3}
             variant="emerald"
@@ -708,7 +721,7 @@ export default function AulaFuncoesExponenciais({
 
                       <QuizInterativo
               questoes={quizM2}
-              titulo="Fixação - Gráficos"
+              titulo="QUIZ: Gráficos e Comportamento"
               numero={4}
               variant="emerald"
               icone="📈"
@@ -825,7 +838,7 @@ export default function AulaFuncoesExponenciais({
 
           <QuizInterativo
             questoes={quizM3}
-            titulo="QUIZ: Módulo Nº 3"
+            titulo="QUIZ: Equações Exponenciais"
             numero={2}
             variant="cyan"
             icone="⚡"
@@ -954,6 +967,8 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="blue"
@@ -994,7 +1009,7 @@ export default function AulaFuncoesExponenciais({
 
                       <QuizInterativo
               questoes={quizM4}
-              titulo="Fixação - Aplicações"
+              titulo="QUIZ: Crescimento e Decaimento"
               numero={3}
               variant="blue"
               icone="🌍"
@@ -1130,6 +1145,8 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="amber"
@@ -1170,7 +1187,7 @@ export default function AulaFuncoesExponenciais({
 
                       <QuizInterativo
               questoes={quizM5}
-              titulo="QUIZ: Módulo Nº 5"
+              titulo="QUIZ: Desafio Parcial"
               numero={3}
               variant="amber"
               icone="🎯"
@@ -1301,6 +1318,8 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="rose"
@@ -1340,7 +1359,7 @@ export default function AulaFuncoesExponenciais({
 
                       <QuizInterativo
               questoes={quizM6}
-              titulo="Fixação - Módulo 6"
+              titulo="QUIZ: Número e e Logaritmo"
               numero={3}
               variant="rose"
               icone="🌌"
@@ -1515,6 +1534,8 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="indigo"
@@ -1556,7 +1577,7 @@ export default function AulaFuncoesExponenciais({
 
                       <QuizInterativo
               questoes={quizM7}
-              titulo="QUIZ: Módulo Nº 7"
+              titulo="QUIZ: Transformações"
               numero={3}
               variant="indigo"
               icone="🎨"
@@ -1685,6 +1706,8 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -1726,7 +1749,7 @@ export default function AulaFuncoesExponenciais({
 
                       <QuizInterativo
               questoes={quizM8}
-              titulo="Fixação - Módulo 8"
+              titulo="QUIZ: Sistemas Exponenciais"
               numero={3}
               variant="emerald"
               icone="⚙️"
@@ -1869,6 +1892,8 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="amber"
@@ -1910,7 +1935,7 @@ export default function AulaFuncoesExponenciais({
 
                       <QuizInterativo
               questoes={quizM9}
-              titulo="QUIZ: Módulo Nº 9"
+              titulo="QUIZ: Aplicações Petrobras"
               numero={3}
               variant="amber"
               icone="🏭"
@@ -2076,6 +2101,8 @@ export default function AulaFuncoesExponenciais({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="slate"
@@ -2115,7 +2142,7 @@ export default function AulaFuncoesExponenciais({
 
                         <QuizInterativo
                 questoes={quizM10}
-                titulo="QUIZ: Módulo Nº 10"
+                titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={3}
                 variant="slate"

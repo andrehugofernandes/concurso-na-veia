@@ -100,6 +100,15 @@ export default function AulaMatematicaFinanceira({
     { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Final" },
   ];
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -265,6 +274,8 @@ export default function AulaMatematicaFinanceira({
 
           <section id="quiz-modulo-1" className="mt-16">
           
+
+
 
 
 
@@ -483,6 +494,8 @@ export default function AulaMatematicaFinanceira({
 
 
 
+
+
 <ModuleConsolidation
             index={3}
             variant="emerald"
@@ -550,7 +563,7 @@ export default function AulaMatematicaFinanceira({
 
                       <QuizInterativo
               questoes={quizM2}
-              titulo="Quiz — Montante em Juros Simples"
+              titulo="QUIZ: Montante Simples"
               icone="📈"
               numero={4}
               variant="cyan"
@@ -661,6 +674,8 @@ export default function AulaMatematicaFinanceira({
 
           <section id="quiz-modulo-3" className="mt-16">
           
+
+
 
 
 
@@ -856,6 +871,8 @@ export default function AulaMatematicaFinanceira({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="blue"
@@ -922,7 +939,7 @@ export default function AulaMatematicaFinanceira({
 
                       <QuizInterativo
               questoes={quizM4}
-              titulo="Quiz — Montante em Juros Compostos"
+              titulo="QUIZ: Montante Composto"
               icone="💹"
               numero={3}
               variant="blue"
@@ -1030,6 +1047,8 @@ export default function AulaMatematicaFinanceira({
 
           <section id="quiz-modulo-5" className="mt-16">
           
+
+
 
 
 
@@ -1221,6 +1240,8 @@ export default function AulaMatematicaFinanceira({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="rose"
@@ -1276,7 +1297,7 @@ export default function AulaMatematicaFinanceira({
 
                       <QuizInterativo
               questoes={quizM6}
-              titulo="Quiz — Equivalência de Capitais"
+              titulo="QUIZ: Equivalência de Capitais"
               icone="🔀"
               numero={3}
               variant="blue"
@@ -1398,6 +1419,8 @@ export default function AulaMatematicaFinanceira({
 
           <section id="quiz-modulo-7" className="mt-16">
           
+
+
 
 
 
@@ -1575,6 +1598,8 @@ export default function AulaMatematicaFinanceira({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -1628,7 +1653,7 @@ export default function AulaMatematicaFinanceira({
 
                       <QuizInterativo
               questoes={quizM8}
-              titulo="Quiz — Séries de Pagamento"
+              titulo="QUIZ: Séries de Pagamento"
               icone="💳"
               numero={3}
               variant="blue"
@@ -1727,6 +1752,8 @@ export default function AulaMatematicaFinanceira({
 
           <section id="quiz-modulo-9" className="mt-16">
           
+
+
 
 
 
@@ -1914,6 +1941,8 @@ export default function AulaMatematicaFinanceira({
 
           <section id="quiz-modulo-10" className="mt-16">
           
+
+
 
 
 

@@ -140,6 +140,15 @@ export default function AulaConjuntos({
     { id: "modulo-10", label: "Módulo 10", title: "Simulado Final" },
   ];
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -688,6 +697,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             moduloNumero={1}
             index={5}
@@ -729,7 +740,7 @@ export default function AulaConjuntos({
               questoes={quizFundamentos}
               titulo="QUIZ: Fundamentos"
               icone="🧠"
-              numero={6}
+              numero={5}
               variant={mv[1] as any}
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -1012,6 +1023,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             moduloNumero={2}
             index={5}
@@ -1051,9 +1064,9 @@ export default function AulaConjuntos({
 
                       <QuizInterativo
               questoes={quizOperacoes}
-              titulo="Quiz - Operações com Conjuntos"
+              titulo="QUIZ: Operações"
               icone="🧠"
-              numero={6}
+              numero={5}
               variant={mv[2] as any}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -1361,6 +1374,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             moduloNumero={3}
             index={5}
@@ -1402,7 +1417,7 @@ export default function AulaConjuntos({
               questoes={quizVenn}
               titulo="QUIZ: Diagramas de Venn"
               icone="🧠"
-              numero={6}
+              numero={5}
               variant={mv[3] as any}
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -1645,6 +1660,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             moduloNumero={4}
             index={5}
@@ -1684,9 +1701,9 @@ export default function AulaConjuntos({
 
                       <QuizInterativo
               questoes={quizNumericos}
-              titulo="Quiz - Conjuntos Numéricos"
+              titulo="QUIZ: Conj. Numéricos"
               icone="🔥"
-              numero={6}
+              numero={5}
               variant={mv[4] as any}
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1808,6 +1825,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             moduloNumero={5}
             index={3}
@@ -1849,7 +1868,7 @@ export default function AulaConjuntos({
               questoes={quizFinal}
               titulo="QUIZ: Subconjuntos"
               icone="🏆"
-              numero={4}
+              numero={3}
               variant={mv[5] as any}
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -2181,6 +2200,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             moduloNumero={6}
             index={5}
@@ -2220,9 +2241,9 @@ export default function AulaConjuntos({
 
                       <QuizInterativo
               questoes={quizInclusaoExclusao}
-              titulo="Quiz — Inclusão-Exclusão"
+              titulo="QUIZ: Inclusão-Exclusão"
               icone="➕"
-              numero={6}
+              numero={5}
               variant={mv[6] as any}
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -2572,6 +2593,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             moduloNumero={7}
             index={5}
@@ -2613,7 +2636,7 @@ export default function AulaConjuntos({
               questoes={quizNumericosBasicos}
               titulo="QUIZ: ℕ, ℤ, ℚ"
               icone="🔢"
-              numero={6}
+              numero={5}
               variant={mv[7] as any}
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -2918,6 +2941,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             moduloNumero={8}
             index={5}
@@ -2957,9 +2982,9 @@ export default function AulaConjuntos({
 
                       <QuizInterativo
               questoes={quizIrracReais}
-              titulo="Quiz — Irracionais e ℝ"
+              titulo="QUIZ: Irracionais e ℝ"
               icone="∞"
-              numero={6}
+              numero={5}
               variant={mv[8] as any}
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -3228,6 +3253,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             moduloNumero={9}
             index={4}
@@ -3269,7 +3296,7 @@ export default function AulaConjuntos({
               questoes={quizDeMorgan}
               titulo="QUIZ: De Morgan"
               icone="🔁"
-              numero={5}
+              numero={4}
               variant={mv[9] as any}
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -3643,6 +3670,8 @@ export default function AulaConjuntos({
 
 
 
+
+
 <ModuleConsolidation
             moduloNumero={10}
             index={3}
@@ -3682,9 +3711,9 @@ export default function AulaConjuntos({
 
                       <QuizInterativo
               questoes={quizSimulado}
-              titulo="Simulado Final CESGRANRIO — Teoria dos Conjuntos"
+              titulo="QUIZ: Simulado Final"
               icone="🏆"
-              numero={4}
+              numero={3}
               variant={mv[10] as any}
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />

@@ -1,6 +1,6 @@
 import os
 
-path = r"c:\Workspace\petrobras-quest\src\components\aulas\administracao\AulaPlanejamentoEstrategico.tsx"
+path = r"c:\Workspace\petrobras-quest\src\components\aulas\portugues\AulaConcordancia.tsx"
 with open(path, "r", encoding="utf-8") as f:
     lines = f.read().splitlines()
 

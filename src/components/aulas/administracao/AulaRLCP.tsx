@@ -176,6 +176,8 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={3}
           variant={variant}
@@ -359,6 +361,8 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={3}
           variant={variant}
@@ -515,6 +519,8 @@ export default function AulaRLCP(props: AulaProps) {
             </div>
           </div>
         
+
+
 
 
 
@@ -884,6 +890,8 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={4}
           variant={variant}
@@ -1037,6 +1045,8 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={3}
           variant={variant}
@@ -1178,6 +1188,8 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={3}
           variant={variant}
@@ -1297,6 +1309,8 @@ export default function AulaRLCP(props: AulaProps) {
             ]}
           />
         
+
+
 
 
 
@@ -1436,6 +1450,8 @@ export default function AulaRLCP(props: AulaProps) {
 
 
 
+
+
 <ModuleConsolidation
           index={3}
           variant={variant}
@@ -1537,6 +1553,8 @@ export default function AulaRLCP(props: AulaProps) {
             title="Simulado Mestre"
             description="Desafie-se com o conteúdo completo de Administração e RLCP."
           />
+
+
 
 
 

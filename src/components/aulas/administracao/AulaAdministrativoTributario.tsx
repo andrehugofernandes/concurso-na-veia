@@ -209,7 +209,9 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           />
         </div>
 
-        <ModuleConsolidation
+        
+
+<ModuleConsolidation
           index={3}
           variant={mv[1]}
           video={{ videoId: "h3S9XW1WzIk", title: "Fundamentos Contábeis — Equação e Demonstrativos", duration: "12:00" }}
@@ -234,7 +236,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Áudio: Contabilidade Básica", artista: "Resumo Petrobras" }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={[
             { id: "m1q1", pergunta: "A equação fundamental da contabilidade é:", opcoes: [{ label: "Ativo = Passivo + Patrimônio Líquido", valor: "a" }, { label: "Receita = Custos + Despesas + Lucro", valor: "b" }, { label: "Caixa = Ativo Circulante − Passivo Circulante", valor: "c" }, { label: "Patrimônio Líquido = Ativo + Passivo", valor: "d" }], correta: "a", explicacao: "Ativo = Passivo + PL é a equação fundamental, válida para toda transação contábil sem exceção." },
             { id: "m1q2", pergunta: "O Balanço Patrimonial (BP) representa:", opcoes: [{ label: "O resultado (lucro/prejuízo) de um período", valor: "a" }, { label: "A posição patrimonial em uma data específica", valor: "b" }, { label: "O fluxo de caixa do exercício", valor: "c" }, { label: "A variação do Patrimônio Líquido", valor: "d" }], correta: "b", explicacao: "O BP é uma 'foto' do patrimônio em data específica. Já a DRE mostra o desempenho de um período." },
@@ -365,7 +367,9 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           />
         </div>
 
-        <ModuleConsolidation
+        
+
+<ModuleConsolidation
           index={3}
           variant={mv[2]}
           video={{ videoId: "9bZkp7q19f0", title: "Partidas Dobradas — Débito e Crédito na Prática", duration: "9:30" }}
@@ -374,13 +378,13 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "Áudio: Débito e Crédito", artista: "Resumo Petrobras" }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={[
             { id: "m2q1", pergunta: "Em uma conta de Ativo, um lançamento a Débito representa:", opcoes: [{ label: "Aumento do saldo", valor: "a" }, { label: "Diminuição do saldo", valor: "b" }, { label: "Anulação do saldo", valor: "c" }, { label: "Transferência para Passivo", valor: "d" }], correta: "a", explicacao: "Em contas de Ativo, Débito = aumento. Crédito = diminuição. Regra inversa vale para Passivo e PL." },
             { id: "m2q2", pergunta: "A Petrobras contrai um empréstimo bancário de R$ 200 milhões. O lançamento correto é:", opcoes: [{ label: "D: Empréstimos a Pagar / C: Caixa", valor: "a" }, { label: "D: Caixa / C: Empréstimos a Pagar", valor: "b" }, { label: "D: Caixa / C: Receita Financeira", valor: "c" }, { label: "D: Despesa Financeira / C: Caixa", valor: "d" }], correta: "b", explicacao: "Caixa (Ativo) aumenta → Débito. Empréstimos a Pagar (Passivo) aumenta → Crédito. Equação balanceada." },
             { id: "m2q3", pergunta: "O Plano de Contas (CoA) de uma empresa serve para:", opcoes: [{ label: "Calcular o lucro anual da empresa", valor: "a" }, { label: "Listar e organizar todas as contas contábeis utilizadas", valor: "b" }, { label: "Registrar apenas as transações de caixa", valor: "c" }, { label: "Controlar o fluxo de estoque de materiais", valor: "d" }], correta: "b", explicacao: "O CoA é a lista hierárquica de todas as contas, organizadas por classe (Ativo, Passivo, PL, Receita, Despesa), garantindo padronização contábil." },
           ]}
-          titulo="QUIZ: Estrutura Contábil"
+          titulo="QUIZ: Módulo Nº 2"
           numero={4}
           variant={mv[2]}
           icone="📒"
@@ -501,7 +505,9 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           />
         </div>
 
-        <ModuleConsolidation
+        
+
+<ModuleConsolidation
           index={3}
           variant={mv[3]}
           video={{ videoId: "4fndeDfaWCg", title: "Sistema Tributário Nacional — CTN e Princípios", duration: "14:00" }}
@@ -510,7 +516,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "Áudio: Sistema Tributário", artista: "Resumo Petrobras" }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={[
             { id: "m3q1", pergunta: "Segundo o CTN (art. 3º), NÃO é característica de tributo:", opcoes: [{ label: "Prestação pecuniária compulsória", valor: "a" }, { label: "Sanção de ato ilícito", valor: "b" }, { label: "Instituída em lei", valor: "c" }, { label: "Cobrada mediante atividade vinculada", valor: "d" }], correta: "b", explicacao: "O CTN art. 3º define que tributo 'não constitua sanção de ato ilícito'. Multas são sanções, portanto não são tributos." },
             { id: "m3q2", pergunta: "O ICMS é um tributo de competência:", opcoes: [{ label: "Federal (União)", valor: "a" }, { label: "Estadual", valor: "b" }, { label: "Municipal", valor: "c" }, { label: "Compartilhada entre União e Estados", valor: "d" }], correta: "b", explicacao: "ICMS — Imposto sobre Circulação de Mercadorias e Serviços — é de competência ESTADUAL (e DF). CF/88 art. 155, II." },
@@ -645,7 +651,9 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           />
         </div>
 
-        <ModuleConsolidation
+        
+
+<ModuleConsolidation
           index={3}
           variant={mv[4]}
           video={{ videoId: "5qap5aO4i9A", title: "ICMS e IPI — Não-Cumulatividade e Cálculo", duration: "11:00" }}
@@ -654,13 +662,13 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Áudio: ICMS e IPI", artista: "Resumo Petrobras" }}
         />
 
-        <QuizInterativo
+                <QuizInterativo
           questoes={[
             { id: "m4q1", pergunta: "A não-cumulatividade do ICMS significa que:", opcoes: [{ label: "O imposto é cobrado apenas uma vez na cadeia produtiva", valor: "a" }, { label: "O contribuinte pode abater o ICMS pago nas entradas do ICMS devido nas saídas", valor: "b" }, { label: "O ICMS não incide sobre produtos exportados", valor: "c" }, { label: "O ICMS só incide sobre o valor agregado pelo fabricante", valor: "d" }], correta: "b", explicacao: "Não-cumulatividade: ICMS pago (crédito) nas compras é abatido do ICMS devido (débito) nas vendas. Recolhe-se apenas a diferença." },
             { id: "m4q2", pergunta: "O IPI é uma exceção ao Princípio da Anterioridade porque:", opcoes: [{ label: "É um imposto estadual, não federal", valor: "a" }, { label: "Tem função extrafiscal e pode ter alíquota alterada com vigência imediata", valor: "b" }, { label: "Só incide sobre produtos de luxo", valor: "c" }, { label: "Sua alíquota é definida pelo Congresso Nacional", valor: "d" }], correta: "b", explicacao: "O IPI tem caráter extrafiscal (instrumento de política econômica). Por isso, junto com II, IE e IOF, é exceção à anterioridade anual — pode ser alterado por decreto com vigência imediata." },
             { id: "m4q3", pergunta: "As exportações de mercadorias são:", opcoes: [{ label: "Tributadas pelo ICMS com alíquota reduzida de 4%", valor: "a" }, { label: "Imunes ao ICMS (não incide ICMS sobre exportações)", valor: "b" }, { label: "Tributadas pelo ISS em substituição ao ICMS", valor: "c" }, { label: "Sujeitas ao ICMS apenas se o valor superar R$ 1 milhão", valor: "d" }], correta: "b", explicacao: "CF art. 155, §2º, X, a: operações que destinem mercadorias ao exterior são IMUNES ao ICMS. Política de desonerar as exportações brasileiras." },
           ]}
-          titulo="QUIZ: ICMS e IPI"
+          titulo="QUIZ: Módulo Nº 4"
           numero={4}
           variant={mv[4]}
           icone="🏭"
@@ -698,8 +706,10 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
             { titulo: "Excecoes", icone: <LuTriangleAlert />, conteudo: (<div className="space-y-2 text-lg"><p>Dividendos: isentos de IR para o acionista. JCP (Juros s/ Capital Proprio): tributado a 15% na fonte — diferenca importante.</p></div>) },
           ]} />
         </div>
-        <ModuleConsolidation index={3} variant={mv[5]} video={{ videoId: "dQw4w9WgXcQ", title: "IRPJ e CSLL — Regimes", duration: "13:00" }} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "IRPJ e CSLL", materia: "Administracao", images: [{ title: "Regimes vs Faturamento", type: "Comparativo", placeholderColor: "bg-violet-500/20" }] }} maceteVisual={{ title: "34% sobre o lucro", content: (<div className="p-4 bg-violet-500/10 border border-violet-500/20 rounded-xl text-lg"><p className="font-bold text-violet-600 dark:text-violet-400">IRPJ 25% + CSLL 9% = 34% sobre o lucro</p><p className="text-lg text-foreground/70">Lucro Real obrigatorio acima R$78M (Petrobras)</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Audio IRPJ e CSLL", artista: "Resumo Petrobras" }} />
-        <QuizInterativo questoes={[
+        
+<ModuleConsolidation index={3} variant={mv[5]} video={{ videoId: "dQw4w9WgXcQ", title: "IRPJ e CSLL — Regimes", duration: "13:00" }} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "IRPJ e CSLL", materia: "Administracao", images: [{ title: "Regimes vs Faturamento", type: "Comparativo", placeholderColor: "bg-violet-500/20" }] }} maceteVisual={{ title: "34% sobre o lucro", content: (<div className="p-4 bg-violet-500/10 border border-violet-500/20 rounded-xl text-lg"><p className="font-bold text-violet-600 dark:text-violet-400">IRPJ 25% + CSLL 9% = 34% sobre o lucro</p><p className="text-lg text-foreground/70">Lucro Real obrigatorio acima R$78M (Petrobras)</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Audio IRPJ e CSLL", artista: "Resumo Petrobras" }} />
+
+                <QuizInterativo questoes={[
           { id: "m5q1", pergunta: "Qual regime e OBRIGATORIO para a Petrobras?", opcoes: [{ label: "Lucro Presumido", valor: "a" }, { label: "Lucro Real", valor: "b" }, { label: "Simples Nacional", valor: "c" }, { label: "Lucro Arbitrado", valor: "d" }], correta: "b", explicacao: "Lucro Real e obrigatorio para receita bruta superior a R$78M/ano." },
           { id: "m5q2", pergunta: "A aliquota total de IRPJ (base + adicional) e:", opcoes: [{ label: "15%", valor: "a" }, { label: "25%", valor: "b" }, { label: "34%", valor: "c" }, { label: "9%", valor: "d" }], correta: "b", explicacao: "IRPJ = 15% + adicional 10% = 25%. Incluindo CSLL (9%), carga total = 34%." },
           { id: "m5q3", pergunta: "Lucro Presumido comercio, receita R$10M. Base IRPJ:", opcoes: [{ label: "R$10.000.000", valor: "a" }, { label: "R$3.200.000 (32%)", valor: "b" }, { label: "R$800.000 (8%)", valor: "c" }, { label: "Lucro contabil", valor: "d" }], correta: "c", explicacao: "Lucro Presumido comercio: 8% da receita. R$10M x 8% = R$800k." },
@@ -733,8 +743,10 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
             { titulo: "Excecoes", icone: <LuTriangleAlert />, conteudo: (<div className="space-y-2 text-lg"><p>Combustiveis: regime monofasico — aliquota maior na refinaria; demais da cadeia com aliquota zero. COFINS-Importacao incide sobre importacoes do exterior.</p></div>) },
           ]} />
         </div>
-        <ModuleConsolidation index={3} variant={mv[6]} video={{ videoId: "dQw4w9WgXcQ", title: "PIS e COFINS — Regimes", duration: "11:30" }} resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "PIS e COFINS", materia: "Administracao", images: [{ title: "Aliquotas Comparadas", type: "Tabela", placeholderColor: "bg-amber-500/20" }] }} maceteVisual={{ title: "0,65/3 vs 1,65/7,6", content: (<div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-lg"><p className="font-bold text-amber-600 dark:text-amber-400">Cumulativo: PIS 0,65% + COFINS 3%</p><p className="font-bold text-amber-600 dark:text-amber-400">Nao-cum: PIS 1,65% + COFINS 7,6%</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "Audio PIS e COFINS", artista: "Resumo Petrobras" }} />
-        <QuizInterativo questoes={[
+        
+<ModuleConsolidation index={3} variant={mv[6]} video={{ videoId: "dQw4w9WgXcQ", title: "PIS e COFINS — Regimes", duration: "11:30" }} resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "PIS e COFINS", materia: "Administracao", images: [{ title: "Aliquotas Comparadas", type: "Tabela", placeholderColor: "bg-amber-500/20" }] }} maceteVisual={{ title: "0,65/3 vs 1,65/7,6", content: (<div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-lg"><p className="font-bold text-amber-600 dark:text-amber-400">Cumulativo: PIS 0,65% + COFINS 3%</p><p className="font-bold text-amber-600 dark:text-amber-400">Nao-cum: PIS 1,65% + COFINS 7,6%</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "Audio PIS e COFINS", artista: "Resumo Petrobras" }} />
+
+                <QuizInterativo questoes={[
           { id: "m6q1", pergunta: "No regime nao-cumulativo, as aliquotas de PIS/COFINS sao:", opcoes: [{ label: "PIS 0,65% e COFINS 3%", valor: "a" }, { label: "PIS 1,65% e COFINS 7,6%", valor: "b" }, { label: "PIS 9% e COFINS 15%", valor: "c" }, { label: "PIS 1% e COFINS 4%", valor: "d" }], correta: "b", explicacao: "Nao-cumulativo: PIS 1,65% e COFINS 7,6%, com creditos. Obrigatorio para Lucro Real." },
           { id: "m6q2", pergunta: "PIS e COFINS incidem sobre:", opcoes: [{ label: "O lucro liquido", valor: "a" }, { label: "A folha de pagamento", valor: "b" }, { label: "A receita bruta", valor: "c" }, { label: "O patrimonio liquido", valor: "d" }], correta: "c", explicacao: "PIS e COFINS incidem sobre RECEITA BRUTA. IRPJ e CSLL incidem sobre o LUCRO." },
           { id: "m6q3", pergunta: "Petrobras nao-cum.: receita R$1M, compras R$600k. COFINS a recolher:", opcoes: [{ label: "R$76.000", valor: "a" }, { label: "R$45.600", valor: "b" }, { label: "R$30.400", valor: "c" }, { label: "R$18.000", valor: "d" }], correta: "c", explicacao: "Debito: 7,6%xR$1M=R$76k. Credito: 7,6%xR$600k=R$45,6k. A recolher: R$30.400." },
@@ -770,12 +782,14 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
             { titulo: "Excecoes", icone: <LuTriangleAlert />, conteudo: (<div className="space-y-2 text-lg"><p>Sigilo fiscal (CTN art. 198): Receita Federal NAO divulga dados a terceiros. CARF e orgao administrativo — contribuinte pode recorrer ao Judiciario apos CARF.</p></div>) },
           ]} />
         </div>
-        <ModuleConsolidation index={3} variant={mv[7]} video={{ videoId: "dQw4w9WgXcQ", title: "Administracao Tributaria", duration: "12:00" }} resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "Adm. Tributaria", materia: "Administracao", images: [{ title: "3 Modalidades Lancamento", type: "Tabela", placeholderColor: "bg-blue-500/20" }] }} maceteVisual={{ title: "Decadencia vs Prescricao", content: (<div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-lg"><p className="font-bold text-blue-600 dark:text-blue-400">Decadencia: 5 anos para LANCAR</p><p className="font-bold text-blue-600 dark:text-blue-400">Prescricao: 5 anos para COBRAR</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Audio Adm. Tributaria", artista: "Resumo Petrobras" }} />
-        <QuizInterativo questoes={[
+        
+<ModuleConsolidation index={3} variant={mv[7]} video={{ videoId: "dQw4w9WgXcQ", title: "Administracao Tributaria", duration: "12:00" }} resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "Adm. Tributaria", materia: "Administracao", images: [{ title: "3 Modalidades Lancamento", type: "Tabela", placeholderColor: "bg-blue-500/20" }] }} maceteVisual={{ title: "Decadencia vs Prescricao", content: (<div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-lg"><p className="font-bold text-blue-600 dark:text-blue-400">Decadencia: 5 anos para LANCAR</p><p className="font-bold text-blue-600 dark:text-blue-400">Prescricao: 5 anos para COBRAR</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Audio Adm. Tributaria", artista: "Resumo Petrobras" }} />
+
+                <QuizInterativo questoes={[
           { id: "m7q1", pergunta: "Entregar a DCTF e:", opcoes: [{ label: "Obrigacao principal", valor: "a" }, { label: "Obrigacao acessoria", valor: "b" }, { label: "Penalidade tributaria", valor: "c" }, { label: "Facultativo", valor: "d" }], correta: "b", explicacao: "DCTF = declaracao = OBRIGACAO ACESSORIA. Descumprimento gera multa." },
           { id: "m7q2", pergunta: "No lancamento por homologacao:", opcoes: [{ label: "A Receita Federal calcula e cobra", valor: "a" }, { label: "O contribuinte apura e paga; fisco homologa", valor: "b" }, { label: "Contribuinte informa; fisco calcula", valor: "c" }, { label: "Lancado por sentenca judicial", valor: "d" }], correta: "b", explicacao: "Homologacao: contribuinte apura e paga antecipadamente (IRPJ, ICMS, PIS/COFINS). Fisco homologa em ate 5 anos." },
           { id: "m7q3", pergunta: "O prazo decadencial para a Fazenda lancar tributo e:", opcoes: [{ label: "2 anos", valor: "a" }, { label: "3 anos", valor: "b" }, { label: "5 anos", valor: "c" }, { label: "10 anos", valor: "d" }], correta: "c", explicacao: "CTN art. 173: decadencia de 5 anos para a Fazenda constituir o credito tributario." },
-        ]} titulo="QUIZ: Administracao Tributaria" numero={4} variant={mv[7]} icone="🔍" onComplete={(score) => handleModuleComplete("modulo-7", score)} />
+        ]} titulo="QUIZ: Módulo Nº 7" numero={4} variant={mv[7]} icone="🔍" onComplete={(score) => handleModuleComplete("modulo-7", score)} />
       </TabsContent>
 
       {/* M8 */}
@@ -806,8 +820,10 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
             { titulo: "Excecoes", icone: <LuTriangleAlert />, conteudo: (<div className="space-y-2 text-lg"><p>Norma antielisiva (CTN art. 116 par. unico): fisco pode desconsiderar atos sem proposito negocial real. Elusao = elisao abusiva (zona cinzenta).</p></div>) },
           ]} />
         </div>
-        <ModuleConsolidation index={3} variant={mv[8]} video={{ videoId: "dQw4w9WgXcQ", title: "Planejamento Tributario", duration: "10:00" }} resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Planejamento Tributario", materia: "Administracao", images: [{ title: "Elisao vs Evasao", type: "Comparativo", placeholderColor: "bg-emerald-500/20" }] }} maceteVisual={{ title: "Antes x Depois do FG", content: (<div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-lg"><p className="font-bold text-emerald-600 dark:text-emerald-400">Antes + legal = ELISAO (ok)</p><p className="font-bold text-red-500 dark:text-red-400">Depois + ilegal = EVASAO (crime)</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Audio Planejamento Tributario", artista: "Resumo Petrobras" }} />
-        <QuizInterativo questoes={[
+        
+<ModuleConsolidation index={3} variant={mv[8]} video={{ videoId: "dQw4w9WgXcQ", title: "Planejamento Tributario", duration: "10:00" }} resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Planejamento Tributario", materia: "Administracao", images: [{ title: "Elisao vs Evasao", type: "Comparativo", placeholderColor: "bg-emerald-500/20" }] }} maceteVisual={{ title: "Antes x Depois do FG", content: (<div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-lg"><p className="font-bold text-emerald-600 dark:text-emerald-400">Antes + legal = ELISAO (ok)</p><p className="font-bold text-red-500 dark:text-red-400">Depois + ilegal = EVASAO (crime)</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Audio Planejamento Tributario", artista: "Resumo Petrobras" }} />
+
+                <QuizInterativo questoes={[
           { id: "m8q1", pergunta: "Instalar fabrica na ZFM para isencao de IPI e:", opcoes: [{ label: "Evasao fiscal", valor: "a" }, { label: "Elisao fiscal licita", valor: "b" }, { label: "Sonegacao permitida", valor: "c" }, { label: "Crime tributario", valor: "d" }], correta: "b", explicacao: "ELISAO: reducao licita por meio legal (beneficio ZFM), antes do FG. Completamente legitima." },
           { id: "m8q2", pergunta: "Evasao se distingue de elisao porque:", opcoes: [{ label: "Reduz mais imposto", valor: "a" }, { label: "Usa meios ilicitos (fraude, simulacao)", valor: "b" }, { label: "E so para PF", valor: "c" }, { label: "Permitida no Simples", valor: "d" }], correta: "b", explicacao: "Evasao = meios ilicitos (fraude). Crime Lei 8.137/90. Elisao = meios LICITOS." },
           { id: "m8q3", pergunta: "JCP e tecnica de planejamento tributario porque:", opcoes: [{ label: "Isenta IR totalmente", valor: "a" }, { label: "Permite deduzir do IRPJ/CSLL reduzindo lucro tributavel", valor: "b" }, { label: "Substitui dividendos", valor: "c" }, { label: "Exclusivo com prejuizo acumulado", valor: "d" }], correta: "b", explicacao: "JCP: empresa remunera acionistas e deduz do IRPJ/CSLL como despesa — reduz legalmente o lucro tributavel." },
@@ -843,12 +859,14 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           { icone: <LuFileText className="w-6 h-6" />, titulo: "CIDE Combustiveis", descricao: "Contribuicao de Intervencao no Dominio Economico sobre comercializacao de derivados de petroleo. Receita para infraestrutura." },
           { icone: <LuScale className="w-6 h-6" />, titulo: "Bonus de Assinatura", descricao: "Pagamento unico a ANP pela concessao ou partilha de producao. Nao e tributo recorrente." },
         ]} titulo="Participacoes Governamentais" />
-        <ModuleConsolidation index={3} variant={mv[9]} video={{ videoId: "dQw4w9WgXcQ", title: "Tributacao Petrobras e Suprimentos", duration: "14:00" }} resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Tributos Petrobras", materia: "Administracao", images: [{ title: "Participacoes Governamentais", type: "Estrutura", placeholderColor: "bg-rose-500/20" }] }} maceteVisual={{ title: "Custo Efetivo em Suprimentos", content: (<div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl text-lg"><p className="font-bold text-rose-600 dark:text-rose-400">Custo Efetivo = Preco menos (IPI+ICMS+PIS/COFINS)</p><p className="text-lg text-foreground/70">Pode ser 20-30% menor que o valor nominal.</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Audio Tributos Petrobras", artista: "Resumo Petrobras" }} />
-        <QuizInterativo questoes={[
+        
+<ModuleConsolidation index={3} variant={mv[9]} video={{ videoId: "dQw4w9WgXcQ", title: "Tributacao Petrobras e Suprimentos", duration: "14:00" }} resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Tributos Petrobras", materia: "Administracao", images: [{ title: "Participacoes Governamentais", type: "Estrutura", placeholderColor: "bg-rose-500/20" }] }} maceteVisual={{ title: "Custo Efetivo em Suprimentos", content: (<div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl text-lg"><p className="font-bold text-rose-600 dark:text-rose-400">Custo Efetivo = Preco menos (IPI+ICMS+PIS/COFINS)</p><p className="text-lg text-foreground/70">Pode ser 20-30% menor que o valor nominal.</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Audio Tributos Petrobras", artista: "Resumo Petrobras" }} />
+
+                <QuizInterativo questoes={[
           { id: "m9q1", pergunta: "Os Royalties pagos pela Petrobras sao:", opcoes: [{ label: "IR sobre a producao", valor: "a" }, { label: "Compensacao financeira pela exploracao de recursos naturais da Uniao", valor: "b" }, { label: "Taxa da ANP pela licenca", valor: "c" }, { label: "Contribuicao previdenciaria dos trabalhadores", valor: "d" }], correta: "b", explicacao: "Royalties = compensacao financeira pela exploracao de recursos da Uniao (Lei 9.478/1997). Nao sao tributos no sentido estrito do CTN." },
           { id: "m9q2", pergunta: "Ao comprar equipamentos, a Petrobras gera creditos de:", opcoes: [{ label: "Apenas IRPJ", valor: "a" }, { label: "ICMS, IPI e PIS/COFINS (regime nao-cumulativo)", valor: "b" }, { label: "Apenas ICMS", valor: "c" }, { label: "ISS e IPTU", valor: "d" }], correta: "b", explicacao: "No regime nao-cumulativo (Lucro Real), a Petrobras gera creditos de IPI, ICMS e PIS/COFINS nas compras, reduzindo o custo efetivo." },
           { id: "m9q3", pergunta: "A CIDE Combustiveis e:", opcoes: [{ label: "Taxa estadual sobre combustiveis", valor: "a" }, { label: "Contribuicao federal (CIDE) sobre comercializacao de derivados de petroleo", valor: "b" }, { label: "Participacao governamental exclusiva do Pre-Sal", valor: "c" }, { label: "Imposto municipal sobre postos", valor: "d" }], correta: "b", explicacao: "CIDE Combustiveis = contribuicao federal de intervencao no dominio economico sobre petroleo e derivados. Receita para infraestrutura." },
-        ]} titulo="QUIZ: Tributos na Petrobras" numero={4} variant={mv[9]} icone="🏗️" onComplete={(score) => handleModuleComplete("modulo-9", score)} />
+        ]} titulo="QUIZ: Módulo Nº 9" numero={4} variant={mv[9]} icone="🏗️" onComplete={(score) => handleModuleComplete("modulo-9", score)} />
       </TabsContent>
 
       {/* M10 */}
@@ -866,8 +884,10 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         <AlertBox tipo="success" titulo="Pronto para o Simulado Final!">
           <p className="text-lg">12 questoes no padrao CESGRANRIO. Precisa de 70% para completar a aula. Boa sorte, futuro Tecnico de Suprimento da Petrobras!</p>
         </AlertBox>
-        <ModuleConsolidation index={2} variant={mv[10]} video={{ videoId: "dQw4w9WgXcQ", title: "Revisao Geral — Adm. Tributario", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 10", tituloAula: "Simulado Mestre", materia: "Administracao", images: [{ title: "Mapa Mental Completo", type: "Sintese", placeholderColor: "bg-violet-500/20" }] }} maceteVisual={{ title: "Resumo Total", content: (<div className="p-4 bg-violet-500/10 border border-violet-500/20 rounded-xl text-lg"><p className="font-bold text-violet-600 dark:text-violet-400">Lucro: IRPJ 25% + CSLL 9% = 34%</p><p className="font-bold text-violet-600 dark:text-violet-400">Receita: PIS 1,65% + COFINS 7,6%</p><p className="text-lg text-foreground/70">ICMS=Estado | IPI=Uniao | ISS=Municipio</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", titulo: "Audio Revisao Geral", artista: "Resumo Petrobras" }} />
-        <QuizInterativo questoes={[
+        
+<ModuleConsolidation index={2} variant={mv[10]} video={{ videoId: "dQw4w9WgXcQ", title: "Revisao Geral — Adm. Tributario", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 10", tituloAula: "Simulado Mestre", materia: "Administracao", images: [{ title: "Mapa Mental Completo", type: "Sintese", placeholderColor: "bg-violet-500/20" }] }} maceteVisual={{ title: "Resumo Total", content: (<div className="p-4 bg-violet-500/10 border border-violet-500/20 rounded-xl text-lg"><p className="font-bold text-violet-600 dark:text-violet-400">Lucro: IRPJ 25% + CSLL 9% = 34%</p><p className="font-bold text-violet-600 dark:text-violet-400">Receita: PIS 1,65% + COFINS 7,6%</p><p className="text-lg text-foreground/70">ICMS=Estado | IPI=Uniao | ISS=Municipio</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", titulo: "Audio Revisao Geral", artista: "Resumo Petrobras" }} />
+
+                <QuizInterativo questoes={[
           { id: "m10q1", pergunta: "A equacao fundamental da contabilidade e:", opcoes: [{ label: "Receita menos Custos = Lucro", valor: "a" }, { label: "Ativo = Passivo + Patrimonio Liquido", valor: "b" }, { label: "Caixa = AC menos PC", valor: "c" }, { label: "Lucro = Ativo menos Dividas", valor: "d" }], correta: "b", explicacao: "Ativo = Passivo + PL. Toda transacao contabil mantem esse equilibrio sem excecao." },
           { id: "m10q2", pergunta: "Qual tributo e de competencia ESTADUAL?", opcoes: [{ label: "ISS", valor: "a" }, { label: "IPI", valor: "b" }, { label: "ICMS", valor: "c" }, { label: "IR", valor: "d" }], correta: "c", explicacao: "ICMS e estadual (CF art. 155, II). IPI e IR sao federais. ISS e municipal." },
           { id: "m10q3", pergunta: "A Petrobras, receita acima R$78M, e obrigada a adotar:", opcoes: [{ label: "Lucro Presumido", valor: "a" }, { label: "Simples Nacional", valor: "b" }, { label: "Lucro Real", valor: "c" }, { label: "Lucro Arbitrado", valor: "d" }], correta: "c", explicacao: "Lucro Real e OBRIGATORIO para receita bruta acima de R$78M/ano." },

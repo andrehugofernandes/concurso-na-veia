@@ -143,6 +143,15 @@ export default function AulaProbabilidade({
 
   const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
 
+  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
+
+  const mv = Object.fromEntries(
+
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+
+  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -275,6 +284,8 @@ export default function AulaProbabilidade({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="blue"
@@ -329,7 +340,7 @@ export default function AulaProbabilidade({
 
                       <QuizInterativo
               questoes={quizM1}
-              titulo="QUIZ: Módulo Nº 1"
+              titulo="QUIZ: Fundamentos"
               numero={3}
               variant="blue"
               icone="🧠"
@@ -444,6 +455,8 @@ export default function AulaProbabilidade({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="emerald"
@@ -499,7 +512,7 @@ export default function AulaProbabilidade({
 
                       <QuizInterativo
               questoes={quizM2}
-              titulo="Fixação - Lei de Laplace"
+              titulo="QUIZ: Lei de Laplace"
               numero={3}
               variant="emerald"
               icone="🎯"
@@ -616,6 +629,8 @@ export default function AulaProbabilidade({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="amber"
@@ -672,7 +687,7 @@ export default function AulaProbabilidade({
 
                       <QuizInterativo
               questoes={quizM3}
-              titulo="QUIZ: Módulo Nº 3"
+              titulo="QUIZ: União e Interseção"
               numero={3}
               variant="amber"
               icone="🎯"
@@ -785,6 +800,8 @@ export default function AulaProbabilidade({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="cyan"
@@ -841,7 +858,7 @@ export default function AulaProbabilidade({
 
                       <QuizInterativo
               questoes={quizM4}
-              titulo="Fixação - Condicional"
+              titulo="QUIZ: Probabilidade Condicional"
               numero={3}
               variant="cyan"
               icone="🎯"
@@ -947,6 +964,8 @@ export default function AulaProbabilidade({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="violet"
@@ -1003,7 +1022,7 @@ export default function AulaProbabilidade({
 
                       <QuizInterativo
               questoes={quizM5}
-              titulo="QUIZ: Módulo Nº 5"
+              titulo="QUIZ: Probabilidade Binomial"
               numero={3}
               variant="violet"
               icone="🧠"
@@ -1113,6 +1132,8 @@ export default function AulaProbabilidade({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="cyan"
@@ -1169,7 +1190,7 @@ export default function AulaProbabilidade({
 
                       <QuizInterativo
               questoes={quizM6}
-              titulo="Fixação - Complementar"
+              titulo="QUIZ: Complementar"
               numero={3}
               variant="cyan"
               icone="🎯"
@@ -1284,6 +1305,8 @@ export default function AulaProbabilidade({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="indigo"
@@ -1340,7 +1363,7 @@ export default function AulaProbabilidade({
 
                       <QuizInterativo
               questoes={quizM7}
-              titulo="QUIZ: Módulo Nº 7"
+              titulo="QUIZ: Probabilidade Geométrica"
               numero={3}
               variant="indigo"
               icone="🎯"
@@ -1455,6 +1478,8 @@ export default function AulaProbabilidade({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="rose"
@@ -1511,7 +1536,7 @@ export default function AulaProbabilidade({
 
                       <QuizInterativo
               questoes={quizM8}
-              titulo="Fixação - Independência"
+              titulo="QUIZ: Independência"
               numero={3}
               variant="rose"
               icone="🎯"
@@ -1623,6 +1648,8 @@ export default function AulaProbabilidade({
 
 
 
+
+
 <ModuleConsolidation
             index={2}
             variant="amber"
@@ -1679,7 +1706,7 @@ export default function AulaProbabilidade({
 
                       <QuizInterativo
               questoes={quizM9}
-              titulo="QUIZ: Módulo Nº 9"
+              titulo="QUIZ: Engenharia de Riscos"
               numero={3}
               variant="amber"
               icone="🌊"
@@ -1712,7 +1739,7 @@ export default function AulaProbabilidade({
             <section id="quiz-modulo-10" className="mt-8">
               <QuizInterativo
                 questoes={quizM10}
-                titulo="Simulado Elite - Probabilidade"
+                titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={1}
                 variant="slate"
