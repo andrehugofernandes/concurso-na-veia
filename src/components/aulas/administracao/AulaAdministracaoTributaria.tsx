@@ -72,7 +72,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
 
   const renderModulo1 = () => (
     <div className="space-y-6">
-      <ModuleBanner numero={1} titulo="Administração Tributária: Conceitos" descricao="Disciplina que estuda gestão de tributos na empresa" />
+      <ModuleBanner numero={1} titulo="Administração Tributária: Conceitos" descricao="Disciplina que estuda gestão de tributos na empresa" variant={getModuleVariant(1)} />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
@@ -159,7 +159,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
 
   const renderModulo2 = () => (
     <div className="space-y-6">
-      <ModuleBanner numero={2} titulo="Órgãos Arrecadadores" descricao="Receita Federal, SEFAZ estadual, prefeituras e INSS/FGTS" />
+      <ModuleBanner numero={2} titulo="Órgãos Arrecadadores" descricao="Receita Federal, SEFAZ estadual, prefeituras e INSS/FGTS" variant={getModuleVariant(2)} />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
@@ -246,7 +246,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
 
   const renderModulo3 = () => (
     <div className="space-y-6">
-      <ModuleBanner numero={3} titulo="Registros e Documentos Fiscais" descricao="Nota Fiscal, RPA, livros fiscais e escrituração contábil digital" />
+      <ModuleBanner numero={3} titulo="Registros e Documentos Fiscais" descricao="Nota Fiscal, RPA, livros fiscais e escrituração contábil digital" variant={getModuleVariant(3)} />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
@@ -333,7 +333,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
 
   const renderModulo4 = () => (
     <div className="space-y-6">
-      <ModuleBanner numero={4} titulo="Declarações Tributárias" descricao="DIPJ, ECF, DACON, SPED - declarações obrigatórias ao fisco" />
+      <ModuleBanner numero={4} titulo="Declarações Tributárias" descricao="DIPJ, ECF, DACON, SPED - declarações obrigatórias ao fisco" variant={getModuleVariant(4)} />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
@@ -420,7 +420,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
 
   const renderModulo5 = () => (
     <div className="space-y-6">
-      <ModuleBanner numero={5} titulo="Prazos e Obrigações Acessórias" descricao="Calendário tributário e penalidades por atraso" />
+      <ModuleBanner numero={5} titulo="Prazos e Obrigações Acessórias" descricao="Calendário tributário e penalidades por atraso" variant={getModuleVariant(5)} />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
@@ -507,7 +507,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
 
   const renderModulo6 = () => (
     <div className="space-y-6">
-      <ModuleBanner numero={6} titulo="Gestão de Impostos" descricao="Planejamento tributário, fluxo de caixa e otimização de custos" />
+      <ModuleBanner numero={6} titulo="Gestão de Impostos" descricao="Planejamento tributário, fluxo de caixa e otimização de custos" variant={getModuleVariant(6)} />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
@@ -594,7 +594,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
 
   const renderModulo7 = () => (
     <div className="space-y-6">
-      <ModuleBanner numero={7} titulo="Controle de Créditos Tributários" descricao="Apuração de ICMS, PIS/COFINS, aproveitamento e prescrição de créditos" />
+      <ModuleBanner numero={7} titulo="Controle de Créditos Tributários" descricao="Apuração de ICMS, PIS/COFINS, aproveitamento e prescrição de créditos" variant={getModuleVariant(7)} />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
@@ -681,7 +681,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
 
   const renderModulo8 = () => (
     <div className="space-y-6">
-      <ModuleBanner numero={8} titulo="Sistemas de Informação Tributária" descricao="NF-e, SPED, certificado digital, validação de dados" />
+      <ModuleBanner numero={8} titulo="Sistemas de Informação Tributária" descricao="NF-e, SPED, certificado digital, validação de dados" variant={getModuleVariant(8)} />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
@@ -768,7 +768,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
 
   const renderModulo9 = () => (
     <div className="space-y-6">
-      <ModuleBanner numero={9} titulo="Administração Tributária em Petrobras" descricao="Desafios específicos, múltiplas jurisdições, royalties e governance" />
+      <ModuleBanner numero={9} titulo="Administração Tributária em Petrobras" descricao="Desafios específicos, múltiplas jurisdições, royalties e governance" variant={getModuleVariant(9)} />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
@@ -855,7 +855,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
 
   const renderModulo10 = () => (
     <div className="space-y-6">
-      <ModuleBanner numero={10} titulo="Simulado Mestre - Administração Tributária" descricao="Teste integrado: conceitos, prazos, procedimentos, aplicação Petrobras" />
+      <ModuleBanner numero={10} titulo="Simulado Mestre - Administração Tributária" descricao="Teste integrado: conceitos, prazos, procedimentos, aplicação Petrobras" variant={getModuleVariant(10)} />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
