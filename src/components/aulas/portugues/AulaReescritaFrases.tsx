@@ -536,10 +536,112 @@ export default function AulaReescritaFrases({
           variant={mv[2]}
         />
 
+        {/* ★ RICH INTRO SECTION - Módulo 2 */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Arte da Substituição Lexical"
+          variant={mv[2]}
+        />
+          
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            {/* PARÁGRAFO 1: CONCEITO CIENTÍFICO */}
+            <p>
+              A sinonímia constitui-se como fenômeno linguístico de equivalência semântica 
+              que, na prática, raramente se manifesta como substituição perfeita e absoluta. 
+              Segundo Celso Cunha em sua "Nova Gramática do Português Contemporâneo", 
+              os sinônimos classificam-se em perfeitos, imperfeitos ou relativos, 
+              sendo estes últimos os mais frequentes na língua corrente. A substituição 
+              lexical em reescritas CESGRANRIO exige compreensão profunda do campo semântico 
+              — o conjunto de relações de sentido que uma palavra mantém com outras 
+              no léxico — para garantir que a equivalência contextual seja preservada 
+              sem distorções semânticas.
+            </p>
+
+            {/* PARÁGRAFO 2: EXPLICAÇÃO INTUITIVA */}
+            <p>
+              Em outras palavras, trocar palavras é como substituir peças em um motor 
+              industrial — nem toda peça compatível serve para qualquer função. 
+              "Operar" pode significar "trabalhar" em contexto geral, mas "executar" 
+              em contexto técnico específico. O campo semântico funciona como o 
+              manual de especificações: define exatamente onde cada palavra pode 
+              ser aplicada sem comprometer o funcionamento da "máquina" textual. 
+              A reescrita bem-sucedida depende dessa precisão técnica — usar 
+              o sinônimo certo no contexto certo.
+            </p>
+
+            {/* PARÁGRAFO 3: REGRAS E TÉCNICAS */}
+            <p>
+              As técnicas de substituição lexical fundamentam-se em três princípios 
+              fundamentais: <strong>equivalência denotativa</strong> (mesmo referente 
+              no mundo real), <strong>compatibilidade conotativa</strong> (mesmas 
+              implicações e associações) e <strong>adequação sintática</strong> 
+              (mesma regência e estrutura). Os parônimos constituem-se como 
+              armadilhas clássicas — palavras com sons similares mas sentidos 
+              distintos, como "ratificar" (confirmar) vs "retificar" (corrigir). 
+              A banca explora sistematicamente essas confusões, exigindo que 
+              o candidato identifique quando uma substituição altera fundamentalmente 
+              a mensagem original.
+            </p>
+
+            {/* PARÁGRAFO 4: CONTEXTO PETROBRAS */}
+            <p>
+              No ambiente técnico da Petrobras, a precisão lexical torna-se ainda 
+              mais crítica. Em manuais de operação, "intermitente" descreve 
+              equipamentos que funcionam em intervalos, nunca de forma contínua. 
+              "Paulatinamente" indica processos graduais essenciais para segurança 
+              operacional, enquanto "inexorável" pode descrever falhas que não 
+              admitem postponement. A troca de registro linguístico — de "o pessoal 
+              tá vindo" para "os colaboradores estão chegando" — representa não apenas 
+              adequação formal, mas respeito à hierarquia e profissionalismo 
+              exigidos em comunicações corporativas.
+            </p>
+
+            {/* PARÁGRAFO 5: PEGADINHAS CESGRANRIO */}
+            <p>
+              A CESGRANRIO explora sistematicamente as fronteiras da sinonímia 
+              através de testes de substituição contextual. As questões frequentemente 
+              apresentam alternativas que parecem sinônimas mas introduzem sutis 
+              alterações de sentido — "celeremente" por "paulatinamente" (rápido 
+              vs lento), "contínuo" por "intermitente" (opostos diretos), ou 
+              antônimos disfarçados. Vícios de linguagem como "ao meu ver" 
+              constituem-se como alvos privilegiados — a forma correta "a meu ver" 
+              testa se o candidato identifica enriquecimentos gramaticais 
+              que mantêm o sentido. O examinando deve desenvolver sensibilidade 
+              para distinguir equivalência verdadeira de similaridade enganosa.
+            </p>
+
+            {/* CAIXA DE DESTAQUE: Guia de Substituição Segura */}
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">O Teste dos Três Filtros da Substituição</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🎯</div>
+                  <strong>Sentido</strong>
+                  <p>Mesmo referente? Mesma ideia?</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">⚙️</div>
+                  <strong>Contexto</strong>
+                  <p>Adequado ao registro técnico?</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🔧</div>
+                  <strong>Estrutura</strong>
+                  <p>Mesma regência e sintaxe?</p>
+                </div>
+              </div>
+              <div className="mt-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded text-sm">
+                <strong>Alerta Parônimos:</strong> Ratificar/Retificar | Descrição/Discrição | Emergir/Emergir | Infligir/Infringir | Mandado/Mandato
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="A Precisão das Palavras"
           variant={mv[2]}
         />
