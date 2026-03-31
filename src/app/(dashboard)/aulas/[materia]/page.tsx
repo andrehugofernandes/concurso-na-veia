@@ -102,10 +102,11 @@ export default function MateriaPage({ params }: PageProps) {
         }
       }
 
-      // 3. Fallback legado: conhecimentos-especificos
+      // 3. Fallback legado: conhecimentos-especificos ou IDs de cargo (como "administracao")
+      // NOTA: IDs de cargo como "administracao" foram descontinuados em favor de IDs específicos
       if (materiaId === "conhecimentos-especificos") {
         try {
-          const cargoIdOriginal = usuario?.cargo;
+          const cargoIdOriginal = materiaId === "conhecimentos-especificos" ? usuario?.cargo : materiaId;
           const cargoId = cargoIdOriginal
             ? CARGO_ID_MAP[cargoIdOriginal] || cargoIdOriginal
             : null;

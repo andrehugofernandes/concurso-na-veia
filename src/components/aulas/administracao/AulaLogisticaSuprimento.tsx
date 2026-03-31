@@ -91,6 +91,7 @@ export default function AulaLogisticaSuprimento({
       loading={loading}
       xpGanho={xpGanho}
       currentProgress={currentProgress}
+      onComplete={onComplete}
       titulo={titulo}
       descricao={descricao}
       duracao={duracao}

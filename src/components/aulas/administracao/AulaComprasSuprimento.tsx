@@ -99,6 +99,7 @@ export default function AulaComprasSuprimento({
       loading={loading}
       xpGanho={xpGanho}
       currentProgress={currentProgress}
+      onComplete={onComplete}
       titulo={titulo}
       descricao={descricao}
       duracao={duracao}

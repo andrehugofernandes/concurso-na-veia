@@ -1618,9 +1618,9 @@ export default function AulaRLCP(props: AulaProps) {
       titulo="RLCP - Regulamento de Licitações Petrobras"
       descricao="Procedimentos transparentes de compras, contratações e gestão de contratos"
       duracao="2h 30m"
-      materiaNome="Administração"
-      materiaCor="amber"
-      materiaId="administracao"
+      materiaNome={props.materiaNome}
+      materiaCor={props.materiaCor}
+      materiaId={props.materiaId}
       isCompleted={completedModules.size === MODULE_DEFS.length}
       currentProgress={props.currentProgress}
       onComplete={props.onComplete}

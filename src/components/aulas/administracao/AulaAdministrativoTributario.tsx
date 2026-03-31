@@ -80,9 +80,9 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
       titulo="Administrativo e Tributário"
       descricao="Contabilidade básica, direito tributário e administração tributária para Técnico de Suprimento."
       duracao="3h 30min"
-      materiaNome="Administração"
-      materiaCor="indigo"
-      materiaId="administracao"
+      materiaNome={props.materiaNome}
+      materiaCor={props.materiaCor}
+      materiaId={props.materiaId}
       isCompleted={completedModules.has("modulo-10")}
       currentProgress={Math.round((completedModules.size / MODULE_DEFS.length) * 100)}
       onComplete={() => props.onUpdateProgress?.(100)}

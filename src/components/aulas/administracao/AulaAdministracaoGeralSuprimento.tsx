@@ -45,6 +45,7 @@ import {
   LuFactory,
   LuChartBar,
   LuClipboardList,
+  LuSearchCode,
 } from "react-icons/lu";
 import { getModuleVariant } from "@/lib/moduleColors";
 import { ADMINISTRACAO_GERAL_QUIZZES } from "@/data/quizzes/administracao-geral-quizzes";
@@ -121,17 +122,23 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
   };
 
   // Pools de questões
-  const quizM1 = ADMINISTRACAO_GERAL_QUIZZES["modulo-1"];
-  const quizM2 = ADMINISTRACAO_GERAL_QUIZZES["modulo-2"];
-  const quizM3 = ADMINISTRACAO_GERAL_QUIZZES["modulo-3"];
-  const quizM4 = ADMINISTRACAO_GERAL_QUIZZES["modulo-4"];
-  const quizM5 = ADMINISTRACAO_GERAL_QUIZZES["modulo-5"];
-  const quizM6 = ADMINISTRACAO_GERAL_QUIZZES["modulo-6"];
-  const quizM7 = ADMINISTRACAO_GERAL_QUIZZES["modulo-7"];
-  const quizM8 = ADMINISTRACAO_GERAL_QUIZZES["modulo-8"];
-  const quizM9 = ADMINISTRACAO_GERAL_QUIZZES["modulo-9"];
+  const mapQuizQuestions = (modId: string) => {
+    const quiz = ADMINISTRACAO_GERAL_QUIZZES[modId];
+    if (!quiz) return [];
+    return quiz.questions.map((q) => ({
+      id: q.id,
+      pergunta: q.question,
+      opcoes: q.options.map((opt, i) => ({
+        label: String.fromCharCode(65 + i),
+        valor: opt,
+      })),
+      correta: String.fromCharCode(65 + q.correct),
+      explicacao: q.explanation,
+    }));
+  };
+
   const quizM10 = getRandomQuestions(
-    ADMINISTRACAO_GERAL_QUIZZES["modulo-10"] || [],
+    mapQuizQuestions("modulo-10"),
     10,
   );
 
@@ -150,9 +157,9 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
       titulo="Administração Geral (Suprimento)"
       descricao="Domine os fundamentos de administração com foco em teorias clássicas, processos, estruturas organizacionais e aplicações no contexto Petrobras. Preparação completa para CESGRANRIO."
       duracao="25h"
-      materiaNome="Administração"
-      materiaCor={getModuleVariant(1)}
-      materiaId="administracao"
+      materiaNome={props.materiaNome}
+      materiaCor={props.materiaCor}
+      materiaId={props.materiaId}
       isCompleted={completedModules.size >= MODULE_DEFS.length - 1}
       currentProgress={props.currentProgress}
       onComplete={props.onComplete}
@@ -415,7 +422,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         />
 
         <QuizInterativo
-          questoes={quizM1}
+          questoes={mapQuizQuestions("modulo-1")}
           titulo="QUIZ: Fundamentos de Administração"
           numero={1}
           variant={mv[1]}
@@ -644,7 +651,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         />
 
         <QuizInterativo
-          questoes={quizM2}
+          questoes={mapQuizQuestions("modulo-2")}
           titulo="QUIZ: Funções Administrativas PODC"
           numero={2}
           variant={mv[2]}
@@ -852,7 +859,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         />
 
         <QuizInterativo
-          questoes={quizM3}
+          questoes={mapQuizQuestions("modulo-3")}
           titulo="QUIZ: Estruturas Organizacionais"
           numero={3}
           variant={mv[3]}
@@ -1049,7 +1056,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         />
 
         <QuizInterativo
-          questoes={quizM4}
+          questoes={mapQuizQuestions("modulo-4")}
           titulo="QUIZ: Comportamento Organizacional"
           numero={4}
           variant={mv[4]}
@@ -1253,7 +1260,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         />
 
         <QuizInterativo
-          questoes={quizM5}
+          questoes={mapQuizQuestions("modulo-5")}
           titulo="QUIZ: Gestão por Processos"
           numero={5}
           variant={mv[5]}
@@ -1449,7 +1456,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         />
 
         <QuizInterativo
-          questoes={quizM6}
+          questoes={mapQuizQuestions("modulo-6")}
           titulo="QUIZ: Teoria das Organizações"
           numero={6}
           variant={mv[6]}
@@ -1641,7 +1648,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         />
 
         <QuizInterativo
-          questoes={quizM7}
+          questoes={mapQuizQuestions("modulo-7")}
           titulo="QUIZ: Comunicação e Conflitos"
           numero={7}
           variant={mv[7]}
@@ -1837,7 +1844,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         />
 
         <QuizInterativo
-          questoes={quizM8}
+          questoes={mapQuizQuestions("modulo-8")}
           titulo="QUIZ: Decisão e Inovação"
           numero={8}
           variant={mv[8]}
@@ -2050,7 +2057,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         />
 
         <QuizInterativo
-          questoes={quizM9}
+          questoes={mapQuizQuestions("modulo-9")}
           titulo="QUIZ: Administração na Petrobras"
           numero={9}
           variant={mv[9]}

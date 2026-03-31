@@ -149,25 +149,11 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'marketing-gerencial', titulo: 'Marketing Gerencial', descricao: 'Estratégia de marketing, segmentação e comunicação (em desenvolvimento)', duracao: '90 min', ordem: 3 },
         ]
     },
-    // ===== BLOCO II - LEGISLAÇÃO E TRIBUTOS (NÍVEL TÉCNICO/MÉDIO) =====
-    {
-        id: 'especifica-bloco-ii-legislacao-tributos',
-        nome: 'Bloco II - Legislação e Tributos',
-        descricao: 'Conhecimentos específicos em Lei 13.303, RLCP e Direito Tributário para Técnico de Suprimento - Administração',
-        icone: '⚖️',
-        cor: 'from-violet-500 to-fuchsia-500',
-        requiredPlan: 'Ouro',
-        topicos: [
-            { id: 'lei-13303', titulo: 'Lei 13.303 - Empresa Estatal', descricao: 'Lei Federal que disciplina funcionamento e governança de empresas públicas', duracao: '90 min', ordem: 1 },
-            { id: 'rlcp', titulo: 'RLCP - Regulamento de Licitações Petrobras', descricao: 'Procedimentos transparentes de compras e contratações', duracao: '90 min', ordem: 2 },
-            { id: 'administrativo-tributario', titulo: 'Administrativo e Tributário', descricao: 'Contabilidade básica, direito tributário e administração tributária (em desenvolvimento)', duracao: '90 min', ordem: 3 },
-        ]
-    },
     // ===== BLOCO I - ADMINISTRAÇÃO (NÍVEL TÉCNICO) =====
     {
         id: 'especifica-bloco-i-administracao-suprimento',
         nome: 'Bloco I - Administração (Suprimento)',
-        descricao: 'Conhecimentos de Administração Geral, Gestão de Qualidade, Logística e Compras',
+        descricao: 'Conhecimentos específicos para Técnico de Suprimento de Bens e Serviços - Administração - Administração Geral, Qualidade, Logística e Compras',
         icone: '📁',
         cor: 'from-blue-500 to-indigo-600',
         requiredPlan: 'Ouro',
@@ -178,11 +164,25 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'compras-suprimento', titulo: 'Compras', descricao: 'Processos de aquisição, seleção de fornecedores e negociação', duracao: '90 min', ordem: 4 },
         ]
     },
+    // ===== BLOCO II - LEGISLAÇÃO E TRIBUTOS (NÍVEL TÉCNICO/MÉDIO) =====
+    {
+        id: 'especifica-bloco-ii-legislacao-tributos',
+        nome: 'Bloco II - Legislação e Tributos',
+        descricao: 'Conhecimentos específicos em Lei 13.303, RLCP e Direito Tributário para Técnico de Suprimento de Bens e Serviços - Administração',
+        icone: '⚖️',
+        cor: 'from-violet-500 to-fuchsia-500',
+        requiredPlan: 'Ouro',
+        topicos: [
+            { id: 'lei-13303', titulo: 'Lei 13.303 - Empresa Estatal', descricao: 'Lei Federal que disciplina funcionamento e governança de empresas públicas', duracao: '90 min', ordem: 1 },
+            { id: 'rlcp', titulo: 'RLCP - Regulamento de Licitações Petrobras', descricao: 'Procedimentos transparentes de compras e contratações', duracao: '90 min', ordem: 2 },
+            { id: 'administrativo-tributario', titulo: 'Administrativo e Tributário', descricao: 'Contabilidade básica, direito tributário e administração tributária (em desenvolvimento)', duracao: '90 min', ordem: 3 },
+        ]
+    },
     // ===== BLOCO III - TRIBUTOS (NÍVEL TÉCNICO) =====
     {
         id: 'especifica-bloco-iii-tributos-suprimento',
         nome: 'Bloco III - Tributos (Suprimento)',
-        descricao: 'Contabilidade básica, Direito tributário e Administração tributária aplicada',
+        descricao: 'Contabilidade básica, Direito tributário e Administração tributária aplicada para Técnico de Suprimento de Bens e Serviços - Administração',
         icone: '💰',
         cor: 'from-emerald-500 to-teal-600',
         requiredPlan: 'Ouro',

@@ -107,12 +107,12 @@ export default function AulaLei13303(props: AulaProps) {
       modules={MODULE_DEFS}
       completedModules={completedModules}
       isModuleUnlocked={isModuleUnlocked}
-      titulo="Lei 13.303 (Estatuto das Estatais)"
-      descricao="Regras de governança, transparência e controle para empresas públicas e de economia mista."
-      duracao="2h 30min"
-      materiaNome="Administração"
-      materiaCor="indigo"
-      materiaId="administracao"
+      titulo={props.titulo}
+      descricao={props.descricao}
+      duracao={props.duracao}
+      materiaNome={props.materiaNome}
+      materiaCor={props.materiaCor}
+      materiaId={props.materiaId}
       isCompleted={completedModules.has("modulo-10")}
       currentProgress={Math.round((completedModules.size / (MODULE_DEFS.length)) * 100)}
       onComplete={() => props.onUpdateProgress?.(100)}

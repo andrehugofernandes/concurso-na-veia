@@ -1774,60 +1774,6 @@ export default function TopicoPage({ params }: PageProps) {
                 nextTopico={nextTopico}
               />
             ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
-              topicoId === "administracao-geral-suprimento" ? (
-              <AulaAdministracaoGeralSuprimento
-                onComplete={handleCompleteAula}
-                isCompleted={isCompleted}
-                loading={loading}
-                xpGanho={xpGanho}
-                currentProgress={progress}
-                onUpdateProgress={updateProgress}
-                titulo={topico.titulo}
-                descricao={topico.descricao}
-                duracao={topico.duracao}
-                materiaNome={materia.nome}
-                materiaCor={materia.cor}
-                materiaId={materiaId}
-                prevTopico={prevTopico}
-                nextTopico={nextTopico}
-              />
-            ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
-              topicoId === "gestao-qualidade-suprimento" ? (
-              <AulaGestaoQualidadeSuprimento
-                onComplete={handleCompleteAula}
-                isCompleted={isCompleted}
-                loading={loading}
-                xpGanho={xpGanho}
-                currentProgress={progress}
-                onUpdateProgress={updateProgress}
-                titulo={topico.titulo}
-                descricao={topico.descricao}
-                duracao={topico.duracao}
-                materiaNome={materia.nome}
-                materiaCor={materia.cor}
-                materiaId={materiaId}
-                prevTopico={prevTopico}
-                nextTopico={nextTopico}
-              />
-            ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
-              topicoId === "logistica-suprimento" ? (
-              <AulaLogisticaSuprimento
-                onComplete={handleCompleteAula}
-                isCompleted={isCompleted}
-                loading={loading}
-                xpGanho={xpGanho}
-                currentProgress={progress}
-                onUpdateProgress={updateProgress}
-                titulo={topico.titulo}
-                descricao={topico.descricao}
-                duracao={topico.duracao}
-                materiaNome={materia.nome}
-                materiaCor={materia.cor}
-                materiaId={materiaId}
-                prevTopico={prevTopico}
-                nextTopico={nextTopico}
-              />
-            ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
               topicoId === "compras-suprimento" ? (
               <AulaComprasSuprimento
                 onComplete={handleCompleteAula}

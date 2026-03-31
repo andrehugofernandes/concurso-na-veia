@@ -23,8 +23,10 @@ import {
   CardCarousel,
   QuizInterativo,
   ModuleBanner,
-  ModuleSectionHeader
+  ModuleSectionHeader,
+  AulaTemplate,
 } from "../shared";
+import { TabsContent } from "@/components/ui/tabs";
 import { DIREITO_TRIBUTARIO_QUIZZES } from "@/data/quizzes/direito-tributario-quizzes";
 import { getModuleVariant } from "@/lib/moduleColors";
 
@@ -52,22 +54,24 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
-export default function AulaDireitoTributario({ onComplete }: AulaProps) {
+export default function AulaDireitoTributario(props: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
-  const [quizAnswers, setQuizAnswers] = useState<Record<string, number | null>>({});
 
   const handleQuizComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
       setCompletedModules((prev) => new Set([...prev, moduleId]));
+      const progress = Math.round(
+        (completedModules.size / (MODULE_DEFS.length - 1)) * 100,
+      );
+      props.onUpdateProgress?.(progress);
     }
   };
 
-  const isModuleUnlocked = (moduleId: string) => {
-    const moduleIndex = MODULE_DEFS.findIndex((m) => m.id === moduleId);
-    if (moduleIndex === 0) return true;
-    const prevModuleId = MODULE_DEFS[moduleIndex - 1].id;
-    return completedModules.has(prevModuleId);
+  const isModuleUnlocked = (index: number) => {
+    if (index === 0) return true;
+    const previousModule = MODULE_DEFS[index - 1];
+    return completedModules.has(previousModule.id);
   };
 
   const renderModulo1 = () => (
@@ -1072,77 +1076,54 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
     </div>
   );
 
-  const renderModule = () => {
-    switch (activeTab) {
-      case "modulo-1":
-        return renderModulo1();
-      case "modulo-2":
-        return renderModulo2();
-      case "modulo-3":
-        return renderModulo3();
-      case "modulo-4":
-        return renderModulo4();
-      case "modulo-5":
-        return renderModulo5();
-      case "modulo-6":
-        return renderModulo6();
-      case "modulo-7":
-        return renderModulo7();
-      case "modulo-8":
-        return renderModulo8();
-      case "modulo-9":
-        return renderModulo9();
-      case "modulo-10":
-        return renderModulo10();
-      default:
-        return renderModulo1();
-    }
-  };
-
   return (
-    <div className="space-y-8 pb-12">
-      <div>
-        <h1 className="text-4xl font-bold text-foreground">
-          Direito Tributário
-        </h1>
-        <p className="text-muted-foreground mt-2">
-          Sistema tributário brasileiro para técnico em suprimento - Administração
-        </p>
-      </div>
-
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
-        {MODULE_DEFS.map((mod) => {
-          const isUnlocked = isModuleUnlocked(mod.id);
-          const isCompleted = completedModules.has(mod.id);
-          return (
-            <button
-              key={mod.id}
-              onClick={() => isUnlocked && setActiveTab(mod.id)}
-              disabled={!isUnlocked}
-              className={`p-3 rounded-lg text-lg font-medium transition-all ${
-                isCompleted
-                  ? "bg-green-500/20 border-2 border-green-500 text-green-700 dark:text-green-300"
-                  : activeTab === mod.id
-                    ? "bg-primary/20 border-2 border-primary text-primary"
-                    : isUnlocked
-                      ? "bg-card border border-border hover:border-primary text-foreground"
-                      : "bg-muted border border-border text-muted-foreground opacity-50 cursor-not-allowed"
-              }`}
-            >
-              {isCompleted && "✓ "}
-              {mod.label}
-            </button>
-          );
-        })}
-      </div>
-
-      {renderModule()}
-
-      <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-        <p className="text-lg text-blue-800 dark:text-blue-200">
-          <strong>💡 Dica:</strong> Direito tributário é complexo mas lógico. Entenda o fato gerador e a estrutura de incidência. Complete cada módulo com 70%+ para desbloquear o próximo e consolidar aprendizado.
-        </p>
-      </div>
-    </div>
+    <AulaTemplate
+      activeTab={activeTab}
+      setActiveTab={setActiveTab}
+      modules={MODULE_DEFS}
+      completedModules={completedModules}
+      isModuleUnlocked={isModuleUnlocked}
+      titulo="Direito Tributário"
+      descricao="Sistema tributário brasileiro para técnico em suprimento - Administração"
+      duracao="20h"
+      materiaNome={props.materiaNome}
+      materiaCor={props.materiaCor}
+      materiaId={props.materiaId}
+      isCompleted={completedModules.size >= MODULE_DEFS.length - 1}
+      currentProgress={props.currentProgress}
+      onComplete={props.onComplete}
+      loading={props.loading}
+    >
+      <TabsContent value="modulo-1" className="space-y-12 mt-0">
+        {renderModulo1()}
+      </TabsContent>
+      <TabsContent value="modulo-2" className="space-y-12 mt-0">
+        {renderModulo2()}
+      </TabsContent>
+      <TabsContent value="modulo-3" className="space-y-12 mt-0">
+        {renderModulo3()}
+      </TabsContent>
+      <TabsContent value="modulo-4" className="space-y-12 mt-0">
+        {renderModulo4()}
+      </TabsContent>
+      <TabsContent value="modulo-5" className="space-y-12 mt-0">
+        {renderModulo5()}
+      </TabsContent>
+      <TabsContent value="modulo-6" className="space-y-12 mt-0">
+        {renderModulo6()}
+      </TabsContent>
+      <TabsContent value="modulo-7" className="space-y-12 mt-0">
+        {renderModulo7()}
+      </TabsContent>
+      <TabsContent value="modulo-8" className="space-y-12 mt-0">
+        {renderModulo8()}
+      </TabsContent>
+      <TabsContent value="modulo-9" className="space-y-12 mt-0">
+        {renderModulo9()}
+      </TabsContent>
+      <TabsContent value="modulo-10" className="space-y-12 mt-0">
+        {renderModulo10()}
+      </TabsContent>
+    </AulaTemplate>
   );
 }

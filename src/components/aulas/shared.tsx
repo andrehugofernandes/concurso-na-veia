@@ -2288,17 +2288,29 @@ export function AulaTemplate({
   materiaNome: string;
   materiaCor: string;
   materiaId: string;
-  isCompleted: boolean;
-  showCompletionBadge?: boolean;
-  completionBadgeText?: string;
+  isCompleted?: boolean;
   prevTopico?: { id: string; titulo: string } | null;
   nextTopico?: { id: string; titulo: string } | null;
   currentProgress?: number;
-  onComplete?: () => void;
+  onComplete: () => void;
   loading?: boolean;
   xpGanho?: number;
-  children: React.ReactNode;
+  showCompletionBadge?: boolean;
+  completionBadgeText?: string;
+  children?: React.ReactNode;
 }) {
+  // Helper function to get correct breadcrumb name based on materiaId
+  const getBreadcrumbName = (id: string, fallbackName: string) => {
+    // Check for specific block patterns first (more specific to general)
+    if (id.includes("bloco-iii")) return "Bloco III";
+    if (id.includes("bloco-ii")) return "Bloco II";
+    if (id.includes("bloco-i")) return "Bloco I";
+    
+    // For non-block specific materials, use the first word of the name
+    const words = fallbackName.split(" ");
+    return words[0] || fallbackName;
+  };
+
   const NavHeader = () => (
     <div className="bg-card/90 dark:bg-slate-800/90 backdrop-blur-md rounded-xl p-3 border border-border dark:border-slate-700/50 shadow-sm">
       <div className="grid grid-cols-[1fr,auto] md:flex md:items-center justify-between gap-3 w-full">
@@ -2310,16 +2322,7 @@ export function AulaTemplate({
           >
             <span className="text-lg leading-none shrink-0">←</span>
             <span className="flex flex-col md:flex-row md:gap-1">
-              {materiaNome?.includes(" ") ? (
-                <>
-                  <span>{materiaNome.split(" ")[0]}</span>
-                  <span className="md:inline">
-                    {materiaNome.split(" ").slice(1).join(" ")}
-                  </span>
-                </>
-              ) : (
-                <span>{materiaNome || "Aula"}</span>
-              )}
+              {getBreadcrumbName(materiaId, materiaNome)}
             </span>
           </Link>
           <span className="hidden md:inline text-muted-foreground/40 font-light text-xl mx-3">
@@ -2560,6 +2563,18 @@ export function StickyModuleNav({
   const params = useParams();
   const materiaId = params?.materia as string;
   const homeHref = materiaId ? `/aulas/${materiaId}` : undefined;
+  
+  // Dynamic back button text based on materiaId
+  const getBackButtonText = () => {
+    if (!materiaId) return "Voltar às Aulas";
+    
+    // Extract the main part of the materia ID for shorter display
+    if (materiaId.includes("bloco-i")) return "Voltar para Bloco I";
+    if (materiaId.includes("bloco-ii")) return "Voltar para Bloco II";
+    if (materiaId.includes("bloco-iii")) return "Voltar para Bloco III";
+    
+    return "Voltar às Aulas";
+  };
 
   // Text color for the "MÓDULO N" label — mirrors the MODULE_SKIN_COLORS banner palette
   const MODULE_LABEL_COLORS = [
@@ -2831,7 +2846,7 @@ export function StickyModuleNav({
                         side="bottom"
                         className="bg-slate-900 border-none text-white font-medium text-xs"
                       >
-                        Voltar às Aulas
+                        {getBackButtonText()}
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
