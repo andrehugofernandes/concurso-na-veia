@@ -1,21 +1,10 @@
-import { QuizQuestion, CarouselCard } from "../../shared";
-import { ReactNode } from "react";
+import { QuizQuestion } from "../../shared";
 
-export interface ConceptExample {
-  id: number;
-  frente: ReactNode;
-  verso: ReactNode;
-}
+// ────────────────────────────────────────────────────────────────
+// MÓDULO 1: CONCEITO E REGRA GERAL
+// ────────────────────────────────────────────────────────────────
 
-export interface Challenge {
-  wrong: string;
-  correct: string;
-  explanation: string;
-}
-
-// ── QUIZ POOLS ──────────────────────────────────────────────────────────
-
-export const QUIZ_M1_POOL: QuizQuestion[] = [
+export const QUIZ_M1_CONCEITO: QuizQuestion[] = [
   {
     id: 1,
     pergunta: "A crase é a fusão de quais elementos gramaticais?",
@@ -26,231 +15,453 @@ export const QUIZ_M1_POOL: QuizQuestion[] = [
       { label: "D", valor: 'Preposição "para" + Artigo "a"' },
     ],
     correta: "A",
-    explicacao: 'Crase é a contração da preposição "a" exigida pelo termo regente com o artigo "a" (ou pronomes demonstrativos) do termo regido.',
+    explicacao:
+      'Crase é a contração da preposição "a" exigida pelo termo regente com o artigo "a" (ou pronomes demonstrativos) do termo regido.',
   },
   {
     id: 2,
-    pergunta: 'Qual a "Regra de Ouro" para identificar a crase diante de palavras femininas?',
+    pergunta: 'Qual frase exemplifica corretamente o conceito A + A = À?',
     opcoes: [
-      { label: "A", valor: 'Trocar por uma palavra masculina e ver se vira "AO"' },
-      { label: "B", valor: "Trocar por plural" },
-      { label: "C", valor: 'Ver se a palavra termina em "a"' },
-      { label: "D", valor: "Sempre usar crase antes de feminino" },
+      { label: "A", valor: "Vou a Brasília" },
+      { label: "B", valor: "Vou à praia" },
+      { label: "C", valor: "Vou a casa" },
+      { label: "D", valor: "Vou a pé" },
     ],
-    correta: "A",
-    explicacao: 'Se ao trocar a palavra feminina por uma masculina a preposição "a" virar "ao", há crase.',
+    correta: "B",
+    explicacao:
+      'Em "vou à praia": vou (verbo) + a (preposição exigida) + a praia (artigo + feminino) = à praia.',
   },
   {
     id: 3,
-    pergunta: 'Complete: "Ele obedeceu ___ regras da empresa."',
+    pergunta:
+      'Complete: "Os engenheiros se referiram ___ estratégia da empresa."',
     opcoes: [
-      { label: "A", valor: "às" },
-      { label: "B", valor: "as" },
-      { label: "C", valor: "a" },
-      { label: "D", valor: "nas" },
+      { label: "A", valor: "à" },
+      { label: "B", valor: "a" },
+      { label: "C", valor: "ha" },
+      { label: "D", valor: "em" },
     ],
     correta: "A",
-    explicacao: 'Quem obedece, obedece A alguma coisa. "Regras" pede artigo "as". Logo, A + AS = ÀS.',
+    explicacao:
+      'Referir-se exige preposição "a". "Estratégia" é feminino com artigo "a". Logo: A + A = À.',
   },
   {
     id: 4,
     pergunta: 'Na frase "Vou a Bahia", ocorre crase?',
     opcoes: [
       { label: "A", valor: "Sim, sempre" },
-      { label: "B", valor: "Não, pois quem vai a Bahia, volta de Bahia" },
+      { label: "B", valor: "Não, pois quem vai a Bahia volta de Bahia" },
       { label: "C", valor: "Sim, pois Bahia é feminino" },
       { label: "D", valor: 'Sim, "Vou à Bahia" porque volto DA Bahia' },
     ],
     correta: "D",
-    explicacao: 'Use o macete: "Quem vai A e volta DA, crase há!". Volto DA Bahia, logo, vou À Bahia.',
+    explicacao:
+      'Macete: Quem vai A e volta DA, crase há! Volto DA Bahia, logo, vou À Bahia.',
   },
   {
     id: 5,
-    pergunta: "Assinale a alternativa que apresenta erro de crase:",
+    pergunta:
+      'A Petrobras dedicou seus recursos ___ inovação e ___ sustentabilidade.',
     opcoes: [
-      { label: "A", valor: "Refiro-me à professora." },
-      { label: "B", valor: "Vou à cidade." },
-      { label: "C", valor: "Assisti à aula." },
-      { label: "D", valor: "Fui à pé." },
+      { label: "A", valor: "a / a" },
+      { label: "B", valor: "à / à" },
+      { label: "C", valor: "a / à" },
+      { label: "D", valor: "à / a" },
     ],
-    correta: "D",
-    explicacao: "'Pé' é palavra masculina, portanto não admite crase (artigo feminino).",
+    correta: "B",
+    explicacao:
+      'Dedicar exige "a". Inovação e sustentabilidade são femininas. À inovação / À sustentabilidade.',
   },
 ];
 
-export const QUIZ_M2_POOL: QuizQuestion[] = [
+export const QUIZ_M2_TESTE_MASCULINO: QuizQuestion[] = [
   {
-    id: 1,
-    pergunta: "É PROIBIDO usar crase antes de:",
+    id: 201,
+    pergunta: 'Qual é a "Regra de Ouro" para identificar crase?',
+    opcoes: [
+      { label: "A", valor: 'Trocar por masculino e ver se vira "AO"' },
+      { label: "B", valor: "Trocar por plural" },
+      { label: "C", valor: "Ver se a palavra termina em a" },
+      { label: "D", valor: "Sempre usar crase antes de feminino" },
+    ],
+    correta: "A",
+    explicacao:
+      'Se vira "ao", há crase (à escola = ao colégio).',
+  },
+  {
+    id: 202,
+    pergunta: 'Em "Vou à biblioteca", trocando por masculino fica:',
+    opcoes: [
+      { label: "A", valor: "Vou a livro" },
+      { label: "B", valor: "Vou ao museu" },
+      { label: "C", valor: "Vou a prédio" },
+      { label: "D", valor: "Vou nesse lugar" },
+    ],
+    correta: "B",
+    explicacao:
+      'Vou à biblioteca = Vou ao museu. O "a" virou "ao", confirmando a crase.',
+  },
+  {
+    id: 203,
+    pergunta: 'Qual alternativa mostra corretamente a substituição masculina?',
+    opcoes: [
+      { label: "A", valor: "Viagem à Itália = Viagem a Italia (masculino)" },
+      { label: "B", valor: "Viagem à Itália = Viagem ao Itália" },
+      { label: "C", valor: "Viagem à Itália = Viagem ao país" },
+      { label: "D", valor: "Viagem à Itália = Viagem para Itália" },
+    ],
+    correta: "C",
+    explicacao:
+      'Quando substituímos por um substantivo masculino apropriado, obtemos "ao país", confirmando a crase.',
+  },
+];
+
+export const QUIZ_M3_PROIBIDO_VERBOS: QuizQuestion[] = [
+  {
+    id: 301,
+    pergunta: "Nunca ocorre crase antes de:",
     opcoes: [
       { label: "A", valor: "Palavras femininas" },
       { label: "B", valor: "Verbos" },
-      { label: "C", valor: "Locuções adverbiais" },
-      { label: "D", valor: "Horas" },
+      { label: "C", valor: "Horas" },
+      { label: "D", valor: "Locuções adverbiais" },
     ],
     correta: "B",
-    explicacao: 'Nunca ocorre crase antes de verbos (ex: a partir, a fazer), pois verbos não admitem artigo feminino "a".',
+    explicacao:
+      'Verbos não admitem artigo feminino, logo nunca há crase (a fazer, a partir).',
   },
   {
-    id: 2,
-    pergunta: "Qual frase está CORRETA quanto ao uso da crase?",
+    id: 302,
+    pergunta: 'Qual frase está incorreta quanto ao uso de crase?',
     opcoes: [
-      { label: "A", valor: "Referi-me a ela com respeito." },
-      { label: "B", valor: "Referi-me à ela com respeito." },
-      { label: "C", valor: "Referi-me à Vossa Senhoria." },
-      { label: "D", valor: "Dedico isso à você." },
+      { label: "A", valor: "Começou a chover" },
+      { label: "B", valor: "Passou a trabalhar com dedicação" },
+      { label: "C", valor: "Refiro-me à dificuldade" },
+      { label: "D", valor: "Começou à cantar" },
     ],
-    correta: "A",
-    explicacao: "Não se usa crase antes de pronomes pessoais (ela, você) ou de tratamento (Vossa Senhoria), exceto Senhora e Senhorita.",
+    correta: "D",
+    explicacao:
+      'Antes de verbo infinitivo não há crase: "começou a cantar", não "à cantar".',
   },
   {
-    id: 3,
-    pergunta: 'Em "Estou disposto a ajudar a quem precisa", a frase está:',
+    id: 303,
+    pergunta: 'Complete: "Procedeu ___ limpeza das áreas."',
     opcoes: [
-      { label: "A", valor: "Correta, sem crase" },
-      { label: "B", valor: 'Incorreta, falta crase no primeiro "a"' },
-      { label: "C", valor: 'Incorreta, falta crase no segundo "a"' },
-      { label: "D", valor: "Incorreta, falta crase em ambos" },
+      { label: "A", valor: "à limpeza" },
+      { label: "B", valor: "a limpeza" },
+      { label: "C", valor: "à limpar" },
+      { label: "D", valor: "a limpar" },
     ],
     correta: "A",
-    explicacao: '"Ajudar" é verbo (sem artigo). "Quem" é pronome indefinido (geralmente rejeita artigo).',
+    explicacao:
+      'Proceder exige "a". "Limpeza" é substantivo feminino. Logo: à limpeza. Se fosse verbo (limpar), seria apenas "a".',
   },
 ];
 
-export const QUIZ_M3_POOL: QuizQuestion[] = [
+export const QUIZ_M4_PROIBIDO_PRONOMES: QuizQuestion[] = [
   {
-    id: 301,
+    id: 401,
+    pergunta: "Qual frase está CORRETA quanto ao uso de crase com pronomes?",
+    opcoes: [
+      { label: "A", valor: "Referi-me a ela com respeito" },
+      { label: "B", valor: "Referi-me à ela com respeito" },
+      { label: "C", valor: "Referi-me à Vossa Senhoria" },
+      { label: "D", valor: "Dedico isso à você" },
+    ],
+    correta: "A",
+    explicacao:
+      'Pronomes pessoais não recebem crase.',
+  },
+  {
+    id: 402,
+    pergunta: 'Em relação aos pronomes, a crase NÃO ocorre antes de:',
+    opcoes: [
+      { label: "A", valor: "Pronomes demonstrativos" },
+      { label: "B", valor: "Pronomes pessoais" },
+      { label: "C", valor: "Pronomes relativos" },
+      { label: "D", valor: "Todas as alternativas anteriores" },
+    ],
+    correta: "B",
+    explicacao:
+      'Pronomes pessoais (me, ti, ele, ela, nós, vós, eles, elas) nunca recebem crase.',
+  },
+  {
+    id: 403,
+    pergunta: 'Qual alternativa está INCORRETA?',
+    opcoes: [
+      { label: "A", valor: "Entreguei o documento a ela" },
+      { label: "B", valor: "Refiro-me à Senhora" },
+      { label: "C", valor: "Apresentei-o a você" },
+      { label: "D", valor: "Dedico isso àquele colega" },
+    ],
+    correta: "D",
+    explicacao:
+      '"Àquele" leva crase porque "aquele" é pronome demonstrativo que pode receber crase, não pessoal.',
+  },
+];
+
+export const QUIZ_M5_FACULTATIVO_NOMES: QuizQuestion[] = [
+  {
+    id: 501,
     pergunta: "Antes de nomes próprios femininos, o uso da crase é:",
     opcoes: [
       { label: "A", valor: "Obrigatório" },
       { label: "B", valor: "Proibido" },
       { label: "C", valor: "Facultativo" },
-      { label: "D", valor: "Obrigatório apenas no plural" },
+      { label: "D", valor: "Obrigatório no plural" },
     ],
     correta: "C",
-    explicacao: "Antes de nomes próprios de pessoas (femininos), a crase é facultativa porque o uso do artigo antes do nome também é opcional.",
-  },
-  {
-    id: 302,
-    pergunta: "Em qual das frases abaixo a crase é opcional?",
-    opcoes: [
-      { label: "A", valor: "Entregou o livro à sua irmã." },
-      { label: "B", valor: "Entregou o livro à diretora." },
-      { label: "C", valor: "Vou à praia amanhã." },
-      { label: "D", valor: "Chegamos às dez horas." },
-    ],
-    correta: "A",
-    explicacao: "Antes de pronomes possessivos femininos (sua, minha, tua...), a crase é facultativa.",
-  },
-];
-
-export const QUIZ_M4_POOL: QuizQuestion[] = [
-  {
-    id: 401,
-    pergunta: "Sobre a indicação de horas, assinale a alternativa correta:",
-    opcoes: [
-      { label: "A", valor: "Chegaremos a uma hora da manhã." },
-      { label: "B", valor: "Chegaremos às uma hora da manhã." },
-      { label: "C", valor: "Chegaremos à uma hora da manhã." },
-      { label: "D", valor: "Chegaremos as uma hora da manhã." },
-    ],
-    correta: "C",
-    explicacao: "Em indicações de horas exatas, utiliza-se a crase. Como 'uma' é singular, usa-se 'à'.",
-  },
-  {
-    id: 402,
-    pergunta: "Ocorre crase na palavra 'casa' quando:",
-    opcoes: [
-      { label: "A", valor: "Significa lar ou residência própria." },
-      { label: "B", valor: "Vem acompanhada de um adjetivo ou locução explicativa." },
-      { label: "C", valor: "Sempre que for precedida de preposição." },
-      { label: "D", valor: "Nunca ocorre crase com a palavra casa." },
-    ],
-    correta: "B",
-    explicacao: "A palavra 'casa' (sentido de lar) só admite crase se estiver especificada (ex: casa da Maria).",
-  },
-];
-
-export const QUIZ_FINAL_POOL: QuizQuestion[] = [
-  {
-    id: 501,
-    pergunta: "Assinale a alternativa que exige crase:",
-    opcoes: [
-      { label: "A", valor: "Saímos as pressas." },
-      { label: "B", valor: "Ficamos cara a cara." },
-      { label: "C", valor: "Escrevi a lápis." },
-      { label: "D", valor: "Andamos a cavalo." },
-    ],
-    correta: "A",
-    explicacao: '"Às pressas" é uma locução adverbial feminina de modo. Locuções femininas levam crase.',
+    explicacao:
+      'Crase é facultativa porque o artigo também é (a Maria ou à Maria).',
   },
   {
     id: 502,
-    pergunta: 'Analise: "Refiro-me àquele rapaz."',
+    pergunta: 'Qual das frases mostra a crase FACULTATIVA corretamente?',
     opcoes: [
-      { label: "A", valor: "Errado, aquele é masculino" },
-      { label: "B", valor: 'Certo, fusão da preposição "a" + "a" inicial de "aquele"' },
-      { label: "C", valor: 'Errado, deveria ser "ao aquele"' },
-      { label: "D", valor: "Errado, pronomes demonstrativos nunca levam crase" },
+      { label: "A", valor: "Entreguei a carta a Maria / Entreguei a carta à Maria" },
+      { label: "B", valor: "Fui a Brasília (obrigatório)" },
+      { label: "C", valor: "Estou a espera (proibido)" },
+      { label: "D", valor: "Refiro-me àquele rapaz (obrigatório)" },
+    ],
+    correta: "A",
+    explicacao:
+      'Com nomes próprios femininos, ambas as formas são aceitas por ser o artigo opcional.',
+  },
+  {
+    id: 503,
+    pergunta: 'Em "Refiro-me à Maria do Carmo", a crase deixa de ser facultativa porque:',
+    opcoes: [
+      { label: "A", valor: "O nome virou masculino" },
+      { label: "B", valor: "O nome foi especificado/determinado" },
+      { label: "C", valor: "Há um verbo antes" },
+      { label: "D", valor: "Não há mais facultatividade em nomes" },
     ],
     correta: "B",
-    explicacao: 'A crase ocorre com o "a" inicial dos pronomes demonstrativos aquele(s), aquela(s), aquilo.',
+    explicacao:
+      'Quando o nome próprio recebe especificador (adjetivo, adjunto), o artigo torna-se obrigatório, logo a crase também.',
   },
 ];
 
-export const CHALLENGE_POOL: Challenge[] = [
+export const QUIZ_M6_FACULTATIVO_POSSESSIVOS: QuizQuestion[] = [
   {
-    wrong: "Vou a festa amanhã.",
-    correct: "Vou à festa amanhã.",
-    explanation: "Quem vai, vai A algum lugar. Festa é feminina e admite artigo A. A + A = À.",
+    id: 601,
+    pergunta: "Antes de possessivos femininos, a crase é:",
+    opcoes: [
+      { label: "A", valor: "Obrigatória" },
+      { label: "B", valor: "Proibida" },
+      { label: "C", valor: "Facultativa" },
+      { label: "D", valor: "Inexistente" },
+    ],
+    correta: "C",
+    explicacao:
+      'Como o artigo é opcional (a minha ou minha), a crase também é (a ou à minha).',
   },
   {
-    wrong: "Andar à pé faz bem.",
-    correct: "Andar a pé faz bem.",
-    explanation: "Pé é palavra masculina. Não há artigo feminino 'a' antes de masculino. Logo, apenas preposição 'a'.",
+    id: 602,
+    pergunta: 'Complete corretamente: "Referi-me ___ sua proposta."',
+    opcoes: [
+      { label: "A", valor: "a sua" },
+      { label: "B", valor: "à sua" },
+      { label: "C", valor: "a sua ou à sua" },
+      { label: "D", valor: "a sva" },
+    ],
+    correta: "C",
+    explicacao:
+      'Com possessivos femininos, ambas as formas são corretas (a sua ou à sua).',
   },
   {
-    wrong: "O curso começa as 19h.",
-    correct: "O curso começa às 19h.",
-    explanation: "Indicação de horas exatas sempre leva crase (às duas, às dez, à uma).",
-  },
-  {
-    wrong: "Entreguei o relatório a ela.",
-    correct: "Entreguei o relatório a ela.",
-    explanation: "Correto! Não se usa crase antes de pronome pessoal (ela, ele, mim, ti, nós...).",
-  },
-  {
-    wrong: "Estamos a espera de um milagre.",
-    correct: "Estamos à espera de um milagre.",
-    explanation: "Locução prepositiva feminina (à espera de, à procura de, à moda de) sempre leva crase.",
+    id: 603,
+    pergunta: 'Em "Obedeci à sua ordem e não à minha", qual é a diferença?',
+    opcoes: [
+      { label: "A", valor: "Nenhuma, ambos são facultativos" },
+      { label: "B", valor: "O primeiro é facultativo, o segundo é obrigatório" },
+      { label: "C", valor: "O primeiro é obrigatório, o segundo é facultativo" },
+      { label: "D", valor: "Ambos são obrigatórios" },
+    ],
+    correta: "B",
+    explicacao:
+      'Em "à sua ordem" é facultativo (acompanha substantivo). Em "à minha" é obrigatório (substitui "ordem").',
   },
 ];
 
-// ── COMPONENT DATA ──────────────────────────────────────────────────────
+export const QUIZ_M7_HORAS_MEDIDAS: QuizQuestion[] = [
+  {
+    id: 701,
+    pergunta: 'Em "A reunião é ___ 14h30", qual é a forma correta?',
+    opcoes: [
+      { label: "A", valor: "a 14h30" },
+      { label: "B", valor: "à 14h30" },
+      { label: "C", valor: "às 14h30" },
+      { label: "D", valor: "em 14h30" },
+    ],
+    correta: "C",
+    explicacao:
+      'Indicação de hora: "às" (crase com artigo plural as).',
+  },
+  {
+    id: 702,
+    pergunta: 'Complete: "A aula vai ___ uma hora da tarde."',
+    opcoes: [
+      { label: "A", valor: "a uma" },
+      { label: "B", valor: "à uma" },
+      { label: "C", valor: "às uma" },
+      { label: "D", valor: "numa" },
+    ],
+    correta: "B",
+    explicacao:
+      'Hora singular: "à uma" (crase com artigo singular a).',
+  },
+  {
+    id: 703,
+    pergunta: 'Qual alternativa está INCORRETA quanto a horas?',
+    opcoes: [
+      { label: "A", valor: "O expediente abre às 8h" },
+      { label: "B", valor: "Chegue à uma hora em ponto" },
+      { label: "C", valor: "Saio as três da tarde" },
+      { label: "D", valor: "Marque às 15 horas" },
+    ],
+    correta: "C",
+    explicacao:
+      'Deve ser "Saio às três", não "as três" (crase obrigatória com horas).',
+  },
+];
 
-export const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
+export const QUIZ_M8_CASOS_ESPECIAIS: QuizQuestion[] = [
   {
-    icone: "🚫",
-    title: "Antes de Verbos",
-    corFundo: "bg-red-100 dark:bg-red-900/30",
-    descricao: "Nunca use crase antes de verbos! ✅ A partir de amanhã. ❌ À partir.",
+    id: 801,
+    pergunta: 'Em "Vou ____ casa", quando significa residência própria:',
+    opcoes: [
+      { label: "A", valor: "Vou à casa (com crase)" },
+      { label: "B", valor: "Vou a casa (sem crase)" },
+      { label: "C", valor: "Vou casa (sem preposição)" },
+      { label: "D", valor: "Vou na casa (preposição diferente)" },
+    ],
+    correta: "B",
+    explicacao:
+      'Casa genérica não recebe artigo (vou a casa).',
   },
   {
-    icone: "👨",
-    title: "Palavras Masculinas",
-    corFundo: "bg-blue-100 dark:bg-blue-900/30",
-    descricao: "Regra geral: sem crase antes de masculino. ✅ Andar a pé. ✅ Escrever a lápis.",
+    id: 802,
+    pergunta: 'Complete: "Fui ____ casa da vovó buscar o bolo."',
+    opcoes: [
+      { label: "A", valor: "a casa" },
+      { label: "B", valor: "à casa" },
+      { label: "C", valor: "casa" },
+      { label: "D", valor: "na casa" },
+    ],
+    correta: "B",
+    explicacao:
+      'Casa especificada ("da vovó") recebe artigo e crase: à casa.',
   },
   {
-    icone: "👩",
-    title: "Nomes Próprios",
-    corFundo: "bg-pink-100 dark:bg-pink-900/30",
-    descricao: "Uso facultativo antes de nomes de mulheres. ✅ Entreguei a Maria. ✅ Entreguei à Maria.",
+    id: 803,
+    pergunta: 'Em relação à palavra "terra", qual alternativa é INCORRETA?',
+    opcoes: [
+      { label: "A", valor: "Os marinheiros desceram à terra" },
+      { label: "B", valor: "Voltamos à Terra (planeta)" },
+      { label: "C", valor: "Os navegadores desembarcaram a terra" },
+      { label: "D", valor: "Ficava distante à terra firme" },
+    ],
+    correta: "C",
+    explicacao:
+      'Quando "terra" = oposto de mar/bordo, sem especificador, não há crase: desceram a terra.',
+  },
+];
+
+export const QUIZ_M9_DEMONSTRATIVOS: QuizQuestion[] = [
+  {
+    id: 901,
+    pergunta: 'Complete: "Refiro-me ____ aquela proposta que você mencionou."',
+    opcoes: [
+      { label: "A", valor: "a aquela" },
+      { label: "B", valor: "àquela" },
+      { label: "C", valor: "à aquela" },
+      { label: "D", valor: "em aquela" },
+    ],
+    correta: "B",
+    explicacao:
+      '"Àquela" = A + AQUELA (demonstrativo com crase).',
   },
   {
-    icone: "🏠",
-    title: "Casa e Terra",
-    corFundo: "bg-amber-100 dark:bg-amber-900/30",
-    descricao: "Só levam crase se vierem especificadas. ✅ Vou a casa. ✅ Vou à casa de meus pais.",
+    id: 902,
+    pergunta: 'Qual alternativa está CORRETA com pronomes demonstrativos?',
+    opcoes: [
+      { label: "A", valor: "Aludi àquilo que você disse" },
+      { label: "B", valor: "Aludi àquele documento" },
+      { label: "C", valor: "Aludi àqueles rapazes" },
+      { label: "D", valor: "Todas as alternativas estão corretas" },
+    ],
+    correta: "D",
+    explicacao:
+      'Pronomes demonstrativos (aquele, aquela, aquilo, etc.) recebem crase quando há preposição "a".',
+  },
+  {
+    id: 903,
+    pergunta: 'Em "Entreguei a carta àqueles colegas", o uso da crase é:',
+    opcoes: [
+      { label: "A", valor: "Obrigatório" },
+      { label: "B", valor: "Proibido" },
+      { label: "C", valor: "Facultativo" },
+      { label: "D", valor: "Depende do contexto" },
+    ],
+    correta: "A",
+    explicacao:
+      'Demonstrativos plurais também recebem crase quando há preposição: àqueles, àquelas.',
+  },
+];
+
+export const QUIZ_M10_SIMULADO: QuizQuestion[] = [
+  {
+    id: 1001,
+    pergunta:
+      'Em "A Petrobras dedica-se ____ inovação e ____ desenvolvimento", qual é correto?',
+    opcoes: [
+      { label: "A", valor: "a / a" },
+      { label: "B", valor: "à / à" },
+      { label: "C", valor: "a / à" },
+      { label: "D", valor: "à / a" },
+    ],
+    correta: "C",
+    explicacao:
+      'Inovação é feminino (à inovação). Desenvolvimento é masculino (a desenvolvimento).',
+  },
+  {
+    id: 1002,
+    pergunta: 'Complete a sequência: "A empresa se refere ____ qualidade, ____ excelência e ____ inovação."',
+    opcoes: [
+      { label: "A", valor: "à / à / à" },
+      { label: "B", valor: "a / a / a" },
+      { label: "C", valor: "à / a / à" },
+      { label: "D", valor: "a / à / a" },
+    ],
+    correta: "A",
+    explicacao:
+      'Todas as palavras são femininas: qualidade, excelência, inovação. Logo: à qualidade, à excelência, à inovação.',
+  },
+  {
+    id: 1003,
+    pergunta: 'Qual frase está COMPLETAMENTE CORRETA?',
+    opcoes: [
+      { label: "A", valor: "Refiro-me àquele documento e à Maria" },
+      { label: "B", valor: "Chegarei às 14h e estarei a sua disposição" },
+      { label: "C", valor: "Fui à casa da vovó para aprender a cozinhar" },
+      { label: "D", valor: "Vou à Brasília e faço visita à minha terra" },
+    ],
+    correta: "A",
+    explicacao:
+      'Àquele é correto (demonstrativo), à Maria é correto (nome próprio especificado). As outras têm erros.',
+  },
+  {
+    id: 1004,
+    pergunta: 'Em "A aula vai da uma ____ cinco da tarde", qual preenchimento está correto?',
+    opcoes: [
+      { label: "A", valor: "a cinco" },
+      { label: "B", valor: "até cinco" },
+      { label: "C", valor: "à cinco" },
+      { label: "D", valor: "às cinco" },
+    ],
+    correta: "D",
+    explicacao:
+      'Com horas: "da uma às cinco" (DAS...ÀS mantém o paralelismo sintático).',
   },
 ];
