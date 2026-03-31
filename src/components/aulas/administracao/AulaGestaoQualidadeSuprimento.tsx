@@ -23,7 +23,7 @@ import {
   LuTruck,
   LuFileText,
   LuBrain,
-  CheckCircle,
+  LuCircleCheck,
 } from "react-icons/lu";
 import { GESTAO_QUALIDADE_QUIZZES } from "@/data/quizzes/gestao-qualidade-quizzes";
 
@@ -141,7 +141,7 @@ export default function AulaGestaoQualidadeSuprimento({
               slides={[
                 {
                   title: "As 8 Dimensões de Garvin",
-                  icon: <CheckCircle />,
+                  icon: <LuCircleCheck />,
                   content: (
                     <ul className="list-disc ml-6 space-y-2">
                       <li>Desempenho: Características básicas.</li>

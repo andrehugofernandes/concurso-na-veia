@@ -43,7 +43,7 @@ import {
   LuTruck,
   LuPackage,
   LuFactory,
-  LuBarChart4,
+  LuChartBar,
   LuClipboardList,
 } from "react-icons/lu";
 import { getModuleVariant } from "@/lib/moduleColors";
@@ -462,7 +462,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
               {
                 titulo: "Controle",
                 descricao: "Monitora resultados, compara com objetivos, identifica desvios e propõe correções. Fechamento do ciclo administrativo.",
-                icone: <LuBarChart3 />,
+                icone: <LuChartBar />,
                 corFundo: "bg-blue-500/10",
               },
             ]}
@@ -679,7 +679,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
               {
                 titulo: "Estrutura Divisional",
                 descricao: "Agrupa por produtos, serviços ou geografias (Downstream, Upstream, E&P). Cada divisão tem sua própria estrutura. Usada pela Petrobras.",
-                icone: <LuBarChart4 />,
+                icone: <LuChartBar />,
                 corFundo: "bg-indigo-500/10",
               },
               {
@@ -1084,7 +1084,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
               {
                 titulo: "BPM (Business Process Management)",
                 descricao: "Disciplina que engloba design, modelagem, execução, monitoramento e otimização contínua de processos. Melhoria cíclica.",
-                icone: <LuBarChart3 />,
+                icone: <LuChartBar />,
                 corFundo: "bg-teal-500/10",
               },
               {
