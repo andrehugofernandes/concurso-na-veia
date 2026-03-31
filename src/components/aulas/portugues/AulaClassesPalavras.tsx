@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,8 +19,9 @@ import {
   VideoModal,
   AulaTemplate,
   Comparison,
+  MusicPlayerCard,
 } from "../shared";
-import { getAllModuleVariants, getModuleVariant } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 import {
   QUIZ_M1_SUBSTANTIVO,
   QUIZ_M2_ADJETIVO_ARTIGO,
@@ -48,7 +49,6 @@ import {
   LuBrain,
   LuMusic,
   LuCheck,
-  LuMessageCircle,
 } from "react-icons/lu";
 
 // ── Definição dos 10 Módulos Premium (1 Classe = 1 Módulo) ──
@@ -374,8 +374,8 @@ export default function AulaClassesPalavras({
     setQMod6(getRandomQuestions(QUIZ_M7_ADVERBIO, 6));
     setQMod7(getRandomQuestions(QUIZ_M8_PREPOSICAO_NUMERAL, 6));
     setQMod8(getRandomQuestions(QUIZ_M9_CONJUNCAO, 6));
-    setQMod9(getRandomQuestions(QUIZ_M10_FINAL_CLASSES, 6));
-    setQMod10(getRandomQuestions(QUIZ_M8_PREPOSICAO_NUMERAL, 6));
+    setQMod9(getRandomQuestions(QUIZ_M9_CONJUNCAO, 6));
+    setQMod10(getRandomQuestions(QUIZ_M10_FINAL_CLASSES, 6));
   }, []);
 
   const handleModuleComplete = (moduleId: string, score: number) => {
@@ -1001,13 +1001,115 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={2}
           titulo="O Adjetivo"
           descricao="O qualificador que define a concordância e a nuance do texto."
-           variant={mv[2]} gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"/>
+          variant={mv[2]} gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"/>
+
+        {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Arte da Qualificação: O Adjetivo"
+            description="Explore as nuances e especificações que o adjetivo confere ao substantivo"
+            variant={mv[2]}
+          />
+
+          <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+            <p>
+              O adjetivo é a classe de palavras que exerce a função de qualificar o substantivo, 
+              atribuindo-lhe estados, qualidades, propriedades ou modos de ser. Diferente do 
+              substantivo, que nomeia a essência, o adjetivo lida com os acidentes e as nuances 
+              da realidade. Segundo Celso Cunha, o adjetivo funciona como um adscrito do nome, 
+              estabelecendo uma relação de dependência morfológica (concordância) e semântica 
+              (especificação). Na estrutura da oração, o adjetivo pode atuar como adjunto 
+              adnominal (quando está colado ao substantivo) ou predicativo (quando expressa 
+              um estado mediado por um verbo), sendo peça fundamental para a construção 
+              de descrições precisas em qualquer registro linguístico, do literário ao técnico.
+            </p>
+
+            <p>
+              Para facilitar a compreensão intuitiva, imagine o adjetivo como a "lente" 
+              da câmera que decide o foco e a cor da imagem. Se o substantivo é a 
+              paisagem (o fato bruto), o adjetivo é o filtro que define se a paisagem é 
+              "árida", "produtiva" ou "perigosa". Sem os adjetivos, a nossa comunicação 
+              seria meramente etiquetadora e cinzenta. É através deles que passamos do 
+              genérico para o específico: não é apenas uma "plataforma", mas uma 
+              plataforma "semi-submersível"; não é apenas um "risco", mas um risco 
+              "mitigado". Eles fornecem a nitidez necessária para que o interlocutor 
+              entenda não apenas *o que* está sendo discutido, mas *como* esse objeto 
+              se apresenta na realidade.
+            </p>
+
+            <p>
+              Morfologicamente, o adjetivo é variável em gênero (masculino/feminino), 
+              número (singular/plural) e grau (comparativo/superlativo). A flexão de 
+              adjetivos compostos é um ponto de atenção especial: em regra, apenas o 
+              último elemento varia (camisas azul-claras, causas econômico-financeiras). 
+              Além disso, as locuções adjetivas — expressões preposicionadas com valor 
+              de adjetivo — desempenham papel crucial na densidade lexical (amor de pai = 
+              materno; águas da chuva = pluviais). A mudança de posição do adjetivo 
+              em relação ao substantivo (homem grande vs. grande homem) não é apenas 
+              estética, mas altera profundamente o valor semântico entre o objetivo 
+              (denotativo) e o subjetivo (conotativo).
+            </p>
+
+            <p>
+              No contexto operacional da Petrobras, a precisão adjetival é uma questão de 
+              segurança e eficiência. Relatórios de inspeção dependem de adjetivos 
+              precisos para descrever o estado de equipamentos: uma válvula pode estar 
+              "corroída", "obstruída" ou "operacional", e a confusão entre esses estados 
+              pode levar a decisões catastróficas. Toda a terminologia da indústria de 
+              óleo e gás é rica em qualificadores técnicos que definem especificações 
+              de materiais, tipos de solo ou estados químicos de fluidos. Adjetivos como 
+              "viscoso", "inflamável", "offshore" e "estanque" constituem o vocabulário 
+              de sobrevivência do profissional técnico, garantindo que as propriedades 
+              físicas dos ativos sejam comunicadas sem ambiguidades.
+            </p>
+
+            <p>
+              A CESGRANRIO explora sistematicamente a capacidade do candidato de perceber 
+              a mudança de sentido causada pela anteposição ou posposição do adjetivo. 
+              Muitas questões de reescrita de frases baseiam-se na substituição de 
+              locuções adjetivas por seus adjetivos eruditos equivalentes (fogo de 
+              artifício = pirotécnico; vida de gado = pecuária). Outro tópico recorrente 
+              é a concordância nominal em contextos complexos, onde um adjetivo se refere 
+              a dois ou mais substantivos de gêneros diferentes. A banca também costuma 
+              testar a identificação de adjetivos que funcionam como substantivos 
+              (derivação imprópria) quando precedidos de artigo, exigindo uma análise 
+              morfológica atenta ao contexto sintático completo da frase.
+            </p>
+
+            <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200/50 dark:border-blue-800/50 p-6 space-y-4">
+              <h4 className="font-bold text-foreground text-lg">
+                Locuções Adjetivas e Erudições Técnicas
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+                <div>
+                  <p className="font-semibold text-blue-700 dark:text-blue-300">Indústria e Natureza</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• De petróleo → Petroglífico / Petroleiro</li>
+                    <li>• De chuva → Pluvial</li>
+                    <li>• De rio → Fluvial</li>
+                    <li>• De mar → Marítimo / Marinho</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-blue-700 dark:text-blue-300">Tempo e Estado</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Da tarde → Vespertino</li>
+                    <li>• Da noite → Noturno</li>
+                    <li>• Do gelo → Glacial</li>
+                    <li>• De chumbo → Plúmbeo</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
           <ModuleSectionHeader
             index={1}
             title="Conceito Científico"
-            variant="emerald"
+            variant={mv[2]}
           />
           <p className="text-lg text-muted-foreground">
             O <strong>Adjetivo</strong> é a classe de palavra que{" "}
@@ -1021,7 +1123,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="A Posição do Adjetivo Muda o Sentido"
-            variant="emerald"
+            variant={mv[2]}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FlipCard
@@ -1095,7 +1197,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Adjetivo Composto e Locução Adjetiva"
-            variant="emerald"
+            variant={mv[2]}
           />
           <ContentAccordion
             mode="stacked"
@@ -1133,7 +1235,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant="emerald"
+            variant={mv[2]}
           />
           <LessonTabs
             tabs={[
@@ -1156,6 +1258,18 @@ export default function AulaClassesPalavras({
                   />
                 ),
               },
+              {
+                id: "audio",
+                label: "Resumo Áudio",
+                icon: LuMusic,
+                content: (
+                   <MusicPlayerCard 
+                     titulo="A Meta dos Adjetivos"
+                     artista="Resumo Morfologia"
+                     audioUrl=""
+                   />
+                ),
+              },
             ]}
           />
         </section>
@@ -1166,7 +1280,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Adjetivo: O Qualificador"
             icone="✨"
             numero={5}
-            variant="emerald"
+            variant={mv[2]}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </section>
@@ -1177,13 +1291,114 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={3}
           titulo="O Artigo"
           descricao="O determinante que define a substantivação e a concordância."
-           variant={mv[3]} gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"/>
+          variant={mv[3]} gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"/>
+
+        {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="O Poder do Artigo: Definindo o Nome"
+            description="Entenda como os menores termos da língua exercem o maior impacto na estruturação do texto"
+            variant={mv[3]}
+          />
+
+          <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+            <p>
+              O artigo é a classe gramatical que se antepõe ao substantivo para 
+              determiná-lo de forma precisa ou imprecisa, indicando, ao mesmo tempo, 
+              o seu gênero e o seu número. Dividem-se em definidos (o, a, os, as) 
+              e indefinidos (um, uma, uns, umas). Segundo a tradição gramatical de 
+              Rocha Lima, o artigo é um "atualizador", transformando um conceito 
+              técnico ou abstrato em um ser específico dentro do universo do discurso. 
+              Sua presença ou ausência não é facultativa sob o ponto de vista semântico: 
+              ela define se estamos falando de uma categoria geral ("Cão que late...") 
+              ou de um indivíduo específico ("O cão que late..."), sendo um dos pilares 
+              da clareza comunicativa na língua portuguesa.
+            </p>
+
+            <p>
+              Para absorver o conceito de forma intuitiva, pense no artigo como o 
+              "interruptor" de especificidade da linguagem. Quando você liga este 
+              interruptor (artigo definido), você ilumina um objeto específico em meio 
+              à escuridão do genérico. Se um gerente diz: "Preciso de UM técnico", ele 
+              está buscando alguém com uma competência, mas se ele diz: "Preciso de O 
+              técnico", ele está se referindo a alguém com quem já conversou ou que é 
+              reconhecidamente o responsável por certa área. Esta pequena palavra de uma 
+              ou duas letras funciona como um sinalizador mental que prepara o 
+              ouvinte para saber se o tema é novo na conversa ou se já é de conhecimento 
+              compartilhado entre as partes.
+            </p>
+
+            <p>
+              A função mais fascinante do artigo é a sua capacidade de substantivação, 
+              conhecida como "Derivação Imprópria" ou "Efeito Rei Midas". Qualquer palavra, 
+              de qualquer classe gramatical, se precedida de um artigo, transforma-se 
+              imediatamente em um substantivo (o cantar, o porém, o azul, o amanhã). 
+              Além disso, o artigo possui regras de combinação obrigatórias com 
+              preposições, gerando as formas contratas (em + o = no; de + a = da; a + a = à). 
+              A distinção entre o artigo e o pronome oblíquo "o/a" é uma prova de fogo 
+              morfológica: o artigo acompanha o nome, enquanto o pronome substitui o nome 
+              ao lado de um verbo, exigindo atenção redobrada à vizinhança gramatical.
+            </p>
+
+            <p>
+              No ambiente corporativo da Petrobras, o uso do artigo define a precisão 
+              em ordens de serviço e normas regulamentadoras. "A plataforma" refere-se à 
+              unidade operacional onde o trabalhador se encontra, enquanto "uma plataforma" 
+              poderia ser qualquer unidade da frota em um contexto de planejamento. 
+              Em nomes de navios e unidades flutuantes (FPSO), o uso do artigo é rigoroso: 
+              dizemos "o P-50" ou "a P-50" dependendo da tradição náutica ou do gênero 
+              implícito. Além disso, a concordância em placas de sinalização de segurança 
+              depende crucialmente do artigo: "É proibida A entrada" (concordância com o 
+              artigo) versus "É proibido entrada" (ausência de artigo, termo neutro). A 
+              omissão indevida do artigo em documentos contratuais pode gerar ambiguidades 
+              legais sobre a identificação de partes ou ativos específicos.
+            </p>
+
+            <p>
+              Para a CESGRANRIO, o artigo é um tema recorrente associado à concordância 
+              nominal e à crase. A banca adora testar a sensibilidade do candidato para 
+              a substantivação e a distinção entre "o" artigo e "o" pronome ou "o" 
+              demonstrativo básico (= aquilo). Questões de interpretação de texto 
+              frequentemente focam no valor semântico do artigo indefinido com valor 
+              de aproximação ("Eram umas três horas") ou com valor enfático ("Ele é UM 
+              gerente!", querendo dizer 'o melhor gerente'). Dominar a regência das 
+              preposições que se combinam com artigos é o segredo para não errar crase, 
+              especialmente em nomes geográficos (Vou A Paris vs. Vou À França), onde 
+              a regra do "volto DE" ou "volto DA" define a presença do artigo.
+            </p>
+
+            <div className="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200/50 dark:border-emerald-800/50 p-6 space-y-4">
+              <h4 className="font-bold text-foreground text-lg">
+                O Interruptor Lingüístico: Presença vs. Ausência
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+                <div>
+                  <p className="font-semibold text-emerald-700 dark:text-emerald-300">Concordância Rígida</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• É proibida A entrada. (Certo)</li>
+                    <li>• É proibido entrada. (Certo)</li>
+                    <li>• É proibido A entrada. (Errado)</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-emerald-700 dark:text-emerald-300">Presença de Artigo (Países)</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• O Brasil, A França, OS EUA</li>
+                    <li>• Portugal, Cuba, Israel (Sem artigo)</li>
+                    <li>• A Bahia, O Rio (Cidades com artigo)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
           <ModuleSectionHeader
             index={1}
             title="Conceito Científico"
-            variant="amber"
+            variant={mv[3]}
           />
           <p className="text-lg text-muted-foreground">
             O <strong>Artigo</strong> é a classe de palavra{" "}
@@ -1198,7 +1413,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Concordância: É Proibido vs É Proibida"
-            variant="amber"
+            variant={mv[3]}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FlipCard
@@ -1252,7 +1467,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Usos Especiais do Artigo"
-            variant="amber"
+            variant={mv[3]}
           />
           <ContentAccordion
             mode="stacked"
@@ -1296,7 +1511,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant="amber"
+            variant={mv[3]}
           />
           <LessonTabs
             tabs={[
@@ -1319,6 +1534,18 @@ export default function AulaClassesPalavras({
                   />
                 ),
               },
+              {
+                id: "audio",
+                label: "Resumo Áudio",
+                icon: LuMusic,
+                content: (
+                   <MusicPlayerCard 
+                     titulo="O Rei Midas: Artigos"
+                     artista="Resumo Morfologia"
+                     audioUrl=""
+                   />
+                ),
+              },
             ]}
           />
         </section>
@@ -1327,7 +1554,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={5}
             title="Artigo e Concordância — Casos Especiais Cesgranrio"
-            variant="amber"
+            variant={mv[3]}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FlipCard
@@ -1393,7 +1620,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Artigo: O Determinante"
             icone="🏷️"
             numero={6}
-            variant="amber"
+            variant={mv[3]}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </section>
@@ -1406,11 +1633,109 @@ export default function AulaClassesPalavras({
           descricao="O substituto estratégico e o mestre da coesão textual."
           variant={mv[4]} gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"/>
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+        {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={1}
+            title="O Pronome: O Arquiteto da Coesão"
+            description="Domine a classe que substitui, retoma e organiza as relações no texto"
+            variant={mv[4]}
+          />
+
+          <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+            <p>
+              O pronome é a classe de palavras que substitui ou acompanha o substantivo, 
+              indicando-o como pessoa do discurso ou situando-o no espaço e no tempo. 
+              Sua importância transcende a mera economia de palavras (evitar repetições); 
+              o pronome é o principal responsável pela coesão textual e pelas relações de 
+              poder e cortesia na língua. Dividem-se em várias categorias: pessoais (reto 
+              e oblíquo), possessivos, demonstrativos, indefinidos, interrogativos e 
+              relativos. Segundo Evanildo Bechara, os pronomes formam um sistema fechado 
+              de referências que permite ao falante organizar o "eu", o "tu" e o "ele" 
+              dentro de um contexto comunicativo dinâmico e preciso.
+            </p>
+
+            <p>
+              Para entender o pronome de forma intuitiva, imagine que ele é o "dublê" do 
+              substantivo. Em um filme (o seu texto), o substantivo é o ator principal, 
+              caro e pesado. Você não quer usá-lo em todas as cenas para não cansar o 
+              público. O pronome entra em cena para substituí-lo nas sequências de ação: 
+              em vez de repetir "O Engenheiro" dez vezes, você usa "ele", "o", "lhe", 
+              "aquele". Sem esse time de dublês, os textos seriam repetitivos, lentos 
+              e exaustivos. O pronome é a agilidade do texto, permitindo que a 
+              informação flua sem que precisemos redefinir o sujeito do que estamos 
+              falando a cada segunda frase.
+            </p>
+
+            <p>
+              A complexidade morfológica dos pronomes é uma das maiores da língua. Os 
+              pronomes pessoais retos exercem função de sujeito (quem faz a ação), 
+              enquanto os oblíquos átonos exercem função de complemento (o que sofre a 
+              ação). Um erro clássico é usar o resto no lugar do oblíquo ("Vi ele" em 
+              vez de "Vi-o"). Já os pronomes relativos (como o "que", "cujo" e "onde") 
+              são os pilares da subordinação de frases, retomando termos antecedentes 
+              para introduzir novas informações. A colocação pronominal (próclise, mesóclise 
+              e ênclise) define o registro de formalidade do texto e obedece a regras 
+              estritas de atração baseadas na sonoridade e na sintaxe.
+            </p>
+
+            <p>
+              No cotidiano da Petrobras, os pronomes de tratamento e a precisão dos 
+              pronomes demonstrativos regem a hierarquia e a clareza dos processos. Em 
+              comunicados oficiais, o uso correto de "Vossa Senhoria" ou "Vossa Excelência" 
+              ainda é exigido em registros formais. Na redação técnica de relatórios, 
+              os pronomes demonstrativos "este" (referente ao que será dito) e "esse" 
+              (referente ao que já foi dito) evitam confusões graves sobre qual parágrafo 
+              ou equipamento está sendo discutido. Além disso, o uso preciso dos 
+              pronomes oblíquos em manuais de operação garante que as instruções sejam 
+              diretas: "Verifique o manômetro e calibre-o imediatamente". A ambiguidade 
+              pronominal (ex: "O técnico avisou o supervisor do seu erro") é um risco que 
+              deve ser evitado para não gerar conflitos de responsabilidade operacional.
+            </p>
+
+            <p>
+              A CESGRANRIO tem fixação pelos pronomes relativos e pela colocação pronominal. 
+              O pronome "CUJO" é a pegadinha favorita: lembre-se de que ele não admite 
+              artigo depois (nunca escreva "cujo o"). O uso de "ONDE" exclusivo para 
+              lugares físicos também é cobrado à exaustão. Nas questões de reescrita, a 
+              banca testa se o candidato sabe trocar o objeto direto ("o/a") pelo indireto 
+              ("lhe") de acordo com a regência do verbo. Por fim, a próclise obrigatória 
+              com palavras negativas ("Não o vi") e com pronomes relativos ("A norma 
+              que se aplica") é o tema de 90% das questões de colocação da banca, 
+              exigindo um ouvido treinado para a norma culta formal.
+            </p>
+
+            <div className="bg-gradient-to-br from-rose-500/10 to-pink-500/10 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200/50 dark:border-rose-800/50 p-6 space-y-4">
+              <h4 className="font-bold text-foreground text-lg">
+                Manual de Especialistas: Cujo e Onde
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+                <div>
+                  <p className="font-semibold text-rose-700 dark:text-rose-300">O Pronome Cujo (Posse)</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Concorda com o possuído: "Cujas mãos".</li>
+                    <li>• Proibido artigo: "Cujo o" (Nunca!).</li>
+                    <li>• Liga dois substantivos em relação de posse.</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-rose-700 dark:text-rose-300">O Pronome Onde (Lugar)</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Somente lugar: "A casa onde moro".</li>
+                    <li>• Para conceitos: "A situação EM QUE estou".</li>
+                    <li>• Aonde: Movimento (Aonde você vai?).</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+          <ModuleSectionHeader
+            index={2}
             title="Pessoais: Reto vs Oblíquo"
-            variant="violet"
+            variant={mv[4]}
           />
           <div className="overflow-hidden rounded-xl border border-border bg-muted/30">
             <table className="w-full text-lg text-left">
@@ -1452,7 +1777,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Colocação Pronominal"
-            variant="violet"
+            variant={mv[4]}
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 rounded-xl bg-violet-500/5 border border-violet-500/20 space-y-4">
@@ -1499,7 +1824,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Pronomes Possessivos, Demonstrativos e Relativos"
-            variant="violet"
+            variant={mv[4]}
           />
           <ContentAccordion
             mode="stacked"
@@ -1581,7 +1906,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant="violet"
+            variant={mv[4]}
           />
           <LessonTabs
             tabs={[
@@ -1602,6 +1927,18 @@ export default function AulaClassesPalavras({
                       },
                     ]}
                   />
+                ),
+              },
+              {
+                id: "audio",
+                label: "Resumo Áudio",
+                icon: LuMusic,
+                content: (
+                   <MusicPlayerCard 
+                     titulo="O Dublê do Nome: Pronomes"
+                     artista="Resumo Morfologia"
+                     audioUrl=""
+                   />
                 ),
               },
             ]}
@@ -1646,7 +1983,7 @@ export default function AulaClassesPalavras({
             </table>
           </div>
           <AlertBox tipo="danger" titulo="Concordância com Pronome de Tratamento — Questão Clássica">
-            "Vossa Excelência está cansado?" — ERRADO! O correto é: "Vossa Excelência está cansad<strong>a</strong>?" se a pessoa for mulher, ou "Vossa Excelência está cansad<strong>o</strong>?" se homem. O verbo vai para a 3ª pessoa: "V. Exa. <strong>assinou</strong> o contrato" (não 'assinastes'). Os pronomes possessivos e oblíquos correspondentes também ficam na 3ª pessoa: "Trouxemos <strong>sua</strong> pasta, Vossa Excelência."
+            {`"Vossa Excelência está cansado?" — ERRADO! O correto é: "Vossa Excelência está cansada?" se a pessoa for mulher, ou "Vossa Excelência está cansado?" se homem. O verbo vai para a 3ª pessoa: "V. Exa. assinou o contrato" (não 'assinastes'). Os pronomes possessivos e oblíquos correspondentes também ficam na 3ª pessoa: "Trouxemos sua pasta, Vossa Excelência."`}
           </AlertBox>
         </section>
 
@@ -1656,7 +1993,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Pronome: O Substituto"
             icone="👤"
             numero={6}
-            variant="violet"
+            variant={mv[4]}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </section>
@@ -1750,9 +2087,9 @@ export default function AulaClassesPalavras({
         {/* Resumo + Multimídia M5 */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={3}
+            index={5}
             title="Resumo e Multimídia"
-            variant="rose"
+            variant={mv[5]}
           />
           <LessonTabs
             tabs={[
@@ -1788,6 +2125,18 @@ export default function AulaClassesPalavras({
                   </div>
                 ),
               },
+              {
+                id: "audio",
+                label: "Resumo Áudio",
+                icon: LuMusic,
+                content: (
+                   <MusicPlayerCard 
+                     titulo="Ação e Tempo: Domínio Verbal"
+                     artista="Resumo Morfologia"
+                     audioUrl=""
+                   />
+                ),
+              },
             ]}
           />
         </section>
@@ -1796,7 +2145,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Verbos Impessoais (Haver e Fazer)"
-            variant="rose"
+            variant={mv[5]}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="p-8 rounded-2xl bg-slate-950 text-white space-y-6">
@@ -1852,7 +2201,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={5}
             title="Modos Verbais — Indicativo, Subjuntivo e Imperativo"
-            variant="rose"
+            variant={mv[5]}
           />
           <ContentAccordion
             mode="stacked"
@@ -1891,7 +2240,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Verbo: O Motor da Oração"
             icone="⚡"
             numero={6}
-            variant="rose"
+            variant={mv[5]}
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
         </section>
@@ -1903,6 +2252,105 @@ export default function AulaClassesPalavras({
           titulo="O Advérbio"
           descricao="O modificador invariável e as armadilhas das palavras camaleão."
           variant={mv[6]} gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"/>
+
+        {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="O Advérbio: A Precisão da Circunstância"
+            description="Domine a classe invariável que ajusta o sentido do verbo, do adjetivo e do próprio advérbio"
+            variant={mv[6]}
+          />
+
+          <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+            <p>
+              O advérbio é a classe de palavras invariável que tem por função modificar 
+              o sentido de um verbo, de um adjetivo ou de outro advérbio, indicando uma 
+              circunstância (tempo, lugar, modo, intensidade, etc.). Diferente do 
+              adjetivo, que é o qualificador do nome, o advérbio é o qualificador da 
+              ação ou da qualidade. Segundo a gramática normativa, o advérbio é 
+              "cristalizado", ou seja, não sofre flexão de gênero ou número, mantendo 
+              sua forma original independentemente do sujeito da frase. Esta 
+              invariabilidade é a sua maior marca morfológica e o principal ponto de 
+              atenção para evitar erros de concordância em registros formais.
+            </p>
+
+            <p>
+              Para entender o advérbio de forma intuitiva, imagine o "ajuste fino" de 
+              um rádio ou de um instrumento de precisão. Se o verbo diz *o que* está 
+              acontecendo ("O sistema operou"), o advérbio gira o botão para dizer 
+              *como* aconteceu ("O sistema operou LENTAMENTE" ou "O sistema operou 
+              MUITO bem"). Ele move a agulha da nossa percepção, dando a exata medida 
+              da realidade. Sem os advérbios, a nossa comunicação seria bruta e sem 
+              nuances; não saberíamos se o perigo está "perto" ou "longe", se a 
+              reunião foi "hoje" ou será "amanhã". Eles são as etiquetas de contexto 
+              que ancoram a ação no mundo real.
+            </p>
+
+            <p>
+              Muitos advérbios são formados pelo acréscimo do sufixo "-mente" a um 
+              adjetivo feminino (rápida + mente). Quando em sequência, apenas o 
+              último advérbio recebe o sufixo ("Agiu rápida e corajosamente"). Além 
+              dos advérbios simples, temos as locuções adverbiais — conjuntos de duas 
+              ou mais palavras que exercem a mesma função (de repente, às pressas, 
+              com certeza). Um teste infalível para identificar o advérbio e não 
+              confundi-lo com o adjetivo é o "Teste do Muito": se você puder trocar 
+              pela palavra "MUITO" e ela não virar "MUITOS/MUITAS" em plural, você 
+              está diante de um advérbio invariável.
+            </p>
+
+            <p>
+              No ambiente de alta performance da Petrobras, o advérbio é a linguagem 
+              da segurança e da logística. Instruções de segurança dependem de advérbios 
+              de modo e tempo: "Acione o protocolo IMEDIATAMENTE", "Inspecione a 
+              solda CUIDADOSAMENTE". O uso indevido de um advérbio de intensidade em 
+              um relatório de pressão pode levar a decisões críticas. Advérbios como 
+              "frequentemente", "periodicamente" e "anualmente" regem os cronogramas 
+              de manutenção preventiva. Além disso, a diferenciação entre o adjetivo 
+              adverbializado ("Falar CLARO") e o advérbio clássico ("Falar 
+              CLARAMENTE") é comum no registro técnico-científico, buscando sempre 
+              a menor ambiguidade possível no compartilhamento de informações entre 
+              as equipes de engenharia.
+            </p>
+
+            <p>
+              A CESGRANRIO adora as chamadas "Palavras Camaleão", como o termo "MEIO". 
+              Eles testarão se você sabe que em "Ela está MEIO cansada" (advérbio = 
+              invariável) o uso de "meia" é erro grave. A banca também cobra a 
+              distinção entre o adjetivo (flexiona) e o advérbio (não flexiona) em 
+              casos como "Comprei CARO os livros" (advérbio) vs "Os livros são CAROS" 
+              (adjetivo). Outro tema forte é a classificação semântica das locuções 
+              adverbiais em textos literários ou jornalísticos e as regras de 
+              pontuação (uso da vírgula) para isolar advérbios deslocados no início 
+              da frase. Dominar o advérbio é garantir que você não cairá nas 
+              pegadinhas de concordância nominal "sedutoras" que a banca prepara.
+            </p>
+
+            <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200/50 dark:border-amber-800/50 p-6 space-y-4">
+              <h4 className="font-bold text-foreground text-lg">
+                O Teste do MUITO e as Palavras Camaleão
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+                <div>
+                  <p className="font-semibold text-amber-700 dark:text-amber-300">O Teste Infalível</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Trabalham RÁPIDO (Trabalham muito). ✓</li>
+                    <li>• São homens RÁPIDOS (muitos). = Adjetivo.</li>
+                    <li>• Advérbio nunca pluraliza!</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-amber-700 dark:text-amber-300">O Camaleão "MEIO"</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Ela está MEIO cansada (Um pouco). ✓</li>
+                    <li>• Comeu MEIA maçã (Metade - Numeral). ✓</li>
+                    <li>• Meio + Adjetivo = INVARIÁVEL.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
           <ModuleSectionHeader
@@ -2010,7 +2458,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant="amber"
+            variant={mv[6]}
           />
           <LessonTabs
             tabs={[
@@ -2070,6 +2518,101 @@ export default function AulaClassesPalavras({
           titulo="A Preposição"
           descricao="O elo de subordinação essencial para a regência e a crase."
           variant={mv[7]} gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"/>
+
+        {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Preposição: O Elo de Ferro"
+            description="Entenda a classe que subordina termos e cria as pontes sintáticas do texto"
+            variant={mv[7]}
+          />
+
+          <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+            <p>
+              A preposição é a classe de palavras invariável que liga dois termos 
+              de uma oração, estabelecendo uma relação de subordinação em que o 
+              segundo termo (consequente) completa ou explica o sentido do primeiro 
+              (antecedente). Segundo a lição de Bechara, a preposição é um "relator", 
+              um termo que não possui vida própria mas sim a função de indicar a 
+              direção do pensamento. Dividem-se em essenciais (a, ante, após, até, 
+              com, contra, de, de, em, entre, para, perante, por, sem, sob, sobre, 
+              trás) e acidentais (palavras de outras classes que atuam como 
+              preposição, como "conforme", "segundo" ou "mediante").
+            </p>
+
+            <p>
+              Para absorver o conceito intuitivamente, imagine a preposição como a 
+              "junta de expansão" ou o "conector" em um sistema de tubulações. Os 
+              tubos (palavras) são independentes, mas para que o fluido (a informação) 
+              passe de um para outro, você precisa de um conector que defina a 
+              pressão e o ângulo da conexão. Se você trocar a preposição, você 
+              muda a direção da corrente: uma coisa é ir "A" algum lugar (destino), 
+              outra é ir "DE" algum lugar (origem), ou "PARA" algum lugar 
+              (finalidade). A preposição é o elo que garante que as palavras não 
+              fiquem soltas na frase, mas sim integradas de forma lógica e hierárquica.
+            </p>
+
+            <p>
+              As preposições podem aparecer puras ou em contração/combinação com 
+              artigos e pronomes (de + o = do; em + este = neste; a + a = à). O 
+              entendimento destas amálgamas é a base para o domínio da CRASÊ, que 
+              nada mais é do que a fusão da preposição "a" com o artigo "a". Outro 
+              tópico fundamental são as locuções prepositivas (abaixo de, a fim 
+              de, de acordo com), que terminam sempre em uma preposição simples e 
+              ampliam enormemente as possibilidades de conexão lógica no texto, 
+              indicando desde causa até instrumento ou companhia.
+            </p>
+
+            <p>
+              No contexto técnico da Petrobras, a preposição dita a RIGOROSA regência 
+              dos verbos de segurança e operação. "Obedecer ÀS normas" (VTI + a) e 
+              "Visar AO lucro" (VTI + a) são exemplos de como uma preposição correta 
+              carrega a precisão do manual técnico. O uso equivocado de preposições 
+              em ordens de compra ("Comprei DE" vs "Comprei PARA") pode gerar dúvidas 
+              sobre estoque e custos. Em processos de refino, as preposições de 
+              tempo e modo são vitais: "Misturar DURANTE 5 minutos", "Processar SOB 
+              alta pressão". A preposição "SOB" (embaixo de) e "SOBRE" (em cima de) 
+              não podem ser confundidas em esquemas de montagem e segurança de ativos.
+            </p>
+
+            <p>
+              A CESGRANRIO foca na regência nominal e verbal, que nada mais é do que 
+              saber qual preposição um "patrão" (nome ou verbo) exige. A banca adora 
+              testar a troca de preposições que alteram o sentido da oração, como 
+              a diferença entre "falar COM" (diálogo) e "falar DE" (assunto). Questões 
+              de crase são essencialmente questões de preposição camuflada. Outro 
+              ponto recorrente é o uso das preposições "DE" e "A" em nomes geográficos 
+              (países e cidades) e a identificação de valores semânticos (o que a 
+              preposição indica naquele contexto: posse, matéria, origem, etc.). Se 
+              você dominar a preposição, você terá a chave para não errar regência e 
+              crase, dois dos temas mais difíceis da banca.
+            </p>
+
+            <div className="bg-gradient-to-br from-blue-500/10 to-indigo-500/10 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-lg border border-blue-200/50 dark:border-blue-800/50 p-6 space-y-4">
+              <h4 className="font-bold text-foreground text-lg">
+                O Mantra das Essenciais e a Regência
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+                <div>
+                  <p className="font-semibold text-blue-700 dark:text-blue-300">As 18 Essenciais</p>
+                  <p className="text-xs font-mono leading-relaxed p-2 bg-blue-500/5 rounded">
+                    A, ANTE, APÓS, ATÉ, COM, CONTRA, DE, DESDE, EM, ENTRE, PARA, PERANTE, POR, SEM, SOB, SOBRE, TRÁS.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-blue-700 dark:text-blue-300">Regência Crítica</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Aspirar A (Desejar)</li>
+                    <li>• Obedecer A (Norma)</li>
+                    <li>• Visar A (Objetivo)</li>
+                    <li>• Implicar (VTD - Sem 'em')</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
           <ModuleSectionHeader
@@ -2220,6 +2763,108 @@ export default function AulaClassesPalavras({
           descricao="Os conectivos que articulam as ideias e as orações."
           variant={mv[8]} gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"/>
 
+        {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Conjunção: A Engrenagem do Raciocínio"
+            description="Domine a classe que conecta orações e estabelece as complexas relações lógicas do discurso"
+            variant={mv[8]}
+          />
+
+          <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+            <p>
+              A conjunção é a classe de palavras invariável que une orações ou termos 
+              de mesma função sintática, estabelecendo entre eles relações lógicas 
+              de coordenação ou subordinação. Se a preposição liga palavras dentro da 
+              oração, a conjunção liga as orações entre si para formar o período. 
+              Morfologicamente, são classificadas em coordenativas (aditivas, 
+              adversativas, alternativas, conclusivas e explicativas) e 
+              subordinativas (causais, condicionais, consecutivas, comparativas, 
+              conformativas, concessivas, temporais, finais e proporcionais). Elas 
+              são os conectores mestres que definem a arquitetura do pensamento técnico 
+              e jurídico.
+            </p>
+
+            <p>
+              Para entender a conjunção de forma intuitiva, imagine que as orações 
+              são peças de um quebra-cabeça e as conjunções são os "encaixes" que 
+              decidem como essas peças se relacionam. Se o encaixe for de 
+              "OPOSIÇÃO" (adversativa), a segunda peça vai na direção contrária da 
+              primeira ("Estudou muito, MAS não passou"). Se o encaixe for de 
+              "CONDIÇÃO" (condicional), a segunda peça só existe se a primeira for 
+              verdade ("SE estudar, passará"). A conjunção é o componente que 
+              decide se o seu texto é um empilhamento de fatos ou um argumento 
+              lógico estruturado. Sem elas, falaríamos como robôs, sem nexos de 
+              causualidade ou finalidade.
+            </p>
+
+            <p>
+              O domínio das conjunções exige a memorização de tabelas de equivalência, 
+              pois muitas conjunções diferentes podem expressar o mesmo valor 
+              semântico (Mas = Porém = Contudo = Todavia). Outro ponto crucial é a 
+              coordenação versus subordinação: as coordenadas ligam orações 
+              independentes ("Fui, vi e venci"), enquanto as subordinadas criam 
+              uma dependência de sentido ("Saí porque estava chovendo"). A 
+              pontuação das conjunções também é rígida, especialmente com as 
+              adversativas e conclusivas, exigindo vírgulas para marcar a 
+              articulação das ideias no papel.
+            </p>
+
+            <p>
+              No contexto decisório da Petrobras, a conjunção é a linguagem da 
+              especificação e da segurança operacional. "SE houver queda de pressão, 
+              ENTÃO acione o alarme" — aqui, a condicional define a vida ou a morte 
+              da operação. Relatórios de falhas dependem de conjunções causais e 
+              consecutivas para explicar por que algo deu errado e quais as 
+              consequências: "O vazamento ocorreu POIS a junta falhou, DE MODO QUE 
+              o sistema foi paralisado". Em contratos e NRs, as conjunções 
+              conformativas ("CONFORME a norma 12...") e concessivas ("AINDA QUE a 
+              pressão suba...") regem os limites da conformidade técnica e legal 
+              da companhia.
+            </p>
+
+            <p>
+              Para a CESGRANRIO, a conjunção é a soberana das provas de Língua 
+              Portuguesa. A banca adora questões de "Substituição de Conectivos", onde 
+              você deve trocar uma conjunção por outra mantendo o sentido original. O 
+              par favorito deles é a troca de "EMBORA" (concessiva) por "CONQUANTO" 
+              ou "MALGRADO", testando o vocabulário erudito do candidato. Outra 
+              pegadinha clássica é a diferença entre a conjunção causal e a explicativa, 
+              ou entre a consecutiva ("tão... que") e a comparativa ("como..."). 
+              Identificar o sentido correto do "COMO" (que pode ser causa, conformidade 
+              ou comparação) é o teste definitivo para quem quer fechar a prova de 
+              português da banca.
+            </p>
+
+            <div className="bg-gradient-to-br from-emerald-500/10 to-indigo-500/10 dark:from-emerald-950/30 dark:to-indigo-950/30 rounded-lg border border-emerald-200/50 dark:border-emerald-800/50 p-6 space-y-4">
+              <h4 className="font-bold text-foreground text-lg">
+                Equivalências de Elite (CESGRANRIO)
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+                <div>
+                  <p className="font-semibold text-emerald-700 dark:text-emerald-300">Concessivas (O Desafio)</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Embora = Conquanto</li>
+                    <li>• Ainda que = Posto que</li>
+                    <li>• Malgrado = Apesar de que</li>
+                    <li>• (Pedem Modo Subjuntivo)</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-emerald-700 dark:text-emerald-300">Causais (O Porquê)</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Porque = Visto que</li>
+                    <li>• Já que = Uma vez que</li>
+                    <li>• Porquanto = Como (início)</li>
+                    <li>• (Indicam o motivo real)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
@@ -2363,6 +3008,18 @@ export default function AulaClassesPalavras({
                   </div>
                 ),
               },
+              {
+                id: "audio",
+                label: "Resumo Áudio",
+                icon: LuMusic,
+                content: (
+                   <MusicPlayerCard 
+                     titulo="Cimento do Texto: Conjunções"
+                     artista="Resumo Morfologia"
+                     audioUrl=""
+                   />
+                ),
+              },
             ]}
           />
         </section>
@@ -2386,30 +3043,97 @@ export default function AulaClassesPalavras({
           descricao="A expressão das emoções e as regras sutis de pontuação."
           variant={mv[9]} gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"/>
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
+        {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={1}
-            title="Conceito e Pontuação"
+            title="A Interjeição: O Clamor da Linguagem"
+            description="Entenda a classe invariável que vocaliza emoções, estados de espírito e apelos diretos"
             variant={mv[9]}
           />
-          <p className="text-lg text-muted-foreground">
-            A <strong>Interjeição</strong> é a palavra invariável que exprime
-            emoções, estados de espírito ou apelos.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-xl bg-orange-500/5 border border-orange-500/20">
-              <h4 className="font-bold text-orange-600">O Camaleão "AH!"</h4>
-              <p className="text-lg">
-                Pode indicar alegria, dor, ironia ou compreensão. O contexto é
-                rei.
-              </p>
-            </div>
-            <div className="p-6 rounded-xl bg-blue-500/5 border border-blue-500/20">
-              <h4 className="font-bold text-blue-600">Regra de Pontuação</h4>
-              <p className="text-lg">
-                "Ah! Que bom." (Exclamação na interjeição) vs "Ah, que bom!"
-                (Exclamação no final).
-              </p>
+
+          <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+            <p>
+              A interjeição é a classe de palavras invariável que exprime emoções, 
+              sentimentos, estados de espírito, ou que serve para fazer apelos ao 
+              interlocutor. Diferente das outras classes, a interjeição não possui uma 
+              função sintática dentro da oração; ela é, na verdade, uma "oração em 
+              miniatura", um bloco sonoro autônomo que condensa uma carga emocional 
+              completa. Segundo a semântica clássica, a interjeição é a forma mais 
+              primitiva e direta da comunicação humana, funcionando como umaerupção 
+              vocal do sujeito diante de um estímulo externo ou interno.
+            </p>
+
+            <p>
+              Para absorver o conceito intuitivamente, imagine a interjeição como o 
+              "alarme" ou a "buzina" do nosso sistema de comunicação. Quando você 
+              bate o pé na quina de um móvel e grita "AI!", esse som não precisa de 
+              sujeito ou predicado para ser entendido: a mensagem de "dor aguda" foi 
+              entregue instantaneamente. As interjeições são bipes emocionais que 
+              economizam o processamento lógico do cérebro para focar na reação 
+              imediata. Elas são as batidas do coração transformadas em sílabas, 
+              atuando onde a gramática estruturada é lenta demais para a rapidez 
+              do sentimento.
+            </p>
+
+            <p>
+              Morfologicamente, as interjeições são invariáveis e frequentemente 
+              acompanhadas de ponto de exclamação, que marca a tônica emocional da 
+              vocalização. Além das palavras simples (Uau!, Psit!, Oh!), temos as 
+              locuções interjetivas — grupos de palavras que funcionam como uma 
+              unidade expressiva (Meu Deus!, Ora bolas!, Puxa vida!). A mesma 
+              interjeição pode ter sentidos opostos dependendo da entonação e do 
+              contexto: o "Ah!" pode expressar alegria ("Ah, que bom!"), dor ("Ah, 
+              que pena!") ou até ironia ("Ah, sei...").
+            </p>
+
+            <p>
+              No contexto operacional e de segurança da Petrobras, a interjeição 
+              (ou seu valor equivalente em ordens curtas) é a linguagem da 
+              emergência. Em uma refinaria ou plataforma, interjeições de aviso e 
+              apelo são sinais vitais: "ATENÇÃO!", "CUIDADO!", "PARE!". Embora o 
+              manual técnico evite interjeições subjetivas, o treinamento de 
+              segurança utiliza termos de impacto interjetivo para garantir 
+              reações automáticas das equipes. Identificar a carga emocional em 
+              diálogos de rádio ou em comunicações de crise é fundamental para 
+              interpretar corretamente a gravidade de uma situação reportada em 
+              campo.
+            </p>
+
+            <p>
+              Para a CESGRANRIO, a interjeição aparece principalmente em questões de 
+              Efeitos de Sentido. O examinador quer saber o que aquele "Oh!" ou 
+              "Puxa!" acrescenta à intenção do autor do texto. A banca também costuma 
+              cobrar as regras de pontuação associadas: se a vírgula deve vir 
+              depois da interjeição ("Ai, que dor!") ou se o ponto de exclamação é 
+              suficiente ("Ai! Que dor!"). Em questões de interpretação de textos 
+              literários ou crônicas, a identificação dos sentimentos de ironia, 
+              humor ou desespero através das interjeições é o que define o acerto 
+              da questão.
+            </p>
+
+            <div className="bg-gradient-to-br from-rose-500/10 to-pink-500/10 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200/50 dark:border-rose-800/50 p-6 space-y-4">
+              <h4 className="font-bold text-foreground text-lg">
+                O Camaleão do Sentimento: "AH!"
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+                <div>
+                  <p className="font-semibold text-rose-700 dark:text-rose-300">Contexto e Sentido</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Ah! (Alegria/Alívio)</li>
+                    <li>• Ah! (Espanto/Susto)</li>
+                    <li>• Ah! (Desprezo/Ironia)</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-rose-700 dark:text-rose-300">Locuções Comuns</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Cruz Credo!</li>
+                    <li>• Vale-me Deus!</li>
+                    <li>• Quem dera!</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -2462,7 +3186,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Resumo e Multimídia"
-            variant="rose"
+            variant={mv[8]}
           />
           <LessonTabs
             tabs={[
@@ -2483,6 +3207,18 @@ export default function AulaClassesPalavras({
                       },
                     ]}
                   />
+                ),
+              },
+              {
+                id: "audio",
+                label: "Resumo Áudio",
+                icon: LuMusic,
+                content: (
+                   <MusicPlayerCard 
+                     titulo="Bipes de Emoção: Interjeições"
+                     artista="Resumo Morfologia"
+                     audioUrl=""
+                   />
                 ),
               },
             ]}
@@ -2535,6 +3271,101 @@ export default function AulaClassesPalavras({
           titulo="O Numeral"
           descricao="Quantidades, ordens e a pegadinha do numeral dual."
           variant={mv[10]} gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"/>
+
+        {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="O Numeral: A Precisão Quantitativa"
+            description="Explore a classe que define quantidades exatas, ordens, frações e multiplicações"
+            variant={mv[10]}
+          />
+
+          <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+            <p>
+              O numeral é a classe de palavras que indica uma quantidade exata de seres 
+              ou o lugar que eles ocupam em uma determinada série. Diferente dos 
+              adjetivos indefinidos (muitos, poucos), o numeral é preciso e objetivo. 
+              Classificam-se em cardinais (indicação de número absoluto: um, dois), 
+              ordinais (indicação de posição: primeiro, vigésimo), multiplicativos 
+              (indicação de aumento proporcional: dobro, triplo) e fracionários 
+              (indicação de divisão: metade, terço). O numeral é a espinha dorsal de 
+              qualquer discurso técnico ou científico, onde a imprecisão é um luxo 
+              que não se pode permitir.
+            </p>
+
+            <p>
+              Para absorver o conceito intuitivamente, pense no numeral como a 
+              "régua" ou o "balancete" da linguagem. Se o substantivo nos dá o objeto 
+              e o adjetivo nos dá a cor, o numeral nos dá o inventário. Sem os 
+              numerais, não saberíamos quantos somos, quanto ganhamos ou qual a 
+              ordem de chegada em uma competição. Eles trazem o rigor matemático 
+              para dentro da estrutura poética e pragmática da língua, permitindo 
+              que o caos da realidade seja organizado em listas, cronogramas e 
+              arquiteturas coordenadas. O numeral é o GPS da informação exata.
+            </p>
+
+            <p>
+              Morfologicamente, alguns numerais flexionam em gênero (um/uma, dois/duas, 
+              centenas) e número (milhão/milhões, bilhão/bilhões), enquanto muitos 
+              cardinais são invariáveis (três, dez, cem). Os numerais ordinais 
+              concordam sempre com o substantivo a que se referem (primeira edição, 
+              décimos colocados). Um ponto de atenção especial são os numerais 
+              coletivos (dúzia, milhar, quarentena, biênio), que são substantivos com 
+              valor numérico exato e exercem funções sintáticas próprias de sua 
+              classe.
+            </p>
+
+            <p>
+              Na Petrobras, o numeral é o coração dos dados de produção e segurança. 
+              Métricas de extração de petróleo (barris por dia), profundidade de 
+              poços (milhares de metros), cronogramas de paradas de manutenção (o 
+              terceiro trimestre) e escalas de trabalho (o regime 14x21) dependem 
+              da precisão absoluta desta classe. Um erro no uso do numeral 
+              multiplicativo em um cálculo de carga pode inviabilizar uma logística 
+              inteira. Além disso, o numeral "AMBOS" (numeral dual) é vital para 
+              expressar a totalidade de dois elementos técnicos sem sombra de 
+              dúvida ("Ambas as válvulas devem ser fechadas").
+            </p>
+
+            <p>
+              Para a CESGRANRIO, o numeral aparece no topo das pegadinhas de escrita 
+              formal. A banca testará se você sabe a diferença entre o artigo "UM" 
+              (quando generaliza) e o numeral "UM" (quando quantifica). Outro tema 
+              recorrente é a leitura e escrita de numerais ordinais grandes 
+              (quinquagésimo, septuagésimo) e as regras de concordância de numerais 
+              coletivos como "milhares" e "milhões", que são sempre masculinos ("Os 
+              dois milhões de pessoas", nunca "As duas milhões"). A escrita de 
+              numerais em títulos de reis e papas, ou em capítulos de normas, também 
+              é cobrada para testar a formalidade do candidato diante dos símbolos 
+              numéricos.
+            </p>
+
+            <div className="bg-gradient-to-br from-violet-500/10 to-purple-500/10 dark:from-violet-950/30 dark:to-purple-950/30 rounded-lg border border-violet-200/50 dark:border-violet-800/50 p-6 space-y-4">
+              <h4 className="font-bold text-foreground text-lg">
+                Manual de Numeração Técnica
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+                <div>
+                  <p className="font-semibold text-violet-700 dark:text-violet-300">Concordância de Gigantes</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Milhões / Bilhares (Masculinos).</li>
+                    <li>• "As duas milhões" - ERRO. ✗</li>
+                    <li>• "Os dois milhões" - CERTO. ✓</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-violet-700 dark:text-violet-300">O Numeral "Ambos"</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Significa: "os dois" e "as duas".</li>
+                    <li>• Exige artigo: ambos OS poços.</li>
+                    <li>• É um numeral de dualidade.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
@@ -2620,7 +3451,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Revisão Express — As 10 Classes de Palavras"
-            variant="emerald"
+            variant={mv[10]}
           />
           <ContentAccordion
             mode="stacked"
@@ -2659,7 +3490,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant="emerald"
+            variant={mv[10]}
           />
           <LessonTabs
             tabs={[
@@ -2682,6 +3513,18 @@ export default function AulaClassesPalavras({
                   />
                 ),
               },
+              {
+                id: "audio",
+                label: "Resumo Áudio",
+                icon: LuMusic,
+                content: (
+                   <MusicPlayerCard 
+                     titulo="GPS da Precisão: Numeral"
+                     artista="Resumo Morfologia"
+                     audioUrl=""
+                   />
+                ),
+              },
             ]}
           />
         </section>
@@ -2692,7 +3535,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Numeral: A Quantidade"
             icone="🔢"
             numero={5}
-            variant="emerald"
+            variant={mv[10]}
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
           />
         </section>

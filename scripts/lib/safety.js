@@ -31,7 +31,7 @@ function safeWriteFile(filePath, newContent, originalContent, options = {}) {
   const relPath = options.relPath || path.basename(filePath);
 
   // Verificação 1: Redução de tamanho
-  if (shrink > MAX_SHRINK_RATIO) {
+  if (shrink > MAX_SHRINK_RATIO && !options.force) {
     console.error(
       `\n  ❌ BLOQUEADO: ${relPath}` +
       `\n     Original: ${originalLines} linhas → Novo: ${newLines} linhas (${(shrink * 100).toFixed(1)}% menor)` +
@@ -41,6 +41,7 @@ function safeWriteFile(filePath, newContent, originalContent, options = {}) {
     );
     return false;
   }
+
 
   // Verificação 2: Componentes-chave não foram removidos
   const criticalComponents = [

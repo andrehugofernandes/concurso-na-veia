@@ -79,7 +79,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           index={1}
           title="Administração Tributária: Conceitos"
           description="Disciplina que estuda gestão de tributos na empresa"
-          variant="emerald"
+          variant={getModuleVariant(1)}
         />
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
@@ -166,7 +166,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           index={2}
           title="Órgãos Arrecadadores"
           description="Receita Federal, SEFAZ estadual, prefeituras e INSS/FGTS"
-          variant="emerald"
+          variant={getModuleVariant(2)}
         />
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
@@ -253,7 +253,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           index={3}
           title="Registros e Documentos Fiscais"
           description="Nota Fiscal, RPA, livros fiscais e escrituração contábil digital"
-          variant="emerald"
+          variant={getModuleVariant(3)}
         />
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
@@ -340,7 +340,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           index={4}
           title="Declarações Tributárias"
           description="DIPJ, ECF, DACON, SPED - declarações obrigatórias ao fisco"
-          variant="emerald"
+          variant={getModuleVariant(4)}
         />
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
@@ -427,7 +427,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           index={5}
           title="Prazos e Obrigações Acessórias"
           description="Calendário tributário e penalidades por atraso"
-          variant="emerald"
+          variant={getModuleVariant(5)}
         />
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
@@ -514,7 +514,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           index={6}
           title="Gestão de Impostos"
           description="Planejamento tributário, fluxo de caixa e otimização de custos"
-          variant="emerald"
+          variant={getModuleVariant(6)}
         />
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
@@ -601,7 +601,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           index={7}
           title="Controle de Créditos Tributários"
           description="Apuração de ICMS, PIS/COFINS, aproveitamento e prescrição de créditos"
-          variant="emerald"
+          variant={getModuleVariant(7)}
         />
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
@@ -688,7 +688,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           index={8}
           title="Sistemas de Informação Tributária"
           description="NF-e, SPED, certificado digital, validação de dados"
-          variant="emerald"
+          variant={getModuleVariant(8)}
         />
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
@@ -775,7 +775,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           index={9}
           title="Administração Tributária em Petrobras"
           description="Desafios específicos, múltiplas jurisdições, royalties e governance"
-          variant="emerald"
+          variant={getModuleVariant(9)}
         />
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
@@ -862,7 +862,7 @@ export default function AulaAdministracaoTributaria({ onComplete }: AulaProps) {
           index={10}
           title="Simulado Mestre - Administração Tributária"
           description="Teste integrado: conceitos, prazos, procedimentos, aplicação Petrobras"
-          variant="emerald"
+          variant={getModuleVariant(10)}
         />
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>

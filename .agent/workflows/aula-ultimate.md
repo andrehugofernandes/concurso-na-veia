@@ -15,6 +15,7 @@ description: Upgrade de aulas para padrão ULTIMATE — texto introdutório rico
 > **Este workflow funciona por ADIÇÃO, nunca por SUBTRAÇÃO.**
 >
 > Ao fazer upgrade de uma aula existente:
+>
 > - **NUNCA** apagar componentes que já existem (ContentAccordion, FlipCard, CardCarousel, etc.)
 > - **NUNCA** reescrever parágrafos que já existem (apenas complementar)
 > - **NUNCA** reduzir o número de linhas do arquivo (deve sempre CRESCER)
@@ -59,9 +60,9 @@ description: Upgrade de aulas para padrão ULTIMATE — texto introdutório rico
 │ 1. ModuleBanner                                 │
 │    numero={N} titulo="..." variant={mv(N)}      │
 ├─────────────────────────────────────────────────┤
-│ 2. ★ RICH INTRO SECTION (80-150 linhas JSX)     │
+│ 2. ★ RICH INTRO SECTION (OBRIGATÓRIO)           │
 │    ├── <section> com ModuleSectionHeader         │
-│    ├── 4-6 parágrafos densos <p>                 │
+│    ├── 5 parágrafos editoriais padrão (ver abaixo)│
 │    ├── Caixas coloridas para fórmulas/regras     │
 │    ├── Tabelas comparativas quando aplicável     │
 │    └── Cobre 100% do que o quiz pergunta         │
@@ -83,9 +84,10 @@ description: Upgrade de aulas para padrão ULTIMATE — texto introdutório rico
 │    ├── Vídeo (videoId + duração)                 │
 │    ├── Resumo Visual (imagens/mapas mentais)     │
 │    ├── Macete Visual (conteúdo JSX mnemônico)    │
-│    └── Áudio (resumo em áudio)                   │
+│    └── Música (display + referências de prompt)  │
 ├─────────────────────────────────────────────────┤
 │ 6. QuizInterativo (SEMPRE O ÚLTIMO)             │
+│    ├── Nome: [N] QUIZ: [NOME-DO-MODULO]          │
 │    ├── questoes={quizMN}                         │
 │    ├── variant={getModuleVariant(N)}             │
 │    └── onComplete → handleModuleComplete         │
@@ -108,42 +110,20 @@ description: Upgrade de aulas para padrão ULTIMATE — texto introdutório rico
   />
 
   <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-    {/* PARÁGRAFO 1: Definição formal + contexto histórico/acadêmico */}
-    <p>
-      Texto denso com definição formal do conceito. Citar fonte acadêmica
-      (parafraseada). Contextualizar com a indústria de petróleo e gás.
-      Explicar POR QUE este conceito é testado em provas CESGRANRIO.
-      Mínimo 5 linhas de texto corrido.
-    </p>
+    {/* PARÁGRAFO 1: CONCEITO CIENTÍFICO (Formal) */}
+    <p>... (Definição gramatical/acadêmica) ...</p>
 
-    {/* PARÁGRAFO 2: Explicação intuitiva + analogia */}
-    <p>
-      "Em outras palavras..." — traduzir o conceito formal para linguagem
-      acessível. Usar analogia do cotidiano. Conectar com experiência
-      prévia do candidato. Mínimo 4 linhas.
-    </p>
+    {/* PARÁGRAFO 2: EXPLICAÇÃO INTUITIVA (Analogia) */}
+    <p>... ("Em outras palavras", analogia do cotidiano) ...</p>
 
-    {/* PARÁGRAFO 3: Regras/Fórmulas/Artigos de lei */}
-    <p>
-      Listar TODAS as regras que o quiz vai cobrar. Para matemática:
-      fórmulas com explicação de cada variável. Para português: regras
-      gramaticais completas. Para legislação: texto integral dos artigos
-      relevantes com paráfrase explicativa. Mínimo 5 linhas.
-    </p>
+    {/* PARÁGRAFO 3: REGRAS E FLEXÕES (O Coração da Gramática) */}
+    <p>... (Listagem de regras, exceções e variações) ...</p>
 
-    {/* PARÁGRAFO 4: Aplicação prática / Contexto Petrobras */}
-    <p>
-      Como este conceito aparece no dia a dia de um profissional Petrobras.
-      Exemplos concretos de situações industriais. Conectar teoria com
-      prática. Mínimo 4 linhas.
-    </p>
+    {/* PARÁGRAFO 4: CONTEXTO PETROBRAS (Aplicação Industrial) */}
+    <p>... (Uso prático em relatórios e segurança) ...</p>
 
-    {/* PARÁGRAFO 5: Erros comuns + como a CESGRANRIO cobra */}
-    <p>
-      "A CESGRANRIO costuma cobrar..." — padrões de questões observados.
-      Erros mais frequentes dos candidatos. O que confunde na hora da prova.
-      Mínimo 4 linhas.
-    </p>
+    {/* PARÁGRAFO 5: PEGADINHAS CESGRANRIO (Estratégia) */}
+    <p>... (Padrões de cobrança da banca e erros comuns) ...</p>
 
     {/* CAIXA DE DESTAQUE: Fórmula / Regra-Chave / Artigo de Lei */}
     <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
@@ -159,6 +139,7 @@ description: Upgrade de aulas para padrão ULTIMATE — texto introdutório rico
 ## PADRÃO DO MACETE VISUAL (Bloco 5)
 
 ### Objetivo
+
 O Macete Visual (aba 3 do `ModuleConsolidation`) não deve ser apenas texto. Deve ser uma experiência mnemônica rica que use o "espaço visual" para fixar o conceito central.
 
 ### Template JSX Obrigatório
@@ -207,9 +188,26 @@ maceteVisual={{
     </>
   ),
 }}
+musicTrack={{
+  title: "[NOME DO MÓDULO] - Sertanejo Universitário",
+  prompt: "source/PROMPT_MUSICA_SUNO.md",
+  display: (
+    <div className="flex flex-col items-center gap-4">
+      <MusicPlayerCard
+         title="A Regra de Ouro da Aprovação"
+         genre="Sertanejo Universitário"
+         duration="2:45"
+      />
+      <p className="text-sm text-muted-foreground italic">
+        Fixação através de chicletes auditivos mnemônicos.
+      </p>
+    </div>
+  )
+}}
 ```
 
 ### Regras de Cores (Macete)
+
 - Use a variante de cor do módulo (`variant={mv[N]}`) para os cards.
 - Pode usar opacidades `/5` (fundo) e `/20` (borda) para o efeito premium.
 
@@ -217,19 +215,20 @@ maceteVisual={{
 
 ### Requisitos de Conteúdo por Tipo de Matéria
 
-| Matéria | Fonte Primária | Foco do Texto Introdutório |
-|---------|---------------|---------------------------|
-| **Matemática** | Livros de referência (Gelson Iezzi, Dante) | Definição → Fórmula → Resolução passo a passo → Variações |
-| **Português** | Gramática de Bechara, Celso Cunha | Regra gramatical → Exemplos literários → Casos especiais → Pegadinhas |
-| **Legislação** | Texto da lei (Lei 13.303, RLCP, etc.) | Artigo integral → Paráfrase explicativa → Jurisprudência → Aplicação |
-| **Administração** | Chiavenato, Maximiano, PMBOK | Conceito teórico → Framework → Caso Petrobras → Comparações |
-| **Inglês** | Murphy, Cambridge Grammar | Regra gramatical → Exemplos bilíngues → Falsos cognatos → Contexto técnico |
-| **TI** | Sommerville, Pressman, Tanenbaum | Conceito → Arquitetura → Implementação → Trade-offs |
-| **Operação** | Manuais técnicos Petrobras | Princípio físico → Equação → Aplicação industrial → Segurança |
+| Matéria           | Fonte Primária                             | Foco do Texto Introdutório                                                 |
+| ----------------- | ------------------------------------------ | -------------------------------------------------------------------------- |
+| **Matemática**    | Livros de referência (Gelson Iezzi, Dante) | Definição → Fórmula → Resolução passo a passo → Variações                  |
+| **Português**     | Gramática de Bechara, Celso Cunha          | Regra gramatical → Exemplos literários → Casos especiais → Pegadinhas      |
+| **Legislação**    | Texto da lei (Lei 13.303, RLCP, etc.)      | Artigo integral → Paráfrase explicativa → Jurisprudência → Aplicação       |
+| **Administração** | Chiavenato, Maximiano, PMBOK               | Conceito teórico → Framework → Caso Petrobras → Comparações                |
+| **Inglês**        | Murphy, Cambridge Grammar                  | Regra gramatical → Exemplos bilíngues → Falsos cognatos → Contexto técnico |
+| **TI**            | Sommerville, Pressman, Tanenbaum           | Conceito → Arquitetura → Implementação → Trade-offs                        |
+| **Operação**      | Manuais técnicos Petrobras                 | Princípio físico → Equação → Aplicação industrial → Segurança              |
 
 ### Regra de Ouro: Cobertura Quiz ↔ Texto
 
 > **ANTES de escrever o quiz de um módulo, verificar:**
+>
 > 1. Cada pergunta do quiz tem sua resposta coberta no texto introdutório?
 > 2. Se NÃO → adicionar parágrafo cobrindo o tema faltante
 > 3. Se SIM → o texto é autocontido e o quiz testa compreensão
@@ -240,14 +239,14 @@ maceteVisual={{
 
 ### Documentos Estruturais
 
-| Documento | Caminho | Uso |
-|-----------|---------|-----|
-| Guia de Matérias | `source/Guia Estruturado de Matérias - Petrobras Edital 2023.2.md` | Tópicos exatos do edital |
-| Relatório Detalhado | `source/relatorio_materias_petrobras.md` | Detalhamento por profissão |
-| Conteúdo Matemática | `source/conteudo/matematica.md` | Base teórica para expansão |
-| Conteúdo Português | `source/conteudo/lingua-portuguesa.md` | Base teórica para expansão |
-| Perfil CESGRANRIO | `source/conteudo/PERFIL_CESGRANRIO_PORTUGUES.md` | Estilo da banca |
-| PRD NotebookLM | `source/PRD_NotebookLM_Conteudo_Aulas.md` | Formato de questão |
+| Documento           | Caminho                                                            | Uso                        |
+| ------------------- | ------------------------------------------------------------------ | -------------------------- |
+| Guia de Matérias    | `source/Guia Estruturado de Matérias - Petrobras Edital 2023.2.md` | Tópicos exatos do edital   |
+| Relatório Detalhado | `source/relatorio_materias_petrobras.md`                           | Detalhamento por profissão |
+| Conteúdo Matemática | `source/conteudo/matematica.md`                                    | Base teórica para expansão |
+| Conteúdo Português  | `source/conteudo/lingua-portuguesa.md`                             | Base teórica para expansão |
+| Perfil CESGRANRIO   | `source/conteudo/PERFIL_CESGRANRIO_PORTUGUES.md`                   | Estilo da banca            |
+| PRD NotebookLM      | `source/PRD_NotebookLM_Conteudo_Aulas.md`                          | Formato de questão         |
 
 ### Aulas HTML de Referência (Português)
 
@@ -278,17 +277,18 @@ source/conteudo/05 SL 061FV 26 PREP PETROBRAS SUPRIM_Conhecimentos Específicos.
 ## ESTRUTURA E PADRONIZAÇÃO (Operação Faxina)
 
 ### Organização de Diretórios
+
 O projeto segue uma estrutura rigorosa para manter a raiz limpa e focada na stack (`Next.js/TS`):
 
-| Pasta | Conteúdo |
-|-------|----------|
-| `/src` | Código fonte da aplicação (Componentes, Páginas, Libs) |
-| `/scripts` | **Ultimate Engine** (`ultimate-fixer.js`) e utilitários ativos |
-| `/scripts/automation` | Scripts Python e utilitários de suporte |
-| `/scripts/_legacy` | Scripts antigos e obsoletos (não utilizar) |
-| `/docs` | Documentação, guias de design e relatórios de status |
-| `/logs` | Logs de build, relatórios de erro e diagnósticos TXT |
-| `/backups` | Versões antigas de arquivos e archives |
+| Pasta                 | Conteúdo                                                       |
+| --------------------- | -------------------------------------------------------------- |
+| `/src`                | Código fonte da aplicação (Componentes, Páginas, Libs)         |
+| `/scripts`            | **Ultimate Engine** (`ultimate-fixer.js`) e utilitários ativos |
+| `/scripts/automation` | Scripts Python e utilitários de suporte                        |
+| `/scripts/_legacy`    | Scripts antigos e obsoletos (não utilizar)                     |
+| `/docs`               | Documentação, guias de design e relatórios de status           |
+| `/logs`               | Logs de build, relatórios de erro e diagnósticos TXT           |
+| `/backups`            | Versões antigas de arquivos e archives                         |
 
 ---
 
@@ -296,20 +296,21 @@ O projeto segue uma estrutura rigorosa para manter a raiz limpa e focada na stac
 
 ### Paleta de 10 Módulos
 
-| Módulo | Variant | Cor Tailwind | Hex | Gradiente Banner (Auto) |
-|--------|---------|-------------|-----|-----------------|
-| 1 | `amber` | `amber-300` | `#fcd34d` | Gerado pelo `ultimate-fixer` |
-| 2 | `blue` | `blue-300` | `#93c5fd` | Gerado pelo `ultimate-fixer` |
-| 3 | `emerald` | `emerald-300` | `#a7f3d0` | Gerado pelo `ultimate-fixer` |
-| 4 | `rose` | `rose-300` | `#fb7185` | Gerado pelo `ultimate-fixer` |
-| 5 | `violet` | `violet-300` | `#e9d5ff` | Gerado pelo `ultimate-fixer` |
-| 6 | `amber` | `amber-900` | `#78350f` | Gerado pelo `ultimate-fixer` |
-| 7 | `blue` | `blue-900` | `#1e3a8a` | Gerado pelo `ultimate-fixer` |
-| 8 | `emerald` | `emerald-900` | `#064e3b` | Gerado pelo `ultimate-fixer` |
-| 9 | `rose` | `rose-900` | `#500724` | Gerado pelo `ultimate-fixer` |
-| 10 | `violet` | `violet-900` | `#4c0519` | Gerado pelo `ultimate-fixer` |
+| Módulo | Variant   | Cor Tailwind  | Hex       | Gradiente Banner (Auto)      |
+| ------ | --------- | ------------- | --------- | ---------------------------- |
+| 1      | `amber`   | `amber-300`   | `#fcd34d` | Gerado pelo `ultimate-fixer` |
+| 2      | `blue`    | `blue-300`    | `#93c5fd` | Gerado pelo `ultimate-fixer` |
+| 3      | `emerald` | `emerald-300` | `#a7f3d0` | Gerado pelo `ultimate-fixer` |
+| 4      | `rose`    | `rose-300`    | `#fb7185` | Gerado pelo `ultimate-fixer` |
+| 5      | `violet`  | `violet-300`  | `#e9d5ff` | Gerado pelo `ultimate-fixer` |
+| 6      | `amber`   | `amber-900`   | `#78350f` | Gerado pelo `ultimate-fixer` |
+| 7      | `blue`    | `blue-900`    | `#1e3a8a` | Gerado pelo `ultimate-fixer` |
+| 8      | `emerald` | `emerald-900` | `#064e3b` | Gerado pelo `ultimate-fixer` |
+| 9      | `rose`    | `rose-900`    | `#500724` | Gerado pelo `ultimate-fixer` |
+| 10     | `violet`  | `violet-900`  | `#4c0519` | Gerado pelo `ultimate-fixer` |
 
 ### Regra de Ouro: Zero Hardcode
+
 **NUNCA** escreva gradientes manuais ou variantes estáticas. Use sempre a referência dinâmica:
 
 ```tsx
@@ -325,6 +326,7 @@ O projeto segue uma estrutura rigorosa para manter a raiz limpa e focada na stac
 ## O MOTOR ULTIMATE (ultimate-fixer.js)
 
 ### O que ele faz automaticamente:
+
 1.  **Injeta Infraestrutura:** Garante imports de `moduleColors` e definição da constante `mv`.
 2.  **Limpa Redundâncias:** Remove props `gradiente` manuais e força `variant={mv[N]}`.
 3.  **Tipografia Editorial:** Converte `text-base` em `text-lg text-justify` nas seções de intro.
@@ -425,22 +427,22 @@ Para CADA módulo do arquivo:
 
 ### Regras de Preservação (INVIOLÁVEIS)
 
-| Componente Existente | Ação Permitida | Ação PROIBIDA |
-|---------------------|----------------|---------------|
-| `ContentAccordion` | Manter intacto | Apagar, reescrever, reordenar |
-| `FlipCard` | Manter intacto | Apagar, mover, alterar conteúdo |
-| `CardCarousel` | Manter intacto | Apagar, reduzir cards |
-| `ModuleConsolidation` | Manter intacto | Apagar, mover para depois do quiz |
-| `QuizInterativo` | Manter intacto | Apagar, mudar questões |
-| `AlertBox` | Manter intacto | Apagar (pode adicionar novos) |
-| `ComparisonSide` | Manter intacto | Apagar |
-| `FunctionGraph` | Manter intacto | Apagar |
-| `ModuleBanner` | Corrigir props erradas | Apagar |
-| `ModuleSectionHeader` | Pode ajustar index | Apagar |
-| Parágrafos `<p>` existentes | Manter e COMPLEMENTAR | Apagar, encurtar |
-| Imports | Pode ADICIONAR novos | Remover imports usados |
-| MODULE_DEFS | Pode ADICIONAR módulos | Remover módulos existentes |
-| useState/handlers | Manter lógica existente | Reescrever sem motivo |
+| Componente Existente        | Ação Permitida          | Ação PROIBIDA                     |
+| --------------------------- | ----------------------- | --------------------------------- |
+| `ContentAccordion`          | Manter intacto          | Apagar, reescrever, reordenar     |
+| `FlipCard`                  | Manter intacto          | Apagar, mover, alterar conteúdo   |
+| `CardCarousel`              | Manter intacto          | Apagar, reduzir cards             |
+| `ModuleConsolidation`       | Manter intacto          | Apagar, mover para depois do quiz |
+| `QuizInterativo`            | Manter intacto          | Apagar, mudar questões            |
+| `AlertBox`                  | Manter intacto          | Apagar (pode adicionar novos)     |
+| `ComparisonSide`            | Manter intacto          | Apagar                            |
+| `FunctionGraph`             | Manter intacto          | Apagar                            |
+| `ModuleBanner`              | Corrigir props erradas  | Apagar                            |
+| `ModuleSectionHeader`       | Pode ajustar index      | Apagar                            |
+| Parágrafos `<p>` existentes | Manter e COMPLEMENTAR   | Apagar, encurtar                  |
+| Imports                     | Pode ADICIONAR novos    | Remover imports usados            |
+| MODULE_DEFS                 | Pode ADICIONAR módulos  | Remover módulos existentes        |
+| useState/handlers           | Manter lógica existente | Reescrever sem motivo             |
 
 ### O que PODE ser corrigido (bugs, não conteúdo)
 
@@ -451,7 +453,8 @@ Para CADA módulo do arquivo:
 ✅ Corrigir import: from "./shared" → from "../shared"
 ✅ Adicionar variant={getModuleVariant(N)} onde faltava
 ✅ Fechar tags JSX não fechadas
-✅ Reposicionar ModuleConsolidation para ANTES do Quiz (se estiver errado)
+✅ Reposicionar ModuleConsolidation para ANTES do Quiz (OBRIGATÓRIO)
+✅ Padronizar nomenclatura do Quiz: [N] QUIZ: [Título]
 ```
 
 ---
@@ -545,30 +548,30 @@ src/components/aulas/portugues/AulaSintaxe.tsx (2.997 linhas)
 
 ### Por Matéria
 
-| Matéria | Total Aulas | Com Rich Intro | Faltando | Prioridade |
-|---------|------------|---------------|----------|------------|
-| **Matemática** | 19 | 0 | 19 | TIER 1 |
-| **Português** | 11 | 3 | 8 | TIER 1 |
-| **TI** | 7 | 1 | 6 | TIER 2 |
-| **Administração** | 6 funcionais | 0 | 6 | TIER 2 |
-| **Inglês** | 6 | 5 | 1 | TIER 3 |
-| **Operação** | 2 | 1 | 1 | TIER 3 |
-| **TOTAL** | **51** | **10** | **41** | - |
+| Matéria           | Total Aulas  | Com Rich Intro | Faltando | Prioridade |
+| ----------------- | ------------ | -------------- | -------- | ---------- |
+| **Matemática**    | 19           | 0              | 19       | TIER 1     |
+| **Português**     | 11           | 3              | 8        | TIER 1     |
+| **TI**            | 7            | 1              | 6        | TIER 2     |
+| **Administração** | 6 funcionais | 0              | 6        | TIER 2     |
+| **Inglês**        | 6            | 5              | 1        | TIER 3     |
+| **Operação**      | 2            | 1              | 1        | TIER 3     |
+| **TOTAL**         | **51**       | **10**         | **41**   | -          |
 
 ### Aulas JÁ no padrão ULTIMATE (Rich Intro feito)
 
-| Matéria | Aula | Linhas | Parágrafos intro |
-|---------|------|--------|-----------------|
-| Inglês | AulaVerbTenses | 3.925 | 5 por módulo |
-| Inglês | AulaTextComprehension | 2.804 | 16 total |
-| Inglês | AulaConnectors | 1.706 | 8 total |
-| Inglês | AulaVocabulary | 2.352 | 3 total |
-| Inglês | AulaFalseCognates | 1.423 | 5 total |
-| Português | AulaSintaxe | 2.997 | 23 total |
-| Português | AulaConcordancia | 5.315 | 9 total |
-| Português | AulaInterpretacaoTexto | 2.823 | 3 total |
-| Operação | AulaMecanicaFluidos | 665 | 9 total |
-| TI | AulaMobile | 2.094 | 4 total |
+| Matéria   | Aula                   | Linhas | Parágrafos intro |
+| --------- | ---------------------- | ------ | ---------------- |
+| Inglês    | AulaVerbTenses         | 3.925  | 5 por módulo     |
+| Inglês    | AulaTextComprehension  | 2.804  | 16 total         |
+| Inglês    | AulaConnectors         | 1.706  | 8 total          |
+| Inglês    | AulaVocabulary         | 2.352  | 3 total          |
+| Inglês    | AulaFalseCognates      | 1.423  | 5 total          |
+| Português | AulaSintaxe            | 2.997  | 23 total         |
+| Português | AulaConcordancia       | 5.315  | 9 total          |
+| Português | AulaInterpretacaoTexto | 2.823  | 3 total          |
+| Operação  | AulaMecanicaFluidos    | 665    | 9 total          |
+| TI        | AulaMobile             | 2.094  | 4 total          |
 
 ---
 
@@ -576,37 +579,38 @@ src/components/aulas/portugues/AulaSintaxe.tsx (2.997 linhas)
 
 ### Layout & Template
 
-| Componente | Props Obrigatórias |
-|------------|-------------------|
-| `AulaTemplate` | activeTab, setActiveTab, modules, completedModules, titulo, descricao, etc. |
-| `ModuleBanner` | `numero={N}`, `titulo`, `descricao`, `variant={getModuleVariant(N)}` |
-| `ModuleSectionHeader` | `index={N}`, `title`, `variant={getModuleVariant(N)}` |
-| `ModuleConsolidation` | `index={N}`, `variant`, video, resumoVisual, maceteVisual, audio |
+| Componente            | Props Obrigatórias                                                          |
+| --------------------- | --------------------------------------------------------------------------- |
+| `AulaTemplate`        | activeTab, setActiveTab, modules, completedModules, titulo, descricao, etc. |
+| `ModuleBanner`        | `numero={N}`, `titulo`, `descricao`, `variant={getModuleVariant(N)}`        |
+| `ModuleSectionHeader` | `index={N}`, `title`, `variant={getModuleVariant(N)}`                       |
+| `ModuleConsolidation` | `index={N}`, `variant`, video, resumoVisual, maceteVisual, audio            |
 
 ### Conteúdo Interativo
 
-| Componente | Uso | Regra |
-|------------|-----|-------|
-| `ContentAccordion` | C.E.D.E. | `mode="stacked"`, emoji só em `icone`, 1 slide por accordion |
-| `CardCarousel` | Regras comparativas | Máximo 6 cards |
-| `FlipCard` | Memorização ativa | Verso sempre escuro `bg-[#0a0a0a]` |
-| `AlertBox` | Pegadinhas/Contexto | `tipo="warning"` + `titulo="..."` + children |
-| `ComparisonSide` | Certo vs Errado | correct/incorrect |
-| `TimelineItem` | Passos numerados | Sequência cronológica |
-| `FunctionGraph` | Gráficos matemáticos | `functions`, `xMin/xMax/yMin/yMax`, `points` |
+| Componente         | Uso                  | Regra                                                        |
+| ------------------ | -------------------- | ------------------------------------------------------------ |
+| `ContentAccordion` | C.E.D.E.             | `mode="stacked"`, emoji só em `icone`, 1 slide por accordion |
+| `CardCarousel`     | Regras comparativas  | Máximo 6 cards                                               |
+| `FlipCard`         | Memorização ativa    | Verso sempre escuro `bg-[#0a0a0a]`                           |
+| `AlertBox`         | Pegadinhas/Contexto  | `tipo="warning"` + `titulo="..."` + children                 |
+| `ComparisonSide`   | Certo vs Errado      | correct/incorrect                                            |
+| `TimelineItem`     | Passos numerados     | Sequência cronológica                                        |
+| `FunctionGraph`    | Gráficos matemáticos | `functions`, `xMin/xMax/yMin/yMax`, `points`                 |
 
 ### Quiz & Avaliação
 
-| Componente | Props |
-|------------|-------|
-| `QuizInterativo` | `questoes`, `titulo`, `variant={getModuleVariant(N)}`, `onComplete` |
-| `getRandomQuestions` | `(pool, count)` → seleciona N questões aleatórias |
+| Componente           | Props                                                               |
+| -------------------- | ------------------------------------------------------------------- |
+| `QuizInterativo`     | `questoes`, `titulo`, `variant={getModuleVariant(N)}`, `onComplete` |
+| `getRandomQuestions` | `(pool, count)` → seleciona N questões aleatórias                   |
 
 ---
 
 ## ANTI-PATTERNS (NÃO FAZER)
 
 ### Conteúdo
+
 - ❌ Módulo com quiz mas SEM texto introdutório rico
 - ❌ Texto introdutório que não cobre tema perguntado no quiz
 - ❌ Componentes interativos (FlipCard, Carousel) como ÚNICA fonte de conteúdo
@@ -614,6 +618,7 @@ src/components/aulas/portugues/AulaSintaxe.tsx (2.997 linhas)
 - ❌ Parágrafos com menos de 3 linhas (raso demais)
 
 ### Estrutura
+
 - ❌ `from "./shared"` → SEMPRE `from "../shared"`
 - ❌ `respostaCorreta` → use `correta`
 - ❌ `title`/`icon` em MODULE_DEFS → use `label`/`titulo`
@@ -626,6 +631,7 @@ src/components/aulas/portugues/AulaSintaxe.tsx (2.997 linhas)
 - ❌ `AlertBox` com prop `descricao` → use `children`
 
 ### Design
+
 - ❌ Roxo/violeta como cor primária (Purple Ban)
 - ❌ Modificar StickyModuleNav ou padding do main
 - ❌ PAGE_SIZE alto no carousel
@@ -635,14 +641,18 @@ src/components/aulas/portugues/AulaSintaxe.tsx (2.997 linhas)
 ## CHECKLIST ULTIMATE (antes de considerar pronto)
 
 ### Conteúdo (NOVO)
+
 - [ ] Cada módulo tem 4-6 parágrafos densos ANTES dos acordeons
-- [ ] Cada parágrafo tem mínimo 4 linhas
+- [ ] O módulo de Consolidação `ModuleConsolidation` está antes do `QuizInterativo`
+- [ ] Título de Consolidação segue o padrão: `Resumo do Módulo [N]`
+- [ ] Título do Quiz segue o padrão: `[Último Nº do Card] QUIZ: [NOME DO MÓDULO]`
 - [ ] 100% dos temas do quiz estão cobertos no texto introdutório
 - [ ] Fonte acadêmica parafraseada em cada módulo
 - [ ] Contexto Petrobras/industrial em cada módulo
 - [ ] Para legislação: artigos relevantes citados integralmente
 
 ### Estrutura
+
 - [ ] Componente tem 3000+ linhas (excluindo quizzes)
 - [ ] 10 módulos no MODULE_DEFS
 - [ ] Cada módulo tem Rich Intro + C.E.D.E. + Consolidation + Quiz
@@ -651,6 +661,7 @@ src/components/aulas/portugues/AulaSintaxe.tsx (2.997 linhas)
 - [ ] Quizzes em arquivo separado `data/[topico]-quizzes.ts`
 
 ### Design
+
 - [ ] `getModuleVariant(N)` em TODOS os componentes com variant
 - [ ] `mode="stacked"` em todos os ContentAccordion
 - [ ] Emoji apenas em `icone`, nunca em `titulo`
@@ -658,6 +669,7 @@ src/components/aulas/portugues/AulaSintaxe.tsx (2.997 linhas)
 - [ ] Import de `getModuleVariant` de `@/lib/moduleColors`
 
 ### Scripts
+
 - [ ] `fix_count.py` sem erros
 - [ ] `fix_consolidation_position.py` sem mudanças necessárias
 - [ ] `fix-module-variants.js` executado
@@ -670,16 +682,16 @@ src/components/aulas/portugues/AulaSintaxe.tsx (2.997 linhas)
 
 ## MÉTRICAS DE QUALIDADE ULTIMATE
 
-| Métrica | Premium (antigo) | ULTIMATE (novo) |
-|---------|-----------------|-----------------|
-| Linhas de código | 2.500+ | 3.500+ |
-| Parágrafos por módulo | 0-1 | 4-6 |
-| Linhas de texto intro por módulo | 0-10 | 80-150 |
-| Cobertura quiz ↔ texto | Parcial | 100% |
-| Acordeons C.E.D.E. por módulo | 3-4 | 4 (reforço) |
-| Fontes acadêmicas citadas | 0 | 1+ por módulo |
-| Exemplos por módulo | 2-3 | 3-5 |
-| Contexto Petrobras | Opcional | Obrigatório |
+| Métrica                          | Premium (antigo) | ULTIMATE (novo) |
+| -------------------------------- | ---------------- | --------------- |
+| Linhas de código                 | 2.500+           | 3.500+          |
+| Parágrafos por módulo            | 0-1              | 4-6             |
+| Linhas de texto intro por módulo | 0-10             | 80-150          |
+| Cobertura quiz ↔ texto           | Parcial          | 100%            |
+| Acordeons C.E.D.E. por módulo    | 3-4              | 4 (reforço)     |
+| Fontes acadêmicas citadas        | 0                | 1+ por módulo   |
+| Exemplos por módulo              | 2-3              | 3-5             |
+| Contexto Petrobras               | Opcional         | Obrigatório     |
 
 ---
 

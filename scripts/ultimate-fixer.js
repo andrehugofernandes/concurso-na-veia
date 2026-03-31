@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { safeWriteFile, findTsxFiles } = require("./lib/safety");
+const { safeWriteFile, findTsxFiles, findSelfClosingTagBounds } = require("./lib/safety");
 
 /**
  * Motor Ultimate - Sincronizador de Aulas
@@ -68,70 +68,138 @@ files.forEach(file => {
         );
     }
 
-    // --- 2. PROCESSAMENTO POR MÓDULO ---
-    const moduleMatches = content.match(/<TabsContent\s+value="modulo-(\d+)"[^>]*>([\s\S]*?)<\/TabsContent>/g);
-    
-    if (moduleMatches) {
-        moduleMatches.forEach(block => {
-            const moduleNum = parseInt(block.match(/value="modulo-(\d+)"/)[1]);
-            let newBlock = block;
-            
-            // A. ModuleBanner: Limpeza de gradiente e variant mv[N]
-            newBlock = newBlock.replace(/<ModuleBanner([\s\S]*?)\/>/g, (match, props) => {
-                let newProps = props.replace(/gradiente="[^"]*"/g, "").trim();
-                newProps = newProps.replace(/variant=\{[^}]*\}/g, "").trim();
-                newProps = newProps.replace(/variant="[^"]*"/g, "").trim();
-                // Limpar espaços duplos
-                newProps = newProps.replace(/\s+/g, " ");
-                return `<ModuleBanner ${newProps} variant={mv[${moduleNum}]} />`;
-            });
+    // --- 2. PROCESSAMENTO POR MÓDULO (MOTOR V4 ORCHESTRATOR) ---
+    const tabsRegex = /<TabsContent\s+value="modulo-(\d+)"[^>]*>([\s\S]*?)<\/TabsContent>/g;
+    let match;
+    const blocks = [];
 
-            // B. ModuleSectionHeader: Sync variant
-            newBlock = newBlock.replace(/<ModuleSectionHeader([\s\S]*?)\/>/g, (match, props) => {
-                let newProps = props.replace(/variant=\{[^}]*\}/g, "").trim();
-                newProps = newProps.replace(/variant="[^"]*"/g, "").trim();
-                newProps = newProps.replace(/\s+/g, " ");
-                return `<ModuleSectionHeader ${newProps} variant={mv[${moduleNum}]} />`;
-            });
+    // Mapeamento de Mnemônicos ULTIMATE
+    const mnemonicsMap = {
+        1: { k: "NOME", p: "Nomeia, Objetivo, Material, Estado." },
+        2: { k: "QUAL", p: "Qualificador, Um atributo, Acorda com o nome, Localizado próximo." },
+        3: { k: "SINA", p: "Substantivador, Identificador, Número/Gênero, Anteposto ao nome." },
+        4: { k: "SUBRE", p: "SUBstitui ou REfere-se ao nome para coesão." },
+        5: { k: "COFM", p: "Cardinal, Ordinal, Fracionário, Multiplicativo." },
+        6: { k: "FEA", p: "Fato, Estado ou Ação em uma linha do tempo." },
+        7: { k: "CILA", p: "Contexto, Invariável, Local/Modo, Adjetivo/Verbo/Advérbio." },
+        8: { k: "LIGA", p: "Ligação, Invariável, Gerador de sentido, Antes do termo." },
+        9: { k: "CONE", p: "Conector de Orações, Não varia, Elemento de ligação." },
+        10: { k: "EMO", p: "Expressão Modificadora de Oh/Emoção!" }
+    };
 
-            // C. Tipografia Editorial: text-lg text-justify em div de intro
-            // Encontra <div className="... text-base ...">
-            newBlock = newBlock.replace(/className="([^"]*)\b(text-base|text-sm|text-xs)\b([^"]*)"/g, (match, before, size, after) => {
-                const newClasses = `${before}text-lg text-justify text-foreground/85 leading-relaxed${after}`.replace(/\s+/g, " ").trim();
-                return `className="${newClasses}"`;
-            });
-
-            // D. Indexação Sequencial Automática
-            let currentIdx = 0;
-            // Normaliza índices para marcação temporária em headers e componentes que usam index
-            newBlock = newBlock.replace(/index=\{\d+\}/g, 'index={__IDX__}');
-            // Aplica sequência
-            newBlock = newBlock.replace(/index=\{__IDX__\}/g, () => {
-                currentIdx++;
-                return `index={${currentIdx}}`;
-            });
-
-            // E. QuizInterativo: Último índice + 1
-            newBlock = newBlock.replace(/<QuizInterativo([\s\S]*?)\/>/g, (match, props) => {
-                let newProps = props.replace(/(numero=\{\d+\}|numero=\{[^}]*\})/g, "").trim();
-                newProps = newProps.replace(/variant=\{[^}]*\}/g, "").trim();
-                newProps = newProps.replace(/\s+/g, " ");
-                return `<QuizInterativo ${newProps} numero={${currentIdx + 1}} variant={mv[${moduleNum}]} />`;
-            });
-
-            if (newBlock !== block) {
-                content = content.replace(block, newBlock);
-                modified = true;
-            }
-        });
+    while ((match = tabsRegex.exec(content)) !== null) {
+        blocks.push({ full: match[0], num: parseInt(match[1]), body: match[2] });
     }
+
+    blocks.forEach(({ full, num, body }) => {
+        let newBody = body;
+        const v = `mv[${num}]`;
+
+        // Extrair o nome do módulo do ModuleBanner se existir
+        const bannerMatch = newBody.match(/<ModuleBanner[^>]*titulo="([^"]+)"/);
+        const moduleName = bannerMatch ? bannerMatch[1] : `Módulo ${num}`;
+
+        // A. Banners, Headers e Quizzes (Prop Variant)
+        const componentsToSync = ["ModuleBanner", "ModuleSectionHeader", "QuizInterativo", "ModuleConsolidation", "AlertBox"];
+        componentsToSync.forEach(comp => {
+            const regex = new RegExp(`<${comp}([\\s\\S]*?)\/>`, "g");
+            newBody = newBody.replace(regex, (m, props) => {
+                let nProps = props.replace(/variant=\{[^}]*\}/g, "").replace(/variant="[^"]*"/g, "").trim();
+                if (comp === "ModuleBanner") nProps = nProps.replace(/gradiente="[^"]*"/g, "");
+                if (comp === "QuizInterativo") nProps = nProps.replace(/numero=\{\d+\}/g, "");
+                return `<${comp} ${nProps.replace(/\s+/g, " ")} variant={${v}} />`;
+            });
+        });
+
+        // B. ContentAccordion (corIndicador)
+        const colorMap = {
+            1: "bg-amber-500", 2: "bg-blue-500", 3: "bg-emerald-500", 4: "bg-rose-500", 5: "bg-violet-500",
+            6: "bg-amber-600", 7: "bg-blue-600", 8: "bg-emerald-600", 9: "bg-rose-600", 10: "bg-violet-600"
+        };
+        
+        let accordionIdx = 0;
+        while (true) {
+            const bounds = findSelfClosingTagBounds(newBody, "ContentAccordion", accordionIdx);
+            if (!bounds) break;
+            const { start, end, tag } = bounds;
+            const props = tag.substring(tag.indexOf("ContentAccordion") + 16, tag.length - 2);
+            let nProps = props.replace(/corIndicador="[^"]*"/g, "").trim();
+            const newTag = `<ContentAccordion ${nProps.replace(/\s+/g, " ")} corIndicador="${colorMap[num]}" />`;
+            newBody = newBody.substring(0, start) + newTag + newBody.substring(end);
+            accordionIdx = start + newTag.length;
+        }
+
+        // C. Standardização de Resumo e Mesa de Revisão (4 ABAS)
+        // Procura por ModuleSummaryCarouselNew e sincroniza moduloNome
+        newBody = newBody.replace(/<ModuleSummaryCarouselNew([\s\S]*?)\/>/g, (m, props) => {
+            let nProps = props.replace(/moduloNome="[^"]*"/g, "").trim();
+            return `<ModuleSummaryCarouselNew ${nProps.replace(/\s+/g, " ")} moduloNome="M${num}: ${moduleName}" />`;
+        });
+
+        // D. Injeção de Mnemônicos Gramaticais (Macete Visual)
+        // O script agora procura por blocos de aba 'macete' e injeta a estrutura padrão
+        const mnemonic = mnemonicsMap[num] || { k: "SAAS", p: "Padronização Ultimate." };
+        
+        // Regex para capturar a aba com id: "macete" e seu conteúdo
+        const maceteTabRegex = /\{\s*id:\s*"macete",[\s\S]*?label:\s*"Macete Visual",[\s\S]*?content:\s*\(([\s\S]*?)\),\s*\}/g;
+        newBody = newBody.replace(maceteTabRegex, (match, content) => {
+            const themeColor = colorMap[num].replace("bg-", "text-");
+            const bgColor = `${colorMap[num]}/5`;
+            const borderColor = `${colorMap[num]}/20`;
+
+            return `{
+                id: "macete",
+                label: "Macete Visual",
+                icon: LuZap,
+                content: (
+                  <div className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-background to-${colorMap[num].replace("bg-", "")}-50/10 rounded-2xl border border-${borderColor.split("/")[0]} shadow-sm space-y-6">
+                    <div className="text-6xl font-black ${themeColor} tracking-tighter drop-shadow-sm">
+                      ${mnemonic.k}
+                    </div>
+                    <div className="text-center space-y-2">
+                       <h4 className="text-xl font-bold text-foreground">O Mnemônico de Ouro</h4>
+                       <p className="text-lg text-muted-foreground whitespace-pre-line">${mnemonic.p}</p>
+                    </div>
+                  </div>
+                ),
+              }`;
+        });
+
+
+        // E. Tipografia Editorial
+        newBody = newBody.replace(/<p className="([^"]*)">/g, (m, classes) => {
+            if (classes.includes("text-muted-foreground") || classes.includes("font-bold") || classes.length < 10) return m;
+            let nClasses = classes.replace(/\b(text-base|text-sm|text-xs|text-lg|text-justify)\b/g, "").trim();
+            nClasses = `${nClasses} text-lg text-justify text-foreground/85 leading-relaxed`.replace(/\s+/g, " ").trim();
+            return `<p className="${nClasses}">`;
+        });
+
+        // F. Indexação e Quiz
+        let idx = 0;
+        newBody = newBody.replace(/index=\{\d+\}/g, 'index={__IDX__}');
+        newBody = newBody.replace(/index=\{__IDX__\}/g, () => { idx++; return `index={${idx}}`; });
+        newBody = newBody.replace(/<QuizInterativo ([\s\S]*?)variant={${v}} \/>/g, (m, props) => {
+            const cleanProps = props.replace(/numero=\{\d+\}/g, "").trim();
+            return `<QuizInterativo ${cleanProps} numero={${idx + 1}} variant={${v}} />`;
+        });
+
+        if (newBody !== body) {
+            const newFull = full.replace(body, newBody);
+            content = content.replace(full, newFull);
+            modified = true;
+        }
+    });
 
     if (modified) {
-        const success = safeWriteFile(file, content, originalContent, { relPath: path.basename(file) });
+        const success = safeWriteFile(file, content, originalContent, { relPath: path.basename(file), force: isForce });
         if (success || isForce) {
-            console.log(`✅ [SUCESSO] ${path.basename(file)} padronizado.`);
+            console.log(`✅ [SUCESSO] ${path.basename(file)} atingiu padrão ULTIMATE V4.`);
         }
     } else {
-        console.log(`✨ [OK] ${path.basename(file)} já estava no padrão.`);
+        console.log(`✨ [OK] ${path.basename(file)} já estava no padrão V4.`);
     }
 });
+
+
+
+

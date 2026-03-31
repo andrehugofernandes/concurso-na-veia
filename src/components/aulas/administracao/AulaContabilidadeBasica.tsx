@@ -74,7 +74,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         numero={1} 
         titulo="Fundamentos de Contabilidade" 
         descricao="A base estratégica para gestão e tomada de decisão organizacional."
-        variant="amber"
+        variant={getModuleVariant(1)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -82,7 +82,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           index={1}
           title="Fundamentos de Contabilidade"
           description="Entenda por que a contabilidade é essencial para qualquer organização, especialmente em contexto Petrobras."
-          variant="amber"
+          variant={getModuleVariant(1)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
@@ -180,7 +180,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Fundamentos da Profissão"
         numero={1}
-        variant="amber"
+        variant={getModuleVariant(1)}
         questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-1"])}
         onComplete={(score: number) => handleQuizComplete("modulo-1", score)}
       />
@@ -193,7 +193,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         numero={2} 
         titulo="Equação Contábil Fundamentals" 
         descricao="Entenda Ativo, Passivo e Patrimônio Líquido em perfeito equilíbrio."
-        variant="emerald"
+        variant={getModuleVariant(2)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -201,7 +201,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           index={2}
           title="Equação Contábil"
           description="A base matemática que sustenta toda a contabilidade: Ativo = Passivo + Patrimônio Líquido."
-          variant="amber"
+          variant={getModuleVariant(2)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
@@ -299,7 +299,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Desafio da Equação"
         numero={2}
-        variant="emerald"
+        variant={getModuleVariant(2)}
         questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-2"])}
         onComplete={(score: number) => handleQuizComplete("modulo-2", score)}
       />
@@ -312,7 +312,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         numero={3} 
         titulo="Plano de Contas" 
         descricao="O mapa estruturado e hierárquico das operações financeiras."
-        variant="violet"
+        variant={getModuleVariant(3)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -320,7 +320,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           index={3}
           title="Plano de Contas"
           description="O mapa estruturado que organiza todas as contas contábeis de uma empresa."
-          variant="amber"
+          variant={getModuleVariant(3)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
@@ -426,7 +426,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Mapeamento de Contas"
         numero={3}
-        variant="violet"
+        variant={getModuleVariant(3)}
         questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-3"])}
         onComplete={(score: number) => handleQuizComplete("modulo-3", score)}
       />
@@ -439,7 +439,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         numero={4} 
         titulo="Lançamentos Contábeis" 
         descricao="A prática do débito e crédito no dia a dia da Petrobras."
-        variant="emerald"
+        variant={getModuleVariant(4)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -447,7 +447,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           index={4}
           title="Lançamentos Contábeis"
           description="Como registrar operações através do método das partidas dobradas."
-          variant="amber"
+          variant={getModuleVariant(4)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
@@ -554,7 +554,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Domine os Lançamentos"
         numero={4}
-        variant="emerald"
+        variant={getModuleVariant(4)}
         questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-4"])}
         onComplete={(score: number) => handleQuizComplete("modulo-4", score)}
       />
@@ -567,7 +567,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         numero={5} 
         titulo="Balancete de Verificação" 
         descricao="A segurança de que os débitos e créditos estão em perfeito equilíbrio."
-        variant="amber"
+        variant={getModuleVariant(5)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -575,7 +575,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           index={5}
           title="Balancete de Verificação"
           description="Ferramenta de auditoria interna que verifica integridade dos registros contábeis."
-          variant="amber"
+          variant={getModuleVariant(5)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
@@ -681,7 +681,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Desafio do Equilíbrio"
         numero={5}
-        variant="amber"
+        variant={getModuleVariant(5)}
         questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-5"])}
         onComplete={(score: number) => handleQuizComplete("modulo-5", score)}
       />
@@ -694,7 +694,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         numero={6} 
         titulo="Demonstrações Contábeis" 
         descricao="O espelho da saúde financeira da Petrobras para o mercado."
-        variant="violet"
+        variant={getModuleVariant(6)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -702,7 +702,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           index={6}
           title="Demonstrações Contábeis"
           description="As peças principais que comunicam situação financeira ao mercado e stakeholders."
-          variant="amber"
+          variant={getModuleVariant(6)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
@@ -800,7 +800,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Mestre dos Relatórios"
         numero={6}
-        variant="violet"
+        variant={getModuleVariant(6)}
         questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-6"])}
         onComplete={(score: number) => handleQuizComplete("modulo-6", score)}
       />
@@ -813,7 +813,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         numero={7} 
         titulo="Análise de Demonstrações" 
         descricao="Transformando números brutos em insights estratégicos de gestão."
-        variant="amber"
+        variant={getModuleVariant(7)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -821,7 +821,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           index={7}
           title="Análise de Demonstrações"
           description="Interpretação de dados financeiros através de índices e tendências."
-          variant="amber"
+          variant={getModuleVariant(7)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
@@ -927,7 +927,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Raio-X Financeiro"
         numero={7}
-        variant="amber"
+        variant={getModuleVariant(7)}
         questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-7"])}
         onComplete={(score: number) => handleQuizComplete("modulo-7", score)}
       />
@@ -940,7 +940,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         numero={8} 
         titulo="Contabilidade de Custos" 
         descricao="A ciência da eficiência: rastreando cada centavo do processo produtivo."
-        variant="emerald"
+        variant={getModuleVariant(8)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -948,7 +948,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           index={8}
           title="Contabilidade de Custos"
           description="Análise de custos para otimizar operações e decisões de produção."
-          variant="amber"
+          variant={getModuleVariant(8)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
@@ -1055,7 +1055,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Engenharia de Custos"
         numero={8}
-        variant="emerald"
+        variant={getModuleVariant(8)}
         questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-8"])}
         onComplete={(score: number) => handleQuizComplete("modulo-8", score)}
       />
@@ -1068,7 +1068,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         numero={9} 
         titulo="Contabilidade na Petrobras" 
         descricao="Transparência, Compliance e IFRS em uma gigante global de capital misto."
-        variant="violet"
+        variant={getModuleVariant(9)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1076,7 +1076,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           index={9}
           title="Contabilidade na Petrobras"
           description="Aplicação prática de contabilidade em contexto de estatal de capital aberto."
-          variant="amber"
+          variant={getModuleVariant(9)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
@@ -1175,7 +1175,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Elite e Compliance"
         numero={9}
-        variant="violet"
+        variant={getModuleVariant(9)}
         questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-9"])}
         onComplete={(score: number) => handleQuizComplete("modulo-9", score)}
       />
@@ -1188,7 +1188,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
         numero={10} 
         titulo="Simulado Mestre - Contabilidade" 
         descricao="O desafio final: integre todos os conceitos e valide seu domínio."
-        variant="rose"
+        variant={getModuleVariant(10)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1196,7 +1196,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
           index={10}
           title="Simulado Mestre"
           description="Avaliação integrada consolidando todos os conceitos de contabilidade básica."
-          variant="amber"
+          variant={getModuleVariant(10)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
@@ -1236,7 +1236,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
 
       <ModuleConsolidation
         index={10}
-        variant="rose"
+        variant={getModuleVariant(10)}
         video={{
           videoId: "cont-m10",
           title: "Dicas de Prova",
@@ -1303,7 +1303,7 @@ export default function AulaContabilidadeBasica({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="O Grande Final"
         numero={10}
-        variant="rose"
+        variant={getModuleVariant(10)}
         questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-10"])}
         onComplete={(score: number) => handleQuizComplete("modulo-10", score)}
       />

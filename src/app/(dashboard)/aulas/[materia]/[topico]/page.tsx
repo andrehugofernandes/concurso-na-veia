@@ -439,6 +439,40 @@ const AulaAdministracaoTributaria = dynamic<AulaProps>(
   },
 );
 
+const AulaAdministracaoGeralSuprimento = dynamic<AulaProps>(
+  () =>
+    import("@/components/aulas/administracao/AulaAdministracaoGeralSuprimento"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaGestaoQualidadeSuprimento = dynamic<AulaProps>(
+  () =>
+    import("@/components/aulas/administracao/AulaGestaoQualidadeSuprimento"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaLogisticaSuprimento = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaLogisticaSuprimento"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaComprasSuprimento = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaComprasSuprimento"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
 const AulaEngenhariaSoftware = dynamic<AulaProps>(
   () => import("@/components/aulas/ti/AulaEngenhariaSoftware"),
   {
@@ -693,7 +727,7 @@ O rendimento máximo teórico é dado pelo Ciclo de Carnot:
       titulo: "Lei 13.303 - Empresa Estatal",
       secoes: [],
     },
-    "rlcp": {
+    rlcp: {
       titulo: "RLCP - Regulamento de Licitações Petrobras",
       secoes: [],
     },
@@ -786,1164 +820,1347 @@ export default function TopicoPage({ params }: PageProps) {
   return (
     <HeaderStateProvider>
       <div className="min-h-screen bg-background">
-      {/* Main Content */}
-      <main className="w-full">
-        {/* Article Content */}
-        <article className="w-full">
-          {materiaId === "portugues" && topicoId === "interpretacao-texto" ? (
-            <AulaInterpretacaoTexto
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "portugues" && topicoId === "concordancia" ? (
-            <AulaConcordancia
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "portugues" && topicoId === "reescrita-frases" ? (
-            <AulaReescritaFrases
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "portugues" && topicoId === "coesao-coerencia" ? (
-            <AulaCoesaoCoerencia
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "portugues" && topicoId === "crase" ? (
-            <AulaCrase
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "portugues" && topicoId === "pontuacao" ? (
-            <AulaPontuacao
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "portugues" && topicoId === "regencia" ? (
-            <AulaRegencia
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "portugues" && topicoId === "sintaxe" ? (
-            <AulaSintaxe
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "portugues" && topicoId === "classes-palavras" ? (
-            <AulaClassesPalavras
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "portugues" && topicoId === "tipos-textuais" ? (
-            <AulaTiposTextuais
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "portugues" && topicoId === "ortografia" ? (
-            <AulaOrtografia
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "conjuntos" ? (
-            <AulaConjuntos
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "razao-proporcao" ? (
-            <AulaRazaoProporcao
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "porcentagem" ? (
-            <AulaPorcentagem
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "equacoes-1grau" ? (
-            <AulaEquacoes1Grau
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "equacoes-2grau" ? (
-            <AulaEquacoes2Grau
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" &&
-            topicoId === "funcoes-afim-quadratica" ? (
-            <AulaFuncoesAfimQuadratica
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" &&
-            topicoId === "funcoes-exponenciais" ? (
-            <AulaFuncoesExponenciais
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" &&
-            topicoId === "funcoes-logaritmicas" ? (
-            <AulaFuncoesLogaritmicas
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "progressoes-pa" ? (
-            <AulaProgressoesPa
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "progressoes-pg" ? (
-            <AulaProgressoesPg
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "probabilidade" ? (
-            <AulaProbabilidade
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "matrizes-determinantes" ? (
-            <AulaMatrizesDeterminantes
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "analise-combinatoria" ? (
-            <AulaAnaliseCombinatoria
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "trigonometria" ? (
-            <AulaTrigonometria
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "trigonometria" ? (
-            <AulaTrigonometria
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "geometria-plana" ? (
-            <AulaGeometriaPlana
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "geometria-espacial" ? (
-            <AulaGeometriaEspacial
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "geometria-analitica" ? (
-            <AulaGeometriaAnalitica
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "matematica-financeira" ? (
-            <AulaMatematicaFinanceira
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "matematica" && topicoId === "sistemas-lineares" ? (
-            <AulaSistemasLineares
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "ingles" && topicoId === "petrolingo" ? (
-            <PetroLingoMain />
-          ) : materiaId === "especifica-bloco-i-fundamentos" && topicoId === "termodinamica" ? (
-            <AulaTermodinamica
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "ingles" && topicoId === "reading-strategies" ? (
-            <AulaReadingStrategies
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "ingles" && topicoId === "verb-tenses" ? (
-            <AulaVerbTenses
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "ingles" && topicoId === "connectors" ? (
-            <AulaConnectors
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "ingles" && topicoId === "vocabulary" ? (
-            <AulaVocabulary
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "ingles" && topicoId === "false-cognates" ? (
-            <AulaFalseCognates
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "ingles" && topicoId === "comprehension" ? (
-            <AulaTextComprehension
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "especifica-bloco-i-gestao-estrategica" && topicoId === "planejamento-estrategico" ? (
-            <AulaPlanejamentoEstrategico
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "especifica-bloco-i-gestao-estrategica" && topicoId === "gestao-de-processos" ? (
-            <AulaGestaoProcessos
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "especifica-bloco-i-gestao-estrategica" && topicoId === "gestao-de-projetos-pmbok" ? (
-            <AulaGestaoProjetos
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "especifica-bloco-i-gestao-estrategica" && topicoId === "governanca-corporativa" ? (
-            <AulaGovernancaCorporativa
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "especifica-bloco-ii-gestao-de-pessoas-e-marketing" && topicoId === "gestao-pessoas" ? (
-            <AulaGestãoDePessoas
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "especifica-bloco-ii-gestao-de-pessoas-e-marketing" && topicoId === "gestao-recursos-humanos" ? (
-            <AulaGestãoDeRecursosHumanos
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "especifica-bloco-ii-gestao-de-pessoas-e-marketing" && topicoId === "marketing-gerencial" ? (
-            <AulaMarketingGerencial
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "especifica-bloco-ii-legislacao-tributos" && topicoId === "lei-13303" ? (
-            <AulaLei13303
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "especifica-bloco-ii-legislacao-tributos" && topicoId === "rlcp" ? (
-            <AulaRLCP
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "especifica-bloco-ii-legislacao-tributos" && topicoId === "administrativo-tributario" ? (
-            <AulaAdministrativoTributario
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "especifica-bloco-iii-tributos-suprimento" && topicoId === "contabilidade-basica-suprimento" ? (
-            <AulaContabilidadeBasica
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "especifica-bloco-iii-tributos-suprimento" && topicoId === "direito-tributario-suprimento" ? (
-            <AulaDireitoTributario
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "especifica-bloco-iii-tributos-suprimento" && topicoId === "administracao-tributaria-suprimento" ? (
-            <AulaAdministracaoTributaria
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : (materiaId === "especifica-bloco-i-desenvolvimento" || 
-               materiaId === "especifica-bloco-ii-engenharia-de-software" || 
-               materiaId === "especifica-bloco-iii-arquitetura-e-bd") ? (
-            <AulaEngenhariaSoftware
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : (materiaId === "especifica-bloco-i-redes-e-comunicacao" ||
-               materiaId === "especifica-bloco-ii-sistemas-operacionais" ||
-               materiaId === "especifica-bloco-iii-gestao-e-nuvem") ? (
-            <AulaEngenhariaSoftware
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "especifica-bloco-i-fundamentos" && topicoId === "mecanica-fluidos" ? (
-            <AulaMecanicaFluidos
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "nrs" && topicoId === "nr10" ? (
-            <AulaNr10
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "nrs" && topicoId === "nr35" ? (
-            <AulaNr35
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "manutencao" && topicoId === "metrologia" ? (
-            <AulaMetrologia
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : materiaId === "manutencao" && topicoId === "desenho-tecnico" ? (
-            <AulaDesenhoTecnico
-              onComplete={handleCompleteAula}
-              isCompleted={isCompleted}
-              loading={loading}
-              xpGanho={xpGanho}
-              currentProgress={progress}
-              onUpdateProgress={updateProgress}
-              titulo={topico.titulo}
-              descricao={topico.descricao}
-              duracao={topico.duracao}
-              materiaNome={materia.nome}
-              materiaCor={materia.cor}
-              materiaId={materiaId}
-              prevTopico={prevTopico}
-              nextTopico={nextTopico}
-            />
-          ) : conteudo ? (
-            conteudo.secoes.map((secao, index) => (
-              <section
-                key={index}
-                className="mb-12 max-w-7xl mx-auto px-6 pt-12"
-              >
-                <h2 className="text-2xl font-bold text-yellow-400 mb-4 flex items-center gap-2">
-                  <span className="w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center text-sm">
-                    {index + 1}
-                  </span>
-                  {secao.subtitulo}
-                </h2>
-                <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50">
-                  {secao.texto.split("\n\n").map((paragrafo, pIndex) => (
-                    <p
-                      key={pIndex}
-                      className="text-gray-300 mb-4 last:mb-0 whitespace-pre-line leading-relaxed"
-                    >
-                      {paragrafo}
-                    </p>
-                  ))}
-                </div>
-              </section>
-            ))
-          ) : (
-            <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
-              <div className="relative overflow-hidden bg-white/5 dark:bg-slate-900/40 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl p-8 md:p-16 text-center group">
-                {/* Decorative background glow */}
-                <div className={`absolute -top-24 -right-24 w-64 h-64 bg-gradient-to-br ${materia.cor} opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-700`} />
-                <div className={`absolute -bottom-24 -left-24 w-64 h-64 bg-gradient-to-br ${materia.cor} opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-700`} />
-
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className={`flex items-center justify-center w-24 h-24 rounded-3xl bg-gradient-to-br ${materia.cor} text-5xl mb-8 shadow-2xl shadow-primary/20 animate-bounce-subtle`}>
-                    {materia.icone}
-                  </div>
-                  
-                  <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 uppercase tracking-tight">
-                    {topico.titulo}
-                  </h2>
-                  
-                  <div className="h-1 w-20 bg-gradient-to-r from-transparent via-primary to-transparent mb-8" />
-                  
-                  <h3 className="text-xl md:text-2xl font-bold text-yellow-500 mb-6 flex items-center gap-3">
-                    <span className="animate-pulse">🚧</span> Conteúdo em Preparação Especial
-                  </h3>
-                  
-                  <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed mb-12">
-                     O conteúdo desta aula está sendo finalizado pela nossa equipe pedagógica para garantir a melhor experiência de aprendizado focada no edital da <span className="text-foreground font-bold italic">Petrobras</span>. 
-                     Em breve, vídeos, resumos e questões estarão disponíveis aqui.
-                  </p>
-                  
-                  <div className="flex flex-wrap justify-center gap-4">
-                    <Link 
-                      href={`/aulas/${materiaId}`}
-                      className="px-8 py-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-foreground font-bold transition-all flex items-center gap-2 group/btn"
-                    >
-                      <span className="group-hover/btn:-translate-x-1 transition-transform">←</span>
-                      Voltar para a ementa
-                    </Link>
-                    <button 
-                      disabled
-                      className="px-8 py-4 rounded-2xl bg-slate-800 text-slate-500 border border-slate-700 font-bold opacity-50 cursor-not-allowed"
-                    >
-                      Material em breve
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Sugestão de matérias básicas */}
-              <div className="mt-12 text-center">
-                <p className="text-muted-foreground mb-4">Enquanto isso, que tal revisar os conhecimentos básicos?</p>
-                <div className="flex justify-center gap-4 flex-wrap">
-                  <Link href="/aulas/portugues" className="text-sm font-bold text-blue-400 hover:text-blue-300 transition underline underline-offset-4">Português</Link>
-                  <Link href="/aulas/matematica" className="text-sm font-bold text-purple-400 hover:text-purple-300 transition underline underline-offset-4">Matemática</Link>
-                </div>
-              </div>
-            </div>
-          )}
-        </article>
-
-        {/* Completion CTA — only for generic lessons */}
-        {conteudo &&
-          ![
-            "interpretacao-texto",
-            "concordancia",
-            "reescrita-frases",
-            "coesao-coerencia",
-            "crase",
-            "pontuacao",
-            "regencia",
-            "sintaxe",
-            "classes-palavras",
-            "tipos-textuais",
-            "ortografia",
-            "conjuntos",
-            "razao-proporcao",
-            "porcentagem",
-            "equacoes-1grau",
-            "equacoes-2grau",
-            "funcoes-afim-quadratica",
-            "funcoes-exponenciais",
-            "funcoes-logaritmicas",
-            "progressoes-pa",
-            "progressoes-pg",
-            "probabilidade",
-            "matrizes-determinantes",
-            "analise-combinatoria",
-            "trigonometria",
-            "geometria-plana",
-            "geometria-espacial",
-            "geometria-analitica",
-            "matematica-financeira",
-            "sistemas-lineares",
-            "trigonometria",
-            "planejamento-estrategico",
-            "gestao-de-processos",
-            "gestao-de-projetos-pmbok",
-            "governanca-corporativa",
-            "gestao-pessoas",
-            "gestao-recursos-humanos",
-            "marketing-gerencial",
-            "lei-13303",
-            "rlcp",
-            "administrativo-tributario",
-            "reading-strategies",
-          ].includes(topicoId) && (
-            <div className="max-w-7xl mx-auto px-6 pb-32">
-              <div className="mt-12 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-8 border border-yellow-500/30 text-center">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
-                  {isCompleted ? "✅ Aula Concluída!" : "📖 Termine a leitura"}
-                </h3>
-                <p className="text-slate-600 dark:text-gray-400 mb-4">
-                  {isCompleted
-                    ? `Parabéns! Você ganhou +${xpGanho || 50} XP`
-                    : "Role até o final para marcar esta aula como concluída e ganhar XP"}
-                </p>
-                <button
-                  onClick={handleCompleteAula}
-                  disabled={isCompleted || loading}
-                  className={`px-6 py-3 rounded-xl font-bold transition ${
-                    isCompleted
-                      ? "bg-green-600 text-white cursor-not-allowed"
-                      : loading
-                        ? "bg-gray-600 text-gray-400 cursor-wait"
-                        : "bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 hover:shadow-lg hover:shadow-orange-500/25"
-                  }`}
+        {/* Main Content */}
+        <main className="w-full">
+          {/* Article Content */}
+          <article className="w-full">
+            {materiaId === "portugues" && topicoId === "interpretacao-texto" ? (
+              <AulaInterpretacaoTexto
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "portugues" && topicoId === "concordancia" ? (
+              <AulaConcordancia
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "portugues" && topicoId === "reescrita-frases" ? (
+              <AulaReescritaFrases
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "portugues" && topicoId === "coesao-coerencia" ? (
+              <AulaCoesaoCoerencia
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "portugues" && topicoId === "crase" ? (
+              <AulaCrase
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "portugues" && topicoId === "pontuacao" ? (
+              <AulaPontuacao
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "portugues" && topicoId === "regencia" ? (
+              <AulaRegencia
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "portugues" && topicoId === "sintaxe" ? (
+              <AulaSintaxe
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "portugues" && topicoId === "classes-palavras" ? (
+              <AulaClassesPalavras
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "portugues" && topicoId === "tipos-textuais" ? (
+              <AulaTiposTextuais
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "portugues" && topicoId === "ortografia" ? (
+              <AulaOrtografia
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" && topicoId === "conjuntos" ? (
+              <AulaConjuntos
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" && topicoId === "razao-proporcao" ? (
+              <AulaRazaoProporcao
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" && topicoId === "porcentagem" ? (
+              <AulaPorcentagem
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" && topicoId === "equacoes-1grau" ? (
+              <AulaEquacoes1Grau
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" && topicoId === "equacoes-2grau" ? (
+              <AulaEquacoes2Grau
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" &&
+              topicoId === "funcoes-afim-quadratica" ? (
+              <AulaFuncoesAfimQuadratica
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" &&
+              topicoId === "funcoes-exponenciais" ? (
+              <AulaFuncoesExponenciais
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" &&
+              topicoId === "funcoes-logaritmicas" ? (
+              <AulaFuncoesLogaritmicas
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" && topicoId === "progressoes-pa" ? (
+              <AulaProgressoesPa
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" && topicoId === "progressoes-pg" ? (
+              <AulaProgressoesPg
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" && topicoId === "probabilidade" ? (
+              <AulaProbabilidade
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" &&
+              topicoId === "matrizes-determinantes" ? (
+              <AulaMatrizesDeterminantes
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" &&
+              topicoId === "analise-combinatoria" ? (
+              <AulaAnaliseCombinatoria
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" && topicoId === "trigonometria" ? (
+              <AulaTrigonometria
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" && topicoId === "trigonometria" ? (
+              <AulaTrigonometria
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" && topicoId === "geometria-plana" ? (
+              <AulaGeometriaPlana
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" &&
+              topicoId === "geometria-espacial" ? (
+              <AulaGeometriaEspacial
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" &&
+              topicoId === "geometria-analitica" ? (
+              <AulaGeometriaAnalitica
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" &&
+              topicoId === "matematica-financeira" ? (
+              <AulaMatematicaFinanceira
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" &&
+              topicoId === "sistemas-lineares" ? (
+              <AulaSistemasLineares
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "ingles" && topicoId === "petrolingo" ? (
+              <PetroLingoMain />
+            ) : materiaId === "especifica-bloco-i-fundamentos" &&
+              topicoId === "termodinamica" ? (
+              <AulaTermodinamica
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "ingles" && topicoId === "reading-strategies" ? (
+              <AulaReadingStrategies
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "ingles" && topicoId === "verb-tenses" ? (
+              <AulaVerbTenses
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "ingles" && topicoId === "connectors" ? (
+              <AulaConnectors
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "ingles" && topicoId === "vocabulary" ? (
+              <AulaVocabulary
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "ingles" && topicoId === "false-cognates" ? (
+              <AulaFalseCognates
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "ingles" && topicoId === "comprehension" ? (
+              <AulaTextComprehension
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-gestao-estrategica" &&
+              topicoId === "planejamento-estrategico" ? (
+              <AulaPlanejamentoEstrategico
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-gestao-estrategica" &&
+              topicoId === "gestao-de-processos" ? (
+              <AulaGestaoProcessos
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-gestao-estrategica" &&
+              topicoId === "gestao-de-projetos-pmbok" ? (
+              <AulaGestaoProjetos
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-gestao-estrategica" &&
+              topicoId === "governanca-corporativa" ? (
+              <AulaGovernancaCorporativa
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId ===
+                "especifica-bloco-ii-gestao-de-pessoas-e-marketing" &&
+              topicoId === "gestao-pessoas" ? (
+              <AulaGestãoDePessoas
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId ===
+                "especifica-bloco-ii-gestao-de-pessoas-e-marketing" &&
+              topicoId === "gestao-recursos-humanos" ? (
+              <AulaGestãoDeRecursosHumanos
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId ===
+                "especifica-bloco-ii-gestao-de-pessoas-e-marketing" &&
+              topicoId === "marketing-gerencial" ? (
+              <AulaMarketingGerencial
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-ii-legislacao-tributos" &&
+              topicoId === "lei-13303" ? (
+              <AulaLei13303
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-ii-legislacao-tributos" &&
+              topicoId === "rlcp" ? (
+              <AulaRLCP
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-ii-legislacao-tributos" &&
+              topicoId === "administrativo-tributario" ? (
+              <AulaAdministrativoTributario
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-iii-tributos-suprimento" &&
+              topicoId === "contabilidade-basica-suprimento" ? (
+              <AulaContabilidadeBasica
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-iii-tributos-suprimento" &&
+              topicoId === "direito-tributario-suprimento" ? (
+              <AulaDireitoTributario
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-iii-tributos-suprimento" &&
+              topicoId === "administracao-tributaria-suprimento" ? (
+              <AulaAdministracaoTributaria
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
+              topicoId === "administracao-geral-suprimento" ? (
+              <AulaAdministracaoGeralSuprimento
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
+              topicoId === "gestao-qualidade-suprimento" ? (
+              <AulaGestaoQualidadeSuprimento
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
+              topicoId === "logistica-suprimento" ? (
+              <AulaLogisticaSuprimento
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
+              topicoId === "administracao-geral-suprimento" ? (
+              <AulaAdministracaoGeralSuprimento
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
+              topicoId === "gestao-qualidade-suprimento" ? (
+              <AulaGestaoQualidadeSuprimento
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
+              topicoId === "logistica-suprimento" ? (
+              <AulaLogisticaSuprimento
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
+              topicoId === "compras-suprimento" ? (
+              <AulaComprasSuprimento
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-desenvolvimento" ||
+              materiaId === "especifica-bloco-ii-engenharia-de-software" ||
+              materiaId === "especifica-bloco-iii-arquitetura-e-bd" ? (
+              <AulaEngenhariaSoftware
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-redes-e-comunicacao" ||
+              materiaId === "especifica-bloco-ii-sistemas-operacionais" ||
+              materiaId === "especifica-bloco-iii-gestao-e-nuvem" ? (
+              <AulaEngenhariaSoftware
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-fundamentos" &&
+              topicoId === "mecanica-fluidos" ? (
+              <AulaMecanicaFluidos
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "nrs" && topicoId === "nr10" ? (
+              <AulaNr10
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "nrs" && topicoId === "nr35" ? (
+              <AulaNr35
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "manutencao" && topicoId === "metrologia" ? (
+              <AulaMetrologia
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "manutencao" && topicoId === "desenho-tecnico" ? (
+              <AulaDesenhoTecnico
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : conteudo ? (
+              conteudo.secoes.map((secao, index) => (
+                <section
+                  key={index}
+                  className="mb-12 max-w-7xl mx-auto px-6 pt-12"
                 >
-                  {isCompleted
-                    ? "🏆 +50 XP Conquistados!"
-                    : loading
-                      ? "Carregando..."
-                      : "Marcar como Concluída"}
-                </button>
+                  <h2 className="text-2xl font-bold text-yellow-400 mb-4 flex items-center gap-2">
+                    <span className="w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center text-sm">
+                      {index + 1}
+                    </span>
+                    {secao.subtitulo}
+                  </h2>
+                  <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50">
+                    {secao.texto.split("\n\n").map((paragrafo, pIndex) => (
+                      <p
+                        key={pIndex}
+                        className="text-gray-300 mb-4 last:mb-0 whitespace-pre-line leading-relaxed"
+                      >
+                        {paragrafo}
+                      </p>
+                    ))}
+                  </div>
+                </section>
+              ))
+            ) : (
+              <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
+                <div className="relative overflow-hidden bg-white/5 dark:bg-slate-900/40 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl p-8 md:p-16 text-center group">
+                  {/* Decorative background glow */}
+                  <div
+                    className={`absolute -top-24 -right-24 w-64 h-64 bg-gradient-to-br ${materia.cor} opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-700`}
+                  />
+                  <div
+                    className={`absolute -bottom-24 -left-24 w-64 h-64 bg-gradient-to-br ${materia.cor} opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-700`}
+                  />
+
+                  <div className="relative z-10 flex flex-col items-center">
+                    <div
+                      className={`flex items-center justify-center w-24 h-24 rounded-3xl bg-gradient-to-br ${materia.cor} text-5xl mb-8 shadow-2xl shadow-primary/20 animate-bounce-subtle`}
+                    >
+                      {materia.icone}
+                    </div>
+
+                    <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 uppercase tracking-tight">
+                      {topico.titulo}
+                    </h2>
+
+                    <div className="h-1 w-20 bg-gradient-to-r from-transparent via-primary to-transparent mb-8" />
+
+                    <h3 className="text-xl md:text-2xl font-bold text-yellow-500 mb-6 flex items-center gap-3">
+                      <span className="animate-pulse">🚧</span> Conteúdo em
+                      Preparação Especial
+                    </h3>
+
+                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed mb-12">
+                      O conteúdo desta aula está sendo finalizado pela nossa
+                      equipe pedagógica para garantir a melhor experiência de
+                      aprendizado focada no edital da{" "}
+                      <span className="text-foreground font-bold italic">
+                        Petrobras
+                      </span>
+                      . Em breve, vídeos, resumos e questões estarão disponíveis
+                      aqui.
+                    </p>
+
+                    <div className="flex flex-wrap justify-center gap-4">
+                      <Link
+                        href={`/aulas/${materiaId}`}
+                        className="px-8 py-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-foreground font-bold transition-all flex items-center gap-2 group/btn"
+                      >
+                        <span className="group-hover/btn:-translate-x-1 transition-transform">
+                          ←
+                        </span>
+                        Voltar para a ementa
+                      </Link>
+                      <button
+                        disabled
+                        className="px-8 py-4 rounded-2xl bg-slate-800 text-slate-500 border border-slate-700 font-bold opacity-50 cursor-not-allowed"
+                      >
+                        Material em breve
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Sugestão de matérias básicas */}
+                <div className="mt-12 text-center">
+                  <p className="text-muted-foreground mb-4">
+                    Enquanto isso, que tal revisar os conhecimentos básicos?
+                  </p>
+                  <div className="flex justify-center gap-4 flex-wrap">
+                    <Link
+                      href="/aulas/portugues"
+                      className="text-sm font-bold text-blue-400 hover:text-blue-300 transition underline underline-offset-4"
+                    >
+                      Português
+                    </Link>
+                    <Link
+                      href="/aulas/matematica"
+                      className="text-sm font-bold text-purple-400 hover:text-purple-300 transition underline underline-offset-4"
+                    >
+                      Matemática
+                    </Link>
+                  </div>
+                </div>
               </div>
-            </div>
-          )}
-      </main>
-    </div>
-  </HeaderStateProvider>
+            )}
+          </article>
+
+          {/* Completion CTA — only for generic lessons */}
+          {conteudo &&
+            ![
+              "interpretacao-texto",
+              "concordancia",
+              "reescrita-frases",
+              "coesao-coerencia",
+              "crase",
+              "pontuacao",
+              "regencia",
+              "sintaxe",
+              "classes-palavras",
+              "tipos-textuais",
+              "ortografia",
+              "conjuntos",
+              "razao-proporcao",
+              "porcentagem",
+              "equacoes-1grau",
+              "equacoes-2grau",
+              "funcoes-afim-quadratica",
+              "funcoes-exponenciais",
+              "funcoes-logaritmicas",
+              "progressoes-pa",
+              "progressoes-pg",
+              "probabilidade",
+              "matrizes-determinantes",
+              "analise-combinatoria",
+              "trigonometria",
+              "geometria-plana",
+              "geometria-espacial",
+              "geometria-analitica",
+              "matematica-financeira",
+              "sistemas-lineares",
+              "trigonometria",
+              "planejamento-estrategico",
+              "gestao-de-processos",
+              "gestao-de-projetos-pmbok",
+              "governanca-corporativa",
+              "gestao-pessoas",
+              "gestao-recursos-humanos",
+              "marketing-gerencial",
+              "lei-13303",
+              "rlcp",
+              "administrativo-tributario",
+              "reading-strategies",
+              "administracao-geral-suprimento",
+              "gestao-qualidade-suprimento",
+              "logistica-suprimento",
+              "compras-suprimento",
+            ].includes(topicoId) && (
+              <div className="max-w-7xl mx-auto px-6 pb-32">
+                <div className="mt-12 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-8 border border-yellow-500/30 text-center">
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                    {isCompleted
+                      ? "✅ Aula Concluída!"
+                      : "📖 Termine a leitura"}
+                  </h3>
+                  <p className="text-slate-600 dark:text-gray-400 mb-4">
+                    {isCompleted
+                      ? `Parabéns! Você ganhou +${xpGanho || 50} XP`
+                      : "Role até o final para marcar esta aula como concluída e ganhar XP"}
+                  </p>
+                  <button
+                    onClick={handleCompleteAula}
+                    disabled={isCompleted || loading}
+                    className={`px-6 py-3 rounded-xl font-bold transition ${
+                      isCompleted
+                        ? "bg-green-600 text-white cursor-not-allowed"
+                        : loading
+                          ? "bg-gray-600 text-gray-400 cursor-wait"
+                          : "bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 hover:shadow-lg hover:shadow-orange-500/25"
+                    }`}
+                  >
+                    {isCompleted
+                      ? "🏆 +50 XP Conquistados!"
+                      : loading
+                        ? "Carregando..."
+                        : "Marcar como Concluída"}
+                  </button>
+                </div>
+              </div>
+            )}
+        </main>
+      </div>
+    </HeaderStateProvider>
   );
 }

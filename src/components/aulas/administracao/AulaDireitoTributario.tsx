@@ -76,7 +76,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         numero={1}
         titulo="Fundamentos e Competência Tributária"
         descricao="A base do Sistema Tributário Nacional e o poder de tributar dos entes federativos."
-        variant="indigo"
+        variant={getModuleVariant(1)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -84,7 +84,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           index={1}
           title="O Sistema Tributário Nacional"
           description="Entenda como a Constituição Federal organiza o poder de tributar no Brasil."
-          variant="indigo"
+          variant={getModuleVariant(1)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
@@ -119,7 +119,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
       <ModuleConsolidation
         index={1}
-        variant="indigo"
+        variant={getModuleVariant(1)}
         video={{
           videoId: "tributario-m1",
           title: "Competência Tributária",
@@ -189,7 +189,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Fundamentos Tributários"
         numero={1}
-        variant="indigo"
+        variant={getModuleVariant(1)}
         questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-1"])}
         onComplete={(score: number) => handleQuizComplete("modulo-1", score)}
       />
@@ -202,7 +202,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         numero={2}
         titulo="Tributos Federais: Impostos"
         descricao="O detalhamento dos impostos de competência da União que afetam a Petrobras."
-        variant="indigo"
+        variant={getModuleVariant(2)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -210,7 +210,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           index={2}
           title="IRPJ, CSLL e Impostos de Comércio Exterior"
           description="Os tributos que incidem diretamente sobre o lucro e as operações internacionais."
-          variant="indigo"
+          variant={getModuleVariant(2)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
@@ -225,7 +225,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
       <ModuleConsolidation
         index={2}
-        variant="indigo"
+        variant={getModuleVariant(2)}
         video={{
           videoId: "tributario-m2",
           title: "Impostos Federais em Detalhes",
@@ -288,7 +288,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Tributos Federais"
         numero={2}
-        variant="indigo"
+        variant={getModuleVariant(2)}
         questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-2"])}
         onComplete={(score: number) => handleQuizComplete("modulo-2", score)}
       />
@@ -301,7 +301,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         numero={3}
         titulo="Tributos sobre Consumo"
         descricao="ICMS, IPI e o papel da Petrobras como substituta tributária."
-        variant="emerald"
+        variant={getModuleVariant(3)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -309,7 +309,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           index={3}
           title="ICMS, ISS e Contribuições incidentes"
           description="A tributação indireta que afeta a circulação de bens e serviços."
-          variant="emerald"
+          variant={getModuleVariant(3)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
@@ -324,7 +324,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
       <ModuleConsolidation
         index={3}
-        variant="emerald"
+        variant={getModuleVariant(3)}
         video={{
           videoId: "tributario-m3",
           title: "Tributos sobre Consumo",
@@ -382,7 +382,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Tributos sobre Consumo"
         numero={3}
-        variant="emerald"
+        variant={getModuleVariant(3)}
         questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-3"])}
         onComplete={(score: number) => handleQuizComplete("modulo-3", score)}
       />
@@ -395,7 +395,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         numero={4}
         titulo="Contribuições Sociais e de Intervenção"
         descricao="PIS, COFINS e CIDE: a base do financiamento social e regulatório."
-        variant="violet"
+        variant={getModuleVariant(4)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -403,7 +403,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           index={4}
           title="Financiamento da Seguridade e Intervenção Econômica"
           description="O impacto do PIS e da COFINS no faturamento e a incidência da CIDE-Combustíveis."
-          variant="violet"
+          variant={getModuleVariant(4)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
@@ -418,7 +418,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
       <ModuleConsolidation
         index={4}
-        variant="violet"
+        variant={getModuleVariant(4)}
         video={{
           videoId: "tributario-m4",
           title: "PIS/COFINS e CIDE",
@@ -476,7 +476,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Contribuições Sociais"
         numero={4}
-        variant="violet"
+        variant={getModuleVariant(4)}
         questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-4"])}
         onComplete={(score: number) => handleQuizComplete("modulo-4", score)}
       />
@@ -489,7 +489,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         numero={5}
         titulo="Obrigações e Crédito Tributário"
         descricao="O nascimento da dívida com o Fisco e como ela se extingue."
-        variant="amber"
+        variant={getModuleVariant(5)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -497,7 +497,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           index={5}
           title="Fato Gerador e Lançamento"
           description="A jornada desde a ocorrência do fato até a constituição definitiva do crédito."
-          variant="amber"
+          variant={getModuleVariant(5)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
@@ -512,7 +512,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
       <ModuleConsolidation
         index={5}
-        variant="amber"
+        variant={getModuleVariant(5)}
         video={{
           videoId: "tributario-m5",
           title: "Crédito e Obrigação Tributária",
@@ -575,7 +575,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Obrigações e Crédito"
         numero={5}
-        variant="amber"
+        variant={getModuleVariant(5)}
         questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-5"])}
         onComplete={(score: number) => handleQuizComplete("modulo-5", score)}
       />
@@ -588,7 +588,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         numero={6}
         titulo="Fiscalização e Infrações"
         descricao="O poder de polícia do Fisco e as punições por descumprimento."
-        variant="rose"
+        variant={getModuleVariant(6)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -596,7 +596,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           index={6}
           title="Poder de Império e Garantias do Contribuinte"
           description="Como ocorrem os procedimentos fiscais e quais os limites da autoridade tributária."
-          variant="rose"
+          variant={getModuleVariant(6)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
@@ -611,7 +611,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
       <ModuleConsolidation
         index={6}
-        variant="rose"
+        variant={getModuleVariant(6)}
         video={{
           videoId: "tributario-m6",
           title: "Fiscalização e Multas",
@@ -669,7 +669,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Fiscalização e Infrações"
         numero={6}
-        variant="rose"
+        variant={getModuleVariant(6)}
         questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-6"])}
         onComplete={(score: number) => handleQuizComplete("modulo-6", score)}
       />
@@ -682,7 +682,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         numero={7}
         titulo="Normas de Incidência Tributária"
         descricao="Compreenda como o imposto é calculado: fato gerador, base e alíquota."
-        variant="amber"
+        variant={getModuleVariant(7)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -690,7 +690,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           index={7}
           title="Normas de Incidência"
           description="A estrutura fundamental que define o nascimento e o valor da obrigação tributária."
-          variant="amber"
+          variant={getModuleVariant(7)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
@@ -702,7 +702,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
       <ModuleConsolidation
         index={7}
-        variant="amber"
+        variant={getModuleVariant(7)}
         video={{
           videoId: "tributario-m7",
           title: "Incidência Tributária",
@@ -764,7 +764,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Normas de Incidência"
         numero={7}
-        variant="amber"
+        variant={getModuleVariant(7)}
         questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-7"])}
         onComplete={(score: number) => handleQuizComplete("modulo-7", score)}
       />
@@ -777,7 +777,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         numero={8}
         titulo="Tributos em Operações Petrobras"
         descricao="Explore a estrutura tributária específica da indústria de óleo e gás brasileira."
-        variant="blue"
+        variant={getModuleVariant(8)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -785,7 +785,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           index={8}
           title="Operações de Óleo e Gás"
           description="Do poço ao posto: como a Petrobras lida com a carga tributária do setor."
-          variant="blue"
+          variant={getModuleVariant(8)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
@@ -797,7 +797,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
       <ModuleConsolidation
         index={8}
-        variant="blue"
+        variant={getModuleVariant(8)}
         video={{
           videoId: "tributario-m8",
           title: "Operações Petrobras",
@@ -854,7 +854,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Operações Petrobras"
         numero={8}
-        variant="blue"
+        variant={getModuleVariant(8)}
         questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-8"])}
         onComplete={(score: number) => handleQuizComplete("modulo-8", score)}
       />
@@ -867,7 +867,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         numero={9}
         titulo="Planejamento Tributário Lícito"
         descricao="Estratégias para otimização da carga tributária dentro da legalidade."
-        variant="emerald"
+        variant={getModuleVariant(9)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -875,7 +875,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           index={9}
           title="Elisão vs Evasão"
           description="A diferença entre reduzir impostos legalmente e cometer crime fiscal."
-          variant="emerald"
+          variant={getModuleVariant(9)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
@@ -887,7 +887,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
 
       <ModuleConsolidation
         index={9}
-        variant="emerald"
+        variant={getModuleVariant(9)}
         video={{
           videoId: "tributario-m9",
           title: "Planejamento Tributário",
@@ -944,7 +944,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
       <QuizInterativo
         titulo="Planejamento Tributário"
         numero={9}
-        variant="emerald"
+        variant={getModuleVariant(9)}
         questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-9"])}
         onComplete={(score: number) => handleQuizComplete("modulo-9", score)}
       />
@@ -957,7 +957,7 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         numero={10}
         titulo="Simulado Mestre"
         descricao="Teste seus conhecimentos em Direito Tributário com foco total Cesgranrio."
-        variant="rose"
+        variant={getModuleVariant(10)}
       />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -965,13 +965,37 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
           index={10}
           title="Avaliação Final"
           description="Questões selecionadas para simular o nível de dificuldade do concurso."
-          variant="rose"
+          variant={getModuleVariant(10)}
         />
+
+        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
+          <p>
+            O <strong>Simulado Mestre</strong> é a avaliação consolidada de todo o conteúdo de Direito Tributário. Este módulo reúne questões que abrangem todos os tópicos estudados: fundamentos do sistema tributário nacional, tributos federais, estaduais e municipais, obrigações tributárias, fiscalização, normas de incidência e planejamento tributário lícito. A dificuldade das questões reflete o padrão cobrado em concursos Cesgranrio para a posição de Técnico em Suprimento.
+          </p>
+          <p>
+            Como técnico em suprimento na Petrobras, você será responsável por operações que geram consequências tributárias complexas. Este simulado valida sua capacidade de identificar rapidamente o tipo de tributo envolvido, a competência do ente tributante, a base de cálculo e as obrigações acessórias. Em situações reais, essa análise determina se a empresa fica em dia com suas obrigações ou incorre em multas severas e juros moratórios.
+          </p>
+          <p>
+            Este módulo oferece uma oportunidade para testar seus conhecimentos antes do concurso real. Procure resolver as questões sem consultar o material, cronometrando seu tempo. Questões que você erra indicam tópicos para revisão final. A recomendação é: leia o enunciado com calma, identifique o fato gerador e o tributo envolvido, localize a base de cálculo na legislação e verifique se há isenções ou benefícios aplicáveis.
+          </p>
+
+          <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
+            <p className="font-bold text-rose-600 dark:text-rose-400 text-lg mb-2">🎯 Dicas para o Simulado</p>
+            <ul className="text-lg space-y-1 text-foreground">
+              <li>✓ Leia cada enunciado duas vezes antes de responder</li>
+              <li>✓ Identifique o tributo e sua base de cálculo primeiro</li>
+              <li>✓ Verifique se há isenções ou benefícios aplicáveis</li>
+              <li>✓ Preste atenção em competência (federal, estadual, municipal)</li>
+              <li>✓ Considere obrigações acessórias (informações, registros)</li>
+              <li>✓ Contexto Petrobras: operações com derivados, importação, logística</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <ModuleConsolidation
         index={10}
-        variant="rose"
+        variant={getModuleVariant(10)}
         video={{
           videoId: "tributario-m10",
           title: "Revisão Geral",
@@ -996,10 +1020,52 @@ export default function AulaDireitoTributario({ onComplete }: AulaProps) {
         }}
       />
 
+      <ContentAccordion
+        titulo="Tópicos-Chave para Revisão"
+        slides={[
+          {
+            title: "Sistema Tributário Nacional",
+            content: "Estrutura de competência tributária entre União, Estados e Municípios. Impostos, taxas e contribuições. Princípios constitucionais e limitações ao poder de tributar."
+          },
+          {
+            title: "Tributos Federais e Estaduais",
+            content: "IRPJ, CSLL, IPI, ICMS, COFINS, PIS, IOF, Impostos sobre Propriedade. Bases de cálculo, alíquotas, isenções e benefícios fiscais em contexto Petrobras."
+          },
+          {
+            title: "Obrigações Tributárias",
+            content: "Obrigação principal (pagar tributo) e acessória (entregar informações, manter registros). Prazos, formas de pagamento, acessões (juros, multas), decadência e prescrição."
+          },
+          {
+            title: "Planejamento e Evasão",
+            content: "Elisão fiscal (lícita, antes do fato gerador) vs Evasão (crime, após fato gerador). Normas anti-elusão. Responsabilidade pessoal em operações tributárias irregulares."
+          }
+        ]}
+      />
+
+      <CardCarousel
+        cards={[
+          {
+            title: "Análise de Enunciados",
+            descricao: "Em concursos, primeiro identifique: (1) tipo de operação, (2) tributo envolvido, (3) quem é o contribuinte, (4) base de cálculo. Ignore detalhes irrelevantes.",
+            corFundo: "bg-rose-100 dark:bg-rose-900/30"
+          },
+          {
+            title: "Contexto Petrobras",
+            descricao: "Operações típicas: exploração de petróleo (ICMS sobre valor agregado), importação (II + ICMS), distribuição de derivados (ICMS estadual), venda ao consumidor (ICMS + PIS + COFINS).",
+            corFundo: "bg-orange-100 dark:bg-orange-900/30"
+          },
+          {
+            title: "Armadilhas Comuns",
+            descricao: "Confundir competência (quem cobra), base de cálculo (sobre quanto) e alíquota (quanto cobra). Não considerar isenções. Esquecer obrigações acessórias (guias, informações).",
+            corFundo: "bg-amber-100 dark:bg-amber-900/30"
+          }
+        ]}
+      />
+
       <QuizInterativo
         titulo="Simulado Mestre"
         numero={10}
-        variant="rose"
+        variant={getModuleVariant(10)}
         questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-10"])}
         onComplete={(score: number) => handleQuizComplete("modulo-10", score)}
       />
