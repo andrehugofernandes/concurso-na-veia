@@ -1966,10 +1966,123 @@ export default function AulaReescritaFrases({
           variant={mv[6]}
         />
 
+        {/* ★ RICH INTRO SECTION - Módulo 6 */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Arquitetura da Coesão Textual"
+          variant={mv[6]}
+        />
+          
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            {/* PARÁGRAFO 1: CONCEITO CIENTÍFICO */}
+            <p>
+              A conectividade constitui-se como princípio fundamental da coesão 
+              textual, estabelecendo relações lógicas e semânticas entre 
+              orações e períodos através de conectivos e locuções conjuntivas. 
+              Segundo Celso Cunha, os conectivos classificam-se em categorias 
+              funcionais — causais (porque, visto que), conclusivos (logo, 
+              portanto), concessivos (embora, conquanto), condicionais (se, 
+              caso), temporais (quando, enquanto) e finais (a fim de que, 
+              para que). A equivalência conjuntiva permite substituição 
+              de conectivos dentro da mesma categoria semântica, mantendo 
+              o nexo lógico original. A CESGRANRIO explora sistematicamente 
+              esta capacidade de transposição, exigindo identificação precisa 
+              do valor semântico de cada conector.
+            </p>
+
+            {/* PARÁGRAFO 2: EXPLICAÇÃO INTUITIVA */}
+            <p>
+              Em outras palavras, os conectivos são como as articulações 
+              de um esqueleto textual — conectam as partes mantendo a 
+              estrutura coerente. "Portanto" e "por conseguinte" são como 
+              o cotovelo e o joelho: articulações diferentes mas mesma 
+              função (conclusão). "Mas" e "embora" são mais complexos — 
+              como mudar de uma articulação simples para uma complexa, 
+              exigindo reorganização muscular (mudança de modo verbal 
+              e ordem das orações). A reescrita bem-sucedida depende de 
+              identificar qual "articulação" lógica está sendo usada 
+              e encontrar um substituto equivalente que mantenha a 
+              mesma postura textual.
+            </p>
+
+            {/* PARÁGRAFO 3: REGRAS E TÉCNICAS */}
+            <p>
+              As técnicas de substituição conjuntiva fundamentam-se em 
+              princípios rigorosos: <strong>manutenção do valor semântico</strong> 
+              (causal permanece causal, conclusivo permanece conclusivo), 
+              <strong>adequação sintática</strong> (conectivos concessivos 
+              frequentemente exigem subjuntivo e inversão), e <strong>preservação 
+              da ênfase</strong> (ordem das orações pode precisar ajustar). 
+              Conectivos conclusivos admitem substituição direta (portanto 
+              → logo, por conseguinte, todavia). Causais oferecem múltiplas 
+              opções (porque, visto que, pois, como, uma vez que). 
+              Concessivos exigem cuidado: "mas" (adversativo simples) vs 
+              "embora" (concessivo com subjuntivo). Finais usam estruturas 
+              reduzidas (para que, a fim de que).
+            </p>
+
+            {/* PARÁGRAFO 4: CONTEXTO PETROBRAS */}
+            <p>
+              No ambiente técnico da Petrobras, a precisão conectiva é 
+              essencial para elaboração de relatórios sequenciais 
+              e manuais operacionais. "Como choveu, não fomos" pode 
+              transformar-se em "Não fomos posto que choveu" ou 
+              "Não fomos porquanto chovera", mantendo a relação causal 
+              mas adequando o registro formal. Em procedimentos de 
+              segurança, "Se houver vazamento, acione o alarme" 
+              equivalente a "Caso ocorra vazamento, acione o alarme" 
+              ou "Desde que exista vazamento, acione o alarme". 
+              A escolha do conectivo impacta diretamente a clareza 
+              instrucional e a precisão técnica dos documentos.
+            </p>
+
+            {/* PARÁGRAFO 5: PEGADINHAS CESGRANRIO */}
+            <p>
+              A CESGRANRIO explora sistematicamente as armadilhas da 
+              equivalência conjuntiva. As questões frequentemente testam: 
+              identificação de categorias semânticas (conclusivo vs causal), 
+              reconhecimento de substituições que exigem reestruturação 
+              (mas → embora), e distinção entre conectivos polissêmicos 
+              (desde que pode ser temporal ou condicional). O examinando 
+              deve desenvolver sensibilidade para identificar quando 
+              a substituição é direta ou exige ajustes sintáticos. 
+              Erros comuns incluem misturar categorias (causal por conclusivo), 
+              ignorar exigência de subjuntivo, ou perder a ênfase 
+              original ao inverter ordem das orações.
+            </p>
+
+            {/* CAIXA DE DESTAQUE: Mapa de Conectivos */}
+            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/30 dark:to-blue-950/30 rounded-lg border border-indigo-200 dark:border-indigo-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">O Sistema de Equivalências Conectivas</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🔗</div>
+                  <strong>Causais</strong>
+                  <p>Porque → Visto que<br/>Como → Pois<br/>Uma vez que → Posto que</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">⚡</div>
+                  <strong>Conclusivos</strong>
+                  <p>Portanto → Logo<br/>Por conseguinte → Por isso<br/>Então → Assim</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🔄</div>
+                  <strong>Concessivos</strong>
+                  <p>Mas → Embora<br/>Contudo → Conquanto<br/>Todavia → Não obstante</p>
+                </div>
+              </div>
+              <div className="mt-4 p-3 bg-indigo-100 dark:bg-indigo-900/30 rounded text-sm">
+                <strong>Regra Crítica:</strong> "Mas" exige indicativo + orações independentes. "Embora" exige subjuntivo + oração subordinada. A troca exige reestruturação completa.
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="Nexos Equivalentes"
           variant={mv[6]}
         />

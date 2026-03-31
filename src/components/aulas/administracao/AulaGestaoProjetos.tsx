@@ -938,9 +938,525 @@ export default function AulaGestaoProjetos({
               numero={3} 
               variant={mv[6]} 
               icone="⚠️" 
-              onComplete={(score) => handleModuleComplete("modulo-6", score)} 
+              onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 7: METODOLOGIAS ÁGEIS ═══ */}
+      <TabsContent value="modulo-7" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={7}
+            titulo="Metodologias Ágeis"
+            descricao="Scrum, Kanban e a Agilidade no Gerenciamento de Projetos Modernos."
+            gradiente="bg-gradient-to-br from-purple-300 via-purple-500 to-purple-400"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Revolução Ágil"
+              description="Adaptabilidade, iteração e entrega contínua de valor."
+              variant={mv[7]}
+            />
+
+            <ContentAccordion slides={[
+              {
+                titulo: "Conceituação - Manifesto Ágil",
+                icone: <LuZap />,
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground leading-relaxed">
+                      O <strong>Manifesto Ágil</strong> (2001) prioriza: <strong>Indivíduos e Iterações</strong> sobre Processos e Ferramentas; <strong>Funcionamento de Software</strong> sobre Documentação; <strong>Colaboração com Cliente</strong> sobre Contrato; e <strong>Responder a Mudanças</strong> sobre Planejamento Rígido.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="p-4 bg-purple-50 border border-purple-200 rounded-xl">
+                        <p className="font-bold text-purple-800 text-lg mb-2">🔄 Sprint</p>
+                        <p className="text-[10px] text-purple-700">Iteração de 1-4 semanas com entrega funcional no final.</p>
+                      </div>
+                      <div className="p-4 bg-pink-50 border border-pink-200 rounded-xl">
+                        <p className="font-bold text-pink-800 text-lg mb-2">📊 Backlog</p>
+                        <p className="text-[10px] text-pink-700">Lista priorizada de features e tarefas do projeto.</p>
+                      </div>
+                    </div>
+                  </div>
+                )
+              },
+              {
+                titulo: "Exemplificação - Scrum vs Kanban",
+                icone: <LuBookOpen />,
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground text-lg font-bold uppercase italic">Comparação de Frameworks:</p>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2">
+                         <p className="text-[10px] font-bold text-purple-600 underline">SCRUM</p>
+                         <p className="text-[10px]">Sprints fixas, reuniões definidas.</p>
+                         <p className="text-[10px] text-slate-400">Ideal para mudanças previsíveis.</p>
+                      </div>
+                      <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2">
+                         <p className="text-[10px] font-bold text-pink-600 underline">KANBAN</p>
+                         <p className="text-[10px]">Fluxo contínuo, sem sprints fixas.</p>
+                         <p className="text-[10px] text-slate-400">Ideal para mudanças frequentes.</p>
+                      </div>
+                    </div>
+                  </div>
+                )
+              },
+              {
+                titulo: "Dicas - Cerimônias Scrum Essenciais",
+                icone: <LuLightbulb />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="success" titulo="As 4 Cerimônias">
+                      <p className="text-lg">
+                        <strong>1. Planning:</strong> No início da Sprint. <strong>2. Daily:</strong> 15min diários. <strong>3. Review:</strong> Fim da Sprint. <strong>4. Retrospectiva:</strong> Melhorias do time. Estas cerimônias garantem sincronização e aprendizado contínuo.
+                      </p>
+                    </AlertBox>
+                  </div>
+                )
+              },
+            ]} />
+          </section>
+
+
+
+          <section id="quiz-modulo-7" className="mt-16">
+
+
+<ModuleConsolidation
+            index={2}
+            variant={mv[7]}
+            video={{
+              videoId: "jZkUiVDgNWA",
+              title: "Scrum Masterclass",
+              duration: "22:15"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 7",
+              tituloAula: "Gestão de Projetos",
+              materia: "Administração",
+              images: [
+                { title: "Papéis Scrum", type: "Organograma", placeholderColor: "bg-purple-500/20" },
+                { title: "Sprint Timeline", type: "Cronograma", placeholderColor: "bg-violet-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "D.O.R. & D.O.D.",
+              content: (
+                <div className="space-y-2 text-left">
+                  <p className="text-lg italic"><strong>D.O.R.</strong> = Definition of Ready</p>
+                  <p className="text-lg italic"><strong>D.O.D.</strong> = Definition of Done</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+              titulo: "Agilidade na Prática",
+              artista: "Scrum Master Certificado"
+            }}
+          />
+
+                      <QuizInterativo
+              questoes={quizM7}
+              titulo="QUIZ: Metodologias Ágeis"
+              numero={3}
+              variant={mv[7]}
+              icone="⚡"
+              onComplete={(score) => handleModuleComplete("modulo-7", score)}
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 8: PMO E GOVERNANÇA ═══ */}
+      <TabsContent value="modulo-8" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={8}
+            titulo="PMO e Governança de Projetos"
+            descricao="Office de Projetos, Governança e Alinhamento Estratégico."
+            gradiente="bg-gradient-to-br from-indigo-300 via-indigo-500 to-indigo-400"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Estrutura de Governança"
+              description="PMO, Portfolio e Alinhamento com a Estratégia."
+              variant={mv[8]}
+            />
+
+            <ContentAccordion slides={[
+              {
+                titulo: "Conceituação - O Papel do PMO",
+                icone: <LuLayoutDashboard />,
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground leading-relaxed">
+                      A <strong>Project Management Office (PMO)</strong> é uma unidade organizacional que centraliza a gestão de projetos. Ela oferece suporte, padronização e alinhamento estratégico. Existem 3 tipos principais:
+                    </p>
+
+                    <div className="grid grid-cols-1 gap-3">
+                      <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-xl">
+                        <p className="font-bold text-indigo-800 text-sm mb-1">🔹 Suportiva</p>
+                        <p className="text-[10px] text-indigo-700">Oferece templates, lições aprendidas e consultoria.</p>
+                      </div>
+                      <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-xl">
+                        <p className="font-bold text-indigo-800 text-sm mb-1">🔹 Controladora</p>
+                        <p className="text-[10px] text-indigo-700">Exige conformidade com padrões; governa aprovações.</p>
+                      </div>
+                      <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-xl">
+                        <p className="font-bold text-indigo-800 text-sm mb-1">🔹 Diretiva</p>
+                        <p className="text-[10px] text-indigo-700">Gerencia projetos diretamente; maior controle.</p>
+                      </div>
+                    </div>
+                  </div>
+                )
+              },
+              {
+                titulo: "Exemplificação - Portfolio Management",
+                icone: <LuTarget />,
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground text-lg font-bold uppercase italic">Petrobras: Níveis de Governança:</p>
+                    <div className="grid grid-cols-1 gap-3">
+                      <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2">
+                         <p className="text-[10px] font-bold text-indigo-600 underline">PORTFÓLIO</p>
+                         <p className="text-[10px]">Todos os projetos estratégicos da empresa.</p>
+                         <p className="text-[10px] text-slate-400">Ex: Projetos de Exploração, Refino, Infraestrutura.</p>
+                      </div>
+                      <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2">
+                         <p className="text-[10px] font-bold text-indigo-600 underline">PROGRAMA</p>
+                         <p className="text-[10px]">Agrupamento de projetos relacionados.</p>
+                         <p className="text-[10px] text-slate-400">Ex: Programa de Desenvolvimento do Pré-Sal.</p>
+                      </div>
+                    </div>
+                  </div>
+                )
+              },
+              {
+                titulo: "Dicas - Métricas de Governança",
+                icone: <LuLightbulb />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="success" titulo="KPIs Essenciais do PMO">
+                      <p className="text-lg">
+                        <strong>EVM (Earned Value Management):</strong> Compara valor planejado vs valor agregado. <strong>Budget vs Realizado</strong> e <strong>Schedule vs Realizado</strong> são os principais indicadores de saúde do projeto.
+                      </p>
+                    </AlertBox>
+                  </div>
+                )
+              },
+            ]} />
+          </section>
+
+
+
+          <section id="quiz-modulo-8" className="mt-16">
+
+
+<ModuleConsolidation
+            index={2}
+            variant={mv[8]}
+            video={{
+              videoId: "dQw4w9WgXcQ",
+              title: "Governance & PMO na Prática",
+              duration: "19:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 8",
+              tituloAula: "Gestão de Projetos",
+              materia: "Administração",
+              images: [
+                { title: "Estrutura PMO", type: "Organograma", placeholderColor: "bg-indigo-500/20" },
+                { title: "Dashboard de Métricas", type: "Dashboard", placeholderColor: "bg-cyan-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "E.V.M.",
+              content: (
+                <div className="space-y-2 text-left">
+                  <p className="text-lg italic"><strong>E</strong>arned <strong>V</strong>alue <strong>M</strong>anagement</p>
+                  <p className="text-lg text-muted-foreground">O método que prova se o projeto está saudável.</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+              titulo: "Governance Best Practices",
+              artista: "PMO Director"
+            }}
+          />
+
+                      <QuizInterativo
+              questoes={quizM8}
+              titulo="QUIZ: PMO e Governança"
+              numero={3}
+              variant={mv[8]}
+              icone="🏛️"
+              onComplete={(score) => handleModuleComplete("modulo-8", score)}
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 9: APLICAÇÕES PETROBRAS ═══ */}
+      <TabsContent value="modulo-9" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={9}
+            titulo="Gestão de Projetos na Petrobras"
+            descricao="Megaprojetos, Exploração de Água Profunda e Gestão de Stakeholders Críticos."
+            gradiente="bg-gradient-to-br from-orange-300 via-orange-500 to-orange-400"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Realidade Petrobras"
+              description="Megaprojetos, Regulação e Stakeholders."
+              variant={mv[9]}
+            />
+
+            <ContentAccordion slides={[
+              {
+                titulo: "Conceituação - Megaprojetos Petrobras",
+                icone: <LuTrendingUp />,
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground leading-relaxed">
+                      Megaprojetos da Petrobras envolvem: <strong>Valores acima de $1 bilhão, Prazos de 5-15 anos, Múltiplas equipes globais e Regulação ambiental/operacional rigorosa.</strong> Exemplos incluem Pré-Sal, Refinarias e Plantas de Processamento.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="p-4 bg-orange-50 border border-orange-200 rounded-xl">
+                        <p className="font-bold text-orange-800 text-lg mb-2">⛽ Pré-Sal</p>
+                        <p className="text-[10px] text-orange-700">Exploração em águas profundas, mega-projetos de longa duração.</p>
+                      </div>
+                      <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl">
+                        <p className="font-bold text-amber-800 text-lg mb-2">🏭 Infraestrutura</p>
+                        <p className="text-[10px] text-amber-700">Refinarias, plantas de processamento, dutos críticos.</p>
+                      </div>
+                    </div>
+                  </div>
+                )
+              },
+              {
+                titulo: "Exemplificação - Stakeholders e Compliance",
+                icone: <LuUsers />,
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground text-lg font-bold uppercase italic">Ecossistema Petrobras:</p>
+                    <div className="grid grid-cols-1 gap-3">
+                      <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2">
+                         <p className="text-[10px] font-bold text-orange-600 underline">GOVERNO</p>
+                         <p className="text-[10px]">ANP, IBAMA, regulação ambiental rigorosa.</p>
+                      </div>
+                      <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2">
+                         <p className="text-[10px] font-bold text-orange-600 underline">COMUNIDADES</p>
+                         <p className="text-[10px]">Impacto ambiental, responsabilidade social.</p>
+                      </div>
+                      <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2">
+                         <p className="text-[10px] font-bold text-orange-600 underline">ACIONISTAS</p>
+                         <p className="text-[10px]">Retorno financeiro, sustentabilidade.</p>
+                      </div>
+                    </div>
+                  </div>
+                )
+              },
+              {
+                titulo: "Dicas - Gestão de Riscos Críticos",
+                icone: <LuShield />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="warning" titulo="Top 3 Riscos em Megaprojetos Petrobras">
+                      <p className="text-lg">
+                        <strong>1. Volatilidade do Preço do Petróleo:</strong> Impacta orçamento e viabilidade. <strong>2. Mudanças Regulatórias:</strong> Requisitos ambientais podem mudar. <strong>3. Complexidade Técnica:</strong> Operações em água profunda exigem inovação contínua. Documentação e governança são críticas.
+                      </p>
+                    </AlertBox>
+                  </div>
+                )
+              },
+            ]} />
+          </section>
+
+
+
+          <section id="quiz-modulo-9" className="mt-16">
+
+
+<ModuleConsolidation
+            index={2}
+            variant={mv[9]}
+            video={{
+              videoId: "5_aXSc9KZVc",
+              title: "Megaprojetos e Inovação",
+              duration: "24:00"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 9",
+              tituloAula: "Gestão de Projetos",
+              materia: "Administração",
+              images: [
+                { title: "Pré-Sal Mapa", type: "Mapa Geográfico", placeholderColor: "bg-orange-500/20" },
+                { title: "Estrutura Stakeholder", type: "Rede", placeholderColor: "bg-yellow-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "PETAR",
+              content: (
+                <div className="space-y-2 text-left">
+                  <p className="text-lg italic"><strong>P</strong>ressão | <strong>E</strong>nergético | <strong>T</strong>ecnológico | <strong>A</strong>mbiental | <strong>R</strong>egulação</p>
+                  <p className="text-lg text-muted-foreground">Os 5 pilares do contexto Petrobras.</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+              titulo: "Complexidade e Inovação",
+              artista: "Gerente de Megaprojetos"
+            }}
+          />
+
+                      <QuizInterativo
+              questoes={quizM9}
+              titulo="QUIZ: Petrobras na Prática"
+              numero={3}
+              variant={mv[9]}
+              icone="🛢️"
+              onComplete={(score) => handleModuleComplete("modulo-9", score)}
+            />
+          </section>
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 10: SIMULADO MESTRE ═══ */}
+      <TabsContent value="modulo-10" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={10}
+            titulo="Simulado Mestre"
+            descricao="Consolidação, Revisão e Simulado Final com Questões de Prova."
+            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Revisão Completa & Simulado"
+              description="Consolidação de todos os conceitos em um simulado integrado."
+              variant={mv[10]}
+            />
+
+            <ContentAccordion slides={[
+              {
+                titulo: "Revisão - Mapa Mental Completo",
+                icone: <LuBrain />,
+                conteudo: (
+                  <div className="space-y-6">
+                    <p className="text-muted-foreground leading-relaxed">
+                      <strong>Módulo 1:</strong> Conceitos (Temporário, Exclusivo, Tríplice Restrição).
+                      <strong> Módulo 2:</strong> 10 Áreas PMBOK.
+                      <strong> Módulo 3:</strong> 5 Grupos de Processos.
+                      <strong> Módulo 4:</strong> Escopo, Tempo e Técnicas.
+                      <strong> Módulo 5:</strong> Custos e Qualidade.
+                      <strong> Módulo 6:</strong> Gestão de Riscos PMBOK.
+                      <strong> Módulo 7:</strong> Scrum, Kanban, Ágil.
+                      <strong> Módulo 8:</strong> PMO e Governança.
+                      <strong> Módulo 9:</strong> Petrobras na Prática.
+                    </p>
+                  </div>
+                )
+              },
+              {
+                titulo: "Dicas - Tópicos Mais Prováveis",
+                icone: <LuTarget />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="success" titulo="Foco de Estudo para Prova">
+                      <p className="text-lg">
+                        <strong>TOP 5 CONCEITOS:</strong> 1. Diferença Projeto vs Operação. 2. 10 Áreas PMBOK. 3. Grupos de Processos e Fluxo. 4. Caminho Crítico e EVM. 5. Governança e PMO. Certifique-se de dominar estes antes da prova!
+                      </p>
+                    </AlertBox>
+                  </div>
+                )
+              },
+              {
+                titulo: "Estratégia - Prepare-se para o Simulado",
+                icone: <LuZap />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="info" titulo="Como Maximar seu Score">
+                      <p className="text-lg">
+                        <strong>1. Leia Atentamente:</strong> Identifique as palavras-chave. <strong>2. Elimine Óbvias:</strong> Descarte respostas claramente erradas. <strong>3. Relacione Conceitos:</strong> Lembre-se da integração entre áreas. <strong>4. Contexto Petrobras:</strong> Sempre pense em megaprojetos. BOA SORTE!
+                      </p>
+                    </AlertBox>
+                  </div>
+                )
+              },
+            ]} />
+          </section>
+
+
+
+          <section id="quiz-modulo-10" className="mt-16">
+
+
+<ModuleConsolidation
+            index={2}
+            variant={mv[10]}
+            video={{
+              videoId: "dQw4w9WgXcQ",
+              title: "Revisão Geral - Tudo que Você Precisa Saber",
+              duration: "45:00"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 10",
+              tituloAula: "Gestão de Projetos",
+              materia: "Administração",
+              images: [
+                { title: "Mapa Conceitual Completo", type: "Mindmap", placeholderColor: "bg-rose-500/20" },
+                { title: "Guia de Revisão", type: "Checklist", placeholderColor: "bg-pink-500/20" }
+              ]
+            }}
+            maceteVisual={{
+              title: "👑 MESTRE EM GESTÃO",
+              content: (
+                <div className="text-center space-y-2">
+                  <p className="text-2xl font-bold">✨ Você completou!</p>
+                  <p className="text-lg text-muted-foreground">ESPECIALISTA EM GESTÃO DE PROJETOS</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+              titulo: "Encerramento & Motivação",
+              artista: "Mentor Especialista"
+            }}
+          />
+
+                      <QuizInterativo
+              questoes={quizM10}
+              titulo="SIMULADO MESTRE: Gestão de Projetos"
+              numero={3}
+              variant={mv[10]}
+              icone="🏆"
+              onComplete={(score) => handleModuleComplete("modulo-10", score)}
+            />
+          </section>
+
+          {showCompletionBadge && (
+            <div className="mt-16 p-8 bg-gradient-to-br from-rose-50 to-pink-50 border border-rose-200 rounded-2xl text-center space-y-4 animate-in fade-in duration-500">
+              <div className="text-6xl">👑</div>
+              <h2 className="text-3xl font-bold text-rose-700">ESPECIALISTA EM GESTÃO</h2>
+              <p className="text-lg text-rose-600">Você domina todos os conceitos de Gestão de Projetos PMBOK e está pronto para a Petrobras!</p>
+              <p className="text-sm text-muted-foreground">Parabéns por completar este caminho extraordinário! 🚀</p>
+            </div>
+          )}
         </div>
       </TabsContent>
     </AulaTemplate>
