@@ -1245,10 +1245,117 @@ export default function AulaReescritaFrases({
           variant={mv[4]}
         />
 
+        {/* ★ RICH INTRO SECTION - Módulo 4 */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Arte da Reportagem Verbal"
+          variant={mv[4]}
+        />
+          
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            {/* PARÁGRAFO 1: CONCEITO CIENTÍFICO */}
+            <p>
+              O discurso reportado constitui-se como mecanismo linguístico que permite 
+              a transposição da fala ou pensamento alheio para a estrutura narrativa 
+              do enunciador. Segundo Celso Cunha, o discurso classifica-se em 
+              direto (reprodução literal com aspas ou travessão), indireto 
+              (integração sintática com verbo de elocução) e indireto livre 
+              (fusão de vozes sem marca explícita de autoria). Na transposição 
+              do discurso direto para o indireto, opera-se o fenômeno do 
+              "recuo temporal" — os tempos verbais, pronomes e advérbios 
+              ajustam-se à perspectiva do narrador, exigindo domínio da 
+              concordância de tempos e da referência deíctica.
+            </p>
+
+            {/* PARÁGRAFO 2: EXPLICAÇÃO INTUITIVA */}
+            <p>
+              Em outras palavras, transformar discurso direto em indireto é como 
+              traduzir uma conversa para a linguagem de um relatório — você não 
+              repete exatamente o que foi dito, mas informa o que foi dito. 
+              Quando alguém diz "Eu pretendo investir agora", no relatório você 
+              escreve "Ele disse que pretendia investir naquele momento". 
+              É a mesma mensagem, mas com diferentes "óculos": os óculos do 
+              narrador que observa e relata. A reescrita bem-sucedida depende 
+              dessa mudança de perspectiva — ajustar os pronomes (eu → ele), 
+              os tempos (pretendo → pretendia) e as referências (agora → naquele momento).
+            </p>
+
+            {/* PARÁGRAFO 3: REGRAS E TÉCNICAS */}
+            <p>
+              As técnicas de transposição discursiva fundamentam-se em três 
+              sistemas de ajuste obrigatório: <strong>tempo verbal</strong> 
+              (presente → pretérito imperfeito, pretérito perfeito → mais-que-perfeito, 
+              futuro do presente → futuro do pretérito), <strong>pronomes 
+              pessoais e demonstrativos</strong> (eu/você → ele/ela, este/esta → 
+              aquele/aquela), e <strong>advérbios de tempo e lugar</strong> 
+              (agora → naquele momento, aqui → ali, hoje → aquele dia, 
+              amanhã → no dia seguinte). O imperativo transforma-se em 
+              pretérito imperfeito do subjuntivo ("saia" → "que saíssem"). 
+              Exceção importante: o pretérito mais-que-perfeito mantém-se 
+              estável, pois já é o tempo mais recuado na linha temporal.
+            </p>
+
+            {/* PARÁGRAFO 4: CONTEXTO PETROBRAS */}
+            <p>
+              No ambiente corporativo da Petrobras, o discurso indireto é 
+              fundamental para elaboração de atas, relatórios de reuniões 
+              e comunicados oficiais. Quando um engenheiro declara "Precisamos 
+              parar a produção agora", o relatório registra "O engenheiro 
+              informou que era necessário parar a produção naquele momento". 
+              Essa formalização garante precisão documental e remove a 
+              subjetividade da linguagem coloquial. Em investigações de 
+              incidentes, o discurso indireto permite relatar depoimentos 
+              sem comprometer a objetividade necessária para análises 
+              técnicas e decisões administrativas.
+            </p>
+
+            {/* PARÁGRAFO 5: PEGADINHAS CESGRANRIO */}
+            <p>
+              A CESGRANRIO explora sistematicamente as armadilhas da 
+              transposição discursiva. As questões frequentemente testam: 
+              manutenção do tempo verbal correto ("estaremos" → "estariam"), 
+              ajuste de pronomes demonstrativos ("este livro" → "aquele livro"), 
+              transformação de advérbios ("aqui" → "ali", "hoje" → "aquele dia"), 
+              e conversão do imperativo em subjuntivo ("saia" → "que saíssem"). 
+              O examinando deve desenvolver sensibilidade para identificar 
+              quando a transposição preserva integralmente o sentido original 
+              sem introduzir distorções temporais ou referenciais. Erros 
+              comuns incluem não recuar suficientemente os tempos ou 
+              esquecer de ajustar os elementos deícticos.
+            </p>
+
+            {/* CAIXA DE DESTAQUE: Guia de Transposição */}
+            <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 rounded-lg border border-violet-200 dark:border-violet-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">O Mapa da Transposição Discursiva</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="text-center">
+                  <div className="text-2xl mb-2">⏰</div>
+                  <strong>Tempos</strong>
+                  <p>Presente → Imperfeito<br/>Perfeito → Mais-que-perfeito<br/>Futuro → Futuro do pretérito</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">👥</div>
+                  <strong>Pronomes</strong>
+                  <p>Eu/Você → Ele/Ela<br/>Este/Isto → Aquele/Aquilo<br/>Nosso → Seu</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">📍</div>
+                  <strong>Advérbios</strong>
+                  <p>Agora → Naquele momento<br/>Aqui → Ali<br/>Hoje → Aquele dia</p>
+                </div>
+              </div>
+              <div className="mt-4 p-3 bg-violet-100 dark:bg-violet-900/30 rounded text-sm">
+                <strong>Regra de Ouro:</strong> Se o verbo de elocução está no passado, todos os outros tempos "recuam" um degrau na linha do tempo, exceto o mais-que-perfeito.
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="Direto & Indireto"
           variant={mv[4]}
         />
@@ -1489,10 +1596,121 @@ export default function AulaReescritaFrases({
           variant={mv[5]}
         />
 
+        {/* ★ RICH INTRO SECTION - Módulo 5 */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Arte da Substantivação de Ações"
+          variant={mv[5]}
+        />
+          
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            {/* PARÁGRAFO 1: CONCEITO CIENTÍFICO */}
+            <p>
+              A nominalização constitui-se como processo morfossintático que 
+              transforma verbos ou adjetivos em substantivos, permitindo que 
+              ações ou qualidades sejam tratadas como entidades abstratas. 
+              Segundo Evanildo Bechara, este fenômeno linguístico opera 
+              através de sufixação derivacional (-ção, -mento, -ência, -ança, 
+              -ura, -eza) e reorganização estrutural da oração. A nominalização 
+              converte orações subordinadas substantivas em sintagmas nominais, 
+              como "que o Brasil produza" → "a produção do Brasil", 
+              conferindo maior densidade sintática e formalidade ao discurso. 
+              Na escrita técnica e acadêmica, este recurso é fundamental 
+              para objetivar informações e remover o foco do agente.
+            </p>
+
+            {/* PARÁGRAFO 2: EXPLICAÇÃO INTUITIVA */}
+            <p>
+              Em outras palavras, nominalizar é como transformar um filme 
+              em fotografia — você congela a ação em um quadro estático que 
+              pode ser analisado, arquivado e referenciado. Quando alguém 
+              "decide adiar a obra" (ação em movimento), a nominalização cria 
+              "a decisão do adiamento da obra" (fotografia da decisão). 
+              A ação dinâmica vira objeto estático, permitindo que você 
+              manipule essa informação como se fosse uma peça — pode 
+              posicioná-la em diferentes lugares da frase, compará-la com 
+              outras decisões, ou usá-la como sujeito de novas orações.
+            </p>
+
+            {/* PARÁGRAFO 3: REGRAS E TÉCNICAS */}
+            <p>
+              As técnicas de nominalização fundamentam-se em três padrões 
+              principais: <strong>verbo → substantivo de ação</strong> 
+              (decidir → decisão, investir → investimento), <strong>verbo 
+              → substantivo de agente</strong> (operar → operador, 
+              supervisionar → supervisor), e <strong>verbo → substantivo 
+              de resultado</strong> (aprovar → aprovação, analisar → análise). 
+              Os sufixos mais produtivos incluem -ção/-são (produção, 
+              expansão), -mento (investimento, desenvolvimento), 
+              -ência/-ância (resistência, permanência), e -ura (falha, 
+              ruptura). A nominalização de orações subjetivas exige 
+              reorganização completa: "É fundamental que produza" → 
+              "A produção é fundamental".
+            </p>
+
+            {/* PARÁGRAFO 4: CONTEXTO PETROBRAS */}
+            <p>
+              No ambiente técnico da Petrobras, a nominalização é essencial 
+              para elaboração de relatórios, laudos e documentos oficiais. 
+              "Ocorreram erros durante a perfuração" transforma-se em 
+              "A ocorrência de erros durante a perfuração", conferindo 
+              impessoalidade e objetividade ao relato. Em relatórios de 
+              produção, "A empresa investiu pesado" nominaliza-se para 
+              "O investimento pesado da empresa", permitindo que essa 
+              informação funcione como sujeito de novas análises. 
+              Esta prática remove o foco do agente humano e concentra 
+              atenção nos fatos técnicos, padrão indispensável para 
+              documentação corporativa e comunicação institucional.
+            </p>
+
+            {/* PARÁGRAFO 5: PEGADINHAS CESGRANRIO */}
+            <p>
+              A CESGRANRIO explora sistematicamente as fronteiras da 
+              nominalização adequada. As questões frequentemente testam: 
+              identificação da nominalização correta (decidir → decisão, 
+              não decidido), reconhecimento de orações subjetivas 
+              transformadas ("que o Brasil produza" → "a produção"), 
+              e aplicação contextual em textos técnicos. O examinando 
+              deve desenvolver sensibilidade para distinguir nominalização 
+              verdadeira de simples adjetivação, e compreender quando 
+              este recurso confere objetividade ao texto sem perder 
+              o sentido original. Erros comuns incluem escolher sufixos 
+              inadequados ou manter estruturas verbais onde a 
+              nominalização seria mais apropriada.
+            </p>
+
+            {/* CAIXA DE DESTAQUE: Guia de Nominalização */}
+            <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">O Laboratório de Sufixos Nominalizadores</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🏭</div>
+                  <strong>-ção/-são</strong>
+                  <p>produzir → produção<br/>expandir → expansão<br/>decidir → decisão</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">⚙️</div>
+                  <strong>-mento</strong>
+                  <p>investir → investimento<br/>desenvolver → desenvolvimento<br/>lançar → lançamento</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">💪</div>
+                  <strong>-ência/-ância</strong>
+                  <p>resistir → resistência<br/>permanecer → permanência<br/>assistir → assistência</p>
+                </div>
+              </div>
+              <div className="mt-4 p-3 bg-amber-100 dark:bg-amber-900/30 rounded text-sm">
+                <strong>Regra de Ouro:</strong> Nominalização remove o agente e foca no fato. "Eles decidiram" (foco nos agentes) → "A decisão" (foco no fato).
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="Verbo para Substantivo"
           variant={mv[5]}
         />
