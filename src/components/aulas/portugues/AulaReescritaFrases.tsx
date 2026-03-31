@@ -1,3 +1,4 @@
+import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
@@ -15,6 +16,7 @@ import {
   CardCarousel,
   Comparison,
 } from "../shared";
+import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   LuBookOpen,
@@ -64,6 +66,8 @@ const MODULE_DEFS = [
   { id: "modulo-9", label: "Módulo 9", title: "Laboratório CESGRANRIO" },
   { id: "modulo-10", label: "Módulo 10", title: "Arena de Elite" },
 ];
+
+const mv = [undefined, ...getAllModuleVariants()];
 
 export default function AulaReescritaFrases({
   onComplete,
@@ -198,16 +202,118 @@ export default function AulaReescritaFrases({
           numero={1}
           titulo="A Arte da Paráfrase"
           descricao="Entenda o binômio da reescrita perfeita: Sentido Intacto e Norma Culta Plena."
-          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
+          variant={mv[1]}
         />
+
+        {/* ★ RICH INTRO SECTION - Módulo 1 */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Fundamentação da Paráfrase"
+          variant={mv[1]}
+        />
+          
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            {/* PARÁGRAFO 1: CONCEITO CIENTÍFICO */}
+            <p>
+              A paráfrase constitui-se como o processo metalinguístico de recriação textual 
+              que preserva integralmente o conteúdo semântico original mediante a transposição 
+              para uma nova estrutura sintática. Segundo Evanildo Bechara em sua "Moderna 
+              Gramática Portuguesa", a paráfrase distingue-se fundamentalmente do resumo 
+              por manter a equivalência informativa completa, operando como um exercício de 
+              competência linguística que testa a capacidade do falante de manipular as 
+              estruturas da língua sem comprometer a mensagem original. A banca CESGRANRIO 
+              exige o binômio indissociável: Sentido Original Intacto + Norma Culta Plena.
+            </p>
+
+            {/* PARÁGRAFO 2: EXPLICAÇÃO INTUITIVA */}
+            <p>
+              Em outras palavras, paráfrase é como traduzir o mesmo pensamento para um 
+              dialeto diferente da própria língua. Imagine que você tem uma mensagem importante 
+              para transmitir, mas precisa dizer a mesma coisa usando palavras e organizações 
+              completamente diferentes — é exatamente isso que a paráfrase propõe. 
+              A essência permanece intacta, mas a "roupagem" linguística é renovada, 
+              exigindo profundo domínio das possibilidades expressivas do português. 
+              Não se trata de simplificar ou complicar, mas de recodificar mantendo a fidelidade 
+              semântica absoluta.
+            </p>
+
+            {/* PARÁGRAFO 3: REGRAS E TÉCNICAS */}
+            <p>
+              As técnicas de paráfrase fundamentam-se em três operações principais: 
+              <strong>substituição lexical</strong> (troca de sinônimos adequados ao contexto), 
+              <strong>reordenação sintática</strong> (inversão da ordem dos termos da oração) 
+              e <strong>mudança estrutural</strong> (transformação entre voz ativa/passiva, 
+              alteração de classes gramaticais, modificação de conectivos). Cada operação 
+              exige atenção especial à manutenção das relações semânticas e à adequação 
+              ao registro formal exigido pela banca CESGRANRIO. A regência verbal, 
+              particularmente, constitui-se como ponto crítico — verbos como "visar" 
+              exigem preposição "a" quando indicam finalidade, detalhe que a banca 
+              explora sistematicamente.
+            </p>
+
+            {/* PARÁGRAFO 4: CONTEXTO PETROBRAS */}
+            <p>
+              No contexto técnico-corporativo da Petrobras, a paráfrase revela-se 
+              instrumental na elaboração de relatórios de segurança, laudos de inspeção 
+              e comunicados operacionais. Um engenheiro pode necessitar reestruturar 
+              um laudo sobre "incidente devido à falha humana" para "o incidente foi 
+              provocado pela falha humana", mantendo a precisão técnica mas adequando 
+              a formalidade do documento. A capacidade de paráfrasear adequadamente 
+              previne ambiguidades que poderiam comprometer a segurança operacional 
+              ou a tomada de decisões estratégicas em plataformas de exploração, 
+              refinarias ou unidades de distribuição.
+            </p>
+
+            {/* PARÁGRAFO 5: PEGADINHAS CESGRANRIO */}
+            <p>
+              A CESGRANRIO explora sistematicamente as fronteiras da paráfrase 
+              adequada através de armadilhas semânticas. As questões frequentemente 
+              apresentam alternativas que alteram sutilezas de sentido — convertendo 
+              possibilidade em certeza ("talvez" → "apresentará"), modificando 
+              relações de causa e efeito, ou substituindo conectivos concessivos 
+              ("conquanto" → "porque" ou "sempre que"). O maior "pecado" em reescritas 
+              técnicas é a extrapolação — adicionar informações não contidas no 
+              original, como detalhes sobre causas não mencionadas ou consequências 
+              implícitas. O candidato deve desenvolver sensibilidade para identificar 
+              quando uma suposta paráfrase constitui-se, na verdade, em uma 
+              interpretação ou acréscimo indevido à mensagem original.
+            </p>
+
+            {/* CAIXA DE DESTAQUE: Fórmula da Paráfrase Perfeita */}
+            <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">A Fórmula da Paráfrase CESGRANRIO</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🔄</div>
+                  <strong>Substituição</strong>
+                  <p>Sinônimos contextuais precisos</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">⚖️</div>
+                  <strong>Equivalência</strong>
+                  <p>Sentido 100% preservado</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">📝</div>
+                  <strong>Norma Culta</strong>
+                  <p>Gramaticalmente impecável</p>
+                </div>
+              </div>
+              <div className="mt-4 p-3 bg-amber-100 dark:bg-amber-900/30 rounded text-sm">
+                <strong>Regra de Ouro:</strong> Se a frase original expressa dúvida, a reescrita não pode expressar certeza. Se causa, não pode virar consequência. Se concessão, não pode virar explicação.
+              </div>
+            </div>
+          </div>
+        </section>
 
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="O Conceito de Reescritura"
-              variant="blue"
-            />
+          variant={mv[1]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -302,7 +408,8 @@ export default function AulaReescritaFrases({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-amber-500"
+        />
             <AlertBox tipo="danger" titulo="Erro de Extrapolação">
               Não adicione detalhes que não estão no texto. Se o autor diz que o
               lucro subiu, você não pode reescrever dizendo que ele subiu
@@ -314,8 +421,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={2}
               title="Manutenção de Sentido vs Adequação de Registro"
-              variant="blue"
-            />
+          variant={mv[1]}
+        />
             <p className="text-muted-foreground leading-relaxed text-lg">
               Na reescrita, há dois planos independentes que podem ser alterados
               ou mantidos. Entender a diferença é fundamental para acertar as
@@ -337,8 +444,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Tipos de Reescrita Cobrados pela Banca"
-              variant="blue"
-            />
+          variant={mv[1]}
+        />
             <CardCarousel
               cards={[
                 {
@@ -379,8 +486,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={4}
               title="O Que a CESGRANRIO Realmente Avalia"
-              variant="blue"
-            />
+          variant={mv[1]}
+        />
             <Comparison
               title="Questão Mal Respondida vs Bem Respondida"
               left={{
@@ -414,9 +521,9 @@ export default function AulaReescritaFrases({
             titulo="QUIZ: A Arte da Paráfrase"
             icone="🎯"
             numero={5}
-            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          />
+          variant={mv[1]}
+        />
         </div>
       </TabsContent>
 
@@ -426,7 +533,7 @@ export default function AulaReescritaFrases({
           numero={2}
           titulo="Sinonímia e Campo Semântico"
           descricao="Troque palavras mantendo a precisão técnica necessária para a indústria de energia."
-          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
+          variant={mv[2]}
         />
 
         <div className="space-y-[50px]">
@@ -434,8 +541,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="A Precisão das Palavras"
-              variant="cyan"
-            />
+          variant={mv[2]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -523,15 +630,16 @@ export default function AulaReescritaFrases({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-blue-500"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={2}
               title="Sinonímia: Sentido Formal vs Informal"
-              variant="cyan"
-            />
+          variant={mv[2]}
+        />
             <Comparison
               title="Equivalência de Registro — Exemplo Prático"
               left={{
@@ -563,8 +671,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Pares de Palavras que a Banca Adora Confundir"
-              variant="cyan"
-            />
+          variant={mv[2]}
+        />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente="Iminente"
@@ -589,8 +697,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={4}
               title="Léxico Técnico Petrobras — Palavras que a Banca Usa"
-              variant="cyan"
-            />
+          variant={mv[2]}
+        />
             <p className="text-muted-foreground text-lg leading-relaxed">
               O vocabulário técnico do setor de energia tem equivalentes formais
               específicos que a CESGRANRIO usa em seus textos-base. Conhecê-los
@@ -637,9 +745,9 @@ export default function AulaReescritaFrases({
             titulo="QUIZ: Sinonímia e Campo Semântico"
             icone="🎯"
             numero={5}
-            variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          />
+          variant={mv[2]}
+        />
         </div>
       </TabsContent>
 
@@ -649,7 +757,7 @@ export default function AulaReescritaFrases({
           numero={3}
           titulo="Vozes Verbais"
           descricao="A travessia entre Ativa e Passiva é o tema predileto da banca. Aprenda a não perder o tempo."
-          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
+          variant={mv[3]}
         />
 
         <div className="space-y-[50px]">
@@ -657,8 +765,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="A Travessia (Vozes)"
-              variant="emerald"
-            />
+          variant={mv[3]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -758,7 +866,8 @@ export default function AulaReescritaFrases({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-emerald-500"
+        />
 
             <Comparison
               title="Voz Ativa vs. Passiva Analítica"
@@ -781,8 +890,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={2}
               title="Armadilha CESGRANRIO: Passiva em Forma de Nominalização"
-              variant="emerald"
-            />
+          variant={mv[3]}
+        />
             <AlertBox tipo="danger" titulo="Armadilha CESGRANRIO — Passiva Disfarçada">
               A banca frequentemente apresenta nominalizações como reescritas
               válidas de frases na voz ativa. O erro está em omitir o agente ou
@@ -806,8 +915,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Casos Especiais de Voz Passiva"
-              variant="emerald"
-            />
+          variant={mv[3]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -899,7 +1008,8 @@ export default function AulaReescritaFrases({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-emerald-500"
+        />
           </section>
 
           <QuizInterativo
@@ -907,9 +1017,9 @@ export default function AulaReescritaFrases({
             titulo="QUIZ: Vozes Verbais"
             icone="🎯"
             numero={4}
-            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          />
+          variant={mv[3]}
+        />
         </div>
       </TabsContent>
 
@@ -919,7 +1029,7 @@ export default function AulaReescritaFrases({
           numero={4}
           titulo="O Discurso sob Controle"
           descricao="Direto para Indireto: ajuste pronomes, tempos e advérbios sem titubear."
-          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
+          variant={mv[4]}
         />
 
         <div className="space-y-[50px]">
@@ -927,8 +1037,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="Direto & Indireto"
-              variant="emerald"
-            />
+          variant={mv[4]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1027,15 +1137,16 @@ export default function AulaReescritaFrases({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-rose-500"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={2}
               title="Exemplo Completo: Direto → Indireto"
-              variant="emerald"
-            />
+          variant={mv[4]}
+        />
             <Comparison
               title="Discurso Direto vs Indireto — Caso Real"
               left={{
@@ -1069,8 +1180,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Mapa de Advérbios Temporais"
-              variant="emerald"
-            />
+          variant={mv[4]}
+        />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente="hoje / agora"
@@ -1095,8 +1206,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={4}
               title="Verbos Introdutores de Discurso Indireto"
-              variant="emerald"
-            />
+          variant={mv[4]}
+        />
             <p className="text-muted-foreground text-lg leading-relaxed">
               O verbo que introduz o discurso indireto determina como a
               transposição é feita. Diferentes verbos dicendi exigem diferentes
@@ -1150,9 +1261,9 @@ export default function AulaReescritaFrases({
             titulo="QUIZ: O Discurso sob Controle"
             icone="🎯"
             numero={5}
-            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          />
+          variant={mv[4]}
+        />
         </div>
       </TabsContent>
 
@@ -1162,7 +1273,7 @@ export default function AulaReescritaFrases({
           numero={5}
           titulo="Nominalização"
           descricao="Transforme verbos em substantivos para dar densidade técnica e profissional ao seu texto."
-          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
+          variant={mv[5]}
         />
 
         <div className="space-y-[50px]">
@@ -1170,8 +1281,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="Verbo para Substantivo"
-              variant="amber"
-            />
+          variant={mv[5]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1252,15 +1363,16 @@ export default function AulaReescritaFrases({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-violet-500"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={2}
               title="Nominalização: Antes e Depois"
-              variant="amber"
-            />
+          variant={mv[5]}
+        />
             <Comparison
               title="Frase Verbal vs Frase Nominalizada"
               left={{
@@ -1285,8 +1397,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Léxico de Nominalizações Frequentes"
-              variant="amber"
-            />
+          variant={mv[5]}
+        />
             <CardCarousel
               cards={[
                 {
@@ -1327,8 +1439,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={4}
               title="Sufixos Nominalizadores — Como Identificar o Substantivo Correto"
-              variant="amber"
-            />
+          variant={mv[5]}
+        />
             <p className="text-muted-foreground text-lg leading-relaxed">
               Em provas de reescrita, a banca às vezes apresenta uma
               nominalização com o sufixo errado como distrator. Conhecer os
@@ -1399,7 +1511,8 @@ export default function AulaReescritaFrases({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-violet-500"
+        />
           </section>
 
           <QuizInterativo
@@ -1407,9 +1520,9 @@ export default function AulaReescritaFrases({
             titulo="QUIZ: Troca de Classes (Nominalização)"
             icone="🎯"
             numero={5}
-            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          />
+          variant={mv[5]}
+        />
         </div>
       </TabsContent>
 
@@ -1419,7 +1532,7 @@ export default function AulaReescritaFrases({
           numero={6}
           titulo="Equivalência Conjutiva"
           descricao="Domine os conectivos causais, temporais e condicionais. A alma da reescrita sequencial."
-          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
+          variant={mv[6]}
         />
 
         <div className="space-y-[50px]">
@@ -1427,8 +1540,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="Nexos Equivalentes"
-              variant="amber"
-            />
+          variant={mv[6]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1544,15 +1657,16 @@ export default function AulaReescritaFrases({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-amber-600"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={2}
               title="Conectivos Causais: Registro Informal vs Formal"
-              variant="amber"
-            />
+          variant={mv[6]}
+        />
             <Comparison
               title="Substituição de Causal — Diferença de Registro"
               left={{
@@ -1588,8 +1702,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Mapa Completo de Conjunções por Valor Lógico"
-              variant="amber"
-            />
+          variant={mv[6]}
+        />
             <p className="text-muted-foreground text-lg leading-relaxed">
               Em reescrita, a equivalência conjuntiva só é válida dentro do
               mesmo <strong>valor lógico</strong>. Nunca troque uma conjunção
@@ -1650,9 +1764,9 @@ export default function AulaReescritaFrases({
             titulo="QUIZ: Equivalência Conjutiva"
             icone="🎯"
             numero={4}
-            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
-          />
+          variant={mv[6]}
+        />
         </div>
       </TabsContent>
 
@@ -1662,7 +1776,7 @@ export default function AulaReescritaFrases({
           numero={7}
           titulo="O Duelo Concessivo"
           descricao="Embora vs Mas. A troca mais perigosa e frequente da banca Cesgranrio."
-          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
+          variant={mv[7]}
         />
 
         <div className="space-y-[50px]">
@@ -1670,8 +1784,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="Embora x Mas — O Duelo Concessivo"
-              variant="rose"
-            />
+          variant={mv[7]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1763,15 +1877,16 @@ export default function AulaReescritaFrases({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-blue-600"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={2}
               title="Comparação: Adversativa vs Concessiva na Prática"
-              variant="rose"
-            />
+          variant={mv[7]}
+        />
             <Comparison
               title="Mesma ideia — estruturas diferentes"
               left={{
@@ -1797,8 +1912,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Concessão com Gerúndio e Infinitivo"
-              variant="rose"
-            />
+          variant={mv[7]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1865,7 +1980,8 @@ export default function AulaReescritaFrases({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-blue-600"
+        />
           </section>
 
           <QuizInterativo
@@ -1873,9 +1989,9 @@ export default function AulaReescritaFrases({
             titulo="QUIZ: O Duelo Concessivo"
             icone="🎯"
             numero={4}
-            variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
-          />
+          variant={mv[7]}
+        />
         </div>
       </TabsContent>
 
@@ -1885,7 +2001,7 @@ export default function AulaReescritaFrases({
           numero={8}
           titulo="Pontuação e Sentido"
           descricao="A vírgula não é apenas uma pausa; ela é o interruptor do sentido explicativo/restritivo."
-          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
+          variant={mv[8]}
         />
 
         <div className="space-y-[50px]">
@@ -1893,8 +2009,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="O Poder da Vírgula"
-              variant="rose"
-            />
+          variant={mv[8]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1985,15 +2101,16 @@ export default function AulaReescritaFrases({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-emerald-600"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={2}
               title="Vírgula que Muda Tudo"
-              variant="rose"
-            />
+          variant={mv[8]}
+        />
             <Comparison
               title="Presença vs Ausência de Vírgula — Mudança de Sentido"
               left={{
@@ -2025,8 +2142,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Outros Sinais de Pontuação na Reescrita"
-              variant="rose"
-            />
+          variant={mv[8]}
+        />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente="Dois-Pontos e Travessão"
@@ -2058,9 +2175,9 @@ export default function AulaReescritaFrases({
             titulo="QUIZ: Pontuação e Sentido"
             icone="🎯"
             numero={4}
-            variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
-          />
+          variant={mv[8]}
+        />
         </div>
       </TabsContent>
 
@@ -2070,7 +2187,7 @@ export default function AulaReescritaFrases({
           numero={9}
           titulo="Laboratório CESGRANRIO"
           descricao="Analise as 5 trocas que a banca mais ama e que derrubam 90% dos candidatos."
-          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
+          variant={mv[9]}
         />
 
         <div className="space-y-[50px]">
@@ -2078,8 +2195,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="Padrões de Elite — As Trocas Favoritas da Banca"
-              variant="blue"
-            />
+          variant={mv[9]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -2182,15 +2299,16 @@ export default function AulaReescritaFrases({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-rose-600"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={2}
               title="Os 5 Erros que Derrubam Candidatos"
-              variant="blue"
-            />
+          variant={mv[9]}
+        />
             <AlertBox tipo="danger" titulo="Armadilhas Recorrentes em Provas Petrobras">
               A CESGRANRIO repete padrões de erro em provas diferentes. Conhecê-los
               é vantagem competitiva decisiva. Estude cada um dos cinco abaixo
@@ -2236,8 +2354,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={3}
               title="Comparação de Reescritas — Laboratório Prático"
-              variant="blue"
-            />
+          variant={mv[9]}
+        />
             <Comparison
               title="Armadilha: Pronome Relativo 'Onde' vs 'Em que'"
               left={{
@@ -2283,9 +2401,9 @@ export default function AulaReescritaFrases({
             titulo="QUIZ: Laboratório CESGRANRIO"
             icone="🎯"
             numero={4}
-            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
-          />
+          variant={mv[9]}
+        />
         </div>
       </TabsContent>
 
@@ -2295,7 +2413,7 @@ export default function AulaReescritaFrases({
           numero={10}
           titulo="Arena de Elite"
           descricao="Simulado Final: 10 questões de reescrita global. O teste definitivo de sua semântica."
-          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
+          variant={mv[10]}
         />
 
         <div className="space-y-[50px]">
@@ -2303,8 +2421,8 @@ export default function AulaReescritaFrases({
             <ModuleSectionHeader
               index={1}
               title="Revisão Express — Todas as Técnicas"
-              variant="indigo"
-            />
+          variant={mv[10]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -2401,15 +2519,16 @@ export default function AulaReescritaFrases({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-violet-600"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={2}
               title="Estratégia de Prova"
-              variant="indigo"
-            />
+          variant={mv[10]}
+        />
             <AlertBox tipo="info" titulo="Recapitulação Final">
               A reescrita bem-sucedida é aquela em que você leria a frase nova num
               jornal e ela passaria a mesma informação da antiga, sem erros de
@@ -2455,9 +2574,9 @@ export default function AulaReescritaFrases({
             titulo="QUIZ: Arena de Elite"
             icone="🏆"
             numero={3}
-            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
-          />
+          variant={mv[10]}
+        />
         </div>
       </TabsContent>
     </AulaTemplate>
