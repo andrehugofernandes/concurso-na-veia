@@ -862,10 +862,121 @@ export default function AulaReescritaFrases({
           variant={mv[3]}
         />
 
+        {/* ★ RICH INTRO SECTION - Módulo 3 */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Mecânica da Transformação Verbal"
+          variant={mv[3]}
+        />
+          
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            {/* PARÁGRAFO 1: CONCEITO CIENTÍFICO */}
+            <p>
+              A voz verbal constitui-se como categoria gramatical que indica 
+              a relação entre o sujeito e o processo verbal, estabelecendo 
+              quem pratica ou recebe a ação. Segundo Evanildo Bechara, 
+              as vozes verbais em português classificam-se em ativa, passiva 
+              analítica, passiva pronominal e reflexiva, cada uma com 
+              características estruturais específicas que determinam a 
+              organização sintática da oração. Na voz ativa, o sujeito 
+              pratica a ação; na passiva, recebe a ação; na reflexiva, 
+              pratica e recebe a ação simultaneamente. A CESGRANRIO explora 
+              sistematicamente as transformações entre essas estruturas, 
+              exigindo domínio absoluto da mecânica de transposição.
+            </p>
+
+            {/* PARÁGRAFO 2: EXPLICAÇÃO INTUITIVA */}
+            <p>
+              Em outras palavras, transformar a voz verbal é como reorganizar 
+              o organograma de uma empresa — mudando quem comanda e quem 
+              executa, mas mantendo a mesma tarefa. Na voz ativa, "o engenheiro 
+              supervisiona a obra" (engenheiro = agente). Na voz passiva, 
+              "a obra é supervisionada pelo engenheiro" (obra = paciente, 
+              engenheiro = agente da passiva). É a mesma relação de poder 
+              invertida, como trocar as posições no organograma sem alterar 
+              a função original. A reescrita bem-sucedida depende dessa 
+              compreensão estrutural — identificar quem faz o quê e 
+              reorganizar sem perder as relações de autoridade.
+            </p>
+
+            {/* PARÁGRAFO 3: REGRAS E TÉCNICAS */}
+            <p>
+              As técnicas de transposição vocal fundamentam-se em princípios 
+              rigorosos: <strong>manutenção do tempo verbal</strong> (pretérito 
+              perfeito permanece pretérito perfeito), <strong>concordância 
+              adequada</strong> (na passiva pronominal, o verbo concorda com 
+              o sujeito paciente), e <strong>preservação do agente</strong> 
+              (quando explicitado). A voz passiva analítica utiliza o 
+              auxiliar "ser" + particípio, enquanto a pronominal emprega 
+              o pronome "se" com verbo concordante. Verbos transitivos 
+              indiretos com preposição não admitem voz passiva — o "se" 
+              torna-se índice de indeterminação do sujeito, como em 
+              "Precisa-se de técnicos" (não "Técnicos são precisados").
+            </p>
+
+            {/* PARÁGRAFO 4: CONTEXTO PETROBRAS */}
+            <p>
+              No contexto técnico da Petrobras, a escolha da voz verbal 
+              impacta diretamente a clareza dos relatórios operacionais. 
+              "A equipe realizou a inspeção" (voz ativa) enfatiza a 
+              responsabilidade da equipe, enquanto "A inspeção foi realizada 
+              pela equipe" (voz passiva) destaca o procedimento em si. 
+              Em laudos de segurança, a voz passiva é frequentemente 
+              preferida para objetivar: "Injetaram-se produtos químicos no 
+              poço" (passiva pronominal) indica que a ação ocorreu sem 
+              especificar o agente, focando no processo. A compreensão 
+              dessas nuances é essencial para elaborar documentos 
+              técnicos adequados aos padrões da indústria.
+            </p>
+
+            {/* PARÁGRAFO 5: PEGADINHAS CESGRANRIO */}
+            <p>
+              A CESGRANRIO explora sistematicamente as armadilhas da 
+              transposição vocal. As questões frequentemente testam: 
+              concordância na passiva pronominal ("Injetaram-se produtos" 
+              vs "*Injetou-se produtos"), identificação de verbos que 
+              não admitem passiva (transitivos indiretos), manutenção 
+              do tempo verbal ("serão alcançadas" → "alcançaremos"), e 
+              distinção entre voz passiva e índice de indeterminação 
+              ("Precisa-se de técnicos"). O examinando deve desenvolver 
+              sensibilidade para identificar quando a transformação 
+              é gramaticalmente impossível ou quando altera sutilmente 
+              o sentido original, especialmente em relação à explicitação 
+              ou ocultação do agente da ação.
+            </p>
+
+            {/* CAIXA DE DESTAQUE: Algoritmo de Transposição */}
+            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">O Algoritmo das Três Etapas</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🔄</div>
+                  <strong>Identifique</strong>
+                  <p>Sujeito, verbo, objeto direto</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">⚙️</div>
+                  <strong>Transponha</strong>
+                  <p>Objeto → sujeito + ser + particípio</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">✅</div>
+                  <strong>Verifique</strong>
+                  <p>Tempo verbal e concordância</p>
+                </div>
+              </div>
+              <div className="mt-4 p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded text-sm">
+                <strong>Regra Crítica:</strong> Se o verbo na ativa está no futuro, a passiva usa "ser" no futuro (será feito). Se no pretérito perfeito, "ser" vai para o pretérito perfeito (foi feito).
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="A Travessia (Vozes)"
           variant={mv[3]}
         />
