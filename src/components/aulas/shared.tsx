@@ -1595,6 +1595,8 @@ export function MusicPlayerCard({
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const togglePlay = () => {
+    if (!audioUrl || audioUrl.trim() === "") return;
+    
     if (audioRef.current) {
       if (isPlaying) audioRef.current.pause();
       else audioRef.current.play();
@@ -1628,12 +1630,15 @@ export function MusicPlayerCard({
     <section
       className={`w-full ${lyrics ? "max-w-4xl" : "max-w-md"} mx-auto my-8 animate-in zoom-in-95 duration-500`}
     >
-      <audio
-        ref={audioRef}
-        src={audioUrl}
-        onTimeUpdate={handleTimeUpdate}
-        onEnded={() => setIsPlaying(false)}
-      />
+      {/* Only render audio element if audioUrl is provided */}
+      {audioUrl && audioUrl.trim() !== "" && (
+        <audio
+          ref={audioRef}
+          src={audioUrl}
+          onTimeUpdate={handleTimeUpdate}
+          onEnded={() => setIsPlaying(false)}
+        />
+      )}
 
       {/* Card Container */}
       <div className="bg-gradient-to-b from-indigo-900/80 to-black/90 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl text-white relative group">
@@ -1713,7 +1718,12 @@ export function MusicPlayerCard({
 
               <button
                 onClick={togglePlay}
-                className="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-lg hover:shadow-white/20"
+                disabled={!audioUrl || audioUrl.trim() === ""}
+                className={`w-14 h-14 rounded-full bg-white text-black flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-lg hover:shadow-white/20 ${
+                  !audioUrl || audioUrl.trim() === "" 
+                    ? "opacity-50 cursor-not-allowed" 
+                    : ""
+                }`}
               >
                 {isPlaying ? (
                   <LuPause size={28} className="fill-current" />
@@ -1729,6 +1739,15 @@ export function MusicPlayerCard({
                 <LuRepeat size={18} />
               </button>
             </div>
+            
+            {/* No Audio Message */}
+            {!audioUrl || audioUrl.trim() === "" ? (
+              <div className="mt-4 p-3 bg-white/10 rounded-lg text-center">
+                <p className="text-white/60 text-sm">
+                  🎵 Áudio não disponível no momento
+                </p>
+              </div>
+            ) : null}
           </div>
 
           {/* Lyrics Section */}
@@ -2879,7 +2898,7 @@ export function StickyModuleNav({
                       >
                         {mod.label}
                       </span>
-                      <span className="font-bold text-[10px] md:text-xs leading-tight text-left flex items-start gap-1.5 max-w-[120px] line-clamp-2">
+                      <span className="font-bold text-[10px] md:text-xs leading-tight text-left flex items-start gap-1.5 max-w-full line-clamp-2">
                         <span className="line-clamp-2">{mod.titulo || mod.title}</span>
                         {completedModules.has(mod.id) && (
                           <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20 shrink-0 mt-0.5">
