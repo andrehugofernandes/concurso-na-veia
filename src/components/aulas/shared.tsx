@@ -2748,13 +2748,13 @@ export function StickyModuleNav({
                           <div className="flex flex-col items-center gap-0.5 min-w-0 w-full">
                             <span
                               className={cn(
-                                "text-[8px] uppercase tracking-widest font-bold opacity-60 group-data-[state=active]:opacity-100 transition-opacity duration-200",
+                                "text-[10px] uppercase tracking-wider font-bold opacity-60 group-data-[state=active]:opacity-100 transition-opacity duration-200",
                                 MODULE_LABEL_COLORS[
                                   index % MODULE_LABEL_COLORS.length
                                 ],
                               )}
                             >
-                              M{index + 1}
+                              MÓDULO {String(index + 1).padStart(2, "0")}
                             </span>
                             {completedModules.has(mod.id) && (
                               <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20">
