@@ -15,10 +15,15 @@ import {
   ContentAccordion,
   AulaProps,
   AulaTemplate,
+  ModuleConsolidation,
 } from "../shared";
 import {
   LuCheck,
   LuZap,
+  LuBookOpen,
+  LuTarget,
+  LuTriangleAlert,
+  LuLightbulb,
 } from "react-icons/lu";
 
 import {
@@ -36,7 +41,8 @@ import {
 
 /**
  * AULA: Crase - Língua Portuguesa
- * Padrão: Ultimate Premium V5.0 com conteúdo completo
+ * Padrão: Ultimate Premium 10 Módulos com conteúdo expandido
+ * Versão: 2.0 (2000+ linhas, 10 módulos completos)
  */
 
 const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
@@ -59,13 +65,13 @@ export default function AulaCrase({
 }: AulaProps) {
   const MODULE_DEFS = [
     { id: "modulo-1", label: "Módulo 1", title: "Conceito e Regra Geral" },
-    { id: "modulo-2", label: "Módulo 2", title: "Identificação: Teste do Masculino" },
-    { id: "modulo-3", label: "Módulo 3", title: "Casos Proibidos I: Verbos" },
-    { id: "modulo-4", label: "Módulo 4", title: "Casos Proibidos II: Pronomes" },
-    { id: "modulo-5", label: "Módulo 5", title: "Crase Facultativa com Nomes Próprios" },
-    { id: "modulo-6", label: "Módulo 6", title: "Crase Facultativa com Possessivos" },
-    { id: "modulo-7", label: "Módulo 7", title: "Casos Especiais I: Horas e Medidas" },
-    { id: "modulo-8", label: "Módulo 8", title: "Casos Especiais II: Casa, Terra, Distância" },
+    { id: "modulo-2", label: "Módulo 2", title: "Teste do Masculino" },
+    { id: "modulo-3", label: "Módulo 3", title: "Verbos Proíbem Crase" },
+    { id: "modulo-4", label: "Módulo 4", title: "Pronomes Proíbem Crase" },
+    { id: "modulo-5", label: "Módulo 5", title: "Facultativo: Nomes Próprios" },
+    { id: "modulo-6", label: "Módulo 6", title: "Facultativo: Possessivos" },
+    { id: "modulo-7", label: "Módulo 7", title: "Horas e Medidas" },
+    { id: "modulo-8", label: "Módulo 8", title: "Casa, Terra, Distância" },
     { id: "modulo-9", label: "Módulo 9", title: "Pronomes Demonstrativos" },
     { id: "modulo-10", label: "Módulo 10", title: "Simulado Integrado" },
   ] as const;
@@ -112,8 +118,6 @@ export default function AulaCrase({
     return completedModules.has(MODULE_DEFS[index - 1].id);
   };
 
-  const CRASE_MANTRA = "Para ter crase: 1. Verbo pede 'A' (Prep) + 2. Substantivo aceita 'A' (Art).";
-
   return (
     <AulaTemplate
       activeTab={activeTab}
@@ -132,593 +136,2139 @@ export default function AulaCrase({
       onComplete={onComplete}
       loading={loading}
     >
-      {/* ─── MÓDULO 1: CONCEITO ─── */}
+      {/* ╔════════════════════════════════════════════════════════════════════════╗ */}
+      {/* ║                        MÓDULO 1: CONCEITO                              ║ */}
+      {/* ╚════════════════════════════════════════════════════════════════════════╝ */}
       <TabsContent value="modulo-1" className="mt-0 space-y-12">
-        <ModuleBanner numero={1} titulo="Conceito e Regra Geral" variant={mv[1]} descricao="A+A = À" />
+        <ModuleBanner
+          numero={1}
+          titulo="Conceito e Regra Geral"
+          variant={mv[1]}
+          descricao="A + A = À: A Equação Fundamental"
+        />
 
-        {/* ★ RICH INTRO M1 */}
+        {/* ★ RICH INTRO */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={1}
-            title="O Fenômeno da Crase: A Fusão que Decide Aprovações"
+            title="A Crase: Fusão de Duas Vogais Idênticas"
             variant={mv[1]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              A crase é um dos fenômenos mais temidos da Língua Portuguesa em concursos, não por ser conceitualmente complexa, mas porque ela repousa sobre uma verdade simples que candidatos despreparados não dominam: <strong>crase é a fusão de duas vogais idênticas</strong>. Segundo Evanildo Bechara, "a crase é o encontro de duas vogais idênticas em sequência, resultando na elisão (supressão) de uma delas e na representação gráfica da união pelo acento grave". Em outras palavras, quando a preposição <em>a</em> se encontra com o artigo definido feminino <em>a</em> ou com os demonstrativos <em>aquele, aquela, aquilo</em>, as duas vogais "colapsam" em uma só — e essa fusão é marcada pelo acento grave: <strong>à</strong>.
+              <strong>Crase é a fusão gráfica da preposição "a" com o artigo definido feminino "a" (ou com pronomes demonstrativos iniciados por "a")</strong>. Quando essas duas vogais idênticas se encontram em sequência, uma delas desaparece, mas a fusão é marcada pelo acento grave (´), criando o símbolo: <strong>à</strong>. Essa é a razão matemática da crase: A (preposição) + A (artigo) = À.
             </p>
             <p>
-              Pense na crase como um fenômeno matemático: A (preposição) + A (artigo) = À (crase). Essa equação é o núcleo de todo o aprendizado. Não há crase por magia ou capricho da linguagem — há crase apenas quando essa equação se completa. A preposição <em>a</em> é exigida por um verbo ou nome regente (o que pede), e o artigo <em>a</em> é exigido por um substantivo feminino (o que recebe). Quando os dois se encontram, surge a fusão. Se uma das peças da equação faltar, não há crase — ponto final. A CESGRANRIO cobra crase porque sabe que o candidato coloquial escreve "vou a praia" (sem crase) ou coloca crase aleatoriamente onde não deveria ("a isso"). A excelência linguística exige precisão cirúrgica.
+              A crase não é um erro ou capricho da linguagem — é um fenômeno fonético natural do português. Segundo a Nomenclatura Gramatical Brasileira (NGB), a crase é um processo de <em>elisão</em>, ou seja, a supressão de uma vogal quando duas vogais iguais se encontram. Historicamente, o português herdou essa tendência do latim, onde as vogais gemidas (repetidas) eram unificadas na pronúncia. A escrita apenas representou graficamente essa realidade linguística.
             </p>
             <p>
-              A crase se divide em três grandes categorias de regras. <strong>Primeira: Casos Obrigatórios</strong>, onde a crase sempre ocorre se o contexto a permitir — por exemplo, "ir <em>à</em> praia" (a + a praia). <strong>Segunda: Casos Proibidos</strong>, onde a crase é absolutamente vedada, como antes de verbo infinitivo ("começar a estudar", jamais "começar à estudar") ou antes de pronomes pessoais. <strong>Terceira: Casos Facultativos</strong>, onde a crase é permitida mas não obrigatória, como "refiro-me <em>a/à</em> Maria" — ambas as formas estão corretas. Dominar essas três categorias é 80% do trabalho.
+              Na Petrobras, documentos técnicos, procedimentos operacionais e comunicações formais utilizam crase constantemente. Relatórios de conformidade mencionam: "conforme referência <em>à</em> NBR 13434", "atento <em>à</em> resolução", "direcionado <em>à</em> segurança operacional". Um erro de crase em um documento contratual ou em uma instrução de trabalho pode prejudicar a interpretação jurídica ou criar ambiguidade crítica. Por isso, a CESGRANRIO cobra crase recorrentemente — testando não apenas conhecimento gramatical, mas a capacidade de aplicar regras sob pressão profissional.
             </p>
             <p>
-              Na Petrobras, a crase aparece constantemente em documentos técnicos, e-mails corporativos e relatórios formais. Procedimentos operacionais exigem precisão: "referente <em>à</em> segurança da operação", "atento <em>à</em> norma ISO", "direcionado <em>à</em> sustentabilidade ambiental". Um documento técnico com erro de crase pode comprometer a interpretação jurídica de um contrato ou criar ambiguidade em uma instrução de segurança operacional. A CESGRANRIO sabe que a Petrobras exige excelência linguística, e por isso cobra crase de forma recorrente — testando não apenas o conhecimento gramatical, mas a capacidade de aplicar regras sob pressão.
+              A estratégia de domínio da crase repousa em um processo lógico de 3 passos: <strong>1) Identificar se há preposição "a" exigida</strong>, <strong>2) Verificar se há artigo "a" ou demonstrativo "aquele/a/o" exigido</strong>, <strong>3) Se ambos estão presentes, há crase</strong>. Candidatos que decoram exceções sem entender a regra base fracassam; candidatos que dominam a equação acertam 95% das questões em menos de 30 segundos.
             </p>
-            <p>
-              A estratégia de domínio da crase é dupla: memorize a equação (<em>a + a = à</em>) e teste ela sistematicamente em cada alternativa. Se a preposição <em>a</em> é exigida, procure pelo artigo <em>a</em> ou pelos demonstrativos <em>aquele, aquela, aquilo</em>. Se ambos estão presentes, marque crase. Se um deles está ausente, não há crase. Esse método lógico, repetido cem vezes, transforma o medo em confiança. Candidatos que memorizam as exceções sem entender a regra base fracassam; candidatos que dominam a equação acertam 95% das questões em menos de 30 segundos.
-            </p>
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-xl border border-blue-200 dark:border-blue-800 p-6 space-y-3">
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-xl border border-blue-200 dark:border-blue-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground flex items-center gap-2">
-                <LuZap className="w-4 h-4 text-blue-500" /> Regra-Chave: A Equação da Crase
+                <LuZap className="w-5 h-5 text-blue-500" /> A Equação Fundamental da Crase
               </h4>
-              <p className="text-base text-foreground/80">
-                Crase ocorre quando <strong>preposição A + artigo/demonstrativo A = À</strong>
+              <div className="text-lg font-bold text-center p-4 bg-white dark:bg-slate-900 rounded-lg border-2 border-blue-500">
+                <span className="text-blue-600">A (preposição)</span> + <span className="text-blue-600">A (artigo/demonstrativo)</span> = <span className="text-red-600 text-2xl">À</span>
+              </div>
+              <p className="text-foreground/80">
+                Se <strong>UMA</strong> das peças (preposição ou artigo) faltar, não há crase. Sempre verifique ambas!
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-base">
-                <div className="p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
-                  <span className="font-bold text-emerald-600 dark:text-emerald-400 block mb-1">✅ COM CRASE</span>
-                  "Vou <em>à</em> praia" (a + a praia) ✓
-                </div>
-                <div className="p-3 bg-red-500/10 rounded-lg border border-red-500/20">
-                  <span className="font-bold text-red-600 dark:text-red-400 block mb-1">❌ SEM CRASE</span>
-                  "Vou <em>a</em> pé" (a + em, não há artigo) ✗
-                </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ★ ACCORDION 1: Três Pilares */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={2} title="Os Três Pilares da Crase" variant={mv[1]} />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "Pilar 1: Crase Obrigatória",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p>
+                      Crase ocorre obrigatoriamente quando o contexto exige tanto a preposição "a" quanto o artigo/demonstrativo "a". Exemplos: "Vou <strong>à</strong> praia" (vou A + A praia). "Dirijo-me <strong>à</strong> gerência" (dirijo-me A + A gerência). Nesses casos, a crase é automática e obrigatória — não há alternativa.
+                    </p>
+                    <p className="font-semibold">Macete: Teste do masculino funciona aqui perfeitamente:</p>
+                    <p className="italic">"Vou à praia" → "Vou ao museu" ✓ (virou "ao", confirma crase)</p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Pilar 2: Crase Proibida",
+                icone: <LuTriangleAlert className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p>
+                      Crase é <strong>absolutamente vedada</strong> quando uma das duas peças da equação está ausente. Verbos não aceitam artigo ("começar <strong>a</strong> estudar", não "começar <strong>à</strong> estudar"). Pronomes pessoais não aceitam artigo ("referi-me <strong>a</strong> ela", não "referi-me <strong>à</strong> ela"). Essas são zonas de proibição clara — a equação não se completa.
+                    </p>
+                    <p className="font-semibold">Regra: Se NÃO há artigo (ou demonstrativo) após a preposição, a preposição fica sozinha, sem crase.</p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Pilar 3: Crase Facultativa",
+                icone: <LuLightbulb className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p>
+                      Crase é <strong>facultativa</strong> quando o artigo também é opcional. Com nomes próprios femininos ("a Maria" ou "Maria"), a crase é opcional ("refiro-me a Maria" ou "refiro-me à Maria" — ambas corretas). Com possessivos singulares femininos ("minha", "sua"), o mesmo ocorre: "refiro-me a minha opinião" ou "refiro-me à minha opinião".
+                    </p>
+                    <p className="font-semibold">Regra: Quando o artigo pode sair sem prejuízo, a crase também pode sair.</p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Teste da Equação: Passo a Passo",
+                icone: <LuLightbulb className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-4 text-foreground/85">
+                    <p className="font-semibold">Como verificar se há crase:</p>
+                    <ol className="list-decimal list-inside space-y-2 ml-2">
+                      <li><strong>Passo 1:</strong> Existe preposição "a" exigida pelo verbo/nome?</li>
+                      <li><strong>Passo 2:</strong> Existe artigo "a" (ou demonstrativo) exigido pela palavra seguinte?</li>
+                      <li><strong>Passo 3:</strong> Se SIM em ambos → há crase (À). Se NÃO em qualquer um → sem crase (A).</li>
+                    </ol>
+                    <p className="text-sm italic mt-4">Exemplo: "Vou à praia" → Passo 1: Sim (vou A). Passo 2: Sim (A praia). Passo 3: Ambos SIM → À praia ✓</p>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        {/* ★ CARD CAROUSEL: Exemplos */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={3} title="Exemplos Práticos: Crase Obrigatória" variant={mv[1]} />
+          <CardCarousel
+            cards={[
+              {
+                icone: "🏖️",
+                title: "Lugar Feminino",
+                descricao: "Vou à praia (A + A praia = À praia) ✓",
+              },
+              {
+                icone: "💼",
+                title: "Instituição Feminina",
+                descricao: "Dirijo-me à empresa (A + A empresa = À empresa) ✓",
+              },
+              {
+                icone: "📚",
+                title: "Substantivo Feminino",
+                descricao: "Assisti à palestra (A + A palestra = À palestra) ✓",
+              },
+              {
+                icone: "🌍",
+                title: "Nome Próprio Feminino",
+                descricao: "Viagem à Bahia (A + A Bahia = À Bahia) ✓",
+              },
+              {
+                icone: "🎭",
+                title: "Arte/Cultura",
+                descricao: "Refiro-me à música (A + A música = À música) ✓",
+              },
+              {
+                icone: "⚙️",
+                title: "Contexto Petrobras",
+                descricao: "Conforme à resolução (A + A resolução = À resolução) ✓",
+              },
+            ]}
+          />
+        </section>
+
+        {/* ★ ACCORDION 2: Regência Verbal */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={4} title="Regência: Verbos e Nomes que Exigem A" variant={mv[1]} />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "Verbos que Exigem Preposição A",
+                icone: <LuBookOpen className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p>
+                      Muitos verbos exigem a preposição "a" para introduzir o objeto indireto. Exemplos: <strong>ir, vir, dirigir-se, referir-se, assistir, dedicar, entregar, aludi</strong>r, atender, ceder, contrariar, desobedecer, obedecer, resistir, etc. Quando esses verbos precedem uma palavra feminina que aceita artigo, há crase.
+                    </p>
+                    <p className="italic text-sm">
+                      "Dedico-me <strong>à</strong> leitura" (dedicar + a + a leitura)
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Nomes que Exigem Preposição A",
+                icone: <LuBookOpen className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p>
+                      Substantivos e adjetivos também podem exigir a preposição "a". Exemplos: <strong>fiel a, semelhante a, contrário a, propenso a, paralelo a, próximo a, atento a</strong>, etc. Quando são seguidos de palavra feminina que aceita artigo, há crase.
+                    </p>
+                    <p className="italic text-sm">
+                      "Sou fiel <strong>à</strong> minha empresa" (fiel + a + a minha empresa)
+                    </p>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        {/* ★ FLIP CARDS: Exercícios */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader index={5} title="Prática: Identifique a Crase" variant={mv[1]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <FlipCard
+              pergunta="Qual frase está correta?"
+              resposta="✓ Vou à praia. (A + A praia = À praia)"
+              opcoes={["Vou a praia", "Vou à praia", "Vou em a praia"]}
+            />
+            <FlipCard
+              pergunta="Complete: Dirijo-me ___ diretora"
+              resposta="✓ Dirijo-me à diretora. (dirigir-se exige 'a' + diretora é feminino)"
+              opcoes={["a", "à", "em a"]}
+            />
+            <FlipCard
+              pergunta="Qual tem crase corretamente?"
+              resposta="✓ Refiro-me à estratégia. (Referir + a + a estratégia)"
+              opcoes={["Refiro-me a estratégia", "Refiro-me à estratégia", "Refiro-me na estratégia"]}
+            />
+          </div>
+        </section>
+
+        {/* ★ ALERT BOX: Erro Frequente */}
+        <AlertBox tipo="danger" titulo="Erro Crítico: Crase com Preposição Diferente">
+          <p>Alguns candidatos confundem preposições. A crase APENAS fusiona <strong>A com A</strong>.</p>
+          <p className="mt-2">
+            ❌ "Fui <strong>em a</strong> loja" (preposição EM + artigo A = <strong>NA</strong>, não crase!)
+          </p>
+          <p className="mt-2">
+            ✅ "Fui <strong>a</strong> loja" ou "Fui <strong>à</strong> loja" (preposição A + artigo A = A ou À)
+          </p>
+          <p className="mt-4 font-semibold">Lembre: Crase = A + A. Nada mais, nada menos.</p>
+        </AlertBox>
+
+        {/* ★ MODULE CONSOLIDATION */}
+        <ModuleConsolidation
+          numero={1}
+          titulo="Consolidação: Conceito e Regra Geral"
+          topicos={[
+            "Crase é A (preposição) + A (artigo/demonstrativo) = À",
+            "Sempre verifique DOIS elementos: preposição e artigo",
+            "Se falta um deles, não há crase — ponto final",
+            "Macete do teste do masculino funciona aqui",
+            "Regência verbal exige que você memorize quais verbos levam 'a'",
+            "Crase obrigatória não tem alternativa",
+          ]}
+          variant={mv[1]}
+        />
+
+        {/* ★ QUIZ */}
+        <QuizInterativo
+          questoes={quizM1}
+          titulo="Quiz - Módulo 1: Conceito e Regra Geral"
+          numero={1}
+          variant={mv[1]}
+          onComplete={(s) => handleModuleComplete("modulo-1", s)}
+        />
+      </TabsContent>
+
+      {/* ╔════════════════════════════════════════════════════════════════════════╗ */}
+      {/* ║                      MÓDULO 2: TESTE DO MASCULINO                     ║ */}
+      {/* ╚════════════════════════════════════════════════════════════════════════╝ */}
+      <TabsContent value="modulo-2" className="mt-0 space-y-12">
+        <ModuleBanner
+          numero={2}
+          titulo="Teste do Masculino"
+          variant={mv[2]}
+          descricao="A técnica mais poderosa para identificar crase"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="O Macete de Ouro: Substitua por Masculino"
+            variant={mv[2]}
+          />
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>
+              O <strong>teste do masculino</strong> é a técnica mais poderosa para identificar crase. O método é simples: substitua a palavra feminina por um equivalente masculino. Se o resultado virar "A**O**", então há crase (À). Se virar apenas "A", então não há crase.
+            </p>
+            <p>
+              Exemplos: "Vou <strong>à</strong> praia" → "Vou <strong>ao</strong> museu" (virou AO, confirma à). "Refiro-me <strong>à</strong> Maria" → "Refiro-me <strong>ao</strong> João" (virou AO, confirma à). "Comeci <strong>a</strong> estudar" → "Comeci a trabalhar" (continua A, sem crase).
+            </p>
+            <p>
+              Esse teste funciona porque a estrutura gramatical se mantém. Se há fusão no masculino (que resultaria em AO), a mesma fusão ocorre no feminino (resultando em À). Se no masculino a preposição fica simples (A), no feminino também fica simples (A).
+            </p>
+            <p>
+              Na Petrobras, essa técnica é ouro puro. Quando você recebe um documento técnico com lacunas de crase ("atento ____ resolução"), aplique o teste: "atento ao regulamento" (virou AO) → "atento <strong>à</strong> resolução" (há crase). Esse método desmente qualquer confusão e dirimi dúvidas em segundos.
+            </p>
+            <div className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/30 dark:to-green-950/30 rounded-xl border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground flex items-center gap-2">
+                <LuZap className="w-5 h-5 text-emerald-500" /> Técnica do Teste Masculino
+              </h4>
+              <p className="text-foreground/85">
+                Substitua a palavra feminina por um equivalente masculino:
+              </p>
+              <ul className="space-y-2 text-foreground/80">
+                <li>• <strong>Vira "AO"?</strong> → Há crase (À)</li>
+                <li>• <strong>Continua "A"?</strong> → Sem crase (A)</li>
+              </ul>
+              <p className="text-sm italic text-foreground/70">
+                Este teste é 95% confiável e funciona em quase todos os casos de crase!
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={2} title="Exemplos Práticos: Teste Passo a Passo" variant={mv[2]} />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "Exemplo 1: Vou à praia",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Frase: "Vou à praia"</p>
+                    <p>
+                      Teste: Troque "praia" (feminino) por "museu" (masculino) → "Vou <strong>ao</strong> museu"
+                    </p>
+                    <p className="font-semibold text-green-600">
+                      ✓ Virou AO → Há crase na frase original: "Vou <strong>à</strong> praia"
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Exemplo 2: Refiro-me à estratégia",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Frase: "Refiro-me à estratégia"</p>
+                    <p>
+                      Teste: Troque "estratégia" por "plano" → "Refiro-me <strong>ao</strong> plano"
+                    </p>
+                    <p className="font-semibold text-green-600">
+                      ✓ Virou AO → Há crase: "Refiro-me <strong>à</strong> estratégia"
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Exemplo 3: Comecei a estudar",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Frase: "Comecei a estudar"</p>
+                    <p>
+                      Teste: Troque "estudar" por "trabalhar" (ambos verbos) → "Comecei <strong>a</strong> trabalhar"
+                    </p>
+                    <p className="font-semibold text-red-600">
+                      ❌ Continua A (não virou AO) → Sem crase: "Comecei <strong>a</strong> estudar"
+                    </p>
+                    <p className="text-sm italic">(Verbos não aceitam artigo, logo não há crase)</p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Exemplo 4: Fui a pé",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Frase: "Fui a pé"</p>
+                    <p>
+                      Teste: Troque "pé" (masculino) por outra forma masculina → "Fui a cavalo"
+                    </p>
+                    <p className="font-semibold text-red-600">
+                      ❌ Continua A (não virou AO) → Sem crase: "Fui <strong>a</strong> pé"
+                    </p>
+                    <p className="text-sm italic">("Pé" é masculino, não há artigo feminino, logo sem crase)</p>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={3} title="Card: Casos Comuns de Teste" variant={mv[2]} />
+          <CardCarousel
+            cards={[
+              {
+                icone: "🏖️→🏛️",
+                title: "Praia → Museu",
+                descricao: "à praia = ao museu ✓ (virou AO)",
+              },
+              {
+                icone: "📚→📖",
+                title: "Sala → Salão",
+                descricao: "à sala = ao salão ✓ (virou AO)",
+              },
+              {
+                icone: "👩→👨",
+                title: "Mulher → Homem",
+                descricao: "à mulher = ao homem ✓ (virou AO)",
+              },
+              {
+                icone: "🎓→🎓",
+                title: "Aula → Filme",
+                descricao: "à aula = ao filme ✓ (virou AO)",
+              },
+              {
+                icone: "🚶→🚶",
+                title: "Pé (masc) → Cavalo",
+                descricao: "a pé = a cavalo ✗ (continua A, sem crase)",
+              },
+              {
+                icone: "✍️→📝",
+                title: "Estudar → Trabalhar",
+                descricao: "a estudar = a trabalhar ✗ (continua A, verbos não têm artigo)",
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={4} title="Casos que Enganam: Quando o Teste Falha" variant={mv[2]} />
+          <AlertBox tipo="warning" titulo="Exceções ao Teste do Masculino">
+            <p>O teste do masculino é confiável em 95% dos casos, mas algumas palavras femininas NÃO têm equivalente masculino natural, exigindo criatividade:</p>
+            <div className="mt-4 space-y-3">
+              <p>
+                <strong>Exemplo:</strong> "Viagem à Itália" → Não existe "Itália" no masculino. Troque por um gênero compatível: "Viagem ao país" (virou AO, confirma crase).
+              </p>
+              <p>
+                <strong>Outro:</strong> "Atenção à resolução" → Não há "resolução" masculina. Troque por sinônimo: "Atenção ao regulamento" (virou AO, confirma crase).
+              </p>
+            </div>
+            <p className="mt-4 font-semibold">
+              Criatividade é seu aliado! Quando não há equivalente direto, procure um sinônimo ou um substantivo de sentido similar.
+            </p>
+          </AlertBox>
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader index={5} title="Prática: Aplique o Teste" variant={mv[2]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <FlipCard
+              pergunta="Teste: Vou à festa"
+              resposta="✓ Vou ao baile (virou AO) → Há crase"
+              opcoes={["Há crase", "Sem crase"]}
+            />
+            <FlipCard
+              pergunta="Teste: Assisti à apresentação"
+              resposta="✓ Assisti ao show (virou AO) → Há crase"
+              opcoes={["Há crase", "Sem crase"]}
+            />
+            <FlipCard
+              pergunta="Teste: Comecei a trabalhar"
+              resposta="✓ Comecei a estudar (continua A) → Sem crase (verbos)"
+              opcoes={["Há crase", "Sem crase"]}
+            />
+          </div>
+        </section>
+
+        <AlertBox tipo="info" titulo="Macete de Memorização">
+          Pense no teste do masculino como um <strong>"Detector de AO"</strong>. Se detecta "AO", há crase (À). Se não detecta (continua "A"), sem crase. Simples assim!
+        </AlertBox>
+
+        <ModuleConsolidation
+          numero={2}
+          titulo="Consolidação: Teste do Masculino"
+          topicos={[
+            "Teste do masculino é a técnica mais confiável para identificar crase",
+            "Substitua a palavra feminina por um equivalente masculino",
+            "Vira AO → há crase (À)",
+            "Continua A → sem crase (A)",
+            "Funciona em 95% dos casos",
+            "Use criatividade quando não há equivalente direto (sinônimos, palavras compatíveis)",
+          ]}
+          variant={mv[2]}
+        />
+
+        <QuizInterativo
+          questoes={quizM2}
+          titulo="Quiz - Módulo 2: Teste do Masculino"
+          numero={2}
+          variant={mv[2]}
+          onComplete={(s) => handleModuleComplete("modulo-2", s)}
+        />
+      </TabsContent>
+
+      {/* ╔════════════════════════════════════════════════════════════════════════╗ */}
+      {/* ║                   MÓDULO 3: VERBOS PROÍBEM CRASE                       ║ */}
+      {/* ╚════════════════════════════════════════════════════════════════════════╝ */}
+      <TabsContent value="modulo-3" className="mt-0 space-y-12">
+        <ModuleBanner
+          numero={3}
+          titulo="Verbos Proíbem Crase"
+          variant={mv[3]}
+          descricao="Por que verbos nunca levam crase"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Razão Gramatical: Verbos Não Aceitam Artigo"
+            variant={mv[3]}
+          />
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>
+              <strong>Verbos nunca aceitam artigo definido</strong>. É uma regra gramical inviolável. Você não diz "o estudar", "a correr", "o trabalhar" — essas construções soam erradas porque verbos são palavras de ação, não nomes (substantivos), e nomes é que aceitam artigos. Como verbo não aceita artigo "a", quando há uma preposição "a" antes do verbo, ela fica simples: não há artigo para se fundir com, portanto, sem crase.
+            </p>
+            <p>
+              <strong>Estrutura: Preposição A + Verbo (sem artigo) = A (simples, nunca À)</strong>
+            </p>
+            <p>
+              Exemplos: "Começou <em>a</em> chover" (A + verbo chover, sem artigo). "Procedeu <em>a</em> realizar" (A + verbo realizar). "Passou <em>a</em> trabalhar" (A + verbo trabalhar). Em todos esses casos, o verbo rejeita o artigo, logo a preposição fica sozinha, sem crase.
+            </p>
+            <p>
+              Na Petrobras, textos técnicos dizem: "O procedimento passou <em>a</em> incluir...", "A empresa procedeu <em>a</em> investigar...", "Começou <em>a</em> implementar...". Candidatos ingênuos colocam crase aqui e erram feio. A regra é clara: verbo = sem crase, sempre.
+            </p>
+            <div className="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950/30 dark:to-pink-950/30 rounded-xl border border-red-200 dark:border-red-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground flex items-center gap-2">
+                <LuTriangleAlert className="w-5 h-5 text-red-500" /> Regra de Ouro: VERBO = SEM CRASE
+              </h4>
+              <p className="text-foreground/85">
+                Verbo infinitivo NUNCA leva crase, porque verbo não aceita artigo.
+              </p>
+              <div className="p-3 bg-white dark:bg-slate-900 rounded-lg border-l-4 border-red-500">
+                <p className="text-foreground/80">
+                  ❌ "Começou <strong>à</strong> estudar" — ERRADO!
+                </p>
+                <p className="text-foreground/80">
+                  ✅ "Começou <strong>a</strong> estudar" — CORRETO!
+                </p>
               </div>
             </div>
           </div>
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={1} title="Os Três Pilares da Crase" variant={mv[1]} />
+          <ModuleSectionHeader index={2} title="Verbos Comuns que Exigem Preposição A" variant={mv[3]} />
           <ContentAccordion
             slides={[
               {
-                titulo: "O que é crase?",
-                icone: <LuBookOpen />,
+                titulo: "Verbos que Aceitam A (sempre SEM crase)",
+                icone: <LuTarget className="w-5 h-5" />,
                 conteudo: (
-                  <div className="space-y-4">
-                    <p className="text-muted-foreground leading-relaxed">
-                      Crase é a fusão gráfica de duas vogais idênticas (preposição A + artigo A = À). Não é erro, é fenômeno natural da língua portuguesa.
-                    </p>
-                    <div className="p-4 bg-blue-500/5 rounded-xl border-l-4 border-blue-500 italic">
-                      "Vou <strong>à</strong> praia" = vou <strong>A</strong> + <strong>A</strong> praia
-                    </div>
-                  </div>
-                ),
-              },
-              {
-                titulo: "Quando ocorre crase?",
-                icone: <LuTarget />,
-                conteudo: (
-                  <div className="space-y-4">
-                    <p className="font-bold text-lg">Dois requisitos simultâneos:</p>
-                    <ul className="space-y-2">
-                      {[
-                        "1. O VERBO ou NOME exige preposição A (regência verbal/nominal)",
-                        "2. O SUBSTANTIVO aceita artigo A (palavra feminina)",
-                      ].map((item, i) => (
-                        <li key={i} className="flex items-start gap-2 text-lg">
-                          <LuCheck className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Verbos comuns que exigem A + verbo infinitivo:</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li><strong>Começar a:</strong> "Começou a chover" ✓</li>
+                      <li><strong>Passar a:</strong> "Passou a trabalhar" ✓</li>
+                      <li><strong>Procedeu a:</strong> "Procedeu a investigar" ✓</li>
+                      <li><strong>Aprender a:</strong> "Aprendi a dirigir" ✓</li>
+                      <li><strong>Ensinar a:</strong> "Ensinou a nadar" ✓</li>
+                      <li><strong>Ir a:</strong> "Vou a estudar" (raro) ✓</li>
+                      <li><strong>Voltar a:</strong> "Voltou a tentar" ✓</li>
                     </ul>
                   </div>
                 ),
               },
               {
-                titulo: "Estratégia: O Teste do Masculino",
-                icone: <LuBrain />,
+                titulo: "Comparação: Substantivo vs Verbo",
+                icone: <LuBookOpen className="w-5 h-5" />,
                 conteudo: (
-                  <div className="space-y-4">
-                    <p className="text-muted-foreground">Substitua a palavra feminina por seu equivalente masculino:</p>
-                    <div className="grid gap-2 text-lg">
-                      {[
-                        { ex: "Vou à praia", masc: "Vou ao mar" },
-                        { ex: "Refiro-me à Maria", masc: "Refiro-me ao João" },
-                        { ex: "Assisti à aula", masc: "Assisti ao filme" },
-                      ].map((item, i) => (
-                        <div key={i} className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/10">
-                          <span className="text-indigo-400 font-mono">"{item.ex}"</span>
-                          <br />
-                          <span className="text-muted-foreground">→ "{item.masc}" (AO = À existe!)</span>
-                        </div>
-                      ))}
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Mesma estrutura, resultado diferente:</p>
+                    <div className="space-y-2">
+                      <p>
+                        <strong>Com Substantivo:</strong> "Comecei <em>à</em> leitura" (A + A leitura = À) ✓
+                      </p>
+                      <p>
+                        <strong>Com Verbo:</strong> "Comecei <em>a</em> ler" (A + verbo ler = A) ✓
+                      </p>
                     </div>
+                    <p className="text-sm italic mt-3">
+                      Observe: mesma frase, praticamente mesmo sentido, mas preposição diferente porque um é substantivo (aceita artigo) e outro é verbo (rejeita artigo).
+                    </p>
                   </div>
                 ),
               },
             ]}
-            corIndicador="bg-blue-500"
           />
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Exemplo Prático: Construindo a Equação" variant={mv[1]} />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <FlipCard
-              frente={<div className="font-bold text-lg">VERBO</div>}
-              verso={
-                <div className="space-y-2 text-lg">
-                  <p className="text-amber-400 font-semibold">IR (a)</p>
-                  <p>O verbo "ir" exige preposição A</p>
-                  <p>✅ "Vou <em>a</em> ..."</p>
-                </div>
-              }
-            />
-            <FlipCard
-              frente={<div className="font-bold text-lg">+ ARTIGO</div>}
-              verso={
-                <div className="space-y-2 text-lg">
-                  <p className="text-cyan-400 font-semibold">A (feminino)</p>
-                  <p>A palavra é feminina</p>
-                  <p>✅ "... <em>a</em> praia"</p>
-                </div>
-              }
-            />
-            <FlipCard
-              frente={<div className="font-bold text-lg">= CRASE</div>}
-              verso={
-                <div className="space-y-2 text-lg">
-                  <p className="text-emerald-400 font-semibold">À</p>
-                  <p>Fusão das duas vogais</p>
-                  <p>✅ "Vou <em>à</em> praia"</p>
-                </div>
-              }
-            />
-          </div>
-        </section>
-
-        <QuizInterativo questoes={quizM1} titulo="Quiz - Conceito" numero={1} variant={mv[1]} onComplete={(s) => handleModuleComplete("modulo-1", s)} />
-      </TabsContent>
-
-      {/* ─── MÓDULO 2: TESTE DO MASCULINO ─── */}
-      <TabsContent value="modulo-2" className="mt-0 space-y-12">
-        <ModuleBanner numero={2} titulo="Teste do Masculino" variant={mv[2]} descricao="A técnica do 'AO'." />
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={1}
-            title="O Teste Infalível: Masculino = AO, Feminino = À"
-            variant={mv[2]}
-          />
-          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>
-              O teste do masculino é a técnica mais poderosa para dominar crase. A lógica é simples: <strong>se ao substituir a palavra feminina por uma palavra masculina resultante em "AO", então há crase na forma feminina</strong>. Essa regra funciona porque o padrão "AO" no masculino revela que a preposição A está presente e pode se fundir com o artigo definido feminino.
-            </p>
-            <p>
-              Aplicar esse teste é automático: veja uma frase com palavra feminina, substitua mentalmente por um equivalente masculino, e verifique se dá "AO". Se der, escreva crase. Se não der (resultado diferente), não há crase. Candidatos que dominam essa técnica não precisam decorar listas infinitas de regras — eles aplicam lógica sistemática.
-            </p>
-          </div>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Prática: Aplicando o Teste" variant={mv[2]} />
+          <ModuleSectionHeader index={3} title="Exemplos: Erros Frequentes com Verbos" variant={mv[3]} />
           <CardCarousel
             cards={[
               {
-                icone: "✅",
-                title: "Vou à praia",
-                descricao: "Vou AO mar (AO existe) → Há CRASE",
-              },
-              {
-                icone: "✅",
-                title: "Refiro-me à Maria",
-                descricao: "Refiro-me AO João (AO existe) → Há CRASE",
-              },
-              {
-                icone: "✅",
-                title: "Assisti à aula",
-                descricao: "Assisti AO filme (AO existe) → Há CRASE",
+                icone: "❌",
+                title: "ERRADO: À estudar",
+                descricao: "Verbo não aceita artigo → Começou a estudar ✓",
               },
               {
                 icone: "❌",
-                title: "Vou a pé",
-                descricao: "Vou AO pé? NÃO (não diz assim) → SEM CRASE",
+                title: "ERRADO: À trabalhar",
+                descricao: "Verbo sem artigo → Passou a trabalhar ✓",
+              },
+              {
+                icone: "❌",
+                title: "ERRADO: À investigar",
+                descricao: "Verbo rejeita crase → Procedeu a investigar ✓",
+              },
+              {
+                icone: "✅",
+                title: "CORRETO: À leitura",
+                descricao: "Substantivo com artigo → À leitura ✓",
+              },
+              {
+                icone: "✅",
+                title: "CORRETO: À pesquisa",
+                descricao: "Substantivo feminino → À pesquisa ✓",
+              },
+              {
+                icone: "⚠️",
+                title: "Petrobras: À implementação",
+                descricao: "Substantivo → À implementação de normas ✓",
               },
             ]}
           />
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Comparação: COM vs SEM Crase" variant={mv[2]} />
-          <AlertBox tipo="info" titulo="A Diferença Prática">
-            ✅ "Vou <strong>à</strong> praia" (AO → há crase)
-            <br />
-            ❌ "Cheguei <strong>a</strong> tempo" (não diz "AO tempo" → sem crase)
-            <br />
-            ✅ "Dirijo-me <strong>à</strong> porta" (AO → há crase)
-            <br />
-            ❌ "Dirijo a palavra" (não diz "AO palavra" → sem crase)
+          <ModuleSectionHeader index={4} title="Armadilha: Adjetivo + Infinitivo" variant={mv[3]} />
+          <AlertBox tipo="warning" titulo="Cuidado com Construções Complexas">
+            <p>
+              Alguns candidatos tropeçam em frases como: "Sou <strong>apto</strong> <em>a</em> trabalhar" ou "Estou <strong>pronto</strong> <em>a</em> partir". Aqui, "apto" e "pronto" são adjetivos que exigem A, mas o que segue é um VERBO (trabalhar, partir), não um substantivo. Logo, SEM crase.
+            </p>
+            <p className="mt-3">
+              ✓ "Sou apto <em>a</em> trabalhar" (adjetivo apto + verbo trabalhar = SEM crase)
+            </p>
+            <p>
+              ✓ "Sou apto <em>à</em> liderança" (adjetivo apto + substantivo liderança = COM crase)
+            </p>
+            <p className="mt-4 font-semibold">Regra: O que importa é o que VEM DEPOIS (verbo ou substantivo), não o adjetivo!</p>
           </AlertBox>
         </section>
 
-        <QuizInterativo questoes={quizM2} titulo="Quiz - Teste do Masculino" numero={2} variant={mv[2]} onComplete={(s) => handleModuleComplete("modulo-2", s)} />
-      </TabsContent>
-
-      {/* ─── MÓDULO 3: PROIBIDO VERBOS ─── */}
-      <TabsContent value="modulo-3" className="mt-0 space-y-12">
-        <ModuleBanner numero={3} titulo="Proibição: Verbos" variant={mv[3]} descricao="Nunca crase antes de verbo" />
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={1}
-            title="Antes de Verbo, CRASE É PROIBIDA (sempre!)"
-            variant={mv[3]}
-          />
-          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>
-              Esta é uma das regras mais absolutas de crase: <strong>NUNCA coloque crase antes de um verbo</strong>. A razão é simples: verbos não aceitam artigo definido feminino. Um verbo é uma ação (estudar, falar, ir, fazer) — uma classe de palavras que não pode ser precedida por artigo feminino. Portanto, não há possibilidade de fusão A + A antes de verbo.
-            </p>
-            <p>
-              A estrutura que causa erro é quando tentamos escrever "começar à estudar" ou "vou à falar". Essas construções estão <strong>absolutamente erradas</strong>. O correto é "começar <em>a</em> estudar" e "vou <em>a</em> falar" — sem crase, com preposição simples.
-            </p>
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader index={5} title="Prática: Verbos vs Substantivos" variant={mv[3]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <FlipCard
+              pergunta="Complete: Começou ___ chover"
+              resposta="✓ Começou a chover (verbo chover = sem crase)"
+              opcoes={["a", "à"]}
+            />
+            <FlipCard
+              pergunta="Complete: Dedico-me ___ pesquisa"
+              resposta="✓ Dedico-me à pesquisa (substantivo pesquisa = com crase)"
+              opcoes={["a", "à"]}
+            />
+            <FlipCard
+              pergunta="Complete: Procedeu ___ verificar"
+              resposta="✓ Procedeu a verificar (verbo verificar = sem crase)"
+              opcoes={["a", "à"]}
+            />
           </div>
         </section>
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Exemplos: Verbos Proibem Crase" variant={mv[3]} />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              { errado: "à estudar", correto: "a estudar" },
-              { errado: "à fazer", correto: "a fazer" },
-              { errado: "à começar", correto: "a começar" },
-              { errado: "à ir", correto: "a ir" },
-            ].map((item, i) => (
-              <div key={i} className="p-4 border border-red-500/20 bg-red-500/5 rounded-lg">
-                <p className="text-red-500 line-through text-lg font-mono">❌ {item.errado}</p>
-                <p className="text-emerald-500 text-lg font-mono mt-2">✅ {item.correto}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <AlertBox tipo="danger" titulo="Erro Crítico Frequente em Concursos">
+          A CESGRANRIO adora colocar frases como "Procedeu <em>___</em> fiscalização" vs "Procedeu <em>___</em> fiscalizar". A primeira tem crase (À), a segunda não (A). Muitos candidatos erram porque não diferenciam substantivo (aceitaartigo) de verbo (rejeita artigo). Leia com atenção!
+        </AlertBox>
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Armadilha Comum" variant={mv[3]} />
-          <AlertBox tipo="danger" titulo="O Erro Mais Frequente em Concursos">
-            Candidatos confundem crase com a preposição A simples quando há um verbo no infinitivo após.
-            <br />
-            <br />
-            ❌ "Disposto <em>à</em> ajudar" — ERRADO (ajudar é verbo)
-            <br />
-            ✅ "Disposto <em>a</em> ajudar" — CORRETO (sem crase)
-            <br />
-            <br />
-            ❌ "Apto <em>à</em> dirigir" — ERRADO
-            <br />
-            ✅ "Apto <em>a</em> dirigir" — CORRETO
-          </AlertBox>
-        </section>
+        <ModuleConsolidation
+          numero={3}
+          titulo="Consolidação: Verbos Proíbem Crase"
+          topicos={[
+            "VERBOS NUNCA ACEITAM ARTIGO",
+            "Estrutura: A + Verbo = A (sem crase)",
+            "Estrutura: A + Substantivo = À (com crase)",
+            "Verbos comuns: começar a, passar a, procedeu a, aprender a",
+            "Cuidado com adjetivos + verbos (sem crase)",
+            "Sempre verifique se o que vem depois é VERBO ou SUBSTANTIVO",
+          ]}
+          variant={mv[3]}
+        />
 
-        <QuizInterativo questoes={quizM3} titulo="Quiz - Proibição Verbos" numero={3} variant={mv[3]} onComplete={(s) => handleModuleComplete("modulo-3", s)} />
+        <QuizInterativo
+          questoes={quizM3}
+          titulo="Quiz - Módulo 3: Verbos Proíbem Crase"
+          numero={3}
+          variant={mv[3]}
+          onComplete={(s) => handleModuleComplete("modulo-3", s)}
+        />
       </TabsContent>
 
-      {/* ─── MÓDULO 4: PROIBIDO PRONOMES ─── */}
+      {/* ╔════════════════════════════════════════════════════════════════════════╗ */}
+      {/* ║                  MÓDULO 4: PRONOMES PROÍBEM CRASE                      ║ */}
+      {/* ╚════════════════════════════════════════════════════════════════════════╝ */}
       <TabsContent value="modulo-4" className="mt-0 space-y-12">
-        <ModuleBanner numero={4} titulo="Proibição: Pronomes" variant={mv[4]} descricao="Ela, Você, Mim, etc." />
+        <ModuleBanner
+          numero={4}
+          titulo="Pronomes Pessoais Proíbem Crase"
+          variant={mv[4]}
+          descricao="Ela, Você, Mim, Ti, Si — nunca levam crase"
+        />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={1}
-            title="Pronomes Pessoais e Indefinidos: Nunca Aceitam Crase"
+            title="Pronomes Pessoais: Regra Categórica"
             variant={mv[4]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              <strong>Pronomes pessoais e indefinidos não aceitam artigo definido</strong>. Por isso, é impossível ter crase antes deles. Os pronomes mais comuns que geram erro são: ela, você, ele, mim, ti, si, alguém, ninguém, tudo, algo.
+              <strong>Pronomes pessoais NUNCA aceitam artigo definido</strong>. É impossível dizer "a ela", "a mim", "a ti", "a você" no sentido de artigo — o artigo não cabe em pronomes pessoais. Quando há preposição "a" antes de pronome pessoal, a preposição fica simples, sem artigo para se fundir. Logo, sem crase.
             </p>
             <p>
-              A estrutura correta é sempre preposição simples A, sem crase: "para mim" (nunca "para à mim"), "a você" (nunca "à você"), "para ele" (nunca "para à ele").
+              <strong>Estrutura: Preposição A + Pronome Pessoal (sem artigo) = A (simples, nunca À)</strong>
             </p>
+            <p>
+              Exemplos: "Referi-me <em>a</em> ela" (A + pronome ela, sem artigo). "Dirijo-me <em>a</em> você" (A + pronome você). "Entreguei <em>a</em> mim" (A + pronome mim). "Fiz isso por <em>ti</em>" (preposição por + ti, sem crase mesmo com preposição diferente). Nesses casos, a preposição fica sozinha, sem crase.
+            </p>
+            <p>
+              Essa regra é absoluta e sem exceção. Candidatos que escrevem "referi-me à ela" estão errados 100%. Pronome pessoal é uma barreira contra crase.
+            </p>
+            <div className="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950/30 dark:to-pink-950/30 rounded-xl border border-red-200 dark:border-red-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground flex items-center gap-2">
+                <LuTriangleAlert className="w-5 h-5 text-red-500" /> Regra Absoluta: PRONOME PESSOAL = SEM CRASE
+              </h4>
+              <p className="text-foreground/85">
+                Pronomes pessoais (mim, ti, ele, ela, nós, vós, eles, elas) nunca levam crase.
+              </p>
+              <div className="space-y-2 p-3 bg-white dark:bg-slate-900 rounded-lg border-l-4 border-red-500">
+                <p className="text-foreground/80">❌ "Referi-me à ela" — ERRADO!</p>
+                <p className="text-foreground/80">✅ "Referi-me a ela" — CORRETO!</p>
+                <p className="text-foreground/80">❌ "Entreguei à você" — ERRADO!</p>
+                <p className="text-foreground/80">✅ "Entreguei a você" — CORRETO!</p>
+              </div>
+            </div>
           </div>
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Pronomes Proibem Crase" variant={mv[4]} />
-          <CardCarousel
-            cards={[
-              { icone: "👤", title: "Pronomes Pessoais", descricao: "ela, você, mim, ti, ele, nós, vós" },
-              { icone: "❓", title: "Pronomes Indefinidos", descricao: "alguém, ninguém, tudo, algo, nada" },
-              { icone: "✋", title: "Pronomes Demonstrativos", descricao: "este, esse, aquele (quando sem o 'a' da preposição fusionado)" },
+          <ModuleSectionHeader index={2} title="Lista: Pronomes Pessoais (Proíbem Crase)" variant={mv[4]} />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "Pronomes Pessoais do Caso Reto",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Função: sujeito da frase</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li><strong>Eu, Tu, Ele/Ela, Nós, Vós, Eles/Elas</strong> — nunca levam crase</li>
+                      <li>Exemplos: "Falei <em>a</em> ele", "Dirijo-me <em>a</em> eles"</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Pronomes Pessoais do Caso Oblíquo",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Função: objeto indireto, complemento</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li><strong>Mim, Ti, Si (reflexivo)</strong> — nunca levam crase</li>
+                      <li>Exemplos: "Isso é para <em>mim</em>", "Fiz por <em>ti</em>", "Ela ficou consigo"</li>
+                      <li><strong>Observação:</strong> Consigo é reflexivo (para si mesmo)</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Pronomes de Tratamento (Exceção Parcial)",
+                icone: <LuLightbulb className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Você, Vossa Majestade, Vossa Excelência:</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li>"Você" (pronome, comporta-se como "ela") → "Dirijo-me <em>a</em> você" (SEM crase)</li>
+                      <li>"Vossa Majestade" → "Dirijo-me <em>a</em> Vossa Majestade" (SEM crase, funciona como pronome)</li>
+                      <li>Comportam-se como pronomes pessoais, logo sem crase</li>
+                    </ul>
+                  </div>
+                ),
+              },
             ]}
           />
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Erros Típicos em Provas" variant={mv[4]} />
-          <AlertBox tipo="danger" titulo="Não Confunda">
-            ❌ "Dirijo-me <em>à</em> você" — ERRADO (você é pronome)
+          <ModuleSectionHeader index={3} title="Exemplos: Pronomes Pessoais vs Nomes" variant={mv[4]} />
+          <CardCarousel
+            cards={[
+              {
+                icone: "👤",
+                title: "Ela (pronome)",
+                descricao: "Referi-me a ela ✓ (sem crase)",
+              },
+              {
+                icone: "👤",
+                title: "Você (pronome tratamento)",
+                descricao: "Dirijo-me a você ✓ (sem crase)",
+              },
+              {
+                icone: "👤",
+                title: "Mim (pronome oblíquo)",
+                descricao: "Isso é para mim ✓ (sem crase)",
+              },
+              {
+                icone: "👩",
+                title: "Maria (nome próprio)",
+                descricao: "Refiro-me a/à Maria ✓ (crase facultativa)",
+              },
+              {
+                icone: "👩",
+                title: "Diretora (substantivo)",
+                descricao: "Dirijo-me à diretora ✓ (com crase)",
+              },
+              {
+                icone: "⚠️",
+                title: "Petrobras: À gerência",
+                descricao: "Ao funcionário vs À gerência (nomes, crase)",
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={4} title="Confusão Comum: Nome vs Pronome" variant={mv[4]} />
+          <AlertBox tipo="warning" titulo="Diferença Crítica">
+            <p><strong>Pronomes pessoais:</strong> "Referi-me <em>a</em> ela" (SEM crase)</p>
+            <p><strong>Nomes/substantivos femininos:</strong> "Referi-me <em>à</em> mulher" (COM crase)</p>
             <br />
-            ✅ "Dirijo-me <em>a</em> você" — CORRETO
-            <br />
-            <br />
-            ❌ "Refiro-me <em>à</em> ela" — ERRADO (ela é pronome)
-            <br />
-            ✅ "Refiro-me <em>a</em> ela" — CORRETO
-            <br />
-            <br />
-            ❌ "Contei tudo <em>à</em> mim" — ERRADO (mim é pronome)
-            <br />
-            ✅ "Contei tudo <em>a</em> mim" — CORRETO
+            <p>
+              A diferença está em TIPO DE PALAVRA. "Ela" é pronome (rejeita artigo), "mulher" é substantivo (aceita artigo). Quando não tem certeza, aplique o teste: "Refiri-me a/ao..." — se vira "ao", há crase no feminino.
+            </p>
           </AlertBox>
         </section>
 
-        <QuizInterativo questoes={quizM4} titulo="Quiz - Proibição Pronomes" numero={4} variant={mv[4]} onComplete={(s) => handleModuleComplete("modulo-4", s)} />
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader index={5} title="Prática: Pronomes Pessoais" variant={mv[4]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <FlipCard
+              pergunta="Complete: Referi-me ___ ela"
+              resposta="✓ Referi-me a ela (pronome pessoal = sem crase)"
+              opcoes={["a", "à"]}
+            />
+            <FlipCard
+              pergunta="Complete: Dirijo-me ___ você"
+              resposta="✓ Dirijo-me a você (pronome tratamento = sem crase)"
+              opcoes={["a", "à"]}
+            />
+            <FlipCard
+              pergunta="Complete: Isso é para ___"
+              resposta="✓ Isso é para mim (pronome oblíquo = sem crase)"
+              opcoes={["a mim", "à mim"]}
+            />
+          </div>
+        </section>
+
+        <AlertBox tipo="danger" titulo="Erro Epidêmico: À Ela">
+          Muitos candidatos erram "À ela" porque confundem com nomes femininos. NUNCA há crase antes de pronome pessoal. "Ela" é pronome (rejeita artigo), logo: <strong>referi-me A ela</strong>, nunca "referi-me À ela". Essa é a trampa favorita da CESGRANRIO!
+        </AlertBox>
+
+        <ModuleConsolidation
+          numero={4}
+          titulo="Consolidação: Pronomes Pessoais"
+          topicos={[
+            "PRONOMES PESSOAIS NUNCA ACEITAM ARTIGO",
+            "Estrutura: A + Pronome = A (sem crase)",
+            "Pronomes reto: eu, tu, ele, ela, nós, vós, eles, elas",
+            "Pronomes oblíquos: mim, ti, si, me, te, se",
+            "Pronomes tratamento: você, Vossa Majestade (comportam-se como pronomes)",
+            "Diferença: pronomes (sem crase) vs nomes (com crase)",
+          ]}
+          variant={mv[4]}
+        />
+
+        <QuizInterativo
+          questoes={quizM4}
+          titulo="Quiz - Módulo 4: Pronomes Pessoais"
+          numero={4}
+          variant={mv[4]}
+          onComplete={(s) => handleModuleComplete("modulo-4", s)}
+        />
       </TabsContent>
 
-      {/* ─── MÓDULO 5: FACULTATIVO NOMES ─── */}
+      {/* ╔════════════════════════════════════════════════════════════════════════╗ */}
+      {/* ║              MÓDULO 5: FACULTATIVO - NOMES PRÓPRIOS                   ║ */}
+      {/* ╚════════════════════════════════════════════════════════════════════════╝ */}
       <TabsContent value="modulo-5" className="mt-0 space-y-12">
-        <ModuleBanner numero={5} titulo="Facultativo: Nomes Próprios" variant={mv[5]} descricao="Antes de nomes de pessoa" />
+        <ModuleBanner
+          numero={5}
+          titulo="Crase Facultativa: Nomes Próprios"
+          variant={mv[5]}
+          descricao="Ambas as formas estão corretas"
+        />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={1}
-            title="Nomes de Pessoas: Crase É OPCIONAL"
+            title="Nomes Próprios Femininos: Artigo Opcional"
             variant={mv[5]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              Quando a palavra feminina é um nome próprio de pessoa, a crase é <strong>facultativa</strong> — você pode usar crase ou não, ambas as formas estão corretas. Isso ocorre porque nomes próprios admitem o artigo definido, mas sua presença é opcional.
+              <strong>Antes de nomes próprios femininos, a crase é facultativa</strong>. Isso significa que <strong>ambas as formas são corretas</strong> — com crase ou sem crase. A razão é que nomes próprios não costumam ser acompanhados de artigo definido no português padrão. "Maria" é apenas "Maria", não necessariamente "a Maria" (embora o português coloquial frequentemente use "a Maria").
             </p>
             <p>
-              Portanto: "Refiro-me <em>a</em> Maria" E "Refiro-me <em>à</em> Maria" estão ambas corretas. A banca geralmente aceita as duas alternativas, mas é bom reconhecer que essa é uma zona de liberdade gramatical.
+              <strong>Estrutura: A + (opcional) + Nome Próprio Feminino = A ou À (ambas corretas)</strong>
             </p>
-          </div>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Exemplos: Ambas Formas Corretas" variant={mv[5]} />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              { forma1: "Refiro-me a Maria", forma2: "Refiro-me à Maria" },
-              { forma1: "Dirigi-me a Ana", forma2: "Dirigi-me à Ana" },
-              { forma1: "Falei com a Joana", forma2: "Falei com a Joana (sem preposição)" },
-            ].map((item, i) => (
-              <div key={i} className="p-4 border border-blue-500/20 bg-blue-500/5 rounded-lg">
-                <p className="text-blue-400 text-lg font-mono mb-2">✅ {item.forma1}</p>
-                <p className="text-blue-400 text-lg font-mono">✅ {item.forma2}</p>
+            <p>
+              Exemplos: "Refiro-me <em>a</em> Maria" (SEM crase). "Refiro-me <em>à</em> Maria" (COM crase). Ambas as frases estão corretas. A diferença está no nível de formalidade: a forma "à Maria" é um pouco mais formal/literária, enquanto "a Maria" é mais coloquial.
+            </p>
+            <p>
+              <strong>PORÉM, há uma exceção importante:</strong> quando o nome próprio é <strong>especificado</strong> (recebe adjetivo, adjunto ou qualificação), o artigo passa a ser <strong>obrigatório</strong>, e a crase também: "Refiro-me <em>à</em> Maria do Carmo" (nome especificado, artigo obrigatório, logo crase obrigatória).
+            </p>
+            <p>
+              Na Petrobras, documentos formais usam nomes de pessoas, empresas, estados. Um relatório pode dizer "Conforme o depoimento <em>a</em> Daniela Silva" ou "Conforme o depoimento <em>à</em> Daniela Silva" — ambas corretas. Mas se especificar, "Conforme depoimento <em>à</em> Daniela Silva, diretora de operações", aí a especificação torna crase obrigatória.
+            </p>
+            <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-xl border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground flex items-center gap-2">
+                <LuLightbulb className="w-5 h-5 text-amber-500" /> Regra: AMBAS AS FORMAS SÃO CORRETAS
+              </h4>
+              <div className="space-y-2 p-3 bg-white dark:bg-slate-900 rounded-lg">
+                <p className="text-foreground/80">✅ "Refiro-me <strong>a</strong> Maria" — CORRETO!</p>
+                <p className="text-foreground/80">✅ "Refiro-me <strong>à</strong> Maria" — TAMBÉM CORRETO!</p>
               </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Dica de Prova" variant={mv[5]} />
-          <AlertBox tipo="warning" titulo="Estratégia em Prova">
-            Se as duas formas aparecem nas alternativas (com e sem crase antes do nome próprio), <strong>ambas são tecnicamente corretas</strong>. A banca geralmente escolhe apenas uma para ser o gabarito. Fique atento ao contexto da questão para escolher qual forma é mais formal ou comum no padrão exigido.
-          </AlertBox>
-        </section>
-
-        <QuizInterativo questoes={quizM5} titulo="Quiz - Nomes Próprios" numero={5} variant={mv[5]} onComplete={(s) => handleModuleComplete("modulo-5", s)} />
-      </TabsContent>
-
-      {/* ─── MÓDULO 6: FACULTATIVO POSSESSIVOS ─── */}
-      <TabsContent value="modulo-6" className="mt-0 space-y-12">
-        <ModuleBanner numero={6} titulo="Facultativo: Possessivos" variant={mv[6]} descricao="Minha, Sua, Tua" />
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={1}
-            title="Pronomes Possessivos Femininos: Crase Facultativa"
-            variant={mv[6]}
-          />
-          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>
-              Quando a palavra feminina é um possessivo no singular (minha, sua, tua, nossa), a crase é <strong>facultativa</strong>. O possessivo pode vir com ou sem artigo, por isso "a minha" e "minha" são formas equivalentes que aceitam ambas as preposições.
-            </p>
-            <p>
-              Exemplos: "Dirigo-me <em>a</em> minha mãe" e "Dirigo-me <em>à</em> minha mãe" — as duas estão corretas. Essa liberdade existe porque o possessivo já carrega noção de definição sem precisar do artigo explícito.
-            </p>
-          </div>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Possessivos Femininos Singulares" variant={mv[6]} />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              { sem: "Dirigo-me a minha mãe", com: "Dirigo-me à minha mãe" },
-              { sem: "Refiro-me a sua opinião", com: "Refiro-me à sua opinião" },
-              { sem: "Assisti a tua apresentação", com: "Assisti à tua apresentação" },
-            ].map((item, i) => (
-              <div key={i} className="p-4 border border-indigo-500/20 bg-indigo-500/5 rounded-lg">
-                <p className="text-indigo-400 text-lg mb-2">✅ {item.sem}</p>
-                <p className="text-indigo-400 text-lg">✅ {item.com}</p>
+              <p className="text-foreground/85 text-sm">
+                <strong>MAS:</strong> Se o nome for especificado, crase é <strong>obrigatória</strong>:
+              </p>
+              <div className="p-3 bg-white dark:bg-slate-900 rounded-lg border-l-4 border-amber-500">
+                <p className="text-foreground/80">✅ "Refiro-me <strong>à</strong> Maria do Carmo" — OBRIGATÓRIA!</p>
               </div>
-            ))}
+            </div>
           </div>
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Atenção: Possessivos Plurais" variant={mv[6]} />
-          <AlertBox tipo="info" titulo="Plural NÃO é Facultativo">
-            ❌ "Dirijo-me a minhas mães" — NUNCA (plural não tem artigo)
-            <br />
-            ✅ "Dirijo-me às minhas mães" — CORRETO (minhas é definido, tem crase obrigatória)
-            <br />
-            <br />
-            A faculdade de crase aplica-se APENAS ao singular!
-          </AlertBox>
-        </section>
-
-        <QuizInterativo questoes={quizM6} titulo="Quiz - Possessivos" numero={6} variant={mv[6]} onComplete={(s) => handleModuleComplete("modulo-6", s)} />
-      </TabsContent>
-
-      {/* ─── MÓDULO 7: HORAS E MEDIDAS ─── */}
-      <TabsContent value="modulo-7" className="mt-0 space-y-12">
-        <ModuleBanner numero={7} titulo="Horas e Medidas" variant={mv[7]} descricao="Às 14h, À vista" />
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={1}
-            title="Horas Exatas: Crase Obrigatória"
-            variant={mv[7]}
-          />
-          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>
-              Quando se fala de <strong>horas exatas</strong>, a crase é <strong>obrigatória</strong>. A estrutura é: preposição A (de tempo) + artigo A (definindo a hora) = À. Você sempre escreve "às" quando especifica horário: "Às 14 horas", "Às 9 da manhã", "Às 22:30".
-            </p>
-            <p>
-              O mesmo ocorre com <strong>medidas de distância</strong> quando seguidas de unidade: "À vista", "À distância de 2 km", "À proporção de 80%". Esses são casos especiais onde a crase é automática porque a fusão A + A ocorre sistematicamente.
-            </p>
-          </div>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Exemplos: Horas e Medidas" variant={mv[7]} />
-          <CardCarousel
-            cards={[
-              { icone: "🕐", title: "Às 9 horas", descricao: "Horário exato (crase obrigatória)" },
-              { icone: "🕕", title: "Às 14:30", descricao: "Hora com minutos (crase obrigatória)" },
-              { icone: "📏", title: "À vista", descricao: "Expressão de medida/modo (crase fixo)" },
-              { icone: "📐", title: "À proporção de", descricao: "Medida de taxa (crase obrigatória)" },
+          <ModuleSectionHeader index={2} title="Exemplos: Nomes Próprios Simples vs Especificados" variant={mv[5]} />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "Nome Simples: Ambas Corretas",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Nome SIMPLES (sem especificador) = crase FACULTATIVA</p>
+                    <ul className="space-y-2">
+                      <li>✅ "Refiro-me <em>a</em> Maria" (SEM crase)</li>
+                      <li>✅ "Refiro-me <em>à</em> Maria" (COM crase)</li>
+                      <li className="text-sm italic text-muted-foreground">Ambas as formas são corretas!</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Nome Especificado: Crase Obrigatória",
+                icone: <LuTriangleAlert className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Nome COM especificador (adjetivo/adjunto) = crase OBRIGATÓRIA</p>
+                    <ul className="space-y-2">
+                      <li>❌ "Refiro-me a Maria do Carmo" (ERRADO!)</li>
+                      <li>✅ "Refiro-me <em>à</em> Maria do Carmo" (CORRETO!)</li>
+                      <li className="text-sm italic text-muted-foreground">"do Carmo" especifica o nome, torna crase obrigatória</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Mais Exemplos de Especificação",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Quando artigo passa a ser obrigatório:</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li>"Refiro-me <em>à</em> Maria da Silva" (sobrenome = especificação)</li>
+                      <li>"Entregue <em>à</em> Janete, a diretora" (aposição = especificação)</li>
+                      <li>"Dirijo-me <em>à</em> Brasília, capital federal" (aposição = especificação)</li>
+                      <li>"Viagem <em>à</em> Bahia de todos os santos" (complemento = especificação)</li>
+                    </ul>
+                  </div>
+                ),
+              },
             ]}
           />
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Comparação: Com Hora Aproximada" variant={mv[7]} />
-          <AlertBox tipo="warning" titulo="Atenção à Diferença">
-            ✅ "Chegou <em>às</em> 9 horas" (hora exata → crase)
-            <br />
-            ✅ "Chegou <em>por</em> volta das 9" (hora aproximada → não é crase, é preposição simples)
-            <br />
-            <br />
-            Crase ocorre apenas com horários EXATOS!
+          <ModuleSectionHeader index={3} title="Card: Exemplos Práticos" variant={mv[5]} />
+          <CardCarousel
+            cards={[
+              {
+                icone: "👩",
+                title: "Maria (simples)",
+                descricao: "a/à Maria (ambas corretas) ✓✓",
+              },
+              {
+                icone: "👩",
+                title: "Marina da Silva",
+                descricao: "à Marina da Silva (especificado, crase obrigatória)",
+              },
+              {
+                icone: "🌍",
+                title: "Bahia (simples)",
+                descricao: "a/à Bahia (ambas corretas) ✓✓",
+              },
+              {
+                icone: "🌍",
+                title: "Bahia de Todos os Santos",
+                descricao: "à Bahia de Todos os Santos (especificado)",
+              },
+              {
+                icone: "🏢",
+                title: "Petrobrás (empresa)",
+                descricao: "a/à Petrobrás (nome próprio, facultativo)",
+              },
+              {
+                icone: "📍",
+                title: "Distrito Federal",
+                descricao: "ao/a Distrito Federal (nome próprio)",
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={4} title="Estratégia em Prova: Como Escolher?" variant={mv[5]} />
+          <AlertBox tipo="info" titulo="Quando Ambas Estão em Alternativas">
+            <p>
+              Se em uma questão de múltipla escolha aparecerem DUAS alternativas — uma "a Maria" e outra "à Maria" — com certeza apenas UMA será o gabarito (segundo a banca). A estratégia é:
+            </p>
+            <ol className="list-decimal list-inside space-y-2 mt-3">
+              <li><strong>Verifique o contexto:</strong> O nome está especificado?</li>
+              <li><strong>Se SIM:</strong> Crase é obrigatória. Escolha "À".</li>
+              <li><strong>Se NÃO:</strong> Crase é facultativa. Procure dicas de estilo ou formalidade no texto.</li>
+              <li><strong>Em caso de dúvida:</strong> Procure por padrões na banca (CESGRANRIO costuma preferir formas mais formais, logo "À")</li>
+            </ol>
+            <p className="mt-4 font-semibold">
+              Dica CESGRANRIO: Petrobras valoriza formalidade. Quando em dúvida, escolha COM crase (À).
+            </p>
           </AlertBox>
         </section>
 
-        <QuizInterativo questoes={quizM7} titulo="Quiz - Horas e Medidas" numero={7} variant={mv[7]} onComplete={(s) => handleModuleComplete("modulo-7", s)} />
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader index={5} title="Prática: Simples vs Especificado" variant={mv[5]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <FlipCard
+              pergunta="Refiro-me ___ Daniela"
+              resposta="✅ a Daniela ou à Daniela (ambas corretas, nome simples)"
+              opcoes={["a", "à", "ambas"]}
+            />
+            <FlipCard
+              pergunta="Refiro-me ___ Daniela Silva"
+              resposta="✅ à Daniela Silva (nome especificado por sobrenome)"
+              opcoes={["a", "à"]}
+            />
+            <FlipCard
+              pergunta="Entreguei a carta ___ Marina"
+              resposta="✅ a Marina ou à Marina (ambas corretas, nome simples)"
+              opcoes={["a", "à", "ambas"]}
+            />
+          </div>
+        </section>
+
+        <AlertBox tipo="warning" titulo="Exceção: Artigos Usados Coloquialmente">
+          <p>
+            No português coloquial (especialmente em regiões), "a Maria" com artigo é muito comum. Escritores como Guimarães Rosa usavam "a Maria" frequentemente. Em literatura e na Petrobras (que valoriza norma padrão), "à Maria" (com crase) é preferido. Mas gramaticalmente, ambas são aceitas quando o nome é simples.
+          </p>
+        </AlertBox>
+
+        <ModuleConsolidation
+          numero={5}
+          titulo="Consolidação: Nomes Próprios"
+          topicos={[
+            "Crase é FACULTATIVA antes de nomes próprios femininos simples",
+            "Ambas formas são corretas: a/à Maria, a/à Bahia",
+            "Quando nome é ESPECIFICADO, crase é OBRIGATÓRIA",
+            "Especificação = adjetivo, adjunto, aposição, sobrenome",
+            "à Maria do Carmo (obrigatória)",
+            "Em prova, escolha o contexto e aplique regra de especificação",
+          ]}
+          variant={mv[5]}
+        />
+
+        <QuizInterativo
+          questoes={quizM5}
+          titulo="Quiz - Módulo 5: Nomes Próprios"
+          numero={5}
+          variant={mv[5]}
+          onComplete={(s) => handleModuleComplete("modulo-5", s)}
+        />
       </TabsContent>
 
-      {/* ─── MÓDULO 8: CASA/TERRA/DISTÂNCIA ─── */}
-      <TabsContent value="modulo-8" className="mt-0 space-y-12">
-        <ModuleBanner numero={8} titulo="Casa, Terra e Distância" variant={mv[8]} descricao="Regra da especificação" />
+      {/* ╔════════════════════════════════════════════════════════════════════════╗ */}
+      {/* ║              MÓDULO 6: FACULTATIVO - POSSESSIVOS                      ║ */}
+      {/* ╚════════════════════════════════════════════════════════════════════════╝ */}
+      <TabsContent value="modulo-6" className="mt-0 space-y-12">
+        <ModuleBanner
+          numero={6}
+          titulo="Crase Facultativa: Possessivos"
+          variant={mv[6]}
+          descricao="Minha, Sua, Tua, Nossa (singular)"
+        />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={1}
-            title="Casa e Terra: Regra de Ouro"
+            title="Possessivos Femininos Singulares: Artigo Opcional"
+            variant={mv[6]}
+          />
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>
+              <strong>Antes de possessivos femininos SINGULARES, a crase é facultativa</strong>. Possessivos como "minha", "sua", "tua", "nossa" (singular) carregam já uma noção de definição própria. O artigo é opcional: "a minha" ou apenas "minha" — ambas as formas existem em português. Como o artigo é opcional, a crase também é: <strong>a minha</strong> ou <strong>à minha</strong>, ambas corretas.
+            </p>
+            <p>
+              <strong>Estrutura: A + (opcional) + Possessivo Feminino Singular = A ou À (ambas corretas)</strong>
+            </p>
+            <p>
+              Exemplos: "Refiro-me <em>a</em> minha opinião" (SEM crase). "Refiro-me <em>à</em> minha opinião" (COM crase). "Assisti <em>a</em> sua apresentação" ou "Assisti <em>à</em> sua apresentação" — ambas corretas.
+            </p>
+            <p>
+              <strong>MAS CUIDADO:</strong> No <strong>PLURAL</strong>, a situação muda completamente. "Minhas", "suas", "tuas", "nossas" (plural) EXIGEM artigo obrigatoriamente. Logo, crase é obrigatória também: "<em>à</em> minhas", "<em>à</em> suas" (com crase). Essa é a diferença crítica que muitos candidatos perdem.
+            </p>
+            <p>
+              Na Petrobras, documentos dizem: "Conforme <em>a</em> minha análise" ou "Conforme <em>à</em> minha análise" — ambas certas. Mas "Conforme <em>às</em> minhas análises" é obrigatória (plural).
+            </p>
+            <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 rounded-xl border border-indigo-200 dark:border-indigo-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground flex items-center gap-2">
+                <LuLightbulb className="w-5 h-5 text-indigo-500" /> Regra Crítica: SINGULAR vs PLURAL
+              </h4>
+              <div className="space-y-3 p-3 bg-white dark:bg-slate-900 rounded-lg">
+                <div>
+                  <p className="font-semibold text-indigo-600">SINGULAR (Facultativo):</p>
+                  <p className="text-foreground/80">✅ "Dirijo-me <strong>a</strong> minha mãe" ou "Dirijo-me <strong>à</strong> minha mãe"</p>
+                </div>
+                <div className="border-t pt-3">
+                  <p className="font-semibold text-red-600">PLURAL (Obrigatório):</p>
+                  <p className="text-foreground/80">✅ "Dirijo-me <strong>às</strong> minhas mães" (OBRIGATÓRIA!)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={2} title="Exemplos: Singular vs Plural" variant={mv[6]} />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "SINGULAR: Ambas as Formas Corretas",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Possessivos singulares femininos = crase FACULTATIVA</p>
+                    <ul className="space-y-2">
+                      <li>✅ "Dirijo-me <em>a</em> minha mãe"</li>
+                      <li>✅ "Dirijo-me <em>à</em> minha mãe"</li>
+                      <li>✅ "Refiro-me <em>a</em> sua opinião"</li>
+                      <li>✅ "Refiro-me <em>à</em> sua opinião"</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "PLURAL: Crase OBRIGATÓRIA",
+                icone: <LuTriangleAlert className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Possessivos plurais femininos = crase OBRIGATÓRIA (NÃO facultativa!)</p>
+                    <ul className="space-y-2">
+                      <li>❌ "Dirijo-me a minhas mães" (ERRADO!)</li>
+                      <li>✅ "Dirijo-me <em>às</em> minhas mães" (OBRIGATÓRIA!)</li>
+                      <li>❌ "Refiro-me a suas opiniões" (ERRADO!)</li>
+                      <li>✅ "Refiro-me <em>às</em> suas opiniões" (OBRIGATÓRIA!)</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Por Que a Diferença?",
+                icone: <LuLightbulb className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Explicação Gramatical:</p>
+                    <ul className="space-y-2">
+                      <li><strong>Singular:</strong> "Minha" já é suficientemente definida → artigo opcional → crase facultativa</li>
+                      <li><strong>Plural:</strong> "Minhas" exige artigo para clareza → artigo obrigatório → crase obrigatória</li>
+                    </ul>
+                    <p className="text-sm italic mt-3">
+                      Essa é a regra mais sutil da crase. Muitos candidatos não diferenciam singular/plural em possessivos!
+                    </p>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={3} title="Card: Possessivos Femininos" variant={mv[6]} />
+          <CardCarousel
+            cards={[
+              {
+                icone: "👩",
+                title: "Minha mãe (singular)",
+                descricao: "a/à minha mãe (ambas corretas) ✓✓",
+              },
+              {
+                icone: "👩👩",
+                title: "Minhas mães (plural)",
+                descricao: "às minhas mães (obrigatória, não facultativa)",
+              },
+              {
+                icone: "💬",
+                title: "Sua opinião (singular)",
+                descricao: "a/à sua opinião (ambas corretas) ✓✓",
+              },
+              {
+                icone: "💬💬",
+                title: "Suas opiniões (plural)",
+                descricao: "às suas opiniões (obrigatória)",
+              },
+              {
+                icone: "🎨",
+                title: "Tua arte (singular)",
+                descricao: "a/à tua arte (facultativo) ✓✓",
+              },
+              {
+                icone: "🎨🎨",
+                title: "Tuas artes (plural)",
+                descricao: "às tuas artes (obrigatória!)",
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={4} title="Diferença Crítica: Possessivo Acompanhando vs Substituindo" variant={mv[6]} />
+          <AlertBox tipo="info" titulo="Possessivo Acompanhando Substantivo vs Sozinho">
+            <p><strong>ACOMPANHANDO SUBSTANTIVO (com crase facultativa):</strong></p>
+            <p className="mt-2">✅ "Obedeci <em>à</em> sua ordem" (sua acompanha "ordem")</p>
+            <p className="mt-4"><strong>SUBSTITUINDO SUBSTANTIVO (crase obrigatória):</strong></p>
+            <p>✅ "Obedeci <em>à</em> sua" (sua SUBSTITUI "ordem", fica sozinho)</p>
+            <p className="mt-4 text-sm italic text-muted-foreground">
+              Ambas têm crase neste caso, mas a lógica gramatical é diferente!
+            </p>
+          </AlertBox>
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader index={5} title="Prática: Singular vs Plural" variant={mv[6]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <FlipCard
+              pergunta="Complete: Refiro-me ___ minha opinião"
+              resposta="✅ a/à minha opinião (singular = facultativo)"
+              opcoes={["a", "à", "ambas"]}
+            />
+            <FlipCard
+              pergunta="Complete: Refiro-me ___ minhas opiniões"
+              resposta="✅ às minhas opiniões (plural = obrigatório!)"
+              opcoes={["a", "à", "às"]}
+            />
+            <FlipCard
+              pergunta="Complete: Assisti ___ sua apresentação"
+              resposta="✅ a/à sua apresentação (singular = facultativo)"
+              opcoes={["a", "à", "ambas"]}
+            />
+          </div>
+        </section>
+
+        <AlertBox tipo="danger" titulo="Erro Frequente: Confundir Singular/Plural">
+          Muitos candidatos escrevem: "Dirijo-me a minhas análises" (SEM crase no plural). ERRADO! No plural, crase é <strong>obrigatória</strong>: "Dirijo-me <em>às</em> minhas análises". Essa confusão derrota até candidatos avançados. Leia com atenção ao número (singular/plural)!
+        </AlertBox>
+
+        <ModuleConsolidation
+          numero={6}
+          titulo="Consolidação: Possessivos Femininos"
+          topicos={[
+            "SINGULAR: crase FACULTATIVA (a minha / à minha)",
+            "PLURAL: crase OBRIGATÓRIA (às minhas)",
+            "Essa diferença é crítica — muitos candidatos erram",
+            "Possessivos singulares: minha, sua, tua, nossa (facultativo)",
+            "Possessivos plurais: minhas, suas, tuas, nossas (obrigatório)",
+            "Em prova, sempre identifique singular vs plural",
+          ]}
+          variant={mv[6]}
+        />
+
+        <QuizInterativo
+          questoes={quizM6}
+          titulo="Quiz - Módulo 6: Possessivos"
+          numero={6}
+          variant={mv[6]}
+          onComplete={(s) => handleModuleComplete("modulo-6", s)}
+        />
+      </TabsContent>
+
+      {/* ╔════════════════════════════════════════════════════════════════════════╗ */}
+      {/* ║                  MÓDULO 7: HORAS E MEDIDAS                             ║ */}
+      {/* ╚════════════════════════════════════════════════════════════════════════╝ */}
+      <TabsContent value="modulo-7" className="mt-0 space-y-12">
+        <ModuleBanner
+          numero={7}
+          titulo="Horas e Medidas"
+          variant={mv[7]}
+          descricao="Crase Obrigatória com Horários e Expressões de Medida"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="Horas Exatas: Fusão Automática"
+            variant={mv[7]}
+          />
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>
+              <strong>Antes de horas exatas, a crase é obrigatória</strong>. Sempre. Não há exceção. A estrutura é: preposição A (de tempo) + artigo AS (definindo o horário plural) = ÀS. Quando se fala de hora singular (uma hora), a estrutura é A + A (hora feminina singular) = À. Você escreve: "Às 14 horas", "À uma hora", "Às 9 da manhã".
+            </p>
+            <p>
+              A razão é que horas são expressões de tempo preciso, sempre acompanhadas de artigo definido. "A hora", "as horas" — o artigo é obrigatório aqui. Logo, quando há preposição A antes de horário, a fusão é automática: crase sempre.
+            </p>
+            <p>
+              Exemplos: "A reunião é <em>às</em> 14h30" (preposição A + artigo plural AS = ÀS). "Chegue <em>à</em> uma hora em ponto" (preposição A + artigo singular A = À). "Saio <em>às</em> três da tarde" (preposição A + artigo plural AS = ÀS).
+            </p>
+            <p>
+              <strong>Diferença crítica:</strong> "por volta <strong>das</strong> 9" (preposição simples "de" + artigo "as" = "das", não é crase, é preposição diferente). "Sempre <strong>às</strong> 9" (preposição "a" + artigo "as" = "às", é crase).
+            </p>
+            <p>
+              Na Petrobras, agendamentos dizem: "Reunião com operações <em>às</em> 10 horas". "Turno noturno <em>às</em> 22h". "Pausa <em>à</em> uma e meia". Esses são contextos onde crase com hora é sistemática.
+            </p>
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-xl border border-green-200 dark:border-green-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground flex items-center gap-2">
+                <LuZap className="w-5 h-5 text-green-500" /> Regra: HORAS EXATAS = CRASE OBRIGATÓRIA
+              </h4>
+              <div className="space-y-2 p-3 bg-white dark:bg-slate-900 rounded-lg">
+                <p className="text-foreground/80">✅ "Às 14 horas" (plural: ÀS)</p>
+                <p className="text-foreground/80">✅ "À uma hora" (singular: À)</p>
+                <p className="text-foreground/80">✅ "Às 9:30" (plural: ÀS)</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={2} title="Exemplos: Horários Práticos" variant={mv[7]} />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "Horas Plural (ÀS)",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Quando a hora é múltipla ou vai além de 1:</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li>✅ "Às 2 horas" (ÀS)</li>
+                      <li>✅ "Às 9 da manhã" (ÀS)</li>
+                      <li>✅ "Às 14:30" (ÀS)</li>
+                      <li>✅ "Às 22 horas" (ÀS)</li>
+                      <li>✅ "Às três e meia" (ÀS)</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Hora Singular (À)",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Apenas quando é exatamente 1 hora:</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li>✅ "À uma hora" (À)</li>
+                      <li>✅ "À uma da tarde" (À)</li>
+                      <li>✅ "À uma e meia" (À — a meia aplica-se à uma, mantém singular)</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Casos Especiais de Tempo",
+                icone: <LuLightbulb className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Expressões afins de hora também levam crase:</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li>✅ "À madrugada" (horas da madrugada)</li>
+                      <li>✅ "À alvorada" (ao amanhecer)</li>
+                      <li>✅ "À noite" (período noturno)</li>
+                      <li>✅ "À tarde" (período da tarde)</li>
+                    </ul>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={3} title="Medidas: Expressões com Crase" variant={mv[7]} />
+          <CardCarousel
+            cards={[
+              {
+                icone: "🕐",
+                title: "Às 9 horas",
+                descricao: "Hora exata (crase obrigatória com horas)",
+              },
+              {
+                icone: "📏",
+                title: "À vista",
+                descricao: "Expressão de medida (crase fixa)",
+              },
+              {
+                icone: "📐",
+                title: "À proporção de",
+                descricao: "Taxa/medida de proporção (crase)",
+              },
+              {
+                icone: "📊",
+                title: "À razão de",
+                descricao: "Medida de taxa (crase obrigatória)",
+              },
+              {
+                icone: "📋",
+                title: "À distância de",
+                descricao: "Expressão de medida (crase)",
+              },
+              {
+                icone: "⚙️",
+                title: "À velocidade de",
+                descricao: "Medida de velocidade (crase)",
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={4} title="Diferença: Hora Exata vs Aproximada" variant={mv[7]} />
+          <AlertBox tipo="warning" titulo="NÃO Confunda Exato com Aproximado">
+            <p><strong>Hora EXATA:</strong> "A reunião é <em>às</em> 14 horas" (preposição A + artigo AS = crase ÀS)</p>
+            <p className="mt-3">
+              <strong>Hora APROXIMADA:</strong> "Chegou <em>por volta das</em> 14 horas" (preposição "de" + artigo as = "das", não é crase)
+            </p>
+            <p className="mt-3">
+              <strong>Diferença:</strong> "Às" é crase (A+AS). "Das" é preposição "de" + artigo "as" (não é crase).
+            </p>
+          </AlertBox>
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader index={5} title="Prática: Horas e Medidas" variant={mv[7]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <FlipCard
+              pergunta="Complete: A reunião é ___ 14h"
+              resposta="✅ Às 14h (hora exata → crase obrigatória ÀS)"
+              opcoes={["as", "às"]}
+            />
+            <FlipCard
+              pergunta="Complete: Chegue ___ uma hora"
+              resposta="✅ À uma hora (hora singular → À)"
+              opcoes={["a", "à"]}
+            />
+            <FlipCard
+              pergunta="Complete: Viagem ___ vista"
+              resposta="✅ À vista (expressão de medida → crase)"
+              opcoes={["a", "à"]}
+            />
+          </div>
+        </section>
+
+        <AlertBox tipo="info" titulo="Macete: Horas SEMPRE Têm Crase">
+          Quando vê hora exata numa questão, pense: <strong>"Crase é amiga de horas!"</strong> Sempre que a frase menciona horário específico, há crase. Às 8, às 14:30, à uma — todas com crase. Não há exceção para horas exatas.
+        </AlertBox>
+
+        <ModuleConsolidation
+          numero={7}
+          titulo="Consolidação: Horas e Medidas"
+          topicos={[
+            "HORAS EXATAS = CRASE OBRIGATÓRIA",
+            "Plural: Às 14h, às 9 horas (ÀS)",
+            "Singular: À uma hora, à uma da tarde (À)",
+            "Hora aproximada: por volta DAS (não é crase, é preposição 'de')",
+            "Expressões de medida: À vista, à proporção de, à distância de",
+            "Em prova, hora = crase sempre (não há exceção)",
+          ]}
+          variant={mv[7]}
+        />
+
+        <QuizInterativo
+          questoes={quizM7}
+          titulo="Quiz - Módulo 7: Horas e Medidas"
+          numero={7}
+          variant={mv[7]}
+          onComplete={(s) => handleModuleComplete("modulo-7", s)}
+        />
+      </TabsContent>
+
+      {/* ╔════════════════════════════════════════════════════════════════════════╗ */}
+      {/* ║              MÓDULO 8: CASA, TERRA, DISTÂNCIA                          ║ */}
+      {/* ╚════════════════════════════════════════════════════════════════════════╝ */}
+      <TabsContent value="modulo-8" className="mt-0 space-y-12">
+        <ModuleBanner
+          numero={8}
+          titulo="Casa, Terra e Distância"
+          variant={mv[8]}
+          descricao="Regra da Especificação"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="Casa e Terra: Genérico vs Especificado"
             variant={mv[8]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              As palavras <strong>casa</strong> e <strong>terra</strong> têm uma regra especial: quando significam "para a própria residência/região" (sem especificação), não há crase. Mas quando são <strong>especificadas</strong> ("casa de José", "terra natal"), há crase obrigatória.
+              <strong>As palavras "casa" e "terra" têm uma regra especial de crase: genéricas não levam crase, especificadas levam</strong>. Quando "casa" significa "para minha residência" (genérica, indefinida), não há artigo: "Vou <em>a</em> casa" (A + casa genérica, sem artigo = A). Mas quando "casa" é especificada (recebe adjetivo, adjunto), aí há artigo e crase: "Vou <em>à</em> casa da Maria" (A + a casa da Maria = À).
             </p>
             <p>
-              Lógica: "Vou a casa" (a casa, genérica, sem artigo) vs "Vou à casa da Maria" (à casa = a + a casa, especificada). A diferença está em ter ou não um modificador (adjunto) que especifique a palavra.
+              A mesma lógica aplica-se a "terra". "Voltamos <em>a</em> terra" (terra como oposto de mar, genérica = SEM crase). "Voltamos <em>à</em> terra natal" (terra com especificador "natal" = COM crase). A diferença reside em ter ou não um modificador (adjunto, aposição, adjetivo) que especifique a palavra.
             </p>
+            <p>
+              <strong>Estrutura geral:</strong> <em>Palavra genérica</em> (sem artigo) = A (sem crase). <em>Palavra especificada</em> (com artigo obrigatório) = À (com crase).
+            </p>
+            <p>
+              Essa regra é tão importante que a CESGRANRIO cobra frequentemente. "Vou a casa" (genérica) vs "Vou à casa da vizinha" (especificada). Candidatos que não dominam essa sutileza perdem 2-3 pontos facilmente.
+            </p>
+            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950/30 dark:to-blue-950/30 rounded-xl border border-cyan-200 dark:border-cyan-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground flex items-center gap-2">
+                <LuTarget className="w-5 h-5 text-cyan-500" /> Regra de Ouro: ESPECIFICAÇÃO Define Crase
+              </h4>
+              <div className="space-y-2 p-3 bg-white dark:bg-slate-900 rounded-lg">
+                <p className="text-foreground/80">
+                  <strong>Genérica:</strong> "Vou <em>a</em> casa" (SEM artigo, SEM crase)
+                </p>
+                <p className="text-foreground/80">
+                  <strong>Especificada:</strong> "Vou <em>à</em> casa da Maria" (COM artigo, COM crase)
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Exemplos: Casa e Terra" variant={mv[8]} />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border border-emerald-500/20 bg-emerald-500/5 rounded-lg">
-              <p className="font-bold text-emerald-500 mb-3">SEM CRASE (genérico)</p>
-              <p className="text-lg">✅ "Vou <em>a</em> casa"</p>
-              <p className="text-lg">✅ "Voltei <em>a</em> terra"</p>
-              <p className="text-muted-foreground text-sm mt-2">(sem especificação)</p>
-            </div>
-            <div className="p-4 border border-blue-500/20 bg-blue-500/5 rounded-lg">
-              <p className="font-bold text-blue-500 mb-3">COM CRASE (especificado)</p>
-              <p className="text-lg">✅ "Vou <em>à</em> casa da Maria"</p>
-              <p className="text-lg">✅ "Voltei <em>à</em> terra natal"</p>
-              <p className="text-muted-foreground text-sm mt-2">(com especificação)</p>
-            </div>
-          </div>
+          <ModuleSectionHeader index={2} title="Exemplos: Casa Genérica vs Especificada" variant={mv[8]} />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "Casa Genérica (SEM Crase)",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Quando "casa" significa residência própria (sem especificação):</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li>✅ "Vou <em>a</em> casa" (minha própria casa, genérica)</li>
+                      <li>✅ "Chego <em>a</em> casa cansado" (voltei para minha casa)</li>
+                      <li>✅ "Saio de casa cedo" (de minha casa, genérica)</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Casa Especificada (COM Crase)",
+                icone: <LuTriangleAlert className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Quando "casa" é especificada (possui adjetivo, adjunto, aposição):</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li>✅ "Vou <em>à</em> casa da Maria"</li>
+                      <li>✅ "Vou <em>à</em> casa azul da esquina"</li>
+                      <li>✅ "Dirijo-me <em>à</em> casa do prefeito"</li>
+                      <li>✅ "Chego <em>à</em> casa da amiga"</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Terra Genérica vs Especificada",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Mesma regra aplica-se a "terra":</p>
+                    <ul className="space-y-2">
+                      <li>✅ "Desembarcaram <em>a</em> terra" (oposto de bordo, genérica)</li>
+                      <li>✅ "Desembarcaram <em>à</em> terra firme" (especificada por "firme")</li>
+                      <li>✅ "Voltamos <em>a</em> terra" (genérica, sem especificação)</li>
+                      <li>✅ "Voltamos <em>à</em> terra natal" (especificada por "natal")</li>
+                    </ul>
+                  </div>
+                ),
+              },
+            ]}
+          />
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Distância: Outra Regra Especial" variant={mv[8]} />
+          <ModuleSectionHeader index={3} title="Card: Comparação Lado a Lado" variant={mv[8]} />
+          <CardCarousel
+            cards={[
+              {
+                icone: "🏠",
+                title: "Casa (genérica)",
+                descricao: "Vou a casa (SEM crase)",
+              },
+              {
+                icone: "🏠👩",
+                title: "Casa da Maria",
+                descricao: "Vou à casa da Maria (COM crase)",
+              },
+              {
+                icone: "🌍",
+                title: "Terra (genérica)",
+                descricao: "Desembarcaram a terra (SEM crase)",
+              },
+              {
+                icone: "🌍✨",
+                title: "Terra Natal",
+                descricao: "Voltamos à terra natal (COM crase)",
+              },
+              {
+                icone: "📍",
+                title: "Distância (sem prep)",
+                descricao: "A distância de 5km (artigo simples)",
+              },
+              {
+                icone: "📍➡️",
+                title: "À Distância de",
+                descricao: 'À distância de 5km (crase com "a")',
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={4} title="Distância: Expressão de Medida" variant={mv[8]} />
           <AlertBox tipo="info" titulo="À Distância de...">
-            ✅ "À distância de 10 km" (crase obrigatória com "distância de")
+            <p><strong>Crase obrigatória</strong> com expressões de distância que usam preposição A:</p>
+            <p className="mt-2">✅ "À distância de 10 quilômetros"</p>
+            <p>✅ "À distância de um metro"</p>
+            <p>✅ "À distância de meia légua"</p>
             <br />
-            ✅ "À distância de um quilômetro" (crase obrigatória)
-            <br />
-            ❌ "A distância" (sem preposição, sem artigo → sem crase)
+            <p><strong>SEM preposição A, não há crase:</strong></p>
+            <p className="mt-2">✅ "A distância entre cidades é grande" (artigo simples, não crase)</p>
           </AlertBox>
         </section>
 
-        <QuizInterativo questoes={quizM8} titulo="Quiz - Casos Especiais" numero={8} variant={mv[8]} onComplete={(s) => handleModuleComplete("modulo-8", s)} />
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader index={5} title="Prática: Casa, Terra, Distância" variant={mv[8]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <FlipCard
+              pergunta="Complete: Vou ___ casa"
+              resposta="✅ a casa (genérica, sem especificação)"
+              opcoes={["a", "à"]}
+            />
+            <FlipCard
+              pergunta="Complete: Vou ___ casa da vovó"
+              resposta="✅ à casa da vovó (especificada, tem artigo)"
+              opcoes={["a", "à"]}
+            />
+            <FlipCard
+              pergunta="Complete: Voltamos ___ terra natal"
+              resposta="✅ à terra natal (especificada por 'natal')"
+              opcoes={["a", "à"]}
+            />
+          </div>
+        </section>
+
+        <AlertBox tipo="danger" titulo="Erro Crítico: Não Identificar Especificação">
+          Muitos candidatos escrevem: "Fui <em>a</em> casa da Maria" (ERRADO! Casa está especificada). Correto: "Fui <em>à</em> casa da Maria". A presença de "da Maria" (adjunto possessivo) torna "casa" especificada e exige crase. Leia com atenção para identificar especificadores!
+        </AlertBox>
+
+        <ModuleConsolidation
+          numero={8}
+          titulo="Consolidação: Casa, Terra, Distância"
+          topicos={[
+            "Casa/terra GENÉRICAS: SEM crase (a casa, a terra)",
+            "Casa/terra ESPECIFICADAS: COM crase (à casa da Maria, à terra natal)",
+            "Especificação = adjunto, aposição, adjetivo que modifica",
+            "Distância: À distância de... (crase com preposição a)",
+            "Regra de especificação é crítica — CESGRANRIO cobra frequentemente",
+            "Sempre verifique se há especificador (de quem? qual?)",
+          ]}
+          variant={mv[8]}
+        />
+
+        <QuizInterativo
+          questoes={quizM8}
+          titulo="Quiz - Módulo 8: Casa, Terra, Distância"
+          numero={8}
+          variant={mv[8]}
+          onComplete={(s) => handleModuleComplete("modulo-8", s)}
+        />
       </TabsContent>
 
-      {/* ─── MÓDULO 9: DEMONSTRATIVOS ─── */}
+      {/* ╔════════════════════════════════════════════════════════════════════════╗ */}
+      {/* ║                MÓDULO 9: PRONOMES DEMONSTRATIVOS                       ║ */}
+      {/* ╚════════════════════════════════════════════════════════════════════════╝ */}
       <TabsContent value="modulo-9" className="mt-0 space-y-12">
-        <ModuleBanner numero={9} titulo="Àquele, Àquela, Àquilo" variant={mv[9]} descricao="Fusão com a preposição" />
+        <ModuleBanner
+          numero={9}
+          titulo="Pronomes Demonstrativos: Àquele, Àquela, Àquilo"
+          variant={mv[9]}
+          descricao="Fusão Especial da Preposição com Demonstrativos"
+        />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={1}
-            title="Demonstrativos: Fusão Especial"
+            title="Demonstrativos com Crase: Fusão Especial"
             variant={mv[9]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              Os demonstrativos <strong>aquele, aquela, aquilo</strong> (e variações) aceitam fusão com a preposição A, gerando as formas <strong>àquele, àquela, àquilo</strong>. Essa fusão é diferente da fusão com artigo — aqui a preposição funde-se com o próprio demonstrativo.
+              <strong>Pronomes demonstrativos AQUELE, AQUELA, AQUILO aceitam fusão com a preposição A, gerando as formas ÀQUELE, ÀQUELA, ÀQUILO</strong>. Essa fusão é diferente daquela com artigo — aqui a preposição se funde diretamente com o demonstrativo. O acento grave marca essa fusão, indicando que houve contração.
             </p>
             <p>
-              A estrutura é: preposição A + demonstrativo aquele = àquele. O teste do masculino funciona aqui também: se em forma masculina resultaria em "ÀQUELE" (aquele tem a preposição A fusionada), então no feminino correspondente há crase.
+              <strong>Estrutura: Preposição A + Demonstrativo AQUELE = ÀQUELE (fusão especial)</strong>
             </p>
-          </div>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Demonstrativos com Crase" variant={mv[9]} />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              { demon: "Àquele", test: "Àquele rapaz", ex: "Refiro-me àquele rapaz" },
-              { demon: "Àquela", test: "Àquela moça", ex: "Refiro-me àquela moça" },
-              { demon: "Àquilo", test: "Àquilo (neutro)", ex: "Refiro-me àquilo" },
-            ].map((item, i) => (
-              <div key={i} className="p-4 border border-purple-500/20 bg-purple-500/5 rounded-lg">
-                <p className="font-bold text-purple-500 text-lg">{item.demon}</p>
-                <p className="text-muted-foreground text-sm mt-2">{item.test}</p>
-                <p className="text-sm mt-2 italic">{item.ex}</p>
+            <p>
+              Exemplos: "Refiro-me <em>àquele</em> documento" (A + aquele = àquele). "Aludo <em>àquela</em> decisão" (A + aquela = àquela). "Pensei <em>àquilo</em> que você disse" (A + aquilo = àquilo). Em todos esses casos, a preposição A funde-se com o demonstrativo, criando as formas com acento grave.
+            </p>
+            <p>
+              <strong>Importante:</strong> O teste do masculino funciona aqui também. Se em forma masculina resultar em "ÀQUELE" (com crase), então no feminino há "ÀQUELA" (com crase), e no neutro há "ÀQUILO" (com crase). Essa consistência ajuda a memorizar.
+            </p>
+            <p>
+              Na Petrobras, comunicações formais dizem: "Conforme <em>àquele</em> procedimento", "Referente <em>àquilo</em> discutido em reunião". A fusão com demonstrativos é frequente em textos técnicos porque esses pronomes ajudam a precisar referências anteriores.
+            </p>
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-xl border border-purple-200 dark:border-purple-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground flex items-center gap-2">
+                <LuZap className="w-5 h-5 text-purple-500" /> Demonstrativos: Sempre Levam Crase
+              </h4>
+              <div className="space-y-2 p-3 bg-white dark:bg-slate-900 rounded-lg">
+                <p className="text-foreground/80">✅ "Refiro-me <strong>àquele</strong> rapaz"</p>
+                <p className="text-foreground/80">✅ "Aludo <strong>àquela</strong> moça"</p>
+                <p className="text-foreground/80">✅ "Pensei <strong>àquilo</strong> (neutro)"</p>
               </div>
-            ))}
+            </div>
           </div>
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Teste: Este vs Aquele" variant={mv[9]} />
-          <AlertBox tipo="info" titulo="Técnica de Verificação">
-            Substitua "aquele" por "este" na mesma frase:
+          <ModuleSectionHeader index={2} title="Formas Completas: Demonstrativos com Crase" variant={mv[9]} />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "Demonstrativo AQUELE (Masculino)",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">ÀQUELE — sempre com crase quando há preposição A:</p>
+                    <ul className="space-y-2">
+                      <li>✅ "Refiro-me <em>àquele</em> documento"</li>
+                      <li>✅ "Aludi <em>àquele</em> evento"</li>
+                      <li>✅ "Dirijo-me <em>àquele</em> senhor"</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Demonstrativo AQUELA (Feminino)",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">ÀQUELA — sempre com crase quando há preposição A:</p>
+                    <ul className="space-y-2">
+                      <li>✅ "Refiro-me <em>àquela</em> proposta"</li>
+                      <li>✅ "Aludi <em>àquela</em> reunião"</li>
+                      <li>✅ "Dirijo-me <em>àquela</em> moça"</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Demonstrativo AQUILO (Neutro)",
+                icone: <LuTarget className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">ÀQUILO — sempre com crase quando há preposição A:</p>
+                    <ul className="space-y-2">
+                      <li>✅ "Refiro-me <em>àquilo</em> que foi dito"</li>
+                      <li>✅ "Não gosto <em>daquilo</em> que você fez" (note: "daquilo" = DE+AQUILO, não A)</li>
+                      <li>✅ "Pensei <em>àquilo</em> por horas"</li>
+                    </ul>
+                    <p className="text-sm italic mt-2">
+                      CUIDADO: "Daquilo" = DE (preposição) + AQUILO, não é crase!
+                    </p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Diferença: Este vs Aquele",
+                icone: <LuLightbulb className="w-5 h-5" />,
+                conteudo: (
+                  <div className="space-y-3 text-foreground/85">
+                    <p className="font-semibold">Demonstrativos próximos vs remotos:</p>
+                    <ul className="space-y-2">
+                      <li>✅ "Refiro-me <em>a este</em>" (demonstrativo próximo = SEM crase)</li>
+                      <li>✅ "Refiro-me <em>àquele</em>" (demonstrativo remoto = COM crase)</li>
+                      <li className="text-sm italic">Note: "Este" não recebe crase mesmo com preposição A!</li>
+                    </ul>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={3} title="Card: Demonstrativos e Seus Pares" variant={mv[9]} />
+          <CardCarousel
+            cards={[
+              {
+                icone: "👨",
+                title: "Àquele (masc)",
+                descricao: "Àquele rapaz (A+aquele, sempre crase)",
+              },
+              {
+                icone: "👩",
+                title: "Àquela (fem)",
+                descricao: "Àquela moça (A+aquela, sempre crase)",
+              },
+              {
+                icone: "⭕",
+                title: "Àquilo (neutro)",
+                descricao: "Àquilo que disseste (A+aquilo, sempre crase)",
+              },
+              {
+                icone: "👨",
+                title: "A este (próximo)",
+                descricao: "A este rapaz (SEM crase, demonstrativo próximo)",
+              },
+              {
+                icone: "🌍",
+                title: "Teste: Referir-se",
+                descricao: "Refiro-me àquele (crase com aquele)",
+              },
+              {
+                icone: "⚙️",
+                title: "Petrobras",
+                descricao: "Conforme àquele procedimento (documentação)",
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={4} title="Cuidado: Demonstrativo Próximo (Este) NÃO Leva Crase" variant={mv[9]} />
+          <AlertBox tipo="warning" titulo="Diferença Crítica: ESTE vs AQUELE">
+            <p><strong>AQUELE (remoto) → ÀQUELE (com crase)</strong></p>
+            <p>✅ "Refiro-me <em>àquele</em> documento" (remoto, crase obrigatória)</p>
             <br />
+            <p><strong>ESTE (próximo) → A ESTE (sem crase)</strong></p>
+            <p>✅ "Refiro-me <em>a este</em> documento" (próximo, SEM crase)</p>
             <br />
-            "Refiro-me <em>àquele</em> rapaz" → "Refiro-me <em>a este</em> rapaz"
-            <br />
-            (Se com "a este" dá preposição simples, com "àquele" = crase)
-            <br />
-            <br />
-            Isso confirma que a preposição A está fusionada com o demonstrativo.
+            <p className="font-semibold mt-4">
+              A diferença está no tipo de demonstrativo! "Aquele" recebe crase (fusão especial), "este" não.
+            </p>
           </AlertBox>
         </section>
 
-        <QuizInterativo questoes={quizM9} titulo="Quiz - Demonstrativos" numero={9} variant={mv[9]} onComplete={(s) => handleModuleComplete("modulo-9", s)} />
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader index={5} title="Prática: Demonstrativos com Crase" variant={mv[9]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <FlipCard
+              pergunta="Complete: Refiro-me ___ aquele documento"
+              resposta="✅ àquele (demonstrativo remoto + preposição A = crase)"
+              opcoes={["a aquele", "àquele"]}
+            />
+            <FlipCard
+              pergunta="Complete: Aludi ___ aquilo que disseste"
+              resposta="✅ àquilo (demonstrativo neutro remoto = crase)"
+              opcoes={["a aquilo", "àquilo"]}
+            />
+            <FlipCard
+              pergunta="Complete: Refiro-me ___ este documento"
+              resposta="✅ a este (demonstrativo próximo = SEM crase)"
+              opcoes={["a", "à"]}
+            />
+          </div>
+        </section>
+
+        <AlertBox tipo="danger" titulo="Erro Frequente: Confundir Este/Aquele">
+          Candidatos frequentemente erram "Refiro-me <em>à</em> este" (ERRADO!) quando o correto é "Refiro-me <em>a</em> este". Lembre: AQUELE → ÀQUELE (com crase). ESTE → A ESTE (sem crase). A diferença está na natureza do demonstrativo!
+        </AlertBox>
+
+        <ModuleConsolidation
+          numero={9}
+          titulo="Consolidação: Demonstrativos"
+          topicos={[
+            "AQUELE, AQUELA, AQUILO → ÀQUELE, ÀQUELA, ÀQUILO (sempre com crase)",
+            "ESTE, ESTA, ISTO → A ESTE, A ESTA, A ISTO (sem crase)",
+            "Fusão demonstrativo é especial (preposição funde com demonstrativo)",
+            "Teste: Refiro-me → Àquele (remoto, crase) vs A este (próximo, sem crase)",
+            "Em prova, identifique tipo de demonstrativo",
+            "CESGRANRIO adora colocar este/aquele juntos para testar diferença",
+          ]}
+          variant={mv[9]}
+        />
+
+        <QuizInterativo
+          questoes={quizM9}
+          titulo="Quiz - Módulo 9: Demonstrativos"
+          numero={9}
+          variant={mv[9]}
+          onComplete={(s) => handleModuleComplete("modulo-9", s)}
+        />
       </TabsContent>
 
-      {/* ─── MÓDULO 10: SIMULADO FINAL ─── */}
+      {/* ╔════════════════════════════════════════════════════════════════════════╗ */}
+      {/* ║                    MÓDULO 10: SIMULADO INTEGRADO                       ║ */}
+      {/* ╚════════════════════════════════════════════════════════════════════════╝ */}
       <TabsContent value="modulo-10" className="mt-0 space-y-12">
-        <ModuleBanner numero={10} titulo="Simulado Final" variant={mv[10]} descricao="Consolidação completa de crase" />
-        <AlertBox tipo="success" titulo="Arena Master de Crase">
-          Este é o desafio final. Você vai encontrar questões que combinam múltiplas regras — o padrão exato das provas da CESGRANRIO.
-          <br />
-          <br />
-          Lembre-se: equação (A + A = À), teste do masculino (AO?), e as exceções (verbo, pronome, etc). Você está pronto!
+        <ModuleBanner
+          numero={10}
+          titulo="Simulado Integrado: Consolidação Total"
+          variant={mv[10]}
+          descricao="Teste seus conhecimentos em todas as regras de crase"
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="Domínio Completo: Checklist de Regras"
+            variant={mv[10]}
+          />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "Regra 1: Equação Fundamental",
+                icone: <LuCheck className="w-5 h-5" />,
+                conteudo: (
+                  <p className="text-foreground/85">
+                    A (preposição) + A (artigo/demonstrativo) = À. Se falta um elemento, não há crase. Sempre verifique ambos!
+                  </p>
+                ),
+              },
+              {
+                titulo: "Regra 2: Teste do Masculino",
+                icone: <LuCheck className="w-5 h-5" />,
+                conteudo: (
+                  <p className="text-foreground/85">
+                    Substitua por masculino. Se vira "AO", há crase (À). Se continua "A", sem crase. Funciona em 95% dos casos.
+                  </p>
+                ),
+              },
+              {
+                titulo: "Regra 3: Verbos Proíbem",
+                icone: <LuCheck className="w-5 h-5" />,
+                conteudo: (
+                  <p className="text-foreground/85">
+                    Verbo nunca aceita artigo. A + Verbo = A (sem crase). Começou a estudar, não "à estudar".
+                  </p>
+                ),
+              },
+              {
+                titulo: "Regra 4: Pronomes Pessoais Proíbem",
+                icone: <LuCheck className="w-5 h-5" />,
+                conteudo: (
+                  <p className="text-foreground/85">
+                    Pronome pessoal nunca aceita artigo. Referi-me a ela, não "à ela". Absolutamente proibido!
+                  </p>
+                ),
+              },
+              {
+                titulo: "Regra 5: Nomes Próprios = Facultativo",
+                icone: <LuCheck className="w-5 h-5" />,
+                conteudo: (
+                  <p className="text-foreground/85">
+                    A Maria ou À Maria (ambas corretas). MAS se especificado (Maria da Silva), crase é obrigatória.
+                  </p>
+                ),
+              },
+              {
+                titulo: "Regra 6: Possessivos Singulares = Facultativo",
+                icone: <LuCheck className="w-5 h-5" />,
+                conteudo: (
+                  <p className="text-foreground/85">
+                    A minha ou À minha (ambas corretas). MAS plural é obrigatório: Às minhas (não "a minhas").
+                  </p>
+                ),
+              },
+              {
+                titulo: "Regra 7: Horas Exatas = Obrigatório",
+                icone: <LuCheck className="w-5 h-5" />,
+                conteudo: (
+                  <p className="text-foreground/85">
+                    Às 14 horas, à uma hora. Horas sempre levam crase. Por volta das (não é crase, é preposição "de").
+                  </p>
+                ),
+              },
+              {
+                titulo: "Regra 8: Casa/Terra = Especificação Define",
+                icone: <LuCheck className="w-5 h-5" />,
+                conteudo: (
+                  <p className="text-foreground/85">
+                    Vou a casa (genérica). Vou à casa da Maria (especificada). Mesma regra para terra.
+                  </p>
+                ),
+              },
+              {
+                titulo: "Regra 9: Demonstrativos Aquele = Obrigatório",
+                icone: <LuCheck className="w-5 h-5" />,
+                conteudo: (
+                  <p className="text-foreground/85">
+                    Àquele, àquela, àquilo (sempre crase). Diferente de "este" (a este, sem crase).
+                  </p>
+                ),
+              },
+              {
+                titulo: "Regra 10: Estratégia em Prova",
+                icone: <LuCheck className="w-5 h-5" />,
+                conteudo: (
+                  <p className="text-foreground/85">
+                    1) Aplique teste do masculino. 2) Se falhar, verifique categoria (verbo? pronome? hora?). 3) Escolha fundamentado em regra clara.
+                  </p>
+                ),
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={2} title="Questões Simuladas: Padrão CESGRANRIO" variant={mv[10]} />
+          <CardCarousel
+            cards={[
+              {
+                icone: "📝",
+                title: "Q1: Básica",
+                descricao: "Vou ___ praia. (A) a (B) à [Resposta: à]",
+              },
+              {
+                icone: "📝",
+                title: "Q2: Teste do Masculino",
+                descricao: "Refiro-me ___ estratégia. (A) a (B) à [Resposta: à]",
+              },
+              {
+                icone: "📝",
+                title: "Q3: Verbo",
+                descricao: "Começou ___ chover. (A) a (B) à [Resposta: a]",
+              },
+              {
+                icone: "📝",
+                title: "Q4: Pronome",
+                descricao: "Referi-me ___ ela. (A) a (B) à [Resposta: a]",
+              },
+              {
+                icone: "📝",
+                title: "Q5: Hora",
+                descricao: "Reunião ___ 14h. (A) as (B) às [Resposta: às]",
+              },
+              {
+                icone: "📝",
+                title: "Q6: Casa Especificada",
+                descricao: "Fui ___ casa da vovó. (A) a (B) à [Resposta: à]",
+              },
+            ]}
+          />
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={3} title="Macetes Finais: Dicas de Ouro" variant={mv[10]} />
+          <AlertBox tipo="info" titulo="Dicas Cruciais para Acertar Crase">
+            <div className="space-y-3">
+              <p>
+                <strong>1. Equação é Lei:</strong> A + A = À. Se falta, não há crase. Ponto.
+              </p>
+              <p>
+                <strong>2. Teste do Masculino é Ouro:</strong> 95% das questões resolvem com esse teste.
+              </p>
+              <p>
+                <strong>3. Verbos e Pronomes Pessoais = Nunca Crase:</strong> Memorizados? Acertados!
+              </p>
+              <p>
+                <strong>4. Horas e Demonstrativos Aquele = Sempre Crase:</strong> Fácil de lembrar.
+              </p>
+              <p>
+                <strong>5. Especificação Muda Tudo:</strong> Casa genérica (a) vs casa especificada (à).
+              </p>
+              <p>
+                <strong>6. Singular vs Plural Possessivos:</strong> Minha (facultativo) vs minhas (obrigatório).
+              </p>
+              <p>
+                <strong>7. Leia com Atenção:</strong> CESGRANRIO coloca pegadinhas. Casa vs casa da Maria. Hora exata vs aproximada.
+              </p>
+            </div>
+          </AlertBox>
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader index={4} title="Prática Final: 3 Frases Tipo Concurso" variant={mv[10]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <FlipCard
+              pergunta="Conforme referência ___ NBR 13434, procedeu-se ___ implementação"
+              resposta="✅ à / à (NBR = norma fem., implementação = subst. fem.)"
+              opcoes={["a/a", "à/a", "à/à"]}
+            />
+            <FlipCard
+              pergunta="Dirigi-me ___ gerência e entrega ___ diretora"
+              resposta="✅ à / à (gerência e diretora = feminino com artigo)"
+              opcoes={["a/a", "à/à"]}
+            />
+            <FlipCard
+              pergunta="Procedeu-se ___ análise ___ partir de dados"
+              resposta="✅ à / a (análise = subst. fem. com artigo; partir = verbo)"
+              opcoes={["a/a", "à/a", "à/à"]}
+            />
+          </div>
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={5} title="Estratégia Final: Dia da Prova" variant={mv[10]} />
+          <AlertBox tipo="warning" titulo="Na Hora da Prova: Passo a Passo">
+            <ol className="list-decimal list-inside space-y-3">
+              <li>
+                <strong>Leia a frase inteira</strong> — contexto importa.
+              </li>
+              <li>
+                <strong>Identifique categoria:</strong> É hora? Verbo? Pronome? Nomes próprio? Casa? Cada tem regra.
+              </li>
+              <li>
+                <strong>Aplique teste do masculino</strong> (quando aplicável) — se vira AO, há crase.
+              </li>
+              <li>
+                <strong>Se duvidoso, use checklist:</strong> Verbo proíbe? Pronome proíbe? Hora exige? Especificação muda?
+              </li>
+              <li>
+                <strong>Confie na lógica, não em adivinhação</strong> — toda regra tem fundamentação clara.
+              </li>
+              <li>
+                <strong>Em caso de impasse</strong> — marque o que parecer MAIS formal/escrito (CESGRANRIO prefere formas com crase).
+              </li>
+            </ol>
+          </AlertBox>
+        </section>
+
+        <AlertBox tipo="success" titulo="Você Domina Crase Agora!">
+          <p>
+            Parabéns! Você completou os 9 módulos de aprendizado e agora domina as 9 regras de crase de forma sistemática. Na prova, confie na equação A+A=À, use o teste do masculino, identifique categorias (verbo, pronome, hora, casa, etc.) e aplique as regras específicas. Com essa estrutura lógica, você acertará 95% das questões de crase. Vá em frente!
+          </p>
         </AlertBox>
-        <QuizInterativo questoes={quizM10} titulo="Simulado Final" numero={10} variant={mv[10]} onComplete={(s) => handleModuleComplete("modulo-10", s)} />
+
+        <ModuleConsolidation
+          numero={10}
+          titulo="Consolidação Final: Domínio Completo de Crase"
+          topicos={[
+            "Equação: A + A = À (base de tudo)",
+            "Teste do masculino: Vira AO → há crase",
+            "Verbos: Nunca crase (começar a, não 'à')",
+            "Pronomes pessoais: Nunca crase (a ela, não 'à')",
+            "Nomes próprios: Facultativo (a/à Maria)",
+            "Possessivos singular: Facultativo; plural: obrigatório",
+            "Horas: Sempre crase (às 14h, à uma)",
+            "Casa/terra: Genérica (a) vs especificada (à)",
+            "Demonstrativos: Aquele (à) vs este (a)",
+            "Estratégia prova: Leia, identifique, aplique regra",
+          ]}
+          variant={mv[10]}
+        />
+
+        <QuizInterativo
+          questoes={quizM10}
+          titulo="Quiz Final - Módulo 10: Simulado Integrado"
+          numero={10}
+          variant={mv[10]}
+          onComplete={(s) => handleModuleComplete("modulo-10", s)}
+        />
       </TabsContent>
     </AulaTemplate>
   );
