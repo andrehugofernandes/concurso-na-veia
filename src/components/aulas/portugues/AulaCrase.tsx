@@ -1902,19 +1902,40 @@ export default function AulaCrase({
           <ModuleSectionHeader index={5} title="Prática: Casa, Terra, Distância" variant={mv[8]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <FlipCard
-              pergunta="Complete: Vou ___ casa"
-              resposta="✅ a casa (genérica, sem especificação)"
-              opcoes={["a", "à"]}
+              frente={<div className="font-bold text-lg">🏠 CASA GENÉRICA</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-orange-400">Quando não está especificada</p>
+                  <p>A palavra "casa" sozinha (sem artigo ou especificador) não recebe crase. Exemplo: "Vou a casa". É uma situação onde o artigo é OMITIDO, então a crase não ocorre.</p>
+                  <p>✅ "Vou <strong>a</strong> casa" (sem artigo, sem crase)</p>
+                  <p>❌ "Vou <strong>à</strong> casa" (ERRADO neste contexto)</p>
+                  <p className="text-muted-foreground">Casa genérica = sem artigo = sem crase. Regra: omissão de artigo.</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Complete: Vou ___ casa da vovó"
-              resposta="✅ à casa da vovó (especificada, tem artigo)"
-              opcoes={["a", "à"]}
+              frente={<div className="font-bold text-lg">🏘️ CASA ESPECIFICADA</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-green-500">Com artigo ou identificador</p>
+                  <p>Quando "casa" é seguida de especificador (da vovó, do João, daquela esquina), o artigo é EXIGIDO. Logo, há crase. Estrutura: "a" + "a casa da..." = "à casa da...".</p>
+                  <p>✅ "Vou <strong>à</strong> casa da vovó" (especificada, com crase)</p>
+                  <p>✅ "Voltamos <strong>à</strong> casa do trabalho" (especificada, com crase)</p>
+                  <p className="text-muted-foreground">Casa especificada = artigo exigido = crase obrigatória.</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Complete: Voltamos ___ terra natal"
-              resposta="✅ à terra natal (especificada por 'natal')"
-              opcoes={["a", "à"]}
+              frente={<div className="font-bold text-lg">🌍 TERRA E DISTÂNCIA</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-teal-400">Palavras especiais com regras próprias</p>
+                  <p>TERRA: Como "casa", segue a mesma lógica. "À terra natal" (especificada), "a terra" (genérica). DISTÂNCIA: Quando usada com preposição "a", recebe crase se tiver artigo. "À distância" é expressão comum (à distância, à longa distância).</p>
+                  <p>✅ "Voltamos <strong>à</strong> terra natal" (especificada)</p>
+                  <p>✅ "Vemos <strong>à</strong> distância" (expressão de medida)</p>
+                  <p className="text-muted-foreground">Todas as especializações exigem crase!</p>
+                </div>
+              }
             />
           </div>
         </section>
@@ -2116,19 +2137,40 @@ export default function AulaCrase({
           <ModuleSectionHeader index={5} title="Prática: Demonstrativos com Crase" variant={mv[9]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <FlipCard
-              pergunta="Complete: Refiro-me ___ aquele documento"
-              resposta="✅ àquele (demonstrativo remoto + preposição A = crase)"
-              opcoes={["a aquele", "àquele"]}
+              frente={<div className="font-bold text-lg">🔵 DEMONSTRATIVOS REMOTOS</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-blue-500">Aquele, aquela, aquilo</p>
+                  <p>Os demonstrativos remotos (aquele, aquela, aquilo) começam com "a". Quando a preposição "a" está antes deles, há CRASE especial (fusão da preposição com o demonstrativo): "a" + "aquele" = "àquele".</p>
+                  <p>✅ "Refiro-me <strong>àquele</strong> documento" (aquele começa com A)</p>
+                  <p>✅ "Aludi <strong>àquilo</strong> que disseste" (aquilo começa com A)</p>
+                  <p className="text-muted-foreground">Demonstrativo remoto + preposição A = crase (À).</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Complete: Aludi ___ aquilo que disseste"
-              resposta="✅ àquilo (demonstrativo neutro remoto = crase)"
-              opcoes={["a aquilo", "àquilo"]}
+              frente={<div className="font-bold text-lg">🟢 DEMONSTRATIVOS PRÓXIMOS</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-green-500">Este, esse, aquele (próximo)</p>
+                  <p>Os demonstrativos próximos (este, esse, esse aqui) NÃO começam com "a". Logo, quando a preposição "a" os precede, não há fusão — apenas preposição + demonstrativo, sem crase.</p>
+                  <p>✅ "Refiro-me <strong>a</strong> este documento" (este não começa com A)</p>
+                  <p>✅ "Aludi <strong>a</strong> esse ponto" (esse não começa com A)</p>
+                  <p className="text-muted-foreground">Demonstrativo próximo = sem A inicial = sem crase.</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Complete: Refiro-me ___ este documento"
-              resposta="✅ a este (demonstrativo próximo = SEM crase)"
-              opcoes={["a", "à"]}
+              frente={<div className="font-bold text-lg">🔑 REGRA DOS DEMONSTRATIVOS</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-purple-400">Começa com A? Há crase!</p>
+                  <p>A chave para demonstrativos é simples: se o demonstrativo COMEÇA COM "A" (aquele, aquela, aquilo), há crase com a preposição. Se não começa com "a" (este, esse), não há crase.</p>
+                  <p>✅ "Àquele" (inicia com A → crase)</p>
+                  <p>✅ "A este" (não inicia com A → sem crase)</p>
+                  <p className="text-muted-foreground">Teste rápido: Leia a primeira letra do demonstrativo!</p>
+                </div>
+              }
             />
           </div>
         </section>
@@ -2344,19 +2386,40 @@ export default function AulaCrase({
           <ModuleSectionHeader index={4} title="Prática Final: 3 Frases Tipo Concurso" variant={mv[10]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <FlipCard
-              pergunta="Conforme referência ___ NBR 13434, procedeu-se ___ implementação"
-              resposta="✅ à / à (NBR = norma fem., implementação = subst. fem.)"
-              opcoes={["a/a", "à/a", "à/à"]}
+              frente={<div className="font-bold text-lg">📋 FRASE PETROBRAS 1</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-emerald-400">Documentos e normas técnicas</p>
+                  <p>"Conforme referência __À__ NBR 13434, procedeu-se __À__ implementação"</p>
+                  <p>Análise: "referência à" (nome + artigo = crase). "procedeu-se à" (verbo que exige "a" + artigo = crase).</p>
+                  <p>✅ <strong>À / À</strong> (ambas as preposições exigem artigo feminino)</p>
+                  <p className="text-muted-foreground">Dica: Duas crase seguidas exigem análise dupla!</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Dirigi-me ___ gerência e entrega ___ diretora"
-              resposta="✅ à / à (gerência e diretora = feminino com artigo)"
-              opcoes={["a/a", "à/à"]}
+              frente={<div className="font-bold text-lg">👥 FRASE PETROBRAS 2</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-blue-400">Pessoas e cargos</p>
+                  <p>"Dirigi-me __À__ gerência e entrega __À__ diretora"</p>
+                  <p>Análise: "dirigir-se à" (verbo exigindo A) + "gerência" (fem. com artigo). "entrega à" (nome exigindo A) + "diretora" (fem. com artigo).</p>
+                  <p>✅ <strong>À / À</strong> (ambas exigem preposição + artigo feminino)</p>
+                  <p className="text-muted-foreground">Coordenação de crase em listas Petrobras é frequente!</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Procedeu-se ___ análise ___ partir de dados"
-              resposta="✅ à / a (análise = subst. fem. com artigo; partir = verbo)"
-              opcoes={["a/a", "à/a", "à/à"]}
+              frente={<div className="font-bold text-lg">⚙️ FRASE PETROBRAS 3</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-purple-400">Análise mista: crase + sem crase</p>
+                  <p>"Procedeu-se __À__ análise __A__ partir de dados"</p>
+                  <p>Análise: "procedeu-se à" (verbo que exige A + "análise" feminina com artigo = crase). "a partir" (preposição "a" + verbo "partir" infinitivo, sem artigo = sem crase).</p>
+                  <p>✅ <strong>À / A</strong> (primeira crase, segunda sem crase)</p>
+                  <p className="text-muted-foreground">CESGRANRIO testa capacidade de diferenciar verbo (sem crase) de substantivo (com crase)!</p>
+                </div>
+              }
             />
           </div>
         </section>
