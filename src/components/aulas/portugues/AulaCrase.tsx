@@ -1,6 +1,6 @@
 "use client";
 
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getAllModuleVariants, getModuleVariant } from "@/lib/moduleColors";
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
@@ -354,17 +354,17 @@ export default function AulaCrase({
 
         {/* ★ MODULE CONSOLIDATION */}
         <ModuleConsolidation
-          numero={1}
-          titulo="Consolidação: Conceito e Regra Geral"
-          topicos={[
-            "Crase é A (preposição) + A (artigo/demonstrativo) = À",
-            "Sempre verifique DOIS elementos: preposição e artigo",
-            "Se falta um deles, não há crase — ponto final",
-            "Macete do teste do masculino funciona aqui",
-            "Regência verbal exige que você memorize quais verbos levam 'a'",
-            "Crase obrigatória não tem alternativa",
-          ]}
+          index={1}
           variant={mv[1]}
+          video={{ videoId: "CRASE_01", title: "Crase - Módulo 1: Conceito", duration: "10:00" }}
+          resumoVisual={{
+            moduloNome: "Módulo 1",
+            tituloAula: "Crase",
+            materia: "Português",
+            images: [{ title: "Módulo 1", type: "Resumo", placeholderColor: "bg-blue-100" }],
+          }}
+          maceteVisual={{ title: "Macete M1", content: "A + A = À: Se preposição A + artigo A, há crase." }}
+          audio={{ audioUrl: "#", titulo: "AudioAula 1 - Crase", artista: "Petrobras Quest" }}
         />
 
         {/* ★ QUIZ */}
@@ -577,17 +577,17 @@ export default function AulaCrase({
         </AlertBox>
 
         <ModuleConsolidation
-          numero={2}
-          titulo="Consolidação: Teste do Masculino"
-          topicos={[
-            "Teste do masculino é a técnica mais confiável para identificar crase",
-            "Substitua a palavra feminina por um equivalente masculino",
-            "Vira AO → há crase (À)",
-            "Continua A → sem crase (A)",
-            "Funciona em 95% dos casos",
-            "Use criatividade quando não há equivalente direto (sinônimos, palavras compatíveis)",
-          ]}
+          index={2}
           variant={mv[2]}
+          video={{ videoId: "CRASE_02", title: "Crase - Módulo 2: Teste Masculino", duration: "10:00" }}
+          resumoVisual={{
+            moduloNome: "Módulo 2",
+            tituloAula: "Crase",
+            materia: "Português",
+            images: [{ title: "Módulo 2", type: "Resumo", placeholderColor: "bg-amber-100" }],
+          }}
+          maceteVisual={{ title: "Macete M2", content: "AO no masculino? Tem crase no feminino (À)!" }}
+          audio={{ audioUrl: "#", titulo: "AudioAula 2 - Crase", artista: "Petrobras Quest" }}
         />
 
         <QuizInterativo
@@ -774,17 +774,17 @@ export default function AulaCrase({
         </AlertBox>
 
         <ModuleConsolidation
-          numero={3}
-          titulo="Consolidação: Verbos Proíbem Crase"
-          topicos={[
-            "VERBOS NUNCA ACEITAM ARTIGO",
-            "Estrutura: A + Verbo = A (sem crase)",
-            "Estrutura: A + Substantivo = À (com crase)",
-            "Verbos comuns: começar a, passar a, procedeu a, aprender a",
-            "Cuidado com adjetivos + verbos (sem crase)",
-            "Sempre verifique se o que vem depois é VERBO ou SUBSTANTIVO",
-          ]}
+          index={3}
           variant={mv[3]}
+          video={{ videoId: "CRASE_03", title: "Crase - Módulo 3: Verbos", duration: "10:00" }}
+          resumoVisual={{
+            moduloNome: "Módulo 3",
+            tituloAula: "Crase",
+            materia: "Português",
+            images: [{ title: "Módulo 3", type: "Resumo", placeholderColor: "bg-emerald-100" }],
+          }}
+          maceteVisual={{ title: "Macete M3", content: "Antes de VERBO: crase é sempre proibida." }}
+          audio={{ audioUrl: "#", titulo: "AudioAula 3 - Crase", artista: "Petrobras Quest" }}
         />
 
         <QuizInterativo
@@ -968,17 +968,17 @@ export default function AulaCrase({
         </AlertBox>
 
         <ModuleConsolidation
-          numero={4}
-          titulo="Consolidação: Pronomes Pessoais"
-          topicos={[
-            "PRONOMES PESSOAIS NUNCA ACEITAM ARTIGO",
-            "Estrutura: A + Pronome = A (sem crase)",
-            "Pronomes reto: eu, tu, ele, ela, nós, vós, eles, elas",
-            "Pronomes oblíquos: mim, ti, si, me, te, se",
-            "Pronomes tratamento: você, Vossa Majestade (comportam-se como pronomes)",
-            "Diferença: pronomes (sem crase) vs nomes (com crase)",
-          ]}
+          index={4}
           variant={mv[4]}
+          video={{ videoId: "CRASE_04", title: "Crase - Módulo 4: Pronomes", duration: "10:00" }}
+          resumoVisual={{
+            moduloNome: "Módulo 4",
+            tituloAula: "Crase",
+            materia: "Português",
+            images: [{ title: "Módulo 4", type: "Resumo", placeholderColor: "bg-rose-100" }],
+          }}
+          maceteVisual={{ title: "Macete M4", content: "Antes de PRONOME pessoal: sempre sem crase." }}
+          audio={{ audioUrl: "#", titulo: "AudioAula 4 - Crase", artista: "Petrobras Quest" }}
         />
 
         <QuizInterativo
@@ -1176,17 +1176,17 @@ export default function AulaCrase({
         </AlertBox>
 
         <ModuleConsolidation
-          numero={5}
-          titulo="Consolidação: Nomes Próprios"
-          topicos={[
-            "Crase é FACULTATIVA antes de nomes próprios femininos simples",
-            "Ambas formas são corretas: a/à Maria, a/à Bahia",
-            "Quando nome é ESPECIFICADO, crase é OBRIGATÓRIA",
-            "Especificação = adjetivo, adjunto, aposição, sobrenome",
-            "à Maria do Carmo (obrigatória)",
-            "Em prova, escolha o contexto e aplique regra de especificação",
-          ]}
+          index={5}
           variant={mv[5]}
+          video={{ videoId: "CRASE_05", title: "Crase - Módulo 5: Nomes Próprios", duration: "10:00" }}
+          resumoVisual={{
+            moduloNome: "Módulo 5",
+            tituloAula: "Crase",
+            materia: "Português",
+            images: [{ title: "Módulo 5", type: "Resumo", placeholderColor: "bg-violet-100" }],
+          }}
+          maceteVisual={{ title: "Macete M5", content: "Nome próprio feminino: a/à Maria — ambas corretas." }}
+          audio={{ audioUrl: "#", titulo: "AudioAula 5 - Crase", artista: "Petrobras Quest" }}
         />
 
         <QuizInterativo
@@ -1380,17 +1380,17 @@ export default function AulaCrase({
         </AlertBox>
 
         <ModuleConsolidation
-          numero={6}
-          titulo="Consolidação: Possessivos Femininos"
-          topicos={[
-            "SINGULAR: crase FACULTATIVA (a minha / à minha)",
-            "PLURAL: crase OBRIGATÓRIA (às minhas)",
-            "Essa diferença é crítica — muitos candidatos erram",
-            "Possessivos singulares: minha, sua, tua, nossa (facultativo)",
-            "Possessivos plurais: minhas, suas, tuas, nossas (obrigatório)",
-            "Em prova, sempre identifique singular vs plural",
-          ]}
+          index={6}
           variant={mv[6]}
+          video={{ videoId: "CRASE_06", title: "Crase - Módulo 6: Possessivos", duration: "10:00" }}
+          resumoVisual={{
+            moduloNome: "Módulo 6",
+            tituloAula: "Crase",
+            materia: "Português",
+            images: [{ title: "Módulo 6", type: "Resumo", placeholderColor: "bg-orange-100" }],
+          }}
+          maceteVisual={{ title: "Macete M6", content: "Possessivo singular = facultativo; plural = obrigatório." }}
+          audio={{ audioUrl: "#", titulo: "AudioAula 6 - Crase", artista: "Petrobras Quest" }}
         />
 
         <QuizInterativo
@@ -1578,17 +1578,17 @@ export default function AulaCrase({
         </AlertBox>
 
         <ModuleConsolidation
-          numero={7}
-          titulo="Consolidação: Horas e Medidas"
-          topicos={[
-            "HORAS EXATAS = CRASE OBRIGATÓRIA",
-            "Plural: Às 14h, às 9 horas (ÀS)",
-            "Singular: À uma hora, à uma da tarde (À)",
-            "Hora aproximada: por volta DAS (não é crase, é preposição 'de')",
-            "Expressões de medida: À vista, à proporção de, à distância de",
-            "Em prova, hora = crase sempre (não há exceção)",
-          ]}
+          index={7}
           variant={mv[7]}
+          video={{ videoId: "CRASE_07", title: "Crase - Módulo 7: Horas", duration: "10:00" }}
+          resumoVisual={{
+            moduloNome: "Módulo 7",
+            tituloAula: "Crase",
+            materia: "Português",
+            images: [{ title: "Módulo 7", type: "Resumo", placeholderColor: "bg-cyan-100" }],
+          }}
+          maceteVisual={{ title: "Macete M7", content: "Hora exata? Crase obrigatória. Às 14h, à 1h." }}
+          audio={{ audioUrl: "#", titulo: "AudioAula 7 - Crase", artista: "Petrobras Quest" }}
         />
 
         <QuizInterativo
@@ -1775,17 +1775,17 @@ export default function AulaCrase({
         </AlertBox>
 
         <ModuleConsolidation
-          numero={8}
-          titulo="Consolidação: Casa, Terra, Distância"
-          topicos={[
-            "Casa/terra GENÉRICAS: SEM crase (a casa, a terra)",
-            "Casa/terra ESPECIFICADAS: COM crase (à casa da Maria, à terra natal)",
-            "Especificação = adjunto, aposição, adjetivo que modifica",
-            "Distância: À distância de... (crase com preposição a)",
-            "Regra de especificação é crítica — CESGRANRIO cobra frequentemente",
-            "Sempre verifique se há especificador (de quem? qual?)",
-          ]}
+          index={8}
           variant={mv[8]}
+          video={{ videoId: "CRASE_08", title: "Crase - Módulo 8: Casa Terra", duration: "10:00" }}
+          resumoVisual={{
+            moduloNome: "Módulo 8",
+            tituloAula: "Crase",
+            materia: "Português",
+            images: [{ title: "Módulo 8", type: "Resumo", placeholderColor: "bg-teal-100" }],
+          }}
+          maceteVisual={{ title: "Macete M8", content: "Casa/Terra genérica = sem crase; especificada = com crase." }}
+          audio={{ audioUrl: "#", titulo: "AudioAula 8 - Crase", artista: "Petrobras Quest" }}
         />
 
         <QuizInterativo
@@ -1989,17 +1989,17 @@ export default function AulaCrase({
         </AlertBox>
 
         <ModuleConsolidation
-          numero={9}
-          titulo="Consolidação: Demonstrativos"
-          topicos={[
-            "AQUELE, AQUELA, AQUILO → ÀQUELE, ÀQUELA, ÀQUILO (sempre com crase)",
-            "ESTE, ESTA, ISTO → A ESTE, A ESTA, A ISTO (sem crase)",
-            "Fusão demonstrativo é especial (preposição funde com demonstrativo)",
-            "Teste: Refiro-me → Àquele (remoto, crase) vs A este (próximo, sem crase)",
-            "Em prova, identifique tipo de demonstrativo",
-            "CESGRANRIO adora colocar este/aquele juntos para testar diferença",
-          ]}
+          index={9}
           variant={mv[9]}
+          video={{ videoId: "CRASE_09", title: "Crase - Módulo 9: Demonstrativos", duration: "10:00" }}
+          resumoVisual={{
+            moduloNome: "Módulo 9",
+            tituloAula: "Crase",
+            materia: "Português",
+            images: [{ title: "Módulo 9", type: "Resumo", placeholderColor: "bg-indigo-100" }],
+          }}
+          maceteVisual={{ title: "Macete M9", content: "Àquele/Àquela/Àquilo: crase sempre (a + aquele)." }}
+          audio={{ audioUrl: "#", titulo: "AudioAula 9 - Crase", artista: "Petrobras Quest" }}
         />
 
         <QuizInterativo
@@ -2245,21 +2245,17 @@ export default function AulaCrase({
         </AlertBox>
 
         <ModuleConsolidation
-          numero={10}
-          titulo="Consolidação Final: Domínio Completo de Crase"
-          topicos={[
-            "Equação: A + A = À (base de tudo)",
-            "Teste do masculino: Vira AO → há crase",
-            "Verbos: Nunca crase (começar a, não 'à')",
-            "Pronomes pessoais: Nunca crase (a ela, não 'à')",
-            "Nomes próprios: Facultativo (a/à Maria)",
-            "Possessivos singular: Facultativo; plural: obrigatório",
-            "Horas: Sempre crase (às 14h, à uma)",
-            "Casa/terra: Genérica (a) vs especificada (à)",
-            "Demonstrativos: Aquele (à) vs este (a)",
-            "Estratégia prova: Leia, identifique, aplique regra",
-          ]}
+          index={10}
           variant={mv[10]}
+          video={{ videoId: "CRASE_10", title: "Crase - Módulo 10: Simulado", duration: "10:00" }}
+          resumoVisual={{
+            moduloNome: "Módulo 10",
+            tituloAula: "Crase",
+            materia: "Português",
+            images: [{ title: "Módulo 10", type: "Resumo", placeholderColor: "bg-slate-100" }],
+          }}
+          maceteVisual={{ title: "Macete M10", content: "Domine a equação e o teste do masculino: 95% resolvidas." }}
+          audio={{ audioUrl: "#", titulo: "AudioAula 10 - Crase", artista: "Petrobras Quest" }}
         />
 
         <QuizInterativo

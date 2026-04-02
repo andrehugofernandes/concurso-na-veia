@@ -3295,10 +3295,129 @@ export default function AulaReescritaFrases({
           variant={mv[10]}
         />
 
+        {/* ★ RICH INTRO SECTION - Módulo 10 */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Síntese da Maestria Linguística"
+          variant={mv[10]}
+        />
+          
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            {/* PARÁGRAFO 1: CONCEITO CIENTÍFICO */}
+            <p>
+              A maestria em reescrita constitui-se como competência 
+              metalinguística que integra conhecimento gramatical, 
+              sensibilidade semântica e capacidade de transposição 
+              estrutural. Segundo teorias da linguística aplicada, 
+              a reescrita eficaz exige domínio de três sistemas 
+              interdependentes: <strong>equivalência semântica</strong> 
+              (preservação do sentido nuclear), <strong>adequação 
+              sintática</strong> (conformidade estrutural), e 
+              <strong>compatibilidade pragmática</strong> (adequação 
+              ao contexto e registro). A avaliação final testa a 
+              capacidade de integrar todas as técnicas estudadas — 
+              paráfrase, sinonímia, transposição vocal, discurso 
+              reportado, nominalização, conectividade, concessão, 
+              pontuação semântica e identificação de pegadinhas.
+            </p>
+
+            {/* PARÁGRAFO 2: EXPLICAÇÃO INTUITIVA */}
+            <p>
+              Em outras palavras, a arena de elite é como o palco 
+              principal onde você apresenta todas as técnicas aprendidas. 
+              É como um chef mestre que deve dominar não apenas cortes 
+              básicos, mas também temperos, técnicas de cozimento, 
+              apresentação e harmonização de sabores. Cada questão 
+              final exige combinação de múltiplas habilidades: 
+              reconhecer que "malgrado a modernidade" é concessivo, 
+              que "são necessários" é passiva sintética, que "modernidade" 
+              é nominalização, e que tudo isso mantém o sentido original. 
+              Não basta saber as técnicas isoladamente — preciso 
+              integrá-las em performance coesa.
+            </p>
+
+            {/* PARÁGRAFO 3: REGRAS E TÉCNICAS */}
+            <p>
+              As técnicas de reescrita avançada fundamentam-se em 
+              princípios de integração sistemática: <strong>preservação 
+              do núcleo semântico</strong> (identificar o que é essencial 
+              e não pode ser alterado), <strong>domínio da transposição 
+              multimodal</strong> (combinar mudanças de voz, tempo, modo, 
+              e estrutura simultaneamente), e <strong>controle da 
+              complexidade</strong> (saber quando simplificar ou 
+              complexificar sem perder o sentido). As questões finais 
+              frequentemente exigem reescritas que combinam: 
+              concessão + nominalização ("malgrado a modernidade"), 
+              correlação + adição ("não só... mas também" → "e"), 
+              ou identificação de erros sutis (mudança de modo verbal 
+              que altera certeza vs hipótese).
+            </p>
+
+            {/* PARÁGRAFO 4: CONTEXTO PETROBRAS */}
+            <p>
+              No ambiente técnico da Petrobras, a reescrita de elite 
+              manifesta-se em elaboração de documentos complexos que 
+              integram múltiplas informações. Um relatório executivo 
+              pode exigir transformar "Embora a plataforma seja moderna, 
+              precisa de ajustes" em "Malgrado a modernidade da plataforma, 
+              ajustes são necessários" — combinando concessão, 
+              nominalização e passiva sintética. Em comunicados 
+              institucionais, a capacidade de reestruturar informações 
+              mantendo precisão técnica é essencial para clareza 
+              e autoridade. A maestria linguística reflete competência 
+              técnica — quem domina a reescrita demonstra capacidade 
+              de análise crítica e comunicação eficaz.
+            </p>
+
+            {/* PARÁGRAFO 5: PEGADINHAS CESGRANRIO */}
+            <p>
+              A CESGRANRIO explora sistematicamente a capacidade de 
+              integração através de questões que testam múltiplas 
+              técnicas simultaneamente. As armadilhas finais incluem: 
+              reescritas que parecem corretas mas extrapolam sentido 
+              (adicionar "excelente qualidade" onde não existe), 
+              mudanças sutis de modo verbal que alteram certeza 
+              ("faria" vs "fará"), e combinações complexas que exigem 
+             识别 de cada elemento transformado. O examinando deve 
+              desenvolver capacidade de análise multicamadas — 
+              identificar o que mudou, se a mudança é válida, e 
+              se o sentido original foi preservado. Erros comuns 
+              incluem focar em apenas um aspecto da reescrita e 
+              ignorar outros elementos alterados.
+            </p>
+
+            {/* CAIXA DE DESTAQUE: Arena Final */}
+            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-950/30 dark:to-indigo-950/30 rounded-lg border border-purple-200 dark:border-purple-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">O Check-list da Maestria</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🎯</div>
+                  <strong>Sentido Preservado?</strong>
+                  <p>Verifique núcleo<br/>semântico intacto<br/>Sem extrapolações</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">⚙️</div>
+                  <strong>Estrutura Correta?</strong>
+                  <p>Concordância<br/>Regência<br/>Modo e tempo</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🏆</div>
+                  <strong>Nível Elite?</strong>
+                  <p>Técnicas combinadas<br/>Complexidade controlada<br/>Precisão técnica</p>
+                </div>
+              </div>
+              <div className="mt-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded text-sm">
+                <strong>Regra Final:</strong> Se a reescrita parece "fácil demais", provavelmente há pegadinha. Se parece "complexa demais", verifique se é necessária.
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="Revisão Express — Todas as Técnicas"
           variant={mv[10]}
         />
