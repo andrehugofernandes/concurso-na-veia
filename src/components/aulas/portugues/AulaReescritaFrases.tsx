@@ -2959,10 +2959,120 @@ export default function AulaReescritaFrases({
           variant={mv[9]}
         />
 
+        {/* ★ RICH INTRO SECTION - Módulo 9 */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Anatomia das Pegadinhas da Banca"
+          variant={mv[9]}
+        />
+          
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            {/* PARÁGRAFO 1: CONCEITO CIENTÍFICO */}
+            <p>
+              As pegadinhas linguísticas constituem-se como fenômenos de 
+              interferência semântica que exploram limitações cognitivas do 
+              processamento textual. Segundo pesquisas em psicolinguística, 
+              a banca CESGRANRIO explora sistematicamente vieses de 
+              proximidade fonética, analogia malformada e interferência 
+              de registros. Os erros mais frequentes envolvem trocas 
+              paronímicas (onde/aonde), confusão entre conectivos 
+              polissêmicos (conquanto/contanto que), e violação de 
+              concordância em verbos impessoais (fazer tempo). Estas 
+              estratégias avaliam não apenas conhecimento gramatical, 
+              mas sensibilidade para distinções sutis que diferenciam 
+              candidatos medianos de exemplares.
+            </p>
+
+            {/* PARÁGRAFO 2: EXPLICAÇÃO INTUITIVA */}
+            <p>
+              Em outras palavras, as pegadinhas são como minas terrestres 
+              linguísticas — parecem inofensivas mas explodem quando você 
+              menos espera. "Onde" vs "aonde" é como confundir "parado" 
+              com "andando" — um é lugar fixo, outro é movimento. 
+              "Conquanto" vs "contanto que" é como trocar "embora" por 
+              "se" — um admite o obstáculo, outro estabelece condição. 
+              "Faz anos" vs "fazem anos" é como pensar que o tempo 
+              tem plural — tempo é abstrato, não conta. A banca não 
+              testa gramática, testa atenção aos detalhes que fazem 
+              toda diferença entre correção e erro sutil.
+            </p>
+
+            {/* PARÁGRAFO 3: REGRAS E TÉCNICAS */}
+            <p>
+              As técnicas de identificação de pegadinhas fundamentam-se em 
+              três princípios: <strong>análise de regência</strong> (onde 
+              exige lugar estático, aonde exige movimento), 
+              <strong>distinção semântica de conectivos</strong> (conquanto 
+              = concessivo, contanto que = condicional), e <strong>reconhecimento 
+              de impessoalidade</strong> (verbos como fazer, chover, nevar 
+              não têm sujeito, permanecem no singular). Outras armadilhas 
+              clássicas incluem substituição de "que" por "o qual" para 
+              evitar repetição, e identificação de "ao passo que" como 
+              expressão de proporcionalidade ou contraste simultâneo. 
+              O examinando deve desenvolver radar para estas sutilezas.
+            </p>
+
+            {/* PARÁGRAFO 4: CONTEXTO PETROBRAS */}
+            <p>
+              No ambiente técnico da Petrobras, estas distinções são cruciais 
+              para precisão documental. "A plataforma onde ocorreu o vazamento" 
+              (correto) vs "A plataforma aonde ocorreu o vazamento" (incorreto) 
+              — plataformas são lugares fixos, não se movem para lugar algum. 
+              Em relatórios de processo, "Conquanto as normas sejam rigorosas, 
+              os procedimentos devem ser seguidos" (concessão) vs "Contanto que 
+              as normas sejam rigorosas, os procedimentos devem ser seguidos" 
+              (condição). A precisão linguística reflete precisão técnica — 
+              pequenos erros podem indicar grandes falhas de compreensão 
+              operacional.
+            </p>
+
+            {/* PARÁGRAFO 5: PEGADINHAS CESGRANRIO */}
+            <p>
+              A CESGRANRIO explora sistematicamente estas armadilhas através 
+              de questões que testam atenção aos detalhes. As pegadinhas 
+              mais frequentes incluem: troca de "onde" por "aonde" em 
+              contextos estáticos, confusão entre "conquanto" (concessivo) 
+              e "contanto que" (condicional), tentativa de concordância 
+              com verbos impessoais ("fazem anos"), substituição inadequada 
+              de "que" por "cujo", e má interpretação de "ao passo que" 
+              como simples temporalidade. O candidato deve desenvolver 
+              sensibilidade para identificar quando uma substituição 
+              altera sutilmente o sentido ou viola regras gramaticais 
+              fundamentais.
+            </p>
+
+            {/* CAIXA DE DESTAQUE: Laboratório de Pegadinhas */}
+            <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 rounded-lg border border-red-200 dark:border-red-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">O Arsenal da Banca</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="text-center">
+                  <div className="text-2xl mb-2">📍</div>
+                  <strong>Onde vs Aonde</strong>
+                  <p>Onde = Lugar fixo<br/>Aonde = Movimento<br/>"A casa onde moro"</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🔄</div>
+                  <strong>Conquanto vs Contanto</strong>
+                  <p>Conquanto = Embora<br/>Contanto = Se<br/>"Conquanto chova, vou"</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">⏰</div>
+                  <strong>Fazer Tempo</strong>
+                  <p>Sempre singular<br/>"Faz anos", não "fazem"<br/>Verbo impessoal</p>
+                </div>
+              </div>
+              <div className="mt-4 p-3 bg-red-100 dark:bg-red-900/30 rounded text-sm">
+                <strong>Regra de Sobrevivência:</strong> Se a troca parece fácil demais, provavelmente é pegadinha. Desconfie de substituições diretas sem análise.
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="Padrões de Elite — As Trocas Favoritas da Banca"
           variant={mv[9]}
         />
