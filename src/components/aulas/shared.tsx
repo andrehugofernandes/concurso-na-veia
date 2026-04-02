@@ -859,7 +859,7 @@ export function FlipCard({
         {/* ── VERSO ── */}
         <div
           className={cn(
-            "absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)]",
+            "absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] [transform-style:flat]",
             "bg-white dark:bg-[#0a0a0a] border-2 border-primary/30",
             "rounded-3xl p-6 md:p-8 flex flex-col shadow-2xl",
             "backdrop-blur-xl",
@@ -2663,6 +2663,20 @@ export function StickyModuleNav({
       if (!navRef.current) return;
       const rect = navRef.current.getBoundingClientRect();
       const headerHeight = window.innerWidth >= 768 ? 80 : 64;
+      const scrollY = window.scrollY;
+
+      // DEBUG: log every 5th scroll event to avoid flooding
+      if (Math.round(scrollY) % 50 < 5) {
+        console.log("[sticky-debug]", {
+          rectTop: Math.round(rect.top),
+          headerHeight,
+          threshold: headerHeight + 5,
+          scrollY: Math.round(scrollY),
+          willPin: rect.top <= headerHeight + 5,
+          navPosition: window.getComputedStyle(navRef.current).position,
+          navTop: window.getComputedStyle(navRef.current).top,
+        });
+      }
 
       if (rect.top <= headerHeight + 5) {
         setIsStickyNavPinned(true);
@@ -2693,12 +2707,10 @@ export function StickyModuleNav({
             ? "top-16 md:top-20"
             : "top-0"
           : "top-0",
-        // Breakout: preenche toda a área de conteúdo (Viewport - Sidebar)
-        // Mobile: 100vw (sidebar hidden quando sticky → w-full do viewport)
-        // Desktop: calc(100vw - sidebar) + margin negativo para compensar padding do parent
-        "w-[100vw] md:w-[calc(100vw-var(--sidebar-width,256px))]",
-        // Margin negativo para breakout do padding do parent (centraliza edge-to-edge)
-        "-ml-2 sm:-ml-4 md:ml-[calc(-1*((100vw-var(--sidebar-width,256px))-100%)/2)]",
+        // Breakout edge-to-edge pixel-perfect: largura = 100% do parent + 16px (px-2 do main)
+        // Usamos -mx-2 para encostar na sidebar (esquerda) e na borda do dispositivo (direita) no mobile
+        "w-[calc(100%+1rem)] md:w-[calc(100vw-var(--sidebar-width,256px))]",
+        "-mx-2 md:ml-[calc(-1*((100vw-var(--sidebar-width,256px))-100%)/2)]",
       )}
     >
       {/* Inner nav bar — background, blur, border live here */}
@@ -2713,24 +2725,26 @@ export function StickyModuleNav({
         {/* Inner Content Wrapper — Ocupa largura total disponível */}
         <div className="w-full">
           {/* ── MOBILE: apenas module tabs + setas (altura original) ── */}
-          <div className="md:hidden flex items-center gap-2 px-0 w-full">
+          <div className="md:hidden flex items-center gap-1 px-2 w-full">
             {/* Seta esquerda */}
             <button
               onClick={slideLeft}
               disabled={!canGoLeft}
               aria-label="Módulos anteriores"
               className={cn(
-                "w-8 h-8 shrink-0 flex items-center justify-center rounded-xl border transition-all duration-200",
-                canGoLeft
-                  ? "border-border/50 bg-background text-foreground/80 shadow-sm"
-                  : "border-transparent bg-transparent text-transparent pointer-events-none",
+                "w-7 h-7 shrink-0 flex items-center justify-center rounded-lg border transition-all duration-200",
+                isCarouselMode
+                  ? canGoLeft
+                    ? "border-border/50 bg-background text-foreground/80 shadow-sm"
+                    : "border-border/20 bg-background/50 text-muted-foreground/30"
+                  : "hidden",
               )}
             >
               <LuChevronLeft className="w-4 h-4" />
             </button>
 
             {/* TabsList mobile — só as TabsTriggers (compact mode com tooltip) */}
-            <TabsList className="flex flex-1 h-auto p-1 bg-muted/20 border border-border/10 rounded-2xl gap-1 shadow-inner min-w-0">
+            <TabsList className="flex flex-1 h-auto p-1 bg-muted/30 dark:bg-muted/10 border border-transparent dark:border-border/30 rounded-2xl gap-1 shadow-inner min-w-0">
               {modules.map((mod, index) => {
                 const isVisible =
                   index >= effectiveStart && index < effectiveStart + PAGE_SIZE;
@@ -2741,7 +2755,7 @@ export function StickyModuleNav({
                         <TabsTrigger
                           value={mod.id}
                           className={cn(
-                            "flex-1 py-2 px-1.5 rounded-lg border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
+                            "flex-1 py-2 px-1.5 rounded-lg border border-transparent dark:border-border/50 shadow-md dark:shadow-none border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary data-[state=active]:dark:border-border/80 disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
                             !isVisible && "hidden",
                           )}
                         >
@@ -2779,10 +2793,12 @@ export function StickyModuleNav({
               disabled={!canGoRight}
               aria-label="Próximos módulos"
               className={cn(
-                "w-8 h-8 shrink-0 flex items-center justify-center rounded-xl border transition-all duration-200",
-                canGoRight
-                  ? "border-border/50 bg-background text-foreground/80 shadow-sm"
-                  : "border-transparent bg-transparent text-transparent pointer-events-none",
+                "w-7 h-7 shrink-0 flex items-center justify-center rounded-lg border transition-all duration-200",
+                isCarouselMode
+                  ? canGoRight
+                    ? "border-border/50 bg-background text-foreground/80 shadow-sm"
+                    : "border-border/20 bg-background/50 text-muted-foreground/30"
+                  : "hidden",
               )}
             >
               <LuChevronRight className="w-4 h-4" />
@@ -2891,7 +2907,7 @@ export function StickyModuleNav({
                     key={mod.id}
                     value={mod.id}
                     className={cn(
-                      "flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group",
+                      "flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border border-transparent dark:border-border/40 shadow-sm dark:shadow-none border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary data-[state=active]:dark:border-border/60 disabled:opacity-40 disabled:cursor-not-allowed group",
                       !isVisible && "hidden",
                     )}
                   >
