@@ -1,6 +1,6 @@
 "use client";
 
-import { getAllModuleVariants, getModuleVariant } from "@/lib/moduleColors";
+import { getAllModuleVariants } from "@/lib/moduleColors";
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
@@ -45,7 +45,7 @@ import {
  * Versão: 2.0 (2000+ linhas, 10 módulos completos)
  */
 
-const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
+const mv = [undefined, ...getAllModuleVariants()] as any;
 
 export default function AulaCrase({
   titulo,
@@ -54,12 +54,9 @@ export default function AulaCrase({
   materiaNome,
   materiaCor,
   materiaId,
-  prevTopico,
-  nextTopico,
   onComplete,
   isCompleted,
   loading,
-  xpGanho = 50,
   currentProgress = 0,
   onUpdateProgress,
 }: AulaProps) {
