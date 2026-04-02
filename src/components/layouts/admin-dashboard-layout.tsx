@@ -142,7 +142,7 @@ function DashboardShell({
       style={
         {
           "--sidebar-width": shouldHideSidebar
-            ? "24px" // px-6 equivalente → centraliza barra de progresso pixel-perfect (170px = 340÷2)
+            ? "0px"
             : isSidebarCollapsed
               ? isMobile
                 ? "56px"

@@ -2693,9 +2693,12 @@ export function StickyModuleNav({
             ? "top-16 md:top-20"
             : "top-0"
           : "top-0",
-        // Mobile: w-full (preenche viewport width)
-        // Desktop: w-[calc(100vw-var(--sidebar-width))] para ocupar viewport - sidebar width
-        "w-full md:w-[calc(100vw-var(--sidebar-width,256px))] md:left-[var(--sidebar-width,256px)]",
+        // Breakout: preenche toda a área de conteúdo (Viewport - Sidebar)
+        // Mobile: 100vw (sidebar hidden quando sticky → w-full do viewport)
+        // Desktop: calc(100vw - sidebar) + margin negativo para compensar padding do parent
+        "w-[100vw] md:w-[calc(100vw-var(--sidebar-width,256px))]",
+        // Margin negativo para breakout do padding do parent (centraliza edge-to-edge)
+        "-ml-2 sm:-ml-4 md:ml-[calc(-1*((100vw-var(--sidebar-width,256px))-100%)/2)]",
       )}
     >
       {/* Inner nav bar — background, blur, border live here */}
