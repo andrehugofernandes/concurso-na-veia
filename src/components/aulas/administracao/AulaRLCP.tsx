@@ -765,14 +765,14 @@ export default function AulaRLCP(props: AulaProps) {
                   conteudo: (
                     <div className="space-y-4">
                       <ul className="list-disc pl-5 space-y-2">
-                        <li><strong>Menor Preço:</strong> Comprou caneta, resma de papel de escritório ou luva de EPI comum de vitrine? Critério absoluto: menor cifrão ganha sem debate.</li>
-                        <li><strong>Técnica e Preço:</strong> Comprou Projeto Inédito de Plataforma SS? O que pesa é o intelecto da engenheira que assina e o método físico para flutuação das vigas; aqui o preço é só metade (ou menos) da equação do ranking ponderado do Edital!</li>
+                        <li><strong>Menor Preço:</strong> Para itens comuns (canetas, EPIs), o cifrão é o rei absoluto. Ganha quem gastar menos da Petrobras.</li>
+                        <li><strong>Técnica e Preço:</strong> Para serviços complexos (Engenharia SS), o cérebro vale tanto quanto a carteira, conforme o Edital.</li>
                       </ul>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Exceções: Habilitação e Balanços",
+                  titulo: "Exceções: Habilitação e Microempresas",
                   icone: <LuSearch />,
                   conteudo: (
                     <div className="space-y-4">
@@ -786,168 +786,166 @@ export default function AulaRLCP(props: AulaProps) {
             />
           </div>
         </TabsContent>
-
-        <TabsContent value="pratica" className="space-y-6 mt-12">
-          <ModuleSectionHeader
-            index="4.2"
-            variant={variant}
-            title="Prática - Quiz Interativo"
-          />
-          <QuizInterativo
-            titulo="Fixação Módulo 4"
-            questoes={toQQ(quizM4)}
-            onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          />
-        </TabsContent>
-      </>
-    );
-  };
-
-  const renderModulo5 = () => {
-    const variant = mv[4];
-    return (
-      <TabsContent value="modulo-5" className="space-y-12">
-
-
-        <div className="space-y-6">
-          <ModuleSectionHeader
-            index="5.1"
-            variant={variant}
-            title="Processo de Julgamento"
-            description="Entenda como as propostas são avaliadas e selecionadas."
-          />
-          <ContentAccordion
-            mode="stacked"
-            slides={[
-              {
-                title: "Comissão de Licitação",
-                conteudo: "A Comissão é multidisciplinar e composta por especialistas: Engenharia, Financeiro, Jurídico e Supply Chain. Atuam de forma colegiada.",
-                icone: "👥",
-              },
-              {
-                title: "Fase de Habilitação",
-                conteudo: "Verificação da idoneidade e capacidade: CNPJ válido, certificações, regularidade fiscal e patrimônio mínimo.",
-                icone: "🛡️",
-              },
-              {
-                title: "Homologação e Adjudicação",
-                conteudo: "A Homologação é a validação jurídica do processo. A Adjudicação é o ato formal que consagra o vencedor.",
-                icone: "🏆",
-              },
-            ]}
-          />
-
+      );
+    };
+  
+    const renderModulo5 = () => {
+      const variant = mv[5];
+      return (
+        <TabsContent value="modulo-5" className="space-y-6">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={2}
-              variant={mv[5]}
-              title="Julgamento e Adjudicação"
-              description="Como as propostas são avaliadas e o vencedor é declarado."
+              index={5}
+              variant={variant}
+              title="Julgamento e Adjudicação no RLCP"
+              description="As etapas finais que definem o vencedor e formalizam o compromisso da Petrobras."
             />
-
+  
             <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
               <p>
-                Após o prazo de inscrição fechar, Petrobras abre as propostas recebidas e inicia <strong>julgamento</strong>. Julgamento ocorre em duas etapas: (1) <strong>Habilitação</strong> —
-                o fornecedor atende aos requisitos legais? (CNPJ válido, sem débitos, certificações exigidas?); (2) <strong>Julgamento de Mérito</strong> — qual proposta melhor atende ao Termo de Referência
-                e ao critério de julgamento escolhido (menor preço, técnica+preço, melhor técnica)?
+                O <strong>Julgamento</strong> no RLCP é o momento em que a subjetividade morre e a objetividade impera. Após a abertura das propostas, a Comissão Especial ou o Agente de Contratação inicia o cotejo das ofertas baseando-se estritamente no critério de julgamento escolhido: seja pela frieza do menor preço ou pela complexidade técnica.
               </p>
               <p>
-                A <strong>Habilitação</strong> é "gatekeeping" — elimina fornecedores que não têm capacidade legal/técnica de cumprir. Verifica: CNPJ ativo (Receita Federal), regularidade fiscal
-                (sem débitos INSS/Trabalhista), certificações técnicas exigidas (ISO, normas específicas), patrimônio mínimo (se exigido), referências de clientes anteriores. Se fornecedor não passa
-                nessa etapa, proposta é rejeitada (MESMO que ofereça melhor preço). Não adianta preço ótimo se fornecedor é insolvente.
+                A <strong>Habilitação</strong> funciona como um filtro de solvência e competência. Diferente do rito comum onde se olha a documentação de todos, aqui o foco é otimizado. Avalia-se se o fornecedor possui o <strong>Patrimônio Líquido</strong> exigido, se suas certidões negativas de débitos federais, estaduais e municipais estão vigentes e se detém os atestados de capacidade técnica que provam que ele já realizou obras ou serviços similares no passado.
               </p>
               <p>
-                O <strong>Julgamento de Mérito</strong> compara fornecedores habilitados usando critério pré-definido no Edital. Critérios comuns: (1) <strong>Menor Preço</strong> — quem oferece menor
-                valor total; (2) <strong>Técnica + Preço</strong> — pontuação técnica (0-100) + preço ponderados (ex.: técnica 60%, preço 40%); (3) <strong>Melhor Técnica</strong> — apenas qualidade técnica,
-                depois negociação de preço com vencedor. Critério deve estar claro no Edital ANTES do processo.
+                A etapa de <strong>Saneamento de Falhas</strong> é uma das maiores inovações. Caso a proposta contenha erros puramente formais que não alterem a essência do preço ou do objeto, a Petrobras pode (e deve) sanear o processo. Isso evita que uma proposta excelente e econômica seja descartada por um erro de digitação bobo em um anexo burocrático.
               </p>
               <p>
-                Após julgamento, há período de <strong>"recursos"</strong> — fornecedores que acharam injusto podem contestar. Petrobras analisa recursos, valida se julgamento foi legal, e decide.
-                Resolvidos recursos, resultado é <strong>homologado</strong> (aprovado formalmente pelo gestor autorizado). Vencedor é declarado e convidado a assinar contrato e eventualmente prestar
-                garantia (caução, seguro).
+                A <strong>Adjudicação</strong> é o ato declaratório que vincula o objeto ao vencedor, enquanto a <strong>Homologação</strong> é o carimbo de validade da autoridade superior, confirmando que todo o rito seguiu a legalidade. Somente após esses atos é que o fornecedor é formalmente convocado para a assinatura do contrato, podendo ser exigida uma <strong>Garantia de Execução</strong> (caução ou seguro-garantia).
               </p>
               <p>
-                Neste módulo, você aprenderá critérios de habilitação específicos (RLCP exige qual documentação?), forma de julgamento (cálculo de pontuação técnica), como contestar resultado (direito do
-                fornecedor), e como Petrobras homologa licitação. Essencial para entender final do processo licitatório.
+                Neste módulo, exploraremos o "confronto" entre critérios de menor preço e técnica, os detalhes da habilitação jurídica/fiscal e como o RLCP blinda a Petrobras contra fornecedores aventureiros ou insolventes, garantindo que o cronograma operacional das unidades não sofra interrupções por falhas na cadeia de suprimentos.
               </p>
-
-              <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-                <p className="font-bold text-rose-600 dark:text-rose-400 text-lg mb-2">🏆 Julgamento em Duas Etapas</p>
-                <ul className="text-lg space-y-1 text-foreground">
-                  <li>✓ <strong>Habilitação:</strong> CNPJ, fiscal, certificações, patrimônio — quem pode participar?</li>
-                  <li>✓ <strong>Mérito:</strong> Menor Preço vs Técnica+Preço vs Melhor Técnica</li>
-                  <li>✓ <strong>Recursos:</strong> Fornecedores podem contestar resultado</li>
-                  <li>✓ <strong>Homologação:</strong> Gestor aprova formalmente; contrato assinado</li>
-                </ul>
-              </div>
+  
+              <AlertBox tipo="warning" titulo="Dica para Cesgranrio: O Rito RLCP">
+                Lembre-se que no RLCP a <strong>Habilitação é posterior ao Julgamento</strong> das propostas. Primeiro classificamos pelo preço/técnica, e somente depois auditamos a papelada do detentor da melhor oferta.
+              </AlertBox>
             </div>
           </section>
-
-          <ModuleSectionHeader
-            index="5.2"
-            variant={variant}
-            title="Critérios de Julgamento e Homologação"
-            description="Aplicação dos critérios de seleção e formalização do resultado da licitação."
-          />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ModuleConsolidation
-          index={4}
-          variant={variant}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Julgamento e Adjudicação",
-            duration: "06:45",
-          }}
-          resumoVisual={{
-            moduloNome: "Módulo 5",
-            tituloAula: "Julgamento e Adjudicação",
-            materia: "RLCP",
-            images: [
-              {
-                title: "Comissão de Licitação",
-                type: "Dossiê",
-                placeholderColor: "bg-indigo-500/10",
-              },
-              {
-                title: "Critérios de Julgamento",
-                type: "Diagrama",
-                placeholderColor: "bg-emerald-500/10",
-              },
-              {
-                title: "Fluxo de Adjudicação",
-                type: "Mapa Mental",
-                placeholderColor: "bg-amber-500/10",
-              },
-            ],
-          }}
-          maceteVisual={{
-            title: "Critérios de Seleção",
-            content: (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-center">
-                  <div className="text-2xl mb-2">💵</div>
-                  <h5 className="font-bold text-emerald-700 dark:text-emerald-400">Menor Preço</h5>
-                  <p className="text-lg text-muted-foreground">O critério mais comum para bens e serviços comuns.</p>
-                </div>
-                <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 text-center">
-                  <div className="text-2xl mb-2">📐</div>
-                  <h5 className="font-bold text-blue-700 dark:text-blue-400">Melhor Técnica</h5>
-                  <p className="text-lg text-muted-foreground">Foco na qualidade e expertise técnica do fornecedor.</p>
-                </div>
-                <div className="p-4 bg-purple-500/10 rounded-xl border border-purple-500/20 text-center">
+  
+          <div className="space-y-6">
+            <ModuleSectionHeader
+              index="5.1"
+              variant={variant}
+              title="Detalhamento Técnico de Seleção"
+            />
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Conceituação: O Exame de Conformidade",
+                  icone: <LuBrain />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>Antes de julgar quem é o mais barato, a Petrobras realiza o <strong>Exame de Conformidade</strong>. Aqui, verifica-se se a proposta atende aos "requisitos mínimos" do TR. Uma proposta que oferece um laptop sem bateria quando o TR exige bateria, é sumariamente desclassificada por desconformidade, nem chegando a entrar na disputa de preços.</p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exemplificação: Menor Preço vs Técnica e Preço",
+                  icone: <LuBookOpen />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-muted rounded-lg border border-border">
+                        <h4 className="font-bold text-foreground mb-2">📌 Compra de Válvulas (Menor Preço)</h4>
+                        <p className="text-base text-muted-foreground">O pregoeiro olha apenas o cifrão. Quem ofertar a válvula padrão Petrobras pelo menor valor, leva o contrato. Simples e direto.</p>
+                      </div>
+                      <div className="p-4 bg-muted rounded-lg border border-border mt-4">
+                        <h4 className="font-bold text-foreground mb-2">📌 Projeto de Duto Submarino (Técnica e Preço)</h4>
+                        <p className="text-base text-muted-foreground">A conta é ponderada. O currículo dos engenheiros e o método de soldagem valem 60% da nota. O preço vale 40%. Às vezes, o segundo mais barato ganha porque sua nota técnica é absurdamente superior.</p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Dicas: A Habilitação Otimizada",
+                  icone: <LuFileText />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <ul className="list-disc pl-5 space-y-2">
+                        <li><strong>Documentação:</strong> Foco no CRC (Certificado de Registro Cadastral). Empresas com CRC ativo na Petrobras têm muitos documentos de habilitação dispensados, acelerando o processo.</li>
+                        <li><strong>Certidões:</strong> Devem estar válidas na data da abertura e mantidas durante todo o contrato.</li>
+                      </ul>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exceções: Desclassificação por Preço Vil",
+                  icone: <LuSearch />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <AlertBox tipo="warning" titulo="O Perigo do Preço Inexequível">
+                        Se uma empresa oferecer uma obra de 100 milhões por apenas 10 milhões, a Petrobras a desclassifica! Isso é o <strong>Preço Inexequível</strong>. A lei entende que ela não vai conseguir entregar e vai abandonar a obra no meio, gerando prejuízo bilionário para a estatal.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </div>
+  
+          <div className="space-y-6 pt-8">
+            <ModuleSectionHeader
+              index="5.2"
+              variant={variant}
+              title="Consolidação e Quiz"
+            />
+            <ModuleConsolidation
+              index={5}
+              variant={variant}
+              video={{
+                videoId: "dQw4w9WgXcQ",
+                title: "Julgamento e Adjudicação no RLCP",
+                duration: "08:15",
+              }}
+              resumoVisual={{
+                moduloNome: "Módulo 5",
+                tituloAula: "Julgamento e Adjudicação",
+                materia: "RLCP",
+                images: [
+                  {
+                    title: "Fases do Julgamento",
+                    type: "Diagrama",
+                    placeholderColor: "bg-indigo-500/10",
+                  },
+                  {
+                    title: "Habilitação Jurídica",
+                    type: "Checklist",
+                    placeholderColor: "bg-emerald-500/10",
+                  },
+                  {
+                    title: "Adjudicação",
+                    type: "Fluxograma",
+                    placeholderColor: "bg-amber-500/10",
+                  },
+                ],
+              }}
+              maceteVisual={{
+                title: "O Pulo do Gato no Julgamento",
+                content: (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
+                      <h5 className="font-bold text-blue-700 dark:text-blue-400">Objetividade</h5>
+                      <p className="text-lg text-muted-foreground">O critério não pode mudar no meio do jogo. O que tá no Edital é Lei.</p>
+                    </div>
+                    <div className="p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
+                      <h5 className="font-bold text-purple-700 dark:text-purple-400">Saneamento</h5>
+                      <p className="text-lg text-muted-foreground">Erros formais não matam propostas boas. A inteligência operacional vence a burocracia.</p>
+                    </div>
+                  </div>
+                ),
+              }}
+            />
+  
+            <QuizInterativo
+              titulo="Fixação Módulo 5"
+              questoes={toQQ(quizM5)}
+              onComplete={(score) => handleModuleComplete("modulo-5", score)}
+            />
+          </div>
+        </TabsContent>
+      );
+    };<div className="p-4 bg-purple-500/10 rounded-xl border border-purple-500/20 text-center">
                   <div className="text-2xl mb-2">⚖️</div>
                   <h5 className="font-bold text-purple-700 dark:text-purple-400">Técnica e Preço</h5>
                   <p className="text-lg text-muted-foreground">Equilíbrio entre custo e qualidade técnica.</p>

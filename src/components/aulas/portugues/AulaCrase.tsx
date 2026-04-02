@@ -323,19 +323,40 @@ export default function AulaCrase({
           <ModuleSectionHeader index={5} title="Prática: Identifique a Crase" variant={mv[1]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <FlipCard
-              pergunta="Qual frase está correta?"
-              resposta="✓ Vou à praia. (A + A praia = À praia)"
-              opcoes={["Vou a praia", "Vou à praia", "Vou em a praia"]}
+              frente={<div className="font-bold text-lg">A EQUAÇÃO FUNDAMENTAL</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-blue-400">A (preposição) + A (artigo) = À</p>
+                  <p>A crase não é um erro — é uma fusão gráfica de duas vogais iguais. Quando a preposição "a" (exigida pelo verbo) encontra o artigo "a" (exigido pelo substantivo), elas se fundem em um único símbolo com acento grave.</p>
+                  <p>✅ "Vou <strong>à</strong> praia" (vou A + A praia)</p>
+                  <p>❌ "Vou <strong>a</strong> pé" (vou A, mas PÉ é masculino, sem artigo)</p>
+                  <p className="text-muted-foreground">A equação só funciona com ambas as peças presentes.</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Complete: Dirijo-me ___ diretora"
-              resposta="✓ Dirijo-me à diretora. (dirigir-se exige 'a' + diretora é feminino)"
-              opcoes={["a", "à", "em a"]}
+              frente={<div className="font-bold text-lg">TESTE DO LUGAR</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-emerald-400">Preposição exigida pelo contexto</p>
+                  <p>Verbos de movimento ou relacionamento exigem a preposição "a". Exemplos: IR, VIR, DIRIGIR-SE, REFERIR-SE. Quando seguidos de substantivo feminino com artigo, há crase.</p>
+                  <p>✅ "Dirijo-me <strong>à</strong> gerência" (dirigir-se A + A gerência)</p>
+                  <p>✅ "Dedico-me <strong>à</strong> pesquisa" (dedicar A + A pesquisa)</p>
+                  <p className="text-muted-foreground">O primeiro "a" vem da regência verbal, não é opcional.</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Qual tem crase corretamente?"
-              resposta="✓ Refiro-me à estratégia. (Referir + a + a estratégia)"
-              opcoes={["Refiro-me a estratégia", "Refiro-me à estratégia", "Refiro-me na estratégia"]}
+              frente={<div className="font-bold text-lg">TRÊS PILARES DA CRASE</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-purple-400">Obrigatória, Proibida ou Facultativa</p>
+                  <p>A crase ocorre em três contextos: OBRIGATÓRIA (ambas as peças presentes), PROIBIDA (falta a preposição ou artigo), FACULTATIVA (artigo é opcional).</p>
+                  <p>✅ OBRIGATÓRIA: "Vou à praia"</p>
+                  <p>❌ PROIBIDA: "Comecei a estudar" (verbo, sem artigo)</p>
+                  <p className="text-muted-foreground">Em concursos, identifique qual contexto para não errar.</p>
+                </div>
+              }
             />
           </div>
         </section>
@@ -555,19 +576,40 @@ export default function AulaCrase({
           <ModuleSectionHeader index={5} title="Prática: Aplique o Teste" variant={mv[2]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <FlipCard
-              pergunta="Teste: Vou à festa"
-              resposta="✓ Vou ao baile (virou AO) → Há crase"
-              opcoes={["Há crase", "Sem crase"]}
+              frente={<div className="font-bold text-lg">🎯 TESTE DO MASCULINO</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-emerald-400">Substitua por equivalente masculino</p>
+                  <p>Troque a palavra feminina por um masculino equivalente. Se virar "AO", há crase. Se continuar "A", não há crase. Exemplo: "Vou à festa" → "Vou ao baile" (virou AO).</p>
+                  <p>✅ "Vou <strong>à</strong> festa" (virou AO, há crase)</p>
+                  <p>❌ "Fui <strong>a</strong> pé" (continua A, sem crase)</p>
+                  <p className="text-muted-foreground">Este teste funciona em 95% dos casos!</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Teste: Assisti à apresentação"
-              resposta="✓ Assisti ao show (virou AO) → Há crase"
-              opcoes={["Há crase", "Sem crase"]}
+              frente={<div className="font-bold text-lg">✅ RESULTADO: "AO"</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-green-500">Virou "AO" → Há CRASE</p>
+                  <p>Quando o teste do masculino resulta em "AO", significa que a estrutura contém tanto a preposição quanto o artigo. Portanto, no feminino haverá crase (À).</p>
+                  <p>✅ "Assisti <strong>à</strong> apresentação" (Assisti ao show → AO)</p>
+                  <p>✅ "Dedico-me <strong>à</strong> leitura" (Dedico-me ao livro → AO)</p>
+                  <p className="text-muted-foreground">A regra é constante: preposição + artigo = crase.</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Teste: Comecei a trabalhar"
-              resposta="✓ Comecei a estudar (continua A) → Sem crase (verbos)"
-              opcoes={["Há crase", "Sem crase"]}
+              frente={<div className="font-bold text-lg">❌ RESULTADO: "A"</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-red-400">Continua "A" → SEM CRASE</p>
+                  <p>Se o teste resulta em apenas "A" (não "AO"), significa que falta uma das peças da equação. Pode ser porque há verbo (sem artigo) ou porque o equivalente masculino já não tem artigo.</p>
+                  <p>❌ "Comecei <strong>a</strong> trabalhar" (Comecei a estudar → A)</p>
+                  <p>❌ "Fui <strong>a</strong> pé" (Fui a cavalo → A)</p>
+                  <p className="text-muted-foreground">Sem ambas as peças, não há crase, sempre.</p>
+                </div>
+              }
             />
           </div>
         </section>
@@ -752,19 +794,40 @@ export default function AulaCrase({
           <ModuleSectionHeader index={5} title="Prática: Verbos vs Substantivos" variant={mv[3]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <FlipCard
-              pergunta="Complete: Começou ___ chover"
-              resposta="✓ Começou a chover (verbo chover = sem crase)"
-              opcoes={["a", "à"]}
+              frente={<div className="font-bold text-lg">⛔ VERBO = SEM CRASE</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-red-400">Verbos NUNCA aceitam artigo</p>
+                  <p>Quando a preposição "a" é seguida de um verbo no infinitivo, NÃO há crase. Verbos não recebem artigo. A estrutura é: preposição A + verbo (sem artigo).</p>
+                  <p>❌ "Começou <strong>à</strong> chover" (ERRADO)</p>
+                  <p>✅ "Começou <strong>a</strong> chover" (CORRETO - verbo, sem artigo)</p>
+                  <p className="text-muted-foreground">Macete: Se há verbo após "a", SEMPRE sem crase!</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Complete: Dedico-me ___ pesquisa"
-              resposta="✓ Dedico-me à pesquisa (substantivo pesquisa = com crase)"
-              opcoes={["a", "à"]}
+              frente={<div className="font-bold text-lg">✅ SUBSTANTIVO = COM CRASE</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-green-500">Substantivos aceitam artigo</p>
+                  <p>Quando a preposição "a" é seguida de um substantivo feminino COM artigo, há crase. A estrutura é: preposição A + artigo A + substantivo feminino = À.</p>
+                  <p>❌ "Dedico-me <strong>a</strong> pesquisa" (sem artigo, sem crase)</p>
+                  <p>✅ "Dedico-me <strong>à</strong> pesquisa" (com artigo, com crase)</p>
+                  <p className="text-muted-foreground">Se o substantivo tiver artigo definido feminino, há crase obrigatória.</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Complete: Procedeu ___ verificar"
-              resposta="✓ Procedeu a verificar (verbo verificar = sem crase)"
-              opcoes={["a", "à"]}
+              frente={<div className="font-bold text-lg">🔑 DIFERENÇA CRÍTICA</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-amber-400">Verbo vs Substantivo</p>
+                  <p>VERBO: Ação, infinitivo. Exemplo: "começar", "fazer", "ir". Não recebe artigo. Logo: SEM CRASE.</p>
+                  <p>SUBSTANTIVO: Nome, coisa. Exemplo: "pesquisa", "empresa", "data". Pode receber artigo. Logo: COM CRASE (se houver artigo).</p>
+                  <p>✅ "Procedeu <strong>a</strong> verificar" (verbo = sem crase)</p>
+                  <p>✅ "Procedeu <strong>à</strong> análise" (substantivo + artigo = com crase)</p>
+                </div>
+              }
             />
           </div>
         </section>
@@ -946,19 +1009,41 @@ export default function AulaCrase({
           <ModuleSectionHeader index={5} title="Prática: Pronomes Pessoais" variant={mv[4]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <FlipCard
-              pergunta="Complete: Referi-me ___ ela"
-              resposta="✓ Referi-me a ela (pronome pessoal = sem crase)"
-              opcoes={["a", "à"]}
+              frente={<div className="font-bold text-lg">⛔ PRONOMES PESSOAIS</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-red-400">Pronomes NUNCA recebem artigo</p>
+                  <p>Pronomes pessoais (ela, ele, você, nós, vós) não aceitam artigo. Logo, quando a preposição "a" é seguida de pronome pessoal, não há crase. A equação não se completa (falta o artigo).</p>
+                  <p>❌ "Referi-me <strong>à</strong> ela" (ERRADO)</p>
+                  <p>✅ "Referi-me <strong>a</strong> ela" (CORRETO - pronome, sem artigo)</p>
+                  <p className="text-muted-foreground">Pronome ≠ artigo. Sempre sem crase com pronome pessoal!</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Complete: Dirijo-me ___ você"
-              resposta="✓ Dirijo-me a você (pronome tratamento = sem crase)"
-              opcoes={["a", "à"]}
+              frente={<div className="font-bold text-lg">👤 PRONOMES vs SUBSTANTIVOS</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-amber-400">Diferença crítica em crase</p>
+                  <p>PRONOME PESSOAL: "ela", "você", "mim". Rejeita artigo. SEM CRASE.</p>
+                  <p>SUBSTANTIVO: "mulher", "pessoa", "menina". Aceita artigo. COM CRASE.</p>
+                  <p>❌ "Referi-me <strong>a</strong> ela" (pronome)</p>
+                  <p>✅ "Referi-me <strong>à</strong> mulher" (substantivo + artigo)</p>
+                  <p className="text-muted-foreground">Use o teste do masculino para diferenciar!</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Complete: Isso é para ___"
-              resposta="✓ Isso é para mim (pronome oblíquo = sem crase)"
-              opcoes={["a mim", "à mim"]}
+              frente={<div className="font-bold text-lg">✅ PRONOMES OBLÍQUOS</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-blue-400">Mim, ti, si, ele(a), nós, vós</p>
+                  <p>Pronomes oblíquos também rejeitam artigo e, portanto, não recebem crase. "Para mim", "para ti", "a ele" — sempre com preposição isolada, nunca com crase.</p>
+                  <p>❌ "Isso é para <strong>à</strong> mim" (ERRADO)</p>
+                  <p>✅ "Isso é para <strong>a</strong> mim" ou "Isso é para <strong>mim</strong>" (CORRETO)</p>
+                  <p className="text-muted-foreground">Oblíquos não recebem artigo, logo sem crase!</p>
+                </div>
+              }
             />
           </div>
         </section>
@@ -1152,19 +1237,40 @@ export default function AulaCrase({
           <ModuleSectionHeader index={5} title="Prática: Simples vs Especificado" variant={mv[5]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <FlipCard
-              pergunta="Refiro-me ___ Daniela"
-              resposta="✅ a Daniela ou à Daniela (ambas corretas, nome simples)"
-              opcoes={["a", "à", "ambas"]}
+              frente={<div className="font-bold text-lg">🎓 NOMES PRÓPRIOS SIMPLES</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-blue-400">Nome feminino SEM sobrenome</p>
+                  <p>Nomes próprios simples (apenas primeiro nome, sem sobrenome) FACULTAM o artigo. Por isso, a crase também é facultativa. Pode usar "a" ou "à" — ambas estão corretas em português formal.</p>
+                  <p>✅ "Refiro-me <strong>a</strong> Daniela" (sem artigo, sem crase)</p>
+                  <p>✅ "Refiro-me <strong>à</strong> Daniela" (com artigo, com crase)</p>
+                  <p className="text-muted-foreground">Nome simples = artigo opcional = crase facultativa.</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Refiro-me ___ Daniela Silva"
-              resposta="✅ à Daniela Silva (nome especificado por sobrenome)"
-              opcoes={["a", "à"]}
+              frente={<div className="font-bold text-lg">📋 NOMES PRÓPRIOS ESPECIFICADOS</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-emerald-400">Nome + sobrenome OU título</p>
+                  <p>Nomes próprios ESPECIFICADOS por sobrenome ou título (Daniela Silva, professora Maria) EXIGEM artigo. Quando o artigo é exigido, a crase é OBRIGATÓRIA no feminino.</p>
+                  <p>✅ "Refiro-me <strong>à</strong> Daniela Silva" (nome especificado, com crase)</p>
+                  <p>❌ "Refiro-me <strong>a</strong> Daniela Silva" (ERRADO - artigo é exigido)</p>
+                  <p className="text-muted-foreground">Especificação = artigo obrigatório = crase obrigatória.</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Entreguei a carta ___ Marina"
-              resposta="✅ a Marina ou à Marina (ambas corretas, nome simples)"
-              opcoes={["a", "à", "ambas"]}
+              frente={<div className="font-bold text-lg">🔑 REGRA DA ESPECIFICAÇÃO</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-purple-400">O artigo muda tudo</p>
+                  <p>A diferença é simples: NOMES SIMPLES (facultativos) vs NOMES ESPECIFICADOS (obrigatórios). Se o nome pode receber artigo em contexto comum, a crase acompanha.</p>
+                  <p>✅ "Entreguei a carta <strong>a</strong> Marina" ou "<strong>à</strong> Marina" (simples)</p>
+                  <p>✅ "Entreguei a carta <strong>à</strong> Marina Costa" (especificado, obrigatório)</p>
+                  <p className="text-muted-foreground">Use teste: "a/à João" (simples) vs "a/à Dr. João" (especificado).</p>
+                </div>
+              }
             />
           </div>
         </section>
@@ -1358,19 +1464,41 @@ export default function AulaCrase({
           <ModuleSectionHeader index={5} title="Prática: Singular vs Plural" variant={mv[6]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <FlipCard
-              pergunta="Complete: Refiro-me ___ minha opinião"
-              resposta="✅ a/à minha opinião (singular = facultativo)"
-              opcoes={["a", "à", "ambas"]}
+              frente={<div className="font-bold text-lg">📌 POSSESSIVOS SINGULARES</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-amber-400">Meu/Minha, Seu/Sua (singular)</p>
+                  <p>Possessivos singulares femininos (minha, sua, sua, etc.) FACULTAM o artigo. Logo, a crase é FACULTATIVA. Pode usar com ou sem crase — ambas as formas estão corretas.</p>
+                  <p>✅ "Refiro-me <strong>a</strong> minha opinião" (sem artigo, sem crase)</p>
+                  <p>✅ "Refiro-me <strong>à</strong> minha opinião" (com artigo, com crase)</p>
+                  <p className="text-muted-foreground">Singular = artigo optional = crase opcional.</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Complete: Refiro-me ___ minhas opiniões"
-              resposta="✅ às minhas opiniões (plural = obrigatório!)"
-              opcoes={["a", "à", "às"]}
+              frente={<div className="font-bold text-lg">🚨 POSSESSIVOS PLURAIS</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-red-500">Minhas, Suas (plural)</p>
+                  <p>Possessivos plurais EXIGEM artigo definido. Com artigo exigido, a crase é OBRIGATÓRIA no feminino plural. Sempre "ÀS", nunca "A".</p>
+                  <p>✅ "Refiro-me <strong>às</strong> minhas opiniões" (plural, com crase obrigatória)</p>
+                  <p>❌ "Refiro-me <strong>a</strong> minhas opiniões" (ERRADO - artigo é obrigatório)</p>
+                  <p className="text-muted-foreground">Plural = artigo obrigatório = crase obrigatória (ÀS).</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Complete: Assisti ___ sua apresentação"
-              resposta="✅ a/à sua apresentação (singular = facultativo)"
-              opcoes={["a", "à", "ambas"]}
+              frente={<div className="font-bold text-lg">🔄 SINGULAR vs PLURAL</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-blue-400">Diferença crítica na crase</p>
+                  <p>SINGULAR: Possessivos singulares fazem artigo ficar opcional → crase facultativa (A/À).</p>
+                  <p>PLURAL: Possessivos plurais exigem artigo → crase obrigatória (ÀS).</p>
+                  <p>✅ "Assisti <strong>à</strong> sua apresentação" (singular, facultativo)</p>
+                  <p>✅ "Assisti <strong>às</strong> suas apresentações" (plural, obrigatório)</p>
+                  <p className="text-muted-foreground">Número do possessivo muda tudo em crase!</p>
+                </div>
+              }
             />
           </div>
         </section>
@@ -1556,19 +1684,40 @@ export default function AulaCrase({
           <ModuleSectionHeader index={5} title="Prática: Horas e Medidas" variant={mv[7]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <FlipCard
-              pergunta="Complete: A reunião é ___ 14h"
-              resposta="✅ Às 14h (hora exata → crase obrigatória ÀS)"
-              opcoes={["as", "às"]}
+              frente={<div className="font-bold text-lg">⏰ HORAS EXATAS</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-emerald-400">Horários numerados (2h, 10h, 14h)</p>
+                  <p>Horas exatas sempre recebem artigo feminino definido (AS). Logo, "a" + "as" = crase obrigatória (ÀS). Padrão: "Às [número] horas".</p>
+                  <p>✅ "A reunião é <strong>às</strong> 14h" (horas exatas = crase)</p>
+                  <p>✅ "Chegue <strong>às</strong> 2 da tarde" (horas exatas = crase)</p>
+                  <p className="text-muted-foreground">Regra de ouro: Horas exatas SEMPRE com crase (ÀS).</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Complete: Chegue ___ uma hora"
-              resposta="✅ À uma hora (hora singular → À)"
-              opcoes={["a", "à"]}
+              frente={<div className="font-bold text-lg">🕐 HORAS SINGULARES</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-blue-400">Expressões com "uma" ou "meia"</p>
+                  <p>Quando a hora é singular (uma hora, meia hora), usa-se artigo singular "a". Logo, "a" + "a" = crase (À), não ÀS.</p>
+                  <p>✅ "Chegue <strong>à</strong> uma hora" (singular = À)</p>
+                  <p>✅ "Reunião <strong>à</strong> meia hora" (meia = singular = À)</p>
+                  <p className="text-muted-foreground">Singular = À. Plural/Exata = ÀS.</p>
+                </div>
+              }
             />
             <FlipCard
-              pergunta="Complete: Viagem ___ vista"
-              resposta="✅ À vista (expressão de medida → crase)"
-              opcoes={["a", "à"]}
+              frente={<div className="font-bold text-lg">📏 MEDIDAS E EXPRESSÕES</div>}
+              verso={
+                <div className="space-y-3 text-lg">
+                  <p className="font-semibold text-purple-400">À vista, à longa distância, etc.</p>
+                  <p>Expressões de medida que contêm artigo feminino também recebem crase: "à vista" (à prazo), "à distância" (de perto), "à noite" (de dia).</p>
+                  <p>✅ "Viagem <strong>à</strong> vista" (expressão, com crase)</p>
+                  <p>✅ "Pagamento <strong>à</strong> longa prazo" (expressão, com crase)</p>
+                  <p className="text-muted-foreground">Toda expressão de medida feminina recebe crase!</p>
+                </div>
+              }
             />
           </div>
         </section>

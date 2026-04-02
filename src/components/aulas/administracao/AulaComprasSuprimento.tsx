@@ -10,7 +10,9 @@ import {
   ModuleBanner,
   ModuleSectionHeader,
   AulaTemplate,
+  AlertBox,
 } from "../shared";
+import { LuBrain, LuBookOpen, LuFileText, LuSearch } from "react-icons/lu";
 import { TabsContent } from "@/components/ui/tabs";
 import { COMPRAS_QUIZZES } from "@/data/quizzes/compras-quizzes";
 
@@ -149,15 +151,60 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         }}
       />
 
-      <ContentAccordion
-        titulo="📖 C.E.D.E."
-        icone="⚖️"
-        slides={[
-          { title: "O Modelo Passivo vs Ativo", content: "O modelo passivo age como 'tirador de pedidos', focando em burocracia. O modelo ativo (estratégico) influencia a especificação técnica e estuda o mercado fornecedor antes da necessidade formal." },
-          { title: "Centralização vs Descentralização", content: "Centralizada: ganhos de escala e padronização. Descentralizada: Agilidade e autonomia local. O modelo híbrido é o preferido em grandes corporações como a Petrobras." },
-          { title: "Definição de TCO", content: "Preço de Compra + Custos de Aquisição (frete, impostos) + Custos de Posse (estoque, seguros) + Custos de Operação (manutenção, energia) = TCO." },
-        ]}
-      />
+      <div className="space-y-6">
+        <ModuleSectionHeader index={1} variant={getModuleVariant(1)} title="Análise C.E.D.E." description="Fundamentos de compras na prova." />
+        <ContentAccordion
+          slides={[
+            {
+              titulo: "Conceituação: O Modelo Evolutivo",
+              icone: <LuBrain />,
+              conteudo: (
+                <div className="space-y-4">
+                  <p>O setor de compras evoluiu de um modelo <strong>Reativo/Passivo</strong> (tirador de pedidos, focado em menor preço e burocracia) para um modelo <strong>Ativo/Estratégico</strong> (Supply Management, gestão da cadeia de suprimentos, focado no custo total de propriedade - TCO).</p>
+                  <AlertBox tipo="info" titulo="Evolução">
+                    No estágio máximo, o setor de compras influencia ativamente no desenvolvimento de produtos e se integra às estratégias globais de mercado.
+                  </AlertBox>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exemplificação: Os 5 Certos (5R's)",
+              icone: <LuBookOpen />,
+              conteudo: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-muted rounded-lg border border-border">
+                    <p className="text-base"><strong>Caso real:</strong> Um analista de suprimentos descobre que a matéria-prima adquirida atendia perfeitamente em qualidade, no fornecedor certo e com preço adequado. Porém, ao focar excessivamente em preço, solicitou um lote enorme, o que descumpriu a "Quantidade certa" (custo de estocagem absurdo) e o "Tempo certo" (venceu antes do uso).</p>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              titulo: "Dicas: Centralização e TCO",
+              icone: <LuFileText />,
+              conteudo: (
+                <div className="space-y-4">
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li><strong>Compras Centralizadas:</strong> Melhor negociação (ganho de escala), padronização, mas menor agilidade e pouca adaptação local.</li>
+                    <li><strong>Compras Descentralizadas:</strong> Velocidade de resposta, autonomia local, mas perda de economia de escala.</li>
+                    <li><strong>TCO (Custo Total de Propriedade):</strong> Nunca caia na pegadinha do "menor preço de nota fiscal". TCO = Preço base + Aquisição + Custos Operacionais.</li>
+                  </ul>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exceções: Foco Absoluto em Preço",
+              icone: <LuSearch />,
+              conteudo: (
+                <div className="space-y-4">
+                  <AlertBox tipo="warning" titulo="Quando o Menor Preço é Rei">
+                    Embora o modelo estratégico rejeite focar só em preço, em licitações tradicionais para bens de prateleira hiperpadronizados (comoditizados, como papel A4 ou água), o menor preço ofertado que atende ao edital será sim o único critério de julgamento tático prático.
+                  </AlertBox>
+                </div>
+              ),
+            },
+          ]}
+        />
+      </div>
 
       <QuizInterativo
         titulo="Fundamentos de Compras"
@@ -242,14 +289,66 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           artista: "Prof. Administração",
         }}
       />
-
-      <QuizInterativo
-        titulo="Processo de Compras"
-        numero={2}
-        variant={getModuleVariant(2)}
-        questoes={toQQ(COMPRAS_QUIZZES["modulo-2"])}
-        onComplete={(score: number) => handleQuizComplete("modulo-2", score)}
-      />
+      <div className="space-y-6">
+        <ModuleSectionHeader index={2} variant={getModuleVariant(2)} title="Análise C.E.D.E." description="O fluxo Processo-P2P na prova." />
+        <ContentAccordion
+          slides={[
+            {
+              titulo: "Conceituação: Fluxo P2P Progressivo",
+              icone: <LuBrain />,
+              conteudo: (
+                <div className="space-y-4">
+                  <p>O fluxo de compras padrão inicia na área usuária, não em Compras. <strong>Requisição (RC)</strong>: pedido interno → <strong>Pesquisa/Cotação (RFQ)</strong>: mercado → <strong>Pedido de compra (PO)</strong>: contrato comercial e cobrança → <strong>Recebimento</strong>: verificação física e sistêmica → <strong>Pagamento</strong>: financeiro.</p>
+                  <AlertBox tipo="info" titulo="O Three-Way Match">
+                    Conciliação a 3 Vias: compara a Ordem de Compra original, a Nota Fiscal e o Recebimento Físico (Guia de Remessa) antes de autorizar pagamento. É o bastião final antifraude.
+                  </AlertBox>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exemplificação: DoA",
+              icone: <LuBookOpen />,
+              conteudo: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-muted rounded-lg border border-border">
+                    <p className="text-base"><strong>Caso real:</strong> Um pedido de válvulas de titânio totalzou 3 milhões. Apesar do analista técnico conduzir todo o RFQ processual, o sistema bloqueou (DoA) a conversão de RFQ para Pedido (PO) aguardando assinatura do Gerente Executivo para habilitar juridicamente o negócio.</p>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              titulo: "Dicas: Follow-up Operacional",
+              icone: <LuFileText />,
+              conteudo: (
+                <div className="space-y-4">
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li><strong>Follow-up:</strong> Não basta emitir pedido, tem que acompanhar (diligenciar). Atrasos são imperdoáveis para linhas vitais ininterruptas.</li>
+                    <li><strong>Área de atuação:</strong> Compradores não criam demandas do nada. A Requisição nasce em áreas especialistas técnicas operantes (Manutenção, Obras).</li>
+                  </ul>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exceções: Urgência Extrema (Bypass)",
+              icone: <LuSearch />,
+              conteudo: (
+                <div className="space-y-4">
+                  <AlertBox tipo="warning" titulo="Compressão P2P Emergencial">
+                    Para falhas de material que ameacem o meio ambiente gravemente imediatista ou integridade física ou risco incalculável fabril de parada, a burocracia é quebrada por meio de regimes simplificados urgenciais e adiantamentos (famoso suprimento de fundos ou caixa pequeno para bens iminentes).
+                  </AlertBox>
+                </div>
+              ),
+            },
+          ]}
+        />
+        <QuizInterativo
+          titulo="Processo de Compras"
+          numero={2}
+          variant={getModuleVariant(2)}
+          questoes={toQQ(COMPRAS_QUIZZES["modulo-2"])}
+          onComplete={(score: number) => handleQuizComplete("modulo-2", score)}
+        />
+      </div>
     </div>
   );
 
@@ -327,14 +426,59 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         }}
       />
 
-      <ContentAccordion
-        titulo="📖 Critérios Exame CESGRANRIO"
-        icone="⚖️"
-        slides={[
-          { title: "Índice de Qualidade do Fornecedor (IQF)", content: "É o termômetro. Pontua atrasos, qualidade da entrega e devoluções. Se baixar da meta, o fornecedor perde a chance de ser convidado para novas rodadas de RFQs." },
-          { title: "Sourcing Estratégico Global", content: "Mapeamento além-fronteiras que analisa tendências de commodities transnacionais, risco de logística em mares globais (navios cargueiros engastalhados no Canal de Suez), câmbio futuro indexado via hedges protetivos atrelados às tabelas do Banco Central da conversão de balanças importativas." },
-        ]}
-      />
+      <div className="space-y-6">
+        <ModuleSectionHeader index={3} variant={getModuleVariant(3)} title="Análise C.E.D.E." description="Qualificação de fornecedores nos editais." />
+        <ContentAccordion
+          slides={[
+            {
+              titulo: "Conceituação: Sole vs Single Sourcing",
+              icone: <LuBrain />,
+              conteudo: (
+                <div className="space-y-4">
+                  <p><strong>Sole Sourcing:</strong> É forçado pelo mercado (Fonte Única Exclusiva). Só existe UM fornecedor detentor da tecnologia mundial monopolista, não existe outra opção concorrencial. <strong>Single Sourcing:</strong> É escolha por estratégia. Você ESCOLHEU voluntariamente aliar-se a apenas um entre múltiplos concorrentes viáveis, firmando parcerias de longo prazo exclusivas.</p>
+                  <AlertBox tipo="info" titulo="Qualificação Contínua">
+                    Homologar não é para sempre. Fornecedores são auditados periodicamente quanto a saúde financeira (Z-score insolvente premonitório) e cumprimento legal estatal/tributário.
+                  </AlertBox>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exemplificação: Scorecard IQF",
+              icone: <LuBookOpen />,
+              conteudo: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-muted rounded-lg border border-border">
+                    <p className="text-base"><strong>Caso real:</strong> Avaliando o histórico de um parceiro. Indicadores revelaram 0% de deficiências de qualidade (QPCD Q perfeito), mas 40% de atrasos repetitivos de entrega (Delivery penalizante). Resultado: o sistema rebaixa sua nota final, barrando sua presença em cotações "Just In Time" emergenciais urgentes vitalíssimas.</p>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              titulo: "Dicas: Estratégias do Make or Buy",
+              icone: <LuFileText />,
+              conteudo: (
+                <div className="space-y-4">
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>A decisão <strong>Fazer (Make)</strong> prioriza quando é segredo industrial fundamental, competência central (core), independência garantida irrestrita, altos volumes constantes monopolizados da capacidade ociosa fabril.</li>
+                    <li>A decisão <strong>Comprar (Buy)</strong> é tomada se requer pequena escala que desvia o foco central, pouca expertise da matriz, busca de tecnologia da ponta inovadora flexível barata por empresas ultra-focadas segmentadas (fábrica chinesa tech), barateando o patrimônio próprio paralisado engessante improdutivo.</li>
+                  </ul>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exceções: Parcerias Keiretsu Reversos",
+              icone: <LuSearch />,
+              conteudo: (
+                <div className="space-y-4">
+                  <AlertBox tipo="warning" titulo="Subcontratação Híbrida">
+                    A terceirização agressiva (Buy total para TUDO) já resultou, historicamente, em perdas letais de controle tecnológico matriz por esvaziamento estrutural ("Hollowing Out"). Por vezes, o Make ganha força mesmo que antieconômico por puro resguardo patrio estratégico governamental nacional de defesa (Programa Espacial e Bélico).
+                  </AlertBox>
+                </div>
+              ),
+            },
+          ]}
+        />
+      </div>
 
       <QuizInterativo
         titulo="Seleção de Fornecedores"
@@ -420,13 +564,66 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         }}
       />
 
-      <QuizInterativo
-        titulo="Negociação"
-        numero={4}
-        variant={getModuleVariant(4)}
-        questoes={toQQ(COMPRAS_QUIZZES["modulo-4"])}
-        onComplete={(score: number) => handleQuizComplete("modulo-4", score)}
-      />
+      <div className="space-y-6">
+        <ModuleSectionHeader index={4} variant={getModuleVariant(4)} title="Análise C.E.D.E." description="Táticas e conceitos de negociação b2b." />
+        <ContentAccordion
+          slides={[
+            {
+              titulo: "Conceituação: ZOPA e BATNA",
+              icone: <LuBrain />,
+              conteudo: (
+                <div className="space-y-4">
+                  <p><strong>ZOPA (Zone of Possible Agreement):</strong> É a zona de possível acordo. O limite máximo que o comprador aceita pagar cruzado com o limite mínimo que o vendedor aceita cobrar. <strong>BATNA:</strong> Melhor alternativa em caso de não acordo (sua válvula de escape caso as negociações fracassem).</p>
+                  <AlertBox tipo="info" titulo="O Poder do BATNA">
+                    A regra de ouro da negociação de Harvard: Quem tem o melhor BATNA detém o poder na mesa. Se você não depende do fornecedor (tem outros homologados), ele cederá.
+                  </AlertBox>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exemplificação: Integrativa e Distributiva",
+              icone: <LuBookOpen />,
+              conteudo: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-muted rounded-lg border border-border">
+                    <p className="text-base"><strong>Caso real:</strong> Na compra de papel higiênico, a negociação é <strong>Distributiva (ganha-perde)</strong>: o valor está no preço, fatias de um bolo fixo. Já na subcontratação de engenharia naval para FPSO, a negociação é <strong>Integrativa (ganha-ganha)</strong>: construtora e estatal aumentam o bolo juntas visando longo prazo.</p>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              titulo: "Dicas: A Tática da Ancoragem",
+              icone: <LuFileText />,
+              conteudo: (
+                <div className="space-y-4">
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li><strong>Ancoragem:</strong> A primeira oferta dita o ritmo da negociação. Quem fala primeiro o preço ancora o viés psicológico do outro na mesa.</li>
+                    <li>Sempre separe as pessoas do problema nas rodadas extenuantes de precificação para manter relações comerciais saudáveis.</li>
+                  </ul>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exceções: Abandono da ZOPA",
+              icone: <LuSearch />,
+              conteudo: (
+                <div className="space-y-4">
+                  <AlertBox tipo="warning" titulo="Quando levantar da mesa?">
+                    Nunca feche um acordo se a oferta final do fornecedor for PIOR que o seu BATNA. Muitas vezes as partes esticam a negociação por pura pressão psicológica ignorando a matemática da ausência de ZOPA.
+                  </AlertBox>
+                </div>
+              ),
+            },
+          ]}
+        />
+        <QuizInterativo
+          titulo="Negociação"
+          numero={4}
+          variant={getModuleVariant(4)}
+          questoes={toQQ(COMPRAS_QUIZZES["modulo-4"])}
+          onComplete={(score: number) => handleQuizComplete("modulo-4", score)}
+        />
+      </div>
     </div>
   );
 
@@ -503,13 +700,66 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         }}
       />
 
-      <QuizInterativo
-        titulo="Tipos de Compras"
-        numero={5}
-        variant={getModuleVariant(5)}
-        questoes={toQQ(COMPRAS_QUIZZES["modulo-5"])}
-        onComplete={(score: number) => handleQuizComplete("modulo-5", score)}
-      />
+      <div className="space-y-6">
+        <ModuleSectionHeader index={5} variant={getModuleVariant(5)} title="Análise C.E.D.E." description="Modalidades de compras na prova." />
+        <ContentAccordion
+          slides={[
+            {
+              titulo: "Conceituação: Master Agreements",
+              icone: <LuBrain />,
+              conteudo: (
+                <div className="space-y-4">
+                  <p><strong>Acordos-Quadro (Master Agreements):</strong> Contratos guarda-chuvas estipulantes de preços globais centralizados onde bases regionais locais realizam pedidos rápidos (Call-offs) simplificando a burocracia de compras frequentes plurianuais rotineiras para infraestrutura.</p>
+                  <AlertBox tipo="info" titulo="Sistema Pull x Push">
+                    JIT e Kanban representam o ápice do modelo "Puxado" (Pull) na logística de suprimentos, em detrimento do antigo modelo empurrado de estocagem inchada (Push).
+                  </AlertBox>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exemplificação: Consignação e Ativo Leve",
+              icone: <LuBookOpen />,
+              conteudo: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-muted rounded-lg border border-border">
+                    <p className="text-base"><strong>Caso real:</strong> Num almoxarifado on-shore, caixas de rolamentos estão disponíveis 24h. Porém, a posse é da fabricante (terceirizada). A Petrobras só paga a NF no momento exato em que a manutenção saca a caixa para uso prático na esteira. Isso é Consignação.</p>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              titulo: "Dicas: SPOT vs Padrão",
+              icone: <LuFileText />,
+              conteudo: (
+                <div className="space-y-4">
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li><strong>Compras SPOT:</strong> Mercado à vista, ágeis, mercadológicas, esporádicas. Foco no momento x e encerra-se. Típicas para aproveitar "gaps" de queda das bolsas ou cotações vantajosas efêmeras de commodities.</li>
+                    <li>Sistemas descentralizados nas extremidades (ex: fundo fixo via cartão corporativo para um tubo avulso em posto rodoviário rincão) dão folga para suprimentos centrais focarem nos contratos Master multibilionários vitais.</li>
+                  </ul>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exceções: Compras Emergenciais",
+              icone: <LuSearch />,
+              conteudo: (
+                <div className="space-y-4">
+                  <AlertBox tipo="warning" titulo="O Preço do Atraso">
+                    A via emergencial (reativa) quebra os rituais do Master Agreement pagando taxas altíssimas logísticas (frete aéreo imediato fretado supertarifado). Evidenciam uma falha grotesca do planejamento preventivo no setor de Suprimentos programáticos ou falha sistêmica de equipamentos graves.
+                  </AlertBox>
+                </div>
+              ),
+            },
+          ]}
+        />
+        <QuizInterativo
+          titulo="Tipos de Compras"
+          numero={5}
+          variant={getModuleVariant(5)}
+          questoes={toQQ(COMPRAS_QUIZZES["modulo-5"])}
+          onComplete={(score: number) => handleQuizComplete("modulo-5", score)}
+        />
+      </div>
     </div>
   );
 
@@ -585,13 +835,66 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         }}
       />
 
-      <QuizInterativo
-        titulo="Gestão de Contratos de Fornecimento"
-        numero={6}
-        variant={getModuleVariant(6)}
-        questoes={toQQ(COMPRAS_QUIZZES["modulo-6"])}
-        onComplete={(score: number) => handleQuizComplete("modulo-6", score)}
-      />
+      <div className="space-y-6">
+        <ModuleSectionHeader index={6} variant={getModuleVariant(6)} title="Análise C.E.D.E." description="Gestão pós-contratação na prova." />
+        <ContentAccordion
+          slides={[
+            {
+              titulo: "Conceituação: Gestão Post-Award",
+              icone: <LuBrain />,
+              conteudo: (
+                <div className="space-y-4">
+                  <p>A gestão de contratos (post-award) verifica se aquilo assinado se torna real em campo. A gestão visa coibir perdas pela não exigência do escoamento dos acordos estabelecidos perante as fiscalizadoras.</p>
+                  <AlertBox tipo="info" titulo="O Pilar do Nível de Serviço">
+                    O SLA (Service Level Agreement) estipula concretamente as metas de desempenho objetivas. Em vez de "fazer uma limpeza boa", formaliza "piso limpo auferido de hora em hora sem manchas - nível 95% de aprovação".
+                  </AlertBox>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exemplificação: Multas e Glosas",
+              icone: <LuBookOpen />,
+              conteudo: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-muted rounded-lg border border-border">
+                    <p className="text-base"><strong>Caso real:</strong> Um fornecedor alimentício de plataforma obteve pontuação mensal de 70% no SLA auditado face ao mínimo de 95% indexado em contrato. Imediatamente a corporação aplica uma <strong>Glosa</strong> no Boletim de Medição mensal, descontando o percentual estipulado monetário direto na nota para pagar.</p>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              titulo: "Dicas: A Eqüidade Econômica",
+              icone: <LuFileText />,
+              conteudo: (
+                <div className="space-y-4">
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>Contratos plurianuais (ex: vigência de 4 anos de navegação turística/industrial) fatalmente sofrem os dissabores dos dissídios salariais sindicais e inflações monetárias corrosivas ao lucro inicial contratual fixado engessado da maré global do petróleo.</li>
+                    <li>Por isto, existem os índices de reajuste protetivos para repactuar justamente as taxas ao ano letivo em favor dos contratados sobreviventes (Reequilíbrio e Revisão Econômica).</li>
+                  </ul>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exceções: Scope Creep parasitário",
+              icone: <LuSearch />,
+              conteudo: (
+                <div className="space-y-4">
+                  <AlertBox tipo="warning" titulo="Mergulho profundo (Low Balling)">
+                    Alguns fornecedores ofertam mergulhos rasos de preço (quase prejuízo aparente suicida) taticamente na licitação para vencer concorrentes e em seguida, usando ambiguidades contratuais obscuras, entopem os fiscais com intermináveis <strong>Addenda (Aditivos)</strong> e paralisações extorsivas aumentando sorrateiramente seu faturamento.
+                  </AlertBox>
+                </div>
+              ),
+            },
+          ]}
+        />
+        <QuizInterativo
+          titulo="Gestão de Contratos de Fornecimento"
+          numero={6}
+          variant={getModuleVariant(6)}
+          questoes={toQQ(COMPRAS_QUIZZES["modulo-6"])}
+          onComplete={(score: number) => handleQuizComplete("modulo-6", score)}
+        />
+      </div>
     </div>
   );
 
@@ -667,13 +970,66 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         }}
       />
 
-      <QuizInterativo
-        titulo="e-Procurement"
-        numero={7}
-        variant={getModuleVariant(7)}
-        questoes={toQQ(COMPRAS_QUIZZES["modulo-7"])}
-        onComplete={(score: number) => handleQuizComplete("modulo-7", score)}
-      />
+      <div className="space-y-6">
+        <ModuleSectionHeader index={7} variant={getModuleVariant(7)} title="Análise C.E.D.E." description="Digitalização e plataformas estatais." />
+        <ContentAccordion
+          slides={[
+            {
+              titulo: "Conceituação: E-Procurement B2B",
+              icone: <LuBrain />,
+              conteudo: (
+                <div className="space-y-4">
+                  <p>A era dos envelopes de papel e conluios disfarçados ruiu mediante o "Eletronic Procurement". A digitalização massiva B2B transforma 100% da relação fornecedor-comprador em registros eletrônicos indexados rastreáveis imperecíveis do princípio (cotação) ao fim (pagamento automatizado na tesouraria corporativa estatal).</p>
+                  <AlertBox tipo="info" titulo="Auditabilidade Plena">
+                    No e-procurement (ex. Petronect / SAP Ariba), todos os logins, horários de clique, IP e "propostas abertas" ficam fossilizadas no blockchain (arquitetura imutável) impossibilitando manipulações posteriores fraudulentas.
+                  </AlertBox>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exemplificação: Punch-outs e Catálogos",
+              icone: <LuBookOpen />,
+              conteudo: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-muted rounded-lg border border-border">
+                    <p className="text-base"><strong>Caso real:</strong> Um mantenedor na bacia de Santos não liga para o comprador clamando por EPI ou óleos. Ele entra no portal <strong>e-Catalog</strong> da Petrobras e seleciona (como num carrinho de supermercado de e-commerce real B2C). Os preços ali expostos do catálogo já foram previamente super-negociados ferozmente tempos atrás pelos compradores macros do Master Agreement da matriz.</p>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              titulo: "Dicas: A arena do Leilão Reverso",
+              icone: <LuFileText />,
+              conteudo: (
+                <div className="space-y-4">
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>O <strong>Leilão Reverso Eletrônico</strong> funciona invertido: quem dá o MENOR lance ganha. Fantástico ringue virtual anonimizado hiper-competitivo para esmagar os preços finais e as margens esfoladas inflacionadas em comoditization (commodities).</li>
+                    <li>Sistemas como <strong>EDI (Electronic Data Interchange)</strong> leem a Nota Fiscal eletrônica do caminhão chegando e já batem com a Ordem PO emitida (Three Way Match) emulando pagamento e quitação autônomos por IA sistêmica de cruzamento matricial corporativo sem toque orgânico contábil falível.</li>
+                  </ul>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exceções: Leilão em Projetos Complexos",
+              icone: <LuSearch />,
+              conteudo: (
+                <div className="space-y-4">
+                  <AlertBox tipo="warning" titulo="Quando o Reverso Não Funciona">
+                    Não se coloca "Arquitetura e Projeto Conceitual Oculto Inédito Complexo" (Serviços super intelectuais) em ringue eletrônico de leilão reverso agressivo. Nesses casos, o julgamento por "Técnica e Preço" predomina sutilmente em cadernos técnicos densos.
+                  </AlertBox>
+                </div>
+              ),
+            },
+          ]}
+        />
+        <QuizInterativo
+          titulo="e-Procurement"
+          numero={7}
+          variant={getModuleVariant(7)}
+          questoes={toQQ(COMPRAS_QUIZZES["modulo-7"])}
+          onComplete={(score: number) => handleQuizComplete("modulo-7", score)}
+        />
+      </div>
     </div>
   );
 
@@ -749,13 +1105,66 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         }}
       />
 
-      <QuizInterativo
-        titulo="Ética e Compliance em Compras"
-        numero={8}
-        variant={getModuleVariant(8)}
-        questoes={toQQ(COMPRAS_QUIZZES["modulo-8"])}
-        onComplete={(score: number) => handleQuizComplete("modulo-8", score)}
-      />
+      <div className="space-y-6">
+        <ModuleSectionHeader index={8} variant={getModuleVariant(8)} title="Análise C.E.D.E." description="A ética inegociável na Petrobras." />
+        <ContentAccordion
+          slides={[
+            {
+              titulo: "Conceituação: O Guardião Compliance",
+              icone: <LuBrain />,
+              conteudo: (
+                <div className="space-y-4">
+                  <p>Por manusear fluxos bilionários orçamentários vitais, Compras é o elo frágil exposto sedutor no front ao favorecimento oculto e fraudes obscuras empresariais lobistas corrompedoras contínuas agressivas sedutoras. O <strong>Compliance e Conduta</strong> representam a blindagem isolante que afasta o decisor público de benesses predatórias inaceitáveis dos prestadores de serviço fornecedores ansiosos em fechar comícios milionários lucrativos privados parciais estatais rentáveis.</p>
+                  <AlertBox tipo="info" titulo="Tolerância Zero para Sucata Humana">
+                    Licitações governamentais bloqueiam fornecedores maculados no pacto social (Fornecedores na "lista suja" do ministério do Trabalho escravo ou autuados em destruição planetária madeireira queimadora) bloqueando inegociavelmente suas matriculas no Portal unificado.
+                  </AlertBox>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exemplificação: Brindes vs Sedução",
+              icone: <LuBookOpen />,
+              conteudo: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-muted rounded-lg border border-border">
+                    <p className="text-base"><strong>Caso real:</strong> O diretor da supridora ganha cortesias camarotes e propinas fantasiadas luxuosas suntuosas dissimuladas (jantares finíssimos em Paris patrocinados por licitantes europeus na antevéspera da mega abertura do certame dos R$5 bilhões). Ato flagrantemente expulsório, imoral condenatório passível de escória pública irrevogável, com base legal severa inquestionável sem salvaguarda de defesa cabal técnica processual plausível admitida na regra geral ética da ouvidoria. </p>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              titulo: "Dicas: Avaliação de ESG e Nepotismo",
+              icone: <LuFileText />,
+              conteudo: (
+                <div className="space-y-4">
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>O mercado avalia a sustentabilidade logistica verde de cadeias: prioridade às aquisições ambientalmente puras descarbonizadas certificadas ("Green Purchasing").</li>
+                    <li>Sistemas buscam e cruzam sócios CPF nos board boards societários licitantes impedindo <strong>Nepotismo / Conflito de Interesse dismularizado</strong> (irmãos ou esposas laranjas abarcando licitações da diretoria onde atua o mantenedor empossado encarregado de comprar estritamente neutramental a coisa estatal requerida e limpa sem interesse familiar mesclado obscurecido disfarçado).</li>
+                  </ul>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exceções: Pequenos Brindes Inocentes",
+              icone: <LuSearch />,
+              conteudo: (
+                <div className="space-y-4">
+                  <AlertBox tipo="warning" titulo="Limiares de Conformidade">
+                    Ganhar uma simples caneta de R$ 5 gravada com logotipo num evento genérico setorial para 20.000 pessoas NÃO É quebra de compliance. Entende-se o pequeno brinde comum não possuidor de gravidade pecuniária sedutora com valor limitativo insignificante estrito para afastar a paranoiana extremada burocrática limitativa punitária absurda desconexa da vida coorporativa real sociável de trocas de catálogos na porta!
+                  </AlertBox>
+                </div>
+              ),
+            },
+          ]}
+        />
+        <QuizInterativo
+          titulo="Ética e Compliance em Compras"
+          numero={8}
+          variant={getModuleVariant(8)}
+          questoes={toQQ(COMPRAS_QUIZZES["modulo-8"])}
+          onComplete={(score: number) => handleQuizComplete("modulo-8", score)}
+        />
+      </div>
     </div>
   );
 
@@ -831,13 +1240,66 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         }}
       />
 
-      <QuizInterativo
-        titulo="Compras na Petrobras"
-        numero={9}
-        variant={getModuleVariant(9)}
-        questoes={toQQ(COMPRAS_QUIZZES["modulo-9"])}
-        onComplete={(score: number) => handleQuizComplete("modulo-9", score)}
-      />
+      <div className="space-y-6">
+        <ModuleSectionHeader index={9} variant={getModuleVariant(9)} title="Análise C.E.D.E." description="A flexibilidade da estatal (RLCP) nas compras." />
+        <ContentAccordion
+          slides={[
+            {
+              titulo: "Conceituação: A Libertação do RLCP",
+              icone: <LuBrain />,
+              conteudo: (
+                <div className="space-y-4">
+                  <p>A Petrobras competia de mãos amarradas contra petrolíferas gigantes mundiais ágeis presas nos arames farpados antigos da morosidade administrativa pública licitatória letárgica tradicional das autarquias estatais morosa antiquada prefeitural. A invenção da <strong>Lei das Estatais e do RLCP (Regulamento Híbrido Próprio Flexível Autônomo e Ágil Setorial)</strong> proporcionou regras rápidas equivalentes e fluidas simulando negociações de companhias ativas dinâmicas enxutas privadas de bolsa e corporações globais bilionárias aceleradas.</p>
+                  <AlertBox tipo="info" titulo="Híbrido de Agilidade e Ética">
+                    No RLCP a empresa ganha hiper agilidade privatista negocial mas NÃO perde a vigilância pública, o freio ético transparente anti-desvios, fomento à base, ouvidoria inquebrável ou submissão inarredável da fiscalização do TCU.
+                  </AlertBox>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exemplificação: O Poder do Conteúdo Local",
+              icone: <LuBookOpen />,
+              conteudo: (
+                <div className="space-y-4">
+                  <div className="p-4 bg-muted rounded-lg border border-border">
+                    <p className="text-base"><strong>Caso real:</strong> Em vez de despejar e importar navios chineses ultrabaratos gerando zero valor agregado tributário aos cofres da União, a estatal embute nos contratos o bônus "Conteúdo Local". O estaleiro brasileiro ganha as licitações com um repasse leve indexador premium visando construir nacionalmente garantindo dezenas de milhares operárias navais brasileiras atarefadas gerando divisões impulsionadoras das universidades técnicas navais nativas operantes orgulhosas base soberana imponente na infra-estrutura nacional pátria industrial complexa!</p>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              titulo: "Dicas: Inexigibilidade vs Dispensa",
+              icone: <LuFileText />,
+              conteudo: (
+                <div className="space-y-4">
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li><strong>Inexigibilidade:</strong> Impossível licitar! É único, não tem com quem competir exclusividade material singular artística ou patente inigualável estrangeira técnica homologada testada de fonte monopólica mundial incontestável imutável sólida engessada fatal cabal e absoluta.</li>
+                    <li><strong>Dispensa:</strong> Tem como competir na praça aberta até, MAAASSSSS é inviável, perigoso de perda monetária se parar a frota de reabertura complexa demorada do pleito. Emergências explosões urgências e estragos reativos graves e compras ridiculamente irrisórias do cotiano trivial barato de caixinha de clips de escritórios no mercado central não se montam editais de milhões. Dispensa e pronto pragmático ágil imediato faturado!</li>
+                  </ul>
+                </div>
+              ),
+            },
+            {
+              titulo: "Exceções: Rigidez Omitida",
+              icone: <LuSearch />,
+              conteudo: (
+                <div className="space-y-4">
+                  <AlertBox tipo="warning" titulo="O Limite das Urgências Desculpáveis">
+                    Comprávamos por "Dispensa Emergencial" pela falha total da manutenção, sim. Mas se o MPU / TCU descobre a falta do planejamento da matriz que DEIXOU ficar doente a planta por dolo de ignorar o estoque base... isso é <strong>Falsa Emergência Fabricada Culposa Irresponsável Omissa Temerária</strong> que gera pesadelo retroativo penal prisões sanções rescisórias terríveis expurgatórias aos mandachuvas compradores relapsos adormecidos!
+                  </AlertBox>
+                </div>
+              ),
+            },
+          ]}
+        />
+        <QuizInterativo
+          titulo="Compras na Petrobras"
+          numero={9}
+          variant={getModuleVariant(9)}
+          questoes={toQQ(COMPRAS_QUIZZES["modulo-9"])}
+          onComplete={(score: number) => handleQuizComplete("modulo-9", score)}
+        />
+      </div>
     </div>
   );
 
