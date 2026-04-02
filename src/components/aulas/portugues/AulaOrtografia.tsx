@@ -1,3 +1,4 @@
+import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
@@ -682,6 +683,8 @@ const QUIZ_MOD6_POOL: QuizQuestion[] = [
 // COMPONENTE PRINCIPAL
 // ============================================================================
 
+const mv = [undefined, ...getAllModuleVariants()];
+
 export default function AulaOrtografia({
   onComplete,
   isCompleted,
@@ -817,7 +820,7 @@ export default function AulaOrtografia({
           numero={1}
           titulo="Encontros Vocálicos e Sílabas"
           descricao="A base da fonética: entenda ditongos, tritongos, hiatos e como separar as sílabas corretamente."
-          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
+          variant={mv[1]}
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -825,8 +828,8 @@ export default function AulaOrtografia({
             index={1}
             title="Encontros Vocálicos"
             description="A fundação da fonética: compreenda a união e a separação de sons vocálicos nas palavras."
-            variant="indigo"
-          />
+          variant={mv[1]}
+        />
 
           <AlertBox tipo="info" titulo="O que são?">
             São agrupamentos de vogais e semivogais em uma mesma palavra. É o
@@ -837,7 +840,7 @@ export default function AulaOrtografia({
             mode="stacked"
             titulo="Tipos de Encontros"
             icone={<LuBookOpen />}
-            corIndicador="bg-blue-500"
+            corIndicador="bg-amber-500"
             defaultOpen={true}
             slides={[
               {
@@ -903,8 +906,8 @@ export default function AulaOrtografia({
           <ModuleSectionHeader
             index={2}
             title="Resumo e Multimídia"
-            variant="indigo"
-          />
+          variant={mv[1]}
+        />
           <LessonTabs
             tabs={[
               {
@@ -1012,9 +1015,9 @@ Ditongo é junto, hiato é separação!
             titulo="QUIZ: Encontros Vocálicos e Sílabas"
             icone="🎯"
             numero={3}
-            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          />
+          variant={mv[1]}
+        />
         </section>
       </TabsContent>
 
@@ -1029,7 +1032,7 @@ Ditongo é junto, hiato é separação!
           numero={2}
           titulo="Fundamentos da Acentuação"
           descricao="As 4 regras de ouro para dominar oxítonas, paroxítonas, proparoxítonas e monossílabos."
-          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
+          variant={mv[2]}
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1037,8 +1040,8 @@ Ditongo é junto, hiato é separação!
             index={1}
             title="Classificação da Sílaba Tônica"
             description="Aprenda a identificar o coração sonoro das palavras para aplicar as regras de acento."
-            variant="emerald"
-          />
+          variant={mv[2]}
+        />
 
           <AlertBox tipo="info" titulo="O que é a Sílaba Tônica?">
             É a sílaba pronunciada com maior intensidade na palavra. Dependendo
@@ -1060,7 +1063,7 @@ Ditongo é junto, hiato é separação!
             mode="stacked"
             titulo="Regra Geral de Acentuação"
             icone={<LuBookOpen />}
-            corIndicador="bg-emerald-500"
+            corIndicador="bg-blue-500"
             defaultOpen={true}
             slides={[
               {
@@ -1218,8 +1221,8 @@ Ditongo é junto, hiato é separação!
             index={2}
             title="Resumo e Multimídia"
             description="Ferramentas práticas para memorizar as 4 regras de ouro da acentuação."
-            variant="emerald"
-          />
+          variant={mv[2]}
+        />
           <LessonTabs
             tabs={[
               {
@@ -1327,9 +1330,9 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             titulo="QUIZ: Fundamentos da Acentuação"
             icone="⚡"
             numero={3}
-            variant="violet"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          />
+          variant={mv[2]}
+        />
         </section>
       </TabsContent>
       {/* =======================================================
@@ -1343,7 +1346,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           numero={3}
           titulo="O Novo Acordo"
           descricao="Aprenda o que caiu, o que mudou e o que a Cesgranrio mais cobra sobre a Nova Ortografia."
-          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
+          variant={mv[3]}
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1351,8 +1354,8 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             index={1}
             title="As Três Grandes Baixas"
             description="Foco total no que mudou: ditongos abertos, tremas e as novas regras de hiato."
-            variant="violet"
-          />
+          variant={mv[3]}
+        />
 
           <AlertBox tipo="warning" titulo="O Alvo da Banca">
             As bancas amam cobrar as palavras que **perderam** o acento no Novo
@@ -1433,8 +1436,8 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             index={2}
             title="O Hiato Revoltado"
             description="Desvende a pegadinha suprema dos hiatos após ditongos em todas as suas nuances."
-            variant="violet"
-          />
+          variant={mv[3]}
+        />
 
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="flex-1 space-y-6">
@@ -1482,8 +1485,8 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             index={3}
             title="Resumo e Multimídia"
             description="Recursos visuais e auditivos para fixar a base fonética e ortográfica."
-            variant="violet"
-          />
+          variant={mv[3]}
+        />
           <LessonTabs
             tabs={[
               {
@@ -1591,10 +1594,10 @@ Mas na prova a banca te espera!
             questoes={qMod3}
             titulo="QUIZ: O Novo Acordo"
             icone="✅"
-            variant="violet"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          />
+          variant={mv[3]}
+        />
         </section>
       </TabsContent>
 
@@ -1609,15 +1612,15 @@ Mas na prova a banca te espera!
           numero={4}
           titulo="O Temido Uso do Hífen"
           descricao="Compreenda a lógica magnética dos prefixos para nunca mais errar uso de hífen."
-          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
+          variant={mv[4]}
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
             title="A Lei Magnética dos Opostos"
-            variant="amber"
-          />
+          variant={mv[4]}
+        />
 
           <AlertBox tipo="info" titulo="O Princípio Magnético do Hífen">
             O uso do hífen com prefixos é governado por uma lógica simples que
@@ -1725,8 +1728,8 @@ Mas na prova a banca te espera!
             index={2}
             title="A Regra da Dobradinha (R e S)"
             description="Entenda o fenômeno da duplicação consonantal após prefixos terminados em vogal."
-            variant="amber"
-          />
+          variant={mv[4]}
+        />
 
           <AlertBox tipo="info" titulo="O R e o S multiplicam-se">
             Quando a primeira palavra terminar em **Vogal** e a segunda palavra
@@ -1790,8 +1793,8 @@ Mas na prova a banca te espera!
             index={3}
             title="Resumo e Multimídia"
             description="Vídeos e mapas mentais para consolidar a mecânica do hífen."
-            variant="amber"
-          />
+          variant={mv[4]}
+        />
           <LessonTabs
             tabs={[
               {
@@ -1900,9 +1903,9 @@ Iguais se repelem, diferentes se amam
             titulo="QUIZ: O Temido Uso do Hífen"
             icone="⛓️"
             numero={4}
-            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          />
+          variant={mv[4]}
+        />
         </section>
       </TabsContent>
       {/* =======================================================
@@ -1916,7 +1919,7 @@ Iguais se repelem, diferentes se amam
           numero={5}
           titulo="Problemas Frequentes"
           descricao="Os maiores tropeços da língua testados exaustivamente em provas."
-          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
+          variant={mv[5]}
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1924,8 +1927,8 @@ Iguais se repelem, diferentes se amam
             index={1}
             title="Sessão de Terapia Ortográfica"
             description="Aprenda a aplicar cada um dos quatro tipos de porquê com precisão absoluta."
-            variant="rose"
-          />
+          variant={mv[5]}
+        />
 
           <AlertBox tipo="info" titulo="A Natureza dos Quatro Porquês">
             Na língua portuguesa, a escrita da palavra "porque" varia de acordo
@@ -1988,8 +1991,8 @@ Iguais se repelem, diferentes se amam
             index={2}
             title="Opostos Que Confundem"
             description="Diferencie mal/mau e onde/aonde através da lógica gramatical simples."
-            variant="rose"
-          />
+          variant={mv[5]}
+        />
           <CardCarousel
             itemsPerView={2}
             titulo="Principais Confusões"
@@ -2031,8 +2034,8 @@ Iguais se repelem, diferentes se amam
             index={3}
             title="Resumo e Multimídia"
             description="Macetes mnemônicos para nunca mais confundir os porquês, mal/mau e onde/aonde."
-            variant="rose"
-          />
+          variant={mv[5]}
+        />
           <LessonTabs
             tabs={[
               {
@@ -2139,10 +2142,10 @@ Por que separado? Porque eu estudei!
             questoes={qMod5}
             titulo="QUIZ: Expressões Problemáticas"
             icone="🧐"
-            variant="rose"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          />
+          variant={mv[5]}
+        />
         </section>
       </TabsContent>
 
@@ -2157,7 +2160,7 @@ Por que separado? Porque eu estudei!
           numero={6}
           titulo="Laboratório & Revisão Integrada"
           descricao="Treinamento intensivo nível Cesgranrio para a prova da Petrobras."
-          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
+          variant={mv[6]}
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -2165,8 +2168,8 @@ Por que separado? Porque eu estudei!
             index={1}
             title="Revisão Final (Mind Map)"
             description="Um panorama completo de toda a ortografia e acentuação em um fluxo lógico."
-            variant="cyan"
-          />
+          variant={mv[6]}
+        />
 
           <div className="flex flex-col gap-6 w-full max-w-3xl mx-auto">
             <TimelineItem
@@ -2210,9 +2213,9 @@ Por que separado? Porque eu estudei!
             titulo="QUIZ: Laboratório & Revisão"
             icone="🏆"
             numero={2}
-            variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
-          />
+          variant={mv[6]}
+        />
         </section>
       </TabsContent>
     </AulaTemplate>

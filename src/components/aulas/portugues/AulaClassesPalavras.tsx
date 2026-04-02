@@ -76,7 +76,6 @@ const MODULE_DEFS = [
   { id: "modulo-9", label: "M9: Interjeição", title: "Interjeição: A Emoção" },
   { id: "modulo-10", label: "M10: Numeral", title: "Numeral: A Quantidade" },
 ] as const;
-
 // ══════════════════════════════════════════════════════════════════════════
 // HELPER FUNCTIONS FOR CONJUGATION
 // ══════════════════════════════════════════════════════════════════════════
@@ -109,227 +108,6 @@ const renderConj = (
   );
 };
 
-const criarCard = (
-  icone: React.ReactNode,
-  titulo: string,
-  conj: React.ReactNode,
-  tipo: "reg" | "irreg" = "reg",
-) => ({
-  icone,
-  title: (
-    <span className="flex items-center gap-2">
-      {titulo}
-      {tipo === "irreg" && (
-        <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-500/10 text-red-500 font-semibold uppercase tracking-wide border border-red-500/20">
-          Irregular
-        </span>
-      )}
-    </span>
-  ) as any,
-  descricao: conj,
-});
-
-const i1 = <span className="font-black text-lg text-blue-500">-AR</span>;
-const i2 = <span className="font-black text-lg text-emerald-500">-ER</span>;
-const i3 = <span className="font-black text-lg text-rose-500">-IR</span>;
-const iIr = <span className="font-black text-lg text-amber-500">✦</span>;
-
-const CONJ_SLIDES = [
-  {
-    titulo: "1. Presente do Indicativo",
-    icone: "🕒",
-    conteudo: (
-      <CardCarousel
-        titulo="Conjugação Regular: Presente do Indicativo"
-        cards={[
-          criarCard(
-            i1,
-            "Estudar",
-            <div className="space-y-4">
-              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-                <h4 className="font-bold text-blue-700 dark:text-blue-300 mb-2">Modelo -AR</h4>
-                <div className="text-lg font-mono text-center space-y-1">
-                  {renderConj(
-                    "estudo",
-                    "estudas", 
-                    "estuda",
-                    "estudamos",
-                    "estudais",
-                    "estudam",
-                  )}
-                </div>
-              </div>
-              <div className="text-sm text-muted-foreground bg-amber-50 dark:bg-amber-950/30 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
-                <strong>Regra:</strong> Verbos terminados em -AR seguem este padrão. 
-                Ex: "falo", "falas", "fala", "falamos", "falais", "falam".
-              </div>
-            </div>
-          ),
-          criarCard(
-            i2,
-            "Vender",
-            <div className="space-y-4">
-              <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-4 border border-emerald-200 dark:border-emerald-800">
-                <h4 className="font-bold text-emerald-700 dark:text-emerald-300 mb-2">Modelo -ER</h4>
-                <div className="text-lg font-mono text-center space-y-1">
-                  {renderConj(
-                    "vendo",
-                    "vendes",
-                    "vende", 
-                    "vendemos",
-                    "vendeis",
-                    "vendem",
-                  )}
-                </div>
-              </div>
-              <div className="text-sm text-muted-foreground bg-amber-50 dark:bg-amber-950/30 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
-                <strong>Regra:</strong> Verbos terminados em -ER seguem este padrão.
-                Ex: "corro", "corres", "corre", "corremos", "correis", "correm".
-              </div>
-            </div>
-          ),
-          criarCard(
-            i3,
-            "Partir",
-            <div className="space-y-4">
-              <div className="bg-rose-50 dark:bg-rose-950/30 rounded-lg p-4 border border-rose-200 dark:border-rose-800">
-                <h4 className="font-bold text-rose-700 dark:text-rose-300 mb-2">Modelo -IR</h4>
-                <div className="text-lg font-mono text-center space-y-1">
-                  {renderConj(
-                    "parto",
-                    "partes",
-                    "parte",
-                    "partimos", 
-                    "partis",
-                    "partem",
-                  )}
-                </div>
-              </div>
-              <div className="text-sm text-muted-foreground bg-amber-50 dark:bg-amber-950/30 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
-                <strong>Regra:</strong> Verbos terminados em -IR seguem este padrão.
-                Ex: "abro", "abres", "abre", "abrimos", "abris", "abrem".
-              </div>
-            </div>
-          ),
-          criarCard(
-            iIr,
-            "Ser",
-            <div className="space-y-4">
-              <div className="bg-violet-50 dark:bg-violet-950/30 rounded-lg p-4 border border-violet-200 dark:border-violet-800">
-                <h4 className="font-bold text-violet-700 dark:text-violet-300 mb-2">Verbo Irregular ⚠️</h4>
-                <div className="text-lg font-mono text-center space-y-1">
-                  {renderConj("sou", "és", "é", "somos", "sois", "são")}
-                </div>
-              </div>
-              <div className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/30 rounded-lg p-3 border border-red-200 dark:border-red-800">
-                <strong>Atenção:</strong> "SER" é totalmente irregular! Não segue padrão nenhum.
-                Memorize: sou/és/é/somos/sois/são.
-              </div>
-            </div>,
-            "irreg",
-          ),
-        ]}
-      />
-    ),
-  },
-  {
-    titulo: "2. Pretérito Perfeito",
-    icone: "✅",
-    conteudo: (
-      <CardCarousel
-        titulo="Conjugação Regular: Pretérito Perfeito"
-        cards={[
-          criarCard(
-            i1,
-            "Estudar",
-            <div className="space-y-4">
-              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-                <h4 className="font-bold text-blue-700 dark:text-blue-300 mb-2">Modelo -AR</h4>
-                <div className="text-lg font-mono text-center space-y-1">
-                  {renderConj(
-                    "estudei",
-                    "estudaste",
-                    "estudou",
-                    "estudamos",
-                    "estudastes",
-                    "estudaram",
-                  )}
-                </div>
-              </div>
-              <div className="text-sm text-muted-foreground bg-amber-50 dark:bg-amber-950/30 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
-                <strong>Regra:</strong> Pretérito perfeito indica ação concluída no passado.
-                Terminações: -ei/-aste/-ou/-amos/-astes/-aram.
-              </div>
-            </div>
-          ),
-          criarCard(
-            i2,
-            "Vender",
-            <div className="space-y-4">
-              <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-4 border border-emerald-200 dark:border-emerald-800">
-                <h4 className="font-bold text-emerald-700 dark:text-emerald-300 mb-2">Modelo -ER</h4>
-                <div className="text-lg font-mono text-center space-y-1">
-                  {renderConj(
-                    "vendi",
-                    "vendeste",
-                    "vendeu",
-                    "vendemos",
-                    "vendestes",
-                    "venderam",
-                  )}
-                </div>
-              </div>
-              <div className="text-sm text-muted-foreground bg-amber-50 dark:bg-amber-950/30 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
-                <strong>Regra:</strong> Verbos -ER no pretérito: -i/-este/-eu/-emos/-estes/-eram.
-                Ex: "corri", "correste", "correu", "corremos", "correstes", "correram".
-              </div>
-            </div>
-          ),
-          criarCard(
-            i3,
-            "Partir",
-            <div className="space-y-4">
-              <div className="bg-rose-50 dark:bg-rose-950/30 rounded-lg p-4 border border-rose-200 dark:border-rose-800">
-                <h4 className="font-bold text-rose-700 dark:text-rose-300 mb-2">Modelo -IR</h4>
-                <div className="text-lg font-mono text-center space-y-1">
-                  {renderConj(
-                    "parti",
-                    "partiste",
-                    "partiu",
-                    "partimos",
-                    "partistes",
-                    "partiram",
-                  )}
-                </div>
-              </div>
-              <div className="text-sm text-muted-foreground bg-amber-50 dark:bg-amber-950/30 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
-                <strong>Regra:</strong> Verbos -IR no pretérito: -i/-iste/-iu/-imos/-istes/-iram.
-                Ex: "abri", "abriste", "abriu", "abrimos", "abristes", "abriram".
-              </div>
-            </div>
-          ),
-          criarCard(
-            iIr,
-            "Ser",
-            <div className="space-y-4">
-              <div className="bg-violet-50 dark:bg-violet-950/30 rounded-lg p-4 border border-violet-200 dark:border-violet-800">
-                <h4 className="font-bold text-violet-700 dark:text-violet-300 mb-2">Verbo Irregular ⚠️</h4>
-                <div className="text-lg font-mono text-center space-y-1">
-                  {renderConj("fui", "foste", "foi", "fomos", "fostes", "foram")}
-                </div>
-              </div>
-              <div className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/30 rounded-lg p-3 border border-red-200 dark:border-red-800">
-                <strong>Atenção:</strong> "SER" no pretérito é totalmente irregular!
-                Memorize: fui/foste/foi/fomos/fostes/foram.
-              </div>
-            </div>,
-            "irreg",
-          ),
-        ]}
-      />
-    ),
-  },
-];
 
 export default function AulaClassesPalavras({
   onComplete,
@@ -420,7 +198,8 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={1}
           titulo="O Substantivo"
           descricao="A base de toda a nomeação e o núcleo dos termos da oração."
-          variant={mv[1]} gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"/>
+          variant={mv[1]}
+        />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -580,7 +359,7 @@ export default function AulaClassesPalavras({
             mode="stacked"
             titulo="Os 4 Pares Fundamentais de Classificação"
             icone={<LuTag />}
-            corIndicador="bg-blue-500"
+            corIndicador="bg-amber-500"
             slides={[
               {
                 titulo: "🏗️ Concreto vs Abstrato",
@@ -818,7 +597,7 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={6}
+            index={4}
             title="Derivação Imprópria — O 'Efeito Rei Midas'"
             variant={mv[1]}
           />
@@ -907,7 +686,7 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={7}
+            index={5}
             title="Gênero dos Substantivos — Os Heterônimos"
             variant={mv[1]}
           />
@@ -939,7 +718,7 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={8}
+            index={6}
             title="Plural dos Substantivos Compostos"
             variant={mv[1]}
           />
@@ -947,7 +726,7 @@ export default function AulaClassesPalavras({
             mode="stacked"
             titulo="Regras de Pluralização"
             icone={<LuHash />}
-            corIndicador="bg-blue-500"
+            corIndicador="bg-amber-500"
             slides={[
               {
                 titulo: "Substantivo + Substantivo (sem hífen ou com)",
@@ -984,15 +763,65 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={7}
+            title="Resumo e Multimídia"
+            variant={mv[1]}
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "video",
+                label: "Vídeo Aula",
+                icon: LuPlayCircle,
+                content: (
+                  <div className="w-full flex flex-col items-center py-6">
+                    <VideoModal
+                      videoId="dQw4w9WgXcQ"
+                      title="Substantivos"
+                      duration="08:45"
+                    />
+                  </div>
+                ),
+              },
+              {
+                id: "visual",
+                label: "Visual",
+                icon: LuBrain,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    tituloAula="Gramática de Elite"
+                    materia="Português"
+                    moduloNome="M1: Substantivo"
+                    images={[
+                      {
+                        title: "Substantivo",
+                        type: "Mapa Mental",
+                        placeholderColor: "#3b82f6",
+                      },
+                      {
+                        title: "Efeito Rei Midas",
+                        type: "Macete",
+                        placeholderColor: "#60a5fa",
+                      },
+                    ]}
+                  />
+                ),
+              },
+            ]}
+          />
+        </section>
+
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod1}
             titulo="QUIZ: Substantivo: O Nomeador"
             icone="🎯"
-            numero={9}
-            variant="blue"
+            numero={8}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          />
+          variant={mv[1]}
+        />
         </section>
       </TabsContent>
 
@@ -1001,7 +830,8 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={2}
           titulo="O Adjetivo"
           descricao="O qualificador que define a concordância e a nuance do texto."
-          variant={mv[2]} gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"/>
+          variant={mv[2]}
+        />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1203,7 +1033,7 @@ export default function AulaClassesPalavras({
             mode="stacked"
             titulo="Tópicos Avançados"
             icone={<LuTag />}
-            corIndicador="bg-emerald-500"
+            corIndicador="bg-blue-500"
             slides={[
               {
                 titulo: "Adjetivo Composto (Plurimodificador)",
@@ -1230,7 +1060,8 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
-        {/* Resumo + Multimídia M2 */}
+
+
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={4}
@@ -1291,7 +1122,8 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={3}
           titulo="O Artigo"
           descricao="O determinante que define a substantivação e a concordância."
-          variant={mv[3]} gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"/>
+          variant={mv[3]}
+        />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1473,7 +1305,7 @@ export default function AulaClassesPalavras({
             mode="stacked"
             titulo="Casos Avançados"
             icone={<LuBookOpen />}
-            corIndicador="bg-amber-500"
+            corIndicador="bg-emerald-500"
             slides={[
               {
                 titulo: "Artigo Definido — Quando usar",
@@ -1506,7 +1338,6 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
-        {/* Resumo + Multimídia M3 */}
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={4}
@@ -1552,7 +1383,7 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={5}
+            index={3}
             title="Artigo e Concordância — Casos Especiais Cesgranrio"
             variant={mv[3]}
           />
@@ -1596,7 +1427,7 @@ export default function AulaClassesPalavras({
             mode="stacked"
             titulo="Artigo com Nomes Próprios e Títulos"
             icone={<LuBookOpen />}
-            corIndicador="bg-amber-500"
+            corIndicador="bg-emerald-500"
             slides={[
               {
                 titulo: "Artigo com Nomes de Pessoas",
@@ -1614,12 +1445,14 @@ export default function AulaClassesPalavras({
           />
         </section>
 
+
+
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod3}
             titulo="QUIZ: Artigo: O Determinante"
             icone="🏷️"
-            numero={6}
+            numero={5}
             variant={mv[3]}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
@@ -1631,7 +1464,8 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={4}
           titulo="O Pronome"
           descricao="O substituto estratégico e o mestre da coesão textual."
-          variant={mv[4]} gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"/>
+          variant={mv[4]}
+        />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1775,7 +1609,7 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={2}
+            index={3}
             title="Colocação Pronominal"
             variant={mv[4]}
           />
@@ -1822,7 +1656,7 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={3}
+            index={4}
             title="Pronomes Possessivos, Demonstrativos e Relativos"
             variant={mv[4]}
           />
@@ -1830,7 +1664,7 @@ export default function AulaClassesPalavras({
             mode="stacked"
             titulo="Subclasses Essenciais"
             icone={<LuShield />}
-            corIndicador="bg-violet-500"
+            corIndicador="bg-rose-500"
             slides={[
               {
                 titulo: "Pronomes Possessivos",
@@ -1900,51 +1734,6 @@ export default function AulaClassesPalavras({
             Pronomes oblíquos tônicos (mim, ti, si, ele com preposição) são precedidos de preposição: "para mim", "consigo", "entre nós". O erro "entre eu e tu" é gravíssimo na norma culta. Correto: "entre mim e ti". A CESGRANRIO frequentemente apresenta reescritas que trocam "mim" por "eu" para testar o candidato.
           </AlertBox>
         </section>
-
-        {/* Resumo + Multimídia M4 */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={4}
-            title="Resumo e Multimídia"
-            variant={mv[4]}
-          />
-          <LessonTabs
-            tabs={[
-              {
-                id: "visual",
-                label: "Coesão",
-                icon: LuBrain,
-                content: (
-                  <ModuleSummaryCarouselNew
-                    tituloAula="Gramática de Elite"
-                    materia="Português"
-                    moduloNome="M4: Pronome"
-                    images={[
-                      {
-                        title: "Pronome",
-                        type: "Substituto",
-                        placeholderColor: "#8b5cf6",
-                      },
-                    ]}
-                  />
-                ),
-              },
-              {
-                id: "audio",
-                label: "Resumo Áudio",
-                icon: LuMusic,
-                content: (
-                   <MusicPlayerCard 
-                     titulo="O Dublê do Nome: Pronomes"
-                     artista="Resumo Morfologia"
-                     audioUrl=""
-                   />
-                ),
-              },
-            ]}
-          />
-        </section>
-
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={5}
@@ -1987,12 +1776,59 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
+
+
+
+
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={6}
+            title="Resumo e Multimídia"
+            variant={mv[4]}
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "visual",
+                label: "Coesão",
+                icon: LuBrain,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    tituloAula="Gramática de Elite"
+                    materia="Português"
+                    moduloNome="M4: Pronome"
+                    images={[
+                      {
+                        title: "Pronome",
+                        type: "Substituto",
+                        placeholderColor: "#8b5cf6",
+                      },
+                    ]}
+                  />
+                ),
+              },
+              {
+                id: "audio",
+                label: "Resumo Áudio",
+                icon: LuMusic,
+                content: (
+                   <MusicPlayerCard 
+                     titulo="O Dublê do Nome: Pronomes"
+                     artista="Resumo Morfologia"
+                     audioUrl=""
+                   />
+                ),
+              },
+            ]}
+          />
+        </section>
+
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod4}
             titulo="QUIZ: Pronome: O Substituto"
             icone="👤"
-            numero={6}
+            numero={7}
             variant={mv[4]}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
@@ -2004,11 +1840,104 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={5}
           titulo="O Verbo"
           descricao="A classe mais complexa e importante da língua portuguesa."
-          variant={mv[5]} gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"/>
+          variant={mv[5]}
+        />
+
+        {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="O Verbo: O Motor da Oração"
+            description="Domine a classe mais dinâmica e complexa, essencial para a construção do sentido e da temporalidade"
+            variant={mv[5]}
+          />
+
+          <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+            <p>
+              O verbo é o coração pulsante da língua portuguesa. Representa a classe de 
+              palavras que exprime ação, estado, mudança de estado, fenômeno natural ou 
+              processo, situando o fato no tempo. Segundo os ensinamentos de Bechara, 
+              o verbo é um "acontecimento" que confere dinamismo ao discurso. É a classe 
+              mais flexível e complexa, dobrando-se em modo, tempo, número, pessoa e voz 
+              para carregar toda a carga de verdade e intenção de quem fala. Sem o verbo, 
+              a linguagem seria uma galeria de estátuas; com ele, ela se torna um cinema 
+              em alta definição.
+            </p>
+
+            <p>
+              Para absorver o conceito intuitivamente, imagine o verbo como o "interruptor" 
+              ou o "acelerador" de uma máquina. Se os nomes (substantivos) são as peças 
+              paradas, o verbo é o que as coloca em funcionamento. Quando dizemos 
+              "A refinaria OPERA", o verbo tira a refinaria da inércia e a joga no 
+              fluxo do tempo. Ele é o componente que define se algo *é* (estático), 
+              *foi* (concluído) ou *será* (expectativa). O domínio do verbo permite que 
+              você controle o "quando" e o "como" das coisas, dando precisão cirúrgica 
+              ao seu raciocínio.
+            </p>
+
+            <p>
+              Morfologicamente, o verbo divide-se em radical (a base de sentido), 
+              vogal temática (que indica a conjugação: -AR, -ER, -IR) e as desinências 
+              modo-temporais e número-pessoais. As formas nominais — Infinitivo, Gerúndio 
+              e Particípio — são camaleões que assumem funções de substantivos ou 
+              adjetivos sem perder sua essência verbal. A conjugação regular segue trilhas 
+              previsíveis, mas são os verbos irregulares e defectivos (os "rebeldes" 
+              da gramática) que guardam as nuances mais sofisticadas e as armadilhas 
+              preferidas dos examinadores de elite.
+            </p>
+
+            <p>
+              No ambiente de alta responsabilidade da Petrobras, o verbo é o alicerce 
+              do procedimento de segurança. Ordens de serviço e manuais técnicos 
+              dependem da clareza dos verbos no Imperativo ("INSPECIONE a válvula", 
+              "VERIFIQUE a pressão") para garantir a integridade dos ativos e das 
+              equipes. O uso correto dos tempos verbais em relatórios de produção é 
+              crítico: uma coisa é o que "FOI extraído", outra é o que "SERIA extraído" 
+              sob certas condições. A ambiguidade verbal em uma norma interna pode 
+              levar a interpretações perigosas em campo; por isso, a precisão verbal 
+              é, antes de tudo, uma norma de segurança operacional.
+            </p>
+
+            <p>
+              A CESGRANRIO trata o verbo como a "Soberana das Provas". A banca foca 
+              pesadamente na correlação verbal — a harmonia obrigatória entre os tempos 
+              (ex: "Se ele TIVESSE estudado, PASSARIA"). Outro porto seguro dos 
+              examinadores são os verbos irregulares de alto impacto: VER, VIR, TER, 
+              HAVER, PROVER e REAVER. Eles testarão se você sabe que "Se você VIR o 
+              problema" (verbo ver) é o correto, e não "se você ver". Dominar as vozes 
+              verbais e a transposição da ativa para a passiva é o diferencial que 
+              separa os candidatos aptos daqueles que ficam pelo caminho.
+            </p>
+
+            <div className="bg-gradient-to-br from-violet-500/10 to-indigo-500/10 dark:from-violet-950/30 dark:to-indigo-950/30 rounded-lg border border-violet-200/50 dark:border-violet-800/50 p-6 space-y-4">
+              <h4 className="font-bold text-foreground text-lg">
+                O "Checklist" Mortal dos Verbos (CESGRANRIO)
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+                <div>
+                  <p className="font-semibold text-violet-700 dark:text-violet-300">Tempo & Modo</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Correlação: Imperfeito Subj. + Fut. Pretérito.</li>
+                    <li>• Futuro do Subjuntivo (VIR, TIVER, PUDER).</li>
+                    <li>• Imperativo (Ordens e Procedimentos).</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-violet-700 dark:text-violet-300">Vozes & Impessoalidade</p>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• HAVER (Existir) = Singular Sempre.</li>
+                    <li>• Transposição de Vozes (VTD → Voz Passiva).</li>
+                    <li>• Particípios Abundantes (Pago/Pagado).</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
           <ModuleSectionHeader
-            index={1}
+            index={2}
             title="Conceito e Classificação dos Verbos"
             variant={mv[5]}
           />
@@ -2022,7 +1951,7 @@ export default function AulaClassesPalavras({
             mode="stacked"
             titulo="Tipos de Verbos"
             icone={<LuActivity />}
-            corIndicador="bg-rose-500"
+            corIndicador="bg-violet-500"
             slides={[
               {
                 titulo: "Regulares",
@@ -2060,7 +1989,7 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={2}
+            index={3}
             title="Vozes Verbais e Passiva Pronominal"
             variant={mv[5]}
           />
@@ -2084,62 +2013,7 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
-        {/* Resumo + Multimídia M5 */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={5}
-            title="Resumo e Multimídia"
-            variant={mv[5]}
-          />
-          <LessonTabs
-            tabs={[
-              {
-                id: "laboratorio",
-                label: "Laboratório",
-                icon: LuActivity,
-                content: (
-                  <ContentAccordion
-                    mode="stacked"
-                    titulo=""
-                    icone={<LuActivity />}
-                    corIndicador="bg-rose-500"
-                    defaultOpen={true}
-                    slides={CONJ_SLIDES}
-                  />
-                ),
-              },
-              {
-                id: "video",
-                label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
-                  <div className="w-full flex flex-col items-center py-6">
-                    <div className="w-full max-w-3xl">
-                      <VideoModal
-                        videoId="dQw4w9WgXcQ"
-                        title="Verbos: O Motor da Oração"
-                        duration="25:00"
-                        thumbnail="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000"
-                      />
-                    </div>
-                  </div>
-                ),
-              },
-              {
-                id: "audio",
-                label: "Resumo Áudio",
-                icon: LuMusic,
-                content: (
-                   <MusicPlayerCard 
-                     titulo="Ação e Tempo: Domínio Verbal"
-                     artista="Resumo Morfologia"
-                     audioUrl=""
-                   />
-                ),
-              },
-            ]}
-          />
-        </section>
+
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
@@ -2207,7 +2081,7 @@ export default function AulaClassesPalavras({
             mode="stacked"
             titulo="Os Três Modos"
             icone={<LuZap />}
-            corIndicador="bg-rose-500"
+            corIndicador="bg-violet-500"
             slides={[
               {
                 titulo: "Modo Indicativo",
@@ -2234,12 +2108,264 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
+          <ModuleSectionHeader
+            index={5}
+            title="Laboratório de Conjugações Verbais"
+            description="Explore os modelos de conjugação regular e irregular divididos pelos três modos fundamentais"
+            variant={mv[5]}
+          />
+          
+          {/* MODO INDICATIVO */}
+          <ContentAccordion
+            mode="stacked"
+            titulo="Modo Indicativo: O Mundo dos Fatos"
+            icone="🔵"
+            corIndicador="bg-violet-500"
+            defaultOpen={true}
+            slides={[{
+              conteudo: (
+                <div className="space-y-12">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {/* REGULARES INDICATIVO */}
+                    <div className="space-y-4">
+                      <p className="font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider text-sm">Modelos Regulares</p>
+                      <div className="p-5 bg-white/5 border border-border rounded-xl space-y-6">
+                        <div>
+                          <p className="font-bold text-lg mb-2">-AR: Cantar (Pret. Perfeito)</p>
+                          {renderConj("cantei", "cantaste", "cantou", "cantamos", "cantastes", "cantaram")}
+                        </div>
+                        <div className="pt-4 border-t border-border/50">
+                          <p className="font-bold text-lg mb-2">-ER: Beber (Presente)</p>
+                          {renderConj("bebo", "bebes", "bebe", "bebemos", "bebeis", "bebem")}
+                        </div>
+                        <div className="pt-4 border-t border-border/50">
+                          <p className="font-bold text-lg mb-2">-IR: Abrir (Fut. Presente)</p>
+                          {renderConj("abrirei", "abrirás", "abrirá", "abriremos", "abrireis", "abrirão")}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* IRREGULARES INDICATIVO */}
+                    <div className="md:col-span-2 space-y-4">
+                      <p className="font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider text-sm">Modelos Irregulares (Alto Impacto)</p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-5 bg-rose-500/5 border border-rose-500/20 rounded-xl space-y-6">
+                          <div>
+                            <p className="font-black text-lg text-rose-700 dark:text-rose-300 mb-2">✦ SER (Presente)</p>
+                            {renderConj("sou", "és", "é", "somos", "sois", "são")}
+                          </div>
+                          <div className="pt-4 border-t border-rose-500/10">
+                            <p className="font-black text-lg text-rose-700 dark:text-rose-300 mb-2">✦ TER (Pres. Indicativo)</p>
+                            {renderConj("tenho", "tens", "tem", "temos", "tendes", "têm")}
+                            <p className="text-xs text-muted-foreground mt-2 italic">Atenção ao acento diferencial no plural!</p>
+                          </div>
+                        </div>
+                        <div className="p-5 bg-rose-500/5 border border-rose-500/20 rounded-xl space-y-6">
+                          <div>
+                            <p className="font-black text-lg text-rose-700 dark:text-rose-300 mb-2">✦ HAVER (Pret. Perf.)</p>
+                            {renderConj("houve", "houveste", "houve", "houvemos", "houvestes", "houveram")}
+                          </div>
+                          <div className="pt-4 border-t border-rose-500/10">
+                            <p className="font-black text-lg text-rose-700 dark:text-rose-300 mb-2">✦ VER (Pres. Indicativo)</p>
+                            {renderConj("vejo", "vês", "vê", "vemos", "vedes", "veem")}
+                            <p className="text-xs text-muted-foreground mt-2 italic font-bold">🚫 Não tem acento em 'veem' (Novo Acordo).</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <AlertBox tipo="info" titulo="Dica de Ouro: Indicativo">
+                    No modo indicativo, o **Pretérito Imperfeito** dos verbos em -AR terminam sempre em **-AVA** (Cantava, Estudava). Já os de -ER e -IR terminam em **-IA** (Bebia, Partia). É a marca visual da descrição no passado.
+                  </AlertBox>
+                </div>
+              )
+            }]}
+          />
+
+          {/* MODO SUBJUNTIVO */}
+          <ContentAccordion
+            mode="stacked"
+            titulo="Modo Subjuntivo: O Mundo das Hipóteses"
+            icone="🟡"
+            corIndicador="bg-violet-500"
+            defaultOpen={false}
+            slides={[{
+              conteudo: (
+                <div className="space-y-12">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {/* REGULARES SUBJUNTIVO */}
+                    <div className="space-y-4">
+                      <p className="font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider text-sm">Modelos Regulares</p>
+                      <div className="p-5 bg-white/5 border border-border rounded-xl space-y-6">
+                        <div>
+                          <p className="font-bold text-lg mb-2">-AR: Estudar (Presente)</p>
+                          {renderConj("estude", "estudes", "estude", "estudemos", "estudeis", "estudem", "que")}
+                        </div>
+                        <div className="pt-4 border-t border-border/50">
+                          <p className="font-bold text-lg mb-2">-ER: Vender (Pret. Imperf.)</p>
+                          {renderConj("vendesse", "vendessem", "vendesse", "vendêssemos", "vendêsseis", "vendessem", "se")}
+                        </div>
+                        <div className="pt-4 border-t border-border/50">
+                          <p className="font-bold text-lg mb-2">-IR: Partir (Futuro)</p>
+                          {renderConj("partir", "partires", "partir", "partirmos", "partirdes", "partirem", "quando")}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* IRREGULARES SUBJUNTIVO */}
+                    <div className="md:col-span-2 space-y-4">
+                      <p className="font-bold text-amber-800 dark:text-amber-200 uppercase tracking-wider text-sm">Modelos Irregulares (Onde a Banca Ataca)</p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-5 bg-amber-500/5 border border-amber-500/20 rounded-xl space-y-6">
+                          <div>
+                            <p className="font-black text-lg text-amber-700 dark:text-amber-300 mb-2">✦ SEJA (Verbo Ser)</p>
+                            {renderConj("seja", "sejas", "seja", "sejamos", "sejais", "sejam", "que")}
+                          </div>
+                          <div className="pt-4 border-t border-amber-500/10">
+                            <p className="font-black text-lg text-amber-700 dark:text-amber-300 mb-2">✦ TIVER (Verbo Ter)</p>
+                            {renderConj("tiver", "tiveres", "tiver", "tivermos", "tiverdes", "tiverem", "quando")}
+                            <p className="text-xs text-muted-foreground mt-2 italic">Atenção: Não confunda com 'tenha'!</p>
+                          </div>
+                        </div>
+                        <div className="p-5 bg-amber-500/5 border border-amber-500/20 rounded-xl space-y-6">
+                          <div>
+                            <p className="font-black text-lg text-amber-700 dark:text-amber-300 mb-2">✦ HOUVESSE (Verbo Haver)</p>
+                            {renderConj("houvesse", "houvesses", "houvesse", "houvéssemos", "houvésseis", "houvessero", "se")}
+                          </div>
+                          <div className="pt-4 border-t border-amber-500/10">
+                            <p className="font-black text-lg text-amber-700 dark:text-amber-300 mb-2">✦ VIER (Verbo Vir)</p>
+                            {renderConj("vier", "vieres", "vier", "viermos", "vierdes", "vierem", "quando")}
+                            <p className="text-xs text-muted-foreground mt-2 italic text-rose-500 font-bold">⚠️ VIER (Vir) vs VER (Ver).</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <AlertBox tipo="warning" titulo="Pegadinha: Futuro do Subjuntivo">
+                    Muitos verbos irregulares no **Futuro do Subjuntivo** são idênticos ao **Infinitivo Pessoal** nos regulares (se estudar / quando estudar). Mas nos irregulares a diferença é gritante: *Se eu vir* (do verbo Ver) vs *Se eu vier* (do verbo Vir). Estude estes dois!
+                  </AlertBox>
+                </div>
+              )
+            }]}
+          />
+
+          {/* MODO IMPERATIVO */}
+          <ContentAccordion
+            mode="stacked"
+            titulo="Modo Imperativo: O Mundo das Ordens"
+            icone="🔴"
+            corIndicador="bg-violet-500"
+            defaultOpen={false}
+            slides={[{
+              conteudo: (
+                <div className="space-y-12">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* LÓGICA DO IMPERATIVO */}
+                    <div className="p-8 bg-slate-950 text-white rounded-3xl space-y-6 border-b-4 border-rose-600 shadow-2xl relative overflow-hidden">
+                      <div className="absolute top-0 right-0 p-4 opacity-10">
+                        <LuZap size={80} />
+                      </div>
+                      <h4 className="text-2xl font-black italic tracking-tighter text-rose-500">A REGRA DE FORMAÇÃO</h4>
+                      <p className="text-lg text-slate-300 leading-relaxed">
+                        O Imperativo não tem a 1ª pessoa (eu). O **Imperativo Afirmativo** retira o "Tu" e o "Vós" do Presente do Indicativo (sem o "S") e as demais do Subjuntivo. O **Imperativo Negativo** é 100% vindo do Presente do Subjuntivo.
+                      </p>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                          <p className="text-rose-400 font-bold mb-1">Afirmativo</p>
+                          <p className="text-sm font-mono italic">Canta tu!</p>
+                          <p className="text-sm font-mono italic">Cante você!</p>
+                        </div>
+                        <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                          <p className="text-rose-400 font-bold mb-1">Negativo</p>
+                          <p className="text-sm font-mono italic">Não cantes tu!</p>
+                          <p className="text-sm font-mono italic">Não cante você!</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* EXEMPLOS DE IMPACTO */}
+                    <div className="space-y-6">
+                      <div className="flex items-start gap-4 p-5 bg-white/5 border border-border rounded-2xl hover:bg-white/10 transition-colors">
+                        <div className="p-3 bg-blue-500/20 text-blue-500 rounded-lg font-bold">REG</div>
+                        <div>
+                          <p className="font-bold text-lg">Modelo -AR: Falar</p>
+                          <p className="text-muted-foreground italic">"Fala tu, fale você, falemos nós..."</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-4 p-5 bg-white/5 border border-border rounded-2xl hover:bg-white/10 transition-colors">
+                        <div className="p-3 bg-emerald-500/20 text-emerald-500 rounded-lg font-bold">REG</div>
+                        <div>
+                          <p className="font-bold text-lg">Modelo -ER: Comer</p>
+                          <p className="text-muted-foreground italic">"Come tu, coma você, comamos nós..."</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-4 p-5 bg-rose-500/10 border border-rose-500/20 rounded-2xl hover:bg-rose-500/20 transition-colors">
+                        <div className="p-3 bg-rose-500/20 text-rose-500 rounded-lg font-bold">IRR</div>
+                        <div>
+                          <p className="font-bold text-lg">✦ Verbo SER (O mais cobrado)</p>
+                          <p className="text-rose-600 dark:text-rose-400 font-black italic">"Sê tu, seja você, sejamos nós, sede vós, sejam vocês!"</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <AlertBox tipo="danger" titulo="Vossa Excelência e o Imperativo">
+                    Pronomes de tratamento exigem sempre a **3ª pessoa**, mesmo que você esteja falando DIRETAMENTE com a pessoa. Logo: "Vossa Excelência, **fale** (você) agora" e nunca "**fala**" (tu).
+                  </AlertBox>
+                </div>
+              )
+            }]}
+          />
+        </section>
+
+        {/* 6. Resumo e Multimídia M5 (Penúltimo) */}
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={6}
+            title="Resumo e Multimídia"
+            variant={mv[5]}
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "video",
+                label: "Vídeo Aula",
+                icon: LuPlayCircle,
+                content: (
+                  <div className="w-full flex flex-col items-center py-6">
+                    <div className="w-full max-w-3xl">
+                      <VideoModal
+                        videoId="dQw4w9WgXcQ"
+                        title="Verbos: O Motor da Oração"
+                        duration="25:00"
+                        thumbnail="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000"
+                      />
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                id: "audio",
+                label: "Resumo Áudio",
+                icon: LuMusic,
+                content: (
+                   <MusicPlayerCard 
+                     titulo="Ação e Tempo: Domínio Verbal"
+                     artista="Resumo Morfologia"
+                     audioUrl=""
+                   />
+                ),
+              },
+            ]}
+          />
+        </section>
+
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod5}
             titulo="QUIZ: Verbo: O Motor da Oração"
             icone="⚡"
-            numero={6}
+            numero={7}
             variant={mv[5]}
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
@@ -2251,7 +2377,8 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={6}
           titulo="O Advérbio"
           descricao="O modificador invariável e as armadilhas das palavras camaleão."
-          variant={mv[6]} gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"/>
+          variant={mv[6]}
+        />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2405,7 +2532,7 @@ export default function AulaClassesPalavras({
             mode="stacked"
             titulo="Advérbios em Detalhe"
             icone={<LuNavigation />}
-            corIndicador="bg-amber-500"
+            corIndicador="bg-amber-600"
             slides={[
               {
                 titulo: "Locuções Adverbiais",
@@ -2453,7 +2580,8 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
-        {/* Resumo + Multimídia M6 */}
+
+
         <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={4}
@@ -2517,7 +2645,8 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={7}
           titulo="A Preposição"
           descricao="O elo de subordinação essencial para a regência e a crase."
-          variant={mv[7]} gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"/>
+          variant={mv[7]}
+        />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2647,7 +2776,7 @@ export default function AulaClassesPalavras({
             mode="stacked"
             titulo="Classificação das Preposições"
             icone={<LuLink2 />}
-            corIndicador="bg-slate-500"
+            corIndicador="bg-blue-600"
             slides={[
               {
                 titulo: "Preposições Essenciais",
@@ -2680,41 +2809,11 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
-        {/* Resumo + Multimídia M7 */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={3}
-            title="Resumo e Multimídia"
-            variant={mv[7]}
-          />
-          <LessonTabs
-            tabs={[
-              {
-                id: "visual",
-                label: "Conectores",
-                icon: LuBrain,
-                content: (
-                  <ModuleSummaryCarouselNew
-                    tituloAula="Gramática de Elite"
-                    materia="Português"
-                    moduloNome="M7: Preposição"
-                    images={[
-                      {
-                        title: "Preposição",
-                        type: "Elo de Ligação",
-                        placeholderColor: "#64748b",
-                      },
-                    ]}
-                  />
-                ),
-              },
-            ]}
-          />
-        </section>
+
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={4}
+            index={3}
             title="Preposição e Regência — Os Verbos Mais Cobrados"
             variant={mv[7]}
           />
@@ -2744,6 +2843,49 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
+        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={4}
+            title="Resumo e Multimídia"
+            variant={mv[7]}
+          />
+          <LessonTabs
+            tabs={[
+              {
+                id: "visual",
+                label: "Mapa de Regência",
+                icon: LuBrain,
+                content: (
+                  <ModuleSummaryCarouselNew
+                    tituloAula="Gramática de Elite"
+                    materia="Português"
+                    moduloNome="M7: Preposição"
+                    images={[
+                      {
+                        title: "Preposição",
+                        type: "Conector",
+                        placeholderColor: "#3b82f6",
+                      },
+                    ]}
+                  />
+                ),
+              },
+              {
+                id: "audio",
+                label: "Resumo Áudio",
+                icon: LuMusic,
+                content: (
+                   <MusicPlayerCard 
+                     titulo="O Elo de Ferro: Preposições"
+                     artista="Resumo Morfologia"
+                     audioUrl=""
+                   />
+                ),
+              },
+            ]}
+          />
+        </section>
+
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod7}
@@ -2761,7 +2903,8 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={8}
           titulo="A Conjunção"
           descricao="Os conectivos que articulam as ideias e as orações."
-          variant={mv[8]} gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"/>
+          variant={mv[8]}
+        />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2897,7 +3040,7 @@ export default function AulaClassesPalavras({
             mode="stacked"
             titulo="Os 5 Tipos Coordenativos"
             icone={<LuLink2 />}
-            corIndicador="bg-indigo-500"
+            corIndicador="bg-emerald-600"
             slides={[
               {
                 titulo: "Aditivas (Adição)",
@@ -3024,11 +3167,13 @@ export default function AulaClassesPalavras({
           />
         </section>
 
+
+
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod8}
-            titulo="QUIZ: Conjunção: O Cimento do Texto"
-            icone="⚙️"
+            titulo="QUIZ: Conjunção: A Engrenagem"
+            icone="🔗"
             numero={5}
             variant={mv[8]}
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
@@ -3041,7 +3186,8 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={9}
           titulo="A Interjeição"
           descricao="A expressão das emoções e as regras sutis de pontuação."
-          variant={mv[9]} gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"/>
+          variant={mv[9]}
+        />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -3148,7 +3294,7 @@ export default function AulaClassesPalavras({
             mode="stacked"
             titulo="Tipos de Interjeição"
             icone={<LuMusic />}
-            corIndicador="bg-pink-500"
+            corIndicador="bg-rose-600"
             slides={[
               {
                 titulo: "Interjeições de Alegria / Satisfação",
@@ -3186,8 +3332,8 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Resumo e Multimídia"
-            variant={mv[8]}
-          />
+          variant={mv[9]}
+        />
           <LessonTabs
             tabs={[
               {
@@ -3253,12 +3399,14 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
+
+
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod9}
             titulo="QUIZ: Interjeição: A Emoção"
             icone="⚡"
-            numero={5}
+            numero={6}
             variant={mv[9]}
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
@@ -3270,7 +3418,8 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={10}
           titulo="O Numeral"
           descricao="Quantidades, ordens e a pegadinha do numeral dual."
-          variant={mv[10]} gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"/>
+          variant={mv[10]}
+        />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -3369,7 +3518,7 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index={2}
             title="Cardinais vs Ordinais"
             variant={mv[10]}
           />
@@ -3391,7 +3540,7 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={2}
+            index={3}
             title="Multiplicativos, Fracionários e Coletivos"
             variant={mv[10]}
           />
@@ -3399,7 +3548,7 @@ export default function AulaClassesPalavras({
             mode="stacked"
             titulo="Todos os Tipos de Numeral"
             icone={<LuHash />}
-            corIndicador="bg-emerald-500"
+            corIndicador="bg-violet-600"
             slides={[
               {
                 titulo: "Multiplicativos",
@@ -3449,7 +3598,7 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={3}
+            index={4}
             title="Revisão Express — As 10 Classes de Palavras"
             variant={mv[10]}
           />
@@ -3457,7 +3606,7 @@ export default function AulaClassesPalavras({
             mode="stacked"
             titulo="Consolidação Final"
             icone={<LuBrain />}
-            corIndicador="bg-emerald-500"
+            corIndicador="bg-violet-600"
             slides={[
               {
                 titulo: "Classes Variáveis (flexionam)",
@@ -3485,56 +3634,16 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
-        {/* Resumo + Multimídia M10 */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={4}
-            title="Resumo e Multimídia"
-            variant={mv[10]}
-          />
-          <LessonTabs
-            tabs={[
-              {
-                id: "visual",
-                label: "Atalho Numeral",
-                icon: LuBrain,
-                content: (
-                  <ModuleSummaryCarouselNew
-                    tituloAula="Gramática de Elite"
-                    materia="Português"
-                    moduloNome="M10: Numeral"
-                    images={[
-                      {
-                        title: "Numeral",
-                        type: "Quantificação",
-                        placeholderColor: "#10b981",
-                      },
-                    ]}
-                  />
-                ),
-              },
-              {
-                id: "audio",
-                label: "Resumo Áudio",
-                icon: LuMusic,
-                content: (
-                   <MusicPlayerCard 
-                     titulo="GPS da Precisão: Numeral"
-                     artista="Resumo Morfologia"
-                     audioUrl=""
-                   />
-                ),
-              },
-            ]}
-          />
-        </section>
+
+
+
 
         <section className="mt-16">
           <QuizInterativo
             questoes={qMod10}
             titulo="QUIZ: Numeral: A Quantidade"
             icone="🔢"
-            numero={5}
+            numero={6}
             variant={mv[10]}
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
           />

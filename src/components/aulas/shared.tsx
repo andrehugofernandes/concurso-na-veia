@@ -779,6 +779,7 @@ export function FlipCard({
   categoria = "Língua Portuguesa",
   hideFooter = false,
   variant,
+  className = "h-[460px]", // Aumentado de 350px para evitar barra de rolagem
 }: {
   frente: React.ReactNode;
   verso: React.ReactNode;
@@ -786,12 +787,13 @@ export function FlipCard({
   categoria?: string;
   hideFooter?: boolean;
   variant?: string;
+  className?: string; // Permitir override customizado se precisar
 }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
     <div
-      className="group w-full h-[350px] [perspective:1200px] cursor-pointer"
+      className={cn("group w-full [perspective:1200px] cursor-pointer", className)}
       onClick={() => setIsFlipped(!isFlipped)}
     >
       <motion.div

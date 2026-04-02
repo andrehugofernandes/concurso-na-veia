@@ -210,7 +210,8 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={1}
             titulo="Fundamentos & Princípio da Balança"
             descricao="A base: isolar a incógnita na balança invisível. Operação inversa é LEI."
-             variant={mv[1]}/>
+          variant={mv[1]}
+        />
 
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -218,8 +219,8 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Equação de 1º Grau: A Linguagem Algébrica da Balança"
               description="O conceito fundamental que permite resolver qualquer problema com uma incógnita desconhecida"
-              variant="amber"
-            />
+          variant={mv[1]}
+        />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -262,8 +263,8 @@ export default function AulaEquacoes1Grau({
               index={2}
               title="Protocolo de Três Passos para Resolver Qualquer Equação de 1º Grau"
               description="A sequência mecânica que SEMPRE funciona, sem exceção"
-              variant="amber"
-            />
+          variant={mv[1]}
+        />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -297,8 +298,8 @@ export default function AulaEquacoes1Grau({
               index={3}
               title="A Mecânica das Equações de 1º Grau"
               description="Dominando a balança matemática: o que você faz de um lado, faz do outro."
-              variant="blue"
-            />
+          variant={mv[1]}
+        />
 
             <p className="text-muted-foreground leading-relaxed text-lg">
               Uma <strong>equação do 1º grau</strong> é uma igualdade que contém
@@ -424,7 +425,8 @@ export default function AulaEquacoes1Grau({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-amber-500"
+        />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FlipCard
@@ -521,7 +523,6 @@ export default function AulaEquacoes1Grau({
 
 <ModuleConsolidation
             index={4}
-            variant="indigo"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 1",
@@ -553,16 +554,17 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          />
+          variant={mv[1]}
+        />
 
                     <QuizInterativo
             questoes={quizM1}
             titulo="QUIZ: Fundamentos & Balança"
             numero={5}
-            variant="blue"
             icone="🧠"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          />
+          variant={mv[1]}
+        />
 
           <div className="space-y-8 bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
             <h3 className="text-2xl font-bold">Resumo Visual</h3>
@@ -589,7 +591,8 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={2}
             titulo="Tradução de Problemas: Português → Matemática"
             descricao="A habilidade que separa os 70% dos 90%: ler e converter em equação."
-             variant={mv[2]}/>
+          variant={mv[2]}
+        />
 
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -597,8 +600,8 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Do Português para a Linguagem Algébrica: A Tradução Crítica"
               description="Converter palavras em símbolos matemáticos — a barreira entre ler um problema e resolvê-lo"
-              variant="blue"
-            />
+          variant={mv[2]}
+        />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -639,8 +642,8 @@ export default function AulaEquacoes1Grau({
               index={2}
               title="O Dicionário Operacional"
               description="Como a CESGRANRIO pensa em português e a gente converte para x."
-              variant="emerald"
-            />
+          variant={mv[2]}
+        />
 
             <ContentAccordion
               slides={[
@@ -806,7 +809,8 @@ export default function AulaEquacoes1Grau({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-blue-500"
+        />
 
             <CardCarousel
               titulo="Problemas Reais (Contexto Petrobras)"
@@ -899,7 +903,6 @@ export default function AulaEquacoes1Grau({
 
 <ModuleConsolidation
             index={4}
-            variant="emerald"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 2",
@@ -931,16 +934,17 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          />
+          variant={mv[2]}
+        />
 
                     <QuizInterativo
             questoes={quizM2}
             titulo="QUIZ: Tradução de Problemas"
             numero={5}
-            variant="emerald"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          />
+          variant={mv[2]}
+        />
         </div>
       </TabsContent>
 
@@ -949,7 +953,7 @@ export default function AulaEquacoes1Grau({
           index={3}
           title="Interpretação Avançada: Pegadinhas Comuns de Tradução"
           description="Onde candidatos escorregam (e como você vai se safar)"
-          variant="rose"
+          variant={mv[2]}
         />
 
         <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -985,7 +989,8 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={3}
             titulo="Equações com Frações: O Aniquilador de Denominador"
             descricao="Como destruir frações em um único golpe: MMC. Nunca mais sofrer com ÷."
-             variant={mv[3]}/>
+          variant={mv[3]}
+        />
 
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -993,8 +998,8 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Equações com Frações: Eliminando o Denominador Antes de Começar"
               description="O segredo para eliminar 90% da complexidade — multiplicar tudo pelo MMC no primeiro passo"
-              variant="emerald"
-            />
+          variant={mv[3]}
+        />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -1036,8 +1041,8 @@ export default function AulaEquacoes1Grau({
               index={2}
               title="Limpando Frações Rápidamente"
               description="Frações atraem erros. Seu objetivo: eliminá-las no PRIMEIRO passo."
-              variant="amber"
-            />
+          variant={mv[3]}
+        />
 
             <ContentAccordion
               slides={[
@@ -1141,7 +1146,8 @@ export default function AulaEquacoes1Grau({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-emerald-500"
+        />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FlipCard
@@ -1201,7 +1207,6 @@ export default function AulaEquacoes1Grau({
 
 <ModuleConsolidation
             index={4}
-            variant="cyan"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 3",
@@ -1233,16 +1238,17 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          />
+          variant={mv[3]}
+        />
 
                     <QuizInterativo
             questoes={quizM3}
             titulo="QUIZ: Equações com Frações"
             numero={5}
-            variant="amber"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          />
+          variant={mv[3]}
+        />
         </div>
       </TabsContent>
 
@@ -1251,7 +1257,7 @@ export default function AulaEquacoes1Grau({
           index={3}
           title="Casos Especiais: Equações Degeneradas e Indeterminadas"
           description="Quando MMC é apenas meia história"
-          variant="emerald"
+          variant={mv[3]}
         />
 
         <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1285,7 +1291,8 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={4}
             titulo="Sistemas Lineares 2x2"
             descricao="Duas equações, duas incógnitas. Método da Adição vs Substituição."
-             variant={mv[4]}/>
+          variant={mv[4]}
+        />
 
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1293,8 +1300,8 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Sistemas de Duas Equações e Duas Incógnitas"
               description="Quando você tem dois valores desconhecidos e duas pistas — usar múltiplas informações simultaneamente"
-              variant="rose"
-            />
+          variant={mv[4]}
+        />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -1336,8 +1343,8 @@ export default function AulaEquacoes1Grau({
               index={2}
               title="Dominando X e Y"
               description="Quando você tem duas balas para dois alvos."
-              variant="cyan"
-            />
+          variant={mv[4]}
+        />
 
             <ContentAccordion
               slides={[
@@ -1464,7 +1471,8 @@ export default function AulaEquacoes1Grau({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-rose-500"
+        />
           </section>
 
 
@@ -1486,7 +1494,6 @@ export default function AulaEquacoes1Grau({
 
 <ModuleConsolidation
             index={3}
-            variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 4",
@@ -1518,16 +1525,17 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          />
+          variant={mv[4]}
+        />
 
                     <QuizInterativo
             questoes={quizM4}
             titulo="QUIZ: Sistemas Lineares"
             numero={4}
-            variant="cyan"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          />
+          variant={mv[4]}
+        />
         </div>
       </TabsContent>
 
@@ -1537,15 +1545,16 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={5}
             titulo="Simulado Parcial"
             descricao="Reúna tudo dos Módulos 1-4. Você está no caminho certo?"
-             variant={mv[5]}/>
+          variant={mv[5]}
+        />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Checkpoint: Revisão Progressiva"
               description="Teste seus conhecimentos antes de avançar para inequações e sistemas avançados."
-              variant="indigo"
-            />
+          variant={mv[5]}
+        />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
               <p>
@@ -1631,7 +1640,6 @@ export default function AulaEquacoes1Grau({
 
 <ModuleConsolidation
             index={2}
-            variant="amber"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 5",
@@ -1663,16 +1671,17 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          />
+          variant={mv[5]}
+        />
 
                     <QuizInterativo
             questoes={quizM5}
             titulo="QUIZ: Simulado Parcial (M1-M4)"
             numero={3}
-            variant="indigo"
             icone="📋"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          />
+          variant={mv[5]}
+        />
         </div>
       </TabsContent>
 
@@ -1684,8 +1693,8 @@ export default function AulaEquacoes1Grau({
             descricao={
               "Equações ao contrário: > e <. Regra do Sinal INVERTE ao dividir por negativo."
             }
-            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
-          />
+          variant={mv[6]}
+        />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1694,8 +1703,8 @@ export default function AulaEquacoes1Grau({
               description={
                 "Quando a igualdade (=) vira desigualdade (>, <, ≥, ≤)."
               }
-              variant="rose"
-            />
+          variant={mv[6]}
+        />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
               <p>
@@ -1844,7 +1853,8 @@ export default function AulaEquacoes1Grau({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-amber-600"
+        />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FlipCard
@@ -1905,7 +1915,6 @@ export default function AulaEquacoes1Grau({
 
 <ModuleConsolidation
             index={2}
-            variant="rose"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 6",
@@ -1937,16 +1946,17 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          />
+          variant={mv[6]}
+        />
 
                     <QuizInterativo
             questoes={quizM6}
             titulo="QUIZ: Inequações de 1º Grau"
             numero={3}
-            variant="rose"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
-          />
+          variant={mv[6]}
+        />
         </div>
       </TabsContent>
 
@@ -1956,15 +1966,16 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={7}
             titulo="Sistemas Lineares Avançados (3x3)"
             descricao="Três equações, três incógnitas. Eliminação de Gauss (simplificado)."
-             variant={mv[7]}/>
+          variant={mv[7]}
+        />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Da Dimensão 2x2 para 3x3"
               description="Mesma estratégia: isolar incógnitas progressivamente."
-              variant="violet"
-            />
+          variant={mv[7]}
+        />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
               <p>
@@ -2125,7 +2136,8 @@ export default function AulaEquacoes1Grau({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-blue-600"
+        />
           </section>
 
 
@@ -2147,7 +2159,6 @@ export default function AulaEquacoes1Grau({
 
 <ModuleConsolidation
             index={2}
-            variant="indigo"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 7",
@@ -2179,16 +2190,17 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          />
+          variant={mv[7]}
+        />
 
                     <QuizInterativo
             questoes={quizM7}
             titulo="QUIZ: Sistemas 3x3 & Avançado"
             numero={3}
-            variant="violet"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
-          />
+          variant={mv[7]}
+        />
         </div>
       </TabsContent>
 
@@ -2198,15 +2210,16 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={8}
             titulo="Resolução Reversa e Verificação"
             descricao="Trabalhe de trás para frente: dado o resultado, é a solução certa?"
-             variant={mv[8]}/>
+          variant={mv[8]}
+        />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Técnica de Prova: Substituição na Equação Original"
               description="A verificação não é luxo, é necessidade na CESGRANRIO."
-              variant="cyan"
-            />
+          variant={mv[8]}
+        />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
               <p>
@@ -2377,7 +2390,8 @@ export default function AulaEquacoes1Grau({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-emerald-600"
+        />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FlipCard
@@ -2440,7 +2454,6 @@ export default function AulaEquacoes1Grau({
 
 <ModuleConsolidation
             index={2}
-            variant="emerald"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 8",
@@ -2472,16 +2485,17 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          />
+          variant={mv[8]}
+        />
 
                     <QuizInterativo
             questoes={quizM8}
             titulo="QUIZ: Resolução Reversa"
             numero={3}
-            variant="cyan"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
-          />
+          variant={mv[8]}
+        />
         </div>
       </TabsContent>
 
@@ -2491,15 +2505,16 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={9}
             titulo="Aplicações Petrobras & Contextos Reais"
             descricao="Onde as equações vivem: RNEST, RPBC, caldeiras, licitações, folha de pagamento."
-             variant={mv[9]}/>
+          variant={mv[9]}
+        />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Problemas Contextualizados Petrobras"
               description="A CESGRANRIO adora disfarçar equações em situações reais da empresa."
-              variant="amber"
-            />
+          variant={mv[9]}
+        />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
               <p>
@@ -2670,7 +2685,8 @@ export default function AulaEquacoes1Grau({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-rose-600"
+        />
 
             <CardCarousel
               titulo="Casos Petrobras Clássicos"
@@ -2766,7 +2782,6 @@ export default function AulaEquacoes1Grau({
 
 <ModuleConsolidation
             index={2}
-            variant="cyan"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 9",
@@ -2798,16 +2813,17 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          />
+          variant={mv[9]}
+        />
 
                     <QuizInterativo
             questoes={quizM9}
             titulo="QUIZ: Aplicações Petrobras"
             numero={3}
-            variant="amber"
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
-          />
+          variant={mv[9]}
+        />
         </div>
       </TabsContent>
 
@@ -2817,7 +2833,8 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre — Elite Masterclass"
             descricao="Reúna TUDO: balança, sistemas, inequações, contextos. 90+ = domínio total."
-             variant={mv[10]}/>
+          variant={mv[10]}
+        />
 
           {showCompletionBadge ? (
             <div className="flex flex-col items-center gap-6 py-10 mt-10">
@@ -2842,8 +2859,8 @@ export default function AulaEquacoes1Grau({
                   index={1}
                   title="Avaliação Final Compreensiva"
                   description="Este simulado cobre TODOS os tópicos: M1 até M9. Mínimo 75% para aprovação."
-                  variant="slate"
-                />
+          variant={mv[10]}
+        />
 
                 <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
                   <p>
@@ -2929,7 +2946,6 @@ export default function AulaEquacoes1Grau({
 
 <ModuleConsolidation
             index={2}
-            variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 10",
@@ -2961,16 +2977,17 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          />
+          variant={mv[10]}
+        />
 
                         <QuizInterativo
                 questoes={quizFinal}
                 titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={3}
-                variant="slate"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
-              />
+          variant={mv[10]}
+        />
             </section>
           )}
 

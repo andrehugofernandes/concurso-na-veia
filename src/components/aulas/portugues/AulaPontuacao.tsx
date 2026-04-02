@@ -1,3 +1,4 @@
+import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
@@ -70,6 +71,8 @@ const MODULE_DEFS = [
   { id: "modulo-9", label: "Módulo 9", title: "Sinais Complementares" },
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Final" },
 ] as const;
+
+const mv = [undefined, ...getAllModuleVariants()];
 
 export default function AulaPontuacao({
   titulo,
@@ -174,14 +177,14 @@ export default function AulaPontuacao({
             numero={1}
             titulo="Visão Geral e Funções"
             descricao="Pontuar não é apenas pausar para respirar; é garantir a clareza e a coesão do texto técnico."
-            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
-          />
+          variant={mv[1]}
+        />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="As Finalidades da Pontuação"
-              variant="blue"
-            />
+          variant={mv[1]}
+        />
             <CardCarousel
               cards={[
                 {
@@ -222,8 +225,8 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Os Sinais e Suas Funções"
-              variant="blue"
-            />
+          variant={mv[1]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -325,15 +328,16 @@ export default function AulaPontuacao({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-amber-500"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={3}
               title="Pontuação Normativa × Pontuação Expressiva"
-              variant="blue"
-            />
+          variant={mv[1]}
+        />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente={
@@ -387,9 +391,9 @@ export default function AulaPontuacao({
             titulo="QUIZ: Módulo Nº 1"
             icone="🎯"
             numero={4}
-            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          />
+          variant={mv[1]}
+        />
         </div>
       </TabsContent>
 
@@ -400,14 +404,14 @@ export default function AulaPontuacao({
             numero={2}
             titulo="Vírgula: Proibições Fatais"
             descricao="O que NUNCA fazer se você quiser ser aprovado. Erros que zeram questões de gramática."
-            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
-          />
+          variant={mv[2]}
+        />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={2}
               title="Scanner de Erros Fatais"
-              variant="rose"
-            />
+          variant={mv[2]}
+        />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <AlertBox tipo="danger" titulo="Não Separe o Sujeito">
                 Nunca coloque vírgula isolando o sujeito de seu verbo.
@@ -440,8 +444,8 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={3}
               title="Catálogo Completo das Proibições"
-              variant="rose"
-            />
+          variant={mv[2]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -557,7 +561,8 @@ export default function AulaPontuacao({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-blue-500"
+        />
             <AlertBox tipo="danger" titulo="Armadilha Cesgranrio Clássica">
               A banca costuma apresentar sujeitos muito longos (com várias
               frases preposicionais intercaladas) para induzir o candidato a
@@ -572,8 +577,8 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={4}
               title="Teste Rápido: Certo ou Errado?"
-              variant="rose"
-            />
+          variant={mv[2]}
+        />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente={
@@ -637,9 +642,9 @@ export default function AulaPontuacao({
             titulo="QUIZ: Módulo Nº 2"
             icone="🎯"
             numero={5}
-            variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          />
+          variant={mv[2]}
+        />
         </div>
       </TabsContent>
 
@@ -650,14 +655,14 @@ export default function AulaPontuacao({
             numero={3}
             titulo="Vírgula: Termos Essenciais"
             descricao="Enumerações, repetições e a organização básica da frase."
-            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
-          />
+          variant={mv[3]}
+        />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={3}
               title="Listas e Repetições"
-              variant="blue"
-            />
+          variant={mv[3]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -696,15 +701,16 @@ export default function AulaPontuacao({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-emerald-500"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={4}
               title="Regras SVO e Enumeração"
-              variant="blue"
-            />
+          variant={mv[3]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -771,7 +777,8 @@ export default function AulaPontuacao({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-emerald-500"
+        />
             <Comparison
               title="Sujeito Simples × Sujeito Composto"
               left={{
@@ -802,9 +809,9 @@ export default function AulaPontuacao({
             titulo="QUIZ: Módulo Nº 3"
             icone="🎯"
             numero={5}
-            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          />
+          variant={mv[3]}
+        />
         </div>
       </TabsContent>
 
@@ -815,14 +822,14 @@ export default function AulaPontuacao({
             numero={4}
             titulo="Vírgula: Aposto e Vocativo"
             descricao="Isole quem você chama e explique o que você cita."
-            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
-          />
+          variant={mv[4]}
+        />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={4}
               title="Chamamento e Explicação"
-              variant="cyan"
-            />
+          variant={mv[4]}
+        />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente={<div className="font-bold">VOCATIVO</div>}
@@ -859,8 +866,8 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={5}
               title="Tipos de Aposto e Posição do Vocativo"
-              variant="cyan"
-            />
+          variant={mv[4]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -952,7 +959,8 @@ export default function AulaPontuacao({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-rose-500"
+        />
             <AlertBox tipo="danger" titulo="Armadilha CESGRANRIO: Aposto Especificativo">
               O aposto especificativo (também chamado restritivo) não é isolado
               por vírgulas. Ex: "O rei Dom Pedro II proclamou." — "Dom Pedro
@@ -967,9 +975,9 @@ export default function AulaPontuacao({
             titulo="QUIZ: Módulo Nº 4"
             icone="🎯"
             numero={6}
-            variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          />
+          variant={mv[4]}
+        />
         </div>
       </TabsContent>
 
@@ -980,14 +988,14 @@ export default function AulaPontuacao({
             numero={5}
             titulo="Vírgula: Adjuntos Deslocados"
             descricao="Quando o advérbio sai do seu lugar original e exige o sinal."
-            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
-          />
+          variant={mv[5]}
+        />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={5}
               title="A Regra do Comprimento"
-              variant="emerald"
-            />
+          variant={mv[5]}
+        />
             <AlertBox tipo="warning" titulo="O Pulo do Gato (Cesgranrio)">
               A banca avalia se o adjunto é **Longo** (obrigatória) ou **Curto**
               (facultativa).
@@ -1018,8 +1026,8 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={6}
               title="O Que É um Adjunto Adverbial Deslocado?"
-              variant="emerald"
-            />
+          variant={mv[5]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1107,7 +1115,8 @@ export default function AulaPontuacao({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-violet-500"
+        />
             <Comparison
               title="Ordem Normal × Ordem Deslocada"
               left={{
@@ -1134,9 +1143,9 @@ export default function AulaPontuacao({
             titulo="QUIZ: Módulo Nº 5"
             icone="🎯"
             numero={7}
-            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          />
+          variant={mv[5]}
+        />
         </div>
       </TabsContent>
 
@@ -1147,14 +1156,14 @@ export default function AulaPontuacao({
             numero={6}
             titulo="Vírgula: Orações Coordenadas"
             descricao="O fetiche da Cesgranrio: vírgulas antes de MAS, PORÉM e o polêmico E."
-            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
-          />
+          variant={mv[6]}
+        />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={6}
               title="A Conjunção 'E'"
-              variant="cyan"
-            />
+          variant={mv[6]}
+        />
             <p className="text-muted-foreground text-lg">
               Geralmente o 'E' não pede vírgula, mas em 3 situações ele é seu
               melhor amigo:
@@ -1184,8 +1193,8 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={7}
               title="Tipos de Orações Coordenadas"
-              variant="cyan"
-            />
+          variant={mv[6]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1279,7 +1288,8 @@ export default function AulaPontuacao({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-amber-600"
+        />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente={
@@ -1337,9 +1347,9 @@ export default function AulaPontuacao({
             titulo="QUIZ: Módulo Nº 6"
             icone="🎯"
             numero={8}
-            variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
-          />
+          variant={mv[6]}
+        />
         </div>
       </TabsContent>
 
@@ -1350,14 +1360,14 @@ export default function AulaPontuacao({
             numero={7}
             titulo="Vírgula: Orações Subordinadas"
             descricao="A diferença vital entre explicar para todos ou restringir para alguns."
-            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
-          />
+          variant={mv[7]}
+        />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={7}
               title="Explicativa vs Restritiva"
-              variant="amber"
-            />
+          variant={mv[7]}
+        />
             <Comparison
               title="Impacto Semântico"
               left={{
@@ -1381,8 +1391,8 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={8}
               title="Tipos de Orações Subordinadas e a Vírgula"
-              variant="amber"
-            />
+          variant={mv[7]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1483,7 +1493,8 @@ export default function AulaPontuacao({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-blue-600"
+        />
             <AlertBox tipo="warning" titulo="Armadilha: Relativa com 'cujo'">
               O pronome relativo "cujo" (e suas flexões: cuja, cujos, cujas)
               nunca admite artigo depois de si. Errado: "o autor cujo o livro".
@@ -1498,9 +1509,9 @@ export default function AulaPontuacao({
             titulo="QUIZ: Módulo Nº 7"
             icone="🎯"
             numero={9}
-            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
-          />
+          variant={mv[7]}
+        />
         </div>
       </TabsContent>
 
@@ -1511,14 +1522,14 @@ export default function AulaPontuacao({
             numero={8}
             titulo="Ponto e Ponto e Vírgula"
             descricao="Organização de listas e períodos extensos que já possuem vírgulas internas."
-            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
-          />
+          variant={mv[8]}
+        />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={8}
               title="O ponto-e-vírgula"
-              variant="amber"
-            />
+          variant={mv[8]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1537,15 +1548,16 @@ export default function AulaPontuacao({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-emerald-600"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={9}
               title="Ponto Final, Ponto e Vírgula e Dois-Pontos"
-              variant="amber"
-            />
+          variant={mv[8]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1626,7 +1638,8 @@ export default function AulaPontuacao({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-emerald-600"
+        />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FlipCard
                 frente={
@@ -1704,9 +1717,9 @@ export default function AulaPontuacao({
             titulo="QUIZ: Módulo Nº 8"
             icone="🎯"
             numero={10}
-            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
-          />
+          variant={mv[8]}
+        />
         </div>
       </TabsContent>
 
@@ -1717,14 +1730,14 @@ export default function AulaPontuacao({
             numero={9}
             titulo="Sinais Complementares"
             descricao="Dois-pontos, Travessões e Parênteses: a estética da explicação."
-            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
-          />
+          variant={mv[9]}
+        />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={9}
               title="Além da Vírgula"
-              variant="rose"
-            />
+          variant={mv[9]}
+        />
             <div className="grid gap-4 md:grid-cols-2">
               <FlipCard
                 frente="Dois-Pontos (:)"
@@ -1741,8 +1754,8 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={10}
               title="Todos os Sinais Complementares"
-              variant="rose"
-            />
+          variant={mv[9]}
+        />
             <CardCarousel
               cards={[
                 {
@@ -1876,7 +1889,8 @@ export default function AulaPontuacao({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-rose-600"
+        />
             <AlertBox tipo="warning" titulo="Travessão × Hífen × Meia-Risca">
               São três sinais distintos com funções completamente diferentes.
               O hífen (-) liga palavras compostas e indica divisão silábica. A
@@ -1893,9 +1907,9 @@ export default function AulaPontuacao({
             titulo="QUIZ: Módulo Nº 9"
             icone="🎯"
             numero={11}
-            variant="rose"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
-          />
+          variant={mv[9]}
+        />
         </div>
       </TabsContent>
 
@@ -1906,14 +1920,14 @@ export default function AulaPontuacao({
             numero={10}
             titulo="Simulado Final"
             descricao="Teste seu domínio perante uma bateria definitiva focada em Pontuação Global Cesgranrio."
-            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
-          />
+          variant={mv[10]}
+        />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={11}
               title="Mapa Mental: Revisão Completa"
-              variant="indigo"
-            />
+          variant={mv[10]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -2054,7 +2068,8 @@ export default function AulaPontuacao({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-violet-600"
+        />
             <AlertBox tipo="success" titulo="Estratégia Final CESGRANRIO">
               Na hora da prova: (1) Identifique o sujeito e o verbo principal —
               nunca haverá vírgula separando-os sem um termo intercalado. (2)
@@ -2128,9 +2143,9 @@ export default function AulaPontuacao({
               titulo="QUIZ: Módulo Nº 10"
               icone="🏆"
               numero={12}
-              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
-            />
+          variant={mv[10]}
+        />
           )}
         </div>
       </TabsContent>

@@ -40,6 +40,8 @@ import {
   LuFileCheck,
 } from "react-icons/lu";
 
+import { getModuleVariant } from "@/lib/moduleColors";
+
 // Data
 import {
   QUIZ_M1_POOL,
@@ -71,6 +73,8 @@ export default function AulaInterpretacaoTexto({
   prevTopico,
   nextTopico,
 }: AulaProps) {
+  const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
+
   const MODULE_DEFS = [
     { id: "modulo-1", label: "Módulo 1", titulo: "A Diferença Letal" },
     { id: "modulo-2", label: "Módulo 2", titulo: "O Tópico Frasal" },
@@ -266,16 +270,16 @@ export default function AulaInterpretacaoTexto({
           numero={1}
           titulo="A Diferença Letal"
           descricao="O Dossiê Premium de Compreensão vs. Interpretação. A fronteira exata entre o que o texto afirma e o que a banca induz."
-          gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
+          variant={mv[1]}
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
           <ModuleSectionHeader
             index={1}
             title="A Anatomia do Sentido: O Que Você Vê vs. O Que Você Pensa"
-            variant="blue"
             description="Para a CESGRANRIO, o maior erro do candidato é 'viajar' para além dos limites do texto. Vamos blindar sua leitura agora."
-          />
+          variant={mv[1]}
+        />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div className="space-y-6">
@@ -347,7 +351,7 @@ export default function AulaInterpretacaoTexto({
             mode="stacked"
             titulo="Aprofundamento: O Microscópio de Bechara"
             icone={<LuSearch />}
-            corIndicador="bg-blue-600"
+            corIndicador="bg-amber-500"
             defaultOpen={false}
             slides={[
               {
@@ -438,9 +442,9 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={3}
             title="Laboratório de Gabarito: Certo vs Errado"
-            variant="blue"
             description="Teste sua percepção antes do quiz final do módulo."
-          />
+          variant={mv[1]}
+        />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FlipCard
@@ -509,7 +513,6 @@ export default function AulaInterpretacaoTexto({
 
 <ModuleConsolidation
           index={4}
-          variant="blue"
           video={{
             videoId: "dQw4w9WgXcQ",
             title:
@@ -593,6 +596,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Intro] - O segredo está em não projetar seus medos no texto...",
           }}
+          variant={mv[1]}
         />
 
                 <QuizInterativo
@@ -600,8 +604,8 @@ export default function AulaInterpretacaoTexto({
           titulo="QUIZ: A Diferença Letal"
           icone="🛡️"
           numero={5}
-          variant="blue"
           onComplete={(score) => handleModuleComplete("modulo-1", score)}
+          variant={mv[1]}
         />
       </TabsContent>
 
@@ -611,16 +615,16 @@ export default function AulaInterpretacaoTexto({
           numero={2}
           titulo="O Tópico Frasal"
           descricao="A técnica cirúrgica para encontrar a ideia central do parágrafo em segundos, ignorando o ruído visual."
-          gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
+          variant={mv[2]}
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
           <ModuleSectionHeader
             index={1}
             title="A Engenharia do Parágrafo: A Viga Mestra"
-            variant="emerald"
             description="Entender o tópico frasal é como identificar a viga de sustentação de um edifício: sem ela, o resto do conteúdo desmorona."
-          />
+          variant={mv[2]}
+        />
 
           <div className="space-y-8">
             <div className="p-6 bg-emerald-500/5 rounded-2xl border border-emerald-500/10">
@@ -640,7 +644,7 @@ export default function AulaInterpretacaoTexto({
               mode="stacked"
               titulo="Métodos de Construção do Tópico Frasal"
               icone={<LuCpu />}
-              corIndicador="bg-emerald-600"
+              corIndicador="bg-blue-500"
               defaultOpen={true}
               slides={[
                 {
@@ -719,9 +723,9 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={3}
             title="Prática de Combate: Localização"
-            variant="emerald"
             description="Onde está o coração do texto?"
-          />
+          variant={mv[2]}
+        />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FlipCard
@@ -821,7 +825,6 @@ export default function AulaInterpretacaoTexto({
 
 <ModuleConsolidation
           index={5}
-          variant="emerald"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "A Engenharia do Parágrafo: Dominando o Tópico Frasal",
@@ -897,6 +900,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Host] - Se você ler apenas a primeira frase de cada parágrafo...",
           }}
+          variant={mv[2]}
         />
 
                 <QuizInterativo
@@ -904,8 +908,8 @@ export default function AulaInterpretacaoTexto({
           titulo="QUIZ: O Tópico Frasal"
           icone="🏗️"
           numero={6}
-          variant="emerald"
           onComplete={(score) => handleModuleComplete("modulo-2", score)}
+          variant={mv[2]}
         />
       </TabsContent>
 
@@ -915,16 +919,16 @@ export default function AulaInterpretacaoTexto({
           numero={3}
           titulo="Coesão e Argumentação"
           descricao="A 'Cola' que une as ideias e os 'Martelos' que as sustentam. Domine a lógica invisível preferida da Cesgranrio."
-          gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
+          variant={mv[3]}
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
           <ModuleSectionHeader
             index={1}
             title="A Engenharia da Conexão"
-            variant="amber"
             description="Um texto não é uma pilha de frases; é uma rede de conexões táticas."
-          />
+          variant={mv[3]}
+        />
 
           <div className="space-y-8">
             <div className="p-6 bg-amber-500/5 rounded-2xl border border-amber-500/10">
@@ -944,7 +948,7 @@ export default function AulaInterpretacaoTexto({
               mode="stacked"
               titulo="Operadores Argumentativos de Alto Impacto"
               icone={<LuHammer />}
-              corIndicador="bg-amber-600"
+              corIndicador="bg-emerald-500"
               defaultOpen={true}
               slides={[
                 {
@@ -1018,9 +1022,9 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={2}
             title="Dossiê de Conectivos"
-            variant="amber"
             description="Memorização rápida para os termos que a Cesgranrio 'adora'."
-          />
+          variant={mv[3]}
+        />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
@@ -1141,7 +1145,6 @@ export default function AulaInterpretacaoTexto({
 
 <ModuleConsolidation
           index={3}
-          variant="amber"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Operadores Lógicos: A 'Cola' do Texto Petrobras",
@@ -1216,6 +1219,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Host] - Se vir um 'Embora', saiba que a ideia principal vem depois da vírgula...",
           }}
+          variant={mv[3]}
         />
 
                 <QuizInterativo
@@ -1223,8 +1227,8 @@ export default function AulaInterpretacaoTexto({
           titulo="QUIZ: Coesão e Argumentação"
           icone="🧠"
           numero={4}
-          variant="amber"
           onComplete={(score) => handleModuleComplete("modulo-3", score)}
+          variant={mv[3]}
         />
       </TabsContent>
 
@@ -1234,16 +1238,16 @@ export default function AulaInterpretacaoTexto({
           numero={4}
           titulo="Tipologia Textual"
           descricao="O DNA do Texto. Identifique o gênero e o tipo predominante para antecipar a intenção da Cesgranrio."
-          gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
+          variant={mv[4]}
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
           <ModuleSectionHeader
             index={1}
             title="A Matriz de Tipos: O Filtro Petrobras"
-            variant="blue"
             description="As provas focam em Dissertação e Injunção. Mas as armadilhas estão nos textos Narrativos disfarçados."
-          />
+          variant={mv[4]}
+        />
 
           <div className="space-y-8">
             <div className="p-6 bg-indigo-500/5 rounded-2xl border border-indigo-500/10">
@@ -1262,7 +1266,7 @@ export default function AulaInterpretacaoTexto({
               mode="stacked"
               titulo="O Trio de Elite da Tipologia"
               icone={<LuBrain />}
-              corIndicador="bg-indigo-600"
+              corIndicador="bg-rose-500"
               defaultOpen={true}
               slides={[
                 {
@@ -1332,9 +1336,9 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={2}
             title="Duelo de Gêneros & Tipos"
-            variant="blue"
             description="Testando sua percepção tática de predominância."
-          />
+          variant={mv[4]}
+        />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FlipCard
@@ -1432,7 +1436,6 @@ export default function AulaInterpretacaoTexto({
 
 <ModuleConsolidation
           index={4}
-          variant="blue"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "DNA do Texto: Tipologias e Gêneros de Elite",
@@ -1492,6 +1495,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Host] - Tipologia não é gênero. Gênero é o frasco, Tipologia é o conteúdo...",
           }}
+          variant={mv[4]}
         />
 
                 <QuizInterativo
@@ -1499,8 +1503,8 @@ export default function AulaInterpretacaoTexto({
           titulo="QUIZ: Tipologia Textual"
           icone="🧬"
           numero={5}
-          variant="blue"
           onComplete={(score) => handleModuleComplete("modulo-4", score)}
+          variant={mv[4]}
         />
       </TabsContent>
 
@@ -1510,16 +1514,16 @@ export default function AulaInterpretacaoTexto({
           numero={5}
           titulo="Vícios e Velocidade"
           descricao="Elimine as âncoras que te impedem de ler os textos técnicos da Petrobras em tempo recorde."
-          gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
+          variant={mv[5]}
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
           <ModuleSectionHeader
             index={1}
             title="As Âncoras do Candidato"
-            variant="emerald"
             description="Para ler rápido, não é preciso ler 'correndo', mas sim ler sem carregar peso desnecessário."
-          />
+          variant={mv[5]}
+        />
           <p className="text-muted-foreground leading-relaxed">
             Eliminar vícios de leitura é o primeiro passo para dominar os textos
             técnicos da Petrobras sem estourar o cronômetro da prova.
@@ -1589,7 +1593,7 @@ export default function AulaInterpretacaoTexto({
               mode="stacked"
               titulo="Níveis de Leitura para a Prova"
               icone={<LuEye />}
-              corIndicador="bg-emerald-600"
+              corIndicador="bg-violet-500"
               slides={[
                 {
                   titulo: "1. Leitura de Reconhecimento",
@@ -1670,7 +1674,6 @@ export default function AulaInterpretacaoTexto({
 
 <ModuleConsolidation
           index={5}
-          variant="emerald"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Leitura de Elite: Eliminando Vícios e Ganhando Velocidade",
@@ -1746,6 +1749,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Host] - Ler rápido não é correr, é saber o que ignorar...",
           }}
+          variant={mv[5]}
         />
 
                 <QuizInterativo
@@ -1753,8 +1757,8 @@ export default function AulaInterpretacaoTexto({
           titulo="QUIZ: Coesão Referencial"
           icone="⚡"
           numero={6}
-          variant="emerald"
           onComplete={(score) => handleModuleComplete("modulo-5", score)}
+          variant={mv[5]}
         />
       </TabsContent>
 
@@ -1764,16 +1768,16 @@ export default function AulaInterpretacaoTexto({
           numero={6}
           titulo="As Entrelinhas (Inferência)"
           descricao="A arte de ler o que não foi escrito, mas foi 'pago' para ser entendido. Pressupostos vs Subentendidos."
-          gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
+          variant={mv[6]}
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
           <ModuleSectionHeader
             index={1}
             title="Lógica de Detecção"
-            variant="cyan"
             description="Não é 'achismo'. É dedução lógica baseada em marcas gramaticais."
-          />
+          variant={mv[6]}
+        />
           <p className="text-muted-foreground leading-relaxed">
             A inferência na Cesgranrio não é um exercício de imaginação, mas sim
             a extração de dados contidos nas dobras da linguagem.
@@ -1911,7 +1915,6 @@ export default function AulaInterpretacaoTexto({
 
 <ModuleConsolidation
           index={3}
-          variant="cyan"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "A Arte das Entrelinhas: Pressupostos e Subentendidos",
@@ -1989,6 +1992,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Dica] - Se o autor diz que algo 'parou', pressupõe-se que ocorria antes...",
           }}
+          variant={mv[6]}
         />
 
                 <QuizInterativo
@@ -1996,8 +2000,8 @@ export default function AulaInterpretacaoTexto({
           titulo="QUIZ: Pistas e Entrelinhas"
           icone="🕵️"
           numero={4}
-          variant="cyan"
           onComplete={(score) => handleModuleComplete("modulo-6", score)}
+          variant={mv[6]}
         />
       </TabsContent>
 
@@ -2007,16 +2011,16 @@ export default function AulaInterpretacaoTexto({
           numero={7}
           titulo="As Ameaças Triplas"
           descricao="Redução, Extrapolação e Contradição. Detecte os venenos das alternativas falsas lógicas."
-          gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
+          variant={mv[7]}
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
           <ModuleSectionHeader
             index={1}
             title="A Trindade do Erro"
-            variant="rose"
             description="As três formas clássicas que a Cesgranrio usa para invalidar uma interpretação correta."
-          />
+          variant={mv[7]}
+        />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
@@ -2148,7 +2152,6 @@ export default function AulaInterpretacaoTexto({
 
 <ModuleConsolidation
           index={4}
-          variant="rose"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Campo Minado: Evitando Redução, Extrapolação e Contradição",
@@ -2226,6 +2229,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Dica] - Cuidado com alternativas que usam 'Sempre', 'Nunca' ou 'Apenas'...",
           }}
+          variant={mv[7]}
         />
 
                 <QuizInterativo
@@ -2233,8 +2237,8 @@ export default function AulaInterpretacaoTexto({
           titulo="QUIZ: As Ameaças Triplas"
           icone="🚫"
           numero={5}
-          variant="rose"
           onComplete={(score) => handleModuleComplete("modulo-7", score)}
+          variant={mv[7]}
         />
       </TabsContent>
 
@@ -2244,16 +2248,16 @@ export default function AulaInterpretacaoTexto({
           numero={8}
           titulo="Intenção Autoral"
           descricao="Para que o texto foi escrito? Decifre a finalidade principal e o tom do autor."
-          gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
+          variant={mv[8]}
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
           <ModuleSectionHeader
             index={1}
             title="A Vontade por Trás das Palavras"
-            variant="blue"
             description="Identificar o objetivo (informativo, persuasivo ou crítico) é 50% da questão."
-          />
+          variant={mv[8]}
+        />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             <FlipCard
@@ -2366,7 +2370,6 @@ export default function AulaInterpretacaoTexto({
 
 <ModuleConsolidation
           index={3}
-          variant="blue"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "A Vontade do Autor: Decifrando Intenção e Tons",
@@ -2442,6 +2445,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Dica] - Procure por advérbios de modo; eles revelam o autor...",
           }}
+          variant={mv[8]}
         />
 
                 <QuizInterativo
@@ -2449,8 +2453,8 @@ export default function AulaInterpretacaoTexto({
           titulo="QUIZ: A Lógica CESGRANRIO"
           icone="🎯"
           numero={4}
-          variant="blue"
           onComplete={(score) => handleModuleComplete("modulo-8", score)}
+          variant={mv[8]}
         />
       </TabsContent>
 
@@ -2460,16 +2464,16 @@ export default function AulaInterpretacaoTexto({
           numero={9}
           titulo="A Lógica Cesgranrio"
           descricao="O DNA das questões. Mapeamento de sinônimos técnicos e eixos temáticos repetitivos."
-          gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
+          variant={mv[9]}
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
           <ModuleSectionHeader
             index={1}
             title="Padrões de Substituição"
-            variant="blue"
             description="Como a banca troca palavras para testar seu domínio do vocabulário industrial."
-          />
+          variant={mv[9]}
+        />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             <FlipCard
@@ -2553,7 +2557,6 @@ export default function AulaInterpretacaoTexto({
 
 <ModuleConsolidation
           index={3}
-          variant="blue"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "O Filtro Cesgranrio: Sinônimos e Eixos Temáticos",
@@ -2635,6 +2638,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Dica] - Sinônimos não são apenas palavras parecidas, são funções iguais...",
           }}
+          variant={mv[9]}
         />
 
                 <QuizInterativo
@@ -2642,8 +2646,8 @@ export default function AulaInterpretacaoTexto({
           titulo="QUIZ: Checklist Tático"
           icone="🧠"
           numero={4}
-          variant="blue"
           onComplete={(score) => handleModuleComplete("modulo-9", score)}
+          variant={mv[9]}
         />
       </TabsContent>
 
@@ -2653,16 +2657,16 @@ export default function AulaInterpretacaoTexto({
           numero={10}
           titulo="Arena de Elite"
           descricao="A prova final. O Checklist de Blindagem antes do grande desafio."
-          gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
+          variant={mv[10]}
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
           <ModuleSectionHeader
             index={1}
             title="Checklist de Blindagem Final"
-            variant="amber"
             description="Revise os 5 mandamentos da interpretação Cesgranrio antes de começar."
-          />
+          variant={mv[10]}
+        />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
@@ -2769,7 +2773,6 @@ export default function AulaInterpretacaoTexto({
 
 <ModuleConsolidation
           index={2}
-          variant="amber"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Checklist de Elite: A Blindagem Final",
@@ -2847,6 +2850,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Dica] - Mantenha a calma, leia o enunciado primeiro e use o radar...",
           }}
+          variant={mv[10]}
         />
 
                 <QuizInterativo
@@ -2854,8 +2858,8 @@ export default function AulaInterpretacaoTexto({
           titulo="QUIZ: Arena de Elite"
           icone="👑"
           numero={3}
-          variant="indigo"
           onComplete={(score) => handleModuleComplete("modulo-10", score)}
+          variant={mv[10]}
         />
       </TabsContent>
     </AulaTemplate>

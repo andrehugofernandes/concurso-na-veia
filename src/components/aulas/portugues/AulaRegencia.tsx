@@ -1,3 +1,4 @@
+import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
@@ -74,6 +75,8 @@ const MODULE_DEFS = [
   { id: "modulo-9", label: "Módulo 9", title: "Regência e Relativos" },
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Final" },
 ] as const;
+
+const mv = [undefined, ...getAllModuleVariants()];
 
 export default function AulaRegencia({
   titulo,
@@ -178,14 +181,89 @@ export default function AulaRegencia({
             numero={1}
             titulo="Fundamentos e Mecânica"
             descricao="Entenda a relação de atração entre o termo regente (imã) e o termo regido (complemento)."
-            gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400"
-          />
+          variant={mv[1]}
+        />
+
+          {/* ★ RICH INTRO M1 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="A Lógica da Regência"
-              variant="blue"
+              title="O Que É Regência e Por Que Ela Decide Aprovações"
+              variant={mv[1]}
             />
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <p>
+                Regência é a área da gramática que estuda a relação de dependência entre um termo de sentido
+                incompleto — o <strong>regente</strong> — e o termo que o completa, o <strong>regido</strong>.
+                Segundo Evanildo Bechara, "a regência determina a natureza da ligação sintática entre o
+                núcleo e seu complemento, estabelecendo se essa ligação se faz com ou sem preposição". Em
+                outras palavras, toda vez que um verbo ou nome exige um complemento, há uma relação de
+                regência em jogo — e errar a preposição significa errar a regência.
+              </p>
+              <p>
+                Pense na regência como um imã: o verbo ou nome regente possui uma "polaridade gramatical" que
+                atrai seu complemento de forma específica — às vezes diretamente, sem conector (objeto
+                direto), às vezes através de uma preposição obrigatória (objeto indireto). Quando você usa a
+                preposição errada ou a omite onde ela é obrigatória, o sentido "repele" e a frase fica errada
+                perante a norma culta. Esse mecanismo é simples na teoria, mas exige memorização das regências
+                individuais dos verbos e nomes mais usados.
+              </p>
+              <p>
+                A regência se divide em dois grandes ramos. A <strong>regência verbal</strong> trata da
+                relação entre o verbo e seus complementos: o <em>objeto direto</em> (sem preposição) e o{" "}
+                <em>objeto indireto</em> (com preposição). A <strong>regência nominal</strong> trata da
+                relação entre um nome — substantivo, adjetivo ou advérbio — e seu complemento preposicionado.
+                A <em>transitividade verbal</em> determina se o verbo é direto (VTD), indireto (VTI) ou
+                bitransitivo (VTDI). Verbos intransitivos não exigem complemento algum. Essa classificação é
+                o núcleo de toda questão de regência em concurso.
+              </p>
+              <p>
+                Na Petrobras, a regência é exigida em documentos técnicos, normas operacionais e comunicações
+                formais. Procedimentos de Segurança, Ordens de Serviço e Atas de Reunião demandam precisão
+                sintática: "procedemos <strong>à</strong> inspeção" (não "procedemos a inspeção"),
+                "aspiramos <strong>ao</strong> crescimento sustentável" (não "aspiramos o crescimento"),
+                "obedecemos <strong>às</strong> normas ISO" (não "obedecemos as normas"). Um laudo técnico
+                com regência errada pode comprometer a interpretação jurídica de um contrato ou o
+                cumprimento de uma exigência regulatória da ANP.
+              </p>
+              <p>
+                A CESGRANRIO cobra regência em praticamente todas as provas da Petrobras porque a banca
+                sabe que a língua coloquial corrompeu os padrões normativos. O candidato despreparado
+                escreve como fala: "assisti o jogo", "cheguei em casa", "implicar em problemas" — todas
+                construções erradas pela norma culta. O gabarito baseia-se na gramática de Bechara e Cunha,
+                e os distratores das alternativas sempre exploram substituições indevidas de preposição.
+                Memorizar as regências dos verbos e nomes mais cobrados é, portanto, o investimento de
+                estudo com maior retorno nesta disciplina.
+              </p>
+              <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-xl border border-amber-200 dark:border-amber-800 p-6 space-y-3">
+                <h4 className="font-bold text-foreground flex items-center gap-2">
+                  <LuZap className="w-4 h-4 text-amber-500" /> Regra-Chave: O Teste da Transitividade
+                </h4>
+                <p className="text-base text-foreground/80">
+                  Para verificar a transitividade, substitua o complemento: <strong>se cabe "o/a"</strong> →
+                  transitivo direto (sem preposição). <strong>Se cabe "lhe/lhes"</strong> → transitivo
+                  indireto (com preposição obrigatória).
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-base">
+                  <div className="p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
+                    <span className="font-bold text-emerald-600 dark:text-emerald-400 block mb-1">✅ VTD — sem preposição</span>
+                    "Assinou <em>o contrato</em>" → assinou-<strong>o</strong> ✓
+                  </div>
+                  <div className="p-3 bg-blue-500/10 rounded-lg border border-blue-500/20">
+                    <span className="font-bold text-blue-600 dark:text-blue-400 block mb-1">✅ VTI — com preposição</span>
+                    "Obedeceu <em>às normas</em>" → obedeceu-<strong>lhes</strong> ✓
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={2}
+              title="A Lógica da Regência"
+          variant={mv[1]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -243,7 +321,8 @@ export default function AulaRegencia({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-amber-500"
+        />
           </section>
 
           {/* ── CONTEÚDO RICO M1 ── */}
@@ -251,8 +330,8 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Regência Verbal vs Nominal"
-              variant="blue"
-            />
+          variant={mv[1]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -341,15 +420,16 @@ export default function AulaRegencia({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-amber-500"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={3}
               title="Transitivo Direto vs Indireto"
-              variant="blue"
-            />
+          variant={mv[1]}
+        />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente={<div className="font-bold text-lg">TRANSITIVO DIRETO</div>}
@@ -394,9 +474,9 @@ export default function AulaRegencia({
             titulo="QUIZ: Módulo Nº 1"
             icone="🎯"
             numero={4}
-            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          />
+          variant={mv[1]}
+        />
         </div>
       </TabsContent>
 
@@ -407,14 +487,62 @@ export default function AulaRegencia({
             numero={2}
             titulo="Regência Nominal: Adjetivos"
             descricao="Lista crítica de adjetivos que exigem preposições fixas para não errar na prova."
-            gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400"
-          />
+          variant={mv[2]}
+        />
+
+          {/* ★ RICH INTRO M2 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="Radar de Adjetivos"
-              variant="indigo"
+              title="Adjetivos e Suas Preposições: O Casamento Gramatical que a CESGRANRIO Adora"
+              variant={mv[2]}
             />
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <p>
+                A regência nominal é a relação de subordinação que um <strong>nome</strong> — adjetivo, substantivo ou advérbio — estabelece com o seu complemento, exigindo dele uma preposição específica e intransferível. Segundo Evanildo Bechara, o termo regente nominal "atrai" o termo regido por meio de uma preposição que não pode ser substituída sem alterar o sentido ou gerar incorreção gramatical. Diferentemente da regência verbal, onde o verbo comanda a cena, aqui o adjetivo é o protagonista: é ele quem dita qual preposição o acompanha.
+              </p>
+              <p>
+                Pense nos adjetivos como plugues elétricos: cada um tem um formato único que só encaixa em um tipo de tomada — a preposição certa. "Apto" só encaixa em "A" (apto <em>a</em> liderar); "versado" só encaixa em "EM" (versado <em>em</em> gestão); "compatível" só encaixa em "COM" (compatível <em>com</em> o cargo). Tentar encaixar a preposição errada produz ruído gramatical imediato, e a banca detecta esse ruído cirurgicamente. A prova não pergunta se você sabe o significado do adjetivo — ela testa se você conhece o seu par preposicional obrigatório.
+              </p>
+              <p>
+                Os adjetivos se organizam em <strong>famílias preposicionais</strong> coesas. O grupo da preposição <em>A</em> reúne adjetivos de adequação e orientação: acessível, apto, atento, avesso, favorável, idêntico, nocivo, relativo. O grupo de <em>EM</em> concentra adjetivos de especialidade e localização: versado, perito, hábil, indeciso. O grupo de <em>COM</em> agrega adjetivos de compatibilidade e relação: compatível, conforme, contente, satisfeito. O grupo de <em>POR</em> inclui adjetivos de estimação e anseio: ansioso, curioso, responsável. Memorizar essas famílias — não adjetivo a adjetivo — é a estratégia mais eficiente para a prova.
+              </p>
+              <p>
+                No ambiente corporativo da Petrobras, a regência nominal aparece em documentos técnicos, pareceres jurídicos, relatórios de sustentabilidade e comunicados oficiais. Um engenheiro "apto <em>a</em> exercer a função", um processo "compatível <em>com</em> a norma ISO", uma equipe "responsável <em>pela</em> operação segura da plataforma" — cada construção dessas exige a preposição correta para que o texto tenha validade formal. Erros de regência nominal em documentos oficiais são tratados como falhas de redação técnica, comprometendo a credibilidade do autor e a precisão jurídica do texto.
+              </p>
+              <p>
+                A CESGRANRIO aplica regência nominal de duas formas principais: <strong>(1) substituição de preposição</strong>, onde a alternativa correta preserva o adjetivo com sua preposição original; e <strong>(2) reescrita de trecho</strong>, onde você deve identificar qual versão reescrita mantém o sentido e a correção. O erro mais frequente nas alternativas incorretas é a troca de "A" por "PARA" (que altera nuance de destino) ou a omissão total da preposição. O candidato que domina as famílias preposicionais dos adjetivos acerta essas questões em menos de 30 segundos.
+              </p>
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 border border-blue-200 dark:border-blue-800 rounded-xl p-6 space-y-4">
+                <h4 className="font-bold text-blue-900 dark:text-blue-100 text-xl">As 4 Famílias Preposicionais dos Adjetivos</h4>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3">
+                    <div className="font-bold text-blue-700 dark:text-blue-300 mb-1">Preposição A</div>
+                    <div className="text-foreground/70">acessível, apto, atento, avesso, favorável, idêntico, nocivo, relativo, superior, inferior</div>
+                  </div>
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3">
+                    <div className="font-bold text-indigo-700 dark:text-indigo-300 mb-1">Preposição EM</div>
+                    <div className="text-foreground/70">versado, perito, hábil, indeciso, morador, rico, pobre, fértil</div>
+                  </div>
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3">
+                    <div className="font-bold text-purple-700 dark:text-purple-300 mb-1">Preposição COM</div>
+                    <div className="text-foreground/70">compatível, conforme, contente, satisfeito, generoso, liberal, pródigo</div>
+                  </div>
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3">
+                    <div className="font-bold text-violet-700 dark:text-violet-300 mb-1">Preposição POR/DE</div>
+                    <div className="text-foreground/70">ansioso, curioso, responsável (por); capaz, certo, fácil, difícil (de)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={2}
+              title="Radar de Adjetivos"
+          variant={mv[2]}
+        />
             <CardCarousel
               cards={[
                 {
@@ -448,8 +576,8 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Adjetivos Críticos com Preposição COM"
-              variant="indigo"
-            />
+          variant={mv[2]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -514,15 +642,16 @@ export default function AulaRegencia({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-blue-500"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={3}
               title="Armadilhas Cesgranrio — Adjetivos"
-              variant="indigo"
-            />
+          variant={mv[2]}
+        />
             <AlertBox tipo="danger" titulo="Os 5 Adjetivos Mais Cobrados">
               Decore estas combinações — elas aparecem diretamente nas provas da
               Petrobras e da Cesgranrio:
@@ -569,9 +698,9 @@ export default function AulaRegencia({
             titulo="QUIZ: Módulo Nº 2"
             icone="🎯"
             numero={4}
-            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          />
+          variant={mv[2]}
+        />
         </div>
       </TabsContent>
 
@@ -582,14 +711,64 @@ export default function AulaRegencia({
             numero={3}
             titulo="Regência Nominal: Substantivos"
             descricao="A forte atração de nomes como 'Respeito', 'Amor' e 'Dúvida'."
-            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400"
-          />
+          variant={mv[3]}
+        />
+
+          {/* ★ RICH INTRO M3 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="Equilíbrio de Nomes"
-              variant="indigo"
+              title="Substantivos que Regem: Quando o Nome Exige Preposição"
+              variant={mv[3]}
             />
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <p>
+                Assim como os adjetivos, os <strong>substantivos</strong> também exercem regência sobre seus complementos nominais, exigindo preposições específicas para formar construções corretas. O substantivo regente é aquele derivado de um verbo ou adjetivo que mantém a mesma regência da forma primitiva: "respeito" veio de "respeitar" (transitivo indireto com <em>a/por</em>), portanto herda as preposições "a", "com", "por" e "para com". Essa derivação gramatical é a chave para deduzir a regência nominal de substantivos desconhecidos sem precisar memorizá-los individualmente.
+              </p>
+              <p>
+                A complexidade da regência nominal de substantivos está nos casos em que <strong>múltiplas preposições são aceitas</strong> com variação de sentido. "Amor" pode ser construído com "A" (amor ao próximo — mais formal, direcionado), com "PELA/PELO" (amor pela profissão — sentimento duradouro) ou com "POR" (amor por justiça — princípio abstrato). A banca explora exatamente esses casos limítrofes, exigindo do candidato a percepção de que o erro não está na preposição isolada, mas na combinação preposição + substantivo + contexto semântico.
+              </p>
+              <p>
+                Existem padrões previsíveis na regência de substantivos: nomes que expressam <strong>atração ou sentimento dirigido</strong> tendem a usar "A" ou "PELA/PELO" (admiração a, afeto pelo, apego à); nomes que expressam <strong>dúvida ou incerteza</strong> usam "EM" ou "SOBRE" (dúvida em, questionamento sobre); nomes que expressam <strong>obrigação ou responsabilidade</strong> usam "DE" (necessidade de, obrigação de, direito de); nomes que expressam <strong>conformidade ou relação</strong> usam "COM" (acordo com, concordância com, compatibilidade com). Reconhecer esses grupos semânticos elimina a necessidade de memorizar cada substantivo isoladamente.
+              </p>
+              <p>
+                No contexto da Petrobras, a regência nominal de substantivos aparece em instrumentos contratuais, normas regulatórias e comunicados internos. "A necessidade <em>de</em> qualificação técnica", "o respeito <em>às</em> normas de segurança", "a dúvida <em>em</em> relação ao prazo", "o direito <em>à</em> informação" — cada uma dessas construções é padrão nos documentos oficiais da empresa. Errar a preposição nesses contextos compromete a elegância e a precisão jurídica do texto, podendo até alterar o sentido legal de uma cláusula.
+              </p>
+              <p>
+                A CESGRANRIO trabalha com substantivos de regência em três tipos de questão: <strong>identificação de erro</strong> (qual frase está errada?), <strong>reescrita equivalente</strong> (qual reescrita preserva sentido e correção?) e <strong>completude de lacuna</strong> (qual preposição preenche corretamente?). O candidato deve estar atento especialmente aos substantivos que aceitam mais de uma preposição — nesses casos, todas as alternativas podem parecer corretas e apenas o contexto determina a escolha certa. Dominar os grupos semânticos e a derivação verbal é o diferencial que separa o candidato aprovado do reprovado.
+              </p>
+              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 border border-emerald-200 dark:border-emerald-800 rounded-xl p-6 space-y-4">
+                <h4 className="font-bold text-emerald-900 dark:text-emerald-100 text-xl">Substantivos de Alta Frequência na CESGRANRIO</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                  <div className="space-y-2">
+                    <div className="font-semibold text-emerald-700 dark:text-emerald-300">Múltiplas preposições aceitas:</div>
+                    <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-1 text-foreground/80">
+                      <div><strong>Respeito:</strong> a, com, por, para com</div>
+                      <div><strong>Amor:</strong> a, por, pelo/pela</div>
+                      <div><strong>Dúvida:</strong> em, sobre, acerca de</div>
+                      <div><strong>Medo:</strong> de, a</div>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="font-semibold text-teal-700 dark:text-teal-300">Preposição única obrigatória:</div>
+                    <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-1 text-foreground/80">
+                      <div><strong>Necessidade:</strong> de</div>
+                      <div><strong>Direito:</strong> a (direito à saúde)</div>
+                      <div><strong>Compatibilidade:</strong> com</div>
+                      <div><strong>Capacidade:</strong> de, para</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={2}
+              title="Equilíbrio de Nomes"
+          variant={mv[3]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -625,7 +804,8 @@ export default function AulaRegencia({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-emerald-500"
+        />
           </section>
 
           {/* ── CONTEÚDO RICO M3 ── */}
@@ -633,8 +813,8 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Substantivos e Suas Preposições Fixas"
-              variant="indigo"
-            />
+          variant={mv[3]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -708,15 +888,16 @@ export default function AulaRegencia({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-emerald-500"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={3}
               title="Comparação: Uso Correto vs Coloquial"
-              variant="indigo"
-            />
+          variant={mv[3]}
+        />
             <Comparison
               title="Respeito: Preposição A ou COM?"
               left={{
@@ -747,9 +928,9 @@ export default function AulaRegencia({
             titulo="QUIZ: Módulo Nº 3"
             icone="🎯"
             numero={4}
-            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          />
+          variant={mv[3]}
+        />
         </div>
       </TabsContent>
 
@@ -760,14 +941,62 @@ export default function AulaRegencia({
             numero={4}
             titulo="Verbos de Elite: Parte I"
             descricao="Assistir, Aspirar e Visar: O trio que decide aprovações na Cesgranrio."
-            gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
-          />
+          variant={mv[4]}
+        />
+
+          {/* ★ RICH INTRO M4 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="A Variação de Sentido"
-              variant="emerald"
+              title="O Trio de Ouro: Verbos que Mudam de Sentido com a Preposição"
+              variant={mv[4]}
             />
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <p>
+                Existem verbos na língua portuguesa cuja <strong>transitividade varia conforme o sentido</strong> que assumem na frase. Esses verbos — chamados pela gramática normativa de "verbos de dupla ou múltipla regência" — são os preferidos da CESGRANRIO justamente porque o mesmo verbo pode ser transitivo direto em um sentido e transitivo indireto em outro, exigindo ou proibindo a preposição dependendo do contexto. Assistir, aspirar e visar formam o "trio de ouro" da regência verbal de elite, aparecendo em praticamente todas as provas de nível superior da banca.
+              </p>
+              <p>
+                O verbo <strong>ASSISTIR</strong> é o exemplo mais didático dessa dualidade. Quando significa "ver, presenciar, ser espectador", é transitivo indireto e exige a preposição "A": "Assisti <em>ao</em> julgamento" (nunca "assisti o julgamento"). Quando significa "ajudar, prestar assistência", é transitivo direto e não admite preposição: "O médico assistiu o paciente". Quando significa "caber, pertencer (como direito)", também é transitivo indireto com "A": "Assiste <em>ao</em> trabalhador o direito de greve". Três sentidos diferentes, três comportamentos sintáticos diferentes — e o examinador usa essa variação para montar as armadilhas.
+              </p>
+              <p>
+                O verbo <strong>ASPIRAR</strong> segue a mesma lógica bifronte. No sentido de "inalar, respirar, absorver", é transitivo direto: "O trabalhador aspirou <em>os</em> gases tóxicos" (sem preposição — o gás é o objeto direto). No sentido de "desejar intensamente, almejar, ambicionar", é transitivo indireto e exige "A": "O candidato aspira <em>à</em> aprovação" (a + a = à, com crase obrigatória). A distinção entre os dois sentidos é semântica: gases, poeiras e líquidos são inalados (VTD); cargos, objetivos e sonhos são almejados (VTI com A). Esta distinção é testada com alta frequência pela CESGRANRIO.
+              </p>
+              <p>
+                No ambiente da Petrobras, esses verbos aparecem com frequência em documentos de Recursos Humanos, relatórios de saúde ocupacional e comunicados institucionais. "Aspirar <em>a</em> uma vaga de liderança" (desejo de ascensão) vs. "aspirar gases" (risco ocupacional em plataformas); "visar <em>ao</em> crescimento sustentável" (objetivo estratégico) vs. "visar um documento" (assinar/certificar oficialmente). O candidato que domina esses verbos lê documentos corporativos com mais precisão e produz textos tecnicamente impecáveis.
+              </p>
+              <p>
+                A CESGRANRIO monta questões com esses verbos de três formas: <strong>frases com erro de preposição</strong> (colocar "A" onde não deve ou omitir onde deve), <strong>identificação do sentido pelo contexto</strong> (qual sentido o verbo assume nesta frase?) e <strong>reescrita mantendo sentido e correção</strong> (qual alternativa preserva ambos?). A estratégia vencedora é sempre a mesma: primeiro identificar o sentido do verbo no contexto, depois aplicar a regra de regência correspondente a esse sentido específico — nunca memorizar uma única regra para o verbo inteiro.
+              </p>
+              <div className="bg-gradient-to-br from-rose-50 to-orange-50 dark:from-rose-950/30 dark:to-orange-950/30 border border-rose-200 dark:border-rose-800 rounded-xl p-6 space-y-4">
+                <h4 className="font-bold text-rose-900 dark:text-rose-100 text-xl">Mapa de Regência — Verbos de Elite I</h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
+                    <div className="font-bold text-rose-700 dark:text-rose-300">ASSISTIR</div>
+                    <div className="text-foreground/75"><em>Ver/presenciar:</em> VTI (A) → assisti ao show</div>
+                    <div className="text-foreground/75"><em>Ajudar:</em> VTD → assistiu o paciente</div>
+                    <div className="text-foreground/75"><em>Pertencer (direito):</em> VTI (A) → assiste ao empregado</div>
+                  </div>
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
+                    <div className="font-bold text-orange-700 dark:text-orange-300">ASPIRAR</div>
+                    <div className="text-foreground/75"><em>Inalar:</em> VTD → aspirou a poeira</div>
+                    <div className="text-foreground/75"><em>Desejar/almejar:</em> VTI (A) → aspira ao cargo</div>
+                  </div>
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
+                    <div className="font-bold text-amber-700 dark:text-amber-300">VISAR</div>
+                    <div className="text-foreground/75"><em>Ter em vista/objetivar:</em> VTI (A) → visa ao lucro</div>
+                    <div className="text-foreground/75"><em>Assinar/autenticar:</em> VTD → visou o cheque</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={2}
+              title="A Variação de Sentido"
+          variant={mv[4]}
+        />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <FlipCard
                 frente={<div className="font-bold">ASSISTIR</div>}
@@ -823,8 +1052,8 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Armadilhas Cesgranrio — Verbos Bifrontes"
-              variant="emerald"
-            />
+          variant={mv[4]}
+        />
             <AlertBox tipo="danger" titulo="Verbos que mudam de regência conforme o sentido">
               Os verbos bifrontes são o maior desafio de regência verbal. Cada
               sentido pede uma regência diferente. Os mais cobrados:
@@ -898,15 +1127,16 @@ export default function AulaRegencia({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-rose-500"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={3}
               title="Comparação Direta: Assistir a vs Assistir"
-              variant="emerald"
-            />
+          variant={mv[4]}
+        />
             <Comparison
               title="O verbo ASSISTIR no contexto corporativo"
               left={{
@@ -929,9 +1159,9 @@ export default function AulaRegencia({
             titulo="QUIZ: Módulo Nº 4"
             icone="🎯"
             numero={4}
-            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          />
+          variant={mv[4]}
+        />
         </div>
       </TabsContent>
 
@@ -942,14 +1172,60 @@ export default function AulaRegencia({
             numero={5}
             titulo="Verbos de Elite: Parte II"
             descricao="Custar, Proceder, Querer e Chamar: nuances que o candidato comum ignora."
-            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400"
-          />
+          variant={mv[5]}
+        />
+
+          {/* ★ RICH INTRO M5 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="A Lógica do Custar e Proceder"
-              variant="emerald"
+              title="Verbos de Comportamento Único: Quando a Língua Culta Surpreende"
+              variant={mv[5]}
             />
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <p>
+                Se os verbos do módulo anterior (assistir, aspirar, visar) mudam de regência conforme o sentido, os verbos deste módulo apresentam um desafio diferente: eles têm um <strong>comportamento sintático único e contraintuitivo</strong> que conflita diretamente com o uso coloquial cotidiano. Custar, proceder, querer e chamar são verbos que a maioria dos falantes usa de forma diferente da norma culta — e a CESGRANRIO explora exatamente esse conflito entre o uso espontâneo e o uso gramaticalmente correto para construir suas questões de maior dificuldade.
+              </p>
+              <p>
+                O verbo <strong>CUSTAR</strong> é o caso mais paradigmático de conflito entre língua coloquial e culta. No cotidiano, diz-se "eu custei para entender" ou "ele custou a aceitar", com pessoa humana como sujeito. Na norma culta, custar no sentido de "ser difícil, demorar" é impessoal: o sujeito é sempre a ação, nunca a pessoa. A construção correta é "Custou-me entender" (= foi difícil para mim entender), onde "entender" é o sujeito oracional e "me" é o objeto indireto (dativo) indicando a quem custou. Esta é uma das construções mais testadas pela CESGRANRIO em provas de nível superior.
+              </p>
+              <p>
+                O verbo <strong>PROCEDER</strong> divide-se em dois comportamentos. No sentido de "agir, comportar-se", é intransitivo: "Ele procedeu corretamente" (sem complemento). No sentido de "ter origem, provir", é transitivo indireto e exige "DE": "Ele procede <em>de</em> família tradicional". Quando significa "dar início a um processo ou procedimento", exige "A": "Procederam <em>à</em> análise dos dados". A distinção entre esses três usos é sutil e exatamente por isso aparece em provas de alto nível. O candidato deve ler o contexto com atenção para identificar qual sentido está em jogo antes de aplicar a regra.
+              </p>
+              <p>
+                No ambiente profissional da Petrobras, esses verbos têm usos específicos e formalizados. "Custar" aparece em análises de viabilidade: "Custou caro à empresa a decisão de...". "Proceder" aparece em auditorias e relatórios: "Procedeu-se à verificação das contas" ou "Os dados procedem de fontes primárias certificadas". "Chamar" aparece em comunicados e convocações: "A diretoria chamou atenção para os riscos" (VTD) ou "O relatório chama a atenção dos gestores <em>para</em> a necessidade de..." (complemento com preposição). Dominar esses usos é essencial para redigir e interpretar documentos corporativos com precisão.
+              </p>
+              <p>
+                A CESGRANRIO usa esses verbos para testar a capacidade do candidato de <strong>reconhecer o conflito entre uso popular e uso culto</strong>. As alternativas incorretas geralmente reproduzem construções coloquiais plausíveis — "ele custou a entender", "quero que venha" com preposição inadequada, "chamou-o de burro" vs. "chamou-o burro". A estratégia de prova: ao ver uma das alternativas usando esses verbos sem preposição onde a norma culta exige ou com preposição onde não deve, leia o contexto, identifique o sentido e aplique a regra específica. Nunca generalize: cada sentido tem sua regra própria.
+              </p>
+              <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 border border-violet-200 dark:border-violet-800 rounded-xl p-6 space-y-4">
+                <h4 className="font-bold text-violet-900 dark:text-violet-100 text-xl">Regras Rápidas — Verbos de Elite II</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
+                    <div className="font-bold text-violet-700 dark:text-violet-300">CUSTAR (ser difícil)</div>
+                    <div className="text-red-600 dark:text-red-400">❌ "Custei para entender"</div>
+                    <div className="text-green-600 dark:text-green-400">✅ "Custou-me entender"</div>
+                    <div className="font-bold text-violet-700 dark:text-violet-300 mt-2">PROCEDER</div>
+                    <div className="text-foreground/75">Agir: intransitivo | Provir: DE | Iniciar: A</div>
+                  </div>
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
+                    <div className="font-bold text-purple-700 dark:text-purple-300">QUERER (desejar → VTD)</div>
+                    <div className="text-foreground/75">Quero vê-la (sem preposição)</div>
+                    <div className="font-bold text-purple-700 dark:text-purple-300 mt-2">CHAMAR</div>
+                    <div className="text-foreground/75">Denominar: VTD → chamou-o ladrão</div>
+                    <div className="text-foreground/75">Com DE: "chamou-o de ladrão" (tb. aceito)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={2}
+              title="A Lógica do Custar e Proceder"
+          variant={mv[5]}
+        />
             <Comparison
               title="O Verbo CUSTAR"
               left={{
@@ -976,8 +1252,8 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Top 10 Verbos Que Confundem Candidatos"
-              variant="emerald"
-            />
+          variant={mv[5]}
+        />
             <AlertBox tipo="danger" titulo="Lista Crítica — Decore Antes da Prova">
               Os 10 verbos que mais caem em provas da Cesgranrio/Petrobras:
               <br /><br />
@@ -1007,8 +1283,8 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={3}
               title="Pares de Confusão: FlipCards"
-              variant="emerald"
-            />
+          variant={mv[5]}
+        />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente={<div className="font-bold">AGRADAR</div>}
@@ -1061,9 +1337,9 @@ export default function AulaRegencia({
             titulo="QUIZ: Módulo Nº 5"
             icone="🎯"
             numero={4}
-            variant="emerald"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          />
+          variant={mv[5]}
+        />
         </div>
       </TabsContent>
 
@@ -1074,14 +1350,61 @@ export default function AulaRegencia({
             numero={6}
             titulo="Transitividade Bifronte"
             descricao="Pagar, Perdoar e Informar: Um pé na preposição, outro na liberdade."
-            gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800"
-          />
+          variant={mv[6]}
+        />
+
+          {/* ★ RICH INTRO M6 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="Pessoa vs Coisa"
-              variant="cyan"
+              title="A Regra Pessoa/Coisa: O Critério que Determina a Preposição"
+              variant={mv[6]}
             />
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <p>
+                Existem verbos na gramática normativa portuguesa que apresentam o que chamamos de <strong>transitividade bifronte</strong>: conforme o tipo de objeto (pessoa ou coisa), o verbo exige ou dispensa preposição. Pagar, perdoar e informar são os representantes mais conhecidos desse grupo. A lógica subjacente é semântica: quando a ação recai sobre uma coisa (algo impessoal, abstrato, mensurável), o verbo é transitivo direto; quando a ação recai sobre uma pessoa (um ser animado, identificado), o verbo pode ser transitivo indireto, exigindo preposição.
+              </p>
+              <p>
+                Para <strong>PAGAR e PERDOAR</strong>, a regra da norma culta é precisa: o complemento-coisa vai sem preposição (direto), e o complemento-pessoa vai com "A" (indireto). "Paguei o boleto" (coisa → VTD) versus "Paguei ao fornecedor" (pessoa → VTI com A). "Perdoei a dívida" (coisa → VTD) versus "Perdoei ao colega" (pessoa → VTI com A). Na linguagem coloquial, quase todos dizem "paguei o fornecedor" e "perdoei o colega" — sem preposição, mesmo com pessoa. A banca usa exatamente esse conflito entre uso popular e norma culta para montar questões de média e alta dificuldade.
+              </p>
+              <p>
+                O verbo <strong>INFORMAR</strong> tem comportamento ligeiramente diferente: ele é bifronte na direção oposta. Quando o complemento é a pessoa informada, pode ser construído com "A" (VTI) ou com objeto direto (VTD): "Informei o gerente" ou "Informei ao gerente" — ambos aceitos pela norma culta. Quando o complemento é a informação transmitida, geralmente usa "SOBRE" ou "DE": "Informei o gerente <em>sobre</em> o acidente" ou "Informei-o <em>de</em> que haveria reunião". A questão de prova geralmente explora a combinação dos dois complementos: pessoa + conteúdo informado, testando se o candidato sabe qual preposição liga cada elemento.
+              </p>
+              <p>
+                Na Petrobras, esses verbos aparecem rotineiramente em comunicações formais, contratos e relatórios de auditoria. "Pagar ao prestador de serviços" (norma culta em contratos), "perdoar ao devedor" (em instrumentos de quitação de dívida), "informar os acionistas sobre os resultados" (em relatórios financeiros) são construções presentes em documentos de alto nível. Um analista que escreve "paguei o fornecedor" em um parecer jurídico comete um desvio de registro que pode comprometer a credibilidade profissional do texto — mesmo que, semanticamente, a mensagem seja compreensível.
+              </p>
+              <p>
+                A estratégia para questões de transitividade bifronte é simples e eficiente: <strong>primeiro identifique o tipo de complemento</strong> (pessoa ou coisa?), depois aplique a regra correspondente. Se o objeto for claramente uma pessoa (nome próprio, pronome pessoal, cargo específico), use a preposição. Se for claramente uma coisa (valor monetário, serviço, conteúdo abstrato), dispense a preposição. Em casos ambíguos, o contexto sintático e semântico da frase resolverá. Esse método elimina a necessidade de memorizar exceções individuais e permite resolver qualquer variação que a banca apresente.
+              </p>
+              <div className="bg-gradient-to-br from-cyan-50 to-sky-50 dark:from-cyan-950/30 dark:to-sky-950/30 border border-cyan-200 dark:border-cyan-800 rounded-xl p-6 space-y-4">
+                <h4 className="font-bold text-cyan-900 dark:text-cyan-100 text-xl">Critério Pessoa/Coisa — Mapa Rápido</h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
+                    <div className="font-bold text-cyan-700 dark:text-cyan-300">PAGAR</div>
+                    <div className="text-foreground/75">Coisa (VTD): pagou <em>o boleto</em></div>
+                    <div className="text-foreground/75">Pessoa (VTI+A): pagou <em>ao fornecedor</em></div>
+                  </div>
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
+                    <div className="font-bold text-sky-700 dark:text-sky-300">PERDOAR</div>
+                    <div className="text-foreground/75">Coisa (VTD): perdoou <em>a dívida</em></div>
+                    <div className="text-foreground/75">Pessoa (VTI+A): perdoou <em>ao colega</em></div>
+                  </div>
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
+                    <div className="font-bold text-blue-700 dark:text-blue-300">INFORMAR</div>
+                    <div className="text-foreground/75">Pessoa: informou o/ao gestor</div>
+                    <div className="text-foreground/75">Conteúdo: informou sobre/de algo</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={2}
+              title="Pessoa vs Coisa"
+          variant={mv[6]}
+        />
             <div className="p-6 bg-cyan-500/5 rounded-2xl border border-cyan-500/20 space-y-4">
               <h4 className="font-black text-cyan-600 uppercase tracking-widest text-lg flex items-center gap-2">
                 <LuZap className="w-5 h-5" /> Regra de Ouro (Pagar/Perdoar)
@@ -1114,8 +1437,8 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Regra Pessoa/Coisa: Os Verbos Bifrontes Mais Cobrados"
-              variant="cyan"
-            />
+          variant={mv[6]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1171,15 +1494,16 @@ export default function AulaRegencia({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-amber-600"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={3}
               title="Implicar em: o erro mais famoso"
-              variant="cyan"
-            />
+          variant={mv[6]}
+        />
             <Comparison
               title="IMPLICAR no sentido de 'causar/acarretar'"
               left={{
@@ -1211,9 +1535,9 @@ export default function AulaRegencia({
             titulo="QUIZ: Módulo Nº 6"
             icone="🎯"
             numero={4}
-            variant="cyan"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
-          />
+          variant={mv[6]}
+        />
         </div>
       </TabsContent>
 
@@ -1224,14 +1548,59 @@ export default function AulaRegencia({
             numero={7}
             titulo="Movimento e Pronominais"
             descricao="Ir, Chegar e a saga dos verbos que 'se esquecem' ou 'lembram'."
-            gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
-          />
+          variant={mv[7]}
+        />
+
+          {/* ★ RICH INTRO M7 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="A Preposição 'A' no Movimento"
-              variant="amber"
+              title="Ir e Chegar: A Batalha entre 'A' e 'EM' que Define Aprovações"
+              variant={mv[7]}
             />
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <p>
+                Os verbos de movimento — ir, chegar, voltar, retornar, dirigir-se — formam um grupo sintático especial na gramática normativa portuguesa: eles exigem a preposição <strong>"A"</strong> (não "EM") para introduzir o destino. A regra é fundamentada na distinção clássica entre dois tipos de complemento locativo: <em>lugar onde se está</em> (usa "EM": "Estou <em>em</em> casa") e <em>lugar para onde se vai</em> (usa "A": "Cheguei <em>a</em> casa"). A preposição "A" indica direcionamento e chegada; "EM" indica permanência e localização estática. Confundir as duas é um dos erros mais frequentes tanto na língua coloquial quanto nas provas de concurso.
+              </p>
+              <p>
+                O verbo <strong>CHEGAR</strong> é o ponto mais crítico desse conjunto. Na linguagem coloquial brasileira, "cheguei em casa" é quase universal — mas é um desvio da norma culta. A construção correta é "cheguei <em>a</em> casa" ou, com artigo, "cheguei <em>à</em> escola" (crase obrigatória com substantivos femininos que admitem artigo). O mesmo raciocínio se aplica a "ir": "fui <em>ao</em> trabalho" (correto) vs. "fui no trabalho" (coloquial). A CESGRANRIO explora essa distinção com frequência, apresentando frases em que "EM" está no lugar de "A" como erro a ser identificado ou corrigido.
+              </p>
+              <p>
+                O segundo grande tema deste módulo são os <strong>verbos pronominais de cognição e memória</strong>: lembrar/esquecer e suas formas com pronome reflexivo. O comportamento desses verbos é diretamente oposto dependendo da presença do pronome: "Lembro o fato" (VTD, sem preposição) vs. "Lembro-me do fato" (VTI com DE, com pronome). "Esqueci a senha" (VTD) vs. "Esqueci-me da reunião" (VTI com DE). A regra é simples: sem pronome = transitivo direto (sem preposição); com pronome reflexivo (me/te/se/nos/vos) = transitivo indireto com DE. A banca usa as duas formas para testar se o candidato percebe a diferença de construção.
+              </p>
+              <p>
+                No contexto operacional da Petrobras, esses usos aparecem em comunicações formais e documentos de viagem corporativa. "O representante foi <em>à</em> sede da ANP" (não "foi na sede"), "a equipe chegou <em>ao</em> campo de exploração" (não "chegou no campo"), "o gerente lembrou-se <em>dos</em> procedimentos de segurança" (não "lembrou dos") são construções que diferem o texto técnico-formal do texto coloquial. Em laudos periciais, atas de reunião e comunicados institucionais, essas preposições precisam estar corretas para que o documento tenha o nível de formalidade exigido.
+              </p>
+              <p>
+                Para resolver questões sobre verbos de movimento e pronominais, use o seguinte protocolo de prova: <strong>primeiro verifique se há pronome reflexivo</strong> — se sim, espere preposição no complemento; <strong>depois identifique se o verbo indica movimento/destino</strong> — se sim, use "A" ou "PARA" (nunca "EM"); <strong>por último, verifique a necessidade de crase</strong> — quando "A" precede substantivo feminino com artigo, a crase é obrigatória ("à escola", "ao mercado" não tem crase porque "ao" já é a fusão de "a + o"). Esse protocolo resolve 95% das questões envolvendo esses verbos.
+              </p>
+              <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 border border-amber-200 dark:border-amber-800 rounded-xl p-6 space-y-4">
+                <h4 className="font-bold text-amber-900 dark:text-amber-100 text-xl">Resumo: Movimento e Pronominais</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
+                    <div className="font-bold text-amber-700 dark:text-amber-300">Verbos de Movimento (destino → A)</div>
+                    <div className="text-red-600 dark:text-red-400">❌ Fui no mercado / cheguei em casa</div>
+                    <div className="text-green-600 dark:text-green-400">✅ Fui ao mercado / cheguei a casa</div>
+                    <div className="text-foreground/75 text-xs mt-1">"EM" só para permanência: "Estou em casa"</div>
+                  </div>
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
+                    <div className="font-bold text-yellow-700 dark:text-yellow-300">Lembrar/Esquecer</div>
+                    <div className="text-foreground/75">Sem pronome (VTD): lembrou a data</div>
+                    <div className="text-foreground/75">Com pronome (VTI + DE): lembrou-se da data</div>
+                    <div className="text-foreground/75">Sem pronome (VTD): esqueceu a senha</div>
+                    <div className="text-foreground/75">Com pronome (VTI + DE): esqueceu-se da senha</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={2}
+              title="A Preposição 'A' no Movimento"
+          variant={mv[7]}
+        />
             <AlertBox tipo="warning" titulo="O Erro do 'EM'">
               Na norma culta, quem vai, vai **A** algum lugar. O uso do **EM** é
               coloquialismo.
@@ -1255,8 +1624,8 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Ir A vs Ir PARA vs Ir EM"
-              variant="amber"
-            />
+          variant={mv[7]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1331,15 +1700,16 @@ export default function AulaRegencia({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-blue-600"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={3}
               title="Comparação: Chegar A vs Chegar EM"
-              variant="amber"
-            />
+          variant={mv[7]}
+        />
             <Comparison
               title="Verbos de Chegada na Norma Culta"
               left={{
@@ -1370,9 +1740,9 @@ export default function AulaRegencia({
             titulo="QUIZ: Módulo Nº 7"
             icone="🎯"
             numero={4}
-            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
-          />
+          variant={mv[7]}
+        />
         </div>
       </TabsContent>
 
@@ -1383,14 +1753,61 @@ export default function AulaRegencia({
             numero={8}
             titulo="Peculiaridades Cesgranrio"
             descricao="Implicar, Preferir e Aludir: Detalhes técnicos que o manual do Petrobras exige."
-            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
-          />
+          variant={mv[8]}
+        />
+
+          {/* ★ RICH INTRO M8 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="Dossiê IMPLICAR"
-              variant="amber"
+              title="Os Verbos que a CESGRANRIO Mais Ama: Implicar, Preferir, Aludir e Outros"
+              variant={mv[8]}
             />
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <p>
+                Além dos verbos já estudados nos módulos anteriores, existe um grupo de verbos que a CESGRANRIO eleva à categoria de "armadilha de elite" — verbos cujo uso incorreto é tão disseminado na linguagem coloquial que parece natural mesmo para falantes instruídos. Implicar, preferir, aludir, referir-se, obedecer e simpatizar formam esse grupo de <strong>peculiaridades de alta frequência</strong> nas provas de concurso público de nível superior. Dominar esses verbos significa garantir pontos que a maioria dos candidatos perde por confiança excessiva no instinto linguístico.
+              </p>
+              <p>
+                O verbo <strong>IMPLICAR</strong> é provavelmente o mais explorado pela banca. No sentido de "acarretar, causar, ter como consequência", é transitivo direto — sem preposição: "A decisão implica <em>riscos</em> financeiros" (nunca "implica em riscos"). O uso com "EM" é um hipercorrecionismo coloquial extremamente comum, mas gramaticalmente equivocado na norma culta. No sentido de "comprometer alguém, envolver em culpa", também é transitivo direto: "A investigação implicou o diretor". Apenas no sentido de "ser implicante, irritar-se" (sentido informal) pode ser intransitivo ou construído com "COM": "Ele implica com tudo".
+              </p>
+              <p>
+                O verbo <strong>PREFERIR</strong> apresenta uma peculiaridade sintática crucial: na norma culta, exprime preferência sem o advérbio de comparação "mais". A construção "prefiro A <em>a</em> B" usa a preposição "A" para introduzir o segundo termo da comparação — nunca "do que". "Prefiro relatórios objetivos <em>a</em> textos prolixos" (correto) vs. "prefiro relatórios do que textos" (coloquial, não aceito pela banca). A CESGRANRIO frequentemente apresenta a versão com "do que" como alternativa tentadora, e o candidato despreparado a marca sem perceber o erro de regência comparativa.
+              </p>
+              <p>
+                <strong>ALUDIR, REFERIR-SE</strong> e <strong>OBEDECER</strong> completam o grupo. Aludir significa "fazer referência indireta" e exige "A": "O relatório alude <em>ao</em> problema" (nunca "alude o problema"). Referir-se também exige "A": "O documento se refere <em>às</em> metas" (com crase obrigatória com feminino). Obedecer exige "A": "Obedecemos <em>à</em> norma técnica" (nunca "obedecemos a norma" sem crase quando o substantivo é feminino com artigo). Esses três verbos são transitivos indiretos sem exceção — qualquer construção sem preposição é erro de regência.
+              </p>
+              <p>
+                No contexto da Petrobras, esses verbos aparecem em documentos normativos, relatórios de compliance e pareceres jurídicos. "A nova política implica mudanças no processo operacional" (sem "em"), "a empresa prefere fornecedores certificados <em>a</em> não certificados", "o procedimento obedece <em>às</em> normas da ANP", "o relatório alude <em>aos</em> incidentes do trimestre anterior" — construções que o candidato aprovado escreve e lê com total segurança. A estratégia de prova para esse módulo: para cada um desses verbos, memorize o comportamento-padrão (VTD sem preposição para implicar/causar; VTI com A para os demais) e desconfie sempre de alternativas que colocam ou omitem preposições contrariando esse padrão.
+              </p>
+              <div className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/30 dark:to-green-950/30 border border-emerald-200 dark:border-emerald-800 rounded-xl p-6 space-y-4">
+                <h4 className="font-bold text-emerald-900 dark:text-emerald-100 text-xl">Verbos Peculiares — Gabarito Rápido</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
+                    <div className="font-bold text-emerald-700 dark:text-emerald-300">IMPLICAR (causar)</div>
+                    <div className="text-red-600 dark:text-red-400">❌ implica em riscos</div>
+                    <div className="text-green-600 dark:text-green-400">✅ implica riscos (VTD)</div>
+                    <div className="font-bold text-emerald-700 dark:text-emerald-300 mt-2">PREFERIR</div>
+                    <div className="text-red-600 dark:text-red-400">❌ prefiro A do que B</div>
+                    <div className="text-green-600 dark:text-green-400">✅ prefiro A a B</div>
+                  </div>
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
+                    <div className="font-bold text-green-700 dark:text-green-300">ALUDIR / REFERIR-SE / OBEDECER</div>
+                    <div className="text-foreground/75">Todos exigem preposição A:</div>
+                    <div className="text-green-600 dark:text-green-400">✅ alude ao tema</div>
+                    <div className="text-green-600 dark:text-green-400">✅ refere-se às normas</div>
+                    <div className="text-green-600 dark:text-green-400">✅ obedece à regulamentação</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={2}
+              title="Dossiê IMPLICAR"
+          variant={mv[8]}
+        />
             <p className="text-muted-foreground leading-relaxed">
               O verbo **IMPLICAR** é o maior gerador de erros na regência verbal
               de concursos. No sentido de "causar" ou "acarretar", ele é
@@ -1423,8 +1840,8 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Peculiaridades que a Cesgranrio Adora"
-              variant="amber"
-            />
+          variant={mv[8]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1520,15 +1937,16 @@ export default function AulaRegencia({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-emerald-600"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={3}
               title="FlipCards: Precisar, Carecer e Necessitar"
-              variant="amber"
-            />
+          variant={mv[8]}
+        />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <FlipCard
                 frente={<div className="font-bold">PRECISAR</div>}
@@ -1571,9 +1989,9 @@ export default function AulaRegencia({
             titulo="QUIZ: Módulo Nº 8"
             icone="🎯"
             numero={4}
-            variant="amber"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
-          />
+          variant={mv[8]}
+        />
         </div>
       </TabsContent>
 
@@ -1584,14 +2002,58 @@ export default function AulaRegencia({
             numero={9}
             titulo="Regência e Relativos"
             descricao="Onde a preposição viaja para antes do QUE, QUEM ou CUJO."
-            gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
-          />
+          variant={mv[9]}
+        />
+
+          {/* ★ RICH INTRO M9 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="A Preposição Viajante"
-              variant="indigo"
+              title="A Preposição Viajante: Como a Regência Comanda os Pronomes Relativos"
+              variant={mv[9]}
             />
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <p>
+                A interseção entre regência verbal e pronomes relativos produz uma das construções mais elegantes — e mais cobradas — da gramática normativa: a <strong>"preposição viajante"</strong>. O princípio é simples mas poderoso: quando um verbo dentro de uma oração relativa exige preposição, essa preposição não fica junto ao verbo — ela "viaja" para antes do pronome relativo que introduz a oração. O candidato que desconhece esse mecanismo produz frases incompletas ou agramaticais sem perceber; o candidato que o domina identifica imediatamente onde está o erro nas alternativas da banca.
+              </p>
+              <p>
+                A mecânica funciona assim: identifique o verbo da oração relativa e sua regência. Se o verbo exige preposição, essa preposição precede o pronome relativo (QUE, QUEM, QUAL, ONDE). Exemplo com o verbo "referir-se" (VTI exigindo "A"): "Estes são os dados <em>a que</em> me referi" (correto) vs. "estes são os dados <em>que</em> me referi" (incorreto — falta a preposição). Exemplo com "gostar" (VTI exigindo "DE"): "A proposta <em>de que</em> mais gostamos" (correto) vs. "a proposta <em>que</em> mais gostamos" (incorreto). O pronome relativo funciona como um "veículo" que carrega a preposição em sua frente.
+              </p>
+              <p>
+                Com o pronome relativo <strong>QUEM</strong>, a preposição é ainda mais obrigatória, pois "quem" só pode ser objeto indireto, objeto de preposição ou agente da passiva — nunca objeto direto. "O engenheiro <em>com quem</em> trabalhei" (VTI com COM: trabalhar com alguém) vs. "o engenheiro <em>quem</em> trabalhei" (agramatical). "A gestora <em>a quem</em> reportei o problema" (VTI com A: reportar a alguém). Nas questões da CESGRANRIO, as alternativas incorretas frequentemente omitem a preposição antes de "quem", e o candidato treinado reconhece o erro em segundos.
+              </p>
+              <p>
+                No texto corporativo da Petrobras, a regência com pronomes relativos aparece em toda frase que usa "que", "quem" ou "qual" para expandir informações: "o projeto <em>a que</em> nos referimos", "o fornecedor <em>com quem</em> firmamos contrato", "o procedimento <em>ao qual</em> se obedece", "a norma <em>de que</em> tratamos". Documentos jurídicos, contratos e relatórios técnicos de alto nível são construídos com essas estruturas com frequência — e um profissional que omite preposições nessas construções demonstra imprecisão gramatical que compromete a credibilidade do documento e de seu autor.
+              </p>
+              <p>
+                Para resolver questões de regência com relativos, siga este protocolo de 3 passos: <strong>(1) identifique o pronome relativo</strong> (que, quem, qual, onde, cujo); <strong>(2) localize o verbo dentro da oração relativa</strong> e determine sua regência (qual preposição ele exige, se alguma?); <strong>(3) verifique se a preposição exigida está presente antes do pronome relativo</strong> — se o verbo é transitivo indireto e a preposição está ausente, a frase está errada. Esse protocolo funciona para qualquer verbo, seja em questões de identificação de erro, reescrita ou completude de lacuna.
+              </p>
+              <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 border border-rose-200 dark:border-rose-800 rounded-xl p-6 space-y-4">
+                <h4 className="font-bold text-rose-900 dark:text-rose-100 text-xl">Regência + Relativos: Casos de Alta Frequência</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
+                    <div className="font-bold text-rose-700 dark:text-rose-300">Com verbo exigindo A:</div>
+                    <div className="text-foreground/75">"os dados <em>a que</em> me refiro"</div>
+                    <div className="text-foreground/75">"o cargo <em>a que</em> aspira"</div>
+                    <div className="text-foreground/75">"a reunião <em>à qual</em> assisti"</div>
+                  </div>
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
+                    <div className="font-bold text-pink-700 dark:text-pink-300">Com verbo exigindo DE ou COM:</div>
+                    <div className="text-foreground/75">"a proposta <em>de que</em> gostamos"</div>
+                    <div className="text-foreground/75">"o colega <em>com quem</em> trabalhei"</div>
+                    <div className="text-foreground/75">"o tema <em>sobre o qual</em> dissertamos"</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={2}
+              title="A Preposição Viajante"
+          variant={mv[9]}
+        />
             <p className="text-muted-foreground text-lg">
               A regra é: olhe para o verbo que vem DEPOIS do pronome. Se ele
               exigir preposição, ela deve ser jogada para ANTES do pronome.
@@ -1623,8 +2085,8 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Linguagem Petrobras: Verbos em Textos Técnicos"
-              variant="indigo"
-            />
+          variant={mv[9]}
+        />
             <AlertBox tipo="info" titulo="Verbos Formais da Redação Oficial Petrobras">
               Em documentos técnicos, relatórios e atas da Petrobras, estes
               verbos aparecem com frequência — e sempre com regência específica:
@@ -1707,15 +2169,16 @@ export default function AulaRegencia({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-rose-600"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={3}
               title="CardCarousel: Pronomes Relativos com Preposição"
-              variant="indigo"
-            />
+          variant={mv[9]}
+        />
             <CardCarousel
               cards={[
                 {
@@ -1752,9 +2215,9 @@ export default function AulaRegencia({
             titulo="QUIZ: Módulo Nº 9"
             icone="🎯"
             numero={4}
-            variant="indigo"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
-          />
+          variant={mv[9]}
+        />
         </div>
       </TabsContent>
 
@@ -1765,16 +2228,61 @@ export default function AulaRegencia({
             numero={10}
             titulo="Simulado Final"
             descricao="Teste seu domínio perante uma bateria definitiva focada em Regência Global Cesgranrio."
-            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
-          />
+          variant={mv[10]}
+        />
+
+          {/* ★ RICH INTRO M10 */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Simulado Mestre: Como a CESGRANRIO Monta Questões de Regência"
+              variant={mv[10]}
+            />
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <p>
+                Este módulo final consolida todas as regras de regência estudadas nos nove módulos anteriores e as aplica no formato exato utilizado pela CESGRANRIO em provas reais. Antes de iniciar o simulado, é essencial compreender como a banca <strong>estrutura suas questões de regência</strong>: raramente ela testa apenas uma regra isolada. As questões de maior nível cobram a interação de dois ou três fenômenos — por exemplo, regência verbal + pronome relativo + crase, ou transitividade bifronte + concordância verbal. O candidato que só memorizou regras isoladas trava nessas questões integradas; o candidato que compreende o sistema gramatical resolve com fluidez.
+              </p>
+              <p>
+                A CESGRANRIO usa quatro formatos principais para questões de regência: <strong>(1) Identificação de erro</strong> — "Assinale a alternativa que apresenta erro de regência". O erro geralmente está em uma preposição ausente onde deve existir (verbos VTI usados como VTD) ou presente onde não deve (verbos VTD usados com preposição). <strong>(2) Reescrita equivalente</strong> — "Assinale a reescrita que preserva sentido e correção gramatical". Aqui a banca testa se o candidato consegue reconhecer construções sintaticamente diferentes mas semanticamente equivalentes. <strong>(3) Completude de lacuna</strong> — "Assinale a preposição que preenche corretamente as lacunas". Pode exigir a mesma preposição para dois contextos ou preposições diferentes. <strong>(4) Análise de construção</strong> — "A frase X está correta porque..." ou "O que justifica o uso de [preposição] é...".
+              </p>
+              <p>
+                As armadilhas mais frequentes nas questões da CESGRANRIO seguem padrões identificáveis. A mais comum é a <strong>troca de VTI por VTD</strong>: "aspirou o cargo" (errado) vs. "aspirou ao cargo" (correto). A segunda mais comum é a <strong>omissão de preposição antes de pronome relativo</strong>: "o projeto que me refiro" (errado) vs. "o projeto a que me refiro" (correto). A terceira é a <strong>substituição de "A" por "EM"</strong> em verbos de movimento: "cheguei no escritório" (coloquial) vs. "cheguei ao escritório" (correto). A quarta é o uso de "mais do que" com "preferir": "prefiro A mais do que B" (errado) vs. "prefiro A a B" (correto). Reconhecer esses padrões permite resolver questões sem precisar analisar cada alternativa do zero.
+              </p>
+              <p>
+                Na reta final de preparação para a Petrobras, o estudo de regência deve ser feito em dois eixos simultâneos: <strong>produção ativa</strong> (escrever frases usando os verbos estudados com as preposições corretas, sem consultar material) e <strong>reconhecimento passivo</strong> (identificar o erro em frases prontas). O eixo de produção é mais difícil e mais eficaz — obriga o cérebro a acessar a regra e aplicá-la ativamente, consolidando a aprendizagem de forma mais profunda. O eixo de reconhecimento treina a velocidade de identificação, crucial em provas com tempo limitado. Combine os dois para chegar ao simulado com máxima confiança.
+              </p>
+              <p>
+                O candidato que chega ao Módulo 10 com domínio real de regência possui uma vantagem competitiva concreta: a regência responde por <strong>15% a 25% das questões de língua portuguesa</strong> nas provas da Petrobras/CESGRANRIO. Um candidato que acerta todas as questões de regência enquanto a média acerta apenas 60% ganha pontos que, em concursos de alta concorrência, podem ser a diferença entre aprovação e reprovação. Este simulado foi calibrado para simular exatamente o nível de dificuldade e o estilo de questão da banca. Faça-o com atenção, revise cada erro e compreenda o princípio por trás de cada resposta.
+              </p>
+              <div className="bg-gradient-to-br from-indigo-50 to-violet-50 dark:from-indigo-950/30 dark:to-violet-950/30 border border-indigo-200 dark:border-indigo-800 rounded-xl p-6 space-y-4">
+                <h4 className="font-bold text-indigo-900 dark:text-indigo-100 text-xl">Checklist Final de Regência</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-1">
+                    <div className="font-semibold text-indigo-700 dark:text-indigo-300 mb-2">Verbos VTI com A:</div>
+                    <div className="text-foreground/75">✓ assistir (ver), aspirar (desejar), visar (objetivar)</div>
+                    <div className="text-foreground/75">✓ ir, chegar, voltar (destino)</div>
+                    <div className="text-foreground/75">✓ aludir, referir-se, obedecer</div>
+                    <div className="text-foreground/75">✓ pagar/perdoar (pessoa)</div>
+                  </div>
+                  <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-1">
+                    <div className="font-semibold text-violet-700 dark:text-violet-300 mb-2">Verbos VTD (sem preposição):</div>
+                    <div className="text-foreground/75">✓ assistir (ajudar), aspirar (inalar), visar (assinar)</div>
+                    <div className="text-foreground/75">✓ implicar (causar/acarretar)</div>
+                    <div className="text-foreground/75">✓ pagar/perdoar (coisa)</div>
+                    <div className="text-foreground/75">✓ lembrar/esquecer (sem pronome)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
           {/* ── CONTEÚDO RICO M10 ── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="Mapa Mental: Todas as Regras de Regência"
-              variant="indigo"
-            />
+          variant={mv[10]}
+        />
             <ContentAccordion
               slides={[
                 {
@@ -1891,15 +2399,16 @@ export default function AulaRegencia({
                   ),
                 },
               ]}
-            />
+          corIndicador="bg-violet-600"
+        />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={2}
               title="Estratégia Final de Prova"
-              variant="indigo"
-            />
+          variant={mv[10]}
+        />
             <AlertBox tipo="info" titulo="Estratégia Definitiva para Gabaritar Regência">
               <strong>1. Identifique o verbo regente</strong> e pergunte:
               "Esse verbo exige preposição?"
@@ -1959,9 +2468,9 @@ export default function AulaRegencia({
               titulo="QUIZ: Módulo Nº 10"
               icone="🏆"
               numero={3}
-              variant="indigo"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
-            />
+          variant={mv[10]}
+        />
           )}
         </div>
       </TabsContent>
