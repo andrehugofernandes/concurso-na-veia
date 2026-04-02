@@ -17,7 +17,14 @@ import {
   ContentAccordion,
   QuizInterativo,
   QuizQuestion,
+  AlertBox,
 } from "../shared";
+import { 
+  LuBrain, 
+  LuBookOpen, 
+  LuFileText, 
+  LuSearch 
+} from "react-icons/lu";
 import { getModuleVariant } from "@/lib/moduleColors";
 import { QUIZ_RLCP } from "@/data/quizzes/rlcp-quizzes";
 
@@ -145,22 +152,52 @@ export default function AulaRLCP(props: AulaProps) {
             title="Conceitos e Âmbito de Aplicação"
           />
           <ContentAccordion
-            titulo="Detalhamento do Conteúdo"
             slides={[
               {
-                title: "O que é o RLCP?",
-                content:
-                  "O Regulamento de Licitações e Contratos da Petrobras (RLCP) é o documento que define como a Petrobras deve contratar obras, serviços e compras. Ele baseia-se na Lei 13.303/2016 (Lei das Estatais) e visa garantir competitividade e transparência nas escolhas da companhia.",
+                titulo: "Conceituação: A Origem do RLCP",
+                icone: <LuBrain />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <p>O <strong>Regulamento de Licitações e Contratos da Petrobras (RLCP)</strong> é a cartilha intrínseca da estatal, originada obrigatoriamente a partir da edição da rigorosa Lei das Estatais (Lei 13.303/16). Sem ele, voltaríamos ao engessamento público generalista ou ao caos privatista anárquico.</p>
+                    <AlertBox tipo="info" titulo="O Marco Civilizatório das Estatais">
+                      O RLCP mescla a hiper-agilidade para a Petrobras ser um leão concorrencial contra as petrolíferas globais e o cofre de cristal ético transparente para garantir que não haja vazamentos corruptos dos repasses ao Erário e acionistas.
+                    </AlertBox>
+                  </div>
+                ),
               },
               {
-                title: "A Quem se Aplica?",
-                content:
-                  "Aplica-se à Petrobras (Holding) e suas subsidiárias integrais. Toda contratação que envolva recursos da companhia deve seguir estas regras, salvo exceções específicas devidamente justificadas.",
+                titulo: "Exemplificação: Âmbito de Aplicação",
+                icone: <LuBookOpen />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-muted rounded-lg border border-border">
+                      <p className="text-base"><strong>Caso real:</strong> Um galpão na Noruega alugado pela Equinor (parceira) usa as leis locais. Mas se a <strong>Petrobras Holanda (Petrobras Netherlands B.V. - PNBV)</strong> (subsidiária integral) for realizar contratações vitais bilionárias pro consórcio, ela também se curva aos princípios do RLCP brasileiro em conformidade transnacional imposta pela Holding no Brasil.</p>
+                    </div>
+                  </div>
+                ),
               },
               {
-                title: "Princípios Fundamentais",
-                content:
-                  "Eficiência, economicidade, publicidade, moralidade e igualdade. A Petrobras deve buscar o melhor custo-benefício, mantendo a ética e permitindo que o mercado compita de forma justa.",
+                titulo: "Dicas: Os Princípios Intocáveis",
+                icone: <LuFileText />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li><strong>Eficiência vs Economicidade:</strong> Costumam confundir os dois. Eficiência é "fazer rápido sem retrabalho travado". Economicidade é "fechar a torneira do desperdício de dinheiro". Se você comprar a sonda mais barata quebradiça (economicidade burra), o poço vaza e gasta fortunas (ineficiência real).</li>
+                      <li><strong>Publicidade Transparente:</strong> Ninguém tranca o edital no armário do comprador. Qualquer fornecedor da praça com acesso à web deve ver a licitação nascendo, podendo se capacitar para atacar.</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Exceções: Blindagem de Segredo Industrial",
+                icone: <LuSearch />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="warning" titulo="Onde a Transparência Tem Limite">
+                      No princípio da Publicidade, há exceções duras: A Petrobras JAMAIS divulga projetos geológicos estratégicos ou invenções patenteáveis secretas vitais em editais de licitação, inviabilizando o roubo de dados por multinacionais petrolíferas espiãs gringas.
+                    </AlertBox>
+                  </div>
+                ),
               },
             ]}
           />
@@ -291,64 +328,59 @@ export default function AulaRLCP(props: AulaProps) {
             title="Tipos de Licitação"
           />
           <ContentAccordion
-            titulo="Detalhamento das Modalidades"
             slides={[
               {
-                title: "Concorrência: Modalidade Aberta",
-                content:
-                  "Qualquer interessado pode participar (maior publicidade). Prazo mínimo: 5 dias úteis. Ideal para contratos de grande vulto. Exemplo: compra de 10.000 toneladas de aço.",
+                titulo: "Conceituação: Modalidades Ágeis",
+                icone: <LuBrain />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <p>Ao se desacorrentar da retrógrada e superada Lei 8.666/93 para a nova Lei 13.303 e RLCP, a estatal explodiu a rigidez burra. O foco passou de "rito formal" para "resultado no bolso empresarial rápido e lícito". O edital agora foca em 3 modalidades abertas claras.</p>
+                  </div>
+                ),
               },
               {
-                title: "Tomada de Preços: Com Pré-qualificação",
-                content:
-                  "Participante deve estar cadastrado como fornecedor de Petrobras. Prazo mínimo: 3 dias úteis. Menos formalidade que Concorrência. Exemplo: compra de peças de equipamento.",
+                titulo: "Exemplificação: Concorrência vs Convite",
+                icone: <LuBookOpen />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-muted rounded-lg border border-border">
+                      <h4 className="font-bold text-foreground mb-2">📌 Compra de 1.000 km de Tubulação</h4>
+                      <p className="text-base text-muted-foreground">Aqui o certame pega fogo globalmente! Modalidade aberta gigantesca para o mundo. Qualquer interessado desce na arena para o duelo. É a <strong>Concorrência</strong>!</p>
+                    </div>
+                    <div className="p-4 bg-muted rounded-lg border border-border mt-4">
+                      <h4 className="font-bold text-foreground mb-2">📌 Cadernos para a Reunião da Diretoria</h4>
+                      <p className="text-base text-muted-foreground">Seria cômico fazer a Europa inteira precificar cadernos pautados. O pregoeiro da área tira 3 lojistas aprovados da gaveta e manda um Zap/Email urgente: <strong>Convite</strong> relâmpago microdirecionado.</p>
+                    </div>
+                  </div>
+                ),
               },
               {
-                title: "Convite: Pequenas Compras",
-                content:
-                  "Para compras de baixo valor. Petrobras convida 3+ fornecedores cadastrados. Prazo: 1 dia útil. Rápido e direto. Exemplo: compra de material de escritório.",
+                titulo: "Dicas: A Estratégica Tomada de Preço",
+                icone: <LuFileText />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li><strong>Tomada de Preços:</strong> O "Filé Mignon" da segurança no meio do caminho. É mais que o Convite e menos assustadora que a Concorrência infinita e pesada. A sacada da Cesgranrio: Lembre-se, na Tomada, a Petrobras EXIGE fornecedores previamente <strong>cadastrados e com atestado balizado fiscal/técnico</strong> no cofre da estatal. </li>
+                    </ul>
+                  </div>
+                ),
               },
               {
-                title: "Dispensa de Licitação: Exceções",
-                content:
-                  "Quando licitação é impossível (emergência, desastre natural) ou desnecessária (fornecedor único patentado). Requer justificativa. Documentação posterior é obrigatória.",
+                titulo: "Exceções: Dispensa vs Inexigibilidade",
+                icone: <LuSearch />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="warning" titulo="Quando Escapar da Licitação">
+                      <ul className="list-disc pl-5 mt-2">
+                        <li><strong>Dispensa:</strong> (Raridades, pechinchas extremas, caixas de fósforo, emergência vazamento). "Dá pra competir mas não temos tempo pra burocratizar".</li>
+                        <li><strong>Inexigibilidade:</strong> A patente do remédio, o artista global x exclusivo, ou a bomba de extração russa insubstituível patenteada. "É IMPOSSÍVEL competir matematicamente".</li>
+                      </ul>
+                    </AlertBox>
+                  </div>
+                ),
               },
             ]}
           />
-          <div className="space-y-4">
-            <div className="bg-card border border-border rounded-lg p-4">
-              <h4 className="font-bold text-foreground mb-2">
-                📌 Compra de Tubulação
-              </h4>
-              <p className="text-lg text-muted-foreground">
-                Petrobras precisa de 1.000 km de tubulação. Publica edital (RLCP) definindo:
-                especificações (diâmetro, material), quantidade, prazo de entrega. Empresas
-                concorrem. Critério: menor preço + qualidade. Vencedor assina contrato.
-              </p>
-            </div>
-
-            <div className="bg-card border border-border rounded-lg p-4">
-              <h4 className="font-bold text-foreground mb-2">
-                ⚡ Contratação de Consultoria
-              </h4>
-              <p className="text-lg text-muted-foreground">
-                Petrobras contrata consultoria para projeto estratégico. Usa Melhor Técnica:
-                qualidade (metodologia, equipe, experiência) é mais importante que preço.
-                Melhor proposta técnica vence.
-              </p>
-            </div>
-
-            <div className="bg-card border border-border rounded-lg p-4">
-              <h4 className="font-bold text-foreground mb-2">
-                🚨 Situação de Emergência
-              </h4>
-              <p className="text-lg text-muted-foreground">
-                Vazamento de óleo requer resposta imediata. Petrobras dispensa licitação
-                formal (calamidade) mas garante documentação. Contrata fornecedor de resposta
-                rápida. Após situação controlada, justifica contratos.
-              </p>
-            </div>
-          </div>
         
 
 
@@ -476,48 +508,56 @@ export default function AulaRLCP(props: AulaProps) {
             title="As Fases da Licitação"
           />
           <ContentAccordion
-            titulo="Fluxo da Contratação"
             slides={[
               {
-                title: "Fase Preparatória (Interna)",
-                content:
-                  "Definição do que será comprado, estimativa de custos e elaboração do Termo de Referência. É o momento de decidir a modalidade e o critério de julgamento.",
+                titulo: "Conceituação: O Rito Processual",
+                icone: <LuBrain />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <p>O processo de licitação no RLCP é um encadeamento sagrado inquebrável de etapas lógicas ordenadas para impedir a manipulação. Se você julgar preço sem antes checar habilitação jurídica em certas modalidades clássicas, vicia-se o rito. O rito garante previsibilidade jurídica ao fornecedor e lisura máxima ao agente púbico e à Petrobras.</p>
+                  </div>
+                ),
               },
               {
-                title: "Fase de Divulgação",
-                content:
-                  "Publicação do edital. O mercado toma conhecimento da demanda da Petrobras. Prazos devem ser respeitados conforme a modalidade escolhida.",
+                titulo: "Exemplificação: Cronograma Sagrado",
+                icone: <LuBookOpen />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-muted rounded-lg border border-border">
+                      <p className="text-base text-muted-foreground mb-3"><strong>A Trilha Fática:</strong></p>
+                      <ol className="list-decimal pl-5 space-y-1 text-base">
+                        <li><strong>01/03 (Fase Preparatória Oculta):</strong> A matriz demanda a obra e desenha orçamento sigiloso.</li>
+                        <li><strong>05/03 (Divulgação):</strong> O edital é escancarado no site e na B3.</li>
+                        <li><strong>20/03 (Abertura):</strong> Encerra o prazo de inscrição; propostas reveladas ao pranto ou riso.</li>
+                        <li><strong>21/03 (Julgamento/Habilitação):</strong> O vencedor das cifras é auditado se não deve no fisco.</li>
+                        <li><strong>30/03 (Adjudicação):</strong> Martelo batido sem margem para choro livre dos rivais (já recorreram). Contrato assinado!</li>
+                      </ol>
+                    </div>
+                  </div>
+                ),
               },
               {
-                title: "Fase de Apresentação de Propostas",
-                content:
-                  "Fornecedores enviam seus lances ou propostas técnicas/comerciais. Pode ser por meio eletrônico ou presencial.",
+                titulo: "Dicas: Inversão de Fases na 13.303",
+                icone: <LuFileText />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="info" titulo="O Julgamento Vem Antes da Habilitação">
+                      Na <strong>velha 8.666</strong>, todas as empresas entregavam caminhões de papelada pro comitê ficar atolado lendo antes mesmo de saber os preços. A <strong>Lei 13.303 / RLCP</strong> foi cirúrgica: inverte as fases! Abre tudo de preço primeiro. Avalia só os documentos do #1 colocado! Se os documentos dele tiverem errados, passa pro #2. Agilidade insana e monstra em licitar.
+                    </AlertBox>
+                  </div>
+                ),
               },
               {
-                title: "Julgamento e Habilitação",
-                content:
-                  "A Petrobras avalia as propostas (quem tem o melhor preço/técnica) e depois verifica se o vencedor tem documentação em dia (habilitação).",
+                titulo: "Exceções: Desinversão Controlada",
+                icone: <LuSearch />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <p>Será que a estatal é OBRIGADA a fazer invertido sempre? <strong>NÃO!</strong> Em licitações de obra técnica bizarra (como um super porto modular atômico), o edital PODE exigir que a Habilitação e Técnica sejam lidas primeiro (desinverter fases com autorização explícita). Isso extirpa prefeituras aventureiras de arriscar a segurança do leilão dando menores preços antes sem nem conseguir entregar.</p>
+                  </div>
+                ),
               },
             ]}
           />
-          <div className="space-y-4">
-            <div className="bg-card border border-border rounded-lg p-4">
-              <h4 className="font-bold text-foreground mb-2">
-                📅 Cronograma Típico de Concorrência
-              </h4>
-              <p className="text-lg text-muted-foreground mb-3">
-                <strong>01/03:</strong> Edital publicado. <br />
-                <strong>03/03:</strong> Prazo de impugnação (2 dias antes de 05/03). <br />
-                <strong>05/03:</strong> Prazo de resposta começa. <br />
-                <strong>12/03:</strong> Prazo termina (5 dias úteis). Recebimento de propostas 10h. <br />
-                <strong>13-14/03:</strong> Julgamento (habilitação, mérito). <br />
-                <strong>15/03:</strong> Publicação de resultado. Prazo de recurso: 2 dias úteis. <br />
-                <strong>17/03:</strong> Prazo de recurso termina. <br />
-                <strong>18/03:</strong> Homologação. <br />
-                <strong>19/03:</strong> Adjudicação. Vencedor assina contrato.
-              </p>
-            </div>
-          </div>
         
 
 
@@ -690,93 +730,64 @@ export default function AulaRLCP(props: AulaProps) {
             <ModuleSectionHeader
               index="4.1"
               variant={variant}
-              title="Especificações e Regras"
-              description="A importância de documentos bem elaborados para o sucesso da contratação."
+              title="Especificações e Regras no Detalhe"
+              description="A importância de documentos bem estruturados para a contratação perfeita."
             />
             <ContentAccordion
               slides={[
                 {
-                  title: "Termo de Referência (TR)",
-                  content: "O TR descreve EXATAMENTE o objeto. Inclui especificações técnicas (material, tamanho, padrão ISO), quantidades, prazos de entrega e critérios de qualidade. Exemplo: 'tubulação de aço API 5L Grade X65, diâmetro 24 pol'.",
+                  titulo: "Conceituação: Fundamentos",
+                  icone: <LuBrain />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>O <strong>Termo de Referência (TR)</strong> é o DNA técnico imutável. Já o <strong>Edital</strong> é a regra do ringue burocrático e mercantil. "O TR diz se comprei tinta epóxi dupla. O Edital diz que se a empresa atrasar ela toma multa no faturamento." A união incindível dos dois consolida o objeto e a execução das vontades da Diretoria da Petrobras, que assine abaixo o edito de validade.</p>
+                      <AlertBox tipo="info" titulo="O Preço Oculto (Orçamento Sigiloso)">
+                        Na Lei 13.303 e RLCP, a estatal PODE e DEVE manter o preço estimado <strong>sigiloso</strong> no edital (embora strictamente registrado nos cofres da CGU e TCU). Isso força a competitividade máxima ("Quem dá menos no escuro?"). Exibir o preço faria tudo formar cartel beirando o teto do preço.
+                      </AlertBox>
+                    </div>
+                  ),
                 },
                 {
-                  title: "Edital - Documento Formal de Convocação",
-                  content:
-                    "Edital é o documento público que convoca a licitação. Contém: 1) Objeto (o que se compra), 2) Modalidade, 3) Critério de julgamento, 4) Prazos (resposta, julgamento, recurso), 5) Requisitos de habilitação, 6) TR anexado, 7) Contatos, 8) Local de retirada de documentos, 9) Preço estimado (quando público).",
+                  titulo: "Exemplificação: TR e Prática",
+                  icone: <LuBookOpen />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-muted rounded-lg border border-border">
+                        <h4 className="font-bold text-foreground mb-2">📄 TR Deficiente (Gatilhos de Processos Judiciais)</h4>
+                        <p className="text-base text-muted-foreground"><strong>Erro letal real:</strong> Um mantenedor escreve "Compra tubulação de aço, tamanho grande, qualidade boa". O que acontece? Cartel aproveita, entra com recurso, entrega aço chinês fino de construção civil (baratíssimo) no lugar de Duto de Vazão de 400 libras! TR falho mata a planta inteira antes mesmo da perfuração.</p>
+                      </div>
+                    </div>
+                  ),
                 },
                 {
-                  title: "Preço Estimado ou Valor de Referência",
-                  content:
-                    "Petrobras pesquisa mercado antes de licitar. Cria estimativa de custo justo. Pode ser publicada no edital (transparência) ou mantida confidencial. Serve para desclassificar propostas manifestamente caras ou absurdamente baratas.",
+                  titulo: "Dicas: Critérios Universais de Julgamento",
+                  icone: <LuFileText />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <ul className="list-disc pl-5 space-y-2">
+                        <li><strong>Menor Preço:</strong> Comprou caneta, resma de papel de escritório ou luva de EPI comum de vitrine? Critério absoluto: menor cifrão ganha sem debate.</li>
+                        <li><strong>Técnica e Preço:</strong> Comprou Projeto Inédito de Plataforma SS? O que pesa é o intelecto da engenheira que assina e o método físico para flutuação das vigas; aqui o preço é só metade (ou menos) da equação do ranking ponderado do Edital!</li>
+                      </ul>
+                    </div>
+                  ),
                 },
                 {
-                  title: "Requisitos de Habilitação no Edital",
-                  content:
-                    "Edital especifica: inscrição em órgão regulador (CNPJ, registro profissional), capacidade técnica (certificados, referências), capacidade financeira (patrimônio mínimo), ausência de débitos (com fisco, tribunais). Fornecedor deve comprovar tudo.",
-                },
-                {
-                  title: "Critério de Julgamento no Edital",
-                  content:
-                    "Edital deixa CLARO qual é o critério: 'Menor Preço', 'Melhor Técnica', 'Técnica + Preço' (combinação com pesos), 'Maior Desconto'. Critério é aplicado igualmente a todas as propostas.",
-                },
-                {
-                  title: "Importância de TR e Edital Bem Elaborados",
-                  content:
-                    "TR sem especificações claras = propostas incomparáveis ('qual é mais caro?'). Edital com critério vago = julgamento questionável. Resultado: litígios, recursos, atrasos. TR+Edital bem feitos = processo rápido, justo, eficiente.",
+                  titulo: "Exceções: Habilitação e Balanços",
+                  icone: <LuSearch />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <AlertBox tipo="warning" titulo="Microempresas (ME / EPP)">
+                        Mesmo numa megalicitação rigorosa, o edital pode prever desempate fático ou isenções simplificadas trans-fases para as microempresas do estatuto Cidadão em conformidade subsidiária no RLCP. Uma ME com imposto levemente pendente ganha dias para regularizar "antes do fim", o oposto do expurgo instantâneo que as gigantes do cartel levariam!
+                      </AlertBox>
+                    </div>
+                  ),
                 },
               ]}
             />
           </div>
         </TabsContent>
 
-        <TabsContent value="exemplos" className="space-y-6">
-          <ModuleSectionHeader
-            index="4.1"
-            variant={variant}
-            title="Exemplos de TR e Edital"
-          />
-          <div className="space-y-4">
-            <div className="bg-card border border-border rounded-lg p-4">
-              <h4 className="font-bold text-foreground mb-2">
-                📋 Exemplo 1: TR para Tubulação
-              </h4>
-              <p className="text-lg text-muted-foreground">
-                <strong>Objeto:</strong> Fornecimento de 1.000 km de tubulação. <br />
-                <strong>Especificação:</strong> Aço API 5L Grade X65, diâmetro 24\", espessura 15.9mm. <br />
-                <strong>Qualidade:</strong> Teste hidrostático a 72 atm. Certificado de origem. <br />
-                <strong>Entrega:</strong> Porto de Santos, 12 meses. <br />
-                <strong>Garantia:</strong> 24 meses contra defeitos de fabricação.
-              </p>
-            </div>
-
-            <div className="bg-card border border-border rounded-lg p-4">
-              <h4 className="font-bold text-foreground mb-2">
-                📄 Exemplo 2: Edital para Tubulação
-              </h4>
-              <p className="text-lg text-muted-foreground">
-                <strong>Objeto:</strong> Conforme TR anexado. <br />
-                <strong>Modalidade:</strong> Concorrência Internacional. <br />
-                <strong>Critério:</strong> Menor Preço (proposta com menor preço que atenda TR vence). <br />
-                <strong>Prazo Resposta:</strong> 5 dias úteis. <br />
-                <strong>Preço Estimado:</strong> R$ 200 milhões (divulgado para transparência). <br />
-                <strong>Habilitação:</strong> Inscrição CNPJ, certificação ISO 9001, últimas 3 demonstrações financeiras, 2 referências de projetos similares.
-              </p>
-            </div>
-
-            <div className="bg-card border border-border rounded-lg p-4">
-              <h4 className="font-bold text-foreground mb-2">
-                ⚠️ Caso Negativo: TR Vago
-              </h4>
-              <p className="text-lg text-muted-foreground">
-                <strong>Erro:</strong> \"Compra tubulação de aço, tamanho grande, qualidade boa, entrega rápida\". <br />
-                <strong>Problema:</strong> 'Grande' = qual diâmetro? 'Boa' = qual norma? 'Rápida' = quantos dias? <br />
-                <strong>Resultado:</strong> Propostas incomparáveis. Fornecedor A oferece 10\" @ R$100m. Fornecedor B oferece 24\" @ R$200m. Qual é melhor? Litígio.
-              </p>
-            </div>
-          </div>
-        </TabsContent>
-
-        <TabsContent value="pratica" className="space-y-6">
+        <TabsContent value="pratica" className="space-y-6 mt-12">
           <ModuleSectionHeader
             index="4.2"
             variant={variant}
