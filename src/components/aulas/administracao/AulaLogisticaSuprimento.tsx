@@ -644,23 +644,167 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
       {/* ==================== MÓDULO 5 ==================== */}
       <TabsContent value="modulo-5" className="space-y-12 mt-0">
-        <ModuleBanner numero={5} titulo={MODULE_DEFS[4].title} variant={mv[5]} descricao="Fluxos Internos e Externos." />
+        <ModuleBanner numero={5} titulo="Logística Inbound e Outbound" variant={mv[5]} descricao="Fluxos de entrada e saída, Milk Run, Cross-Docking, Last Mile e Postponement." />
+
+        {/* ★ RICH INTRO SECTION */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={5} variant={mv[5]} title="Fluxos de Entrada e Saída" description="Como os materiais chegam à empresa e como os produtos alcançam o cliente final." />
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <p>
+              A logística se divide em dois grandes fluxos: <strong>Inbound</strong> (logística de entrada) e <strong>Outbound</strong> (logística de saída).
+              O <strong>Inbound</strong> abrange todas as atividades desde o fornecedor até a empresa — compras, recebimento, conferência, armazenagem de matérias-primas.
+              O <strong>Outbound</strong> cobre da empresa até o cliente final — separação, embalagem, expedição, transporte e entrega.
+              Na Petrobras, o Inbound traz tubos, válvulas e químicos das fábricas para as bases terrestres; o Outbound embarca esses materiais em PSVs rumo às plataformas.
+            </p>
+            <p>
+              O <strong>Milk Run</strong> é uma estratégia de coleta programada onde um veículo percorre uma rota fixa coletando materiais de múltiplos
+              fornecedores — como o leiteiro que passa de casa em casa. Reduz custos de transporte (em até 40%) e viabiliza entregas frequentes
+              com lotes menores, aproximando-se do JIT. Na indústria automotiva é amplamente usado; na Petrobras, versões adaptadas são usadas
+              na coleta de materiais em fornecedores do polo industrial de Macaé.
+            </p>
+            <p>
+              O <strong>Cross-Docking</strong> é a operação onde a mercadoria chega ao CD e é imediatamente redirecionada para expedição, sem ser estocada.
+              Existem 3 tipos: (1) <strong>Direto</strong> — paletes já vêm separados por destino; (2) <strong>Indireto</strong> — mercadorias são separadas
+              e reagrupadas no CD; (3) <strong>Oportunista</strong> — transferência imediata para atender pedido urgente. Na Petrobras, materiais urgentes
+              para plataformas frequentemente passam por cross-docking oportunista na base de Macaé.
+            </p>
+            <p>
+              A <strong>Last Mile</strong> (última milha) é o trecho final da entrega ao consumidor — e o mais caro (até 53% do custo total de transporte).
+              No contexto offshore da Petrobras, a &quot;última milha&quot; não é terrestre: é o transporte marítimo do porto à plataforma via PSV ou o
+              transbordo por helicóptero para peças críticas. Esse trecho é extremamente custoso e logisticamente complexo, sujeito a condições
+              climáticas adversas e janelas operacionais de embarque limitadas.
+            </p>
+            <p>
+              O <strong>Postponement</strong> (postergação) adia a configuração final do produto até que o pedido do cliente seja confirmado — reduzindo
+              estoques de produtos acabados. Na Petrobras, o conceito se aplica à <strong>montagem modular</strong> de equipamentos: peças genéricas
+              são mantidas em estoque e a configuração específica (calibração, montagem) é feita sob demanda para cada plataforma.
+              A CESGRANRIO cobra frequentemente a diferença entre Postponement de forma (montagem final) e Postponement logístico (adiamento do envio).
+            </p>
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">Fluxo Completo: Inbound → Outbound</h4>
+              <div className="flex flex-wrap items-center justify-center gap-2 text-sm font-medium">
+                <span className="px-3 py-1 bg-blue-500/10 rounded-full">Fornecedor</span>
+                <span>→</span>
+                <span className="px-3 py-1 bg-blue-500/10 rounded-full">Milk Run</span>
+                <span>→</span>
+                <span className="px-3 py-1 bg-amber-500/10 rounded-full">Recebimento</span>
+                <span>→</span>
+                <span className="px-3 py-1 bg-amber-500/10 rounded-full">Armazém / Cross-Dock</span>
+                <span>→</span>
+                <span className="px-3 py-1 bg-emerald-500/10 rounded-full">Separação</span>
+                <span>→</span>
+                <span className="px-3 py-1 bg-emerald-500/10 rounded-full">Expedição</span>
+                <span>→</span>
+                <span className="px-3 py-1 bg-rose-500/10 rounded-full">Last Mile</span>
+                <span>→</span>
+                <span className="px-3 py-1 bg-rose-500/10 rounded-full">Cliente/Plataforma</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ★ C.E.D.E. */}
+        <div className="space-y-6">
+          <ModuleSectionHeader index={5} variant={mv[5]} title="Análise C.E.D.E." description="Conceituação, Exemplificação, Dicas e Exceções sobre fluxos logísticos." />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "Conceituação: Os 3 Fluxos Logísticos",
+                icone: <LuBrain />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <p>Além de Inbound e Outbound, existe o <strong>fluxo reverso</strong> (módulo 8). Os 3 fluxos juntos formam a logística integrada. Cada um exige planejamento, controle e indicadores específicos.</p>
+                    <AlertBox tipo="info" titulo="Fluxo de Informações">
+                      Além do fluxo físico, existe o fluxo de informações (pedidos, notas fiscais, EDI) que percorre o caminho INVERSO: do cliente para o fornecedor. É esse fluxo que aciona as compras e o Milk Run.
+                    </AlertBox>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Exemplificação: Milk Run na Petrobras",
+                icone: <LuBookOpen />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <p>A Petrobras utiliza um sistema adaptado de Milk Run para coletar materiais no polo industrial de Macaé:</p>
+                    <div className="p-4 bg-muted rounded-lg border border-border">
+                      <p className="text-base"><strong>Rota fixa:</strong> Caminhão sai da base → Coleta válvulas no Fornecedor A → Coleta juntas no Fornecedor B → Coleta tubos no Fornecedor C → Retorna à base. Economia de 35% vs. entregas individuais.</p>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Dicas Táticas: Questões sobre Fluxos",
+                icone: <LuFileText />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li><strong>Milk Run</strong> = COLETA programada (empresa vai buscar). Não confundir com entrega pelo fornecedor.</li>
+                      <li><strong>Cross-Docking</strong> = SEM estocagem. Se a questão mencionar &quot;armazenar temporariamente&quot;, não é cross-docking puro.</li>
+                      <li><strong>Postponement</strong> = ADIAR customização. Se a questão falar em &quot;antecipar produção&quot;, é o oposto (Make-to-Stock).</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Exceções: Quando o Milk Run NÃO funciona",
+                icone: <LuSearch />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="warning" titulo="Limitações do Milk Run">
+                      O Milk Run exige fornecedores geograficamente próximos e volumes previsíveis. Para fornecedores internacionais (válvulas importadas da Europa) ou demandas esporádicas (emergências offshore), o modelo é inviável — usa-se transporte dedicado ou frete aéreo.
+                    </AlertBox>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </div>
+
+        {/* COMPONENTES EXISTENTES PRESERVADOS */}
         <ModuleConsolidation
           index={5}
           variant={mv[5]}
-          video={{ videoId: "LOG5_V", title: "Inbound/Outbound", duration: "14:00" }}
+          video={{ videoId: "LOG5_V", title: "Logística Inbound e Outbound", duration: "14:00" }}
           resumoVisual={{
             moduloNome: "Módulo 5",
             tituloAula: "Fluxos",
             materia: "Logística",
-            images: [{ title: "Supply Chain", type: "Diagrama", placeholderColor: "bg-indigo-100" }],
+            images: [
+              { title: "Fluxo Inbound/Outbound", type: "Diagrama", placeholderColor: "bg-blue-500/20" },
+              { title: "Milk Run", type: "Esquema", placeholderColor: "bg-emerald-500/20" },
+            ],
           }}
-          maceteVisual={{ title: "In vs Out", content: "Inbound (Chegada) -> Produção -> Outbound (Saída)." }}
-          audio={{ audioUrl: "#", titulo: "Cadeia Integrada", artista: "Petrobras Quest" }}
+          maceteVisual={{
+            title: "O Macete do 'Leiteiro'",
+            content: (
+              <>
+                <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
+                  <span>🥛</span>
+                  <span>🚛</span>
+                </div>
+                <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
+                  &quot;<strong>Milk Run</strong> = Leiteiro. A empresa manda o caminhão <strong>buscar</strong> nos fornecedores, na rota fixa, como o leiteiro de casa em casa.&quot;
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                  <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
+                    <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">Inbound</h4>
+                    <p className="text-lg text-muted-foreground italic">&quot;Tudo que ENTRA na empresa.&quot;</p>
+                    <p className="text-[10px] mt-2 font-medium text-blue-700 dark:text-blue-300 uppercase">Fornecedor → Empresa ✅</p>
+                  </div>
+                  <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
+                    <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">Outbound</h4>
+                    <p className="text-lg text-muted-foreground italic">&quot;Tudo que SAI da empresa.&quot;</p>
+                    <p className="text-[10px] mt-2 font-medium text-emerald-700 dark:text-emerald-300 uppercase">Empresa → Cliente ✅</p>
+                  </div>
+                </div>
+              </>
+            ),
+          }}
+          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Podcast: Cadeia Integrada", artista: "Prof. Supply Chain" }}
         />
         <QuizInterativo
           questoes={mapQuizQuestions("modulo-5")}
-          titulo="QUIZ: Fluxos"
+          titulo="QUIZ: Logística Inbound e Outbound"
           numero={5}
           variant={mv[5]}
           onComplete={(score) => handleModuleComplete("modulo-5", score)}
@@ -669,102 +813,579 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
       {/* ==================== MÓDULO 6 ==================== */}
       <TabsContent value="modulo-6" className="space-y-12 mt-0">
-        <ModuleBanner numero={6} titulo={MODULE_DEFS[5].title} variant={mv[6]} descricao="VMI e Efeito Chicote." />
+        <ModuleBanner numero={6} titulo="Supply Chain Management (SCM)" variant={mv[6]} descricao="VMI, Efeito Chicote, CPFR, ECR e a gestão colaborativa da cadeia de suprimentos." />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={6} variant={mv[6]} title="A Cadeia como Organismo Vivo" description="Supply Chain Management é a coordenação estratégica entre TODAS as empresas envolvidas." />
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <p>
+              <strong>Supply Chain Management (SCM)</strong> é a gestão integrada de todos os elos da cadeia de suprimentos — desde o fornecedor
+              do fornecedor até o cliente do cliente. Enquanto a <strong>logística</strong> foca no fluxo físico dentro de uma empresa, o SCM amplia
+              a visão para a <strong>colaboração interempresarial</strong>: planejamento conjunto de demanda, compartilhamento de informações,
+              sincronização de estoques e alinhamento estratégico entre parceiros comerciais. É o conceito de &quot;competir como cadeia, não como empresa isolada&quot;.
+            </p>
+            <p>
+              O <strong>VMI (Vendor Managed Inventory)</strong> é um modelo onde o próprio fornecedor gerencia o estoque do cliente.
+              O fornecedor monitora os níveis de estoque (via EDI ou IoT) e decide quando e quanto repor, garantindo disponibilidade sem
+              intervenção do comprador. Na Petrobras, fornecedores de lubrificantes e químicos operam em regime de VMI nas refinarias:
+              eles monitoram os tanques remotamente e agendam entregas antes que o nível crítico seja atingido.
+            </p>
+            <p>
+              O <strong>Efeito Chicote (Bullwhip Effect)</strong> é o fenômeno onde pequenas variações na demanda do consumidor final causam
+              oscilações cada vez maiores nos pedidos dos elos anteriores da cadeia. Uma variação de 5% na demanda do varejo pode se transformar
+              em variações de 40-50% nos pedidos ao fabricante. As causas são: (1) processamento da demanda em lotes; (2) racionamento por
+              escassez; (3) flutuações de preço; (4) falta de visibilidade end-to-end. A CESGRANRIO adora esse tema.
+            </p>
+            <p>
+              O <strong>CPFR (Collaborative Planning, Forecasting and Replenishment)</strong> é uma metodologia de 9 passos onde varejistas e
+              fornecedores compartilham previsões de demanda e planejam reposições conjuntamente. Já o <strong>ECR (Efficient Consumer Response)</strong> é
+              a estratégia focada no setor de varejo para responder eficientemente à demanda do consumidor, com 4 pilares: reposição eficiente,
+              sortimento eficiente, promoção eficiente e introdução eficiente de novos produtos.
+            </p>
+            <p>
+              Na prova CESGRANRIO, a diferença fundamental entre Logística e SCM é a <strong>amplitude</strong>: logística é operacional e intraempresarial;
+              SCM é estratégico e interempresarial. Se a questão mencionar &quot;parceria entre empresas&quot;, &quot;compartilhamento de informações com fornecedores&quot;
+              ou &quot;visão de cadeia&quot;, é SCM. Se falar em &quot;movimentação de materiais&quot; ou &quot;armazenagem&quot;, é logística.
+            </p>
+            <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">Ferramentas de Colaboração na SC</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                <div className="p-3 bg-amber-500/10 rounded-lg text-center">
+                  <p className="font-bold">VMI</p>
+                  <p className="text-muted-foreground">Fornecedor gerencia estoque do cliente</p>
+                </div>
+                <div className="p-3 bg-amber-500/10 rounded-lg text-center">
+                  <p className="font-bold">CPFR</p>
+                  <p className="text-muted-foreground">Planejamento colaborativo de demanda</p>
+                </div>
+                <div className="p-3 bg-amber-500/10 rounded-lg text-center">
+                  <p className="font-bold">ECR</p>
+                  <p className="text-muted-foreground">Resposta eficiente ao consumidor</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="space-y-6">
+          <ModuleSectionHeader index={6} variant={mv[6]} title="Análise C.E.D.E." description="Dominando Supply Chain Management para a prova." />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "Conceituação: Os 8 Processos-Chave do SCM",
+                icone: <LuBrain />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <p>Segundo Lambert (2008), o SCM possui <strong>8 processos-chave</strong>: (1) Gestão do Relacionamento com Clientes (CRM); (2) Gestão do Serviço ao Cliente; (3) Gestão da Demanda; (4) Atendimento de Pedidos; (5) Gestão do Fluxo de Manufatura; (6) Gestão do Relacionamento com Fornecedores (SRM); (7) Desenvolvimento e Comercialização de Produtos; (8) Gestão de Devoluções.</p>
+                    <AlertBox tipo="info" titulo="SCM vs Logística">
+                      Logística é uma PARTE do SCM. SCM inclui logística + procurement + marketing + finanças + operações, tudo coordenado entre múltiplas empresas.
+                    </AlertBox>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Exemplificação: Efeito Chicote Real",
+                icone: <LuBookOpen />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <p>Exemplo clássico: a Procter & Gamble percebeu que as vendas de fraldas Pampers eram estáveis, mas os pedidos ao fabricante de celulose variavam 40%. Causa: cada elo &quot;inflava&quot; seus pedidos por medo de desabastecimento.</p>
+                    <div className="p-4 bg-muted rounded-lg border border-border">
+                      <p className="text-base"><strong>Na Petrobras:</strong> Uma variação de 10% na produção de uma refinaria pode gerar variações de 30% nos pedidos de catalisadores ao fornecedor japonês, pois cada gerência intermediária adiciona &quot;estoque de segurança&quot; ao seu pedido.</p>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Dicas Táticas: SCM na CESGRANRIO",
+                icone: <LuFileText />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li><strong>Efeito Chicote</strong> = amplificação da variação de demanda para trás na cadeia. A solução é compartilhar informações em tempo real.</li>
+                      <li><strong>VMI</strong> = o FORNECEDOR decide quando repor. O cliente perde autonomia de compra, mas ganha disponibilidade garantida.</li>
+                      <li><strong>CPFR ≠ VMI:</strong> No CPFR ambos planejam juntos; no VMI o fornecedor decide sozinho com base em dados do cliente.</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Exceções: SCM em Ambientes de Monopólio",
+                icone: <LuSearch />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="warning" titulo="Cuidado com o conceito de 'parceria'">
+                      Em mercados de monopólio/oligopólio (como fornecedores de equipamentos subsea), o &quot;SCM colaborativo&quot; pode ser assimétrico: a Petrobras tem poucos fornecedores para escolher, o que limita o poder de negociação apesar da retórica de &quot;parceria&quot;.
+                    </AlertBox>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </div>
+
         <ModuleConsolidation
-          index={6}
-          variant={mv[6]}
-          video={{ videoId: "LOG6_V", title: "SCM", duration: "16:00" }}
-          resumoVisual={{
-            moduloNome: "Módulo 6",
-            tituloAula: "SCM",
-            materia: "Logística",
-            images: [{ title: "Bullwhip Effect", type: "Gráfico", placeholderColor: "bg-violet-100" }],
+          index={6} variant={mv[6]}
+          video={{ videoId: "LOG6_V", title: "Supply Chain Management", duration: "16:00" }}
+          resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "SCM", materia: "Logística", images: [{ title: "Bullwhip Effect", type: "Gráfico", placeholderColor: "bg-amber-500/20" }, { title: "Modelo CPFR", type: "Diagrama", placeholderColor: "bg-blue-500/20" }] }}
+          maceteVisual={{
+            title: "O Macete do 'Chicote'",
+            content: (
+              <>
+                <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
+                  <span>🐂</span>
+                  <span>🪢</span>
+                </div>
+                <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
+                  &quot;Pequena variação na ponta <strong>amplifica</strong> na base. Quanto mais longe do consumidor, mais &quot;chicoteado&quot; é o pedido.&quot;
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                  <div className="p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">
+                    <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">Causa</h4>
+                    <p className="text-lg text-muted-foreground italic">&quot;Cada elo infla o pedido por medo de faltar.&quot;</p>
+                    <p className="text-[10px] mt-2 font-medium text-amber-700 dark:text-amber-300 uppercase">Falta de visibilidade ✅</p>
+                  </div>
+                  <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
+                    <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">Solução</h4>
+                    <p className="text-lg text-muted-foreground italic">&quot;Compartilhar dados de demanda em tempo real.&quot;</p>
+                    <p className="text-[10px] mt-2 font-medium text-emerald-700 dark:text-emerald-300 uppercase">CPFR + VMI + EDI ✅</p>
+                  </div>
+                </div>
+              </>
+            ),
           }}
-          maceteVisual={{ title: "Chicote", content: "Flutuação na demanda gera estoque incerto nos fornecedores." }}
-          audio={{ audioUrl: "#", titulo: "Efeito Chicote", artista: "Petrobras Quest" }}
+          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "Podcast: Efeito Chicote", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo
-          questoes={mapQuizQuestions("modulo-6")}
-          titulo="QUIZ: SCM"
-          numero={6}
-          variant={mv[6]}
-          onComplete={(score) => handleModuleComplete("modulo-6", score)}
-        />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-6")} titulo="QUIZ: Supply Chain Management" numero={6} variant={mv[6]} onComplete={(score) => handleModuleComplete("modulo-6", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 7 ==================== */}
       <TabsContent value="modulo-7" className="space-y-12 mt-0">
-        <ModuleBanner numero={7} titulo={MODULE_DEFS[6].title} variant={mv[7]} descricao="OTIF e Nível de Serviço." />
+        <ModuleBanner numero={7} titulo="Indicadores de Desempenho (KPIs)" variant={mv[7]} descricao="OTIF, Fill Rate, Lead Time, Nível de Serviço e Custo Logístico Total." />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={7} variant={mv[7]} title="Medir para Gerenciar" description="Se você não mede, não gerencia — os KPIs que definem a eficiência logística." />
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <p>
+              <strong>KPIs (Key Performance Indicators)</strong> são métricas quantificáveis que avaliam a eficiência e eficácia das operações
+              logísticas. Na Petrobras, os KPIs logísticos são monitorados em dashboards de gestão para garantir que os suprimentos cheguem
+              às plataformas no prazo, na quantidade correta e ao menor custo possível. Sem KPIs, decisões são tomadas &quot;no achismo&quot; — e no
+              offshore, isso pode custar vidas e milhões.
+            </p>
+            <p>
+              O <strong>OTIF (On Time In Full)</strong> é o indicador-rei da logística: mede o percentual de entregas realizadas <strong>no prazo</strong> (On Time)
+              <strong>E</strong> <strong>completas</strong> (In Full). OTIF = (Entregas no prazo e completas / Total de entregas) × 100. Uma entrega que chega
+              no prazo mas incompleta NÃO é OTIF. Uma entrega completa mas atrasada TAMBÉM NÃO é OTIF. Benchmark mundial: 95%+. Na Petrobras
+              offshore, onde atrasos paralisam operações, o OTIF é rastreado diariamente.
+            </p>
+            <p>
+              O <strong>Fill Rate</strong> (taxa de atendimento) mede o percentual de pedidos atendidos completamente a partir do estoque disponível,
+              sem necessidade de backorder. Fill Rate = (Pedidos atendidos integralmente / Total de pedidos) × 100. Já o <strong>Lead Time</strong> é o
+              tempo total desde o pedido até a entrega efetiva — inclui processamento, separação, transporte e conferência. Na cadeia offshore,
+              o lead time pode variar de 3 dias (materiais em estoque na base) a 6 meses (equipamentos importados sob encomenda).
+            </p>
+            <p>
+              O <strong>Nível de Serviço</strong> é a probabilidade de não haver falta de estoque durante o lead time de ressuprimento. Nível de
+              serviço de 95% significa que, em 95 de cada 100 ciclos de ressuprimento, o estoque será suficiente para atender a demanda.
+              Aumentar o nível de serviço de 95% para 99% pode dobrar o estoque de segurança necessário — é um trade-off custo vs. disponibilidade.
+            </p>
+            <p>
+              O <strong>Custo Logístico Total</strong> é a soma de todos os custos envolvidos na operação logística: transporte + armazenagem + estoques
+              + processamento de pedidos + custos de TI + custos de falta. No Brasil, o custo logístico representa ~12% do PIB (vs. ~8% nos EUA),
+              devido à dependência do modal rodoviário e infraestrutura precária. A CESGRANRIO cobra frequentemente cálculos de custo total
+              e trade-offs entre componentes.
+            </p>
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">Dashboard de KPIs Logísticos</h4>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-center">
+                <div className="p-3 bg-blue-500/10 rounded-lg"><p className="font-bold">OTIF</p><p className="text-muted-foreground">Meta: 95%+</p></div>
+                <div className="p-3 bg-emerald-500/10 rounded-lg"><p className="font-bold">Fill Rate</p><p className="text-muted-foreground">Meta: 98%+</p></div>
+                <div className="p-3 bg-amber-500/10 rounded-lg"><p className="font-bold">Lead Time</p><p className="text-muted-foreground">Meta: minimizar</p></div>
+                <div className="p-3 bg-rose-500/10 rounded-lg"><p className="font-bold">Custo Total</p><p className="text-muted-foreground">Meta: &lt;12% receita</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="space-y-6">
+          <ModuleSectionHeader index={7} variant={mv[7]} title="Análise C.E.D.E." description="KPIs que caem na prova CESGRANRIO." />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "Conceituação: Família de KPIs",
+                icone: <LuBrain />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <p>Os KPIs logísticos se dividem em 4 famílias: (1) <strong>Tempo</strong> (Lead Time, Cycle Time, Order-to-Delivery); (2) <strong>Qualidade</strong> (OTIF, taxa de avaria, índice de devoluções); (3) <strong>Custo</strong> (Custo/ton-km, custo de armazenagem/m²); (4) <strong>Produtividade</strong> (pedidos/hora, paletes movimentados/turno).</p>
+                    <AlertBox tipo="info" titulo="Balanced Scorecard Logístico">
+                      Além dos KPIs operacionais, empresas como a Petrobras usam BSC com 4 perspectivas: Financeira, Clientes, Processos Internos e Aprendizado.
+                    </AlertBox>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Exemplificação: OTIF na Petrobras",
+                icone: <LuBookOpen />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-muted rounded-lg border border-border">
+                      <p className="text-base"><strong>Cenário:</strong> Base de Macaé despacha 100 cargas/mês para plataformas. 92 chegam no prazo E completas. 5 chegam no prazo mas incompletas (peças faltando). 3 chegam completas mas atrasadas. <strong>OTIF = 92%</strong> (abaixo da meta de 95%).</p>
+                    </div>
+                    <p>As 5 entregas incompletas geram backorders e interrupções operacionais. As 3 atrasadas causam parada de manutenção preventiva.</p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Dicas: Fórmulas de Prova",
+                icone: <LuFileText />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li><strong>OTIF</strong> = (On Time ∩ In Full) / Total × 100. ATENÇÃO: é interseção (AND), não soma!</li>
+                      <li><strong>Fill Rate</strong> = Pedidos completos do estoque / Total pedidos × 100</li>
+                      <li><strong>Giro de Estoque</strong> = Custo dos Produtos Vendidos / Estoque Médio (maior giro = melhor)</li>
+                      <li><strong>Cobertura</strong> = Estoque Médio / Demanda Média Diária = dias de estoque disponível</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Exceções: Quando 100% OTIF é RUIM",
+                icone: <LuSearch />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="warning" titulo="Paradoxo do OTIF perfeito">
+                      Um OTIF de 100% pode indicar estoque EXCESSIVO — se você nunca falta material, talvez esteja mantendo estoque demais (capital parado). O ideal é balancear OTIF alto com custo de estoque razoável. Questões CESGRANRIO exploram esse trade-off.
+                    </AlertBox>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </div>
+
         <ModuleConsolidation
-          index={7}
-          variant={mv[7]}
-          video={{ videoId: "LOG7_V", title: "Indicadores", duration: "12:00" }}
-          resumoVisual={{
-            moduloNome: "Módulo 7",
-            tituloAula: "Indicadores",
-            materia: "Logística",
-            images: [{ title: "KPIs", type: "Tabela", placeholderColor: "bg-rose-100" }],
+          index={7} variant={mv[7]}
+          video={{ videoId: "LOG7_V", title: "KPIs Logísticos", duration: "14:00" }}
+          resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "KPIs", materia: "Logística", images: [{ title: "Dashboard KPIs", type: "Tabela", placeholderColor: "bg-blue-500/20" }, { title: "Fórmula OTIF", type: "Esquema", placeholderColor: "bg-rose-500/20" }] }}
+          maceteVisual={{
+            title: "O Macete do 'OTIF'",
+            content: (
+              <>
+                <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
+                  <span>⏰</span>
+                  <span>📦</span>
+                </div>
+                <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
+                  &quot;<strong>On Time</strong> = na hora. <strong>In Full</strong> = completo. Se falha UM dos dois, NÃO é OTIF.&quot;
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                  <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
+                    <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">On Time ⏰</h4>
+                    <p className="text-lg text-muted-foreground italic">&quot;Chegou no prazo combinado?&quot;</p>
+                    <p className="text-[10px] mt-2 font-medium text-blue-700 dark:text-blue-300 uppercase">Pontualidade ✅</p>
+                  </div>
+                  <div className="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl">
+                    <h4 className="text-lg font-bold text-rose-600 dark:text-rose-400 mb-2">In Full 📦</h4>
+                    <p className="text-lg text-muted-foreground italic">&quot;Veio tudo que foi pedido?&quot;</p>
+                    <p className="text-[10px] mt-2 font-medium text-rose-700 dark:text-rose-300 uppercase">Completude ✅</p>
+                  </div>
+                </div>
+              </>
+            ),
           }}
-          maceteVisual={{ title: "OTIF", content: "On Time (Na Hora) + In Full (Completo)." }}
-          audio={{ audioUrl: "#", titulo: "Métricas", artista: "Petrobras Quest" }}
+          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Podcast: Métricas que Importam", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo
-          questoes={mapQuizQuestions("modulo-7")}
-          titulo="QUIZ: KPIs"
-          numero={7}
-          variant={mv[7]}
-          onComplete={(score) => handleModuleComplete("modulo-7", score)}
-        />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-7")} titulo="QUIZ: Indicadores de Desempenho" numero={7} variant={mv[7]} onComplete={(score) => handleModuleComplete("modulo-7", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 8 ==================== */}
       <TabsContent value="modulo-8" className="space-y-12 mt-0">
-        <ModuleBanner numero={8} titulo={MODULE_DEFS[7].title} variant={mv[8]} descricao="PNRS e Descarte Industrial." />
+        <ModuleBanner numero={8} titulo="Logística Reversa e Sustentabilidade" variant={mv[8]} descricao="PNRS (Lei 12.305/10), responsabilidade compartilhada, economia circular e descarte industrial." />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={8} variant={mv[8]} title="O Caminho de Volta" description="Logística reversa: quando o produto faz o percurso contrário — do consumidor de volta ao fabricante." />
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <p>
+              <strong>Logística Reversa</strong> é o processo de planejar, implementar e controlar o fluxo de matérias-primas, estoque em processamento,
+              produtos acabados e informações relacionadas, do <strong>ponto de consumo ao ponto de origem</strong>, com o propósito de recapturar valor
+              ou dar destinação adequada. É o &quot;fluxo de volta&quot;: devoluções, reciclagem, remanufatura e descarte responsável.
+            </p>
+            <p>
+              A <strong>PNRS (Política Nacional de Resíduos Sólidos — Lei 12.305/2010)</strong> é o marco legal que obriga empresas a implementar
+              logística reversa para seus produtos pós-consumo. A lei estabelece a <strong>responsabilidade compartilhada pelo ciclo de vida</strong>:
+              fabricantes, importadores, distribuidores, comerciantes, consumidores e titulares de serviços de limpeza urbana são TODOS
+              responsáveis pela destinação final adequada dos resíduos. A CESGRANRIO cobra frequentemente os conceitos da PNRS.
+            </p>
+            <p>
+              Existem dois tipos de logística reversa: (1) <strong>Pós-venda</strong> — devoluções por defeito, arrependimento (CDC), excesso de estoque,
+              garantia, recall; (2) <strong>Pós-consumo</strong> — reciclagem, remanufatura, desmanche, descarte ambientalmente correto. Na Petrobras,
+              a logística reversa pós-consumo é crítica: óleos lubrificantes usados, catalisadores esgotados, embalagens contaminadas e
+              equipamentos obsoletos precisam de destinação especial conforme normas ambientais (IBAMA, ANP, CONAMA).
+            </p>
+            <p>
+              A <strong>economia circular</strong> expande o conceito de logística reversa: em vez de &quot;extrair → produzir → descartar&quot; (linear),
+              busca-se &quot;extrair → produzir → usar → recuperar → reutilizar&quot; (circular). Na Petrobras, exemplos incluem: rerrefino de óleo
+              lubrificante usado (recolhimento obrigatório pela Resolução CONAMA 362), reuso de água produzida em plataformas, e
+              descomissionamento de plataformas com aproveitamento de componentes metálicos.
+            </p>
+            <p>
+              Na prova CESGRANRIO, atenção aos <strong>instrumentos da PNRS</strong>: acordos setoriais (voluntários entre governo e setor privado),
+              termos de compromisso (obrigatórios quando há descumprimento) e regulamentos (normativos do poder público). A lei também
+              introduz a ordem de prioridade: não geração → redução → reutilização → reciclagem → tratamento → disposição final ambientalmente adequada.
+            </p>
+            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">Hierarquia de Resíduos (PNRS)</h4>
+              <div className="flex flex-wrap items-center justify-center gap-2 text-sm font-medium">
+                <span className="px-3 py-1 bg-emerald-500/20 rounded-full font-bold">1. Não Gerar</span>
+                <span>→</span>
+                <span className="px-3 py-1 bg-emerald-500/15 rounded-full">2. Reduzir</span>
+                <span>→</span>
+                <span className="px-3 py-1 bg-emerald-500/10 rounded-full">3. Reutilizar</span>
+                <span>→</span>
+                <span className="px-3 py-1 bg-amber-500/10 rounded-full">4. Reciclar</span>
+                <span>→</span>
+                <span className="px-3 py-1 bg-amber-500/15 rounded-full">5. Tratar</span>
+                <span>→</span>
+                <span className="px-3 py-1 bg-rose-500/10 rounded-full">6. Dispor</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="space-y-6">
+          <ModuleSectionHeader index={8} variant={mv[8]} title="Análise C.E.D.E." description="Logística Reversa para a prova de Suprimento." />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "Conceituação: Pós-Venda vs Pós-Consumo",
+                icone: <LuBrain />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <p><strong>Pós-venda:</strong> produto retorna ao vendedor/fabricante antes ou pouco depois do uso (defeito, recall, garantia, devolução). <strong>Pós-consumo:</strong> produto retorna APÓS o fim de sua vida útil (reciclagem, remanufatura, descarte).</p>
+                    <AlertBox tipo="info" titulo="Remanufatura ≠ Reciclagem">
+                      Remanufatura restaura o produto ao estado original (↑ valor agregado). Reciclagem transforma o material em insumo para novo produto (↓ valor agregado mas ↑ sustentabilidade).
+                    </AlertBox>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Exemplificação: Reversa na Petrobras",
+                icone: <LuBookOpen />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-muted rounded-lg border border-border">
+                      <p className="text-base"><strong>Óleo Lubrificante:</strong> Resolução CONAMA 362/2005 obriga o recolhimento de óleo usado. A Petrobras coleta em postos e refinarias → envia para rerrefinarias credenciadas → óleo base é recuperado e retorna ao mercado. Taxa de rerrefino: ~36% do volume vendido.</p>
+                    </div>
+                    <p>Outros exemplos: catalisadores esgotados (recuperação de metais nobres como platina), baterias industriais (logística reversa obrigatória) e embalagens de produtos químicos (lavagem tríplice e devolução).</p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Dicas: PNRS na Prova",
+                icone: <LuFileText />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li><strong>Responsabilidade compartilhada</strong> = TODOS os elos da cadeia são responsáveis, não só o fabricante.</li>
+                      <li><strong>Acordo setorial</strong> = mecanismo CONTRATUAL entre governo e setor privado para logística reversa.</li>
+                      <li>A lei NÃO proíbe aterros sanitários — ela os coloca como ÚLTIMA opção na hierarquia.</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Exceções: Resíduos Perigosos",
+                icone: <LuSearch />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="warning" titulo="Classe I (Perigosos)">
+                      Resíduos perigosos (Classe I) como óleos contaminados, solventes e amianto têm regras AINDA MAIS rigorosas que a PNRS — seguem CONAMA 358 e normas da ABNT NBR 10.004. Na Petrobras, são tratados por empresas especializadas com licença IBAMA.
+                    </AlertBox>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </div>
+
         <ModuleConsolidation
-          index={8}
-          variant={mv[8]}
-          video={{ videoId: "LOG8_V", title: "Logística Reversa", duration: "13:00" }}
-          resumoVisual={{
-            moduloNome: "Módulo 8",
-            tituloAula: "Reversa",
-            materia: "Logística",
-            images: [{ title: "Ciclo Reverso", type: "Diagrama", placeholderColor: "bg-emerald-100" }],
+          index={8} variant={mv[8]}
+          video={{ videoId: "LOG8_V", title: "Logística Reversa e Sustentabilidade", duration: "15:00" }}
+          resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Reversa", materia: "Logística", images: [{ title: "Ciclo Reverso", type: "Diagrama", placeholderColor: "bg-emerald-500/20" }, { title: "Hierarquia PNRS", type: "Infográfico", placeholderColor: "bg-amber-500/20" }] }}
+          maceteVisual={{
+            title: "O Macete da 'Seta Invertida'",
+            content: (
+              <>
+                <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
+                  <span>♻️</span>
+                  <span>🔄</span>
+                </div>
+                <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
+                  &quot;Logística normal: fornecedor → cliente. Logística reversa: cliente → <strong>origem</strong>. A seta se inverte.&quot;
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                  <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
+                    <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">Pós-Venda</h4>
+                    <p className="text-lg text-muted-foreground italic">&quot;Defeito? Devolve ao vendedor.&quot;</p>
+                    <p className="text-[10px] mt-2 font-medium text-emerald-700 dark:text-emerald-300 uppercase">Garantia, Recall ✅</p>
+                  </div>
+                  <div className="p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">
+                    <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">Pós-Consumo</h4>
+                    <p className="text-lg text-muted-foreground italic">&quot;Acabou? Recicla ou descarta certo.&quot;</p>
+                    <p className="text-[10px] mt-2 font-medium text-amber-700 dark:text-amber-300 uppercase">Reciclagem, PNRS ✅</p>
+                  </div>
+                </div>
+              </>
+            ),
           }}
-          maceteVisual={{ title: "PNRS", content: "Lei 12.305 - Destinação adequada de resíduos." }}
-          audio={{ audioUrl: "#", titulo: "O Caminho de Volta", artista: "Petrobras Quest" }}
+          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Podcast: O Caminho de Volta", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo
-          questoes={mapQuizQuestions("modulo-8")}
-          titulo="QUIZ: Reversa"
-          numero={8}
-          variant={mv[8]}
-          onComplete={(score) => handleModuleComplete("modulo-8", score)}
-        />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-8")} titulo="QUIZ: Logística Reversa" numero={8} variant={mv[8]} onComplete={(score) => handleModuleComplete("modulo-8", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 9 ==================== */}
       <TabsContent value="modulo-9" className="space-y-12 mt-0">
-        <ModuleBanner numero={9} titulo={MODULE_DEFS[8].title} variant={mv[9]} descricao="Bacia de Campos e Santos." />
+        <ModuleBanner numero={9} titulo="Logística Offshore Petrobras" variant={mv[9]} descricao="PSV, AHTS, FPSO, Bacias de Campos e Santos, bases terrestres e desafios operacionais no mar." />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader index={9} variant={mv[9]} title="Logística no Alto-Mar" description="A cadeia de suprimentos mais desafiadora do Brasil: abastecer plataformas a 300 km da costa." />
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            <p>
+              A <strong>logística offshore da Petrobras</strong> é uma das operações mais complexas do mundo: enviar suprimentos, equipamentos,
+              alimentos, químicos e pessoas para plataformas de petróleo localizadas em alto-mar, a distâncias de 100 a 300 km da costa.
+              O ciclo logístico inclui: planejamento de demanda na plataforma → requisição ao almoxarifado na base terrestre → separação e
+              unitização em cestas → embarque em <strong>PSV (Platform Supply Vessel)</strong> → travessia marítima (12-36h) → içamento por guindaste
+              na plataforma → conferência e armazenagem a bordo.
+            </p>
+            <p>
+              As <strong>embarcações de apoio</strong> são o coração da logística offshore. O <strong>PSV (Platform Supply Vessel)</strong> é o
+              &quot;caminhão do mar&quot; — transporta cargas secas (cestas, contêineres), granéis líquidos (água industrial, combustível, fluidos de
+              perfuração) e granéis sólidos (cimento, barita). O <strong>AHTS (Anchor Handling Tug Supply)</strong> é a embarcação multitarefa: além de
+              suprimentos, faz manuseio de âncoras para posicionamento de sondas. Há também o <strong>RSV (ROV Support Vessel)</strong> para operações
+              submarinas com ROVs (veículos operados remotamente) e o <strong>OSRV (Oil Spill Recovery Vessel)</strong> para resposta a vazamentos.
+            </p>
+            <p>
+              As <strong>bases de apoio terrestre</strong> são os hubs logísticos: <strong>Macaé (RJ)</strong> é a maior base offshore da América Latina,
+              atendendo as Bacias de Campos e Santos. <strong>Niterói (RJ)</strong>, <strong>Vitória (ES)</strong> e <strong>Aracaju (SE)</strong> complementam
+              a rede. Cada base possui armazéns, cais de atracação, áreas de unitização e heliponto. A escolha da base depende da proximidade
+              à bacia operacional: Campos (Macaé), Santos (Niterói/Itaguaí) e Espírito Santo (Vitória).
+            </p>
+            <p>
+              O <strong>FPSO (Floating Production Storage and Offloading)</strong> é a unidade flutuante que produz, processa e armazena petróleo
+              antes de transferi-lo a navios-tanque para transporte a refinarias. O FPSO é essencialmente uma &quot;refinaria flutuante+tanque+porto&quot;
+              — e precisa de suprimentos contínuos para operar. O Pré-Sal da Bacia de Santos usa majoritariamente FPSOs por causa da
+              profundidade extrema (2.000-3.000m de lâmina d&apos;água + 5.000m de profundidade do reservatório).
+            </p>
+            <p>
+              Os <strong>desafios logísticos offshore</strong> incluem: (1) condições climáticas adversas (ondas, ventos, correntes) que podem
+              impedir operações de embarque/desembarque por dias; (2) janelas operacionais limitadas — o içamento de cargas só acontece em
+              condições favoráveis; (3) espaço extremamente limitado a bordo das plataformas; (4) custos elevados — uma diária de PSV pode
+              custar US$ 20.000-50.000; (5) regulamentação rigorosa da ANP e Marinha (NORMAM). Esses fatores tornam o planejamento logístico
+              offshore um exercício de precisão cirúrgica.
+            </p>
+            <div className="bg-gradient-to-br from-blue-50 to-slate-50 dark:from-blue-950/30 dark:to-slate-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">Frota de Apoio Offshore</h4>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-center">
+                <div className="p-3 bg-blue-500/10 rounded-lg"><p className="font-bold">PSV</p><p className="text-muted-foreground">Suprimentos gerais</p></div>
+                <div className="p-3 bg-amber-500/10 rounded-lg"><p className="font-bold">AHTS</p><p className="text-muted-foreground">Âncoras + supply</p></div>
+                <div className="p-3 bg-emerald-500/10 rounded-lg"><p className="font-bold">FPSO</p><p className="text-muted-foreground">Produção flutuante</p></div>
+                <div className="p-3 bg-rose-500/10 rounded-lg"><p className="font-bold">OSRV</p><p className="text-muted-foreground">Emergências (oil spill)</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="space-y-6">
+          <ModuleSectionHeader index={9} variant={mv[9]} title="Análise C.E.D.E." description="Logística offshore que cai na prova de Suprimento." />
+          <ContentAccordion
+            slides={[
+              {
+                titulo: "Conceituação: Ciclo Logístico Offshore",
+                icone: <LuBrain />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <p>O ciclo completo: (1) Requisição na plataforma → (2) Consolidação na base terrestre → (3) Unitização em cestas/contêineres → (4) Embarque no PSV → (5) Travessia marítima → (6) Içamento por guindaste → (7) Conferência a bordo → (8) Armazenagem na plataforma.</p>
+                    <AlertBox tipo="info" titulo="Unitização">
+                      Unitizar é agrupar materiais diversos em uma única unidade de carga (cesta, contêiner, skid) para facilitar o içamento por guindaste. Cada cesta tem limite de peso (até 12 toneladas para cestas tipo &quot;cargo basket&quot;).
+                    </AlertBox>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Exemplificação: Dia a Dia em Macaé",
+                icone: <LuBookOpen />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-muted rounded-lg border border-border">
+                      <p className="text-base"><strong>Operação típica:</strong> 5h — requisições chegam das plataformas. 8h — separação no armazém via WMS. 14h — cestas unitizadas no cais. 16h — embarque no PSV. 4h (dia seguinte) — PSV chega à plataforma P-53. 6h — início do içamento (se mar permitir). Tempo total: ~25h.</p>
+                    </div>
+                    <p>Em dias de mau tempo, o PSV pode ficar &quot;esperando janela&quot; por até 72h ao lado da plataforma, sem poder fazer operações de carga.</p>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Dicas: Siglas de Prova",
+                icone: <LuFileText />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li><strong>PSV</strong> = Platform Supply Vessel (suprimento geral)</li>
+                      <li><strong>AHTS</strong> = Anchor Handling Tug Supply (âncoras + reboque + supply)</li>
+                      <li><strong>FPSO</strong> = Floating Production Storage and Offloading (produz + armazena + exporta)</li>
+                      <li><strong>PLSV</strong> = Pipe Laying Support Vessel (lançamento de dutos submarinos)</li>
+                      <li><strong>DP</strong> = Dynamic Positioning (posicionamento dinâmico, sem âncoras)</li>
+                    </ul>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Exceções: Emergências e Helicóptero",
+                icone: <LuSearch />,
+                conteudo: (
+                  <div className="space-y-4">
+                    <AlertBox tipo="warning" titulo="Quando o PSV não resolve">
+                      Em emergências médicas ou peças críticas urgentes (que podem paralisar a produção), usa-se transporte por helicóptero — muito mais caro (R$ 30.000-80.000/voo), mas chega em 1-2h vs. 24-36h do PSV. É a &quot;última milha de emergência&quot; offshore.
+                    </AlertBox>
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </div>
+
         <ModuleConsolidation
-          index={9}
-          variant={mv[9]}
-          video={{ videoId: "LOG9_V", title: "Offshore", duration: "20:00" }}
-          resumoVisual={{
-            moduloNome: "Módulo 9",
-            tituloAula: "Petrobras",
-            materia: "Bases",
-            images: [{ title: "Porto de Macaé", type: "Mapa", placeholderColor: "bg-blue-100" }],
+          index={9} variant={mv[9]}
+          video={{ videoId: "LOG9_V", title: "Logística Offshore Petrobras", duration: "20:00" }}
+          resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Petrobras", materia: "Offshore", images: [{ title: "Mapa Bacias", type: "Mapa", placeholderColor: "bg-blue-500/20" }, { title: "Frota PSV/AHTS", type: "Infográfico", placeholderColor: "bg-amber-500/20" }] }}
+          maceteVisual={{
+            title: "O Macete do 'Barco Certo'",
+            content: (
+              <>
+                <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
+                  <span>🚢</span>
+                  <span>🛢️</span>
+                </div>
+                <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
+                  &quot;<strong>PSV</strong> = caminhão do mar (Suprimento). <strong>AHTS</strong> = guincho do mar (Âncoras). <strong>FPSO</strong> = fábrica flutuante (Produção).&quot;
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                  <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
+                    <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">PSV 🚛</h4>
+                    <p className="text-lg text-muted-foreground italic">&quot;Leva comida, peça, químico.&quot;</p>
+                    <p className="text-[10px] mt-2 font-medium text-blue-700 dark:text-blue-300 uppercase">Platform Supply Vessel ✅</p>
+                  </div>
+                  <div className="p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">
+                    <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">AHTS ⚓</h4>
+                    <p className="text-lg text-muted-foreground italic">&quot;Puxa, posiciona, ancora.&quot;</p>
+                    <p className="text-[10px] mt-2 font-medium text-amber-700 dark:text-amber-300 uppercase">Anchor Handling Tug Supply ✅</p>
+                  </div>
+                </div>
+              </>
+            ),
           }}
-          maceteVisual={{ title: "Support Boats", content: "PSV (Suprimento) e AHTS (Âncoras)." }}
-          audio={{ audioUrl: "#", titulo: "No Mar", artista: "Petrobras Quest" }}
+          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Podcast: No Mar", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo
-          questoes={mapQuizQuestions("modulo-9")}
-          titulo="QUIZ: Petrobras"
-          numero={9}
-          variant={mv[9]}
-          onComplete={(score) => handleModuleComplete("modulo-9", score)}
-        />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-9")} titulo="QUIZ: Logística Offshore Petrobras" numero={9} variant={mv[9]} onComplete={(score) => handleModuleComplete("modulo-9", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 10 ==================== */}
