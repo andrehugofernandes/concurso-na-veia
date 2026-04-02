@@ -2323,10 +2323,123 @@ export default function AulaReescritaFrases({
           variant={mv[7]}
         />
 
+        {/* ★ RICH INTRO SECTION - Módulo 7 */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Arte da Concessão Estratégica"
+          variant={mv[7]}
+        />
+          
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            {/* PARÁGRAFO 1: CONCEITO CIENTÍFICO */}
+            <p>
+              A concessão constitui-se como fenômeno sintático-semântico que 
+              estabelece relação de adversidade atenuada, onde uma oração 
+              subordinada admite um fato contrário sem invalidar a oração 
+              principal. Segundo Evanildo Bechara, as estruturas concessivas 
+              classificam-se em coordenativas adversativas ("mas", "porém", 
+              "contudo") e subordinativas concessivas ("embora", "ainda que", 
+              "apesar de que", "conquanto"). A transposição entre 
+              estas categorias exige mudança fundamental: as coordenativas 
+              exigem indicativo e orações independentes; as concessivas 
+              requerem subjuntivo e subordinação sintática. A CESGRANRIO 
+              explora sistematicamente esta complexa transformação.
+            </p>
+
+            {/* PARÁGRAFO 2: EXPLICAÇÃO INTUITIVA */}
+            <p>
+              Em outras palavras, a concessão é como negociar um acordo — 
+              você admite um ponto contrário ("embora chova") mas mantém 
+              sua posição principal ("vamos à praia"). O "mas" é como 
+              uma barreira rígida: separa completamente as ideias. 
+              O "embora" é como uma ponte flexível: conecta as ideias 
+              mesmo que se oponham. A diferença crucial está no modo 
+              verbal: "Ele trabalhou, mas não concluiu" (indicativo + 
+              independência) vs "Embora trabalhasse, não concluiu" 
+              (subjuntivo + subordinação). É a mesma situação, mas 
+              com diferentes estratégias argumentativas.
+            </p>
+
+            {/* PARÁGRAFO 3: REGRAS E TÉCNICAS */}
+            <p>
+              As técnicas de transposição concessiva fundamentam-se em princípios 
+              rigorosos: <strong>mudança obrigatória do modo verbal</strong> 
+              (indicativo → subjuntivo imperfeito), <strong>inversão da 
+              ordem das orações</strong> (frequentemente a concessiva 
+              antecede a principal), e <strong>preservação da força 
+              argumentativa</strong> (a concessão admite o obstáculo sem 
+              anular a conclusão). As conjunções coordenativas ("mas", 
+              "porém", "todavia", "contudo") mantêm estrutura 
+              independente. As locuções concessivas ("embora", "ainda que", 
+              "apesar de que", "conquanto") exigem subjuntivo e 
+              estabelecem hierarquia sintática clara entre oração 
+              principal e subordinada.
+            </p>
+
+            {/* PARÁGRAFO 4: CONTEXTO PETROBRAS */}
+            <p>
+              No ambiente técnico da Petrobras, a concessão é fundamental 
+              para elaboração de relatórios de análise de risco e 
+              comunicação de decisões complexas. "O equipamento apresentou 
+              anomalia, mas a produção continuou" (coordenativa) 
+              enfatiza a persistência operacional. "Embora o equipamento 
+              apresentasse anomalia, a produção continuou" (concessiva) 
+              admite o problema como fator conhecido e controlado. 
+              Em laudos de segurança, "Apesar de as barreiras 
+              estarem funcionando, ocorreu o incidente" demonstra 
+              reconhecimento de falha sistêmica sem eximir 
+              responsabilidades. Esta nuance comunicacional é essencial 
+              para documentação técnica precisa.
+            </p>
+
+            {/* PARÁGRAFO 5: PEGADINHAS CESGRANRIO */}
+            <p>
+              A CESGRANRIO explora sistematicamente as armadilhas da 
+              transposição concessiva. As questões frequentemente testam: 
+              identificação da mudança correta do modo verbal 
+              ("trabalhou" → "trabalhasse"), reconhecimento de 
+              conectivos equivalentes ("mas" → "embora", "porém" → 
+              "ainda que"), e manutenção da lógica argumentativa 
+              (a concessão admite o contrário sem invalidar o principal). 
+              O examinando deve desenvolver sensibilidade para distinguir 
+              quando a transposição é gramaticalmente obrigatória e quando 
+              altera sutilmente a força argumentativa. Erros comuns 
+              incluem manter o indicativo após "embora" ou perder 
+              a relação de subordinação necessária.
+            </p>
+
+            {/* CAIXA DE DESTAQUE: Duelo Concessivo */}
+            <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">O Mapa da Concessão</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="text-center">
+                  <div className="text-2xl mb-2">⚔️</div>
+                  <strong>Coordenativas</strong>
+                  <p>Mas, Porém, Contudo<br/>Todavia, No entanto<br/>Indicativo + Independência</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🌉</div>
+                  <strong>Concessivas</strong>
+                  <p>Embora, Ainda que<br/>Apesar de que, Conquanto<br/>Subjuntivo + Subordinação</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🔄</div>
+                  <strong>Transformação</strong>
+                  <p>"Mas produziu" →<br/>"Embora produzisse"<br/>Sempre muda o modo!</p>
+                </div>
+              </div>
+              <div className="mt-4 p-3 bg-rose-100 dark:bg-rose-900/30 rounded text-sm">
+                <strong>Regra de Ouro:</strong> Coordenativa = Indicativo (fato certo). Concessiva = Subjuntivo (fato admitido mas incerto).
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="Embora x Mas — O Duelo Concessivo"
           variant={mv[7]}
         />
