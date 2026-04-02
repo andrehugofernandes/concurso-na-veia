@@ -2327,7 +2327,10 @@ export function AulaTemplate({
     if (id.includes("bloco-ii")) return "Bloco II";
     if (id.includes("bloco-i")) return "Bloco I";
     
-    // For non-block specific materials, use the first word of the name
+    // Special case for Portuguese
+    if (id === "portugues") return "Português";
+    
+    // For non-block specific materials, use first word of name
     const words = fallbackName.split(" ");
     return words[0] || fallbackName;
   };
@@ -2690,9 +2693,9 @@ export function StickyModuleNav({
             ? "top-16 md:top-20"
             : "top-0"
           : "top-0",
-        // 🔒 Breakout: preenche toda a área de conteúdo (Viewport - Sidebar)
-        // No Desktop (md), subtrai a sidebar. No Mobile, usa w-full (agora livre do padding do pai).
-        "w-full md:w-[calc(100vw-var(--sidebar-width,0px))] md:ml-[calc(-1*((100vw-var(--sidebar-width,0px))-100%)/2)]",
+        // Mobile: w-full (preenche viewport width)
+        // Desktop: w-[calc(100vw-var(--sidebar-width))] para ocupar viewport - sidebar width
+        "w-full md:w-[calc(100vw-var(--sidebar-width,256px))] md:left-[var(--sidebar-width,256px)]",
       )}
     >
       {/* Inner nav bar — background, blur, border live here */}

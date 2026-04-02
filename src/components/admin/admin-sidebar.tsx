@@ -230,7 +230,8 @@ export function AdminSidebar({
         isOverlayOpen
           ? "w-72 z-[60] shadow-2xl"
           : cn("z-40", isCollapsed ? "w-14 md:w-20" : "w-64"),
-        isHidden && "-translate-x-full",
+        // Slide-out via left offset (não usa transform que quebra fixed positioning)
+        isHidden && "-left-64 md:-left-20",
       )}
     >
       <div className="flex flex-col h-full overflow-hidden scrollbar-hide scrollbar-none">
