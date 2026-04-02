@@ -2661,10 +2661,122 @@ export default function AulaReescritaFrases({
           variant={mv[8]}
         />
 
+        {/* ★ RICH INTRO SECTION - Módulo 8 */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            title="A Arquitetura da Pontuação Semântica"
+          variant={mv[8]}
+        />
+          
+          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+            {/* PARÁGRAFO 1: CONCEITO CIENTÍFICO */}
+            <p>
+              A pontuação constitui-se como sistema de marcação gráfica que 
+              organiza a estrutura sintática e estabelece relações semânticas 
+              entre os constituintes da oração. Segundo Celso Cunha, a vírgula 
+              funciona como operador lógico de inclusão/exclusão, determinando 
+              se o adjetivo ou oração adjetiva possui caráter explicativo 
+              (generalizante) ou restritivo (especificador). Na estrutura 
+              explicativa, a vírgula indica que a característica se aplica 
+              a todos os elementos da classe; na restritiva, especifica 
+              apenas um subconjunto. A CESGRANRIO explora sistematicamente 
+              esta dualidade funcional, exigindo identificação precisa do 
+              impacto semântico da pontuação.
+            </p>
+
+            {/* PARÁGRAFO 2: EXPLICAÇÃO INTUITIVA */}
+            <p>
+              Em outras palavras, a vírgula é como um interruptor de luz — 
+              ela pode iluminar toda a sala ou apenas um canto específico. 
+              "Os técnicos, que usam EPI, estão seguros" (com vírgula) 
+              é como acender a luz geral: todos os técnicos usam EPI e 
+              estão seguros. "Os técnicos que usam EPI estão seguros" 
+              (sem vírgula) é como focar um holofote: apenas os técnicos 
+              que usam EPI estão seguros, os demais não. A mesma informação 
+              mas com alcance completamente diferente. A pontuação não é 
+              estética, é lógica — define quem entra ou sai da 
+              afirmação.
+            </p>
+
+            {/* PARÁGRAFO 3: REGRAS E TÉCNICAS */}
+            <p>
+              As técnicas de pontuação semântica fundamentam-se em princípios 
+              rigorosos: <strong>explicatividade</strong> (vírgula antes de 
+              adjetivas ou orações adjetivas que generalizam), 
+              <strong>restritividade</strong> (ausência de vírgula em adjetivas 
+              ou orações que especificam), e <strong>hierarquia 
+              informativa</strong> (o que é essencial vs o que é acessório). 
+              Vírgulas explicativas antecedem orações com valor universal: 
+              "Os homens, que são mortais, buscam imortalidade". 
+              Restritivas omitem a vírgula para especificar: "Os homens 
+              que buscam imortalidade são mortais". A decisão pela 
+              presença ou ausência da vírgula altera fundamentalmente 
+              o campo semântico da enunciação.
+            </p>
+
+            {/* PARÁGRAFO 4: CONTEXTO PETROBRAS */}
+            <p>
+              No ambiente técnico da Petrobras, a precisão pontuacional é 
+              crítica para elaboração de manuais de segurança e relatórios 
+              operacionais. "Os equipamentos, que possuem certificação, 
+              podem operar" (explicativa) indica que todos os equipamentos 
+              certificados estão autorizados. "Os equipamentos que possuem 
+              certificação podem operar" (restritiva) especifica que apenas 
+              os equipamentos certificados têm permissão operacional. 
+              Em procedimentos de emergência, esta distinção pode salvar 
+              vidas: "Válvulas, que devem ser fechadas, estão bloqueadas" 
+              (todas as válvulas) vs "Válvulas que devem ser fechadas 
+              estão bloqueadas" (apenas as válvulas críticas). A clareza 
+              semântica é questão de segurança operacional.
+            </p>
+
+            {/* PARÁGRAFO 5: PEGADINHAS CESGRANRIO */}
+            <p>
+              A CESGRANRIO explora sistematicamente as armadilhas da 
+              pontuação semântica. As questões frequentemente testam: 
+              identificação do impacto da vírgula no sentido (explicativo vs 
+              restritivo), reconhecimento de alterações semânticas 
+              sutis, e manutenção da lógica inclusiva/exclusiva. 
+              O examinando deve desenvolver sensibilidade para identificar 
+              quando a vírgula generaliza ou especifica, e como isso 
+              afeta o universo de referência da afirmação. Erros comuns 
+              incluem tratar toda vírgula como pausa respiratória ou 
+              ignorar que a pontuação pode redefinir completamente 
+              o campo semântico da enunciação sem alterar uma palavra.
+            </p>
+
+            {/* CAIXA DE DESTAQUE: Guia de Pontuação Semântica */}
+            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950/30 dark:to-blue-950/30 rounded-lg border border-cyan-200 dark:border-cyan-800 p-6 space-y-4">
+              <h4 className="font-bold text-foreground">O Interruptor de Sentidos</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="text-center">
+                  <div className="text-2xl mb-2">💡</div>
+                  <strong>COM Vírgula</strong>
+                  <p>Explicativa<br/>Generaliza<br/>"Todos os elementos"</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🎯</div>
+                  <strong>SEM Vírgula</strong>
+                  <p>Restritiva<br/>Especifica<br/>"Apenas alguns elementos"</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl mb-2">⚠️</div>
+                  <strong>Impacto</strong>
+                  <p>Muda o campo<br/>semântico<br/>sem mudar palavras</p>
+                </div>
+              </div>
+              <div className="mt-4 p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded text-sm">
+                <strong>Regra de Ouro:</strong> Vírgula = Expansão do universo. Sem vírgula = Restrição do universo.
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index={2}
               title="O Poder da Vírgula"
           variant={mv[8]}
         />
