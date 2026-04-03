@@ -2685,24 +2685,32 @@ export function StickyModuleNav({
   return (
     <div
       ref={navRef}
-      className={cn(
-        "sticky top-16 md:top-20 z-[35] w-full transition-all duration-300",
-      )}
+      className="w-full transition-all duration-300"
+      style={{ height: isStickyNavPinned ? (isMobile ? 64 : 80) : undefined }}
     >
       <div
         className={cn(
-          "w-full transition-all duration-300",
+          "transition-all duration-300",
           isStickyNavPinned
             ? cn(
+                "fixed top-0 z-50",
                 "shadow-md border-b border-b-primary/20 flex items-center shrink-0",
                 "bg-background/90 dark:bg-slate-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-background/70",
-                "h-[64px] md:h-[80px]",
+                "h-16 md:h-20",
               )
             : cn(
-                "py-4 rounded-2xl border border-border/50 shadow-sm backdrop-blur",
+                "w-full py-4 rounded-2xl border border-border/50 shadow-sm backdrop-blur",
                 "bg-background/95 dark:bg-slate-900/95",
               ),
         )}
+        style={
+          isStickyNavPinned
+            ? {
+                left: "var(--sidebar-width, 0px)",
+                width: "calc(100vw - var(--sidebar-width, 0px))",
+              }
+            : undefined
+        }
       >
         {/* Inner Content Wrapper — Ocupa largura total disponível */}
         <div className="w-full">
