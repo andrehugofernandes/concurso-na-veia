@@ -2387,7 +2387,7 @@ export function AulaTemplate({
   );
 
   return (
-    <div className="min-h-screen bg-background pb-20 relative overflow-x-clip">
+    <div className="min-h-screen bg-background pb-20 relative">
       {/* Container principal sem padding lateral por padrão para permitir barras full-width */}
       <div className="max-w-7xl mx-auto px-0 md:px-6">
         <div className="flex flex-col">
@@ -2663,20 +2663,6 @@ export function StickyModuleNav({
       if (!navRef.current) return;
       const rect = navRef.current.getBoundingClientRect();
       const headerHeight = window.innerWidth >= 768 ? 80 : 64;
-      const scrollY = window.scrollY;
-
-      // DEBUG: log every 5th scroll event to avoid flooding
-      if (Math.round(scrollY) % 50 < 5) {
-        console.log("[sticky-debug]", {
-          rectTop: Math.round(rect.top),
-          headerHeight,
-          threshold: headerHeight + 5,
-          scrollY: Math.round(scrollY),
-          willPin: rect.top <= headerHeight + 5,
-          navPosition: window.getComputedStyle(navRef.current).position,
-          navTop: window.getComputedStyle(navRef.current).top,
-        });
-      }
 
       if (rect.top <= headerHeight + 5) {
         setIsStickyNavPinned(true);
@@ -2700,27 +2686,44 @@ export function StickyModuleNav({
     <div
       ref={navRef}
       className={cn(
-        "sticky z-[50] transition-all duration-300",
-        // Posição dinâmica
-        isStickyNavPinned
-          ? isTemporaryHeaderVisible
-            ? "top-16 md:top-20"
-            : "top-0"
-          : "top-0",
-        // Breakout edge-to-edge pixel-perfect: largura = 100% do parent + 16px (px-2 do main)
-        // Usamos -mx-2 para encostar na sidebar (esquerda) e na borda do dispositivo (direita) no mobile
-        "w-[calc(100%+1rem)] md:w-[calc(100vw-var(--sidebar-width,256px))]",
-        "-mx-2 md:ml-[calc(-1*((100vw-var(--sidebar-width,256px))-100%)/2)]",
+        "transition-all duration-300",
+        // Sentinel/Spacer Div: mantém o espaço na página quando o conteúdo se torna fixed
+        "w-full relative h-[72px] md:h-[88px]",
       )}
     >
-      {/* Inner nav bar — background, blur, border live here */}
+      {/*
+          Breakout Fixed Content:
+          - Quando pinned: fixed abaixo do header (top-16/top-20), z-[35] abaixo da sidebar (z-40)
+          - Usa left: var(--sidebar-width) para NÃO sobrepor a sidebar
+          - Width: calc(100vw - sidebar-width) para preencher exatamente o espaço do conteúdo
+      */}
       <div
         className={cn(
-          "bg-background/95 dark:bg-slate-900/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-y border-border/50 transition-all duration-300",
-          isStickyNavPinned && !isTemporaryHeaderVisible
-            ? "shadow-md h-[64px] md:h-[80px] flex items-center border-t-border/20 border-b-2 w-full" // Altura exata pixel-perfect (64px mobile / 80px desktop)
-            : "shadow-sm py-4 border-t-0",
+          "transition-all duration-300",
+          isStickyNavPinned
+            ? cn(
+                "fixed top-16 md:top-20 z-[35] rounded-none shadow-md border-b border-b-primary/20 flex items-center shrink-0",
+                // Efeito Vidro (Glassmorphism)
+                "bg-background/90 dark:bg-slate-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-background/70",
+              )
+            : cn(
+                "relative py-4 rounded-2xl border border-border/50 shadow-sm backdrop-blur",
+                "bg-background/95 dark:bg-slate-900/95",
+              ),
         )}
+        style={
+          isStickyNavPinned
+            ? {
+                left: "var(--sidebar-width, 0px)",
+                width: "calc(100vw - var(--sidebar-width, 0px))",
+                height: isMobile ? "64px" : "80px",
+              }
+            : {
+                width: "100vw",
+                marginLeft: "calc(-50vw + 50%)",
+                marginRight: "calc(-50vw + 50%)",
+              }
+        }
       >
         {/* Inner Content Wrapper — Ocupa largura total disponível */}
         <div className="w-full">
@@ -2744,7 +2747,7 @@ export function StickyModuleNav({
             </button>
 
             {/* TabsList mobile — só as TabsTriggers (compact mode com tooltip) */}
-            <TabsList className="flex flex-1 h-auto p-1 bg-muted/30 dark:bg-muted/10 border border-transparent dark:border-border/30 rounded-2xl gap-1 shadow-inner min-w-0">
+            <TabsList className="flex flex-1 h-auto p-1 bg-muted/40 dark:bg-muted/20 border border-border/30 dark:border-border/40 rounded-2xl gap-1 shadow-inner min-w-0 overflow-hidden">
               {modules.map((mod, index) => {
                 const isVisible =
                   index >= effectiveStart && index < effectiveStart + PAGE_SIZE;
@@ -2755,7 +2758,7 @@ export function StickyModuleNav({
                         <TabsTrigger
                           value={mod.id}
                           className={cn(
-                            "flex-1 py-2 px-1.5 rounded-lg border border-transparent dark:border-border/50 shadow-md dark:shadow-none border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary data-[state=active]:dark:border-border/80 disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
+                            "flex-1 py-1.5 px-1 rounded-lg border border-transparent dark:border-white/10 shadow-md dark:shadow-none border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-primary/40 data-[state=active]:border-b-primary data-[state=active]:dark:border-white/40 disabled:opacity-40 disabled:cursor-not-allowed group min-w-0",
                             !isVisible && "hidden",
                           )}
                         >
