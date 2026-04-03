@@ -2686,44 +2686,23 @@ export function StickyModuleNav({
     <div
       ref={navRef}
       className={cn(
-        "transition-all duration-300",
-        // Sentinel/Spacer Div: mantém o espaço na página quando o conteúdo se torna fixed
-        "w-full relative h-[72px] md:h-[88px]",
+        "sticky top-16 md:top-20 z-[35] w-full transition-all duration-300",
       )}
     >
-      {/*
-          Breakout Fixed Content:
-          - Quando pinned: fixed abaixo do header (top-16/top-20), z-[35] abaixo da sidebar (z-40)
-          - Usa left: var(--sidebar-width) para NÃO sobrepor a sidebar
-          - Width: calc(100vw - sidebar-width) para preencher exatamente o espaço do conteúdo
-      */}
       <div
         className={cn(
-          "transition-all duration-300",
+          "w-full transition-all duration-300",
           isStickyNavPinned
             ? cn(
-                "fixed top-16 md:top-20 z-[35] rounded-none shadow-md border-b border-b-primary/20 flex items-center shrink-0",
-                // Efeito Vidro (Glassmorphism)
+                "shadow-md border-b border-b-primary/20 flex items-center shrink-0",
                 "bg-background/90 dark:bg-slate-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-background/70",
+                "h-[64px] md:h-[80px]",
               )
             : cn(
-                "relative py-4 rounded-2xl border border-border/50 shadow-sm backdrop-blur",
+                "py-4 rounded-2xl border border-border/50 shadow-sm backdrop-blur",
                 "bg-background/95 dark:bg-slate-900/95",
               ),
         )}
-        style={
-          isStickyNavPinned
-            ? {
-                left: "var(--sidebar-width, 0px)",
-                width: "calc(100vw - var(--sidebar-width, 0px))",
-                height: isMobile ? "64px" : "80px",
-              }
-            : {
-                width: "100vw",
-                marginLeft: "calc(-50vw + 50%)",
-                marginRight: "calc(-50vw + 50%)",
-              }
-        }
       >
         {/* Inner Content Wrapper — Ocupa largura total disponível */}
         <div className="w-full">
