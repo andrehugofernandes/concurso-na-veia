@@ -631,9 +631,8 @@ export default function AulaRLCP(props: AulaProps) {
   const renderModulo4 = () => {
     const variant = mv[3];
     return (
-      <>
-        <TabsContent value="modulo-4" className="space-y-12">
-
+      <TabsContent value="modulo-4" className="space-y-12">
+        <div>
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
@@ -721,249 +720,117 @@ export default function AulaRLCP(props: AulaProps) {
             }}
             audio={{
               audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "Podcast: O Coração da Licitação",
-              artista: "Supply Chain Team",
+              titulo: "Documentos da Licitação",
+              artista: "Petrobras Quest",
             }}
           />
 
-          <div className="space-y-6">
-            <ModuleSectionHeader
-              index="4.1"
-              variant={variant}
-              title="Especificações e Regras no Detalhe"
-              description="A importância de documentos bem estruturados para a contratação perfeita."
-            />
-            <ContentAccordion
-              slides={[
-                {
-                  titulo: "Conceituação: Fundamentos",
-                  icone: <LuBrain />,
-                  conteudo: (
-                    <div className="space-y-4">
-                      <p>O <strong>Termo de Referência (TR)</strong> é o DNA técnico imutável. Já o <strong>Edital</strong> é a regra do ringue burocrático e mercantil. "O TR diz se comprei tinta epóxi dupla. O Edital diz que se a empresa atrasar ela toma multa no faturamento." A união incindível dos dois consolida o objeto e a execução das vontades da Diretoria da Petrobras, que assine abaixo o edito de validade.</p>
-                      <AlertBox tipo="info" titulo="O Preço Oculto (Orçamento Sigiloso)">
-                        Na Lei 13.303 e RLCP, a estatal PODE e DEVE manter o preço estimado <strong>sigiloso</strong> no edital (embora strictamente registrado nos cofres da CGU e TCU). Isso força a competitividade máxima ("Quem dá menos no escuro?"). Exibir o preço faria tudo formar cartel beirando o teto do preço.
-                      </AlertBox>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Exemplificação: TR e Prática",
-                  icone: <LuBookOpen />,
-                  conteudo: (
-                    <div className="space-y-4">
-                      <div className="p-4 bg-muted rounded-lg border border-border">
-                        <h4 className="font-bold text-foreground mb-2">📄 TR Deficiente (Gatilhos de Processos Judiciais)</h4>
-                        <p className="text-base text-muted-foreground"><strong>Erro letal real:</strong> Um mantenedor escreve "Compra tubulação de aço, tamanho grande, qualidade boa". O que acontece? Cartel aproveita, entra com recurso, entrega aço chinês fino de construção civil (baratíssimo) no lugar de Duto de Vazão de 400 libras! TR falho mata a planta inteira antes mesmo da perfuração.</p>
-                      </div>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Dicas: Critérios Universais de Julgamento",
-                  icone: <LuFileText />,
-                  conteudo: (
-                    <div className="space-y-4">
-                      <ul className="list-disc pl-5 space-y-2">
-                        <li><strong>Menor Preço:</strong> Para itens comuns (canetas, EPIs), o cifrão é o rei absoluto. Ganha quem gastar menos da Petrobras.</li>
-                        <li><strong>Técnica e Preço:</strong> Para serviços complexos (Engenharia SS), o cérebro vale tanto quanto a carteira, conforme o Edital.</li>
-                      </ul>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Exceções: Habilitação e Microempresas",
-                  icone: <LuSearch />,
-                  conteudo: (
-                    <div className="space-y-4">
-                      <AlertBox tipo="warning" titulo="Microempresas (ME / EPP)">
-                        Mesmo numa megalicitação rigorosa, o edital pode prever desempate fático ou isenções simplificadas trans-fases para as microempresas do estatuto Cidadão em conformidade subsidiária no RLCP. Uma ME com imposto levemente pendente ganha dias para regularizar "antes do fim", o oposto do expurgo instantâneo que as gigantes do cartel levariam!
-                      </AlertBox>
-                    </div>
-                  ),
-                },
-              ]}
-            />
-          </div>
-        </TabsContent>
-      );
-    };
-  
-    const renderModulo5 = () => {
-      const variant = mv[5];
-      return (
-        <TabsContent value="modulo-5" className="space-y-6">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={5}
-              variant={variant}
-              title="Julgamento e Adjudicação no RLCP"
-              description="As etapas finais que definem o vencedor e formalizam o compromisso da Petrobras."
-            />
-  
-            <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-              <p>
-                O <strong>Julgamento</strong> no RLCP é o momento em que a subjetividade morre e a objetividade impera. Após a abertura das propostas, a Comissão Especial ou o Agente de Contratação inicia o cotejo das ofertas baseando-se estritamente no critério de julgamento escolhido: seja pela frieza do menor preço ou pela complexidade técnica.
-              </p>
-              <p>
-                A <strong>Habilitação</strong> funciona como um filtro de solvência e competência. Diferente do rito comum onde se olha a documentação de todos, aqui o foco é otimizado. Avalia-se se o fornecedor possui o <strong>Patrimônio Líquido</strong> exigido, se suas certidões negativas de débitos federais, estaduais e municipais estão vigentes e se detém os atestados de capacidade técnica que provam que ele já realizou obras ou serviços similares no passado.
-              </p>
-              <p>
-                A etapa de <strong>Saneamento de Falhas</strong> é uma das maiores inovações. Caso a proposta contenha erros puramente formais que não alterem a essência do preço ou do objeto, a Petrobras pode (e deve) sanear o processo. Isso evita que uma proposta excelente e econômica seja descartada por um erro de digitação bobo em um anexo burocrático.
-              </p>
-              <p>
-                A <strong>Adjudicação</strong> é o ato declaratório que vincula o objeto ao vencedor, enquanto a <strong>Homologação</strong> é o carimbo de validade da autoridade superior, confirmando que todo o rito seguiu a legalidade. Somente após esses atos é que o fornecedor é formalmente convocado para a assinatura do contrato, podendo ser exigida uma <strong>Garantia de Execução</strong> (caução ou seguro-garantia).
-              </p>
-              <p>
-                Neste módulo, exploraremos o "confronto" entre critérios de menor preço e técnica, os detalhes da habilitação jurídica/fiscal e como o RLCP blinda a Petrobras contra fornecedores aventureiros ou insolventes, garantindo que o cronograma operacional das unidades não sofra interrupções por falhas na cadeia de suprimentos.
-              </p>
-  
-              <AlertBox tipo="warning" titulo="Dica para Cesgranrio: O Rito RLCP">
-                Lembre-se que no RLCP a <strong>Habilitação é posterior ao Julgamento</strong> das propostas. Primeiro classificamos pelo preço/técnica, e somente depois auditamos a papelada do detentor da melhor oferta.
-              </AlertBox>
-            </div>
-          </section>
-  
-          <div className="space-y-6">
-            <ModuleSectionHeader
-              index="5.1"
-              variant={variant}
-              title="Detalhamento Técnico de Seleção"
-            />
-            <ContentAccordion
-              slides={[
-                {
-                  titulo: "Conceituação: O Exame de Conformidade",
-                  icone: <LuBrain />,
-                  conteudo: (
-                    <div className="space-y-4">
-                      <p>Antes de julgar quem é o mais barato, a Petrobras realiza o <strong>Exame de Conformidade</strong>. Aqui, verifica-se se a proposta atende aos "requisitos mínimos" do TR. Uma proposta que oferece um laptop sem bateria quando o TR exige bateria, é sumariamente desclassificada por desconformidade, nem chegando a entrar na disputa de preços.</p>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Exemplificação: Menor Preço vs Técnica e Preço",
-                  icone: <LuBookOpen />,
-                  conteudo: (
-                    <div className="space-y-4">
-                      <div className="p-4 bg-muted rounded-lg border border-border">
-                        <h4 className="font-bold text-foreground mb-2">📌 Compra de Válvulas (Menor Preço)</h4>
-                        <p className="text-base text-muted-foreground">O pregoeiro olha apenas o cifrão. Quem ofertar a válvula padrão Petrobras pelo menor valor, leva o contrato. Simples e direto.</p>
-                      </div>
-                      <div className="p-4 bg-muted rounded-lg border border-border mt-4">
-                        <h4 className="font-bold text-foreground mb-2">📌 Projeto de Duto Submarino (Técnica e Preço)</h4>
-                        <p className="text-base text-muted-foreground">A conta é ponderada. O currículo dos engenheiros e o método de soldagem valem 60% da nota. O preço vale 40%. Às vezes, o segundo mais barato ganha porque sua nota técnica é absurdamente superior.</p>
-                      </div>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Dicas: A Habilitação Otimizada",
-                  icone: <LuFileText />,
-                  conteudo: (
-                    <div className="space-y-4">
-                      <ul className="list-disc pl-5 space-y-2">
-                        <li><strong>Documentação:</strong> Foco no CRC (Certificado de Registro Cadastral). Empresas com CRC ativo na Petrobras têm muitos documentos de habilitação dispensados, acelerando o processo.</li>
-                        <li><strong>Certidões:</strong> Devem estar válidas na data da abertura e mantidas durante todo o contrato.</li>
-                      </ul>
-                    </div>
-                  ),
-                },
-                {
-                  titulo: "Exceções: Desclassificação por Preço Vil",
-                  icone: <LuSearch />,
-                  conteudo: (
-                    <div className="space-y-4">
-                      <AlertBox tipo="warning" titulo="O Perigo do Preço Inexequível">
-                        Se uma empresa oferecer uma obra de 100 milhões por apenas 10 milhões, a Petrobras a desclassifica! Isso é o <strong>Preço Inexequível</strong>. A lei entende que ela não vai conseguir entregar e vai abandonar a obra no meio, gerando prejuízo bilionário para a estatal.
-                      </AlertBox>
-                    </div>
-                  ),
-                },
-              ]}
-            />
-          </div>
-  
-          <div className="space-y-6 pt-8">
-            <ModuleSectionHeader
-              index="5.2"
-              variant={variant}
-              title="Consolidação e Quiz"
-            />
-            <ModuleConsolidation
-              index={5}
-              variant={variant}
-              video={{
-                videoId: "dQw4w9WgXcQ",
-                title: "Julgamento e Adjudicação no RLCP",
-                duration: "08:15",
-              }}
-              resumoVisual={{
-                moduloNome: "Módulo 5",
-                tituloAula: "Julgamento e Adjudicação",
-                materia: "RLCP",
-                images: [
-                  {
-                    title: "Fases do Julgamento",
-                    type: "Diagrama",
-                    placeholderColor: "bg-indigo-500/10",
-                  },
-                  {
-                    title: "Habilitação Jurídica",
-                    type: "Checklist",
-                    placeholderColor: "bg-emerald-500/10",
-                  },
-                  {
-                    title: "Adjudicação",
-                    type: "Fluxograma",
-                    placeholderColor: "bg-amber-500/10",
-                  },
-                ],
-              }}
-              maceteVisual={{
-                title: "O Pulo do Gato no Julgamento",
-                content: (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
-                      <h5 className="font-bold text-blue-700 dark:text-blue-400">Objetividade</h5>
-                      <p className="text-lg text-muted-foreground">O critério não pode mudar no meio do jogo. O que tá no Edital é Lei.</p>
-                    </div>
-                    <div className="p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
-                      <h5 className="font-bold text-purple-700 dark:text-purple-400">Saneamento</h5>
-                      <p className="text-lg text-muted-foreground">Erros formais não matam propostas boas. A inteligência operacional vence a burocracia.</p>
-                    </div>
-                  </div>
-                ),
-              }}
-            />
-  
-            <QuizInterativo
-              titulo="Fixação Módulo 5"
-              questoes={toQQ(quizM5)}
-              onComplete={(score) => handleModuleComplete("modulo-5", score)}
-            />
-          </div>
-        </TabsContent>
-      );
-    };<div className="p-4 bg-purple-500/10 rounded-xl border border-purple-500/20 text-center">
-                  <div className="text-2xl mb-2">⚖️</div>
-                  <h5 className="font-bold text-purple-700 dark:text-purple-400">Técnica e Preço</h5>
-                  <p className="text-lg text-muted-foreground">Equilíbrio entre custo e qualidade técnica.</p>
-                </div>
-              </div>
-            ),
-          }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-            titulo: "Rap do Julgamento",
-            artista: "Petrobras Quest",
-          }}
-        />
+          <QuizInterativo
+            titulo="QUIZ: Termo de Referência e Edital"
+            questoes={toQQ(quizM4)}
+            onComplete={(score) => handleModuleComplete('modulo-4', score)}
+          />
+        </div>
+      </TabsContent>
+    );
+  };
 
-                  <QuizInterativo
-            titulo="QUIZ: Julgamento e Adjudicação"
+  const renderModulo5 = () => {
+    const variant = mv[4];
+    return (
+      <TabsContent value="modulo-5" className="space-y-12">
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            variant={variant}
+            title="Julgamento de Propostas"
+            description="Como a Petrobras decide quem vence: do menor preço à melhor técnica."
+          />
+
+          <div className="space-y-6 text-lg leading-relaxed text-foreground">
+            <p>
+              O <strong>julgamento</strong> é a fase onde a Petrobras analisa as propostas comerciais e técnicas. O critério principal, no RLCP, é a busca pela <strong>proposta mais vantajosa</strong>, que nem sempre é apenas o menor valor nominal, mas o melhor custo-benefício (ciclo de vida do produto).
+            </p>
+            <p>
+              Os critérios comuns são: <strong>Menor Preço</strong> (padronizados), <strong>Melhor Técnica</strong> (complexos), ou <strong>Técnica e Preço</strong> (equilíbrio). Após o julgamento, ocorre a verificação de <strong>exequibilidade</strong>: se o preço for absurdamente baixo, o licitante deve provar que consegue entregar, para evitar abandono de contrato.
+            </p>
+
+            <div className="bg-blue-500/10 border-l-4 border-blue-500 p-5 rounded-r-xl mt-6">
+              <p className="font-bold text-blue-600 dark:text-blue-400 text-lg mb-2">⚖️ Critérios de Julgamento</p>
+              <ul className="text-lg space-y-1">
+                <li>✓ <strong>Menor Preço:</strong> Quando o objeto é comum e bem definido</li>
+                <li>✓ <strong>Maior Desconto:</strong> Variável do menor preço (comum em serviços)</li>
+                <li>✓ <strong>Melhor Técnica:</strong> Foco total na qualidade (projetos inovadores)</li>
+                <li>✓ <strong>Técnica e Preço:</strong> Ponderação entre custo e expertise</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <div className="space-y-6">
+          <ModuleSectionHeader
+            index="5.1"
+            variant={variant}
+            title="Conformidade e Exequibilidade"
+            description="Garantindo que a proposta seja realista e atenda ao edital."
+          />
+          <ContentAccordion
+            mode="stacked"
+            slides={[
+              {
+                title: "Conformidade Técnica",
+                conteudo: "Verificação se a proposta atende a todos os requisitos do Termo de Referência. Propostas fora da especificação são eliminadas.",
+                icone: "🔍",
+              },
+              {
+                title: "Preço Inequível",
+                conteudo: "Preços manifestamente baixos que colocam em risco a execução. O licitante é chamado a justificar seus custos.",
+                icone: "📉",
+              },
+            ]}
+          />
+
+          <ModuleConsolidation
+            index={5}
+            variant={variant}
+            video={{
+              videoId: "dQw4w9WgXcQ",
+              title: "Fase de Julgamento",
+              duration: "08:45",
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 5",
+              tituloAula: "Julgamento",
+              materia: "RLCP",
+              images: [
+                {
+                  title: "Análise de Preços",
+                  type: "Planilha",
+                  placeholderColor: "bg-blue-500/10",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "A Regra de Ouro",
+              content: (
+                <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 text-center">
+                  <p className="text-lg font-medium">
+                    Vantajosidade = Menor Custo Total (Aquisição + Operação + Manutenção).
+                  </p>
+                </div>
+              ),
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+              titulo: "Critérios de Escolha",
+              artista: "Petrobras Quest",
+            }}
+          />
+
+          <QuizInterativo
+            titulo="QUIZ: Julgamento de Propostas"
             questoes={toQQ(quizM5)}
-            onComplete={(score) => handleModuleComplete("modulo-5", score)}
+            onComplete={(score) => handleModuleComplete('modulo-5', score)}
           />
         </div>
       </TabsContent>
@@ -974,47 +841,28 @@ export default function AulaRLCP(props: AulaProps) {
     const variant = mv[5];
     return (
       <TabsContent value="modulo-6" className="space-y-12">
-
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={1}
-            variant={mv[6]}
+            variant={variant}
             title="Recursos e Impugnações"
-            description="Direitos do fornecedor de contestar decisões da licitação."
+            description="Como contestar o edital ou o resultado da licitação."
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground">
             <p>
-              A Lei 13.303 e RLCP garantem que fornecedores tenham <strong>direito de contestar decisões</strong> de licitação se acharem injustas. Existem dois mecanismos: (1) <strong>Impugnação</strong> —
-              questiona REGRAS do edital (é legal? segue RLCP?); (2) <strong>Recurso</strong> — questiona RESULTADO (julgamento foi justo? habilitação foi correta?). Ambos têm prazos (expirados, perdem direito)
-              e procedimentos específicos.
+              O direito de <strong>impugnar</strong> e <strong>recorrer</strong> garante a transparência. A impugnação ocorre ANTES da abertura, contra o edital. O recurso ocorre DEPOIS, contra o resultado.
             </p>
             <p>
-              A <strong>Impugnação do Edital</strong> ocorre ANTES da licitação acontecer — fornecedor lê edital publicado e identifica cláusula que acha ilegal ou discriminatória. Exemplo: "Edital exige certificação
-              ISO que só 1 fornecedor tem — é discriminatório!" Impugnação deve ser feita em prazo curto (geralmente 2-3 dias úteis antes da abertura). Petrobras responde por escrito, justificando por que mantém
-              cláusula (ou a remove se realmente for ilegal). Decisão é formal e vinculante.
-            </p>
-            <p>
-              O <strong>Recurso Administrativo</strong> ocorre DEPOIS do resultado ser divulgado — fornecedor que perdeu ou foi habilitado indevidamente pode contestar. Recurso questiona: "Por quê fulano ganhou se
-              oferecia preço mais alto?" ou "Por quê fui inabilitado? Meu CNPJ está regularizado!" Deve ser feito em prazo específico (geralmente 5 dias úteis após resultado). Petrobras analisa, considera argumentos,
-              valida se julgamento foi legal, e decide mantém ou altera resultado.
-            </p>
-            <p>
-              Há <strong>direitos do recorrente</strong>: ser ouvido, ter acesso à documentação, obter resposta motivada. Há também <strong>obrigações</strong>: impugnar/recorrer em prazo, por escrito, com fundamentos
-              legais específicos (não é "acho injusto"; é "artigo X do RLCP foi violado porque..."). Fornecedor que não impugna/recorre no prazo perde direito — é como processo judicial, há prazos rígidos.
-            </p>
-            <p>
-              Neste módulo, você aprenderá quando impugnar (ANTES) vs recorrer (DEPOIS), prazos exatos, como formalizar contestação, quais argumentos são válidos, como Petrobras responde. Essencial para fornecedores
-              e para gestores Petrobras que recebem contestações.
+              Há direitos claros: ser ouvido, acessar documentos e obter resposta motivada. A Petrobras deve responder em prazos rígidos, garantindo que o processo não seja maculado por erros administrativos.
             </p>
 
             <div className="bg-cyan-500/10 border-l-4 border-cyan-500 p-5 rounded-r-xl mt-6">
               <p className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">⚖️ Impugnação vs Recurso</p>
-              <ul className="text-lg space-y-1 text-foreground">
-                <li>✓ <strong>Impugnação:</strong> ANTES da licitação; questiona REGRAS do edital; prazo curto</li>
-                <li>✓ <strong>Recurso:</strong> DEPOIS do resultado; questiona RESULTADO; prazo 5 dias</li>
-                <li>✓ <strong>Formal:</strong> Por escrito, com fundamentos legais, dentro de prazos rígidos</li>
-                <li>✓ <strong>Resposta:</strong> Petrobras responde motivadamente em prazo definido</li>
+              <ul className="text-lg space-y-1">
+                <li>✓ <strong>Impugnação:</strong> Contra as REGRAS do edital (Prazo: até 2 dias úteis antes)</li>
+                <li>✓ <strong>Recurso:</strong> Contra o RESULTADO (Prazo: 5 dias úteis após publicação)</li>
+                <li>✓ <strong>Formal:</strong> Por escrito, fundamentado em lei ou no RLCP</li>
               </ul>
             </div>
           </div>
@@ -1025,88 +873,63 @@ export default function AulaRLCP(props: AulaProps) {
             index="6.1"
             variant={variant}
             title="Direito de Defesa"
-            description="Mecanismos para garantir a legalidade e a transparência do certame."
+            description="Mecanismos para garantir a legalidade."
           />
           <ContentAccordion
             mode="stacked"
             slides={[
               {
-                title: "Impugnação",
-                conteudo: "Questiona regras do edital que ferem a Lei 13.303 ou o RLCP. Deve ser respondido motivadamente pela Petrobras.",
-                icone: "🛡️",
+                title: "Prazos",
+                conteudo: "Essenciais para não perder o direito. Impugnação é prévia, recurso é a posteriori.",
+                icone: "⏱️",
               },
               {
-                title: "Recurso Administrativo",
-                conteudo: "Interposto contra decisões da comissão de licitação (julgamento ou habilitação). Tem efeito suspensivo como regra.",
-                icone: "⚖️",
+                title: "Motivação",
+                conteudo: "Toda decisão da Petrobras em recursos deve ser motivada e pública.",
+                icone: "✍️",
               },
             ]}
           />
-        
 
+          <ModuleConsolidation
+            index={6}
+            variant={variant}
+            video={{
+              videoId: "dQw4w9WgXcQ",
+              title: "Recursos e Impugnações",
+              duration: "09:12",
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 6",
+              tituloAula: "Controle",
+              materia: "RLCP",
+              images: [
+                {
+                  title: "Recursos em Análise",
+                  type: "Documento",
+                  placeholderColor: "bg-cyan-500/10",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "Antes vs Depois",
+              content: (
+                 <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-center">
+                   <p className="text-lg">Impugna o Edital (Regras). Recorre do Resultado (Ações).</p>
+                 </div>
+              ),
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+              titulo: "Direito de Defesa",
+              artista: "Petrobras Quest",
+            }}
+          />
 
-
-
-
-
-
-
-
-
-
-
-
-<ModuleConsolidation
-          index={3}
-          variant={variant}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Recursos e Impugnações",
-            duration: "09:12",
-          }}
-          resumoVisual={{
-            moduloNome: "Módulo 6",
-            tituloAula: "Controle do Processo",
-            materia: "RLCP",
-            images: [
-              {
-                title: "Impugnação",
-                type: "Documento",
-                placeholderColor: "bg-indigo-500/10",
-              },
-              {
-                title: "Recurso",
-                type: "Ação",
-                placeholderColor: "bg-purple-500/10",
-              },
-            ],
-          }}
-          maceteVisual={{
-            title: "Impugnar vs Recorrer",
-            content: (
-              <div className="space-y-4">
-                <div className="p-3 bg-indigo-500/10 rounded-lg border border-indigo-500/20">
-                  <p className="text-lg font-bold">Impugnação: DO EDITAL (Antes)</p>
-                  <p className="text-lg">Prazo: Até 2 dias úteis antes das propostas.</p>
-                </div>
-                <div className="p-3 bg-purple-500/10 rounded-lg border border-purple-500/20">
-                  <p className="text-lg font-bold">Recurso: DO RESULTADO (Depois)</p>
-                  <p className="text-lg">Prazo: 2 dias úteis após a publicação.</p>
-                </div>
-              </div>
-            ),
-          }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-            titulo: "Voz do Licitante",
-            artista: "Petrobras Quest",
-          }}
-        />
-
-                  <QuizInterativo
+          <QuizInterativo
             titulo="QUIZ: Recursos e Impugnações"
             questoes={toQQ(quizM6)}
-            onComplete={(score) => handleModuleComplete("modulo-6", score)}
+            onComplete={(score) => handleModuleComplete('modulo-6', score)}
           />
         </div>
       </TabsContent>
@@ -1117,47 +940,23 @@ export default function AulaRLCP(props: AulaProps) {
     const variant = mv[6];
     return (
       <TabsContent value="modulo-7" className="space-y-12">
-
-
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={1}
-            variant={mv[7]}
+            variant={variant}
             title="Contratos e Execução"
-            description="De assinatura até cumprimento: obrigações, sanções, encerramento."
+            description="Da assinatura ao encerramento: obrigações e fiscalização."
           />
-
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground">
             <p>
-              Após vencedor ser declarado, Petrobras formaliza <strong>contrato</strong> — acordo legal que define direitos e deveres de ambas as partes. Contrato é baseado no Edital e Termo de Referência,
-              mas detalha ainda mais: cronograma de entrega, forma de pagamento (parcelas? frete incluído?), garantias exigidas (caução em dinheiro? seguro?), penalidades por atraso, como fiscalizar qualidade.
+              O <strong>contrato</strong> é o selo final da licitação. Ele define os prazos, formas de pagamento, garantias e punições. A Petrobras exige fiscalização rigorosa em cada entrega.
             </p>
-            <p>
-              O <strong>cronograma</strong> é crítico — define quando fornecedor entrega (data/prazo) e quando Petrobras paga. Exemplo: "Fornecedor entrega 100 toneladas em 2 parcelas (50 em 30 dias, 50 em 60 dias).
-              Petrobras paga 30 dias após recebimento e aceitação." Se fornecedor atrasa entrega, incide multa (ex.: 0,5% do valor por dia de atraso, até máximo 10%). Se atraso é muito grave ({'>'}30 dias), Petrobras pode
-              rescindir contrato e cobrar fornecedor por perdas (comprar de outro a preço mais alto e cobrar diferença).
-            </p>
-            <p>
-              A <strong>execução contratual</strong> envolve fiscalização: Petrobras designa "fiscal do contrato" (gerente responsável) que verifica se entrega atende ao Termo de Referência. Verifica dimensões,
-              qualidade, prazos. Se aprovado, Petrobras aceita formalmente. Se rejeitado, fornecedor deve corrigir (substituir peças defeituosas, entregar novamente). Fiscalização é OBRIGATÓRIA por lei — garante que
-              recurso público é bem gasto.
-            </p>
-            <p>
-              <strong>Sanções por descumprimento:</strong> Lei 13.303 permite que Petrobras aplique multas (até 20% do valor), advertência, suspensão (6 meses a 5 anos sem licitar com Petrobras), ou impedimento permanente
-              (se fraude). Essas sanções são formalizadas em "Declaração de Idoneidade" — fornecedor que é impedido fica marcado e não consegue licitar com nenhuma empresa pública.
-            </p>
-            <p>
-              Neste módulo, você aprenderá estrutura de contrato Petrobras (cláusulas obrigatórias, ónus de cada parte), cronogramas (como negocia prazos), fiscalização (como Petrobras valida conformidade),
-              sanções (quando aplicar, como calcular), e encerramento (como contrato é liquidado e arquivo). Essencial para quem executa contrato.
-            </p>
-
             <div className="bg-indigo-500/10 border-l-4 border-indigo-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-indigo-600 dark:text-indigo-400 text-lg mb-2">📝 Execução Contratual: Pilares</p>
-              <ul className="text-lg space-y-1 text-foreground">
-                <li>✓ <strong>Contrato:</strong> Acordo formal baseado Edital + TR, com cronograma e formas pagamento</li>
-                <li>✓ <strong>Fiscalização:</strong> Gestor verifica conformidade com TR; aprova ou rejeita entrega</li>
-                <li>✓ <strong>Sanções:</strong> Multa, advertência, suspensão, impedimento por descumprimento</li>
-                <li>✓ <strong>Encerramento:</strong> Contrato liquidado, documentação arquivada</li>
+              <p className="font-bold text-indigo-600 dark:text-indigo-400 text-lg mb-2">📝 Pilares da Execução</p>
+              <ul className="text-lg space-y-1">
+                <li>✓ <strong>Fiscalização:</strong> Obrigatória por lei para garantir qualidade</li>
+                <li>✓ <strong>Sanções:</strong> Multas e suspensões por descumprimento</li>
+                <li>✓ <strong>Prazos:</strong> Cronogramas rígidos de entrega e pagamento</li>
               </ul>
             </div>
           </div>
@@ -1167,80 +966,64 @@ export default function AulaRLCP(props: AulaProps) {
           <ModuleSectionHeader
             index="7.1"
             variant={variant}
-            title="Execução Contratual"
-            description="Como a Petrobras garante que o que foi licitado seja entregue."
+            title="Gestão de Contratos"
+            description="Como a Petrobras garante o que foi comprado."
           />
           <ContentAccordion
             mode="stacked"
             slides={[
               {
-                title: "Obrigações das Partes",
-                conteudo: "Fornecedor entrega conforme TR; Petrobras fiscaliza e paga conforme cronograma financeiro.",
-                icone: "🤝",
+                title: "Fiscal do Contrato",
+                conteudo: "Designado formalmente pela Petrobras para validar entregas e conformidade técnica.",
+                icone: "👷",
               },
               {
-                title: "Sanções",
-                conteudo: "Em caso de atraso ou má qualidade, aplicam-se multas, advertências ou suspensão do direito de licitar.",
+                title: "Sanções Contratuais",
+                conteudo: "Advertência, multa (até 20%), suspensão temporária e impedimento de licitar.",
                 icone: "⚠️",
               },
             ]}
           />
-        
 
+          <ModuleConsolidation
+            index={7}
+            variant={variant}
+            video={{
+              videoId: "dQw4w9WgXcQ",
+              title: "Gestão Contratual",
+              duration: "11:45",
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 7",
+              tituloAula: "Vida do Contrato",
+              materia: "RLCP",
+              images: [
+                {
+                  title: "Fiscalização Ativa",
+                  type: "Campo",
+                  placeholderColor: "bg-indigo-500/10",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "Regra do Fiscal",
+              content: (
+                 <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-center">
+                   <p className="text-lg">Não aceita? Não paga. O fiscal é o guardião do TR.</p>
+                 </div>
+              ),
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+              titulo: "Fiscalização e Sanção",
+              artista: "Petrobras Quest",
+            }}
+          />
 
-
-
-
-
-
-
-
-
-
-
-
-<ModuleConsolidation
-          index={3}
-          variant={variant}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Gestão de Contratos",
-            duration: "11:45",
-          }}
-          resumoVisual={{
-            moduloNome: "Módulo 7",
-            tituloAula: "Vida do Contrato",
-            materia: "RLCP",
-            images: [
-              {
-                title: "Fiscalização",
-                type: "Atividade",
-                placeholderColor: "bg-emerald-500/10",
-              },
-            ],
-          }}
-          maceteVisual={{
-            title: "Checklist de Recebimento",
-            content: (
-              <ul className="text-left text-lg space-y-2 list-decimal list-inside">
-                <li>Entrega do objeto</li>
-                <li>Recebimento Provisório (conferência)</li>
-                <li>Testes de qualidade</li>
-                <li>Recebimento Definitivo (aceite final)</li>
-              </ul>
-            ),
-          }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-            titulo: "Pós-Licitação",
-            artista: "Petrobras Quest",
-          }}
-        />
-
-                  <QuizInterativo
+          <QuizInterativo
             titulo="QUIZ: Contratos e Execução"
             questoes={toQQ(quizM7)}
-            onComplete={(score) => handleModuleComplete("modulo-7", score)}
+            onComplete={(score) => handleModuleComplete('modulo-7', score)}
           />
         </div>
       </TabsContent>
@@ -1251,45 +1034,26 @@ export default function AulaRLCP(props: AulaProps) {
     const variant = mv[7];
     return (
       <TabsContent value="modulo-8" className="space-y-12">
-
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={1}
-            variant={mv[8]}
-            title="Inabilitação, Eliminação e Desempate"
-            description="Critérios que excluem fornecedores e como desempatar propostas iguais."
+            variant={variant}
+            title="Inabilitação e Desclassificação"
+            description="Diferenças entre problemas no licitante e problemas na proposta."
           />
-
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground">
             <p>
-              Durante o processo licitatório, fornecedores podem ser <strong>inabilitados</strong> (excluídos por não cumprir requisitos) ou propostas podem ser <strong>eliminadas</strong> (rejeitadas por não conformidade técnica).
-              Diferença: inabilitação é questão legal/administrativa (CNPJ inválido, débitos fiscais); eliminação é questão técnica (proposta não atende Termo de Referência). Ambos levam à rejeição.
+              <strong>Inabilitação:</strong> Problema no Licitante (CPF/CNPJ, certidões negativas, capacidade técnica/financeira). É a exclusão do sujeito.
             </p>
             <p>
-              <strong>Inabilitação</strong> ocorre quando fornecedor não passa na fase de habilitação. Motivos: (1) CNPJ inativo ou com débitos na Receita Federal; (2) débitos trabalhistas (não paga salários);
-              (3) falta certificações exigidas (ISO, normas técnicas); (4) patrimônio mínimo abaixo do requerido; (5) condenação criminal (reputação abalada). Inabilitado = automaticamente rejeitado, não importa
-              se oferecia melhor preço.
+              <strong>Desclassificação:</strong> Problema na Proposta (Preço excessivo, especificações erradas no TR). É a exclusão do objeto ofertado.
             </p>
-            <p>
-              <strong>Eliminação</strong> ocorre quando proposta não atende tecnicamente ao Termo de Referência. Exemplos: "Edital exige aço ASTM A36; fornecedor ofertou A350 (diferente)" = elimina. "Edital exige
-              entrega em 30 dias; fornecedor disse 90 dias" = elimina. Eliminação protege Petrobras de receber algo que não serve — é questão de conformidade técnica.
-            </p>
-            <p>
-              <strong>Desempate</strong> ocorre quando dois fornecedores oferecem EXATAMENTE o mesmo preço (raro, mas acontece). Edital deve prever critério de desempate: (1) melhor técnica (se criterio foi preço);
-              (2) maior experiência (número de projetos similares); (3) maior proximidade de localização (reduz frete); (4) sorteio (último recurso). Critério DEVE estar claro no Edital antes do processo — não pode definir
-              depois quando alguém empatou.
-            </p>
-            <p>
-              Neste módulo, você aprenderá causas específicas de inabilitação no RLCP, diferença entre inabilitação/eliminação, critérios de desempate segundo Lei 13.303, e como contestar decisão de inabilitação/eliminação
-              (via recurso). Essencial para fornecedores que precisam entender por quê foram rejeitados e para gestores que precisam justificar rejeição.
-            </p>
-
-            <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">❌ Inabilitação vs Eliminação vs Desempate</p>
-              <ul className="text-lg space-y-1 text-foreground">
-                <li>✓ <strong>Inabilitação:</strong> Fornecedor não qualificado (legal/fiscal); CNPJ, débitos, certificações</li>
-                <li>✓ <strong>Eliminação:</strong> Proposta não conforme (técnico); não atende TR, prazos, especificações</li>
-                <li>✓ <strong>Desempate:</strong> Dois fornecedores com mesmo preço; usar critério prédefinido no Edital</li>
+            <div className="bg-red-500/10 border-l-4 border-red-500 p-5 rounded-r-xl mt-6">
+              <p className="font-bold text-red-600 dark:text-red-400 text-lg mb-2">🚫 Causas Comuns</p>
+              <ul className="text-lg space-y-1">
+                <li>✓ <strong>Falha Técnica:</strong> Não atender ao TR (Elimina a Proposta)</li>
+                <li>✓ <strong>Falha Fiscal:</strong> Certidão vencida (Inabilita o Licitante)</li>
+                <li>✓ <strong>Ilegalidade:</strong> Fraude ou conluio detectado</li>
               </ul>
             </div>
           </div>
@@ -1299,89 +1063,64 @@ export default function AulaRLCP(props: AulaProps) {
           <ModuleSectionHeader
             index="8.1"
             variant={variant}
-            title="Causas de Exclusão e Desempate"
-            description="Entenda os motivos que levam à eliminação de licitantes e propostas."
+            title="Critérios de Exclusão"
+            description="Padrões objetivos de rejeição."
           />
           <ContentAccordion
             mode="stacked"
             slides={[
               {
-                title: "Inabilitação",
-                conteudo: "Licitante não atende requisitos de habilitação: CNPJ, regularidade fiscal, capacidade técnica e financeira.",
-                icone: "🛡️",
+                title: "Desempate",
+                conteudo: "Quando preços são iguais, usa-se critérios de técnica, experiência ou, por fim, sorteio.",
+                icone: "⚖️",
               },
               {
-                title: "Desclassificação",
-                conteudo: "Proposta não atende especificações do TR ou tem preço manifestamente excessivo/inequível.",
-                icone: "📏",
+                title: "Saneamento",
+                conteudo: "A Petrobras pode permitir a correção de erros meramente formais que não alteram a substância da proposta.",
+                icone: "🩹",
               },
             ]}
           />
-        
 
+          <ModuleConsolidation
+            index={8}
+            variant={variant}
+            video={{
+              videoId: "dQw4w9WgXcQ",
+              title: "Exclusões no RLCP",
+              duration: "07:15",
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+              titulo: "Inabilitação e Desclassificação",
+              artista: "Petrobras Quest",
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 8",
+              tituloAula: "Causas de Exclusão",
+              materia: "RLCP",
+              images: [
+                {
+                  title: "Rejeição de Proposta",
+                  type: "Status",
+                  placeholderColor: "bg-red-500/10",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "Inabilita vs Desclassifica",
+              content: (
+                 <div className="p-4 bg-red-500/10 rounded-xl border border-red-500/20 text-center">
+                   <p className="text-lg">Inabilita a Empresa (Who). Desclassifica a Oferta (What).</p>
+                 </div>
+              ),
+            }}
+          />
 
-
-
-
-
-
-
-
-
-
-
-
-<ModuleConsolidation
-          index={3}
-          variant={variant}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Inabilitação e Desclassificação",
-            duration: "07:15",
-          }}
-          resumoVisual={{
-            moduloNome: "Módulo 8",
-            tituloAula: "Causas de Exclusão",
-            materia: "RLCP",
-            images: [
-              {
-                title: "Inabilitação",
-                type: "Dossiê",
-                placeholderColor: "bg-red-500/10",
-              },
-              {
-                title: "Desclassificação",
-                type: "Diagrama",
-                placeholderColor: "bg-orange-500/10",
-              },
-            ],
-          }}
-          maceteVisual={{
-            title: "Inabilitação vs Desclassificação",
-            content: (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 bg-red-500/10 rounded-xl border border-red-500/20">
-                  <h5 className="font-bold text-red-700 dark:text-red-400">Inabilitação</h5>
-                  <p className="text-lg text-muted-foreground">Problema com o LICITANTE (Documentos, Capacidade).</p>
-                </div>
-                <div className="p-4 bg-orange-500/10 rounded-xl border border-orange-500/20">
-                  <h5 className="font-bold text-orange-700 dark:text-orange-400">Desclassificação</h5>
-                  <p className="text-lg text-muted-foreground">Problema com a PROPOSTA (Preço, Técnica).</p>
-                </div>
-              </div>
-            ),
-          }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-            titulo: "Rap do Excluído",
-            artista: "Petrobras Quest",
-          }}
-        />
-
-                  <QuizInterativo
+          <QuizInterativo
             titulo="QUIZ: Inabilitação e Desempate"
             questoes={toQQ(quizM8)}
-            onComplete={(score) => handleModuleComplete("modulo-8", score)}
+            onComplete={(score) => handleModuleComplete('modulo-8', score)}
           />
         </div>
       </TabsContent>
@@ -1392,114 +1131,74 @@ export default function AulaRLCP(props: AulaProps) {
     const variant = mv[8];
     return (
       <TabsContent value="modulo-9" className="space-y-12">
-
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index={1}
+            variant={variant}
+            title="RLCP na Prática Petrobras"
+            description="Casos reais, estrutura organizacional e compliance."
+          />
+          <div className="space-y-6 text-lg leading-relaxed text-foreground">
+            <p>
+              A Petrobras realiza centenas de licitações por ano usando o RLCP. Toda licitação passa por Suprimentos e Compliance para evitar fraudes e garantir eficiência.
+            </p>
+            <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
+              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">🏢 Organização Interna</p>
+              <ul className="text-lg space-y-1">
+                <li>✓ <strong>Unidade Solicitante:</strong> Define a necessidade inicial</li>
+                <li>✓ <strong>Suprimentos:</strong> Conduz a licitação tecnicamente</li>
+                <li>✓ <strong>Jurídico:</strong> Valida o edital e o contrato final</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
         <div className="space-y-6">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={1}
-              variant={mv[9]}
-              title="RLCP na Prática Petrobras"
-              description="Casos reais, estrutura organizacional, papéis e responsabilidades."
-            />
-
-            <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-              <p>
-                A Petrobras executa <strong>centenas de licitações por ano</strong> — desde pequenas compras de material de escritório até grandes contratos de engenharia (bilhões). Toda licitação segue RLCP.
-                <strong> Estrutura organizacional</strong> envolve: (1) Unidade de negócio (Ex.: E&P Norte) define necessidade; (2) Área de Suprimentos elabora Termo de Referência; (3) Comissão de Licitação
-                (designada formalmente) conduz processo; (4) Conselho de Administração aprova grandes contratos (acima de certo valor); (5) Auditoria verifica conformidade com RLCP.
-              </p>
-              <p>
-                <strong>Papéis e responsabilidades:</strong> Gestor (da unidade de negócio) define o quê precisa. Especialista em Suprimentos escreve Termo de Referência técnico. Técnico de Suprimento
-                prepara Edital (regras legais). Comissão de Licitação administra inscrição, abertura de propostas, julgamento. Fiscal do contrato (após assinatura) acompanha execução. Cada papel é crítico — erro
-                de um invalida licitação.
-              </p>
-              <p>
-                <strong>Compliance e Transparência:</strong> Petrobras criou sistema SPRC (Sistema de Pesquisa de Registro de Compras) — base de dados pública com todos os contratos, fornecedores, valores.
-                Objetivo: transparência, combate a corrupção. Qualquer servidor Petrobras que violar RLCP (favorecer fornecedor, desviar procedimento) é responsabilizado administrativamente e penalmente.
-                "Connaisseur" de compliance: conhecer RLCP é proteção pessoal — você evita ser cúmplice de fraude.
-              </p>
-              <p>
-                <strong>Exemplos Petrobras:</strong> (1) Compra de aço para plataformas de produção — Concorrência aberta, 3 meses de processo; (2) Contratação de serviço de limpeza para escritório — Convite ágil,
-                1 semana; (3) Aluguel de espaço em FPSO (navio) — Tomada de Preços, fornecedores pré-qualificados; (4) Emergência de reparo de vazamento — Dispensa de licitação justificada. Cada caso segue
-                RLCP mas adapta procedimento à urgência.
-              </p>
-              <p>
-                Neste módulo, você aprenderá como Petrobras organiza licitações, papéis de cada área, documentos gerados (Edital, Termo de Referência, Ata de Julgamento, Contrato), cronogramas reais,
-                e lições aprendidas (erros comuns, como evitar). Essencial para trabalhar em Suprimentos na Petrobras.
-              </p>
-
-              <div className="bg-violet-500/10 border-l-4 border-violet-500 p-5 rounded-r-xl mt-6">
-                <p className="font-bold text-violet-600 dark:text-violet-400 text-lg mb-2">🏢 Papéis na Licitação Petrobras</p>
-                <ul className="text-lg space-y-1 text-foreground">
-                  <li>✓ <strong>Gestor:</strong> Define necessidade; autoriza processo</li>
-                  <li>✓ <strong>Especialista Suprimentos:</strong> Escreve Termo de Referência técnico</li>
-                  <li>✓ <strong>Técnico Suprimento:</strong> Prepara Edital (regras); administra processo</li>
-                  <li>✓ <strong>Comissão Licitação:</strong> Julgamento e adjudicação</li>
-                  <li>✓ <strong>Fiscal Contrato:</strong> Acompanha execução; fiscaliza qualidade</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
           <ModuleSectionHeader
             index="9.1"
             variant={variant}
-            title="Aplicações Práticas"
-            description="Exemplos reais de como a Petrobras aplica o RLCP."
+            title="Aplicações Reais"
+            description="Como a empresa opera o dia a dia."
+          />
+          <ModuleConsolidation
+            index={9}
+            variant={variant}
+            video={{
+              videoId: "dQw4w9WgXcQ",
+              title: "Vida Corporativa e RLCP",
+              duration: "08:20",
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+              titulo: "Rotina de Suprimentos",
+              artista: "Petrobras Quest",
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 9",
+              tituloAula: "Prática",
+              materia: "RLCP",
+              images: [
+                {
+                  title: "Estrutura Petrobras",
+                  type: "Org",
+                  placeholderColor: "bg-emerald-500/10",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "Compliance Always",
+              content: (
+                 <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-center">
+                   <p className="text-lg">Na Petrobras, o RLCP é a Bíblia do Suprimento. Transparência acima de tudo.</p>
+                 </div>
+              ),
+            }}
           />
 
-
-
-
-
-
-
-
-
-
-
-
-
-<ModuleConsolidation
-          index={3}
-          variant={variant}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "RLCP na Petrobras",
-            duration: "08:20",
-          }}
-          resumoVisual={{
-            moduloNome: "Módulo 9",
-            tituloAula: "Prática Corporativa",
-            materia: "RLCP",
-            images: [
-              {
-                title: "Compliance",
-                type: "Petrobras",
-                placeholderColor: "bg-emerald-500/10",
-              },
-            ],
-          }}
-          maceteVisual={{
-            title: "O Papel do Técnico",
-            content: (
-              <p className="text-lg text-muted-foreground">
-                O Técnico de Suprimento atua na elaboração do TR, participa de comissões e fiscaliza a entrega dos bens.
-              </p>
-            ),
-          }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-            titulo: "Música do Suprimento",
-            artista: "Petrobras Quest",
-          }}
-        />
-
-                  <QuizInterativo
+          <QuizInterativo
             titulo="QUIZ: RLCP na Prática Petrobras"
             questoes={toQQ(quizM9)}
-            onComplete={(score) => handleModuleComplete("modulo-9", score)}
+            onComplete={(score) => handleModuleComplete('modulo-9', score)}
           />
         </div>
       </TabsContent>
@@ -1510,48 +1209,17 @@ export default function AulaRLCP(props: AulaProps) {
     const variant = mv[9];
     return (
       <TabsContent value="modulo-10" className="space-y-12">
-
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={1}
-            variant={mv[10]}
+            variant={variant}
             title="Simulado Mestre RLCP"
-            description="Teste integrado: M1-M9 consolidados em questões CESGRANRIO autênticas."
+            description="Desafio final integrando todos os conceitos do curso."
           />
-
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg leading-relaxed text-foreground">
             <p>
-              Você completou 9 módulos: princípios, modalidades, procedimento, edital/TR, julgamento, recursos, contratos, inabilitação, e prática Petrobras. Agora <strong>consolida tudo</strong> em um
-              <strong> Simulado Mestre</strong> que espelha questões CESGRANRIO reais. Este simulado testa INTEGRAÇÃO — questões combinam múltiplos módulos.
+              Agora é a hora da verdade. O Simulado Mestre traz questões no padrão CESGRANRIO que misturam princípios, modalidades e execução contratual. Prepare-se para pensar como um Técnico de Suprimento da Petrobras.
             </p>
-            <p>
-              Uma questão típica CESGRANRIO começa em procedimento (M3), toca modalidade (M2), evoluir para critério de julgamento (M5), e termina em execução contratual (M7). Você precisa pensar
-              holistically — não em compartimentos. Exemplo: "Em uma Concorrência, dois fornecedores empataram no preço. Como Petrobras desempata?" Resposta envolve M2 (Concorrência), M5 (critério desempate),
-              M9 (prática Petrobras).
-            </p>
-            <p>
-              <strong>Mínimo 75% (6 de 8 questões)</strong> indica domínio adequado de RLCP. Abaixo disso, revise módulos com maior dificuldade (feedbacks indicam quais). Acima de 90%? Você está pronto para
-              combinar RLCP + Lei 13.303 (aula anterior) e para estudar outros cargos técnicos da Petrobras.
-            </p>
-            <p>
-              <strong>Dicas para o Simulado:</strong> (1) Leia questão 2 vezes — primeira contexto, segunda para sublinhar pergunta; (2) Identifique qual módulo é NÚCLEO (procedimento? julgamento? contrato?);
-              (3) Procure no conhecimento daquele módulo; (4) Valide em Lei 13.303 e RLCP (não intuição); (5) Se dúvida, descarte alternativas que violam princípios (transparência, igualdade, economicidade).
-            </p>
-            <p>
-              Após simulado, você terá completado Suprimento-Administração MVP: Lei 13.303 (governança), RLCP (licitações), e logo AulaAdministrativoTributario (contabilidade/tributos). Essa tríade cobre
-              89% do conhecimento exigido para Técnico de Suprimento. Parabéns pelo progresso!
-            </p>
-
-            <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">👑 Simulado Mestre: 5-Step Strategy</p>
-              <ol className="text-lg space-y-1 text-foreground list-decimal list-inside">
-                <li><strong>Leia 2x:</strong> Contexto na primeira; Pergunta na segunda</li>
-                <li><strong>Identifique módulo-núcleo:</strong> Qual conceito (M1-M9) é central?</li>
-                <li><strong>Resolva em RLCP:</strong> Procure em Lei/RLCP (não adivinhe)</li>
-                <li><strong>Valide em Petrobras:</strong> A resposta faz sentido na empresa?</li>
-                <li><strong>Confira princípios:</strong> Transparência? Igualdade? Economicidade?</li>
-              </ol>
-            </div>
           </div>
         </section>
 
@@ -1559,58 +1227,48 @@ export default function AulaRLCP(props: AulaProps) {
           <ModuleSectionHeader
             index="10.1"
             variant={variant}
-            title="Simulado Mestre"
-            description="Desafie-se com o conteúdo completo de Administração e RLCP."
+            title="Grand Finale"
+            description="Avaliação de domínio do Regulamento."
+          />
+          <ModuleConsolidation
+            index={10}
+            variant={variant}
+            video={{
+              videoId: "dQw4w9WgXcQ",
+              title: "Simulado Final",
+              duration: "15:00",
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+              titulo: "Vitória no RLCP",
+              artista: "Petrobras Quest",
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 10",
+              tituloAula: "Simulado",
+              materia: "RLCP",
+              images: [
+                {
+                  title: "Certificação",
+                  type: "Meta",
+                  placeholderColor: "bg-amber-500/10",
+                },
+              ],
+            }}
+            maceteVisual={{
+              title: "Você está pronto!",
+              content: (
+                 <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20 text-center">
+                   <p className="text-lg">Domine o RLCP e conquiste sua vaga.</p>
+                 </div>
+              ),
+            }}
           />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ModuleConsolidation
-          index={3}
-          variant={variant}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Simulado Final",
-            duration: "15:00",
-          }}
-          resumoVisual={{
-            moduloNome: "Módulo 10",
-            tituloAula: "Grand Finale",
-            materia: "RLCP",
-            images: [
-              {
-                title: "Certificado",
-                type: "Meta",
-                placeholderColor: "bg-amber-500/10",
-              },
-            ],
-          }}
-          maceteVisual={{
-            title: "Você está pronto!",
-            content: <p className="text-lg">Domine o RLCP e conquiste sua vaga.</p>,
-          }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-            titulo: "Vitória no RLCP",
-            artista: "Petrobras Quest",
-          }}
-        />
-
-                  <QuizInterativo
+          <QuizInterativo
             titulo="QUIZ: Simulado Mestre"
             questoes={toQQ(quizM10)}
-            onComplete={(score) => handleModuleComplete("modulo-10", score)}
+            onComplete={(score) => handleModuleComplete('modulo-10', score)}
           />
         </div>
       </TabsContent>
