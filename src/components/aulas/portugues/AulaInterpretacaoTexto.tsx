@@ -2222,12 +2222,36 @@ export default function AulaInterpretacaoTexto({
           }}
           audio={{
             audioUrl: "https://audio-placeholder.mp3",
-            titulo: "Podcast: Radar de Armadilhas",
-            artista: "Dossiê Petrobras",
+            titulo: "Radar de Armadilhas (Módulo 7)",
+            artista: "Sertanejo de Elite",
             capaUrl:
-              "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
-            lyrics:
-              "[Dica] - Cuidado com alternativas que usam 'Sempre', 'Nunca' ou 'Apenas'...",
+              "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
+            lyrics: `[Intro]
+[Verse 1]
+A prova é um campo com minas no chão 
+Extrapolar é a maior tentação 
+Cuidado com o "Sempre" e com o "Jamais" 
+Pois o autor quase nunca diz tanto assim, rapaz! 
+
+Tem a Redução que te conta a metade 
+Esconde o que falta pra ser a verdade 
+E a Contradição que te diz o contrário 
+Pra te confundir e te fazer de otário 
+
+[Pre-Chorus]
+Se o texto não disse, não tente inventar 
+Dentro do limite você tem que ficar! 
+
+[Chorus]
+Liga o radar, olha a armadilha 
+A Cesgranrio joga com a matilha 
+Se é Redução, falta informação 
+Se Extrapolou, viajou na diversão 
+
+Mantenha a calma, use a blindagem 
+Não caia no truque dessa miragem 
+Fique no texto, siga o que foi dito 
+E vença esse jogo, que hoje tá bonito!`,
           }}
           variant={mv[7]}
         />
@@ -2438,12 +2462,36 @@ export default function AulaInterpretacaoTexto({
           }}
           audio={{
             audioUrl: "https://audio-placeholder.mp3",
-            titulo: "Podcast: Tom e Intencionalidade",
-            artista: "Dossiê Petrobras",
+            titulo: "A Mira do Autor (Módulo 8)",
+            artista: "Sertanejo de Elite",
             capaUrl:
-              "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
-            lyrics:
-              "[Dica] - Procure por advérbios de modo; eles revelam o autor...",
+              "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
+            lyrics: `[Intro]
+[Verse 1]
+Por trás de cada linha tem um coração 
+Uma vontade louca ou uma opinião 
+Se o autor quer te dar informação 
+Ele limpa os adjetivos da sua visão 
+
+Mas se ele usa aspas pra ironizar 
+Ou verbos de comando pra te persuadir 
+A intenção tá lá, pronta pra brilhar 
+Basta você saber pra onde ela vai fugir 
+
+[Pre-Chorus]
+É um tom irônico ou é institucional? 
+Mapeia o adjetivo e acerta o final! 
+
+[Chorus]
+Na mira do autor, veja o objetivo 
+Pode ser irônico ou só descritivo 
+Ele quer te convencer ou só te relatar? 
+A intenção é a chave pra você passar 
+
+Mira no alvo, busca a finalidade 
+Entre o fato puro e a subjetividade 
+Decifre o tom, ganhe a questão 
+E mostre pro mundo sua superação!`,
           }}
           variant={mv[8]}
         />
@@ -2631,12 +2679,36 @@ export default function AulaInterpretacaoTexto({
           }}
           audio={{
             audioUrl: "https://audio-placeholder.mp3",
-            titulo: "Podcast: O Código da Banca",
-            artista: "Dossiê Petrobras",
+            titulo: "Troca de Peças (Módulo 9)",
+            artista: "Sertanejo de Elite",
             capaUrl:
-              "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
-            lyrics:
-              "[Dica] - Sinônimos não são apenas palavras parecidas, são funções iguais...",
+              "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
+            lyrics: `[Intro]
+[Verse 1]
+Mudar a palavra sem mudar o sentido 
+É o desafio que te deixa aturdido 
+"Viabilizar" é "tornar possível" 
+Um vocabulário que te faz invencível 
+
+Se o texto diz "fomentar" o debate 
+É "promover" que a alternativa abate 
+"Negligenciar" é "deixar de lado" 
+Fique esperto pra não ser enganado! 
+
+[Pre-Chorus]
+É a semântica, o jogo das palavras 
+Derrubando muros, abrindo as lavras! 
+
+[Chorus]
+Na troca de peças, o sentido se mantém 
+Sinônimo técnico que te leva o bem 
+Não é o que parece, é o que ele traduz 
+Mapeia a troca e enxergue a luz 
+
+A peça encaixa, o quebra-cabeça 
+Faz com que a questão rápido apareça 
+Mude a palavra, segure o valor 
+E saia da prova como um vencedor!`,
           }}
           variant={mv[9]}
         />
@@ -2843,12 +2915,36 @@ export default function AulaInterpretacaoTexto({
           }}
           audio={{
             audioUrl: "https://audio-placeholder.mp3",
-            titulo: "Áudio Mestre: Briefing Pré-Prova",
-            artista: "Dossiê Petrobras",
+            titulo: "Gabaritando a Arena (Módulo 10)",
+            artista: "Sertanejo de Elite",
             capaUrl:
-              "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
-            lyrics:
-              "[Dica] - Mantenha a calma, leia o enunciado primeiro e use o radar...",
+              "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
+            lyrics: `[Intro]
+[Verse 1]
+Chegou a hora, o momento final 
+A prova te espera, o clima é real 
+Mapeou o parágrafo, achou a viga 
+Agora é na Arena que a gente briga 
+
+Lembrou dos conectivos e da coesão 
+Limpou o DNA da sua visão 
+Vincou as entrelinhas com precisão 
+Pra não cair em nenhuma redução 
+
+[Pre-Chorus]
+A blindagem tá feita, o radar tá ligado 
+O seu nome na lista já tá desenhado! 
+
+[Chorus]
+Gabaritando a Arena, com a mente de elite 
+Pro seu sucesso não tem mais limite 
+A Petrobras chama, o sonho é real 
+Interpretação mestre, nível funcional 
+
+Dossiê completo, missão cumprida 
+Uma nova etapa na sua vida 
+Confia no treino, use a estratégia 
+E brilhe na prova, saia da média!`,
           }}
           variant={mv[10]}
         />

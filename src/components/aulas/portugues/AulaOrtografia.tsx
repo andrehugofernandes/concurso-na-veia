@@ -39,19 +39,20 @@ import {
   AulaTemplate,
   SectionTitle,
   TabbedContent,
+  ModuleConsolidation,
 } from "../shared";
 
 const MODULE_DEFS = [
-  {
-    id: "modulo-1",
-    label: "Módulo 1",
-    title: "Encontros Vocálicos e Sílabas",
-  },
+  { id: "modulo-1", label: "Módulo 1", title: "Encontros Vocálicos e Sílabas" },
   { id: "modulo-2", label: "Módulo 2", title: "Fundamentos da Acentuação" },
   { id: "modulo-3", label: "Módulo 3", title: "O Novo Acordo" },
-  { id: "modulo-4", label: "Módulo 4", title: "O Temido Uso do Hífen" },
-  { id: "modulo-5", label: "Módulo 5", title: "Expressões Problemáticas" },
-  { id: "modulo-6", label: "Módulo 6", title: "Laboratório & Revisão" },
+  { id: "modulo-4", label: "Módulo 4", title: "Grafia de Palavras (G/J, S/Z, X/CH)" },
+  { id: "modulo-5", label: "Módulo 5", title: "Mal vs Mau, Onde vs Aonde, Senão" },
+  { id: "modulo-6", label: "Módulo 6", title: "Uso do Porquê & Estruturas" },
+  { id: "modulo-7", label: "Módulo 7", title: "Hifenização (Uso do Hífen)" },
+  { id: "modulo-8", label: "Módulo 8", title: "Homônimos e Parônimos" },
+  { id: "modulo-9", label: "Módulo 9", title: "Ortografia Contextual (Conectivos)" },
+  { id: "modulo-10", label: "Módulo 10", title: "Lab Cesgranrio (Maratona Final)" },
 ] as const;
 
 // ============================================================================
@@ -589,6 +590,7 @@ const QUIZ_MOD5_POOL: QuizQuestion[] = [
       "Respostas = PORQUE (junto e sem acento), tem valor de 'pois'. Quando o 'porquê' vier acompanhado de artigo (O porquê), será um substantivo, junto COM acento.",
   },
 ];
+
 const QUIZ_MOD6_POOL: QuizQuestion[] = [
   {
     id: 501,
@@ -651,31 +653,76 @@ const QUIZ_MOD6_POOL: QuizQuestion[] = [
   {
     id: 505,
     pergunta:
-      "A conjugação 'Eles creem' e 'Ele cre' (verbo crer) estão grafadas corretamente?",
-    opcoes: [
-      { label: "A", valor: "Sim, faltou acento apenas na plural." },
-      { label: "B", valor: "O correto é crêem e crê." },
-      { label: "C", valor: "O correto é creem e crê." },
-      { label: "D", valor: "Nenhuma das anteriores." },
-    ],
-    correta: "C",
-    explicacao:
-      "'Creem' (hiato 'ee' perdeu acento com o Novo Acordo). Já 'crê' (monossílabo tônico finalizado em E ganha circunflexo, independentemente do acordo).",
-  },
-  {
-    id: 506,
-    pergunta:
       "Complete corretamente: 'Os técnicos agiram _____ e por isso o equipamento sofreu um _____ irreparável.'",
     opcoes: [
-      { label: "A", valor: "mau / mau" },
-      { label: "B", valor: "mal / mal" },
-      { label: "C", valor: "mau / mal" },
-      { label: "D", valor: "mal / mal" },
-      { label: "E", valor: "mal / mau" },
+      { label: "A", valor: "mal / mau" },
+      { label: "B", valor: "mau / mal" },
+      { label: "C", valor: "mal / mal" },
+      { label: "D", valor: "mau / mau" },
+    ],
+    correta: "A",
+    explicacao:
+      "Eles agiram BEM (oposto de MAL). O equipamento sofreu um BOM dano(?) Não, oposto de BOM é MAU. Logo MAL / MAU.",
+  },
+];
+
+const QUIZ_MOD7_POOL: QuizQuestion[] = [
+  {
+    id: 701,
+    pergunta: "Assinale a alternativa em que o hífen foi usado CORRETAMENTE:",
+    opcoes: [
+      { label: "A", valor: "Socio-econômico" },
+      { label: "B", valor: "Contra-atacar" },
+      { label: "C", valor: "Auto-instrução" },
+      { label: "D", valor: "Micro-ondas" },
     ],
     correta: "D",
-    explicacao:
-      "Eles agiram BEM (oposto de MAL na ação adverbial). O equipamento sofreu um BOM defeito(?) Não, oposto de BOM é MAU (adjetivo qualificando o substantivo irreparável). Logo MAL / MAU.",
+    explicacao: "Micro-ondas separa vogais iguais. Contra-atacar também. Socioeconômico e autoinstrução juntam vogais diferentes.",
+  },
+];
+
+const QUIZ_MOD8_POOL: QuizQuestion[] = [
+  {
+    id: 801,
+    pergunta: "Qual a diferença entre 'imergir' e 'emergir'?",
+    opcoes: [
+      { label: "A", valor: "Imergir é sair; Emergir é entrar." },
+      { label: "B", valor: "Imergir é mergulhar; Emergir é vir à tona." },
+      { label: "C", valor: "São sinônimos perfeitos." },
+      { label: "D", valor: "Imergir é para líquidos; Emergir para gases." },
+    ],
+    correta: "B",
+    explicacao: "Imergir (I = dentro) é mergulhar. Emergir (E = externo) é sair, vir à tona.",
+  },
+];
+
+const QUIZ_MOD9_POOL: QuizQuestion[] = [
+  {
+    id: 901,
+    pergunta: "A forma correta da locução é:",
+    opcoes: [
+      { label: "A", valor: "De encontro a (concordância)" },
+      { label: "B", valor: "Ao encontro de (concordância)" },
+      { label: "C", valor: "De encontro a (choque/oposição)" },
+      { label: "D", valor: "Ao encontro de (oposição)" },
+    ],
+    correta: "C",
+    explicacao: "De encontro a = choque, oposição. Ao encontro de = concordância, união.",
+  },
+];
+
+const QUIZ_MOD10_POOL: QuizQuestion[] = [
+  {
+    id: 1001,
+    pergunta: "Gabarito Final: Qual palavra está escrita corretamente?",
+    opcoes: [
+      { label: "A", valor: "Excessão" },
+      { label: "B", valor: "Exceção" },
+      { label: "C", valor: "Eceção" },
+      { label: "D", valor: "Exseção" },
+    ],
+    correta: "B",
+    explicacao: "Exceção se escreve com X e Ç.",
   },
 ];
 
@@ -708,6 +755,10 @@ export default function AulaOrtografia({
   const [qMod4, setQMod4] = useState<QuizQuestion[]>([]);
   const [qMod5, setQMod5] = useState<QuizQuestion[]>([]);
   const [qMod6, setQMod6] = useState<QuizQuestion[]>([]);
+  const [qMod7, setQMod7] = useState<QuizQuestion[]>([]);
+  const [qMod8, setQMod8] = useState<QuizQuestion[]>([]);
+  const [qMod9, setQMod9] = useState<QuizQuestion[]>([]);
+  const [qMod10, setQMod10] = useState<QuizQuestion[]>([]);
 
   useEffect(() => {
     setQMod1(getRandomQuestions(QUIZ_MOD1_POOL, 6));
@@ -715,7 +766,11 @@ export default function AulaOrtografia({
     setQMod3(getRandomQuestions(QUIZ_MOD3_POOL, 6));
     setQMod4(getRandomQuestions(QUIZ_MOD4_POOL, 6));
     setQMod5(getRandomQuestions(QUIZ_MOD5_POOL, 6));
-    setQMod6(
+    setQMod6(getRandomQuestions(QUIZ_MOD6_POOL, 6));
+    setQMod7(getRandomQuestions(QUIZ_MOD7_POOL, 6));
+    setQMod8(getRandomQuestions(QUIZ_MOD8_POOL, 6));
+    setQMod9(getRandomQuestions(QUIZ_MOD9_POOL, 6));
+    setQMod10(
       getRandomQuestions(
         [
           ...QUIZ_MOD1_POOL,
@@ -724,6 +779,10 @@ export default function AulaOrtografia({
           ...QUIZ_MOD4_POOL,
           ...QUIZ_MOD5_POOL,
           ...QUIZ_MOD6_POOL,
+          ...QUIZ_MOD7_POOL,
+          ...QUIZ_MOD8_POOL,
+          ...QUIZ_MOD9_POOL,
+          ...QUIZ_MOD10_POOL,
         ],
         20,
       ),
@@ -1016,9 +1075,68 @@ Ditongo é junto, hiato é separação!
             icone="🎯"
             numero={3}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          variant={mv[1]}
-        />
+            variant={mv[1]}
+          />
         </section>
+
+        <ModuleConsolidation
+          index={1}
+          variant={mv[1] || "amber"}
+          video={{
+            videoId: "dQw4w9WgXcQ",
+            title: "Encontros Vocálicos na Prática",
+            duration: "08:00"
+          }}
+          resumoVisual={{
+            moduloNome: "Encontros Vocálicos",
+            tituloAula: "Ortografia",
+            materia: "Português",
+            images: [
+              {
+                title: "Ditongos e Hiatos",
+                type: "Mapa Mental",
+                placeholderColor: "bg-amber-100",
+              },
+              {
+                title: "Tritongos e Separação",
+                type: "Diagrama",
+                placeholderColor: "bg-blue-100",
+              },
+            ],
+          }}
+          maceteVisual={{
+            title: "O Trio Parada Dura",
+            content: (
+              <div className="space-y-4 text-center">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
+                    <span className="text-2xl mb-2 block">🤝</span>
+                    <h4 className="font-bold text-amber-700 dark:text-amber-400">Ditongo</h4>
+                    <p className="text-xs text-muted-foreground italic">Vogal + Semivogal (JUNTOS)</p>
+                  </div>
+                  <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
+                    <span className="text-2xl mb-2 block">✂️</span>
+                    <h4 className="font-bold text-blue-700 dark:text-blue-400">Hiato</h4>
+                    <p className="text-xs text-muted-foreground italic">Vogal | Vogal (SEPARADOS)</p>
+                  </div>
+                  <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
+                    <span className="text-2xl mb-2 block">👨‍👩‍👦</span>
+                    <h4 className="font-bold text-emerald-700 dark:text-emerald-400">Tritongo</h4>
+                    <p className="text-xs text-muted-foreground italic">SV + V + SV (UNIDOS)</p>
+                  </div>
+                </div>
+                <p className="text-sm font-medium text-muted-foreground">
+                  Lembre-se: em divisões silábicas, <strong>HIATOS</strong> são os únicos que se separam!
+                </p>
+              </div>
+            ),
+          }}
+          audio={{
+            audioUrl: "#",
+            titulo: "Resumo: Encontros Vocálicos",
+            artista: "Prof. André",
+          }}
+        />
       </TabsContent>
 
       {/* =======================================================
@@ -1331,907 +1449,252 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             icone="⚡"
             numero={3}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          variant={mv[2]}
-        />
+            variant={mv[2]}
+          />
         </section>
+
+        <ModuleConsolidation
+          index={2}
+          variant={mv[2] || "blue"}
+          video={{ videoId: "dQw4w9WgXcQ", title: "Acentuação na Prática", duration: "12:00" }}
+          resumoVisual={{
+            moduloNome: "Acentuação", tituloAula: "Ortografia", materia: "Português",
+            images: [{ title: "Mapa Mental: Acentos", type: "Mapa Mental", placeholderColor: "bg-blue-100" }]
+          }}
+          maceteVisual={{
+            title: "A Regra do Oposto",
+            content: <p className="text-lg">"<strong>Paroxítonas</strong> são o oposto das <strong>Oxítonas</strong>: o que acentua uma, não acentua a outra."</p>
+          }}
+          audio={{ audioUrl: "#", titulo: "AudioAula: Acentuação", artista: "Prof. André" }}
+        />
       </TabsContent>
-      {/* =======================================================
+      {/* ========================================================================
                         MÓDULO 3: O Novo Acordo
-                    ======================================================= */}
-      <TabsContent
-        value="modulo-3"
-        className="space-y-12 mt-12 focus-visible:outline-none"
-      >
+          ======================================================================== */}
+      <TabsContent value="modulo-3" className="space-y-12 mt-12 focus-visible:outline-none">
         <ModuleBanner
           numero={3}
           titulo="O Novo Acordo"
           descricao="Aprenda o que caiu, o que mudou e o que a Cesgranrio mais cobra sobre a Nova Ortografia."
-          variant={mv[3]}
+          variant={mv[3] || "blue"}
         />
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={1}
-            title="As Três Grandes Baixas"
-            description="Foco total no que mudou: ditongos abertos, tremas e as novas regras de hiato."
-          variant={mv[3]}
-        />
-
+        <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
+          <ModuleSectionHeader index={1} title="As Três Grandes Baixas" variant={mv[3] || "blue"} />
           <AlertBox tipo="warning" titulo="O Alvo da Banca">
-            As bancas amam cobrar as palavras que **perderam** o acento no Novo
-            Acordo. A regra de ouro é: Palavras paroxítonas sofreram as maiores
-            mudanças. As oxítonas quase não foram tocadas.
+            As bancas amam cobrar as palavras que <strong>perderam</strong> o acento no Novo Acordo. Palavras paroxítonas sofreram as maiores mudanças.
           </AlertBox>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                  <span className="font-bold text-xl md:text-2xl bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">
-                    Adeus, Trema (¨)
-                  </span>
-                </div>
-              }
-              verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-4">
-                  <p>Abolido totalmente em palavras em português.</p>
-                  <div className="bg-blue-500/10 p-3 rounded">
-                    <p className="line-through text-red-400">
-                      Cinqüenta, Lingüiça
-                    </p>
-                    <p className="text-green-500 font-bold">
-                      Cinquenta, Linguiça
-                    </p>
-                  </div>
-                </div>
-              }
+              frente={<div className="flex flex-col items-center justify-center p-6 h-full text-center font-bold">Adeus, Trema (¨)</div>}
+              verso={<div className="p-6 text-center space-y-3"><p>Abolido em português.</p><p className="line-through text-red-500">Cinquenta, Linguiça</p><p className="text-green-500 font-bold text-lg">Cinquenta, Linguiça</p></div>}
+              variant={mv[3] || "blue"}
             />
             <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                  <span className="font-bold text-xl md:text-2xl bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">
-                    Ditongos Abertos (Paroxítonas)
-                  </span>
-                </div>
-              }
-              verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-4">
-                  <p>
-                    ÉI e ÓI perderam o acento APENAS em palavras paroxítonas.
-                  </p>
-                  <div className="bg-indigo-500/10 p-3 rounded">
-                    <p className="line-through text-red-400">Idéia, Jibóia</p>
-                    <p className="text-green-500 font-bold">Ideia, Jiboia</p>
-                  </div>
-                </div>
-              }
+              frente={<div className="flex flex-col items-center justify-center p-6 h-full text-center font-bold">Ditongos EI e OI</div>}
+              verso={<div className="p-6 text-center space-y-3"><p>Perderam acento nas PAROXÍTONAS.</p><p className="line-through text-red-500">Idéia, Jibóia</p><p className="text-green-500 font-bold text-lg">Ideia, Jiboia</p></div>}
+              variant={mv[3] || "blue"}
             />
             <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                  <span className="font-bold text-xl md:text-2xl bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">
-                    Hiato de vogais duplas
-                  </span>
-                </div>
-              }
-              verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-4">
-                  <p>
-                    Vogais repetidas (OO, EE) não têm mais acento circunflexo.
-                  </p>
-                  <div className="bg-sky-500/10 p-3 rounded">
-                    <p className="line-through text-red-400">
-                      Vôo, Lêem, Crêem
-                    </p>
-                    <p className="text-green-500 font-bold">Voo, Leem, Creem</p>
-                  </div>
-                </div>
-              }
+              frente={<div className="flex flex-col items-center justify-center p-6 h-full text-center font-bold">Vogais Duplas</div>}
+              verso={<div className="p-6 text-center space-y-3"><p>Vogais OO e EE sem acento.</p><p className="line-through text-red-500">Vôo, Lêem</p><p className="text-green-500 font-bold text-lg">Voo, Leem</p></div>}
+              variant={mv[3] || "blue"}
             />
           </div>
         </section>
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 mt-12">
-          <ModuleSectionHeader
-            index={2}
-            title="O Hiato Revoltado"
-            description="Desvende a pegadinha suprema dos hiatos após ditongos em todas as suas nuances."
-          variant={mv[3]}
+        <ModuleConsolidation
+          index={3}
+          variant={mv[3] || "blue"}
+          video={{ videoId: "dQw4w9WgXcQ", title: "Novo Acordo", duration: "10:00" }}
+          resumoVisual={{
+            moduloNome: "Novo Acordo", tituloAula: "Ortografia", materia: "Português",
+            images: [{ title: "Tabela de Mudanças", type: "Tabela", placeholderColor: "bg-blue-100" }]
+          }}
+          maceteVisual={{
+             title: "A Regra de Ouro",
+             content: <p className="text-lg">"<strong>Paroxítona</strong> mudou, <strong>oxítona</strong> ficou. O trema morreu e as duplas perderam o chapéu."</p>
+          }}
+          audio={{ audioUrl: "#", titulo: "AudioAula: O Acordo", artista: "Prof. André" }}
         />
 
-          <div className="flex flex-col md:flex-row gap-8 items-center">
-            <div className="flex-1 space-y-6">
-              <h3 className="text-2xl font-bold">
-                Feiura não tem mais acento!
-              </h3>
-              <p className="text-muted-foreground text-lg text-justify">
-                Uma regra muito específica mudou: as letras <strong>I</strong> e{" "}
-                <strong>U</strong> tônicas (hiato) perderam o acento se vierem
-                logo <strong>após um ditongo</strong> em palavras{" "}
-                <strong>paroxítonas</strong>.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-xl">
-                  <LuCheck className="text-green-500 w-6 h-6 shrink-0" />
-                  <div className="space-y-1">
-                    <p className="font-semibold text-lg">Feiura</p>
-                    <p className="text-muted-foreground text-lg">
-                      Fei(ditongo)-u(hiato)-ra = O "U" vem depois de ditongo
-                      "ei". Perde o acento.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-xl">
-                  <LuCheck className="text-green-500 w-6 h-6 shrink-0" />
-                  <div className="space-y-1">
-                    <p className="font-semibold text-lg">Bocaiuva</p>
-                    <p className="text-muted-foreground text-lg">
-                      Bo-cai(ditongo)-u(hiato)-va = Sem acento.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <AlertBox tipo="warning" titulo="A Pegadinha Suprema">
-                Essa regra só vale para as PAROXÍTONAS. Se for OXÍTONA, o acento
-                continua! Exemplo: <strong>Piauí</strong> (Pi-au-í) e{" "}
-                <strong>Tuiuiú</strong> continuam acentuadas.
-              </AlertBox>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={3}
-            title="Resumo e Multimídia"
-            description="Recursos visuais e auditivos para fixar a base fonética e ortográfica."
-          variant={mv[3]}
-        />
-          <LessonTabs
-            tabs={[
-              {
-                id: "video",
-                label: "Vídeo Aula",
-                icon:LuPlayCircle,
-                content:(
-                  <div className="w-full flex flex-col items-center py-6">
-                    <div className="w-full max-w-3xl">
-                      <VideoModal
-                        videoId="dQw4w9WgXcQ"
-                        title="Guia Definitivo Acordo"
-                        duration="11:00"
-                        thumbnail="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=1000&auto=format&fit=crop"
-                      />
-                    </div>
-                  </div>
-                ),
-              },
-              {
-                id: "resumo",
-                label: "Resumo Visual",
-                icon:LuBookOpen,
-                content:(
-                  <ModuleSummaryCarouselNew
-                    moduloNome="O Novo Acordo"
-                    tituloAula="Ortografia e Acentuação"
-                    materia="Língua Portuguesa"
-                    images={[
-                      {
-                        title: "Mapa Mental: Trema e Acento Diferencial",
-                        type: "Mapa Mental",
-                        placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
-                      },
-                      {
-                        title: "Tabela: Acentos que Morreram vs Sobreviveram",
-                        type: "Tabela",
-                        placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
-                      },
-                      {
-                        title: "Infográfico: Mudanças do Acordo",
-                        type: "Infográfico",
-                        placeholderColor:
-                          "bg-emerald-100 dark:bg-emerald-900/30",
-                      },
-                      {
-                        title: "Card Resumo: Pôde vs Pode",
-                        type: "Card",
-                        placeholderColor: "bg-amber-100 dark:bg-amber-900/30",
-                      },
-                    ]}
-                  />
-                ),
-              },
-              {
-                id: "visual",
-                label: "Macete Visual",
-                icon:LuBrain,
-                content:(
-                  <div className="text-center p-8 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-2xl border border-blue-500/10">
-                    <h3 className="text-xl font-bold text-foreground mb-4">
-                      Os Sobreviventes do Acordo
-                    </h3>
-                    <div className="text-7xl my-8 animate-pulse">😭 ➡️ 🦸‍♂️</div>
-                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
-                      "Se for oxítona, o acento continua. Se for paroxítona,
-                      tchau acento! Pôde, Pôr e Têm/Vêm sobreviveram."
-                    </p>
-                  </div>
-                ),
-              },
-              {
-                id: "audio",
-                label: "Áudio Resumo",
-                icon:LuMusic,
-                content:(
-                  <div className="w-full flex justify-center py-4">
-                    <div className="w-full max-w-md">
-                      <MusicPlayerCard
-                        audioUrl="#"
-                        titulo="Rap do Novo Acordo"
-                        artista="Prof. André"
-                        capaUrl="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1000&auto=format&fit=crop"
-                        lyrics={`(Verso 1)
-O trema morreu, descanse em paz
-Pelo, polo, pera — sem acento, é demais!
-Mas pôde e pôr, esses são guerreiros
-Têm e vêm no plural, firmes e verdadeiros!
-
-(Refrão)
-Novo acordo, nova lei, nova era
-Mas na prova a banca te espera!
-                                                        `}
-                      />
-                    </div>
-                  </div>
-                ),
-              },
-            ]}
-          />
-        </section>
-
-        <section className="mt-16">
+        <section className="mt-12">
           <QuizInterativo
             questoes={qMod3}
             titulo="QUIZ: O Novo Acordo"
-            icone="✅"
-            numero={4}
+            icone="🆕"
+            numero={3}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          variant={mv[3]}
-        />
+            variant={mv[3] || "blue"}
+          />
         </section>
       </TabsContent>
 
-      {/* =======================================================
-                        MÓDULO 4: O Temido Uso do Hífen
-                    ======================================================= */}
-      <TabsContent
-        value="modulo-4"
-        className="space-y-12 mt-12 focus-visible:outline-none"
-      >
+      {/* ========================================================================
+                        MÓDULO 4: Grafia de Palavras
+          ======================================================================== */}
+      <TabsContent value="modulo-4" className="space-y-12 mt-12 focus-visible:outline-none">
         <ModuleBanner
           numero={4}
-          titulo="O Temido Uso do Hífen"
-          descricao="Compreenda a lógica magnética dos prefixos para nunca mais errar uso de hífen."
-          variant={mv[4]}
+          titulo="Grafia de Palavras"
+          descricao="Domine de vez o uso de G/J, S/Z e X/CH. A grafia correta é a chave para a perfeição."
+          variant={mv[4] || "indigo"}
         />
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={1}
-            title="A Lei Magnética dos Opostos"
-          variant={mv[4]}
-        />
-
-          <AlertBox tipo="info" titulo="O Princípio Magnético do Hífen">
-            O uso do hífen com prefixos é governado por uma lógica simples que
-            lembra a física dos ímãs: opostos se atraem (juntam sem hífen) e
-            iguais se repelem (separam com hífen). Entender essa lógica evita a
-            decoreba infinita de regras.
-            <div className="bg-indigo-500/10 border border-indigo-500/20 p-3 rounded-md text-lg mt-3">
-              <strong>Exemplo Prático:</strong> Em "Autoescola", o prefixo
-              termina em "O", e a palavra começa com "E" (vogais
-              opostas/diferentes). Portanto, elas <strong>se atraem</strong> e
-              perdem o hífen!
-            </div>
-          </AlertBox>
-
-          <div className="flex flex-col md:flex-row gap-8 items-center mt-6">
-            <div className="w-full md:w-1/3 flex justify-center">
-              <div className="w-48 h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full flex items-center justify-center border-4 border-indigo-500 border-dashed">
-                <div className="text-center">
-                  <p className="text-4xl font-bold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
-                    Opostos
-                  </p>
-                  <p className="text-lg text-muted-foreground font-medium mt-2">
-                    SE ATRAEM (Juntam)
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="flex-1 space-y-6">
-              <h3 className="text-2xl font-bold">Vogais Diferentes = Junta!</h3>
-              <p className="text-muted-foreground text-lg text-justify">
-                Se a última letra do prefixo for uma vogal, e a letra inicial da
-                palavra seguinte for uma vogal diferente, abandone o hífen e
-                junte as duas!
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-xl">
-                  <LuCheck className="text-green-500 w-6 h-6 shrink-0" />
-                  <div className="space-y-1">
-                    <p className="font-semibold text-lg">
-                      Autoescola (e não auto-escola)
-                    </p>
-                    <p className="text-muted-foreground text-lg">
-                      O terminando, E começando. Opostos atraem.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-xl">
-                  <LuCheck className="text-green-500 w-6 h-6 shrink-0" />
-                  <div className="space-y-1">
-                    <p className="font-semibold text-lg">Infraestrutura</p>
-                    <p className="text-muted-foreground text-lg">
-                      A terminando, E começando. Opostos atraem.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col md:flex-row-reverse gap-8 items-center mt-12 pt-12 border-t border-border">
-            <div className="w-full md:w-1/3 flex justify-center">
-              <div className="w-48 h-48 bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-full flex items-center justify-center border-4 border-red-500 border-dashed">
-                <div className="text-center">
-                  <p className="text-4xl font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
-                    Iguais
-                  </p>
-                  <p className="text-lg text-muted-foreground font-medium mt-2">
-                    SE REPELEM (Separam)
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="flex-1 space-y-6">
-              <h3 className="text-2xl font-bold">Vogais Iguais = Hífen!</h3>
-              <p className="text-muted-foreground text-lg text-justify">
-                Se a última letra do prefixo for igual à primeira letra da
-                palavra seguinte, elas brigam. Use o hífen para separá-las.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-xl border border-red-500/20">
-                  <LuTriangleAlert className="text-red-500 w-6 h-6 shrink-0" />
-                  <div className="space-y-1">
-                    <p className="font-semibold text-lg">Micro-ondas</p>
-                    <p className="text-muted-foreground text-lg">
-                      O de micro + O de ondas. Iguais separam.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-xl border border-red-500/20">
-                  <LuTriangleAlert className="text-red-500 w-6 h-6 shrink-0" />
-                  <div className="space-y-1">
-                    <p className="font-semibold text-lg">Anti-inflamatório</p>
-                    <p className="text-muted-foreground text-lg">
-                      I com I. Hífen no meio.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
+          <ModuleSectionHeader index={1} title="G vs J e S vs Z" variant={mv[4] || "indigo"} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <FlipCard
+              frente={<div className="flex flex-col items-center justify-center p-6 h-full text-center font-bold">Verbos em -JAR</div>}
+              verso={<div className="p-6 space-y-2"><p>Mantêm o J na conjugação:</p><p className="font-bold text-indigo-500">Viajar → Viajem (eles);<br/>Arranjar → Arranje;</p></div>}
+              variant={mv[4] || "indigo"}
+            />
+            <FlipCard
+              frente={<div className="flex flex-col items-center justify-center p-6 h-full text-center font-bold">Substantivos -AGEM</div>}
+              verso={<div className="p-6 space-y-2"><p>Quase sempre com G:</p><p className="font-bold text-indigo-500">Viagem, Garagem, Miragem.</p><p className="text-xs italic">(Exceção: Pajem)</p></div>}
+              variant={mv[4] || "indigo"}
+            />
           </div>
         </section>
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={2}
-            title="A Regra da Dobradinha (R e S)"
-            description="Entenda o fenômeno da duplicação consonantal após prefixos terminados em vogal."
-          variant={mv[4]}
+        <ModuleConsolidation
+          index={4}
+          variant={mv[4] || "indigo"}
+          video={{ videoId: "dQw4w9WgXcQ", title: "Grafia Visual", duration: "08:00" }}
+          resumoVisual={{
+            moduloNome: "Grafia", tituloAula: "Ortografia", materia: "Português",
+            images: [{ title: "Mapa G vs J", type: "Mapa Mental", placeholderColor: "bg-indigo-100" }]
+          }}
+          maceteVisual={{
+            title: "Sufixos",
+            content: <p className="text-lg">"Origem/Nacionalidade usa <strong>S</strong> (Holandês). Abstração/Qualidade usa <strong>Z</strong> (Rigidez)."</p>
+          }}
+          audio={{ audioUrl: "#", titulo: "AudioAula: Grafia", artista: "Prof. André" }}
         />
-
-          <AlertBox tipo="info" titulo="O R e o S multiplicam-se">
-            Quando a primeira palavra terminar em **Vogal** e a segunda palavra
-            começar com **R** ou **S**, você não usa hífen: junta tudo e **dobra
-            a letra**.
-          </AlertBox>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-            <div className="bg-indigo-500/5 p-6 rounded-2xl border border-indigo-500/10 shadow-sm space-y-6">
-              <h4 className="font-bold flex items-center gap-2">
-                <LuCheck className="text-emerald-500" /> Vogal + R/S = Dobra
-              </h4>
-              <div className="space-y-3 font-mono text-lg">
-                <p className="flex justify-between border-b pb-1">
-                  <span>Mini + Saia</span>{" "}
-                  <strong className="text-indigo-500">Minissaia</strong>
-                </p>
-                <p className="flex justify-between border-b pb-1">
-                  <span>Anti + Social</span>{" "}
-                  <strong className="text-indigo-500">Antissocial</strong>
-                </p>
-                <p className="flex justify-between border-b pb-1">
-                  <span>Contra + Regra</span>{" "}
-                  <strong className="text-indigo-500">Contrarregra</strong>
-                </p>
-                <p className="flex justify-between pb-1">
-                  <span>Ultra + Som</span>{" "}
-                  <strong className="text-indigo-500">Ultrassom</strong>
-                </p>
-              </div>
-            </div>
-            <div className="bg-amber-500/5 p-6 rounded-2xl border border-amber-500/10 shadow-sm space-y-6">
-              <h4 className="font-bold flex items-center gap-2">
-                <LuTriangleAlert className="text-amber-500" /> Consoante Igual =
-                Hífen
-              </h4>
-              <div className="space-y-3 font-mono text-lg">
-                <p className="flex justify-between border-b pb-1">
-                  <span>Inter + Regional</span>{" "}
-                  <strong className="text-amber-600">Inter-regional</strong>
-                </p>
-                <p className="flex justify-between border-b pb-1">
-                  <span>Super + Resistente</span>{" "}
-                  <strong className="text-amber-600">Super-resistente</strong>
-                </p>
-                <p className="flex justify-between border-b pb-1">
-                  <span>Sub + Bibliotecário</span>{" "}
-                  <strong className="text-amber-600">Sub-bibliotecário</strong>
-                </p>
-                <p className="flex justify-between pb-1">
-                  <span>Hiper + Realista</span>{" "}
-                  <strong className="text-amber-600">Hiper-realista</strong>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={3}
-            title="Resumo e Multimídia"
-            description="Vídeos e mapas mentais para consolidar a mecânica do hífen."
-          variant={mv[4]}
-        />
-          <LessonTabs
-            tabs={[
-              {
-                id: "video",
-                label: "Vídeo Aula",
-                icon:LuPlayCircle,
-                content:(
-                  <div className="w-full flex flex-col items-center py-6">
-                    <div className="w-full max-w-3xl">
-                      <VideoModal
-                        videoId="dQw4w9WgXcQ"
-                        title="Tudo Sobre Hífen"
-                        duration="14:00"
-                        thumbnail="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000&auto=format&fit=crop"
-                      />
-                    </div>
-                  </div>
-                ),
-              },
-              {
-                id: "resumo",
-                label: "Resumo Visual",
-                icon:LuBookOpen,
-                content:(
-                  <ModuleSummaryCarouselNew
-                    moduloNome="O Temido Uso do Hífen"
-                    tituloAula="Ortografia e Acentuação"
-                    materia="Língua Portuguesa"
-                    images={[
-                      {
-                        title: "Mapa Mental: Regras do Hífen",
-                        type: "Mapa Mental",
-                        placeholderColor: "bg-indigo-100 dark:bg-indigo-900/30",
-                      },
-                      {
-                        title: "Tabela: Sempre Com Hífen",
-                        type: "Tabela",
-                        placeholderColor: "bg-red-100 dark:bg-red-900/30",
-                      },
-                      {
-                        title: "Fluxograma: Iguais vs Diferentes",
-                        type: "Diagrama",
-                        placeholderColor:
-                          "bg-emerald-100 dark:bg-emerald-900/30",
-                      },
-                      {
-                        title: "Card Resumo: Exceções Perigosas",
-                        type: "Card",
-                        placeholderColor: "bg-amber-100 dark:bg-amber-900/30",
-                      },
-                    ]}
-                  />
-                ),
-              },
-              {
-                id: "visual",
-                label: "Macete Visual",
-                icon:LuBrain,
-                content:(
-                  <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
-                    <h3 className="text-xl font-bold text-foreground mb-4">
-                      O Ímã da Concordância
-                    </h3>
-                    <div className="text-7xl my-8 animate-bounce">🧲 ❌ 🧲</div>
-                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
-                      "Os iguais se repelem (hífen), os diferentes se amam!"
-                      Vale para quase todas as vogais e consoantes.
-                    </p>
-                  </div>
-                ),
-              },
-              {
-                id: "audio",
-                label: "Áudio Resumo",
-                icon:LuMusic,
-                content:(
-                  <div className="w-full flex justify-center py-4">
-                    <div className="w-full max-w-md">
-                      <MusicPlayerCard
-                        audioUrl="#"
-                        titulo="Pagode do Hífen"
-                        artista="Prof. André"
-                        capaUrl="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000&auto=format&fit=crop"
-                        lyrics={`(Verso 1)
-Ex e vice, sempre com hífen, parceiro
-Pré, pró e pós, são os verdadeiros guerreiros
-Pan e circum com vogal? Hífen na veia!
-H no começo? Hífen sem meia!
-
-(Refrão)
-Iguais se repelem, diferentes se amam
-É a lei do ímã que nunca engana!
-                                                        `}
-                      />
-                    </div>
-                  </div>
-                ),
-              },
-            ]}
-          />
-        </section>
 
         <section className="mt-12">
           <QuizInterativo
             questoes={qMod4}
-            titulo="QUIZ: O Temido Uso do Hífen"
-            icone="⛓️"
+            titulo="QUIZ: Grafia"
+            icone="✍️"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          variant={mv[4]}
-        />
-        </section>
-      </TabsContent>
-      {/* =======================================================
-                        MÓDULO 5: Expressões Problemáticas
-                    ======================================================= */}
-      <TabsContent
-        value="modulo-5"
-        className="space-y-12 mt-12 focus-visible:outline-none"
-      >
-        <ModuleBanner
-          numero={5}
-          titulo="Problemas Frequentes"
-          descricao="Os maiores tropeços da língua testados exaustivamente em provas."
-          variant={mv[5]}
-        />
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={1}
-            title="Sessão de Terapia Ortográfica"
-            description="Aprenda a aplicar cada um dos quatro tipos de porquê com precisão absoluta."
-          variant={mv[5]}
-        />
-
-          <AlertBox tipo="info" titulo="A Natureza dos Quatro Porquês">
-            Na língua portuguesa, a escrita da palavra "porque" varia de acordo
-            com o papel semântico e sintático que ela exerce na frase.
-          </AlertBox>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-            <div className="bg-amber-500/10 p-6 rounded-2xl border-l-4 border-amber-500 space-y-4">
-              <h4 className="text-xl font-bold text-amber-600 dark:text-amber-400">
-                Por que (Separado, Sem Acento)
-              </h4>
-              <p className="text-muted-foreground text-lg">
-                Perguntas (diretas ou indiretas) ou "pelo qual".
-              </p>
-              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-lg">
-                "Não sabemos <strong>por que</strong> o sistema caiu."
-              </div>
-            </div>
-
-            <div className="bg-amber-500/10 p-6 rounded-2xl border-l-4 border-amber-500 space-y-4">
-              <h4 className="text-xl font-bold text-amber-600 dark:text-amber-400">
-                Porque (Junto, Sem Acento)
-              </h4>
-              <p className="text-muted-foreground text-lg">
-                Respostas e justificativas. Equivale a <strong>"pois"</strong>.
-              </p>
-              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-lg">
-                "Caiu <strong>porque</strong> houve pico de uso."
-              </div>
-            </div>
-
-            <div className="bg-orange-500/10 p-6 rounded-2xl border-l-4 border-orange-500 space-y-4">
-              <h4 className="text-xl font-bold text-orange-600 dark:text-orange-400">
-                Por quê (Separado, Com Acento)
-              </h4>
-              <p className="text-muted-foreground text-lg">
-                Final de frases (antes de pontuação).
-              </p>
-              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-lg">
-                "Você não veio ontem <strong>por quê</strong>?"
-              </div>
-            </div>
-
-            <div className="bg-orange-500/10 p-6 rounded-2xl border-l-4 border-orange-500 space-y-4">
-              <h4 className="text-xl font-bold text-orange-600 dark:text-orange-400">
-                Porquê (Junto, Com Acento)
-              </h4>
-              <p className="text-muted-foreground text-lg">
-                Substantivo (o motivo). Geralmente com artigo.
-              </p>
-              <div className="bg-card p-3 rounded-lg border border-border mt-2 font-mono text-lg">
-                "Gostaria de entender <strong>o porquê</strong>."
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={2}
-            title="Opostos Que Confundem"
-            description="Diferencie mal/mau e onde/aonde através da lógica gramatical simples."
-          variant={mv[5]}
-        />
-          <CardCarousel
-            itemsPerView={2}
-            titulo="Principais Confusões"
-            cards={[
-              {
-                title: "MAU vs MAL",
-                descricao: (
-                  <div className="space-y-4 text-lg text-center mt-4">
-                    <p>
-                      <strong>MAU</strong> (Adjetivo) &lt;-&gt; BOM
-                    </p>
-                    <p>
-                      <strong>MAL</strong> (Advérbio) &lt;-&gt; BEM
-                    </p>
-                  </div>
-                ),
-                icone: <LuShield />,
-              },
-              {
-                title: "ONDE vs AONDE",
-                descricao: (
-                  <div className="space-y-4 text-lg text-center mt-4">
-                    <p>
-                      <strong>ONDE</strong> = Estático.
-                    </p>
-                    <p>
-                      <strong>AONDE</strong> = Movimento (Para onde).
-                    </p>
-                  </div>
-                ),
-                icone: <LuArrowRight />,
-              },
-            ]}
+            variant={mv[4] || "indigo"}
           />
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={3}
-            title="Resumo e Multimídia"
-            description="Macetes mnemônicos para nunca mais confundir os porquês, mal/mau e onde/aonde."
-          variant={mv[5]}
-        />
-          <LessonTabs
-            tabs={[
-              {
-                id: "video",
-                label: "Vídeo Aula",
-                icon:LuPlayCircle,
-                content:(
-                  <div className="w-full flex flex-col items-center py-6">
-                    <div className="w-full max-w-3xl">
-                      <VideoModal
-                        videoId="dQw4w9WgXcQ"
-                        title="Expressões Problemáticas"
-                        duration="12:00"
-                        thumbnail="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1000&auto=format&fit=crop"
-                      />
-                    </div>
-                  </div>
-                ),
-              },
-              {
-                id: "resumo",
-                label: "Resumo Visual",
-                icon:LuBookOpen,
-                content:(
-                  <ModuleSummaryCarouselNew
-                    moduloNome="Problemas Frequentes"
-                    tituloAula="Ortografia e Acentuação"
-                    materia="Língua Portuguesa"
-                    images={[
-                      {
-                        title: "Mapa Mental: Por que / Porque",
-                        type: "Mapa Mental",
-                        placeholderColor: "bg-amber-100 dark:bg-amber-900/30",
-                      },
-                      {
-                        title: "Tabela: Mal vs Mau",
-                        type: "Tabela",
-                        placeholderColor: "bg-orange-100 dark:bg-orange-900/30",
-                      },
-                      {
-                        title: "Infográfico: Onde vs Aonde",
-                        type: "Infográfico",
-                        placeholderColor:
-                          "bg-emerald-100 dark:bg-emerald-900/30",
-                      },
-                      {
-                        title: "Card Resumo: A fim vs Afim",
-                        type: "Card",
-                        placeholderColor: "bg-blue-100 dark:bg-blue-900/30",
-                      },
-                    ]}
-                  />
-                ),
-              },
-              {
-                id: "visual",
-                label: "Macete Visual",
-                icon:LuBrain,
-                content:(
-                  <div className="text-center p-8 bg-gradient-to-br from-amber-500/5 to-orange-500/5 rounded-2xl border border-amber-500/10">
-                    <h3 className="text-xl font-bold text-foreground mb-4">
-                      Mal do Bem
-                    </h3>
-                    <div className="text-7xl my-8 animate-bounce">😈 ↔️ 😇</div>
-                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
-                      "Mal tem L como o rabo do Bem. Mau tem U como a barriga do
-                      Bom. Onde eu fico. Aonde eu vou!"
-                    </p>
-                  </div>
-                ),
-              },
-              {
-                id: "audio",
-                label: "Áudio Resumo",
-                icon:LuMusic,
-                content:(
-                  <div className="w-full flex justify-center py-4">
-                    <div className="w-full max-w-md">
-                      <MusicPlayerCard
-                        audioUrl="#"
-                        titulo="Forró das Expressões"
-                        artista="Prof. André"
-                        capaUrl="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1000&auto=format&fit=crop"
-                        lyrics={`(Verso 1)
-Mal com L é oposto de Bem
-Mau com U é oposto de Bom, tá?
-Onde eu fico, aonde eu vou
-Na prova da Petrobras não vou errar, não!
-
-(Refrão)
-Expressão que confunde, eu já decorei
-Por que separado? Porque eu estudei!
-                                                        `}
-                      />
-                    </div>
-                  </div>
-                ),
-              },
-            ]}
-          />
-        </section>
-        <section className="mt-12">
-          <QuizInterativo
-            questoes={qMod5}
-            titulo="QUIZ: Expressões Problemáticas"
-            icone="🧐"
-            numero={4}
-            onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          variant={mv[5]}
-        />
         </section>
       </TabsContent>
 
-      {/* =======================================================
-                        MÓDULO 6: Laboratório & Revisão Integrada
-                    ======================================================= */}
-      <TabsContent
-        value="modulo-6"
-        className="space-y-12 mt-12 focus-visible:outline-none"
-      >
-        <ModuleBanner
-          numero={6}
-          titulo="Laboratório & Revisão Integrada"
-          descricao="Treinamento intensivo nível Cesgranrio para a prova da Petrobras."
-          variant={mv[6]}
-        />
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={1}
-            title="Revisão Final (Mind Map)"
-            description="Um panorama completo de toda a ortografia e acentuação em um fluxo lógico."
-          variant={mv[6]}
-        />
-
-          <div className="flex flex-col gap-6 w-full max-w-3xl mx-auto">
-            <TimelineItem
-              passo={1}
-              titulo="Encontros Vocálicos"
-              descricao="Ditongo, Tritongo e Hiato. Vogal e Semivogal."
-            />
-            <TimelineItem
-              passo={2}
-              titulo="Acentuação Base"
-              descricao="Oxítonas (A,E,O,EM), Paroxítonas (R,X,N,L,PS,DITONGO) e Proparoxítonas (Todas)."
-            />
-            <TimelineItem
-              passo={3}
-              titulo="Novo Acordo"
-              descricao="Adeus ao trema. Paroxítonas sem acento no EI/OI e no hiato após ditongo."
-            />
-            <TimelineItem
-              passo={4}
-              titulo="Hífen dos Opostos"
-              descricao="Iguais se repelem (hífen), opostos se atraem (juntam)."
-            />
-            <TimelineItem
-              passo={5}
-              titulo="Porquês e Afins"
-              descricao="Uso correto de mal/mau, onde/aonde e os porquês."
-              isLast={true}
-            />
-          </div>
-
-          <AlertBox tipo="success" titulo="Preparado(a) para a Prova!">
-            A Ortografia e a Acentuação exigem leitura atenta e não apenas
-            decoreba de regras. No simulador final abaixo, as questões misturam
-            todas as regras que aprendemos nesta jornada. Boa sorte!
-          </AlertBox>
+      <TabsContent value="modulo-5" className="space-y-12 mt-12">
+        <ModuleBanner numero={5} titulo="Mal vs Mau" descricao="Opostos que derrubam candidatos." variant="rose" />
+        <section className="bg-card rounded-3xl border p-8 space-y-6">
+           <AlertBox tipo="warning" titulo="Mal x Mau">
+              <strong>Mal:</strong> Oposto de BEM.<br/><strong>Mau:</strong> Oposto de BOM.
+           </AlertBox>
         </section>
+        <ModuleConsolidation 
+          index={5} 
+          variant="rose" 
+          video={{videoId:"dQw4w9WgXcQ", title:"Opostos", duration:"05:00"}} 
+          resumoVisual={{moduloNome:"Opostos", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Tabela", placeholderColor:"bg-rose-100"}]}}
+          maceteVisual={{
+            title: "Macete do Lobo",
+            content: <p className="text-lg">"Lobo <strong>Mau</strong> é Lobo <strong>Bom</strong> (Troque por BOM). Mal-vindo é <strong>Bem</strong>-vindo (Troque por BEM)."</p>
+          }}
+          audio={{ audioUrl: "#", titulo: "AudioAula: Mal vs Mau", artista: "Prof. André" }}
+        />
+        <QuizInterativo questoes={qMod5} titulo="QUIZ: Opostos" icone="⚖️" numero={5} onComplete={(s) => handleModuleComplete("modulo-5", s)} variant="rose" />
+      </TabsContent>
 
+      <TabsContent value="modulo-6" className="space-y-12 mt-12">
+        <ModuleBanner numero={6} titulo="Os Porquês" descricao="Regra definitiva." variant="amber" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+           {["Por que", "Por quê", "Porque", "Porquê"].map((p,i) => (
+             <div key={i} className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-center font-bold text-amber-600">{p}</div>
+           ))}
+        </div>
+        <ModuleConsolidation 
+          index={6} 
+          variant="amber" 
+          video={{videoId:"dQw4w9WgXcQ", title:"Os Porquês", duration:"04:00"}} 
+          resumoVisual={{moduloNome:"Porquês", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Mapa", placeholderColor:"bg-amber-100"}]}}
+          maceteVisual={{
+            title: "O Pulo do Gato",
+            content: <div className="space-y-2"><p><strong>Por que</strong> (separado) = Pergunta.</p><p><strong>Porque</strong> (junto) = Resposta.</p></div>
+          }}
+          audio={{ audioUrl: "#", titulo: "AudioAula: Porquês", artista: "Prof. André" }}
+        />
+        <QuizInterativo questoes={qMod6} titulo="QUIZ: Porquês" icone="❓" numero={6} onComplete={(s) => handleModuleComplete("modulo-6", s)} variant="amber" />
+      </TabsContent>
+
+      <TabsContent value="modulo-7" className="space-y-12 mt-12">
+        <ModuleBanner numero={7} titulo="Uso do Hífen" descricao="Magnetismo Gráfico." variant="violet" />
+        <section className="bg-card rounded-3xl border p-8 text-center space-y-4">
+           <p className="text-xl font-bold">IGUAIS (-) | DIFERENTES (+)</p>
+        </section>
+        <ModuleConsolidation 
+          index={7} 
+          variant="violet" 
+          video={{videoId:"dQw4w9WgXcQ", title:"Hífen", duration:"06:00"}} 
+          resumoVisual={{moduloNome:"Hífen", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Tabela", placeholderColor:"bg-violet-100"}]}}
+          maceteVisual={{
+            title: "Regra dos Opostos",
+            content: <p className="text-lg">"Os incomuns se atraem (Sem Hífen). Os iguais se repelem (Com Hífen)."</p>
+          }}
+          audio={{ audioUrl: "#", titulo: "AudioAula: Hífen", artista: "Prof. André" }}
+        />
+        <QuizInterativo questoes={qMod7} titulo="QUIZ: Hífen" icone="🧲" numero={7} onComplete={(s) => handleModuleComplete("modulo-7", s)} variant="violet" />
+      </TabsContent>
+
+      <TabsContent value="modulo-8" className="space-y-12 mt-12">
+        <ModuleBanner numero={8} titulo="Semântica" descricao="Homônimos e Parônimos." variant="emerald" />
+        <ModuleConsolidation 
+          index={8} 
+          variant="emerald" 
+          video={{videoId:"dQw4w9WgXcQ", title:"Semântica", duration:"07:00"}} 
+          resumoVisual={{moduloNome:"Semântica", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Lista", placeholderColor:"bg-emerald-100"}]}}
+          maceteVisual={{
+            title: "Trinca da Cesgranrio",
+            content: <div className="space-y-1"><p><strong>Sessão</strong> (Tempo/Cinema)</p><p><strong>Seção</strong> (Lugar/Divisão)</p><p><strong>Cessão</strong> (Dar/Ceder)</p></div>
+          }}
+          audio={{ audioUrl: "#", titulo: "AudioAula: Semântica", artista: "Prof. André" }}
+        />
+        <QuizInterativo questoes={qMod8} titulo="QUIZ: Semântica" icone="🎭" numero={8} onComplete={(s) => handleModuleComplete("modulo-8", s)} variant="emerald" />
+      </TabsContent>
+
+      <TabsContent value="modulo-9" className="space-y-12 mt-12">
+        <ModuleBanner numero={9} titulo="Contexto" descricao="A fim de / Afim." variant="blue" />
+        <ModuleConsolidation 
+          index={9} 
+          variant="blue" 
+          video={{videoId:"dQw4w9WgXcQ", title:"Contexto", duration:"03:00"}} 
+          resumoVisual={{moduloNome:"Contexto", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Card", placeholderColor:"bg-blue-100"}]}}
+          maceteVisual={{
+            title: "A fim de",
+            content: <p className="text-lg">"<strong>A fim de</strong> (separado) indica finalidade (Para). <strong>Afim</strong> (junto) indica semelhança."</p>
+          }}
+          audio={{ audioUrl: "#", titulo: "AudioAula: Contexto", artista: "Prof. André" }}
+        />
+        <QuizInterativo questoes={qMod9} titulo="QUIZ: Conectivos" icone="🧬" numero={9} onComplete={(s) => handleModuleComplete("modulo-9", s)} variant="blue" />
+      </TabsContent>
+
+      <TabsContent value="modulo-10" className="space-y-12 mt-12">
+        <ModuleBanner numero={10} titulo="Maratona Final" descricao="Lab Cesgranrio." variant="blue" />
         <section className="mt-12">
-          <QuizInterativo
-            questoes={qMod6}
-            titulo="QUIZ: Laboratório & Revisão"
-            icone="🏆"
-            numero={2}
-            onComplete={(score) => handleModuleComplete("modulo-6", score)}
-          variant={mv[6]}
-        />
+          <QuizInterativo questoes={qMod10} titulo="SIMULADO FINAL" icone="🏆" numero={10} onComplete={(s) => handleModuleComplete("modulo-10", s)} variant="blue" />
         </section>
+        <ModuleConsolidation 
+          index={10} 
+          variant="blue" 
+          video={{videoId:"dQw4w9WgXcQ", title:"Revisão", duration:"05:00"}} 
+          resumoVisual={{moduloNome:"Final", tituloAula:"Ortografia", materia:"Português", images:[{title:"Checklist", type:"Card", placeholderColor:"bg-blue-200"}]}}
+          maceteVisual={{
+            title: "Checklist de Prova",
+            content: <ul className="text-left list-disc list-inside"><li>Novo Acordo?</li><li>Porquês?</li><li>Mal vs Mau?</li></ul>
+          }}
+          audio={{ audioUrl: "#", titulo: "AudioAula: Maratona", artista: "Prof. André" }}
+        />
       </TabsContent>
     </AulaTemplate>
   );
 }
-
-// EOF
-
-
-
-
-
-
-
-
-
-
-
-
