@@ -343,6 +343,7 @@ export default function AulaInterpretacaoTexto({
         {/* LABORATÓRIO TÁTICO M1 */}
         <TextAnalysisLab
           index={2}
+          variant={mv[1]}
           titulo="Dossiê Técnico: O Relatório da Refinaria"
           subtitulo="Aplique os conceitos de explícito vs. implícito num fragmento real de manual industrial."
           legenda={[
@@ -661,6 +662,7 @@ export default function AulaInterpretacaoTexto({
 
         <TextAnalysisLab
           index={2}
+          variant={mv[2]}
           titulo="Raio-X do Parágrafo Técnico"
           subtitulo="Identifique a 'Viga Mestra' e como ela sustenta os 'Adornos' (detalhes)."
           legenda={[
@@ -747,6 +749,7 @@ export default function AulaInterpretacaoTexto({
 
         <TextAnalysisLab
           index={4}
+          variant={mv[2]}
           titulo="Laboratório: O Tópico Frasal"
           subtitulo="Identificando a espinha dorsal do parágrafo técnico."
           legenda={[
@@ -1108,6 +1111,7 @@ export default function AulaInterpretacaoTexto({
 
         <TextAnalysisLab
           index={2}
+          variant={mv[3]}
           titulo="Rastreamento de Referentes"
           subtitulo="A quem este pronome está servindo? Evite a armadilha do referente mais próximo."
           legenda={[
@@ -1436,6 +1440,7 @@ export default function AulaInterpretacaoTexto({
 
         <TextAnalysisLab
           index={3}
+          variant={mv[4]}
           titulo="Identificando o DNA"
           subtitulo="Qual a intenção primária do autor neste fragmento?"
           legenda={[
@@ -1722,6 +1727,7 @@ export default function AulaInterpretacaoTexto({
 
         <TextAnalysisLab
           index={2}
+          variant={mv[5]}
           titulo="Laboratório de Velocidade"
           subtitulo="Tente captar o sentido dos blocos destacados sem subvocalizar."
           legenda={[
@@ -2020,6 +2026,7 @@ export default function AulaInterpretacaoTexto({
 
         <TextAnalysisLab
           index={2}
+          variant={mv[6]}
           titulo="Laboratório de Inferência"
           subtitulo="Extraia o pressuposto oculto na frase operacional."
           legenda={[{ cor: "bg-cyan-500", label: "Marca de Pressuposto" }]}
@@ -2304,6 +2311,7 @@ export default function AulaInterpretacaoTexto({
 
         <TextAnalysisLab
           index={3}
+          variant={mv[7]}
           titulo="Scanner de Ameaças"
           subtitulo="Identifique por que as alternativas abaixo seriam invalidadas."
           legenda={[{ cor: "bg-red-500", label: "Contradição Direta" }]}
@@ -2593,6 +2601,7 @@ E vença esse jogo, que hoje tá bonito!`,
 
         <TextAnalysisLab
           index={2}
+          variant={mv[8]}
           titulo="Laboratório de Tom"
           subtitulo="Identifique se o autor está sendo irônico, sério ou apenas relatando."
           legenda={[{ cor: "bg-blue-500", label: "Marca de Intencionalidade" }]}
@@ -2853,6 +2862,7 @@ E mostre pro mundo sua superação!`,
 
         <TextAnalysisLab
           index={2}
+          variant={mv[9]}
           titulo="Scanner de Sinônimos"
           subtitulo="Mapeie as trocas permitidas pela banca."
           legenda={[{ cor: "bg-blue-500", label: "Equivalência Semântica" }]}
