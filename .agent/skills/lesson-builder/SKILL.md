@@ -29,9 +29,18 @@ Use este prompt como TEMPLATE para gerar qualquer aula com elementos HTML intera
 
 ## 📋 INSTRUÇÕES DE USO
 
-1. Copie o conteúdo da seção "PROMPT MASTER V2.0" abaixo.
+### Para Aulas Novas (Do Zero):
+1. Copie o conteúdo da seção "PROMPT MASTER V2.1" abaixo.
 2. Substitua os campos entre colchetes (ex: [INSERIR TEMA]).
 3. Envie para o LLM (Claude/GPT-4) para gerar o código da aula.
+
+### 🛠️ PROTOCOLO DE VISTORIA E REFATORAÇÃO DE AULAS EXISTENTES
+Ao instruir uma Inteligência Artificial a refatorar ou realizar a vistoria de uma aula legada (ex: `AulaCrase.tsx`), utilize **obrigatoriamente** as regras abaixo para evitar perda de dados e estouro de limite de contexto (tokens):
+
+1. **Atuação Chunked ("Trabalho Folgado"):** NUNCA peça a refatoração da aula inteira de uma vez em um único prompt. O correto é dividir o escopo. Exemplo: *"Faça a vistoria e refatoração estrita do Módulo 1 e Módulo 2"*. Assim, asseguramos densidade e não perdemos informação.
+2. **Reescrita Focada (Targeted Rewrite):** O agente DEVE reescrever proativamente o conteúdo legado (especialmente os `FlipCard` e `ContentAccordion`) que se mostrar raso ou defasado, injetando o Padrão Bechara. O texto antigo servirá apenas como base direcional para o tópico, mas a qualidade final é que domina.
+3. **Padronização dos Quizzes (Estrita):** Todos os simulados (`QuizInterativo`) que tiverem a estruturação antiga devem ser homogeneizados para o novo modelo de enunciado, onde os termos a serem analisados são obrigatoriamente destacados em **negrito com duplos asteriscos**.
+4. **Lock Lógico (Safekeeping):** Componentes estritamente funcionais ou de controle de state (`TabsContent`, as lógicas de callback, `StickyModuleNav`) NÃO DEVEM ser tocados ao se fazer um enriquecimento visual/pedagógico. O frontend não pode "quebrar".
 
 ---
 
