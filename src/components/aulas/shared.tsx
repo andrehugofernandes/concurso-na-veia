@@ -65,6 +65,7 @@ import {
   LuSearch,
   LuShieldAlert,
   LuBrain,
+  LuCpu,
 } from "react-icons/lu";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -2713,12 +2714,12 @@ export function StickyModuleNav({
                     ? "top-16"
                     : "top-20"
                   : "top-0",
-                "shadow-md border-b border-b-primary/20 flex items-center shrink-0",
+                "shadow-md border-b border-b-primary/20 flex flex-col items-center shrink-0",
                 "bg-background/90 dark:bg-slate-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-background/70",
-                "h-16 md:h-20",
+                "min-h-[64px] md:min-h-[80px]",
               )
             : cn(
-                "w-full py-4 rounded-2xl border border-border/50 shadow-sm backdrop-blur",
+                "w-full py-4 rounded-2xl border border-border/50 shadow-sm backdrop-blur relative",
                 "bg-background/95 dark:bg-slate-900/95",
               ),
         )}
@@ -2972,55 +2973,58 @@ export function StickyModuleNav({
               </button>
             </div>
           </div>
+
+          {/* ── Home + Toggle mobile row — 50% abaixo da barra ──
+              Não pinned: ambos juntos e centralizados (justify-center gap-3).
+              Pinned: Home desliza para esquerda, Toggle para direita (justify-between). */}
+          <motion.div
+            layout
+            transition={{ type: "spring", stiffness: 380, damping: 30 }}
+            className={cn(
+              "md:hidden flex items-center px-3 transition-all duration-300 w-full",
+              isStickyNavPinned
+                ? "absolute top-full justify-between mt-2"
+                : "justify-center gap-3 mt-4",
+            )}
+          >
+            {/* Botão Home */}
+            <motion.div
+              layout
+              transition={{ type: "spring", stiffness: 380, damping: 30 }}
+            >
+              {homeHref && (
+                <Link
+                  href={homeHref}
+                  aria-label="Voltar às Aulas"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <LuHouse className="w-4 h-4" />
+                </Link>
+              )}
+            </motion.div>
+
+            {/* Botão Toggle */}
+            <motion.button
+              layout
+              transition={{ type: "spring", stiffness: 380, damping: 30 }}
+              onClick={toggleHeader}
+              aria-label={
+                isTemporaryHeaderVisible
+                  ? "Ocultar cabeçalho"
+                  : "Mostrar cabeçalho"
+              }
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0"
+            >
+              <LuMenu
+                className={cn(
+                  "w-4 h-4 transition-transform duration-300",
+                  isTemporaryHeaderVisible ? "rotate-90" : "rotate-0",
+                )}
+              />
+            </motion.button>
+          </motion.div>
         </div>
       </div>
-
-      {/* ── Home + Toggle mobile row — 50% abaixo da barra ──
-          Não pinned: ambos juntos e centralizados (justify-center gap-3).
-          Pinned: Home desliza para esquerda, Toggle para direita (justify-between). */}
-      <motion.div
-        layout
-        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-        className={cn(
-          "md:hidden flex items-center px-3 transition-all duration-300",
-          isStickyNavPinned && isTemporaryHeaderVisible ? "mt-2" : "-mt-5",
-          isStickyNavPinned ? "justify-between" : "justify-center gap-3",
-        )}
-      >
-        {/* Botão Home */}
-        <motion.div
-          layout
-          transition={{ type: "spring", stiffness: 380, damping: 30 }}
-        >
-          {homeHref && (
-            <Link
-              href={homeHref}
-              aria-label="Voltar às Aulas"
-              className="mt-2 w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <LuHouse className="w-4 h-4" />
-            </Link>
-          )}
-        </motion.div>
-
-        {/* Botão Toggle */}
-        <motion.button
-          layout
-          transition={{ type: "spring", stiffness: 380, damping: 30 }}
-          onClick={toggleHeader}
-          aria-label={
-            isTemporaryHeaderVisible ? "Ocultar cabeçalho" : "Mostrar cabeçalho"
-          }
-          className="mt-2 w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0"
-        >
-          <LuMenu
-            className={cn(
-              "w-4 h-4 transition-transform duration-300",
-              isTemporaryHeaderVisible ? "rotate-90" : "rotate-0",
-            )}
-          />
-        </motion.button>
-      </motion.div>
     </div>
   );
 }
@@ -3266,6 +3270,75 @@ export function ModuleConsolidation({
           },
         ]}
       />
+    </section>
+  );
+}
+
+/**
+ * Componente de Laboratório de Análise de Texto
+ * Utiliza o ModuleSectionHeader padrão para consistência visual.
+ */
+export function TextAnalysisLab({
+  index,
+  titulo = "Laboratório de Aplicação Prática",
+  subtitulo = "Veja a técnica em ação no texto base.",
+  texto,
+  legenda,
+  variant = "indigo",
+}: {
+  index: number | string;
+  titulo?: string;
+  subtitulo?: string;
+  texto: React.ReactNode;
+  legenda: { cor: string; label: string }[];
+  variant?: any;
+}) {
+  return (
+    <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10 my-12">
+      <ModuleSectionHeader
+        index={index}
+        title={titulo}
+        description={subtitulo}
+        variant={variant}
+      />
+
+      <div className="relative space-y-8">
+        {/* Legenda moved here since it was in the old header */}
+        {legenda && legenda.length > 0 && (
+          <div className="flex flex-wrap gap-3 pb-6 border-b border-border/50">
+            {legenda.map((item, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm transition-all hover:bg-muted/50"
+              >
+                <div
+                  className={cn("w-3 h-3 rounded-full shadow-sm", item.cor)}
+                />
+                <span className="text-sm md:text-base font-bold text-slate-700 dark:text-slate-300">
+                  {item.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="bg-white/50 dark:bg-slate-900/50 rounded-2xl p-6 md:p-10 border border-slate-200 dark:border-slate-800/50 backdrop-blur-sm shadow-inner mt-6">
+          <blockquote className="text-xl md:text-2xl leading-relaxed font-serif text-slate-800 dark:text-slate-200 italic">
+            {texto}
+          </blockquote>
+        </div>
+
+        <div className="flex items-center gap-4 p-5 rounded-2xl bg-primary/5 border border-primary/10 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-700">
+          <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 shadow-inner">
+            <LuBrain className="w-6 h-6" />
+          </div>
+          <p className="text-sm md:text-lg text-slate-500 dark:text-slate-400 italic leading-relaxed">
+            "O marca-texto acima simula o 'olhar clínico' que você deve ter
+            durante a prova. Note como as informações mudam de valor dependendo
+            da sua intenção de leitura."
+          </p>
+        </div>
+      </div>
     </section>
   );
 }
