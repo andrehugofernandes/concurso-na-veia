@@ -288,51 +288,134 @@ export default function AulaInterpretacaoTexto({
             defaultOpen={false}
             slides={[
               {
-                titulo: "A Unidade de Sentido",
+                titulo: "A Unidade Sociocomunicativa (Bechara)",
                 icone: "🔍",
                 conteudo: (
                   <div className="space-y-4 text-muted-foreground">
-                    <p>
-                      Bechara ensina que o texto é uma{" "}
-                      <em>unidade sociocomunicativa</em>. Isso significa que
-                      cada palavra foi escolhida para um fim específico.
+                    <p className="text-sm md:text-base leading-relaxed">
+                      Para Evanildo Bechara, o texto não é um amontoado casual
+                      de frases, mas sim uma{" "}
+                      <strong>unidade sociocomunicativa</strong> elaborada com
+                      um propósito muito bem delimitado. Isso significa que a
+                      escolha de cada vocábulo, conjunção ou pontuação obedece a
+                      uma intenção do autor perante seu leitor.
                     </p>
-                    <p className="p-4 bg-muted/40 rounded-xl border-l-4 border-primary italic">
-                      "Não analisamos frases soltas; analisamos a função que
-                      aquela frase exerce no argumento global do autor."
+                    <p className="text-sm md:text-base leading-relaxed">
+                      A banca CESGRANRIO explora esse princípio exigindo do
+                      candidato a capacidade de enxergar além da palavra
+                      isolada. Não se analisa um advérbio ou pronome fora de seu
+                      ecossistema. É preciso apreender o valor
+                      semântico-discursivo global: por que o texto foi escrito?
+                      Qual a tese central?
                     </p>
+                    <div className="p-5 bg-muted/40 rounded-xl border-l-4 border-amber-500 italic mt-6">
+                      <p className="text-sm md:text-base text-foreground font-medium">
+                        "Não analisamos frases soltas; analisamos a função
+                        pragmática que aquela estrutura gramatical exerce na
+                        sustentação do argumento global do autor."
+                      </p>
+                    </div>
                   </div>
                 ),
               },
               {
-                titulo: "Referenciação e Dêixis",
+                titulo: "O Jogo da Referenciação e Dêixis",
                 icone: "🔗",
                 conteudo: (
-                  <div className="space-y-4">
-                    <p className="text-lg">
-                      Para compreender, você deve dominar quem é quem no texto.
-                      O "Ele" retoma o "Presidente" ou a "Comunicação"?
+                  <div className="space-y-5">
+                    <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                      Dominar a referenciação é a chave mestra da Interpretação
+                      de Elite. Os pronomes e expressões dêiticas são os
+                      "grampos" que seguram o tecido do texto. Quando o autor
+                      cita um elemento e depois o retoma com "isso", "aquele" ou
+                      "o qual", ele cria uma teia coesiva que a banca testará
+                      impiedosamente.
                     </p>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/10">
-                        <span className="font-bold text-lg block mb-1">
-                          Anáfora
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                      <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
+                        <span className="font-bold text-blue-600 dark:text-blue-400 block mb-2 uppercase tracking-wider text-sm">
+                          Anáfora (Resgate)
                         </span>
-                        <p className="text-[10px]">
-                          Retoma o que passou. (Segurança é vital.{" "}
-                          <strong>Ela</strong> previne acidentes.)
+                        <p className="text-sm leading-relaxed text-muted-foreground">
+                          O elemento anafórico olha para o{" "}
+                          <strong>passado</strong> do texto. Ele retoma uma
+                          palavra ou ideia já apresentada para evitar repetição
+                          massante e manter a fluidez lógica.
+                          <br />
+                          <br />
+                          <em className="text-foreground">
+                            Ex: "A segurança é inegociável na indústria.{" "}
+                            <strong>Ela</strong> previne tragédias
+                            irreversíveis."
+                          </em>
+                          <br />
+                          <span className="text-xs opacity-70">
+                            (Neste caso, 'Ela' ancora-se sintaticamente em
+                            'segurança').
+                          </span>
                         </p>
                       </div>
-                      <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/10">
-                        <span className="font-bold text-lg block mb-1">
-                          Catáfora
+                      <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
+                        <span className="font-bold text-emerald-600 dark:text-emerald-400 block mb-2 uppercase tracking-wider text-sm">
+                          Catáfora (Antecipação)
                         </span>
-                        <p className="text-[10px]">
-                          Antecipa o que virá. (O plano é <strong>este</strong>:
-                          investir no pré-sal.)
+                        <p className="text-sm leading-relaxed text-muted-foreground">
+                          O elemento catafórico atua como um holofote que
+                          ilumina o <strong>futuro</strong> do texto. Ele
+                          anuncia uma informação que o autor ainda vai entregar,
+                          gerando expectativa discursiva.
+                          <br />
+                          <br />
+                          <em className="text-foreground">
+                            Ex: "O plano diretor é <strong>este</strong>:
+                            prospecção imediata no pré-sal."
+                          </em>
+                          <br />
+                          <span className="text-xs opacity-70">
+                            (O pronome 'este' atua cataforicamente apontando
+                            para frente).
+                          </span>
                         </p>
                       </div>
                     </div>
+                  </div>
+                ),
+              },
+              {
+                titulo: "Compreensão (Explícito) vs Interpretação (Implícito)",
+                icone: "⚖️",
+                conteudo: (
+                  <div className="space-y-4 text-muted-foreground">
+                    <p className="text-sm md:text-base leading-relaxed">
+                      Saber mapear fronteiras é vital. Errar ao diferenciar o
+                      que está escrito do que se pode deduzir logicamente é a
+                      armadilha preferida da CESGRANRIO.
+                    </p>
+                    <ul className="space-y-4 mt-4 list-none pl-0">
+                      <li className="flex gap-3 items-start">
+                        <div className="w-2 h-2 rounded-full bg-blue-500 mt-2 shrink-0"></div>
+                        <p className="text-sm md:text-base">
+                          <strong>Compreensão Textual:</strong> Trabalha com a
+                          fotografia exata do texto. Responde a comandos como:{" "}
+                          <em>"O autor informa que..."</em>,{" "}
+                          <em>"Segundo o texto..."</em>. Tudo deve ser provado
+                          materialmente localizando o trecho (fatos
+                          decodificáveis diretamente).
+                        </p>
+                      </li>
+                      <li className="flex gap-3 items-start">
+                        <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2 shrink-0"></div>
+                        <p className="text-sm md:text-base">
+                          <strong>Interpretação Textual:</strong> Opera no campo
+                          da inferência lógica e dos pressupostos. Responde a:{" "}
+                          <em>"Conclui-se que..."</em>,{" "}
+                          <em>"Infere-se que..."</em>. Aqui, o texto é o ponto
+                          de partida material que autoriza deduções seguras, sem
+                          que você extrapole sua bagagem pessoal (Validação via
+                          C.E.D.E.).
+                        </p>
+                      </li>
+                    </ul>
                   </div>
                 ),
               },
@@ -351,14 +434,17 @@ export default function AulaInterpretacaoTexto({
             { cor: "bg-emerald-400", label: "Pista Implícita (Interpretação)" },
           ]}
           texto={
-            <div className="space-y-4">
+            <div className="space-y-4 text-base md:text-lg leading-relaxed">
               <p>
                 "A paralisia do setor de manutenção em 2023{" "}
                 <span className="bg-blue-400/30 dark:bg-blue-400/20 px-1 rounded ring-1 ring-blue-400/50">
                   não decorreu de falta de verba
                 </span>
                 , mas de uma{" "}
-                <span className="bg-emerald-400/30 dark:bg-emerald-400/20 px-1 rounded ring-1 ring-emerald-400/50">
+                <span
+                  className="bg-emerald-400/30 dark:bg-emerald-400/20 px-1 rounded ring-1 ring-emerald-400/50 hover:bg-emerald-400/40 transition-colors cursor-help"
+                  title="Inferência Lícita de Má Gestão"
+                >
                   crise de gestão logística sem precedentes
                 </span>
                 . Embora as peças estivessem estocadas, o fluxo de distribuição
@@ -376,51 +462,79 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={3}
             title="Laboratório de Gabarito: Certo vs Errado"
-            description="Teste sua percepção antes do quiz final do módulo."
+            description="Teste sua percepção crítica nas armadilhas comuns da CESGRANRIO."
             variant={mv[1]}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuBookOpen className="w-10 h-10 text-blue-500 opacity-50" />
-                  <span className="text-xl font-black uppercase text-center">
-                    O Texto conclui que parou por falta de verba?
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-red-500/10 rounded-full shadow-inner">
+                    <LuShieldAlert className="w-12 h-12 text-red-500 animate-pulse-slow" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    ALERTA: Falsa Conclusão Financeira?
+                  </span>
+                  <span className="text-sm text-red-500/80 font-medium">
+                    A culpa foi da verba?
                   </span>
                 </div>
               }
               verso={
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-red-500 font-bold border-b border-white/10 pb-2">
-                    <LuShieldAlert /> <span>FALSO (CONTRADIÇÃO)</span>
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-red-500 font-bold border-b border-red-500/10 pb-3">
+                    <LuShieldAlert className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-sm">
+                      Falso (Contradição Direta)
+                    </span>
                   </div>
-                  <p className="text-lg">
-                    O texto afirma explicitamente que "não decorreu de falta de
-                    verba". A banca tenta te induzir ao erro técnico externo.
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    O texto afirma taxativamente que a paralisia{" "}
+                    <strong>"não decorreu de falta de verba"</strong>.
+                  </p>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Bancas gostam de explorar nosso "senso comum" (crise = falta
+                    de dinheiro) para induzir a erro. Ao fazer a prova, não
+                    julgue a empresa com sua bagagem existencial. Julgue-a
+                    estritamente pelos limites do léxico ali escrito.
                   </p>
                 </div>
               }
-              categoria="Armadilhas de Prova"
+              categoria="Armadilhas Frequentes"
             />
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuTarget className="w-10 h-10 text-emerald-500 opacity-50" />
-                  <span className="text-xl font-black uppercase text-center">
-                    Gestão interna foi o principal gargalo?
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-emerald-500/10 rounded-full shadow-inner ring-1 ring-emerald-500/20">
+                    <LuTarget className="w-12 h-12 text-emerald-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    O Gargalo foi 100% Interno e Humano?
+                  </span>
+                  <span className="text-sm text-emerald-500/80 font-medium">
+                    Lógica e Dedução
                   </span>
                 </div>
               }
               verso={
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-white/10 pb-2">
-                    <LuCheck /> <span>VERDADEIRO (INFERÊNCIA)</span>
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-sm">
+                      Verdadeiro (Inferência Lícita)
+                    </span>
                   </div>
-                  <p className="text-lg">
-                    A expressão "crise de gestão logística" sustenta essa
-                    interpretação como causa raiz. Resposta autorizada pelo
-                    texto.
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Ao contrastar que a falha ocorreu devido a uma "crise de
+                    gestão logística" enquanto as "peças já estivessem
+                    estocadas", o autor circunscreve o gargalo.
+                  </p>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Mesmo sem usar explicitamente a palavra "humano", deduzir
+                    isso é uma inferência corretíssima (Dedução com Lastro),
+                    pois falha logística com estoques cheios só pode culminar
+                    nas engrenagens operacionais (gestão de processos).
                   </p>
                 </div>
               }
@@ -486,7 +600,7 @@ export default function AulaInterpretacaoTexto({
                     <p className="text-lg text-muted-foreground italic">
                       "O autor afirma que..."
                     </p>
-                    <p className="text-[10px] mt-2 font-medium text-emerald-700 dark:text-emerald-300">
+                    <p className="text-sm mt-2 font-medium text-emerald-700 dark:text-emerald-300">
                       BUSCA: Copia e cola / Paráfrase. ✅
                     </p>
                   </div>
@@ -497,7 +611,7 @@ export default function AulaInterpretacaoTexto({
                     <p className="text-lg text-muted-foreground italic">
                       "Infere-se que..."
                     </p>
-                    <p className="text-[10px] mt-2 font-medium text-blue-700 dark:text-blue-300">
+                    <p className="text-sm mt-2 font-medium text-blue-700 dark:text-blue-300">
                       BUSCA: Conclusão lógica autorizada. ✅
                     </p>
                   </div>
@@ -622,16 +736,31 @@ export default function AulaInterpretacaoTexto({
                 titulo: "1. Declaração Inicial (O Padrão Ouro)",
                 icone: "📌",
                 conteudo: (
-                  <div className="space-y-3 text-lg text-muted-foreground">
-                    <p>
-                      O autor faz uma afirmação categórica logo no início e
-                      passa o resto do parágrafo provando-a.
+                  <div className="space-y-4 text-muted-foreground">
+                    <p className="text-sm md:text-base leading-relaxed">
+                      Neste método, o autor apresenta uma afirmação categórica,
+                      direta e inquestionável logo na primeira ou segunda linha
+                      do parágrafo. É uma tese em miniatura. O restante do
+                      parágrafo existirá unicamente para comprovar, ilustrar ou
+                      destrinchar aquela declaração inicial.
                     </p>
-                    <p className="p-3 bg-muted rounded-lg border-l-2 border-emerald-500">
-                      "A transição para o hidrogênio verde exige infraestrutura
-                      robusta." (Tópico Frasal) &rarr; Seguido de dados sobre
-                      usinas e dutos.
+                    <p className="text-sm md:text-base leading-relaxed">
+                      Estrategicamente, esse é o "Padrão Ouro" da leitura
+                      instrumental. Quando se deparar com ele, você pode ler a
+                      primeira frase e literalmente acelerar ou pular o resto do
+                      parágrafo se estiver apenas buscando a estrutura
+                      hierárquica do texto na primeira leitura de reconhecimento
+                      ("Scanning").
                     </p>
+                    <div className="p-4 bg-muted/40 rounded-xl border-l-2 border-emerald-500 italic mt-2 text-sm md:text-base text-foreground/90">
+                      <strong>Exemplo prático:</strong> "A transição para o
+                      hidrogênio verde exige maciça infraestrutura prévia."{" "}
+                      <br />
+                      <span className="text-xs text-muted-foreground uppercase tracking-widest mt-1 block">
+                        (Fim da leitura essencial. Daqui pra frente são adereços
+                        de sustentação).
+                      </span>
+                    </div>
                   </div>
                 ),
               },
@@ -639,21 +768,43 @@ export default function AulaInterpretacaoTexto({
                 titulo: "2. Definição (O Padrão Didático)",
                 icone: "📖",
                 conteudo: (
-                  <p className="text-lg text-muted-foreground">
-                    O parágrafo começa definindo um termo técnico ou conceito.
-                    Comum em manuais de operação e normas de segurança
-                    (EPI/EPC).
-                  </p>
+                  <div className="space-y-4 text-muted-foreground">
+                    <p className="text-sm md:text-base leading-relaxed">
+                      O parágrafo se abre com o intuito primordial de conceituar
+                      um termo técnico, um objeto, um processo ou uma situação.
+                      É o formato clássico que permeia a tipologia descritiva ou
+                      expositiva de manuais rigorosos.
+                    </p>
+                    <p className="text-sm md:text-base leading-relaxed">
+                      <strong>Atenção da Banca:</strong> A CESGRANRIO gosta de
+                      usar definições extensas para confundir a tipologia
+                      textual. Um texto pode iniciar com uma rica definição mas
+                      sua essência final ser injuntiva (ditando ordens
+                      operacionais ligadas a essa definição).
+                    </p>
+                  </div>
                 ),
               },
               {
-                titulo: "3. Contraste (O Padrão Argumentativo)",
+                titulo: "3. Contraste (O Padrão Argumentativo Dialético)",
                 icone: "⚖️",
                 conteudo: (
-                  <p className="text-lg text-muted-foreground">
-                    O foco é a oposição entre dois fatos. "Enquanto o custo de
-                    extração sobe, a eficiência das bombas compensa o impacto."
-                  </p>
+                  <div className="space-y-4 text-muted-foreground">
+                    <p className="text-sm md:text-base leading-relaxed">
+                      Aqui o autor ancora a ideia central num dramático embate
+                      de forças semânticas. O Tópico Frasal traz, de imediato,
+                      duas pontas de uma contradição irresolvível ou de uma
+                      potente relação de quebra de expectativa lógica.
+                    </p>
+                    <p className="text-sm md:text-base leading-relaxed">
+                      Em vez de afirmar linearmente que algo "subiu", ele
+                      arquiteta: "Embora o risco geológico seja astronômico, a
+                      recompensa do bloco justifica a perfuração preliminar".
+                      Essa estrutura dialética obrigatoriamente exigirá
+                      Conjunções Adversativas ou Concessivas fincadas já na
+                      fundação do parágrafo.
+                    </p>
+                  </div>
                 ),
               },
             ]}
@@ -700,22 +851,38 @@ export default function AulaInterpretacaoTexto({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuSearch className="w-10 h-10 text-emerald-500 opacity-50" />
-                  <span className="text-xl font-black uppercase text-center">
-                    O tópico frasal está sempre na primeira frase?
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-emerald-500/10 rounded-full shadow-inner ring-1 ring-emerald-500/20">
+                    <LuSearch className="w-12 h-12 text-emerald-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Tópico Frasal: Sempre na cabeça?
+                  </span>
+                  <span className="text-sm text-emerald-500/80 font-medium">
+                    A primeira regra da localização
                   </span>
                 </div>
               }
               verso={
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-white/10 pb-2">
-                    <LuCheck /> <span>PREDOMINANTEMENTE SIM</span>
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-sm">
+                      Predominantemente SIM
+                    </span>
                   </div>
-                  <p className="text-lg">
-                    Em textos técnicos da Petrobras, a eficácia manda. A ideia
-                    principal abre o parágrafo (Ponto de Impacto) para facilitar
-                    a decodificação rápida.
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Em textos de natureza técnica, burocrática e gerencial
+                    (estilo purista cobrado pela CESGRANRIO em concursos para
+                    estatal), a premissa de eficácia é mandatória.
+                  </p>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    O <strong>Ponto de Impacto</strong> semântico reside
+                    brutalmente na abertura estrutural. O autor condensa a tese
+                    global no exato início literário visando afiançar que o
+                    leitor extrairá a essência primária de imediato, mitigando o
+                    ruído cognitivo proveniente do excesso de dados estatísticos
+                    subsequentes.
                   </p>
                 </div>
               }
@@ -723,26 +890,42 @@ export default function AulaInterpretacaoTexto({
             />
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuTriangleAlert className="w-10 h-10 text-red-500 opacity-50" />
-                  <span className="text-xl font-black uppercase text-center">
-                    Todo parágrafo TEM um Tópico Frasal explícito?
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-amber-500/10 rounded-full shadow-inner ring-1 ring-amber-500/20">
+                    <LuTriangleAlert className="w-12 h-12 text-amber-500 animate-pulse-slow" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Tem tópico implícito?
+                  </span>
+                  <span className="text-sm text-amber-500/80 font-medium">
+                    Parágrafos sem centro claro
                   </span>
                 </div>
               }
               verso={
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-red-500 font-bold border-b border-white/10 pb-2">
-                    <LuShieldAlert /> <span>NÃO OBRIGATORIAMENTE</span>
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
+                    <LuShieldAlert className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-sm">
+                      SIM (Diluído Oculto)
+                    </span>
                   </div>
-                  <p className="text-lg">
-                    Em textos narrativos ou muito densos, a ideia central pode
-                    estar implícita na soma das partes. Requer síntese
-                    interpretativa do candidato.
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Blocos textuais consubstancialmente{" "}
+                    <strong>narrativos ou abertamente literários</strong> (como
+                    os fragmentos de crônicas às vezes usados na prova)
+                    furtam-se de estampar uma "frase-síntese governamental".
+                  </p>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Nesses cenários inóspitos de prova, a espinha dorsal
+                    discursiva não grita por você. O Tópico repousa inteiramente
+                    infuso no somatório das peças orgânicas da narrativa.
+                    Reivindica-se do candidato a capacidade letal de síntese
+                    extrativa.
                   </p>
                 </div>
               }
-              categoria="Estratégia de Prova"
+              categoria="Tática de Contingência"
             />
           </div>
         </section>
@@ -968,61 +1151,97 @@ export default function AulaInterpretacaoTexto({
                 titulo: "1. Oposição: O 'Mas' vs O 'Embora'",
                 icone: "⚖️",
                 conteudo: (
-                  <div className="space-y-4 text-lg">
-                    <p>
-                      <strong>Conceituação:</strong> A Cesgranrio ama o
-                      contraste. Adversativos (MAS, POREM) enfatizam a SEGUNDA
-                      ideia. Concessivos (EMBORA, CONQUANTO) dão peso à
-                      PRIMEIRA.
+                  <div className="space-y-4 text-muted-foreground">
+                    <p className="text-sm md:text-base leading-relaxed">
+                      <strong>Conceituação Normativa:</strong> A CESGRANRIO
+                      testa implacavelmente a sua habilidade de identificar as
+                      nuances do contraste. Conjunções{" "}
+                      <strong>Adversativas</strong> (Mas, Porém, Contudo,
+                      Todavia, Entretanto) enfatizam categoricamente a ideia na
+                      qual estão ancoradas, derrubando a força da contraparte.
+                      Conjunções <strong>Concessivas</strong> (Embora,
+                      Conquanto, Ainda que) introduzem um obstáculo válido,
+                      porém secundário, dando a vitória lógica à oração
+                      principal.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
-                      <div className="p-3 bg-amber-500/10 rounded-lg border border-amber-500/20">
-                        <p className="font-bold text-amber-600 dark:text-amber-400 mb-1">
-                          Foco no Destino (Mas):
+                      <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
+                        <p className="font-bold text-amber-600 dark:text-amber-400 mb-2 uppercase tracking-tight text-sm">
+                          Adversativa (Foco no Obstáculo):
                         </p>
-                        <p className="italic">
-                          "O pré-sal é profundo, <strong>mas</strong> a
-                          tecnologia é superior."
+                        <p className="italic text-sm md:text-base text-foreground/90">
+                          "O pré-sal é altamente promissor, <strong>mas</strong>{" "}
+                          a pressão extrema exige metalurgia caríssima."
                         </p>
+                        <ul className="mt-2 text-xs md:text-sm list-disc pl-4 space-y-1">
+                          <li>
+                            O autor vence o argumento focando na dificuldade
+                            técnica.
+                          </li>
+                          <li>Tirou o brilho da promessa.</li>
+                        </ul>
                       </div>
-                      <div className="p-3 bg-blue-500/10 rounded-lg border border-blue-500/20">
-                        <p className="font-bold text-blue-600 dark:text-blue-400 mb-1">
-                          Foco no Obstáculo (Embora):
+                      <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
+                        <p className="font-bold text-blue-600 dark:text-blue-400 mb-2 uppercase tracking-tight text-sm">
+                          Concessiva (Foco no Destino Superado):
                         </p>
-                        <p className="italic">
-                          "<strong>Embora</strong> seja profundo, o pré-sal é
-                          viável."
+                        <p className="italic text-sm md:text-base text-foreground/90">
+                          "<strong>Embora</strong> a pressão extrema exija
+                          metalurgia caríssima, o pré-sal é altamente
+                          promissor."
                         </p>
+                        <ul className="mt-2 text-xs md:text-sm list-disc pl-4 space-y-1">
+                          <li>
+                            A dificuldade existe, mas não impede o sucesso.
+                            Destacou a glória.
+                          </li>
+                        </ul>
                       </div>
                     </div>
-                    <AlertBox tipo="warning" titulo="Sinal de Alerta">
-                      <strong>Dica de Elite:</strong> "Conquanto" é o sinônimo
-                      de "Embora" que mais derruba candidatos. Decore: Conquanto
-                      = Concessiva.
-                    </AlertBox>
                   </div>
                 ),
               },
               {
-                titulo: "2. Causa vs Consequência (A Lógica do Petróleo)",
+                titulo: "2. Causa vs Consequência (A Lógica Intocável)",
                 icone: "🎯",
                 conteudo: (
-                  <div className="space-y-4 text-lg">
-                    <p>
-                      <strong>Capa de Causa:</strong> "Visto que", "Já que",
-                      "Uma vez que".
+                  <div className="space-y-4 text-muted-foreground">
+                    <p className="text-sm md:text-base leading-relaxed">
+                      Embora Causa e Efeito sejam duas faces de um mesmo evento,
+                      a CESGRANRIO pedirá que você identifique quem deflagrou o
+                      quê. O dominó que cai primeiro é a <strong>Causa</strong>.
+                      O dominó que cai em reação é a{" "}
+                      <strong>Consequência</strong>.
                     </p>
-                    <p className="p-3 bg-zinc-500/10 rounded-lg border border-zinc-500/20 font-mono">
-                      "A produção parou <u>visto que</u> houve falha no
-                      gerador."
-                    </p>
-                    <p>
-                      <strong>Capa de Consequência:</strong> "De sorte que", "De
-                      modo que", "Tão... que".
-                    </p>
-                    <p className="p-3 bg-zinc-500/10 rounded-lg border border-zinc-500/20 font-mono">
-                      "O gerador falhou <u>de modo que</u> a produção parou."
-                    </p>
+                    <div className="space-y-3">
+                      <div className="p-4 bg-slate-500/10 rounded-xl border border-slate-500/20">
+                        <p className="font-bold mb-1 text-slate-700 dark:text-slate-300 uppercase tracking-widest text-xs">
+                          Vestindo a Capa da CAUSA:
+                        </p>
+                        <p className="text-sm md:text-base opacity-90">
+                          Termos: "Visto que", "Já que", "Uma vez que",
+                          "Porquanto".
+                        </p>
+                        <p className="mt-2 italic text-sm md:text-base text-foreground/90">
+                          "A produção desabou <strong>visto que</strong> (porque
+                          - a raiz) houve corrosão no manifold."
+                        </p>
+                      </div>
+                      <div className="p-4 bg-slate-500/10 rounded-xl border border-slate-500/20">
+                        <p className="font-bold mb-1 text-slate-700 dark:text-slate-300 uppercase tracking-widest text-xs">
+                          Vestindo a Capa da CONSEQUÊNCIA:
+                        </p>
+                        <p className="text-sm md:text-base opacity-90">
+                          Termos: "De sorte que", "De modo que", "Tão (forte)
+                          ... que".
+                        </p>
+                        <p className="mt-2 italic text-sm md:text-base text-foreground/90">
+                          "A corrosão bateu nível crítico,{" "}
+                          <strong>de sorte que</strong> (gerando - o resultado)
+                          a produção desabou."
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 ),
               },
@@ -1038,48 +1257,34 @@ export default function AulaInterpretacaoTexto({
             variant={mv[3]}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuLink className="w-10 h-10 text-amber-500 opacity-50" />
-                  <span className="text-xl font-black uppercase">
+                <div className="flex flex-col items-center justify-center h-full p-4 gap-4">
+                  <div className="p-4 bg-emerald-500/10 rounded-full shadow-inner ring-1 ring-emerald-500/20">
+                    <LuLink className="w-10 h-10 text-emerald-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-widest text-foreground">
                     Porquanto
                   </span>
-                </div>
-              }
-              verso={
-                <div className="space-y-2">
-                  <p className="font-bold text-emerald-500 flex items-center gap-2">
-                    <LuCheck /> CAUSAL
-                  </p>
-                  <p className="text-lg italic">Equivale a "Porque".</p>
-                  <p className="text-[10px] bg-white/5 p-2 rounded">
-                    "A plataforma parou <strong>porquanto</strong> houve
-                    tempestade."
-                  </p>
-                </div>
-              }
-              categoria="Mestres da Coesão"
-            />
-            <FlipCard
-              frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuLink className="w-10 h-10 text-indigo-500 opacity-50" />
-                  <span className="text-xl font-black uppercase">
-                    Conquanto
+                  <span className="text-sm text-emerald-500/80 font-medium">
+                    Equação do Passado
                   </span>
                 </div>
               }
               verso={
-                <div className="space-y-2">
-                  <p className="font-bold text-emerald-500 flex items-center gap-2">
-                    <LuCheck /> CONCESSIVA
+                <div className="space-y-3 p-2 flex flex-col justify-center h-full text-left">
+                  <p className="font-bold text-emerald-500 flex items-center gap-2 border-b border-emerald-500/10 pb-2 uppercase tracking-wide text-sm">
+                    <LuCheck className="w-4 h-4" /> CAUSAL EXPLICATIVA
                   </p>
-                  <p className="text-lg italic">Equivale a "Embora".</p>
-                  <p className="text-[10px] bg-white/5 p-2 rounded">
-                    "<strong>Conquanto</strong> houvesse riscos, a missão
-                    seguiu."
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Irmão siamês formal do <strong>PORQUE</strong>. Ele introduz
+                    o motivo gerador lógico de um acontecimento. Evite travar a
+                    leitura; traduza mentalmente para "uma vez que".
+                  </p>
+                  <p className="text-sm bg-muted/40 p-3 rounded-lg border-l-2 border-emerald-500 italic mt-2 text-foreground/80">
+                    "A torre foi evacuada <strong>porquanto</strong> os sensores
+                    indicaram alta concentração de H2S."
                   </p>
                 </div>
               }
@@ -1087,20 +1292,65 @@ export default function AulaInterpretacaoTexto({
             />
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuLink className="w-10 h-10 text-emerald-500 opacity-50" />
-                  <span className="text-xl font-black uppercase">Aliás</span>
+                <div className="flex flex-col items-center justify-center h-full p-4 gap-4">
+                  <div className="p-4 bg-indigo-500/10 rounded-full shadow-inner ring-1 ring-indigo-500/20">
+                    <LuLink className="w-10 h-10 text-indigo-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-widest text-foreground">
+                    Conquanto
+                  </span>
+                  <span className="text-sm text-indigo-500/80 font-medium">
+                    A Pegadinha Suprema
+                  </span>
                 </div>
               }
               verso={
-                <div className="space-y-2">
-                  <p className="font-bold text-emerald-500 flex items-center gap-2">
-                    <LuCheck /> RETIFICAÇÃO
+                <div className="space-y-3 p-2 flex flex-col justify-center h-full text-left">
+                  <p className="font-bold text-indigo-500 flex items-center gap-2 border-b border-indigo-500/10 pb-2 uppercase tracking-wide text-sm">
+                    <LuCheck className="w-4 h-4" /> CONCESSIVA
                   </p>
-                  <p className="text-lg italic">Ajusta ou reforça o dito.</p>
-                  <p className="text-[10px] bg-white/5 p-2 rounded">
-                    "Somos eficientes; <strong>aliás</strong>, os melhores do
-                    setor."
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Sinônimo letal de <strong>EMBORA</strong>. Bancas adoram
+                    usá-lo porque a sonoridade confunde com "Portanto"
+                    (conclusiva). O conquanto sempre abre alas para uma objeção
+                    secundária superada.
+                  </p>
+                  <p className="text-sm bg-muted/40 p-3 rounded-lg border-l-2 border-indigo-500 italic mt-2 text-foreground/80">
+                    "<strong>Conquanto</strong> o barril de brent caísse de
+                    preço, o lucro local superou estimativas."
+                  </p>
+                </div>
+              }
+              categoria="Mestres da Coesão"
+            />
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center h-full p-4 gap-4">
+                  <div className="p-4 bg-amber-500/10 rounded-full shadow-inner ring-1 ring-amber-500/20">
+                    <LuLink className="w-10 h-10 text-amber-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-widest text-foreground">
+                    Aliás
+                  </span>
+                  <span className="text-sm text-amber-500/80 font-medium">
+                    Reajuste de Rotas
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="space-y-3 p-2 flex flex-col justify-center h-full text-left">
+                  <p className="font-bold text-amber-500 flex items-center gap-2 border-b border-amber-500/10 pb-2 uppercase tracking-wide text-sm">
+                    <LuCheck className="w-4 h-4" /> RETIFICAÇÃO / ACRÉSCIMO
+                  </p>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Conector avançado e coringa. Costuma ser usado para somar um
+                    peso probatório drástico na argumentação ou para retificar
+                    levemente o que foi dito, amplificando seu efeito
+                    pragmático.
+                  </p>
+                  <p className="text-sm bg-muted/40 p-3 rounded-lg border-l-2 border-amber-500 italic mt-2 text-foreground/80">
+                    "Nossos navios são os mais seguros do mar transatlântico;{" "}
+                    <strong>aliás</strong>, detemos certificação máxima global."
                   </p>
                 </div>
               }
@@ -1322,58 +1572,118 @@ export default function AulaInterpretacaoTexto({
             defaultOpen={true}
             slides={[
               {
-                titulo: "1. Dissertação-Argumentativa",
+                titulo: "1. Dissertação-Argumentativa (O Combate)",
                 icone: "🖋️",
                 conteudo: (
-                  <div className="space-y-4 text-lg">
-                    <p>
-                      <strong>Objetivo:</strong> Persuadir o leitor. O autor
-                      defende uma tese com base em argumentos lógicos.
+                  <div className="space-y-4 text-muted-foreground">
+                    <p className="text-sm md:text-base leading-relaxed">
+                      <strong>Objetivo Principal:</strong> Persuadir o leitor de
+                      uma <strong>Tese</strong>. O autor assume uma trincheira e
+                      usa os dados não para informar, mas como armas para provar
+                      seu ponto. A CESGRANRIO focará nas conjunções e na opinião
+                      camuflada (adjetivos valorativos).
                     </p>
-                    <div className="p-3 bg-indigo-500/10 rounded-lg border border-indigo-500/20 italic">
-                      "É imperativo que a Petrobras mantenha o foco no Pré-Sal,{" "}
-                      <u>dado que</u> os lucros são consistentes."
+                    <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20 shadow-sm relative overflow-hidden">
+                      <div className="absolute top-0 left-0 w-1 h-full bg-indigo-500"></div>
+                      <p className="italic text-foreground/90 text-sm md:text-base">
+                        "É <strong>imperativo</strong> que a Petrobras mantenha
+                        o monopólio estratégico do refino,{" "}
+                        <u className="decoration-indigo-500 decoration-2">
+                          dado que
+                        </u>{" "}
+                        (causa da proposta) a segurança nacional{" "}
+                        <strong>depende</strong> dessa autonomia."
+                      </p>
                     </div>
-                    <p className="text-lg text-muted-foreground">
-                      MARCAS: Subjetividade controlada, conectivos de
-                      causa/consequência, adjetivos valorativos.
-                    </p>
+                    <ul className="text-sm md:text-base space-y-2 border-t border-border pt-4 mt-2">
+                      <li className="flex gap-2 items-start">
+                        <LuCheck className="text-indigo-500 mt-1 shrink-0" />{" "}
+                        <span>
+                          <strong>Marcador Clássico:</strong> Subjetividade. A
+                          presença de um Juízo de Valor (bom, ruim, imperativo,
+                          essencial).
+                        </span>
+                      </li>
+                      <li className="flex gap-2 items-start">
+                        <LuCheck className="text-indigo-500 mt-1 shrink-0" />{" "}
+                        <span>
+                          <strong>Foco na Prova:</strong> Identificar a tese
+                          central ou o argumento principal que a sustenta.
+                        </span>
+                      </li>
+                    </ul>
                   </div>
                 ),
               },
               {
-                titulo: "2. Dissertação-Expositiva",
+                titulo: "2. Dissertação-Expositiva (O Relatório)",
                 icone: "📊",
                 conteudo: (
-                  <div className="space-y-4 text-lg">
-                    <p>
-                      <strong>Objetivo:</strong> Informar. Texto neutro,
-                      impessoal, repleto de dados estatísticos e definições
-                      técnicas.
+                  <div className="space-y-4 text-muted-foreground">
+                    <p className="text-sm md:text-base leading-relaxed">
+                      <strong>Objetivo Principal:</strong> Informar com isenção.
+                      O autor atua como um repórter técnico. Ele expõe fatos,
+                      estatísticas ou conceitos, mas{" "}
+                      <strong>não toma partido</strong>. Este é o domínio da
+                      ciência e das notícias puras.
                     </p>
-                    <div className="p-3 bg-blue-500/10 rounded-lg border border-blue-500/20 italic">
-                      "A unidade de refino opera com 95% de capacidade,
-                      processando 200 mil barris/dia."
+                    <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 shadow-sm relative overflow-hidden">
+                      <div className="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                      <p className="italic text-foreground/90 text-sm md:text-base">
+                        "A nova unidade de refino localizada na Bahia opera
+                        atualmente com <strong>95%</strong> de capacidade,
+                        processando <strong>200 mil barris/dia</strong> desde o{" "}
+                        <strong>primeiro semestre de 2023</strong>."
+                      </p>
                     </div>
-                    <p className="text-lg text-muted-foreground">
-                      MARCAS: Verbos no presente (valor atemporal), dados
-                      numéricos, ausência de opinião.
-                    </p>
+                    <ul className="text-sm md:text-base space-y-2 border-t border-border pt-4 mt-2">
+                      <li className="flex gap-2 items-start">
+                        <LuCheck className="text-blue-500 mt-1 shrink-0" />{" "}
+                        <span>
+                          <strong>Marcador Clássico:</strong> Impessoalidade
+                          total (3ª pessoa), dados matemáticos, linguagem
+                          denotativa (literal).
+                        </span>
+                      </li>
+                      <li className="flex gap-2 items-start">
+                        <LuCheck className="text-blue-500 mt-1 shrink-0" />{" "}
+                        <span>
+                          <strong>Foco na Prova:</strong> Interpretação literal
+                          e compreensão de informações precisas no texto.
+                        </span>
+                      </li>
+                    </ul>
                   </div>
                 ),
               },
               {
-                titulo: "3. Texto Injuntivo (O Comando)",
+                titulo: "3. Texto Injuntivo (A Ordem/O Manual)",
                 icone: "⚙️",
                 conteudo: (
-                  <div className="space-y-4 text-lg text-balance">
-                    <p>
-                      Aquele que orienta um comportamento. Comum em manuais de
-                      segurança e normativos da empresa.
+                  <div className="space-y-4 text-muted-foreground text-balance">
+                    <p className="text-sm md:text-base leading-relaxed">
+                      <strong>Objetivo Principal:</strong> Comandar o leitor a
+                      agir. É o texto que ensina, prescreve, regula ou doutrina.
+                      Na Petrobras, você viverá cercado de Injunção: Manuais de
+                      Operação, NRs e Procedimentos Padrão.
                     </p>
-                    <AlertBox tipo="info" titulo="O Sinal do Imperativo">
-                      Procure por verbos como: "Abra", "Verifique", "Evite", ou
-                      infinitivos com valor de ordem ("Manter a área limpa").
+                    <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20 shadow-sm relative overflow-hidden">
+                      <div className="absolute top-0 left-0 w-1 h-full bg-amber-500"></div>
+                      <p className="italic text-foreground/90 text-sm md:text-base">
+                        "<strong>Aperte</strong> a válvula vermelha e{" "}
+                        <strong>verifique</strong> a pressão. Em caso de
+                        anomalia, <strong>isolar</strong> o setor."
+                      </p>
+                    </div>
+                    <AlertBox tipo="warning" titulo="O Raio-X do Verbo">
+                      <p className="text-sm">
+                        A "alma" da Injunção é o verbo. Ele pode estar no{" "}
+                        <strong>Imperativo</strong> ("Abra", "Feche") ou
+                        ancorado no{" "}
+                        <strong>Infinitivo com força de ordem</strong> ("Manter
+                        a área limpa"). Se o texto é um manual, a tipologia é
+                        injuntiva.
+                      </p>
                     </AlertBox>
                   </div>
                 ),
@@ -1390,50 +1700,82 @@ export default function AulaInterpretacaoTexto({
             variant={mv[4]}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center max-w-4xl mx-auto">
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuNewspaper className="w-10 h-10 text-indigo-500 opacity-50" />
-                  <span className="text-xl font-black uppercase">
-                    EDITORIAL
+                <div className="flex flex-col items-center justify-center h-full p-6 gap-4">
+                  <div className="p-5 bg-indigo-500/10 rounded-full shadow-inner ring-1 ring-indigo-500/20">
+                    <LuNewspaper className="w-12 h-12 text-indigo-500" />
+                  </div>
+                  <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
+                    O Editorial
+                  </span>
+                  <span className="text-sm font-medium text-indigo-500/80">
+                    Jornais e Revistas
                   </span>
                 </div>
               }
               verso={
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-white/10 pb-2">
-                    <LuCheck /> <span>DISSERTATIVO-ARGUMENTATIVO</span>
-                  </div>
-                  <p className="text-lg">
-                    O editorial expressa a opinião do jornal. Se há opinião
-                    defendida, há argumentação.
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
+                  <p className="font-bold text-indigo-500 flex items-center gap-2 border-b border-indigo-500/10 pb-3 uppercase tracking-wide text-sm">
+                    <LuCheck className="w-5 h-5" /> DISSERTATIVO-ARGUMENTATIVO
                   </p>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    O editorial é a "voz oficial" do veículo de imprensa.
+                    Diferente de uma mera notícia reportada (expositiva), o
+                    editorial escolhe um lado do campo e ataca ou defende uma
+                    política pública.
+                  </p>
+                  <div className="bg-muted/40 p-4 rounded-xl border-l-2 border-indigo-500">
+                    <p className="text-sm font-semibold text-foreground mb-1">
+                      A Regra da Prova:
+                    </p>
+                    <p className="text-sm italic opacity-90">
+                      Ao ver a fonte "Editora X / Jornal Y (Editorial)",
+                      imediatamente cace a TESE nas primeiras linhas do texto.
+                    </p>
+                  </div>
                 </div>
               }
-              categoria="Gêneros de Prova"
+              categoria="Gêneros na Prática"
             />
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuShieldAlert className="w-10 h-10 text-red-500 opacity-50" />
-                  <span className="text-xl font-black uppercase">
-                    MANUAL TÉCNICO
+                <div className="flex flex-col items-center justify-center h-full p-6 gap-4">
+                  <div className="p-5 bg-orange-500/10 rounded-full shadow-inner ring-1 ring-orange-500/20">
+                    <LuShieldAlert className="w-12 h-12 text-orange-500" />
+                  </div>
+                  <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
+                    Manual Técnico
+                  </span>
+                  <span className="text-sm font-medium text-orange-500/80">
+                    Normas e Procedimentos
                   </span>
                 </div>
               }
               verso={
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-white/10 pb-2">
-                    <LuCheck /> <span>INJUNTIVO / EXPOSITIVO</span>
-                  </div>
-                  <p className="text-lg">
-                    Instrui o operador (Injunção) e descreve o equipamento
-                    (Exposição).
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
+                  <p className="font-bold text-orange-500 flex items-center gap-2 border-b border-orange-500/10 pb-3 uppercase tracking-wide text-sm">
+                    <LuCheck className="w-5 h-5" /> TEXTO INJUNTIVO
                   </p>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Gênero soberano em provas técnicas. Ele não quer convencer
+                    você de que a máquina é boa; ele quer obrigar você a não
+                    pular os passos de segurança previstos.
+                  </p>
+                  <div className="bg-muted/40 p-4 rounded-xl border-l-2 border-orange-500">
+                    <p className="text-sm font-semibold text-foreground mb-1">
+                      A Regra da Prova:
+                    </p>
+                    <p className="text-sm italic opacity-90">
+                      Leia sublinhando verbos imperativos. Identificar quem
+                      realiza e a quem a ordem se destina é alvo carimbado de
+                      questões.
+                    </p>
+                  </div>
                 </div>
               }
-              categoria="Gêneros de Prova"
+              categoria="Gêneros na Prática"
             />
           </div>
         </section>
@@ -1626,49 +1968,83 @@ export default function AulaInterpretacaoTexto({
             variant={mv[5]}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center max-w-4xl mx-auto mt-8">
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuBrain className="w-10 h-10 text-emerald-500 opacity-50" />
-                  <span className="text-xl font-black uppercase text-center">
-                    O que é a Subvocalização?
+                <div className="flex flex-col items-center justify-center h-full p-6 gap-4">
+                  <div className="p-5 bg-red-500/10 rounded-full shadow-inner ring-1 ring-red-500/20">
+                    <LuBrain className="w-12 h-12 text-red-500" />
+                  </div>
+                  <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
+                    Subvocalização
+                  </span>
+                  <span className="text-sm font-medium text-red-500/80">
+                    O Freio da Mente
                   </span>
                 </div>
               }
               verso={
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-red-500 font-bold border-b border-white/10 pb-2">
-                    <LuShieldAlert /> <span>VÍCIO DE LENTIDÃO</span>
-                  </div>
-                  <p className="text-lg">
-                    É o hábito de "ouvir" a voz na mente enquanto lê. Isso
-                    limita sua velocidade de leitura à velocidade da fala (150
-                    ppm). Leitura visual pura atinge 600+ ppm.
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
+                  <p className="font-bold text-red-500 flex items-center gap-2 border-b border-red-500/10 pb-3 uppercase tracking-wide text-sm">
+                    <LuShieldAlert className="w-5 h-5" /> VÍCIO DE LENTIDÃO
                   </p>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Hábito primário de "ouvir a própria voz" na mente ao ler.
+                    Esse teto neuromuscular trava a velocidade (cerca de
+                    150ppm). A leitura puramente visual salta para 600+ ppm sem
+                    perda de contexto.
+                  </p>
+                  <div className="bg-muted/40 p-4 rounded-xl border-l-2 border-red-500">
+                    <p className="text-sm font-semibold text-foreground mb-1">
+                      A Cura:
+                    </p>
+                    <p className="text-sm italic opacity-90">
+                      Evite mover os lábios (mesmo sem som). Force os olhos a
+                      saltarem por blocos de 3 a 5 palavras. Com o tempo, o
+                      nervo óptico envia a imagem que logo se converte em
+                      sentido puro.
+                    </p>
+                  </div>
                 </div>
               }
               categoria="Velocidade de Elite"
             />
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuTriangleAlert className="w-10 h-10 text-red-500 opacity-50" />
-                  <span className="text-xl font-black uppercase text-center">
-                    Por que a Regressão ocular é fatal?
+                <div className="flex flex-col items-center justify-center h-full p-6 gap-4">
+                  <div className="p-5 bg-orange-500/10 rounded-full shadow-inner ring-1 ring-orange-500/20">
+                    <LuTriangleAlert className="w-12 h-12 text-orange-500" />
+                  </div>
+                  <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
+                    Regressão Ocular
+                  </span>
+                  <span className="text-sm font-medium text-orange-500/80">
+                    A Ansiedade do Entendimento
                   </span>
                 </div>
               }
               verso={
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-red-500 font-bold border-b border-white/10 pb-2">
-                    <LuShieldAlert /> <span>DESTRUTOR DE FLUXO</span>
-                  </div>
-                  <p className="text-lg">
-                    Voltar ao início da frase porque "não entendeu" destrói a
-                    coesão mental. O cérebro entende melhor no fluxo contínuo.
-                    Confie na sua primeira leitura.
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
+                  <p className="font-bold text-orange-500 flex items-center gap-2 border-b border-orange-500/10 pb-3 uppercase tracking-wide text-sm">
+                    <LuShieldAlert className="w-5 h-5" /> DESTRUTOR DE FLUXO
                   </p>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Impulso histérico de voltar no texto por "medo de não ter
+                    entendido". Rompe o fluxo lógico de progressão. O cérebro
+                    trabalha como um quebra-cabeça, que clareia conforme mais
+                    peças chegam.
+                  </p>
+                  <div className="bg-muted/40 p-4 rounded-xl border-l-2 border-orange-500">
+                    <p className="text-sm font-semibold text-foreground mb-1">
+                      A Cura:
+                    </p>
+                    <p className="text-sm italic opacity-90">
+                      Leia com o guia visual e "empurre" os olhos
+                      implacavelmente à frente. Aceite a ambiguidade temporária.
+                      Geralmente, o sentido morava no final daquele mesmo
+                      parágrafo.
+                    </p>
+                  </div>
                 </div>
               }
               categoria="Velocidade de Elite"
@@ -1688,36 +2064,93 @@ export default function AulaInterpretacaoTexto({
 
             <ContentAccordion
               mode="stacked"
-              titulo="Níveis de Leitura para a Prova"
+              titulo="O Protocolo dos 3 Passos de Leitura"
               icone={<LuEye />}
               corIndicador="bg-violet-500"
               slides={[
                 {
-                  titulo: "1. Leitura de Reconhecimento",
+                  titulo: "1. Leitura de Reconhecimento (Skimming)",
                   icone: "🔍",
                   conteudo: (
-                    <p className="text-lg text-muted-foreground">
-                      Busca de palavras-chave. Usada após ler o enunciado.
-                    </p>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p className="text-sm md:text-base leading-relaxed">
+                        <strong>Objetivo:</strong> Mapear o terreno antes do
+                        ataque. É uma leitura a jato (30 a 60 segundos) feita
+                        imediatamente após ler o enunciado da questão.
+                      </p>
+                      <ul className="text-sm md:text-base space-y-2 border-t border-border pt-4 mt-2">
+                        <li className="flex gap-2 items-start">
+                          <LuCheck className="text-violet-500 mt-1 shrink-0" />{" "}
+                          <span>
+                            <strong>Onde focar:</strong> Título, subtítulo,
+                            primeira linha do 1º parágrafo (o tema) e a fonte do
+                            texto.
+                          </span>
+                        </li>
+                        <li className="flex gap-2 items-start">
+                          <LuCheck className="text-violet-500 mt-1 shrink-0" />{" "}
+                          <span>
+                            <strong>O que ignorar:</strong> Todos os detalhes,
+                            exemplos e conjunções do miolo do texto.
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
                   ),
                 },
                 {
-                  titulo: "2. Leitura de Compreensão",
+                  titulo: "2. Leitura de Compreensão Global",
                   icone: "📘",
                   conteudo: (
-                    <p className="text-lg text-muted-foreground">
-                      Para entender a lógica dos parágrafos e a tese do autor.
-                    </p>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p className="text-sm md:text-base leading-relaxed">
+                        <strong>Objetivo:</strong> Rastrear a "Cadeia de Tópicos
+                        Frasais". Você lê para entender a tese e os argumentos
+                        macro, mantendo um ritmo constante de progressão visual.
+                      </p>
+                      <ul className="text-sm md:text-base space-y-2 border-t border-border pt-4 mt-2">
+                        <li className="flex gap-2 items-start">
+                          <LuCheck className="text-violet-500 mt-1 shrink-0" />{" "}
+                          <span>
+                            <strong>Onde focar:</strong> Nas primeiras e últimas
+                            frases de cada parágrafo (onde moram as conclusões
+                            parciais).
+                          </span>
+                        </li>
+                        <li className="flex gap-2 items-start">
+                          <LuCheck className="text-violet-500 mt-1 shrink-0" />{" "}
+                          <span>
+                            <strong>Ponto Crítico:</strong> Bloquear totalmente
+                            a regressão ocular. Não entendeu uma palavra?
+                            Avance! Pelo contexto, o sentido se fechará adiante.
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
                   ),
                 },
                 {
-                  titulo: "3. Leitura Analítica",
+                  titulo: "3. Leitura Analítica (Microscópica)",
                   icone: "⚖️",
                   conteudo: (
-                    <p className="text-lg text-muted-foreground">
-                      Focada em um único período para identificar pegadinhas de
-                      negação ou restrição.
-                    </p>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p className="text-sm md:text-base leading-relaxed">
+                        <strong>Objetivo:</strong> O tiro de precisão
+                        ("Scanning"). Executada somente no parágrafo ou linha
+                        exata exigida pelo enunciado para validar uma premissa.
+                      </p>
+                      <ul className="text-sm md:text-base space-y-2 border-t border-border pt-4 mt-2">
+                        <li className="flex gap-2 items-start">
+                          <LuCheck className="text-violet-500 mt-1 shrink-0" />{" "}
+                          <span>
+                            <strong>Onde focar:</strong> Palavras de Restrição
+                            (somente, apenas, nunca, sempre) e Conectivos
+                            Lógicos (mas, porque, portanto) que podem inverter o
+                            jogo.
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
                   ),
                 },
               ]}
@@ -1926,68 +2359,72 @@ export default function AulaInterpretacaoTexto({
             variant={mv[6]}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center max-w-4xl mx-auto mt-8">
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-4">
-                  <LuSearch className="w-12 h-12 text-primary opacity-50" />
-                  <div className="text-center">
-                    <h6 className="text-xl font-bold uppercase">Pressuposto</h6>
-                    <p className="text-lg font-medium opacity-80">
-                      O que o texto "paga" para ser verdade.
-                    </p>
+                <div className="flex flex-col items-center justify-center h-full p-6 gap-4">
+                  <div className="p-5 bg-cyan-500/10 rounded-full shadow-inner ring-1 ring-cyan-500/20">
+                    <LuSearch className="w-12 h-12 text-cyan-500" />
                   </div>
+                  <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
+                    Pressuposto
+                  </span>
+                  <span className="text-sm font-medium text-cyan-500/80">
+                    A Matemática do Texto
+                  </span>
                 </div>
               }
               verso={
-                <div className="space-y-4">
-                  <p className="text-lg leading-relaxed text-zinc-100">
-                    Informação que o texto não diz explicitamente, mas que é
-                    **logicamente obrigatória** para o sentido da frase. Se você
-                    negar o pressuposto, a frase perde o sentido.
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
+                  <p className="font-bold text-cyan-500 flex items-center gap-2 border-b border-cyan-500/10 pb-3 uppercase tracking-wide text-sm">
+                    <LuCheck className="w-5 h-5" /> DEDUÇÃO OBRIGATÓRIA
                   </p>
-                  <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-lg text-primary font-bold">
-                    Dica de Elite: Procure por verbos como 'deixar de',
-                    'continuar' ou advérbios como 'ainda' e 'já'.
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Informação que o texto não diz com todas as letras, mas que
+                    é <strong>logicamente blindada</strong> pela gramática
+                    (verbos e advérbios). Negá-la destrói o sentido original.
+                  </p>
+                  <div className="bg-muted/40 p-4 rounded-xl border-l-2 border-cyan-500">
+                    <p className="text-sm italic opacity-90">
+                      "O vazamento na P-53 <strong>voltou</strong> a preocupar."{" "}
+                      <br />→ Pressuposto cravado: Antes já havia preocupado.
+                    </p>
                   </div>
-                  <p className="text-lg italic text-zinc-400">
-                    Ex: "O refino **voltou** a crescer" pressupõe que ele não
-                    crescia antes.
-                  </p>
                 </div>
               }
               categoria="As Entrelinhas"
             />
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-4">
-                  <LuFileCheck className="w-12 h-12 text-primary opacity-50" />
-                  <div className="text-center">
-                    <h6 className="text-xl font-bold uppercase">
-                      Subentendido
-                    </h6>
-                    <p className="text-lg font-medium opacity-80">
-                      A insinuação que pode ser negada.
-                    </p>
+                <div className="flex flex-col items-center justify-center h-full p-6 gap-4">
+                  <div className="p-5 bg-teal-500/10 rounded-full shadow-inner ring-1 ring-teal-500/20">
+                    <LuFileCheck className="w-12 h-12 text-teal-500" />
                   </div>
+                  <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
+                    Subentendido
+                  </span>
+                  <span className="text-sm font-medium text-teal-500/80">
+                    O Perigo da Insinuação
+                  </span>
                 </div>
               }
               verso={
-                <div className="space-y-4">
-                  <p className="text-lg leading-relaxed text-zinc-100">
-                    Dedução que depende totalmente do **contexto** e da
-                    interpretação do leitor. O autor pode negar a intenção se
-                    for confrontado, pois não há marca gramatical blindada.
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
+                  <p className="font-bold text-teal-500 flex items-center gap-2 border-b border-teal-500/10 pb-3 uppercase tracking-wide text-sm">
+                    <LuShieldAlert className="w-5 h-5" /> DEDUÇÃO PROVÁVEL
                   </p>
-                  <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-lg text-primary font-bold">
-                    Cuidado Cesgranrio: Insinuações são 'perigosas' em
-                    interpretação técnica. Responda apenas o que o texto
-                    autoriza.
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Insinuação que depende exclusivamente do contexto. Como não
+                    possui "trava" gramatical, o autor pode negar. Bancas
+                    utilizam para induzir a quebra de foco.
+                  </p>
+                  <div className="bg-muted/40 p-4 rounded-xl border-l-2 border-teal-500">
+                    <p className="text-sm italic opacity-90">
+                      A CESGRANRIO usa subentendidos gritantes nas alternativas
+                      A e B. Eles parecem fazer sentido na via lógica, mas sem a
+                      prova material, ignore-os. Recuse a "criatividade".
+                    </p>
                   </div>
-                  <p className="text-lg italic text-zinc-400">
-                    Ex: "O ar-condicionado está desligado?" subentende um pedido
-                    para ligar.
-                  </p>
                 </div>
               }
               categoria="As Entrelinhas"
@@ -1997,27 +2434,32 @@ export default function AulaInterpretacaoTexto({
             <h4 className="text-xl font-bold text-cyan-600 flex items-center gap-2">
               <LuSearch className="w-5 h-5" /> Gatilhos de Inferência
             </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="p-4 bg-cyan-50 dark:bg-cyan-900/20 rounded-xl border border-cyan-200 dark:border-cyan-800">
-                <span className="font-bold block mb-1">Verbos de Mudança</span>
-                <p className="text-[10px] text-muted-foreground">
-                  'Parou de' implica que antes fazia.
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="p-5 bg-cyan-50 dark:bg-cyan-950/30 rounded-xl border border-cyan-200 dark:border-cyan-800 shadow-sm transition hover:shadow-md">
+                <span className="font-extrabold text-cyan-700 dark:text-cyan-400 block mb-2 uppercase tracking-wide text-xs">
+                  Verbos Mutadores
+                </span>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  Marcadores como 'parou', 'voltou', 'deixou de', 'passou a'.
+                  Eles amarram passado e presente indissociavelmente.
                 </p>
               </div>
-              <div className="p-4 bg-sky-50 dark:bg-sky-900/20 rounded-xl border border-sky-200 dark:border-sky-800">
-                <span className="font-bold block mb-1">
-                  Advérbios Temporais
+              <div className="p-5 bg-sky-50 dark:bg-sky-950/30 rounded-xl border border-sky-200 dark:border-sky-800 shadow-sm transition hover:shadow-md">
+                <span className="font-extrabold text-sky-700 dark:text-sky-400 block mb-2 uppercase tracking-wide text-xs">
+                  Advérbios Condutores
                 </span>
-                <p className="text-[10px] text-muted-foreground">
-                  'Ainda' implica que algo deve mudar.
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  'Ainda', 'já', 'agora', 'finalmente'. O 'ainda' é o rei da
+                  banca, pois embute que uma virada está prevista.
                 </p>
               </div>
-              <div className="p-4 bg-teal-50 dark:bg-teal-900/20 rounded-xl border border-teal-200 dark:border-teal-800">
-                <span className="font-bold block mb-1">
-                  Adjetivos Valorativos
+              <div className="p-5 bg-teal-50 dark:bg-teal-950/30 rounded-xl border border-teal-200 dark:border-teal-800 shadow-sm transition hover:shadow-md">
+                <span className="font-extrabold text-teal-700 dark:text-teal-400 block mb-2 uppercase tracking-wide text-xs">
+                  Ajetivos Avaliativos
                 </span>
-                <p className="text-[10px] text-muted-foreground">
-                  'O excelente' implica um julgamento de valor do autor.
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  'O desastroso', 'a incensada'. Se o texto crava um adjetivo
+                  desse peso, há um pressuposto de julgamento prévio.
                 </p>
               </div>
             </div>
@@ -2091,7 +2533,7 @@ export default function AulaInterpretacaoTexto({
                     <p className="text-lg text-muted-foreground italic">
                       "A Petrobras **voltou** a crescer."
                     </p>
-                    <p className="text-[10px] mt-2 font-medium text-cyan-700 dark:text-cyan-300">
+                    <p className="text-sm mt-2 font-medium text-cyan-700 dark:text-cyan-300">
                       INDICADOR: O verbo 'voltar' garante que ela não crescia.
                       ✅
                     </p>
@@ -2103,7 +2545,7 @@ export default function AulaInterpretacaoTexto({
                     <p className="text-lg text-muted-foreground italic">
                       "Está calor aqui dentro, não acha?"
                     </p>
-                    <p className="text-[10px] mt-2 font-medium text-teal-700 dark:text-teal-300">
+                    <p className="text-sm mt-2 font-medium text-teal-700 dark:text-teal-300">
                       INDICADOR: Sugestão de abrir a janela. Pode ser negado. ✅
                     </p>
                   </div>
@@ -2214,26 +2656,36 @@ export default function AulaInterpretacaoTexto({
             variant={mv[7]}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center max-w-5xl mx-auto mt-8">
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuShieldAlert className="w-10 h-10 text-primary opacity-50" />
-                  <span className="font-bold uppercase text-lg">
+                <div className="flex flex-col items-center justify-center h-full p-4 gap-4">
+                  <div className="p-4 bg-orange-500/10 rounded-full shadow-inner ring-1 ring-orange-500/20">
+                    <LuShieldAlert className="w-10 h-10 text-orange-500" />
+                  </div>
+                  <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
                     1. Redução
                   </span>
+                  <span className="text-sm font-medium text-orange-500/80">
+                    O "Meio-Certo"
+                  </span>
                 </div>
               }
               verso={
-                <div className="space-y-3">
-                  <p className="text-[11px] leading-relaxed text-zinc-100">
-                    O texto é amplo, mas a alternativa foca em apenas um
-                    **detalhe**, ignorando a conclusão principal. É o erro do
-                    'meio-certo'.
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
+                  <p className="font-bold text-orange-500 flex items-center gap-2 border-b border-orange-500/10 pb-3 uppercase tracking-wide text-xs">
+                    <LuCheck className="w-4 h-4" /> VERDADE INCOMPLETA
                   </p>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/20 text-[10px] text-primary font-bold">
-                    Cuidado: A banca adora colocar algo que está no texto, mas
-                    não responde à pergunta.
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    A afirmação está no texto, porém foca apenas em uma{" "}
+                    <strong>fração minoritária</strong> do argumento principal,
+                    ignorando a conclusão macroecônomica ou central.
+                  </p>
+                  <div className="bg-muted/40 p-3 rounded-xl border-l-2 border-orange-500">
+                    <p className="text-sm italic opacity-90">
+                      Ao restringir a ideia do autor, a banca cria uma resposta
+                      que não abrange a magnitude do enunciado.
+                    </p>
                   </div>
                 </div>
               }
@@ -2241,22 +2693,34 @@ export default function AulaInterpretacaoTexto({
             />
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuSearch className="w-10 h-10 text-primary opacity-50" />
-                  <span className="font-bold uppercase text-lg">
+                <div className="flex flex-col items-center justify-center h-full p-4 gap-4">
+                  <div className="p-4 bg-red-500/10 rounded-full shadow-inner ring-1 ring-red-500/20">
+                    <LuSearch className="w-10 h-10 text-red-500" />
+                  </div>
+                  <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
                     2. Extrapolação
                   </span>
+                  <span className="text-sm font-medium text-red-500/80">
+                    A Ilusão Lógica
+                  </span>
                 </div>
               }
               verso={
-                <div className="space-y-3">
-                  <p className="text-[11px] leading-relaxed text-zinc-100">
-                    A alternativa traz uma informação 'bonita' ou 'lógica' do
-                    mundo real, mas que **NÃO consta no texto**. É o 'achismo'
-                    gourmet.
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
+                  <p className="font-bold text-red-500 flex items-center gap-2 border-b border-red-500/10 pb-3 uppercase tracking-wide text-xs">
+                    <LuShieldAlert className="w-4 h-4" /> O ACHISMO GOURMET
                   </p>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/20 text-[10px] text-primary font-bold">
-                    Regra de Ouro: Se não está escrito, não existe para a prova.
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Traz informações verídicas sobre o Brasil ou o mundo que
+                    fazem total sentido, mas que{" "}
+                    <strong>jamais foram citadas</strong> no texto original.
+                  </p>
+                  <div className="bg-muted/40 p-3 rounded-xl border-l-2 border-red-500">
+                    <p className="text-sm italic opacity-90">
+                      O avaliador explora o ego do candidato que tenta
+                      demonstrar conhecimentos gerais ao invés de se ater ao
+                      documento base.
+                    </p>
                   </div>
                 </div>
               }
@@ -2264,22 +2728,34 @@ export default function AulaInterpretacaoTexto({
             />
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuTarget className="w-10 h-10 text-primary opacity-50" />
-                  <span className="font-bold uppercase text-lg">
+                <div className="flex flex-col items-center justify-center h-full p-4 gap-4">
+                  <div className="p-4 bg-rose-500/10 rounded-full shadow-inner ring-1 ring-rose-500/20">
+                    <LuTarget className="w-10 h-10 text-rose-500" />
+                  </div>
+                  <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
                     3. Contradição
+                  </span>
+                  <span className="text-sm font-medium text-rose-500/80">
+                    A Rota Oposta
                   </span>
                 </div>
               }
               verso={
-                <div className="space-y-3">
-                  <p className="text-[11px] leading-relaxed text-zinc-100">
-                    A alternativa diz exatamente o **oposto** do que o texto
-                    afirmou, muitas vezes usando conectivos de negação
-                    escondidos.
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
+                  <p className="font-bold text-rose-500 flex items-center gap-2 border-b border-rose-500/10 pb-3 uppercase tracking-wide text-xs">
+                    <LuShieldAlert className="w-4 h-4" /> INVERSÃO DE VALORES
                   </p>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/20 text-[10px] text-primary font-bold">
-                    Dica: Atenção a palavras como 'exceto', 'apenas', 'nunca'.
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    A afirmação cruza perpendicularmente a tese do autor,
+                    normalmente ocultando uma negação ou alterando o escopo por
+                    intermédio de restritivos (somente, nada).
+                  </p>
+                  <div className="bg-muted/40 p-3 rounded-xl border-l-2 border-rose-500">
+                    <p className="text-sm italic opacity-90">
+                      Geralmente, o autor cita o ponto falso durante o
+                      embasamento apenas para refutá-lo como "falácia" nas
+                      linhas vitais.
+                    </p>
                   </div>
                 </div>
               }
@@ -2378,7 +2854,7 @@ export default function AulaInterpretacaoTexto({
                       "A energia nuclear é o futuro do Brasil." (O texto só
                       citou que é uma opção).
                     </p>
-                    <p className="text-[10px] mt-2 font-medium text-orange-700 dark:text-orange-300">
+                    <p className="text-sm mt-2 font-medium text-orange-700 dark:text-orange-300">
                       PERIGO: Parece lógico, mas NÃO está no texto. ❌
                     </p>
                   </div>
@@ -2389,7 +2865,7 @@ export default function AulaInterpretacaoTexto({
                     <p className="text-lg text-muted-foreground italic">
                       "A energia nuclear é uma das opções citadas."
                     </p>
-                    <p className="text-[10px] mt-2 font-medium text-rose-700 dark:text-rose-300">
+                    <p className="text-sm mt-2 font-medium text-rose-700 dark:text-rose-300">
                       INDICADOR: Limita-se ao que foi DE fato escrito. ✅
                     </p>
                   </div>
@@ -2666,7 +3142,7 @@ E vença esse jogo, que hoje tá bonito!`,
                     <p className="text-lg text-muted-foreground italic">
                       "O 'genial' plano resultou em prejuízo."
                     </p>
-                    <p className="text-[10px] mt-2 font-medium text-blue-700 dark:text-blue-300">
+                    <p className="text-sm mt-2 font-medium text-blue-700 dark:text-blue-300">
                       INDICADOR: Aspas no 'genial' desmentem o elogio. ✅
                     </p>
                   </div>
@@ -2677,7 +3153,7 @@ E vença esse jogo, que hoje tá bonito!`,
                     <p className="text-lg text-muted-foreground italic">
                       "A empresa registrou lucro de 10%."
                     </p>
-                    <p className="text-[10px] mt-2 font-medium text-sky-700 dark:text-sky-300">
+                    <p className="text-sm mt-2 font-medium text-sky-700 dark:text-sky-300">
                       INDICADOR: Fatos matemáticos sem adjetivos. ✅
                     </p>
                   </div>
@@ -2936,7 +3412,7 @@ E mostre pro mundo sua superação!`,
                     <p className="text-lg text-muted-foreground italic">
                       "É preciso fomentar o debate."
                     </p>
-                    <p className="text-[10px] mt-2 font-medium text-blue-700 dark:text-blue-300">
+                    <p className="text-sm mt-2 font-medium text-blue-700 dark:text-blue-300">
                       EQUIVALENTE: Estimular / Promover. ✅
                     </p>
                   </div>
@@ -2947,7 +3423,7 @@ E mostre pro mundo sua superação!`,
                     <p className="text-lg text-muted-foreground italic">
                       "A gestão negligenciou os dados."
                     </p>
-                    <p className="text-[10px] mt-2 font-medium text-indigo-700 dark:text-indigo-300">
+                    <p className="text-sm mt-2 font-medium text-indigo-700 dark:text-indigo-300">
                       EQUIVALENTE: Omitir / Desconsiderar. ✅
                     </p>
                   </div>
@@ -3089,12 +3565,12 @@ E saia da prova como um vencedor!`,
               }
               verso={
                 <div className="space-y-3">
-                  <p className="text-[11px] leading-relaxed text-zinc-100">
+                  <p className="text-sm leading-relaxed text-zinc-100">
                     Sua primeira missão é identificar se a questão pede o
                     **sentido global** (o texto todo) ou **localizado** (uma
                     linha específica).
                   </p>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/20 text-[10px] text-primary font-bold">
+                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/20 text-sm text-primary font-bold">
                     Check: Leia o comando da questão 2x antes de ir ao texto.
                   </div>
                 </div>
@@ -3112,12 +3588,12 @@ E saia da prova como um vencedor!`,
               }
               verso={
                 <div className="space-y-3">
-                  <p className="text-[11px] leading-relaxed text-zinc-100">
+                  <p className="text-sm leading-relaxed text-zinc-100">
                     Corte toda informação que não está escrita. Se a alternativa
                     fizer sentido mas **não tiver prova no texto**, ela é
                     Extrapolação.
                   </p>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/20 text-[10px] text-primary font-bold">
+                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/20 text-sm text-primary font-bold">
                     Regra: O texto é sua única verdade. O que você sabe de fora
                     não conta.
                   </div>
@@ -3136,12 +3612,12 @@ E saia da prova como um vencedor!`,
               }
               verso={
                 <div className="space-y-3">
-                  <p className="text-[11px] leading-relaxed text-zinc-100">
+                  <p className="text-sm leading-relaxed text-zinc-100">
                     Fique atento à troca de verbos técnicos. A banca substitui
                     termos para ver se você entende a **equivalência semântica**
                     no contexto industrial.
                   </p>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/20 text-[10px] text-primary font-bold">
+                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/20 text-sm text-primary font-bold">
                     Dica: Domine verbos como 'viabilizar', 'fomentar' e
                     'negligenciar'.
                   </div>
@@ -3216,7 +3692,7 @@ E saia da prova como um vencedor!`,
                     <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">
                       A Tática do Descarte
                     </h4>
-                    <p className="text-[10px] text-muted-foreground">
+                    <p className="text-sm text-muted-foreground">
                       Não busque a certa, elimine as erradas por Redução,
                       Extrapolação ou Contradição. Sobrará a verdade.
                     </p>
@@ -3225,7 +3701,7 @@ E saia da prova como um vencedor!`,
                     <h4 className="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-2">
                       Foco no Comando
                     </h4>
-                    <p className="text-[10px] text-muted-foreground">
+                    <p className="text-sm text-muted-foreground">
                       Responda o que o enunciado pediu, não o que o texto diz em
                       outras partes. O comando é soberano.
                     </p>
