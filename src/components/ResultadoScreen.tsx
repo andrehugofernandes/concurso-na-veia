@@ -147,7 +147,7 @@ export default function ResultadoScreen({
                         </button>
                         <button
                             onClick={() => iniciarSimulado(simulado.tipo as TipoSimulado, 70)}
-                            className="w-full py-5 bg-[#0037C1] text-white font-black uppercase tracking-widest rounded-[24px] shadow-xl shadow-blue-500/20 hover:shadow-2xl hover:shadow-blue-500/30 transition-all hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3 border-none"
+                            className="w-full py-5 bg-primary text-primary-foreground font-black uppercase tracking-widest rounded-[24px] shadow-xl shadow-primary/20 hover:shadow-2xl hover:shadow-primary/30 transition-all hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3 border-none"
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />

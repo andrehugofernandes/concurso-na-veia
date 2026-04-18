@@ -141,7 +141,7 @@ export default function SimuladoScreen({
 
                         {/* Question Header */}
                         <div className="flex flex-wrap items-center gap-3 mb-8">
-                            <span className="px-4 py-1.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-black uppercase tracking-wider">
+                            <span className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-black uppercase tracking-wider">
                                 {questao.materia}
                             </span>
                             {questao.assunto && (
@@ -246,7 +246,7 @@ export default function SimuladoScreen({
                     ) : (
                         <button
                             onClick={proximaQuestao}
-                            className="flex-1 py-5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-black uppercase tracking-widest rounded-[24px] shadow-xl shadow-purple-500/25 hover:shadow-2xl hover:shadow-purple-500/30 transition-all hover:-translate-y-1 active:scale-95"
+                            className="flex-1 py-5 bg-primary text-primary-foreground text-lg font-black uppercase tracking-widest rounded-[24px] shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 transition-all hover:-translate-y-1 active:scale-95"
                         >
                             {questaoAtual < simulado.questoes.length - 1 ? 'Próxima Questão →' : 'Ver Resultado 🎉'}
                         </button>

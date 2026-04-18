@@ -53,7 +53,9 @@ Retorne APENAS um JSON válido seguindo este formato:
 REGRAS DE FORMATAÇÃO E COERÊNCIA:
 - COERÊNCIA TOTAL: Se o enunciado pede um conceito (ex: Pronome), as alternativas devem ser desse conceito.
 - Use tags HTML para destaque visual: <b>negrito</b>, <u>sublinhado</u>, <i>itálico</i>.
-- NÃO use Markdown no texto.`;
+- NÃO use Markdown no texto.
+- ⚠️ SUBLINHADO: NUNCA use underscores (_texto_) para sublinhar. Use EXCLUSIVAMENTE a tag HTML <u>texto</u>.
+- ⚠️ COERÊNCIA LINGUÍSTICA: Se o enunciado pede "a PALAVRA sublinhada", sublinhe UMA ÚNICA PALAVRA. Se o destaque for uma LOCUÇÃO (2+ palavras), use "a EXPRESSÃO sublinhada" no enunciado.`;
 
     const start = Date.now();
     try {
@@ -184,6 +186,17 @@ REGRAS DE FORMATAÇÃO E COERÊNCIA:
     }
   }
 
+  /**
+   * Sanitiza texto gerado pela IA: converte Markdown residual para HTML.
+   */
+  private sanitizeMarkdown(text: string): string {
+    if (!text) return text;
+    let result = text.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
+    result = result.replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<i>$1</i>');
+    result = result.replace(/(?<![\w])_([^_]+)_(?![\w])/g, '<u>$1</u>');
+    return result;
+  }
+
   private parseBatchResponse(text: string, options: AIProviderOptions): Questao[] {
     try {
       let cleanText = text.trim();
@@ -200,19 +213,21 @@ REGRAS DE FORMATAÇÃO E COERÊNCIA:
       }
 
       return data.map(q => {
-        // Sanitização robusta das alternativas para remover "A) ", "a. ", "1 - ", etc.
+        // Sanitizar Markdown → HTML
+        q.enunciado = this.sanitizeMarkdown(q.enunciado);
+        q.explicacao = this.sanitizeMarkdown(q.explicacao);
+
         const alternativasLimpas = q.alternativas.map((alt: string) => 
-          alt.replace(/^[A-Ea-e][\s).:-]+/, "").trim()
+          this.sanitizeMarkdown(alt.replace(/^[A-Ea-e][\s).:-]+/, "").trim())
         );
 
-        // Randomização programática (Fisher-Yates) para garantir 0 bias
         const originalCorretaText = q.alternativas[q.correta];
         const shuffled = [...alternativasLimpas];
         for (let i = shuffled.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
         }
-        const newCorreta = shuffled.indexOf(originalCorretaText.replace(/^[A-Ea-e][\s).:-]+/, "").trim());
+        const newCorreta = shuffled.indexOf(this.sanitizeMarkdown(originalCorretaText.replace(/^[A-Ea-e][\s).:-]+/, "").trim()));
 
         return {
           ...q,
@@ -252,9 +267,13 @@ REGRAS DE FORMATAÇÃO E COERÊNCIA:
         throw new Error("JSON retornado pela IA está incompleto ou em formato incorreto");
       }
 
+      // Sanitizar Markdown → HTML
+      data.enunciado = this.sanitizeMarkdown(data.enunciado);
+      data.explicacao = this.sanitizeMarkdown(data.explicacao);
+
       // Sanitização robusta das alternativas
       const alternativasLimpas = data.alternativas.map((alt: string) => 
-        alt.replace(/^[A-Ea-e][\s).:-]+/, "").trim()
+        this.sanitizeMarkdown(alt.replace(/^[A-Ea-e][\s).:-]+/, "").trim())
       );
 
       // Randomização programática final
@@ -264,7 +283,7 @@ REGRAS DE FORMATAÇÃO E COERÊNCIA:
         const j = Math.floor(Math.random() * (i + 1));
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
       }
-      const newCorreta = shuffled.indexOf(originalCorretaText.replace(/^[A-Ea-e][\s).:-]+/, "").trim());
+      const newCorreta = shuffled.indexOf(this.sanitizeMarkdown(originalCorretaText.replace(/^[A-Ea-e][\s).:-]+/, "").trim()));
 
       return {
         ...data,

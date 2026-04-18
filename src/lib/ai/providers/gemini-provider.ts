@@ -54,6 +54,8 @@ REGRAS DE FORMATAÇÃO E COERÊNCIA:
 - PORTUGUÊS: Use terminologia gramatical correta.
 - Use tags HTML para destaque visual: <b>negrito</b>, <u>sublinhado</u>, <i>itálico</i>.
 - NÃO use Markdown no texto.
+- ⚠️ SUBLINHADO: NUNCA use underscores (_texto_) para sublinhar. Use EXCLUSIVAMENTE a tag HTML <u>texto</u>.
+- ⚠️ COERÊNCIA LINGUÍSTICA: Se o enunciado pede "a PALAVRA sublinhada", sublinhe UMA ÚNICA PALAVRA e garanta que ELA, isoladamente, pertença à classe gramatical pedida. Se o destaque for uma LOCUÇÃO (2+ palavras como "com dedicação"), use "a EXPRESSÃO sublinhada" ou "o TRECHO sublinhado" no enunciado, NUNCA "a palavra sublinhada".
 ${
   questoesAnteriores && questoesAnteriores.length > 0
     ? `
@@ -152,8 +154,12 @@ DIVERSIDADE:
       }
 
       return data.map((q) => {
+        // Sanitizar Markdown → HTML no enunciado e explicação
+        q.enunciado = this.sanitizeMarkdown(q.enunciado);
+        q.explicacao = this.sanitizeMarkdown(q.explicacao);
+
         const alternativasLimpas = q.alternativas.map((alt: string) =>
-          alt.replace(/^[A-Ea-e][\s).:-]+/, "").trim(),
+          this.sanitizeMarkdown(alt.replace(/^[A-Ea-e][\s).:-]+/, "").trim()),
         );
 
         const originalCorretaText = q.alternativas[q.correta];
@@ -163,7 +169,7 @@ DIVERSIDADE:
           [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
         }
         const newCorreta = shuffled.indexOf(
-          originalCorretaText.replace(/^[A-Ea-e][\s).:-]+/, "").trim(),
+          this.sanitizeMarkdown(originalCorretaText.replace(/^[A-Ea-e][\s).:-]+/, "").trim()),
         );
 
         return {
@@ -196,6 +202,23 @@ DIVERSIDADE:
     }
   }
 
+  /**
+   * Sanitiza texto gerado pela IA: converte Markdown residual para HTML.
+   * - _texto_ → <u>texto</u>
+   * - *texto* → <b>texto</b>  
+   * - **texto** → <b>texto</b>
+   */
+  private sanitizeMarkdown(text: string): string {
+    if (!text) return text;
+    // **bold** → <b>bold</b>
+    let result = text.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
+    // *italic* → <i>italic</i> (only single asterisks, not already processed bold)
+    result = result.replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<i>$1</i>');
+    // _underline_ → <u>underline</u> (handles _text_ pattern from AI)
+    result = result.replace(/(?<![\w])_([^_]+)_(?![\w])/g, '<u>$1</u>');
+    return result;
+  }
+
   private parseResponse(text: string, options: AIProviderOptions): Questao {
     try {
       let jsonStr = text.trim();
@@ -207,8 +230,12 @@ DIVERSIDADE:
 
       const data = JSON.parse(jsonStr);
 
+      // Sanitizar Markdown → HTML no enunciado e explicação
+      data.enunciado = this.sanitizeMarkdown(data.enunciado);
+      data.explicacao = this.sanitizeMarkdown(data.explicacao);
+
       const alternativasLimpas = data.alternativas.map((alt: string) =>
-        alt.replace(/^[A-Ea-e][\s).:-]+/, "").trim(),
+        this.sanitizeMarkdown(alt.replace(/^[A-Ea-e][\s).:-]+/, "").trim()),
       );
 
       const originalCorretaText = data.alternativas[data.correta];
@@ -218,7 +245,7 @@ DIVERSIDADE:
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
       }
       const newCorreta = shuffled.indexOf(
-        originalCorretaText.replace(/^[A-Ea-e][\s).:-]+/, "").trim(),
+        this.sanitizeMarkdown(originalCorretaText.replace(/^[A-Ea-e][\s).:-]+/, "").trim()),
       );
 
       return {

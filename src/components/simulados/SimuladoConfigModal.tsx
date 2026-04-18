@@ -79,7 +79,7 @@ export function SimuladoConfigModal({
                                     className={cn(
                                         "py-3.5 rounded-xl transition-all font-bold text-[15px] shadow-sm active:scale-95",
                                         dificuldade === d
-                                            ? "bg-[#F3B31C] text-white"
+                                            ? "bg-primary text-primary-foreground shadow-md"
                                             : "bg-[#F0F4F8] dark:bg-[#1a1a1e] text-[#4A5568] dark:text-white/60 hover:bg-[#E2E8F0] dark:hover:bg-[#252529]"
                                     )}
                                 >
@@ -99,7 +99,7 @@ export function SimuladoConfigModal({
                                 <select
                                     value={assunto}
                                     onChange={(e) => setAssunto(e.target.value)}
-                                    className="w-full bg-white dark:bg-[#121214] border-2 border-[#F3B31C] rounded-xl py-4 px-5 text-[15px] font-bold text-[#121214] dark:text-white appearance-none outline-none focus:ring-2 focus:ring-[#F3B31C]/20 transition-all cursor-pointer shadow-sm"
+                                    className="w-full bg-white dark:bg-[#121214] border-2 border-primary rounded-xl py-4 px-5 text-[15px] font-bold text-[#121214] dark:text-white appearance-none outline-none focus:ring-2 focus:ring-primary/20 transition-all cursor-pointer shadow-sm"
                                 >
                                     <option value="all">Todos os tópicos (Misturado)</option>
                                     {/* Deduplicação programática para evitar erros de key */}
@@ -110,7 +110,7 @@ export function SimuladoConfigModal({
                                     ))}
                                 </select>
                                 <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
-                                    <span className="text-[#F3B31C] text-lg">▾</span>
+                                    <span className="text-primary text-lg">▾</span>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@ export function SimuladoConfigModal({
                     {/* Action */}
                     <Button
                         onClick={handleConfirm}
-                        className="w-full h-16 bg-[#F3B31C] hover:bg-[#D99E16] text-white rounded-[20px] text-lg font-black uppercase tracking-widest shadow-lg shadow-[#F3B31C]/20 active:scale-[0.98] transition-all"
+                        className="w-full h-16 bg-primary hover:bg-primary/90 text-primary-foreground rounded-[20px] text-lg font-black uppercase tracking-widest shadow-lg shadow-primary/20 active:scale-[0.98] transition-all"
                     >
                         INICIAR SIMULADO
                     </Button>

@@ -349,7 +349,7 @@ export default function CadernoProvaScreen({
             ) : (
               <button
                 onClick={handleFinalizar}
-                className="px-8 py-4 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-600 text-white font-black uppercase tracking-wide shadow-xl shadow-green-500/25 hover:shadow-2xl hover:-translate-y-1 transition-all active:scale-95"
+                className="px-8 py-4 rounded-2xl bg-primary text-primary-foreground font-black uppercase tracking-wide shadow-xl shadow-primary/25 hover:shadow-2xl hover:-translate-y-1 transition-all active:scale-95"
               >
                 Finalizar Prova
               </button>
