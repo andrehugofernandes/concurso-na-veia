@@ -145,7 +145,12 @@ export function AlertBox({
   };
   const s = styles[tipo];
   return (
-    <div className={cn(`${s.bg} border-l-4 ${s.border} rounded-xl p-5 my-5`, className)}>
+    <div
+      className={cn(
+        `${s.bg} border-l-4 ${s.border} rounded-xl p-5 my-5`,
+        className,
+      )}
+    >
       <div className="flex gap-3 items-start">
         <span className="text-2xl">{s.icon}</span>
         <div>
@@ -523,7 +528,11 @@ export function ContentAccordion({
       </div>
     ) : (
       <div className="w-full md:bg-muted/20 md:rounded-xl md:border md:border-border/50 md:p-6">
-        <Accordion type="single" collapsible className="space-y-2 md:space-y-1.5">
+        <Accordion
+          type="single"
+          collapsible
+          className="space-y-2 md:space-y-1.5"
+        >
           {slides.map((slide, index) => (
             <AccordionItem
               key={index}
@@ -793,7 +802,10 @@ export function FlipCard({
 
   return (
     <div
-      className={cn("group w-full [perspective:1200px] cursor-pointer", className)}
+      className={cn(
+        "group w-full [perspective:1200px] cursor-pointer",
+        className,
+      )}
       onClick={() => setIsFlipped(!isFlipped)}
     >
       <motion.div
@@ -942,10 +954,12 @@ export function QuizInterativo({
   onComplete?: (score: number) => void;
   descricao?: string;
 }) {
-  const [respostas, setRespostas] = useState<Record<string | number, string>>({});
-  const [verificados, setVerificados] = useState<Record<string | number, boolean>>(
+  const [respostas, setRespostas] = useState<Record<string | number, string>>(
     {},
   );
+  const [verificados, setVerificados] = useState<
+    Record<string | number, boolean>
+  >({});
   const [completed, setCompleted] = useState(false);
 
   // 📝 IMPERATIVO: Padronização de Títulos de QUIZ
@@ -1598,7 +1612,7 @@ export function MusicPlayerCard({
 
   const togglePlay = () => {
     if (!audioUrl || audioUrl.trim() === "") return;
-    
+
     if (audioRef.current) {
       if (isPlaying) audioRef.current.pause();
       else audioRef.current.play();
@@ -1722,8 +1736,8 @@ export function MusicPlayerCard({
                 onClick={togglePlay}
                 disabled={!audioUrl || audioUrl.trim() === ""}
                 className={`w-14 h-14 rounded-full bg-white text-black flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-lg hover:shadow-white/20 ${
-                  !audioUrl || audioUrl.trim() === "" 
-                    ? "opacity-50 cursor-not-allowed" 
+                  !audioUrl || audioUrl.trim() === ""
+                    ? "opacity-50 cursor-not-allowed"
                     : ""
                 }`}
               >
@@ -1741,7 +1755,7 @@ export function MusicPlayerCard({
                 <LuRepeat size={18} />
               </button>
             </div>
-            
+
             {/* No Audio Message */}
             {!audioUrl || audioUrl.trim() === "" ? (
               <div className="mt-4 p-3 bg-white/10 rounded-lg text-center">
@@ -2326,10 +2340,10 @@ export function AulaTemplate({
     if (id.includes("bloco-iii")) return "Bloco III";
     if (id.includes("bloco-ii")) return "Bloco II";
     if (id.includes("bloco-i")) return "Bloco I";
-    
+
     // Special case for Portuguese
     if (id === "portugues") return "Português";
-    
+
     // For non-block specific materials, use first word of name
     const words = fallbackName.split(" ");
     return words[0] || fallbackName;
@@ -2424,7 +2438,7 @@ export function AulaTemplate({
                         "flex items-center gap-1.5 px-2 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider shadow-md h-fit self-center md:mt-2 animate-in fade-in zoom-in duration-500",
                         showCompletionBadge
                           ? "bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 text-white shadow-amber-500/20"
-                          : "bg-gradient-to-r from-green-600 to-emerald-500 text-white"
+                          : "bg-gradient-to-r from-green-600 to-emerald-500 text-white",
                       )}
                     >
                       {showCompletionBadge ? (
@@ -2587,16 +2601,16 @@ export function StickyModuleNav({
   const params = useParams();
   const materiaId = params?.materia as string;
   const homeHref = materiaId ? `/aulas/${materiaId}` : undefined;
-  
+
   // Dynamic back button text based on materiaId
   const getBackButtonText = () => {
     if (!materiaId) return "Voltar às Aulas";
-    
+
     // Extract the main part of the materia ID for shorter display
     if (materiaId.includes("bloco-i")) return "Voltar para Bloco I";
     if (materiaId.includes("bloco-ii")) return "Voltar para Bloco II";
     if (materiaId.includes("bloco-iii")) return "Voltar para Bloco III";
-    
+
     return "Voltar às Aulas";
   };
 
@@ -2694,8 +2708,10 @@ export function StickyModuleNav({
           isStickyNavPinned
             ? cn(
                 "fixed z-50",
-                isTemporaryHeaderVisible 
-                  ? (isMobile ? "top-16" : "top-20") 
+                isTemporaryHeaderVisible
+                  ? isMobile
+                    ? "top-16"
+                    : "top-20"
                   : "top-0",
                 "shadow-md border-b border-b-primary/20 flex items-center shrink-0",
                 "bg-background/90 dark:bg-slate-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-background/70",
@@ -2771,7 +2787,10 @@ export function StickyModuleNav({
                           </div>
                         </TabsTrigger>
                       </TooltipTrigger>
-                      <TooltipContent side="bottom" className="bg-slate-900 border-none text-white font-medium text-xs max-w-[150px] text-center">
+                      <TooltipContent
+                        side="bottom"
+                        className="bg-slate-900 border-none text-white font-medium text-xs max-w-[150px] text-center"
+                      >
                         {mod.titulo || mod.title}
                       </TooltipContent>
                     </Tooltip>
@@ -2916,7 +2935,9 @@ export function StickyModuleNav({
                         {mod.label}
                       </span>
                       <span className="font-bold text-[10px] md:text-xs leading-tight text-left flex items-start gap-1.5 max-w-full line-clamp-2">
-                        <span className="line-clamp-2">{mod.titulo || mod.title}</span>
+                        <span className="line-clamp-2">
+                          {mod.titulo || mod.title}
+                        </span>
                         {completedModules.has(mod.id) && (
                           <span className="text-white bg-green-500 rounded-full p-0.5 shadow-sm shadow-green-500/20 shrink-0 mt-0.5">
                             <LuCheck size={12} />
@@ -3021,26 +3042,31 @@ export function SectionBadge({
     | "slate";
   className?: string;
 }) {
+  const isIntro = String(index).toUpperCase() === "INTRO";
+
   const badgeVariants = {
-    indigo: "bg-white/20 text-white",
-    violet: "bg-white/20 text-white",
-    emerald: "bg-white/20 text-white",
-    amber: "bg-white/20 text-white",
-    rose: "bg-white/20 text-white",
-    blue: "bg-white/20 text-white",
-    cyan: "bg-white/20 text-white",
-    slate: "bg-white/20 text-white",
+    indigo: "bg-white/20",
+    violet: "bg-white/20",
+    emerald: "bg-white/20",
+    amber: "bg-white/20",
+    rose: "bg-white/20",
+    blue: "bg-white/20",
+    cyan: "bg-white/20",
+    slate: "bg-white/20",
   };
 
   return (
     <div
       className={cn(
-        "relative shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-3xl font-black shadow-inner-white backdrop-blur-sm",
+        "relative shrink-0 flex items-center justify-center font-bold text-white backdrop-blur-md border border-white/10",
+        isIntro
+          ? "px-5 py-1.5 rounded-full text-xs md:text-sm uppercase tracking-[0.2em]"
+          : "w-16 h-16 rounded-2xl text-3xl shadow-inner-white",
         badgeVariants[variant as keyof typeof badgeVariants],
         className,
       )}
     >
-      {index}
+      <span className="relative z-10">{index}</span>
     </div>
   );
 }
@@ -3066,8 +3092,10 @@ export function ModuleSectionHeader({
     | "slate";
   className?: string;
 }) {
-  const bgVariants = {
-    indigo: "bg-[#0037C1]", // var(--primary) padrão
+  const isIntro = String(index).toUpperCase() === "INTRO";
+
+  const variantColors: Record<string, string> = {
+    indigo: "bg-[#0037C1]",
     violet: "bg-violet-600",
     emerald: "bg-emerald-600",
     amber: "bg-amber-600",
@@ -3077,70 +3105,59 @@ export function ModuleSectionHeader({
     slate: "bg-slate-600",
   };
 
-  const badgeVariants = {
-    indigo: "bg-white/20 text-white",
-    violet: "bg-white/20 text-white",
-    emerald: "bg-white/20 text-white",
-    amber: "bg-white/20 text-white",
-    rose: "bg-white/20 text-white",
-    blue: "bg-white/20 text-white",
-    cyan: "bg-white/20 text-white",
-    slate: "bg-white/20 text-white",
-  };
+  // Usar os mesmos gradientes do Banner para o INTRO
+  const finalGradient =
+    (isIntro &&
+      MODULE_SKIN_COLORS.find((c) => c.variant === variant)?.gradiente) ||
+    variantColors[variant as string] ||
+    variantColors.indigo;
 
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-8 flex flex-row items-center gap-4 md:gap-6 shadow-lg transition-all hover:shadow-xl group",
-        bgVariants[variant as keyof typeof bgVariants],
+        "relative rounded-xl md:rounded-2xl p-5 md:p-14 shadow-xl transition-all hover:shadow-2xl group text-white",
+        finalGradient,
+        isIntro ? "text-center" : "flex flex-row items-center gap-6",
         className,
       )}
     >
-      {/* Decoração de Fundo */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/5 rounded-full -ml-16 -mb-16 blur-2xl pointer-events-none" />
+      {/* Decorative elements (Igual ao Banner) */}
+      <div className="absolute -top-16 -right-16 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+      <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none" />
 
-      {/* =========================================
-          LAYOUT MOBILE (CSS Grid)
-          ========================================= */}
-      <div className="grid md:hidden grid-cols-[auto_1fr] gap-x-4 gap-y-3 w-full">
-        {/* Row 1, Col 1 */}
-        <SectionBadge
-          index={index}
-          variant={variant}
-          className="row-start-1 col-start-1 self-start"
-        />
-
-        {/* Row 1, Col 2 */}
-        <h2 className="row-start-1 col-start-2 self-start pt-1 text-2xl leading-tight font-extrabold text-white tracking-tight">
-          {title}
-        </h2>
-
-        {/* Row 2, Spans Col 1 and 2 */}
-        {description && (
-          <p className="row-start-2 col-start-1 col-span-2 w-full text-white/80 text-[13px] leading-snug font-medium text-justify tracking-tight">
-            {description}
-          </p>
-        )}
-      </div>
-
-      {/* =========================================
-          LAYOUT DESKTOP (Flexbox Clássico)
-          ========================================= */}
-      <div className="hidden md:flex flex-row items-center gap-6 w-full relative z-10">
-        <SectionBadge index={index} variant={variant} />
-
-        <div className="relative space-y-2 flex-1 min-w-0">
-          <h2 className="text-3xl leading-tight font-extrabold text-white tracking-tight">
+      {/* Caso INTRO: UI espelhada do ModuleBanner */}
+      {isIntro ? (
+        <div className="relative z-10 w-full flex flex-col items-center">
+          <SectionBadge
+            index={index}
+            variant={variant}
+            className="mb-4 md:mb-6"
+          />
+          <h2 className="text-xl md:text-4xl font-extrabold leading-tight tracking-tight">
             {title}
           </h2>
           {description && (
-            <p className="text-white/80 text-base leading-relaxed max-w-4xl font-medium text-justify tracking-tight">
+            <p className="text-white/80 mt-3 md:mt-4 max-w-4xl mx-auto text-sm md:text-lg leading-relaxed font-medium">
               {description}
             </p>
           )}
         </div>
-      </div>
+      ) : (
+        /* Caso Padrão (Módulos): UI Lateral */
+        <>
+          <SectionBadge index={index} variant={variant} />
+          <div className="relative z-10 flex-1 min-w-0 text-left">
+            <h2 className="text-2xl md:text-3xl leading-tight font-extrabold tracking-tight">
+              {title}
+            </h2>
+            {description && (
+              <p className="text-white/80 mt-2 text-sm md:text-base leading-relaxed max-w-4xl font-medium tracking-tight">
+                {description}
+              </p>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }

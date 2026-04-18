@@ -273,79 +273,43 @@ export default function AulaInterpretacaoTexto({
           variant={mv[1]}
         />
 
-        <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
-          <ModuleSectionHeader
-            index={1}
-            title="A Anatomia do Sentido: O Que Você Vê vs. O Que Você Pensa"
-            description="Para a CESGRANRIO, o maior erro do candidato é 'viajar' para além dos limites do texto. Vamos blindar sua leitura agora."
+
+
+        {/* ★ NOVO: Rich Intro Section */}
+      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
+        <ModuleSectionHeader index="INTRO" title="A Fronteira do Sentido: Compreensão vs. Interpretação" description="O checklist mental obrigatório para blindar sua pontuação contra os venenos das alternativas 'quase' certas." variant={mv[1]} />
+        <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+          <p>
+            No teatro de operações da CESGRANRIO, a leitura não é um ato de lazer, mas um exercício de <strong>extração técnica</strong>. O edital da Petrobras demanda que você diferencie, com precisão cirúrgica, o que é um dado <em>explícito</em> (Compreensão) do que é uma conclusão <em>autorizada</em> (Interpretação). Essa distinção é a linha divisória entre o aprovado e o candidato que "acha" que entendeu.
+          </p>
+          <p>
+            A <strong>Compreensão</strong> foca no que está 'esparramado' visualmente nas linhas. É a decodificação imediata: "Segundo o autor...", "O texto afirma que...", "Conforme o fragmento...". Se você precisar concluir algo que não está escrito com todas as letras, você já não está mais em solo de compreensão literal. É aqui que os erros de <em>Redução</em> e <em>Extrapolação</em> começam a ser montados como armadilhas térmicas.
+          </p>
+          <p>
+            Já a <strong>Interpretação</strong> exige o diálogo com as entrelinhas (o implícito). É o nível das deduções lógicas que têm lastro textual. Comandos como "Depreende-se do texto...", "Infere-se que...", ou "A intenção do autor é..." convocam sua capacidade de síntese e de conectar pontos que o autor deixou como pistas, mas não como declarações diretas.
+          </p>
+          <p>
+            Para o perfil Petrobras, os textos costumam ser informativos, técnicos ou opinativos-institucionais. O maior risco reside em injetar seu próprio conhecimento de mundo (sua vivência em refinarias ou sua opinião sobre energia) no texto. O que importa não é o que você sabe, mas o que o <strong>examinador escreveu</strong>. Chamamos isso de manter o olhar dentro do Tribunal Textual.
+          </p>
+          <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/30 dark:to-blue-950/30 rounded-lg border border-indigo-200 dark:border-indigo-800 p-6 space-y-4">
+            <h4 className="font-bold text-foreground flex items-center gap-2">🛡️ Regra de Ouro C.E.D.E.</h4>
+            <ul className="list-disc list-inside space-y-2 mt-2">
+              <li><strong>C</strong>onstatar: Verifique se a palavra existe no texto (Compreensão).</li>
+              <li><strong>E</strong>vitar Excesso: Não conclua o que o texto não autoriza (Extrapolação).</li>
+              <li><strong>D</strong>eduzir com Lastro: Busque a conexão lógica entre dois parágrafos (Interpretação).</li>
+              <li><strong>E</strong>xcluir Opinião: Se sua experiência pessoal diz "A" mas o texto diz "B", marque "B".</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
+        <ModuleSectionHeader
+          index={1}
+          title="A Natureza do Processo"
+          description="Para a CESGRANRIO, o maior erro do candidato é 'viajar' para além dos limites do texto. Vamos blindar sua leitura agora."
           variant={mv[1]}
         />
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-            <div className="space-y-6">
-              <h4 className="text-xl font-bold text-primary flex items-center gap-2">
-                <LuBookOpen className="w-5 h-5" /> Compreensão (Análise Literal)
-              </h4>
-              <p className="text-muted-foreground leading-relaxed">
-                A compreensão é a decodificação imediata. O autor disse "X",
-                você lê "X". Não há juízo de valor, apenas constatação. É o
-                nível <strong>explícito</strong>.
-              </p>
-              <ul className="space-y-3">
-                {[
-                  "Foco no texto real (palavras e sintaxe).",
-                  "Comandos: 'O texto afirma...', 'Segundo o autor...', 'Na linha 12...'",
-                  "Resposta: Está 'esparramada' visualmente no parágrafo.",
-                  "Risco: Confundir com o que VOCÊ acha do assunto.",
-                ].map((item, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-2 text-lg text-foreground/80"
-                  >
-                    <LuCheck className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" />{" "}
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="space-y-6">
-              <h4 className="text-xl font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
-                <LuTarget className="w-5 h-5" /> Interpretação (Síntese Lógica)
-              </h4>
-              <p className="text-muted-foreground leading-relaxed">
-                A interpretação é o diálogo com o <strong>implícito</strong>.
-                São as conclusões autorizadas pelas pistas que o autor deixou. É
-                o nível da dedução.
-              </p>
-              <ul className="space-y-3">
-                {[
-                  "Foco na intenção educativa/persuasiva do autor.",
-                  "Comandos: 'Depreende-se...', 'Infere-se que...', 'O texto sugere que...'",
-                  "Resposta: Requer conectar dois ou mais pontos do texto.",
-                  "Risco: Extrapolar para fora da base textual.",
-                ].map((item, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-2 text-lg text-foreground/80"
-                  >
-                    <LuCheck className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />{" "}
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <AlertBox tipo="warning" titulo="O Alerta Cesgranrio">
-            <p>
-              A banca costuma colocar uma alternativa com uma verdade técnica
-              ABSOLUTA sobre a Petrobras, mas que{" "}
-              <strong>não foi dita no texto</strong>. Se você marcar, errou por
-              Extrapolação. Lembre-se: se não está no papel, não existe na
-              prova!
-            </p>
-          </AlertBox>
 
           <ContentAccordion
             mode="stacked"
@@ -618,27 +582,40 @@ export default function AulaInterpretacaoTexto({
           variant={mv[2]}
         />
 
-        <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
-          <ModuleSectionHeader
-            index={1}
-            title="A Engenharia do Parágrafo: A Viga Mestra"
-            description="Entender o tópico frasal é como identificar a viga de sustentação de um edifício: sem ela, o resto do conteúdo desmorona."
+        {/* ★ NOVO: Rich Intro Section */}
+      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
+        <ModuleSectionHeader index="INTRO" title="O Coração Estrutural da Mensagem" description="Localize e extraia a ideia central (O Tópico Frasal) sem ser consumido por desvios e distrações." variant={mv[2]} />
+        <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+          <p>
+            A velocidade com a qual um profissional técnico compreende um memorando ou laudo em uma refinaria deve ser a mesma aplicada na hora da prova. O grande acelerador dessa clareza analítica chama-se <strong>Tópico Frasal</strong>: o elemento central de um parágrafo que resume a carga semântica ou argumentativa inteira do bloco textual, servindo de viga mestra.
+          </p>
+          <p>
+            Em linhas gerais, um parágrafo argumentativo bem construído não é uma mistura aleatória de ideias; ele é, de certa forma, uma mini-dissertação. Ele possui sua própria introdução, corpo e desfecho argumentativo. Descobrir a sua "âncora" inicial impede que você se perca nas informações subsidiárias (adornos) ou nos exemplos apresentativos que o autor insere para ganhar credibilidade descritiva.
+          </p>
+          <p>
+            Seja em um modelo analítico ou dissertativo, os tópicos frasais assumem dinâmicas múltiplas: pode ser uma <em>declaração contundente inicial</em> (modelo adotado em cerca de 70% dos ensaios examinados pela CESGRANRIO); uma <em>definição</em> conceitual; um eixo de <em>comparação/contraste</em>; ou uma formulação em tom de interrogação seguida da tese.
+          </p>
+          <p>
+            Muitas questões disparam o comando: "O segundo parágrafo constitui-se a partir da seguinte diretriz..." – nesses casos, a banca ignorou todos os rodeios estéticos e está validando unicamente a capacidade do candidato de extrair e sintetizar o Tópico Frasal subjacente. Confundir o miolo ou um exemplo solto com a verdadeira tese gera perda quase certa de pontuação.
+          </p>
+          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+            <h4 className="font-bold text-foreground flex items-center gap-2">🎯 Tática de Radar: Encontrando a Viga Primária</h4>
+            <ul className="list-disc list-inside space-y-2 mt-2">
+              <li><strong>Passo 1:</strong> Leia a primeira frase do parágrafo, pois ela costuma ser a declaração nuclear.</li>
+              <li><strong>Passo 2:</strong> Submeta-a a um teste de isolamento. Se as frases subsequentes parecem "responder" ou "exemplificar" essa primeira linha, este é o seu Tópico Frasal.</li>
+              <li><strong>Passo 3:</strong> Em caso positivo baseie qualquer resumo de ideias centralizadas apenas nessa chave lógica.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
+        <ModuleSectionHeader
+          index={1}
+          title="Métodos de Construção"
+          description="Como os parágrafos são arquitetados na prática técnica."
           variant={mv[2]}
         />
-
-          <div className="space-y-8">
-            <div className="p-6 bg-emerald-500/5 rounded-2xl border border-emerald-500/10">
-              <h4 className="text-xl font-bold text-emerald-600 dark:text-emerald-400 mb-4 flex items-center gap-2">
-                <LuTarget className="w-5 h-5" /> Definição de Elite
-              </h4>
-              <p className="text-muted-foreground leading-relaxed">
-                O <strong>Tópico Frasal</strong> é o núcleo do parágrafo. Em
-                textos técnicos da Petrobras, ele costuma ser curto, direto e
-                está localizado logo na primeira frase (o chamado "Ponto de
-                Impacto"). Se você domina a identificação dele, sua velocidade
-                de leitura dobra.
-              </p>
-            </div>
 
             <ContentAccordion
               mode="stacked"
@@ -688,7 +665,6 @@ export default function AulaInterpretacaoTexto({
                 },
               ]}
             />
-          </div>
         </section>
 
         <TextAnalysisLab
@@ -1255,26 +1231,41 @@ export default function AulaInterpretacaoTexto({
           variant={mv[4]}
         />
 
-        <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
-          <ModuleSectionHeader
-            index={1}
-            title="A Matriz de Tipos: O Filtro Petrobras"
-            description="As provas focam em Dissertação e Injunção. Mas as armadilhas estão nos textos Narrativos disfarçados."
+        {/* ★ NOVO: Rich Intro Section */}
+      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
+        <ModuleSectionHeader index="INTRO" title="O DNA do Texto: Arquitetura Tipológica" description="Categorize o fluxo de informação e antecipe as perguntas da CESGRANRIO com base na estrutura do gênero." variant={mv[4]} />
+        <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+          <p>
+            Identificar a <strong>Tipologia Textual</strong> predominante é como realizar uma triagem de risco em um ambiente industrial: define as ferramentas de análise que você irá utilizar. No universo Petrobras-CESGRANRIO, os textos são predominantemente híbridos, mas possuem um "centro de gravidade" estrutural: a <em>Dissertação</em> (Expositiva ou Argumentativa) e a <em>Injunção</em> (Instrução técnica).
+          </p>
+          <p>
+            A <strong>Dissertação-Argumentativa</strong> é o campo de batalha das teses. O autor não apenas informa, ele defende um posicionamento (ex: os desafios da transição energética). Aqui, você deve caçar 'conectivos lógicos' de causa e consequência. Já na <strong>Dissertação-Expositiva</strong>, o foco é a neutralidade técnica e factual. A banca costuma cobrar aqui a capacidade de síntese de dados e a identificação de conceitos.
+          </p>
+          <p>
+            Não ignore os tons <strong>Injuntivos</strong>. Embora raros como textos completos, aparecem muito em gêneros como manuais de operação ou normas reguladoras (NRs). O segredo está nos verbos de comando ou instruções procedimentais. Se você detectar o imperativo, a questão provavelmente pedirá a finalidade de uma instrução específica.
+          </p>
+          <p>
+            Finalmente, os textos <strong>Narrativos</strong> e <strong>Descritivos</strong> raramente aparecem como eixos centrais, mas servem de "adornos" para humanizar relatórios institucionais. Saber diferenciar a narração de um evento passado da argumentação sobre o seu impacto é vital para não confundir o cronológico com o causal.
+          </p>
+          <div className="bg-gradient-to-br from-rose-50 to-orange-50 dark:from-rose-950/30 dark:to-orange-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
+            <h4 className="font-bold text-foreground flex items-center gap-2">⚠️ Tática de Tipologia: O Pêndulo de Análise</h4>
+            <p className="text-sm italic">Ao ler as primeiras 5 linhas, pergunte-se:</p>
+            <ul className="list-disc list-inside space-y-2 mt-2">
+              <li><strong>Ele quer me convencer?</strong> (Argumentativo) &rarr; Busque a Tese.</li>
+              <li><strong>Ele quer me dar dados?</strong> (Expositivo) &rarr; Busque os Fatos e Definições.</li>
+              <li><strong>Ele quer que eu faça algo?</strong> (Injuntivo) &rarr; Busque os Verbos de Comando.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
+        <ModuleSectionHeader
+          index={1}
+          title="A Matriz de Tipos: O Filtro Petrobras"
+          description="As provas focam em Dissertação e Injunção. Mas as armadilhas estão nos textos Narrativos disfarçados."
           variant={mv[4]}
         />
-
-          <div className="space-y-8">
-            <div className="p-6 bg-indigo-500/5 rounded-2xl border border-indigo-500/10">
-              <h4 className="text-xl font-bold text-indigo-600 dark:text-indigo-400 mb-4 flex items-center gap-2">
-                <LuLayers className="w-5 h-5" /> Tipos Base vs. Gêneros
-              </h4>
-              <p className="text-muted-foreground leading-relaxed">
-                O <strong>Tipo Textual</strong> é a estrutura (narrar,
-                descrever, dissertar). O <strong>Gênero</strong> é o uso social
-                (editorial, relatório, edital). A Cesgranrio adora perguntar: "O
-                texto X apresenta marcas predominantes de...".
-              </p>
-            </div>
 
             <ContentAccordion
               mode="stacked"
@@ -1343,7 +1334,6 @@ export default function AulaInterpretacaoTexto({
                 },
               ]}
             />
-          </div>
         </section>
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
@@ -1531,17 +1521,41 @@ export default function AulaInterpretacaoTexto({
           variant={mv[5]}
         />
 
-        <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
-          <ModuleSectionHeader
-            index={1}
-            title="As Âncoras do Candidato"
-            description="Para ler rápido, não é preciso ler 'correndo', mas sim ler sem carregar peso desnecessário."
+        {/* ★ NOVO: Rich Intro Section */}
+      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
+        <ModuleSectionHeader index="INTRO" title="O Fator Velocidade: Leitura em Fluxo" description="Corte as âncoras cognitivas que atrasam seu processamento e ganhe os minutos preciosos que definem a classificação." variant={mv[5]} />
+        <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+          <p>
+            Nas provas de 1ª linha (Petrobras/BNDES), o maior inimigo não é a dificuldade do conteúdo, mas o <strong>cronômetro</strong>. Muitos candidatos exímios tecnicamente falham por não conseguir terminar a prova ou por lerem o texto três vezes antes de atacar as alternativas. Ler rápido não é correr; é saber o que processar e o que ignorar.
+          </p>
+          <p>
+            A <strong>Subvocalização</strong> (ouvir a voz na mente) é a principal âncora que limita sua velocidade à fala humana (150 ppm). A leitura visual pura, focada em blocos de sentido ("chunks"), permite saltar para 500+ ppm sem perda de compreensão global. É o treinamento do olho para captar a estrutura do parágrafo antes mesmo de mergulhar em cada preposição.
+          </p>
+          <p>
+            Outro vício fatal é a <strong>Regressão Involuntária</strong>. Voltar ao início da frase porque "achou que não entendeu" destrói a coesão mental em construção. Muitas vezes, o entendimento se completa ao final do parágrafo ou através das conexões lógicas que seguem. Mantenha o fluxo adiante; se houver dúvida real, o enunciado da questão te levará de volta ao ponto exato.
+          </p>
+          <p>
+            A técnica do <strong>Guia Visual</strong> (usar a caneta para marcar o caminho) ajuda a manter a concentração contínua e evita que o olho se perca em saltos entre linhas. Em textos técnicos com colunas estreitas, essa tática aumenta a retenção em até 30% sob pressão de tempo.
+          </p>
+          <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 rounded-lg border border-violet-200 dark:border-violet-800 p-6 space-y-4">
+            <h4 className="font-bold text-foreground flex items-center gap-2">⚡ Protocolo de Velocidade Petrobras</h4>
+            <ul className="list-disc list-inside space-y-2 mt-2">
+              <li><strong>Leitura de Reconhecimento:</strong> 40 segundos para captar o assunto e o tom (Skimming).</li>
+              <li><strong>Leitura de Estudo:</strong> Focada nos Tópicos Frasais identificados no Módulo 2.</li>
+              <li><strong>Ponto de Retenção:</strong> Pare ao final de cada parágrafo e diga a si mesmo uma palavra que o resuma.</li>
+              <li><strong>Corte de Vício:</strong> Não mova os lábios e não volte atrás até o final do período.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
+        <ModuleSectionHeader
+          index={1}
+          title="As Âncoras do Candidato"
+          description="Para ler rápido, não é preciso ler 'correndo', mas sim ler sem carregar peso desnecessário."
           variant={mv[5]}
         />
-          <p className="text-muted-foreground leading-relaxed">
-            Eliminar vícios de leitura é o primeiro passo para dominar os textos
-            técnicos da Petrobras sem estourar o cronômetro da prova.
-          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             <FlipCard
@@ -1785,17 +1799,40 @@ export default function AulaInterpretacaoTexto({
           variant={mv[6]}
         />
 
-        <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
-          <ModuleSectionHeader
-            index={1}
-            title="Lógica de Detecção"
-            description="Não é 'achismo'. É dedução lógica baseada em marcas gramaticais."
+        {/* ★ NOVO: Rich Intro Section */}
+      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
+        <ModuleSectionHeader index="INTRO" title="As Entrelinhas: A Subjetividade Objetiva" description="Aprenda a ler o que não foi escrito com tinta, mas está assinado pela intenção do autor." variant={mv[6]} />
+        <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+          <p>
+            Muitos candidatos acreditam que a interpretação é um campo de "achismo" ou opinião subjetiva. Para a CESGRANRIO, contudo, as entrelinhas são <strong>matemáticas</strong>. Elas dependem de gatilhos gramaticais e lógicos chamados pressupostos e subentendidos. Dominar essa distinção é o que separa o palpiteiro do analista de elite.
+          </p>
+          <p>
+            O <strong>Pressuposto</strong> é uma informação que o autor não diz, mas que é <em>inevitavelmente verdadeira</em> para que a frase tenha sentido. Ele é gerado por palavras "gatilho" (ex: "Pedro <u>deixou</u> de fumar" inegavelmente pressupõe que ele fumava). Se a banca pergunta sobre um pressuposto, ela está pedindo algo inegociável. Negar o pressuposto é destruir a lógica do texto.
+          </p>
+          <p>
+            Já o <strong>Subentendido</strong> é uma insinuação. Ele depende do contexto e da "maldade" do leitor, mas pode ser negado pelo autor sem que ele pareça mentiroso. É uma inferência provável, mas não obrigatória. A banca adora colocar subentendidos extremamente sedutores em alternativas falsas para te levar ao erro de <em>Extrapolação</em>.
+          </p>
+          <p>
+            Nas provas da Petrobras, o foco costuma recair sobre os pressupostos gerados por advérbios (ainda, já, agora) e verbos de mudança de estado. Detectar que "A produção <u>ainda</u> não atingiu o ápice" pressupõe que ela vai atingir ou que se espera que atinja, é a chave para matar questões de alta complexidade analítica em segundos.
+          </p>
+          <div className="bg-gradient-to-br from-cyan-50 to-teal-50 dark:from-cyan-950/30 dark:to-teal-950/30 rounded-lg border border-cyan-200 dark:border-cyan-800 p-6 space-y-4">
+            <h4 className="font-bold text-foreground flex items-center gap-2">🔍 Radar de Entrelinhas: O Filtro de Prova</h4>
+            <ul className="list-disc list-inside space-y-2 mt-2">
+              <li><strong>Passo 1:</strong> Identifique se a pergunta pede "O que se afirma" (Explícito) ou "O que se infere" (Implícito).</li>
+              <li><strong>Passo 2:</strong> Sublinhe palavras de mudança (voltou, deixou, continua, passou a).</li>
+              <li><strong>Passo 3:</strong> Teste da Negação: Se eu disser que a ideia é falsa, a frase original do texto continua fazendo sentido? Se não, é um Pressuposto.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
+        <ModuleSectionHeader
+          index={1}
+          title="Lógica de Detecção"
+          description="Não é 'achismo'. É dedução lógica baseada em marcas gramaticais."
           variant={mv[6]}
         />
-          <p className="text-muted-foreground leading-relaxed">
-            A inferência na Cesgranrio não é um exercício de imaginação, mas sim
-            a extração de dados contidos nas dobras da linguagem.
-          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             <FlipCard
@@ -2028,11 +2065,38 @@ export default function AulaInterpretacaoTexto({
           variant={mv[7]}
         />
 
-        <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
-          <ModuleSectionHeader
-            index={1}
-            title="A Trindade do Erro"
-            description="As três formas clássicas que a Cesgranrio usa para invalidar uma interpretação correta."
+        {/* ★ NOVO: Rich Intro Section */}
+      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
+        <ModuleSectionHeader index="INTRO" title="A Trindade do Erro: Detectando Venenos" description="Mapeie os caminhos falsos da banca e blinde sua mente contra Redução, Extrapolação e Contradição." variant={mv[7]} />
+        <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+          <p>
+            A CESGRANRIO não cria alternativas erradas de forma aleatória; ela utiliza uma engenharia de distrações baseada em três vícios lógicos capitais. Aprender a dar nome ao erro de uma alternativa falsa é o <strong>poder definitivo</strong> do candidato de elite. Quando você para de procurar a certa e começa a identificar por que as outras quatro são venenosas, sua taxa de acerto beira os 100%.
+          </p>
+          <p>
+            O primeiro erro é a <strong>Redução</strong>: a alternativa diz algo que está no texto, mas é apenas uma parte pequena da verdade. Ela ignora a conclusão principal ou foca num detalhe acessório, tornando a resposta incompleta (e, portanto, errada). É a famosa "meio-certo" que seduz o candidato apressado que leu o texto apenas uma vez.
+          </p>
+          <p>
+            O segundo e mais perigoso é a <strong>Extrapolação</strong>: a alternativa faz todo o sentido do mundo, é lógica, é "bonita" e pode até ser uma verdade científica... mas <em>não foi escrita no texto</em>. O examinador usa seu conhecimento prévio sobre a Petrobras ou sobre o Brasil para te fazer marcar algo que o autor jamais disse. Se não está no papel, é mentira para a prova!
+          </p>
+          <p>
+            Por fim, temos a <strong>Contradição</strong>: a banca inverte o sinal lógico. Troca um "sempre" por "quase sempre", ou afirma que o autor defende X quando, na verdade, ele o cita apenas para refutá-lo logo em seguida. Identificar esses desvios de rota exige foco total nos conectivos de oposição (mas, porém, contudo).
+          </p>
+          <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+            <h4 className="font-bold text-foreground flex items-center gap-2">🛡️ Filtro de Blindagem de Alternativas</h4>
+            <ul className="list-disc list-inside space-y-2 mt-2 font-medium">
+              <li><strong>Redução:</strong> "Isso aconteceu, mas é o foco principal da pergunta?"</li>
+              <li><strong>Extrapolação:</strong> "Onde exatamente no texto está a palavra que prova isso?"</li>
+              <li><strong>Contradição:</strong> "O autor concorda com isso ou está citando alguém para criticar?"</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
+        <ModuleSectionHeader
+          index={1}
+          title="A Trindade do Erro"
+          description="As três formas clássicas que a Cesgranrio usa para invalidar uma interpretação correta."
           variant={mv[7]}
         />
 
@@ -2289,11 +2353,38 @@ E vença esse jogo, que hoje tá bonito!`,
           variant={mv[8]}
         />
 
-        <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
-          <ModuleSectionHeader
-            index={1}
-            title="A Vontade por Trás das Palavras"
-            description="Identificar o objetivo (informativo, persuasivo ou crítico) é 50% da questão."
+        {/* ★ NOVO: Rich Intro Section */}
+      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
+        <ModuleSectionHeader index="INTRO" title="Intenção Autoral: O 'Porquê' Invisível" description="Decifre a finalidade real do texto para antecipar o gabarito. O autor quer informar, convencer ou apenas criticar?" variant={mv[8]} />
+        <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+          <p>
+            Nenhum texto nasce no vácuo. Cada vírgula em um editorial de jornal ou em um relatório de sustentabilidade da Petrobras possui uma <strong>Intencionalidade</strong>. Identificar esse propósito primário é o atalho para entender qual será o foco das perguntas de interpretação profunda da banca.
+          </p>
+          <p>
+            A <strong>Finalidade Informativa (Expositiva)</strong> é neutra. O autor quer que você saiba fatos, dados e processos. Aqui, a interpretação é quase sempre literal. Mas quando entramos na <strong>Finalidade Persuasiva (Argumentativa)</strong>, o autor quer que você mude de opinião ou apoie uma tese. Nesses casos, a banca focará nas estratégias de convencimento e no uso de adjetivos valorativos.
+          </p>
+          <p>
+            O <strong>Tom do Texto</strong> (irônico, sério, institucional, crítico) é revelado através das marcas de subjetividade. O uso de aspas para destacar termos, por exemplo, é um sinal clássico de ironia ou distanciamento crítico que a CESGRANRIO adora cobrar. Identificar que o autor está sendo sarcástico muda completamente o valor de verdade das frases.
+          </p>
+          <p>
+            Um erro comum é projetar uma intenção que não existe. Se o texto é um manual técnico, ele é <em>instrucional/injuntivo</em>; não procure profundidade filosófica ou ironia onde o objetivo é apenas garantir a segurança operacional. Mantenha seu radar calibrado para o Gênero do texto.
+          </p>
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+            <h4 className="font-bold text-foreground flex items-center gap-2">🎯 Tática de Intencionalidade</h4>
+            <ul className="list-disc list-inside space-y-2 mt-2">
+              <li><strong>Pergunta Chave:</strong> "Se este texto desaparecesse, o que o mundo deixaria de saber ou de ser convencido?"</li>
+              <li><strong>Marcadores de Tom:</strong> Fique atento a advérbios de modo e adjetivos desnecessários à informação pura (ex: "triste realidade" vs "realidade").</li>
+              <li><strong>Uso de Aspas:</strong> Se houver aspas num texto opinativo, presuma ironia até que se prove o contrário.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
+        <ModuleSectionHeader
+          index={1}
+          title="A Vontade por Trás das Palavras"
+          description="Identificar o objetivo (informativo, persuasivo ou crítico) é 50% da questão."
           variant={mv[8]}
         />
 
@@ -2767,11 +2858,39 @@ E saia da prova como um vencedor!`,
           variant={mv[10]}
         />
 
-        <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
-          <ModuleSectionHeader
-            index={1}
-            title="Checklist de Blindagem Final"
-            description="Revise os 5 mandamentos da interpretação Cesgranrio antes de começar."
+        {/* ★ NOVO: Rich Intro Section */}
+      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
+        <ModuleSectionHeader index="INTRO" title="Arena de Elite: Blindagem Final" description="O checklist de pré-combate para garantir que nenhum vício ou pegadinha te tire do topo da lista." variant={mv[10]} />
+        <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+          <p>
+            Você chegou à <strong>Arena de Elite</strong>. Agora, o conhecimento teórico deve ser convertido em reflexo operacional. Em uma prova da Petrobras, o cansaço acumulado nas últimas questões de Português é o que causa as falhas de atenção mais fatais. Sua blindagem final depende de um processo rígido e mecânico de resolução que ignora o estresse do ambiente.
+          </p>
+          <p>
+            O primeiro pilar da blindagem é a <strong>Hierarquia de Comandos</strong>. Leia o enunciado antes do texto. Identifique se a questão demanda <em>localização literal</em> ou <em>inferência global</em>. Se for localização, vá direto ao parágrafo citado com o olhar de "busca e apreensão"; se for global, recupere o Tópico Frasal de cada bloco que você mapeou na sua Leitura Diagnóstica.
+          </p>
+          <p>
+            O segundo pilar é a <strong>Lei do Lastro Material</strong>. Nunca, sob hipótese alguma, escolha uma alternativa baseada apenas no seu "feeling". Você deve ser capaz de sublinhar no texto a prova material que autoriza aquela resposta. Se você não consegue apontar o dedo para a palavra ou conectivo que sustenta a opção, você está em zona de risco de Extrapolação.
+          </p>
+          <p>
+            Por fim, lembre-se da <strong>Gestão de Tempo Crítico</strong>. Questões de interpretação podem ser buracos negros de tempo se você deixar. Se travou entre duas alternativas, use o Filtro de Venenos do Módulo 7. Se ainda assim persistir a dúvida, marque o radar e avance. O subconsciente muitas vezes resolve o paradoxo enquanto você processa outras questões mais simples.
+          </p>
+          <div className="bg-gradient-to-br from-slate-50 to-zinc-50 dark:from-slate-950/30 dark:to-zinc-950/30 rounded-lg border border-slate-200 dark:border-slate-800 p-6 space-y-4">
+            <h4 className="font-bold text-foreground flex items-center gap-2">🛡️ Checklist de Saída para a Prova</h4>
+            <ul className="list-disc list-inside space-y-2 mt-2 font-medium">
+              <li>Enunciado lido e demanda (Geral vs Local) identificada?</li>
+              <li>Tópicos Frasais isolados e adjetivos de tom circulados?</li>
+              <li>Alternativas falsas classificadas (Redução/Extrapolação/Contradição)?</li>
+              <li>A alternativa escolhida tem prova física no papel?</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
+        <ModuleSectionHeader
+          index={1}
+          title="Checklist de Blindagem Final"
+          description="Revise os 5 mandamentos da interpretação Cesgranrio antes de começar."
           variant={mv[10]}
         />
 
