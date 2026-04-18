@@ -2693,7 +2693,10 @@ export function StickyModuleNav({
           "transition-all duration-300",
           isStickyNavPinned
             ? cn(
-                "fixed top-0 z-50",
+                "fixed z-50",
+                isTemporaryHeaderVisible 
+                  ? (isMobile ? "top-16" : "top-20") 
+                  : "top-0",
                 "shadow-md border-b border-b-primary/20 flex items-center shrink-0",
                 "bg-background/90 dark:bg-slate-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-background/70",
                 "h-16 md:h-20",
