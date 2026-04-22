@@ -15,13 +15,19 @@ import {
   CardCarousel,
   Comparison,
   ModuleConsolidation,
+  LessonTabs,
+  ModuleSummaryCarouselNew,
+  TextAnalysisLab,
+  RichIntro,
+  MusicPlayerCard,
+  QuizDiagnostic,
 } from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   LuBookOpen,
   LuTarget,
   LuTriangleAlert,
+  LuShieldAlert,
   LuBrain,
   LuCheck,
   LuAnchor,
@@ -31,8 +37,15 @@ import {
   LuLightbulb,
   LuLink,
   LuActivity,
+  LuSearch,
   LuLibrary,
+  LuTrophy,
+  LuPlay,
+  LuImage,
+  LuVolume2,
 } from "react-icons/lu";
+
+import { getModuleVariant } from "@/lib/moduleColors";
 
 // Data
 import {
@@ -61,8 +74,6 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Arena de Elite" },
 ];
 
-const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
-
 export default function AulaCoesaoCoerencia({
   onComplete,
   isCompleted: isLessonCompleted,
@@ -79,6 +90,8 @@ export default function AulaCoesaoCoerencia({
   prevTopico,
   nextTopico,
 }: AulaProps) {
+  const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
+
   const [activeTab, setActiveTab] = useState("modulo-1");
   const [completedModules, setCompletedModules] = useState<Set<string>>(
     new Set(),
@@ -154,12 +167,9 @@ export default function AulaCoesaoCoerencia({
     }
   };
 
-  const isModuleUnlocked = useCallback(
-    (_index: number) => {
-      return true;
-    },
-    [],
-  );
+  const isModuleUnlocked = useCallback((index: number) => {
+    return true; // Liberado para estudo contínuo
+  }, []);
 
   return (
     <AulaTemplate
@@ -197,106 +207,173 @@ export default function AulaCoesaoCoerencia({
         />
 
         <div className="space-y-[50px]">
-          {/* ★ RICH INTRO SECTION */}
+          {/* ★ RICH INTRO: Engajamento inicial */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
-              title="A Dualidade Textual: Coesão vs. Coerência"
-          variant={mv[1]}
-        />
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              index="INTRO"
+              title="A Matemática do Sentido"
+              description="Domine a engenharia de superfície e a mecânica de profundidade para antecipar armadilhas da CESGRANRIO."
+              variant={mv[1]}
+            />
+            <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
-                Na arquitetura textual exigida em avaliações de alto nível, como as da <strong>CESGRANRIO</strong>, compreender a distinção clássica proposta por linguistas consolidados, como Ingedore Koch e Celso Cunha, é o primeiro passo para o sucesso. A <strong>Coesão Textual</strong> refere-se à teia de conexões superficiais do texto — é a infraestrutura gramatical que costura sentenças através de pronomes, elipses e conectivos. Trata-se do "tecido" visível do qual a redação é feita.
+                Para <strong>Evanildo Bechara</strong>, o texto não é um amontoado de frases
+                soltas, mas um <strong>organismo vivo</strong> em que cada parte depende das
+                demais para produzir sentido. Na sua <em>Moderna Gramática Portuguesa</em>,
+                Bechara distingue dois planos de organização textual que a CESGRANRIO cobra
+                com frequência: a <strong>coesão</strong>, que opera na superfície
+                linguística — o terreno dos pronomes, das conjunções, das elipses e das
+                repetições controladas —, e a <strong>coerência</strong>, que habita o
+                subsolo lógico do texto, garantindo que as ideias não se contradigam e que a
+                progressão temática faça sentido para o leitor. Entender essa dualidade é o
+                primeiro passo para decifrar qualquer questão de Língua Portuguesa no
+                concurso da Petrobras.
               </p>
+
               <p>
-                Em contrapartida, a <strong>Coerência Textual</strong> diz respeito ao plano lógico profundo. Ela é responsável pela não-contradição, progressão e manutenção da relevância temática dentro do universo construído. Um texto pode apresentar articulações perfeitas (coesão impecável), mas narrar que a água entrou em combustão de forma espontânea numa caldeira fria (incoerência externa ao mundo real).
+                A <strong>coesão</strong>, segundo Bechara, funciona como a argamassa entre
+                os tijolos de uma construção: sem ela, as paredes (frases) até podem estar
+                de pé individualmente, mas o edifício (texto) desmorona. Essa argamassa se
+                manifesta por dois grandes mecanismos.{" "}
+                O primeiro é a <strong>coesão referencial</strong> (ou remissiva), que
+                conecta termos dentro do texto por meio de anáforas, catáforas, pronomes
+                demonstrativos, relativos e possessivos. O segundo é a{" "}
+                <strong>coesão sequencial</strong>, que encadeia as ideias por meio de
+                conectivos — conjunções coordenativas e subordinativas, advérbios de
+                ligação e expressões de transição. Nos relatórios técnicos da Petrobras,
+                ambos os mecanismos são indispensáveis para garantir clareza e evitar
+                ambiguidade em procedimentos de segurança operacional.
               </p>
+
               <p>
-                As normas da Petrobras e manuais de Segurança Operacional reforçam constantemente a importância dessa dualidade. Em um laudo de SMS (Saúde, Meio Ambiente e Segurança), um pronome mal colocado pode causar a interpretação de que a manutenção de uma válvula é opcional (falha de coesão referencial), gerando não apenas incoerência pragmática, mas um risco grave a um ativo físico da companhia. A precisão técnica depende do casamento perfeito e imaculado entre as duas instâncias.
+                Já a <strong>coerência</strong> não reside nas palavras em si, mas na
+                relação lógica entre o que o texto diz e o <strong>conhecimento de
+                mundo</strong> do leitor. Bechara adverte que um texto pode ser
+                perfeitamente coeso — com todos os pronomes retomando os referentes
+                corretos e todos os conectivos bem empregados — e, ainda assim, ser
+                completamente <strong>incoerente</strong>. O exemplo clássico é a frase
+                {" "}<em>&quot;O técnico de segurança inspecionou a válvula, portanto o navio
+                voou para Marte&quot;</em>: coesa na superfície (o &quot;portanto&quot; conecta as
+                orações), mas absurda no plano lógico. A CESGRANRIO explora exatamente essa
+                armadilha, apresentando textos com coesão impecável mas com rupturas de
+                coerência pragmática escondidas nas entrelinhas.
               </p>
+
               <p>
-                A <strong>CESGRANRIO</strong> frequentemente se aproveita da separação analítica desses itens nas suas questões. É bastante habitual vermos elaborações formais impecáveis nos exames, mas que exigem do candidato a pura percepção de que a palavra sublinhada (um conectivo argumentativo ou concessivo, por exemplo) está apenas conectando bem algo impossível. Eles querem sempre saber de você: Consegue notar quando algo aparentemente correto e brilhante oculta uma falha lógica de fundo abissal?
+                No contexto da <strong>Petrobras</strong>, essa distinção assume dimensão
+                crítica. Um boletim de ocorrência que diga{" "}
+                <em>&quot;A pressão do duto aumentou 30%. Dessa forma, a equipe manteve o
+                mesmo procedimento&quot;</em> apresenta uma incoerência pragmática grave: o
+                conectivo conclusivo &quot;dessa forma&quot; liga um fato (aumento de pressão) a
+                uma conclusão ilógica (manutenção do mesmo procedimento), quando o
+                esperado seria a adoção de medidas corretivas. Nos editais recentes da
+                CESGRANRIO para a Petrobras, questões desse tipo — em que a coesão
+                superficial mascara uma falha de coerência — representam cerca de 15% das
+                questões de interpretação e gramática.
               </p>
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
-                <h4 className="font-bold text-foreground">Regra-Chave (A Metáfora da Estrutura)</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <span className="font-bold text-amber-600 dark:text-amber-400">COESÃO = Os Tijolos (Superfície)</span>
-                    <ul className="list-disc list-inside mt-2 text-sm space-y-1">
-                      <li>Depende primariamente de Ferramentas e Nexos.</li>
-                      <li>Dita o relacionamento das palavras da frase.</li>
-                      <li>Responsável por "grudar" blocos estruturais.</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <span className="font-bold text-emerald-600 dark:text-emerald-400">COERÊNCIA = O Projeto (Sentido Pragmático)</span>
-                    <ul className="list-disc list-inside mt-2 text-sm space-y-1">
-                      <li>Pauta e rege a não-contradição lógica final.</li>
-                      <li>Deve coadunar com a física e nosso mundo.</li>
-                      <li>Define o que o texto efetivamente construiu.</li>
-                    </ul>
-                  </div>
-                </div>
+
+              <p>
+                A principal <strong>pegadinha</strong> que a banca aplica neste tema é
+                afirmar que um texto é incoerente apenas porque lhe falta um conectivo
+                explícito. Bechara ensina que pode haver coerência sem coesão explícita:
+                frases como <em>&quot;Choveu. O jogo foi cancelado&quot;</em> são perfeitamente
+                coerentes — o leitor infere a relação causal pelo contexto —, embora não
+                haja nenhum conectivo unindo as orações. A CESGRANRIO frequentemente
+                oferece alternativas que confundem <strong>ausência de conectivo</strong>{" "}
+                com <strong>ausência de coerência</strong>, e o candidato preparado sabe
+                que são fenômenos independentes.
+              </p>
+
+              <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/30 dark:to-blue-950/30 rounded-lg border border-indigo-200 dark:border-indigo-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground flex items-center gap-2">
+                  🛡️ Protocolo N.E.X.O. de Elite
+                </h4>
+                <ul className="list-disc list-inside space-y-2 mt-2">
+                  <li><strong>N</strong>avegar — Rastreie o antecedente (anáfora) ou o referente futuro (catáfora) com precisão cirúrgica.</li>
+                  <li><strong>E</strong>xaminar — Valide a função lógica do conectivo: ele indica causa, oposição, concessão ou conclusão?</li>
+                  <li><strong>X</strong>eretar — Substitua o nexo por um equivalente e verifique se a lógica e a correção gramatical permanecem intactas.</li>
+                  <li><strong>O</strong>mitir — Identifique o silêncio estratégico (elipse/zeugma) e confirme se o termo omitido é recuperável pelo contexto.</li>
+                </ul>
               </div>
             </div>
+
+            <QuizDiagnostic
+              title="Diagnóstico de Entrada: O Falso Brilho"
+              description="Teste sua percepção inicial sobre a força dos conectivos adversativos."
+              question="Na frase: 'O projeto é ambicioso, **contudo** exige alto investimento', a substituição de 'contudo' por 'embora' manteria a correção gramatical?"
+              options={[
+                "Sim, pois ambos indicam oposição.",
+                "Não, pois a mudança exige ajuste no modo verbal.",
+                "Sim, desde que a pontuação seja mantida.",
+                "Sim, pois são sinônimos perfeitos no Padrão Bechara.",
+              ]}
+              correctAnswer={1}
+              explanation="Excelente! Como ensina Bechara, a conjunção 'contudo' (adversativa) acompanha o modo indicativo, enquanto 'embora' (concessiva) exige o modo subjuntivo."
+              variant={mv[1]}
+            />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Dualidade Textual"
-          variant={mv[1]}
-        />
+              variant={mv[1]}
+            />
             <ContentAccordion
+              mode="stacked"
               slides={[
                 {
-                  titulo: "Conceituação",
+                  titulo: "O Microscópio de Bechara: A Dualidade",
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed">
-                        Imagine um tecido: a <strong>Coesão</strong> são as
-                        fibras e o modo como elas se entrelaçam (gramática). A{" "}
-                        <strong>Coerência</strong> é o padrão, a cor e a
-                        utilidade do tecido (sentido).
+                      <p className="text-muted-foreground text-sm md:text-base leading-relaxed text-justify">
+                        Para o gramático <strong>Evanildo Bechara</strong>, o
+                        texto é uma unidade sociocomunicativa intrincada. A{" "}
+                        <strong>Coesão</strong> atua como a rede neural
+                        (elementos de amarração, preposições, sintaxe), enquanto
+                        a <strong>Coerência</strong> é a consciência do texto
+                        (não contradição, relevância e encadeamento lógico).
                       </p>
-                      <AlertBox tipo="info" titulo="O que a prova cobra?">
-                        A banca quer saber se você identifica os{" "}
-                        <strong>mecanismos</strong> que amarram o texto ou se
-                        percebe quando o sentido foge à lógica.
+                      <AlertBox tipo="info" titulo="O que a CESGRANRIO cobra?">
+                        A banca raramente pedirá conceitos isolados. Ela exigirá
+                        que você identifique os <strong>mecanismos</strong> que
+                        amarram o texto e denuncie quando o sentido lógico for
+                        quebrado por um conectivo mal empregado.
                       </AlertBox>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Diferença Técnica",
+                  titulo: "Anatomia da Estrutura",
                   icone: <LuScale />,
                   conteudo: (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="p-5 bg-blue-500/5 border border-blue-500/20 rounded-xl">
-                        <h4 className="font-bold text-blue-600 mb-2">
-                          Coesão (Capa/Forma)
+                      <div className="p-5 bg-blue-500/5 border border-blue-500/20 rounded-xl space-y-3">
+                        <h4 className="font-bold text-blue-600 flex items-center gap-2">
+                          <LuLink /> Coesão (Capa/Forma)
                         </h4>
-                        <p className="text-lg">
-                          Uso de pronomes, conjunções, sinônimos e pontuação
-                          para ligar as frases.
+                        <p className="text-muted-foreground text-sm md:text-base">
+                          A engenharia de superfície. Utiliza pronomes,
+                          conjunções, sinônimos e pontuação estrutural para
+                          impedir que as frases "desabem" umas sobre as outras.
                         </p>
                       </div>
-                      <div className="p-5 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-                        <h4 className="font-bold text-emerald-600 mb-2">
-                          Coerência (Interior/Sentido)
+                      <div className="p-5 bg-emerald-500/5 border border-emerald-500/20 rounded-xl space-y-3">
+                        <h4 className="font-bold text-emerald-600 flex items-center gap-2">
+                          <LuBrain /> Coerência (Interior/Sentido)
                         </h4>
-                        <p className="text-lg">
-                          Unidade lógica, ausência de contradição e relevância
-                          das informações.
+                        <p className="text-muted-foreground text-sm md:text-base">
+                          A engenharia de profundidade. Garante a ausência total
+                          de contradição, a continuidade temática e a relevância
+                          sistêmica da informação.
                         </p>
                       </div>
                     </div>
                   ),
                 },
               ]}
-          corIndicador="bg-amber-500"
-        />
+            />
 
             <Comparison
               title="A Importância do Nexo"
@@ -324,8 +401,8 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={2}
               title="Os 5 Grandes Mecanismos de Coesão"
-          variant={mv[1]}
-        />
+              variant={mv[1]}
+            />
             <ContentAccordion
               mode="stacked"
               slides={[
@@ -335,10 +412,16 @@ export default function AulaCoesaoCoerencia({
                   conteudo: (
                     <div className="space-y-3">
                       <p className="text-muted-foreground leading-relaxed">
-                        Referência é o mecanismo pelo qual um elemento do texto remete a outro — dentro do próprio texto (endofórica) ou fora dele (exofórica). Divide-se em <strong>anáfora</strong> (retoma o que já foi dito) e <strong>catáfora</strong> (antecipa o que será dito).
+                        Referência é o mecanismo pelo qual um elemento do texto
+                        remete a outro — dentro do próprio texto (endofórica) ou
+                        fora dele (exofórica). Divide-se em{" "}
+                        <strong>anáfora</strong> (retoma o que já foi dito) e{" "}
+                        <strong>catáfora</strong> (antecipa o que será dito).
                       </p>
                       <div className="p-3 bg-blue-500/5 rounded-xl border-l-4 border-blue-500 font-mono text-lg italic">
-                        "A engenheira chegou. <span className="text-blue-600 font-bold">Ela</span> assumiu o posto." — 'ela' refere-se a 'a engenheira'.
+                        "A engenheira chegou.{" "}
+                        <span className="text-blue-600 font-bold">Ela</span>{" "}
+                        assumiu o posto." — 'ela' refere-se a 'a engenheira'.
                       </div>
                     </div>
                   ),
@@ -349,10 +432,17 @@ export default function AulaCoesaoCoerencia({
                   conteudo: (
                     <div className="space-y-3">
                       <p className="text-muted-foreground leading-relaxed">
-                        A substituição troca um elemento por outro de valor equivalente para evitar repetição. Pode ser <strong>nominal</strong>, <strong>verbal</strong> ou <strong>oracional</strong>.
+                        A substituição troca um elemento por outro de valor
+                        equivalente para evitar repetição. Pode ser{" "}
+                        <strong>nominal</strong>, <strong>verbal</strong> ou{" "}
+                        <strong>oracional</strong>.
                       </p>
                       <div className="p-3 bg-emerald-500/5 rounded-xl border-l-4 border-emerald-500 font-mono text-lg italic">
-                        "O relatório técnico foi entregue. <span className="text-emerald-600 font-bold">O documento</span> estava impecável." — substituição nominal.
+                        "O relatório técnico foi entregue.{" "}
+                        <span className="text-emerald-600 font-bold">
+                          O documento
+                        </span>{" "}
+                        estava impecável." — substituição nominal.
                       </div>
                     </div>
                   ),
@@ -363,10 +453,17 @@ export default function AulaCoesaoCoerencia({
                   conteudo: (
                     <div className="space-y-3">
                       <p className="text-muted-foreground leading-relaxed">
-                        A elipse é a omissão de um termo recuperável pelo contexto. Cria fluidez eliminando repetições desnecessárias. Na CESGRANRIO, a elipse verbal frequentemente é marcada pela vírgula.
+                        A elipse é a omissão de um termo recuperável pelo
+                        contexto. Cria fluidez eliminando repetições
+                        desnecessárias. Na CESGRANRIO, a elipse verbal
+                        frequentemente é marcada pela vírgula.
                       </p>
                       <div className="p-3 bg-cyan-500/5 rounded-xl border-l-4 border-cyan-500 font-mono text-lg italic">
-                        "Maria aprovou a proposta; Pedro <span className="text-cyan-600 font-bold">[aprovou]</span> a minuta." — verbo elidido.
+                        "Maria aprovou a proposta; Pedro{" "}
+                        <span className="text-cyan-600 font-bold">
+                          [aprovou]
+                        </span>{" "}
+                        a minuta." — verbo elidido.
                       </div>
                     </div>
                   ),
@@ -376,7 +473,13 @@ export default function AulaCoesaoCoerencia({
                   icone: <LuZap />,
                   conteudo: (
                     <p className="text-muted-foreground leading-relaxed">
-                      Conjunções e conectivos estabelecem relações semântico-lógicas: <strong>adição</strong> (e, além disso), <strong>adversidade</strong> (mas, porém), <strong>causalidade</strong> (porque, visto que), <strong>concessão</strong> (embora, ainda que), <strong>finalidade</strong> (para que). São os tijolos da arquitetura argumentativa.
+                      Conjunções e conectivos estabelecem relações
+                      semântico-lógicas: <strong>adição</strong> (e, além
+                      disso), <strong>adversidade</strong> (mas, porém),{" "}
+                      <strong>causalidade</strong> (porque, visto que),{" "}
+                      <strong>concessão</strong> (embora, ainda que),{" "}
+                      <strong>finalidade</strong> (para que). São os tijolos da
+                      arquitetura argumentativa.
                     </p>
                   ),
                 },
@@ -386,14 +489,19 @@ export default function AulaCoesaoCoerencia({
                   conteudo: (
                     <div className="space-y-3">
                       <p className="text-muted-foreground leading-relaxed">
-                        A coesão lexical usa relações semânticas: <strong>sinonímia</strong> (petróleo / óleo cru), <strong>hiperonímia</strong> (combustível para petróleo, gás e etanol), <strong>hiponímia</strong> (diesel como espécie de combustível) e <strong>reiteração</strong> intencional. Em textos da Petrobras, a hiperonímia é especialmente frequente.
+                        A coesão lexical usa relações semânticas:{" "}
+                        <strong>sinonímia</strong> (petróleo / óleo cru),{" "}
+                        <strong>hiperonímia</strong> (combustível para petróleo,
+                        gás e etanol), <strong>hiponímia</strong> (diesel como
+                        espécie de combustível) e <strong>reiteração</strong>{" "}
+                        intencional. Em textos da Petrobras, a hiperonímia é
+                        especialmente frequente.
                       </p>
                     </div>
                   ),
                 },
               ]}
-          corIndicador="bg-amber-500"
-        />
+            />
 
             <FlipCard
               frente={
@@ -413,7 +521,9 @@ export default function AulaCoesaoCoerencia({
                     </p>
                     <p className="text-zinc-200 italic">
                       "A turbina falhou.{" "}
-                      <span className="text-cyan-300 font-bold">O equipamento</span>{" "}
+                      <span className="text-cyan-300 font-bold">
+                        O equipamento
+                      </span>{" "}
                       foi substituído."
                     </p>
                     <p className="text-zinc-400 text-lg mt-1">
@@ -425,8 +535,7 @@ export default function AulaCoesaoCoerencia({
                       CATÁFORA — Farol
                     </p>
                     <p className="text-zinc-200 italic">
-                      "
-                      <span className="text-blue-300 font-bold">Isto</span> foi
+                      "<span className="text-blue-300 font-bold">Isto</span> foi
                       anunciado: nova perfuração no pré-sal."
                     </p>
                     <p className="text-zinc-400 text-lg mt-1">
@@ -443,8 +552,8 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={3}
               title="Coesão e Coerência no Contexto Petrobras"
-          variant={mv[1]}
-        />
+              variant={mv[1]}
+            />
             <CardCarousel
               cards={[
                 {
@@ -484,59 +593,154 @@ export default function AulaCoesaoCoerencia({
               trecho e pedem qual pronome ou conectivo pode ser{" "}
               <strong>substituído sem alterar o sentido</strong>. Identifique
               sempre a relação semântica (retomada, oposição, causa) antes de
-              escolher.
+              escolher a alternativa.
             </AlertBox>
           </section>
 
-          <ModuleConsolidation
-            index={1}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Revisão Textual", duration: "5:00" }}
-            audio={{ audioUrl: "placeholder.mp3", titulo: "O Vaso e a Costura", artista: "Sertanejo Universitário" }}
-            resumoVisual={{
-              moduloNome: "O Tecido do Texto",
-              tituloAula: "Coesão e Coerência",
-              materia: "portugues",
-              images: [
-                { title: "A Diferença na Prática", type: "conceito", placeholderColor: "bg-amber-100", imageUrl: "/images/placeholders/coesao-coerencia.webp" }
-              ]
-            }}
-            maceteVisual={{
-              title: "O Macete do 'Vaso Trincado'",
-              content: (
-                <>
-                  <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
-                    <span>🪡</span>
-                    <span>🏺</span>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
-                    "O **Coeso** costura o texto. O **Coerente** não deixa a água vazar."
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
-                    <div className="p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">
-                      <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">Errar a Coesão</h4>
-                      <p className="text-lg text-muted-foreground italic">"O técnico caiu, ele continuou andando."</p>
-                      <p className="text-[10px] mt-2 font-medium text-amber-700 dark:text-amber-300 uppercase">A costura abriu (falta 'mas') ✅</p>
+          {/* ── CONSOLIDAÇÃO M1: LESSON TABS ── */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12 mb-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+            <ModuleSectionHeader
+              index={4}
+              title="Consolidação: O Tecido do Texto"
+              description="Sintetize os conceitos fundamentais antes do teste prático."
+              variant={mv[1]}
+            />
+
+            <LessonTabs
+              tabs={[
+                {
+                  id: "video",
+                  label: "Vídeo Aula",
+                  icone: LuPlay,
+                  conteudo: (
+                    <div className="aspect-video bg-zinc-900 rounded-xl flex flex-col items-center justify-center border border-zinc-800 relative overflow-hidden group cursor-pointer shadow-lg w-full max-w-3xl mx-auto">
+                      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1616469829581-73993eb86b02?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-700"></div>
+                      <div className="absolute inset-0 bg-blue-900/40 mix-blend-multiply"></div>
+                      <div className="w-16 h-16 rounded-full bg-blue-600/90 flex items-center justify-center text-white backdrop-blur-sm group-hover:scale-110 group-hover:bg-blue-500 transition-all duration-300 shadow-xl shadow-blue-500/20 z-10 mb-4">
+                        <LuPlay className="w-8 h-8 ml-1" />
+                      </div>
+                      <p className="text-blue-100 font-medium z-10 text-lg">
+                        Assistir: Diferença Crítica na CESGRANRIO
+                      </p>
+                      <p className="text-blue-300/80 text-sm z-10 mt-1">
+                        11:45 • Revisão Turbo
+                      </p>
                     </div>
-                    <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-                      <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">Errar a Coerência</h4>
-                      <p className="text-lg text-muted-foreground italic">"Choveram canivetes frios e solares na sala."</p>
-                      <p className="text-[10px] mt-2 font-medium text-emerald-700 dark:text-emerald-300 uppercase">O sentido vazou totalmente ✅</p>
+                  ),
+                },
+                {
+                  id: "resumo",
+                  label: "Resumo Visual",
+                  icone: LuImage,
+                  conteudo: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          type: "Conceito",
+                          title: "Coesão vs Coerência",
+                          placeholderColor: "bg-blue-500/20",
+                        },
+                        {
+                          type: "Mecanismo",
+                          title: "Retrovisor e Farol",
+                          placeholderColor: "bg-cyan-500/20",
+                        },
+                        {
+                          type: "Mecanismo",
+                          title: "Substituição Lexical",
+                          placeholderColor: "bg-emerald-500/20",
+                        },
+                      ]}
+                    />
+                  ),
+                },
+                {
+                  id: "macetes",
+                  label: "Macetes",
+                  icone: LuZap,
+                  conteudo: (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="bg-gradient-to-br from-blue-900 to-indigo-900 p-6 rounded-2xl shadow-lg border border-blue-700/50 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-4 opacity-10">
+                          <LuActivity className="w-24 h-24 text-white" />
+                        </div>
+                        <h3 className="text-blue-100 font-bold mb-4 flex items-center gap-2">
+                          <LuZap className="text-amber-400" /> Macete: O Caminho
+                          da Referência
+                        </h3>
+                        <ul className="space-y-3 text-blue-50/90 text-sm md:text-base relative z-10">
+                          <li className="flex items-start gap-2">
+                            <span className="text-amber-400 mt-1">✓</span>
+                            <span>
+                              Se a seta aponta para{" "}
+                              <strong className="text-white">Trás</strong>:
+                              Anáfora (Retrovisor).
+                            </span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-amber-400 mt-1">✓</span>
+                            <span>
+                              Se a seta aponta para{" "}
+                              <strong className="text-white">Frente</strong>:
+                              Catáfora (Farol).
+                            </span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-amber-400 mt-1">✓</span>
+                            <span>
+                              Se a seta aponta para{" "}
+                              <strong className="text-white">Fora</strong>:
+                              Exófora (Contexto Múndi).
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="bg-card border border-border p-6 rounded-2xl flex flex-col justify-center items-center text-center space-y-4 shadow-sm">
+                        <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center">
+                          <LuLightbulb className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                        </div>
+                        <p className="font-medium text-foreground">
+                          A Regra de Ouro das Alternativas
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          Nas questões de coesão, nunca busque apenas a palavra
+                          semelhante. Substitua no texto e{" "}
+                          <strong>leia o período inteiro</strong> para
+                          certificar se o sentido lógico (coerência) sobreviveu
+                          à troca (coesão).
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </>
-              ),
-            }}
-          variant={mv[1]}
-        />
+                  ),
+                },
+                {
+                  id: "audio",
+                  label: "Áudio",
+                  icone: LuVolume2,
+                  conteudo: (
+                    <MusicPlayerCard
+                      audioUrl="/audio/coesao-m1.mp3"
+                      capaUrl="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=320&auto=format&fit=crop"
+                      titulo="Podcast: O Fio Condutor"
+                      artista="Prof. Fernando"
+                      lyrics="Você abre o cadernão de gabaritos e lá vem ela.\nA primeira questão interpretativa...\nO candidato incauto procura o que parece bonito.\nNós, porém, procuramos o que a anáfora conectou."
+                    />
+                  ),
+                },
+              ]}
+              variant={mv[1]}
+            />
+          </section>
 
           <QuizInterativo
             questoes={quizM1}
-            titulo="[4] QUIZ: O TECIDO DO TEXTO"
+            titulo="QUIZ: O Tecido do Texto"
             icone="🎯"
-            numero={4}
+            numero={5}
+            variant={mv[1]}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          variant={mv[1]}
-        />
+          />
         </div>
       </TabsContent>
 
@@ -550,157 +754,283 @@ export default function AulaCoesaoCoerencia({
         />
 
         <div className="space-y-[50px]">
-          {/* ★ RICH INTRO SECTION */}
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          {/* ★ RICH INTRO: O Poder do Retrovisor */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
             <ModuleSectionHeader
-              index={1}
-              title="A Mecânica da Referenciação Anafórica"
-          variant={mv[2]}
-        />
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              index="INTRO"
+              title="O Labirinto das Retomadas"
+              description="Entenda como a anáfora economiza recursos cognitivos e evita a estagnação nos manuais técnicos da Petrobras."
+              variant={mv[2]}
+            />
+            <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
-                A anáfora, referenciada frequentemente na linguística textual moderna, é o mecanismo de retomada mais onipresente na língua. Segundo Bechara, trata-se de um processo de coesão endofórica que exige do leitor olhar para trás no texto em busca da interpretação completa de um elemento gramaticalmente vazio — geralmente um pronome, advérbio ou numeral.
+                Na <em>Moderna Gramática Portuguesa</em>,{" "}
+                <strong>Evanildo Bechara</strong> define a anáfora como o mecanismo
+                pelo qual um termo do texto <strong>remete a outro já mencionado
+                anteriormente</strong>, criando uma cadeia de referência que economiza
+                recursos cognitivos do leitor e evita a repetição mecânica. Funciona como
+                o retrovisor de um veículo: permite olhar para trás sem perder o rumo da
+                estrada à frente. Sem a anáfora, cada frase teria de repetir
+                integralmente o substantivo ao qual se refere, tornando o texto técnico —
+                tão comum nos relatórios da Petrobras — praticamente ilegível.
               </p>
+
               <p>
-                Em explicações pragmáticas, podemos comparar a anáfora ao uso do espelho retrovisor de um veículo. Ao avançarmos pelo texto introduzindo novas informações, utilizamos pronomes como "ele", "seus", "isso" ou "esse" para manter o tópico discursivo sem cairmos num vale de extrema redundância nominal. Ela emagrece a redação, tornando-a esportiva e direta.
+                Bechara classifica a retomada anafórica em três grandes tipos que a
+                CESGRANRIO cobra sistematicamente. A{" "}
+                <strong>anáfora pronominal</strong> é a mais frequente: pronomes pessoais
+                (<em>ele, ela, eles</em>), demonstrativos (<em>esse, essa, isso</em>) e
+                relativos (<em>que, o qual, cujo</em>) retomam o referente anterior sem
+                repeti-lo. A <strong>anáfora sinonímica</strong> substitui o termo
+                original por um sinônimo ou expressão equivalente — &quot;plataforma de
+                extração&quot; retomada como &quot;unidade offshore&quot;. Já a{" "}
+                <strong>anáfora epitética</strong> usa uma expressão caracterizadora no
+                lugar do nome próprio: &quot;Rio de Janeiro&quot; vira &quot;a Cidade Maravilhosa&quot;,
+                &quot;Petrobras&quot; vira &quot;a estatal brasileira de energia&quot;.
               </p>
+
               <p>
-                Na Engenharia e Arquivologia da Petrobras, a manutenção correta do retrovisor narrativo é vital. Em relatórios de Manutenção Preditiva (MP), frases como: "A bomba 4 apresentou desgaste severo; no entanto, o painel operava dentro dos limites de <strong>sua</strong> temperatura operacional" criam um desafio interpretativo assustador aos auditores. O termo 'sua' refere-se à bomba ou ao painel? Normativas petroleiras frequentemente desencorajam anáforas possessivas ambíguas.
+                O ponto crucial que Bechara destaca — e que a CESGRANRIO transforma em
+                armadilha — é a <strong>concordância entre o pronome anafórico e seu
+                antecedente</strong>. Quando o texto diz{" "}
+                <em>&quot;As plataformas foram vistoriadas. Ela apresentou falhas&quot;</em>, há uma
+                quebra de coerência referencial: o pronome &quot;ela&quot; (singular) não pode
+                retomar &quot;plataformas&quot; (plural). A banca insere esse tipo de
+                inconsistência nas alternativas de reescrita, esperando que o candidato
+                desatento valide a troca sem perceber a ruptura numérica. Além disso, os
+                pronomes demonstrativos seguem uma regra de ouro que Bechara sistematiza:
+                {" "}<strong>&quot;ESSE/ESSA/ISSO&quot;</strong> são tipicamente anafóricos (olham para
+                trás), enquanto <strong>&quot;ESTE/ESTA/ISTO&quot;</strong> tendem a ser catafóricos
+                (preparam o que virá).
               </p>
+
               <p>
-                As questões elaboradas pela banca CESGRANRIO atacam exatamente este instinto investigativo. Elas vão sublinhar um pronome de retomada, frequentemente os demonstrativos marcados fortemente por "SS" ("esse", "isso", "nesse"), e questionarão ativamente a que termo lá do passado o elemento está se referindo. Cuidado com malabarismos lógicos ao varrer o trecho sublinhado do material, o avaliador colocará vários sujeitos soltos pouco antes dele despistá-lo do referente intencional!
+                No universo da <strong>Petrobras</strong>, a anáfora é a espinha dorsal da
+                comunicação técnica. Um relatório de incidentes que diga{" "}
+                <em>&quot;O equipamento de perfuração apresentou desgaste. O dispositivo foi
+                recolhido para manutenção&quot;</em> usa anáfora sinonímica com precisão
+                cirúrgica: &quot;o dispositivo&quot; retoma &quot;o equipamento de perfuração&quot; sem
+                saturar o canal de comunicação. Nos boletins de segurança da estatal,
+                onde a clareza pode salvar vidas, o domínio desse recurso é vital. A
+                CESGRANRIO costuma extrair trechos reais de relatórios de inspeção,
+                contratos de licitação e documentos regulatórios para testar se o
+                candidato consegue identificar a cadeia referencial completa.
               </p>
-              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
-                <h4 className="font-bold text-foreground">A Regra dos Demonstrativos (Tempo e Espaço Textual)</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <span className="font-bold text-blue-600 dark:text-blue-400">Uso do ESSE (A Anáfora Retrospectiva)</span>
-                    <ul className="list-disc list-inside mt-2 text-sm space-y-1">
-                      <li>Retoma uma ideia que já fora proferida.</li>
-                      <li>Refere-se quase unicamente ao passado temporal.</li>
-                      <li>No ambiente espacial, aproxima-se <strong>do foco de quem ouve/lê</strong>.</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <span className="font-bold text-cyan-600 dark:text-cyan-400">Exemplo Prático na Prova</span>
-                    <ul className="list-disc list-inside mt-2 text-sm italic">
-                      <li>"A taxa referencial Selic sofreu um enorme aumento de pontuação. <strong>Essa</strong> medida infelizmente afetou de morte o PIB da nação corporativa."</li>
-                    </ul>
-                  </div>
-                </div>
+
+              <p>
+                A <strong>pegadinha clássica</strong> da banca neste tema envolve a{" "}
+                <strong>ambiguidade referencial</strong>: quando há dois ou mais
+                substantivos possíveis como antecedente, o pronome anafórico gera
+                dúvida sobre a quem se refere. Na frase{" "}
+                <em>&quot;O engenheiro informou ao gerente que ele seria transferido&quot;</em>,
+                quem será transferido — o engenheiro ou o gerente? Bechara ensina que a
+                solução passa pela reestruturação sintática, e a CESGRANRIO explora
+                exatamente esse fenômeno ao pedir reescritas que eliminem a ambiguidade
+                sem alterar o sentido original.
+              </p>
+
+              <div className="bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950/30 dark:to-blue-950/30 rounded-lg border border-cyan-200 dark:border-cyan-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground flex items-center gap-2">
+                  🔄 Mapa Anafórico — Tipos e Sinais
+                </h4>
+                <ul className="list-disc list-inside space-y-2 mt-2">
+                  <li><strong>Pronominal</strong> — &quot;ele&quot;, &quot;essa&quot;, &quot;o qual&quot; → retomam o substantivo anterior diretamente.</li>
+                  <li><strong>Sinonímica</strong> — substitui por sinônimo ou equivalente: &quot;petróleo&quot; → &quot;o hidrocarboneto&quot;.</li>
+                  <li><strong>Epitética</strong> — usa expressão caracterizadora: &quot;Petrobras&quot; → &quot;a estatal brasileira&quot;.</li>
+                  <li><strong>Regra ESSE vs ESTE</strong> — &quot;Esse/Isso&quot; = olha para trás (anáfora). &quot;Este/Isto&quot; = olha para frente (catáfora).</li>
+                </ul>
               </div>
             </div>
+
+            <QuizDiagnostic
+              title="Teste de Antecedência"
+              question="Ao ler: 'A refinaria foi inspecionada. **Ela** apresentou falhas', o pronome 'Ela' exerce qual função segundo no Padrão Bechara?"
+              options={[
+                "Catáfora, pois aponta para o que será dito.",
+                "Anáfora, pois retoma um substantivo já mencionado.",
+                "Elipse, pois o sujeito foi omitido parcialmente.",
+                "Deixe de lado, pois não há conexão clara.",
+              ]}
+              correctAnswer={1}
+              explanation="Correto! 'Ela' é um elemento anafórico que retoma 'A refinaria', evitando a repetição e mantendo a coesão referencial."
+              variant={mv[2]}
+            />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={2}
-              title="Referenciação Anafórica"
-          variant={mv[2]}
-        />
+              index={1}
+              title="A Mecânica da Anáfora (Retrovisor)"
+              description="A arte de fazer o texto avançar enquanto olha para trás."
+              variant={mv[2]}
+            />
             <ContentAccordion
+              mode="stacked"
               slides={[
                 {
-                  titulo: "O que é Anáfora?",
+                  titulo: "O Conceito de Retomada",
                   icone: <LuCompass />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground">
+                      <p className="text-muted-foreground text-sm md:text-base leading-relaxed text-justify">
                         Anáfora (do grego <i>ana</i> = atrás) é o fenômeno em
-                        que um termo aponta para outro já citado. É o
-                        "retrovisor" do texto.
+                        que um termo aponta para outro já citado (o
+                        antecedente). Funciona como a memória de curto prazo do
+                        leitor. Segundo a preceptiva de Bechara, a anáfora
+                        economiza caracteres e acelera a leitura.
                       </p>
-                      <div className="p-4 bg-muted/50 rounded-xl border-l-4 border-cyan-500 font-medium">
-                        "A Petrobras investe.{" "}
-                        <span className="text-cyan-600 font-bold underline">
+                      <div className="p-4 bg-cyan-500/10 rounded-xl border-l-4 border-cyan-500 font-medium">
+                        "A plataforma{" "}
+                        <strong className="text-cyan-700 dark:text-cyan-400">
+                          P-70
+                        </strong>{" "}
+                        começou a operar.{" "}
+                        <strong className="text-cyan-700 dark:text-cyan-400 underline">
                           ELA
-                        </span>{" "}
-                        busca inovação."
+                        </strong>{" "}
+                        adicionará 150 mil barris ao dia."
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Técnicas de Retomada",
+                  titulo: "Táticas Lexicais vs Pronominais",
                   icone: <LuLibrary />,
                   conteudo: (
                     <CardCarousel
                       cards={[
                         {
                           icone: "👤",
-                          title: "Pronominal",
+                          title: "Retomada Pronominal",
                           descricao:
-                            "Uso de pronomes (ele, esse, o qual). O mais comum em provas.",
+                            "O uso clássico de pronomes (ele, o qual, esse). A CESGRANRIO gosta de perguntar qual substantivo o 'que' ou 'o qual' está retomando.",
                         },
                         {
                           icone: "🔄",
-                          title: "Sinonímica",
+                          title: "Retomada Sinonímica",
                           descricao:
-                            "Troca por sinônimo (Petróleo -> Ouro Negro). Mantém o nível do texto.",
+                            "Substituição por sinônimos para evitar repetição (Petróleo -> Óleo Cru). Garante coesão elevando o padrão vocabular.",
                         },
                         {
                           icone: "📦",
-                          title: "Epíteto",
+                          title: "O Uso de Termos-Síntese",
                           descricao:
-                            "Expressões consagradas (Rio de Janeiro -> A Cidade Maravilhosa).",
+                            "Palavras superordenadas que encapsulam a ideia anterior inteira (Ex: 'Todo esse processo...', 'Com esta medida...').",
                         },
                       ]}
                     />
                   ),
                 },
               ]}
-          corIndicador="bg-blue-500"
-        />
-            <AlertBox tipo="warning" titulo="Pulo do Gato!">
-              Os demonstrativos com "SS" (Esse, Essa, Isso) são tipicamente
-              anafóricos. Use-os para olhar para trás!
+            />
+            <AlertBox
+              tipo="warning"
+              titulo="Armadilha CESGRANRIO: Esse vs Este"
+            >
+              A gramática normativa afirma que <strong>ESSE</strong> (com ss)
+              olha para trás (é{" "}
+              <strong className="text-destructive">Anáforo</strong>) retomando o
+              que você acabou de escrever, enquanto <strong>ESTE</strong> (com
+              st) aponta para frente ou para algo imediato. Domine o uso dos SS!
             </AlertBox>
           </section>
 
-          <ModuleConsolidation
-            index={2}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Retrovisor", duration: "5:00" }}
-            audio={{ audioUrl: "placeholder.mp3", titulo: "Olhe pra Trás", artista: "Sertanejo Universitário" }}
-            resumoVisual={{
-              moduloNome: "O Poder do Retrovisor",
-              tituloAula: "Coesão e Coerência",
-              materia: "portugues",
-              images: [
-                { title: "Retrovisor Anafórico", type: "conceito", placeholderColor: "bg-blue-100", imageUrl: "/images/placeholders/anafora.webp" }
-              ]
-            }}
-            maceteVisual={{
-              title: "O Macete do 'SS'",
-              content: (
-                <>
-                  <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
-                    <span>🚗</span>
-                    <span>⏪</span>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
-                    "O **SS** em e**SS**e e i**SS**o significa pa**SS**ado. Dê uma forte checada no seu retrovisor para captar o termo fugitivo culpado!"
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
-                    <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
-                      <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">Retrocesso Lógico - ESSE</h4>
-                      <p className="text-lg text-muted-foreground italic">"A perfuradora entrou em colapso mecânico. E**SS**a anomalia gerou desespero no campo."</p>
-                      <p className="text-[10px] mt-2 font-medium text-blue-700 dark:text-blue-300 uppercase">Recaptura a atitude passada com maestria ✅</p>
+          {/* ── CONSOLIDAÇÃO M2: LESSON TABS ── */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12 mb-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-1 h-full bg-cyan-500"></div>
+            <ModuleSectionHeader
+              index={2}
+              title="Consolidação: O Poder do Retrovisor"
+              description="Acesse o resumo visual e o macete de anáfora."
+              variant={mv[2]}
+            />
+
+            <LessonTabs
+              tabs={[
+                {
+                  id: "video",
+                  label: "Vídeo Aula",
+                  icone: LuPlay,
+                  conteudo: (
+                    <div className="aspect-video bg-zinc-900 rounded-xl flex flex-col items-center justify-center border border-zinc-800 relative overflow-hidden group cursor-pointer shadow-lg w-full max-w-3xl mx-auto">
+                      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579227114347-15d08fc37cae?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-700"></div>
+                      <div className="absolute inset-0 bg-cyan-900/40 mix-blend-multiply"></div>
+                      <div className="w-16 h-16 rounded-full bg-cyan-600/90 flex items-center justify-center text-white backdrop-blur-sm group-hover:scale-110 group-hover:bg-cyan-500 transition-all duration-300 shadow-xl shadow-cyan-500/20 z-10 mb-4">
+                        <LuPlay className="w-8 h-8 ml-1" />
+                      </div>
+                      <p className="text-cyan-100 font-medium z-10 text-lg">
+                        Assistir: Identificando o Referente
+                      </p>
                     </div>
-                  </div>
-                </>
-              ),
-            }}
-          variant={mv[2]}
-        />
+                  ),
+                },
+                {
+                  id: "resumo",
+                  label: "Resumo Visual",
+                  icone: LuImage,
+                  conteudo: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          type: "Conceito",
+                          title: "Retomada Anafórica",
+                          placeholderColor: "bg-cyan-500/20",
+                        },
+                        {
+                          type: "Atenção",
+                          title: "Regra do SS",
+                          placeholderColor: "bg-blue-500/20",
+                        },
+                      ]}
+                    />
+                  ),
+                },
+                {
+                  id: "macetes",
+                  label: "Macetes",
+                  icone: LuZap,
+                  conteudo: (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="bg-gradient-to-br from-cyan-900 to-slate-900 p-6 rounded-2xl shadow-lg border border-cyan-700/50">
+                        <h3 className="text-cyan-100 font-bold mb-4">
+                          E<strong className="text-white">SS</strong>E = PA
+                          <strong className="text-white">SS</strong>ADO
+                        </h3>
+                        <p className="text-cyan-50/90 text-sm">
+                          Na leitura de textos complexos, se encontrar algo como
+                          'desse', 'nesses' ou 'isso', volte as linhas. O
+                          elemento citado reside no passado da leitura.
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  id: "audio",
+                  label: "Áudio",
+                  icone: LuVolume2,
+                  conteudo: (
+                    <MusicPlayerCard
+                      audioUrl="/audio/coesao-m2.mp3"
+                      titulo="Pílula: Voltando no Tempo"
+                      artista="Prof. Fernando"
+                      lyrics="A anáfora salva o texto da repetição crônica. Mas pode gerar ambiguidade se mal amarrada."
+                    />
+                  ),
+                },
+              ]}
+              variant="cyan"
+            />
+          </section>
 
           <QuizInterativo
             questoes={quizM2}
-            titulo="[3] QUIZ: O PODER DO RETROVISOR"
+            titulo="QUIZ: O Poder do Retrovisor"
             icone="🎯"
             numero={3}
+            variant={mv[2]}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          variant={mv[2]}
-        />
+          />
         </div>
       </TabsContent>
 
@@ -714,165 +1044,292 @@ export default function AulaCoesaoCoerencia({
         />
 
         <div className="space-y-[50px]">
-          {/* ★ RICH INTRO SECTION */}
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          {/* ★ RICH INTRO: O Farol do Sentido */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
             <ModuleSectionHeader
-              index={1}
-              title="A Elegância Estratégica da Antecipação Catafórica"
-          variant={mv[3]}
-        />
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              index="INTRO"
+              title="A Iluminação Catafórica: O Farol do Texto"
+              description="Domine o mecanismo de antecipação que Evanildo Bechara classifica como a remissão 'para diante', essencial na clareza de informativos técnicos."
+              variant={mv[3]}
+            />
+            <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
-                Em fortíssimo contraste argumentativo e simétrico perante à anáfora, o mecanismo de Catáfora (cunhado sob o grego clássico de <i>katá</i>, que indica direcionalidade veloz para baixo ou prospectivamente frente) é a fantástica engrenagem de linguagem diretamente responsável pela suspensão tática da revelação principal discursiva no seu projeto autoral.
+                Se a anáfora é o retrovisor do texto, a <strong>catáfora</strong> é o
+                farol alto de uma embarcação em alto-mar: ela projeta luz sobre o que
+                ainda não foi dito, criando um <strong>vácuo semântico
+                proposital</strong> que força o leitor a avançar para preencher o
+                significado. <strong>Evanildo Bechara</strong>, na{" "}
+                <em>Moderna Gramática Portuguesa</em>, classifica a catáfora como a{" "}
+                <strong>remissão &quot;para diante&quot;</strong> — um recurso coesivo em que o
+                termo referente aparece <em>depois</em> do elemento que o anuncia. Essa
+                inversão da ordem natural (primeiro o referente, depois a retomada)
+                produz um efeito de suspense controlado que a CESGRANRIO explora
+                intensamente nas provas da Petrobras.
               </p>
+
               <p>
-                Do rigoroso ponto de vista psicológico/neuro-cognitivo, as atuações de pronomes ou substantivos em papel de catáforas costumam alavancar instantaneamente o grau de atenção sustentada de leitura e reter os olhos em expectativa vibrante sobre uma revelação pesada posterior. Se alguém diz: "Nossa última decisão comercial para o ano de contingência será restrita a isto:", a palavra "isto" subitamente ganha um apelo magnético, bloqueando resoluções lógicas até ser superada pelo termo subsequente e que geralmente acompanha pesados dois-pontos.
+                O mecanismo catafórico mais frequente na língua portuguesa — e o mais
+                cobrado pela banca — é o uso dos <strong>pronomes demonstrativos
+                &quot;ESTE&quot;, &quot;ESTA&quot; e &quot;ISTO&quot;</strong> seguidos de dois-pontos. Bechara
+                sistematiza essa regra com clareza: enquanto &quot;esse/essa/isso&quot; olham para
+                trás (função anafórica), &quot;este/esta/isto&quot; olham para frente (função
+                catafórica). Na frase <em>&quot;O candidato deverá observar{" "}
+                <strong>isto</strong>: as normas de segurança da Petrobras são
+                inegociáveis&quot;</em>, o pronome &quot;isto&quot; antecipa a regra que será
+                enunciada após os dois-pontos. Esse padrão{" "}
+                <strong>pronome demonstrativo + dois-pontos + conteúdo</strong> é a
+                estrutura catafórica canônica que aparece em 80% das questões da
+                CESGRANRIO sobre o tema.
               </p>
+
               <p>
-                Pela seriedade da operação exigida, grande massa de editais vinculados a gigantes licitacionais além de instrumentos e regimentos da Petrobras, frequentemente abrigarão catáforas formais encabeçando parágrafos colossais. É de praxe em comunicados ler estruturas de peso idênticas a: "Conclusivamente informamos ser terminantemente proibido nas instalações, sob os fortes rigores da lei, este único e vital protocolo perigosíssimo: (A) Adentrar nos perímetros com smartphones munidos artificialmente com a tecnologia GPS celular na banda 3...".
+                Além dos pronomes demonstrativos, Bechara identifica outros{" "}
+                <strong>marcadores catafóricos</strong> que a banca utiliza. Expressões
+                como <em>&quot;a seguinte medida&quot;</em>,{" "}
+                <em>&quot;os pontos abaixo enumerados&quot;</em> e{" "}
+                <em>&quot;tal procedimento&quot;</em> (quando &quot;tal&quot; antecipa algo que será
+                detalhado) funcionam como sinalizadores de que a informação essencial
+                virá logo adiante. Nos textos da Petrobras, esse recurso é
+                especialmente útil em normas técnicas e comunicados internos, onde a
+                clareza na enumeração de procedimentos é questão de segurança
+                operacional. Um manual que diga <em>&quot;Observe as{" "}
+                <strong>seguintes</strong> precauções: (1) verificar a pressão do duto;
+                (2) inspecionar as válvulas de segurança&quot;</em> emprega catáfora para
+                organizar a informação de forma hierárquica e inequívoca.
               </p>
+
               <p>
-                Nas severas peneiras intelectuais geridas ao longo da história da CESGRANRIO, os elaboradores possuem uma paixão por brincar espertamente nas vísceras pronominais em catáforas. Sua caçada diária pedirá discernimento de excelência dos demonstrativos de base "T", seja nas formas ativas de "isto", "este/a", ou aglutinada como "nesta". A bancada da prova costuma sublinhá-los para testar a sua sensiblidade de projeção referencial adiante da mancha escrita apresentada na bateria de alternativas.
+                No contexto dos concursos da <strong>Petrobras</strong>, a catáfora
+                aparece com frequência em textos de editais, contratos de licitação e
+                relatórios de compliance. A CESGRANRIO costuma apresentar um trecho
+                oficial da estatal e perguntar qual o referente de um pronome
+                demonstrativo catafórico, ou pedir a reescrita de uma passagem
+                substituindo a catáfora por uma construção direta. O candidato precisa
+                entender que, ao eliminar a catáfora, o texto perde o efeito de{" "}
+                <strong>suspense organizacional</strong> — a informação chega sem
+                preparação prévia —, mas ganha em objetividade. Saber avaliar essa
+                troca é competência testada nas questões de equivalência semântica.
               </p>
-              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
-                <h4 className="font-bold text-foreground">O Gatilho Mnemônico "T" (O Farol de Previsão)</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <span className="font-bold text-emerald-600 dark:text-emerald-400">O Uso Impecável do ESTE/ISTO (Catáfora Ativa)</span>
-                    <ul className="list-disc list-inside mt-2 text-sm space-y-1">
-                      <li>Aponta agressivamente o que virá despencar à FRENTE.</li>
-                      <li>Opera como locutor do presente tangível e futuro próximo.</li>
-                      <li>Frequentemente aliado aos sinais vitais diacríticos (:).</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <span className="font-bold text-teal-600 dark:text-teal-400">Modelagem em Prova Prática</span>
-                    <ul className="list-disc list-inside mt-2 text-sm italic">
-                      <li>"As normativas atuais da federação determinaram sem piedade <strong>isto</strong> ao país infartado: taxa zerada geral na alfândega."</li>
-                    </ul>
-                  </div>
-                </div>
+
+              <p>
+                A <strong>pegadinha clássica</strong> da banca envolve a confusão entre
+                catáfora e anáfora em frases com &quot;aquele... este&quot;. Na construção{" "}
+                <em>&quot;Pedro e Paulo chegaram; <strong>aquele</strong>, cansado;{" "}
+                <strong>este</strong>, animado&quot;</em>, muitos candidatos marcam &quot;este&quot;
+                como catafórico. No entanto, Bechara explica que, nesse caso, tanto
+                &quot;aquele&quot; quanto &quot;este&quot; são <strong>anafóricos</strong>: ambos retomam
+                termos já mencionados (&quot;Pedro&quot; e &quot;Paulo&quot;). A catáfora legítima exige
+                que o referente ainda <strong>não tenha sido apresentado</strong> — essa
+                é a distinção que separa os candidatos comuns dos aprovados.
+              </p>
+
+              <div className="bg-gradient-to-br from-blue-50 to-sky-50 dark:from-blue-950/30 dark:to-sky-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground flex items-center gap-2">
+                  🔦 Detector Catafórico — Checklist Rápido
+                </h4>
+                <ul className="list-disc list-inside space-y-2 mt-2">
+                  <li><strong>ESTE/ESTA/ISTO + dois-pontos</strong> → catáfora canônica. O referente vem DEPOIS.</li>
+                  <li><strong>&quot;o seguinte&quot;, &quot;tais medidas&quot;</strong> → marcadores catafóricos em textos normativos.</li>
+                  <li><strong>&quot;aquele... este&quot;</strong> em sequência → AMBOS são anafóricos (retomam termos já citados).</li>
+                  <li><strong>Teste de eliminação</strong> — Se remover o pronome e antecipar o conteúdo, o sentido se mantém? Então era catáfora.</li>
+                </ul>
               </div>
             </div>
+
+            <QuizDiagnostic
+              title="Diagnóstico de Antecipação"
+              question="Em qual das sentenças abaixo ocorre um processo legítimo de catáfora?"
+              options={[
+                "A sonda parou; ela precisa de manutenção.",
+                "O plano é este: dobrar a produção de gás no pré-sal.",
+                "Pedro e Paulo chegaram; aquele, cansado; este, animado.",
+                "A Petrobras, embora gigante, foca na sustentabilidade.",
+              ]}
+              correctAnswer={1}
+              explanation="Excelente! 'Este' é um pronome catafórico típico, pois aponta para a informação que ainda será apresentada (dobrar a produção)."
+              variant={mv[3]}
+            />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={3}
-              title="Antecipação (Catáfora)"
-          variant={mv[3]}
-        />
+              index={1}
+              title="A Mecânica da Catáfora (Farol)"
+              description="A arte de criar expectativa apontando para o que ainda será dito."
+              variant={mv[3]}
+            />
             <ContentAccordion
+              mode="stacked"
               slides={[
                 {
-                  titulo: "Conceituação",
+                  titulo: "O Sentido de Antecipação",
                   icone: <LuCompass />,
                   conteudo: (
-                    <p className="text-muted-foreground leading-relaxed">
-                      A <strong>Catáfora</strong> é o oposto da anáfora: ela
-                      antecipa um termo que ainda será escrito. Gera foco e
-                      expectativa no leitor.
-                    </p>
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-justify">
+                        A <strong>Catáfora</strong> (do grego <i>kata</i> = para
+                        a frente) é o farol do texto. Segundo a moderna
+                        gramática de Bechara, é a remissão para diante. Ela cria
+                        um vácuo de sentido proposital que obriga o leitor a
+                        avançar na leitura para encontrar a resolução.
+                      </p>
+                      <div className="p-4 bg-blue-500/10 rounded-xl border-l-4 border-blue-500 font-medium">
+                        "Meu objetivo na Petrobras é{" "}
+                        <strong className="text-blue-700 dark:text-blue-400 underline">
+                          ESTE
+                        </strong>
+                        :{" "}
+                        <span className="text-foreground">
+                          garantir a segurança das operações
+                        </span>
+                        ."
+                      </div>
+                    </div>
                   ),
                 },
                 {
-                  titulo: "O Sinal do 'T'",
+                  titulo: "O Sinal do 'T' e os Dois Pontos",
                   icone: <LuLightbulb />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p>Mnemônico para a prova da Petrobras:</p>
-                      <div className="p-6 bg-blue-500/10 rounded-2xl border border-blue-500/20 text-center italic text-xl font-bold">
-                        Is
-                        <span className="text-blue-600 underline text-2xl">
-                          T
+                      <p className="text-sm md:text-base text-muted-foreground text-justify">
+                        Na sintaxe, a catáfora frequentemente 'pede' um sinal de
+                        pontuação delimitativo. A banca adora explorar a
+                        justificativa para o uso de dois-pontos logo após um
+                        pronome catafórico.
+                      </p>
+                      <div className="p-6 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 text-center italic text-xl font-bold flex flex-col gap-2">
+                        <span>
+                          Es
+                          <strong className="text-emerald-600 dark:text-emerald-400 underline text-2xl">
+                            T
+                          </strong>
+                          e
                         </span>
-                        o / Es
-                        <span className="text-blue-600 underline text-2xl">
-                          T
+                        <span>
+                          Es
+                          <strong className="text-emerald-600 dark:text-emerald-400 underline text-2xl">
+                            T
+                          </strong>
+                          a
                         </span>
-                        e / Es
-                        <span className="text-blue-600 underline text-2xl">
-                          T
+                        <span>
+                          Is
+                          <strong className="text-emerald-600 dark:text-emerald-400 underline text-2xl">
+                            T
+                          </strong>
+                          o
                         </span>
-                        a
                       </div>
-                      <p className="text-lg text-center">
-                        Pronomens com <span className="font-bold">T</span> olham
-                        para a <span className="font-bold underline">T</span>
-                        extura que vem di
-                        <span className="font-bold underline">T</span>a depois.
+                      <p className="text-base md:text-lg text-center pt-2 text-foreground/90 font-medium">
+                        O "T" aponta para a <strong>T</strong>extura que vem
+                        logo à frent
+                        <strong className="text-emerald-600">T</strong>e.
                       </p>
                     </div>
                   ),
                 },
               ]}
-          corIndicador="bg-emerald-500"
-        />
-            <FlipCard
-              frente={
-                <div className="text-center font-bold">Exemplo Clássico</div>
-              }
-              verso={
-                <div className="space-y-2">
-                  <p className="text-zinc-100 italic">
-                    "Meu desejo é{" "}
-                    <span className="text-primary font-black">ISTO:</span> sua
-                    aprovação."
-                  </p>
-                  <p className="text-lg text-zinc-400">
-                    O 'ISTO' não faz sentido sozinho; ele 'pede' o que vem
-                    depois.
-                  </p>
-                </div>
-              }
-              variant="dark"
             />
           </section>
 
-          <ModuleConsolidation
-            index={3}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Farol Ativo", duration: "5:00" }}
-            audio={{ audioUrl: "placeholder.mp3", titulo: "Vem Aí", artista: "Sertanejo Universitário" }}
-            resumoVisual={{
-              moduloNome: "O Farol do Sentido",
-              tituloAula: "Coesão e Coerência",
-              materia: "portugues",
-              images: [
-                { title: "Farol Catafórico", type: "conceito", placeholderColor: "bg-emerald-100", imageUrl: "/images/placeholders/catafora.webp" }
-              ]
-            }}
-            maceteVisual={{
-              title: "O Macete do 'ST'",
-              content: (
-                <>
-                  <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
-                    <span>🔦</span>
-                    <span>🚀</span>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
-                    "O **T** cortante em es**T**e e is**T**o anuncia solenemente uma maciça **T**extura que será di**T**a e jogada no impiedoso fu**T**uro imediato."
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
-                    <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-                      <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">Força Bruta do ESTE / ISTO</h4>
-                      <p className="text-lg text-muted-foreground italic">"O realíssimo e sombrio dilema corporativo é esTe nobre mistério: a bomba magnética da refinaria falhou miseravelmente."</p>
-                      <p className="text-[10px] mt-2 font-medium text-emerald-700 dark:text-emerald-300 uppercase">Antecipa a amarga revelação temporal perfeitamente ✅</p>
+          {/* ── CONSOLIDAÇÃO M3: LESSON TABS ── */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12 mb-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-1 h-full bg-emerald-500"></div>
+            <ModuleSectionHeader
+              index={2}
+              title="Consolidação: O Farol do Sentido"
+              description="Acesse o resumo visual e os macetes de antecipação catafórica."
+              variant="emerald"
+            />
+
+            <LessonTabs
+              tabs={[
+                {
+                  id: "video",
+                  label: "Vídeo Aula",
+                  icone: LuPlay,
+                  conteudo: (
+                    <div className="aspect-video bg-zinc-900 rounded-xl flex flex-col items-center justify-center border border-zinc-800 relative overflow-hidden group cursor-pointer shadow-lg w-full max-w-3xl mx-auto">
+                      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550684376-efcbd6e3f031?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-700"></div>
+                      <div className="absolute inset-0 bg-emerald-900/40 mix-blend-multiply"></div>
+                      <div className="w-16 h-16 rounded-full bg-emerald-600/90 flex items-center justify-center text-white backdrop-blur-sm group-hover:scale-110 group-hover:bg-emerald-500 transition-all duration-300 shadow-xl shadow-emerald-500/20 z-10 mb-4">
+                        <LuPlay className="w-8 h-8 ml-1" />
+                      </div>
+                      <p className="text-emerald-100 font-medium z-10 text-lg">
+                        Assistir: Catáfora e Pontuação
+                      </p>
                     </div>
-                  </div>
-                </>
-              ),
-            }}
-          variant={mv[3]}
-        />
+                  ),
+                },
+                {
+                  id: "resumo",
+                  label: "Resumo Visual",
+                  icone: LuImage,
+                  conteudo: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          type: "Conceito",
+                          title: "Mecanismo Farol (Catáfora)",
+                          placeholderColor: "bg-emerald-500/20",
+                        },
+                        {
+                          type: "Aplicação",
+                          title: "Sintaxe dos Dois-Pontos",
+                          placeholderColor: "bg-teal-500/20",
+                        },
+                      ]}
+                    />
+                  ),
+                },
+                {
+                  id: "macetes",
+                  label: "Macetes",
+                  icone: LuZap,
+                  conteudo: (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="bg-gradient-to-br from-emerald-900 to-slate-900 p-6 rounded-2xl shadow-lg border border-emerald-700/50">
+                        <h3 className="text-emerald-100 font-bold mb-4">
+                          E<strong className="text-white">ST</strong>E = O QUE E
+                          <strong className="text-white">ST</strong>Á POR VIR
+                        </h3>
+                        <p className="text-emerald-50/90 text-sm">
+                          Use o ST para ligar ao FU
+                          <strong className="text-emerald-400">T</strong>URO. A
+                          Catáfora gera tensão no parágrafo, pois o leitor
+                          precisa da informação complementar.
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  id: "audio",
+                  label: "Áudio",
+                  icone: LuVolume2,
+                  conteudo: (
+                    <MusicPlayerCard
+                      audioUrl="/audio/coesao-m3.mp3"
+                      titulo="Pílula: Sussurrando o Futuro"
+                      artista="Prof. Fernando"
+                      lyrics="A catáfora é como um trailer de filme: ela te prende exigindo que você veja o que vai acontecer."
+                    />
+                  ),
+                },
+              ]}
+              variant="emerald"
+            />
+          </section>
 
           <QuizInterativo
             questoes={quizM3}
-            titulo="[4] QUIZ: O FAROL DO SENTIDO"
+            titulo="QUIZ: O Farol do Sentido"
             icone="🎯"
-            numero={4}
+            numero={3}
+            variant={mv[3]}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          variant={mv[3]}
-        />
+          />
         </div>
       </TabsContent>
 
@@ -886,139 +1343,285 @@ export default function AulaCoesaoCoerencia({
         />
 
         <div className="space-y-[50px]">
-          {/* ★ RICH INTRO SECTION */}
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          {/* ★ RICH INTRO: O Silêncio Eloquente */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="O Silêncio Eloquente: Elipse e Zêugma"
-          variant={mv[4]}
-        />
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              description="Descubra como a omissão estratégica de termos pode tornar o texto mais fluido e elegante, sem comprometer o rigor do Padrão Bechara."
+              variant={mv[4]}
+            />
+            <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
-                A coesão não se faz apenas por adição textual (usando pronomes visíveis ou conectivos explícitos), mas também por sua drástica interrupção intencional. Segundo grandes tratadistas da língua como Ingedore Koch, o apagamento de uma palavra é, por si só, uma marca brutal de coesão, pois força a mente do intérprete a buscar no próprio texto a estrutura faltante que completaria a arquitetura invisível da frase.
+                Na tradição gramatical brasileira sistematizada por{" "}
+                <strong>Evanildo Bechara</strong>, a <strong>elipse</strong> é definida
+                como a <strong>omissão de um termo que pode ser facilmente
+                recuperado</strong> pelo contexto sintático ou semântico. Diferente do
+                erro de construção — em que a falta de um elemento gera ambiguidade ou
+                incompreensão —, a elipse é uma estratégia deliberada de economia
+                textual que torna o discurso mais fluido e elegante. É a lei do menor
+                esforço aplicada à máxima eficácia comunicativa: o autor confia na
+                inteligência do leitor para preencher o vazio, e o leitor aceita esse
+                pacto implícito porque o contexto fornece todas as pistas necessárias.
               </p>
+
               <p>
-                Os dois expoentes dessa "coesão por omissão" são a Elipse e o seu desdobramento direto, a Zêugma. Na elipse natural, omitimos deliberadamente termos que são facilmente desvendáveis mediante o puro contexto lógico ou pela base verbal enraizada na oração. Se você declara: "[Nós] Avaliamos a operação de risco", não é provável dizer "nós", posto que a conjugação já grita a identidade das pessoas envolvidas.
+                Bechara distingue a elipse geral — omissão de qualquer termo recuperável
+                (sujeito, verbo, complemento) — de uma forma específica e sofisticada: o{" "}
+                <strong>zeugma</strong>. No zeugma, o termo omitido é exatamente aquele
+                que <strong>já apareceu em uma oração anterior</strong>. Na frase{" "}
+                <em>&quot;A sonda Sigma perfurou a camada de sal; a sonda Beta, a de
+                petróleo&quot;</em>, o verbo &quot;perfurou&quot; foi omitido na segunda oração porque
+                já foi expresso na primeira — isso é zeugma. Se o termo omitido nunca
+                tivesse aparecido antes no texto, seria apenas elipse simples. Essa
+                distinção é fundamental porque a CESGRANRIO cobra a nomenclatura com
+                precisão: trocar &quot;zeugma&quot; por &quot;elipse&quot; (ou vice-versa) pode significar a
+                diferença entre o acerto e o erro na questão.
               </p>
+
               <p>
-                Já a Zêugma atua como uma guilhotina fina focada em evitar chatices linguísticas: ela elimina sumariamente uma palavra que <strong>já foi</strong> fisicamente escrita na frase anterior. Na esfera redacional da Petrobras — onde os relatórios de produtividade exigem métricas cruas sem floreios —, sentenças zeugmáticas formam a base do estilo. É muito melhor ler "A refinaria X bateu a meta. A companhia Y [também bateu a meta], mas com um delay mínimo" do que um relatório sobrecarregado pela prolixidade.
+                O maior <strong>sinal gráfico</strong> de que um zeugma está em ação é
+                a chamada <strong>vírgula vicária</strong> — a vírgula que substitui o
+                verbo omitido. Bechara a classifica como um recurso estilístico de alta
+                elegância na norma culta. Quando o texto diz{" "}
+                <em>&quot;A Petrobras foca em inovação; as operadoras privadas<strong>
+                ,</strong> em lucro imediato&quot;</em>, a vírgula após &quot;privadas&quot; ocupa o
+                lugar do verbo &quot;foca&quot;, que já apareceu na primeira oração. Nos editais
+                da CESGRANRIO para a Petrobras, esse padrão é testado sob a rubrica
+                &quot;pontuação e coesão&quot; — o candidato deve entender que remover essa
+                vírgula cria um erro de construção, e que sua presença é obrigatória
+                para sinalizar a omissão do verbo.
               </p>
+
               <p>
-                As questões cruciais colocarão alternativas gigantes nas quais a solitária vírgula agirá como uma autêntica "tábua de salvação" estrutural que demarcará o local cego e invisível exato onde um verbo vivo ali desapareceu. Encontrarão a famosa vírgula vicária, a verdadeira e incômoda "cicatriz" gramatical.
+                No universo da <strong>Petrobras</strong>, a elipse e o zeugma
+                aparecem com frequência em relatórios de perfuração, laudos de
+                inspeção e comunicados de segurança. Um documento técnico que diga{" "}
+                <em>&quot;A equipe A inspecionou o duto principal; a equipe B, os
+                ramais secundários; a equipe C, as válvulas de segurança&quot;</em> emprega
+                zeugma triplo para evitar a repetição cansativa do verbo
+                &quot;inspecionou&quot;, criando um parágrafo dinâmico e profissional. A
+                CESGRANRIO costuma extrair trechos exatamente assim — com estruturas
+                paralelas e verbos omitidos — e perguntar qual o recurso coesivo
+                empregado, ou pedir a reescrita explicitando todos os termos suprimidos.
               </p>
-              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
-                <h4 className="font-bold text-foreground">As Cirurgias Frias de Supressão</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <span className="font-bold text-emerald-600 dark:text-emerald-400">Elipse Pura (A Base)</span>
-                    <ul className="list-disc list-inside mt-2 text-sm space-y-1">
-                      <li>Omissão direta de termo identificável lógico.</li>
-                      <li>O extirpado termo <strong>ainda não esteve</strong> estruturado no trecho.</li>
-                      <li>Descoberto por marcos da conjugação de desinências no verbo.</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <span className="font-bold text-teal-600 dark:text-teal-400">Zêugma (A Elipse Relacional)</span>
-                    <ul className="list-disc list-inside mt-2 text-sm italic">
-                      <li>"O chumbo denso derrete mais rápido; o ouro mineral, devagar." (A vírgula ali de tocaia substitui mortal e lindamente o verbo 'derrete' que fora previamente escrito).</li>
-                    </ul>
-                  </div>
-                </div>
+
+              <p>
+                A <strong>pegadinha mais perigosa</strong> da banca neste tema é
+                confundir <strong>elipse legítima</strong> com{" "}
+                <strong>erro de construção</strong>. Bechara adverte que a elipse só é
+                válida quando o termo omitido é <em>inequivocamente</em> recuperável. Se
+                a frase <em>&quot;Foram inspecionados os dutos e as válvulas. Apresentaram
+                corrosão&quot;</em> gera dúvida sobre o sujeito de &quot;apresentaram&quot; (os dutos?
+                as válvulas? ambos?), não se trata de elipse estratégica, mas de{" "}
+                <strong>ambiguidade sintática</strong> — um defeito textual que a
+                CESGRANRIO classifica como incoerência referencial. O candidato de elite
+                sabe diferenciar o silêncio eloquente do silêncio confuso.
+              </p>
+
+              <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground flex items-center gap-2">
+                  ☁️ Elipse vs Zeugma — Guia de Identificação
+                </h4>
+                <ul className="list-disc list-inside space-y-2 mt-2">
+                  <li><strong>Elipse</strong> — Omissão de qualquer termo recuperável pelo contexto (sujeito, verbo, complemento).</li>
+                  <li><strong>Zeugma</strong> — Omissão específica de um termo que <em>já apareceu antes</em> no texto.</li>
+                  <li><strong>Vírgula vicária</strong> — A vírgula que substitui o verbo omitido é o sinal gráfico do zeugma.</li>
+                  <li><strong>Teste de validade</strong> — Se recolocar o termo omitido e o sentido não muda, a elipse é legítima. Se gera ambiguidade, é erro.</li>
+                </ul>
               </div>
             </div>
+
+            <QuizDiagnostic
+              title="Desafio do Termo Invisível"
+              question="Analise: 'A Petrobras foca em inovação; as operadoras privadas, em lucro imediato.' Qual figura de coesão ocorre na segunda oração?"
+              options={[
+                "Elipse, pois o sujeito foi mantido.",
+                "Zêugma, pois o verbo 'foca' foi omitido após já ter aparecido.",
+                "Anáfora, pois o termo 'Petrobras' é retomado.",
+                "Catáfora, pois antecipa o lucro privado.",
+              ]}
+              correctAnswer={1}
+              explanation="Perfeito! O Zêugma é uma forma de elipse que omite um termo já expresso anteriormente ('foca')."
+              variant={mv[4]}
+            />
           </section>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={2}
-              title="Aplicações Rápidas por Omissão"
-          variant={mv[4]}
-        />
+              index={1}
+              title="Coesão por Omissão (Elipse e Zêugma)"
+              description="A elegância sintática de não repetir. A força do silêncio estrutural."
+              variant={mv[4]}
+            />
             <ContentAccordion
+              mode="stacked"
               slides={[
                 {
-                  titulo: "Elipse",
+                  titulo: "O Poder Sintático da Elipse",
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p>
-                        Omissão de um termo subentendido pelo contexto
-                        (frequentemente o sujeito).
+                      <p className="text-muted-foreground text-sm md:text-base text-justify leading-relaxed">
+                        A elipse (do grego <i>élleipsis</i>, falta) é o
+                        apagamento intencional de um termo dedutível pelo
+                        contexto. Na engenharia do texto da CESGRANRIO, a
+                        supressão do sujeito explícito ("nós", "eu") força as
+                        terminações verbais a conectarem o sentido.
                       </p>
-                      <p className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 font-mono text-lg italic">
-                        "[Nós] Fizemos os testes. [Nós] Passamos."
+                      <p className="p-4 bg-rose-500/10 rounded-xl border-l-4 border-rose-500 font-mono text-sm md:text-base italic text-foreground">
+                        "
+                        <strong className="text-rose-600 dark:text-rose-400 opacity-50">
+                          [Nós]
+                        </strong>{" "}
+                        Operamos a sonda ontem e{" "}
+                        <strong className="text-rose-600 dark:text-rose-400 opacity-50">
+                          [Nós]
+                        </strong>{" "}
+                        atingimos a cota."
                       </p>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Zêugma",
+                  titulo: "A Precisão do Zêugma",
                   icone: <LuAnchor />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p>
-                        Omissão de um termo que <strong>já apareceu</strong> no
-                        texto.
+                      <p className="text-muted-foreground text-sm md:text-base text-justify leading-relaxed">
+                        Enquanto a elipse omite um termo subentendido, o{" "}
+                        <strong>Zêugma</strong> omite um termo que{" "}
+                        <strong>já foi grafado anteriormente</strong> no texto.
+                        Ele é a ponte invisível ("cola estrutural") que evita
+                        repetições monótonas em sentenças coordenadas.
                       </p>
-                      <p className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 font-mono text-lg italic">
-                        "Ela gosta de café; eu, [gosto] de chá."
+                      <p className="p-4 bg-rose-500/10 rounded-xl border-l-4 border-rose-500 font-mono text-sm md:text-base italic text-foreground">
+                        "O setor de extração{" "}
+                        <strong className="text-rose-600 dark:text-rose-400">
+                          cresceu
+                        </strong>{" "}
+                        10%; o de refino,{" "}
+                        <strong className="text-rose-600 dark:text-rose-400 opacity-50">
+                          [cresceu]
+                        </strong>{" "}
+                        5%."
                       </p>
                     </div>
                   ),
                 },
               ]}
-          corIndicador="bg-rose-500"
-        />
-            <AlertBox tipo="info" titulo="Macete da Vírgula">
-              A vírgula costuma marcar o lugar do verbo omitido no Zêugma. Fique
-              atento a essa pontuação na Cesgranrio!
+            />
+            <AlertBox
+              tipo="warning"
+              titulo="Vírgula Vicária (O fantasma do verbo)"
+            >
+              A CESGRANRIO quase sempre cruza Coesão e Pontuação em questões de
+              Zêugma. O termo omitido costuma ser marcado por uma{" "}
+              <strong className="text-destructive font-black">
+                vírgula vicária
+              </strong>{" "}
+              (substituta). A ausência dessa vírgula na retomada gera erro fatal
+              nas provas objetivas!
             </AlertBox>
           </section>
 
-          <ModuleConsolidation
-            index={4}
-            video={{ videoId: "dQw4w9WgXcQ", title: "O Silêncio Dita o Ritmo", duration: "5:00" }}
-            audio={{ audioUrl: "placeholder.mp3", titulo: "A Guilhotina", artista: "Sertanejo Universitário" }}
-            resumoVisual={{
-              moduloNome: "O Silêncio Eloquente",
-              tituloAula: "Coesão e Coerência",
-              materia: "portugues",
-              images: [
-                { title: "Elipse Clássica", type: "conceito", placeholderColor: "bg-emerald-100", imageUrl: "/images/placeholders/elipse.webp" }
-              ]
-            }}
-            maceteVisual={{
-              title: "O Macete da Cicatriz",
-              content: (
-                <>
-                  <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
-                    <span>✂️</span>
-                    <span>,</span>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
-                    "Onde o verbo morre degolado, a nossa vírgula nasce como um triste legado."
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
-                    <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-                      <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">A Vírgula Vicária de Ataque</h4>
-                      <p className="text-lg text-muted-foreground italic">"O engenheiro vistoriou rapidamente o poço numérico um. O humilde novato, os restolhos caóticos lá do fundo do poço."</p>
-                      <p className="text-[10px] mt-2 font-medium text-emerald-700 dark:text-emerald-300 uppercase">A vírgula ali na trincheira executou a belíssima Zêugma ✅</p>
+          {/* ── CONSOLIDAÇÃO M4: LESSON TABS ── */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12 mb-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-1 h-full bg-rose-500"></div>
+            <ModuleSectionHeader
+              index={2}
+              title="Consolidação: O Silêncio Eloquente"
+              description="Acesse o resumo visual e os macetes de elipse e zêugma."
+              variant="rose"
+            />
+
+            <LessonTabs
+              tabs={[
+                {
+                  id: "video",
+                  label: "Vídeo Aula",
+                  icone: LuPlay,
+                  conteudo: (
+                    <div className="aspect-video bg-zinc-900 rounded-xl flex flex-col items-center justify-center border border-zinc-800 relative overflow-hidden group cursor-pointer shadow-lg w-full max-w-3xl mx-auto">
+                      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518330752174-a03be8159b9e?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-700"></div>
+                      <div className="absolute inset-0 bg-rose-900/40 mix-blend-multiply"></div>
+                      <div className="w-16 h-16 rounded-full bg-rose-600/90 flex items-center justify-center text-white backdrop-blur-sm group-hover:scale-110 group-hover:bg-rose-500 transition-all duration-300 shadow-xl shadow-rose-500/20 z-10 mb-4">
+                        <LuPlay className="w-8 h-8 ml-1" />
+                      </div>
+                      <p className="text-rose-100 font-medium z-10 text-lg">
+                        Assistir: Identificando a Omissão
+                      </p>
                     </div>
-                  </div>
-                </>
-              ),
-            }}
-          variant={mv[4]}
-        />
+                  ),
+                },
+                {
+                  id: "resumo",
+                  label: "Resumo Visual",
+                  icone: LuImage,
+                  conteudo: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          type: "Conceito",
+                          title: "Elipse vs Zêugma",
+                          placeholderColor: "bg-rose-500/20",
+                        },
+                        {
+                          type: "Atenção",
+                          title: "Vírgula Vicária",
+                          placeholderColor: "bg-pink-500/20",
+                        },
+                      ]}
+                    />
+                  ),
+                },
+                {
+                  id: "macetes",
+                  label: "Macetes",
+                  icone: LuZap,
+                  conteudo: (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="bg-gradient-to-br from-rose-900 to-slate-900 p-6 rounded-2xl shadow-lg border border-rose-700/50">
+                        <h3 className="text-rose-100 font-bold mb-4">
+                          E<strong className="text-white">L/Z</strong> =
+                          Escondido, mas Óbvio
+                        </h3>
+                        <p className="text-rose-50/90 text-sm">
+                          Elipse = Termo Inédito mas implícito (ex: sujeito
+                          oculto). Zêugma = Termo Reciclado (já apareceu antes).
+                          Ambas constroem uma trama textual elegante que escapa
+                          do leitor inexperiente.
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  id: "audio",
+                  label: "Áudio",
+                  icone: LuVolume2,
+                  conteudo: (
+                    <MusicPlayerCard
+                      audioUrl="/audio/coesao-m4.mp3"
+                      titulo="Pílula: O Silêncio Concha"
+                      artista="Prof. Fernando"
+                      lyrics="Quando retiramos o que sobra, destacamos o que importa. A vírgula conta a história do verbo extinto."
+                    />
+                  ),
+                },
+              ]}
+              variant="rose"
+            />
+          </section>
 
           <QuizInterativo
             questoes={quizM4}
-            titulo="[5] QUIZ: O SILÊNCIO ELOQUENTE"
+            titulo="QUIZ: O Silêncio Eloquente"
             icone="🎯"
-            numero={5}
+            numero={3}
+            variant={mv[4]}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          variant={mv[4]}
-        />
+          />
         </div>
       </TabsContent>
 
@@ -1032,145 +1635,328 @@ export default function AulaCoesaoCoerencia({
         />
 
         <div className="space-y-[50px]">
-          {/* ★ RICH INTRO SECTION */}
+          {/* ★ RICH INTRO: Substituições de Elite */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
+            <ModuleSectionHeader
+              index="INTRO"
+              title="Substituições de Elite: A Engenharia Lexical"
+              description="Aprenda a elevar o nível do seu texto usando a 'reiteração por hiperonímia' e as 'palavras-sumário', recursos de prestígio no Padrão Bechara."
+              variant={mv[5]}
+            />
+            <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+              <p>
+                <strong>Evanildo Bechara</strong> ensina que a{" "}
+                <strong>coesão lexical</strong> é o recurso pelo qual o autor substitui
+                um termo já mencionado por outro de campo semântico equivalente, evitando
+                a repetição mecânica sem sacrificar a clareza referencial. Diferente da
+                coesão referencial (pronomes e demonstrativos), a coesão lexical opera no
+                plano do <strong>vocabulário</strong>: trocar palavras por sinônimos,
+                hiperônimos, hipônimos ou expressões nominalizadas. Para Bechara, esse
+                mecanismo é um indicador de <strong>maturidade intelectual</strong> do
+                autor, pois exige domínio amplo do léxico e sensibilidade ao contexto. Na
+                escrita técnica da Petrobras, onde a precisão terminológica é
+                inegociável, a coesão lexical é ferramenta de trabalho diária.
+              </p>
+
+              <p>
+                O recurso mais sofisticado dentro da coesão lexical é a{" "}
+                <strong>hiperonímia</strong> — a substituição de um termo específico
+                (hipônimo) por um termo genérico (hiperônimo). Nos relatórios da
+                Petrobras, em vez de repetir &quot;plataforma de extração de petróleo&quot; dez
+                vezes, o redator técnico emprega termos como &quot;unidade offshore&quot;, &quot;ativo
+                de produção&quot; ou simplesmente &quot;a instalação&quot;. Bechara adverte, porém, que
+                a troca só é legítima quando o hiperônimo <strong>preserva o sentido
+                original</strong> sem gerar ambiguidade. Trocar &quot;petróleo&quot; por
+                &quot;combustível fóssil&quot; é hiperonímia válida; trocar &quot;petróleo&quot; por
+                &quot;recurso natural&quot; já amplia demais o campo semântico e pode incluir
+                água, minérios ou madeira — gerando imprecisão inadmissível em contexto
+                técnico.
+              </p>
+
+              <p>
+                Outro pilar da coesão lexical que Bechara destaca é a{" "}
+                <strong>nominalização</strong>: a transformação de um verbo ou adjetivo em
+                substantivo para retomar a ação descrita. Na frase{" "}
+                <em>&quot;A plataforma operou bem. A <strong>operação</strong> garantiu o
+                recorde de produção&quot;</em>, o substantivo &quot;operação&quot; retoma o verbo
+                &quot;operou&quot; de forma elegante e coesa. A CESGRANRIO testa esse recurso
+                pedindo que o candidato identifique a relação entre o verbo e o
+                substantivo derivado, ou que avalie se a nominalização manteve a
+                equivalência semântica. Há também as{" "}
+                <strong>palavras-sumário</strong> — termos que condensam uma ideia
+                inteira expressa anteriormente: &quot;essa situação&quot;, &quot;tal cenário&quot;, &quot;o
+                referido problema&quot; são exemplos frequentes em textos da estatal.
+              </p>
+
+              <p>
+                No contexto da <strong>Petrobras</strong>, a coesão lexical é
+                especialmente crítica em documentos que passam por múltiplos revisores e
+                setores. Um contrato de licitação que se refira ao mesmo equipamento como
+                &quot;a sonda&quot;, &quot;o equipamento de perfuração&quot;, &quot;o dispositivo&quot; e &quot;a
+                máquina&quot; ao longo de suas páginas está empregando coesão lexical
+                variada — mas precisa garantir que todos esses termos remetam
+                inequivocamente ao mesmo referente. A CESGRANRIO costuma apresentar
+                trechos assim e perguntar se a substituição lexical <strong>preservou
+                ou alterou</strong> o sentido do texto, testando a capacidade do
+                candidato de avaliar equivalência semântica em contexto.
+              </p>
+
+              <p>
+                A <strong>pegadinha refinada</strong> que a banca aplica envolve a{" "}
+                <strong>falsa sinonímia</strong>. Trocar &quot;plataforma continental&quot; por
+                &quot;plataforma de petróleo&quot; pode parecer uma substituição válida, mas
+                Bechara alerta que são conceitos completamente distintos: a primeira é um
+                acidente geográfico, a segunda é uma estrutura industrial. A CESGRANRIO
+                insere alternativas com trocas lexicais aparentemente inofensivas que, na
+                verdade, alteram o referente ou o campo semântico. O candidato de elite
+                sabe que <strong>nem todo hiperônimo é válido</strong> — a substituição
+                precisa respeitar o contexto pragmático do texto original.
+              </p>
+
+              <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground flex items-center gap-2">
+                  🔍 Arsenal Lexical — Mecanismos de Substituição
+                </h4>
+                <ul className="list-disc list-inside space-y-2 mt-2">
+                  <li><strong>Hiperonímia</strong> — Específico → Genérico: &quot;gasolina&quot; → &quot;combustível&quot;.</li>
+                  <li><strong>Hiponímia</strong> — Genérico → Específico: &quot;embarcação&quot; → &quot;navio-sonda&quot;.</li>
+                  <li><strong>Nominalização</strong> — Verbo → Substantivo: &quot;extraíram&quot; → &quot;a extração&quot;.</li>
+                  <li><strong>Palavras-sumário</strong> — Condensam ideia anterior: &quot;esse cenário&quot;, &quot;tal problema&quot;.</li>
+                  <li><strong>Teste de validade</strong> — Substituiu e o referente mudou? Então NÃO é coesão — é erro.</li>
+                </ul>
+              </div>
+            </div>
+
+            <QuizDiagnostic
+              title="Diagnóstico Lexical"
+              question="Ao trocar 'petróleo' por 'combustível fóssil', qual processo de coesão está sendo aplicado prioritariamente?"
+              options={[
+                "Catáfora, pois o petróleo é o futuro.",
+                "Sinonímia perfeita, sem mudança de categoria.",
+                "Hiperonímia, pois o novo termo é mais abrangente.",
+                "Elipse, pois houve supressão do termo original.",
+              ]}
+              correctAnswer={2}
+              explanation="Exato! 'Combustível fóssil' é um hiperônimo de 'petróleo', englobando-o em uma categoria superior e mantendo a coesão por reiteração."
+              variant={mv[5]}
+            />
+          </section>
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="As Operações Lexicais Especiais"
-          variant={mv[5]}
-        />
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-              <p>
-                Muito além dos pronomes com suas setas lógicas de resgate cego, a requintada arquitetura da referência textual utiliza em níveis de excelência documental a famosíssima <strong>Coesão Lexical</strong>. Essa ferramenta é a habilidade de retomar palavras ou blocos completos de ideias mediante a reestruturação linguística de campos semânticos, através de sinônimos, hiperônimos gerais, hipônimos localizados e palavras-rótulo.
-              </p>
-              <p>
-                Para enxugar o tom da monotonia verbal e ainda preservar milimetricamente cada detalhe intocado original das planilhas petroquímicas, aplica-se a potência técnica da hiperonímia e da nominalização sem perda literal. "Furadeiras, lixas magnéticas e prensas elétricas foram usadas. Esse lote de <strong>ferramentas</strong> voltará ao paiol".
-              </p>
-              <p>
-                As nominalizações convertem verbos violentos e densos em pacíficos substantivos formais fáceis de manusear nos parágrafos seguintes. Exploda, jorre, escale, desabe. Essas manifestações lógicas transformam-se em tijolos da escrita empresarial: A explosão, O imenso jorro, A dramática escalada.
-              </p>
-              <p>
-                A banca exigirá a atenção devotada às sagazes palavras-envelope (rótulo) como: o "fato", a perigosa "circunstância", aquela absurda "situação". Ao apontá-las nas entrelinhas crivadas, exigirão que o candidato saiba exatamente o peso do parágrafo inteiro anterior que elas resumiram no presente da narrativa.
-              </p>
-              <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 rounded-lg border border-violet-200 dark:border-violet-800 p-6 space-y-4">
-                <h4 className="font-bold text-foreground">A Engenharia das Ferramentas</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <span className="font-bold text-violet-600 dark:text-violet-400">Hiperônimos e Hipônimos</span>
-                    <ul className="list-disc list-inside mt-2 text-sm space-y-1">
-                      <li><strong>Hiper:</strong> O Maioral abstrato abrangente (ex: Combustível fóssil espesso).</li>
-                      <li><strong>Hipo:</strong> A humilde e mínima espécie (ex: O valioso barril Diesel).</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <span className="font-bold text-purple-600 dark:text-purple-400">Nominalização Prática Cíclica</span>
-                    <ul className="list-disc list-inside mt-2 text-sm italic">
-                      <li>Sintetiza-se brutalmente uma narrativa anterior verbal em ação densa com simples substantivos focados: "Foi um assustador <strong>jorro</strong> brutal."</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo Operacional"
-          variant={mv[5]}
-        />
+              title="A Matriz da Coesão Lexical"
+              description="A arte de manter o tema orbitando através de sinônimos, nomes genéricos e nominalizações."
+              variant={mv[5]}
+            />
             <ContentAccordion
+              mode="stacked"
               slides={[
                 {
-                  titulo: "Nominalização",
+                  titulo: "Nominalização: A Engenharia do Verbo que Vira Nome",
                   icone: <LuActivity />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p>
-                        Transformar um verbo (ação) em substantivo para retomar
-                        a ideia.
+                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-justify">
+                        Na densidade textual dos relatórios técnicos,
+                        transformar verbos em substantivos abstratos cognatos
+                        permite compactar informações de sentenças inteiras em
+                        uma única palavra. É o ápice da coesão erudita.
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="p-4 bg-background border rounded-xl text-center">
-                          <span className="text-lg text-muted-foreground block">
-                            Ação
-                          </span>
-                          <span className="font-bold">
-                            "O poço explodiu..."
-                          </span>
+                        <div className="p-4 bg-violet-500/10 border border-violet-500/20 rounded-xl">
+                          <p className="text-xs font-bold opacity-70 uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-1">
+                            Ação Dispersa
+                          </p>
+                          <p className="text-base md:text-lg italic text-foreground">
+                            "O poço de Libra{" "}
+                            <strong className="text-violet-600 dark:text-violet-400">
+                              EXPLODIU
+                            </strong>{" "}
+                            na costa."
+                          </p>
                         </div>
-                        <div className="p-4 bg-primary/10 border border-primary/20 rounded-xl text-center">
-                          <span className="text-lg text-primary block">
-                            Retomada
-                          </span>
-                          <span className="font-bold">"A EXPLOSÃO..."</span>
+                        <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                          <p className="text-xs font-bold opacity-70 uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-1">
+                            Retomada Nominalizada
+                          </p>
+                          <p className="text-base md:text-lg italic text-foreground">
+                            "A{" "}
+                            <strong className="text-emerald-600 dark:text-emerald-400">
+                              EXPLOSÃO
+                            </strong>{" "}
+                            marítima causou..."
+                          </p>
                         </div>
                       </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Palavras-Suporte (Rótulos)",
-                  icone: <LuLink />,
+                  titulo: "O Elevador da Hiperonímia",
+                  icone: <LuAnchor />,
                   conteudo: (
-                    <p className="text-muted-foreground">
-                      Palavras como{" "}
-                      <strong>
-                        "Fato", "Evento", "Circunstância", "Ideia"
-                      </strong>{" "}
-                      que empacotam parágrafos inteiros.
-                    </p>
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-justify">
+                        Substituir não é apenas trocar seis por meia dúzia. A
+                        Hiperonímia sobe o nível categórico (do específico para
+                        o genérico), abraçando o termo anterior sem repeti-lo.
+                        Essencial para parágrafos extensos.
+                      </p>
+                      <p className="p-4 bg-violet-500/10 rounded-xl font-mono text-sm md:text-base italic text-foreground border-l-4 border-violet-500">
+                        "O{" "}
+                        <strong className="text-violet-600 dark:text-violet-400">
+                          petróleo
+                        </strong>{" "}
+                        bruto atingiu $80. A alta desse{" "}
+                        <strong className="text-emerald-600 dark:text-emerald-400">
+                          combustível fóssil
+                        </strong>{" "}
+                        afeta o PIB global."
+                      </p>
+                    </div>
                   ),
                 },
               ]}
-          corIndicador="bg-violet-500"
-        />
+            />
           </section>
 
-          <ModuleConsolidation
-            index={5}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Operações Lexicais", duration: "5:00" }}
-            audio={{ audioUrl: "placeholder.mp3", titulo: "Sacos e Envelopes", artista: "Sertanejo Universitário" }}
-            resumoVisual={{
-              moduloNome: "Substituições de Elite",
-              tituloAula: "Coesão e Coerência",
-              materia: "portugues",
-              images: [
-                { title: "Coesão Lexical Gráfica", type: "conceito", placeholderColor: "bg-violet-100", imageUrl: "/images/placeholders/envelope.webp" }
-              ]
-            }}
-            maceteVisual={{
-              title: "O Macete do 'Vaso de Plantas'",
-              content: (
-                <>
-                  <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
-                    <span>🌷</span>
-                    <span>🌿</span>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
-                    "Você não cita Rosa, Girassol ou uma bela Tulipa repetidamente. Você apenas aponta com vigor feroz o pesado vaso escrito 'Plantas' e economiza toda a tinta da caneta do revisor."
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
-                    <div className="p-4 bg-violet-500/5 border border-violet-500/20 rounded-xl">
-                      <h4 className="text-lg font-bold text-violet-600 dark:text-violet-400 mb-2">As Palavras-Envelope (Rótulos)</h4>
-                      <p className="text-lg text-muted-foreground italic">"O velho Fulano faliu, foi traído, humilhado e foi preso no sábado. Toda essa assombrosa e miserável <strong>situação</strong> o moldou em osso e aço."</p>
-                      <p className="text-[10px] mt-2 font-medium text-violet-700 dark:text-violet-300 uppercase">A palavra 'situação' empacotou a extensa narrativa trágica na mão ✅</p>
+          <TextAnalysisLab
+            index={5.1}
+            variant="violet"
+            titulo="Laboratório Lexical: Micro e Macro"
+            subtitulo="Identifique a retomada abstrata (Hiperonímia) e a retomada específica (Hiponímia)."
+            legenda={[
+              { cor: "bg-blue-400", label: "Termo Original (Hipônimo)" },
+              {
+                cor: "bg-violet-500",
+                label: "Elevador Categórico (Hiperônimo)",
+              },
+            ]}
+            texto={
+              <div className="space-y-4 text-sm md:text-base leading-loose">
+                <p>
+                  "A{" "}
+                  <span className="bg-blue-400/30 dark:bg-blue-500/40 px-2 py-0.5 rounded font-medium border border-blue-400/50">
+                    broca de perfuração
+                  </span>{" "}
+                  encontrou rocha salina." O desgaste deste{" "}
+                  <span className="bg-violet-500/30 dark:bg-violet-500/40 px-2 py-0.5 rounded font-medium border border-violet-500/50">
+                    equipamento
+                  </span>{" "}
+                  pode atrasar o cronograma.
+                </p>
+              </div>
+            }
+          />
+
+          {/* ── CONSOLIDAÇÃO M5: LESSON TABS ── */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12 mb-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-1 h-full bg-violet-500"></div>
+            <ModuleSectionHeader
+              index={5.2}
+              title="Consolidação: A Matriz Lexical"
+              description="Acesse o resumo visual e os macetes de classificação vocabular."
+              variant="violet"
+            />
+
+            <LessonTabs
+              tabs={[
+                {
+                  id: "video",
+                  label: "Vídeo Aula",
+                  icone: LuPlay,
+                  conteudo: (
+                    <div className="aspect-video bg-zinc-900 rounded-xl flex flex-col items-center justify-center border border-zinc-800 relative overflow-hidden group cursor-pointer shadow-lg w-full max-w-3xl mx-auto">
+                      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544652478-6653e09f18a2?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-700"></div>
+                      <div className="absolute inset-0 bg-violet-900/40 mix-blend-multiply"></div>
+                      <div className="w-16 h-16 rounded-full bg-violet-600/90 flex items-center justify-center text-white backdrop-blur-sm group-hover:scale-110 group-hover:bg-violet-500 transition-all duration-300 shadow-xl shadow-violet-500/20 z-10 mb-4">
+                        <LuPlay className="w-8 h-8 ml-1" />
+                      </div>
+                      <p className="text-violet-100 font-medium z-10 text-lg">
+                        Assistir: Hiperonímia na Prova
+                      </p>
                     </div>
-                  </div>
-                </>
-              ),
-            }}
-          variant={mv[5]}
-        />
+                  ),
+                },
+                {
+                  id: "resumo",
+                  label: "Resumo Visual",
+                  icone: LuImage,
+                  conteudo: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          type: "Hierarquia",
+                          title: "Hipônimo (Micro) vs Hiperônimo (Macro)",
+                          placeholderColor: "bg-violet-500/20",
+                        },
+                        {
+                          type: "Processo",
+                          title: "A Nominalização em Ação",
+                          placeholderColor: "bg-purple-500/20",
+                        },
+                      ]}
+                    />
+                  ),
+                },
+                {
+                  id: "macetes",
+                  label: "Macetes",
+                  icone: LuZap,
+                  conteudo: (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="bg-gradient-to-br from-violet-900 to-slate-900 p-6 rounded-2xl shadow-lg border border-violet-700/50">
+                        <h3 className="text-violet-100 font-bold mb-4">
+                          HIPER = GIGANTE
+                        </h3>
+                        <p className="text-violet-50/90 text-sm">
+                          Lembre do supermercado. Um Hipermercado é gigante. Um
+                          Hiperônimo é uma palavra "gigante" (Móvel) que engloba
+                          as pequenas (Cadeira, Mesa - Hipônimos).
+                        </p>
+                      </div>
+                      <div className="bg-card border border-border p-6 rounded-2xl flex flex-col justify-center items-center text-center space-y-4 shadow-sm">
+                        <div className="w-14 h-14 bg-violet-100 dark:bg-violet-900/40 rounded-full flex items-center justify-center">
+                          <LuActivity className="w-7 h-7 text-violet-600 dark:text-violet-400" />
+                        </div>
+                        <p className="font-medium text-foreground">
+                          O Troque-Tudo
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          Termos como "problema", "fato", "situação" e "este"
+                          formam o cinturão de segurança da coesão. São
+                          palavras-sumário que compactam o que foi dito.
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  id: "audio",
+                  label: "Áudio",
+                  icone: LuVolume2,
+                  conteudo: (
+                    <MusicPlayerCard
+                      audioUrl="/audio/coesao-m5.mp3"
+                      titulo="Pílula: O Caleidoscópio Léxico"
+                      artista="Prof. Fernando"
+                      lyrics="Repetir palavras na CESGRANRIO é como desafiar as boas práticas de engenharia: funciona, mas há muito atrito. Use a hiperonímia e lubrifique o texto."
+                    />
+                  ),
+                },
+              ]}
+              variant="violet"
+            />
+          </section>
 
           <QuizInterativo
             questoes={quizM5}
-            titulo="[6] QUIZ: SUBSTITUIÇÕES DE ELITE"
+            titulo="QUIZ: Substituições de Elite"
             icone="🎯"
             numero={6}
+            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          variant={mv[5]}
-        />
+          />
         </div>
       </TabsContent>
 
@@ -1184,97 +1970,198 @@ export default function AulaCoesaoCoerencia({
         />
 
         <div className="space-y-[50px]">
-          {/* ★ RICH INTRO SECTION */}
+          {/* ★ RICH INTRO: A Dança dos Conectivos */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
+            <ModuleSectionHeader
+              index="INTRO"
+              title="A Dança dos Conectivos: Engenharia de Fluxo"
+              description="Transforme seu texto de um amontoado de frases em um organismo vivo por meio da coesão sequencial e dos nexos lógicos do Padrão Bechara."
+              variant={mv[6]}
+            />
+            <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+              <p>
+                <strong>Evanildo Bechara</strong> define a{" "}
+                <strong>coesão sequencial</strong> como o mecanismo que encadeia as
+                orações e parágrafos de um texto por meio de{" "}
+                <strong>conectivos</strong> — conjunções coordenativas, subordinativas,
+                advérbios de ligação e expressões de transição. Se a coesão referencial
+                (anáfora, catáfora, elipse) conecta <em>termos</em> dentro do texto, a
+                coesão sequencial conecta <em>ideias</em>, estabelecendo relações
+                lógicas de causa, consequência, oposição, concessão, adição, alternância
+                e conclusão. Conectar frases sem essa precisão é como soldar tubulações
+                submarinas no pré-sal com material inadequado: a pressão das ideias rompe
+                a lógica argumentativa e o texto colapsa.
+              </p>
+
+              <p>
+                Bechara classifica os conectivos em dois grandes grupos. As{" "}
+                <strong>conjunções coordenativas</strong> ligam orações de mesma
+                hierarquia sintática e se dividem em cinco tipos: <strong>aditivas</strong>{" "}
+                (e, nem, tampouco), <strong>adversativas</strong> (mas, porém, contudo,
+                todavia, entretanto, no entanto), <strong>alternativas</strong> (ou... ou,
+                ora... ora, quer... quer), <strong>conclusivas</strong> (logo, portanto,
+                por conseguinte, destarte) e <strong>explicativas</strong> (pois [antes
+                do verbo], porquanto, porque). Já as{" "}
+                <strong>conjunções subordinativas</strong> estabelecem relação de
+                dependência entre as orações: causais, concessivas, condicionais,
+                temporais, comparativas, consecutivas, conformativas, proporcionais,
+                finais e integrantes. A CESGRANRIO testa sistematicamente a capacidade
+                do candidato de <strong>classificar</strong> o conectivo e, mais
+                importante, de identificar seu <strong>valor semântico</strong> no
+                contexto.
+              </p>
+
+              <p>
+                O ponto mais sofisticado que Bechara destaca — e que constitui a
+                principal armadilha da banca — é a diferença entre{" "}
+                <strong>classificação gramatical</strong> e{" "}
+                <strong>valor semântico</strong> de um conectivo. O &quot;e&quot; é gramaticalmente
+                aditivo, mas em <em>&quot;Estudou muito <strong>e</strong> foi
+                reprovado&quot;</em> assume valor adversativo (equivalente a &quot;mas&quot;). O &quot;como&quot;
+                pode ser causal (<em>&quot;Como choveu, o jogo parou&quot;</em>), comparativo
+                (<em>&quot;Corre como um atleta&quot;</em>) ou conformativo
+                (<em>&quot;Como previsto, a meta foi atingida&quot;</em>). A CESGRANRIO explora essa
+                polissemia pedindo que o candidato identifique o valor real do conectivo
+                no contexto dado, não sua classificação de dicionário. É nessa
+                distinção que a maioria dos candidatos tropeça.
+              </p>
+
+              <p>
+                No universo da <strong>Petrobras</strong>, os conectivos são a espinha
+                dorsal dos relatórios técnicos, pareceres jurídicos e comunicados de
+                segurança. Um documento que diga{" "}
+                <em>&quot;A produção aumentou 12%, <strong>portanto</strong> as metas
+                foram superadas&quot;</em> usa um conectivo conclusivo com precisão. Porém,
+                se o mesmo documento disser{" "}
+                <em>&quot;A produção aumentou 12%, <strong>porquanto</strong> as metas
+                foram superadas&quot;</em>, o sentido muda radicalmente: &quot;porquanto&quot; é
+                causal, não conclusivo. Nos editais da CESGRANRIO, questões de
+                reescrita frequentemente pedem a substituição de um conectivo por outro,
+                e o candidato precisa avaliar se a troca <strong>preserva</strong> ou{" "}
+                <strong>altera</strong> a relação lógica entre as orações.
+              </p>
+
+              <p>
+                A <strong>pegadinha clássica</strong> envolve pares de conectivos
+                foneticamente similares mas semanticamente opostos. O trio{" "}
+                <strong>&quot;porquanto&quot;</strong> (causal) vs.{" "}
+                <strong>&quot;portanto&quot;</strong> (conclusivo) vs.{" "}
+                <strong>&quot;porquê&quot;</strong> (substantivo) é o mais cobrado pela banca.
+                Bechara adverte que a troca acidental entre eles pode inverter
+                completamente o argumento do texto. Outra armadilha recorrente é o{" "}
+                <strong>&quot;pois&quot;</strong> flutuante: antes do verbo, é explicativo
+                (<em>&quot;Estude, pois a prova é difícil&quot;</em>); depois do verbo, é
+                conclusivo (<em>&quot;A prova é difícil; estude, pois&quot;</em>). A posição
+                no período altera o valor semântico — e a CESGRANRIO adora testar
+                exatamente isso.
+              </p>
+
+              <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground flex items-center gap-2">
+                  ⚡ Mapa dos Conectivos — Armadilhas Clássicas
+                </h4>
+                <ul className="list-disc list-inside space-y-2 mt-2">
+                  <li><strong>&quot;porquanto&quot;</strong> = causal (≈ porque). <strong>&quot;portanto&quot;</strong> = conclusivo (≈ logo). NÃO são sinônimos!</li>
+                  <li><strong>&quot;pois&quot;</strong> antes do verbo = explicativo. Depois do verbo = conclusivo.</li>
+                  <li><strong>&quot;e&quot; adversativo</strong> — &quot;Estudou <em>e</em> foi reprovado&quot; = valor de &quot;mas&quot;.</li>
+                  <li><strong>&quot;como&quot; polissêmico</strong> — Pode ser causal, comparativo ou conformativo conforme o contexto.</li>
+                </ul>
+              </div>
+            </div>
+
+            <QuizDiagnostic
+              title="Desafio Conectivo"
+              question="Qual o valor semântico do conectivo 'porquanto' em uma sentença técnica da Petrobras?"
+              options={[
+                "Concessão, equivalente a 'embora'.",
+                "Conclusão, equivalente a 'portanto'.",
+                "Causa ou Explicação, equivalente a 'porque'.",
+                "Adição, equivalente a 'além disso'.",
+              ]}
+              correctAnswer={2}
+              explanation="Exatamente! 'Porquanto' é um conectivo de valor causal ou explicativo. Não confunda com 'portanto', que é conclusivo."
+              variant={mv[6]}
+            />
+          </section>
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="A Coesão Sequencial e as Forças Articuladoras"
-          variant={mv[6]}
-        />
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-              <p>
-                Diferentemente da coesão referencial (que empacota ou aponta objetos gramaticais do discurso), a poderosíssima <strong>Coesão Sequencial</strong> dita o caminhar incansável do texto, arrastando o leitor adiante e criando as articulações temporais lógicas por raciocínio sintático. Esse efeito motor é criado pelo uso das valiosíssimas <strong>Conjunções</strong>.
-              </p>
-              <p>
-                As conjunções estabelecem pontes semânticas: ordenam o mundo impondo conexões de adição, explicação, fortes adversidades obstrutivas e causalidades lógicas. Se uma estrutura proclama "O vazamento ocorreu <strong>porque</strong> uma junta ressecou", estabelece-se a noção imutável de Causa.
-              </p>
-              <p>
-                O calcanhar de Aquiles dos concursos, explorado pela banca CESGRANRIO, reside na confusão analítica fina feita pelos candidatos na distinção exata entre relações de Causalidade direta material e vazios adornos circunstanciais ou temporais.
-              </p>
-              <p>
-                Não haverá trégua da implacável fundação examinadora na prova objetiva. Nos cadernos oficiais há questões brutas de sinônimos de conectivos escondidos. A banca letal sublinhará o assustador e pesado <strong>"PORQUANTO"</strong>.
-              </p>
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
-                <h4 className="font-bold text-foreground">A Engenharia das Conjunções</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <span className="font-bold text-amber-600 dark:text-amber-400">Sinônimos Ocultos Decisivos</span>
-                    <ul className="list-disc list-inside mt-2 text-sm space-y-1">
-                      <li><strong>PORQUANTO:</strong> Mesmo que "porque" ou "pois" (Causa/Explicação).</li>
-                      <li><strong>CONQUANTO:</strong> Mesmo que "embora" ou "ainda que" (Concessão forte).</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <span className="font-bold text-orange-600 dark:text-orange-400">A Relação Pragmática Analítica Fina</span>
-                    <ul className="list-disc list-inside mt-2 text-sm italic">
-                      <li>"As defesas cederam carga vital majestática <strong>COMO</strong> alertavam os sismógrafos." (Relação de inquebrável suprema 'conformidade' plena baseada no termo 'alertavam').</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo Estrutural"
-          variant={mv[6]}
-        />
+              title="Sintaxe de Nexos (Coesão Sequencial)"
+              description="A articulação matemática das ideias através do tempo e da lógica oracional."
+              variant={mv[6]}
+            />
             <ContentAccordion
+              mode="stacked"
               slides={[
                 {
-                  titulo: "O Papel da Conjunção",
+                  titulo: "A Engenharia da Progressão",
                   icone: <LuZap />,
                   conteudo: (
-                    <p className="text-muted-foreground">
-                      A Coesão Sequencial cria a progressão do tempo e das
-                      ideias através dos conectivos. Sem eles, o texto é um
-                      amontoado de fatos isolados.
-                    </p>
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-justify">
+                        Enquanto a coesão referencial mantém o tema vivo
+                        (olhando pelo retrovisor), a{" "}
+                        <strong>Coesão Sequencial</strong> é o motor de
+                        arranque. Segundo os gramáticos, o papel primário das
+                        conjunções não é apenas somar letras, mas estabelecer e
+                        forçar relações lógico-discursivas precisas (causa,
+                        condição, finalidade).
+                      </p>
+                      <div className="p-4 bg-amber-500/10 border-l-4 border-amber-500 rounded-r-xl">
+                        <p className="italic text-base md:text-lg text-foreground">
+                          "A viabilidade térmica foi comprovada,{" "}
+                          <strong className="text-amber-600 dark:text-amber-400">
+                            logo
+                          </strong>
+                          , o conselho aprovou a perfuração."
+                        </p>
+                        <p className="text-sm mt-2 font-bold text-amber-700/80 dark:text-amber-400/80">
+                          (O conectivo 'logo' não é enfeite; ele estabelece um
+                          corolário/conclusão).
+                        </p>
+                      </div>
+                    </div>
                   ),
                 },
                 {
-                  titulo: "Tabela de Elite",
-                  icone: <LuCheck />,
+                  titulo: "O Arsenal Conectivo da CESGRANRIO",
+                  icone: <LuLibrary />,
                   conteudo: (
                     <div className="overflow-x-auto">
-                      <table className="w-full text-lg">
+                      <table className="w-full text-sm md:text-base border-collapse">
                         <thead>
-                          <tr className="border-b">
-                            <th className="p-3 text-left">Valor</th>
-                            <th className="p-3 text-left">
-                              Conectivos Principais
+                          <tr className="border-b bg-muted/20">
+                            <th className="p-4 text-left">Nexo Lógico</th>
+                            <th className="p-4 text-left">
+                              Conectivos de Alto Calibre
                             </th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr className="border-b bg-muted/30">
-                            <td className="p-3 font-bold">Adição</td>
-                            <td className="p-3">
-                              E, nem, bem como, não só... mas também.
+                          <tr className="border-b transition-colors hover:bg-muted/10">
+                            <td className="p-4 font-bold text-amber-600 dark:text-amber-400">
+                              Conclusão
+                            </td>
+                            <td className="p-4 text-foreground/90">
+                              Logo, portanto, por conseguinte, destarte,
+                              dessarte.
                             </td>
                           </tr>
-                          <tr className="border-b">
-                            <td className="p-3 font-bold">Causa</td>
-                            <td className="p-3">
-                              Pois, porque, visto que, já que, porquanto.
+                          <tr className="border-b transition-colors hover:bg-muted/10">
+                            <td className="p-4 font-bold text-amber-600 dark:text-amber-400">
+                              Causa Primária
+                            </td>
+                            <td className="p-4 text-foreground/90">
+                              Visto que, na medida em que, porquanto (igual a
+                              porque).
                             </td>
                           </tr>
-                          <tr className="border-b bg-muted/30">
-                            <td className="p-3 font-bold">Conclusão</td>
-                            <td className="p-3">
-                              Logo, portanto, então, por conseguinte, destarte.
+                          <tr className="border-b transition-colors hover:bg-muted/10">
+                            <td className="p-4 font-bold text-amber-600 dark:text-amber-400">
+                              Finalidade
+                            </td>
+                            <td className="p-4 text-foreground/90">
+                              Com o fito de, com o escopo de, a fim de que.
                             </td>
                           </tr>
                         </tbody>
@@ -1283,54 +2170,136 @@ export default function AulaCoesaoCoerencia({
                   ),
                 },
               ]}
-          corIndicador="bg-amber-600"
-        />
+            />
           </section>
 
-          <ModuleConsolidation
-            index={6}
-            video={{ videoId: "dQw4w9WgXcQ", title: "A Arquitetura dos Conectivos", duration: "5:00" }}
-            audio={{ audioUrl: "placeholder.mp3", titulo: "Liga a Solda", artista: "Sertanejo Universitário" }}
-            resumoVisual={{
-              moduloNome: "A Dança dos Conectivos",
-              tituloAula: "Coesão e Coerência",
-              materia: "portugues",
-              images: [
-                { title: "Mapeamento Causal de Conectivos", type: "conceito", placeholderColor: "bg-amber-100", imageUrl: "/images/placeholders/conectivos.webp" }
-              ]
-            }}
-            maceteVisual={{
-              title: "O Macete do 'Quadro Resumo P'",
-              content: (
-                <>
-                  <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
-                    <span>🔗</span>
-                    <span>⛓️</span>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
-                    "O abençoado e singelo claro ingênuo belo lindo puro dócil manso cristalino leve e gentil **Por**que vira o chique exótico caro esnobe pedante fidalgo refinado burguês caro assustador denso monstruoso opulento luxuoso maciço alienígena bizarro vil estranho alienígena esquisito perigoso letal frio cinza formal e fatal **Por**quanto. Nunca deixe a afiada astuta vil perspicaz fria calculadora ardil suja imaculada cruel brutal assassina sorrateira genial sombria genial diabólica majestosa inteligente e mortal monstruosa gigantesca CESGRANRIO com seus labirintos fisgar covardemente fatalmente e sujar tragar você no obscuro letal abissal infernal cego lúgubre denso lamacento sujo podre ardiloso escorregadio mortal fundo assombroso abismo ou encanto fatal sádico abissal assombroso abismal infernal diabólico caótico nojento macabro poço sem fundo do abismo da magia fatal poética perigosa de morte súbita letal mortal trágica sombria fria gélida cinzenta do puro e assombroso léxico esquecido perdido."
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
-                    <div className="p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">
-                      <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">Conquanto vs Porquanto (Arena de Fogo)</h4>
-                      <p className="text-lg text-muted-foreground italic">"CONquanto = CONcessão (Apesar de / Embora). \nPORquanto = PORque (Causa / Motivo racional)."</p>
-                      <p className="text-[10px] mt-2 font-medium text-amber-700 dark:text-amber-300 uppercase">Gatilho Ouro Raro de Decoreba de Puro Sangue Frio na Base Dura Grossa da Vida ou Bruta Morte Brutal Letal Assombrosa Cruel Monstruosa Fina Lógica Limpa Clara Pura Fria Seca Fatal ✅</p>
+          <TextAnalysisLab
+            index={2}
+            variant={mv[6]}
+            titulo="Laboratório de Nexos: Causa e Efeito"
+            subtitulo="A mecânica da CESGRANRIO inverte frequentemente a ordem temporal e sintática."
+            legenda={[
+              { cor: "bg-amber-400", label: "Causa (Ação Originária)" },
+              {
+                cor: "bg-blue-400",
+                label: "Consequência (O Resultado Empírico)",
+              },
+            ]}
+            texto={
+              <div className="space-y-4 text-sm md:text-base leading-loose">
+                <p>
+                  "
+                  <span className="bg-amber-400/30 px-1 rounded font-medium border border-amber-400/50">
+                    Na medida em que a demanda asiática cresceu 15%
+                  </span>
+                  , a gerência recalibrou os navios-sonda,{" "}
+                  <span className="bg-blue-400/30 px-1 rounded font-medium border border-blue-400/50">
+                    de modo que nenhum país aliado enfrentasse desabastecimento
+                  </span>
+                  ."
+                </p>
+              </div>
+            }
+          />
+
+          {/* ── CONSOLIDAÇÃO M6: LESSON TABS ── */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12 mb-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-1 h-full bg-amber-500"></div>
+            <ModuleSectionHeader
+              index={3}
+              title="Consolidação: As Pontes de Sentido"
+              description="Acesse o resumo visual e acerte a guerra letal entre Porquanto e Portanto."
+              variant={mv[6]}
+            />
+
+            <LessonTabs
+              tabs={[
+                {
+                  id: "video",
+                  label: "Vídeo Aula",
+                  icone: LuPlay,
+                  conteudo: (
+                    <div className="aspect-video bg-zinc-900 rounded-xl flex flex-col items-center justify-center border border-zinc-800 relative overflow-hidden group cursor-pointer shadow-lg w-full max-w-3xl mx-auto">
+                      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-700"></div>
+                      <div className="absolute inset-0 bg-amber-900/40 mix-blend-multiply"></div>
+                      <div className="w-16 h-16 rounded-full bg-amber-600/90 flex items-center justify-center text-white backdrop-blur-sm group-hover:scale-110 group-hover:bg-amber-500 transition-all duration-300 shadow-xl shadow-amber-500/20 z-10 mb-4">
+                        <LuPlay className="w-8 h-8 ml-1" />
+                      </div>
+                      <p className="text-amber-100 font-medium z-10 text-lg">
+                        Assistir: Pegadinhas Conectivas
+                      </p>
                     </div>
-                  </div>
-                </>
-              ),
-            }}
-          variant={mv[6]}
-        />
+                  ),
+                },
+                {
+                  id: "resumo",
+                  label: "Resumo Visual",
+                  icone: LuImage,
+                  conteudo: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          type: "Esquema",
+                          title: "Causa vs Consequência",
+                          placeholderColor: "bg-amber-500/20",
+                        },
+                        {
+                          type: "Alerta Red",
+                          title: "Substituição Proibida!",
+                          placeholderColor: "bg-red-500/20",
+                        },
+                      ]}
+                    />
+                  ),
+                },
+                {
+                  id: "macetes",
+                  label: "Macetes",
+                  icone: LuZap,
+                  conteudo: (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="bg-gradient-to-br from-red-900 to-slate-900 p-6 rounded-2xl shadow-lg border border-red-700/50">
+                        <h3 className="text-red-100 font-bold mb-4">
+                          PORQUANTO vs PORTANTO
+                        </h3>
+                        <p className="text-red-50/90 text-sm">
+                          Eles se parecem, mas são inimigos mortais na lógica.
+                          <br />
+                          <br />
+                          <strong>PORQUANTO</strong> = Porque (Dá a Causa).
+                          <br />
+                          <strong>PORTANTO</strong> = Logo (Dá a Conclusão).
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  id: "audio",
+                  label: "Áudio",
+                  icone: LuVolume2,
+                  conteudo: (
+                    <MusicPlayerCard
+                      audioUrl="/audio/coesao-m6.mp3"
+                      titulo="Pílula: O Cimento da Oração"
+                      artista="Prof. Fernando"
+                      lyrics="Conectivo errado é prédio que cai. Na dúvida, troque o nexo pedante pelo básico até ter certeza da relação estabelecida."
+                    />
+                  ),
+                },
+              ]}
+              variant={mv[6]}
+            />
+          </section>
 
           <QuizInterativo
             questoes={quizM6}
-            titulo="[7] QUIZ: A DANÇA DOS CONECTIVOS"
+            titulo="QUIZ: A Dança dos Conectivos"
             icone="🎯"
-            numero={7}
+            numero={4}
+            variant={mv[6]}
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
-          variant={mv[6]}
-        />
+          />
         </div>
       </TabsContent>
 
@@ -1344,139 +2313,333 @@ export default function AulaCoesaoCoerencia({
         />
 
         <div className="space-y-[50px]">
-          {/* ★ RICH INTRO SECTION */}
+          {/* ★ RICH INTRO: Concessão & Oposição */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
+            <ModuleSectionHeader
+              index="INTRO"
+              title="A Concessão de Elite: A Arte de Contornar"
+              description="Aprenda a distinguir a força bruta da oposição (Adversidade) da elegância estratégica da Concessão, um dos temas preferidos da CESGRANRIO."
+              variant={mv[7]}
+            />
+            <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+              <p>
+                <strong>Evanildo Bechara</strong> dedica atenção especial à distinção
+                entre <strong>adversidade</strong> e <strong>concessão</strong> na{" "}
+                <em>Moderna Gramática Portuguesa</em>, pois essa é uma das confusões
+                mais exploradas pela CESGRANRIO. Ambas expressam ideias de contraste,
+                mas operam de maneiras fundamentalmente diferentes. A conjunção{" "}
+                <strong>adversativa</strong> (mas, porém, contudo, todavia, entretanto)
+                introduz o argumento que <strong>&quot;vence&quot;</strong> o embate: em{" "}
+                <em>&quot;O projeto é ambicioso, <strong>mas</strong> exige alto
+                investimento&quot;</em>, o foco recai sobre o alto investimento — é ele que
+                prevalece no raciocínio. Já a conjunção{" "}
+                <strong>concessiva</strong> (embora, conquanto, ainda que, mesmo que)
+                introduz um obstáculo que{" "}
+                <strong>não consegue anular</strong> a ideia principal: em{" "}
+                <em>&quot;<strong>Embora</strong> exija alto investimento, o projeto é
+                ambicioso&quot;</em>, o foco se mantém na ambição do projeto — o
+                investimento é apenas um contraponto insuficiente.
+              </p>
+
+              <p>
+                A diferença prática mais crítica que Bechara destaca — e que a
+                CESGRANRIO cobra em praticamente todas as provas — é a{" "}
+                <strong>mudança obrigatória de modo verbal</strong>. As adversativas
+                acompanham o modo <strong>indicativo</strong> (fato real): &quot;O projeto{" "}
+                <em>é</em> ambicioso, contudo <em>exige</em> investimento&quot;. As
+                concessivas exigem o modo <strong>subjuntivo</strong> (hipótese,
+                concessão): &quot;Embora <em>exija</em> investimento, o projeto{" "}
+                <em>é</em> ambicioso&quot;. Trocar &quot;contudo&quot; por &quot;embora&quot; sem ajustar o
+                verbo do indicativo para o subjuntivo gera um{" "}
+                <strong>erro gramatical grave</strong> que a banca classifica como
+                inadequação de reescrita. Essa é a armadilha número um nos concursos da
+                Petrobras.
+              </p>
+
+              <p>
+                Bechara também sistematiza os{" "}
+                <strong>pares concessivos-adversativos</strong> que o candidato precisa
+                dominar para as questões de equivalência. &quot;Mas&quot; ↔ &quot;embora&quot;, &quot;porém&quot; ↔
+                &quot;conquanto&quot;, &quot;contudo&quot; ↔ &quot;ainda que&quot;, &quot;todavia&quot; ↔ &quot;mesmo que&quot;, &quot;no
+                entanto&quot; ↔ &quot;se bem que&quot;. A troca entre eles é possível, mas exige três
+                ajustes simultâneos: (1) mudança do modo verbal (indicativo →
+                subjuntivo), (2) inversão da ordem das orações (a concessiva
+                geralmente antecede a principal) e (3) eliminação da vírgula antes da
+                adversativa e adição de vírgula após a concessiva. Ignorar qualquer um
+                desses três passos invalida a reescrita.
+              </p>
+
+              <p>
+                No contexto da <strong>Petrobras</strong>, a concessão é ferramenta
+                retórica fundamental em relatórios de segurança e pareceres técnicos.
+                Um comunicado que diga{" "}
+                <em>&quot;<strong>Ainda que</strong> o mar estivesse em categoria 5, a
+                operação de resgate foi concluída com sucesso&quot;</em> usa a concessão
+                para reconhecer a dificuldade operacional sem diminuir a conquista da
+                equipe. A adversativa, por outro lado, daria peso ao obstáculo:{" "}
+                <em>&quot;A operação de resgate foi concluída, <strong>mas</strong> o mar
+                estava em categoria 5&quot;</em>. A escolha entre uma e outra reflete a{" "}
+                <strong>intencionalidade argumentativa</strong> do autor — e a
+                CESGRANRIO testa exatamente essa sensibilidade.
+              </p>
+
+              <p>
+                A <strong>pegadinha mais frequente</strong> da banca envolve a
+                substituição sem ajuste modal. A questão apresenta uma frase com
+                adversativa no indicativo e pede a reescrita com concessiva. Três das
+                cinco alternativas mantêm o verbo no indicativo — e o candidato
+                desatento marca uma delas. Bechara é categórico:{" "}
+                <strong>&quot;embora&quot; + indicativo é erro</strong>. Não existe &quot;Embora o
+                projeto <em>é</em> bom&quot;; o correto é &quot;Embora o projeto{" "}
+                <em>seja</em> bom&quot;. Outra armadilha é o uso de &quot;conquanto&quot;, conjunção
+                rara que muitos candidatos desconhecem: ela é 100% concessiva e exige
+                subjuntivo, funcionando como sinônimo erudito de &quot;embora&quot;.
+              </p>
+
+              <div className="bg-gradient-to-br from-rose-50 to-red-50 dark:from-rose-950/30 dark:to-red-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground flex items-center gap-2">
+                  ⚔️ Adversativa vs Concessiva — Guia de Conversão
+                </h4>
+                <ul className="list-disc list-inside space-y-2 mt-2">
+                  <li><strong>Adversativa</strong> (mas, porém, contudo) → Indicativo. O argumento adversativo &quot;vence&quot;.</li>
+                  <li><strong>Concessiva</strong> (embora, conquanto, ainda que) → Subjuntivo. O obstáculo &quot;perde&quot;.</li>
+                  <li><strong>Ao trocar</strong>: ajustar modo verbal + inverter ordem + corrigir pontuação.</li>
+                  <li><strong>Erro fatal</strong>: &quot;Embora&quot; + Indicativo = INVÁLIDO. Sempre Subjuntivo.</li>
+                </ul>
+              </div>
+            </div>
+
+            <QuizDiagnostic
+              title="Desafio de Contraste"
+              question="Se trocarmos o 'Mas' por 'Embora' em uma frase, o que acontece obrigatoriamente com o verbo segundo o Padrão Bechara?"
+              options={[
+                "Nada, o verbo permanece no Indicativo.",
+                "O verbo deve ir para o Futuro do Pretérito.",
+                "O verbo deve ser deslocado para o Subjuntivo.",
+                "O verbo deve ser omitido (Elipse).",
+              ]}
+              correctAnswer={2}
+              explanation="Perfeito! As conjunções concessivas (embora, conquanto) exigem o modo subjuntivo para sinalizar a natureza da relação lógica."
+              variant={mv[7]}
+            />
+          </section>
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="A Arena de Fogo: Concessão & Oposição"
-          variant={mv[7]}
-        />
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-              <p>
-                As duas forças mais violentas e diametralmente destrutivas da sintaxe textual operam nas relações de <strong>Oposição</strong> (Coordenada Adversativa) e de <strong>Concessão</strong> (Subordinada Concessiva). Tratam-se de operadores discursivos projetados especificamente para quebrar expectativas lógicas. Em relatórios de mitigação de danos ou despachos jurídicos de licenciamento petroquímico, elas são as ferramentas máximas que determinam de quem é a culpa e para onde o projeto de expansão irá caminhar.
-              </p>
-              <p>
-                O operador de Oposição (O "MAS", "POBÉM", "ENTRETANTO") atua como um muro intransponível de concreto armado e gelado. Ele não só introduz uma adversidade: ele <strong>anula ativamente as chances de sucesso do argumento anterior</strong>. Ao escrever "A licitação foi muito favorável, MAS a diretoria embargou os poços", todo o aspecto alegre e pacífico da licitação favorável foi chacinado pela força obstrutiva brutal do embargo, e o tom geral do texto final é negativo e sombrio.
-              </p>
-              <p>
-                Em fortíssimo contraste, a sublime, resiliente, mágica e poética Concessão (O "EMBORA", "A DESPEITO DE", "CONQUANTO") atua como a água mole e pura batendo em pedra de gelo. Ela introduz um fortíssimo obstáculo aparente, mas que <strong>falha miseravelmente</strong> em impedir a glória do texto principal. "EMBORA o temporal castigasse a estrutura brutalmente e as águas tentassem tombar a frota, a embarcação principal atracou sã e salva na costa". Aqui, o conectivo assume uma postura narrativa maravilhosa: ele glorifica a oração central expondo todo o fracasso e a fraqueza impotente do mal narrado.
-              </p>
-              <p>
-                Na implacável e assassina máquina de provações cruas chamada CESGRANRIO, candidatos em hordas caem nas pegadinhas sintáticas mais ingênuas e tristes. A banca não pedirá conceitos de papel, ela pedirá a <strong>reescritura letal semântica sem perdas</strong> mudando um MAS por um EMBORA. Nesse duelo, se você simplesmente trocar as palavras mecanicamente como se cravassem selos nos papéis antigos sujos ("Estudaram o poço cruamente, embora não encontraram o bruto"), a CESGRANRIO decepará sua nota: a concessão exige inegociável submissão do verbo mortal ao infame modo falho do SUBJUNTIVO (Embora <strong>encontrassem</strong>).
-              </p>
-              <div className="bg-gradient-to-br from-blue-50 to-sky-50 dark:from-blue-950/30 dark:to-sky-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
-                <h4 className="font-bold text-foreground">A Chave Tática de Vida ou Morte</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <span className="font-bold text-blue-600 dark:text-blue-400">O MAS Bate e Vence (Indicativo)</span>
-                    <ul className="list-disc list-inside mt-2 text-sm space-y-1">
-                      <li>Verbo no plano real palpável: "Mas BATEU, Mas FRACASSOU".</li>
-                      <li>Vence de lavada a discussão. O argumento do 'mas' dita a emoção total do trecho.</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <span className="font-bold text-sky-600 dark:text-sky-400">O EMBORA Suplica e Perde (Subjuntivo)</span>
-                    <ul className="list-disc list-inside mt-2 text-sm italic">
-                      <li>Verbo nos modos dúbios irreais fracos da imaginação: "Embora BATESSE, Embora TENTASSE".</li>
-                      <li>Faz show visual, impõe medo, mas desaba e fracassa contra a oração principal que segue a vida.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={2}
-              title="Análise Rápida de Campo"
-          variant={mv[7]}
-        />
+              title="O Grande Duelo Sintático"
+              description="Adversativas vs. Concessivas: o divisor de águas entre a lógica imperativa e a argumentação sofisticada."
+              variant={mv[7]}
+            />
             <ContentAccordion
+              mode="stacked"
               slides={[
                 {
-                  titulo: "Mas (Adversativo)",
+                  titulo: "Mas (Adversativo): A Rota de Colisão",
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground">
-                        O 'Mas' introduz um fato que <strong>vence</strong> ou
-                        bloqueia o anterior.
+                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-justify">
+                        Na gramática de Bechara, as conjunções adversativas
+                        (mas, porém, contudo, todavia) introduzem o argumento{" "}
+                        <strong>mais forte</strong>. Elas literalmente tratoram
+                        a informação anterior, deixando claro que o que vem após
+                        o 'mas' é a verdadeira intenção do autor.
                       </p>
-                      <p className="font-bold p-3 bg-red-500/5 rounded-lg border-l-4 border-red-500 italic">
-                        "Estudou muito, MAS não passou." (Foco no fracasso)
-                      </p>
+                      <div className="p-4 bg-red-500/10 border-l-4 border-red-500 rounded-r-xl italic text-base md:text-lg text-foreground">
+                        "O navio-plataforma era antigo,{" "}
+                        <strong className="text-red-600 dark:text-red-400">
+                          mas
+                        </strong>{" "}
+                        a manutenção estava em dia."
+                        <span className="block text-sm mt-2 font-bold text-red-700/80 dark:text-red-400/80 not-italic">
+                          (O foco da comunicação: A PLATAFORMA PODE OPERAR. O
+                          'mas' empodera a manutenção e anula a idade).
+                        </span>
+                      </div>
                     </div>
                   ),
                 },
                 {
-                  titulo: "Embora (Concessivo)",
+                  titulo: "Embora (Concessivo): A Quebra Elegante",
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground">
-                        O 'Embora' introduz um fato que é ignorado pela oração
-                        principal.
+                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-justify">
+                        As concessivas (embora, conquanto, ainda que)
+                        representam a resiliência. Elas introduzem um obstáculo
+                        válido e inegável, contudo <strong>insuficiente</strong>{" "}
+                        para barrar a oração principal. É a arte de conceder
+                        razão ao oponente antes de vencê-lo.
                       </p>
-                      <p className="font-bold p-3 bg-emerald-500/5 rounded-lg border-l-4 border-emerald-500 italic">
-                        "EMBORA não tenha estudado, passou." (Foco no sucesso)
-                      </p>
+                      <div className="p-4 bg-emerald-500/10 border-l-4 border-emerald-500 rounded-r-xl italic text-base md:text-lg text-foreground">
+                        "
+                        <strong className="text-emerald-600 dark:text-emerald-400">
+                          Embora
+                        </strong>{" "}
+                        o mar estivesse categoria 5, o resgate foi concluído com
+                        sucesso."
+                        <span className="block text-sm mt-2 font-bold text-emerald-700/80 dark:text-emerald-400/80 not-italic">
+                          (O foco da comunicação: O RESGATE FOI UM SUCESSO. O
+                          'embora' rebaixa a tempestade a um mero detalhe
+                          superado).
+                        </span>
+                      </div>
                     </div>
                   ),
                 },
               ]}
-          corIndicador="bg-blue-600"
-        />
-            <AlertBox tipo="danger" titulo="Não confunda!">
-              Trocar 'Mas' por 'Embora' exige mudar o verbo do Indicativo para o
-              Subjuntivo. A banca ADORA isso!
+            />
+            <AlertBox tipo="danger" titulo="A Armadilha do Modo Verbal">
+              A CESGRANRIO pune quem não cruza Sintaxe com Morfologia. Trocar
+              'Mas' por 'Embora' <strong>obriga</strong> a mudança de modo
+              verbal. Concessivas exigem o <strong>Subjuntivo</strong> (campo do
+              hipotético/concedido), nunca o Indicativo (campo do real):
+              <div className="mt-4 p-4 bg-background border border-red-500/20 rounded-lg font-mono text-sm space-y-2">
+                <p className="text-red-600/90 dark:text-red-400/90">
+                  ❌ <strong>Mas</strong> o mar ESTAVA revolto... (Indicativo
+                  OBRIGA a ser Adversativa)
+                </p>
+                <p className="text-emerald-600/90 dark:text-emerald-400/90">
+                  ✅ <strong>Embora</strong> o mar ESTIVESSE revolto...
+                  (Subjuntivo OBRIGA a ser Concessiva)
+                </p>
+              </div>
             </AlertBox>
           </section>
 
-          <ModuleConsolidation
-            index={7}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Mas vs Embora", duration: "5:00" }}
-            audio={{ audioUrl: "placeholder.mp3", titulo: "A Guilhotina Vermelha", artista: "Sertanejo Universitário" }}
-            resumoVisual={{
-              moduloNome: "Concessão e Oposição",
-              tituloAula: "Coesão e Coerência",
-              materia: "portugues",
-              images: [
-                { title: "Máquina de Britar Lógica", type: "conceito", placeholderColor: "bg-rose-100", imageUrl: "/images/placeholders/concessao.webp" }
-              ]
-            }}
-            maceteVisual={{
-              title: "O Macete do 'Veto Oficial'",
-              content: (
-                <>
-                  <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
-                    <span>🥊</span>
-                    <span>🎭</span>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
-                    "O 'MAS' soca forte firme e bruto e vence a briga real; O mágico 'EMBORA' faz um dócil dramático choro mudo sutil falso elegante e perde toda a glória."
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
-                    <div className="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl">
-                      <h4 className="text-lg font-bold text-rose-600 dark:text-rose-400 mb-2">Engenharia Inversa</h4>
-                      <p className="text-lg text-muted-foreground italic">"Choveu canivetes afiados da forte bruta violenta imensa nevasca gélida mortal bruta. MAS a forte equipe cega valente treinou bruta seca firme no lamaçal negro duro frio do campo!"</p>
-                      <p className="text-[10px] mt-2 font-medium text-rose-700 dark:text-rose-300 uppercase">Escreva essa substituição vital na prova amaldiçoada fina sagrada CESGRANRIO cruel letal limpa na linha mental em milissegundos crus! ✅</p>
+          <TextAnalysisLab
+            index={2}
+            variant={mv[7]}
+            titulo="Laboratório de Contrastes"
+            subtitulo="Analise a força argumentativa (Oposição vs Concessão) em um cenário de crise operacional."
+            legenda={[
+              { cor: "bg-rose-400", label: "Oposição (Argumento Forte)" },
+              {
+                cor: "bg-emerald-400",
+                label: "Concessão (Obstáculo Superado)",
+              },
+            ]}
+            texto={
+              <div className="space-y-4 text-sm md:text-base leading-loose">
+                <p>
+                  "Houve um vazamento superficial de fluidos,{" "}
+                  <span className="bg-rose-400/30 px-1 rounded font-medium border border-rose-400/50">
+                    contudo a resposta da equipe de contenção foi imediata
+                    (Oposição)
+                  </span>
+                  .{" "}
+                  <span className="bg-emerald-400/30 px-1 rounded font-medium border border-emerald-400/50">
+                    Ainda que a imprensa divulgue cenários alarmistas
+                    (Concessão)
+                  </span>
+                  , a integridade do reservatório principal está mantida."
+                </p>
+              </div>
+            }
+          />
+
+          {/* ── CONSOLIDAÇÃO M7: LESSON TABS ── */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12 mb-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-1 h-full bg-rose-500"></div>
+            <ModuleSectionHeader
+              index={3}
+              title="Consolidação: O Jogo de Forças"
+              description="Domine a inversão de polaridade entre Indicativo Subjuntivo."
+              variant={mv[7]}
+            />
+
+            <LessonTabs
+              tabs={[
+                {
+                  id: "video",
+                  label: "Vídeo Aula",
+                  icone: LuPlay,
+                  conteudo: (
+                    <div className="aspect-video bg-zinc-900 rounded-xl flex flex-col items-center justify-center border border-zinc-800 relative overflow-hidden group cursor-pointer shadow-lg w-full max-w-3xl mx-auto">
+                      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1512418490979-92798cec1380?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-700"></div>
+                      <div className="absolute inset-0 bg-rose-900/40 mix-blend-multiply"></div>
+                      <div className="w-16 h-16 rounded-full bg-rose-600/90 flex items-center justify-center text-white backdrop-blur-sm group-hover:scale-110 group-hover:bg-rose-500 transition-all duration-300 shadow-xl shadow-rose-500/20 z-10 mb-4">
+                        <LuPlay className="w-8 h-8 ml-1" />
+                      </div>
+                      <p className="text-rose-100 font-medium z-10 text-lg">
+                        Assistir: Mas vs Embora
+                      </p>
                     </div>
-                  </div>
-                </>
-              ),
-            }}
-          variant={mv[7]}
-        />
+                  ),
+                },
+                {
+                  id: "resumo",
+                  label: "Resumo Visual",
+                  icone: LuImage,
+                  conteudo: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          type: "A Oposição",
+                          title: "MAS: A Marreta",
+                          placeholderColor: "bg-red-500/20",
+                        },
+                        {
+                          type: "A Concessão",
+                          title: "EMBORA: A Água Contornando a Pedra",
+                          placeholderColor: "bg-emerald-500/20",
+                        },
+                      ]}
+                    />
+                  ),
+                },
+                {
+                  id: "macetes",
+                  label: "Macetes",
+                  icone: LuZap,
+                  conteudo: (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="bg-gradient-to-br from-rose-900 to-slate-900 p-6 rounded-2xl shadow-lg border border-rose-700/50">
+                        <h3 className="text-rose-100 font-bold mb-4">
+                          A REGRA DE OURO BIFURCADA
+                        </h3>
+                        <p className="text-rose-50/90 text-sm">
+                          Acese a luz de alerta verbal quando essas conjunções
+                          aparecerem:
+                          <br />
+                          <br />
+                          <strong>MAS/PORÉM</strong> = Sempre acompanham verbos
+                          no <strong>Indicativo</strong> (mundo real).
+                          <br />
+                          <br />
+                          <strong>EMBORA/CONQUANTO</strong> = Exigem verbos no{" "}
+                          <strong>Subjuntivo</strong> (quebra de expectativa).
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  id: "audio",
+                  label: "Áudio",
+                  icone: LuVolume2,
+                  conteudo: (
+                    <MusicPlayerCard
+                      audioUrl="/audio/coesao-m7.mp3"
+                      titulo="Pílula: Concessão Tática"
+                      artista="Prof. Fernando"
+                      lyrics="Na CESGRANRIO, o 'conquanto' é a veste de gala do 'embora'. Vista-o, mas certifique-se de usar o subjuntivo no pé."
+                    />
+                  ),
+                },
+              ]}
+              variant="rose"
+            />
+          </section>
 
           <QuizInterativo
             questoes={quizM7}
-            titulo="[8] QUIZ: CONCESSÃO E OPOSIÇÃO"
+            titulo="QUIZ: Concessão & Oposição"
             icone="🎯"
-            numero={8}
+            numero={4}
+            variant={mv[7]}
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
-          variant={mv[7]}
-        />
+          />
         </div>
       </TabsContent>
 
@@ -1490,116 +2653,303 @@ export default function AulaCoesaoCoerencia({
         />
 
         <div className="space-y-[50px]">
-          {/* ★ RICH INTRO SECTION */}
+          {/* ★ RICH INTRO: Arquitetura da Coerência */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
+            <ModuleSectionHeader
+              index="INTRO"
+              title="Arquitetura da Coerência: A Viga Mestra"
+              description="Vá além da gramática e entenda como o Princípio da Não-Contradição sustenta a engenharia de sentido dos textos da Petrobras."
+              variant={mv[8]}
+            />
+            <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+              <p>
+                <strong>Evanildo Bechara</strong> adverte que a{" "}
+                <strong>coerência</strong> não é um elemento visível na superfície do
+                texto como a coesão, mas o <strong>resultado da interação entre o
+                texto e o conhecimento de mundo do leitor</strong>. Um texto pode ter
+                100% de coesão — pronomes retomando referentes corretos, conectivos
+                impecavelmente empregados, elipses legitimamente recuperáveis — e,
+                ainda assim, ser completamente absurdo se suas ideias se contradisserem
+                ou violarem a lógica do mundo real. A coerência é a consciência do
+                texto, o prumo que impede o desabamento lógico. Para o concurso da
+                Petrobras, entender essa dimensão profunda é decisivo: a CESGRANRIO
+                constrói questões inteiras sobre a distinção entre forma (coesão) e
+                substância (coerência).
+              </p>
+
+              <p>
+                O pilar fundamental da coerência que Bechara sistematiza é o{" "}
+                <strong>Princípio da Não-Contradição</strong>: um texto coerente não
+                pode afirmar e negar a mesma proposição simultaneamente sem
+                justificativa explícita. Se um relatório da Petrobras declara que{" "}
+                <em>&quot;O lucro operacional cresceu 15% no trimestre&quot;</em> e, dois
+                parágrafos depois, afirma que <em>&quot;a receita total caiu no mesmo
+                período sem fatores extraordinários&quot;</em>, há uma ruptura de
+                coerência: lucro crescente com receita declinante, sem explicação
+                intermediária (como redução de custos), gera uma contradição lógica.
+                A CESGRANRIO apresenta textos com esse tipo de inconsistência e
+                pergunta se o trecho é coerente — testando a capacidade analítica do
+                candidato.
+              </p>
+
+              <p>
+                Além da não-contradição, Bechara identifica outros princípios de
+                coerência que a banca explora: a <strong>relevância</strong> (cada
+                informação deve contribuir para o tema central), a{" "}
+                <strong>continuidade temática</strong> (o texto não pode saltar
+                abruptamente de um assunto para outro sem transição) e a{" "}
+                <strong>coerência pragmática</strong> (adequação ao mundo real). Este
+                último princípio é especialmente crítico nos textos da Petrobras: um
+                manual técnico que diga <em>&quot;Em caso de vazamento, espere a pressão
+                estabilizar naturalmente&quot;</em> pode ser gramaticalmente perfeito, mas
+                é pragmaticamente incoerente — na indústria de petróleo, vazamentos
+                exigem intervenção imediata, não espera passiva.
+              </p>
+
+              <p>
+                No contexto dos concursos da <strong>Petrobras</strong>, a coerência
+                aparece predominantemente em questões de interpretação de texto, onde
+                a banca apresenta trechos longos (editoriais, relatórios, artigos) e
+                pede que o candidato identifique se determinada conclusão é{" "}
+                <strong>coerente com o conjunto</strong> de informações apresentadas.
+                O candidato precisa avaliar não apenas o que está explícito, mas
+                também as <strong>inferências lógicas</strong> que o texto autoriza.
+                Se o texto diz que &quot;a produção caiu&quot; e &quot;o mercado estava aquecido&quot;,
+                a inferência de que &quot;fatores internos causaram a queda&quot; é coerente;
+                a inferência de que &quot;o mercado causou a queda&quot; é incoerente com os
+                dados apresentados.
+              </p>
+
+              <p>
+                A <strong>pegadinha mais sofisticada</strong> da CESGRANRIO neste
+                tema é o texto com <strong>coesão impecável e coerência
+                quebrada</strong>. A banca constrói trechos em que todos os conectivos
+                estão corretos, os pronomes retomam os referentes certos e a
+                pontuação é perfeita — mas uma premissa contradiz outra, ou uma
+                conclusão não se sustenta logicamente pelas evidências apresentadas.
+                Bechara ensina que o candidato de elite deve ler o texto em{" "}
+                <strong>duas camadas</strong>: primeiro a superfície gramatical
+                (coesão), depois o subsolo lógico (coerência). Só quando ambas as
+                camadas estão íntegras é que o texto pode ser considerado bem
+                construído.
+              </p>
+
+              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground flex items-center gap-2">
+                  🧠 Pilares da Coerência — Checklist de Validação
+                </h4>
+                <ul className="list-disc list-inside space-y-2 mt-2">
+                  <li><strong>Não-contradição</strong> — O texto afirma e nega a mesma coisa sem justificativa?</li>
+                  <li><strong>Relevância</strong> — Toda informação contribui para o tema central?</li>
+                  <li><strong>Continuidade</strong> — Há saltos abruptos de assunto sem transição?</li>
+                  <li><strong>Coerência pragmática</strong> — O conteúdo faz sentido no mundo real (especialmente em contexto industrial)?</li>
+                </ul>
+              </div>
+            </div>
+
+            <QuizDiagnostic
+              title="Dossiê de Coerência"
+              question="Segundo Bechara, qual a diferença primordial entre coesão e coerência?"
+              options={[
+                "Coesão é o sentido; Coerência é a gramática.",
+                "Coesão é a superfície (forma); Coerência é a base (lógica).",
+                "São sinônimos perfeitos na linguística moderna.",
+                "Coerência só existe em textos literários.",
+              ]}
+              correctAnswer={1}
+              explanation="Correto! Enquanto a coesão cuida dos elos gramaticais, a coerência garante que a unidade de sentido seja mantida."
+              variant={mv[8]}
+            />
+          </section>
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="A Coerência Textual: A Arquitetura do Sentido Puro"
-          variant={mv[8]}
-        />
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-              <p>
-                Diferentemente da pura mecânica cega bruta dos infinitos ferrolhos e pinos sintáticos coesivos descritos friamente nas lições anteriores massivas e pragmáticas burocráticas letárgicas do léxico amaldiçoado, a suprema mágica rainha vital e monumental soberana absoluta celestial <strong>Coerência Textual</strong> opera invisível no abismal infinito monumental e solitário plano mental invisível da abstração: o imenso amplo e vasto fabuloso plano bruto mágico infinito maravilhoso das ricas ideias puras, das firmes e colossais exatas finas severas rigorosas fortes inferências e deduções lógicas de ouro maciças limpas e perfeitas exatas dedutivas de choque direto frontal amarrado de razoabilidade estrita fria calculada crua dura lógica implacável blindada imaculada no encaixe exato afiado frio cirúrgico letal fatal milimétrico afiado direto da exata maravilhosa e clara lúcida mensagem comunicativa do receptor emissor leitor locutor explícito emissor emissário falante porta-voz fático claro com o fabuloso gigantesco épico mundo real externo prático do laboratório tátil cru impuro embaçado trágico vivo imperfeito impermanente volátil imperdoável cínico embaçado real tátil sujo sombrio e com o denso belo mágico rico próprio rico limpo rico e fechado trágico ameno pacífico ou obscuro lindo vasto e vivo universo maravilhoso lindo formidável exato mágico poético ou sombrio semântico fechado pré-configurado da sua folha redação da sua caneta do seu papel rasgado assustador branco opaco virgem. Se a crua tática fina seca formal técnica tática dura da bruta e complexa Coesão trata e prega unicamente unicamente os parafusos fáticos secos finos da firme colossal e dura cinzenta formal de aço "espinha dorsal fria bruta mecânica fixa morta letárgica cadavérica inorgânica amarrada física estrutural plástica seca mecânica inorgânica de sintaxe formal dura e fixa física", é inteiramente absolutamente rigorosamente exata plenamente imaculadamente puramente sem restrições ou sem amarras de fato o poder vital da Coerência soberana quem puramente garante puramente que aquela a gloriosa nobre sã "alma viva fática mágica da escrita e do forte puro letal belíssimo texto brilhante claro e vivo puro radiante e fático claro épico suntuoso limpo polido maravilhoso" jamais sofra da desastrosa grotesca ridícula louca insana letal caótica fatal louca horrível esquizofrênica clínica patologia mental do absurdo falho crasso.
-              </p>
-              <p>
-                Na implacável alta linha da frente oficial da companhia massiva matriz burocrática estatal rica Petrobras de engenhos ou base marítima fabril das exatas engrenagens cruas cegas físicas de extração, um grande imenso caro opulento reluzente projeto pesado grandioso faraônico técnico formidável maravilhoso de exploração imensa de longo longo gás nobre extraído da costa mineral brutal rico e majestoso valioso raro perigoso pode magicamente facilmente belamente perfeitamente formalmente limpidamente ser absolutamente protegido blindado trancado revestido e magicamente blindado polido lustrado maravilhosamente lixado formalmente na mais linda fabulosa puríssima de beleza cega exata em pura linda polida gloriosa sublime magistral divina sublime sintaxe fina maravilhosa rica rica bela amável bela gentil limpa amável sublime nobre rica nobre suprema divinal fina magistral bela gentil poética gramática pura amável coesa cristalina lisa limpa fina transparente cega brilhante suprema divina letal magistral pura divina absoluta linda lisa exata amarrada divina cristalina linda gentil cega rica de classe limpa fina estrita pura exata coesa maravilhosa absoluta recheada com mil sublimes majestosas limpas cegas puras limpas maravilhosas lindas finas limpas amáveis vírgulas divinas magistrais perfeitas redondas brancas claras exatas poéticas limpas divinas poéticas puras puras poéticas mágicas claras brilhantes cristalinas transparentes perfeitas exatas puras magistrais de pérolas, contudo no entanto todavia brutalmente miseravelmente por azar fático sombrio contudo, ele e sua essência de facto inútil fraco vazio pífio ralo nulo falso nulo pífio cego morto torto morto falso podre falso vazio falho vazio inútil frívolo burro se todo grandioso conjunto do pacote de obra for inteira inteiramente estritamente amplamente cruelmente cruamente dura estrutural e na base letal e de frente no todo cruel e tecnicamente absurdo sujo caótico absurdo louco alucinado sombrio fático alienígena louco sombrio sujo torto podre tolo falso letal delirante e fatal doente ("A exploração fabulosa de longo curso do poço mineral da densa quente lava em fusão deve e precisa absurdamente sem rodeios ser cruamente blindada gerida operada estocada isolada isolada guardada guardada tratada blindada revestida transportada resfriada represada operada bombeada dominada amarrada isolada contida amarrada conduzida controlada fechada controlada em tenros finos amáveis tenros ocos ocos leves frágeis transparentes tubos cínicos pequenos lindos coloridos maravilhosos curtos finos fracos canais leves fáceis finos ralos curtos rasos delicados minúsculos ocos rasos finos simples pequenos frágeis de maleável barato gentil ralo dócil e prático plástico oco derretível de forma transparente dócil inútil limpo prático colorido fino liso lindo ralo leve prático lindo puro fino ralo frágil puro dócil manso lindo lindo frágil fino frágil plástico de fino e raso transparente pacífico e madeirames e amável tábuas soltas pregos madeira pálida lixada compensada nobre gentil fina dócil gentil amável dócil macia mansa rala fina frágil bela gentil bela leve leve fina amável leve bela mansa macia para fim mágico cruel louco utópico lúdico puro garantir na certeza e na pureza a margem do absurdo lucro fático e das garantias de sucesso das finas marginais limpas e cegas opacas seguras longas curtas vastas frias sólidas cegas cruas longas garantias de segurança das longas exatas altas margens e planilhas longas marginais finas cegas operacionais brancas brancas frias cegas na sede cega matriz principal clara clara gelada dura blindada opaca do plano alto da torre gelada dura de vidro da companhia opaca bruta!"). Esta bizarra fantástica frase utópica louca alienígena surreal assombrosa épica fabulosa narrativa louca poética literária doida poética bela frase formidável louca fantástica louca lírica bizarra fantástica frase maravilhosa é 100% lixada polida e rica de base 100% finamente sintática blindada puramente estritamente coesa coesa fina unânime divina pura fina perfeitamente brilhante coesa blindada em gramática formal, mas é de pura fria realidade assombrosa crua crua de fato doente louca absurdamente letal de verdade no abismo factual dura falha e 100% de fundo incoerente e letal na pura loucura insana mental incoerente pela assustadora cega pura loucura da imbecilidade violação na infração fria do abismo da loucura da farsa da clara loucura de desespero crua ofensa sombria trágica pela absurda fatal letal crua ofensa bizarra cega infeliz doente louca ofensa letal violação cega e nítida violação dura doente crua cega infração da violação fática crua e impiedosa cega do cego abismo vil de do erro trágico na infração e ofensa trágica falha nítida doente grotesca trágica fatal e crua clara crua bruta simples basilar fática do infeliz de do do do sagrado doente do trágico sagrado princípio doente real prático natural fundamental absoluto puro cego claro prático e direto claro natural humano sagrado natural físico fático real fático puro cru pragmático pragmático lúdico empírico real real natural empírico real vital elementar fático empírico e prático fático do nosso rico lúdico palpável real limpo mundo fático denso bruto natural físico real tátil do homem humano normal da massa.).
-              </p>
-              <div className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/30 dark:to-green-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
-                <h4 className="font-bold text-foreground">Os Desvios Clássicos do Rumo</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <span className="font-bold text-emerald-600 dark:text-emerald-400">A Cegueira Tautológica</span>
-                    <ul className="list-disc list-inside mt-2 text-sm space-y-1">
-                      <li>"A encheção de linguiça vazia: você morde as sílabas e bebe as letras em um grande carrossel infame de mil frases fúteis em labirinto inútil que rodam cruel louca em falso em ponto motor fatal vazio na roda na marcha oca cega lisa morta fátua rala nula em círculos estéreis, dizendo e narrando em poética cega de desespero sem fim e berrando a mil formas verbais diferentes exatamente cegamente exata absolutamente inútil perfeitamente rigorosamente a exata fatídica única mesmíssima coisa medíocre da forma rala."</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <span className="font-bold text-green-600 dark:text-green-400">Contradição Lógica Fina (Fábrica)</span>
-                    <ul className="list-disc list-inside mt-2 text-sm italic">
-                      <li>Exemplo letal brutal trágico: O redator formal na tribuna defende cegamente de forma nobre sublime poética feroz com unhas letal com garras de leão e dentes brutos duros fortes raivosos afiados cínicos mortais brutais limpos brutos duros na tribuna o encerramento do pátio para em seguida letalmente na mesma hora num infeliz golpe mortal desastroso trágico fatal e sombrio infeliz vil desastroso trágico no final letal doente pedir a compra massiva monumental massiva imensa letal volumosa estúpida massiva colossal insana assustadora astronômica de pás brutas enormes longas pás de obras de obras obras materiais materiais equipamentos pás de obra novas ferramentas ferramentas brutas novas peças novas para atuar neste mesmo idêntico exato igual pobre fechado mesmo idêntico lúgubre recinto morto exato mesmo fechado e mesmo doente letal morto pátio fantasma morto.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={2}
-              title="Tipologia Coerente"
-          variant={mv[8]}
-        />
+              title="A Viga Mestra do Sentido"
+              description="A Coerência Pragmática e Semântica: a diferença brutal entre um texto perfeitamente amarrado (coeso) e um texto que de fato faz sentido (coerente)."
+              variant={mv[8]}
+            />
             <ContentAccordion
+              mode="stacked"
               slides={[
                 {
-                  titulo: "Não-Contradição",
+                  titulo: "O Princípio da Não-Contradição",
                   icone: <LuCheck />,
                   conteudo: (
-                    <p className="text-muted-foreground">
-                      Um texto não pode afirmar 'A' e logo em seguida defender
-                      'não A' sem um motivo lógico ou ressalva explícita.
-                    </p>
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-justify">
+                        Na lógica dialética, um texto não pode postular 'A' e,
+                        no período seguinte, postular 'não A' sem uma ponte
+                        concessiva clara. A coerência interna exige que as
+                        informações orbitando o mesmo referente corroborem a
+                        mesma tese, sob pena de ruir toda a arquitetura
+                        discursiva.
+                      </p>
+                      <div className="p-4 bg-red-500/10 border-l-4 border-red-500 rounded-r-xl">
+                        <p className="text-xs font-bold uppercase tracking-widest text-red-600 dark:text-red-400 mb-1">
+                          A Incoerência Fatal (Falta Lógica)
+                        </p>
+                        <p className="italic text-base md:text-lg text-foreground">
+                          "A empresa defende a segurança total em alto mar, mas
+                          flexibiliza o uso de EPIs em áreas de risco grave."
+                        </p>
+                        <p className="text-sm mt-2 text-muted-foreground">
+                          (Sintaticamente coeso, mas logicamente insano).
+                        </p>
+                      </div>
+                    </div>
                   ),
                 },
                 {
-                  titulo: "Coerência Pragmática",
+                  titulo: "Coerência Pragmática (O Chão de Fábrica)",
                   icone: <LuLightbulb />,
                   conteudo: (
-                    <p className="text-muted-foreground italic">
-                      "O navio pesado imenso duro bruto naval naval macabro monstro monstruoso opaco de duro gelado metal escuro afiado de negro brutal gelado e frio fosco naval gigante de duro cego sujo aço blindado afiado flutuou voou magicamente divinal levemente magicamente formidavelmente suavemente maravilhosamente belamente amavelmente lindamente nobre puramente manso magicamente lindamente gentil amavelmente celestialmente serenamente puramente como uma fina rala dócil pura fina sutil meiga rala pálida minúscula branca bela formidável singela formidável pequena frágil pena ou dócil dócil fina pluma viva voando voando flutuando viva mansa mágica livre pluma angelical mansa clara fina macia alva macia dócil branca frágil branca fátua pluma sobre o caos fatal mortal infernal da fervente da chama e do plasma e vermelha caótica quente bruta mortal impiedosa selvagem monstruosa dura cega imensa colossal caótica grossa espessa letal furiosa letal espessa grossa monstruosa e infernal caótica furiosa assassina da terrível amaldiçoada escaldante brilhante fervente incandescente vermelha rubra cruel infernal terrível fervente da lava vulcânica suja do amaldiçoado monstruoso fático épico irreal mítico abissal do vulcão vivo formidável monstruoso infernal infernal apocalíptico do fático do apocalíptico mítico denso assombroso mágico do vulcão cego e irado infernal cego mágico alienígena letal assustador em fúria mágica monumental abissal brutal cega louca e em chamas." - A frase é perfeita e redonda coesa com o lindo universo literário mental embaçado exato da imaginação mágica louca divinal do autor épico louco místico maluco brilhante da pena utópico criador alienígena místico mas, como relatado no exame da fundação na cega banca técnica, fere impiedosamente o nosso sujo cinzento normal ordinário cruel exato sujo normal prático cru físico ríspido seco e infeliz triste conhecimento cruel chato frio letal bruto pragmático impuro ralo cinzento opaco duro cru chato da física quântica trivial humana pragmática infeliz chata nula do plano mental normal natural lúdico físico formal nosso pobre pálido conhecimento seco cru formal da normal lógica triste e e pragmática cega exata dura crua fática real física dura nítida cega crua e infeliz e física fria normal pragmática normal simples chata humana fria humana seca prática do conhecimento do puro do cinza pragmático puro e da lógica infeliz exata e chata pura chata ordinária empírica lógica exata fática clara dura e real do frio do ordinário simples ríspido seco fático pragmático chato óbvio e do nosso chato da física amarga fática lógica exata e dura fria e o triste do óbvio do nosso conhecimento real tátil empírico fático físico duro físico cru e pragmático fático cru do homem e e claro frio sujo do amargo impuro e do ordinário cinzento cru exato liso do óbvio cruel chato do opaco trivial gélido de nosso comum fático letal duro pragmático e lúdico humano vulgar impuro cru de conhecimento e cru óbvio do nosso opaco raso óbvio letárgico chato trivial gélido pragmático chato prático humano duro exato simples do amargo nosso cinza pragmático e ordinário e da vida opaco mundo cinzento cru e humano e do conhecimento do prático limpo físico pobre da banal fria do comum ralo cego prático liso gélido pragmático trivial da vida tátil vulgar real da triste lógica humana crua comum óbvio duro normal amargo de letárgico real normal prático de exato cinzento da pragmática da pragmática mundo fático real opaco prático empírico e real nítido cego liso cego mundo empírico empírico nítido opaco empírico pragmático liso empírico físico gélido físico trivial gélido real exato puro prático exato físico vulgar trivial da empírico real empírico duro limpo cego físico puro físico e liso mundo (a incoerência externa abissal monstruosa louca).
-                    </p>
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-justify">
+                        Não basta fazer sentido internamente; o texto precisa
+                        pertencer ao mundo real. A Coerência Pragmática é o
+                        choque do texto com o 'Conhecimento de Mundo' partilhado
+                        entre autor e leitor.
+                      </p>
+                      <div className="p-4 bg-emerald-500/10 border-l-4 border-emerald-500 rounded-r-xl italic text-base md:text-lg text-foreground">
+                        "Enviamos três submarinos atômicos para perfurar o
+                        núcleo do Sol."
+                        <span className="block text-sm mt-2 font-bold text-emerald-700/80 dark:text-emerald-400/80 not-italic">
+                          (Coesão gramatical: Nota 10. Coerência pragmática:
+                          Absoluto zero. O texto não resiste à gravidade do
+                          mundo real).
+                        </span>
+                      </div>
+                    </div>
                   ),
                 },
               ]}
-          corIndicador="bg-emerald-600"
-        />
+            />
           </section>
 
-          <ModuleConsolidation
-            index={8}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Os Pilares do Sentido", duration: "5:00" }}
-            audio={{ audioUrl: "placeholder.mp3", titulo: "O Juízo da Mente", artista: "Sertanejo Universitário" }}
-            resumoVisual={{
-              moduloNome: "Arquitetura da Coerência",
-              tituloAula: "Coesão e Coerência",
-              materia: "portugues",
-              images: [
-                { title: "Plano do Sentido Abstrato", type: "conceito", placeholderColor: "bg-emerald-100", imageUrl: "/images/placeholders/coerencia.webp" }
-              ]
-            }}
-            maceteVisual={{
-              title: "O Macete da 'Bussola Mestra'",
-              content: (
-                <>
-                  <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
-                    <span>🧭</span>
-                    <span>🧠</span>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
-                    "O belo e cego carro impecável, perfeitamente montado (Coesão plena), sendo brutalmente jogado numa ribanceira por um louco rindo ao volante (Incoerência massiva)".
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
-                    <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-                      <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">A Tautologia Vil Súbita</h4>
-                      <p className="text-lg text-muted-foreground italic">"O vazamento da triste negra poça de óleo sujou o chão pálido turvo e de fato só foi provocado por aquele líquido negro que estava vazando".</p>
-                      <p className="text-[10px] mt-2 font-medium text-emerald-700 dark:text-emerald-300 uppercase">A morte cerebral da criatividade e perdição inexorável na redação CESGRANRIO ✅</p>
+          <TextAnalysisLab
+            index={2}
+            variant="emerald"
+            titulo="Laboratório de Sanidade Discursiva"
+            subtitulo="Valide se a premissa suporta logicamente a conclusão imposta."
+            legenda={[
+              { cor: "bg-emerald-400", label: "A Premissa Material" },
+              { cor: "bg-amber-400", label: "O Corolário Lógico" },
+            ]}
+            texto={
+              <div className="space-y-4 text-sm md:text-base leading-loose">
+                <p>
+                  "
+                  <span className="bg-emerald-400/30 px-1 rounded font-medium border border-emerald-400/50">
+                    Sendo imperativo que falhas na sonda custam milhões
+                  </span>
+                  , a interrupção preventiva de dois dias foi a{" "}
+                  <span className="bg-amber-400/30 px-1 rounded font-medium border border-amber-400/50">
+                    decisão racional validada por ambas as diretorias
+                  </span>
+                  ."
+                </p>
+              </div>
+            }
+          />
+
+          {/* ── CONSOLIDAÇÃO M8: LESSON TABS ── */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12 mb-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-1 h-full bg-emerald-500"></div>
+            <ModuleSectionHeader
+              index={3}
+              title="Consolidação: As Leis da Coerência"
+              description="Acesse o resumo visual sobre não-contradição e ancoragem na realidade."
+              variant={mv[8]}
+            />
+
+            <LessonTabs
+              tabs={[
+                {
+                  id: "video",
+                  label: "Vídeo Aula",
+                  icone: LuPlay,
+                  conteudo: (
+                    <div className="aspect-video bg-zinc-900 rounded-xl flex flex-col items-center justify-center border border-zinc-800 relative overflow-hidden group cursor-pointer shadow-lg w-full max-w-3xl mx-auto">
+                      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-700"></div>
+                      <div className="absolute inset-0 bg-emerald-900/40 mix-blend-multiply"></div>
+                      <div className="w-16 h-16 rounded-full bg-emerald-600/90 flex items-center justify-center text-white backdrop-blur-sm group-hover:scale-110 group-hover:bg-emerald-500 transition-all duration-300 shadow-xl shadow-emerald-500/20 z-10 mb-4">
+                        <LuPlay className="w-8 h-8 ml-1" />
+                      </div>
+                      <p className="text-emerald-100 font-medium z-10 text-lg">
+                        Assistir: O Teste de Realidade
+                      </p>
                     </div>
-                  </div>
-                </>
-              ),
-            }}
-          variant={mv[8]}
-        />
+                  ),
+                },
+                {
+                  id: "resumo",
+                  label: "Resumo Visual",
+                  icone: LuImage,
+                  conteudo: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          type: "A Lógica",
+                          title: "Princípio da Não-Contradição",
+                          placeholderColor: "bg-emerald-500/20",
+                        },
+                        {
+                          type: "O Mundo Real",
+                          title: "Coerência Pragmática vs Fantasia",
+                          placeholderColor: "bg-teal-500/20",
+                        },
+                      ]}
+                    />
+                  ),
+                },
+                {
+                  id: "macetes",
+                  label: "Macetes",
+                  icone: LuZap,
+                  conteudo: (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="bg-gradient-to-br from-emerald-900 to-slate-900 p-6 rounded-2xl shadow-lg border border-emerald-700/50">
+                        <h3 className="text-emerald-100 font-bold mb-4">
+                          A METÁFORA DO EDIFÍCIO
+                        </h3>
+                        <p className="text-emerald-50/90 text-sm">
+                          A <strong>Coesão</strong> é o cimento, o ferro e o
+                          tijolo (os elementos gramaticais visíveis). A{" "}
+                          <strong>Coerência</strong> é a prumo, o nível e a
+                          planta (a ordem lógica invisível). Você pode ter uma
+                          pilha perfeitamente cimentada de tijolos que não forma
+                          uma casa.
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  id: "audio",
+                  label: "Áudio",
+                  icone: LuVolume2,
+                  conteudo: (
+                    <MusicPlayerCard
+                      audioUrl="/audio/coesao-m8.mp3"
+                      titulo="Pílula: O Crivo da Razão"
+                      artista="Prof. Fernando"
+                      lyrics="Na prova de intelecção da CESGRANRIO, a alternativa falsa nem sempre mente sobre o texto, às vezes ela quebra o Princípio da Não-Contradição."
+                    />
+                  ),
+                },
+              ]}
+              variant="emerald"
+            />
+          </section>
 
           <QuizInterativo
             questoes={quizM8}
-            titulo="[9] QUIZ: ARQUITETURA DA COERÊNCIA"
+            titulo="QUIZ: Arquitetura da Coerência"
             icone="🎯"
-            numero={9}
+            numero={4}
+            variant={mv[8]}
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
-          variant={mv[8]}
-        />
+          />
         </div>
       </TabsContent>
 
@@ -1613,108 +2963,304 @@ export default function AulaCoesaoCoerencia({
         />
 
         <div className="space-y-[50px]">
-          {/* ★ RICH INTRO SECTION */}
+          {/* ★ RICH INTRO: Progressão e Relevância */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
+            <ModuleSectionHeader
+              index="INTRO"
+              title="Progressão Temática: O Motor do Texto"
+              description="Aprenda a evitar o 'texto circular' (Tautologia) e domine o equilíbrio entre a informação dada (Tema) e a informação nova (Rema) segundo Bechara."
+              variant={mv[9]}
+            />
+            <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
+              <p>
+                <strong>Evanildo Bechara</strong> ensina que um texto coerente não
+                apenas conecta ideias (coesão) e respeita a lógica (coerência), mas
+                também precisa <strong>avançar</strong> — cada frase deve acrescentar
+                informação nova ao que já foi dito. Esse avanço controlado é a{" "}
+                <strong>progressão temática</strong>, o motor que mantém o leitor
+                engajado do primeiro ao último parágrafo. Um texto que apenas repete a
+                mesma ideia com palavras diferentes — sem de fato informar nada novo —
+                comete o que Bechara classifica como{" "}
+                <strong>tautologia textual</strong>, um dos defeitos mais graves na
+                redação técnica e um dos mais cobrados pela CESGRANRIO nos concursos
+                da Petrobras.
+              </p>
+
+              <p>
+                A estrutura da progressão temática se baseia no par conceitual{" "}
+                <strong>Tema</strong> (a informação já conhecida, o ponto de partida)
+                e <strong>Rema</strong> (a informação nova, o comentário inovador).
+                Bechara explica que cada frase parte de um Tema (dado) e acrescenta
+                um Rema (novo), e esse Rema se transforma no Tema da frase seguinte,
+                criando uma <strong>cadeia de progressão</strong>. No relatório{" "}
+                <em>&quot;A produção de petróleo no pré-sal [Tema] atingiu recorde
+                histórico [Rema]. Esse recorde [Tema → antigo Rema] foi impulsionado
+                pela entrada de novas plataformas [Rema novo].&quot;</em> — cada frase
+                avança sobre a anterior, construindo conhecimento cumulativo.
+              </p>
+
+              <p>
+                Bechara identifica três padrões clássicos de progressão que a
+                CESGRANRIO cobra. A <strong>progressão linear</strong> (o Rema de
+                cada frase vira o Tema da próxima) é a mais comum e direta. A{" "}
+                <strong>progressão com tema constante</strong> mantém o mesmo sujeito
+                ao longo de várias frases, acrescentando novos predicados:{" "}
+                <em>&quot;A Petrobras investiu em tecnologia. A Petrobras reduziu
+                custos. A Petrobras atingiu a meta.&quot;</em> Já a{" "}
+                <strong>progressão derivada</strong> (ou com tema subdividido) parte
+                de um hipertema que se ramifica em subtemas:{" "}
+                <em>&quot;A empresa enfrenta três desafios: [1] a regulação, [2] a
+                concorrência e [3] a transição energética.&quot;</em> O candidato precisa
+                reconhecer qual padrão está em uso para avaliar se o texto está
+                progredindo adequadamente.
+              </p>
+
+              <p>
+                No contexto da <strong>Petrobras</strong>, a progressão temática é
+                vital em documentos que precisam construir argumentos complexos:{" "}
+                pareceres jurídicos, relatórios de viabilidade e comunicados ao
+                mercado. Um relatório de exploração que diga{" "}
+                <em>&quot;O campo de Búzios é promissor. O campo de Búzios tem grande
+                potencial. Búzios pode gerar resultados positivos.&quot;</em> apresenta
+                tautologia — três frases dizendo essencialmente a mesma coisa sem{" "}
+                acrescentar dados concretos (volume estimado, prazo de operação,
+                investimento necessário). A CESGRANRIO apresenta trechos assim e
+                pergunta qual é o defeito textual, oferecendo alternativas que
+                incluem &quot;incoerência&quot;, &quot;falta de coesão&quot; e &quot;falta de progressão&quot; —
+                e só a última é correta.
+              </p>
+
+              <p>
+                A <strong>pegadinha clássica</strong> da banca envolve textos que{" "}
+                <strong>parecem</strong> progredir porque usam vocabulário variado,
+                mas que na essência repetem a mesma ideia central sem avançar. É o
+                chamado <strong>texto circular</strong>: ele gira em torno de um
+                ponto sem jamais introduzir um dado novo. Bechara adverte que a mera
+                substituição lexical (trocar &quot;importante&quot; por &quot;relevante&quot; por
+                &quot;significativo&quot;) não constitui progressão — é apenas coesão lexical
+                a serviço da repetição. A progressão real exige{" "}
+                <strong>informação genuinamente nova</strong> a cada período. Nos
+                concursos da Petrobras, dominar essa distinção é o que separa a
+                análise superficial da compreensão profunda.
+              </p>
+
+              <div className="bg-gradient-to-br from-fuchsia-50 to-pink-50 dark:from-fuchsia-950/30 dark:to-pink-950/30 rounded-lg border border-fuchsia-200 dark:border-fuchsia-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground flex items-center gap-2">
+                  📈 Padrões de Progressão — Diagnóstico Rápido
+                </h4>
+                <ul className="list-disc list-inside space-y-2 mt-2">
+                  <li><strong>Linear</strong> — Rema da frase 1 → Tema da frase 2. Cadeia progressiva.</li>
+                  <li><strong>Tema constante</strong> — Mesmo sujeito, novos predicados a cada frase.</li>
+                  <li><strong>Derivada</strong> — Um hipertema se ramifica em subtemas organizados.</li>
+                  <li><strong>Tautologia</strong> — Defeito! Mesmo conteúdo com palavras diferentes = SEM progressão.</li>
+                </ul>
+              </div>
+            </div>
+
+            <QuizDiagnostic
+              title="Diagnóstico de Fluxo"
+              question="Qual o nome técnico dado por Bechara à informação 'nova' que faz o texto progredir a partir de um tema conhecido?"
+              options={[
+                "Catáfora, pois aponta para frente.",
+                "Rema, que é o comentário inovador sobre o tema.",
+                "Elipse, pois omite o que já foi dito.",
+                "Silepse, por concordância ideológica.",
+              ]}
+              correctAnswer={1}
+              explanation="Exato! O 'Rema' é a informação nova que é adicionada ao 'Tema' (informação velha), garantindo a progressão do sentido."
+              variant={mv[9]}
+            />
+          </section>
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
-              title="A Marcha Implacável: Progressão e Relevância Temática"
-          variant={mv[9]}
-        />
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-              <p>
-                Qualquer texto magistral possui uma alma motora implacável. Ele vive, respira e avança como um tanque de guerra blindado avançando implacável sobre o papel rasgado pelo tempo. O motor sagrado que impulsiona cada passo firme se chama <strong>Progressão Temática</strong>. Um texto que não progride é um doente preso num leito giratório de dor girando infinitamente sobre a mesma fútil ideia; morre antes de nascer.
-              </p>
-              <p>
-                Na base técnica, a Progressão baseia-se num amarrado pacto brutal de sangue chamado TEMA-REMA da gramática estrutural. O TEMA é a fundação do passado, a informação que foi dada e que ancora o leitor na fria segurança. O REMA é o sangue azul divino da nova infalível majestosa e surpreendente formidável exata rica informação avançada que foi atirada no peito escuro da nova oração para garantir avanço limpo de ideia.
-              </p>
-              <p>
-                A cruel CESGRANRIO fuzila violentamente os textos lentos fátuos circulares viciados redudantes fracos das pobres assustadas frágeis almas dos candidatos na terrível e brutal impiedosa exata crua fria letal sombria e macabra redação formal limpa de prova. A letal doença da Redundância e da Tautologia destrói ferozmente os fracos: repetir trágicas cinco vezes seguidas "Que a água vazou molhada" achando e julgando friamente piamente docemente sutil formidavelmente estar criando e moldando uma rica tese mágica ou que "A empresa faliu porque acabou fria crua e duramente caindo morta infeliz no puro amargo triste infeliz cego duro frio fatal infeliz mortal falido denso louco fático vazio sem fim pálido cego abismo escuro da letal falência pura".
-              </p>
-              <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
-                <h4 className="font-bold text-foreground">Engrenagens do Movimento</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <span className="font-bold text-rose-600 dark:text-rose-400">O Tema (O Fiel Âncora)</span>
-                    <ul className="list-disc list-inside mt-2 text-sm space-y-1">
-                      <li>O Porto Seguro. "O reator da plataforma operava..." (Base de onde partiremos).</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <span className="font-bold text-pink-600 dark:text-pink-400">O Rema (O Sangue Novo)</span>
-                    <ul className="list-disc list-inside mt-2 text-sm italic">
-                      <li>O Combustível Mágico: "...quando sofreu e resistiu bravamente à forte massiva sobrecarga termonuclear da falha humana!". O texto andou milhas fáticas!</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={2}
-              title="Resumo Sistêmico do Avanço"
-          variant={mv[9]}
-        />
+              title="O Movimento do Texto"
+              description="A dinâmica de informar: como o texto caminha do conhecido para o novo sem estagnar."
+              variant={mv[9]}
+            />
             <ContentAccordion
+              mode="stacked"
               slides={[
                 {
-                  titulo: "O Ciclo Base de Progressão",
+                  titulo: "Tema vs Rema (A Teoria de Bechara)",
                   icone: <LuActivity />,
                   conteudo: (
-                    <p className="text-muted-foreground">
-                      O milagre ocorre a cada passo formal. Cada parágrafo denso nobre e formidável deve somar impreterivelmente uma novíssima e única e reluzente majestosa divina nova linda linda informação vital nova (rema) exatamente firmemente em cima ou amarrado docemente ao duro passado do que já fora devidamente dito frio fixo e cego claro nítido seco e frio tátil conhecido seco lúdico trivial limpo seco nítido e raso pálido e fático simples limpo normal normal vulgar fixo seco rígido e cego que era simples e estrito exato morto cego simples (tema).
-                    </p>
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-justify">
+                        Todo texto é uma travessia contínua entre o porto seguro
+                        e o mar aberto. <strong>Tema</strong> (tópico) é a
+                        informação velha, a âncora que o leitor já conhece.{" "}
+                        <strong>Rema</strong> (comentário) é a engrenagem nova
+                        que faz o texto progredir.
+                      </p>
+                      <div className="p-4 bg-fuchsia-500/10 border-l-4 border-fuchsia-500 rounded-r-xl">
+                        <p className="italic text-base md:text-lg text-foreground">
+                          "O navio-sonda (Tema) atingiu o pré-sal (Rema 1)."
+                        </p>
+                        <p className="italic mt-2 text-base md:text-lg text-foreground">
+                          "O pré-sal (Novo Tema) demandará novas brocas de
+                          perfuração (Rema 2)."
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Tautologia: O Círculo Vicioso",
+                  icone: <LuTriangleAlert />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-justify">
+                        Oposto da progressão! A Tautologia é a estagnação
+                        discursiva. É o ato criminoso de falar em círculos,
+                        mascarando a repetição do <strong>Tema</strong> sob
+                        novas palavras sem jamais introduzir um{" "}
+                        <strong>Rema</strong> autêntico.
+                      </p>
+                      <p className="p-4 bg-red-500/10 border-l-4 border-red-500 rounded-r-xl italic text-base md:text-lg text-foreground">
+                        "O viés de confirmação ocorre porque os funcionários
+                        confirmam repetidamente as próprias suspeitas
+                        enviesadas."
+                        <span className="block text-sm mt-2 font-bold text-red-700/80 dark:text-red-400/80 not-italic">
+                          (Rodou, rodou e não saiu do lugar. Incoerência por
+                          falta de progressão).
+                        </span>
+                      </p>
+                    </div>
                   ),
                 },
               ]}
-          corIndicador="bg-rose-600"
-        />
-            <AlertBox tipo="warning" titulo="O Erro Fatal do Vício Circular">
-              A abominável e horrenda assassina suja e inútil terrível fria vil <strong>Tautologia</strong> (vício de dor doente letal de linguagem suja cega) é o monstro e sádico amargo cínico inimigo brutal inimigo mortal e fatal macabro fatal abissal oponente rival mestre assassino da bela progressão: Falar impiedosamente docemente o amado falso inútil dócil fútil dócil e óbvio letárgico fútil inútil fraco vazio falso inútil ralo e raso mesmíssimo mesmo amargo infeliz fático vazio oco frio trágico falho louco burro seco cego amargo exato idêntico idêntico exato mesmo inútil com as mais lindas ricas mais caras formidáveis fáceis lindas belas finas mágicas luxuosas nobres sublimes lindas de luxo líricas formidáveis belas macias dócil fútil doces mansas mais raras novas lindas e finas sublimes outras falhas puras outras nobres palavras belas caras dócil nobres sem dar nem avançar puramente nada sem nunca jamais andar nem evoluir progredir e andar dar e gerar ou de fato magicamente gerar num passo útil um passo nem meio cego exato lúdico ralo fático prático natural puro seco e real duro normal mero fático dócil ralo mínimo infame tátil e exato prático normal prático milimétrico liso ou pálido liso real físico simples pálido tátil real simples ameno passo nítido limpo claro livre lúdico e real passo sutil ralo natural minúsculo passo raso passo fático ralo no ríspido real cinzento liso avanço ralo cru seco avanço no cru seco tátil fino sentido prático real opaco novo.
-            </AlertBox>
+            />
           </section>
 
-          <ModuleConsolidation
-            index={9}
-            video={{ videoId: "dQw4w9WgXcQ", title: "A Máquina de Ideias", duration: "5:00" }}
-            audio={{ audioUrl: "placeholder.mp3", titulo: "Não Olhe Pra Trás", artista: "Sertanejo Universitário" }}
-            resumoVisual={{
-              moduloNome: "Progressão e Relevância",
-              tituloAula: "Coesão e Coerência",
-              materia: "portugues",
-              images: [
-                { title: "Engrenagens do Rema e Tema", type: "conceito", placeholderColor: "bg-rose-100", imageUrl: "/images/placeholders/progressao.webp" }
-              ]
-            }}
-            maceteVisual={{
-              title: "O Macete do 'Cão Atrás do Rabo'",
-              content: (
-                <>
-                  <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
-                    <span>🐕</span>
-                    <span>🔄</span>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
-                    "O relógio parou de ticar no frio amargo pátio porque o velho ríspido e brutal motor frio letal do exato idêntico relógio da torre misteriosamente letalmente deixou tragicamente loucamente cruel de simplesmente doente de loucamente parar macabramente tragicamente infeliz louco bater parado no duro e infeliz cego pátio vazio..."
-                  </p>
-                  <p className="text-sm mt-4 text-center font-bold text-rose-600 dark:text-rose-400">
-                    Sintoma da mente exausta na banca. Corte sem piedade!
-                  </p>
-                </>
-              ),
-            }}
-          variant={mv[9]}
-        />
+          <TextAnalysisLab
+            index={2}
+            variant={mv[9]}
+            titulo="Dossiê de Evolução"
+            subtitulo="Acompanhe a progressão de ideias em um parágrafo técnico impecável."
+            legenda={[
+              { cor: "bg-blue-400", label: "A Âncora (Tema)" },
+              { cor: "bg-fuchsia-400", label: "O Avanço (Rema)" },
+            ]}
+            texto={
+              <div className="space-y-4 text-sm md:text-base leading-loose">
+                <p>
+                  "
+                  <span className="bg-blue-400/30 px-1 rounded font-medium border border-blue-400/50">
+                    O novo sistema de despressurização
+                  </span>{" "}
+                  <span className="bg-fuchsia-400/30 px-1 rounded font-medium border border-fuchsia-400/50">
+                    injetou dados em tempo real na sala de controle
+                  </span>
+                  . Essa{" "}
+                  <span className="bg-blue-400/30 px-1 rounded font-medium border border-blue-400/50">
+                    agilidade de leitura
+                  </span>{" "}
+                  <span className="bg-fuchsia-400/30 px-1 rounded font-medium border border-fuchsia-400/50">
+                    foi a responsável por evitar o colapso nas válvulas
+                  </span>
+                  ."
+                </p>
+              </div>
+            }
+          />
+
+          {/* ── CONSOLIDAÇÃO M9: LESSON TABS ── */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mt-12 mb-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-1 h-full bg-fuchsia-500"></div>
+            <ModuleSectionHeader
+              index={3}
+              title="Consolidação: A Esteira do Sentido"
+              description="Acesse o resumo visual sobre Tema e Rema."
+              variant={mv[9]}
+            />
+
+            <LessonTabs
+              tabs={[
+                {
+                  id: "video",
+                  label: "Vídeo Aula",
+                  icone: LuPlay,
+                  conteudo: (
+                    <div className="aspect-video bg-zinc-900 rounded-xl flex flex-col items-center justify-center border border-zinc-800 relative overflow-hidden group cursor-pointer shadow-lg w-full max-w-3xl mx-auto">
+                      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-700"></div>
+                      <div className="absolute inset-0 bg-fuchsia-900/40 mix-blend-multiply"></div>
+                      <div className="w-16 h-16 rounded-full bg-fuchsia-600/90 flex items-center justify-center text-white backdrop-blur-sm group-hover:scale-110 group-hover:bg-fuchsia-500 transition-all duration-300 shadow-xl shadow-fuchsia-500/20 z-10 mb-4">
+                        <LuPlay className="w-8 h-8 ml-1" />
+                      </div>
+                      <p className="text-fuchsia-100 font-medium z-10 text-lg">
+                        Assistir: Progressão de Ideias
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  id: "resumo",
+                  label: "Resumo Visual",
+                  icone: LuImage,
+                  conteudo: (
+                    <ModuleSummaryCarouselNew
+                      images={[
+                        {
+                          type: "Dinâmica",
+                          title: "Fluxo Tema-Rema",
+                          placeholderColor: "bg-fuchsia-500/20",
+                        },
+                        {
+                          type: "A Armadilha",
+                          title: "Identificando a Tautologia",
+                          placeholderColor: "bg-pink-500/20",
+                        },
+                      ]}
+                    />
+                  ),
+                },
+                {
+                  id: "macetes",
+                  label: "Macetes",
+                  icone: LuZap,
+                  conteudo: (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="bg-gradient-to-br from-fuchsia-900 to-slate-900 p-6 rounded-2xl shadow-lg border border-fuchsia-700/50">
+                        <h3 className="text-fuchsia-100 font-bold mb-4">
+                          A ESCADA DO TEXTO
+                        </h3>
+                        <p className="text-fuchsia-50/90 text-sm">
+                          Na leitura, busque sempre o verbo principal da oração.
+                          Aquilo que vem antes é quase sempre a retomada (Tema)
+                          e aquilo que se afirma como novidade é o (Rema). Sem
+                          Rema, não há progressão, apenas eco.
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  id: "audio",
+                  label: "Áudio",
+                  icone: LuVolume2,
+                  conteudo: (
+                    <MusicPlayerCard
+                      audioUrl="/audio/coesao-m9.mp3"
+                      titulo="Pílula: O Roteiro do Texto"
+                      artista="Prof. Fernando"
+                      lyrics="Parágrafo de desenvolvimento que não avança é areia movediça. A Cesgranrio penaliza quem confunde repetição elegante com Tautologia estéril."
+                    />
+                  ),
+                },
+              ]}
+              variant={mv[9]}
+            />
+          </section>
 
           <QuizInterativo
             questoes={quizM9}
-            titulo="[10] QUIZ: PROGRESSÃO TEMÁTICA"
+            titulo="QUIZ: Progressão e Relevância"
             icone="🎯"
-            numero={10}
+            numero={4}
+            variant={mv[9]}
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
-          variant={mv[9]}
-        />
+          />
         </div>
       </TabsContent>
 
@@ -1728,73 +3274,145 @@ export default function AulaCoesaoCoerencia({
         />
 
         <div className="space-y-[50px]">
-          {/* ★ RICH INTRO SECTION */}
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          {/* ★ RICH INTRO: Arena de Elite */}
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
             <ModuleSectionHeader
-              index={1}
-              title="A Consagração Final: Batalha em Alto Mar"
-          variant={mv[10]}
-        />
-            <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
+              index="INTRO"
+              title="Arena de Elite: O Crivo da Aprovação"
+              description="Bem-vindo ao Lab de Questões. Aqui, a teoria de Bechara encontra a pressão da CESGRANRIO em um simulado final de alta periculosidade."
+              variant={mv[10]}
+            />
+            <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
-                As fundações teóricas massivas da arquitetura redacional foram batidas. Da microestrutura cirúrgica da Coesão até as inferências colossais lógicas da Coerência, cada mecanismo ensinado aqui rege com rigor de ferro o plano discursivo exigido pela Fundação CESGRANRIO. Em sua prova, a teoria não serve como simples enfeite ou ornamento; ela é a régua letal invisível com a qual o examinador medirá impiedosamente cada pingo e vírgula de suas sentenças operacionais.
+                A jornada pelos nove módulos anteriores construiu, peça a peça, o
+                arsenal teórico que <strong>Evanildo Bechara</strong> sistematizou ao
+                longo de décadas na <em>Moderna Gramática Portuguesa</em>. Você
+                dominou a coesão referencial (anáfora, catáfora, elipse, zeugma), a
+                coesão lexical (hiperonímia, nominalização, palavras-sumário), a coesão
+                sequencial (conectivos e seus valores semânticos reais), a distinção
+                concessão vs. adversidade com ajuste modal obrigatório, os pilares da
+                coerência (não-contradição, relevância, pragmática) e a progressão
+                temática (Tema/Rema, tautologia). Nesta <strong>Arena de
+                Elite</strong>, todo esse conhecimento será testado simultaneamente —
+                exatamente como a CESGRANRIO faz na prova real da Petrobras.
               </p>
+
               <p>
-                Os gabaritos das questões mais diabólicas não residem na alternativa que soa 'bela' ao ouvido destreinado, mas exatamente e unicamente naquela que mantém intacta e inquebrável a malha fina letal lógica e a cadeia articulada irrefutável de pronomes ou conectivos (anáforas, catáforas e concessões) exposta nos laboratórios mentais que você acaba de vencer hoje.
+                A banca CESGRANRIO se destaca das demais organizadoras por construir
+                questões que <strong>cruzam dois ou mais mecanismos</strong> em uma
+                única alternativa. Uma questão pode pedir a reescrita de um trecho
+                usando concessiva (Módulo 7) e, ao mesmo tempo, exigir que o candidato
+                avalie se a nova redação mantém a hiperonímia (Módulo 5) e a
+                progressão temática (Módulo 9) do original. Isso significa que
+                resolver uma questão isolando apenas um mecanismo é insuficiente — o
+                candidato de elite precisa analisar a alternativa em{" "}
+                <strong>múltiplas camadas simultâneas</strong>, verificando coesão,
+                coerência e progressão de uma só vez.
               </p>
-            </div>
-          </section>
 
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader
-              index={2}
-              title="Alertas Críticos de Navegação"
-          variant={mv[10]}
-        />
-            <div className="space-y-6">
-              <AlertBox tipo="warning" titulo="O Alvo Número 1: O Pronome Cego">
-                Nas imensas e brutais provas táticas da Petrobras, a coesão referencial baseada inteiramente no jogo oculto sujo frio e astuto insano cego invisível fatal do <strong>Esse vs Este</strong> (Anáfora imediata e Catáfora de gatilho) é histórica letal dura fria dura crua invicta formal cega imortal invicta implacável formal pura imbatível dura fina e disparadamente o terrível implacável cruel letal exato seco cru vil pesado formal cego frio tópico formal letal vil duro clássico prático cego clássico que massivamente domina e mais chove e atinge desaba cai em prova. Jamais, e sob nenhuma impiedosa pura condição louca louca inútil hipótese pura louca poética sinta preguiça dura de puramente cirurgicamente milimetricamente formal rigorosa letal magicamente formal cruel secamente fatal pura amável seca voltar aos labirintos obscuros amados duros sombrios longos duros secos do frio letárgico ralo cego trágico duro fatal texto duro para religar rigorosamente caçar milimetricamente rastrear exata infalível divinal o referente oco seco original vil mestre!
-              </AlertBox>
-            </div>
-          </section>
+              <p>
+                Bechara oferece uma estratégia de resolução que pode ser adaptada para
+                a prova: ler o texto em <strong>três passagens</strong>. Na primeira,
+                identificar o <strong>tema central</strong> e a{" "}
+                <strong>tese do autor</strong> (coerência macro). Na segunda, mapear os{" "}
+                <strong>mecanismos de coesão</strong> empregados — quais pronomes
+                retomam quais referentes, quais conectivos ligam quais orações, onde há
+                elipses e zeugmas. Na terceira, avaliar a{" "}
+                <strong>progressão temática</strong> — o texto avança ou gira em
+                círculos? Cada informação nova contribui para a argumentação? Essa
+                abordagem em camadas é o que diferencia a leitura técnica da leitura
+                casual, e é exatamente a competência que a CESGRANRIO mede.
+              </p>
 
-          <ModuleConsolidation
-            index={10}
-            video={{ videoId: "dQw4w9WgXcQ", title: "O Fechamento do Dossier", duration: "5:00" }}
-            audio={{ audioUrl: "placeholder.mp3", titulo: "A Trombeta de Ouro", artista: "Sertanejo Universitário" }}
-            resumoVisual={{
-              moduloNome: "Arena de Elite",
-              tituloAula: "Coesão e Coerência",
-              materia: "portugues",
-              images: [
-                { title: "Gatilho Definitivo CESGRANRIO", type: "conceito", placeholderColor: "bg-violet-100", imageUrl: "/images/placeholders/simulado.webp" }
-              ]
-            }}
-            maceteVisual={{
-              title: "A Única Regra de Vida",
-              content: (
-                <>
-                  <div className="text-6xl my-6 animate-pulse flex justify-center gap-4">
-                    <span>⚔️</span>
-                    <span>📜</span>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center font-serif text-lg">
-                    "Na dúvida desesperada, o texto sempre tem razão. Onde o cérebro tropeça com a lógica exata real da vida de mundo embaçada, a gramática coesa absoluta comanda."
-                  </p>
-                </>
-              ),
-            }}
-          variant={mv[10]}
-        />
+              <p>
+                No universo da <strong>Petrobras</strong>, as questões de Língua
+                Portuguesa da CESGRANRIO frequentemente usam textos extraídos de
+                publicações reais da estatal — relatórios de sustentabilidade,
+                comunicados ao mercado, artigos do blog corporativo. Isso significa
+                que o candidato que estudou o vocabulário técnico do setor de
+                petróleo e gás tem uma vantagem estratégica: ele reconhece os
+                referentes mais rapidamente, identifica as relações de hiperonímia
+                setoriais (sonda → equipamento → ativo) e compreende a coerência
+                pragmática do texto sem precisar recorrer ao conhecimento geral. A
+                Arena de Elite é o espaço para treinar essa leitura especializada sob
+                pressão de tempo.
+              </p>
+
+              <p>
+                A <strong>mentalidade vencedora</strong> nesta fase final exige
+                disciplina de atleta: cada questão errada deve ser{" "}
+                <strong>dissecada</strong>, não apenas revisada. Identifique{" "}
+                <em>qual mecanismo</em> você não reconheceu, <em>por que</em> a
+                alternativa errada parecia correta e <em>qual regra de Bechara</em>{" "}
+                teria impedido o erro. Nos concursos da Petrobras, a diferença entre
+                aprovação e reprovação frequentemente se resume a 2-3 questões de
+                Língua Portuguesa — e são justamente as questões de coesão e
+                coerência que mais eliminam candidatos tecnicamente competentes mas
+                linguisticamente desatentos. Você é a elite. Prove.
+              </p>
+
+              <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
+                <h4 className="font-bold text-foreground flex items-center gap-2">
+                  🏆 Protocolo de Resolução — 3 Camadas
+                </h4>
+                <ul className="list-disc list-inside space-y-2 mt-2">
+                  <li><strong>1ª Leitura</strong> — Tema central + tese do autor (coerência macro).</li>
+                  <li><strong>2ª Leitura</strong> — Mapeamento de coesão: referentes, conectivos, elipses.</li>
+                  <li><strong>3ª Leitura</strong> — Progressão temática: o texto avança ou é circular?</li>
+                  <li><strong>Na dúvida</strong> — Volte à regra de Bechara. Se a alternativa viola qualquer princípio, elimine-a.</li>
+                </ul>
+              </div>
+            </div>
+
+            <QuizDiagnostic
+              title="Mentalidade de Atleta"
+              question="Qual o erro mais comum cometido pelos candidatos nas questões de Coesão Sequencial da Petrobras?"
+              options={[
+                "Achar que o 'conquanto' é conclusivo.",
+                "Ignorar a mudança do modo verbal ao trocar o conectivo.",
+                "Confundir Coesão com Coerência.",
+                "Todas as alternativas anteriores.",
+              ]}
+              correctAnswer={3}
+              explanation="Infelizmente, todas essas são falhas recorrentes. Nesta Arena, vamos treinar seu olhar para que você nunca mais caia nessas armadilhas."
+              variant={mv[10]}
+            />
+          </section>
+          <AlertBox tipo="warning" titulo="Dossie Final: O olhar do Examinador">
+            Nas provas da Petrobras, a <strong>Coesão Referencial</strong>{" "}
+            (Anáfora/Catáfora) é o tópico que mais cai. Revise bem os pronomes
+            demonstrativos e a diferença entre o foco argumentativo do 'Mas' e
+            do 'Embora'.
+          </AlertBox>
 
           <QuizInterativo
             questoes={quizM10}
-            titulo="[11] QUIZ FINAL: ARENA DE ELITE"
+            titulo="Simulado Final de Coesão"
             icone="🏆"
-            numero={11}
+            numero={1}
+            variant={mv[10]}
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
-          variant={mv[10]}
-        />
+          />
+
+          {/* CARD DE CONCLUSÃO MANUAL (Item final obrigatório) */}
+          <section className="mt-12 mb-8">
+            <div className="bg-gradient-to-r from-violet-50 to-indigo-50 dark:from-violet-900/10 dark:to-indigo-900/5 border border-violet-100 dark:border-violet-800/30 rounded-2xl p-10 text-center space-y-6 shadow-sm max-w-4xl mx-auto">
+              <div className="space-y-3">
+                <h3 className="text-2xl font-bold flex items-center justify-center gap-3 text-foreground">
+                  <LuTrophy className="text-violet-500 text-3xl" /> Missão
+                  Cumprida!
+                </h3>
+                <p className="text-muted-foreground text-lg">
+                  Você dominou os tecidos da Coesão e as engrenagens da
+                  Coerência.
+                </p>
+              </div>
+              <p className="text-sm opacity-70">
+                Certifique-se de ter concluído todos os quizzes para garantir
+                seu XP total.
+              </p>
+            </div>
+          </section>
         </div>
       </TabsContent>
     </AulaTemplate>

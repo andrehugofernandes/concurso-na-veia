@@ -901,7 +901,7 @@ export function FlipCard({
 
           <div
             className={cn(
-              "relative z-10 text-sm leading-relaxed overflow-y-auto flex-1 pr-1 custom-scrollbar text-justify font-medium",
+              "relative z-10 text-sm leading-relaxed overflow-y-auto flex-1 pr-1 text-justify font-medium scrollbar-none",
               variant === "dark"
                 ? "text-zinc-300"
                 : "text-zinc-700 dark:text-zinc-300",
@@ -1120,6 +1120,163 @@ export function QuizInterativo({
           </p>
         </div>
       )}
+    </div>
+  );
+}
+
+/**
+ * Quiz de Diagnóstico ultra-rápido para introdução de módulos.
+ * Objetivo: Ativar o conhecimento prévio (Socratic Gate) com apenas 1 questão de alto impacto.
+ */
+export function QuizDiagnostic({
+  title,
+  description,
+  question,
+  options,
+  correctAnswer,
+  explanation,
+  variant = "blue",
+}: {
+  title: string;
+  description?: string;
+  question: string | React.ReactNode;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
+  variant?: string;
+}) {
+  const [selected, setSelected] = useState<number | null>(null);
+  const [showResult, setShowResult] = useState(false);
+
+  const handleSelect = (index: number) => {
+    if (showResult) return;
+    setSelected(index);
+    setShowResult(true);
+    if (index === correctAnswer) {
+      triggerSuccessConfetti();
+    }
+  };
+
+  return (
+    <div className="bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900/50 dark:to-zinc-950/50 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 md:p-10 shadow-xl overflow-hidden relative group">
+      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors" />
+
+      <div className="relative z-10 space-y-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+              Desafio de Entrada
+            </span>
+            <h3 className="text-2xl font-black text-foreground tracking-tight">
+              {title}
+            </h3>
+            <p className="text-sm text-muted-foreground">{description}</p>
+          </div>
+          <div className="hidden md:flex flex-col items-end">
+            <span className="text-xs font-bold text-muted-foreground/60 uppercase">
+              Dificuldade
+            </span>
+            <div className="flex gap-1 mt-1">
+              {[1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className={`w-4 h-1 rounded-full ${i <= 2 ? "bg-amber-500" : "bg-zinc-300 dark:bg-zinc-800"}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-card/50 backdrop-blur-sm border border-border p-6 rounded-2xl shadow-inner">
+          <p className="text-lg md:text-xl font-bold text-foreground leading-snug">
+            {question}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {options.map((opt, i) => {
+            const isCorrect = i === correctAnswer;
+            const isSelected = selected === i;
+
+            let btnClass =
+              "border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 hover:border-primary/50 hover:bg-zinc-100 dark:hover:bg-zinc-900 shadow-sm";
+            if (showResult) {
+              if (isCorrect)
+                btnClass =
+                  "border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 shadow-md shadow-emerald-500/10";
+              else if (isSelected)
+                btnClass =
+                  "border-rose-500 bg-rose-500/10 text-rose-700 dark:text-rose-400";
+              else btnClass = "opacity-50 border-zinc-200 dark:border-zinc-800";
+            } else if (isSelected) {
+              btnClass =
+                "border-primary bg-primary/10 text-primary shadow-md shadow-primary/10";
+            }
+
+            return (
+              <button
+                key={i}
+                onClick={() => handleSelect(i)}
+                disabled={showResult}
+                className={cn(
+                  "p-5 rounded-2xl border-2 text-left transition-all duration-300 flex items-start gap-3 group/opt",
+                  btnClass,
+                )}
+              >
+                <div
+                  className={cn(
+                    "w-8 h-8 rounded-full flex items-center justify-center shrink-0 border-2 font-bold text-sm transition-colors",
+                    showResult && isCorrect
+                      ? "bg-emerald-500 border-emerald-500 text-white"
+                      : showResult && isSelected && !isCorrect
+                        ? "bg-rose-500 border-rose-500 text-white"
+                        : isSelected
+                          ? "bg-primary border-primary text-white"
+                          : "border-zinc-200 dark:border-zinc-800 text-muted-foreground group-hover/opt:border-primary/30",
+                  )}
+                >
+                  {String.fromCharCode(65 + i)}
+                </div>
+                <span className="font-semibold">{opt}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        <AnimatePresence>
+          {showResult && (
+            <motion.div
+              key="diagnostic-result"
+              initial={{ opacity: 0, y: 10, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: "auto" }}
+              className="pt-6 border-t border-zinc-200 dark:border-zinc-800"
+            >
+              <div
+                className={cn(
+                  "p-6 rounded-2xl flex gap-4 items-start",
+                  selected === correctAnswer
+                    ? "bg-emerald-500/10 border border-emerald-500/20"
+                    : "bg-zinc-500/10 border border-zinc-500/20",
+                )}
+              >
+                <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center shrink-0 text-xl shadow-sm">
+                  {selected === correctAnswer ? "🚀" : "💡"}
+                </div>
+                <div className="space-y-1">
+                  <h4 className="font-bold text-foreground">
+                    {selected === correctAnswer
+                      ? "Precisão Cirúrgica!"
+                      : "Ajuste de Rota"}
+                  </h4>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {explanation}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

@@ -21,6 +21,14 @@ import {
 } from "../shared";
 
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+import {
   LuBookOpen,
   LuTarget,
   LuTrophy,
@@ -2188,7 +2196,7 @@ export default function AulaInterpretacaoTexto({
         />
 
         <ModuleConsolidation
-          index={5}
+          index={3}
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Leitura de Elite: Eliminando Vícios e Ganhando Velocidade",
@@ -2271,7 +2279,7 @@ export default function AulaInterpretacaoTexto({
           questoes={quizM5}
           titulo="QUIZ: Coesão Referencial"
           icone="⚡"
-          numero={6}
+          numero={4}
           onComplete={(score) => handleModuleComplete("modulo-5", score)}
           variant={mv[5]}
         />
@@ -2656,111 +2664,129 @@ export default function AulaInterpretacaoTexto({
             variant={mv[7]}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center max-w-5xl mx-auto mt-8">
-            <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center h-full p-4 gap-4">
-                  <div className="p-4 bg-orange-500/10 rounded-full shadow-inner ring-1 ring-orange-500/20">
-                    <LuShieldAlert className="w-10 h-10 text-orange-500" />
-                  </div>
-                  <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
-                    1. Redução
-                  </span>
-                  <span className="text-sm font-medium text-orange-500/80">
-                    O "Meio-Certo"
-                  </span>
-                </div>
-              }
-              verso={
-                <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
-                  <p className="font-bold text-orange-500 flex items-center gap-2 border-b border-orange-500/10 pb-3 uppercase tracking-wide text-xs">
-                    <LuCheck className="w-4 h-4" /> VERDADE INCOMPLETA
-                  </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    A afirmação está no texto, porém foca apenas em uma{" "}
-                    <strong>fração minoritária</strong> do argumento principal,
-                    ignorando a conclusão macroecônomica ou central.
-                  </p>
-                  <div className="bg-muted/40 p-3 rounded-xl border-l-2 border-orange-500">
-                    <p className="text-sm italic opacity-90">
-                      Ao restringir a ideia do autor, a banca cria uma resposta
-                      que não abrange a magnitude do enunciado.
-                    </p>
-                  </div>
-                </div>
-              }
-              categoria="Ameaças Triplas"
-            />
-            <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center h-full p-4 gap-4">
-                  <div className="p-4 bg-red-500/10 rounded-full shadow-inner ring-1 ring-red-500/20">
-                    <LuSearch className="w-10 h-10 text-red-500" />
-                  </div>
-                  <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
-                    2. Extrapolação
-                  </span>
-                  <span className="text-sm font-medium text-red-500/80">
-                    A Ilusão Lógica
-                  </span>
-                </div>
-              }
-              verso={
-                <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
-                  <p className="font-bold text-red-500 flex items-center gap-2 border-b border-red-500/10 pb-3 uppercase tracking-wide text-xs">
-                    <LuShieldAlert className="w-4 h-4" /> O ACHISMO GOURMET
-                  </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    Traz informações verídicas sobre o Brasil ou o mundo que
-                    fazem total sentido, mas que{" "}
-                    <strong>jamais foram citadas</strong> no texto original.
-                  </p>
-                  <div className="bg-muted/40 p-3 rounded-xl border-l-2 border-red-500">
-                    <p className="text-sm italic opacity-90">
-                      O avaliador explora o ego do candidato que tenta
-                      demonstrar conhecimentos gerais ao invés de se ater ao
-                      documento base.
-                    </p>
-                  </div>
-                </div>
-              }
-              categoria="Ameaças Triplas"
-            />
-            <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center h-full p-4 gap-4">
-                  <div className="p-4 bg-rose-500/10 rounded-full shadow-inner ring-1 ring-rose-500/20">
-                    <LuTarget className="w-10 h-10 text-rose-500" />
-                  </div>
-                  <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
-                    3. Contradição
-                  </span>
-                  <span className="text-sm font-medium text-rose-500/80">
-                    A Rota Oposta
-                  </span>
-                </div>
-              }
-              verso={
-                <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
-                  <p className="font-bold text-rose-500 flex items-center gap-2 border-b border-rose-500/10 pb-3 uppercase tracking-wide text-xs">
-                    <LuShieldAlert className="w-4 h-4" /> INVERSÃO DE VALORES
-                  </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    A afirmação cruza perpendicularmente a tese do autor,
-                    normalmente ocultando uma negação ou alterando o escopo por
-                    intermédio de restritivos (somente, nada).
-                  </p>
-                  <div className="bg-muted/40 p-3 rounded-xl border-l-2 border-rose-500">
-                    <p className="text-sm italic opacity-90">
-                      Geralmente, o autor cita o ponto falso durante o
-                      embasamento apenas para refutá-lo como "falácia" nas
-                      linhas vitais.
-                    </p>
-                  </div>
-                </div>
-              }
-              categoria="Ameaças Triplas"
-            />
+          <div className="max-w-5xl mx-auto mt-8">
+            <Carousel className="w-full" opts={{ loop: true, align: "start" }}>
+              <CarouselContent className="-ml-4">
+                <CarouselItem className="pl-4 basis-full md:basis-1/2">
+                  <FlipCard
+                    className="h-[420px]"
+                    frente={
+                      <div className="flex flex-col items-center justify-center h-full p-4 gap-4">
+                        <div className="p-4 bg-orange-500/10 rounded-full shadow-inner ring-1 ring-orange-500/20">
+                          <LuShieldAlert className="w-10 h-10 text-orange-500" />
+                        </div>
+                        <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
+                          1. Redução
+                        </span>
+                        <span className="text-sm font-medium text-orange-500/80">
+                          O &quot;Meio-Certo&quot;
+                        </span>
+                      </div>
+                    }
+                    verso={
+                      <div className="space-y-4 flex flex-col justify-center h-full text-left">
+                        <p className="font-bold text-orange-500 flex items-center gap-2 border-b border-orange-500/10 pb-3 uppercase tracking-wide text-xs">
+                          <LuCheck className="w-4 h-4" /> VERDADE INCOMPLETA
+                        </p>
+                        <p className="text-sm leading-relaxed text-muted-foreground">
+                          A afirmação está no texto, porém foca apenas em uma{" "}
+                          <strong>fração minoritária</strong> do argumento principal,
+                          ignorando a conclusão macroecônomica ou central.
+                        </p>
+                        <div className="bg-muted/40 p-3 rounded-xl border-l-2 border-orange-500">
+                          <p className="text-sm italic opacity-90">
+                            Ao restringir a ideia do autor, a banca cria uma resposta
+                            que não abrange a magnitude do enunciado.
+                          </p>
+                        </div>
+                      </div>
+                    }
+                    categoria="Ameaças Triplas"
+                  />
+                </CarouselItem>
+                <CarouselItem className="pl-4 basis-full md:basis-1/2">
+                  <FlipCard
+                    className="h-[420px]"
+                    frente={
+                      <div className="flex flex-col items-center justify-center h-full p-4 gap-4">
+                        <div className="p-4 bg-red-500/10 rounded-full shadow-inner ring-1 ring-red-500/20">
+                          <LuSearch className="w-10 h-10 text-red-500" />
+                        </div>
+                        <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
+                          2. Extrapolação
+                        </span>
+                        <span className="text-sm font-medium text-red-500/80">
+                          A Ilusão Lógica
+                        </span>
+                      </div>
+                    }
+                    verso={
+                      <div className="space-y-4 flex flex-col justify-center h-full text-left">
+                        <p className="font-bold text-red-500 flex items-center gap-2 border-b border-red-500/10 pb-3 uppercase tracking-wide text-xs">
+                          <LuShieldAlert className="w-4 h-4" /> O ACHISMO GOURMET
+                        </p>
+                        <p className="text-sm leading-relaxed text-muted-foreground">
+                          Traz informações verídicas sobre o Brasil ou o mundo que
+                          fazem total sentido, mas que{" "}
+                          <strong>jamais foram citadas</strong> no texto original.
+                        </p>
+                        <div className="bg-muted/40 p-3 rounded-xl border-l-2 border-red-500">
+                          <p className="text-sm italic opacity-90">
+                            O avaliador explora o ego do candidato que tenta
+                            demonstrar conhecimentos gerais ao invés de se ater ao
+                            documento base.
+                          </p>
+                        </div>
+                      </div>
+                    }
+                    categoria="Ameaças Triplas"
+                  />
+                </CarouselItem>
+                <CarouselItem className="pl-4 basis-full md:basis-1/2">
+                  <FlipCard
+                    className="h-[420px]"
+                    frente={
+                      <div className="flex flex-col items-center justify-center h-full p-4 gap-4">
+                        <div className="p-4 bg-rose-500/10 rounded-full shadow-inner ring-1 ring-rose-500/20">
+                          <LuTarget className="w-10 h-10 text-rose-500" />
+                        </div>
+                        <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
+                          3. Contradição
+                        </span>
+                        <span className="text-sm font-medium text-rose-500/80">
+                          A Rota Oposta
+                        </span>
+                      </div>
+                    }
+                    verso={
+                      <div className="space-y-4 flex flex-col justify-center h-full text-left">
+                        <p className="font-bold text-rose-500 flex items-center gap-2 border-b border-rose-500/10 pb-3 uppercase tracking-wide text-xs">
+                          <LuShieldAlert className="w-4 h-4" /> INVERSÃO DE VALORES
+                        </p>
+                        <p className="text-sm leading-relaxed text-muted-foreground">
+                          A afirmação cruza perpendicularmente a tese do autor,
+                          normalmente ocultando uma negação ou alterando o escopo por
+                          intermédio de restritivos (somente, nada).
+                        </p>
+                        <div className="bg-muted/40 p-3 rounded-xl border-l-2 border-rose-500">
+                          <p className="text-sm italic opacity-90">
+                            Geralmente, o autor cita o ponto falso durante o
+                            embasamento apenas para refutá-lo como &quot;falácia&quot; nas
+                            linhas vitais.
+                          </p>
+                        </div>
+                      </div>
+                    }
+                    categoria="Ameaças Triplas"
+                  />
+                </CarouselItem>
+              </CarouselContent>
+              <div className="flex items-center justify-center mt-6 gap-3">
+                <CarouselPrevious className="static translate-y-0 h-10 w-10 rounded-xl hover:bg-primary/5 hover:text-primary transition-colors border-border/60" />
+                <span className="text-xs text-muted-foreground font-medium">3 cards · deslize para ver</span>
+                <CarouselNext className="static translate-y-0 h-10 w-10 rounded-xl hover:bg-primary/5 hover:text-primary transition-colors border-border/60" />
+              </div>
+            </Carousel>
           </div>
 
           <div className="bg-red-50 dark:bg-red-900/20 rounded-2xl p-6 border border-red-200 dark:border-red-800">
