@@ -3318,6 +3318,13 @@ E mostre pro mundo sua superação!`,
         </section>
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
+          <ModuleSectionHeader
+            index={1}
+            title="Arsenal Lexical da CESGRANRIO"
+            description="Mapeie sinônimos técnicos e eixos temáticos que a banca repete sistematicamente nas provas da Petrobras."
+            variant={mv[9]}
+          />
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             <FlipCard
               frente="Sinônimos Técnicos"
@@ -3591,7 +3598,7 @@ E saia da prova como um vencedor!`,
               }
               verso={
                 <div className="space-y-3">
-                  <p className="text-sm leading-relaxed text-zinc-100">
+                  <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
                     Sua primeira missão é identificar se a questão pede o
                     **sentido global** (o texto todo) ou **localizado** (uma
                     linha específica).
@@ -3614,7 +3621,7 @@ E saia da prova como um vencedor!`,
               }
               verso={
                 <div className="space-y-3">
-                  <p className="text-sm leading-relaxed text-zinc-100">
+                  <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
                     Corte toda informação que não está escrita. Se a alternativa
                     fizer sentido mas **não tiver prova no texto**, ela é
                     Extrapolação.
@@ -3638,7 +3645,7 @@ E saia da prova como um vencedor!`,
               }
               verso={
                 <div className="space-y-3">
-                  <p className="text-sm leading-relaxed text-zinc-100">
+                  <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
                     Fique atento à troca de verbos técnicos. A banca substitui
                     termos para ver se você entende a **equivalência semântica**
                     no contexto industrial.
