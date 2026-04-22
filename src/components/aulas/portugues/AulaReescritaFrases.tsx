@@ -161,13 +161,8 @@ export default function AulaReescritaFrases({
   };
 
   const isModuleUnlocked = useCallback(
-    (index: number) => {
-      if (index === 0) return true;
-      return (
-        completedModules.has(MODULE_DEFS[index - 1].id) || isLessonCompleted
-      );
-    },
-    [completedModules, isLessonCompleted],
+    (_index: number) => true,
+    [],
   );
 
   return (
